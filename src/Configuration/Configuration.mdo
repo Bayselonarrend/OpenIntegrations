@@ -40,5 +40,4 @@
   <commonModules>CommonModule.OPI_Viber</commonModules>
   <commonModules>CommonModule.OPI_VK</commonModules>
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
-  <dataProcessors>DataProcessor.Стенд</dataProcessors>
 </mdclass:Configuration>
