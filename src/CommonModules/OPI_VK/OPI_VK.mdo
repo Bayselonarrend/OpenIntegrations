@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6f0e845c-2d21-430f-954a-34a96d2dad3c">
+  <name>OPI_VK</name>
+  <synonym>
+    <key>ru</key>
+    <value>Методы интеграции с VK (ОПИ)</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
