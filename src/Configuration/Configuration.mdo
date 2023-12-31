@@ -8,7 +8,7 @@
   <containedObjects classId="51f2d5d8-ea4d-4064-8892-82951750031e" objectId="596cd0aa-7769-435b-90c4-1f20dc7b6930"/>
   <containedObjects classId="e68182ea-4237-4383-967f-90c1e3370bc7" objectId="69442e4e-a991-4f4f-a753-a6cdf89f74e1"/>
   <containedObjects classId="fb282519-d103-4dd3-bc12-cb271d631dfc" objectId="521af971-c6b2-44ae-beb1-a72ab664c9cb"/>
-  <configurationExtensionCompatibilityMode>8.3.9</configurationExtensionCompatibilityMode>
+  <configurationExtensionCompatibilityMode>8.3.18</configurationExtensionCompatibilityMode>
   <defaultRunMode>ManagedApplication</defaultRunMode>
   <usePurposes>PersonalComputer</usePurposes>
   <scriptVariant>Russian</scriptVariant>
