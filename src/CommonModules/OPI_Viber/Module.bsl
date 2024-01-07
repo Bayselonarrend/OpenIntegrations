@@ -20,6 +20,8 @@
 //OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //SOFTWARE.
 
+//https://github.com/Bayselonarrend/OpenIntegrations
+
 #Область ПрограммныйИнтерфейс
 
 #Область НастройкиИИнформация
@@ -41,7 +43,7 @@
     СтруктураПараметров.Вставить("url"       , URL);
     СтруктураПараметров.Вставить("auth_token", Токен);
     
-    Возврат OPI_Инструменты.PostUrlencoded("https://chatapi.viber.com/pa/set_webhook"
+    Возврат OPI_Инструменты.Post("https://chatapi.viber.com/pa/set_webhook"
         , СтруктураПараметров);
     
 КонецФункции
@@ -75,7 +77,7 @@
     СтруктураПараметров = Новый Структура;
     СтруктураПараметров.Вставить("id", IDПользователя);
     
-    Ответ = OPI_Инструменты.PostUrlencoded("https://chatapi.viber.com/pa/get_user_details"
+    Ответ = OPI_Инструменты.Post("https://chatapi.viber.com/pa/get_user_details"
         , СтруктураПараметров
         , ТокенВЗаголовки(Токен));
 
@@ -108,7 +110,7 @@
     СтруктураПараметров = Новый Структура;
     СтруктураПараметров.Вставить("ids", IDПользователей);
     
-    Ответ = OPI_Инструменты.PostUrlencoded("https://chatapi.viber.com/pa/get_online"
+    Ответ = OPI_Инструменты.Post("https://chatapi.viber.com/pa/get_online"
         , СтруктураПараметров
         , ТокенВЗаголовки(Токен));
     
@@ -354,7 +356,7 @@
         URL = "https://chatapi.viber.com/pa/send_message";
     КонецЕсли;
     
-    Ответ = OPI_Инструменты.PostUrlencoded(URL
+    Ответ = OPI_Инструменты.Post(URL
         , СтруктураПараметров
         , ТокенВЗаголовки(Токен));
     
