@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="cf56b647-8ad6-4ee3-a5ae-8dcf339b1647">
-  <name>OPI_GoogleWorkspace</name>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="31cd7c60-0873-4333-99c1-fc4807082ea9">
+  <name>OPI_Twitter</name>
   <synonym>
     <key>ru</key>
-    <value>Методы Google Workspace</value>
+    <value>OPI twitter</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
