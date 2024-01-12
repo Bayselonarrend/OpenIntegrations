@@ -36,11 +36,11 @@
     <languageCode>ru</languageCode>
   </languages>
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
+  <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_Telegram</commonModules>
   <commonModules>CommonModule.OPI_VK</commonModules>
   <commonModules>CommonModule.OPI_Viber</commonModules>
   <commonModules>CommonModule.OPI_Twitter</commonModules>
-  <commonModules>CommonModule.OPI_Криптография</commonModules>
   <httpServices>HTTPService.Twitter</httpServices>
   <constants>Constant.TwitterRefresh</constants>
   <constants>Constant.TwitterToken</constants>
