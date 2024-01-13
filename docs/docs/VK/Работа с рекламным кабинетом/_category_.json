@@ -1,0 +1,8 @@
+{
+  "label": "Работа с рекламным кабинетом",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+	"description": "Эти методы позволяют работать с рекламным кабинетом https://vk.com/ads"
+  }
+}
