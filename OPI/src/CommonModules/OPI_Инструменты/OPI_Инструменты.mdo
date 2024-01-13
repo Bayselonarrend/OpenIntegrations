@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="0fc66587-a390-4939-b54b-e772cec8fcf7">
-  <name>OPI_Viber</name>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="e810f1d2-6714-4c85-94b1-c3ce20788e78">
+  <name>OPI_Инструменты</name>
   <synonym>
     <key>ru</key>
-    <value>Методы интеграции с Viber (ОПИ)</value>
+    <value>OPI инструменты</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

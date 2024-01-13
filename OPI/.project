@@ -13,6 +13,6 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
-		<nature>com._1c.g5.v8.dt.core.V8ConfigurationNature</nature>
+		<nature>com._1c.g5.v8.dt.core.V8ExtensionNature</nature>
 	</natures>
 </projectDescription>
