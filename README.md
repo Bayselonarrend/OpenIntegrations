@@ -1,8 +1,12 @@
 <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png" style="height: 256px; width: 256px;">
 
 # Открытый пакет интеграций
-Набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. 
+[![Статус порога качества](http://api.athenaeum.digital/Sonar/api/project_badges/measure?project=OpenIntegrations&metric=alert_status)](http://api.athenaeum.digital/Sonar/dashboard?id=OpenIntegrations)
+[![Строки кода](http://api.athenaeum.digital/Sonar/api/project_badges/measure?project=OpenIntegrations&metric=ncloc)](http://api.athenaeum.digital/Sonar/dashboard?id=OpenIntegrations)<br>
+Набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. <br>
 
+
+<br>
 Проект состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех. Реализованные методы выполняют конечные задачи (вроде *ОтправитьСообщение()* или *СоздатьПост()*), что позволяет использовать их без углубления в реализацию. Однако, код, при этом, достаточно сильно декомпозирован - методы авторизации, получения данных и пр. по возможности вынесены в отдельные функции. Это позволяет легко добавлять новые методы, даже если они еще не реализованы в самой библиотеке на текущий момент. 
 
 На данный момент реализованы методы для работы со следующими API:
