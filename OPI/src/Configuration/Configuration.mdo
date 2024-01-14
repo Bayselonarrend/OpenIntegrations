@@ -41,7 +41,6 @@
     <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
-  <compatibilityMode>8.3.22</compatibilityMode>
   <languages uuid="0e858b44-34f3-4d20-986d-13290bb5ba5a" extendedConfigurationObject="6baf84ae-5c74-4fe2-8467-219a78580fe7">
     <name>Русский</name>
     <objectBelonging>Adopted</objectBelonging>

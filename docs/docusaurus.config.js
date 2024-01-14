@@ -80,7 +80,7 @@ const config = {
             items: [
               {
                 label: 'Описания методов',
-                to: '/docs/intro',
+                to: '/docs/Начало%20работы',
               },
             ],
           },
