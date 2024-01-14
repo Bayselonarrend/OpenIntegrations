@@ -64,3 +64,9 @@ ___
 >[https://github.com/facebook/docusaurus](https://github.com/facebook/docusaurus)
 
 >Остальной проект распространяется под лицензией MIT
+<br>
+
+>![Infostart](https://github.com/Bayselonarrend/TelegramEnterprise/raw/main/infostart.svg)
+>
+>Статья на Инфостарте:<br>
+>[https://infostart.ru/1c/articles/2016164/](https://infostart.ru/1c/articles/2016164/)<br>
