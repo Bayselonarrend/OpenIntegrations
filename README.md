@@ -2,7 +2,9 @@
 
 # Открытый пакет интеграций
 [![Статус порога качества](http://api.athenaeum.digital/Sonar/api/project_badges/measure?project=OpenIntegrations&metric=alert_status)](http://api.athenaeum.digital/Sonar/dashboard?id=OpenIntegrations)
-[![Строки кода](http://api.athenaeum.digital/Sonar/api/project_badges/measure?project=OpenIntegrations&metric=ncloc)](http://api.athenaeum.digital/Sonar/dashboard?id=OpenIntegrations)<br>
+[![Строки кода](http://api.athenaeum.digital/Sonar/api/project_badges/measure?project=OpenIntegrations&metric=ncloc)](http://api.athenaeum.digital/Sonar/dashboard?id=OpenIntegrations)
+![Версия](https://img.shields.io/badge/Версия_1С-8.3.9-yellow)
+<br>
 Набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. <br>
 
 
