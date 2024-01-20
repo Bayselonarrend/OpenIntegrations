@@ -20,9 +20,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-//https://github.com/Bayselonarrend/OpenIntegrations
-//Если в не знаете с чего начать, то стоит найти метод ПолучитьСтандартныеПараметры()
-//и почитать комментарии
+// https://github.com/Bayselonarrend/OpenIntegrations
+// Если в не знаете с чего начать, то стоит найти метод ПолучитьСтандартныеПараметры()
+// и почитать комментарии
 
 #Область ПрограммныйИнтерфейс
 
