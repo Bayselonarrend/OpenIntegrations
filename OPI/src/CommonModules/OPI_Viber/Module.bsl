@@ -1,26 +1,27 @@
-//MIT License
+// MIT License
 
-//Copyright (c) 2023 Anton Tsitavets
+// Copyright (c) 2023 Anton Tsitavets
 
-//Permission is hereby granted, free of charge, to any person obtaining a copy
-//of this software and associated documentation files (the "Software"), to deal
-//in the Software without restriction, including without limitation the rights
-//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//copies of the Software, and to permit persons to whom the Software is
-//furnished to do so, subject to the following conditions:
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 
-//The above copyright notice and this permission notice shall be included in all
-//copies or substantial portions of the Software.
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
 
-//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//SOFTWARE.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+ 
+// https://github.com/Bayselonarrend/OpenIntegrations
 
-//https://github.com/Bayselonarrend/OpenIntegrations
 #Область ПрограммныйИнтерфейс
 
 #Область НастройкиИИнформация
@@ -99,7 +100,7 @@
 Функция ПолучитьОнлайнПользователей(Знач Токен, Знач IDПользователей) Экспорт
     
     Если Не ТипЗнч(IDПользователей) = Тип("Массив") Тогда
-    	
+        
         ОдиночныйID     = IDПользователей;
         IDПользователей = Новый Массив;
         IDПользователей.Добавить(ОдиночныйID);
@@ -136,7 +137,11 @@
 // 
 // Возвращаемое значение:
 //  Произвольный, HTTPОтвет -  Ответ сервера Viber
-Функция ОтправитьТекстовоеСообщение(Знач Токен, Знач Текст, Знач IDПользователя, Знач ОтправкаВКанал, Знач Клавиатура = "") Экспорт
+Функция ОтправитьТекстовоеСообщение(Знач Токен
+    , Знач Текст
+    , Знач IDПользователя
+    , Знач ОтправкаВКанал
+    , Знач Клавиатура = "") Экспорт
     
     Возврат ОтправитьСообщение(Токен, "text", IDПользователя, ОтправкаВКанал, , Текст, Клавиатура); 
     
@@ -171,7 +176,12 @@
 // 
 // Возвращаемое значение:
 //  Произвольный, HTTPОтвет -  Ответ сервера Viber
-Функция ОтправитьФайл(Знач Токен, Знач URL, Знач IDПользователя, Знач ОтправкаВКанал, Знач Расширение, Знач Размер = "") Экспорт
+Функция ОтправитьФайл(Знач Токен
+    , Знач URL
+    , Знач IDПользователя
+    , Знач ОтправкаВКанал
+    , Знач Расширение
+    , Знач Размер = "") Экспорт
     
     Если Не ЗначениеЗаполнено(Размер) Тогда
         
@@ -207,7 +217,11 @@
 // 
 // Возвращаемое значение:
 //  Произвольный, HTTPОтвет -  Ответ сервера Viber
-Функция ОтправитьКонтакт(Знач Токен, Знач ИмяКонтакта, Знач НомерТелефона, Знач IDПользователя, Знач ОтправкаВКанал) Экспорт
+Функция ОтправитьКонтакт(Знач Токен
+    , Знач ИмяКонтакта
+    , Знач НомерТелефона
+    , Знач IDПользователя
+    , Знач ОтправкаВКанал) Экспорт
     
     СтруктураКонтакта = Новый Структура;
     СтруктураКонтакта.Вставить("name", ИмяКонтакта);
