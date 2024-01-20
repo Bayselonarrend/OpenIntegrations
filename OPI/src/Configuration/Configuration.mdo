@@ -55,5 +55,6 @@
   <commonModules>CommonModule.OPI_VK</commonModules>
   <commonModules>CommonModule.OPI_Viber</commonModules>
   <commonModules>CommonModule.OPI_Twitter</commonModules>
+  <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
 </mdclass:Configuration>
