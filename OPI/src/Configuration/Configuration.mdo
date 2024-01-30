@@ -57,4 +57,5 @@
   <commonModules>CommonModule.OPI_Twitter</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
+  <commonModules>CommonModule.OPI_YandexID</commonModules>
 </mdclass:Configuration>
