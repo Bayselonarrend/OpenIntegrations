@@ -71,5 +71,6 @@ ___
 
 >![Infostart](https://github.com/Bayselonarrend/TelegramEnterprise/raw/main/infostart.svg)
 >
->Статья на Инфостарте:<br>
->[https://infostart.ru/1c/articles/2016164/](https://infostart.ru/1c/articles/2016164/)<br>
+>Статьи на Инфостарте:<br>
+>[Открытый пакет интеграций для популярных API: Telegram, VK, Viber, Twitter](https://infostart.ru/1c/articles/2016164/)<br>
+>[Работа с Notion API | Обновление Открытого пакета интеграций](https://infostart.ru/1c/articles/2022254/)<br>
