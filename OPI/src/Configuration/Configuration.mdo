@@ -58,4 +58,5 @@
   <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_YandexID</commonModules>
+  <commonModules>CommonModule.OPI_YandexDisk</commonModules>
 </mdclass:Configuration>
