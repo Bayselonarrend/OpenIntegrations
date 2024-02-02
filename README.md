@@ -47,30 +47,14 @@
 
 ___
 
->В проекте используется механизм распаковки zip и gzip vbondarevsky/Connector
->
->Copyright 2017-2023 Vladimir Bondarevskiy
->под Apache License, Version 2.0
->
->[https://github.com/vbondarevsky/Connector/](https://github.com/vbondarevsky/Connector/)
-<br>
-
->Используются методы HMAC SHA-256 и некоторые другие из БСП
->
->Copyright (c) 2019, ООО 1С-Софт Все права защищены. Эта программа и сопроводительные материалы предоставляются в соответствии с условиями лицензии Attribution 4.0 International (CC BY 4.0) Текст лицензии доступен по ссылке: [https://creativecommons.org/licenses/by/4.0/legalcode](https://creativecommons.org/licenses/by/4.0/legalcode)
-<br>
-
->Документация создана при помощи Docusaurus
->
->Copyright (c) Facebook, Inc. and its affiliates.
->
->[https://github.com/facebook/docusaurus](https://github.com/facebook/docusaurus)
-
->Остальной проект распространяется под лицензией MIT
-<br>
 
 >![Infostart](https://github.com/Bayselonarrend/TelegramEnterprise/raw/main/infostart.svg)
 >
 >Статьи на Инфостарте:<br>
 >[Открытый пакет интеграций для популярных API: Telegram, VK, Viber, Twitter](https://infostart.ru/1c/articles/2016164/)<br>
 >[Работа с Notion API | Обновление Открытого пакета интеграций](https://infostart.ru/1c/articles/2022254/)<br>
+
+
+>Открытый Пакет интеграций (OpenIntegrations)<br>
+>Licensed under the MIT License<br>
+>Список зависимостей находится в файле NOTICE 
