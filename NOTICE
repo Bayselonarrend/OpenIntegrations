@@ -1,0 +1,18 @@
+Открытый пакет интеграций (OpenIntegrations)
+Copyright (c) 2024 Anton Tsitavets
+Licensed under the MIT License
+
+Используется код из проекта vbondarevsky/Connector
+ * Copyright 2017-2023 Vladimir Bondarevskiy 
+ * Licensed under the Apache License, Version 2.0;
+ * https://github.com/vbondarevsky/Connector/
+
+Используется код из проекта БСП
+ * Copyright (c) 2019, ООО 1С-Софт
+ * Licensed under the Attribution 4.0 International (CC BY 4.0)
+ * https://v8.1c.ru/tekhnologii/standartnye-biblioteki/1s-biblioteka-standartnykh-podsistem/
+
+Документация создана при помощи Docusaurus
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ * Licensed under the MIT License
+ * https://github.com/facebook/docusaurus
