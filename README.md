@@ -55,6 +55,6 @@ ___
 >[Работа с Notion API | Обновление Открытого пакета интеграций](https://infostart.ru/1c/articles/2022254/)<br>
 
 
-Открытый Пакет интеграций (OpenIntegrations)
-Licensed under the MIT License
-Список зависимостей находится в файле NOTICE
+>Открытый Пакет интеграций (OpenIntegrations)<br>
+>Licensed under the MIT License<br>
+>Список зависимостей находится в файле NOTICE 
