@@ -3,6 +3,7 @@
 # Открытый пакет интеграций
 [![Статус порога качества](http://api.athenaeum.digital/Sonar/api/project_badges/measure?project=OpenIntegrations&metric=alert_status)](http://api.athenaeum.digital/Sonar/dashboard?id=OpenIntegrations)
 ![Версия](https://img.shields.io/badge/Версия_1С-8.3.9-yellow)
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.neocities.org/badges/2/736878759.json)](https://openyellow.notion.site/openyellow/24727888daa641af95514b46bee4d6f2?p=f78cea2066114067ab9069f06206219d&amp;pm=s)
 
 <br>
 Набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. <br>
