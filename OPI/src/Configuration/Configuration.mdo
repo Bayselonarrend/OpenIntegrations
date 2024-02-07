@@ -9,7 +9,6 @@
   <extension xsi:type="mdclassExtension:ConfigurationExtension">
     <defaultRunMode>Checked</defaultRunMode>
     <usePurposes>Checked</usePurposes>
-    <defaultLanguage>Checked</defaultLanguage>
     <interfaceCompatibilityMode>Checked</interfaceCompatibilityMode>
   </extension>
   <containedObjects classId="9cd510cd-abfc-11d4-9434-004095e12fc7" objectId="12689443-2950-4e3b-b313-9a692b6acac7"/>
@@ -28,7 +27,6 @@
   <scriptVariant>Russian</scriptVariant>
   <vendor>Bayselonarrend</vendor>
   <version>1.1.0</version>
-  <defaultLanguage>Language.Русский</defaultLanguage>
   <detailedInformation>
     <key>ru</key>
     <value>Открытый пакет интеграций - набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. Он состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех.</value>
@@ -41,11 +39,11 @@
     <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
-  <languages uuid="0e858b44-34f3-4d20-986d-13290bb5ba5a" extendedConfigurationObject="6baf84ae-5c74-4fe2-8467-219a78580fe7">
+  <compatibilityMode>8.3.15</compatibilityMode>
+  <languages uuid="0e858b44-34f3-4d20-986d-13290bb5ba5a">
     <name>Русский</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:LanguageExtension">
-      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <languageCode>Checked</languageCode>
     </extension>
     <languageCode>ru</languageCode>
@@ -59,4 +57,5 @@
   <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_YandexID</commonModules>
   <commonModules>CommonModule.OPI_YandexDisk</commonModules>
+  <commonModules>CommonModule.YAX_Тесты</commonModules>
 </mdclass:Configuration>
