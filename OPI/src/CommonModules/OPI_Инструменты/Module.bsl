@@ -296,6 +296,7 @@
 КонецФункции
 
 // BSLLS:CognitiveComplexity-off
+// BSLLS:Typo-off
 
 Функция ВыполнитьЗапросМультипарт(Знач URL
     , Знач Вид
@@ -404,6 +405,8 @@
         , JsonВСтруктуру(Ответ.ПолучитьТелоКакДвоичныеДанные()));
         
 КонецФункции
+
+// BSLLS:Typo-on
 // BSLLS:CognitiveComplexity-on
 
 #Область GZip
