@@ -21,6 +21,9 @@
 // SOFTWARE.
 
 // https://github.com/Bayselonarrend/OpenIntegrations
+
+// BSLLS:Typo-off
+
 #Область ПрограммныйИнтерфейс
 
 #Область ДанныеИНастройка
@@ -824,3 +827,5 @@
 КонецФункции
 
 #КонецОбласти
+
+// BSLLS:Typo-on

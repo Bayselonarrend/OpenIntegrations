@@ -26,7 +26,7 @@
   <usePurposes>PersonalComputer</usePurposes>
   <scriptVariant>Russian</scriptVariant>
   <vendor>Bayselonarrend</vendor>
-  <version>1.1.0</version>
+  <version>1.2.0</version>
   <detailedInformation>
     <key>ru</key>
     <value>Открытый пакет интеграций - набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. Он состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех.</value>
@@ -39,7 +39,6 @@
     <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
-  <compatibilityMode>8.3.15</compatibilityMode>
   <languages uuid="0e858b44-34f3-4d20-986d-13290bb5ba5a">
     <name>Русский</name>
     <objectBelonging>Adopted</objectBelonging>
