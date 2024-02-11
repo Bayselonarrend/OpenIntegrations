@@ -20,6 +20,7 @@
   <a href="https://opi.neocities.org/docs/Viber/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Viber.png" width="32"></a>
   <a href="https://opi.neocities.org/docs/Twitter/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Twitter.png" width="32"></a>
   <a href="https://opi.neocities.org/docs/Notion/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Notion.png" width="32"></a>
+  <a href="https://opi.neocities.org/docs/Yandex_Disk/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/YandexDisk.png" width="32"></a>
 </div>
 <br>
 
