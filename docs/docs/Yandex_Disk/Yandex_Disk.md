@@ -47,9 +47,9 @@ id: YandexDisk
 
 ![BF](../../static/img/Docs/YandexDisk/5.png)
 
-7. После ввода кода в пункте 6, вызовите функцию *OPI_YandexID.ПолучитьТокенПоКодуАвторизации()*, передав туда **ClientID** и **ClientSecret** из пункта 4, а также **device_code** из пункта 5. Сохраните полученные **acess_token** и **refresh_token**
+7. После ввода кода в пункте 6, вызовите функцию *OPI_YandexID.ПреобразоватьКодВТокен()*, передав туда **ClientID** и **ClientSecret** из пункта 4, а также **device_code** из пункта 5. Сохраните полученные **acess_token** и **refresh_token**
 
-```json title="Результат функции ПолучитьТокенПоКодуАвторизации(), если перевести его в JSON"
+```json title="Результат функции ПреобразоватьКодВТокен(), если перевести его в JSON"
 {
  "token_type": "bearer",
  "refresh_token": "1:Tj6nD2vgE2L8jwSm:YgWjQXPv6_y3e07GW70ig2AOyEXoRVsKKpApGHq2EOg7pfx0MKrXiCrfLBFtzgQawdawdwadad3Sasa9z2H0vSeZKNmZmA",
