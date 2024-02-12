@@ -61,11 +61,6 @@ ___
 >Открытый Пакет интеграций (OpenIntegrations)<br>
 >Licensed under the MIT License<br>
 >Список зависимостей находится в файле NOTICE<br>
-Powered by<br> 
-<a href="https://github.com/bia-technologies/yaxunit"><img src="https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/ce100e09-6841-4a53-b32c-5123d5f0f329" width="32"></a>
-<a href="https://edt.1c.ru/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/6d5a50cc-99a7-42b3-81e0-02612575ac09" width="32"></a>
-<a href="https://github.com/1c-syntax/sonar-bsl-plugin-community"><img src="https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/f3e93981-5008-4cec-94fa-6fbe1a701047" width="32"></a>
-<a href="https://github.com/facebook/docusaurus"><img src="https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/18a01322-6741-48fe-858e-f00d9b98ee1f" width="32"></a>
 
 
 
