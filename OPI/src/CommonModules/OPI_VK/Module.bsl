@@ -1376,6 +1376,7 @@
 
 #Область СлужебныеПроцедурыИФункции
 // BSLLS:MissingReturnedValueDescription-off
+// BSLLS:MissingParameterDescription-off
 
 Функция ПолучитьСтандартныеПараметры(Знач Параметры = "")
     
@@ -1457,7 +1458,7 @@
         СоответствиеМетодов.Вставить(Фото      , "photo");
         СоответствиеМетодов.Вставить(Способ    , 1);
         
-    ИначЕесли Вид = "Товар" Тогда
+    ИначеЕсли Вид = "Товар" Тогда
         
         СоответствиеМетодов.Вставить(Загрузка  , "market.getProductPhotoUploadServer");
         СоответствиеМетодов.Вставить(Сохранение, "market.saveProductPhoto");
@@ -1732,6 +1733,7 @@
     
 КонецПроцедуры
 
+// BSLLS:MissingParameterDescription-on
 // BSLLS:MissingReturnedValueDescription-on
 #КонецОбласти
 
