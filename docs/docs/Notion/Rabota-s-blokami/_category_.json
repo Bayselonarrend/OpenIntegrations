@@ -1,8 +1,4 @@
 {
   "label": "Работа с блоками",
   "position": 3,
-  "link": {
-    "type": "generated-index",
-	"description": "Эти методы позволяют работать с блоками страниц"
-  }
 }
