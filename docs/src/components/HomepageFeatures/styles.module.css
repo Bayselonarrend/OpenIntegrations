@@ -1,3 +1,11 @@
+marquee{
+  padding: auto;
+}
+
+.api{
+  margin-right: 200px;
+}
+
 .features {
   display: flex;
   align-items: center;
@@ -8,4 +16,35 @@
 .featureSvg {
   height: 100px;
   width: 100px;
+}
+
+.ico{
+  padding: 112px;
+}
+
+.container {
+
+  display: flex;
+  white-space: nowrap;
+  width: 100%;
+  height: clamp(3em, 10vw, 6em);
+  overflow: hidden;
+  font-family: sans-serif;
+
+}
+
+.looptext {
+   animation: loopText 27s infinite linear;      
+}
+
+@keyframes loopText {
+
+ from {
+     transform: translateX(0);
+  }
+
+ to {
+     transform: translateX(-100%);
+  }
+
 }
