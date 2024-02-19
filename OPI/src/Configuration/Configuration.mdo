@@ -48,13 +48,15 @@
     <languageCode>ru</languageCode>
   </languages>
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
+  <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_Telegram</commonModules>
   <commonModules>CommonModule.OPI_VK</commonModules>
   <commonModules>CommonModule.OPI_Viber</commonModules>
   <commonModules>CommonModule.OPI_Twitter</commonModules>
   <commonModules>CommonModule.OPI_Notion</commonModules>
-  <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_YandexID</commonModules>
   <commonModules>CommonModule.OPI_YandexDisk</commonModules>
+  <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
+  <commonModules>CommonModule.OPI_GoogleCalendar</commonModules>
   <commonModules>CommonModule.YAX_Тесты</commonModules>
 </mdclass:Configuration>
