@@ -55,6 +55,30 @@ export default function HomepageFeatures() {
             <Feature key={idx} {...props} />
           ))}
         </div>
+        <hr/>
+        <section className={styles.container}>
+          <span className={styles.looptext}>
+            <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
+            <a  className={styles.ico} href="/docs/VK/"><img src={require('../../../static/img/APIs/VK.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Viber/"><img src={require('../../../static/img/APIs/Viber.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Twitter/"><img src={require('../../../static/img/APIs/Twitter.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Notion/"><img src={require('../../../static/img/APIs/Notion.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Yandex_Disk/"><img src={require('../../../static/img/APIs/YandexDisk.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Google_Calendar/"><img src={require('../../../static/img/APIs/GoogleCalendar.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
+          </span>
+          <span className={styles.looptext}>
+            <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
+            <a  className={styles.ico} href="/docs/VK/"><img src={require('../../../static/img/APIs/VK.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Viber/"><img src={require('../../../static/img/APIs/Viber.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Twitter/"><img src={require('../../../static/img/APIs/Twitter.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Notion/"><img src={require('../../../static/img/APIs/Notion.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Yandex_Disk/"><img src={require('../../../static/img/APIs/YandexDisk.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Google_Calendar/"><img src={require('../../../static/img/APIs/GoogleCalendar.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
+          </span>
+        </section>
+
       </div>
     </section>
   );

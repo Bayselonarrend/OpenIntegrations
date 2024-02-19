@@ -18,6 +18,7 @@ sidebar_position: 1
 <a href="/docs/Twitter/"><img src={require('../static/img/APIs/Twitter.png').default} width='32px'/> </a>
 <a href="/docs/Notion/"><img src={require('../static/img/APIs/Notion.png').default} width='32px'/> </a>
 <a href="/docs/Yandex_Disk/"><img src={require('../static/img/APIs/YandexDisk.png').default} width='32px'/> </a>
+<a href="/docs/Google_Calendar/"><img src={require('../static/img/APIs/GoogleCalendar.png').default} width='32px'/> </a>
 
 ## Начало работы
 
