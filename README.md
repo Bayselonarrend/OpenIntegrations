@@ -56,6 +56,7 @@ ___
 >[Открытый пакет интеграций для популярных API: Telegram, VK, Viber, Twitter](https://infostart.ru/1c/articles/2016164/)<br>
 >[Библиотека для работы с Notion API (Open-source)](https://infostart.ru/1c/articles/2022254/)<br>
 >[Библиотека работы с Яндекс Диском: делаем простейший менеджер облака за 15 минут (Open-source)](https://infostart.ru/1c/articles/2038960/)<br>
+>[Открываем свою лавку на платформе VK Market](https://infostart.ru/public/2043994/)<br>
 
 
 >Открытый Пакет интеграций (OpenIntegrations)<br>
