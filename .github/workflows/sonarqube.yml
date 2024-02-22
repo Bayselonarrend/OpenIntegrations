@@ -35,17 +35,11 @@ on:
 
 permissions:
   pull-requests: read # allows SonarQube to decorate PRs with analysis results
-
-
 jobs:
   sonar-scanner:
     if: github.repository == 'bayselonarrend/OpenIntegrations'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v1
-      with:
-        fetch-depth: 0
     - name: Setup sonarqube
       uses: warchant/setup-sonar-scanner@v3
     - name: Run SonarQube on push
