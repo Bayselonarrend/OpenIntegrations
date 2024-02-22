@@ -10,7 +10,7 @@ id: GoogleCalendar
 
 ## Начало работы
 
-Для начала работы необходимо получить токен доступа Google:
+### Создание проекта
 
 1. Перейдите на [главную страницу Google Cloud](https://console.cloud.google.com) и создайте проект
 
@@ -36,27 +36,42 @@ id: GoogleCalendar
 
 ![BF](../../static/img/Docs/GoogleCalendar/6.png)
 
-7. В боковом меню выберите пункт Credentials -> Create Credentials -> OAuth client ID
+
+### Настройка OAuth
+
+1. В боковом меню выберите пункт Credentials -> Create Credentials -> OAuth client ID
 
 ![BF](../../static/img/Docs/GoogleCalendar/7.png)
 
-8. Введите имя и выберите Application type - Desktop app
+2. Введите имя и выберите Application type - Desktop app
 
 ![BF](../../static/img/Docs/GoogleCalendar/8.png)
 
-9. Сохраните ClientID и Client Secret
+3. Сохраните ClientID и Client Secret
 
 ![BF](../../static/img/Docs/GoogleCalendar/9.png)
 
-10. Передайте ClientID в функцию OPI_GoogleWorkspace.СформироватьСсылкуПолученияКода(ClientID). Результатом функции будет URL, который необходимо открыть в браузере. Авторизуйтесь при помощи своего аккаунта Google
+
+### Включение сервиса Google Calendar
+
+1. Перейдите на [страницу Календаря в Marketplace](https://console.cloud.google.com/marketplace/product/google/calendar-json.googleapis.com) 
+
+2. Нажмите Enable
+
+![BF](../../static/img/Docs/GoogleCalendar/12.png)
+
+
+### Получение Токена
+
+1. Передайте ClientID в функцию OPI_GoogleWorkspace.СформироватьСсылкуПолученияКода(ClientID). Результатом функции будет URL, который необходимо открыть в браузере. Авторизуйтесь при помощи своего аккаунта Google
 
 ![BF](../../static/img/Docs/GoogleCalendar/10.png)
 
-11. Скопируйте код из URL после авторизации
+2. Скопируйте код из URL после авторизации
 
 ![BF](../../static/img/Docs/GoogleCalendar/11.png)
 
-12. Используйте полученный код, ClientID и Client Secret для вызова функции OPI_GoogleWorkspace.ПолучитьТокенПоКоду(ClientID, ClientSecret, Code)
+3. Используйте полученный код, ClientID и Client Secret для вызова функции OPI_GoogleWorkspace.ПолучитьТокенПоКоду(ClientID, ClientSecret, Code)
 
 ```json title="Результат функции ПолучитьТокенПоКоду(), если перевести его в JSON"
 
@@ -70,4 +85,4 @@ id: GoogleCalendar
 
 ```
 
-13. Используйте **access_token** для передачи в качестве параметра Токен при вызове функций библиотеки, а refresh_token - для получения нового access_token (функция OPI_GoogleWorkspace.ОбновитьТокен(ClientID, ClientSecret, RefreshToken)), когда время жизни старого истечет. При обновлении токена refresh_token не обновляется - вы можете использовать его один и тот же для получения нового access_token каждый раз.
+4. Используйте **access_token** для передачи в качестве параметра Токен при вызове функций библиотеки, а refresh_token - для получения нового access_token (функция OPI_GoogleWorkspace.ОбновитьТокен(ClientID, ClientSecret, RefreshToken)), когда время жизни старого истечет. При обновлении токена refresh_token не обновляется - вы можете использовать его один и тот же для получения нового access_token каждый раз.
