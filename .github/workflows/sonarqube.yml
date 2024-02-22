@@ -42,16 +42,7 @@ jobs:
     steps:
     - name: Setup sonarqube
       uses: warchant/setup-sonar-scanner@v3
-    - name: Run SonarQube on push
-      if: github.event_name == 'push'
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: sonar-scanner
-        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        -Dsonar.host.url=https://api.athenaeum.digital/Sonar
     - name: Run SonarQube on pull request
-      if: github.event_name == 'pull_request'
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
