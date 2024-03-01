@@ -23,8 +23,8 @@
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 //Раскомментировать, если выполняется OneScript
-//#Использовать ".."
-//#Использовать asserts
+#Использовать ".."
+#Использовать asserts
 
 
 // @skip-check undefined-variable
@@ -142,7 +142,7 @@
 КонецФункции
 
 Функция ПутьКФайлуДанных()
-    Возврат "C:\GDrive\Мой диск\data.json"; // BSLLS:UsingHardcodePath-off
+    Возврат "D:\GD\Мой диск\data.json"; // BSLLS:UsingHardcodePath-off
 КонецФункции
 
 Функция ПолучитьМассивРазделовТестирования()
@@ -240,12 +240,8 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
-
-	УстановитьБезопасныйРежим(Истина);
 	
 	Модуль  = Вычислить(Имя); // BSLLS:ExecuteExternalCodeInCommonModule-off
-	
-	УстановитьБезопасныйРежим(Ложь);	
 	
 	Возврат Модуль;
 	
