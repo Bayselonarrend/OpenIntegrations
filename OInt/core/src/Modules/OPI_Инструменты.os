@@ -24,7 +24,7 @@
 // BSLLS:Typo-off
 
 //Раскомментировать, если выполняется OneScript
-//#Использовать ".."
+#Использовать ".."
 
 #Область СлужебныйПрограммныйИнтерфейс
 
@@ -201,7 +201,7 @@
     
     Попытка
         //@skip-check module-unused-local-variable
-        SSL = Новый ЗащищенноеСоединениеOpenSSL; // BSLLS:UnusedLocalVariable-off  
+        SSL = Новый ЗащищенноеСоединениеOpenSSL;   // BSLLS:UnusedLocalVariable-off
     Исключение
         Сервер = "https://" + Сервер;
     КонецПопытки;
