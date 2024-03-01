@@ -58,5 +58,6 @@
   <commonModules>CommonModule.OPI_YandexDisk</commonModules>
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
   <commonModules>CommonModule.OPI_GoogleCalendar</commonModules>
-  <commonModules>CommonModule.YAX_Тесты</commonModules>
+  <commonModules>CommonModule.OPI_Тесты</commonModules>
+  <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
 </mdclass:Configuration>
