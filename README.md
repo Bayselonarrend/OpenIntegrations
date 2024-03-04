@@ -60,6 +60,7 @@ ___
 >- [Библиотека работы с Яндекс Диском: делаем простейший менеджер облака за 15 минут (Open-source)](https://infostart.ru/1c/articles/2038960/)<br>
 >- [Открываем свою лавку на платформе VK Market](https://infostart.ru/public/2043994/)<br>
 >- [Библиотека для работы с Google Calendar API (open-source)](https://infostart.ru/1c/articles/2049575/)<br>
+>- [Telegram в режиме форума: делаем чаты комфортными](https://infostart.ru/1c/articles/2055811/)<br>
 
 
 >- Открытый Пакет интеграций (OpenIntegrations)<br>
