@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 
@@ -22,6 +22,7 @@
 
 // https://github.com/Bayselonarrend/OpenIntegrations
 // BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
 
 //Раскомментировать, если выполняется OneScript
 #Использовать ".."
@@ -156,7 +157,7 @@
         Соединение.Получить(Новый HTTPЗапрос(""));
     Исключение
         Возврат;  
-    Конецпопытки;
+    КонецПопытки;
     
 КонецПроцедуры
 
@@ -576,8 +577,6 @@
 // Версия: 2.4.8
 //
 // Требования: платформа 1С версии 8.3.10 и выше
-
-// BSLLS:LatinAndCyrillicSymbolInWord-off
 
 Функция РаспаковатьОтвет(Ответ)
 
