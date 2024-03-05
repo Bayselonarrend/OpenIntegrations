@@ -23,7 +23,7 @@
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 //Раскомментировать, если выполняется OneScript
-#Использовать ".."
+#Использовать "./internal"
 #Использовать asserts
 
 // BSLLS:Typo-off
@@ -141,7 +141,7 @@
 КонецФункции
 
 Функция ПутьКФайлуДанных()
-    Возврат "G:\Мой диск\data.json"; // BSLLS:UsingHardcodePath-off
+    Возврат "D:\GD\Мой диск\data.json"; // BSLLS:UsingHardcodePath-off
 КонецФункции
 
 Функция ПолучитьМассивРазделовТестирования()

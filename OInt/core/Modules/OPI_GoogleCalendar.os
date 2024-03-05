@@ -23,7 +23,7 @@
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 //Раскомментировать, если выполняется OneScript
-#Использовать ".."
+#Использовать "../../tools"
 
 #Область ПрограммныйИнтерфейс
 
