@@ -8,6 +8,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  color: black;
 }
 
 @media screen and (max-width: 996px) {
@@ -20,4 +21,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button{
+  margin: 10px;
+}
+
+.biglogo{
+  width: 20%;
+  height: 20%;
 }
