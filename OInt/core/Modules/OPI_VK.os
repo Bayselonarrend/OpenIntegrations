@@ -1,4 +1,4 @@
-// MIT License
+﻿// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 
@@ -26,7 +26,7 @@
 
 // BSLLS:NumberOfOptionalParams-off
 
-//Раскомментировать, если выполняется OneScript
+// Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
 
 #Область ПрограммныйИнтерфейс

@@ -24,8 +24,6 @@
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 
-//Раскомментировать, если выполняется OneScript
-
 #Область СлужебныйПрограммныйИнтерфейс
 
 #Область HTTPМетоды
