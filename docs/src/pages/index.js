@@ -12,16 +12,26 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
+
+        <img src="/img/logo.svg" className={styles.biglogo}/>
+
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
+          <div className={styles.button}><Link
+            className="button button--secondary button--bg" 
             to="/docs/Nachalo-raboty">
-            Начать
+            Документация
           </Link>
+          </div>
+          <div className={styles.button}><Link
+            className="button button--secondary button--bg"
+            to="https://github.com/Bayselonarrend/OpenIntegrations/releases">
+            Релизы
+          </Link>
+          </div>
         </div>
       </div>
     </header>
