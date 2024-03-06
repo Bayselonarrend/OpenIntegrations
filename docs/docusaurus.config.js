@@ -51,6 +51,12 @@ const config = {
     ({
       // Replace with your project's social card
 
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
+
       navbar: {
         title: 'Открытый пакет интеграций',
         logo: {
@@ -73,7 +79,7 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
             title: 'Документация',
@@ -98,7 +104,7 @@ const config = {
       },
       prism: {
         theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        darkTheme: prismThemes.github,
 		additionalLanguages: ['json','bsl']
       },
     }),
