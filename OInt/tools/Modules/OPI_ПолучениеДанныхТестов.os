@@ -22,7 +22,7 @@
 
 // https://github.com/Bayselonarrend/OpenIntegrations
 
-//Раскомментировать, если выполняется OneScript
+// Раскомментировать, если выполняется OneScript
 #Использовать "./internal"
 #Использовать asserts
 
