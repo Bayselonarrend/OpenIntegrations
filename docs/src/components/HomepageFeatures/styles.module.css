@@ -14,14 +14,17 @@ marquee{
 }
 
 .featureSvg {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
 }
 
 .ico{
   padding: 112px;
 }
 
+.hero__title{
+  font-size: 10px;
+}
 .container {
 
   display: flex;
@@ -48,3 +51,4 @@ marquee{
   }
 
 }
+
