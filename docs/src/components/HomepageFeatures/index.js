@@ -56,6 +56,8 @@ export default function HomepageFeatures() {
           ))}
         </div>
         <hr/>
+        <br/>
+        <br/>
         <section className={styles.container}>
           <span className={styles.looptext}>
             <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>

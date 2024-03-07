@@ -4,7 +4,7 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 3rem 2rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -30,4 +30,8 @@
 .biglogo{
   width: 20%;
   height: 20%;
+}
+
+.heroBanner_src-pages-index-module {
+  padding-bottom: 30px;
 }
