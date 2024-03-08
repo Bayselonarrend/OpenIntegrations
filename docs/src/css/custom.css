@@ -17,10 +17,26 @@
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.3);
 }
 
-.menu__link--active, .menu__link--active:hover{
+.menu__link--active, .menu__link--active:hover, .navbar__link--active{
   color: black;
 }
 
 .table-of-contents__link, .table-of-contents__link:hover, .table-of-contents__link--active, .table-of-contents__link--active:hover{
   color: black;
+}
+
+.navbar__item:hover, .navbar__link:hover, .navbar__brand:hover{
+  color: gray;
+}
+
+a{
+  color: black;
+}
+
+a:hover, .navbar__title:hover{
+  color: darkgrey;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  background: darkgray;
 }
