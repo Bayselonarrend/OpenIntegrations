@@ -9,7 +9,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Открытый Пакет Интеграций',
-  tagline: 'Набор библиотек для интеграции с популярными API на 1C:Enterprise',
+  tagline: 'Набор библиотек интеграции с популярными API для 1C:Enterprise и OneScript',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
