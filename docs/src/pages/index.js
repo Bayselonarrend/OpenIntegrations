@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <Layout
       title={`Открытый пакет интеграций`}
-      description="ОПИ - пакет интеграций с популярными API для 1С:Enterprise">
+      description="ОПИ - пакет интеграций с популярными API для 1С:Enterprise и OneScript">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
