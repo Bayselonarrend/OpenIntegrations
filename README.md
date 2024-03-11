@@ -68,6 +68,7 @@ ___
 >- [Открываем свою лавку на платформе VK Market](https://infostart.ru/public/2043994/)<br>
 >- [Библиотека для работы с Google Calendar API (open-source)](https://infostart.ru/1c/articles/2049575/)<br>
 >- [Telegram в режиме форума: делаем чаты комфортными](https://infostart.ru/1c/articles/2055811/)<br>
+>- [Открытый пакет интеграция для OneScript](https://infostart.ru/1c/articles/2060307/)<br>
 
 
 >- Открытый Пакет интеграций (OpenIntegrations)<br>
