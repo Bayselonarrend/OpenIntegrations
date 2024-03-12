@@ -6,4 +6,6 @@
     <value>OPI google drive</value>
   </synonym>
   <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
 </mdclass:CommonModule>
