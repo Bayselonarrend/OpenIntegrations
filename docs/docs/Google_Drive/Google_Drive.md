@@ -1,12 +1,12 @@
 ---
-id: GoogleCalendar
+id: GoogleDrive
 ---
 
-<img src={require('../../static/img/APIs/GoogleCalendar.png').default} width='64px' />
+<img src={require('../../static/img/APIs/GoogleDrive.png').default} width='64px' />
 
-# Google Календарь
+# Google Drive
 
-Этот раздел посвящен библиотеке для работы с API Google Календаря. На данной странице описаны все действия, необходимые для полноценного начала работы
+Этот раздел посвящен библиотеке для работы с API Google Drive. На данной странице описаны все действия, необходимые для полноценного начала работы
 
 :::important
 Если вы уже используете ОПИ для работы с другими сервисами Google Workspase и выполняли стартовую настройку, то пункты **Создание проекта** и **Настройка OAuth** можно пропустить. Необходимо лишь **включить сервис Google Drive** в своем проекте и **заново получить токен** (последние два пункта инструкции). 
@@ -60,13 +60,13 @@ id: GoogleCalendar
 
 <hr/>
 
-### Включение сервиса Google Calendar
+### Включение сервиса Google Drive
 
-1. Перейдите на [страницу Календаря в Marketplace](https://console.cloud.google.com/marketplace/product/google/calendar-json.googleapis.com) 
+1. Перейдите на [страницу Drive в Marketplace](https://console.cloud.google.com/marketplace/product/google/drive.googleapis.com) 
 
 2. Нажмите Enable
 
-![BF](../../static/img/Docs/GoogleCalendar/12.png)
+![BF](../../static/img/Docs/GoogleDrive/1.png)
 
 <hr/>
 
@@ -87,7 +87,7 @@ id: GoogleCalendar
 {
  "token_type": "Bearer",
  "refresh_token": "1//09au6OES3JN9oCgYIARAAGAkSNwF-L9Ir1B7uawfwafT1wE0FKO519Xj6JxawfawfyjMyJ_QlUZYLHZqw",
- "scope": "https://www.googleapis.com/auth/calendar",
+ "scope": "https://www.googleapis.com/auth/...",
  "expires_in": 3599,
  "access_token": "ya29.a0AfB_byA344tXkIawdawdwadadhyZQV8bSZn_snNXtY2HLb7l71awdawdawdad-ASgpzyOSWIvEmPruhUa_1yCCq6jvoD0r_q-fNEsARrH8zpJ3c6LNGWvwdg8CXsSxYaCgYKAWkSawfwafawfrCK0EP5kZY_A0171"
 }
