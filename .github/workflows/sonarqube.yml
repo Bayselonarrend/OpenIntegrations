@@ -8,25 +8,39 @@ on:
   workflow_dispatch:
 
 permissions:
-  pull-requests: read # allows SonarQube to decorate PRs with analysis results
-
+  pull-requests: read
+  
 jobs:
   Analysis:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-      - name: Analyze with SonarQube
+
+      - name: Анализ OPI
         uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}  # Needed to get PR information
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on SonarQube, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}   # add the URL of your instance to the secrets of this repo with the name SONAR_HOST_URL (Settings > Secrets > Actions > add new repository secret)
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
           LC_ALL: "ru_RU.UTF-8"
         with:
-          projectBaseDir: ${GITHUB_WORKSPACE}
           args:
-            -Dsonar.projectBaseDir=${GITHUB_WORKSPACE}
+            -Dsonar.projectBaseDir=${GITHUB_WORKSPACE}/OPI
+            -Dsonar.projectKey=OpenIntegrations
+            -Dsonar.sourceEncoding=UTF-8 
+            -Dsonar.inclusions=**/*.bsl
+            
+      - name: Анализ OInt
+        uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
+          LC_ALL: "ru_RU.UTF-8"
+        with:
+          args:
+            -Dsonar.projectBaseDir=${GITHUB_WORKSPACE}/OInt
             -Dsonar.projectKey=OInt
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.os
