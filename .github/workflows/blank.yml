@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Расшифровать тестовые данные
-        run: ./decrypt_secret.sh
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
 
