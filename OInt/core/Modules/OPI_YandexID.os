@@ -22,6 +22,9 @@
 
 // https://github.com/Bayselonarrend/OpenIntegrations
 
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
 

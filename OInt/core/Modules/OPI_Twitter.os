@@ -25,6 +25,8 @@
 // и почитать комментарии
 
 // BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
@@ -487,8 +489,6 @@
 
 КонецФункции
 
-// BSLLS:LatinAndCyrillicSymbolInWord-off
-
 Функция СоздатьЗаголовокАвторизацииV1(Знач Параметры, Знач Поля, Знач ВидЗапроса, Знач URL)
     
     ТекущаяДата          = OPI_Инструменты.ПолучитьТекущуюДату();
@@ -601,8 +601,4 @@
     
 КонецФункции
 
-// BSLLS:LatinAndCyrillicSymbolInWord-on
-
 #КонецОбласти
-
-// BSLLS:Typo-on
