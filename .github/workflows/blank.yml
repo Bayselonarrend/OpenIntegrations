@@ -39,7 +39,12 @@ jobs:
         run: opm install asserts
 
       - name: Выполнить тесты
-        run: 1testrunner -run ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os 
+        run: |
+          tree
+          cd ..
+          tree
+          cd .. tree
+          1testrunner -run ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os 
 
       - name: Зашифровать данные обратно
         run: |
