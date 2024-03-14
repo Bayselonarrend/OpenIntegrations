@@ -22,6 +22,9 @@
 
 // https://github.com/Bayselonarrend/OpenIntegrations
 
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+
 #Область СлужебныйПрограммныйИнтерфейс
 
 #Область БСП
@@ -92,7 +95,7 @@
     Части = Новый Массив(Количество);
     
     // BSLLS:UnusedLocalVariable-off
-    Для к = 1 По Количество Цикл
+    Для К = 1 По Количество Цикл
         Части.Добавить(Строка);
     КонецЦикла;
     // BSLLS:UnusedLocalVariable-on

@@ -23,6 +23,8 @@
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 // BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
@@ -227,7 +229,6 @@
 // 
 // Возвращаемое значение:
 //  Произвольный, HTTPОтвет -  Ответ сервера Telegram
-// BSLLS:Typo-off
 Функция ОтправитьМедиагруппу(Знач Токен, Знач IDЧата, Знач Текст, Знач СоответствиеФайлов, Знач Клавиатура = "") Экспорт
     
     // СоответствиеФайлов
@@ -1076,5 +1077,3 @@
 КонецПроцедуры
 
 #КонецОбласти
-
-// BSLLS:Typo-on
