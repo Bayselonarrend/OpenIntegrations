@@ -16,13 +16,15 @@ jobs:
       contents: write
       
     steps:
-
+    
+      - uses: actions/checkout@v2 
+      
       - name: Расшифровать тестовые данные
         run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
 
-      - uses: actions/checkout@v2 
+      
       - uses: otymko/setup-onescript@v1.4
         with:
           version: 1.9.0 # Требуемая версия OneScript
