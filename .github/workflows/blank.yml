@@ -8,7 +8,18 @@ on:
 
 jobs:
 
-  build:
+  Decrypt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Расшифровать тестовые данные
+        run: ./decrypt_secret.sh
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+
+  Convert:
     runs-on: ubuntu-latest
 
     permissions:
@@ -16,13 +27,29 @@ jobs:
       
     steps:
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
         with:
           version: 1.3.0 # Требуемая версия OneScript
 
-      - name: Выполнить скрипт
+      - name: Выполнить скрипт преобразования OPI -> OInt
         run: oscript ./.github/workflows/convert.os
+        
+      - name: Установить asserts
+        run: opm install asserts
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Выполнить тесты
+        run: 1testrunner -run ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os 
+
+      - name: Зашифровать данные обратно
+        run: |
+          rm -f ./data.json.gpg
+          gpg --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON"  data.json
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+
+      - name: Check
+        run: tree
+
+
       
