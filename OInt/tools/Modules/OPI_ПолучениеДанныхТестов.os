@@ -155,7 +155,7 @@
 КонецФункции
 
 Функция ПутьКФайлуДанных()
-    Возврат "..\..\..\data.json"; // BSLLS:UsingHardcodePath-off
+    Возврат "./data.json"; // BSLLS:UsingHardcodePath-off
 КонецФункции
 
 Функция ПолучитьМассивРазделовТестирования()
