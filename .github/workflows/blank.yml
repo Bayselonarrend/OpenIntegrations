@@ -41,7 +41,7 @@ jobs:
           opm install 1testrunner
 
       - name: Выполнить тесты
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os
 
       - name: Зашифровать данные обратно
         run: |
