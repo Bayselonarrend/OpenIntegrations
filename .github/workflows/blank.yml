@@ -41,6 +41,7 @@ jobs:
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os
 
       - name: Зашифровать данные обратно
+        if: success() || failure()
         run: |
           rm -f ./data.json.gpg
           gpg --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON"  data.json
@@ -49,8 +50,10 @@ jobs:
           ENC_JSON: ${{ secrets.ENC_JSON }}
 
       - name: Проверка
+        if: success() || failure()
         run: tree
-      
+
+      - name: Отправка
       - uses: stefanzweifel/git-auto-commit-action@v5
        
 
