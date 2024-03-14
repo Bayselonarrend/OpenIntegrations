@@ -39,8 +39,9 @@ jobs:
         run: opm install asserts
 
       - name: Выполнить тесты
-        run: oscript /home/runner/.local/share/ovm/current/lib/src/main.os -run ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os 
-
+        run: |
+          cd /home/runner/.local/share
+          tree
       - name: Зашифровать данные обратно
         run: |
           rm -f ./data.json.gpg
