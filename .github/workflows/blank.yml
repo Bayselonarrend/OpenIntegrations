@@ -35,13 +35,14 @@ jobs:
       - name: Выполнить скрипт преобразования OPI -> OInt
         run: oscript ./.github/workflows/convert.os
         
-      - name: Установить asserts
-        run: opm install asserts
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
 
       - name: Выполнить тесты
-        run: |
-          cd /home/runner/.local/share
-          tree
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+
       - name: Зашифровать данные обратно
         run: |
           rm -f ./data.json.gpg
