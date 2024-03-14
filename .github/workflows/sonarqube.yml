@@ -25,8 +25,8 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
           LC_ALL: "ru_RU.UTF-8"
         with:
+          projectBaseDir: ${{ github.workspace }}/OPI
           args:
-            -Dsonar.projectBaseDir=${{ github.workspace }}
             -Dsonar.projectKey=OpenIntegrations
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.bsl
@@ -39,8 +39,8 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
           LC_ALL: "ru_RU.UTF-8"
         with:
+          projectBaseDir: ${{ github.workspace }}/OInt
           args:
-            -Dsonar.projectBaseDir=${{ github.workspace }}
             -Dsonar.projectKey=OInt
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.os
