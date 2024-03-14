@@ -8,16 +8,6 @@ on:
 
 jobs:
 
-  Decrypt:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Расшифровать тестовые данные
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
-        env:
-          ENC_JSON: ${{ secrets.ENC_JSON }}
 
   Convert:
     runs-on: ubuntu-latest
@@ -26,6 +16,11 @@ jobs:
       contents: write
       
     steps:
+
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
 
       - uses: actions/checkout@v2 
       - uses: otymko/setup-onescript@v1.4
