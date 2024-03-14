@@ -1,4 +1,4 @@
-﻿// MIT License
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 
@@ -25,6 +25,8 @@
 // и почитать комментарии
 
 // BSLLS:NumberOfOptionalParams-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../tools"
@@ -1408,8 +1410,6 @@
 #КонецОбласти
 
 #Область СлужебныеПроцедурыИФункции
-// BSLLS:MissingReturnedValueDescription-off
-// BSLLS:MissingParameterDescription-off
 
 Функция ПолучитьСтандартныеПараметры(Знач Параметры = "")
     
@@ -1571,6 +1571,7 @@
 КонецФункции
 
 //@skip-check method-too-many-params
+
 Функция УправлениеПодборкой(Знач Название
     , Знач Картинка   = ""
     , Знач ИДПодборки = ""
@@ -1795,8 +1796,4 @@
     
 КонецПроцедуры
 
-// BSLLS:MissingParameterDescription-on
-// BSLLS:MissingReturnedValueDescription-on
 #КонецОбласти
-
-// BSLLS:NumberOfOptionalParams-on
