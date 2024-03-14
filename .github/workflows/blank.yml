@@ -43,7 +43,7 @@ jobs:
         if: success() || failure()
         run: |
           rm -f ./data.json.gpg
-          gpg --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON" data.json
+          gpg --batch --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON" data.json
           rm -f ./data.json
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
