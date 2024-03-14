@@ -30,6 +30,7 @@ jobs:
           args:
             # Unique key of your project. You can find it in SonarQube > [my project] > Project Information (top-right menu)
             # mandatory
+            -Dsonar.projectBaseDir=${GITHUB_WORKSPACE}
             -Dsonar.projectKey=OInt
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.os
