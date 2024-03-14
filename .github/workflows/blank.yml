@@ -53,8 +53,6 @@ jobs:
 
       - name: Проверка
         run: tree
-
-      - name: Отправка
       
       - uses: stefanzweifel/git-auto-commit-action@v5
        
