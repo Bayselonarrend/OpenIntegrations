@@ -26,7 +26,8 @@ jobs:
           LC_ALL: "ru_RU.UTF-8"
         with:
           args:
-            -Dsonar.projectBaseDir='${GITHUB_WORKSPACE}/OPI'
+            -Dsonar.projectBaseDir=${GITHUB_WORKSPACE}
+            -Dsonar.sources=/OPI
             -Dsonar.projectKey=OpenIntegrations
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.bsl
@@ -40,7 +41,8 @@ jobs:
           LC_ALL: "ru_RU.UTF-8"
         with:
           args:
-            -Dsonar.projectBaseDir='${GITHUB_WORKSPACE}/OInt'
+            -Dsonar.projectBaseDir=${GITHUB_WORKSPACE}
+            -Dsonar.sources=/OInt
             -Dsonar.projectKey=OInt
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.os
