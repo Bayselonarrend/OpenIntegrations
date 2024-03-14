@@ -25,6 +25,8 @@ jobs:
           LC_ALL: "ru_RU.UTF-8"
         with:
           projectBaseDir: ${GITHUB_WORKSPACE}
-          inclusions: "**/*.os"
-          projectKey: "OInt"
-          sourceEncoding: "UTF-8"
+          args:
+            -Dsonar.projectBaseDir=${GITHUB_WORKSPACE}
+            -Dsonar.projectKey=OInt
+            -Dsonar.sourceEncoding=UTF-8 
+            -Dsonar.inclusions=**/*.os
