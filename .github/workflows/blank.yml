@@ -53,9 +53,8 @@ jobs:
         if: success() || failure()
         run: tree
 
-      - name: Отправка
       - uses: stefanzweifel/git-auto-commit-action@v5
-       
+        if: success()       
 
 
       
