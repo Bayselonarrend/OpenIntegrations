@@ -1,0 +1,96 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Основная обработка OInt (OneScript)
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Convert:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      
+    steps:
+    
+      - uses: actions/checkout@v2             
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+
+      - name: Выполнить скрипт преобразования OPI -> OInt
+        run: oscript ./.github/workflows/convert.os
+
+  Decode:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - uses: actions/checkout@v2 
+      
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_data
+          path: data.json
+
+  Testing:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+          
+      - name: Скачать артефакт с тестовой информацией
+        uses: actions/download-artifact@v4
+        with:
+          name: test_data
+          
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Выполнить тесты
+        continue-on-error: true
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os
+
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_data
+          path: data.json
+
+  Encode:
+      runs-on: ubuntu-latest
+      steps:
+
+      - uses: actions/checkout@v2 
+      
+      - name: Скачать артефакт с тестовой информацией
+        uses: actions/download-artifact@v4
+        with:
+          name: test_data
+          
+      - name: Зашифровать данные обратно
+        continue-on-error: false
+        
+        run: |
+          rm -f ./data.json.gpg
+          gpg --batch --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON" data.json
+          rm -f ./data.json
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+          
+      - uses: stefanzweifel/git-auto-commit-action@v5   
+
+
+      
