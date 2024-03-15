@@ -41,7 +41,7 @@ jobs:
           name: test_data
           path: data.json
 
-  Testing:
+  Testing-Telegram:
     runs-on: ubuntu-latest
     needs: Decode
     steps:
@@ -63,12 +63,34 @@ jobs:
 
       - name: Выполнить тесты
         continue-on-error: true
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os
+        run: |
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УстановитьWebhook"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УдалитьWebhook"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьТекстовоеСообщение"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКартинку"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьВидео"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьАудио"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьДокумент"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьГифку"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМедиагруппу"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМестоположение"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКонтакт"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьОпрос"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПереслатьСообщение"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_БанРазбан"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьСсылкуПриглашение"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ЗакрепитьОткрепитьСообщение"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьСписокАватаровФорума"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьУдалитьТемуФорума"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОткрытьЗакрытьГлавнуюТему"
+          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
 
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
         with:
-          name: test_data
+          name: test_data_new
           path: data.json
 
   Encode:
@@ -81,7 +103,7 @@ jobs:
       - name: Скачать артефакт с тестовой информацией
         uses: actions/download-artifact@v4
         with:
-          name: test_data
+          name: test_data_new
           
       - name: Зашифровать данные обратно
         continue-on-error: false
