@@ -59,7 +59,6 @@ jobs:
           opm install 1testrunner
 
       - name: Выполнить тесты
-        continue-on-error: true
         run: |
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
@@ -105,7 +104,6 @@ jobs:
             opm install 1testrunner
   
         - name: Выполнить тесты
-          continue-on-error: true
           run: |
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьСсылкуТокена"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьУдалитьПост"
@@ -147,7 +145,6 @@ jobs:
               opm install 1testrunner
     
           - name: Выполнить тесты
-            continue-on-error: true
             run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьИнформациюОДиске"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьПапку"
@@ -181,7 +178,6 @@ jobs:
               opm install 1testrunner
     
           - name: Выполнить тесты
-            continue-on-error: true
             run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
@@ -214,7 +210,6 @@ jobs:
               opm install 1testrunner
     
           - name: Выполнить тесты
-            continue-on-error: true
             run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
@@ -247,7 +242,6 @@ jobs:
               opm install 1testrunner
     
           - name: Выполнить тесты
-            continue-on-error: true
             run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокКалендарей"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьКалендарь"
@@ -275,7 +269,6 @@ jobs:
               opm install 1testrunner
     
           - name: Выполнить тесты
-            continue-on-error: true
             run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ПолучитьСписокКаталогов"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ЗагрузитьУдалитьФайл"
@@ -301,7 +294,6 @@ jobs:
             opm install 1testrunner
   
         - name: Выполнить тесты
-          continue-on-error: true
           run: |
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
