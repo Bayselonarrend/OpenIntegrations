@@ -95,7 +95,7 @@ jobs:
 
   Encode:
       runs-on: ubuntu-latest
-      needs: Testing
+      needs: Testing-Telegram
       steps:
 
       - uses: actions/checkout@v2 
