@@ -26,6 +26,7 @@ jobs:
 
   Decode:
     runs-on: ubuntu-latest
+    needs: Convert
     steps:
     
       - uses: actions/checkout@v2 
@@ -42,6 +43,7 @@ jobs:
 
   Testing:
     runs-on: ubuntu-latest
+    needs: Decode
     steps:
 
       - uses: actions/checkout@v2 
@@ -71,6 +73,7 @@ jobs:
 
   Encode:
       runs-on: ubuntu-latest
+      needs: Testing
       steps:
 
       - uses: actions/checkout@v2 
