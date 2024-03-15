@@ -84,11 +84,238 @@ jobs:
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОткрытьЗакрытьГлавнуюТему"
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
 
-      - name: Записать артефакт
-        uses: actions/upload-artifact@v4
-        with:
-          name: test_data_new
-          path: data.json
+  Testing-VK:
+      runs-on: ubuntu-latest
+      needs: Decode
+      steps:
+  
+        - uses: actions/checkout@v2 
+        - uses: otymko/setup-onescript@v1.4
+          with:
+            version: 1.9.0 
+            
+        - name: Скачать артефакт с тестовой информацией
+          uses: actions/download-artifact@v4
+          with:
+            name: test_data
+            
+        - name: Установить asserts и 1testrunner
+          run: |
+            opm install asserts
+            opm install 1testrunner
+  
+        - name: Выполнить тесты
+          continue-on-error: true
+          run: |
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьСсылкуТокена"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьУдалитьПост"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьОпрос"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьИсторию"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_МетодыОбсуждений"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ЛайкРепостКоммент"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистику"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистикуПостов"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьРекламнуюКампанию"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ОтправитьСообщение"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьКатегорииТоваров"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварПодборку"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварСоСвойствами"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокТоваров"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокПодборок"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокСвойств"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СохранитьУдалитьКартинку"
+
+  Testing-YandexDisk:
+        runs-on: ubuntu-latest
+        needs: Decode
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            continue-on-error: true
+            run: |
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьИнформациюОДиске"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьПапку"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьУдалитьФайл"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьКопиюОбъекта"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСсылкуНаСкачивание"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокФайлов"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПереместитьОбъект"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ДействияПубличныхОбъектов"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокОпубликованных"
+
+  Testing-Viber:
+        runs-on: ubuntu-latest
+        needs: Decode
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            continue-on-error: true
+            run: |
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьТекстовоеСообщение"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКартинку"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьФайл"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКонтакт"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
+
+  Testing-GoogleWorkspace:
+        runs-on: ubuntu-latest
+        needs: Decode
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            continue-on-error: true
+            run: |
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
+
+          - name: Записать артефакт
+            uses: actions/upload-artifact@v4
+            with:
+              name: test_data_google
+              path: data.json
+
+  Testing-GoogleCalendar:
+        runs-on: ubuntu-latest
+        needs: Testing-GoogleWorkspace
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data_google
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            continue-on-error: true
+            run: |
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокКалендарей"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьКалендарь"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьСобытие"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокСобытий"
+
+  Testing-GoogleDrive:
+        runs-on: ubuntu-latest
+        needs: Testing-GoogleWorkspace
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data_google
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            continue-on-error: true
+            run: |
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ПолучитьСписокКаталогов"
+              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ЗагрузитьУдалитьФайл"
+                      
+  Testing-Twitter:
+      runs-on: ubuntu-latest
+      needs: Decode
+      steps:
+  
+        - uses: actions/checkout@v2 
+        - uses: otymko/setup-onescript@v1.4
+          with:
+            version: 1.9.0 
+            
+        - name: Скачать артефакт с тестовой информацией
+          uses: actions/download-artifact@v4
+          with:
+            name: test_data
+            
+        - name: Установить asserts и 1testrunner
+          run: |
+            opm install asserts
+            opm install 1testrunner
+  
+        - name: Выполнить тесты
+          continue-on-error: true
+          run: |
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТекстовыйТвит"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСКартинкой"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСВидео"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
+            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
+            
+        - name: Записать артефакт
+          uses: actions/upload-artifact@v4
+          with:
+            name: test_data_new
+            path: data.json
 
   Encode:
       runs-on: ubuntu-latest
