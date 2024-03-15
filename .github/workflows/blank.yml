@@ -36,8 +36,8 @@ jobs:
           opm install asserts
           opm install 1testrunner
 
-      #- name: Выполнить тесты
-      #  run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os
+      - name: Выполнить тесты
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os
 
       - name: Зашифровать данные обратно
         if: success() || failure()
