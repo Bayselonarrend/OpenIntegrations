@@ -48,12 +48,8 @@ jobs:
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
 
-      - name: Проверка
-        if: success() || failure()
-        run: tree
-
       - uses: stefanzweifel/git-auto-commit-action@v5
-        if: success()       
+        if: ${{ success() }}      
 
 
       
