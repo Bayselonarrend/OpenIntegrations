@@ -24,12 +24,13 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:UsingHardcodePath-off
+// BSLLS:Typo-off
+// BSLLS:DeprecatedMessage-off
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "./internal"
 #Использовать asserts
-
-// BSLLS:Typo-off
 
 //@skip-check use-non-recommended-method
 
