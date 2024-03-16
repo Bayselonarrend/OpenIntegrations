@@ -458,6 +458,9 @@ jobs:
       steps:
 
       - uses: actions/checkout@v2 
+
+      - name: Обновить данные в репозитории
+        run: git pull https://github.com/Bayselonarrend/OpenIntegrations
       
       - name: Скачать артефакт с тестовой информацией
         uses: actions/download-artifact@v4
@@ -474,7 +477,8 @@ jobs:
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
           
-      - uses: stefanzweifel/git-auto-commit-action@v5   
+      - name: Записать данные    
+        uses: stefanzweifel/git-auto-commit-action@v5   
 
 
       
