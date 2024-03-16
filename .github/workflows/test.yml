@@ -62,30 +62,50 @@ jobs:
           opm install asserts
           opm install 1testrunner
 
-      - name: Выполнить тесты
-        run: |
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УстановитьWebhook"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УдалитьWebhook"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьТекстовоеСообщение"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКартинку"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьВидео"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьАудио"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьДокумент"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьГифку"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМедиагруппу"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМестоположение"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКонтакт"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьОпрос"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПереслатьСообщение"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_БанРазбан"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьСсылкуПриглашение"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ЗакрепитьОткрепитьСообщение"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьСписокАватаровФорума"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьУдалитьТемуФорума"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОткрытьЗакрытьГлавнуюТему"
-          oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
+      - name: Выполнить Телеграм_ПолучитьИнформациюБота
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
+      - name: Выполнить Телеграм_ПолучитьОбновления
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
+      - name: Выполнить Телеграм_УстановитьWebhook
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УстановитьWebhook"
+      - name: Выполнить Телеграм_УдалитьWebhook
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УдалитьWebhook"
+      - name: Выполнить Телеграм_ОтправитьТекстовоеСообщение
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьТекстовоеСообщение"
+      - name: Выполнить Телеграм_ОтправитьКартинку
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКартинку"
+      - name: Выполнить Телеграм_ОтправитьВидео
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьВидео"
+      - name: Выполнить Телеграм_ОтправитьАудио
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьАудио"
+      - name: Выполнить Телеграм_ОтправитьДокумент
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьДокумент"
+      - name: Выполнить Телеграм_ОтправитьГифку
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьГифку"
+      - name: Выполнить Телеграм_ОтправитьМедиагруппу
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМедиагруппу"
+      - name: Выполнить Телеграм_ОтправитьМестоположение
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМестоположение"
+      - name: Выполнить Телеграм_ОтправитьКонтакт
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКонтакт"
+      - name: Выполнить Телеграм_ОтправитьОпрос
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьОпрос"
+      - name: Выполнить Телеграм_ПереслатьСообщение
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПереслатьСообщение"
+      - name: Выполнить Телеграм_БанРазбан
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_БанРазбан"
+      - name: Выполнить Телеграм_СоздатьСсылкуПриглашение
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьСсылкуПриглашение"
+      - name: Выполнить Телеграм_ЗакрепитьОткрепитьСообщение
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ЗакрепитьОткрепитьСообщение"
+      - name: Выполнить Телеграм_ПолучитьСписокАватаровФорума
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьСписокАватаровФорума"
+      - name: Выполнить Телеграм_СоздатьУдалитьТемуФорума
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьУдалитьТемуФорума"
+      - name: Выполнить Телеграм_ОткрытьЗакрытьГлавнуюТему
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОткрытьЗакрытьГлавнуюТему"
+      - name: Выполнить Телеграм_ИзменитьИмяГлавнойТемы
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
 
   Testing-VK:
       runs-on: ubuntu-latest
@@ -107,26 +127,42 @@ jobs:
             opm install asserts
             opm install 1testrunner
   
-        - name: Выполнить тесты
-          run: |
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьСсылкуТокена"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьУдалитьПост"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьОпрос"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьИсторию"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_МетодыОбсуждений"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ЛайкРепостКоммент"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистику"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистикуПостов"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьРекламнуюКампанию"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ОтправитьСообщение"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьКатегорииТоваров"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварПодборку"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварСоСвойствами"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокТоваров"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокПодборок"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокСвойств"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СохранитьУдалитьКартинку"
+        - name: Выполнить ВК_СоздатьСсылкуТокена
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьСсылкуТокена"
+        - name: Выполнить ВК_СоздатьУдалитьПост
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьУдалитьПост"
+        - name: Выполнить ВК_СоздатьОпрос
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьОпрос"
+        - name: Выполнить ВК_СоздатьИсторию
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьИсторию"
+        - name: Выполнить ВК_МетодыОбсуждений
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_МетодыОбсуждений"
+        - name: Выполнить ВК_ЛайкРепостКоммент
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ЛайкРепостКоммент"
+        - name: Выполнить ВК_ПолучитьСтатистику
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистику"
+        - name: Выполнить ВК_ПолучитьСтатистикуПостов
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистикуПостов"
+        - name: Выполнить ВК_СоздатьРекламнуюКампанию
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьРекламнуюКампанию"
+        - name: Выполнить ВК_ОтправитьСообщение
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ОтправитьСообщение"
+        - name: Выполнить ВК_ПолучитьКатегорииТоваров
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьКатегорииТоваров"
+        - name: Выполнить ВК_СоздатьТоварПодборку
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварПодборку"
+        - name: Выполнить ВК_СоздатьТоварСоСвойствами
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварСоСвойствами"
+        - name: Выполнить ВК_ПолучитьСписокТоваров
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокТоваров"
+        - name: Выполнить ВК_ПолучитьСписокПодборок
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокПодборок"
+        - name: Выполнить ВК_ПолучитьСписокСвойств
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокСвойств"
+        - name: Выполнить ВК_ПолучитьСписокСвойств
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
+        - name: Выполнить ВК_СохранитьУдалитьКартинку
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СохранитьУдалитьКартинку"
 
   Testing-YandexDisk:
         runs-on: ubuntu-latest
@@ -148,18 +184,26 @@ jobs:
               opm install asserts
               opm install 1testrunner
     
-          - name: Выполнить тесты
-            run: |
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьИнформациюОДиске"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьПапку"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьУдалитьФайл"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьКопиюОбъекта"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСсылкуНаСкачивание"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокФайлов"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПереместитьОбъект"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ДействияПубличныхОбъектов"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокОпубликованных"
+          - name: Выполнить ЯДиск_ПолучитьИнформациюОДиске
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьИнформациюОДиске"
+          - name: Выполнить ЯДиск_СоздатьПапку
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьПапку"
+          - name: Выполнить ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"
+          - name: Выполнить ЯДиск_ЗагрузитьУдалитьФайл
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьУдалитьФайл"
+          - name: Выполнить ЯДиск_СоздатьКопиюОбъекта
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьКопиюОбъекта"
+          - name: Выполнить ЯДиск_ПолучитьСсылкуНаСкачивание
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСсылкуНаСкачивание"
+          - name: Выполнить ЯДиск_ПолучитьСписокФайлов
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокФайлов"
+          - name: Выполнить ЯДиск_ПереместитьОбъект
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПереместитьОбъект"
+          - name: Выполнить ЯДиск_ДействияПубличныхОбъектов
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ДействияПубличныхОбъектов"
+          - name: Выполнить ЯДиск_ПолучитьСписокОпубликованных
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокОпубликованных"
 
   Testing-Viber:
         runs-on: ubuntu-latest
@@ -181,17 +225,24 @@ jobs:
               opm install asserts
               opm install 1testrunner
     
-          - name: Выполнить тесты
-            run: |
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьТекстовоеСообщение"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКартинку"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьФайл"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКонтакт"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
+          - name: Выполнить Вайбер_ПолучитьИнформациюОКанале
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
+          - name: Выполнить Вайбер_ПолучитьДанныеПользователя
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
+          - name: Выполнить Вайбер_ПолучитьОнлайнПользователей
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
+          - name: Выполнить Вайбер_ОтправитьТекстовоеСообщение
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьТекстовоеСообщение"
+          - name: Выполнить Вайбер_ОтправитьКартинку
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКартинку"
+          - name: Выполнить Вайбер_ОтправитьФайл
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьФайл"
+          - name: Выполнить Вайбер_ОтправитьКонтакт
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКонтакт"
+          - name: Выполнить Вайбер_ОтправитьЛокацию
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
+          - name: Выполнить Вайбер_ОтправитьСсылку
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
 
   Testing-GoogleWorkspace:
         runs-on: ubuntu-latest
@@ -213,11 +264,12 @@ jobs:
               opm install asserts
               opm install 1testrunner
     
-          - name: Выполнить тесты
-            run: |
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
+          - name: Выполнить ГВ_ПолучитьСсылкуАвторизации
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
+          - name: Выполнить ГВ_ПолучитьТокен
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
+          - name: Выполнить ГВ_ОбновитьТокен
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
 
           - name: Записать артефакт
             uses: actions/upload-artifact@v4
@@ -245,12 +297,14 @@ jobs:
               opm install asserts
               opm install 1testrunner
     
-          - name: Выполнить тесты
-            run: |
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокКалендарей"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьКалендарь"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьСобытие"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокСобытий"
+          - name: Выполнить ГК_ПолучитьСписокКалендарей
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокКалендарей"
+          - name: Выполнить ГК_СоздатьУдалитьКалендарь
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьКалендарь"
+          - name: Выполнить ГК_СоздатьУдалитьСобытие
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьСобытие"
+          - name: Выполнить ГК_ПолучитьСписокСобытий
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокСобытий"
 
   Testing-GoogleDrive:
         runs-on: ubuntu-latest
@@ -272,10 +326,10 @@ jobs:
               opm install asserts
               opm install 1testrunner
     
-          - name: Выполнить тесты
-            run: |
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ПолучитьСписокКаталогов"
-              oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ЗагрузитьУдалитьФайл"
+          - name: Выполнить ГД_ПолучитьСписокКаталогов
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ПолучитьСписокКаталогов"
+          - name: Выполнить ГД_ЗагрузитьУдалитьФайл
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ЗагрузитьУдалитьФайл"
                       
   Testing-Twitter:
       runs-on: ubuntu-latest
@@ -297,15 +351,20 @@ jobs:
             opm install asserts
             opm install 1testrunner
   
-        - name: Выполнить тесты
-          run: |
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТекстовыйТвит"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСКартинкой"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСВидео"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
-            oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
+        - name: Выполнить Твиттер_ПолучитьСсылкуАвторизации
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
+        - name: Выполнить Твиттер_ОбновитьТокен
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
+        - name: Выполнить Твиттер_СоздатьТекстовыйТвит
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТекстовыйТвит"
+        - name: Выполнить Твиттер_СоздатьТвитСКартинкой
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСКартинкой"
+        - name: Выполнить Твиттер_СоздатьТвитСВидео
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСВидео"
+        - name: Выполнить Твиттер_СоздатьТвитСГиф
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
+        - name: Выполнить Твиттер_СоздатьТвитСОпросом
+          run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
             
         - name: Записать артефакт
           uses: actions/upload-artifact@v4
@@ -316,6 +375,7 @@ jobs:
   Encode:
       runs-on: ubuntu-latest
       needs: Testing-Twitter
+      if: ${{ cancelled() }} == false
       permissions:
         contents: write
         
