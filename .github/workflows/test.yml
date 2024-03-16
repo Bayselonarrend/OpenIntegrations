@@ -26,7 +26,8 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5 
         with:
           commit_user_name: Vitaly the Alpaca (bot) 
-          commit_user_email: bayselonarrend@gmail.com
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
 
   Decode:
     runs-on: ubuntu-latest
@@ -484,7 +485,8 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5   
         with:
           commit_user_name: Vitaly the Alpaca (bot) 
-          commit_user_email: bayselonarrend@gmail.com
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
 
 
       
