@@ -352,21 +352,29 @@ jobs:
             opm install 1testrunner
   
         - name: Выполнить Твиттер_ПолучитьСсылкуАвторизации
+          if: ${{ cancelled() }} == false
           run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
         - name: Выполнить Твиттер_ОбновитьТокен
+          if: ${{ cancelled() }} == false
           run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
         - name: Выполнить Твиттер_СоздатьТекстовыйТвит
+          if: ${{ cancelled() }} == false
           run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТекстовыйТвит"
         - name: Выполнить Твиттер_СоздатьТвитСКартинкой
+          if: ${{ cancelled() }} == false
           run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСКартинкой"
         - name: Выполнить Твиттер_СоздатьТвитСВидео
+          if: ${{ cancelled() }} == false
           run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСВидео"
         - name: Выполнить Твиттер_СоздатьТвитСГиф
+          if: ${{ cancelled() }} == false
           run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
         - name: Выполнить Твиттер_СоздатьТвитСОпросом
+          if: ${{ cancelled() }} == false
           run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
             
         - name: Записать артефакт
+          if: ${{ cancelled() }} == false
           uses: actions/upload-artifact@v4
           with:
             name: test_data_new
