@@ -45,9 +45,6 @@ jobs:
   Testing-Telegram:
     runs-on: ubuntu-latest
     needs: Decode
-    permissions:
-        contents: write
-
     steps:
 
       - uses: actions/checkout@v2 
@@ -66,8 +63,6 @@ jobs:
           opm install 1testrunner
 
       - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
         run: |
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
@@ -92,51 +87,28 @@ jobs:
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОткрытьЗакрытьГлавнуюТему"
           oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
 
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: test
-        run: tree
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
-
-
   Testing-VK:
-    runs-on: ubuntu-latest
-    needs: Decode
-    permissions:
-        contents: write
-
-    steps:
-
-      - uses: actions/checkout@v2 
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-          
-      - name: Скачать артефакт с тестовой информацией
-        uses: actions/download-artifact@v4
-        with:
-          name: test_data
-          
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
-        run: |
+      runs-on: ubuntu-latest
+      needs: Decode
+      steps:
+  
+        - uses: actions/checkout@v2 
+        - uses: otymko/setup-onescript@v1.4
+          with:
+            version: 1.9.0 
+            
+        - name: Скачать артефакт с тестовой информацией
+          uses: actions/download-artifact@v4
+          with:
+            name: test_data
+            
+        - name: Установить asserts и 1testrunner
+          run: |
+            opm install asserts
+            opm install 1testrunner
+  
+        - name: Выполнить тесты
+          run: |
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьСсылкуТокена"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьУдалитьПост"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьОпрос"
@@ -156,47 +128,28 @@ jobs:
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СохранитьУдалитьКартинку"
 
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
-
   Testing-YandexDisk:
-    runs-on: ubuntu-latest
-    needs: Decode
-    permissions:
-        contents: write
-
-    steps:
-
-      - uses: actions/checkout@v2 
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-          
-      - name: Скачать артефакт с тестовой информацией
-        uses: actions/download-artifact@v4
-        with:
-          name: test_data
-          
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
-        run: |
+        runs-on: ubuntu-latest
+        needs: Decode
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьИнформациюОДиске"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьПапку"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"
@@ -208,47 +161,28 @@ jobs:
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ДействияПубличныхОбъектов"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокОпубликованных"
 
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
-
   Testing-Viber:
-    runs-on: ubuntu-latest
-    needs: Decode
-    permissions:
-        contents: write
-
-    steps:
-
-      - uses: actions/checkout@v2 
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-          
-      - name: Скачать артефакт с тестовой информацией
-        uses: actions/download-artifact@v4
-        with:
-          name: test_data
-          
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
-        run: |
+        runs-on: ubuntu-latest
+        needs: Decode
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
@@ -259,188 +193,112 @@ jobs:
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
 
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
-
   Testing-GoogleWorkspace:
-    runs-on: ubuntu-latest
-    needs: Decode
-    permissions:
-        contents: write
-
-    steps:
-
-      - uses: actions/checkout@v2 
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-          
-      - name: Скачать артефакт с тестовой информацией
-        uses: actions/download-artifact@v4
-        with:
-          name: test_data
-          
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
-        run: |
+        runs-on: ubuntu-latest
+        needs: Decode
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
 
-      - name: Записать артефакт
-        uses: actions/upload-artifact@v4
-        with:
-          name: test_data_google
-          path: data.json
-
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
+          - name: Записать артефакт
+            uses: actions/upload-artifact@v4
+            with:
+              name: test_data_google
+              path: data.json
 
   Testing-GoogleCalendar:
-    runs-on: ubuntu-latest
-    needs: Testing-GoogleWorkspace
-    permissions:
-        contents: write
-
-    steps:
-
-      - uses: actions/checkout@v2 
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-          
-      - name: Скачать артефакт с тестовой информацией
-        uses: actions/download-artifact@v4
-        with:
-          name: test_data
-          
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
-        run: |
+        runs-on: ubuntu-latest
+        needs: Testing-GoogleWorkspace
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data_google
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокКалендарей"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьКалендарь"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьСобытие"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокСобытий"
 
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
-
   Testing-GoogleDrive:
-    runs-on: ubuntu-latest
-    needs: Testing-GoogleWorkspace
-    permissions:
-        contents: write
-
-    steps:
-
-      - uses: actions/checkout@v2 
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-          
-      - name: Скачать артефакт с тестовой информацией
-        uses: actions/download-artifact@v4
-        with:
-          name: test_data
-          
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
-        run: |
+        runs-on: ubuntu-latest
+        needs: Testing-GoogleWorkspace
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Скачать артефакт с тестовой информацией
+            uses: actions/download-artifact@v4
+            with:
+              name: test_data_google
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
+    
+          - name: Выполнить тесты
+            run: |
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ПолучитьСписокКаталогов"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ЗагрузитьУдалитьФайл"
-
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
                       
   Testing-Twitter:
-    runs-on: ubuntu-latest
-    needs: Decode
-    permissions:
-        contents: write
-
-    steps:
-
-      - uses: actions/checkout@v2 
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-          
-      - name: Скачать артефакт с тестовой информацией
-        uses: actions/download-artifact@v4
-        with:
-          name: test_data
-          
-      - name: Установить asserts и 1testrunner
-        run: |
-          opm install asserts
-          opm install 1testrunner
-
-      - name: Выполнить тесты
-        id: testing
-        continue-on-error: true
-        run: |
+      runs-on: ubuntu-latest
+      needs: Decode
+      steps:
+  
+        - uses: actions/checkout@v2 
+        - uses: otymko/setup-onescript@v1.4
+          with:
+            version: 1.9.0 
+            
+        - name: Скачать артефакт с тестовой информацией
+          uses: actions/download-artifact@v4
+          with:
+            name: test_data
+            
+        - name: Установить asserts и 1testrunner
+          run: |
+            opm install asserts
+            opm install 1testrunner
+  
+        - name: Выполнить тесты
+          run: |
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТекстовыйТвит"
@@ -449,26 +307,11 @@ jobs:
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
             
-      - name: Записать артефакт
-        uses: actions/upload-artifact@v4
-        with:
-          name: test_data_new
-          path: data.json
-
-      - name: Удаление расшифрованных данных
-        id: removing
-        continue-on-error: true
-        run: rm -f ./data.json
-
-      - name: Сохранение лога
-        id: saving
-        continue-on-error: true
-        uses: stefanzweifel/git-auto-commit-action@v5
-
-      - name: Проверка наличия ошибок выполнения
-        continue-on-error: true
-        if: steps.testing.outcome != 'success' || steps.removing.outcome != 'success' || steps.saving.outcome != 'success'
-        run: exit 1
+        - name: Записать артефакт
+          uses: actions/upload-artifact@v4
+          with:
+            name: test_data_new
+            path: data.json
 
   Encode:
       runs-on: ubuntu-latest
