@@ -97,6 +97,9 @@ jobs:
         continue-on-error: true
         run: rm -f ./data.json
 
+      - name: test
+        run: tree
+
       - name: Сохранение лога
         id: saving
         continue-on-error: true
