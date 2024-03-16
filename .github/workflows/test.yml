@@ -301,11 +301,11 @@ jobs:
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
               oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
 
-          - name: Записать артефакт
-            uses: actions/upload-artifact@v4
-            with:
-              name: test_data_google
-              path: data.json
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_data_google
+          path: data.json
 
       - name: Удаление расшифрованных данных
         id: removing
@@ -446,11 +446,11 @@ jobs:
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
             oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
             
-        - name: Записать артефакт
-          uses: actions/upload-artifact@v4
-          with:
-            name: test_data_new
-            path: data.json
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_data_new
+          path: data.json
 
       - name: Удаление расшифрованных данных
         id: removing
