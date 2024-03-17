@@ -67,6 +67,7 @@ export default function HomepageFeatures() {
             <a  className={styles.ico} href="/docs/Notion/"><img src={require('../../../static/img/APIs/Notion.png').default} width='32px'/> </a>
             <a  className={styles.ico} href="/docs/Yandex_Disk/"><img src={require('../../../static/img/APIs/YandexDisk.png').default} width='32px'/> </a>
             <a  className={styles.ico} href="/docs/Google_Calendar/"><img src={require('../../../static/img/APIs/GoogleCalendar.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Google_Drive/"><img src={require('../../../static/img/APIs/GoogleDrive.png').default} width='32px'/> </a>
             <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
           </span>
           <span className={styles.looptext}>
@@ -77,6 +78,7 @@ export default function HomepageFeatures() {
             <a  className={styles.ico} href="/docs/Notion/"><img src={require('../../../static/img/APIs/Notion.png').default} width='32px'/> </a>
             <a  className={styles.ico} href="/docs/Yandex_Disk/"><img src={require('../../../static/img/APIs/YandexDisk.png').default} width='32px'/> </a>
             <a  className={styles.ico} href="/docs/Google_Calendar/"><img src={require('../../../static/img/APIs/GoogleCalendar.png').default} width='32px'/> </a>
+            <a  className={styles.ico} href="/docs/Google_Drive/"><img src={require('../../../static/img/APIs/GoogleDrive.png').default} width='32px'/> </a>
             <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
           </span>
         </section>
