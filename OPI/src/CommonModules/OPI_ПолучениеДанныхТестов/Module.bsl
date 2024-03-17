@@ -27,12 +27,14 @@
 // BSLLS:UsingHardcodePath-off
 // BSLLS:Typo-off
 // BSLLS:DeprecatedMessage-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:ExecuteExternalCodeInCommonModule-off
+
+//@skip-check use-non-recommended-method
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "./internal"
 // #Использовать asserts
-
-//@skip-check use-non-recommended-method
 
 #Область СлужебныйПрограммныйИнтерфейс
 
@@ -193,7 +195,7 @@
         Путь = ПутьЛокальный;
     КонецЕсли;    
      
-    Возврат Путь; // BSLLS:UsingHardcodePath-off
+    Возврат Путь;
     
 КонецФункции
 
@@ -321,15 +323,10 @@
 КонецФункции
 
 Функция ПолучитьОбщийМодуль(Знач Имя)
-
-	УстановитьБезопасныйРежим(Истина);
-	
-	Модуль  = Вычислить(Имя); // BSLLS:ExecuteExternalCodeInCommonModule-off
-	
+	УстановитьБезопасныйРежим(Истина);	
+	Модуль  = Вычислить(Имя); 	
 	УстановитьБезопасныйРежим(Ложь);	
-	
-	Возврат Модуль;
-	
+	Возврат Модуль;	
 КонецФункции
 
 Процедура НовыйТест(ТаблицаЗначений, Знач Метод, Знач Синоним, Знач Раздел)

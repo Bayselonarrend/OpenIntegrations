@@ -24,10 +24,13 @@
 
 // Набор тестов для YAxUnit
 
-// @skip-check undefined-variable
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:UnusedParameters-off
+
+// @skip-check undefined-variable
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../../tools"
@@ -46,7 +49,7 @@
 
 // Для Asserts
 
-Функция ПолучитьСписокТестов(ЮнитТестирование) Экспорт // BSLLS:UnusedParameters-off
+Функция ПолучитьСписокТестов(ЮнитТестирование) Экспорт
 
    Возврат OPI_ПолучениеДанныхТестов.СформироватьТестыАссертс();
 

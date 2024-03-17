@@ -24,6 +24,7 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:UnusedLocalVariable-off
 
 #Область СлужебныйПрограммныйИнтерфейс
 
@@ -94,12 +95,10 @@
     
     Части = Новый Массив(Количество);
     
-    // BSLLS:UnusedLocalVariable-off
     Для К = 1 По Количество Цикл
         Части.Добавить(Строка);
     КонецЦикла;
-    // BSLLS:UnusedLocalVariable-on
-    
+
     Возврат СтрСоединить(Части, "");
     
 КонецФункции
