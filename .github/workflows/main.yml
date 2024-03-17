@@ -61,6 +61,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: test_data
+
+      - name: Сборка пакета OInt
+        run: |
+          cd ./OInt
+          opm build
+          opm install oint-1.5.0.ospx          
           
       - name: Установить asserts и 1testrunner
         run: |
