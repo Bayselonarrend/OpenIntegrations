@@ -27,6 +27,10 @@
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
+
+//@skip-check method-too-many-params
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
@@ -159,9 +163,7 @@
             Путь        = Картинка;
             Картинка    = Новый ДвоичныеДанные(Картинка);
         Иначе
-            //@skip-check missing-temporary-file-deletion
-            // BSLLS:MissingTemporaryFileDeletion-off
-            Путь        = ПолучитьИмяВременногоФайла("jpeg");
+            Путь        = ("image.jpeg");
         КонецЕсли;
         
         Файлы = Новый Соответствие;
@@ -448,8 +450,6 @@
 // 
 // Возвращаемое значение:
 //  ДвоичныеДанные, Неопределено, Произвольный -  Ответ сервера ВК
-//@skip-check method-too-many-params
-// BSLLS:NumberOfOptionalParams-off
 Функция СделатьРепост(Знач IDПоста
     , Знач IDСтены = ""
     , Знач ЦелеваяСтена = ""
@@ -475,7 +475,6 @@
     Возврат Ответ;
 
 КонецФункции
-// BSLLS:NumberOfOptionalParams-on
 
 // Написать сообщение.
 // 
@@ -1103,7 +1102,6 @@
 // 
 // Возвращаемое значение:
 // ДвоичныеДанные, Неопределено, Произвольный -  Ответ сервера 
-//@skip-check method-too-many-params
 Функция ИзменитьПодборкуТоваров(Знач Название
     , Знач Подборка
     , Знач Картинка = ""
@@ -1456,9 +1454,7 @@
         КлючКартинка        = СтрЗаменить(Картинка, ".", "___");
         ЗначениеКартинка    = Новый ДвоичныеДанные(Картинка);
     Иначе
-        //@skip-check missing-temporary-file-deletion
-        // BSLLS:MissingTemporaryFileDeletion-off
-        КлючКартинка        = СтрЗаменить(ПолучитьИмяВременногоФайла("jpeg"), ".", "___");
+        КлючКартинка        = "image___jpeg";
         ЗначениеКартинка    = Картинка;
     КонецЕсли;
     
@@ -1570,7 +1566,6 @@
 
 КонецФункции
 
-//@skip-check method-too-many-params
 Функция УправлениеПодборкой(Знач Название
     , Знач Картинка   = ""
     , Знач ИДПодборки = ""
