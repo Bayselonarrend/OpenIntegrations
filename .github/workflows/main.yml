@@ -412,6 +412,9 @@ jobs:
           - name: Выполнить ГД_СоздатьУдалитьКомментарий
             if: ${{ cancelled() }} == false
             run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_СоздатьУдалитьКомментарий"
+          - name: Выполнить ГД_СоздатьКаталог
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_СоздатьКаталог"
                       
   Testing-Twitter:
       runs-on: ubuntu-latest
