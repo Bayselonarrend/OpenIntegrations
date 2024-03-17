@@ -27,6 +27,10 @@
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
+
+//@skip-check method-too-many-params
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
@@ -152,8 +156,6 @@
 // 
 // Возвращаемое значение:
 //  Строка, Произвольный, Неопределено, ДвоичныеДанные, HTTPОтвет -  Создать произвольный твит
-//@skip-check method-too-many-params
-// BSLLS:NumberOfOptionalParams-off
 Функция СоздатьПроизвольныйТвит(Знач Текст = ""
     , Знач МассивМедиа = ""
     , Знач МассивВариантовОпроса = ""
@@ -202,7 +204,6 @@
     Возврат Ответ;
     
 КонецФункции
-// BSLLS:NumberOfOptionalParams-on
 
 // Создать текстовый твит.
 // 

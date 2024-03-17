@@ -24,6 +24,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
+
+// @skip-check method-too-many-params
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
@@ -114,8 +118,6 @@
 // 
 // Возвращаемое значение:
 //  Строка, Произвольный, Неопределено, HTTPОтвет, ДвоичныеДанные - Изменить свойства страницы
-// @skip-check method-too-many-params
-// BSLLS:NumberOfOptionalParams-off
 Функция ИзменитьСвойстваСтраницы(Знач Токен
     , Знач Страница
     , Знач Данные = ""
@@ -165,7 +167,6 @@
     Возврат Ответ;
     
 КонецФункции
-// BSLLS:NumberOfOptionalParams-on
 
 #КонецОбласти
 

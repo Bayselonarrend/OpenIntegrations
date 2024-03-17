@@ -25,6 +25,10 @@
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:UnusedLocalVariable-off
+// BSLLS:UsingServiceTag-off
+
+//@skip-check module-unused-local-variable
 
 #Область СлужебныйПрограммныйИнтерфейс
 
@@ -204,9 +208,8 @@
     Адрес  = Прав(URL, СтрДлина(URL) - СтрНайти(URL, "/", НаправлениеПоиска.СНачала) + 1);
     Сервер = Лев(URL, СтрНайти(URL, "/", НаправлениеПоиска.СНачала) - 1);
     
-    Попытка
-        //@skip-check module-unused-local-variable
-        SSL = Новый ЗащищенноеСоединениеOpenSSL; // BSLLS:UnusedLocalVariable-off  
+    Попытка        
+        SSL = Новый ЗащищенноеСоединениеOpenSSL;   
     Исключение
         Сервер = "https://" + Сервер;
     КонецПопытки;
