@@ -60,18 +60,18 @@ jobs:
       - name: Скачать артефакт с тестовой информацией
         uses: actions/download-artifact@v4
         with:
-          name: test_data
-
-      - name: Сборка пакета OInt
-        run: |
-          cd ./OInt
-          opm build
-          opm install oint-1.5.0.ospx          
+          name: test_data     
           
       - name: Установить asserts и 1testrunner
         run: |
           opm install asserts
           opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./OInt
+          opm build
+          opm install oint-1.5.0.ospx    
 
       - name: Выполнить Телеграм_ПолучитьИнформациюБота
         if: ${{ cancelled() }} == false
@@ -165,6 +165,12 @@ jobs:
           run: |
             opm install asserts
             opm install 1testrunner
+
+        - name: Установить OInt
+          run: |
+            cd ./OInt
+            opm build
+            opm install oint-1.5.0.ospx 
   
         - name: Выполнить ВК_СоздатьСсылкуТокена
           if: ${{ cancelled() }} == false
@@ -240,6 +246,12 @@ jobs:
             run: |
               opm install asserts
               opm install 1testrunner
+
+          - name: Установить OInt
+            run: |
+              cd ./OInt
+              opm build
+              opm install oint-1.5.0.ospx
     
           - name: Выполнить ЯДиск_ПолучитьИнформациюОДиске
             if: ${{ cancelled() }} == false
@@ -291,6 +303,12 @@ jobs:
             run: |
               opm install asserts
               opm install 1testrunner
+
+          - name: Установить OInt
+            run: |
+              cd ./OInt
+              opm build
+              opm install oint-1.5.0.ospx
     
           - name: Выполнить Вайбер_ПолучитьИнформациюОКанале
             if: ${{ cancelled() }} == false
@@ -339,6 +357,12 @@ jobs:
             run: |
               opm install asserts
               opm install 1testrunner
+
+          - name: Установить OInt
+            run: |
+              cd ./OInt
+              opm build
+              opm install oint-1.5.0.ospx
     
           - name: Выполнить ГВ_ПолучитьСсылкуАвторизации
             if: ${{ cancelled() }} == false
@@ -375,6 +399,12 @@ jobs:
             run: |
               opm install asserts
               opm install 1testrunner
+
+          - name: Установить OInt
+            run: |
+                cd ./OInt
+                opm build
+                opm install oint-1.5.0.ospx
     
           - name: Выполнить ГК_ПолучитьСписокКалендарей
             if: ${{ cancelled() }} == false
@@ -408,6 +438,12 @@ jobs:
             run: |
               opm install asserts
               opm install 1testrunner
+
+          - name: Установить OInt
+            run: |
+                cd ./OInt
+                opm build
+                opm install oint-1.5.0.ospx
     
           - name: Выполнить ГД_ПолучитьСписокКаталогов
             if: ${{ cancelled() }} == false
@@ -441,6 +477,12 @@ jobs:
           run: |
             opm install asserts
             opm install 1testrunner
+
+        - name: Установить OInt
+          run: |
+              cd ./OInt
+              opm build
+              opm install oint-1.5.0.ospx
   
         - name: Выполнить Твиттер_ПолучитьСсылкуАвторизации
           if: ${{ cancelled() }} == false
