@@ -24,6 +24,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
+
+//@skip-check method-too-many-params
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools" 
@@ -184,8 +188,6 @@
 // 
 // Возвращаемое значение:
 //  Строка, Произвольный, ДвоичныеДанные, HTTPОтвет, Неопределено - Ответ сервера Yandex 
-//@skip-check method-too-many-params
-// BSLLS:NumberOfOptionalParams-off
 Функция ПолучитьСписокФайлов(Знач Токен
     , Знач Количество = 0
     , Знач СмещениеОтНачала = 0
@@ -219,7 +221,6 @@
     Возврат Ответ;
     
 КонецФункции
-// BSLLS:NumberOfOptionalParams-on
 
 // Переместить объект.
 // 
