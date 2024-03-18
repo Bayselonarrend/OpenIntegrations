@@ -70,6 +70,7 @@ ___
 >- [Библиотека для работы с Google Calendar API (open-source)](https://infostart.ru/1c/articles/2049575/)<br>
 >- [Telegram в режиме форума: делаем чаты комфортными](https://infostart.ru/1c/articles/2055811/)<br>
 >- [Открытый пакет интеграция для OneScript](https://infostart.ru/1c/articles/2060307/)<br>
+>- [Библиотека для работы с Google Drive API (open-source)](https://infostart.ru/1c/articles/2066469/)<br>
 
 
 >- Открытый Пакет интеграций (OpenIntegrations)<br>
