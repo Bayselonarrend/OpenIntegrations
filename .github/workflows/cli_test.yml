@@ -29,6 +29,17 @@ jobs:
       - uses: otymko/setup-onescript@v1.4
         with:
           version: 1.9.0 
+
+      - name: Установить cmdline и asserts
+        run: |
+          opm install cmdline
+          opm install asserts
+
+      - name: Собрать и установить OInt
+        run: |
+          cd ./OInt
+          opm build
+          opm install oint-1.5.0.ospx  
           
       - name: Собрать бинарник
         run: |
