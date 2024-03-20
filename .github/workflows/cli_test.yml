@@ -20,6 +20,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           path: ./data.json
+          key: test-data
 
   Build:
     runs-on: ubuntu-latest
@@ -56,10 +57,11 @@ jobs:
     needs: [Decode, Build]
     steps:
 
-    - name: Скачать артефакт с тестовой информацией
+    - name: Получить тестовые данные из кэша
       uses: actions/cache/restore@v3
       with:
           path: ./data.json
+          key: test-data
           
     - name: Скачать артефакт с исполняемым файлом
       uses: actions/download-artifact@v4
