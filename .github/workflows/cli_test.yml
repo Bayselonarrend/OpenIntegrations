@@ -72,7 +72,9 @@ jobs:
       with:
         filename: 'data.json'
         masked: true
-      
+
+    - name: chmod для OInt
+      run: chmod +x ./oint_bin
     - name: Выполнить Телеграм_ПолучитьИнформациюБота
       if: ${{ cancelled() }} == false
       run: ./oint_bin telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
