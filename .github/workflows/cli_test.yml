@@ -38,4 +38,4 @@ jobs:
         masked: true
       
     - name: Show output
-      run: echo "${{ env.json_Twitter_Redirect }}"
+      run: echo "${{ env.json_Вайбер_Пользователь }}"
