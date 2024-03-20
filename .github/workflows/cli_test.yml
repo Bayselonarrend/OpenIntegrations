@@ -38,4 +38,4 @@ jobs:
         masked: true
       
     - name: Show output
-      run: echo "${{ env.Телеграм_Форум }}"
+      run: echo "${{ env.Twitter_Redirect }}"
