@@ -44,13 +44,13 @@ jobs:
       - name: Собрать бинарник
         run: |
           cd ./cli
-          oscript -make app.os bin
+          oscript -make app.os oint_bin
 
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: oint
+          path: oint_bin
         
   Testing-Telegram:
     runs-on: ubuntu-latest
@@ -75,4 +75,4 @@ jobs:
       
     - name: Выполнить Телеграм_ПолучитьИнформациюБота
       if: ${{ cancelled() }} == false
-      run: oint telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
+      run: oint_bin telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
