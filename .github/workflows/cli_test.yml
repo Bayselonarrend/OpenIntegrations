@@ -75,4 +75,4 @@ jobs:
       
     - name: Выполнить Телеграм_ПолучитьИнформациюБота
       if: ${{ cancelled() }} == false
-      run: oint_bin telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
+      run: ./oint_bin telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
