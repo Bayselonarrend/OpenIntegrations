@@ -91,4 +91,5 @@ jobs:
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
-          "test-data"
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data"
+      
