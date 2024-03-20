@@ -15,15 +15,35 @@ jobs:
         run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
+          
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
         with:
           name: test_data
           path: data.json
 
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2             
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+          
+      - name: Собрать бинарник
+        run: |
+          cd ./cli
+          oscript -make app.os bin
+
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: oint
+          path: oint
+        
   Testing-Telegram:
     runs-on: ubuntu-latest
-    needs: Decode
+    needs: [Decode, Build]
     steps:
 
     - name: Скачать артефакт с тестовой информацией
@@ -31,11 +51,17 @@ jobs:
       with:
           name: test_data 
           
+    - name: Скачать артефакт с исполняемым файлом
+      uses: actions/download-artifact@v4
+      with:
+          name: oint 
+          
     - name: JSON to variables
       uses: rgarcia-phi/json-to-variables@v1.1.0
       with:
         filename: 'data.json'
         masked: true
       
-    - name: Show output
-      run: echo "${{ env.json_Вайбер_Пользователь }}"
+    - name: Выполнить Телеграм_ПолучитьИнформациюБота
+      if: ${{ cancelled() }} == false
+      run: oint telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
