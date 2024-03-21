@@ -149,6 +149,7 @@ jobs:
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-Telegram]
+    if: ${{ always() }}
     steps:
       - name: Очистка кэша
         run: |
