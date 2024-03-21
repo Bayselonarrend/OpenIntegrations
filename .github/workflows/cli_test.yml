@@ -108,7 +108,7 @@ jobs:
         --token ${{ env.json_Telegram_Token }} \
         --id ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение"
-        --path ${{ env.json_Picture }}
+        --path "${{ env.json_Picture }}"
 
     - name: Выполнить ОтправитьВидео
       if: ${{ cancelled() }} == false
