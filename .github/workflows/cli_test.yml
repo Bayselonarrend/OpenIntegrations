@@ -107,7 +107,7 @@ jobs:
         ./oint_bin telegram ОтправитьКартинку \
         --token ${{ env.json_Telegram_Token }} \
         --id ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение"
+        --text "Тестовое сообщение" \
         --path "${{ env.json_Picture }}"
 
     - name: Выполнить ОтправитьВидео
@@ -116,7 +116,7 @@ jobs:
         ./oint_bin telegram ОтправитьВидео \
         --token ${{ env.json_Telegram_Token }} \
         --id ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение"
+        --text "Тестовое сообщение" \
         --path ${{ env.json_Video }}
 
     - name: Выполнить ОтправитьГифку
@@ -125,7 +125,7 @@ jobs:
         ./oint_bin telegram ОтправитьГифку \
         --token ${{ env.json_Telegram_Token }} \
         --id ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение"
+        --text "Тестовое сообщение" \
         --path ${{ env.json_GIF }}
 
     - name: Выполнить ОтправитьАудио
@@ -134,7 +134,7 @@ jobs:
         ./oint_bin telegram ОтправитьАудио \
         --token ${{ env.json_Telegram_Token }} \
         --id ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение"
+        --text "Тестовое сообщение" \
         --path ${{ env.json_Audio }}
       
     - name: Выполнить ОтправитьДокумент
@@ -143,7 +143,7 @@ jobs:
         ./oint_bin telegram ОтправитьДокумент \
         --token ${{ env.json_Telegram_Token }} \
         --id ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение"
+        --text "Тестовое сообщение" \
         --path ${{ env.json_Document }}
         
   Clear-Cache:
