@@ -68,7 +68,7 @@ jobs:
       with:
           name: oint 
           
-    - name: JSON to variables
+    - name: JSON в переменные
       uses: rgarcia-phi/json-to-variables@v1.1.0
       with:
         filename: 'data.json'
@@ -76,9 +76,27 @@ jobs:
 
     - name: chmod для OInt
       run: chmod +x ./oint_bin
-    - name: Выполнить Телеграм_ПолучитьИнформациюБота
+      
+    - name: Выполнить ПолучитьИнформациюБота
       if: ${{ cancelled() }} == false
       run: ./oint_bin telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
+
+    - name: Выполнить ПолучитьОбновления
+      if: ${{ cancelled() }} == false
+      run: ./oint_bin telegram ПолучитьОбновления --token ${{ env.json_Telegram_Token }}
+
+    - name: Выполнить УстановитьWebhook
+      if: ${{ cancelled() }} == false
+      run: ./oint_bin telegram УстановитьWebhook --token ${{ env.json_Telegram_Token }} --url ${{ env.json_Telegram_URL }}
+
+    - name: Выполнить ОтправитьТекстовоеСообщение
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ОтправитьТекстовоеСообщение \
+        --token ${{ env.json_Telegram_Token }} \
+        --id ${{ env.json_Telegram_ChatID }} \
+        --text "Тестовое сообщение"
+      
 
   Clear-Cache:
     runs-on: ubuntu-latest
