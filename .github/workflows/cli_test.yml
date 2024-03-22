@@ -91,7 +91,7 @@ jobs:
 
     - name: Выполнить УдалитьWebhook
       if: ${{ cancelled() }} == false
-      run: ./oint_bin telegram УстановитьWebhook --token ${{ env.json_Telegram_Token }} --url ${{ env.json_Telegram_URL }}
+      run: ./oint_bin telegram УдалитьWebhook --token ${{ env.json_Telegram_Token }} --url ${{ env.json_Telegram_URL }}
 
     - name: Выполнить ОтправитьТекстовоеСообщение
       if: ${{ cancelled() }} == false
@@ -145,6 +145,20 @@ jobs:
         --id ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
         --path ${{ env.json_Document }}
+        
+    - name: Выполнить ОтправитьМедиагруппу
+      if: ${{ cancelled() }} == false
+      run: | 
+        echo " { \
+          \"${{ env.json_Picture }}\" : \"photo\"  \
+          \"${{ env.json_Picture2 }}\" : \"photo\"  \
+          } " > mediagroup.json
+          
+        ./oint_bin telegram ОтправитьМедиагруппу \
+        --token ${{ env.json_Telegram_Token }} \
+        --id ${{ env.json_Telegram_ChatID }} \
+        --text "Тестовое сообщение" \
+        --path mediagroup.json
         
   Clear-Cache:
     runs-on: ubuntu-latest
