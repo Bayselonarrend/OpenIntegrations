@@ -44,7 +44,7 @@ jobs:
       - name: Собрать бинарник
         run: |
           cd ./cli
-          oscript -make /core/Classes/Приложение.os oint_bin
+          oscript -make core/Classes/Приложение.os oint_bin
 
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
