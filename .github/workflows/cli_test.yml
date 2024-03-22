@@ -185,7 +185,7 @@ jobs:
         ./oint_bin telegram ОтправитьОпрос \
         --token ${{ env.json_Telegram_Token }} \
         --chat ${{ env.json_Telegram_ChatID }} \
-        --question Да или нет? \
+        --question "Да или нет?" \
         --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
         --anonymous true
 
