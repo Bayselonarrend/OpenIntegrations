@@ -149,9 +149,9 @@ jobs:
     - name: Выполнить ОтправитьМедиагруппу
       if: ${{ cancelled() }} == false
       run: | 
-        echo " { \n \
-          \"${{ env.json_Picture }}\" : \"photo\" \n \
-          \"${{ env.json_Picture2 }}\" : \"photo\" \n \
+        echo " {
+          \"${{ env.json_Picture }}\" : \"photo\",
+          \"${{ env.json_Picture2 }}\" : \"photo\"
           } " > mediagroup.json
           
         ./oint_bin telegram ОтправитьМедиагруппу \
