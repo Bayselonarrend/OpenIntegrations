@@ -152,13 +152,13 @@ jobs:
         echo " {
           \"${{ env.json_Picture }}\" : \"photo\",
           \"${{ env.json_Picture2 }}\" : \"photo\"
-          } " > mediagroup.json
+          } " > $mediagroup
           
         ./oint_bin telegram ОтправитьМедиагруппу \
         --token ${{ env.json_Telegram_Token }} \
         --id ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
-        --path mediagroup.json
+        --path $mediagroup
         
   Clear-Cache:
     runs-on: ubuntu-latest
