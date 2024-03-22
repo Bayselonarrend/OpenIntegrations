@@ -98,7 +98,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОтправитьТекстовоеСообщение \
         --token ${{ env.json_Telegram_Token }} \
-        --id ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение"
 
     - name: Выполнить ОтправитьКартинку
@@ -106,7 +106,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОтправитьКартинку \
         --token ${{ env.json_Telegram_Token }} \
-        --id ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
         --path "${{ env.json_Picture }}"
 
@@ -115,7 +115,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОтправитьВидео \
         --token ${{ env.json_Telegram_Token }} \
-        --id ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
         --path ${{ env.json_Video }}
 
@@ -124,7 +124,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОтправитьГифку \
         --token ${{ env.json_Telegram_Token }} \
-        --id ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
         --path ${{ env.json_GIF }}
 
@@ -133,7 +133,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОтправитьАудио \
         --token ${{ env.json_Telegram_Token }} \
-        --id ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
         --path ${{ env.json_Audio }}
       
@@ -142,7 +142,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОтправитьДокумент \
         --token ${{ env.json_Telegram_Token }} \
-        --id ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
         --path ${{ env.json_Document }}
         
@@ -156,9 +156,63 @@ jobs:
           
         ./oint_bin telegram ОтправитьМедиагруппу \
         --token ${{ env.json_Telegram_Token }} \
-        --id ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
         --text "Тестовое сообщение" \
         --path mediagroup.json
+
+    - name: Выполнить ОтправитьМестоположение
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ОтправитьМестоположение \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
+        --lat 48.87373649724122 \
+        --long "48.87373649724122"
+        
+    - name: Выполнить ОтправитьКонтакт
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ОтправитьКонтакт \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
+        --name Петр \
+        --surname Петров \
+        --phone +123456789
+
+    - name: Выполнить ОтправитьОпрос
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ОтправитьОпрос \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChatID }} \
+        --question Да или нет? \
+        --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
+        --anonymous true
+
+    - name: Выполнить ПереслатьСообщение
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ПереслатьСообщение \
+        --token ${{ env.json_Telegram_Token }} \
+        --message ${{ env.json_Telegram_ChannelMessageID }} \
+        --to ${{ env.json_Telegram_ChatID }} \
+        --from ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить Бан
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram Бан \
+        --token ${{ env.json_Telegram_Token }} \
+        --user ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить Разбан
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram Бан \
+        --token ${{ env.json_Telegram_Token }} \
+        --user ${{ env.json_Telegram_ChatID }} \
+        --chat ${{ env.json_Telegram_ChannelID }}
         
   Clear-Cache:
     runs-on: ubuntu-latest
