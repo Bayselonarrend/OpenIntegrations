@@ -30,10 +30,11 @@ jobs:
         with:
           version: 1.9.0 
 
-      - name: Установить cmdline и asserts
+      - name: Установить cmdline, asserts и osparser
         run: |
           opm install cmdline
           opm install asserts
+          opm install osparser
 
       - name: Сформировать список методов ОПИ
         run: oscript ./cli/parse.os
