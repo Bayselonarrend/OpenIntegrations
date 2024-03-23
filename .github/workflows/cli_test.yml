@@ -251,7 +251,80 @@ jobs:
       if: ${{ cancelled() }} == false
       run: | 
         ./oint_bin telegram ПолучитьСписокИконокАватаров \
+        --token ${{ env.json_Telegram_Token }} 
+
+    - name: Выполнить СоздатьТемуФорума
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram СоздатьТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }} \
+        --name Новая тема \
+        --icon 5350444672789519765 
+
+    - name: Выполнить ИзменитьТемуФорума
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ИзменитьТемуФорума \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }} \
+        --topic ${{ env.json_Telegram_TopicID }} \
+        --name Новое имя темы \
+        --icon 5312016608254762256 
+
+    - name: Выполнить ЗакрытьТемуФорума
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ЗакрытьТемуФорума \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }} \
+        --topic ${{ env.json_Telegram_TopicID }}
+
+    - name: Выполнить ОткрытьТемуФорума
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ОткрытьТемуФорума \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }} \
+        --topic ${{ env.json_Telegram_TopicID }}
+
+    - name: Выполнить СкрытьГлавнуюТемуФорума
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram СкрытьГлавнуюТемуФорума \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить ПоказатьГлавнуюТемуФорума
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ПоказатьГлавнуюТемуФорума \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить ИзменитьИмяГлавнойТемыФорума
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }} \
+        --name "Yo"
+
+    - name: Выполнить ОчиститьСписокЗакрепленныхСообщенийТемы
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }} \
+        --topic ${{ env.json_Telegram_TopicID }}
+
+    - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram СформироватьКлавиатуруПоМассивуКнопок \
+        --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+        --under true \
+        --column false
         
   Clear-Cache:
     runs-on: ubuntu-latest
