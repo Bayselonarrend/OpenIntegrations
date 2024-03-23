@@ -24,6 +24,8 @@ jobs:
 
   Build:
     runs-on: ubuntu-latest
+    permissions:
+        contents: write
     steps:
       - uses: actions/checkout@v4             
       - uses: otymko/setup-onescript@v1.4
