@@ -221,7 +221,7 @@ jobs:
         --token ${{ env.json_Telegram_Token }} \
         --name Yo \
         --chat ${{ env.json_Telegram_ChannelID }} \
-        --expire 1
+        --expire 1 \
         --limit 1
 
     - name: Выполнить ЗакрепитьСообщение
@@ -259,7 +259,7 @@ jobs:
         ./oint_bin telegram СоздатьТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
         --chat ${{ env.json_Telegram_ChannelID }} \
-        --name Новая тема \
+        --name "Новая тема" \
         --icon 5350444672789519765 
 
     - name: Выполнить ИзменитьТемуФорума
@@ -269,7 +269,7 @@ jobs:
         --token ${{ env.json_Telegram_Token }} \
         --chat ${{ env.json_Telegram_ChannelID }} \
         --topic ${{ env.json_Telegram_TopicID }} \
-        --name Новое имя темы \
+        --name "Новое имя темы" \
         --icon 5312016608254762256 
 
     - name: Выполнить ЗакрытьТемуФорума
