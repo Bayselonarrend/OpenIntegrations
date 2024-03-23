@@ -1,5 +1,5 @@
 
-name: Тестирование OINT CLI 
+name: Сборка и тестирование OINT CLI 
 
 on:
   workflow_dispatch:
@@ -35,6 +35,9 @@ jobs:
           opm install cmdline
           opm install asserts
 
+      - name: Сформировать список методов ОПИ
+        run: oscript ./cli/parse.os
+        
       - name: Собрать и установить OInt
         run: |
           cd ./OInt
