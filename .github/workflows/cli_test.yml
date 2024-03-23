@@ -258,7 +258,7 @@ jobs:
       run: | 
         ./oint_bin telegram СоздатьТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }} \
+        --chat ${{ env.json_Telegram_ForumID }} \
         --name "Новая тема" \
         --icon 5350444672789519765 
 
@@ -267,7 +267,7 @@ jobs:
       run: | 
         ./oint_bin telegram ИзменитьТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }} \
+        --chat ${{ env.json_Telegram_ForumID }} \
         --topic ${{ env.json_Telegram_TopicID }} \
         --name "Новое имя темы" \
         --icon 5312016608254762256 
@@ -277,7 +277,7 @@ jobs:
       run: | 
         ./oint_bin telegram ЗакрытьТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }} \
+        --chat ${{ env.json_Telegram_ForumID }} \
         --topic ${{ env.json_Telegram_TopicID }}
 
     - name: Выполнить ОткрытьТемуФорума
@@ -285,7 +285,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОткрытьТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }} \
+        --chat ${{ env.json_Telegram_ForumID }} \
         --topic ${{ env.json_Telegram_TopicID }}
 
     - name: Выполнить СкрытьГлавнуюТемуФорума
@@ -293,21 +293,21 @@ jobs:
       run: | 
         ./oint_bin telegram СкрытьГлавнуюТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }}
+        --chat ${{ env.json_Telegram_ForumID }}
 
     - name: Выполнить ПоказатьГлавнуюТемуФорума
       if: ${{ cancelled() }} == false
       run: | 
         ./oint_bin telegram ПоказатьГлавнуюТемуФорума \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }}
+        --chat ${{ env.json_Telegram_ForumID }}
 
     - name: Выполнить ИзменитьИмяГлавнойТемыФорума
       if: ${{ cancelled() }} == false
       run: | 
         ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }} \
+        --chat ${{ env.json_Telegram_ForumID }} \
         --name "Yo"
 
     - name: Выполнить ОчиститьСписокЗакрепленныхСообщенийТемы
@@ -315,7 +315,7 @@ jobs:
       run: | 
         ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы \
         --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }} \
+        --chat ${{ env.json_Telegram_ForumID }} \
         --topic ${{ env.json_Telegram_TopicID }}
 
     - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
