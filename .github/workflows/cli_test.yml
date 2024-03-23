@@ -36,8 +36,16 @@ jobs:
           opm install asserts
           opm install osparser
 
-      - name: Сформировать список методов ОПИ
+      - name: Сформировать список методов ОПИ -> CLI
         run: oscript ./cli/parse.os
+
+      - name: Записать измененный список методов CLI
+        uses: stefanzweifel/git-auto-commit-action@v5   
+        with:
+          commit_user_name: Vitaly the Alpaca (bot) 
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
         
       - name: Собрать и установить OInt
         run: |
