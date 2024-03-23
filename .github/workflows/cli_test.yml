@@ -209,10 +209,49 @@ jobs:
     - name: Выполнить Разбан
       if: ${{ cancelled() }} == false
       run: | 
-        ./oint_bin telegram Бан \
+        ./oint_bin telegram Разбан \
         --token ${{ env.json_Telegram_Token }} \
         --user ${{ env.json_Telegram_ChatID }} \
         --chat ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить СоздатьСсылкуПриглашение
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram СоздатьСсылкуПриглашение \
+        --token ${{ env.json_Telegram_Token }} \
+        --name Yo \
+        --chat ${{ env.json_Telegram_ChannelID }} \
+        --expire 1
+        --limit 1
+
+    - name: Выполнить ЗакрепитьСообщение
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ЗакрепитьСообщение \
+        --token ${{ env.json_Telegram_Token }} \
+        --message ${{ env.json_Telegram_ChannelMessageID }} \
+        --chat ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить ОткрепитьСообщение
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ОткрепитьСообщение \
+        --token ${{ env.json_Telegram_Token }} \
+        --message ${{ env.json_Telegram_ChannelMessageID }} \
+        --chat ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить ПолучитьЧислоУчастников
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ПолучитьЧислоУчастников \
+        --token ${{ env.json_Telegram_Token }} \
+        --chat ${{ env.json_Telegram_ChannelID }}
+
+    - name: Выполнить ПолучитьСписокИконокАватаров
+      if: ${{ cancelled() }} == false
+      run: | 
+        ./oint_bin telegram ПолучитьСписокИконокАватаров \
+        --token ${{ env.json_Telegram_Token }} \
         
   Clear-Cache:
     runs-on: ubuntu-latest
