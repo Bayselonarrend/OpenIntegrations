@@ -29,6 +29,8 @@
  
 ## Релизы ##
 
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)
+
 Релизы библиотеки выходят в четырех вариантах: 
 - Как XML файлы расширения для загрузки через конфигуратор
 - Как EDT проект расширения
