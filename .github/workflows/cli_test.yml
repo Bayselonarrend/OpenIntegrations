@@ -209,6 +209,12 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+          echo " {
+            \"${{ env.json_Picture }}\" : \"photo\",
+            \"${{ env.json_Picture2 }}\" : \"photo\"
+          } " > mediagroup.json
+
+
           ./oint_bin telegram ОтправитьМедиагруппу \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -222,13 +228,6 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          echo " {
-	         \"${{ env.json_Picture }}\" : \"photo\",
-	         \"${{ env.json_Picture2 }}\" : \"photo\"
-          } " > mediagroup.json
-
-
-
           ./oint_bin telegram ОтправитьМестоположение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
