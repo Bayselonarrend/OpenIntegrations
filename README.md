@@ -44,7 +44,7 @@
 Для начала работы в OneScript дополнительно необходимо установить пакет из скачанного ospx файла
 
 ```
-    opm install ./OInt-1.0.0.ospx
+    opm install -f ./OInt-1.0.0.ospx
 ```
 <br/>
  
