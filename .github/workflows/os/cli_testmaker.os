@@ -75,16 +75,16 @@
 		КонецЕсли;
 
 		ТекстРаботы = "
-		|    Testing-" + Библиотека + ":
-		|      runs-on: ubuntu-latest
-		|      needs: [Decode, Build]
-		|      steps:
+		|  Testing-" + Библиотека + ":
+		|    runs-on: ubuntu-latest
+		|    needs: [Decode, Build]
+		|    steps:
 		|
 		|      - name: Получить тестовые данные из кэша
 		|        uses: actions/cache/restore@v3
 		|        with:
-		|	       path: ./data.json
-		|	       key: test-data
+		|          path: ./data.json
+		|          key: test-data
 		|		
 		|      - name: Скачать артефакт с исполняемым файлом
 		|        uses: actions/download-artifact@v4
