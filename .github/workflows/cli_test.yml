@@ -1,114 +1,60 @@
 
-name: Сборка и тестирование OINT CLI 
-
-on:
-  workflow_dispatch:
-
-jobs:
-  Decode:
-    runs-on: ubuntu-latest
-    steps:
-    
-      - uses: actions/checkout@v4 
-      
-      - name: Расшифровать тестовые данные
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
-        env:
-          ENC_JSON: ${{ secrets.ENC_JSON }}
-          
-      - name: Кэшировать данные
-        uses: actions/cache/save@v3
-        with:
-          path: ./data.json
-          key: test-data
-
-  Build:
-    runs-on: ubuntu-latest
-    permissions:
-        contents: write
-    steps:
-      - uses: actions/checkout@v4             
-      - uses: otymko/setup-onescript@v1.4
-        with:
-          version: 1.9.0 
-
-      - name: Установить cmdline, asserts и osparser
-        run: |
-          opm install cmdline
-          opm install asserts
-          opm install osparser
-
-      - name: Сформировать список методов ОПИ -> CLI
-        run: oscript ./.github/workflows/os/parse.os
-
-      - name: Записать измененный список методов CLI
-        uses: stefanzweifel/git-auto-commit-action@v5   
-        with:
-          commit_user_name: Vitaly the Alpaca (bot) 
-          commit_user_email: vitaly.the.alpaca@gmail.com
-          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
-          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
-        
-      - name: Собрать и установить OInt
-        run: |
-          cd ./OInt
-          opm build
-          opm install *.ospx  
-          
-      - name: Собрать бинарник
-        run: |
-          cd ./cli
-          oscript -make core/Classes/Приложение.os oint_bin
-
-      - name: Записать артефакт
-        uses: actions/upload-artifact@v4
-        with:
-          name: oint
-          path: ./cli/oint_bin
-        
-  Testing-telegram:
+    Testing-telegram:
       runs-on: ubuntu-latest
       needs: [Decode, Build]
       steps:
+
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
         with:
-           path: ./data.json
-           key: test-data
-
+	       path: ./data.json
+	       key: test-data
+		
       - name: Скачать артефакт с исполняемым файлом
         uses: actions/download-artifact@v4
         with:
-          name: oint
-
+          name: oint 
+		
       - name: JSON в переменные
         uses: rgarcia-phi/json-to-variables@v1.1.0
         with:
           filename: 'data.json'
           masked: true
+
       - name: chmod для OInt
         run: chmod +x ./oint_bin
+
+
+
       - name: Выполнить ПолучитьИнформациюБота
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin ПолучитьИнформациюБота\
           --token "${{ env.json_Telegram_Token }}" \
+
+
       - name: Выполнить ПолучитьОбновления
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin ПолучитьОбновления\
           --token "${{ env.json_Telegram_Token }}" \
+
+
       - name: Выполнить УстановитьWebhook
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin УстановитьWebhook\
           --token "${{ env.json_Telegram_Token }}" \
           --url "${{ env.json_Telegram_URL }}" \
+
+
       - name: Выполнить УдалитьWebhook
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin УдалитьWebhook\
           --token "${{ env.json_Telegram_Token }}" \
+
+
       - name: Выполнить ОтправитьТекстовоеСообщение
         if: ${{ cancelled() }} == false
         run: |
@@ -117,6 +63,8 @@ jobs:
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьКартинку
         if: ${{ cancelled() }} == false
         run: |
@@ -126,6 +74,8 @@ jobs:
           --text "Тестовый текст" \
           --path "" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьВидео
         if: ${{ cancelled() }} == false
         run: |
@@ -135,6 +85,8 @@ jobs:
           --text "Тестовый текст" \
           --path "" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьАудио
         if: ${{ cancelled() }} == false
         run: |
@@ -144,6 +96,8 @@ jobs:
           --text "Тестовый текст" \
           --path "" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьДокумент
         if: ${{ cancelled() }} == false
         run: |
@@ -153,6 +107,8 @@ jobs:
           --text "Тестовый текст" \
           --path "" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьГифку
         if: ${{ cancelled() }} == false
         run: |
@@ -162,6 +118,8 @@ jobs:
           --text "Тестовый текст" \
           --path "" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьМедиагруппу
         if: ${{ cancelled() }} == false
         run: |
@@ -171,6 +129,8 @@ jobs:
           --text "Тестовый текст" \
           --path "" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьМестоположение
         if: ${{ cancelled() }} == false
         run: |
@@ -180,6 +140,8 @@ jobs:
           --lat "48.87373649724122" \
           --long "48.87373649724122" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьКонтакт
         if: ${{ cancelled() }} == false
         run: |
@@ -190,6 +152,8 @@ jobs:
           --surname "Петров" \
           --phone "+123456789" \
           --keyboard "" \
+
+
       - name: Выполнить ОтправитьОпрос
         if: ${{ cancelled() }} == false
         run: |
@@ -199,6 +163,8 @@ jobs:
           --question "Да или нет?" \
           --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
           --anonymous "true" \
+
+
       - name: Выполнить ПереслатьСообщение
         if: ${{ cancelled() }} == false
         run: |
@@ -207,6 +173,8 @@ jobs:
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
           --from "${{ env.json_Telegram_ChannelID }}" \
           --to "${{ env.json_Telegram_ChatID }}" \
+
+
       - name: Выполнить Бан
         if: ${{ cancelled() }} == false
         run: |
@@ -214,6 +182,8 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --user "${{ env.json_Telegram_ChatID }}" \
+
+
       - name: Выполнить Разбан
         if: ${{ cancelled() }} == false
         run: |
@@ -221,6 +191,8 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --user "${{ env.json_Telegram_ChatID }}" \
+
+
       - name: Выполнить СоздатьСсылкуПриглашение
         if: ${{ cancelled() }} == false
         run: |
@@ -230,6 +202,8 @@ jobs:
           --name "Петр" \
           --expire "1" \
           --limit "1" \
+
+
       - name: Выполнить ЗакрепитьСообщение
         if: ${{ cancelled() }} == false
         run: |
@@ -237,6 +211,8 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
+
+
       - name: Выполнить ОткрепитьСообщение
         if: ${{ cancelled() }} == false
         run: |
@@ -244,17 +220,23 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
+
+
       - name: Выполнить ПолучитьЧислоУчастников
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin ПолучитьЧислоУчастников\
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
+
+
       - name: Выполнить ПолучитьСписокИконокАватаров
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin ПолучитьСписокИконокАватаров\
           --token "${{ env.json_Telegram_Token }}" \
+
+
       - name: Выполнить СоздатьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
@@ -263,6 +245,8 @@ jobs:
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --name "Петр" \
           --icon "5350444672789519765 " \
+
+
       - name: Выполнить ИзменитьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
@@ -272,6 +256,8 @@ jobs:
           --topic "${{ env.json_Telegram_TopicID }}" \
           --name "Петр" \
           --icon "5350444672789519765 " \
+
+
       - name: Выполнить ЗакрытьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
@@ -279,6 +265,8 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
+
+
       - name: Выполнить ОткрытьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
@@ -286,6 +274,8 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
+
+
       - name: Выполнить УдалитьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
@@ -293,18 +283,24 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
+
+
       - name: Выполнить СкрытьГлавнуюТемуФорума
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin СкрытьГлавнуюТемуФорума\
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
+
+
       - name: Выполнить ПоказатьГлавнуюТемуФорума
         if: ${{ cancelled() }} == false
         run: |
           ./oint_bin ПоказатьГлавнуюТемуФорума\
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
+
+
       - name: Выполнить ИзменитьИмяГлавнойТемыФорума
         if: ${{ cancelled() }} == false
         run: |
@@ -312,6 +308,8 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --name "Петр" \
+
+
       - name: Выполнить ОчиститьСписокЗакрепленныхСообщенийТемы
         if: ${{ cancelled() }} == false
         run: |
@@ -319,6 +317,8 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
+
+
       - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
         if: ${{ cancelled() }} == false
         run: |
@@ -327,18 +327,3 @@ jobs:
           --under "true" \
           --column "false" \
 
-        
-  Clear-Cache:
-    runs-on: ubuntu-latest
-    needs: [Testing-telegram]
-    if: ${{ always() }}
-    steps:
-      - name: Очистка кэша
-        run: |
-          curl -L \
-          -X DELETE \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data"
-      
