@@ -12,7 +12,9 @@ jobs:
       contents: write
         
     steps:    
-      - uses: actions/checkout@v2             
+      - uses: actions/checkout@v2  
+        with:
+          token: ${{secrets.TOKEN}}
       - uses: otymko/setup-onescript@v1.4
         with:
           version: 1.9.0 
