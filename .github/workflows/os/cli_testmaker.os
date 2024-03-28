@@ -85,12 +85,12 @@
 		|        with:
 		|          path: ./data.json
 		|          key: test-data
-		|		
+		|
 		|      - name: Скачать артефакт с исполняемым файлом
 		|        uses: actions/download-artifact@v4
 		|        with:
 		|          name: oint 
-		|		
+		|
 		|      - name: JSON в переменные
 		|        uses: rgarcia-phi/json-to-variables@v1.1.0
 		|        with:
@@ -163,14 +163,14 @@
 	|  Decode:
 	|    runs-on: ubuntu-latest
 	|    steps:
-	|	
+	|
 	|      - uses: actions/checkout@v4 
-	|	  
+	|
 	|      - name: Расшифровать тестовые данные
 	|        run: gpg --quiet --batch --yes --decrypt --passphrase=""$ENC_JSON"" --output ./data.json ./data.json.gpg        
 	|        env:
 	|          ENC_JSON: ${{ secrets.ENC_JSON }}
-	|		  
+	|
 	|      - name: Кэшировать данные
 	|        uses: actions/cache/save@v3
 	|        with:
@@ -202,13 +202,13 @@
 	|          commit_user_email: vitaly.the.alpaca@gmail.com
 	|          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
 	|          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
-	|		
+	|
 	|      - name: Собрать и установить OInt
 	|        run: |
 	|          cd ./OInt
 	|          opm build
 	|          opm install *.ospx  
-	|		  
+	|
 	|      - name: Собрать бинарник
 	|        run: |
 	|          cd ./cli
