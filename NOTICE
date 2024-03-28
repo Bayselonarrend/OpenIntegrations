@@ -4,7 +4,7 @@ Licensed under the MIT License
 
 Используется код из проекта vbondarevsky/Connector
  * Copyright 2017-2023 Vladimir Bondarevskiy 
- * Licensed under the Apache License, Version 2.0;
+ * Licensed under the Apache License, Version 2.0
  * https://github.com/vbondarevsky/Connector/
 
 Используется код из проекта БСП
@@ -16,3 +16,18 @@ Licensed under the MIT License
  * Copyright (c) Facebook, Inc. and its affiliates.
  * Licensed under the MIT License
  * https://github.com/facebook/docusaurus
+
+Тестирование версии для 1С производится при помощи YaxUNIT
+ * Copyright © 2023 BIA-Technologies Limited Liability Company
+ * Licensed under the Apache License, Version 2.0
+ * https://github.com/bia-technologies/yaxunit
+
+Тестирование версии для OneScript производится при помощи 1testrunner
+ * by Artur Ayukhanov (artbear)
+ * -
+ * https://github.com/artbear/1testrunner
+
+Тесты версии для OneScript используют текучие утверждения из пакета asserts
+ * by oscript-library
+ * -
+ * https://github.com/oscript-library/asserts
