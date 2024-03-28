@@ -49,10 +49,10 @@
 
 	Предобработка = "
 	|
-	|       echo "" {
-	|	      \""${{ env.json_Picture }}\"" : \""photo\"",
-	|	      \""${{ env.json_Picture2 }}\"" : \""photo\""
-	|	      } "" > mediagroup.json
+	|               echo "" {
+	|	              \""${{ env.json_Picture }}\"" : \""photo\"",
+	|	              \""${{ env.json_Picture2 }}\"" : \""photo\""
+	|	              } "" > mediagroup.json
 	|
 	|";
 
