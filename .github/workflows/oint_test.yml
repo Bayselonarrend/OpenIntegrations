@@ -50,7 +50,7 @@ jobs:
         run: |
           cd ./OInt
           opm build
-          opm install oint-1.5.0.ospx    
+          opm install *.ospx    
 
       - name: Выполнить Телеграм_ПолучитьИнформациюБота
         if: ${{ cancelled() }} == false
