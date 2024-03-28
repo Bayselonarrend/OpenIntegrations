@@ -136,7 +136,7 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
-          --path "" \
+          --picture "${{ env.json_Picture }}" \
           --keyboard "" \
 
 
@@ -147,7 +147,7 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
-          --path "" \
+          --video "${{ env.json_Video }}" \
           --keyboard "" \
 
 
@@ -158,7 +158,7 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
-          --path "" \
+          --audio "${{ env.json_Audio }}" \
           --keyboard "" \
 
 
@@ -169,7 +169,7 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
-          --path "" \
+          --doc "${{ env.json_Document }}" \
           --keyboard "" \
 
 
@@ -180,7 +180,7 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
-          --path "" \
+          --gif "${{ env.json_GIF }}" \
           --keyboard "" \
 
 
@@ -263,7 +263,7 @@ jobs:
           ./oint_bin telegram СоздатьСсылкуПриглашение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
-          --name "Петр" \
+          --title "Тест" \
           --expire "1" \
           --limit "1" \
 
@@ -306,8 +306,8 @@ jobs:
         run: |
           ./oint_bin telegram СоздатьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
-          --name "Петр" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --title "Тест" \
           --icon "5350444672789519765 " \
 
 
@@ -316,9 +316,9 @@ jobs:
         run: |
           ./oint_bin telegram ИзменитьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
-          --name "Петр" \
+          --title "Тест" \
           --icon "5350444672789519765 " \
 
 
@@ -327,7 +327,7 @@ jobs:
         run: |
           ./oint_bin telegram ЗакрытьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
 
 
@@ -336,7 +336,7 @@ jobs:
         run: |
           ./oint_bin telegram ОткрытьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
 
 
@@ -345,7 +345,7 @@ jobs:
         run: |
           ./oint_bin telegram УдалитьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
 
 
@@ -354,7 +354,7 @@ jobs:
         run: |
           ./oint_bin telegram СкрытьГлавнуюТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
 
 
       - name: Выполнить ПоказатьГлавнуюТемуФорума
@@ -362,7 +362,7 @@ jobs:
         run: |
           ./oint_bin telegram ПоказатьГлавнуюТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
 
 
       - name: Выполнить ИзменитьИмяГлавнойТемыФорума
@@ -370,7 +370,7 @@ jobs:
         run: |
           ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
           --name "Петр" \
 
 
@@ -379,7 +379,7 @@ jobs:
         run: |
           ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы \
           --token "${{ env.json_Telegram_Token }}" \
-          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
 
 
