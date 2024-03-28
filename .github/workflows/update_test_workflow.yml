@@ -1,0 +1,27 @@
+name: Обновить yml процесса тестирования
+
+on:
+  workflow_dispatch:  
+jobs:
+
+  Make-CLI-Tests:
+
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        
+    steps:    
+      - uses: actions/checkout@v2             
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+
+      - name: Выполнить скрипт создания yml-файла
+        run: oscript ./.github/workflows/os/cli_testmaker.os > ./.github/workflows/cli_test.yml
+
+      - uses: stefanzweifel/git-auto-commit-action@v5 
+        with:
+          commit_user_name: Vitaly the Alpaca (bot) 
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+          commit_message: Преобразование OPI -> OInt (workflow)
