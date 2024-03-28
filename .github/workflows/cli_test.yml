@@ -39,7 +39,7 @@ jobs:
           opm install osparser
 
       - name: Сформировать список методов ОПИ -> CLI
-        run: oscript ./.github/workflows/os/parse.os
+        run: oscript ./.github/workflows/os/cli_parse.os
 
       - name: Записать измененный список методов CLI
         uses: stefanzweifel/git-auto-commit-action@v5   
