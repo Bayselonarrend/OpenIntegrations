@@ -10,7 +10,9 @@
 	ДобавитьСоответствияTelegram();
 	ДобавитьСоответствияОбщие();
 
+	СообщитьНачалоФайлаПроцесса();
 	СформироватьЗапуск(ТаблицаПараметров);
+	СообщитьОкончаниеФайлаПроцесса();
 
 КонецПроцедуры
 
@@ -149,3 +151,91 @@
 
 КонецФункции
 
+Процедура СообщитьНачалоФайлаПроцесса()
+
+	Сообщить(
+	"name: Сборка и тестирование OINT CLI 
+	|
+	|on:
+	|  workflow_dispatch:
+	|
+	|jobs:
+	|  Decode:
+	|	runs-on: ubuntu-latest
+	|	steps:
+	|	
+	|	  - uses: actions/checkout@v4 
+	|	  
+	|	  - name: Расшифровать тестовые данные
+	|		run: gpg --quiet --batch --yes --decrypt --passphrase=""$ENC_JSON"" --output ./data.json ./data.json.gpg        
+	|		env:
+	|		  ENC_JSON: ${{ secrets.ENC_JSON }}
+	|		  
+	|	  - name: Кэшировать данные
+	|		uses: actions/cache/save@v3
+	|		with:
+	|		  path: ./data.json
+	|		  key: test-data
+	|
+	|  Build:
+	|	runs-on: ubuntu-latest
+	|	permissions:
+	|		contents: write
+	|	steps:
+	|	  - uses: actions/checkout@v4             
+	|	  - uses: otymko/setup-onescript@v1.4
+	|		with:
+	|		  version: 1.9.0 
+	|
+	|	  - name: Установить cmdline, asserts и osparser
+	|		run: |
+	|		  opm install cmdline
+	|		  opm install asserts
+	|		  opm install osparser
+	|	  - name: Сформировать список методов ОПИ -> CLI
+	|		run: oscript ./.github/workflows/os/cli_parse.os
+	|
+	|	  - name: Записать измененный список методов CLI
+	|		uses: stefanzweifel/git-auto-commit-action@v5   
+	|		with:
+	|		  commit_user_name: Vitaly the Alpaca (bot) 
+	|		  commit_user_email: vitaly.the.alpaca@gmail.com
+	|		  commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+	|		  commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
+	|		
+	|	  - name: Собрать и установить OInt
+	|		run: |
+	|		  cd ./OInt
+	|		  opm build
+	|		  opm install *.ospx  
+	|		  
+	|	  - name: Собрать бинарник
+	|		run: |
+	|		  cd ./cli
+	|		  oscript -make core/Classes/Приложение.os oint_bin
+	|	  - name: Записать артефакт
+	|		uses: actions/upload-artifact@v4
+	|		with:
+	|		  name: oint
+	|		  path: ./cli/oint_bin");
+
+КонецПроцедуры
+
+Процедура СообщитьОкончаниеФайлаПроцесса()
+
+	Сообщить("
+	|  Clear-Cache:
+    |    runs-on: ubuntu-latest
+    |    needs: [Testing-telegram]
+    |    if: ${{ always() }}
+    |    steps:
+    |      - name: Очистка кэша
+    |        run: |
+    |          curl -L \
+    |          -X DELETE \
+    |          -H ""Accept: application/vnd.github+json"" \
+    |          -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
+    |          -H ""X-GitHub-Api-Version: 2022-11-28"" \
+    |          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data""");
+
+КонецПроцедуры;
