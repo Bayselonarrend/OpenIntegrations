@@ -27,4 +27,4 @@ jobs:
           commit_user_name: Vitaly the Alpaca (bot) 
           commit_user_email: vitaly.the.alpaca@gmail.com
           commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
-          commit_message: Преобразование OPI -> OInt (workflow)
+          commit_message: Обновление yml файла - cli_test.yml (workflow)
