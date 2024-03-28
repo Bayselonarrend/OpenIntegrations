@@ -1,4 +1,4 @@
-name: Сборка и тестирование OINT CLI 
+name: CLI  | Сборка и тестирование
 
 on:
   workflow_dispatch:

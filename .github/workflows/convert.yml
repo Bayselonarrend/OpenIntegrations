@@ -1,4 +1,4 @@
-name: Конвертация OPI -> OInt
+name: OINT | Конвертация OPI -> OInt
 
 # Controls when the workflow will run
 on:
