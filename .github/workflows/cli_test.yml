@@ -66,283 +66,271 @@ jobs:
           name: oint
           path: ./cli/oint_bin
         
-  Testing-Telegram:
-    runs-on: ubuntu-latest
-    needs: [Decode, Build]
-    steps:
+  Testing-telegram:
+      runs-on: ubuntu-latest
+      needs: [Decode, Build]
+      steps:
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+           path: ./data.json
+           key: test-data
 
-    - name: Получить тестовые данные из кэша
-      uses: actions/cache/restore@v3
-      with:
-          path: ./data.json
-          key: test-data
-          
-    - name: Скачать артефакт с исполняемым файлом
-      uses: actions/download-artifact@v4
-      with:
-          name: oint 
-          
-    - name: JSON в переменные
-      uses: rgarcia-phi/json-to-variables@v1.1.0
-      with:
-        filename: 'data.json'
-        masked: true
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint
 
-    - name: chmod для OInt
-      run: chmod +x ./oint_bin
-      
-    - name: Выполнить ПолучитьИнформациюБота
-      if: ${{ cancelled() }} == false
-      run: ./oint_bin telegram ПолучитьИнформациюБота --token ${{ env.json_Telegram_Token }}
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+      - name: Выполнить ПолучитьИнформациюБота
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ПолучитьИнформациюБота\
+          --token "${{ env.json_Telegram_Token }}" \
+      - name: Выполнить ПолучитьОбновления
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ПолучитьОбновления\
+          --token "${{ env.json_Telegram_Token }}" \
+      - name: Выполнить УстановитьWebhook
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin УстановитьWebhook\
+          --token "${{ env.json_Telegram_Token }}" \
+          --url "${{ env.json_Telegram_URL }}" \
+      - name: Выполнить УдалитьWebhook
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin УдалитьWebhook\
+          --token "${{ env.json_Telegram_Token }}" \
+      - name: Выполнить ОтправитьТекстовоеСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьТекстовоеСообщение\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьКартинку
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьКартинку\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --path "" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьВидео
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьВидео\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --path "" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьАудио
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьАудио\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --path "" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьДокумент
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьДокумент\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --path "" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьГифку
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьГифку\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --path "" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьМедиагруппу
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьМедиагруппу\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --path "" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьМестоположение
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьМестоположение\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --lat "48.87373649724122" \
+          --long "48.87373649724122" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьКонтакт
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьКонтакт\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --name "Петр" \
+          --surname "Петров" \
+          --phone "+123456789" \
+          --keyboard "" \
+      - name: Выполнить ОтправитьОпрос
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОтправитьОпрос\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --question "Да или нет?" \
+          --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
+          --anonymous "true" \
+      - name: Выполнить ПереслатьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ПереслатьСообщение\
+          --token "${{ env.json_Telegram_Token }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
+          --from "${{ env.json_Telegram_ChannelID }}" \
+          --to "${{ env.json_Telegram_ChatID }}" \
+      - name: Выполнить Бан
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin Бан\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --user "${{ env.json_Telegram_ChatID }}" \
+      - name: Выполнить Разбан
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin Разбан\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --user "${{ env.json_Telegram_ChatID }}" \
+      - name: Выполнить СоздатьСсылкуПриглашение
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin СоздатьСсылкуПриглашение\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --name "Петр" \
+          --expire "1" \
+          --limit "1" \
+      - name: Выполнить ЗакрепитьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ЗакрепитьСообщение\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
+      - name: Выполнить ОткрепитьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОткрепитьСообщение\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
+      - name: Выполнить ПолучитьЧислоУчастников
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ПолучитьЧислоУчастников\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+      - name: Выполнить ПолучитьСписокИконокАватаров
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ПолучитьСписокИконокАватаров\
+          --token "${{ env.json_Telegram_Token }}" \
+      - name: Выполнить СоздатьТемуФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin СоздатьТемуФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --name "Петр" \
+          --icon "5350444672789519765 " \
+      - name: Выполнить ИзменитьТемуФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ИзменитьТемуФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+          --name "Петр" \
+          --icon "5350444672789519765 " \
+      - name: Выполнить ЗакрытьТемуФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ЗакрытьТемуФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+      - name: Выполнить ОткрытьТемуФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОткрытьТемуФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+      - name: Выполнить УдалитьТемуФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin УдалитьТемуФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+      - name: Выполнить СкрытьГлавнуюТемуФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin СкрытьГлавнуюТемуФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+      - name: Выполнить ПоказатьГлавнуюТемуФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ПоказатьГлавнуюТемуФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+      - name: Выполнить ИзменитьИмяГлавнойТемыФорума
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ИзменитьИмяГлавнойТемыФорума\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --name "Петр" \
+      - name: Выполнить ОчиститьСписокЗакрепленныхСообщенийТемы
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin ОчиститьСписокЗакрепленныхСообщенийТемы\
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+      - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
+        if: ${{ cancelled() }} == false
+        run: |
+          ./oint_bin СформироватьКлавиатуруПоМассивуКнопок\
+          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+          --under "true" \
+          --column "false" \
 
-    - name: Выполнить ПолучитьОбновления
-      if: ${{ cancelled() }} == false
-      run: ./oint_bin telegram ПолучитьОбновления --token ${{ env.json_Telegram_Token }}
-
-    - name: Выполнить УстановитьWebhook
-      if: ${{ cancelled() }} == false
-      run: ./oint_bin telegram УстановитьWebhook --token ${{ env.json_Telegram_Token }} --url ${{ env.json_Telegram_URL }}
-
-    - name: Выполнить УдалитьWebhook
-      if: ${{ cancelled() }} == false
-      run: ./oint_bin telegram УдалитьWebhook --token ${{ env.json_Telegram_Token }}
-
-    - name: Выполнить ОтправитьТекстовоеСообщение
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьТекстовоеСообщение \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение"
-
-    - name: Выполнить ОтправитьКартинку
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьКартинку \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение" \
-        --path "${{ env.json_Picture }}"
-
-    - name: Выполнить ОтправитьВидео
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьВидео \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение" \
-        --path ${{ env.json_Video }}
-
-    - name: Выполнить ОтправитьГифку
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьГифку \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение" \
-        --path ${{ env.json_GIF }}
-
-    - name: Выполнить ОтправитьАудио
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьАудио \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение" \
-        --path ${{ env.json_Audio }}
-      
-    - name: Выполнить ОтправитьДокумент
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьДокумент \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение" \
-        --path ${{ env.json_Document }}
-        
-    - name: Выполнить ОтправитьМедиагруппу
-      if: ${{ cancelled() }} == false
-      run: | 
-        echo " {
-          \"${{ env.json_Picture }}\" : \"photo\",
-          \"${{ env.json_Picture2 }}\" : \"photo\"
-          } " > mediagroup.json
-          
-        ./oint_bin telegram ОтправитьМедиагруппу \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --text "Тестовое сообщение" \
-        --path mediagroup.json
-
-    - name: Выполнить ОтправитьМестоположение
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьМестоположение \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --lat 48.87373649724122 \
-        --long "48.87373649724122"
-        
-    - name: Выполнить ОтправитьКонтакт
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьКонтакт \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --name Петр \
-        --surname Петров \
-        --phone +123456789
-
-    - name: Выполнить ОтправитьОпрос
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОтправитьОпрос \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChatID }} \
-        --question "Да или нет?" \
-        --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
-        --anonymous true
-
-    - name: Выполнить ПереслатьСообщение
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ПереслатьСообщение \
-        --token ${{ env.json_Telegram_Token }} \
-        --message ${{ env.json_Telegram_ChannelMessageID }} \
-        --to ${{ env.json_Telegram_ChatID }} \
-        --from ${{ env.json_Telegram_ChannelID }}
-
-    - name: Выполнить Бан
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram Бан \
-        --token ${{ env.json_Telegram_Token }} \
-        --user ${{ env.json_Telegram_ChatID }} \
-        --chat ${{ env.json_Telegram_ChannelID }}
-
-    - name: Выполнить Разбан
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram Разбан \
-        --token ${{ env.json_Telegram_Token }} \
-        --user ${{ env.json_Telegram_ChatID }} \
-        --chat ${{ env.json_Telegram_ChannelID }}
-
-    - name: Выполнить СоздатьСсылкуПриглашение
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram СоздатьСсылкуПриглашение \
-        --token ${{ env.json_Telegram_Token }} \
-        --name Yo \
-        --chat ${{ env.json_Telegram_ChannelID }} \
-        --expire 1 \
-        --limit 1
-
-    - name: Выполнить ЗакрепитьСообщение
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ЗакрепитьСообщение \
-        --token ${{ env.json_Telegram_Token }} \
-        --message ${{ env.json_Telegram_ChannelMessageID }} \
-        --chat ${{ env.json_Telegram_ChannelID }}
-
-    - name: Выполнить ОткрепитьСообщение
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОткрепитьСообщение \
-        --token ${{ env.json_Telegram_Token }} \
-        --message ${{ env.json_Telegram_ChannelMessageID }} \
-        --chat ${{ env.json_Telegram_ChannelID }}
-
-    - name: Выполнить ПолучитьЧислоУчастников
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ПолучитьЧислоУчастников \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ChannelID }}
-
-    - name: Выполнить ПолучитьСписокИконокАватаров
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ПолучитьСписокИконокАватаров \
-        --token ${{ env.json_Telegram_Token }} 
-
-    - name: Выполнить СоздатьТемуФорума
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram СоздатьТемуФорума \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }} \
-        --name "Новая тема" \
-        --icon 5350444672789519765 
-
-    - name: Выполнить ИзменитьТемуФорума
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ИзменитьТемуФорума \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }} \
-        --topic ${{ env.json_Telegram_TopicID }} \
-        --name "Новое имя темы" \
-        --icon 5312016608254762256 
-
-    - name: Выполнить ЗакрытьТемуФорума
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ЗакрытьТемуФорума \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }} \
-        --topic ${{ env.json_Telegram_TopicID }}
-
-    - name: Выполнить ОткрытьТемуФорума
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОткрытьТемуФорума \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }} \
-        --topic ${{ env.json_Telegram_TopicID }}
-
-    - name: Выполнить СкрытьГлавнуюТемуФорума
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram СкрытьГлавнуюТемуФорума \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }}
-
-    - name: Выполнить ПоказатьГлавнуюТемуФорума
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ПоказатьГлавнуюТемуФорума \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }}
-
-    - name: Выполнить ИзменитьИмяГлавнойТемыФорума
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }} \
-        --name "Yo"
-
-    - name: Выполнить ОчиститьСписокЗакрепленныхСообщенийТемы
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы \
-        --token ${{ env.json_Telegram_Token }} \
-        --chat ${{ env.json_Telegram_ForumID }} \
-        --topic ${{ env.json_Telegram_TopicID }}
-
-    - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
-      if: ${{ cancelled() }} == false
-      run: | 
-        ./oint_bin telegram СформироватьКлавиатуруПоМассивуКнопок \
-        --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
-        --under true \
-        --column false
         
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-Telegram]
+    needs: [Testing-telegram]
     if: ${{ always() }}
     steps:
       - name: Очистка кэша
