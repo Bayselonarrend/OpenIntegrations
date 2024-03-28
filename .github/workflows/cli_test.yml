@@ -93,6 +93,7 @@ jobs:
       - name: Выполнить ПолучитьИнформациюБота
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ПолучитьИнформациюБота \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -100,6 +101,7 @@ jobs:
       - name: Выполнить ПолучитьОбновления
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ПолучитьОбновления \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -107,6 +109,7 @@ jobs:
       - name: Выполнить УстановитьWebhook
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram УстановитьWebhook \
           --token "${{ env.json_Telegram_Token }}" \
           --url "${{ env.json_Telegram_URL }}" \
@@ -115,6 +118,7 @@ jobs:
       - name: Выполнить УдалитьWebhook
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram УдалитьWebhook \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -122,6 +126,7 @@ jobs:
       - name: Выполнить ОтправитьТекстовоеСообщение
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьТекстовоеСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -132,6 +137,7 @@ jobs:
       - name: Выполнить ОтправитьКартинку
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьКартинку \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -143,6 +149,7 @@ jobs:
       - name: Выполнить ОтправитьВидео
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьВидео \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -154,6 +161,7 @@ jobs:
       - name: Выполнить ОтправитьАудио
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьАудио \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -165,6 +173,7 @@ jobs:
       - name: Выполнить ОтправитьДокумент
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьДокумент \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -176,6 +185,7 @@ jobs:
       - name: Выполнить ОтправитьГифку
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьГифку \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -187,6 +197,7 @@ jobs:
       - name: Выполнить ОтправитьМедиагруппу
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьМедиагруппу \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -198,6 +209,7 @@ jobs:
       - name: Выполнить ОтправитьМестоположение
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьМестоположение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -209,6 +221,7 @@ jobs:
       - name: Выполнить ОтправитьКонтакт
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьКонтакт \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -221,6 +234,7 @@ jobs:
       - name: Выполнить ОтправитьОпрос
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОтправитьОпрос \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -232,6 +246,7 @@ jobs:
       - name: Выполнить ПереслатьСообщение
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ПереслатьСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
@@ -242,6 +257,7 @@ jobs:
       - name: Выполнить Бан
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram Бан \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -251,6 +267,7 @@ jobs:
       - name: Выполнить Разбан
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram Разбан \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -260,6 +277,7 @@ jobs:
       - name: Выполнить СоздатьСсылкуПриглашение
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram СоздатьСсылкуПриглашение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -271,6 +289,7 @@ jobs:
       - name: Выполнить ЗакрепитьСообщение
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ЗакрепитьСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -280,6 +299,7 @@ jobs:
       - name: Выполнить ОткрепитьСообщение
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОткрепитьСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -289,6 +309,7 @@ jobs:
       - name: Выполнить ПолучитьЧислоУчастников
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ПолучитьЧислоУчастников \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -297,6 +318,7 @@ jobs:
       - name: Выполнить ПолучитьСписокИконокАватаров
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ПолучитьСписокИконокАватаров \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -304,6 +326,7 @@ jobs:
       - name: Выполнить СоздатьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram СоздатьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -314,6 +337,7 @@ jobs:
       - name: Выполнить ИзменитьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ИзменитьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -325,6 +349,7 @@ jobs:
       - name: Выполнить ЗакрытьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ЗакрытьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -334,6 +359,7 @@ jobs:
       - name: Выполнить ОткрытьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОткрытьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -343,6 +369,7 @@ jobs:
       - name: Выполнить УдалитьТемуФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram УдалитьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -352,6 +379,7 @@ jobs:
       - name: Выполнить СкрытьГлавнуюТемуФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram СкрытьГлавнуюТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -360,6 +388,7 @@ jobs:
       - name: Выполнить ПоказатьГлавнуюТемуФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ПоказатьГлавнуюТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -368,6 +397,7 @@ jobs:
       - name: Выполнить ИзменитьИмяГлавнойТемыФорума
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -377,6 +407,7 @@ jobs:
       - name: Выполнить ОчиститьСписокЗакрепленныхСообщенийТемы
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -386,6 +417,7 @@ jobs:
       - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
         if: ${{ cancelled() }} == false
         run: |
+ 
           ./oint_bin telegram СформироватьКлавиатуруПоМассивуКнопок \
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
           --under "true" \
