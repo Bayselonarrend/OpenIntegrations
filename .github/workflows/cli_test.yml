@@ -94,6 +94,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ПолучитьИнформациюБота \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -102,6 +111,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ПолучитьОбновления \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -110,6 +128,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram УстановитьWebhook \
           --token "${{ env.json_Telegram_Token }}" \
           --url "${{ env.json_Telegram_URL }}" \
@@ -119,6 +146,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram УдалитьWebhook \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -127,6 +163,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьТекстовоеСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -138,6 +183,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьКартинку \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -150,6 +204,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьВидео \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -162,6 +225,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьАудио \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -174,6 +246,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьДокумент \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -186,6 +267,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьГифку \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -198,11 +288,20 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьМедиагруппу \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
-          --path "" \
+          --media "mediagroup.json" \
           --keyboard "" \
 
 
@@ -210,6 +309,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьМестоположение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -222,6 +330,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьКонтакт \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -235,6 +352,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОтправитьОпрос \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -247,6 +373,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ПереслатьСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
@@ -258,6 +393,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram Бан \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -268,6 +412,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram Разбан \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -278,6 +431,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram СоздатьСсылкуПриглашение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -290,6 +452,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ЗакрепитьСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -300,6 +471,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОткрепитьСообщение \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -310,6 +490,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ПолучитьЧислоУчастников \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
@@ -319,6 +508,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ПолучитьСписокИконокАватаров \
           --token "${{ env.json_Telegram_Token }}" \
 
@@ -327,6 +525,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram СоздатьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -338,6 +545,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ИзменитьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -350,6 +566,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ЗакрытьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -360,6 +585,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОткрытьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -370,6 +604,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram УдалитьТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -380,6 +623,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram СкрытьГлавнуюТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -389,6 +641,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ПоказатьГлавнуюТемуФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -398,6 +659,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -408,6 +678,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
@@ -418,6 +697,15 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
+
+       echo " {
+	      \"${{ env.json_Picture }}\" : \"photo\",
+	      \"${{ env.json_Picture2 }}\" : \"photo\"
+	      } " > mediagroup.json
+
+
+
+
           ./oint_bin telegram СформироватьКлавиатуруПоМассивуКнопок \
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
           --under "true" \
