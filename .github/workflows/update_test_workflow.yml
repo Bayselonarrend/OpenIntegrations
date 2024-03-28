@@ -1,4 +1,4 @@
-name: Обновить yml процесса тестирования
+name: CLI  | Обновить yml процесса тестирования
 
 on:
   workflow_dispatch:  
