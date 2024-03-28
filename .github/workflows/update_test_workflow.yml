@@ -19,6 +19,15 @@ jobs:
         with:
           version: 1.9.0 
 
+      - name: Установить cmdline, asserts и osparser
+        run: |
+          opm install cmdline
+          opm install asserts
+          opm install osparser
+          
+      - name: Сформировать список методов ОПИ -> CLI
+        run: oscript ./.github/workflows/os/cli_parse.os
+
       - name: Выполнить скрипт создания yml-файла
         run: oscript ./.github/workflows/os/cli_testmaker.os > ./.github/workflows/cli_test.yml
 
