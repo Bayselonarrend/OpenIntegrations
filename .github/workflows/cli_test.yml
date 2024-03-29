@@ -95,7 +95,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьИнформациюБота \
+          ./oint_bin telegram ПолучитьИнформациюБота --debug \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -104,7 +104,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьОбновления \
+          ./oint_bin telegram ПолучитьОбновления --debug \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -113,7 +113,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram УстановитьWebhook \
+          ./oint_bin telegram УстановитьWebhook --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --url "${{ env.json_Telegram_URL }}" \
 
@@ -123,7 +123,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram УдалитьWebhook \
+          ./oint_bin telegram УдалитьWebhook --debug \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -132,7 +132,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьТекстовоеСообщение \
+          ./oint_bin telegram ОтправитьТекстовоеСообщение --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -144,7 +144,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьКартинку \
+          ./oint_bin telegram ОтправитьКартинку --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -157,7 +157,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьВидео \
+          ./oint_bin telegram ОтправитьВидео --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -170,7 +170,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьАудио \
+          ./oint_bin telegram ОтправитьАудио --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -183,7 +183,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьДокумент \
+          ./oint_bin telegram ОтправитьДокумент --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -196,7 +196,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьГифку \
+          ./oint_bin telegram ОтправитьГифку --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -215,7 +215,7 @@ jobs:
           } " > mediagroup.json
 
 
-          ./oint_bin telegram ОтправитьМедиагруппу \
+          ./oint_bin telegram ОтправитьМедиагруппу --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -228,7 +228,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьМестоположение \
+          ./oint_bin telegram ОтправитьМестоположение --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --lat "48.87373649724122" \
@@ -241,7 +241,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьКонтакт \
+          ./oint_bin telegram ОтправитьКонтакт --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --name "Петр" \
@@ -255,7 +255,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьОпрос \
+          ./oint_bin telegram ОтправитьОпрос --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --question "Да или нет?" \
@@ -268,7 +268,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПереслатьСообщение \
+          ./oint_bin telegram ПереслатьСообщение --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
           --from "${{ env.json_Telegram_ChannelID }}" \
@@ -280,7 +280,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram Бан \
+          ./oint_bin telegram Бан --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --user "${{ env.json_Telegram_ChatID }}" \
@@ -291,7 +291,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram Разбан \
+          ./oint_bin telegram Разбан --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --user "${{ env.json_Telegram_ChatID }}" \
@@ -302,7 +302,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СоздатьСсылкуПриглашение \
+          ./oint_bin telegram СоздатьСсылкуПриглашение --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --title "Тест" \
@@ -315,7 +315,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ЗакрепитьСообщение \
+          ./oint_bin telegram ЗакрепитьСообщение --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
@@ -326,7 +326,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОткрепитьСообщение \
+          ./oint_bin telegram ОткрепитьСообщение --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
@@ -337,7 +337,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьЧислоУчастников \
+          ./oint_bin telegram ПолучитьЧислоУчастников --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
 
@@ -347,7 +347,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьСписокИконокАватаров \
+          ./oint_bin telegram ПолучитьСписокИконокАватаров --debug \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -356,7 +356,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СоздатьТемуФорума \
+          ./oint_bin telegram СоздатьТемуФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --title "Тест" \
@@ -368,7 +368,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ИзменитьТемуФорума \
+          ./oint_bin telegram ИзменитьТемуФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -381,7 +381,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ЗакрытьТемуФорума \
+          ./oint_bin telegram ЗакрытьТемуФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -392,7 +392,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОткрытьТемуФорума \
+          ./oint_bin telegram ОткрытьТемуФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -403,7 +403,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram УдалитьТемуФорума \
+          ./oint_bin telegram УдалитьТемуФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -414,7 +414,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СкрытьГлавнуюТемуФорума \
+          ./oint_bin telegram СкрытьГлавнуюТемуФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
 
@@ -424,7 +424,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПоказатьГлавнуюТемуФорума \
+          ./oint_bin telegram ПоказатьГлавнуюТемуФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
 
@@ -434,7 +434,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума \
+          ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --name "Петр" \
@@ -445,7 +445,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы \
+          ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы --debug \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -456,7 +456,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СформироватьКлавиатуруПоМассивуКнопок \
+          ./oint_bin telegram СформироватьКлавиатуруПоМассивуКнопок --debug \
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
           --under "true" \
           --column "false" \
@@ -494,7 +494,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin vk СоздатьСсылкуПолученияТокена \
+          ./oint_bin vk СоздатьСсылкуПолученияТокена --debug \
           --app "${{ env.json_VK_AppID }}" \
 
 
@@ -513,7 +513,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьПост \
+          ./oint_bin vk СоздатьПост --debug \
           --text "Тестовый текст" \
           --pictures "['${{ env.json_Picture }}', '${{ env.json_Picture2 }}']" \
           --ad "false" \
@@ -536,7 +536,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьПост \
+          ./oint_bin vk УдалитьПост --debug \
           --post "1159" \
           --auth "auth.json" \
 
@@ -556,7 +556,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьОпрос \
+          ./oint_bin vk СоздатьОпрос --debug \
           --question "Да или нет?" \
           --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
           --picture "${{ env.json_Picture }}" \
@@ -578,7 +578,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьАльбом \
+          ./oint_bin vk СоздатьАльбом --debug \
           --name "Петр" \
           --description "Тестовое описание" \
           --auth "auth.json" \
@@ -599,7 +599,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьАльбом \
+          ./oint_bin vk УдалитьАльбом --debug \
           --album "1" \
           --auth "auth.json" \
 
@@ -619,7 +619,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьИсторию \
+          ./oint_bin vk СоздатьИсторию --debug \
           --picture "${{ env.json_Picture }}" \
           --url "https://github.com/Bayselonarrend/OpenIntegrations" \
           --auth "auth.json" \
@@ -640,7 +640,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СохранитьКартинкуВАльбом \
+          ./oint_bin vk СохранитьКартинкуВАльбом --debug \
           --album "1" \
           --picture "${{ env.json_Picture }}" \
           --description "Тестовое описание" \
@@ -662,7 +662,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьКартинку \
+          ./oint_bin vk УдалитьКартинку --debug \
           --pictureid "1" \
           --auth "auth.json" \
 
@@ -682,7 +682,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьОбсуждение \
+          ./oint_bin vk СоздатьОбсуждение --debug \
           --title "" \
           --text "Тестовый текст" \
           --auth "auth.json" \
@@ -703,7 +703,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ЗакрытьОбсуждение \
+          ./oint_bin vk ЗакрытьОбсуждение --debug \
           --topic "1" \
           --remove "1" \
           --auth "auth.json" \
@@ -724,7 +724,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ОткрытьОбсуждение \
+          ./oint_bin vk ОткрытьОбсуждение --debug \
           --topic "1" \
           --auth "auth.json" \
 
@@ -744,7 +744,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk НаписатьВОбсуждение \
+          ./oint_bin vk НаписатьВОбсуждение --debug \
           --topic "1" \
           --text "Тестовый текст" \
           --auth "auth.json" \
@@ -765,7 +765,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПоставитьЛайк \
+          ./oint_bin vk ПоставитьЛайк --debug \
           --post "1159" \
           --wall "-${{ env.json_VK_GroupID }}" \
           --auth "auth.json" \
@@ -786,7 +786,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СделатьРепост \
+          ./oint_bin vk СделатьРепост --debug \
           --post "1159" \
           --from "-${{ env.json_VK_GroupID }}" \
           --ad "false" \
@@ -808,7 +808,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk НаписатьСообщение \
+          ./oint_bin vk НаписатьСообщение --debug \
           --text "Тестовый текст" \
           --user "${{ env.json_VK_UserID }}" \
           --ct "${{ env.json_VK_CommunityToken }}" \
@@ -831,7 +831,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk НаписатьКомментарий \
+          ./oint_bin vk НаписатьКомментарий --debug \
           --post "1159" \
           --wall "-${{ env.json_VK_GroupID }}" \
           --text "Тестовый текст" \
@@ -853,7 +853,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СократитьСсылку \
+          ./oint_bin vk СократитьСсылку --debug \
           --url "https://github.com/Bayselonarrend/OpenIntegrations" \
           --auth "auth.json" \
 
@@ -873,7 +873,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСтатистику \
+          ./oint_bin vk ПолучитьСтатистику --debug \
           --datefrom "" \
           --dateto "" \
           --auth "auth.json" \
@@ -894,7 +894,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСтатистикуПостов \
+          ./oint_bin vk ПолучитьСтатистикуПостов --debug \
           --posts "" \
           --auth "auth.json" \
 
@@ -914,7 +914,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьРекламнуюКампанию \
+          ./oint_bin vk СоздатьРекламнуюКампанию --debug \
           --cabinet "${{ env.json_VK_AdsCabinetID }}" \
           --title "" \
           --auth "auth.json" \
@@ -935,7 +935,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьРекламноеОбъявление \
+          ./oint_bin vk СоздатьРекламноеОбъявление --debug \
           --campaign "1" \
           --limit "1" \
           --category "1" \
@@ -959,7 +959,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПриостановитьРекламноеОбъявление \
+          ./oint_bin vk ПриостановитьРекламноеОбъявление --debug \
           --cabinet "${{ env.json_VK_AdsCabinetID }}" \
           --adv "1" \
           --auth "auth.json" \
@@ -980,7 +980,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокРекламныхКатегорий \
+          ./oint_bin vk ПолучитьСписокРекламныхКатегорий --debug \
           --auth "auth.json" \
 
 
@@ -999,7 +999,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокКатегорийТоваров \
+          ./oint_bin vk ПолучитьСписокКатегорийТоваров --debug \
           --auth "auth.json" \
 
 
@@ -1018,7 +1018,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокТоваров \
+          ./oint_bin vk ПолучитьСписокТоваров --debug \
           --sel "" \
           --auth "auth.json" \
 
@@ -1038,7 +1038,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьТоварыПоИД \
+          ./oint_bin vk ПолучитьТоварыПоИД --debug \
           --items "['1111111','2222222']" \
           --auth "auth.json" \
 
@@ -1078,7 +1078,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ДобавитьТовар \
+          ./oint_bin vk ДобавитьТовар --debug \
           --product "product.json" \
           --sel "" \
           --auth "auth.json" \
@@ -1119,7 +1119,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьТовар \
+          ./oint_bin vk ИзменитьТовар --debug \
           --item "1" \
           --product "product.json" \
           --sel "" \
@@ -1141,7 +1141,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьТовар \
+          ./oint_bin vk УдалитьТовар --debug \
           --item "1" \
           --auth "auth.json" \
 
@@ -1161,7 +1161,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СгруппироватьТовары \
+          ./oint_bin vk СгруппироватьТовары --debug \
           --items "['1111111','2222222']" \
           --sellgroup "1" \
           --auth "auth.json" \
@@ -1182,7 +1182,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокПодборок \
+          ./oint_bin vk ПолучитьСписокПодборок --debug \
           --auth "auth.json" \
 
 
@@ -1201,7 +1201,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьПодборкиПоИД \
+          ./oint_bin vk ПолучитьПодборкиПоИД --debug \
           --sels "['1111111','2222222']" \
           --auth "auth.json" \
 
@@ -1221,7 +1221,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьПодборкуТоваров \
+          ./oint_bin vk СоздатьПодборкуТоваров --debug \
           --title "" \
           --picture "${{ env.json_Picture }}" \
           --main "false" \
@@ -1244,7 +1244,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьПодборкуТоваров \
+          ./oint_bin vk ИзменитьПодборкуТоваров --debug \
           --title "" \
           --sel "" \
           --picture "${{ env.json_Picture }}" \
@@ -1268,7 +1268,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ДобавитьТоварВПодборку \
+          ./oint_bin vk ДобавитьТоварВПодборку --debug \
           --items "['1111111','2222222']" \
           --sel "" \
           --auth "auth.json" \
@@ -1289,7 +1289,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьТоварИзПодборки \
+          ./oint_bin vk УдалитьТоварИзПодборки --debug \
           --item "1" \
           --sel "" \
           --auth "auth.json" \
@@ -1310,7 +1310,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьПодборку \
+          ./oint_bin vk УдалитьПодборку --debug \
           --sel "" \
           --auth "auth.json" \
 
@@ -1330,7 +1330,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокСвойств \
+          ./oint_bin vk ПолучитьСписокСвойств --debug \
           --auth "auth.json" \
 
 
@@ -1349,7 +1349,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьСвойствоТовара \
+          ./oint_bin vk СоздатьСвойствоТовара --debug \
           --title "" \
           --auth "auth.json" \
 
@@ -1369,7 +1369,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьСвойствоТовара \
+          ./oint_bin vk ИзменитьСвойствоТовара --debug \
           --title "" \
           --prop "1" \
           --auth "auth.json" \
@@ -1390,7 +1390,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьСвойствоТовара \
+          ./oint_bin vk УдалитьСвойствоТовара --debug \
           --prop "1" \
           --auth "auth.json" \
 
@@ -1410,7 +1410,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ДобавитьВариантСвойстваТовара \
+          ./oint_bin vk ДобавитьВариантСвойстваТовара --debug \
           --value "Тест" \
           --prop "1" \
           --auth "auth.json" \
@@ -1431,7 +1431,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьВариантСвойстваТовара \
+          ./oint_bin vk ИзменитьВариантСвойстваТовара --debug \
           --value "Тест" \
           --prop "1" \
           --option "1" \
@@ -1453,7 +1453,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьВариантСвойстваТовара \
+          ./oint_bin vk УдалитьВариантСвойстваТовара --debug \
           --option "1" \
           --auth "auth.json" \
 
@@ -1473,7 +1473,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокЗаказов \
+          ./oint_bin vk ПолучитьСписокЗаказов --debug \
           --auth "auth.json" \
 
 
@@ -1482,7 +1482,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin vk СформироватьКлавиатуру \
+          ./oint_bin vk СформироватьКлавиатуру --debug \
           --buttons "['1111111','2222222']" \
 
 
