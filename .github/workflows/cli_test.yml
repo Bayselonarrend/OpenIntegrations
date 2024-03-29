@@ -462,6 +462,1030 @@ jobs:
           --column "false" \
 
 
+  Testing-vk:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить СоздатьСсылкуПолученияТокена
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin vk СоздатьСсылкуПолученияТокена \
+          --app "${{ env.json_VK_AppID }}" \
+
+
+
+      - name: Выполнить СоздатьПост
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьПост \
+          --text "Тестовый текст" \
+          --pictures "['${{ env.json_Picture }}', '${{ env.json_Picture2 }}']" \
+          --ad "false" \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьПост
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьПост \
+          --post "1159" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьОпрос
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьОпрос \
+          --question "Да или нет?" \
+          --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
+          --picture "${{ env.json_Picture }}" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьАльбом
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьАльбом \
+          --name "Петр" \
+          --description "Тестовое описание" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьАльбом
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьАльбом \
+          --album "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьИсторию
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьИсторию \
+          --picture "${{ env.json_Picture }}" \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СохранитьКартинкуВАльбом
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СохранитьКартинкуВАльбом \
+          --album "1" \
+          --picture "${{ env.json_Picture }}" \
+          --description "Тестовое описание" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьКартинку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьКартинку \
+          --pictureid "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьОбсуждение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьОбсуждение \
+          --title "" \
+          --text "Тестовый текст" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ЗакрытьОбсуждение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ЗакрытьОбсуждение \
+          --topic "1" \
+          --remove "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ОткрытьОбсуждение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ОткрытьОбсуждение \
+          --topic "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить НаписатьВОбсуждение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk НаписатьВОбсуждение \
+          --topic "1" \
+          --text "Тестовый текст" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПоставитьЛайк
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПоставитьЛайк \
+          --post "1159" \
+          --wall "-${{ env.json_VK_GroupID }}" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СделатьРепост
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СделатьРепост \
+          --post "1159" \
+          --from "-${{ env.json_VK_GroupID }}" \
+          --ad "false" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить НаписатьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk НаписатьСообщение \
+          --text "Тестовый текст" \
+          --user "${{ env.json_VK_UserID }}" \
+          --ct "${{ env.json_VK_CommunityToken }}" \
+          --keyboard "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить НаписатьКомментарий
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk НаписатьКомментарий \
+          --post "1159" \
+          --wall "-${{ env.json_VK_GroupID }}" \
+          --text "Тестовый текст" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СократитьСсылку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СократитьСсылку \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСтатистику
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСтатистику \
+          --datefrom "" \
+          --dateto "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСтатистикуПостов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСтатистикуПостов \
+          --posts "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьРекламнуюКампанию
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьРекламнуюКампанию \
+          --cabinet "${{ env.json_VK_AdsCabinetID }}" \
+          --title "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьРекламноеОбъявление
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьРекламноеОбъявление \
+          --campaign "1" \
+          --limit "1" \
+          --category "1" \
+          --post "1159" \
+          --cabinet "${{ env.json_VK_AdsCabinetID }}" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПриостановитьРекламноеОбъявление
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПриостановитьРекламноеОбъявление \
+          --cabinet "${{ env.json_VK_AdsCabinetID }}" \
+          --adv "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСписокРекламныхКатегорий
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСписокРекламныхКатегорий \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСписокКатегорийТоваров
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСписокКатегорийТоваров \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСписокТоваров
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСписокТоваров \
+          --sel "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьТоварыПоИД
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьТоварыПоИД \
+          --items "['1111111','2222222']" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ДобавитьТовар
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"Имя\"                  : \"Тест\",
+            \"Описание\"             : \"Тест\",
+            \"Категория\"            : \"20173\",
+            \"Цена\"                 : \"1\",
+            \"СтараяЦена\"           : \"2\",
+            \"ОсновноеФото\"         : \"${{ env.json_Picture }}\"
+            \"URL\"                  : \"https://github.com/Bayselonarrend/OpenIntegrations\"
+            \"ДополнительныеФото\"   : \"[]\"
+            \"ЗначенияСвойств\"      : \"[]\"
+            \"ГлавныйВГруппе\"       : \"false\"
+            \"Ширина\"               : \"1\"
+            \"Высота\"               : \"1\"
+            \"Глубина\"              : \"1\"
+            \"Вес\"                  : \"1\"
+            \"SKU\"                  : \"12345\"
+            \"ДоступныйОстаток\"     : \"1\"
+          } " > product.json
+
+
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ДобавитьТовар \
+          --product "product.json" \
+          --sel "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ИзменитьТовар
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"Имя\"                  : \"Тест\",
+            \"Описание\"             : \"Тест\",
+            \"Категория\"            : \"20173\",
+            \"Цена\"                 : \"1\",
+            \"СтараяЦена\"           : \"2\",
+            \"ОсновноеФото\"         : \"${{ env.json_Picture }}\"
+            \"URL\"                  : \"https://github.com/Bayselonarrend/OpenIntegrations\"
+            \"ДополнительныеФото\"   : \"[]\"
+            \"ЗначенияСвойств\"      : \"[]\"
+            \"ГлавныйВГруппе\"       : \"false\"
+            \"Ширина\"               : \"1\"
+            \"Высота\"               : \"1\"
+            \"Глубина\"              : \"1\"
+            \"Вес\"                  : \"1\"
+            \"SKU\"                  : \"12345\"
+            \"ДоступныйОстаток\"     : \"1\"
+          } " > product.json
+
+
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ИзменитьТовар \
+          --item "1" \
+          --product "product.json" \
+          --sel "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьТовар
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьТовар \
+          --item "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СгруппироватьТовары
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СгруппироватьТовары \
+          --items "['1111111','2222222']" \
+          --sellgroup "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСписокПодборок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСписокПодборок \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьПодборкиПоИД
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьПодборкиПоИД \
+          --sels "['1111111','2222222']" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьПодборкуТоваров
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьПодборкуТоваров \
+          --title "" \
+          --picture "${{ env.json_Picture }}" \
+          --main "false" \
+          --hidden "false" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ИзменитьПодборкуТоваров
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ИзменитьПодборкуТоваров \
+          --title "" \
+          --sel "" \
+          --picture "${{ env.json_Picture }}" \
+          --main "false" \
+          --hidden "false" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ДобавитьТоварВПодборку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ДобавитьТоварВПодборку \
+          --items "['1111111','2222222']" \
+          --sel "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьТоварИзПодборки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьТоварИзПодборки \
+          --item "1" \
+          --sel "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьПодборку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьПодборку \
+          --sel "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСписокСвойств
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСписокСвойств \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СоздатьСвойствоТовара
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk СоздатьСвойствоТовара \
+          --title "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ИзменитьСвойствоТовара
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ИзменитьСвойствоТовара \
+          --title "" \
+          --prop "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьСвойствоТовара
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьСвойствоТовара \
+          --prop "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ДобавитьВариантСвойстваТовара
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ДобавитьВариантСвойстваТовара \
+          --value "Тест" \
+          --prop "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ИзменитьВариантСвойстваТовара
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ИзменитьВариантСвойстваТовара \
+          --value "Тест" \
+          --prop "1" \
+          --option "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить УдалитьВариантСвойстваТовара
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk УдалитьВариантСвойстваТовара \
+          --option "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ПолучитьСписокЗаказов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint_bin vk ПолучитьСписокЗаказов \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить СформироватьКлавиатуру
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin vk СформироватьКлавиатуру \
+          --buttons "['1111111','2222222']" \
+
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram]
