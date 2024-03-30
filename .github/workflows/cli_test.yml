@@ -789,6 +789,7 @@ jobs:
           ./oint_bin vk СделатьРепост --debug \
           --post "1159" \
           --from "-${{ env.json_VK_GroupID }}" \
+          --to "-${{ env.json_VK_GroupID }}" \
           --ad false \
           --auth "auth.json" \
 
