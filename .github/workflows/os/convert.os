@@ -2,19 +2,20 @@
 
 	Сопоставление = Новый Соответствие();
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleCalendar/Module.bsl"			, "./OInt/core/Modules/OPI_GoogleCalendar.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleDrive/Module.bsl"			, "./OInt/core/Modules/OPI_GoogleDrive.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleDrive/Module.bsl"			    , "./OInt/core/Modules/OPI_GoogleDrive.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleWorkspace/Module.bsl"			, "./OInt/core/Modules/OPI_GoogleWorkspace.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Notion/Module.bsl"				, "./OInt/core/Modules/OPI_Notion.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Telegram/Module.bsl"			, "./OInt/core/Modules/OPI_Telegram.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Twitter/Module.bsl"				, "./OInt/core/Modules/OPI_Twitter.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Viber/Module.bsl"				, "./OInt/core/Modules/OPI_Viber.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_VK/Module.bsl"				, "./OInt/core/Modules/OPI_VK.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexDisk/Module.bsl"			, "./OInt/core/Modules/OPI_YandexDisk.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexID/Module.bsl"			, "./OInt/core/Modules/OPI_YandexID.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Notion/Module.bsl"				    , "./OInt/core/Modules/OPI_Notion.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Telegram/Module.bsl"			    , "./OInt/core/Modules/OPI_Telegram.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Twitter/Module.bsl"				    , "./OInt/core/Modules/OPI_Twitter.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Viber/Module.bsl"				    , "./OInt/core/Modules/OPI_Viber.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_VK/Module.bsl"				        , "./OInt/core/Modules/OPI_VK.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexDisk/Module.bsl"			    , "./OInt/core/Modules/OPI_YandexDisk.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexID/Module.bsl"			    , "./OInt/core/Modules/OPI_YandexID.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Тесты/Module.bsl"			    	, "./OInt/tests/Modules/internal/OPI_Тесты.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_ПолучениеДанныхТестов/Module.bsl"	        , "./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Инструменты/Module.bsl"			, "./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_ПолучениеДанныхТестов/Module.bsl"	, "./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Инструменты/Module.bsl"			    , "./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Криптография/Module.bsl"			, "./OInt/tools/Modules/internal/Modules/OPI_Криптография.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_ПреобразованиеТипов/Module.bsl"		, "./OInt/tools/Modules/OPI_ПреобразованиеТипов.os");
 	
 	Возврат Сопоставление;
 КонецФункции 
@@ -24,9 +25,9 @@
 	СоответствиеЗамен = Новый Соответствие();
 	СоответствиеЗамен.Вставить("// #Использовать"					, "#Использовать");
 	СоответствиеЗамен.Вставить("//#Использовать" 					, "#Использовать");
-	СоответствиеЗамен.Вставить("УстановитьБезопасныйРежим(Истина);"			, "");
-	СоответствиеЗамен.Вставить("УстановитьБезопасныйРежим(Ложь);"			, "");
-	СоответствиеЗамен.Вставить("// !OInt "						, "");
+	СоответствиеЗамен.Вставить("УстановитьБезопасныйРежим(Истина);"	, "");
+	СоответствиеЗамен.Вставить("УстановитьБезопасныйРежим(Ложь);"	, "");
+	СоответствиеЗамен.Вставить("// !OInt "						    , "");
 
 	Возврат СоответствиеЗамен;
 
