@@ -1,4 +1,34 @@
-﻿#Область СлужебныйПрограммныйИнтерфейс
+﻿// MIT License
+
+// Copyright (c) 2023 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:UnusedLocalVariable-off
+
+#Использовать "./internal"
+
+#Область СлужебныйПрограммныйИнтерфейс
 
 Процедура ПолучитьДвоичныеДанные(Значение) Экспорт
     
@@ -46,6 +76,12 @@
             Возврат;
         Иначе
             
+            Если ТипЗнч(Значение) = Тип("ДвоичныеДанные") Тогда
+                Значение = ПолучитьСтрокуИзДвоичныхДанных(Значение);
+            Иначе
+                Значение = OPI_Инструменты.ЧислоВСтроку(Значение);
+            КонецЕсли;
+            
             Файл        = Новый Файл(Значение);
             ЧтениеJSON  = Новый ЧтениеJSON;
             
@@ -54,7 +90,7 @@
                 ЧтениеJSON.ОткрытьФайл(Значение);
                 ЧтениеJSON.Прочитать();
                 
-           ИначеЕсли СтрНайти(Значение, "://") Тогда
+           ИначеЕсли СтрНачинаетсяС(нРег(Значение), "http") Тогда
                 
                 ИВФ = ПолучитьИмяВременногоФайла();
                 КопироватьФайл(Значение, ИВФ);
@@ -76,7 +112,9 @@
     
     Исключение
         
-        Если ТипЗнч(Значение) = Тип("Строка") И СтрНайти(Значение, "[") > 0 Тогда
+        Если ТипЗнч(Значение) = Тип("Строка") 
+            И СтрНачинаетсяС(Значение, "[")
+            И СтрЗаканчиваетсяНа(Значение, "]") Тогда
             
             Значение = СтрЗаменить(Значение, "['"   , "");
             Значение = СтрЗаменить(Значение, "']"   , "");
@@ -118,16 +156,16 @@
 
 Процедура ПолучитьСтроку(Значение, Знач ИзИсточника = Ложь) Экспорт
     
-    Если Не ИзИсточника Тогда
-        Значение = OPI_Инструменты.ЧислоВСтроку(Значение);
-        Возврат;    
-    КонецЕсли;
-    
     Попытка 
         
         Если ТипЗнч(Значение) = Тип("Строка")
             Или ТипЗнч(Значение) = Тип("Число") 
             Или ТипЗнч(Значение) = Тип("Дата") Тогда
+                
+            Если Не ИзИсточника Тогда
+                Значение = OPI_Инструменты.ЧислоВСтроку(Значение);
+                Возврат;    
+            КонецЕсли;
               
             Значение = OPI_Инструменты.ЧислоВСтроку(Значение);  
             Файл     = Новый Файл(Значение);
@@ -138,7 +176,7 @@
                 Значение     = ЧтениеТекста.Прочитать();
                 ЧтениеТекста.Закрыть();
                 
-            ИначеЕсли СтрНайти(Значение, "://") Тогда
+            ИначеЕсли СтрНачинаетсяС(нРег(Значение), "http") Тогда
                 
                 ИВФ = ПолучитьИмяВременногоФайла();
                 КопироватьФайл(Значение, ИВФ);
