@@ -875,8 +875,8 @@ jobs:
 
 
           ./oint_bin vk ПолучитьСтатистику --debug \
-          --datefrom "" \
-          --dateto "" \
+          --datefrom "2024-02-30T23:50:08+03:00" \
+          --dateto "2024-03-30T23:50:08+03:00" \
           --auth "auth.json" \
 
 
