@@ -896,7 +896,7 @@ jobs:
 
 
           ./oint_bin vk ПолучитьСтатистикуПостов --debug \
-          --posts "" \
+          --posts "['1111111','2222222']" \
           --auth "auth.json" \
 
 
