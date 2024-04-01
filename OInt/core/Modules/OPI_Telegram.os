@@ -315,8 +315,7 @@
     OPI_ПреобразованиеТипов.ПолучитьСтроку(Долгота);
     OPI_ПреобразованиеТипов.ПолучитьСтроку(Клавиатура, Истина);
     
-    IDЧата = OPI_Инструменты.ЧислоВСтроку(IDЧата);
-    URL    = "api.telegram.org/bot" + Токен + "/sendLocation";
+    URL = "api.telegram.org/bot" + Токен + "/sendLocation";
     
     Параметры_ = Новый Структура;
     Параметры_.Вставить("parse_mode"  , "Markdown");
@@ -528,7 +527,7 @@
     OPI_ПреобразованиеТипов.ПолучитьСтроку(ЛимитПользователей);
     OPI_ПреобразованиеТипов.ПолучитьДату(ДатаИстечения);
     
-    URL        = "api.telegram.org/bot" + Токен + "/createChatInviteLink";
+    URL = "api.telegram.org/bot" + Токен + "/createChatInviteLink";
     
     Параметры_ = Новый Структура;
     Параметры_.Вставить("parse_mode", "Markdown");
@@ -564,7 +563,7 @@
     OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
     OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСообщения);
     
-    URL        = "api.telegram.org/bot" + Токен + "/pinChatMessage";
+    URL = "api.telegram.org/bot" + Токен + "/pinChatMessage";
     
     Параметры_ = Новый Структура;
     Параметры_.Вставить("parse_mode"          , "Markdown");
@@ -594,7 +593,7 @@
     OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
     OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСообщения);
     
-    URL        = "api.telegram.org/bot" + Токен + "/unpinChatMessage";
+    URL = "api.telegram.org/bot" + Токен + "/unpinChatMessage";
     
     Параметры_ = Новый Структура;
     Параметры_.Вставить("parse_mode", "Markdown");
@@ -621,7 +620,7 @@
     OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
     OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
     
-    URL        = "api.telegram.org/bot" + Токен + "/getChatMemberCount";
+    URL = "api.telegram.org/bot" + Токен + "/getChatMemberCount";
     
     Параметры_ = Новый Структура;
     Параметры_.Вставить("parse_mode", "Markdown");
@@ -720,7 +719,7 @@
     OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
     
     Result    = "result";
-    URL       = "api.telegram.org/bot" + Токен + "/getForumTopicIconStickers";
+    URL       = "api.telegram.org/bot" + Токен + "/getForumTopicIconStickers";     
     Ответ     = OPI_Инструменты.Get(URL);
     
     Иконки    = Ответ[Result];
