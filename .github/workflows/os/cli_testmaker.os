@@ -378,7 +378,7 @@
 	Сообщить("
 	|  Clear-Cache:
     |    runs-on: ubuntu-latest
-    |    needs: [Testing-telegram]
+    |    needs: [Testing-telegram, Testing-vk, Testing-viber]
     |    if: ${{ always() }}
     |    steps:
     |      - name: Очистка кэша
