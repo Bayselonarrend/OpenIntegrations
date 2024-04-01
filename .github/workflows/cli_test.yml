@@ -1546,7 +1546,7 @@ jobs:
  
           ./oint_bin viber ПолучитьОнлайнПользователей --debug --test \
           --token "${{ env.json_Viber_Token }}" \
-          --я) Viber "" \
+          --users "" \
 
 
 
@@ -1586,7 +1586,7 @@ jobs:
           --user "${{ env.json_Viber_UserID }}" \
           --ischannel true \
           --ext ".txt" \
-          --определяется автоматически, но при этом происходит скачивание файла "" \
+          --size "10" \
 
 
 
@@ -1639,7 +1639,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-telegram]
+    needs: [Testing-telegram, Testing-vk, Testing-viber]
     if: ${{ always() }}
     steps:
       - name: Очистка кэша
