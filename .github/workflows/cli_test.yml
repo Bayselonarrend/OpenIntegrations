@@ -1483,6 +1483,160 @@ jobs:
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
 
 
+  Testing-viber:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить УстановитьWebhook
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber УстановитьWebhook --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --url "" \
+
+
+
+      - name: Выполнить ПолучитьИнформациюОКанале
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ПолучитьИнформациюОКанале --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+
+
+
+      - name: Выполнить ПолучитьДанныеПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ПолучитьДанныеПользователя --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --user "${{ env.json_Viber_UserID }}" \
+
+
+
+      - name: Выполнить ПолучитьОнлайнПользователей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ПолучитьОнлайнПользователей --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --я) Viber "" \
+
+
+
+      - name: Выполнить ОтправитьТекстовоеСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ОтправитьТекстовоеСообщение --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --text "Тестовый текст" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+          --keyboard "" \
+
+
+
+      - name: Выполнить ОтправитьКартинку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ОтправитьКартинку --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --picture "${{ env.json_Picture }}" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+          --description "Тестовое описание" \
+
+
+
+      - name: Выполнить ОтправитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ОтправитьФайл --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --file "" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+          --ext ".txt" \
+          --определяется автоматически, но при этом происходит скачивание файла "" \
+
+
+
+      - name: Выполнить ОтправитьКонтакт
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ОтправитьКонтакт --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --name "Петр" \
+          --phone "+123456789" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+
+
+
+      - name: Выполнить ОтправитьЛокацию
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ОтправитьЛокацию --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --lat "48.87373649724122" \
+          --long "48.87373649724122" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+
+
+
+      - name: Выполнить ОтправитьСсылку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber ОтправитьСсылку --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --url "" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+
+
+
+      - name: Выполнить СформироватьКлавиатуруИзМассиваКнопок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin viber СформироватьКлавиатуруИзМассиваКнопок --debug --test \
+          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+          --color "" \
+
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram]
