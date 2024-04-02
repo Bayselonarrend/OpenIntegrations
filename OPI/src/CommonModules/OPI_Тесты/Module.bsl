@@ -29,6 +29,7 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UsingServiceTag-off
 // BSLLS:UnusedParameters-off
+// BSLLS:DuplicateStringLiteral-off
 
 // @skip-check undefined-variable
 
@@ -331,8 +332,8 @@
     
     JSON = 
     "{
-    | """ + КартинкаURL + """ : ""picture"",
-    | """ + КартинкаURL2 + """ : ""picture""
+    | """ + КартинкаURL + """ : ""photo"",
+    | """ + КартинкаURL2 + """ : ""photo""
     |}";
     
     ИВФ_JSON = ПолучитьИмяВременногоФайла("json");
