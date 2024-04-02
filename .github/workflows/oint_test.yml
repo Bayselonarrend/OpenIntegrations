@@ -10,7 +10,7 @@ jobs:
 
   Decode:
     runs-on: ubuntu-latest
-    if: ${{ cancelled() }} == false
+    if: ${{ always() }}
     steps:
     
       - uses: actions/checkout@v4 
