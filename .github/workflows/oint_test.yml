@@ -319,7 +319,70 @@ jobs:
           - name: Выполнить Вайбер_ОтправитьСсылку
             if: ${{ cancelled() }} == false
             run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
+  
+  Testing-Notion:
+        runs-on: ubuntu-latest
+        needs: Decode
+        steps:
+    
+          - uses: actions/checkout@v2 
+          - uses: otymko/setup-onescript@v1.4
+            with:
+              version: 1.9.0 
+              
+          - name: Получить тестовые данные из кэша
+            uses: actions/cache/restore@v3
+            with:
+              key: test-data
+              path: ./data.json
+              
+          - name: Установить asserts и 1testrunner
+            run: |
+              opm install asserts
+              opm install 1testrunner
 
+          - name: Установить OInt
+            run: |
+              cd ./OInt
+              opm build
+              opm install oint-1.5.0.ospx
+    
+          - name: Выполнить Ноушн_СоздатьСтраницу
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницу"
+
+          - name: Выполнить Ноушн_СоздатьИзменитьБазу
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьИзменитьБазу"
+
+          - name: Выполнить Ноушн_ПолучитьИнформациюОСтранице
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОСтранице"
+
+          - name: Выполнить Ноушн_ПолучитьИнформациюОБазе
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОБазе"
+
+          - name: Выполнить Ноушн_СоздатьСтраницуВБазу
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницуВБазу"
+
+          - name: Выполнить Ноушн_ИзменитьСвойстваСтраницы
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ИзменитьСвойстваСтраницы"
+
+          - name: Выполнить Ноушн_СоздатьУдалитьБлок
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьУдалитьБлок"
+
+          - name: Выполнить Ноушн_ПолучитьПользователей
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьПользователей"
+
+          - name: Выполнить Ноушн_ПолучитьДанныеПользователя
+            if: ${{ cancelled() }} == false
+            run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьДанныеПользователя"
+  
   Testing-GoogleWorkspace:
         runs-on: ubuntu-latest
         needs: Decode
