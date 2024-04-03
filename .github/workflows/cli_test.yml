@@ -1637,6 +1637,970 @@ jobs:
           --color "" \
 
 
+  Testing-twitter:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить ПолучитьСсылкуАвторизации
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter ПолучитьСсылкуАвторизации --debug --test \
+          --auth "" \
+
+
+
+      - name: Выполнить ПолучитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter ПолучитьТокен --debug --test \
+          --code "" \
+          --auth "" \
+
+
+
+      - name: Выполнить ОбновитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter ОбновитьТокен --debug --test \
+          --auth "" \
+
+
+
+      - name: Выполнить СоздатьТекстовыйТвит
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter СоздатьТекстовыйТвит --debug --test \
+          --text "Тестовый текст" \
+          --auth "" \
+
+
+
+      - name: Выполнить СоздатьТвитКартинки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter СоздатьТвитКартинки --debug --test \
+          --text "Тестовый текст" \
+          --pictures "" \
+          --auth "" \
+
+
+
+      - name: Выполнить СоздатьТвитГифки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter СоздатьТвитГифки --debug --test \
+          --text "Тестовый текст" \
+          --gifs "" \
+          --auth "" \
+
+
+
+      - name: Выполнить СоздатьТвитВидео
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter СоздатьТвитВидео --debug --test \
+          --text "Тестовый текст" \
+          --videos "" \
+          --auth "" \
+
+
+
+      - name: Выполнить СоздатьТвитОпрос
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin twitter СоздатьТвитОпрос --debug --test \
+          --text "Тестовый текст" \
+          --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
+          --duration "" \
+          --auth "" \
+
+
+  Testing-notion:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить СоздатьСтраницу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion СоздатьСтраницу --debug --test \
+          --token "" \
+          --page "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить СоздатьСтраницуВБазу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion СоздатьСтраницуВБазу --debug --test \
+          --token "" \
+          --base "" \
+          --data "" \
+
+
+
+      - name: Выполнить ПолучитьСтраницу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion ПолучитьСтраницу --debug --test \
+          --token "" \
+          --page "" \
+
+
+
+      - name: Выполнить ИзменитьСвойстваСтраницы
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion ИзменитьСвойстваСтраницы --debug --test \
+          --token "" \
+          --page "" \
+          --data "" \
+          --иконки страницы "" \
+          --обложки страницы "" \
+          --archive "" \
+
+
+
+      - name: Выполнить СоздатьБазуДанных
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion СоздатьБазуДанных --debug --test \
+          --token "" \
+          --page "" \
+          --title "Тест" \
+          --props "" \
+
+
+
+      - name: Выполнить ПолучитьБазуДанных
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion ПолучитьБазуДанных --debug --test \
+          --token "" \
+          --base "" \
+
+
+
+      - name: Выполнить ИзменитьСвойстваБазы
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion ИзменитьСвойстваБазы --debug --test \
+          --token "" \
+          --base "" \
+          --title "Тест" \
+          --description "Тестовое описание" \
+
+
+
+      - name: Выполнить СоздатьБлок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion СоздатьБлок --debug --test \
+          --token "" \
+          --page "" \
+          --образец "" \
+          --prev "" \
+
+
+
+      - name: Выполнить ВернутьБлок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion ВернутьБлок --debug --test \
+          --token "" \
+          --block "" \
+          --core "" \
+
+
+
+      - name: Выполнить ВернутьДочерниеБлоки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion ВернутьДочерниеБлоки --debug --test \
+          --token "" \
+          --родителя "" \
+
+
+
+      - name: Выполнить УдалитьБлок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion УдалитьБлок --debug --test \
+          --token "" \
+          --block "" \
+
+
+
+      - name: Выполнить СписокПользователей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion СписокПользователей --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьДанныеПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin notion ПолучитьДанныеПользователя --debug --test \
+          --token "" \
+          --user "" \
+
+
+  Testing-yandex:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить ПолучитьКодПодтверждения
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yandex ПолучитьКодПодтверждения --debug --test \
+          --id "" \
+
+
+
+      - name: Выполнить ПреобразоватьКодВТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yandex ПреобразоватьКодВТокен --debug --test \
+          --id "" \
+          --secret "" \
+          --device "" \
+
+
+
+      - name: Выполнить ОбновитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yandex ОбновитьТокен --debug --test \
+          --id "" \
+          --secret "" \
+          --refresh "" \
+
+
+  Testing-yadisk:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить ПолучитьИнформациюОДиске
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПолучитьИнформациюОДиске --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk СоздатьПапку --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ПолучитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПолучитьОбъект --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить УдалитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk УдалитьОбъект --debug --test \
+          --token "" \
+          --path "" \
+          --can "" \
+
+
+
+      - name: Выполнить СоздатьКопиюОбъекта
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk СоздатьКопиюОбъекта --debug --test \
+          --token "" \
+          --from "" \
+          --to "" \
+          --rewrite "" \
+
+
+
+      - name: Выполнить ПолучитьСсылкуДляСкачивания
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПолучитьСсылкуДляСкачивания --debug --test \
+          --token "" \
+          --parh "" \
+
+
+
+      - name: Выполнить ПолучитьСписокФайлов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПолучитьСписокФайлов --debug --test \
+          --token "" \
+          --amount "" \
+          --offset "" \
+          --type "" \
+          --datesort "" \
+
+
+
+      - name: Выполнить ПереместитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПереместитьОбъект --debug --test \
+          --token "" \
+          --from "" \
+          --назначение для перемещения "" \
+          --rewrite "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ЗагрузитьФайл --debug --test \
+          --token "" \
+          --path "" \
+          --file "" \
+          --rewrite "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайлПоURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ЗагрузитьФайлПоURL --debug --test \
+          --token "" \
+          --path "" \
+          --url "" \
+
+
+
+      - name: Выполнить ОпубликоватьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ОпубликоватьОбъект --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ОтменитьПубликациюОбъекта
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ОтменитьПубликациюОбъекта --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ПолучитьСписокОпубликованныхОбъектов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПолучитьСписокОпубликованныхОбъектов --debug --test \
+          --token "" \
+          --amount "" \
+          --offset "" \
+
+
+
+      - name: Выполнить ПолучитьПубличныйОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПолучитьПубличныйОбъект --debug --test \
+          --token "" \
+          --url "" \
+          --amount "" \
+          --offset "" \
+
+
+
+      - name: Выполнить ПолучитьСсылкуСкачиванияПубличногоОбъекта
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта --debug --test \
+          --token "" \
+          --url "" \
+          --path "" \
+
+
+
+      - name: Выполнить СохранитьПубличныйОбъектНаДиск
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin yadisk СохранитьПубличныйОбъектНаДиск --debug --test \
+          --token "" \
+          --url "" \
+          --from "" \
+          --to "" \
+
+
+  Testing-google:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить СформироватьСсылкуПолученияКода
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin google СформироватьСсылкуПолученияКода --debug --test \
+          --id "" \
+          --calendar "" \
+          --drive "" \
+
+
+
+      - name: Выполнить ПолучитьТокенПоКоду
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin google ПолучитьТокенПоКоду --debug --test \
+          --id "" \
+          --secret "" \
+          --code "" \
+
+
+
+      - name: Выполнить ОбновитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin google ОбновитьТокен --debug --test \
+          --id "" \
+          --secret "" \
+          --refresh "" \
+
+
+  Testing-gcalendar:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить СоздатьКалендарь
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar СоздатьКалендарь --debug --test \
+          --token "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить ПолучитьМетаданныеКалендаря
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ПолучитьМетаданныеКалендаря --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить ИзменитьМетаданныеКалендаря
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ИзменитьМетаданныеКалендаря --debug --test \
+          --token "" \
+          --calendar "" \
+          --title "Тест" \
+          --description "Тестовое описание" \
+
+
+
+      - name: Выполнить ОчиститьОсновнойКалендарь
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ОчиститьОсновнойКалендарь --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьКалендарь
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar УдалитьКалендарь --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить ПолучитьСписокКалендарей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ПолучитьСписокКалендарей --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьКалендарьВСписок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ДобавитьКалендарьВСписок --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить ПолучитьКалендарьСписка
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ПолучитьКалендарьСписка --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить УдалитьКалендарьИзСписка
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar УдалитьКалендарьИзСписка --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить ИзменитьКалендарьСписка
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ИзменитьКалендарьСписка --debug --test \
+          --token "" \
+          --calendar "" \
+          --primary "" \
+          --secondary "" \
+          --hidden "" \
+
+
+
+      - name: Выполнить ПолучитьСписокСобытий
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ПолучитьСписокСобытий --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить ПолучитьСобытие
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ПолучитьСобытие --debug --test \
+          --token "" \
+          --calendar "" \
+          --event "" \
+
+
+
+      - name: Выполнить СоздатьСобытие
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar СоздатьСобытие --debug --test \
+          --token "" \
+          --calendar "" \
+          --props "" \
+
+
+
+      - name: Выполнить ПереместитьСобытие
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ПереместитьСобытие --debug --test \
+          --token "" \
+          --from "" \
+          --to "" \
+          --event "" \
+
+
+
+      - name: Выполнить ИзменитьСобытие
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar ИзменитьСобытие --debug --test \
+          --token "" \
+          --calendar "" \
+          --props "" \
+          --event "" \
+
+
+
+      - name: Выполнить УдалитьСобытие
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gcalendar УдалитьСобытие --debug --test \
+          --token "" \
+          --calendar "" \
+          --event "" \
+
+
+  Testing-gdrive:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint_bin
+
+
+
+
+      - name: Выполнить ПолучитьИнформациюОбОбъекте
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive ПолучитьИнформациюОбОбъекте --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокКаталогов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive ПолучитьСписокКаталогов --debug --test \
+          --token "" \
+          --querry "" \
+          --depth "" \
+
+
+
+      - name: Выполнить ПолучитьСписокФайлов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive ПолучитьСписокФайлов --debug --test \
+          --token "" \
+          --querry "" \
+          --catalog "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive ЗагрузитьФайл --debug --test \
+          --token "" \
+          --file "" \
+          --props "" \
+
+
+
+      - name: Выполнить СоздатьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive СоздатьПапку --debug --test \
+          --token "" \
+          --title "Тест" \
+          --catalog "" \
+
+
+
+      - name: Выполнить СкачатьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive СкачатьФайл --debug --test \
+          --token "" \
+          --object "" \
+
+
+
+      - name: Выполнить СкопироватьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive СкопироватьОбъект --debug --test \
+          --token "" \
+          --object "" \
+          --title "Тест" \
+          --catalog "" \
+
+
+
+      - name: Выполнить ОбновитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive ОбновитьФайл --debug --test \
+          --token "" \
+          --object "" \
+          --file "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить УдалитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive УдалитьОбъект --debug --test \
+          --token "" \
+          --object "" \
+
+
+
+      - name: Выполнить СоздатьКомментарий
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive СоздатьКомментарий --debug --test \
+          --token "" \
+          --object "" \
+          --text "Тестовый текст" \
+
+
+
+      - name: Выполнить ПолучитьКомментарий
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive ПолучитьКомментарий --debug --test \
+          --token "" \
+          --object "" \
+          --comment "" \
+
+
+
+      - name: Выполнить ПолучитьСписокКомментариев
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive ПолучитьСписокКомментариев --debug --test \
+          --token "" \
+          --object "" \
+
+
+
+      - name: Выполнить УдалитьКомментарий
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint_bin gdrive УдалитьКомментарий --debug --test \
+          --token "" \
+          --object "" \
+          --comment "" \
+
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]
