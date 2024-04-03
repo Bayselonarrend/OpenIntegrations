@@ -156,7 +156,7 @@ jobs:
           run: |
             cd ./OInt
             opm build
-            opm install oint-1.5.0.ospx 
+            opm install *.ospx 
   
         - name: Выполнить ВК_СоздатьСсылкуТокена
           if: ${{ cancelled() }} == false
@@ -238,7 +238,7 @@ jobs:
             run: |
               cd ./OInt
               opm build
-              opm install oint-1.5.0.ospx
+              opm install *.ospx
     
           - name: Выполнить ЯДиск_ПолучитьИнформациюОДиске
             if: ${{ cancelled() }} == false
@@ -296,7 +296,7 @@ jobs:
             run: |
               cd ./OInt
               opm build
-              opm install oint-1.5.0.ospx
+              opm install *.ospx
     
           - name: Выполнить Вайбер_ПолучитьИнформациюОКанале
             if: ${{ cancelled() }} == false
@@ -351,7 +351,7 @@ jobs:
             run: |
               cd ./OInt
               opm build
-              opm install oint-1.5.0.ospx
+              opm install *.ospx
     
           - name: Выполнить Ноушн_СоздатьСтраницу
             if: ${{ cancelled() }} == false
@@ -414,7 +414,7 @@ jobs:
             run: |
               cd ./OInt
               opm build
-              opm install oint-1.5.0.ospx
+              opm install *.ospx
     
           - name: Выполнить ГВ_ПолучитьСсылкуАвторизации
             if: ${{ cancelled() }} == false
@@ -457,7 +457,7 @@ jobs:
             run: |
                 cd ./OInt
                 opm build
-                opm install oint-1.5.0.ospx
+                opm install *.ospx
     
           - name: Выполнить ГК_ПолучитьСписокКалендарей
             if: ${{ cancelled() }} == false
@@ -497,7 +497,7 @@ jobs:
             run: |
                 cd ./OInt
                 opm build
-                opm install oint-1.5.0.ospx
+                opm install *.ospx
     
           - name: Выполнить ГД_ПолучитьСписокКаталогов
             if: ${{ cancelled() }} == false
@@ -537,7 +537,7 @@ jobs:
           run: |
               cd ./OInt
               opm build
-              opm install oint-1.5.0.ospx
+              opm install *.ospx
   
         - name: Выполнить Твиттер_ПолучитьСсылкуАвторизации
           if: ${{ cancelled() }} == false
