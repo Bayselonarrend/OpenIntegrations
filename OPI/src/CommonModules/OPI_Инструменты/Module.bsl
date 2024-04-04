@@ -29,6 +29,7 @@
 // BSLLS:UsingServiceTag-off
 
 //@skip-check module-unused-local-variable
+//@skip-check method-too-many-params
 
 #Область СлужебныйПрограммныйИнтерфейс
 
