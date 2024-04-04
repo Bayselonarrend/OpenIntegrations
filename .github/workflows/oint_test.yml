@@ -65,22 +65,18 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: test-data
-          path: ./data.json     
+          path: ./data.json
           
-      - name: Скачать артефакт с пакетом
-        uses: actions/download-artifact@v4
-        with:
-          name: oint 
-
       - name: Установить asserts и 1testrunner
         run: |
           opm install asserts
           opm install 1testrunner
-          
+
       - name: Установить OInt
         run: |
-            cd ./OInt
-            opm install *.ospx 
+          cd ./OInt
+          opm build
+          opm install *.ospx 
 
       - name: Выполнить Телеграм_ПолучитьИнформациюБота
         if: ${{ cancelled() }} == false
