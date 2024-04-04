@@ -72,6 +72,11 @@ jobs:
         with:
           name: oint 
 
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+          
       - name: Установить OInt
         run: |
             cd ./OInt
