@@ -251,7 +251,7 @@
 // Параметры:
 //  Текст       - Строка                          - Текст твита         - text
 //  МассивГифок - Массив из Строка,ДвоичныеДанные - Массив файлов гифок - gifs
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+//  Параметры   - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
 // 
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
@@ -268,7 +268,7 @@
 // Параметры:
 //  Текст       - Строка                          - Текст твита         - text
 //  МассивВидео - Массив из Строка,ДвоичныеДанные - Массив файлов видео - videos
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+//  Параметры   - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
 // 
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
@@ -299,8 +299,8 @@
 // 
 // Параметры:
 //  МассивФайлов - Массив из Строка, ДвоичныеДанные -  Массив файлов
-//  ТипВложений - Строка -  Тип вложений
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+//  ТипВложений  - Строка -  Тип вложений
+//  Параметры    - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
 // 
 // Возвращаемое значение:
 //  Массив Из Строка -  Массив ID медиа
@@ -494,10 +494,10 @@
      
     // Данные для API v1.1
     
-    // oauth_token           - из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer 
-    // oauth_token_secret    - из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer
-    // oauth_consumer_key    - из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
-    // oauth_consumer_secret - из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
+    // oauth_token           - Из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer 
+    // oauth_token_secret    - Из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer
+    // oauth_consumer_key    - Из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
+    // oauth_consumer_secret - Из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
     
     // Эти токены обновлять не надо
     
