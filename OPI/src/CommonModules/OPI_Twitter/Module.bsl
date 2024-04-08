@@ -494,10 +494,10 @@
      
     // Данные для API v1.1
     
-    // oauth_token           - из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer 
-    // oauth_token_secret    - из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer
-    // oauth_consumer_key    - из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
-    // oauth_consumer_secret - из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
+    // oauth_token           - Из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer 
+    // oauth_token_secret    - Из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer
+    // oauth_consumer_key    - Из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
+    // oauth_consumer_secret - Из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
     
     // Эти токены обновлять не надо
     
