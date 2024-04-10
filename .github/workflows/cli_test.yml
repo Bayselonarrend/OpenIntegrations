@@ -137,6 +137,7 @@ jobs:
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
           --keyboard "" \
+          --parsemode "" \
 
 
 
@@ -150,6 +151,7 @@ jobs:
           --text "Тестовый текст" \
           --picture "${{ env.json_Picture }}" \
           --keyboard "" \
+          --parsemode "" \
 
 
 
@@ -163,6 +165,7 @@ jobs:
           --text "Тестовый текст" \
           --video "${{ env.json_Video }}" \
           --keyboard "" \
+          --parsemode "" \
 
 
 
@@ -176,6 +179,7 @@ jobs:
           --text "Тестовый текст" \
           --audio "${{ env.json_Audio }}" \
           --keyboard "" \
+          --parsemode "" \
 
 
 
@@ -189,6 +193,7 @@ jobs:
           --text "Тестовый текст" \
           --doc "${{ env.json_Document }}" \
           --keyboard "" \
+          --parsemode "" \
 
 
 
@@ -202,6 +207,7 @@ jobs:
           --text "Тестовый текст" \
           --gif "${{ env.json_GIF }}" \
           --keyboard "" \
+          --parsemode "" \
 
 
 
@@ -220,7 +226,6 @@ jobs:
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
           --media "mediagroup.json" \
-          --keyboard "" \
 
 
 
@@ -1850,6 +1855,7 @@ jobs:
           ./oint_bin notion ИзменитьСвойстваБазы --debug --test \
           --token "" \
           --base "" \
+          --props "" \
           --title "Тест" \
           --description "Тестовое описание" \
 
