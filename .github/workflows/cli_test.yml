@@ -68,6 +68,7 @@ jobs:
           mkdir -p .debpkg/usr/bin
           cp ./cli/oint .debpkg/usr/bin/oint
           chmod +x .debpkg/usr/bin/oint
+          
       - name: Собрать deb-пакет
         uses: jiro4989/build-deb-action@v3
         with:
@@ -84,6 +85,30 @@ jobs:
           name: oint-deb
           path: |
             ./*.deb
+
+      - name: Создать каталог rpm-пакета
+        run: |
+          mkdir -p .rpmpkg/usr/bin
+          cp ./cli/oint .rpmpkg/usr/bin/oint
+          chmod +x .rpmpkg/usr/bin/oint
+          
+      - name: Собрать rpm-пакет 
+        uses: jiro4989/build-rpm-action@v2
+        with:
+          summary: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки. Требуется mono-runtime с поддержкой .NET Framework 4.8'
+          package: oint
+          package_root: .rpmpkg
+          maintainer: Anton Titovets <bayselonarrend@gmail.com>
+          version: '1.6.0'
+          arch: 'all'
+          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oint-rpm
+          path: |
+            ./*.rpm
+            !./*-debuginfo-*.rpm
 
   Testing-telegram:
     runs-on: ubuntu-latest
