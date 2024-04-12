@@ -25,6 +25,7 @@
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:UnreachableCode-off
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../tools"
