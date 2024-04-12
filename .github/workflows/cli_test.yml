@@ -104,6 +104,14 @@ jobs:
           version: '1.6.0'
           arch: 'x86_64'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
+          requires: |
+            Requires:       python
+            Requires:       mono-core
+            Requires:       mono-locale-extras
+            Requires:       rpmlib(CompressedFileNames) <= 3.0.4-1
+            Requires:       rpmlib(FileDigests) <= 4.6.0-1
+            Requires:       rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+            Requires:       rpmlib(PayloadIsXz) <= 5.2-1
 
       - uses: actions/upload-artifact@v4
         with:
