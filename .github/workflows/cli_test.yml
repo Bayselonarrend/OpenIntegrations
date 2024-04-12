@@ -105,7 +105,7 @@ jobs:
           arch: 'x86_64'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
           requires: |
-            Requires:       mono-core
+            mono-core
             Requires:       mono-locale-extras
 
 
