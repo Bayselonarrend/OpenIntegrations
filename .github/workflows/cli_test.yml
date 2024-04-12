@@ -89,7 +89,9 @@ jobs:
       - name: Создать каталог rpm-пакета
         run: |
           mkdir -p .rpmpkg/usr/bin
-          cp ./cli/oint .rpmpkg/usr/bin/oint
+          mkdir -p .rpmpkg/usr/share/oint/bin
+          cp ./cli/oint .rpmpkg/usr/share/oint/bin/oint
+          echo 'mono /usr/share/oint/bin/oint "$@"' > .rpmpkg/usr/bin/oint
           chmod +x .rpmpkg/usr/bin/oint
           
       - name: Собрать rpm-пакет 
