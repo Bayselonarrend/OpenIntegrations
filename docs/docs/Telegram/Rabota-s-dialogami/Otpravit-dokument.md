@@ -31,6 +31,12 @@ sidebar_position: 6
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьДокумент --token "%token%" --chat %channelid% --text "Очень важный документ" --doc "C:\1.docx"
+
+```
+
 ![Результат](img/9.png)
 
 ```json title="Результат"
