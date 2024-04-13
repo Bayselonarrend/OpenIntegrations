@@ -7,15 +7,24 @@ sidebar_position: 5
 
 *Функция ОчиститьОсновнойКалендарь(Знач Токен) Экспорт*
 
-  | Параметр | Тип | Назначение |
-  |-|-|-|
-  | Токен | Строка | Токен доступа |
+  | Параметр | CLI | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен доступа |
   
   Вовзращаемое значение: Пустая строка
 
 ```bsl title="Пример кода"
 			
     Ответ = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен); 
+
+```
+
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gcalendar ОчиститьОсновнойКалендарь --token "%token%"
 
 ```
 
