@@ -425,10 +425,10 @@
 	|
 	|      - uses: actions/upload-artifact@v4
 	|        with:
-	|        name: oint-rpm
-	|        path: |
-	|          ./*.rpm
-	|          !./*-debuginfo-*.rpm");
+	|          name: oint-rpm
+	|          path: |
+	|            ./*.rpm
+	|            !./*-debuginfo-*.rpm");
 
 КонецПроцедуры
 
