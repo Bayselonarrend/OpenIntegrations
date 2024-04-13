@@ -30,6 +30,25 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    Структура JSON данных объекта (параметр --props):
+    {
+     "MIME"        , "image/jpeg",
+     "Имя"         , "Новый файл.jpg",
+     "Описание"    , "Это новый файл",
+     "Родитель"    , "root"
+    }
+
+    ---------------------------
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gdrive ЗагрузитьФайл --token "%token%" --file "C:\OPI\image.jpg" --props props.json
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"
