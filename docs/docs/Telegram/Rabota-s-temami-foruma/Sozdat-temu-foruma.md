@@ -29,6 +29,12 @@ sidebar_position: 2
 	
 ```
 
+```sh title="Пример команд CLI"
+    
+    oint telegram СоздатьТемуФорума --token "%token%" --forum %forum% --title "Тестовая тема" --icon 5357419403325481346
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

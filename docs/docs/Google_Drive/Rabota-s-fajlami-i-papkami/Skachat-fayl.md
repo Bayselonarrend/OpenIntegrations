@@ -22,3 +22,12 @@ sidebar_position: 7
     Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                 //Строка
 
 ```
+
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gdrive СкачатьФайл --token "%token%" --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa" --out ./picture.png
+
+```

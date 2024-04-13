@@ -26,6 +26,12 @@ sidebar_position: 5
 	
 ```
 
+```sh title="Пример команд CLI"
+    
+    oint telegram ОткрытьТемуФорума --token "%token%" --forum %forum% --topic %topic%
+
+```
+
 ![Результат](img/4.png)
 
 ```json title="Результат"
