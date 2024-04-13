@@ -23,6 +23,14 @@ sidebar_position: 3
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gdrive ПолучитьСписокФайлов --token "%token%" --querry "Новый" --catalog "%catalog%"
+
+```
 
 ```json title="Результат"
 

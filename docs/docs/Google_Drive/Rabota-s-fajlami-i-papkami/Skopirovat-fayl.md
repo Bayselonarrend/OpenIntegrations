@@ -27,6 +27,15 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gdrive СкачатьФайл --token "%token%" --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa" --out ./picture.png
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"
