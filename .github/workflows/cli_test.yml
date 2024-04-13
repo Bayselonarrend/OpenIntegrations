@@ -147,7 +147,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьИнформациюБота --debug --test \
+          ./oint telegram ПолучитьИнформациюБота --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -156,7 +156,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьОбновления --debug --test \
+          ./oint telegram ПолучитьОбновления --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -165,7 +165,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram УстановитьWebhook --debug --test \
+          ./oint telegram УстановитьWebhook --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --url "${{ env.json_Telegram_URL }}" \
 
@@ -175,7 +175,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram УдалитьWebhook --debug --test \
+          ./oint telegram УдалитьWebhook --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -184,7 +184,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьТекстовоеСообщение --debug --test \
+          ./oint telegram ОтправитьТекстовоеСообщение --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -197,7 +197,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьКартинку --debug --test \
+          ./oint telegram ОтправитьКартинку --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -211,7 +211,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьВидео --debug --test \
+          ./oint telegram ОтправитьВидео --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -225,7 +225,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьАудио --debug --test \
+          ./oint telegram ОтправитьАудио --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -239,7 +239,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьДокумент --debug --test \
+          ./oint telegram ОтправитьДокумент --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -253,7 +253,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьГифку --debug --test \
+          ./oint telegram ОтправитьГифку --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -273,7 +273,7 @@ jobs:
           } " > mediagroup.json
 
 
-          ./oint_bin telegram ОтправитьМедиагруппу --debug --test \
+          ./oint telegram ОтправитьМедиагруппу --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --text "Тестовый текст" \
@@ -287,7 +287,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьМестоположение --debug --test \
+          ./oint telegram ОтправитьМестоположение --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --lat "48.87373649724122" \
@@ -300,7 +300,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьКонтакт --debug --test \
+          ./oint telegram ОтправитьКонтакт --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --name "Петр" \
@@ -314,7 +314,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОтправитьОпрос --debug --test \
+          ./oint telegram ОтправитьОпрос --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --question "Да или нет?" \
@@ -327,7 +327,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПереслатьСообщение --debug --test \
+          ./oint telegram ПереслатьСообщение --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
           --from "${{ env.json_Telegram_ChannelID }}" \
@@ -339,7 +339,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram Бан --debug --test \
+          ./oint telegram Бан --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --user "${{ env.json_Telegram_ChatID }}" \
@@ -350,7 +350,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram Разбан --debug --test \
+          ./oint telegram Разбан --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --user "${{ env.json_Telegram_ChatID }}" \
@@ -361,7 +361,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СоздатьСсылкуПриглашение --debug --test \
+          ./oint telegram СоздатьСсылкуПриглашение --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --title "Тест" \
@@ -374,7 +374,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ЗакрепитьСообщение --debug --test \
+          ./oint telegram ЗакрепитьСообщение --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
@@ -385,7 +385,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОткрепитьСообщение --debug --test \
+          ./oint telegram ОткрепитьСообщение --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
@@ -396,7 +396,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьЧислоУчастников --debug --test \
+          ./oint telegram ПолучитьЧислоУчастников --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
 
@@ -406,7 +406,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПолучитьСписокИконокАватаров --debug --test \
+          ./oint telegram ПолучитьСписокИконокАватаров --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
 
 
@@ -415,7 +415,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СоздатьТемуФорума --debug --test \
+          ./oint telegram СоздатьТемуФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --title "Тест" \
@@ -427,7 +427,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ИзменитьТемуФорума --debug --test \
+          ./oint telegram ИзменитьТемуФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -440,7 +440,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ЗакрытьТемуФорума --debug --test \
+          ./oint telegram ЗакрытьТемуФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -451,7 +451,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОткрытьТемуФорума --debug --test \
+          ./oint telegram ОткрытьТемуФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -462,7 +462,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram УдалитьТемуФорума --debug --test \
+          ./oint telegram УдалитьТемуФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -473,7 +473,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СкрытьГлавнуюТемуФорума --debug --test \
+          ./oint telegram СкрытьГлавнуюТемуФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
 
@@ -483,7 +483,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ПоказатьГлавнуюТемуФорума --debug --test \
+          ./oint telegram ПоказатьГлавнуюТемуФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
 
@@ -493,7 +493,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ИзменитьИмяГлавнойТемыФорума --debug --test \
+          ./oint telegram ИзменитьИмяГлавнойТемыФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --name "Петр" \
@@ -504,7 +504,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram ОчиститьСписокЗакрепленныхСообщенийТемы --debug --test \
+          ./oint telegram ОчиститьСписокЗакрепленныхСообщенийТемы --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
@@ -515,7 +515,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin telegram СформироватьКлавиатуруПоМассивуКнопок --debug --test \
+          ./oint telegram СформироватьКлавиатуруПоМассивуКнопок --debug --test \
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
           --under true \
           --column false \
@@ -553,7 +553,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin vk СоздатьСсылкуПолученияТокена --debug --test \
+          ./oint vk СоздатьСсылкуПолученияТокена --debug --test \
           --app "${{ env.json_VK_AppID }}" \
 
 
@@ -572,7 +572,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьПост --debug --test \
+          ./oint vk СоздатьПост --debug --test \
           --text "Тестовый текст" \
           --pictures "['${{ env.json_Picture }}', '${{ env.json_Picture2 }}']" \
           --ad false \
@@ -595,7 +595,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьПост --debug --test \
+          ./oint vk УдалитьПост --debug --test \
           --post "1159" \
           --auth "auth.json" \
 
@@ -615,7 +615,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьОпрос --debug --test \
+          ./oint vk СоздатьОпрос --debug --test \
           --question "Да или нет?" \
           --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
           --picture "${{ env.json_Picture }}" \
@@ -637,7 +637,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьАльбом --debug --test \
+          ./oint vk СоздатьАльбом --debug --test \
           --title "Тест" \
           --description "Тестовое описание" \
           --auth "auth.json" \
@@ -658,7 +658,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьАльбом --debug --test \
+          ./oint vk УдалитьАльбом --debug --test \
           --album "303733811" \
           --auth "auth.json" \
 
@@ -678,7 +678,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьИсторию --debug --test \
+          ./oint vk СоздатьИсторию --debug --test \
           --picture "${{ env.json_Picture }}" \
           --url "https://github.com/Bayselonarrend/OpenIntegrations" \
           --auth "auth.json" \
@@ -699,7 +699,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СохранитьКартинкуВАльбом --debug --test \
+          ./oint vk СохранитьКартинкуВАльбом --debug --test \
           --album "303733811" \
           --picture "${{ env.json_Picture }}" \
           --description "Тестовое описание" \
@@ -721,7 +721,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьКартинку --debug --test \
+          ./oint vk УдалитьКартинку --debug --test \
           --pictureid "1" \
           --auth "auth.json" \
 
@@ -741,7 +741,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьОбсуждение --debug --test \
+          ./oint vk СоздатьОбсуждение --debug --test \
           --title "Тест" \
           --text "Тестовый текст" \
           --auth "auth.json" \
@@ -762,7 +762,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ЗакрытьОбсуждение --debug --test \
+          ./oint vk ЗакрытьОбсуждение --debug --test \
           --topic "1" \
           --remove false \
           --auth "auth.json" \
@@ -783,7 +783,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ОткрытьОбсуждение --debug --test \
+          ./oint vk ОткрытьОбсуждение --debug --test \
           --topic "1" \
           --auth "auth.json" \
 
@@ -803,7 +803,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk НаписатьВОбсуждение --debug --test \
+          ./oint vk НаписатьВОбсуждение --debug --test \
           --topic "1" \
           --text "Тестовый текст" \
           --auth "auth.json" \
@@ -824,7 +824,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПоставитьЛайк --debug --test \
+          ./oint vk ПоставитьЛайк --debug --test \
           --post "1159" \
           --wall "-${{ env.json_VK_GroupID }}" \
           --auth "auth.json" \
@@ -845,7 +845,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СделатьРепост --debug --test \
+          ./oint vk СделатьРепост --debug --test \
           --post "1159" \
           --from "-${{ env.json_VK_GroupID }}" \
           --to "-${{ env.json_VK_GroupID }}" \
@@ -868,7 +868,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk НаписатьСообщение --debug --test \
+          ./oint vk НаписатьСообщение --debug --test \
           --text "Тестовый текст" \
           --user "${{ env.json_VK_UserID }}" \
           --ct "${{ env.json_VK_CommunityToken }}" \
@@ -891,7 +891,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk НаписатьКомментарий --debug --test \
+          ./oint vk НаписатьКомментарий --debug --test \
           --post "1159" \
           --wall "-${{ env.json_VK_GroupID }}" \
           --text "Тестовый текст" \
@@ -913,7 +913,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СократитьСсылку --debug --test \
+          ./oint vk СократитьСсылку --debug --test \
           --url "https://github.com/Bayselonarrend/OpenIntegrations" \
           --auth "auth.json" \
 
@@ -933,7 +933,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСтатистику --debug --test \
+          ./oint vk ПолучитьСтатистику --debug --test \
           --datefrom "2024-02-30T23:50:08+03:00" \
           --dateto "2024-03-30T23:50:08+03:00" \
           --auth "auth.json" \
@@ -954,7 +954,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСтатистикуПостов --debug --test \
+          ./oint vk ПолучитьСтатистикуПостов --debug --test \
           --posts "['1111111','2222222']" \
           --auth "auth.json" \
 
@@ -974,7 +974,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьРекламнуюКампанию --debug --test \
+          ./oint vk СоздатьРекламнуюКампанию --debug --test \
           --cabinet "${{ env.json_VK_AdsCabinetID }}" \
           --title "Тест" \
           --auth "auth.json" \
@@ -995,7 +995,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьРекламноеОбъявление --debug --test \
+          ./oint vk СоздатьРекламноеОбъявление --debug --test \
           --campaign "1" \
           --limit "1" \
           --category "1" \
@@ -1019,7 +1019,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПриостановитьРекламноеОбъявление --debug --test \
+          ./oint vk ПриостановитьРекламноеОбъявление --debug --test \
           --cabinet "${{ env.json_VK_AdsCabinetID }}" \
           --adv "1" \
           --auth "auth.json" \
@@ -1040,7 +1040,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокРекламныхКатегорий --debug --test \
+          ./oint vk ПолучитьСписокРекламныхКатегорий --debug --test \
           --auth "auth.json" \
 
 
@@ -1059,7 +1059,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокКатегорийТоваров --debug --test \
+          ./oint vk ПолучитьСписокКатегорийТоваров --debug --test \
           --auth "auth.json" \
 
 
@@ -1078,7 +1078,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокТоваров --debug --test \
+          ./oint vk ПолучитьСписокТоваров --debug --test \
           --sel "1" \
           --auth "auth.json" \
 
@@ -1098,7 +1098,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьТоварыПоИД --debug --test \
+          ./oint vk ПолучитьТоварыПоИД --debug --test \
           --items "['1111111','2222222']" \
           --auth "auth.json" \
 
@@ -1136,7 +1136,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ДобавитьТовар --debug --test \
+          ./oint vk ДобавитьТовар --debug --test \
           --product "product.json" \
           --sel "1" \
           --auth "auth.json" \
@@ -1175,7 +1175,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьТовар --debug --test \
+          ./oint vk ИзменитьТовар --debug --test \
           --item "1" \
           --product "product.json" \
           --sel "1" \
@@ -1197,7 +1197,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьТовар --debug --test \
+          ./oint vk УдалитьТовар --debug --test \
           --item "1" \
           --auth "auth.json" \
 
@@ -1217,7 +1217,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СгруппироватьТовары --debug --test \
+          ./oint vk СгруппироватьТовары --debug --test \
           --items "['1111111','2222222']" \
           --sellgroup "1" \
           --auth "auth.json" \
@@ -1238,7 +1238,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокПодборок --debug --test \
+          ./oint vk ПолучитьСписокПодборок --debug --test \
           --auth "auth.json" \
 
 
@@ -1257,7 +1257,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьПодборкиПоИД --debug --test \
+          ./oint vk ПолучитьПодборкиПоИД --debug --test \
           --sels "['1111111','2222222']" \
           --auth "auth.json" \
 
@@ -1277,7 +1277,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьПодборкуТоваров --debug --test \
+          ./oint vk СоздатьПодборкуТоваров --debug --test \
           --title "Тест" \
           --picture "${{ env.json_Picture }}" \
           --main false \
@@ -1300,7 +1300,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьПодборкуТоваров --debug --test \
+          ./oint vk ИзменитьПодборкуТоваров --debug --test \
           --title "Тест" \
           --sel "1" \
           --picture "${{ env.json_Picture }}" \
@@ -1324,7 +1324,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ДобавитьТоварВПодборку --debug --test \
+          ./oint vk ДобавитьТоварВПодборку --debug --test \
           --items "['1111111','2222222']" \
           --sel "1" \
           --auth "auth.json" \
@@ -1345,7 +1345,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьТоварИзПодборки --debug --test \
+          ./oint vk УдалитьТоварИзПодборки --debug --test \
           --item "1" \
           --sel "1" \
           --auth "auth.json" \
@@ -1366,7 +1366,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьПодборку --debug --test \
+          ./oint vk УдалитьПодборку --debug --test \
           --sel "1" \
           --auth "auth.json" \
 
@@ -1386,7 +1386,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокСвойств --debug --test \
+          ./oint vk ПолучитьСписокСвойств --debug --test \
           --auth "auth.json" \
 
 
@@ -1405,7 +1405,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk СоздатьСвойствоТовара --debug --test \
+          ./oint vk СоздатьСвойствоТовара --debug --test \
           --title "Тест" \
           --auth "auth.json" \
 
@@ -1425,7 +1425,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьСвойствоТовара --debug --test \
+          ./oint vk ИзменитьСвойствоТовара --debug --test \
           --title "Тест" \
           --prop "1" \
           --auth "auth.json" \
@@ -1446,7 +1446,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьСвойствоТовара --debug --test \
+          ./oint vk УдалитьСвойствоТовара --debug --test \
           --prop "1" \
           --auth "auth.json" \
 
@@ -1466,7 +1466,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ДобавитьВариантСвойстваТовара --debug --test \
+          ./oint vk ДобавитьВариантСвойстваТовара --debug --test \
           --value "Тест" \
           --prop "1" \
           --auth "auth.json" \
@@ -1487,7 +1487,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ИзменитьВариантСвойстваТовара --debug --test \
+          ./oint vk ИзменитьВариантСвойстваТовара --debug --test \
           --value "Тест" \
           --prop "1" \
           --option "1" \
@@ -1509,7 +1509,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk УдалитьВариантСвойстваТовара --debug --test \
+          ./oint vk УдалитьВариантСвойстваТовара --debug --test \
           --option "1" \
           --auth "auth.json" \
 
@@ -1529,7 +1529,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint_bin vk ПолучитьСписокЗаказов --debug --test \
+          ./oint vk ПолучитьСписокЗаказов --debug --test \
           --auth "auth.json" \
 
 
@@ -1538,7 +1538,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin vk СформироватьКлавиатуру --debug --test \
+          ./oint vk СформироватьКлавиатуру --debug --test \
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
 
 
@@ -1574,7 +1574,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber УстановитьWebhook --debug --test \
+          ./oint viber УстановитьWebhook --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --url "" \
 
@@ -1584,7 +1584,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ПолучитьИнформациюОКанале --debug --test \
+          ./oint viber ПолучитьИнформациюОКанале --debug --test \
           --token "${{ env.json_Viber_Token }}" \
 
 
@@ -1593,7 +1593,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ПолучитьДанныеПользователя --debug --test \
+          ./oint viber ПолучитьДанныеПользователя --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --user "${{ env.json_Viber_UserID }}" \
 
@@ -1603,7 +1603,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ПолучитьОнлайнПользователей --debug --test \
+          ./oint viber ПолучитьОнлайнПользователей --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --users "" \
 
@@ -1613,7 +1613,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ОтправитьТекстовоеСообщение --debug --test \
+          ./oint viber ОтправитьТекстовоеСообщение --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --text "Тестовый текст" \
           --user "${{ env.json_Viber_UserID }}" \
@@ -1626,7 +1626,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ОтправитьКартинку --debug --test \
+          ./oint viber ОтправитьКартинку --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --picture "${{ env.json_Picture }}" \
           --user "${{ env.json_Viber_UserID }}" \
@@ -1639,7 +1639,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ОтправитьФайл --debug --test \
+          ./oint viber ОтправитьФайл --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --file "" \
           --user "${{ env.json_Viber_UserID }}" \
@@ -1653,7 +1653,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ОтправитьКонтакт --debug --test \
+          ./oint viber ОтправитьКонтакт --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --name "Петр" \
           --phone "+123456789" \
@@ -1666,7 +1666,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ОтправитьЛокацию --debug --test \
+          ./oint viber ОтправитьЛокацию --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --lat "48.87373649724122" \
           --long "48.87373649724122" \
@@ -1679,7 +1679,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber ОтправитьСсылку --debug --test \
+          ./oint viber ОтправитьСсылку --debug --test \
           --token "${{ env.json_Viber_Token }}" \
           --url "" \
           --user "${{ env.json_Viber_UserID }}" \
@@ -1691,7 +1691,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin viber СформироватьКлавиатуруИзМассиваКнопок --debug --test \
+          ./oint viber СформироватьКлавиатуруИзМассиваКнопок --debug --test \
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
           --color "" \
 
@@ -1728,7 +1728,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter ПолучитьСсылкуАвторизации --debug --test \
+          ./oint twitter ПолучитьСсылкуАвторизации --debug --test \
           --auth "" \
 
 
@@ -1737,7 +1737,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter ПолучитьТокен --debug --test \
+          ./oint twitter ПолучитьТокен --debug --test \
           --code "" \
           --auth "" \
 
@@ -1747,7 +1747,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter ОбновитьТокен --debug --test \
+          ./oint twitter ОбновитьТокен --debug --test \
           --auth "" \
 
 
@@ -1756,7 +1756,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter СоздатьТекстовыйТвит --debug --test \
+          ./oint twitter СоздатьТекстовыйТвит --debug --test \
           --text "Тестовый текст" \
           --auth "" \
 
@@ -1766,7 +1766,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter СоздатьТвитКартинки --debug --test \
+          ./oint twitter СоздатьТвитКартинки --debug --test \
           --text "Тестовый текст" \
           --pictures "" \
           --auth "" \
@@ -1777,7 +1777,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter СоздатьТвитГифки --debug --test \
+          ./oint twitter СоздатьТвитГифки --debug --test \
           --text "Тестовый текст" \
           --gifs "" \
           --auth "" \
@@ -1788,7 +1788,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter СоздатьТвитВидео --debug --test \
+          ./oint twitter СоздатьТвитВидео --debug --test \
           --text "Тестовый текст" \
           --videos "" \
           --auth "" \
@@ -1799,7 +1799,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin twitter СоздатьТвитОпрос --debug --test \
+          ./oint twitter СоздатьТвитОпрос --debug --test \
           --text "Тестовый текст" \
           --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
           --duration "" \
@@ -1838,7 +1838,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion СоздатьСтраницу --debug --test \
+          ./oint notion СоздатьСтраницу --debug --test \
           --token "" \
           --page "" \
           --title "Тест" \
@@ -1849,7 +1849,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion СоздатьСтраницуВБазу --debug --test \
+          ./oint notion СоздатьСтраницуВБазу --debug --test \
           --token "" \
           --base "" \
           --data "" \
@@ -1860,7 +1860,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion ПолучитьСтраницу --debug --test \
+          ./oint notion ПолучитьСтраницу --debug --test \
           --token "" \
           --page "" \
 
@@ -1870,7 +1870,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion ИзменитьСвойстваСтраницы --debug --test \
+          ./oint notion ИзменитьСвойстваСтраницы --debug --test \
           --token "" \
           --page "" \
           --data "" \
@@ -1884,7 +1884,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion СоздатьБазуДанных --debug --test \
+          ./oint notion СоздатьБазуДанных --debug --test \
           --token "" \
           --page "" \
           --title "Тест" \
@@ -1896,7 +1896,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion ПолучитьБазуДанных --debug --test \
+          ./oint notion ПолучитьБазуДанных --debug --test \
           --token "" \
           --base "" \
 
@@ -1906,7 +1906,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion ИзменитьСвойстваБазы --debug --test \
+          ./oint notion ИзменитьСвойстваБазы --debug --test \
           --token "" \
           --base "" \
           --props "" \
@@ -1919,7 +1919,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion СоздатьБлок --debug --test \
+          ./oint notion СоздатьБлок --debug --test \
           --token "" \
           --page "" \
           --block "" \
@@ -1931,7 +1931,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion ВернутьБлок --debug --test \
+          ./oint notion ВернутьБлок --debug --test \
           --token "" \
           --block "" \
           --core "" \
@@ -1942,7 +1942,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion ВернутьДочерниеБлоки --debug --test \
+          ./oint notion ВернутьДочерниеБлоки --debug --test \
           --token "" \
           --block "" \
 
@@ -1952,7 +1952,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion УдалитьБлок --debug --test \
+          ./oint notion УдалитьБлок --debug --test \
           --token "" \
           --block "" \
 
@@ -1962,7 +1962,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion СписокПользователей --debug --test \
+          ./oint notion СписокПользователей --debug --test \
           --token "" \
 
 
@@ -1971,7 +1971,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin notion ПолучитьДанныеПользователя --debug --test \
+          ./oint notion ПолучитьДанныеПользователя --debug --test \
           --token "" \
           --user "" \
 
@@ -2008,7 +2008,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yandex ПолучитьКодПодтверждения --debug --test \
+          ./oint yandex ПолучитьКодПодтверждения --debug --test \
           --id "" \
 
 
@@ -2017,7 +2017,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yandex ПреобразоватьКодВТокен --debug --test \
+          ./oint yandex ПреобразоватьКодВТокен --debug --test \
           --id "" \
           --secret "" \
           --device "" \
@@ -2028,7 +2028,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yandex ОбновитьТокен --debug --test \
+          ./oint yandex ОбновитьТокен --debug --test \
           --id "" \
           --secret "" \
           --refresh "" \
@@ -2066,7 +2066,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПолучитьИнформациюОДиске --debug --test \
+          ./oint yadisk ПолучитьИнформациюОДиске --debug --test \
           --token "" \
 
 
@@ -2075,7 +2075,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk СоздатьПапку --debug --test \
+          ./oint yadisk СоздатьПапку --debug --test \
           --token "" \
           --path "" \
 
@@ -2085,7 +2085,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПолучитьОбъект --debug --test \
+          ./oint yadisk ПолучитьОбъект --debug --test \
           --token "" \
           --path "" \
 
@@ -2095,7 +2095,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk УдалитьОбъект --debug --test \
+          ./oint yadisk УдалитьОбъект --debug --test \
           --token "" \
           --path "" \
           --can "" \
@@ -2106,7 +2106,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk СоздатьКопиюОбъекта --debug --test \
+          ./oint yadisk СоздатьКопиюОбъекта --debug --test \
           --token "" \
           --from "" \
           --to "" \
@@ -2118,7 +2118,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПолучитьСсылкуДляСкачивания --debug --test \
+          ./oint yadisk ПолучитьСсылкуДляСкачивания --debug --test \
           --token "" \
           --path "" \
 
@@ -2128,7 +2128,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПолучитьСписокФайлов --debug --test \
+          ./oint yadisk ПолучитьСписокФайлов --debug --test \
           --token "" \
           --amount "" \
           --offset "" \
@@ -2141,7 +2141,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПереместитьОбъект --debug --test \
+          ./oint yadisk ПереместитьОбъект --debug --test \
           --token "" \
           --from "" \
           --to "" \
@@ -2153,7 +2153,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ЗагрузитьФайл --debug --test \
+          ./oint yadisk ЗагрузитьФайл --debug --test \
           --token "" \
           --path "" \
           --file "" \
@@ -2165,7 +2165,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ЗагрузитьФайлПоURL --debug --test \
+          ./oint yadisk ЗагрузитьФайлПоURL --debug --test \
           --token "" \
           --path "" \
           --url "" \
@@ -2176,7 +2176,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ОпубликоватьОбъект --debug --test \
+          ./oint yadisk ОпубликоватьОбъект --debug --test \
           --token "" \
           --path "" \
 
@@ -2186,7 +2186,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ОтменитьПубликациюОбъекта --debug --test \
+          ./oint yadisk ОтменитьПубликациюОбъекта --debug --test \
           --token "" \
           --path "" \
 
@@ -2196,7 +2196,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПолучитьСписокОпубликованныхОбъектов --debug --test \
+          ./oint yadisk ПолучитьСписокОпубликованныхОбъектов --debug --test \
           --token "" \
           --amount "" \
           --offset "" \
@@ -2207,7 +2207,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПолучитьПубличныйОбъект --debug --test \
+          ./oint yadisk ПолучитьПубличныйОбъект --debug --test \
           --token "" \
           --url "" \
           --amount "" \
@@ -2219,7 +2219,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта --debug --test \
+          ./oint yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта --debug --test \
           --token "" \
           --url "" \
           --path "" \
@@ -2230,7 +2230,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin yadisk СохранитьПубличныйОбъектНаДиск --debug --test \
+          ./oint yadisk СохранитьПубличныйОбъектНаДиск --debug --test \
           --token "" \
           --url "" \
           --from "" \
@@ -2269,7 +2269,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin google СформироватьСсылкуПолученияКода --debug --test \
+          ./oint google СформироватьСсылкуПолученияКода --debug --test \
           --id "" \
           --calendar "" \
           --drive "" \
@@ -2280,7 +2280,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin google ПолучитьТокенПоКоду --debug --test \
+          ./oint google ПолучитьТокенПоКоду --debug --test \
           --id "" \
           --secret "" \
           --code "" \
@@ -2291,7 +2291,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin google ОбновитьТокен --debug --test \
+          ./oint google ОбновитьТокен --debug --test \
           --id "" \
           --secret "" \
           --refresh "" \
@@ -2329,7 +2329,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar СоздатьКалендарь --debug --test \
+          ./oint gcalendar СоздатьКалендарь --debug --test \
           --token "" \
           --title "Тест" \
 
@@ -2339,7 +2339,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ПолучитьМетаданныеКалендаря --debug --test \
+          ./oint gcalendar ПолучитьМетаданныеКалендаря --debug --test \
           --token "" \
           --calendar "" \
 
@@ -2349,7 +2349,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ИзменитьМетаданныеКалендаря --debug --test \
+          ./oint gcalendar ИзменитьМетаданныеКалендаря --debug --test \
           --token "" \
           --calendar "" \
           --title "Тест" \
@@ -2361,7 +2361,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ОчиститьОсновнойКалендарь --debug --test \
+          ./oint gcalendar ОчиститьОсновнойКалендарь --debug --test \
           --token "" \
 
 
@@ -2370,7 +2370,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar УдалитьКалендарь --debug --test \
+          ./oint gcalendar УдалитьКалендарь --debug --test \
           --token "" \
           --calendar "" \
 
@@ -2380,7 +2380,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ПолучитьСписокКалендарей --debug --test \
+          ./oint gcalendar ПолучитьСписокКалендарей --debug --test \
           --token "" \
 
 
@@ -2389,7 +2389,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ДобавитьКалендарьВСписок --debug --test \
+          ./oint gcalendar ДобавитьКалендарьВСписок --debug --test \
           --token "" \
           --calendar "" \
 
@@ -2399,7 +2399,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ПолучитьКалендарьСписка --debug --test \
+          ./oint gcalendar ПолучитьКалендарьСписка --debug --test \
           --token "" \
           --calendar "" \
 
@@ -2409,7 +2409,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar УдалитьКалендарьИзСписка --debug --test \
+          ./oint gcalendar УдалитьКалендарьИзСписка --debug --test \
           --token "" \
           --calendar "" \
 
@@ -2419,7 +2419,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ИзменитьКалендарьСписка --debug --test \
+          ./oint gcalendar ИзменитьКалендарьСписка --debug --test \
           --token "" \
           --calendar "" \
           --primary "" \
@@ -2432,7 +2432,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ПолучитьСписокСобытий --debug --test \
+          ./oint gcalendar ПолучитьСписокСобытий --debug --test \
           --token "" \
           --calendar "" \
 
@@ -2442,7 +2442,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ПолучитьСобытие --debug --test \
+          ./oint gcalendar ПолучитьСобытие --debug --test \
           --token "" \
           --calendar "" \
           --event "" \
@@ -2453,7 +2453,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar СоздатьСобытие --debug --test \
+          ./oint gcalendar СоздатьСобытие --debug --test \
           --token "" \
           --calendar "" \
           --props "" \
@@ -2464,7 +2464,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ПереместитьСобытие --debug --test \
+          ./oint gcalendar ПереместитьСобытие --debug --test \
           --token "" \
           --from "" \
           --to "" \
@@ -2476,7 +2476,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar ИзменитьСобытие --debug --test \
+          ./oint gcalendar ИзменитьСобытие --debug --test \
           --token "" \
           --calendar "" \
           --props "" \
@@ -2488,7 +2488,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gcalendar УдалитьСобытие --debug --test \
+          ./oint gcalendar УдалитьСобытие --debug --test \
           --token "" \
           --calendar "" \
           --event "" \
@@ -2526,7 +2526,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive ПолучитьИнформациюОбОбъекте --debug --test \
+          ./oint gdrive ПолучитьИнформациюОбОбъекте --debug --test \
           --token "" \
           --object "" \
 
@@ -2536,7 +2536,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive ПолучитьСписокКаталогов --debug --test \
+          ./oint gdrive ПолучитьСписокКаталогов --debug --test \
           --token "" \
           --querry "" \
           --depth "" \
@@ -2547,7 +2547,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive ПолучитьСписокФайлов --debug --test \
+          ./oint gdrive ПолучитьСписокФайлов --debug --test \
           --token "" \
           --querry "" \
           --catalog "" \
@@ -2558,7 +2558,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive ЗагрузитьФайл --debug --test \
+          ./oint gdrive ЗагрузитьФайл --debug --test \
           --token "" \
           --file "" \
           --props "" \
@@ -2569,7 +2569,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive СоздатьПапку --debug --test \
+          ./oint gdrive СоздатьПапку --debug --test \
           --token "" \
           --title "Тест" \
           --catalog "" \
@@ -2580,7 +2580,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive СкачатьФайл --debug --test \
+          ./oint gdrive СкачатьФайл --debug --test \
           --token "" \
           --object "" \
 
@@ -2590,7 +2590,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive СкопироватьОбъект --debug --test \
+          ./oint gdrive СкопироватьОбъект --debug --test \
           --token "" \
           --object "" \
           --title "Тест" \
@@ -2602,7 +2602,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive ОбновитьФайл --debug --test \
+          ./oint gdrive ОбновитьФайл --debug --test \
           --token "" \
           --object "" \
           --file "" \
@@ -2614,7 +2614,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive УдалитьОбъект --debug --test \
+          ./oint gdrive УдалитьОбъект --debug --test \
           --token "" \
           --object "" \
 
@@ -2624,7 +2624,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive СоздатьКомментарий --debug --test \
+          ./oint gdrive СоздатьКомментарий --debug --test \
           --token "" \
           --object "" \
           --text "Тестовый текст" \
@@ -2635,7 +2635,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive ПолучитьКомментарий --debug --test \
+          ./oint gdrive ПолучитьКомментарий --debug --test \
           --token "" \
           --object "" \
           --comment "" \
@@ -2646,7 +2646,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive ПолучитьСписокКомментариев --debug --test \
+          ./oint gdrive ПолучитьСписокКомментариев --debug --test \
           --token "" \
           --object "" \
 
@@ -2656,7 +2656,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint_bin gdrive УдалитьКомментарий --debug --test \
+          ./oint gdrive УдалитьКомментарий --debug --test \
           --token "" \
           --object "" \
           --comment "" \
