@@ -7,9 +7,9 @@ sidebar_position: 1
 
 *Функция ПолучитьСписокКалендарей(Знач Токен) Экспорт*
 
-  | Параметр | Тип | Назначение |
-  |-|-|-|
-  | Токен | Строка | Токен доступа |
+  | Параметр | CLI | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен доступа |
   
   Вовзращаемое значение: Массив из Соответствие - массив данных календарей
 
@@ -18,6 +18,15 @@ sidebar_position: 1
     Ответ = OPI_GoogleCalendar.ПолучитьСписокКалендарей(Токен); //Соответствие
     Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                 //Строка
 
+```
+
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gcalendar ПолучитьСписокКалендарей --token %token%
+    
 ```
 
 ```json title="Результат"

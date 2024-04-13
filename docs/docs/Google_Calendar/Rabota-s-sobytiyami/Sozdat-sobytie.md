@@ -7,11 +7,11 @@ sidebar_position: 4
 
 *Функция СоздатьСобытие(Знач Токен, Знач Календарь, Знач ОписаниеСобытия) Экспорт*
 
-  | Параметр | Тип | Назначение |
-  |-|-|-|
-  | Токен | Строка | Токен доступа |
-  | Календарь | Строка | ID календаря|
-  | ОписаниеТовара | Соответствие | Описание создаваемого события. См. [ПолучитьОписаниеТовара](./Poluchit-opisanye-sobytiya) |
+  | Параметр | CLI | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен доступа |
+  | Календарь | --calendar | Строка | ID календаря|
+  | ОписаниеТовара | --props | Соответствие | Описание создаваемого события. См. [ПолучитьОписаниеТовара](./Poluchit-opisanye-sobytiya) |
   
   Вовзращаемое значение: Соответствие - сериализованный JSON ответа от VK
 
@@ -33,6 +33,15 @@ sidebar_position: 4
     Ответ = OPI_GoogleCalendar.СоздатьСобытие(Токен, Календарь, СоответствиеСобытия); 
     Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
 
+```
+
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gcalendar СоздатьСобытие --token %token% --calendar %calendar% --props "C:\event.json"
+    
 ```
 
 ![Результат](img/1.png)
