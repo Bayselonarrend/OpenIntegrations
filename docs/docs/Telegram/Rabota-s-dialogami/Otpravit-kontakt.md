@@ -29,6 +29,12 @@ sidebar_position: 9
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьКонтакт --token "%token%" --chat %channelid% --name "Петр" --surname "Петров" --phone "123123123"
+
+```
+
 ![Результат](img/12.png)
 
 ```json title="Результат"

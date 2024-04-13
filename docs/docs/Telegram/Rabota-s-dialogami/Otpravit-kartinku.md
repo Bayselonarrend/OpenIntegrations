@@ -31,6 +31,12 @@ sidebar_position: 2
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьКартинку --token "%token%" --chat %channelid% --text "Это рисунок альпаки" --picture "C:\alpaca.png"
+
+```
+
 ![Результат](img/5.png)
 
 ```json title="Результат"

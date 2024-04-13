@@ -24,29 +24,36 @@ sidebar_position: 6
 	Токен         = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
 	ДатаИстечения = ТекущаяДатаСеанса() + 60 * 60 * 24;
 	
-	Ответ = OPI_Telegram.СоздатьСсылкуПриглашение(Токен, "@testsichee", "Приглашение", ДатаИстечения); //Соответствие
-	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                        //JSON строка                                            
+	Ответ = OPI_Telegram.СоздатьСсылкуПриглашение(Токен, "@testsichee", "Приглашение 1", ДатаИстечения, 10); //Соответствие
+	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                              //JSON строка                                            
 	
+```
+
+```sh title="Пример команд CLI"
+
+    oint telegram СоздатьСсылкуПриглашение --token "%token%" --chat %channelid% --title "Приглашение 1" --expire "2024-04-14T23:55:04+03:00" --limit 10
+
 ```
 
 ```json title="Результат"
 
 {
+ "ok": true,
  "result": {
-  "creates_join_request": false,
-  "is_revoked": false,
-  "expire_date": 1704646618,
-  "is_primary": false,
+  "invite_link": "https://t.me/+84-I7DsjOYBlYTYy",
+  "name": "Приглашение 1",
   "creator": {
-   "username": "sicheebot",
-   "first_name": "Sichee",
+   "id": 6129457865,
    "is_bot": true,
-   "id": 0987654321
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
   },
-  "name": "Приглашение",
-  "invite_link": "https://t.me/+rGwUa7PARLcwM112"
- },
- "ok": true
+  "expire_date": 1713135304,
+  "member_limit": 10,
+  "creates_join_request": false,
+  "is_primary": false,
+  "is_revoked": false
+ }
 }
 
 ```

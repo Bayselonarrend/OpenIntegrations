@@ -34,6 +34,13 @@ sidebar_position: 1
 	
 ```
 
+```sh title="Пример команд CLI"
+    
+    oint telegram СформироватьКлавиатуруПоМассивуКнопок --buttons "['Отлично','Нормально','Плохо']" --under true --out keyboard.json
+    oint telegram ОтправитьТекстовоеСообщение --token "%token%" --chat %user% --text "Привет, как у тебя дела?" --keyboard keyboard.json
+
+```
+
 ![Результат](img/4.png)
 
 ```json title="Результат"

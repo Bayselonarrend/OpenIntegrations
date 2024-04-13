@@ -27,6 +27,12 @@ sidebar_position: 11
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ПереслатьСообщение --token "%token%" --message 211 --from %channelid% --to %user%
+
+```
+
 ![Результат](img/14.png)
 
 ```json title="Результат"

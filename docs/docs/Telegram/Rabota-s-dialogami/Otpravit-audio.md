@@ -31,6 +31,12 @@ sidebar_position: 5
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьАудио --token "%token%" --chat %channelid% --text "Крутая песня" --audio "C:\song.mp3"
+
+```
+
 ![Результат](img/8.png)
 
 ```json title="Результат"

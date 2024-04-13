@@ -25,6 +25,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ЗакрепитьСообщение --token "%token%" --chat %channelid% --message 10
+
+```
+
 ![Результат](img/15.png)
 
 ```json title="Результат"

@@ -25,6 +25,12 @@ sidebar_position: 1
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram УстановитьWebhook --token "%token%" --url "https://opi.neocities.org"
+
+```
+
 ```json title="Результат"
 {
  "description": "Webhook was set",

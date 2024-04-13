@@ -26,3 +26,10 @@ sidebar_position: 2
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram Разбан --token "%token%" --chat %channelid% --user %user%
+
+```
+
+

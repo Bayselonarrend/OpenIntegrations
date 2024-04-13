@@ -24,6 +24,12 @@ sidebar_position: 5
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ПолучитьЧислоУчастников --token "%token%" --chat %channelid%
+
+```
+
 ```json title="Результат"
 
 {
