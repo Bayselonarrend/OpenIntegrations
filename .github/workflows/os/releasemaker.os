@@ -3,7 +3,7 @@
 Сервер = "AIONIOTISCORE";
 База   = "OpenIntegrations";
 ПутьВыгрузки = "G:\Мой диск\Проекты\ОПИ\Релизы\";
-Версия   = "1.5.2";
+Версия   = "1.6.0";
 ПутьКEDT = "C:\Repos\OPI\OPI";
 ПутьOS   = "C:\Repos\OPI\OInt";
 
