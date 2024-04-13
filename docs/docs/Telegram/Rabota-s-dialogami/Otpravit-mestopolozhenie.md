@@ -28,6 +28,12 @@ sidebar_position: 8
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьМестоположение --token "%token%" --chat %channelid% --lat "48.87373649724122" --long "2.2954639195323967"
+
+```
+
 ![Результат](img/11.png)
 
 ```json title="Результат"

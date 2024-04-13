@@ -31,6 +31,12 @@ sidebar_position: 4
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьГифку --token "%token%" --chat %channelid% --text "Классная гифка" --gif "C:\2.gif"
+
+```
+
 <img src={require('./img/7.gif').default} width='256px' />
 
 ```json title="Результат"

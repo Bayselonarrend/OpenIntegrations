@@ -22,6 +22,12 @@ sidebar_position: 1
 
 ```
 
+```sh title="Пример команд CLI"
+    
+    oint telegram ПолучитьСписокИконокАватаров --token "%token%"
+
+```
+
 
 ```json title="Результат"
 
