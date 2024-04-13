@@ -7,10 +7,10 @@ sidebar_position: 2
 
 *Функция ПолучитьСписокСобытий(Знач Токен, Знач Календарь) Экспорт*
 
-  | Параметр | Тип | Назначение |
-  |-|-|-|
-  | Токен | Строка | Токен доступа |
-  | Календарь | Строка | ID календаря |
+  | Параметр | CLI | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен доступа |
+  | Календарь | --calendar | Строка | ID календаря |
   
   Вовзращаемое значение: Массив из Соответствие - массив данных событий
 
@@ -19,6 +19,15 @@ sidebar_position: 2
     Ответ = OPI_GoogleCalendar.ПолучитьСписокСобытий(Токен, "55868c32be16935f0...");  
     Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                       
 
+```
+
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gcalendar ПолучитьСписокСобытий --token %token% --calendar %calendar%
+    
 ```
 
 ```json title="Результат"
