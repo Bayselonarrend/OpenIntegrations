@@ -31,6 +31,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьВидео --token "%token%" --chat %channelid% --text "Природа" --video "C:\video.mp4"
+
+```
+
 ![Результат](img/6.png)
 
 ```json title="Результат"

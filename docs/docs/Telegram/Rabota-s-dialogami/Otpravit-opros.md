@@ -32,6 +32,12 @@ sidebar_position: 10
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint telegram ОтправитьОпрос --token "%token%" --chat %channelid% --question "Какой ваш любимый цвет?" --options "['Красный','Желтый','Синий']"
+
+```
+
 ![Результат](img/13.png)
 
 ```json title="Результат"
