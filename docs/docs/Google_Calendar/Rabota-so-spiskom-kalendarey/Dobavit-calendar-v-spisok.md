@@ -7,10 +7,10 @@ sidebar_position: 3
 
 *Функция ДобавитьКалендарьВСписок(Знач Токен, Знач Календарь) Экспорт*
 
-  | Параметр | Тип | Назначение |
-  |-|-|-|
-  | Токен | Строка | Токен доступа |
-  | Календарь | Строка | ID календаря для добавления |
+  | Параметр | CLI | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен доступа |
+  | Календарь | --calendar | Строка | ID календаря для добавления |
   
   Вовзращаемое значение: Соответствие - сериализованный JSON ответа от Google
 
@@ -19,6 +19,15 @@ sidebar_position: 3
     Ответ = OPI_GoogleCalendar.ДобавитьКалендарьВСписок(Токен, "55868c32be16935f0..."); //Соответствие
     Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                         //Строка
 
+```
+
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gcalendar ДобавитьКалендарьВСписок --token %token% --calendar %calendar% 
+    
 ```
 
 ![Результат](img/1.png)
