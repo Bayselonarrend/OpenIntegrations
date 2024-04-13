@@ -220,7 +220,7 @@
 		|          masked: true
 		|
 		|      - name: chmod для OInt
-		|        run: chmod +x ./oint_bin
+		|        run: chmod +x ./oint
 		|
 		|";
 
