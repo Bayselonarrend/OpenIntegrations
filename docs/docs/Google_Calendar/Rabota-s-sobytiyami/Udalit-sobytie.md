@@ -7,11 +7,11 @@ sidebar_position: 7
 
 *Функция УдалитьСобытие(Знач Токен, Знач Календарь, Знач Событие) Экспорт*
 
-  | Параметр | Тип | Назначение |
-  |-|-|-|
-  | Токен | Строка | Токен доступа |
-  | Календарь | Строка | ID календаря |
-  | Событие | Строка | ID события |
+  | Параметр | CLI | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен доступа |
+  | Календарь | --calendar | Строка | ID календаря |
+  | Событие | --event | Строка | ID события |
   
   Вовзращаемое значение: Пустая строка
 
@@ -20,6 +20,15 @@ sidebar_position: 7
     Ответ = OPI_GoogleCalendar.УдалитьСобытие(Токен, "55868c32be16935f0...", "j4nonfcc0m2...");  //Соответствие
     Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                  //Строка
 
+```
+
+```sh title="Пример команд CLI"
+
+    oint google ОбновитьТокен --id %clientid% --secret %clientsecret% --refresh %refreshtoken% > token.json
+    oint tools РазложитьJSON --json token.json --name access_token > token.tmp
+    set /p token=<token.tmp
+    oint gcalendar УдалитьСобытие --token %token% --calendar %calendar% --event %event%
+    
 ```
 
 ```json title="Результат"
