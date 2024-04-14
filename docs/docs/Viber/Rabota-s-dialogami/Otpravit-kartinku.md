@@ -27,6 +27,13 @@ sidebar_position: 2
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                                                    //JSON строка
 	
 ```
+
+```sh title="Пример команд CLI"
+
+    oint viber ОтправитьКартинку --token %token% --picture "https://api.athenaeum.digital/logo.png" --user %user% --ischannel false --description "Альпака"
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"

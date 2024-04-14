@@ -27,6 +27,13 @@ sidebar_position: 4
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                       //JSON строка
 	
 ```
+
+```sh title="Пример команд CLI"
+
+    oint viber ОтправитьКонтакт --token %token% --name "Пётр Петров" --phone "+749521231" --user %user% --ischannel false
+
+```
+
 ![Результат](img/4.png)
 
 ```json title="Результат"
