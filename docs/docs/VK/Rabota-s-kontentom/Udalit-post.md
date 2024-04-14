@@ -21,6 +21,12 @@ sidebar_position: 2
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk УдалитьПост --post 212 --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {

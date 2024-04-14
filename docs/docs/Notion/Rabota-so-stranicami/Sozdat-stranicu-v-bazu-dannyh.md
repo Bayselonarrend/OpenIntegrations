@@ -40,6 +40,12 @@ sidebar_position: 2
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion СоздатьСтраницуВБазу --token %token% --base %base% --data "C:\page.json"
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"

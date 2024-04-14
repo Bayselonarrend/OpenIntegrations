@@ -26,6 +26,12 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk НаписатьСообщение --text "Я бот, а ты нет >:)" --user 657811122 --ct %ct% --auth C:\auth.json
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"

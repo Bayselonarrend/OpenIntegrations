@@ -25,6 +25,12 @@ sidebar_position: 4
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion ПолучитьСтраницу --token %token% --page %page%
+
+```
+
 ```json title="Результат"
 
 {

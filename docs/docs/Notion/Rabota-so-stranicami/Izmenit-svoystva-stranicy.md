@@ -41,6 +41,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion ИзменитьСвойстваСтраницы --token %token% --page %page% --data "C:\page.json" --icon "https://opi.neocities.org/img/logo.png" --cover "https://opi.neocities.org/assets/images/logo_long-e69f28017feff1759ffcfe3f4e7bbf2a.png" --archive false
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"

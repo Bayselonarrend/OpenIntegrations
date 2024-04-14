@@ -27,6 +27,12 @@ sidebar_position: 1
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion СоздатьСтраницу --token %token% --page %page% --title "Создано из OInt"
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

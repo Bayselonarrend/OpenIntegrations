@@ -25,6 +25,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion ВернутьБлок --token %token% --block %block% --core true
+
+```
+
 ```json title="Результат"
 
 {
