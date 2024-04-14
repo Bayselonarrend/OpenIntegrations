@@ -21,6 +21,12 @@ sidebar_position: 2
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint viber ПолучитьИнформациюОКанале --token %channeltoken%
+
+```
+
 ```json title="Результат"
 
 {

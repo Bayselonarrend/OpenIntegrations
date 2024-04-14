@@ -35,6 +35,14 @@ sidebar_position: 1
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                             //JSON строка
 	
 ```
+
+```sh title="Пример команд CLI"
+
+	oint viber СформироватьКлавиатуруИзМассиваКнопок --buttons "['Кнопка 1','Кнопка 2','Кнопка 3']" --out keyboard.json
+    oint viber ОтправитьТекстовоеСообщение --token %token% --text "Привет" --user %user% --ischannel false --keyboard keyboard.json
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

@@ -22,6 +22,12 @@ sidebar_position: 1
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint viber УстановитьWebhook --token %token% --url "https://api.athenaeum.digital/opi/hs/viber"
+
+```
+
 ```json title="Результат"
 
 {

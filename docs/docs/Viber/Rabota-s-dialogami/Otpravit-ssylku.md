@@ -26,6 +26,13 @@ sidebar_position: 6
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                              //JSON строка
 	
 ```
+
+```sh title="Пример команд CLI"
+
+    oint viber ОтправитьСсылку --token %token% --url "https://github.com/Bayselonarrend" --user %user% --ischannel false
+
+```
+
 ![Результат](img/6.png)
 
 ```json title="Результат"

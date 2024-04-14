@@ -21,6 +21,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint viber ПолучитьДанныеПользователя --token %token% --user %user%
+
+```
+
 ```json title="Результат"
 
 {
