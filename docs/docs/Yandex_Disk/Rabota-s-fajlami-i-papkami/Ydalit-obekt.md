@@ -24,6 +24,12 @@ sidebar_position: 8
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk УдалитьОбъект --token %token% --path "/Альпака.png" --can false
+
+```
+
 ![Результат](img/6.png)
 
 

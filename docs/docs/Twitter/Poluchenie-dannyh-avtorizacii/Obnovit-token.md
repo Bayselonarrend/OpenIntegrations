@@ -25,6 +25,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint twitter ОбновитьТокен --auth C:\twitter.json
+
+```
+
 ```json title="Результат"
 
 {

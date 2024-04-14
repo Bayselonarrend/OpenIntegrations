@@ -25,6 +25,12 @@ sidebar_position: 3
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта --token %token% --url "https://disk.yandex.by/i/txwzakUVtxgjoQ"
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"
