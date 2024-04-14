@@ -20,6 +20,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СократитьСсылку --url "https://github.com/Bayselonarrend/OpenIntegrations" --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 https://vk.cc/ctL1sM

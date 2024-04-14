@@ -22,6 +22,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СоздатьАльбом --title "Крутые картинки" --description "Альбом для крутых картинок" --auth C:\auth.json
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"

@@ -29,6 +29,12 @@ sidebar_position: 3
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СоздатьПодборкуТоваров --title "Тестовая подборка" --picture "C:\alpaca.png" --main true --hidden false --auth C:\auth.json
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

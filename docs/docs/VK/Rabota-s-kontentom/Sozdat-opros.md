@@ -34,6 +34,12 @@ sidebar_position: 3
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" --options "['Красный','Желтый','Синий']" --picture "C:\alpaca.png" --auth C:\auth.json
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"

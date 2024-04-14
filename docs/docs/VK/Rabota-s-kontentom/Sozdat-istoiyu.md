@@ -17,8 +17,14 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
 	
-	Ответ = OPI_VK.СоздатьИсторию("C:\logo.png", "https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
+	Ответ = OPI_VK.СоздатьИсторию("C:\alpaca.png", "https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+
+```
+
+```sh title="Пример команд CLI"
+
+    oint vk СоздатьИсторию --picture "C:\alpaca.png" --url "https://github.com/Bayselonarrend/OpenIntegrations" --auth C:\auth.json
 
 ```
 

@@ -25,6 +25,12 @@ sidebar_position: 2
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion ПолучитьДанныеПользователя --token %token% --user %user%
+
+```
+
 ```json title="Результат"
 
 {

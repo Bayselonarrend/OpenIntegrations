@@ -22,6 +22,12 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ДобавитьВариантСвойстваТовара --value "Красный" --prop 260 --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {

@@ -21,6 +21,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk УдалитьСвойствоТовара --prop 260 --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {
