@@ -23,6 +23,12 @@ sidebar_position: 2
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk СоздатьПапку --token %token% --path "/Тестовая папка"
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"
