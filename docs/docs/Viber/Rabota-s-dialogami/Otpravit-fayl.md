@@ -28,6 +28,13 @@ sidebar_position: 3
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                                         //JSON строка
 	
 ```
+
+```sh title="Пример команд CLI"
+
+    oint viber ОтправитьФайл --token %token% --file "https://api.athenaeum.digital/1.txt" --user %user% --ischannel false --ext txt
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"

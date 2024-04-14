@@ -20,6 +20,12 @@ sidebar_position: 1
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ПолучитьСписокПодборок --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 [

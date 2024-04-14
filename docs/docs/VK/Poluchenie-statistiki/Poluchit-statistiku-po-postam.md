@@ -25,6 +25,12 @@ sidebar_position: 2
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ПолучитьСтатистикуПостов --posts "['214','215']" --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 [

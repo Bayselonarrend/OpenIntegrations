@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```sh title="Пример команд CLI"
 
-    oint vk НаписатьСообщение --post 221 --auth C:\auth.json
+    oint vk ПоставитьЛайк --post 221 --auth C:\auth.json
 
 ```
 

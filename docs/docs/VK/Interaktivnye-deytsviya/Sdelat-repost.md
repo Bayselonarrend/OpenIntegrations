@@ -23,6 +23,13 @@ sidebar_position: 2
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
 
 ```
+
+```sh title="Пример команд CLI"
+
+    oint vk СделатьРепост --post 221 --from -218704372 --auth C:\auth.json
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

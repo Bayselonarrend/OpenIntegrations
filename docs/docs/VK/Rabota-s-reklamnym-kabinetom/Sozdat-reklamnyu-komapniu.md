@@ -22,6 +22,12 @@ sidebar_position: 1
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СоздатьРекламнуюКампанию --cabinet %cabinet% --title "Новая рекламная кампания" --auth C:\auth.json
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"
