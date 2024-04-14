@@ -43,6 +43,12 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ДобавитьТовар --product "C:\product.json" --sel 166 --auth C:\auth.json
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

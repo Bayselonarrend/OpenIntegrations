@@ -25,6 +25,12 @@ sidebar_position: 2
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СоздатьРекламноеОбъявление --campaign 1029683999 --limit 166 --category 126 --post 221 --cabinet %cabinet% --auth C:\auth.json
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"

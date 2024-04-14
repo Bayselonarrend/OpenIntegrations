@@ -25,6 +25,12 @@ sidebar_position: 3
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ПолучитьТоварыПоИД --items "['8656033','8656034']" --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {

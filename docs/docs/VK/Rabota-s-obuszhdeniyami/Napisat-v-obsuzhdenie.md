@@ -22,6 +22,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk НаписатьВОбсуждение --topic 49494836 --text "Мне больше нравится желтый" --auth C:\auth.json
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"

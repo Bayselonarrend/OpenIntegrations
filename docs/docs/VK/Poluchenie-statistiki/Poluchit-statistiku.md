@@ -22,6 +22,12 @@ sidebar_position: 1
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ПолучитьСтатистику --datefrom "2024-01-14T12:48:17+03:00" --dateto "2024-04-14T12:48:17+03:00" --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {

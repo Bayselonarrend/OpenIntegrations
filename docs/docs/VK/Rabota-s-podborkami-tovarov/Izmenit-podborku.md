@@ -31,6 +31,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ИзменитьПодборкуТоваров --title "Измененная подборка" --sel 40 --picture "C:\alpaca.png" --main false --hidden true --auth C:\auth.json
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"

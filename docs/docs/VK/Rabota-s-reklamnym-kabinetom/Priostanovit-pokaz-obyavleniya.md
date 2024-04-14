@@ -22,6 +22,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ПриостановитьРекламноеОбъявление --cabinet %cabinet% --adv 1029701085 --auth C:\auth.json
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

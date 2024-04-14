@@ -22,6 +22,12 @@ sidebar_position: 3
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ИзменитьСвойствоТовара --title "Цвет (изм.)" --prop 260 --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {
