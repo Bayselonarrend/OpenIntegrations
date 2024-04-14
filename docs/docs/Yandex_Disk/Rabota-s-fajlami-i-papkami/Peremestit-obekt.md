@@ -27,6 +27,12 @@ sidebar_position: 7
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ПереместитьОбъект --token %token% --from "/Альпака.png" --to "/Тестовая папка/Альпака (Перемещенная).png"
+
+```
+
 ![Результат](img/5.png)
 
 ```json title="Результат"

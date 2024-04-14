@@ -23,6 +23,12 @@ sidebar_position: 1
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint twitter СоздатьТекстовыйТвит --text "Обычный текстовый твит" --auth C:\twitter.json
+
+```
+
 ![Результат](img/0.png)
 
 ```json title="Результат"

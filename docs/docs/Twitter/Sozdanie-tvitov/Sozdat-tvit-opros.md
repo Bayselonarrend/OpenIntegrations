@@ -30,6 +30,12 @@ sidebar_position: 5
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint twitter СоздатьТвитОпрос --text "Как дела?" --options "['Хорошо','Ничего особенного','Плохо']" --duration 60 --auth C:\twitter.json
+
+```
+
 ![Результат](img/5.png)
 
 ```json title="Результат"

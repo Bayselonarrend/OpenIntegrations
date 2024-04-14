@@ -28,6 +28,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint twitter СоздатьТвитГифки --text "Гифки" --gifs "['C:\1.gif','C:\2.gif']" --auth C:\twitter.json
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"

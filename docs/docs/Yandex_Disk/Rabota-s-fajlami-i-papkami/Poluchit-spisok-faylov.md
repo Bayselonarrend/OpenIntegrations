@@ -29,6 +29,12 @@ sidebar_position: 2
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ПолучитьСписокФайлов --token %token% --amount 2 --type image 
+
+```
+
 ```json title="Результат"
 
 {

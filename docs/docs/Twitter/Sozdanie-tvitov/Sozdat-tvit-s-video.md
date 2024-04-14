@@ -28,6 +28,12 @@ sidebar_position: 4
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint twitter СоздатьТвитВидео --text "Природа" --videos "['C:\1.mp4','C:\2.mp4']" --auth C:\twitter.json
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"

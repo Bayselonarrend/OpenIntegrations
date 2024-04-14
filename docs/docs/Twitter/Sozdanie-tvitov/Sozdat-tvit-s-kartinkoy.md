@@ -28,6 +28,12 @@ sidebar_position: 2
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint twitter СоздатьТвитКартинки --text "Альпака" --pictures "['C:\logo.png','C:\logo_long.png']" --auth C:\twitter.json
+
+```
+
 ![Результат](img/6.png)
 
 ```json title="Результат"
