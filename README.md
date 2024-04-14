@@ -68,6 +68,11 @@ CLI версия дополнительно требует **.Net Framework 4.8*
 
 CLI версия имеет собственную встроенную справку по всем методам 
 
+<p align="center">
+  <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/cli.gif?v1" style="width: 990px;">
+</p>
+
+
 
 ___
 
