@@ -23,6 +23,12 @@ sidebar_position: 6
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ОтменитьПубликациюОбъекта --token %token% --path "/Альпака2.png"
+
+```
+
 ```json title="Результат"
 
 {

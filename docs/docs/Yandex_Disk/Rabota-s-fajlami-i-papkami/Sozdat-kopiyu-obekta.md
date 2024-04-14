@@ -27,6 +27,12 @@ sidebar_position: 6
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk СоздатьКопиюОбъекта --token %token% --from "/Альпака.png" --to "/Альпака (копия).png"
+
+```
+
 ![Результат](img/4.png)
 
 ```json title="Результат"

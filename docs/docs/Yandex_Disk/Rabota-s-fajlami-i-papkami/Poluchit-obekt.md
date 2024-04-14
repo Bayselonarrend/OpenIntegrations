@@ -23,6 +23,11 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ПолучитьОбъект --token %token% --path /Альпака.png 
+
+```
 
 ```json title="Результат"
 

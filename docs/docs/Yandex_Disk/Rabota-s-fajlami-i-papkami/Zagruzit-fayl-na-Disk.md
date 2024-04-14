@@ -27,6 +27,12 @@ sidebar_position: 3
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ЗагрузитьФайл --token %token% --path "/Альпака1.png" --file "C:\alpaca.png"
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"

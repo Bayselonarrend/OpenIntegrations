@@ -24,6 +24,12 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ПолучитьСписокОпубликованныхОбъектов --token %token% --amount 2 --offset 1
+
+```
+
 ```json title="Результат"
 
 {

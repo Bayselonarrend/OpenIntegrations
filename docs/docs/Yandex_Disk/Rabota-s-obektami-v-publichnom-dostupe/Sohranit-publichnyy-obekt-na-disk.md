@@ -26,6 +26,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk СохранитьПубличныйОбъектНаДиск --token %token% --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --to "/Новая папка"
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"

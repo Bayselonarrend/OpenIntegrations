@@ -23,6 +23,12 @@ sidebar_position: 1
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ОпубликоватьОбъект --token %token% --path "/Альпака.png"
+
+```
+
 ![Результат](img/1.png)
 
 

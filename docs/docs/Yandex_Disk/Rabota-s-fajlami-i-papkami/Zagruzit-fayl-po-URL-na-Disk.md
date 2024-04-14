@@ -26,6 +26,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint yadisk ЗагрузитьФайлПоURL --token %token% --path "/Альпака2.png" --url "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png"
+
+```
+
 ![Результат](img/2.png)
 
 ```json title="Результат"
