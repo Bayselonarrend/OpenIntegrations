@@ -64,19 +64,6 @@ jobs:
           name: oint
           path: ./cli/oint
           
-      - name: Установить go-msi
-        run: choco install -y "go-msi"
-        
-      - name: Собрать MSI
-        uses: AliceOh/CreateWindowsInstaller@1.0.0
-        with:
-          exefile: './cli/oint'
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: oint-msi
-          path: |
-            ./oint.msi
 
       - name: Создать каталог deb-пакета
         run: |
