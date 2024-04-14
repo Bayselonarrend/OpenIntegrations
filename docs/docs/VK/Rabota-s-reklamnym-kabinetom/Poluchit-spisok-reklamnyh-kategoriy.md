@@ -20,6 +20,12 @@ sidebar_position: 4
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk ПолучитьСписокРекламныхКатегорий --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {
@@ -47,5 +53,11 @@ sidebar_position: 4
        },
 
 		...
-
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
 ```

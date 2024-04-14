@@ -27,6 +27,12 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СохранитьКартинкуВАльбом --album 302277649 --picture "C:\alpaca.png" --description "Альпака" --auth C:\auth.json
+
+```
+
 ![Результат](img/4.png)
 
 ```json title="Результат"

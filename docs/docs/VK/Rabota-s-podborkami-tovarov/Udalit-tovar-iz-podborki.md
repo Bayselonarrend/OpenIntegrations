@@ -22,6 +22,12 @@ sidebar_position: 5
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk УдалитьТоварИзПодборки --item 8836187 --sel 116 --auth C:\auth.json
+
+```
+
 ```json title="Результат"
 
 {

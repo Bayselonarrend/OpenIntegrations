@@ -29,6 +29,13 @@ sidebar_position: 1
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                          
 	
 ```
+
+```sh title="Пример команд CLI"
+
+    oint notion СоздатьБлок --token %token% --parent %page% --block %block%
+
+```
+
 <br/>
 ### Как получить ID блока? ###
 

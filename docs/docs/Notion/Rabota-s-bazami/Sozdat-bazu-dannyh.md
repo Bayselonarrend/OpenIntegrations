@@ -47,6 +47,12 @@ sidebar_position: 1
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion СоздатьБазуДанных --token %token% --page %parent% --title "Эта база была создана из OInt" --props "C:\base.json"
+
+```
+
 ![Результат](img/1.png)
 
 ```json title="Результат"

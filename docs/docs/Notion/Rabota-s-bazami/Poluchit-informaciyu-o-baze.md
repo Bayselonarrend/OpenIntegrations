@@ -25,6 +25,12 @@ sidebar_position: 3
 	
 ```
 
+```sh title="Пример команд CLI"
+
+    oint notion ПолучитьБазуДанных --token %token% --base %base%
+
+```
+
 ```json title="Результат"
 
 {

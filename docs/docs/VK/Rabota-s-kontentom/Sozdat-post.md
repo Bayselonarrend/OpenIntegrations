@@ -20,7 +20,7 @@ sidebar_position: 1
 ```bsl title="Пример кода"
 	
 	МассивКартинок = Новый Массив;
-	МассивКартинок.Добавить("C:\logo.png");
+	МассивКартинок.Добавить("C:\alpaca.png");
 	МассивКартинок.Добавить("C:\logo_long.png");
 	
 	Ответ = OPI_VK.СоздатьПост("Следите за проектом ОПИ на Github!"
@@ -30,6 +30,12 @@ sidebar_position: 1
 		, Параметры);
 	
 	Ответ  = OPI_Инструменты.JSONСтрокой(Ответ);
+
+```
+
+```sh title="Пример команд CLI"
+
+    oint vk СоздатьПост --text "Следите за проектом ОПИ на Github!" --pictures "['C:\alpaca.png','C:\logo_long.png']" --url "https://github.com/Bayselonarrend/OpenIntegrations" --auth C:\auth.json
 
 ```
 

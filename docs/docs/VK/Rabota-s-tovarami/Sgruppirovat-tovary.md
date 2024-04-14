@@ -26,6 +26,12 @@ sidebar_position: 8
 
 ```
 
+```sh title="Пример команд CLI"
+
+    oint vk СгруппироватьТовары --items "['8656033','8656034']" --auth C:\auth.json
+
+```
+
 ![Результат](img/3.png)
 
 ```json title="Результат"
