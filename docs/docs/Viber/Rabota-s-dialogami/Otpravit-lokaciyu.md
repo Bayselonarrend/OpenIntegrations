@@ -27,6 +27,13 @@ sidebar_position: 5
 	Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                              //JSON строка
 	
 ```
+
+```sh title="Пример команд CLI"
+
+    oint viber ОтправитьЛокацию --token %token% --lat "55.75" --long "37.6167" --user %user% --ischannel false
+
+```
+
 ![Результат](img/5.png)
 
 ```json title="Результат"
