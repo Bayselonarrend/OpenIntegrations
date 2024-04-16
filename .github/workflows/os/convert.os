@@ -11,6 +11,7 @@
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_VK/Module.bsl"				        , "./OInt/core/Modules/OPI_VK.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexDisk/Module.bsl"			    , "./OInt/core/Modules/OPI_YandexDisk.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexID/Module.bsl"			    , "./OInt/core/Modules/OPI_YandexID.os");
+	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Slack/Module.bsl"			        , "./OInt/core/Modules/OPI_Slack.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Тесты/Module.bsl"			    	, "./OInt/tests/Modules/internal/OPI_Тесты.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_ПолучениеДанныхТестов/Module.bsl"	, "./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os");
 	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Инструменты/Module.bsl"			    , "./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os");
