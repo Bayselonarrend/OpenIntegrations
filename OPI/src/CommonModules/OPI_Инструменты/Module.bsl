@@ -27,6 +27,7 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnusedLocalVariable-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:NumberOfOptionalParams-off
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params
@@ -388,7 +389,7 @@
         Параметры = Новый Структура;
     КонецЕсли;
     
-    ТипДанных     = ?(JSON, "application/json", "application/x-www-form-urlencoded");   
+    ТипДанных     = ?(JSON, "application/json; charset=utf-8", "application/x-www-form-urlencoded; charset=utf-8");   
     СтруктураURL  = РазбитьURL(URL);
     Сервер        = СтруктураURL["Сервер"];
     Адрес         = СтруктураURL["Адрес"];
@@ -781,7 +782,6 @@
     	Если Не ЗначениеЗаполнено(ТекущиеДанные) Тогда
     		Прервать;
     	КонецЕсли;
-
 
     	ЗаписьДанных.Записать(ТекущиеДанные);
     	
