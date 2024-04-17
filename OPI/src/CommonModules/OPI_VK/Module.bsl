@@ -29,6 +29,7 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:UnusedLocalVariable-off
 
 //@skip-check method-too-many-params
 
