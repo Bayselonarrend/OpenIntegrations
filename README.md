@@ -49,13 +49,13 @@
 <br/>
 
 Из хаба пакетов:
-```
+```powershell
     opm install oint
 ```
 
 Или из скачанного ospx файла:
-```
-    opm install -f ./OInt-x.x.x.ospx
+```powershell
+    opm install -f "./OInt-x.x.x.ospx"
 ```
 <br>
 
