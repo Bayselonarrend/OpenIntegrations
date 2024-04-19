@@ -81,100 +81,100 @@ jobs:
 
 
       - name: Получить информацию бота
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
 
       - name: Получить обновления
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
 
       - name: Установить Webhook
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УстановитьWebhook"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УстановитьWebhook"
 
       - name: Удалить Webhook
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УдалитьWebhook"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УдалитьWebhook"
 
       - name: Отправить текстовое сообщение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьТекстовоеСообщение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьТекстовоеСообщение"
 
       - name: Отправить картинку
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКартинку"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКартинку"
 
       - name: Отправить видео
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьВидео"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьВидео"
 
       - name: Отправить аудио
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьАудио"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьАудио"
 
       - name: Отправить документ
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьДокумент"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьДокумент"
 
       - name: Отправить гифку
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьГифку"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьГифку"
 
       - name: Отправить медиагруппу
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМедиагруппу"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМедиагруппу"
 
       - name: Отправить местоположение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМестоположение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМестоположение"
 
       - name: Отправить контакт
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКонтакт"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКонтакт"
 
       - name: Отправить опрос
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьОпрос"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьОпрос"
 
       - name: Переслать сообщение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПереслатьСообщение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПереслатьСообщение"
 
       - name: Бан/Разбан
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_БанРазбан"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_БанРазбан"
 
       - name: Создать ссылку-приглашение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьСсылкуПриглашение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьСсылкуПриглашение"
 
       - name: Закрепить/Открепить сообщение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ЗакрепитьОткрепитьСообщение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ЗакрепитьОткрепитьСообщение"
 
       - name: Получить число участников
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьЧислоУчастников"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьЧислоУчастников"
 
       - name: Получить список аватаров форума
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьСписокАватаровФорума"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьСписокАватаровФорума"
 
       - name: Создать/Удалить тему форума
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьУдалитьТемуФорума"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьУдалитьТемуФорума"
 
       - name: Открыть/Закрыть главную тему
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОткрытьЗакрытьГлавнуюТему"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОткрытьЗакрытьГлавнуюТему"
 
       - name: Изменить имя главной темы
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
 
       - name: Скрыть/Показать главную тему
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СкрытьПоказатьГлавнуюТему"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СкрытьПоказатьГлавнуюТему"
 
 
   Testing-VK:
@@ -207,76 +207,76 @@ jobs:
 
 
       - name: Создать ссылку получения токена
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьСсылкуТокена"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьСсылкуТокена"
 
       - name: Создать/Удалить пост
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьУдалитьПост"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьУдалитьПост"
 
       - name: Создать опрос
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьОпрос"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьОпрос"
 
       - name: Добавить/Удалить картинку
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СохранитьУдалитьКартинку"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СохранитьУдалитьКартинку"
 
       - name: Создать историю
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьИсторию"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьИсторию"
 
       - name: Действия с обсуждениями
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_МетодыОбсуждений"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_МетодыОбсуждений"
 
       - name: Лайк/Репост/Комментарий
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ЛайкРепостКоммент"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ЛайкРепостКоммент"
 
       - name: Получить статистику
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистику"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистику"
 
       - name: Получить статистику постов
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистикуПостов"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСтатистикуПостов"
 
       - name: Создать рекламную кампанию
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьРекламнуюКампанию"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьРекламнуюКампанию"
 
       - name: Отправить сообщение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ОтправитьСообщение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ОтправитьСообщение"
 
       - name: Получить категории товаров
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьКатегорииТоваров"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьКатегорииТоваров"
 
       - name: Создать товар и подборку
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварПодборку"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварПодборку"
 
       - name: Создать товар со свойствами
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварСоСвойствами"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_СоздатьТоварСоСвойствами"
 
       - name: Получить список товаров
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокТоваров"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокТоваров"
 
       - name: Получить список подборок
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокПодборок"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокПодборок"
 
       - name: Получить список свойств
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокСвойств"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокСвойств"
 
       - name: Получить список заказов
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
 
 
   Testing-Viber:
@@ -309,40 +309,40 @@ jobs:
 
 
       - name: Получить информацию канала
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
 
       - name: Получить данные пользователя
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
 
       - name: Получить онлайн пользователей
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
 
       - name: Отправить текстовое сообщение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьТекстовоеСообщение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьТекстовоеСообщение"
 
       - name: Отправить картинку
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКартинку"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКартинку"
 
       - name: Отправить файл
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьФайл"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьФайл"
 
       - name: Отправить контакт
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКонтакт"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКонтакт"
 
       - name: Отправить локацию
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
 
       - name: Отправить ссылку
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
 
 
   Testing-Twitter:
@@ -375,32 +375,32 @@ jobs:
 
 
       - name: Получить ссылку авторизации
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ПолучитьСсылкуАвторизации"
 
       - name: Обновить токен
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_ОбновитьТокен"
 
       - name: Текстовый твит
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТекстовыйТвит"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТекстовыйТвит"
 
       - name: Твит с картинкой
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСКартинкой"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСКартинкой"
 
       - name: Твит с видео
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСВидео"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСВидео"
 
       - name: Твит с гиф
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСГиф"
 
       - name: Твит с опросом
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
 
 
   Testing-YandexDisk:
@@ -433,44 +433,44 @@ jobs:
 
 
       - name: Получить информацию о диске
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьИнформациюОДиске"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьИнформациюОДиске"
 
       - name: Создать папку
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьПапку"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьПапку"
 
       - name: Загрузить по URL и получить
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"
 
       - name: Загрузить/Удалить файл
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьУдалитьФайл"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ЗагрузитьУдалитьФайл"
 
       - name: Создать копию объекта
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьКопиюОбъекта"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_СоздатьКопиюОбъекта"
 
       - name: Получить ссылку на скачивание
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСсылкуНаСкачивание"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСсылкуНаСкачивание"
 
       - name: Получить список файлов
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокФайлов"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокФайлов"
 
       - name: Переместить объект
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПереместитьОбъект"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПереместитьОбъект"
 
       - name: Действия с публичными объектами
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ДействияПубличныхОбъектов"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ДействияПубличныхОбъектов"
 
       - name: Получить список опубликованных
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокОпубликованных"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ЯДиск_ПолучитьСписокОпубликованных"
 
 
   Testing-GoogleWorkspace:
@@ -503,16 +503,16 @@ jobs:
 
 
       - name: Получить ссылку авторизации
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
 
       - name: Получить токен
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
 
       - name: Обновить токен
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
 
 
   Testing-GoogleCalendar:
@@ -545,20 +545,20 @@ jobs:
 
 
       - name: Получить список календарей
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокКалендарей"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокКалендарей"
 
       - name: Создать/Удалить календарь
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьКалендарь"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьКалендарь"
 
       - name: Создать/Удалить событие
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьСобытие"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_СоздатьУдалитьСобытие"
 
       - name: Получить список событий
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокСобытий"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГК_ПолучитьСписокСобытий"
 
 
   Testing-GoogleDrive:
@@ -591,20 +591,20 @@ jobs:
 
 
       - name: Получить список каталогов
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ПолучитьСписокКаталогов"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ПолучитьСписокКаталогов"
 
       - name: Загрузить/Удалить Файл
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ЗагрузитьУдалитьФайл"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_ЗагрузитьУдалитьФайл"
 
       - name: Создать/Удалить кооментарий
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_СоздатьУдалитьКомментарий"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_СоздатьУдалитьКомментарий"
 
       - name: Создать/Удалить каталог
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_СоздатьКаталог"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГД_СоздатьКаталог"
 
 
   Testing-Notion:
@@ -637,40 +637,40 @@ jobs:
 
 
       - name: Создать страницу
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницу"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницу"
 
       - name: Создать/Изменить базу
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьИзменитьБазу"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьИзменитьБазу"
 
       - name: Получить информацию о странице
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОСтранице"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОСтранице"
 
       - name: Получить информацию о базе
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОБазе"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОБазе"
 
       - name: Создать страницу в базу
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницуВБазу"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницуВБазу"
 
       - name: Изменить свойства страницы
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ИзменитьСвойстваСтраницы"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ИзменитьСвойстваСтраницы"
 
       - name: Создать/Удалить блок
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьУдалитьБлок"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьУдалитьБлок"
 
       - name: Получить пользователей
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьПользователей"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьПользователей"
 
       - name: Получить данные пользователя
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьДанныеПользователя"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьДанныеПользователя"
 
 
   Testing-Slack:
@@ -703,16 +703,16 @@ jobs:
 
 
       - name: Получить информацию о боте
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ПолучитьИнформациюОБоте"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ПолучитьИнформациюОБоте"
 
       - name: Получить список областей
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ПолучитьСписокОбластей"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ПолучитьСписокОбластей"
 
       - name: Отправить/Удалить сообщение
-      if: ${{ cancelled() }} == false
-      run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ОтправитьУдалитьСообщение"
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ОтправитьУдалитьСообщение"
 
   Encode:
     runs-on: ubuntu-latest
