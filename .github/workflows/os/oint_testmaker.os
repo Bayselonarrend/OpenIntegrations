@@ -216,22 +216,22 @@
 	Если Раздел = "Twitter" Тогда
 		ТекстРаботы = ТекстРаботы + "
 		|
-		|        - name: Записать измененные данные
-		|          if: ${{ cancelled() }} == false
-		|          uses: actions/cache/save@v3
-	    |          with:
-		|            key: test-data_new
-		|            path: ./data.json
+		|      - name: Записать измененные данные
+		|        if: ${{ cancelled() }} == false
+		|        uses: actions/cache/save@v3
+	    |        with:
+		|          key: test-data_new
+		|          path: ./data.json
 		|";
     ИначеЕсли Раздел = "GoogleWorkspace" Тогда
 		ТекстРаботы = ТекстРаботы + "
 		|
-		|        - name: Записать измененные данные
-		|          if: ${{ cancelled() }} == false
-		|          uses: actions/cache/save@v3
-	    |          with:
-		|            key: test-data_google
-		|            path: ./data.json
+		|      - name: Записать измененные данные
+		|        if: ${{ cancelled() }} == false
+		|        uses: actions/cache/save@v3
+	    |        with:
+		|          key: test-data_google
+		|          path: ./data.json
 		|";
 	Иначе
 		Возврат;
