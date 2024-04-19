@@ -402,6 +402,14 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
 
+        - name: Записать измененные данные
+          if: ${{ cancelled() }} == false
+          uses: actions/cache/save@v3
+          with:
+            key: test-data_new
+            path: ./data.json
+
+
 
   Testing-YandexDisk:
     runs-on: ubuntu-latest
@@ -514,6 +522,14 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
 
+        - name: Записать измененные данные
+          if: ${{ cancelled() }} == false
+          uses: actions/cache/save@v3
+          with:
+            key: test-data_google
+            path: ./data.json
+
+
 
   Testing-GoogleCalendar:
     runs-on: ubuntu-latest
@@ -528,7 +544,7 @@ jobs:
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
         with:
-          key: test-data
+          key: test-data_google
           path: ./data.json
       
       - name: Установить asserts и 1testrunner
@@ -574,7 +590,7 @@ jobs:
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
         with:
-          key: test-data
+          key: test-data_google
           path: ./data.json
       
       - name: Установить asserts и 1testrunner
