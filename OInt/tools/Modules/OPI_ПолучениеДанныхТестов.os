@@ -203,16 +203,16 @@
 Функция ПолучитьСоответствиеРазделовТестирования() Экспорт
     
     Разделы = Новый Соответствие;
-    Разделы.Добавить("Telegram"       , "[Decode, Build]");
-    Разделы.Добавить("VK"             , "[Decode, Build]");
-    Разделы.Добавить("Viber"          , "[Decode, Build]");
-    Разделы.Добавить("Twitter"        , "[Decode, Build]");
-    Разделы.Добавить("YandexDisk"     , "[Decode, Build]");
-    Разделы.Добавить("GoogleWorkspace", "[Decode, Build]");
-    Разделы.Добавить("GoogleCalendar" , "Testing-GoogleWorkspace");      
-    Разделы.Добавить("GoogleDrive"    , "Testing-GoogleWorkspace");
-    Разделы.Добавить("Notion"         , "[Decode, Build]");
-    Разделы.Добавить("Slack"          , "[Decode, Build]");
+    Разделы.Вставить("Telegram"       , "[Decode, Build]");
+    Разделы.Вставить("VK"             , "[Decode, Build]");
+    Разделы.Вставить("Viber"          , "[Decode, Build]");
+    Разделы.Вставить("Twitter"        , "[Decode, Build]");
+    Разделы.Вставить("YandexDisk"     , "[Decode, Build]");
+    Разделы.Вставить("GoogleWorkspace", "[Decode, Build]");
+    Разделы.Вставить("GoogleCalendar" , "Testing-GoogleWorkspace");      
+    Разделы.Вставить("GoogleDrive"    , "Testing-GoogleWorkspace");
+    Разделы.Вставить("Notion"         , "[Decode, Build]");
+    Разделы.Вставить("Slack"          , "[Decode, Build]");
         
     Возврат Разделы;
     
