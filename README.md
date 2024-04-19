@@ -76,14 +76,8 @@ CLI версия дополнительно требует **.Net Framework 4.8*
 
 CLI версия ОПИ имеет собственную встроенную справку по всем методам. Показ справки осуществляется при вызове библиотеки без метода, метода без опций или при указании опции `--help`
 
-<br>
-
-<p align="center">
-  <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/cli.gif?v1" style="width: 990px;">
-</p>
-
 ___
-
+<br>
 
 >![Infostart](https://github.com/Bayselonarrend/TelegramEnterprise/raw/main/infostart.svg)
 >
