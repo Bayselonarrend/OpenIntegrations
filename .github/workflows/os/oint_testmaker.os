@@ -27,31 +27,31 @@
 		ТекстРаботы = "
 		|
 		|Testing-" + Раздел + ":
-        |runs-on: ubuntu-latest
-        |needs: " + Зависимости + "
-        |steps:
+        |  runs-on: ubuntu-latest
+        |  needs: " + Зависимости + "
+        |  steps:
 		|
-        |  - uses: actions/checkout@v2 
-        |  - uses: otymko/setup-onescript@v1.4
-        |    with:
-        |      version: 1.9.0 
+        |    - uses: actions/checkout@v2 
+        |    - uses: otymko/setup-onescript@v1.4
+        |      with:
+        |        version: 1.9.0 
         |      
-        |  - name: Получить тестовые данные из кэша
-        |    uses: actions/cache/restore@v3
-        |    with:
-        |      key: test-data
-        |      path: ./data.json
+        |    - name: Получить тестовые данные из кэша
+        |      uses: actions/cache/restore@v3
+        |      with:
+        |        key: test-data
+        |        path: ./data.json
         |      
-        |  - name: Установить asserts и 1testrunner
-        |    run: |
-        |      opm install asserts
-        |      opm install 1testrunner
+        |    - name: Установить asserts и 1testrunner
+        |      run: |
+        |        opm install asserts
+        |        opm install 1testrunner
 		|
-        |  - name: Установить OInt
-        |    run: |
-        |      cd ./OInt
-        |      opm build
-        |      opm install *.ospx
+        |    - name: Установить OInt
+        |      run: |
+        |        cd ./OInt
+        |        opm build
+        |        opm install *.ospx
 		|
 	 |";
 
