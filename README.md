@@ -78,10 +78,6 @@ CLI версия ОПИ имеет собственную встроенную �
 
 <br>
 
-<p align="center">
-  <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/cli.gif?v1" style="width: 990px;">
-</p>
-
 ___
 
 
