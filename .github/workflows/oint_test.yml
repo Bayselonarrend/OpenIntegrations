@@ -402,12 +402,12 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
 
-        - name: Записать измененные данные
-          if: ${{ cancelled() }} == false
-          uses: actions/cache/save@v3
-          with:
-            key: test-data_new
-            path: ./data.json
+      - name: Записать измененные данные
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: test-data_new
+          path: ./data.json
 
 
 
@@ -522,12 +522,12 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
 
-        - name: Записать измененные данные
-          if: ${{ cancelled() }} == false
-          uses: actions/cache/save@v3
-          with:
-            key: test-data_google
-            path: ./data.json
+      - name: Записать измененные данные
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: test-data_google
+          path: ./data.json
 
 
 
