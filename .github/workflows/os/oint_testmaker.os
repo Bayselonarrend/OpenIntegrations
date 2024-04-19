@@ -26,34 +26,34 @@
 
 		ТекстРаботы = "
 		|
-		|Testing-" + Раздел + ":
-        |  runs-on: ubuntu-latest
-        |  needs: " + Зависимости + "
-        |  steps:
+		|  Testing-" + Раздел + ":
+        |    runs-on: ubuntu-latest
+        |    needs: " + Зависимости + "
+        |    steps:
 		|
-        |    - uses: actions/checkout@v2 
-        |    - uses: otymko/setup-onescript@v1.4
-        |      with:
-        |        version: 1.9.0 
+        |      - uses: actions/checkout@v2 
+        |      - uses: otymko/setup-onescript@v1.4
+        |        with:
+        |          version: 1.9.0 
         |      
-        |    - name: Получить тестовые данные из кэша
-        |      uses: actions/cache/restore@v3
-        |      with:
-        |        key: test-data
-        |        path: ./data.json
+        |      - name: Получить тестовые данные из кэша
+        |        uses: actions/cache/restore@v3
+        |        with:
+        |          key: test-data
+        |          path: ./data.json
         |      
-        |    - name: Установить asserts и 1testrunner
-        |      run: |
-        |        opm install asserts
-        |        opm install 1testrunner
+        |      - name: Установить asserts и 1testrunner
+        |        run: |
+        |          opm install asserts
+        |          opm install 1testrunner
 		|
-        |    - name: Установить OInt
-        |      run: |
-        |        cd ./OInt
-        |        opm build
-        |        opm install *.ospx
+        |      - name: Установить OInt
+        |        run: |
+        |          cd ./OInt
+        |          opm build
+        |          opm install *.ospx
 		|
-	 |";
+	    |";
 
 	    Отбор = Новый Структура("Раздел", Раздел);
 	 ТестыТекущегоРаздела = ТаблицаТестов.НайтиСтроки(Отбор);
@@ -137,75 +137,75 @@
 Процедура СообщитьОкончаниеФайлаПроцесса()
 
 	Сообщить("
-	|Encode:
-	|  runs-on: ubuntu-latest
-	|  needs: Testing-Twitter
-	|  if: ${{ always() }}
-	|  permissions:
-	|    contents: write
+	|  Encode:
+	|    runs-on: ubuntu-latest
+	|    needs: Testing-Twitter
+	|    if: ${{ always() }}
+	|    permissions:
+	|      contents: write
 	|  
-	|  steps:
+	|    steps:
 	|
-	|    - uses: actions/checkout@v2 
+	|      - uses: actions/checkout@v2 
 	|
-	|    - name: Обновить данные в репозитории
-	|      run: git pull https://github.com/Bayselonarrend/OpenIntegrations
+	|      - name: Обновить данные в репозитории
+	|        run: git pull https://github.com/Bayselonarrend/OpenIntegrations
 	|
-	|    - name: Получить тестовые данные из кэша
-	|      uses: actions/cache/restore@v3
-	|      with:
-	|        key: test-data_new
-	|        path: ./data.json
+	|      - name: Получить тестовые данные из кэша
+	|        uses: actions/cache/restore@v3
+	|        with:
+	|          key: test-data_new
+	|          path: ./data.json
 	|
-	|    - name: Зашифровать данные обратно
-	|      continue-on-error: false
+	|      - name: Зашифровать данные обратно
+	|        continue-on-error: false
 	|  
-	|      run: |
-	|        rm -f ./data.json.gpg
-	|        gpg --batch --symmetric --cipher-algo AES256 --passphrase=""$ENC_JSON"" data.json
-	|        rm -f ./data.json
-	|      env:
-	|        ENC_JSON: ${{ secrets.ENC_JSON }}
+	|        run: |
+	|          rm -f ./data.json.gpg
+	|          gpg --batch --symmetric --cipher-algo AES256 --passphrase=""$ENC_JSON"" data.json
+	|          rm -f ./data.json
+	|        env:
+	|          ENC_JSON: ${{ secrets.ENC_JSON }}
 	|
-	|    - name: Записать данные    
-	|      uses: stefanzweifel/git-auto-commit-action@v5   
-	|      with:
-	|        commit_user_name: Vitaly the Alpaca (bot) 
-	|        commit_user_email: vitaly.the.alpaca@gmail.com
-	|        commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
-	|        commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
+	|      - name: Записать данные    
+	|        uses: stefanzweifel/git-auto-commit-action@v5   
+	|        with:
+	|          commit_user_name: Vitaly the Alpaca (bot) 
+	|          commit_user_email: vitaly.the.alpaca@gmail.com
+	|          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+	|          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
 	|
 	|
-	|Clear-Cache:
-	|  runs-on: ubuntu-latest
-	|  needs: [Testing-Telegram, Testing-VK, Testing-YandexDisk, Testing-Viber, Testing-Notion, Testing-GoogleCalendar, Testing-GoogleDrive, Encode]
-	|  if: ${{ always() }}
-	|  steps:
-	|    - name: Очистка основного кэша
-	|      run: |
-	|        curl -L \
-	|        -X DELETE \
-	|        -H ""Accept: application/vnd.github+json"" \
-	|        -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
-	|        -H ""X-GitHub-Api-Version: 2022-11-28"" \
-	|        ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data""
+	|  Clear-Cache:
+	|    runs-on: ubuntu-latest
+	|    needs: [Testing-Telegram, Testing-VK, Testing-YandexDisk, Testing-Viber, Testing-Notion, Testing-GoogleCalendar, Testing-GoogleDrive, Encode]
+	|    if: ${{ always() }}
+	|    steps:
+	|      - name: Очистка основного кэша
+	|        run: |
+	|          curl -L \
+	|          -X DELETE \
+	|          -H ""Accept: application/vnd.github+json"" \
+	|          -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
+	|          -H ""X-GitHub-Api-Version: 2022-11-28"" \
+	|          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data""
 	|
-	|    - name: Очистка кэша Google
-	|      run: |
-	|        curl -L \
-	|        -X DELETE \
-	|        -H ""Accept: application/vnd.github+json"" \
-	|        -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
-	|        -H ""X-GitHub-Api-Version: 2022-11-28"" \
-	|        ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_google""
+	|      - name: Очистка кэша Google
+	|        run: |
+	|          curl -L \
+	|          -X DELETE \
+	|          -H ""Accept: application/vnd.github+json"" \
+	|          -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
+	|          -H ""X-GitHub-Api-Version: 2022-11-28"" \
+	|          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_google""
 	|
-	|    - name: Очистка кэша Twitter
-	|      run: |
-	|        curl -L \
-	|        -X DELETE \
-	|        -H ""Accept: application/vnd.github+json"" \
-	|        -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
-	|        -H ""X-GitHub-Api-Version: 2022-11-28"" \
-	|        ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_new""");
+	|      - name: Очистка кэша Twitter
+	|        run: |
+	|          curl -L \
+	|          -X DELETE \
+	|          -H ""Accept: application/vnd.github+json"" \
+	|          -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
+	|          -H ""X-GitHub-Api-Version: 2022-11-28"" \
+	|          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_new""");
 
 КонецПроцедуры;
