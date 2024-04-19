@@ -1,4 +1,4 @@
-name: SonarQube analysis
+name: Сервис | Анализ SonarQube
 
 on:
   workflow_dispatch:
