@@ -93,7 +93,7 @@
 	|    runs-on: ubuntu-latest
 	|    if: ${{ always() }}
 	|    steps:
-	|	
+	|
 	|      - uses: actions/checkout@v4 
 	|
 	|      - name: Расшифровать тестовые данные
@@ -130,7 +130,7 @@
 	|        with:
 	|          name: oint
 	|          path: ./OInt/*.ospx
-	|	  ");
+	|");
 
 КонецПроцедуры
 
@@ -156,7 +156,7 @@
 	|  with:
 	|    key: test-data_new
 	|    path: ./data.json
-	|	
+	|
 	|- name: Зашифровать данные обратно
 	|  continue-on-error: false
 	|  
@@ -166,7 +166,7 @@
 	|    rm -f ./data.json
 	|  env:
 	|    ENC_JSON: ${{ secrets.ENC_JSON }}
-	|	
+	|
 	|- name: Записать данные    
 	|  uses: stefanzweifel/git-auto-commit-action@v5   
 	|  with:
