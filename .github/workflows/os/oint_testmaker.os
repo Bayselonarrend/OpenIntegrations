@@ -39,7 +39,7 @@
         |      - name: Получить тестовые данные из кэша
         |        uses: actions/cache/restore@v3
         |        with:
-        |          key: test-data
+        |          key: " + КлючКэша(Раздел) + "
         |          path: ./data.json
         |      
         |      - name: Установить asserts и 1testrunner
@@ -71,6 +71,7 @@
 
 		КонецЦикла;
 
+		ДополнитьТекстРаботы(Раздел, ТекстРаботы);
 		Сообщить(ТекстРаботы);
 
 	КонецЦикла;
@@ -208,4 +209,48 @@
 	|          -H ""X-GitHub-Api-Version: 2022-11-28"" \
 	|          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_new""");
 
-КонецПроцедуры;
+КонецПроцедуры
+
+Процедура ДополнитьТекстРаботы(Знач Раздел, ТекстРаботы)
+
+	Если Раздел = "Twitter" Тогда
+		ТекстРаботы = ТекстРаботы + "
+		|
+		|        - name: Записать измененные данные
+		|          if: ${{ cancelled() }} == false
+		|          uses: actions/cache/save@v3
+	    |          with:
+		|            key: test-data_new
+		|            path: ./data.json
+		|";
+    ИначеЕсли Раздел = "GoogleWorkspace" Тогда
+		ТекстРаботы = ТекстРаботы + "
+		|
+		|        - name: Записать измененные данные
+		|          if: ${{ cancelled() }} == false
+		|          uses: actions/cache/save@v3
+	    |          with:
+		|            key: test-data_google
+		|            path: ./data.json
+		|";
+	Иначе
+		Возврат;
+	КонецЕсли;
+
+КонецПроцедуры
+
+Функция КлючКэша(Знач Раздел)
+
+	СоответствиеОсобыхРазделов = Новый Соответствие();
+	СоответствиеОсобыхРазделов.Вставить("GoogleDrive"   , "test-data_google");
+	СоответствиеОсобыхРазделов.Вставить("GoogleCalendar", "test-data_google");
+
+	Ключ = СоответствиеОсобыхРазделов.Получить(Раздел);
+
+	Если Не ЗначениеЗаполнено(Ключ) Тогда
+		Ключ = "test-data";
+	КонецЕсли;
+
+	Возврат Ключ;
+
+КонецФункции
