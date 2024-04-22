@@ -1,3 +1,6 @@
+// Библиотека: Telegram
+// Команда CLI: telegram
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
