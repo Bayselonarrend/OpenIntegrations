@@ -1,4 +1,7 @@
-﻿// MIT License
+﻿// Библиотека: VK
+// Команда CLI: vk
+
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 
