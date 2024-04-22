@@ -1,3 +1,6 @@
+// Библиотека: Notion
+// Команда CLI: notion
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets

@@ -1,3 +1,6 @@
+// Библиотека: Twitter
+// Команда CLI: twitter
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets

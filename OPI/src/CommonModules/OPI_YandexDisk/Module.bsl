@@ -1,3 +1,6 @@
+// Библиотека: Yandex Disk
+// Команда CLI: yadisk
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
