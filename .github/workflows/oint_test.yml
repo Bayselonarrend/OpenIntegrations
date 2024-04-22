@@ -730,9 +730,9 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ОтправитьУдалитьСообщение"
 
-      - name: Отправить/Удалить эфимерное
+      - name: Отправить/Удалить эфемерное
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ОтправитьУдалитьЭфимерное"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ОтправитьУдалитьЭфемерное"
 
       - name: Получить отложенные сообщения
         if: ${{ cancelled() }} == false
