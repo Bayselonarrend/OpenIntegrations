@@ -1,4 +1,7 @@
-﻿// MIT License
+﻿// Библиотека: Slack
+// Команда CLI: slack
+
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 

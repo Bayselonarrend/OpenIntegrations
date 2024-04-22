@@ -1,4 +1,7 @@
-﻿// MIT License
+﻿// Библиотека: Viber
+// Команда CLI: viber
+
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 
