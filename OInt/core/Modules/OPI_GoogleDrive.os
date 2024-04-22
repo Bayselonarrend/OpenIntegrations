@@ -1,4 +1,7 @@
-﻿// MIT License
+﻿// Библиотека: Google Drive
+// Команда CLI: gdrive
+
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 

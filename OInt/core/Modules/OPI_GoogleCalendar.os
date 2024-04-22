@@ -1,4 +1,7 @@
-﻿// MIT License
+﻿// Библиотека: Google Calendar
+// Команда CLI: gcalendar
+
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 
