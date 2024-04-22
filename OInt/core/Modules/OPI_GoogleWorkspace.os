@@ -1,4 +1,7 @@
-﻿// MIT License
+﻿// Библиотека: Google Workspace
+// Команда CLI: google
+
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 

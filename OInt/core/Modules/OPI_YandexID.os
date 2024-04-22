@@ -1,4 +1,7 @@
-﻿// MIT License
+﻿// Библиотека: Yandex ID
+// Команда CLI: yandex
+
+// MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
 
