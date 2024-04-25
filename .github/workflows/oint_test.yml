@@ -750,6 +750,14 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ОткрытьЗакрытьДиалог"
 
+      - name: Получить список файлов
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ПолучитьСписокФайлов"
+
+      - name: Загрузить/Удалить файл
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ЗагрузитьУдалитьФайл"
+
   Encode:
     runs-on: ubuntu-latest
     needs: Testing-Twitter
