@@ -57,13 +57,11 @@ jobs:
         run: |
           cd ./cli
           oscript -make core/Classes/Приложение.os oint
-          
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
         with:
           name: oint
           path: ./cli/oint
-          
 
       - name: Создать каталог deb-пакета
         run: |
@@ -498,7 +496,7 @@ jobs:
           ./oint telegram ИзменитьИмяГлавнойТемыФорума --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
-          --name "Петр" \
+          --title "Тест" \
 
 
 
@@ -2126,6 +2124,17 @@ jobs:
 
 
 
+      - name: Выполнить СкачатьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk СкачатьФайл --debug --test \
+          --token "" \
+          --path "" \
+          --out "" \
+
+
+
       - name: Выполнить ПолучитьСписокФайлов
         if: ${{ cancelled() }} == false
         run: |
@@ -2585,6 +2594,7 @@ jobs:
           ./oint gdrive СкачатьФайл --debug --test \
           --token "" \
           --object "" \
+          --out "" \
 
 
 
