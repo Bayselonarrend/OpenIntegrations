@@ -92,6 +92,7 @@ ___
 >- [Открытый пакет интеграция для OneScript](https://infostart.ru/1c/articles/2060307/)<br>
 >- [Библиотека для работы с Google Drive API (open-source)](https://infostart.ru/1c/articles/2066469/)<br>
 >- [OInt CLI - приложение Открытого пакета интеграций для командной строки](https://infostart.ru/1c/articles/2074205/)<br>
+>- [Библиотека для работы со Slack (open-source)](https://infostart.ru/1c/articles/2099282/)<br>
 
 
 >- Открытый Пакет интеграций (OpenIntegrations)<br>
