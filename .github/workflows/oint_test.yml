@@ -636,7 +636,7 @@ jobs:
       - name: Получить тестовые данные из кэша
         uses: actions/cache/restore@v3
         with:
-          key: test-data
+          key: test-data_google
           path: ./data.json
       
       - name: Установить asserts и 1testrunner
