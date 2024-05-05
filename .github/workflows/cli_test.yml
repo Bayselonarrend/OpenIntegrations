@@ -2714,6 +2714,109 @@ jobs:
 
 
 
+
+      - name: Выполнить СоздатьКнигу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets СоздатьКнигу --debug --test \
+          --token "" \
+          --title "Тест" \
+          --sheets "" \
+
+
+
+      - name: Выполнить ПолучитьКнигу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets ПолучитьКнигу --debug --test \
+          --token "" \
+          --spreadsheet "" \
+
+
+
+      - name: Выполнить ИзменитьНаименованиеКниги
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets ИзменитьНаименованиеКниги --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить ДобавитьЛист
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets ДобавитьЛист --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить УдалитьЛист
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets УдалитьЛист --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --sheet "" \
+
+
+
+      - name: Выполнить КопироватьЛист
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets КопироватьЛист --debug --test \
+          --token "" \
+          --from "" \
+          --to "" \
+          --sheet "" \
+
+
+
+      - name: Выполнить УстановитьЗначенияЯчеек
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets УстановитьЗначенияЯчеек --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --data "" \
+          --sheetname "" \
+          --dim "" \
+
+
+
+      - name: Выполнить ОчиститьЯчейки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets ОчиститьЯчейки --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --cells "" \
+          --sheetname "" \
+
+
+
+      - name: Выполнить ПолучитьЗначенияЯчеек
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets ПолучитьЗначенияЯчеек --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --cells "" \
+          --sheetname "" \
+
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]
