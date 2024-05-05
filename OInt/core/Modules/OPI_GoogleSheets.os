@@ -1,5 +1,5 @@
-﻿// Библиотека: Google Calendar
-// Команда CLI: gcalendar
+﻿// Библиотека: Google Sheets
+// Команда CLI: gsheets
 
 // MIT License
 
