@@ -62,6 +62,7 @@
   <commonModules>CommonModule.OPI_GoogleDrive</commonModules>
   <commonModules>CommonModule.OPI_GoogleSheets</commonModules>
   <commonModules>CommonModule.OPI_Slack</commonModules>
+  <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
 </mdclass:Configuration>
