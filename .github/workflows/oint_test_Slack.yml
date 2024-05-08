@@ -134,7 +134,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-SlackTesting-Slack, Encode]
+    needs: [Testing-Slack, Encode]
     if: ${{ always() }}
     steps:
       - name: Очистка основного кэша

@@ -94,7 +94,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-GoogleSheetsTesting-GoogleSheets, Encode]
+    needs: [Testing-GoogleSheets, Encode]
     if: ${{ always() }}
     steps:
       - name: Очистка основного кэша

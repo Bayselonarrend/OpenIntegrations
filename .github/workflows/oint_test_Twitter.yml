@@ -155,7 +155,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-TwitterTesting-Twitter, Encode]
+    needs: [Testing-Twitter, Encode]
     if: ${{ always() }}
     steps:
       - name: Очистка основного кэша
