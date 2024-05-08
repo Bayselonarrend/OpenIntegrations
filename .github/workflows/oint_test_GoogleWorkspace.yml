@@ -100,7 +100,7 @@ jobs:
 
   Encode:
     runs-on: ubuntu-latest
-    needs: [GoogleWorkspace]
+    needs: [Testing-GoogleWorkspace]
     if: ${{ always() }}
     permissions:
       contents: write
