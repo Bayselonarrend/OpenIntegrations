@@ -812,6 +812,48 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Слак_ЗагрузитьУдалитьВФ"
 
+
+  Testing-Airtable:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Создать/Изменить базу
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьБазу"
+
+      - name: Создать/Изменить таблицу
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьТаблицу"
+
+      - name: Создать/Изменить поле
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьПоле"
+
   Encode:
     runs-on: ubuntu-latest
     needs: Testing-Twitter
@@ -853,7 +895,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-Telegram, Testing-VK, Testing-Viber, Testing-Twitter, Testing-YandexDisk, Testing-GoogleWorkspace, Testing-GoogleCalendar, Testing-GoogleDrive, Testing-GoogleSheets, Testing-Notion, Testing-Slack, Encode]
+    needs: [Testing-Telegram, Testing-VK, Testing-Viber, Testing-Twitter, Testing-YandexDisk, Testing-GoogleWorkspace, Testing-GoogleCalendar, Testing-GoogleDrive, Testing-GoogleSheets, Testing-Notion, Testing-Slack, Testing-Airtable, Encode]
     if: ${{ always() }}
     steps:
       - name: Очистка основного кэша
