@@ -94,7 +94,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-AirtableTesting-Airtable, Encode]
+    needs: [Testing-Airtable, Encode]
     if: ${{ always() }}
     steps:
       - name: Очистка основного кэша
