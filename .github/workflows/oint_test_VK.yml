@@ -151,6 +151,14 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
 
+
+      - name: Записать измененные данные
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: test-data_new
+          path: ./data.json
+
   Encode:
     runs-on: ubuntu-latest
     needs: [Testing-VK]
