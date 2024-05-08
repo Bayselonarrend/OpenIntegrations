@@ -1,0 +1,132 @@
+﻿
+name: OINT | Тестирование GoogleWorkspace
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Decode:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    steps:
+
+      - uses: actions/checkout@v4 
+
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+      - name: Записать тестовые данные в кэш
+        uses: actions/cache/save@v3
+        with:
+          key: test-data
+          path: ./data.json
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4             
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./OInt
+          opm build
+          opm install *.ospx    
+
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: oint
+          path: ./OInt/*.ospx
+
+
+  Testing-GoogleWorkspace:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Получить ссылку авторизации
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
+
+      - name: Получить токен
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
+
+      - name: Обновить токен
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
+
+      - name: Записать измененные данные
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: test-data_google
+          path: ./data.json
+
+
+  Clear-Cache:
+    runs-on: ubuntu-latest
+    needs: [Testing-Telegram, Testing-VK, Testing-Viber, Testing-Twitter, Testing-YandexDisk, Testing-GoogleWorkspace, Testing-GoogleCalendar, Testing-GoogleDrive, Testing-GoogleSheets, Testing-Notion, Testing-Slack, Testing-Airtable, Testing-Telegram, Testing-VK, Testing-Viber, Testing-Twitter, Testing-YandexDisk, Testing-GoogleWorkspace, Encode]
+    if: ${{ always() }}
+    steps:
+      - name: Очистка основного кэша
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data"
+
+      - name: Очистка кэша Google
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_google"
+
+      - name: Очистка кэша Twitter
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_new"
