@@ -177,7 +177,7 @@ jobs:
 
   Encode:
     runs-on: ubuntu-latest
-    needs: [Telegram]
+    needs: [Testing-Telegram]
     if: ${{ always() }}
     permissions:
       contents: write
