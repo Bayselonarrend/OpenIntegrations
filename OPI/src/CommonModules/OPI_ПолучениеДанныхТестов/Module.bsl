@@ -29,6 +29,7 @@
 // BSLLS:DeprecatedMessage-off
 // BSLLS:UsingServiceTag-off
 // BSLLS:ExecuteExternalCodeInCommonModule-off
+// BSLLS:DuplicateStringLiteral-off
 
 //@skip-check use-non-recommended-method
 
