@@ -121,7 +121,7 @@ jobs:
 
   Encode:
     runs-on: ubuntu-latest
-    needs: [YandexDisk]
+    needs: [Testing-YandexDisk]
     if: ${{ always() }}
     permissions:
       contents: write
