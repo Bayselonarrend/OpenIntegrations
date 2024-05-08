@@ -93,7 +93,7 @@ jobs:
 
   Encode:
     runs-on: ubuntu-latest
-    needs: [GoogleSheets]
+    needs: [Testing-GoogleSheets]
     if: ${{ always() }}
     permissions:
       contents: write
