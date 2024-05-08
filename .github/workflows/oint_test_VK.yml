@@ -154,7 +154,7 @@ jobs:
 
   Clear-Cache:
     runs-on: ubuntu-latest
-    needs: [Testing-VKTesting-VK, Encode]
+    needs: [Testing-VK, Encode]
     if: ${{ always() }}
     steps:
       - name: Очистка основного кэша
