@@ -116,7 +116,7 @@ jobs:
 
   Encode:
     runs-on: ubuntu-latest
-    needs: [Twitter]
+    needs: [Testing-Twitter]
     if: ${{ always() }}
     permissions:
       contents: write
