@@ -32,6 +32,7 @@
 // BSLLS:DuplicateStringLiteral-off
 
 // @skip-check undefined-variable
+// @skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать oint
