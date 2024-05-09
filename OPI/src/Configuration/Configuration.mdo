@@ -47,6 +47,7 @@
     </extension>
     <languageCode>ru</languageCode>
   </languages>
+  <subsystems>Subsystem.OPI_Интеграция</subsystems>
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
