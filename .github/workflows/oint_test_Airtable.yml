@@ -91,6 +91,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьПоле"
 
+      - name: Создать/Удалить записи
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьУдалитьЗаписи"
+
 
       - name: Записать измененные данные
         if: ${{ cancelled() }} == false
