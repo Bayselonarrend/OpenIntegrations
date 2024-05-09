@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:Subsystem xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="86c261d7-2729-405f-9d39-5d9104a56bd1">
+  <name>OPI_Интеграция</name>
+  <synonym>
+    <key>ru</key>
+    <value>Интеграция</value>
+  </synonym>
+  <includeHelpInContents>true</includeHelpInContents>
+  <includeInCommandInterface>true</includeInCommandInterface>
+  <content>CommonModule.OPI_Инструменты</content>
+  <content>CommonModule.OPI_Криптография</content>
+  <content>CommonModule.OPI_ПреобразованиеТипов</content>
+  <content>CommonModule.OPI_VK</content>
+  <content>CommonModule.OPI_Telegram</content>
+  <content>CommonModule.OPI_Viber</content>
+  <content>CommonModule.OPI_Twitter</content>
+  <content>CommonModule.OPI_Notion</content>
+  <content>CommonModule.OPI_YandexID</content>
+  <content>CommonModule.OPI_YandexDisk</content>
+  <content>CommonModule.OPI_GoogleWorkspace</content>
+  <content>CommonModule.OPI_GoogleCalendar</content>
+  <content>CommonModule.OPI_GoogleDrive</content>
+  <content>CommonModule.OPI_GoogleSheets</content>
+  <content>CommonModule.OPI_Slack</content>
+  <content>CommonModule.OPI_Airtable</content>
+  <content>CommonModule.OPI_Тесты</content>
+  <content>CommonModule.OPI_ПолучениеДанныхТестов</content>
+</mdclass:Subsystem>
