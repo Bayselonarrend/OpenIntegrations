@@ -277,6 +277,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
 
+      - name: Загрузить видео
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ЗагрузитьВидео"
+
 
   Testing-Viber:
     runs-on: ubuntu-latest
@@ -854,6 +858,13 @@ jobs:
       - name: Создать/Удалить записи
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьУдалитьЗаписи"
+
+
+      - name: Записать логи
+        uses: actions/upload-artifact@v4
+        with:
+          name: Airtable
+          path: ./test_logs
 
   Encode:
     runs-on: ubuntu-latest
