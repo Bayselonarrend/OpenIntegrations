@@ -8,4 +8,5 @@ data.json
 *.exe
 test.os
 /docs
+/test_logs
 Поток
