@@ -121,6 +121,14 @@
 
 	КонецЦикла;
 
+	ТекущийДокумент.ДобавитьСтроку("
+	|
+	|      - name: Записать логи
+	|        uses: actions/upload-artifact@v4
+	|        with:
+	|          name: " + Раздел + "
+	|          path: ./test_logs");
+
 КонецПроцедуры
 
 Процедура СообщитьНачалоФайлаПроцесса(Знач ИмяРаботы = "Полное тестирование")
@@ -182,53 +190,49 @@
 
 Процедура СообщитьОкончаниеФайлаПроцесса(Знач СписокВлияний = "")
 
-	Если ЗначениеЗаполнено(СписокВлияний) Тогда
-
-		Если ТипЗнч(СписокВлияний) = Тип("Массив") Тогда
-			СписокВлияний = СтрСоединить(СписокВлияний, ",");
-		КонецЕсли;
-
-		ТекущийДокумент.ДобавитьСтроку("
-		|  Encode:
-		|    runs-on: ubuntu-latest
-		|    needs: [" + СписокВлияний + "]
-		|    if: ${{ always() }}
-		|    permissions:
-		|      contents: write
-		|  
-		|    steps:
-		|
-		|      - uses: actions/checkout@v2 
-		|
-		|      - name: Обновить данные в репозитории
-		|        run: git pull https://github.com/Bayselonarrend/OpenIntegrations
-		|
-		|      - name: Получить тестовые данные из кэша
-		|        uses: actions/cache/restore@v3
-		|        with:
-		|          key: test-data_new
-		|          path: ./data.json
-		|
-		|      - name: Зашифровать данные обратно
-		|        continue-on-error: false
-		|  
-		|        run: |
-		|          rm -f ./data.json.gpg
-		|          gpg --batch --symmetric --cipher-algo AES256 --passphrase=""$ENC_JSON"" data.json
-		|          rm -f ./data.json
-		|        env:
-		|          ENC_JSON: ${{ secrets.ENC_JSON }}
-		|
-		|      - name: Записать данные    
-		|        uses: stefanzweifel/git-auto-commit-action@v5   
-		|        with:
-		|          commit_user_name: Vitaly the Alpaca (bot) 
-		|          commit_user_email: vitaly.the.alpaca@gmail.com
-		|          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
-		|          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
-		|");
-
+	Если ТипЗнч(СписокВлияний) = Тип("Массив") Тогда
+		СписокВлияний = СтрСоединить(СписокВлияний, ",");
 	КонецЕсли;
+
+	ТекущийДокумент.ДобавитьСтроку("
+	|  Encode:
+	|    runs-on: ubuntu-latest
+	|    needs: [" + СписокВлияний + "]
+	|    if: ${{ always() }}
+	|    permissions:
+	|      contents: write
+	|  
+	|    steps:
+	|
+	|      - uses: actions/checkout@v2 
+	|
+	|      - name: Обновить данные в репозитории
+	|        run: git pull https://github.com/Bayselonarrend/OpenIntegrations
+	|
+	|      - name: Получить тестовые данные из кэша
+	|        uses: actions/cache/restore@v3
+	|        with:
+	|          key: test-data_new
+	|          path: ./data.json
+	|
+	|      - name: Зашифровать данные обратно
+	|        continue-on-error: false
+	|  
+	|        run: |
+	|          rm -f ./data.json.gpg
+	|          gpg --batch --symmetric --cipher-algo AES256 --passphrase=""$ENC_JSON"" data.json
+	|          rm -f ./data.json
+	|        env:
+	|          ENC_JSON: ${{ secrets.ENC_JSON }}
+	|
+	|      - name: Записать данные    
+	|        uses: stefanzweifel/git-auto-commit-action@v5   
+	|        with:
+	|          commit_user_name: Vitaly the Alpaca (bot) 
+	|          commit_user_email: vitaly.the.alpaca@gmail.com
+	|          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+	|          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
+	|");
 
 	ТекущийДокумент.ДобавитьСтроку("
 	|
@@ -262,7 +266,8 @@
 	|          -H ""Accept: application/vnd.github+json"" \
 	|          -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
 	|          -H ""X-GitHub-Api-Version: 2022-11-28"" \
-	|          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_new""");
+	|          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_new""
+	|");
 
 КонецПроцедуры
 
