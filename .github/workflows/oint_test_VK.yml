@@ -151,6 +151,17 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ПолучитьСписокЗаказов"
 
+      - name: Загрузить видео
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ВК_ЗагрузитьВидео"
+
+
+      - name: Записать логи
+        uses: actions/upload-artifact@v4
+        with:
+          name: VK
+          path: ./test_logs
+
 
       - name: Записать измененные данные
         if: ${{ cancelled() }} == false
