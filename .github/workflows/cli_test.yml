@@ -75,7 +75,7 @@ jobs:
           package: oint
           package_root: .debpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.8.0' # refs/tags/v*.*.*
+          version: '1.9.0' # refs/tags/v*.*.*
           arch: 'all'
           depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
@@ -101,7 +101,7 @@ jobs:
           package: oint
           package_root: .rpmpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.8.0'
+          version: '1.9.0'
           arch: 'x86_64'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
           requires: |
@@ -593,6 +593,29 @@ jobs:
 
 
 
+      - name: Выполнить СоздатьСоставнойПост
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk СоздатьСоставнойПост --debug --test \
+          --text "Тестовый текст" \
+          --objects "" \
+          --ad false \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
       - name: Выполнить УдалитьПост
         if: ${{ cancelled() }} == false
         run: |
@@ -736,6 +759,50 @@ jobs:
           ./oint vk УдалитьКартинку --debug --test \
           --pictureid "1" \
           --auth "auth.json" \
+
+
+
+      - name: Выполнить ЗагрузитьВидеоНаСервер
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk ЗагрузитьВидеоНаСервер --debug --test \
+          --file "" \
+          --title "Тест" \
+          --description "Тестовое описание" \
+          --album "303733811" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ЗагрузитьФотоНаСервер
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk ЗагрузитьФотоНаСервер --debug --test \
+          --file "" \
+          --auth "auth.json" \
+          --type "" \
 
 
 
