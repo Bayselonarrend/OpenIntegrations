@@ -1,3 +1,4 @@
+// Расположение OS: ./OInt/core/Modules/OPI_Slack.os
 // Библиотека: Slack
 // Команда CLI: slack
 

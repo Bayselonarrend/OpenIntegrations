@@ -1,4 +1,5 @@
-﻿// Библиотека: Google Sheets
+﻿// Расположение OS: ./OInt/core/Modules/OPI_GoogleSheets.os
+// Библиотека: Google Sheets
 // Команда CLI: gsheets
 
 // MIT License

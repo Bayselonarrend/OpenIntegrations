@@ -1,3 +1,5 @@
+// Расположение OS: ./OInt/tools/Modules/OPI_ПреобразованиеТипов.os
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets

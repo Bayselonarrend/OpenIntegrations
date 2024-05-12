@@ -1,3 +1,5 @@
+// Расположение OS: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
