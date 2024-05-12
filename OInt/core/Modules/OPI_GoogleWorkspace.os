@@ -1,4 +1,5 @@
-﻿// Библиотека: Google Workspace
+﻿// Расположение OS: ./OInt/core/Modules/OPI_GoogleWorkspace.os
+// Библиотека: Google Workspace
 // Команда CLI: google
 
 // MIT License

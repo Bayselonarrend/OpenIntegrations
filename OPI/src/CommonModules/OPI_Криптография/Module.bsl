@@ -1,3 +1,5 @@
+// Расположение OS: ./OInt/tools/Modules/internal/Modules/OPI_Криптография.os
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets

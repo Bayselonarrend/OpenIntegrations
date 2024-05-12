@@ -1,4 +1,5 @@
-﻿// Библиотека: Yandex Disk
+﻿// Расположение OS: ./OInt/core/Modules/OPI_YandexDisk.os
+// Библиотека: Yandex Disk
 // Команда CLI: yadisk
 
 // MIT License

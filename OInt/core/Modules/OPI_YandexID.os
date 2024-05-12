@@ -1,4 +1,5 @@
-﻿// Библиотека: Yandex ID
+﻿// Расположение OS: ./OInt/core/Modules/OPI_YandexID.os
+// Библиотека: Yandex ID
 // Команда CLI: yandex
 
 // MIT License

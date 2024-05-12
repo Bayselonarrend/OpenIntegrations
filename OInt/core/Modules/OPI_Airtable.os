@@ -1,4 +1,5 @@
-﻿// Библиотека: Airtable
+﻿// Расположение OS: ./OInt/core/Modules/OPI_Airtable.os
+// Библиотека: Airtable
 // Команда CLI: airtable
 
 // MIT License

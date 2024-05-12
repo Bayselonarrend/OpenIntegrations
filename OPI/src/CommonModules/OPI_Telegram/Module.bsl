@@ -1,3 +1,4 @@
+// Расположение OS: ./OInt/core/Modules/OPI_Telegram.os
 // Библиотека: Telegram
 // Команда CLI: telegram
 

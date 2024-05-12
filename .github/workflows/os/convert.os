@@ -1,28 +1,37 @@
 Функция ПолучитьСопоставлениеФайлов()
 
 	Сопоставление = Новый Соответствие();
+	ФайлыМодулей  = НайтиФайлы("./", "*.bsl", Истина);
+	Признак       = "// Расположение OS: ";
 
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleWorkspace/Module.bsl"			, "./OInt/core/Modules/OPI_GoogleWorkspace.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleCalendar/Module.bsl"			, "./OInt/core/Modules/OPI_GoogleCalendar.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleDrive/Module.bsl"			    , "./OInt/core/Modules/OPI_GoogleDrive.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_GoogleSheets/Module.bsl"			, "./OInt/core/Modules/OPI_GoogleSheets.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Notion/Module.bsl"				    , "./OInt/core/Modules/OPI_Notion.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Telegram/Module.bsl"			    , "./OInt/core/Modules/OPI_Telegram.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Twitter/Module.bsl"				    , "./OInt/core/Modules/OPI_Twitter.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Viber/Module.bsl"				    , "./OInt/core/Modules/OPI_Viber.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_VK/Module.bsl"				        , "./OInt/core/Modules/OPI_VK.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexDisk/Module.bsl"			    , "./OInt/core/Modules/OPI_YandexDisk.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_YandexID/Module.bsl"			    , "./OInt/core/Modules/OPI_YandexID.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Slack/Module.bsl"			        , "./OInt/core/Modules/OPI_Slack.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Airtable/Module.bsl"			    , "./OInt/core/Modules/OPI_Airtable.os");
-	
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Тесты/Module.bsl"			    	, "./OInt/tests/Modules/internal/OPI_Тесты.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_ПолучениеДанныхТестов/Module.bsl"	, "./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Инструменты/Module.bsl"			    , "./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_Криптография/Module.bsl"			, "./OInt/tools/Modules/internal/Modules/OPI_Криптография.os");
-	Сопоставление.Вставить("./OPI/src/CommonModules/OPI_ПреобразованиеТипов/Module.bsl"		, "./OInt/tools/Modules/OPI_ПреобразованиеТипов.os");
-	
-	Возврат Сопоставление;
+	Для Каждого Файл Из ФайлыМодулей Цикл
+
+		ТекущийФайл = Файл.ПолноеИмя;
+		ТекстФайла  = Новый ТекстовыйДокумент();
+		ТекстФайла.Прочитать(ТекущийФайл, "UTF-8");
+
+		Для Н = 1 По ТекстФайла.КоличествоСтрок() Цикл
+
+			ТекущаяСтрока = СокрЛП(ТекстФайла.ПолучитьСтроку(Н));
+
+			Если Не ЗначениеЗаполнено(ТекущаяСтрока) Тогда
+				Прервать;
+			КонецЕсли;
+
+			Если СтрНайти(ТекущаяСтрока, Признак) > 0 Тогда
+
+				ПутьOS = СтрЗаменить(ТекущаяСтрока, Признак, "");
+				ПутьOS = СокрЛП(ПутьOS);
+				Сопоставление.Вставить(ТекущийФайл, ПутьOS);
+
+			КонецЕсли;
+
+		КонецЦикла;
+
+	КонецЦикла;
+
+ 	Возврат Сопоставление;
+
 КонецФункции 
 
 Функция ПолучитьСоответствиеЗамен()
@@ -39,6 +48,8 @@
 КонецФункции
 
 Процедура ВыполнитьОбработку()
+
+	ОбновитьНомерВерсии();
 
 	Сообщить("Начало конвертации OPI -> OInt");
 	Сообщить("------------------------------");
@@ -91,7 +102,7 @@
 
 	ВыводСообщенияПроцесса(ИмяМодуля, "Начало чтения текста модуля");
 
-	ЧтениеТекста = Новый ЧтениеТекста(ФайлМодуля);
+	ЧтениеТекста = Новый ЧтениеТекста(ФайлМодуля, "UTF-8");
 	Модуль       = ЧтениеТекста.Прочитать();
 	ЧтениеТекста.Закрыть();
 	
@@ -138,6 +149,39 @@
 	ВыводСообщенияПроцесса(ИмяМодуля, "Окончание произведения замен");
 
 КонецПроцедуры
+
+Процедура ОбновитьНомерВерсии()
+
+	ПутьПД = "./OInt/packagedef";
+	ПутьКФ = "./OPI/src/Configuration/Configuration.mdo";
+	Версия = "";
+
+	ЧтениеДанныхКонфигурации = Новый ЧтениеXML();
+	ЧтениеДанныхКонфигурации.ОткрытьФайл(ПутьКФ);
+
+	Пока ЧтениеДанныхКонфигурации.Прочитать() Цикл
+		Если Строка(ЧтениеДанныхКонфигурации.Имя) = "version" Тогда
+			ЧтениеДанныхКонфигурации.Прочитать();
+			Версия = Строка(ЧтениеДанныхКонфигурации.Значение);
+			Прервать;
+		КонецЕсли;
+	КонецЦикла;
+
+	Признак    = ".Версия(""";
+	Packagedef = Новый ТекстовыйДокумент();
+	Packagedef.Прочитать(ПутьПД);
+
+	Для Н = 1 По Packagedef.КоличествоСтрок() Цикл
+
+        ТекущаяСтрока = СокрЛП(Packagedef.ПолучитьСтроку(Н));
+        Если СтрНайти(ТекущаяСтрока, Признак) Тогда
+			Packagedef.ЗаменитьСтроку(Н, "    .Версия(""" + Версия + """)");
+			Packagedef.Записать();
+			Возврат;
+        КонецЕсли;    
+    КонецЦикла;
+
+КонецПроцедуры;
 
 #КонецОбласти
 
