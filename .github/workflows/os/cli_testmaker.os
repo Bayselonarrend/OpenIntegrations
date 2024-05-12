@@ -297,7 +297,6 @@
 Процедура СообщитьЗаписьВДрафт()
 
 	ТекущийФайл.ДобавитьСтроку("
-	|    steps:
     |      - name: Добавить EXE
     |        env:
     |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
