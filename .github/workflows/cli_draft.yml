@@ -105,7 +105,6 @@ jobs:
             ./*.rpm
             !./*-debuginfo-*.rpm
 
-    steps:
       - name: Добавить EXE
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
