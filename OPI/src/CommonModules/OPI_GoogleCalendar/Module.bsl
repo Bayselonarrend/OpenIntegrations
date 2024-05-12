@@ -1,3 +1,4 @@
+// Расположение OS: ./OInt/core/Modules/OPI_GoogleCalendar.os
 // Библиотека: Google Calendar
 // Команда CLI: gcalendar
 

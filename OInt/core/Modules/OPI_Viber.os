@@ -1,4 +1,5 @@
-﻿// Библиотека: Viber
+﻿// Расположение OS: ./OInt/core/Modules/OPI_Viber.os
+// Библиотека: Viber
 // Команда CLI: viber
 
 // MIT License

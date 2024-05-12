@@ -1,3 +1,4 @@
+// Расположение OS: ./OInt/core/Modules/OPI_GoogleDrive.os
 // Библиотека: Google Drive
 // Команда CLI: gdrive
 

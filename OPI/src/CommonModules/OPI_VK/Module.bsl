@@ -1,3 +1,4 @@
+// Расположение OS: ./OInt/core/Modules/OPI_VK.os
 // Библиотека: VK
 // Команда CLI: vk
 
