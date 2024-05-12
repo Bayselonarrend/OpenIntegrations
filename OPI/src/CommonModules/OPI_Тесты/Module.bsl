@@ -1,4 +1,5 @@
 // Расположение OS: ./OInt/tests/Modules/internal/OPI_Тесты.os
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
