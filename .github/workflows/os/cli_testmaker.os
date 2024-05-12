@@ -3,6 +3,10 @@
 Перем СоответствияПараметровЗначениям;
 Перем СоответствияПараметровПредобработкам;
 Перем Версия;
+Перем ТекущийФайл;
+Перем ТаблицаПараметров;
+
+#Область Основа
 
 Процедура ПриСозданииОбъекта()
 	
@@ -17,11 +21,303 @@
 	ДобавитьСоответствияViber();
 	ДобавитьСоответствияОбщие();
 
-	СообщитьНачалоФайлаПроцесса();
-	СформироватьЗапуск(ТаблицаПараметров);
-	СообщитьОкончаниеФайлаПроцесса();
+	СоздатьОсновнойФайл();
+
 
 КонецПроцедуры
+
+Процедура СоздатьОсновнойФайл()
+
+	ТекущийФайл = Новый ТекстовыйДокумент();
+
+	СообщитьНачалоФайлаПроцесса();
+	СообщитьСборку();
+	СформироватьЗапуск();
+	СообщитьОкончаниеФайлаПроцесса();
+
+	ТекущийФайл.Записать("./.github/workflows/cli_test.yml");
+
+КонецПроцедуры
+
+Процедура СоздатьФайлДрафта()
+
+	ТекущийФайл = Новый ТекстовыйДокумент();
+
+	ТекущийФайл.ДобавитьСтроку(
+		"name: CLI | Добавить пакеты в Draft
+		|
+		|on:
+		|  workflow_dispatch:
+		|
+		|jobs:");
+
+	СообщитьСборку();
+	СообщитьЗаписьВДрафт();
+
+	ТекущийФайл.Записать("./.github/workflows/cli_draft.yml");
+
+КонецПроцедуры
+
+#КонецОбласти
+
+#Область ФормированиеФайлов
+
+Процедура СообщитьНачалоФайлаПроцесса()
+
+	ТекущийФайл.ДобавитьСтроку(
+	"name: CLI | Сборка и тестирование
+	|
+	|on:
+	|  workflow_dispatch:
+	|
+	|jobs:
+	|  Decode:
+	|    runs-on: ubuntu-latest
+	|    steps:
+	|
+	|      - uses: actions/checkout@v4 
+	|
+	|      - name: Расшифровать тестовые данные
+	|        run: gpg --quiet --batch --yes --decrypt --passphrase=""$ENC_JSON"" --output ./data.json ./data.json.gpg        
+	|        env:
+	|          ENC_JSON: ${{ secrets.ENC_JSON }}
+	|
+	|      - name: Кэшировать данные
+	|        uses: actions/cache/save@v3
+	|        with:
+	|          path: ./data.json
+	|          key: test-data
+	|");
+
+КонецПроцедуры
+
+Процедура СообщитьСборку()
+	
+	ТекущийФайл.ДобавитьСтроку("
+	|  Build:
+	|    runs-on: ubuntu-latest
+	|    permissions:
+	|      contents: write
+	|    steps:
+	|      - uses: actions/checkout@v4             
+	|      - uses: otymko/setup-onescript@v1.4
+	|        with:
+	|          version: " + Версия + " 
+	|
+	|      - name: Установить cmdline, asserts и osparser
+	|        run: |
+	|          opm install cmdline
+	|          opm install asserts
+	|          opm install osparser
+	|      - name: Сформировать список методов ОПИ -> CLI
+	|        run: oscript ./.github/workflows/os/cli_parse.os
+	|
+	|      - name: Записать измененный список методов CLI
+	|        uses: stefanzweifel/git-auto-commit-action@v5   
+	|        with:
+	|          commit_user_name: Vitaly the Alpaca (bot) 
+	|          commit_user_email: vitaly.the.alpaca@gmail.com
+	|          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+	|          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
+	|
+	|      - name: Собрать и установить OInt
+	|        run: |
+	|          cd ./OInt
+	|          opm build
+	|          opm install *.ospx  
+	|
+	|      - name: Собрать бинарник
+	|        run: |
+	|          cd ./cli
+	|          oscript -make core/Classes/Приложение.os oint
+	|
+	|      - name: Собрать exe
+	|        run: |
+	|          cd ./cli
+	|          oscript -make core/Classes/Приложение.os oint.exe
+	|
+	|      - name: Записать артефакт
+	|        uses: actions/upload-artifact@v4
+	|        with:
+	|          name: oint
+	|          path: ./cli/oint
+	|
+	|      - name: Создать каталог deb-пакета
+	|        run: |
+	|          mkdir -p .debpkg/usr/bin
+	|          cp ./cli/oint .debpkg/usr/bin/oint
+	|          chmod +x .debpkg/usr/bin/oint
+	|
+	|      - name: Собрать deb-пакет
+	|        uses: jiro4989/build-deb-action@v3
+	|        with:
+	|          package: oint
+	|          package_root: .debpkg
+	|          maintainer: Anton Titovets <bayselonarrend@gmail.com>
+	|          version: '" + Версия + "' # refs/tags/v*.*.*
+	|          arch: 'all'
+	|          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
+	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
+	|
+	|      - uses: actions/upload-artifact@v3
+	|        with:
+	|          name: oint-deb
+	|          path: |
+	|            ./*.deb
+	|
+	|      - name: Создать каталог rpm-пакета
+	|        run: |
+	|          mkdir -p .rpmpkg/usr/bin
+	|          mkdir -p .rpmpkg/usr/share/oint/bin
+	|          cp ./cli/oint .rpmpkg/usr/share/oint/bin/oint
+	|          echo 'mono /usr/share/oint/bin/oint ""$@""' > .rpmpkg/usr/bin/oint
+	|          chmod +x .rpmpkg/usr/bin/oint
+	|
+	|      - name: Собрать rpm-пакет 
+	|        uses: jiro4989/build-rpm-action@v2
+	|        with:
+	|          summary: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки. Требуется mono-runtime с поддержкой .NET Framework 4.8'
+	|          package: oint
+	|          package_root: .rpmpkg
+	|          maintainer: Anton Titovets <bayselonarrend@gmail.com>
+	|          version: '" + Версия + "'
+	|          arch: 'x86_64'
+	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
+	|          requires: |
+	|            mono-core
+	|            Requires:       mono-locale-extras
+	|
+	|      - uses: actions/upload-artifact@v4
+	|        with:
+	|          name: oint-rpm
+	|          path: |
+	|            ./*.rpm
+	|            !./*-debuginfo-*.rpm");
+
+КонецПроцедуры
+
+Процедура СформироватьЗапуск()
+	
+	Для Каждого Вариант Из СоответствияПараметровЗначениям Цикл
+
+		Библиотека = Вариант.Ключ;
+		Если Библиотека = "Общие" Тогда
+			Продолжить;
+		КонецЕсли;
+
+		ТекстРаботы = "
+		|  Testing-" + Библиотека + ":
+		|    runs-on: ubuntu-latest
+		|    needs: [Decode, Build]
+		|    steps:
+		|
+		|      - name: Получить тестовые данные из кэша
+		|        uses: actions/cache/restore@v3
+		|        with:
+		|          path: ./data.json
+		|          key: test-data
+		|
+		|      - name: Скачать артефакт с исполняемым файлом
+		|        uses: actions/download-artifact@v4
+		|        with:
+		|          name: oint 
+		|
+		|      - name: JSON в переменные
+		|        uses: rgarcia-phi/json-to-variables@v1.1.0
+		|        with:
+		|          filename: 'data.json'
+		|          masked: true
+		|
+		|      - name: chmod для OInt
+		|        run: chmod +x ./oint
+		|
+		|";
+
+		Отбор            = Новый Структура("Библиотека", Библиотека);
+		СтрокиБиблиотеки = ТаблицаПараметров.НайтиСтроки(Отбор);
+		ТекущийМетод     = "";
+
+		Для Каждого СтрокаПараметра Из СтрокиБиблиотеки Цикл
+
+			Если ТекущийМетод <> СтрокаПараметра.Метод Тогда
+
+				ТекущийМетод = СтрокаПараметра.Метод;
+				Отбор.Вставить("Метод", ТекущийМетод);		
+				СтрокиМетода = ТаблицаПараметров.НайтиСтроки(Отбор);
+
+				ТекстРаботы = ТекстРаботы + Символы.ПС + "
+				|
+				|      - name: Выполнить " + ТекущийМетод+ "
+				|        if: ${{ cancelled() }} == false
+				|        run: |
+				| ";
+
+				ДобавитьПредобработки(ТекстРаботы, СтрокиМетода, Библиотека);
+				
+				ТекстРаботы = ТекстРаботы + "
+				|          ./oint " + Библиотека + " " + ТекущийМетод + " --debug --test \" + Символы.ПС; 
+
+			КонецЕсли;
+
+			ТекстРаботы = ТекстРаботы 
+				+ "          " 
+				+ СтрокаПараметра.Параметр 
+				+ " " 
+				+ ОпределитьЗначениеПараметра(СтрокаПараметра.Параметр, Библиотека) 
+				+ " \"
+				+ Символы.ПС; 
+
+		КонецЦикла;
+
+		ТекущийФайл.ДобавитьСтроку(ТекстРаботы);
+
+	КонецЦикла;
+
+КонецПроцедуры
+
+Процедура СообщитьОкончаниеФайлаПроцесса()
+
+	ТекущийФайл.ДобавитьСтроку("
+	|  Clear-Cache:
+    |    runs-on: ubuntu-latest
+    |    needs: [Testing-telegram, Testing-vk, Testing-viber]
+    |    if: ${{ always() }}
+    |    steps:
+    |      - name: Очистка кэша
+    |        run: |
+    |          curl -L \
+    |          -X DELETE \
+    |          -H ""Accept: application/vnd.github+json"" \
+    |          -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
+    |          -H ""X-GitHub-Api-Version: 2022-11-28"" \
+    |          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data""");
+
+КонецПроцедуры
+
+Процедура СообщитьЗаписьВДрафт()
+
+	ТекущийФайл.ДобавитьСтроку("
+	|    steps:
+    |      - name: Добавить EXE
+    |        env:
+    |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    |        run: gh release upload draft ./cli/oint.exe
+	|
+    |      - name: Добавить DEB
+    |        env:
+    |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    |        run: gh release upload draft ./*.deb
+	|
+    |      - name: Добавить RPM
+    |        env:
+    |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    |        run: gh release upload draft ./*.rpm");
+
+КонецПроцедуры
+
+#КонецОбласти
+
+#Область ОбработкиТестов
 
 Процедура ДобавитьСоответствияTelegram()
 	
@@ -191,85 +487,6 @@
 
 КонецПроцедуры
 
-Процедура СформироватьЗапуск(Знач ТаблицаПараметров)
-	
-	Для Каждого Вариант Из СоответствияПараметровЗначениям Цикл
-
-		Библиотека = Вариант.Ключ;
-		Если Библиотека = "Общие" Тогда
-			Продолжить;
-		КонецЕсли;
-
-		ТекстРаботы = "
-		|  Testing-" + Библиотека + ":
-		|    runs-on: ubuntu-latest
-		|    needs: [Decode, Build]
-		|    steps:
-		|
-		|      - name: Получить тестовые данные из кэша
-		|        uses: actions/cache/restore@v3
-		|        with:
-		|          path: ./data.json
-		|          key: test-data
-		|
-		|      - name: Скачать артефакт с исполняемым файлом
-		|        uses: actions/download-artifact@v4
-		|        with:
-		|          name: oint 
-		|
-		|      - name: JSON в переменные
-		|        uses: rgarcia-phi/json-to-variables@v1.1.0
-		|        with:
-		|          filename: 'data.json'
-		|          masked: true
-		|
-		|      - name: chmod для OInt
-		|        run: chmod +x ./oint
-		|
-		|";
-
-		Отбор            = Новый Структура("Библиотека", Библиотека);
-		СтрокиБиблиотеки = ТаблицаПараметров.НайтиСтроки(Отбор);
-		ТекущийМетод     = "";
-
-		Для Каждого СтрокаПараметра Из СтрокиБиблиотеки Цикл
-
-			Если ТекущийМетод <> СтрокаПараметра.Метод Тогда
-
-				ТекущийМетод = СтрокаПараметра.Метод;
-				Отбор.Вставить("Метод", ТекущийМетод);		
-				СтрокиМетода = ТаблицаПараметров.НайтиСтроки(Отбор);
-
-				ТекстРаботы = ТекстРаботы + Символы.ПС + "
-				|
-				|      - name: Выполнить " + ТекущийМетод+ "
-				|        if: ${{ cancelled() }} == false
-				|        run: |
-				| ";
-
-				ДобавитьПредобработки(ТекстРаботы, СтрокиМетода, Библиотека);
-				
-				ТекстРаботы = ТекстРаботы + "
-				|          ./oint " + Библиотека + " " + ТекущийМетод + " --debug --test \" + Символы.ПС; 
-
-			КонецЕсли;
-
-			ТекстРаботы = ТекстРаботы 
-				+ "          " 
-				+ СтрокаПараметра.Параметр 
-				+ " " 
-				+ ОпределитьЗначениеПараметра(СтрокаПараметра.Параметр, Библиотека) 
-				+ " \"
-				+ Символы.ПС; 
-
-		КонецЦикла;
-
-		Сообщить(ТекстРаботы);
-
-	КонецЦикла;
-
-КонецПроцедуры
-
 Функция ОпределитьЗначениеПараметра(Знач Параметр, Знач Библиотека)
 
 	СоответствиеБиблиотеки = СоответствияПараметровЗначениям[Библиотека];
@@ -309,148 +526,8 @@
 
 	КонецЕсли;
 
-
 	ТекстРаботы = ТекстРаботы + ТекстПредобработки;
 
 КонецПроцедуры
 
-Процедура СообщитьНачалоФайлаПроцесса()
-
-	Сообщить(
-	"name: CLI | Сборка и тестирование
-	|
-	|on:
-	|  workflow_dispatch:
-	|
-	|jobs:
-	|  Decode:
-	|    runs-on: ubuntu-latest
-	|    steps:
-	|
-	|      - uses: actions/checkout@v4 
-	|
-	|      - name: Расшифровать тестовые данные
-	|        run: gpg --quiet --batch --yes --decrypt --passphrase=""$ENC_JSON"" --output ./data.json ./data.json.gpg        
-	|        env:
-	|          ENC_JSON: ${{ secrets.ENC_JSON }}
-	|
-	|      - name: Кэшировать данные
-	|        uses: actions/cache/save@v3
-	|        with:
-	|          path: ./data.json
-	|          key: test-data
-	|
-	|  Build:
-	|    runs-on: ubuntu-latest
-	|    permissions:
-	|      contents: write
-	|    steps:
-	|      - uses: actions/checkout@v4             
-	|      - uses: otymko/setup-onescript@v1.4
-	|        with:
-	|          version: 1.9.0 
-	|
-	|      - name: Установить cmdline, asserts и osparser
-	|        run: |
-	|          opm install cmdline
-	|          opm install asserts
-	|          opm install osparser
-	|      - name: Сформировать список методов ОПИ -> CLI
-	|        run: oscript ./.github/workflows/os/cli_parse.os
-	|
-	|      - name: Записать измененный список методов CLI
-	|        uses: stefanzweifel/git-auto-commit-action@v5   
-	|        with:
-	|          commit_user_name: Vitaly the Alpaca (bot) 
-	|          commit_user_email: vitaly.the.alpaca@gmail.com
-	|          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
-	|          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
-	|
-	|      - name: Собрать и установить OInt
-	|        run: |
-	|          cd ./OInt
-	|          opm build
-	|          opm install *.ospx  
-	|
-	|      - name: Собрать бинарник
-	|        run: |
-	|          cd ./cli
-	|          oscript -make core/Classes/Приложение.os oint
-	|      - name: Записать артефакт
-	|        uses: actions/upload-artifact@v4
-	|        with:
-	|          name: oint
-	|          path: ./cli/oint
-	|
-	|      - name: Создать каталог deb-пакета
-	|        run: |
-	|          mkdir -p .debpkg/usr/bin
-	|          cp ./cli/oint .debpkg/usr/bin/oint
-	|          chmod +x .debpkg/usr/bin/oint
-	|
-	|      - name: Собрать deb-пакет
-	|        uses: jiro4989/build-deb-action@v3
-	|        with:
-	|          package: oint
-	|          package_root: .debpkg
-	|          maintainer: Anton Titovets <bayselonarrend@gmail.com>
-	|          version: '" + Версия + "' # refs/tags/v*.*.*
-	|          arch: 'all'
-	|          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
-	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
-	|
-	|      - uses: actions/upload-artifact@v3
-	|        with:
-	|          name: oint-deb
-	|          path: |
-	|            ./*.deb
-	|
-	|      - name: Создать каталог rpm-пакета
-	|        run: |
-	|          mkdir -p .rpmpkg/usr/bin
-	|          mkdir -p .rpmpkg/usr/share/oint/bin
-	|          cp ./cli/oint .rpmpkg/usr/share/oint/bin/oint
-	|          echo 'mono /usr/share/oint/bin/oint ""$@""' > .rpmpkg/usr/bin/oint
-	|          chmod +x .rpmpkg/usr/bin/oint
-	|
-	|      - name: Собрать rpm-пакет 
-	|        uses: jiro4989/build-rpm-action@v2
-	|        with:
-	|          summary: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки. Требуется mono-runtime с поддержкой .NET Framework 4.8'
-	|          package: oint
-	|          package_root: .rpmpkg
-	|          maintainer: Anton Titovets <bayselonarrend@gmail.com>
-	|          version: '" + Версия + "'
-	|          arch: 'x86_64'
-	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
-	|          requires: |
-	|            mono-core
-	|            Requires:       mono-locale-extras
-	|
-	|      - uses: actions/upload-artifact@v4
-	|        with:
-	|          name: oint-rpm
-	|          path: |
-	|            ./*.rpm
-	|            !./*-debuginfo-*.rpm");
-
-КонецПроцедуры
-
-Процедура СообщитьОкончаниеФайлаПроцесса()
-
-	Сообщить("
-	|  Clear-Cache:
-    |    runs-on: ubuntu-latest
-    |    needs: [Testing-telegram, Testing-vk, Testing-viber]
-    |    if: ${{ always() }}
-    |    steps:
-    |      - name: Очистка кэша
-    |        run: |
-    |          curl -L \
-    |          -X DELETE \
-    |          -H ""Accept: application/vnd.github+json"" \
-    |          -H ""Authorization: Bearer ${{ secrets.TOKEN }}"" \
-    |          -H ""X-GitHub-Api-Version: 2022-11-28"" \
-    |          ""https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data""");
-
-КонецПроцедуры;
+#КонецОбласти
