@@ -1,3 +1,4 @@
+// Расположение OS: ./OInt/core/Modules/OPI_Twitter.os
 // Библиотека: Twitter
 // Команда CLI: twitter
 
