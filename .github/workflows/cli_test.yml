@@ -1,4 +1,4 @@
-name: CLI | Сборка и тестирование
+﻿name: CLI | Сборка и тестирование
 
 on:
   workflow_dispatch:
@@ -57,6 +57,12 @@ jobs:
         run: |
           cd ./cli
           oscript -make core/Classes/Приложение.os oint
+
+      - name: Собрать exe
+        run: |
+          cd ./cli
+          oscript -make core/Classes/Приложение.os oint.exe
+
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
         with:
@@ -531,7 +537,6 @@ jobs:
           ./oint telegram СкачатьФайл --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --fileid "" \
-
 
   Testing-vk:
     runs-on: ubuntu-latest
@@ -1620,7 +1625,6 @@ jobs:
           ./oint vk СформироватьКлавиатуру --debug --test \
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
 
-
   Testing-viber:
     runs-on: ubuntu-latest
     needs: [Decode, Build]
@@ -1774,7 +1778,6 @@ jobs:
           --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
           --color "" \
 
-
   Testing-twitter:
     runs-on: ubuntu-latest
     needs: [Decode, Build]
@@ -1883,7 +1886,6 @@ jobs:
           --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
           --duration "" \
           --auth "" \
-
 
   Testing-notion:
     runs-on: ubuntu-latest
@@ -2054,7 +2056,6 @@ jobs:
           --token "" \
           --user "" \
 
-
   Testing-yandex:
     runs-on: ubuntu-latest
     needs: [Decode, Build]
@@ -2111,7 +2112,6 @@ jobs:
           --id "" \
           --secret "" \
           --refresh "" \
-
 
   Testing-yadisk:
     runs-on: ubuntu-latest
@@ -2326,7 +2326,6 @@ jobs:
           --from "" \
           --to "" \
 
-
   Testing-google:
     runs-on: ubuntu-latest
     needs: [Decode, Build]
@@ -2386,7 +2385,6 @@ jobs:
           --id "" \
           --secret "" \
           --refresh "" \
-
 
   Testing-gcalendar:
     runs-on: ubuntu-latest
@@ -2584,7 +2582,6 @@ jobs:
           --calendar "" \
           --event "" \
 
-
   Testing-gdrive:
     runs-on: ubuntu-latest
     needs: [Decode, Build]
@@ -2753,7 +2750,6 @@ jobs:
           --object "" \
           --comment "" \
 
-
   Testing-gsheets:
     runs-on: ubuntu-latest
     needs: [Decode, Build]
@@ -2882,7 +2878,6 @@ jobs:
           --spreadsheet "" \
           --cells "" \
           --sheetname "" \
-
 
   Clear-Cache:
     runs-on: ubuntu-latest
