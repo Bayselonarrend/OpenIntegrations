@@ -30,7 +30,7 @@ jobs:
         run: oscript ./.github/workflows/os/cli_parse.os
 
       - name: Обновить Workflow тестирования CLI
-        run: oscript ./.github/workflows/os/cli_testmaker.os > ./.github/workflows/cli_test.yml
+        run: oscript ./.github/workflows/os/cli_testmaker.os
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
         with:
