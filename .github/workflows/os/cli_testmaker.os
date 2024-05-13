@@ -297,11 +297,6 @@
 Процедура СообщитьЗаписьВДрафт()
 
 	ТекущийФайл.ДобавитьСтроку("
-    |      - name: Добавить EXE
-    |        env:
-    |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    |        run: gh release upload draft ./cli/oint.exe
-	|
     |      - name: Добавить DEB
     |        env:
     |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -310,7 +305,7 @@
     |      - name: Добавить RPM
     |        env:
     |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    |        run: gh release upload draft ./*.rpm");
+    |        run: gh release upload draft ./*.rpm !./*-debuginfo-*.rpm");
 
 КонецПроцедуры
 
