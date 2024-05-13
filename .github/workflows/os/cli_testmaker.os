@@ -305,7 +305,7 @@
     |      - name: Добавить RPM
     |        env:
     |          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    |        run: gh release upload draft ./*.rpm !./*-debuginfo-*.rpm");
+    |        run: gh release upload draft ./*.rpm");
 
 КонецПроцедуры
 
