@@ -75,7 +75,7 @@ CLI версия дополнительно требует **.Net Framework 4.8*
 
 У ОПИ есть подробная документация с примерами по адресу [https://openintegrations.dev](https://openintegrations.dev). Там вы можете найти как общие положения о начале работы с каждым конкретным API, так и описания каждого метода с примерами кода, параметров и возвращаемых значений.
 
-![Docs](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/docs.png)
+![Docs](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/docs.png?2)
 
 CLI версия ОПИ имеет собственную встроенную справку по всем методам. Показ справки осуществляется при вызове библиотеки без метода, метода без опций или при указании опции `--help`
 
