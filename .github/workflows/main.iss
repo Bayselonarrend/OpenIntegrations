@@ -56,7 +56,7 @@ Name: desktopicon; Description: "Создать ярлык на рабочем �
 
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-Filename: "https://openintegrations.dev/docs/Nachalo-raboty/Rabota-s-CLI-versiei"; Flags: shellexec runasoriginaluser postinstall; Description: "Посетить старницу документации на openintegrations.dev"
+Filename: "https://openintegrations.dev/docs/Nachalo-raboty/Rabota-s-CLI-versiei"; Flags: shellexec runasoriginaluser postinstall; Description: "Посетить старницу документации openintegrations.dev"
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
@@ -81,29 +81,3 @@ begin
   Result := Pos(Element, ';' + OrigPath + ';') = 0;
 end;    
 
-procedure MyImageClick(Sender: TObject);
-var
-  ErrorCode: Integer;
-begin
-  ShellExec('open', 'http://www.google.es', '', '', SW_SHOWNORMAL, ewNoWait, ErrorCode);
-end;
-
-procedure CreateMyImage();
-begin
-  ExtractTemporaryFile('Logo.bmp');
-  with TBitmapImage.Create(WizardForm) do
-  begin
-    Parent := WizardForm.InstallingPage;
-    Bitmap.LoadFromFile(ExpandConstant('{tmp}\Logo.bmp'));
-    AutoSize := True;
-    Left := 0;
-    Top := WizardForm.InstallingPage.Top + WizardForm.InstallingPage.Height - Height - 8;
-    Cursor := crHand;
-    OnClick := @MyImageClick;
-  end;
-end;
-
-procedure InitializeWizard;
-begin
-  CreateMyImage();
-end;
