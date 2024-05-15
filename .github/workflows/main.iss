@@ -6,10 +6,16 @@
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
 #define MyAppExeName "oint.exe"
+#define GDrive "D:\GD"
+#define Repo "D:\Repos\OpenIntegrations"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
+DisableWelcomePage=no
+WizardImageFile={#Repo}\Media\WizardImage.bmp
+
+
 AppId={{E1D44D44-2C84-4112-80AA-2DC406D85A11}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
@@ -21,8 +27,8 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=C:\Repos\OPI\LICENSE
-OutputDir="G:\Мой диск\Проекты\ОПИ\Релизы\{#MyAppVersion}"
+LicenseFile={#Repo}\LICENSE
+OutputDir="{#GDrive}\Мой диск\Проекты\ОПИ\Релизы\{#MyAppVersion}"
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 Compression=lzma
@@ -33,30 +39,36 @@ OutputBaseFilename=oint_{#MyAppVersion}_installer
 [Languages]
 Name: "russian"; MessagesFile: "compiler:Languages\Russian.isl"
 
-[Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-
 [Files]
-Source: "G:\Мой диск\Проекты\ОПИ\Релизы\{#MyAppVersion}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#GDrive}\Мой диск\Проекты\ОПИ\Релизы\{#MyAppVersion}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#Repo}\cli\start.bat"; DestDir: "{app}"
+Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{group}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{#Repo}\Media\ex.ico"
+Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{#Repo}\Media\ex.ico"; Tasks: desktopicon
+Name: "{group}\Удалить OInt"; Filename: "{uninstallexe}"; IconFilename: "{#Repo}\Media\wizard.ico"
+Name: "{group}\Web-документация"; Filename: "https://www.openintegrations.dev/"  
+
+[Tasks]
+Name: desktopicon; Description: "Создать ярлык на рабочем столе"; 
 
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "https://openintegrations.dev/docs/Nachalo-raboty/Rabota-s-CLI-versiei"; Flags: shellexec runasoriginaluser postinstall; Description: "Посетить старницу документации на openintegrations.dev"
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
     ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"; \
-    Check: NeedsAddPath('{app}')
+    Check: NeedsAddPath(ExpandConstant('{app}'))
 
 [Code]
 
 function NeedsAddPath(Param: string): boolean;
 var
   OrigPath: string;
+  Element: string;
 begin
   if not RegQueryStringValue(HKEY_LOCAL_MACHINE,
     'SYSTEM\CurrentControlSet\Control\Session Manager\Environment',
@@ -65,7 +77,33 @@ begin
     Result := True;
     exit;
   end;
-  { look for the path with leading and trailing semicolon }
-  { Pos() returns 0 if not found }
-  Result := Pos(';' + Param + ';', ';' + OrigPath + ';') = 0;
+  Element:= ';' + Param + ';';
+  Result := Pos(Element, ';' + OrigPath + ';') = 0;
+end;    
+
+procedure MyImageClick(Sender: TObject);
+var
+  ErrorCode: Integer;
+begin
+  ShellExec('open', 'http://www.google.es', '', '', SW_SHOWNORMAL, ewNoWait, ErrorCode);
+end;
+
+procedure CreateMyImage();
+begin
+  ExtractTemporaryFile('Logo.bmp');
+  with TBitmapImage.Create(WizardForm) do
+  begin
+    Parent := WizardForm.InstallingPage;
+    Bitmap.LoadFromFile(ExpandConstant('{tmp}\Logo.bmp'));
+    AutoSize := True;
+    Left := 0;
+    Top := WizardForm.InstallingPage.Top + WizardForm.InstallingPage.Height - Height - 8;
+    Cursor := crHand;
+    OnClick := @MyImageClick;
+  end;
+end;
+
+procedure InitializeWizard;
+begin
+  CreateMyImage();
 end;
