@@ -106,6 +106,10 @@ ___
 >- [Библиотека для работы со Slack (open-source)](https://infostart.ru/1c/articles/2099282/)<br>
 
 
+<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png" align="right" width="256">
+
+<br>
+
 >- Открытый Пакет интеграций (OpenIntegrations)<br>
 >Licensed under the MIT License<br>
 >Список зависимостей находится в файле NOTICE<br>
