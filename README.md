@@ -1,4 +1,5 @@
-![opi2](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/bb5dae63-fea5-4c7f-ab40-79ab2a7ce21e)
+![ezgif-6-adc4032ac2](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/6865386a-ebeb-4c50-a2d3-d8dbeb3718fc)
+
 
 
 # Открытый пакет интеграций
