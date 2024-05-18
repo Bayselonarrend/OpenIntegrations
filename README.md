@@ -1,4 +1,4 @@
-![ezgif-6-adc4032ac2](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/6865386a-ebeb-4c50-a2d3-d8dbeb3718fc)
+![main](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/6865386a-ebeb-4c50-a2d3-d8dbeb3718fc)
 
 
 
@@ -36,6 +36,10 @@
 
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
 
+<img src="https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/f345b5b0-76ac-4511-980b-a9e86fee3067" align="right">
+
+<br><br>
+
 Релизы библиотеки выходят в пяти вариантах: 
 - Как CLI приложение для Windows и Linux (exe, rpm, deb)
 - Как XML файлы расширения для загрузки через конфигуратор
@@ -43,7 +47,7 @@
 - Как отдельный файл расширения формата cfe
 - Как OneScript пакет расширения ospx
 
-<br/>
+<br/><br>
 
 При использовании версий для 1С и OneScript, вы также можете просто скопировать код общих модулей из релизов в свой проект руками. Однако, вне зависимости от выбранного сопособа установки, получать файлы необходимо из Release, так как в самих исходных файлах репозитория бывают промежуточные данные и функции, находящиеся в процессе разработки.
 
