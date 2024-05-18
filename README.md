@@ -1,4 +1,5 @@
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1" style="height: 256px; width: 256px;">
+![opi2](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/bb5dae63-fea5-4c7f-ab40-79ab2a7ce21e)
+
 
 # Открытый пакет интеграций
 [![Статус порога качества](http://api.athenaeum.digital/Sonar/api/project_badges/measure?project=OpenIntegrations&metric=alert_status)](http://api.athenaeum.digital/Sonar/dashboard?id=OpenIntegrations)
