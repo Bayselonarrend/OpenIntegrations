@@ -39,7 +39,7 @@
 
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
 
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/f345b5b0-76ac-4511-980b-a9e86fee3067" align="right">
+<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/icons.png" align="right">
 
 <br><br>
 
