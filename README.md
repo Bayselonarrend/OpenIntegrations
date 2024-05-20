@@ -105,7 +105,7 @@ ___
 >- [OInt CLI - приложение Открытого пакета интеграций для командной строки](https://infostart.ru/1c/articles/2074205/)<br>
 >- [Библиотека для работы со Slack (open-source)](https://infostart.ru/1c/articles/2099282/)<br>
 
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/heartnstar.png?1" align="right" height="256">
+<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/heartnstar.png?1" align="right" width="384">
 
 <br>
 
