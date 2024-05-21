@@ -1,4 +1,5 @@
-![main](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/24bc269c-d08f-44c6-9d50-81202083973d)
+![main](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/24bc269c-d08f-44c6-9d50-81202083973d#gh-dark-mode-only)
+
 
 
 
