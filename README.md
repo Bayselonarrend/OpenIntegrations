@@ -1,9 +1,4 @@
-![main](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/24bc269c-d08f-44c6-9d50-81202083973d#gh-dark-mode-only)
-
-
-
-
-
+![GitHub-Mark-Light](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/main.gif#gh-dark-mode-only#gh-dark-mode-only)![GitHub-Mark-Dark](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/main-light.gif#gh-light-mode-only)
 
 
 # Открытый пакет интеграций
