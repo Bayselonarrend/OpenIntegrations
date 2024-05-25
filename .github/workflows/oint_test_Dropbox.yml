@@ -95,6 +95,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ДропБокс_СоздатьКаталог"
 
+      - name: Создать/Удалить тег
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ДропБокс_СоздатьУдалитьТег"
+
 
       - name: Записать логи
         uses: actions/upload-artifact@v4
