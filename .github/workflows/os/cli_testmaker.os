@@ -110,6 +110,7 @@
 	|          opm install cmdline
 	|          opm install asserts
 	|          opm install osparser
+	|          opm install coloratos
 	|      - name: Сформировать список методов ОПИ -> CLI
 	|        run: oscript ./.github/workflows/os/cli_parse.os
 	|
