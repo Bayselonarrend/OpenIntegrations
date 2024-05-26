@@ -2880,6 +2880,265 @@ jobs:
           --cells "" \
           --sheetname "" \
 
+  Testing-dropbox:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить ПолучитьСсылкуАвторизации
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСсылкуАвторизации --debug --test \
+          --appkey "" \
+
+
+
+      - name: Выполнить ПолучитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьТокен --debug --test \
+          --appkey "" \
+          --appsecret "" \
+          --code "" \
+
+
+
+      - name: Выполнить ОбновитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОбновитьТокен --debug --test \
+          --appkey "" \
+          --appsecret "" \
+          --refresh "" \
+
+
+
+      - name: Выполнить ПолучитьИнформациюОбАккаунте
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьИнформациюОбАккаунте --debug --test \
+          --token "" \
+          --account "" \
+
+
+
+      - name: Выполнить ПолучитьДанныеИспользованияПространства
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьДанныеИспользованияПространства --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьИнформациюОбОбъекте
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьИнформациюОбОбъекте --debug --test \
+          --token "" \
+          --path "" \
+          --detail "" \
+
+
+
+      - name: Выполнить ПолучитьСписокФайловПапки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСписокФайловПапки --debug --test \
+          --token "" \
+          --path "" \
+          --detail "" \
+          --cursor "" \
+
+
+
+      - name: Выполнить ПолучитьПревью
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьПревью --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ЗагрузитьФайл --debug --test \
+          --token "" \
+          --file "" \
+          --path "" \
+          --overwrite "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайлПоURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ЗагрузитьФайлПоURL --debug --test \
+          --token "" \
+          --url "" \
+          --path "" \
+
+
+
+      - name: Выполнить ПолучитьСтатусЗагрузкиПоURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСтатусЗагрузкиПоURL --debug --test \
+          --token "" \
+          --job "" \
+
+
+
+      - name: Выполнить УдалитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox УдалитьОбъект --debug --test \
+          --token "" \
+          --path "" \
+          --permanently "" \
+
+
+
+      - name: Выполнить КопироватьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox КопироватьОбъект --debug --test \
+          --token "" \
+          --form "" \
+          --to "" \
+
+
+
+      - name: Выполнить ПереместитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПереместитьОбъект --debug --test \
+          --token "" \
+          --form "" \
+          --to "" \
+
+
+
+      - name: Выполнить СоздатьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox СоздатьПапку --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить СкачатьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox СкачатьФайл --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить СкачатьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox СкачатьПапку --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ПолучитьСписокВерсийОбъекта
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСписокВерсийОбъекта --debug --test \
+          --token "" \
+          --path "" \
+          --amount "" \
+
+
+
+      - name: Выполнить ВостановитьОбъектКВерсии
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ВостановитьОбъектКВерсии --debug --test \
+          --token "" \
+          --path "" \
+          --rev "" \
+
+
+
+      - name: Выполнить ПолучитьСписокТегов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСписокТегов --debug --test \
+          --token "" \
+          --paths "" \
+
+
+
+      - name: Выполнить ДобавитьТег
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ДобавитьТег --debug --test \
+          --token "" \
+          --path "" \
+          --tag "" \
+
+
+
+      - name: Выполнить УдалитьТег
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox УдалитьТег --debug --test \
+          --token "" \
+          --path "" \
+          --tag "" \
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]
