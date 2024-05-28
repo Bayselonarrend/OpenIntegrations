@@ -1,0 +1,8 @@
+﻿    Путь      = "/New/pic.png";  
+    Токен     = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
+    
+    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
+    КопироватьФайл(Картинка, КартинкаПуть);
+    
+    Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);

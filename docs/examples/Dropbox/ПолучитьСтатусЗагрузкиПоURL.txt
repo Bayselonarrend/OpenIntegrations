@@ -1,0 +1,14 @@
+﻿    Токен    = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+    ИДРаботы = "mTzF6hWsswAAAAAAAAAAAQ";
+    Статус   = "in_progress";    
+    
+    Пока Статус = "in_progress" Цикл 
+        
+        Результат = OPI_Dropbox.ПолучитьСтатусЗагрузкиПоURL(Токен, ИДРаботы);
+        Статус    = Результат[".tag"];
+        
+        OPI_Инструменты.Пауза(5);
+        
+        OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтатусЗагрузкиПоURL");
+        
+    КонецЦикла;

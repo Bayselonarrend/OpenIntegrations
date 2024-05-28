@@ -1,0 +1,5 @@
+﻿    Оригинал  = "/New/pic.png";
+    Копия     = "/New/pic_copy.png";  
+    Токен     = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+    
+    Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);

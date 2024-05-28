@@ -1,0 +1,4 @@
+﻿    Путь      = "/New";  
+    Токен     = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+     
+    Результат = OPI_Dropbox.ПолучитьСписокФайловПапки(Токен, Путь, Истина);
