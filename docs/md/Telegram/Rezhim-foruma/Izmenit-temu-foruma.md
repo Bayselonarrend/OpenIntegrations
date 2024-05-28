@@ -21,15 +21,20 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    Чат         = "-1001971186208";
+    Тема        = "2325";
+    НовоеИмя    = "Новый тестовый заголовок";
+    НовяИконка  = "5310132165583840589";
 
-  Ответ = OPI_Telegram.ИзменитьТемуФорума(Токен, IDЧата, IDТемы, Заголовок, IDИконки); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
+    Результат = OPI_Telegram.ИзменитьТемуФорума(Токен, Чат, Тема, НовоеИмя, НовяИконка);
+
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint telegram ИзменитьТемуФорума --token %token% --forum %forum% --topic %topic% --title %title% --icon %icon%
+  oint telegram ИзменитьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic% --title %title% --icon %icon%
 
 ```
 

@@ -21,31 +21,18 @@ sidebar_position: 4
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, Записи); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable УдалитьЗаписи --token %token% --base %base% --table %table% --records %records%
+  oint airtable УдалитьЗаписи --token %token% --base %base% --table %table% --records %records%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "records": [
-  {
-   "deleted": true,
-   "id": "recAB3eJVv3olssFr"
-  },
-  {
-   "deleted": true,
-   "id": "reckISGAjm3i2mVDb"
-  }
- ]
-}
+
 
 ```

@@ -17,15 +17,15 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    Результат   = OPI_Telegram.ПолучитьИнформациюБота(Токен);
 
-  Ответ = OPI_Telegram.ПолучитьИнформациюБота(Токен); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint telegram ПолучитьИнформациюБота --token %token%
+  oint telegram ПолучитьИнформациюБота --token "6129457865:AAFyzNYOAFbu..."
 
 ```
 

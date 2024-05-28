@@ -21,27 +21,18 @@ sidebar_position: 1
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, СтруктураПоля); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable СоздатьПоле --token %token% --base %base% --table %table% --fielddata %fielddata%
+  oint airtable СоздатьПоле --token %token% --base %base% --table %table% --fielddata %fielddata%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "type": "number",
- "options": {
-  "precision": 0
- },
- "id": "fldATgAyNWXezWLsM",
- "name": "277c693b-d2da-4f40-8d83-f5f64c49f150"
-}
+
 
 ```

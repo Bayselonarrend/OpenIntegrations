@@ -21,51 +21,18 @@ sidebar_position: 3
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.СоздатьБазу(Токен, РабочееПространство, Наименование, КоллекцияТаблиц); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable СоздатьБазу --token %token% --ws %ws% --title %title% --tablesdata %tablesdata%
+  oint airtable СоздатьБазу --token %token% --ws %ws% --title %title% --tablesdata %tablesdata%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "id": "appU4BYEPcrG5FlqP",
- "tables": [
-  {
-   "id": "tblEQ96elYhCbE3Jj",
-   "name": "Тестовая таблица",
-   "primaryFieldId": "fld2mb9dHV1Jt9lXi",
-   "fields": [
-    {
-     "type": "number",
-     "options": {
-      "precision": 0
-     },
-     "id": "fld2mb9dHV1Jt9lXi",
-     "name": "Номер"
-    },
-    {
-     "type": "richText",
-     "id": "fldICvkOjAYaNQNiG",
-     "name": "Строковое"
-    }
-   ],
-   "views": [
-    {
-     "id": "viwBWVJCK7ndNEYsL",
-     "name": "Grid view",
-     "type": "grid"
-    }
-   ]
-  }
- ]
-}
+
 
 ```

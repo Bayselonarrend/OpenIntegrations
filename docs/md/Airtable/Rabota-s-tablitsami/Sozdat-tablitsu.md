@@ -22,47 +22,18 @@ sidebar_position: 1
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.СоздатьТаблицу(Токен, База, Наименование, МассивПолей, Описание); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable СоздатьТаблицу --token %token% --base %base% --title %title% --fieldsdata %fieldsdata% --description %description%
+  oint airtable СоздатьТаблицу --token %token% --base %base% --title %title% --fieldsdata %fieldsdata% --description %description%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "id": "tblGCTowGBin5S8Xp",
- "name": "Тестовая таблица 2",
- "description": "Новая таблица",
- "primaryFieldId": "fld57VBxeJ0Kz1oHT",
- "fields": [
-  {
-   "type": "number",
-   "options": {
-    "precision": 0
-   },
-   "id": "fld57VBxeJ0Kz1oHT",
-   "name": "Номер"
-  },
-  {
-   "type": "richText",
-   "id": "fldF3JiY6kD55VD5L",
-   "name": "Строковое"
-  }
- ],
- "views": [
-  {
-   "id": "viw1RYgETyIB8zVIR",
-   "name": "Grid view",
-   "type": "grid"
-  }
- ]
-}
+
 
 ```
