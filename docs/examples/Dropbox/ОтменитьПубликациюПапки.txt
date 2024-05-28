@@ -1,4 +1,4 @@
 ﻿    Токен  = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
-    Папка  = "";
+    Папка  = "4999224241";
  
     Результат = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
