@@ -18,15 +18,17 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDКанала    = "@testsichee";
+    
+    Результат  = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDКанала);
 
-  Ответ = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDЧата); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint telegram ПолучитьЧислоУчастников --token %token% --chat %chat%
+  oint telegram ПолучитьЧислоУчастников --token "6129457865:AAFyzNYOAFbu..." --chat %chat%
 
 ```
 

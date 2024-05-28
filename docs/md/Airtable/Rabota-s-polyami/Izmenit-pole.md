@@ -23,28 +23,18 @@ sidebar_position: 2
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.ИзменитьПоле(Токен, База, Таблица, Поле, Наименование, Описание); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable ИзменитьПоле --token %token% --base %base% --table %table% --field %field% --title %title% --description %description%
+  oint airtable ИзменитьПоле --token %token% --base %base% --table %table% --field %field% --title %title% --description %description%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "type": "number",
- "options": {
-  "precision": 0
- },
- "id": "fldATgAyNWXezWLsM",
- "name": "277c693b-d2da-4f40-8d83-f5f64c49f150(изм.)",
- "description": "Новое описание"
-}
+
 
 ```

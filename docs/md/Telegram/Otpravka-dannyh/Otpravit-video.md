@@ -22,15 +22,35 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Видео    = "https://openintegrations.dev/test_data/video.mp4";
+    
+    ВидеоПуть = ПолучитьИмяВременногоФайла("mp4");
+    КопироватьФайл(Видео, ВидеоПуть);
+    
+    ВидеоДД   = Новый ДвоичныеДанные(ВидеоПуть);
+    
+    Результат = OPI_Telegram.ОтправитьВидео(Токен, IDЧата, Текст, Видео);
+    
+    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьВидео");
+    
+  
+    Результат = OPI_Telegram.ОтправитьВидео(Токен, IDКанала, Текст, ВидеоПуть);
+    
+    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьВидео (Путь)");
+    
+      
+    Результат = OPI_Telegram.ОтправитьВидео(Токен, IDКанала, Текст, ВидеоДД);
 
-  Ответ = OPI_Telegram.ОтправитьВидео(Токен, IDЧата, Текст, Видео, Клавиатура, Разметка); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint telegram ОтправитьВидео --token %token% --chat %chat% --text %text% --video %video% --keyboard %keyboard% --parsemode %parsemode%
+  oint telegram ОтправитьВидео --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --video "https://openintegrations.dev/test_data/video.mp4" --keyboard %keyboard% --parsemode %parsemode%
 
 ```
 

@@ -22,30 +22,18 @@ sidebar_position: 2
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.СоздатьКомментарий(Токен, База, Таблица, Запись, Текст); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable СоздатьКомментарий --token %token% --base %base% --table %table% --record %record% --text %text%
+  oint airtable СоздатьКомментарий --token %token% --base %base% --table %table% --record %record% --text %text%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "id": "comiwisbXU2Lt9gba",
- "author": {
-  "id": "usrFlaAHlTfYWAbVW",
-  "email": "bayselonarrend@gmail.com",
-  "name": "Антон Титовец"
- },
- "text": "Тестовый комментарий",
- "createdTime": "2024-05-10T07:40:16.217Z",
- "lastUpdatedTime": null
-}
+
 
 ```

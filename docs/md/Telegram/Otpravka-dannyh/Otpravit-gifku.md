@@ -22,15 +22,35 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Гифка    = "https://openintegrations.dev/test_data/animation.gif";
+    
+    ГифкаПуть = ПолучитьИмяВременногоФайла("gif");
+    КопироватьФайл(Гифка, ГифкаПуть);
+    
+    ГифкаДД   = Новый ДвоичныеДанные(ГифкаПуть);
+    
+    Результат = OPI_Telegram.ОтправитьГифку(Токен, IDЧата, Текст, Гифка);
+    
+    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьГифку");
+    
+  
+    Результат = OPI_Telegram.ОтправитьГифку(Токен, IDКанала, Текст, ГифкаПуть);
+    
+    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьГифку (Путь)");
+    
+      
+    Результат = OPI_Telegram.ОтправитьГифку(Токен, IDКанала, Текст, ГифкаДД);
 
-  Ответ = OPI_Telegram.ОтправитьГифку(Токен, IDЧата, Текст, Гифка, Клавиатура, Разметка); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint telegram ОтправитьГифку --token %token% --chat %chat% --text %text% --gif %gif% --keyboard %keyboard% --parsemode %parsemode%
+  oint telegram ОтправитьГифку --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --gif "https://openintegrations.dev/test_data/animation.gif" --keyboard %keyboard% --parsemode %parsemode%
 
 ```
 

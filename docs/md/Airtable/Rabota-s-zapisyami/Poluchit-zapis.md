@@ -21,27 +21,18 @@ sidebar_position: 2
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.ПолучитьЗапись(Токен, База, Таблица, Запись); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable ПолучитьЗапись --token %token% --base %base% --table %table% --record %record%
+  oint airtable ПолучитьЗапись --token %token% --base %base% --table %table% --record %record%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "id": "recqjJmZO5v8LyMiM",
- "createdTime": "2024-05-10T07:40:16Z",
- "fields": {
-  "Номер": 10,
-  "Строковое": "Привет\n"
- }
-}
+
 
 ```
