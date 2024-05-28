@@ -19,15 +19,18 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
+    Токен          = "6129457865:AAFyzNYOAFbu...";
+    IDПользователя = "461699897";
+    IDКанала       = "@testsichee";
+    
+    Результат = OPI_Telegram.Бан(Токен, IDКанала, IDПользователя);
 
-  Ответ = OPI_Telegram.Бан(Токен, IDЧата, IDПользователя); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint telegram Бан --token %token% --chat %chat% --user %user%
+  oint telegram Бан --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
 
 ```
 

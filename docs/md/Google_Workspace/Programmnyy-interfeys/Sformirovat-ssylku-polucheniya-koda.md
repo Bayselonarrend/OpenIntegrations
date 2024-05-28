@@ -21,8 +21,6 @@ sidebar_position: 1
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_GoogleWorkspace.СформироватьСсылкуПолученияКода(ClientID, Calendar, Drive, Sheets); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 

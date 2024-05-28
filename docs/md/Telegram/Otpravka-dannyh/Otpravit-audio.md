@@ -22,15 +22,35 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Аудио    = "https://openintegrations.dev/test_data/song.mp3";
+    
+    АудиоПуть = ПолучитьИмяВременногоФайла("mp3");
+    КопироватьФайл(Аудио, АудиоПуть);
+    
+    АудиоДД   = Новый ДвоичныеДанные(АудиоПуть);
+    
+    Результат = OPI_Telegram.ОтправитьАудио(Токен, IDЧата, Текст, Аудио);
+    
+    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьАудио");
+    
+  
+    Результат = OPI_Telegram.ОтправитьАудио(Токен, IDКанала, Текст, АудиоПуть);
+    
+    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьАудио (Путь)");
+    
+      
+    Результат = OPI_Telegram.ОтправитьАудио(Токен, IDКанала, Текст, АудиоДД);
 
-  Ответ = OPI_Telegram.ОтправитьАудио(Токен, IDЧата, Текст, Аудио, Клавиатура, Разметка); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint telegram ОтправитьАудио --token %token% --chat %chat% --text %text% --audio %audio% --keyboard %keyboard% --parsemode %parsemode%
+  oint telegram ОтправитьАудио --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --audio "https://openintegrations.dev/test_data/song.mp3" --keyboard %keyboard% --parsemode %parsemode%
 
 ```
 

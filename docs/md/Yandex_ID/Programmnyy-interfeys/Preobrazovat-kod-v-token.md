@@ -20,8 +20,6 @@ sidebar_position: 2
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_YandexID.ПреобразоватьКодВТокен(ClientId, ClientSecret, КодУстройства); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 

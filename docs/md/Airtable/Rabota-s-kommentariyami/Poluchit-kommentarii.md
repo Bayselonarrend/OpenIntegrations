@@ -22,35 +22,18 @@ sidebar_position: 1
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, Запись, Отступ); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable ПолучитьКомментарии --token %token% --base %base% --table %table% --record %record% --offset %offset%
+  oint airtable ПолучитьКомментарии --token %token% --base %base% --table %table% --record %record% --offset %offset%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "comments": [
-  {
-   "id": "comiwisbXU2Lt9gba",
-   "author": {
-    "id": "usrFlaAHlTfYWAbVW",
-    "email": "bayselonarrend@gmail.com",
-    "name": "Антон Титовец"
-   },
-   "text": "Тестовый комментарий (изм.)",
-   "createdTime": "2024-05-10T07:40:16Z",
-   "lastUpdatedTime": "2024-05-10T07:40:16Z"
-  }
- ],
- "offset": null
-}
+
 
 ```
