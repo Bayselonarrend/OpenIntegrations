@@ -44,6 +44,23 @@ sidebar_position: 3
 
 ```json title="Результат"
 
-
+{
+ "ok": true,
+ "result": {
+  "invite_link": "https://t.me/+7Qycfgicx341NzFi",
+  "name": "Ссылка 05/28/2024 16:16:35",
+  "creator": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "expire_date": 1716995796,
+  "member_limit": 200,
+  "creates_join_request": false,
+  "is_primary": false,
+  "is_revoked": false
+ }
+}
 
 ```
