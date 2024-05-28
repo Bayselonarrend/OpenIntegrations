@@ -20,7 +20,7 @@ sidebar_position: 2
 ```bsl title="Пример кода"
 	
     Тег       = "Важное";
-    Токен     = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+    Токен     = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
     Путь      = "/New/mydoc.docx";  
     
     Результат = OPI_Dropbox.ДобавитьТег(Токен, Путь, Тег);
@@ -30,7 +30,7 @@ sidebar_position: 2
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ДобавитьТег --token "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e..." --path %path% --tag %tag%
+  oint dropbox ДобавитьТег --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --path %path% --tag %tag%
 
 ```
 
