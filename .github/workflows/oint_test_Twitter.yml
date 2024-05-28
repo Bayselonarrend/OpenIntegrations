@@ -107,6 +107,14 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Твиттер_СоздатьТвитСОпросом"
 
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Twitter
+          path: ./docs/results/Twitter
+
+
       - name: Записать измененные данные
         if: ${{ cancelled() }} == false
         uses: actions/cache/save@v3
@@ -151,6 +159,85 @@ jobs:
           rm -f ./data.json
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
+
+      - name: Получить логи Telegram
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Telegram
+          path: ./docs/results/Telegram
+
+      - name: Получить логи VK
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-VK
+          path: ./docs/results/VK
+
+      - name: Получить логи Viber
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Viber
+          path: ./docs/results/Viber
+
+      - name: Получить логи Twitter
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Twitter
+          path: ./docs/results/Twitter
+
+      - name: Получить логи YandexDisk
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-YandexDisk
+          path: ./docs/results/YandexDisk
+
+      - name: Получить логи GoogleWorkspace
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleWorkspace
+          path: ./docs/results/GoogleWorkspace
+
+      - name: Получить логи GoogleCalendar
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleCalendar
+          path: ./docs/results/GoogleCalendar
+
+      - name: Получить логи GoogleDrive
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleDrive
+          path: ./docs/results/GoogleDrive
+
+      - name: Получить логи GoogleSheets
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleSheets
+          path: ./docs/results/GoogleSheets
+
+      - name: Получить логи Notion
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Notion
+          path: ./docs/results/Notion
+
+      - name: Получить логи Slack
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Slack
+          path: ./docs/results/Slack
+
+      - name: Получить логи Airtable
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Airtable
+          path: ./docs/results/Airtable
+
+      - name: Получить логи Dropbox
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Dropbox
+          path: ./docs/results/Dropbox
+
 
       - name: Записать данные    
         uses: stefanzweifel/git-auto-commit-action@v5   
