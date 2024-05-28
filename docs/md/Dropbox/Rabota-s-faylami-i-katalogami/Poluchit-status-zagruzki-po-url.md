@@ -18,8 +18,8 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
-    Токен    = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
-    ИДРаботы = "mTzF6hWsswAAAAAAAAAAAQ";
+    Токен    = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
+    ИДРаботы = "kwvJIcRS7eAAAAAAAAAAAQ";
     Статус   = "in_progress";    
     
     Пока Статус = "in_progress" Цикл 
@@ -29,7 +29,7 @@ sidebar_position: 6
         
         OPI_Инструменты.Пауза(5);
         
-        OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтатусЗагрузкиПоURL");
+        OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтатусЗагрузкиПоURL", "Dropbox");
         
     КонецЦикла;
 
@@ -38,7 +38,7 @@ sidebar_position: 6
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e..." --job %job%
+  oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --job %job%
 
 ```
 
