@@ -3139,6 +3139,50 @@ jobs:
           --path "" \
           --tag "" \
 
+
+
+      - name: Выполнить ОпубликоватьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОпубликоватьПапку --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ОтменитьПубликациюПапки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОтменитьПубликациюПапки --debug --test \
+          --token "" \
+          --folder "" \
+
+
+
+      - name: Выполнить ДобавитьПользователейКФайлу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ДобавитьПользователейКФайлу --debug --test \
+          --token "" \
+          --fileid "" \
+          --emails "" \
+          --readonly "" \
+
+
+
+      - name: Выполнить ДобавитьПользователейКПапке
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ДобавитьПользователейКПапке --debug --test \
+          --token "" \
+          --folder "" \
+          --emails "" \
+          --readonly "" \
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]
