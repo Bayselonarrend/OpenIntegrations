@@ -16,7 +16,12 @@ jobs:
     
       - uses: actions/checkout@v2  
         with:
-          token: ${{secrets.TOKEN}}   
+          token: ${{secrets.TOKEN}} 
+
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
                  
       - uses: otymko/setup-onescript@v1.4
         with:
@@ -28,6 +33,11 @@ jobs:
       
       - name: Выполнить скрипт парсинга тестов
         run: oscript ./.github/workflows/os/docs_examples.os
+
+      - name: Удалить расшифрованный файл
+        continue-on-error: false
+  
+        run:  rm -f ./data.json
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
         with:
