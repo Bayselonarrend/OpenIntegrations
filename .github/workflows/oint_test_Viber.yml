@@ -116,13 +116,6 @@ jobs:
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
 
 
-      - name: Записать логи
-        uses: actions/upload-artifact@v4
-        with:
-          name: Viber
-          path: ./test_logs
-
-
       - name: Записать измененные данные
         if: ${{ cancelled() }} == false
         uses: actions/cache/save@v3
