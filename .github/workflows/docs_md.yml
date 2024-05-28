@@ -21,9 +21,16 @@ jobs:
       - uses: otymko/setup-onescript@v1.4
         with:
           version: 1.9.0 
+          
+      - name: Установить osparser и cmdline
+        run: |
+          opm install osparser
+          opm install cmdline
 
       - name: Выполнить скрипт парсинга тестов
         run: oscript ./.github/workflows/os/oint_docs.os
+
+
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
         with:
