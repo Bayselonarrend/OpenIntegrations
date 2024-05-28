@@ -1,0 +1,40 @@
+﻿    {
+ "ok": true,
+ "result": {
+  "message_id": 4589,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1716912978,
+  "forward_origin": {
+   "type": "channel",
+   "chat": {
+    "id": -1001893407333,
+    "title": "Тестовый канал",
+    "username": "testsichee",
+    "type": "channel"
+   },
+   "message_id": 4606,
+   "date": 1716912867
+  },
+  "forward_from_chat": {
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
+  },
+  "forward_from_message_id": 4606,
+  "forward_date": 1716912867,
+  "text": "Строковое значение"
+ }
+}

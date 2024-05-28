@@ -1,0 +1,31 @@
+﻿    {
+ "ok": true,
+ "result": {
+  "message_id": 4581,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1716912899,
+  "audio": {
+   "duration": 228,
+   "file_name": "audio",
+   "mime_type": "audio/mpeg",
+   "title": "Dogs",
+   "performer": "Motorhead",
+   "file_id": "CQACAgIAAxkDAAIR5WZWAwP1r0E1hvSY5mMKntbXLGGQAAI5UwACvv6xStZqgGzSJyp1NQQ",
+   "file_unique_id": "AgADOVMAAr7-sUo",
+   "file_size": 9229352
+  },
+  "caption": "Строковое значение"
+ }
+}
