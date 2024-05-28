@@ -18,7 +18,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-    Токен = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+    Токен = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
     
     Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен);
 
@@ -27,7 +27,7 @@ sidebar_position: 4
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ПолучитьИнформациюОбАккаунте --token "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e..." --account %account%
+  oint dropbox ПолучитьИнформациюОбАккаунте --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --account %account%
 
 ```
 

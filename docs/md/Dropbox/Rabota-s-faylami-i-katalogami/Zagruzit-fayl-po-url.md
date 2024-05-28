@@ -20,7 +20,7 @@ sidebar_position: 5
 ```bsl title="Пример кода"
 	
     Путь  = "/New/url_doc.docx";  
-    Токен = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+    Токен = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
     URL   = "https://openintegrations.dev/test_data/document.docx";
     
     Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
@@ -30,7 +30,7 @@ sidebar_position: 5
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ЗагрузитьФайлПоURL --token "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e..." --url %url% --path %path%
+  oint dropbox ЗагрузитьФайлПоURL --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --url %url% --path %path%
 
 ```
 
