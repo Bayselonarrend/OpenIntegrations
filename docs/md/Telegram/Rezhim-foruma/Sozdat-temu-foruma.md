@@ -39,6 +39,14 @@ sidebar_position: 2
 
 ```json title="Результат"
 
-
+{
+ "ok": true,
+ "result": {
+  "message_thread_id": 2402,
+  "name": "Тестовая тема 3db2319e-be9e-486e-8946-bd7a10c79640",
+  "icon_color": 7322096,
+  "icon_custom_emoji_id": "5357419403325481346"
+ }
+}
 
 ```
