@@ -22,23 +22,18 @@ sidebar_position: 4
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.УдалитьКомментарий(Токен, База, Таблица, Запись, Комментарий); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable УдалитьКомментарий --token %token% --base %base% --table %table% --record %record% --comment %comment%
+  oint airtable УдалитьКомментарий --token %token% --base %base% --table %table% --record %record% --comment %comment%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "id": "comiwisbXU2Lt9gba",
- "deleted": true
-}
+
 
 ```

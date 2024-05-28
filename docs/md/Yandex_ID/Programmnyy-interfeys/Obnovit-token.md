@@ -20,8 +20,6 @@ sidebar_position: 3
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_YandexID.ОбновитьТокен(ClientId, ClientSecret, RefreshToken); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 

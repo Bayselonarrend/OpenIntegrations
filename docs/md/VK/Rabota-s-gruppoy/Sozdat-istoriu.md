@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Создать историю
@@ -19,15 +19,27 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
+    Параметры = ПолучитьПараметрыВК();
+    URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-  Ответ = OPI_VK.СоздатьИсторию(Картинка, URL, Параметры); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
+    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    ИВФ       = ПолучитьИмяВременногоФайла("png");
+    КопироватьФайл(Картинка, ИВФ);
+    Картинка  = Новый ДвоичныеДанные(ИВФ);
+       
+    Результат = OPI_VK.СоздатьИсторию(Картинка , URL, Параметры);
+
+    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьИсторию");
+    
+        
+    Результат = OPI_VK.СоздатьИсторию(ИВФ, , Параметры);
+
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint vk СоздатьИсторию --picture %picture% --url %url% --auth %auth%
+  oint vk СоздатьИсторию --picture "https://openintegrations.dev/test_data/picture.jpg" --url %url% --auth %auth%
 
 ```
 

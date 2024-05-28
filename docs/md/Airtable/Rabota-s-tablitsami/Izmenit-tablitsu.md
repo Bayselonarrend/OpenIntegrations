@@ -22,47 +22,18 @@ sidebar_position: 2
 ```bsl title="Пример кода"
 	
 
-  Ответ = OPI_Airtable.ИзменитьТаблицу(Токен, База, Таблица, Наименование, Описание); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ); //JSON строка
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint Airtable ИзменитьТаблицу --token %token% --base %base% --table %table% --title %title% --description %description%
+  oint airtable ИзменитьТаблицу --token %token% --base %base% --table %table% --title %title% --description %description%
 
 ```
 
 
 ```json title="Результат"
 
-{
- "id": "tblGCTowGBin5S8Xp",
- "name": "Тестовая таблица 2 (изм.)",
- "description": "Новая таблица (изм.)",
- "primaryFieldId": "fld57VBxeJ0Kz1oHT",
- "fields": [
-  {
-   "id": "fld57VBxeJ0Kz1oHT",
-   "name": "Номер",
-   "type": "number",
-   "options": {
-    "precision": 0
-   }
-  },
-  {
-   "id": "fldF3JiY6kD55VD5L",
-   "name": "Строковое",
-   "type": "richText"
-  }
- ],
- "views": [
-  {
-   "id": "viw1RYgETyIB8zVIR",
-   "name": "Grid view",
-   "type": "grid"
-  }
- ]
-}
+
 
 ```
