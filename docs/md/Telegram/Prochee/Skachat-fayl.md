@@ -18,7 +18,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-    IDФайла = "CQACAgIAAx0EcNsaZQACEZRmUbbz_bhDX_wPiSnMclSID6CD7wACC00AAoaTiEpOTiNykV_72zUE";
+    IDФайла = "CQACAgIAAx0EcNsaZQACEgRmVgMIOr9Q0NEt9l4OXJuwUgbl-wAC3kYAAnFFsUp2dLSNM3JeRjUE";
     Токен   = "6129457865:AAFyzNYOAFbu...";
 
     Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
@@ -28,7 +28,7 @@ sidebar_position: 2
 
 ```sh title="Пример команд CLI"
     
-  oint telegram СкачатьФайл --token "6129457865:AAFyzNYOAFbu..." --fileid "CQACAgIAAx0EcNsaZQACEZRmUbbz_bhDX_wPiSnMclSID6CD7wACC00AAoaTiEpOTiNykV_72zUE"
+  oint telegram СкачатьФайл --token "6129457865:AAFyzNYOAFbu..." --fileid "CQACAgIAAx0EcNsaZQACEgRmVgMIOr9Q0NEt9l4OXJuwUgbl-wAC3kYAAnFFsUp2dLSNM3JeRjUE"
 
 ```
 

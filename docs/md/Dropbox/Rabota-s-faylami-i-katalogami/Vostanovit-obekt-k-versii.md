@@ -19,8 +19,8 @@ sidebar_position: 14
 
 ```bsl title="Пример кода"
 	
-    Версия    = "016196bc6e08dda00000001295a2bc1";
-    Токен     = "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e...";
+    Версия    = "61947933c4742bd841553";
+    Токен     = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
     Путь      = "/New/pic.png";  
     
     Результат = OPI_Dropbox.ВостановитьОбъектКВерсии(Токен, Путь, Версия);
@@ -30,7 +30,7 @@ sidebar_position: 14
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ВостановитьОбъектКВерсии --token "sl.B2BrYIsNrnf_h8d1VSt-ilH_LEUuySQXhbDb51qh3chXboh4PF5ZjVKK-fmicHuGMHS8iZ3_6e..." --path %path% --rev "016196bc6e08dda00000001295a2bc1"
+  oint dropbox ВостановитьОбъектКВерсии --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --path %path% --rev "61947933c4742bd841553"
 
 ```
 

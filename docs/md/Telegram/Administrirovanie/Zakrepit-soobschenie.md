@@ -21,7 +21,7 @@ sidebar_position: 4
 	
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDКанала    = "@testsichee";
-    IDСообщения = "4494";
+    IDСообщения = "4606";
     
     Результат = OPI_Telegram.ЗакрепитьСообщение(Токен, IDКанала, IDСообщения);
 
@@ -30,7 +30,7 @@ sidebar_position: 4
 
 ```sh title="Пример команд CLI"
     
-  oint telegram ЗакрепитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4494"
+  oint telegram ЗакрепитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4606"
 
 ```
 
