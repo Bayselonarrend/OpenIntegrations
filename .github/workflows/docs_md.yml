@@ -1,0 +1,33 @@
+name: Документация | Создать MD страницы с документацией
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Convert:
+    runs-on: ubuntu-latest
+    permissions: 
+      actions: write
+      contents: write
+     
+    steps:
+    
+      - uses: actions/checkout@v2  
+        with:
+          token: ${{secrets.TOKEN}}   
+                 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+
+      - name: Выполнить скрипт парсинга тестов
+        run: oscript ./.github/workflows/os/oint_docs.os
+
+      - uses: stefanzweifel/git-auto-commit-action@v5 
+        with:
+          commit_user_name: Vitaly the Alpaca (bot) 
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+          commit_message: Создание MD файлов документации

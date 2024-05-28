@@ -1,0 +1,39 @@
+name: Документация | Развернуть на Neocities
+
+on:
+  workflow_dispatch:
+
+concurrency: 
+  group: deploy-to-neocities
+  cancel-in-progress: true
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    - name: Установка зависимостей
+      run: |
+        cd ./docs/docusaurus
+        npm install
+      
+    - name: Сборка
+      run: |
+        cd ./docs/docusaurus
+        yarn build
+
+    - name: Развертывание на neocities
+      uses: jonchang/deploy-neocities@e557d8b4aa935cd3e1a437c038bb043c9b4064f6
+      with:
+        key: ${{ secrets.NEOCITIES_API_TOKEN }}
+        dir: ./docs/docusaurus/build
+        clean: false
