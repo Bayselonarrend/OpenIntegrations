@@ -27,6 +27,12 @@ jobs:
           opm install coverage
           opm install fs
 
+      - name: Установить OInt
+        run: |
+            cd ./OInt
+            opm build
+            opm install *.ospx    
+
       - name: Выполнить скрипт определения покрытия
         run: oscript ./OInt/coverage/Modules/Coverage_ОпределениеПокрытия.os
 
