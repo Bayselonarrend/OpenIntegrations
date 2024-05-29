@@ -1,0 +1,76 @@
+﻿    {
+ "response": [
+  {
+   "album_id": 304480967,
+   "date": 1716965505,
+   "id": 457243929,
+   "owner_id": -218861756,
+   "sizes": [
+    {
+     "height": 56,
+     "type": "s",
+     "width": 75,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=75x56&quality=96&sign=b79990566953010bec5c1942928f7655&c_uniq_tag=_lhIOZVM_QwnLc8FcS5hW6cxU6i9ll-cTgyakg2UrE0&type=album"
+    },
+    {
+     "height": 97,
+     "type": "m",
+     "width": 130,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=130x97&quality=96&sign=e45414accaa1fd409c7dd5a9b5540498&c_uniq_tag=sTcq_JJe0hE9t548qOASE59FQgY_4j1mJf3HXh5PtwU&type=album"
+    },
+    {
+     "height": 453,
+     "type": "x",
+     "width": 604,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=604x453&quality=96&sign=0551e0a313a0fabfbfdb74e611b19707&c_uniq_tag=qie4q8bRttxvq7cueuBPAaGWtgyitYRJxTwg6mP5ubw&type=album"
+    },
+    {
+     "height": 605,
+     "type": "y",
+     "width": 807,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=807x605&quality=96&sign=93baef05e98310c8e3aecb38d149abbc&c_uniq_tag=jziEmkq4cifrPpV79bEx3izbd1LtOHm39F7C_imj8gE&type=album"
+    },
+    {
+     "height": 960,
+     "type": "z",
+     "width": 1280,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=1280x960&quality=96&sign=40da08fecb03f0ab67dc2573292531cf&c_uniq_tag=5LwDLuNkpwbqrovU12AJleHdMIrWMGUhXRGNZAALpq8&type=album"
+    },
+    {
+     "height": 1920,
+     "type": "w",
+     "width": 2560,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=2560x1920&quality=96&sign=c9bf2edc68f17e6358addfc59747ed61&c_uniq_tag=le9f6ZdB1xhr-Kf_Y7BHaJivbLRZKhGiOtHSF2L4gAk&type=album"
+    },
+    {
+     "height": 97,
+     "type": "o",
+     "width": 130,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=130x97&quality=96&sign=e45414accaa1fd409c7dd5a9b5540498&c_uniq_tag=sTcq_JJe0hE9t548qOASE59FQgY_4j1mJf3HXh5PtwU&type=album"
+    },
+    {
+     "height": 150,
+     "type": "p",
+     "width": 200,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=200x150&quality=96&sign=6d49c74b17d2b3d6ba0454c49f3ef8c3&c_uniq_tag=bWHS9Nc1oTFzsXs4gR6bAObuzEPHlr67sX3IEc_A2OM&type=album"
+    },
+    {
+     "height": 240,
+     "type": "q",
+     "width": 320,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=320x240&quality=96&sign=e8e7454302bad812d0be7b21d4bd8b62&c_uniq_tag=RFeIr6IIq1tuYqBhNZzJYFBHhPV6dwQc6xD_nzhV1xc&type=album"
+    },
+    {
+     "height": 382,
+     "type": "r",
+     "width": 510,
+     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/T8UwSPos7fo.jpg?size=510x382&quality=96&sign=c3c389bf2c412886c2c3d835b14ab4ca&c_uniq_tag=Pf__YVPrFawyhAQrsLl-hqJOgjXfz9bGVJKVmL_VA94&type=album"
+    }
+   ],
+   "text": "Картинка автотест",
+   "user_id": 100,
+   "web_view_token": "02ac56c1a1caef5983",
+   "has_tags": false
+  }
+ ]
+}
