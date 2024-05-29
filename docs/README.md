@@ -3,6 +3,6 @@
 # Документация Открытого пакета интеграций
 <br>
 
-Здесь находятся документация Открытого пакета интеграций. Она построена на [Docusaurus](https://github.com/facebook/docusaurus) и развернута по адресу [openintegrations.dev](https://openintegrations.dev) (neocities). Там можно найти подробное описание функционала проекта ОПИ с примерами кода и картинками
+Здесь находится документация Открытого пакета интеграций. Она построена на [Docusaurus](https://github.com/facebook/docusaurus) и развернута по адресу [openintegrations.dev](https://openintegrations.dev) (neocities). Там можно найти подробное описание функционала проекта ОПИ с примерами кода и картинками
 
 
