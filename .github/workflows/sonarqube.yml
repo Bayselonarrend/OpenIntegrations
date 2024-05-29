@@ -40,3 +40,4 @@ jobs:
             -Dsonar.projectKey=OInt
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.os
+            -Dsonar.coverageReportPaths=OInt/coverage/genericCoverage.xml
