@@ -1,7 +1,7 @@
 ﻿    {
  "ok": true,
  "result": {
-  "message_id": 4624,
+  "message_id": 4636,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,9 +15,9 @@
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1717052440,
+  "date": 1717054850,
   "poll": {
-   "id": "5386349547117086965",
+   "id": "5386349547117086971",
    "question": "Какой ваш любимый цвет?",
    "options": [
     {
