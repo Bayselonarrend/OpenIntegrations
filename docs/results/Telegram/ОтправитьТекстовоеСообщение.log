@@ -1,7 +1,7 @@
 ﻿    {
  "ok": true,
  "result": {
-  "message_id": 4614,
+  "message_id": 4626,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1717052335,
+  "date": 1717054721,
   "text": "Строковое значение"
  }
 }
