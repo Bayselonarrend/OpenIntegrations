@@ -1,5 +1,5 @@
 ﻿    {
- "error_summary": "invalid_access_token/.",
+ "error_summary": "invalid_access_token/...",
  "error": {
   ".tag": "invalid_access_token"
  }

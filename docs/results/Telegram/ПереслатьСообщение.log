@@ -1,7 +1,7 @@
 ﻿    {
  "ok": true,
  "result": {
-  "message_id": 4613,
+  "message_id": 4625,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1717000225,
+  "date": 1717052447,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -24,8 +24,8 @@
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 4638,
-   "date": 1717000111
+   "message_id": 4654,
+   "date": 1717052335
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -33,8 +33,8 @@
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 4638,
-  "forward_date": 1717000111,
+  "forward_from_message_id": 4654,
+  "forward_date": 1717052335,
   "text": "Строковое значение"
  }
 }
