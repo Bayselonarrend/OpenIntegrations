@@ -1,76 +1,64 @@
 ﻿    {
- "response": [
-  {
-   "album_id": 304488380,
-   "date": 1717000147,
-   "id": 457243951,
-   "owner_id": -218861756,
-   "sizes": [
-    {
-     "height": 56,
-     "type": "s",
-     "width": 75,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=75x56&quality=96&sign=5c318c0f7c64d2cea50c8f5ce53e33cf&c_uniq_tag=PofyKv5VTyLwZwJhjM6qlCOavTHnM6yznHlRQEM5zGA&type=album"
-    },
-    {
-     "height": 97,
-     "type": "m",
-     "width": 130,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=130x97&quality=96&sign=9081649e03c79b2f407120a89eb89220&c_uniq_tag=pxZKJaugBc-Ua87-8nTNrQesERBx2Hou0VwS-XyRKXo&type=album"
-    },
-    {
-     "height": 453,
-     "type": "x",
-     "width": 604,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=604x453&quality=96&sign=258a09e74085621beb6ef3a1a1f57e6e&c_uniq_tag=n431F64U3rKXyBNO-Xz0pTi0qAykBPRdpBdQ-fop6q0&type=album"
-    },
-    {
-     "height": 605,
-     "type": "y",
-     "width": 807,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=807x605&quality=96&sign=37d7a8392d1f083fd4565963610db4fb&c_uniq_tag=Gso6Z0P-05jHPyg1hATzFUOO_pd_cCtoJDC63iNtv8o&type=album"
-    },
-    {
-     "height": 960,
-     "type": "z",
-     "width": 1280,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=1280x960&quality=96&sign=8c74e6ddb41ed89dd8341266480bde91&c_uniq_tag=hv4aX8a9iixrWRak0C2CuX9EPeiV_YLd9EmijPizKeY&type=album"
-    },
-    {
-     "height": 1920,
-     "type": "w",
-     "width": 2560,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=2560x1920&quality=96&sign=2be4b95261118e12b9d229442336b34c&c_uniq_tag=CSELxRxmC9NJau35jxk0f8c0yQBcfpdCRRE1uQpZtTA&type=album"
-    },
-    {
-     "height": 97,
-     "type": "o",
-     "width": 130,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=130x97&quality=96&sign=9081649e03c79b2f407120a89eb89220&c_uniq_tag=pxZKJaugBc-Ua87-8nTNrQesERBx2Hou0VwS-XyRKXo&type=album"
-    },
-    {
-     "height": 150,
-     "type": "p",
-     "width": 200,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=200x150&quality=96&sign=d311f958240cde95259525515c2e51d7&c_uniq_tag=-A7zv0fQqfvLNJUNpNJ8BI4T7myFlCNsCkbVIH4ofMs&type=album"
-    },
-    {
-     "height": 240,
-     "type": "q",
-     "width": 320,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=320x240&quality=96&sign=b29580021371989b022cb3a71c205ed0&c_uniq_tag=oIhw9e-Jg8DsGFhtp1qtEEFdsiVo2KyLYKYKYTs-1qE&type=album"
-    },
-    {
-     "height": 382,
-     "type": "r",
-     "width": 510,
-     "url": "https://sun9-38.userapi.com/impg/ejNe0jcXKF-JoKZdXKCs97GJjsJh4ZGE0iH8KQ/3kRpmUqhlZk.jpg?size=510x382&quality=96&sign=eedae045241f748b08b6940e0ea66a0c&c_uniq_tag=vwU9oBZ73_EzZIh_JbaKe8ODcM-BnIAJRvENadir6D4&type=album"
-    }
-   ],
-   "text": "Картинка автотест",
-   "user_id": 100,
-   "web_view_token": "9c8b6d82abf973d5f2",
-   "has_tags": false
-  }
- ]
+ "error": {
+  "error_code": 100,
+  "error_msg": "One of the parameters specified was missing or invalid: photos_list is invalid",
+  "request_params": [
+   {
+    "key": "from_group",
+    "value": "1"
+   },
+   {
+    "key": "owner_id",
+    "value": "-218861756"
+   },
+   {
+    "key": "v",
+    "value": "5.131"
+   },
+   {
+    "key": "app_id",
+    "value": "51694790"
+   },
+   {
+    "key": "group_id",
+    "value": "218861756"
+   },
+   {
+    "key": "album_id",
+    "value": "304494394"
+   },
+   {
+    "key": "caption",
+    "value": "Картинка автотест"
+   },
+   {
+    "key": "upload_url",
+    "value": "https://pu.vk.com/c529236/ss2128/upload.php?act=do_add&mid=657846756&aid=304494394&gid=218861756&hash=6dc7ce6e7f8635de0db3b1502a3f4184&rhash=65651b7d32f4a46214fc5e66afc236d4&swfupload=1&api=1"
+   },
+   {
+    "key": "hash",
+    "value": "ff6b8b84ff59c527b514e16738c74f8e"
+   },
+   {
+    "key": "photos_list",
+    "value": ""
+   },
+   {
+    "key": "server",
+    "value": "529236"
+   },
+   {
+    "key": "aid",
+    "value": "304494394"
+   },
+   {
+    "key": "method",
+    "value": "photos.save"
+   },
+   {
+    "key": "oauth",
+    "value": "1"
+   }
+  ]
+ }
 }
