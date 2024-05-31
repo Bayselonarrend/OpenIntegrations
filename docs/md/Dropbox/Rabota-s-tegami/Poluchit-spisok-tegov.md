@@ -31,6 +31,22 @@ sidebar_position: 1
 
 ```json title="Результат"
 
-
+{
+ "paths_to_tags": [
+  {
+   "path": "/New/Dogs.mp3",
+   "tags": []
+  },
+  {
+   "path": "/New/mydoc.docx",
+   "tags": [
+    {
+     ".tag": "user_generated_tag",
+     "tag_text": "важное"
+    }
+   ]
+  }
+ ]
+}
 
 ```
