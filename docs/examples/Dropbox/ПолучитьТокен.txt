@@ -1,0 +1,5 @@
+﻿    КлючПриложения   = "oynqxds...";
+    СекретПриложения = "tk2oewn...";
+    Код              = "bTCiUTzxe6kAAAAAAAAAMgkkeJxqxqAO0YhahYskSmo";
+
+    Результат = OPI_Dropbox.ПолучитьТокен(КлючПриложения, СекретПриложения, Код);

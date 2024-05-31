@@ -50,30 +50,30 @@ jobs:
 
       - name: Собрать и установить OInt
         run: |
-          cd ./OInt
+          cd ./ru/OInt
           opm build
           opm install *.ospx  
 
       - name: Собрать бинарник
         run: |
-          cd ./cli
+          cd ./ru/cli
           oscript -make core/Classes/Приложение.os oint
 
       - name: Собрать exe
         run: |
-          cd ./cli
+          cd ./ru/cli
           oscript -make core/Classes/Приложение.os oint.exe
 
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./cli/oint
+          path: ./ru/cli/oint
 
       - name: Создать каталог deb-пакета
         run: |
           mkdir -p .debpkg/usr/bin
-          cp ./cli/oint .debpkg/usr/bin/oint
+          cp ./ru/cli/oint .debpkg/usr/bin/oint
           chmod +x .debpkg/usr/bin/oint
 
       - name: Собрать deb-пакет
@@ -97,7 +97,7 @@ jobs:
         run: |
           mkdir -p .rpmpkg/usr/bin
           mkdir -p .rpmpkg/usr/share/oint/bin
-          cp ./cli/oint .rpmpkg/usr/share/oint/bin/oint
+          cp ./ru/cli/oint .rpmpkg/usr/share/oint/bin/oint
           echo 'mono /usr/share/oint/bin/oint "$@"' > .rpmpkg/usr/bin/oint
           chmod +x .rpmpkg/usr/bin/oint
 
@@ -186,6 +186,16 @@ jobs:
  
           ./oint telegram УдалитьWebhook --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
+
+
+
+      - name: Выполнить СкачатьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram СкачатьФайл --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --fileid "" \
 
 
 
@@ -341,6 +351,17 @@ jobs:
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
           --from "${{ env.json_Telegram_ChannelID }}" \
           --to "${{ env.json_Telegram_ChatID }}" \
+
+
+
+      - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram СформироватьКлавиатуруПоМассивуКнопок --debug --test \
+          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+          --under true \
+          --column false \
 
 
 
@@ -517,27 +538,6 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
-
-
-
-      - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
-        if: ${{ cancelled() }} == false
-        run: |
- 
-          ./oint telegram СформироватьКлавиатуруПоМассивуКнопок --debug --test \
-          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
-          --under true \
-          --column false \
-
-
-
-      - name: Выполнить СкачатьФайл
-        if: ${{ cancelled() }} == false
-        run: |
- 
-          ./oint telegram СкачатьФайл --debug --test \
-          --token "${{ env.json_Telegram_Token }}" \
-          --fileid "" \
 
   Testing-vk:
     runs-on: ubuntu-latest
@@ -3098,11 +3098,11 @@ jobs:
 
 
 
-      - name: Выполнить ВостановитьОбъектКВерсии
+      - name: Выполнить ВосстановитьОбъектКВерсии
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint dropbox ВостановитьОбъектКВерсии --debug --test \
+          ./oint dropbox ВосстановитьОбъектКВерсии --debug --test \
           --token "" \
           --path "" \
           --rev "" \
@@ -3182,6 +3182,26 @@ jobs:
           --folder "" \
           --emails "" \
           --readonly "" \
+
+
+
+      - name: Выполнить ПолучитьСтатусАсинхронногоИзменения
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСтатусАсинхронногоИзменения --debug --test \
+          --token "" \
+          --job "" \
+
+
+
+      - name: Выполнить ОтменитьПубликациюФайла
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОтменитьПубликациюФайла --debug --test \
+          --token "" \
+          --fileid "" \
 
   Clear-Cache:
     runs-on: ubuntu-latest

@@ -35,6 +35,13 @@ sidebar_position: 10
 
 ```json title="Результат"
 
-
+{
+ "metadata": {
+  "name": "Новый каталог",
+  "path_lower": "/новый каталог",
+  "path_display": "/Новый каталог",
+  "id": "id:kJU6-a-pT48AAAAAAAABZA"
+ }
+}
 
 ```
