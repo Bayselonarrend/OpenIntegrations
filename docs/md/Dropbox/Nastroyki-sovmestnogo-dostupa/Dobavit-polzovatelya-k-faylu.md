@@ -20,7 +20,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-    Токен = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
+    Токен = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
     Почта = "h5bk6ft62s@privaterelay.appleid.com";
     Файл  = "kJU6-a-pT48AAAAAAAAABw";
     
@@ -31,7 +31,7 @@ sidebar_position: 3
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ДобавитьПользователейКФайлу --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --fileid %fileid% --emails %emails% --readonly %readonly%
+  oint dropbox ДобавитьПользователейКФайлу --token "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c..." --fileid %fileid% --emails %emails% --readonly %readonly%
 
 ```
 

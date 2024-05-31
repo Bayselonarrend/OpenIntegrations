@@ -17,15 +17,15 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-    Ключ      = "oynqxds...";
-    Результат = OPI_Dropbox.ПолучитьСсылкуАвторизации(Ключ);
+    КлючПриложения = "oynqxds...";
+    Результат      = OPI_Dropbox.ПолучитьСсылкуАвторизации(КлючПриложения);
 
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ПолучитьСсылкуАвторизации --appkey %appkey%
+  oint dropbox ПолучитьСсылкуАвторизации --appkey "oynqxds..."
 
 ```
 
