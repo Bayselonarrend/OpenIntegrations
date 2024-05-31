@@ -18,13 +18,17 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
+    Токен = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
+    Файл  = "kJU6-a-pT48AAAAAAAAABw";
+    
+    Результат = OPI_Dropbox.ОтменитьПубликациюФайла(Токен, Файл);
 
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ОтменитьПубликациюФайла --token %token% --fileid %fileid%
+  oint dropbox ОтменитьПубликациюФайла --token "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c..." --fileid %fileid%
 
 ```
 

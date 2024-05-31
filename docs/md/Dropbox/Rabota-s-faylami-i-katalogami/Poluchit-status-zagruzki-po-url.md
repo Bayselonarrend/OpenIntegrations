@@ -18,8 +18,8 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
-    Токен    = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
-    ИДРаботы = "kwvJIcRS7eAAAAAAAAAAAQ";
+    Токен    = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
+    ИДРаботы = "mTzF6hWsswAAAAAAAAAAAQ";
     Статус   = "in_progress";    
     
     Пока Статус = "in_progress" Цикл 
@@ -38,7 +38,7 @@ sidebar_position: 6
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --job %job%
+  oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c..." --job %job%
 
 ```
 
