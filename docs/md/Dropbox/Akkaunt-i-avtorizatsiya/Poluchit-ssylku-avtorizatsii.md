@@ -32,6 +32,6 @@ sidebar_position: 1
 
 ```json title="Результат"
 
-
+"https://www.dropbox.com/oauth2/authorize?client_id=oynqxdsqft8oyky&response_type=code&token_access_type=offline"
 
 ```

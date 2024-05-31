@@ -32,6 +32,6 @@ sidebar_position: 1
 
 ```json title="Результат"
 
-
+"https://oauth.vk.com/authorize?client_id=51694790&scope=offline,wall,groups,photos,stats,stories,ads,market,video&v=5.131&response_type=token&redirect_uri=https://api.vk.com/blank.html"
 
 ```
