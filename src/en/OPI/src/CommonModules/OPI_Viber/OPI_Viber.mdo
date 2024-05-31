@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ece78a60-71c0-4443-a6e4-63dd8a7b10d0">
-<name>OPI_Viber</name>
-<synonym>
-<key>ru</key>
-<value>Methodы интеграции with Viber (OPI)</value>
-</synonym>
-<server>true</server>
-<externalConnection>true</externalConnection>
-<clientOrdinaryApplication>true</clientOrdinaryApplication>
+  <name>OPI_Viber</name>
+  <synonym>
+    <key>ru</key>
+    <value>Methodы интеграции with Viber (OPI)</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
 </mdclass:CommonModule>
