@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_GoogleCalendar.os
-// Библиотека: Google Calendar
-// Команда CLI: gcalendar
+﻿// Location OS: ./OInt/core/Modules/OPI_GoogleCalendar.os
+// Library: Google Calendar
+// CLI Command: gcalendar
 
 // MIT License
 
@@ -29,603 +29,603 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область РаботаСМетаданнымиКалендарей
+#Region CalendarMetadataManagement
 
-// Создать календарь
-// Создает пустой календарь
+// Create calendar
+// Creates an empty calendar
 // 
-// Параметры:
-//  Токен        - Строка - Токен                                - token
-//  Наименование - Строка - Наименование создаваемого календаря  - title
+// Parameters:
+//  Token        - String - Token                                - token
+//  Name - String - Name of the created calendar  - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция СоздатьКалендарь(Знач Токен, Знач Наименование) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function CreateCalendar(Val Token, Val Name) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Name);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL       = "https://www.googleapis.com/calendar/v3/calendars";
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("summary" , Наименование);
-    Параметры.Вставить("timeZone", "Europe/Moscow");
+    Parameters = New Structure;
+    Parameters.Insert("summary" , Name);
+    Parameters.Insert("timeZone", "Europe/Moscow");
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить календарь
-// Получает информацию о календаре по ID
+// Get calendar
+// Gets calendar information by ID
 // 
-// Параметры:
-//  Токен     - Строка - Токен        - token
-//  Календарь - Строка - ID календаря - calendar
+// Parameters:
+//  Token     - String - Token        - token
+//  Calendar - String - Calendar ID - calendar
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьМетаданныеКалендаря(Знач Токен, Знач Календарь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetCalendarMetadata(Val Token, Val Calendar) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/calendar/v3/calendars/" + Календарь;    
-    Ответ     = OPI_Инструменты.Get(URL, , Заголовки);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/calendar/v3/calendars/" + Calendar;    
+    Response     = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Изменить календарь
-// Изменяет свойства существуещего календаря
+// Edit calendar
+// Edits properties of an existing calendar
 // 
-// Параметры:
-//  Токен        - Строка - Токен                      - token
-//  Календарь    - Строка - ID календаря               - calendar
-//  Наименование - Строка - Новое наименование         - title
-//  Описание     - Строка - Новое описание календаря   - description
+// Parameters:
+//  Token        - String - Token                      - token
+//  Calendar    - String - Calendar ID               - calendar
+//  Name - String - New name         - title
+//  Description     - String - New calendar description   - description
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ИзменитьМетаданныеКалендаря(Знач Токен
-    , Знач Календарь
-    , Знач Наименование = ""
-    , Знач Описание = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function EditCalendarMetadata(Val Token
+    , Val Calendar
+    , Val Name = ""
+    , Val Description = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Описание);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Description);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/calendar/v3/calendars/" + Календарь;
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/calendar/v3/calendars/" + Calendar;
     
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(Наименование) Тогда
-        Параметры.Вставить("summary", Наименование);
-    КонецЕсли;
+    If ValueFilled(Name) Then
+        Parameters.Insert("summary", Name);
+    EndIf;
     
-    Если ЗначениеЗаполнено(Описание) Тогда
-        Параметры.Вставить("description", Описание);
-    КонецЕсли;
+    If ValueFilled(Description) Then
+        Parameters.Insert("description", Description);
+    EndIf;
       
-    Ответ = OPI_Инструменты.Patch(URL, Параметры, Заголовки, Истина);
+    Response = OPI_Tools.Patch(URL, Parameters, Headers, True);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Очистить основной календарь
-// Очищает список событий основного календаря
+// Clear primary calendar
+// Clears the event list of the primary calendar
 // 
-// Параметры:
-//  Токен - Строка - Токен - token
+// Parameters:
+//  Token - String - Token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ОчиститьОсновнойКалендарь(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function ClearMainCalendar(Val Token) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL       = "https://www.googleapis.com/calendar/v3/calendars/primary/clear";    
-    Ответ     = OPI_Инструменты.Post(URL, , Заголовки, Ложь);
+    Response     = OPI_Tools.Post(URL, , Headers, False);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Удалить календарь
-// Удаляет календарь по ID
+// Delete calendar
+// Deletes a calendar by ID
 // 
-// Параметры:
-//  Токен     - Строка - Токен         - token
-//  Календарь - Строка - ID календаря  - calendar
+// Parameters:
+//  Token     - String - Token         - token
+//  Calendar - String - Calendar ID  - calendar
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция УдалитьКалендарь(Знач Токен, Знач Календарь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function DeleteCalendar(Val Token, Val Calendar) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/calendar/v3/calendars/" + Календарь;       
-    Ответ     = OPI_Инструменты.Delete(URL, , Заголовки);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/calendar/v3/calendars/" + Calendar;       
+    Response     = OPI_Tools.Delete(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСоСпискомКалендарей
+#Region CalendarListManagement
 
-// Получить список календарей
-// Получает массив календарей аккаунта
+// Get list of calendars
+// Gets an array of account calendars
 // 
-// Параметры:
-//  Токен - Строка - Токен - token
+// Parameters:
+//  Token - String - Token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Массив соответствий данных календарей
-Функция ПолучитьСписокКалендарей(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - Array of calendar data mappings
+Function GetCalendarList(Val Token) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки        = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    МассивКалендарей = Новый Массив;
+    Headers        = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    ArrayOfCalendars = New Array;
     
-    ПолучитьСписокКалендарейРекурсивно(Заголовки, МассивКалендарей);
+    GetCalendarsListRecursively(Headers, ArrayOfCalendars);
     
-    Возврат МассивКалендарей;
+    Return ArrayOfCalendars;
     
-КонецФункции
+EndFunction
 
-// Добавить календарь в список
-// Добавляет существующий календарь в список пользователя
+// Add calendar to list
+// Adds an existing calendar to the user's list
 // 
-// Параметры:
-//  Токен     - Строка - Токен        - token
-//  Календарь - Строка - ID календаря - calendar
+// Parameters:
+//  Token     - String - Token        - token
+//  Calendar - String - Calendar ID - calendar
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ДобавитьКалендарьВСписок(Знач Токен, Знач Календарь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function AddCalendarToList(Val Token, Val Calendar) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL       = "https://www.googleapis.com/calendar/v3/users/me/calendarList";
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("id", Календарь);
+    Parameters = New Structure;
+    Parameters.Insert("id", Calendar);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить календарь списка
-// Получает календарь из списка пользователя по ID
+// Get list calendar
+// Gets a calendar from the user's list by ID
 // 
-// Параметры:
-//  Токен     - Строка - Токен        - token
-//  Календарь - Строка - ID календаря - calendar
+// Parameters:
+//  Token     - String - Token        - token
+//  Calendar - String - Calendar ID - calendar
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьКалендарьСписка(Знач Токен, Знач Календарь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetListCalendar(Val Token, Val Calendar) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Календарь;
-    Ответ     = OPI_Инструменты.Get(URL, , Заголовки);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar;
+    Response     = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Удалить календарь из списка
-// Удаляет календарь из списка пользователя
+// Remove calendar from list
+// Removes a calendar from the user's list
 // 
-// Параметры:
-//  Токен     - Строка - Токен         - token
-//  Календарь - Строка - ID календаря  - calendar
+// Parameters:
+//  Token     - String - Token         - token
+//  Calendar - String - Calendar ID  - calendar
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция УдалитьКалендарьИзСписка(Знач Токен, Знач Календарь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function DeleteCalendarFromList(Val Token, Val Calendar) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Календарь;
-    Ответ     = OPI_Инструменты.Delete(URL, , Заголовки);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar;
+    Response     = OPI_Tools.Delete(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Изменить календарь списка
-// Изменяет свойства календаря из списка пользователей
+// Edit list calendar
+// Edits the properties of a calendar from the user's list
 // 
-// Параметры:
-//  Токен              - Строка - Токен                                   - token
-//  Календарь          - Строка - ID календаря                            - calendar
-//  ОсновнойЦвет       - Строка - HEX основного цвета (#ffffff)           - primary
-//  ДополнительныйЦвет - Строка - HEX дополнительного цвета (#ffffff)     - secondary
-//  Скрытый            - Булево - Скрытый календарь                       - hidden
+// Parameters:
+//  Token              - String - Token                                   - token
+//  Calendar          - String - Calendar ID                            - calendar
+//  PrimaryColor       - String - HEX mainоinного цinета (#ffffff)           - primary
+//  SecondaryColor - String - HEX addолнительного цinета (#ffffff)     - secondary
+//  Hidden            - Boolean - Hidden calendar                       - hidden
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ИзменитьКалендарьСписка(Знач Токен
-    , Знач Календарь
-    , Знач ОсновнойЦвет
-    , Знач ДополнительныйЦвет
-    , Знач Скрытый = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function EditListCalendar(Val Token
+    , Val Calendar
+    , Val PrimaryColor
+    , Val SecondaryColor
+    , Val Hidden = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ОсновнойЦвет);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ДополнительныйЦвет);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Скрытый);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
+    OPI_TypeConversion.GetLine(PrimaryColor);
+    OPI_TypeConversion.GetLine(SecondaryColor);
+    OPI_TypeConversion.GetBoolean(Hidden);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Календарь + "?colorRgbFormat=true";
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar + "?colorRgbFormat=true";
     
-    Параметры = Новый Соответствие;
-    Параметры.Вставить("hidden"         , Скрытый);
-    Параметры.Вставить("foregroundColor", ОсновнойЦвет);
-    Параметры.Вставить("backgroundColor", ДополнительныйЦвет);
+    Parameters = New Match;
+    Parameters.Insert("hidden"         , Hidden);
+    Parameters.Insert("foregroundColor", PrimaryColor);
+    Parameters.Insert("backgroundColor", SecondaryColor);
     
-    Ответ = OPI_Инструменты.Put(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Put(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаССобытиями
+#Region EventManagement
 
-// Получить описание события !NOCLI
+// Get event description !NOCLI
 // 
-// Возвращаемое значение:
-// Соответствие Из КлючИЗначение - Пустой макет события
-Функция ПолучитьОписаниеСобытия() Экспорт
+// Return value:
+// Key-Value Pair - Empty event template
+Function GetEventDescription() Export
     
-    ТекущаяДата = OPI_Инструменты.ПолучитьТекущуюДату();
-    Час         = 3600;
-    Событие     = Новый Соответствие;
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Hour         = 3600;
+    Event     = New Match;
                        
-    Событие.Вставить("Описание"               , "");                          // Описание события
-    Событие.Вставить("Заголовок"              , "Новое событие");             // Заголовок события
-    Событие.Вставить("МестоПроведения"        , "");                          // Строка описание места проведения
-    Событие.Вставить("ДатаНачала"             , ТекущаяДата);                 // Дата начала события
-    Событие.Вставить("ДатаОкончания"          , ТекущаяДата + Час);           // Дата окончания события
-    Событие.Вставить("МассивURLФайловВложений", Новый Соответствие);          // Ключ - название, Значение - URL к файлу
-    Событие.Вставить("ОтправлятьУведомления"  , Истина);                      // Признак отправки уведомлений участникам
+    Event.Insert("Description"               , "");                          // Event description
+    Event.Insert("Title"              , "New event");             // Title events
+    Event.Insert("Venue"        , "");                          // String description of the venue of the event
+    Event.Insert("StartDate"             , CurrentDate);                 // Date of start events
+    Event.Insert("EndDate"          , CurrentDate + Hour);           // Date of end events
+    Event.Insert("ArrayOfAttachmentURLs", New Match);          // Key - name, Value - URL to file
+    Event.Insert("SendNotifications"  , True);                      // Indication of sending notifications to participants
 
-    Возврат Событие;
+    Return Event;
     
-КонецФункции
+EndFunction
 
-// Получить список событий
-// Получает список всех событий календаря
+// Get list of events
+// Gets the list of all calendar events
 // 
-// Параметры:
-//  Токен     - Строка - Токен         - token
-//  Календарь - Строка - ID календаря  - calendar
+// Parameters:
+//  Token     - String - Token         - token
+//  Calendar - String - Calendar ID  - calendar
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Массив соответствий событий
-Функция ПолучитьСписокСобытий(Знач Токен, Знач Календарь) Экспорт
+// Return value:
+//  Key-Value Pair - Array of event mappings
+Function GetEventList(Val Token, Val Calendar) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
     
-    Заголовки     = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    МассивСобытий = Новый Массив;
+    Headers     = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    ArrayOfEvents = New Array;
     
-    ПолучитьСписокСобытийРекурсивно(Заголовки, Календарь, МассивСобытий);
+    GetEventsListRecursively(Headers, Calendar, ArrayOfEvents);
     
-    Возврат МассивСобытий;
+    Return ArrayOfEvents;
     
-КонецФункции
+EndFunction
 
-// Получить событие
-// Получает событие по ID
+// Get event
+// Gets an event by ID
 // 
-// Параметры:
-//  Токен     - Строка - Токен        - token
-//  Календарь - Строка - ID календаря - calendar
-//  Событие   - Строка - ID события   - event
+// Parameters:
+//  Token     - String - Token        - token
+//  Calendar - String - Calendar ID - calendar
+//  Event   - String - Event ID   - event
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьСобытие(Знач Токен, Знач Календарь, Знач Событие) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetEvent(Val Token, Val Calendar, Val Event) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Событие);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
+    OPI_TypeConversion.GetLine(Event);
     
-    Заголовки   = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers   = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL         = "https://www.googleapis.com/calendar/v3/calendars/" 
-        + Календарь 
+        + Calendar 
         + "/events/"
-        + Событие; 
+        + Event; 
         
-    Ответ = OPI_Инструменты.Get(URL, , Заголовки);
+    Response = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Создать событие
-// Создает новое событие
+// Create event
+// Creates a new event
 // 
-// Параметры:
-//  Токен           - Строка                        - Токен            - token         
-//  Календарь       - Строка                        - ID календаря     - calendar
-//  ОписаниеСобытия - Соответствие Из КлючИЗначение - Описание события - props
+// Parameters:
+//  Token           - String                        - Token            - token         
+//  Calendar       - String                        - Calendar ID     - calendar
+//  EventDescription - Key-Value Pair - Event description - props
 // 
-// Возвращаемое значение:
-//  Строка, Произвольный, HTTPОтвет, ДвоичныеДанные, Неопределено - ответ сервера Google
-Функция СоздатьСобытие(Знач Токен, Знач Календарь, Знач ОписаниеСобытия) Экспорт    
-    Возврат УправлениеСобытием(Токен, Календарь, ОписаниеСобытия);
-КонецФункции
+// Return value:
+//  String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
+Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export    
+    Return EventManagement(Token, Calendar, EventDescription);
+EndFunction
 
-// Переместить событие
-// Перемещает событие в другой календарь
+// Move event
+// Moves an event to another calendar
 // 
-// Параметры:
-//  Токен             - Строка - Токен                            - token
-//  КалендарьИсточник - Строка - ID календаря источника           - from
-//  КалендарьПриемник - Строка - ID календаря приемника           - to
-//  Событие           - Строка - ID события календаря источника   - event
+// Parameters:
+//  Token             - String - Token                            - token
+//  SourceCalendar - String - ID of the source calendar           - from
+//  TargetCalendar - String - ID of the target calendar           - to
+//  Event           - String - ID of the source calendar event   - event
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПереместитьСобытие(Знач Токен, Знач КалендарьИсточник, Знач КалендарьПриемник, Знач Событие) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(КалендарьИсточник);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(КалендарьПриемник);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Событие);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(SourceCalendar);
+    OPI_TypeConversion.GetLine(TargetCalendar);
+    OPI_TypeConversion.GetLine(Event);
     
-    Заголовки   = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers   = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL         = "https://www.googleapis.com/calendar/v3/calendars/" 
-        + КалендарьИсточник 
+        + SourceCalendar 
         + "/events/"
-        + Событие
+        + Event
         + "/move?destination="
-        + КалендарьПриемник; 
+        + TargetCalendar; 
         
-    Ответ = OPI_Инструменты.Post(URL, , Заголовки);
+    Response = OPI_Tools.Post(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Изменить событие
-// Изменяет существующее событие
+// Edit event
+// Edits an existing event
 // 
-// Параметры:
-//  Токен           - Строка - Токен                    - token
-//  Календарь       - Строка - ID календаря             - calendar
-//  ОписаниеСобытия - Строка - Новое описание события   - props
-//  Событие         - Строка - ID события               - event
+// Parameters:
+//  Token           - String - Token                    - token
+//  Calendar       - String - Calendar ID             - calendar
+//  EventDescription - String - New event description   - props
+//  Event         - String - Event ID               - event
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ИзменитьСобытие(Знач Токен, Знач Календарь, Знач ОписаниеСобытия, Знач Событие) Экспорт
-    Возврат УправлениеСобытием(Токен, Календарь, ОписаниеСобытия, Событие);
-КонецФункции
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export
+    Return EventManagement(Token, Calendar, EventDescription, Event);
+EndFunction
 
-// Удалить событие
-// Удаляет событие по ID
+// Delete event
+// Deletes an event by ID
 // 
-// Параметры:
-//  Токен     - Строка - Токен         - token
-//  Календарь - Строка - ID календаря  - calendar
-//  Событие   - Строка - ID события    - event
+// Parameters:
+//  Token     - String - Token         - token
+//  Calendar - String - Calendar ID  - calendar
+//  Event   - String - Event ID    - event
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция УдалитьСобытие(Знач Токен, Знач Календарь, Знач Событие) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function DeleteEvent(Val Token, Val Calendar, Val Event) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Событие);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
+    OPI_TypeConversion.GetLine(Event);
     
-    Заголовки   = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers   = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL         = "https://www.googleapis.com/calendar/v3/calendars/" 
-        + Календарь 
+        + Calendar 
         + "/events/"
-        + Событие; 
+        + Event; 
         
-    Ответ = OPI_Инструменты.Delete(URL, , Заголовки);
+    Response = OPI_Tools.Delete(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ПреобразоватьДату(Знач Дата)
+Function ConvertDate(Val Date)
     
-    OPI_ПреобразованиеТипов.ПолучитьДату(Дата);
+    OPI_TypeConversion.GetDate(Date);
     
-    СтруктураДаты = Новый Структура;
+    DateStructure = New Structure;
     
-    Если Не ТипЗнч(Дата) = Тип("Дата") Тогда
-        Возврат Неопределено;
-    КонецЕсли;
+    If Not TypeValue(Date) = Type("Date") Then
+        Return Undefined;
+    EndIf;
     
-    Если Дата = НачалоДня(Дата) Тогда
-        ФорматДаты = "ДФ=yyyy-MM-dd";
-        Поле       = "date";
-    Иначе
-        ФорматДаты = "ДФ=yyyy-MM-ddTHH:mm:ssZ";
-        Поле       = "dateTime";
-    КонецЕсли;
+    If Date = StartOfDay(Date) Then
+        DateFormat = "DF=yyyy-MM-dd";
+        Field       = "date";
+    Otherwise
+        DateFormat = "DF=yyyy-MM-ddTHH:mm:ssZ";
+        Field       = "dateTime";
+    EndIf;
     
-    Дата = Формат(Дата, ФорматДаты);
-    СтруктураДаты.Вставить(Поле      , Дата);
-    СтруктураДаты.Вставить("timeZone", "Europe/Moscow");
+    Date = Format(Date, DateFormat);
+    DateStructure.Insert(Field      , Date);
+    DateStructure.Insert("timeZone", "Europe/Moscow");
     
-    Возврат СтруктураДаты;
+    Return DateStructure;
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьВложения(Знач Вложения)
+Function ConvertAttachments(Val Attachments)
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Вложения);
+    OPI_TypeConversion.GetCollection(Attachments);
     
-    МассивВложений = Новый Массив;
+    AttachmentsArray = New Array;
     
-    Если ТипЗнч(Вложения) = Тип("Соответствие") Или ТипЗнч(Вложения) = Тип("Структура") Тогда
+    If TypeValue(Attachments) = Type("Match") Or TypeValue(Attachments) = Type("Structure") Then
         
-        Для Каждого Вложение Из Вложения Цикл
+        For Each Attachment Of Attachments Loop
             
-            ТекущеВложение = Новый Структура;
-            ТекущеВложение.Вставить("title"  , Вложение.Ключ);
-            ТекущеВложение.Вставить("fileUrl", Вложение.Значение);
+            CurrentAttachment = New Structure;
+            CurrentAttachment.Insert("title"  , Attachment.Key);
+            CurrentAttachment.Insert("fileUrl", Attachment.Value);
             
-            МассивВложений.Добавить(ТекущеВложение);
+            AttachmentsArray.Add(CurrentAttachment);
             
-        КонецЦикла;
+        EndOfLoop;
         
-    КонецЕсли;
+    EndIf;
     
-    Если МассивВложений.Количество() > 0 Тогда
-        Возврат МассивВложений;
-    Иначе
-        Возврат Неопределено;
-    КонецЕсли;
+    If AttachmentsArray.Quantity() > 0 Then
+        Return AttachmentsArray;
+    Otherwise
+        Return Undefined;
+    EndIf;
 
-КонецФункции
+EndFunction
 
-Функция УправлениеСобытием(Знач Токен, Знач Календарь, Знач ОписаниеСобытия, Знач Событие = "")
+Function EventManagement(Val Token, Val Calendar, Val EventDescription, Val Event = "")
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Календарь);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Событие);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(ОписаниеСобытия);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Calendar);
+    OPI_TypeConversion.GetLine(Event);
+    OPI_TypeConversion.GetCollection(EventDescription);
     
-    Заголовки    = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    Существующее = ЗначениеЗаполнено(Событие);
+    Headers    = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    Existing = ValueFilled(Event);
     URL          = "https://www.googleapis.com/calendar/v3/calendars/" 
-        + Календарь 
+        + Calendar 
         + "/events"
-        + ?(Существующее, "/" + Событие, ""); 
+        + ?(Existing, "/" + Event, ""); 
     
-    Дата0       = ОписаниеСобытия["ДатаНачала"];
-    Дата1       = ОписаниеСобытия["ДатаОкончания"];
-    Вложения    = ОписаниеСобытия["МассивURLФайловВложений"];
-    Вложения    = ПреобразоватьВложения(Вложения);
-    Уведомления = ?(ОписаниеСобытия["ОтправлятьУведомления"] = Неопределено
-        , Ложь
-        , ОписаниеСобытия["ОтправлятьУведомления"]);
+    Date0       = EventDescription["StartDate"];
+    Date1       = EventDescription["EndDate"];
+    Attachments    = EventDescription["ArrayOfAttachmentURLs"];
+    Attachments    = ConvertAttachments(Attachments);
+    Notifications = ?(EventDescription["SendNotifications"] = Undefined
+        , False
+        , EventDescription["SendNotifications"]);
         
-    Параметры   = Новый Структура;
-    Параметры.Вставить("summary"    , ОписаниеСобытия["Заголовок"]);
-    Параметры.Вставить("description", ОписаниеСобытия["Описание"]);
-    Параметры.Вставить("location"   , ОписаниеСобытия["МестоПроведения"]);
-    Параметры.Вставить("start"      , ПреобразоватьДату(Дата0));
-    Параметры.Вставить("end"        , ПреобразоватьДату(Дата1));
-    Параметры.Вставить("attachments", Вложения);  
+    Parameters   = New Structure;
+    Parameters.Insert("summary"    , EventDescription["Title"]);
+    Parameters.Insert("description", EventDescription["Description"]);
+    Parameters.Insert("location"   , EventDescription["Venue"]);
+    Parameters.Insert("start"      , ConvertDate(Date0));
+    Parameters.Insert("end"        , ConvertDate(Date1));
+    Parameters.Insert("attachments", Attachments);  
     
-    ПараметрыURL = Новый Структура;    
-    ПараметрыURL.Вставить("sendUpdates"         , ?(Уведомления, "all", "none"));
-    ПараметрыURL.Вставить("supportsAttachments" , ?(ЗначениеЗаполнено(Вложения), "true", "false"));
+    URLParameters = New Structure;    
+    URLParameters.Insert("sendUpdates"         , ?(Notifications, "all", "none"));
+    URLParameters.Insert("supportsAttachments" , ?(ValueFilled(Attachments), "true", "false"));
     
-    URL   = URL + OPI_Инструменты.ПараметрыЗапросаВСтроку(ПараметрыURL);
+    URL   = URL + OPI_Tools.RequestParametersToString(URLParameters);
     
-    OPI_Инструменты.УдалитьПустыеПоляКоллекции(Параметры);
+    OPI_Tools.RemoveEmptyCollectionFields(Parameters);
     
-    Если Существующее Тогда
-        Ответ = OPI_Инструменты.Patch(URL, Параметры, Заголовки, Истина);
-    Иначе
-        Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки, Истина);
-    КонецЕсли;
+    If Existing Then
+        Response = OPI_Tools.Patch(URL, Parameters, Headers, True);
+    Otherwise
+        Response = OPI_Tools.Post(URL, Parameters, Headers, True);
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-Процедура ПолучитьСписокКалендарейРекурсивно(Знач Заголовки, МассивКалендарей, Страница = "") 
+Procedure GetCalendarsListRecursively(Val Headers, ArrayOfCalendars, Page = "") 
     
     Items     = "items";
     NPT       = "nextPageToken";
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(Страница) Тогда
-        Параметры.Вставить("pageToken", Страница);
-    КонецЕсли;
+    If ValueFilled(Page) Then
+        Parameters.Insert("pageToken", Page);
+    EndIf;
     
-    Результат = OPI_Инструменты.Get("https://www.googleapis.com/calendar/v3/users/me/calendarList"
-        , Параметры
-        , Заголовки);
+    Result = OPI_Tools.Get("https://www.googleapis.com/calendar/v3/users/me/calendarList"
+        , Parameters
+        , Headers);
         
-    Календари = Результат[Items];
-    Страница  = Результат[NPT];
+    Calendars = Result[Items];
+    Page  = Result[NPT];
         
-    Для Каждого Календарь Из Календари Цикл
-        МассивКалендарей.Добавить(Календарь);    
-    КонецЦикла;    
+    For Each Calendar Of Calendars Loop
+        ArrayOfCalendars.Add(Calendar);    
+    EndOfLoop;    
     
-    Если Календари.Количество() > 0 И ЗначениеЗаполнено(Страница) Тогда
-        ПолучитьСписокКалендарейРекурсивно(Заголовки, МассивКалендарей, Страница); 
-    КонецЕсли;
+    If Calendars.Quantity() > 0 And ValueFilled(Page) Then
+        GetCalendarsListRecursively(Headers, ArrayOfCalendars, Page); 
+    EndIf;
           
-КонецПроцедуры
+EndProcedure
 
-Процедура ПолучитьСписокСобытийРекурсивно(Знач Заголовки, Знач Календарь, МассивСобытий, Страница = "") 
+Procedure GetEventsListRecursively(Val Headers, Val Calendar, ArrayOfEvents, Page = "") 
     
     Items     = "items";
     NPT       = "nextPageToken";
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(Страница) Тогда
-        Параметры.Вставить("pageToken", Страница);
-    КонецЕсли;
+    If ValueFilled(Page) Then
+        Parameters.Insert("pageToken", Page);
+    EndIf;
     
-    Результат = OPI_Инструменты.Get("https://www.googleapis.com/calendar/v3/calendars/" + Календарь + "/events"
-        , Параметры
-        , Заголовки);
+    Result = OPI_Tools.Get("https://www.googleapis.com/calendar/v3/calendars/" + Calendar + "/events"
+        , Parameters
+        , Headers);
         
-    События  = Результат[Items];
-    Страница = Результат[NPT];
+    Events  = Result[Items];
+    Page = Result[NPT];
         
-    Для Каждого Событие Из События Цикл
-        МассивСобытий.Добавить(Событие);    
-    КонецЦикла;    
+    For Each Event Of Events Loop
+        ArrayOfEvents.Add(Event);    
+    EndOfLoop;    
     
-    Если События.Количество() > 0 И ЗначениеЗаполнено(Страница) Тогда
-        ПолучитьСписокСобытийРекурсивно(Заголовки, МассивСобытий, Страница); 
-    КонецЕсли;
+    If Events.Quantity() > 0 And ValueFilled(Page) Then
+        GetEventsListRecursively(Headers, ArrayOfEvents, Page); 
+    EndIf;
           
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion

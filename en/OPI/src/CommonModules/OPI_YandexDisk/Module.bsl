@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_YandexDisk.os
-// Библиотека: Yandex Disk
-// Команда CLI: yadisk
+﻿// OS Location: ./OInt/core/Modules/OPI_YandexDisk.os
+// Library: Yandex Disk
+// CLI command: yadisk
 
 // MIT License
 
@@ -33,603 +33,603 @@
 
 //@skip-check method-too-many-params
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools" 
+// Uncomment if OneScript is executed
+// #Use "../../tools" 
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область РаботаСФайламиИПапками
+#Region FileAndFolderManagement
 
-// Получить информацию о диске
-// Получает информацию о текущем диске
+// Get disk information
+// Gets information about the current disk
 // 
-// Параметры:
-//  Токен - Строка - Токен - token
+// Parameters:
+//  Token - String - Token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьИнформациюОДиске(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetDiskInformation(Val Token) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
-    Ответ     = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk", , Заголовки);
+    Headers = AuthorizationHeader(Token);
+    Response     = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk", , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать папку
-// Создает каталог на диске
+// Create folder
+// Creates a directory on the disk
 // 
-// Параметры:
-//  Токен - Строка - Токен                     - token
-//  Путь  - Строка - Путь к созаваемой папке   - path
+// Parameters:
+//  Token - String - Token                     - token
+//  Path  - String - Path to the created folder   - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция СоздатьПапку(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function CreateFolder(Val Token, Val Path) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Path);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     URL       = "https://cloud-api.yandex.net/v1/disk/resources";
     Href      = "href";
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("path", Путь);
+    Parameters = New Structure;
+    Parameters.Insert("path", Path);
     
-    Параметры = OPI_Инструменты.ПараметрыЗапросаВСтроку(Параметры);    
-    Ответ     = OPI_Инструменты.Put(URL + Параметры, , Заголовки, Ложь);
+    Parameters = OPI_Tools.RequestParametersToString(Parameters);    
+    Response     = OPI_Tools.Put(URL + Parameters, , Headers, False);
     
-    URLОтвета = Ответ[Href];  
+    ResponseURL = Response[Href];  
     
-    Если Не ЗначениеЗаполнено(URLОтвета) Тогда
-    	Возврат Ответ;	
-    КонецЕсли;
+    If Not ValueFilled(ResponseURL) Then
+    	Return Response;	
+    EndIf;
      
-    Ответ = OPI_Инструменты.Get(URLОтвета, , Заголовки);
+    Response = OPI_Tools.Get(ResponseURL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить объект
-// Получает информацию об объекте диска по заданному пути
+// Get object
+// Gets information about a disk object at the specified path
 // 
-// Параметры:
-//  Токен - Строка - Токен                  - token
-//  Путь  - Строка - Путь к папке или файлу - path
+// Parameters:
+//  Token - String - Token                  - token
+//  Path  - String - Path to folder or file - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьОбъект(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetObject(Val Token, Val Path) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Path);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
-    Параметры = Новый Структура;
-    Параметры.Вставить("path", Путь);
+    Headers = AuthorizationHeader(Token);
+    Parameters = New Structure;
+    Parameters.Insert("path", Path);
     
-    Ответ     = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk/resources", Параметры, Заголовки);
+    Response     = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Удалить объект
-// Удаляет объект по заданному пути
+// Delete object
+// Deletes an object at the specified path
 // 
-// Параметры:
-//  Токен    - Строка - Токен                              - token
-//  Путь     - Строка - Путь к удаляемой папке или файлу   - path
-//  ВКорзину - Булево - В корзину                          - can
+// Parameters:
+//  Token    - String - Token                              - token
+//  Path     - String - Path to the folder or file to be deleted   - path
+//  ToCart - Boolean - To cart                          - can
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция УдалитьОбъект(Знач Токен, Знач Путь, Знач ВКорзину = Истина) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ВКорзину);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(ToCart);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("path"       , Путь);
-    Параметры.Вставить("permanently", Не ВКорзину);
+    Parameters = New Structure;
+    Parameters.Insert("path"       , Path);
+    Parameters.Insert("permanently", Not ToCart);
     
-    Ответ     = OPI_Инструменты.Delete("https://cloud-api.yandex.net/v1/disk/resources", Параметры, Заголовки);
+    Response     = OPI_Tools.Delete("https://cloud-api.yandex.net/v1/disk/resources", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Создать копию объекта
-// Создает копию объекта по заданному пути и пути к оригиналу
+// Create object copy
+// Creates a copy of the object at the specified path and path to the original
 // 
-// Параметры:
-//  Токен          - Строка - Токен                                                   - token
-//  Оригинал       - Строка - Путь к оригинальному файлу или каталогу                 - from
-//  Путь           - Строка - Путь назначения для копии                               - to
-//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует  - rewrite
+// Parameters:
+//  Token          - String - Token                                                   - token
+//  Original       - String - Path to the original file or directory                 - from
+//  Path           - String - Destination path for the copy                               - to
+//  Overwrite - Boolean - Overwrite if a file with the same name already exists  - rewrite
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция СоздатьКопиюОбъекта(Знач Токен, Знач Оригинал, Знач Путь, Знач Перезаписывать = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Оригинал);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Перезаписывать);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Original);
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(Overwrite);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     URL       = "https://cloud-api.yandex.net/v1/disk/resources/copy";
     Href      = "href";
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("from"       , Оригинал);
-    Параметры.Вставить("path"       , Путь);
-    Параметры.Вставить("overwrite"  , Перезаписывать);
+    Parameters = New Structure;
+    Parameters.Insert("from"       , Original);
+    Parameters.Insert("path"       , Path);
+    Parameters.Insert("overwrite"  , Overwrite);
     
-    Параметры = OPI_Инструменты.ПараметрыЗапросаВСтроку(Параметры); 
-    Ответ     = OPI_Инструменты.Post(URL + Параметры, , Заголовки, Ложь);
+    Parameters = OPI_Tools.RequestParametersToString(Parameters); 
+    Response     = OPI_Tools.Post(URL + Parameters, , Headers, False);
     
-    URLОтвета = Ответ[Href]; 
+    ResponseURL = Response[Href]; 
     
-    Если Не ЗначениеЗаполнено(URLОтвета) Тогда
-	    Возврат Ответ;	
-    КонецЕсли;
+    If Not ValueFilled(ResponseURL) Then
+	    Return Response;	
+    EndIf;
            
-    Ответ = OPI_Инструменты.Get(URLОтвета, , Заголовки);
+    Response = OPI_Tools.Get(ResponseURL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить ссылку для скачивания
-// Получает ссылку для скачивания файла
+// Get download link
+// Gets a download link for the file
 // 
-// Параметры:
-//  Токен - Строка - Токен                         - token
-//  Путь  - Строка  - Путь к файлу для скачивания  - path
+// Parameters:
+//  Token - String - Token                         - token
+//  Path  - String  - Path to the file for downloading  - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьСсылкуДляСкачивания(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetDownloadLink(Val Token, Val Path) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Path);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("path", Путь);
+    Parameters = New Structure;
+    Parameters.Insert("path", Path);
     
-    Ответ = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk/resources/download", Параметры, Заголовки);
+    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/download", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Скачать файл
-// Скачивает файл по указанному пути
+// Download file
+// Downloads a file at the specified path
 // 
-// Параметры:
-//  Токен          - Строка - Токен                        - token
-//  Путь           - Строка - Путь к файлу для скачивания  - path
-//  ПутьСохранения - Строка - Путь сохранения файла        - out 
+// Parameters:
+//  Token          - String - Token                        - token
+//  Path           - String - Path to the file for downloading  - path
+//  SavePath - String - File save path        - out 
 // 
-// Возвращаемое значение:
-//  ДвоичныеДанные,Строка - Двоичные данные или путь к файлу при указании параметра ПутьСохранения
-Функция СкачатьФайл(Знач Токен, Знач Путь, Знач ПутьСохранения = "") Экспорт
+// Return value:
+//  BinaryData,String - Binary data or file path when SavePath parameter is specified
+Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
 	
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ПутьСохранения);
-	Ответ  = ПолучитьСсылкуДляСкачивания(Токен, Путь);
-	URL    = Ответ["href"];
+    OPI_TypeConversion.GetLine(SavePath);
+	Response  = GetDownloadLink(Token, Path);
+	URL    = Response["href"];
 	
-	Если Не ЗначениеЗаполнено(URL) Тогда
-		Возврат Ответ;
-	КонецЕсли;
+	If Not ValueFilled(URL) Then
+		Return Response;
+	EndIf;
 	
-	Ответ = OPI_Инструменты.Get(URL, , , ПутьСохранения);
+	Response = OPI_Tools.Get(URL, , , SavePath);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить список файлов
-// Получает список файлов с или без отбора по типу
-// Список доступных типов: audio, backup, book, compressed, data, development, 
+// Get list of files
+// Gets a list of files with or without filtering by type
+// List available typeоin: audio, backup, book, compressed, data, development, 
 //                         diskimage, document, encoded, executable, flash, font, 
 //                         mage, settings, spreadsheet, text, unknown, video, web
 //                                  
-// Параметры:
-//  Токен             - Строка       - Токен                                                - token
-//  Количество        - Число,Строка - Количество возвращаемых объектов                     - amount
-//  СмещениеОтНачала  - Число        - Смещение для получение объектов не из начала списка  - offset
-//  ОтборПоТипу       - Строка       - Отбор по типу файла                                  - type
-//  СортироватьПоДате - Булево       - Истина > сортировать по дате, Ложь > по алфавиту     - datesort
+// Parameters:
+//  Token             - String       - Token                                                - token
+//  Quantity        - Number, String - Number of returned objects                     - amount
+//  OffsetFromStart  - Number        - Offset for getting objects not from the beginning of the list  - offset
+//  FilterByType       - String       - Filter by file type                                  - type
+//  SortByDate - Boolean       - True > sort by date, False > alphabetically     - datesort
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьСписокФайлов(Знач Токен
-    , Знач Количество = 0
-    , Знач СмещениеОтНачала = 0
-    , Знач ОтборПоТипу = ""
-    , Знач СортироватьПоДате = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetFilesList(Val Token
+    , Val Quantity = 0
+    , Val OffsetFromStart = 0
+    , Val FilterByType = ""
+    , Val SortByDate = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Количество);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(СмещениеОтНачала);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ОтборПоТипу);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(СортироватьПоДате);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Quantity);
+    OPI_TypeConversion.GetLine(OffsetFromStart);
+    OPI_TypeConversion.GetLine(FilterByType);
+    OPI_TypeConversion.GetBoolean(SortByDate);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(Количество) Тогда
-        Параметры.Вставить("limit", OPI_Инструменты.ЧислоВСтроку(Количество));
-    КонецЕсли;
+    If ValueFilled(Quantity) Then
+        Parameters.Insert("limit", OPI_Tools.NumberToString(Quantity));
+    EndIf;
     
-    Если ЗначениеЗаполнено(СмещениеОтНачала) Тогда
-        Параметры.Вставить("offset", OPI_Инструменты.ЧислоВСтроку(СмещениеОтНачала));
-    КонецЕсли;
+    If ValueFilled(OffsetFromStart) Then
+        Parameters.Insert("offset", OPI_Tools.NumberToString(OffsetFromStart));
+    EndIf;
     
-    Если ЗначениеЗаполнено(ОтборПоТипу) Тогда
-        Параметры.Вставить("media_type", ОтборПоТипу);
-    КонецЕсли;
+    If ValueFilled(FilterByType) Then
+        Parameters.Insert("media_type", FilterByType);
+    EndIf;
     
-    Если СортироватьПоДате Тогда
-        Назначение = "last-uploaded";
-    Иначе
-        Назначение = "files";
-    КонецЕсли;
+    If SortByDate Then
+        Destination = "last-uploaded";
+    Otherwise
+        Destination = "files";
+    EndIf;
     
-    Ответ = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk/resources/" + Назначение, Параметры, Заголовки);
+    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/" + Destination, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Переместить объект
-// Перемещает объект по заданному пути и пути к оригиналу
+// Move object
+// Moves the object to the specified path and path to the original
 // 
-// Параметры:
-//  Токен          - Строка - Токен                                                   - token
-//  Оригинал       - Строка - Путь к оригинальному файлу или папке                    - from
-//  Путь           - Строка - Путь назначение для перемещения                         - to
-//  Перезаписывать - Булево - Перезаписывать если файл с таким именем уже существует  - rewrite
+// Parameters:
+//  Token          - String - Token                                                   - token
+//  Original       - String - Path to the original file or folder                    - from
+//  Path           - String - Destination path for moving                         - to
+//  Overwrite - Boolean - Overwrite if a file with the same name already exists  - rewrite
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПереместитьОбъект(Знач Токен, Знач Оригинал, Знач Путь, Знач Перезаписывать = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Оригинал);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Перезаписывать);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Original);
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(Overwrite);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     URL       = "https://cloud-api.yandex.net/v1/disk/resources/move";
     Href      = "href";
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("from"       , Оригинал);
-    Параметры.Вставить("path"       , Путь);
-    Параметры.Вставить("overwrite"  , Перезаписывать);
+    Parameters = New Structure;
+    Parameters.Insert("from"       , Original);
+    Parameters.Insert("path"       , Path);
+    Parameters.Insert("overwrite"  , Overwrite);
     
-    Параметры = OPI_Инструменты.ПараметрыЗапросаВСтроку(Параметры); 
-    Ответ     = OPI_Инструменты.Post(URL + Параметры, , Заголовки, Ложь);  
-    URLОтвета = Ответ[Href]; 
+    Parameters = OPI_Tools.RequestParametersToString(Parameters); 
+    Response     = OPI_Tools.Post(URL + Parameters, , Headers, False);  
+    ResponseURL = Response[Href]; 
     
-    Если Не ЗначениеЗаполнено(URLОтвета) Тогда
-    	Возврат Ответ;	
-    КонецЕсли;
+    If Not ValueFilled(ResponseURL) Then
+    	Return Response;	
+    EndIf;
     
-    Ответ = OPI_Инструменты.Get(URLОтвета, , Заголовки);
+    Response = OPI_Tools.Get(ResponseURL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
   
-КонецФункции
+EndFunction
 
-// Загрузить файл
-// Загружает файл на диск по заданному пути
+// Upload file
+// Uploads a file to disk at the specified path
 // 
-// Параметры:
-//  Токен          - Строка                - Токен                                                      - token
-//  Путь           - Строка                - Путь для сохранение файла на Диске                         - path
-//  Файл           - Строка,ДвоичныеДанные - Файл для загрузки                                          - file
-//  Перезаписывать - Булево                - Перезаписывать, если файл с таким именем уже существует    - rewrite
+// Parameters:
+//  Token          - String                - Token                                                      - token
+//  Path           - String                - Path for saving the file to disk                         - path
+//  File           - String, BinaryData - File for upload                                          - file
+//  Overwrite - Boolean                - Overwrite if a file with the same name already exists    - rewrite
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex 
-Функция ЗагрузитьФайл(Знач Токен, Знач Путь, Знач Файл, Знач Перезаписывать = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex 
+Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Перезаписывать);
-    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(Overwrite);
+    OPI_TypeConversion.GetBinaryData(File);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     Href      = "href";   
-    Файл      = Новый Структура("file", Файл);
+    File      = New Structure("file", File);
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("path"       , Путь);
-    Параметры.Вставить("overwrite"  , Перезаписывать);
+    Parameters = New Structure;
+    Parameters.Insert("path"       , Path);
+    Parameters.Insert("overwrite"  , Overwrite);
     
-    Ответ  = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk/resources/upload", Параметры, Заголовки);
-    URL    = Ответ[Href];
+    Response  = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/upload", Parameters, Headers);
+    URL    = Response[Href];
     
-    Если Не ЗначениеЗаполнено(URL) Тогда
-    	Возврат Ответ;	
-    КонецЕсли;
+    If Not ValueFilled(URL) Then
+    	Return Response;	
+    EndIf;
         
-    Ответ  = OPI_Инструменты.PutMultipart(URL, Новый Структура(), Файл, "multipart", Заголовки);
+    Response  = OPI_Tools.PutMultipart(URL, New Structure(), File, "multipart", Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Загрузить файл по URL
-// Загружает файл на диск, забирая его по заданному URL
+// Upload file by URL
+// Downloads a file to disk from the specified URL
 // 
-// Параметры:
-//  Токен - Строка - Токен                               - token
-//  Путь  - Строка - Путь помещения загруженного файла   - path
-//  Адрес - Строка - URL файла                           - url
+// Parameters:
+//  Token - String - Token                               - token
+//  Path  - String - Path to place the downloaded file   - path
+//  Address - String - File URL                           - url
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ЗагрузитьФайлПоURL(Знач Токен, Знач Путь, Знач Адрес) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Адрес);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetLine(Address);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     URL       = "https://cloud-api.yandex.net/v1/disk/resources/upload";
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("url" , КодироватьСтроку(Адрес, СпособКодированияСтроки.URLВКодировкеURL));
-    Параметры.Вставить("path", Путь);
+    Parameters = New Structure;
+    Parameters.Insert("url" , EncodeString(Address, StringEncodingMethod.URLInURLEncoding));
+    Parameters.Insert("path", Path);
     
-    Параметры = OPI_Инструменты.ПараметрыЗапросаВСтроку(Параметры); 
-    Ответ     = OPI_Инструменты.Post(URL + Параметры, , Заголовки, Ложь);
+    Parameters = OPI_Tools.RequestParametersToString(Parameters); 
+    Response     = OPI_Tools.Post(URL + Parameters, , Headers, False);
  
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область УправлениеПубличнымДоступом
+#Region ManagePublicAccess
 
-// Опубликовать объект
-// Публикует объект диска в публичный доступ
+// Publish object
+// Publishes the disk object for public access
 // 
-// Параметры:
-//  Токен - Строка - Токен                        - token
-//  Путь  - Строка - Путь к публикуемому объекту  - path
+// Parameters:
+//  Token - String - Token                        - token
+//  Path  - String - Path to the object to be published  - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex 
-Функция ОпубликоватьОбъект(Знач Токен, Знач Путь) Экспорт
-    Возврат ПереключениеОбщегоДоступа(Токен, Путь, Истина);   
-КонецФункции
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex 
+Function PublishObject(Val Token, Val Path) Export
+    Return TogglePublicAccess(Token, Path, True);   
+EndFunction
 
-// Отменить публикацию объекта
-// Отменяет публикацию ранее опубликованного объекта
+// Unpublish object
+// Unpublishes a previously published object
 // 
-// Параметры:
-//  Токен - Строка - Токен                                  - token
-//  Путь  - Строка - Путь к опубликованному ранее объекту   - path
+// Parameters:
+//  Token - String - Token                                  - token
+//  Path  - String - Path to the previously published object   - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ОтменитьПубликациюОбъекта(Знач Токен, Знач Путь) Экспорт
-    Возврат ПереключениеОбщегоДоступа(Токен, Путь, Ложь);
-КонецФункции
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function CancelObjectPublication(Val Token, Val Path) Export
+    Return TogglePublicAccess(Token, Path, False);
+EndFunction
 
-// Получить список опубликованных объектов.
-// Получает список опубликованных объектов
+// Get published list объеtoтоin.
+// Gets a list of published objects
 // 
-// Параметры:
-//  Токен            - Строка - Токен                                               - token      
-//  Количество       - Число  - Количество возвращаемых объектов                    - amount
-//  СмещениеОтНачала - Число  - Смещение для получение объектов не из начала списка - offset
+// Parameters:
+//  Token            - String - Token                                               - token      
+//  Quantity       - Number  - Number of returned objects                    - amount
+//  OffsetFromStart - Number  - Offset for getting objects not from the beginning of the list - offset
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьСписокОпубликованныхОбъектов(Знач Токен, Знач Количество = 0, Знач СмещениеОтНачала = 0) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetPublishedObjectsList(Val Token, Val Quantity = 0, Val OffsetFromStart = 0) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Количество);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(СмещениеОтНачала);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Quantity);
+    OPI_TypeConversion.GetLine(OffsetFromStart);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(Количество) Тогда
-        Параметры.Вставить("limit", Количество);
-    КонецЕсли;
+    If ValueFilled(Quantity) Then
+        Parameters.Insert("limit", Quantity);
+    EndIf;
     
-    Если ЗначениеЗаполнено(СмещениеОтНачала) Тогда
-        Параметры.Вставить("offset", СмещениеОтНачала);
-    КонецЕсли;
+    If ValueFilled(OffsetFromStart) Then
+        Parameters.Insert("offset", OffsetFromStart);
+    EndIf;
         
-    Ответ = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk/resources/public", Параметры, Заголовки);
+    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/resources/public", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить публичный объект
-// Получает информацию об опубликованном объекте по его URL
+// Get public object
+// Gets information about the published object by its URL
 // 
-// Параметры:
-//  Токен            - Строка - Токен                                                           - token
-//  URL              - Строка - Адрес объекта                                                   - url 
-//  Количество       - Число  - Количество возвращаемых вложенных объектов (для каталога)       - amount
-//  СмещениеОтНачала - Число  - Смещение для получение вложенных объектов не из начала списка   - offset
+// Parameters:
+//  Token            - String - Token                                                           - token
+//  URL              - String - Object address                                                   - url 
+//  Quantity       - Number  - Quantity inозinращаемых inложенных объеtoтоin (for directory)       - amount
+//  OffsetFromStart - Number  - Offset for getting nested objects not from the beginning of the list   - offset
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьПубличныйОбъект(Знач Токен, Знач URL, Знач Количество = 0, Знач СмещениеОтНачала = 0) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetPublicObject(Val Token, Val URL, Val Quantity = 0, Val OffsetFromStart = 0) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(URL);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Количество);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(СмещениеОтНачала);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(URL);
+    OPI_TypeConversion.GetLine(Quantity);
+    OPI_TypeConversion.GetLine(OffsetFromStart);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(Количество) Тогда
-        Параметры.Вставить("limit", OPI_Инструменты.ЧислоВСтроку(Количество));
-    КонецЕсли;
+    If ValueFilled(Quantity) Then
+        Parameters.Insert("limit", OPI_Tools.NumberToString(Quantity));
+    EndIf;
     
-    Если ЗначениеЗаполнено(СмещениеОтНачала) Тогда
-        Параметры.Вставить("offset", OPI_Инструменты.ЧислоВСтроку(СмещениеОтНачала));
-    КонецЕсли;
+    If ValueFilled(OffsetFromStart) Then
+        Parameters.Insert("offset", OPI_Tools.NumberToString(OffsetFromStart));
+    EndIf;
     
-    Параметры.Вставить("public_key", URL);
+    Parameters.Insert("public_key", URL);
         
-    Ответ = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk/public/resources", Параметры, Заголовки);
+    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/public/resources", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить ссылку скачивания публичного объекта
-// Получает прямую ссылку для скачивания публичного объекта
+// Get download link for public object
+// Gets a direct link to download the public object
 // 
-// Параметры:
-//  Токен - Строка - Токен               - token
-//  URL   - Строка - Адрес объекта       - url
-//  Путь  - Строка - Путь внутри объекта - path
+// Parameters:
+//  Token - String - Token               - token
+//  URL   - String - Object address       - url
+//  Path  - String - Path inside the object - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьСсылкуСкачиванияПубличногоОбъекта(Знач Токен, Знач URL, Знач Путь = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(URL);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(URL);
+    OPI_TypeConversion.GetLine(Path);
     
-    Заголовки = ЗаголовокАвторизации(Токен);
+    Headers = AuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(Путь) Тогда
-        Параметры.Вставить("path", Путь);
-    КонецЕсли;
+    If ValueFilled(Path) Then
+        Parameters.Insert("path", Path);
+    EndIf;
         
-    Параметры.Вставить("public_key", URL);
+    Parameters.Insert("public_key", URL);
         
-    Ответ = OPI_Инструменты.Get("https://cloud-api.yandex.net/v1/disk/public/resources/download", Параметры, Заголовки);
+    Response = OPI_Tools.Get("https://cloud-api.yandex.net/v1/disk/public/resources/download", Parameters, Headers);
     
-    Возврат Ответ; 
+    Return Response; 
     
-КонецФункции
+EndFunction
      
-// Сохранить публичный объект на диск
-// Сохраняет публичный объект на ваш диск
+// Save public object to disk
+// Saves the public object to your disk
 // 
-// Параметры:
-//  Токен  - Строка - Токен                                               - token
-//  URL    - Строка - Адрес объекта                                       - url
-//  Откуда - Строка - Путь внутри публичного каталога (только для папок)  - from
-//  Куда   - Строка - Путь сохранения файла                               - to
+// Parameters:
+//  Token  - String - Token                                               - token
+//  URL    - String - Object address                                       - url
+//  From - String - Path inнутри публичного directory (тольtoо for папоto)  - from
+//  To   - String - File save path                               - to
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция СохранитьПубличныйОбъектНаДиск(Знач Токен, Знач URL, Откуда = "", Куда = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function SavePublicObjectToDisk(Val Token, Val URL, From = "", To = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(URL);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Откуда);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Куда);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(URL);
+    OPI_TypeConversion.GetLine(From);
+    OPI_TypeConversion.GetLine(To);
     
-    Заголовки  = ЗаголовокАвторизации(Токен);
-    Адрес      = "https://cloud-api.yandex.net/v1/disk/public/resources/save-to-disk";
+    Headers  = AuthorizationHeader(Token);
+    Address      = "https://cloud-api.yandex.net/v1/disk/public/resources/save-to-disk";
     Href       = "href";
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("public_key", URL);
+    Parameters = New Structure;
+    Parameters.Insert("public_key", URL);
     
-    Если ЗначениеЗаполнено(Откуда) Тогда
-        Параметры.Вставить("path", Откуда);
-    КонецЕсли;
+    If ValueFilled(From) Then
+        Parameters.Insert("path", From);
+    EndIf;
     
-    Если ЗначениеЗаполнено(Куда) Тогда
-        Параметры.Вставить("save_path", Куда);
-    КонецЕсли;
+    If ValueFilled(To) Then
+        Parameters.Insert("save_path", To);
+    EndIf;
     
-    Параметры = OPI_Инструменты.ПараметрыЗапросаВСтроку(Параметры); 
-    Ответ     = OPI_Инструменты.Post(Адрес + Параметры, , Заголовки, Ложь);
+    Parameters = OPI_Tools.RequestParametersToString(Parameters); 
+    Response     = OPI_Tools.Post(Address + Parameters, , Headers, False);
     
-    URLОтвета = Ответ[Href]; 
+    ResponseURL = Response[Href]; 
     
-    Если Не ЗначениеЗаполнено(URLОтвета) Тогда
-        Возврат Ответ;	
-    КонецЕсли;
+    If Not ValueFilled(ResponseURL) Then
+        Return Response;	
+    EndIf;
         
-    Ответ = OPI_Инструменты.Get(URLОтвета, , Заголовки);
+    Response = OPI_Tools.Get(ResponseURL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
  
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ЗаголовокАвторизации(Знач Токен)
+Function AuthorizationHeader(Val Token)
     
-    Заголовки = Новый Соответствие;
-    Заголовки.Вставить("Authorization", "OAuth " + Токен);
+    Headers = New Match;
+    Headers.Insert("Authorization", "OAuth " + Token);
     
-    Возврат Заголовки;
+    Return Headers;
     
-КонецФункции
+EndFunction
 
-Функция ПереключениеОбщегоДоступа(Знач Токен, Знач Путь, Знач ОбщийДоступ) 
+Function TogglePublicAccess(Val Token, Val Path, Val PublicAccess) 
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ОбщийДоступ);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(PublicAccess);
     
-    Заголовки  = ЗаголовокАвторизации(Токен);
-    Назначение = ?(ОбщийДоступ, "publish", "unpublish");
+    Headers  = AuthorizationHeader(Token);
+    Destination = ?(PublicAccess, "publish", "unpublish");
     Href       = "href";
   
-    URL       = "https://cloud-api.yandex.net/v1/disk/resources/" + Назначение;
+    URL       = "https://cloud-api.yandex.net/v1/disk/resources/" + Destination;
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("path", Путь);
+    Parameters = New Structure;
+    Parameters.Insert("path", Path);
     
-    Параметры = OPI_Инструменты.ПараметрыЗапросаВСтроку(Параметры); 
-    Ответ     = OPI_Инструменты.Put(URL + Параметры, , Заголовки, Ложь);
+    Parameters = OPI_Tools.RequestParametersToString(Parameters); 
+    Response     = OPI_Tools.Put(URL + Parameters, , Headers, False);
     
-    URLОтвета = Ответ[Href];
+    ResponseURL = Response[Href];
     
-    Если Не ЗначениеЗаполнено(URLОтвета) Тогда
-        Возврат Ответ;	
-    КонецЕсли;    
+    If Not ValueFilled(ResponseURL) Then
+        Return Response;	
+    EndIf;    
      
-    Ответ     = OPI_Инструменты.Get(URLОтвета, , Заголовки);
+    Response     = OPI_Tools.Get(ResponseURL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion

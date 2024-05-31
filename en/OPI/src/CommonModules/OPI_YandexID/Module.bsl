@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_YandexID.os
-// Библиотека: Yandex ID
-// Команда CLI: yandex
+﻿// Location OS: ./OInt/core/Modules/OPI_YandexID.os
+// Library: Yandex ID
+// CLI Command: yandex
 
 // MIT License
 
@@ -29,84 +29,84 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-// Получить код подтверждения
-// Получает код подтверждения и адрес страницы, на которой его необходимо ввести
+// Get confirmation code
+// Gets the confirmation code and the address of the page where it needs to be entered
 // 
-// Параметры:
-//  ClientId - Строка - Client id - id
+// Parameters:
+//  ClientId - String - Client id - id
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПолучитьКодПодтверждения(Знач ClientId) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function GetConfirmationCode(Val ClientId) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientId);
+    OPI_TypeConversion.GetLine(ClientId);
     
-    Параметры = Новый Структура("client_id", ClientId);
-    Ответ     = OPI_Инструменты.Post("https://oauth.yandex.ru/device/code", Параметры, , Ложь);
+    Parameters = New Structure("client_id", ClientId);
+    Response     = OPI_Tools.Post("https://oauth.yandex.ru/device/code", Parameters, , False);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Преобразовать код в токен
-// Преобразовывает код в токен после ввода кода при выполнении ПолучитьКодПодтверждения
+// Convert code to token
+// Converts the code to a token after entering the code when executing GetConfirmationCode
 // 
-// Параметры:
-//  ClientId      - Строка - Client id                                 - id
-//  ClientSecret  - Строка - Client secret                             - secret
-//  КодУстройства - Строка - device_code из ПолучитьКодПодтверждения() - device
+// Parameters:
+//  ClientId      - String - Client id                                 - id
+//  ClientSecret  - String - Client secret                             - secret
+//  DeviceCode - String - device_code from GetConfirmationCode() - device
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ПреобразоватьКодВТокен(Знач ClientId, Знач ClientSecret, Знач КодУстройства) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientId);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientSecret);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(КодУстройства);
+    OPI_TypeConversion.GetLine(ClientId);
+    OPI_TypeConversion.GetLine(ClientSecret);
+    OPI_TypeConversion.GetLine(DeviceCode);
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("grant_type"    , "device_code");
-    Параметры.Вставить("code"          , КодУстройства);
-    Параметры.Вставить("client_id"     , ClientId);
-    Параметры.Вставить("client_secret" , ClientSecret);
+    Parameters = New Structure;
+    Parameters.Insert("grant_type"    , "device_code");
+    Parameters.Insert("code"          , DeviceCode);
+    Parameters.Insert("client_id"     , ClientId);
+    Parameters.Insert("client_secret" , ClientSecret);
     
-    Ответ = OPI_Инструменты.Post("https://oauth.yandex.ru/token", Параметры, , Ложь);
+    Response = OPI_Tools.Post("https://oauth.yandex.ru/token", Parameters, , False);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Обновить токен
-// Обновляет токен по Refresh token
+// Refresh token
+// Updates token by Refresh token
 // 
-// Параметры:
-//  ClientId     - Строка - Client id      - id
-//  ClientSecret - Строка - Client secret  - secret
-//  RefreshToken - Строка - Refresh token  - refresh
+// Parameters:
+//  ClientId     - String - Client id      - id
+//  ClientSecret - String - Client secret  - secret
+//  RefreshToken - String - Refresh token  - refresh
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
-Функция ОбновитьТокен(Знач ClientId, Знач ClientSecret, Знач RefreshToken) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Yandex
+Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientId);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientSecret);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(RefreshToken);
+    OPI_TypeConversion.GetLine(ClientId);
+    OPI_TypeConversion.GetLine(ClientSecret);
+    OPI_TypeConversion.GetLine(RefreshToken);
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("grant_type"    , "refresh_token");
-    Параметры.Вставить("refresh_token" , RefreshToken);
-    Параметры.Вставить("client_id"     , ClientId);
-    Параметры.Вставить("client_secret" , ClientSecret);
+    Parameters = New Structure;
+    Parameters.Insert("grant_type"    , "refresh_token");
+    Parameters.Insert("refresh_token" , RefreshToken);
+    Parameters.Insert("client_id"     , ClientId);
+    Parameters.Insert("client_secret" , ClientSecret);
     
-    Ответ = OPI_Инструменты.Post("https://oauth.yandex.ru/token", Параметры, , Ложь);
+    Response = OPI_Tools.Post("https://oauth.yandex.ru/token", Parameters, , False);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion

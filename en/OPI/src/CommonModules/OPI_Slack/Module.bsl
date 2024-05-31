@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Slack.os
-// Библиотека: Slack
-// Команда CLI: slack
+﻿// Location OS: ./OInt/core/Modules/OPI_Slack.os
+// Library: Slack
+// CLI command: slack
 
 // MIT License
 
@@ -29,1027 +29,1027 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:Typo-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область УправлениеИНастройки
+#Region ManagementAndSettings
 
-// Получить информацию о боте
-// Получает основную информацию о боте
+// Get bot information
+// Gets basic information about the bot
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
+// Parameters:
+//  Token - String - Bot token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack 
-Функция ПолучитьИнформациюОБоте(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack 
+Function GetBotInformation(Val Token) Export
     
     URL       = "https://slack.com/api/auth.test";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Ответ = OPI_Инструменты.Get(URL, , Заголовки);
+    Response = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить список рабочих областей
-// Получает список рабочих областей, в которых подключен бот
+// Get workspace list
+// Gets a list of workspaces where the bot is connected
 // 
-// Параметры:
-//  Токен  - Строка - Токен бота                                                    - token
-//  Курсор - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+// Parameters:
+//  Token  - String - Bot token                                                    - token
+//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокРабочихОбластей(Знач Токен, Знач Курсор = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetWorkspaceList(Val Token, Val Cursor = "") Export
     
     URL   = "https://slack.com/api/auth.teams.list";
-    Ответ = ПолучениеОбщихДанных(Токен, URL, Курсор);
+    Response = GeneralDataRetrieval(Token, URL, Cursor);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить список пользователей
-// Получает список пользователей рабочей области
+// Get user list
+// Gets a list of users in the workspace
 // 
-// Параметры:
-//  Токен  - Строка - Токен бота                                                    - token
-//  Курсор - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+// Parameters:
+//  Token  - String - Bot token                                                    - token
+//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокПользователей(Знач Токен, Знач Курсор = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetUserList(Val Token, Val Cursor = "") Export
     
     URL   = "https://slack.com/api/users.list";
-    Ответ = ПолучениеОбщихДанных(Токен, URL, Курсор);
+    Response = GeneralDataRetrieval(Token, URL, Cursor);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаССообщениями
+#Region MessageManagement
 
-// Отправить сообщение
-// Отправляет сообщение в выбранный час
+// Send message
+// Sends a message at a selected hour
 // 
-// Параметры:
-//  Токен        - Строка - Токен бота                              - token
-//  Канал        - Строка - Идентификатор канала                    - channel
-//  Текст        - Строка - Текст сообщения                         - text
-//  ДатаОтправки - Дата   - Дата отправки для отложенного сообщения - date 
-//  Блоки        - Массив Из Структура - Массив описаний блоков     - blocks - JSON массива описаний блоков
+// Parameters:
+//  Token        - String - Bot token                              - token
+//  Channel        - String - Channel ID                    - channel
+//  Text        - String - Message text                         - text
+//  Sending date - Date   - Sending date for delayed message - date 
+//  Blocks        - Array of Structures - Array of block descriptions     - blocks - JSON array of block descriptions
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ОтправитьСообщение(Знач Токен, Знач Канал, Знач Текст = "", Знач ДатаОтправки = "", Знач Блоки = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function SendMessage(Val Token, Val Channel, Val Text = "", Val Sending date = "", Val Blocks = "") Export
       
-    Строка_   = "Строка";
-    ЕстьДата  = ЗначениеЗаполнено(ДатаОтправки); 
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    String_   = "String";
+    HasDate  = ValueFilled(Sending date); 
+    Headers = GetAuthorizationHeader(Token);
     
-    Если ЗначениеЗаполнено(Блоки) И ТипЗнч(Блоки) = Тип(Строка_) Тогда
-        OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Блоки);
+    If ValueFilled(Blocks) And TypeValue(Blocks) = Type(String_) Then
+        OPI_TypeConversion.GetCollection(Blocks);
         
-        Если ТипЗнч(Блоки) = Тип("Массив") Тогда
+        If TypeValue(Blocks) = Type("Array") Then
             
-            Для Н = 0 По Блоки.ВГраница() Цикл
-                OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Блоки[Н]);                    
-            КонецЦикла;
+            For N = 0 by Blocks.WithinBoundary() Loop
+                OPI_TypeConversion.GetCollection(Blocks[N]);                    
+            EndOfLoop;
             
-        КонецЕсли;
+        EndIf;
 
-    КонецЕсли;
+    EndIf;
         
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал, Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("text"   , Текст, Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("blocks" , Блоки, "Массив"   , Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel, String_    , Parameters);
+    OPI_Tools.AddField("text"   , Text, String_    , Parameters);
+    OPI_Tools.AddField("blocks" , Blocks, "Array"   , Parameters);
 
-    Если ЕстьДата Тогда
+    If HasDate Then
         
         URL      = "https://slack.com/api/chat.scheduleMessage";
-        OPI_Инструменты.ДобавитьПоле("post_at", ДатаОтправки, "Дата", Параметры); 
+        OPI_Tools.AddField("post_at", Sending date, "Date", Parameters); 
         
-    Иначе
+    Otherwise
         
         URL = "https://slack.com/api/chat.postMessage";
         
-    КонецЕсли;
+    EndIf;
           
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Отправить эфемерное сообщение
-// Отправляет сообщение, которое приходит в канал, но видно 
-// только конкретному пользователю
+// Send ephemeral message
+// Sends a message that arrives in the channel but is visible 
+// only to a specific user
 // 
-// Параметры:
-//  Токен        - Строка - Токен бота                              - token
-//  Канал        - Строка - Идентификатор канала                    - channel
-//  Текст        - Строка - Текст сообщения                         - text
-//  Пользователь - Строка - ID пользователя                         - user 
-//  Блоки        - Массив Из Структура - Массив описаний блоков     - blocks - JSON массива описаний блоков
+// Parameters:
+//  Token        - String - Bot token                              - token
+//  Channel        - String - Channel ID                    - channel
+//  Text        - String - Message text                         - text
+//  User - String - User ID                         - user 
+//  Blocks        - Array of Structures - Array of block descriptions     - blocks - JSON array of block descriptions
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ОтправитьЭфемерноеСообщение(Знач Токен
-    , Знач Канал
-    , Знач Текст = ""
-    , Знач Пользователь = ""
-    , Знач Блоки = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function SendEphemeralMessage(Val Token
+    , Val Channel
+    , Val Text = ""
+    , Val User = ""
+    , Val Blocks = "") Export
     
-    Строка_ = "Строка";
+    String_ = "String";
     
-    Если ЗначениеЗаполнено(Блоки) И Не ТипЗнч(Блоки) = Тип(Строка_) Тогда
-        OPI_ПреобразованиеТипов.ПолучитьМассив(Блоки);
-    КонецЕсли;
+    If ValueFilled(Blocks) And Not TypeValue(Blocks) = Type(String_) Then
+        OPI_TypeConversion.GetArray(Blocks);
+    EndIf;
     
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал       , Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("text"   , Текст       , Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("user"   , Пользователь, Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("blocks" , Блоки       , "Коллекция", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel       , String_    , Parameters);
+    OPI_Tools.AddField("text"   , Text       , String_    , Parameters);
+    OPI_Tools.AddField("user"   , User, String_    , Parameters);
+    OPI_Tools.AddField("blocks" , Blocks       , "Collection", Parameters);
         
     URL = "https://slack.com/api/chat.postEphemeral";
         
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Изменить сообщение
-// Изменяет состав существующего сообщения
+// Edit message
+// Edits the content of an existing message
 // 
-// Параметры:
-//  Токен        - Строка - Токен бота                          - token
-//  Канал        - Строка - Идентификатор канала                - channel
-//  Отметка      - Строка - Временная отметка сообщения         - stamp
-//  Текст        - Строка - Новый текст сообщения               - text
-//  МассивБлоков - Массив Из Структура - Массив описаний блоков - blocks - JSON массива описаний блоков
+// Parameters:
+//  Token        - String - Bot token                          - token
+//  Channel        - String - Channel ID                - channel
+//  Timestamp      - String - Message timestamp         - stamp
+//  Text        - String - New message text               - text
+//  BlockArray - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ИзменитьСообщение(Знач Токен, Знач Канал, Знач Отметка, Знач Текст = "", Знач МассивБлоков = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val BlockArray = "") Export
     
-    Строка_   = "Строка";
+    String_   = "String";
     URL       = "https://slack.com/api/chat.update";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал       , Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("text"   , Текст       , Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("ts"     , Отметка     , Строка_    , Параметры);
-    OPI_Инструменты.ДобавитьПоле("blocks" , МассивБлоков, "Коллекция", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel       , String_    , Parameters);
+    OPI_Tools.AddField("text"   , Text       , String_    , Parameters);
+    OPI_Tools.AddField("ts"     , Timestamp     , String_    , Parameters);
+    OPI_Tools.AddField("blocks" , BlockArray, "Collection", Parameters);
         
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить сообщение
-// Удаляет сообщение канала по timestamp
+// Delete message
+// Deletes a channel message by timestamp
 // 
-// Параметры:
-//  Токен         - Строка - Токен бота                             - token
-//  Канал         - Строка - Идентификатор канала                   - channel
-//  Отметка       - Строка - Временная отметка или ID сообщения     - stamp
-//  ЭтоОтложенное - Булево - Признак удаления отложенного сообщения - issheduled
+// Parameters:
+//  Token         - String - Bot token                             - token
+//  Channel         - String - Channel ID                   - channel
+//  Timestamp       - String - Timestamp or message ID     - stamp
+//  IsDelayed - Boolean - Indicator of deleting a delayed message - issheduled
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция УдалитьСообщение(Знач Токен, Знач Канал, Знач Отметка, Знач ЭтоОтложенное = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ЭтоОтложенное);
+    OPI_TypeConversion.GetBoolean(IsDelayed);
     
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
         
-    Если ЭтоОтложенное Тогда
+    If IsDelayed Then
         URL         = "https://slack.com/api/chat.deleteScheduledMessage";
-        ПолеОтметки = "scheduled_message_id";       
-    Иначе
+        TimestampField = "scheduled_message_id";       
+    Otherwise
         URL         = "https://slack.com/api/chat.delete";
-        ПолеОтметки = "ts";
-    КонецЕсли;
+        TimestampField = "ts";
+    EndIf;
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel"  , Канал  , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле(ПолеОтметки, Отметка, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel"  , Channel  , "String", Parameters);
+    OPI_Tools.AddField(TimestampField, Timestamp, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить список отложенных сообщений
-// Получает список отложенных сообщений канала
+// Get list of delayed messages
+// Gets a list of delayed channel messages
 // 
-// Параметры:
-//  Токен  - Строка - Токен бота                                                    - token
-//  Канал  - Строка - Идентификатор канала                                          - channel
-//  Курсор - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+// Parameters:
+//  Token  - String - Bot token                                                    - token
+//  Channel  - String - Channel ID                                          - channel
+//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокОтложенныхСообщений(Знач Токен, Знач Канал, Знач Курсор = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export
     
     URL       = "https://slack.com/api/chat.scheduledMessages.list";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
    
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("cursor" , Курсор, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel , "String", Parameters);
+    OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить ссылку на сообщение
-// Получает постоянный UTL к сообщению канала
+// Get message link
+// Gets a permanent URL to the channel message
 // 
-// Параметры:
-//  Токен         - Строка - Токен бота                             - token
-//  Канал         - Строка - Идентификатор канала                   - channel
-//  Отметка       - Строка - Временная отметка или ID сообщения     - stamp
+// Parameters:
+//  Token         - String - Bot token                             - token
+//  Channel         - String - Channel ID                   - channel
+//  Timestamp       - String - Timestamp or message ID     - stamp
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСсылкуНаСообщение(Знач Токен, Знач Канал, Знач Отметка) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export
     
     URL       = "https://slack.com/api/chat.getPermalink";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel"   , Канал  , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("message_ts", Отметка, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel"   , Channel  , "String", Parameters);
+    OPI_Tools.AddField("message_ts", Timestamp, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить список ответов на сообщение
-// Получает массив сообщений, которые являются ответом на указанное
+// Get list of message replies
+// Gets an array of messages that are replies to the specified
 // 
-// Параметры:
-//  Токен         - Строка - Токен бота                                                    - token
-//  Канал         - Строка - Идентификатор канала                                          - channel
-//  Отметка       - Строка - Временная отметка или ID сообщения                            - stamp
-//  Курсор        - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+// Parameters:
+//  Token         - String - Bot token                                                    - token
+//  Channel         - String - Channel ID                                          - channel
+//  Timestamp       - String - Timestamp or message ID                            - stamp
+//  Cursor        - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокОтветовНаСообщение(Знач Токен, Знач Канал, Знач Отметка, Знач Курсор = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export
     
-    Строка_   = "Строка";
+    String_   = "String";
     URL       = "https://slack.com/api/conversations.replies";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
    
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал  , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("cursor" , Курсор , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("ts"     , Отметка, Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel  , String_, Parameters);
+    OPI_Tools.AddField("cursor" , Cursor , String_, Parameters);
+    OPI_Tools.AddField("ts"     , Timestamp, String_, Parameters);
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСКаналами
+#Region ChannelManagement
 
-// Получить список каналов
-// Получает список доступных каналов
+// Get channel list
+// Gets a list of available channels
 // 
-// Параметры:
-//  Токен                   - Строка - Токен бота                                                    - token
-//  ИсключатьАрхивированные - Булево - Признак исключения архивированных каналов                     - notarchived 
-//  Курсор                  - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+// Parameters:
+//  Token                   - String - Bot token                                                    - token
+//  ExcludeArchived - Boolean - Indicator of excluding archived channels                     - notarchived 
+//  Cursor                  - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокКаналов(Знач Токен, Знач ИсключатьАрхивированные = Ложь, Знач Курсор = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export
     
     URL       = "https://slack.com/api/conversations.list";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("exclude_archived", ИсключатьАрхивированные, "Булево", Параметры);
-    OPI_Инструменты.ДобавитьПоле("cursor"          , Курсор                 , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("exclude_archived", ExcludeArchived, "Boolean", Parameters);
+    OPI_Tools.AddField("cursor"          , Cursor                 , "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить список пользователей канала
-// Получает список пользователей указанного канала
+// Get channel user list
+// Gets a list of users in the specified channel
 // 
-// Параметры:
-//  Токен         - Строка - Токен бота                                                    - token
-//  Канал         - Строка - Идентификатор канала                                          - channel
-//  Курсор        - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+// Parameters:
+//  Token         - String - Bot token                                                    - token
+//  Channel         - String - Channel ID                                          - channel
+//  Cursor        - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокПользователейКанала(Знач Токен, Знач Канал, Знач Курсор = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetChannelUserList(Val Token, Val Channel, Val Cursor = "") Export
     
     URL       = "https://slack.com/api/conversations.members";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("cursor" , Курсор, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel , "String", Parameters);
+    OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Создать канал
-// Создает новый канал
+// Create channel
+// Creates a new channel
 // 
-// Параметры:
-//  Токен     - Строка - Токен бота              - token
-//  Название  - Строка - Наименование канала     - title
-//  Приватный - Булево - Создать канал приватным - private
+// Parameters:
+//  Token     - String - Bot token              - token
+//  Name  - String - Channel name     - title
+//  Private - Boolean - Create channel as private - private
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция СоздатьКанал(Знач Токен, Знач Название, Знач Приватный = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function CreateChannel(Val Token, Val Name, Val Private = False) Export
     
     URL       = "https://slack.com/api/conversations.create";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("name"      , Название , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("is_private", Приватный, "Булево", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("name"      , Name , "String", Parameters);
+    OPI_Tools.AddField("is_private", Private, "Boolean", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Архивировать канал
-// Архивирует активный канал
+// Archive channel
+// Archives an active channel
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
-//  Канал - Строка - ID канала  - channel
+// Parameters:
+//  Token - String - Bot token - token
+//  Channel - String - Channel ID  - channel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция АрхивироватьКанал(Знач Токен, Знач Канал) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function ArchiveChannel(Val Token, Val Channel) Export
     
     URL   = "https://slack.com/api/conversations.archive";
-    Ответ = УправлениеДиалогом(Токен, Канал, URL);
-    Возврат Ответ;
+    Response = DialogManagement(Token, Channel, URL);
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить канал
-// Получает информацию о канале
+// Get channel
+// Gets information about the channel
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
-//  Канал - Строка - ID канала  - channel
+// Parameters:
+//  Token - String - Bot token - token
+//  Channel - String - Channel ID  - channel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьКанал(Знач Токен, Знач Канал) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetChannel(Val Token, Val Channel) Export
     
     URL   = "https://slack.com/api/conversations.info";
-    Ответ = УправлениеДиалогом(Токен, Канал, URL, "GET");
-    Возврат Ответ;
+    Response = DialogManagement(Token, Channel, URL, "GET");
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить историю канала
-// Получает информацию событиях канала
+// Get channel history
+// Gets information about channel events
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
-//  Канал - Строка - ID канала  - channel
+// Parameters:
+//  Token - String - Bot token - token
+//  Channel - String - Channel ID  - channel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьИсториюКанала(Знач Токен, Знач Канал) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetChannelHistory(Val Token, Val Channel) Export
     
     URL   = "https://slack.com/api/conversations.history";
-    Ответ = УправлениеДиалогом(Токен, Канал, URL, "GET");
-    Возврат Ответ;
+    Response = DialogManagement(Token, Channel, URL, "GET");
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Пригласить пользователей в канал
-// Добавляет указанных пользователей в канал
+// Invite users to channel
+// Adds specified users to the channel
 // 
-// Параметры:
-//  Токен               - Строка           - Токен бота              - token
-//  Канал               - Строка           - ID канала               - channel
-//  МассивПользователей - Массив Из Строка - Массив ID пользователей - users
+// Parameters:
+//  Token               - String           - Bot token              - token
+//  Channel               - String           - Channel ID               - channel
+//  ArrayOfUsers - Array Of String - User ID Array - users
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПригласитьПользователейВКанал(Знач Токен, Знач Канал, Знач МассивПользователей) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export
     
     URL       = "https://slack.com/api/conversations.invite";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивПользователей);
-    МассивПользователей = СтрСоединить(МассивПользователей, ",");
+    OPI_TypeConversion.GetCollection(ArrayOfUsers);
+    ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал              , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("users"  , МассивПользователей, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel              , "String", Parameters);
+    OPI_Tools.AddField("users"  , ArrayOfUsers, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Выгнать пользователя из канала
-// Удаляет указанного пользователя из канала
+// Kick user from channel
+// Removes specified user from channel
 // 
-// Параметры:
-//  Токен        - Строка - Токен бота      - token
-//  Канал        - Строка - ID канала       - channel
-//  Пользователь - Строка - ID пользователя - user
+// Parameters:
+//  Token        - String - Bot token      - token
+//  Channel        - String - Channel ID       - channel
+//  User - String - User ID - user
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ВыгнатьПользователяИзКанала(Знач Токен, Знач Канал, Знач Пользователь) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function KickUserFromChannel(Val Token, Val Channel, Val User) Export
     
     URL       = "https://slack.com/api/conversations.kick";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
         
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал       , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("user"   , Пользователь, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel       , "String", Parameters);
+    OPI_Tools.AddField("user"   , User, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Вступить в канал
-// Добавляет текущего бота в канал
+// Join channel
+// Adds the current bot to the channel
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
-//  Канал - Строка - ID канала  - channel
+// Parameters:
+//  Token - String - Bot token - token
+//  Channel - String - Channel ID  - channel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ВступитьВКанал(Знач Токен, Знач Канал) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function JoinChannel(Val Token, Val Channel) Export
     
     URL   = "https://slack.com/api/conversations.join";
-    Ответ = УправлениеДиалогом(Токен, Канал, URL);
-    Возврат Ответ;
+    Response = DialogManagement(Token, Channel, URL);
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Покинуть канал
-// Удаляет текущего бота из канала
+// Leave channel
+// Removes the current bot from the channel
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
-//  Канал - Строка - ID канала  - channel
+// Parameters:
+//  Token - String - Bot token - token
+//  Channel - String - Channel ID  - channel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПокинутьКанал(Знач Токен, Знач Канал) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function LeaveChannel(Val Token, Val Channel) Export
     
     URL   = "https://slack.com/api/conversations.leave";
-    Ответ = УправлениеДиалогом(Токен, Канал, URL);
-    Возврат Ответ;
+    Response = DialogManagement(Token, Channel, URL);
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Установить тему канала
-// Устанавливает тему канала
+// Set channel topic
+// Sets the channel topic
 // 
-// Параметры:
-//  Токен - Строка - Токен бота  - token
-//  Канал - Строка - ID канала   - channel
-//  Тема  - Строка - Тема канала - theme
+// Parameters:
+//  Token - String - Bot token  - token
+//  Channel - String - Channel ID   - channel
+//  Topic  - String - Channel topic - theme
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция УстановитьТемуКанала(Знач Токен, Знач Канал, Знач Тема) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export
     
     URL       = "https://slack.com/api/conversations.setTopic";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("topic"  , Тема  , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel , "String", Parameters);
+    OPI_Tools.AddField("topic"  , Topic  , "String", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Установить цель канала
-// Устанавливает цель (описание) канала
+// Set channel purpose
+// Sets the channel purpose (description)
 // 
-// Параметры:
-//  Токен - Строка - Токен бота  - token
-//  Канал - Строка - ID канала   - channel
-//  Цель  - Строка - Цель канала - purpose
+// Parameters:
+//  Token - String - Bot token  - token
+//  Channel - String - Channel ID   - channel
+//  Purpose  - String - Channel purpose - purpose
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция УстановитьЦельКанала(Знач Токен, Знач Канал, Знач Цель) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export
     
     URL       = "https://slack.com/api/conversations.setPurpose";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("purpose", Цель  , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel , "String", Parameters);
+    OPI_Tools.AddField("purpose", Purpose  , "String", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Переименовать канал
-// Изменяет название канала
+// Rename channel
+// Changes the name of the channel
 // 
-// Параметры:
-//  Токен     - Строка - Токен бота            - token
-//  Канал     - Строка - ID канала             - channel
-//  Название  - Строка - Новое название канала - title
+// Parameters:
+//  Token     - String - Bot token            - token
+//  Channel     - String - Channel ID             - channel
+//  Name  - String - New channel name - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПереименоватьКанал(Знач Токен, Знач Канал, Знач Название) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function RenameChannel(Val Token, Val Channel, Val Name) Export
     
     URL       = "https://slack.com/api/conversations.rename";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал   , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("name"   , Название, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel   , "String", Parameters);
+    OPI_Tools.AddField("name"   , Name, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСДиалогами
+#Region DialogManagement
 
-// Открыть диалог
-// Открывает новый диалог с одним или несколькими пользователями
+// Open dialog
+// Opens a new dialog with one or more users
 // 
-// Параметры:
-//  Токен               - Строка           - Токен бота              - token
-//  МассивПользователей - Массив из Строка - Массив ID пользователей - users
+// Parameters:
+//  Token               - String           - Bot token              - token
+//  ArrayOfUsers - Array of Strings - User ID Array - users
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ОткрытьДиалог(Знач Токен, Знач МассивПользователей) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function OpenDialog(Val Token, Val ArrayOfUsers) Export
     
     URL       = "https://slack.com/api/conversations.open";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивПользователей);
-    МассивПользователей = СтрСоединить(МассивПользователей, ",");
+    OPI_TypeConversion.GetCollection(ArrayOfUsers);
+    ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("users", МассивПользователей, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("users", ArrayOfUsers, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Закрыть диалог
-// Закрывает существующий диалог
+// Close dialog
+// Closes an existing dialog
 // 
-// Параметры:
-//  Токен  - Строка - Токен бота - token
-//  Диалог - Строка - ID диалога - conv
+// Parameters:
+//  Token  - String - Bot token - token
+//  Dialog - String - Dialog ID - conv
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ЗакрытьДиалог(Знач Токен, Знач Диалог) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function CloseDialog(Val Token, Val Dialog) Export
     
     URL   = "https://slack.com/api/conversations.close";
-    Ответ = УправлениеДиалогом(Токен, Диалог, URL);
-    Возврат Ответ;
+    Response = DialogManagement(Token, Dialog, URL);
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСФайлами
+#Region FileWork
 
-// Получить список файлов
-// Получает список файлов бота или канала
+// Get list of files
+// Gets a list of files of the bot or channel
 // 
-// Параметры:
-//  Токен          - Строка        - Токен бота       - token
-//  Канал          - Строка        - Канал для отбора - channel 
-//  НомерСтраницы  - Число, Строка - Номер страницы   - page
+// Parameters:
+//  Token          - String        - Bot token       - token
+//  Channel          - String        - Channel for selection - channel 
+//  PageNumber  - Number, String - Page number   - page
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокФайлов(Знач Токен, Знач Канал = "", Знач НомерСтраницы = 1) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export
     
     URL       = "https://slack.com/api/files.list";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал        , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("page"   , НомерСтраницы, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel        , "String", Parameters);
+    OPI_Tools.AddField("page"   , PageNumber, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Загрузить файл
-// Загружает файл на сервера Slack
+// Upload file
+// Uploads a file to Slack servers
 // 
-// Параметры:
-//  Токен     - Строка                - Токен бота              - token
-//  Файл      - Строка,ДвоичныеДанные - Файл для загрузки       - file
-//  ИмяФайла  - Строка                - Имя файла с расширением - filename
-//  Заголовок - Строка                - Имя файла в Slack       - title
-//  Канал     - Строка                - ID канала               - channel
+// Parameters:
+//  Token     - String                - Bot token              - token
+//  File      - String, BinaryData - File for upload       - file
+//  FileName  - String                - File name with extension - filename
+//  Title - String                - File name in Slack       - title
+//  Channel     - String                - Channel ID               - channel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ЗагрузитьФайл(Знач Токен, Знач Файл, Знач ИмяФайла, Знач Заголовок, Знач Канал = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИмяФайла);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Заголовок);
+    OPI_TypeConversion.GetBinaryData(File);
+    OPI_TypeConversion.GetLine(FileName);
+    OPI_TypeConversion.GetLine(Title);
     
-    Строка_    = "Строка";
+    String_    = "String";
     Upload_url = "upload_url";
     File_id    = "file_id";
     URL        = "https://slack.com/api/files.getUploadURLExternal";
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
-    Размер     = Файл.Размер();
+    Headers  = GetAuthorizationHeader(Token);
+    Size     = File.Size();
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("filename", ИмяФайла, Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("length"  , Размер  , Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("filename", FileName, String_, Parameters);
+    OPI_Tools.AddField("length"  , Size  , String_, Parameters);
 
-    Ответ         = OPI_Инструменты.Get(URL, Параметры, Заголовки);
-    URL           = Ответ[Upload_url];
-    Идентификатор = Ответ[File_id];
+    Response         = OPI_Tools.Get(URL, Parameters, Headers);
+    URL           = Response[Upload_url];
+    Identifier = Response[File_id];
     
-    Если Не ЗначениеЗаполнено(URL) Или Не ЗначениеЗаполнено(Идентификатор) Тогда
-        Возврат Ответ;
-    КонецЕсли;
+    If Not ValueFilled(URL) Or Not ValueFilled(Identifier) Then
+        Return Response;
+    EndIf;
     
-    Файлы = Новый Соответствие;
-    Файлы.Вставить(ИмяФайла, Файл);
+    Files = New Match;
+    Files.Insert(FileName, File);
     
-    Ответ     = OPI_Инструменты.PostMultipart(URL, , Файлы, , Заголовки);
+    Response     = OPI_Tools.PostMultipart(URL, , Files, , Headers);
     URL       = "https://slack.com/api/files.completeUploadExternal"; 
-    ФайлСлак  = Новый Структура("id, title", Идентификатор, Заголовок);   
+    SlackFile  = New Structure("id, title", Identifier, Title);   
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("filename"  , ИмяФайла, Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("channel_id", Канал   , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("files"     , ФайлСлак, "Массив", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("filename"  , FileName, String_, Parameters);
+    OPI_Tools.AddField("channel_id", Channel   , String_, Parameters);
+    OPI_Tools.AddField("files"     , SlackFile, "Array", Parameters);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить данные файла
-// Получает информацию о файле
+// Get file data
+// Gets information about the file
 // 
-// Параметры:
-//  Токен              - Строка - Токен бота          - token
-//  ИдентификаторФайла - Строка - Идентификатор файла - fileid
+// Parameters:
+//  Token              - String - Bot token          - token
+//  FileID - String - File identifier - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьДанныеФайла(Знач Токен, Знач ИдентификаторФайла) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetFileData(Val Token, Val FileID) Export
     
     URL   = "https://slack.com/api/files.info";
-    Ответ = УправлениеФайлом(Токен, ИдентификаторФайла, URL, "GET");
+    Response = FileManagement(Token, FileID, URL, "GET");
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить файл
-// Удаляет файл на Slack
+// Delete file
+// Deletes a file on Slack
 // 
-// Параметры:
-//  Токен              - Строка - Токен бота          - token
-//  ИдентификаторФайла - Строка - Идентификатор файла - fileid
+// Parameters:
+//  Token              - String - Bot token          - token
+//  FileID - String - File identifier - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция УдалитьФайл(Знач Токен, Знач ИдентификаторФайла) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function DeleteFile(Val Token, Val FileID) Export
     
     URL   = "https://slack.com/api/files.delete";
-    Ответ = УправлениеФайлом(Токен, ИдентификаторФайла, URL);
+    Response = FileManagement(Token, FileID, URL);
     
-    Возврат Ответ;
+    Return Response;
   
-КонецФункции
+EndFunction
 
-// Сделать файл публичным
-// Создает публичный URL для файла. Требует токен пользователя
+// Make file public
+// Creates a public URL for the file. Requires user token
 // 
-// Параметры:
-//  Токен              - Строка - Токен пользователя  - token
-//  ИдентификаторФайла - Строка - Идентификатор файла - fileid
+// Parameters:
+//  Token              - String - User token  - token
+//  FileID - String - File identifier - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция СделатьФайлПубличным(Знач Токен, Знач ИдентификаторФайла) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function MakeFilePublic(Val Token, Val FileID) Export
     
     URL   = "https://slack.com/api/files.sharedPublicURL";
-    Ответ = УправлениеФайлом(Токен, ИдентификаторФайла, URL);
+    Response = FileManagement(Token, FileID, URL);
     
-    Возврат Ответ;
+    Return Response;
   
-КонецФункции
+EndFunction
 
-// Сделать файл приватным
-// Удаляет публичный URL у файла. Требует токен пользователя
+// Make file private
+// Removes the public URL from the file. Requires user token
 // 
-// Параметры:
-//  Токен              - Строка - Токен пользователя  - token
-//  ИдентификаторФайла - Строка - Идентификатор файла - fileid
+// Parameters:
+//  Token              - String - User token  - token
+//  FileID - String - File identifier - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция СделатьФайлПриватным(Знач Токен, Знач ИдентификаторФайла) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function MakeFilePrivate(Val Token, Val FileID) Export
     
     URL   = "https://slack.com/api/files.revokePublicURL";
-    Ответ = УправлениеФайлом(Токен, ИдентификаторФайла, URL);
+    Response = FileManagement(Token, FileID, URL);
     
-    Возврат Ответ;
+    Return Response;
   
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСУдаленнымиФайлами
+#Region DeletedFilesManagement
 
-// Получить список внешних файлов
-// Получает список внешних файлов пользователя или канала
+// Get list of external files
+// Gets a list of external files of a user or channel
 // 
-// Параметры:
-//  Токен  - Строка - Токен бота                                                    - token
-//  Канал  - Строка - Канал для отбора                                              - channel 
-//  Курсор - Строка - Указатель из предыдущего запроса, если строк результата > 100 - cursor
+// Parameters:
+//  Token  - String - Bot token                                                    - token
+//  Channel  - String - Channel for selection                                              - channel 
+//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьСписокВнешнихФайлов(Знач Токен, Знач Канал = "", Знач Курсор = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetExternalFileList(Val Token, Val Channel = "", Val Cursor = "") Export
     
     URL       = "https://slack.com/api/files.remote.list";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("cursor" , Курсор, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel , "String", Parameters);
+    OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить внешний файл
-// Получает информацию о внешнем файле
+// Get external file
+// Gets information about the external file
 // 
-// Параметры:
-//  Токен              - Строка - Токен бота          - token
-//  ИдентификаторФайла - Строка - Идентификатор файла - fileid
+// Parameters:
+//  Token              - String - Bot token          - token
+//  FileID - String - File identifier - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ПолучитьВнешнийФайл(Знач Токен, Знач ИдентификаторФайла) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function GetExternalFile(Val Token, Val FileID) Export
   
     URL   = "https://slack.com/api/files.remote.info";
-    Ответ = УправлениеВнешнимФайлом(Токен, ИдентификаторФайла, URL);
+    Response = ExternalFileManagement(Token, FileID, URL);
     
-    Возврат Ответ;
+    Return Response;
       
-КонецФункции
+EndFunction
 
-// Добавить внешний файл
-// Добавляет новый внешний файл
+// Add external file
+// Adds a new external file
 // 
-// Параметры:
-//  Токен     - Строка - Токен бота                - token
-//  URL       - Строка - URL к внешнему файлу      - url
-//  Заголовок - Строка - Заголовок файла для Slack - title
+// Parameters:
+//  Token     - String - Bot token                - token
+//  URL       - String - URL to external file      - url
+//  Title - String - File title for Slack - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ДобавитьВнешнийФайл(Знач Токен, Знач URL, Знач Заголовок) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function AddExternalFile(Val Token, Val URL, Val Title) Export
     
-    Строка_   = "Строка";
+    String_   = "String";
     URL       = "https://slack.com/api/files.remote.add";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
-    UID       = Строка(Новый УникальныйИдентификатор());
+    Headers = GetAuthorizationHeader(Token);
+    UID       = String(New UniqueIdentifier());
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("external_url", URL          , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("external_id" , UID          , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("title"       , Заголовок    , Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("external_url", URL          , String_, Parameters);
+    OPI_Tools.AddField("external_id" , UID          , String_, Parameters);
+    OPI_Tools.AddField("title"       , Title    , String_, Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Отправить внешний файл
-// Отправляет внейшний файл по списку каналов
+// Send external file
+// Sends an external file to a list of channels
 // 
-// Параметры:
-//  Токен              - Строка           - Токен бота                  - token
-//  ИдентификаторФайла - Строка           - Идентификатор файла         - fileid
-//  МассивКаналов      - Массив Из Строка - Массив каналов для отправки - channels
+// Parameters:
+//  Token              - String           - Bot token                  - token
+//  FileID - String           - File identifier         - fileid
+//  ChannelArray      - Array Of String - Array of channels for sending - channels
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция ОтправитьВнешнийФайл(Знач Токен, Знач ИдентификаторФайла, Знач МассивКаналов) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export
     
     URL       = "https://slack.com/api/files.remote.share";
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивКаналов);
-    МассивКаналов = СтрСоединить(МассивКаналов, ",");
+    OPI_TypeConversion.GetCollection(ChannelArray);
+    ChannelArray = StrJoin(ChannelArray, ",");
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("file"    , ИдентификаторФайла , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("channels", МассивКаналов      , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("file"    , FileID , "String", Parameters);
+    OPI_Tools.AddField("channels", ChannelArray      , "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить внешний файл
-// Удаляет внешний файл из Slack
+// Delete external file
+// Deletes an external file from Slack
 // 
-// Параметры:
-//  Токен              - Строка - Токен бота          - token
-//  ИдентификаторФайла - Строка - Идентификатор файла - fileid
+// Parameters:
+//  Token              - String - Bot token          - token
+//  FileID - String - File identifier - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Slack
-Функция УдалитьВнешнийФайл(Знач Токен, Знач ИдентификаторФайла) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Slack
+Function DeleteExternalFile(Val Token, Val FileID) Export
   
     URL   = "https://slack.com/api/files.remote.remove";
-    Ответ = УправлениеВнешнимФайлом(Токен, ИдентификаторФайла, URL);
+    Response = ExternalFileManagement(Token, FileID, URL);
     
-    Возврат Ответ;
+    Return Response;
       
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область ФормированиеБлоков
+#Region BlockFormation
 
-// Сформировать блок картинку
-// Формирует блок с картинкой для добавления в массив блоков сообщения
+// Generate image block
+// Generates a block with an image to add to the message block array
 // 
-// Параметры:
-//  URL                 - Строка - URL картинки                   - picture
-//  АльтернативныйТекст - Строка - Альтернативный текст картинки  - alt
+// Parameters:
+//  URL                 - String - Image URL                   - picture
+//  AlternateText - String - Alternate text of the image  - alt
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение -  Блок картинки
-Функция СформироватьБлокКартинку(Знач URL, Знач АльтернативныйТекст = "") Экспорт
+// Return value:
+//  Key-Value Pair -  Image block
+Function GenerateImageBlock(Val URL, Val AlternateText = "") Export
     
-    Строка_ = "Строка";
+    String_ = "String";
     
-    Блок = Новый Соответствие;
-    OPI_Инструменты.ДобавитьПоле("type"     , "image"              , Строка_, Блок);
-    OPI_Инструменты.ДобавитьПоле("image_url", URL                  , Строка_, Блок);
-    OPI_Инструменты.ДобавитьПоле("alt_text" , АльтернативныйТекст  , Строка_, Блок);
+    Block = New Match;
+    OPI_Tools.AddField("type"     , "image"              , String_, Block);
+    OPI_Tools.AddField("image_url", URL                  , String_, Block);
+    OPI_Tools.AddField("alt_text" , AlternateText  , String_, Block);
     
-    Возврат Блок;
+    Return Block;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ПолучитьЗаголовокАвторизации(Знач Токен)
+Function GetAuthorizationHeader(Val Token)
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки = Новый Соответствие;
-    Заголовки.Вставить("Authorization", "Bearer " + Токен);
-    Возврат Заголовки;
+    Headers = New Match;
+    Headers.Insert("Authorization", "Bearer " + Token);
+    Return Headers;
         
-КонецФункции
+EndFunction
 
-Функция УправлениеДиалогом(Знач Токен, Знач Канал, Знач URL, Знач ВидЗапроса = "POST")
+Function DialogManagement(Val Token, Val Channel, Val URL, Val RequestType = "POST")
     
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
-    ВидЗапроса = вРег(ВидЗапроса);
+    Headers  = GetAuthorizationHeader(Token);
+    RequestType = inReg(RequestType);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("channel", Канал, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("channel", Channel, "String", Parameters);
 
-    Если ВидЗапроса = "POST" Тогда
-        Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
-    Иначе
-        Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
-    КонецЕсли;
+    If RequestType = "POST" Then
+        Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Otherwise
+        Response = OPI_Tools.Get(URL, Parameters, Headers);
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция УправлениеФайлом(Знач Токен, Знач ИдентификаторФайла, Знач URL, Знач ВидЗапроса = "POST")
+Function FileManagement(Val Token, Val FileID, Val URL, Val RequestType = "POST")
     
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
-    ВидЗапроса = вРег(ВидЗапроса);
+    Headers = GetAuthorizationHeader(Token);
+    RequestType = inReg(RequestType);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("file", ИдентификаторФайла , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("file", FileID , "String", Parameters);
 
-    Если ВидЗапроса = "POST" Тогда
-        Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
-    Иначе
-        Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
-    КонецЕсли;
+    If RequestType = "POST" Then
+        Response = OPI_Tools.Post(URL, Parameters, Headers);
+    Otherwise
+        Response = OPI_Tools.Get(URL, Parameters, Headers);
+    EndIf;
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-Функция ПолучениеОбщихДанных(Знач Токен, Знач URL, Знач Курсор)
+Function GeneralDataRetrieval(Val Token, Val URL, Val Cursor)
     
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("cursor", Курсор, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("cursor", Cursor, "String", Parameters);
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция УправлениеВнешнимФайлом(Знач Токен, Знач ИдентификаторФайла, Знач URL)
+Function ExternalFileManagement(Val Token, Val FileID, Val URL)
     
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("file", ИдентификаторФайла , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("file", FileID , "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
