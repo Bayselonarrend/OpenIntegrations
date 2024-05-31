@@ -20,9 +20,9 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-    Токен  = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
+    Токен  = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
     Почта  = "h5bk6ft62s@privaterelay.appleid.com";
-    Папка  = "4999224241"; // shared_folder_id
+    Папка  = "5008139809"; // shared_folder_id
     
     Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почта, Ложь);
 
@@ -31,7 +31,7 @@ sidebar_position: 4
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ДобавитьПользователейКПапке --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --folder %folder% --emails %emails% --readonly %readonly%
+  oint dropbox ДобавитьПользователейКПапке --token "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c..." --folder %folder% --emails %emails% --readonly %readonly%
 
 ```
 

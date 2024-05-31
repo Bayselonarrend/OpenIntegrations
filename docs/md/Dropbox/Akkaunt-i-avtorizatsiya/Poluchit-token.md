@@ -19,13 +19,18 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
+    КлючПриложения   = "oynqxds...";
+    СекретПриложения = "tk2oewn...";
+    Код              = "bTCiUTzxe6kAAAAAAAAAMgkkeJxqxqAO0YhahYskSmo";
+
+    Результат = OPI_Dropbox.ПолучитьТокен(КлючПриложения, СекретПриложения, Код);
 
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ПолучитьТокен --appkey %appkey% --appsecret %appsecret% --code %code%
+  oint dropbox ПолучитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --code "bTCiUTzxe6kAAAAAAAAAMgkkeJxqxqAO0YhahYskSmo"
 
 ```
 

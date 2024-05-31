@@ -18,7 +18,7 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-    Токен     = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
+    Токен     = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
     Путь      = "/New"; 
    
     Результат = OPI_Dropbox.ОпубликоватьПапку(Токен, Путь);
@@ -28,7 +28,7 @@ sidebar_position: 1
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ОпубликоватьПапку --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --path %path%
+  oint dropbox ОпубликоватьПапку --token "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c..." --path %path%
 
 ```
 

@@ -18,17 +18,25 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-    Токен  = "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT...";
-    Папка  = "4999224241";
+    Токен  = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
+    Папка  = "5008139809";
  
-    Результат = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
+    Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
+    ТекущийСтатус = "in_progress";
+    IDРаботы      = Результат["async_job_id"];
+    
+    Пока ТекущийСтатус = "in_progress" Цикл
+        Результат     = OPI_Dropbox.ПолучитьСтатусАсинхронногоИзменения(Токен, IDРаботы);
+        ТекущийСтатус = Результат[".tag"];
+        OPI_Инструменты.Пауза(3);
+    КонецЦикла;
 
 	
 ```
 
 ```sh title="Пример команд CLI"
     
-  oint dropbox ОтменитьПубликациюПапки --token "sl.B17cqxbDyPFFIOUOnGtEqpFGF9gIqUvxX70TTaWmpA1BudA7xI0IR4UK3WuJkeHL7f229VtvwT..." --folder %folder%
+  oint dropbox ОтменитьПубликациюПапки --token "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c..." --folder %folder%
 
 ```
 
