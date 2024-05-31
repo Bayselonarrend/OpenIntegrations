@@ -39,7 +39,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx    
 
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./OInt/*.ospx
+          path: ./src/ru/OInt/*.ospx
 
 
   Testing-Viber:
@@ -73,7 +73,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx
 
@@ -81,39 +81,39 @@ jobs:
 
       - name: Получить информацию канала
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьИнформациюОКанале"
 
       - name: Получить данные пользователя
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьДанныеПользователя"
 
       - name: Получить онлайн пользователей
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ПолучитьОнлайнПользователей"
 
       - name: Отправить текстовое сообщение
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьТекстовоеСообщение"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьТекстовоеСообщение"
 
       - name: Отправить картинку
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКартинку"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКартинку"
 
       - name: Отправить файл
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьФайл"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьФайл"
 
       - name: Отправить контакт
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКонтакт"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьКонтакт"
 
       - name: Отправить локацию
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьЛокацию"
 
       - name: Отправить ссылку
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Вайбер_ОтправитьСсылку"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false

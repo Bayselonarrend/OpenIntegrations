@@ -39,7 +39,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx    
 
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./OInt/*.ospx
+          path: ./src/ru/OInt/*.ospx
 
 
   Testing-GoogleWorkspace:
@@ -73,7 +73,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx
 
@@ -81,15 +81,15 @@ jobs:
 
       - name: Получить ссылку авторизации
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьСсылкуАвторизации"
 
       - name: Получить токен
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ПолучитьТокен"
 
       - name: Обновить токен
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ГВ_ОбновитьТокен"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false

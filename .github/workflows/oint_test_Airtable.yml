@@ -39,7 +39,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx    
 
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./OInt/*.ospx
+          path: ./src/ru/OInt/*.ospx
 
 
   Testing-Airtable:
@@ -73,7 +73,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx
 
@@ -81,19 +81,19 @@ jobs:
 
       - name: Создать/Изменить базу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьБазу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьБазу"
 
       - name: Создать/Изменить таблицу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьТаблицу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьТаблицу"
 
       - name: Создать/Изменить поле
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьПоле"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьПоле"
 
       - name: Создать/Удалить записи
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьУдалитьЗаписи"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "АТ_СоздатьУдалитьЗаписи"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
