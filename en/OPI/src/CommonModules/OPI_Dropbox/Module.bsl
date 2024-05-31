@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Dropbox.os
-// Библиотека: Dropbox
-// Команда CLI: dropbox
+﻿// Location OS: ./OInt/core/Modules/OPI_Dropbox.os
+// Library: Dropbox
+// CLI Command: dropbox
 
 // MIT License
 
@@ -28,934 +28,934 @@
 
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область АккаунтИАвторизация
+#Region AccountAndAuthorization
 
-// Получить ссылку авторизации
-// Генерирует ссылку авторизации для перехода в браузере
+// Get authorization link
+// Generates an authorization link for browser transition
 // 
-// Параметры:
-//  КлючПриложения - Строка - Ключ приложения - appkey
+// Parameters:
+//  AppKey - String - Application key - appkey
 // 
-// Возвращаемое значение:
-//  Строка - URL для перехода в браузере
-Функция ПолучитьСсылкуАвторизации(Знач КлючПриложения) Экспорт
+// Return value:
+//  String - URL for browser transition
+Function GetAuthorizationLink(Val AppKey) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(КлючПриложения);
-    Возврат "https://www.dropbox.com/oauth2/authorize?client_id=" 
-        + КлючПриложения 
+    OPI_TypeConversion.GetLine(AppKey);
+    Return "https://www.dropbox.com/oauth2/authorize?client_id=" 
+        + AppKey 
         + "&response_type=code&token_access_type=offline";
     
-КонецФункции
+EndFunction
 
-// Получить токен
-// Полеучает токен на основе кода со страницы ПолучитьСсылкуАвторизации
+// Get token
+// Gets token based on the code from the GetAuthorizationLink page
 // 
-// Параметры:
-//  КлючПриложения   - Строка - Ключ приложения             - appkey
-//  СекретПриложения - Строка - Секрет приложения           - appsecret
-//  Код              - Строка - Код со страницы авторизации - code
+// Parameters:
+//  AppKey   - String - Application key             - appkey
+//  AppSecret - String - Application secret           - appsecret
+//  Code              - String - Code from the authorization page - code
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПолучитьТокен(Знач КлючПриложения, Знач СекретПриложения, Знач Код) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
     
     URL       = "https://api.dropbox.com/oauth2/token";
-    ТипДанных = "application/x-www-form-urlencoded; charset=utf-8";
+    DataType = "application/x-www-form-urlencoded; charset=utf-8";
     
-    Параметры = Новый Структура;                  
-    OPI_Инструменты.ДобавитьПоле("code"      , Код                 , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("grant_type", "authorization_code", "Строка", Параметры);
+    Parameters = New Structure;                  
+    OPI_Tools.AddField("code"      , Code                 , "String", Parameters);
+    OPI_Tools.AddField("grant_type", "authorization_code", "String", Parameters);
     
-    СтруктураURL  = OPI_Инструменты.РазбитьURL(URL);
-    Сервер        = СтруктураURL["Сервер"];
-    Адрес         = СтруктураURL["Адрес"];
+    URLStructure  = OPI_Tools.SplitURL(URL);
+    Server        = URLStructure["Server"];
+    Address         = URLStructure["Address"];
     
-    Запрос        = OPI_Инструменты.СоздатьЗапрос(Адрес, , ТипДанных);
-    Соединение    = OPI_Инструменты.СоздатьСоединение(Сервер, КлючПриложения, СекретПриложения);
+    Request        = OPI_Tools.CreateRequest(Address, , DataType);
+    Connection    = OPI_Tools.CreateConnection(Server, AppKey, AppSecret);
 
-    СтрокаПараметров = OPI_Инструменты.ПараметрыЗапросаВСтроку(Параметры);
-    Данные           = Прав(СтрокаПараметров, СтрДлина(СтрокаПараметров) - 1);
+    ParameterString = OPI_Tools.RequestParametersToString(Parameters);
+    Data           = Right(ParameterString, StrLength(ParameterString) - 1);
 
-    Запрос.УстановитьТелоИзСтроки(Данные);
+    Request.SetBodyFromString(Data);
     
-    Ответ = Соединение.ВызватьHTTPМетод("POST", Запрос);
-    OPI_Инструменты.ОбработатьОтвет(Ответ);
+    Response = Connection.CallHTTPMethod("POST", Request);
+    OPI_Tools.ProcessResponse(Response);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Обновить токен
-// Получает новый токен на основе рефреш токена
+// Refresh token
+// Gets a new token based on the refresh token
 // 
-// Параметры:
-//  КлючПриложения   - Строка - Ключ приложения   - appkey
-//  СекретПриложения - Строка - Секрет приложения - appsecret
-//  РефрешТокен      - Строка - Рефреш токен      - refresh
+// Parameters:
+//  AppKey   - String - Application key   - appkey
+//  AppSecret - String - Application secret - appsecret
+//  RefreshToken      - String - Refresh token      - refresh
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ОбновитьТокен(Знач КлючПриложения, Знач СекретПриложения, Знач РефрешТокен) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function RefreshToken(Val AppKey, Val AppSecret, Val RefreshToken) Export
     
-    Строка_ = "Строка";
+    String_ = "String";
     URL     = "https://api.dropbox.com/oauth2/token";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("refresh_token", РефрешТокен     , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("grant_type"   , "refresh_token" , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("client_id"    , КлючПриложения  , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("client_secret", СекретПриложения, Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("refresh_token", RefreshToken     , String_, Parameters);
+    OPI_Tools.AddField("grant_type"   , "refresh_token" , String_, Parameters);
+    OPI_Tools.AddField("client_id"    , AppKey  , String_, Parameters);
+    OPI_Tools.AddField("client_secret", AppSecret, String_, Parameters);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, , Ложь);
+    Response = OPI_Tools.Post(URL, Parameters, , False);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить информацию об аккаунте
-// Получает информацию об аккаунте
+// Get account information
+// Gets account information
 // 
-// Параметры:
-//  Токен   - Строка - Токен                                                  - token
-//  Аккаунт - Строка - ID аккаунта. Текущий аккаунт токена, если не заполнено - account
+// Parameters:
+//  Token   - String - Token                                                  - token
+//  Account - String - Account ID. Current token account if not filled - account
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПолучитьИнформациюОбАккаунте(Знач Токен, Знач Аккаунт = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function GetAccountInformation(Val Token, Val Account = "") Export
     
-    Если ЗначениеЗаполнено(Аккаунт) Тогда
-        Результат = ПолучитьАккаунт(Токен, Аккаунт);
-    Иначе
-        Результат = ПолучитьСвойАккаунт(Токен);
-    КонецЕсли;
+    If ValueFilled(Account) Then
+        Result = GetAccount(Token, Account);
+    Otherwise
+        Result = GetOwnAccount(Token);
+    EndIf;
     
-    Возврат Результат;
+    Return Result;
     
-КонецФункции
+EndFunction
 
-// Получить данные использования пространства
-// Получает информацию о количестве использованного дискового пространства
+// Get space usage data
+// Gets information on the amount of used disk space
 // 
-// Параметры:
-//  Токен - Строка - Токен - token 
+// Parameters:
+//  Token - String - Token - token 
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПолучитьДанныеИспользованияПространства(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function GetSpaceUsageData(Val Token) Export
     
     URL       = "https://api.dropboxapi.com/2/users/get_space_usage";
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
     
-    Ответ = OPI_Инструменты.PostBinary(URL
-        , ПолучитьДвоичныеДанныеИзСтроки("null")
-        , Заголовки
+    Response = OPI_Tools.PostBinary(URL
+        , GetBinaryDataFromString("null")
+        , Headers
         , 
         , "text/plain; charset=dropbox-cors-hack"); 
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСФайламиИКаталогами
+#Region FileAndDirectoryManagement
 
-// Получить информацию об объекте
-// Получает информацию о файле или каталоге
+// Get object information
+// Gets information about a file or directory
 // 
-// Параметры:
-//  Токен    - Строка - Токен                                                    - token
-//  Путь     - Строка - Путь к объекту                                           - path
-//  Подробно - Булево - Добавляет дополнительные поля информации для медиафайлов - detail 
+// Parameters:
+//  Token    - String - Token                                                    - token
+//  Path     - String - Path to the object                                           - path
+//  Detailed - Boolean - Adds additional information fields for media files - detail 
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox 
-Функция ПолучитьИнформациюОбОбъекте(Знач Токен, Знач Путь, Знач Подробно = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox 
+Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export
     
     URL = "https://api.dropboxapi.com/2/files/get_metadata"; 
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("path"              , Путь    , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("include_media_info", Подробно, "Булево", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("path"              , Path    , "String", Parameters);
+    OPI_Tools.AddField("include_media_info", Detailed, "Boolean", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить список файлов папки
-// Получает список первых файлов каталога или продолжает получение следующих при указании курсора
+// Get list of folder files
+// Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified
 // 
-// Параметры:
-//  Токен    - Строка - Токен                                                                - token
-//  Путь     - Строка - Путь к каталогу. Необязателен, если указан курсор                    - path
-//  Подробно - Булево - Добавляет дополнительные поля информации для медиафайлов             - detail
-//  Курсор   - Строка - Курсор из предыдущего запроса для получения следующего набора файлов - cursor
+// Parameters:
+//  Token    - String - Token                                                                - token
+//  Path     - String - Path to the directory. Optional if the cursor is specified                    - path
+//  Detailed - Boolean - Adds additional information fields for media files             - detail
+//  Cursor   - String - Cursor from the previous request to get the next set of files - cursor
 // 
-// Возвращаемое значение:
-//  HTTPОтвет - Получить список файлов папки
-Функция ПолучитьСписокФайловПапки(Знач Токен, Знач Путь = "", Знач Подробно = Ложь, Знач Курсор = "") Экспорт
+// Return value:
+//  HTTPResponse - Get list of folder files
+Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export
     
-    Если Не ЗначениеЗаполнено(Курсор) Тогда
+    If Not ValueFilled(Cursor) Then
         
         URL = "https://api.dropboxapi.com/2/files/list_folder";
         
-        Параметры = Новый Структура;
-        OPI_Инструменты.ДобавитьПоле("path"              , Путь      , "Строка", Параметры);
-        OPI_Инструменты.ДобавитьПоле("include_media_info", Подробно  , "Булево", Параметры);
+        Parameters = New Structure;
+        OPI_Tools.AddField("path"              , Path      , "String", Parameters);
+        OPI_Tools.AddField("include_media_info", Detailed  , "Boolean", Parameters);
     
-    Иначе
+    Otherwise
         
         URL = "https://api.dropboxapi.com/2/files/list_folder/continue";
         
-        Параметры = Новый Структура;
-        OPI_Инструменты.ДобавитьПоле("cursor", Курсор, "Строка", Параметры); 
+        Parameters = New Structure;
+        OPI_Tools.AddField("cursor", Cursor, "String", Parameters); 
         
-    КонецЕсли;
+    EndIf;
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить превью
-// Получает PDF или HTML превью объекта (только для токументов)
+// Get preview
+// byлучает PDF or HTML преinью объеtoта (тольtoо for тоtoументоin)
 // 
-// Параметры:
-//  Токен - Строка - Токен          - token
-//  Путь  - Строка - Путь к объекту - path
+// Parameters:
+//  Token - String - Token          - token
+//  Path  - String - Path to the object - path
 // 
-// Возвращаемое значение:
-//  ДвоичныеДанные - превью документа 
-Функция ПолучитьПревью(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  BinaryData - document preview 
+Function GetPreview(Val Token, Val Path) Export
     
     URL   = "https://content.dropboxapi.com/2/files/get_preview";
-    Ответ = ОбработатьОбъект(Токен, URL, Путь, Истина);
+    Response = ProcessObject(Token, URL, Path, True);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Загрузить файл
-// Загружает файл на облачный диск
+// Upload file
+// Uploads a file to the cloud drive
 // 
-// Параметры:
-//  Токен          - Строка                 - Токен                                   - token
-//  Файл           - Строка, ДвоичныеДанные - Данные файл для загрузки                - file
-//  Путь           - Строка                 - Путь сохранения на Dropbox              - path
-//  Перезаписывать - Булево                 - Перезаписывать файл при конфликте путей - overwrite
+// Parameters:
+//  Token          - String                 - Token                                   - token
+//  File           - String, BinaryData - Data file for upload                - file
+//  Path           - String                 - Save path on Dropbox              - path
+//  Overwrite - Boolean                 - Overwrite file in case of path conflicts - overwrite
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox 
-Функция ЗагрузитьФайл(Знач Токен, Знач Файл, Знач Путь, Знач Перезаписывать = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox 
+Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Перезаписывать);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Путь);
+    OPI_TypeConversion.GetBinaryData(File);
+    OPI_TypeConversion.GetBoolean(Overwrite);
+    OPI_TypeConversion.GetLine(Path);
     
-    Режим     = ?(Перезаписывать, "overwrite", "add");
-    Размер    = Файл.Размер();
-    Граница   = 100000000;
+    Mode     = ?(Overwrite, "overwrite", "add");
+    Size    = File.Size();
+    Boundary   = 100000000;
         
-    Если Размер > Граница Тогда
-        Ответ = ЗагрузитьБольшойФайл(Токен, Файл, Путь, Режим);
-    Иначе
-        Ответ = ЗагрузитьМалыйФайл(Токен, Файл, Путь, Режим);
-    КонецЕсли;
+    If Size > Boundary Then
+        Response = UploadLargeFile(Token, File, Path, Mode);
+    Otherwise
+        Response = UploadSmallFile(Token, File, Path, Mode);
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Загрузить файл по URL
-// Загружает файл на облачный диск, получая его по указанному URL 
+// Upload file by URL
+// Uploads a file to the cloud drive by fetching it from the specified URL 
 // 
-// Параметры:
-//  Токен    - Строка - Токен                      - token
-//  URLФайла - Строка - URL источник файла         - url
-//  Путь     - Строка - Путь сохранения на Dropbox - path
+// Parameters:
+//  Token    - String - Token                      - token
+//  FileURL - String - URL source of the file         - url
+//  Path     - String - Save path on Dropbox - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ЗагрузитьФайлПоURL(Знач Токен, Знач URLФайла, Знач Путь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export
     
     URL = "https://api.dropboxapi.com/2/files/save_url"; 
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("path", Путь     , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("url" , URLФайла , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("path", Path     , "String", Parameters);
+    OPI_Tools.AddField("url" , FileURL , "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить статус загрузки по URL
-// Получает статус загрузки файла по URL
+// Get upload status by URL
+// Gets the upload status of the file by URL
 // 
-// Параметры:
-//  Токен    - Строка - Токен                                              - token
-//  IDРаботы - Строка - ID асинхронной работы из ответа ЗагрузитьФайлПоURL - job 
+// Parameters:
+//  Token    - String - Token                                              - token
+//  JobID - String - ID of the asynchronous job from the UploadFileByURL response - job 
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПолучитьСтатусЗагрузкиПоURL(Знач Токен, Знач IDРаботы) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function GetUploadStatusByURL(Val Token, Val JobID) Export
     
     URL = "https://api.dropboxapi.com/2/files/save_url/check_job_status"; 
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("async_job_id", IDРаботы, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("async_job_id", JobID, "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить объект
-// Удаляет объект с облачного диска
+// Delete object
+// Deletes an object from the cloud drive
 // 
-// Параметры:
-//  Токен        - Строка - Токен                                        - token
-//  Путь         - Строка - Путь к объекту удаления                      - path
-//  БезВозвратно - Строка - Удалить объект без возможности востановления - permanently
+// Parameters:
+//  Token        - String - Token                                        - token
+//  Path         - String - Path to the object to delete                      - path
+//  Irrecoverable - String - Delete object without the possibility of recovery - permanently
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция УдалитьОбъект(Знач Токен, Знач Путь, Знач Безвозвратно = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function DeleteObject(Val Token, Val Path, Val Irretrievably = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Безвозвратно);
+    OPI_TypeConversion.GetBoolean(Irretrievably);
     
-    Если Безвозвратно Тогда
+    If Irretrievably Then
         URL = "https://api.dropboxapi.com/2/files/permanently_delete";
-    Иначе
+    Otherwise
         URL = "https://api.dropboxapi.com/2/files/delete_v2";
-    КонецЕсли;
+    EndIf;
     
-    Ответ = ОбработатьОбъект(Токен, URL, Путь);
+    Response = ProcessObject(Token, URL, Path);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Копировать объект
-// Копирует файл или каталог по выбранному пути
+// Copy object
+// Copies a file or directory to the selected path
 // 
-// Параметры:
-//  Токен  - Строка - Токен                           - token
-//  Откуда - Строка - Путь к объекту оригинала        - form
-//  Куда   - Строка - Целевой путь для нового объекта - to
+// Parameters:
+//  Token  - String - Token                           - token
+//  From - String - Path to the original object        - form
+//  To   - String - Target path for the new object - to
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция КопироватьОбъект(Знач Токен, Знач Откуда, Знач Куда) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function CopyObject(Val Token, Val From, Val To) Export
    
     URL = "https://api.dropboxapi.com/2/files/copy_v2";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("from_path", Откуда, "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("to_path"  , Куда  , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("from_path", From, "String", Parameters);
+    OPI_Tools.AddField("to_path"  , To  , "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Переместить объект
-// Перемещает объект по выбранному пути
+// Move object
+// Moves an object to the selected path
 // 
-// Параметры:
-//  Токен  - Строка - Токен                           - token
-//  Откуда - Строка - Путь к объекту оригинала        - form
-//  Куда   - Строка - Целевой путь для нового объекта - to
+// Parameters:
+//  Token  - String - Token                           - token
+//  From - String - Path to the original object        - form
+//  To   - String - Target path for the new object - to
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПереместитьОбъект(Знач Токен, Знач Откуда, Знач Куда) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function MoveObject(Val Token, Val From, Val To) Export
 
     URL = "https://api.dropboxapi.com/2/files/move_v2";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("from_path", Откуда, "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("to_path"  , Куда  , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("from_path", From, "String", Parameters);
+    OPI_Tools.AddField("to_path"  , To  , "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-// Создать папку
-// Создает пустой каталог по выбранному пути
+// Create folder
+// Creates an empty directory at the selected path
 // 
-// Параметры:
-//  Токен - Строка - Токен                          - token
-//  Путь  - Строка - Целевой путь создания каталога - path
+// Parameters:
+//  Token - String - Token                          - token
+//  Path  - String - Target path for creating the directory - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция СоздатьПапку(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function CreateFolder(Val Token, Val Path) Export
     
     URL   = "https://api.dropboxapi.com/2/files/create_folder_v2";
-    Ответ = ОбработатьОбъект(Токен, URL, Путь);
+    Response = ProcessObject(Token, URL, Path);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Скачать файл
-// Скачивает файл по указанному пути или ID
+// Download file
+// Downloads a file by the specified path or ID
 // 
-// Параметры:
-//  Токен - Строка - Токен             - token
-//  Путь  - Строка - Путь или ID файла - path
+// Parameters:
+//  Token - String - Token             - token
+//  Path  - String - Path or ID of the file - path
 // 
-// Возвращаемое значение:
-//  ДвоичныеДанные - двоичные данные файла
-Функция СкачатьФайл(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  BinaryData - binary data of the file
+Function DownloadFile(Val Token, Val Path) Export
     
     URL   = "https://content.dropboxapi.com/2/files/download";
-    Ответ = ОбработатьОбъект(Токен, URL, Путь, Истина);
+    Response = ProcessObject(Token, URL, Path, True);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Скачать папку
-// Скачивает zip архив с содержимым указанного каталога
+// Download folder
+// Downloads a zip archive with the contents of the specified directory
 // 
-// Параметры:
-//  Токен - Строка - Токен                - token
-//  Путь  - Строка - Путь или ID каталога - path
+// Parameters:
+//  Token - String - Token                - token
+//  Path  - String - Path or ID of the directory - path
 // 
-// Возвращаемое значение:
-//  ДвоичныеДанные - двоичные данные zip архива с содержимым каталога
-Функция СкачатьПапку(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  BinaryData - binary data of the zip archive with the contents of the directory
+Function DownloadFolder(Val Token, Val Path) Export
     
     URL   = "https://content.dropboxapi.com/2/files/download_zip";
-    Ответ = ОбработатьОбъект(Токен, URL, Путь, Истина);
+    Response = ProcessObject(Token, URL, Path, True);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить список версий объекта
-// Получает список версий (ревизий) объекта
+// Get list of object versions
+// Gets the list of versions (revisions) of the object
 // 
-// Параметры:
-//  Токен      - Строка        - Токен                                          - token
-//  Путь       - Строка        - Путь к объекту                                 - path
-//  Количество - Строка, Число - Число последних версий объекта для отображения - amount
+// Parameters:
+//  Token      - String        - Token                                          - token
+//  Path       - String        - Path to the object                                 - path
+//  Quantity - String, Number - Number of the latest versions of the object to display - amount
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПолучитьСписокВерсийОбъекта(Знач Токен, Знач Путь, Знач Количество = 10) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function GetObjectVersionList(Val Token, Val Path, Val Quantity = 10) Export
     
     URL = "https://api.dropboxapi.com/2/files/list_revisions"; 
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("path" , Путь      , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("limit", Количество, "Число" , Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("path" , Path      , "String", Parameters);
+    OPI_Tools.AddField("limit", Quantity, "Number" , Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Восстановить объект к версии
-// Восстанавливает состояние объекта к необходимой версии (ревизии)
+// Restore object to version
+// Inоwithwithтаtoinлиinает withоwithтояние объеtoта to необхоdимой inерwithии (реinfromии)
 // 
-// Параметры:
-//  Токен  - Строка - Токен                                 - token
-//  Путь   - Строка - Путь к объекту                        - path
-//  Версия - Строка - ID версии (ревизии) для востановления - rev
+// Parameters:
+//  Token  - String - Token                                 - token
+//  Path   - String - Path to the object                        - path
+//  Version - String - ID of the version (revision) for restoration - rev
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ВосстановитьОбъектКВерсии(Знач Токен, Знач Путь, Знач Версия) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export
     
     URL = "https://api.dropboxapi.com/2/files/restore"; 
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("path", Путь  , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("rev" , Версия, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("path", Path  , "String", Parameters);
+    OPI_Tools.AddField("rev" , Version, "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСТегами
+#Region TagWork
 
-// Получить список тегов
-// Получает список тегов выбранных файлов
+// Get list of tags
+// Gets the list of tags of the selected files
 // 
-// Параметры:
-//  Токен - Строка                   - Токен                          - token
-//  Пути  - Строка, Массив Из Строка - Путь или набору путей к файлам - paths
+// Parameters:
+//  Token - String                   - Token                          - token
+//  Paths  - String, Array of Strings - Path or set of paths to the files - paths
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПолучитьСписокТегов(Знач Токен, Знач Пути) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function GetTagList(Val Token, Val Paths) Export
     
     URL = "https://api.dropboxapi.com/2/files/tags/get";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("paths", Пути, "Массив", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("paths", Paths, "Array", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Добавить тег
-// Добавляет новый текстовый тег к файлу или каталогу
+// Add tag
+// Adds a new text tag to a file or directory
 // 
-// Параметры:
-//  Токен - Строка - Токен                                               - token
-//  Путь  - Строка - Путь к объекту, для которого необходимо создать тег - path
-//  Тег   - Строка - Текст тега                                          - tag
+// Parameters:
+//  Token - String - Token                                               - token
+//  Path  - String - Path to the object for which the tag needs to be created - path
+//  Tag   - String - Tag text                                          - tag
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ДобавитьТег(Знач Токен, Знач Путь, Знач Тег) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function AddTag(Val Token, Val Path, Val Tag) Export
     
-    Возврат ОбработатьТег(Токен, Путь, Тег);
+    Return ProcessTag(Token, Path, Tag);
     
-КонецФункции
+EndFunction
 
-// Удалить тег
-// Удаляет текстовый тег файла или каталога
+// Delete tag
+// Deletes the text tag of a file or directory
 // 
-// Параметры:
-//  Токен - Строка - Токен                                           - token
-//  Путь  - Строка - Путь к объекту, тег которого необходимо удалить - path
-//  Тег   - Строка - Текст тега                                      - tag
+// Parameters:
+//  Token - String - Token                                           - token
+//  Path  - String - Path to the object whose tag needs to be deleted - path
+//  Tag   - String - Tag text                                      - tag
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция УдалитьТег(Знач Токен, Знач Путь, Знач Тег) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function DeleteTag(Val Token, Val Path, Val Tag) Export
     
-    Возврат ОбработатьТег(Токен, Путь, Тег, Истина);
+    Return ProcessTag(Token, Path, Tag, True);
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область НастройкиСовместногоДоступа
+#Region SharedAccessSettings
 
-// Опубликовать папку
-// Переводит каталог в режим публичного доступа
+// Publish folder
+// Sets the directory to public access mode
 // 
-// Параметры:
-//  Токен - Строка - Токен                    - token
-//  Путь  - Строка - Путь к целевому каталогу - path
+// Parameters:
+//  Token - String - Token                    - token
+//  Path  - String - Path to the target directory - path
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ОпубликоватьПапку(Знач Токен, Знач Путь) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function PublishFolder(Val Token, Val Path) Export
     
     URL   = "https://api.dropboxapi.com/2/sharing/share_folder";
-    Ответ = ОбработатьОбъект(Токен, URL, Путь);
+    Response = ProcessObject(Token, URL, Path);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Отменить публикацию папки
-// Отменяет режим общего доступа для каталога
+// Unpublish folder
+// Cancels the public access mode for the directory
 // 
-// Параметры:
-//  Токен   - Строка - Токен                                     - token
-//  IDПапки - Строка - ID публичного каталога (shared folder ID) - folder
+// Parameters:
+//  Token   - String - Token                                     - token
+//  FolderID - String - ID публичного directory (shared folder ID) - folder
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ОтменитьПубликациюПапки(Знач Токен, Знач IDПапки) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function CancelFolderPublication(Val Token, Val FolderID) Export
     
     URL = "https://api.dropboxapi.com/2/sharing/unshare_folder";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("shared_folder_id", IDПапки, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("shared_folder_id", FolderID, "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Добавить пользователя к файлу
-// Определяет доступ к файлу для стороннего пользователя
+// Add user to file
+// Defines access to the file for an external user
 // 
-// Параметры:
-//  Токен          - Строка                   - Токен                                                      - token
-//  IDФайла        - Строка                   - ID файла, к которому предоставляется доступ                - fileid
-//  АдресаПочты    - Строка, Массив Из Строка - Список адресов почты добавляемых пользователей             - emails
-//  ТолькоПросмотр - Булево                   - Запрещает редактирование файла для стороннего пользователя - readonly
+// Parameters:
+//  Token          - String                   - Token                                                      - token
+//  FileID        - String                   - ID of the file to be accessed                - fileid
+//  EmailAddresses    - String, Array of Strings - List of email addresses of users being added             - emails
+//  ViewOnly - Boolean                   - Prohibits file editing for the external user - readonly
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ДобавитьПользователейКФайлу(Знач Токен, Знач IDФайла, Знач АдресаПочты, Знач ТолькоПросмотр = Истина) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly = True) Export
     
-    Строка_ = "Строка";
+    String_ = "String";
     
-    OPI_ПреобразованиеТипов.ПолучитьМассив(АдресаПочты);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDФайла);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ТолькоПросмотр);
+    OPI_TypeConversion.GetArray(EmailAddresses);
+    OPI_TypeConversion.GetLine(FileID);
+    OPI_TypeConversion.GetBoolean(ViewOnly);
     
-    Если Не СтрНачинаетсяС(IDФайла, "id:") Тогда
-        IDФайла = "id:" + IDФайла;
-    КонецЕсли;
+    If Not StringStartsWith(FileID, "id:") Then
+        FileID = "id:" + FileID;
+    EndIf;
     
     URL = "https://api.dropboxapi.com/2/sharing/add_file_member";
     
-    МассивПользователей = Новый Массив;
+    ArrayOfUsers = New Array;
     
-    Для Каждого Адрес Из АдресаПочты Цикл
+    For Each Address Of EmailAddresses Loop
              
-        ДанныеПользователя = Новый Соответствие;
-        OPI_Инструменты.ДобавитьПоле(".tag" , "email", Строка_, ДанныеПользователя);
-        OPI_Инструменты.ДобавитьПоле("email", Адрес  , Строка_, ДанныеПользователя);
+        UserData = New Match;
+        OPI_Tools.AddField(".tag" , "email", String_, UserData);
+        OPI_Tools.AddField("email", Address  , String_, UserData);
         
-        МассивПользователей.Добавить(ДанныеПользователя);
+        ArrayOfUsers.Add(UserData);
 
-    КонецЦикла;
+    EndOfLoop;
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("file"   , IDФайла             , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("members", МассивПользователей , "Массив", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("file"   , FileID             , String_, Parameters);
+    OPI_Tools.AddField("members", ArrayOfUsers , "Array", Parameters);
     
-    Режим = ?(ТолькоПросмотр, "viewer", "editor");
+    Mode = ?(ViewOnly, "viewer", "editor");
     
-    OPI_Инструменты.ДобавитьПоле("access_level", Режим , Строка_, Параметры);
+    OPI_Tools.AddField("access_level", Mode , String_, Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Добавить пользователей к папке
-// Предоставляет стороннии пользователям доступ к каталогу
+// Add users to folder
+// Grants external users access to the directory
 // 
-// Параметры:
-//  Токен          - Строка - Токен                                                            - token
-//  IDПапки        - Строка - ID публичного каталога (shared folder ID)                        - folder
-//  АдресаПочты    - Строка, Массив Из Строка - Список адресов почты добавляемых пользователей - emails
-//  ТолькоПросмотр - Булево - Запрещает редактирование файла для стороннего пользователя       - readonly
+// Parameters:
+//  Token          - String - Token                                                            - token
+//  FolderID        - String - ID публичного directory (shared folder ID)                        - folder
+//  EmailAddresses    - String, Array of Strings - List of email addresses of users being added - emails
+//  ViewOnly - Boolean - Prohibits file editing for the external user       - readonly
 // 
-// Возвращаемое значение:
-//  Неопределено - пустой ответ
-Функция ДобавитьПользователейКПапке(Знач Токен, Знач IDПапки, Знач АдресаПочты, Знач ТолькоПросмотр = Истина) Экспорт
+// Return value:
+//  Undefined - empty response
+Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewOnly = True) Export
     
-    Строка_ = "Строка";
+    String_ = "String";
     
-    OPI_ПреобразованиеТипов.ПолучитьМассив(АдресаПочты);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ТолькоПросмотр);
-    Режим = ?(ТолькоПросмотр, "viewer", "editor");
+    OPI_TypeConversion.GetArray(EmailAddresses);
+    OPI_TypeConversion.GetBoolean(ViewOnly);
+    Mode = ?(ViewOnly, "viewer", "editor");
         
     URL = "https://api.dropboxapi.com/2/sharing/add_folder_member";
     
-    МассивПользователей = Новый Массив;
+    ArrayOfUsers = New Array;
     
-    Для Каждого Адрес Из АдресаПочты Цикл
+    For Each Address Of EmailAddresses Loop
              
-        ДанныеПользователя = Новый Соответствие;
-        OPI_Инструменты.ДобавитьПоле(".tag" , "email", Строка_, ДанныеПользователя);
-        OPI_Инструменты.ДобавитьПоле("email", Адрес  , Строка_, ДанныеПользователя);
+        UserData = New Match;
+        OPI_Tools.AddField(".tag" , "email", String_, UserData);
+        OPI_Tools.AddField("email", Address  , String_, UserData);
         
-        СтруктураПользователя = Новый Структура("member,access_level", ДанныеПользователя, Режим); 
+        UserStructure = New Structure("member,access_level", UserData, Mode); 
         
-        МассивПользователей.Добавить(СтруктураПользователя);
+        ArrayOfUsers.Add(UserStructure);
 
-    КонецЦикла;
+    EndOfLoop;
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("shared_folder_id", IDПапки             , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("members"         , МассивПользователей , "Массив", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("shared_folder_id", FolderID             , String_, Parameters);
+    OPI_Tools.AddField("members"         , ArrayOfUsers , "Array", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить статус асинхронного изменения
-// Получает статус асинхронной работы по изменению доступов
+// Get asynchronous change status
+// Gets the status of the asynchronous access change job
 // 
-// Параметры:
-//  Токен    - Строка - Токен                 - token
-//  IDРаботы - Строка - ID асинхронной работы - job
+// Parameters:
+//  Token    - String - Token                 - token
+//  JobID - String - AsynchronousJobID - job
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ПолучитьСтатусАсинхронногоИзменения(Знач Токен, Знач IDРаботы) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export
     
     URL = "https://api.dropboxapi.com/2/sharing/check_job_status";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("async_job_id", IDРаботы, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("async_job_id", JobID, "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Отменить публикацию файла
-// Запрещает доступ к файлу для внешних пользователей
+// Unpublish file
+// Prohibits access to the file for external users
 // 
-// Параметры:
-//  Токен    - Строка - Токен                                       - token
-//  IDФайла  - Строка - ID файла, к которому предоставляется доступ - fileid
+// Parameters:
+//  Token    - String - Token                                       - token
+//  FileID  - String - ID of the file to be accessed - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
-Функция ОтменитьПубликациюФайла(Знач Токен, Знач IDФайла) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Dropbox
+Function CancelFilePublication(Val Token, Val FileID) Export
 	
-	OPI_ПреобразованиеТипов.ПолучитьСтроку(IDФайла);
+	OPI_TypeConversion.GetLine(FileID);
     
-    Если Не СтрНачинаетсяС(IDФайла, "id:") Тогда
-        IDФайла = "id:" + IDФайла;
-    КонецЕсли;
+    If Not StringStartsWith(FileID, "id:") Then
+        FileID = "id:" + FileID;
+    EndIf;
     
 	URL = "https://api.dropboxapi.com/2/sharing/unshare_file";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("file", IDФайла, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("file", FileID, "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Headers = GetRequestHeaders(Token);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
 
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ОбработатьОбъект(Знач Токен, Знач URL, Знач Путь, Знач ВЗаголовках = Ложь)
+Function ProcessObject(Val Token, Val URL, Val Path, Val InHeaders = False)
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("path", Путь, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("path", Path, "String", Parameters);
     
-    Если ВЗаголовках Тогда
-        Заголовки = ПолучитьЗаголовкиЗапроса(Токен, Параметры);
-        Ответ     = OPI_Инструменты.PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Заголовки);
-    Иначе
-        Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
-        Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
-    КонецЕсли;
+    If InHeaders Then
+        Headers = GetRequestHeaders(Token, Parameters);
+        Response     = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
+    Otherwise
+        Headers = GetRequestHeaders(Token);
+        Response     = OPI_Tools.Post(URL, Parameters, Headers);
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ОбработатьТег(Знач Токен, Знач Путь, Знач Тег, Знач ЭтоУдаление = Ложь)
+Function ProcessTag(Val Token, Val Path, Val Tag, Val ThisIsDeletion = False)
 
-    Если ЭтоУдаление Тогда
+    If ThisIsDeletion Then
         URL = "https://api.dropboxapi.com/2/files/tags/remove";
-    Иначе
+    Otherwise
         URL = "https://api.dropboxapi.com/2/files/tags/add";
-    КонецЕсли;
+    EndIf;
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("path"     , Путь, "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("tag_text" , Тег , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("path"     , Path, "String", Parameters);
+    OPI_Tools.AddField("tag_text" , Tag , "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-Функция ПолучитьЗаголовкиЗапроса(Знач Токен, Знач Параметры = "")
+Function GetRequestHeaders(Val Token, Val Parameters = "")
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
         
-    Заголовки = Новый Соответствие;
-    Заголовки.Вставить("Authorization"  , "Bearer " + Токен);
+    Headers = New Match;
+    Headers.Insert("Authorization"  , "Bearer " + Token);
     
-    Если ЗначениеЗаполнено(Параметры) Тогда
+    If ValueFilled(Parameters) Then
         
-        JSON = OPI_Инструменты.JSONСтрокой(Параметры, "Нет");
-        JSON = СтрЗаменить(JSON, Символы.ВК + Символы.ПС, "");
+        JSON = OPI_Tools.JSONString(Parameters, "No");
+        JSON = StringReplace(JSON, Symbols.VK + Symbols.PS, "");
 
-        Заголовки.Вставить("Dropbox-API-Arg", JSON);
+        Headers.Insert("Dropbox-API-Arg", JSON);
     
-    КонецЕсли;
+    EndIf;
     
-    Возврат Заголовки;
+    Return Headers;
     
-КонецФункции
+EndFunction
 
-Функция ЗагрузитьБольшойФайл(Знач Токен, Знач Файл, Знач Путь, Знач Режим)
+Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
     
     URL            = "https://content.dropboxapi.com/2/files/upload_session/append_v2"; 
 
-    РазмерЧасти    = 100000000;
-    ТекущаяПозиция = 0;
-    ПрочитаноБайт  = 0;
-    ОбщийРазмер    = Файл.Размер();   
-    Сессия         = ОткрытьСессию(Токен);
+    ChunkSize    = 100000000;
+    CurrentPosition = 0;
+    BytesRead  = 0;
+    TotalSize    = File.Size();   
+    Session         = OpenSession(Token);
     
-    Пока ПрочитаноБайт < ОбщийРазмер Цикл
+    While BytesRead < TotalSize Loop
         
-        Отступ = ТекущаяПозиция;
-        Курсор = Новый Структура("offset,session_id", Отступ, Сессия);
+        Indent = CurrentPosition;
+        Cursor = New Structure("offset,session_id", Indent, Session);
         
-        Параметры = Новый Структура("cursor", Курсор);
-        Заголовки = ПолучитьЗаголовкиЗапроса(Токен, Параметры);
+        Parameters = New Structure("cursor", Cursor);
+        Headers = GetRequestHeaders(Token, Parameters);
         
-        ЧтениеДанных     = Новый ЧтениеДанных(Файл);
-        ПрочитаноБайт    = ЧтениеДанных.Пропустить(ТекущаяПозиция);
-        Результат        = ЧтениеДанных.Прочитать(РазмерЧасти);
-        ТекущиеДанные    = Результат.ПолучитьДвоичныеДанные();
-        РазмерТекущих    = ТекущиеДанные.Размер();
-        СледующаяПозиция = ТекущаяПозиция + РазмерТекущих; 
+        ReadingData     = New ReadingData(File);
+        BytesRead    = ReadingData.Skip(CurrentPosition);
+        Result        = ReadingData.Read(ChunkSize);
+        Current data    = Result.GetBinaryData();
+        CurrentSize    = Current data.Size();
+        NextPosition = CurrentPosition + CurrentSize; 
         
-        Если Не ЗначениеЗаполнено(ТекущиеДанные) Тогда
-            Прервать;
-        КонецЕсли;
+        If Not ValueFilled(Current data) Then
+            Interrupt;
+        EndIf;
 
-        Ответ = OPI_Инструменты.PostBinary(URL, ТекущиеДанные, Заголовки);
+        Response = OPI_Tools.PostBinary(URL, Current data, Headers);
         
-        ТекущаяПозиция = СледующаяПозиция;
+        CurrentPosition = NextPosition;
         
-        // !OInt КБайт = 1024;
-        // !OInt МБайт = КБайт * КБайт;
-        // !OInt Сообщить(OPI_Инструменты.ИнформацияОПрогрессе(ТекущаяПозиция, ОбщийРазмер, "МБ", МБайт));
+        // !OInt KBytes = 1024;
+        // !OInt MByte = KBytes * KBytes;
+        // !OInt Notify(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
         
-        // !OInt ВыполнитьСборкуМусора();
-        // !OInt ОсвободитьОбъект(ТекущиеДанные);
+        // !OInt PerformGarbageCollection();
+        // !OInt ReleaseObject(Current data);
                
-    КонецЦикла;
+    EndOfLoop;
     
-    Ответ = ЗакрытьСессию(Токен, Путь, Режим, ОбщийРазмер, Сессия);
+    Response = CloseSession(Token, Path, Mode, TotalSize, Session);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-Функция ЗагрузитьМалыйФайл(Знач Токен, Знач Файл, Знач Путь, Знач Режим)
+Function UploadSmallFile(Val Token, Val File, Val Path, Val Mode)
     
-    Булево_ = "Булево";
-    Строка_ = "Строка";
+    Boolean_ = "Boolean";
+    String_ = "String";
     URL     = "https://content.dropboxapi.com/2/files/upload";
     
-    Параметры = Новый Структура;
+    Parameters = New Structure;
         
-    OPI_Инструменты.ДобавитьПоле("autorename"     , Ложь , Булево_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("mode"           , Режим, Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("mute"           , Ложь , Булево_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("path"           , Путь , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("strict_conflict", Ложь , Булево_, Параметры);
+    OPI_Tools.AddField("autorename"     , False , Boolean_, Parameters);
+    OPI_Tools.AddField("mode"           , Mode, String_, Parameters);
+    OPI_Tools.AddField("mute"           , False , Boolean_, Parameters);
+    OPI_Tools.AddField("path"           , Path , String_, Parameters);
+    OPI_Tools.AddField("strict_conflict", False , Boolean_, Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен, Параметры);
+    Headers = GetRequestHeaders(Token, Parameters);
 
-    Ответ = OPI_Инструменты.PostBinary(URL, Файл, Заголовки);
+    Response = OPI_Tools.PostBinary(URL, File, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ОткрытьСессию(Знач Токен)
+Function OpenSession(Val Token)
     
     SessionId = "session_id";
     URL       = "https://content.dropboxapi.com/2/files/upload_session/start";
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
     
-    Ответ = OPI_Инструменты.PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Заголовки); 
+    Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers); 
     
-    Возврат Ответ[SessionId];
+    Return Response[SessionId];
     
-КонецФункции
+EndFunction
 
-Функция ЗакрытьСессию(Знач Токен, Знач Путь, Знач Режим, Знач ОбщийРазмер, Знач Сессия)
+Function CloseSession(Val Token, Val Path, Val Mode, Val TotalSize, Val Session)
 
     URL = "https://content.dropboxapi.com/2/files/upload_session/finish";
     
-    Коммит = Новый Структура();
-    OPI_Инструменты.ДобавитьПоле("mode", Режим, "Строка", Коммит);
-    OPI_Инструменты.ДобавитьПоле("path", Путь, "Строка", Коммит);   
+    Commit = New Structure();
+    OPI_Tools.AddField("mode", Mode, "String", Commit);
+    OPI_Tools.AddField("path", Path, "String", Commit);   
     
-    Курсор = Новый Структура("offset,session_id", ОбщийРазмер, Сессия);
+    Cursor = New Structure("offset,session_id", TotalSize, Session);
      
-    Параметры = Новый Структура("commit,cursor", Коммит, Курсор);
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен, Параметры);
+    Parameters = New Structure("commit,cursor", Commit, Cursor);
+    Headers = GetRequestHeaders(Token, Parameters);
     
-    Ответ = OPI_Инструменты.PostBinary(URL, ПолучитьДвоичныеДанныеИзСтроки(""), Заголовки);
+    Response = OPI_Tools.PostBinary(URL, GetBinaryDataFromString(""), Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ПолучитьАккаунт(Знач Токен, Знач Аккаунт)
+Function GetAccount(Val Token, Val Account)
     
     URL = "https://api.dropboxapi.com/2/users/get_account";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("account_id", Аккаунт, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("account_id", Account, "String", Parameters);
     
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-Функция ПолучитьСвойАккаунт(Знач Токен)
+Function GetOwnAccount(Val Token)
     
     URL       = "https://api.dropboxapi.com/2/users/get_current_account";
-    Заголовки = ПолучитьЗаголовкиЗапроса(Токен);
+    Headers = GetRequestHeaders(Token);
     
-    Ответ = OPI_Инструменты.PostBinary(URL
-        , ПолучитьДвоичныеДанныеИзСтроки("null")
-        , Заголовки
+    Response = OPI_Tools.PostBinary(URL
+        , GetBinaryDataFromString("null")
+        , Headers
         , 
         , "text/plain; charset=dropbox-cors-hack"); 
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion

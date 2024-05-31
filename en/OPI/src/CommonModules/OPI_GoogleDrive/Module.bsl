@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_GoogleDrive.os
-// Библиотека: Google Drive
-// Команда CLI: gdrive
+﻿// Location OS: ./OInt/core/Modules/OPI_GoogleDrive.os
+// Library: Google Drive
+// CLI Command: gdrive
 
 // MIT License
 
@@ -29,691 +29,691 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область РаботаСФайламиИКаталогами
+#Region FileAndDirectoryManagement
 
-// Получить информацию об объекте
-// Получает информацию о папке или файле по ID
+// Get object information
+// Gets information about a folder or file by ID
 // 
-// Параметры:
-//  Токен         - Строка - Токен                            - token
-//  Идентификатор - Строка - Идентификатор файла или каталога - object
+// Parameters:
+//  Token         - String - Token                            - token
+//  Identifier - String - Identifier of the file or folder - object
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьИнформациюОбОбъекте(Знач Токен, Знач Идентификатор) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetObjectInformation(Val Token, Val Identifier) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Identifier);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + Идентификатор; 
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + Identifier; 
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("fields", "*");
+    Parameters = New Structure;
+    Parameters.Insert("fields", "*");
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить список каталогов
-// Получает список каталогов диска
+// Get list of directories
+// Gets the list of drive directories
 // 
-// Параметры:
-//  Токен       - Строка - Токен                                     - token
-//  ИмяСодержит - Строка - Отбор по имени                            - querry
-//  Подробно    - Булево - Добавляет список файлов к полям каталога  - depth
+// Parameters:
+//  Token       - String - Token                                     - token
+//  NameContains - String - Filter by name                            - querry
+//  Detailed    - Boolean - Adds a list of files to the directory fields  - depth
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Массив соответствий каталогов
-Функция ПолучитьСписокКаталогов(Знач Токен, Знач ИмяСодержит = "", Знач Подробно = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - Array of directory mappings
+Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИмяСодержит);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Подробно);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(NameContains);
+    OPI_TypeConversion.GetBoolean(Detailed);
     
-    Заголовки      = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    МассивОбъектов = Новый Массив;
-    Отбор          = Новый Массив;
+    Headers      = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    ArrayOfObjects = New Array;
+    Filter          = New Array;
     
-    Отбор.Добавить("mimeType = 'application/vnd.google-apps.folder'");
+    Filter.Add("mimeType = 'application/vnd.google-apps.folder'");
     
-    Если ЗначениеЗаполнено(ИмяСодержит) Тогда
-        Отбор.Добавить("name contains '" + ИмяСодержит + "'");
-    КонецЕсли;
+    If ValueFilled(NameContains) Then
+        Filter.Add("name contains '" + NameContains + "'");
+    EndIf;
     
-    ПолучитьСписокОбъектовРекурсивно(Заголовки, МассивОбъектов, Подробно, Отбор);
+    GetObjectsListRecursively(Headers, ArrayOfObjects, Detailed, Filter);
     
-    Если Подробно Тогда
-        РазложитьОбъектыПодробно(Токен, МассивОбъектов);    
-    КонецЕсли;
+    If Detailed Then
+        BreakDownObjectsInDetail(Token, ArrayOfObjects);    
+    EndIf;
     
-    Возврат МассивОбъектов;
+    Return ArrayOfObjects;
     
-КонецФункции
+EndFunction
 
-// Получить список файлов
-// Получает список файлов
+// Get list of files
+// Gets the list of files
 // 
-// Параметры:
-//  Токен       - Строка - Токен                          - token
-//  ИмяСодержит - Строка - Отбор по имени                 - querry
-//  Каталог     - Строка - Отбор по ID каталога родителя  - catalog
+// Parameters:
+//  Token       - String - Token                          - token
+//  NameContains - String - Filter by name                 - querry
+//  Directory     - String - Filter by parent directory ID  - catalog
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Массив соответствий файлов
-Функция ПолучитьСписокФайлов(Знач Токен, Знач ИмяСодержит = "", Знач Каталог = "") Экспорт
+// Return value:
+//  Key-Value Pair - Array of file mappings
+Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИмяСодержит);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Каталог);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(NameContains);
+    OPI_TypeConversion.GetLine(Directory);
     
-    Заголовки      = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    МассивОбъектов = Новый Массив;
-    Отбор          = Новый Массив;
+    Headers      = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    ArrayOfObjects = New Array;
+    Filter          = New Array;
     
-    Отбор.Добавить("mimeType != 'application/vnd.google-apps.folder'");
+    Filter.Add("mimeType != 'application/vnd.google-apps.folder'");
     
-    Если ЗначениеЗаполнено(ИмяСодержит) Тогда
-        Отбор.Добавить("name contains '" + ИмяСодержит + "'");
-    КонецЕсли;
+    If ValueFilled(NameContains) Then
+        Filter.Add("name contains '" + NameContains + "'");
+    EndIf;
     
-    Если ЗначениеЗаполнено(Каталог) Тогда
-        Отбор.Добавить("'" + Каталог + "' in parents");
-    КонецЕсли;
+    If ValueFilled(Directory) Then
+        Filter.Add("'" + Directory + "' in parents");
+    EndIf;
     
-    ПолучитьСписокОбъектовРекурсивно(Заголовки, МассивОбъектов, , Отбор);
+    GetObjectsListRecursively(Headers, ArrayOfObjects, , Filter);
     
-    Возврат МассивОбъектов;
+    Return ArrayOfObjects;
 
-КонецФункции
+EndFunction
 
-// Загрузить файл
-// Загружает файл на диск
+// Upload file
+// Uploads a file to the drive
 // 
-// Параметры:
-//  Токен     - Строка                        - Токен                     - token
-//  Файл      - ДвоичныеДанные,Строка         - Загружаемый файл          - file
-//  Описание  - Соответствие Из КлючИЗначение - См. ПолучитьОписаниеФайла - props - JSON описания или путь к .json
+// Parameters:
+//  Token     - String                        - Token                     - token
+//  File      - BinaryData,String         - File to be uploaded          - file
+//  Description  - Key-Value Pair - See GetFileDescription - props - JSON description or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ЗагрузитьФайл(Знач Токен, Знач Файл, Знач Описание) Экспорт
-    Возврат УправлениеФайлом(Токен, Файл, Описание);   
-КонецФункции
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function UploadFile(Val Token, Val File, Val Description) Export
+    Return FileManagement(Token, File, Description);   
+EndFunction
 
-// Создать папку
-// Создает пустой каталог на диске
+// Create folder
+// Creates an empty directory on the drive
 // 
-// Параметры:
-//  Токен    - Строка - Токен      - token
-//  Имя      - Строка - Имя папки  - title
-//  Родитель - Строка - Родитель   - catalog
+// Parameters:
+//  Token    - String - Token      - token
+//  Name      - String - Folder name  - title
+//  Parent - String - Parent   - catalog
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция СоздатьПапку(Знач Токен, Знач Имя, Знач Родитель = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function CreateFolder(Val Token, Val Name, Val Parent = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Имя);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Родитель);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Parent);
     
-    Описание = Новый Соответствие;
-    Описание.Вставить("MIME"    , "application/vnd.google-apps.folder");
-    Описание.Вставить("Имя"     , Имя);
-    Описание.Вставить("Описание", "");
-    Описание.Вставить("Родитель", ?(ЗначениеЗаполнено(Родитель), Родитель, "root"));
+    Description = New Match;
+    Description.Insert("MIME"    , "application/vnd.google-apps.folder");
+    Description.Insert("Name"     , Name);
+    Description.Insert("Description", "");
+    Description.Insert("Parent", ?(ValueFilled(Parent), Parent, "root"));
     
-    Возврат УправлениеФайлом(Токен, , Описание);
+    Return FileManagement(Token, , Description);
     
-КонецФункции
+EndFunction
 
-// Скачать файл
-// Получает файл по ID
+// Download file
+// Gets file by ID
 // 
-// Параметры:
-//  Токен          - Строка - Токен                 - token
-//  Идентификатор  - Строка - Идентификатор файла   - object
-//  ПутьСохранения - Строка - Путь сохранения файла - out 
+// Parameters:
+//  Token          - String - Token                 - token
+//  Identifier  - String - File identifier   - object
+//  SavePath - String - File save path - out 
 // 
-// Возвращаемое значение:
-//  ДвоичныеДанные,Строка - Двоичные данные или путь к файлу при указании параметра ПутьСохранения
-Функция СкачатьФайл(Знач Токен, Знач Идентификатор, Знач ПутьСохранения = "") Экспорт
+// Return value:
+//  BinaryData,String - Binary data or file path when SavePath parameter is specified
+Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Identifier);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + Идентификатор;  
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + Identifier;  
     
-    Параметры = Новый Соответствие;
-    Параметры.Вставить("alt", "media");
+    Parameters = New Match;
+    Parameters.Insert("alt", "media");
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры , Заголовки, ПутьСохранения);
+    Response = OPI_Tools.Get(URL, Parameters , Headers, SavePath);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Скоприровать объект
-// Копирует файл или каталог
+// Copy object
+// Copies file or directory
 // 
-// Параметры:
-//  Токен         - Строка - Токен                     - token
-//  Идентификатор - Строка - Идентификатор объекта     - object
-//  НовоеИмя      - Строка - Новое имя объекта         - title
-//  НовыйРодитель - Строка - Новый каталог размещения  - catalog
+// Parameters:
+//  Token         - String - Token                     - token
+//  Identifier - String - Object identifier     - object
+//  NewName      - String - New object name         - title
+//  NewParent - String - New parent directory  - catalog
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция СкопироватьОбъект(Знач Токен, Знач Идентификатор, Знач НовоеИмя = "", Знач НовыйРодитель = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(НовоеИмя);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(НовыйРодитель);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(NewName);
+    OPI_TypeConversion.GetLine(Identifier);
+    OPI_TypeConversion.GetLine(NewParent);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + Идентификатор + "/copy";    
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + Identifier + "/copy";    
     
-    Параметры = Новый Структура;
+    Parameters = New Structure;
     
-    Если ЗначениеЗаполнено(НовоеИмя) Тогда
-        Параметры.Вставить("name", НовоеИмя);
-    КонецЕсли;
+    If ValueFilled(NewName) Then
+        Parameters.Insert("name", NewName);
+    EndIf;
     
-    Если ЗначениеЗаполнено(НовыйРодитель) Тогда
+    If ValueFilled(NewParent) Then
         
-        МассивРодителей = Новый Массив;
-        МассивРодителей.Добавить(НовыйРодитель);
-        Параметры.Вставить("parents", МассивРодителей);
+        ArrayOfParents = New Array;
+        ArrayOfParents.Add(NewParent);
+        Parameters.Insert("parents", ArrayOfParents);
         
-    КонецЕсли;
+    EndIf;
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры , Заголовки, Истина);
+    Response = OPI_Tools.Post(URL, Parameters , Headers, True);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Обновить файл
-// Обновляет двоичные данные файла
+// Update file
+// Updates file binary data
 // 
-// Параметры:
-//  Токен         - Строка - Токен                                     - token
-//  Идентификатор - Строка - Идентификатор обновляемого объекта        - object
-//  Файл          - ДвоичныеДанные,Строка - Файл источник обновления   - file
-//  НовоеИмя      - Строка - Новое имя файла (если необходимо)         - title
+// Parameters:
+//  Token         - String - Token                                     - token
+//  Identifier - String - Identifier of the object to update        - object
+//  File          - BinaryData,String - File source for update   - file
+//  NewName      - String - Nоinое имя file (еwithли необхоdимо)         - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ОбновитьФайл(Знач Токен, Знач Идентификатор, Знач Файл, Знач НовоеИмя = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(НовоеИмя);
-    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Identifier);
+    OPI_TypeConversion.GetLine(NewName);
+    OPI_TypeConversion.GetBinaryData(File);
     
-    Если ЗначениеЗаполнено(НовоеИмя) Тогда
-        Описание = Новый Соответствие;
-        Описание.Вставить("Имя", НовоеИмя);
-    Иначе
-        Описание = "";
-    КонецЕсли;
+    If ValueFilled(NewName) Then
+        Description = New Match;
+        Description.Insert("Name", NewName);
+    Otherwise
+        Description = "";
+    EndIf;
     
-    Возврат УправлениеФайлом(Токен, Файл, Описание, Идентификатор);
+    Return FileManagement(Token, File, Description, Identifier);
         
-КонецФункции
+EndFunction
 
-// Удалить объект
-// Удаляет файл или каталог по ID
+// Delete object
+// Deletes file or directory by ID
 // 
-// Параметры:
-//  Токен         - Строка - Токен                               - token
-//  Идентификатор - Строка - Идентификатор объекта для удаления  - object
+// Parameters:
+//  Token         - String - Token                               - token
+//  Identifier - String - Identifier of the object to delete  - object
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция УдалитьОбъект(Знач Токен, Знач Идентификатор) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function DeleteObject(Val Token, Val Identifier) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Identifier);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + Идентификатор;    
-    Ответ     = OPI_Инструменты.Delete(URL, , Заголовки);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + Identifier;    
+    Response     = OPI_Tools.Delete(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить описание файла !NOCLI
+// Get file description !NOCLI
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Описание файла
-Функция ПолучитьОписаниеФайла() Экспорт
+// Return value:
+//  Key-Value Pair - File description
+Function GetFileDescription() Export
     
-    Описание = Новый Соответствие;
-    Описание.Вставить("MIME"        , "image/jpeg");       // MIME-тип загружаемого файла
-    Описание.Вставить("Имя"         , "Новый файл.jpg");   // Имя файла с расширением
-    Описание.Вставить("Описание"    , "Это новый файл");   // Описание файла
-    Описание.Вставить("Родитель"    , "root");             // ID каталога загрузки или "root" для загрузки в корень
+    Description = New Match;
+    Description.Insert("MIME"        , "image/jpeg");       // MIME-type uploading file
+    Description.Insert("Name"         , "New file.jpg");   // File name with extension
+    Description.Insert("Description"    , "This is a new file");   // File description
+    Description.Insert("Parent"    , "root");             // ID directory upload or "root" for upload in root
     
-    Возврат Описание;
+    Return Description;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСКомментариями
+#Region CommentManagement
 
-// Создать комментарий
-// Создает комментарий к файлу или каталогу
+// Create comment
+// Creates a comment for a file or directory
 // 
-// Параметры:
-//  Токен         - Строка - Токен                                                     - token
-//  Идентификатор - Строка - Идентификатор объекта, для которого необходим комментарий - object  
-//  Комментарий   - Строка - Текст комментария                                         - text
+// Parameters:
+//  Token         - String - Token                                                     - token
+//  Identifier - String - Identifier of the object that needs a comment - object  
+//  Comment   - String - Comment text                                         - text
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция СоздатьКомментарий(Знач Токен, Знач Идентификатор, Знач Комментарий) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function CreateComment(Val Token, Val Identifier, Val Comment) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Комментарий);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Identifier);
+    OPI_TypeConversion.GetLine(Comment);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + Идентификатор + "/comments?fields=*"; 
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + Identifier + "/comments?fields=*"; 
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("content", Комментарий);
+    Parameters = New Structure;
+    Parameters.Insert("content", Comment);
     
-    Ответ = OPI_Инструменты.POST(URL, Параметры, Заголовки);
+    Response = OPI_Tools.POST(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить комментарий
-// Получает комментарий по ID
+// Get comment
+// Gets comment by ID
 // 
-// Параметры:
-//  Токен         - Строка - Токен                                                   - token
-//  ИДОбъекта     - Строка - Идентификатор файла или каталога размещения комментария - object
-//  ИДКомментария - Строка - Идентификатор комментария                               - comment
+// Parameters:
+//  Token         - String - Token                                                   - token
+//  ObjectID     - String - Identifier of the file or directory where the comment is located - object
+//  CommentID - String - Comment identifier                               - comment
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьКомментарий(Знач Токен, Знач ИДОбъекта, Знач ИДКомментария) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetComment(Val Token, Val ObjectID, Val CommentID) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДОбъекта);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДКомментария);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ObjectID);
+    OPI_TypeConversion.GetLine(CommentID);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + ИДОбъекта + "/comments/" + ИДКомментария; 
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + ObjectID + "/comments/" + CommentID; 
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("fields", "*");
+    Parameters = New Structure;
+    Parameters.Insert("fields", "*");
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить список комментариев
-// Получает список всех комментариев объекта
+// Get list of comments
+// Gets the list of all comments of the object
 // 
-// Параметры:
-//  Токен     - Строка - Токен                  - token
-//  ИДОбъекта - Строка - Идентификатор объекта  - object
+// Parameters:
+//  Token     - String - Token                  - token
+//  ObjectID - String - Object identifier  - object
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьСписокКомментариев(Знач Токен, Знач ИДОбъекта) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetCommentList(Val Token, Val ObjectID) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДОбъекта);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ObjectID);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + ИДОбъекта + "/comments"; 
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + ObjectID + "/comments"; 
     
-    Параметры = Новый Структура;
-    Параметры.Вставить("fields", "*");
+    Parameters = New Structure;
+    Parameters.Insert("fields", "*");
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Удалить комментарий
-// Удаляет комментарий по ID
+// Delete comment
+// Deletes comment by ID
 // 
-// Параметры:
-//  Токен         - Строка - Токен                                                    - token
-//  ИДОбъекта     - Строка - Идентификатор файла или каталога размещения комментария  - object
-//  ИДКомментария - Строка - Идентификатор комментария                                - comment
+// Parameters:
+//  Token         - String - Token                                                    - token
+//  ObjectID     - String - Identifier of the file or directory where the comment is located  - object
+//  CommentID - String - Comment identifier                                - comment
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция УдалитьКомментарий(Знач Токен, Знач ИДОбъекта, Знач ИДКомментария) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function DeleteComment(Val Token, Val ObjectID, Val CommentID) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДОбъекта);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДКомментария);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ObjectID);
+    OPI_TypeConversion.GetLine(CommentID);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://www.googleapis.com/drive/v3/files/" + ИДОбъекта + "/comments/" + ИДКомментария; 
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://www.googleapis.com/drive/v3/files/" + ObjectID + "/comments/" + CommentID; 
     
-    Ответ = OPI_Инструменты.Delete(URL, , Заголовки);
+    Response = OPI_Tools.Delete(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Процедура ПолучитьСписокОбъектовРекурсивно(Знач Заголовки, МассивОбъектов, Подробно = Ложь, Отбор = "", Страница = "") 
+Procedure GetObjectsListRecursively(Val Headers, ArrayOfObjects, Detailed = False, Filter = "", Page = "") 
     
     URL       = "https://www.googleapis.com/drive/v3/files";
     Files     = "files";
     NPT       = "nextPageToken";
-    Параметры = Новый Структура;
-    Параметры.Вставить("fields", "*");
+    Parameters = New Structure;
+    Parameters.Insert("fields", "*");
     
-    Если ЗначениеЗаполнено(Страница) Тогда
-        Параметры.Вставить("pageToken", Страница);
-    КонецЕсли;
+    If ValueFilled(Page) Then
+        Parameters.Insert("pageToken", Page);
+    EndIf;
     
-    Если ЗначениеЗаполнено(Отбор) И ТипЗнч(Отбор) = Тип("Массив") Тогда     
-        ОтборСтрока = СтрСоединить(Отбор, " and ");
-        Параметры.Вставить("q", ОтборСтрока);       
-    КонецЕсли;
+    If ValueFilled(Filter) And TypeValue(Filter) = Type("Array") Then     
+        FilterString = StrJoin(Filter, " and ");
+        Parameters.Insert("q", FilterString);       
+    EndIf;
     
-    Результат = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Result = OPI_Tools.Get(URL, Parameters, Headers);
         
-    Объекты  = Результат[Files];
-    Страница = Результат[NPT];
+    Objects  = Result[Files];
+    Page = Result[NPT];
         
-    Для Каждого ТекущийОбъект Из Объекты Цикл
-         МассивОбъектов.Добавить(ТекущийОбъект);
-    КонецЦикла;    
+    For Each CurrentObject Of Objects Loop
+         ArrayOfObjects.Add(CurrentObject);
+    EndOfLoop;    
     
-    Если Объекты.Количество() > 0 И ЗначениеЗаполнено(Страница) Тогда
-        ПолучитьСписокОбъектовРекурсивно(Заголовки, МассивОбъектов, Подробно, Отбор, Страница); 
-    КонецЕсли;
+    If Objects.Quantity() > 0 And ValueFilled(Page) Then
+        GetObjectsListRecursively(Headers, ArrayOfObjects, Detailed, Filter, Page); 
+    EndIf;
           
-КонецПроцедуры
+EndProcedure
 
-Процедура РазложитьОбъектыПодробно(Знач Токен, МассивОбъектов) 
+Procedure BreakDownObjectsInDetail(Val Token, ArrayOfObjects) 
        
-    Для Каждого ТекущийОбъект Из МассивОбъектов Цикл
+    For Each CurrentObject Of ArrayOfObjects Loop
         
-        МассивФайлов = Новый Массив;
-        ТекущийИД    = ТекущийОбъект["id"];
+        ArrayOfFiles = New Array;
+        CurrentID    = CurrentObject["id"];
         
-        Результат    = ПолучитьСписокФайлов(Токен, , ТекущийИД);
+        Result    = GetFilesList(Token, , CurrentID);
         
-        Для Каждого Файл Из Результат Цикл
-            МассивФайлов.Добавить(Файл);    
-        КонецЦикла;
+        For Each File Of Result Loop
+            ArrayOfFiles.Add(File);    
+        EndOfLoop;
         
-        ТекущийОбъект.Вставить("files", МассивФайлов);
+        CurrentObject.Insert("files", ArrayOfFiles);
          
-    КонецЦикла;
+    EndOfLoop;
        
-КонецПроцедуры
+EndProcedure
 
-Процедура СформироватьПараметрыЗагрузкиФайла(Описание)
+Procedure FormFileUploadParameters(Description)
     
-    СформированноеОписание = Новый Соответствие;
-    OPI_Инструменты.УдалитьПустыеПоляКоллекции(Описание);
+    FormedDescription = New Match;
+    OPI_Tools.RemoveEmptyCollectionFields(Description);
 
-    СоответствиеПолей = Новый Соответствие;
-    СоответствиеПолей.Вставить("MIME"      , "mimeType");
-    СоответствиеПолей.Вставить("Имя"       , "name");
-    СоответствиеПолей.Вставить("Описание"  , "description");
-    СоответствиеПолей.Вставить("Родитель"  , "parents");
-    СоответствиеПолей.Вставить("Расширение", "fileExtension");
+    FieldMapping = New Match;
+    FieldMapping.Insert("MIME"      , "mimeType");
+    FieldMapping.Insert("Name"       , "name");
+    FieldMapping.Insert("Description"  , "description");
+    FieldMapping.Insert("Parent"  , "parents");
+    FieldMapping.Insert("Extension", "fileExtension");
     
-    Для Каждого Элемент Из Описание Цикл
+    For Each Element Of Description Loop
         
-        Если Элемент.Ключ = "Родитель" Тогда
+        If Element.Key = "Parent" Then
             
-            ТекущееЗначение = Новый Массив;
-            ТекущееЗначение.Добавить(Элемент.Значение);
+            CurrentValue = New Array;
+            CurrentValue.Add(Element.Value);
             
-        Иначе
+        Otherwise
             
-            ТекущееЗначение = Элемент.Значение;
+            CurrentValue = Element.Value;
             
-        КонецЕсли;
+        EndIf;
         
-        ИмяПоля = СоответствиеПолей.Получить(Элемент.Ключ);
-        СформированноеОписание.Вставить(ИмяПоля, ТекущееЗначение);
+        FieldName = FieldMapping.Get(Element.Key);
+        FormedDescription.Insert(FieldName, CurrentValue);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    Описание = СформированноеОписание;
+    Description = FormedDescription;
     
-КонецПроцедуры
+EndProcedure
 
-Функция УправлениеФайлом(Знач Токен, Знач Файл = "", Знач Описание = "", Знач Идентификатор = "") 
+Function FileManagement(Val Token, Val File = "", Val Description = "", Val Identifier = "") 
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Identifier);
     
-    Если ЗначениеЗаполнено(Описание) Тогда
-        OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Описание);
-    КонецЕсли;
+    If ValueFilled(Description) Then
+        OPI_TypeConversion.GetCollection(Description);
+    EndIf;
     
     MimeType = "mimeType";
     
-    Если ЗначениеЗаполнено(Идентификатор) Тогда
-        MIME = ПолучитьИнформациюОбОбъекте(Токен, Идентификатор)[MimeType];
-    Иначе
-        MIME = Описание["MIME"];
-    КонецЕсли;    
+    If ValueFilled(Identifier) Then
+        MIME = GetObjectInformation(Token, Identifier)[MimeType];
+    Otherwise
+        MIME = Description["MIME"];
+    EndIf;    
     
-    Если Не ЗначениеЗаполнено(Описание) Тогда
-        Описание = Новый Соответствие;
-    КонецЕсли;
+    If Not ValueFilled(Description) Then
+        Description = New Match;
+    EndIf;
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    СформироватьПараметрыЗагрузкиФайла(Описание);
-    ОписаниеJSON  = OPI_Инструменты.JSONСтрокой(Описание);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    FormFileUploadParameters(Description);
+    JSONDescription  = OPI_Tools.JSONString(Description);
     
-    СоответствиеФайла = Новый Соответствие;
+    FileMapping = New Match;
     
-    Если ЗначениеЗаполнено(Файл) Тогда
+    If ValueFilled(File) Then
         
-        РазмерЧасти = 268435457;      
-        Размер      = OPI_Инструменты.ПреобразоватьДанныеСПолучениемРазмера(Файл, РазмерЧасти);
+        ChunkSize = 268435457;      
+        Size      = OPI_Tools.ConvertDataWithSizeRetrieval(File, ChunkSize);
    
-        СоответствиеФайла.Вставить(Файл, MIME);
+        FileMapping.Insert(File, MIME);
         
-        Если Размер < РазмерЧасти И ТипЗнч(Файл) = Тип("ДвоичныеДанные") Тогда
-            Ответ = ЗагрузитьМалыйФайл(ОписаниеJSON, СоответствиеФайла, Заголовки, Идентификатор);
-        Иначе
-            Ответ = ЗагрузитьБольшойФайл(Описание, СоответствиеФайла, Заголовки, Идентификатор);
-        КонецЕсли;
+        If Size < ChunkSize And TypeValue(File) = Type("BinaryData") Then
+            Response = UploadSmallFile(JSONDescription, FileMapping, Headers, Identifier);
+        Otherwise
+            Response = UploadLargeFile(Description, FileMapping, Headers, Identifier);
+        EndIf;
         
-    Иначе
-       Ответ = ЗагрузитьМалыйФайл(ОписаниеJSON, СоответствиеФайла, Заголовки, Идентификатор); 
-    КонецЕсли;
+    Otherwise
+       Response = UploadSmallFile(JSONDescription, FileMapping, Headers, Identifier); 
+    EndIf;
          
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ЗагрузитьМалыйФайл(Знач Описание, Знач СоответствиеФайла, Знач Заголовки, Знач Идентификатор = "")
+Function UploadSmallFile(Val Description, Val FileMapping, Val Headers, Val Identifier = "")
     
     URL = "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart";
     
-    Если ЗначениеЗаполнено(Идентификатор) Тогда
-        URL   = СтрЗаменить(URL, "/files", "/files/" + Идентификатор);
-        Ответ = OPI_Инструменты.PatchMultipartRelated(URL, Описание, СоответствиеФайла, Заголовки);
-    Иначе
-        Ответ = OPI_Инструменты.PostMultipartRelated(URL, Описание, СоответствиеФайла, Заголовки);
-    КонецЕсли;
+    If ValueFilled(Identifier) Then
+        URL   = StringReplace(URL, "/files", "/files/" + Identifier);
+        Response = OPI_Tools.PatchMultipartRelated(URL, Description, FileMapping, Headers);
+    Otherwise
+        Response = OPI_Tools.PostMultipartRelated(URL, Description, FileMapping, Headers);
+    EndIf;
 
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ЗагрузитьБольшойФайл(Знач Описание, Знач СоответствиеФайла, Знач Заголовки, Знач Идентификатор = "")
+Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Identifier = "")
     
-    Для Каждого Файл Из СоответствиеФайла Цикл
-        Двоичные = Файл.Ключ;
-        Прервать;
-    КонецЦикла;
+    For Each File Of FileMapping Loop
+        Binary = File.Key;
+        Interrupt;
+    EndOfLoop;
     
     URL = "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable";
     
-    Если ЗначениеЗаполнено(Идентификатор) Тогда
-        URL   = СтрЗаменить(URL, "/files", "/files/" + Идентификатор);
-        Ответ = OPI_Инструменты.Patch(URL, Описание, Заголовки, Истина, Истина);
-    Иначе
-        Ответ = OPI_Инструменты.Post(URL, Описание, Заголовки, Истина, Истина);
-    КонецЕсли;
+    If ValueFilled(Identifier) Then
+        URL   = StringReplace(URL, "/files", "/files/" + Identifier);
+        Response = OPI_Tools.Patch(URL, Description, Headers, True, True);
+    Otherwise
+        Response = OPI_Tools.Post(URL, Description, Headers, True, True);
+    EndIf;
          
-    АдресЗагрузки = Ответ.Заголовки["Location"];
+    UploadURL = Response.Headers["Location"];
     
-    Если Не ЗначениеЗаполнено(АдресЗагрузки) Тогда
-        OPI_Инструменты.ОбработатьОтвет(Ответ);
-        Возврат Ответ;
-    КонецЕсли;
+    If Not ValueFilled(UploadURL) Then
+        OPI_Tools.ProcessResponse(Response);
+        Return Response;
+    EndIf;
        
-	ОтветЗагрузки = ЗагрузитьФайлЧастями(Двоичные, АдресЗагрузки);
-	Ответ         = ?(ЗначениеЗаполнено(ОтветЗагрузки), ОтветЗагрузки, Ответ);
+	UploadResponse = UploadFileInParts(Binary, UploadURL);
+	Response         = ?(ValueFilled(UploadResponse), UploadResponse, Response);
     
-    OPI_Инструменты.ОбработатьОтвет(Ответ);
-    Возврат Ответ;
+    OPI_Tools.ProcessResponse(Response);
+    Return Response;
    
-КонецФункции
+EndFunction
 
-Функция ЗагрузитьФайлЧастями(Знач Двоичные, Знач АдресЗагрузки)
+Function UploadFileInParts(Val Binary, Val UploadURL)
 	
-	Ответ            = "";
-	РазмерЧасти      = 268435456;
-	ПрочитаноБайт    = 0;
-    ТекущаяПозиция   = 0;
-    ОбщийРазмер      = Двоичные.Размер();
-    СтрОбщийРазмер   = OPI_Инструменты.ЧислоВСтроку(ОбщийРазмер);
-    ЧтениеДанных     = Новый ЧтениеДанных(Двоичные);
-    ИсходныйПоток    = ЧтениеДанных.ИсходныйПоток();
+	Response            = "";
+	ChunkSize      = 268435456;
+	BytesRead    = 0;
+    CurrentPosition   = 0;
+    TotalSize      = Binary.Size();
+    StrTotalSize   = OPI_Tools.NumberToString(TotalSize);
+    ReadingData     = New ReadingData(Binary);
+    SourceStream    = ReadingData.SourceStream();
     
-    Пока ПрочитаноБайт < ОбщийРазмер Цикл
+    While BytesRead < TotalSize Loop
             
-        ПрочитаноБайт    = ИсходныйПоток.ТекущаяПозиция();
-        Результат        = ЧтениеДанных.Прочитать(РазмерЧасти);
-        ТекущиеДанные    = Результат.ПолучитьДвоичныеДанные();
-        РазмерТекущих    = ТекущиеДанные.Размер();
-        СледующаяПозиция = ТекущаяПозиция + РазмерТекущих - 1; 
+        BytesRead    = SourceStream.CurrentPosition();
+        Result        = ReadingData.Read(ChunkSize);
+        Current data    = Result.GetBinaryData();
+        CurrentSize    = Current data.Size();
+        NextPosition = CurrentPosition + CurrentSize - 1; 
         
-        Если Не ЗначениеЗаполнено(ТекущиеДанные) Тогда
-            Прервать;
-        КонецЕсли;
+        If Not ValueFilled(Current data) Then
+            Interrupt;
+        EndIf;
         
-        ЗаголовокПотока = "bytes "
-            + OPI_Инструменты.ЧислоВСтроку(ТекущаяПозиция)
+        StreamHeader = "bytes "
+            + OPI_Tools.NumberToString(CurrentPosition)
             + "-" 
-            + OPI_Инструменты.ЧислоВСтроку(СледующаяПозиция) 
+            + OPI_Tools.NumberToString(NextPosition) 
             + "/" 
-            + СтрОбщийРазмер;
+            + StrTotalSize;
             
-        ДопЗаголовки     = Новый Соответствие;
-        ДопЗаголовки.Вставить("Content-Length", OPI_Инструменты.ЧислоВСтроку(РазмерТекущих));
-        ДопЗаголовки.Вставить("Content-Range" , ЗаголовокПотока); 
-        ДопЗаголовки.Вставить("Content-Type"  , "application/octet-stream");
+        AdditionalHeaders     = New Match;
+        AdditionalHeaders.Insert("Content-Length", OPI_Tools.NumberToString(CurrentSize));
+        AdditionalHeaders.Insert("Content-Range" , StreamHeader); 
+        AdditionalHeaders.Insert("Content-Type"  , "application/octet-stream");
         
-        Ответ = OPI_Инструменты.Put(АдресЗагрузки, ТекущиеДанные, ДопЗаголовки, Ложь, Истина);
+        Response = OPI_Tools.Put(UploadURL, Current data, AdditionalHeaders, False, True);
         
-		РезультатПроверки = ПроверитьЗагрузкуЧасти(Ответ, СтрОбщийРазмер, ДопЗаголовки, АдресЗагрузки, ТекущаяПозиция);
+		CheckResult = CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
 		
-		Если ЗначениеЗаполнено(РезультатПроверки) Тогда
-			Возврат РезультатПроверки;
-		КонецЕсли;
+		If ValueFilled(CheckResult) Then
+			Return CheckResult;
+		EndIf;
         
-        // !OInt КБайт = 1024;
-        // !OInt МБайт = КБайт * КБайт;
-		// !OInt Сообщить(OPI_Инструменты.ИнформацияОПрогрессе(ТекущаяПозиция, ОбщийРазмер, "МБ", МБайт));
+        // !OInt KBytes = 1024;
+        // !OInt MByte = KBytes * KBytes;
+		// !OInt Notify(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
         
-        // !OInt ВыполнитьСборкуМусора();
-        // !OInt ОсвободитьОбъект(ТекущиеДанные);
+        // !OInt PerformGarbageCollection();
+        // !OInt ReleaseObject(Current data);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ПроверитьЗагрузкуЧасти(Ответ, СтрОбщийРазмер, ДопЗаголовки, АдресЗагрузки, ТекущаяПозиция)
+Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition)
 	
-    НачалоКодовОшибок = 400;
-    КонецКодовПадений = 600;
-    НачалоКодовУспеха = 200;
-    КонецКодовУспеха  = 300;
-    Перенаправление   = 308;
+    StartOfErrorCodes = 400;
+    EndOfFailureCodes = 600;
+    StartOfSuccessCodes = 200;
+    EndOfSuccessCodes  = 300;
+    Redirection   = 308;
     
-    Если Ответ.КодСостояния >= НачалоКодовОшибок И Ответ.КодСостояния < КонецКодовПадений Тогда
+    If Response.StatusCode >= StartOfErrorCodes And Response.StatusCode < EndOfFailureCodes Then
          
-        ЗаголовокПотока = "bytes */" + СтрОбщийРазмер;
-        ДопЗаголовки.Вставить("Content-Range" , ЗаголовокПотока);
+        StreamHeader = "bytes */" + StrTotalSize;
+        AdditionalHeaders.Insert("Content-Range" , StreamHeader);
         
-        ОтветПроверки = OPI_Инструменты.Put(АдресЗагрузки, "", ДопЗаголовки, Ложь, Истина);
+        CheckResponse = OPI_Tools.Put(UploadURL, "", AdditionalHeaders, False, True);
         
-        Если ОтветПроверки.КодСостояния >= НачалоКодовУспеха И ОтветПроверки.КодСостояния < КонецКодовУспеха Тогда
+        If CheckResponse.StatusCode >= StartOfSuccessCodes And CheckResponse.StatusCode < EndOfSuccessCodes Then
         	
-            OPI_Инструменты.ОбработатьОтвет(ОтветПроверки);
-            Возврат ОтветПроверки;
+            OPI_Tools.ProcessResponse(CheckResponse);
+            Return CheckResponse;
             
-        ИначеЕсли ОтветПроверки.КодСостояния = Перенаправление Тогда
+        ElseIf CheckResponse.StatusCode = Redirection Then
         	
-            ЗагруженныеДанные = Ответ.Заголовки["Range"];
+            UploadedData = Response.Headers["Range"];
             
-        Иначе
+        Otherwise
         	
-            OPI_Инструменты.ОбработатьОтвет(Ответ);
-        	Возврат Ответ;
+            OPI_Tools.ProcessResponse(Response);
+        	Return Response;
         	
-        КонецЕсли;
+        EndIf;
         
-    Иначе
-        ЗагруженныеДанные = Ответ.Заголовки["Range"];
-    КонецЕсли;
+    Otherwise
+        UploadedData = Response.Headers["Range"];
+    EndIf;
         
-    Если Не ЗначениеЗаполнено(ЗагруженныеДанные) Тогда
-        OPI_Инструменты.ОбработатьОтвет(Ответ);
-        Возврат Ответ;
-    КонецЕсли;
+    If Not ValueFilled(UploadedData) Then
+        OPI_Tools.ProcessResponse(Response);
+        Return Response;
+    EndIf;
     
-    ЗагруженныеДанные = СтрЗаменить(ЗагруженныеДанные, "bytes=", "");
-    МассивИнформации  = СтрРазделить(ЗагруженныеДанные, "-", Ложь);
-    НеобходимоЧастей  = 2;
+    UploadedData = StringReplace(UploadedData, "bytes=", "");
+    ArrayOfInformation  = StrSplit(UploadedData, "-", False);
+    PartsRequired  = 2;
     
-    Если Не МассивИнформации.Количество() = НеобходимоЧастей Тогда
-    	OPI_Инструменты.ОбработатьОтвет(Ответ);
-        Возврат Ответ;
-    КонецЕсли;
+    If Not ArrayOfInformation.Quantity() = PartsRequired Then
+    	OPI_Tools.ProcessResponse(Response);
+        Return Response;
+    EndIf;
     
-    ТекущаяПозиция = Число(МассивИнформации[1]) + 1;
+    CurrentPosition = Number(ArrayOfInformation[1]) + 1;
     
-    Возврат "";
+    Return "";
         
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion

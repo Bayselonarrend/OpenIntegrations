@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Twitter.os
-// Библиотека: Twitter
-// Команда CLI: twitter
+﻿// Location OS: ./OInt/core/Modules/OPI_Twitter.os
+// Library: Twitter
+// CLI Command: twitter
 
 // MIT License
 
@@ -25,8 +25,8 @@
 // SOFTWARE.
 
 // https://github.com/Bayselonarrend/OpenIntegrations
-// Если в не знаете с чего начать, то стоит найти метод ПолучитьСтандартныеПараметры()
-// и почитать комментарии
+// If in не зtoете with чего toчать, то withтоит toйти метоd GetStandardParameters()
+// and read comments
 
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
@@ -36,647 +36,647 @@
 
 //@skip-check method-too-many-params
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область ДанныеИНастройка
+#Region DataAndSettings
 
-// Получить ссылку для авторизации
-// Формирует ссылку для авторизации через браузер
+// Get authorization link
+// Forms a link for authorization via the browser
 // 
-// Параметры:
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Строка -  URL для перехода в браузере
-Функция ПолучитьСсылкуАвторизации(Параметры = "") Экспорт
+// Return value:
+//  String -  URL for browser transition
+Function GetAuthorizationLink(Parameters = "") Export
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_ = GetStandardParameters(Parameters);
     
-    ПараметрыURL = Новый Структура;
+    URLParameters = New Structure;
         
-    ПараметрыURL.Вставить("response_type"        , "code");
-    ПараметрыURL.Вставить("client_id"            , Параметры_["client_id"]);
-    ПараметрыURL.Вставить("redirect_uri"         , Параметры_["redirect_uri"]);
-    ПараметрыURL.Вставить("scope"                , Параметры_["scope"]);
-    ПараметрыURL.Вставить("state"                , "state");
-    ПараметрыURL.Вставить("code_challenge"       , "challenge");
-    ПараметрыURL.Вставить("code_challenge_method", "plain");
+    URLParameters.Insert("response_type"        , "code");
+    URLParameters.Insert("client_id"            , Parameters_["client_id"]);
+    URLParameters.Insert("redirect_uri"         , Parameters_["redirect_uri"]);
+    URLParameters.Insert("scope"                , Parameters_["scope"]);
+    URLParameters.Insert("state"                , "state");
+    URLParameters.Insert("code_challenge"       , "challenge");
+    URLParameters.Insert("code_challenge_method", "plain");
         
-    ПараметрыURL = OPI_Инструменты.ПараметрыЗапросаВСтроку(ПараметрыURL);
-    Линк = "https://twitter.com/i/oauth2/authorize" + ПараметрыURL;
+    URLParameters = OPI_Tools.RequestParametersToString(URLParameters);
+    Link = "https://twitter.com/i/oauth2/authorize" + URLParameters;
         
-    Возврат Линк;
+    Return Link;
     
-КонецФункции
+EndFunction
 
-// Получить токен
-// Получает токен по коду, полученному при авторизации по ссылке из ПолучитьСсылкуАвторизации
+// Get token
+// Gets the token by the code obtained during authorization via the link from GetAuthorizationLink
 // 
-// Параметры:
-//  Код        - Строка              - Код, полученный из авторизации См.ПолучитьСсылкуАвторизации - code
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Code        - String              - Code obtained from authorization See GetAuthorizationLink - code
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция ПолучитьТокен(Знач Код, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function GetToken(Val Code, Val Parameters = "") Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Код);
+    OPI_TypeConversion.GetLine(Code);
         
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_ = GetStandardParameters(Parameters);
 
-    ПараметрыЗапроса = Новый Структура;
-    ПараметрыЗапроса.Вставить("code"         , Код);
-    ПараметрыЗапроса.Вставить("grant_type"   , "authorization_code");
-    ПараметрыЗапроса.Вставить("client_id"    , Параметры_["client_id"]);
-    ПараметрыЗапроса.Вставить("redirect_uri" , Параметры_["redirect_uri"]);
-    ПараметрыЗапроса.Вставить("code_verifier", "challenge");
+    RequestParameters = New Structure;
+    RequestParameters.Insert("code"         , Code);
+    RequestParameters.Insert("grant_type"   , "authorization_code");
+    RequestParameters.Insert("client_id"    , Parameters_["client_id"]);
+    RequestParameters.Insert("redirect_uri" , Parameters_["redirect_uri"]);
+    RequestParameters.Insert("code_verifier", "challenge");
     
-    Ответ = OPI_Инструменты.Post("https://api.twitter.com/2/oauth2/token"
-        , ПараметрыЗапроса, , Ложь);
+    Response = OPI_Tools.Post("https://api.twitter.com/2/oauth2/token"
+        , RequestParameters, , False);
         
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Обновить токен 
-// Обновляет v2 токен при помощи refresh_token
+// Refresh token 
+// Updates the v2 token using the refresh_token
 // 
-// Параметры:
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция ОбновитьТокен(Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function RefreshToken(Val Parameters = "") Export
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_ = GetStandardParameters(Parameters);
     Refresh    = "refresh_token";
     
-    ПараметрыЗапроса = Новый Структура;
-    ПараметрыЗапроса.Вставить(Refresh        , Параметры_[Refresh]);
-    ПараметрыЗапроса.Вставить("grant_type"   , Refresh);
-    ПараметрыЗапроса.Вставить("client_id"    , Параметры_["client_id"]);
+    RequestParameters = New Structure;
+    RequestParameters.Insert(Refresh        , Parameters_[Refresh]);
+    RequestParameters.Insert("grant_type"   , Refresh);
+    RequestParameters.Insert("client_id"    , Parameters_["client_id"]);
     
-    Ответ = OPI_Инструменты.Post("https://api.twitter.com/2/oauth2/token"
-    , ПараметрыЗапроса, , Ложь);
+    Response = OPI_Tools.Post("https://api.twitter.com/2/oauth2/token"
+    , RequestParameters, , False);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
 // !NOCLI
-// Метод для вставки в http-сервис, адрес которого указывается в redirect_uri
-// Вызывает метод получения токена, так как для получения токена из кода, приходящего
-// на redirect_uri после авторизации через браузер есть всего 30 секунд
+// Method for insertion into an http service, the address of which is specified in redirect_uri
+// Calls the token acquisition method, as for obtaining a token from the code received
+// on redirect_uri after authorization via the browser is only 30 seconds
 // 
-// Параметры:
-//  Запрос - HTTPСервисЗапрос - Запрос, приходящий на http-сервис
+// Parameters:
+//  Request - HTTPServiceRequest - Request coming to the http service
 // 
-// Возвращаемое значение:
-//  HTTPОтвет, Произвольный, ДвоичныеДанные - Результат чтения JSON ответа сервера
-Функция ОбработкаВходящегоЗапросаПослеАвторизации(Запрос) Экспорт
+// Return value:
+//  HTTPResponse, Arbitrary, BinaryData - Result of reading the JSON response from the server
+Function HandleIncomingRequestAfterAuthorization(Request) Export
     
-    Код         = Запрос.ПараметрыЗапроса["code"];    
-    ОтветТокен  = ПолучитьТокен(Код);
+    Code         = Request.RequestParameters["code"];    
+    TokenResponse  = GetToken(Code);
     
     // BSLLS:CommentedCode-off
-    // Предпочтительное хранение токенов
-    // Константы.TwitterRefresh.Установить(ОтветТокен["refresh_token"]);
-    // Константы.TwitterToken.Установить(ОтветТокен["access_token"]);
+    // Preferred token storage
+    // Constants.TwitterRefresh.Уwithтаноinить(TokenResponse["refresh_token"]);
+    // Constants.TwitterToken.Уwithтаноinить(TokenResponse["access_token"]);
     // BSLLS:CommentedCode-on
     
-    Возврат ОтветТокен;
+    Return TokenResponse;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область Твиты
+#Region Tweets
 
 // !NOCLI
-// Создать произвольный твит
+// Create custom tweet
 // 
-// Параметры:
-//  Текст - Строка        -  Текст твита
-//  МассивМедиа           -  Массив из Строка,ДвоичныеДанные -  Массив двоичных данных или путей к файлам
-//  МассивВариантовОпроса - Массив из Строка -  Массив вариантов опроса, если необходимо
-//  ДлительностьОпроса    - Строка,Число -  Длительность опроса, если необходимо (опрос без длительности не создается)
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text - String        -  Tweet text
+//  MediaArray           -  Array from String, BinaryData -  Array of binary data or file paths
+//  PollOptionsArray - Array of Strings -  Array of poll options, if necessary
+//  PollDuration    - String, Number -  Poll duration, еwithли необхоdимо (опроwith without dлительноwithти не withозdаетwithя)
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция СоздатьПроизвольныйТвит(Знач Текст = ""
-    , Знач МассивМедиа = ""
-    , Знач МассивВариантовОпроса = ""
-    , Знач ДлительностьОпроса = ""
-    , Знач Параметры = "") Экспорт 
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function CreateCustomTweet(Val Text = ""
+    , Val MediaArray = ""
+    , Val PollOptionsArray = ""
+    , Val PollDuration = ""
+    , Val Parameters = "") Export 
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ДлительностьОпроса);
+    OPI_TypeConversion.GetLine(Text);
+    OPI_TypeConversion.GetLine(PollDuration);
     
-    Если ЗначениеЗаполнено(МассивМедиа) Тогда
-        OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивМедиа);
-    КонецЕсли;
+    If ValueFilled(MediaArray) Then
+        OPI_TypeConversion.GetCollection(MediaArray);
+    EndIf;
     
-    Если ЗначениеЗаполнено(МассивВариантовОпроса) Тогда
-        OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивВариантовОпроса);
-    КонецЕсли;
+    If ValueFilled(PollOptionsArray) Then
+        OPI_TypeConversion.GetCollection(PollOptionsArray);
+    EndIf;
     
-    Параметры_         = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_         = GetStandardParameters(Parameters);
     URL                = "https://api.twitter.com/2/tweets";
-    Массив             = "Массив";    
-    Поля               = Новый Соответствие;
+    Array             = "Array";    
+    Fields               = New Match;
     
-    Если ЗначениеЗаполнено(Текст) Тогда
-        Поля.Вставить("text", Текст);
-    КонецЕсли;
+    If ValueFilled(Text) Then
+        Fields.Insert("text", Text);
+    EndIf;
     
-    Если ТипЗнч(МассивВариантовОпроса) = Тип(Массив) И ЗначениеЗаполнено(ДлительностьОпроса) Тогда
+    If TypeValue(PollOptionsArray) = Type(Array) And ValueFilled(PollDuration) Then
         
-        ДлительностьОпроса = Число(ДлительностьОпроса);
+        PollDuration = Number(PollDuration);
         
-        Если МассивВариантовОпроса.Количество() > 0 Тогда
+        If PollOptionsArray.Quantity() > 0 Then
         	
-        	СтруктураВарианта = Новый Структура("options,duration_minutes", МассивВариантовОпроса, ДлительностьОпроса);
-            Поля.Вставить("poll", СтруктураВарианта);
+        	OptionStructure = New Structure("options,duration_minutes", PollOptionsArray, PollDuration);
+            Fields.Insert("poll", OptionStructure);
             
-        КонецЕсли;
+        EndIf;
         
-    КонецЕсли;
+    EndIf;
     
-    Если ТипЗнч(МассивМедиа) = Тип(Массив) Тогда
-        Если МассивМедиа.Количество() > 0 Тогда
-            Поля.Вставить("media", Новый Структура("media_ids", МассивМедиа));
-        КонецЕсли;
-    КонецЕсли;
+    If TypeValue(MediaArray) = Type(Array) Then
+        If MediaArray.Quantity() > 0 Then
+            Fields.Insert("media", New Structure("media_ids", MediaArray));
+        EndIf;
+    EndIf;
     
-    Авторизация = СоздатьЗаголовокАвторизацииV2(Параметры_);
-    Ответ       = OPI_Инструменты.Post(URL, Поля, Авторизация);
+    Authorization = CreateAuthorizationHeaderV2(Parameters_);
+    Response       = OPI_Tools.Post(URL, Fields, Authorization);
 
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать текстовый твит
-// Создает твит без вложений
+// Create text tweet
+// Creates a tweet without attachments
 // 
-// Параметры:
-//  Текст      - Строка              - Текст твита                     - text
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text      - String              - Tweet text                     - text
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция СоздатьТекстовыйТвит(Знач Текст, Знач Параметры = "") Экспорт
-    Возврат СоздатьПроизвольныйТвит(Текст, , , , Параметры);    
-КонецФункции
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function CreateTextTweet(Val Text, Val Parameters = "") Export
+    Return CreateCustomTweet(Text, , , , Parameters);    
+EndFunction
 
-// Создать твит картинки
-// Создает твит с картинкой вложением
+// Create image tweet
+// Creates a tweet with an image attachment
 // 
-// Параметры:
-//  Текст          - Строка                          - Текст твита            - text
-//  МассивКартинок - Массив из Строка,ДвоичныеДанные - Массив файлов картинок - pictures
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text          - String                          - Tweet text            - text
+//  ImageArray - Array from String, BinaryData - Image files array - pictures
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция СоздатьТвитКартинки(Знач Текст, Знач МассивКартинок, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function Create image tweet(Val Text, Val ImageArray, Val Parameters = "") Export
     
-    МассивМедиа = ЗагрузитьМассивВложений(МассивКартинок, "tweet_image", Параметры);
-    Возврат СоздатьПроизвольныйТвит(Текст, МассивМедиа, , , Параметры);    
+    MediaArray = Upload attachments array(ImageArray, "tweet_image", Parameters);
+    Return CreateCustomTweet(Text, MediaArray, , , Parameters);    
     
-КонецФункции
+EndFunction
 
-// Создать твит гифки
-// Создает твит с вложением-гифкой
+// Create gif tweet
+// Creates a tweet with a gif attachment
 // 
-// Параметры:
-//  Текст       - Строка                          - Текст твита         - text
-//  МассивГифок - Массив из Строка,ДвоичныеДанные - Массив файлов гифок - gifs
-//  Параметры   - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text       - String                          - Tweet text         - text
+//  Gif array - Array from String, BinaryData - Gif files array - gifs
+//  Parameters   - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция СоздатьТвитГифки(Знач Текст, Знач МассивГифок, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function CreateGifTweet(Val Text, Val Gif array, Val Parameters = "") Export
     
-    МассивМедиа = ЗагрузитьМассивВложений(МассивГифок, "tweet_gif", Параметры);
-    Возврат СоздатьПроизвольныйТвит(Текст, МассивМедиа, , , Параметры);    
+    MediaArray = Upload attachments array(Gif array, "tweet_gif", Parameters);
+    Return CreateCustomTweet(Text, MediaArray, , , Parameters);    
     
-КонецФункции
+EndFunction
 
-// Создать твит видео
-// Создает твит с видеовложением
+// Create video tweet
+// Creates a tweet with a video attachment
 // 
-// Параметры:
-//  Текст       - Строка                          - Текст твита         - text
-//  МассивВидео - Массив из Строка,ДвоичныеДанные - Массив файлов видео - videos
-//  Параметры   - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text       - String                          - Tweet text         - text
+//  Video array - Array from String, BinaryData - Video files array - videos
+//  Parameters   - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция СоздатьТвитВидео(Знач Текст, Знач МассивВидео, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function CreateVideoTweet(Val Text, Val Video array, Val Parameters = "") Export
     
-    МассивМедиа = ЗагрузитьМассивВложений(МассивВидео, "tweet_video", Параметры);
-    Возврат СоздатьПроизвольныйТвит(Текст, МассивМедиа, , , Параметры);
+    MediaArray = Upload attachments array(Video array, "tweet_video", Parameters);
+    Return CreateCustomTweet(Text, MediaArray, , , Parameters);
     
-КонецФункции
+EndFunction
 
-// Создать твит опрос
-// Создает твит с опросом
+// Create poll tweet
+// Creates a tweet with a poll
 // 
-// Параметры:
-//  Текст           - Строка           - Текст твита               - text
-//  МассивВариантов - Массив из Строка - Массив вариантов опроса   - options
-//  Длительность    - Строка,Число     - Длительность опроса       - duration
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text           - String           - Tweet text               - text
+//  OptionArray - Array of Strings - Poll options array   - options
+//  Duration    - String, Number     - Poll duration       - duration
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Twitter
-Функция СоздатьТвитОпрос(Знач Текст, Знач МассивВариантов, Знач Длительность, Знач Параметры = "") Экспорт
-    Возврат СоздатьПроизвольныйТвит(Текст, , МассивВариантов, Длительность, Параметры);    
-КонецФункции
+// Return value:
+//  Key-Value Pair - serialized JSON response from Twitter
+Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export
+    Return CreateCustomTweet(Text, , OptionArray, Duration, Parameters);    
+EndFunction
 
-// Загрузить массив вложений !NOCLI
-// Загружает файлы на сервер и возвращает их ID
+// Upload attachments array !NOCLI
+// Uploads files to the server and returns their IDs
 // 
-// Параметры:
-//  МассивФайлов - Массив из Строка, ДвоичныеДанные -  Массив файлов
-//  ТипВложений  - Строка -  Тип вложений
-//  Параметры    - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  ArrayOfFiles - Array from String, BinaryData -  Files array
+//  AttachmentsType  - String -  Attachments type
+//  Parameters    - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Массив Из Строка -  Массив ID медиа
-Функция ЗагрузитьМассивВложений(Знач МассивФайлов, Знач ТипВложений, Знач Параметры = "") Экспорт
+// Return value:
+//  Array Of String -  Media ID array
+Function Upload attachments array(Val ArrayOfFiles, Val AttachmentsType, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ТипВложений);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивФайлов);
+    OPI_TypeConversion.GetLine(AttachmentsType);
+    OPI_TypeConversion.GetCollection(ArrayOfFiles);
     
-    МассивМедиа = Новый Массив;
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);
+    MediaArray = New Array;
+    Parameters_  = GetStandardParameters(Parameters);
     MIS         = "media_id_string";
     
-    Если ЗначениеЗаполнено(МассивФайлов) Тогда
+    If ValueFilled(ArrayOfFiles) Then
                  
-        Для Каждого ФайлОтправки Из МассивФайлов Цикл
+        For Each SendingFile Of ArrayOfFiles Loop
                        
-            OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(ФайлОтправки);
+            OPI_TypeConversion.GetBinaryData(SendingFile);
             
-            Ответ   = ЗагрузитьМедиафайл(ФайлОтправки, ТипВложений, Параметры_);
-            IDМедиа = Ответ[MIS];
+            Response   = UploadMediaFile(SendingFile, AttachmentsType, Parameters_);
+            MediaID = Response[MIS];
             
-            Если Не ЗначениеЗаполнено(IDМедиа) Тогда
-                Возврат Ответ;
-            КонецЕсли;
+            If Not ValueFilled(MediaID) Then
+                Return Response;
+            EndIf;
             
-            МассивМедиа.Добавить(IDМедиа);
+            MediaArray.Add(MediaID);
             
-        КонецЦикла;
+        EndOfLoop;
     
-    КонецЕсли;
+    EndIf;
         
-    Возврат МассивМедиа;
+    Return MediaArray;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ЗагрузитьМедиафайл(Знач Файл, Знач Тип, Знач Параметры) 
+Function UploadMediaFile(Val File, Val Type, Val Parameters) 
    
-    OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
+    OPI_TypeConversion.GetBinaryData(File);
    
-    ВидЗапроса = "POST";    
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
+    RequestType = "POST";    
+    Parameters_ = GetStandardParameters(Parameters);
     URL        = "https://upload.twitter.com/1.1/media/upload.json";
      
-    Если Тип = "tweet_image" Тогда 
+    If Type = "tweet_image" Then 
         
-        Поля = Новый Структура;
-        Поля.Вставить("media_data"    , Base64Строка(Файл));
-        Поля.Вставить("media_category", Тип);
+        Fields = New Structure;
+        Fields.Insert("media_data"    , Base64String(File));
+        Fields.Insert("media_category", Type);
         
-        Авторизация = СоздатьЗаголовокАвторизацииV1(Параметры_, Поля, ВидЗапроса, URL);        
-        Ответ       = OPI_Инструменты.Post(URL, Поля, Авторизация, Ложь);
+        Authorization = CreateAuthorizationHeaderV1(Parameters_, Fields, RequestType, URL);        
+        Response       = OPI_Tools.Post(URL, Fields, Authorization, False);
         
-    Иначе
+    Otherwise
         
-        Ответ = ЗагрузитьМедиаЧастями(Файл, Тип, ВидЗапроса, URL, Параметры_);
+        Response = UploadMediaInParts(File, Type, RequestType, URL, Parameters_);
         
-    КонецЕсли;
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ЗагрузитьМедиаЧастями(Знач Файл, Знач Тип, Знач ВидЗапроса, Знач URL, Параметры)
+Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parameters)
     
-    Единица          = 1024;
-    Количество       = 4;
+    Unit          = 1024;
+    Quantity       = 4;
     MediaKey         = "media_key";
     MIS              = "media_id_string";
     Command          = "command";
-    Размер           = Файл.Размер();
+    Size           = File.Size();
     
-    СоответствиеMIME = Новый Соответствие;
-    СоответствиеMIME.Вставить("tweet_image", "image/jpeg");
-    СоответствиеMIME.Вставить("tweet_video", "video/mp4");
-    СоответствиеMIME.Вставить("tweet_gif"  , "image/gif");
+    MIMETypeMapping = New Match;
+    MIMETypeMapping.Insert("tweet_image", "image/jpeg");
+    MIMETypeMapping.Insert("tweet_video", "video/mp4");
+    MIMETypeMapping.Insert("tweet_gif"  , "image/gif");
     
-    РазмерЧасти  = Количество * Единица * Единица;
-    МассивЧтения = РазделитьДвоичныеДанные(Файл, РазмерЧасти);
+    ChunkSize  = Quantity * Unit * Unit;
+    ArrayReading = SplitBinaryData(File, ChunkSize);
     
-    Поля = Новый Структура;
-    Поля.Вставить(Command          , "INIT");
-    Поля.Вставить("total_bytes"    , OPI_Инструменты.ЧислоВСтроку(Размер));
-    Поля.Вставить("media_type"     , СоответствиеMIME.Получить(Тип));
-    Поля.Вставить("media_category" , Тип);
+    Fields = New Structure;
+    Fields.Insert(Command          , "INIT");
+    Fields.Insert("total_bytes"    , OPI_Tools.NumberToString(Size));
+    Fields.Insert("media_type"     , MIMETypeMapping.Get(Type));
+    Fields.Insert("media_category" , Type);
     
-    Авторизация = СоздатьЗаголовокАвторизацииV1(Параметры, Поля, ВидЗапроса, URL);
+    Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, RequestType, URL);
 
-    ОтветИнициализации = OPI_Инструменты.Post(URL, Поля, Авторизация, Ложь);
-    KeyИнициализации   = ОтветИнициализации[MediaKey];
-    IDИнициализации    = ОтветИнициализации[MIS];
+    InitializationResponse = OPI_Tools.Post(URL, Fields, Authorization, False);
+    InitializationKey   = InitializationResponse[MediaKey];
+    InitializationID    = InitializationResponse[MIS];
     
-    Если Не ЗначениеЗаполнено(KeyИнициализации) Или Не ЗначениеЗаполнено(IDИнициализации) Тогда
-        Возврат ОтветИнициализации;     
-    КонецЕсли;
+    If Not ValueFilled(InitializationKey) Or Not ValueFilled(InitializationID) Then
+        Return InitializationResponse;     
+    EndIf;
     
-    Счетчик = 0;
+    Counter = 0;
     
-    Для Каждого Часть Из МассивЧтения Цикл
+    For Each Part Of ArrayReading Loop
         
-        Поля = Новый Структура;
-        Поля.Вставить(Command           , "APPEND");
-        Поля.Вставить("media_key"       , KeyИнициализации);
-        Поля.Вставить("segment_index"   , OPI_Инструменты.ЧислоВСтроку(Счетчик));
-        Поля.Вставить("media"           , Часть);
+        Fields = New Structure;
+        Fields.Insert(Command           , "APPEND");
+        Fields.Insert("media_key"       , InitializationKey);
+        Fields.Insert("segment_index"   , OPI_Tools.NumberToString(Counter));
+        Fields.Insert("media"           , Part);
 
-        Авторизация = СоздатьЗаголовокАвторизацииV1(Параметры, Новый Структура, ВидЗапроса, URL);
+        Authorization = CreateAuthorizationHeaderV1(Parameters, New Structure, RequestType, URL);
         
-        OPI_Инструменты.PostMultipart(URL, Поля, , , Авторизация);
+        OPI_Tools.PostMultipart(URL, Fields, , , Authorization);
         
-        Счетчик = Счетчик + 1;
+        Counter = Counter + 1;
         
-    КонецЦикла;
+    EndOfLoop;
     
-    Поля = Новый Структура;
-    Поля.Вставить(Command   , "FINALIZE");
-    Поля.Вставить("media_id", IDИнициализации);
+    Fields = New Structure;
+    Fields.Insert(Command   , "FINALIZE");
+    Fields.Insert("media_id", InitializationID);
     
-    СтатусОбработки = ПолучитьСтатусОбработки(Параметры, Поля, URL);
+    ProcessingStatus = GetProcessingStatus(Parameters, Fields, URL);
     
-    Если Не ТипЗнч(СтатусОбработки) = Тип("Строка") Тогда
-        Возврат СтатусОбработки;
-    КонецЕсли;
+    If Not TypeValue(ProcessingStatus) = Type("String") Then
+        Return ProcessingStatus;
+    EndIf;
             
-    Ответ = ОжидатьЗавершенияОбработки(СтатусОбработки, IDИнициализации, URL, Параметры);
+    Response = WaitForProcessingCompletion(ProcessingStatus, InitializationID, URL, Parameters);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-Функция ОжидатьЗавершенияОбработки(Знач СтатусОбработки, Знач IDИнициализации, Знач URL, Знач Параметры)
+Function WaitForProcessingCompletion(Val ProcessingStatus, Val InitializationID, Val URL, Val Parameters)
     
     ProcessingInfo   = "processing_info";
     Command          = "command";
-    Поля             = Новый Структура;
+    Fields             = New Structure;
     
-    Поля.Вставить(Command   , "STATUS");
-    Поля.Вставить("media_id", IDИнициализации);
+    Fields.Insert(Command   , "STATUS");
+    Fields.Insert("media_id", InitializationID);
 
-    Пока Строка(СтатусОбработки) = "pending" Или Строка(СтатусОбработки) = "in_progress" Цикл
+    While String(ProcessingStatus) = "pending" Or String(ProcessingStatus) = "in_progress" Loop
          
-        Авторизация     = СоздатьЗаголовокАвторизацииV1(Параметры, Поля, "GET", URL);        
-        Ответ           = OPI_Инструменты.Get(URL, Поля, Авторизация);     
-        Информация      = Ответ[ProcessingInfo];
+        Authorization     = CreateAuthorizationHeaderV1(Parameters, Fields, "GET", URL);        
+        Response           = OPI_Tools.Get(URL, Fields, Authorization);     
+        Information      = Response[ProcessingInfo];
 
-        Если Не ЗначениеЗаполнено(Информация) Тогда
-            Возврат Ответ;
-        КонецЕсли;
+        If Not ValueFilled(Information) Then
+            Return Response;
+        EndIf;
         
-        СтатусОбработки = Информация["state"];
+        ProcessingStatus = Information["state"];
         
-        Если Не ЗначениеЗаполнено(СтатусОбработки) Тогда
-            Возврат Ответ;
-        КонецЕсли;
+        If Not ValueFilled(ProcessingStatus) Then
+            Return Response;
+        EndIf;
        
-    КонецЦикла;
+    EndOfLoop;
     
-    Если СтатусОбработки = "failed" Тогда
-        ВызватьИсключение "Твиттер не смог обработать загруженное вами видео";
-    КонецЕсли;
+    If ProcessingStatus = "failed" Then
+        RaiseException "Twitter could not process the video you uploaded";
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция ПолучитьСтандартныеПараметры(Знач Параметры = "")
+Function GetStandardParameters(Val Parameters = "")
     
-    // Здесь собрано определение данных, необходимых для работы.
-    // Для Twitter это довольно значительный набор, что обсуловлено наличием сразу 2-х API,
-    // которые, при этом, созданы не для разныз задач, но просто являются версиями друг друга.
-    // Актуальной версией API является v2 и она требует получения временных токенов. Несмотря на то,
-    // что Twitter настаивает на использовании этой актуальной версии, они как-то умудрились не перенести
-    // механизм загрузки файлов и некоторые другие из старой версии - v1.1. Поэтому что-то нужно делать 
-    // на версии 1.1, а что-то на 2: вплоть до того что они убрали возможность постить твиты из v1.1,
-    // но только через нее в твит можно добавить картинку. При этом способы авторизации и токены у них разные
+    // Зdеwithь withобрано опреdеление data, необхоdимых for work.
+    // For Twitter this dоinольно зtoчительный toбор, which is due to the presence of two at once API,
+    // toоторые, при thisм, withозdаны не for разныз заdач, но проwithто яinляютwithя inерwithиями dруг dруга.
+    // Аtoтуальной inерwithией API яinляетwithя v2 и оto требует получения inременных тоtoеноin. Notwithмотря to то,
+    // that Twitter insists on using this latest version, they somehow managed not to transfer
+    // file upload mechanism and some others from the old version - v1.1. Therefore, something needs to be done 
+    // to inерwithии 1.1, and something on 2: up to the point that they removed the ability to post tweets from v1.1,
+    // but only through it you can add a picture to the tweet. At the same time, their authentication methods and tokens are different
     
-    // Мировая гигокорпорация Илона Маска, кстати, напоминаю ;)
+    // Мироinая гигоtoорпорация Andлоto Маwithtoа, towithтати, toпомиtoю ;)
     
-    // P.S Далее часто упоминается "страница настроек Twitter Developer" - это 
-    // https://developer.twitter.com/en/portal/dashboard и выбор конкретного проекта из списка (значек c ключем)
+    // P.S Далее чаwithто упомиtoетwithя "withтраница towithтроеto Twitter Developer" - this 
+    // https://developer.twitter.com/en/portal/dashboard и inыбор toонtoретного проеtoта from withпиwithtoа (зtoчеto c toлючем)
     
-    Параметры_ = Новый Соответствие; 
-    Разрешения = "tweet.read tweet.write tweet.moderate.write users.read "
+    Parameters_ = New Match; 
+    Permissions = "tweet.read tweet.write tweet.moderate.write users.read "
         + "follows.read follows.write offline.access space.read mute.read "
         + "mute.write like.read like.write list.read list.write block.read "
         + "block.write bookmark.read bookmark.write";    
                
-    // Данные для API v2
+    // Data for API v2
         
-    // redirect_uri  - URL вашего http-сервиса (или другого обработчика запросов) для авторизации
-    // scope         - набор разрешений для получаемого ключа. Может быть любой, но offline.access обязателен
-    // client_id     - Из OAuth 2.0 Client ID and Client Secret страницы настроек Twitter Developer
-    // client_secret - Из OAuth 2.0 Client ID and Client Secret страницы настроек Twitter Developer
-    // access_token  - ПолучитьСсылкуАвторизации() -> Браузер -> code придет на redirect_uri -> ПолучитьТокен(code)
-    // refresh_token - Приходит вместе с access_token и используется для его обновления (время жизни access_token - 2 ч)
-    //                 Обновление происходит методом ОбновитьТокен с новыми access_token и refresh_token. 
-    //                 При следующем обновлении нужно использовать уже новый refresh_token, так что захардкодить 
-    //                 не получится (access_token тоже не получится) 
+    // redirect_uri  - URL of your http service (or other request handler) for authorization
+    // scope         - a set of permissions for the received key. Can be any, but offline.access is mandatory
+    // client_id     - From OAuth 2.0 Client ID and Client Secret settings page of Twitter Developer
+    // client_secret - From OAuth 2.0 Client ID and Client Secret settings page of Twitter Developer
+    // access_token  - GetAuthorizationLink() -> Браузер -> code приdет to redirect_uri -> GetToken(code)
+    // refresh_token - Comes together with access_token and is used to refresh it (access_token lifetime - 2 ч)
+    //                 Обноinление проиwithхоdит метоdом RefreshToken with ноinыми access_token и refresh_token. 
+    //                 For the next update, you need to use a new refresh_token, so hardcode 
+    //                 не получитwithя (access_token тоже не получитwithя) 
     
-    //           |--> ОбновитьТокен() ->|access_token  --> Используется в т-нии 2-х часов для запросов
+    //           |--> RefreshToken() ->| access_token --> Used in the interval of 2 hours for requests
     //           |                      |refresh_token --|
-    //           |--------[через 2 ч.]-------------------|
+    //           |--------[after 2 hrs.]-------------------|
      
-    // Данные для API v1.1
+    // Data for API v1.1
     
-    // oauth_token           - Из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer 
-    // oauth_token_secret    - Из Authentication Tokens -> Access Token and Secret страницы настроек Twitter Developer
-    // oauth_consumer_key    - Из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
-    // oauth_consumer_secret - Из Consumer Keys -> Access Token and Secret страницы настроек Twitter Developer
+    // oauth_token           - From Authentication Tokens -> Access Token and Secret settings page of Twitter Developer 
+    // oauth_token_secret    - From Authentication Tokens -> Access Token and Secret settings page of Twitter Developer
+    // oauth_consumer_key    - From Consumer Keys -> Access Token and Secret settings page of Twitter Developer
+    // oauth_consumer_secret - From Consumer Keys -> Access Token and Secret settings page of Twitter Developer
     
-    // Эти токены обновлять не надо
+    // These tokens do not need to be updated
     
-    Параметры_.Вставить("redirect_uri"         , "");
-    Параметры_.Вставить("scope"                , Разрешения);
-    Параметры_.Вставить("client_id"            , "");
-    Параметры_.Вставить("client_secret"        , "");
-    Параметры_.Вставить("access_token"         , ""); // Должно быть нечто вроде Константы.TwitterToken.Получить()
-    Параметры_.Вставить("refresh_token"        , ""); // Должно быть нечто вроде Константы.TwitterRefresh.Получить()
-    Параметры_.Вставить("oauth_token"          , "");
-    Параметры_.Вставить("oauth_token_secret"   , "");
-    Параметры_.Вставить("oauth_consumer_key"   , "");
-    Параметры_.Вставить("oauth_consumer_secret", "");
+    Parameters_.Insert("redirect_uri"         , "");
+    Parameters_.Insert("scope"                , Permissions);
+    Parameters_.Insert("client_id"            , "");
+    Parameters_.Insert("client_secret"        , "");
+    Parameters_.Insert("access_token"         , ""); // Should be something like Constants.TwitterToken.Get()
+    Parameters_.Insert("refresh_token"        , ""); // Should be something like Constants.TwitterRefresh.Get()
+    Parameters_.Insert("oauth_token"          , "");
+    Parameters_.Insert("oauth_token_secret"   , "");
+    Parameters_.Insert("oauth_consumer_key"   , "");
+    Parameters_.Insert("oauth_consumer_secret", "");
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Параметры);
+    OPI_TypeConversion.GetCollection(Parameters);
     
-    Если ТипЗнч(Параметры) = Тип("Структура") Или ТипЗнч(Параметры) = Тип("Соответствие") Тогда
-        Для Каждого ПереданныйПараметр Из Параметры Цикл
-            Параметры_.Вставить(ПереданныйПараметр.Ключ, OPI_Инструменты.ЧислоВСтроку(ПереданныйПараметр.Значение));
-        КонецЦикла;
-    КонецЕсли;
+    If TypeValue(Parameters) = Type("Structure") Or TypeValue(Parameters) = Type("Match") Then
+        For Each PassedParameter Of Parameters Loop
+            Parameters_.Insert(PassedParameter.Key, OPI_Tools.NumberToString(PassedParameter.Value));
+        EndOfLoop;
+    EndIf;
 
-    Возврат Параметры_;
+    Return Parameters_;
 
-КонецФункции
+EndFunction
 
-Функция СоздатьЗаголовокАвторизацииV1(Знач Параметры, Знач Поля, Знач ВидЗапроса, Знач URL)
+Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType, Val URL)
     
-    ТекущаяДата          = OPI_Инструменты.ПолучитьТекущуюДату();
-    ЗаголовокАвторизации = "";
-    МетодХэширования     = "HMAC-SHA1";
-    ВерсияАпи            = "1.0";
-    СтрокаСигнатуры      = "";
-    Подпись              = "";
+    CurrentDate          = OPI_Tools.GetCurrentDate();
+    AuthorizationHeader = "";
+    HashingMethod     = "HMAC-SHA1";
+    APIVersion            = "1.0";
+    SignatureString      = "";
+    Signature              = "";
     OCK                  = "oauth_consumer_key";
     OTK                  = "oauth_token";
-    ТекущаяДатаUNIX      = OPI_Инструменты.UNIXTime(ТекущаяДата);
-    ТекущаяДатаUNIX      = OPI_Инструменты.ЧислоВСтроку(ТекущаяДатаUNIX);
-    ТаблицаПараметров    = Новый ТаблицаЗначений;
-    ТаблицаПараметров.Колонки.Добавить("Ключ");
-    ТаблицаПараметров.Колонки.Добавить("Значение");
+    CurrentUNIXDate      = OPI_Tools.UNIXTime(CurrentDate);
+    CurrentUNIXDate      = OPI_Tools.NumberToString(CurrentUNIXDate);
+    ParametersTable    = New ValueTable;
+    ParametersTable.Columns.Add("Key");
+    ParametersTable.Columns.Add("Value");
         
-    Для Каждого Поле Из Поля Цикл 
+    For Each Field Of Fields Loop 
         
-        НоваяСтрока = ТаблицаПараметров.Добавить();    
-        НоваяСтрока.Ключ     = Поле.Ключ;
-        НоваяСтрока.Значение = Поле.Значение;
+        NewLine = ParametersTable.Add();    
+        NewLine.Key     = Field.Key;
+        NewLine.Value = Field.Value;
         
-    КонецЦикла;
+    EndOfLoop;
     
-    НоваяСтрока = ТаблицаПараметров.Добавить();
-    НоваяСтрока.Ключ     = OCK;
-    НоваяСтрока.Значение = Параметры[OCK];
+    NewLine = ParametersTable.Add();
+    NewLine.Key     = OCK;
+    NewLine.Value = Parameters[OCK];
     
-    НоваяСтрока = ТаблицаПараметров.Добавить();
-    НоваяСтрока.Ключ     = OTK;
-    НоваяСтрока.Значение = Параметры[OTK];
+    NewLine = ParametersTable.Add();
+    NewLine.Key     = OTK;
+    NewLine.Value = Parameters[OTK];
     
-    НоваяСтрока = ТаблицаПараметров.Добавить();
-    НоваяСтрока.Ключ     = "oauth_version";
-    НоваяСтрока.Значение = ВерсияАпи;
+    NewLine = ParametersTable.Add();
+    NewLine.Key     = "oauth_version";
+    NewLine.Value = APIVersion;
     
-    НоваяСтрока = ТаблицаПараметров.Добавить();
-    НоваяСтрока.Ключ     = "oauth_signature_method";
-    НоваяСтрока.Значение = МетодХэширования;
+    NewLine = ParametersTable.Add();
+    NewLine.Key     = "oauth_signature_method";
+    NewLine.Value = HashingMethod;
 
-    НоваяСтрока = ТаблицаПараметров.Добавить();
-    НоваяСтрока.Ключ     = "oauth_timestamp";
-    НоваяСтрока.Значение = ТекущаяДатаUNIX;
+    NewLine = ParametersTable.Add();
+    NewLine.Key     = "oauth_timestamp";
+    NewLine.Value = CurrentUNIXDate;
 
-    НоваяСтрока = ТаблицаПараметров.Добавить();
-    НоваяСтрока.Ключ     = "oauth_nonce";
-    НоваяСтрока.Значение = ТекущаяДатаUNIX;
+    NewLine = ParametersTable.Add();
+    NewLine.Key     = "oauth_nonce";
+    NewLine.Value = CurrentUNIXDate;
 
-    Для Каждого СтрокаТаблицы Из ТаблицаПараметров Цикл
+    For Each TableRow Of ParametersTable Loop
         
-        СтрокаТаблицы.Ключ     = КодироватьСтроку(СтрокаТаблицы.Ключ, СпособКодированияСтроки.КодировкаURL);
-        СтрокаТаблицы.Значение = КодироватьСтроку(СтрокаТаблицы.Значение, СпособКодированияСтроки.КодировкаURL);
+        TableRow.Key     = EncodeString(TableRow.Key, StringEncodingMethod.URLencoding);
+        TableRow.Value = EncodeString(TableRow.Value, StringEncodingMethod.URLencoding);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    ТаблицаПараметров.Сортировать("Ключ");
+    ParametersTable.Sort("Key");
     
-    Для Каждого СтрокаТаблицы Из ТаблицаПараметров Цикл
+    For Each TableRow Of ParametersTable Loop
         
-        СтрокаСигнатуры = СтрокаСигнатуры 
-            + СтрокаТаблицы.Ключ 
+        SignatureString = SignatureString 
+            + TableRow.Key 
             + "="
-            + СтрокаТаблицы.Значение
+            + TableRow.Value
             + "&";
             
-    КонецЦикла;
+    EndOfLoop;
     
-    СтрокаСигнатуры = Лев(СтрокаСигнатуры, СтрДлина(СтрокаСигнатуры) - 1);
-    СтрокаСигнатуры = вРег(ВидЗапроса) 
+    SignatureString = Left(SignatureString, StrLength(SignatureString) - 1);
+    SignatureString = inReg(RequestType) 
         + "&" 
-        + КодироватьСтроку(URL, СпособКодированияСтроки.КодировкаURL)
+        + EncodeString(URL, StringEncodingMethod.URLencoding)
         + "&"
-        + КодироватьСтроку(СтрокаСигнатуры, СпособКодированияСтроки.КодировкаURL);
+        + EncodeString(SignatureString, StringEncodingMethod.URLencoding);
         
-    Подпись = КодироватьСтроку(Параметры["oauth_consumer_secret"], СпособКодированияСтроки.КодировкаURL)
+    Signature = EncodeString(Parameters["oauth_consumer_secret"], StringEncodingMethod.URLencoding)
         + "&" 
-        + КодироватьСтроку(Параметры["oauth_token_secret"], СпособКодированияСтроки.КодировкаURL);
+        + EncodeString(Parameters["oauth_token_secret"], StringEncodingMethod.URLencoding);
              
-    Сигнатура = OPI_Криптография.HMAC(ПолучитьДвоичныеДанныеИзСтроки(Подпись)
-        , ПолучитьДвоичныеДанныеИзСтроки(СтрокаСигнатуры)
-        , ХешФункция.SHA1
+    Signature = OPI_Cryptography.HMAC(GetBinaryDataFromString(Signature)
+        , GetBinaryDataFromString(SignatureString)
+        , HashFunction.SHA1
         , 64);
         
-    Сигнатура = КодироватьСтроку(Base64Строка(Сигнатура), СпособКодированияСтроки.КодировкаURL);
+    Signature = EncodeString(Base64String(Signature), StringEncodingMethod.URLencoding);
     
-    Разделитель          = """,";
-    ЗаголовокАвторизации = ЗаголовокАвторизации 
+    Delimiter          = """,";
+    AuthorizationHeader = AuthorizationHeader 
         + "OAuth "
-        + "oauth_consumer_key="""      + Параметры[OCK]        + Разделитель
-        + "oauth_token="""             + Параметры[OTK]        + Разделитель
-        + "oauth_signature_method="""  + МетодХэширования      + Разделитель
-        + "oauth_timestamp="""         + ТекущаяДатаUNIX       + Разделитель
-        + "oauth_nonce="""             + ТекущаяДатаUNIX       + Разделитель
-        + "oauth_version="""           + ВерсияАпи             + Разделитель
-        + "oauth_signature="""         + Сигнатура;
+        + "oauth_consumer_key="""      + Parameters[OCK]        + Delimiter
+        + "oauth_token="""             + Parameters[OTK]        + Delimiter
+        + "oauth_signature_method="""  + HashingMethod      + Delimiter
+        + "oauth_timestamp="""         + CurrentUNIXDate       + Delimiter
+        + "oauth_nonce="""             + CurrentUNIXDate       + Delimiter
+        + "oauth_version="""           + APIVersion             + Delimiter
+        + "oauth_signature="""         + Signature;
         
-        СоответствиеЗаголовка = Новый Соответствие;
-        СоответствиеЗаголовка.Вставить("authorization", ЗаголовокАвторизации);
+        HeaderMapping = New Match;
+        HeaderMapping.Insert("authorization", AuthorizationHeader);
         
-    Возврат СоответствиеЗаголовка;
+    Return HeaderMapping;
         
-КонецФункции
+EndFunction
 
-Функция СоздатьЗаголовокАвторизацииV2(Знач Параметры)
+Function CreateAuthorizationHeaderV2(Val Parameters)
     
-    СоответствиеВозврата = Новый Соответствие;
-    СоответствиеВозврата.Вставить("Authorization", "Bearer " + Параметры["access_token"]);
+    ReturnMapping = New Match;
+    ReturnMapping.Insert("Authorization", "Bearer " + Parameters["access_token"]);
     
-    Возврат СоответствиеВозврата;
+    Return ReturnMapping;
     
-КонецФункции
+EndFunction
 
-Функция ПолучитьСтатусОбработки(Знач Параметры, Знач Поля, Знач URL)
+Function GetProcessingStatus(Val Parameters, Val Fields, Val URL)
 
 	ProcessingInfo   = "processing_info";
-    Авторизация = СоздатьЗаголовокАвторизацииV1(Параметры, Поля, "POST", URL);
+    Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, "POST", URL);
     
-    Ответ      = OPI_Инструменты.Post(URL, Поля, Авторизация, Ложь);  
-    Информация = Ответ[ProcessingInfo];
+    Response      = OPI_Tools.Post(URL, Fields, Authorization, False);  
+    Information = Response[ProcessingInfo];
     
-    Если Не ЗначениеЗаполнено(Информация) Тогда
-    	Возврат Ответ;
-    КонецЕсли;
+    If Not ValueFilled(Information) Then
+    	Return Response;
+    EndIf;
     
-    СтатусОбработки = Информация["state"];
+    ProcessingStatus = Information["state"];
     
-    Если Не ЗначениеЗаполнено(СтатусОбработки) Тогда
-    	Возврат Ответ;
-    Иначе
-    	Возврат СтатусОбработки;
-    КонецЕсли;	
+    If Not ValueFilled(ProcessingStatus) Then
+    	Return Response;
+    Otherwise
+    	Return ProcessingStatus;
+    EndIf;	
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
