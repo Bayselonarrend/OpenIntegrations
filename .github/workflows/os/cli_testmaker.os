@@ -1,4 +1,4 @@
-#Использовать "../../../ru/cli/data"
+#Использовать "../../../src/ru/cli/data"
 
 Перем СоответствияПараметровЗначениям;
 Перем СоответствияПараметровПредобработкам;
@@ -124,30 +124,30 @@
 	|
 	|      - name: Собрать и установить OInt
 	|        run: |
-	|          cd ./ru/OInt
+	|          cd ./src/ru/OInt
 	|          opm build
 	|          opm install *.ospx  
 	|
 	|      - name: Собрать бинарник
 	|        run: |
-	|          cd ./ru/cli
+	|          cd ./src/ru/cli
 	|          oscript -make core/Classes/Приложение.os oint
 	|
 	|      - name: Собрать exe
 	|        run: |
-	|          cd ./ru/cli
+	|          cd ./src/ru/cli
 	|          oscript -make core/Classes/Приложение.os oint.exe
 	|
 	|      - name: Записать артефакт
 	|        uses: actions/upload-artifact@v4
 	|        with:
 	|          name: oint
-	|          path: ./ru/cli/oint
+	|          path: ./src/ru/cli/oint
 	|
 	|      - name: Создать каталог deb-пакета
 	|        run: |
 	|          mkdir -p .debpkg/usr/bin
-	|          cp ./ru/cli/oint .debpkg/usr/bin/oint
+	|          cp ./src/ru/cli/oint .debpkg/usr/bin/oint
 	|          chmod +x .debpkg/usr/bin/oint
 	|
 	|      - name: Собрать deb-пакет
@@ -171,7 +171,7 @@
 	|        run: |
 	|          mkdir -p .rpmpkg/usr/bin
 	|          mkdir -p .rpmpkg/usr/share/oint/bin
-	|          cp ./ru/cli/oint .rpmpkg/usr/share/oint/bin/oint
+	|          cp ./src/ru/cli/oint .rpmpkg/usr/share/oint/bin/oint
 	|          echo 'mono /usr/share/oint/bin/oint ""$@""' > .rpmpkg/usr/bin/oint
 	|          chmod +x .rpmpkg/usr/bin/oint
 	|

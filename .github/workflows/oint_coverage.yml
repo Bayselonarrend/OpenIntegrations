@@ -29,12 +29,12 @@ jobs:
 
       - name: Установить OInt
         run: |
-            cd ./ru/OInt
+            cd ./src/ru/OInt
             opm build
             opm install *.ospx    
 
       - name: Выполнить скрипт определения покрытия
-        run: oscript ./ru/OInt/coverage/Modules/Coverage_ОпределениеПокрытия.os
+        run: oscript ./src/ru/OInt/coverage/Modules/Coverage_ОпределениеПокрытия.os
 
 
 
