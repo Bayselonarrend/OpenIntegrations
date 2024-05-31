@@ -36,98 +36,98 @@
 
 // Generate code retrieval link
 // Returns URL for browser authorization
-// 
+//
 // Parameters:
-//  ClientID - String - Client ID                      - id
-//  Calendar - Boolean - Calendar methods permission  - calendar
-//  Drive    - Boolean - Drive methods permission     - drive
-//  Sheets   - Boolean - Sheets methods permission    - sheets
-// 
+// ClientID - String - Client ID - id
+// Calendar - Boolean - Calendar methods permission - calendar
+// Drive - Boolean - Drive methods permission - drive
+// Sheets - Boolean - Sheets methods permission - sheets
+//
 // Return value:
-//  String - Code retrieval link
+// String - Code retrieval link
 Function FormCodeRetrievalLink(Val ClientID
-    , Val Calendar = True
-    , Val Drive = True
-    , Val Sheets = True) Export
-    
-    OPI_TypeConversion.GetLine(ClientID);
-    OPI_TypeConversion.GetBoolean(Calendar);
-    OPI_TypeConversion.GetBoolean(Sheets);
-    OPI_TypeConversion.GetBoolean(Drive);
-    
-    URL = "https://accounts.google.com/o/oauth2/auth";
-    
-    URLParameters = New Structure;
-    URLParameters.Insert("response_type", "code");
-    URLParameters.Insert("client_id"    , ClientID);
-    URLParameters.Insert("redirect_uri" , "http://localhost");
-    URLParameters.Insert("access_type"  , "offline");
-    URLParameters.Insert("scope"        , GetPermissionsList(Calendar, Drive, Sheets));
-    
-    URL = URL + OPI_Tools.RequestParametersToString(URLParameters);
-    
-    Return URL;
-    
+, Val Calendar = True
+, Val Drive = True
+, Val Sheets = True) Export
+
+OPI_TypeConversion.GetLine(ClientID);
+OPI_TypeConversion.GetBoolean(Calendar);
+OPI_TypeConversion.GetBoolean(Sheets);
+OPI_TypeConversion.GetBoolean(Drive);
+
+URL = "https://accounts.google.com/o/oauth2/auth";
+
+URLParameters = New Structure;
+URLParameters.Insert("response_type", "code");
+URLParameters.Insert("client_id" , ClientID);
+URLParameters.Insert("redirect_uri" , "http://localhost");
+URLParameters.Insert("access_type" , "offline");
+URLParameters.Insert("scope" , GetPermissionsList(Calendar, Drive, Sheets));
+
+URL = URL + OPI_Tools.RequestParametersToString(URLParameters);
+
+Return URL;
+
 EndFunction
 
 // Get token by code
 // Gets token by code from browser authorization
-// 
+//
 // Parameters:
-//  ClientID     - String - Client ID        - id
-//  ClientSecret - String - Client secret    - secret
-//  Code         - String - Code from browser - code
-// 
+// ClientID - String - Client ID - id
+// ClientSecret - String - Client secret - secret
+// Code - String - Code from browser - code
+//
 // Return value:
-//  Key-Value Pair - serialized JSON response from Google
+// Key-Value Pair - serialized JSON response from Google
 Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
-    
-    OPI_TypeConversion.GetLine(ClientID);
-    OPI_TypeConversion.GetLine(ClientSecret);
-    OPI_TypeConversion.GetLine(Code);
-    
-    URL = "https://accounts.google.com/o/oauth2/token";
-           
-    URLParameters = New Structure;
-    URLParameters.Insert("grant_type"   , "authorization_code");
-    URLParameters.Insert("client_id"    , ClientID);
-    URLParameters.Insert("client_secret", ClientSecret);
-    URLParameters.Insert("redirect_uri" , "http://localhost");  
-    URLParameters.Insert("code"         , Code);
-    
-    Response = OPI_Tools.Post(URL, URLParameters, , False);
-    
-    Return Response;
+
+OPI_TypeConversion.GetLine(ClientID);
+OPI_TypeConversion.GetLine(ClientSecret);
+OPI_TypeConversion.GetLine(Code);
+
+URL = "https://accounts.google.com/o/oauth2/token";
+
+URLParameters = New Structure;
+URLParameters.Insert("grant_type" , "authorization_code");
+URLParameters.Insert("client_id" , ClientID);
+URLParameters.Insert("client_secret", ClientSecret);
+URLParameters.Insert("redirect_uri" , "http://localhost");
+URLParameters.Insert("code" , Code);
+
+Response = OPI_Tools.Post(URL, URLParameters, , False);
+
+Return Response;
 
 EndFunction
 
 // Refresh token
 // Updates token by Refresh token
-// 
+//
 // Parameters:
-//  ClientID     - String - Client ID     - id
-//  ClientSecret - String - Client secret - secret
-//  RefreshToken - String - Refresh token - refresh
-// 
+// ClientID - String - Client ID - id
+// ClientSecret - String - Client secret - secret
+// RefreshToken - String - Refresh token - refresh
+//
 // Return value:
-//  Key-Value Pair - serialized JSON response from Google
+// Key-Value Pair - serialized JSON response from Google
 Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
-    
-    OPI_TypeConversion.GetLine(ClientID);
-    OPI_TypeConversion.GetLine(ClientSecret);
-    OPI_TypeConversion.GetLine(RefreshToken);
-    
-    URL = "https://accounts.google.com/o/oauth2/token";
-           
-    URLParameters = New Structure;
-    URLParameters.Insert("grant_type"   , "refresh_token");
-    URLParameters.Insert("client_id"    , ClientID);
-    URLParameters.Insert("client_secret", ClientSecret);  
-    URLParameters.Insert("refresh_token", RefreshToken);
-    
-    Response = OPI_Tools.Post(URL, URLParameters, , False);
-    
-    Return Response;
+
+OPI_TypeConversion.GetLine(ClientID);
+OPI_TypeConversion.GetLine(ClientSecret);
+OPI_TypeConversion.GetLine(RefreshToken);
+
+URL = "https://accounts.google.com/o/oauth2/token";
+
+URLParameters = New Structure;
+URLParameters.Insert("grant_type" , "refresh_token");
+URLParameters.Insert("client_id" , ClientID);
+URLParameters.Insert("client_secret", ClientSecret);
+URLParameters.Insert("refresh_token", RefreshToken);
+
+Response = OPI_Tools.Post(URL, URLParameters, , False);
+
+Return Response;
 
 EndFunction
 
@@ -136,14 +136,14 @@ EndFunction
 #Region ServiceProgramInterface
 
 Function GetAuthorizationHeader(Val Token) Export
-    
-    OPI_TypeConversion.GetLine(Token);
-    
-    Headers = New Match;
-    Headers.Insert("Authorization", "Bearer " + Token);
-    
-    Return Headers;
-    
+
+OPI_TypeConversion.GetLine(Token);
+
+Headers = New Match;
+Headers.Insert("Authorization", "Bearer " + Token);
+
+Return Headers;
+
 EndFunction
 
 #EndRegion
@@ -151,23 +151,23 @@ EndFunction
 #Region ServiceProceduresAndFunctions
 
 Function GetPermissionsList(Calendar, Drive, Sheets)
-    
-    Permissions array = New Array;
-    
-    If Calendar Then
-        Permissions array.Add("https://www.googleapis.com/auth/calendar");
-    EndIf;
-    
-    If Drive Then
-        Permissions array.Add("https://www.googleapis.com/auth/drive");
-    EndIf;
-    
-    If Sheets Then
-        Permissions array.Add("https://www.googleapis.com/auth/spreadsheets");
-    EndIf;
-        
-    Return StrJoin(Permissions array, " ");
-    
+
+Permissions array = New Array;
+
+If Calendar Then
+Permissions array.Add("https://www.googleapis.com/auth/calendar");
+EndIf;
+
+If Drive Then
+Permissions array.Add("https://www.googleapis.com/auth/drive");
+EndIf;
+
+If Sheets Then
+Permissions array.Add("https://www.googleapis.com/auth/spreadsheets");
+EndIf;
+
+Return StrJoin(Permissions array, " ");
+
 EndFunction
 
 #EndRegion

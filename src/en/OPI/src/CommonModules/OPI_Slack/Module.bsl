@@ -38,57 +38,57 @@
 
 // Get bot information
 // Gets basic information about the bot
-// 
+//
 // Parameters:
-//  Token - String - Bot token - token
-// 
+// Token - String - Bot token - token
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack 
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetBotInformation(Val Token) Export
-    
-    URL       = "https://slack.com/api/auth.test";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Response = OPI_Tools.Get(URL, , Headers);
-    
-    Return Response;
+
+URL = "https://slack.com/api/auth.test";
+Headers = GetAuthorizationHeader(Token);
+
+Response = OPI_Tools.Get(URL, , Headers);
+
+Return Response;
 
 EndFunction
 
 // Get workspace list
 // Gets a list of workspaces where the bot is connected
-// 
+//
 // Parameters:
-//  Token  - String - Bot token                                                    - token
-//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
-// 
+// Token - String - Bot token - token
+// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetWorkspaceList(Val Token, Val Cursor = "") Export
-    
-    URL   = "https://slack.com/api/auth.teams.list";
-    Response = GeneralDataRetrieval(Token, URL, Cursor);
-    
-    Return Response;
+
+URL = "https://slack.com/api/auth.teams.list";
+Response = GeneralDataRetrieval(Token, URL, Cursor);
+
+Return Response;
 
 EndFunction
 
 // Get user list
 // Gets a list of users in the workspace
-// 
+//
 // Parameters:
-//  Token  - String - Bot token                                                    - token
-//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
-// 
+// Token - String - Bot token - token
+// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetUserList(Val Token, Val Cursor = "") Export
-    
-    URL   = "https://slack.com/api/users.list";
-    Response = GeneralDataRetrieval(Token, URL, Cursor);
-    
-    Return Response;
-    
+
+URL = "https://slack.com/api/users.list";
+Response = GeneralDataRetrieval(Token, URL, Cursor);
+
+Return Response;
+
 EndFunction
 
 #EndRegion
@@ -97,238 +97,238 @@ EndFunction
 
 // Send message
 // Sends a message at a selected hour
-// 
+//
 // Parameters:
-//  Token        - String - Bot token                              - token
-//  Channel        - String - Channel ID                    - channel
-//  Text        - String - Message text                         - text
-//  Sending date - Date   - Sending date for delayed message - date 
-//  Blocks        - Array of Structures - Array of block descriptions     - blocks - JSON array of block descriptions
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Text - String - Message text - text
+// Sending date - Date - Sending date for delayed message - date
+// Blocks - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function SendMessage(Val Token, Val Channel, Val Text = "", Val Sending date = "", Val Blocks = "") Export
-      
-    String_   = "String";
-    HasDate  = ValueFilled(Sending date); 
-    Headers = GetAuthorizationHeader(Token);
-    
-    If ValueFilled(Blocks) And TypeValue(Blocks) = Type(String_) Then
-        OPI_TypeConversion.GetCollection(Blocks);
-        
-        If TypeValue(Blocks) = Type("Array") Then
-            
-            For N = 0 by Blocks.WithinBoundary() Loop
-                OPI_TypeConversion.GetCollection(Blocks[N]);                    
-            EndOfLoop;
-            
-        EndIf;
 
-    EndIf;
-        
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel, String_    , Parameters);
-    OPI_Tools.AddField("text"   , Text, String_    , Parameters);
-    OPI_Tools.AddField("blocks" , Blocks, "Array"   , Parameters);
+String_ = "String";
+HasDate = ValueIsFilled(Sending date);
+Headers = GetAuthorizationHeader(Token);
 
-    If HasDate Then
-        
-        URL      = "https://slack.com/api/chat.scheduleMessage";
-        OPI_Tools.AddField("post_at", Sending date, "Date", Parameters); 
-        
-    Otherwise
-        
-        URL = "https://slack.com/api/chat.postMessage";
-        
-    EndIf;
-          
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
-    
+If ValueIsFilled(Blocks) And TypeValue(Blocks) = Type(String_) Then
+OPI_TypeConversion.GetCollection(Blocks);
+
+If TypeValue(Blocks) = Type("Array") Then
+
+For N = 0 For Blocks.WithinBoundary() Do
+OPI_TypeConversion.GetCollection(Blocks[N]);
+EndDo;
+
+EndIf;
+
+EndIf;
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel, String_ , Parameters);
+OPI_Tools.AddField("text" , Text, String_ , Parameters);
+OPI_Tools.AddField("blocks" , Blocks, "Array" , Parameters);
+
+If HasDate Then
+
+URL = "https://slack.com/api/chat.scheduleMessage";
+OPI_Tools.AddField("post_at", Sending date, "Date", Parameters);
+
+Else
+
+URL = "https://slack.com/api/chat.postMessage";
+
+EndIf;
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Send ephemeral message
-// Sends a message that arrives in the channel but is visible 
+// Sends a message that arrives in the channel but is visible
 // only to a specific user
-// 
+//
 // Parameters:
-//  Token        - String - Bot token                              - token
-//  Channel        - String - Channel ID                    - channel
-//  Text        - String - Message text                         - text
-//  User - String - User ID                         - user 
-//  Blocks        - Array of Structures - Array of block descriptions     - blocks - JSON array of block descriptions
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Text - String - Message text - text
+// User - String - User ID - user
+// Blocks - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function SendEphemeralMessage(Val Token
-    , Val Channel
-    , Val Text = ""
-    , Val User = ""
-    , Val Blocks = "") Export
-    
-    String_ = "String";
-    
-    If ValueFilled(Blocks) And Not TypeValue(Blocks) = Type(String_) Then
-        OPI_TypeConversion.GetArray(Blocks);
-    EndIf;
-    
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel       , String_    , Parameters);
-    OPI_Tools.AddField("text"   , Text       , String_    , Parameters);
-    OPI_Tools.AddField("user"   , User, String_    , Parameters);
-    OPI_Tools.AddField("blocks" , Blocks       , "Collection", Parameters);
-        
-    URL = "https://slack.com/api/chat.postEphemeral";
-        
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
-    
+, Val Channel
+, Val Text = ""
+, Val User = ""
+, Val Blocks = "") Export
+
+String_ = "String";
+
+If ValueIsFilled(Blocks) And Not TypeValue(Blocks) = Type(String_) Then
+OPI_TypeConversion.GetArray(Blocks);
+EndIf;
+
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , String_ , Parameters);
+OPI_Tools.AddField("text" , Text , String_ , Parameters);
+OPI_Tools.AddField("user" , User, String_ , Parameters);
+OPI_Tools.AddField("blocks" , Blocks , "Collection", Parameters);
+
+URL = "https://slack.com/api/chat.postEphemeral";
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Edit message
 // Edits the content of an existing message
-// 
+//
 // Parameters:
-//  Token        - String - Bot token                          - token
-//  Channel        - String - Channel ID                - channel
-//  Timestamp      - String - Message timestamp         - stamp
-//  Text        - String - New message text               - text
-//  BlockArray - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Timestamp - String - Message timestamp - stamp
+// Text - String - New message text - text
+// BlockArray - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val BlockArray = "") Export
-    
-    String_   = "String";
-    URL       = "https://slack.com/api/chat.update";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel       , String_    , Parameters);
-    OPI_Tools.AddField("text"   , Text       , String_    , Parameters);
-    OPI_Tools.AddField("ts"     , Timestamp     , String_    , Parameters);
-    OPI_Tools.AddField("blocks" , BlockArray, "Collection", Parameters);
-        
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
-    
+
+String_ = "String";
+URL = "https://slack.com/api/chat.update";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , String_ , Parameters);
+OPI_Tools.AddField("text" , Text , String_ , Parameters);
+OPI_Tools.AddField("ts" , Timestamp , String_ , Parameters);
+OPI_Tools.AddField("blocks" , BlockArray, "Collection", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Delete message
 // Deletes a channel message by timestamp
-// 
+//
 // Parameters:
-//  Token         - String - Bot token                             - token
-//  Channel         - String - Channel ID                   - channel
-//  Timestamp       - String - Timestamp or message ID     - stamp
-//  IsDelayed - Boolean - Indicator of deleting a delayed message - issheduled
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Timestamp - String - Timestamp or message ID - stamp
+// IsDelayed - Boolean - Indicator of deleting a delayed message - issheduled
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export
-    
-    OPI_TypeConversion.GetBoolean(IsDelayed);
-    
-    Headers = GetAuthorizationHeader(Token);
-        
-    If IsDelayed Then
-        URL         = "https://slack.com/api/chat.deleteScheduledMessage";
-        TimestampField = "scheduled_message_id";       
-    Otherwise
-        URL         = "https://slack.com/api/chat.delete";
-        TimestampField = "ts";
-    EndIf;
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel"  , Channel  , "String", Parameters);
-    OPI_Tools.AddField(TimestampField, Timestamp, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+OPI_TypeConversion.GetBoolean(IsDelayed);
+
+Headers = GetAuthorizationHeader(Token);
+
+If IsDelayed Then
+URL = "https://slack.com/api/chat.deleteScheduledMessage";
+TimestampField = "scheduled_message_id";
+Else
+URL = "https://slack.com/api/chat.delete";
+TimestampField = "ts";
+EndIf;
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel" , Channel , "String", Parameters);
+OPI_Tools.AddField(TimestampField, Timestamp, "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Get list of delayed messages
 // Gets a list of delayed channel messages
-// 
+//
 // Parameters:
-//  Token  - String - Bot token                                                    - token
-//  Channel  - String - Channel ID                                          - channel
-//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export
-    
-    URL       = "https://slack.com/api/chat.scheduledMessages.list";
-    Headers = GetAuthorizationHeader(Token);
-   
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel , "String", Parameters);
-    OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+
+URL = "https://slack.com/api/chat.scheduledMessages.list";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Get message link
 // Gets a permanent URL to the channel message
-// 
+//
 // Parameters:
-//  Token         - String - Bot token                             - token
-//  Channel         - String - Channel ID                   - channel
-//  Timestamp       - String - Timestamp or message ID     - stamp
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Timestamp - String - Timestamp or message ID - stamp
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export
-    
-    URL       = "https://slack.com/api/chat.getPermalink";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel"   , Channel  , "String", Parameters);
-    OPI_Tools.AddField("message_ts", Timestamp, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/chat.getPermalink";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel" , Channel , "String", Parameters);
+OPI_Tools.AddField("message_ts", Timestamp, "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Get list of message replies
 // Gets an array of messages that are replies to the specified
-// 
+//
 // Parameters:
-//  Token         - String - Bot token                                                    - token
-//  Channel         - String - Channel ID                                          - channel
-//  Timestamp       - String - Timestamp or message ID                            - stamp
-//  Cursor        - String - Pointer from the previous request, if the result rows > 100 - cursor
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Timestamp - String - Timestamp or message ID - stamp
+// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export
-    
-    String_   = "String";
-    URL       = "https://slack.com/api/conversations.replies";
-    Headers = GetAuthorizationHeader(Token);
-   
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel  , String_, Parameters);
-    OPI_Tools.AddField("cursor" , Cursor , String_, Parameters);
-    OPI_Tools.AddField("ts"     , Timestamp, String_, Parameters);
-    
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
+
+String_ = "String";
+URL = "https://slack.com/api/conversations.replies";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , String_, Parameters);
+OPI_Tools.AddField("cursor" , Cursor , String_, Parameters);
+OPI_Tools.AddField("ts" , Timestamp, String_, Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
@@ -338,289 +338,289 @@ EndFunction
 
 // Get channel list
 // Gets a list of available channels
-// 
+//
 // Parameters:
-//  Token                   - String - Bot token                                                    - token
-//  ExcludeArchived - Boolean - Indicator of excluding archived channels                     - notarchived 
-//  Cursor                  - String - Pointer from the previous request, if the result rows > 100 - cursor
-// 
+// Token - String - Bot token - token
+// ExcludeArchived - Boolean - Indicator of excluding archived channels - notarchived
+// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export
-    
-    URL       = "https://slack.com/api/conversations.list";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("exclude_archived", ExcludeArchived, "Boolean", Parameters);
-    OPI_Tools.AddField("cursor"          , Cursor                 , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
-    
+URL = "https://slack.com/api/conversations.list";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("exclude_archived", ExcludeArchived, "Boolean", Parameters);
+OPI_Tools.AddField("cursor" , Cursor , "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Get channel user list
 // Gets a list of users in the specified channel
-// 
+//
 // Parameters:
-//  Token         - String - Bot token                                                    - token
-//  Channel         - String - Channel ID                                          - channel
-//  Cursor        - String - Pointer from the previous request, if the result rows > 100 - cursor
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetChannelUserList(Val Token, Val Channel, Val Cursor = "") Export
-    
-    URL       = "https://slack.com/api/conversations.members";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel , "String", Parameters);
-    OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/conversations.members";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Create channel
 // Creates a new channel
-// 
+//
 // Parameters:
-//  Token     - String - Bot token              - token
-//  Name  - String - Channel name     - title
-//  Private - Boolean - Create channel as private - private
-// 
+// Token - String - Bot token - token
+// Name - String - Channel name - title
+// Private - Boolean - Create channel as private - private
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function CreateChannel(Val Token, Val Name, Val Private = False) Export
-    
-    URL       = "https://slack.com/api/conversations.create";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("name"      , Name , "String", Parameters);
-    OPI_Tools.AddField("is_private", Private, "Boolean", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
-     
+URL = "https://slack.com/api/conversations.create";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("name" , Name , "String", Parameters);
+OPI_Tools.AddField("is_private", Private, "Boolean", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Archive channel
 // Archives an active channel
-// 
+//
 // Parameters:
-//  Token - String - Bot token - token
-//  Channel - String - Channel ID  - channel
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function ArchiveChannel(Val Token, Val Channel) Export
-    
-    URL   = "https://slack.com/api/conversations.archive";
-    Response = DialogManagement(Token, Channel, URL);
-    Return Response;
-    
+
+URL = "https://slack.com/api/conversations.archive";
+Response = DialogManagement(Token, Channel, URL);
+Return Response;
+
 EndFunction
 
 // Get channel
 // Gets information about the channel
-// 
+//
 // Parameters:
-//  Token - String - Bot token - token
-//  Channel - String - Channel ID  - channel
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetChannel(Val Token, Val Channel) Export
-    
-    URL   = "https://slack.com/api/conversations.info";
-    Response = DialogManagement(Token, Channel, URL, "GET");
-    Return Response;
+
+URL = "https://slack.com/api/conversations.info";
+Response = DialogManagement(Token, Channel, URL, "GET");
+Return Response;
 
 EndFunction
 
 // Get channel history
 // Gets information about channel events
-// 
+//
 // Parameters:
-//  Token - String - Bot token - token
-//  Channel - String - Channel ID  - channel
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetChannelHistory(Val Token, Val Channel) Export
-    
-    URL   = "https://slack.com/api/conversations.history";
-    Response = DialogManagement(Token, Channel, URL, "GET");
-    Return Response;
+
+URL = "https://slack.com/api/conversations.history";
+Response = DialogManagement(Token, Channel, URL, "GET");
+Return Response;
 
 EndFunction
 
 // Invite users to channel
 // Adds specified users to the channel
-// 
+//
 // Parameters:
-//  Token               - String           - Bot token              - token
-//  Channel               - String           - Channel ID               - channel
-//  ArrayOfUsers - Array Of String - User ID Array - users
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// ArrayOfUsers - Array Of String - User ID Array - users
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export
-    
-    URL       = "https://slack.com/api/conversations.invite";
-    Headers = GetAuthorizationHeader(Token);
-    
-    OPI_TypeConversion.GetCollection(ArrayOfUsers);
-    ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel              , "String", Parameters);
-    OPI_Tools.AddField("users"  , ArrayOfUsers, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/conversations.invite";
+Headers = GetAuthorizationHeader(Token);
+
+OPI_TypeConversion.GetCollection(ArrayOfUsers);
+ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("users" , ArrayOfUsers, "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Kick user from channel
 // Removes specified user from channel
-// 
+//
 // Parameters:
-//  Token        - String - Bot token      - token
-//  Channel        - String - Channel ID       - channel
-//  User - String - User ID - user
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// User - String - User ID - user
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function KickUserFromChannel(Val Token, Val Channel, Val User) Export
-    
-    URL       = "https://slack.com/api/conversations.kick";
-    Headers = GetAuthorizationHeader(Token);
-        
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel       , "String", Parameters);
-    OPI_Tools.AddField("user"   , User, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/conversations.kick";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("user" , User, "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Join channel
 // Adds the current bot to the channel
-// 
+//
 // Parameters:
-//  Token - String - Bot token - token
-//  Channel - String - Channel ID  - channel
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function JoinChannel(Val Token, Val Channel) Export
-    
-    URL   = "https://slack.com/api/conversations.join";
-    Response = DialogManagement(Token, Channel, URL);
-    Return Response;
+
+URL = "https://slack.com/api/conversations.join";
+Response = DialogManagement(Token, Channel, URL);
+Return Response;
 
 EndFunction
 
 // Leave channel
 // Removes the current bot from the channel
-// 
+//
 // Parameters:
-//  Token - String - Bot token - token
-//  Channel - String - Channel ID  - channel
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function LeaveChannel(Val Token, Val Channel) Export
-    
-    URL   = "https://slack.com/api/conversations.leave";
-    Response = DialogManagement(Token, Channel, URL);
-    Return Response;
+
+URL = "https://slack.com/api/conversations.leave";
+Response = DialogManagement(Token, Channel, URL);
+Return Response;
 
 EndFunction
 
 // Set channel topic
 // Sets the channel topic
-// 
+//
 // Parameters:
-//  Token - String - Bot token  - token
-//  Channel - String - Channel ID   - channel
-//  Topic  - String - Channel topic - theme
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Topic - String - Channel topic - theme
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export
-    
-    URL       = "https://slack.com/api/conversations.setTopic";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel , "String", Parameters);
-    OPI_Tools.AddField("topic"  , Topic  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/conversations.setTopic";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("topic" , Topic , "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Set channel purpose
 // Sets the channel purpose (description)
-// 
+//
 // Parameters:
-//  Token - String - Bot token  - token
-//  Channel - String - Channel ID   - channel
-//  Purpose  - String - Channel purpose - purpose
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Purpose - String - Channel purpose - purpose
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export
-    
-    URL       = "https://slack.com/api/conversations.setPurpose";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel , "String", Parameters);
-    OPI_Tools.AddField("purpose", Purpose  , "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/conversations.setPurpose";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("purpose", Purpose , "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Rename channel
 // Changes the name of the channel
-// 
+//
 // Parameters:
-//  Token     - String - Bot token            - token
-//  Channel     - String - Channel ID             - channel
-//  Name  - String - New channel name - title
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel ID - channel
+// Name - String - New channel name - title
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function RenameChannel(Val Token, Val Channel, Val Name) Export
-    
-    URL       = "https://slack.com/api/conversations.rename";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel   , "String", Parameters);
-    OPI_Tools.AddField("name"   , Name, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/conversations.rename";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("name" , Name, "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
@@ -630,45 +630,45 @@ EndFunction
 
 // Open dialog
 // Opens a new dialog with one or more users
-// 
+//
 // Parameters:
-//  Token               - String           - Bot token              - token
-//  ArrayOfUsers - Array of Strings - User ID Array - users
-// 
+// Token - String - Bot token - token
+// ArrayOfUsers - Array of Strings - User ID Array - users
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function OpenDialog(Val Token, Val ArrayOfUsers) Export
-    
-    URL       = "https://slack.com/api/conversations.open";
-    Headers = GetAuthorizationHeader(Token);
-    
-    OPI_TypeConversion.GetCollection(ArrayOfUsers);
-    ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("users", ArrayOfUsers, "String", Parameters);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
+URL = "https://slack.com/api/conversations.open";
+Headers = GetAuthorizationHeader(Token);
+
+OPI_TypeConversion.GetCollection(ArrayOfUsers);
+ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
+
+Parameters = New Structure;
+OPI_Tools.AddField("users", ArrayOfUsers, "String", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
 
 EndFunction
 
 // Close dialog
 // Closes an existing dialog
-// 
+//
 // Parameters:
-//  Token  - String - Bot token - token
-//  Dialog - String - Dialog ID - conv
-// 
+// Token - String - Bot token - token
+// Dialog - String - Dialog ID - conv
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function CloseDialog(Val Token, Val Dialog) Export
-    
-    URL   = "https://slack.com/api/conversations.close";
-    Response = DialogManagement(Token, Dialog, URL);
-    Return Response;
-    
+
+URL = "https://slack.com/api/conversations.close";
+Response = DialogManagement(Token, Dialog, URL);
+Return Response;
+
 EndFunction
 
 #EndRegion
@@ -677,154 +677,154 @@ EndFunction
 
 // Get list of files
 // Gets a list of files of the bot or channel
-// 
+//
 // Parameters:
-//  Token          - String        - Bot token       - token
-//  Channel          - String        - Channel for selection - channel 
-//  PageNumber  - Number, String - Page number   - page
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel for selection - channel
+// PageNumber - Number, String - Page number - page
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export
-    
-    URL       = "https://slack.com/api/files.list";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel        , "String", Parameters);
-    OPI_Tools.AddField("page"   , PageNumber, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
-    
+URL = "https://slack.com/api/files.list";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("page" , PageNumber, "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Upload file
 // Uploads a file to Slack servers
-// 
+//
 // Parameters:
-//  Token     - String                - Bot token              - token
-//  File      - String, BinaryData - File for upload       - file
-//  FileName  - String                - File name with extension - filename
-//  Title - String                - File name in Slack       - title
-//  Channel     - String                - Channel ID               - channel
-// 
+// Token - String - Bot token - token
+// File - String, BinaryData - File for upload - file
+// FileName - String - File name with extension - filename
+// Title - String - File name in Slack - title
+// Channel - String - Channel ID - channel
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export
-    
-    OPI_TypeConversion.GetBinaryData(File);
-    OPI_TypeConversion.GetLine(FileName);
-    OPI_TypeConversion.GetLine(Title);
-    
-    String_    = "String";
-    Upload_url = "upload_url";
-    File_id    = "file_id";
-    URL        = "https://slack.com/api/files.getUploadURLExternal";
-    Headers  = GetAuthorizationHeader(Token);
-    Size     = File.Size();
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("filename", FileName, String_, Parameters);
-    OPI_Tools.AddField("length"  , Size  , String_, Parameters);
 
-    Response         = OPI_Tools.Get(URL, Parameters, Headers);
-    URL           = Response[Upload_url];
-    Identifier = Response[File_id];
-    
-    If Not ValueFilled(URL) Or Not ValueFilled(Identifier) Then
-        Return Response;
-    EndIf;
-    
-    Files = New Match;
-    Files.Insert(FileName, File);
-    
-    Response     = OPI_Tools.PostMultipart(URL, , Files, , Headers);
-    URL       = "https://slack.com/api/files.completeUploadExternal"; 
-    SlackFile  = New Structure("id, title", Identifier, Title);   
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("filename"  , FileName, String_, Parameters);
-    OPI_Tools.AddField("channel_id", Channel   , String_, Parameters);
-    OPI_Tools.AddField("files"     , SlackFile, "Array", Parameters);
+OPI_TypeConversion.GetBinaryData(File);
+OPI_TypeConversion.GetLine(FileName);
+OPI_TypeConversion.GetLine(Title);
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-    
-    Return Response;
-    
+String_ = "String";
+Upload_url = "upload_url";
+File_id = "file_id";
+URL = "https://slack.com/api/files.getUploadURLExternal";
+Headers = GetAuthorizationHeader(Token);
+Size = File.Size();
+
+Parameters = New Structure;
+OPI_Tools.AddField("filename", FileName, String_, Parameters);
+OPI_Tools.AddField("length" , Size , String_, Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+URL = Response[Upload_url];
+Identifier = Response[File_id];
+
+If Not ValueIsFilled(URL) Or Not ValueIsFilled(Identifier) Then
+Return Response;
+EndIf;
+
+Files = New Match;
+Files.Insert(FileName, File);
+
+Response = OPI_Tools.PostMultipart(URL, , Files, , Headers);
+URL = "https://slack.com/api/files.completeUploadExternal";
+SlackFile = New Structure("id, title", Identifier, Title);
+
+Parameters = New Structure;
+OPI_Tools.AddField("filename" , FileName, String_, Parameters);
+OPI_Tools.AddField("channel_id", Channel , String_, Parameters);
+OPI_Tools.AddField("files" , SlackFile, "Array", Parameters);
+
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Get file data
 // Gets information about the file
-// 
+//
 // Parameters:
-//  Token              - String - Bot token          - token
-//  FileID - String - File identifier - fileid
-// 
+// Token - String - Bot token - token
+// FileID - String - File identifier - fileid
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetFileData(Val Token, Val FileID) Export
-    
-    URL   = "https://slack.com/api/files.info";
-    Response = FileManagement(Token, FileID, URL, "GET");
-    
-    Return Response;
-    
+
+URL = "https://slack.com/api/files.info";
+Response = FileManagement(Token, FileID, URL, "GET");
+
+Return Response;
+
 EndFunction
 
 // Delete file
 // Deletes a file on Slack
-// 
+//
 // Parameters:
-//  Token              - String - Bot token          - token
-//  FileID - String - File identifier - fileid
-// 
+// Token - String - Bot token - token
+// FileID - String - File identifier - fileid
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function DeleteFile(Val Token, Val FileID) Export
-    
-    URL   = "https://slack.com/api/files.delete";
-    Response = FileManagement(Token, FileID, URL);
-    
-    Return Response;
-  
+
+URL = "https://slack.com/api/files.delete";
+Response = FileManagement(Token, FileID, URL);
+
+Return Response;
+
 EndFunction
 
 // Make file public
 // Creates a public URL for the file. Requires user token
-// 
+//
 // Parameters:
-//  Token              - String - User token  - token
-//  FileID - String - File identifier - fileid
-// 
+// Token - String - User token - token
+// FileID - String - File identifier - fileid
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function MakeFilePublic(Val Token, Val FileID) Export
-    
-    URL   = "https://slack.com/api/files.sharedPublicURL";
-    Response = FileManagement(Token, FileID, URL);
-    
-    Return Response;
-  
+
+URL = "https://slack.com/api/files.sharedPublicURL";
+Response = FileManagement(Token, FileID, URL);
+
+Return Response;
+
 EndFunction
 
 // Make file private
 // Removes the public URL from the file. Requires user token
-// 
+//
 // Parameters:
-//  Token              - String - User token  - token
-//  FileID - String - File identifier - fileid
-// 
+// Token - String - User token - token
+// FileID - String - File identifier - fileid
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function MakeFilePrivate(Val Token, Val FileID) Export
-    
-    URL   = "https://slack.com/api/files.revokePublicURL";
-    Response = FileManagement(Token, FileID, URL);
-    
-    Return Response;
-  
+
+URL = "https://slack.com/api/files.revokePublicURL";
+Response = FileManagement(Token, FileID, URL);
+
+Return Response;
+
 EndFunction
 
 #EndRegion
@@ -833,119 +833,119 @@ EndFunction
 
 // Get list of external files
 // Gets a list of external files of a user or channel
-// 
+//
 // Parameters:
-//  Token  - String - Bot token                                                    - token
-//  Channel  - String - Channel for selection                                              - channel 
-//  Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
-// 
+// Token - String - Bot token - token
+// Channel - String - Channel for selection - channel
+// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetExternalFileList(Val Token, Val Channel = "", Val Cursor = "") Export
-    
-    URL       = "https://slack.com/api/files.remote.list";
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel , "String", Parameters);
-    OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
-    
+URL = "https://slack.com/api/files.remote.list";
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel , "String", Parameters);
+OPI_Tools.AddField("cursor" , Cursor, "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Get external file
 // Gets information about the external file
-// 
+//
 // Parameters:
-//  Token              - String - Bot token          - token
-//  FileID - String - File identifier - fileid
-// 
+// Token - String - Bot token - token
+// FileID - String - File identifier - fileid
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function GetExternalFile(Val Token, Val FileID) Export
-  
-    URL   = "https://slack.com/api/files.remote.info";
-    Response = ExternalFileManagement(Token, FileID, URL);
-    
-    Return Response;
-      
+
+URL = "https://slack.com/api/files.remote.info";
+Response = ExternalFileManagement(Token, FileID, URL);
+
+Return Response;
+
 EndFunction
 
 // Add external file
 // Adds a new external file
-// 
+//
 // Parameters:
-//  Token     - String - Bot token                - token
-//  URL       - String - URL to external file      - url
-//  Title - String - File title for Slack - title
-// 
+// Token - String - Bot token - token
+// URL - String - URL to external file - url
+// Title - String - File title for Slack - title
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function AddExternalFile(Val Token, Val URL, Val Title) Export
-    
-    String_   = "String";
-    URL       = "https://slack.com/api/files.remote.add";
-    Headers = GetAuthorizationHeader(Token);
-    UID       = String(New UniqueIdentifier());
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("external_url", URL          , String_, Parameters);
-    OPI_Tools.AddField("external_id" , UID          , String_, Parameters);
-    OPI_Tools.AddField("title"       , Title    , String_, Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
-    
+String_ = "String";
+URL = "https://slack.com/api/files.remote.add";
+Headers = GetAuthorizationHeader(Token);
+UID = String(New UniqueIdentifier());
+
+Parameters = New Structure;
+OPI_Tools.AddField("external_url", URL , String_, Parameters);
+OPI_Tools.AddField("external_id" , UID , String_, Parameters);
+OPI_Tools.AddField("title" , Title , String_, Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Send external file
 // Sends an external file to a list of channels
-// 
+//
 // Parameters:
-//  Token              - String           - Bot token                  - token
-//  FileID - String           - File identifier         - fileid
-//  ChannelArray      - Array Of String - Array of channels for sending - channels
-// 
+// Token - String - Bot token - token
+// FileID - String - File identifier - fileid
+// ChannelArray - Array Of String - Array of channels for sending - channels
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export
-    
-    URL       = "https://slack.com/api/files.remote.share";
-    Headers = GetAuthorizationHeader(Token);
-    
-    OPI_TypeConversion.GetCollection(ChannelArray);
-    ChannelArray = StrJoin(ChannelArray, ",");
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("file"    , FileID , "String", Parameters);
-    OPI_Tools.AddField("channels", ChannelArray      , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
-    
+URL = "https://slack.com/api/files.remote.share";
+Headers = GetAuthorizationHeader(Token);
+
+OPI_TypeConversion.GetCollection(ChannelArray);
+ChannelArray = StrJoin(ChannelArray, ",");
+
+Parameters = New Structure;
+OPI_Tools.AddField("file" , FileID , "String", Parameters);
+OPI_Tools.AddField("channels", ChannelArray , "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 // Delete external file
 // Deletes an external file from Slack
-// 
+//
 // Parameters:
-//  Token              - String - Bot token          - token
-//  FileID - String - File identifier - fileid
-// 
+// Token - String - Bot token - token
+// FileID - String - File identifier - fileid
+//
 // Return value:
-//  Key-Value Pair - Serialized JSON response from Slack
+// Key-Value Pair - Serialized JSON response from Slack
 Function DeleteExternalFile(Val Token, Val FileID) Export
-  
-    URL   = "https://slack.com/api/files.remote.remove";
-    Response = ExternalFileManagement(Token, FileID, URL);
-    
-    Return Response;
-      
+
+URL = "https://slack.com/api/files.remote.remove";
+Response = ExternalFileManagement(Token, FileID, URL);
+
+Return Response;
+
 EndFunction
 
 #EndRegion
@@ -954,24 +954,24 @@ EndFunction
 
 // Generate image block
 // Generates a block with an image to add to the message block array
-// 
+//
 // Parameters:
-//  URL                 - String - Image URL                   - picture
-//  AlternateText - String - Alternate text of the image  - alt
-// 
+// URL - String - Image URL - picture
+// AlternateText - String - Alternate text of the image - alt
+//
 // Return value:
-//  Key-Value Pair -  Image block
+// Key-Value Pair - Image block
 Function GenerateImageBlock(Val URL, Val AlternateText = "") Export
-    
-    String_ = "String";
-    
-    Block = New Match;
-    OPI_Tools.AddField("type"     , "image"              , String_, Block);
-    OPI_Tools.AddField("image_url", URL                  , String_, Block);
-    OPI_Tools.AddField("alt_text" , AlternateText  , String_, Block);
-    
-    Return Block;
-    
+
+String_ = "String";
+
+Block = New Match;
+OPI_Tools.AddField("type" , "image" , String_, Block);
+OPI_Tools.AddField("image_url", URL , String_, Block);
+OPI_Tools.AddField("alt_text" , AlternateText , String_, Block);
+
+Return Block;
+
 EndFunction
 
 #EndRegion
@@ -982,74 +982,74 @@ EndFunction
 
 Function GetAuthorizationHeader(Val Token)
 
-    OPI_TypeConversion.GetLine(Token);
-    
-    Headers = New Match;
-    Headers.Insert("Authorization", "Bearer " + Token);
-    Return Headers;
-        
+OPI_TypeConversion.GetLine(Token);
+
+Headers = New Match;
+Headers.Insert("Authorization", "Bearer " + Token);
+Return Headers;
+
 EndFunction
 
 Function DialogManagement(Val Token, Val Channel, Val URL, Val RequestType = "POST")
-    
-    Headers  = GetAuthorizationHeader(Token);
-    RequestType = inReg(RequestType);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel, "String", Parameters);
 
-    If RequestType = "POST" Then
-        Response = OPI_Tools.Post(URL, Parameters, Headers);
-    Otherwise
-        Response = OPI_Tools.Get(URL, Parameters, Headers);
-    EndIf;
-    
-    Return Response;
-    
+Headers = GetAuthorizationHeader(Token);
+RequestType = inReg(RequestType);
+
+Parameters = New Structure;
+OPI_Tools.AddField("channel", Channel, "String", Parameters);
+
+If RequestType = "POST" Then
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+Else
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+EndIf;
+
+Return Response;
+
 EndFunction
 
 Function FileManagement(Val Token, Val FileID, Val URL, Val RequestType = "POST")
-    
-    Headers = GetAuthorizationHeader(Token);
-    RequestType = inReg(RequestType);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("file", FileID , "String", Parameters);
 
-    If RequestType = "POST" Then
-        Response = OPI_Tools.Post(URL, Parameters, Headers);
-    Otherwise
-        Response = OPI_Tools.Get(URL, Parameters, Headers);
-    EndIf;
+Headers = GetAuthorizationHeader(Token);
+RequestType = inReg(RequestType);
 
-    Return Response;
+Parameters = New Structure;
+OPI_Tools.AddField("file", FileID , "String", Parameters);
+
+If RequestType = "POST" Then
+Response = OPI_Tools.Post(URL, Parameters, Headers);
+Else
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+EndIf;
+
+Return Response;
 
 EndFunction
 
 Function GeneralDataRetrieval(Val Token, Val URL, Val Cursor)
-    
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("cursor", Cursor, "String", Parameters);
-    
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
-    
+
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("cursor", Cursor, "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 Function ExternalFileManagement(Val Token, Val FileID, Val URL)
-    
-    Headers = GetAuthorizationHeader(Token);
-    
-    Parameters = New Structure;
-    OPI_Tools.AddField("file", FileID , "String", Parameters);
 
-    Response = OPI_Tools.Get(URL, Parameters, Headers);
-    
-    Return Response;
-    
+Headers = GetAuthorizationHeader(Token);
+
+Parameters = New Structure;
+OPI_Tools.AddField("file", FileID , "String", Parameters);
+
+Response = OPI_Tools.Get(URL, Parameters, Headers);
+
+Return Response;
+
 EndFunction
 
 #EndRegion
