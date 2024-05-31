@@ -33,268 +33,268 @@
 #Region ServiceProgramInterface
 
 Procedure GetBinaryData(Value) Export
-
-If Value = Undefined Then
-Return;
-EndIf;
-
-Try
-
-If TypeValue(Value) = Type("BinaryData") Then
-Return;
-Else
-
-File = New File(Value);
-
-If File.Exists() Then
-Value = New BinaryData(Value);
-
-ElsIf StrFind(Value, "//") Then
-
-Value = OPI_Tools.Get(Value);
-
-Else
-
-Value = Base64Value(Value);
-
-EndIf;
-
-EndIf;
-
-Except
-Raise "Error getting binary data from parameter: " + ErrorDescription();
-EndTry;
-
+    
+    If Value = Undefined Then
+        Return;
+    EndIf;
+    
+    Try 
+        
+        If TypeValue(Value) = Type("BinaryData") Then
+            Return;
+        Else
+            
+            File = New File(Value);
+            
+            If File.Exists() Then
+                Value = New BinaryData(Value);
+                
+            ElsIf StrFind(Value, "//") Then
+                                
+                Value = OPI_Tools.Get(Value);
+                
+            Else
+                
+                Value = Base64Value(Value);
+                
+            EndIf;
+                  
+        EndIf;
+    
+    Except
+        Raise "Error getting binary data from parameter: " + ErrorDescription();
+    EndTry;
+    
 EndProcedure
 
 Procedure GetBinaryOrStream(Value) Export
-
-If Value = Undefined Then
-Return;
-EndIf;
-
-If TypeValue(Value) <> Type("String") Then
-GetBinaryData(Value);
-Return;
-EndIf;
-
-File = New File(Value);
-
-If File.Exists() Then
-Value = New FileStream(Value, FileOpenMode.Open);
-Else
-GetBinaryData(Value);
-EndIf;
-
+    
+    If Value = Undefined Then
+        Return;
+    EndIf;
+    
+    If TypeValue(Value) <> Type("String") Then
+        GetBinaryData(Value);
+        Return;
+    EndIf;
+    
+    File = New File(Value);
+    
+    If File.Exists() Then
+        Value = New FileStream(Value, FileOpenMode.Open);     
+    Else
+        GetBinaryData(Value);
+    EndIf;
+    
 EndProcedure
 
 Procedure GetCollection(Value) Export
-
-If Value = Undefined Then
-Return;
-EndIf;
-
-Try
-
-InitialValue = Value;
-
-If ThisIsCollection(Value) Then
-Return;
-Else
-
-If TypeValue(Value) = Type("BinaryData") Then
-Value = GetStringFromBinaryData(Value);
-Else
-Value = OPI_Tools.NumberToString(Value);
-EndIf;
-
-File = New File(Value);
-ReadingJSON = New ReadingJSON;
-
-If File.Exists() Then
-
-ReadingJSON.OpenFile(Value);
-
-ElsIf StringStartsWith(nReg(Value), "http") Then
-
-AndVF = GetTempFileName();
-CopyFile(Value, AndVF);
-ReadingJSON.OpenFile(AndVF);
-ReadingJSON.Read();
-
-DeleteFiles(AndVF);
-
-Else
-
-ReadingJSON.SetString(ShortLP(Value));
-
-EndIf;
-
-Value = ReadJSON(ReadingJSON, True, Undefined, JSONDateFormat.ISO);
-ReadingJSON.Close();
-
-If (Not ThisIsCollection(Value)) Or Not ValueIsFilled(Value) Then
-
-Value = InitialValue;
-GetArray(Value);
-
-EndIf;
-
-EndIf;
-
-Except
-
-Value = InitialValue;
-GetArray(Value);
-
-EndTry;
-
+    
+    If Value = Undefined Then
+        Return;
+    EndIf;
+    
+    Try 
+        
+        InitialValue = Value;
+        
+        If ThisIsCollection(Value) Then
+            Return;
+        Else
+            
+            If TypeValue(Value) = Type("BinaryData") Then
+                Value = GetStringFromBinaryData(Value);
+            Else
+                Value = OPI_Tools.NumberToString(Value);
+            EndIf;
+            
+            File = New File(Value);
+            ReadingJSON = New ReadingJSON;
+            
+            If File.Exists() Then
+                
+                ReadingJSON.OpenFile(Value);
+                
+           ElsIf StringStartsWith(nReg(Value), "http") Then
+                
+                AndVF = GetTempFileName();
+                CopyFile(Value, AndVF);
+                ReadingJSON.OpenFile(AndVF);
+                ReadingJSON.Read();
+                
+                DeleteFiles(AndVF);
+                
+            Else
+                
+                ReadingJSON.SetString(ShortLP(Value));
+                
+            EndIf;
+            
+            Value = ReadJSON(ReadingJSON, True, Undefined, JSONDateFormat.ISO);
+            ReadingJSON.Close();
+            
+            If (Not ThisIsCollection(Value)) Or Not ValueIsFilled(Value) Then
+                
+                Value = InitialValue;
+                GetArray(Value);
+                
+            EndIf;
+             
+        EndIf;
+    
+    Except
+        
+        Value = InitialValue;
+    	GetArray(Value);	
+        
+    EndTry;
+        
 EndProcedure
 
 Procedure GetArray(Value) Export
-
-If TypeValue(Value) = Type("Array") Then
-Return;
-EndIf;
-
-If TypeValue(Value) = Type("String")
-And StringStartsWith(Value, "[")
-And StrEndsWith(Value, "]") Then
-
-CommaInQuotes = "','";
-
-Value = StringReplace(Value, "['" , "");
-Value = StringReplace(Value, "']" , "");
-Value = StringReplace(Value, "', '" , CommaInQuotes);
-Value = StringReplace(Value, "' , '", CommaInQuotes);
-Value = StringReplace(Value, "' ,'" , CommaInQuotes);
-
-Value = StrSplit(Value, CommaInQuotes, False);
-
-For N = 0 For Value.WithinBoundary() Do
-Value[N] = ShortLP(Value[N]);
-EndDo;
-
-Else
-
-If TypeValue(Value) = Type("Number") Then
-Value = OPI_Tools.NumberToString(Value);
-EndIf;
-
-OPI_Tools.ValueToArray(Value);
-
-EndIf;
-
+    
+    If TypeValue(Value) = Type("Array") Then
+        Return;
+    EndIf;
+    
+    If TypeValue(Value) = Type("String") 
+        And StringStartsWith(Value, "[")
+        And StrEndsWith(Value, "]") Then
+        	
+        CommaInQuotes = "','";
+    
+	    Value = StringReplace(Value, "['" , "");
+	    Value = StringReplace(Value, "']" , "");
+	    Value = StringReplace(Value, "', '" , CommaInQuotes);
+	    Value = StringReplace(Value, "' , '", CommaInQuotes);
+	    Value = StringReplace(Value, "' ,'" , CommaInQuotes);
+	
+	    Value = StrSplit(Value, CommaInQuotes, False);
+	
+	    For N = 0 For Value.WithinBoundary() Do
+	        Value[N] = ShortLP(Value[N]);
+	    EndDo;
+    
+    Else
+    	
+        If TypeValue(Value) = Type("Number") Then
+            Value = OPI_Tools.NumberToString(Value);    
+        EndIf;
+        
+	    OPI_Tools.ValueToArray(Value);
+	    
+    EndIf;
+    
 EndProcedure
 
 Procedure GetBoolean(Value) Export
-
-If Value = Undefined Then
-Return;
-EndIf;
-
-Try
-
-If TypeValue(Value) = Type("Boolean") Then
-Return;
-Else
-Value = Boolean(Value);
-EndIf;
-
-Except
-Raise "Error getting boolean data from parameter";
-EndTry;
-
+    
+    If Value = Undefined Then
+        Return;
+    EndIf;
+    
+    Try 
+        
+        If TypeValue(Value) = Type("Boolean") Then
+            Return;
+        Else
+            Value = Boolean(Value);
+        EndIf;
+    
+    Except
+        Raise "Error getting boolean data from parameter";
+    EndTry;
+        
 EndProcedure
 
 Procedure GetLine(Value, Val FromSource = False) Export
-
-If Value = Undefined Then
-Return;
-EndIf;
-
-Try
-
-If ThisIsSymbolic(Value) Then
-
-If Not FromSource Then
-Value = OPI_Tools.NumberToString(Value);
-Return;
-EndIf;
-
-Value = OPI_Tools.NumberToString(Value);
-File = New File(Value);
-
-If File.Exists() Then
-
-ReadingText = New ReadingText(Value);
-Value = ReadingText.Read();
-ReadingText.Close();
-
-ElsIf StringStartsWith(nReg(Value), "http") Then
-
-AndVF = GetTempFileName();
-CopyFile(Value, AndVF);
-
-ReadingText = New ReadingText(AndVF);
-Value = ReadingText.Read();
-ReadingText.Close();
-
-DeleteFiles(AndVF);
-
-Else
-
-Return;
-
-EndIf;
-
-ElsIf TypeValue(Value) = Type("BinaryData") Then
-
-Value = GetStringFromBinaryData(Value);
-
-ElsIf ThisIsCollection(Value) Then
-
-Value = OPI_Tools.JSONString(Value);
-
-Else
-Return;
-EndIf;
-
-Except
-Value = String(Value);
-Return;
-EndTry;
-
+    
+    If Value = Undefined Then
+        Return;
+    EndIf;
+    
+    Try 
+        
+        If ThisIsSymbolic(Value) Then
+                
+            If Not FromSource Then
+                Value = OPI_Tools.NumberToString(Value);
+                Return;    
+            EndIf;
+              
+            Value = OPI_Tools.NumberToString(Value);  
+            File = New File(Value);
+            
+            If File.Exists() Then
+                
+                ReadingText = New ReadingText(Value);
+                Value = ReadingText.Read();
+                ReadingText.Close();
+                
+            ElsIf StringStartsWith(nReg(Value), "http") Then
+                
+                AndVF = GetTempFileName();
+                CopyFile(Value, AndVF);
+                
+                ReadingText = New ReadingText(AndVF);
+                Value = ReadingText.Read();
+                ReadingText.Close();
+                
+                DeleteFiles(AndVF);
+                
+            Else
+                
+                Return;
+                
+            EndIf;
+            
+        ElsIf TypeValue(Value) = Type("BinaryData") Then
+            
+            Value = GetStringFromBinaryData(Value);
+            
+        ElsIf ThisIsCollection(Value) Then
+                
+            Value = OPI_Tools.JSONString(Value); 
+            
+        Else
+            Return;
+        EndIf;
+                  
+    Except
+        Value = String(Value);
+        Return;
+    EndTry;
+    
 EndProcedure
 
 Procedure GetDate(Value) Export
-
-If Value = Undefined Then
-Return;
-EndIf;
-
-Date = "Date";
-
-Try
-
-If TypeValue(Value) = Type(Date) Then
-Return;
-Else
-Value = XMLValue(Type(Date), Value);
-EndIf;
-
-Except
-OOD = New TypeDescription(Date);
-Value = OOD.ConvertValue(Value);
-EndTry;
-
+    
+    If Value = Undefined Then
+        Return;
+    EndIf;
+    
+    Date = "Date";
+    
+    Try 
+        
+        If TypeValue(Value) = Type(Date) Then
+            Return;
+        Else         
+            Value = XMLValue(Type(Date), Value);                   
+        EndIf;
+    
+    Except
+        OOD = New TypeDescription(Date);
+        Value = OOD.ConvertValue(Value);
+    EndTry;
+        
 EndProcedure
 
 Procedure GetNumber(Value) Export
-
-TypeDescription = New TypeDescription("Number");
-Value = TypeDescription.ConvertValue(Value);
-
+    
+    TypeDescription = New TypeDescription("Number");
+    Value = TypeDescription.ConvertValue(Value);
+    
 EndProcedure
 
 #EndRegion
@@ -302,19 +302,19 @@ EndProcedure
 #Region ServiceProceduresAndFunctions
 
 Function ThisIsCollection(Val Value)
-
-Return TypeValue(Value) = Type("Array")
-Or TypeValue(Value) = Type("Structure")
-Or TypeValue(Value) = Type("Match");
-
-EndFunction
+	
+	Return TypeValue(Value) = Type("Array")
+            Or TypeValue(Value) = Type("Structure")
+            Or TypeValue(Value) = Type("Match");
+            
+EndFunction      
 
 Function ThisIsSymbolic(Val Value)
-
-Return TypeValue(Value) = Type("String")
-Or TypeValue(Value) = Type("Number")
-Or TypeValue(Value) = Type("Date");
-
-EndFunction
+	
+	Return TypeValue(Value) = Type("String")
+            Or TypeValue(Value) = Type("Number") 
+            Or TypeValue(Value) = Type("Date");
+            
+EndFunction      
 
 #EndRegion
