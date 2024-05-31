@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Viber.os
-// Библиотека: Viber
-// Команда CLI: viber
+﻿// Location OS: ./OInt/core/Modules/OPI_Viber.os
+// Library: Viber
+// CLI Command: viber
 
 // MIT License
 
@@ -29,386 +29,386 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область НастройкиИИнформация
+#Region SettingsAndInformation
 
-// Установить Webhook
-// ВАЖНО: Установка Webhook обязательна по правилам Viber. Для этого надо иметь свободный URL,
-// который будет возвращать 200 и подлинный SSL сертификат. Если есть сертификат и база опубликована
-// на сервере - можно использовать http-сервис. Туда же будет приходить и информация о новых сообщениях
-// Viber периодически стучит по адресу Webhook, так что если он будет неактивен, то все перестанет работать
+// Set Webhook
+// InАЖNО: Уwithтаноintoа Webhook обязательto по праinилам Viber. For thisго todо иметь withinобоdный URL,
+// which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published
+// on the server - you can use an HTTP service. Information about new messages will also be sent there
+// Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working
 // 
-// Параметры:
-//  Токен - Строка - Токен Viber               - token
-//  URL   - Строка - URL для установки Webhook - url
+// Parameters:
+//  Token - String - Viber Token               - token
+//  URL   - String - URL for setting up Webhook - url
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция УстановитьWebhook(Знач Токен, Знач URL) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function SetWebhook(Val Token, Val URL) Export
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("url"         , URL  , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("auth_token"  , Токен, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("url"         , URL  , "String", Parameters);
+    OPI_Tools.AddField("auth_token"  , Token, "String", Parameters);
  
-    Возврат OPI_Инструменты.Post("https://chatapi.viber.com/pa/set_webhook", Параметры);
+    Return OPI_Tools.Post("https://chatapi.viber.com/pa/set_webhook", Parameters);
     
-КонецФункции
+EndFunction
 
-// Получить информацию о канале
-// Тут можно получить ID пользователей канала. ID для бота необходимо получать из прилетов на Webhook
-// ID пользователя из информации о канале не подойдет для отправки сообщений через бота - они разные
+// Get channel information
+// Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals
+// The user ID from channel information is not suitable for sending messages through the bot - they are different
 // 
-// Параметры:
-//  Токен - Строка - Токен - token
+// Parameters:
+//  Token - String - Token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ПолучитьИнформациюОКанале(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function GetChannelInformation(Val Token) Export
     
     URL = "https://chatapi.viber.com/pa/get_account_info";   
-    Возврат OPI_Инструменты.Get(URL, , ТокенВЗаголовки(Токен));
+    Return OPI_Tools.Get(URL, , TokenInHeaders(Token));
     
-КонецФункции
+EndFunction
 
-// Получить данные пользователя
-// Получает информацию о пользователе по ID
+// Get user data
+// Gets user information by ID
 // 
-// Параметры:
-//  Токен          - Строка        - Токен                 - token
-//  IDПользователя - Строка, Число - ID пользователя Viber - user
+// Parameters:
+//  Token          - String        - Token                 - token
+//  UserID - String, Number - Viber User ID - user
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ПолучитьДанныеПользователя(Знач Токен, Знач IDПользователя) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function GetUserData(Val Token, Val UserID) Export
     
     URL = "https://chatapi.viber.com/pa/get_user_details";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("id", IDПользователя, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("id", UserID, "String", Parameters);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, ТокенВЗаголовки(Токен));
+    Response = OPI_Tools.Post(URL, Parameters, TokenInHeaders(Token));
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить онлайн пользователей
-// Получает статус пользователя или нескольких пользователей по ID
+// Get online users
+// Gets the status of a user or several users by ID
 // 
-// Параметры:
-//  Токен           - Строка                              - Токен Viber                - token
-//  IDПользователей - Строка,Число,Массив из Строка,Число - ID пользователей(я) Viber  - users
+// Parameters:
+//  Token           - String                              - Viber Token                - token
+//  UserIDs - String,Number,Array of String,Number - Viber User(s) ID  - users
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ПолучитьОнлайнПользователей(Знач Токен, Знач IDПользователей) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function GetOnlineUsers(Val Token, Val UserIDs) Export
     
     URL = "https://chatapi.viber.com/pa/get_online";
         
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("ids", IDПользователей, "Коллекция", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("ids", UserIDs, "Collection", Parameters);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, ТокенВЗаголовки(Токен));
+    Response = OPI_Tools.Post(URL, Parameters, TokenInHeaders(Token));
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область ОтправкаСообщений
+#Region MessageSending
 
-// Отправить текстовое сообщение
-// Отправляет текстовое сообщение в чат или канал
+// Send text message
+// Sends a text message to a chat or channel
 // 
-// Параметры:
-//  Токен          - Строка       - Токен                                                               - token
-//  Текст          - Строка       - Текст сообщения                                                     - text
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя - user
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                     - ischannel
-//  Клавиатура     - Структура из Строка -  См. СформироватьКлавиатуруИзМассиваКнопок - keyboard
+// Parameters:
+//  Token          - String       - Token                                                               - token
+//  Text          - String       - Message text                                                     - text
+//  UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user
+//  SendingToChannel - Boolean       - Sending to channel or bot chat                                     - ischannel
+//  Keyboard     - Structure Of String -  See CreateKeyboardFromArrayButton - keyboard
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ОтправитьТекстовоеСообщение(Знач Токен
-    , Знач Текст
-    , Знач IDПользователя
-    , Знач ОтправкаВКанал
-    , Знач Клавиатура = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function SendTextMessage(Val Token
+    , Val Text
+    , Val UserID
+    , Val SendingToChannel
+    , Val Keyboard = "") Export
     
-    Возврат ОтправитьСообщение(Токен, "text", IDПользователя, ОтправкаВКанал, , Текст, Клавиатура); 
+    Return SendMessage(Token, "text", UserID, SendingToChannel, , Text, Keyboard); 
     
-КонецФункции
+EndFunction
 
-// Отправить картинку
-// Отправляет картинку в чат или канал
+// Send image
+// Sends an image to a chat or channel
 // 
-// Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  URL            - Строка       - URL картинки                                                         - picture
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user
-//  ОтправкаВКанал - булево       - Отправка в канал или в чат бота                                      - ischannel
-//  Описание       - Строка       - Аннотация к картинке                                                 - description
+// Parameters:
+//  Token          - String       - Token                                                                - token
+//  URL            - String       - Image URL                                                         - picture
+//  UserID - String, Number - User ID. For channel > administrator, for bot > recipient  - user
+//  SendingToChannel - boolean       - Sending to channel or bot chat                                      - ischannel
+//  Description       - String       - Image annotation                                                 - description
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ОтправитьКартинку(Знач Токен, Знач URL, Знач IDПользователя, Знач ОтправкаВКанал, Знач Описание = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export
     
-    Возврат ОтправитьСообщение(Токен, "picture", IDПользователя, ОтправкаВКанал, URL, Описание);
+    Return SendMessage(Token, "picture", UserID, SendingToChannel, URL, Description);
     
-КонецФункции
+EndFunction
 
-// Отправить файл
-// Отправляет файл (документ) в чат или канал
+// SendFile
+// Sends a file (document) to a chat or channel
 // 
-// Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  URL            - Строка       - URL файла                                                            - file 
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user   
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
-//  Расширение     - Строка       - Расширение файла                                                     - ext
-//  Размер         - Число        - Размер файла. Если не заполнен > определяется автоматически скачиванием файла - size
+// Parameters:
+//  Token          - String       - Token                                                                - token
+//  URL            - String       - File URL                                                            - file 
+//  UserID - String, Number - User ID. For channel > administrator, for bot > recipient  - user   
+//  SendingToChannel - Boolean       - Sending to channel or bot chat                                      - ischannel
+//  Extension     - String       - File extension                                                     - ext
+//  Size         - Number        - File size. If not filled in > determined automatically by downloading the file - size
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ОтправитьФайл(Знач Токен
-    , Знач URL
-    , Знач IDПользователя
-    , Знач ОтправкаВКанал
-    , Знач Расширение
-    , Знач Размер = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function SendFile(Val Token
+    , Val URL
+    , Val UserID
+    , Val SendingToChannel
+    , Val Extension
+    , Val Size = "") Export
         
-    Если Не ЗначениеЗаполнено(Размер) Тогда
+    If Not ValueFilled(Size) Then
         
-        Ответ  = OPI_Инструменты.Get(URL);
-        Размер = Ответ.Размер();
+        Response  = OPI_Tools.Get(URL);
+        Size = Response.Size();
         
-    КонецЕсли;
+    EndIf;
     
-    Строка_    = "Строка";
-    Расширение = СтрЗаменить(Расширение, ".", "");
+    String_    = "String";
+    Extension = StringReplace(Extension, ".", "");
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("URL"       , URL       , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("Размер"    , Размер    , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("Расширение", Расширение, Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("URL"       , URL       , String_, Parameters);
+    OPI_Tools.AddField("Size"    , Size    , String_, Parameters);
+    OPI_Tools.AddField("Extension", Extension, String_, Parameters);
     
-    Возврат ОтправитьСообщение(Токен, "file", IDПользователя, ОтправкаВКанал, Параметры);
+    Return SendMessage(Token, "file", UserID, SendingToChannel, Parameters);
     
-КонецФункции
+EndFunction
 
-// Отправить контакт
-// Отправляет контакт с номером телефона в чат или канал
+// Send contact
+// Sends a contact with a phone number to a chat or channel
 // 
-// Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  ИмяКонтакта    - Строка       - Имя контакта                                                         - name
-//  НомерТелефона  - Строка       - Номер телефона                                                       - phone
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user  
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
+// Parameters:
+//  Token          - String       - Token                                                                - token
+//  ContactName    - String       - Contact name                                                         - name
+//  PhoneNumber  - String       - Phone number                                                       - phone
+//  UserID - String, Number - User ID. For channel > administrator, for bot > recipient  - user  
+//  SendingToChannel - Boolean       - Sending to channel or bot chat                                      - ischannel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ОтправитьКонтакт(Знач Токен
-    , Знач ИмяКонтакта
-    , Знач НомерТелефона
-    , Знач IDПользователя
-    , Знач ОтправкаВКанал) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function SendContact(Val Token
+    , Val ContactName
+    , Val PhoneNumber
+    , Val UserID
+    , Val SendingToChannel) Export
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("name"        , ИмяКонтакта  , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("phone_number", НомерТелефона, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("name"        , ContactName  , "String", Parameters);
+    OPI_Tools.AddField("phone_number", PhoneNumber, "String", Parameters);
     
-    Возврат ОтправитьСообщение(Токен, "contact", IDПользователя, ОтправкаВКанал, Параметры); 
+    Return SendMessage(Token, "contact", UserID, SendingToChannel, Parameters); 
     
-КонецФункции
+EndFunction
 
-// Отправить локацию
-// Отправляет географические координаты в чат или канал
+// SendLocation
+// Sends geographic coordinates to a chat or channel
 // 
-// Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  Широта         - Строка,Число - Географическая широта                                                - lat
-//  Долгота        - Строка,Число - Географическая долгота                                               - long
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user  
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
+// Parameters:
+//  Token          - String       - Token                                                                - token
+//  Latitude         - String, Number - Geographic latitude                                                - lat
+//  Longitude        - String, Number - Geographic longitude                                               - long
+//  UserID - String, Number - User ID. For channel > administrator, for bot > recipient  - user  
+//  SendingToChannel - Boolean       - Sending to channel or bot chat                                      - ischannel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ОтправитьЛокацию(Знач Токен, Знач Широта, Знач Долгота, Знач IDПользователя, Знач ОтправкаВКанал) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("lat", Широта , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("lon", Долгота, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("lat", Latitude , "String", Parameters);
+    OPI_Tools.AddField("lon", Longitude, "String", Parameters);
     
-    Возврат ОтправитьСообщение(Токен, "location", IDПользователя, ОтправкаВКанал, Параметры);
+    Return SendMessage(Token, "location", UserID, SendingToChannel, Parameters);
     
-КонецФункции
+EndFunction
 
-// Отправить ссылку
-// Отправляет URL с предпросмотром в чат или канал
+// SendLink
+// Sends a URL with a preview to a chat or channel
 // 
-// Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  URL            - Строка       - Отправляемая ссылка                                                  - url
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user  
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
+// Parameters:
+//  Token          - String       - Token                                                                - token
+//  URL            - String       - SentLink                                                  - url
+//  UserID - String, Number - User ID. For channel > administrator, for bot > recipient  - user  
+//  SendingToChannel - Boolean       - Sending to channel or bot chat                                      - ischannel
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
-Функция ОтправитьСсылку(Знач Токен, Знач URL, Знач IDПользователя, Знач ОтправкаВКанал) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Viber
+Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export
     
-    Возврат ОтправитьСообщение(Токен, "url", IDПользователя, ОтправкаВКанал, URL);
+    Return SendMessage(Token, "url", UserID, SendingToChannel, URL);
     
-КонецФункции
+EndFunction
 
-// Сформировать клавиатуру из массива кнопок
-// Возвращает структура клавиатуры для сообщений
+// Create a keyboard from an array of buttons
+// Returns a keyboard structure for messages
 // 
-// Параметры:
-//  МассивКнопок - Массив из Строка - Массив кнопок                - buttons
-//  ЦветКнопок   - Строка           - HEX цвет кнопок с # в начале - color
+// Parameters:
+//  ButtonArray - Array of Strings - Array of buttons                - buttons
+//  ButtonColor   - String           - HEX color of buttons with # at the beginning - color
 // 
-// Возвращаемое значение:
-//  Структура -  Сформировать клавиатуру из массива кнопок:
-// * Buttons - Массив из Структура - Массив сформированных кнопок 
-// * Type - Строка - Тип клавиатуры 
-Функция СформироватьКлавиатуруИзМассиваКнопок(Знач МассивКнопок, Знач ЦветКнопок = "#2db9b9") Экспорт
+// Return value:
+//  Structure -  Create a keyboard from an array of buttons:
+// * Buttons - Array of Structure - Array of formed buttons 
+// * Type - String - KeyboardType 
+Function CreateKeyboardFromArrayButton(Val ButtonArray, Val ButtonColor = "#2db9b9") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ЦветКнопок);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивКнопок);
+    OPI_TypeConversion.GetLine(ButtonColor);
+    OPI_TypeConversion.GetCollection(ButtonArray);
     
-    МассивСтруктурКнопок = Новый Массив;
-    СтруктураКлавиатуры  = Новый Структура;
+    ArrayOfButtonStructures = New Array;
+    KeyboardStructure  = New Structure;
     
-    Для Каждого ТекстКнопки Из МассивКнопок Цикл
+    For Each ButtonText Of ButtonArray Loop
         
-        СтруктураКнопки = Новый Структура;
-        СтруктураКнопки.Вставить("ActionType", "reply");
-        СтруктураКнопки.Вставить("ActionBody", ТекстКнопки);
-        СтруктураКнопки.Вставить("Text"      , ТекстКнопки);
-        СтруктураКнопки.Вставить("BgColor"   , ЦветКнопок);
-        СтруктураКнопки.Вставить("Coloumns"  , 3);
+        ButtonStructure = New Structure;
+        ButtonStructure.Insert("ActionType", "reply");
+        ButtonStructure.Insert("ActionBody", ButtonText);
+        ButtonStructure.Insert("Text"      , ButtonText);
+        ButtonStructure.Insert("BgColor"   , ButtonColor);
+        ButtonStructure.Insert("Coloumns"  , 3);
     
-        МассивСтруктурКнопок.Добавить(СтруктураКнопки);
+        ArrayOfButtonStructures.Add(ButtonStructure);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    СтруктураКлавиатуры.Вставить("Buttons", МассивСтруктурКнопок);
-    СтруктураКлавиатуры.Вставить("Type"   , "keyboard");
+    KeyboardStructure.Insert("Buttons", ArrayOfButtonStructures);
+    KeyboardStructure.Insert("Type"   , "keyboard");
     
-    Возврат СтруктураКлавиатуры;
+    Return KeyboardStructure;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-// Отправить сообщение.
+// Send message.
 // 
-// Параметры:
-//  Токен - Строка - Токен
-//  Тип - Строка -  Тип отправляемого сообщения
-//  IDПользователя - Строка,Число - ID пользователя Viber
-//  ЭтоКанал - Булево - Отправка в канал или чат с ботом
-//  Значение - Строка, Структура -  Значение:
-// * URL - Строка - При отправке  URL
-// * Размер - Число, Строка - Размер файла в случае отправке
-// * Расширение - Строка - Расширение файла в случае отправки
-//  Текст - Строка -  Текст сообщения
-//  Клавиатура - Структура из Строка -  Клавиатура, если нужна, см. СформироватьКлавиатуруИзМассиваКнопок 
+// Parameters:
+//  Token - String - Token
+//  Type - String -  TypeOfSentMessage
+//  UserID - String, Number - Viber User ID
+//  IsChannel - Boolean - Sending to channel or bot chat
+//  Value - String, Structure -  Value:
+// * URL - String - When sending URL
+// * Size - Number, String - File size in case of sending
+// * Extension - String - File extension in case of sending
+//  Text - String -  Message text
+//  Keyboard - Structure Of String -  Keyboard, if needed, see CreateKeyboardFromArrayButton 
 // 
-// Возвращаемое значение:
-//  Произвольный, HTTPОтвет -  Отправить сообщение
-Функция ОтправитьСообщение(Знач Токен
-    , Знач Тип
-    , Знач IDПользователя
-    , Знач ЭтоКанал
-    , Знач Значение = ""
-    , Знач Текст = ""
-    , Знач Клавиатура = "")
+// Return value:
+//  Arbitrary, HTTP Response -  Send message
+Function SendMessage(Val Token
+    , Val Type
+    , Val UserID
+    , Val IsChannel
+    , Val Value = ""
+    , Val Text = ""
+    , Val Keyboard = "")
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Тип);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПользователя);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ЭтоКанал);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Клавиатура);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Type);
+    OPI_TypeConversion.GetLine(UserID);
+    OPI_TypeConversion.GetLine(Text);
+    OPI_TypeConversion.GetBoolean(IsChannel);
+    OPI_TypeConversion.GetCollection(Keyboard);
     
-    СтруктураПараметров = ВернутьСтандартныеПараметры();
-    СтруктураПараметров.Вставить("type", Тип);  
+    ParametersStructure = ReturnStandardParameters();
+    ParametersStructure.Insert("type", Type);  
     
-    Если (Тип = "text" Или Тип = "picture") И ЗначениеЗаполнено(Текст) Тогда
-        СтруктураПараметров.Вставить("text", Текст);
-    КонецЕсли;
+    If (Type = "text" Or Type = "picture") And ValueFilled(Text) Then
+        ParametersStructure.Insert("text", Text);
+    EndIf;
     
-    Если ТипЗнч(Клавиатура) = Тип("Структура") Тогда
-        СтруктураПараметров.Вставить("keyboard", Клавиатура);
-    КонецЕсли;
+    If TypeValue(Keyboard) = Type("Structure") Then
+        ParametersStructure.Insert("keyboard", Keyboard);
+    EndIf;
     
-    Если ЗначениеЗаполнено(Значение) Тогда
+    If ValueFilled(Value) Then
         
-        Если Тип = "file" Тогда
-            СтруктураПараметров.Вставить("media"    , Значение["URL"]);
-            СтруктураПараметров.Вставить("size"     , Значение["Размер"]);
-            СтруктураПараметров.Вставить("file_name", "Файл." + Значение["Расширение"]);
-        ИначеЕсли Тип = "contact" Тогда
-            СтруктураПараметров.Вставить("contact"  , Значение);
-        ИначеЕсли Тип = "location" Тогда
-            СтруктураПараметров.Вставить("location" , Значение);
-        Иначе
-            СтруктураПараметров.Вставить("media"    , Значение);
-        КонецЕсли;
+        If Type = "file" Then
+            ParametersStructure.Insert("media"    , Value["URL"]);
+            ParametersStructure.Insert("size"     , Value["Size"]);
+            ParametersStructure.Insert("file_name", "File." + Value["Extension"]);
+        ElseIf Type = "contact" Then
+            ParametersStructure.Insert("contact"  , Value);
+        ElseIf Type = "location" Then
+            ParametersStructure.Insert("location" , Value);
+        Otherwise
+            ParametersStructure.Insert("media"    , Value);
+        EndIf;
         
-    КонецЕсли;
+    EndIf;
     
-    Если ЭтоКанал Тогда
-        СтруктураПараметров.Вставить("from", IDПользователя);
+    If IsChannel Then
+        ParametersStructure.Insert("from", UserID);
         URL = "https://chatapi.viber.com/pa/post";
-    Иначе   
-        СтруктураПараметров.Вставить("receiver", IDПользователя);
+    Otherwise   
+        ParametersStructure.Insert("receiver", UserID);
         URL = "https://chatapi.viber.com/pa/send_message";
-    КонецЕсли;
+    EndIf;
     
-    Ответ = OPI_Инструменты.Post(URL, СтруктураПараметров, ТокенВЗаголовки(Токен));
+    Response = OPI_Tools.Post(URL, ParametersStructure, TokenInHeaders(Token));
     
-    Попытка
-        Возврат OPI_Инструменты.JsonВСтруктуру(Ответ.ПолучитьТелоКакДвоичныеДанные());
-    Исключение
-        Возврат Ответ;
-    КонецПопытки;
+    Attempt
+        Return OPI_Tools.JsonToStructure(Response.GetBodyAsBinaryData());
+    Exception
+        Return Response;
+    EndOfAttempt;
     
-КонецФункции
+EndFunction
 
-Функция ВернутьСтандартныеПараметры() 
+Function ReturnStandardParameters() 
     
-    СтруктураОтправителя = Новый Структура;
-    СтруктураОтправителя.Вставить("name"  , "Bot");
-    СтруктураОтправителя.Вставить("avatar", "");
+    SenderStructure = New Structure;
+    SenderStructure.Insert("name"  , "Bot");
+    SenderStructure.Insert("avatar", "");
     
-    СтруктураПараметров  = Новый Структура;
-    СтруктураПараметров.Вставить("sender", СтруктураОтправителя);
-    СтруктураПараметров.Вставить("min_api_version", 1);
+    ParametersStructure  = New Structure;
+    ParametersStructure.Insert("sender", SenderStructure);
+    ParametersStructure.Insert("min_api_version", 1);
     
-    Возврат СтруктураПараметров;
+    Return ParametersStructure;
     
-КонецФункции
+EndFunction
 
-Функция ТокенВЗаголовки(Знач Токен)
+Function TokenInHeaders(Val Token)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    СтруктураЗаголовков = Новый Соответствие;
-    СтруктураЗаголовков.Вставить("X-Viber-Auth-Token", Токен);
-    Возврат СтруктураЗаголовков;
+    HeadersStructure = New Match;
+    HeadersStructure.Insert("X-Viber-Auth-Token", Token);
+    Return HeadersStructure;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion

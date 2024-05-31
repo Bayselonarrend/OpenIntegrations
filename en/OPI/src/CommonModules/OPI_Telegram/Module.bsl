@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Telegram.os
-// Библиотека: Telegram
-// Команда CLI: telegram
+﻿// Location OS: ./OInt/core/Modules/OPI_Telegram.os
+// Library: Telegram
+// CLI command: telegram
 
 // MIT License
 
@@ -32,1222 +32,1222 @@
 // BSLLS:UnreachableCode-off
 // BSLLS:CommentedCode-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область ПолучениеДанныхИНастройка
+#Region DataRetrievalAndSettings
 
-// Получить информацию о боте
-// Выполняет запрос /getMe, возвращающий базовую информацию о боте: имя, id, возможность добавлять бота в группы и т.д.
+// Get bot information
+// Inыполняет запроwith /getMe, inозinращающий базоinую информацию о боте: имя, id, inозможноwithть dобаinлять бота in группы и т.d.
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
+// Parameters:
+//  Token - String - Bot token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ПолучитьИнформациюБота(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function GetBotInformation(Val Token) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    URL   = "api.telegram.org/bot" + Токен + "/getMe";
-    Ответ = OPI_Инструменты.Get(URL);
+    URL   = "api.telegram.org/bot" + Token + "/getMe";
+    Response = OPI_Tools.Get(URL);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить обновления
-// Выполняет запрос /getUpdates, возвращающий информацию о событиях бота. Используется при работе в polling режиме
+// Get updates
+// Executes a request /getUpdates, returning information about bot events. Used in polling mode
 //
-// Параметры:
-//  Токен    - Строка       - Токен бота                             - token
-//  Таймаут  - Строка,Число - Время ожидания новых событий           - timeout
-//  Смещение - Строка,Число - Смещение в списке получаемых сообщений - offset
+// Parameters:
+//  Token    - String       - Bot token                             - token
+//  Timeout  - String, Number - Waiting time for new events           - timeout
+//  Offset - String, Number - Offset in the list of received messages - offset
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ПолучитьОбновления(Знач Токен, Знач Таймаут = 0, Знач Смещение = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    URL   = "api.telegram.org/bot" + Токен + "/getUpdates";
+    URL   = "api.telegram.org/bot" + Token + "/getUpdates";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("timeout", Таймаут , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("offset" , Смещение, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("timeout", Timeout , "String", Parameters);
+    OPI_Tools.AddField("offset" , Offset, "String", Parameters);
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
-    Возврат Ответ;
+    Response = OPI_Tools.Get(URL, Parameters);
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Установить Webhook
-// Устанавливает URL обработчика событий бота для работы в режиме Webhook 
+// Set Webhook
+// Set webhook URL for bot event handling in webhook mode 
 //          
-// Параметры:
-//  Токен - Строка - Токен бота                                      - token
-//  URL   - Строка - Адрес обработки запросов от Telegram (с https:) - url
+// Parameters:
+//  Token - String - Bot token                                      - token
+//  URL   - String - Address processing запроwithоin от Telegram (with https:) - url
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция УстановитьWebhook(Знач Токен, Знач URL) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SetWebhook(Val Token, Val URL) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("url", URL, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("url", URL, "String", Parameters);
 
-    URL   = "api.telegram.org/bot" + Токен + "/setWebHook";
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    URL   = "api.telegram.org/bot" + Token + "/setWebHook";
+    Response = OPI_Tools.Get(URL, Parameters);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Удалить Webhook
-// Удаляет URL обработчика событий бота для работы в режиме Webhook
+// Delete webhook
+// Deletes the bot event handler URL for webhook operation
 // 
-// Параметры:
-//  Токен - Строка - Токен бота - token
+// Parameters:
+//  Token - String - Bot token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция УдалитьWebhook(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function DeleteWebhook(Val Token) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    URL   = "api.telegram.org/bot" + Токен + "/deleteWebHook";
-    Ответ = OPI_Инструменты.Get(URL);
+    URL   = "api.telegram.org/bot" + Token + "/deleteWebHook";
+    Response = OPI_Tools.Get(URL);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Скачать файл
-// Скачивает файл с серверов Telegram
+// Download file
+// Download file from Telegram servers
 // 
-// Параметры:
-//  Токен   - Строка - Токен                   - token
-//  IDФайла - Строка - ID файла для скачивания - fileid
+// Parameters:
+//  Token   - String - Token                   - token
+//  FileID - String - File ID for downloading - fileid
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция СкачатьФайл(Знач Токен, Знач IDФайла) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function DownloadFile(Val Token, Val FileID) Export
 
     Result = "result";
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен); 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDФайла);    
+    OPI_TypeConversion.GetLine(Token); 
+    OPI_TypeConversion.GetLine(FileID);    
             
-    Параметры = Новый Структура("file_id", IDФайла);
+    Parameters = New Structure("file_id", FileID);
 
-    URL   = "api.telegram.org/bot" + Токен + "/getFile";
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    URL   = "api.telegram.org/bot" + Token + "/getFile";
+    Response = OPI_Tools.Get(URL, Parameters);
     
-    Путь = Ответ[Result]["file_path"];
+    Path = Response[Result]["file_path"];
     
-    Если Не ЗначениеЗаполнено(Путь) Тогда
-        Возврат Ответ;
-    КонецЕсли;
+    If Not ValueFilled(Path) Then
+        Return Response;
+    EndIf;
     
-    URL   = "api.telegram.org/file/bot" + Токен + "/" + Путь;
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    URL   = "api.telegram.org/file/bot" + Token + "/" + Path;
+    Response = OPI_Tools.Get(URL, Parameters);
     
-    Возврат Ответ;   
+    Return Response;   
     
-КонецФункции
+EndFunction
 
-// ОбработатьДанные Telegram Mini App
-// Обрабатывает данные TMA и опредеяет их достоверность
+// Process Telegram Mini App data
+// Processes TMA data and determines its validity
 // 
-// Параметры:
-//  СтрокаДанных - Строка - querry из Telegram.WebApp.initData
-//  Токен        - Строка - Токен бота
+// Parameters:
+//  DataString - String - Query from Telegram.WebApp.initData
+//  Token        - String - Bot token
 // 
-// Возвращаемое значение:
-//  Соответствие из Строка - Соответствие данных с результатом проверки в поле passed
-Функция ОбработатьДанныеTMA(Знач СтрокаДанных, Знач Токен) Экспорт
+// Return value:
+//  Map from String - Map of data with the result of verification in the passed field
+Function ProcessTMAData(Val DataString, Val Token) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(СтрокаДанных);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(DataString);
     
-    СтрокаДанных    = РаскодироватьСтроку(СтрокаДанных, СпособКодированияСтроки.КодировкаURL);
-    СтруктураДанных = OPI_Инструменты.ПараметрыЗапросаВСоответствие(СтрокаДанных);
-    Ключ            = "WebAppData";
-    Хэш             = "";
-    КлючДвоичные    = ПолучитьДвоичныеДанныеИзСтроки(Ключ);
+    DataString    = DecodeString(DataString, StringEncodingMethod.URLencoding);
+    DataStructure = OPI_Tools.RequestParametersToMatch(DataString);
+    Key            = "WebAppData";
+    Hash             = "";
+    BinaryKey    = GetBinaryDataFromString(Key);
 
-    Результат = OPI_Криптография.HMACSHA256(КлючДвоичные, ПолучитьДвоичныеДанныеИзСтроки(Токен));
+    Result = OPI_Cryptography.HMACSHA256(BinaryKey, GetBinaryDataFromString(Token));
 
-    ТЗнач = Новый ТаблицаЗначений;
-    ТЗнач.Колонки.Добавить("Ключ");
-    ТЗнач.Колонки.Добавить("Значение");
+    TValue = New ValueTable;
+    TValue.Columns.Add("Key");
+    TValue.Columns.Add("Value");
 
-    Для Каждого Данные Из СтруктураДанных Цикл
+    For Each Data Of DataStructure Loop
 
-        НоваяСтрока             = ТЗнач.Добавить();
-        НоваяСтрока.Ключ        = Данные.Ключ;
-        НоваяСтрока.Значение    = Данные.Значение;
+        NewLine             = TValue.Add();
+        NewLine.Key        = Data.Key;
+        NewLine.Value    = Data.Value;
 
-    КонецЦикла;
+    EndOfLoop;
 
-    ТЗнач.Сортировать("Ключ");
+    TValue.Sort("Key");
 
-    СоответствиеВозврата = Новый Соответствие;
+    ReturnMapping = New Match;
     DCS                  = "";
 
-    Для Каждого СтрокаТЗ Из ТЗнач Цикл
+    For Each DataString Of TValue Loop
 
-        Если СтрокаТЗ.Ключ <> "hash" Тогда
-            DCS = DCS + СтрокаТЗ.Ключ + "=" + СтрокаТЗ.Значение + Символы.ПС;
-            СоответствиеВозврата.Вставить(СтрокаТЗ.Ключ, СтрокаТЗ.Значение);
-        Иначе
-            Хэш = СтрокаТЗ.Значение;
-        КонецЕсли;
+        If DataString.Key <> "hash" Then
+            DCS = DCS + DataString.Key + "=" + DataString.Value + Symbols.PS;
+            ReturnMapping.Insert(DataString.Key, DataString.Value);
+        Otherwise
+            Hash = DataString.Value;
+        EndIf;
 
-    КонецЦикла;
+    EndOfLoop;
 
-    DCS     = Лев(DCS, СтрДлина(DCS) - 1);
-    Подпись = OPI_Криптография.HMACSHA256(Результат, ПолучитьДвоичныеДанныеИзСтроки(DCS));
+    DCS     = Left(DCS, StrLength(DCS) - 1);
+    Signature = OPI_Cryptography.HMACSHA256(Result, GetBinaryDataFromString(DCS));
 
-    Финал = ПолучитьHexСтрокуИзДвоичныхДанных(Подпись);
+    Final = GetHexStringFromBinaryData(Signature);
 
-    Если Финал = вРег(Хэш) Тогда
-        Ответ = Истина;
-    Иначе
-        Ответ = Ложь;
-    КонецЕсли;
+    If Final = inReg(Hash) Then
+        Response = True;
+    Otherwise
+        Response = False;
+    EndIf;
 
-    СоответствиеВозврата.Вставить("passed", Ответ);
+    ReturnMapping.Insert("passed", Response);
 
-    Возврат СоответствиеВозврата;
+    Return ReturnMapping;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область ОтправкаДанных
+#Region DataSending
 
-// Отправить текстовое сообщение
-// Отправляет текстовое сообщение в чат или канал
+// Send text message
+// Sends a text message to a chat or channel
 // 
-// Параметры:
-//  Токен      - Строка       - Токен бота                                        - token
-//  IDЧата     - Строка,Число - ID целевого чата или IDЧата*IDТемы                - chat
-//  Текст      - Строка       - Текст сообщения                                   - text
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
-//  Разметка   - Строка       - Вид обработки текста (HTML, Markdown, MarkdownV2) - parsemode
+// Parameters:
+//  Token      - String       - Bot token                                        - token
+//  ChatID     - String, Number - Target chat ID or ChatID*TopicID                - chat
+//  Text      - String       - Message text                                   - text
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+//  Markup   - String       - View processing textа (HTML, Markdown, MarkdownV2) - parsemode
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьТекстовоеСообщение(Знач Токен
-	, Знач IDЧата
-	, Знач Текст
-	, Знач Клавиатура = ""
-	, Знач Разметка = "Markdown") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendTextMessage(Val Token
+	, Val ChatID
+	, Val Text
+	, Val Keyboard = ""
+	, Val Markup = "Markdown") Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);    
-    OPI_Инструменты.ЗаменитьСпецСимволы(Текст, Разметка);
+    OPI_TypeConversion.GetLine(Token);    
+    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
             
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode"  , Разметка  , "Строка"     , Параметры);
-    OPI_Инструменты.ДобавитьПоле("text"        , Текст     , "Строка"     , Параметры);
-    OPI_Инструменты.ДобавитьПоле("reply_markup", Клавиатура, "СтрокаФайла", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode"  , Markup  , "String"     , Parameters);
+    OPI_Tools.AddField("text"        , Text     , "String"     , Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
     
-    ДобавитьИдентификаторЧата(IDЧата, Параметры);
+    AddChatIdentifier(ChatID, Parameters);
     
-    URL   = "api.telegram.org/bot" + Токен + "/sendMessage";
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    URL   = "api.telegram.org/bot" + Token + "/sendMessage";
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Отправить картинку
-// Отправляет картинку в чат или канал
+// Send image
+// Sends an image to a chat or channel
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Текст      - Строка                - Текст сообщения                           - text
-//  Картинка   - ДвоичныеДанные,Строка - Файл картинки                             - picture
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
-//  Разметка   - Строка - Вид обработки текста (HTML, Markdown, MarkdownV2) - parsemode
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Text      - String                - Message text                           - text
+//  Image   - BinaryData,String - Image file                             - picture
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+//  Markup   - String - View processing textа (HTML, Markdown, MarkdownV2) - parsemode
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьКартинку(Знач Токен
-	, Знач IDЧата
-	, Знач Текст
-	, Знач Картинка
-	, Знач Клавиатура = ""
-	, Знач Разметка = "Markdown") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendImage(Val Token
+	, Val ChatID
+	, Val Text
+	, Val Image
+	, Val Keyboard = ""
+	, Val Markup = "Markdown") Export
 
-    Возврат ОтправитьФайл(Токен, IDЧата, Текст, Картинка, "photo", Клавиатура, Разметка);
+    Return SendFile(Token, ChatID, Text, Image, "photo", Keyboard, Markup);
 
-КонецФункции
+EndFunction
 
-// Отправить видео
-// Отправляет видео в чат или канал
+// Send video
+// Sends a video to a chat or channel
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Текст      - Строка                - Текст сообщения                           - text
-//  Видео      - ДвоичныеДанные,Строка - Файл видео                                - video
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
-//  Разметка   - Строка - Вид обработки текста (HTML, Markdown, MarkdownV2) - parsemode
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Text      - String                - Message text                           - text
+//  Video      - BinaryData,String - Video file                                - video
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+//  Markup   - String - View processing textа (HTML, Markdown, MarkdownV2) - parsemode
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьВидео(Знач Токен
-	, Знач IDЧата
-	, Знач Текст
-	, Знач Видео
-	, Знач Клавиатура = ""
-	, Знач Разметка = "Markdown") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendVideo(Val Token
+	, Val ChatID
+	, Val Text
+	, Val Video
+	, Val Keyboard = ""
+	, Val Markup = "Markdown") Export
 
-    Возврат ОтправитьФайл(Токен, IDЧата, Текст, Видео, "video", Клавиатура, Разметка);
+    Return SendFile(Token, ChatID, Text, Video, "video", Keyboard, Markup);
 
-КонецФункции
+EndFunction
 
-// Отправить аудио
-// Отправляет аудиофайл в чат или канал
+// Send audio
+// Sends an audio file to a chat or channel
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Текст      - Строка                - Текст сообщения                           - text
-//  Аудио      - ДвоичныеДанные,Строка - Файл аудио                                - audio
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
-//  Разметка   - Строка - Вид обработки текста (HTML, Markdown, MarkdownV2) - parsemode
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Text      - String                - Message text                           - text
+//  Audio      - BinaryData,String - Audio file                                - audio
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+//  Markup   - String - View processing textа (HTML, Markdown, MarkdownV2) - parsemode
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьАудио(Знач Токен
-	, Знач IDЧата
-	, Знач Текст
-	, Знач Аудио
-	, Знач Клавиатура = ""
-	, Знач Разметка = "Markdown") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendAudio(Val Token
+	, Val ChatID
+	, Val Text
+	, Val Audio
+	, Val Keyboard = ""
+	, Val Markup = "Markdown") Export
 
-    Возврат ОтправитьФайл(Токен, IDЧата, Текст, Аудио, "audio", Клавиатура, Разметка);
+    Return SendFile(Token, ChatID, Text, Audio, "audio", Keyboard, Markup);
 
-КонецФункции
+EndFunction
 
-// Отправить документ
-// Отправляет документ в чат или канал
+// Send document
+// Sends a document to a chat or channel
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Текст      - Строка                - Текст сообщения                           - text
-//  Документ   - ДвоичныеДанные,Строка - Файл документа                            - doc
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
-//  Разметка   - Строка - Вид обработки текста (HTML, Markdown, MarkdownV2) - parsemode
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Text      - String                - Message text                           - text
+//  Document   - BinaryData,String - Document file                            - doc
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+//  Markup   - String - View processing textа (HTML, Markdown, MarkdownV2) - parsemode
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьДокумент(Знач Токен
-	, Знач IDЧата
-	, Знач Текст
-	, Знач Документ
-	, Знач Клавиатура = ""
-	, Знач Разметка = "Markdown") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendDocument(Val Token
+	, Val ChatID
+	, Val Text
+	, Val Document
+	, Val Keyboard = ""
+	, Val Markup = "Markdown") Export
 
-    Возврат ОтправитьФайл(Токен, IDЧата, Текст, Документ, "document", Клавиатура, Разметка);
+    Return SendFile(Token, ChatID, Text, Document, "document", Keyboard, Markup);
 
-КонецФункции
+EndFunction
 
-// Отправить гифку
-// Отправляет гифку в чат или канал
+// Send GIF
+// Sends a GIF to a chat or channel
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Текст      - Строка                - Текст сообщения                           - text
-//  Гифка      - ДвоичныеДанные,Строка - Файл гифки                                - gif
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
-//  Разметка   - Строка - Вид обработки текста (HTML, Markdown, MarkdownV2) - parsemode
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Text      - String                - Message text                           - text
+//  GIF      - BinaryData,String - GIF file                                - gif
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+//  Markup   - String - View processing textа (HTML, Markdown, MarkdownV2) - parsemode
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьГифку(Знач Токен
-	, Знач IDЧата
-	, Знач Текст
-	, Знач Гифка
-	, Знач Клавиатура = ""
-	, Знач Разметка = "Markdown") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendGif(Val Token
+	, Val ChatID
+	, Val Text
+	, Val GIF
+	, Val Keyboard = ""
+	, Val Markup = "Markdown") Export
 
-    Возврат ОтправитьФайл(Токен, IDЧата, Текст, Гифка, "animation", Клавиатура, Разметка);
+    Return SendFile(Token, ChatID, Text, GIF, "animation", Keyboard, Markup);
 
-КонецФункции
+EndFunction
 
-// Отправить группу медиафайлов
-// Отправляет набор файлов в чат или канал. Варианты типов медиа: audio, document, photo, video
+// Send media group
+// Sends a set of files to a chat or channel. Media types: audio, document, photo, video
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Текст      - Строка                - Текст сообщения                           - text
-//  СоответствиеФайлов - Соответствие из Строка - Коллекция файлов  - media - JSON файлов или путь к .json
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
-//  Разметка   - Строка - Вид обработки текста (HTML, Markdown, MarkdownV2) - parsemode
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Text      - String                - Message text                           - text
+//  FileMapping - Map from String - File collection  - media - File JSON or path to .json
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+//  Markup   - String - View processing textа (HTML, Markdown, MarkdownV2) - parsemode
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьМедиагруппу(Знач Токен
-	, Знач IDЧата
-	, Знач Текст
-	, Знач СоответствиеФайлов
-	, Знач Клавиатура = ""
-	, Знач Разметка = "Markdown") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendMediaGroup(Val Token
+	, Val ChatID
+	, Val Text
+	, Val FileMapping
+	, Val Keyboard = ""
+	, Val Markup = "Markdown") Export
     
-    // СоответствиеФайлов
-    // Ключ - Файл, Значение - Тип
-    // Типы: audio, document, photo, video
-    // Нельзя замешивать разные типы!
+    // FileMapping
+    // Key - File, Value - Type
+    // Types: audio, document, photo, video
+    // Different types cannot be mixed!
 
-	Строка_ = "Строка";
+	String_ = "String";
 	
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(СоответствиеФайлов);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ChatID);
+    OPI_TypeConversion.GetCollection(FileMapping);
     
-    OPI_Инструменты.ЗаменитьСпецсимволы(Текст, Разметка);
+    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
 
-    URL             = "api.telegram.org/bot" + Токен + "/sendMediaGroup";
-    СтруктураФайлов = Новый Структура;
-    Медиа           = Новый Массив;
-    Параметры       = Новый Структура;
+    URL             = "api.telegram.org/bot" + Token + "/sendMediaGroup";
+    FileStructure = New Structure;
+    Media           = New Array;
+    Parameters       = New Structure;
     
-    ДобавитьИдентификаторЧата(IDЧата, Параметры);
-    СформироватьМассивМедиа(СоответствиеФайлов, Текст, СтруктураФайлов, Медиа);
+    AddChatIdentifier(ChatID, Parameters);
+    FormMediaArray(FileMapping, Text, FileStructure, Media);
     
-    OPI_Инструменты.ДобавитьПоле("parse_mode"  , Разметка  , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("caption"     , Текст     , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("media"       , Медиа     , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("reply_markup", Клавиатура, "СтрокаФайла", Параметры);
+    OPI_Tools.AddField("parse_mode"  , Markup  , String_      , Parameters);
+    OPI_Tools.AddField("caption"     , Text     , String_      , Parameters);
+    OPI_Tools.AddField("media"       , Media     , String_      , Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
 
-    Ответ = OPI_Инструменты.PostMultipart(URL, Параметры, СтруктураФайлов, "mixed");
+    Response = OPI_Tools.PostMultipart(URL, Parameters, FileStructure, "mixed");
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Отправить местоположение
-// Отправляет местоположение по географической широте и долготе в чат или канал
+// Send location
+// Sends location by geographic latitude and longitude to a chat or channel
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Широта     - Строка,Число          - Географическая широта                     - lat
-//  Долгота    - Строка,Число          - Географическая долгота                    - long
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Latitude     - String, Number          - Geographic latitude                     - lat
+//  Longitude    - String, Number          - Geographic longitude                    - long
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьМестоположение(Знач Токен, Знач IDЧата, Знач Широта, Знач Долгота, Знач Клавиатура = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export
 
-	Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
+	String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ChatID);
     
-    URL = "api.telegram.org/bot" + Токен + "/sendLocation";
+    URL = "api.telegram.org/bot" + Token + "/sendLocation";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode"  , "Markdown" , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("latitude"    , Широта     , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("longitude"   , Долгота    , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("reply_markup", Клавиатура , "СтрокаФайла", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode"  , "Markdown" , String_      , Parameters);
+    OPI_Tools.AddField("latitude"    , Latitude     , String_      , Parameters);
+    OPI_Tools.AddField("longitude"   , Longitude    , String_      , Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard , "FileString", Parameters);
     
-    ДобавитьИдентификаторЧата(IDЧата, Параметры);
+    AddChatIdentifier(ChatID, Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Отправить контакт
-// Отправляет контакт с именем и номером телефона
+// Send contact
+// Sends a contact with name and phone number
 // 
-// Параметры:
-//  Токен      - Строка                - Токен бота                                - token
-//  IDЧата     - Строка,Число          - ID целевого чата или IDЧата*IDТемы        - chat
-//  Имя        - Строка                - Имя контакта                              - name
-//  Фамилия    - Строка                - Фамилия контакта                          - surname
-//  Телефон    - Строка                - Телефон контакта                          - phone
-//  Клавиатура - Строка - См. СформироватьКлавиатуруПоМассивуКнопок - keyboard - JSON клавиатуры или путь к .json
+// Parameters:
+//  Token      - String                - Bot token                                - token
+//  ChatID     - String, Number          - Target chat ID or ChatID*TopicID        - chat
+//  Name        - String                - Contact name                              - name
+//  Last name    - String                - Contact last name                          - surname
+//  Phone    - String                - Contact phone number                          - phone
+//  Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьКонтакт(Знач Токен, Знач IDЧата, Знач Имя, Знач Фамилия, Знач Телефон, Знач Клавиатура = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendContact(Val Token, Val ChatID, Val Name, Val Last name, Val Phone, Val Keyboard = "") Export
 
-	Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
+	String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ChatID);
     
-    URL = "api.telegram.org/bot" + Токен + "/sendContact";
+    URL = "api.telegram.org/bot" + Token + "/sendContact";
 
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode"  , "Markdown", Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("first_name"  , Имя       , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("last_name"   , Фамилия   , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("phone_number", Телефон   , Строка_      , Параметры);
-    OPI_Инструменты.ДобавитьПоле("reply_markup", Клавиатура, "СтрокаФайла", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode"  , "Markdown", String_      , Parameters);
+    OPI_Tools.AddField("first_name"  , Name       , String_      , Parameters);
+    OPI_Tools.AddField("last_name"   , Last name   , String_      , Parameters);
+    OPI_Tools.AddField("phone_number", Phone   , String_      , Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
     
-    ДобавитьИдентификаторЧата(IDЧата, Параметры);
+    AddChatIdentifier(ChatID, Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Отправить опрос
-// Отправляет опрос с вариантами ответа
+// Send poll
+// Sends a poll with answer options
 // 
-// Параметры:
-//  Токен         - Строка                - Токен бота                                 - token
-//  IDЧата        - Строка,Число          - ID целевого чата или IDЧата*IDТемы         - chat
-//  Вопрос        - Строка                - Вопрос опроса                              - question
-//  МассивОтветов - Массив из Строка      - Массив вариантов ответа                    - options
-//  Анонимный     - Булево                - Анонимность опроса                         - anonymous
+// Parameters:
+//  Token         - String                - Bot token                                 - token
+//  ChatID        - String, Number          - Target chat ID or ChatID*TopicID         - chat
+//  Question        - String                - Poll question                              - question
+//  AnswersArray - Array of Strings      - Array of answer options                    - options
+//  Anonymous     - Boolean                - Poll anonymity                         - anonymous
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОтправитьОпрос(Знач Токен, Знач IDЧата, Знач Вопрос, Знач МассивОтветов, Знач Анонимный = Истина) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Anonymous = True) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивОтветов);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ChatID);
+    OPI_TypeConversion.GetCollection(AnswersArray);
 
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Анонимный);
+    OPI_TypeConversion.GetBoolean(Anonymous);
     
-    URL = "api.telegram.org/bot" + Токен + "/sendPoll";
+    URL = "api.telegram.org/bot" + Token + "/sendPoll";
 
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode", "Markdown"   , "Строка"     , Параметры);
-    OPI_Инструменты.ДобавитьПоле("question"  , Вопрос       , "Строка"     , Параметры);
-    OPI_Инструменты.ДобавитьПоле("options"   , МассивОтветов, "СтрокаФайла", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode", "Markdown"   , "String"     , Parameters);
+    OPI_Tools.AddField("question"  , Question       , "String"     , Parameters);
+    OPI_Tools.AddField("options"   , AnswersArray, "FileString", Parameters);
     
-    Параметры.Вставить("is_anonymous", ?(Анонимный, 1, 0));   
-    ДобавитьИдентификаторЧата(IDЧата, Параметры);
+    Parameters.Insert("is_anonymous", ?(Anonymous, 1, 0));   
+    AddChatIdentifier(ChatID, Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Переслать сообщение
-// Пересылает сообщение между чатами или в рамках одного чата
+// Forward message
+// Forwards a message between chats or within a chat
 // 
-// Параметры:
-//  Токен         - Строка       - Токен бота                         - token
-//  IDОригинала   - Строка,Число - ID оригинального сообщения         - message
-//  ОткудаID      - Строка,Число - ID чата оригинального сообщения    - from
-//  КудаID        - Строка,Число - ID целевого чата или IDЧата*IDТемы - to
+// Parameters:
+//  Token         - String       - Bot token                         - token
+//  OriginalID   - String, Number - Original message ID         - message
+//  FromID      - String, Number - Chat ID of the original message    - from
+//  ToID        - String, Number - Target chat ID or ChatID*TopicID - to
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ПереслатьСообщение(Знач Токен, Знач IDОригинала, Знач ОткудаID, Знач КудаID) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDОригинала);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ОткудаID);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(КудаID);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(OriginalID);
+    OPI_TypeConversion.GetLine(FromID);
+    OPI_TypeConversion.GetLine(ToID);
     
-    URL = "api.telegram.org/bot" + Токен + "/forwardMessage";
+    URL = "api.telegram.org/bot" + Token + "/forwardMessage";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("from_chat_id", ОткудаID   , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("message_id"  , IDОригинала, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("from_chat_id", FromID   , "String", Parameters);
+    OPI_Tools.AddField("message_id"  , OriginalID, "String", Parameters);
 
-    ДобавитьИдентификаторЧата(КудаID, Параметры);
+    AddChatIdentifier(ToID, Parameters);
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Сформировать клавиатуру по массиву кнопок
-// Формирует простую JSON клавиатуру из массив кнопок для сообщения или нижней панели
+// Generate keyboard from array of buttons
+// Generates a simple JSON keyboard from an array of buttons for a message or bottom panel
 // 
-// Параметры:
-//  МассивКнопок  - Массив из Строка - Массив кнопок                                        - buttons 
-//  ПодСообщением - Булево           - Клавиатура под сообщением или на нижней панели       - under
-//  ОднаПодОдной  - Булево           - Истина > кнопки выводятся в столбик, Ложь > в строку - column
+// Parameters:
+//  ButtonArray  - Array of Strings - Array of buttons                                        - buttons 
+//  UnderMessage - Boolean           - Keyboard under the message or on the bottom panel       - under
+//  OneByOne  - Boolean           - True > buttons are displayed in a column, False > in a row - column
 // 
-// Возвращаемое значение:
-//  Строка -  JSON клавиатуры
-Функция СформироватьКлавиатуруПоМассивуКнопок(Знач МассивКнопок
-    , Знач ПодСообщением = Ложь
-    , Знач ОднаПодОдной = Истина) Экспорт
+// Return value:
+//  String -  Keyboard JSON
+Function FormKeyboardFromButtonArray(Val ButtonArray
+    , Val UnderMessage = False
+    , Val OneByOne = True) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ПодСообщением);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ОднаПодОдной);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивКнопок);
+    OPI_TypeConversion.GetBoolean(UnderMessage);
+    OPI_TypeConversion.GetBoolean(OneByOne);
+    OPI_TypeConversion.GetCollection(ButtonArray);
     
-    Если ОднаПодОдной Тогда
-        Строки = СоздатьВысокуюКлавиатуру(МассивКнопок);
-    Иначе
-        Строки = СоздатьДлиннуюКлавиатуру(МассивКнопок);
-    КонецЕсли;
+    If OneByOne Then
+        Strings = CreateTallKeyboard(ButtonArray);
+    Otherwise
+        Strings = CreateLongKeyboard(ButtonArray);
+    EndIf;
 
-    Если ПодСообщением Тогда
-        СтруктураПараметра = Новый Структура("inline_keyboard,rows", Строки, 1);
-    Иначе
-        СтруктураПараметра = Новый Структура("keyboard,resize_keyboard", Строки, Истина);
-    КонецЕсли;
+    If UnderMessage Then
+        ParameterStructure = New Structure("inline_keyboard,rows", Strings, 1);
+    Otherwise
+        ParameterStructure = New Structure("keyboard,resize_keyboard", Strings, True);
+    EndIf;
 
-    Клавиатура = OPI_Инструменты.JSONСтрокой(СтруктураПараметра);
+    Keyboard = OPI_Tools.JSONString(ParameterStructure);
 
-    Возврат Клавиатура;
+    Return Keyboard;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область Администрирование
+#Region Administration
 
-// Бан
-// Банит пользователя в выбранном чате
+// Ban
+// Bans a user in the selected chat
 // 
-// Параметры:
-//  Токен          - Строка       - Токен бота                         - token
-//  IDЧата         - Строка,Число - ID целевого чата или IDЧата*IDТемы - chat
-//  IDПользователя - Строка,Число - ID целевого пользователя           - user
+// Parameters:
+//  Token          - String       - Bot token                         - token
+//  ChatID         - String, Number - Target chat ID or ChatID*TopicID - chat
+//  UserID - String, Number - Target user ID           - user
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция Бан(Знач Токен, Знач IDЧата, Знач IDПользователя) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function Ban(Val Token, Val ChatID, Val UserID) Export
 
-	Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+	String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
     
-    URL = "api.telegram.org/bot" + Токен + "/banChatMember";
+    URL = "api.telegram.org/bot" + Token + "/banChatMember";
 
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode", "Markdown"    , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("chat_id"   , IDЧата        , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("user_id"   , IDПользователя, Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode", "Markdown"    , String_, Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID        , String_, Parameters);
+    OPI_Tools.AddField("user_id"   , UserID, String_, Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Разбан
-// Разбанивает забаненного ранее пользователя
+// Unban
+// Unbans a previously banned user
 // 
-// Параметры:
-//  Токен          - Строка       - Токен бота                         - token
-//  IDЧата         - Строка,Число - ID целевого чата или IDЧата*IDТемы - chat
-//  IDПользователя - Строка,Число - ID целевого пользователя           - user
+// Parameters:
+//  Token          - String       - Bot token                         - token
+//  ChatID         - String, Number - Target chat ID or ChatID*TopicID - chat
+//  UserID - String, Number - Target user ID           - user
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция Разбан(Знач Токен, Знач IDЧата, Знач IDПользователя) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function Unban(Val Token, Val ChatID, Val UserID) Export
 
-	Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+	String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
     
-    URL = "api.telegram.org/bot" + Токен + "/unbanChatMember";
+    URL = "api.telegram.org/bot" + Token + "/unbanChatMember";
 
-    Параметры = Новый Структура;   
-    OPI_Инструменты.ДобавитьПоле("parse_mode"    , "Markdown"    , Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("chat_id"       , IDЧата        , Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("user_id"       , IDПользователя, Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("only_if_banned", Ложь          , "Булево", Параметры);
+    Parameters = New Structure;   
+    OPI_Tools.AddField("parse_mode"    , "Markdown"    , String_ , Parameters);
+    OPI_Tools.AddField("chat_id"       , ChatID        , String_ , Parameters);
+    OPI_Tools.AddField("user_id"       , UserID, String_ , Parameters);
+    OPI_Tools.AddField("only_if_banned", False          , "Boolean", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Создать ссылку-приглашение
-// Создает ссылку для вступления в закрытый чат
+// Create invitation link
+// Creates a link for joining a closed chat
 // 
-// Параметры:
-//  Токен              - Строка         - Токен бота                                               - token
-//  IDЧата             - Строка,Число   - ID целевого чата или IDЧата*IDТемы                       - chat
-//  Заголовок          - Строка         - Заголовок приглашения                                    - title
-//  ДатаИстечения      - Дата           - Дата окончания жизни ссылки (безсрочно, если не указано) - expire
-//  ЛимитПользователей - Число          - Лимит пользователей (бесконечно, если не указано)        - limit
+// Parameters:
+//  Token              - String         - Bot token                                               - token
+//  ChatID             - String, Number   - Target chat ID or ChatID*TopicID                       - chat
+//  Title          - String         - Invitation title                                    - title
+//  ExpirationDate      - Date           - Date of end жfromни withwithылtoи (withoutwithрочно, еwithли не уtoазано) - expire
+//  UserLimit - Number          - Limit пользоinателей (беwithtoонечно, еwithли не уtoазано)        - limit
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция СоздатьСсылкуПриглашение(Знач Токен
-    , Знач IDЧата
-    , Знач Заголовок = ""
-    , Знач ДатаИстечения = ""
-    , Знач ЛимитПользователей = 0) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function CreateInvitationLink(Val Token
+    , Val ChatID
+    , Val Title = ""
+    , Val ExpirationDate = ""
+    , Val UserLimit = 0) Export
 
-	Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+	String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
     
-    URL = "api.telegram.org/bot" + Токен + "/createChatInviteLink";
+    URL = "api.telegram.org/bot" + Token + "/createChatInviteLink";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode"    , "Markdown"        , Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("chat_id"       , IDЧата            , Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("name"          , Заголовок         , Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("member_limit"  , ЛимитПользователей, Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("expire_date"   , ДатаИстечения     , "Дата"  , Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode"    , "Markdown"        , String_ , Parameters);
+    OPI_Tools.AddField("chat_id"       , ChatID            , String_ , Parameters);
+    OPI_Tools.AddField("name"          , Title         , String_ , Parameters);
+    OPI_Tools.AddField("member_limit"  , UserLimit, String_ , Parameters);
+    OPI_Tools.AddField("expire_date"   , ExpirationDate     , "Date"  , Parameters);
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Закрепить сообщение
-// Закрепляет сообщение в шапке чата
+// Pin message
+// Pins a message in the chat header
 // 
-// Параметры:
-//  Токен       - Строка       - Токен                 - token
-//  IDЧата      - Строка,Число - ID целевого чата      - chat
-//  IDСообщения - Строка,Число - ID целевого сообщения - message
+// Parameters:
+//  Token       - String       - Token                 - token
+//  ChatID      - String, Number - Target chat ID      - chat
+//  MessageID - String, Number - Target message ID - message
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ЗакрепитьСообщение(Знач Токен, Знач IDЧата, Знач IDСообщения) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
     
-    Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
     
-    URL = "api.telegram.org/bot" + Токен + "/pinChatMessage";
+    URL = "api.telegram.org/bot" + Token + "/pinChatMessage";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode"          , "Markdown" , Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("chat_id"             , IDЧата     , Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("message_id"          , IDСообщения, Строка_ , Параметры);
-    OPI_Инструменты.ДобавитьПоле("disable_notification", Ложь       , "Булево", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode"          , "Markdown" , String_ , Parameters);
+    OPI_Tools.AddField("chat_id"             , ChatID     , String_ , Parameters);
+    OPI_Tools.AddField("message_id"          , MessageID, String_ , Parameters);
+    OPI_Tools.AddField("disable_notification", False       , "Boolean", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Открепить сообщение
-// Открепляет сообщение в шапке чата
+// Unpin message
+// Unpins a message in the chat header
 // 
-// Параметры:
-//  Токен       - Строка       - Токен бота            - token
-//  IDЧата      - Строка,Число - ID целевого чата      - chat
-//  IDСообщения - Строка,Число - ID целевого сообщения - message
+// Parameters:
+//  Token       - String       - Bot token            - token
+//  ChatID      - String, Number - Target chat ID      - chat
+//  MessageID - String, Number - Target message ID - message
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОткрепитьСообщение(Знач Токен, Знач IDЧата, Знач IDСообщения) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
     
-    Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
     
-    URL = "api.telegram.org/bot" + Токен + "/unpinChatMessage";
+    URL = "api.telegram.org/bot" + Token + "/unpinChatMessage";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode", "Markdown" , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("chat_id"   , IDЧата     , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("message_id", IDСообщения, Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode", "Markdown" , String_, Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID     , String_, Parameters);
+    OPI_Tools.AddField("message_id", MessageID, String_, Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить число участников
-// Получает общее число участников чата
+// Get participant count
+// Gets the total number of chat participants
 // 
-// Параметры:
-//  Токен  - Строка       - Токен бота       - token
-//  IDЧата - Строка,Число - ID целевого чата - chat
+// Parameters:
+//  Token  - String       - Bot token       - token
+//  ChatID - String, Number - Target chat ID - chat
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ПолучитьЧислоУчастников(Знач Токен, Знач IDЧата) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function GetParticipantCount(Val Token, Val ChatID) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    URL = "api.telegram.org/bot" + Токен + "/getChatMemberCount";
+    URL = "api.telegram.org/bot" + Token + "/getChatMemberCount";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode", "Markdown" , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("chat_id"   , IDЧата     , "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode", "Markdown" , "String", Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID     , "String", Parameters);
 
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСТемамиФорума
+#Region ForumTopicManagement
 
-// Получить список иконок-аватаров
-// Получает соответствие ID Emoji для установки в качестве иконок тем форума
+// Get avatar icon list
+// Gets the mapping of Emoji IDs for setting as forum theme icons
 // 
-// Параметры:
-//  Токен - Строка - Токен - token
+// Parameters:
+//  Token - String - Token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Ключ > ID, Значение > Emoji
-Функция ПолучитьСписокИконокАватаров(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - Key > ID, Value > Emoji
+Function GetAvatarIconList(Val Token) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
     Result    = "result";
-    URL       = "api.telegram.org/bot" + Токен + "/getForumTopicIconStickers";     
-    Ответ     = OPI_Инструменты.Get(URL);    
-    Иконки    = Ответ[Result];
+    URL       = "api.telegram.org/bot" + Token + "/getForumTopicIconStickers";     
+    Response     = OPI_Tools.Get(URL);    
+    Icons    = Response[Result];
     
-    Если Не ЗначениеЗаполнено(Иконки) Тогда
-    	Возврат Ответ;
-    КонецЕсли; 
+    If Not ValueFilled(Icons) Then
+    	Return Response;
+    EndIf; 
     
-    Коллекция = Новый Соответствие;
+    Collection = New Match;
     
-    Для Каждого Иконка Из Иконки Цикл
-        Коллекция.Вставить(Иконка["custom_emoji_id"], Иконка["emoji"]);
-    КонецЦикла;
+    For Each Icon Of Icons Loop
+        Collection.Insert(Icon["custom_emoji_id"], Icon["emoji"]);
+    EndOfLoop;
        
-    Возврат Коллекция;
+    Return Collection;
 
-КонецФункции
+EndFunction
 
-// Создать тему форума
-// Создает новую тему в группе с включенным функционалом тем
+// Create forum thread
+// Creates a new thread in the group with theme functionality enabled
 // 
-// Параметры:
-//  Токен     - Строка       - Токен                            - token
-//  IDЧата    - Строка,Число - ID чата создания темы            - forum
-//  Заголовок - Строка       - Заголовок темы                   - title
-//  IDИконки  - Строка       - См. ПолучитьСписокИконокАватаров - icon
+// Parameters:
+//  Token     - String       - Token                            - token
+//  ChatID    - String, Number - Thread creation chat ID            - forum
+//  Title - String       - Thread title                   - title
+//  IconID  - String       - See GetAvatarIconList - icon
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция СоздатьТемуФорума(Знач Токен, Знач IDЧата, Знач Заголовок, Знач IDИконки = "") Экспорт
-    Возврат УправлениеТемойФорума(Токен, IDЧата, Заголовок, IDИконки);
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export
+    Return ForumTopicManagement(Token, ChatID, Title, IconID);
+EndFunction
 
-// Изменить тему форума
-// Создает новую тему в группе с включенным функционалом тем
+// Edit forum thread
+// Creates a new thread in the group with theme functionality enabled
 // 
-// Параметры:
-//  Токен     - Строка       - Токен                            - token
-//  IDЧата    - Строка,Число - ID чата создания темы            - forum
-//  IDТемы    - Строка,Число - ID темы                          - topic
-//  Заголовок - Строка       - Новый заголовок                  - title
-//  IDИконки  - Строка       - См. ПолучитьСписокИконокАватаров - icon
+// Parameters:
+//  Token     - String       - Token                            - token
+//  ChatID    - String, Number - Thread creation chat ID            - forum
+//  ThreadID    - String, Number - Thread ID                          - topic
+//  Title - String       - New title                  - title
+//  IconID  - String       - See GetAvatarIconList - icon
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ИзменитьТемуФорума(Знач Токен
-    , Знач IDЧата
-    , Знач IDТемы
-    , Знач Заголовок = Неопределено
-    , Знач IDИконки = Неопределено) Экспорт   
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function EditForumTopic(Val Token
+    , Val ChatID
+    , Val ThreadID
+    , Val Title = Undefined
+    , Val IconID = Undefined) Export   
      
-    Возврат УправлениеТемойФорума(Токен, IDЧата, Заголовок, IDИконки, IDТемы);
-КонецФункции
+    Return ForumTopicManagement(Token, ChatID, Title, IconID, ThreadID);
+EndFunction
 
-// Закрыть тему форума
-// Закрывает тему для новых сообщений
+// Close forum thread
+// Closes the thread for new messages
 // 
-// Параметры:
-//  Токен  - Строка       - Токен        - token
-//  IDЧата - Строка,Число - ID чата темы - forum
-//  IDТемы - Строка,Число - ID темы      - topic
+// Parameters:
+//  Token  - String       - Token        - token
+//  ChatID - String, Number - Thread chat ID - forum
+//  ThreadID - String, Number - Thread ID      - topic
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ЗакрытьТемуФорума(Знач Токен, Знач IDЧата, Знач IDТемы = "") Экспорт
-    Возврат УправлениеСостояниемТемыФорума(Токен, IDЧата, 2, IDТемы);    
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
+    Return ManageForumThreadState(Token, ChatID, 2, ThreadID);    
+EndFunction
 
-// Открыть тему форума
-// Повторно открывает ранее закрытую тему форума
+// Open forum thread
+// Reopens a previously closed forum thread
 // 
-// Параметры:
-//  Токен  - Строка       - Токен        - token
-//  IDЧата - Строка,Число - ID чата темы - forum
-//  IDТемы - Строка,Число - ID темы      - topic
+// Parameters:
+//  Token  - String       - Token        - token
+//  ChatID - String, Number - Thread chat ID - forum
+//  ThreadID - String, Number - Thread ID      - topic
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОткрытьТемуФорума(Знач Токен, Знач IDЧата, Знач IDТемы = "") Экспорт
-    Возврат УправлениеСостояниемТемыФорума(Токен, IDЧата, 1, IDТемы);    
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
+    Return ManageForumThreadState(Token, ChatID, 1, ThreadID);    
+EndFunction
 
-// Удалить тему форума
-// Удаляет тему форума
+// Delete forum thread
+// Deletes a forum thread
 // 
-// Параметры:
-//  Токен  - Строка       - Токен        - token
-//  IDЧата - Строка,Число - ID чата темы - forum
-//  IDТемы - Строка,Число - ID темы      - topic
+// Parameters:
+//  Token  - String       - Token        - token
+//  ChatID - String, Number - Thread chat ID - forum
+//  ThreadID - String, Number - Thread ID      - topic
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция УдалитьТемуФорума(Знач Токен, Знач IDЧата, Знач IDТемы) Экспорт
-    Возврат УправлениеСостояниемТемыФорума(Токен, IDЧата, 3, IDТемы);    
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export
+    Return ManageForumThreadState(Token, ChatID, 3, ThreadID);    
+EndFunction
 
-// Скрыть главную тему форума
-// Скрывает главную тему форума
+// Hide main forum thread
+// Hides the main forum thread
 // 
-// Параметры:
-//  Токен  - Строка       - Токен        - token
-//  IDЧата - Строка,Число - ID чата темы - forum
+// Parameters:
+//  Token  - String       - Token        - token
+//  ChatID - String, Number - Thread chat ID - forum
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция СкрытьГлавнуюТемуФорума(Знач Токен, Знач IDЧата) Экспорт
-    Возврат УправлениеВидимостьюГлавнойТемыФорума(Токен, IDЧата, Истина);
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function HideMainForumTopic(Val Token, Val ChatID) Export
+    Return ManageMainTopicVisibility(Token, ChatID, True);
+EndFunction
 
-// Показать главную тему форума
-// Показывает ранее скрытую главную тему форума
+// Show main forum thread
+// Shows a previously hidden main forum thread
 // 
-// Параметры:
-//  Токен  - Строка       - Токен        - token
-//  IDЧата - Строка,Число - ID чата темы - forum
+// Parameters:
+//  Token  - String       - Token        - token
+//  ChatID - String, Number - Thread chat ID - forum
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ПоказатьГлавнуюТемуФорума(Знач Токен, Знач IDЧата) Экспорт
-    Возврат УправлениеВидимостьюГлавнойТемыФорума(Токен, IDЧата, Ложь);
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function ShowMainForumTopic(Val Token, Val ChatID) Export
+    Return ManageMainTopicVisibility(Token, ChatID, False);
+EndFunction
 
-// Изменить имя главной темы форума
-// Изменяет имя главной темы форума
+// Edit main forum thread name
+// Edits the name of the main forum thread
 // 
-// Параметры:
-//  Токен     - Строка       - Токен                   - token
-//  IDЧата    - Строка,Число - ID чата темы            - forum
-//  Заголовок - Строка       - Новое имя главной темы  - title
+// Parameters:
+//  Token     - String       - Token                   - token
+//  ChatID    - String, Number - Thread chat ID            - forum
+//  Title - String       - New main thread name  - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ИзменитьИмяГлавнойТемыФорума(Знач Токен, Знач IDЧата, Знач Заголовок) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    URL = "api.telegram.org/bot" + Токен + "/editGeneralForumTopic";
+    URL = "api.telegram.org/bot" + Token + "/editGeneralForumTopic";
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("chat_id", IDЧата   , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("name"   , Заголовок, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("chat_id", ChatID   , "String", Parameters);
+    OPI_Tools.AddField("name"   , Title, "String", Parameters);
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    Response = OPI_Tools.Get(URL, Parameters);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Очистить список закрепленных сообщений темы
-// Очищает список закрепленных сообщений в теме форума
+// Clear thread's pinned messages list
+// Clears the list of pinned messages in the forum thread
 // 
-// Параметры:
-//  Токен  - Строка       - Токен                               - token
-//  IDЧата - Строка,Число - ID чата темы                        - forum
-//  IDТемы - Строка,Число - ID темы. Главная, если не заполнено - topic
+// Parameters:
+//  Token  - String       - Token                               - token
+//  ChatID - String, Number - Thread chat ID                        - forum
+//  ThreadID - String, Number - Thread ID. Main if not filled - topic
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
-Функция ОчиститьСписокЗакрепленныхСообщенийТемы(Знач Токен, Знач IDЧата, Знач IDТемы = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Telegram
+Function ClearThreadPinnedMessagesList(Val Token, Val ChatID, Val ThreadID = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDТемы);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ChatID);
+    OPI_TypeConversion.GetLine(ThreadID);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("chat_id"          , IDЧата, "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("message_thread_id", IDТемы, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("chat_id"          , ChatID, "String", Parameters);
+    OPI_Tools.AddField("message_thread_id", ThreadID, "String", Parameters);
     
-    Если ЗначениеЗаполнено(IDТемы) Тогда
-        Метод = "/unpinAllForumTopicMessages";
-    Иначе
-        Метод = "/unpinAllGeneralForumTopicMessages";
-    КонецЕсли;
+    If ValueFilled(ThreadID) Then
+        Method = "/unpinAllForumTopicMessages";
+    Otherwise
+        Method = "/unpinAllGeneralForumTopicMessages";
+    EndIf;
         
-    URL   = "api.telegram.org/bot" + Токен + Метод;
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    URL   = "api.telegram.org/bot" + Token + Method;
+    Response = OPI_Tools.Get(URL, Parameters);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ОтправитьФайл(Знач Токен, Знач IDЧата, Знач Текст, Знач Файл, Знач Вид, Знач Клавиатура, Знач Разметка)
+Function SendFile(Val Token, Val ChatID, Val Text, Val File, Val View, Val Keyboard, Val Markup)
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDЧата);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Вид);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(ChatID);
+    OPI_TypeConversion.GetLine(View);
 
-    Расширение  = "";
-    Метод       = "";
+    Extension  = "";
+    Method       = "";
     
-    ОпределитьМетодОтправки(Вид, Метод, Расширение);
-    ПреобразоватьДанныеФайла(Файл, Расширение, Вид);
-    OPI_Инструменты.ЗаменитьСпецсимволы(Текст, Разметка);
+    DetermineSendMethod(View, Method, Extension);
+    ConvertFileData(File, Extension, View);
+    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("parse_mode"  , Разметка  , "Строка"     , Параметры);
-    OPI_Инструменты.ДобавитьПоле("caption"     , Текст     , "Строка"     , Параметры);
-    OPI_Инструменты.ДобавитьПоле("reply_markup", Клавиатура, "СтрокаФайла", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("parse_mode"  , Markup  , "String"     , Parameters);
+    OPI_Tools.AddField("caption"     , Text     , "String"     , Parameters);
+    OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
     
-    ДобавитьИдентификаторЧата(IDЧата, Параметры);
+    AddChatIdentifier(ChatID, Parameters);
 
-    СтруктураФайлов = Новый Структура;
-    СтруктураФайлов.Вставить(Вид + Расширение, Файл);
+    FileStructure = New Structure;
+    FileStructure.Insert(View + Extension, File);
 
-    URL   = "api.telegram.org/bot" + Токен + Метод;
-    Ответ = OPI_Инструменты.PostMultipart(URL, Параметры, СтруктураФайлов, "mixed");
+    URL   = "api.telegram.org/bot" + Token + Method;
+    Response = OPI_Tools.PostMultipart(URL, Parameters, FileStructure, "mixed");
 
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-Функция УправлениеТемойФорума(Знач Токен
-    , Знач IDЧата
-    , Знач Заголовок = Неопределено
-    , Знач IDИконки = Неопределено
-    , Знач IDТемы = "")
+Function ForumTopicManagement(Val Token
+    , Val ChatID
+    , Val Title = Undefined
+    , Val IconID = Undefined
+    , Val ThreadID = "")
     
-    Строка_ = "Строка";
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    String_ = "String";
+    OPI_TypeConversion.GetLine(Token);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("name"                , Заголовок, Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("chat_id"             , IDЧата   , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("icon_custom_emoji_id", IDИконки , Строка_, Параметры);
-    OPI_Инструменты.ДобавитьПоле("message_thread_id"   , IDТемы   , Строка_, Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("name"                , Title, String_, Parameters);
+    OPI_Tools.AddField("chat_id"             , ChatID   , String_, Parameters);
+    OPI_Tools.AddField("icon_custom_emoji_id", IconID , String_, Parameters);
+    OPI_Tools.AddField("message_thread_id"   , ThreadID   , String_, Parameters);
     
-    Если ЗначениеЗаполнено(IDТемы) Тогда
-        Метод  = "/editForumTopic";    
-    Иначе    
-        Метод = "/createForumTopic";    
-    КонецЕсли;
+    If ValueFilled(ThreadID) Then
+        Method  = "/editForumTopic";    
+    Otherwise    
+        Method = "/createForumTopic";    
+    EndIf;
     
-    OPI_Инструменты.УдалитьПустыеПоляКоллекции(Параметры);       
-    Ответ = OPI_Инструменты.Get("api.telegram.org/bot" + Токен + Метод, Параметры);
+    OPI_Tools.RemoveEmptyCollectionFields(Parameters);       
+    Response = OPI_Tools.Get("api.telegram.org/bot" + Token + Method, Parameters);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-Функция УправлениеСостояниемТемыФорума(Знач Токен, Знач IDЧата, Знач Статус, Знач IDТемы = "") 
+Function ManageForumThreadState(Val Token, Val ChatID, Val Status, Val ThreadID = "") 
         
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Если ЗначениеЗаполнено(IDТемы) Тогда
-        Форум = "Forum";
-    Иначе
-        Форум = "GeneralForum";
-    КонецЕсли;
+    If ValueFilled(ThreadID) Then
+        Forum = "Forum";
+    Otherwise
+        Forum = "GeneralForum";
+    EndIf;
     
-    Метод     = ОпределитьМетодУправленияФорумом(Статус, Форум);
+    Method     = DetermineForumManagementMethod(Status, Forum);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("chat_id"          , IDЧата, "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("message_thread_id", IDТемы, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("chat_id"          , ChatID, "String", Parameters);
+    OPI_Tools.AddField("message_thread_id", ThreadID, "String", Parameters);
    
-    URL   = "api.telegram.org/bot" + Токен + Метод;
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    URL   = "api.telegram.org/bot" + Token + Method;
+    Response = OPI_Tools.Get(URL, Parameters);
 
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-Функция УправлениеВидимостьюГлавнойТемыФорума(Знач Токен, Знач IDЧата, Знач Скрыть)
+Function ManageMainTopicVisibility(Val Token, Val ChatID, Val Hide)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Скрыть);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetBoolean(Hide);
 
-    Если Скрыть Тогда
-        Метод = "/hideGeneralForumTopic";
-    Иначе
-        Метод = "/unhideGeneralForumTopic";
-    КонецЕсли;
+    If Hide Then
+        Method = "/hideGeneralForumTopic";
+    Otherwise
+        Method = "/unhideGeneralForumTopic";
+    EndIf;
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("chat_id", IDЧата, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("chat_id", ChatID, "String", Parameters);
     
-    URL   = "api.telegram.org/bot" + Токен + Метод;
-    Ответ = OPI_Инструменты.Get(URL, Параметры);
+    URL   = "api.telegram.org/bot" + Token + Method;
+    Response = OPI_Tools.Get(URL, Parameters);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции                 
+EndFunction                 
 
-Функция ОпределитьМетодУправленияФорумом(Знач Статус, Знач Форум) 
+Function DetermineForumManagementMethod(Val Status, Val Forum) 
     
-    Открыть = 1;
-    Закрыть = 2;
-    Удалить = 3;
+    Open = 1;
+    Close = 2;
+    Delete = 3;
     
-    Если Статус = Открыть Тогда 
-        Метод = "/reopen" + Форум + "Topic";
-    ИначеЕсли Статус = Закрыть Тогда
-        Метод = "/close" + Форум + "Topic";
-    ИначеЕсли Статус = Удалить Тогда
-        Метод = "/deleteForumTopic";
-    Иначе 
-        ВызватьИсключение "Некорректный статус управления форумом";
-    КонецЕсли;
+    If Status = Open Then 
+        Method = "/reopen" + Forum + "Topic";
+    ElseIf Status = Close Then
+        Method = "/close" + Forum + "Topic";
+    ElseIf Status = Delete Then
+        Method = "/deleteForumTopic";
+    Otherwise 
+        RaiseException "Incorrect forum management status";
+    EndIf;
     
-    Возврат Метод;
+    Return Method;
 
-КонецФункции
+EndFunction
 
-Функция СоздатьВысокуюКлавиатуру(Знач МассивКнопок)
+Function CreateTallKeyboard(Val ButtonArray)
     
-    Строки = Новый Массив;
+    Strings = New Array;
     
-    Для Каждого Кнопка Из МассивКнопок Цикл
-        Кнопки = Новый Массив;
-        Кнопка = OPI_Инструменты.ЧислоВСтроку(Кнопка);
-        Кнопки.Добавить(Новый Структура("text,callback_data", Кнопка, Кнопка));
-        Строки.Добавить(Кнопки);
-    КонецЦикла;
+    For Each Button Of ButtonArray Loop
+        Buttons = New Array;
+        Button = OPI_Tools.NumberToString(Button);
+        Buttons.Add(New Structure("text,callback_data", Button, Button));
+        Strings.Add(Buttons);
+    EndOfLoop;
 
-    Возврат Строки;
+    Return Strings;
     
-КонецФункции
+EndFunction
 
-Функция СоздатьДлиннуюКлавиатуру(Знач МассивКнопок)
+Function CreateLongKeyboard(Val ButtonArray)
     
-    Строки = Новый Массив;
-    Кнопки = Новый Массив;
+    Strings = New Array;
+    Buttons = New Array;
     
-    Для Каждого Кнопка Из МассивКнопок Цикл
-        Кнопка = OPI_Инструменты.ЧислоВСтроку(Кнопка);
-        Кнопки.Добавить(Новый Структура("text,callback_data", Кнопка, Кнопка));
-    КонецЦикла;
+    For Each Button Of ButtonArray Loop
+        Button = OPI_Tools.NumberToString(Button);
+        Buttons.Add(New Structure("text,callback_data", Button, Button));
+    EndOfLoop;
     
-    Строки.Добавить(Кнопки);
+    Strings.Add(Buttons);
     
-    Возврат Строки;
+    Return Strings;
 
-КонецФункции
+EndFunction
 
-Процедура СформироватьМассивМедиа(Знач СоответствиеФайлов, Знач Текст, СтруктураФайлов, Медиа)
+Procedure FormMediaArray(Val FileMapping, Val Text, FileStructure, Media)
     
-    Счетчик = 0;
+    Counter = 0;
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(СоответствиеФайлов);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
+    OPI_TypeConversion.GetCollection(FileMapping);
+    OPI_TypeConversion.GetLine(Text);
     
-    Если ТипЗнч(СоответствиеФайлов) <> Тип("Соответствие") Тогда
-        // !OInt ВызватьИсключение("Не удалось получить информацию из json медиа!");
-        Возврат;
-    КонецЕсли;
+    If TypeValue(FileMapping) <> Type("Match") Then
+        // !OInt RaiseException("Failed to Retrieve Information from JSON media!");
+        Return;
+    EndIf;
    
-    Для Каждого ТекущийФайл Из СоответствиеФайлов Цикл
+    For Each CurrentFile Of FileMapping Loop
         
-        Если Не ТипЗнч(ТекущийФайл.Ключ) = Тип("ДвоичныеДанные") Тогда
+        If Not TypeValue(CurrentFile.Key) = Type("BinaryData") Then
             
-            Двоичные = ТекущийФайл.Ключ;
-            OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Двоичные);
+            Binary = CurrentFile.Key;
+            OPI_TypeConversion.GetBinaryData(Binary);
             
-            ЭтотФайл = Новый Файл(ТекущийФайл.Ключ);           
-            ИмяМедиа = ТекущийФайл.Значение 
-                + Строка(Счетчик) 
-                + ?(ТекущийФайл.Значение = "document", ЭтотФайл.Расширение, "");
+            ThisFile = New File(CurrentFile.Key);           
+            MediaName = CurrentFile.Value 
+                + String(Counter) 
+                + ?(CurrentFile.Value = "document", ThisFile.Extension, "");
                 
-            ПолноеИмяМедиа  = СтрЗаменить(ИмяМедиа, ".", "___");
+            FullMediaName  = StringReplace(MediaName, ".", "___");
             
-        Иначе
-            Двоичные        = ТекущийФайл.Ключ;
-            ИмяМедиа        = ТекущийФайл.Значение + Строка(Счетчик);
-            ПолноеИмяМедиа  = ИмяМедиа;
-        КонецЕсли;
+        Otherwise
+            Binary        = CurrentFile.Key;
+            MediaName        = CurrentFile.Value + String(Counter);
+            FullMediaName  = MediaName;
+        EndIf;
         
-        СтруктураФайлов.Вставить(ПолноеИмяМедиа, Двоичные);
+        FileStructure.Insert(FullMediaName, Binary);
         
-        СтруктураМедиа = Новый Структура;
-        СтруктураМедиа.Вставить("type" , ТекущийФайл.Значение);
-        СтруктураМедиа.Вставить("media", "attach://" + ИмяМедиа);
+        MediaStructure = New Structure;
+        MediaStructure.Insert("type" , CurrentFile.Value);
+        MediaStructure.Insert("media", "attach://" + MediaName);
         
-        Если Счетчик = 0 Тогда
-            СтруктураМедиа.Вставить("caption", Текст);
-        КонецЕсли;
+        If Counter = 0 Then
+            MediaStructure.Insert("caption", Text);
+        EndIf;
         
-        Медиа.Добавить(СтруктураМедиа);
+        Media.Add(MediaStructure);
         
-        Счетчик = Счетчик + 1;
+        Counter = Counter + 1;
         
-    КонецЦикла;
+    EndOfLoop;
 
-    Медиа = OPI_Инструменты.JSONСтрокой(Медиа);
+    Media = OPI_Tools.JSONString(Media);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьИдентификаторЧата(Знач IDЧата, Параметры)
+Procedure AddChatIdentifier(Val ChatID, Parameters)
     
-    IDЧата     = OPI_Инструменты.ЧислоВСтроку(IDЧата);
-    МассивЧата = СтрРазделить(IDЧата, "*", Ложь);
+    ChatID     = OPI_Tools.NumberToString(ChatID);
+    ChatArray = StrSplit(ChatID, "*", False);
     
-    Если МассивЧата.Количество() > 1 Тогда
+    If ChatArray.Quantity() > 1 Then
         
-        IDЧата = МассивЧата[0];
-        IDТемы = МассивЧата[1];
+        ChatID = ChatArray[0];
+        ThreadID = ChatArray[1];
         
-        Параметры.Вставить("message_thread_id", IDТемы);
+        Parameters.Insert("message_thread_id", ThreadID);
         
-    КонецЕсли;
+    EndIf;
     
-    Параметры.Вставить("chat_id", IDЧата);
+    Parameters.Insert("chat_id", ChatID);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ОпределитьМетодОтправки(Знач Вид, Метод, Расширение)
+Procedure DetermineSendMethod(Val View, Method, Extension)
     
-    Если Вид = "photo" Тогда
-        Метод = "/sendPhoto";
-    ИначеЕсли Вид = "video" Тогда
-        Метод = "/sendVideo";
-    ИначеЕсли Вид = "audio" Тогда
-        Метод = "/sendAudio";
-    ИначеЕсли Вид = "document" Тогда
-        Метод = "/sendDocument";
-    ИначеЕсли Вид = "animation" Тогда
-        Метод = "/sendAnimation";
-        Расширение = ".gif";
-    Иначе
-        ВызватьИсключение "Некорректный вид отправки";
-    КонецЕсли;
+    If View = "photo" Then
+        Method = "/sendPhoto";
+    ElseIf View = "video" Then
+        Method = "/sendVideo";
+    ElseIf View = "audio" Then
+        Method = "/sendAudio";
+    ElseIf View = "document" Then
+        Method = "/sendDocument";
+    ElseIf View = "animation" Then
+        Method = "/sendAnimation";
+        Extension = ".gif";
+    Otherwise
+        RaiseException "Incorrect sending view";
+    EndIf;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ПреобразоватьДанныеФайла(Файл, Расширение, Вид)
+Procedure ConvertFileData(File, Extension, View)
     
-    Если Не ТипЗнч(Файл) = Тип("ДвоичныеДанные") Тогда
+    If Not TypeValue(File) = Type("BinaryData") Then
         
-        ТекущийФайл = Новый Файл(Файл);
-        Расширение  = ?(Вид = "document", ТекущийФайл.Расширение, Расширение);
-        OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
+        CurrentFile = New File(File);
+        Extension  = ?(View = "document", CurrentFile.Extension, Extension);
+        OPI_TypeConversion.GetBinaryData(File);
         
-    КонецЕсли;
+    EndIf;
 
-    Расширение = СтрЗаменить(Расширение, ".", "___");
+    Extension = StringReplace(Extension, ".", "___");
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion

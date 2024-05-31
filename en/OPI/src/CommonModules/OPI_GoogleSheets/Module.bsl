@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_GoogleSheets.os
-// Библиотека: Google Sheets
-// Команда CLI: gsheets
+﻿// Location OS: ./OInt/core/Modules/OPI_GoogleSheets.os
+// Library: Google Sheets
+// CLI Command: gsheets
 
 // MIT License
 
@@ -29,381 +29,381 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область РаботаСКнигами
+#Region BookWork
 
-// Создать книгу
-// Создает новую книгу
+// CreateBook
+// Creates a new book
 // 
-// Параметры:
-//  Токен            - Строка           - Токен                                           - token
-//  Наименование     - Строка           - Наименование                                    - title
-//  МассивИменЛистов - Массив из Строка - Массив имен для добавления новых листов в книгу - sheets
+// Parameters:
+//  Token            - String           - Token                                           - token
+//  Name     - String           - Name                                    - title
+//  ArrayOfSheetNames - Array of Strings - Array of names to add new sheets to the book - sheets
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция СоздатьКнигу(Знач Токен, Знач Наименование, Знач МассивИменЛистов) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function CreateBook(Val Token, Val Name, Val ArrayOfSheetNames) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивИменЛистов);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetCollection(ArrayOfSheetNames);
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL       = "https://sheets.googleapis.com/v4/spreadsheets";
    
-    Свойства  = Новый Структура("title" , Наименование);
-    Листы     = Новый Массив;
+    Properties  = New Structure("title" , Name);
+    Sheets     = New Array;
     
-    ЗаполнитьМассивЛистов(МассивИменЛистов, Листы);
+    FillSheetArray(ArrayOfSheetNames, Sheets);
     
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("properties", Свойства, "Коллекция", Параметры);
-    OPI_Инструменты.ДобавитьПоле("sheets"    , Листы   , "Коллекция", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("properties", Properties, "Collection", Parameters);
+    OPI_Tools.AddField("sheets"    , Sheets   , "Collection", Parameters);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить книгу
-// Получает информацию о книге по ID
+// GetBook
+// Gets information about the book by ID
 // 
-// Параметры:
-//  Токен         - Строка - Токен               - token
-//  Идентификатор - Строка - Идентификатор книги - spreadsheet
+// Parameters:
+//  Token         - String - Token               - token
+//  Identifier - String - BookIdentifier - spreadsheet
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьКнигу(Знач Токен, Знач Идентификатор) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetBook(Val Token, Val Identifier) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор); 
+    OPI_TypeConversion.GetLine(Identifier); 
     
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://sheets.googleapis.com/v4/spreadsheets/" + Идентификатор;
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://sheets.googleapis.com/v4/spreadsheets/" + Identifier;
     
-    Ответ = OPI_Инструменты.Get(URL, , Заголовки);
+    Response = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Изменить наименование книги
-// Изменяет наименование существующей книги
+// ChangeBookName
+// Changes the name of the existing book
 // 
-// Параметры:
-//  Токен        - Строка - Токен              - token
-//  Книга        - Строка - ID книги           - spreadsheet
-//  Наименование - Строка - Новое наименование - title
+// Parameters:
+//  Token        - String - Token              - token
+//  Book        - String - BookID           - spreadsheet
+//  Name - String - New name - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ИзменитьНаименованиеКниги(Знач Токен, Знач Книга, Знач Наименование) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function EditBookTitle(Val Token, Val Book, Val Name) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Книга);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
+    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Name);
     
-    Заголовки    = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Книга + ":batchUpdate";
+    Headers    = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + ":batchUpdate";
     
-    Изменение       = Новый Структура("title", Наименование);
-    ЗапросИзменения = Новый Структура("properties,fields", Изменение, "title");
-    Запрос          = Новый Структура("updateSpreadsheetProperties", ЗапросИзменения);
+    Change       = New Structure("title", Name);
+    ChangeRequest = New Structure("properties,fields", Change, "title");
+    Request          = New Structure("updateSpreadsheetProperties", ChangeRequest);
     
-    МассивЗапросов  = Новый Массив;
-    МассивЗапросов.Добавить(Запрос);
+    ArrayOfRequests  = New Array;
+    ArrayOfRequests.Add(Request);
     
-    Параметры = Новый Структура("requests", МассивЗапросов);
+    Parameters = New Structure("requests", ArrayOfRequests);
         
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСЛистами
+#Region SheetWork
 
-// Добавить лист
-// Добавляет новый лист в книгу
+// AddSheet
+// Adds a new sheet to the book
 // 
 // 
-// Параметры:
-//  Токен        - Строка - Токен                     - token
-//  Книга        - Строка - Идентификатор книги       - spreadsheet
-//  Наименование - Строка - Наименование нового листа - title
+// Parameters:
+//  Token        - String - Token                     - token
+//  Book        - String - BookIdentifier       - spreadsheet
+//  Name - String - NewSheetName - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ДобавитьЛист(Знач Токен, Знач Книга, Знач Наименование) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function AddSheet(Val Token, Val Book, Val Name) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Книга);
+    OPI_TypeConversion.GetLine(Book);
         
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://sheets.googleapis.com/v4/spreadsheets/" + Книга + ":batchUpdate";
-    Лист      = СоздатьЛист(Наименование);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + ":batchUpdate";
+    Sheet      = CreateSheet(Name);
     
-    Запросы   = Новый Массив;
-    Изменение = Новый Структура("addSheet", Лист);
-    Запросы.Добавить(Изменение);
+    Requests   = New Array;
+    Change = New Structure("addSheet", Sheet);
+    Requests.Add(Change);
     
-    Параметры = Новый Структура("requests", Запросы);
+    Parameters = New Structure("requests", Requests);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Удалить лист
-// Удаляет лист из книги
+// DeleteSheet
+// Deletes a sheet from the book
 // 
-// Параметры:
-//  Токен   - Строка - Токен                          - token
-//  Книга   - Строка - Идентификатор книги            - spreadsheet
-//  Лист    - Строка - Идентификатор удаляемого листа - sheet
+// Parameters:
+//  Token   - String - Token                          - token
+//  Book   - String - BookIdentifier            - spreadsheet
+//  Sheet    - String - IdentifierOfSheetToDelete - sheet
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция УдалитьЛист(Знач Токен, Знач Книга, Знач Лист) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function DeleteSheet(Val Token, Val Book, Val Sheet) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Книга);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Лист);
+    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Sheet);
         
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL       = "https://sheets.googleapis.com/v4/spreadsheets/" + Книга + ":batchUpdate";
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL       = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + ":batchUpdate";
     
-    Запросы   = Новый Массив;
-    Лист      = Новый Структура("sheetId"    , Лист);
-    Изменение = Новый Структура("deleteSheet", Лист);
-    Запросы.Добавить(Изменение);
+    Requests   = New Array;
+    Sheet      = New Structure("sheetId"    , Sheet);
+    Change = New Structure("deleteSheet", Sheet);
+    Requests.Add(Change);
     
-    Параметры = Новый Структура("requests", Запросы);
+    Parameters = New Structure("requests", Requests);
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Копировать лист
-// Копирует лист из одной книги в другую
+// CopySheet
+// Copies a sheet from one book to another
 // 
-// Параметры:
-//  Токен  - Строка - Токен - token
-//  Откуда - Строка - ID книги источника   - from
-//  Куда   - Строка - ID книги приемника   - to
-//  Лист   - Строка - ID копируемого листа - sheet
+// Parameters:
+//  Token  - String - Token - token
+//  From - String - SourceBookID   - from
+//  To   - String - DestinationBookID   - to
+//  Sheet   - String - CopiedSheetID - sheet
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция КопироватьЛист(Знач Токен, Знач Откуда, Знач Куда, Знач Лист) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function CopySheet(Val Token, Val From, Val To, Val Sheet) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Откуда);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Куда);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Лист);
+    OPI_TypeConversion.GetLine(From);
+    OPI_TypeConversion.GetLine(To);
+    OPI_TypeConversion.GetLine(Sheet);
         
-    Заголовки = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
+    Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL       = "https://sheets.googleapis.com/v4/spreadsheets/"
-        + Откуда
+        + From
         + "/sheets/"
-        + Лист
+        + Sheet
         + ":copyTo";
     
-    Параметры = Новый Структура("destinationSpreadsheetId", Куда);  
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Parameters = New Structure("destinationSpreadsheetId", To);  
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
    
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСДанными
+#Region DataWork
 
-// Установить значения ячеек
-// Устанавливает значения ячеек листа
+// SetCellValues
+// Sets sheet cell values
 // 
-// Параметры:
-//  Токен                - Строка                        - Токен    - token
-//  Книга                - Строка                        - ID книги - spreadsheet 
-//  СоответствиеЗначений - Соответствие Из КлючИЗначение - Данные заполнения, где ключ это имя ячейки вида A1   - data
-//  Лист                 - Строка                        - Имя листа (первый лист по умолчанию) - sheetname
-//  ОсновноеИзмерение    - Строка                        - Основное измерение при заполнении диапазона массивом - dim
+// Parameters:
+//  Token                - String                        - Token    - token
+//  Book                - String                        - BookID - spreadsheet 
+//  ValueMapping - Key-Value Pair - Fill data where the key is the cell name like A1   - data
+//  Sheet                 - String                        - Name лиwithта (перinый лиwithт по умолчанию) - sheetname
+//  MajorDimension    - String                        - Main dimension when filling the array range - dim
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция УстановитьЗначенияЯчеек(Знач Токен
-    , Знач Книга
-    , Знач СоответствиеЗначений
-    , Знач Лист = ""
-    , Знач ОсновноеИзмерение = "COLUMNS") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function SetCellValues(Val Token
+    , Val Book
+    , Val ValueMapping
+    , Val Sheet = ""
+    , Val MajorDimension = "COLUMNS") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Книга);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(СоответствиеЗначений);
+    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetCollection(ValueMapping);
     
-    Если Не ТипЗнч(СоответствиеЗначений) = Тип("Структура")
-        И Не ТипЗнч(СоответствиеЗначений) = Тип("Соответствие") Тогда
-        Возврат "Не удалось привести структуру значений к коллекции";
-    КонецЕсли;
+    If Not TypeValue(ValueMapping) = Type("Structure")
+        And Not TypeValue(ValueMapping) = Type("Match") Then
+        Return "Failed to convert the structure of values to a collection";
+    EndIf;
     
-    Заголовки    = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Книга + "/values:batchUpdate";
-    МассивДанных = СформироватьМассивДанныхЯчеек(СоответствиеЗначений, ОсновноеИзмерение, Лист);
+    Headers    = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchUpdate";
+    Data array = FormCellDataArray(ValueMapping, MajorDimension, Sheet);
 
-    Параметры = Новый Структура("data,valueInputOption", МассивДанных, "USER_ENTERED");
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Parameters = New Structure("data,valueInputOption", Data array, "USER_ENTERED");
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Очистить ячейки
-// Очищает значение в ячейках
+// Clear cells
+// Clears the value in cells
 // 
-// Параметры:
-//  Токен       - Строка           - Токен                                - token
-//  Книга       - Строка           - ID книги                             - spreadsheet
-//  МассивЯчеек - Массив из Строка - Массив ячеек вида А1 для очистки     - cells
-//  Лист        - Строка           - Имя листа (первый лист по умолчанию) - sheetname
+// Parameters:
+//  Token       - String           - Token                                - token
+//  Book       - String           - BookID                             - spreadsheet
+//  Cell array - Array of Strings - Array of cells like A1 to be cleared     - cells
+//  Sheet        - String           - Name лиwithта (перinый лиwithт по умолчанию) - sheetname
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ОчиститьЯчейки(Знач Токен, Знач Книга, Знач МассивЯчеек, Знач Лист = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function ClearCells(Val Token, Val Book, Val Cell array, Val Sheet = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Книга);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивЯчеек);
+    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetCollection(Cell array);
     
-    Заголовки    = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Книга + "/values:batchClear";
+    Headers    = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchClear";
     
-    СформироватьМассивИменЯчеек(МассивЯчеек, Лист);
+    FormCellNameArray(Cell array, Sheet);
         
-    Параметры = Новый Структура("ranges", МассивЯчеек);
-    Ответ     = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Parameters = New Structure("ranges", Cell array);
+    Response     = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить значения ячеек
-// Получает значения ячеек таблицы
+// Get cell values
+// Gets cell values of the table
 // 
-// Параметры:
-//  Токен       - Строка           - Токен                                                              - token
-//  Книга       - Строка           - ID книги                                                           - spreadsheet
-//  МассивЯчеек - Массив из Строка - Массив ячеек вида А1 для получения (весь лист, если не заполнено)  - cells
-//  Лист        - Строка           - Имя листа (первый лист по умолчанию)                               - sheetname
+// Parameters:
+//  Token       - String           - Token                                                              - token
+//  Book       - String           - BookID                                                           - spreadsheet
+//  Cell array - Array of Strings - Array ячееto inиdа А1 for получения (inеwithь лиwithт, еwithли не заполнено)  - cells
+//  Sheet        - String           - Name лиwithта (перinый лиwithт по умолчанию)                               - sheetname
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьЗначенияЯчеек(Знач Токен, Знач Книга, Знач МассивЯчеек = "", Знач Лист = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetCellValues(Val Token, Val Book, Val Cell array = "", Val Sheet = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Книга);
+    OPI_TypeConversion.GetLine(Book);
       
-    Заголовки    = OPI_GoogleWorkspace.ПолучитьЗаголовокАвторизации(Токен);
-    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Книга + "/values:batchGet";
+    Headers    = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
+    URL          = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchGet";
   
-    Если ЗначениеЗаполнено(МассивЯчеек) Тогда
-        OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивЯчеек);  
-        СформироватьМассивИменЯчеек(МассивЯчеек, Лист);
+    If ValueFilled(Cell array) Then
+        OPI_TypeConversion.GetCollection(Cell array);  
+        FormCellNameArray(Cell array, Sheet);
         
-        Первый = Истина;
-        Для Каждого Ячейка Из МассивЯчеек Цикл
-            Разделитель = ?(Первый, "?", "&");
-            URL         = URL + Разделитель + "ranges=" + Ячейка;
-            Первый      = Ложь;
-        КонецЦикла;
-    Иначе
-        URL = URL + "?ranges='" + Лист + "'";
-    КонецЕсли;
+        First = True;
+        For Each Cell Of Cell array Loop
+            Delimiter = ?(First, "?", "&");
+            URL         = URL + Delimiter + "ranges=" + Cell;
+            First      = False;
+        EndOfLoop;
+    Otherwise
+        URL = URL + "?ranges='" + Sheet + "'";
+    EndIf;
     
-    Ответ = OPI_Инструменты.Get(URL, , Заголовки);
+    Response = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Процедура ЗаполнитьМассивЛистов(Знач МассивИмен, МассивЛистов)
+Procedure FillSheetArray(Val ArrayOfNames, SheetArray)
     
-    Для Каждого ИмяЛиста Из МассивИмен Цикл
+    For Each SheetName Of ArrayOfNames Loop
         
-        Лист = СоздатьЛист(ИмяЛиста);
-        МассивЛистов.Добавить(Лист);
+        Sheet = CreateSheet(SheetName);
+        SheetArray.Add(Sheet);
         
-    КонецЦикла;
+    EndOfLoop;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьИмяЛиста(Ячейка, Знач Лист)
+Procedure AddSheetName(Cell, Val Sheet)
     
-    Если ЗначениеЗаполнено(Лист) Тогда
-		Ячейка     = "'" + Лист + "'!" + Ячейка;
-    КонецЕсли;
+    If ValueFilled(Sheet) Then
+		Cell     = "'" + Sheet + "'!" + Cell;
+    EndIf;
     
-КонецПроцедуры
+EndProcedure
 
-Функция СоздатьЛист(Знач Наименование)
+Function CreateSheet(Val Name)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
+    OPI_TypeConversion.GetLine(Name);
     
-    СвойстваЛиста = Новый Структура("title"     , Наименование);
-    Лист          = Новый Структура("properties", СвойстваЛиста);
+    Sheet properties = New Structure("title"     , Name);
+    Sheet          = New Structure("properties", Sheet properties);
 
-    Возврат Лист;
+    Return Sheet;
     
-КонецФункции
+EndFunction
 
-Функция СформироватьМассивДанныхЯчеек(Знач СтруктураЗначений, Знач ОсновноеИзмерение, Знач Лист)
+Function FormCellDataArray(Val ValueStructure, Val MajorDimension, Val Sheet)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Лист);
+    OPI_TypeConversion.GetLine(Sheet);
     
-    МассивДанных = Новый Массив;
+    Data array = New Array;
     
-    Для Каждого ДанныеЯчейки Из СтруктураЗначений Цикл
+    For Each CellData Of ValueStructure Loop
         
-        ТекущееЗначение = ДанныеЯчейки.Значение;
-        ТекущийКлюч     = ДанныеЯчейки.Ключ;
+        CurrentValue = CellData.Value;
+        Current key     = CellData.Key;
         
-        ДобавитьИмяЛиста(ТекущийКлюч, Лист);
+        AddSheetName(Current key, Sheet);
         
-        OPI_ПреобразованиеТипов.ПолучитьМассив(ТекущееЗначение);
+        OPI_TypeConversion.GetArray(CurrentValue);
         
-        ТекущиеДанные   = Новый Соответствие;
-        ТекущийМассив   = Новый Массив;
+        Current data   = New Match;
+        Current array   = New Array;
         
-        ТекущийМассив.Добавить(ТекущееЗначение);
+        Current array.Add(CurrentValue);
         
-        OPI_Инструменты.ДобавитьПоле("range"         , ТекущийКлюч      , "Строка", ТекущиеДанные);
-        OPI_Инструменты.ДобавитьПоле("values"        , ТекущийМассив    , "Массив", ТекущиеДанные);
-        OPI_Инструменты.ДобавитьПоле("majorDimension", ОсновноеИзмерение, "Строка", ТекущиеДанные);
+        OPI_Tools.AddField("range"         , Current key      , "String", Current data);
+        OPI_Tools.AddField("values"        , Current array    , "Array", Current data);
+        OPI_Tools.AddField("majorDimension", MajorDimension, "String", Current data);
         
-        МассивДанных.Добавить(ТекущиеДанные);
+        Data array.Add(Current data);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    Возврат МассивДанных;
+    Return Data array;
     
-КонецФункции
+EndFunction
 
-Процедура СформироватьМассивИменЯчеек(Знач МассивИмен, Знач Лист)
+Procedure FormCellNameArray(Val ArrayOfNames, Val Sheet)
 
-   OPI_ПреобразованиеТипов.ПолучитьСтроку(Лист); 
+   OPI_TypeConversion.GetLine(Sheet); 
    
-   Для Н = 0 По МассивИмен.ВГраница() Цикл       
-       ДобавитьИмяЛиста(МассивИмен[Н], Лист);
-   КонецЦикла;
+   For N = 0 by ArrayOfNames.WithinBoundary() Loop       
+       AddSheetName(ArrayOfNames[N], Sheet);
+   EndOfLoop;
        
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion

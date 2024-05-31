@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Notion.os
-// Библиотека: Notion
-// Команда CLI: notion
+﻿// Location OS: ./OInt/core/Modules/OPI_Notion.os
+// Library: Notion
+// CLI command: notion
 
 // MIT License
 
@@ -33,857 +33,857 @@
 
 // @skip-check method-too-many-params
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область РаботаСоСтраницами
+#Region PageManagement
 
-// Создать страницу
-// Создает дочернюю страницу над другой страницей-родителем
+// Create page
+// Creates a child page above another parent page
 // 
-// Параметры:
-//  Токен     - Строка - Токен                  - token
-//  Родитель  - Строка - ID Родителя            - page
-//  Заголовок - Строка - Заголовок страницы     - title
+// Parameters:
+//  Token     - String - Token                  - token
+//  Parent  - String - Parent ID            - page
+//  Title - String - Page title     - title
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция СоздатьСтраницу(Знач Токен, Знач Родитель, Знач Заголовок) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function CreatePage(Val Token, Val Parent, Val Title) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Родитель);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Заголовок);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Parent);
+    OPI_TypeConversion.GetLine(Title);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);   
-    Свойства  = Новый Структура;
-    Параметры = Новый Структура;
+    Headers = CreateRequestHeaders(Token);   
+    Properties  = New Structure;
+    Parameters = New Structure;
     
-    ДобавитьЗаголовокСтраницы(Заголовок, Свойства);
-    ДобавитьРодителяСтраницы(Родитель, Ложь, Параметры);
+    AddPageHeader(Title, Properties);
+    AddPageParent(Parent, False, Parameters);
     
-    Параметры.Вставить("properties", Свойства);
+    Parameters.Insert("properties", Properties);
     
-    Ответ = OPI_Инструменты.Post("https://api.notion.com/v1/pages", Параметры, Заголовки);
+    Response = OPI_Tools.Post("https://api.notion.com/v1/pages", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать страницу в базу
-// Создает страницу в базе-родителе
+// Create page in database
+// Creates a page in the parent database
 // 
-// Параметры:
-//  Токен    - Строка                        - Токен                - token 
-//  Родитель - Строка                        - ID родительской базы - base
-//  Данные   - Соответствие Из КлючИЗначение - Соответствие свойств - data
+// Parameters:
+//  Token    - String                        - Token                - token 
+//  Parent - String                        - Parent database ID - base
+//  Data   - Key-Value Pair - Properties match - data
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция СоздатьСтраницуВБазу(Знач Токен, Знач Родитель, Знач Данные) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Родитель);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Данные);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Parent);
+    OPI_TypeConversion.GetCollection(Data);
     
-    Заголовки  = СоздатьЗаголовкиЗапроса(Токен);
-    Параметры  = Новый Структура;
+    Headers  = CreateRequestHeaders(Token);
+    Parameters  = New Structure;
     
-    ДобавитьРодителяСтраницы(Родитель, Истина, Параметры);
+    AddPageParent(Parent, True, Parameters);
 
-    Свойства = ЗаполнитьДанныеПоСхеме(Родитель, Данные, Токен);    
-    Параметры.Вставить("properties", Свойства);
+    Properties = FillDataBySchema(Parent, Data, Token);    
+    Parameters.Insert("properties", Properties);
     
-    Ответ = OPI_Инструменты.Post("https://api.notion.com/v1/pages", Параметры, Заголовки);
+    Response = OPI_Tools.Post("https://api.notion.com/v1/pages", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить страницу
-// Получает информацию о странице по ID
+// Get page
+// Gets information about the page by ID
 // 
-// Параметры:
-//  Токен    - Строка - Токен        - token
-//  Страница - Строка - ID страницы  - page 
+// Parameters:
+//  Token    - String - Token        - token
+//  Page - String - Page ID  - page 
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция ПолучитьСтраницу(Знач Токен, Знач Страница) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function GetPage(Val Token, Val Page) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Страница);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Page);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);
-    ПреобразоватьИД(Страница);  
+    Headers = CreateRequestHeaders(Token);
+    ConvertID(Page);  
     
-    Ответ = OPI_Инструменты.Get("https://api.notion.com/v1/pages/" + Страница, , Заголовки);
+    Response = OPI_Tools.Get("https://api.notion.com/v1/pages/" + Page, , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Изменить свойства страницы.
+// Edit page properties.
 // 
-// Параметры:
-//  Токен        - Строка                        - Токен                                   - token
-//  Страница     - Строка                        - ID изменяемой страницы                  - page
-//  Данные       - Соответствие Из КлючИЗначение - Соответствие изменяемых параметров      - data
-//  Иконка       - Строка                        - URL картинки иконки страницы            - icon
-//  Обложка      - Строка                        - URL картинки обложки страницы           - cover
-//  Архивирована - Булево                        - Архивировать страницу или нет (булево)  - archive
+// Parameters:
+//  Token        - String                        - Token                                   - token
+//  Page     - String                        - ID of the page being modified                  - page
+//  Data       - Key-Value Pair - Matching of editable parameters      - data
+//  Icon       - String                        - URL of the page icon image            - icon
+//  Cover      - String                        - URL of the page cover image           - cover
+//  Archived - Boolean                        - Archive page or нет (boolean)  - archive
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция ИзменитьСвойстваСтраницы(Знач Токен
-    , Знач Страница
-    , Знач Данные = ""
-    , Знач Иконка = ""
-    , Знач Обложка = ""
-    , Знач Архивирована = Ложь) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function EditPageProperties(Val Token
+    , Val Page
+    , Val Data = ""
+    , Val Icon = ""
+    , Val Cover = ""
+    , Val Archived = False) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Страница);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Иконка);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Обложка);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Архивирована);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Данные);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Page);
+    OPI_TypeConversion.GetLine(Icon);
+    OPI_TypeConversion.GetLine(Cover);
+    OPI_TypeConversion.GetBoolean(Archived);
+    OPI_TypeConversion.GetCollection(Data);
     
-    Заголовки  = СоздатьЗаголовкиЗапроса(Токен);
-    Параметры  = Новый Структура;
+    Headers  = CreateRequestHeaders(Token);
+    Parameters  = New Structure;
     Files      = "files";
     
-    Если ЗначениеЗаполнено(Данные) 
-        И (ТипЗнч(Данные) = Тип("Соответствие") Или ТипЗнч(Данные) = Тип("Структура")) Тогда
-        Свойства = ЗаполнитьДанныеПоСхеме(Страница, Данные, Токен, Ложь); 
-    Иначе 
-        Свойства = Новый Соответствие;
-    КонецЕсли;
+    If ValueFilled(Data) 
+        And (TypeValue(Data) = Type("Match") Or TypeValue(Data) = Type("Structure")) Then
+        Properties = FillDataBySchema(Page, Data, Token, False); 
+    Otherwise 
+        Properties = New Match;
+    EndIf;
         
-    Если ЗначениеЗаполнено(Иконка) Тогда
-        СоответствиеИконки = Новый Соответствие;
-        СоответствиеИконки.Вставить("Icon", Иконка);
+    If ValueFilled(Icon) Then
+        Icon match = New Match;
+        Icon match.Insert("Icon", Icon);
         
-        ОбъектИконка = ПреобразоватьЗначениеПоТипу(Files, СоответствиеИконки);
-        ОбъектИконка = ОбъектИконка[Files][0];
-        ОбъектИконка.Удалить("name");
+        Icon object = ConvertValueByType(Files, Icon match);
+        Icon object = Icon object[Files][0];
+        Icon object.Delete("name");
         
-        Параметры.Вставить("icon", ОбъектИконка);
-    КонецЕсли;
+        Parameters.Insert("icon", Icon object);
+    EndIf;
     
-    Если ЗначениеЗаполнено(Обложка) Тогда
-        СоответствиеОбложки = Новый Соответствие;
-        СоответствиеОбложки.Вставить("Cover", Обложка);
+    If ValueFilled(Cover) Then
+        Cover match = New Match;
+        Cover match.Insert("Cover", Cover);
 
-        ОбъектОбложка = ПреобразоватьЗначениеПоТипу(Files, СоответствиеОбложки);
-        ОбъектОбложка = ОбъектОбложка[Files][0];
-        ОбъектОбложка.Удалить("name");
+        Cover object = ConvertValueByType(Files, Cover match);
+        Cover object = Cover object[Files][0];
+        Cover object.Delete("name");
 
-        Параметры.Вставить("cover", ОбъектОбложка);
-    КонецЕсли;
+        Parameters.Insert("cover", Cover object);
+    EndIf;
 
-    Параметры.Вставить("properties", Свойства);
-    Параметры.Вставить("archived"  , Архивирована);
+    Parameters.Insert("properties", Properties);
+    Parameters.Insert("archived"  , Archived);
     
-    ПреобразоватьИД(Страница);
+    ConvertID(Page);
 
-    Ответ = OPI_Инструменты.Patch("https://api.notion.com/v1/pages/" + Страница, Параметры, Заголовки);
+    Response = OPI_Tools.Patch("https://api.notion.com/v1/pages/" + Page, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСБазамиДанных
+#Region DatabaseManagement
 
-// Создать базу данных
-// Создает базу данных
+// Create database
+// Creates a database
 // 
-// Параметры:
-//  Токен     - Строка              - Токен                    - token 
-//  Родитель  - Строка              - ID страницы родителя     - page
-//  Заголовок - Строка              - Заголовок базы данных    - title
-//  Свойства  - Структура Из Строка - Свойства базы данных     - props
+// Parameters:
+//  Token     - String              - Token                    - token 
+//  Parent  - String              - Parent page ID     - page
+//  Title - String              - Database title    - title
+//  Properties  - Structure Of String - Database properties     - props
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция СоздатьБазуДанных(Знач Токен, Знач Родитель, Знач Заголовок, Знач Свойства = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Родитель);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Заголовок);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Свойства);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Parent);
+    OPI_TypeConversion.GetLine(Title);
+    OPI_TypeConversion.GetCollection(Properties);
     
-    // Пример структуры/соответствия свойств
+    // Example structure/property map
     
-    // Имя        : title
-    // Описание   : rich_text
-    // В работе   : checkbox 
-    // Количество : number
-    // Дата       : date
-    // Статус     : Соответствие
-    //               Активный   : green
-    //               Неактивный : red
-    //               Архив      : yellow
+    // Name        : title
+    // Description : rich_text
+    // In progress : checkbox 
+    // Quantity    : number
+    // Date        : date
+    // Status      : Map
+    //               Active      : green
+    //               Inactive    : red
+    //               Archive     : yellow
     
-    // Все страницы, которые будут созданы как дочерние, должны иметь свойства базы-родителя
+    // All pages created as children must have parent base properties
 
-    Если Не ТипЗнч(Свойства) = Тип("Структура") И Не ТипЗнч(Свойства) = Тип("Соответствие") Тогда
-        Свойства = Новый Структура("Наименование", "title");
-    КонецЕсли;
+    If Not TypeValue(Properties) = Type("Structure") And Not TypeValue(Properties) = Type("Match") Then
+        Properties = New Structure("Name", "title");
+    EndIf;
 
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);     
-    Параметры = Новый Структура;
+    Headers = CreateRequestHeaders(Token);     
+    Parameters = New Structure;
     
-    ДобавитьРодителяБазы(Родитель, Ложь, Параметры);
-    ДобавитьЗаголовокБазы(Заголовок, Параметры);
-    ДобавитьСвойстваБазы(Свойства, Параметры);
+    AddDatabaseParent(Parent, False, Parameters);
+    AddDatabaseHeader(Title, Parameters);
+    AddDatabaseProperties(Properties, Parameters);
 
-    Ответ = OPI_Инструменты.Post("https://api.notion.com/v1/databases", Параметры, Заголовки);
+    Response = OPI_Tools.Post("https://api.notion.com/v1/databases", Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить базу данных
-// Получить данные о базе данных
+// Get database
+// Get database information
 // 
-// Параметры:
-//  Токен - Строка - Токен          - token
-//  База  - Строка - ID базы данных - base
+// Parameters:
+//  Token - String - Token          - token
+//  Base  - String - Database ID - base
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция ПолучитьБазуДанных(Знач Токен, Знач База) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function GetDatabase(Val Token, Val Base) Export
    
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Base);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);
-    ПреобразоватьИД(База);  
+    Headers = CreateRequestHeaders(Token);
+    ConvertID(Base);  
     
-    Ответ = OPI_Инструменты.Get("https://api.notion.com/v1/databases/" + База, , Заголовки);
+    Response = OPI_Tools.Get("https://api.notion.com/v1/databases/" + Base, , Headers);
     
-    Возврат Ответ; 
+    Return Response; 
     
-КонецФункции
+EndFunction
 
-// Изменить свойства базы
-// Изменяет свойства существующей базы
+// Edit database properties
+// Edits properties of an existing database
 // 
-// Параметры:
-//  Токен     - Строка                        - Токен                                     - token
-//  База      - Строка                        - ID целевой базы                           - base
-//  Свойства  - Соответствие из КлючИЗначение - Новые или изменяемые свойства базы данных - props
-//  Заголовок - Строка                        - Новый заголовок базы                      - title
-//  Описание  - Строка                        - Новое описание базы                       - description
+// Parameters:
+//  Token     - String                        - Token                                     - token
+//  Base      - String                        - Target database ID                           - base
+//  Properties  - Map from KeyAndValue - New or modified database properties - props
+//  Title - String                        - New database title                      - title
+//  Description  - String                        - New database description                       - description
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция ИзменитьСвойстваБазы(Знач Токен, Знач База, Знач Свойства = "", Знач Заголовок = "", Знач Описание = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Заголовок);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Описание);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Свойства);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Title);
+    OPI_TypeConversion.GetLine(Description);
+    OPI_TypeConversion.GetCollection(Properties);
     
-    Параметры = Новый Структура;
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);  
-    ПреобразоватьИД(База); 
+    Parameters = New Structure;
+    Headers = CreateRequestHeaders(Token);  
+    ConvertID(Base); 
     
-    Если ЗначениеЗаполнено(Заголовок) Тогда
-        ДобавитьЗаголовокБазы(Заголовок, Параметры);
-    КонецЕсли;
+    If ValueFilled(Title) Then
+        AddDatabaseHeader(Title, Parameters);
+    EndIf;
     
-    Если ЗначениеЗаполнено(Описание) Тогда
-        ДобавитьОписаниеБазы(Описание, Параметры);
-    КонецЕсли;
+    If ValueFilled(Description) Then
+        AddDatabaseDescription(Description, Parameters);
+    EndIf;
     
-    Если ТипЗнч(Свойства) = Тип("Структура") Или ТипЗнч(Свойства) = Тип("Соответствие") Тогда
-        ДобавитьСвойстваБазы(Свойства, Параметры);
-    КонецЕсли;
+    If TypeValue(Properties) = Type("Structure") Or TypeValue(Properties) = Type("Match") Then
+        AddDatabaseProperties(Properties, Parameters);
+    EndIf;
     
-    Ответ = OPI_Инструменты.Patch("https://api.notion.com/v1/databases/" + База, Параметры, Заголовки);
+    Response = OPI_Tools.Patch("https://api.notion.com/v1/databases/" + Base, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти 
+#EndRegion 
 
-#Область РаботаСБлоками
+#Region BlockWork
 
-// Создать блок
-// Создает новый блок на основе существующего блока
+// Create block
+// Creates a new block based on an existing block
 // 
-// Параметры:
-//  Токен         - Строка                               - Токен                                              - token
-//  Родитель      - Строка                               - ID родительского блока или страницы                - page
-//  Блок          - Строка,Соответствие Из КлючИЗначение - ID блока или сам блок образец                      - block
-//  ВставитьПосле - Строка                               - ID блока, после которого необходимо встаивть новый - prev
+// Parameters:
+//  Token         - String                               - Token                                              - token
+//  Parent      - String                               - Parent block or page ID                - page
+//  Block          - String, Map From KeyAndValue - Block ID or block sample itself                      - block
+//  InsertAfter - String                               - Block ID after which to insert the new one - prev
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция СоздатьБлок(Знач Токен, Знач Родитель, Знач Блок, Знач ВставитьПосле = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export
   
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Родитель);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ВставитьПосле);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Блок);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Parent);
+    OPI_TypeConversion.GetLine(InsertAfter);
+    OPI_TypeConversion.GetCollection(Block);
     
-    Если ТипЗнч(Блок) = Тип("Массив") Тогда
-        Блок = Блок[0];
-    КонецЕсли;
+    If TypeValue(Block) = Type("Array") Then
+        Block = Block[0];
+    EndIf;
     
-    Заголовки    = СоздатьЗаголовкиЗапроса(Токен); 
-    ПреобразоватьИД(Родитель);
+    Headers    = CreateRequestHeaders(Token); 
+    ConvertID(Parent);
     
-    Если ТипЗнч(Блок) = Тип("Строка") Тогда
-        ПреобразоватьИД(Блок);
-        Блок = ВернутьБлок(Токен, Блок);
-    КонецЕсли;
+    If TypeValue(Block) = Type("String") Then
+        ConvertID(Block);
+        Block = ReturnBlock(Token, Block);
+    EndIf;
     
-    МассивБлоков = Новый Массив;
-    МассивБлоков.Добавить(Блок);
+    BlockArray = New Array;
+    BlockArray.Add(Block);
     
-    Параметры = Новый Соответствие;
-    Параметры.Вставить("children", МассивБлоков);
+    Parameters = New Match;
+    Parameters.Insert("children", BlockArray);
     
-    Если ЗначениеЗаполнено(ВставитьПосле) Тогда
-        Параметры.Вставить("after", ВставитьПосле);
-    КонецЕсли;
+    If ValueFilled(InsertAfter) Then
+        Parameters.Insert("after", InsertAfter);
+    EndIf;
     
-    URL   = "https://api.notion.com/v1/blocks/" + Родитель + "/children";
-    Ответ = OPI_Инструменты.Patch(URL, Параметры, Заголовки);
+    URL   = "https://api.notion.com/v1/blocks/" + Parent + "/children";
+    Response = OPI_Tools.Patch(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
        
-КонецФункции
+EndFunction
 
-// Вернуть блок.
+// Inернуть блоto.
 // 
-// Параметры:
-//  Токен        - Строка - Токен                                                         - token
-//  ИДБлока      - Строка - ID блока                                                      - block
-//  ТолькоОснова - Булево - Истина > служебные поля удаляются, остается только сам блок   - core
+// Parameters:
+//  Token        - String - Token                                                         - token
+//  BlockID      - String - Block ID                                                      - block
+//  OnlyBase - Boolean - True > service fields are deleted, only the block itself remains   - core
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция ВернутьБлок(Знач Токен, Знач ИДБлока, Знач ТолькоОснова = Истина) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДБлока);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(ТолькоОснова);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(BlockID);
+    OPI_TypeConversion.GetBoolean(OnlyBase);
     
-    ПреобразоватьИД(ИДБлока);
+    ConvertID(BlockID);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Get("https://api.notion.com/v1/blocks/" + ИДБлока, , Заголовки);
+    Headers = CreateRequestHeaders(Token);
+    Response     = OPI_Tools.Get("https://api.notion.com/v1/blocks/" + BlockID, , Headers);
     
-    Если ТолькоОснова Тогда
-        УдалитьЛишниеПоляБлока(Ответ);    
-    КонецЕсли;
+    If OnlyBase Then
+        RemoveExtraBlockFields(Response);    
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-// Вернуть дочерние блоки
-// Созвращает список дочерних блоков блока-родителя
+// Return child blocks
+// Returns list of child blocks of parent block
 // 
-// Параметры:
-//  Токен   - Строка - Токен             - token
-//  ИДБлока - Строка - ID блока родителя - block
+// Parameters:
+//  Token   - String - Token             - token
+//  BlockID - String - Parent block ID - block
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция ВернутьДочерниеБлоки(Знач Токен, Знач ИДБлока) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function ReturnChildBlocks(Val Token, Val BlockID) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДБлока);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(BlockID);
     
-    ПреобразоватьИД(ИДБлока);
+    ConvertID(BlockID);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Get("https://api.notion.com/v1/blocks/" + ИДБлока + "/children", , Заголовки);
+    Headers = CreateRequestHeaders(Token);
+    Response     = OPI_Tools.Get("https://api.notion.com/v1/blocks/" + BlockID + "/children", , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить блок
-// Удаляет блок по ID
+// Delete block
+// Deletes block by ID
 // 
-// Параметры:
-//  Токен   - Строка - Токен    - token
-//  ИДБлока - Строка - ID блока - block
+// Parameters:
+//  Token   - String - Token    - token
+//  BlockID - String - Block ID - block
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция УдалитьБлок(Знач Токен, Знач ИДБлока) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function DeleteBlock(Val Token, Val BlockID) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДБлока);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(BlockID);
     
-    ПреобразоватьИД(ИДБлока);
+    ConvertID(BlockID);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Delete("https://api.notion.com/v1/blocks/" + ИДБлока, , Заголовки);
+    Headers = CreateRequestHeaders(Token);
+    Response     = OPI_Tools.Delete("https://api.notion.com/v1/blocks/" + BlockID, , Headers);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
     
-#КонецОбласти
+#EndRegion
 
-#Область Пользователи
+#Region Users
 
-// Список пользователей
-// Возвращает список пользователей рабочего пространства
+// User list
+// Returns a list of workspace users
 // 
-// Параметры:
-//  Токен - Строка - Токен - token
+// Parameters:
+//  Token - String - Token - token
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция СписокПользователей(Знач Токен) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function UserList(Val Token) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Get("https://api.notion.com/v1/users", , Заголовки);
+    Headers = CreateRequestHeaders(Token);
+    Response     = OPI_Tools.Get("https://api.notion.com/v1/users", , Headers);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-// Получить данные пользователя
-// Получает данные пользователя по ID
+// Get user data
+// Gets user data by ID
 // 
-// Параметры:
-//  Токен          - Строка - Токен                     - token
-//  ИДПользователя - Строка - ID целевого пользователя  - user
+// Parameters:
+//  Token          - String - Token                     - token
+//  UserID - String - Target user ID  - user
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
-Функция ПолучитьДанныеПользователя(Знач Токен, Знач ИДПользователя) Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from Notion
+Function GetUserData(Val Token, Val UserID) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДПользователя);
+    OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(UserID);
     
-    ПреобразоватьИД(ИДПользователя);
+    ConvertID(UserID);
     
-    Заголовки = СоздатьЗаголовкиЗапроса(Токен);
-    Ответ     = OPI_Инструменты.Get("https://api.notion.com/v1/users/" + ИДПользователя, , Заголовки);
+    Headers = CreateRequestHeaders(Token);
+    Response     = OPI_Tools.Get("https://api.notion.com/v1/users/" + UserID, , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция СоздатьЗаголовкиЗапроса(Знач Токен)
+Function CreateRequestHeaders(Val Token)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки = Новый Соответствие;
-    Заголовки.Вставить("Authorization" , "Bearer " + Токен);
-    Заголовки.Вставить("Notion-Version", "2022-06-28");
+    Headers = New Match;
+    Headers.Insert("Authorization" , "Bearer " + Token);
+    Headers.Insert("Notion-Version", "2022-06-28");
     
-    Возврат Заголовки;
+    Return Headers;
         
-КонецФункции
+EndFunction
 
-Процедура ПреобразоватьИД(Идентификатор)
+Procedure ConvertID(Identifier)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Идентификатор);
+    OPI_TypeConversion.GetLine(Identifier);
     
-    Идентификатор = СтрЗаменить(Идентификатор, "-", "");
+    Identifier = StringReplace(Identifier, "-", "");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьРодителяСтраницы(Знач Родитель, Знач РодительБаза, ОсновнаяСтруктура)
+Procedure AddPageParent(Val Parent, Val ParentBase, MainStructure)
   
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(РодительБаза);
+    OPI_TypeConversion.GetLine(ParentBase);
     
-    ПреобразоватьИД(Родитель);
+    ConvertID(Parent);
   
-    ПолеИдентификатора = ?(РодительБаза, "database_id", "page_id");
-    СтруктураРодителя  = Новый Структура(ПолеИдентификатора, Родитель);
+    IdentifierField = ?(ParentBase, "database_id", "page_id");
+    ParentStructure  = New Structure(IdentifierField, Parent);
 
-    ОсновнаяСтруктура.Вставить("parent", СтруктураРодителя);
+    MainStructure.Insert("parent", ParentStructure);
      
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьРодителяБазы(Знач Родитель, Знач РодительБаза, ОсновнаяСтруктура)
+Procedure AddDatabaseParent(Val Parent, Val ParentBase, MainStructure)
   
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(РодительБаза);
+    OPI_TypeConversion.GetLine(ParentBase);
     
-    ПреобразоватьИД(Родитель);
+    ConvertID(Parent);
   
-    ПолеИдентификатора = ?(РодительБаза, "database_id", "page_id");
+    IdentifierField = ?(ParentBase, "database_id", "page_id");
     
-    СтруктураРодителя  = Новый Структура();
-    СтруктураРодителя.Вставить("type"            , ПолеИдентификатора);
-    СтруктураРодителя.Вставить(ПолеИдентификатора, Родитель);
+    ParentStructure  = New Structure();
+    ParentStructure.Insert("type"            , IdentifierField);
+    ParentStructure.Insert(IdentifierField, Parent);
 
-    ОсновнаяСтруктура.Вставить("parent", СтруктураРодителя);
+    MainStructure.Insert("parent", ParentStructure);
      
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьЗаголовокСтраницы(Знач Заголовок, ОсновнаяСтруктура) 
+Procedure AddPageHeader(Val Title, MainStructure) 
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Заголовок);
+    OPI_TypeConversion.GetLine(Title);
     
-    ПодчиненнаяСтруктура = Новый Структура;
-    СтруктураДанных      = Новый Структура;
-    СтруктураТекста      = Новый Структура;
-    МассивДанных         = Новый Массив;
+    SubordinateStructure = New Structure;
+    DataStructure      = New Structure;
+    TextStructure      = New Structure;
+    Data array         = New Array;
     Title                = "title";
     
-    СтруктураТекста.Вставить("content", Заголовок);
-    СтруктураТекста.Вставить("link"   , Неопределено);
+    TextStructure.Insert("content", Title);
+    TextStructure.Insert("link"   , Undefined);
    
-    СтруктураДанных.Вставить("text", СтруктураТекста);
-    СтруктураДанных.Вставить("type", "text");
+    DataStructure.Insert("text", TextStructure);
+    DataStructure.Insert("type", "text");
     
-    МассивДанных.Добавить(СтруктураДанных);
+    Data array.Add(DataStructure);
     
-    ПодчиненнаяСтруктура.Вставить("id"   , Title);
-    ПодчиненнаяСтруктура.Вставить("type" , Title);
-    ПодчиненнаяСтруктура.Вставить(Title  , МассивДанных);
+    SubordinateStructure.Insert("id"   , Title);
+    SubordinateStructure.Insert("type" , Title);
+    SubordinateStructure.Insert(Title  , Data array);
     
-    ОсновнаяСтруктура.Вставить(Title, ПодчиненнаяСтруктура);
+    MainStructure.Insert(Title, SubordinateStructure);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьЗаголовокБазы(Знач Заголовок, ОсновнаяСтруктура)
+Procedure AddDatabaseHeader(Val Title, MainStructure)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Заголовок);
+    OPI_TypeConversion.GetLine(Title);
     
-    Заголовок = ПреобразоватьЗаголовок(Заголовок);    
-    ОсновнаяСтруктура.Вставить("title", Заголовок["title"]);
+    Title = ConvertHeader(Title);    
+    MainStructure.Insert("title", Title["title"]);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьОписаниеБазы(Знач Описание, ОсновнаяСтруктура)
+Procedure AddDatabaseDescription(Val Description, MainStructure)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Описание);
+    OPI_TypeConversion.GetLine(Description);
     
-    Заголовок = ПреобразоватьЗаголовок(Описание);    
-    ОсновнаяСтруктура.Вставить("description", Заголовок["title"]);
+    Title = ConvertHeader(Description);    
+    MainStructure.Insert("description", Title["title"]);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьСвойстваБазы(Знач Свойства, ОсновнаяСтруктура)
+Procedure AddDatabaseProperties(Val Properties, MainStructure)
     
-    Если Свойства.Количество() = 0 Тогда
-       ОсновнаяСтруктура.Вставить("properties", Новый Структура);
-       Возврат;      
-    КонецЕсли;
+    If Properties.Quantity() = 0 Then
+       MainStructure.Insert("properties", New Structure);
+       Return;      
+    EndIf;
     
-    СоответствиеПараметров = Новый Соответствие;
+    ParameterMap = New Match;
     
-    Для Каждого Свойство Из Свойства Цикл
+    For Each Property Of Properties Loop
         
-        Если ТипЗнч(Свойство.Значение) = Тип("Строка") Тогда
+        If TypeValue(Property.Value) = Type("String") Then
             
-           СоответствиеПараметров.Вставить(Свойство.Ключ, Новый Структура(Свойство.Значение, Новый Структура));
+           ParameterMap.Insert(Property.Key, New Structure(Property.Value, New Structure));
            
-        ИначеЕсли ТипЗнч(Свойство.Значение) = Тип("Структура") 
-            Или ТипЗнч(Свойство.Значение) = Тип("Соответствие") Тогда
+        ElseIf TypeValue(Property.Value) = Type("Structure") 
+            Or TypeValue(Property.Value) = Type("Match") Then
                 
-            ВыборЗначения = СформироватьЗначенияВыбора(Свойство.Значение);
-            СоответствиеПараметров.Вставить(Свойство.Ключ, Новый Структура("select", ВыборЗначения));
+            ValueSelection = FormSelectionValues(Property.Value);
+            ParameterMap.Insert(Property.Key, New Structure("select", ValueSelection));
             
-        Иначе
+        Otherwise
             
-            СоответствиеПараметров.Вставить(Свойство.Ключ, Свойство.Значение);
+            ParameterMap.Insert(Property.Key, Property.Value);
             
-        КонецЕсли;
+        EndIf;
         
-    КонецЦикла;
+    EndOfLoop;
     
-    ОсновнаяСтруктура.Вставить("properties", СоответствиеПараметров);
+    MainStructure.Insert("properties", ParameterMap);
     
-КонецПроцедуры
+EndProcedure
 
-Функция СформироватьЗначенияВыбора(Знач СтруктураВариантов)
+Function FormSelectionValues(Val VariantStructure)
     
-    МассивВариантов = Новый Массив;
+    OptionArray = New Array;
     
-    Для Каждого Вариант Из СтруктураВариантов Цикл
+    For Each Option Of VariantStructure Loop
         
-        СоответствиеВарианта = Новый Соответствие;
-        СоответствиеВарианта.Вставить("name" , Вариант.Ключ);
-        СоответствиеВарианта.Вставить("color", Вариант.Значение);
+        OptionMap = New Match;
+        OptionMap.Insert("name" , Option.Key);
+        OptionMap.Insert("color", Option.Value);
         
-        МассивВариантов.Добавить(СоответствиеВарианта);
+        OptionArray.Add(OptionMap);
                 
-    КонецЦикла;
+    EndOfLoop;
     
-    Возврат Новый Структура("options", МассивВариантов);
+    Return New Structure("options", OptionArray);
         
-КонецФункции
+EndFunction
 
-Функция ЗаполнитьДанныеПоСхеме(Знач Схема, Знач Данные, Знач Токен, Знач ЭтоБаза = Истина)
+Function FillDataBySchema(Val Scheme, Val Data, Val Token, Val ThisIsBase = True)
     
-    Если ЭтоБаза Тогда
-        ДанныеСхемы = ПолучитьБазуДанных(Токен, Схема);
-    Иначе
-        ДанныеСхемы = ПолучитьСтраницу(Токен, Схема);    
-    КонецЕсли;
+    If ThisIsBase Then
+        SchemaData = GetDatabase(Token, Scheme);
+    Otherwise
+        SchemaData = GetPage(Token, Scheme);    
+    EndIf;
     
-    ПоляБазы   = ДанныеСхемы["properties"];
-    Свойства   = Новый Соответствие;
+    BaseFields   = SchemaData["properties"];
+    Properties   = New Match;
     
-    Если ЗначениеЗаполнено(ПоляБазы) Тогда
+    If ValueFilled(BaseFields) Then
         
-        Для Каждого Поле Из ПоляБазы Цикл
+        For Each Field Of BaseFields Loop
             
-            ДанныеПоля = Поле.Значение;
-            ТипПоля    = ДанныеПоля["type"];
+            FieldData = Field.Value;
+            FieldType    = FieldData["type"];
             
-            ЗаполняемыеДанные = Данные.Получить(Поле.Ключ);
+            FillableData = Data.Get(Field.Key);
             
-            Если ЗаполняемыеДанные = Неопределено Тогда
-                Продолжить;
-            КонецЕсли;
+            If FillableData = Undefined Then
+                Continue;
+            EndIf;
             
-            ПреобразованныеДанные = ПреобразоватьЗначениеПоТипу(ТипПоля, ЗаполняемыеДанные);
+            ConvertedData = ConvertValueByType(FieldType, FillableData);
             
-            Если ПреобразованныеДанные = Неопределено Тогда
-                Продолжить;
-            КонецЕсли;
+            If ConvertedData = Undefined Then
+                Continue;
+            EndIf;
             
-            Свойства.Вставить(ДанныеПоля["id"], ПреобразованныеДанные); 
+            Properties.Insert(FieldData["id"], ConvertedData); 
             
-        КонецЦикла;
+        EndOfLoop;
         
-    КонецЕсли;
+    EndIf;
 
-    Возврат Свойства;
+    Return Properties;
 
-КонецФункции
+EndFunction
 
-Процедура УдалитьЛишниеПоляБлока(Знач Блок)
+Procedure RemoveExtraBlockFields(Val Block)
     
-    МассивЛишних = Новый Массив;
-    МассивЛишних.Добавить("request_id");
-    МассивЛишних.Добавить("archived");
-    МассивЛишних.Добавить("created_by");
-    МассивЛишних.Добавить("last_edited_time");
-    МассивЛишних.Добавить("created_time");
-    МассивЛишних.Добавить("has_children");
-    МассивЛишних.Добавить("parrent");
-    МассивЛишних.Добавить("last_edited_by");
-    МассивЛишних.Добавить("id");
+    ExtraArray = New Array;
+    ExtraArray.Add("request_id");
+    ExtraArray.Add("archived");
+    ExtraArray.Add("created_by");
+    ExtraArray.Add("last_edited_time");
+    ExtraArray.Add("created_time");
+    ExtraArray.Add("has_children");
+    ExtraArray.Add("parrent");
+    ExtraArray.Add("last_edited_by");
+    ExtraArray.Add("id");
     
-    Для Каждого Поле Из МассивЛишних Цикл
+    For Each Field Of ExtraArray Loop
         
-        Если Не Блок.Получить(Поле) = Неопределено Тогда
-            Блок.Удалить(Поле);
-        КонецЕсли;
+        If Not Block.Get(Field) = Undefined Then
+            Block.Delete(Field);
+        EndIf;
         
-    КонецЦикла;
+    EndOfLoop;
     
-КонецПроцедуры
+EndProcedure
 
-#Область ПреобразованиеТипов
+#Region TypeConversion
 
-Функция ПреобразоватьЗначениеПоТипу(Знач Тип, Знач Значение)
+Function ConvertValueByType(Val Type, Val Value)
     
-    Если Тип = "title" Тогда
-        Возврат ПреобразоватьЗаголовок(Значение);
-    ИначеЕсли Тип = "rich_text" Тогда
-        Возврат ПреобразоватьТекст(Значение);
-    ИначеЕсли Тип = "number" Тогда
-        Возврат ПреобразоватьЧисло(Значение);
-    ИначеЕсли Тип = "select" Тогда
-        Возврат ПреобразоватьВариантВыбора(Значение);
-    ИначеЕсли Тип = "multi_select" Тогда
-        Возврат ПреобразоватьМножественныйВыбор(Значение);
-    ИначеЕсли Тип = "status" Тогда
-        Возврат ПреобразоватьСтатус(Значение);
-    ИначеЕсли Тип = "date" Тогда
-        Возврат ПреобразоватьДату(Значение);
-    ИначеЕсли Тип = "relation" Тогда
-        Возврат ПреобразоватьСвязь(Значение);
-    ИначеЕсли Тип = "people" Тогда
-        Возврат ПреобразоватьПользователей(Значение);
-    ИначеЕсли Тип = "files" Тогда
-        Возврат ПреобразоватьФайлы(Значение);
-    ИначеЕсли Тип = "checkbox" Тогда
-        Возврат ПреобразоватьБулево(Значение);
-    ИначеЕсли Тип = "url" Тогда
-        Возврат ПреобразоватьСсылку(Значение);
-    ИначеЕсли Тип = "email" Тогда
-        Возврат ПреобразоватьПочту(Значение);
-    ИначеЕсли Тип = "phone_number" Тогда
-        Возврат ПреобразоватьТелефон(Значение);
-    Иначе 
-        Возврат Неопределено;
-    КонецЕсли;
+    If Type = "title" Then
+        Return ConvertHeader(Value);
+    ElseIf Type = "rich_text" Then
+        Return ConvertText(Value);
+    ElseIf Type = "number" Then
+        Return ConvertNumber(Value);
+    ElseIf Type = "select" Then
+        Return ConvertSelectionOption(Value);
+    ElseIf Type = "multi_select" Then
+        Return ConvertMultipleChoice(Value);
+    ElseIf Type = "status" Then
+        Return ConvertStatus(Value);
+    ElseIf Type = "date" Then
+        Return ConvertDate(Value);
+    ElseIf Type = "relation" Then
+        Return ConvertLink(Value);
+    ElseIf Type = "people" Then
+        Return ConvertUsers(Value);
+    ElseIf Type = "files" Then
+        Return ConvertFiles(Value);
+    ElseIf Type = "checkbox" Then
+        Return ConvertBoolean(Value);
+    ElseIf Type = "url" Then
+        Return ConvertLink(Value);
+    ElseIf Type = "email" Then
+        Return ConvertEmail(Value);
+    ElseIf Type = "phone_number" Then
+        Return ConvertPhone(Value);
+    Otherwise 
+        Return Undefined;
+    EndIf;
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьЗаголовок(Знач Заголовок) 
+Function ConvertHeader(Val Title) 
     
-    СтруктураДанных      = Новый Структура;
-    СтруктураТекста      = Новый Структура;
-    МассивДанных         = Новый Массив;
+    DataStructure      = New Structure;
+    TextStructure      = New Structure;
+    Data array         = New Array;
     
-    СтруктураТекста.Вставить("content", Заголовок);
-    СтруктураТекста.Вставить("link"   , Неопределено);
+    TextStructure.Insert("content", Title);
+    TextStructure.Insert("link"   , Undefined);
     
-    СтруктураДанных.Вставить("type", "text");
-    СтруктураДанных.Вставить("text", СтруктураТекста);
+    DataStructure.Insert("type", "text");
+    DataStructure.Insert("text", TextStructure);
        
-    МассивДанных.Добавить(СтруктураДанных);
+    Data array.Add(DataStructure);
 
-    Возврат Новый Структура("title", МассивДанных);
+    Return New Structure("title", Data array);
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьТекст(Знач Текст)
+Function ConvertText(Val Text)
     
-    МассивТекста    = Новый Массив;
-    СтруктураТекста = Новый Структура;
+    TextArray    = New Array;
+    TextStructure = New Structure;
     
-    СтруктураТекста.Вставить("type", "text");
-    СтруктураТекста.Вставить("text", Новый Структура("content", Текст));
+    TextStructure.Insert("type", "text");
+    TextStructure.Insert("text", New Structure("content", Text));
     
-    МассивТекста.Добавить(СтруктураТекста);
+    TextArray.Add(TextStructure);
     
-    Возврат Новый Структура("rich_text", МассивТекста);
+    Return New Structure("rich_text", TextArray);
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьЧисло(Знач Число)
-    Возврат Новый Структура("number", Число);
-КонецФункции
+Function ConvertNumber(Val Number)
+    Return New Structure("number", Number);
+EndFunction
 
-Функция ПреобразоватьВариантВыбора(Знач Вариант)
+Function ConvertSelectionOption(Val Option)
     
-    СтруктураВыбора = Новый Структура;
-    СтруктураВыбора.Вставить("select", Новый Структура("name", Вариант));
+    ChoiceStructure = New Structure;
+    ChoiceStructure.Insert("select", New Structure("name", Option));
     
-    Возврат СтруктураВыбора;
+    Return ChoiceStructure;
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьСтатус(Знач Статус)
+Function ConvertStatus(Val Status)
     
-    СтруктураСтатуса = Новый Структура;
-    СтруктураСтатуса.Вставить("status", Новый Структура("name", Статус));
+    StatusStructure = New Structure;
+    StatusStructure.Insert("status", New Structure("name", Status));
     
-    Возврат СтруктураСтатуса;
+    Return StatusStructure;
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьМножественныйВыбор(Знач МассивВариантов)
+Function ConvertMultipleChoice(Val OptionArray)
     
-    МассивВариантовВыбора = Новый Массив;
+    ChoiceOptionArray = New Array;
     
-    Для Каждого Вариант Из МассивВариантов Цикл
-        МассивВариантовВыбора.Добавить(Новый Структура("name", Вариант));
-    КонецЦикла;
+    For Each Option Of OptionArray Loop
+        ChoiceOptionArray.Add(New Structure("name", Option));
+    EndOfLoop;
     
-    Возврат Новый Структура("multi_select", МассивВариантовВыбора);
+    Return New Structure("multi_select", ChoiceOptionArray);
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьДату(Знач Дата)
+Function ConvertDate(Val Date)
     
-    СтруктураДаты = Новый Структура;
+    DateStructure = New Structure;
     
-    Если Дата = НачалоДня(Дата) Тогда
-        ФорматДаты = "ДФ=yyyy-MM-dd";
-    Иначе
-        ФорматДаты = "ДФ=yyyy-MM-ddThh:mm:ssZ";
-    КонецЕсли;
+    If Date = StartOfDay(Date) Then
+        DateFormat = "DF=yyyy-MM-dd";
+    Otherwise
+        DateFormat = "ISO8601Datetime";
+    EndIf;
     
-    Дата = Формат(Дата, ФорматДаты);
-    СтруктураДаты.Вставить("start", Дата);
+    Date = Format(Date, DateFormat);
+    DateStructure.Insert("start", Date);
     
-    Возврат Новый Структура("date", СтруктураДаты);
+    Return New Structure("date", DateStructure);
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьСвязь(Знач Идентификатор) 
+Function ConvertLink(Val Identifier) 
     
-    МассивСвязи = Новый Массив;
-    МассивСвязи.Добавить(Новый Структура("id", Идентификатор));
+    LinkArray = New Array;
+    LinkArray.Add(New Structure("id", Identifier));
     
-    Возврат Новый Структура("relation", МассивСвязи);
+    Return New Structure("relation", LinkArray);
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьПользователей(Знач МассивИД)
+Function ConvertUsers(Val IDArray)
     
-    Если Не ТипЗнч(МассивИД) = Тип("Массив") Тогда
-        МассивИД_ = Новый Массив;
-        МассивИД_.Добавить(МассивИД);
-        МассивИД = МассивИД_;
-    КонецЕсли;
+    If Not TypeValue(IDArray) = Type("Array") Then
+        ArrayID_ = New Array;
+        ArrayID_.Add(IDArray);
+        IDArray = ArrayID_;
+    EndIf;
     
-    МассивПользователей = Новый Массив;
+    ArrayOfUsers = New Array;
     
-    Для Каждого Идентификатор Из МассивИД Цикл
+    For Each Identifier Of IDArray Loop
         
-        СтруктураПользователя = Новый Структура;
-        СтруктураПользователя.Вставить("object", "user");
-        СтруктураПользователя.Вставить("id"    , Идентификатор);
-        МассивПользователей.Добавить(СтруктураПользователя);
+        UserStructure = New Structure;
+        UserStructure.Insert("object", "user");
+        UserStructure.Insert("id"    , Identifier);
+        ArrayOfUsers.Add(UserStructure);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    Возврат Новый Структура("people", МассивПользователей);
+    Return New Structure("people", ArrayOfUsers);
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьФайлы(Знач СоответствиеФайлов)
+Function ConvertFiles(Val FileMapping)
         
-    МассивФайлов = Новый Массив;
+    ArrayOfFiles = New Array;
     
-    Для Каждого Файл Из СоответствиеФайлов Цикл
+    For Each File Of FileMapping Loop
         
-        СтруктураФайла = Новый Структура;
-        СтруктураФайла.Вставить("type"    , "external");
-        СтруктураФайла.Вставить("name"    , Файл.Ключ);
-        СтруктураФайла.Вставить("external", Новый Структура("url", Файл.Значение));
+        FileStructure = New Structure;
+        FileStructure.Insert("type"    , "external");
+        FileStructure.Insert("name"    , File.Key);
+        FileStructure.Insert("external", New Structure("url", File.Value));
         
-        МассивФайлов.Добавить(СтруктураФайла);
+        ArrayOfFiles.Add(FileStructure);
         
-    КонецЦикла;
+    EndOfLoop;
 
-    Возврат Новый Структура("files", МассивФайлов);
+    Return New Structure("files", ArrayOfFiles);
     
-КонецФункции
+EndFunction
 
-Функция ПреобразоватьБулево(Знач Булево)
-    Возврат Новый Структура("checkbox", Булево);
-КонецФункции
+Function ConvertBoolean(Val Boolean)
+    Return New Structure("checkbox", Boolean);
+EndFunction
 
-Функция ПреобразоватьСсылку(Знач URL)
-    Возврат Новый Структура("url", URL);
-КонецФункции
+Function ConvertLink(Val URL)
+    Return New Structure("url", URL);
+EndFunction
 
-Функция ПреобразоватьПочту(Знач Почта)
-    Возврат Новый Структура("email", Почта);
-КонецФункции
+Function ConvertEmail(Val Email)
+    Return New Structure("email", Email);
+EndFunction
 
-Функция ПреобразоватьТелефон(Знач Телефон)
-    Возврат Новый Структура("phone_number", Телефон);
-КонецФункции
+Function ConvertPhone(Val Phone)
+    Return New Structure("phone_number", Phone);
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion

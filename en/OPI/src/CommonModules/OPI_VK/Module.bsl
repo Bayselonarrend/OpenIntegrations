@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_VK.os
-// Библиотека: VK
-// Команда CLI: vk
+﻿// Location OS: ./OInt/core/Modules/OPI_VK.os
+// Library: VK
+// CLI Command: vk
 
 // MIT License
 
@@ -25,8 +25,8 @@
 // SOFTWARE.        
 
 // https://github.com/Bayselonarrend/OpenIntegrations
-// Если в не знаете с чего начать, то стоит найти метод ПолучитьСтандартныеПараметры()
-// и почитать комментарии
+// If in не зtoете with чего toчать, то withтоит toйти метоd GetStandardParameters()
+// and read comments
 
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
@@ -38,2153 +38,2153 @@
 //@skip-check method-too-many-params
 //@skip-check wrong-string-literal-content
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область ПолучениеТокена
+#Region TokenRetrieval
 
-// Создать ссылку получения токена
-// Получение ссылки для интерактивного получения токена (access_token), который необходим
-// для дальнейших действий
+// Create token retrieval link
+// Getting a link for interactive token retrieval (access_token), which is necessary
+// for further actions
 // 
-// Параметры:
-//  app_id - Строка,Число - app_id из настроек приложения - app
+// Parameters:
+//  app_id - String, Number - app_id from application settings - app
 // 
-// Возвращаемое значение:
-//  Строка - URL, по которому необходимо перейти в браузере 
-Функция СоздатьСсылкуПолученияТокена(Знач App_id) Экспорт
+// Return value:
+//  String - URL to go to in the browser 
+Function CreateTokenRetrievalLink(Val App_id) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(App_id);
+    OPI_TypeConversion.GetLine(App_id);
     
-    // access_token нужно будет забрать из параметра в строке адреса браузера
-    Возврат "https://oauth.vk.com/authorize?client_id=" + App_id
+    // access_token will need to be taken from the parameter in the browser address bar
+    Return "https://oauth.vk.com/authorize?client_id=" + App_id
         + "&scope=offline,wall,groups,photos,stats,stories,ads,market,video"
         + "&v=5.131&response_type=token&redirect_uri=https://api.vk.com/blank.html";
         
-КонецФункции
+EndFunction
  
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСГруппой
+#Region GroupWork
 
-// Создать пост
-// Создает пост с картинками
+// Create post
+// Creates a post with images
 // 
-// Параметры:
-//  Текст              - Строка                          - Текст поста                           - text
-//  МассивКартинок     - Массив из Строка,ДвоичныеДанные - Массив картинок                       - pictures  
-//  Реклама            - Булево                          - Признак ""Это реклама""               - ad
-//  СсылкаПодЗаписью   - Строка                          - Ссылка (URL) под записью              - url
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text              - String                          - Post text                           - text
+//  ImageArray     - Array from String, BinaryData - Array of images                       - pictures  
+//  Advertisement            - Boolean                          - Indication ""Это реtoлама""               - ad
+//  LinkUnderPost   - String                          - Link (URL) under the post              - url
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьПост(Знач Текст
-    , Знач МассивКартинок
-    , Знач Реклама = Ложь
-    , Знач СсылкаПодЗаписью = ""
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreatePost(Val Text
+    , Val ImageArray
+    , Val Advertisement = False
+    , Val LinkUnderPost = ""
+    , Val Parameters = "") Export
         
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивКартинок);
+    OPI_TypeConversion.GetCollection(ImageArray);
  
-    Параметры_      = ПолучитьСтандартныеПараметры(Параметры);
-    МассивВложений  = Новый Массив;    
+    Parameters_      = GetStandardParameters(Parameters);
+    AttachmentsArray  = New Array;    
         
-    Для Каждого КартинкаПоста Из МассивКартинок Цикл
+    For Each PostImage Of ImageArray Loop
         
-        Параметры_        = ПолучитьСтандартныеПараметры(Параметры);
-        ОтветСоответствие = ПолучитьСоответствиеКартинки(КартинкаПоста, Параметры_, "Пост");
+        Parameters_        = GetStandardParameters(Parameters);
+        ResponseCorrespondence = GetImageCorrespondence(PostImage, Parameters_, "Post");
         
-        OwnerId  = ОтветСоответствие.Получить("owner_id");
-        ObjectId = ОтветСоответствие.Получить("id");
+        OwnerId  = ResponseCorrespondence.Get("owner_id");
+        ObjectId = ResponseCorrespondence.Get("id");
         
-        Если Не ЗначениеЗаполнено(OwnerId) Или Не ЗначениеЗаполнено(ObjectId) Тогда
-        	Возврат ОтветСоответствие;
-        КонецЕсли;
+        If Not ValueFilled(OwnerId) Or Not ValueFilled(ObjectId) Then
+        	Return ResponseCorrespondence;
+        EndIf;
         
-        OwnerId  = OPI_Инструменты.ЧислоВСтроку(OwnerId);
-        ObjectId = OPI_Инструменты.ЧислоВСтроку(ObjectId);
+        OwnerId  = OPI_Tools.NumberToString(OwnerId);
+        ObjectId = OPI_Tools.NumberToString(ObjectId);
         
-        ФотоID = "photo" + OwnerId + "_" + ObjectId; 
+        PhotoID = "photo" + OwnerId + "_" + ObjectId; 
 
-        МассивВложений.Добавить(ФотоID);
+        AttachmentsArray.Add(PhotoID);
         
-    КонецЦикла;
+    EndOfLoop;
 
-    Ответ = СоздатьСоставнойПост(Текст, МассивВложений, Реклама, СсылкаПодЗаписью, Параметры);
+    Response = CreateCompositePost(Text, AttachmentsArray, Advertisement, LinkUnderPost, Parameters);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать составной пост
-// Создает пост на основе массива идетификаторов объектов (картинок, видео и др.)
+// Create composite post
+// Созdает поwithт to mainоinе маwithwithиinа иdетифиtoатороin объеtoтоin (toартиноto, inиdео и dр.)
 // 
-// Параметры:
-//  Текст            - Строка           - Текст поста                              - text
-//  Объекты          - Массив из Строка - Массив идентификаторов вида photo123_123 - objects  
-//  Реклама          - Булево           - Признак ""Это реклама""                  - ad
-//  СсылкаПодЗаписью - Строка           - Ссылка (URL) под записью                 - url
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text            - String           - Post text                              - text
+//  Objects          - Array of Strings - Array of identifiers like photo123_123 - objects  
+//  Advertisement          - Boolean           - Indication ""Это реtoлама""                  - ad
+//  LinkUnderPost - String           - Link (URL) under the post                 - url
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьСоставнойПост(Знач Текст
-    , Знач Объекты
-    , Знач Реклама = Ложь
-    , Знач СсылкаПодЗаписью = ""
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreateCompositePost(Val Text
+    , Val Objects
+    , Val Advertisement = False
+    , Val LinkUnderPost = ""
+    , Val Parameters = "") Export
    
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(СсылкаПодЗаписью);   
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Реклама);
+    OPI_TypeConversion.GetLine(Text);
+    OPI_TypeConversion.GetLine(LinkUnderPost);   
+    OPI_TypeConversion.GetBoolean(Advertisement);
     
-    Параметры      = ПолучитьСтандартныеПараметры(Параметры);
-    СтрокаВложений = СтрСоединить(Объекты, ",");   
-    СтрокаВложений = СтрокаВложений + СсылкаПодЗаписью;
+    Parameters      = GetStandardParameters(Parameters);
+    AttachmentsString = StrJoin(Objects, ",");   
+    AttachmentsString = AttachmentsString + LinkUnderPost;
     
-    Параметры.Вставить("message"            , Текст);
-    Параметры.Вставить("attachments"        , СтрокаВложений);
-    Параметры.Вставить("mark_as_ads"        , ?(Реклама, 1, 0));
-    Параметры.Вставить("close_comments"     , ?(Реклама, 1, 0));
+    Parameters.Insert("message"            , Text);
+    Parameters.Insert("attachments"        , AttachmentsString);
+    Parameters.Insert("mark_as_ads"        , ?(Advertisement, 1, 0));
+    Parameters.Insert("close_comments"     , ?(Advertisement, 1, 0));
 
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.post", Параметры);
+    Response = OPI_Tools.Get("api.vk.com/method/wall.post", Parameters);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Удалить пост
-// Удаляет пост по id
+// Delete post
+// Deletes a post by ID
 //
-// Параметры:
-//  IDПоста    - Строка,Число - ID поста - post
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  PostID    - String, Number - Post ID - post
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция УдалитьПост(Знач IDПоста, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function DeletePost(Val PostID, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПоста);
+    OPI_TypeConversion.GetLine(PostID);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);    
-    Параметры_.Вставить("post_id", IDПоста);
+    Parameters_  = GetStandardParameters(Parameters);    
+    Parameters_.Insert("post_id", PostID);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.delete", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/wall.delete", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать опрос
-// Создает опрос с вариантами ответа
+// Create poll
+// Creates a poll with answer options
 //
-// Параметры:
-//  Вопрос        - Строка                - Вопрос опроса              - question
-//  МассивОтветов - Массив из Строка      - Массив вариантов ответа    - options
-//  Картинка      - Строка,ДвоичныеДанные - Картинка опроса            - picture
-//  Параметры  - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Question        - String                - Poll question              - question
+//  AnswersArray - Array of Strings      - Array of answer options    - options
+//  Image      - String, BinaryData - Poll image            - picture
+//  Parameters  - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьОпрос(Знач Вопрос, Знач МассивОтветов, Знач Картинка = "", Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Вопрос);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивОтветов);
+    OPI_TypeConversion.GetLine(Question);
+    OPI_TypeConversion.GetCollection(AnswersArray);
     
-    Параметры_    = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_    = GetStandardParameters(Parameters);
     Response      = "response";
 
-    Если ЗначениеЗаполнено(Картинка) Тогда
+    If ValueFilled(Image) Then
         
-        Ответ  = ЗагрузитьФотоНаСервер(Картинка, Параметры_, "Опрос");
+        Response  = UploadPhotoToServer(Image, Parameters_, "Poll");
         
-        Фото   = Ответ.Получить(Response);
+        Photo   = Response.Get(Response);
         
-        Если ЗначениеЗаполнено(Фото) Тогда
+        If ValueFilled(Photo) Then
         	
-        	IDФото = Фото["id"];
+        	PhotoID = Photo["id"];
         	
-        	Если Не ЗначениеЗаполнено(IDФото) Тогда
-            	Возврат Ответ;
-        	КонецЕсли;
+        	If Not ValueFilled(PhotoID) Then
+            	Return Response;
+        	EndIf;
         	
-        Иначе
-            Возврат Ответ;
-        КонецЕсли;
+        Otherwise
+            Return Response;
+        EndIf;
     
-    КонецЕсли;
+    EndIf;
     
-    Параметры_.Вставить("is_anonymous", 1);
-    Параметры_.Вставить("is_multiple" , 0);
+    Parameters_.Insert("is_anonymous", 1);
+    Parameters_.Insert("is_multiple" , 0);
         
-    Ответы = СтрСоединить(МассивОтветов, """,""");
-    Ответы = "[""" + Ответы + """]";    
+    Answers = StrJoin(AnswersArray, """,""");
+    Answers = "[""" + Answers + """]";    
         
-    Параметры_.Вставить("add_answers", Ответы);
-    Параметры_.Вставить("photo_id"   , OPI_Инструменты.ЧислоВСтроку(IDФото));
-    Параметры_.Вставить("question"   , Вопрос);
+    Parameters_.Insert("add_answers", Answers);
+    Parameters_.Insert("photo_id"   , OPI_Tools.NumberToString(PhotoID));
+    Parameters_.Insert("question"   , Question);
     
-    Опрос             = OPI_Инструменты.Get("api.vk.com/method/polls.create", Параметры_);
-    ОпросСоответствие = Опрос.Получить(Response);
+    Poll             = OPI_Tools.Get("api.vk.com/method/polls.create", Parameters_);
+    PollCorrespondence = Poll.Get(Response);
     
-    Если Не ЗначениеЗаполнено(ОпросСоответствие) Тогда
-    	Возврат Опрос;
-    КонецЕсли;
+    If Not ValueFilled(PollCorrespondence) Then
+    	Return Poll;
+    EndIf;
     
-    OwnerId  = ОпросСоответствие.Получить("owner_id");
-    ObjectId = ОпросСоответствие.Получить("id");
+    OwnerId  = PollCorrespondence.Get("owner_id");
+    ObjectId = PollCorrespondence.Get("id");
     
-    Если Не ЗначениеЗаполнено(OwnerId) Или Не ЗначениеЗаполнено(ObjectId) Тогда
-        Возврат Опрос;
-    КонецЕсли;
+    If Not ValueFilled(OwnerId) Or Not ValueFilled(ObjectId) Then
+        Return Poll;
+    EndIf;
     
-    ОпросID = "poll"
-    + OPI_Инструменты.ЧислоВСтроку(OwnerId)
+    PollID = "poll"
+    + OPI_Tools.NumberToString(OwnerId)
     + "_" 
-    + OPI_Инструменты.ЧислоВСтроку(ObjectId);
+    + OPI_Tools.NumberToString(ObjectId);
  
-    Параметры_.Вставить("attachments", ОпросID);
+    Parameters_.Insert("attachments", PollID);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.post", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/wall.post", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать альбом
-// Создает альбом для хранения картинок
+// Create album
+// Creates an album to store images
 //
-// Параметры:
-//  Наименование - Строка - Наименование альбома - title
-//  Описание     - Строка - Описание альбома     - description
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Name - String - Album name - title
+//  Description     - String - Album description     - description
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьАльбом(Знач Наименование, Знач Описание = "", Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Описание);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Description);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_ = GetStandardParameters(Parameters);
     
-    Параметры_.Вставить("title"                , Наименование);
-    Параметры_.Вставить("description"          , Описание);
-    Параметры_.Вставить("upload_by_admins_only", 1);
+    Parameters_.Insert("title"                , Name);
+    Parameters_.Insert("description"          , Description);
+    Parameters_.Insert("upload_by_admins_only", 1);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/photos.createAlbum", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/photos.createAlbum", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить альбом
-// Удаляет ранее созданный альбом
+// Delete album
+// Deletes a previously created album
 //
-// Параметры:
-//  IDАльбома - Строка,Число        - ID альбома - album
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  AlbumID - String, Number        - Album ID - album
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция УдалитьАльбом(Знач IDАльбома, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDАльбома);
+    OPI_TypeConversion.GetLine(AlbumID);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);    
-    Параметры_.Вставить("album_id", OPI_Инструменты.ЧислоВСтроку(IDАльбома));
+    Parameters_  = GetStandardParameters(Parameters);    
+    Parameters_.Insert("album_id", OPI_Tools.NumberToString(AlbumID));
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/photos.deleteAlbum", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/photos.deleteAlbum", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать историю
-// Создает историю из картинки
+// Create story
+// Creates a story from an image
 //
-// Параметры:
-//  Картинка     - Строка,ДвоичныеДанные - Фон истории                           - picture
-//  URL          - Строка                - URL для кнопки под историей           - url
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Image     - String, BinaryData - Story background                           - picture
+//  URL          - String                - URL for button under the story           - url
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьИсторию(Знач Картинка, Знач URL = "", Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreateStory(Val Image, Val URL = "", Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(URL);
+    OPI_TypeConversion.GetLine(URL);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("link_text"  , "more");
-    Параметры_.Вставить("link_url"   , URL);
-    Параметры_.Вставить("add_to_news", "1");
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("link_text"  , "more");
+    Parameters_.Insert("link_url"   , URL);
+    Parameters_.Insert("add_to_news", "1");
     
-    Ответ = ЗагрузитьФотоНаСервер(Картинка, Параметры_, "История");    
-    Возврат Ответ;
+    Response = UploadPhotoToServer(Image, Parameters_, "Story");    
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Сохранить картинку в альбом
-// Сохраняет картинку в альбом сообщества
+// Save image to album
+// Saves an image to the community album
 //
-// Параметры:
-//  IDАльбома - Строка,Число          - ID альбома        - album                           
-//  Картинка  - ДвоичныеДанные,Строка - Файл картинки     - picture
-//  Описание  - Строка                - Описание картинки - description
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  AlbumID - String, Number          - Album ID        - album                           
+//  Image  - BinaryData,String - Image file     - picture
+//  Description  - String                - Image description - description
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СохранитьКартинкуВАльбом(Знач IDАльбома, Знач Картинка, Знач Описание = "", Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDАльбома);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Описание);
+    OPI_TypeConversion.GetLine(AlbumID);
+    OPI_TypeConversion.GetLine(Description);
     
-    Параметры_      = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_      = GetStandardParameters(Parameters);
     
-    Параметры_.Вставить("album_id", IDАльбома);
-    Параметры_.Вставить("caption" , Описание);
+    Parameters_.Insert("album_id", AlbumID);
+    Parameters_.Insert("caption" , Description);
           
-    Возврат ЗагрузитьФотоНаСервер(Картинка, Параметры_, "Альбом");
+    Return UploadPhotoToServer(Image, Parameters_, "Album");
     
-КонецФункции
+EndFunction
 
-// Удалить картинку
-// Удалить картинку из альбома
+// Delete image
+// Deletes an image from the album
 //
-// Параметры:
-//  IDКартинки - Строка,Число       - ID картинки - pictureid 
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  ImageID - String, Number       - Image ID - pictureid 
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция УдалитьКартинку(Знач IDКартинки, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function DeleteImage(Val ImageID, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDКартинки);
+    OPI_TypeConversion.GetLine(ImageID);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("photo_id", IDКартинки);
+    Parameters_  = GetStandardParameters(Parameters);
+    Parameters_.Insert("photo_id", ImageID);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/photos.delete", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/photos.delete", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Загрузить видео на сервер
-// Загружает видео в группу с возможностью его дальнейшего использования
+// Upload video to server
+// Uploads video to the group for further use
 // 
-// Параметры:
-//  Видео        - Строка, ДвоичныеДанные - Файл видео                  - file
-//  Наименование - Строка                 - Наименование видео          - title
-//  Описание     - Строка                 - Описание видео              - description
-//  Альбом       - Строка                 - ID альбома, если необходимо - album
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Video        - String, BinaryData - Video file                  - file
+//  Name - String                 - Video name          - title
+//  Description     - String                 - Video description              - description
+//  Album       - String                 - Album ID, if necessary - album
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK 
-Функция ЗагрузитьВидеоНаСервер(Знач Видео
-    , Знач Наименование
-    , Знач Описание = ""
-    , Знач Альбом = ""
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK 
+Function UploadVideoToServer(Val Video
+    , Val Name
+    , Val Description = ""
+    , Val Album = ""
+    , Val Parameters = "") Export
 	
-	Строка_   = "Строка";
-	Параметры = ПолучитьСтандартныеПараметры(Параметры);
+	String_   = "String";
+	Parameters = GetStandardParameters(Parameters);
 	
-	OPI_Инструменты.ДобавитьПоле("name"       , Наименование, Строка_, Параметры);
-	OPI_Инструменты.ДобавитьПоле("description", Описание    , Строка_, Параметры);
-	OPI_Инструменты.ДобавитьПоле("album_id"   , Альбом      , Строка_, Параметры);
+	OPI_Tools.AddField("name"       , Name, String_, Parameters);
+	OPI_Tools.AddField("description", Description    , String_, Parameters);
+	OPI_Tools.AddField("album_id"   , Album      , String_, Parameters);
 	
-	Ответ = OPI_Инструменты.Get("api.vk.com/method/video.save", Параметры);
+	Response = OPI_Tools.Get("api.vk.com/method/video.save", Parameters);
     
-    Результат = Ответ["response"];
+    Result = Response["response"];
     
-    Если Не ЗначениеЗаполнено(Результат) Тогда
-		Возврат Ответ;
-    КонецЕсли;
+    If Not ValueFilled(Result) Then
+		Return Response;
+    EndIf;
     
-	URL = Результат["upload_url"];
+	URL = Result["upload_url"];
 	
-	Если Не ЗначениеЗаполнено(URL) Тогда
-		Возврат Ответ;
-	КонецЕсли;
+	If Not ValueFilled(URL) Then
+		Return Response;
+	EndIf;
     
-    СоответствиеФайлов = Новый Соответствие;
-    OPI_Инструменты.ДобавитьПоле("video_file.mp4", Видео, "ДвоичныеДанные", СоответствиеФайлов);
+    FileMapping = New Match;
+    OPI_Tools.AddField("video_file.mp4", Video, "BinaryData", FileMapping);
     
-    РазмерДанных = СоответствиеФайлов["video_file.mp4"].Размер();
-    РазмерДанных = OPI_Инструменты.ЧислоВСтроку(РазмерДанных);
+    DataSize = FileMapping["video_file.mp4"].Size();
+    DataSize = OPI_Tools.NumberToString(DataSize);
     
-    Ответ = OPI_Инструменты.PostMultipart(URL, , СоответствиеФайлов, "video/mp4");
+    Response = OPI_Tools.PostMultipart(URL, , FileMapping, "video/mp4");
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Загрузить фото на сервер
-// Загружает фото на сервер для его дальнейшего использования
+// Upload photo to server
+// Uploads photo to server for further use
 // 
-// Параметры:
-//  Картинка  - Строка, ДвоичныеДанные - Файл картинки                   - file
-//  Параметры - Структура из Строка    - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
-//  Вид       - Строка                 - Вид загрузки (Пост, Товар, История, Опрос, Прочее) - type
+// Parameters:
+//  Image  - String, BinaryData - Image file                   - file
+//  Parameters - Structure Of String    - See GetStandardParameters - auth - Authorization JSON or path to .json
+//  View       - String                 - View upload (Post, Product, Story, Poll, Miscellaneous) - type
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK 
-Функция ЗагрузитьФотоНаСервер(Знач Картинка, Знач Параметры = "", Знач Вид = "Пост") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK 
+Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export
        
-    Параметры  = ПолучитьСтандартныеПараметры(Параметры);
-    Метод      = ОпределитьМетодЗагрузкиИзображений(Вид);
-    Файлы      = Новый Соответствие;
+    Parameters  = GetStandardParameters(Parameters);
+    Method      = DetermineImageUploadMethod(View);
+    Files      = New Match;
     
     Response   = "response";
     URL        = "api.vk.com/method/";
-    Загрузка   = URL + Метод["Загрузка"];
-    Сохранение = URL + Метод["Сохранение"];
+    Upload   = URL + Method["Upload"];
+    Save = URL + Method["Save"];
     
-    Если ТипЗнч(Картинка) = Тип("Строка") Тогда
-        КлючКартинка        = СтрЗаменить(Картинка, ".", "___");
-        OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка);
-    Иначе
-        КлючКартинка        = "image___jpeg";
-    КонецЕсли;
+    If TypeValue(Image) = Type("String") Then
+        ImageKey        = StringReplace(Image, ".", "___");
+        OPI_TypeConversion.GetBinaryData(Image);
+    Otherwise
+        ImageKey        = "image___jpeg";
+    EndIf;
     
-    Файлы.Вставить(КлючКартинка, Картинка);
+    Files.Insert(ImageKey, Image);
     
-    Для Н = 1 По 5 Цикл
+    For N = 1 by 5 Loop
         
-        Ответ     = OPI_Инструменты.Get(Загрузка, Параметры);  
-        Результат = Ответ[Response];
+        Response     = OPI_Tools.Get(Upload, Parameters);  
+        Result = Response[Response];
         
-        Если ЗначениеЗаполнено(Результат) Тогда
+        If ValueFilled(Result) Then
             
-            URL = Результат["upload_url"];
+            URL = Result["upload_url"];
             
-            Если Не ЗначениеЗаполнено(URL) Тогда
-                Возврат Ответ;
-            КонецЕсли;
+            If Not ValueFilled(URL) Then
+                Return Response;
+            EndIf;
             
-        Иначе
-            Возврат Ответ;
-        КонецЕсли;
+        Otherwise
+            Return Response;
+        EndIf;
         
-        Параметры.Вставить("upload_url", URL);
-        Ответ = OPI_Инструменты.PostMultipart(URL, Параметры, Файлы);
+        Parameters.Insert("upload_url", URL);
+        Response = OPI_Tools.PostMultipart(URL, Parameters, Files);
         
-        Если ТипЗнч(Ответ) = Тип("Соответствие") Тогда
-            Прервать;
-        КонецЕсли;
+        If TypeValue(Response) = Type("Match") Then
+            Interrupt;
+        EndIf;
         
-    КонецЦикла;
+    EndOfLoop;
     
-    Если ТипЗнч(Ответ) <> Тип("Соответствие") Тогда
-        Возврат ПолучитьСтрокуИзДвоичныхДанных(Ответ);
-    КонецЕсли;
+    If TypeValue(Response) <> Type("Match") Then
+        Return GetStringFromBinaryData(Response);
+    EndIf;
 
-    ЗаполнитьПараметрыЗагрузкиФото(Метод, Ответ, Параметры);
+    FillPhotoUploadParameters(Method, Response, Parameters);
         
-    Ответ = OPI_Инструменты.Get(Сохранение, Параметры);
+    Response = OPI_Tools.Get(Save, Parameters);
           
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСОбсуждениями
+#Region DiscussionManagement
 
-// Создать обсуждение
-// Создает новое обсуждение
+// Create discussion
+// Creates a new discussion
 //
-// Параметры:
-//  Наименование          - Строка  - Наименование обсуждения - title
-//  ТекстПервогоСообщения - Строка  - Текст первого сообщения - text
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Name          - String  - Discussion name - title
+//  Text of the first message - String  - Text of the first message - text
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьОбсуждение(Знач Наименование, Знач ТекстПервогоСообщения, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreateDiscussion(Val Name, Val Text of the first message, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ТекстПервогоСообщения);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Text of the first message);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("title", Наименование);
-    Параметры_.Вставить("text" , ТекстПервогоСообщения);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("title", Name);
+    Parameters_.Insert("text" , Text of the first message);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board.addTopic", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/board.addTopic", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Закрыть обсуждение
-// Закрывает или удаляет обсуждение
+// Close discussion
+// Close or delete discussion
 //
-// Параметры:
-//  IDОбсуждения     - Строка,Число - ID обсуждения                                          - topic
-//  УдалитьПолностью - Булево       -  Удалить полностью (Истина) или закрыть                - remove
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  DiscussionID     - String, Number - Discussion ID                                          - topic
+//  Delete completely - Boolean       -  Delete completely (True) or close                - remove
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ЗакрытьОбсуждение(Знач IDОбсуждения, Знач УдалитьПолностью = Ложь, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CloseDiscussion(Val DiscussionID, Val Delete completely = False, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDОбсуждения);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(УдалитьПолностью);
+    OPI_TypeConversion.GetLine(DiscussionID);
+    OPI_TypeConversion.GetBoolean(Delete completely);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("topic_id", IDОбсуждения);
+    Parameters_  = GetStandardParameters(Parameters);
+    Parameters_.Insert("topic_id", DiscussionID);
     
-    Метод = ?(УдалитьПолностью, "deleteTopic", "closeTopic");   
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board." + Метод, Параметры_);
+    Method = ?(Delete completely, "deleteTopic", "closeTopic");   
+    Response = OPI_Tools.Get("api.vk.com/method/board." + Method, Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Открыть обсуждение
-// Открывает ранее закрытое обсуждение
+// Open discussion
+// Opens a previously closed discussion
 //
-// Параметры:
-//  IDОбсуждения - Строка,Число - ID обсуждения - topic
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  DiscussionID - String, Number - Discussion ID - topic
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ОткрытьОбсуждение(Знач IDОбсуждения, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDОбсуждения);
+    OPI_TypeConversion.GetLine(DiscussionID);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("topic_id", IDОбсуждения);
+    Parameters_  = GetStandardParameters(Parameters);
+    Parameters_.Insert("topic_id", DiscussionID);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board.openTopic", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/board.openTopic", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Написать в обсуждение
-// Добавляет сообщение в обсуждение от имени группы
+// Write in discussion
+// Adds a message to the discussion on behalf of the group
 //
-// Параметры:
-//  IDОбсуждения - Строка,Число - ID обсуждения   - topic
-//  Текст        - Строка       - Текст сообщения - text
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  DiscussionID - String, Number - Discussion ID   - topic
+//  Text        - String       - Message text - text
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция НаписатьВОбсуждение(Знач IDОбсуждения, Знач Текст, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDОбсуждения);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
+    OPI_TypeConversion.GetLine(DiscussionID);
+    OPI_TypeConversion.GetLine(Text);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("topic_id", IDОбсуждения);
-    Параметры_.Вставить("message" , Текст);
+    Parameters_  = GetStandardParameters(Parameters);
+    Parameters_.Insert("topic_id", DiscussionID);
+    Parameters_.Insert("message" , Text);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/board.createComment", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/board.createComment", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область ИнтерактивныеДействия
+#Region InteractiveActions
 
-// Поставить лайк
-// Ставит лайк на пост
+// Like
+// Likes a post
 //
-// Параметры:
-//  IDПоста   - Строка,Число - ID поста                    - post
-//  IDСтены   - Строка,Число - ID стены расположения поста - wall
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  PostID   - String, Number - Post ID                    - post
+//  WallID   - String, Number - ID of the wall where the post is located - wall
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ПоставитьЛайк(Знач IDПоста, Знач IDСтены = "", Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПоста);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСтены);
+    OPI_TypeConversion.GetLine(PostID);
+    OPI_TypeConversion.GetLine(WallID);
     
-    Параметры_      = ПолучитьСтандартныеПараметры(Параметры);
-    IDСтены         = ?(ЗначениеЗаполнено(IDСтены), IDСтены, Параметры_["owner_id"]);
-    ОбъектВК        = "wall" + IDСтены + "_" + OPI_Инструменты.ЧислоВСтроку(IDПоста);
+    Parameters_      = GetStandardParameters(Parameters);
+    WallID         = ?(ValueFilled(WallID), WallID, Parameters_["owner_id"]);
+    VKObject        = "wall" + WallID + "_" + OPI_Tools.NumberToString(PostID);
     
-    Параметры_.Вставить("type"        , "post");
-    Параметры_.Вставить("object"      , ОбъектВК);
-    Параметры_.Вставить("item_id"     , OPI_Инструменты.ЧислоВСтроку(IDПоста));
-    Параметры_.Вставить("owner_id"    , OPI_Инструменты.ЧислоВСтроку(IDСтены));
-    Параметры_.Вставить("from_group"  , 0);
+    Parameters_.Insert("type"        , "post");
+    Parameters_.Insert("object"      , VKObject);
+    Parameters_.Insert("item_id"     , OPI_Tools.NumberToString(PostID));
+    Parameters_.Insert("owner_id"    , OPI_Tools.NumberToString(WallID));
+    Parameters_.Insert("from_group"  , 0);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/likes.add", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/likes.add", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Сделать репост
-// Делает репост записи
+// Make repost
+// Reposts the record
 //
-// Параметры:
-//  IDПоста      - Строка,Число - ID поста                      - post
-//  IDСтены      - Строка,Число -  ID стены расположения поста  - from
-//  ЦелеваяСтена - Строка,Число -  ID целевой стены или группы  - to
-//  Рекламный    - Булево -  Признак рекламного поста           - ad
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  PostID      - String, Number - Post ID                      - post
+//  WallID      - String, Number -  ID of the wall where the post is located  - from
+//  Target wall - String, Number -  ID of the target wall or group  - to
+//  Advertising    - Boolean -  Sign of an advertising post           - ad
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СделатьРепост(Знач IDПоста
-    , Знач IDСтены = ""
-    , Знач ЦелеваяСтена = ""
-    , Знач Рекламный = Ложь
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function MakeRepost(Val PostID
+    , Val WallID = ""
+    , Val Target wall = ""
+    , Val Advertising = False
+    , Val Parameters = "") Export
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    GroupId    = Параметры_["group_id"];
+    Parameters_ = GetStandardParameters(Parameters);
+    GroupId    = Parameters_["group_id"];
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(GroupId);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПоста);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСтены);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ЦелеваяСтена);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Рекламный);
+    OPI_TypeConversion.GetLine(GroupId);
+    OPI_TypeConversion.GetLine(PostID);
+    OPI_TypeConversion.GetLine(WallID);
+    OPI_TypeConversion.GetLine(Target wall);
+    OPI_TypeConversion.GetBoolean(Advertising);
        
-    Источник    = ?(ЗначениеЗаполнено(IDСтены), IDСтены, GroupId);       
-    Приемник    = ?(ЗначениеЗаполнено(ЦелеваяСтена), ЦелеваяСтена, GroupId);
+    Source    = ?(ValueFilled(WallID), WallID, GroupId);       
+    Receiver    = ?(ValueFilled(Target wall), Target wall, GroupId);
 
-    Параметры_.Вставить("object"          , "wall" + Источник + "_" + OPI_Инструменты.ЧислоВСтроку(IDПоста));
-    Параметры_.Вставить("group_id"        , СтрЗаменить(Приемник, "-", ""));
-    Параметры_.Вставить("mark_as_ads"     , ?(Рекламный, 1, 0));
+    Parameters_.Insert("object"          , "wall" + Source + "_" + OPI_Tools.NumberToString(PostID));
+    Parameters_.Insert("group_id"        , StringReplace(Receiver, "-", ""));
+    Parameters_.Insert("mark_as_ads"     , ?(Advertising, 1, 0));
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.repost", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/wall.repost", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Написать сообщение
-// Написать сообщение пользователю в диалоге сообщества
+// Write a message
+// Write a message to a user in the community's dialog
 //
-// Параметры:
-//  Текст          - Строка - Текст сообщения                                                 - text
-//  IDПользователя - Строка - ID пользователя адресата                                        - user
-//  Communitytoken - Строка - Токен бота чата сообщества, котрый можно получить в настройках  - ct
-//  Клавиатура     - Строка - JSON клавиатуры. См.СформироватьКлавиатуру                      - keyboard
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Text          - String - Message text                                                 - text
+//  UserID - String - Recipient user ID                                        - user
+//  Communitytoken - String - Community chat bot token, which can be obtained in the settings  - ct
+//  Keyboard     - String - JSON keyboard. See FormKeyboard                      - keyboard
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция НаписатьСообщение(Знач Текст
-    , Знач IDПользователя
-    , Знач Communitytoken
-    , Знач Клавиатура = ""
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function WriteMessage(Val Text
+    , Val UserID
+    , Val Communitytoken
+    , Val Keyboard = ""
+    , Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПользователя);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Communitytoken);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Клавиатура);
+    OPI_TypeConversion.GetLine(Text);
+    OPI_TypeConversion.GetLine(UserID);
+    OPI_TypeConversion.GetLine(Communitytoken);
+    OPI_TypeConversion.GetLine(Keyboard);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("access_token", Communitytoken);
+    Parameters_  = GetStandardParameters(Parameters);
+    Parameters_.Insert("access_token", Communitytoken);
     
-    Параметры_.Вставить("user_id"     , IDПользователя);
-    Параметры_.Вставить("peer_id"     , IDПользователя);
-    Параметры_.Вставить("parse_mode"  , "Markdown"); 
-    Параметры_.Вставить("random_id"   , 0);
-    Параметры_.Вставить("message"     , Текст);
+    Parameters_.Insert("user_id"     , UserID);
+    Parameters_.Insert("peer_id"     , UserID);
+    Parameters_.Insert("parse_mode"  , "Markdown"); 
+    Parameters_.Insert("random_id"   , 0);
+    Parameters_.Insert("message"     , Text);
     
-    Если ЗначениеЗаполнено(Клавиатура) Тогда
-        Параметры_.Вставить("keyboard", Клавиатура);
-    КонецЕсли;
+    If ValueFilled(Keyboard) Then
+        Parameters_.Insert("keyboard", Keyboard);
+    EndIf;
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/messages.send", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/messages.send", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Написать комментарий
-// Создает комментарий под выбранной записью
+// Write a comment
+// Creates a comment under the selected record
 //
-// Параметры:
-//  IDПоста   - Строка,Число - ID целевого поста            - post
-//  IDСтены   - Строка,Число -  ID стены расположения поста - wall
-//  Текст     - Строка       - Текст комментария            - text
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  PostID   - String, Number - ID of the target post            - post
+//  WallID   - String, Number -  ID of the wall where the post is located - wall
+//  Text     - String       - Comment text            - text
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция НаписатьКомментарий(Знач IDПоста, Знач IDСтены, Знач Текст, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Export
 
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    GroupId    = Параметры_["group_id"];
+    Parameters_ = GetStandardParameters(Parameters);
+    GroupId    = Parameters_["group_id"];
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(GroupId);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПоста);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDСтены);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Текст);
+    OPI_TypeConversion.GetLine(GroupId);
+    OPI_TypeConversion.GetLine(PostID);
+    OPI_TypeConversion.GetLine(WallID);
+    OPI_TypeConversion.GetLine(Text);
        
-    Параметры_.Вставить("owner_id"   , IDСтены); 
-    Параметры_.Вставить("from_group" , GroupId);
-    Параметры_.Вставить("post_id"    , IDПоста);
-    Параметры_.Вставить("message"    , Текст);
+    Parameters_.Insert("owner_id"   , WallID); 
+    Parameters_.Insert("from_group" , GroupId);
+    Parameters_.Insert("post_id"    , PostID);
+    Parameters_.Insert("message"    , Text);
     
-    Параметры_.Удалить("group_id");
+    Parameters_.Delete("group_id");
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/wall.createComment", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/wall.createComment", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Сократить ссылку
-// Создает сокращенный URL из обычного
+// Shorten link
+// Creates a shortened URL from a regular one
 //
-// Параметры:
-//  URL       - Строка - URL для сокращения - url
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  URL       - String - URL for shortening - url
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-// Строка - Сокращенный URL 
-Функция СократитьСсылку(Знач URL, Знач Параметры = "") Экспорт
+// Return value:
+// String - Shortened URL 
+Function ShortenLink(Val URL, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(URL);
+    OPI_TypeConversion.GetLine(URL);
     
     Response   = "response";
-    Параметры_ = Новый Структура;
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);    
-    Параметры_.Вставить("url", URL);
+    Parameters_ = New Structure;
+    Parameters_ = GetStandardParameters(Parameters);    
+    Parameters_.Insert("url", URL);
     
-    Ответ     = OPI_Инструменты.Get("https://api.vk.com/method/utils.getShortLink", Параметры_);
-    Результат = Ответ[Response];
+    Response     = OPI_Tools.Get("https://api.vk.com/method/utils.getShortLink", Parameters_);
+    Result = Response[Response];
     
-    Если ЗначениеЗаполнено(Результат) Тогда
+    If ValueFilled(Result) Then
     	
-    	URL = Результат["short_url"];
+    	URL = Result["short_url"];
     	
-    	Если ЗначениеЗаполнено(URL) Тогда
-    		Возврат URL;
-    	Иначе
-    		Возврат Ответ;
-    	КонецЕсли;
+    	If ValueFilled(URL) Then
+    		Return URL;
+    	Otherwise
+    		Return Response;
+    	EndIf;
     	
-    Иначе
-    	Возврат Ответ;
-    КонецЕсли;
+    Otherwise
+    	Return Response;
+    EndIf;
       
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область Статистика
+#Region Statistics
 
-// Получить статистику
-// Получает общую статистику сообщества за период
+// Get statistics
+// Gets the overall community statistics for a period
 //
-// Параметры:
-//  ДатаНачала    - Дата - Дата начала периода    - datefrom
-//  ДатаОкончания - Дата - Дата окончания периода - dateto
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  StartDate    - Date - Start date of the period    - datefrom
+//  EndDate - Date - End date of the period - dateto
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ПолучитьСтатистику(Знач ДатаНачала, Знач ДатаОкончания, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьДату(ДатаНачала);
-    OPI_ПреобразованиеТипов.ПолучитьДату(ДатаОкончания);
+    OPI_TypeConversion.GetDate(StartDate);
+    OPI_TypeConversion.GetDate(EndDate);
     
-    Параметры_         = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_         = GetStandardParameters(Parameters);
     
-    ДатаНачала         = OPI_Инструменты.UNIXTime(ДатаНачала);
-    ДатаОкончания      = OPI_Инструменты.UNIXTime(ДатаОкончания);
+    StartDate         = OPI_Tools.UNIXTime(StartDate);
+    EndDate      = OPI_Tools.UNIXTime(EndDate);
     
-    Параметры_.Вставить("timestamp_from", ДатаНачала);
-    Параметры_.Вставить("timestamp_to"  , ДатаОкончания);
-    Параметры_.Вставить("stats_groups"  , "visitors, reach, activity");
+    Parameters_.Insert("timestamp_from", StartDate);
+    Parameters_.Insert("timestamp_to"  , EndDate);
+    Parameters_.Insert("stats_groups"  , "visitors, reach, activity");
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/stats.get", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/stats.get", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить статистику по постам
-// Получает статистику в разрезе постов
+// Get post statistics
+// Gets statistics in terms of posts
 //
-// Параметры:
-//  МассивИДПостов - Массив из Строка,Число - Массив ID постов - posts
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Array of post IDs - Array of String,Number - Array of post IDs - posts
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Массив из Произвольный -  Массив данных статистики по постам
-Функция ПолучитьСтатистикуПостов(Знач МассивИДПостов, Знач Параметры = "") Экспорт
+// Return value:
+//  Array of Arbitrary -  Array of post statistics data
+Function GetPostStatistics(Val Array of post IDs, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивИДПостов);
+    OPI_TypeConversion.GetCollection(Array of post IDs);
     
-    Параметры_       = ПолучитьСтандартныеПараметры(Параметры);
-    МассивОтветов    = Новый Массив;
-    МассивНабора     = Новый Массив;
-    МаксимумПостов   = 30;
+    Parameters_       = GetStandardParameters(Parameters);
+    AnswersArray    = New Array;
+    Array of Sets     = New Array;
+    MaximumPosts   = 30;
     Response         = "response";
     
-    Для Каждого Пост Из МассивИДПостов Цикл
+    For Each Post Of Array of post IDs Loop
         
-        МассивНабора.Добавить(OPI_Инструменты.ЧислоВСтроку(Пост));
+        Array of Sets.Add(OPI_Tools.NumberToString(Post));
         
-        Если МассивНабора.Количество() = МаксимумПостов Тогда
+        If Array of Sets.Quantity() = MaximumPosts Then
             
-            СтрокаНомеров = СтрСоединить(МассивНабора, ",");
-            Параметры_.Вставить("post_ids", СтрокаНомеров);
+            NumbersString = StrJoin(Array of Sets, ",");
+            Parameters_.Insert("post_ids", NumbersString);
             
-            Статистика             = OPI_Инструменты.Get("api.vk.com/method/stats.getPostReach", Параметры_);
-            МассивСтатистики       = Статистика[Response];
+            Statistics             = OPI_Tools.Get("api.vk.com/method/stats.getPostReach", Parameters_);
+            Array of Statistics       = Statistics[Response];
             
-            Для Каждого ЭлементСтатистики Из МассивСтатистики Цикл
-                МассивОтветов.Добавить(ЭлементСтатистики);
-            КонецЦикла;
+            For Each StatisticsItem Of Array of Statistics Loop
+                AnswersArray.Add(StatisticsItem);
+            EndOfLoop;
             
-            МассивНабора = Новый Массив;
+            Array of Sets = New Array;
             
-        КонецЕсли;
+        EndIf;
         
-    КонецЦикла;
+    EndOfLoop;
     
-    СтрокаНомеров = СтрСоединить(МассивНабора, ",");
-    Параметры_.Вставить("post_ids", СтрокаНомеров);
+    NumbersString = StrJoin(Array of Sets, ",");
+    Parameters_.Insert("post_ids", NumbersString);
     
-    Статистика       = OPI_Инструменты.Get("api.vk.com/method/stats.getPostReach", Параметры_);
-    МассивСтатистики = Статистика[Response];
+    Statistics       = OPI_Tools.Get("api.vk.com/method/stats.getPostReach", Parameters_);
+    Array of Statistics = Statistics[Response];
     
-    Если ТипЗнч(МассивСтатистики) = Тип("Массив") Тогда
-        Для Каждого ЭлементСтатистики Из МассивСтатистики Цикл
-            МассивОтветов.Добавить(ЭлементСтатистики);
-        КонецЦикла;
-    КонецЕсли;
+    If TypeValue(Array of Statistics) = Type("Array") Then
+        For Each StatisticsItem Of Array of Statistics Loop
+            AnswersArray.Add(StatisticsItem);
+        EndOfLoop;
+    EndIf;
 
-    Возврат МассивОтветов;
+    Return AnswersArray;
     
-КонецФункции
+EndFunction
         
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСРекламнымКабинетом
+#Region AdAccountManagement
 
-// Создать рекламную кампанию
-// Создает кампанию в выбранном рекламном кабинете
+// Create advertising campaign
+// Creates a campaign in the selected advertising account
 //
-// Параметры:
-//  IDКабинета   - Строка,Число - ID рекламного кабинета - cabinet
-//  Наименование - Строка       - Наименование кампании - title
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  AccountID   - String, Number - Advertising account ID - cabinet
+//  Name - String       - Campaign name - title
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьРекламнуюКампанию(Знач IDКабинета, Знач Наименование, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDКабинета);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
+    OPI_TypeConversion.GetLine(AccountID);
+    OPI_TypeConversion.GetLine(Name);
     
-    ТекущаяДата  = OPI_Инструменты.ПолучитьТекущуюДату();
-    КонечнаяДата = ДобавитьМесяц(ТекущаяДата, 24);
+    CurrentDate  = OPI_Tools.GetCurrentDate();
+    EndDate = AddMonth(CurrentDate, 24);
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);    
-    Параметры_.Вставить("account_id", IDКабинета);
+    Parameters_  = GetStandardParameters(Parameters);    
+    Parameters_.Insert("account_id", AccountID);
     
-    МассивСтруктур = Новый Массив;
-    ДатаСтарт      = OPI_Инструменты.UNIXTime(ТекущаяДата);
-    ДатаСтоп       = OPI_Инструменты.UNIXTime(КонечнаяДата);
+    Array of Structures = New Array;
+    StartDate      = OPI_Tools.UNIXTime(CurrentDate);
+    EndDate       = OPI_Tools.UNIXTime(EndDate);
     
-    СтруктураКампании = Новый Структура;
-    СтруктураКампании.Вставить("type"            , "promoted_posts");
-    СтруктураКампании.Вставить("name"            , Наименование);
-    СтруктураКампании.Вставить("day_limit"       , 0);
-    СтруктураКампании.Вставить("all_limit"       , 0);
-    СтруктураКампании.Вставить("start_time"      , ДатаСтарт);
-    СтруктураКампании.Вставить("stop_time"       , ДатаСтоп);
-    СтруктураКампании.Вставить("status"          , 1);
+    CampaignStructure = New Structure;
+    CampaignStructure.Insert("type"            , "promoted_posts");
+    CampaignStructure.Insert("name"            , Name);
+    CampaignStructure.Insert("day_limit"       , 0);
+    CampaignStructure.Insert("all_limit"       , 0);
+    CampaignStructure.Insert("start_time"      , StartDate);
+    CampaignStructure.Insert("stop_time"       , EndDate);
+    CampaignStructure.Insert("status"          , 1);
     
-    МассивСтруктур.Добавить(СтруктураКампании);
+    Array of Structures.Add(CampaignStructure);
     
-    JSONДата = OPI_Инструменты.JSONСтрокой(МассивСтруктур);
+    JSONDate = OPI_Tools.JSONString(Array of Structures);
     
-    Параметры_.Вставить("data", JSONДата);
+    Parameters_.Insert("data", JSONDate);
     
-    Ответ    = OPI_Инструменты.Get("api.vk.com/method/ads.createCampaigns", Параметры_);
+    Response    = OPI_Tools.Get("api.vk.com/method/ads.createCampaigns", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать рекламное объявление
-// Создает рекламное объявление на основе поста
+// Create advertising post
+// Creates an advertising post based on a post
 //
-// Параметры:
-//  НомерКампании  - Строка,Число - ID рекламной кампании                         - campaign
-//  ДневнойЛимит   - Строка,Число - Дневной лимит в рублях                        - limit
-//  НомерКатегории - Строка,Число - Номер рекламной категории                     - category
-//  IDПоста        - Строка,Число - ID поста, используемого в качетсве рекламы    - post
-//  IDКабинета     - Строка,Число - ID рекламного кабинета                        - cabinet
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  CampaignNumber  - String, Number - Advertising campaign ID                         - campaign
+//  DailyLimit   - String, Number - Daily limit in rubles                        - limit
+//  CategoryNumber - String, Number - Advertising category number                     - category
+//  PostID        - String, Number - ID of the post used for advertising    - post
+//  AccountID     - String, Number - Advertising account ID                        - cabinet
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьРекламноеОбъявление(Знач НомерКампании
-    , Знач ДневнойЛимит
-    , Знач НомерКатегории
-    , Знач IDПоста
-    , Знач IDКабинета
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreateAd(Val CampaignNumber
+    , Val DailyLimit
+    , Val CategoryNumber
+    , Val PostID
+    , Val AccountID
+    , Val Parameters = "") Export
     
-    Параметры_  = ПолучитьСтандартныеПараметры(Параметры);   
-    GroupId     = Параметры_["group_id"];
+    Parameters_  = GetStandardParameters(Parameters);   
+    GroupId     = Parameters_["group_id"];
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(GroupId);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(НомерКампании);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ДневнойЛимит);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(НомерКатегории);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDПоста);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDКабинета);
+    OPI_TypeConversion.GetLine(GroupId);
+    OPI_TypeConversion.GetLine(CampaignNumber);
+    OPI_TypeConversion.GetLine(DailyLimit);
+    OPI_TypeConversion.GetLine(CategoryNumber);
+    OPI_TypeConversion.GetLine(PostID);
+    OPI_TypeConversion.GetLine(AccountID);
     
-    Линк = "https://vk.com/wall-" + GroupId + "_" + IDПоста;
+    Link = "https://vk.com/wall-" + GroupId + "_" + PostID;
     
-    МассивСтруктур        = Новый Массив;    
-    СтруктураКампании     = Новый Структура;
-    СтруктураКампании.Вставить("campaign_id"                , НомерКампании);
-    СтруктураКампании.Вставить("ad_format"                  , 9);
-    СтруктураКампании.Вставить("conversion_event_id"        , 1);
-    СтруктураКампании.Вставить("autobidding"                , 1);
-    СтруктураКампании.Вставить("cost_type"                  , 3);
-    СтруктураКампании.Вставить("goal_type"                  , 2);
-    СтруктураКампании.Вставить("ad_platform"                , "all");
-    СтруктураКампании.Вставить("publisher_platforms"        , "vk");
-    СтруктураКампании.Вставить("publisher_platforms_auto"   , "1");
-    СтруктураКампании.Вставить("day_limit"                  , ДневнойЛимит);
-    СтруктураКампании.Вставить("all_limit"                  , "0");
-    СтруктураКампании.Вставить("category1_id"               , НомерКатегории);
-    СтруктураКампании.Вставить("age_restriction"            , 0);
-    СтруктураКампании.Вставить("status"                     , 1);
-    СтруктураКампании.Вставить("name"                       , "Объявление");
-    СтруктураКампании.Вставить("link_url"                   , Линк);
+    Array of Structures        = New Array;    
+    CampaignStructure     = New Structure;
+    CampaignStructure.Insert("campaign_id"                , CampaignNumber);
+    CampaignStructure.Insert("ad_format"                  , 9);
+    CampaignStructure.Insert("conversion_event_id"        , 1);
+    CampaignStructure.Insert("autobidding"                , 1);
+    CampaignStructure.Insert("cost_type"                  , 3);
+    CampaignStructure.Insert("goal_type"                  , 2);
+    CampaignStructure.Insert("ad_platform"                , "all");
+    CampaignStructure.Insert("publisher_platforms"        , "vk");
+    CampaignStructure.Insert("publisher_platforms_auto"   , "1");
+    CampaignStructure.Insert("day_limit"                  , DailyLimit);
+    CampaignStructure.Insert("all_limit"                  , "0");
+    CampaignStructure.Insert("category1_id"               , CategoryNumber);
+    CampaignStructure.Insert("age_restriction"            , 0);
+    CampaignStructure.Insert("status"                     , 1);
+    CampaignStructure.Insert("name"                       , "Ad");
+    CampaignStructure.Insert("link_url"                   , Link);
     
-    МассивСтруктур.Добавить(СтруктураКампании);
+    Array of Structures.Add(CampaignStructure);
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(МассивСтруктур, Истина);
+    OPI_TypeConversion.GetLine(Array of Structures, True);
     
-    Параметры_.Вставить("data"        , МассивСтруктур);
-    Параметры_.Вставить("account_id"  , IDКабинета);
+    Parameters_.Insert("data"        , Array of Structures);
+    Parameters_.Insert("account_id"  , AccountID);
     
-    Ответ    = OPI_Инструменты.Get("api.vk.com/method/ads.createAds", Параметры_);
+    Response    = OPI_Tools.Get("api.vk.com/method/ads.createAds", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Приостановить рекламное объявление
-// Приостанавливает показ рекламного объявления
+// Pause advertising post
+// Pauses the display of the advertising post
 //
-// Параметры:
-//  IDКабинета   - Строка,Число - ID рекламного кабинета - cabinet
-//  IDОбъявления - Строка,Число - ID объявления          - adv 
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  AccountID   - String, Number - Advertising account ID - cabinet
+//  AdID - String, Number - Ad ID          - adv 
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ПриостановитьРекламноеОбъявление(Знач IDКабинета, Знач IDОбъявления, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function PauseAdvertisingAd(Val AccountID, Val AdID, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDКабинета);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(IDОбъявления);
+    OPI_TypeConversion.GetLine(AccountID);
+    OPI_TypeConversion.GetLine(AdID);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_ = GetStandardParameters(Parameters);
 
-    Параметры_.Вставить("account_id", IDКабинета);
+    Parameters_.Insert("account_id", AccountID);
     
-    МассивСтруктур    = Новый Массив;    
-    СтруктураКампании = Новый Структура;
+    Array of Structures    = New Array;    
+    CampaignStructure = New Structure;
     
-    СтруктураКампании.Вставить("ad_id"  , IDОбъявления);
-    СтруктураКампании.Вставить("status" , 0);
+    CampaignStructure.Insert("ad_id"  , AdID);
+    CampaignStructure.Insert("status" , 0);
     
-    МассивСтруктур.Добавить(СтруктураКампании);
+    Array of Structures.Add(CampaignStructure);
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(МассивСтруктур, Истина);
+    OPI_TypeConversion.GetLine(Array of Structures, True);
     
-    Параметры_.Вставить("data", МассивСтруктур);
+    Parameters_.Insert("data", Array of Structures);
         
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/ads.updateAds", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/ads.updateAds", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить список рекламных категорий
-// Получает список id рекламных категорий для создания рекламного объявления
+// Get a list of advertising categories
+// Gets a list of advertising category IDs for creating an advertising post
 //
-// Параметры:
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ПолучитьСписокРекламныхКатегорий(Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function GetAdvertisingCategoryList(Val Parameters = "") Export
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Ответ      = OPI_Инструменты.Get("api.vk.com/method/ads.getCategories", Параметры_);
+    Parameters_ = GetStandardParameters(Parameters);
+    Response      = OPI_Tools.Get("api.vk.com/method/ads.getCategories", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСТоварами
+#Region ProductManagement
 
-// Получить список категорий товаров
-// Получает список ID товарных категорий для указания при создании товара
+// Get a list of product categories
+// Gets a list of product category IDs to specify when creating a product
 //
-// Параметры:
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из Строка - Ключ - ID, Значение - Имя
-Функция ПолучитьСписокКатегорийТоваров(Знач Параметры = "") Экспорт
+// Return value:
+//  Compliance From String - Key - ID, Value - Name
+Function GetProductCategoryList(Val Parameters = "") Export
     
     Response   = "response";
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Ответ      = OPI_Инструменты.Get("api.vk.com/method/market.getCategories", Параметры_);
-    Результат  = Ответ[Response];
+    Parameters_ = GetStandardParameters(Parameters);
+    Response      = OPI_Tools.Get("api.vk.com/method/market.getCategories", Parameters_);
+    Result  = Response[Response];
     
-    Если ЗначениеЗаполнено(Результат) Тогда
+    If ValueFilled(Result) Then
     	
-    	Количество = Результат["count"];
+    	Quantity = Result["count"];
     	
-    	Если Не ЗначениеЗаполнено(Количество) Тогда
-    		Возврат Ответ;
-    	КонецЕсли;
+    	If Not ValueFilled(Quantity) Then
+    		Return Response;
+    	EndIf;
     	
-    Иначе
-    	Возврат Ответ;
-    КонецЕсли;
+    Otherwise
+    	Return Response;
+    EndIf;
     
-    Параметры_.Вставить("count", Количество);
-    Ответ      = OPI_Инструменты.Get("api.vk.com/method/market.getCategories", Параметры_);   
-    Результат  = Ответ[Response]; 
+    Parameters_.Insert("count", Quantity);
+    Response      = OPI_Tools.Get("api.vk.com/method/market.getCategories", Parameters_);   
+    Result  = Response[Response]; 
     
-    Если ЗначениеЗаполнено(Результат) Тогда
+    If ValueFilled(Result) Then
     	
-    	Категории  = Результат["items"];
+    	Categories  = Result["items"];
     	
-    	Если Не ЗначениеЗаполнено(Категории) Тогда
-    		Возврат Ответ;
-    	КонецЕсли;
+    	If Not ValueFilled(Categories) Then
+    		Return Response;
+    	EndIf;
     	
-    Иначе
-    	Возврат Ответ;
-    КонецЕсли;
+    Otherwise
+    	Return Response;
+    EndIf;
        
-    СоответствиеКатегорий = Новый Соответствие;
+    CategoryCorrespondence = New Match;
     
-    Для Каждого Категория Из Категории Цикл      
-        СоответствиеКатегорий.Вставить(Категория["id"], Категория["name"]);
-    КонецЦикла;
+    For Each Category Of Categories Loop      
+        CategoryCorrespondence.Insert(Category["id"], Category["name"]);
+    EndOfLoop;
        
-    Возврат СоответствиеКатегорий;
+    Return CategoryCorrespondence;
     
-КонецФункции
+EndFunction
 
-// Получить список товаров
-// Получает список товаров сообщества
+// Get product list
+// Gets the community's product list
 //
-// Параметры:
-//  Подборка  - Строка,Число        - ID подборки, если нужен отбор - sel
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Selection  - String, Number        - Selection ID, if filtering is needed - sel
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Массив соответствий товаров
-Функция ПолучитьСписокТоваров(Знач Подборка = "", Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Array of product matches
+Function GetProductList(Val Selection = "", Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Подборка);
+    OPI_TypeConversion.GetLine(Selection);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("count"        , 200);
-    Параметры_.Вставить("extended"     , 1);
-    Параметры_.Вставить("with_disabled", 1);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("count"        , 200);
+    Parameters_.Insert("extended"     , 1);
+    Parameters_.Insert("with_disabled", 1);
     
-    Если ЗначениеЗаполнено(Подборка) Тогда
-        Параметры_.Вставить("album_id", Подборка);  
-    КонецЕсли;
+    If ValueFilled(Selection) Then
+        Parameters_.Insert("album_id", Selection);  
+    EndIf;
     
-    МассивТоваров = Новый Массив;
-    ПолучитьСписокТоваровРекурсивно(МассивТоваров, Параметры_);
+    Array of products = New Array;
+    GetProductListRecursively(Array of products, Parameters_);
     
-    Возврат МассивТоваров;
+    Return Array of products;
     
-КонецФункции
+EndFunction
 
-// Получить товары по ID
-// Получает информацию о товарах по массиву ID
+// Get products by ID
+// Gets information about products by array of IDs
 //
-// Параметры:
-//  Товары    - Строка, Массив Из Строка - Массив ID товаров - items 
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Products    - String, Array of Strings - Array of product IDs - items 
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ПолучитьТоварыПоИД(Знач Товары, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function GetProductsByID(Val Products, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Товары);
+    OPI_TypeConversion.GetCollection(Products);
     
-    Параметры_    = ПолучитьСтандартныеПараметры(Параметры);
-    СтрокаТоваров = "";
+    Parameters_    = GetStandardParameters(Parameters);
+    ProductsString = "";
     Owner         = "owner_id";
     
-    Для Каждого Товар Из Товары Цикл       
-        ТекущийТовар  = Параметры_[Owner] + "_" + Товар;
-        ТекущийТовар  = OPI_Инструменты.ЧислоВСтроку(ТекущийТовар);
-        СтрокаТоваров = СтрокаТоваров + ТекущийТовар + ",";
-    КонецЦикла;
+    For Each Product Of Products Loop       
+        CurrentProduct  = Parameters_[Owner] + "_" + Product;
+        CurrentProduct  = OPI_Tools.NumberToString(CurrentProduct);
+        ProductsString = ProductsString + CurrentProduct + ",";
+    EndOfLoop;
     
-    СтрокаТоваров = Лев(СтрокаТоваров, СтрДлина(СтрокаТоваров) - 1);
-    Параметры_.Вставить("item_ids", СтрокаТоваров);
-    Параметры_.Вставить("extended", 1);
+    ProductsString = Left(ProductsString, StrLength(ProductsString) - 1);
+    Parameters_.Insert("item_ids", ProductsString);
+    Parameters_.Insert("extended", 1);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.getById", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.getById", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Добавить товар
-// Добавляет новый товар в каталог сообщества
+// Add product
+// Adds a new product to the community's catalog
 //
-// Параметры:
-//  ОписаниеТовара - Соответствие Из КлючИЗначение - См.ПолучитьОписаниеТовара - product - JSON описание товара или путь
-//  Подборка       - Строка - ID подборка для помещения товара, если необходимо - sel
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  ProductDescription - Key-Value Pair - See GetProductDescription - product - JSON description of the product or path
+//  Selection       - String - Selection ID for placing the product, if needed - sel
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ДобавитьТовар(Знач ОписаниеТовара, Знач Подборка = "", Знач Параметры = "") Экспорт        
-    Возврат УправлениеТоваром(ОписаниеТовара, , Подборка, Параметры);    
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export        
+    Return ProductManagement(ProductDescription, , Selection, Parameters);    
+EndFunction
 
-// Изменить товар
-// Изменяет ранее созданный товар
+// Edit product
+// Edits a previously created product
 //
-// Параметры:
-//  Товар - Число,Строка - Идентификатор изменяемого товара - item
-//  ОписаниеТовара - Соответствие Из КлючИЗначение - См.ПолучитьОписаниеТовара - product - JSON описание товара или путь
-//  Подборка - Строка - Идентификатор новой подборки, если необходимо - sel 
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Product - Number, String - Identifier of the product being edited - item
+//  ProductDescription - Key-Value Pair - See GetProductDescription - product - JSON description of the product or path
+//  Selection - String - Identifier of the new selection, if needed - sel 
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ИзменитьТовар(Знач Товар, Знач ОписаниеТовара, Знач Подборка = "", Знач Параметры = "") Экспорт
-    Возврат УправлениеТоваром(ОписаниеТовара, Товар, Подборка, Параметры);    
-КонецФункции
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export
+    Return ProductManagement(ProductDescription, Product, Selection, Parameters);    
+EndFunction
 
-// Удалить товар
-// Удаляет ранее созданный товар
+// Delete product
+// Deletes a previously created product
 //
-// Параметры:
-//  Товар - Строка,Число - ID товара - item
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Product - String, Number - Product ID - item
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция УдалитьТовар(Знач Товар, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function DeleteProduct(Val Product, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Товар);
+    OPI_TypeConversion.GetLine(Product);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("item_id", Товар);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("item_id", Product);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.delete", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.delete", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Сгруппировать товары
-// Группирует товары на основе одинаковых наборов свойств
+// Group products
+// Groups products based on similar sets of properties
 //
-// Параметры:
-//  МассивТоваров      - Массив Из Строка - Массив ID товаров                       - items
-//  СуществующаяГруппа - Строка           - ID существующей группы, если необходимо - sellgroup
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Array of products      - Array Of String - Array of product IDs                       - items
+//  ExistingGroup - String           - ID of the existing group, if needed - sellgroup
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СгруппироватьТовары(Знач МассивТоваров, Знач СуществующаяГруппа = "", Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function GroupProducts(Val Array of products, Val ExistingGroup = "", Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(СуществующаяГруппа);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивТоваров);
+    OPI_TypeConversion.GetLine(ExistingGroup);
+    OPI_TypeConversion.GetCollection(Array of products);
     
-    Параметры_     = ПолучитьСтандартныеПараметры(Параметры);
-    МассивТоваров_ = Новый Массив;
+    Parameters_     = GetStandardParameters(Parameters);
+    Array_of_Products = New Array;
     
-    Для Каждого Товар Из МассивТоваров Цикл
-        МассивТоваров_.Добавить(OPI_Инструменты.ЧислоВСтроку(Товар));
-    КонецЦикла;
+    For Each Product Of Array of products Loop
+        Array_of_Products.Add(OPI_Tools.NumberToString(Product));
+    EndOfLoop;
     
-    Товары = СтрСоединить(МассивТоваров_, ",");
+    Products = StrJoin(Array_of_Products, ",");
     
-    Параметры_.Вставить("item_ids", Товары);
+    Parameters_.Insert("item_ids", Products);
     
-    Если ЗначениеЗаполнено(СуществующаяГруппа) Тогда
-        Параметры_.Вставить("item_group_id", СуществующаяГруппа);
-    КонецЕсли;
+    If ValueFilled(ExistingGroup) Then
+        Parameters_.Insert("item_group_id", ExistingGroup);
+    EndIf;
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.groupItems", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.groupItems", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить описание товара. !NOCLI
+// Get product description. !NOCLI
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Пустое описание товара:
-//  *Имя - Строка - Имя товара
-//  *Описание - Строка - Описание товара
-//  *Категория - Строка - См. ПолучитьСписокКатегорийТоваров
-//  *Цена - Число - Цена товара
-//  *СтараяЦена - Число - Для отображения скидки/изменения цены
-//  *ОсновноеФото - Строка,ДвоичныеДанные - Двоичные данные или путь к фото
-//  *URL - Строка - Ссылка на страницу сайта магазина
-//  *ДополнительныеФото - Массив Из Строка - Двоичные данные или пути к фото
-//  *ЗначенияСвойств - Массив Из Строка - См.ДобавитьВариантСвойстваТовара
-//  *ГлавныйВГруппе - Булево - Главный в группе, если есть в группе
-//  *Ширина - Число - Ширина товара в мм.
-//  *Высота - Число - Высота товара в мм.
-//  *Глубина - Число - Глубина товара в мм.
-//  *Вес - Число - Вес в гр.
-//  *SKU - Строка - SKU
-//  *ДоступныйОстаток - Число - Остаток. -1 - не ограничено
-Функция ПолучитьОписаниеТовара() Экспорт
+// Return value:
+//  Key-Value Pair - Empty product description:
+//  *Name - String - Product name
+//  *Description - String - Product description
+//  *Category - String - See GetProductCategoryList
+//  *Price - Number - Product price
+//  *OldPrice - Number - For displaying discount/changing price
+//  *MainPhoto - String, BinaryData - Binary data or path to photo
+//  *URL - String - Link to the store's website page
+//  *AdditionalPhotos - Array Of String - Binary Data or Photo Paths
+//  *PropertyValues - Array Of String - See AddPropertyVariant
+//  *MainInGroup - Boolean - Main in the group, if exists in the group
+//  *Width - Number - Width product in мм.
+//  *Height - Number - Height product in мм.
+//  *Depth - Number - Depth product in мм.
+//  *Weight - Number - Weight in гр.
+//  *SKU - String - SKU
+//  *AvailableBalance - Number - Balance. -1 - unlimited
+Function GetProductDescription() Export
      
-    Товар = Новый Соответствие();
-    Товар.Вставить("Имя"                , "Новый товар");     // Имя товара
-    Товар.Вставить("Описание"           , "Описание товара"); // Описание товара
-    Товар.Вставить("Категория"          , "20173");           // См ПолучитьСписокКатегорийТоваров()
-    Товар.Вставить("Цена"               , 1);                 // Цена.
-    Товар.Вставить("СтараяЦена"         , Неопределено);      // Для отражения изменения цены 
-    Товар.Вставить("ОсновноеФото"       , Неопределено);      // ДД или путь к осн. фото
-    Товар.Вставить("URL"                , Неопределено);      // Ссылка на страницу магазина
-    Товар.Вставить("ДополнительныеФото" , Новый Массив);      // Массив путей или ДД для доп. фото
-    Товар.Вставить("ЗначенияСвойств"    , Новый Массив);      // Значения свойств (варианты). Максимум 2
-    Товар.Вставить("ГлавныйВГруппе"     , Ложь);              // Сделать главным в своей группе  
-    Товар.Вставить("Ширина"             , Неопределено);      // В миллиметрах
-    Товар.Вставить("Высота"             , Неопределено);      // В миллиметрах
-    Товар.Вставить("Глубина"            , Неопределено);      // В миллиметрах
-    Товар.Вставить("Вес"                , Неопределено);      // В граммах
-    Товар.Вставить("SKU"                , Неопределено);      // Артикул
-    Товар.Вставить("ДоступныйОстаток"   , 1);
+    Product = New Match();
+    Product.Insert("Name"                , "New product");     // Product name
+    Product.Insert("Description"           , "Product description"); // Product description
+    Product.Insert("Category"          , "20173");           // See GetProductCategoryList()
+    Product.Insert("Price"               , 1);                 // Price.
+    Product.Insert("OldPrice"         , Undefined);      // For reflection change price 
+    Product.Insert("MainPhoto"       , Undefined);      // BD or path to main. photo
+    Product.Insert("URL"                , Undefined);      // Link to page store
+    Product.Insert("AdditionalPhotos" , New Array);      // Array paths or BD for add. photo
+    Product.Insert("PropertyValues"    , New Array);      // Values properties (variants). Maximum 2
+    Product.Insert("MainInGroup"     , False);              // Make main in of its group  
+    Product.Insert("Width"             , Undefined);      // In millimeters
+    Product.Insert("Height"             , Undefined);      // In millimeters
+    Product.Insert("Depth"            , Undefined);      // In millimeters
+    Product.Insert("Weight"                , Undefined);      // In grams
+    Product.Insert("SKU"                , Undefined);      // SKU
+    Product.Insert("AvailableBalance"   , 1);
     
-    Возврат Товар;
+    Return Product;
      
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСПодборкамиТоваров
+#Region ProductSelectionManagement
 
-// Получить список подборок
-// Получает список подборок товаров
+// Get selection list
+// Gets the list of product selections
 //
-// Параметры:
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - Массив соответствий подборок
-Функция ПолучитьСписокПодборок(Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Array of selection matches
+Function GetSelectionList(Val Parameters = "") Export
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("count", 100);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("count", 100);
     
-    МассивАльбомов = Новый Массив;
-    ПолучитьСписокАльбомовРекурсивно(МассивАльбомов, Параметры_);
+    ArrayOfAlbums = New Array;
+    GetAlbumListRecursively(ArrayOfAlbums, Parameters_);
     
-    Возврат МассивАльбомов;
+    Return ArrayOfAlbums;
     
-КонецФункции
+EndFunction
 
-// Получить подборки по ID
-// Получить список подборок по массиву ID
+// Get selections by ID
+// Gets the list of selections by array of IDs
 //
-// Параметры:
-//  Подборки  - Строка, Массив Из Строка - ID подборок - sels
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Selections  - String, Array of Strings - Selection IDs - sels
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ПолучитьПодборкиПоИД(Знач Подборки, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function GetSelectionsByID(Val Selections, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Подборки);
+    OPI_TypeConversion.GetCollection(Selections);
     
-    Параметры_     = ПолучитьСтандартныеПараметры(Параметры);    
-    Подборки_      = Новый Массив;
-    СтрокаПодборок = "";
+    Parameters_     = GetStandardParameters(Parameters);    
+    Selections_      = New Array;
+    SelectionsString = "";
       
-    Для Каждого Подборка Из Подборки Цикл
-        Подборки_.Добавить(OPI_Инструменты.ЧислоВСтроку(Подборка));    
-    КонецЦикла;    
+    For Each Selection Of Selections Loop
+        Selections_.Add(OPI_Tools.NumberToString(Selection));    
+    EndOfLoop;    
     
-    СтрокаПодборок = СтрСоединить(Подборки_, ",");
+    SelectionsString = StrJoin(Selections_, ",");
         
-    Параметры_.Вставить("album_ids", СтрокаПодборок);
+    Parameters_.Insert("album_ids", SelectionsString);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.getAlbumById", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.getAlbumById", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Создать подборку товаров
-// Создает пустую подборку товаров
+// Create product selection
+// Creates an empty product selection
 //
-// Параметры:
-//  Название  - Строка                - Название подборки - title
-//  Картинка  - Строка,ДвоичныеДанные - Файл картинки     - picture
-//  Основная  - Булево                - Основная          - main
-//  Скрытая   - Булево                - Скрытая           - hidden
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Name  - String                - Selection name - title
+//  Image  - String, BinaryData - Image file     - picture
+//  Main  - Boolean                - Main          - main
+//  Hidden   - Boolean                - Hidden           - hidden
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция СоздатьПодборкуТоваров(Знач Название
-    , Знач Картинка
-    , Знач Основная = Ложь
-    , Знач Скрытая = Ложь
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function CreateProductCollection(Val Name
+    , Val Image
+    , Val Main = False
+    , Val Hidden = False
+    , Val Parameters = "") Export
     
-    Возврат УправлениеПодборкой(Название, Картинка, , Основная, Скрытая, Параметры);
+    Return SelectionManagement(Name, Image, , Main, Hidden, Parameters);
     
-КонецФункции
+EndFunction
 
-// Изменить подборку товаров
-// Изменяет свойства подборки товаров
+// Edit product selection
+// Edits the properties of a product selection
 //
-// Параметры:
-//  Название - Строка                - Новое название подборки         - title
-//  Подборка - Строка                - ID подборки					   - sel
-//  Картинка - Строка,ДвоичныеДанные - Новая картинка подборки         - picture
-//  Основная - Булево                - Основная                        - main
-//  Скрытая  - Булево                - Скрытая                         - hidden
-//  Параметры - Структура из Строка  - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Name - String                - New selection name         - title
+//  Selection - String                - Selection ID					   - sel
+//  Image - String, BinaryData - New selection image         - picture
+//  Main - Boolean                - Main                        - main
+//  Hidden  - Boolean                - Hidden                         - hidden
+//  Parameters - Structure Of String  - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ИзменитьПодборкуТоваров(Знач Название
-    , Знач Подборка
-    , Знач Картинка = ""
-    , Знач Основная = Ложь
-    , Знач Скрытая = Ложь
-    , Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function EditProductCollection(Val Name
+    , Val Selection
+    , Val Image = ""
+    , Val Main = False
+    , Val Hidden = False
+    , Val Parameters = "") Export
     
-    Возврат УправлениеПодборкой(Название, Картинка, Подборка, Основная, Скрытая, Параметры);
+    Return SelectionManagement(Name, Image, Selection, Main, Hidden, Parameters);
     
-КонецФункции
+EndFunction
 
-// Добавить товар в подборку
-// Добавляет товар в подборку
+// Add product to selection
+// Adds a product to the selection
 //
-// Параметры:
-//  МассивТоваров - Массив из Строка, Число - Массив товаров или товар - items
-//  Подборка      - Строка                  - ID подборки              - sel
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Array of products - Array of string, number - Array of products or product - items
+//  Selection      - String                  - Selection ID              - sel
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция ДобавитьТоварВПодборку(Знач МассивТоваров, Знач Подборка, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function AddProductToSelection(Val Array of products, Val Selection, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивТоваров);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Подборка);
+    OPI_TypeConversion.GetCollection(Array of products);
+    OPI_TypeConversion.GetLine(Selection);
     
-    Параметры_     = ПолучитьСтандартныеПараметры(Параметры);
-    МассивТоваров_ = Новый Массив;
+    Parameters_     = GetStandardParameters(Parameters);
+    Array_of_Products = New Array;
       
-    Для Каждого Товар Из МассивТоваров Цикл
-        МассивТоваров_.Добавить(OPI_Инструменты.ЧислоВСтроку(Товар));    
-    КонецЦикла;    
+    For Each Product Of Array of products Loop
+        Array_of_Products.Add(OPI_Tools.NumberToString(Product));    
+    EndOfLoop;    
     
-    СписокТоваров = СтрСоединить(МассивТоваров_, ",");
+    ProductList = StrJoin(Array_of_Products, ",");
     
-    Параметры_.Вставить("item_ids" , СписокТоваров);
-    Параметры_.Вставить("album_ids", Подборка);
+    Parameters_.Insert("item_ids" , ProductList);
+    Parameters_.Insert("album_ids", Selection);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.addToAlbum", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.addToAlbum", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить товар из подборки
-// Удаляет ранее добавленный товар из подборки
+// Remove product from selection
+// Removes a previously added product from the selection
 // 
-// Параметры:
-//  Товар     - Строка - ID товара   - item
-//  Подборка  - Строка - ID подборки - sel
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Product     - String - Product ID   - item
+//  Selection  - String - Selection ID - sel
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция УдалитьТоварИзПодборки(Знач Товар, Знач Подборка, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Товар);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Подборка);
+    OPI_TypeConversion.GetLine(Product);
+    OPI_TypeConversion.GetLine(Selection);
 
-    Параметры_   = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_   = GetStandardParameters(Parameters);
     
-    Параметры_.Вставить("item_id"  , Товар);
-    Параметры_.Вставить("album_ids", Подборка);
+    Parameters_.Insert("item_id"  , Product);
+    Parameters_.Insert("album_ids", Selection);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.removeFromAlbum", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.removeFromAlbum", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить подборку
-// Удаляет подборку по ID
+// DeleteSelection
+// Deletes the selection by ID
 //
-// Параметры:
-//  Подборка  - Строка              - ID подборки - sel
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Selection  - String              - Selection ID - sel
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
-Функция УдалитьПодборку(Знач Подборка, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK
+Function DeleteSelection(Val Selection, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Подборка);
+    OPI_TypeConversion.GetLine(Selection);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("album_id", Подборка);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("album_id", Selection);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.deleteAlbum", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.deleteAlbum", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСоСвойствамиТоваров
+#Region ProductPropertiesManagement
 
-// Получить список свойств
-// Получает список свойств товаров группы
+// Get property list
+// Gets the list of properties of group products
 // 
-// Параметры:
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK 
-Функция ПолучитьСписокСвойств(Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK 
+Function GetPropertyList(Val Parameters = "") Export
     
     Response   = "response";
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
+    Parameters_ = GetStandardParameters(Parameters);
     
-    Ответ      = OPI_Инструменты.Get("api.vk.com/method/market.getProperties", Параметры_);
-    Свойства   = Ответ[Response]["items"];
+    Response      = OPI_Tools.Get("api.vk.com/method/market.getProperties", Parameters_);
+    Properties   = Response[Response]["items"];
     
-    Возврат Свойства;
+    Return Properties;
     
-КонецФункции
+EndFunction
 
-// Создать свойство товара
-// Создает новое свойство для использования в товарах
+// Create product property
+// Creates a new property for use in products
 // 
-// Параметры:
-//  Название  - Строка              - Название свойства               - title
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Name  - String              - Property name               - title
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK 
-Функция СоздатьСвойствоТовара(Знач Название, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK 
+Function CreateProductProperty(Val Name, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Название);
+    OPI_TypeConversion.GetLine(Name);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("title", Название);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("title", Name);
         
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.addProperty", Параметры_);   
+    Response = OPI_Tools.Get("api.vk.com/method/market.addProperty", Parameters_);   
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Изменить свойство товара
-// Изменяет существующее свойство товара
+// Edit product property
+// Edits the existing product property
 // 
-// Параметры:
-//  Название  - Строка              - Новое название                  - title
-//  Свойство  - Строка,Число        - ID свойства                     - prop
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Name  - String              - New name                  - title
+//  Property  - String, Number        - Property ID                     - prop
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK 
-Функция ИзменитьСвойствоТовара(Знач Название, Знач Свойство, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK 
+Function EditProductProperty(Val Name, Val Property, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Название);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Свойство);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Property);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("title"      , Название);
-    Параметры_.Вставить("property_id", Свойство);
-    Параметры_.Вставить("type"       , "text");
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("title"      , Name);
+    Parameters_.Insert("property_id", Property);
+    Parameters_.Insert("type"       , "text");
         
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.editProperty", Параметры_);   
+    Response = OPI_Tools.Get("api.vk.com/method/market.editProperty", Parameters_);   
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Удалить свойство товара
-// Удаляет существующее свойство товара
+// Delete product property
+// Deletes the existing product property
 // 
-// Параметры:
-//  Свойство  - Строка,Число        - ID свойства                     - prop
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Property  - String, Number        - Property ID                     - prop
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK 
-Функция УдалитьСвойствоТовара(Знач Свойство, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK 
+Function DeleteProductProperty(Val Property, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Свойство);
+    OPI_TypeConversion.GetLine(Property);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("property_id", Свойство);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("property_id", Property);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.deleteProperty", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.deleteProperty", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Добавить вариант свойства товара
-// Добавляет вариант для существующего свойства
+// Add product property variant
+// Adds a variant for an existing property
 // 
-// Параметры:
-//  Значение  - Строка              - Значение свойства                      - value
-//  Свойство  - Строка,Число        - ID свойства, куда добавляется вариант  - prop
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Value  - String              - Property value                      - value
+//  Property  - String, Number        - Property ID where the variant is added  - prop
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK    
-Функция ДобавитьВариантСвойстваТовара(Знач Значение, Знач Свойство, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK    
+Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Свойство);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Значение);
+    OPI_TypeConversion.GetLine(Property);
+    OPI_TypeConversion.GetLine(Value);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("property_id", Свойство);
-    Параметры_.Вставить("title"      , Значение);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("property_id", Property);
+    Parameters_.Insert("title"      , Value);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.addPropertyVariant", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.addPropertyVariant", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Изменить вариант свойства товара
-// Изменяет значение варианта существующего свойства товара
+// Edit product property variant
+// Edits the value of an existing product property variant
 // 
-// Параметры:
-//  Значение  - Строка              - Новое значение свойства         - value
-//  Свойство  - Строка,Число        - ID свойства                     - prop
-//  Вариант   - Строка,Число        - ID варианта                     - option
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Value  - String              - New property value         - value
+//  Property  - String, Number        - Property ID                     - prop
+//  Option   - String, Number        - Variant ID                     - option
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK      
-Функция ИзменитьВариантСвойстваТовара(Знач Значение, Знач Свойство, Знач Вариант, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK      
+Function EditProductPropertyVariant(Val Value, Val Property, Val Option, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Значение);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Свойство);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Вариант);
+    OPI_TypeConversion.GetLine(Value);
+    OPI_TypeConversion.GetLine(Property);
+    OPI_TypeConversion.GetLine(Option);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("property_id", Свойство);
-    Параметры_.Вставить("variant_id" , Вариант);
-    Параметры_.Вставить("title"      , Значение);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("property_id", Property);
+    Parameters_.Insert("variant_id" , Option);
+    Parameters_.Insert("title"      , Value);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.editPropertyVariant", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.editPropertyVariant", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить вариант свойства товара
-// Удаляет ранее созданный вариант свойства
+// Delete product property variant
+// Deletes the previously created product property variant
 // 
-// Параметры:
-//  Вариант   - Строка,Число        - ID варианта - option
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Option   - String, Number        - Variant ID - option
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK     
-Функция УдалитьВариантСвойстваТовара(Знач Вариант, Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK     
+Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Вариант);
+    OPI_TypeConversion.GetLine(Option);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("variant_id", Вариант);
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("variant_id", Option);
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market.deletePropertyVariant", Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market.deletePropertyVariant", Parameters_);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСЗаказами
+#Region OrderManagement
 
-// Получить список заказов
-// Возвращает список заказов сообщества
+// Get order list
+// Returns the community's order list
 // 
-// Параметры:
-//  Параметры - Структура из Строка - См.ПолучитьСтандартныеПараметры - auth - JSON авторизации или путь к .json
+// Parameters:
+//  Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK 
-Функция ПолучитьСписокЗаказов(Знач Параметры = "") Экспорт
+// Return value:
+//  Key-Value Pair - Serialized JSON response from VK 
+Function GetOrderList(Val Parameters = "") Export
     
-    Параметры = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры.Вставить("count", 50);
+    Parameters = GetStandardParameters(Parameters);
+    Parameters.Insert("count", 50);
     
-    МассивЗаказов = Новый Массив;
-    ПолучитьСписокЗаказовРекурсивно(МассивЗаказов, Параметры);
+    ArrayOfOrders = New Array;
+    GetOrderListRecursively(ArrayOfOrders, Parameters);
     
-    Возврат МассивЗаказов;
+    Return ArrayOfOrders;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область Прочие
+#Region Others
 
-// Сформировать клавиатуру
-// Формирует клавиатуру по массиву кнопок
+// Create keyboard
+// Forms a keyboard from an array of buttons
 // 
-// Параметры:
-//  МассивКнопок - Массив из Строка - Массив заголовков кнопок - buttons
+// Parameters:
+//  ButtonArray - Array of Strings - Array of button titles - buttons
 // 
-// Возвращаемое значение:
-//  Строка -  JSON клавиатуры
-Функция СформироватьКлавиатуру(Знач МассивКнопок) Экспорт
+// Return value:
+//  String -  Keyboard JSON
+Function FormKeyboard(Val ButtonArray) Export
       
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивКнопок);  
+    OPI_TypeConversion.GetCollection(ButtonArray);  
     
-    Клавиатура          = Новый Структура;
-    МассивКлавиатуры    = Новый Массив;
-    МассивБлока         = Новый Массив;
+    Keyboard          = New Structure;
+    KeyboardArray    = New Array;
+    ArrayBlock         = New Array;
     
-    Для Каждого Действие Из МассивКнопок Цикл
+    For Each Action Of ButtonArray Loop
         
-        Кнопка      = Новый Структура;
-        Выражение   = Новый Структура;                        
+        Button      = New Structure;
+        Expression   = New Structure;                        
         
-        Выражение.Вставить("type" , "text");
-        Выражение.Вставить("label", Действие);
+        Expression.Insert("type" , "text");
+        Expression.Insert("label", Action);
         
-        Кнопка.Вставить("action", Выражение);
-        МассивБлока.Добавить(Кнопка);
+        Button.Insert("action", Expression);
+        ArrayBlock.Add(Button);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    МассивКлавиатуры.Добавить(МассивБлока);
+    KeyboardArray.Add(ArrayBlock);
     
-    Клавиатура.Вставить("buttons" , МассивКлавиатуры);   
-    Клавиатура.Вставить("one_time", Ложь);
+    Keyboard.Insert("buttons" , KeyboardArray);   
+    Keyboard.Insert("one_time", False);
     
-    Возврат OPI_Инструменты.JSONСтрокой(Клавиатура);
+    Return OPI_Tools.JSONString(Keyboard);
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ПолучитьСтандартныеПараметры(Знач Параметры = "")
+Function GetStandardParameters(Val Parameters = "")
     
-    // Здесь собрано определение данных для работы с VK API
-    // Вы можете переопределять их, передавая в качестве параметра
-    // Совпадающие поля будут перезаписаны с приоритетом параметра функции
+    // Here is a collection of data definitions for working with the VK API
+    // You can override them by passing them as a parameter
+    // Matching fields will be overwritten with the parameter of the function
     
-    Параметры_ = Новый Структура;
+    Parameters_ = New Structure;
     
-    // access_token - можно получить в браузере по URL из функции СоздатьСсылкуПолученияТокена()
-    // from_group   - действия будут выполняться от лица группы
-    // owner_id     - id группы с "-" в начале. Можно найти в настройках группы ВК или в ее URL, если не был
-    //               установлен свой
-    // app_id       - id приложения, которое необходимо создать в профиле на странице для разработчиков
-    // group_id     - owner_id, но без "-"
+    // access_token - можно получить in браузере по URL from фунtoции CreateTokenRetrievalLink()
+    // from_group   - actions will be performed on behalf of the group
+    // owner_id     - group ID with "-" at the beginning. Can be found in the settings of the VK group or in its URL if not set
+    //               set your
+    // app_id       - application ID that needs to be created in the profile on the developer page
+    // group_id     - owner_id, но without "-"
     
-    Параметры_.Вставить("access_token"  , "");
-    Параметры_.Вставить("from_group"    , "1");
-    Параметры_.Вставить("owner_id"      , "");
-    Параметры_.Вставить("v"             , "5.131");
-    Параметры_.Вставить("app_id"        , "");
-    Параметры_.Вставить("group_id"      , "");
+    Parameters_.Insert("access_token"  , "");
+    Parameters_.Insert("from_group"    , "1");
+    Parameters_.Insert("owner_id"      , "");
+    Parameters_.Insert("v"             , "5.131");
+    Parameters_.Insert("app_id"        , "");
+    Parameters_.Insert("group_id"      , "");
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Параметры);
+    OPI_TypeConversion.GetCollection(Parameters);
     
-    Если ТипЗнч(Параметры) = Тип("Структура") Или ТипЗнч(Параметры) = Тип("Соответствие") Тогда
-        Для Каждого ПереданныйПараметр Из Параметры Цикл
-            Параметры_.Вставить(ПереданныйПараметр.Ключ, OPI_Инструменты.ЧислоВСтроку(ПереданныйПараметр.Значение));
-        КонецЦикла;
-    КонецЕсли;
+    If TypeValue(Parameters) = Type("Structure") Or TypeValue(Parameters) = Type("Match") Then
+        For Each PassedParameter Of Parameters Loop
+            Parameters_.Insert(PassedParameter.Key, OPI_Tools.NumberToString(PassedParameter.Value));
+        EndOfLoop;
+    EndIf;
 
-    Возврат Параметры_;
+    Return Parameters_;
 
-КонецФункции
+EndFunction
 
-Функция ПолучитьИДКартинки(Знач Картинка, Знач Параметры, Знач Вид)
+Function GetImageID(Val Image, Val Parameters, Val View)
 	
 	Response  = "response";
-    Ответ     = ЗагрузитьФотоНаСервер(Картинка, Параметры, Вид);
-    Результат = Ответ[Response];
+    Response     = UploadPhotoToServer(Image, Parameters, View);
+    Result = Response[Response];
 
-    Если ЗначениеЗаполнено(Результат) Тогда
-    	ИДФото = Результат["photo_id"];
+    If ValueFilled(Result) Then
+    	PhotoID = Result["photo_id"];
     	
-    	Если Не ЗначениеЗаполнено(ИДФото) Тогда
-    		Возврат Ответ;	
-    	КонецЕсли;
+    	If Not ValueFilled(PhotoID) Then
+    		Return Response;	
+    	EndIf;
     	
-    Иначе
-    	Возврат Ответ;
-    КонецЕсли;
+    Otherwise
+    	Return Response;
+    EndIf;
     
-    ИДФото = OPI_Инструменты.ЧислоВСтроку(ИДФото);
-    Возврат ИДФото;
+    PhotoID = OPI_Tools.NumberToString(PhotoID);
+    Return PhotoID;
     
-КонецФункции
+EndFunction
 
-Функция ПолучитьСоответствиеКартинки(Знач Картинка, Знач Параметры, Знач Вид)
+Function GetImageCorrespondence(Val Image, Val Parameters, Val View)
 	
-	Ответ       = ЗагрузитьФотоНаСервер(Картинка, Параметры, Вид);   
-    ОтветМассив = Ответ.Получить("response");
+	Response       = UploadPhotoToServer(Image, Parameters, View);   
+    ResponseArray = Response.Get("response");
     
-    Если Не ЗначениеЗаполнено(ОтветМассив) Или Не ТипЗнч(ОтветМассив) = Тип("Массив") Тогда
-    	Возврат Ответ;
-    Иначе
-    	Если ОтветМассив.Количество() = 0 Тогда
-    		Возврат Ответ;
-    	Иначе
-    		ОтветСоответствие = ОтветМассив[0];
-    	КонецЕсли;
-    КонецЕсли;
+    If Not ValueFilled(ResponseArray) Or Not TypeValue(ResponseArray) = Type("Array") Then
+    	Return Response;
+    Otherwise
+    	If ResponseArray.Quantity() = 0 Then
+    		Return Response;
+    	Otherwise
+    		ResponseCorrespondence = ResponseArray[0];
+    	EndIf;
+    EndIf;
      
-    Возврат ОтветСоответствие;
+    Return ResponseCorrespondence;
        
-КонецФункции
+EndFunction
 
-Функция ПолучитьМассивПодборок(Знач Подборки, Знач Параметры = "")
+Function GetSelectionArray(Val Selections, Val Parameters = "")
 	
 	Response   = "response";
-	Подборки   = ПолучитьПодборкиПоИД(Подборки, Параметры);
-    Результат  = Подборки[Response];
+	Selections   = GetSelectionsByID(Selections, Parameters);
+    Result  = Selections[Response];
     
-    Если ЗначениеЗаполнено(Результат) Тогда
+    If ValueFilled(Result) Then
     	
-    	МассивПодборок = Результат["items"];
+    	SelectionArray = Result["items"];
     	
-    	Если Не ЗначениеЗаполнено(МассивПодборок) Тогда
-    		Возврат Подборки;	
-    	КонецЕсли;
+    	If Not ValueFilled(SelectionArray) Then
+    		Return Selections;	
+    	EndIf;
     	
-	Иначе
-		Возврат Подборки;
-    КонецЕсли;
+	Otherwise
+		Return Selections;
+    EndIf;
     
-    Возврат МассивПодборок;
+    Return SelectionArray;
             
-КонецФункции
+EndFunction
 
-Функция ОпределитьМетодЗагрузкиИзображений(Знач Вид)
+Function DetermineImageUploadMethod(Val View)
     
-    СоответствиеМетодов = Новый Соответствие;
-    Загрузка            = "Загрузка";
-    Сохранение          = "Сохранение";
-    Способ              = "Способ";
-    Фото                = "Фото";
+    MethodCorrespondence = New Match;
+    Upload            = "Upload";
+    Save          = "Save";
+    Method              = "Method";
+    Photo                = "Photo";
     
-    Если Вид = "Пост" Тогда
+    If View = "Post" Then
        
-        СоответствиеМетодов.Вставить(Загрузка  , "photos.getWallUploadServer");
-        СоответствиеМетодов.Вставить(Сохранение, "photos.saveWallPhoto");
-        СоответствиеМетодов.Вставить(Фото      , "photo");
-        СоответствиеМетодов.Вставить(Способ    , 1);
+        MethodCorrespondence.Insert(Upload  , "photos.getWallUploadServer");
+        MethodCorrespondence.Insert(Save, "photos.saveWallPhoto");
+        MethodCorrespondence.Insert(Photo      , "photo");
+        MethodCorrespondence.Insert(Method    , 1);
         
-    ИначеЕсли Вид = "Товар" Тогда
+    ElseIf View = "Product" Then
         
-        СоответствиеМетодов.Вставить(Загрузка  , "market.getProductPhotoUploadServer");
-        СоответствиеМетодов.Вставить(Сохранение, "market.saveProductPhoto");
-        СоответствиеМетодов.Вставить(Способ    , 2);
+        MethodCorrespondence.Insert(Upload  , "market.getProductPhotoUploadServer");
+        MethodCorrespondence.Insert(Save, "market.saveProductPhoto");
+        MethodCorrespondence.Insert(Method    , 2);
         
-    ИначеЕсли Вид = "История" Тогда
+    ElseIf View = "Story" Then
         
-        СоответствиеМетодов.Вставить(Загрузка  , "stories.getPhotoUploadServer");
-        СоответствиеМетодов.Вставить(Сохранение, "stories.save");
-        СоответствиеМетодов.Вставить(Способ    , 3);
+        MethodCorrespondence.Insert(Upload  , "stories.getPhotoUploadServer");
+        MethodCorrespondence.Insert(Save, "stories.save");
+        MethodCorrespondence.Insert(Method    , 3);
     
-    ИначеЕсли Вид = "Опрос" Тогда
+    ElseIf View = "Poll" Then
         
-        СоответствиеМетодов.Вставить(Загрузка  , "polls.getPhotoUploadServer");
-        СоответствиеМетодов.Вставить(Сохранение, "polls.savePhoto");
-        СоответствиеМетодов.Вставить(Фото      , "photo");
-        СоответствиеМетодов.Вставить(Способ    , 1);
+        MethodCorrespondence.Insert(Upload  , "polls.getPhotoUploadServer");
+        MethodCorrespondence.Insert(Save, "polls.savePhoto");
+        MethodCorrespondence.Insert(Photo      , "photo");
+        MethodCorrespondence.Insert(Method    , 1);
         
-    Иначе
+    Otherwise
         
-        СоответствиеМетодов.Вставить(Загрузка  , "photos.getUploadServer");
-        СоответствиеМетодов.Вставить(Сохранение, "photos.save");
-        СоответствиеМетодов.Вставить(Фото      , "photos_list");
-        СоответствиеМетодов.Вставить(Способ    , 1);
+        MethodCorrespondence.Insert(Upload  , "photos.getUploadServer");
+        MethodCorrespondence.Insert(Save, "photos.save");
+        MethodCorrespondence.Insert(Photo      , "photos_list");
+        MethodCorrespondence.Insert(Method    , 1);
         
-    КонецЕсли;
+    EndIf;
     
-    Возврат СоответствиеМетодов;
+    Return MethodCorrespondence;
     
-КонецФункции
+EndFunction
 
-Функция ПолучитьСоответствиеПараметровТовара()
+Function GetProductParameterMapping()
     
-    Поля = Новый Соответствие();
-    Поля.Вставить("Имя"                , "name");     
-    Поля.Вставить("Описание"           , "description"); 
-    Поля.Вставить("Категория"          , "category_id");                 
-    Поля.Вставить("Цена"               , "price");                 
-    Поля.Вставить("СтараяЦена"         , "old_price");  
-    Поля.Вставить("URL"                , "url");
-    Поля.Вставить("ГлавныйВГруппе"     , "is_main_variant"); 
-    Поля.Вставить("Ширина"             , "dimension_width");      
-    Поля.Вставить("Высота"             , "dimension_height");      
-    Поля.Вставить("Глубина"            , "dimension_length");      
-    Поля.Вставить("Вес"                , "weight");      
-    Поля.Вставить("SKU"                , "sku"); 
-    Поля.Вставить("ДоступныйОстаток"   , "stock_amount");
+    Fields = New Match();
+    Fields.Insert("Name"                , "name");     
+    Fields.Insert("Description"           , "description"); 
+    Fields.Insert("Category"          , "category_id");                 
+    Fields.Insert("Price"               , "price");                 
+    Fields.Insert("OldPrice"         , "old_price");  
+    Fields.Insert("URL"                , "url");
+    Fields.Insert("MainInGroup"     , "is_main_variant"); 
+    Fields.Insert("Width"             , "dimension_width");      
+    Fields.Insert("Height"             , "dimension_height");      
+    Fields.Insert("Depth"            , "dimension_length");      
+    Fields.Insert("Weight"                , "weight");      
+    Fields.Insert("SKU"                , "sku"); 
+    Fields.Insert("AvailableBalance"   , "stock_amount");
        
-    Возврат Поля;
+    Return Fields;
 
-КонецФункции
+EndFunction
 
-Функция УправлениеТоваром(Знач ОписаниеТовара, Знач ИДТовара = "", Знач Подборка = "", Знач Параметры = "")
+Function ProductManagement(Val ProductDescription, Val ProductID = "", Val Selection = "", Val Parameters = "")
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДТовара);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Подборка);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(ОписаниеТовара);
+    OPI_TypeConversion.GetLine(ProductID);
+    OPI_TypeConversion.GetLine(Selection);
+    OPI_TypeConversion.GetCollection(ProductDescription);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);
-    Параметры_.Вставить("v", "5.199");
+    Parameters_ = GetStandardParameters(Parameters);
+    Parameters_.Insert("v", "5.199");
     
     Response = "response";
     
-    ЗаполнитьПоляЗапросаТовара(ОписаниеТовара, Параметры_);
+    FillProductRequestFields(ProductDescription, Parameters_);
     
-    Если ЗначениеЗаполнено(ИДТовара) Тогда       
-        Параметры_.Вставить("item_id", ИДТовара);
-        Метод = "edit";    
-    Иначе       
-        Метод = "add";
-    КонецЕсли;
+    If ValueFilled(ProductID) Then       
+        Parameters_.Insert("item_id", ProductID);
+        Method = "edit";    
+    Otherwise       
+        Method = "add";
+    EndIf;
        
-    Ответ     = OPI_Инструменты.Get("api.vk.com/method/market." + Метод, Параметры_);
-    Результат = Ответ[Response];
+    Response     = OPI_Tools.Get("api.vk.com/method/market." + Method, Parameters_);
+    Result = Response[Response];
     
-    Если Не ЗначениеЗаполнено(ИДТовара) И ЗначениеЗаполнено(Результат) Тогда 
+    If Not ValueFilled(ProductID) And ValueFilled(Result) Then 
     	
-        ИДТовара = Результат["market_item_id"];
+        ProductID = Result["market_item_id"];
         
-        Если Не ЗначениеЗаполнено(ИДТовара) Тогда
-        	Возврат Ответ;	
-        КонецЕсли;
+        If Not ValueFilled(ProductID) Then
+        	Return Response;	
+        EndIf;
         
-    Иначе
-    	Возврат Ответ;
-    КонецЕсли;
+    Otherwise
+    	Return Response;
+    EndIf;
     
-    Если ЗначениеЗаполнено(Подборка) И ЗначениеЗаполнено(ИДТовара) Тогда
-        ДобавитьТоварВПодборку(ИДТовара, Подборка, Параметры_);
-    КонецЕсли;
+    If ValueFilled(Selection) And ValueFilled(ProductID) Then
+        AddProductToSelection(ProductID, Selection, Parameters_);
+    EndIf;
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-Функция УправлениеПодборкой(Знач Название
-    , Знач Картинка   = ""
-    , Знач ИДПодборки = ""
-    , Знач Основная   = Ложь
-    , Знач Скрытая    = Ложь
-    , Знач Параметры  = "")
+Function SelectionManagement(Val Name
+    , Val Image   = ""
+    , Val SelectionID = ""
+    , Val Main   = False
+    , Val Hidden    = False
+    , Val Parameters  = "")
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Название);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДПодборки);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Основная);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Скрытая);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(SelectionID);
+    OPI_TypeConversion.GetBoolean(Main);
+    OPI_TypeConversion.GetBoolean(Hidden);
     
-    Параметры_ = ПолучитьСтандартныеПараметры(Параметры);   
-    Ответ      = ДобавитьПараметрКартинки(Картинка, ИДПодборки, Параметры_);
+    Parameters_ = GetStandardParameters(Parameters);   
+    Response      = AddImageParameter(Image, SelectionID, Parameters_);
     
-    Если ЗначениеЗаполнено(Ответ) Тогда
-        Возврат Ответ;
-    КонецЕсли;
+    If ValueFilled(Response) Then
+        Return Response;
+    EndIf;
       
-    Параметры_.Вставить("title"        , Название);
-    Параметры_.Вставить("main_album"   , ?(Основная, 1, 0));
-    Параметры_.Вставить("is_hidden"    , ?(Скрытая, 1, 0));
+    Parameters_.Insert("title"        , Name);
+    Parameters_.Insert("main_album"   , ?(Main, 1, 0));
+    Parameters_.Insert("is_hidden"    , ?(Hidden, 1, 0));
     
-    Если ЗначениеЗаполнено(ИДПодборки) Тогда       
-        Параметры_.Вставить("album_id", ИДПодборки);
-        Метод = "editAlbum";    
-    Иначе       
-        Метод = "addAlbum";
-    КонецЕсли;
+    If ValueFilled(SelectionID) Then       
+        Parameters_.Insert("album_id", SelectionID);
+        Method = "editAlbum";    
+    Otherwise       
+        Method = "addAlbum";
+    EndIf;
     
-    Ответ = OPI_Инструменты.Get("api.vk.com/method/market." + Метод, Параметры_);
+    Response = OPI_Tools.Get("api.vk.com/method/market." + Method, Parameters_);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-Функция ДобавитьПараметрКартинки(Знач Картинка, Знач ИДПодборки, Параметры)
+Function AddImageParameter(Val Image, Val SelectionID, Parameters)
     
     PhotoID = "photo_id";
     
-    Если ЗначениеЗаполнено(Картинка) Тогда
+    If ValueFilled(Image) Then
         
-        ИДФото = ПолучитьИДКартинки(Картинка, Параметры, "Товар");
+        PhotoID = GetImageID(Image, Parameters, "Product");
         
-        Если Не ТипЗнч(ИДФото) = Тип("Строка") Тогда
-            Возврат ИДФото; 
-        КонецЕсли;
+        If Not TypeValue(PhotoID) = Type("String") Then
+            Return PhotoID; 
+        EndIf;
       
-        Параметры.Вставить(PhotoID, ИДФото);
+        Parameters.Insert(PhotoID, PhotoID);
         
-    Иначе
+    Otherwise
         
-        Если ЗначениеЗаполнено(ИДПодборки) Тогда
+        If ValueFilled(SelectionID) Then
             
-            Подборки = ПолучитьМассивПодборок(ИДПодборки, Параметры);
+            Selections = GetSelectionArray(SelectionID, Parameters);
             
-            Если Не ТипЗнч(Подборки) = Тип("Массив") Тогда
-                Возврат Подборки;   
-            КонецЕсли;
+            If Not TypeValue(Selections) = Type("Array") Then
+                Return Selections;   
+            EndIf;
                                 
-            Если Не Подборки.Количество() = 0 Тогда              
-                ИДФото = Подборки[0]["photo"]["id"];
-                OPI_ПреобразованиеТипов.ПолучитьСтроку(ИДФото);
-                Параметры.Вставить(PhotoID, ИДФото);
-            КонецЕсли;
+            If Not Selections.Quantity() = 0 Then              
+                PhotoID = Selections[0]["photo"]["id"];
+                OPI_TypeConversion.GetLine(PhotoID);
+                Parameters.Insert(PhotoID, PhotoID);
+            EndIf;
             
-        КонецЕсли;
+        EndIf;
         
-    КонецЕсли;
+    EndIf;
     
-    Возврат "";
+    Return "";
     
-КонецФункции
+EndFunction
 
-Процедура ЗаполнитьПараметрыЗагрузкиФото(Знач Метод, Знач Ответ, Параметры)
+Procedure FillPhotoUploadParameters(Val Method, Val Response, Parameters)
     
     Response            = "response";
-    Способ              = Метод["Способ"];
-    СтандартныйСпособ   = 1;
-    НовыйСпособ         = 2;
+    Method              = Method["Method"];
+    StandardMethod   = 1;
+    NewMethod         = 2;
 
-    Если Способ = СтандартныйСпособ Тогда
+    If Method = StandardMethod Then
         
         Hash       = "hash";
         Serv       = "server";
         Aid        = "aid";
-        Фото       = Метод["Фото"];
+        Photo       = Method["Photo"];
         
-        Параметры.Вставить(Hash, Ответ[Hash]);
-        Параметры.Вставить(Фото, Ответ[Фото]);
+        Parameters.Insert(Hash, Response[Hash]);
+        Parameters.Insert(Photo, Response[Photo]);
         
-        СерверФото = Ответ.Получить(Serv);
+        PhotoServer = Response.Get(Serv);
                
-        Если ЗначениеЗаполнено(СерверФото) Тогда
-            СерверФото = OPI_Инструменты.ЧислоВСтроку(СерверФото);
-            Параметры.Вставить(Serv, СерверФото);      
-        КонецЕсли;
+        If ValueFilled(PhotoServer) Then
+            PhotoServer = OPI_Tools.NumberToString(PhotoServer);
+            Parameters.Insert(Serv, PhotoServer);      
+        EndIf;
         
-        Идентификатор = Ответ.Получить(Aid);
+        Identifier = Response.Get(Aid);
                
-        Если ЗначениеЗаполнено(Идентификатор) Тогда
-            Идентификатор = OPI_Инструменты.ЧислоВСтроку(Идентификатор);
-            Параметры.Вставить(Aid , Идентификатор);      
-        КонецЕсли;
+        If ValueFilled(Identifier) Then
+            Identifier = OPI_Tools.NumberToString(Identifier);
+            Parameters.Insert(Aid , Identifier);      
+        EndIf;
         
-    ИначеЕсли Способ = НовыйСпособ Тогда
+    ElseIf Method = NewMethod Then
         
-        ОтветСтрокой = OPI_Инструменты.JSONСтрокой(Ответ);
-        Параметры.Вставить("upload_response", ОтветСтрокой);
+        ResponseString = OPI_Tools.JSONString(Response);
+        Parameters.Insert("upload_response", ResponseString);
         
-    Иначе
+    Otherwise
         
-        Параметры.Вставить("upload_results", Ответ[Response]["upload_result"]);
+        Parameters.Insert("upload_results", Response[Response]["upload_result"]);
         
-    КонецЕсли;
+    EndIf;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ЗаполнитьПоляЗапросаТовара(Знач ОписаниеТовара, Параметры)
+Procedure FillProductRequestFields(Val ProductDescription, Parameters)
     
     Response     = "response";
-    ОсновноеФото = ОписаниеТовара["ОсновноеФото"];
-    ДопФото      = ОписаниеТовара["ДополнительныеФото"];
-    Свойства     = ОписаниеТовара["ЗначенияСвойств"];
+    MainPhoto = ProductDescription["MainPhoto"];
+    AdditionalPhoto      = ProductDescription["AdditionalPhotos"];
+    Properties     = ProductDescription["PropertyValues"];
     
-    Если ЗначениеЗаполнено(ОсновноеФото) Тогда
+    If ValueFilled(MainPhoto) Then
     	
-        Ответ     = ЗагрузитьФотоНаСервер(ОсновноеФото, Параметры, "Товар");
-        Результат = Ответ[Response];
+        Response     = UploadPhotoToServer(MainPhoto, Parameters, "Product");
+        Result = Response[Response];
         
-        Если ЗначениеЗаполнено(Результат) Тогда
-        	ИДФото = Результат["photo_id"];
+        If ValueFilled(Result) Then
+        	PhotoID = Result["photo_id"];
         	
-        	Если Не ЗначениеЗаполнено(ИДФото) Тогда
-        		Возврат;	
-        	КонецЕсли;
+        	If Not ValueFilled(PhotoID) Then
+        		Return;	
+        	EndIf;
         	
-        Иначе
-        	Возврат;
-        КонецЕсли;
+        Otherwise
+        	Return;
+        EndIf;
         
-        ИДФото = OPI_Инструменты.ЧислоВСтроку(ИДФото);
-        Параметры.Вставить("main_photo_id", ИДФото); 
+        PhotoID = OPI_Tools.NumberToString(PhotoID);
+        Parameters.Insert("main_photo_id", PhotoID); 
          
-    КонецЕсли;
+    EndIf;
     
-    Если ТипЗнч(Свойства) = Тип("Массив") Тогда  
+    If TypeValue(Properties) = Type("Array") Then  
         
-        Свойства_ = Новый Массив;
+        Properties_ = New Array;
         
-        Для Каждого Свойство Из Свойства Цикл
-            Свойства_.Добавить(OPI_Инструменты.ЧислоВСтроку(Свойство));   
-        КонецЦикла;
+        For Each Property Of Properties Loop
+            Properties_.Add(OPI_Tools.NumberToString(Property));   
+        EndOfLoop;
         
-        Свойства = СтрСоединить(Свойства_, ","); 
+        Properties = StrJoin(Properties_, ","); 
         
-    КонецЕсли;
+    EndIf;
     
-    Если ЗначениеЗаполнено(Свойства) Тогда
-        Параметры.Вставить("variant_ids", OPI_Инструменты.ЧислоВСтроку(Свойства));    
-    КонецЕсли;
+    If ValueFilled(Properties) Then
+        Parameters.Insert("variant_ids", OPI_Tools.NumberToString(Properties));    
+    EndIf;
     
-    ДобавитьДополнительныеФотоТовара(ДопФото, Параметры);
+    AddAdditionalProductPhotos(AdditionalPhoto, Parameters);
     
-    Для Каждого Поле Из ПолучитьСоответствиеПараметровТовара() Цикл
+    For Each Field Of GetProductParameterMapping() Loop
         
-        Значение = ОписаниеТовара[Поле.Ключ];
+        Value = ProductDescription[Field.Key];
         
-        Если Значение <> Неопределено Тогда
-            Параметры.Вставить(Поле.Значение, ОписаниеТовара[Поле.Ключ]);
-        КонецЕсли;
+        If Value <> Undefined Then
+            Parameters.Insert(Field.Value, ProductDescription[Field.Key]);
+        EndIf;
         
-    КонецЦикла;
+    EndOfLoop;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ДобавитьДополнительныеФотоТовара(Знач МассивФото, Параметры)
+Procedure AddAdditionalProductPhotos(Val PhotoArray, Parameters)
     
-    Если ТипЗнч(МассивФото) = Тип("Массив") Тогда
-        Если МассивФото.Количество() > 0 Тогда
+    If TypeValue(PhotoArray) = Type("Array") Then
+        If PhotoArray.Quantity() > 0 Then
             
-            СтрокаФотографий = "";
+            PhotoString = "";
             
-            Для Каждого Фото Из МассивФото Цикл
+            For Each Photo Of PhotoArray Loop
                 
-                ИДФото = ПолучитьИДКартинки(Фото, Параметры, "Товар");
+                PhotoID = GetImageID(Photo, Parameters, "Product");
                 
-		        Если Не ТипЗнч(ИДФото) = Тип("Строка") Тогда
-		    		Возврат;	
-		    	КонецЕсли;
+		        If Not TypeValue(PhotoID) = Type("String") Then
+		    		Return;	
+		    	EndIf;
 
-                СтрокаФотографий = СтрокаФотографий + ИДФото + ","; 
+                PhotoString = PhotoString + PhotoID + ","; 
                 
-            КонецЦикла;
+            EndOfLoop;
             
-            СтрокаФотографий = Лев(СтрокаФотографий, СтрДлина(СтрокаФотографий) - 1);
-            Параметры.Вставить("photo_ids", СтрокаФотографий);
-        КонецЕсли;
-    КонецЕсли;
+            PhotoString = Left(PhotoString, StrLength(PhotoString) - 1);
+            Parameters.Insert("photo_ids", PhotoString);
+        EndIf;
+    EndIf;
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ПолучитьСписокТоваровРекурсивно(МассивТоваров, Параметры, Сдвиг = 0)
+Procedure GetProductListRecursively(Array of products, Parameters, Shift = 0)
     
     Response         = "response";
-    МаксимумВЗапросе = 200;
-    Ответ            = OPI_Инструменты.Get("api.vk.com/method/market.get", Параметры);
-    Товары           = Ответ[Response]["items"];
+    MaxInRequest = 200;
+    Response            = OPI_Tools.Get("api.vk.com/method/market.get", Parameters);
+    Products           = Response[Response]["items"];
     
-    Если Товары.Количество() = 0 Тогда
-        Возврат;
-    КонецЕсли;      
+    If Products.Quantity() = 0 Then
+        Return;
+    EndIf;      
     
-    Для Каждого Товар Из Товары Цикл
-        МассивТоваров.Добавить(Товар);
-    КонецЦикла;
+    For Each Product Of Products Loop
+        Array of products.Add(Product);
+    EndOfLoop;
        
-    Сдвиг = Сдвиг + МаксимумВЗапросе;
-    Параметры.Вставить("offset", Сдвиг);
-    ПолучитьСписокТоваровРекурсивно(МассивТоваров, Параметры, Сдвиг);
+    Shift = Shift + MaxInRequest;
+    Parameters.Insert("offset", Shift);
+    GetProductListRecursively(Array of products, Parameters, Shift);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ПолучитьСписокАльбомовРекурсивно(МассивАльбомов, Параметры, Сдвиг = 0)
+Procedure GetAlbumListRecursively(ArrayOfAlbums, Parameters, Shift = 0)
     
     Response         = "response";
-    МаксимумВЗапросе = 100;
-    Ответ            = OPI_Инструменты.Get("api.vk.com/method/market.getAlbums", Параметры);
-    Альбомы          = Ответ[Response]["items"];
+    MaxInRequest = 100;
+    Response            = OPI_Tools.Get("api.vk.com/method/market.getAlbums", Parameters);
+    Albums          = Response[Response]["items"];
     
-    Если Альбомы.Количество() = 0 Тогда
-        Возврат;
-    КонецЕсли;      
+    If Albums.Quantity() = 0 Then
+        Return;
+    EndIf;      
     
-    Для Каждого Альбом Из Альбомы Цикл
-        МассивАльбомов.Добавить(Альбом);
-    КонецЦикла;
+    For Each Album Of Albums Loop
+        ArrayOfAlbums.Add(Album);
+    EndOfLoop;
        
-    Сдвиг = Сдвиг + МаксимумВЗапросе;
-    Параметры.Вставить("offset", Сдвиг);
-    ПолучитьСписокАльбомовРекурсивно(МассивАльбомов, Параметры, Сдвиг);
+    Shift = Shift + MaxInRequest;
+    Parameters.Insert("offset", Shift);
+    GetAlbumListRecursively(ArrayOfAlbums, Parameters, Shift);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ПолучитьСписокЗаказовРекурсивно(МассивЗаказов, Параметры, Сдвиг = 0)
+Procedure GetOrderListRecursively(ArrayOfOrders, Parameters, Shift = 0)
     
     Response         = "response";
-    МаксимумВЗапросе = 50;
-    Ответ            = OPI_Инструменты.Get("api.vk.com/method/market.getGroupOrders", Параметры);
-    Заказы           = Ответ[Response]["items"];
+    MaxInRequest = 50;
+    Response            = OPI_Tools.Get("api.vk.com/method/market.getGroupOrders", Parameters);
+    Orders           = Response[Response]["items"];
     
-    Если Заказы.Количество() = 0 Тогда
-        Возврат;
-    КонецЕсли;      
+    If Orders.Quantity() = 0 Then
+        Return;
+    EndIf;      
     
-    Для Каждого Заказ Из Заказы Цикл
-        МассивЗаказов.Добавить(Заказ);
-    КонецЦикла;
+    For Each Order Of Orders Loop
+        ArrayOfOrders.Add(Order);
+    EndOfLoop;
        
-    Сдвиг = Сдвиг + МаксимумВЗапросе;
-    Параметры.Вставить("offset", Сдвиг);
-    ПолучитьСписокЗаказовРекурсивно(МассивЗаказов, Параметры, Сдвиг);
+    Shift = Shift + MaxInRequest;
+    Parameters.Insert("offset", Shift);
+    GetOrderListRecursively(ArrayOfOrders, Parameters, Shift);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion

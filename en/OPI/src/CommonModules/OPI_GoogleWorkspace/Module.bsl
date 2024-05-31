@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_GoogleWorkspace.os
-// Библиотека: Google Workspace
-// Команда CLI: google
+﻿// Location OS: ./OInt/core/Modules/OPI_GoogleWorkspace.os
+// Library: Google Workspace
+// CLI command: google
 
 // MIT License
 
@@ -29,145 +29,145 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-// Сформировать ссылку получения кода
-// Возвращает URL для авторизации в браузере
+// Generate code retrieval link
+// Returns URL for browser authorization
 // 
-// Параметры:
-//  ClientID - Строка - Client ID                      - id
-//  Calendar - Булево - разрешение на методы Calendar  - calendar
-//  Drive    - Булево - разрешение на методы Drive     - drive
-//  Sheets   - Булево - разрешение на методы Sheets    - sheets
+// Parameters:
+//  ClientID - String - Client ID                      - id
+//  Calendar - Boolean - Calendar methods permission  - calendar
+//  Drive    - Boolean - Drive methods permission     - drive
+//  Sheets   - Boolean - Sheets methods permission    - sheets
 // 
-// Возвращаемое значение:
-//  Строка - Ссылка получения кода
-Функция СформироватьСсылкуПолученияКода(Знач ClientID
-    , Знач Calendar = Истина
-    , Знач Drive = Истина
-    , Знач Sheets = Истина) Экспорт
+// Return value:
+//  String - Code retrieval link
+Function FormCodeRetrievalLink(Val ClientID
+    , Val Calendar = True
+    , Val Drive = True
+    , Val Sheets = True) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientID);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Calendar);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Sheets);
-    OPI_ПреобразованиеТипов.ПолучитьБулево(Drive);
+    OPI_TypeConversion.GetLine(ClientID);
+    OPI_TypeConversion.GetBoolean(Calendar);
+    OPI_TypeConversion.GetBoolean(Sheets);
+    OPI_TypeConversion.GetBoolean(Drive);
     
     URL = "https://accounts.google.com/o/oauth2/auth";
     
-    ПараметрыURL = Новый Структура;
-    ПараметрыURL.Вставить("response_type", "code");
-    ПараметрыURL.Вставить("client_id"    , ClientID);
-    ПараметрыURL.Вставить("redirect_uri" , "http://localhost");
-    ПараметрыURL.Вставить("access_type"  , "offline");
-    ПараметрыURL.Вставить("scope"        , ПолучитьСписокРазрешений(Calendar, Drive, Sheets));
+    URLParameters = New Structure;
+    URLParameters.Insert("response_type", "code");
+    URLParameters.Insert("client_id"    , ClientID);
+    URLParameters.Insert("redirect_uri" , "http://localhost");
+    URLParameters.Insert("access_type"  , "offline");
+    URLParameters.Insert("scope"        , GetPermissionsList(Calendar, Drive, Sheets));
     
-    URL = URL + OPI_Инструменты.ПараметрыЗапросаВСтроку(ПараметрыURL);
+    URL = URL + OPI_Tools.RequestParametersToString(URLParameters);
     
-    Возврат URL;
+    Return URL;
     
-КонецФункции
+EndFunction
 
-// Получить токен по коду
-// Получает токен по коду из авторизации в бразуере
+// Get token by code
+// Gets token by code from browser authorization
 // 
-// Параметры:
-//  ClientID     - Строка - Client ID        - id
-//  ClientSecret - Строка - Client secret    - secret
-//  Code         - Строка - Code из браузера - code
+// Parameters:
+//  ClientID     - String - Client ID        - id
+//  ClientSecret - String - Client secret    - secret
+//  Code         - String - Code from browser - code
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ПолучитьТокенПоКоду(Знач ClientID, Знач ClientSecret, Знач Code) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientID);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientSecret);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Code);
+    OPI_TypeConversion.GetLine(ClientID);
+    OPI_TypeConversion.GetLine(ClientSecret);
+    OPI_TypeConversion.GetLine(Code);
     
     URL = "https://accounts.google.com/o/oauth2/token";
            
-    ПараметрыURL = Новый Структура;
-    ПараметрыURL.Вставить("grant_type"   , "authorization_code");
-    ПараметрыURL.Вставить("client_id"    , ClientID);
-    ПараметрыURL.Вставить("client_secret", ClientSecret);
-    ПараметрыURL.Вставить("redirect_uri" , "http://localhost");  
-    ПараметрыURL.Вставить("code"         , Code);
+    URLParameters = New Structure;
+    URLParameters.Insert("grant_type"   , "authorization_code");
+    URLParameters.Insert("client_id"    , ClientID);
+    URLParameters.Insert("client_secret", ClientSecret);
+    URLParameters.Insert("redirect_uri" , "http://localhost");  
+    URLParameters.Insert("code"         , Code);
     
-    Ответ = OPI_Инструменты.Post(URL, ПараметрыURL, , Ложь);
+    Response = OPI_Tools.Post(URL, URLParameters, , False);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Обновить токен
-// Обновляет токен по Refresh token
+// Refresh token
+// Updates token by Refresh token
 // 
-// Параметры:
-//  ClientID     - Строка - Client ID     - id
-//  ClientSecret - Строка - Client secret - secret
-//  RefreshToken - Строка - Refresh token - refresh
+// Parameters:
+//  ClientID     - String - Client ID     - id
+//  ClientSecret - String - Client secret - secret
+//  RefreshToken - String - Refresh token - refresh
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
-Функция ОбновитьТокен(Знач ClientID, Знач ClientSecret, Знач RefreshToken) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Google
+Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientID);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(ClientSecret);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(RefreshToken);
+    OPI_TypeConversion.GetLine(ClientID);
+    OPI_TypeConversion.GetLine(ClientSecret);
+    OPI_TypeConversion.GetLine(RefreshToken);
     
     URL = "https://accounts.google.com/o/oauth2/token";
            
-    ПараметрыURL = Новый Структура;
-    ПараметрыURL.Вставить("grant_type"   , "refresh_token");
-    ПараметрыURL.Вставить("client_id"    , ClientID);
-    ПараметрыURL.Вставить("client_secret", ClientSecret);  
-    ПараметрыURL.Вставить("refresh_token", RefreshToken);
+    URLParameters = New Structure;
+    URLParameters.Insert("grant_type"   , "refresh_token");
+    URLParameters.Insert("client_id"    , ClientID);
+    URLParameters.Insert("client_secret", ClientSecret);  
+    URLParameters.Insert("refresh_token", RefreshToken);
     
-    Ответ = OPI_Инструменты.Post(URL, ПараметрыURL, , Ложь);
+    Response = OPI_Tools.Post(URL, URLParameters, , False);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныйПрограммныйИнтерфейс
+#Region ServiceProgramInterface
 
-Функция ПолучитьЗаголовокАвторизации(Знач Токен) Экспорт
+Function GetAuthorizationHeader(Val Token) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки = Новый Соответствие;
-    Заголовки.Вставить("Authorization", "Bearer " + Токен);
+    Headers = New Match;
+    Headers.Insert("Authorization", "Bearer " + Token);
     
-    Возврат Заголовки;
+    Return Headers;
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИфункции
+#Region ServiceProceduresAndFunctions
 
-Функция ПолучитьСписокРазрешений(Calendar, Drive, Sheets)
+Function GetPermissionsList(Calendar, Drive, Sheets)
     
-    МассивРазрешений = Новый Массив;
+    Permissions array = New Array;
     
-    Если Calendar Тогда
-        МассивРазрешений.Добавить("https://www.googleapis.com/auth/calendar");
-    КонецЕсли;
+    If Calendar Then
+        Permissions array.Add("https://www.googleapis.com/auth/calendar");
+    EndIf;
     
-    Если Drive Тогда
-        МассивРазрешений.Добавить("https://www.googleapis.com/auth/drive");
-    КонецЕсли;
+    If Drive Then
+        Permissions array.Add("https://www.googleapis.com/auth/drive");
+    EndIf;
     
-    Если Sheets Тогда
-        МассивРазрешений.Добавить("https://www.googleapis.com/auth/spreadsheets");
-    КонецЕсли;
+    If Sheets Then
+        Permissions array.Add("https://www.googleapis.com/auth/spreadsheets");
+    EndIf;
         
-    Возврат СтрСоединить(МассивРазрешений, " ");
+    Return StrJoin(Permissions array, " ");
     
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion

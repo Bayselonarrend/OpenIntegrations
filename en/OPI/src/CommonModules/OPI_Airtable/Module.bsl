@@ -1,6 +1,6 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Airtable.os
-// Библиотека: Airtable
-// Команда CLI: airtable
+﻿// Location OS: ./OInt/core/Modules/OPI_Airtable.os
+// Library: Airtable
+// CLI Command: airtable
 
 // MIT License
 
@@ -28,654 +28,654 @@
 
 // BSLLS:IncorrectLineBreak-off
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать "../../tools"
+// Uncomment if OneScript is executed
+// #Use "../../tools"
 
-#Область ПрограммныйИнтерфейс
+#Region ProgrammingInterface
 
-#Область РаботаСБазами
+#Region DatabaseWork
 
-// Получить список баз
-// Получает список доступных баз
+// Get list of bases
+// Gets the list of available bases
 // 
-// Параметры:
-//  Токен  - Строка - Токен                                                              - token
-//  Отступ - Строка - Идентификатор следующей страницы списка баз из перыдудщего запроса - offset
+// Parameters:
+//  Token  - String - Token                                                              - token
+//  Indent - String - Next page identifier of the base list from the previous request - offset
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable 
-Функция ПолучитьСписокБаз(Знач Токен, Знач Отступ = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable 
+Function GetListOfBases(Val Token, Val Indent = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Отступ);
+    OPI_TypeConversion.GetLine(Indent);
     
     URL        = "https://api.airtable.com/v0/meta/bases";
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
-    Параметры  = Новый Структура;
+    Headers  = GetAuthorizationHeader(Token);
+    Parameters  = New Structure;
     
-    OPI_Инструменты.ДобавитьПоле("offset", Отступ, "Строка", Параметры);
+    OPI_Tools.AddField("offset", Indent, "String", Parameters);
     
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить таблицы базы
-// Получает схему таблиц базы
+// Get base tables
+// Gets the schema of base tables
 // 
-// Параметры:
-//  Токен - Строка - Токен              - token
-//  База  - Строка - Идентификатор базы - base
+// Parameters:
+//  Token - String - Token              - token
+//  Base  - String - Base identifier - base
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция ПолучитьТаблицыБазы(Знач Токен, Знач База) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function GetDatabaseTables(Val Token, Val Base) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
+    OPI_TypeConversion.GetLine(Base);
     
-    URL        = "https://api.airtable.com/v0/meta/bases/" + База + "/tables";
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables";
+    Headers  = GetAuthorizationHeader(Token);
     
-    Ответ = OPI_Инструменты.Get(URL, , Заголовки);
+    Response = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать базу
-// Создает новую базу данных
+// Create base
+// Creates a new database
 // 
-// Параметры:
-//  Токен               - Строка                    - Токен                                                - token
-//  РабочееПространство - Строка                    - Идентификатор рабочего пространства                  - ws
-//  Наименование        - Строка                    - Наименование новой базы                              - title
-//  КоллекцияТаблиц - Соответствие Из КлючИЗначение - Описание таблиц: Ключ > имя, Значение > массив полей - tablesdata
+// Parameters:
+//  Token               - String                    - Token                                                - token
+//  Workspace - String                    - Workspace identifier                  - ws
+//  Name        - String                    - New base name                              - title
+//  TableCollection - Key-Value Pair - Table description: Key > name, Value > array of fields - tablesdata
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция СоздатьБазу(Знач Токен, Знач РабочееПространство, Знач Наименование, Знач КоллекцияТаблиц) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(КоллекцияТаблиц);
+    OPI_TypeConversion.GetCollection(TableCollection);
     
-    Если Не ТипЗнч(КоллекцияТаблиц) = Тип("Структура")
-        И Не ТипЗнч(КоллекцияТаблиц) = Тип("Соответствие") Тогда
+    If Not TypeValue(TableCollection) = Type("Structure")
+        And Not TypeValue(TableCollection) = Type("Match") Then
         
-        ВызватьИсключение "Ошибка в данных коллекции таблиц";
+        RaiseException "Error in table collection data";
         
-    КонецЕсли;
+    EndIf;
     
     URL           = "https://api.airtable.com/v0/meta/bases";
-    Заголовки     = ПолучитьЗаголовокАвторизации(Токен);
-    МассивТаблиц  = Новый Массив;
+    Headers     = GetAuthorizationHeader(Token);
+    TableArray  = New Array;
     
-    Для Каждого Таблица Из КоллекцияТаблиц Цикл
+    For Each Table Of TableCollection Loop
         
-        Описание = СформироватьОписаниеТаблицы(Таблица.Ключ, Таблица.Значение);
-        МассивТаблиц.Добавить(Описание);
+        Description = GenerateTableDescription(Table.Key, Table.Value);
+        TableArray.Add(Description);
         
-    КонецЦикла;
+    EndOfLoop;
  
-    Параметры = Новый Структура;
-    OPI_Инструменты.ДобавитьПоле("name"       , Наименование       , "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("tables"     , МассивТаблиц       , "Массив", Параметры);
-    OPI_Инструменты.ДобавитьПоле("workspaceId", РабочееПространство, "Строка", Параметры);
+    Parameters = New Structure;
+    OPI_Tools.AddField("name"       , Name       , "String", Parameters);
+    OPI_Tools.AddField("tables"     , TableArray       , "Array", Parameters);
+    OPI_Tools.AddField("workspaceId", Workspace, "String", Parameters);
      
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСТаблицами
+#Region TableManagement
 
-// Создать таблицу
-// Создает новую таблицу в базе
+// Create table
+// Creates a new table in the base
 // 
-// Параметры:
-//  Токен        - Строка              - Токен                      - token
-//  База         - Строка              - Идентификатор базы         - base
-//  Наименование - Строка              - Наименование новой таблицы - title
-//  МассивПолей  - Массив Из Структура - Массив описаний полей      - fieldsdata
-//  Описание     - Строка              - Описание таблицы           - description
+// Parameters:
+//  Token        - String              - Token                      - token
+//  Base         - String              - Base identifier         - base
+//  Name - String              - New table name - title
+//  FieldArray  - Array of Structures - Array of field descriptions      - fieldsdata
+//  Description     - String              - Table description           - description
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция СоздатьТаблицу(Знач Токен, Знач База, Знач Наименование, Знач МассивПолей, Знач Описание = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
+    OPI_TypeConversion.GetLine(Base);
     
-    URL        = "https://api.airtable.com/v0/meta/bases/" + База + "/tables";
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
-    Параметры  = СформироватьОписаниеТаблицы(Наименование, МассивПолей, Описание); 
+    URL        = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables";
+    Headers  = GetAuthorizationHeader(Token);
+    Parameters  = GenerateTableDescription(Name, FieldArray, Description); 
     
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Изменить таблицу
-// Изменяет наименование и|или описание базы
+// Modify table
+// Changes the name and/or description of the base
 // 
-// Параметры:
-//  Токен        - Строка  - Токен                  - token
-//  База         - Строка  - Идентификатор базы     - base
-//  Таблица      - Строка  - Идентификатор таблицы  - table
-//  Наименование - Строка  - Новое наименование     - title
-//  Описание     - Строка  - Новое описание         - description
+// Parameters:
+//  Token        - String  - Token                  - token
+//  Base         - String  - Base identifier     - base
+//  Table      - String  - Table identifier  - table
+//  Name - String  - New name     - title
+//  Description     - String  - New description         - description
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция ИзменитьТаблицу(Знач Токен, Знач База, Знач Таблица, Знач Наименование = "", Знач Описание = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
     
-    URL        = "https://api.airtable.com/v0/meta/bases/" + База + "/tables/" + Таблица;
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
-    Параметры  = Новый Структура; 
+    URL        = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables/" + Table;
+    Headers  = GetAuthorizationHeader(Token);
+    Parameters  = New Structure; 
     
-    OPI_Инструменты.ДобавитьПоле("name"       , Наименование, "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("description", Описание    , "Строка", Параметры);
+    OPI_Tools.AddField("name"       , Name, "String", Parameters);
+    OPI_Tools.AddField("description", Description    , "String", Parameters);
     
-    Ответ = OPI_Инструменты.Patch(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Patch(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСПолями
+#Region FieldWork
 
-// Создать поле
-// Создет новое поле в таблице
+// Create field
+// Creates a new field in the table
 // 
-// Параметры:
-//  Токен         - Строка                     - Токен                  - token
-//  База          - Строка                     - Идентификатор базы     - base
-//  Таблица       - Строка                     - Идентификатор таблицы  - table
-//  СтруктураПоля - Структура Из КлючИЗначение - Описание нового поля   - fielddata
+// Parameters:
+//  Token         - String                     - Token                  - token
+//  Base          - String                     - Base identifier     - base
+//  Table       - String                     - Table identifier  - table
+//  FieldStructure - Structure of Key-Value - Description of the new field   - fielddata
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция СоздатьПоле(Знач Токен, Знач База, Знач Таблица, Знач СтруктураПоля) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(СтруктураПоля);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetCollection(FieldStructure);
     
-    Если Не ТипЗнч(СтруктураПоля) = Тип("Структура")
-        И Не ТипЗнч(СтруктураПоля) = Тип("Соответствие") Тогда
+    If Not TypeValue(FieldStructure) = Type("Structure")
+        And Not TypeValue(FieldStructure) = Type("Match") Then
         
-        ВызватьИсключение "Ошибка в данных описания поля";
+        RaiseException "Error in field description data";
         
-    КонецЕсли;
+    EndIf;
     
-    URL        = "https://api.airtable.com/v0/meta/bases/" + База + "/tables/" + Таблица + "/fields";
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен); 
+    URL        = "https://api.airtable.com/v0/meta/bases/" + Base + "/tables/" + Table + "/fields";
+    Headers  = GetAuthorizationHeader(Token); 
         
-    Ответ = OPI_Инструменты.Post(URL, СтруктураПоля, Заголовки);
+    Response = OPI_Tools.Post(URL, FieldStructure, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Изменить поле
-// Изменяет имя и|или описание существующего поля таблицы
+// Modify field
+// Changes the name and/or description of an existing table field
 // 
-// Параметры:
-//  Токен        - Строка - Токен                   - token
-//  База         - Строка - Идентификатор базы База - base
-//  Таблица      - Строка - Идентификатор таблицы   - table
-//  Поле         - Строка - Идентификатор поля      - field
-//  Наименование - Строка - Новое наименование      - title
-//  Описание     - Строка - Новое описание          - description
+// Parameters:
+//  Token        - String - Token                   - token
+//  Base         - String - Base identifier Base - base
+//  Table      - String - Table identifier   - table
+//  Field         - String - Field identifier      - field
+//  Name - String - New name      - title
+//  Description     - String - New description          - description
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция ИзменитьПоле(Знач Токен, Знач База, Знач Таблица, Знач Поле, Знач Наименование = "", Знач Описание = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", Val Description = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Поле);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetLine(Field);
     
     URL = "https://api.airtable.com/v0/meta/bases/" 
-        + База 
+        + Base 
         + "/tables/" 
-        + Таблица 
+        + Table 
         + "/fields/" 
-        + Поле;
+        + Field;
         
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    Headers = GetAuthorizationHeader(Token);
     
-    Параметры = Новый Структура();
-    OPI_Инструменты.ДобавитьПоле("name"       , Наименование, "Строка", Параметры);
-    OPI_Инструменты.ДобавитьПоле("description", Описание    , "Строка", Параметры);
+    Parameters = New Structure();
+    OPI_Tools.AddField("name"       , Name, "String", Parameters);
+    OPI_Tools.AddField("description", Description    , "String", Parameters);
         
-    Ответ = OPI_Инструменты.Patch(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Patch(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
 
-КонецФункции
+EndFunction
 
-// Получить поле (строковое)
-// Получает описание поля строкового типа
+// Get поле (withтроtoоinое)
+// Gets the description of a string field
 // 
-// Параметры:
-//  Наименование - Строка - Наименование нового поля - title
+// Parameters:
+//  Name - String - New field name - title
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеСтроковое(Знач Наименование) Экспорт
-    Возврат ОписаниеПримитивногоПоля(Наименование, "richText");
-КонецФункции
+// Return value:
+//  Structure -  Field description
+Function GetStringField(Val Name) Export
+    Return PrimitiveFieldDescription(Name, "richText");
+EndFunction
 
-// Получить поле (числовое)
-// Получает описание поля числового типа
+// Get поле (чиwithлоinое)
+// Gets the description of a numeric field
 // 
-// Параметры:
-//  Наименование - Строка       - Наименование нового поля   - title
-//  Точность     - Число,Строка - Число знаков после запятой - precision
+// Parameters:
+//  Name - String       - New field name   - title
+//  Precision     - Number, String - Number of decimal places - precision
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеНомера(Знач Наименование, Знач Точность = 0) Экспорт
+// Return value:
+//  Structure -  Field description
+Function GetNumberField(Val Name, Val Precision = 0) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьЧисло(Точность);
+    OPI_TypeConversion.GetNumber(Precision);
     
-    СтруктураОпций = Новый Структура("precision", Точность);
-    Возврат ОписаниеПримитивногоПоля(Наименование, "number", СтруктураОпций);
+    OptionsStructure = New Structure("precision", Precision);
+    Return PrimitiveFieldDescription(Name, "number", OptionsStructure);
     
-КонецФункции
+EndFunction
 
-// Получить поле (файл)
-// Получает описание поля файлового типа
+// Get поле (file)
+// Gets the description of a file field
 // 
-// Параметры:
-//  Наименование - Строка - Наименование поля - title
+// Parameters:
+//  Name - String - Field name - title
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеВложения(Знач Наименование) Экспорт
-    Возврат ОписаниеПримитивногоПоля(Наименование, "multipleAttachments");
-КонецФункции
+// Return value:
+//  Structure -  Field description
+Function GetAttachmentField(Val Name) Export
+    Return PrimitiveFieldDescription(Name, "multipleAttachments");
+EndFunction
 
-// Получить поле (флажок)
-// Получает описание поля типа булево
+// Get поле (флажоto)
+// Gets the description of a boolean field
 // 
-// Параметры:
-//  Наименование - Строка - Наименование поля - title
+// Parameters:
+//  Name - String - Field name - title
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеФлажка(Знач Наименование) Экспорт
+// Return value:
+//  Structure -  Field description
+Function GetCheckboxField(Val Name) Export
     
-    СтруктураОпций = Новый Структура("icon,color", "check", "yellowBright");
-    Возврат ОписаниеПримитивногоПоля(Наименование, "checkbox", СтруктураОпций);
+    OptionsStructure = New Structure("icon,color", "check", "yellowBright");
+    Return PrimitiveFieldDescription(Name, "checkbox", OptionsStructure);
     
-КонецФункции
+EndFunction
 
-// Получить поле (дата)
-// Получает описание поля типа дата
+// Get поле (dата)
+// Gets the description of a date field
 // 
-// Параметры:
-//  Наименование - Строка - Наименование поля - title
+// Parameters:
+//  Name - String - Field name - title
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеДаты(Знач Наименование) Экспорт
+// Return value:
+//  Structure -  Field description
+Function GetDateField(Val Name) Export
     
-    СтруктураФормата = Новый Структура("format,name", "YYYY-MM-DD", "iso");
-    СтруктураОпций   = Новый Структура("dateFormat", СтруктураФормата);
+    FormatStructure = New Structure("format,name", "YYYY-MM-DD", "iso");
+    OptionsStructure   = New Structure("dateFormat", FormatStructure);
     
-    Возврат ОписаниеПримитивногоПоля(Наименование, "date", СтруктураОпций);
+    Return PrimitiveFieldDescription(Name, "date", OptionsStructure);
     
-КонецФункции
+EndFunction
 
-// Получить поле (email)
-// Получает описание поля с электронной почтой
+// Get поле (email)
+// Gets the description of an email field
 // 
-// Параметры:
-//  Наименование - Строка - Наименование поля - title
+// Parameters:
+//  Name - String - Field name - title
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеПочты(Знач Наименование) Экспорт
-    Возврат ОписаниеПримитивногоПоля(Наименование, "email");
-КонецФункции
+// Return value:
+//  Structure -  Field description
+Function GetEmailField(Val Name) Export
+    Return PrimitiveFieldDescription(Name, "email");
+EndFunction
 
-// Получить поле (телефон)
-// Получает описание поля с номером телефона
+// Get поле (телефон)
+// Gets the description of a phone number field
 // 
-// Параметры:
-//  Наименование - Строка - Наименование поля - title
+// Parameters:
+//  Name - String - Field name - title
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеТелефона(Знач Наименование) Экспорт
-    Возврат ОписаниеПримитивногоПоля(Наименование, "phoneNumber");
-КонецФункции
+// Return value:
+//  Structure -  Field description
+Function GetPhoneField(Val Name) Export
+    Return PrimitiveFieldDescription(Name, "phoneNumber");
+EndFunction
 
-// Получить поле (url)
-// Получает описание поля с URL
+// Get поле (url)
+// Gets the description of a URL field
 // 
-// Параметры:
-//  Наименование - Строка - Наименование поля - title
+// Parameters:
+//  Name - String - Field name - title
 // 
-// Возвращаемое значение:
-//  Структура -  Описание поля
-Функция ПолучитьПолеСсылки(Знач Наименование) Экспорт
-    Возврат ОписаниеПримитивногоПоля(Наименование, "url");
-КонецФункции
+// Return value:
+//  Structure -  Field description
+Function GetLinkField(Val Name) Export
+    Return PrimitiveFieldDescription(Name, "url");
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСЗаписями
+#Region RecordManagement
 
-// Получить список записей
-// Получает список записей выбранной таблицы
+// Get list of records
+// Gets the list of records of the selected table
 // 
-// Параметры:
-//  Токен   - Строка - Токен                                                         - token
-//  База    - Строка - Идентификатор базы данных                                     - base
-//  Таблица - Строка - Идентификатор таблицы                                         - table
-//  Отступ  - Строка - Иднтификатор следующей страницы данных из предыдущего запроса - offset
+// Parameters:
+//  Token   - String - Token                                                         - token
+//  Base    - String - Database identifier                                     - base
+//  Table - String - Table identifier                                         - table
+//  Indent  - String - Next page identifier of data from the previous request - offset
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция ПолучитьСписокЗаписей(Знач Токен, Знач База, Знач Таблица, Знач Отступ = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
     
-    URL        = "https://api.airtable.com/v0/" + База + "/" + Таблица;
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/" + Base + "/" + Table;
+    Headers  = GetAuthorizationHeader(Token);
      
-    Параметры  = Новый Структура();
-    OPI_Инструменты.ДобавитьПоле("offset", Отступ, "Строка", Параметры);
+    Parameters  = New Structure();
+    OPI_Tools.AddField("offset", Indent, "String", Parameters);
         
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Получить запись
-// Получает данные строки таблицы по идентификатору
+// Get record
+// Gets row data of the table by identifier
 // 
-// Параметры:
-//  Токен   - Строка - Токен                          - token
-//  База    - Строка - Идентификатор базы данных      - base
-//  Таблица - Строка - Идентификатор таблицы          - table
-//  Запись  - Строка - Идентификатор записи в таблице - record
+// Parameters:
+//  Token   - String - Token                          - token
+//  Base    - String - Database identifier      - base
+//  Table - String - Table identifier          - table
+//  Record  - String - Record identifier in the table - record
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция ПолучитьЗапись(Знач Токен, Знач База, Знач Таблица, Знач Запись) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export
    
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Запись);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetLine(Record);
     
-    URL        = "https://api.airtable.com/v0/" + База + "/" + Таблица + "/" + Запись;
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record;
+    Headers  = GetAuthorizationHeader(Token);
 
-    Ответ = OPI_Инструменты.Get(URL, , Заголовки);
+    Response = OPI_Tools.Get(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
      
-КонецФункции
+EndFunction
 
-// Создать записи
-// Создает одну или массив записей по описанию или массиву описаний значений полей
+// Create records
+// Creates one or an array of records by description or an array of field value descriptions
 // 
-// Параметры:
-//  Токен   - Строка                         - Токен                                                            - token
-//  База    - Строка                         - Идентификатор базы данных                                        - base
-//  Таблица - Строка                         - Идентификатор таблицы                                            - table
-//  Данные  - Структура, Массив из Структура - Набор или массив наборов пар Ключ : Значение > Поле : Показатель - data
+// Parameters:
+//  Token   - String                         - Token                                                            - token
+//  Base    - String                         - Database identifier                                        - base
+//  Table - String                         - Table identifier                                            - table
+//  Data  - Structure, Array of Structures - Set or array of sets of Key : Value pairs > Field : Indicator - data
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция СоздатьЗаписи(Знач Токен, Знач База, Знач Таблица, Знач Данные) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(Данные);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetCollection(Data);
     
-    Параметры = Новый Структура();
-    ДобавитьОписаниеДанных(Данные, Параметры);    
+    Parameters = New Structure();
+    AddDataDescription(Data, Parameters);    
 
-    URL        = "https://api.airtable.com/v0/" + База + "/" + Таблица;
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/" + Base + "/" + Table;
+    Headers  = GetAuthorizationHeader(Token);
 
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;    
+    Return Response;    
     
-КонецФункции
+EndFunction
 
-// Удалить записи
-// Удаляет одну или массив записей по идентификаторам
+// Delete records
+// Deletes one or an array of records by identifiers
 // 
-// Параметры:
-//  Токен   - Строка                   - Токен                                             - token
-//  База    - Строка                   - Идентификатор базы данных                         - base
-//  Таблица - Строка                   - Идентификатор таблицы                             - table
-//  Записи  - Строка, Массив из Строка - Идентификатор или массив индентификаторов записей - records
+// Parameters:
+//  Token   - String                   - Token                                             - token
+//  Base    - String                   - Database identifier                         - base
+//  Table - String                   - Table identifier                             - table
+//  Records  - String, Array of Strings - Identifier or array of record identifiers - records
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция УдалитьЗаписи(Знач Токен, Знач База, Знач Таблица, Знач Записи) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьМассив(Записи);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetArray(Records);
     
-    СтрокаЗаписей = "";
+    RecordString = "";
     
-    Для Каждого Запись Из Записи Цикл
-        СтрокаЗаписей = СтрокаЗаписей
-            + ?(ЗначениеЗаполнено(СтрокаЗаписей), "&", "?")
+    For Each Record Of Records Loop
+        RecordString = RecordString
+            + ?(ValueFilled(RecordString), "&", "?")
             + "records[]="
-            + OPI_Инструменты.ЧислоВСтроку(Запись);    
-    КонецЦикла;
+            + OPI_Tools.NumberToString(Record);    
+    EndOfLoop;
     
-    URL        = "https://api.airtable.com/v0/" + База + "/" + Таблица + СтрокаЗаписей;
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/" + Base + "/" + Table + RecordString;
+    Headers  = GetAuthorizationHeader(Token);
 
-    Ответ = OPI_Инструменты.Delete(URL, , Заголовки);
+    Response = OPI_Tools.Delete(URL, , Headers);
     
-    Возврат Ответ;    
+    Return Response;    
        
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область РаботаСКомментариями
+#Region CommentManagement
 
-// Получить комментарии
-// Получает список комментариев к записи в таблице
+// Get comments
+// Gets the list of comments for a record in the table
 // 
-// Параметры:
-//  Токен   - Строка - Токен                                                         - token
-//  База    - Строка - Идентификатор базы данных                                     - base
-//  Таблица - Строка - Идентификатор таблицы                                         - table
-//  Запись  - Строка - Идентификатор записи в таблице                                - record
-//  Отступ  - Строка - Иднтификатор следующей страницы данных из предыдущего запроса - offset
+// Parameters:
+//  Token   - String - Token                                                         - token
+//  Base    - String - Database identifier                                     - base
+//  Table - String - Table identifier                                         - table
+//  Record  - String - Record identifier in the table                                - record
+//  Indent  - String - Next page identifier of data from the previous request - offset
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция ПолучитьКомментарии(Знач Токен, Знач База, Знач Таблица, Знач Запись, Знач Отступ = "") Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Запись);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetLine(Record);
     
-    URL        = "https://api.airtable.com/v0/" + База + "/" + Таблица + "/" + Запись + "/comments";
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments";
+    Headers  = GetAuthorizationHeader(Token);
      
-    Параметры  = Новый Структура();
-    OPI_Инструменты.ДобавитьПоле("offset", Отступ, "Строка", Параметры);
+    Parameters  = New Structure();
+    OPI_Tools.AddField("offset", Indent, "String", Parameters);
         
-    Ответ = OPI_Инструменты.Get(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Создать комментарий
-// Создает комментарий к записи в таблице
+// Create comment
+// Creates a comment for a record in the table
 // 
-// Параметры:
-//  Токен   - Строка - Токен                           - token
-//  База    - Строка - Идентификатор базы данных       - base
-//  Таблица - Строка - Идентификатор таблицы           - table
-//  Запись  - Строка - Идентификатор записи в таблице  - record
-//  Текст   - Строка - Текст комментария               - text
+// Parameters:
+//  Token   - String - Token                           - token
+//  Base    - String - Database identifier       - base
+//  Table - String - Table identifier           - table
+//  Record  - String - Record identifier in the table  - record
+//  Text   - String - Comment text               - text
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция СоздатьКомментарий(Знач Токен, Знач База, Знач Таблица, Знач Запись, Знач Текст) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Запись);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetLine(Record);
     
-    URL        = "https://api.airtable.com/v0/" + База + "/" + Таблица + "/" + Запись + "/comments";
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments";
+    Headers  = GetAuthorizationHeader(Token);
      
-    Параметры  = Новый Структура();
-    OPI_Инструменты.ДобавитьПоле("text", Текст, "Строка", Параметры);
+    Parameters  = New Structure();
+    OPI_Tools.AddField("text", Text, "String", Parameters);
         
-    Ответ = OPI_Инструменты.Post(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Изменить комментарий
-// Изменяет текст существующего комментария
+// Modify comment
+// Changes the text of an existing comment
 // 
-// Параметры:
-//  Токен       - Строка - Токен                           - token
-//  База        - Строка - Идентификатор базы данных       - base
-//  Таблица     - Строка - Идентификатор таблицы           - table
-//  Запись      - Строка - Идентификатор записи в таблице  - record
-//  Комментарий - Строка - Идентификатор комментария       - comment
-//  Текст       - Строка - Новый текст комментария         - text
+// Parameters:
+//  Token       - String - Token                           - token
+//  Base        - String - Database identifier       - base
+//  Table     - String - Table identifier           - table
+//  Record      - String - Record identifier in the table  - record
+//  Comment - String - Comment identifier       - comment
+//  Text       - String - New comment text         - text
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
-Функция ИзменитьКомментарий(Знач Токен, Знач База, Знач Таблица, Знач Запись, Знач Комментарий, Знач Текст) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable
+Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Запись);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Комментарий);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetLine(Record);
+    OPI_TypeConversion.GetLine(Comment);
     
-    URL        = "https://api.airtable.com/v0/" + База + "/" + Таблица + "/" + Запись + "/comments/" + Комментарий;
-    Заголовки  = ПолучитьЗаголовокАвторизации(Токен);
+    URL        = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments/" + Comment;
+    Headers  = GetAuthorizationHeader(Token);
      
-    Параметры  = Новый Структура();
-    OPI_Инструменты.ДобавитьПоле("text", Текст, "Строка", Параметры);
+    Parameters  = New Structure();
+    OPI_Tools.AddField("text", Text, "String", Parameters);
         
-    Ответ = OPI_Инструменты.Patch(URL, Параметры, Заголовки);
+    Response = OPI_Tools.Patch(URL, Parameters, Headers);
     
-    Возврат Ответ;
+    Return Response;
     
-КонецФункции
+EndFunction
 
-// Удалить комментарий
-// Удаляет комментарий к записи таблицы
+// Delete comment
+// Deletes a comment for a table record
 // 
-// Параметры:
-//  Токен       - Строка - Токен                           - token
-//  База        - Строка - Идентификатор базы данных       - base
-//  Таблица     - Строка - Идентификатор таблицы           - table
-//  Запись      - Строка - Идентификатор записи в таблице  - record
-//  Комментарий - Строка - Идентификатор комментария       - comment
+// Parameters:
+//  Token       - String - Token                           - token
+//  Base        - String - Database identifier       - base
+//  Table     - String - Table identifier           - table
+//  Record      - String - Record identifier in the table  - record
+//  Comment - String - Comment identifier       - comment
 // 
-// Возвращаемое значение:
-//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable 
-Функция УдалитьКомментарий(Знач Токен, Знач База, Знач Таблица, Знач Запись, Знач Комментарий) Экспорт
+// Return value:
+//  Key-Value Pair - serialized JSON response from Airtable 
+Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export
 
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(База);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Таблица);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Запись);
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Комментарий);
+    OPI_TypeConversion.GetLine(Base);
+    OPI_TypeConversion.GetLine(Table);
+    OPI_TypeConversion.GetLine(Record);
+    OPI_TypeConversion.GetLine(Comment);
     
-    URL       = "https://api.airtable.com/v0/" + База + "/" + Таблица + "/" + Запись + "/comments/" + Комментарий;
-    Заголовки = ПолучитьЗаголовокАвторизации(Токен);
+    URL       = "https://api.airtable.com/v0/" + Base + "/" + Table + "/" + Record + "/comments/" + Comment;
+    Headers = GetAuthorizationHeader(Token);
         
-    Ответ = OPI_Инструменты.Delete(URL, , Заголовки);
+    Response = OPI_Tools.Delete(URL, , Headers);
     
-    Возврат Ответ;
+    Return Response;
         
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ПолучитьЗаголовокАвторизации(Знач Токен)
+Function GetAuthorizationHeader(Val Token)
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Токен);
+    OPI_TypeConversion.GetLine(Token);
     
-    Заголовки = Новый Соответствие;
-    Заголовки.Вставить("Authorization", "Bearer " + Токен);
+    Headers = New Match;
+    Headers.Insert("Authorization", "Bearer " + Token);
     
-    Возврат Заголовки;
+    Return Headers;
     
-КонецФункции
+EndFunction
 
-Функция СформироватьОписаниеТаблицы(Знач Наименование, Знач МассивПолей, Знач Описание = "")
+Function GenerateTableDescription(Val Name, Val FieldArray, Val Description = "")
     
-    OPI_ПреобразованиеТипов.ПолучитьСтроку(Наименование);
-    OPI_ПреобразованиеТипов.ПолучитьКоллекцию(МассивПолей);
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetCollection(FieldArray);
     
-    ОписаниеТаблицы = Новый Структура("name,fields", Наименование, МассивПолей);
+    TableDescription = New Structure("name,fields", Name, FieldArray);
     
-    OPI_Инструменты.ДобавитьПоле("description", Описание, "Строка", ОписаниеТаблицы);
+    OPI_Tools.AddField("description", Description, "String", TableDescription);
     
-    Возврат ОписаниеТаблицы;
+    Return TableDescription;
     
-КонецФункции
+EndFunction
 
-Функция ОписаниеПримитивногоПоля(Знач Наименование, Знач Тип, Знач Опции = "")
+Function PrimitiveFieldDescription(Val Name, Val Type, Val Options = "")
     
-    СтруктураПоля = Новый Структура();
-    OPI_Инструменты.ДобавитьПоле("name"   , Наименование, "Строка"   , СтруктураПоля);
-    OPI_Инструменты.ДобавитьПоле("type"   , Тип         , "Строка"   , СтруктураПоля);
-    OPI_Инструменты.ДобавитьПоле("options", Опции       , "Коллекция", СтруктураПоля);
+    FieldStructure = New Structure();
+    OPI_Tools.AddField("name"   , Name, "String"   , FieldStructure);
+    OPI_Tools.AddField("type"   , Type         , "String"   , FieldStructure);
+    OPI_Tools.AddField("options", Options       , "Collection", FieldStructure);
     
-    Возврат СтруктураПоля;
+    Return FieldStructure;
 
-КонецФункции
+EndFunction
 
-Процедура ДобавитьОписаниеДанных(Знач Данные, Параметры)
+Procedure AddDataDescription(Val Data, Parameters)
     
-    Если ТипЗнч(Данные) = Тип("Массив") Тогда
+    If TypeValue(Data) = Type("Array") Then
         
-        МассивОтправки = Новый Массив;
+        SendArray = New Array;
         
-        Для Каждого ОписаниеЗаписи Из Данные Цикл
-            МассивОтправки.Добавить(Новый Структура("fields", ОписаниеЗаписи));    
-        КонецЦикла;
+        For Each RecordDescription Of Data Loop
+            SendArray.Add(New Structure("fields", RecordDescription));    
+        EndOfLoop;
         
-        OPI_Инструменты.ДобавитьПоле("records", МассивОтправки, "Массив", Параметры);
+        OPI_Tools.AddField("records", SendArray, "Array", Parameters);
         
-    Иначе
+    Otherwise
        
-       OPI_Инструменты.ДобавитьПоле("fields", Данные, "Коллекция", Параметры); 
+       OPI_Tools.AddField("fields", Data, "Collection", Parameters); 
        
-    КонецЕсли;
+    EndIf;
         
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion

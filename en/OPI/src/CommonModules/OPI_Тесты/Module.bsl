@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// Location OS: ./OInt/tests/Modules/internal/OPI_Tests.os
 
 // MIT License
 
@@ -24,7 +24,7 @@
 
 // https://github.com/Bayselonarrend/OpenIntegrations
 
-// Набор тестов для YAxUnit
+// Test suite for YAxUnit
 
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
@@ -36,1724 +36,1724 @@
 // @skip-check undefined-variable
 // @skip-check wrong-string-literal-content
 
-// Раскомментировать, если выполняется OneScript
-// #Использовать oint
-// #Использовать asserts
+// Uncomment if OneScript is executed
+// #Use oint
+// #Use asserts
 
-#Область СлужебныйПрограммныйИнтерфейс
+#Region ServiceProgramInterface
 
-// Для YaxUnit
+// For YAxUnit
 
-Процедура ИсполняемыеСценарии() Экспорт
+Procedure ExecutableScripts() Export
 
-    OPI_ПолучениеДанныхТестов.СформироватьТестыЯкс();
+    OPI_GetTestData.FormYAXTests();
 
-КонецПроцедуры
+EndProcedure
 
-// Для Asserts
+// For Asserts
 
-Функция ПолучитьСписокТестов(ЮнитТестирование) Экспорт
+Function GetTestList(UnitTesting) Export
 
-   Возврат OPI_ПолучениеДанныхТестов.СформироватьТестыАссертс();
+   Return OPI_GetTestData.FormAssertsTests();
 
-КонецФункции
+EndFunction
 
-#Область ЗапускаемыеТесты
+#Region RunnableTests
 
-#Область Telegram
+#Region Telegram
 
-Процедура Телеграм_ПолучитьИнформациюБота() Экспорт
+Procedure Telegram_GetBotInfo() Export
  
- 	ПараметрыТеста = Новый Структура;
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token", ПараметрыТеста);
+ 	TestParameters = New Structure;
+ 	OPI_GetTestData.ParameterToCollection("Telegram_Token", TestParameters);
  	
-	Telegram_ПолучитьИнформациюБота(ПараметрыТеста);
+	Telegram_GetBotInformation(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ПолучитьОбновления() Экспорт
+Procedure Telegram_GetUpdates() Export
 
- 	ПараметрыТеста = Новый Структура;
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token", ПараметрыТеста);
+ 	TestParameters = New Structure;
+ 	OPI_GetTestData.ParameterToCollection("Telegram_Token", TestParameters);
  	
- 	Telegram_УдалитьWebhook(ПараметрыТеста);
-	Telegram_ПолучитьОбновления(ПараметрыТеста);
+ 	Telegram_DeleteWebhook(TestParameters);
+	Telegram_GetUpdates(TestParameters);
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_УстановитьWebhook() Экспорт
+Procedure Telegram_SetWebhook() Export
 
- 	ПараметрыТеста = Новый Структура;
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token", ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_URL"  , ПараметрыТеста);
+ 	TestParameters = New Structure;
+ 	OPI_GetTestData.ParameterToCollection("Telegram_Token", TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Telegram_URL"  , TestParameters);
 
-	Telegram_УстановитьWebhook(ПараметрыТеста);
-	Telegram_УдалитьWebhook(ПараметрыТеста);
+	Telegram_SetWebhook(TestParameters);
+	Telegram_DeleteWebhook(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьТекстовоеСообщение() Экспорт
+Procedure Telegram_SendTextMessage() Export
 
-    ПараметрыТеста = Новый Структура;
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"            , ПараметрыТеста);
+    TestParameters = New Structure;
+ 	OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("String"            , TestParameters);
  	
-	Telegram_ОтправитьТекстовоеСообщение(ПараметрыТеста);
+	Telegram_SendTextMessage(TestParameters);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьКартинку() Экспорт
+Procedure Telegram_SendImage() Export
 
-    ПараметрыТеста = Новый Структура;
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"            , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture"           , ПараметрыТеста);
+    TestParameters = New Structure;
+ 	OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("String"            , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Picture"           , TestParameters);
  	
-	Telegram_ОтправитьКартинку(ПараметрыТеста);
-	Telegram_СкачатьФайл(ПараметрыТеста);
+	Telegram_SendPicture(TestParameters);
+	Telegram_DownloadFile(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьВидео() Экспорт
+Procedure Telegram_SendVideo() Export
 
-    ПараметрыТеста = Новый Структура;
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"            , ПараметрыТеста);
- 	OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Video"             , ПараметрыТеста);
+    TestParameters = New Structure;
+ 	OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("String"            , TestParameters);
+ 	OPI_GetTestData.ParameterToCollection("Video"             , TestParameters);
  	
-	Telegram_ОтправитьВидео(ПараметрыТеста);
-	Telegram_СкачатьФайл(ПараметрыТеста);
+	Telegram_SendVideo(TestParameters);
+	Telegram_DownloadFile(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьАудио() Экспорт
+Procedure Telegram_SendAudio() Export
 
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"            , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Audio"             , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_GetTestData.ParameterToCollection("String"            , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Audio"             , TestParameters);
     
-    Telegram_ОтправитьАудио(ПараметрыТеста);
-    Telegram_СкачатьФайл(ПараметрыТеста);
+    Telegram_SendAudio(TestParameters);
+    Telegram_DownloadFile(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьДокумент() Экспорт
+Procedure Telegram_SendDocument() Export
 
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"            , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Document"          , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_GetTestData.ParameterToCollection("String"            , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Document"          , TestParameters);
     
-    Telegram_ОтправитьДокумент(ПараметрыТеста);
+    Telegram_SendDocument(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьГифку() Экспорт
+Procedure Telegram_SendGIF() Export
 
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"            , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("GIF"               , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_GetTestData.ParameterToCollection("String"            , TestParameters);
+    OPI_GetTestData.ParameterToCollection("GIF"               , TestParameters);
     
-    Telegram_ОтправитьГифку(ПараметрыТеста);
+    Telegram_SendGif(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьМедиагруппу() Экспорт
+Procedure Telegram_SendMediaGroup() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"            , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture"           , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Video"             , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_GetTestData.ParameterToCollection("String"            , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Picture"           , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Video"             , TestParameters);
     
-    Telegram_ОтправитьМеидагруппу(ПараметрыТеста);
+    Telegram_SendMediaGroup(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьМестоположение() Экспорт
+Procedure Telegram_SendLocation() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Long"              , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Lat"               , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_GetTestData.ParameterToCollection("Long"              , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Lat"               , TestParameters);
     
-    Telegram_ОтправитьМестоположение(ПараметрыТеста);
+    Telegram_SendLocation(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьКонтакт() Экспорт
+Procedure Telegram_SendContact() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Name"              , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Surname"           , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Phone"             , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_GetTestData.ParameterToCollection("Name"              , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Surname"           , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Phone"             , TestParameters);
 
-    Telegram_ОтправитьКонтакт(ПараметрыТеста);
+    Telegram_SendContact(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ОтправитьОпрос() Экспорт
+Procedure Telegram_SendPoll() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
     
-	Telegram_ОтправитьОпрос(ПараметрыТеста);
+	Telegram_SendPoll(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ПереслатьСообщение() Экспорт
+Procedure Telegram_ForwardMessage() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"           , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"          , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID"       , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelMessageID", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"           , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"          , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID"       , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
 
-	Telegram_ПереслатьСообщение(ПараметрыТеста);
+	Telegram_ForwardMessage(TestParameters);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_БанРазбан() Экспорт
+Procedure Telegram_BanUnban() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"           , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChatID"          , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID"       , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"           , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChatID"          , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID"       , TestParameters);
     
-    Telegram_Бан(ПараметрыТеста);
-    Telegram_Разбан(ПараметрыТеста);
+    Telegram_Ban(TestParameters);
+    Telegram_Unban(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_СоздатьСсылкуПриглашение() Экспорт
+Procedure Telegram_CreateInvitationLink() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
     
-	Telegram_СоздатьСсылкуПриглашение(ПараметрыТеста);
+	Telegram_CreateInviteLink(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ЗакрепитьОткрепитьСообщение() Экспорт
+Procedure Telegram_PinUnpinMessage() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"           , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID"       , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelMessageID", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"           , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID"       , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
         
-	Telegram_ЗакрепитьСообщение(ПараметрыТеста);
-	Telegram_ОткрепитьСообщение(ПараметрыТеста);
+	Telegram_PinMessage(TestParameters);
+	Telegram_UnpinMessage(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ПолучитьЧислоУчастников() Экспорт
+Procedure Telegram_GetMemberCount() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ChannelID", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ChannelID", TestParameters);
     
-    Telegram_ПолучитьЧислоУчастников(ПараметрыТеста);
+    Telegram_GetParticipantCount(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ПолучитьСписокАватаровФорума() Экспорт
+Procedure Telegram_GetForumAvatarsList() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token", TestParameters);
     
-	Telegram_ПолучитьСписокАватаровФорума(ПараметрыТеста);
+	Telegram_GetForumAvatarList(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_СоздатьУдалитьТемуФорума() Экспорт
+Procedure Telegram_CreateDeleteForumTopic() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"  , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ForumID", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture"         , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("String"          , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"  , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ForumID", TestParameters);
+    OPI_GetTestData.ParameterToCollection("Picture"         , TestParameters);
+    OPI_GetTestData.ParameterToCollection("String"          , TestParameters);
     
-	Telegram_СоздатьТемуФорума(ПараметрыТеста);
-	Telegram_ИзменитьТемуФорума(ПараметрыТеста);
-	Telegram_ЗакрытьТемуФорума(ПараметрыТеста);
-	Telegram_ОткрытьТемуФорума(ПараметрыТеста);
-	Telegram_ОчиститьСписокЗакрепленныхСообщенийТемы(ПараметрыТеста);
-	Telegram_УдалитьТемуФорума(ПараметрыТеста);
+	Telegram_CreateForumTopic(TestParameters);
+	Telegram_EditForumTopic(TestParameters);
+	Telegram_CloseForumTopic(TestParameters);
+	Telegram_OpenForumTopic(TestParameters);
+	Telegram_ClearPinnedMessagesList(TestParameters);
+	Telegram_DeleteForumTopic(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_СкрытьПоказатьГлавнуюТему() Экспорт
+Procedure Telegram_HideShowMainTopic() Export
  
- 	ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"  , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ForumID", ПараметрыТеста);
+ 	TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"  , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ForumID", TestParameters);
 
-	Telegram_СкрытьГлавнуюТемуФорума(ПараметрыТеста);
-	Telegram_ПоказатьГлавнуюТемуФорума(ПараметрыТеста);
+	Telegram_HideMainForumTopic(TestParameters);
+	Telegram_ShowMainForumTopic(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Телеграм_ИзменитьИмяГлавнойТемы() Экспорт
+Procedure Telegram_ChangeMainTopicName() Export
  
- 	ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_Token"  , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Telegram_ForumID", ПараметрыТеста);
+ 	TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Telegram_Token"  , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Telegram_ForumID", TestParameters);
 
-	Telegram_ИзменитьИмяГлавнойТемыФорума(ПараметрыТеста);
+	Telegram_ChangeMainTopicName(TestParameters);
 	
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область VK
+#Region VK
 
-Процедура ВК_СоздатьСсылкуТокена() Экспорт
+Procedure VK_CreateTokenLink() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("VK_AppID", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("VK_AppID", TestParameters);
 
-    VK_СоздатьСсылкуПолученияТокена(ПараметрыТеста);  
+    VK_CreateTokenRetrievalLink(TestParameters);  
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СоздатьУдалитьПост() Экспорт
+Procedure VK_CreateDeletePost() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture" , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture2", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Picture" , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Picture2", TestParameters);
     
-    VK_СоздатьПост(ПараметрыТеста);
-    VK_УдалитьПост(ПараметрыТеста);
+    VK_CreatePost(TestParameters);
+    VK_DeletePost(TestParameters);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СоздатьСоставнойПост() Экспорт
+Procedure VK_CreateCompositePost() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture" , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Video"   , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Picture" , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Video"   , TestParameters);
     
-    VK_СоздатьСоставнойПост(ПараметрыТеста);
+    VK_CreateCompositePost(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СоздатьОпрос() Экспорт
+Procedure VK_CreatePoll() Export
  
-    VK_СоздатьОпрос();
+    VK_CreatePoll();
        
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СохранитьУдалитьКартинку() Экспорт
+Procedure VK_SaveDeleteImage() Export
  
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture" , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Picture" , TestParameters);
     
-    VK_СоздатьАльбом(ПараметрыТеста);
-    VK_СохранитьКартинкуВАльбом(ПараметрыТеста);
-    VK_УдалитьКартинку(ПараметрыТеста);
-    VK_УдалитьАльбом(ПараметрыТеста);
+    VK_CreateAlbum(TestParameters);
+    VK_SavePictureToAlbum(TestParameters);
+    VK_DeleteImage(TestParameters);
+    VK_DeleteAlbum(TestParameters);
            
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СоздатьИсторию() Экспорт
+Procedure VK_CreateStory() Export
  
-    ПараметрыТеста = Новый Соответствие;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture" , ПараметрыТеста);
+    TestParameters = New Match;
+    OPI_GetTestData.ParameterToCollection("Picture" , TestParameters);
     
-    VK_СоздатьИсторию(ПараметрыТеста);
+    VK_CreateStory(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_МетодыОбсуждений() Экспорт
+Procedure VK_DiscussionMethods() Export
  
-    ПараметрыТеста = Новый Структура;
-    Параметры      = ПолучитьПараметрыВК();
+    TestParameters = New Structure;
+    Parameters      = GetVKParameters();
     
-    VK_СоздатьОбсуждение(ПараметрыТеста);
-    VK_ЗакрытьОбсуждение(ПараметрыТеста);
-    VK_ОткрытьОбсуждение(ПараметрыТеста);
-    VK_НаписатьВОбсуждение(ПараметрыТеста);     
+    VK_CreateDiscussion(TestParameters);
+    VK_CloseDiscussion(TestParameters);
+    VK_OpenDiscussion(TestParameters);
+    VK_PostToDiscussion(TestParameters);     
        
-    OPI_VK.ЗакрытьОбсуждение(ПараметрыТеста["VK_ConvID"], Истина, Параметры);
+    OPI_VK.CloseDiscussion(TestParameters["VK_ConvID"], True, Parameters);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ЛайкРепостКоммент() Экспорт
+Procedure VK_LikeRepostComment() Export
  
-    Параметры       = ПолучитьПараметрыВК();
-    Текст           = "Пост из автотеста";
-    Сообщение       = "Сообщение из автотеста";
-    ТипСоответствие = Тип("Соответствие");
-    ТипЧисло        = Тип("Число");
+    Parameters       = GetVKParameters();
+    Text           = "Post from autotest";
+    Message       = "Message from autotest";
+    TypeMatch = Type("Match");
+    TypeNumber        = Type("Number");
     Response        = "response";
     
-    Результат = OPI_VK.СоздатьПост(Текст, Новый Массив, , , Параметры);
+    Result = OPI_VK.CreatePost(Text, New Array, , , Parameters);
     
-    ИДПоста   = Результат[Response]["post_id"];    
-    Результат = OPI_VK.ПоставитьЛайк(ИДПоста, , Параметры);
+    PostID   = Result[Response]["post_id"];    
+    Result = OPI_VK.LikePost(PostID, , Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПоставитьЛайк");
+    // !OInt OPI_GetTestData.WriteLog(Result, "LikePost");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
       
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["likes"]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch).Filled();
+    OPI_GetTestData.ExpectsThat(Result[Response]["likes"]).HasType(TypeNumber).Filled();
         
-    ВнешнийПост  = 2571;
-    ВнешняяСтена = -218704372;
+    ExternalPost  = 2571;
+    ExternalWall = -218704372;
         
-    Результат = OPI_VK.СделатьРепост(ВнешнийПост, ВнешняяСтена, , , Параметры);
+    Result = OPI_VK.MakeRepost(ExternalPost, ExternalWall, , , Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СделатьРепост");
+    // !OInt OPI_GetTestData.WriteLog(Result, "MakeRepost");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["success"]).ИмеетТип(ТипЧисло).Равно(1);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["wall_repost_count"]).ИмеетТип(ТипЧисло).Равно(1); 
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch).Filled();
+    OPI_GetTestData.ExpectsThat(Result[Response]["success"]).HasType(TypeNumber).Equal(1);
+    OPI_GetTestData.ExpectsThat(Result[Response]["wall_repost_count"]).HasType(TypeNumber).Equal(1); 
         
-    Результат  = OPI_VK.НаписатьКомментарий(ИДПоста, Параметры["owner_id"], Сообщение, Параметры);
+    Result  = OPI_VK.WriteComment(PostID, Parameters["owner_id"], Message, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "НаписатьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "WriteComment");
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["comment_id"]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch).Filled();
+    OPI_GetTestData.ExpectsThat(Result[Response]["comment_id"]).HasType(TypeNumber).Filled();
    
-    OPI_VK.УдалитьПост(ИДПоста, Параметры);
-    OPI_VK.УдалитьПост(Результат[Response]["post_id"], Параметры);
+    OPI_VK.DeletePost(PostID, Parameters);
+    OPI_VK.DeletePost(Result[Response]["post_id"], Parameters);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ПолучитьСтатистику() Экспорт
+Procedure VK_GetStatistics() Export
  
-    ТекущаяДата     = OPI_Инструменты.ПолучитьТекущуюДату();
-    Параметры       = ПолучитьПараметрыВК();
-    Дата0           = НачалоДня(ТекущаяДата);
-    Дата1           = КонецДня(Дата0);
-    ТипСоответствие = Тип("Соответствие");
+    CurrentDate     = OPI_Tools.GetCurrentDate();
+    Parameters       = GetVKParameters();
+    Date0           = StartOfDay(CurrentDate);
+    Date1           = EndOfDay(Date0);
+    TypeMatch = Type("Match");
      
-    Результат = OPI_VK.ПолучитьСтатистику(Дата0, Дата1, Параметры);
+    Result = OPI_VK.GetStatistics(Date0, Date1, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтатистику");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetStatistics");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"][0]["visitors"]).ИмеетТип(ТипСоответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"][0]["reach"]).ИмеетТип(ТипСоответствие).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch).Filled();
+    OPI_GetTestData.ExpectsThat(Result["response"][0]["visitors"]).HasType(TypeMatch).Filled();
+    OPI_GetTestData.ExpectsThat(Result["response"][0]["reach"]).HasType(TypeMatch).Filled();
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ПолучитьСтатистикуПостов() Экспорт
+Procedure VK_GetPostStatistics() Export
  
-    Параметры    = ПолучитьПараметрыВК();
+    Parameters    = GetVKParameters();
     
-    МассивПостов = Новый Массив;
-    МассивПостов.Добавить(214);
-    МассивПостов.Добавить(215);
+    ArrayOfPosts = New Array;
+    ArrayOfPosts.Add(214);
+    ArrayOfPosts.Add(215);
     
-    Результат = OPI_VK.ПолучитьСтатистикуПостов(МассивПостов, Параметры);
+    Result = OPI_VK.GetPostStatistics(ArrayOfPosts, Parameters);
 
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтатистикуПостов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetPostStatistics");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Массив").ИмеетДлину(2);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Array").HasLength(2);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СоздатьРекламнуюКампанию() Экспорт
+Procedure VK_CreateAdCampaign() Export
  
-    Параметры       = ПолучитьПараметрыВК();
-    ИДКабинета      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("VK_AdsCabinetID");
-    Наименование    = "Тестовая кампания";
-    ТипСоответствие = Тип("Соответствие");
-    ТипЧисло        = Тип("Число");
+    Parameters       = GetVKParameters();
+    CabinetID      = OPI_GetTestData.GetParameter("VK_AdsCabinetID");
+    Name    = "TestCampaign";
+    TypeMatch = Type("Match");
+    TypeNumber        = Type("Number");
     Response        = "response";
     UID             = "id";
         
-    Результат    = OPI_VK.СоздатьРекламнуюКампанию(ИДКабинета, Наименование, Параметры);
+    Result    = OPI_VK.CreateAdvertisingCampaign(CabinetID, Name, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьРекламнуюКампанию");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateAdvertisingCampaign");
     
-    Результат    = Результат[Response][0];
+    Result    = Result[Response][0];
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие); 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["error_code"]).ИмеетТип(ТипЧисло).Равно(602);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[UID]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch); 
+    OPI_GetTestData.ExpectsThat(Result["error_code"]).HasType(TypeNumber).Equal(602);
+    OPI_GetTestData.ExpectsThat(Result[UID]).HasType(TypeNumber).Filled();
         
-    ИДКампании  = Результат[UID];
-    ИДКатегории = 126;
-    Лимит       = 150;
+    CampaignID  = Result[UID];
+    CategoryID = 126;
+    Limit       = 150;
     
-    Результат = OPI_VK.СоздатьПост(Наименование, Новый Массив, , , Параметры); 
-    ИДПоста   = Результат[Response]["post_id"]; 
+    Result = OPI_VK.CreatePost(Name, New Array, , , Parameters); 
+    PostID   = Result[Response]["post_id"]; 
         
-    Результат   = OPI_VK.СоздатьРекламноеОбъявление(ИДКампании
-        , Лимит
-        , ИДКатегории
-        , ИДПоста
-        , ИДКабинета
-        , Параметры);
+    Result   = OPI_VK.CreateAd(CampaignID
+        , Limit
+        , CategoryID
+        , PostID
+        , CabinetID
+        , Parameters);
         
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьРекламноеОбъявление");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateAd");
             
-    Результат   = Результат[Response][0];
+    Result   = Result[Response][0];
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие); 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["error_code"]).ИмеетТип(ТипЧисло).Равно(602);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[UID]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch); 
+    OPI_GetTestData.ExpectsThat(Result["error_code"]).HasType(TypeNumber).Equal(602);
+    OPI_GetTestData.ExpectsThat(Result[UID]).HasType(TypeNumber).Filled();
         
-    ИДОбъявления = Результат[UID];
-    Результат    = OPI_VK.ПриостановитьРекламноеОбъявление(ИДКабинета, ИДОбъявления, Параметры);
+    AnnouncementID = Result[UID];
+    Result    = OPI_VK.PauseAdvertisingAd(CabinetID, AnnouncementID, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПриостановитьРекламноеОбъявление");
+    // !OInt OPI_GetTestData.WriteLog(Result, "PauseAdvertisingAd");
     
-    Результат    = Результат[Response][0];
+    Result    = Result[Response][0];
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие); 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[UID]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch); 
+    OPI_GetTestData.ExpectsThat(Result[UID]).HasType(TypeNumber).Filled();
  
-    OPI_VK.УдалитьПост(ИДПоста, Параметры);
+    OPI_VK.DeletePost(PostID, Parameters);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ОтправитьСообщение() Экспорт
+Procedure VK_SendMessage() Export
  
-    Параметры    = ПолучитьПараметрыВК();
-    Пользователь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("VK_UserID");
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("VK_CommunityToken");
-    Текст        = "Сообщение из автотеста";
+    Parameters    = GetVKParameters();
+    User = OPI_GetTestData.GetParameter("VK_UserID");
+    Token        = OPI_GetTestData.GetParameter("VK_CommunityToken");
+    Text        = "Message from autotest";
     
-    МассивКнопок = Новый Массив;
-    МассивКнопок.Добавить("Кнопка 1");
-    МассивКнопок.Добавить("Кнопка 2"); 
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2"); 
     
-    Клавиатура = OPI_VK.СформироватьКлавиатуру(МассивКнопок);
-    Результат  = OPI_VK.НаписатьСообщение(Текст, Пользователь, Токен, Клавиатура, Параметры);
+    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
+    Result  = OPI_VK.WriteMessage(Text, User, Token, Keyboard, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "НаписатьСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "WriteMessage");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие"); 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"]).ИмеетТип("Число").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match"); 
+    OPI_GetTestData.ExpectsThat(Result["response"]).HasType("Number").Filled();
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
   
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ПолучитьКатегорииТоваров() Экспорт
+Procedure VK_GetProductCategories() Export
  
-    Параметры = ПолучитьПараметрыВК();
-    Результат = OPI_VK.ПолучитьСписокКатегорийТоваров(Параметры);
+    Parameters = GetVKParameters();
+    Result = OPI_VK.GetProductCategoryList(Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокКатегорийТоваров");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetProductCategoryList");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат) 
-        .ИмеетТип("Соответствие")
-        .Заполнено();
+    OPI_GetTestData.ExpectsThat(Result) 
+        .HasType("Match")
+        .Filled();
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СоздатьТоварПодборку() Экспорт
+Procedure VK_CreateProductSelection() Export
  
-    Параметры       = ПолучитьПараметрыВК();
-    ТипСоответствие = Тип("Соответствие");
-    ТипЧисло        = Тип("Число");
+    Parameters       = GetVKParameters();
+    TypeMatch = Type("Match");
+    TypeNumber        = Type("Number");
     Response        = "response";
-    Картинка        = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture");
-    ИВФ             = ПолучитьИмяВременногоФайла("png");   
-    Картинка.Записать(ИВФ);
+    Image        = OPI_GetTestData.GetBinary("Picture");
+    AndVF             = GetTempFileName("png");   
+    Image.Write(AndVF);
         
-    Результат = OPI_VK.СоздатьПодборкуТоваров("Тестовая подборка"
-        , Картинка
-        , Истина
-        , Ложь
-        , Параметры);  
+    Result = OPI_VK.CreateProductCollection("TestCollection"
+        , Image
+        , True
+        , False
+        , Parameters);  
         
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПодборкуТоваров");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateProductCollection");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["albums_count"]).ИмеетТип(ТипЧисло).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["market_album_id"]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response]["albums_count"]).HasType(TypeNumber).Filled();
+    OPI_GetTestData.ExpectsThat(Result[Response]["market_album_id"]).HasType(TypeNumber).Filled();
              
-    ИДПодборки = Результат[Response]["market_album_id"];
+    SelectionID = Result[Response]["market_album_id"];
     
-    Результат  = OPI_VK.ИзменитьПодборкуТоваров("Измененная подборка", ИДПодборки, , , , Параметры);
+    Result  = OPI_VK.EditProductCollection("EditedCollection", SelectionID, , , , Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьПодборкуТоваров");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditProductCollection");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]).ИмеетТип(ТипЧисло).Равно(1);
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response]).HasType(TypeNumber).Equal(1);
  
-    МассивКартинок = Новый Массив;
-    МассивКартинок.Добавить(OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture"));
-    МассивКартинок.Добавить(OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture2"));
+    ImageArray = New Array;
+    ImageArray.Add(OPI_GetTestData.GetBinary("Picture"));
+    ImageArray.Add(OPI_GetTestData.GetBinary("Picture2"));
     
-    Товар = Новый Соответствие();
-    Товар.Вставить("Имя"                , "Тестовый товар");    
-    Товар.Вставить("Описание"           , "Описание товара");
-    Товар.Вставить("Категория"          , "20173");           
-    Товар.Вставить("Цена"               , 1);                
-    Товар.Вставить("СтараяЦена"         , 15);     
-    Товар.Вставить("ОсновноеФото"       , Картинка);                   
-    Товар.Вставить("URL"                , "https://github.com/Bayselonarrend/OpenIntegrations");     
-    Товар.Вставить("ДополнительныеФото" , МассивКартинок);     
-    Товар.Вставить("ГлавныйВГруппе"     , Истина);                 
-    Товар.Вставить("Ширина"             , 20);     
-    Товар.Вставить("Высота"             , 30);     
-    Товар.Вставить("Глубина"            , 40);     
-    Товар.Вставить("Вес"                , 100);
-    Товар.Вставить("SKU"                , "12345");
-    Товар.Вставить("ДоступныйОстаток"   , "10");
+    Product = New Match();
+    Product.Insert("Name"                , "TestProduct");    
+    Product.Insert("Description"           , "Product description");
+    Product.Insert("Category"          , "20173");           
+    Product.Insert("Price"               , 1);                
+    Product.Insert("OldPrice"         , 15);     
+    Product.Insert("MainPhoto"       , Image);                   
+    Product.Insert("URL"                , "https://github.com/Bayselonarrend/OpenIntegrations");     
+    Product.Insert("AdditionalPhotos" , ImageArray);     
+    Product.Insert("MainInGroup"     , True);                 
+    Product.Insert("Width"             , 20);     
+    Product.Insert("Height"             , 30);     
+    Product.Insert("Depth"            , 40);     
+    Product.Insert("Weight"                , 100);
+    Product.Insert("SKU"                , "12345");
+    Product.Insert("AvailableBalance"   , "10");
     
-    Результат = OPI_VK.ДобавитьТовар(Товар, ИДПодборки, Параметры);                // Добавление товара
+    Result = OPI_VK.AddProduct(Product, SelectionID, Parameters);                // Adding product
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьТовар");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddProduct");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["market_item_id"]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response]["market_item_id"]).HasType(TypeNumber).Filled();
         
-    ИДТовара  = Результат[Response]["market_item_id"];
+    ProductID  = Result[Response]["market_item_id"];
     
-    Товар = Новый Соответствие;
-    Товар.Вставить("Имя", "Тестовый товар измененный");
+    Product = New Match;
+    Product.Insert("Name", "EditedTestProduct");
     
-    Результат = OPI_VK.ИзменитьТовар(ИДТовара, Товар, , Параметры);                // Изменение товара
+    Result = OPI_VK.EditProduct(ProductID, Product, , Parameters);                // Change product
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьТовар");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditProduct");
     
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
     
-    Результат = OPI_VK.ДобавитьТоварВПодборку(ИДТовара, ИДПодборки, Параметры);    // Добавление в подборку
+    Result = OPI_VK.AddProductToSelection(ProductID, SelectionID, Parameters);    // Adding in selection
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьТоварВПодборку");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddProductToSelection");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response]).HasType(TypeNumber).Filled();
         
-    Результат = OPI_VK.УдалитьТоварИзПодборки(ИДТовара, ИДПодборки, Параметры);    // Удаляет из подборки
+    Result = OPI_VK.RemoveProductFromSelection(ProductID, SelectionID, Parameters);    // Deletes from selections
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьТоварИзПодборки");
+    // !OInt OPI_GetTestData.WriteLog(Result, "RemoveProductFromSelection");
     
-    OPI_Инструменты.Пауза(5);
-    Проверка_ВКИстина(Результат);
+    OPI_Tools.Pause(5);
+    Check_VKTrue(Result);
         
-    Результат = OPI_VK.УдалитьТовар(ИДТовара, Параметры);                          // Удаление товара
+    Result = OPI_VK.DeleteProduct(ProductID, Parameters);                          // Deletion product
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьТовар");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteProduct");
     
-    OPI_Инструменты.Пауза(5);
-    Проверка_ВКИстина(Результат);
+    OPI_Tools.Pause(5);
+    Check_VKTrue(Result);
         
-    Результат = OPI_VK.УдалитьПодборку(ИДПодборки, Параметры);                     // Уадление подборки
+    Result = OPI_VK.DeleteSelection(SelectionID, Parameters);                     // Removal selections
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьПодборку");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteSelection");
     
-    OPI_Инструменты.Пауза(5);
-    Проверка_ВКИстина(Результат);
+    OPI_Tools.Pause(5);
+    Check_VKTrue(Result);
 
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_СоздатьТоварСоСвойствами() Экспорт
+Procedure VK_CreateProductWithProperties() Export
  
-    Параметры       = ПолучитьПараметрыВК();
-    ТипСоответствие = Тип("Соответствие");
-    ТипЧисло        = Тип("Число");
+    Parameters       = GetVKParameters();
+    TypeMatch = Type("Match");
+    TypeNumber        = Type("Number");
     MII             = "market_item_id";
     Response        = "response";
-    Желтый          = "Желтый";
-    Красный         = "Красный";
-    Картинка        = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture");
-    ИВФ             = ПолучитьИмяВременногоФайла("png");   
-    Картинка.Записать(ИВФ);
+    Yellow          = "Yellow";
+    Red         = "Red";
+    Image        = OPI_GetTestData.GetBinary("Picture");
+    AndVF             = GetTempFileName("png");   
+    Image.Write(AndVF);
     
-    МассивВариантов = Новый Массив;
-    МассивВариантов.Добавить(Желтый);
-    МассивВариантов.Добавить("Синий");
-    МассивВариантов.Добавить(Красный);
+    OptionArray = New Array;
+    OptionArray.Add(Yellow);
+    OptionArray.Add("Blue");
+    OptionArray.Add(Red);
     
-    Результат = OPI_VK.СоздатьСвойствоТовара("Цвет", Параметры);
+    Result = OPI_VK.CreateProductProperty("Color", Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьСвойствоТовара");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateProductProperty");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    Свойство  = Результат[Response]["property_id"];
-    Свойство  = OPI_Инструменты.ЧислоВСтроку(Свойство);
+    Property  = Result[Response]["property_id"];
+    Property  = OPI_Tools.NumberToString(Property);
      
-    СоответствиеСвойств = Новый Соответствие;
+    PropertyMatch = New Match;
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["property_id"]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response]["property_id"]).HasType(TypeNumber).Filled();
         
-    Результат = OPI_VK.ИзменитьСвойствоТовара("Цвет (изм.)", Свойство, Параметры);
+    Result = OPI_VK.EditProductProperty("Color (fromм.)", Property, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьСвойствоТовара");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditProductProperty");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
    
-    Для Каждого Вариант Из МассивВариантов Цикл
+    For Each Option Of OptionArray Loop
         
-        Результат = OPI_VK.ДобавитьВариантСвойстваТовара(Вариант, Свойство, Параметры);
+        Result = OPI_VK.AddProductPropertyVariant(Option, Property, Parameters);
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьВариантСвойстваТовара");
+        // !OInt OPI_GetTestData.WriteLog(Result, "AddProductPropertyVariant");
         
-        OPI_Инструменты.Пауза(5);
+        OPI_Tools.Pause(5);
         
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["variant_id"]).ИмеетТип(ТипЧисло).Заполнено();
+        OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+        OPI_GetTestData.ExpectsThat(Result[Response]["variant_id"]).HasType(TypeNumber).Filled();
             
-        ИДВарианта = Результат[Response]["variant_id"];
-        СоответствиеСвойств.Вставить(Вариант, ИДВарианта);
+        VariantID = Result[Response]["variant_id"];
+        PropertyMatch.Insert(Option, VariantID);
         
-        Результат = OPI_VK.ИзменитьВариантСвойстваТовара(Вариант + Строка(Новый УникальныйИдентификатор())
-            , Свойство
-            , ИДВарианта
-            , Параметры);
+        Result = OPI_VK.EditProductPropertyVariant(Option + String(New UniqueIdentifier())
+            , Property
+            , VariantID
+            , Parameters);
             
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьВариантСвойстваТовара");
+        // !OInt OPI_GetTestData.WriteLog(Result, "EditProductPropertyVariant");
         
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
               
-    КонецЦикла;
+    EndOfLoop;
   
-    МассивКартинок = Новый Массив;
-    МассивКартинок.Добавить(ИВФ);
-    МассивКартинок.Добавить(Картинка);
+    ImageArray = New Array;
+    ImageArray.Add(AndVF);
+    ImageArray.Add(Image);
     
-    Товар = Новый Соответствие();
-    Товар.Вставить("Имя"                , "Тестовый товар (" + Желтый + ")");    
-    Товар.Вставить("Описание"           , "Описание товара");
-    Товар.Вставить("Категория"          , "20173");           
-    Товар.Вставить("Цена"               , 1);                
-    Товар.Вставить("СтараяЦена"         , 15);     
-    Товар.Вставить("ОсновноеФото"       , Картинка);                   
-    Товар.Вставить("URL"                , "https://github.com/Bayselonarrend/OpenIntegrations");     
-    Товар.Вставить("ДополнительныеФото" , МассивКартинок);     
-    Товар.Вставить("ГлавныйВГруппе"     , Истина);             
-    Товар.Вставить("НомерГруппы"        , Неопределено);      
-    Товар.Вставить("Ширина"             , 20);     
-    Товар.Вставить("Высота"             , 30);     
-    Товар.Вставить("Глубина"            , 40);     
-    Товар.Вставить("Вес"                , 100);
-    Товар.Вставить("SKU"                , 12345);
-    Товар.Вставить("ДоступныйОстаток"   , "10");
-    Товар.Вставить("ЗначенияСвойств"    , СоответствиеСвойств[Желтый]);
+    Product = New Match();
+    Product.Insert("Name"                , "TestProduct (" + Yellow + ")");    
+    Product.Insert("Description"           , "Product description");
+    Product.Insert("Category"          , "20173");           
+    Product.Insert("Price"               , 1);                
+    Product.Insert("OldPrice"         , 15);     
+    Product.Insert("MainPhoto"       , Image);                   
+    Product.Insert("URL"                , "https://github.com/Bayselonarrend/OpenIntegrations");     
+    Product.Insert("AdditionalPhotos" , ImageArray);     
+    Product.Insert("MainInGroup"     , True);             
+    Product.Insert("GroupNumber"        , Undefined);      
+    Product.Insert("Width"             , 20);     
+    Product.Insert("Height"             , 30);     
+    Product.Insert("Depth"            , 40);     
+    Product.Insert("Weight"                , 100);
+    Product.Insert("SKU"                , 12345);
+    Product.Insert("AvailableBalance"   , "10");
+    Product.Insert("PropertyValues"    , PropertyMatch[Yellow]);
     
-    Результат = OPI_VK.ДобавитьТовар(Товар, , Параметры);                // Добавление товара  
+    Result = OPI_VK.AddProduct(Product, , Parameters);                // Adding product  
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьТовар");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddProduct");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    ИДЖелтого = Результат[Response]["market_item_id"];               
+    YellowID = Result[Response]["market_item_id"];               
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response][MII]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response][MII]).HasType(TypeNumber).Filled();
         
-    Товар.Вставить("Имя"            , "Тестовый товар (" + Красный + ")");
-    Товар.Вставить("ЗначенияСвойств", СоответствиеСвойств[Красный]);
+    Product.Insert("Name"            , "TestProduct (" + Red + ")");
+    Product.Insert("PropertyValues", PropertyMatch[Red]);
 
-    Результат  = OPI_VK.ДобавитьТовар(Товар, , Параметры);                // Добавление товара
+    Result  = OPI_VK.AddProduct(Product, , Parameters);                // Adding product
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьТовар");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddProduct");
       
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    ИДКрасного = Результат[Response][MII];               
+    RedID = Result[Response][MII];               
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response][MII]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response][MII]).HasType(TypeNumber).Filled();
         
-    МассивТоваров = Новый Массив;
-    МассивТоваров.Добавить(ИДЖелтого);
-    МассивТоваров.Добавить(ИДКрасного);
+    Array of products = New Array;
+    Array of products.Add(YellowID);
+    Array of products.Add(RedID);
     
-    Результат = OPI_VK.ПолучитьТоварыПоИД(МассивТоваров, Параметры);
+    Result = OPI_VK.GetProductsByID(Array of products, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьТоварыПоИД");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetProductsByID");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["items"]).ИмеетТип("Массив").ИмеетДлину(2);
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response]["items"]).HasType("Array").HasLength(2);
         
-    Результат = OPI_VK.СгруппироватьТовары(МассивТоваров, , Параметры);
+    Result = OPI_VK.GroupProducts(Array of products, , Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СгруппироватьТовары");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GroupProducts");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response]["item_group_id"]).ИмеетТип(ТипЧисло).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch);
+    OPI_GetTestData.ExpectsThat(Result[Response]["item_group_id"]).HasType(TypeNumber).Filled();
        
-    OPI_VK.УдалитьТовар(ИДЖелтого , Параметры);
-    OPI_VK.УдалитьТовар(ИДКрасного, Параметры);
+    OPI_VK.DeleteProduct(YellowID , Parameters);
+    OPI_VK.DeleteProduct(RedID, Parameters);
     
-    Для Каждого Вариант Из СоответствиеСвойств Цикл
+    For Each Option Of PropertyMatch Loop
         
-        Удаление = OPI_VK.УдалитьВариантСвойстваТовара(Вариант.Значение, Параметры);
+        Deletion = OPI_VK.DeleteProductPropertyVariant(Option.Value, Parameters);
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьВариантСвойстваТовара");
+        // !OInt OPI_GetTestData.WriteLog(Result, "DeleteProductPropertyVariant");
         
-        OPI_Инструменты.Пауза(5);
-        Проверка_ВКИстина(Удаление);
+        OPI_Tools.Pause(5);
+        Check_VKTrue(Deletion);
         
-    КонецЦикла;
+    EndOfLoop;
         
-    Удаление = OPI_VK.УдалитьСвойствоТовара(Свойство, Параметры);
+    Deletion = OPI_VK.DeleteProductProperty(Property, Parameters);
    
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьСвойствоТовара");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteProductProperty");
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    Проверка_ВКИстина(Удаление);
+    Check_VKTrue(Deletion);
 
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ПолучитьСписокТоваров() Экспорт
+Procedure VK_GetProductList() Export
  
-    Параметры = ПолучитьПараметрыВК();
-    Картинка  = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture"); 
+    Parameters = GetVKParameters();
+    Image  = OPI_GetTestData.GetBinary("Picture"); 
     
-    МассивКартинок = Новый Массив;
-    МассивКартинок.Добавить(Картинка);
+    ImageArray = New Array;
+    ImageArray.Add(Image);
     
-    Товар = Новый Соответствие();
-    Товар.Вставить("Имя"                , "Тестовый товар 2");    
-    Товар.Вставить("Описание"           , "Описание товара");
-    Товар.Вставить("Категория"          , "20173");           
-    Товар.Вставить("Цена"               , 1);                
-    Товар.Вставить("СтараяЦена"         , 15);     
-    Товар.Вставить("ОсновноеФото"       , Картинка);                   
-    Товар.Вставить("URL"                , "https://github.com/Bayselonarrend/OpenIntegrations");     
-    Товар.Вставить("ДополнительныеФото" , МассивКартинок);     
-    Товар.Вставить("ГлавныйВГруппе"     , Истина);             
-    Товар.Вставить("НомерГруппы"        , Неопределено);      
-    Товар.Вставить("Ширина"             , 20);     
-    Товар.Вставить("Высота"             , 30);     
-    Товар.Вставить("Глубина"            , 40);     
-    Товар.Вставить("Вес"                , 100);
-    Товар.Вставить("SKU"                , 12345);
-    Товар.Вставить("ДоступныйОстаток"   , "10");
+    Product = New Match();
+    Product.Insert("Name"                , "TestProduct2");    
+    Product.Insert("Description"           , "Product description");
+    Product.Insert("Category"          , "20173");           
+    Product.Insert("Price"               , 1);                
+    Product.Insert("OldPrice"         , 15);     
+    Product.Insert("MainPhoto"       , Image);                   
+    Product.Insert("URL"                , "https://github.com/Bayselonarrend/OpenIntegrations");     
+    Product.Insert("AdditionalPhotos" , ImageArray);     
+    Product.Insert("MainInGroup"     , True);             
+    Product.Insert("GroupNumber"        , Undefined);      
+    Product.Insert("Width"             , 20);     
+    Product.Insert("Height"             , 30);     
+    Product.Insert("Depth"            , 40);     
+    Product.Insert("Weight"                , 100);
+    Product.Insert("SKU"                , 12345);
+    Product.Insert("AvailableBalance"   , "10");
     
-    Результат = OPI_VK.ДобавитьТовар(Товар, , Параметры);
-    ИДТовара  = Результат["response"]["market_item_id"];
-    OPI_Инструменты.Пауза(5);
+    Result = OPI_VK.AddProduct(Product, , Parameters);
+    ProductID  = Result["response"]["market_item_id"];
+    OPI_Tools.Pause(5);
     
-    Результат = OPI_VK.ПолучитьСписокТоваров(, Параметры);
+    Result = OPI_VK.GetProductList(, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокТоваров");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetProductList");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат) 
-        .ИмеетТип("Массив").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result) 
+        .HasType("Array").Filled();
               
-    OPI_VK.УдалитьТовар(ИДТовара, Параметры);
+    OPI_VK.DeleteProduct(ProductID, Parameters);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ПолучитьСписокПодборок() Экспорт
+Procedure VK_GetSelectionList() Export
  
-    Параметры = ПолучитьПараметрыВК();
-    Картинка  = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture");    
-    Результат = OPI_VK.СоздатьПодборкуТоваров("Тестовая подборка"
-        , Картинка
-        , Истина
-        , Ложь
-        , Параметры); 
+    Parameters = GetVKParameters();
+    Image  = OPI_GetTestData.GetBinary("Picture");    
+    Result = OPI_VK.CreateProductCollection("TestCollection"
+        , Image
+        , True
+        , False
+        , Parameters); 
      
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПодборкуТоваров");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateProductCollection");
        
-    ИДПодборки = Результат["response"]["market_album_id"];      
-    Результат  = OPI_VK.ПолучитьСписокПодборок(Параметры);
+    SelectionID = Result["response"]["market_album_id"];      
+    Result  = OPI_VK.GetSelectionList(Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокПодборок");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetSelectionList");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат) 
-        .ИмеетТип("Массив").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result) 
+        .HasType("Array").Filled();
         
-    OPI_VK.УдалитьПодборку(ИДПодборки, Параметры); 
+    OPI_VK.DeleteSelection(SelectionID, Parameters); 
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ПолучитьСписокСвойств() Экспорт
+Procedure VK_GetPropertyList() Export
  
-    Параметры  = ПолучитьПараметрыВК();
-    Результат  = OPI_VK.ПолучитьСписокСвойств(Параметры);
+    Parameters  = GetVKParameters();
+    Result  = OPI_VK.GetPropertyList(Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокСвойств");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetPropertyList");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат) 
-        .ИмеетТип("Массив").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result) 
+        .HasType("Array").Filled();
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ПолучитьСписокЗаказов() Экспорт
+Procedure VK_GetOrderList() Export
  
-    Параметры  = ПолучитьПараметрыВК();
-    Результат  = OPI_VK.ПолучитьСписокЗаказов(Параметры);
+    Parameters  = GetVKParameters();
+    Result  = OPI_VK.GetOrderList(Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокЗаказов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetOrderList");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат) 
-        .ИмеетТип("Массив").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result) 
+        .HasType("Array").Filled();
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ВК_ЗагрузитьВидео() Экспорт
+Procedure VK_UploadVideo() Export
     
-    Параметры    = ПолучитьПараметрыВК();
-    Видео        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Video");
-    Наименование = "Новое видео";
-    Описание     = "Описание видео";
+    Parameters    = GetVKParameters();
+    Video        = OPI_GetTestData.GetParameter("Video");
+    Name = "NewVideo";
+    Description     = "Video description";
     
-    Результат = OPI_VK.ЗагрузитьВидеоНаСервер(Видео, Наименование, Описание, , Параметры);
+    Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокЗаказов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetOrderList");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["video_id"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["video_hash"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result["video_id"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["video_hash"]).Filled();
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область YandexDisk
+#Region YandexDisk
 
-Процедура ЯДиск_ПолучитьИнформациюОДиске() Экспорт
+Procedure YDisk_GetDiskInfo() Export
  
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    Соответствие = "Соответствие";
+    Token        = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    Match = "Match";
     
-    Результат = OPI_YandexDisk.ПолучитьИнформациюОДиске(Токен);
+    Result = OPI_YandexDisk.GetDiskInformation(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюОДиске");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetDiskInformation");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(Соответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["system_folders"]).ИмеетТип(Соответствие);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["user"]).ИмеетТип(Соответствие);
+    OPI_GetTestData.ExpectsThat(Result).HasType(Match).Filled();
+    OPI_GetTestData.ExpectsThat(Result["system_folders"]).HasType(Match);
+    OPI_GetTestData.ExpectsThat(Result["user"]).HasType(Match);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_СоздатьПапку() Экспорт
+Procedure YDisk_CreateFolder() Export
  
-   Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-   Путь  = "/" + Строка(Новый УникальныйИдентификатор);
+   Token = OPI_GetTestData.GetParameter("YandexDisk_Token");
+   Path  = "/" + String(New UniqueIdentifier);
    
-   Результат = OPI_YandexDisk.СоздатьПапку(Токен, Путь);
+   Result = OPI_YandexDisk.CreateFolder(Token, Path);
    
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПапку");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateFolder");
    
-   OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-   OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["type"]).Равно("dir");
-   OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["path"]).Равно("disk:" + Путь);
+   OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+   OPI_GetTestData.ExpectsThat(Result["type"]).Equal("dir");
+   OPI_GetTestData.ExpectsThat(Result["path"]).Equal("disk:" + Path);
         
-   OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
+   OPI_YandexDisk.DeleteObject(Token, Path, False);
   
-   OPI_Инструменты.Пауза(5);
+   OPI_Tools.Pause(5);
   
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект() Экспорт
+Procedure YDisk_UploadByUrlAndGetObject() Export
  
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    Путь  = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
+    Token = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    Path  = "/" + String(New UniqueIdentifier) + ".png";
     URL   = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
 
-    OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, URL);
-    OPI_Инструменты.Пауза(5);
+    OPI_YandexDisk.UploadFileByURL(Token, Path, URL);
+    OPI_Tools.Pause(5);
         
-    Результат = OPI_YandexDisk.ПолучитьОбъект(Токен, Путь);
+    Result = OPI_YandexDisk.GetObject(Token, Path);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьОбъект");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetObject");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["type"]).Равно("file");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["path"]).Равно("disk:" + Путь);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["type"]).Equal("file");
+    OPI_GetTestData.ExpectsThat(Result["path"]).Equal("disk:" + Path);
 
-     OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
+     OPI_YandexDisk.DeleteObject(Token, Path, False);
      
-     OPI_Инструменты.Пауза(5);
+     OPI_Tools.Pause(5);
      
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_ЗагрузитьУдалитьФайл() Экспорт
+Procedure YDisk_UploadDeleteFile() Export
  
-    Токен    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    Путь     = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
-    Картинка = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture");
-    ИВФ      = ПолучитьИмяВременногоФайла("png");
-    Картинка.Записать(ИВФ);
+    Token    = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    Path     = "/" + String(New UniqueIdentifier) + ".png";
+    Image = OPI_GetTestData.GetBinary("Picture");
+    AndVF      = GetTempFileName("png");
+    Image.Write(AndVF);
 
-    Результат = OPI_YandexDisk.ЗагрузитьФайл(Токен, Путь, Картинка, Истина);
+    Result = OPI_YandexDisk.UploadFile(Token, Path, Image, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UploadFile");
     
-    Проверка_Пусто(Результат);
-    OPI_Инструменты.Пауза(5);
+    Check_Empty(Result);
+    OPI_Tools.Pause(5);
     
-    Результат = OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
+    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьОбъект");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteObject");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    Результат = OPI_YandexDisk.ЗагрузитьФайл(Токен, Путь, ИВФ, Истина);
+    Result = OPI_YandexDisk.UploadFile(Token, Path, AndVF, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UploadFile");
     
-    Проверка_Пусто(Результат);
-    OPI_Инструменты.Пауза(5);
+    Check_Empty(Result);
+    OPI_Tools.Pause(5);
     
-    Результат = OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь); 
+    Result = OPI_YandexDisk.DeleteObject(Token, Path, False); 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьОбъект");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteObject");
     
-    Проверка_Пусто(Результат);   
+    Check_Empty(Result);   
 
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_СоздатьКопиюОбъекта() Экспорт
+Procedure YDisk_CreateObjectCopy() Export
  
-    Токен           = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    ПутьОригинала   = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
-    ПутьКопии       = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
+    Token           = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    OriginalPath   = "/" + String(New UniqueIdentifier) + ".png";
+    CopyPath       = "/" + String(New UniqueIdentifier) + ".png";
     URL             = "https://raw.githubusercontent.com/Bayselonarrend/"
         + "OpenIntegrations/main/Media/logo.png";
 
-    OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, ПутьОригинала, URL);
-    OPI_Инструменты.Пауза(5);
+    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    OPI_Tools.Pause(5);
       
-    Результат = OPI_YandexDisk.СоздатьКопиюОбъекта(Токен, ПутьОригинала, ПутьКопии, Истина);
+    Result = OPI_YandexDisk.CreateObjectCopy(Token, OriginalPath, CopyPath, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьКопиюОбъекта");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateObjectCopy");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["type"]).Равно("file");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["path"]).Равно("disk:" + ПутьКопии);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["type"]).Equal("file");
+    OPI_GetTestData.ExpectsThat(Result["path"]).Equal("disk:" + CopyPath);
 
-     OPI_YandexDisk.УдалитьОбъект(Токен, ПутьОригинала, Ложь);
-     OPI_YandexDisk.УдалитьОбъект(Токен, ПутьКопии, Ложь);
+     OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
+     OPI_YandexDisk.DeleteObject(Token, CopyPath, False);
      
-     OPI_Инструменты.Пауза(5);
+     OPI_Tools.Pause(5);
      
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_ПолучитьСсылкуНаСкачивание() Экспорт
+Procedure YDisk_GetDownloadLink() Export
  
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    Путь  = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
+    Token = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    Path  = "/" + String(New UniqueIdentifier) + ".png";
     URL   = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
 
-    OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, URL);
-    OPI_Инструменты.Пауза(5);
+    OPI_YandexDisk.UploadFileByURL(Token, Path, URL);
+    OPI_Tools.Pause(5);
        
-    Результат = OPI_YandexDisk.ПолучитьСсылкуДляСкачивания(Токен, Путь);
+    Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСсылкуДляСкачивания");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetDownloadLink");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["method"]).Равно("GET");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["href"]).ИмеетТип("Строка").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["method"]).Equal("GET");
+    OPI_GetTestData.ExpectsThat(Result["href"]).HasType("String").Filled();
     
-    URL = Результат["href"];
+    URL = Result["href"];
     
-    Результат = OPI_YandexDisk.СкачатьФайл(Токен, Путь);
+    Result = OPI_YandexDisk.DownloadFile(Token, Path);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("ДвоичныеДанные").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("BinaryData").Filled();
 
-    OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_ПолучитьСписокФайлов() Экспорт
+Procedure YDisk_GetFileList() Export
  
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    Количество = 2;
-    Отступ     = 1;
+    Token = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    Quantity = 2;
+    Indent     = 1;
     
-    Результат = OPI_YandexDisk.ПолучитьСписокФайлов(Токен, Количество, Отступ, "image");
+    Result = OPI_YandexDisk.GetFilesList(Token, Quantity, Indent, "image");
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокФайлов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetFilesList");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["limit"]).Равно(Количество);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["offset"]).Равно(Отступ);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["items"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["limit"]).Equal(Quantity);
+    OPI_GetTestData.ExpectsThat(Result["offset"]).Equal(Indent);
+    OPI_GetTestData.ExpectsThat(Result["items"]).HasType("Array");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_ПереместитьОбъект() Экспорт
+Procedure YDisk_MoveObject() Export
  
-    Токен           = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    ПутьОригинала   = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
-    ПутьКопии       = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
+    Token           = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    OriginalPath   = "/" + String(New UniqueIdentifier) + ".png";
+    CopyPath       = "/" + String(New UniqueIdentifier) + ".png";
     URL             = "https://raw.githubusercontent.com/Bayselonarrend/"
         + "OpenIntegrations/main/Media/logo.png";
 
-    OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, ПутьОригинала, URL);
-    OPI_Инструменты.Пауза(15);
+    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    OPI_Tools.Pause(15);
       
-    Результат = OPI_YandexDisk.ПереместитьОбъект(Токен, ПутьОригинала, ПутьКопии, Истина);
+    Result = OPI_YandexDisk.MoveObject(Token, OriginalPath, CopyPath, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПереместитьОбъект");
+    // !OInt OPI_GetTestData.WriteLog(Result, "MoveObject");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["type"]).Равно("file");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["path"]).Равно("disk:" + ПутьКопии);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["type"]).Equal("file");
+    OPI_GetTestData.ExpectsThat(Result["path"]).Equal("disk:" + CopyPath);
 
-    OPI_YandexDisk.УдалитьОбъект(Токен, ПутьОригинала, Ложь);
-    OPI_YandexDisk.УдалитьОбъект(Токен, ПутьКопии, Ложь);
+    OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
+    OPI_YandexDisk.DeleteObject(Token, CopyPath, False);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
      
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_ДействияПубличныхОбъектов() Экспорт
+Procedure YDisk_PublicObjectActions() Export
  
     PUrl         = "public_url";
-    Соответствие = "Соответствие";
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    Путь         = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
+    Match = "Match";
+    Token        = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    Path         = "/" + String(New UniqueIdentifier) + ".png";
     URL          = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
     
-    OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, URL);
-    OPI_Инструменты.Пауза(5);
+    OPI_YandexDisk.UploadFileByURL(Token, Path, URL);
+    OPI_Tools.Pause(5);
     
-    МассивРезультатов = Новый Массив;
+    ResultArray = New Array;
     
-    МассивРезультатов.Добавить(OPI_YandexDisk.ОпубликоватьОбъект(Токен, Путь)); 
-    ПубличныйURL      = МассивРезультатов[0][PUrl];
+    ResultArray.Add(OPI_YandexDisk.PublishObject(Token, Path)); 
+    PublicURL      = ResultArray[0][PUrl];
     
-    Результат  = OPI_YandexDisk.ПолучитьСсылкуСкачиванияПубличногоОбъекта(Токен, ПубличныйURL);
+    Result  = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, PublicURL);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСсылкуСкачиванияПубличногоОбъекта");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetDownloadLinkForPublicObject");
               
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(Соответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["method"]).Равно("GET");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["href"]).ИмеетТип("Строка").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(Match).Filled();
+    OPI_GetTestData.ExpectsThat(Result["method"]).Equal("GET");
+    OPI_GetTestData.ExpectsThat(Result["href"]).HasType("String").Filled();
     
-    Результат   = OPI_YandexDisk.ПолучитьПубличныйОбъект(Токен, ПубличныйURL);
+    Result   = OPI_YandexDisk.GetPublicObject(Token, PublicURL);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьПубличныйОбъект");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetPublicObject");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(Соответствие).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["type"]).Равно("file");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["path"]).Равно("/");
+    OPI_GetTestData.ExpectsThat(Result).HasType(Match).Filled();
+    OPI_GetTestData.ExpectsThat(Result["type"]).Equal("file");
+    OPI_GetTestData.ExpectsThat(Result["path"]).Equal("/");
     
-    МассивРезультатов.Добавить(OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, ПубличныйURL));
+    ResultArray.Add(OPI_YandexDisk.SavePublicObjectToDisk(Token, PublicURL));
                 
-    МассивРезультатов.Добавить(OPI_YandexDisk.ОтменитьПубликациюОбъекта(Токен, Путь));
+    ResultArray.Add(OPI_YandexDisk.CancelObjectPublication(Token, Path));
     
-    Счетчик = 0;
-    Для Каждого Результат Из МассивРезультатов Цикл
+    Counter = 0;
+    For Each Result Of ResultArray Loop
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "Изменение публикации");
+        // !OInt OPI_GetTestData.WriteLog(Result, "PublicationChange");
             
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(Соответствие).Заполнено();
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["type"]).Равно("file");
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["path"]).Заполнено();
+        OPI_GetTestData.ExpectsThat(Result).HasType(Match).Filled();
+        OPI_GetTestData.ExpectsThat(Result["type"]).Equal("file");
+        OPI_GetTestData.ExpectsThat(Result["path"]).Filled();
             
-        Если Счетчик = 0 Тогда   
-            OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[PUrl]).ИмеетТип("Строка").Заполнено();
-        Иначе
-            OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[PUrl]).ИмеетТип("Неопределено");
-        КонецЕсли;
+        If Counter = 0 Then   
+            OPI_GetTestData.ExpectsThat(Result[PUrl]).HasType("String").Filled();
+        Otherwise
+            OPI_GetTestData.ExpectsThat(Result[PUrl]).HasType("Undefined");
+        EndIf;
         
-        Счетчик = Счетчик + 1;
+        Counter = Counter + 1;
         
-    КонецЦикла;
+    EndOfLoop;
      
-    OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ЯДиск_ПолучитьСписокОпубликованных() Экспорт
+Procedure YDisk_GetPublishedList() Export
  
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("YandexDisk_Token");
-    Количество = 2;
-    Отступ     = 1;
+    Token = OPI_GetTestData.GetParameter("YandexDisk_Token");
+    Quantity = 2;
+    Indent     = 1;
     
-    Результат = OPI_YandexDisk.ПолучитьСписокОпубликованныхОбъектов(Токен, Количество, Отступ);
+    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Quantity, Indent);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокОпубликованныхОбъектов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetPublishedObjectsList");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["limit"]).Равно(Количество);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["offset"]).Равно(Отступ);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["items"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["limit"]).Equal(Quantity);
+    OPI_GetTestData.ExpectsThat(Result["offset"]).Equal(Indent);
+    OPI_GetTestData.ExpectsThat(Result["items"]).HasType("Array");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область Viber
+#Region Viber
 
-Процедура Вайбер_ПолучитьИнформациюОКанале() Экспорт
+Procedure Viber_GetChannelInfo() Export
  
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken");    
-    Результат = OPI_Viber.ПолучитьИнформациюОКанале(Токен);
+    Token     = OPI_GetTestData.GetParameter("Viber_ChannelToken");    
+    Result = OPI_Viber.GetChannelInformation(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюОКанале");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetChannelInformation");
         
-    Проверка_ВайберОк(Результат);
+    Check_ViberOk(Result);
 
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ПолучитьДанныеПользователя() Экспорт
+Procedure Viber_GetUserData() Export
  
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken"); 
-    Пользователь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelAdminID");
-    Результат    = OPI_Viber.ПолучитьДанныеПользователя(Токен, Пользователь);
+    Token        = OPI_GetTestData.GetParameter("Viber_ChannelToken"); 
+    User = OPI_GetTestData.GetParameter("Viber_ChannelAdminID");
+    Result    = OPI_Viber.GetUserData(Token, User);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьДанныеПользователя");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetUserData");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["chat_hostname"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["status_message"]).Заполнено();
-    OPI_Инструменты.Пауза(5);
+    OPI_GetTestData.ExpectsThat(Result["chat_hostname"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["status_message"]).Filled();
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ПолучитьОнлайнПользователей() Экспорт
+Procedure Viber_GetOnlineUsers() Export
  
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken"); 
-    Пользователь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_UserID");
-    Результат    = OPI_Viber.ПолучитьОнлайнПользователей(Токен, Пользователь);
+    Token        = OPI_GetTestData.GetParameter("Viber_ChannelToken"); 
+    User = OPI_GetTestData.GetParameter("Viber_UserID");
+    Result    = OPI_Viber.GetOnlineUsers(Token, User);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьОнлайнПользователей");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetOnlineUsers");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["users"]).ИмеетТип("Массив");
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["users"]).HasType("Array");
+    Check_ViberOk(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ОтправитьТекстовоеСообщение() Экспорт
+Procedure Viber_SendTextMessage() Export
  
-    Текст         = "Тестовое сообщение";
-    ТокенКанал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken");
-    ТокенБота     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_Token");   
-    Пользователь  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_UserID");
-    Администратор = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelAdminID");
+    Text         = "TestMessage";
+    ChannelToken    = OPI_GetTestData.GetParameter("Viber_ChannelToken");
+    BotToken     = OPI_GetTestData.GetParameter("Viber_Token");   
+    User  = OPI_GetTestData.GetParameter("Viber_UserID");
+    Administrator = OPI_GetTestData.GetParameter("Viber_ChannelAdminID");
     
-    МассивКнопок  = Новый Массив;
-    МассивКнопок.Добавить("Кнопка 1");
-    МассивКнопок.Добавить("Кнопка 2");
-    МассивКнопок.Добавить("Кнопка 3");
+    ButtonArray  = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+    ButtonArray.Add("Button 3");
     
-    Клавиатура = OPI_Viber.СформироватьКлавиатуруИзМассиваКнопок(МассивКнопок);
+    Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
  
-    Результат  = OPI_Viber.ОтправитьТекстовоеСообщение(ТокенБота, Текст, Пользователь, Ложь, Клавиатура);
+    Result  = OPI_Viber.SendTextMessage(BotToken, Text, User, False, Keyboard);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьТекстовоеСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendTextMessage");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    Результат  = OPI_Viber.ОтправитьТекстовоеСообщение(ТокенКанал, Текст, Администратор, Истина, Клавиатура);
+    Result  = OPI_Viber.SendTextMessage(ChannelToken, Text, Administrator, True, Keyboard);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьТекстовоеСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendTextMessage");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ОтправитьКартинку() Экспорт
+Procedure Viber_SendImage() Export
 
-    Текст         = "Тестовое сообщение";
-    Картинка      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Picture");
-    ТокенКанал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken");
-    ТокенБота     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_Token");   
-    Пользователь  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_UserID");
-    Администратор = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelAdminID");
+    Text         = "TestMessage";
+    Image      = OPI_GetTestData.GetParameter("Picture");
+    ChannelToken    = OPI_GetTestData.GetParameter("Viber_ChannelToken");
+    BotToken     = OPI_GetTestData.GetParameter("Viber_Token");   
+    User  = OPI_GetTestData.GetParameter("Viber_UserID");
+    Administrator = OPI_GetTestData.GetParameter("Viber_ChannelAdminID");
      
-    Результат  = OPI_Viber.ОтправитьКартинку(ТокенБота, Картинка, Пользователь, Ложь, Текст);
+    Result  = OPI_Viber.SendImage(BotToken, Image, User, False, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКартинку");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendImage");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    Результат  = OPI_Viber.ОтправитьКартинку(ТокенКанал, Картинка, Администратор, Истина, Текст);
+    Result  = OPI_Viber.SendImage(ChannelToken, Image, Administrator, True, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКартинку");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendImage");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ОтправитьФайл() Экспорт
+Procedure Viber_SendFile() Export
   
-    Документ      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Document");
-    ТокенКанал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken");
-    ТокенБота     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_Token");   
-    Пользователь  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_UserID");
-    Администратор = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelAdminID");
+    Document      = OPI_GetTestData.GetParameter("Document");
+    ChannelToken    = OPI_GetTestData.GetParameter("Viber_ChannelToken");
+    BotToken     = OPI_GetTestData.GetParameter("Viber_Token");   
+    User  = OPI_GetTestData.GetParameter("Viber_UserID");
+    Administrator = OPI_GetTestData.GetParameter("Viber_ChannelAdminID");
        
-    Результат  = OPI_Viber.ОтправитьФайл(ТокенБота, Документ, Пользователь, Ложь, "docx");
+    Result  = OPI_Viber.SendFile(BotToken, Document, User, False, "docx");
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendFile");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    Результат  = OPI_Viber.ОтправитьФайл(ТокенКанал, Документ, Администратор, Истина, "docx");
+    Result  = OPI_Viber.SendFile(ChannelToken, Document, Administrator, True, "docx");
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendFile");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ОтправитьКонтакт() Экспорт
+Procedure Viber_SendContact() Export
  
-    Имя           = "Петр Петров";
-    Телефон       = "+123456789";
-    ТокенКанал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken");
-    ТокенБота     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_Token");   
-    Пользователь  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_UserID");
-    Администратор = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelAdminID");
+    Name           = "Petr Petrov";
+    Phone       = "+123456789";
+    ChannelToken    = OPI_GetTestData.GetParameter("Viber_ChannelToken");
+    BotToken     = OPI_GetTestData.GetParameter("Viber_Token");   
+    User  = OPI_GetTestData.GetParameter("Viber_UserID");
+    Administrator = OPI_GetTestData.GetParameter("Viber_ChannelAdminID");
          
-    Результат  = OPI_Viber.ОтправитьКонтакт(ТокенБота, Имя, Телефон, Пользователь, Ложь);
+    Result  = OPI_Viber.SendContact(BotToken, Name, Phone, User, False);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКонтакт");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendContact");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    Результат  = OPI_Viber.ОтправитьКонтакт(ТокенКанал, Имя, Телефон, Администратор, Истина);
+    Result  = OPI_Viber.SendContact(ChannelToken, Name, Phone, Administrator, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКонтакт");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendContact");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ОтправитьЛокацию() Экспорт
+Procedure Viber_SendLocation() Export
 
-    Широта        = "48.87373649724122";
-    Долгота       = "2.2954639195323967";
-    ТокенКанал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken");
-    ТокенБота     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_Token");   
-    Пользователь  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_UserID");
-    Администратор = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelAdminID");
+    Latitude        = "48.87373649724122";
+    Longitude       = "2.2954639195323967";
+    ChannelToken    = OPI_GetTestData.GetParameter("Viber_ChannelToken");
+    BotToken     = OPI_GetTestData.GetParameter("Viber_Token");   
+    User  = OPI_GetTestData.GetParameter("Viber_UserID");
+    Administrator = OPI_GetTestData.GetParameter("Viber_ChannelAdminID");
          
-    Результат  = OPI_Viber.ОтправитьЛокацию(ТокенБота, Широта, Долгота, Пользователь, Ложь);
+    Result  = OPI_Viber.SendLocation(BotToken, Latitude, Longitude, User, False);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьЛокацию");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendLocation");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    Результат  = OPI_Viber.ОтправитьЛокацию(ТокенКанал, Широта, Долгота, Администратор, Истина);
+    Result  = OPI_Viber.SendLocation(ChannelToken, Latitude, Longitude, Administrator, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьЛокацию");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendLocation");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Вайбер_ОтправитьСсылку() Экспорт
+Procedure Viber_SendLink() Export
 
     URL           = "https://github.com/Bayselonarrend/OpenIntegrations";
-    ТокенКанал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelToken");
-    ТокенБота     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_Token");   
-    Пользователь  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_UserID");
-    Администратор = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Viber_ChannelAdminID");
+    ChannelToken    = OPI_GetTestData.GetParameter("Viber_ChannelToken");
+    BotToken     = OPI_GetTestData.GetParameter("Viber_Token");   
+    User  = OPI_GetTestData.GetParameter("Viber_UserID");
+    Administrator = OPI_GetTestData.GetParameter("Viber_ChannelAdminID");
          
-    Результат  = OPI_Viber.ОтправитьСсылку(ТокенБота, URL, Пользователь, Ложь);
+    Result  = OPI_Viber.SendLink(BotToken, URL, User, False);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСсылку");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendLink");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    Результат  = OPI_Viber.ОтправитьСсылку(ТокенКанал, URL, Администратор, Истина);
+    Result  = OPI_Viber.SendLink(ChannelToken, URL, Administrator, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСсылку");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendLink");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_token"]).Заполнено();
-    Проверка_ВайберОк(Результат);
+    OPI_GetTestData.ExpectsThat(Result["message_token"]).Filled();
+    Check_ViberOk(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область GoogleWorkspace
+#Region GoogleWorkspace
 
-Процедура ГВ_ПолучитьСсылкуАвторизации() Экспорт
+Procedure GV_GetAuthorizationLink() Export
  
-    ClientID  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_ClientID");    
-    Результат = OPI_GoogleWorkspace.СформироватьСсылкуПолученияКода(ClientID);
+    ClientID  = OPI_GetTestData.GetParameter("Google_ClientID");    
+    Result = OPI_GoogleWorkspace.FormCodeRetrievalLink(ClientID);
             
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат)
-        .ИмеетТип("Строка") 
-        .Заполнено();
+    OPI_GetTestData.ExpectsThat(Result)
+        .HasType("String") 
+        .Filled();
         
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Google_Link", Результат);
+    OPI_GetTestData.WriteParameter("Google_Link", Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура ГВ_ПолучитьТокен() Экспорт
+Procedure GV_GetToken() Export
  
-    ClientID      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_ClientID");
-    ClientSecret  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_ClientSecret");
-    Code          = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Code");
+    ClientID      = OPI_GetTestData.GetParameter("Google_ClientID");
+    ClientSecret  = OPI_GetTestData.GetParameter("Google_ClientSecret");
+    Code          = OPI_GetTestData.GetParameter("Google_Code");
     
-    Результат = OPI_GoogleWorkspace.ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
+    Result = OPI_GoogleWorkspace.GetTokenByCode(ClientID, ClientSecret, Code);
            
-    Если ЗначениеЗаполнено(Результат["access_token"])
-        И ЗначениеЗаполнено(Результат["refresh_token"]) Тогда
+    If ValueFilled(Result["access_token"])
+        And ValueFilled(Result["refresh_token"]) Then
         
-        OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Google_Token"  , Результат["access_token"]);
-        OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Google_Refresh", Результат["refresh_token"]);
+        OPI_GetTestData.WriteParameter("Google_Token"  , Result["access_token"]);
+        OPI_GetTestData.WriteParameter("Google_Refresh", Result["refresh_token"]);
     
-    КонецЕсли;
+    EndIf;
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
       
-КонецПроцедуры
+EndProcedure
 
-Процедура ГВ_ОбновитьТокен() Экспорт
+Procedure GV_UpdateToken() Export
  
-    ClientID      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_ClientID");
-    ClientSecret  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_ClientSecret");
-    RefreshToken  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Refresh");
+    ClientID      = OPI_GetTestData.GetParameter("Google_ClientID");
+    ClientSecret  = OPI_GetTestData.GetParameter("Google_ClientSecret");
+    RefreshToken  = OPI_GetTestData.GetParameter("Google_Refresh");
     
-    Результат = OPI_GoogleWorkspace.ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
+    Result = OPI_GoogleWorkspace.RefreshToken(ClientID, ClientSecret, RefreshToken);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие");                
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["access_token"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match");                
+    OPI_GetTestData.ExpectsThat(Result["access_token"]).Filled();
     
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Google_Token", Результат["access_token"]);
+    OPI_GetTestData.WriteParameter("Google_Token", Result["access_token"]);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область GoogleCalendar
+#Region GoogleCalendar
 
-Процедура ГК_ПолучитьСписокКалендарей() Экспорт
+Procedure GC_GetCalendarList() Export
  
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");    
-    Результат = OPI_GoogleCalendar.ПолучитьСписокКалендарей(Токен);
+    Token     = OPI_GetTestData.GetParameter("Google_Token");    
+    Result = OPI_GoogleCalendar.GetCalendarList(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокКалендарей");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetCalendarList");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат)
-        .ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result)
+        .HasType("Array");
 
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
             
-КонецПроцедуры
+EndProcedure
 
-Процедура ГК_СоздатьУдалитьКалендарь() Экспорт
+Procedure GC_CreateDeleteCalendar() Export
  
-    Токен                   = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token"); 
-    Наименование            = "Тестовый календарь";
-    Описание                = "Тестовое описание";
-    НаименованиеИзмененное  = Наименование + " (изм.)";
-    ТипСоответствие         = Тип("Соответствие");
-    ТипСтрока               = Тип("Строка");
+    Token                   = OPI_GetTestData.GetParameter("Google_Token"); 
+    Name            = "TestCalendar";
+    Description                = "TestDescription";
+    EditedName  = Name + " (fromм.)";
+    TypeMatch         = Type("Match");
+    TypeString               = Type("String");
     Summary                 = "summary";
-    Черный                  = "#000000";
-    Желтый                  = "#ffd800";
+    Black                  = "#000000";
+    Yellow                  = "#ffd800";
     
-    Результат = OPI_GoogleCalendar.СоздатьКалендарь(Токен, Наименование); 
+    Result = OPI_GoogleCalendar.CreateCalendar(Token, Name); 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьКалендарь");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateCalendar");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие); 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Summary]).Равно(Наименование);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["id"]).ИмеетТип(ТипСтрока).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch); 
+    OPI_GetTestData.ExpectsThat(Result[Summary]).Equal(Name);
+    OPI_GetTestData.ExpectsThat(Result["id"]).HasType(TypeString).Filled();
         
-    Календарь = Результат["id"];
+    Calendar = Result["id"];
     
-    Результат = OPI_GoogleCalendar.ИзменитьМетаданныеКалендаря(Токен
-        , Календарь
-        , НаименованиеИзмененное
-        , Описание);
+    Result = OPI_GoogleCalendar.EditCalendarMetadata(Token
+        , Calendar
+        , EditedName
+        , Description);
         
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьМетаданныеКалендаря");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditCalendarMetadata");
     
-    Проверка_ГКОбъект(Результат, НаименованиеИзмененное, Описание);
+    Check_GKObject(Result, EditedName, Description);
         
-    Результат = OPI_GoogleCalendar.ПолучитьМетаданныеКалендаря(Токен, Календарь);
+    Result = OPI_GoogleCalendar.GetCalendarMetadata(Token, Calendar);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьМетаданныеКалендаря");  
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetCalendarMetadata");  
     
-    Проверка_ГКОбъект(Результат, НаименованиеИзмененное, Описание);
+    Check_GKObject(Result, EditedName, Description);
 
-    Результат = OPI_GoogleCalendar.ДобавитьКалендарьВСписок(Токен, Календарь);
+    Result = OPI_GoogleCalendar.AddCalendarToList(Token, Calendar);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьКалендарьВСписок");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddCalendarToList");
     
-    Проверка_ГКОбъект(Результат, НаименованиеИзмененное, Описание);
+    Check_GKObject(Result, EditedName, Description);
     
-    Результат = OPI_GoogleCalendar.ИзменитьКалендарьСписка(Токен, Календарь, Черный, Желтый, Ложь);
+    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, Black, Yellow, False);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьКалендарьСписка");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditListCalendar");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие); 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Summary]).Равно(НаименованиеИзмененное);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["foregroundColor"]).Равно(Черный);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["backgroundColor"]).Равно(Желтый);
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch); 
+    OPI_GetTestData.ExpectsThat(Result[Summary]).Equal(EditedName);
+    OPI_GetTestData.ExpectsThat(Result["foregroundColor"]).Equal(Black);
+    OPI_GetTestData.ExpectsThat(Result["backgroundColor"]).Equal(Yellow);
         
-    Результат = OPI_GoogleCalendar.ПолучитьКалендарьСписка(Токен, Календарь);
+    Result = OPI_GoogleCalendar.GetListCalendar(Token, Calendar);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьКалендарьСписка");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetListCalendar");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип(ТипСоответствие); 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Summary]).Равно(НаименованиеИзмененное);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["foregroundColor"]).Равно(Черный);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["backgroundColor"]).Равно(Желтый);
+    OPI_GetTestData.ExpectsThat(Result).HasType(TypeMatch); 
+    OPI_GetTestData.ExpectsThat(Result[Summary]).Equal(EditedName);
+    OPI_GetTestData.ExpectsThat(Result["foregroundColor"]).Equal(Black);
+    OPI_GetTestData.ExpectsThat(Result["backgroundColor"]).Equal(Yellow);
 
-    Результат = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
+    Result = OPI_GoogleCalendar.ClearMainCalendar(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОчиститьОсновнойКалендарь");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ClearMainCalendar");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    Результат = OPI_GoogleCalendar.УдалитьКалендарьИзСписка(Токен, Календарь);
+    Result = OPI_GoogleCalendar.DeleteCalendarFromList(Token, Calendar);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьКалендарьИзСписка");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteCalendarFromList");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    Результат = OPI_GoogleCalendar.УдалитьКалендарь(Токен, Календарь);
+    Result = OPI_GoogleCalendar.DeleteCalendar(Token, Calendar);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьКалендарь");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteCalendar");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ГК_СоздатьУдалитьСобытие() Экспорт
+Procedure GC_CreateDeleteEvent() Export
  
-    ТекущаяДата     = OPI_Инструменты.ПолучитьТекущуюДату();
-    Токен           = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token"); 
-    Календарь       = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_CalendarID");
-    Наименование    = "Новое событие";
-    Описание        = "Описание тестового события";
-    ОписаниеИзм     = "Описание тестового события (изм.)";
+    CurrentDate     = OPI_Tools.GetCurrentDate();
+    Token           = OPI_GetTestData.GetParameter("Google_Token"); 
+    Calendar       = OPI_GetTestData.GetParameter("Google_CalendarID");
+    Name    = "New event";
+    Description        = "TestEventDescription";
+    EditedDescription     = "TestEventDescription (fromм.)";
     UID             = "id";
-    Час             = 3600;
+    Hour             = 3600;
 
-    Вложения        = Новый Соответствие;
+    Attachments        = New Match;
     
-    Вложения.Вставить("Картинка1"
+    Attachments.Insert("Image1"
         , "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
-    Вложения.Вставить("Картинка2"
+    Attachments.Insert("Image2"
         , "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1");
     
-    СоответствиеСобытия = Новый Соответствие;
-    СоответствиеСобытия.Вставить("Описание"                 , Описание);
-    СоответствиеСобытия.Вставить("Заголовок"                , Наименование);
-    СоответствиеСобытия.Вставить("МестоПроведения"          , "В офисе");
-    СоответствиеСобытия.Вставить("ДатаНачала"               , ТекущаяДата);
-    СоответствиеСобытия.Вставить("ДатаОкончания"            , СоответствиеСобытия["ДатаНачала"] + Час);
-    СоответствиеСобытия.Вставить("МассивURLФайловВложений"  , Вложения);
-    СоответствиеСобытия.Вставить("ОтправлятьУведомления"    , Истина);
+    EventMatch = New Match;
+    EventMatch.Insert("Description"                 , Description);
+    EventMatch.Insert("Title"                , Name);
+    EventMatch.Insert("Venue"          , "InOffice");
+    EventMatch.Insert("StartDate"               , CurrentDate);
+    EventMatch.Insert("EndDate"            , EventMatch["StartDate"] + Hour);
+    EventMatch.Insert("ArrayOfAttachmentURLs"  , Attachments);
+    EventMatch.Insert("SendNotifications"    , True);
     
-    Результат = OPI_GoogleCalendar.СоздатьСобытие(Токен, Календарь, СоответствиеСобытия);
+    Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMatch);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьСобытие");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateEvent");
     
-    Событие   = Результат[UID];
+    Event   = Result[UID];
     
-    Проверка_ГКОбъект(Результат, Наименование, Описание);
+    Check_GKObject(Result, Name, Description);
       
-    СоответствиеСобытия = Новый Соответствие;  
-    СоответствиеСобытия.Вставить("Описание", ОписаниеИзм);
+    EventMatch = New Match;  
+    EventMatch.Insert("Description", EditedDescription);
     
-    Результат = OPI_GoogleCalendar.ИзменитьСобытие(Токен, Календарь, СоответствиеСобытия, Событие);
+    Result = OPI_GoogleCalendar.EditEvent(Token, Calendar, EventMatch, Event);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьСобытие");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditEvent");
     
-    Проверка_ГКОбъект(Результат, Наименование, ОписаниеИзм);
+    Check_GKObject(Result, Name, EditedDescription);
         
-    Результат = OPI_GoogleCalendar.ПолучитьСобытие(Токен, Календарь, Событие);
+    Result = OPI_GoogleCalendar.GetEvent(Token, Calendar, Event);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСобытие");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetEvent");
     
-    Проверка_ГКОбъект(Результат, Наименование, ОписаниеИзм);
+    Check_GKObject(Result, Name, EditedDescription);
 
-    Результат = OPI_GoogleCalendar.ПереместитьСобытие(Токен, Календарь, Календарь, Событие);
+    Result = OPI_GoogleCalendar.MoveEvent(Token, Calendar, Calendar, Event);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПереместитьСобытие");
+    // !OInt OPI_GetTestData.WriteLog(Result, "MoveEvent");
     
-    Проверка_ГКОбъект(Результат, Наименование, ОписаниеИзм);
+    Check_GKObject(Result, Name, EditedDescription);
   
-    Результат = OPI_GoogleCalendar.УдалитьСобытие(Токен, Календарь, Событие); 
+    Result = OPI_GoogleCalendar.DeleteEvent(Token, Calendar, Event); 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьСобытие");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteEvent");
        
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ГК_ПолучитьСписокСобытий() Экспорт
+Procedure GC_GetEventList() Export
  
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");    
-    Календарь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_CalendarID");
+    Token     = OPI_GetTestData.GetParameter("Google_Token");    
+    Calendar = OPI_GetTestData.GetParameter("Google_CalendarID");
 
-    Результат = OPI_GoogleCalendar.ПолучитьСписокСобытий(Токен, Календарь);
+    Result = OPI_GoogleCalendar.GetEventList(Token, Calendar);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокСобытий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetEventList");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Array");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область GoogleDrive
+#Region GoogleDrive
 
-Процедура ГД_ПолучитьСписокКаталогов() Экспорт
+Procedure GD_GetCatalogList() Export
  
     MimeType  = "mimeType";
     Name      = "name";
-    Имя       = "Тестовая папка";
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");
-    Результат = OPI_GoogleDrive.ПолучитьСписокКаталогов(Токен, Имя, Истина);
+    Name       = "TestFolder";
+    Token     = OPI_GetTestData.GetParameter("Google_Token");
+    Result = OPI_GoogleDrive.GetDirectoriesList(Token, Name, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокКаталогов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetDirectoriesList");
     
-    Результат = Результат[0];
+    Result = Result[0];
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["files"]).ИмеетТип("Массив");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[MimeType]).Равно("application/vnd.google-apps.folder");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Name]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result["files"]).HasType("Array");
+    OPI_GetTestData.ExpectsThat(Result[MimeType]).Equal("application/vnd.google-apps.folder");
+    OPI_GetTestData.ExpectsThat(Result[Name]).Filled();
     
-    OPI_Инструменты.Пауза(5);
-    Идентификатор = Результат["id"];
+    OPI_Tools.Pause(5);
+    Identifier = Result["id"];
     
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("GD_Catalog", Идентификатор);
+    OPI_GetTestData.WriteParameter("GD_Catalog", Identifier);
     
-    Результат   = OPI_GoogleDrive.ПолучитьИнформациюОбОбъекте(Токен, Идентификатор);
+    Result   = OPI_GoogleDrive.GetObjectInformation(Token, Identifier);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюОбОбъекте");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetObjectInformation");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[MimeType]).Равно("application/vnd.google-apps.folder");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Name]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result[MimeType]).Equal("application/vnd.google-apps.folder");
+    OPI_GetTestData.ExpectsThat(Result[Name]).Filled();
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ГД_ЗагрузитьУдалитьФайл() Экспорт
+Procedure GD_UploadDeleteFile() Export
  
-    ЛишниеБайты = 2;
+    ExtraBytes = 2;
     
     Kind      = "kind";
     Content   = "content";
@@ -1762,3546 +1762,3546 @@
     Name      = "name";
     Id_       = "id";
     
-    МассивУдаляемых = Новый Массив;
-    Токен           = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");
-    Картинка        = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture");
-    КартинкаЗамены  = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture2");
-    Каталог         = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("GD_Catalog");
+    ArrayOfDeletions = New Array;
+    Token           = OPI_GetTestData.GetParameter("Google_Token");
+    Image        = OPI_GetTestData.GetBinary("Picture");
+    ReplacementImage  = OPI_GetTestData.GetBinary("Picture2");
+    Directory         = OPI_GetTestData.GetParameter("GD_Catalog");
     
-    Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла();
-    Описание.Вставить("Родитель", Каталог);
+    Description = OPI_GoogleDrive.GetFileDescription();
+    Description.Insert("Parent", Directory);
    
-    Результат = OPI_GoogleDrive.ЗагрузитьФайл(Токен, Картинка, Описание);
+    Result = OPI_GoogleDrive.UploadFile(Token, Image, Description);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UploadFile");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[MimeType]).Равно(Описание[MIME]);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Name]).Равно(Описание["Имя"]);
+    OPI_GetTestData.ExpectsThat(Result[MimeType]).Equal(Description[MIME]);
+    OPI_GetTestData.ExpectsThat(Result[Name]).Equal(Description["Name"]);
 
-    Идентификатор = Результат[Id_];
-    МассивУдаляемых.Добавить(Идентификатор);
+    Identifier = Result[Id_];
+    ArrayOfDeletions.Add(Identifier);
     
-    НовоеИмя  = "Скопированный файл.jpeg";
-    Результат = OPI_GoogleDrive.СкопироватьОбъект(Токен, Идентификатор, НовоеИмя, "root");
+    NewName  = "CopiedFile.jpeg";
+    Result = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, "root");
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СкоприроватьОбъект");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CopyObject");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[MimeType]).Равно(Описание[MIME]);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Name]).Равно(НовоеИмя);
+    OPI_GetTestData.ExpectsThat(Result[MimeType]).Equal(Description[MIME]);
+    OPI_GetTestData.ExpectsThat(Result[Name]).Equal(NewName);
        
-    МассивУдаляемых.Добавить(Результат[Id_]);
+    ArrayOfDeletions.Add(Result[Id_]);
     
-    Результат = OPI_GoogleDrive.СкачатьФайл(Токен, Идентификатор);
+    Result = OPI_GoogleDrive.DownloadFile(Token, Identifier);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СкачатьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DownloadFile");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат.Размер()).Равно(Картинка.Размер() + ЛишниеБайты);
-    OPI_Инструменты.Пауза(5);
+    OPI_GetTestData.ExpectsThat(Result.Size()).Equal(Image.Size() + ExtraBytes);
+    OPI_Tools.Pause(5);
     
-    НовоеИмя  = "Обновленный файл.jpg";
-    Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, КартинкаЗамены, НовоеИмя);
+    NewName  = "UpdatedFile.jpg";
+    Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, ReplacementImage, NewName);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОбновитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UpdateFile");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[MimeType]).Равно(Описание[MIME]);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Name]).Равно(НовоеИмя);
+    OPI_GetTestData.ExpectsThat(Result[MimeType]).Equal(Description[MIME]);
+    OPI_GetTestData.ExpectsThat(Result[Name]).Equal(NewName);
 
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-    Комментарий = "Yo";
-    Результат   = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);
+    Comment = "Yo";
+    Result   = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateComment");
   
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Content]).Равно(Комментарий);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Kind]).Равно("drive#comment");
+    OPI_GetTestData.ExpectsThat(Result[Content]).Equal(Comment);
+    OPI_GetTestData.ExpectsThat(Result[Kind]).Equal("drive#comment");
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
      
-    Для Каждого Удаляемый Из МассивУдаляемых Цикл
-        Результат = OPI_GoogleDrive.УдалитьОбъект(Токен, Удаляемый);    
+    For Each Deletable Of ArrayOfDeletions Loop
+        Result = OPI_GoogleDrive.DeleteObject(Token, Deletable);    
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьОбъект");
+        // !OInt OPI_GetTestData.WriteLog(Result, "DeleteObject");
       
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗначениеЗаполнено(Результат)).Равно(Ложь);
-        OPI_Инструменты.Пауза(2);
-    КонецЦикла;
+        OPI_GetTestData.ExpectsThat(ValueFilled(Result)).Equal(False);
+        OPI_Tools.Pause(2);
+    EndOfLoop;
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ГД_СоздатьУдалитьКомментарий() Экспорт
+Procedure GD_CreateDeleteComment() Export
     
     Kind      = "kind";
     Content   = "content";
     Id_       = "id";
     Comments  = "comments";
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");
-    Каталог   = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("GD_Catalog");
-    Картинка  = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture");
+    Token     = OPI_GetTestData.GetParameter("Google_Token");
+    Directory   = OPI_GetTestData.GetParameter("GD_Catalog");
+    Image  = OPI_GetTestData.GetBinary("Picture");
     
-    Описание  = OPI_GoogleDrive.ПолучитьОписаниеФайла();
-    Описание.Вставить("Родитель", Каталог);
+    Description  = OPI_GoogleDrive.GetFileDescription();
+    Description.Insert("Parent", Directory);
     
-    Результат     = OPI_GoogleDrive.ЗагрузитьФайл(Токен, Картинка, Описание);
-    Идентификатор = Результат[Id_];
+    Result     = OPI_GoogleDrive.UploadFile(Token, Image, Description);
+    Identifier = Result[Id_];
     
-    Комментарий         = "Новый комментарий";
-    МассивРезультатов   = Новый Массив;
-    Результат           = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);
+    Comment         = "NewComment";
+    ResultArray   = New Array;
+    Result           = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateComment");
     
-    ИДКомментария       = Результат[Id_];
+    CommentID       = Result[Id_];
     
-    МассивРезультатов.Добавить(Результат);
+    ResultArray.Add(Result);
     
-    Результат = OPI_GoogleDrive.ПолучитьКомментарий(Токен, Идентификатор, ИДКомментария);
+    Result = OPI_GoogleDrive.GetComment(Token, Identifier, CommentID);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetComment");
     
-    МассивРезультатов.Добавить(Результат);
+    ResultArray.Add(Result);
     
-    Результат         = OPI_GoogleDrive.ПолучитьСписокКомментариев(Токен, Идентификатор);
+    Result         = OPI_GoogleDrive.GetCommentList(Token, Identifier);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокКомментариев");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetCommentList");
     
-    Комментарии       = Результат[Comments];
-    ОбъектКомментарий = Комментарии[Комментарии.ВГраница()];
+    Comments       = Result[Comments];
+    CommentObject = Comments[Comments.WithinBoundary()];
     
-    МассивРезультатов.Добавить(ОбъектКомментарий);
+    ResultArray.Add(CommentObject);
     
-    Для Каждого Результат Из МассивРезультатов Цикл     
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Content]).Равно(Комментарий);
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Kind]).Равно("drive#comment");
-    КонецЦикла;
+    For Each Result Of ResultArray Loop     
+        OPI_GetTestData.ExpectsThat(Result[Content]).Equal(Comment);
+        OPI_GetTestData.ExpectsThat(Result[Kind]).Equal("drive#comment");
+    EndOfLoop;
     
-    Результат = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, ИДКомментария);    
+    Result = OPI_GoogleDrive.DeleteComment(Token, Identifier, CommentID);    
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteComment");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗначениеЗаполнено(Результат)).Равно(Ложь);
+    OPI_GetTestData.ExpectsThat(ValueFilled(Result)).Equal(False);
 
-    OPI_GoogleDrive.УдалитьОбъект(Токен, Идентификатор);
+    OPI_GoogleDrive.DeleteObject(Token, Identifier);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура ГД_СоздатьКаталог() Экспорт
+Procedure GD_CreateCatalog() Export
     
     Name       = "name";
-    Имя        = "Тестовая папка";
-    Токен      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");
-    Каталог    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("GD_Catalog");
+    Name        = "TestFolder";
+    Token      = OPI_GetTestData.GetParameter("Google_Token");
+    Directory    = OPI_GetTestData.GetParameter("GD_Catalog");
     
-    МассивРезультатов = Новый Массив;
+    ResultArray = New Array;
     
-    МассивРезультатов.Добавить(OPI_GoogleDrive.СоздатьПапку(Токен, Имя));
-    МассивРезультатов.Добавить(OPI_GoogleDrive.СоздатьПапку(Токен, Имя, Каталог));
+    ResultArray.Add(OPI_GoogleDrive.CreateFolder(Token, Name));
+    ResultArray.Add(OPI_GoogleDrive.CreateFolder(Token, Name, Directory));
     
-    Для Каждого Результат Из МассивРезультатов Цикл
+    For Each Result Of ResultArray Loop
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПапку");
+        // !OInt OPI_GetTestData.WriteLog(Result, "CreateFolder");
         
-        ИДКаталога = Результат["id"];
+        CatalogID = Result["id"];
                 
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Name]).Равно(Имя);
+        OPI_GetTestData.ExpectsThat(Result[Name]).Equal(Name);
         
-        OPI_GoogleDrive.УдалитьОбъект(Токен, ИДКаталога);
+        OPI_GoogleDrive.DeleteObject(Token, CatalogID);
         
-    КонецЦикла;
+    EndOfLoop;
 
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область GoogleSheets
+#Region GoogleSheets
 
-Процедура ГТ_СоздатьТаблицу() Экспорт
+Procedure GT_CreateTable() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");
-    Наименование = "Тестовая таблица";
+    Token        = OPI_GetTestData.GetParameter("Google_Token");
+    Name = "TestTable";
     
-    МассивЛистов = Новый Массив;
-    МассивЛистов.Добавить("Лист1");
-    МассивЛистов.Добавить("Лист2");
+    SheetArray = New Array;
+    SheetArray.Add("Sheet1");
+    SheetArray.Add("Sheet2");
     
-    Результат = OPI_GoogleSheets.СоздатьКнигу(Токен, Наименование, МассивЛистов);
+    Result = OPI_GoogleSheets.CreateBook(Token, Name, SheetArray);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьКнигу");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateBook");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["properties"]["title"]).Равно(Наименование);
+    OPI_GetTestData.ExpectsThat(Result["properties"]["title"]).Equal(Name);
 
-    Для Н = 0 По МассивЛистов.ВГраница() Цикл
+    For N = 0 by SheetArray.WithinBoundary() Loop
         
-        ИмяЛиста = Результат["sheets"][Н]["properties"]["title"];
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(ИмяЛиста).Равно(МассивЛистов[Н]);
-        Лист = Результат["sheets"][Н]["properties"]["sheetId"];
-        Лист = OPI_Инструменты.ЧислоВСтроку(Лист);
+        SheetName = Result["sheets"][N]["properties"]["title"];
+        OPI_GetTestData.ExpectsThat(SheetName).Equal(SheetArray[N]);
+        Sheet = Result["sheets"][N]["properties"]["sheetId"];
+        Sheet = OPI_Tools.NumberToString(Sheet);
         
-    КонецЦикла;
+    EndOfLoop;
     
-    Книга   = Результат["spreadsheetId"];
+    Book   = Result["spreadsheetId"];
     
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("GS_Spreadsheet", Книга);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("GS_Sheet"      , Лист);
+    OPI_GetTestData.WriteParameter("GS_Spreadsheet", Book);
+    OPI_GetTestData.WriteParameter("GS_Sheet"      , Sheet);
     
-    Результат = OPI_GoogleSheets.СоздатьКнигу(Токен, Наименование, МассивЛистов);
-    Книга2  = Результат["spreadsheetId"];
+    Result = OPI_GoogleSheets.CreateBook(Token, Name, SheetArray);
+    Book2  = Result["spreadsheetId"];
     
-    Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Книга, Книга2, Лист);
+    Result = OPI_GoogleSheets.CopySheet(Token, Book, Book2, Sheet);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "КопироватьЛист");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CopySheet");
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["title"]).Равно(ИмяЛиста + " (копия)");
+    OPI_GetTestData.ExpectsThat(Result["title"]).Equal(SheetName + " (toопия)");
     
-    Наименование = "Тестовый лист";
+    Name = "TestSheet";
         
-    Результат = OPI_GoogleSheets.ДобавитьЛист(Токен, Книга, Наименование);
+    Result = OPI_GoogleSheets.AddSheet(Token, Book, Name);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьЛист");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddSheet");
 
-    НовыйЛист = Результат["replies"][0]["addSheet"]["properties"]["sheetId"];
-    НовыйЛист = OPI_Инструменты.ЧислоВСтроку(НовыйЛист);
+    NewSheet = Result["replies"][0]["addSheet"]["properties"]["sheetId"];
+    NewSheet = OPI_Tools.NumberToString(NewSheet);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["spreadsheetId"]).Равно(Книга); 
+    OPI_GetTestData.ExpectsThat(Result["spreadsheetId"]).Equal(Book); 
 
-    Результат = OPI_GoogleSheets.УдалитьЛист(Токен, Книга, НовыйЛист);
+    Result = OPI_GoogleSheets.DeleteSheet(Token, Book, NewSheet);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьЛист");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteSheet");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["spreadsheetId"]).Равно(Книга);
+    OPI_GetTestData.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
     
-    Наименование = "Тестовая таблица (изм.)";
+    Name = "TestTable (fromм.)";
     
-    Результат    = OPI_GoogleSheets.ИзменитьНаименованиеКниги(Токен, Книга, Наименование);
+    Result    = OPI_GoogleSheets.EditBookTitle(Token, Book, Name);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьНаименованиеКниги");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditBookTitle");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["spreadsheetId"]).Равно(Книга);
+    OPI_GetTestData.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ГТ_ПолучитьТаблицу() Экспорт
+Procedure GT_GetTable() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");
-    Книга        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("GS_Spreadsheet");
-    Наименование = "Тестовая таблица (изм.)";
+    Token        = OPI_GetTestData.GetParameter("Google_Token");
+    Book        = OPI_GetTestData.GetParameter("GS_Spreadsheet");
+    Name = "TestTable (fromм.)";
 
-    Результат = OPI_GoogleSheets.ПолучитьКнигу(Токен, Книга);
+    Result = OPI_GoogleSheets.GetBook(Token, Book);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьТаблицу");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetTable");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["properties"]["title"]).Равно(Наименование);
+    OPI_GetTestData.ExpectsThat(Result["properties"]["title"]).Equal(Name);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ГТ_ЗаполнитьОчиститьЯчейки() Экспорт
+Procedure GT_FillClearCells() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Google_Token");
-    Книга        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("GS_Spreadsheet");
-    Лист         = "Лист2";
+    Token        = OPI_GetTestData.GetParameter("Google_Token");
+    Book        = OPI_GetTestData.GetParameter("GS_Spreadsheet");
+    Sheet         = "Sheet2";
 
-    СтруктураЯчеек = Новый Соответствие;
-    СтруктураЯчеек.Вставить("A1", "Это A1");
-    СтруктураЯчеек.Вставить("A2", "Это A2");
-    СтруктураЯчеек.Вставить("B2", "Это B2");
-    СтруктураЯчеек.Вставить("B3", "Это B3");
-    СтруктураЯчеек.Вставить("A3", "Это A3");
-    СтруктураЯчеек.Вставить("A4", "Это A4");
-    СтруктураЯчеек.Вставить("B1", "Это B1");
-    СтруктураЯчеек.Вставить("B4", "Это B4");
+    CellStructure = New Match;
+    CellStructure.Insert("A1", "ThisIsA1");
+    CellStructure.Insert("A2", "ThisIsA2");
+    CellStructure.Insert("B2", "ThisIsB2");
+    CellStructure.Insert("B3", "ThisIsB3");
+    CellStructure.Insert("A3", "ThisIsA3");
+    CellStructure.Insert("A4", "ThisIsA4");
+    CellStructure.Insert("B1", "ThisIsB1");
+    CellStructure.Insert("B4", "ThisIsB4");
     
-    МассивЯчеек = Новый Массив;
-    МассивЯчеек.Добавить("B2");
-    МассивЯчеек.Добавить("A3");
-    МассивЯчеек.Добавить("B4");
+    Cell array = New Array;
+    Cell array.Add("B2");
+    Cell array.Add("A3");
+    Cell array.Add("B4");
 
-    Результат = OPI_GoogleSheets.УстановитьЗначенияЯчеек(Токен, Книга, СтруктураЯчеек, Лист);
+    Result = OPI_GoogleSheets.SetCellValues(Token, Book, CellStructure, Sheet);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УстановитьЗначенияЯчеек");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SetCellValues");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["spreadsheetId"]).Равно(Книга);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["totalUpdatedCells"]).Равно(СтруктураЯчеек.Количество());
+    OPI_GetTestData.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
+    OPI_GetTestData.ExpectsThat(Result["totalUpdatedCells"]).Equal(CellStructure.Quantity());
     
-    Результат = OPI_GoogleSheets.ПолучитьЗначенияЯчеек(Токен, Книга, МассивЯчеек, Лист);
+    Result = OPI_GoogleSheets.GetCellValues(Token, Book, Cell array, Sheet);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьЗначенияЯчеек");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetCellValues");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["spreadsheetId"]).Равно(Книга);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["valueRanges"].Количество()).Равно(МассивЯчеек.Количество());
+    OPI_GetTestData.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
+    OPI_GetTestData.ExpectsThat(Result["valueRanges"].Quantity()).Equal(Cell array.Quantity());
     
-    Результат = OPI_GoogleSheets.ПолучитьЗначенияЯчеек(Токен, Книга, , Лист);
+    Result = OPI_GoogleSheets.GetCellValues(Token, Book, , Sheet);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьЗначенияЯчеек");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetCellValues");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["spreadsheetId"]).Равно(Книга);
+    OPI_GetTestData.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
     
-    МассивЯчеек = Новый Массив;
-    МассивЯчеек.Добавить("B2");
-    МассивЯчеек.Добавить("A3");
-    МассивЯчеек.Добавить("B4");
+    Cell array = New Array;
+    Cell array.Add("B2");
+    Cell array.Add("A3");
+    Cell array.Add("B4");
 
-    Результат = OPI_GoogleSheets.ОчиститьЯчейки(Токен, Книга, МассивЯчеек, Лист);
+    Result = OPI_GoogleSheets.ClearCells(Token, Book, Cell array, Sheet);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОчиститьЯчейки");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ClearCells");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["spreadsheetId"]).Равно(Книга);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["clearedRanges"].Количество()).Равно(МассивЯчеек.Количество());
+    OPI_GetTestData.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
+    OPI_GetTestData.ExpectsThat(Result["clearedRanges"].Quantity()).Equal(Cell array.Quantity());
 
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область Twitter
+#Region Twitter
 
-Процедура Твиттер_ПолучитьСсылкуАвторизации() Экспорт
+Procedure Twitter_GetAuthorizationLink() Export
  
-    Параметры = ПолучитьПараметрыТвиттер();
-    Результат = OPI_Twitter.ПолучитьСсылкуАвторизации(Параметры);
+    Parameters = GetTwitterParameters();
+    Result = OPI_Twitter.GetAuthorizationLink(Parameters);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Строка").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("String").Filled();
     
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Twitter_URL", Результат);
+    OPI_GetTestData.WriteParameter("Twitter_URL", Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Твиттер_ОбновитьТокен() Экспорт
+Procedure Twitter_UpdateToken() Export
  
-    Параметры = ПолучитьПараметрыТвиттер();
-    Результат = OPI_Twitter.ОбновитьТокен(Параметры);
+    Parameters = GetTwitterParameters();
+    Result = OPI_Twitter.RefreshToken(Parameters);
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["access_token"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["refresh_token"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["access_token"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["refresh_token"]).Filled();
         
-    Рефреш = Результат["refresh_token"];
-    Токен  = Результат["access_token"];
+    Refresh = Result["refresh_token"];
+    Token  = Result["access_token"];
     
-    Если ЗначениеЗаполнено(Рефреш) И Не Рефреш = "null" Тогда   
-        OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Twitter_Refresh", Рефреш);
-    КонецЕсли;
+    If ValueFilled(Refresh) And Not Refresh = "null" Then   
+        OPI_GetTestData.WriteParameter("Twitter_Refresh", Refresh);
+    EndIf;
     
-    Если ЗначениеЗаполнено(Токен) И Не Токен = "null" Тогда
-        OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Twitter_Token"  , Токен);
-    КонецЕсли;
+    If ValueFilled(Token) And Not Token = "null" Then
+        OPI_GetTestData.WriteParameter("Twitter_Token"  , Token);
+    EndIf;
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Твиттер_СоздатьТекстовыйТвит() Экспорт
+Procedure Twitter_CreateTextTweet() Export
  
-    Параметры = ПолучитьПараметрыТвиттер();
-    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+    Parameters = GetTwitterParameters();
+    Text     = "TestTweet" + String(New UniqueIdentifier);
     
-    Результат = OPI_Twitter.СоздатьТекстовыйТвит(Текст, Параметры);
+    Result = OPI_Twitter.CreateTextTweet(Text, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТекстовыйТвит");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateTextTweet");
     
-    Проверка_ТвиттерТекст(Результат, Текст);
+    Check_TwitterText(Result, Text);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Твиттер_СоздатьТвитСКартинкой() Экспорт
+Procedure Twitter_CreateTweetWithImage() Export
  
-    Параметры = ПолучитьПараметрыТвиттер();
-    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
-    Картинка  = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Picture");
-    ИВФ       = ПолучитьИмяВременногоФайла("png");
-    Картинка.Записать(ИВФ);
+    Parameters = GetTwitterParameters();
+    Text     = "TestTweet" + String(New UniqueIdentifier);
+    Image  = OPI_GetTestData.GetBinary("Picture");
+    AndVF       = GetTempFileName("png");
+    Image.Write(AndVF);
    
-    Результат = OPI_Twitter.СоздатьТвитКартинки(Текст, Картинка, Параметры); 
+    Result = OPI_Twitter.Create image tweet(Text, Image, Parameters); 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТвитКартинки");
+    // !OInt OPI_GetTestData.WriteLog(Result, "Create image tweet");
     
-    Проверка_ТвиттерТекст(Результат, Текст);    
+    Check_TwitterText(Result, Text);    
     
-    Результат = OPI_Twitter.СоздатьТвитКартинки(Текст, ИВФ, Параметры);
+    Result = OPI_Twitter.Create image tweet(Text, AndVF, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТвитКартинки");
+    // !OInt OPI_GetTestData.WriteLog(Result, "Create image tweet");
     
-    Проверка_ТвиттерТекст(Результат, Текст);
+    Check_TwitterText(Result, Text);
     
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
     
-    OPI_Инструменты.Пауза(20);
+    OPI_Tools.Pause(20);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Твиттер_СоздатьТвитСВидео() Экспорт
+Procedure Twitter_CreateTweetWithVideo() Export
  
-    Параметры = ПолучитьПараметрыТвиттер();
-    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
-    Видео     = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Video");
-    ИВФ       = ПолучитьИмяВременногоФайла("mp4");
-    Видео.Записать(ИВФ);
+    Parameters = GetTwitterParameters();
+    Text     = "TestTweet" + String(New UniqueIdentifier);
+    Video     = OPI_GetTestData.GetBinary("Video");
+    AndVF       = GetTempFileName("mp4");
+    Video.Write(AndVF);
    
-    Результат = OPI_Twitter.СоздатьТвитВидео(Текст, Видео, Параметры);    
+    Result = OPI_Twitter.CreateVideoTweet(Text, Video, Parameters);    
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТвитВидео");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateVideoTweet");
     
-    Проверка_ТвиттерТекст(Результат, Текст);    
+    Check_TwitterText(Result, Text);    
     
-    Результат = OPI_Twitter.СоздатьТвитВидео(Текст, ИВФ, Параметры);
+    Result = OPI_Twitter.CreateVideoTweet(Text, AndVF, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТвитВидео");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateVideoTweet");
     
-    Проверка_ТвиттерТекст(Результат, Текст);
+    Check_TwitterText(Result, Text);
     
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
     
-    OPI_Инструменты.Пауза(20);
+    OPI_Tools.Pause(20);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Твиттер_СоздатьТвитСГиф() Экспорт
+Procedure Twitter_CreateTweetWithGif() Export
  
-    Параметры = ПолучитьПараметрыТвиттер();
-    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
-    Гифка     = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("GIF");
-    ИВФ       = ПолучитьИмяВременногоФайла("gif");
-    Гифка.Записать(ИВФ);
+    Parameters = GetTwitterParameters();
+    Text     = "TestTweet" + String(New UniqueIdentifier);
+    GIF     = OPI_GetTestData.GetBinary("GIF");
+    AndVF       = GetTempFileName("gif");
+    GIF.Write(AndVF);
    
-    Результат = OPI_Twitter.СоздатьТвитГифки(Текст, Гифка, Параметры);   
+    Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);   
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТвитГифки");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateGifTweet");
      
-    Проверка_ТвиттерТекст(Результат, Текст);    
+    Check_TwitterText(Result, Text);    
     
-    Результат = OPI_Twitter.СоздатьТвитГифки(Текст, ИВФ, Параметры);
+    Result = OPI_Twitter.CreateGifTweet(Text, AndVF, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТвитГифки");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateGifTweet");
     
-    Проверка_ТвиттерТекст(Результат, Текст);
+    Check_TwitterText(Result, Text);
     
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
     
-    OPI_Инструменты.Пауза(20);
+    OPI_Tools.Pause(20);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Твиттер_СоздатьТвитСОпросом() Экспорт
+Procedure Twitter_CreateTweetWithPoll() Export
  
-    Параметры       = ПолучитьПараметрыТвиттер();
-    Текст           = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
-    МассивОтветов   = Новый Массив;
-    МассивОтветов.Добавить("Вариант 1");
-    МассивОтветов.Добавить("Вариант 2");
+    Parameters       = GetTwitterParameters();
+    Text           = "TestTweet" + String(New UniqueIdentifier);
+    AnswersArray   = New Array;
+    AnswersArray.Add("Option 1");
+    AnswersArray.Add("Option 2");
    
-    Результат = OPI_Twitter.СоздатьТвитОпрос(Текст, МассивОтветов, 60, Параметры);
+    Result = OPI_Twitter.CreatePollTweet(Text, AnswersArray, 60, Parameters);
  
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТвитОпрос");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreatePollTweet");
     
-    Проверка_ТвиттерТекст(Результат, Текст);
+    Check_TwitterText(Result, Text);
     
-    OPI_Инструменты.Пауза(20);
+    OPI_Tools.Pause(20);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область Notion
+#Region Notion
 
-Процедура Ноушн_СоздатьСтраницу() Экспорт
+Procedure Notion_CreatePage() Export
 	
-	Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	Родитель  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Parent");
-	Заголовок = "Тестовый заголовок";
+	Token     = OPI_GetTestData.GetParameter("Notion_Token");
+	Parent  = OPI_GetTestData.GetParameter("Notion_Parent");
+	Title = "TestTitle";
 	 
-	Результат = OPI_Notion.СоздатьСтраницу(Токен, Родитель, Заголовок);
+	Result = OPI_Notion.CreatePage(Token, Parent, Title);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьСтраницу");
+	// !OInt OPI_GetTestData.WriteLog(Result, "CreatePage");
     
-    Проверка_НоушнОбъект(Результат);
+    Check_NotionObject(Result);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_СоздатьИзменитьБазу() Экспорт
+Procedure Notion_CreateEditDatabase() Export
 	
-	Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	Родитель  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Parent");
-	Заголовок = "Тестовый заголовок";
+	Token     = OPI_GetTestData.GetParameter("Notion_Token");
+	Parent  = OPI_GetTestData.GetParameter("Notion_Parent");
+	Title = "TestTitle";
 	
-	Свойства = Новый Соответствие;
-	Свойства.Вставить("Имя"            , "title");
-	Свойства.Вставить("Описание"       , "rich_text");
-	Свойства.Вставить("Номер"          , "number");
-	Свойства.Вставить("Статус"         , "status");
-	Свойства.Вставить("Дата создания"  , "date");
-	Свойства.Вставить("Картинка"       , "files");
-	Свойства.Вставить("Активен"        , "checkbox");
-	Свойства.Вставить("Сайт"           , "url");
-	Свойства.Вставить("Почта"          , "email");
-	Свойства.Вставить("Телефон"        , "phone_number");
-	Свойства.Вставить("Пользователь"   , "people");
+	Properties = New Match;
+	Properties.Insert("Name"            , "title");
+	Properties.Insert("Description"       , "rich_text");
+	Properties.Insert("Number"          , "number");
+	Properties.Insert("Status"         , "status");
+	Properties.Insert("CreationDate"  , "date");
+	Properties.Insert("Image"       , "files");
+	Properties.Insert("Active"        , "checkbox");
+	Properties.Insert("Website"           , "url");
+	Properties.Insert("Email"          , "email");
+	Properties.Insert("Phone"        , "phone_number");
+	Properties.Insert("User"   , "people");
 	
-	ВыборЗначения = Новый Соответствие;
-	ВыборЗначения.Вставить("Новый", "green");
-	ВыборЗначения.Вставить("В работе", "yellow");
-	ВыборЗначения.Вставить("Удаленный", "red");
-	Свойства.Вставить("Статус", ВыборЗначения);
+	ValueSelection = New Match;
+	ValueSelection.Insert("New", "green");
+	ValueSelection.Insert("InProgress", "yellow");
+	ValueSelection.Insert("Remote", "red");
+	Properties.Insert("Status", ValueSelection);
 	
-	Результат = OPI_Notion.СоздатьБазуДанных(Токен, Родитель, Заголовок, Свойства); 
+	Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties); 
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьБазуДанных");
+	// !OInt OPI_GetTestData.WriteLog(Result, "CreateDatabase");
     
-    Проверка_НоушнОбъект(Результат, "database");
+    Check_NotionObject(Result, "database");
     
-    База      = Результат["id"];
-    Заголовок = "Тестовый заголовок";
-	Описание  = "Тестовое описание";
+    Base      = Result["id"];
+    Title = "TestTitle";
+	Description  = "TestDescription";
 	
-	Свойства = Новый Соответствие;
-	Свойства.Вставить("Почта", "rich_text"); // Тип поля "Почта" будет изменен с email на текст
-	Свойства.Вставить("Сайт");               // Поле "Сайт" будет удалено
+	Properties = New Match;
+	Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
+	Properties.Insert("Website");               // Field "Website" will deleted
 	
-	Результат = OPI_Notion.ИзменитьСвойстваБазы(Токен, База, Свойства, Заголовок, Описание);
+	Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьСвойстваБазы");
+	// !OInt OPI_GetTestData.WriteLog(Result, "EditDatabaseProperties");
     
-    Проверка_НоушнОбъект(Результат, "database");
+    Check_NotionObject(Result, "database");
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_ПолучитьИнформациюОСтранице() Экспорт
+Procedure Notion_GetPageInfo() Export
 	
-	Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	Страница  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Page");
+	Token     = OPI_GetTestData.GetParameter("Notion_Token");
+	Page  = OPI_GetTestData.GetParameter("Notion_Page");
 	
-	Результат = OPI_Notion.ПолучитьСтраницу(Токен, Страница);
+	Result = OPI_Notion.GetPage(Token, Page);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтраницу");
+	// !OInt OPI_GetTestData.WriteLog(Result, "GetPage");
     
-    Проверка_НоушнОбъект(Результат);	
+    Check_NotionObject(Result);	
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_ПолучитьИнформациюОБазе() Экспорт
+Procedure Notion_GetDatabaseInfo() Export
 
-	Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	База      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Base");
+	Token     = OPI_GetTestData.GetParameter("Notion_Token");
+	Base      = OPI_GetTestData.GetParameter("Notion_Base");
 		
-	Результат = OPI_Notion.ПолучитьБазуДанных(Токен, База);
+	Result = OPI_Notion.GetDatabase(Token, Base);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьБазуДанных");
+	// !OInt OPI_GetTestData.WriteLog(Result, "GetDatabase");
     
-    Проверка_НоушнОбъект(Результат, "database");
+    Check_NotionObject(Result, "database");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_СоздатьСтраницуВБазу() Экспорт
+Procedure Notion_CreatePageInDatabase() Export
 	
-	Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	База  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Base");
+	Token = OPI_GetTestData.GetParameter("Notion_Token");
+	Base  = OPI_GetTestData.GetParameter("Notion_Base");
 	
-	Картинка = Новый Соответствие;
-	Картинка.Вставить("Лого", OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Picture"));
+	Image = New Match;
+	Image.Insert("Logo", OPI_GetTestData.GetParameter("Picture"));
 	
-	Свойства = Новый Соответствие;
-	Свойства.Вставить("Имя"            , "ООО Вектор");
-	Свойства.Вставить("Описание"       , "Наш первый клиент");
-	Свойства.Вставить("Номер"          , 1);
-	Свойства.Вставить("Статус"         , "Обычный");
-	Свойства.Вставить("Дата создания"  , OPI_Инструменты.ПолучитьТекущуюДату());
-	Свойства.Вставить("Картинка"       , Картинка);
-	Свойства.Вставить("Активен"        , Истина);
-	Свойства.Вставить("Сайт"           , "https://vector.ru");
-	Свойства.Вставить("Почта"          , "mail@vector.ru");
-	Свойства.Вставить("Телефон"        , "88005553535");
-	Свойства.Вставить("Статус"	       , "Новый");
+	Properties = New Match;
+	Properties.Insert("Name"            , "LLC Vector");
+	Properties.Insert("Description"       , "OurFirstClient");
+	Properties.Insert("Number"          , 1);
+	Properties.Insert("Status"         , "Regular");
+	Properties.Insert("CreationDate"  , OPI_Tools.GetCurrentDate());
+	Properties.Insert("Image"       , Image);
+	Properties.Insert("Active"        , True);
+	Properties.Insert("Website"           , "https://vector.ru");
+	Properties.Insert("Email"          , "mail@vector.ru");
+	Properties.Insert("Phone"        , "88005553535");
+	Properties.Insert("Status"	       , "New");
 	
-	Результат = OPI_Notion.СоздатьСтраницуВБазу(Токен, База, Свойства);
+	Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьСтраницуВБазу");
+	// !OInt OPI_GetTestData.WriteLog(Result, "CreatePageInDatabase");
     
-    Проверка_НоушнОбъект(Результат);
+    Check_NotionObject(Result);
     
-    Родитель = СтрЗаменить(Результат["parent"]["database_id"], "-", "");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Родитель).Равно(База);
+    Parent = StringReplace(Result["parent"]["database_id"], "-", "");
+    OPI_GetTestData.ExpectsThat(Parent).Equal(Base);
        	 
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_ИзменитьСвойстваСтраницы() Экспорт
+Procedure Notion_EditPageProperties() Export
 	
-	Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	Страница     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Page");
-	Иконка       = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Picture");
-	Обложка      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Picture2");
-	Архивировать = Ложь;
+	Token        = OPI_GetTestData.GetParameter("Notion_Token");
+	Page     = OPI_GetTestData.GetParameter("Notion_Page");
+	Icon       = OPI_GetTestData.GetParameter("Picture");
+	Cover      = OPI_GetTestData.GetParameter("Picture2");
+	Archive = False;
 	
-	Свойства = Новый Соответствие;
-	Свойства.Вставить("Активен"     , Ложь);
-	Свойства.Вставить("Почта"       , "vector@mail.ru");
+	Properties = New Match;
+	Properties.Insert("Active"     , False);
+	Properties.Insert("Email"       , "vector@mail.ru");
 	
-	Результат = OPI_Notion.ИзменитьСвойстваСтраницы(Токен
-		, Страница
-		, Свойства
-		, Иконка
-		, Обложка
-		, Архивировать);
+	Result = OPI_Notion.EditPageProperties(Token
+		, Page
+		, Properties
+		, Icon
+		, Cover
+		, Archive);
           
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьСвойстваСтраницы");
+	// !OInt OPI_GetTestData.WriteLog(Result, "EditPageProperties");
     
-    Проверка_НоушнОбъект(Результат);
+    Check_NotionObject(Result);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_СоздатьУдалитьБлок() Экспорт
+Procedure Notion_CreateDeleteBlock() Export
 	
-	Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	Родитель  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Parent");
-	Блок      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Block");
+	Token     = OPI_GetTestData.GetParameter("Notion_Token");
+	Parent  = OPI_GetTestData.GetParameter("Notion_Parent");
+	Block      = OPI_GetTestData.GetParameter("Notion_Block");
 	
-	Результат = OPI_Notion.ВернутьБлок(Токен, Блок);	
+	Result = OPI_Notion.ReturnBlock(Token, Block);	
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВернутьБлок");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ReturnBlock");
     
-    Проверка_НоушнОбъект(Результат, "block");
+    Check_NotionObject(Result, "block");
     
-	Результат = OPI_Notion.СоздатьБлок(Токен, Родитель, Результат);
+	Result = OPI_Notion.CreateBlock(Token, Parent, Result);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьБлок");
+	// !OInt OPI_GetTestData.WriteLog(Result, "CreateBlock");
     
-    Проверка_НоушнОбъект(Результат, "list");
+    Check_NotionObject(Result, "list");
     
-    Блок      = Результат["results"][0]["id"];
-	Результат = OPI_Notion.ВернутьДочерниеБлоки(Токен, Блок);
+    Block      = Result["results"][0]["id"];
+	Result = OPI_Notion.ReturnChildBlocks(Token, Block);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВернутьДочерниеБлоки");
+	// !OInt OPI_GetTestData.WriteLog(Result, "ReturnChildBlocks");
     
-    Проверка_НоушнОбъект(Результат, "list");
+    Check_NotionObject(Result, "list");
     
-	Результат = OPI_Notion.УдалитьБлок(Токен, Блок);
+	Result = OPI_Notion.DeleteBlock(Token, Block);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьБлок");
+	// !OInt OPI_GetTestData.WriteLog(Result, "DeleteBlock");
     
-    Проверка_НоушнОбъект(Результат, "block");
+    Check_NotionObject(Result, "block");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_ПолучитьПользователей() Экспорт
+Procedure Notion_GetUsers() Export
 	
-	Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	Результат = OPI_Notion.СписокПользователей(Токен);
+	Token     = OPI_GetTestData.GetParameter("Notion_Token");
+	Result = OPI_Notion.UserList(Token);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СписокПользователей");
+	// !OInt OPI_GetTestData.WriteLog(Result, "UserList");
     
-    Проверка_НоушнОбъект(Результат, "list");
+    Check_NotionObject(Result, "list");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Ноушн_ПолучитьДанныеПользователя() Экспорт
+Procedure Notion_GetUserData() Export
 	
-	Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_Token");
-	Пользователь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Notion_User"); 
-	Результат    = OPI_Notion.ПолучитьДанныеПользователя(Токен, Пользователь);
+	Token        = OPI_GetTestData.GetParameter("Notion_Token");
+	User = OPI_GetTestData.GetParameter("Notion_User"); 
+	Result    = OPI_Notion.GetUserData(Token, User);
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьДанныеПользователя");
+	// !OInt OPI_GetTestData.WriteLog(Result, "GetUserData");
     
-    Проверка_НоушнОбъект(Результат, "user");
+    Check_NotionObject(Result, "user");
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область Slack
+#Region Slack
 
-Процедура Слак_ПолучитьИнформациюОБоте() Экспорт
+Procedure Slack_GetBotInfo() Export
     
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Результат = OPI_Slack.ПолучитьИнформациюОБоте(Токен);
+    Token     = OPI_GetTestData.GetParameter("Slack_Token");
+    Result = OPI_Slack.GetBotInformation(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюОБоте");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetBotInformation");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["bot_id"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["user_id"]).Заполнено();
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["bot_id"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["user_id"]).Filled();
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ПолучитьСписокПользователей() Экспорт
+Procedure Slack_GetUserList() Export
     
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Результат = OPI_Slack.ПолучитьСписокПользователей(Токен);
+    Token     = OPI_GetTestData.GetParameter("Slack_Token");
+    Result = OPI_Slack.GetUserList(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокПользователей");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetUserList");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["members"]).ИмеетТип("Массив");
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["members"]).HasType("Array");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ПолучитьСписокОбластей() Экспорт
+Procedure Slack_GetRegionList() Export
     
-    Токен     = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Результат = OPI_Slack.ПолучитьСписокРабочихОбластей(Токен);
+    Token     = OPI_GetTestData.GetParameter("Slack_Token");
+    Result = OPI_Slack.GetWorkspaceList(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокРабочихОбластей");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetWorkspaceList");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["teams"]).ИмеетТип("Массив");
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["teams"]).HasType("Array");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ОтправитьУдалитьСообщение() Экспорт
+Procedure Slack_SendDeleteMessage() Export
 
-    Токен    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token"); 
-    Канал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Channel");
-    Текст    = "Тестовое сообщение 1";
-    Текст2   = "Тестовое сообщение 2";
-    Отметки  = Новый Массив;
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
+    Token    = OPI_GetTestData.GetParameter("Slack_Token"); 
+    Channel    = OPI_GetTestData.GetParameter("Slack_Channel");
+    Text    = "TestMessage1";
+    Text2   = "TestMessage2";
+    Tags  = New Array;
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
     
-    Результат = OPI_Slack.ОтправитьСообщение(Токен, Канал, Текст);
+    Result = OPI_Slack.SendMessage(Token, Channel, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMessage");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ts"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message"]["text"]).Равно(Текст);
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+    OPI_GetTestData.ExpectsThat(Result["ts"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["message"]["text"]).Equal(Text);
     
-    Отметка = Результат["ts"];
+    Timestamp = Result["ts"];
     
-    Результат = OPI_Slack.ИзменитьСообщение(Токен, Канал, Отметка, Текст2);
+    Result = OPI_Slack.EditMessage(Token, Channel, Timestamp, Text2);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditMessage");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ts"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message"]["text"]).Равно(Текст2);
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+    OPI_GetTestData.ExpectsThat(Result["ts"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["message"]["text"]).Equal(Text2);
         
-    Результат = OPI_Slack.ПолучитьСписокОтветовНаСообщение(Токен, Канал, Отметка);
+    Result = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокОтветовНаСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetMessageReplyList");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["messages"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result["messages"]).HasType("Array");
     
-    Результат = OPI_Slack.ПолучитьСсылкуНаСообщение(Токен, Канал, Отметка);
+    Result = OPI_Slack.GetMessageLink(Token, Channel, Timestamp);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСсылкуНаСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetMessageLink");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["permalink"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+    OPI_GetTestData.ExpectsThat(Result["permalink"]).Filled();
         
-    Проверка_СлакОк(Результат);
+    Check_SlackOk(Result);
       
-    Отметки.Добавить(Отметка);
+    Tags.Add(Timestamp);
     
-    МассивБлоков = Новый Массив;
-    Блок         = OPI_Slack.СформироватьБлокКартинку(Картинка, "Yo");
-    МассивБлоков.Добавить(Блок);
+    BlockArray = New Array;
+    Block         = OPI_Slack.GenerateImageBlock(Image, "Yo");
+    BlockArray.Add(Block);
     
-    Результат = OPI_Slack.ОтправитьСообщение(Токен, Канал, Текст, , МассивБлоков);
+    Result = OPI_Slack.SendMessage(Token, Channel, Text, , BlockArray);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСообщение (картинка)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMessage (toартинtoа)");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ts"]).Заполнено();
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+    OPI_GetTestData.ExpectsThat(Result["ts"]).Filled();
     
-    Отметки.Добавить(Результат["ts"]);
+    Tags.Add(Result["ts"]);
     
-    Блок = OPI_Slack.СформироватьБлокКартинку(Картинка, "Yo");
-    БлокJSON = OPI_Инструменты.JSONСтрокой(Блок);
+    Block = OPI_Slack.GenerateImageBlock(Image, "Yo");
+    JSONBlock = OPI_Tools.JSONString(Block);
     
-    ИВФ = ПолучитьИмяВременногоФайла("json");
+    AndVF = GetTempFileName("json");
     
-    ТекстовыйДокумент = Новый ТекстовыйДокумент();
-    ТекстовыйДокумент.УстановитьТекст(БлокJSON);
-    ТекстовыйДокумент.Записать(ИВФ);
+    TextDocument = New TextDocument();
+    TextDocument.SetText(JSONBlock);
+    TextDocument.Write(AndVF);
         
-    Результат = OPI_Slack.ОтправитьСообщение(Токен, Канал, Текст, , ИВФ);
+    Result = OPI_Slack.SendMessage(Token, Channel, Text, , AndVF);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСообщение (json)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMessage (json)");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ts"]).Заполнено();
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+    OPI_GetTestData.ExpectsThat(Result["ts"]).Filled();
     
-    Отметки.Добавить(Результат["ts"]);
+    Tags.Add(Result["ts"]);
     
-    Блоки = "['" + ИВФ + "','" + ИВФ + "']";
-    Результат = OPI_Slack.ОтправитьСообщение(Токен, Канал, Текст, , Блоки);
+    Blocks = "['" + AndVF + "','" + AndVF + "']";
+    Result = OPI_Slack.SendMessage(Token, Channel, Text, , Blocks);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСообщение (json массив)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMessage (json маwithwithиin)");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ts"]).Заполнено();
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+    OPI_GetTestData.ExpectsThat(Result["ts"]).Filled();
     
-    Отметки.Добавить(Результат["ts"]);
+    Tags.Add(Result["ts"]);
 
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
  
-    Для Каждого Отметка Из Отметки Цикл
+    For Each Timestamp Of Tags Loop
         
-        Результат = OPI_Slack.УдалитьСообщение(Токен, Канал, Отметка);
+        Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp);
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьСообщение");
+        // !OInt OPI_GetTestData.WriteLog(Result, "DeleteMessage");
 
-        Проверка_СлакОк(Результат);
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ts"]).Заполнено();
+        Check_SlackOk(Result);
+        OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+        OPI_GetTestData.ExpectsThat(Result["ts"]).Filled();
     
-    КонецЦикла;
+    EndOfLoop;
     
-    Час       = 3600;
-    Сутки     = 24;
-    Отправка  = OPI_Инструменты.ПолучитьТекущуюДату() + (Сутки * Час);
-    Результат = OPI_Slack.ОтправитьСообщение(Токен, Канал, Текст, Отправка);
+    Hour       = 3600;
+    Day     = 24;
+    Sending  = OPI_Tools.GetCurrentDate() + (Day * Hour);
+    Result = OPI_Slack.SendMessage(Token, Channel, Text, Sending);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСообщение (отложенное)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMessage (отложенное)");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).Равно(Канал);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["scheduled_message_id"]).Заполнено();
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channel"]).Equal(Channel);
+    OPI_GetTestData.ExpectsThat(Result["scheduled_message_id"]).Filled();
     
-    Отметка   = Результат["scheduled_message_id"];
-    Результат = OPI_Slack.УдалитьСообщение(Токен, Канал, Отметка, Истина);
+    Timestamp   = Result["scheduled_message_id"];
+    Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteMessage");
 
-    Проверка_СлакОк(Результат);
+    Check_SlackOk(Result);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ОтправитьУдалитьЭфемерное() Экспорт
+Procedure Slack_SendDeleteEphemeral() Export
    
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token"); 
-    Канал        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Channel");
-    Пользователь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_User");
-    Картинка     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
-    Текст        = "Тестовое сообщение 1";
+    Token        = OPI_GetTestData.GetParameter("Slack_Token"); 
+    Channel        = OPI_GetTestData.GetParameter("Slack_Channel");
+    User = OPI_GetTestData.GetParameter("Slack_User");
+    Image     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
+    Text        = "TestMessage1";
     
-    Блок      = OPI_Slack.СформироватьБлокКартинку(Картинка, "Yo");
-    Результат = OPI_Slack.ОтправитьЭфемерноеСообщение(Токен, Канал, Текст, Пользователь, Блок);
+    Block      = OPI_Slack.GenerateImageBlock(Image, "Yo");
+    Result = OPI_Slack.SendEphemeralMessage(Token, Channel, Text, User, Block);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMessage");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["message_ts"]).Заполнено();
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["message_ts"]).Filled();
      
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ПолучитьОтложенныеСообщения() Экспорт
+Procedure Slack_GetScheduledMessages() Export
     
-    Токен    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token"); 
-    Канал    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Channel");
+    Token    = OPI_GetTestData.GetParameter("Slack_Token"); 
+    Channel    = OPI_GetTestData.GetParameter("Slack_Channel");
     
-    Результат = OPI_Slack.ПолучитьСписокОтложенныхСообщений(Токен, Канал);
+    Result = OPI_Slack.GetDelayedMessageList(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокОтложенныхСообщений");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetDelayedMessageList");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["scheduled_messages"]).ИмеетТип("Массив");
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["scheduled_messages"]).HasType("Array");
    
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_СоздатьАрхивироватьКанал() Экспорт
+Procedure Slack_CreateArchiveChannel() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Пользователь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_User");
-    Имя          = "testconv" + Строка(Новый УникальныйИдентификатор);
-    Тема         = "Тестовая тема";
-    Цель         = "Тестовая цель";
+    Token        = OPI_GetTestData.GetParameter("Slack_Token");
+    User = OPI_GetTestData.GetParameter("Slack_User");
+    Name          = "testconv" + String(New UniqueIdentifier);
+    Topic         = "TestTopic";
+    Purpose         = "TestGoal";
     
-    #Область СоздатьКанал
-    Результат = OPI_Slack.СоздатьКанал(Токен, Имя);
+    #Region CreateChannel
+    Result = OPI_Slack.CreateChannel(Token, Name);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьКанал");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateChannel");
     
-    Данные = Результат["channel"];
-    Канал  = Данные["id"];
+    Data = Result["channel"];
+    Channel  = Data["id"];
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Данные["name"]).Равно(Имя);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Data["name"]).Equal(Name);
+    #EndRegion
 
-    #Область УстановитьТемуКанала
-    Результат = OPI_Slack.УстановитьТемуКанала(Токен, Канал, Тема);
+    #Region SetChannelTopic
+    Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УстановитьТемуКанала");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SetChannelTopic");
     
-    Данные = Результат["channel"];
-    Канал  = Данные["id"];
+    Data = Result["channel"];
+    Channel  = Data["id"];
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Данные["name"]).Равно(Имя);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Данные["topic"]["value"]).Равно(Тема);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Data["name"]).Equal(Name);
+    OPI_GetTestData.ExpectsThat(Data["topic"]["value"]).Equal(Topic);
+    #EndRegion
     
-    #Область УстановитьЦельКанала
-    Результат = OPI_Slack.УстановитьЦельКанала(Токен, Канал, Цель);
+    #Region SetChannelGoal
+    Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УстановитьЦельКанала");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SetChannelGoal");
     
-    Проверка_СлакОк(Результат);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    #EndRegion
     
-    #Область ПолучитьКанал
-    Результат = OPI_Slack.ПолучитьКанал(Токен, Канал);
+    #Region GetChannel
+    Result = OPI_Slack.GetChannel(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьКанал");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetChannel");
     
-    Данные = Результат["channel"];
-    Канал  = Данные["id"];
+    Data = Result["channel"];
+    Channel  = Data["id"];
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Данные["name"]).Равно(Имя);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Data["name"]).Equal(Name);
+    #EndRegion
     
-    #Область ПригласитьПользователейВКанал
-    Результат = OPI_Slack.ПригласитьПользователейВКанал(Токен, Канал, Пользователь);
+    #Region InviteUsersToChannel
+    Result = OPI_Slack.InviteUsersToChannel(Token, Channel, User);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПригласитьПользователейВКанал");
+    // !OInt OPI_GetTestData.WriteLog(Result, "InviteUsersToChannel");
     
-    Данные = Результат["channel"];
-    Канал  = Данные["id"];
+    Data = Result["channel"];
+    Channel  = Data["id"];
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Данные["name"]).Равно(Имя);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Data["name"]).Equal(Name);
+    #EndRegion
     
-    #Область ВыгнатьПользователяИзКанала
-    Результат = OPI_Slack.ВыгнатьПользователяИзКанала(Токен, Канал, Пользователь);
+    #Region KickUserFromChannel
+    Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВыгнатьПользователяИзКанала");
+    // !OInt OPI_GetTestData.WriteLog(Result, "KickUserFromChannel");
     
-    Проверка_СлакОк(Результат);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    #EndRegion
     
-    #Область ПолучитьИсториюКанала
-    Результат = OPI_Slack.ПолучитьИсториюКанала(Токен, Канал);
+    #Region GetChannelHistory
+    Result = OPI_Slack.GetChannelHistory(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИсториюКанала");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetChannelHistory");
         
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["messages"]).ИмеетТип("Массив");
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["messages"]).HasType("Array");
+    #EndRegion
     
-    #Область ПолучитьСписокПользователейКанала
-    Результат = OPI_Slack.ПолучитьСписокПользователейКанала(Токен, Канал);
+    #Region GetChannelUserList
+    Result = OPI_Slack.GetChannelUserList(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокПользователейКанала");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetChannelUserList");
         
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["members"]).ИмеетТип("Массив");
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["members"]).HasType("Array");
+    #EndRegion
 
-    #Область ПокинутьКанал
-    Результат = OPI_Slack.ПокинутьКанал(Токен, Канал);
+    #Region LeaveChannel
+    Result = OPI_Slack.LeaveChannel(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПокинутьКанал");
+    // !OInt OPI_GetTestData.WriteLog(Result, "LeaveChannel");
     
-    Проверка_СлакОк(Результат);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    #EndRegion
     
-    #Область ВступитьВКанал
-    Результат = OPI_Slack.ВступитьВКанал(Токен, Канал);
+    #Region JoinChannel
+    Result = OPI_Slack.JoinChannel(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВступитьВКанал");
+    // !OInt OPI_GetTestData.WriteLog(Result, "JoinChannel");
     
-    Данные = Результат["channel"];
-    Канал  = Данные["id"];
+    Data = Result["channel"];
+    Channel  = Data["id"];
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Данные["name"]).Равно(Имя);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Data["name"]).Equal(Name);
+    #EndRegion
     
-    #Область ПереименоватьКанал
-    НовоеИмя  = "testconv" + Строка(Новый УникальныйИдентификатор);
-    Результат = OPI_Slack.ПереименоватьКанал(Токен, Канал, НовоеИмя);
+    #Region RenameChannel
+    NewName  = "testconv" + String(New UniqueIdentifier);
+    Result = OPI_Slack.RenameChannel(Token, Channel, NewName);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПереименоватьКанал");
+    // !OInt OPI_GetTestData.WriteLog(Result, "RenameChannel");
     
-    Данные = Результат["channel"];
-    Канал  = Данные["id"];
+    Data = Result["channel"];
+    Channel  = Data["id"];
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Данные["name"]).Равно(НовоеИмя);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Data["name"]).Equal(NewName);
+    #EndRegion
     
-    #Область АрхивироватьКанал
-    Результат = OPI_Slack.АрхивироватьКанал(Токен, Канал);
+    #Region ArchiveChannel
+    Result = OPI_Slack.ArchiveChannel(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "АрхивироватьКанал");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ArchiveChannel");
     
-    Проверка_СлакОк(Результат);
-    #КонецОбласти
+    Check_SlackOk(Result);
+    #EndRegion
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ПолучитьСписокКаналов() Экспорт
+Procedure Slack_GetChannelList() Export
     
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
+    Token = OPI_GetTestData.GetParameter("Slack_Token");
     
-    Результат = OPI_Slack.ПолучитьСписокКаналов(Токен);
+    Result = OPI_Slack.GetChannelList(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокКаналов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetChannelList");
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channels"]).ИмеетТип("Массив");
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channels"]).HasType("Array");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ОткрытьЗакрытьДиалог() Экспорт
+Procedure Slack_OpenCloseDialog() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Пользователь = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_User");
-    Текст        = "Yo, dude";
+    Token        = OPI_GetTestData.GetParameter("Slack_Token");
+    User = OPI_GetTestData.GetParameter("Slack_User");
+    Text        = "Yo, dude";
     
-    Результат = OPI_Slack.ОткрытьДиалог(Токен, Пользователь);
+    Result = OPI_Slack.OpenDialog(Token, User);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОткрытьДиалог");
+    // !OInt OPI_GetTestData.WriteLog(Result, "OpenDialog");
 
-    Диалог = Результат["channel"]["id"];
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["channel"]).ИмеетТип("Соответствие");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Диалог).Заполнено();
+    Dialog = Result["channel"]["id"];
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["channel"]).HasType("Match");
+    OPI_GetTestData.ExpectsThat(Dialog).Filled();
     
-    Результат = OPI_Slack.ОтправитьСообщение(Токен, Диалог, Текст);
+    Result = OPI_Slack.SendMessage(Token, Dialog, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьСообщение");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMessage");
     
-    Проверка_СлакОк(Результат);
+    Check_SlackOk(Result);
 
-    Результат = OPI_Slack.ЗакрытьДиалог(Токен, Диалог);
+    Result = OPI_Slack.CloseDialog(Token, Dialog);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗакрытьДиалог");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CloseDialog");
 
-    Проверка_СлакОк(Результат);
+    Check_SlackOk(Result);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ПолучитьСписокФайлов() Экспорт
+Procedure Slack_GetFileList() Export
     
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Канал = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Channel");
+    Token = OPI_GetTestData.GetParameter("Slack_Token");
+    Channel = OPI_GetTestData.GetParameter("Slack_Channel");
     
-    Результат = OPI_Slack.ПолучитьСписокФайлов(Токен, Канал);
+    Result = OPI_Slack.GetFilesList(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокФайлов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetFilesList");
 
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["files"]).ИмеетТип("Массив");
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["files"]).HasType("Array");
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ЗагрузитьУдалитьФайл() Экспорт
+Procedure Slack_UploadDeleteFile() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Файл         = OPI_ПолучениеДанныхТестов.ПолучитьДвоичные("Document");
-    Канал        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Channel");
-    МассивФайлов = Новый Массив;
-    ИмяФайла     = "megadoc.docx";
-    Заголовок    = "Новый файл";
+    Token        = OPI_GetTestData.GetParameter("Slack_Token");
+    File         = OPI_GetTestData.GetBinary("Document");
+    Channel        = OPI_GetTestData.GetParameter("Slack_Channel");
+    ArrayOfFiles = New Array;
+    FileName     = "megadoc.docx";
+    Title    = "NewFile";
     
-    Результат = OPI_Slack.ЗагрузитьФайл(Токен, Файл, ИмяФайла, Заголовок);
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UploadFile");
 
-    ЗагруженныйФайл = Результат["files"][0];
-    МассивФайлов.Добавить(ЗагруженныйФайл["id"]);
+    UploadedFile = Result["files"][0];
+    ArrayOfFiles.Add(UploadedFile["id"]);
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗагруженныйФайл["name"]).Равно(ИмяФайла);
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(UploadedFile["name"]).Equal(FileName);
     
-    Результат = OPI_Slack.ЗагрузитьФайл(Токен, Файл, ИмяФайла, Заголовок, Канал);
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайл (в канал)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UploadFile (in toаtoл)");
 
-    ЗагруженныйФайл = Результат["files"][0];
-    МассивФайлов.Добавить(ЗагруженныйФайл["id"]);
+    UploadedFile = Result["files"][0];
+    ArrayOfFiles.Add(UploadedFile["id"]);
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗагруженныйФайл["name"]).Равно(ИмяФайла);
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(UploadedFile["name"]).Equal(FileName);
     
-    Результат = OPI_Slack.ПолучитьДанныеФайла(Токен, ЗагруженныйФайл["id"]);
+    Result = OPI_Slack.GetFileData(Token, UploadedFile["id"]);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetFile");
     
-    ЗагруженныйФайл = Результат["file"];
+    UploadedFile = Result["file"];
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗагруженныйФайл["name"]).Равно(ИмяФайла);
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(UploadedFile["name"]).Equal(FileName);
         
-    Для Каждого ЗагруженныйФайл Из МассивФайлов Цикл
+    For Each UploadedFile Of ArrayOfFiles Loop
         
-        Результат = OPI_Slack.УдалитьФайл(Токен, ЗагруженныйФайл);
+        Result = OPI_Slack.DeleteFile(Token, UploadedFile);
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьФайл");
+        // !OInt OPI_GetTestData.WriteLog(Result, "DeleteFile");
         
-        Проверка_СлакОк(Результат);
+        Check_SlackOk(Result);
         
-    КонецЦикла;
+    EndOfLoop;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ПолучитьСписокВФ() Экспорт
+Procedure Slack_GetExternalFileList() Export
     
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Канал = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Channel");
+    Token = OPI_GetTestData.GetParameter("Slack_Token");
+    Channel = OPI_GetTestData.GetParameter("Slack_Channel");
     
-    Результат = OPI_Slack.ПолучитьСписокВнешнихФайлов(Токен);
+    Result = OPI_Slack.GetExternalFileList(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокВнешнихФайлов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetExternalFileList");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["files"]).ИмеетТип("Массив");
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["files"]).HasType("Array");
     
-    Результат = OPI_Slack.ПолучитьСписокВнешнихФайлов(Токен, Канал);
+    Result = OPI_Slack.GetExternalFileList(Token, Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокВнешнихФайлов");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetExternalFileList");
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["files"]).ИмеетТип("Массив");
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(Result["files"]).HasType("Array");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Слак_ЗагрузитьУдалитьВФ() Экспорт
+Procedure Slack_UploadDeleteExternalFile() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Token");
-    Файл         = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Document");
-    Канал        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Slack_Channel");
-    Заголовок    = "Новый файл";
+    Token        = OPI_GetTestData.GetParameter("Slack_Token");
+    File         = OPI_GetTestData.GetParameter("Document");
+    Channel        = OPI_GetTestData.GetParameter("Slack_Channel");
+    Title    = "NewFile";
     
-    Результат = OPI_Slack.ДобавитьВнешнийФайл(Токен, Файл, Заголовок);
+    Result = OPI_Slack.AddExternalFile(Token, File, Title);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьВнешнийФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddExternalFile");
     
-    ЗагруженныйФайл = Результат["file"];
+    UploadedFile = Result["file"];
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗагруженныйФайл["title"]).Равно(Заголовок);
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(UploadedFile["title"]).Equal(Title);
     
-    Результат = OPI_Slack.ПолучитьВнешнийФайл(Токен, ЗагруженныйФайл["id"]);
+    Result = OPI_Slack.GetExternalFile(Token, UploadedFile["id"]);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьВнешнийФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetExternalFile");
     
-    ЗагруженныйФайл = Результат["file"];
+    UploadedFile = Result["file"];
     
-    Проверка_СлакОк(Результат);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗагруженныйФайл["title"]).Равно(Заголовок);
+    Check_SlackOk(Result);
+    OPI_GetTestData.ExpectsThat(UploadedFile["title"]).Equal(Title);
     
-    Результат = OPI_Slack.ОтправитьВнешнийФайл(Токен, ЗагруженныйФайл["id"], Канал);
+    Result = OPI_Slack.SendExternalFile(Token, UploadedFile["id"], Channel);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьВнешнийФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendExternalFile");
     
-    Проверка_СлакОк(Результат);
+    Check_SlackOk(Result);
     
-    Результат = OPI_Slack.УдалитьВнешнийФайл(Токен, ЗагруженныйФайл["id"]);
+    Result = OPI_Slack.DeleteExternalFile(Token, UploadedFile["id"]);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьВнешнийФайл");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendExternalFile");
     
-    Проверка_СлакОк(Результат);
+    Check_SlackOk(Result);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область Airtable
+#Region Airtable
 
-Процедура АТ_СоздатьБазу() Экспорт
+Procedure AT_CreateDatabase() Export
     
-    Токен        = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Token");
-    Область      = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Workspace");
-    Наименование = "Тестовая база";
+    Token        = OPI_GetTestData.GetParameter("Airtable_Token");
+    Region      = OPI_GetTestData.GetParameter("Airtable_Workspace");
+    Name = "TestDatabase";
     
-    МассивПолей = Новый Массив;
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеСтроковое("Строковое"));
+    FieldArray = New Array;
+    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
+    FieldArray.Add(OPI_Airtable.GetStringField("String"));
     
-    ИмяТаблицы = "Тестовая таблица";
+    TableName = "TestTable";
     
-    СоответствиеТаблиц = Новый Соответствие;
-    СоответствиеТаблиц.Вставить(ИмяТаблицы, МассивПолей);
+    TableMapping = New Match;
+    TableMapping.Insert(TableName, FieldArray);
     
-    Результат = OPI_Airtable.СоздатьБазу(Токен, Область, Наименование, СоответствиеТаблиц);
+    Result = OPI_Airtable.CreateDatabase(Token, Region, Name, TableMapping);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьБазу");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateDatabase");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["id"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["tables"][0]["name"]).Равно(ИмяТаблицы);
+    OPI_GetTestData.ExpectsThat(Result["id"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["tables"][0]["name"]).Equal(TableName);
     
-    База = Результат["id"];
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Airtable_Base", База);
+    Base = Result["id"];
+    OPI_GetTestData.WriteParameter("Airtable_Base", Base);
     
-    Результат = OPI_Airtable.ПолучитьТаблицыБазы(Токен, База);
+    Result = OPI_Airtable.GetDatabaseTables(Token, Base);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьТаблицыБазы");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetDatabaseTables");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["tables"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["tables"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result["tables"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["tables"]).HasType("Array");
 
-    Результат = OPI_Airtable.ПолучитьСписокБаз(Токен);
+    Result = OPI_Airtable.GetListOfBases(Token);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокБаз");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetListOfBases");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["bases"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["bases"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result["bases"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["bases"]).HasType("Array");
  
-КонецПроцедуры
+EndProcedure
 
-Процедура АТ_СоздатьТаблицу() Экспорт
+Procedure AT_CreateTable() Export
     
-    Токен = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Token");
-    База  = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Base");
+    Token = OPI_GetTestData.GetParameter("Airtable_Token");
+    Base  = OPI_GetTestData.GetParameter("Airtable_Base");
     
-    МассивПолей = Новый Массив;
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));    
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[0], "ПолучитьПолеНомера");
+    FieldArray = New Array;
+    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));    
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[0], "GetNumberField");
     
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеСтроковое("Строковое"));
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[1], "ПолучитьПолеСтроковое");
+    FieldArray.Add(OPI_Airtable.GetStringField("String"));
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[1], "GetStringField");
     
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеВложения("Вложение"));
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[2], "ПолучитьПолеВложения");
+    FieldArray.Add(OPI_Airtable.GetAttachmentField("Attachment"));
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[2], "GetAttachmentField");
     
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеФлажка("Флажок"));
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[3], "ПолучитьПолеФлажка");
+    FieldArray.Add(OPI_Airtable.GetCheckboxField("Checkbox"));
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[3], "GetCheckboxField");
     
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеДаты("Дата"));
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[4], "ПолучитьПолеДаты");
+    FieldArray.Add(OPI_Airtable.GetDateField("Date"));
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[4], "GetDateField");
     
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеТелефона("Телефон"));
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[5], "ПолучитьПолеТелефона");
+    FieldArray.Add(OPI_Airtable.GetPhoneField("Phone"));
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[5], "GetPhoneField");
         
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеПочты("Почта"));
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[6], "ПолучитьПолеПочты");    
+    FieldArray.Add(OPI_Airtable.GetEmailField("Email"));
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[6], "GetEmailField");    
     
-    МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеСсылки("Ссылка"));
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(МассивПолей[7], "ПолучитьПолеСсылки");    
+    FieldArray.Add(OPI_Airtable.GetLinkField("Link"));
+    // !OInt OPI_GetTestData.WriteLog(FieldArray[7], "GetLinkField");    
     
-    ИмяТаблицы = "Тестовая таблица 2";
-    Описание   = "Новая таблица";
+    TableName = "TestTable2";
+    Description   = "NewTable";
     
-    Результат = OPI_Airtable.СоздатьТаблицу(Токен, База, ИмяТаблицы, МассивПолей, Описание);
+    Result = OPI_Airtable.CreateTable(Token, Base, TableName, FieldArray, Description);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТаблицу");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateTable");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["name"]).Равно(ИмяТаблицы);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["description"]).Равно(Описание);
+    OPI_GetTestData.ExpectsThat(Result["name"]).Equal(TableName);
+    OPI_GetTestData.ExpectsThat(Result["description"]).Equal(Description);
     
-    Таблица    = Результат["id"];
-    ИмяТаблицы = "Тестовая таблица 2 (изм.)";
-    Описание   = "Новая таблица (изм.)";
+    Table    = Result["id"];
+    TableName = "TestTable2 (fromм.)";
+    Description   = "NewTable (fromм.)";
    
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Airtable_Table", Таблица);
+    OPI_GetTestData.WriteParameter("Airtable_Table", Table);
     
-    Результат = OPI_Airtable.ИзменитьТаблицу(Токен, База, Таблица, ИмяТаблицы, Описание);
+    Result = OPI_Airtable.ModifyTable(Token, Base, Table, TableName, Description);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьТаблицу");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ModifyTable");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["name"]).Равно(ИмяТаблицы);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["description"]).Равно(Описание);
+    OPI_GetTestData.ExpectsThat(Result["name"]).Equal(TableName);
+    OPI_GetTestData.ExpectsThat(Result["description"]).Equal(Description);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура АТ_СоздатьПоле() Экспорт
+Procedure AT_CreateField() Export
     
-    Токен   = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Token");
-    База    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Base");
-    Таблица = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Table");
-    Имя     = Строка(Новый УникальныйИдентификатор);
+    Token   = OPI_GetTestData.GetParameter("Airtable_Token");
+    Base    = OPI_GetTestData.GetParameter("Airtable_Base");
+    Table = OPI_GetTestData.GetParameter("Airtable_Table");
+    Name     = String(New UniqueIdentifier);
     
-    Поле = OPI_Airtable.ПолучитьПолеНомера(Имя);
+    Field = OPI_Airtable.GetNumberField(Name);
     
-    Результат = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, Поле);
+    Result = OPI_Airtable.CreateField(Token, Base, Table, Field);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПоле");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateField");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["name"]).Равно(Имя);
+    OPI_GetTestData.ExpectsThat(Result["name"]).Equal(Name);
     
-    Поле      = Результат["id"]; 
-    Имя       = Имя + "(изм.)";
-    Описание  = "Новое описание";
+    Field      = Result["id"]; 
+    Name       = Name + "(fromм.)";
+    Description  = "New description";
     
-    Результат = OPI_Airtable.ИзменитьПоле(Токен, База, Таблица, Поле, Имя, Описание);
+    Result = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьПоле");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ModifyField");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["name"]).Равно(Имя);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["description"]).Равно(Описание);
+    OPI_GetTestData.ExpectsThat(Result["name"]).Equal(Name);
+    OPI_GetTestData.ExpectsThat(Result["description"]).Equal(Description);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура АТ_СоздатьУдалитьЗаписи() Экспорт
+Procedure AT_CreateDeleteRecords() Export
 
-    Токен   = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Token");
-    База    = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Base");
-    Таблица = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Airtable_Table");
+    Token   = OPI_GetTestData.GetParameter("Airtable_Token");
+    Base    = OPI_GetTestData.GetParameter("Airtable_Base");
+    Table = OPI_GetTestData.GetParameter("Airtable_Table");
     
-    Числовой = 10;
-    Строчный = "Привет";
+    Numeric = 10;
+    StringType = "Hello";
     
-    ОписаниеСтроки1 = Новый Структура("Номер,Строковое", Числовой, Строчный);
-    ОписаниеСтроки2 = Новый Структура("Номер,Строковое", Числовой, Строчный);
+    RowDescription1 = New Structure("Number,String", Numeric, StringType);
+    RowDescription2 = New Structure("Number,String", Numeric, StringType);
     
-    МассивУдаляемых = Новый Массив;
-    МассивОписаний  = Новый Массив;
-    МассивОписаний.Добавить(ОписаниеСтроки1);
-    МассивОписаний.Добавить(ОписаниеСтроки2);
+    ArrayOfDeletions = New Array;
+    ArrayOfDescriptions  = New Array;
+    ArrayOfDescriptions.Add(RowDescription1);
+    ArrayOfDescriptions.Add(RowDescription2);
     
-    Результат = OPI_Airtable.СоздатьЗаписи(Токен, База, Таблица, МассивОписаний);
+    Result = OPI_Airtable.CreatePosts(Token, Base, Table, ArrayOfDescriptions);
 
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьЗаписи");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreatePosts");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"]).ИмеетТип("Массив");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"].Количество()).Равно(2);
+    OPI_GetTestData.ExpectsThat(Result["records"]).HasType("Array");
+    OPI_GetTestData.ExpectsThat(Result["records"].Quantity()).Equal(2);
     
-    Для Каждого Запись Из Результат["records"] Цикл
-        МассивУдаляемых.Добавить(Запись["id"]);
-    КонецЦикла;
+    For Each Record Of Result["records"] Loop
+        ArrayOfDeletions.Add(Record["id"]);
+    EndOfLoop;
         
-    Результат = OPI_Airtable.СоздатьЗаписи(Токен, База, Таблица, ОписаниеСтроки1);
+    Result = OPI_Airtable.CreatePosts(Token, Base, Table, RowDescription1);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьЗаписи (одна)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreatePosts (оdto)");
     
-    ОдиночнаяЗапись = Результат["id"];
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ОдиночнаяЗапись).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["createdTime"]).Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["fields"]["Номер"]).Равно(Числовой);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(СокрЛП(Результат["fields"]["Строковое"])).Равно(Строчный);
+    SingleRecord = Result["id"];
+    OPI_GetTestData.ExpectsThat(SingleRecord).Filled();
+    OPI_GetTestData.ExpectsThat(Result["createdTime"]).Filled();
+    OPI_GetTestData.ExpectsThat(Result["fields"]["Number"]).Equal(Numeric);
+    OPI_GetTestData.ExpectsThat(ShortLP(Result["fields"]["String"])).Equal(StringType);
   
-    Результат = OPI_Airtable.ПолучитьЗапись(Токен, База, Таблица, ОдиночнаяЗапись);
+    Result = OPI_Airtable.GetRecord(Token, Base, Table, SingleRecord);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьЗапись");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetRecord");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["id"]).Равно(ОдиночнаяЗапись);
+    OPI_GetTestData.ExpectsThat(Result["id"]).Equal(SingleRecord);
     
-    Текст     = "Тестовый комментарий";
-    Результат = OPI_Airtable.СоздатьКомментарий(Токен, База, Таблица, ОдиночнаяЗапись, Текст);
+    Text     = "TestComment";
+    Result = OPI_Airtable.CreateComment(Token, Base, Table, SingleRecord, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateComment");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["text"]).Равно(Текст);
+    OPI_GetTestData.ExpectsThat(Result["text"]).Equal(Text);
     
-    Коммент   = Результат["id"];
-    Текст     = "Тестовый комментарий (изм.)";
-    Результат = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, ОдиночнаяЗапись, Коммент, Текст);
+    Comment   = Result["id"];
+    Text     = "TestComment (fromм.)";
+    Result = OPI_Airtable.EditComment(Token, Base, Table, SingleRecord, Comment, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditComment");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["text"]).Равно(Текст);
+    OPI_GetTestData.ExpectsThat(Result["text"]).Equal(Text);
     
-    Результат = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, ОдиночнаяЗапись);
+    Result = OPI_Airtable.GetComments(Token, Base, Table, SingleRecord);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьКомментарии");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetComments");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["comments"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result["comments"]).HasType("Array");
     
-    Результат = OPI_Airtable.УдалитьКомментарий(Токен, База, Таблица, ОдиночнаяЗапись, Коммент);
+    Result = OPI_Airtable.DeleteComment(Token, Base, Table, SingleRecord, Comment);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьКомментарий");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteComment");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["deleted"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["id"]).Равно(Коммент);
+    OPI_GetTestData.ExpectsThat(Result["deleted"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["id"]).Equal(Comment);
      
-    Результат = OPI_Airtable.ПолучитьСписокЗаписей(Токен, База, Таблица);
+    Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокЗаписей");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetListOfRecords");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"]).ИмеетТип("Массив");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result["records"]).HasType("Array");
+    OPI_GetTestData.ExpectsThat(Result["records"]).Filled();
     
-    Результат = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, МассивУдаляемых);
+    Result = OPI_Airtable.DeletePosts(Token, Base, Table, ArrayOfDeletions);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьЗаписи");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeletePosts");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"]).ИмеетТип("Массив");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result["records"]).HasType("Array");
+    OPI_GetTestData.ExpectsThat(Result["records"]).Filled();
       
-    Результат = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, ОдиночнаяЗапись);
+    Result = OPI_Airtable.DeletePosts(Token, Base, Table, SingleRecord);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьЗаписи (одна)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeletePosts (оdto)");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"]).ИмеетТип("Массив");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["records"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result["records"]).HasType("Array");
+    OPI_GetTestData.ExpectsThat(Result["records"]).Filled();
         
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область Dropbox
+#Region Dropbox
 
-Процедура ДропБокс_ПолучитьОбновитьТокен() Экспорт
+Procedure Dropbox_GetUpdateToken() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Appkey"   , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Appsecret", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Appkey"   , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Dropbox_Appsecret", TestParameters);
    
-    Dropbox_ПолучитьСсылкуАвторизации(ПараметрыТеста); 
+    Dropbox_GetAuthorizationLink(TestParameters); 
     
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Code", ПараметрыТеста);
+    OPI_GetTestData.ParameterToCollection("Dropbox_Code", TestParameters);
 
-    Dropbox_ПолучитьТокен(ПараметрыТеста);
+    Dropbox_GetToken(TestParameters);
     
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Refresh", ПараметрыТеста);
+    OPI_GetTestData.ParameterToCollection("Dropbox_Refresh", TestParameters);
     
-    Dropbox_ОбновитьТокен(ПараметрыТеста);
+    Dropbox_UpdateToken(TestParameters);
        
-КонецПроцедуры
+EndProcedure
 
-Процедура ДропБокс_ЗагрузитьФайл() Экспорт
+Procedure Dropbox_UploadFile() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Token", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Picture", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Token", TestParameters);
+    OPI_GetTestData.ParameterToCollection("Picture", TestParameters);
     
-    Dropbox_ЗагрузитьФайл(ПараметрыТеста);
-    Dropbox_ПолучитьИнформациюОбОбъекте(ПараметрыТеста);
-    Dropbox_ПолучитьСписокВерсийОбъекта(ПараметрыТеста);
-    Dropbox_ВосстановитьОбъектКВерсии(ПараметрыТеста);
-    Dropbox_ПолучитьПревью(ПараметрыТеста);
-    Dropbox_СкачатьФайл(ПараметрыТеста);
-    Dropbox_ПереместитьОбъект(ПараметрыТеста);
-    Dropbox_КопироватьОбъект(ПараметрыТеста);
-    Dropbox_УдалитьОбъект(ПараметрыТеста);
+    Dropbox_UploadFile(TestParameters);
+    Dropbox_GetObjectInformation(TestParameters);
+    Dropbox_GetObjectVersionList(TestParameters);
+    Dropbox_RestoreObjectToVersion(TestParameters);
+    Dropbox_GetPreview(TestParameters);
+    Dropbox_DownloadFile(TestParameters);
+    Dropbox_MoveObject(TestParameters);
+    Dropbox_CopyObject(TestParameters);
+    Dropbox_DeleteObject(TestParameters);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура ДропБокс_СоздатьКаталог() Экспорт
+Procedure Dropbox_CreateFolder() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Token", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Token", TestParameters);
     
-    Dropbox_СоздатьПапку(ПараметрыТеста);
-    Dropbox_СкачатьПапку(ПараметрыТеста);
+    Dropbox_CreateFolder(TestParameters);
+    Dropbox_DownloadFolder(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДропБокс_ПолучитьСписокФайловПапки() Экспорт
+Procedure Dropbox_GetFolderFileList() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Token", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Token", TestParameters);
     
-    Dropbox_ПолучитьСписокФайловПапки(ПараметрыТеста);
+    Dropbox_GetFolderFileList(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДропБокс_ЗагрузитьФайлПоURL() Экспорт
+Procedure Dropbox_UploadFileByURL() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Token", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Document", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Token", TestParameters);
+    OPI_GetTestData.ParameterToCollection("Document", TestParameters);
     
-    Dropbox_ЗагрузитьФайлПоURL(ПараметрыТеста);
-    Dropbox_ПолучитьСтатусЗагрузкиПоURL(ПараметрыТеста);
+    Dropbox_UploadFileByURL(TestParameters);
+    Dropbox_GetUploadStatusByURL(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДропБокс_СоздатьУдалитьТег() Экспорт
+Procedure Dropbox_CreateDeleteTag() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Token", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Token", TestParameters);
     
-    Dropbox_ДобавитьТег(ПараметрыТеста);
-    Dropbox_ПолчитьСписокТегов(ПараметрыТеста);
-    Dropbox_УдалитьТег(ПараметрыТеста);
+    Dropbox_AddTag(TestParameters);
+    Dropbox_GetTagList(TestParameters);
+    Dropbox_DeleteTag(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура ДропБокс_ПолучитьАккаунт() Экспорт
+Procedure Dropbox_GetAccount() Export
   
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Token", ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Token", TestParameters);
     
-    Dropbox_ПолучитьИнформациюОбАккаунте(ПараметрыТеста);
-    Dropbox_ПолучитьДанныеИспользованияПространства(ПараметрыТеста);
+    Dropbox_GetAccountInformation(TestParameters);
+    Dropbox_GetSpaceUsageData(TestParameters);
       
-КонецПроцедуры
+EndProcedure
 
-Процедура ДропБокс_РаботаСДоступами() Экспорт
+Procedure Dropbox_AccessManagement() Export
     
-    ПараметрыТеста = Новый Структура;
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_Token"    , ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_OtherUser", ПараметрыТеста);
-    OPI_ПолучениеДанныхТестов.ПараметрВКоллекцию("Dropbox_FileID"   , ПараметрыТеста);
+    TestParameters = New Structure;
+    OPI_GetTestData.ParameterToCollection("Dropbox_Token"    , TestParameters);
+    OPI_GetTestData.ParameterToCollection("Dropbox_OtherUser", TestParameters);
+    OPI_GetTestData.ParameterToCollection("Dropbox_FileID"   , TestParameters);
     
-    Dropbox_ДобавитьПользователейКФайлу(ПараметрыТеста);
-    Dropbox_ОпубликоватьПапку(ПараметрыТеста);
-    Dropbox_ДобавитьПользователейКПапке(ПараметрыТеста);
-    Dropbox_ОтменитьПубликациюПапки(ПараметрыТеста);
-    Dropbox_ОтменитьПубликациюФайла(ПараметрыТеста);
+    Dropbox_AddUsersToFile(TestParameters);
+    Dropbox_PublishFolder(TestParameters);
+    Dropbox_AddUsersToFolder(TestParameters);
+    Dropbox_CancelFolderPublication(TestParameters);
+    Dropbox_CancelFilePublication(TestParameters);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region ServiceProceduresAndFunctions
 
-Функция ПолучитьПараметрыВК() 
+Function GetVKParameters() 
     
-    Параметры   = Новый Структура;
-    НомерГруппы = OPI_ПолучениеДанныхТестов.ПолучитьПараметр("VK_GroupID");
+    Parameters   = New Structure;
+    GroupNumber = OPI_GetTestData.GetParameter("VK_GroupID");
     
-    Параметры.Вставить("access_token"  , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("VK_Token"));
-    Параметры.Вставить("owner_id"      , "-" + НомерГруппы);
-    Параметры.Вставить("app_id"        , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("VK_AppID"));
-    Параметры.Вставить("group_id"      , НомерГруппы);
+    Parameters.Insert("access_token"  , OPI_GetTestData.GetParameter("VK_Token"));
+    Parameters.Insert("owner_id"      , "-" + GroupNumber);
+    Parameters.Insert("app_id"        , OPI_GetTestData.GetParameter("VK_AppID"));
+    Parameters.Insert("group_id"      , GroupNumber);
     
-    Возврат Параметры;
+    Return Parameters;
     
-КонецФункции
+EndFunction
 
-Функция ПолучитьПараметрыТвиттер() 
+Function GetTwitterParameters() 
     
-    Параметры = Новый Соответствие;
+    Parameters = New Match;
               
-    Параметры.Вставить("redirect_uri"          , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_Redirect"));
-    Параметры.Вставить("client_id"             , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_ClinetID"));
-    Параметры.Вставить("client_secret"         , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_ClientSecret"));
-    Параметры.Вставить("access_token"          , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_Token"));
-    Параметры.Вставить("refresh_token"         , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_Refresh"));
-    Параметры.Вставить("oauth_token"           , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_OAuthToken"));
-    Параметры.Вставить("oauth_token_secret"    , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_OAuthSecret"));
+    Parameters.Insert("redirect_uri"          , OPI_GetTestData.GetParameter("Twitter_Redirect"));
+    Parameters.Insert("client_id"             , OPI_GetTestData.GetParameter("Twitter_ClinetID"));
+    Parameters.Insert("client_secret"         , OPI_GetTestData.GetParameter("Twitter_ClientSecret"));
+    Parameters.Insert("access_token"          , OPI_GetTestData.GetParameter("Twitter_Token"));
+    Parameters.Insert("refresh_token"         , OPI_GetTestData.GetParameter("Twitter_Refresh"));
+    Parameters.Insert("oauth_token"           , OPI_GetTestData.GetParameter("Twitter_OAuthToken"));
+    Parameters.Insert("oauth_token_secret"    , OPI_GetTestData.GetParameter("Twitter_OAuthSecret"));
     
-    Параметры.Вставить("oauth_consumer_key"    
-        , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_OAuthConsumerKey"));
-    Параметры.Вставить("oauth_consumer_secret" 
-        , OPI_ПолучениеДанныхТестов.ПолучитьПараметр("Twitter_OAuthConsumerSecret"));
+    Parameters.Insert("oauth_consumer_key"    
+        , OPI_GetTestData.GetParameter("Twitter_OAuthConsumerKey"));
+    Parameters.Insert("oauth_consumer_secret" 
+        , OPI_GetTestData.GetParameter("Twitter_OAuthConsumerSecret"));
 
-    Возврат Параметры;
+    Return Parameters;
     
-КонецФункции
+EndFunction
 
-#Область Проверки
+#Region Checks
 
-Процедура Проверка_Пусто(Знач Результат)   
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЗначениеЗаполнено(Результат)).Равно(Ложь);
-КонецПроцедуры
+Procedure Check_Empty(Val Result)   
+    OPI_GetTestData.ExpectsThat(ValueFilled(Result)).Equal(False);
+EndProcedure
 
-Процедура Проверка_ДвоичныеДанные(Знач Результат, Знач Размер = Неопределено)
+Procedure Check_BinaryData(Val Result, Val Size = Undefined)
     
-    МинимальныйРазмер = 500000;
+    MinimumSize = 500000;
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("ДвоичныеДанные"); 
+    OPI_GetTestData.ExpectsThat(Result).HasType("BinaryData"); 
     
-    Если Не Размер = Неопределено Тогда
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат.Размер()).Равно(Размер); 
-    Иначе
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат.Размер() > МинимальныйРазмер).Равно(Истина);
-    КонецЕсли;
+    If Not Size = Undefined Then
+        OPI_GetTestData.ExpectsThat(Result.Size()).Equal(Size); 
+    Otherwise
+        OPI_GetTestData.ExpectsThat(Result.Size() > MinimumSize).Equal(True);
+    EndIf;
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмИстина(Знач Результат)
+Procedure Check_TelegramTrue(Val Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]).Равно(Истина);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]).Equal(True);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмИнформацияБота(Знач Результат)
+Procedure Check_TelegramBotInformation(Val Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["username"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["username"]).Filled();
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмМассив(Результат)
+Procedure Check_TelegramArray(Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие") .Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match") .Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]).HasType("Array");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмУстановкаВебхук(Знач Результат)
+Procedure Check_TelegramWebhookSetup(Val Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["description"]).Равно("Webhook was set");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["description"]).Equal("Webhook was set");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмУдалениеВебхук(Знач Результат)
+Procedure Check_TelegramWebhookDeletion(Val Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["description"]).Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["description"]).Filled();
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмСообщение(Знач Результат, Знач Текст)
+Procedure Check_TelegramMessage(Val Result, Val Text)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["text"]).Равно(Текст);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["text"]).Equal(Text);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмКартинка(Знач Результат, Знач Текст)
+Procedure Check_TelegramImage(Val Result, Val Text)
 	
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие") .Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["caption"]).Равно(Текст);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["photo"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match") .Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["caption"]).Equal(Text);
+    OPI_GetTestData.ExpectsThat(Result["result"]["photo"]).HasType("Array");
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмВидео(Знач Результат, Знач Текст)
+Procedure Check_TelegramVideo(Val Result, Val Text)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["caption"]).Равно(Текст);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["video"]["mime_type"]).Равно("video/mp4");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["caption"]).Equal(Text);
+    OPI_GetTestData.ExpectsThat(Result["result"]["video"]["mime_type"]).Equal("video/mp4");
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмАудио(Знач Результат, Знач Текст)
+Procedure Check_TelegramAudio(Val Result, Val Text)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["caption"]).Равно(Текст);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["audio"]["mime_type"]).Равно("audio/mpeg");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["caption"]).Equal(Text);
+    OPI_GetTestData.ExpectsThat(Result["result"]["audio"]["mime_type"]).Equal("audio/mpeg");
             
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмДокумент(Знач Результат, Знач Текст)
+Procedure Check_TelegramDocument(Val Result, Val Text)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["caption"]).Равно(Текст);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["document"]).ИмеетТип("Соответствие").Заполнено();  
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["caption"]).Equal(Text);
+    OPI_GetTestData.ExpectsThat(Result["result"]["document"]).HasType("Match").Filled();  
       
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмГифка(Знач Результат, Знач Текст)
+Procedure Check_TelegramGif(Val Result, Val Text)
 
     Result = "result";
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Result]["caption"]).Равно(Текст);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Result]["document"]).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Result]["animation"]["mime_type"]).Равно("video/mp4");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result[Result]["caption"]).Equal(Text);
+    OPI_GetTestData.ExpectsThat(Result[Result]["document"]).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result[Result]["animation"]["mime_type"]).Equal("video/mp4");
             
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмМедиагруппа(Знач Результат)
+Procedure Check_TelegramMediaGroup(Val Result)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]).HasType("Array");
             
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмМестоположение(Знач Результат)
+Procedure Check_TelegramLocation(Val Result)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["location"]).ИмеетТип("Соответствие").Заполнено();   
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["location"]).HasType("Match").Filled();   
      
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмКонтакт(Знач Результат, Знач Имя)
+Procedure Check_TelegramContact(Val Result, Val Name)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["contact"]).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["contact"]["first_name"]).Равно(Имя);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["contact"]).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["result"]["contact"]["first_name"]).Equal(Name);
             
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмОпрос(Знач Результат, Знач Вопрос)
+Procedure Check_TelegramPoll(Val Result, Val Question)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["poll"]).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["poll"]["question"]).Равно(Вопрос);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["poll"]).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["result"]["poll"]["question"]).Equal(Question);
         	
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмПереслать(Знач Результат, Знач IDСообщения)
+Procedure Check_TelegramForward(Val Result, Val MessageID)
 	
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["forward_origin"]["message_id"]).Равно(Число(IDСообщения));
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["forward_origin"]["message_id"]).Equal(Number(MessageID));
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмБан(Знач Результат)
+Procedure Check_TelegramBan(Val Result)
 	
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["description"]).Равно("Bad Request: can't remove chat owner");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["description"]).Equal("Bad Request: can't remove chat owner");
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмПриглашение(Знач Результат, Знач Заголовок, Знач UnixИстечение)
+Procedure Check_TelegramInvitation(Val Result, Val Title, Val UnixExpiration)
 
     Result        = "result";
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Result]["member_limit"]).Равно(200);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Result]["name"]).Равно(Заголовок);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Result]["expire_date"]).Равно(Число(UnixИстечение));
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result[Result]["member_limit"]).Equal(200);
+    OPI_GetTestData.ExpectsThat(Result[Result]["name"]).Equal(Title);
+    OPI_GetTestData.ExpectsThat(Result[Result]["expire_date"]).Equal(Number(UnixExpiration));
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмЧисло(Знач Результат)
+Procedure Check_TelegramNumber(Val Result)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]).ИмеетТип("Число");
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]).HasType("Number");
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТелеграмСозданиеТемы(Знач Результат, Знач Имя, Иконка)
+Procedure Check_TelegramCreateTopic(Val Result, Val Name, Icon)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["name"]).Равно(Имя);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["result"]["icon_custom_emoji_id"]).Равно(Иконка);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
+    OPI_GetTestData.ExpectsThat(Result["result"]["name"]).Equal(Name);
+    OPI_GetTestData.ExpectsThat(Result["result"]["icon_custom_emoji_id"]).Equal(Icon);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ВКПост(Знач Результат)
+Procedure Check_VKPost(Val Result)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"]["post_id"]).ИмеетТип("Число").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["response"]["post_id"]).HasType("Number").Filled();
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ВКИстина(Знач Результат)
+Procedure Check_VKTrue(Val Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"]).ИмеетТип("Число").Равно(1);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["response"]).HasType("Number").Equal(1);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ВКАльбом(Знач Результат, Знач Описание)
+Procedure Check_VKAlbum(Val Result, Val Description)
 
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"]["description"]).Равно(Описание);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["response"]["description"]).Equal(Description);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ВККартинкаАльбома(Знач Результат, Знач ОписаниеКартинки, Знач ИДАльбома)
+Procedure Check_VKAlbumPicture(Val Result, Val ImageDescription, Val AlbumID)
 
     Response    = "response";
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response][0]["text"]).Равно(ОписаниеКартинки);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[Response][0]["album_id"]).Равно(ИДАльбома);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result[Response][0]["text"]).Equal(ImageDescription);
+    OPI_GetTestData.ExpectsThat(Result[Response][0]["album_id"]).Equal(AlbumID);
             
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ВКИстория(Знач Результат)
+Procedure Check_VKStory(Val Result)
   
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"]["count"]).ИмеетТип("Число").Равно(1);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"]["items"]).ИмеетТип("Массив").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["response"]["count"]).HasType("Number").Equal(1);
+    OPI_GetTestData.ExpectsThat(Result["response"]["items"]).HasType("Array").Filled();
       
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ВКОбсуждение(Знач Результат)
+Procedure Check_VKDiscussion(Val Result)
  
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["response"]).ИмеетТип("Число").Заполнено();   
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["response"]).HasType("Number").Filled();   
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ГКОбъект(Знач Результат, Знач Наименование, Знач Описание)
+Procedure Check_GKObject(Val Result, Val Name, Val Description)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["summary"]).Равно(Наименование);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["description"]).Равно(Описание);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["id"]).ИмеетТип("Строка").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match");
+    OPI_GetTestData.ExpectsThat(Result["summary"]).Equal(Name);
+    OPI_GetTestData.ExpectsThat(Result["description"]).Equal(Description);
+    OPI_GetTestData.ExpectsThat(Result["id"]).HasType("String").Filled();
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ТвиттерТекст(Знач Результат, Знач Текст)
+Procedure Check_TwitterText(Val Result, Val Text)
     
-    ТекстОтвета = Результат["data"]["text"];
-    ТекстОтвета = Лев(ТекстОтвета, СтрДлина(Текст));
+    ReplyText = Result["data"]["text"];
+    ReplyText = Left(ReplyText, StrLength(Text));
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ТекстОтвета).Равно(Текст);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(ReplyText).Equal(Text);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ВайберОк(Знач Результат)
+Procedure Check_ViberOk(Val Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["status_message"]).Равно("ok");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["status"]).Равно(0);
+    OPI_GetTestData.ExpectsThat(Result["status_message"]).Equal("ok");
+    OPI_GetTestData.ExpectsThat(Result["status"]).Equal(0);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_НоушнОбъект(Знач Результат, Знач Вид = "page")
+Procedure Check_NotionObject(Val Result, Val View = "page")
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["object"]).Равно(Вид);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["object"]).Equal(View);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_СлакОк(Знач Результат)
+Procedure Check_SlackOk(Val Result)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["ok"]).Равно(Истина);
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
+    OPI_GetTestData.ExpectsThat(Result["ok"]).Equal(True);
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ДропБоксФайл(Знач Результат, Знач Путь)
+Procedure Check_DropboxFile(Val Result, Val Path)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["path_display"]).Равно(Путь);
+    OPI_GetTestData.ExpectsThat(Result["path_display"]).Equal(Path);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ДропБоксМетаданные(Знач Результат, Знач Путь)
+Procedure Check_DropboxMetadata(Val Result, Val Path)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["metadata"]["path_display"]).Равно(Путь);
+    OPI_GetTestData.ExpectsThat(Result["metadata"]["path_display"]).Equal(Path);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ДропБоксМассив(Знач Результат, Знач Количество = Неопределено)
+Procedure Check_DropboxArray(Val Result, Val Quantity = Undefined)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["entries"]).ИмеетТип("Массив");
+    OPI_GetTestData.ExpectsThat(Result["entries"]).HasType("Array");
     
-    Если Не Количество = Неопределено Тогда
-        OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["entries"].Количество()).Равно(Количество);
-    КонецЕсли;
+    If Not Quantity = Undefined Then
+        OPI_GetTestData.ExpectsThat(Result["entries"].Quantity()).Equal(Quantity);
+    EndIf;
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ДропБоксРабота(Знач Результат)
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["async_job_id"]).Заполнено();
-КонецПроцедуры
+Procedure Check_DropboxWork(Val Result)
+    OPI_GetTestData.ExpectsThat(Result["async_job_id"]).Filled();
+EndProcedure
 
-Процедура Проверка_ДропБоксСтатус(Знач Результат)
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[".tag"]).Равно("complete");
-КонецПроцедуры
+Procedure Check_DropboxStatus(Val Result)
+    OPI_GetTestData.ExpectsThat(Result[".tag"]).Equal("complete");
+EndProcedure
 
-Процедура Проверка_ДропБоксТеги(Знач Результат, Знач Количество)
+Procedure Check_DropboxTags(Val Result, Val Quantity)
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["paths_to_tags"]).ИмеетТип("Массив");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["paths_to_tags"].Количество()).Равно(Количество);
+    OPI_GetTestData.ExpectsThat(Result["paths_to_tags"]).HasType("Array");
+    OPI_GetTestData.ExpectsThat(Result["paths_to_tags"].Quantity()).Equal(Quantity);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Проверка_ДропбоксАккаунт(Знач Результат)
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["account_id"]).Заполнено();
-КонецПроцедуры
+Procedure Check_DropboxAccount(Val Result)
+    OPI_GetTestData.ExpectsThat(Result["account_id"]).Filled();
+EndProcedure
 
-Процедура Проверка_ДропбоксПространство(Знач Результат)
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["used"]).Заполнено();
-КонецПроцедуры
+Procedure Check_DropboxSpace(Val Result)
+    OPI_GetTestData.ExpectsThat(Result["used"]).Filled();
+EndProcedure
 
-Процедура Проверка_ДропбоксУчастник(Знач Результат, Знач Почта, Знач ТолькоПросмотр)
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[0]["result"][".tag"]).Равно("success");
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат[0]["member"]["email"]).Равно(Почта);
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(
-        Результат[0]["result"]["success"][".tag"]).Равно(?(ТолькоПросмотр, "viewer", "editor"));
-КонецПроцедуры
+Procedure Check_DropboxMember(Val Result, Val Email, Val ViewOnly)
+    OPI_GetTestData.ExpectsThat(Result[0]["result"][".tag"]).Equal("success");
+    OPI_GetTestData.ExpectsThat(Result[0]["member"]["email"]).Equal(Email);
+    OPI_GetTestData.ExpectsThat(
+        Result[0]["result"]["success"][".tag"]).Equal(?(ViewOnly, "viewer", "editor"));
+EndProcedure
 
-Процедура Проверка_ДропбоксПубличнаяПапка(Знач Результат)
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат["shared_folder_id"]).Заполнено();
-КонецПроцедуры
+Procedure Check_DropboxPublicFolder(Val Result)
+    OPI_GetTestData.ExpectsThat(Result["shared_folder_id"]).Filled();
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область АтомарныеТесты
+#Region AtomicTests
 
-#Область Telegram
+#Region Telegram
 
-Процедура Telegram_ПолучитьИнформациюБота(ПараметрыФункции)
+Procedure Telegram_GetBotInformation(FunctionParameters)
 
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    Результат   = OPI_Telegram.ПолучитьИнформациюБота(Токен);
+    Token       = FunctionParameters["Telegram_Token"];
+    Result   = OPI_Telegram.GetBotInformation(Token);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюБота", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetBotInformation", "Telegram");
         
-    Проверка_ТелеграмИнформацияБота(Результат);
+    Check_TelegramBotInformation(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ПолучитьОбновления(ПараметрыФункции)
+Procedure Telegram_GetUpdates(FunctionParameters)
 	
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Результат   = OPI_Telegram.ПолучитьОбновления(Токен);
+	Token       = FunctionParameters["Telegram_Token"];
+    Result   = OPI_Telegram.GetUpdates(Token);
 
 	// END
 	
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьОбновления", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetUpdates", "Telegram");
     
-    Проверка_ТелеграмМассив(Результат);
+    Check_TelegramArray(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_УстановитьWebhook(ПараметрыФункции)
+Procedure Telegram_SetWebhook(FunctionParameters)
     
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    URL         = ПараметрыФункции["Telegram_URL"];
+    Token       = FunctionParameters["Telegram_Token"];
+    URL         = FunctionParameters["Telegram_URL"];
     
-    Результат   = OPI_Telegram.УстановитьWebhook(Токен, URL);
+    Result   = OPI_Telegram.SetWebhook(Token, URL);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УстановитьWebhook", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SetWebhook", "Telegram");
       
-    Проверка_ТелеграмУстановкаВебхук(Результат);
+    Check_TelegramWebhookSetup(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_УдалитьWebhook(ПараметрыФункции)
+Procedure Telegram_DeleteWebhook(FunctionParameters)
 	
-	Токен     = ПараметрыФункции["Telegram_Token"];
-	Результат = OPI_Telegram.УдалитьWebhook(Токен);
+	Token     = FunctionParameters["Telegram_Token"];
+	Result = OPI_Telegram.DeleteWebhook(Token);
 	
 	// END
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьWebhook", "Telegram");
+	// !OInt OPI_GetTestData.WriteLog(Result, "DeleteWebhook", "Telegram");
       
-    Проверка_ТелеграмУдалениеВебхук(Результат);
+    Check_TelegramWebhookDeletion(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьТекстовоеСообщение(ПараметрыФункции)
+Procedure Telegram_SendTextMessage(FunctionParameters)
 	
-	Токен    = ПараметрыФункции["Telegram_Token"];
-	IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-	IDКанала = ПараметрыФункции["Telegram_ChannelID"];    
-	Текст    = ПараметрыФункции["String"];
+	Token    = FunctionParameters["Telegram_Token"];
+	ChatID   = FunctionParameters["Telegram_ChatID"];
+	ChannelID = FunctionParameters["Telegram_ChannelID"];    
+	Text    = FunctionParameters["String"];
 	
-    Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, IDЧата, Текст);
+    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьТекстовоеСообщение", "Telegram"); 
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendTextMessage", "Telegram"); 
     
-    Проверка_ТелеграмСообщение(Результат, Текст); // SKIP
+    Check_TelegramMessage(Result, Text); // SKIP
     
-    Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, IDКанала, Текст);
+    Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьТекстовоеСообщение (канал)"); 
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendTextMessage (toаtoл)"); 
     
-    Проверка_ТелеграмСообщение(Результат, Текст);
+    Check_TelegramMessage(Result, Text);
     
-    IDСообщения = OPI_Инструменты.ЧислоВСтроку(Результат["result"]["message_id"]);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Telegram_ChannelMessageID", IDСообщения);
+    MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
+    OPI_GetTestData.WriteParameter("Telegram_ChannelMessageID", MessageID);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьКартинку(ПараметрыФункции)
+Procedure Telegram_SendPicture(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Текст    = ПараметрыФункции["String"];
-    Картинка = ПараметрыФункции["Picture"]; 
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text    = FunctionParameters["String"];
+    Image = FunctionParameters["Picture"]; 
     
-    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, КартинкаПуть);
+    ImagePath = GetTempFileName("png");
+    CopyFile(Image, ImagePath);
     
-    КартинкаДД   = Новый ДвоичныеДанные(КартинкаПуть);
+    ImageDD   = New BinaryData(ImagePath);
     
-    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDЧата, Текст, Картинка);
+    Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКартинку", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendImage", "Telegram");
     
-    Проверка_ТелеграмКартинка(Результат, Текст); // SKIP
+    Check_TelegramImage(Result, Text); // SKIP
   
-    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаПуть);
+    Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКартинку (Путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendImage (Path)");
     
-    Проверка_ТелеграмКартинка(Результат, Текст); // SKIP
+    Check_TelegramImage(Result, Text); // SKIP
       
-    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаДД);
+    Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
     
     // END 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКартинку (ДД)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendImage (BD)");
     
-    Проверка_ТелеграмКартинка(Результат, Текст);
+    Check_TelegramImage(Result, Text);
     
-    УдалитьФайлы(КартинкаПуть);
+    DeleteFiles(ImagePath);
     
-    IDФайла = Результат["result"]["photo"][0]["file_id"];
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Telegram_FileID", IDФайла);
+    FileID = Result["result"]["photo"][0]["file_id"];
+    OPI_GetTestData.WriteParameter("Telegram_FileID", FileID);
     
-    ПараметрыФункции.Вставить("Telegram_FileID", IDФайла);
+    FunctionParameters.Insert("Telegram_FileID", FileID);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьВидео(ПараметрыФункции)
+Procedure Telegram_SendVideo(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Текст    = ПараметрыФункции["String"];
-    Видео    = ПараметрыФункции["Video"];
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text    = FunctionParameters["String"];
+    Video    = FunctionParameters["Video"];
     
-    ВидеоПуть = ПолучитьИмяВременногоФайла("mp4");
-    КопироватьФайл(Видео, ВидеоПуть);
+    VideoPath = GetTempFileName("mp4");
+    CopyFile(Video, VideoPath);
     
-    ВидеоДД   = Новый ДвоичныеДанные(ВидеоПуть);
+    VideoDD   = New BinaryData(VideoPath);
     
-    Результат = OPI_Telegram.ОтправитьВидео(Токен, IDЧата, Текст, Видео);
+    Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьВидео", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendVideo", "Telegram");
     
-    Проверка_ТелеграмВидео(Результат, Текст); // SKIP
+    Check_TelegramVideo(Result, Text); // SKIP
   
-    Результат = OPI_Telegram.ОтправитьВидео(Токен, IDКанала, Текст, ВидеоПуть);
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьВидео (Путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendVideo (Path)");
     
-    Проверка_ТелеграмВидео(Результат, Текст); // SKIP
+    Check_TelegramVideo(Result, Text); // SKIP
       
-    Результат = OPI_Telegram.ОтправитьВидео(Токен, IDКанала, Текст, ВидеоДД);
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
     
     // END 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьВидео (ДД)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendVideo (BD)");
     
-    Проверка_ТелеграмВидео(Результат, Текст);
+    Check_TelegramVideo(Result, Text);
     
-    УдалитьФайлы(ВидеоПуть);
+    DeleteFiles(VideoPath);
     
-    IDФайла = Результат["result"]["video"]["file_id"];
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Telegram_FileID", IDФайла);
+    FileID = Result["result"]["video"]["file_id"];
+    OPI_GetTestData.WriteParameter("Telegram_FileID", FileID);
     
-    ПараметрыФункции.Вставить("Telegram_FileID", IDФайла);
+    FunctionParameters.Insert("Telegram_FileID", FileID);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьАудио(ПараметрыФункции)
+Procedure Telegram_SendAudio(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Текст    = ПараметрыФункции["String"];
-    Аудио    = ПараметрыФункции["Audio"];
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text    = FunctionParameters["String"];
+    Audio    = FunctionParameters["Audio"];
     
-    АудиоПуть = ПолучитьИмяВременногоФайла("mp3");
-    КопироватьФайл(Аудио, АудиоПуть);
+    AudioPath = GetTempFileName("mp3");
+    CopyFile(Audio, AudioPath);
     
-    АудиоДД   = Новый ДвоичныеДанные(АудиоПуть);
+    AudioDD   = New BinaryData(AudioPath);
     
-    Результат = OPI_Telegram.ОтправитьАудио(Токен, IDЧата, Текст, Аудио);
+    Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьАудио", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendAudio", "Telegram");
     
-    Проверка_ТелеграмАудио(Результат, Текст); // SKIP
+    Check_TelegramAudio(Result, Text); // SKIP
   
-    Результат = OPI_Telegram.ОтправитьАудио(Токен, IDКанала, Текст, АудиоПуть);
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьАудио (Путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendAudio (Path)");
     
-    Проверка_ТелеграмАудио(Результат, Текст); // SKIP
+    Check_TelegramAudio(Result, Text); // SKIP
       
-    Результат = OPI_Telegram.ОтправитьАудио(Токен, IDКанала, Текст, АудиоДД);
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
     
     // END 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьАудио (ДД)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendAudio (BD)");
     
-    Проверка_ТелеграмАудио(Результат, Текст);
+    Check_TelegramAudio(Result, Text);
     
-    УдалитьФайлы(АудиоПуть);
+    DeleteFiles(AudioPath);
     
-    IDФайла = Результат["result"]["audio"]["file_id"];
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Telegram_FileID", IDФайла);
+    FileID = Result["result"]["audio"]["file_id"];
+    OPI_GetTestData.WriteParameter("Telegram_FileID", FileID);
     
-    ПараметрыФункции.Вставить("Telegram_FileID", IDФайла);
+    FunctionParameters.Insert("Telegram_FileID", FileID);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьДокумент(ПараметрыФункции)
+Procedure Telegram_SendDocument(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Текст    = ПараметрыФункции["String"];
-    Документ = ПараметрыФункции["Document"];
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text    = FunctionParameters["String"];
+    Document = FunctionParameters["Document"];
     
-    ДокументПуть = ПолучитьИмяВременногоФайла("docx");
-    КопироватьФайл(Документ, ДокументПуть);
+    DocumentPath = GetTempFileName("docx");
+    CopyFile(Document, DocumentPath);
     
-    ДокументДД   = Новый ДвоичныеДанные(ДокументПуть);
+    DocumentDD   = New BinaryData(DocumentPath);
     
-    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDЧата, Текст, Документ);
+    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьДокумент", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendDocument", "Telegram");
     
-    Проверка_ТелеграмДокумент(Результат, Текст); // SKIP
+    Check_TelegramDocument(Result, Text); // SKIP
   
-    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументПуть);
+    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьДокумент (Путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendDocument (Path)");
     
-    Проверка_ТелеграмДокумент(Результат, Текст); // SKIP
+    Check_TelegramDocument(Result, Text); // SKIP
       
-    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументДД);
+    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD);
     
     // END 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьДокумент (ДД)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendDocument (BD)");
     
-    Проверка_ТелеграмДокумент(Результат, Текст);
+    Check_TelegramDocument(Result, Text);
     
-    УдалитьФайлы(ДокументПуть);
+    DeleteFiles(DocumentPath);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьГифку(ПараметрыФункции)
+Procedure Telegram_SendGif(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
-    Текст    = ПараметрыФункции["String"];
-    Гифка    = ПараметрыФункции["GIF"];
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text    = FunctionParameters["String"];
+    GIF    = FunctionParameters["GIF"];
     
-    ГифкаПуть = ПолучитьИмяВременногоФайла("gif");
-    КопироватьФайл(Гифка, ГифкаПуть);
+    GifPath = GetTempFileName("gif");
+    CopyFile(GIF, GifPath);
     
-    ГифкаДД   = Новый ДвоичныеДанные(ГифкаПуть);
+    GifDD   = New BinaryData(GifPath);
     
-    Результат = OPI_Telegram.ОтправитьГифку(Токен, IDЧата, Текст, Гифка);
+    Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьГифку", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendGif", "Telegram");
     
-    Проверка_ТелеграмГифка(Результат, Текст); // SKIP
+    Check_TelegramGif(Result, Text); // SKIP
   
-    Результат = OPI_Telegram.ОтправитьГифку(Токен, IDКанала, Текст, ГифкаПуть);
+    Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьГифку (Путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendGif (Path)");
     
-    Проверка_ТелеграмГифка(Результат, Текст); // SKIP
+    Check_TelegramGif(Result, Text); // SKIP
       
-    Результат = OPI_Telegram.ОтправитьГифку(Токен, IDКанала, Текст, ГифкаДД);
+    Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
     
     // END 
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьГифку (ДД)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendGif (BD)");
     
-    Проверка_ТелеграмГифка(Результат, Текст);
+    Check_TelegramGif(Result, Text);
     
-    УдалитьФайлы(ГифкаПуть);
+    DeleteFiles(GifPath);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьМеидагруппу(ПараметрыФункции)
+Procedure Telegram_SendMediaGroup(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    Текст    = ПараметрыФункции["String"];
-    Картинка = ПараметрыФункции["Picture"];
-    Видео    = ПараметрыФункции["Video"];
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    Text    = FunctionParameters["String"];
+    Image = FunctionParameters["Picture"];
+    Video    = FunctionParameters["Video"];
  
-    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, КартинкаПуть);
+    ImagePath = GetTempFileName("png");
+    CopyFile(Image, ImagePath);
            
-    ВидеоПуть = ПолучитьИмяВременногоФайла("mp4");
-    КопироватьФайл(Видео, ВидеоПуть);
+    VideoPath = GetTempFileName("mp4");
+    CopyFile(Video, VideoPath);
     
-    ВидеоДД   = Новый ДвоичныеДанные(ВидеоПуть);
+    VideoDD   = New BinaryData(VideoPath);
     
-    Медиагруппа    = Новый Соответствие;
-    Медиагруппа.Вставить(КартинкаПуть, "photo");
-    Медиагруппа.Вставить(ВидеоДД     , "video");
+    MediaGroup    = New Match;
+    MediaGroup.Insert(ImagePath, "photo");
+    MediaGroup.Insert(VideoDD     , "video");
     
-    Результат = OPI_Telegram.ОтправитьМедиагруппу(Токен, IDЧата, Текст, Медиагруппа);
+    Result = OPI_Telegram.SendMediaGroup(Token, ChatID, Text, MediaGroup);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьМедиагруппу", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendMediaGroup", "Telegram");
     
-    Проверка_ТелеграмМедиагруппа(Результат); 
+    Check_TelegramMediaGroup(Result); 
    
-    УдалитьФайлы(ВидеоПуть);
-    УдалитьФайлы(КартинкаПуть);
+    DeleteFiles(VideoPath);
+    DeleteFiles(ImagePath);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьМестоположение(ПараметрыФункции)
+Procedure Telegram_SendLocation(FunctionParameters)
     
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];    
-    Ширина   = ПараметрыФункции["Lat"];
-    Долгота  = ПараметрыФункции["Long"];
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];    
+    Width   = FunctionParameters["Lat"];
+    Longitude  = FunctionParameters["Long"];
     
-    Результат = OPI_Telegram.ОтправитьМестоположение(Токен, IDЧата, Ширина, Долгота);
+    Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьМестоположение", "Telegram"); 
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendLocation", "Telegram"); 
     
-    Проверка_ТелеграмМестоположение(Результат); // SKIP
+    Check_TelegramLocation(Result); // SKIP
     
-    Результат = OPI_Telegram.ОтправитьМестоположение(Токен, IDКанала, Ширина, Долгота);
+    Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьМестоположение (канал)"); 
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendLocation (toаtoл)"); 
     
-    Проверка_ТелеграмМестоположение(Результат);
+    Check_TelegramLocation(Result);
 
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьКонтакт(ПараметрыФункции)
+Procedure Telegram_SendContact(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"];    
-    Имя      = ПараметрыФункции["Name"];
-    Фамилия  = ПараметрыФункции["Surname"];
-    Телефон  = ПараметрыФункции["Phone"];
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];    
+    Name      = FunctionParameters["Name"];
+    Last name  = FunctionParameters["Surname"];
+    Phone  = FunctionParameters["Phone"];
     
-    Результат = OPI_Telegram.ОтправитьКонтакт(Токен, IDЧата  , Имя, Фамилия, Телефон);
+    Result = OPI_Telegram.SendContact(Token, ChatID  , Name, Last name, Phone);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКонтакт", "Telegram"); 
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendContact", "Telegram"); 
     
-    Проверка_ТелеграмКонтакт(Результат, Имя); // SKIP
-    OPI_Инструменты.Пауза(20);                // SKIP
+    Check_TelegramContact(Result, Name); // SKIP
+    OPI_Tools.Pause(20);                // SKIP
     
-    Результат = OPI_Telegram.ОтправитьКонтакт(Токен, IDКанала, Имя, Фамилия, Телефон);
+    Result = OPI_Telegram.SendContact(Token, ChannelID, Name, Last name, Phone);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьКонтакт (канал)"); 
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendContact (toаtoл)"); 
     
-    Проверка_ТелеграмКонтакт(Результат, Имя);
+    Check_TelegramContact(Result, Name);
 
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОтправитьОпрос(ПараметрыФункции)
+Procedure Telegram_SendPoll(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Telegram_Token"];
-    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала = ПараметрыФункции["Telegram_ChannelID"]; 
-    Вопрос   = "Какой ваш любимый цвет?";
+    Token    = FunctionParameters["Telegram_Token"];
+    ChatID   = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"]; 
+    Question   = "What's your favorite color?";
     
-    МассивОтветов     = Новый Массив;
-    МассивОтветов.Добавить("Красный");
-    МассивОтветов.Добавить("Желтый");
-    МассивОтветов.Добавить("Зеленый");
-    МассивОтветов.Добавить("Синий");
+    AnswersArray     = New Array;
+    AnswersArray.Add("Red");
+    AnswersArray.Add("Yellow");
+    AnswersArray.Add("Green");
+    AnswersArray.Add("Blue");
     
-    Результат = OPI_Telegram.ОтправитьОпрос(Токен, IDЧата  , Вопрос, МассивОтветов, Ложь);
+    Result = OPI_Telegram.SendPoll(Token, ChatID  , Question, AnswersArray, False);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьОпрос", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendPoll", "Telegram");
                 
-    Проверка_ТелеграмОпрос(Результат, Вопрос); // SKIP
+    Check_TelegramPoll(Result, Question); // SKIP
     
-    Результат = OPI_Telegram.ОтправитьОпрос(Токен, IDКанала, Вопрос, МассивОтветов, Истина);
+    Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьОпрос (канал)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendPoll (toаtoл)");
                 
-    Проверка_ТелеграмОпрос(Результат, Вопрос); // SKIP
+    Check_TelegramPoll(Result, Question); // SKIP
     
     // END
     
-    СтрочныйМассив    = "['Красный', 'Желтый','Зеленый' ,'Синий']";
+    StringArray    = "['Red', 'Yellow','Green' ,'Blue']";
     
-    Результат = OPI_Telegram.ОтправитьОпрос(Токен, IDКанала, Вопрос, СтрочныйМассив, Истина);
+    Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, StringArray, True);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьОпрос (строчный массив)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendPoll (withтрочный маwithwithиin)");
                 
-    Проверка_ТелеграмОпрос(Результат, Вопрос);
+    Check_TelegramPoll(Result, Question);
 
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_СкачатьФайл(ПараметрыФункции)
+Procedure Telegram_DownloadFile(FunctionParameters)
 	
-	IDФайла = ПараметрыФункции["Telegram_FileID"];
-	Токен   = ПараметрыФункции["Telegram_Token"];
+	FileID = FunctionParameters["Telegram_FileID"];
+	Token   = FunctionParameters["Telegram_Token"];
 
-    Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
+    Result = OPI_Telegram.DownloadFile(Token, FileID);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СкачатьФайл", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DownloadFile", "Telegram");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("ДвоичныеДанные");
+    OPI_GetTestData.ExpectsThat(Result).HasType("BinaryData");
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ПереслатьСообщение(ПараметрыФункции)
+Procedure Telegram_ForwardMessage(FunctionParameters)
 
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDЧата      = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
-    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
+    Token       = FunctionParameters["Telegram_Token"];
+    ChatID      = FunctionParameters["Telegram_ChatID"];
+    ChannelID    = FunctionParameters["Telegram_ChannelID"];
+    MessageID = FunctionParameters["Telegram_ChannelMessageID"];
     
-    Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
+    Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);
     
     // END
 
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПереслатьСообщение", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ForwardMessage", "Telegram");
         
-	Проверка_ТелеграмПереслать(Результат, IDСообщения);
+	Check_TelegramForward(Result, MessageID);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_Бан(ПараметрыФункции)
+Procedure Telegram_Ban(FunctionParameters)
 	
-	Токен          = ПараметрыФункции["Telegram_Token"];
-    IDПользователя = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала       = ПараметрыФункции["Telegram_ChannelID"];
+	Token          = FunctionParameters["Telegram_Token"];
+    UserID = FunctionParameters["Telegram_ChatID"];
+    ChannelID       = FunctionParameters["Telegram_ChannelID"];
     
-	Результат = OPI_Telegram.Бан(Токен, IDКанала, IDПользователя);
+	Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
 
 	// END
 	
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "Бан", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "Ban", "Telegram");
     
-	Проверка_ТелеграмБан(Результат);
-	OPI_Инструменты.Пауза(5);
+	Check_TelegramBan(Result);
+	OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_Разбан(ПараметрыФункции)
+Procedure Telegram_Unban(FunctionParameters)
 	
-    Токен          = ПараметрыФункции["Telegram_Token"];
-    IDПользователя = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала       = ПараметрыФункции["Telegram_ChannelID"];
+    Token          = FunctionParameters["Telegram_Token"];
+    UserID = FunctionParameters["Telegram_ChatID"];
+    ChannelID       = FunctionParameters["Telegram_ChannelID"];
     
-	Результат = OPI_Telegram.Разбан(Токен, IDКанала, IDПользователя);
+	Result = OPI_Telegram.Unban(Token, ChannelID, UserID);
 
 	// END
 	
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "Разбан", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "Unban", "Telegram");
     
-	Проверка_ТелеграмБан(Результат);
-	OPI_Инструменты.Пауза(5);
+	Check_TelegramBan(Result);
+	OPI_Tools.Pause(5);
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_СоздатьСсылкуПриглашение(ПараметрыФункции)
+Procedure Telegram_CreateInviteLink(FunctionParameters)
 
-    Токен         = ПараметрыФункции["Telegram_Token"];
-    IDКанала      = ПараметрыФункции["Telegram_ChannelID"];    
-    Сутки         = 86400;   
-    ТекущаяДата   = OPI_Инструменты.ПолучитьТекущуюДату();
+    Token         = FunctionParameters["Telegram_Token"];
+    ChannelID      = FunctionParameters["Telegram_ChannelID"];    
+    Day         = 86400;   
+    CurrentDate   = OPI_Tools.GetCurrentDate();
 
-    Заголовок     = "Ссылка " + Строка(ТекущаяДата); 
-    Истечение     = ТекущаяДата + Сутки;
-    UnixИстечение = OPI_Инструменты.UNIXTime(Истечение);
+    Title     = "Link " + String(CurrentDate); 
+    Expiration     = CurrentDate + Day;
+    UnixExpiration = OPI_Tools.UNIXTime(Expiration);
     
-    Результат = OPI_Telegram.СоздатьСсылкуПриглашение(Токен, IDКанала, Заголовок, Истечение, 200);
+    Result = OPI_Telegram.CreateInvitationLink(Token, ChannelID, Title, Expiration, 200);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьСсылкуПриглашение", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateInvitationLink", "Telegram");
 
-	Проверка_ТелеграмПриглашение(Результат, Заголовок, UnixИстечение);
+	Check_TelegramInvitation(Result, Title, UnixExpiration);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ЗакрепитьСообщение(ПараметрыФункции)
+Procedure Telegram_PinMessage(FunctionParameters)
 
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
-    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
+    Token       = FunctionParameters["Telegram_Token"];
+    ChannelID    = FunctionParameters["Telegram_ChannelID"];
+    MessageID = FunctionParameters["Telegram_ChannelMessageID"];
     
-    Результат = OPI_Telegram.ЗакрепитьСообщение(Токен, IDКанала, IDСообщения);
+    Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
 
 	// END
 	
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗакрепитьСообщение", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "PinMessage", "Telegram");
 	
-	Проверка_ТелеграмИстина(Результат);
+	Check_TelegramTrue(Result);
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОткрепитьСообщение(ПараметрыФункции)
+Procedure Telegram_UnpinMessage(FunctionParameters)
 
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
-    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
+    Token       = FunctionParameters["Telegram_Token"];
+    ChannelID    = FunctionParameters["Telegram_ChannelID"];
+    MessageID = FunctionParameters["Telegram_ChannelMessageID"];
     
-    Результат = OPI_Telegram.ОткрепитьСообщение(Токен, IDКанала, IDСообщения);
+    Result = OPI_Telegram.UnpinMessage(Token, ChannelID, MessageID);
 
 	// END
 	
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОткрепитьСообщение", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UnpinMessage", "Telegram");
 	
-	Проверка_ТелеграмИстина(Результат);
+	Check_TelegramTrue(Result);
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ПолучитьЧислоУчастников(ПараметрыФункции)
+Procedure Telegram_GetParticipantCount(FunctionParameters)
 	
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
+    Token       = FunctionParameters["Telegram_Token"];
+    ChannelID    = FunctionParameters["Telegram_ChannelID"];
     
-    Результат  = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDКанала);
+    Result  = OPI_Telegram.GetParticipantCount(Token, ChannelID);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьЧислоУчастников", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetParticipantCount", "Telegram");
     
-    Проверка_ТелеграмЧисло(Результат);
+    Check_TelegramNumber(Result);
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ПолучитьСписокАватаровФорума(ПараметрыФункции)
+Procedure Telegram_GetForumAvatarList(FunctionParameters)
 	
-	Токен       = ПараметрыФункции["Telegram_Token"];
-	Результат   = OPI_Telegram.ПолучитьСписокИконокАватаров(Токен);
+	Token       = FunctionParameters["Telegram_Token"];
+	Result   = OPI_Telegram.GetAvatarIconList(Token);
 	
 	// END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокИконокАватаров", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetAvatarIconList", "Telegram");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Соответствие").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("Match").Filled();
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_СоздатьТемуФорума(ПараметрыФункции)
+Procedure Telegram_CreateForumTopic(FunctionParameters)
 	
-	Токен  = ПараметрыФункции["Telegram_Token"];
-    Чат    = ПараметрыФункции["Telegram_ForumID"];
-    Иконка = "5357419403325481346";
-    Имя    = "Тестовая тема " + Строка(Новый УникальныйИдентификатор);
+	Token  = FunctionParameters["Telegram_Token"];
+    Chat    = FunctionParameters["Telegram_ForumID"];
+    Icon = "5357419403325481346";
+    Name    = "TestTopic " + String(New UniqueIdentifier);
     
-	Результат = OPI_Telegram.СоздатьТемуФорума(Токен, Чат, Имя, Иконка);
+	Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
 	
 	// END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьТемуФорума", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateForumThread", "Telegram");
     
-    Тема = Результат["result"]["message_thread_id"];
+    Topic = Result["result"]["message_thread_id"];
     
-    ПараметрыФункции.Вставить("Telegram_TopicID", Тема);
-    OPI_Инструменты.ДобавитьПоле("Telegram_TopicID", Тема, "Строка", ПараметрыФункции);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Telegram_TopicID", ПараметрыФункции["Telegram_TopicID"]);
+    FunctionParameters.Insert("Telegram_TopicID", Topic);
+    OPI_Tools.AddField("Telegram_TopicID", Topic, "String", FunctionParameters);
+    OPI_GetTestData.WriteParameter("Telegram_TopicID", FunctionParameters["Telegram_TopicID"]);
    
-	Проверка_ТелеграмСозданиеТемы(Результат, Имя, Иконка);
+	Check_TelegramCreateTopic(Result, Name, Icon);
 	
-	ЧатТема   = Чат + "*" + Тема;
-	Текст     = ПараметрыФункции["String"];
-    Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, ЧатТема, Текст);
+	ChatTopic   = Chat + "*" + Topic;
+	Text     = FunctionParameters["String"];
+    Result = OPI_Telegram.SendTextMessage(Token, ChatTopic, Text);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьТекстовоеСообщение (форум)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SendTextMessage (форум)");
     
-    Проверка_ТелеграмСообщение(Результат, Текст);
+    Check_TelegramMessage(Result, Text);
 	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ИзменитьТемуФорума(ПараметрыФункции)
+Procedure Telegram_EditForumTopic(FunctionParameters)
 
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];
-    Тема        = ПараметрыФункции["Telegram_TopicID"];
-    НовоеИмя    = "Новый тестовый заголовок";
-    НовяИконка  = "5310132165583840589";
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];
+    Topic        = FunctionParameters["Telegram_TopicID"];
+    NewName    = "NewTestTitle";
+    NewIcon  = "5310132165583840589";
 
-    Результат = OPI_Telegram.ИзменитьТемуФорума(Токен, Чат, Тема, НовоеИмя, НовяИконка);
+    Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьТемуФорума", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditForumTopic", "Telegram");
         
-    Проверка_ТелеграмИстина(Результат);
+    Check_TelegramTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ЗакрытьТемуФорума(ПараметрыФункции)
+Procedure Telegram_CloseForumTopic(FunctionParameters)
 
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];
-    Тема        = ПараметрыФункции["Telegram_TopicID"];
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];
+    Topic        = FunctionParameters["Telegram_TopicID"];
 
-    OPI_Telegram.ОткрытьТемуФорума(Токен, Чат); // SKIP
+    OPI_Telegram.OpenForumThread(Token, Chat); // SKIP
     
-	Результат = OPI_Telegram.ЗакрытьТемуФорума(Токен, Чат);       // Закрывает главную тему
+	Result = OPI_Telegram.CloseForumThread(Token, Chat);       // Closes main topic
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗакрытьТемуФорума (главная)");
+	// !OInt OPI_GetTestData.WriteLog(Result, "CloseForumThread (глаintoя)");
     
-    Проверка_ТелеграмИстина(Результат); // SKIP
+    Check_TelegramTrue(Result); // SKIP
     
-    Результат = OPI_Telegram.ЗакрытьТемуФорума(Токен, Чат, Тема);
+    Result = OPI_Telegram.CloseForumThread(Token, Chat, Topic);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗакрытьТемуФорума", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CloseForumThread", "Telegram");
     
-    Проверка_ТелеграмИстина(Результат);
+    Check_TelegramTrue(Result);
     
-    OPI_Инструменты.Пауза(25);
+    OPI_Tools.Pause(25);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОткрытьТемуФорума(ПараметрыФункции)
+Procedure Telegram_OpenForumTopic(FunctionParameters)
 
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];
-    Тема        = ПараметрыФункции["Telegram_TopicID"];
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];
+    Topic        = FunctionParameters["Telegram_TopicID"];
 
-	Результат = OPI_Telegram.ОткрытьТемуФорума(Токен, Чат);       // Открывает главную тему
+	Result = OPI_Telegram.OpenForumThread(Token, Chat);       // Opens main topic
 	
-	// !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОткрытьТемуФорума (главная)");
+	// !OInt OPI_GetTestData.WriteLog(Result, "OpenForumThread (глаintoя)");
     
-    Проверка_ТелеграмИстина(Результат); // SKIP
+    Check_TelegramTrue(Result); // SKIP
     
-    Результат = OPI_Telegram.ОткрытьТемуФорума(Токен, Чат, Тема);
-    
-    // END
-    
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОткрытьТемуФорума", "Telegram");
-    
-    Проверка_ТелеграмИстина(Результат);
-    
-    OPI_Инструменты.Пауза(25);
-    	
-КонецПроцедуры
-
-Процедура Telegram_УдалитьТемуФорума(ПараметрыФункции)
-
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];
-    Тема        = ПараметрыФункции["Telegram_TopicID"];
-    
-    Результат = OPI_Telegram.УдалитьТемуФорума(Токен, Чат, Тема); 
+    Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьТемуФорума", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "OpenForumThread", "Telegram");
     
-    Проверка_ТелеграмИстина(Результат);
+    Check_TelegramTrue(Result);
     
-    OPI_Инструменты.Пауза(25);
+    OPI_Tools.Pause(25);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ОчиститьСписокЗакрепленныхСообщенийТемы(ПараметрыФункции)
+Procedure Telegram_DeleteForumTopic(FunctionParameters)
 
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];
-    Тема        = ПараметрыФункции["Telegram_TopicID"];
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];
+    Topic        = FunctionParameters["Telegram_TopicID"];
     
-    Результат = OPI_Telegram.ОчиститьСписокЗакрепленныхСообщенийТемы(Токен, Чат);
-    
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОчиститьСписокЗакрепленныхСообщенийТемы (главная)");
-    
-    Проверка_ТелеграмИстина(Результат); // SKIP
-    
-    Результат = OPI_Telegram.ОчиститьСписокЗакрепленныхСообщенийТемы(Токен, Чат, Тема);
+    Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic); 
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОчиститьСписокЗакрепленныхСообщенийТемы", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteForumTopic", "Telegram");
     
-    Проверка_ТелеграмИстина(Результат);
+    Check_TelegramTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(25);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_СкрытьГлавнуюТемуФорума(ПараметрыФункции)
+Procedure Telegram_ClearPinnedMessagesList(FunctionParameters)
 
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];
+    Topic        = FunctionParameters["Telegram_TopicID"];
     
-    Результат = OPI_Telegram.СкрытьГлавнуюТемуФорума(Токен, Чат);
+    Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
+    
+    // !OInt OPI_GetTestData.WriteLog(Result, "ClearThreadPinnedMessagesList (глаintoя)");
+    
+    Check_TelegramTrue(Result); // SKIP
+    
+    Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СкрытьГлавнуюТемуФорума", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "ClearThreadPinnedMessagesList", "Telegram");
     
-    Проверка_ТелеграмИстина(Результат);
+    Check_TelegramTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ПоказатьГлавнуюТемуФорума(ПараметрыФункции)
+Procedure Telegram_HideMainForumTopic(FunctionParameters)
 
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];
     
-    Результат = OPI_Telegram.ПоказатьГлавнуюТемуФорума(Токен, Чат);
+    Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПоказатьГлавнуюТемуФорума", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "HideMainForumTopic", "Telegram");
     
-    Проверка_ТелеграмИстина(Результат);
+    Check_TelegramTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-Процедура Telegram_ИзменитьИмяГлавнойТемыФорума(ПараметрыФункции)
+Procedure Telegram_ShowMainForumTopic(FunctionParameters)
 
-	Заголовок   = "Новое имя главной темы " + Строка(Новый УникальныйИдентификатор);
-	Токен       = ПараметрыФункции["Telegram_Token"];
-    Чат         = ПараметрыФункции["Telegram_ForumID"];    
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];
+    
+    Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
+    
+    // END
+    
+    // !OInt OPI_GetTestData.WriteLog(Result, "ShowMainForumTopic", "Telegram");
+    
+    Check_TelegramTrue(Result);
+    
+    OPI_Tools.Pause(5);
+    	
+EndProcedure
+
+Procedure Telegram_ChangeMainTopicName(FunctionParameters)
+
+	Title   = "New main thread name " + String(New UniqueIdentifier);
+	Token       = FunctionParameters["Telegram_Token"];
+    Chat         = FunctionParameters["Telegram_ForumID"];    
 	
-    Результат = OPI_Telegram.ИзменитьИмяГлавнойТемыФорума(Токен, Чат, Заголовок);
+    Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ИзменитьИмяГлавнойТемыФорума", "Telegram");
+    // !OInt OPI_GetTestData.WriteLog(Result, "EditMainForumTopicName", "Telegram");
     
-    Проверка_ТелеграмИстина(Результат);
+    Check_TelegramTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     	
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область VK
+#Region VK
 
-Процедура VK_СоздатьСсылкуПолученияТокена(ПараметрыФункции)
+Procedure VK_CreateTokenRetrievalLink(FunctionParameters)
 
-    Приложение = ПараметрыФункции["VK_AppID"];
-    Результат  = OPI_VK.СоздатьСсылкуПолученияТокена(Приложение);
+    Application = FunctionParameters["VK_AppID"];
+    Result  = OPI_VK.CreateTokenRetrievalLink(Application);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьСсылкуПолученияТокена", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateTokenRetrievalLink", "VK");
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Строка").Заполнено();
+    OPI_GetTestData.ExpectsThat(Result).HasType("String").Filled();
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_СоздатьПост(ПараметрыФункции)
+Procedure VK_CreatePost(FunctionParameters)
     
-    Параметры = ПолучитьПараметрыВК();
-    Текст     = "Пост из автотеста";
+    Parameters = GetVKParameters();
+    Text     = "Post from autotest";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
     
-    Картинка  = ПараметрыФункции["Picture"];  // URL, Путь или Двоичные данные
-    Картинка2 = ПараметрыФункции["Picture2"]; // URL, Путь или Двоичные данные
+    Image  = FunctionParameters["Picture"];  // URL, Path or Binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
     
-    ИВФ = ПолучитьИмяВременногоФайла("png");   
-    КопироватьФайл(Картинка2, ИВФ);
+    AndVF = GetTempFileName("png");   
+    CopyFile(Image2, AndVF);
     
-    МассивКартинок = Новый Массив;
-    МассивКартинок.Добавить(Картинка);
-    МассивКартинок.Добавить(ИВФ);
+    ImageArray = New Array;
+    ImageArray.Add(Image);
+    ImageArray.Add(AndVF);
   
-    Результат = OPI_VK.СоздатьПост(Текст, МассивКартинок, Истина, URL, Параметры);
+    Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПост", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreatePost", "VK");
 
-    Проверка_ВКПост(Результат);                         // SKIP
-    ИДПоста   = Результат["response"]["post_id"];       // SKIP
-    Результат = OPI_VK.УдалитьПост(ИДПоста, Параметры); // SKIP
+    Check_VKPost(Result);                         // SKIP
+    PostID   = Result["response"]["post_id"];       // SKIP
+    Result = OPI_VK.DeletePost(PostID, Parameters); // SKIP
     
-    Результат = OPI_VK.СоздатьПост(Текст, Картинка, Ложь  ,    , Параметры);
+    Result = OPI_VK.CreatePost(Text, Image, False  ,    , Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПост (одна картинка)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreatePost (оdto toартинtoа)");
 
-    Проверка_ВКПост(Результат); 
+    Check_VKPost(Result); 
     
-    ИДПоста   = Результат["response"]["post_id"];       
-    Результат = OPI_VK.УдалитьПост(ИДПоста, Параметры); 
+    PostID   = Result["response"]["post_id"];       
+    Result = OPI_VK.DeletePost(PostID, Parameters); 
     
-    OPI_Инструменты.Пауза(5);   
+    OPI_Tools.Pause(5);   
     
-    Результат = OPI_VK.СоздатьПост(Текст, ИВФ     , Истина, URL, Параметры);
+    Result = OPI_VK.CreatePost(Text, AndVF     , True, URL, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПост (один путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreatePost (оdин path)");
 
-    Проверка_ВКПост(Результат);                   
+    Check_VKPost(Result);                   
     
-    ИДПоста = Результат["response"]["post_id"];
-    OPI_Инструменты.ДобавитьПоле("VK_PostID", ИДПоста, "Строка", ПараметрыФункции);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("VK_PostID", ПараметрыФункции["VK_PostID"]);
+    PostID = Result["response"]["post_id"];
+    OPI_Tools.AddField("VK_PostID", PostID, "String", FunctionParameters);
+    OPI_GetTestData.WriteParameter("VK_PostID", FunctionParameters["VK_PostID"]);
     
-    УдалитьФайлы(ИВФ);
-    OPI_Инструменты.Пауза(5);
+    DeleteFiles(AndVF);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_УдалитьПост(ПараметрыФункции)
+Procedure VK_DeletePost(FunctionParameters)
     
-    Параметры = ПолучитьПараметрыВК();
-    ИДПоста   = ПараметрыФункции["VK_PostID"];
+    Parameters = GetVKParameters();
+    PostID   = FunctionParameters["VK_PostID"];
     
-    Результат = OPI_VK.УдалитьПост(ИДПоста, Параметры);
+    Result = OPI_VK.DeletePost(PostID, Parameters);
 
     // END
 
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьПост", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeletePost", "VK");
             
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_СоздатьСоставнойПост(ПараметрыФункции)
+Procedure VK_CreateCompositePost(FunctionParameters)
 
-    Параметры = ПолучитьПараметрыВК();
-    Текст     = "Пост из автотеста";
+    Parameters = GetVKParameters();
+    Text     = "Post from autotest";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
     
-    Картинка = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
-    Видео    = ПараметрыФункции["Video"];   // URL, Путь или Двоичные данные
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Video    = FunctionParameters["Video"];   // URL, Path or Binary Data
     
-    ИВФ = ПолучитьИмяВременногоФайла("png");   
-    КопироватьФайл(Картинка, ИВФ);
+    AndVF = GetTempFileName("png");   
+    CopyFile(Image, AndVF);
     
-    ЗагрузкаКартинки = OPI_VK.ЗагрузитьФотоНаСервер(ИВФ, Параметры)["response"][0];
-    ЗагрузкаВидео    = OPI_VK.ЗагрузитьВидеоНаСервер(Видео, "Новое видео", , , Параметры);
+    ImageUpload = OPI_VK.UploadPhotoToServer(AndVF, Parameters)["response"][0];
+    VideoUpload    = OPI_VK.UploadVideoToServer(Video, "NewVideo", , , Parameters);
     
-    ВладелецКартинки = OPI_Инструменты.ЧислоВСтроку(ЗагрузкаКартинки["owner_id"]);
-    ВладелецВидео    = OPI_Инструменты.ЧислоВСтроку(ЗагрузкаВидео["owner_id"]);
+    ImageOwner = OPI_Tools.NumberToString(ImageUpload["owner_id"]);
+    VideoOwner    = OPI_Tools.NumberToString(VideoUpload["owner_id"]);
     
-    IDКартинки       = OPI_Инструменты.ЧислоВСтроку(ЗагрузкаКартинки["id"]);
-    IDВидео          = OPI_Инструменты.ЧислоВСтроку(ЗагрузкаВидео["video_id"]);
+    ImageID       = OPI_Tools.NumberToString(ImageUpload["id"]);
+    VideoID          = OPI_Tools.NumberToString(VideoUpload["video_id"]);
     
-    МассивВложений = Новый Массив;
-    МассивВложений.Добавить("photo" + ВладелецКартинки + "_" + IDКартинки);
-    МассивВложений.Добавить("video" + ВладелецВидео + "_" + IDВидео);
+    AttachmentsArray = New Array;
+    AttachmentsArray.Add("photo" + ImageOwner + "_" + ImageID);
+    AttachmentsArray.Add("video" + VideoOwner + "_" + VideoID);
     
-    Результат = OPI_VK.СоздатьСоставнойПост(Текст, МассивВложений, Ложь, URL, Параметры);
+    Result = OPI_VK.CreateCompositePost(Text, AttachmentsArray, False, URL, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьСоставнойПост", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateCompositePost", "VK");
     
-    Проверка_ВКПост(Результат);
-    УдалитьФайлы(ИВФ);    
+    Check_VKPost(Result);
+    DeleteFiles(AndVF);    
         
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
      
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_СоздатьОпрос()
+Procedure VK_CreatePoll()
 
-    Параметры = ПолучитьПараметрыВК();
-    Вопрос    = "Какой ваш любимый цвет?";
+    Parameters = GetVKParameters();
+    Question    = "What's your favorite color?";
     
-    МассивВариантов = Новый Массив;
-    МассивВариантов.Добавить("Красный");
-    МассивВариантов.Добавить("Желтый");
-    МассивВариантов.Добавить("Зеленый");
+    OptionArray = New Array;
+    OptionArray.Add("Red");
+    OptionArray.Add("Yellow");
+    OptionArray.Add("Green");
     
-    Результат = OPI_VK.СоздатьОпрос(Вопрос, МассивВариантов, , Параметры);
+    Result = OPI_VK.CreatePoll(Question, OptionArray, , Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьОпрос", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreatePoll", "VK");
     
-    Проверка_ВКПост(Результат);
+    Check_VKPost(Result);
         
-    ИДПоста  = Результат["response"]["post_id"];
-    OPI_VK.УдалитьПост(ИДПоста, Параметры);
+    PostID  = Result["response"]["post_id"];
+    OPI_VK.DeletePost(PostID, Parameters);
     
-    OPI_Инструменты.Пауза(10);
+    OPI_Tools.Pause(10);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_СоздатьАльбом(ПараметрыФункции)
+Procedure VK_CreateAlbum(FunctionParameters)
     
-    Параметры        = ПолучитьПараметрыВК();
-    Имя              = "Альбом из автотеста";
-    Описание         = "Новый альбом из автотеста";
+    Parameters        = GetVKParameters();
+    Name              = "AlbumFromAutoTest";
+    Description         = "NewAlbumFromAutoTest";
       
-    Результат = OPI_VK.СоздатьАльбом(Имя, Описание, Параметры);
+    Result = OPI_VK.CreateAlbum(Name, Description, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьАльбом", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateAlbum", "VK");
     
-    Проверка_ВКАльбом(Результат, Описание);
+    Check_VKAlbum(Result, Description);
         
-    ИДАльбома  = Результат["response"]["id"];
-    ПараметрыФункции.Вставить("VK_AlbumID", ИДАльбома);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("VK_AlbumID", ИДАльбома);
+    AlbumID  = Result["response"]["id"];
+    FunctionParameters.Insert("VK_AlbumID", AlbumID);
+    OPI_GetTestData.WriteParameter("VK_AlbumID", AlbumID);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_СохранитьКартинкуВАльбом(ПараметрыФункции)
+Procedure VK_SavePictureToAlbum(FunctionParameters)
     
-    Параметры        = ПолучитьПараметрыВК();
-    ОписаниеКартинки = "Картинка автотест";
-    ИДАльбома        = ПараметрыФункции["VK_AlbumID"];
+    Parameters        = GetVKParameters();
+    ImageDescription = "AutoTestImage";
+    AlbumID        = FunctionParameters["VK_AlbumID"];
     
-    Картинка  = ПараметрыФункции["Picture"];       // URL, Путь к файлу или Двоичные данные
-    ИВФ       = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, ИВФ);
+    Image  = FunctionParameters["Picture"];       // URL, Path to file or Binary Data
+    AndVF       = GetTempFileName("png");
+    CopyFile(Image, AndVF);
     
-    Картинка  = Новый ДвоичныеДанные(ИВФ);
+    Image  = New BinaryData(AndVF);
     
-    Результат = OPI_VK.СохранитьКартинкуВАльбом(ИДАльбома, Картинка, ОписаниеКартинки, Параметры);
+    Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СохранитьКартинкуВАльбом", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SaveImageToAlbum", "VK");
     
-    Проверка_ВККартинкаАльбома(Результат, ОписаниеКартинки, ИДАльбома); // SKIP
+    Check_VKAlbumPicture(Result, ImageDescription, AlbumID); // SKIP
     
-    ИДКартинки  = Результат["response"][0]["id"];                       // SKIP
-    Результат    = OPI_VK.УдалитьКартинку(ИДКартинки, Параметры);       // SKIP
+    ImageID  = Result["response"][0]["id"];                       // SKIP
+    Result    = OPI_VK.DeleteImage(ImageID, Parameters);       // SKIP
             
-    Результат = OPI_VK.СохранитьКартинкуВАльбом(ИДАльбома, ИВФ, ОписаниеКартинки, Параметры);
+    Result = OPI_VK.SaveImageToAlbum(AlbumID, AndVF, ImageDescription, Parameters);
     
     // END
    
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СохранитьКартинкуВАльбом (путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "SaveImageToAlbum (path)");
     
-    Проверка_ВККартинкаАльбома(Результат, ОписаниеКартинки, ИДАльбома); // SKIP
+    Check_VKAlbumPicture(Result, ImageDescription, AlbumID); // SKIP
     
-    ИДКартинки  = Результат["response"][0]["id"];
-    ПараметрыФункции.Вставить("VK_PictureID", ИДКартинки);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("VK_PictureID", ИДКартинки);
+    ImageID  = Result["response"][0]["id"];
+    FunctionParameters.Insert("VK_PictureID", ImageID);
+    OPI_GetTestData.WriteParameter("VK_PictureID", ImageID);
     
-    УдалитьФайлы(ИВФ);
-    OPI_Инструменты.Пауза(5);
+    DeleteFiles(AndVF);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_УдалитьКартинку(ПараметрыФункции)
+Procedure VK_DeleteImage(FunctionParameters)
     
-    Параметры  = ПолучитьПараметрыВК();
-    ИДКартинки = ПараметрыФункции["VK_PictureID"];
+    Parameters  = GetVKParameters();
+    ImageID = FunctionParameters["VK_PictureID"];
     
-    Результат  = OPI_VK.УдалитьКартинку(ИДКартинки, Параметры);
+    Result  = OPI_VK.DeleteImage(ImageID, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьКартинку", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteImage", "VK");
     
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_УдалитьАльбом(ПараметрыФункции)
+Procedure VK_DeleteAlbum(FunctionParameters)
     
-    Параметры = ПолучитьПараметрыВК();
-    ИДАльбома = ПараметрыФункции["VK_AlbumID"];
+    Parameters = GetVKParameters();
+    AlbumID = FunctionParameters["VK_AlbumID"];
     
-    Результат = OPI_VK.УдалитьАльбом(ИДАльбома, Параметры);
+    Result = OPI_VK.DeleteAlbum(AlbumID, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьАльбом", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteAlbum", "VK");
         
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_СоздатьИсторию(ПараметрыФункции)
+Procedure VK_CreateStory(FunctionParameters)
 
-    Параметры = ПолучитьПараметрыВК();
+    Parameters = GetVKParameters();
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка  = ПараметрыФункции["Picture"];       // URL, Путь к файлу или Двоичные данные
-    ИВФ       = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, ИВФ);
-    Картинка  = Новый ДвоичныеДанные(ИВФ);
+    Image  = FunctionParameters["Picture"];       // URL, Path to file or Binary Data
+    AndVF       = GetTempFileName("png");
+    CopyFile(Image, AndVF);
+    Image  = New BinaryData(AndVF);
        
-    Результат = OPI_VK.СоздатьИсторию(Картинка , URL, Параметры);
+    Result = OPI_VK.CreateStory(Image , URL, Parameters);
 
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьИсторию", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateStory", "VK");
     
-    Проверка_ВКИстория(Результат); // SKIP
+    Check_VKStory(Result); // SKIP
         
-    Результат = OPI_VK.СоздатьИсторию(ИВФ, , Параметры);
+    Result = OPI_VK.CreateStory(AndVF, , Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьИсторию (путь)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateStory (path)");
     
-    Проверка_ВКИстория(Результат);
+    Check_VKStory(Result);
     
-    УдалитьФайлы(ИВФ);
+    DeleteFiles(AndVF);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_СоздатьОбсуждение(ПараметрыФункции)
+Procedure VK_CreateDiscussion(FunctionParameters)
 
-    Параметры       = ПолучитьПараметрыВК();
-    Название        = "Обсуждаем: какой цвет лучше?";
-    Сообщение       = "Красный, желтый, синий или какой-то другой?";
+    Parameters       = GetVKParameters();
+    Name        = "Discussing: Which color is better?";
+    Message       = "Red, yellow, blue, or some other?";
     
-    Результат = OPI_VK.СоздатьОбсуждение(Название, Сообщение, Параметры);
+    Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьОбсуждение", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateDiscussion", "VK");
     
-    Проверка_ВКОбсуждение(Результат);
+    Check_VKDiscussion(Result);
     
-    ИДОбсуждения = Результат["response"];
-    ПараметрыФункции.Вставить("VK_ConvID", ИДОбсуждения);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("VK_ConvID", ИДОбсуждения);    
+    DiscussionID = Result["response"];
+    FunctionParameters.Insert("VK_ConvID", DiscussionID);
+    OPI_GetTestData.WriteParameter("VK_ConvID", DiscussionID);    
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_ЗакрытьОбсуждение(ПараметрыФункции)
+Procedure VK_CloseDiscussion(FunctionParameters)
     
-    Параметры    = ПолучитьПараметрыВК();
-    ИДОбсуждения = ПараметрыФункции["VK_ConvID"];
-    Результат    = OPI_VK.ЗакрытьОбсуждение(ИДОбсуждения, Ложь, Параметры);
+    Parameters    = GetVKParameters();
+    DiscussionID = FunctionParameters["VK_ConvID"];
+    Result    = OPI_VK.CloseDiscussion(DiscussionID, False, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗакрытьОбсуждение", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CloseDiscussion", "VK");
         
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_ОткрытьОбсуждение(ПараметрыФункции)
+Procedure VK_OpenDiscussion(FunctionParameters)
     
-    Параметры    = ПолучитьПараметрыВК();
-    ИДОбсуждения = ПараметрыФункции["VK_ConvID"];
-    Результат    = OPI_VK.ОткрытьОбсуждение(ИДОбсуждения, Параметры);
+    Parameters    = GetVKParameters();
+    DiscussionID = FunctionParameters["VK_ConvID"];
+    Result    = OPI_VK.OpenDiscussion(DiscussionID, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОткрытьОбсуждение", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "OpenDiscussion", "VK");
         
-    Проверка_ВКИстина(Результат);
+    Check_VKTrue(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура VK_НаписатьВОбсуждение(ПараметрыФункции)
+Procedure VK_PostToDiscussion(FunctionParameters)
     
-    Параметры    = ПолучитьПараметрыВК();
-    ИДОбсуждения = ПараметрыФункции["VK_ConvID"];
-    Сообщение    = "Мне больше нравится желтый";
+    Parameters    = GetVKParameters();
+    DiscussionID = FunctionParameters["VK_ConvID"];
+    Message    = "I like yellow more";
     
-    Результат = OPI_VK.НаписатьВОбсуждение(ИДОбсуждения, Сообщение, Параметры);
+    Result = OPI_VK.WriteInDiscussion(DiscussionID, Message, Parameters);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "НаписатьВОбсуждение", "VK");
+    // !OInt OPI_GetTestData.WriteLog(Result, "WriteInDiscussion", "VK");
     
-    Проверка_ВКОбсуждение(Результат);
+    Check_VKDiscussion(Result);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#Область Dropbox
+#Region Dropbox
 
-Процедура Dropbox_ПолучитьСсылкуАвторизации(ПараметрыФункции)
+Procedure Dropbox_GetAuthorizationLink(FunctionParameters)
 
-    КлючПриложения = ПараметрыФункции["Dropbox_Appkey"];
-    Результат      = OPI_Dropbox.ПолучитьСсылкуАвторизации(КлючПриложения);
+    AppKey = FunctionParameters["Dropbox_Appkey"];
+    Result      = OPI_Dropbox.GetAuthorizationLink(AppKey);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСсылкуАвторизации", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetAuthorizationLink", "Dropbox");
         
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Результат).ИмеетТип("Строка");
+    OPI_GetTestData.ExpectsThat(Result).HasType("String");
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПолучитьТокен(ПараметрыФункции)
+Procedure Dropbox_GetToken(FunctionParameters)
     
-    КлючПриложения   = ПараметрыФункции["Dropbox_Appkey"];
-    СекретПриложения = ПараметрыФункции["Dropbox_Appsecret"];
-    Код              = ПараметрыФункции["Dropbox_Code"];
+    AppKey   = FunctionParameters["Dropbox_Appkey"];
+    AppSecret = FunctionParameters["Dropbox_Appsecret"];
+    Code              = FunctionParameters["Dropbox_Code"];
 
-    Результат = OPI_Dropbox.ПолучитьТокен(КлючПриложения, СекретПриложения, Код);
+    Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьТокен");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetToken");
     
-    Токен  = Результат["access_token"];
-    Рефреш = Результат["refresh_token"];
+    Token  = Result["access_token"];
+    Refresh = Result["refresh_token"];
    
-    Если ЗначениеЗаполнено(Токен) Тогда
-        OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Dropbox_Token", Токен);
-    КонецЕсли;
+    If ValueFilled(Token) Then
+        OPI_GetTestData.WriteParameter("Dropbox_Token", Token);
+    EndIf;
    
-    Если ЗначениеЗаполнено(Рефреш) Тогда
-        OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Dropbox_Refresh", Рефреш);
-    КонецЕсли;
+    If ValueFilled(Refresh) Then
+        OPI_GetTestData.WriteParameter("Dropbox_Refresh", Refresh);
+    EndIf;
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ОбновитьТокен(ПараметрыФункции)
+Procedure Dropbox_UpdateToken(FunctionParameters)
 
-    КлючПриложения   = ПараметрыФункции["Dropbox_Appkey"];
-    СекретПриложения = ПараметрыФункции["Dropbox_Appsecret"];
-    РефрешТокен      = ПараметрыФункции["Dropbox_Refresh"];
+    AppKey   = FunctionParameters["Dropbox_Appkey"];
+    AppSecret = FunctionParameters["Dropbox_Appsecret"];
+    RefreshToken      = FunctionParameters["Dropbox_Refresh"];
     
-    Результат = OPI_Dropbox.ОбновитьТокен(КлючПриложения, СекретПриложения, РефрешТокен);
+    Result = OPI_Dropbox.RefreshToken(AppKey, AppSecret, RefreshToken);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОбновитьТокен");
+    // !OInt OPI_GetTestData.WriteLog(Result, "RefreshToken");
     
-    Токен = Результат["access_token"];
+    Token = Result["access_token"];
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(Токен).Заполнено();
+    OPI_GetTestData.ExpectsThat(Token).Filled();
 
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Dropbox_Token", Токен);
+    OPI_GetTestData.WriteParameter("Dropbox_Token", Token);
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПолучитьИнформациюОбОбъекте(ПараметрыФункции)
+Procedure Dropbox_GetObjectInformation(FunctionParameters)
    
-    Путь      = "/New/pic.png";  
-    Токен     = ПараметрыФункции["Dropbox_Token"];
+    Path      = "/New/pic.png";  
+    Token     = FunctionParameters["Dropbox_Token"];
      
-    Результат = OPI_Dropbox.ПолучитьИнформациюОбОбъекте(Токен, Путь, Истина);
+    Result = OPI_Dropbox.GetObjectInformation(Token, Path, True);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюОбОбъекте", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetObjectInformation", "Dropbox");
 
-    Проверка_ДропБоксФайл(Результат, Путь);
+    Check_DropboxFile(Result, Path);
     
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПолучитьПревью(ПараметрыФункции)
+Procedure Dropbox_GetPreview(FunctionParameters)
    
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New/mydoc.docx"; 
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New/mydoc.docx"; 
     
-    Результат = OPI_Dropbox.ПолучитьПревью(Токен, Путь);
+    Result = OPI_Dropbox.GetPreview(Token, Path);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьПревью", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetPreview", "Dropbox");
         
-    Проверка_ДвоичныеДанные(Результат, 190834);
+    Check_BinaryData(Result, 190834);
         
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
      
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ЗагрузитьФайл(ПараметрыФункции)
+Procedure Dropbox_UploadFile(FunctionParameters)
 
-    Путь      = "/New/pic.png";  
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Картинка  = ПараметрыФункции["Picture"];
+    Path      = "/New/pic.png";  
+    Token     = FunctionParameters["Dropbox_Token"];
+    Image  = FunctionParameters["Picture"];
     
-    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, КартинкаПуть);
+    ImagePath = GetTempFileName("png");
+    CopyFile(Image, ImagePath);
     
-    Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);
+    Result = OPI_Dropbox.UploadFile(Token, ImagePath, Path, True);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайл", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UploadFile", "Dropbox");
         
-    Проверка_ДропБоксФайл(Результат, Путь);
-    УдалитьФайлы(КартинкаПуть);
+    Check_DropboxFile(Result, Path);
+    DeleteFiles(ImagePath);
     
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
      
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ЗагрузитьФайлПоURL(ПараметрыФункции)
+Procedure Dropbox_UploadFileByURL(FunctionParameters)
    
-    Путь  = "/New/url_doc.docx";  
-    Токен = ПараметрыФункции["Dropbox_Token"];
-    URL   = ПараметрыФункции["Document"];
+    Path  = "/New/url_doc.docx";  
+    Token = FunctionParameters["Dropbox_Token"];
+    URL   = FunctionParameters["Document"];
     
-    Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
+    Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайлПоURL", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "UploadFileByURL", "Dropbox");
         
-    Проверка_ДропБоксРабота(Результат);
+    Check_DropboxWork(Result);
    
-    Работа = Результат["async_job_id"];
+    Work = Result["async_job_id"];
    
-    ПараметрыФункции.Вставить("Dropbox_Job", Работа);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Dropbox_Job", Работа);
+    FunctionParameters.Insert("Dropbox_Job", Work);
+    OPI_GetTestData.WriteParameter("Dropbox_Job", Work);
     
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
      
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПолучитьСтатусЗагрузкиПоURL(ПараметрыФункции)
+Procedure Dropbox_GetUploadStatusByURL(FunctionParameters)
 
-    Токен    = ПараметрыФункции["Dropbox_Token"];
-    ИДРаботы = ПараметрыФункции["Dropbox_Job"];
-    Статус   = "in_progress";    
+    Token    = FunctionParameters["Dropbox_Token"];
+    WorkID = FunctionParameters["Dropbox_Job"];
+    Status   = "in_progress";    
     
-    Пока Статус = "in_progress" Цикл 
+    While Status = "in_progress" Loop 
         
-        Результат = OPI_Dropbox.ПолучитьСтатусЗагрузкиПоURL(Токен, ИДРаботы);
-        Статус    = Результат[".tag"];
+        Result = OPI_Dropbox.GetUploadStatusByURL(Token, WorkID);
+        Status    = Result[".tag"];
         
-        OPI_Инструменты.Пауза(5);
+        OPI_Tools.Pause(5);
         
-        // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтатусЗагрузкиПоURL", "Dropbox");
+        // !OInt OPI_GetTestData.WriteLog(Result, "GetUploadStatusByURL", "Dropbox");
         
-    КонецЦикла;
+    EndOfLoop;
     
     // END
     
-    Проверка_ДропБоксСтатус(Результат);
+    Check_DropboxStatus(Result);
     
-    Путь      = "/New/url_doc.docx";
-    Результат = OPI_Dropbox.УдалитьОбъект(Токен, Путь);
+    Path      = "/New/url_doc.docx";
+    Result = OPI_Dropbox.DeleteObject(Token, Path);
     
-    Проверка_ДропБоксМетаданные(Результат, Путь);
-    OPI_Инструменты.Пауза(5); 
+    Check_DropboxMetadata(Result, Path);
+    OPI_Tools.Pause(5); 
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_УдалитьОбъект(ПараметрыФункции)
+Procedure Dropbox_DeleteObject(FunctionParameters)
  
-    Путь      = "/New/pic.png";  
-    Токен     = ПараметрыФункции["Dropbox_Token"];  
+    Path      = "/New/pic.png";  
+    Token     = FunctionParameters["Dropbox_Token"];  
     
-    Результат = OPI_Dropbox.УдалитьОбъект(Токен, Путь);
+    Result = OPI_Dropbox.DeleteObject(Token, Path);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьОбъект", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteObject", "Dropbox");
 
-    Проверка_ДропБоксМетаданные(Результат, Путь);
+    Check_DropboxMetadata(Result, Path);
     
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
      
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_КопироватьОбъект(ПараметрыФункции)
+Procedure Dropbox_CopyObject(FunctionParameters)
     
-    Оригинал  = "/New/pic.png";
-    Копия     = "/New/pic_copy.png";  
-    Токен     = ПараметрыФункции["Dropbox_Token"];
+    Original  = "/New/pic.png";
+    Copy     = "/New/pic_copy.png";  
+    Token     = FunctionParameters["Dropbox_Token"];
     
-    Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);
+    Result = OPI_Dropbox.CopyObject(Token, Original, Copy);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "КопироватьОбъект", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CopyObject", "Dropbox");
         
-    Проверка_ДропБоксМетаданные(Результат, Копия);
+    Check_DropboxMetadata(Result, Copy);
     
-    Результат = OPI_Dropbox.УдалитьОбъект(Токен, Копия);
-    Проверка_ДропБоксМетаданные(Результат, Копия);
+    Result = OPI_Dropbox.DeleteObject(Token, Copy);
+    Check_DropboxMetadata(Result, Copy);
         
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПереместитьОбъект(ПараметрыФункции)
+Procedure Dropbox_MoveObject(FunctionParameters)
     
-    ОригиналныйПуть  = "/New/pic.png";
-    ЦелевойПуть      = "/pic.png";  
-    Токен            = ПараметрыФункции["Dropbox_Token"];
+    OriginalPath  = "/New/pic.png";
+    TargetPath      = "/pic.png";  
+    Token            = FunctionParameters["Dropbox_Token"];
     
-    Результат = OPI_Dropbox.ПереместитьОбъект(Токен, ОригиналныйПуть, ЦелевойПуть);
+    Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "Dropbox_ПереместитьОбъект", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "Dropbox_MoveObject", "Dropbox");
         
-    Проверка_ДропБоксМетаданные(Результат, ЦелевойПуть);
+    Check_DropboxMetadata(Result, TargetPath);
     
-    Результат = OPI_Dropbox.ПереместитьОбъект(Токен, ЦелевойПуть, ОригиналныйПуть);
-    Проверка_ДропБоксМетаданные(Результат, ОригиналныйПуть);
+    Result = OPI_Dropbox.MoveObject(Token, TargetPath, OriginalPath);
+    Check_DropboxMetadata(Result, OriginalPath);
         
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_СоздатьПапку(ПараметрыФункции)
+Procedure Dropbox_CreateFolder(FunctionParameters)
     
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/Новый каталог";
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New toаталог";
     
-    Результат = OPI_Dropbox.СоздатьПапку(Токен, Путь);
+    Result = OPI_Dropbox.CreateFolder(Token, Path);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьПапку", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CreateFolder", "Dropbox");
         
-    Проверка_ДропБоксМетаданные(Результат, Путь);
+    Check_DropboxMetadata(Result, Path);
     
-    Результат = OPI_Dropbox.УдалитьОбъект(Токен, Путь);
-    Проверка_ДропБоксМетаданные(Результат, Путь);
+    Result = OPI_Dropbox.DeleteObject(Token, Path);
+    Check_DropboxMetadata(Result, Path);
         
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_СкачатьФайл(ПараметрыФункции)
+Procedure Dropbox_DownloadFile(FunctionParameters)
 
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New/pic.png"; 
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New/pic.png"; 
     
-    Результат = OPI_Dropbox.СкачатьФайл(Токен, Путь);
+    Result = OPI_Dropbox.DownloadFile(Token, Path);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СкачатьФайл", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DownloadFile", "Dropbox");
         
-    Проверка_ДвоичныеДанные(Результат, 2114023);
+    Check_BinaryData(Result, 2114023);
         
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_СкачатьПапку(ПараметрыФункции)
+Procedure Dropbox_DownloadFolder(FunctionParameters)
     
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New";
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New";
     
-    Результат = OPI_Dropbox.СкачатьПапку(Токен, Путь);
+    Result = OPI_Dropbox.DownloadFolder(Token, Path);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СкачатьПапку", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DownloadFolder", "Dropbox");
         
-    Проверка_ДвоичныеДанные(Результат);
+    Check_BinaryData(Result);
         
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПолучитьСписокФайловПапки(ПараметрыФункции)
+Procedure Dropbox_GetFolderFileList(FunctionParameters)
  
-    Путь      = "/New";  
-    Токен     = ПараметрыФункции["Dropbox_Token"];
+    Path      = "/New";  
+    Token     = FunctionParameters["Dropbox_Token"];
      
-    Результат = OPI_Dropbox.ПолучитьСписокФайловПапки(Токен, Путь, Истина);
+    Result = OPI_Dropbox.GetListOfFolderFiles(Token, Path, True);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокФайловПапки", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetListOfFolderFiles", "Dropbox");
 
-    Проверка_ДропБоксМассив(Результат);
+    Check_DropboxArray(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры 
+EndProcedure 
 
-Процедура Dropbox_ПолучитьСписокВерсийОбъекта(ПараметрыФункции)
+Procedure Dropbox_GetObjectVersionList(FunctionParameters)
 
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New/pic.png"; 
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New/pic.png"; 
     
-    Результат = OPI_Dropbox.ПолучитьСписокВерсийОбъекта(Токен, Путь, 1);
+    Result = OPI_Dropbox.GetObjectVersionList(Token, Path, 1);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокВерсийОбъекта", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetObjectVersionList", "Dropbox");
         
-   Проверка_ДропБоксМассив(Результат, 1);
+   Check_DropboxArray(Result, 1);
    
-   Ревизия = Результат["entries"][0]["rev"];
+   Revision = Result["entries"][0]["rev"];
    
-   ПараметрыФункции.Вставить("Dropbox_FileRevision", Ревизия);
-   OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Dropbox_FileRevision", Ревизия);
+   FunctionParameters.Insert("Dropbox_FileRevision", Revision);
+   OPI_GetTestData.WriteParameter("Dropbox_FileRevision", Revision);
         
-   OPI_Инструменты.Пауза(5); 
+   OPI_Tools.Pause(5); 
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ВосстановитьОбъектКВерсии(ПараметрыФункции)
+Procedure Dropbox_RestoreObjectToVersion(FunctionParameters)
    
-    Версия    = ПараметрыФункции["Dropbox_FileRevision"];
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New/pic.png";  
+    Version    = FunctionParameters["Dropbox_FileRevision"];
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New/pic.png";  
     
-    Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);
-    
-    // END
-    
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ВосстановитьОбъектКВерсии", "Dropbox");
-    
-    Проверка_ДропБоксФайл(Результат, Путь);
-    
-    OPI_Инструменты.Пауза(5);  
-    
-КонецПроцедуры
-
-Процедура Dropbox_ПолчитьСписокТегов(ПараметрыФункции)
-
-    Токен = ПараметрыФункции["Dropbox_Token"];
-    
-    МассивПутей = Новый Массив;
-    МассивПутей.Добавить("/New/Dogs.mp3");
-    МассивПутей.Добавить("/New/mydoc.docx");  
-    
-    Результат = OPI_Dropbox.ПолучитьСписокТегов(Токен, МассивПутей);
+    Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокТегов", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "RestoreObjectToVersion", "Dropbox");
     
-    Проверка_ДропБоксТеги(Результат, МассивПутей.Количество());
+    Check_DropboxFile(Result, Path);
     
-    Результат = OPI_Dropbox.ПолучитьСписокТегов(Токен, "/New/mydoc.docx");
+    OPI_Tools.Pause(5);  
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСписокТегов (одиночный)");
+EndProcedure
+
+Procedure Dropbox_GetTagList(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
     
-    Проверка_ДропБоксТеги(Результат, 1);
+    PathsArray = New Array;
+    PathsArray.Add("/New/Dogs.mp3");
+    PathsArray.Add("/New/mydoc.docx");  
     
-    ЕстьТег = Ложь;
+    Result = OPI_Dropbox.GetTagList(Token, PathsArray);
     
-    Для Каждого Тег Из Результат["paths_to_tags"][0]["tags"] Цикл
-        Если Тег["tag_text"] = "важное" Тогда
-            ЕстьТег = Истина;    
-        КонецЕсли;
-    КонецЦикла;
+    // END
     
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(ЕстьТег).Равно(Истина);
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetTagList", "Dropbox");
     
-    OPI_Инструменты.Пауза(5);  
+    Check_DropboxTags(Result, PathsArray.Quantity());
+    
+    Result = OPI_Dropbox.GetTagList(Token, "/New/mydoc.docx");
+    
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetTagList (оdиночный)");
+    
+    Check_DropboxTags(Result, 1);
+    
+    HasTag = False;
+    
+    For Each Tag Of Result["paths_to_tags"][0]["tags"] Loop
+        If Tag["tag_text"] = "important" Then
+            HasTag = True;    
+        EndIf;
+    EndOfLoop;
+    
+    OPI_GetTestData.ExpectsThat(HasTag).Equal(True);
+    
+    OPI_Tools.Pause(5);  
         
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ДобавитьТег(ПараметрыФункции)
+Procedure Dropbox_AddTag(FunctionParameters)
     
-    Тег       = "Важное";
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New/mydoc.docx";  
+    Tag       = "Important";
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New/mydoc.docx";  
     
-    Результат = OPI_Dropbox.ДобавитьТег(Токен, Путь, Тег);
+    Result = OPI_Dropbox.AddTag(Token, Path, Tag);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьТег", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddTag", "Dropbox");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    OPI_Инструменты.Пауза(5);  
+    OPI_Tools.Pause(5);  
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_УдалитьТег(ПараметрыФункции)
+Procedure Dropbox_DeleteTag(FunctionParameters)
     
-    Тег       = "Важное";
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New/mydoc.docx";  
+    Tag       = "Important";
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New/mydoc.docx";  
     
-    Результат = OPI_Dropbox.УдалитьТег(Токен, Путь, Тег);
+    Result = OPI_Dropbox.DeleteTag(Token, Path, Tag);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "УдалитьТег", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "DeleteTag", "Dropbox");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    OPI_Инструменты.Пауза(5);  
+    OPI_Tools.Pause(5);  
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПолучитьИнформациюОбАккаунте(ПараметрыФункции)
+Procedure Dropbox_GetAccountInformation(FunctionParameters)
     
-    Токен = ПараметрыФункции["Dropbox_Token"];
+    Token = FunctionParameters["Dropbox_Token"];
     
-    Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен);
+    Result = OPI_Dropbox.GetAccountInformation(Token);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюОбАккаунте", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetAccountInformation", "Dropbox");
     
-    Проверка_ДропбоксАккаунт(Результат);
+    Check_DropboxAccount(Result);
     
-    Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен, Результат["account_id"]);
+    Result = OPI_Dropbox.GetAccountInformation(Token, Result["account_id"]);
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьИнформациюОбАккаунте (сторонний)");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetAccountInformation (withторонний)");
     
-    Проверка_ДропбоксАккаунт(Результат);
+    Check_DropboxAccount(Result);
     
-    OPI_Инструменты.Пауза(5);
+    OPI_Tools.Pause(5);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ПолучитьДанныеИспользованияПространства(ПараметрыФункции)
+Procedure Dropbox_GetSpaceUsageData(FunctionParameters)
   
-    Токен = ПараметрыФункции["Dropbox_Token"];
+    Token = FunctionParameters["Dropbox_Token"];
     
-    Результат = OPI_Dropbox.ПолучитьДанныеИспользованияПространства(Токен);
+    Result = OPI_Dropbox.GetSpaceUsageData(Token);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьДанныеИспользованияПространства", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "GetSpaceUsageData", "Dropbox");
     
-    Проверка_ДропбоксПространство(Результат);
+    Check_DropboxSpace(Result);
       
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ДобавитьПользователейКФайлу(ПараметрыФункции)
+Procedure Dropbox_AddUsersToFile(FunctionParameters)
     
-    Токен = ПараметрыФункции["Dropbox_Token"];
-    Почта = ПараметрыФункции["Dropbox_OtherUser"];
-    Файл  = ПараметрыФункции["Dropbox_FileID"];
+    Token = FunctionParameters["Dropbox_Token"];
+    Email = FunctionParameters["Dropbox_OtherUser"];
+    File  = FunctionParameters["Dropbox_FileID"];
     
-    Результат = OPI_Dropbox.ДобавитьПользователейКФайлу(Токен, Файл, Почта, Ложь);
+    Result = OPI_Dropbox.AddUsersToFile(Token, File, Email, False);
     
     // END
         
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьПользователяКФайлу", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddUserToFile", "Dropbox");
     
-    Проверка_ДропбоксУчастник(Результат, Почта, Ложь);
+    Check_DropboxMember(Result, Email, False);
     
-    Почты = Новый Массив;
-    Почты.Добавить(Почта);
+    Mails = New Array;
+    Mails.Add(Email);
     
-    Результат = OPI_Dropbox.ДобавитьПользователейКФайлу(Токен, Файл, Почты, Истина);
+    Result = OPI_Dropbox.AddUsersToFile(Token, File, Mails, True);
     
-    Проверка_ДропбоксУчастник(Результат, Почта, Истина);
+    Check_DropboxMember(Result, Email, True);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ОпубликоватьПапку(ПараметрыФункции)
+Procedure Dropbox_PublishFolder(FunctionParameters)
     
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Путь      = "/New"; 
+    Token     = FunctionParameters["Dropbox_Token"];
+    Path      = "/New"; 
    
-    Результат = OPI_Dropbox.ОпубликоватьПапку(Токен, Путь);
+    Result = OPI_Dropbox.PublishFolder(Token, Path);
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОпубликоватьПапку", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "PublishFolder", "Dropbox");
         
-    Проверка_ДропБоксПубличнаяПапка(Результат);
+    Check_DropboxPublicFolder(Result);
    
-    IDПапки = Результат["shared_folder_id"];
+    FolderID = Result["shared_folder_id"];
    
-    ПараметрыФункции.Вставить("Dropbox_SharedFolder", IDПапки);
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Dropbox_SharedFolder", IDПапки);
+    FunctionParameters.Insert("Dropbox_SharedFolder", FolderID);
+    OPI_GetTestData.WriteParameter("Dropbox_SharedFolder", FolderID);
         
-    OPI_Инструменты.Пауза(5); 
+    OPI_Tools.Pause(5); 
 
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ОтменитьПубликациюПапки(ПараметрыФункции)
+Procedure Dropbox_CancelFolderPublication(FunctionParameters)
     
-    Токен  = ПараметрыФункции["Dropbox_Token"];
-    Папка  = ПараметрыФункции["Dropbox_SharedFolder"];
+    Token  = FunctionParameters["Dropbox_Token"];
+    Folder  = FunctionParameters["Dropbox_SharedFolder"];
  
-    Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
-    ТекущийСтатус = "in_progress";
-    IDРаботы      = Результат["async_job_id"];
+    Result     = OPI_Dropbox.CancelFolderPublication(Token, Folder);
+    CurrentStatus = "in_progress";
+    JobID      = Result["async_job_id"];
     
-    Пока ТекущийСтатус = "in_progress" Цикл
-        Результат     = OPI_Dropbox.ПолучитьСтатусАсинхронногоИзменения(Токен, IDРаботы);
-        ТекущийСтатус = Результат[".tag"];
-        OPI_Инструменты.Пауза(3);
-    КонецЦикла;
+    While CurrentStatus = "in_progress" Loop
+        Result     = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
+        CurrentStatus = Result[".tag"];
+        OPI_Tools.Pause(3);
+    EndOfLoop;
     
     // END
     
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтменитьПубликациюПапки", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CancelFolderPublication", "Dropbox");
     
-   Проверка_ДропБоксСтатус(Результат);
+   Check_DropboxStatus(Result);
    
-   OPI_Инструменты.Пауза(5); 
+   OPI_Tools.Pause(5); 
    
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ДобавитьПользователейКПапке(ПараметрыФункции)
+Procedure Dropbox_AddUsersToFolder(FunctionParameters)
     
-    Токен  = ПараметрыФункции["Dropbox_Token"];
-    Почта  = ПараметрыФункции["Dropbox_OtherUser"];
-    Папка  = ПараметрыФункции["Dropbox_SharedFolder"]; // shared_folder_id
+    Token  = FunctionParameters["Dropbox_Token"];
+    Email  = FunctionParameters["Dropbox_OtherUser"];
+    Folder  = FunctionParameters["Dropbox_SharedFolder"]; // shared_folder_id
     
-    Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почта, Ложь);
+    Result = OPI_Dropbox.AddUsersToFolder(Token, Folder, Email, False);
     
     // END
         
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ДобавитьПользователяКФайлу", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "AddUserToFile", "Dropbox");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-    Почты = Новый Массив;
-    Почты.Добавить(Почта);
+    Mails = New Array;
+    Mails.Add(Email);
     
-    Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почты, Истина);
+    Result = OPI_Dropbox.AddUsersToFolder(Token, Folder, Mails, True);
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-КонецПроцедуры
+EndProcedure
 
-Процедура Dropbox_ОтменитьПубликациюФайла(ПараметрыФункции)
+Procedure Dropbox_CancelFilePublication(FunctionParameters)
 	
-	Токен = ПараметрыФункции["Dropbox_Token"];
-    Файл  = ПараметрыФункции["Dropbox_FileID"];
+	Token = FunctionParameters["Dropbox_Token"];
+    File  = FunctionParameters["Dropbox_FileID"];
     
-    Результат = OPI_Dropbox.ОтменитьПубликациюФайла(Токен, Файл);
+    Result = OPI_Dropbox.CancelFilePublication(Token, File);
     
     // END
         
-    // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтменитьПубликациюФайла", "Dropbox");
+    // !OInt OPI_GetTestData.WriteLog(Result, "CancelFilePublication", "Dropbox");
     
-    Проверка_Пусто(Результат);
+    Check_Empty(Result);
     
-КонецПроцедуры
+EndProcedure
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
