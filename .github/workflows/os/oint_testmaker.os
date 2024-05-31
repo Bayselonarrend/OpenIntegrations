@@ -64,7 +64,7 @@
 Процедура СформироватьЗапуск(Знач ТаблицаТестов, Знач СписокБиблиотек)
 	
     Раннер  = "/home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os";
-	ФайлТестов = "./OInt/tests/Modules/internal/OPI_Тесты.os";
+	ФайлТестов = "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os";
 
 	Для Каждого Библиотека Из СписокБиблиотек Цикл
 
@@ -99,7 +99,7 @@
 		|
         |      - name: Установить OInt
         |        run: |
-        |          cd ./OInt
+        |          cd ./src/ru/OInt
         |          opm build
         |          opm install *.ospx
 		|
@@ -172,7 +172,7 @@
 	|
 	|      - name: Установить OInt
 	|        run: |
-	|          cd ./OInt
+	|          cd ./src/ru/OInt
 	|          opm build
 	|          opm install *.ospx    
 	|
@@ -180,7 +180,7 @@
 	|        uses: actions/upload-artifact@v4
 	|        with:
 	|          name: oint
-	|          path: ./OInt/*.ospx
+	|          path: ./src/ru/OInt/*.ospx
 	|");
 
 КонецПроцедуры
