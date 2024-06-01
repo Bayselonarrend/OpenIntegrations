@@ -114,7 +114,7 @@ Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection)
     
     For Each Table In TableCollection Do
         
-        Description = GenerateTableDescription(Table.TheKey, Table.Value);
+        Description = GenerateTableDescription(Table.Key, Table.Value);
         TableArray.Add(Description);
         
     EndDo;

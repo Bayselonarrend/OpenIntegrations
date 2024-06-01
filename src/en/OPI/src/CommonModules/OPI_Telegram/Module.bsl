@@ -179,34 +179,34 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     
     DataString = DecodeString(DataString, StringEncodingMethod.URLencoding);
     DataStructure = OPI_Tools.RequestParametersToMatch(DataString);
-    TheKey = "WebAppData";
+    Key = "WebAppData";
     Hash = "";
-    BinaryKey = GetBinaryDataFromString(TheKey);
+    BinaryKey = GetBinaryDataFromString(Key);
 
     Result = OPI_Cryptography.HMACSHA256(BinaryKey, GetBinaryDataFromString(Token));
 
     TValue = New ValueTable;
-    TValue.Columns.Add("TheKey");
+    TValue.Columns.Add("Key");
     TValue.Columns.Add("Value");
 
     For Each Data In DataStructure Do
 
         NewLine = TValue.Add();
-        NewLine.TheKey = Data.TheKey;
+        NewLine.Key = Data.Key;
         NewLine.Value = Data.Value;
 
     EndDo;
 
-    TValue.Sort("TheKey");
+    TValue.Sort("Key");
 
     ReturnMapping = New Map;
     DCS = "";
 
     For Each DataString In TValue Do
 
-        If DataString.TheKey <> "hash" Then
-            DCS = DCS + DataString.TheKey + "=" + DataString.Value + Chars.PS;
-            ReturnMapping.Insert(DataString.TheKey, DataString.Value);
+        If DataString.Key <> "hash" Then
+            DCS = DCS + DataString.Key + "=" + DataString.Value + Chars.PS;
+            ReturnMapping.Insert(DataString.Key, DataString.Value);
         Else
             Hash = DataString.Value;
         EndIf;
@@ -410,7 +410,7 @@ Function SendMediaGroup(Val Token
 	, Val Markup = "Markdown") Export
     
     // FileMapping
-    // TheKey - File, Value - Type
+    // Key - File, Value - Type
     // Types: audio, document, photo, video
     // Different types cannot be mixed!
 
@@ -1165,12 +1165,12 @@ Procedure FormMediaArray(Val FileMapping, Val Text, FileStructure, Media)
    
     For Each CurrentFile In FileMapping Do
         
-        If Not TypeOf(CurrentFile.TheKey) = Type("BinaryData") Then
+        If Not TypeOf(CurrentFile.Key) = Type("BinaryData") Then
             
-            Binary = CurrentFile.TheKey;
+            Binary = CurrentFile.Key;
             OPI_TypeConversion.GetBinaryData(Binary);
             
-            ThisFile = New File(CurrentFile.TheKey);           
+            ThisFile = New File(CurrentFile.Key);           
             MediaName = CurrentFile.Value 
                 + String(Counter) 
                 + ?(CurrentFile.Value = "document", ThisFile.Extension, "");
@@ -1178,7 +1178,7 @@ Procedure FormMediaArray(Val FileMapping, Val Text, FileStructure, Media)
             FullMediaName = StrReplace(MediaName, ".", "___");
             
         Else
-            Binary = CurrentFile.TheKey;
+            Binary = CurrentFile.Key;
             MediaName = CurrentFile.Value + String(Counter);
             FullMediaName = MediaName;
         EndIf;
@@ -1208,7 +1208,7 @@ Procedure AddChatIdentifier(Val ChatID, Parameters)
     ChatID = OPI_Tools.NumberToString(ChatID);
     ChatArray = StrSplit(ChatID, "*", False);
     
-    If ChatArray.Quantity() > 1 Then
+    If ChatArray.Count() > 1 Then
         
         ChatID = ChatArray[0];
         ThreadID = ChatArray[1];

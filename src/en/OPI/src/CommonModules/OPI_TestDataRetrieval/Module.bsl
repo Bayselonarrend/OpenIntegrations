@@ -244,7 +244,7 @@ Function FormYAXTests() Export
     
     For Each Section In Sections Do
         
-        CurrentSection = Section.TheKey;
+        CurrentSection = Section.Key;
         Filter = New Structure("Section", CurrentSection);
         SectionTests = TestTable.FindLines(Filter);
         
