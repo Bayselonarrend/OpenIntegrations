@@ -289,7 +289,7 @@ Function GetBinary(Parameter) Export
     
     LocalFile = New File(LocalValue);
     
-    If LocalFile.Exists() Then
+    If LocalFile.Exist() Then
         Value = New BinaryData(LocalValue);
     Else
         Value = MainValue;
@@ -398,7 +398,7 @@ Function DataFilePath()
     	
 	    RepositoryFile = New File(PossiblePath);
 	    
-	    If RepositoryFile.Exists() Then
+	    If RepositoryFile.Exist() Then
 	        Path = PossiblePath;
 	    EndIf;    
     
@@ -446,20 +446,20 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
 		
 		LogDirectory = New File(LogPath);
 		
-		If Not LogDirectory.Exists() Then
+		If Not LogDirectory.Exist() Then
 			CreateDirectory(LogPath);
 		EndIf;
 		
 		LibraryLogCatalog = New File(LibraryLogPath);
         
-        If Not LibraryLogCatalog.Exists() Then
+        If Not LibraryLogCatalog.Exist() Then
             CreateDirectory(LibraryLogPath);
         EndIf;
 		 
 		FilePath = LibraryLogPath + "/" + Method + ".log";
 		LogFile = New File(FilePath);
 		
-		If Not LogFile.Exists() Then
+		If Not LogFile.Exist() Then
 			LogDocument = New TextDocument;
 			LogDocument.SetText(Data);
 			LogDocument.Write(FilePath);
