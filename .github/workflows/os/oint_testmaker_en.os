@@ -69,7 +69,7 @@
 		|
         |      - name: Установить OInt
         |        run: |
-        |          cd ./src/ru/OInt
+        |          cd ./src/en/OInt
         |          opm build
         |          opm install *.ospx
 		|
