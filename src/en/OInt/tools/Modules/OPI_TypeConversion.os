@@ -51,7 +51,7 @@ Procedure GetBinaryData(Value) Export
             
             File = New File(Value);
             
-            If File.Exists() Then
+            If File.Exist() Then
                 Value = New BinaryData(Value);
                 
             ElsIf StrFind(Value, "//") Then
@@ -85,7 +85,7 @@ Procedure GetBinaryOrStream(Value) Export
     
     File = New File(Value);
     
-    If File.Exists() Then
+    If File.Exist() Then
         Value = New FileStream(Value, FileOpenMode.Open);     
     Else
         GetBinaryData(Value);
@@ -116,7 +116,7 @@ Procedure GetCollection(Value) Export
             File = New File(Value);
             JSONReader = New JSONReader;
             
-            If File.Exists() Then
+            If File.Exist() Then
                 
                 JSONReader.OpenFile(Value);
                 
@@ -230,7 +230,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
             Value = OPI_Tools.NumberToString(Value);  
             File = New File(Value);
             
-            If File.Exists() Then
+            If File.Exist() Then
                 
                 TextReader = New TextReader(Value);
                 Value = TextReader.Read();

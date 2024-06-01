@@ -396,7 +396,7 @@ Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
         
         FileOnDisk = New File(Data);
         
-        If FileOnDisk.Exists() Then         
+        If FileOnDisk.Exist() Then         
             Size = FileOnDisk.Size(); 
         Else
             OPI_TypeConversion.GetBinaryData(Data);
