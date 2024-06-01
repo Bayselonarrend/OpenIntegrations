@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Slack.os
-// Library: Slack
-// CLI command: slack
+﻿// OneScript: ./OInt/core/Modules/OPI_Slack.os
+// Lib: Slack
+// CLI: slack
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:Typo-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"

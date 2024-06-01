@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GoogleCalendar.os
-// Library: Google Calendar
-// CLI Command: gcalendar
+// Lib: Google Calendar
+// CLI: gcalendar
 
 // MIT License
 

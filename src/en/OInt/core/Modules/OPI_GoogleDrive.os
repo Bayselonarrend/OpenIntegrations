@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_GoogleDrive.os
-// Library: Google Drive
-// CLI Command: gdrive
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
+// Lib: Google Drive
+// CLI: gdrive
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"
@@ -652,8 +656,8 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
         MByte = KBytes * KBytes;
 		Message(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
         
-        PerformGarbageCollection();
-        ReleaseObject(CurrentData);
+        RunGarbageCollection();
+        FreeObject(CurrentData);
         
     EndDo;
     

@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_Notion.os
-// Библиотека: Notion
-// Команда CLI: notion
+// Lib: Notion
+// CLI: notion
 
 // MIT License
 
