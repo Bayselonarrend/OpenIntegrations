@@ -83,11 +83,11 @@ Function HMAC(Val TheKey, Val Data, Type, BlockSize) Export
     Opad.WriteBitwiseExclusiveOr(0, TheKey);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
     
-    Return Hash(ConcatenateBinaryData(okeypad, Hash(ConcatenateBinaryData(ikeypad, Data), Type)), Type);
+    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), Type)), Type);
     
 EndFunction
 
-Function ConcatenateBinaryData(BinaryData1, BinaryData2) Export
+Function UniteBinaryData(BinaryData1, BinaryData2) Export
     
     BinaryDataArray = New Array;
     BinaryDataArray.Add(BinaryData1);

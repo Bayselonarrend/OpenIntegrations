@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/tests/Modules/internal/OPI_Tests.os
+﻿// 
 
 // MIT License
 
@@ -33,8 +33,12 @@
 // BSLLS:UnusedParameters-off
 // BSLLS:DuplicateStringLiteral-off
 
-// @skip-check undefined-variable
-// @skip-check wrong-string-literal-content
+//@skip-check undefined-variable
+//@skip-check wrong-string-literal-content
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use oint

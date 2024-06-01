@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_VK.os
-// Library: VK
-// CLI Command: vk
+﻿// OneScript: ./OInt/core/Modules/OPI_VK.os
+// Lib: VK
+// CLI: vk
 
 // MIT License
 
@@ -36,6 +36,9 @@
 // BSLLS:UnusedLocalVariable-off
 
 //@skip-check method-too-many-params
+//@skip-check wrong-string-literal-content
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed

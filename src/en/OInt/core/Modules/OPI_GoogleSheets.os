@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_GoogleSheets.os
-// Library: Google Sheets
-// CLI Command: gsheets
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
+// Lib: Google Sheets
+// CLI: gsheets
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"

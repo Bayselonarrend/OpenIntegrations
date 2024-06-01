@@ -1,6 +1,6 @@
-﻿// Расположение OS: ./OInt/core/Modules/OPI_Dropbox.os
-// Библиотека: Dropbox
-// Команда CLI: dropbox
+﻿// OneScript: ./OInt/core/Modules/OPI_Dropbox.os
+// Lib: Dropbox
+// CLI: dropbox
 
 // MIT License
 
@@ -27,6 +27,10 @@
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"

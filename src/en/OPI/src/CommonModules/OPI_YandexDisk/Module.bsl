@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
-// Library: Yandex Disk
-// CLI command: yadisk
+// Lib: Yandex Disk
+// CLI: yadisk
 
 // MIT License
 

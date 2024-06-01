@@ -961,8 +961,8 @@ Procedure WriteBinaryData(DataWriter, Val BinaryData)
 
         DataWriter.Write(CurrentData);
         
-        // !OInt ReleaseObject(CurrentData);
-        // !OInt PerformGarbageCollection();
+        // !OInt FreeObject(CurrentData);
+        // !OInt RunGarbageCollection();
 
         CurrentPosition = CurrentPosition + CurrentSize;
         

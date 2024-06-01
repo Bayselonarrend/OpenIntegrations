@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
-// Библиотека: Google Workspace
-// Команда CLI: google
+// Lib: Google Workspace
+// CLI: google
 
 // MIT License
 

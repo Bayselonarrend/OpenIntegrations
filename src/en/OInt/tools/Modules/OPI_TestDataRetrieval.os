@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/tools/Modules/OPI_TestDataRetrieval.os
+﻿// 
 
 // MIT License
 
@@ -34,6 +34,10 @@
 // BSLLS:DuplicateStringLiteral-off
 
 //@skip-check use-non-recommended-method
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "./internal"

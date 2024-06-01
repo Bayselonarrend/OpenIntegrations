@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
-// Библиотека: Google Sheets
-// Команда CLI: gsheets
+// Lib: Google Sheets
+// CLI: gsheets
 
 // MIT License
 

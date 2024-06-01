@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Airtable.os
-// Library: Airtable
-// CLI Command: airtable
+﻿// OneScript: ./OInt/core/Modules/OPI_Airtable.os
+// Lib: Airtable
+// CLI: airtable
 
 // MIT License
 
@@ -27,6 +27,10 @@
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"

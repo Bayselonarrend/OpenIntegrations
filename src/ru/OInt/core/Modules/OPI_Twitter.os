@@ -1,6 +1,6 @@
-﻿// Расположение OS: ./OInt/core/Modules/OPI_Twitter.os
-// Библиотека: Twitter
-// Команда CLI: twitter
+﻿// OneScript: ./OInt/core/Modules/OPI_Twitter.os
+// Lib: Twitter
+// CLI: twitter
 
 // MIT License
 
@@ -35,6 +35,9 @@
 // BSLLS:UsingServiceTag-off
 
 //@skip-check method-too-many-params
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"

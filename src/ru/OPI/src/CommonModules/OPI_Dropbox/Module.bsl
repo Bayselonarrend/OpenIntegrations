@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_Dropbox.os
-// Библиотека: Dropbox
-// Команда CLI: dropbox
+// Lib: Dropbox
+// CLI: dropbox
 
 // MIT License
 

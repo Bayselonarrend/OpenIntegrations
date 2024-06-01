@@ -1,6 +1,6 @@
-﻿// Расположение OS: ./OInt/core/Modules/OPI_Notion.os
-// Библиотека: Notion
-// Команда CLI: notion
+﻿// OneScript: ./OInt/core/Modules/OPI_Notion.os
+// Lib: Notion
+// CLI: notion
 
 // MIT License
 
@@ -31,7 +31,10 @@
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
 
-// @skip-check method-too-many-params
+//@skip-check method-too-many-params
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"
