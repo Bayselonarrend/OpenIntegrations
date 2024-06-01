@@ -231,7 +231,7 @@ Function ExpectsThat(Value) Export
         Return Module.ОжидаетЧто(Value);  
            
     Except
-        Return Awaiting.Что(Value);
+        Return Ожидаем.Что(Value);
     EndTry;
     
 EndFunction
