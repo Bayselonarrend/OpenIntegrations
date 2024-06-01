@@ -226,7 +226,7 @@ Function ExpectsThat(Value) Export
     
     Try
         
-        Module = GetCommonModule("ЮТест");
+        Module = GetCommonModule("ЮTest");
         Awaiting = TypeOf(Module) = Type("CommonModule");
         Return Module.ОжидаетЧто(Value);  
            
@@ -238,7 +238,7 @@ EndFunction
 
 Function FormYAXTests() Export
     
-    Module = GetCommonModule("ЮТТесты");
+    Module = GetCommonModule("ЮТTests");
     Sections = GetTestingSectionMapping();
     TestTable = GetTestTable();
     
@@ -248,10 +248,10 @@ Function FormYAXTests() Export
         Filter = New Structure("Section", CurrentSection);
         SectionTests = TestTable.FindRows(Filter);
         
-        Set = Module.ДобавитьТестовыйНабор(CurrentSection);
+        Set = Module.AddTestоinыйSet(CurrentSection);
         
         For Each Test In SectionTests Do
-            Set.ДобавитьСерверныйТест(Test.Method, Test.Synonym);
+            Set.AddServerныйTest(Test.Method, Test.Synonym);
         EndDo;
         
     EndDo;
