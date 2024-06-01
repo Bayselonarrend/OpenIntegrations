@@ -290,7 +290,7 @@ Procedure GetDate(Value) Export
     
     Except
         OOD = New TypeDescription(Date);
-        Value = OOD.ConvertValue(Value);
+        Value = OOD.AdjustValue(Value);
     EndTry;
         
 EndProcedure
@@ -298,7 +298,7 @@ EndProcedure
 Procedure GetNumber(Value) Export
     
     TypeDescription = New TypeDescription("Number");
-    Value = TypeDescription.ConvertValue(Value);
+    Value = TypeDescription.AdjustValue(Value);
     
 EndProcedure
 
