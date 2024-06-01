@@ -81,5 +81,7 @@
 "СлужебныеПроцедурыИФункции":"Private",
 "НачалоДня":"BegOfDay",
 "Вычислить":"Eval",
-"Сред":"Mid"
+"Сред":"Mid",
+"НаправлениеПоиска.СНачала":"SearchDirection.FromBegin",
+"НаправлениеПоиска.СКонца":"SearchDirection.FromEnd"
 }
