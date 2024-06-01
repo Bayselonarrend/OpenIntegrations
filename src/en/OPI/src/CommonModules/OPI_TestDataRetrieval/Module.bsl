@@ -228,7 +228,7 @@ Function ExpectsThat(Value) Export
         
         Module = GetCommonModule("ЮТест");
         Awaiting = TypeOf(Module) = Type("CommonModule");
-        Return Module.ExpectsThat(Value);  
+        Return Module.ОжидаетЧто(Value);  
            
     Except
         Return Awaiting.Что(Value);
