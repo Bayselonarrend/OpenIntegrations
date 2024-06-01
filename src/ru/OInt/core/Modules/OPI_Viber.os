@@ -1,6 +1,6 @@
-﻿// Расположение OS: ./OInt/core/Modules/OPI_Viber.os
-// Библиотека: Viber
-// Команда CLI: viber
+﻿// OneScript: ./OInt/core/Modules/OPI_Viber.os
+// Lib: Viber
+// CLI: viber
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"

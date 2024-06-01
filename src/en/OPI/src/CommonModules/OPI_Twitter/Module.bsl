@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_Twitter.os
-// Library: Twitter
-// CLI Command: twitter
+// Lib: Twitter
+// CLI: twitter
 
 // MIT License
 

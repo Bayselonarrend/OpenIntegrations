@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Viber.os
-// Library: Viber
-// CLI Command: viber
+﻿// OneScript: ./OInt/core/Modules/OPI_Viber.os
+// Lib: Viber
+// CLI: viber
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"

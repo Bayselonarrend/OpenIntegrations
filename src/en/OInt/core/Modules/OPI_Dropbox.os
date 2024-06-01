@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Dropbox.os
-// Library: Dropbox
-// CLI Command: dropbox
+﻿// OneScript: ./OInt/core/Modules/OPI_Dropbox.os
+// Lib: Dropbox
+// CLI: dropbox
 
 // MIT License
 
@@ -27,6 +27,10 @@
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"
@@ -864,8 +868,8 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
         MByte = KBytes * KBytes;
         Message(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
         
-        PerformGarbageCollection();
-        ReleaseObject(CurrentData);
+        RunGarbageCollection();
+        FreeObject(CurrentData);
                
     EndDo;
     

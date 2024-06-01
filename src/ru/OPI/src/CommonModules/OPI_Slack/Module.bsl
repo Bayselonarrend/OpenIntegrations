@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_Slack.os
-// Библиотека: Slack
-// Команда CLI: slack
+// Lib: Slack
+// CLI: slack
 
 // MIT License
 

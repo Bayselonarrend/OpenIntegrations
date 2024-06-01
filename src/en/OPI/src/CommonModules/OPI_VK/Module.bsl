@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_VK.os
-// Library: VK
-// CLI Command: vk
+// Lib: VK
+// CLI: vk
 
 // MIT License
 
