@@ -91,7 +91,7 @@
 "AddTestSet":"ДобавитьТестовыйНабор",
 "AddServerTest":"ДобавитьСерверныйТест",
 "Module.ExpectsThat(":"Module.ОжидаетЧто(",
-"Awaiting.What(":"Awaiting.Что(",
+"Awaiting.What(":"Ожидаем.Что(",
 ".HasType(":".ИмеетТип(",
 ".Equal(":".Равно(",
 ".Filled(":".Заполнено(",
