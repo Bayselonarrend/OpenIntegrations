@@ -444,7 +444,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
     Method = DetermineImageUploadMethod(View);
     Files = New Map;
     
-    Response = "response";
+    Response_ = "response";
     URL = "api.vk.com/method/";
     Upload = URL + Method["Upload"];
     Save = URL + Method["Save"];
@@ -461,7 +461,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
     For N = 1 To 5 Do
         
         Response = OPI_Tools.Get(Upload, Parameters);  
-        Result = Response[Response];
+        Result = Response[Response_];
         
         If ValueIsFilled(Result) Then
             
@@ -842,7 +842,7 @@ Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export
         
         SetsArray.Add(OPI_Tools.NumberToString(Post));
         
-        If SetsArray.Quantity() = MaximumPosts Then
+        If SetsArray.Count() = MaximumPosts Then
             
             NumbersString = StrConcat(SetsArray, ",");
             Parameters_.Insert("post_ids", NumbersString);
@@ -1055,7 +1055,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Map Of String - TheKey - ID, Value - Name
+// Map Of String - Key - ID, Value - Name
 Function GetProductCategoryList(Val Parameters = "") Export
     
     Response = "response";
@@ -1065,9 +1065,9 @@ Function GetProductCategoryList(Val Parameters = "") Export
     
     If ValueIsFilled(Result) Then
     	
-    	Quantity = Result["count"];
+    	Count = Result["count"];
     	
-    	If Not ValueIsFilled(Quantity) Then
+    	If Not ValueIsFilled(Count) Then
     		Return Response;
     	EndIf;
     	
@@ -1075,7 +1075,7 @@ Function GetProductCategoryList(Val Parameters = "") Export
     	Return Response;
     EndIf;
     
-    Parameters_.Insert("count", Quantity);
+    Parameters_.Insert("count", Count);
     Response = OPI_Tools.Get("api.vk.com/method/market.getCategories", Parameters_);   
     Result = Response[Response]; 
     
@@ -1743,7 +1743,7 @@ Function GetStandardParameters(Val Parameters = "")
     
     If TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Then
         For Each PassedParameter In Parameters Do
-            Parameters_.Insert(PassedParameter.TheKey, OPI_Tools.NumberToString(PassedParameter.Value));
+            Parameters_.Insert(PassedParameter.Key, OPI_Tools.NumberToString(PassedParameter.Value));
         EndDo;
     EndIf;
 
@@ -1781,7 +1781,7 @@ Function GetImageCorrespondence(Val Image, Val Parameters, Val View)
     If Not ValueIsFilled(ResponseArray) Or Not TypeOf(ResponseArray) = Type("Array") Then
     	Return Response;
     Else
-    	If ResponseArray.Quantity() = 0 Then
+    	If ResponseArray.Count() = 0 Then
     		Return Response;
     	Else
     		ResponseCorrespondence = ResponseArray[0];
@@ -1819,7 +1819,7 @@ Function DetermineImageUploadMethod(Val View)
     MethodCorrespondence = New Map;
     Upload = "Upload";
     Save = "Save";
-    Method = "Method";
+    Way = "Way";
     Photo = "Photo";
     
     If View = "Post" Then
@@ -1827,33 +1827,33 @@ Function DetermineImageUploadMethod(Val View)
         MethodCorrespondence.Insert(Upload , "photos.getWallUploadServer");
         MethodCorrespondence.Insert(Save, "photos.saveWallPhoto");
         MethodCorrespondence.Insert(Photo , "photo");
-        MethodCorrespondence.Insert(Method , 1);
+        MethodCorrespondence.Insert(Way , 1);
         
     ElsIf View = "Product" Then
         
         MethodCorrespondence.Insert(Upload , "market.getProductPhotoUploadServer");
         MethodCorrespondence.Insert(Save, "market.saveProductPhoto");
-        MethodCorrespondence.Insert(Method , 2);
+        MethodCorrespondence.Insert(Way , 2);
         
     ElsIf View = "Story" Then
         
         MethodCorrespondence.Insert(Upload , "stories.getPhotoUploadServer");
         MethodCorrespondence.Insert(Save, "stories.save");
-        MethodCorrespondence.Insert(Method , 3);
+        MethodCorrespondence.Insert(Way , 3);
     
     ElsIf View = "Poll" Then
         
         MethodCorrespondence.Insert(Upload , "polls.getPhotoUploadServer");
         MethodCorrespondence.Insert(Save, "polls.savePhoto");
         MethodCorrespondence.Insert(Photo , "photo");
-        MethodCorrespondence.Insert(Method , 1);
+        MethodCorrespondence.Insert(Way , 1);
         
     Else
         
         MethodCorrespondence.Insert(Upload , "photos.getUploadServer");
         MethodCorrespondence.Insert(Save, "photos.save");
         MethodCorrespondence.Insert(Photo , "photos_list");
-        MethodCorrespondence.Insert(Method , 1);
+        MethodCorrespondence.Insert(Way , 1);
         
     EndIf;
     
@@ -1985,7 +1985,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
                 Return Selections;   
             EndIf;
                                 
-            If Not Selections.Quantity() = 0 Then              
+            If Not Selections.Count() = 0 Then              
                 PhotoID = Selections[0]["photo"]["id"];
                 OPI_TypeConversion.GetLine(PhotoID);
                 Parameters.Insert(PhotoID, PhotoID);
@@ -2002,11 +2002,11 @@ EndFunction
 Procedure FillPhotoUploadParameters(Val Method, Val Response, Parameters)
     
     Response = "response";
-    Method = Method["Method"];
+    Way = Method["Way"];
     StandardMethod = 1;
     NewMethod = 2;
 
-    If Method = StandardMethod Then
+    If Way = StandardMethod Then
         
         Hash = "hash";
         Serv = "server";
@@ -2030,7 +2030,7 @@ Procedure FillPhotoUploadParameters(Val Method, Val Response, Parameters)
             Parameters.Insert(Aid , Identifier);      
         EndIf;
         
-    ElsIf Method = NewMethod Then
+    ElsIf Way = NewMethod Then
         
         ResponseString = OPI_Tools.JSONString(Response);
         Parameters.Insert("upload_response", ResponseString);
@@ -2091,10 +2091,10 @@ Procedure FillProductRequestFields(Val ProductDescription, Parameters)
     
     For Each Field In GetProductParameterMapping() Do
         
-        Value = ProductDescription[Field.TheKey];
+        Value = ProductDescription[Field.Key];
         
         If Value <> Undefined Then
-            Parameters.Insert(Field.Value, ProductDescription[Field.TheKey]);
+            Parameters.Insert(Field.Value, ProductDescription[Field.Key]);
         EndIf;
         
     EndDo;
@@ -2104,7 +2104,7 @@ EndProcedure
 Procedure AddAdditionalProductPhotos(Val PhotoArray, Parameters)
     
     If TypeOf(PhotoArray) = Type("Array") Then
-        If PhotoArray.Quantity() > 0 Then
+        If PhotoArray.Count() > 0 Then
             
             PhotoString = "";
             
@@ -2134,7 +2134,7 @@ Procedure GetProductListRecursively(ProductsArray, Parameters, Shift = 0)
     Response = OPI_Tools.Get("api.vk.com/method/market.get", Parameters);
     Products = Response[Response]["items"];
     
-    If Products.Quantity() = 0 Then
+    If Products.Count() = 0 Then
         Return;
     EndIf;      
     
@@ -2155,7 +2155,7 @@ Procedure GetAlbumListRecursively(ArrayOfAlbums, Parameters, Shift = 0)
     Response = OPI_Tools.Get("api.vk.com/method/market.getAlbums", Parameters);
     Albums = Response[Response]["items"];
     
-    If Albums.Quantity() = 0 Then
+    If Albums.Count() = 0 Then
         Return;
     EndIf;      
     
@@ -2176,7 +2176,7 @@ Procedure GetOrderListRecursively(ArrayOfOrders, Parameters, Shift = 0)
     Response = OPI_Tools.Get("api.vk.com/method/market.getGroupOrders", Parameters);
     Orders = Response[Response]["items"];
     
-    If Orders.Quantity() = 0 Then
+    If Orders.Count() = 0 Then
         Return;
     EndIf;      
     

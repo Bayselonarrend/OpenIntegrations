@@ -456,7 +456,7 @@ Procedure GetObjectsListRecursively(Val Headers, ArrayOfObjects, Detailed = Fals
          ArrayOfObjects.Add(CurrentObject);
     EndDo;    
     
-    If Objects.Quantity() > 0 And ValueIsFilled(Page) Then
+    If Objects.Count() > 0 And ValueIsFilled(Page) Then
         GetObjectsListRecursively(Headers, ArrayOfObjects, Detailed, Filter, Page); 
     EndIf;
           
@@ -495,7 +495,7 @@ Procedure FormFileUploadParameters(Description)
     
     For Each Element In Description Do
         
-        If Element.TheKey = "Parent" Then
+        If Element.Key = "Parent" Then
             
             CurrentValue = New Array;
             CurrentValue.Add(Element.Value);
@@ -506,7 +506,7 @@ Procedure FormFileUploadParameters(Description)
             
         EndIf;
         
-        FieldName = FieldMapping.Get(Element.TheKey);
+        FieldName = FieldMapping.Get(Element.Key);
         FormedDescription.Insert(FieldName, CurrentValue);
         
     EndDo;
@@ -581,7 +581,7 @@ EndFunction
 Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Identifier = "")
     
     For Each File In FileMapping Do
-        Binary = File.TheKey;
+        Binary = File.Key;
         Break;
     EndDo;
     
@@ -709,7 +709,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
     ArrayOfInformation = StrSplit(UploadedData, "-", False);
     PartsRequired = 2;
     
-    If Not ArrayOfInformation.Quantity() = PartsRequired Then
+    If Not ArrayOfInformation.Count() = PartsRequired Then
     	OPI_Tools.ProcessResponse(Response);
         Return Response;
     EndIf;

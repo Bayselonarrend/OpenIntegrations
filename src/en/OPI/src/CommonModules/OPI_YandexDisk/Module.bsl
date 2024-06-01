@@ -251,7 +251,7 @@ EndFunction
 //                                  
 // Parameters:
 // Token - String - Token - token
-// Quantity - Number, String - Number of returned objects - amount
+// Count - Number, String - Number of returned objects - amount
 // OffsetFromStart - Number - Offset for getting objects not from the beginning of the list - offset
 // FilterByType - String - Filter by file type - type
 // SortByDate - Boolean - True > sort by date, False > alphabetically - datesort
@@ -259,13 +259,13 @@ EndFunction
 // Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetFilesList(Val Token
-    , Val Quantity = 0
+    , Val Count = 0
     , Val OffsetFromStart = 0
     , Val FilterByType = ""
     , Val SortByDate = False) Export
     
     OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Quantity);
+    OPI_TypeConversion.GetLine(Count);
     OPI_TypeConversion.GetLine(OffsetFromStart);
     OPI_TypeConversion.GetLine(FilterByType);
     OPI_TypeConversion.GetBoolean(SortByDate);
@@ -274,8 +274,8 @@ Function GetFilesList(Val Token
     
     Parameters = New Structure;
     
-    If ValueIsFilled(Quantity) Then
-        Parameters.Insert("limit", OPI_Tools.NumberToString(Quantity));
+    If ValueIsFilled(Count) Then
+        Parameters.Insert("limit", OPI_Tools.NumberToString(Count));
     EndIf;
     
     If ValueIsFilled(OffsetFromStart) Then
@@ -443,23 +443,23 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token      
-// Quantity - Number - Number of returned objects - amount
+// Count - Number - Number of returned objects - amount
 // OffsetFromStart - Number - Offset for getting objects not from the beginning of the list - offset
 // 
 // Returns:
 // Key-Value Pair - serialized JSON response from Yandex
-Function GetPublishedObjectsList(Val Token, Val Quantity = 0, Val OffsetFromStart = 0) Export
+Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export
     
     OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Quantity);
+    OPI_TypeConversion.GetLine(Count);
     OPI_TypeConversion.GetLine(OffsetFromStart);
     
     Headers = AuthorizationHeader(Token);
     
     Parameters = New Structure;
     
-    If ValueIsFilled(Quantity) Then
-        Parameters.Insert("limit", Quantity);
+    If ValueIsFilled(Count) Then
+        Parameters.Insert("limit", Count);
     EndIf;
     
     If ValueIsFilled(OffsetFromStart) Then
@@ -478,24 +478,24 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // URL - String - Object address - url 
-// Quantity - Number - Number of returned nested objects (for catalog) - amount
+// Count - Number - Number of returned nested objects (for catalog) - amount
 // OffsetFromStart - Number - Offset for getting nested objects not from the beginning of the list - offset
 // 
 // Returns:
 // Key-Value Pair - serialized JSON response from Yandex
-Function GetPublicObject(Val Token, Val URL, Val Quantity = 0, Val OffsetFromStart = 0) Export
+Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export
     
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(URL);
-    OPI_TypeConversion.GetLine(Quantity);
+    OPI_TypeConversion.GetLine(Count);
     OPI_TypeConversion.GetLine(OffsetFromStart);
     
     Headers = AuthorizationHeader(Token);
     
     Parameters = New Structure;
     
-    If ValueIsFilled(Quantity) Then
-        Parameters.Insert("limit", OPI_Tools.NumberToString(Quantity));
+    If ValueIsFilled(Count) Then
+        Parameters.Insert("limit", OPI_Tools.NumberToString(Count));
     EndIf;
     
     If ValueIsFilled(OffsetFromStart) Then

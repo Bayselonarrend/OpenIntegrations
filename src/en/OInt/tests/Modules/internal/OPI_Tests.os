@@ -1147,15 +1147,15 @@ EndProcedure
 Procedure YDisk_GetFileList() Export
  
     Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Quantity = 2;
+    Count = 2;
     Indent = 1;
     
-    Result = OPI_YandexDisk.GetFilesList(Token, Quantity, Indent, "image");
+    Result = OPI_YandexDisk.GetFilesList(Token, Count, Indent, "image");
     
     OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList");
     
     OPI_TestDataRetrieval.ExpectsThat(Result).HasType("Map").Filled();
-    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Equal(Quantity);
+    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Equal(Count);
     OPI_TestDataRetrieval.ExpectsThat(Result["offset"]).Equal(Indent);
     OPI_TestDataRetrieval.ExpectsThat(Result["items"]).HasType("Array");
     
@@ -1253,15 +1253,15 @@ EndProcedure
 Procedure YDisk_GetPublishedList() Export
  
     Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Quantity = 2;
+    Count = 2;
     Indent = 1;
     
-    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Quantity, Indent);
+    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, Indent);
     
     OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectsList");
     
     OPI_TestDataRetrieval.ExpectsThat(Result).HasType("Map").Filled();
-    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Equal(Quantity);
+    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Equal(Count);
     OPI_TestDataRetrieval.ExpectsThat(Result["offset"]).Equal(Indent);
     OPI_TestDataRetrieval.ExpectsThat(Result["items"]).HasType("Array");
     
@@ -2028,14 +2028,14 @@ Procedure GT_FillClearCells() Export
     OPI_TestDataRetrieval.WriteLog(Result, "SetCellValues");
     
     OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
-    OPI_TestDataRetrieval.ExpectsThat(Result["totalUpdatedCells"]).Equal(CellStructure.Quantity());
+    OPI_TestDataRetrieval.ExpectsThat(Result["totalUpdatedCells"]).Equal(CellStructure.Count());
     
     Result = OPI_GoogleSheets.GetCellValues(Token, Book, CellsArray, Sheet);
     
     OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues");
     
     OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
-    OPI_TestDataRetrieval.ExpectsThat(Result["valueRanges"].Quantity()).Equal(CellsArray.Quantity());
+    OPI_TestDataRetrieval.ExpectsThat(Result["valueRanges"].Count()).Equal(CellsArray.Count());
     
     Result = OPI_GoogleSheets.GetCellValues(Token, Book, , Sheet);
     
@@ -2053,7 +2053,7 @@ Procedure GT_FillClearCells() Export
     OPI_TestDataRetrieval.WriteLog(Result, "ClearCells");
     
     OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Equal(Book);
-    OPI_TestDataRetrieval.ExpectsThat(Result["clearedRanges"].Quantity()).Equal(CellsArray.Quantity());
+    OPI_TestDataRetrieval.ExpectsThat(Result["clearedRanges"].Count()).Equal(CellsArray.Count());
 
 EndProcedure
 
@@ -3060,7 +3060,7 @@ Procedure AT_CreateDeleteRecords() Export
     OPI_TestDataRetrieval.WriteLog(Result, "CreatePosts");
     
     OPI_TestDataRetrieval.ExpectsThat(Result["records"]).HasType("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"].Quantity()).Equal(2);
+    OPI_TestDataRetrieval.ExpectsThat(Result["records"].Count()).Equal(2);
     
     For Each Record In Result["records"] Do
         ArrayOfDeletions.Add(Record["id"]);
@@ -3575,12 +3575,12 @@ Procedure Check_DropboxMetadata(Val Result, Val Path)
     
 EndProcedure
 
-Procedure Check_DropboxArray(Val Result, Val Quantity = Undefined)
+Procedure Check_DropboxArray(Val Result, Val Count = Undefined)
     
     OPI_TestDataRetrieval.ExpectsThat(Result["entries"]).HasType("Array");
     
-    If Not Quantity = Undefined Then
-        OPI_TestDataRetrieval.ExpectsThat(Result["entries"].Quantity()).Equal(Quantity);
+    If Not Count = Undefined Then
+        OPI_TestDataRetrieval.ExpectsThat(Result["entries"].Count()).Equal(Count);
     EndIf;
     
 EndProcedure
@@ -3593,10 +3593,10 @@ Procedure Check_DropboxStatus(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result[".tag"]).Equal("complete");
 EndProcedure
 
-Procedure Check_DropboxTags(Val Result, Val Quantity)
+Procedure Check_DropboxTags(Val Result, Val Count)
     
     OPI_TestDataRetrieval.ExpectsThat(Result["paths_to_tags"]).HasType("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["paths_to_tags"].Quantity()).Equal(Quantity);
+    OPI_TestDataRetrieval.ExpectsThat(Result["paths_to_tags"].Count()).Equal(Count);
     
 EndProcedure
 
@@ -5102,7 +5102,7 @@ Procedure Dropbox_GetTagList(FunctionParameters)
     
     OPI_TestDataRetrieval.WriteLog(Result, "GetTagList", "Dropbox");
     
-    Check_DropboxTags(Result, PathsArray.Quantity());
+    Check_DropboxTags(Result, PathsArray.Count());
     
     Result = OPI_Dropbox.GetTagList(Token, "/New/mydoc.docx");
     

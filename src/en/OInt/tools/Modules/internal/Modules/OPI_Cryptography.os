@@ -44,9 +44,9 @@
 // https://creativecommons.org/licenses/by/4.0/legalcode
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Function HMACSHA256(Val TheKey, Val Data) Export
+Function HMACSHA256(Val Key, Val Data) Export
     
-    Return HMAC(TheKey, Data, HashFunction.SHA256, 64);
+    Return HMAC(Key, Data, HashFunction.SHA256, 64);
     
 EndFunction
 
@@ -59,28 +59,28 @@ Function Hash(BinaryData, Type) Export
         
 EndFunction
 
-Function HMAC(Val TheKey, Val Data, Type, BlockSize) Export
+Function HMAC(Val Key, Val Data, Type, BlockSize) Export
     
     Twice = 2;
     
-    If TheKey.Size() > BlockSize Then
-        TheKey = Hash(TheKey, Type);
+    If Key.Size() > BlockSize Then
+        Key = Hash(Key, Type);
     EndIf;
     
-    If TheKey.Size() <= BlockSize Then
-        TheKey = GetHexStringFromBinaryData(TheKey);
-        TheKey = Left(TheKey + RepeatString("00", BlockSize), BlockSize * Twice);
+    If Key.Size() <= BlockSize Then
+        Key = GetHexStringFromBinaryData(Key);
+        Key = Left(Key + RepeatString("00", BlockSize), BlockSize * Twice);
     EndIf;
     
-    TheKey = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(TheKey));
+    Key = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
     
     Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
     Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
     
-    Ipad.WriteBitwiseExclusiveOr(0, TheKey);
+    Ipad.WriteBitwiseExclusiveOr(0, Key);
     Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
     
-    Opad.WriteBitwiseExclusiveOr(0, TheKey);
+    Opad.WriteBitwiseExclusiveOr(0, Key);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
     
     Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), Type)), Type);
@@ -97,11 +97,11 @@ Function UniteBinaryData(BinaryData1, BinaryData2) Export
     
 EndFunction
 
-Function RepeatString(String, Quantity) Export
+Function RepeatString(String, Count) Export
     
-    Parts = New Array(Quantity);
+    Parts = New Array(Count);
     
-    For K = 1 To Quantity Do
+    For K = 1 To Count Do
         Parts.Add(String);
     EndDo;
 
