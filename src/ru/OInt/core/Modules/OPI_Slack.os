@@ -1,6 +1,6 @@
-﻿// Расположение OS: ./OInt/core/Modules/OPI_Slack.os
-// Библиотека: Slack
-// Команда CLI: slack
+﻿// OneScript: ./OInt/core/Modules/OPI_Slack.os
+// Lib: Slack
+// CLI: slack
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:Typo-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 #Использовать "../../tools"

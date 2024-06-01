@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
-// Library: Google Drive
-// CLI Command: gdrive
+// Lib: Google Drive
+// CLI: gdrive
 
 // MIT License
 
@@ -656,8 +656,8 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
         // !OInt MB = KB * KB;
 		// !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
         
-        // !OInt PerformGarbageCollection();
-        // !OInt ReleaseObject(CurrentData);
+        // !OInt RunGarbageCollection();
+        // !OInt FreeObject(CurrentData);
         
     EndDo;
     

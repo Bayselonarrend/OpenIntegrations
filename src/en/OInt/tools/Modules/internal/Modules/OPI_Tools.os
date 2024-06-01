@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/tools/Modules/internal/Modules/OPI_Tools.os
+﻿// 
 
 // MIT License
 
@@ -33,6 +33,9 @@
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 #Region Internal
 
@@ -958,8 +961,8 @@ Procedure WriteBinaryData(DataWriter, Val BinaryData)
 
         DataWriter.Write(CurrentData);
         
-        ReleaseObject(CurrentData);
-        PerformGarbageCollection();
+        FreeObject(CurrentData);
+        RunGarbageCollection();
 
         CurrentPosition = CurrentPosition + CurrentSize;
         

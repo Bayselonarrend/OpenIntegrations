@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_Dropbox.os
-// Library: Dropbox
-// CLI Command: dropbox
+// Lib: Dropbox
+// CLI: dropbox
 
 // MIT License
 
@@ -868,8 +868,8 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
         // !OInt MB = KB * KB;
         // !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
         
-        // !OInt PerformGarbageCollection();
-        // !OInt ReleaseObject(CurrentData);
+        // !OInt RunGarbageCollection();
+        // !OInt FreeObject(CurrentData);
                
     EndDo;
     

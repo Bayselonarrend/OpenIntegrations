@@ -1,6 +1,6 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_Telegram.os
-// Library: Telegram
-// CLI command: telegram
+// Lib: Telegram
+// CLI: telegram
 
 // MIT License
 

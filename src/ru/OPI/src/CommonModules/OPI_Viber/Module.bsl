@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_Viber.os
-// Библиотека: Viber
-// Команда CLI: viber
+// Lib: Viber
+// CLI: viber
 
 // MIT License
 

@@ -1,6 +1,6 @@
 // OneScript: ./OInt/core/Modules/OPI_Airtable.os
-// Библиотека: Airtable
-// Команда CLI: airtable
+// Lib: Airtable
+// CLI: airtable
 
 // MIT License
 

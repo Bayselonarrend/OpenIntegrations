@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_YandexID.os
-// Library: Yandex ID
-// CLI Command: yandex
+﻿// OneScript: ./OInt/core/Modules/OPI_YandexID.os
+// Lib: Yandex ID
+// CLI: yandex
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"

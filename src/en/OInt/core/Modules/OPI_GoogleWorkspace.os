@@ -1,6 +1,6 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_GoogleWorkspace.os
-// Library: Google Workspace
-// CLI command: google
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
+// Lib: Google Workspace
+// CLI: google
 
 // MIT License
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 #Use "../../tools"

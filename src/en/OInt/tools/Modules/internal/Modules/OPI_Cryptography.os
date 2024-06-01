@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/tools/Modules/internal/Modules/OPI_Cryptography.os
+﻿// 
 
 // MIT License
 
@@ -27,6 +27,10 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnusedLocalVariable-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 #Region Internal
 
@@ -79,17 +83,17 @@ Function HMAC(Val TheKey, Val Data, Type, BlockSize) Export
     Opad.WriteBitwiseExclusiveOr(0, TheKey);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
     
-    Return Hash(ConcatenateBinaryData(okeypad, Hash(ConcatenateBinaryData(ikeypad, Data), Type)), Type);
+    Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), Type)), Type);
     
 EndFunction
 
-Function ConcatenateBinaryData(BinaryData1, BinaryData2) Export
+Function UniteBinaryData(BinaryData1, BinaryData2) Export
     
     BinaryDataArray = New Array;
     BinaryDataArray.Add(BinaryData1);
     BinaryDataArray.Add(BinaryData2);
     
-    Return ConcatBinaryData(BinaryDataArray);
+    Return ConcatenateBinaryData(BinaryDataArray);
     
 EndFunction
 
