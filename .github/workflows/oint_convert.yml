@@ -40,7 +40,9 @@ jobs:
 
       - name: Обновить Workflow тестирования OInt
         run: oscript ./.github/workflows/os/oint_testmaker.os
-
+        
+      - name: Обновить Workflow тестирования OInt (EN)
+        run: oscript ./.github/workflows/os/oint_testmaker_en.os
 
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
