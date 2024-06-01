@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Airtable.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Airtable.os
 // Library: Airtable
 // CLI Command: airtable
 
@@ -28,10 +28,14 @@
 
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region DatabaseWork
 
@@ -42,7 +46,7 @@
 // Token - String - Token - token
 // Indent - String - Next page identifier of the base list from the previous request - offset
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable 
 Function GetListOfBases(Val Token, Val Indent = "") Export
     
@@ -67,7 +71,7 @@ EndFunction
 // Token - String - Token - token
 // Base - String - Base identifier - base
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function GetDatabaseTables(Val Token, Val Base) Export
     
@@ -91,14 +95,14 @@ EndFunction
 // Name - String - New base name - title
 // TableCollection - Key-Value Pair - Table description: Key > name, Value > array of fields - tablesdata
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export
     
     OPI_TypeConversion.GetCollection(TableCollection);
     
-    If Not TypeValue(TableCollection) = Type("Structure")
-        And Not TypeValue(TableCollection) = Type("Match") Then
+    If Not TypeOf(TableCollection) = Type("Structure")
+        And Not TypeOf(TableCollection) = Type("Map") Then
         
         Raise "Error in table collection data";
         
@@ -110,7 +114,7 @@ Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection)
     
     For Each Table In TableCollection Do
         
-        Description = GenerateTableDescription(Table.Key, Table.Value);
+        Description = GenerateTableDescription(Table.TheKey, Table.Value);
         TableArray.Add(Description);
         
     EndDo;
@@ -137,10 +141,10 @@ EndFunction
 // Token - String - Token - token
 // Base - String - Base identifier - base
 // Name - String - New table name - title
-// FieldArray - Array of Structures - Array of field descriptions - fieldsdata
+// FieldArray - Array of Structure - Array of field descriptions - fieldsdata
 // Description - String - Table description - description
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export
     
@@ -166,7 +170,7 @@ EndFunction
 // Name - String - New name - title
 // Description - String - New description - description
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export
     
@@ -199,7 +203,7 @@ EndFunction
 // Table - String - Table identifier - table
 // FieldStructure - Structure of Key-Value - Description of the new field - fielddata
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export
     
@@ -207,8 +211,8 @@ Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export
     OPI_TypeConversion.GetLine(Table);
     OPI_TypeConversion.GetCollection(FieldStructure);
     
-    If Not TypeValue(FieldStructure) = Type("Structure")
-        And Not TypeValue(FieldStructure) = Type("Match") Then
+    If Not TypeOf(FieldStructure) = Type("Structure")
+        And Not TypeOf(FieldStructure) = Type("Map") Then
         
         Raise "Error in field description data";
         
@@ -234,7 +238,7 @@ EndFunction
 // Name - String - New name - title
 // Description - String - New description - description
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", Val Description = "") Export
     
@@ -261,26 +265,26 @@ Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", V
 
 EndFunction
 
-// Get поле (withтроtoоinое)
+// Get field (string)
 // Gets the description of a string field
 // 
 // Parameters:
 // Name - String - New field name - title
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetStringField(Val Name) Export
     Return PrimitiveFieldDescription(Name, "richText");
 EndFunction
 
-// Get поле (чиwithлоinое)
+// Get field (numeric)
 // Gets the description of a numeric field
 // 
 // Parameters:
 // Name - String - New field name - title
 // Precision - Number, String - Number of decimal places - precision
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetNumberField(Val Name, Val Precision = 0) Export
     
@@ -291,25 +295,25 @@ Function GetNumberField(Val Name, Val Precision = 0) Export
     
 EndFunction
 
-// Get поле (file)
+// Get field (file)
 // Gets the description of a file field
 // 
 // Parameters:
 // Name - String - Field name - title
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetAttachmentField(Val Name) Export
     Return PrimitiveFieldDescription(Name, "multipleAttachments");
 EndFunction
 
-// Get поле (флажоto)
+// Get field (checkbox)
 // Gets the description of a boolean field
 // 
 // Parameters:
 // Name - String - Field name - title
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetCheckboxField(Val Name) Export
     
@@ -318,13 +322,13 @@ Function GetCheckboxField(Val Name) Export
     
 EndFunction
 
-// Get поле (dата)
+// Get field (date)
 // Gets the description of a date field
 // 
 // Parameters:
 // Name - String - Field name - title
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetDateField(Val Name) Export
     
@@ -335,37 +339,37 @@ Function GetDateField(Val Name) Export
     
 EndFunction
 
-// Get поле (email)
+// Get field (email)
 // Gets the description of an email field
 // 
 // Parameters:
 // Name - String - Field name - title
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetEmailField(Val Name) Export
     Return PrimitiveFieldDescription(Name, "email");
 EndFunction
 
-// Get поле (телефон)
+// Get field (phone)
 // Gets the description of a phone number field
 // 
 // Parameters:
 // Name - String - Field name - title
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetPhoneField(Val Name) Export
     Return PrimitiveFieldDescription(Name, "phoneNumber");
 EndFunction
 
-// Get поле (url)
+// Get field (url)
 // Gets the description of a URL field
 // 
 // Parameters:
 // Name - String - Field name - title
 // 
-// Return value:
+// Returns:
 // Structure - Field description
 Function GetLinkField(Val Name) Export
     Return PrimitiveFieldDescription(Name, "url");
@@ -384,7 +388,7 @@ EndFunction
 // Table - String - Table identifier - table
 // Indent - String - Next page identifier of data from the previous request - offset
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export
 
@@ -412,7 +416,7 @@ EndFunction
 // Table - String - Table identifier - table
 // Record - String - Record identifier in the table - record
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export
    
@@ -436,9 +440,9 @@ EndFunction
 // Token - String - Token - token
 // Base - String - Database identifier - base
 // Table - String - Table identifier - table
-// Data - Structure, Array of Structures - Set or array of sets of Key : Value pairs > Field : Indicator - data
+// Data - Structure, Array of Structure - Set or array of sets of Key : Value pairs > Field : Indicator - data
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export
 
@@ -465,9 +469,9 @@ EndFunction
 // Token - String - Token - token
 // Base - String - Database identifier - base
 // Table - String - Table identifier - table
-// Records - String, Array of Strings - Identifier or array of record identifiers - records
+// Records - String, Array of String - Identifier or array of record identifiers - records
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export
     
@@ -507,7 +511,7 @@ EndFunction
 // Record - String - Record identifier in the table - record
 // Indent - String - Next page identifier of data from the previous request - offset
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export
     
@@ -537,7 +541,7 @@ EndFunction
 // Record - String - Record identifier in the table - record
 // Text - String - Comment text - text
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export
     
@@ -568,7 +572,7 @@ EndFunction
 // Comment - String - Comment identifier - comment
 // Text - String - New comment text - text
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable
 Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export
     
@@ -599,7 +603,7 @@ EndFunction
 // Record - String - Record identifier in the table - record
 // Comment - String - Comment identifier - comment
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Airtable 
 Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export
 
@@ -621,13 +625,13 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function GetAuthorizationHeader(Val Token)
     
     OPI_TypeConversion.GetLine(Token);
     
-    Headers = New Match;
+    Headers = New Map;
     Headers.Insert("Authorization", "Bearer " + Token);
     
     Return Headers;
@@ -660,7 +664,7 @@ EndFunction
 
 Procedure AddDataDescription(Val Data, Parameters)
     
-    If TypeValue(Data) = Type("Array") Then
+    If TypeOf(Data) = Type("Array") Then
         
         SendArray = New Array;
         

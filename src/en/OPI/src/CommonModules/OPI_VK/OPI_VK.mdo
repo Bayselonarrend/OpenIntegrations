@@ -3,7 +3,7 @@
   <name>OPI_VK</name>
   <synonym>
     <key>ru</key>
-    <value>Methodы интеграции with VK (OPI)</value>
+    <value>VK integration methods (OPI)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

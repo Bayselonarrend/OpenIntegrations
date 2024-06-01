@@ -1,4 +1,4 @@
-﻿// OS Location: ./OInt/core/Modules/OPI_YandexDisk.os
+﻿// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
 // Library: Yandex Disk
 // CLI command: yadisk
 
@@ -32,11 +32,14 @@
 // BSLLS:UsingServiceTag-off
 
 //@skip-check method-too-many-params
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 // #Use "../../tools" 
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region FileAndFolderManagement
 
@@ -46,7 +49,7 @@
 // Parameters:
 // Token - String - Token - token
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetDiskInformation(Val Token) Export
     
@@ -66,7 +69,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path to the created folder - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function CreateFolder(Val Token, Val Path) Export
     
@@ -102,7 +105,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path to folder or file - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetObject(Val Token, Val Path) Export
     
@@ -127,7 +130,7 @@ EndFunction
 // Path - String - Path to the folder or file to be deleted - path
 // ToCart - Boolean - To cart - can
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
     
@@ -156,7 +159,7 @@ EndFunction
 // Path - String - Destination path for the copy - to
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
     
@@ -196,7 +199,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path to the file for downloading - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetDownloadLink(Val Token, Val Path) Export
 
@@ -222,7 +225,7 @@ EndFunction
 // Path - String - Path to the file for downloading - path
 // SavePath - String - File save path - out 
 // 
-// Return value:
+// Returns:
 // BinaryData,String - Binary data or file path when SavePath parameter is specified
 Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
 	
@@ -242,7 +245,7 @@ EndFunction
 
 // Get list of files
 // Gets a list of files with or without filtering by type
-// List available typeоin: audio, backup, book, compressed, data, development, 
+// List of available types: audio, backup, book, compressed, data, development, 
 // diskimage, document, encoded, executable, flash, font, 
 // mage, settings, spreadsheet, text, unknown, video, web
 //                                  
@@ -253,7 +256,7 @@ EndFunction
 // FilterByType - String - Filter by file type - type
 // SortByDate - Boolean - True > sort by date, False > alphabetically - datesort
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetFilesList(Val Token
     , Val Quantity = 0
@@ -304,7 +307,7 @@ EndFunction
 // Path - String - Destination path for moving - to
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
 
@@ -345,7 +348,7 @@ EndFunction
 // File - String, BinaryData - File for upload - file
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex 
 Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
     
@@ -383,7 +386,7 @@ EndFunction
 // Path - String - Path to place the downloaded file - path
 // Address - String - File URL - url
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     
@@ -416,7 +419,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path to the object to be published - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex 
 Function PublishObject(Val Token, Val Path) Export
     Return TogglePublicAccess(Token, Path, True);   
@@ -429,13 +432,13 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path to the previously published object - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function CancelObjectPublication(Val Token, Val Path) Export
     Return TogglePublicAccess(Token, Path, False);
 EndFunction
 
-// Get published list объеtoтоin.
+// Get list of published objects.
 // Gets a list of published objects
 // 
 // Parameters:
@@ -443,7 +446,7 @@ EndFunction
 // Quantity - Number - Number of returned objects - amount
 // OffsetFromStart - Number - Offset for getting objects not from the beginning of the list - offset
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetPublishedObjectsList(Val Token, Val Quantity = 0, Val OffsetFromStart = 0) Export
     
@@ -475,10 +478,10 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // URL - String - Object address - url 
-// Quantity - Number - Quantity inозinращаемых inложенных объеtoтоin (for directory) - amount
+// Quantity - Number - Number of returned nested objects (for catalog) - amount
 // OffsetFromStart - Number - Offset for getting nested objects not from the beginning of the list - offset
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetPublicObject(Val Token, Val URL, Val Quantity = 0, Val OffsetFromStart = 0) Export
     
@@ -515,7 +518,7 @@ EndFunction
 // URL - String - Object address - url
 // Path - String - Path inside the object - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
     
@@ -545,17 +548,17 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // URL - String - Object address - url
-// From - String - Path inнутри публичного directory (тольtoо for папоto) - from
-// To - String - File save path - to
+// From - String - Path within public catalog (folders only) - from
+// Target - String - File save path - to
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
-Function SavePublicObjectToDisk(Val Token, Val URL, From = "", To = "") Export
+Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export
     
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(URL);
     OPI_TypeConversion.GetLine(From);
-    OPI_TypeConversion.GetLine(To);
+    OPI_TypeConversion.GetLine(Target);
     
     Headers = AuthorizationHeader(Token);
     Address = "https://cloud-api.yandex.net/v1/disk/public/resources/save-to-disk";
@@ -568,8 +571,8 @@ Function SavePublicObjectToDisk(Val Token, Val URL, From = "", To = "") Export
         Parameters.Insert("path", From);
     EndIf;
     
-    If ValueIsFilled(To) Then
-        Parameters.Insert("save_path", To);
+    If ValueIsFilled(Target) Then
+        Parameters.Insert("save_path", Target);
     EndIf;
     
     Parameters = OPI_Tools.RequestParametersToString(Parameters); 
@@ -591,11 +594,11 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function AuthorizationHeader(Val Token)
     
-    Headers = New Match;
+    Headers = New Map;
     Headers.Insert("Authorization", "OAuth " + Token);
     
     Return Headers;

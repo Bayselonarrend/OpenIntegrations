@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Twitter.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Twitter.os
 // Library: Twitter
 // CLI Command: twitter
 
@@ -25,7 +25,7 @@
 // SOFTWARE.
 
 // https://github.com/Bayselonarrend/OpenIntegrations
-// If in не зtoете with чего toчать, то withтоит toйти method GetStandardParameters()
+// If you don't know where to start, you should find the method GetStandardParameters()
 // and read comments
 
 // BSLLS:Typo-off
@@ -35,11 +35,14 @@
 // BSLLS:UsingServiceTag-off
 
 //@skip-check method-too-many-params
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region DataAndSettings
 
@@ -49,7 +52,7 @@
 // Parameters:
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // String - URL for browser transition
 Function GetAuthorizationLink(Parameters = "") Export
     
@@ -79,7 +82,7 @@ EndFunction
 // Code - String - Code obtained from authorization See GetAuthorizationLink - code
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
 Function GetToken(Val Code, Val Parameters = "") Export
 
@@ -107,7 +110,7 @@ EndFunction
 // Parameters:
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
 Function RefreshToken(Val Parameters = "") Export
     
@@ -134,7 +137,7 @@ EndFunction
 // Parameters:
 // Request - HTTPServiceRequest - Request coming to the http service
 // 
-// Return value:
+// Returns:
 // HTTPResponse, Arbitrary, BinaryData - Result of reading the JSON response from the server
 Function HandleIncomingRequestAfterAuthorization(Request) Export
     
@@ -143,8 +146,8 @@ Function HandleIncomingRequestAfterAuthorization(Request) Export
     
     // BSLLS:CommentedCode-off
     // Preferred token storage
-    // Constants.TwitterRefresh.Уwithтаноinить(TokenResponse["refresh_token"]);
-    // Constants.TwitterToken.Уwithтаноinить(TokenResponse["access_token"]);
+    // Constants.TwitterRefresh.Set(ResponseToken["refresh_token"]);
+    // Constants.TwitterToken.Set(ResponseToken["access_token"]);
     // BSLLS:CommentedCode-on
     
     Return TokenResponse;
@@ -160,12 +163,12 @@ EndFunction
 // 
 // Parameters:
 // Text - String - Tweet text
-// MediaArray - Array from String, BinaryData - Array of binary data or file paths
-// PollOptionsArray - Array of Strings - Array of poll options, if necessary
-// PollDuration - String, Number - Poll duration, еwithли необхоdимо (опроwith without dлительноwithти не withозdаетwithя)
+// MediaArray - Array of String, BinaryData - Array of binary data or file paths
+// PollOptionsArray - Array of String - Array of poll options, if necessary
+// PollDuration - String, Number - Poll duration if necessary (poll without duration is not created)
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
 Function CreateCustomTweet(Val Text = ""
     , Val MediaArray = ""
@@ -187,13 +190,13 @@ Function CreateCustomTweet(Val Text = ""
     Parameters_ = GetStandardParameters(Parameters);
     URL = "https://api.twitter.com/2/tweets";
     Array = "Array";    
-    Fields = New Match;
+    Fields = New Map;
     
     If ValueIsFilled(Text) Then
         Fields.Insert("text", Text);
     EndIf;
     
-    If TypeValue(PollOptionsArray) = Type(Array) And ValueIsFilled(PollDuration) Then
+    If TypeOf(PollOptionsArray) = Type(Array) And ValueIsFilled(PollDuration) Then
         
         PollDuration = Number(PollDuration);
         
@@ -206,7 +209,7 @@ Function CreateCustomTweet(Val Text = ""
         
     EndIf;
     
-    If TypeValue(MediaArray) = Type(Array) Then
+    If TypeOf(MediaArray) = Type(Array) Then
         If MediaArray.Quantity() > 0 Then
             Fields.Insert("media", New Structure("media_ids", MediaArray));
         EndIf;
@@ -226,7 +229,7 @@ EndFunction
 // Text - String - Tweet text - text
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
 Function CreateTextTweet(Val Text, Val Parameters = "") Export
     Return CreateCustomTweet(Text, , , , Parameters);    
@@ -237,14 +240,14 @@ EndFunction
 // 
 // Parameters:
 // Text - String - Tweet text - text
-// ImageArray - Array from String, BinaryData - Image files array - pictures
+// ImageArray - Array of String, BinaryData - Image files array - pictures
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
-Function Create image tweet(Val Text, Val ImageArray, Val Parameters = "") Export
+Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
     
-    MediaArray = Upload attachments array(ImageArray, "tweet_image", Parameters);
+    MediaArray = UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);    
     
 EndFunction
@@ -254,14 +257,14 @@ EndFunction
 // 
 // Parameters:
 // Text - String - Tweet text - text
-// Gif array - Array from String, BinaryData - Gif files array - gifs
+// GifsArray - Array of String, BinaryData - Gif files array - gifs
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
-Function CreateGifTweet(Val Text, Val Gif array, Val Parameters = "") Export
+Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
     
-    MediaArray = Upload attachments array(Gif array, "tweet_gif", Parameters);
+    MediaArray = UploadAttachmentsArray(GifsArray, "tweet_gif", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);    
     
 EndFunction
@@ -271,14 +274,14 @@ EndFunction
 // 
 // Parameters:
 // Text - String - Tweet text - text
-// Video array - Array from String, BinaryData - Video files array - videos
+// VideosArray - Array of String, BinaryData - Video files array - videos
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
-Function CreateVideoTweet(Val Text, Val Video array, Val Parameters = "") Export
+Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
     
-    MediaArray = Upload attachments array(Video array, "tweet_video", Parameters);
+    MediaArray = UploadAttachmentsArray(VideosArray, "tweet_video", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
     
 EndFunction
@@ -288,11 +291,11 @@ EndFunction
 // 
 // Parameters:
 // Text - String - Tweet text - text
-// OptionArray - Array of Strings - Poll options array - options
+// OptionArray - Array of String - Poll options array - options
 // Duration - String, Number - Poll duration - duration
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Twitter
 Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export
     Return CreateCustomTweet(Text, , OptionArray, Duration, Parameters);    
@@ -302,13 +305,13 @@ EndFunction
 // Uploads files to the server and returns their IDs
 // 
 // Parameters:
-// ArrayOfFiles - Array from String, BinaryData - Files array
+// ArrayOfFiles - Array of String, BinaryData - Files array
 // AttachmentsType - String - Attachments type
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Array Of String - Media ID array
-Function Upload attachments array(Val ArrayOfFiles, Val AttachmentsType, Val Parameters = "") Export
+Function UploadAttachmentsArray(Val ArrayOfFiles, Val AttachmentsType, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(AttachmentsType);
     OPI_TypeConversion.GetCollection(ArrayOfFiles);
@@ -344,7 +347,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function UploadMediaFile(Val File, Val Type, Val Parameters) 
    
@@ -382,7 +385,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     Command = "command";
     Size = File.Size();
     
-    MIMETypeMapping = New Match;
+    MIMETypeMapping = New Map;
     MIMETypeMapping.Insert("tweet_image", "image/jpeg");
     MIMETypeMapping.Insert("tweet_video", "video/mp4");
     MIMETypeMapping.Insert("tweet_gif" , "image/gif");
@@ -430,7 +433,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     
     ProcessingStatus = GetProcessingStatus(Parameters, Fields, URL);
     
-    If Not TypeValue(ProcessingStatus) = Type("String") Then
+    If Not TypeOf(ProcessingStatus) = Type("String") Then
         Return ProcessingStatus;
     EndIf;
             
@@ -477,21 +480,21 @@ EndFunction
 
 Function GetStandardParameters(Val Parameters = "")
     
-    // Зdеwithь withобрано опреdеление data, необхоdимых for work.
-    // For Twitter this dоinольно зtoчительный toбор, which is due to the presence of two at once API,
-    // toоторые, при thisм, withозdаны не for разныз заdач, но проwithто яinляютwithя inерwithиями dруг dруга.
-    // Аtoтуальной inерwithией API яinляетwithя v2 и оto требует получения inременных тоtoеноin. Notwithмотря to то,
+    // Here is the definition of the data needed for work.
+    // For Twitter, this is quite a significant set, which is due to the presence of 2 APIs at once,
+    // which, at the same time, are not created for different tasks, but are simply versions of each other.
+    // The current version of the API is v2 and it requires obtaining temporary tokens. Despite the fact,
     // that Twitter insists on using this latest version, they somehow managed not to transfer
     // file upload mechanism and some others from the old version - v1.1. Therefore, something needs to be done 
-    // to inерwithии 1.1, and something on 2: up to the point that they removed the ability to post tweets from v1.1,
+    // on version 1.1, and something on 2: up to the point that they removed the ability to post tweets from v1.1,
     // but only through it you can add a picture to the tweet. At the same time, their authentication methods and tokens are different
     
-    // Мироinая гигоtoорпорация Andлоto Маwithtoа, towithтати, toпомиtoю ;)
+    // The world gigacorporation of Elon Musk, by the way, a reminder ;)
     
-    // P.S Далее чаwithто упомиtoетwithя "withтраница towithтроеto Twitter Developer" - this 
+    // P.S The "Twitter Developer settings page" is often mentioned further" - this 
     // https://developer.twitter.com/en/portal/dashboard и inыбор toонtoретного проеtoта from withпиwithtoа (зtoчеto c toлючем)
     
-    Parameters_ = New Match; 
+    Parameters_ = New Map; 
     Permissions = "tweet.read tweet.write tweet.moderate.write users.read "
         + "follows.read follows.write offline.access space.read mute.read "
         + "mute.write like.read like.write list.read list.write block.read "
@@ -503,11 +506,11 @@ Function GetStandardParameters(Val Parameters = "")
     // scope - a set of permissions for the received key. Can be any, but offline.access is mandatory
     // client_id - From OAuth 2.0 Client ID and Client Secret settings page of Twitter Developer
     // client_secret - From OAuth 2.0 Client ID and Client Secret settings page of Twitter Developer
-    // access_token - GetAuthorizationLink() -> Браузер -> code приdет to redirect_uri -> GetToken(code)
-    // refresh_token - Comes together with access_token and is used to refresh it (access_token lifetime - 2 ч)
-    // Обноinление проиwithхоdит methodом RefreshToken with ноinыми access_token и refresh_token. 
+    // access_token - GetAuthorizationLink() -> Browser -> code will come to redirect_uri -> GetToken(code)
+    // refresh_token - Comes together with access_token and is used to refresh it (access_token lifetime - 2 hr)
+    // The update is done using the UpdateToken method with new access_token and refresh_token. 
     // For the next update, you need to use a new refresh_token, so hardcode 
-    // не получитwithя (access_token тоже не получитwithя) 
+    // won't work (access_token won't work either) 
     
     // |--> RefreshToken() ->|access_token --> Andwithпользуетwithя in т-нии 2-х чаwithоin for запроwithоin
     // | |refresh_token --|
@@ -535,9 +538,9 @@ Function GetStandardParameters(Val Parameters = "")
     
     OPI_TypeConversion.GetCollection(Parameters);
     
-    If TypeValue(Parameters) = Type("Structure") Or TypeValue(Parameters) = Type("Match") Then
+    If TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Then
         For Each PassedParameter In Parameters Do
-            Parameters_.Insert(PassedParameter.Key, OPI_Tools.NumberToString(PassedParameter.Value));
+            Parameters_.Insert(PassedParameter.TheKey, OPI_Tools.NumberToString(PassedParameter.Value));
         EndDo;
     EndIf;
 
@@ -558,62 +561,62 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
     CurrentUNIXDate = OPI_Tools.UNIXTime(CurrentDate);
     CurrentUNIXDate = OPI_Tools.NumberToString(CurrentUNIXDate);
     ParametersTable = New ValueTable;
-    ParametersTable.Columns.Add("Key");
+    ParametersTable.Columns.Add("TheKey");
     ParametersTable.Columns.Add("Value");
         
     For Each Field In Fields Do 
         
         NewLine = ParametersTable.Add();    
-        NewLine.Key = Field.Key;
+        NewLine.TheKey = Field.TheKey;
         NewLine.Value = Field.Value;
         
     EndDo;
     
     NewLine = ParametersTable.Add();
-    NewLine.Key = OCK;
+    NewLine.TheKey = OCK;
     NewLine.Value = Parameters[OCK];
     
     NewLine = ParametersTable.Add();
-    NewLine.Key = OTK;
+    NewLine.TheKey = OTK;
     NewLine.Value = Parameters[OTK];
     
     NewLine = ParametersTable.Add();
-    NewLine.Key = "oauth_version";
+    NewLine.TheKey = "oauth_version";
     NewLine.Value = APIVersion;
     
     NewLine = ParametersTable.Add();
-    NewLine.Key = "oauth_signature_method";
+    NewLine.TheKey = "oauth_signature_method";
     NewLine.Value = HashingMethod;
 
     NewLine = ParametersTable.Add();
-    NewLine.Key = "oauth_timestamp";
+    NewLine.TheKey = "oauth_timestamp";
     NewLine.Value = CurrentUNIXDate;
 
     NewLine = ParametersTable.Add();
-    NewLine.Key = "oauth_nonce";
+    NewLine.TheKey = "oauth_nonce";
     NewLine.Value = CurrentUNIXDate;
 
     For Each TableRow In ParametersTable Do
         
-        TableRow.Key = EncodeString(TableRow.Key, StringEncodingMethod.URLencoding);
+        TableRow.TheKey = EncodeString(TableRow.TheKey, StringEncodingMethod.URLencoding);
         TableRow.Value = EncodeString(TableRow.Value, StringEncodingMethod.URLencoding);
         
     EndDo;
     
-    ParametersTable.Sort("Key");
+    ParametersTable.Sort("TheKey");
     
     For Each TableRow In ParametersTable Do
         
         SignatureString = SignatureString 
-            + TableRow.Key 
+            + TableRow.TheKey 
             + "="
             + TableRow.Value
             + "&";
             
     EndDo;
     
-    SignatureString = Left(SignatureString, StrLength(SignatureString) - 1);
-    SignatureString = inReg(RequestType) 
+    SignatureString = Left(SignatureString, StrLen(SignatureString) - 1);
+    SignatureString = Upper(RequestType) 
         + "&" 
         + EncodeString(URL, StringEncodingMethod.URLencoding)
         + "&"
@@ -641,7 +644,7 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
         + "oauth_version=""" + APIVersion + Delimiter
         + "oauth_signature=""" + Signature;
         
-        HeaderMapping = New Match;
+        HeaderMapping = New Map;
         HeaderMapping.Insert("authorization", AuthorizationHeader);
         
     Return HeaderMapping;
@@ -650,7 +653,7 @@ EndFunction
 
 Function CreateAuthorizationHeaderV2(Val Parameters)
     
-    ReturnMapping = New Match;
+    ReturnMapping = New Map;
     ReturnMapping.Insert("Authorization", "Bearer " + Parameters["access_token"]);
     
     Return ReturnMapping;

@@ -3,7 +3,7 @@
   <name>OPI_Cryptography</name>
   <synonym>
     <key>ru</key>
-    <value>Toриптография (OPI)</value>
+    <value>Cryptography (OPI)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -3,7 +3,7 @@
   <name>OPI_Viber</name>
   <synonym>
     <key>ru</key>
-    <value>Methodы интеграции with Viber (OPI)</value>
+    <value>Viber integration methods (OPI)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -3,7 +3,7 @@
   <name>OPI_TypeConversion</name>
   <synonym>
     <key>ru</key>
-    <value>Преобразоinание typeоin (OPI)</value>
+    <value>Type conversion (OPI)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/core/Modules/OPI_VK.os
+// OneScript: ./OInt/core/Modules/OPI_VK.os
 // Библиотека: VK
 // Команда CLI: vk
 
@@ -36,6 +36,9 @@
 // BSLLS:UnusedLocalVariable-off
 
 //@skip-check method-too-many-params
+//@skip-check wrong-string-literal-content
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript

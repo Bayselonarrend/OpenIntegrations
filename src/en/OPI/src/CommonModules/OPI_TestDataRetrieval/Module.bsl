@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/tools/Modules/OPI_TestDataRetrieval.os
+﻿// 
 
 // MIT License
 
@@ -34,12 +34,16 @@
 // BSLLS:DuplicateStringLiteral-off
 
 //@skip-check use-non-recommended-method
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 // #Use "./internal"
 // #Use asserts
 
-#Region ServiceProgramInterface
+#Region Internal
 
 Function GetTestingSectionMapping() Export
     
@@ -68,7 +72,7 @@ EndFunction
 Function GetTestTable() Export
     
     Telegram = "Telegram";
-    VK = "VK";
+    VKontakte = "VK";
     YDisk = "YandexDisk";
     Calendar = "GoogleCalendar";
     Twitter = "Twitter";
@@ -86,49 +90,49 @@ Function GetTestTable() Export
     TestTable.Columns.Add("Synonym");
     TestTable.Columns.Add("Section");
                                               
-    NewTest(TestTable, "Telegram_GetBotInfo" , "Get bot information" , Telegram);     
-    NewTest(TestTable, "Telegram_GetUpdates" , "Get updates" , Telegram);
-    NewTest(TestTable, "Telegram_SetWebhook" , "Set Webhook" , Telegram);
-    NewTest(TestTable, "Telegram_SendTextMessage" , "Send text message" , Telegram);
-    NewTest(TestTable, "Telegram_SendImage" , "Send image" , Telegram);
-    NewTest(TestTable, "Telegram_SendVideo" , "Send video" , Telegram);
-    NewTest(TestTable, "Telegram_SendAudio" , "Send audio" , Telegram);
-    NewTest(TestTable, "Telegram_SendDocument" , "Send document" , Telegram);
-    NewTest(TestTable, "Telegram_SendGIF" , "Send GIF" , Telegram);
-    NewTest(TestTable, "Telegram_SendMediaGroup" , "Send media group" , Telegram);
-    NewTest(TestTable, "Telegram_SendLocation" , "Send location" , Telegram);
-    NewTest(TestTable, "Telegram_SendContact" , "Send contact" , Telegram);
-    NewTest(TestTable, "Telegram_SendPoll" , "Send poll" , Telegram);
-    NewTest(TestTable, "Telegram_ForwardMessage" , "Forward message" , Telegram);
-    NewTest(TestTable, "Telegram_BanUnban" , "Ban/Unban" , Telegram);
-    NewTest(TestTable, "Telegram_CreateInvitationLink" , "Create invitation link" , Telegram);
-    NewTest(TestTable, "Telegram_PinUnpinMessage" , "Pin/Unpin message" , Telegram);
-    NewTest(TestTable, "Telegram_GetMemberCount" , "Get participant count" , Telegram);
-    NewTest(TestTable, "Telegram_GetForumAvatarsList", "Get forum avatars list", Telegram);
-    NewTest(TestTable, "Telegram_CreateDeleteForumTopic" , "Create/Delete forum topic" , Telegram);
-    NewTest(TestTable, "Telegram_ChangeMainTopicName" , "Change main topic name" , Telegram);
-    NewTest(TestTable, "Telegram_HideShowMainTopic" , "Hide/Show main topic" , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetBotInfo" , "Get bot information" , Telegram);     
+    NewTest(TestTable, "TelegramAPI_GetUpdates" , "Get updates" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SetWebhook" , "Set Webhook" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendTextMessage" , "Send text message" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendImage" , "Send image" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendVideo" , "Send video" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendAudio" , "Send audio" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendDocument" , "Send document" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendGIF" , "Send GIF" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendMediaGroup" , "Send mediagroup" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendLocation" , "Send location" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendContact" , "Send contact" , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendPoll" , "Send poll" , Telegram);
+    NewTest(TestTable, "TelegramAPI_ForwardMessage" , "Forward message" , Telegram);
+    NewTest(TestTable, "TelegramAPI_BanUnban" , "Ban/Unban" , Telegram);
+    NewTest(TestTable, "TelegramAPI_CreateInvitationLink" , "Create invitation link" , Telegram);
+    NewTest(TestTable, "TelegramAPI_PinUnpinMessage" , "Pin/Unpin message" , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetMemberCount" , "Get participant count" , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetForumAvatarsList", "Get forum avatars list", Telegram);
+    NewTest(TestTable, "TelegramAPI_CreateDeleteForumTopic" , "Create/Delete forum topic" , Telegram);
+    NewTest(TestTable, "TelegramAPI_ChangeMainTopicName" , "Change main topic name" , Telegram);
+    NewTest(TestTable, "TelegramAPI_HideShowMainTopic" , "Hide/Show main topic" , Telegram);
     
-    NewTest(TestTable, "VK_CreateTokenLink" , "Create token retrieval link", VK);
-    NewTest(TestTable, "VK_CreateDeletePost" , "Create/Delete post" , VK);
-    NewTest(TestTable, "VK_CreateCompositePost" , "Create/Delete composite post" , VK);
-    NewTest(TestTable, "VK_CreatePoll" , "Create poll" , VK);
-    NewTest(TestTable, "VK_SaveDeleteImage" , "Add/Delete image" , VK);
-    NewTest(TestTable, "VK_CreateStory" , "Create story" , VK);
-    NewTest(TestTable, "VK_DiscussionMethods" , "Actions with discussions" , VK);
-    NewTest(TestTable, "VK_LikeRepostComment" , "Like/Repost/Comment" , VK);
-    NewTest(TestTable, "VK_GetStatistics" , "Get statistics" , VK);
-    NewTest(TestTable, "VK_GetPostStatistics" , "Get post statistics" , VK);
-    NewTest(TestTable, "VK_CreateAdCampaign" , "Create advertising campaign" , VK);
-    NewTest(TestTable, "VK_SendMessage" , "Send message" , VK);
-    NewTest(TestTable, "VK_GetProductCategories" , "Get product categories" , VK);
-    NewTest(TestTable, "VK_CreateProductSelection" , "Create product and selection" , VK);
-    NewTest(TestTable, "VK_CreateProductWithProperties" , "Create product with properties" , VK);
-    NewTest(TestTable, "VK_GetProductList" , "Get product list" , VK);
-    NewTest(TestTable, "VK_GetSelectionList" , "Get selection list" , VK);
-    NewTest(TestTable, "VK_GetPropertyList" , "Get property list" , VK);
-    NewTest(TestTable, "VK_GetOrderList" , "Get order list" , VK);
-    NewTest(TestTable, "VK_UploadVideo" , "Upload video" , VK);
+    NewTest(TestTable, "VKAPI_CreateTokenLink" , "Create token retrieval link", VKontakte);
+    NewTest(TestTable, "VKAPI_CreateDeletePost" , "Create/Delete post" , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateCompositePost" , "Create/Delete composite post" , VKontakte);
+    NewTest(TestTable, "VKAPI_CreatePoll" , "Create poll" , VKontakte);
+    NewTest(TestTable, "VKAPI_SaveDeleteImage" , "Add/Delete image" , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateStory" , "Create story" , VKontakte);
+    NewTest(TestTable, "VKAPI_DiscussionMethods" , "Actions with discussions" , VKontakte);
+    NewTest(TestTable, "VKAPI_LikeRepostComment" , "Like/Repost/Comment" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetStatistics" , "Get statistics" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPostStatistics" , "Get post statistics" , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateAdCampaign" , "Create advertising campaign" , VKontakte);
+    NewTest(TestTable, "VKAPI_SendMessage" , "Send message" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductCategories" , "Get product categories" , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductSelection" , "Create product and selection" , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductWithProperties" , "Create product with properties" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductList" , "Get product list" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetSelectionList" , "Get selection list" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPropertyList" , "Get property list" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetOrderList" , "Get order list" , VKontakte);
+    NewTest(TestTable, "VKAPI_UploadVideo" , "Upload video" , VKontakte);
     
     NewTest(TestTable, "YDisk_GetDiskInfo" , "Get disk information" , YDisk);
     NewTest(TestTable, "YDisk_CreateFolder" , "Create folder" , YDisk);
@@ -206,13 +210,13 @@ Function GetTestTable() Export
     NewTest(TestTable, "AT_CreateField" , "Create/Edit field" , AirT);
     NewTest(TestTable, "AT_CreateDeleteRecords" , "Create/Delete records" , AirT);
     
-    NewTest(TestTable, "Dropbox_GetUpdateToken" , "Get/Update token" , Dropbox);
-    NewTest(TestTable, "Dropbox_UploadFile" , "Upload file" , Dropbox);
-    NewTest(TestTable, "Dropbox_UploadFileByURL" , "Upload file by URL" , Dropbox);
-    NewTest(TestTable, "Dropbox_CreateFolder" , "Create folder" , Dropbox);
-    NewTest(TestTable, "Dropbox_CreateDeleteTag" , "Create/Delete tag" , Dropbox);
-    NewTest(TestTable, "Dropbox_GetAccount" , "Get account data" , Dropbox);
-    NewTest(TestTable, "Dropbox_AccessManagement" , "Access management" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetUpdateToken" , "Get/Update token" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFile" , "Upload file" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFileByURL" , "Upload file by URL" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateFolder" , "Create folder" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateDeleteTag" , "Create/Delete tag" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetAccount" , "Get account data" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_AccessManagement" , "Access management" , Dropbox);
    
     Return TestTable;
                                     
@@ -223,7 +227,7 @@ Function ExpectsThat(Value) Export
     Try
         
         Module = GetCommonModule("UTest");
-        Awaiting = TypeValue(Module) = Type("CommonModule");
+        Awaiting = TypeOf(Module) = Type("CommonModule");
         Return Module.ExpectsThat(Value);  
            
     Except
@@ -240,7 +244,7 @@ Function FormYAXTests() Export
     
     For Each Section In Sections Do
         
-        CurrentSection = Section.Key;
+        CurrentSection = Section.TheKey;
         Filter = New Structure("Section", CurrentSection);
         SectionTests = TestTable.FindLines(Filter);
         
@@ -291,7 +295,7 @@ Function GetBinary(Parameter) Export
         Value = MainValue;
     EndIf;
     
-    If TypeValue(Value) = Type("String") Then
+    If TypeOf(Value) = Type("String") Then
         Value = GetFilePath(Value, LocalParameter);    
     EndIf;
     
@@ -358,12 +362,12 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
     
     Data = " " + Data; 
     
-    Notify(Header);
-    Notify(Symbols.PS);
-    Notify(Data);
-    Notify(Symbols.PS);
-    Notify("---------------------------------");
-    Notify(Symbols.PS);
+    Message(Header);
+    Message(Chars.PS);
+    Message(Data);
+    Message(Chars.PS);
+    Message("---------------------------------");
+    Message(Chars.PS);
     
     If ValueIsFilled(Library) Then
 		WriteLogFile(Data, Method, Library);
@@ -373,7 +377,7 @@ EndProcedure
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function GetValueFromFile(Parameter, Path) 
         
@@ -406,7 +410,7 @@ EndFunction
 
 Function GetCommonModule(Val Name)
     SetSafeMode(True);    
-    Module = Calculate(Name);     
+    Module = Eval(Name);     
     SetSafeMode(False);    
     Return Module;    
 EndFunction
@@ -425,9 +429,9 @@ Procedure WriteParameterToFile(Val Parameter, Val Value, Val Path)
     Values = OPI_Tools.ReadJSONFile(Path);
     Values.Insert(Parameter, Value);
 
-    Record = New WritingJSON;
-    JSONWriteParameters = New JSONWriteParameters(JSONLineBreak.Auto, Symbols.Tab);
-    Record.OpenFile(Path, , , JSONWriteParameters);
+    Record = New JSONWriter;
+    JSONWriterSettings = New JSONWriterSettings(JSONLineBreak.Auto, Chars.Tab);
+    Record.OpenFile(Path, , , JSONWriterSettings);
     WriteJSON(Record, Values);
     Record.Close();
 
@@ -462,7 +466,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
 		EndIf;
 		
 	Except
-		Notify("Failed to write log file!: " + ErrorDescription());	
+		Message("Failed to write log file!: " + ErrorDescription());	
 	EndTry;
 	
 EndProcedure

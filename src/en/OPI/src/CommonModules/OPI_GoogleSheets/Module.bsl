@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_GoogleSheets.os
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
 // Library: Google Sheets
 // CLI Command: gsheets
 
@@ -29,10 +29,14 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region BookWork
 
@@ -42,9 +46,9 @@
 // Parameters:
 // Token - String - Token - token
 // Name - String - Name - title
-// ArrayOfSheetNames - Array of Strings - Array of names to add new sheets to the book - sheets
+// ArrayOfSheetNames - Array of String - Array of names to add new sheets to the book - sheets
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function CreateBook(Val Token, Val Name, Val ArrayOfSheetNames) Export
     
@@ -76,7 +80,7 @@ EndFunction
 // Token - String - Token - token
 // Identifier - String - BookIdentifier - spreadsheet
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetBook(Val Token, Val Identifier) Export
 
@@ -99,7 +103,7 @@ EndFunction
 // Book - String - BookID - spreadsheet
 // Name - String - New name - title
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function EditBookTitle(Val Token, Val Book, Val Name) Export
     
@@ -137,7 +141,7 @@ EndFunction
 // Book - String - BookIdentifier - spreadsheet
 // Name - String - NewSheetName - title
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function AddSheet(Val Token, Val Book, Val Name) Export
     
@@ -167,7 +171,7 @@ EndFunction
 // Book - String - BookIdentifier - spreadsheet
 // Sheet - String - IdentifierOfSheetToDelete - sheet
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function DeleteSheet(Val Token, Val Book, Val Sheet) Export
     
@@ -196,15 +200,15 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // From - String - SourceBookID - from
-// To - String - DestinationBookID - to
+// Target - String - DestinationBookID - to
 // Sheet - String - CopiedSheetID - sheet
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
-Function CopySheet(Val Token, Val From, Val To, Val Sheet) Export
+Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export
     
     OPI_TypeConversion.GetLine(From);
-    OPI_TypeConversion.GetLine(To);
+    OPI_TypeConversion.GetLine(Target);
     OPI_TypeConversion.GetLine(Sheet);
         
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
@@ -214,7 +218,7 @@ Function CopySheet(Val Token, Val From, Val To, Val Sheet) Export
         + Sheet
         + ":copyTo";
     
-    Parameters = New Structure("destinationSpreadsheetId", To);  
+    Parameters = New Structure("destinationSpreadsheetId", Target);  
     Response = OPI_Tools.Post(URL, Parameters, Headers);
     
     Return Response;
@@ -232,10 +236,10 @@ EndFunction
 // Token - String - Token - token
 // Book - String - BookID - spreadsheet 
 // ValueMapping - Key-Value Pair - Fill data where the key is the cell name like A1 - data
-// Sheet - String - Name лиwithта (перinый лиwithт по умолчанию) - sheetname
+// Sheet - String - Sheet name (first sheet by default) - sheetname
 // MajorDimension - String - Main dimension when filling the array range - dim
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function SetCellValues(Val Token
     , Val Book
@@ -246,16 +250,16 @@ Function SetCellValues(Val Token
     OPI_TypeConversion.GetLine(Book);
     OPI_TypeConversion.GetCollection(ValueMapping);
     
-    If Not TypeValue(ValueMapping) = Type("Structure")
-        And Not TypeValue(ValueMapping) = Type("Match") Then
+    If Not TypeOf(ValueMapping) = Type("Structure")
+        And Not TypeOf(ValueMapping) = Type("Map") Then
         Return "Failed to convert the structure of values to a collection";
     EndIf;
     
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchUpdate";
-    Data array = FormCellDataArray(ValueMapping, MajorDimension, Sheet);
+    DataArray = FormCellDataArray(ValueMapping, MajorDimension, Sheet);
 
-    Parameters = New Structure("data,valueInputOption", Data array, "USER_ENTERED");
+    Parameters = New Structure("data,valueInputOption", DataArray, "USER_ENTERED");
     Response = OPI_Tools.Post(URL, Parameters, Headers);
     
     Return Response;
@@ -268,22 +272,22 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Book - String - BookID - spreadsheet
-// Cell array - Array of Strings - Array of cells like A1 to be cleared - cells
-// Sheet - String - Name лиwithта (перinый лиwithт по умолчанию) - sheetname
+// CellsArray - Array of String - Array of cells like A1 to be cleared - cells
+// Sheet - String - Sheet name (first sheet by default) - sheetname
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
-Function ClearCells(Val Token, Val Book, Val Cell array, Val Sheet = "") Export
+Function ClearCells(Val Token, Val Book, Val CellsArray, Val Sheet = "") Export
     
     OPI_TypeConversion.GetLine(Book);
-    OPI_TypeConversion.GetCollection(Cell array);
+    OPI_TypeConversion.GetCollection(CellsArray);
     
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchClear";
     
-    FormCellNameArray(Cell array, Sheet);
+    FormCellNameArray(CellsArray, Sheet);
         
-    Parameters = New Structure("ranges", Cell array);
+    Parameters = New Structure("ranges", CellsArray);
     Response = OPI_Tools.Post(URL, Parameters, Headers);
     
     Return Response;
@@ -296,24 +300,24 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Book - String - BookID - spreadsheet
-// Cell array - Array of Strings - Array ячееto inиdа А1 for получения (inеwithь лиwithт, еwithли не заполнено) - cells
-// Sheet - String - Name лиwithта (перinый лиwithт по умолчанию) - sheetname
+// CellsArray - Array of String - Array of A1-type cells to get (whole sheet if not filled) - cells
+// Sheet - String - Sheet name (first sheet by default) - sheetname
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
-Function GetCellValues(Val Token, Val Book, Val Cell array = "", Val Sheet = "") Export
+Function GetCellValues(Val Token, Val Book, Val CellsArray = "", Val Sheet = "") Export
     
     OPI_TypeConversion.GetLine(Book);
       
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchGet";
   
-    If ValueIsFilled(Cell array) Then
-        OPI_TypeConversion.GetCollection(Cell array);  
-        FormCellNameArray(Cell array, Sheet);
+    If ValueIsFilled(CellsArray) Then
+        OPI_TypeConversion.GetCollection(CellsArray);  
+        FormCellNameArray(CellsArray, Sheet);
         
         First = True;
-        For Each Cell In Cell array Do
+        For Each Cell In CellsArray Do
             Delimiter = ?(First, "?", "&");
             URL = URL + Delimiter + "ranges=" + Cell;
             First = False;
@@ -332,7 +336,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Procedure FillSheetArray(Val ArrayOfNames, SheetArray)
     
@@ -357,8 +361,8 @@ Function CreateSheet(Val Name)
     
     OPI_TypeConversion.GetLine(Name);
     
-    Sheet properties = New Structure("title" , Name);
-    Sheet = New Structure("properties", Sheet properties);
+    SheetProperties = New Structure("title" , Name);
+    Sheet = New Structure("properties", SheetProperties);
 
     Return Sheet;
     
@@ -368,31 +372,31 @@ Function FormCellDataArray(Val ValueStructure, Val MajorDimension, Val Sheet)
     
     OPI_TypeConversion.GetLine(Sheet);
     
-    Data array = New Array;
+    DataArray = New Array;
     
     For Each CellData In ValueStructure Do
         
         CurrentValue = CellData.Value;
-        Current key = CellData.Key;
+        CurrentKey = CellData.TheKey;
         
-        AddSheetName(Current key, Sheet);
+        AddSheetName(CurrentKey, Sheet);
         
         OPI_TypeConversion.GetArray(CurrentValue);
         
-        Current data = New Match;
-        Current array = New Array;
+        CurrentData = New Map;
+        CurrentArray = New Array;
         
-        Current array.Add(CurrentValue);
+        CurrentArray.Add(CurrentValue);
         
-        OPI_Tools.AddField("range" , Current key , "String", Current data);
-        OPI_Tools.AddField("values" , Current array , "Array", Current data);
-        OPI_Tools.AddField("majorDimension", MajorDimension, "String", Current data);
+        OPI_Tools.AddField("range" , CurrentKey , "String", CurrentData);
+        OPI_Tools.AddField("values" , CurrentArray , "Array", CurrentData);
+        OPI_Tools.AddField("majorDimension", MajorDimension, "String", CurrentData);
         
-        Data array.Add(Current data);
+        DataArray.Add(CurrentData);
         
     EndDo;
     
-    Return Data array;
+    Return DataArray;
     
 EndFunction
 
@@ -400,7 +404,7 @@ Procedure FormCellNameArray(Val ArrayOfNames, Val Sheet)
 
    OPI_TypeConversion.GetLine(Sheet); 
    
-   For N = 0 For ArrayOfNames.WithinBoundary() Do       
+   For N = 0 To ArrayOfNames.WithinBoundary() Do       
        AddSheetName(ArrayOfNames[N], Sheet);
    EndDo;
        

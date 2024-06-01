@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/core/Modules/OPI_Telegram.os
+// OneScript: ./OInt/core/Modules/OPI_Telegram.os
 // Библиотека: Telegram
 // Команда CLI: telegram
 
@@ -31,6 +31,10 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnreachableCode-off
 // BSLLS:CommentedCode-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../tools"

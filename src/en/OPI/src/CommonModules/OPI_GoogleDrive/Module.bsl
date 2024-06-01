@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_GoogleDrive.os
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
 // Library: Google Drive
 // CLI Command: gdrive
 
@@ -29,10 +29,14 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region FileAndDirectoryManagement
 
@@ -43,7 +47,7 @@
 // Token - String - Token - token
 // Identifier - String - Identifier of the file or folder - object
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetObjectInformation(Val Token, Val Identifier) Export
     
@@ -70,7 +74,7 @@ EndFunction
 // NameContains - String - Filter by name - querry
 // Detailed - Boolean - Adds a list of files to the directory fields - depth
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Array of directory mappings
 Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export
     
@@ -106,7 +110,7 @@ EndFunction
 // NameContains - String - Filter by name - querry
 // Directory - String - Filter by parent directory ID - catalog
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Array of file mappings
 Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export
     
@@ -142,7 +146,7 @@ EndFunction
 // File - BinaryData,String - File to be uploaded - file
 // Description - Key-Value Pair - See GetFileDescription - props - JSON description or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function UploadFile(Val Token, Val File, Val Description) Export
     Return FileManagement(Token, File, Description);   
@@ -156,7 +160,7 @@ EndFunction
 // Name - String - Folder name - title
 // Parent - String - Parent - catalog
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function CreateFolder(Val Token, Val Name, Val Parent = "") Export
     
@@ -164,7 +168,7 @@ Function CreateFolder(Val Token, Val Name, Val Parent = "") Export
     OPI_TypeConversion.GetLine(Name);
     OPI_TypeConversion.GetLine(Parent);
     
-    Description = New Match;
+    Description = New Map;
     Description.Insert("MIME" , "application/vnd.google-apps.folder");
     Description.Insert("Name" , Name);
     Description.Insert("Description", "");
@@ -182,7 +186,7 @@ EndFunction
 // Identifier - String - File identifier - object
 // SavePath - String - File save path - out 
 // 
-// Return value:
+// Returns:
 // BinaryData,String - Binary data or file path when SavePath parameter is specified
 Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export
     
@@ -192,7 +196,7 @@ Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL = "https://www.googleapis.com/drive/v3/files/" + Identifier;  
     
-    Parameters = New Match;
+    Parameters = New Map;
     Parameters.Insert("alt", "media");
     
     Response = OPI_Tools.Get(URL, Parameters , Headers, SavePath);
@@ -210,7 +214,7 @@ EndFunction
 // NewName - String - New object name - title
 // NewParent - String - New parent directory - catalog
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export
     
@@ -249,9 +253,9 @@ EndFunction
 // Token - String - Token - token
 // Identifier - String - Identifier of the object to update - object
 // File - BinaryData,String - File source for update - file
-// NewName - String - Nоinое имя file (еwithли необхоdимо) - title
+// NewName - String - New file name (if necessary) - title
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export
     
@@ -261,7 +265,7 @@ Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Expor
     OPI_TypeConversion.GetBinaryData(File);
     
     If ValueIsFilled(NewName) Then
-        Description = New Match;
+        Description = New Map;
         Description.Insert("Name", NewName);
     Else
         Description = "";
@@ -278,7 +282,7 @@ EndFunction
 // Token - String - Token - token
 // Identifier - String - Identifier of the object to delete - object
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function DeleteObject(Val Token, Val Identifier) Export
     
@@ -295,11 +299,11 @@ EndFunction
 
 // Get file description !NOCLI
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - File description
 Function GetFileDescription() Export
     
-    Description = New Match;
+    Description = New Map;
     Description.Insert("MIME" , "image/jpeg"); // MIME-type uploading file
     Description.Insert("Name" , "New file.jpg"); // File name with extension
     Description.Insert("Description" , "This is a new file"); // File description
@@ -321,7 +325,7 @@ EndFunction
 // Identifier - String - Identifier of the object that needs a comment - object  
 // Comment - String - Comment text - text
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function CreateComment(Val Token, Val Identifier, Val Comment) Export
     
@@ -349,7 +353,7 @@ EndFunction
 // ObjectID - String - Identifier of the file or directory where the comment is located - object
 // CommentID - String - Comment identifier - comment
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetComment(Val Token, Val ObjectID, Val CommentID) Export
     
@@ -376,7 +380,7 @@ EndFunction
 // Token - String - Token - token
 // ObjectID - String - Object identifier - object
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetCommentList(Val Token, Val ObjectID) Export
     
@@ -403,7 +407,7 @@ EndFunction
 // ObjectID - String - Identifier of the file or directory where the comment is located - object
 // CommentID - String - Comment identifier - comment
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function DeleteComment(Val Token, Val ObjectID, Val CommentID) Export
     
@@ -424,7 +428,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Procedure GetObjectsListRecursively(Val Headers, ArrayOfObjects, Detailed = False, Filter = "", Page = "") 
     
@@ -438,8 +442,8 @@ Procedure GetObjectsListRecursively(Val Headers, ArrayOfObjects, Detailed = Fals
         Parameters.Insert("pageToken", Page);
     EndIf;
     
-    If ValueIsFilled(Filter) And TypeValue(Filter) = Type("Array") Then     
-        FilterString = StrJoin(Filter, " and ");
+    If ValueIsFilled(Filter) And TypeOf(Filter) = Type("Array") Then     
+        FilterString = StrConcat(Filter, " and ");
         Parameters.Insert("q", FilterString);       
     EndIf;
     
@@ -479,10 +483,10 @@ EndProcedure
 
 Procedure FormFileUploadParameters(Description)
     
-    FormedDescription = New Match;
+    FormedDescription = New Map;
     OPI_Tools.RemoveEmptyCollectionFields(Description);
 
-    FieldMapping = New Match;
+    FieldMapping = New Map;
     FieldMapping.Insert("MIME" , "mimeType");
     FieldMapping.Insert("Name" , "name");
     FieldMapping.Insert("Description" , "description");
@@ -491,7 +495,7 @@ Procedure FormFileUploadParameters(Description)
     
     For Each Element In Description Do
         
-        If Element.Key = "Parent" Then
+        If Element.TheKey = "Parent" Then
             
             CurrentValue = New Array;
             CurrentValue.Add(Element.Value);
@@ -502,7 +506,7 @@ Procedure FormFileUploadParameters(Description)
             
         EndIf;
         
-        FieldName = FieldMapping.Get(Element.Key);
+        FieldName = FieldMapping.Get(Element.TheKey);
         FormedDescription.Insert(FieldName, CurrentValue);
         
     EndDo;
@@ -529,14 +533,14 @@ Function FileManagement(Val Token, Val File = "", Val Description = "", Val Iden
     EndIf;    
     
     If Not ValueIsFilled(Description) Then
-        Description = New Match;
+        Description = New Map;
     EndIf;
     
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     FormFileUploadParameters(Description);
     JSONDescription = OPI_Tools.JSONString(Description);
     
-    FileMapping = New Match;
+    FileMapping = New Map;
     
     If ValueIsFilled(File) Then
         
@@ -545,7 +549,7 @@ Function FileManagement(Val Token, Val File = "", Val Description = "", Val Iden
    
         FileMapping.Insert(File, MIME);
         
-        If Size < ChunkSize And TypeValue(File) = Type("BinaryData") Then
+        If Size < ChunkSize And TypeOf(File) = Type("BinaryData") Then
             Response = UploadSmallFile(JSONDescription, FileMapping, Headers, Identifier);
         Else
             Response = UploadLargeFile(Description, FileMapping, Headers, Identifier);
@@ -564,7 +568,7 @@ Function UploadSmallFile(Val Description, Val FileMapping, Val Headers, Val Iden
     URL = "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart";
     
     If ValueIsFilled(Identifier) Then
-        URL = StringReplace(URL, "/files", "/files/" + Identifier);
+        URL = StrReplace(URL, "/files", "/files/" + Identifier);
         Response = OPI_Tools.PatchMultipartRelated(URL, Description, FileMapping, Headers);
     Else
         Response = OPI_Tools.PostMultipartRelated(URL, Description, FileMapping, Headers);
@@ -577,14 +581,14 @@ EndFunction
 Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Identifier = "")
     
     For Each File In FileMapping Do
-        Binary = File.Key;
+        Binary = File.TheKey;
         Break;
     EndDo;
     
     URL = "https://www.googleapis.com/upload/drive/v3/files?uploadType=resumable";
     
     If ValueIsFilled(Identifier) Then
-        URL = StringReplace(URL, "/files", "/files/" + Identifier);
+        URL = StrReplace(URL, "/files", "/files/" + Identifier);
         Response = OPI_Tools.Patch(URL, Description, Headers, True, True);
     Else
         Response = OPI_Tools.Post(URL, Description, Headers, True, True);
@@ -613,18 +617,18 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
     CurrentPosition = 0;
     TotalSize = Binary.Size();
     StrTotalSize = OPI_Tools.NumberToString(TotalSize);
-    ReadingData = New ReadingData(Binary);
-    SourceStream = ReadingData.SourceStream();
+    DataReader = New DataReader(Binary);
+    SourceStream = DataReader.SourceStream();
     
     WHile BytesRead < TotalSize Do
             
         BytesRead = SourceStream.CurrentPosition();
-        Result = ReadingData.Read(ChunkSize);
-        Current data = Result.GetBinaryData();
-        CurrentSize = Current data.Size();
+        Result = DataReader.Read(ChunkSize);
+        CurrentData = Result.GetBinaryData();
+        CurrentSize = CurrentData.Size();
         NextPosition = CurrentPosition + CurrentSize - 1; 
         
-        If Not ValueIsFilled(Current data) Then
+        If Not ValueIsFilled(CurrentData) Then
             Break;
         EndIf;
         
@@ -635,12 +639,12 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
             + "/" 
             + StrTotalSize;
             
-        AdditionalHeaders = New Match;
+        AdditionalHeaders = New Map;
         AdditionalHeaders.Insert("Content-Length", OPI_Tools.NumberToString(CurrentSize));
         AdditionalHeaders.Insert("Content-Range" , StreamHeader); 
         AdditionalHeaders.Insert("Content-Type" , "application/octet-stream");
         
-        Response = OPI_Tools.Put(UploadURL, Current data, AdditionalHeaders, False, True);
+        Response = OPI_Tools.Put(UploadURL, CurrentData, AdditionalHeaders, False, True);
         
 		CheckResult = CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
 		
@@ -648,12 +652,12 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
 			Return CheckResult;
 		EndIf;
         
-        // !OInt KBytes = 1024;
-        // !OInt MByte = KBytes * KBytes;
-		// !OInt Notify(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
+        // !OInt KB = 1024;
+        // !OInt MB = KB * KB;
+		// !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
         
         // !OInt PerformGarbageCollection();
-        // !OInt ReleaseObject(Current data);
+        // !OInt ReleaseObject(CurrentData);
         
     EndDo;
     
@@ -701,7 +705,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
         Return Response;
     EndIf;
     
-    UploadedData = StringReplace(UploadedData, "bytes=", "");
+    UploadedData = StrReplace(UploadedData, "bytes=", "");
     ArrayOfInformation = StrSplit(UploadedData, "-", False);
     PartsRequired = 2;
     

@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/core/Modules/OPI_GoogleSheets.os
+// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
 // Библиотека: Google Sheets
 // Команда CLI: gsheets
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../tools"

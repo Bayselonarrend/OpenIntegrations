@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_VK.os
+﻿// OneScript: ./OInt/core/Modules/OPI_VK.os
 // Library: VK
 // CLI Command: vk
 
@@ -25,7 +25,7 @@
 // SOFTWARE.        
 
 // https://github.com/Bayselonarrend/OpenIntegrations
-// If in не зtoете with чего toчать, то withтоит toйти method GetStandardParameters()
+// If you don't know where to start, you should find the method GetStandardParameters()
 // and read comments
 
 // BSLLS:NumberOfOptionalParams-off
@@ -37,11 +37,14 @@
 
 //@skip-check method-too-many-params
 //@skip-check wrong-string-literal-content
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region TokenRetrieval
 
@@ -52,7 +55,7 @@
 // Parameters:
 // app_id - String, Number - app_id from application settings - app
 // 
-// Return value:
+// Returns:
 // String - URL to go to in the browser 
 Function CreateTokenRetrievalLink(Val App_id) Export
     
@@ -74,12 +77,12 @@ EndFunction
 // 
 // Parameters:
 // Text - String - Post text - text
-// ImageArray - Array from String, BinaryData - Array of images - pictures  
-// Advertisement - Boolean - Indication ""Это реtoлама"" - ad
+// ImageArray - Array of String, BinaryData - Array of images - pictures  
+// Advertisement - Boolean - Sign ""This is an ad"" - ad
 // LinkUnderPost - String - Link (URL) under the post - url
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreatePost(Val Text
     , Val ImageArray
@@ -120,16 +123,16 @@ Function CreatePost(Val Text
 EndFunction
 
 // Create composite post
-// Созdает поwithт to mainоinе маwithwithиinа иdетифиtoатороin объеtoтоin (toартиноto, inиdео и dр.)
+// Creates a post based on an array of object identifiers (images, videos, etc..)
 // 
 // Parameters:
 // Text - String - Post text - text
-// Objects - Array of Strings - Array of identifiers like photo123_123 - objects  
-// Advertisement - Boolean - Indication ""Это реtoлама"" - ad
+// Objects - Array of String - Array of identifiers like photo123_123 - objects  
+// Advertisement - Boolean - Sign ""This is an ad"" - ad
 // LinkUnderPost - String - Link (URL) under the post - url
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreateCompositePost(Val Text
     , Val Objects
@@ -142,7 +145,7 @@ Function CreateCompositePost(Val Text
     OPI_TypeConversion.GetBoolean(Advertisement);
     
     Parameters = GetStandardParameters(Parameters);
-    AttachmentsString = StrJoin(Objects, ",");   
+    AttachmentsString = StrConcat(Objects, ",");   
     AttachmentsString = AttachmentsString + LinkUnderPost;
     
     Parameters.Insert("message" , Text);
@@ -163,7 +166,7 @@ EndFunction
 // PostID - String, Number - Post ID - post
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function DeletePost(Val PostID, Val Parameters = "") Export
     
@@ -183,11 +186,11 @@ EndFunction
 //
 // Parameters:
 // Question - String - Poll question - question
-// AnswersArray - Array of Strings - Array of answer options - options
+// AnswersArray - Array of String - Array of answer options - options
 // Image - String, BinaryData - Poll image - picture
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export
     
@@ -220,7 +223,7 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
     Parameters_.Insert("is_anonymous", 1);
     Parameters_.Insert("is_multiple" , 0);
         
-    Answers = StrJoin(AnswersArray, """,""");
+    Answers = StrConcat(AnswersArray, """,""");
     Answers = "[""" + Answers + """]";    
         
     Parameters_.Insert("add_answers", Answers);
@@ -262,7 +265,7 @@ EndFunction
 // Description - String - Album description - description
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export
     
@@ -288,7 +291,7 @@ EndFunction
 // AlbumID - String, Number - Album ID - album
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export
     
@@ -311,7 +314,7 @@ EndFunction
 // URL - String - URL for button under the story - url
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreateStory(Val Image, Val URL = "", Val Parameters = "") Export
     
@@ -336,7 +339,7 @@ EndFunction
 // Description - String - Image description - description
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export
     
@@ -359,7 +362,7 @@ EndFunction
 // ImageID - String, Number - Image ID - pictureid 
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function DeleteImage(Val ImageID, Val Parameters = "") Export
     
@@ -384,7 +387,7 @@ EndFunction
 // Album - String - Album ID, if necessary - album
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK 
 Function UploadVideoToServer(Val Video
     , Val Name
@@ -413,7 +416,7 @@ Function UploadVideoToServer(Val Video
 		Return Response;
 	EndIf;
     
-    FileMapping = New Match;
+    FileMapping = New Map;
     OPI_Tools.AddField("video_file.mp4", Video, "BinaryData", FileMapping);
     
     DataSize = FileMapping["video_file.mp4"].Size();
@@ -431,23 +434,23 @@ EndFunction
 // Parameters:
 // Image - String, BinaryData - Image file - file
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
-// View - String - View upload (Post, Product, Story, Poll, Miscellaneous) - type
+// View - String - Upload type (Post, Product, Story, Poll, Other) - type
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK 
 Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export
        
     Parameters = GetStandardParameters(Parameters);
     Method = DetermineImageUploadMethod(View);
-    Files = New Match;
+    Files = New Map;
     
     Response = "response";
     URL = "api.vk.com/method/";
     Upload = URL + Method["Upload"];
     Save = URL + Method["Save"];
     
-    If TypeValue(Image) = Type("String") Then
-        ImageKey = StringReplace(Image, ".", "___");
+    If TypeOf(Image) = Type("String") Then
+        ImageKey = StrReplace(Image, ".", "___");
         OPI_TypeConversion.GetBinaryData(Image);
     Else
         ImageKey = "image___jpeg";
@@ -455,7 +458,7 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
     
     Files.Insert(ImageKey, Image);
     
-    For N = 1 For 5 Do
+    For N = 1 To 5 Do
         
         Response = OPI_Tools.Get(Upload, Parameters);  
         Result = Response[Response];
@@ -475,13 +478,13 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
         Parameters.Insert("upload_url", URL);
         Response = OPI_Tools.PostMultipart(URL, Parameters, Files);
         
-        If TypeValue(Response) = Type("Match") Then
+        If TypeOf(Response) = Type("Map") Then
             Break;
         EndIf;
         
     EndDo;
     
-    If TypeValue(Response) <> Type("Match") Then
+    If TypeOf(Response) <> Type("Map") Then
         Return GetStringFromBinaryData(Response);
     EndIf;
 
@@ -502,19 +505,19 @@ EndFunction
 //
 // Parameters:
 // Name - String - Discussion name - title
-// Text of the first message - String - Text of the first message - text
+// FirstMessageText - String - Text of the first message - text
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
-Function CreateDiscussion(Val Name, Val Text of the first message, Val Parameters = "") Export
+Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Name);
-    OPI_TypeConversion.GetLine(Text of the first message);
+    OPI_TypeConversion.GetLine(FirstMessageText);
     
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("title", Name);
-    Parameters_.Insert("text" , Text of the first message);
+    Parameters_.Insert("text" , FirstMessageText);
     
     Response = OPI_Tools.Get("api.vk.com/method/board.addTopic", Parameters_);
     
@@ -527,20 +530,20 @@ EndFunction
 //
 // Parameters:
 // DiscussionID - String, Number - Discussion ID - topic
-// Delete completely - Boolean - Delete completely (True) or close - remove
+// DeleteCompletely - Boolean - Delete completely (True) or close - remove
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
-Function CloseDiscussion(Val DiscussionID, Val Delete completely = False, Val Parameters = "") Export
+Function CloseDiscussion(Val DiscussionID, Val DeleteCompletely = False, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(DiscussionID);
-    OPI_TypeConversion.GetBoolean(Delete completely);
+    OPI_TypeConversion.GetBoolean(DeleteCompletely);
     
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("topic_id", DiscussionID);
     
-    Method = ?(Delete completely, "deleteTopic", "closeTopic");   
+    Method = ?(DeleteCompletely, "deleteTopic", "closeTopic");   
     Response = OPI_Tools.Get("api.vk.com/method/board." + Method, Parameters_);
     
     Return Response;
@@ -554,7 +557,7 @@ EndFunction
 // DiscussionID - String, Number - Discussion ID - topic
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export
     
@@ -577,7 +580,7 @@ EndFunction
 // Text - String - Message text - text
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export
     
@@ -606,7 +609,7 @@ EndFunction
 // WallID - String, Number - ID of the wall where the post is located - wall
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export
     
@@ -635,15 +638,15 @@ EndFunction
 // Parameters:
 // PostID - String, Number - Post ID - post
 // WallID - String, Number - ID of the wall where the post is located - from
-// Target wall - String, Number - ID of the target wall or group - to
+// TargetWall - String, Number - ID of the target wall or group - to
 // Advertising - Boolean - Sign of an advertising post - ad
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function MakeRepost(Val PostID
     , Val WallID = ""
-    , Val Target wall = ""
+    , Val TargetWall = ""
     , Val Advertising = False
     , Val Parameters = "") Export
     
@@ -653,14 +656,14 @@ Function MakeRepost(Val PostID
     OPI_TypeConversion.GetLine(GroupId);
     OPI_TypeConversion.GetLine(PostID);
     OPI_TypeConversion.GetLine(WallID);
-    OPI_TypeConversion.GetLine(Target wall);
+    OPI_TypeConversion.GetLine(TargetWall);
     OPI_TypeConversion.GetBoolean(Advertising);
        
     Source = ?(ValueIsFilled(WallID), WallID, GroupId);       
-    Receiver = ?(ValueIsFilled(Target wall), Target wall, GroupId);
+    Receiver = ?(ValueIsFilled(TargetWall), TargetWall, GroupId);
 
     Parameters_.Insert("object" , "wall" + Source + "_" + OPI_Tools.NumberToString(PostID));
-    Parameters_.Insert("group_id" , StringReplace(Receiver, "-", ""));
+    Parameters_.Insert("group_id" , StrReplace(Receiver, "-", ""));
     Parameters_.Insert("mark_as_ads" , ?(Advertising, 1, 0));
     
     Response = OPI_Tools.Get("api.vk.com/method/wall.repost", Parameters_);
@@ -679,7 +682,7 @@ EndFunction
 // Keyboard - String - JSON keyboard. See FormKeyboard - keyboard
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function WriteMessage(Val Text
     , Val UserID
@@ -720,7 +723,7 @@ EndFunction
 // Text - String - Comment text - text
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Export
 
@@ -752,7 +755,7 @@ EndFunction
 // URL - String - URL for shortening - url
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // String - Shortened URL 
 Function ShortenLink(Val URL, Val Parameters = "") Export
     
@@ -794,7 +797,7 @@ EndFunction
 // EndDate - Date - End date of the period - dateto
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export
     
@@ -820,51 +823,51 @@ EndFunction
 // Gets statistics in terms of posts
 //
 // Parameters:
-// Array of post IDs - Array of String,Number - Array of post IDs - posts
+// PostIDsArray - Array of String,Number - Array of post IDs - posts
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Array of Arbitrary - Array of post statistics data
-Function GetPostStatistics(Val Array of post IDs, Val Parameters = "") Export
+Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export
     
-    OPI_TypeConversion.GetCollection(Array of post IDs);
+    OPI_TypeConversion.GetCollection(PostIDsArray);
     
     Parameters_ = GetStandardParameters(Parameters);
     AnswersArray = New Array;
-    Array of Sets = New Array;
+    SetsArray = New Array;
     MaximumPosts = 30;
     Response = "response";
     
-    For Each Post In Array of post IDs Do
+    For Each Post In PostIDsArray Do
         
-        Array of Sets.Add(OPI_Tools.NumberToString(Post));
+        SetsArray.Add(OPI_Tools.NumberToString(Post));
         
-        If Array of Sets.Quantity() = MaximumPosts Then
+        If SetsArray.Quantity() = MaximumPosts Then
             
-            NumbersString = StrJoin(Array of Sets, ",");
+            NumbersString = StrConcat(SetsArray, ",");
             Parameters_.Insert("post_ids", NumbersString);
             
             Statistics = OPI_Tools.Get("api.vk.com/method/stats.getPostReach", Parameters_);
-            Array of Statistics = Statistics[Response];
+            StatisticsArray = Statistics[Response];
             
-            For Each StatisticsItem In Array of Statistics Do
+            For Each StatisticsItem In StatisticsArray Do
                 AnswersArray.Add(StatisticsItem);
             EndDo;
             
-            Array of Sets = New Array;
+            SetsArray = New Array;
             
         EndIf;
         
     EndDo;
     
-    NumbersString = StrJoin(Array of Sets, ",");
+    NumbersString = StrConcat(SetsArray, ",");
     Parameters_.Insert("post_ids", NumbersString);
     
     Statistics = OPI_Tools.Get("api.vk.com/method/stats.getPostReach", Parameters_);
-    Array of Statistics = Statistics[Response];
+    StatisticsArray = Statistics[Response];
     
-    If TypeValue(Array of Statistics) = Type("Array") Then
-        For Each StatisticsItem In Array of Statistics Do
+    If TypeOf(StatisticsArray) = Type("Array") Then
+        For Each StatisticsItem In StatisticsArray Do
             AnswersArray.Add(StatisticsItem);
         EndDo;
     EndIf;
@@ -885,7 +888,7 @@ EndFunction
 // Name - String - Campaign name - title
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export
     
@@ -898,7 +901,7 @@ Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "")
     Parameters_ = GetStandardParameters(Parameters);    
     Parameters_.Insert("account_id", AccountID);
     
-    Array of Structures = New Array;
+    StructuresArray = New Array;
     StartDate = OPI_Tools.UNIXTime(CurrentDate);
     EndDate = OPI_Tools.UNIXTime(EndDate);
     
@@ -911,9 +914,9 @@ Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "")
     CampaignStructure.Insert("stop_time" , EndDate);
     CampaignStructure.Insert("status" , 1);
     
-    Array of Structures.Add(CampaignStructure);
+    StructuresArray.Add(CampaignStructure);
     
-    JSONDate = OPI_Tools.JSONString(Array of Structures);
+    JSONDate = OPI_Tools.JSONString(StructuresArray);
     
     Parameters_.Insert("data", JSONDate);
     
@@ -934,7 +937,7 @@ EndFunction
 // AccountID - String, Number - Advertising account ID - cabinet
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreateAd(Val CampaignNumber
     , Val DailyLimit
@@ -955,7 +958,7 @@ Function CreateAd(Val CampaignNumber
     
     Link = "https://vk.com/wall-" + GroupId + "_" + PostID;
     
-    Array of Structures = New Array;    
+    StructuresArray = New Array;    
     CampaignStructure = New Structure;
     CampaignStructure.Insert("campaign_id" , CampaignNumber);
     CampaignStructure.Insert("ad_format" , 9);
@@ -974,11 +977,11 @@ Function CreateAd(Val CampaignNumber
     CampaignStructure.Insert("name" , "Ad");
     CampaignStructure.Insert("link_url" , Link);
     
-    Array of Structures.Add(CampaignStructure);
+    StructuresArray.Add(CampaignStructure);
     
-    OPI_TypeConversion.GetLine(Array of Structures, True);
+    OPI_TypeConversion.GetLine(StructuresArray, True);
     
-    Parameters_.Insert("data" , Array of Structures);
+    Parameters_.Insert("data" , StructuresArray);
     Parameters_.Insert("account_id" , AccountID);
     
     Response = OPI_Tools.Get("api.vk.com/method/ads.createAds", Parameters_);
@@ -995,7 +998,7 @@ EndFunction
 // AdID - String, Number - Ad ID - adv 
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function PauseAdvertisingAd(Val AccountID, Val AdID, Val Parameters = "") Export
     
@@ -1006,17 +1009,17 @@ Function PauseAdvertisingAd(Val AccountID, Val AdID, Val Parameters = "") Export
 
     Parameters_.Insert("account_id", AccountID);
     
-    Array of Structures = New Array;    
+    StructuresArray = New Array;    
     CampaignStructure = New Structure;
     
     CampaignStructure.Insert("ad_id" , AdID);
     CampaignStructure.Insert("status" , 0);
     
-    Array of Structures.Add(CampaignStructure);
+    StructuresArray.Add(CampaignStructure);
     
-    OPI_TypeConversion.GetLine(Array of Structures, True);
+    OPI_TypeConversion.GetLine(StructuresArray, True);
     
-    Parameters_.Insert("data", Array of Structures);
+    Parameters_.Insert("data", StructuresArray);
         
     Response = OPI_Tools.Get("api.vk.com/method/ads.updateAds", Parameters_);
     
@@ -1030,7 +1033,7 @@ EndFunction
 // Parameters:
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function GetAdvertisingCategoryList(Val Parameters = "") Export
     
@@ -1051,8 +1054,8 @@ EndFunction
 // Parameters:
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
-// Compliance From String - Key - ID, Value - Name
+// Returns:
+// Map Of String - TheKey - ID, Value - Name
 Function GetProductCategoryList(Val Parameters = "") Export
     
     Response = "response";
@@ -1088,7 +1091,7 @@ Function GetProductCategoryList(Val Parameters = "") Export
     	Return Response;
     EndIf;
        
-    CategoryCorrespondence = New Match;
+    CategoryCorrespondence = New Map;
     
     For Each Category In Categories Do      
         CategoryCorrespondence.Insert(Category["id"], Category["name"]);
@@ -1105,7 +1108,7 @@ EndFunction
 // Selection - String, Number - Selection ID, if filtering is needed - sel
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Array of product matches
 Function GetProductList(Val Selection = "", Val Parameters = "") Export
     
@@ -1120,10 +1123,10 @@ Function GetProductList(Val Selection = "", Val Parameters = "") Export
         Parameters_.Insert("album_id", Selection);  
     EndIf;
     
-    Array of products = New Array;
-    GetProductListRecursively(Array of products, Parameters_);
+    ProductsArray = New Array;
+    GetProductListRecursively(ProductsArray, Parameters_);
     
-    Return Array of products;
+    Return ProductsArray;
     
 EndFunction
 
@@ -1131,10 +1134,10 @@ EndFunction
 // Gets information about products by array of IDs
 //
 // Parameters:
-// Products - String, Array of Strings - Array of product IDs - items 
+// Products - String, Array of String - Array of product IDs - items 
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function GetProductsByID(Val Products, Val Parameters = "") Export
     
@@ -1150,7 +1153,7 @@ Function GetProductsByID(Val Products, Val Parameters = "") Export
         ProductsString = ProductsString + CurrentProduct + ",";
     EndDo;
     
-    ProductsString = Left(ProductsString, StrLength(ProductsString) - 1);
+    ProductsString = Left(ProductsString, StrLen(ProductsString) - 1);
     Parameters_.Insert("item_ids", ProductsString);
     Parameters_.Insert("extended", 1);
     
@@ -1168,7 +1171,7 @@ EndFunction
 // Selection - String - Selection ID for placing the product, if needed - sel
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export        
     Return ProductManagement(ProductDescription, , Selection, Parameters);    
@@ -1183,7 +1186,7 @@ EndFunction
 // Selection - String - Identifier of the new selection, if needed - sel 
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export
     Return ProductManagement(ProductDescription, Product, Selection, Parameters);    
@@ -1196,7 +1199,7 @@ EndFunction
 // Product - String, Number - Product ID - item
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function DeleteProduct(Val Product, Val Parameters = "") Export
     
@@ -1215,25 +1218,25 @@ EndFunction
 // Groups products based on similar sets of properties
 //
 // Parameters:
-// Array of products - Array Of String - Array of product IDs - items
+// ProductsArray - Array Of String - Array of product IDs - items
 // ExistingGroup - String - ID of the existing group, if needed - sellgroup
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
-Function GroupProducts(Val Array of products, Val ExistingGroup = "", Val Parameters = "") Export
+Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(ExistingGroup);
-    OPI_TypeConversion.GetCollection(Array of products);
+    OPI_TypeConversion.GetCollection(ProductsArray);
     
     Parameters_ = GetStandardParameters(Parameters);
-    Array_of_Products = New Array;
+    ArrayOfProducts_ = New Array;
     
-    For Each Product In Array of products Do
-        Array_of_Products.Add(OPI_Tools.NumberToString(Product));
+    For Each Product In ProductsArray Do
+        ArrayOfProducts_.Add(OPI_Tools.NumberToString(Product));
     EndDo;
     
-    Products = StrJoin(Array_of_Products, ",");
+    Products = StrConcat(ArrayOfProducts_, ",");
     
     Parameters_.Insert("item_ids", Products);
     
@@ -1249,7 +1252,7 @@ EndFunction
 
 // Get product description. !NOCLI
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Empty product description:
 // *Name - String - Product name
 // *Description - String - Product description
@@ -1261,15 +1264,15 @@ EndFunction
 // *AdditionalPhotos - Array Of String - Binary Data or Photo Paths
 // *PropertyValues - Array Of String - See AddPropertyVariant
 // *MainInGroup - Boolean - Main in the group, if exists in the group
-// *Width - Number - Width product in мм.
-// *Height - Number - Height product in мм.
-// *Depth - Number - Depth product in мм.
-// *Weight - Number - Weight in гр.
+// *Width - Number - Product width in mm.
+// *Height - Number - Product height in mm.
+// *Depth - Number - Product depth in mm.
+// *Weight - Number - Weight in g.
 // *SKU - String - SKU
 // *AvailableBalance - Number - Balance. -1 - unlimited
 Function GetProductDescription() Export
      
-    Product = New Match();
+    Product = New Map();
     Product.Insert("Name" , "New product"); // Product name
     Product.Insert("Description" , "Product description"); // Product description
     Product.Insert("Category" , "20173"); // See GetProductCategoryList()
@@ -1301,7 +1304,7 @@ EndFunction
 // Parameters:
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Array of selection matches
 Function GetSelectionList(Val Parameters = "") Export
     
@@ -1319,10 +1322,10 @@ EndFunction
 // Gets the list of selections by array of IDs
 //
 // Parameters:
-// Selections - String, Array of Strings - Selection IDs - sels
+// Selections - String, Array of String - Selection IDs - sels
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function GetSelectionsByID(Val Selections, Val Parameters = "") Export
     
@@ -1336,7 +1339,7 @@ Function GetSelectionsByID(Val Selections, Val Parameters = "") Export
         Selections_.Add(OPI_Tools.NumberToString(Selection));    
     EndDo;    
     
-    SelectionsString = StrJoin(Selections_, ",");
+    SelectionsString = StrConcat(Selections_, ",");
         
     Parameters_.Insert("album_ids", SelectionsString);
     
@@ -1356,7 +1359,7 @@ EndFunction
 // Hidden - Boolean - Hidden - hidden
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function CreateProductCollection(Val Name
     , Val Image
@@ -1379,7 +1382,7 @@ EndFunction
 // Hidden - Boolean - Hidden - hidden
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function EditProductCollection(Val Name
     , Val Selection
@@ -1396,25 +1399,25 @@ EndFunction
 // Adds a product to the selection
 //
 // Parameters:
-// Array of products - Array of string, number - Array of products or product - items
+// ProductsArray - Array of string, number - Array of products or product - items
 // Selection - String - Selection ID - sel
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
-Function AddProductToSelection(Val Array of products, Val Selection, Val Parameters = "") Export
+Function AddProductToSelection(Val ProductsArray, Val Selection, Val Parameters = "") Export
     
-    OPI_TypeConversion.GetCollection(Array of products);
+    OPI_TypeConversion.GetCollection(ProductsArray);
     OPI_TypeConversion.GetLine(Selection);
     
     Parameters_ = GetStandardParameters(Parameters);
-    Array_of_Products = New Array;
+    ArrayOfProducts_ = New Array;
       
-    For Each Product In Array of products Do
-        Array_of_Products.Add(OPI_Tools.NumberToString(Product));    
+    For Each Product In ProductsArray Do
+        ArrayOfProducts_.Add(OPI_Tools.NumberToString(Product));    
     EndDo;    
     
-    ProductList = StrJoin(Array_of_Products, ",");
+    ProductList = StrConcat(ArrayOfProducts_, ",");
     
     Parameters_.Insert("item_ids" , ProductList);
     Parameters_.Insert("album_ids", Selection);
@@ -1433,7 +1436,7 @@ EndFunction
 // Selection - String - Selection ID - sel
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export
     
@@ -1458,7 +1461,7 @@ EndFunction
 // Selection - String - Selection ID - sel
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK
 Function DeleteSelection(Val Selection, Val Parameters = "") Export
     
@@ -1483,7 +1486,7 @@ EndFunction
 // Parameters:
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK 
 Function GetPropertyList(Val Parameters = "") Export
     
@@ -1504,7 +1507,7 @@ EndFunction
 // Name - String - Property name - title
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK 
 Function CreateProductProperty(Val Name, Val Parameters = "") Export
     
@@ -1527,7 +1530,7 @@ EndFunction
 // Property - String, Number - Property ID - prop
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK 
 Function EditProductProperty(Val Name, Val Property, Val Parameters = "") Export
     
@@ -1552,7 +1555,7 @@ EndFunction
 // Property - String, Number - Property ID - prop
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK 
 Function DeleteProductProperty(Val Property, Val Parameters = "") Export
     
@@ -1575,7 +1578,7 @@ EndFunction
 // Property - String, Number - Property ID where the variant is added - prop
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK    
 Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export
     
@@ -1601,7 +1604,7 @@ EndFunction
 // Option - String, Number - Variant ID - option
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK      
 Function EditProductPropertyVariant(Val Value, Val Property, Val Option, Val Parameters = "") Export
     
@@ -1627,7 +1630,7 @@ EndFunction
 // Option - String, Number - Variant ID - option
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK     
 Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export
     
@@ -1652,7 +1655,7 @@ EndFunction
 // Parameters:
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from VK 
 Function GetOrderList(Val Parameters = "") Export
     
@@ -1674,9 +1677,9 @@ EndFunction
 // Forms a keyboard from an array of buttons
 // 
 // Parameters:
-// ButtonArray - Array of Strings - Array of button titles - buttons
+// ButtonArray - Array of String - Array of button titles - buttons
 // 
-// Return value:
+// Returns:
 // String - Keyboard JSON
 Function FormKeyboard(Val ButtonArray) Export
       
@@ -1712,7 +1715,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function GetStandardParameters(Val Parameters = "")
     
@@ -1722,12 +1725,12 @@ Function GetStandardParameters(Val Parameters = "")
     
     Parameters_ = New Structure;
     
-    // access_token - можно получить in браузере по URL from фунtoции CreateTokenRetrievalLink()
+    // access_token - can be obtained in the browser via the URL from the CreateTokenRetrievalLink function()
     // from_group - actions will be performed on behalf of the group
     // owner_id - group ID with "-" at the beginning. Can be found in the settings of the VK group or in its URL if not set
     // set your
     // app_id - application ID that needs to be created in the profile on the developer page
-    // group_id - owner_id, но without "-"
+    // group_id - owner_id, but without "-"
     
     Parameters_.Insert("access_token" , "");
     Parameters_.Insert("from_group" , "1");
@@ -1738,9 +1741,9 @@ Function GetStandardParameters(Val Parameters = "")
     
     OPI_TypeConversion.GetCollection(Parameters);
     
-    If TypeValue(Parameters) = Type("Structure") Or TypeValue(Parameters) = Type("Match") Then
+    If TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Then
         For Each PassedParameter In Parameters Do
-            Parameters_.Insert(PassedParameter.Key, OPI_Tools.NumberToString(PassedParameter.Value));
+            Parameters_.Insert(PassedParameter.TheKey, OPI_Tools.NumberToString(PassedParameter.Value));
         EndDo;
     EndIf;
 
@@ -1775,7 +1778,7 @@ Function GetImageCorrespondence(Val Image, Val Parameters, Val View)
 	Response = UploadPhotoToServer(Image, Parameters, View);   
     ResponseArray = Response.Get("response");
     
-    If Not ValueIsFilled(ResponseArray) Or Not TypeValue(ResponseArray) = Type("Array") Then
+    If Not ValueIsFilled(ResponseArray) Or Not TypeOf(ResponseArray) = Type("Array") Then
     	Return Response;
     Else
     	If ResponseArray.Quantity() = 0 Then
@@ -1813,7 +1816,7 @@ EndFunction
 
 Function DetermineImageUploadMethod(Val View)
     
-    MethodCorrespondence = New Match;
+    MethodCorrespondence = New Map;
     Upload = "Upload";
     Save = "Save";
     Method = "Method";
@@ -1860,7 +1863,7 @@ EndFunction
 
 Function GetProductParameterMapping()
     
-    Fields = New Match();
+    Fields = New Map();
     Fields.Insert("Name" , "name");     
     Fields.Insert("Description" , "description"); 
     Fields.Insert("Category" , "category_id");                 
@@ -1966,7 +1969,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
         
         PhotoID = GetImageID(Image, Parameters, "Product");
         
-        If Not TypeValue(PhotoID) = Type("String") Then
+        If Not TypeOf(PhotoID) = Type("String") Then
             Return PhotoID; 
         EndIf;
       
@@ -1978,7 +1981,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
             
             Selections = GetSelectionArray(SelectionID, Parameters);
             
-            If Not TypeValue(Selections) = Type("Array") Then
+            If Not TypeOf(Selections) = Type("Array") Then
                 Return Selections;   
             EndIf;
                                 
@@ -2068,7 +2071,7 @@ Procedure FillProductRequestFields(Val ProductDescription, Parameters)
          
     EndIf;
     
-    If TypeValue(Properties) = Type("Array") Then  
+    If TypeOf(Properties) = Type("Array") Then  
         
         Properties_ = New Array;
         
@@ -2076,7 +2079,7 @@ Procedure FillProductRequestFields(Val ProductDescription, Parameters)
             Properties_.Add(OPI_Tools.NumberToString(Property));   
         EndDo;
         
-        Properties = StrJoin(Properties_, ","); 
+        Properties = StrConcat(Properties_, ","); 
         
     EndIf;
     
@@ -2088,10 +2091,10 @@ Procedure FillProductRequestFields(Val ProductDescription, Parameters)
     
     For Each Field In GetProductParameterMapping() Do
         
-        Value = ProductDescription[Field.Key];
+        Value = ProductDescription[Field.TheKey];
         
         If Value <> Undefined Then
-            Parameters.Insert(Field.Value, ProductDescription[Field.Key]);
+            Parameters.Insert(Field.Value, ProductDescription[Field.TheKey]);
         EndIf;
         
     EndDo;
@@ -2100,7 +2103,7 @@ EndProcedure
 
 Procedure AddAdditionalProductPhotos(Val PhotoArray, Parameters)
     
-    If TypeValue(PhotoArray) = Type("Array") Then
+    If TypeOf(PhotoArray) = Type("Array") Then
         If PhotoArray.Quantity() > 0 Then
             
             PhotoString = "";
@@ -2109,7 +2112,7 @@ Procedure AddAdditionalProductPhotos(Val PhotoArray, Parameters)
                 
                 PhotoID = GetImageID(Photo, Parameters, "Product");
                 
-		        If Not TypeValue(PhotoID) = Type("String") Then
+		        If Not TypeOf(PhotoID) = Type("String") Then
 		    		Return;	
 		    	EndIf;
 
@@ -2117,14 +2120,14 @@ Procedure AddAdditionalProductPhotos(Val PhotoArray, Parameters)
                 
             EndDo;
             
-            PhotoString = Left(PhotoString, StrLength(PhotoString) - 1);
+            PhotoString = Left(PhotoString, StrLen(PhotoString) - 1);
             Parameters.Insert("photo_ids", PhotoString);
         EndIf;
     EndIf;
     
 EndProcedure
 
-Procedure GetProductListRecursively(Array of products, Parameters, Shift = 0)
+Procedure GetProductListRecursively(ProductsArray, Parameters, Shift = 0)
     
     Response = "response";
     MaxInRequest = 200;
@@ -2136,12 +2139,12 @@ Procedure GetProductListRecursively(Array of products, Parameters, Shift = 0)
     EndIf;      
     
     For Each Product In Products Do
-        Array of products.Add(Product);
+        ProductsArray.Add(Product);
     EndDo;
        
     Shift = Shift + MaxInRequest;
     Parameters.Insert("offset", Shift);
-    GetProductListRecursively(Array of products, Parameters, Shift);
+    GetProductListRecursively(ProductsArray, Parameters, Shift);
     
 EndProcedure
 
