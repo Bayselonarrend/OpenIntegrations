@@ -205,7 +205,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     For Each DataString In TValue Do
 
         If DataString.Key <> "hash" Then
-            DCS = DCS + DataString.Key + "=" + DataString.Value + Chars.PS;
+            DCS = DCS + DataString.Key + "=" + DataString.Value + Chars.LF;
             ReturnMapping.Insert(DataString.Key, DataString.Value);
         Else
             Hash = DataString.Value;
