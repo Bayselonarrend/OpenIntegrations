@@ -363,11 +363,11 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
     Data = " " + Data; 
     
     Message(Header);
-    Message(Chars.PS);
+    Message(Chars.LF);
     Message(Data);
-    Message(Chars.PS);
+    Message(Chars.LF);
     Message("---------------------------------");
-    Message(Chars.PS);
+    Message(Chars.LF);
     
     If ValueIsFilled(Library) Then
 		WriteLogFile(Data, Method, Library);
