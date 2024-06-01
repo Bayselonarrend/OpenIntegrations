@@ -48,7 +48,7 @@
 
 // For YAxUnit
 
-Procedure ExecutableScripts() Export
+Procedure AndwithполняеымыеСцеtoрии() Export
 
     OPI_TestDataRetrieval.FormYAXTests();
 
@@ -490,7 +490,7 @@ Procedure VKAPI_GetPostStatistics() Export
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPostStatistics");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).HasType("Array").HasLength(2);
+    OPI_TestDataRetrieval.ExpectsThat(Result).HasType("Array").AndмеетДлину(2);
     
     OPI_Tools.Pause(5);
 
@@ -826,7 +826,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).HasType(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["items"]).HasType("Array").HasLength(2);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["items"]).HasType("Array").AndмеетДлину(2);
         
     Result = OPI_VK.GroupProducts(ProductsArray, , Parameters);
     
