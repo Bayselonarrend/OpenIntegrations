@@ -199,7 +199,7 @@ Function CreateRequest(Val Address, Val AdditionalHeaders = "", Val DataType = "
     If TypeOf(AdditionalHeaders) = Type("Map") Then
         
         For Each Title In AdditionalHeaders Do
-            Headers.Insert(Title.TheKey, Title.Value);
+            Headers.Insert(Title.Key, Title.Value);
         EndDo;
         
     EndIf;
@@ -229,7 +229,7 @@ EndFunction
 
 Function RequestParametersToString(Val Parameters) Export
 
-    If Parameters.Quantity() = 0 Then
+    If Parameters.Count() = 0 Then
         Return "";
     EndIf;
 
@@ -240,7 +240,7 @@ Function RequestParametersToString(Val Parameters) Export
         ParameterValue = ConvertParameterToString(Parameter.Value);
         
         ParameterString = ParameterString 
-            + Parameter.TheKey 
+            + Parameter.Key 
             + "=" 
             + ParameterValue
             + "&";
@@ -344,7 +344,7 @@ Function RequestParametersToMatch(Val ParameterString) Export
 
         KeyValueArray = StrSplit(Parameter, "=");
 
-        If KeyValueArray.Quantity() = NumberOfParts Then
+        If KeyValueArray.Count() = NumberOfParts Then
             ReturnMapping.Insert(KeyValueArray[0], KeyValueArray[1]);
         EndIf;
 
@@ -453,7 +453,7 @@ Procedure ReplaceSpecialCharacters(Text, Markup = "Markdown") Export
     EndIf;         
 
     For Each ArraySymbol In CharacterMapping Do
-        Text = StrReplace(Text, ArraySymbol.TheKey, ArraySymbol.Value);
+        Text = StrReplace(Text, ArraySymbol.Key, ArraySymbol.Value);
     EndDo;
 
 EndProcedure
@@ -849,7 +849,7 @@ Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
         EndIf;
         
         TextRecord.WriteString("--" + boundary + LineSeparator);
-        TextRecord.WriteString("Content-Disposition: form-data; name=""" + Parameter.TheKey + """");
+        TextRecord.WriteString("Content-Disposition: form-data; name=""" + Parameter.Key + """");
         TextRecord.WriteString(LineSeparator);
         TextRecord.WriteString(LineSeparator);
         
@@ -883,14 +883,14 @@ Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Fil
     
     For Each File In Files Do
         
-        FilePath = StrReplace(File.TheKey, DotReplacement, ".");
+        FilePath = StrReplace(File.Key, DotReplacement, ".");
         
         If ContentType = "image/jpeg" Then
             SendingFileName = "photo";
         Else
-            SendingFileName = StrReplace(File.TheKey, DotReplacement, ".");
+            SendingFileName = StrReplace(File.Key, DotReplacement, ".");
             SendingFileName = Left(SendingFileName, StrFind(SendingFileName, ".") - 1);
-            SendingFileName = ?(ValueIsFilled(SendingFileName), SendingFileName, StrReplace(File.TheKey,
+            SendingFileName = ?(ValueIsFilled(SendingFileName), SendingFileName, StrReplace(File.Key,
             DotReplacement, "."));
         EndIf;
         
@@ -930,7 +930,7 @@ Procedure WriteRelatedFiles(TextRecord, Val Boundary, Val Files)
             TextRecord.WriteString("Content-Type: " + File.Value);
             TextRecord.WriteString(LineSeparator);
             TextRecord.WriteString(LineSeparator);
-            WriteBinaryData(TextRecord, File.TheKey);
+            WriteBinaryData(TextRecord, File.Key);
             TextRecord.WriteString(LineSeparator);
             TextRecord.WriteString(LineSeparator);
             
@@ -1006,7 +1006,7 @@ Procedure RemoveEmptyKeyValues(Val Collection, OutputCollection)
     For Each CollectionItem In Collection Do
         
         If Not CollectionItem.Value = Undefined And Not CollectionItem.Value = NULL Then
-            OutputCollection.Insert(CollectionItem.TheKey, CollectionItem.Value);
+            OutputCollection.Insert(CollectionItem.Key, CollectionItem.Value);
         EndIf;
         
     EndDo;

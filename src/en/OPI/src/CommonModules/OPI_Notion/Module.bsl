@@ -224,7 +224,7 @@ Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") E
     // Name : title
     // Description : rich_text
     // InProgress : checkbox 
-    // Quantity    : number
+    // Count    : number
     // Date : date
     // Status : Map
     // Аtoтиinный : green
@@ -587,7 +587,7 @@ EndProcedure
 
 Procedure AddDatabaseProperties(Val Properties, MainStructure)
     
-    If Properties.Quantity() = 0 Then
+    If Properties.Count() = 0 Then
        MainStructure.Insert("properties", New Structure);
        Return;      
     EndIf;
@@ -598,17 +598,17 @@ Procedure AddDatabaseProperties(Val Properties, MainStructure)
         
         If TypeOf(Property.Value) = Type("String") Then
             
-           ParameterMap.Insert(Property.TheKey, New Structure(Property.Value, New Structure));
+           ParameterMap.Insert(Property.Key, New Structure(Property.Value, New Structure));
            
         ElsIf TypeOf(Property.Value) = Type("Structure") 
             Or TypeOf(Property.Value) = Type("Map") Then
                 
             ValueSelection = FormSelectionValues(Property.Value);
-            ParameterMap.Insert(Property.TheKey, New Structure("select", ValueSelection));
+            ParameterMap.Insert(Property.Key, New Structure("select", ValueSelection));
             
         Else
             
-            ParameterMap.Insert(Property.TheKey, Property.Value);
+            ParameterMap.Insert(Property.Key, Property.Value);
             
         EndIf;
         
@@ -625,7 +625,7 @@ Function FormSelectionValues(Val VariantStructure)
     For Each Option In VariantStructure Do
         
         OptionMap = New Map;
-        OptionMap.Insert("name" , Option.TheKey);
+        OptionMap.Insert("name" , Option.Key);
         OptionMap.Insert("color", Option.Value);
         
         OptionArray.Add(OptionMap);
@@ -654,7 +654,7 @@ Function FillDataBySchema(Val Scheme, Val Data, Val Token, Val ThisIsBase = True
             FieldData = Field.Value;
             FieldType = FieldData["type"];
             
-            FillableData = Data.Get(Field.TheKey);
+            FillableData = Data.Get(Field.Key);
             
             If FillableData = Undefined Then
                 Continue;
@@ -860,7 +860,7 @@ Function ConvertFiles(Val FileMapping)
         
         FileStructure = New Structure;
         FileStructure.Insert("type" , "external");
-        FileStructure.Insert("name" , File.TheKey);
+        FileStructure.Insert("name" , File.Key);
         FileStructure.Insert("external", New Structure("url", File.Value));
         
         ArrayOfFiles.Add(FileStructure);

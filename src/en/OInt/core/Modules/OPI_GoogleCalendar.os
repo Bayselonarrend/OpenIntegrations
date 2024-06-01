@@ -323,7 +323,7 @@ Function GetEventDescription() Export
     Event.Insert("Venue" , ""); // String description of the venue of the event
     Event.Insert("StartDate" , CurrentDate); // Date of start events
     Event.Insert("EndDate" , CurrentDate + Hour); // Date of end events
-    Event.Insert("ArrayOfAttachmentURLs", New Map); // TheKey - name, Value - URL to file
+    Event.Insert("ArrayOfAttachmentURLs", New Map); // Key - name, Value - URL to file
     Event.Insert("SendNotifications" , True); // Indication of sending notifications to participants
 
     Return Event;
@@ -513,7 +513,7 @@ Function ConvertAttachments(Val Attachments)
         For Each Attachment In Attachments Do
             
             CurrentAttachment = New Structure;
-            CurrentAttachment.Insert("title" , Attachment.TheKey);
+            CurrentAttachment.Insert("title" , Attachment.Key);
             CurrentAttachment.Insert("fileUrl", Attachment.Value);
             
             AttachmentsArray.Add(CurrentAttachment);
@@ -522,7 +522,7 @@ Function ConvertAttachments(Val Attachments)
         
     EndIf;
     
-    If AttachmentsArray.Quantity() > 0 Then
+    If AttachmentsArray.Count() > 0 Then
         Return AttachmentsArray;
     Else
         Return Undefined;
@@ -599,7 +599,7 @@ Procedure GetCalendarsListRecursively(Val Headers, ArrayOfCalendars, Page = "")
         ArrayOfCalendars.Add(Calendar);    
     EndDo;    
     
-    If Calendars.Quantity() > 0 And ValueIsFilled(Page) Then
+    If Calendars.Count() > 0 And ValueIsFilled(Page) Then
         GetCalendarsListRecursively(Headers, ArrayOfCalendars, Page); 
     EndIf;
           
@@ -626,7 +626,7 @@ Procedure GetEventsListRecursively(Val Headers, Val Calendar, ArrayOfEvents, Pag
         ArrayOfEvents.Add(Event);    
     EndDo;    
     
-    If Events.Quantity() > 0 And ValueIsFilled(Page) Then
+    If Events.Count() > 0 And ValueIsFilled(Page) Then
         GetEventsListRecursively(Headers, ArrayOfEvents, Page); 
     EndIf;
           

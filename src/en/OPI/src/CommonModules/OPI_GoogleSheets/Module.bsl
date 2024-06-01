@@ -377,7 +377,7 @@ Function FormCellDataArray(Val ValueStructure, Val MajorDimension, Val Sheet)
     For Each CellData In ValueStructure Do
         
         CurrentValue = CellData.Value;
-        CurrentKey = CellData.TheKey;
+        CurrentKey = CellData.Key;
         
         AddSheetName(CurrentKey, Sheet);
         

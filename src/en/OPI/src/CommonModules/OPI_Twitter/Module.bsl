@@ -200,7 +200,7 @@ Function CreateCustomTweet(Val Text = ""
         
         PollDuration = Number(PollDuration);
         
-        If PollOptionsArray.Quantity() > 0 Then
+        If PollOptionsArray.Count() > 0 Then
         	
         	OptionStructure = New Structure("options,duration_minutes", PollOptionsArray, PollDuration);
             Fields.Insert("poll", OptionStructure);
@@ -210,7 +210,7 @@ Function CreateCustomTweet(Val Text = ""
     EndIf;
     
     If TypeOf(MediaArray) = Type(Array) Then
-        If MediaArray.Quantity() > 0 Then
+        If MediaArray.Count() > 0 Then
             Fields.Insert("media", New Structure("media_ids", MediaArray));
         EndIf;
     EndIf;
@@ -379,7 +379,7 @@ EndFunction
 Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parameters)
     
     Unit = 1024;
-    Quantity = 4;
+    Count = 4;
     MediaKey = "media_key";
     MIS = "media_id_string";
     Command = "command";
@@ -390,7 +390,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     MIMETypeMapping.Insert("tweet_video", "video/mp4");
     MIMETypeMapping.Insert("tweet_gif" , "image/gif");
     
-    ChunkSize = Quantity * Unit * Unit;
+    ChunkSize = Count * Unit * Unit;
     ArrayReading = SplitBinaryData(File, ChunkSize);
     
     Fields = New Structure;
@@ -540,7 +540,7 @@ Function GetStandardParameters(Val Parameters = "")
     
     If TypeOf(Parameters) = Type("Structure") Or TypeOf(Parameters) = Type("Map") Then
         For Each PassedParameter In Parameters Do
-            Parameters_.Insert(PassedParameter.TheKey, OPI_Tools.NumberToString(PassedParameter.Value));
+            Parameters_.Insert(PassedParameter.Key, OPI_Tools.NumberToString(PassedParameter.Value));
         EndDo;
     EndIf;
 
@@ -561,54 +561,54 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
     CurrentUNIXDate = OPI_Tools.UNIXTime(CurrentDate);
     CurrentUNIXDate = OPI_Tools.NumberToString(CurrentUNIXDate);
     ParametersTable = New ValueTable;
-    ParametersTable.Columns.Add("TheKey");
+    ParametersTable.Columns.Add("Key");
     ParametersTable.Columns.Add("Value");
         
     For Each Field In Fields Do 
         
         NewLine = ParametersTable.Add();    
-        NewLine.TheKey = Field.TheKey;
+        NewLine.Key = Field.Key;
         NewLine.Value = Field.Value;
         
     EndDo;
     
     NewLine = ParametersTable.Add();
-    NewLine.TheKey = OCK;
+    NewLine.Key = OCK;
     NewLine.Value = Parameters[OCK];
     
     NewLine = ParametersTable.Add();
-    NewLine.TheKey = OTK;
+    NewLine.Key = OTK;
     NewLine.Value = Parameters[OTK];
     
     NewLine = ParametersTable.Add();
-    NewLine.TheKey = "oauth_version";
+    NewLine.Key = "oauth_version";
     NewLine.Value = APIVersion;
     
     NewLine = ParametersTable.Add();
-    NewLine.TheKey = "oauth_signature_method";
+    NewLine.Key = "oauth_signature_method";
     NewLine.Value = HashingMethod;
 
     NewLine = ParametersTable.Add();
-    NewLine.TheKey = "oauth_timestamp";
+    NewLine.Key = "oauth_timestamp";
     NewLine.Value = CurrentUNIXDate;
 
     NewLine = ParametersTable.Add();
-    NewLine.TheKey = "oauth_nonce";
+    NewLine.Key = "oauth_nonce";
     NewLine.Value = CurrentUNIXDate;
 
     For Each TableRow In ParametersTable Do
         
-        TableRow.TheKey = EncodeString(TableRow.TheKey, StringEncodingMethod.URLencoding);
+        TableRow.Key = EncodeString(TableRow.Key, StringEncodingMethod.URLencoding);
         TableRow.Value = EncodeString(TableRow.Value, StringEncodingMethod.URLencoding);
         
     EndDo;
     
-    ParametersTable.Sort("TheKey");
+    ParametersTable.Sort("Key");
     
     For Each TableRow In ParametersTable Do
         
         SignatureString = SignatureString 
-            + TableRow.TheKey 
+            + TableRow.Key 
             + "="
             + TableRow.Value
             + "&";

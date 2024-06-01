@@ -467,17 +467,17 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Path - String - Path to the object - path
-// Quantity - String, Number - Number of the latest versions of the object to display - amount
+// Count - String, Number - Number of the latest versions of the object to display - amount
 // 
 // Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
-Function GetObjectVersionList(Val Token, Val Path, Val Quantity = 10) Export
+Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export
     
     URL = "https://api.dropboxapi.com/2/files/list_revisions"; 
     
     Parameters = New Structure;
     OPI_Tools.AddField("path" , Path , "String", Parameters);
-    OPI_Tools.AddField("limit", Quantity, "Number" , Parameters);
+    OPI_Tools.AddField("limit", Count, "Number" , Parameters);
     
     Headers = GetRequestHeaders(Token);
     Response = OPI_Tools.Post(URL, Parameters, Headers);
