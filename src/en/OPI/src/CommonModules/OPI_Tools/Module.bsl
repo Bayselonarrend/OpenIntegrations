@@ -666,7 +666,7 @@ Function ExecuteMultipartRequest(Val URL
     Redirection = 300;
     Error = 400;
     Boundary = StrReplace(String(New UUID), "-", "");
-    LineSeparator = Chars.CR + Chars.PS;
+    LineSeparator = Chars.CR + Chars.LF;
     DataType = "multipart/form-data; boundary=" + Boundary;
     URLStructure = SplitURL(URL);
     Server = URLStructure["Server"];
@@ -730,7 +730,7 @@ Function ExecuteMultipartRelatedRequest(Val URL
     Redirection = 300;
     Error = 400;
     Boundary = StrReplace(String(New UUID), "-", "");
-    LineSeparator = Chars.CR + Chars.PS;
+    LineSeparator = Chars.CR + Chars.LF;
     DataType = "multipart/related; boundary=" + Boundary;
     URLStructure = SplitURL(URL);
     Server = URLStructure["Server"];
@@ -839,7 +839,7 @@ EndProcedure
 
 Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
     
-    LineSeparator = Chars.CR + Chars.PS;
+    LineSeparator = Chars.CR + Chars.LF;
     
     For Each Parameter In Parameters Do
         
@@ -878,7 +878,7 @@ EndProcedure
 Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Files)
     
     ContentType = TrimAll(ContentType);
-    LineSeparator = Chars.CR + Chars.PS;
+    LineSeparator = Chars.CR + Chars.LF;
     DotReplacement = "___";
     
     For Each File In Files Do
@@ -921,7 +921,7 @@ Procedure WriteRelatedFiles(TextRecord, Val Boundary, Val Files)
         Return;
     EndIf;
     
-    LineSeparator = Chars.CR + Chars.PS;
+    LineSeparator = Chars.CR + Chars.LF;
     
     If TypeOf(Files) = Type("Map") Then
         For Each File In Files Do
@@ -976,7 +976,7 @@ Procedure WriteJSONMultipart(TextRecord, Val Boundary, Val JSON)
         Return;
     EndIf;
     
-    LineSeparator = Chars.CR + Chars.PS;
+    LineSeparator = Chars.CR + Chars.LF;
     
     TextRecord.WriteLine("--" + boundary + LineSeparator);
     TextRecord.WriteLine("Content-Type: application/json; charset=UTF-8");
