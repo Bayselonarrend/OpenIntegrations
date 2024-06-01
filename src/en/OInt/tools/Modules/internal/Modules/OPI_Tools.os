@@ -469,7 +469,7 @@ Procedure RemoveEmptyCollectionFields(Collection) Export
         
     ElsIf CollectionType = Type("Array") Then
         
-        RemoveEmptyArrayElements(Collection, OutputCollection);
+        RemoveEmptyArrayItems(Collection, OutputCollection);
         
     Else
         
@@ -1013,7 +1013,7 @@ Procedure RemoveEmptyKeyValues(Val Collection, OutputCollection)
     
 EndProcedure
 
-Procedure RemoveEmptyArrayElements(Val Collection, OutputCollection)
+Procedure RemoveEmptyArrayItems(Val Collection, OutputCollection)
     
     For Each CollectionItem In Collection Do
         
