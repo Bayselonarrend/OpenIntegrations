@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/tools/Modules/OPI_ПреобразованиеТипов.os
+// OneScript: ./OInt/tools/Modules/OPI_ПреобразованиеТипов.os
 
 // MIT License
 
@@ -27,6 +27,11 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnusedLocalVariable-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
 
 // #Использовать "./internal"
 

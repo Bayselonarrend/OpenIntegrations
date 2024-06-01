@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/tools/Modules/internal/Modules/OPI_Криптография.os
+// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Криптография.os
 
 // MIT License
 
@@ -27,6 +27,10 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnusedLocalVariable-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 #Область СлужебныйПрограммныйИнтерфейс
 

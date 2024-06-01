@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_GoogleWorkspace.os
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
 // Library: Google Workspace
 // CLI command: google
 
@@ -29,10 +29,14 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 // Generate code retrieval link
 // Returns URL for browser authorization
@@ -43,7 +47,7 @@
 // Drive - Boolean - Drive methods permission - drive
 // Sheets - Boolean - Sheets methods permission - sheets
 // 
-// Return value:
+// Returns:
 // String - Code retrieval link
 Function FormCodeRetrievalLink(Val ClientID
     , Val Calendar = True
@@ -78,7 +82,7 @@ EndFunction
 // ClientSecret - String - Client secret - secret
 // Code - String - Code from browser - code
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
     
@@ -109,7 +113,7 @@ EndFunction
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
     
@@ -133,13 +137,13 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProgramInterface
+#Region Internal
 
 Function GetAuthorizationHeader(Val Token) Export
     
     OPI_TypeConversion.GetLine(Token);
     
-    Headers = New Match;
+    Headers = New Map;
     Headers.Insert("Authorization", "Bearer " + Token);
     
     Return Headers;
@@ -152,21 +156,21 @@ EndFunction
 
 Function GetPermissionsList(Calendar, Drive, Sheets)
     
-    Permissions array = New Array;
+    PermissionsArray = New Array;
     
     If Calendar Then
-        Permissions array.Add("https://www.googleapis.com/auth/calendar");
+        PermissionsArray.Add("https://www.googleapis.com/auth/calendar");
     EndIf;
     
     If Drive Then
-        Permissions array.Add("https://www.googleapis.com/auth/drive");
+        PermissionsArray.Add("https://www.googleapis.com/auth/drive");
     EndIf;
     
     If Sheets Then
-        Permissions array.Add("https://www.googleapis.com/auth/spreadsheets");
+        PermissionsArray.Add("https://www.googleapis.com/auth/spreadsheets");
     EndIf;
         
-    Return StrJoin(Permissions array, " ");
+    Return StrConcat(PermissionsArray, " ");
     
 EndFunction
 

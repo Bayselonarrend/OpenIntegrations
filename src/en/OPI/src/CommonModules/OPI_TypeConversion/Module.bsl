@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/tools/Modules/OPI_TypeConversion.os
+﻿// 
 
 // MIT License
 
@@ -28,9 +28,14 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnusedLocalVariable-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check undefined-function-or-procedure
+//@skip-check wrong-string-literal-content
+
 // #Use "./internal"
 
-#Region ServiceProgramInterface
+#Region Internal
 
 Procedure GetBinaryData(Value) Export
     
@@ -40,7 +45,7 @@ Procedure GetBinaryData(Value) Export
     
     Try 
         
-        If TypeValue(Value) = Type("BinaryData") Then
+        If TypeOf(Value) = Type("BinaryData") Then
             Return;
         Else
             
@@ -73,7 +78,7 @@ Procedure GetBinaryOrStream(Value) Export
         Return;
     EndIf;
     
-    If TypeValue(Value) <> Type("String") Then
+    If TypeOf(Value) <> Type("String") Then
         GetBinaryData(Value);
         Return;
     EndIf;
@@ -102,36 +107,36 @@ Procedure GetCollection(Value) Export
             Return;
         Else
             
-            If TypeValue(Value) = Type("BinaryData") Then
+            If TypeOf(Value) = Type("BinaryData") Then
                 Value = GetStringFromBinaryData(Value);
             Else
                 Value = OPI_Tools.NumberToString(Value);
             EndIf;
             
             File = New File(Value);
-            ReadingJSON = New ReadingJSON;
+            JSONReader = New JSONReader;
             
             If File.Exists() Then
                 
-                ReadingJSON.OpenFile(Value);
+                JSONReader.OpenFile(Value);
                 
-           ElsIf StringStartsWith(nReg(Value), "http") Then
+           ElsIf StrStartsWith(Lower(Value), "http") Then
                 
                 AndVF = GetTempFileName();
                 CopyFile(Value, AndVF);
-                ReadingJSON.OpenFile(AndVF);
-                ReadingJSON.Read();
+                JSONReader.OpenFile(AndVF);
+                JSONReader.Read();
                 
                 DeleteFiles(AndVF);
                 
             Else
                 
-                ReadingJSON.SetString(ShortLP(Value));
+                JSONReader.SetString(TrimAll(Value));
                 
             EndIf;
             
-            Value = ReadJSON(ReadingJSON, True, Undefined, JSONDateFormat.ISO);
-            ReadingJSON.Close();
+            Value = ReadJSON(JSONReader, True, Undefined, JSONDateFormat.ISO);
+            JSONReader.Close();
             
             If (Not ThisIsCollection(Value)) Or Not ValueIsFilled(Value) Then
                 
@@ -153,31 +158,31 @@ EndProcedure
 
 Procedure GetArray(Value) Export
     
-    If TypeValue(Value) = Type("Array") Then
+    If TypeOf(Value) = Type("Array") Then
         Return;
     EndIf;
     
-    If TypeValue(Value) = Type("String") 
-        And StringStartsWith(Value, "[")
+    If TypeOf(Value) = Type("String") 
+        And StrStartsWith(Value, "[")
         And StrEndsWith(Value, "]") Then
         	
         CommaInQuotes = "','";
     
-	    Value = StringReplace(Value, "['" , "");
-	    Value = StringReplace(Value, "']" , "");
-	    Value = StringReplace(Value, "', '" , CommaInQuotes);
-	    Value = StringReplace(Value, "' , '", CommaInQuotes);
-	    Value = StringReplace(Value, "' ,'" , CommaInQuotes);
+	    Value = StrReplace(Value, "['" , "");
+	    Value = StrReplace(Value, "']" , "");
+	    Value = StrReplace(Value, "', '" , CommaInQuotes);
+	    Value = StrReplace(Value, "' , '", CommaInQuotes);
+	    Value = StrReplace(Value, "' ,'" , CommaInQuotes);
 	
 	    Value = StrSplit(Value, CommaInQuotes, False);
 	
-	    For N = 0 For Value.WithinBoundary() Do
-	        Value[N] = ShortLP(Value[N]);
+	    For N = 0 To Value.WithinBoundary() Do
+	        Value[N] = TrimAll(Value[N]);
 	    EndDo;
     
     Else
     	
-        If TypeValue(Value) = Type("Number") Then
+        If TypeOf(Value) = Type("Number") Then
             Value = OPI_Tools.NumberToString(Value);    
         EndIf;
         
@@ -195,7 +200,7 @@ Procedure GetBoolean(Value) Export
     
     Try 
         
-        If TypeValue(Value) = Type("Boolean") Then
+        If TypeOf(Value) = Type("Boolean") Then
             Return;
         Else
             Value = Boolean(Value);
@@ -227,18 +232,18 @@ Procedure GetLine(Value, Val FromSource = False) Export
             
             If File.Exists() Then
                 
-                ReadingText = New ReadingText(Value);
-                Value = ReadingText.Read();
-                ReadingText.Close();
+                TextReader = New TextReader(Value);
+                Value = TextReader.Read();
+                TextReader.Close();
                 
-            ElsIf StringStartsWith(nReg(Value), "http") Then
+            ElsIf StrStartsWith(Lower(Value), "http") Then
                 
                 AndVF = GetTempFileName();
                 CopyFile(Value, AndVF);
                 
-                ReadingText = New ReadingText(AndVF);
-                Value = ReadingText.Read();
-                ReadingText.Close();
+                TextReader = New TextReader(AndVF);
+                Value = TextReader.Read();
+                TextReader.Close();
                 
                 DeleteFiles(AndVF);
                 
@@ -248,7 +253,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
                 
             EndIf;
             
-        ElsIf TypeValue(Value) = Type("BinaryData") Then
+        ElsIf TypeOf(Value) = Type("BinaryData") Then
             
             Value = GetStringFromBinaryData(Value);
             
@@ -277,7 +282,7 @@ Procedure GetDate(Value) Export
     
     Try 
         
-        If TypeValue(Value) = Type(Date) Then
+        If TypeOf(Value) = Type(Date) Then
             Return;
         Else         
             Value = XMLValue(Type(Date), Value);                   
@@ -299,21 +304,21 @@ EndProcedure
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function ThisIsCollection(Val Value)
 	
-	Return TypeValue(Value) = Type("Array")
-            Or TypeValue(Value) = Type("Structure")
-            Or TypeValue(Value) = Type("Match");
+	Return TypeOf(Value) = Type("Array")
+            Or TypeOf(Value) = Type("Structure")
+            Or TypeOf(Value) = Type("Map");
             
 EndFunction      
 
 Function ThisIsSymbolic(Val Value)
 	
-	Return TypeValue(Value) = Type("String")
-            Or TypeValue(Value) = Type("Number") 
-            Or TypeValue(Value) = Type("Date");
+	Return TypeOf(Value) = Type("String")
+            Or TypeOf(Value) = Type("Number") 
+            Or TypeOf(Value) = Type("Date");
             
 EndFunction      
 

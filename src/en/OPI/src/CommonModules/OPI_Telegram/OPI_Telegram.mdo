@@ -3,7 +3,7 @@
   <name>OPI_Telegram</name>
   <synonym>
     <key>ru</key>
-    <value>Methodы интеграции with Telegram (OPI)</value>
+    <value>Telegram integration methods (OPI)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
