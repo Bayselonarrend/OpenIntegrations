@@ -56,7 +56,7 @@ EndProcedure
 
 // For Asserts
 
-Function GetTestList(UnitTesting) Export
+Function ПолучитьСписокТестов(UnitTesting) Export
 
    Return OPI_TestDataRetrieval.FormAssertsTests();
 
