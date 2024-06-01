@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
+// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Инструменты.os
 
 // MIT License
 
@@ -33,6 +33,9 @@
 
 //@skip-check module-unused-local-variable
 //@skip-check method-too-many-params
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 #Область СлужебныйПрограммныйИнтерфейс
 

@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_GoogleCalendar.os
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleCalendar.os
 // Library: Google Calendar
 // CLI Command: gcalendar
 
@@ -29,10 +29,14 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region CalendarMetadataManagement
 
@@ -43,7 +47,7 @@
 // Token - String - Token - token
 // Name - String - Name of the created calendar - title
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function CreateCalendar(Val Token, Val Name) Export
     
@@ -70,7 +74,7 @@ EndFunction
 // Token - String - Token - token
 // Calendar - String - Calendar ID - calendar
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetCalendarMetadata(Val Token, Val Calendar) Export
     
@@ -94,7 +98,7 @@ EndFunction
 // Name - String - New name - title
 // Description - String - New calendar description - description
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function EditCalendarMetadata(Val Token
     , Val Calendar
@@ -131,7 +135,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function ClearMainCalendar(Val Token) Export
     
@@ -152,7 +156,7 @@ EndFunction
 // Token - String - Token - token
 // Calendar - String - Calendar ID - calendar
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function DeleteCalendar(Val Token, Val Calendar) Export
     
@@ -177,7 +181,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Array of calendar data mappings
 Function GetCalendarList(Val Token) Export
     
@@ -199,7 +203,7 @@ EndFunction
 // Token - String - Token - token
 // Calendar - String - Calendar ID - calendar
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function AddCalendarToList(Val Token, Val Calendar) Export
     
@@ -225,7 +229,7 @@ EndFunction
 // Token - String - Token - token
 // Calendar - String - Calendar ID - calendar
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetListCalendar(Val Token, Val Calendar) Export
     
@@ -247,7 +251,7 @@ EndFunction
 // Token - String - Token - token
 // Calendar - String - Calendar ID - calendar
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function DeleteCalendarFromList(Val Token, Val Calendar) Export
     
@@ -268,11 +272,11 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Calendar - String - Calendar ID - calendar
-// PrimaryColor - String - HEX mainоinного цinета (#ffffff) - primary
-// SecondaryColor - String - HEX addолнительного цinета (#ffffff) - secondary
+// PrimaryColor - String - HEX primary color (#ffffff) - primary
+// SecondaryColor - String - HEX secondary color (#ffffff) - secondary
 // Hidden - Boolean - Hidden calendar - hidden
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function EditListCalendar(Val Token
     , Val Calendar
@@ -289,7 +293,7 @@ Function EditListCalendar(Val Token
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
     URL = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar + "?colorRgbFormat=true";
     
-    Parameters = New Match;
+    Parameters = New Map;
     Parameters.Insert("hidden" , Hidden);
     Parameters.Insert("foregroundColor", PrimaryColor);
     Parameters.Insert("backgroundColor", SecondaryColor);
@@ -306,20 +310,20 @@ EndFunction
 
 // Get event description !NOCLI
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Empty event template
 Function GetEventDescription() Export
     
     CurrentDate = OPI_Tools.GetCurrentDate();
     Hour = 3600;
-    Event = New Match;
+    Event = New Map;
                        
     Event.Insert("Description" , ""); // Event description
     Event.Insert("Title" , "New event"); // Title events
     Event.Insert("Venue" , ""); // String description of the venue of the event
     Event.Insert("StartDate" , CurrentDate); // Date of start events
     Event.Insert("EndDate" , CurrentDate + Hour); // Date of end events
-    Event.Insert("ArrayOfAttachmentURLs", New Match); // Key - name, Value - URL to file
+    Event.Insert("ArrayOfAttachmentURLs", New Map); // TheKey - name, Value - URL to file
     Event.Insert("SendNotifications" , True); // Indication of sending notifications to participants
 
     Return Event;
@@ -333,7 +337,7 @@ EndFunction
 // Token - String - Token - token
 // Calendar - String - Calendar ID - calendar
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Array of event mappings
 Function GetEventList(Val Token, Val Calendar) Export
     
@@ -357,7 +361,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // Event - String - Event ID - event
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function GetEvent(Val Token, Val Calendar, Val Event) Export
     
@@ -385,7 +389,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // EventDescription - Key-Value Pair - Event description - props
 // 
-// Return value:
+// Returns:
 // String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
 Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export    
     Return EventManagement(Token, Calendar, EventDescription);
@@ -400,7 +404,7 @@ EndFunction
 // TargetCalendar - String - ID of the target calendar - to
 // Event - String - ID of the source calendar event - event
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event) Export
     
@@ -432,7 +436,7 @@ EndFunction
 // EventDescription - String - New event description - props
 // Event - String - Event ID - event
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export
     Return EventManagement(Token, Calendar, EventDescription, Event);
@@ -446,7 +450,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // Event - String - Event ID - event
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Google
 Function DeleteEvent(Val Token, Val Calendar, Val Event) Export
     
@@ -470,7 +474,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function ConvertDate(Val Date)
     
@@ -478,11 +482,11 @@ Function ConvertDate(Val Date)
     
     DateStructure = New Structure;
     
-    If Not TypeValue(Date) = Type("Date") Then
+    If Not TypeOf(Date) = Type("Date") Then
         Return Undefined;
     EndIf;
     
-    If Date = StartOfDay(Date) Then
+    If Date = BegOfDay(Date) Then
         DateFormat = "DF=yyyy-MM-dd";
         Field = "date";
     Else
@@ -504,12 +508,12 @@ Function ConvertAttachments(Val Attachments)
     
     AttachmentsArray = New Array;
     
-    If TypeValue(Attachments) = Type("Match") Or TypeValue(Attachments) = Type("Structure") Then
+    If TypeOf(Attachments) = Type("Map") Or TypeOf(Attachments) = Type("Structure") Then
         
         For Each Attachment In Attachments Do
             
             CurrentAttachment = New Structure;
-            CurrentAttachment.Insert("title" , Attachment.Key);
+            CurrentAttachment.Insert("title" , Attachment.TheKey);
             CurrentAttachment.Insert("fileUrl", Attachment.Value);
             
             AttachmentsArray.Add(CurrentAttachment);

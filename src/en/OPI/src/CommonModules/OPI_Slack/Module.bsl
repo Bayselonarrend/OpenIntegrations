@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Slack.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Slack.os
 // Library: Slack
 // CLI command: slack
 
@@ -29,10 +29,14 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:Typo-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region ManagementAndSettings
 
@@ -42,7 +46,7 @@
 // Parameters:
 // Token - String - Bot token - token
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack 
 Function GetBotInformation(Val Token) Export
     
@@ -62,7 +66,7 @@ EndFunction
 // Token - String - Bot token - token
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetWorkspaceList(Val Token, Val Cursor = "") Export
     
@@ -80,7 +84,7 @@ EndFunction
 // Token - String - Bot token - token
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetUserList(Val Token, Val Cursor = "") Export
     
@@ -102,23 +106,23 @@ EndFunction
 // Token - String - Bot token - token
 // Channel - String - Channel ID - channel
 // Text - String - Message text - text
-// Sending date - Date - Sending date for delayed message - date 
-// Blocks - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
+// SendingDate - Date - Sending date for delayed message - date 
+// Blocks - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
-Function SendMessage(Val Token, Val Channel, Val Text = "", Val Sending date = "", Val Blocks = "") Export
+Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = "", Val Blocks = "") Export
       
     String_ = "String";
-    HasDate = ValueIsFilled(Sending date); 
+    HasDate = ValueIsFilled(SendingDate); 
     Headers = GetAuthorizationHeader(Token);
     
-    If ValueIsFilled(Blocks) And TypeValue(Blocks) = Type(String_) Then
+    If ValueIsFilled(Blocks) And TypeOf(Blocks) = Type(String_) Then
         OPI_TypeConversion.GetCollection(Blocks);
         
-        If TypeValue(Blocks) = Type("Array") Then
+        If TypeOf(Blocks) = Type("Array") Then
             
-            For N = 0 For Blocks.WithinBoundary() Do
+            For N = 0 To Blocks.WithinBoundary() Do
                 OPI_TypeConversion.GetCollection(Blocks[N]);                    
             EndDo;
             
@@ -134,7 +138,7 @@ Function SendMessage(Val Token, Val Channel, Val Text = "", Val Sending date = "
     If HasDate Then
         
         URL = "https://slack.com/api/chat.scheduleMessage";
-        OPI_Tools.AddField("post_at", Sending date, "Date", Parameters); 
+        OPI_Tools.AddField("post_at", SendingDate, "Date", Parameters); 
         
     Else
         
@@ -157,9 +161,9 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Text - String - Message text - text
 // User - String - User ID - user 
-// Blocks - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
+// Blocks - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function SendEphemeralMessage(Val Token
     , Val Channel
@@ -169,7 +173,7 @@ Function SendEphemeralMessage(Val Token
     
     String_ = "String";
     
-    If ValueIsFilled(Blocks) And Not TypeValue(Blocks) = Type(String_) Then
+    If ValueIsFilled(Blocks) And Not TypeOf(Blocks) = Type(String_) Then
         OPI_TypeConversion.GetArray(Blocks);
     EndIf;
     
@@ -197,9 +201,9 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Timestamp - String - Message timestamp - stamp
 // Text - String - New message text - text
-// BlockArray - Array of Structures - Array of block descriptions - blocks - JSON array of block descriptions
+// BlockArray - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val BlockArray = "") Export
     
@@ -228,7 +232,7 @@ EndFunction
 // Timestamp - String - Timestamp or message ID - stamp
 // IsDelayed - Boolean - Indicator of deleting a delayed message - issheduled
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export
     
@@ -262,7 +266,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export
     
@@ -287,7 +291,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Timestamp - String - Timestamp or message ID - stamp
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export
     
@@ -313,7 +317,7 @@ EndFunction
 // Timestamp - String - Timestamp or message ID - stamp
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export
     
@@ -344,7 +348,7 @@ EndFunction
 // ExcludeArchived - Boolean - Indicator of excluding archived channels - notarchived 
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export
     
@@ -369,7 +373,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetChannelUserList(Val Token, Val Channel, Val Cursor = "") Export
     
@@ -394,7 +398,7 @@ EndFunction
 // Name - String - Channel name - title
 // Private - Boolean - Create channel as private - private
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function CreateChannel(Val Token, Val Name, Val Private = False) Export
     
@@ -418,7 +422,7 @@ EndFunction
 // Token - String - Bot token - token
 // Channel - String - Channel ID - channel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function ArchiveChannel(Val Token, Val Channel) Export
     
@@ -435,7 +439,7 @@ EndFunction
 // Token - String - Bot token - token
 // Channel - String - Channel ID - channel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetChannel(Val Token, Val Channel) Export
     
@@ -452,7 +456,7 @@ EndFunction
 // Token - String - Bot token - token
 // Channel - String - Channel ID - channel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetChannelHistory(Val Token, Val Channel) Export
     
@@ -470,7 +474,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // ArrayOfUsers - Array Of String - User ID Array - users
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export
     
@@ -478,7 +482,7 @@ Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export
     Headers = GetAuthorizationHeader(Token);
     
     OPI_TypeConversion.GetCollection(ArrayOfUsers);
-    ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
+    ArrayOfUsers = StrConcat(ArrayOfUsers, ",");
     
     Parameters = New Structure;
     OPI_Tools.AddField("channel", Channel , "String", Parameters);
@@ -498,7 +502,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // User - String - User ID - user
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function KickUserFromChannel(Val Token, Val Channel, Val User) Export
     
@@ -522,7 +526,7 @@ EndFunction
 // Token - String - Bot token - token
 // Channel - String - Channel ID - channel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function JoinChannel(Val Token, Val Channel) Export
     
@@ -539,7 +543,7 @@ EndFunction
 // Token - String - Bot token - token
 // Channel - String - Channel ID - channel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function LeaveChannel(Val Token, Val Channel) Export
     
@@ -557,7 +561,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Topic - String - Channel topic - theme
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export
     
@@ -582,7 +586,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Purpose - String - Channel purpose - purpose
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export
     
@@ -607,7 +611,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 // Name - String - New channel name - title
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function RenameChannel(Val Token, Val Channel, Val Name) Export
     
@@ -633,9 +637,9 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Bot token - token
-// ArrayOfUsers - Array of Strings - User ID Array - users
+// ArrayOfUsers - Array of String - User ID Array - users
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function OpenDialog(Val Token, Val ArrayOfUsers) Export
     
@@ -643,7 +647,7 @@ Function OpenDialog(Val Token, Val ArrayOfUsers) Export
     Headers = GetAuthorizationHeader(Token);
     
     OPI_TypeConversion.GetCollection(ArrayOfUsers);
-    ArrayOfUsers = StrJoin(ArrayOfUsers, ",");
+    ArrayOfUsers = StrConcat(ArrayOfUsers, ",");
     
     Parameters = New Structure;
     OPI_Tools.AddField("users", ArrayOfUsers, "String", Parameters);
@@ -661,7 +665,7 @@ EndFunction
 // Token - String - Bot token - token
 // Dialog - String - Dialog ID - conv
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function CloseDialog(Val Token, Val Dialog) Export
     
@@ -683,7 +687,7 @@ EndFunction
 // Channel - String - Channel for selection - channel 
 // PageNumber - Number, String - Page number - page
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export
     
@@ -710,7 +714,7 @@ EndFunction
 // Title - String - File name in Slack - title
 // Channel - String - Channel ID - channel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export
     
@@ -737,7 +741,7 @@ Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = 
         Return Response;
     EndIf;
     
-    Files = New Match;
+    Files = New Map;
     Files.Insert(FileName, File);
     
     Response = OPI_Tools.PostMultipart(URL, , Files, , Headers);
@@ -762,7 +766,7 @@ EndFunction
 // Token - String - Bot token - token
 // FileID - String - File identifier - fileid
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetFileData(Val Token, Val FileID) Export
     
@@ -780,7 +784,7 @@ EndFunction
 // Token - String - Bot token - token
 // FileID - String - File identifier - fileid
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function DeleteFile(Val Token, Val FileID) Export
     
@@ -798,7 +802,7 @@ EndFunction
 // Token - String - User token - token
 // FileID - String - File identifier - fileid
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function MakeFilePublic(Val Token, Val FileID) Export
     
@@ -816,7 +820,7 @@ EndFunction
 // Token - String - User token - token
 // FileID - String - File identifier - fileid
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function MakeFilePrivate(Val Token, Val FileID) Export
     
@@ -839,7 +843,7 @@ EndFunction
 // Channel - String - Channel for selection - channel 
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetExternalFileList(Val Token, Val Channel = "", Val Cursor = "") Export
     
@@ -863,7 +867,7 @@ EndFunction
 // Token - String - Bot token - token
 // FileID - String - File identifier - fileid
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function GetExternalFile(Val Token, Val FileID) Export
   
@@ -882,14 +886,14 @@ EndFunction
 // URL - String - URL to external file - url
 // Title - String - File title for Slack - title
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function AddExternalFile(Val Token, Val URL, Val Title) Export
     
     String_ = "String";
     URL = "https://slack.com/api/files.remote.add";
     Headers = GetAuthorizationHeader(Token);
-    UID = String(New UniqueIdentifier());
+    UID = String(New UUID());
     
     Parameters = New Structure;
     OPI_Tools.AddField("external_url", URL , String_, Parameters);
@@ -910,7 +914,7 @@ EndFunction
 // FileID - String - File identifier - fileid
 // ChannelArray - Array Of String - Array of channels for sending - channels
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export
     
@@ -918,7 +922,7 @@ Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export
     Headers = GetAuthorizationHeader(Token);
     
     OPI_TypeConversion.GetCollection(ChannelArray);
-    ChannelArray = StrJoin(ChannelArray, ",");
+    ChannelArray = StrConcat(ChannelArray, ",");
     
     Parameters = New Structure;
     OPI_Tools.AddField("file" , FileID , "String", Parameters);
@@ -937,7 +941,7 @@ EndFunction
 // Token - String - Bot token - token
 // FileID - String - File identifier - fileid
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Slack
 Function DeleteExternalFile(Val Token, Val FileID) Export
   
@@ -959,13 +963,13 @@ EndFunction
 // URL - String - Image URL - picture
 // AlternateText - String - Alternate text of the image - alt
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Image block
 Function GenerateImageBlock(Val URL, Val AlternateText = "") Export
     
     String_ = "String";
     
-    Block = New Match;
+    Block = New Map;
     OPI_Tools.AddField("type" , "image" , String_, Block);
     OPI_Tools.AddField("image_url", URL , String_, Block);
     OPI_Tools.AddField("alt_text" , AlternateText , String_, Block);
@@ -978,13 +982,13 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function GetAuthorizationHeader(Val Token)
 
     OPI_TypeConversion.GetLine(Token);
     
-    Headers = New Match;
+    Headers = New Map;
     Headers.Insert("Authorization", "Bearer " + Token);
     Return Headers;
         
@@ -993,7 +997,7 @@ EndFunction
 Function DialogManagement(Val Token, Val Channel, Val URL, Val RequestType = "POST")
     
     Headers = GetAuthorizationHeader(Token);
-    RequestType = inReg(RequestType);
+    RequestType = Upper(RequestType);
     
     Parameters = New Structure;
     OPI_Tools.AddField("channel", Channel, "String", Parameters);
@@ -1011,7 +1015,7 @@ EndFunction
 Function FileManagement(Val Token, Val FileID, Val URL, Val RequestType = "POST")
     
     Headers = GetAuthorizationHeader(Token);
-    RequestType = inReg(RequestType);
+    RequestType = Upper(RequestType);
     
     Parameters = New Structure;
     OPI_Tools.AddField("file", FileID , "String", Parameters);

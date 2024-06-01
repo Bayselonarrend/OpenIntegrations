@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/tools/Modules/internal/Modules/OPI_Cryptography.os
+﻿// 
 
 // MIT License
 
@@ -28,21 +28,25 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnusedLocalVariable-off
 
-#Region ServiceProgramInterface
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
+#Region Internal
 
 #Region BSP
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2019, LLC 1C-Soft
 // All rights reserved. This program and accompanying materials are provided 
-// in withоотinетwithтinии with уwithлоinиями лицензии Attribution 4.0 International (CC BY 4.0)
+// under the terms of the Attribution 4.0 International (CC BY 4.0 license)
 // License text available at:
 // https://creativecommons.org/licenses/by/4.0/legalcode
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Function HMACSHA256(Val Key, Val Data) Export
+Function HMACSHA256(Val TheKey, Val Data) Export
     
-    Return HMAC(Key, Data, HashFunction.SHA256, 64);
+    Return HMAC(TheKey, Data, HashFunction.SHA256, 64);
     
 EndFunction
 
@@ -55,28 +59,28 @@ Function Hash(BinaryData, Type) Export
         
 EndFunction
 
-Function HMAC(Val Key, Val Data, Type, BlockSize) Export
+Function HMAC(Val TheKey, Val Data, Type, BlockSize) Export
     
     Twice = 2;
     
-    If Key.Size() > BlockSize Then
-        Key = Hash(Key, Type);
+    If TheKey.Size() > BlockSize Then
+        TheKey = Hash(TheKey, Type);
     EndIf;
     
-    If Key.Size() <= BlockSize Then
-        Key = GetHexStringFromBinaryData(Key);
-        Key = Left(Key + RepeatString("00", BlockSize), BlockSize * Twice);
+    If TheKey.Size() <= BlockSize Then
+        TheKey = GetHexStringFromBinaryData(TheKey);
+        TheKey = Left(TheKey + RepeatString("00", BlockSize), BlockSize * Twice);
     EndIf;
     
-    Key = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
+    TheKey = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(TheKey));
     
     Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
     Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
     
-    Ipad.WriteBitwiseExclusiveOr(0, Key);
+    Ipad.WriteBitwiseExclusiveOr(0, TheKey);
     Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
     
-    Opad.WriteBitwiseExclusiveOr(0, Key);
+    Opad.WriteBitwiseExclusiveOr(0, TheKey);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
     
     Return Hash(ConcatenateBinaryData(okeypad, Hash(ConcatenateBinaryData(ikeypad, Data), Type)), Type);
@@ -89,7 +93,7 @@ Function ConcatenateBinaryData(BinaryData1, BinaryData2) Export
     BinaryDataArray.Add(BinaryData1);
     BinaryDataArray.Add(BinaryData2);
     
-    Return JoinBinaryData(BinaryDataArray);
+    Return ConcatBinaryData(BinaryDataArray);
     
 EndFunction
 
@@ -97,11 +101,11 @@ Function RepeatString(String, Quantity) Export
     
     Parts = New Array(Quantity);
     
-    For To = 1 For Quantity Do
+    For K = 1 To Quantity Do
         Parts.Add(String);
     EndDo;
 
-    Return StrJoin(Parts, "");
+    Return StrConcat(Parts, "");
     
 EndFunction
 

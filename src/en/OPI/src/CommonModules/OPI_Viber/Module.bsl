@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Viber.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Viber.os
 // Library: Viber
 // CLI Command: viber
 
@@ -29,15 +29,19 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region SettingsAndInformation
 
 // Set Webhook
-// InАЖNО: Уwithтаноintoа Webhook обязательto по праinилам Viber. For thisго todо иметь withinобоdный URL,
+// IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this.,
 // which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published
 // on the server - you can use an HTTP service. Information about new messages will also be sent there
 // Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working
@@ -46,7 +50,7 @@
 // Token - String - Viber Token - token
 // URL - String - URL for setting up Webhook - url
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function SetWebhook(Val Token, Val URL) Export
     
@@ -65,7 +69,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function GetChannelInformation(Val Token) Export
     
@@ -81,7 +85,7 @@ EndFunction
 // Token - String - Token - token
 // UserID - String, Number - Viber User ID - user
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function GetUserData(Val Token, Val UserID) Export
     
@@ -103,7 +107,7 @@ EndFunction
 // Token - String - Viber Token - token
 // UserIDs - String,Number,Array of String,Number - Viber User(s) ID - users
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function GetOnlineUsers(Val Token, Val UserIDs) Export
     
@@ -132,7 +136,7 @@ EndFunction
 // SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
 // Keyboard - Structure Of String - See CreateKeyboardFromArrayButton - keyboard
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function SendTextMessage(Val Token
     , Val Text
@@ -154,7 +158,7 @@ EndFunction
 // SendingToChannel - boolean - Sending to channel or bot chat - ischannel
 // Description - String - Image annotation - description
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export
     
@@ -173,7 +177,7 @@ EndFunction
 // Extension - String - File extension - ext
 // Size - Number - File size. If not filled in > determined automatically by downloading the file - size
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function SendFile(Val Token
     , Val URL
@@ -190,7 +194,7 @@ Function SendFile(Val Token
     EndIf;
     
     String_ = "String";
-    Extension = StringReplace(Extension, ".", "");
+    Extension = StrReplace(Extension, ".", "");
     
     Parameters = New Structure;
     OPI_Tools.AddField("URL" , URL , String_, Parameters);
@@ -211,7 +215,7 @@ EndFunction
 // UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user  
 // SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function SendContact(Val Token
     , Val ContactName
@@ -237,7 +241,7 @@ EndFunction
 // UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user  
 // SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export
     
@@ -258,7 +262,7 @@ EndFunction
 // UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user  
 // SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Viber
 Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export
     
@@ -270,10 +274,10 @@ EndFunction
 // Returns a keyboard structure for messages
 // 
 // Parameters:
-// ButtonArray - Array of Strings - Array of buttons - buttons
+// ButtonArray - Array of String - Array of buttons - buttons
 // ButtonColor - String - HEX color of buttons with # at the beginning - color
 // 
-// Return value:
+// Returns:
 // Structure - Create a keyboard from an array of buttons:
 // * Buttons - Array of Structure - Array of formed buttons 
 // * Type - String - KeyboardType 
@@ -309,7 +313,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 // Send message.
 // 
@@ -325,8 +329,8 @@ EndFunction
 // Text - String - Message text
 // Keyboard - Structure Of String - Keyboard, if needed, see CreateKeyboardFromArrayButton 
 // 
-// Return value:
-// Arbitrary, HTTP Response - Send message
+// Returns:
+// Arbitrary, HTTPResponse - Send message
 Function SendMessage(Val Token
     , Val Type
     , Val UserID
@@ -349,7 +353,7 @@ Function SendMessage(Val Token
         ParametersStructure.Insert("text", Text);
     EndIf;
     
-    If TypeValue(Keyboard) = Type("Structure") Then
+    If TypeOf(Keyboard) = Type("Structure") Then
         ParametersStructure.Insert("keyboard", Keyboard);
     EndIf;
     
@@ -405,7 +409,7 @@ Function TokenInHeaders(Val Token)
     
     OPI_TypeConversion.GetLine(Token);
     
-    HeadersStructure = New Match;
+    HeadersStructure = New Map;
     HeadersStructure.Insert("X-Viber-Auth-Token", Token);
     Return HeadersStructure;
     

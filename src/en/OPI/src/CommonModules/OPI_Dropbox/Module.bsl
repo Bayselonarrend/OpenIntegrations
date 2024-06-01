@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Dropbox.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Dropbox.os
 // Library: Dropbox
 // CLI Command: dropbox
 
@@ -28,10 +28,14 @@
 
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region AccountAndAuthorization
 
@@ -41,7 +45,7 @@
 // Parameters:
 // AppKey - String - Application key - appkey
 // 
-// Return value:
+// Returns:
 // String - URL for browser transition
 Function GetAuthorizationLink(Val AppKey) Export
     
@@ -60,7 +64,7 @@ EndFunction
 // AppSecret - String - Application secret - appsecret
 // Code - String - Code from the authorization page - code
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
     
@@ -79,7 +83,7 @@ Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
     Connection = OPI_Tools.CreateConnection(Server, AppKey, AppSecret);
 
     ParameterString = OPI_Tools.RequestParametersToString(Parameters);
-    Data = Right(ParameterString, StrLength(ParameterString) - 1);
+    Data = Right(ParameterString, StrLen(ParameterString) - 1);
 
     Request.SetBodyFromString(Data);
     
@@ -98,7 +102,7 @@ EndFunction
 // AppSecret - String - Application secret - appsecret
 // RefreshToken - String - Refresh token - refresh
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function RefreshToken(Val AppKey, Val AppSecret, Val RefreshToken) Export
     
@@ -124,7 +128,7 @@ EndFunction
 // Token - String - Token - token
 // Account - String - Account ID. Current token account if not filled - account
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function GetAccountInformation(Val Token, Val Account = "") Export
     
@@ -144,7 +148,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token 
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function GetSpaceUsageData(Val Token) Export
     
@@ -173,7 +177,7 @@ EndFunction
 // Path - String - Path to the object - path
 // Detailed - Boolean - Adds additional information fields for media files - detail 
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox 
 Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export
     
@@ -199,7 +203,7 @@ EndFunction
 // Detailed - Boolean - Adds additional information fields for media files - detail
 // Cursor - String - Cursor from the previous request to get the next set of files - cursor
 // 
-// Return value:
+// Returns:
 // HTTPResponse - Get list of folder files
 Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export
     
@@ -229,13 +233,13 @@ Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Va
 EndFunction
 
 // Get preview
-// Forлучает PDF or HTML преinью объеtoта (тольtoо for тоtoументоin)
+// Gets PDF or HTML preview of the object (for documents only)
 // 
 // Parameters:
 // Token - String - Token - token
 // Path - String - Path to the object - path
 // 
-// Return value:
+// Returns:
 // BinaryData - document preview 
 Function GetPreview(Val Token, Val Path) Export
     
@@ -255,7 +259,7 @@ EndFunction
 // Path - String - Save path on Dropbox - path
 // Overwrite - Boolean - Overwrite file in case of path conflicts - overwrite
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox 
 Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export
     
@@ -265,7 +269,7 @@ Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export
     
     Mode = ?(Overwrite, "overwrite", "add");
     Size = File.Size();
-    Boundary = 100000000;
+    Border = 100000000;
         
     If Size > Border Then
         Response = UploadLargeFile(Token, File, Path, Mode);
@@ -285,7 +289,7 @@ EndFunction
 // FileURL - String - URL source of the file - url
 // Path - String - Save path on Dropbox - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export
     
@@ -309,7 +313,7 @@ EndFunction
 // Token - String - Token - token
 // JobID - String - ID of the asynchronous job from the UploadFileByURL response - job 
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function GetUploadStatusByURL(Val Token, Val JobID) Export
     
@@ -333,13 +337,13 @@ EndFunction
 // Path - String - Path to the object to delete - path
 // Irrecoverable - String - Delete object without the possibility of recovery - permanently
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
-Function DeleteObject(Val Token, Val Path, Val Irretrievably = False) Export
+Function DeleteObject(Val Token, Val Path, Val Irrecoverable = False) Export
     
-    OPI_TypeConversion.GetBoolean(Irretrievably);
+    OPI_TypeConversion.GetBoolean(Irrecoverable);
     
-    If Irretrievably Then
+    If Irrecoverable Then
         URL = "https://api.dropboxapi.com/2/files/permanently_delete";
     Else
         URL = "https://api.dropboxapi.com/2/files/delete_v2";
@@ -357,17 +361,17 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // From - String - Path to the original object - form
-// To - String - Target path for the new object - to
+// Target - String - Target path for the new object - to
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
-Function CopyObject(Val Token, Val From, Val To) Export
+Function CopyObject(Val Token, Val From, Val Target) Export
    
     URL = "https://api.dropboxapi.com/2/files/copy_v2";
     
     Parameters = New Structure;
     OPI_Tools.AddField("from_path", From, "String", Parameters);
-    OPI_Tools.AddField("to_path" , To , "String", Parameters);
+    OPI_Tools.AddField("to_path" , Target , "String", Parameters);
     
     Headers = GetRequestHeaders(Token);
 
@@ -383,17 +387,17 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // From - String - Path to the original object - form
-// To - String - Target path for the new object - to
+// Target - String - Target path for the new object - to
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
-Function MoveObject(Val Token, Val From, Val To) Export
+Function MoveObject(Val Token, Val From, Val Target) Export
 
     URL = "https://api.dropboxapi.com/2/files/move_v2";
     
     Parameters = New Structure;
     OPI_Tools.AddField("from_path", From, "String", Parameters);
-    OPI_Tools.AddField("to_path" , To , "String", Parameters);
+    OPI_Tools.AddField("to_path" , Target , "String", Parameters);
     
     Headers = GetRequestHeaders(Token);
 
@@ -410,7 +414,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Target path for creating the directory - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function CreateFolder(Val Token, Val Path) Export
     
@@ -428,7 +432,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path or ID of the file - path
 // 
-// Return value:
+// Returns:
 // BinaryData - binary data of the file
 Function DownloadFile(Val Token, Val Path) Export
     
@@ -446,7 +450,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path or ID of the directory - path
 // 
-// Return value:
+// Returns:
 // BinaryData - binary data of the zip archive with the contents of the directory
 Function DownloadFolder(Val Token, Val Path) Export
     
@@ -465,7 +469,7 @@ EndFunction
 // Path - String - Path to the object - path
 // Quantity - String, Number - Number of the latest versions of the object to display - amount
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function GetObjectVersionList(Val Token, Val Path, Val Quantity = 10) Export
     
@@ -483,14 +487,14 @@ Function GetObjectVersionList(Val Token, Val Path, Val Quantity = 10) Export
 EndFunction
 
 // Restore object to version
-// Inоwithwithтаtoinлиinает withоwithтояние объеtoта to необхоdимой inерwithии (реinfromии)
+// Restores object state to required version (revision)
 // 
 // Parameters:
 // Token - String - Token - token
 // Path - String - Path to the object - path
 // Version - String - ID of the version (revision) for restoration - rev
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export
     
@@ -516,9 +520,9 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token
-// Paths - String, Array of Strings - Path or set of paths to the files - paths
+// Paths - String, Array of String - Path or set of paths to the files - paths
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function GetTagList(Val Token, Val Paths) Export
     
@@ -543,7 +547,7 @@ EndFunction
 // Path - String - Path to the object for which the tag needs to be created - path
 // Tag - String - Tag text - tag
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function AddTag(Val Token, Val Path, Val Tag) Export
     
@@ -559,7 +563,7 @@ EndFunction
 // Path - String - Path to the object whose tag needs to be deleted - path
 // Tag - String - Tag text - tag
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function DeleteTag(Val Token, Val Path, Val Tag) Export
     
@@ -578,7 +582,7 @@ EndFunction
 // Token - String - Token - token
 // Path - String - Path to the target directory - path
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function PublishFolder(Val Token, Val Path) Export
     
@@ -594,9 +598,9 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token
-// FolderID - String - ID публичного directory (shared folder ID) - folder
+// FolderID - String - ID of the public catalog (shared folder ID) - folder
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function CancelFolderPublication(Val Token, Val FolderID) Export
     
@@ -618,10 +622,10 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // FileID - String - ID of the file to be accessed - fileid
-// EmailAddresses - String, Array of Strings - List of email addresses of users being added - emails
+// EmailAddresses - String, Array of String - List of email addresses of users being added - emails
 // ViewOnly - Boolean - Prohibits file editing for the external user - readonly
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly = True) Export
     
@@ -631,7 +635,7 @@ Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly 
     OPI_TypeConversion.GetLine(FileID);
     OPI_TypeConversion.GetBoolean(ViewOnly);
     
-    If Not StringStartsWith(FileID, "id:") Then
+    If Not StrStartsWith(FileID, "id:") Then
         FileID = "id:" + FileID;
     EndIf;
     
@@ -641,7 +645,7 @@ Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly 
     
     For Each Address In EmailAddresses Do
              
-        UserData = New Match;
+        UserData = New Map;
         OPI_Tools.AddField(".tag" , "email", String_, UserData);
         OPI_Tools.AddField("email", Address , String_, UserData);
         
@@ -670,11 +674,11 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token
-// FolderID - String - ID публичного directory (shared folder ID) - folder
-// EmailAddresses - String, Array of Strings - List of email addresses of users being added - emails
+// FolderID - String - ID of the public catalog (shared folder ID) - folder
+// EmailAddresses - String, Array of String - List of email addresses of users being added - emails
 // ViewOnly - Boolean - Prohibits file editing for the external user - readonly
 // 
-// Return value:
+// Returns:
 // Undefined - empty response
 Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewOnly = True) Export
     
@@ -690,7 +694,7 @@ Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewO
     
     For Each Address In EmailAddresses Do
              
-        UserData = New Match;
+        UserData = New Map;
         OPI_Tools.AddField(".tag" , "email", String_, UserData);
         OPI_Tools.AddField("email", Address , String_, UserData);
         
@@ -719,7 +723,7 @@ EndFunction
 // Token - String - Token - token
 // JobID - String - AsynchronousJobID - job
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export
     
@@ -742,13 +746,13 @@ EndFunction
 // Token - String - Token - token
 // FileID - String - ID of the file to be accessed - fileid
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Dropbox
 Function CancelFilePublication(Val Token, Val FileID) Export
 	
 	OPI_TypeConversion.GetLine(FileID);
     
-    If Not StringStartsWith(FileID, "id:") Then
+    If Not StrStartsWith(FileID, "id:") Then
         FileID = "id:" + FileID;
     EndIf;
     
@@ -768,7 +772,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function ProcessObject(Val Token, Val URL, Val Path, Val InHeaders = False)
     
@@ -811,13 +815,13 @@ Function GetRequestHeaders(Val Token, Val Parameters = "")
     
     OPI_TypeConversion.GetLine(Token);
         
-    Headers = New Match;
+    Headers = New Map;
     Headers.Insert("Authorization" , "Bearer " + Token);
     
     If ValueIsFilled(Parameters) Then
         
         JSON = OPI_Tools.JSONString(Parameters, "No");
-        JSON = StringReplace(JSON, Symbols.VK + Symbols.PS, "");
+        JSON = StrReplace(JSON, Chars.VK + Chars.PS, "");
 
         Headers.Insert("Dropbox-API-Arg", JSON);
     
@@ -845,27 +849,27 @@ Function UploadLargeFile(Val Token, Val File, Val Path, Val Mode)
         Parameters = New Structure("cursor", Cursor);
         Headers = GetRequestHeaders(Token, Parameters);
         
-        ReadingData = New ReadingData(File);
-        BytesRead = ReadingData.Skip(CurrentPosition);
-        Result = ReadingData.Read(ChunkSize);
-        Current data = Result.GetBinaryData();
-        CurrentSize = Current data.Size();
+        DataReader = New DataReader(File);
+        BytesRead = DataReader.Skip(CurrentPosition);
+        Result = DataReader.Read(ChunkSize);
+        CurrentData = Result.GetBinaryData();
+        CurrentSize = CurrentData.Size();
         NextPosition = CurrentPosition + CurrentSize; 
         
-        If Not ValueIsFilled(Current data) Then
+        If Not ValueIsFilled(CurrentData) Then
             Break;
         EndIf;
 
-        Response = OPI_Tools.PostBinary(URL, Current data, Headers);
+        Response = OPI_Tools.PostBinary(URL, CurrentData, Headers);
         
         CurrentPosition = NextPosition;
         
-        // !OInt KBytes = 1024;
-        // !OInt MByte = KBytes * KBytes;
-        // !OInt Notify(OPI_Tools.ProgressInformation(CurrentPosition, TotalSize, "MB", MByte));
+        // !OInt KB = 1024;
+        // !OInt MB = KB * KB;
+        // !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
         
         // !OInt PerformGarbageCollection();
-        // !OInt ReleaseObject(Current data);
+        // !OInt ReleaseObject(CurrentData);
                
     EndDo;
     

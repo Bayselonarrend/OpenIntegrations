@@ -29,7 +29,7 @@
   <version>1.9.0</version>
   <detailedInformation>
     <key>ru</key>
-    <value>Open integrations package - toбор библиотеto for интеграции with неtoоторыми популярными API for 1C:Enterprise. He consists of general modules, each responsible for its own API, as well as several tool modules common for all.</value>
+    <value>The Open Integration Package is a set of libraries for integrating with some popular APIs for 1C:Enterprise. It consists of common modules, each responsible for its own API, as well as several shared tool modules..</value>
   </detailedInformation>
   <vendorInformationAddress>
     <key>ru</key>
@@ -39,14 +39,6 @@
     <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
-  <languages uuid="0e858b44-34f3-4d20-986d-13290bb5ba5a">
-    <name>Russian</name>
-    <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:LanguageExtension">
-      <languageCode>Checked</languageCode>
-    </extension>
-    <languageCode>ru</languageCode>
-  </languages>
   <subsystems>Subsystem.OPI_Integrations</subsystems>
   <commonModules>CommonModule.OPI_Tools</commonModules>
   <commonModules>CommonModule.OPI_Cryptography</commonModules>

@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_Notion.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Notion.os
 // Library: Notion
 // CLI command: notion
 
@@ -31,12 +31,15 @@
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
 
-// @skip-check method-too-many-params
+//@skip-check method-too-many-params
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 #Region PageManagement
 
@@ -48,7 +51,7 @@
 // Parent - String - Parent ID - page
 // Title - String - Page title - title
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function CreatePage(Val Token, Val Parent, Val Title) Export
     
@@ -79,7 +82,7 @@ EndFunction
 // Parent - String - Parent database ID - base
 // Data - Key-Value Pair - Properties match - data
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export
     
@@ -108,7 +111,7 @@ EndFunction
 // Token - String - Token - token
 // Page - String - Page ID - page 
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function GetPage(Val Token, Val Page) Export
     
@@ -132,9 +135,9 @@ EndFunction
 // Data - Key-Value Pair - Matching of editable parameters - data
 // Icon - String - URL of the page icon image - icon
 // Cover - String - URL of the page cover image - cover
-// Archived - Boolean - Archive page or нет (boolean) - archive
+// Archived - Boolean - Archive page or not (boolean) - archive
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function EditPageProperties(Val Token
     , Val Page
@@ -155,32 +158,32 @@ Function EditPageProperties(Val Token
     Files = "files";
     
     If ValueIsFilled(Data) 
-        And (TypeValue(Data) = Type("Match") Or TypeValue(Data) = Type("Structure")) Then
+        And (TypeOf(Data) = Type("Map") Or TypeOf(Data) = Type("Structure")) Then
         Properties = FillDataBySchema(Page, Data, Token, False); 
     Else 
-        Properties = New Match;
+        Properties = New Map;
     EndIf;
         
     If ValueIsFilled(Icon) Then
-        Icon match = New Match;
-        Icon match.Insert("Icon", Icon);
+        IconMap = New Map;
+        IconMap.Insert("Icon", Icon);
         
-        Icon object = ConvertValueByType(Files, Icon match);
-        Icon object = Icon object[Files][0];
-        Icon object.Delete("name");
+        IconObject = ConvertValueByType(Files, IconMap);
+        IconObject = IconObject[Files][0];
+        IconObject.Delete("name");
         
-        Parameters.Insert("icon", Icon object);
+        Parameters.Insert("icon", IconObject);
     EndIf;
     
     If ValueIsFilled(Cover) Then
-        Cover match = New Match;
-        Cover match.Insert("Cover", Cover);
+        CoverMap = New Map;
+        CoverMap.Insert("Cover", Cover);
 
-        Cover object = ConvertValueByType(Files, Cover match);
-        Cover object = Cover object[Files][0];
-        Cover object.Delete("name");
+        CoverObject = ConvertValueByType(Files, CoverMap);
+        CoverObject = CoverObject[Files][0];
+        CoverObject.Delete("name");
 
-        Parameters.Insert("cover", Cover object);
+        Parameters.Insert("cover", CoverObject);
     EndIf;
 
     Parameters.Insert("properties", Properties);
@@ -207,7 +210,7 @@ EndFunction
 // Title - String - Database title - title
 // Properties - Structure Of String - Database properties - props
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export
 
@@ -223,14 +226,14 @@ Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") E
     // InProgress : checkbox 
     // Quantity    : number
     // Date : date
-    // Status : Match
+    // Status : Map
     // Аtoтиinный : green
     // Inactive    : red
     // Архиin : yellow
     
     // All pages created as children must have parent base properties
 
-    If Not TypeValue(Properties) = Type("Structure") And Not TypeValue(Properties) = Type("Match") Then
+    If Not TypeOf(Properties) = Type("Structure") And Not TypeOf(Properties) = Type("Map") Then
         Properties = New Structure("Name", "title");
     EndIf;
 
@@ -254,7 +257,7 @@ EndFunction
 // Token - String - Token - token
 // Base - String - Database ID - base
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function GetDatabase(Val Token, Val Base) Export
    
@@ -276,11 +279,11 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Base - String - Target database ID - base
-// Properties - Map from KeyAndValue - New or modified database properties - props
+// Properties - Map of KeyAndValue - New or modified database properties - props
 // Title - String - New database title - title
 // Description - String - New database description - description
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export
     
@@ -302,7 +305,7 @@ Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Ti
         AddDatabaseDescription(Description, Parameters);
     EndIf;
     
-    If TypeValue(Properties) = Type("Structure") Or TypeValue(Properties) = Type("Match") Then
+    If TypeOf(Properties) = Type("Structure") Or TypeOf(Properties) = Type("Map") Then
         AddDatabaseProperties(Properties, Parameters);
     EndIf;
     
@@ -322,10 +325,10 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Parent - String - Parent block or page ID - page
-// Block - String, Map From KeyAndValue - Block ID or block sample itself - block
+// Block - String, Map Of KeyAndValue - Block ID or block sample itself - block
 // InsertAfter - String - Block ID after which to insert the new one - prev
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export
   
@@ -334,14 +337,14 @@ Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Exp
     OPI_TypeConversion.GetLine(InsertAfter);
     OPI_TypeConversion.GetCollection(Block);
     
-    If TypeValue(Block) = Type("Array") Then
+    If TypeOf(Block) = Type("Array") Then
         Block = Block[0];
     EndIf;
     
     Headers = CreateRequestHeaders(Token); 
     ConvertID(Parent);
     
-    If TypeValue(Block) = Type("String") Then
+    If TypeOf(Block) = Type("String") Then
         ConvertID(Block);
         Block = ReturnBlock(Token, Block);
     EndIf;
@@ -349,7 +352,7 @@ Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Exp
     BlockArray = New Array;
     BlockArray.Add(Block);
     
-    Parameters = New Match;
+    Parameters = New Map;
     Parameters.Insert("children", BlockArray);
     
     If ValueIsFilled(InsertAfter) Then
@@ -363,14 +366,14 @@ Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Exp
        
 EndFunction
 
-// Inернуть блоto.
+// Return block.
 // 
 // Parameters:
 // Token - String - Token - token
 // BlockID - String - Block ID - block
 // OnlyBase - Boolean - True > service fields are deleted, only the block itself remains - core
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export
     
@@ -398,7 +401,7 @@ EndFunction
 // Token - String - Token - token
 // BlockID - String - Parent block ID - block
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function ReturnChildBlocks(Val Token, Val BlockID) Export
     
@@ -421,7 +424,7 @@ EndFunction
 // Token - String - Token - token
 // BlockID - String - Block ID - block
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function DeleteBlock(Val Token, Val BlockID) Export
     
@@ -447,7 +450,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function UserList(Val Token) Export
 
@@ -467,7 +470,7 @@ EndFunction
 // Token - String - Token - token
 // UserID - String - Target user ID - user
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - Serialized JSON response from Notion
 Function GetUserData(Val Token, Val UserID) Export
     
@@ -487,13 +490,13 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function CreateRequestHeaders(Val Token)
     
     OPI_TypeConversion.GetLine(Token);
     
-    Headers = New Match;
+    Headers = New Map;
     Headers.Insert("Authorization" , "Bearer " + Token);
     Headers.Insert("Notion-Version", "2022-06-28");
     
@@ -505,7 +508,7 @@ Procedure ConvertID(Identifier)
     
     OPI_TypeConversion.GetLine(Identifier);
     
-    Identifier = StringReplace(Identifier, "-", "");
+    Identifier = StrReplace(Identifier, "-", "");
     
 EndProcedure
 
@@ -545,7 +548,7 @@ Procedure AddPageHeader(Val Title, MainStructure)
     SubordinateStructure = New Structure;
     DataStructure = New Structure;
     TextStructure = New Structure;
-    Data array = New Array;
+    DataArray = New Array;
     Title = "title";
     
     TextStructure.Insert("content", Title);
@@ -554,11 +557,11 @@ Procedure AddPageHeader(Val Title, MainStructure)
     DataStructure.Insert("text", TextStructure);
     DataStructure.Insert("type", "text");
     
-    Data array.Add(DataStructure);
+    DataArray.Add(DataStructure);
     
     SubordinateStructure.Insert("id" , Title);
     SubordinateStructure.Insert("type" , Title);
-    SubordinateStructure.Insert(Title , Data array);
+    SubordinateStructure.Insert(Title , DataArray);
     
     MainStructure.Insert(Title, SubordinateStructure);
     
@@ -589,23 +592,23 @@ Procedure AddDatabaseProperties(Val Properties, MainStructure)
        Return;      
     EndIf;
     
-    ParameterMap = New Match;
+    ParameterMap = New Map;
     
     For Each Property In Properties Do
         
-        If TypeValue(Property.Value) = Type("String") Then
+        If TypeOf(Property.Value) = Type("String") Then
             
-           ParameterMap.Insert(Property.Key, New Structure(Property.Value, New Structure));
+           ParameterMap.Insert(Property.TheKey, New Structure(Property.Value, New Structure));
            
-        ElsIf TypeValue(Property.Value) = Type("Structure") 
-            Or TypeValue(Property.Value) = Type("Match") Then
+        ElsIf TypeOf(Property.Value) = Type("Structure") 
+            Or TypeOf(Property.Value) = Type("Map") Then
                 
             ValueSelection = FormSelectionValues(Property.Value);
-            ParameterMap.Insert(Property.Key, New Structure("select", ValueSelection));
+            ParameterMap.Insert(Property.TheKey, New Structure("select", ValueSelection));
             
         Else
             
-            ParameterMap.Insert(Property.Key, Property.Value);
+            ParameterMap.Insert(Property.TheKey, Property.Value);
             
         EndIf;
         
@@ -621,8 +624,8 @@ Function FormSelectionValues(Val VariantStructure)
     
     For Each Option In VariantStructure Do
         
-        OptionMap = New Match;
-        OptionMap.Insert("name" , Option.Key);
+        OptionMap = New Map;
+        OptionMap.Insert("name" , Option.TheKey);
         OptionMap.Insert("color", Option.Value);
         
         OptionArray.Add(OptionMap);
@@ -642,7 +645,7 @@ Function FillDataBySchema(Val Scheme, Val Data, Val Token, Val ThisIsBase = True
     EndIf;
     
     BaseFields = SchemaData["properties"];
-    Properties = New Match;
+    Properties = New Map;
     
     If ValueIsFilled(BaseFields) Then
         
@@ -651,7 +654,7 @@ Function FillDataBySchema(Val Scheme, Val Data, Val Token, Val ThisIsBase = True
             FieldData = Field.Value;
             FieldType = FieldData["type"];
             
-            FillableData = Data.Get(Field.Key);
+            FillableData = Data.Get(Field.TheKey);
             
             If FillableData = Undefined Then
                 Continue;
@@ -723,7 +726,7 @@ Function ConvertValueByType(Val Type, Val Value)
     ElsIf Type = "checkbox" Then
         Return ConvertBoolean(Value);
     ElsIf Type = "url" Then
-        Return ConvertLink(Value);
+        Return ConvertURL(Value);
     ElsIf Type = "email" Then
         Return ConvertEmail(Value);
     ElsIf Type = "phone_number" Then
@@ -738,7 +741,7 @@ Function ConvertHeader(Val Title)
     
     DataStructure = New Structure;
     TextStructure = New Structure;
-    Data array = New Array;
+    DataArray = New Array;
     
     TextStructure.Insert("content", Title);
     TextStructure.Insert("link" , Undefined);
@@ -746,9 +749,9 @@ Function ConvertHeader(Val Title)
     DataStructure.Insert("type", "text");
     DataStructure.Insert("text", TextStructure);
        
-    Data array.Add(DataStructure);
+    DataArray.Add(DataStructure);
 
-    Return New Structure("title", Data array);
+    Return New Structure("title", DataArray);
     
 EndFunction
 
@@ -804,7 +807,7 @@ Function ConvertDate(Val Date)
     
     DateStructure = New Structure;
     
-    If Date = StartOfDay(Date) Then
+    If Date = BegOfDay(Date) Then
         DateFormat = "DF=yyyy-MM-dd";
     Else
         DateFormat = "ISO8601Datetime";
@@ -828,7 +831,7 @@ EndFunction
 
 Function ConvertUsers(Val IDArray)
     
-    If Not TypeValue(IDArray) = Type("Array") Then
+    If Not TypeOf(IDArray) = Type("Array") Then
         ArrayID_ = New Array;
         ArrayID_.Add(IDArray);
         IDArray = ArrayID_;
@@ -857,7 +860,7 @@ Function ConvertFiles(Val FileMapping)
         
         FileStructure = New Structure;
         FileStructure.Insert("type" , "external");
-        FileStructure.Insert("name" , File.Key);
+        FileStructure.Insert("name" , File.TheKey);
         FileStructure.Insert("external", New Structure("url", File.Value));
         
         ArrayOfFiles.Add(FileStructure);
@@ -872,7 +875,7 @@ Function ConvertBoolean(Val Boolean)
     Return New Structure("checkbox", Boolean);
 EndFunction
 
-Function ConvertLink(Val URL)
+Function ConvertURL(Val URL)
     Return New Structure("url", URL);
 EndFunction
 
