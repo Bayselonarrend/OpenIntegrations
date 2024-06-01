@@ -258,8 +258,8 @@ Function SplitURL(Val URL) Export
     URL = StrReplace(URL, "http://", "");
     URL = StrReplace(URL, ":443", "");
 
-    Address = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromStart) + 1);
-    Server = Left(URL, StrFind(URL, "/", SearchDirection.FromStart) - 1);
+    Address = Right(URL, StrLen(URL) - StrFind(URL, "/", SearchDirection.FromBegin) + 1);
+    Server = Left(URL, StrFind(URL, "/", SearchDirection.FromBegin) - 1);
     
     Try        
         SSL = New OpenSSLSecureConnection;   
