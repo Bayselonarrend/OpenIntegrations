@@ -426,8 +426,8 @@ Procedure VKAPI_LikeRepostComment() Export
     
     OPI_Tools.Pause(5);
       
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["likes"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["likes"]).ИмеетТип(TypeNumber).Заполнено();
         
     ExternalPost = 2571;
     ExternalWall = -218704372;
@@ -438,9 +438,9 @@ Procedure VKAPI_LikeRepostComment() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["success"]).ИмеетТип(TypeNumber).Равно(1);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["wall_repost_count"]).ИмеетТип(TypeNumber).Равно(1); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["success"]).ИмеетТип(TypeNumber).Равно(1);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["wall_repost_count"]).ИмеетТип(TypeNumber).Равно(1); 
         
     Result = OPI_VK.WriteComment(PostID, Parameters["owner_id"], Message, Parameters);
     
@@ -448,8 +448,8 @@ Procedure VKAPI_LikeRepostComment() Export
         
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["comment_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["comment_id"]).ИмеетТип(TypeNumber).Заполнено();
    
     OPI_VK.DeletePost(PostID, Parameters);
     OPI_VK.DeletePost(Result[Response]["post_id"], Parameters);
@@ -470,9 +470,9 @@ Procedure VKAPI_GetStatistics() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetStatistics");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"][0]["visitors"]).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"][0]["reach"]).ИмеетТип(TypeMatch).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"][0]["visitors"]).ИмеетТип(TypeMatch).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"][0]["reach"]).ИмеетТип(TypeMatch).Заполнено();
     
     OPI_Tools.Pause(5);
 
@@ -490,7 +490,7 @@ Procedure VKAPI_GetPostStatistics() Export
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPostStatistics");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Array").AndмеетДлину(2);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Array").AndмеетДлину(2);
     
     OPI_Tools.Pause(5);
 
@@ -512,9 +512,9 @@ Procedure VKAPI_CreateAdCampaign() Export
     
     Result = Result[Response][0];
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
-    OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
         
     CampaignID = Result[UID];
     CategoryID = 126;
@@ -534,9 +534,9 @@ Procedure VKAPI_CreateAdCampaign() Export
             
     Result = Result[Response][0];
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
-    OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
         
     AnnouncementID = Result[UID];
     Result = OPI_VK.PauseAdvertisingAd(CabinetID, AnnouncementID, Parameters);
@@ -545,8 +545,8 @@ Procedure VKAPI_CreateAdCampaign() Export
     
     Result = Result[Response][0];
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
  
     OPI_VK.DeletePost(PostID, Parameters);
     
@@ -570,8 +570,8 @@ Procedure VKAPI_SendMessage() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map"); 
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map"); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"]).ИмеетТип("Number").Заполнено();
     
     OPI_Tools.Pause(5);
   
@@ -584,7 +584,7 @@ Procedure VKAPI_GetProductCategories() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductCategoryList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result) 
         .ИмеетТип("Map")
         .Заполнено();
         
@@ -612,9 +612,9 @@ Procedure VKAPI_CreateProductSelection() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["albums_count"]).ИмеетТип(TypeNumber).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["market_album_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["albums_count"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["market_album_id"]).ИмеетТип(TypeNumber).Заполнено();
              
     SelectionID = Result[Response]["market_album_id"];
     
@@ -624,8 +624,8 @@ Procedure VKAPI_CreateProductSelection() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]).ИмеетТип(TypeNumber).Равно(1);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]).ИмеетТип(TypeNumber).Равно(1);
  
     ImageArray = New Array;
     ImageArray.Add(OPI_TestDataRetrieval.GetBinary("Picture"));
@@ -652,8 +652,8 @@ Procedure VKAPI_CreateProductSelection() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddProduct");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["market_item_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["market_item_id"]).ИмеетТип(TypeNumber).Заполнено();
         
     ProductID = Result[Response]["market_item_id"];
     
@@ -672,8 +672,8 @@ Procedure VKAPI_CreateProductSelection() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]).ИмеетТип(TypeNumber).Заполнено();
         
     Result = OPI_VK.RemoveProductFromSelection(ProductID, SelectionID, Parameters); // Deletes from selections
     
@@ -731,8 +731,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
      
     PropertyMatch = New Map;
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["property_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["property_id"]).ИмеетТип(TypeNumber).Заполнено();
         
     Result = OPI_VK.EditProductProperty("Color (change.)", Property, Parameters);
     
@@ -750,8 +750,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
         
         OPI_Tools.Pause(5);
         
-        OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-        OPI_TestDataRetrieval.ExpectsThat(Result[Response]["variant_id"]).ИмеетТип(TypeNumber).Заполнено();
+        OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+        OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["variant_id"]).ИмеетТип(TypeNumber).Заполнено();
             
         VariantID = Result[Response]["variant_id"];
         PropertyMatch.Insert(Option, VariantID);
@@ -798,8 +798,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
     
     YellowID = Result[Response]["market_item_id"];               
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response][MII]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response][MII]).ИмеетТип(TypeNumber).Заполнено();
         
     Product.Insert("Name" , "TestProduct (" + Red + ")");
     Product.Insert("PropertyValues", PropertyMatch[Red]);
@@ -812,8 +812,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
     
     RedID = Result[Response][MII];               
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response][MII]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response][MII]).ИмеетТип(TypeNumber).Заполнено();
         
     ProductsArray = New Array;
     ProductsArray.Add(YellowID);
@@ -825,8 +825,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["items"]).ИмеетТип("Array").AndмеетДлину(2);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["items"]).ИмеетТип("Array").AndмеетДлину(2);
         
     Result = OPI_VK.GroupProducts(ProductsArray, , Parameters);
     
@@ -834,8 +834,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["item_group_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response]["item_group_id"]).ИмеетТип(TypeNumber).Заполнено();
        
     OPI_VK.DeleteProduct(YellowID , Parameters);
     OPI_VK.DeleteProduct(RedID, Parameters);
@@ -899,7 +899,7 @@ Procedure VKAPI_GetProductList() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result) 
         .ИмеетТип("Array").Заполнено();
               
     OPI_VK.DeleteProduct(ProductID, Parameters);
@@ -927,7 +927,7 @@ Procedure VKAPI_GetSelectionList() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result) 
         .ИмеетТип("Array").Заполнено();
         
     OPI_VK.DeleteSelection(SelectionID, Parameters); 
@@ -945,7 +945,7 @@ Procedure VKAPI_GetPropertyList() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result) 
         .ИмеетТип("Array").Заполнено();
         
     OPI_Tools.Pause(5);
@@ -961,7 +961,7 @@ Procedure VKAPI_GetOrderList() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result) 
         .ИмеетТип("Array").Заполнено();
         
     OPI_Tools.Pause(5);
@@ -979,8 +979,8 @@ Procedure VKAPI_UploadVideo() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetOrderList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["video_id"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["video_hash"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["video_id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["video_hash"]).Заполнено();
     
     OPI_Tools.Pause(5);
     
@@ -999,9 +999,9 @@ Procedure YDisk_GetDiskInfo() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInfo");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["system_folders"]).ИмеетТип(Map);
-    OPI_TestDataRetrieval.ExpectsThat(Result["user"]).ИмеетТип(Map);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(Map).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["system_folders"]).ИмеетТип(Map);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["user"]).ИмеетТип(Map);
     
     OPI_Tools.Pause(5);
     
@@ -1016,9 +1016,9 @@ Procedure YDisk_CreateFolder() Export
    
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder");
    
-   OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-   OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("dir");
-   OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + Path);
+   OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+   OPI_TestDataRetrieval.ОжидаетЧто(Result["type"]).Равно("dir");
+   OPI_TestDataRetrieval.ОжидаетЧто(Result["path"]).Равно("disk:" + Path);
         
    OPI_YandexDisk.DeleteObject(Token, Path, False);
   
@@ -1039,9 +1039,9 @@ Procedure YDisk_UploadByUrlAndGetObject() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetObject");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + Path);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["type"]).Равно("file");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["path"]).Равно("disk:" + Path);
 
      OPI_YandexDisk.DeleteObject(Token, Path, False);
      
@@ -1106,9 +1106,9 @@ Procedure YDisk_CreateObjectCopy() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + CopyPath);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["type"]).Равно("file");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["path"]).Равно("disk:" + CopyPath);
 
      OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
      OPI_YandexDisk.DeleteObject(Token, CopyPath, False);
@@ -1130,15 +1130,15 @@ Procedure YDisk_GetDownloadLink() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLink");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["method"]).Равно("GET");
-    OPI_TestDataRetrieval.ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["method"]).Равно("GET");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["href"]).ИмеетТип("String").Заполнено();
     
     URL = Result["href"];
     
     Result = OPI_YandexDisk.DownloadFile(Token, Path);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("BinaryData").Заполнено();
 
     OPI_YandexDisk.DeleteObject(Token, Path, False);
 
@@ -1154,10 +1154,10 @@ Procedure YDisk_GetFileList() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetFileList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Равно(Count);
-    OPI_TestDataRetrieval.ExpectsThat(Result["offset"]).Равно(Indent);
-    OPI_TestDataRetrieval.ExpectsThat(Result["items"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["limit"]).Равно(Count);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["offset"]).Равно(Indent);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["items"]).ИмеетТип("Array");
     
     OPI_Tools.Pause(5);
     
@@ -1178,9 +1178,9 @@ Procedure YDisk_MoveObject() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MoveObject");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + CopyPath);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["type"]).Равно("file");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["path"]).Равно("disk:" + CopyPath);
 
     OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
     OPI_YandexDisk.DeleteObject(Token, CopyPath, False);
@@ -1209,17 +1209,17 @@ Procedure YDisk_PublicObjectActions() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObjectDownloadLink");
               
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["method"]).Равно("GET");
-    OPI_TestDataRetrieval.ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(Map).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["method"]).Равно("GET");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["href"]).ИмеетТип("String").Заполнено();
     
     Result = OPI_YandexDisk.GetPublicObject(Token, PublicURL);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("/");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(Map).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["type"]).Равно("file");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["path"]).Равно("/");
     
     ResultArray.Add(OPI_YandexDisk.SavePublicObjectToDisk(Token, PublicURL));
                 
@@ -1230,14 +1230,14 @@ Procedure YDisk_PublicObjectActions() Export
         
         // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ChangePublication");
             
-        OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-        OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-        OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Заполнено();
+        OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(Map).Заполнено();
+        OPI_TestDataRetrieval.ОжидаетЧто(Result["type"]).Равно("file");
+        OPI_TestDataRetrieval.ОжидаетЧто(Result["path"]).Заполнено();
             
         If Counter = 0 Then   
-            OPI_TestDataRetrieval.ExpectsThat(Result[PUrl]).ИмеетТип("String").Заполнено();
+            OPI_TestDataRetrieval.ОжидаетЧто(Result[PUrl]).ИмеетТип("String").Заполнено();
         Else
-            OPI_TestDataRetrieval.ExpectsThat(Result[PUrl]).ИмеетТип("Undefined");
+            OPI_TestDataRetrieval.ОжидаетЧто(Result[PUrl]).ИмеетТип("Undefined");
         EndIf;
         
         Counter = Counter + 1;
@@ -1260,10 +1260,10 @@ Procedure YDisk_GetPublishedList() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Равно(Count);
-    OPI_TestDataRetrieval.ExpectsThat(Result["offset"]).Равно(Indent);
-    OPI_TestDataRetrieval.ExpectsThat(Result["items"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["limit"]).Равно(Count);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["offset"]).Равно(Indent);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["items"]).ИмеетТип("Array");
     
     OPI_Tools.Pause(5);
     
@@ -1294,8 +1294,8 @@ Procedure Viber_GetUserData() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserData");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["chat_hostname"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["status_message"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["chat_hostname"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["status_message"]).Заполнено();
     OPI_Tools.Pause(5);
 
 EndProcedure
@@ -1308,7 +1308,7 @@ Procedure Viber_GetOnlineUsers() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetOnlineUsers");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["users"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["users"]).ИмеетТип("Array");
     Check_ViberOk(Result);
     
     OPI_Tools.Pause(5);
@@ -1334,14 +1334,14 @@ Procedure Viber_SendTextMessage() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     Result = OPI_Viber.SendTextMessage(ChannelToken, Text, Administrator, True, Keyboard);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     OPI_Tools.Pause(5);
@@ -1361,14 +1361,14 @@ Procedure Viber_SendImage() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendPicture");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     Result = OPI_Viber.SendImage(ChannelToken, Image, Administrator, True, Text);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendPicture");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     OPI_Tools.Pause(5);
@@ -1387,14 +1387,14 @@ Procedure Viber_SendFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     Result = OPI_Viber.SendFile(ChannelToken, Document, Administrator, True, "docx");
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     OPI_Tools.Pause(5);
@@ -1414,14 +1414,14 @@ Procedure Viber_SendContact() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendContact");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     Result = OPI_Viber.SendContact(ChannelToken, Name, Phone, Administrator, True);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendContact");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     OPI_Tools.Pause(5);
@@ -1441,14 +1441,14 @@ Procedure Viber_SendLocation() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendLocation");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     Result = OPI_Viber.SendLocation(ChannelToken, Latitude, Longitude, Administrator, True);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendLocation");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     OPI_Tools.Pause(5);
@@ -1467,14 +1467,14 @@ Procedure Viber_SendLink() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendLink");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     Result = OPI_Viber.SendLink(ChannelToken, URL, Administrator, True);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendLink");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_token"]).Заполнено();
     Check_ViberOk(Result);
     
     OPI_Tools.Pause(5);
@@ -1490,7 +1490,7 @@ Procedure GV_GetAuthorizationLink() Export
     ClientID = OPI_TestDataRetrieval.GetParameter("Google_ClientID");    
     Result = OPI_GoogleWorkspace.FormCodeRetrievalLink(ClientID);
             
-    OPI_TestDataRetrieval.ExpectsThat(Result)
+    OPI_TestDataRetrieval.ОжидаетЧто(Result)
         .ИмеетТип("String") 
         .Заполнено();
         
@@ -1528,8 +1528,8 @@ Procedure GV_UpdateToken() Export
     
     Result = OPI_GoogleWorkspace.RefreshToken(ClientID, ClientSecret, RefreshToken);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");                
-    OPI_TestDataRetrieval.ExpectsThat(Result["access_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map");                
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["access_token"]).Заполнено();
     
     OPI_TestDataRetrieval.WriteParameter("Google_Token", Result["access_token"]);
     
@@ -1548,7 +1548,7 @@ Procedure GC_GetCalendarList() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result)
+    OPI_TestDataRetrieval.ОжидаетЧто(Result)
         .ИмеетТип("Array");
 
     OPI_Tools.Pause(5);
@@ -1571,9 +1571,9 @@ Procedure GC_CreateDeleteCalendar() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendar");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
-    OPI_TestDataRetrieval.ExpectsThat(Result[Summary]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип(TypeString).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Summary]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["id"]).ИмеетТип(TypeString).Заполнено();
         
     Calendar = Result["id"];
     
@@ -1602,19 +1602,19 @@ Procedure GC_CreateDeleteCalendar() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditListCalendar");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
-    OPI_TestDataRetrieval.ExpectsThat(Result[Summary]).Равно(EditedName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["foregroundColor"]).Равно(Black);
-    OPI_TestDataRetrieval.ExpectsThat(Result["backgroundColor"]).Равно(Yellow);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Summary]).Равно(EditedName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["foregroundColor"]).Равно(Black);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["backgroundColor"]).Равно(Yellow);
         
     Result = OPI_GoogleCalendar.GetListCalendar(Token, Calendar);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetListCalendar");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
-    OPI_TestDataRetrieval.ExpectsThat(Result[Summary]).Равно(EditedName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["foregroundColor"]).Равно(Black);
-    OPI_TestDataRetrieval.ExpectsThat(Result["backgroundColor"]).Равно(Yellow);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип(TypeMatch); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Summary]).Равно(EditedName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["foregroundColor"]).Равно(Black);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["backgroundColor"]).Равно(Yellow);
 
     Result = OPI_GoogleCalendar.ClearMainCalendar(Token);
     
@@ -1713,7 +1713,7 @@ Procedure GC_GetEventList() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetEventList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Array");
     
     OPI_Tools.Pause(5);
         
@@ -1735,9 +1735,9 @@ Procedure GD_GetCatalogList() Export
     
     Result = Result[0];
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно("application/vnd.google-apps.folder");
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["files"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[MimeType]).Равно("application/vnd.google-apps.folder");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Name]).Заполнено();
     
     OPI_Tools.Pause(5);
     Identifier = Result["id"];
@@ -1748,8 +1748,8 @@ Procedure GD_GetCatalogList() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInfo");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно("application/vnd.google-apps.folder");
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[MimeType]).Равно("application/vnd.google-apps.folder");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Name]).Заполнено();
     
     OPI_Tools.Pause(5);
 
@@ -1779,8 +1779,8 @@ Procedure GD_UploadDeleteFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFile");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно(Description[MIME]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(Description["Name"]);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[MimeType]).Равно(Description[MIME]);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Name]).Равно(Description["Name"]);
 
     Identifier = Result[Id_];
     ArrayOfDeletions.Add(Identifier);
@@ -1792,8 +1792,8 @@ Procedure GD_UploadDeleteFile() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно(Description[MIME]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(NewName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[MimeType]).Равно(Description[MIME]);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Name]).Равно(NewName);
        
     ArrayOfDeletions.Add(Result[Id_]);
     
@@ -1801,7 +1801,7 @@ Procedure GD_UploadDeleteFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result.Size()).Равно(Image.Size() + ExtraBytes);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result.Size()).Равно(Image.Size() + ExtraBytes);
     OPI_Tools.Pause(5);
     
     NewName = "UpdatedFile.jpg";
@@ -1809,8 +1809,8 @@ Procedure GD_UploadDeleteFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UpdateFile");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно(Description[MIME]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(NewName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[MimeType]).Равно(Description[MIME]);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Name]).Равно(NewName);
 
     OPI_Tools.Pause(5);
     
@@ -1819,8 +1819,8 @@ Procedure GD_UploadDeleteFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateComment");
   
-    OPI_TestDataRetrieval.ExpectsThat(Result[Content]).Равно(Comment);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Kind]).Равно("drive#comment");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Content]).Равно(Comment);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Kind]).Равно("drive#comment");
     
     OPI_Tools.Pause(5);
      
@@ -1829,7 +1829,7 @@ Procedure GD_UploadDeleteFile() Export
         
         // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject");
       
-        OPI_TestDataRetrieval.ExpectsThat(ValueIsFilled(Result)).Равно(False);
+        OPI_TestDataRetrieval.ОжидаетЧто(ValueIsFilled(Result)).Равно(False);
         OPI_Tools.Pause(2);
     EndDo;
     
@@ -1879,15 +1879,15 @@ Procedure GD_CreateDeleteComment() Export
     ResultArray.Add(CommentObject);
     
     For Each Result In ResultArray Do     
-        OPI_TestDataRetrieval.ExpectsThat(Result[Content]).Равно(Comment);
-        OPI_TestDataRetrieval.ExpectsThat(Result[Kind]).Равно("drive#comment");
+        OPI_TestDataRetrieval.ОжидаетЧто(Result[Content]).Равно(Comment);
+        OPI_TestDataRetrieval.ОжидаетЧто(Result[Kind]).Равно("drive#comment");
     EndDo;
     
     Result = OPI_GoogleDrive.DeleteComment(Token, Identifier, CommentID);    
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment");
     
-    OPI_TestDataRetrieval.ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    OPI_TestDataRetrieval.ОжидаетЧто(ValueIsFilled(Result)).Равно(False);
 
     OPI_GoogleDrive.DeleteObject(Token, Identifier);
         
@@ -1911,7 +1911,7 @@ Procedure GD_CreateCatalog() Export
         
         CatalogID = Result["id"];
                 
-        OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(Name);
+        OPI_TestDataRetrieval.ОжидаетЧто(Result[Name]).Равно(Name);
         
         OPI_GoogleDrive.DeleteObject(Token, CatalogID);
         
@@ -1936,12 +1936,12 @@ Procedure GT_CreateTable() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateBook");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["properties"]["title"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["properties"]["title"]).Равно(Name);
 
     For N = 0 To SheetArray.WithinBoundary() Do
         
         SheetName = Result["sheets"][N]["properties"]["title"];
-        OPI_TestDataRetrieval.ExpectsThat(SheetName).Равно(SheetArray[N]);
+        OPI_TestDataRetrieval.ОжидаетЧто(SheetName).Равно(SheetArray[N]);
         Sheet = Result["sheets"][N]["properties"]["sheetId"];
         Sheet = OPI_Tools.NumberToString(Sheet);
         
@@ -1959,7 +1959,7 @@ Procedure GT_CreateTable() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CopySheet");
 
-    OPI_TestDataRetrieval.ExpectsThat(Result["title"]).Равно(SheetName + " (copy)");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["title"]).Равно(SheetName + " (copy)");
     
     Name = "TestSheet";
         
@@ -1970,13 +1970,13 @@ Procedure GT_CreateTable() Export
     NewSheet = Result["replies"][0]["addSheet"]["properties"]["sheetId"];
     NewSheet = OPI_Tools.NumberToString(NewSheet);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Book); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["spreadsheetId"]).Равно(Book); 
 
     Result = OPI_GoogleSheets.DeleteSheet(Token, Book, NewSheet);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteSheet");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Book);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["spreadsheetId"]).Равно(Book);
     
     Name = "Test table (change.)";
     
@@ -1984,7 +1984,7 @@ Procedure GT_CreateTable() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditBookTitle");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Book);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["spreadsheetId"]).Равно(Book);
     
 EndProcedure
 
@@ -1998,7 +1998,7 @@ Procedure GT_GetTable() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTable");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["properties"]["title"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["properties"]["title"]).Равно(Name);
 
 EndProcedure
 
@@ -2027,21 +2027,21 @@ Procedure GT_FillClearCells() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SetCellValues");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Book);
-    OPI_TestDataRetrieval.ExpectsThat(Result["totalUpdatedCells"]).Равно(CellStructure.Count());
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["spreadsheetId"]).Равно(Book);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["totalUpdatedCells"]).Равно(CellStructure.Count());
     
     Result = OPI_GoogleSheets.GetCellValues(Token, Book, CellsArray, Sheet);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Book);
-    OPI_TestDataRetrieval.ExpectsThat(Result["valueRanges"].Count()).Равно(CellsArray.Count());
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["spreadsheetId"]).Равно(Book);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["valueRanges"].Count()).Равно(CellsArray.Count());
     
     Result = OPI_GoogleSheets.GetCellValues(Token, Book, , Sheet);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Book);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["spreadsheetId"]).Равно(Book);
     
     CellsArray = New Array;
     CellsArray.Add("B2");
@@ -2052,8 +2052,8 @@ Procedure GT_FillClearCells() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ClearCells");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Book);
-    OPI_TestDataRetrieval.ExpectsThat(Result["clearedRanges"].Count()).Равно(CellsArray.Count());
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["spreadsheetId"]).Равно(Book);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["clearedRanges"].Count()).Равно(CellsArray.Count());
 
 EndProcedure
 
@@ -2066,7 +2066,7 @@ Procedure Twitter_GetAuthorizationLink() Export
     Parameters = GetTwitterParameters();
     Result = OPI_Twitter.GetAuthorizationLink(Parameters);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("String").Заполнено();
     
     OPI_TestDataRetrieval.WriteParameter("Twitter_URL", Result);
     
@@ -2079,9 +2079,9 @@ Procedure Twitter_UpdateToken() Export
     Parameters = GetTwitterParameters();
     Result = OPI_Twitter.RefreshToken(Parameters);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["access_token"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["refresh_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["access_token"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["refresh_token"]).Заполнено();
         
     Refresh = Result["refresh_token"];
     Token = Result["access_token"];
@@ -2328,7 +2328,7 @@ Procedure Notion_CreatePageInDatabase() Export
     Check_NotionObject(Result);
     
     Parent = StrReplace(Result["parent"]["database_id"], "-", "");
-    OPI_TestDataRetrieval.ExpectsThat(Parent).Равно(Base);
+    OPI_TestDataRetrieval.ОжидаетЧто(Parent).Равно(Base);
        	 
 EndProcedure
 
@@ -2425,8 +2425,8 @@ Procedure Slack_GetBotInfo() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetBotInfo");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["bot_id"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["user_id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["bot_id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["user_id"]).Заполнено();
     
 EndProcedure
 
@@ -2438,7 +2438,7 @@ Procedure Slack_GetUserList() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserList");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["members"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["members"]).ИмеетТип("Array");
     
 EndProcedure
 
@@ -2450,7 +2450,7 @@ Procedure Slack_GetRegionList() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetWorkspaceList");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["teams"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["teams"]).ИмеетТип("Array");
     
 EndProcedure
 
@@ -2468,9 +2468,9 @@ Procedure Slack_SendDeleteMessage() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["message"]["text"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ts"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message"]["text"]).Равно(Text);
     
     Timestamp = Result["ts"];
     
@@ -2479,22 +2479,22 @@ Procedure Slack_SendDeleteMessage() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditMessage");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["message"]["text"]).Равно(Text2);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ts"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message"]["text"]).Равно(Text2);
         
     Result = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetMessageReplyList");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["messages"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["messages"]).ИмеетТип("Array");
     
     Result = OPI_Slack.GetMessageLink(Token, Channel, Timestamp);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetMessageLink");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["permalink"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["permalink"]).Заполнено();
         
     Check_SlackOk(Result);
       
@@ -2509,8 +2509,8 @@ Procedure Slack_SendDeleteMessage() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (image)");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ts"]).Заполнено();
     
     Tags.Add(Result["ts"]);
     
@@ -2528,8 +2528,8 @@ Procedure Slack_SendDeleteMessage() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (json)");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ts"]).Заполнено();
     
     Tags.Add(Result["ts"]);
     
@@ -2539,8 +2539,8 @@ Procedure Slack_SendDeleteMessage() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (json array)");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ts"]).Заполнено();
     
     Tags.Add(Result["ts"]);
 
@@ -2553,8 +2553,8 @@ Procedure Slack_SendDeleteMessage() Export
         // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage");
 
         Check_SlackOk(Result);
-        OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-        OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
+        OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+        OPI_TestDataRetrieval.ОжидаетЧто(Result["ts"]).Заполнено();
     
     EndDo;
     
@@ -2566,8 +2566,8 @@ Procedure Slack_SendDeleteMessage() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendDelayedMessage)");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["scheduled_message_id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).Равно(Channel);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["scheduled_message_id"]).Заполнено();
     
     Timestamp = Result["scheduled_message_id"];
     Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
@@ -2592,7 +2592,7 @@ Procedure Slack_SendDeleteEphemeral() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_ts"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["message_ts"]).Заполнено();
      
 EndProcedure
 
@@ -2606,7 +2606,7 @@ Procedure Slack_GetScheduledMessages() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDelayedMessageList");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["scheduled_messages"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["scheduled_messages"]).ИмеетТип("Array");
    
 EndProcedure
 
@@ -2627,7 +2627,7 @@ Procedure Slack_CreateArchiveChannel() Export
     Channel = Data["id"];
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Data["name"]).Равно(Name);
     #EndRegion
 
     #Region SetChannelTopic
@@ -2639,8 +2639,8 @@ Procedure Slack_CreateArchiveChannel() Export
     Channel = Data["id"];
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Data["topic"]["value"]).Равно(Topic);
+    OPI_TestDataRetrieval.ОжидаетЧто(Data["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Data["topic"]["value"]).Равно(Topic);
     #EndRegion
     
     #Region SetChannelGoal
@@ -2660,7 +2660,7 @@ Procedure Slack_CreateArchiveChannel() Export
     Channel = Data["id"];
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Data["name"]).Равно(Name);
     #EndRegion
     
     #Region InviteUsersToChannel
@@ -2672,7 +2672,7 @@ Procedure Slack_CreateArchiveChannel() Export
     Channel = Data["id"];
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Data["name"]).Равно(Name);
     #EndRegion
     
     #Region KickUserFromChannel
@@ -2689,7 +2689,7 @@ Procedure Slack_CreateArchiveChannel() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChannelHistory");
         
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["messages"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["messages"]).ИмеетТип("Array");
     #EndRegion
     
     #Region GetChannelUserList
@@ -2698,7 +2698,7 @@ Procedure Slack_CreateArchiveChannel() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChannelUserList");
         
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["members"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["members"]).ИмеетТип("Array");
     #EndRegion
 
     #Region LeaveChannel
@@ -2718,7 +2718,7 @@ Procedure Slack_CreateArchiveChannel() Export
     Channel = Data["id"];
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Data["name"]).Равно(Name);
     #EndRegion
     
     #Region RenameChannel
@@ -2731,7 +2731,7 @@ Procedure Slack_CreateArchiveChannel() Export
     Channel = Data["id"];
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(NewName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Data["name"]).Равно(NewName);
     #EndRegion
     
     #Region ArchiveChannel
@@ -2753,7 +2753,7 @@ Procedure Slack_GetChannelList() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChannelList");
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channels"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channels"]).ИмеетТип("Array");
     
 EndProcedure
 
@@ -2769,8 +2769,8 @@ Procedure Slack_OpenCloseDialog() Export
 
     Dialog = Result["channel"]["id"];
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Dialog).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["channel"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ОжидаетЧто(Dialog).Заполнено();
     
     Result = OPI_Slack.SendMessage(Token, Dialog, Text);
     
@@ -2796,7 +2796,7 @@ Procedure Slack_GetFileList() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetFileList");
 
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["files"]).ИмеетТип("Array");
 
 EndProcedure
 
@@ -2817,7 +2817,7 @@ Procedure Slack_UploadDeleteFile() Export
     ArrayOfFiles.Add(UploadedFile["id"]);
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["name"]).Равно(FileName);
+    OPI_TestDataRetrieval.ОжидаетЧто(UploadedFile["name"]).Равно(FileName);
     
     Result = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel);
     
@@ -2827,7 +2827,7 @@ Procedure Slack_UploadDeleteFile() Export
     ArrayOfFiles.Add(UploadedFile["id"]);
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["name"]).Равно(FileName);
+    OPI_TestDataRetrieval.ОжидаетЧто(UploadedFile["name"]).Равно(FileName);
     
     Result = OPI_Slack.GetFileData(Token, UploadedFile["id"]);
     
@@ -2836,7 +2836,7 @@ Procedure Slack_UploadDeleteFile() Export
     UploadedFile = Result["file"];
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["name"]).Равно(FileName);
+    OPI_TestDataRetrieval.ОжидаетЧто(UploadedFile["name"]).Равно(FileName);
         
     For Each UploadedFile In ArrayOfFiles Do
         
@@ -2860,14 +2860,14 @@ Procedure Slack_GetExternalFileList() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["files"]).ИмеетТип("Array");
     
     Result = OPI_Slack.GetExternalFileList(Token, Channel);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList");
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["files"]).ИмеетТип("Array");
     
 EndProcedure
 
@@ -2885,7 +2885,7 @@ Procedure Slack_UploadDeleteExternalFile() Export
     UploadedFile = Result["file"];
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["title"]).Равно(Title);
+    OPI_TestDataRetrieval.ОжидаетЧто(UploadedFile["title"]).Равно(Title);
     
     Result = OPI_Slack.GetExternalFile(Token, UploadedFile["id"]);
     
@@ -2894,7 +2894,7 @@ Procedure Slack_UploadDeleteExternalFile() Export
     UploadedFile = Result["file"];
     
     Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["title"]).Равно(Title);
+    OPI_TestDataRetrieval.ОжидаетЧто(UploadedFile["title"]).Равно(Title);
     
     Result = OPI_Slack.SendExternalFile(Token, UploadedFile["id"], Channel);
     
@@ -2933,8 +2933,8 @@ Procedure AT_CreateDatabase() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["tables"][0]["name"]).Равно(TableName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["tables"][0]["name"]).Равно(TableName);
     
     Base = Result["id"];
     OPI_TestDataRetrieval.WriteParameter("Airtable_Base", Base);
@@ -2943,15 +2943,15 @@ Procedure AT_CreateDatabase() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDatabaseTables");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["tables"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["tables"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["tables"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["tables"]).ИмеетТип("Array");
 
     Result = OPI_Airtable.GetListOfBases(Token);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDatabaseList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["bases"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["bases"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["bases"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["bases"]).ИмеетТип("Array");
  
 EndProcedure
 
@@ -2992,8 +2992,8 @@ Procedure AT_CreateTable() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateTable");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(TableName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно(Description);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["name"]).Равно(TableName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["description"]).Равно(Description);
     
     Table = Result["id"];
     TableName = "Test table 2 (change.)";
@@ -3005,8 +3005,8 @@ Procedure AT_CreateTable() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditTable");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(TableName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно(Description);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["name"]).Равно(TableName);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["description"]).Равно(Description);
 
 EndProcedure
 
@@ -3023,7 +3023,7 @@ Procedure AT_CreateField() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateField");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["name"]).Равно(Name);
     
     Field = Result["id"]; 
     Name = Name + "(change.)";
@@ -3033,8 +3033,8 @@ Procedure AT_CreateField() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditField");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно(Description);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["description"]).Равно(Description);
     
 EndProcedure
 
@@ -3059,8 +3059,8 @@ Procedure AT_CreateDeleteRecords() Export
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateRecords");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"].Count()).Равно(2);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"].Count()).Равно(2);
     
     For Each Record In Result["records"] Do
         ArrayOfDeletions.Add(Record["id"]);
@@ -3071,23 +3071,23 @@ Procedure AT_CreateDeleteRecords() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateEntries (one)");
     
     SingleRecord = Result["id"];
-    OPI_TestDataRetrieval.ExpectsThat(SingleRecord).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["createdTime"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["fields"]["Number"]).Равно(Numeric);
-    OPI_TestDataRetrieval.ExpectsThat(TrimAll(Result["fields"]["String"])).Равно(StringType);
+    OPI_TestDataRetrieval.ОжидаетЧто(SingleRecord).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["createdTime"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["fields"]["Number"]).Равно(Numeric);
+    OPI_TestDataRetrieval.ОжидаетЧто(TrimAll(Result["fields"]["String"])).Равно(StringType);
   
     Result = OPI_Airtable.GetRecord(Token, Base, Table, SingleRecord);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetRecord");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).Равно(SingleRecord);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["id"]).Равно(SingleRecord);
     
     Text = "TestComment";
     Result = OPI_Airtable.CreateComment(Token, Base, Table, SingleRecord, Text);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateComment");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["text"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["text"]).Равно(Text);
     
     Comment = Result["id"];
     Text = "Test comment (change.)";
@@ -3095,41 +3095,41 @@ Procedure AT_CreateDeleteRecords() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditComment");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["text"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["text"]).Равно(Text);
     
     Result = OPI_Airtable.GetComments(Token, Base, Table, SingleRecord);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetComments");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["comments"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["comments"]).ИмеетТип("Array");
     
     Result = OPI_Airtable.DeleteComment(Token, Base, Table, SingleRecord, Comment);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["deleted"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).Равно(Comment);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["deleted"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["id"]).Равно(Comment);
      
     Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetEntryList");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"]).Заполнено();
     
     Result = OPI_Airtable.DeletePosts(Token, Base, Table, ArrayOfDeletions);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"]).Заполнено();
       
     Result = OPI_Airtable.DeletePosts(Token, Base, Table, SingleRecord);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteEntries (one)");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["records"]).Заполнено();
         
 EndProcedure
 
@@ -3285,106 +3285,106 @@ EndFunction
 #Region Checks
 
 Procedure Check_Empty(Val Result)   
-    OPI_TestDataRetrieval.ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    OPI_TestDataRetrieval.ОжидаетЧто(ValueIsFilled(Result)).Равно(False);
 EndProcedure
 
 Procedure Check_BinaryData(Val Result, Val Size = Undefined)
     
     MinimumSize = 500000;
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("BinaryData"); 
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("BinaryData"); 
     
     If Not Size = Undefined Then
-        OPI_TestDataRetrieval.ExpectsThat(Result.Size()).Равно(Size); 
+        OPI_TestDataRetrieval.ОжидаетЧто(Result.Size()).Равно(Size); 
     Else
-        OPI_TestDataRetrieval.ExpectsThat(Result.Size() > MinimumSize).Равно(True);
+        OPI_TestDataRetrieval.ОжидаетЧто(Result.Size() > MinimumSize).Равно(True);
     EndIf;
     
 EndProcedure
 
 Procedure Check_TelegramTrue(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]).Равно(True);
         
 EndProcedure
 
 Procedure Check_TelegramBotInformation(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["username"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["username"]).Заполнено();
     
 EndProcedure
 
 Procedure Check_TelegramArray(Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map") .Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]).ИмеетТип("Array");
     
 EndProcedure
 
 Procedure Check_TelegramWebhookSetup(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно("Webhook was set");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["description"]).Равно("Webhook was set");
     
 EndProcedure
 
 Procedure Check_TelegramWebhookDeletion(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["description"]).Заполнено();
     
 EndProcedure
 
 Procedure Check_TelegramMessage(Val Result, Val Text)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["text"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["text"]).Равно(Text);
     	
 EndProcedure
 
 Procedure Check_TelegramImage(Val Result, Val Text)
 	
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map") .Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["caption"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["photo"]).ИмеетТип("Array");
         
 EndProcedure
 
 Procedure Check_TelegramVideo(Val Result, Val Text)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["video"]["mime_type"]).Равно("video/mp4");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["caption"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["video"]["mime_type"]).Равно("video/mp4");
     	
 EndProcedure
 
 Procedure Check_TelegramAudio(Val Result, Val Text)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["audio"]["mime_type"]).Равно("audio/mpeg");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["caption"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["audio"]["mime_type"]).Равно("audio/mpeg");
             
 EndProcedure
 
 Procedure Check_TelegramDocument(Val Result, Val Text)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["caption"]).Равно(Text);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["document"]).ИмеетТип("Map").Заполнено();  
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["caption"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["document"]).ИмеетТип("Map").Заполнено();  
       
 EndProcedure
 
@@ -3392,109 +3392,109 @@ Procedure Check_TelegramGif(Val Result, Val Text)
 
     Result = "result";
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["caption"]).Равно(Text);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["document"]).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["animation"]["mime_type"]).Равно("video/mp4");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Result]["caption"]).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Result]["document"]).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Result]["animation"]["mime_type"]).Равно("video/mp4");
             
 EndProcedure
 
 Procedure Check_TelegramMediaGroup(Val Result)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]).ИмеетТип("Array");
             
 EndProcedure
 
 Procedure Check_TelegramLocation(Val Result)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["location"]).ИмеетТип("Map").Заполнено();   
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["location"]).ИмеетТип("Map").Заполнено();   
      
 EndProcedure
 
 Procedure Check_TelegramContact(Val Result, Val Name)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["contact"]).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["contact"]["first_name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["contact"]).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["contact"]["first_name"]).Равно(Name);
             
 EndProcedure
 
 Procedure Check_TelegramPoll(Val Result, Val Question)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["poll"]).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["poll"]["question"]).Равно(Question);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["poll"]).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["poll"]["question"]).Равно(Question);
         	
 EndProcedure
 
 Procedure Check_TelegramForward(Val Result, Val MessageID)
 	
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["forward_origin"]["message_id"]).Равно(Number(MessageID));
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["forward_origin"]["message_id"]).Равно(Number(MessageID));
     
 EndProcedure
 
 Procedure Check_TelegramBan(Val Result)
 	
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно("Bad Request: can't remove chat owner");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["description"]).Равно("Bad Request: can't remove chat owner");
     	
 EndProcedure
 
 Procedure Check_TelegramInvitation(Val Result, Val Title, Val UnixExpiration)
 
     Result = "result";
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["member_limit"]).Равно(200);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["name"]).Равно(Title);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["expire_date"]).Равно(Number(UnixExpiration));
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Result]["member_limit"]).Равно(200);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Result]["name"]).Равно(Title);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Result]["expire_date"]).Равно(Number(UnixExpiration));
     	
 EndProcedure
 
 Procedure Check_TelegramNumber(Val Result)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Number");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]).ИмеетТип("Number");
     	
 EndProcedure
 
 Procedure Check_TelegramCreateTopic(Val Result, Val Name, Icon)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["name"]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["icon_custom_emoji_id"]).Равно(Icon);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["name"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["result"]["icon_custom_emoji_id"]).Равно(Icon);
     	
 EndProcedure
 
 Procedure Check_VKPost(Val Result)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
         
 EndProcedure
 
 Procedure Check_VKTrue(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"]).ИмеетТип("Number").Равно(1);
     
 EndProcedure
 
 Procedure Check_VKAlbum(Val Result, Val Description)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["description"]).Равно(Description);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"]["description"]).Равно(Description);
         
 EndProcedure
 
@@ -3502,33 +3502,33 @@ Procedure Check_VKAlbumPicture(Val Result, Val ImageDescription, Val AlbumID)
 
     Response = "response";
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response][0]["text"]).Равно(ImageDescription);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response][0]["album_id"]).Равно(AlbumID);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response][0]["text"]).Равно(ImageDescription);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[Response][0]["album_id"]).Равно(AlbumID);
             
 EndProcedure
 
 Procedure Check_VKStory(Val Result)
   
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["count"]).ИмеетТип("Number").Равно(1);
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"]["count"]).ИмеетТип("Number").Равно(1);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
       
 EndProcedure
 
 Procedure Check_VKDiscussion(Val Result)
  
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();   
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["response"]).ИмеетТип("Number").Заполнено();   
     
 EndProcedure
 
 Procedure Check_GKObject(Val Result, Val Name, Val Description)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Result["summary"]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно(Description);
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["summary"]).Равно(Name);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["description"]).Равно(Description);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["id"]).ИмеетТип("String").Заполнено();
     
 EndProcedure
 
@@ -3537,86 +3537,86 @@ Procedure Check_TwitterText(Val Result, Val Text)
     ReplyText = Result["data"]["text"];
     ReplyText = Left(ReplyText, StrLen(Text));
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(ReplyText).Равно(Text);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(ReplyText).Равно(Text);
 
 EndProcedure
 
 Procedure Check_ViberOk(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["status_message"]).Равно("ok");
-    OPI_TestDataRetrieval.ExpectsThat(Result["status"]).Равно(0);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["status_message"]).Равно("ok");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["status"]).Равно(0);
 
 EndProcedure
 
 Procedure Check_NotionObject(Val Result, Val View = "page")
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["object"]).Равно(View);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["object"]).Равно(View);
     
 EndProcedure
 
 Procedure Check_SlackOk(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["ok"]).Равно(True);
 
 EndProcedure
 
 Procedure Check_DropboxFile(Val Result, Val Path)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["path_display"]).Равно(Path);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["path_display"]).Равно(Path);
     
 EndProcedure
 
 Procedure Check_DropboxMetadata(Val Result, Val Path)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["metadata"]["path_display"]).Равно(Path);
     
 EndProcedure
 
 Procedure Check_DropboxArray(Val Result, Val Count = Undefined)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["entries"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["entries"]).ИмеетТип("Array");
     
     If Not Count = Undefined Then
-        OPI_TestDataRetrieval.ExpectsThat(Result["entries"].Count()).Равно(Count);
+        OPI_TestDataRetrieval.ОжидаетЧто(Result["entries"].Count()).Равно(Count);
     EndIf;
     
 EndProcedure
 
 Procedure Check_DropboxWork(Val Result)
-    OPI_TestDataRetrieval.ExpectsThat(Result["async_job_id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["async_job_id"]).Заполнено();
 EndProcedure
 
 Procedure Check_DropboxStatus(Val Result)
-    OPI_TestDataRetrieval.ExpectsThat(Result[".tag"]).Равно("complete");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[".tag"]).Равно("complete");
 EndProcedure
 
 Procedure Check_DropboxTags(Val Result, Val Count)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["paths_to_tags"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["paths_to_tags"].Count()).Равно(Count);
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["paths_to_tags"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["paths_to_tags"].Count()).Равно(Count);
     
 EndProcedure
 
 Procedure Check_DropboxAccount(Val Result)
-    OPI_TestDataRetrieval.ExpectsThat(Result["account_id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["account_id"]).Заполнено();
 EndProcedure
 
 Procedure Check_DropboxSpace(Val Result)
-    OPI_TestDataRetrieval.ExpectsThat(Result["used"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["used"]).Заполнено();
 EndProcedure
 
 Procedure Check_DropboxMember(Val Result, Val Email, Val ViewOnly)
-    OPI_TestDataRetrieval.ExpectsThat(Result[0]["result"][".tag"]).Равно("success");
-    OPI_TestDataRetrieval.ExpectsThat(Result[0]["member"]["email"]).Равно(Email);
-    OPI_TestDataRetrieval.ExpectsThat(
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[0]["result"][".tag"]).Равно("success");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result[0]["member"]["email"]).Равно(Email);
+    OPI_TestDataRetrieval.ОжидаетЧто(
         Result[0]["result"]["success"][".tag"]).Равно(?(ViewOnly, "viewer", "editor"));
 EndProcedure
 
 Procedure Check_DropboxPublicFolder(Val Result)
-    OPI_TestDataRetrieval.ExpectsThat(Result["shared_folder_id"]).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result["shared_folder_id"]).Заполнено();
 EndProcedure
 
 #EndRegion
@@ -4064,7 +4064,7 @@ Procedure Telegram_DownloadFile(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "Telegram");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("BinaryData");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("BinaryData");
     	
 EndProcedure
 
@@ -4206,7 +4206,7 @@ Procedure Telegram_GetForumAvatarList(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetAvatarIconList", "Telegram");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("Map").Заполнено();
     
     OPI_Tools.Pause(5);
     
@@ -4420,7 +4420,7 @@ Procedure VK_CreateTokenRetrievalLink(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateTokenRequestLink", "VK");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String").Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("String").Заполнено();
     
     OPI_Tools.Pause(5);
         
@@ -4761,7 +4761,7 @@ Procedure Dropbox_GetAuthorizationLink(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetAuthorizationLink", "Dropbox");
         
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String");
+    OPI_TestDataRetrieval.ОжидаетЧто(Result).ИмеетТип("String");
     
 EndProcedure
 
@@ -4804,7 +4804,7 @@ Procedure Dropbox_UpdateToken(FunctionParameters)
     
     Token = Result["access_token"];
     
-    OPI_TestDataRetrieval.ExpectsThat(Token).Заполнено();
+    OPI_TestDataRetrieval.ОжидаетЧто(Token).Заполнено();
 
     OPI_TestDataRetrieval.WriteParameter("Dropbox_Token", Token);
         
@@ -5118,7 +5118,7 @@ Procedure Dropbox_GetTagList(FunctionParameters)
         EndIf;
     EndDo;
     
-    OPI_TestDataRetrieval.ExpectsThat(HasTag).Равно(True);
+    OPI_TestDataRetrieval.ОжидаетЧто(HasTag).Равно(True);
     
     OPI_Tools.Pause(5);  
         
