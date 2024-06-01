@@ -1,4 +1,4 @@
-﻿// Location OS: ./OInt/core/Modules/OPI_YandexID.os
+﻿// OneScript: ./OInt/core/Modules/OPI_YandexID.os
 // Library: Yandex ID
 // CLI Command: yandex
 
@@ -29,10 +29,14 @@
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
 
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+
 // Uncomment if OneScript is executed
 // #Use "../../tools"
 
-#Region ProgrammingInterface
+#Region Public
 
 // Get confirmation code
 // Gets the confirmation code and the address of the page where it needs to be entered
@@ -40,7 +44,7 @@
 // Parameters:
 // ClientId - String - Client id - id
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function GetConfirmationCode(Val ClientId) Export
 
@@ -61,7 +65,7 @@ EndFunction
 // ClientSecret - String - Client secret - secret
 // DeviceCode - String - device_code from GetConfirmationCode() - device
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
     
@@ -89,7 +93,7 @@ EndFunction
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 // 
-// Return value:
+// Returns:
 // Key-Value Pair - serialized JSON response from Yandex
 Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
     

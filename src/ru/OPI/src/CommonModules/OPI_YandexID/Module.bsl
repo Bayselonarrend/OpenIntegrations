@@ -1,4 +1,4 @@
-// Расположение OS: ./OInt/core/Modules/OPI_YandexID.os
+// OneScript: ./OInt/core/Modules/OPI_YandexID.os
 // Библиотека: Yandex ID
 // Команда CLI: yandex
 
@@ -28,6 +28,10 @@
 
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
 
 // Раскомментировать, если выполняется OneScript
 // #Использовать "../../tools"

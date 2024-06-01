@@ -39,14 +39,6 @@
     <key>ru</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
-  <languages uuid="0e858b44-34f3-4d20-986d-13290bb5ba5a">
-    <name>Русский</name>
-    <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:LanguageExtension">
-      <languageCode>Checked</languageCode>
-    </extension>
-    <languageCode>ru</languageCode>
-  </languages>
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
   <commonModules>CommonModule.OPI_Инструменты</commonModules>
   <commonModules>CommonModule.OPI_Криптография</commonModules>
