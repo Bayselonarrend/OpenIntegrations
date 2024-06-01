@@ -293,7 +293,7 @@ Function JsonToStructure(Val Text) Export
 
 EndFunction
 
-Function JSONString(Val Data, Val Escaping = "No") Export
+Function JSONString(Val Data, Val Escaping = "None") Export
 
     JSONParameters = New JSONWriterSettings(JSONLineBreak.Windows
         , " "
@@ -319,7 +319,7 @@ Function JSONString(Val Data, Val Escaping = "No") Export
 EndFunction
 
 Function NumberToString(Val Number) Export
-    Return StrReplace(String(Number), Chars.NPP, "");
+    Return StrReplace(String(Number), Chars.NBSp, "");
 EndFunction
 
 Function ReadJSONFile(Val Path) Export
@@ -361,7 +361,7 @@ EndFunction
 Function UNIXTime(Val Date) Export
     
     OTD = New TypeDescription("Date");
-    Date = OTD.ConvertValue(Date);
+    Date = OTD.AdjustValue(Date);
     
     UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "HC=10; HDC=0; HG=0");
     UNIX = StrReplace(UNIX, ",", "");
@@ -666,7 +666,7 @@ Function ExecuteMultipartRequest(Val URL
     Redirection = 300;
     Error = 400;
     Boundary = StrReplace(String(New UUID), "-", "");
-    LineSeparator = Chars.VK + Chars.PS;
+    LineSeparator = Chars.CR + Chars.PS;
     DataType = "multipart/form-data; boundary=" + Boundary;
     URLStructure = SplitURL(URL);
     Server = URLStructure["Server"];
@@ -687,7 +687,7 @@ Function ExecuteMultipartRequest(Val URL
     WriteMultipartParameters(TextRecord, Boundary, Parameters);
     WriteMultipartFiles(TextRecord, Boundary, ContentType, Files);
     
-    TextRecord.WriteString("--" + boundary + "--" + LineSeparator);
+    TextRecord.WriteLine("--" + boundary + "--" + LineSeparator);
     TextRecord.Close();
 
     Request.SetBodyFileName(RequestBody);
@@ -730,7 +730,7 @@ Function ExecuteMultipartRelatedRequest(Val URL
     Redirection = 300;
     Error = 400;
     Boundary = StrReplace(String(New UUID), "-", "");
-    LineSeparator = Chars.VK + Chars.PS;
+    LineSeparator = Chars.CR + Chars.PS;
     DataType = "multipart/related; boundary=" + Boundary;
     URLStructure = SplitURL(URL);
     Server = URLStructure["Server"];
@@ -751,7 +751,7 @@ Function ExecuteMultipartRelatedRequest(Val URL
     WriteJSONMultipart(TextRecord, Boundary, JSON);
     WriteRelatedFiles(TextRecord, Boundary, Files);        
     
-    TextRecord.WriteString("--" + boundary + "--" + LineSeparator);
+    TextRecord.WriteLine("--" + boundary + "--" + LineSeparator);
     TextRecord.Close();
     
     AddContentLength(Request);
@@ -839,7 +839,7 @@ EndProcedure
 
 Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
     
-    LineSeparator = Chars.VK + Chars.PS;
+    LineSeparator = Chars.CR + Chars.PS;
     
     For Each Parameter In Parameters Do
         
@@ -848,20 +848,20 @@ Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
             Continue;
         EndIf;
         
-        TextRecord.WriteString("--" + boundary + LineSeparator);
-        TextRecord.WriteString("Content-Disposition: form-data; name=""" + Parameter.Key + """");
-        TextRecord.WriteString(LineSeparator);
-        TextRecord.WriteString(LineSeparator);
+        TextRecord.WriteLine("--" + boundary + LineSeparator);
+        TextRecord.WriteLine("Content-Disposition: form-data; name=""" + Parameter.Key + """");
+        TextRecord.WriteLine(LineSeparator);
+        TextRecord.WriteLine(LineSeparator);
         
         If TypeOf(Parameter.Value) = Type("String") 
             Or TypeOf(Parameter.Value) = Type("Number") Then
             
             ValueAsString = NumberToString(Parameter.Value);
-            TextRecord.WriteString(ValueAsString);
+            TextRecord.WriteLine(ValueAsString);
             
         ElsIf TypeOf(Parameter.Value) = Type("Boolean") Then
             
-            TextRecord.WriteString(?(Parameter.Value, "true", "false"));
+            TextRecord.WriteLine(?(Parameter.Value, "true", "false"));
             
         Else
             
@@ -869,7 +869,7 @@ Procedure WriteMultipartParameters(TextRecord, Val Boundary, Val Parameters)
             
         EndIf;
         
-        TextRecord.WriteString(LineSeparator);
+        TextRecord.WriteLine(LineSeparator);
         
     EndDo;
     
@@ -878,7 +878,7 @@ EndProcedure
 Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Files)
     
     ContentType = TrimAll(ContentType);
-    LineSeparator = Chars.VK + Chars.PS;
+    LineSeparator = Chars.CR + Chars.PS;
     DotReplacement = "___";
     
     For Each File In Files Do
@@ -894,22 +894,22 @@ Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Fil
             DotReplacement, "."));
         EndIf;
         
-        TextRecord.WriteString("--" + boundary + LineSeparator);
-        TextRecord.WriteString("Content-Disposition: form-data; name=""" 
+        TextRecord.WriteLine("--" + boundary + LineSeparator);
+        TextRecord.WriteLine("Content-Disposition: form-data; name=""" 
             + SendingFileName 
             + """; filename=""" 
             + FilePath
             + """");
-        TextRecord.WriteString(LineSeparator);      
+        TextRecord.WriteLine(LineSeparator);      
         
         If ValueIsFilled(ContentType) Then
-            TextRecord.WriteString("Content-Type: " + ContentType);
+            TextRecord.WriteLine("Content-Type: " + ContentType);
         EndIf;
         
-        TextRecord.WriteString(LineSeparator);
-        TextRecord.WriteString(LineSeparator);
+        TextRecord.WriteLine(LineSeparator);
+        TextRecord.WriteLine(LineSeparator);
         WriteBinaryData(TextRecord, File.Value);
-        TextRecord.WriteString(LineSeparator);
+        TextRecord.WriteLine(LineSeparator);
         
     EndDo;
 
@@ -921,18 +921,18 @@ Procedure WriteRelatedFiles(TextRecord, Val Boundary, Val Files)
         Return;
     EndIf;
     
-    LineSeparator = Chars.VK + Chars.PS;
+    LineSeparator = Chars.CR + Chars.PS;
     
     If TypeOf(Files) = Type("Map") Then
         For Each File In Files Do
             
-            TextRecord.WriteString("--" + boundary + LineSeparator);
-            TextRecord.WriteString("Content-Type: " + File.Value);
-            TextRecord.WriteString(LineSeparator);
-            TextRecord.WriteString(LineSeparator);
+            TextRecord.WriteLine("--" + boundary + LineSeparator);
+            TextRecord.WriteLine("Content-Type: " + File.Value);
+            TextRecord.WriteLine(LineSeparator);
+            TextRecord.WriteLine(LineSeparator);
             WriteBinaryData(TextRecord, File.Key);
-            TextRecord.WriteString(LineSeparator);
-            TextRecord.WriteString(LineSeparator);
+            TextRecord.WriteLine(LineSeparator);
+            TextRecord.WriteLine(LineSeparator);
             
         EndDo;
         
@@ -976,15 +976,15 @@ Procedure WriteJSONMultipart(TextRecord, Val Boundary, Val JSON)
         Return;
     EndIf;
     
-    LineSeparator = Chars.VK + Chars.PS;
+    LineSeparator = Chars.CR + Chars.PS;
     
-    TextRecord.WriteString("--" + boundary + LineSeparator);
-    TextRecord.WriteString("Content-Type: application/json; charset=UTF-8");
-    TextRecord.WriteString(LineSeparator);
-    TextRecord.WriteString(LineSeparator);
-    TextRecord.WriteString(JSON);
-    TextRecord.WriteString(LineSeparator);
-    TextRecord.WriteString(LineSeparator);
+    TextRecord.WriteLine("--" + boundary + LineSeparator);
+    TextRecord.WriteLine("Content-Type: application/json; charset=UTF-8");
+    TextRecord.WriteLine(LineSeparator);
+    TextRecord.WriteLine(LineSeparator);
+    TextRecord.WriteLine(JSON);
+    TextRecord.WriteLine(LineSeparator);
+    TextRecord.WriteLine(LineSeparator);
 
 EndProcedure
 
@@ -1107,9 +1107,9 @@ Function ReadZip(CompressedData, ErrorText = Undefined)
 
     Directory = GetTempFileName();
     ReadingZip = New ZipFileReader(CompressedData);
-    FileName = ReadingZip.Elements[0].Name;
+    FileName = ReadingZip.Items[0].Name;
     Try
-        ReadingZip.Extract(ReadingZip.Elements[0], Directory, ZIPRestoreFilePathsMode.DontRestore);
+        ReadingZip.Extract(ReadingZip.Items[0], Directory, ZIPRestoreFilePathsMode.DontRestore);
     Except
         // Ignore archive integrity check, just read the result
         ErrorText = DetailErrorDescription(ErrorInfo());

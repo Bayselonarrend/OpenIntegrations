@@ -820,8 +820,8 @@ Function GetRequestHeaders(Val Token, Val Parameters = "")
     
     If ValueIsFilled(Parameters) Then
         
-        JSON = OPI_Tools.JSONString(Parameters, "No");
-        JSON = StrReplace(JSON, Chars.VK + Chars.PS, "");
+        JSON = OPI_Tools.JSONString(Parameters, "None");
+        JSON = StrReplace(JSON, Chars.CR + Chars.PS, "");
 
         Headers.Insert("Dropbox-API-Arg", JSON);
     
