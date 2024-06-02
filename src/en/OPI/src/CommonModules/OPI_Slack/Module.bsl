@@ -122,7 +122,7 @@ Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = ""
         
         If TypeOf(Blocks) = Type("Array") Then
             
-            For N = 0 To Blocks.WithinBoundary() Do
+            For N = 0 To Blocks.UBound() Do
                 OPI_TypeConversion.GetCollection(Blocks[N]);                    
             EndDo;
             

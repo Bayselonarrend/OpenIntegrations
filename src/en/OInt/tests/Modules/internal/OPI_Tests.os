@@ -1874,7 +1874,7 @@ Procedure GD_CreateDeleteComment() Export
     OPI_TestDataRetrieval.WriteLog(Result, "GetCommentList");
     
     Comments = Result[Comments];
-    CommentObject = Comments[Comments.WithinBoundary()];
+    CommentObject = Comments[Comments.UBound()];
     
     ResultArray.Add(CommentObject);
     
@@ -1938,7 +1938,7 @@ Procedure GT_CreateTable() Export
     
     OPI_TestDataRetrieval.ExpectsThat(Result["properties"]["title"]).Равно(Name);
 
-    For N = 0 To SheetArray.WithinBoundary() Do
+    For N = 0 To SheetArray.UBound() Do
         
         SheetName = Result["sheets"][N]["properties"]["title"];
         OPI_TestDataRetrieval.ExpectsThat(SheetName).Равно(SheetArray[N]);

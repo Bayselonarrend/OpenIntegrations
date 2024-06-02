@@ -404,7 +404,7 @@ Procedure FormCellNameArray(Val ArrayOfNames, Val Sheet)
 
    OPI_TypeConversion.GetLine(Sheet); 
    
-   For N = 0 To ArrayOfNames.WithinBoundary() Do       
+   For N = 0 To ArrayOfNames.UBound() Do       
        AddSheetName(ArrayOfNames[N], Sheet);
    EndDo;
        
