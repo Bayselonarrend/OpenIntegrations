@@ -247,7 +247,7 @@ EndFunction
 // Key-Value Pair - serialized JSON response from Twitter
 Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
     
-    MediaArray = UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
+    MediaArray = UploadAttachmentsArray(ImageArray, "photo", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);    
     
 EndFunction
@@ -264,7 +264,7 @@ EndFunction
 // Key-Value Pair - serialized JSON response from Twitter
 Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
     
-    MediaArray = UploadAttachmentsArray(GifsArray, "tweet_gif", Parameters);
+    MediaArray = UploadAttachmentsArray(GifsArray, "animated_gif", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);    
     
 EndFunction
@@ -281,7 +281,7 @@ EndFunction
 // Key-Value Pair - serialized JSON response from Twitter
 Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
     
-    MediaArray = UploadAttachmentsArray(VideosArray, "tweet_video", Parameters);
+    MediaArray = UploadAttachmentsArray(VideosArray, "video", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
     
 EndFunction
@@ -357,7 +357,7 @@ Function UploadMediaFile(Val File, Val Type, Val Parameters)
     Parameters_ = GetStandardParameters(Parameters);
     URL = "https://upload.twitter.com/1.1/media/upload.json";
      
-    If Type = "tweet_image" Then 
+    If Type = "photo" Then 
         
         Fields = New Structure;
         Fields.Insert("media_data" , Base64String(File));
@@ -386,9 +386,9 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     Size = File.Size();
     
     MIMETypeMapping = New Map;
-    MIMETypeMapping.Insert("tweet_image", "image/jpeg");
-    MIMETypeMapping.Insert("tweet_video", "video/mp4");
-    MIMETypeMapping.Insert("tweet_gif" , "image/gif");
+    MIMETypeMapping.Insert("photo" , "image/jpeg");
+    MIMETypeMapping.Insert("video" , "video/mp4");
+    MIMETypeMapping.Insert("animated_gif", "image/gif");
     
     ChunkSize = Count * Unit * Unit;
     ArrayReading = SplitBinaryData(File, ChunkSize);
