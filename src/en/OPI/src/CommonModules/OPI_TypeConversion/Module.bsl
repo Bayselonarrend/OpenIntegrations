@@ -176,7 +176,7 @@ Procedure GetArray(Value) Export
 	
 	    Value = StrSplit(Value, CommaInQuotes, False);
 	
-	    For N = 0 To Value.WithinBoundary() Do
+	    For N = 0 To Value.UBound() Do
 	        Value[N] = TrimAll(Value[N]);
 	    EndDo;
     
