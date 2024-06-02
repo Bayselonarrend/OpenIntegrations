@@ -384,7 +384,7 @@ Function SendMessage(Val Token
     Response = OPI_Tools.Post(URL, ParametersStructure, TokenInHeaders(Token));
     
     Try
-        Return OPI_Tools.JsonToStructure(Response.GetBodyAsBinaryData());
+        Return OPI_Tools.JsonToStructure(Response.GetBodyAsBinary());
     Except
         Return Response;
     EndTry;

@@ -170,7 +170,7 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
         Response = UnpackResponse(Response);
     EndIf;
     
-    Response = ?(TypeOf(Response) = Type("HTTPResponse"), Response.GetBodyAsBinaryData(), Response);
+    Response = ?(TypeOf(Response) = Type("HTTPResponse"), Response.GetBodyAsBinary(), Response);
     
     If TypeOf(Response) = Type("BinaryData") Then
         
@@ -595,7 +595,7 @@ Function ExecuteRequestWithBinaryData(Val URL
     Request = CreateRequest(Address, AdditionalHeaders, DataType);
     Connection = CreateConnection(Server);
     
-    Request.SetBodyFromBinaryData(Data);
+    Request.SetBodyFromBinary(Data);
     
     Response = Connection.CallHTTPMethod(View, Request);
 
@@ -832,7 +832,7 @@ Procedure SetRequestBody(Request, Val Parameters, Val JSON)
         Request.SetBodyFromString(Data);
     Else
         //@skip-check wrong-type-expression
-        Request.SetBodyFromBinaryData(Data);
+        Request.SetBodyFromBinary(Data);
     EndIf;
     
 EndProcedure
@@ -990,7 +990,7 @@ EndProcedure
 
 Procedure AddContentLength(Request)
     
-    RequestBody = Request.GetBodyAsBinaryData();
+    RequestBody = Request.GetBodyAsBinary();
     
     If ValueIsFilled(RequestBody) Then
         
@@ -1056,7 +1056,7 @@ EndProcedure
 Function UnpackResponse(Response)
 
     Try
-        Return ReadGZip(Response.GetBodyAsBinaryData());
+        Return ReadGZip(Response.GetBodyAsBinary());
     Except
         Return Response;
     EndTry;
