@@ -170,7 +170,7 @@ Procedure ProcessResponse(Response, Val FullResponse = False) Export
         Response = UnpackResponse(Response);
     EndIf;
     
-    Response = ?(TypeOf(Response) = Type("HTTPResponse"), Response.GetBodyAsBinary(), Response);
+    Response = ?(TypeOf(Response) = Type("HTTPResponse"), Response.ПолучитьТелоКакДвоичныеДанные(), Response);
     
     If TypeOf(Response) = Type("BinaryData") Then
         
@@ -990,7 +990,7 @@ EndProcedure
 
 Procedure AddContentLength(Request)
     
-    RequestBody = Request.GetBodyAsBinary();
+    RequestBody = Request.ПолучитьТелоКакДвоичныеДанные();
     
     If ValueIsFilled(RequestBody) Then
         
@@ -1056,7 +1056,7 @@ EndProcedure
 Function UnpackResponse(Response)
 
     Try
-        Return ReadGZip(Response.GetBodyAsBinary());
+        Return ReadGZip(Response.ПолучитьТелоКакДвоичныеДанные());
     Except
         Return Response;
     EndTry;
