@@ -2127,6 +2127,7 @@ Procedure Twitter_CreateTweetWithImage() Export
     
     Check_TwitterText(Result, Text);    
     
+    Text = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateImageTweet(Text, AndVF, Parameters);
     
     OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet");
@@ -2153,6 +2154,7 @@ Procedure Twitter_CreateTweetWithVideo() Export
     
     Check_TwitterText(Result, Text);    
     
+    Text = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateVideoTweet(Text, AndVF, Parameters);
     
     OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet");
@@ -2179,6 +2181,7 @@ Procedure Twitter_CreateTweetWithGif() Export
      
     Check_TwitterText(Result, Text);    
     
+    Text = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateGifTweet(Text, AndVF, Parameters);
     
     OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet");
