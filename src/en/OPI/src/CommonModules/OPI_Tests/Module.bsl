@@ -1171,7 +1171,7 @@ Procedure YDisk_MoveObject() Export
     URL = "https://raw.githubusercontent.com/Bayselonarrend/"
         + "OpenIntegrations/main/Media/logo.png";
 
-    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    Result = OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToURL");
     
