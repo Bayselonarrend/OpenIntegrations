@@ -56,7 +56,7 @@ Name: desktopicon; Description: "Создать ярлык на рабочем �
 
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-Filename: "https://openintegrations.dev/docs/Nachalo-raboty/Rabota-s-CLI-versiei"; Flags: shellexec runasoriginaluser postinstall; Description: "Посетить старницу документации openintegrations.dev"
+Filename: "https://openintegrations.dev/docs/Nachalo-raboty/Rabota-s-CLI-versiei"; Flags: shellexec runasoriginaluser postinstall; Description: "Посетить страницу документации openintegrations.dev"
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
