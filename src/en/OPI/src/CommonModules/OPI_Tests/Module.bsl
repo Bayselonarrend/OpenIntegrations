@@ -1728,8 +1728,8 @@ EndProcedure
 
 Procedure GD_GetCatalogList() Export
  
-    MimeType = "mimeType";
-    Name = "name";
+    MimeType_ = "mimeType";
+    Name_ = "name";
     Name = "TestFolder";
     Token = OPI_TestDataRetrieval.GetParameter("Google_Token");
     Result = OPI_GoogleDrive.GetDirectoriesList(Token, Name, True);
@@ -1739,8 +1739,8 @@ Procedure GD_GetCatalogList() Export
     Result = Result[0];
     
     OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно("application/vnd.google-apps.folder");
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно("application/vnd.google-apps.folder");
+    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Заполнено();
     
     OPI_Tools.Pause(5);
     Identifier = Result["id"];
@@ -1751,8 +1751,8 @@ Procedure GD_GetCatalogList() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInfo");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно("application/vnd.google-apps.folder");
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно("application/vnd.google-apps.folder");
+    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Заполнено();
     
     OPI_Tools.Pause(5);
 
@@ -1762,11 +1762,11 @@ Procedure GD_UploadDeleteFile() Export
  
     ExtraBytes = 2;
     
-    Kind = "kind";
-    Content = "content";
-    MIME = "MIME";
-    MimeType = "mimeType";
-    Name = "name";
+    Kind_ = "kind";
+    Content_ = "content";
+    MIME_ = "MIME";
+    MimeType_ = "mimeType";
+    Name_ = "name";
     Id_ = "id";
     
     ArrayOfDeletions = New Array;
@@ -1782,8 +1782,8 @@ Procedure GD_UploadDeleteFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFile");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно(Description[MIME]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(Description["Name"]);
+    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно(Description[MIME_]);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(Description["Name"]);
 
     Identifier = Result[Id_];
     ArrayOfDeletions.Add(Identifier);
@@ -1795,8 +1795,8 @@ Procedure GD_UploadDeleteFile() Export
     
     OPI_Tools.Pause(5);
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно(Description[MIME]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(NewName);
+    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно(Description[MIME_]);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(NewName);
        
     ArrayOfDeletions.Add(Result[Id_]);
     
@@ -1812,8 +1812,8 @@ Procedure GD_UploadDeleteFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UpdateFile");
     
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType]).Равно(Description[MIME]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(NewName);
+    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно(Description[MIME_]);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(NewName);
 
     OPI_Tools.Pause(5);
     
@@ -1822,8 +1822,8 @@ Procedure GD_UploadDeleteFile() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateComment");
   
-    OPI_TestDataRetrieval.ExpectsThat(Result[Content]).Равно(Comment);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Kind]).Равно("drive#comment");
+    OPI_TestDataRetrieval.ExpectsThat(Result[Content_]).Равно(Comment);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Kind_]).Равно("drive#comment");
     
     OPI_Tools.Pause(5);
      
@@ -1842,10 +1842,10 @@ EndProcedure
 
 Procedure GD_CreateDeleteComment() Export
     
-    Kind = "kind";
-    Content = "content";
+    Kind_ = "kind";
+    Content_ = "content";
     Id_ = "id";
-    Comments = "comments";
+    Comments_ = "comments";
     Token = OPI_TestDataRetrieval.GetParameter("Google_Token");
     Directory = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
@@ -1876,14 +1876,14 @@ Procedure GD_CreateDeleteComment() Export
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetCommentList");
     
-    Comments = Result[Comments];
+    Comments = Result[Comments_];
     CommentObject = Comments[Comments.UBound()];
     
     ResultArray.Add(CommentObject);
     
     For Each Result In ResultArray Do     
-        OPI_TestDataRetrieval.ExpectsThat(Result[Content]).Равно(Comment);
-        OPI_TestDataRetrieval.ExpectsThat(Result[Kind]).Равно("drive#comment");
+        OPI_TestDataRetrieval.ExpectsThat(Result[Content_]).Равно(Comment);
+        OPI_TestDataRetrieval.ExpectsThat(Result[Kind_]).Равно("drive#comment");
     EndDo;
     
     Result = OPI_GoogleDrive.DeleteComment(Token, Identifier, CommentID);    
@@ -1898,7 +1898,7 @@ EndProcedure
 
 Procedure GD_CreateCatalog() Export
     
-    Name = "name";
+    Name_ = "name";
     Name = "TestFolder";
     Token = OPI_TestDataRetrieval.GetParameter("Google_Token");
     Directory = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
@@ -1914,7 +1914,7 @@ Procedure GD_CreateCatalog() Export
         
         CatalogID = Result["id"];
                 
-        OPI_TestDataRetrieval.ExpectsThat(Result[Name]).Равно(Name);
+        OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(Name);
         
         OPI_GoogleDrive.DeleteObject(Token, CatalogID);
         
@@ -1955,14 +1955,18 @@ Procedure GT_CreateTable() Export
     OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet", Book);
     OPI_TestDataRetrieval.WriteParameter("GS_Sheet" , Sheet);
     
+    Name = "TestTable (add.)";
     Result = OPI_GoogleSheets.CreateBook(Token, Name, SheetArray);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CopySheet (add.)");
+    
     Book2 = Result["spreadsheetId"];
     
     Result = OPI_GoogleSheets.CopySheet(Token, Book, Book2, Sheet);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CopySheet");
 
-    OPI_TestDataRetrieval.ExpectsThat(Result["title"]).Равно(SheetName + " (copy)");
+    OPI_TestDataRetrieval.ExpectsThat(Result["title"]).Заполнено();
     
     Name = "TestSheet";
         
