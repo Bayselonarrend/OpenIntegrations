@@ -1,4 +1,4 @@
-﻿// 
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Tests.os
 
 // MIT License
 
@@ -500,7 +500,7 @@ Procedure VKAPI_CreateAdCampaign() Export
  
     Parameters = GetVKParameters();
     CabinetID = OPI_TestDataRetrieval.GetParameter("VK_AdsCabinetID");
-    Name = "";
+    Name = "Test ads";
     TypeMatch = Type("Map");
     TypeNumber = Type("Number");
     Response_ = "response";
@@ -709,16 +709,16 @@ Procedure VKAPI_CreateProductWithProperties() Export
     TypeNumber = Type("Number");
     MII_ = "market_item_id";
     Response_ = "response";
-     = "Yellow";
-     = "Red";
+    Yellow_ = "Yellow";
+    Red_ = "Red";
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
     AndVF = GetTempFileName("png");   
     Image.Write(AndVF);
     
     OptionArray = New Array;
-    OptionArray.Add();
+    OptionArray.Add(Yellow_);
     OptionArray.Add("Blue");
-    OptionArray.Add();
+    OptionArray.Add(Red_);
     
     Result = OPI_VK.CreateProductProperty("Color", Parameters);
     
@@ -772,7 +772,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     ImageArray.Add(Image);
     
     Product = New Map();
-    Product.Insert("Name" , "TestProduct (" +  + ")");    
+    Product.Insert("Name" , "TestProduct (" + Yellow_ + ")");    
     Product.Insert("Description" , "Product description");
     Product.Insert("Category" , "20173");           
     Product.Insert("Price" , 1);                
@@ -788,7 +788,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     Product.Insert("Weight" , 100);
     Product.Insert("SKU" , 12345);
     Product.Insert("AvailableBalance" , "10");
-    Product.Insert("PropertyValues" , PropertyMatch[]);
+    Product.Insert("PropertyValues" , PropertyMatch[Yellow_]);
     
     Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product  
     
@@ -801,8 +801,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
     OPI_TestDataRetrieval.ExpectsThat(Result[Response_][MII_]).ИмеетТип(TypeNumber).Заполнено();
         
-    Product.Insert("Name" , "TestProduct (" +  + ")");
-    Product.Insert("PropertyValues", PropertyMatch[]);
+    Product.Insert("Name" , "TestProduct (" + Red_ + ")");
+    Product.Insert("PropertyValues", PropertyMatch[Red_]);
 
     Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product
     
@@ -1955,10 +1955,10 @@ Procedure GT_CreateTable() Export
     OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet", Book);
     OPI_TestDataRetrieval.WriteParameter("GS_Sheet" , Sheet);
     
-    Name = ".)";
+    Name = "Test table (new.)";
     Result = OPI_GoogleSheets.CreateBook(Token, Name, SheetArray);
     
-    OPI_TestDataRetrieval.WriteLog(Result, "CopySheet (add.)");
+    OPI_TestDataRetrieval.WriteLog(Result, ".)");
     
     Book2 = Result["spreadsheetId"];
     
