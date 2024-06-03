@@ -48,7 +48,7 @@
 
 // For YAxUnit
 
-Procedure ИсполняеымыеСценарии() Export
+Procedure AndwithполняеымыеСцеtoрии() Export
 
     OPI_TestDataRetrieval.FormYAXTests();
 
