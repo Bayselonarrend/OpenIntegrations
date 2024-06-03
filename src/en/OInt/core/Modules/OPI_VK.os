@@ -1963,7 +1963,7 @@ EndFunction
 
 Function AddImageParameter(Val Image, Val SelectionID, Parameters)
     
-    PhotoID = "photo_id";
+    PhotoID_ = "photo_id";
     
     If ValueIsFilled(Image) Then
         
@@ -1973,7 +1973,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
             Return PhotoID; 
         EndIf;
       
-        Parameters.Insert(PhotoID, PhotoID);
+        Parameters.Insert(PhotoID_, PhotoID);
         
     Else
         
@@ -1988,7 +1988,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
             If Not Selections.Count() = 0 Then              
                 PhotoID = Selections[0]["photo"]["id"];
                 OPI_TypeConversion.GetLine(PhotoID);
-                Parameters.Insert(PhotoID, PhotoID);
+                Parameters.Insert(PhotoID_, PhotoID);
             EndIf;
             
         EndIf;
