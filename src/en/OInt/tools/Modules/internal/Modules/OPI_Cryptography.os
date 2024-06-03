@@ -77,10 +77,10 @@ Function HMAC(Val Key, Val Data, Type, BlockSize) Export
     Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
     Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
     
-    Ipad.WriteBitwiseExclusiveOr(0, Key);
+    Ipad.WriteBitwiseXor(0, Key);
     Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
     
-    Opad.WriteBitwiseExclusiveOr(0, Key);
+    Opad.WriteBitwiseXor(0, Key);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
     
     Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), Type)), Type);
