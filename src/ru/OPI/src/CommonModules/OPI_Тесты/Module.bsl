@@ -1171,7 +1171,7 @@
     URL             = "https://raw.githubusercontent.com/Bayselonarrend/"
         + "OpenIntegrations/main/Media/logo.png";
 
-    OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, ПутьОригинала, URL);
+    Результат = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, ПутьОригинала, URL);
     
     // !OInt OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ЗагрузитьФайлПоURL");
     
