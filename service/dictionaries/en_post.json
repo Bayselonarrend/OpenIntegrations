@@ -1,0 +1,19 @@
+{
+"UTTests": "ЮТТесты",
+"UTest": "ЮТест",
+"RunningScenarios": "ИсполняеымыеСценарии",
+"AddTestSet":"ДобавитьТестовыйНабор",
+"AddServerTest":"ДобавитьСерверныйТест",
+"Module.ExpectsThat(":"Module.ОжидаетЧто(",
+"Awaiting.What(":"Ожидаем.Что(",
+".HasType(":".ИмеетТип(",
+".Equal(":".Равно(",
+".Filled(":".Заполнено(",
+".NPP":".NBSp",
+".VK":".CR",
+".PS":".LF",
+".PF":".FF",
+"\"No\"":"\"None\"",
+"Elements":"Items",
+"HasLength":"ИмеетДлину"
+}
