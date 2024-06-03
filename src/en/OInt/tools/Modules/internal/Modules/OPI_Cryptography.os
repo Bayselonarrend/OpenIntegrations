@@ -53,7 +53,7 @@ EndFunction
 Function Hash(BinaryData, Type) Export
     
     Hashing = New DataHashing(Type);
-    Hashing.Add(BinaryData);
+    Hashing.Append(BinaryData);
     
     Return Hashing.HashSum;
         
