@@ -58,7 +58,7 @@
     НоваяСтрока.Метод       = "CreatePost";
     НоваяСтрока.МетодПоиска = "CREATEPOST";
     НоваяСтрока.Параметр    = "--ad";
-    НоваяСтрока.Описание    = "Sign ""This is an ad"" (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Sign ""This is an ad"" (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Group work";
 
 
@@ -118,7 +118,7 @@
     НоваяСтрока.Метод       = "CreateCompositePost";
     НоваяСтрока.МетодПоиска = "CREATECOMPOSITEPOST";
     НоваяСтрока.Параметр    = "--ad";
-    НоваяСтрока.Описание    = "Sign ""This is an ad"" (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Sign ""This is an ad"" (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Group work";
 
 
@@ -578,7 +578,7 @@
     НоваяСтрока.Метод       = "CloseDiscussion";
     НоваяСтрока.МетодПоиска = "CLOSEDISCUSSION";
     НоваяСтрока.Параметр    = "--remove";
-    НоваяСтрока.Описание    = "Delete completely (True) or close (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Delete completely (True) or close (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Discussion management";
 
 
@@ -748,7 +748,7 @@
     НоваяСтрока.Метод       = "MakeRepost";
     НоваяСтрока.МетодПоиска = "MAKEREPOST";
     НоваяСтрока.Параметр    = "--ad";
-    НоваяСтрока.Описание    = "Sign of an advertising post (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Sign of an advertising post (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Interactive actions";
 
 
@@ -1468,7 +1468,7 @@
     НоваяСтрока.Метод       = "CreateProductCollection";
     НоваяСтрока.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     НоваяСтрока.Параметр    = "--main";
-    НоваяСтрока.Описание    = "Main (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Main (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Product selection management";
 
 
@@ -1478,7 +1478,7 @@
     НоваяСтрока.Метод       = "CreateProductCollection";
     НоваяСтрока.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     НоваяСтрока.Параметр    = "--hidden";
-    НоваяСтрока.Описание    = "Hidden (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Hidden (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Product selection management";
 
 
@@ -1538,7 +1538,7 @@
     НоваяСтрока.Метод       = "EditProductCollection";
     НоваяСтрока.МетодПоиска = "EDITPRODUCTCOLLECTION";
     НоваяСтрока.Параметр    = "--main";
-    НоваяСтрока.Описание    = "Main (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Main (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Product selection management";
 
 
@@ -1548,7 +1548,7 @@
     НоваяСтрока.Метод       = "EditProductCollection";
     НоваяСтрока.МетодПоиска = "EDITPRODUCTCOLLECTION";
     НоваяСтрока.Параметр    = "--hidden";
-    НоваяСтрока.Описание    = "Hidden (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Hidden (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Product selection management";
 
 

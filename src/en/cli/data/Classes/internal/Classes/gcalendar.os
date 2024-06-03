@@ -246,7 +246,7 @@
     НоваяСтрока.Метод       = "EditListCalendar";
     НоваяСтрока.МетодПоиска = "EDITLISTCALENDAR";
     НоваяСтрока.Параметр    = "--hidden";
-    НоваяСтрока.Описание    = "Hidden calendar (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Hidden calendar (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Calendar list management";
 
 

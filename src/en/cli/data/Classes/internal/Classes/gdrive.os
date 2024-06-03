@@ -58,7 +58,7 @@
     НоваяСтрока.Метод       = "GetDirectoriesList";
     НоваяСтрока.МетодПоиска = "GETDIRECTORIESLIST";
     НоваяСтрока.Параметр    = "--depth";
-    НоваяСтрока.Описание    = "Adds a list of files to the directory fields (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Adds a list of files to the directory fields (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and directory management";
 
 
