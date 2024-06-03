@@ -500,7 +500,7 @@ Procedure VKAPI_CreateAdCampaign() Export
  
     Parameters = GetVKParameters();
     CabinetID = OPI_TestDataRetrieval.GetParameter("VK_AdsCabinetID");
-    Name = "Testоinая реtoлама";
+    Name = "";
     TypeMatch = Type("Map");
     TypeNumber = Type("Number");
     Response_ = "response";
@@ -709,16 +709,16 @@ Procedure VKAPI_CreateProductWithProperties() Export
     TypeNumber = Type("Number");
     MII_ = "market_item_id";
     Response_ = "response";
-    Yellow_ = "Yellow";
-    Red_ = "Red";
+     = "Yellow";
+     = "Red";
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
     AndVF = GetTempFileName("png");   
     Image.Write(AndVF);
     
     OptionArray = New Array;
-    OptionArray.Add(Yellow_);
+    OptionArray.Add();
     OptionArray.Add("Blue");
-    OptionArray.Add(Red_);
+    OptionArray.Add();
     
     Result = OPI_VK.CreateProductProperty("Color", Parameters);
     
@@ -772,7 +772,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     ImageArray.Add(Image);
     
     Product = New Map();
-    Product.Insert("Name" , "TestProduct (" + Yellow_ + ")");    
+    Product.Insert("Name" , "TestProduct (" +  + ")");    
     Product.Insert("Description" , "Product description");
     Product.Insert("Category" , "20173");           
     Product.Insert("Price" , 1);                
@@ -788,7 +788,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     Product.Insert("Weight" , 100);
     Product.Insert("SKU" , 12345);
     Product.Insert("AvailableBalance" , "10");
-    Product.Insert("PropertyValues" , PropertyMatch[Yellow_]);
+    Product.Insert("PropertyValues" , PropertyMatch[]);
     
     Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product  
     
@@ -801,8 +801,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
     OPI_TestDataRetrieval.ExpectsThat(Result[Response_][MII_]).ИмеетТип(TypeNumber).Заполнено();
         
-    Product.Insert("Name" , "TestProduct (" + Red_ + ")");
-    Product.Insert("PropertyValues", PropertyMatch[Red_]);
+    Product.Insert("Name" , "TestProduct (" +  + ")");
+    Product.Insert("PropertyValues", PropertyMatch[]);
 
     Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product
     
@@ -1173,7 +1173,7 @@ Procedure YDisk_MoveObject() Export
 
     Result = OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToURL");
+    // ");
     
     OPI_Tools.Pause(15);
       
@@ -1955,10 +1955,10 @@ Procedure GT_CreateTable() Export
     OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet", Book);
     OPI_TestDataRetrieval.WriteParameter("GS_Sheet" , Sheet);
     
-    Name = "TestTable (add.)";
+    Name = ".)";
     Result = OPI_GoogleSheets.CreateBook(Token, Name, SheetArray);
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CopySheet (add.)");
+    // .)");
     
     Book2 = Result["spreadsheetId"];
     
