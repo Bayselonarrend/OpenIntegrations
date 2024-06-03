@@ -5216,7 +5216,7 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
     
     // END
         
-    OPI_TestDataRetrieval.WriteLog(Result, "AddUserToFile", "Dropbox");
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile", "Dropbox");
     
     Check_DropboxMember(Result, Email, False);
     
@@ -5224,6 +5224,8 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
     Mails.Add(Email);
     
     Result = OPI_Dropbox.AddUsersToFile(Token, File, Mails, True);
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile (add.) ");
     
     Check_DropboxMember(Result, Email, True);
     
