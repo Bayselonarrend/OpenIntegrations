@@ -415,11 +415,11 @@ Procedure VKAPI_LikeRepostComment() Export
     Message = "Message from autotest";
     TypeMatch = Type("Map");
     TypeNumber = Type("Number");
-    Response = "response";
+    Response_ = "response";
     
     Result = OPI_VK.CreatePost(Text, New Array, , , Parameters);
     
-    PostID = Result[Response]["post_id"];    
+    PostID = Result[Response_]["post_id"];    
     Result = OPI_VK.LikePost(PostID, , Parameters);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Like");
@@ -427,7 +427,7 @@ Procedure VKAPI_LikeRepostComment() Export
     OPI_Tools.Pause(5);
       
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["likes"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["likes"]).ИмеетТип(TypeNumber).Заполнено();
         
     ExternalPost = 2571;
     ExternalWall = -218704372;
@@ -439,8 +439,8 @@ Procedure VKAPI_LikeRepostComment() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["success"]).ИмеетТип(TypeNumber).Равно(1);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["wall_repost_count"]).ИмеетТип(TypeNumber).Равно(1); 
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["success"]).ИмеетТип(TypeNumber).Равно(1);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["wall_repost_count"]).ИмеетТип(TypeNumber).Равно(1); 
         
     Result = OPI_VK.WriteComment(PostID, Parameters["owner_id"], Message, Parameters);
     
@@ -449,10 +449,10 @@ Procedure VKAPI_LikeRepostComment() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["comment_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["comment_id"]).ИмеетТип(TypeNumber).Заполнено();
    
     OPI_VK.DeletePost(PostID, Parameters);
-    OPI_VK.DeletePost(Result[Response]["post_id"], Parameters);
+    OPI_VK.DeletePost(Result[Response_]["post_id"], Parameters);
     
     OPI_Tools.Pause(5);
 
@@ -500,28 +500,28 @@ Procedure VKAPI_CreateAdCampaign() Export
  
     Parameters = GetVKParameters();
     CabinetID = OPI_TestDataRetrieval.GetParameter("VK_AdsCabinetID");
-    Name = "TestCampaign";
+    Name = "Testоinая реtoлама";
     TypeMatch = Type("Map");
     TypeNumber = Type("Number");
-    Response = "response";
-    UID = "id";
+    Response_ = "response";
+    UID_ = "id";
         
     Result = OPI_VK.CreateAdvertisingCampaign(CabinetID, Name, Parameters);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateAdCampaign");
     
-    Result = Result[Response][0];
+    Result = Result[Response_][0];
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
     OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[UID_]).ИмеетТип(TypeNumber).Заполнено();
         
-    CampaignID = Result[UID];
+    CampaignID = Result[UID_];
     CategoryID = 126;
     Limit = 150;
     
     Result = OPI_VK.CreatePost(Name, New Array, , , Parameters); 
-    PostID = Result[Response]["post_id"]; 
+    PostID = Result[Response_]["post_id"]; 
         
     Result = OPI_VK.CreateAd(CampaignID
         , Limit
@@ -532,21 +532,21 @@ Procedure VKAPI_CreateAdCampaign() Export
         
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateAd");
             
-    Result = Result[Response][0];
+    Result = Result[Response_][0];
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
     OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[UID_]).ИмеетТип(TypeNumber).Заполнено();
         
-    AnnouncementID = Result[UID];
+    AnnouncementID = Result[UID_];
     Result = OPI_VK.PauseAdvertisingAd(CabinetID, AnnouncementID, Parameters);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PauseAdvertisement");
     
-    Result = Result[Response][0];
+    Result = Result[Response_][0];
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch); 
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[UID_]).ИмеетТип(TypeNumber).Заполнено();
  
     OPI_VK.DeletePost(PostID, Parameters);
     
@@ -597,12 +597,12 @@ Procedure VKAPI_CreateProductSelection() Export
     Parameters = GetVKParameters();
     TypeMatch = Type("Map");
     TypeNumber = Type("Number");
-    Response = "response";
+    Response_ = "response";
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
     AndVF = GetTempFileName("png");   
     Image.Write(AndVF);
         
-    Result = OPI_VK.CreateProductCollection("TestCollection"
+    Result = OPI_VK.CreateProductCollection("Test album"
         , Image
         , True
         , False
@@ -613,10 +613,10 @@ Procedure VKAPI_CreateProductSelection() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["albums_count"]).ИмеетТип(TypeNumber).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["market_album_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["albums_count"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["market_album_id"]).ИмеетТип(TypeNumber).Заполнено();
              
-    SelectionID = Result[Response]["market_album_id"];
+    SelectionID = Result[Response_]["market_album_id"];
     
     Result = OPI_VK.EditProductCollection("EditedCollection", SelectionID, , , , Parameters);
     
@@ -625,7 +625,7 @@ Procedure VKAPI_CreateProductSelection() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]).ИмеетТип(TypeNumber).Равно(1);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]).ИмеетТип(TypeNumber).Равно(1);
  
     ImageArray = New Array;
     ImageArray.Add(OPI_TestDataRetrieval.GetBinary("Picture"));
@@ -653,9 +653,9 @@ Procedure VKAPI_CreateProductSelection() Export
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddProduct");
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["market_item_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["market_item_id"]).ИмеетТип(TypeNumber).Заполнено();
         
-    ProductID = Result[Response]["market_item_id"];
+    ProductID = Result[Response_]["market_item_id"];
     
     Product = New Map;
     Product.Insert("Name", "EditedTestProduct");
@@ -673,7 +673,7 @@ Procedure VKAPI_CreateProductSelection() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]).ИмеетТип(TypeNumber).Заполнено();
         
     Result = OPI_VK.RemoveProductFromSelection(ProductID, SelectionID, Parameters); // Deletes from selections
     
@@ -707,18 +707,18 @@ Procedure VKAPI_CreateProductWithProperties() Export
     Parameters = GetVKParameters();
     TypeMatch = Type("Map");
     TypeNumber = Type("Number");
-    MII = "market_item_id";
-    Response = "response";
-    Yellow = "Yellow";
-    Red = "Red";
+    MII_ = "market_item_id";
+    Response_ = "response";
+    Yellow_ = "Yellow";
+    Red_ = "Red";
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
     AndVF = GetTempFileName("png");   
     Image.Write(AndVF);
     
     OptionArray = New Array;
-    OptionArray.Add(Yellow);
+    OptionArray.Add(Yellow_);
     OptionArray.Add("Blue");
-    OptionArray.Add(Red);
+    OptionArray.Add(Red_);
     
     Result = OPI_VK.CreateProductProperty("Color", Parameters);
     
@@ -726,13 +726,13 @@ Procedure VKAPI_CreateProductWithProperties() Export
     
     OPI_Tools.Pause(5);
     
-    Property = Result[Response]["property_id"];
+    Property = Result[Response_]["property_id"];
     Property = OPI_Tools.NumberToString(Property);
      
     PropertyMatch = New Map;
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["property_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["property_id"]).ИмеетТип(TypeNumber).Заполнено();
         
     Result = OPI_VK.EditProductProperty("Color (change.)", Property, Parameters);
     
@@ -751,9 +751,9 @@ Procedure VKAPI_CreateProductWithProperties() Export
         OPI_Tools.Pause(5);
         
         OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-        OPI_TestDataRetrieval.ExpectsThat(Result[Response]["variant_id"]).ИмеетТип(TypeNumber).Заполнено();
+        OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["variant_id"]).ИмеетТип(TypeNumber).Заполнено();
             
-        VariantID = Result[Response]["variant_id"];
+        VariantID = Result[Response_]["variant_id"];
         PropertyMatch.Insert(Option, VariantID);
         
         Result = OPI_VK.EditProductPropertyVariant(Option + String(New UUID())
@@ -772,7 +772,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     ImageArray.Add(Image);
     
     Product = New Map();
-    Product.Insert("Name" , "TestProduct (" + Yellow + ")");    
+    Product.Insert("Name" , "TestProduct (" + Yellow_ + ")");    
     Product.Insert("Description" , "Product description");
     Product.Insert("Category" , "20173");           
     Product.Insert("Price" , 1);                
@@ -788,7 +788,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     Product.Insert("Weight" , 100);
     Product.Insert("SKU" , 12345);
     Product.Insert("AvailableBalance" , "10");
-    Product.Insert("PropertyValues" , PropertyMatch[Yellow]);
+    Product.Insert("PropertyValues" , PropertyMatch[Yellow_]);
     
     Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product  
     
@@ -796,13 +796,13 @@ Procedure VKAPI_CreateProductWithProperties() Export
     
     OPI_Tools.Pause(5);
     
-    YellowID = Result[Response]["market_item_id"];               
+    YellowID = Result[Response_]["market_item_id"];               
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response][MII]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_][MII_]).ИмеетТип(TypeNumber).Заполнено();
         
-    Product.Insert("Name" , "TestProduct (" + Red + ")");
-    Product.Insert("PropertyValues", PropertyMatch[Red]);
+    Product.Insert("Name" , "TestProduct (" + Red_ + ")");
+    Product.Insert("PropertyValues", PropertyMatch[Red_]);
 
     Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product
     
@@ -810,10 +810,10 @@ Procedure VKAPI_CreateProductWithProperties() Export
       
     OPI_Tools.Pause(5);
     
-    RedID = Result[Response][MII];               
+    RedID = Result[Response_][MII_];               
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response][MII]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_][MII_]).ИмеетТип(TypeNumber).Заполнено();
         
     ProductsArray = New Array;
     ProductsArray.Add(YellowID);
@@ -826,7 +826,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["items"]).ИмеетТип("Array").ИмеетДлину(2);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["items"]).ИмеетТип("Array").ИмеетДлину(2);
         
     Result = OPI_VK.GroupProducts(ProductsArray, , Parameters);
     
@@ -835,7 +835,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     OPI_Tools.Pause(5);
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMatch);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response]["item_group_id"]).ИмеетТип(TypeNumber).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["item_group_id"]).ИмеетТип(TypeNumber).Заполнено();
        
     OPI_VK.DeleteProduct(YellowID , Parameters);
     OPI_VK.DeleteProduct(RedID, Parameters);
@@ -1172,6 +1172,9 @@ Procedure YDisk_MoveObject() Export
         + "OpenIntegrations/main/Media/logo.png";
 
     OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToURL");
+    
     OPI_Tools.Pause(15);
       
     Result = OPI_YandexDisk.MoveObject(Token, OriginalPath, CopyPath, True);
@@ -3393,13 +3396,13 @@ EndProcedure
 
 Procedure Check_TelegramGif(Val Result, Val Text)
 
-    Result = "result";
+    Result_ = "result";
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["caption"]).Равно(Text);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["document"]).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["animation"]["mime_type"]).Равно("video/mp4");
+    OPI_TestDataRetrieval.ExpectsThat(Result[Result_]["caption"]).Равно(Text);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Result_]["document"]).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result[Result_]["animation"]["mime_type"]).Равно("video/mp4");
             
 EndProcedure
 
@@ -3454,12 +3457,12 @@ EndProcedure
 
 Procedure Check_TelegramInvitation(Val Result, Val Title, Val UnixExpiration)
 
-    Result = "result";
+    Result_ = "result";
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["member_limit"]).Равно(200);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["name"]).Равно(Title);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Result]["expire_date"]).Равно(Number(UnixExpiration));
+    OPI_TestDataRetrieval.ExpectsThat(Result[Result_]["member_limit"]).Равно(200);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Result_]["name"]).Равно(Title);
+    OPI_TestDataRetrieval.ExpectsThat(Result[Result_]["expire_date"]).Равно(Number(UnixExpiration));
     	
 EndProcedure
 
