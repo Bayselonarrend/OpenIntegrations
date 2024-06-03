@@ -149,7 +149,7 @@
     НоваяСтрока.Метод       = "EditPageProperties";
     НоваяСтрока.МетодПоиска = "EDITPAGEPROPERTIES";
     НоваяСтрока.Параметр    = "--archive";
-    НоваяСтрока.Описание    = "Archive page or not (boolean) (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Archive page or not (boolean) (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "Page management";
 
 
@@ -365,7 +365,7 @@
     НоваяСтрока.Метод       = "ReturnBlock";
     НоваяСтрока.МетодПоиска = "RETURNBLOCK";
     НоваяСтрока.Параметр    = "--core";
-    НоваяСтрока.Описание    = "True > service fields are deleted, only the block itself remains (необяз. по ум. - True)";
+    НоваяСтрока.Описание    = "True > service fields are deleted, only the block itself remains (необяз. по ум. - Да)";
     НоваяСтрока.Область     = "Block work";
 
 

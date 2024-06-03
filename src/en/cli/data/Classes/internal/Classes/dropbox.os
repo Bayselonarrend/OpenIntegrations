@@ -142,7 +142,7 @@
     НоваяСтрока.Метод       = "GetObjectInformation";
     НоваяСтрока.МетодПоиска = "GETOBJECTINFORMATION";
     НоваяСтрока.Параметр    = "--detail";
-    НоваяСтрока.Описание    = "Adds additional information fields for media files (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Adds additional information fields for media files (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and directory management";
 
 
@@ -173,7 +173,7 @@
     НоваяСтрока.Метод       = "GetListOfFolderFiles";
     НоваяСтрока.МетодПоиска = "GETLISTOFFOLDERFILES";
     НоваяСтрока.Параметр    = "--detail";
-    НоваяСтрока.Описание    = "Adds additional information fields for media files (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Adds additional information fields for media files (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and directory management";
 
 
@@ -245,7 +245,7 @@
     НоваяСтрока.Метод       = "UploadFile";
     НоваяСтрока.МетодПоиска = "UPLOADFILE";
     НоваяСтрока.Параметр    = "--overwrite";
-    НоваяСтрока.Описание    = "Overwrite file in case of path conflicts (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Overwrite file in case of path conflicts (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and directory management";
 
 
@@ -328,7 +328,7 @@
     НоваяСтрока.Метод       = "DeleteObject";
     НоваяСтрока.МетодПоиска = "DELETEOBJECT";
     НоваяСтрока.Параметр    = "--permanently";
-    НоваяСтрока.Описание    = "Delete object without the possibility of recovery (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Delete object without the possibility of recovery (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and directory management";
 
 
@@ -681,7 +681,7 @@
     НоваяСтрока.Метод       = "AddUsersToFile";
     НоваяСтрока.МетодПоиска = "ADDUSERSTOFILE";
     НоваяСтрока.Параметр    = "--readonly";
-    НоваяСтрока.Описание    = "Prohibits file editing for the external user (необяз. по ум. - True)";
+    НоваяСтрока.Описание    = "Prohibits file editing for the external user (необяз. по ум. - Да)";
     НоваяСтрока.Область     = "Shared access settings";
 
 
@@ -722,7 +722,7 @@
     НоваяСтрока.Метод       = "AddUsersToFolder";
     НоваяСтрока.МетодПоиска = "ADDUSERSTOFOLDER";
     НоваяСтрока.Параметр    = "--readonly";
-    НоваяСтрока.Описание    = "Prohibits file editing for the external user (необяз. по ум. - True)";
+    НоваяСтрока.Описание    = "Prohibits file editing for the external user (необяз. по ум. - Да)";
     НоваяСтрока.Область     = "Shared access settings";
 
 
