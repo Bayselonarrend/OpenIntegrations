@@ -2750,7 +2750,7 @@
 "ОтправитьТекстовоеСообщение (форум": "SendTextMessage (forum",
 "ДобавитьПозиционныйПараметрКоманды": "AddPositionalCommandParameter",
 "Переадресация И Ответ.КодСостояния": "Redirection And Response.StatusCode",
-"ЗаписатьПобитовоеИсключительноеИли": "WriteBitwiseExclusiveOr",
+"ЗаписатьПобитовоеИсключительноеИли": "WriteBitwiseXor",
 "ДобавитьИменованныйПараметрКоманды": "AddNamedCommandParameter",
 "ОтправитьТекстовоеСообщение (канал": "SendTextMessage (channel",
 "Идентификатор обновляемого объекта": "Identifier of the object to update",
