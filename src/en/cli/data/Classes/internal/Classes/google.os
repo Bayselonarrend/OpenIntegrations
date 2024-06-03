@@ -27,7 +27,7 @@
     НоваяСтрока.Метод       = "FormCodeRetrievalLink";
     НоваяСтрока.МетодПоиска = "FORMCODERETRIEVALLINK";
     НоваяСтрока.Параметр    = "--calendar";
-    НоваяСтрока.Описание    = "Calendar methods permission (необяз. по ум. - True)";
+    НоваяСтрока.Описание    = "Calendar methods permission (необяз. по ум. - Да)";
     НоваяСтрока.Область     = "Public";
 
 
@@ -37,7 +37,7 @@
     НоваяСтрока.Метод       = "FormCodeRetrievalLink";
     НоваяСтрока.МетодПоиска = "FORMCODERETRIEVALLINK";
     НоваяСтрока.Параметр    = "--drive";
-    НоваяСтрока.Описание    = "Drive methods permission (необяз. по ум. - True)";
+    НоваяСтрока.Описание    = "Drive methods permission (необяз. по ум. - Да)";
     НоваяСтрока.Область     = "Public";
 
 
@@ -47,7 +47,7 @@
     НоваяСтрока.Метод       = "FormCodeRetrievalLink";
     НоваяСтрока.МетодПоиска = "FORMCODERETRIEVALLINK";
     НоваяСтрока.Параметр    = "--sheets";
-    НоваяСтрока.Описание    = "Sheets methods permission (необяз. по ум. - True)";
+    НоваяСтрока.Описание    = "Sheets methods permission (необяз. по ум. - Да)";
     НоваяСтрока.Область     = "Public";
 
 

@@ -90,7 +90,7 @@
     НоваяСтрока.Метод       = "DeleteObject";
     НоваяСтрока.МетодПоиска = "DELETEOBJECT";
     НоваяСтрока.Параметр    = "--can";
-    НоваяСтрока.Описание    = "To cart (необяз. по ум. - True)";
+    НоваяСтрока.Описание    = "To cart (необяз. по ум. - Да)";
     НоваяСтрока.Область     = "File and folder management";
 
 
@@ -131,7 +131,7 @@
     НоваяСтрока.Метод       = "CreateObjectCopy";
     НоваяСтрока.МетодПоиска = "CREATEOBJECTCOPY";
     НоваяСтрока.Параметр    = "--rewrite";
-    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and folder management";
 
 
@@ -237,7 +237,7 @@
     НоваяСтрока.Метод       = "GetFilesList";
     НоваяСтрока.МетодПоиска = "GETFILESLIST";
     НоваяСтрока.Параметр    = "--datesort";
-    НоваяСтрока.Описание    = "True > sort by date, False > alphabetically (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "True > sort by date, False > alphabetically (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and folder management";
 
 
@@ -278,7 +278,7 @@
     НоваяСтрока.Метод       = "MoveObject";
     НоваяСтрока.МетодПоиска = "MOVEOBJECT";
     НоваяСтрока.Параметр    = "--rewrite";
-    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and folder management";
 
 
@@ -319,7 +319,7 @@
     НоваяСтрока.Метод       = "UploadFile";
     НоваяСтрока.МетодПоиска = "UPLOADFILE";
     НоваяСтрока.Параметр    = "--rewrite";
-    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - False)";
+    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - Нет)";
     НоваяСтрока.Область     = "File and folder management";
 
 
