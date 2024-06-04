@@ -99,7 +99,7 @@ const config = {
             items: [
               {
                 label: 'Описания методов',
-                to: '/docs/Nachalo-raboty',
+                to: '/docs/Start',
               },
             ],
           },
