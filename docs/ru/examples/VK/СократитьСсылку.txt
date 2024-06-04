@@ -1,0 +1,3 @@
+﻿  
+  Ответ = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
+  

@@ -1,0 +1,21 @@
+﻿  
+  {
+  "buttons": [
+  [
+  {
+  "action": {
+  "type": "text",
+  "label": "Кнопка 1"
+  }
+  },
+  {
+  "action": {
+  "type": "text",
+  "label": "Кнопка 2"
+  }
+  }
+  ]
+  ],
+  "one_time": false
+  }
+  

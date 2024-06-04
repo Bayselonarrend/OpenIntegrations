@@ -1,0 +1,10 @@
+﻿  
+  {
+  "name": "Флажок",
+  "type": "checkbox",
+  "options": {
+  "icon": "check",
+  "color": "yellowBright"
+  }
+  }
+  
