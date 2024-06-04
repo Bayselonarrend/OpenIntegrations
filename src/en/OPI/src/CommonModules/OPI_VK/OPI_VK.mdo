@@ -2,7 +2,7 @@
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="1ab0a76a-246d-4037-97c3-212d680aa589">
   <name>OPI_VK</name>
   <synonym>
-    <key>ru</key>
+    <key>en</key>
     <value>VK integration methods (OPI)</value>
   </synonym>
   <server>true</server>

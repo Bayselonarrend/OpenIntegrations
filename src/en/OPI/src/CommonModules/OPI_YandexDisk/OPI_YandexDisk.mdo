@@ -2,7 +2,7 @@
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="af0b34e8-10fa-414f-a643-915210c6289a">
   <name>OPI_YandexDisk</name>
   <synonym>
-    <key>ru</key>
+    <key>en</key>
     <value>Yandex Disk methods (OPI)</value>
   </synonym>
   <server>true</server>
