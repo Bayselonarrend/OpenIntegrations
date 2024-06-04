@@ -1,11 +1,11 @@
 {
 "UTTests": "ЮТТесты",
 "UTest": "ЮТест",
-"RunningScenarios": "ИсполняеымыеСценарии",
 "AddTestSet":"ДобавитьТестовыйНабор",
 "AddServerTest":"ДобавитьСерверныйТест",
 "Module.ExpectsThat(":"Module.ОжидаетЧто(",
 "Awaiting.What(":"Ожидаем.Что(",
+"Awaiting = TypeOf(Module) = ":"Ожидаем = TypeOf(Module) = ",
 ".HasType(":".ИмеетТип(",
 ".Equal(":".Равно(",
 ".Filled(":".Заполнено(",
@@ -15,5 +15,11 @@
 ".PF":".FF",
 "\"No\"":"\"None\"",
 "Elements":"Items",
-"HasLength":"ИмеетДлину"
+"HasLength":"ИмеетДлину",
+"GetTestList":"ПолучитьСписокТестов",
+"RunningScenarios":"ИсполняемыеСценарии",
+"My Drive":"Мой Диск",
+"<key>ru</key>":"<key>en</key>",
+"<scriptVariant>Russian</scriptVariant>":"<scriptVariant>English</scriptVariant>",
+"Base-Project: OpenIntegrations":"Base-Project: OpenIntegrations_ENG"
 }

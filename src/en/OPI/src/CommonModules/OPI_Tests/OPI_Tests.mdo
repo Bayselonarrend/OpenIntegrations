@@ -6,7 +6,7 @@
     <value>OPI tests</value>
   </synonym>
   <synonym>
-    <key>ru</key>
+    <key>en</key>
     <value>Tests for YaxUnit (OPI)</value>
   </synonym>
   <server>true</server>

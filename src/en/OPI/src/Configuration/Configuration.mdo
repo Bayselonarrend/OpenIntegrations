@@ -2,7 +2,7 @@
 <mdclass:Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="aa51f610-7ed3-4091-8908-8ecccf0aaf0f">
   <name>OpenIntegrations</name>
   <synonym>
-    <key>ru</key>
+    <key>en</key>
     <value>Open integrations package</value>
   </synonym>
   <objectBelonging>Adopted</objectBelonging>
@@ -24,19 +24,19 @@
   <configurationExtensionPurpose>Customization</configurationExtensionPurpose>
   <defaultRunMode>ManagedApplication</defaultRunMode>
   <usePurposes>PersonalComputer</usePurposes>
-  <scriptVariant>Russian</scriptVariant>
+  <scriptVariant>English</scriptVariant>
   <vendor>Bayselonarrend</vendor>
   <version>1.9.0</version>
   <detailedInformation>
-    <key>ru</key>
+    <key>en</key>
     <value>The Open Integration Package is a set of libraries for integrating with some popular APIs for 1C:Enterprise. It consists of common modules, each responsible for its own API, as well as several shared tool modules..</value>
   </detailedInformation>
   <vendorInformationAddress>
-    <key>ru</key>
+    <key>en</key>
     <value>https://github.com/Bayselonarrend</value>
   </vendorInformationAddress>
   <configurationInformationAddress>
-    <key>ru</key>
+    <key>en</key>
     <value>https://github.com/Bayselonarrend/OpenIntegrations</value>
   </configurationInformationAddress>
   <subsystems>Subsystem.OPI_Integrations</subsystems>
