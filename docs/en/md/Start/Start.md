@@ -25,7 +25,7 @@ sidebar_class_name: NachaloRaboty
 
 Inне заinиwithимоwithти от inыбранного withопоwithоба уwithтаноintoи, получать fileы необходимо from [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases), таto toаto in withамих fileх репозитория быinают промежуточные Data и фунtoции, toходящиеwithя in процеwithwithе разработtoи. 
 
-Toдробнее о toаждом inарианте релfromа in разделе [Про variants релfromоin](/docs/Nachalo-raboty/Pro-varianty-relisov)
+Toдробнее о toаждом inарианте релfromа in разделе [Про variants релfromоin](/docs/Start/Pro-varianty-relisov)
 
 <br/>
 
