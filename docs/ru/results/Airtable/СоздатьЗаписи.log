@@ -1,0 +1,22 @@
+﻿  
+  {
+  "records": [
+  {
+  "id": "recjHNKNZBWLZkZ7A",
+  "createdTime": "2024-05-10T19:39:51Z",
+  "fields": {
+  "Номер": 10,
+  "Строковое": "Привет\n"
+  }
+  },
+  {
+  "id": "recGyJ0MlN1H3GMuN",
+  "createdTime": "2024-05-10T19:39:51Z",
+  "fields": {
+  "Номер": 10,
+  "Строковое": "Привет\n"
+  }
+  }
+  ]
+  }
+  
