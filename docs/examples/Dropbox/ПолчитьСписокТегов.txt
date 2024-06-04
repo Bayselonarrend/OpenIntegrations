@@ -1,7 +1,0 @@
-﻿    Токен = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
-    
-    МассивПутей = Новый Массив;
-    МассивПутей.Добавить("/New/Dogs.mp3");
-    МассивПутей.Добавить("/New/mydoc.docx");  
-    
-    Результат = OPI_Dropbox.ПолучитьСписокТегов(Токен, МассивПутей);
