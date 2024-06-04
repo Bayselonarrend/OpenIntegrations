@@ -1,4 +1,0 @@
-﻿    Токен     = "sl.B2PZ-Sk7vWqtAfWKI0CKnYNapuN4bH-a4_tTsbN02eoxT1dlQ9Vs_vcf30ZAAl9h-m3xg5uz5c...";
-    Путь      = "/Новый каталог";
-    
-    Результат = OPI_Dropbox.СоздатьПапку(Токен, Путь);
