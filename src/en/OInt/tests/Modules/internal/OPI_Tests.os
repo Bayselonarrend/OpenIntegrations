@@ -48,7 +48,7 @@
 
 // For YAxUnit
 
-Procedure AndwithполняеымыеСцеtoрии() Export
+Procedure ИсполняемыеСценарии() Export
 
     OPI_TestDataRetrieval.FormYAXTests();
 
@@ -1958,7 +1958,7 @@ Procedure GT_CreateTable() Export
     Name = "Test table (new.)";
     Result = OPI_GoogleSheets.CreateBook(Token, Name, SheetArray);
     
-    OPI_TestDataRetrieval.WriteLog(Result, ".)");
+    OPI_TestDataRetrieval.WriteLog(Result, "CopySheet (new.)");
     
     Book2 = Result["spreadsheetId"];
     
@@ -5225,7 +5225,7 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
     
     Result = OPI_Dropbox.AddUsersToFile(Token, File, Mails, True);
     
-    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile (add.) ");
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile (new.) ");
     
     Check_DropboxMember(Result, Email, True);
     

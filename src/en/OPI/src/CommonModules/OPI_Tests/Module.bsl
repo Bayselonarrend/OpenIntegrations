@@ -48,7 +48,7 @@
 
 // For YAxUnit
 
-Procedure AndwithполняеымыеСцеtoрии() Export
+Procedure ИсполняемыеСценарии() Export
 
     OPI_TestDataRetrieval.FormYAXTests();
 
@@ -56,7 +56,7 @@ EndProcedure
 
 // For Asserts
 
-Function GetTestList(UnitTesting) Export
+Function ПолучитьСписокТестов(UnitTesting) Export
 
    Return OPI_TestDataRetrieval.FormAssertsTests();
 
@@ -5225,7 +5225,7 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
     
     Result = OPI_Dropbox.AddUsersToFile(Token, File, Mails, True);
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile (add.) ");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile (new.) ");
     
     Check_DropboxMember(Result, Email, True);
     
