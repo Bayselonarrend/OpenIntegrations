@@ -366,6 +366,8 @@ Function UNIXTime(Val Date) Export
     UNIX = Format(Date - Date(1970, 1, 1, 1, 0, 0), "HC=10; HDC=0; HG=0");
     UNIX = StrReplace(UNIX, ",", "");
     UNIX = Left(UNIX, 10);
+    UNIX = StrReplace(UNIX, Chars.NBSp, "");
+    UNIX = StrReplace(UNIX, " ", "");
     
     Return UNIX;
     
