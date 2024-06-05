@@ -1,1 +1,0 @@
-﻿oint airtable ПолучитьПолеДаты --title "Дата"

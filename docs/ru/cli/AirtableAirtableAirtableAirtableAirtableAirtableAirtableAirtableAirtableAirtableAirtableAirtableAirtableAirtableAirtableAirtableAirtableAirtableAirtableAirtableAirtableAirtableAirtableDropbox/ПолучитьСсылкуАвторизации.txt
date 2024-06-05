@@ -1,1 +1,0 @@
-﻿oint dropbox ПолучитьСсылкуАвторизации --appkey "oynqxds..."
