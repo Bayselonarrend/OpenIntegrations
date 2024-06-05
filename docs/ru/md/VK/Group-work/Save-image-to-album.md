@@ -43,7 +43,7 @@ sidebar_position: 8
 
 ```sh title="Пример команды CLI"
     
-  oint vk СохранитьКартинкуВАльбом --album %album% --picture "https://openintegrations.dev/test_data/picture.jpg       // URL, Путь к файлу или Двоичные данные" --description %description% --auth "ПолучитьПараметрыВК()"
+  oint vk СохранитьКартинкуВАльбом --album %album% --picture "https://openintegrations.dev/test_data/picture.jpg" --description %description% --auth %auth%
 
 ```
 

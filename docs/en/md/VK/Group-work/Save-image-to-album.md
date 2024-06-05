@@ -43,7 +43,7 @@ sidebar_position: 8
 
 ```sh title="CLI command example"
  
- oint vk SaveImageToAlbum --album %album% --picture "https://openintegrations.dev/test_data/picture.jpg // URL, Path to file or Binary Data" --description %description% --auth "GetVKParameters()"
+ oint vk SaveImageToAlbum --album %album% --picture "https://openintegrations.dev/test_data/picture.jpg" --description %description% --auth %auth%
 
 ```
 

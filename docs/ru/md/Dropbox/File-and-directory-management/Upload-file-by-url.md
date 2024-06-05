@@ -30,7 +30,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox ЗагрузитьФайлПоURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --url %url% --path "/New/url_doc.docx"
+  oint dropbox ЗагрузитьФайлПоURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --url %url% --path %path%
 
 ```
 

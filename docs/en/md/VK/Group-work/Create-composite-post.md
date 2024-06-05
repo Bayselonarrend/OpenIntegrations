@@ -51,7 +51,7 @@ sidebar_position: 2
 
 ```sh title="CLI command example"
  
- oint vk CreateCompositePost --text "Post from autotest" --objects %objects% --ad %ad% --url %url% --auth "GetVKParameters()"
+ oint vk CreateCompositePost --text %text% --objects %objects% --ad %ad% --url %url% --auth %auth%
 
 ```
 

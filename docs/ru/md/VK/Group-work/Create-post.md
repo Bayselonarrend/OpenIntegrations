@@ -47,7 +47,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-  oint vk СоздатьПост --text "Пост из автотеста" --pictures %pictures% --ad %ad% --url %url% --auth "ПолучитьПараметрыВК()"
+  oint vk СоздатьПост --text %text% --pictures %pictures% --ad %ad% --url %url% --auth %auth%
 
 ```
 
