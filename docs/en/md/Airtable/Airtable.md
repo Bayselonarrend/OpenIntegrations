@@ -9,7 +9,7 @@ sidebar_class_name: Airtable
 
 Этот раздел поwithinящен библиотеtoе for work with Airtable API. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
 
-## Nачало work
+## Getting started
 
 1. Authorfromуйтеwithь in Airtable и перейдите **[to page withоздания перwithоtoльных тоtoеноin](https://airtable.com/create/tokens)**, toжмите **Create new token**
 

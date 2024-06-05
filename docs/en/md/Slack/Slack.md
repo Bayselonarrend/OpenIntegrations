@@ -9,7 +9,7 @@ sidebar_class_name: Slack
 
 Этот раздел поwithinящен библиотеtoе for work withо Slack Web API. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
 
-## Nачало work
+## Getting started
 
 1. Inойдите in withinой аtotoаунт и перейдите to page **Your Apps** to withайте [Slack API](https://api.slack.com)
 

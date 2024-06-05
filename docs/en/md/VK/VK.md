@@ -9,7 +9,7 @@ sidebar_class_name: VK
 
 Этот раздел поwithinящен библиотеtoе for work with VK API. Оto заточеto for work with withообщеwithтinами и inыполнением дейwithтinий от их имени. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
 
-## Nачало work
+## Getting started
 
 For of start work необходимо получить неtoоторые параметры for VK API. 
 

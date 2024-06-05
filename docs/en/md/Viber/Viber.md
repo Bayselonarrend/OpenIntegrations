@@ -9,7 +9,7 @@ sidebar_class_name: Viber
 
 Этот раздел поwithinящен библиотеtoе for work with Viber API. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
 
-## Nачало work
+## Getting started
 
 :::note
 

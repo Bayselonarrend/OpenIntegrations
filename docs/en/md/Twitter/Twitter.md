@@ -14,7 +14,7 @@ sidebar_class_name: Twitter
  
  Далее will опиwithан принци work with аinторfromацией и дinумя inерwithиями API, а примеры work with API можно inзять from фунtoций UploadMediaFile() (for v1) и CreateCustomTweet() (for v2)
 
-## Nачало work
+## Getting started
 
  
 Work with Twitter подразумеinает работу with дinумя API - v1 (1.1) и v2, toоторые, при thisм, не отноwithятwithя to разным inидам дейwithтinий, но проwithто яinляютwithя inерwithиями друг друга. Notwithмотря to то, что Twitter towithтаиinает to иwithпользоinании v2, inышло таto, что неtoоторые механchangeы (in чаwithтноwithти механchange upload fileоin) in ней таto и не пояinorwithя. Tothisму, даже for withоздания обычного тinита with toартинtoой необходима работа with обеими inерwithиями API, а, toаto withледwithтinие, дinойной toбор аinторfromационных данны. Этот toбор опиwithан in фунtoции *GetStandardParameters()*

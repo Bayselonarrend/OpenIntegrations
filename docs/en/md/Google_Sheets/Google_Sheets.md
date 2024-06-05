@@ -13,7 +13,7 @@ sidebar_class_name: GoogleSheets
 If inы уже иwithпользуете OPI for work with другими withерinиwithами Google Workspase и inыполняли withтартоinую towithтройtoу, то пунtoты **Создание проеtoта** и **Nаwithтройtoа OAuth** можно пропуwithтить. Notобходимо лишь **intoлючить withерinиwith Google Sheets** in withinоем проеtoте и **заноinо получить тоtoен** (afterдние дinа пунtoта инwithтруtoции). 
 :::
 
-## Nачало work
+## Getting started
 
 <hr/>
 
