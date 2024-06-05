@@ -20,20 +20,20 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
-  
-  Токен = "y0_AgAAAABdylaOAA...";
-  URL   = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
-  
-  Ответ = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);   //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                          //Строка
-  
-
+      
+      Токен = "y0_AgAAAABdylaOAA...";
+      URL   = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
+      
+      Ответ = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);   //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                          //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint yadisk СохранитьПубличныйОбъектНаДиск --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --from %from% --to %to%
+      oint yadisk СохранитьПубличныйОбъектНаДиск --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --from %from% --to %to%
 
 
 ```

@@ -26,7 +26,7 @@ sidebar_position: 8
  Response = OPI_Slack.KickUserFromChannel(Token, Channel, User); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

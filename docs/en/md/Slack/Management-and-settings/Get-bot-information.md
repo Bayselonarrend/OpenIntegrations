@@ -22,7 +22,7 @@ sidebar_position: 1
  Response = OPI_Slack.GetBotInformation(Token); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

@@ -24,7 +24,7 @@ sidebar_position: 2
  Response = OPI_Slack.CloseDialog(Token, Dialog); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

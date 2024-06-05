@@ -22,23 +22,23 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  Запись  = "recV6DxeLQMBNJrUk";
-  Коммент = "comL1oGEDJvIQlMs1";
-  Текст   = "Тестовый комментарий (изм.)";
-  
-  Ответ = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Коммент, Текст); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                             //JSON строка
-  
-
+      
+      База    = "apptm8Xqo7TwMaipQ";
+      Таблица = "tbl9G4jVoTJpxYwSY";
+      Запись  = "recV6DxeLQMBNJrUk";
+      Коммент = "comL1oGEDJvIQlMs1";
+      Текст   = "Тестовый комментарий (изм.)";
+      
+      Ответ = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Коммент, Текст); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                             //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint airtable ИзменитьКомментарий --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --comment %comment% --text "Тестовый комментарий (изм.)"
+      oint airtable ИзменитьКомментарий --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --comment %comment% --text "Тестовый комментарий (изм.)"
 
 
 ```

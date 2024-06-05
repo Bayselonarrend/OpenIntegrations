@@ -20,7 +20,7 @@ sidebar_position: 4
  
  Response = OPI_GoogleCalendar.ClearMainCalendar(Token);
  
-
+ 
 	
 ```
 

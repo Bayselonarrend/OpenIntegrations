@@ -25,7 +25,7 @@ sidebar_position: 1
  Response = OPI_Slack.GenerateImageBlock(URL, Text); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

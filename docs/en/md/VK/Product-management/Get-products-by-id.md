@@ -26,7 +26,7 @@ sidebar_position: 3
  Response = OPI_VK.GetProductsByID(ProductsArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-
+ 
 	
 ```
 

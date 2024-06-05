@@ -18,18 +18,18 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  
-  Ответ = OPI_Airtable.ПолучитьСписокБаз(Токен); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);    //JSON строка
-  
-
+      
+      
+      Ответ = OPI_Airtable.ПолучитьСписокБаз(Токен); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);    //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьСписокБаз --token %token% --offset %offset%
+      oint airtable ПолучитьСписокБаз --token %token% --offset %offset%
 
 
 ```

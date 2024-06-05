@@ -24,7 +24,7 @@ sidebar_position: 5
  Response = OPI_Slack.DeleteExternalFile(Token, FileID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

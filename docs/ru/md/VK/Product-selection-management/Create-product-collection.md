@@ -21,22 +21,22 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_VK.СоздатьПодборкуТоваров("Тестовая подборка"
-  , Картинка
-  , Истина
-  , Ложь
-  , Параметры);
-  
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Ответ = OPI_VK.СоздатьПодборкуТоваров("Тестовая подборка"
+      , Картинка
+      , Истина
+      , Ложь
+      , Параметры);
+      
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint vk СоздатьПодборкуТоваров --title %title% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
+      oint vk СоздатьПодборкуТоваров --title %title% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
 
 
 ```

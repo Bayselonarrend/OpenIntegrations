@@ -21,7 +21,7 @@ sidebar_position: 1
  Response = OPI_VK.GetPropertyList(Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-
+ 
 	
 ```
 

@@ -24,7 +24,7 @@ sidebar_position: 1
  Response = OPI_GoogleDrive.GetObjectInformation(Token, Identifier); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-
+ 
 	
 ```
 

@@ -17,15 +17,15 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-    Токен     = "6129457865:AAFyzNYOAFbu...";
-    Результат = OPI_Telegram.УдалитьWebhook(Токен);
-
+        Токен     = "6129457865:AAFyzNYOAFbu...";
+        Результат = OPI_Telegram.УдалитьWebhook(Токен);
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram УдалитьWebhook --token "6129457865:AAFyzNYOAFbu..."
+      oint telegram УдалитьWebhook --token "6129457865:AAFyzNYOAFbu..."
 
 
 ```

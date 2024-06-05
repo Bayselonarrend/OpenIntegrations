@@ -24,7 +24,7 @@ sidebar_position: 2
  ChannelID = "@testsichee";
  
  Result = OPI_Telegram.Unban(Token, ChannelID, UserID);
-
+ 
 	
 ```
 

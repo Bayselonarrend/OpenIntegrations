@@ -19,18 +19,18 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-    Токен          = "6129457865:AAFyzNYOAFbu...";
-    IDПользователя = "461699897";
-    IDКанала       = "@testsichee";
+        Токен          = "6129457865:AAFyzNYOAFbu...";
+        IDПользователя = "461699897";
+        IDКанала       = "@testsichee";
+        
+        Результат = OPI_Telegram.Разбан(Токен, IDКанала, IDПользователя);
     
-    Результат = OPI_Telegram.Разбан(Токен, IDКанала, IDПользователя);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram Разбан --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
+      oint telegram Разбан --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
 
 
 ```

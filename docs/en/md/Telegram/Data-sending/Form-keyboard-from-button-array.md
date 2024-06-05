@@ -27,7 +27,7 @@ sidebar_position: 12
  
  Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, True);
  
-
+ 
 	
 ```
 

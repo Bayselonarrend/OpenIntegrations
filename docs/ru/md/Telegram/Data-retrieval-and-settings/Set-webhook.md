@@ -18,17 +18,17 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    URL         = "https://api.athenaeum.digital/opi/hs/twitter";
+        Токен       = "6129457865:AAFyzNYOAFbu...";
+        URL         = "https://api.athenaeum.digital/opi/hs/twitter";
+        
+        Результат   = OPI_Telegram.УстановитьWebhook(Токен, URL);
     
-    Результат   = OPI_Telegram.УстановитьWebhook(Токен, URL);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram УстановитьWebhook --token "6129457865:AAFyzNYOAFbu..." --url "https://api.athenaeum.digital/opi/hs/twitter"
+      oint telegram УстановитьWebhook --token "6129457865:AAFyzNYOAFbu..." --url "https://api.athenaeum.digital/opi/hs/twitter"
 
 
 ```

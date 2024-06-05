@@ -19,7 +19,7 @@ Executes the getMe request, returning basic bot information: name, id, ability t
 	
  Token = "6129457865:AAFyzNYOAFbu...";
  Result = OPI_Telegram.GetBotInformation(Token);
-
+ 
 	
 ```
 

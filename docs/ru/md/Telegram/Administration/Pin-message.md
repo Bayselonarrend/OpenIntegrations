@@ -19,18 +19,18 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    IDКанала    = "@testsichee";
-    IDСообщения = "4951";
+        Токен       = "6129457865:AAFyzNYOAFbu...";
+        IDКанала    = "@testsichee";
+        IDСообщения = "4951";
+        
+        Результат = OPI_Telegram.ЗакрепитьСообщение(Токен, IDКанала, IDСообщения);
     
-    Результат = OPI_Telegram.ЗакрепитьСообщение(Токен, IDКанала, IDСообщения);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram ЗакрепитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4951"
+      oint telegram ЗакрепитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4951"
 
 
 ```

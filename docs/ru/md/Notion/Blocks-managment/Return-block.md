@@ -19,20 +19,20 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Блок  = "ca18df269bd24407852b91c30...";
-  
-  Ответ = OPI_Notion.ВернутьБлок(Токен, ИДБлока);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
+      Блок  = "ca18df269bd24407852b91c30...";
+      
+      Ответ = OPI_Notion.ВернутьБлок(Токен, ИДБлока);
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint notion ВернутьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block% --core %core%
+      oint notion ВернутьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block% --core %core%
 
 
 ```

@@ -17,16 +17,16 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
-  
-
+      
+      Ответ = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gcalendar ОчиститьОсновнойКалендарь --token %token%
+      oint gcalendar ОчиститьОсновнойКалендарь --token %token%
 
 
 ```

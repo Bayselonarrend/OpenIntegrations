@@ -18,20 +18,20 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  Токен          = "secret_9RsfMrRMqZwqp0Zl0B...";
-  ИДПользователя = "ed71865a989146bc86cdwdf24...";
-  
-  Ответ = OPI_Notion.ПолучитьДанныеПользователя(Токен, ИДПользователя);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Токен          = "secret_9RsfMrRMqZwqp0Zl0B...";
+      ИДПользователя = "ed71865a989146bc86cdwdf24...";
+      
+      Ответ = OPI_Notion.ПолучитьДанныеПользователя(Токен, ИДПользователя);
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint notion ПолучитьДанныеПользователя --token "secret_9RsfMrRMqZwqp0Zl0B..." --user "ed71865a989146bc86cdwdf24..."
+      oint notion ПолучитьДанныеПользователя --token "secret_9RsfMrRMqZwqp0Zl0B..." --user "ed71865a989146bc86cdwdf24..."
 
 
 ```

@@ -18,20 +18,20 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  Текст = "Картинка альпаки";
-  URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
-  
-  Ответ = OPI_Slack.СформироватьБлокКартинку(URL, Текст); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);             //JSON строка
-  
-
+      
+      Текст = "Картинка альпаки";
+      URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
+      
+      Ответ = OPI_Slack.СформироватьБлокКартинку(URL, Текст); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);             //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1" --alt %alt%
+      oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1" --alt %alt%
 
 
 ```

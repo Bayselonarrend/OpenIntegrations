@@ -19,15 +19,15 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    Результат   = OPI_Telegram.ПолучитьОбновления(Токен);
-
+        Токен       = "6129457865:AAFyzNYOAFbu...";
+        Результат   = OPI_Telegram.ПолучитьОбновления(Токен);
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram ПолучитьОбновления --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
+      oint telegram ПолучитьОбновления --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
 
 
 ```

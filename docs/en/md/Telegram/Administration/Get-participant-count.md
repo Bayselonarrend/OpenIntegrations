@@ -22,7 +22,7 @@ sidebar_position: 6
  ChannelID = "@testsichee";
  
  Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);
-
+ 
 	
 ```
 

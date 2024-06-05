@@ -22,7 +22,7 @@ sidebar_position: 2
  Parameters = GetVKParameters();
  DiscussionID = "51206275";
  Result = OPI_VK.CloseDiscussion(DiscussionID, False, Parameters);
-
+ 
 	
 ```
 

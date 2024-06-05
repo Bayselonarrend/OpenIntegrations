@@ -18,17 +18,17 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-    Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-    Путь      = "/New/mydoc.docx"; 
+        Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+        Путь      = "/New/mydoc.docx"; 
+        
+        Результат = OPI_Dropbox.ПолучитьПревью(Токен, Путь);
     
-    Результат = OPI_Dropbox.ПолучитьПревью(Токен, Путь);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox ПолучитьПревью --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path%
+      oint dropbox ПолучитьПревью --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path%
 
 
 ```

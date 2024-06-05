@@ -19,19 +19,19 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  Канал = "C070VPMKN8J";
-  
-  Ответ = OPI_Slack.ПолучитьСписокВнешнихФайлов(Токен, Канал); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                  //JSON строка
-  
-
+      
+      Канал = "C070VPMKN8J";
+      
+      Ответ = OPI_Slack.ПолучитьСписокВнешнихФайлов(Токен, Канал); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                  //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint slack ПолучитьСписокВнешнихФайлов --token %token% --channel "C070VPMKN8J" --cursor %cursor%
+      oint slack ПолучитьСписокВнешнихФайлов --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
 
 ```

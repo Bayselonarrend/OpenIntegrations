@@ -18,17 +18,17 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_GoogleCalendar.ДобавитьКалендарьВСписок(Токен, "55868c32be16935f0..."); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                         //Строка
-  
-
+      
+      Ответ = OPI_GoogleCalendar.ДобавитьКалендарьВСписок(Токен, "55868c32be16935f0..."); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                         //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gcalendar ДобавитьКалендарьВСписок --token %token% --calendar %calendar%
+      oint gcalendar ДобавитьКалендарьВСписок --token %token% --calendar %calendar%
 
 
 ```

@@ -22,7 +22,7 @@ sidebar_position: 7
  Response = OPI_VK.DeleteSelection(40, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-
+ 
 	
 ```
 

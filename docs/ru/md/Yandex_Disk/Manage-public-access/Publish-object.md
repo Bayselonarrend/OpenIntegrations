@@ -18,19 +18,19 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  Токен = "y0_AgAAAABdylaOAA...";
-  Путь  = "/Альпака.png"
-  Ответ = OPI_YandexDisk.ОпубликоватьОбъект(Токен, Путь);  //Соответствие; Ссылка на файл - Ответ["public_url"]
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);              //Строка
-  
-
+      
+      Токен = "y0_AgAAAABdylaOAA...";
+      Путь  = "/Альпака.png"
+      Ответ = OPI_YandexDisk.ОпубликоватьОбъект(Токен, Путь);  //Соответствие; Ссылка на файл - Ответ["public_url"]
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);              //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint yadisk ОпубликоватьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
+      oint yadisk ОпубликоватьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
 
 
 ```

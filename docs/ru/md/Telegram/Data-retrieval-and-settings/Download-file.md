@@ -18,17 +18,17 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
 	
-    IDФайла = "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE";
-    Токен   = "6129457865:AAFyzNYOAFbu...";
-
-    Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
-
+        IDФайла = "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE";
+        Токен   = "6129457865:AAFyzNYOAFbu...";
+    
+        Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram СкачатьФайл --token "6129457865:AAFyzNYOAFbu..." --fileid "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE"
+      oint telegram СкачатьФайл --token "6129457865:AAFyzNYOAFbu..." --fileid "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE"
 
 
 ```
