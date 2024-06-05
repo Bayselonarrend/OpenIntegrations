@@ -30,6 +30,7 @@ sidebar_position: 2
     
   oint vk ПолучитьСписокТоваров --sel %sel% --auth %auth%
 
+
 ```
 
 

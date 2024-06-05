@@ -1,0 +1,1 @@
+﻿oint yadisk СкачатьФайл --token %token% --path %path% --out %out%

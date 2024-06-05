@@ -33,6 +33,7 @@ sidebar_position: 1
     
   oint slack ПолучитьСписокВнешнихФайлов --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
+
 ```
 
 

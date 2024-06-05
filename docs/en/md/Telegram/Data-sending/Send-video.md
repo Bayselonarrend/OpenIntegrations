@@ -34,14 +34,9 @@ sidebar_position: 3
  VideoDD = New BinaryData(VideoPath);
  
  Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendVideo", "Telegram");
- 
- 
+
  Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendVideo (Path)");
- 
+
  
  Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
 
@@ -51,6 +46,7 @@ sidebar_position: 3
 ```sh title="CLI command example"
  
  oint telegram SendVideo --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --video "https://openintegrations.dev/test_data/video.mp4" --keyboard %keyboard% --parsemode %parsemode%
+
 
 ```
 

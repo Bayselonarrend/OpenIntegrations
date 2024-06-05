@@ -35,6 +35,7 @@ sidebar_position: 6
     
   oint yadisk СохранитьПубличныйОбъектНаДиск --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --from %from% --to %to%
 
+
 ```
 
 

@@ -34,12 +34,8 @@ sidebar_position: 10
  
  Result = OPI_Telegram.SendPoll(Token, ChatID, Question, AnswersArray, False);
  
- OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "Telegram");
- 
  
  Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendPoll (channel)");
 
 	
 ```
@@ -47,6 +43,7 @@ sidebar_position: 10
 ```sh title="CLI command example"
  
  oint telegram SendPoll --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --question %question% --options %options% --anonymous %anonymous%
+
 
 ```
 

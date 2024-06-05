@@ -30,6 +30,7 @@ sidebar_position: 2
  
  oint vk CreateProductProperty --title %title% --auth %auth%
 
+
 ```
 
 

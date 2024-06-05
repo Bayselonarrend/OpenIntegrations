@@ -28,7 +28,7 @@ jobs:
           opm install cmdline
 
       - name: Выполнить скрипт парсинга тестов
-        run: oscript ./.github/workflows/os/oint_docs.os
+        run: oscript ./.github/workflows/os/docs_main.os
 
 
 

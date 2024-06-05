@@ -34,6 +34,7 @@ sidebar_position: 3
     
   oint vk ПолучитьТоварыПоИД --items %items% --auth %auth%
 
+
 ```
 
 

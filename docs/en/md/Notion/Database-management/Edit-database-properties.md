@@ -42,6 +42,7 @@ sidebar_position: 3
  
  oint notion EditDatabaseProperties --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --props %props% --title "Updated title" --description "Updated base description"
 
+
 ```
 
 

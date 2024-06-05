@@ -32,6 +32,7 @@ sidebar_position: 5
  
  oint vk CreateAlbum --title %title% --description %description% --auth "GetVKParameters()"
 
+
 ```
 
 

@@ -32,6 +32,7 @@ sidebar_position: 1
     
   oint gdrive ПолучитьИнформациюОбОбъекте --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa"
 
+
 ```
 
 

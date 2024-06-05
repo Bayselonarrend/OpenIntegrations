@@ -33,6 +33,7 @@ sidebar_position: 4
  
  oint yadisk DeleteObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png" --can %can%
 
+
 ```
 
 

@@ -1,0 +1,1 @@
+﻿oint twitter СоздатьТвитОпрос --text %text% --options %options% --duration %duration% --auth %auth%

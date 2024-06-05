@@ -1,0 +1,1 @@
+﻿oint twitter ПолучитьСсылкуАвторизации --auth %auth%

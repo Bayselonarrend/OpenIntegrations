@@ -36,6 +36,7 @@ sidebar_position: 5
     
   oint yadisk СоздатьКопиюОбъекта --token "y0_AgAAAABdylaOAA..." --from "/Альпака.png" --to "/Альпака (копия).png" --rewrite %rewrite%
 
+
 ```
 
 

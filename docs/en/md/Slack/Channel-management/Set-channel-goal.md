@@ -34,6 +34,7 @@ sidebar_position: 12
  
  oint slack SetChannelGoal --token %token% --channel "C070VPMKN8J" --purpose "TestGoal"
 
+
 ```
 
 

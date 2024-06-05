@@ -34,14 +34,9 @@ sidebar_position: 6
  GifDD = New BinaryData(GifPath);
  
  Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendGif", "Telegram");
- 
- 
+
  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendGif (Path)");
- 
+
  
  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
 
@@ -51,6 +46,7 @@ sidebar_position: 6
 ```sh title="CLI command example"
  
  oint telegram SendGif --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --gif "https://openintegrations.dev/test_data/animation.gif" --keyboard %keyboard% --parsemode %parsemode%
+
 
 ```
 

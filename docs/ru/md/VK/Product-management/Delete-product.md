@@ -30,6 +30,7 @@ sidebar_position: 6
     
   oint vk УдалитьТовар --item %item% --auth %auth%
 
+
 ```
 
 

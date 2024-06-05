@@ -38,6 +38,7 @@ sidebar_position: 4
  
  oint airtable DeleteComment --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --comment %comment%
 
+
 ```
 
 

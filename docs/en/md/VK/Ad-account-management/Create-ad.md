@@ -34,6 +34,7 @@ sidebar_position: 2
  
  oint vk CreateAd --campaign %campaign% --limit %limit% --category %category% --post %post% --cabinet %cabinet% --auth %auth%
 
+
 ```
 
 

@@ -30,6 +30,7 @@ sidebar_position: 2
     
   oint gcalendar ДобавитьКалендарьВСписок --token %token% --calendar %calendar%
 
+
 ```
 
 

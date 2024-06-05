@@ -32,6 +32,7 @@ sidebar_position: 3
     
   oint yadisk ПолучитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
 
+
 ```
 
 

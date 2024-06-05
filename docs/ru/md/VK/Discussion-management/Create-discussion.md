@@ -32,6 +32,7 @@ sidebar_position: 1
     
   oint vk СоздатьОбсуждение --title %title% --text %text% --auth "ПолучитьПараметрыВК()"
 
+
 ```
 
 

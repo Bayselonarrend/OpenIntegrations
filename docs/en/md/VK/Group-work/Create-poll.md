@@ -37,6 +37,7 @@ sidebar_position: 4
  
  oint vk CreatePoll --question "What's your favorite color?" --options %options% --picture %picture% --auth "GetVKParameters()"
 
+
 ```
 
 

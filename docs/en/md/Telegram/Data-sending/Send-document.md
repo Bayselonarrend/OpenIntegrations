@@ -34,14 +34,9 @@ sidebar_position: 5
  DocumentDD = New BinaryData(DocumentPath);
  
  Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendDocument", "Telegram");
- 
- 
+
  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendDocument (Path)");
- 
+
  
  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD);
 
@@ -51,6 +46,7 @@ sidebar_position: 5
 ```sh title="CLI command example"
  
  oint telegram SendDocument --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode%
+
 
 ```
 

@@ -32,6 +32,7 @@ sidebar_position: 1
     
   oint telegram Бан --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
 
+
 ```
 
 

@@ -32,6 +32,7 @@ sidebar_position: 6
     
   oint slack ПолучитьИсториюКанала --token %token% --channel "C070VPMKN8J"
 
+
 ```
 
 

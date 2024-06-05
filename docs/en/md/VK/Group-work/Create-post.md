@@ -34,10 +34,8 @@ sidebar_position: 1
  ImageArray = New Array;
  ImageArray.Add(Image);
  ImageArray.Add(AndVF);
- 
  Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
  
- OPI_TestDataRetrieval.WriteLog(Result, "CreatePost", "VK");
 
  
  Result = OPI_VK.CreatePost(Text, Image, False,, Parameters);
@@ -48,6 +46,7 @@ sidebar_position: 1
 ```sh title="CLI command example"
  
  oint vk CreatePost --text %text% --pictures %pictures% --ad %ad% --url %url% --auth %auth%
+
 
 ```
 

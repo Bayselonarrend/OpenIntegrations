@@ -31,6 +31,7 @@ sidebar_position: 5
     
   oint vk ДобавитьВариантСвойстваТовара --value %value% --prop %prop% --auth %auth%
 
+
 ```
 
 

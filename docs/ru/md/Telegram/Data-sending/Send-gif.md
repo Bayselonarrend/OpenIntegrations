@@ -34,14 +34,9 @@ sidebar_position: 6
     ГифкаДД   = Новый ДвоичныеДанные(ГифкаПуть);
     
     Результат = OPI_Telegram.ОтправитьГифку(Токен, IDЧата, Текст, Гифка);
-    
-    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьГифку", "Telegram");
-    
-  
+
     Результат = OPI_Telegram.ОтправитьГифку(Токен, IDКанала, Текст, ГифкаПуть);
-    
-    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ОтправитьГифку (Путь)");
-    
+
       
     Результат = OPI_Telegram.ОтправитьГифку(Токен, IDКанала, Текст, ГифкаДД);
 
@@ -51,6 +46,7 @@ sidebar_position: 6
 ```sh title="Пример команды CLI"
     
   oint telegram ОтправитьГифку --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --gif "https://openintegrations.dev/test_data/animation.gif" --keyboard %keyboard% --parsemode %parsemode%
+
 
 ```
 

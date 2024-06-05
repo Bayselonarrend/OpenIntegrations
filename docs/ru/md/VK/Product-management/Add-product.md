@@ -52,6 +52,7 @@ sidebar_position: 4
     
   oint vk ДобавитьТовар --product %product% --sel %sel% --auth %auth%
 
+
 ```
 
 

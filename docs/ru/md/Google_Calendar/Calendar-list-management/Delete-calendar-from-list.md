@@ -30,6 +30,7 @@ sidebar_position: 4
     
   oint gcalendar УдалитьКалендарьИзСписка --token %token% --calendar %calendar%
 
+
 ```
 
 

@@ -36,6 +36,7 @@ sidebar_position: 10
     
   oint yadisk ЗагрузитьФайл --token "y0_AgAAAABdylaOAA..." --path "/АльпакаИзФайла.png" --file "C:\logo.png" --rewrite %rewrite%
 
+
 ```
 
 

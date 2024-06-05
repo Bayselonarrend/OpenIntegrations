@@ -32,6 +32,7 @@ sidebar_position: 2
     
   oint slack ПолучитьВнешнийФайл --token %token% --fileid "F070P52CU94"
 
+
 ```
 
 

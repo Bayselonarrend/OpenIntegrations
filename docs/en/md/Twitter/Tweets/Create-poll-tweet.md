@@ -37,6 +37,7 @@ sidebar_position: 5
  
  oint twitter CreatePollTweet --text %text% --options %options% --duration %duration% --auth %auth%
 
+
 ```
 
 

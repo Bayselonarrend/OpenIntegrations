@@ -40,6 +40,7 @@ sidebar_position: 2
     
   oint airtable ИзменитьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --field "fld3IbFtHZtBHQwsk" --title %title% --description "Новое описание"
 
+
 ```
 
 

@@ -34,6 +34,7 @@ Gets a list of files with or without filtering by type List of available types: 
  
  oint yadisk GetFilesList --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset% --type %type% --datesort %datesort%
 
+
 ```
 
 

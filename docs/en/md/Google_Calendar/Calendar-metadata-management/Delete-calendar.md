@@ -29,6 +29,7 @@ sidebar_position: 5
  
  oint gcalendar DeleteCalendar --token %token% --calendar %calendar%
 
+
 ```
 
 

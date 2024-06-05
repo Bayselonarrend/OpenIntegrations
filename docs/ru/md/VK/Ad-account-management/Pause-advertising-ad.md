@@ -31,6 +31,7 @@ sidebar_position: 3
     
   oint vk ПриостановитьРекламноеОбъявление --cabinet %cabinet% --adv %adv% --auth %auth%
 
+
 ```
 
 

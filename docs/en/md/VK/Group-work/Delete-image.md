@@ -30,6 +30,7 @@ sidebar_position: 9
  
  oint vk DeleteImage --pictureid %pictureid% --auth %auth%
 
+
 ```
 
 

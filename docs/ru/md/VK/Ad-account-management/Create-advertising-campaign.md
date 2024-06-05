@@ -31,6 +31,7 @@ sidebar_position: 1
     
   oint vk СоздатьРекламнуюКампанию --cabinet %cabinet% --title %title% --auth %auth%
 
+
 ```
 
 

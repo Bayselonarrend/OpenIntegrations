@@ -34,14 +34,9 @@ sidebar_position: 4
  AudioDD = New BinaryData(AudioPath);
  
  Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendAudio", "Telegram");
- 
- 
+
  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendAudio (Path)");
- 
+
  
  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
 
@@ -51,6 +46,7 @@ sidebar_position: 4
 ```sh title="CLI command example"
  
  oint telegram SendAudio --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --audio "https://openintegrations.dev/test_data/song.mp3" --keyboard %keyboard% --parsemode %parsemode%
+
 
 ```
 

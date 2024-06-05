@@ -1,0 +1,1 @@
+﻿oint vk УдалитьПодборку --sel %sel% --auth %auth%

@@ -34,6 +34,7 @@ sidebar_position: 8
  
  oint slack KickUserFromChannel --token %token% --channel "C070VPMKN8J" --user "U06UG1CAYH2"
 
+
 ```
 
 

@@ -1,0 +1,1 @@
+﻿oint vk СократитьСсылку --url %url% --auth %auth%

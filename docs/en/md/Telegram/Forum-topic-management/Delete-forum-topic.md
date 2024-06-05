@@ -32,6 +32,7 @@ sidebar_position: 6
  
  oint telegram DeleteForumTopic --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
+
 ```
 
 

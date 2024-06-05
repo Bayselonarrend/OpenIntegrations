@@ -36,6 +36,7 @@ sidebar_position: 9
     
   oint yadisk ПереместитьОбъект --token "y0_AgAAAABdylaOAA..." --from "/Альпака.png" --to "/Тестовая папка/Альпака (Перемещенная).png" --rewrite %rewrite%
 
+
 ```
 
 

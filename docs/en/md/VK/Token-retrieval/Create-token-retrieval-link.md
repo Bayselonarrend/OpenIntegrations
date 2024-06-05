@@ -27,6 +27,7 @@ Getting a link for interactive token retrieval (access_token), which is necessar
  
  oint vk CreateTokenRetrievalLink --app %app%
 
+
 ```
 
 

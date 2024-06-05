@@ -33,6 +33,7 @@ sidebar_position: 2
     
   oint vk СделатьРепост --post %post% --from %from% --to %to% --ad %ad% --auth %auth%
 
+
 ```
 
 

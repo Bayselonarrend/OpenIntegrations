@@ -30,6 +30,7 @@ sidebar_position: 4
     
   oint vk УдалитьСвойствоТовара --prop %prop% --auth %auth%
 
+
 ```
 
 
