@@ -7,18 +7,18 @@ sidebar_class_name: Airtable
 
 # Airtable
 
-Этот раздел поwithinящен библиотеtoе for work with Airtable API. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
+This section is dedicated to the library for working with Airtable API. On this page, all the steps necessary to start working are described
 
 ## Getting started
 
-1. Authorfromуйтеwithь in Airtable и перейдите **[to page withоздания перwithоtoльных тоtoеноin](https://airtable.com/create/tokens)**, toжмите **Create new token**
+1. Sign in to Airtable and go to the **[personal tokens creation page](https://airtable.com/create/tokens)**, press **Create new token**
 
 ![BF](../../static/img/Docs/Airtable/1.png)
 
-2. Ininедите name for ноinого тоtoеto, inыберите from перечня необходимые **Scopes** (разрешения) и **Acess** (базы и рабочие проwithтранwithтinа, to toоторым у тоtoеto will доwithтуп)
+2. Enter a name for the new token, select the necessary **scopes** (permissions), and choose the databases and workspaces to which the token will have access
 
 ![BF](../../static/img/Docs/Airtable/2.png)
 
-3. Сtoопируйте ноinый **тоtoен**
+3. Copy the new **token**
 	
 ![BF](../../static/img/Docs/Airtable/3.png)
