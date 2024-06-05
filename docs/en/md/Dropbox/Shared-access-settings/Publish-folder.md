@@ -22,7 +22,7 @@ sidebar_position: 1
  Path = "/New"; 
  
  Result = OPI_Dropbox.PublishFolder(Token, Path);
-
+ 
 	
 ```
 

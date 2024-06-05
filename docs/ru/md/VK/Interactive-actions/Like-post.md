@@ -19,17 +19,17 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_VK.ПоставитьЛайк(221, ,Параметры);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Ответ = OPI_VK.ПоставитьЛайк(221, ,Параметры);
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint vk ПоставитьЛайк --post %post% --wall %wall% --auth %auth%
+      oint vk ПоставитьЛайк --post %post% --wall %wall% --auth %auth%
 
 
 ```

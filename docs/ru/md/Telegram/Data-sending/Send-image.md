@@ -22,27 +22,27 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-    Токен    = "6129457865:AAFyzNYOAFbu...";
-    IDЧата   = "461699897";
-    IDКанала = "@testsichee";
-    Текст    = "Строковое значение";
-    Картинка = "https://openintegrations.dev/test_data/picture.jpg"; 
+        Токен    = "6129457865:AAFyzNYOAFbu...";
+        IDЧата   = "461699897";
+        IDКанала = "@testsichee";
+        Текст    = "Строковое значение";
+        Картинка = "https://openintegrations.dev/test_data/picture.jpg"; 
+        
+        КартинкаПуть = ПолучитьИмяВременногоФайла("png");
+        КопироватьФайл(Картинка, КартинкаПуть);
+        
+        КартинкаДД   = Новый ДвоичныеДанные(КартинкаПуть);
+        
+        Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDЧата, Текст, Картинка);
+        Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаПуть);      
+        Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаДД);
     
-    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, КартинкаПуть);
-    
-    КартинкаДД   = Новый ДвоичныеДанные(КартинкаПуть);
-    
-    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDЧата, Текст, Картинка);
-    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаПуть);      
-    Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаДД);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьКартинку --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --picture "https://openintegrations.dev/test_data/picture.jpg" --keyboard %keyboard% --parsemode %parsemode%
+      oint telegram ОтправитьКартинку --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --picture "https://openintegrations.dev/test_data/picture.jpg" --keyboard %keyboard% --parsemode %parsemode%
 
 
 ```

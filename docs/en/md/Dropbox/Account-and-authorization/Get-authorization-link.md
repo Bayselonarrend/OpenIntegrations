@@ -19,7 +19,7 @@ sidebar_position: 1
 	
  AppKey = "oynqxds...";
  Result = OPI_Dropbox.GetAuthorizationLink(AppKey);
-
+ 
 	
 ```
 

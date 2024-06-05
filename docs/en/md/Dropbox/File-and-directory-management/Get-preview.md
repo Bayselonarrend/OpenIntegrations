@@ -22,7 +22,7 @@ sidebar_position: 3
  Path = "/New/mydoc.docx"; 
  
  Result = OPI_Dropbox.GetPreview(Token, Path);
-
+ 
 	
 ```
 

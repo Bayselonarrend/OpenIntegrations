@@ -20,21 +20,21 @@ sidebar_position: 8
 
 ```bsl title="Пример кода"
 	
-  
-  НовоеИмя          = "Обновленный файл.jpeg";
-  КартинкаЗамены    = "C:\OPI\image2.jpg";
-  Идентификатор     = "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ";
-  
-  Ответ = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, КартинкаЗамены, НовоеИмя)  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                           //Строка
-  
-
+      
+      НовоеИмя          = "Обновленный файл.jpeg";
+      КартинкаЗамены    = "C:\OPI\image2.jpg";
+      Идентификатор     = "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ";
+      
+      Ответ = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, КартинкаЗамены, НовоеИмя)  //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                           //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gdrive ОбновитьФайл --token %token% --object "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ" --file %file% --title "Обновленный файл.jpeg"
+      oint gdrive ОбновитьФайл --token %token% --object "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ" --file %file% --title "Обновленный файл.jpeg"
 
 
 ```

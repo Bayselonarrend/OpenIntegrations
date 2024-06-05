@@ -20,7 +20,7 @@ sidebar_position: 1
  
  Response = OPI_VK.GetProductCategoryList(Parameters); //Map
  
-
+ 
 	
 ```
 

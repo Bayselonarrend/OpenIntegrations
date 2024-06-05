@@ -28,7 +28,7 @@ sidebar_position: 7
  Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray); //Structure
  JSON = OPI_Tools.JSONString(Keyboard); //String
  
-
+ 
 	
 ```
 

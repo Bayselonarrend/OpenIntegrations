@@ -25,7 +25,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-  oint yadisk СкачатьФайл --token %token% --path %path% --out %out%
+      oint yadisk СкачатьФайл --token %token% --path %path% --out %out%
 
 
 ```

@@ -26,7 +26,7 @@ sidebar_position: 2
  Name = "TestTopic " + String(New UUID);
  
  Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
-
+ 
 	
 ```
 

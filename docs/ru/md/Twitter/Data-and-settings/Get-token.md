@@ -18,17 +18,17 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_Twitter.ПолучитьТокен(Код, Параметры);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Ответ = OPI_Twitter.ПолучитьТокен(Код, Параметры);
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint twitter ПолучитьТокен --code %code% --auth %auth%
+      oint twitter ПолучитьТокен --code %code% --auth %auth%
 
 
 ```

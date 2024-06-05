@@ -18,26 +18,26 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
-    Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-    ИДРаботы = "G8YbueOu2nsAAAAAAAAAAQ";
-    Статус   = "in_progress";
+        Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+        ИДРаботы = "G8YbueOu2nsAAAAAAAAAAQ";
+        Статус   = "in_progress";
+        
+        Пока Статус = "in_progress" Цикл 
+            
+            Результат = OPI_Dropbox.ПолучитьСтатусЗагрузкиПоURL(Токен, ИДРаботы);
+            Статус    = Результат[".tag"];
+            
+            OPI_Инструменты.Пауза(5);
+            
+            
+        КонецЦикла;
     
-    Пока Статус = "in_progress" Цикл 
-        
-        Результат = OPI_Dropbox.ПолучитьСтатусЗагрузкиПоURL(Токен, ИДРаботы);
-        Статус    = Результат[".tag"];
-        
-        OPI_Инструменты.Пауза(5);
-        
-        
-    КонецЦикла;
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --job %job%
+      oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --job %job%
 
 
 ```

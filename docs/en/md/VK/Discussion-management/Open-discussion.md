@@ -21,7 +21,7 @@ sidebar_position: 3
  Parameters = GetVKParameters();
  DiscussionID = "51206275";
  Result = OPI_VK.OpenDiscussion(DiscussionID, Parameters);
-
+ 
 	
 ```
 

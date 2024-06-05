@@ -22,27 +22,27 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
 	
-    Токен    = "6129457865:AAFyzNYOAFbu...";
-    IDЧата   = "461699897";
-    IDКанала = "@testsichee";
-    Текст    = "Строковое значение";
-    Документ = "https://openintegrations.dev/test_data/document.docx";
+        Токен    = "6129457865:AAFyzNYOAFbu...";
+        IDЧата   = "461699897";
+        IDКанала = "@testsichee";
+        Текст    = "Строковое значение";
+        Документ = "https://openintegrations.dev/test_data/document.docx";
+        
+        ДокументПуть = ПолучитьИмяВременногоФайла("docx");
+        КопироватьФайл(Документ, ДокументПуть);
+        
+        ДокументДД   = Новый ДвоичныеДанные(ДокументПуть);
+        
+        Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDЧата, Текст, Документ);
+        Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументПуть);
+        Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументДД);
     
-    ДокументПуть = ПолучитьИмяВременногоФайла("docx");
-    КопироватьФайл(Документ, ДокументПуть);
-    
-    ДокументДД   = Новый ДвоичныеДанные(ДокументПуть);
-    
-    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDЧата, Текст, Документ);
-    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументПуть);
-    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументДД);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьДокумент --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode%
+      oint telegram ОтправитьДокумент --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode%
 
 
 ```

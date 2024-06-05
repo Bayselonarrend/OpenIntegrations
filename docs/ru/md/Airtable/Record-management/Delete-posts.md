@@ -20,24 +20,24 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  
-  Записи = Новый Массив;
-  Записи.Добавить("recjHNKNZBWLZkZ7A");
-  Записи.Добавить("recGyJ0MlN1H3GMuN");
-  
-  Ответ = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, Запись); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                       //JSON строка
-  
-
+      
+      База    = "apptm8Xqo7TwMaipQ";
+      Таблица = "tbl9G4jVoTJpxYwSY";
+      
+      Записи = Новый Массив;
+      Записи.Добавить("recjHNKNZBWLZkZ7A");
+      Записи.Добавить("recGyJ0MlN1H3GMuN");
+      
+      Ответ = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, Запись); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                       //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint airtable УдалитьЗаписи --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --records %records%
+      oint airtable УдалитьЗаписи --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --records %records%
 
 
 ```

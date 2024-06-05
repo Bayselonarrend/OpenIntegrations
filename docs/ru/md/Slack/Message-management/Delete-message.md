@@ -20,20 +20,20 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-  
-  Канал   = "C06UFNUTKUL";
-  Отметка = "1714146538.221929";
-  
-  Ответ = OPI_Slack.УдалитьСообщение(Токен, Канал, Отметка); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                //JSON строка
-  
-
+      
+      Канал   = "C06UFNUTKUL";
+      Отметка = "1714146538.221929";
+      
+      Ответ = OPI_Slack.УдалитьСообщение(Токен, Канал, Отметка); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint slack УдалитьСообщение --token %token% --channel "C06UFNUTKUL" --stamp "1714146538.221929" --issheduled %issheduled%
+      oint slack УдалитьСообщение --token %token% --channel "C06UFNUTKUL" --stamp "1714146538.221929" --issheduled %issheduled%
 
 
 ```

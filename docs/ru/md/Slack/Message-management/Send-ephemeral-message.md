@@ -21,20 +21,20 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  Канал = "C070VPMKN8J";
-  Блок  = OPI_Slack.СформироватьБлокКартинку("https://opi.neocities.org/test_data/picture.jpg", "Картинка");
-  
-  Ответ = OPI_Slack.ОтправитьЭфемерноеСообщение(Токен, Канал, , Пользователь, Блок); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                        //JSON строка
-  
-
+      
+      Канал = "C070VPMKN8J";
+      Блок  = OPI_Slack.СформироватьБлокКартинку("https://opi.neocities.org/test_data/picture.jpg", "Картинка");
+      
+      Ответ = OPI_Slack.ОтправитьЭфемерноеСообщение(Токен, Канал, , Пользователь, Блок); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                        //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint slack ОтправитьЭфемерноеСообщение --token %token% --channel "C070VPMKN8J" --text %text% --user %user% --blocks %blocks%
+      oint slack ОтправитьЭфемерноеСообщение --token %token% --channel "C070VPMKN8J" --text %text% --user %user% --blocks %blocks%
 
 
 ```

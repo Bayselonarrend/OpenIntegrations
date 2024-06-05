@@ -26,7 +26,7 @@ sidebar_position: 2
  Response = OPI_GoogleSheets.DeleteSheet(Token, Book, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

@@ -29,7 +29,7 @@ sidebar_position: 3
  Response = OPI_Viber.SendFile(ChannelToken, "https://api.athenaeum.digital/1.txt", UserID, True, "txt"); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

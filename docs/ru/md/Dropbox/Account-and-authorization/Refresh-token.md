@@ -19,18 +19,18 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-    КлючПриложения   = "oynqxds...";
-    СекретПриложения = "tk2oewn...";
-    РефрешТокен      = "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV...";
+        КлючПриложения   = "oynqxds...";
+        СекретПриложения = "tk2oewn...";
+        РефрешТокен      = "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV...";
+        
+        Результат = OPI_Dropbox.ОбновитьТокен(КлючПриложения, СекретПриложения, РефрешТокен);
     
-    Результат = OPI_Dropbox.ОбновитьТокен(КлючПриложения, СекретПриложения, РефрешТокен);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox ОбновитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --refresh "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV..."
+      oint dropbox ОбновитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --refresh "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV..."
 
 
 ```

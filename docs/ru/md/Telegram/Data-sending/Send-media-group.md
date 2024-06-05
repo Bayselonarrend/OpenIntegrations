@@ -22,23 +22,23 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
 	
-  
-  Токен              = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
-  Описание           = "Группа картинок";
-  СоответствиеФайлов = Новый Соответствие;
-  СоответствиеФайлов.Вставить("C:\OPI\alpaca.png"     , "photo");
-  СоответствиеФайлов.Вставить("C:\OPI\alpaca_text.png", "photo");
-  
-  Ответ = OPI_Telegram.ОтправитьМедиагруппу(Токен, 1234567890, Описание, СоответствиеФайлов); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ_);                                                //JSON строка
-  
-
+      
+      Токен              = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
+      Описание           = "Группа картинок";
+      СоответствиеФайлов = Новый Соответствие;
+      СоответствиеФайлов.Вставить("C:\OPI\alpaca.png"     , "photo");
+      СоответствиеФайлов.Вставить("C:\OPI\alpaca_text.png", "photo");
+      
+      Ответ = OPI_Telegram.ОтправитьМедиагруппу(Токен, 1234567890, Описание, СоответствиеФайлов); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ_);                                                //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьМедиагруппу --token "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ" --chat %chat% --text %text% --media %media% --keyboard %keyboard% --parsemode %parsemode%
+      oint telegram ОтправитьМедиагруппу --token "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ" --chat %chat% --text %text% --media %media% --keyboard %keyboard% --parsemode %parsemode%
 
 
 ```

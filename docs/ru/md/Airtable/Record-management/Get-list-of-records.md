@@ -20,20 +20,20 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  
-  Ответ = OPI_Airtable.ПолучитьСписокЗаписей(Токен, База, Таблица, Отступ); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                               //JSON строка
-  
-
+      
+      База    = "apptm8Xqo7TwMaipQ";
+      Таблица = "tbl9G4jVoTJpxYwSY";
+      
+      Ответ = OPI_Airtable.ПолучитьСписокЗаписей(Токен, База, Таблица, Отступ); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                               //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьСписокЗаписей --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --offset %offset%
+      oint airtable ПолучитьСписокЗаписей --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --offset %offset%
 
 
 ```

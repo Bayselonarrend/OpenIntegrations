@@ -19,21 +19,21 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Родитель  = "5dd94c34fab04bff9...";
-  Заголовок = "Создано из 1С";
-  
-  Ответ = OPI_Notion.СоздатьСтраницу(Токен, Родитель, Заголовок);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+      Родитель  = "5dd94c34fab04bff9...";
+      Заголовок = "Создано из 1С";
+      
+      Ответ = OPI_Notion.СоздатьСтраницу(Токен, Родитель, Заголовок);
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint notion СоздатьСтраницу --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Создано из 1С"
+      oint notion СоздатьСтраницу --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Создано из 1С"
 
 
 ```

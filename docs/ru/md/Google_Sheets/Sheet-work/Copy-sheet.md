@@ -20,21 +20,21 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-  
-  Откуда = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
-  Куда   = "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s";
-  Лист   = "25093199";
-  
-  Ответ = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //JSON строка
-  
-
+      
+      Откуда = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+      Куда   = "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s";
+      Лист   = "25093199";
+      
+      Ответ = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gsheets КопироватьЛист --token %token% --from "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --to "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s" --sheet "25093199"
+      oint gsheets КопироватьЛист --token %token% --from "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --to "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s" --sheet "25093199"
 
 
 ```

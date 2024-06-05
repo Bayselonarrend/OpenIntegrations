@@ -36,7 +36,7 @@ sidebar_position: 6
  Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath); 
  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
-
+ 
 	
 ```
 

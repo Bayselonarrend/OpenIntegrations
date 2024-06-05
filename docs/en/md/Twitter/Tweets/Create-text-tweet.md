@@ -22,7 +22,7 @@ sidebar_position: 1
  Response = OPI_Twitter.CreateTextTweet("Regular text tweet", Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-
+ 
 	
 ```
 

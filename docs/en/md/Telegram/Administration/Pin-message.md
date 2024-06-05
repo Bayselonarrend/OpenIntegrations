@@ -24,7 +24,7 @@ sidebar_position: 4
  MessageID = "4951";
  
  Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
-
+ 
 	
 ```
 

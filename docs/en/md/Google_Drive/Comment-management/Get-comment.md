@@ -26,7 +26,7 @@ sidebar_position: 2
  Response = OPI_GoogleDrive.GetComment(Token, AndДFile, CommentID); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-
+ 
 	
 ```
 

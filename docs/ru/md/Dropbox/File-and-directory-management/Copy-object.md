@@ -19,18 +19,18 @@ sidebar_position: 8
 
 ```bsl title="Пример кода"
 	
-    Оригинал  = "/New/pic.png";
-    Копия     = "/New/pic_copy.png";  
-    Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+        Оригинал  = "/New/pic.png";
+        Копия     = "/New/pic_copy.png";  
+        Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+        
+        Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);
     
-    Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox КопироватьОбъект --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --form %form% --to %to%
+      oint dropbox КопироватьОбъект --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --form %form% --to %to%
 
 
 ```

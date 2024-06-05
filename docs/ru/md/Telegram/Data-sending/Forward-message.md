@@ -20,19 +20,19 @@ sidebar_position: 11
 
 ```bsl title="Пример кода"
 	
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    IDЧата      = "461699897";
-    IDКанала    = "@testsichee";
-    IDСообщения = "4951";
+        Токен       = "6129457865:AAFyzNYOAFbu...";
+        IDЧата      = "461699897";
+        IDКанала    = "@testsichee";
+        IDСообщения = "4951";
+        
+        Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
     
-    Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram ПереслатьСообщение --token "6129457865:AAFyzNYOAFbu..." --message %message% --from %from% --to %to%
+      oint telegram ПереслатьСообщение --token "6129457865:AAFyzNYOAFbu..." --message %message% --from %from% --to %to%
 
 
 ```

@@ -18,19 +18,19 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-  
-  Токен = "y0_AgAAAABdylaOAA...";
-  Путь  = "/Альпака.png"
-  Ответ = OPI_YandexDisk.ПолучитьОбъект(Токен, Путь); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);         //Строка
-  
-
+      
+      Токен = "y0_AgAAAABdylaOAA...";
+      Путь  = "/Альпака.png"
+      Ответ = OPI_YandexDisk.ПолучитьОбъект(Токен, Путь); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);         //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint yadisk ПолучитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
+      oint yadisk ПолучитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
 
 
 ```

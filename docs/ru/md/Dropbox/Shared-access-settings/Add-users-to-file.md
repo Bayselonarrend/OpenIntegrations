@@ -20,18 +20,18 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-    Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-    Почта = "h5bk6ft62s@privaterelay.appleid.com";
-    Файл  = "kJU6-a-pT48AAAAAAAAABw";
+        Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+        Почта = "h5bk6ft62s@privaterelay.appleid.com";
+        Файл  = "kJU6-a-pT48AAAAAAAAABw";
+        
+        Результат = OPI_Dropbox.ДобавитьПользователейКФайлу(Токен, Файл, Почта, Ложь);
     
-    Результат = OPI_Dropbox.ДобавитьПользователейКФайлу(Токен, Файл, Почта, Ложь);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox ДобавитьПользователейКФайлу --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --fileid %fileid% --emails %emails% --readonly %readonly%
+      oint dropbox ДобавитьПользователейКФайлу --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --fileid %fileid% --emails %emails% --readonly %readonly%
 
 
 ```

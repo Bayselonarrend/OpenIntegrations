@@ -24,7 +24,7 @@ sidebar_position: 14
  Path = "/New/pic.png"; 
  
  Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);
-
+ 
 	
 ```
 
