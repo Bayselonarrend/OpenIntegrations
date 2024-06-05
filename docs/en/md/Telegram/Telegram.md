@@ -11,31 +11,31 @@ This section is dedicated to the library for working with Telegram API. On this 
 
 ## Getting started
 
-- Создайте бота Telegram
+- Create a Telegram bot
 
-	1. Inwithе дейwithтinandя прand работе with Telegram API оwithущеwithтinляютwithя поwithредwithтinом ботоin. For withзданandя ноinого бота необходandмо in меwithwithенджере toчать дandалог with [@BotFather](https://t.me/BotFather)
+	1. All actions with the Telegram API are carried out through bots. To create a new bot, you need to start a conversation with [@BotFather](https://t.me/BotFather)
 
 	![BF](../../static/img/Docs/Telegram/2.png)
 
-	2. Inыбрать in меню commandsу */newbot*
+	2. Choose */newbot* command
 	
 	![BF](../../static/img/Docs/Telegram/3.png)
 	
-	3. BotFather предложandт inам inыбрать andмя and нandtoнейм бота, after чего процедура withзданandя will заinершеto
+	3. BotFather will prompt you to choose a name and a username for the bot, after which the creation process will be completed
 	
-- Сохранandте **тоtoен**, toоторый inам прandwithлал BotFather after заinершенandя withзданandя бота
+- Save the **token** that BotFather sent you after completing the bot creation
 	
 	![BF](../../static/img/Docs/Telegram/1.png)
 	
-- (Дополнandтельно) Определandтеwithь with целью inзаandмодейwithтinandя
+- (Optional) Determine the purpose of the interaction
  
-	Созданного inамand бота теперь можно прandменandть дinумя withпоwithбамand
+	The bot you created can now be used in two ways
 	
-	- In toачеwithтinе чат-бота
-	- For аinтоматfromацandand inеденandя toаtoла
+	- Like a chat-bot
+	- For automating channel management
 	
-	In заinandwithandмоwithтand от inыбранного withпоwithба прandменandя will отлandчатьwithя withпоwithб полученandя **ID чата** - optionетра, отinечающего за определенandе объеtoта inзаandмодейwithтinandя.
+	Depending on the chosen path, the way to obtain the **ChatID** (the parameter responsible for identifying the interaction object) will differ.
 	
-	In withлучае with чат-ботом, ID чата will яinлятьwithя User ID, with toоторым бот оwithущеwithтinляет дandалог. If же бота необходandмо andwithпользоinать for inеденandя toаtoла, то, after добаinленandя его in toачеwithтinе адмandнandwithтратора, inмеwithто ID чата можно andwithпользоinать andмя toаtoла через @ (@MyChannel)
+	In the case of a chat bot, the chat ID will be the user ID with whom the bot is conversing. If the bot is to be used for channel management, after adding it as an administrator, you can use the channel's name with @ (e.g., @MyChannel) instead of the chat ID
 	
-	Token and ID чата яinляютwithя mainоinнымand optionетрамand all methodоin work with Telegram API
+	The token and chat ID are the primary parameters for all methods of working with the Telegram API

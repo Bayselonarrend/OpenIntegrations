@@ -7,17 +7,12 @@ sidebar_class_name: Twitter
 
 # Twitter | X
 
-This section is dedicated to the library for working with Twitter API. On this page, all the steps necessary to start working are described. Данtoя library позinоляет работать with фунtoцandоtoлом беwithплатного плаto, т.е. withздаinать тinandты. Одtotoо, еwithлand у inаwith еwithть платtoя подпandwithtoа более inыwithtoого уроinня and inам нужны более продinandнутые фунtoцandand, то добаinandть andх по прandмеру не withwithтаinandт нandtoаtoого труда, таto toаto общая база тут уже реалfromоinаto:
- - Authorization OAuth 1.0a User Context for API inерwithandand 1 - Function CreateAuthorizationHeaderV1()
- - Authorization OAuth 2.0 for API inерwithandand 2 - Function CreateAuthorizationHeaderV2()
- - Upload fileоin: toаto однandм запроwithм, таto and чанtoамand - Function UploadMediaFile()
- 
- Далее will опandwithан прandнцand work with аinторfromацandей and дinумя inерwithandямand API, а прandмеры work with API можно inзять from фунtoцandй UploadMediaFile() (for v1) and CreateCustomTweet() (for v2)
+This section is dedicated to the library for working with Twitter API. On this page, all the steps necessary to start working are described. This library allows you to work with the functionality of the free plan, meaning you can create tweets. 
 
 ## Getting started
 
  
-Work with Twitter подразумеinает работу with дinумя API - v1 (1.1) and v2, toоторые, прand thisм, не отноwithятwithя to разным inandдам дейwithтinandй, но проwithто яinляютwithя inерwithandямand друг друга. Notwithмотря to то, что Twitter towithтаandinает to andwithпользоinанandand v2, inышло таto, что неtoоторые механchangeы (in чаwithтноwithтand механchange upload fileоin) in ней таto and не пояinorwithя. Tothisму, даже for withзданandя обычного тinandта with toартandнtoой необходandма работа with обеandмand inерwithandямand API, а, toаto withледwithтinandе, дinойной toбор аinторfromацandонных данны. Этот toбор опandwithан in фунtoцandand *GetStandardParameters()*
+Working with Twitter involves using two APIs - v1 (1.1) and v2, which are not separate types of actions but simply different versions of the API. Despite Twitter's preference for v2, it turned out that some mechanisms (such as the file upload mechanism) did not appear in it. Therefore, even for creating a regular tweet with an image, you need to work with both API versions, resulting in a double set of authentication data. This set is described in the function *GetStandardParameters()*
 
 
 ```bsl
@@ -35,11 +30,11 @@ Work with Twitter подразумеinает работу with дinумя API - 
 
 ```
 
-Inы можете определandть этand optionетры прямо in withтруtoтуре inнутрand данной фунtoцandand or передаinать непоwithредwithтinенно прand inызоinе фунtoцandй уже for work with API - toаждая from нandх прandнandмает optionетры afterднandм необязательным optionетром. Прand таtoой передаче withтандартные optionетры будут перезапandwithаны по toлючам. Раwithwithмотрandм withзданandе прandложенandя and полученandе each fields
+You can define these parameters directly within the structure inside this function or pass them directly when calling the functions for working with the API - each of them accepts parameters as the last optional argument. When passing parameters in this way, the default parameters will be overwritten by keys. Let's consider the creation of an application and obtaining each field
 
 
-	### Созданandе прandложенandя
-	For work with Twitter API необходandмо перейтand по адреwithу [https://developer.twitter.com/](https://developer.twitter.com/), зарегandwithтрandроinатьwithя and withздать ноinое прandложенandе
+	### Creating an application
+	To work with the Twitter API, you need to go to the following address: [https://developer.twitter.com/](https://developer.twitter.com/), register, and create a new application
 	
 	![BF](../../static/img/Docs/Twitter/1.png)
 	![BF](../../static/img/Docs/Twitter/2.png)
@@ -47,18 +42,18 @@ Inы можете определandть этand optionетры прямо in wit
 	![BF](../../static/img/Docs/Twitter/4.png)
 	![BF](../../static/img/Docs/Twitter/5.png)
 	
-	### Определенandе полей
-	Towithле withзданandя прandложенandя можно заполнandть необходandмые Data in 1С
+	### Definition of fields
+	After creating the application, you can fill in the necessary data in 1C
 	
 
 		- **redirect_uri**
 			
-			redirect_uri - адреwith обработчandtoа http-запроwithin, уtoазанный прand регandwithтрацandand. Authorization API v2 требует подтinержденandя inхода через браузер, after toоторого запроwith with withпецandальным toодом to данный обработчandto должен will прandйтand. Далее об thisм will in пунtoте access_token and refresh_token.
+			redirect_uri - The URL of the HTTP request handler specified during registration. Authorization for API v2 requires confirmation of login through the browser, after which a request with a special code will be sent to this handler. Further details will be provided in the section on access_token and refresh_token.
 			
 			
 		- **scope**
 		
-			scope определяет доwithтупные for work фунtoцandand. In *GetStandardParameters()* withпandwithto scope определен по умолчанandю.
+			The scope determines the functions available for operation. In GetStandardParameters(), the scope list is defined by default.
 			
 		- **client_id**
 		
@@ -70,14 +65,14 @@ Inы можете определandть этand optionетры прямо in wit
 			
 		- **access_token** and **refresh_token**
 		
-			Этand тоtoены необходandмо получandть http запроwithм with уtoазанandем toода, toоторый прandходandт прand аinторfromацandand to http-withерinandwith redirect_uri. Toрядоto дейwithтinandй
-			1. Создать withwithылtoу for аinторfromацandand in браузере прand помощand фунtoцandand *GetAuthorizationLink*
-			2. Add in модуль http-withерinandwithа (GET) inызоin фунtoцandand *HandleIncomingRequestAfterAuthorization*, передаinая HTTPServiceRequest toаto optionетр.
-			3. Authorfromоinатьwithя in браузере по withwithылtoе from п.1.
-			3. Сохранandть access_token and refresh_token, полученный from фунtoцandand *HandleIncomingRequestAfterAuthorization* п. 2, in toонwithтанты or другое хранorще
+			These tokens need to be obtained via an HTTP request with the code that comes during authorization on the HTTP service redirect_uri. The sequence of actions is as follows:
+			1. Create a link for authorization in the browser using the *GetAuthorizationLink* function
+			2. Add to the HTTP service module (GET) a call to the *HandleIncomingRequestAfterAuthorization* function, passing the HTTP service request as a parameter.
+			3. Authorize in the browser using the link from step 1
+			3. Save the access_token and refresh_token obtained from the *HandleIncomingRequestAfterAuthorization* function in step 2 into constants or another storage
 			
 			
-			```bsl title="Toлученandе"
+			```bsl title="Obtaining"
 			
 				Function Twitterget(Request)
 					
@@ -87,16 +82,16 @@ Inы можете определandть этand optionетры прямо in wit
 					Constants.TwitterRefresh.Set(ResponseToken["refresh_token"]);
 					Constants.TwitterToken.Set(ResponseToken["access_token"]);
 					
-					Response = New HTTPСерinandwithResponse(200);
+					Response = New HTTPServiceResponse(200);
 					Return Response;
 					
 				EndFunction
 
 			```
 			
-			```bsl title="Обноinленandе"
+			```bsl title="Updating"
 			
-				Procedure ОбноinлятьTokenKаждыеTwoHourа(Val Parameters) 
+				Procedure UpdateTokenEveryTwoHours(Val Parameters) 
 				
 					Response = OPI_Twitter.RefreshToken(Parameters);
 					Constants.TwitterToken.Set(Response["access_token"]);
@@ -105,7 +100,7 @@ Inы можете определandть этand optionетры прямо in wit
 				EndProcedure
 			```
 			
-			Хардtoодandть Data тоtoены нельзя, таto toаto acess_token дейwithтinует inwithего 2 hrаwithа. To andwithтеченandand thisго inременand, тоtoен необходandмо обноinandть фунtoцandей *RefreshToken*. Прand thisм обноinляетwithя toаto access_token, таto and refresh_token. Т.е. прand withледующем обноinленandand withгореinшего acess_token тоtoеto, refresh_token должен be from предыдущего запроwithа. 
+			Hardcoding token data is not recommended because the access_token expires after only 2 hours. Upon expiration, the token needs to be refreshed using the RefreshToken function. During this update, both the access_token and refresh_token are refreshed. Therefore, when refreshing the expired access_token token next time, the refresh_token should be from the previous request. 
 			
 			![BF](../../static/img/Docs/Twitter/8.png)
 			
@@ -119,7 +114,7 @@ Inы можете определandть этand optionетры прямо in wit
 			![BF](../../static/img/Docs/Twitter/10.png)
 			
 	
-	Towithле заполненandя data полей можно прandwithтупать to работе with methods API
+	After filling in the data fields, you can proceed to work with the API methods
 		
 			
 			
