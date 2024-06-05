@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Work with CLI inерwithией
+# Working with CLI app
 
 **OInt CLI** - приложение for commandsой withтроtoи, toоторое позinоляет иwithпользоinать methodы Отtoрытого паtoета интеграций незаinиwithимо от 1С и OneScript. For его work требуетwithя **.Net Framework 4.8** or withопоwithтаinимый **Mono Runtime** (при иwithпользоinании deb и rpm паtoетоin уwithтаtoinлиinаетwithя аinтоматичеwithtoи) 
 

@@ -3,7 +3,7 @@ id: Start
 sidebar_class_name: NachaloRaboty
 ---
 
-# Welcome welcome!
+# Welcome!
 
 ![OPI](../../static/img/logo_long.png)
 
@@ -13,7 +13,7 @@ The implemented methods perform specific tasks (such as *SendMessage()* or *Crea
 
 <br/>
 
-## Nачало work
+## Getting started
 
 The library releases come in five variants: 
 
@@ -23,13 +23,13 @@ The library releases come in five variants:
 - As a standalone extension file in cfe format
 - As a OneScript extension package in ospx format
 
-Regardless of the chosen installation method, the files must be obtained from the [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases)section, as the repository files may contain intermediate data and functions that are still in development. 
+Regardless of the chosen installation method, the files must be obtained from the [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases) section, as the repository files may contain intermediate data and functions that are still in development. 
 
 For more details about each release variant, see the section [About Release Variants](/docs/Start/Pro-varianty-relisov)
 
 <br/>
 
-## Structure модулей
+## Structure of modules
 
 The project's common modules come in two types: 
 
