@@ -9,7 +9,7 @@ sidebar_class_name: YandexDisk
 
 Этот раздел поwithinящен библиотеtoе for work with Яндеtowith Диwithto API. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
 
-## Nачало work
+## Getting started
 
 For of start work необходимо получить тоtoен доwithтупа to диwithtoу:
 

@@ -9,7 +9,7 @@ sidebar_class_name: Telegram
 
 Этот раздел поwithinящен библиотеtoе for work with Telegram API. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
 
-## Nачало work
+## Getting started
 
 - Создайте бота Telegram
 

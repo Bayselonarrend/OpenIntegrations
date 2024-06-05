@@ -25,7 +25,7 @@ sidebar_class_name: NachaloRaboty
 
 Вне зависимости от выбранного сопособа установки, получать файлы необходимо из [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases), так как в самих файлах репозитория бывают промежуточные данные и функции, находящиеся в процессе разработки. 
 
-Подробнее о каждом варианте релиза в разделе [Про варианты релизов](/docs/Start/Pro-varianty-relisov)
+Подробнее о каждом варианте релиза в разделе [Про варианты релизов](/docs/Start/Release-variants)
 
 <br/>
 
