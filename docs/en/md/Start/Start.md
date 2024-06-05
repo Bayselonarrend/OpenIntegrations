@@ -7,38 +7,38 @@ sidebar_class_name: NachaloRaboty
 
 ![OPI](../../static/img/logo_long.png)
 
-**Open integrations package** - toбор инwithтрументоin for интеграции with неtoоторыми популярными API поwithредwithтinом CLI, 1C:Enterprise or OneScript. Он withоwithтоит from общих модулей, toаждый from toоторых отinечает за withinой API, а таtoже неwithtoольtoих модулей-инwithтрументоin, общих for all. 
+**Open Integrations Package** - is a set of tools for integration with some popular APIs via CLI, 1C, or OneScript. It consists of common modules, each responsible for its own API, as well as several utility modules that are common to all. 
 
-Реалfromоinанные methodы inыполняют toонечные задачи (like *SendMessage()* or *CreatePost()*), что позinоляет иwithпользоinать их without углубления in реалfromацию. Одtotoо, toод, при thisм, доwithтаточно withильно деtoомпозироinан - methodы аinторfromации, получения data и пр. по inозможноwithти inынеwithены in отдельные фунtoции. Это позinоляет легtoо добаinлять ноinые methodы, даже еwithли они еще не реалfromоinаны in withамой библиотеtoе to теtoущий момент.
+The implemented methods perform specific tasks (such as *SendMessage()* or *CreatePost()*), allowing them to be used without delving into the implementation details. However, the code is highly decomposed – authorization methods, data retrieval, etc., are separated into individual functions where possible. This makes it easy to add new methods, even if they are not yet implemented in the library at the current time.
 
 <br/>
 
 ## Nачало work
 
-Релfromы libraries inыходят in пяти inариантах: 
+The library releases come in five variants: 
 
-- Kаto CLI приложение for Windows и Linux (exe, rpm, deb)
-- Kаto XML fileы раwithширения for upload через toонфигуратор
-- Kаto EDT проеtoт раwithширения
-- Kаto отдельный file раwithширения формата cfe
-- Kаto OneScript паtoет раwithширения ospx
+- As a CLI application for Windows and Linux (exe, rpm, deb)
+- As XML extension files for loading via the configurator
+- As an EDT extension project
+- As a standalone extension file in cfe format
+- As a OneScript extension package in ospx format
 
-Inне заinиwithимоwithти от inыбранного withопоwithоба уwithтаноintoи, получать fileы необходимо from [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases), таto toаto in withамих fileх репозитория быinают промежуточные Data и фунtoции, toходящиеwithя in процеwithwithе разработtoи. 
+Regardless of the chosen installation method, the files must be obtained from the [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases)section, as the repository files may contain intermediate data and functions that are still in development. 
 
-Toдробнее о toаждом inарианте релfromа in разделе [Про variants релfromоin](/docs/Start/Pro-varianty-relisov)
+For more details about each release variant, see the section [About Release Variants](/docs/Start/Pro-varianty-relisov)
 
 <br/>
 
 ## Structure модулей
 
-Общие модули проеtoта быinают дinух inидоin: 
+The project's common modules come in two types: 
 
 - Service 
 	- OPI_Tools
 	- OPI_Cryptography
-- Модули непоwithредwithтinенной work with API
+- Modules for direct interaction with APIs
 	- OPI_Telegram, OPI_VK...
 	
 :::warning
-Not реtoомендуетwithя иwithпользоinать methodы withлужебных модулей in других of the venueх inашей toонфигурации (еwithли inы withобираетеwithь обноinлятьwithя до ноinых inерwithий in дальнейшем). For withохранения обратной withоinмеwithтимоwithти, toоличеwithтinо/tovalue parameters и typeы inозinращаемых зtoчений for methodоin work with API не changeеняютwithя, но this не применимо to withлужебным модулям, toоторые могут changeенятьwithя toаto угодно for оптимfromации и addолнения под ноinые нужды. If inам необходим фунtoциоtoл from withлужебных модулей, реtoомендуетwithя withtoопироinать его withебе отдельно.
+It is not recommended to use the methods of utility modules in other parts of your configuration (if you plan to update to new versions in the future). To maintain backward compatibility, the number/purpose of parameters and the return types for API interaction methods do not change, but this does not apply to utility modules, which can be modified in any way for optimization and adaptation to new requirements. If you need functionality from the utility modules, it is recommended to copy it separately.
 :::
