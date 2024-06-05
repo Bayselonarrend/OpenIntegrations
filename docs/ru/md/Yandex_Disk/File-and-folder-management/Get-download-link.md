@@ -32,6 +32,7 @@ sidebar_position: 6
     
   oint yadisk ПолучитьСсылкуДляСкачивания --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
 
+
 ```
 
 

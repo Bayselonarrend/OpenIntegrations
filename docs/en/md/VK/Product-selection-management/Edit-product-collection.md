@@ -40,6 +40,7 @@ sidebar_position: 4
  
  oint vk EditProductCollection --title %title% --sel %sel% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
 
+
 ```
 
 

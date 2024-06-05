@@ -1,0 +1,1 @@
+﻿oint slack ПолучитьИнформациюОБоте --token %token%

@@ -24,9 +24,7 @@ sidebar_position: 5
  Topic = "2673";
 
  Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
- 
- OPI_TestDataRetrieval.WriteLog(Result, "OpenForumTopic (main)");
- 
+
  
  Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);
 
@@ -36,6 +34,7 @@ sidebar_position: 5
 ```sh title="CLI command example"
  
  oint telegram OpenForumThread --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
+
 
 ```
 

@@ -30,6 +30,7 @@ sidebar_position: 6
  
  oint vk DeleteProduct --item %item% --auth %auth%
 
+
 ```
 
 

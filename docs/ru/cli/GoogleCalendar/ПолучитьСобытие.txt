@@ -1,0 +1,1 @@
+﻿oint gcalendar ПолучитьСобытие --token %token% --calendar %calendar% --event %event%

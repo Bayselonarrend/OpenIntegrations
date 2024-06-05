@@ -31,6 +31,7 @@ sidebar_position: 3
     
   oint vk ИзменитьСвойствоТовара --title %title% --prop %prop% --auth %auth%
 
+
 ```
 
 

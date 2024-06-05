@@ -1,0 +1,1 @@
+﻿oint vk НаписатьВОбсуждение --topic %topic% --text %text% --auth %auth%

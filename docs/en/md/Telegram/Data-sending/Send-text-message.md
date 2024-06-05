@@ -27,9 +27,7 @@ sidebar_position: 1
  Text = "String value";
  
  Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Telegram"); 
- 
+
  
  Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
 
@@ -39,6 +37,7 @@ sidebar_position: 1
 ```sh title="CLI command example"
  
  oint telegram SendTextMessage --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --keyboard %keyboard% --parsemode %parsemode%
+
 
 ```
 

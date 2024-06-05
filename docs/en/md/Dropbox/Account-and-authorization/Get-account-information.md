@@ -29,6 +29,7 @@ sidebar_position: 4
  
  oint dropbox GetAccountInformation --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --account %account%
 
+
 ```
 
 

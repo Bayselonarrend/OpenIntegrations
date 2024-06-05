@@ -32,6 +32,7 @@ sidebar_position: 5
  
  oint slack DeleteExternalFile --token %token% --fileid "F070P52CU94"
 
+
 ```
 
 

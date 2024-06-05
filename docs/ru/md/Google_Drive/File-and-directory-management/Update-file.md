@@ -36,6 +36,7 @@ sidebar_position: 8
     
   oint gdrive ОбновитьФайл --token %token% --object "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ" --file %file% --title "Обновленный файл.jpeg"
 
+
 ```
 
 

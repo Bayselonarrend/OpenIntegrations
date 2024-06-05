@@ -37,6 +37,7 @@ sidebar_position: 5
     
   oint gcalendar ИзменитьКалендарьСписка --token %token% --calendar %calendar% --primary %primary% --secondary %secondary% --hidden %hidden%
 
+
 ```
 
 

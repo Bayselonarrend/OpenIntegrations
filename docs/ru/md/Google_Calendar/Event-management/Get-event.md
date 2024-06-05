@@ -31,6 +31,7 @@ sidebar_position: 3
     
   oint gcalendar ПолучитьСобытие --token %token% --calendar %calendar% --event %event%
 
+
 ```
 
 

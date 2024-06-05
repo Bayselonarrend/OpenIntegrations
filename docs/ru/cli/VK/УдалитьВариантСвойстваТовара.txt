@@ -1,0 +1,1 @@
+﻿oint vk УдалитьВариантСвойстваТовара --option %option% --auth %auth%

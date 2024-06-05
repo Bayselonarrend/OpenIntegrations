@@ -30,6 +30,7 @@ sidebar_position: 1
     
   oint slack ПолучитьИнформациюОБоте --token %token%
 
+
 ```
 
 

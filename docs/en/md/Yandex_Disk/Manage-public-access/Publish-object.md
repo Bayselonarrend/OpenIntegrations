@@ -32,6 +32,7 @@ sidebar_position: 1
  
  oint yadisk PublishObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"
 
+
 ```
 
 

@@ -36,6 +36,7 @@ sidebar_position: 2
     
   oint viber ОтправитьКартинку --token %token% --picture %picture% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --description %description%
 
+
 ```
 
 

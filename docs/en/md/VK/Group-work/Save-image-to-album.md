@@ -31,9 +31,7 @@ sidebar_position: 8
  Image = New BinaryData(AndVF);
  
  Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SaveImageToAlbum", "VK");
- 
+
  
  
  Result = OPI_VK.SaveImageToAlbum(AlbumID, AndVF, ImageDescription, Parameters);
@@ -44,6 +42,7 @@ sidebar_position: 8
 ```sh title="CLI command example"
  
  oint vk SaveImageToAlbum --album %album% --picture "https://openintegrations.dev/test_data/picture.jpg" --description %description% --auth %auth%
+
 
 ```
 

@@ -20,8 +20,7 @@ sidebar_position: 6
 	
     Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
     ИДРаботы = "G8YbueOu2nsAAAAAAAAAAQ";
-    Статус   = "in_progress";    
-    
+    Статус   = "in_progress";
     Пока Статус = "in_progress" Цикл 
         
         Результат = OPI_Dropbox.ПолучитьСтатусЗагрузкиПоURL(Токен, ИДРаботы);
@@ -29,7 +28,6 @@ sidebar_position: 6
         
         OPI_Инструменты.Пауза(5);
         
-        OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "ПолучитьСтатусЗагрузкиПоURL", "Dropbox");
         
     КонецЦикла;
 
@@ -39,6 +37,7 @@ sidebar_position: 6
 ```sh title="Пример команды CLI"
     
   oint dropbox ПолучитьСтатусЗагрузкиПоURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --job %job%
+
 
 ```
 

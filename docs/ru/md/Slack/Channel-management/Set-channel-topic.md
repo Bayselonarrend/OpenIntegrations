@@ -34,6 +34,7 @@ sidebar_position: 11
     
   oint slack УстановитьТемуКанала --token %token% --channel "C070VPMKN8J" --theme "Тестовая тема"
 
+
 ```
 
 

@@ -30,6 +30,7 @@ sidebar_position: 2
     
   oint gcalendar ПолучитьМетаданныеКалендаря --token %token% --calendar %calendar%
 
+
 ```
 
 

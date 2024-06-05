@@ -35,6 +35,7 @@ sidebar_position: 5
     
   oint vk ИзменитьТовар --item %item% --product %product% --sel %sel% --auth %auth%
 
+
 ```
 
 

@@ -44,6 +44,7 @@ sidebar_position: 4
     
   oint gcalendar СоздатьСобытие --token %token% --calendar %calendar% --props %props%
 
+
 ```
 
 

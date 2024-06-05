@@ -34,6 +34,7 @@ sidebar_position: 2
  
  oint vk GetPostStatistics --posts %posts% --auth %auth%
 
+
 ```
 
 

@@ -32,6 +32,7 @@ sidebar_position: 10
     
   oint slack ПокинутьКанал --token %token% --channel "C070VPMKN8J"
 
+
 ```
 
 

@@ -32,6 +32,7 @@ sidebar_position: 2
     
   oint telegram Разбан --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
 
+
 ```
 
 

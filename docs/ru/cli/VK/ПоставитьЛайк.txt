@@ -1,0 +1,1 @@
+﻿oint vk ПоставитьЛайк --post %post% --wall %wall% --auth %auth%

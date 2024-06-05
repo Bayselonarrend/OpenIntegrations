@@ -34,6 +34,7 @@ sidebar_position: 13
     
   oint slack ПереименоватьКанал --token %token% --channel "C070VPMKN8J" --title %title%
 
+
 ```
 
 

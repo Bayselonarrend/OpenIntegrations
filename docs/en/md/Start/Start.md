@@ -25,7 +25,7 @@ The library releases come in five variants:
 
 Regardless of the chosen installation method, the files must be obtained from the [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases) section, as the repository files may contain intermediate data and functions that are still in development. 
 
-For more details about each release variant, see the section [About Release Variants](/docs/Start/Pro-varianty-relisov)
+For more details about each release variant, see the section [About Release Variants](/docs/Start/Release-variants)
 
 <br/>
 

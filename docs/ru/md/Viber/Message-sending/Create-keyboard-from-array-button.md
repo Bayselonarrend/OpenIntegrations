@@ -36,6 +36,7 @@ sidebar_position: 7
     
   oint viber СформироватьКлавиатуруИзМассиваКнопок --buttons %buttons% --color %color%
 
+
 ```
 
 

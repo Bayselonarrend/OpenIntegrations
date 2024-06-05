@@ -36,6 +36,7 @@ sidebar_position: 7
     
   oint gdrive СкопироватьОбъект --token %token% --object "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk" --title "Скопированный файл.jpeg" --catalog %catalog%
 
+
 ```
 
 

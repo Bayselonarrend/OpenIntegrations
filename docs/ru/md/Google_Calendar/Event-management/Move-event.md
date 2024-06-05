@@ -32,6 +32,7 @@ sidebar_position: 5
     
   oint gcalendar ПереместитьСобытие --token %token% --from %from% --to %to% --event %event%
 
+
 ```
 
 

@@ -33,6 +33,7 @@ sidebar_position: 1
     
   oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1" --alt %alt%
 
+
 ```
 
 

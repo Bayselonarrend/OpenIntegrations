@@ -24,9 +24,7 @@ sidebar_position: 10
  Topic = "2673";
  
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "ClearPinnedMessagesList (main)");
- 
+
  
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);
 
@@ -36,6 +34,7 @@ sidebar_position: 10
 ```sh title="CLI command example"
  
  oint telegram ClearThreadPinnedMessagesList --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
+
 
 ```
 

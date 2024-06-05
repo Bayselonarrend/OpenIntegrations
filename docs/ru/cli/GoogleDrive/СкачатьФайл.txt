@@ -1,0 +1,1 @@
+﻿oint gdrive СкачатьФайл --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa" --out %out%

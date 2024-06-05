@@ -33,6 +33,7 @@ sidebar_position: 4
     
   oint yadisk УдалитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png" --can %can%
 
+
 ```
 
 

@@ -31,6 +31,7 @@ sidebar_position: 1
     
   oint vk ПоставитьЛайк --post %post% --wall %wall% --auth %auth%
 
+
 ```
 
 

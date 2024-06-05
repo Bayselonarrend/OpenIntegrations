@@ -1,0 +1,1 @@
+﻿oint twitter ПолучитьТокен --code %code% --auth %auth%
