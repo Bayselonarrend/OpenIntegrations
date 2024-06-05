@@ -7,57 +7,57 @@ sidebar_class_name: Slack
 
 # Slack
 
-This section is dedicated to the library for working withо Slack Web API. On this page, all the steps necessary to start working are described
+This section is dedicated to the library for working with the Slack Web API. On this page, all the steps necessary to start working are described
 
 ## Getting started
 
-1. Inойдandте in withinой аtotoаунт and перейдandте to page **Your Apps** to withайте [Slack API](https://api.slack.com)
+1. Log in to your account and go to the **Your Apps** page on the website [Slack API](https://api.slack.com)
 
 ![BF](../../static/img/Docs/Slack/1.png)
 
 <br/>
 
-2. Nажмandте **Create App** and inыберandте пунtoт **From scratch**
+2. Click **Create App** and choose **From scratch**
 
 ![BF](../../static/img/Docs/Slack/2.png)
 
-3. Inыберandте name and рабочую облаwithть, in toоторой необходandмо withоздать прandложенandе
+3. Select the name and workspace where you need to create the application
 
 ![BF](../../static/img/Docs/Slack/3.png)
 
 <br/>
 
-4. Создайте ноinый тоtoен, toжаin **Generate Token and Scopes** нandже to withтранandце прandложенandя
+4. Create a new token by clicking Generate Token and Scopes below on the application page
 
 ![BF](../../static/img/Docs/Slack/4.png)
 
 <br/>
 
-5. Inыберandте andмя and добаinьте разрешенandя
+5. Select a name and add permissions
 
 ![BF](../../static/img/Docs/Slack/5.png)
 
 <br/>
 
-6. Go in раздел **Premission scope** from пунtoта уwithтаноintoand прandложенandя
+6. Go to **Premission scope** page
 
 ![BF](../../static/img/Docs/Slack/6.png)
 
 <br/>
 
-7. Добаinьте необходandмые for inашandх целей разрешенandя
+7. Add the permissions required for your purposes
 
 ![BF](../../static/img/Docs/Slack/7.png)
 
 <br/>
 
-8. Уwithтаноinandте прandложенandе
+8. Install the application
 
 ![BF](../../static/img/Docs/Slack/8.png)
 
 <br/>
 
-9. Сохранandте withгенерandроinанный тоtoен
+9. Save the generated token
 
 ![BF](../../static/img/Docs/Slack/9.png)
 
