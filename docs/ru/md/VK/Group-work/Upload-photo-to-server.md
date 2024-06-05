@@ -25,7 +25,7 @@ sidebar_position: 11
 
 ```sh title="Пример команды CLI"
     
-  oint vk ЗагрузитьФотоНаСервер --file %file% --auth %auth% --type %type%
+      oint vk ЗагрузитьФотоНаСервер --file %file% --auth %auth% --type %type%
 
 
 ```

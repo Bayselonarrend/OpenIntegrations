@@ -21,7 +21,7 @@ Executes a request getUpdates, returning information about bot events. Used in p
 	
  Token = "6129457865:AAFyzNYOAFbu...";
  Result = OPI_Telegram.GetUpdates(Token);
-
+ 
 	
 ```
 

@@ -22,7 +22,7 @@ sidebar_position: 9
  ImageID = "457244340";
  
  Result = OPI_VK.DeleteImage(ImageID, Parameters);
-
+ 
 	
 ```
 

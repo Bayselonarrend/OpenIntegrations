@@ -19,7 +19,7 @@ sidebar_position: 4
 	
  Token = "6129457865:AAFyzNYOAFbu...";
  Result = OPI_Telegram.DeleteWebhook(Token);
-
+ 
 	
 ```
 

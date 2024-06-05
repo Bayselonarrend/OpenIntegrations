@@ -21,19 +21,19 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-  
-  КТ    = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb...";
-  Ответ = OPI_VK.НаписатьСообщение("Я бот, а ты нет >:)", 657811122, КТ, , Параметры);
-  
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      КТ    = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb...";
+      Ответ = OPI_VK.НаписатьСообщение("Я бот, а ты нет >:)", 657811122, КТ, , Параметры);
+      
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint vk НаписатьСообщение --text %text% --user %user% --ct %ct% --keyboard %keyboard% --auth %auth%
+      oint vk НаписатьСообщение --text %text% --user %user% --ct %ct% --keyboard %keyboard% --auth %auth%
 
 
 ```

@@ -20,21 +20,21 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-    Путь      = "/New/pic.png";  
-    Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
+        Путь      = "/New/pic.png";  
+        Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+        Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
+        
+        КартинкаПуть = ПолучитьИмяВременногоФайла("png");
+        КопироватьФайл(Картинка, КартинкаПуть);
+        
+        Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);
     
-    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
-    КопироватьФайл(Картинка, КартинкаПуть);
-    
-    Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox ЗагрузитьФайл --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --file %file% --path %path% --overwrite %overwrite%
+      oint dropbox ЗагрузитьФайл --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --file %file% --path %path% --overwrite %overwrite%
 
 
 ```

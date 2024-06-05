@@ -18,19 +18,19 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
 	
-  
-  Канал = "C070VPMKN8J";
-  
-  Ответ = OPI_Slack.ВступитьВКанал(Токен, Канал); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);     //JSON строка
-  
-
+      
+      Канал = "C070VPMKN8J";
+      
+      Ответ = OPI_Slack.ВступитьВКанал(Токен, Канал); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);     //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint slack ВступитьВКанал --token %token% --channel "C070VPMKN8J"
+      oint slack ВступитьВКанал --token %token% --channel "C070VPMKN8J"
 
 
 ```

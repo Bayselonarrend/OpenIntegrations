@@ -26,9 +26,9 @@ sidebar_position: 3
  Topic = "2673";
  NewName = "NewTestTitle";
  NewIcon = "5310132165583840589";
-
+ 
  Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
-
+ 
 	
 ```
 

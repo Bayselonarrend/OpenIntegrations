@@ -19,18 +19,18 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    Чат         = "-1001971186208";
-    Тема        = "2673";
+        Токен       = "6129457865:AAFyzNYOAFbu...";
+        Чат         = "-1001971186208";
+        Тема        = "2673";
+        
+        Результат = OPI_Telegram.УдалитьТемуФорума(Токен, Чат, Тема);
     
-    Результат = OPI_Telegram.УдалитьТемуФорума(Токен, Чат, Тема);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram УдалитьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
+      oint telegram УдалитьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
 
 ```

@@ -21,7 +21,7 @@ sidebar_position: 5
  
  Response = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
  
-
+ 
 	
 ```
 

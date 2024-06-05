@@ -19,20 +19,20 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  Идентификатор = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
-  Комментарий   = "Новый комментарий";
-  
-  Ответ = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                     //Строка
-  
-
+      
+      Идентификатор = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
+      Комментарий   = "Новый комментарий";
+      
+      Ответ = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);  //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                     //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gdrive СоздатьКомментарий --token %token% --object "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW" --text %text%
+      oint gdrive СоздатьКомментарий --token %token% --object "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW" --text %text%
 
 
 ```

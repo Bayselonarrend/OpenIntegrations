@@ -22,23 +22,23 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  База         = "apptm8Xqo7TwMaipQ";
-  Таблица      = "tbl9G4jVoTJpxYwSY";
-  Поле         = "fld3IbFtHZtBHQwsk";
-  Наименование = Строка(Новый УникальныйИдентификатор) + "(изм.)";
-  Описание     = "Новое описание";
-  
-  Ответ = OPI_Airtable.ИзменитьПоле(Токен, База, Таблица, Поле, Наименование, Описание); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                            //JSON строка
-  
-
+      
+      База         = "apptm8Xqo7TwMaipQ";
+      Таблица      = "tbl9G4jVoTJpxYwSY";
+      Поле         = "fld3IbFtHZtBHQwsk";
+      Наименование = Строка(Новый УникальныйИдентификатор) + "(изм.)";
+      Описание     = "Новое описание";
+      
+      Ответ = OPI_Airtable.ИзменитьПоле(Токен, База, Таблица, Поле, Наименование, Описание); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                            //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint airtable ИзменитьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --field "fld3IbFtHZtBHQwsk" --title %title% --description "Новое описание"
+      oint airtable ИзменитьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --field "fld3IbFtHZtBHQwsk" --title %title% --description "Новое описание"
 
 
 ```

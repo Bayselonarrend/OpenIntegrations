@@ -18,16 +18,16 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
-  
-
+      
+      Ответ = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint vk СократитьСсылку --url %url% --auth %auth%
+      oint vk СократитьСсылку --url %url% --auth %auth%
 
 
 ```
