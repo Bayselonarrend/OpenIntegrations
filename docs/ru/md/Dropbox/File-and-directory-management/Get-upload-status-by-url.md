@@ -21,6 +21,7 @@ sidebar_position: 6
     Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
     ИДРаботы = "G8YbueOu2nsAAAAAAAAAAQ";
     Статус   = "in_progress";
+    
     Пока Статус = "in_progress" Цикл 
         
         Результат = OPI_Dropbox.ПолучитьСтатусЗагрузкиПоURL(Токен, ИДРаботы);

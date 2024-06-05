@@ -30,10 +30,7 @@ sidebar_position: 8
  
  Image = New BinaryData(AndVF);
  
- Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
-
- 
- 
+ Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters); 
  Result = OPI_VK.SaveImageToAlbum(AlbumID, AndVF, ImageDescription, Parameters);
 
 	

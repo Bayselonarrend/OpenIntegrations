@@ -34,10 +34,8 @@ sidebar_position: 1
  ImageArray = New Array;
  ImageArray.Add(Image);
  ImageArray.Add(AndVF);
+ 
  Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
- 
-
- 
  Result = OPI_VK.CreatePost(Text, Image, False,, Parameters);
 
 	
