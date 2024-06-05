@@ -1,4 +1,4 @@
-ПутьКСловарю  = ".\service\dictionaries\en.json";
+ПутьКСловарю  = "./service/dictionaries/en.json";
 
 ЧтениеJSON = Новый ЧтениеJSON();
 ЧтениеJSON.ОткрытьФайл(ПутьКСловарю);
