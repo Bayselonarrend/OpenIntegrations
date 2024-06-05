@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```sh title="CLI command example"
  
- oint vk DeletePost --post %post% --auth "GetVKParameters()"
+ oint vk DeletePost --post %post% --auth %auth%
 
 ```
 

@@ -37,7 +37,7 @@ sidebar_position: 3
 
 ```sh title="CLI command example"
  
- oint telegram CreateInvitationLink --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --title "Link + String(CurrentDate)" --expire %expire% --limit %limit%
+ oint telegram CreateInvitationLink --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --title %title% --expire %expire% --limit %limit%
 
 ```
 

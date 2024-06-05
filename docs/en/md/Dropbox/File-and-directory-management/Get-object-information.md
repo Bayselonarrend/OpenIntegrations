@@ -29,7 +29,7 @@ sidebar_position: 1
 
 ```sh title="CLI command example"
  
- oint dropbox GetObjectInformation --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path "/New/pic.png" --detail %detail%
+ oint dropbox GetObjectInformation --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --detail %detail%
 
 ```
 

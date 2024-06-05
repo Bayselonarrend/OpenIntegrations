@@ -28,7 +28,7 @@ sidebar_position: 9
 
 ```sh title="CLI command example"
  
- oint vk DeleteImage --pictureid %pictureid% --auth "GetVKParameters()"
+ oint vk DeleteImage --pictureid %pictureid% --auth %auth%
 
 ```
 

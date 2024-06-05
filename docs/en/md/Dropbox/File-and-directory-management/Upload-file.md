@@ -34,7 +34,7 @@ sidebar_position: 4
 
 ```sh title="CLI command example"
  
- oint dropbox UploadFile --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --file %file% --path "/New/pic.png" --overwrite %overwrite%
+ oint dropbox UploadFile --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --file %file% --path %path% --overwrite %overwrite%
 
 ```
 

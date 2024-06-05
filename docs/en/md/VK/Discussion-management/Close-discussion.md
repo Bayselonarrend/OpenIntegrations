@@ -28,7 +28,7 @@ sidebar_position: 2
 
 ```sh title="CLI command example"
  
- oint vk CloseDiscussion --topic %topic% --remove %remove% --auth "GetVKParameters()"
+ oint vk CloseDiscussion --topic %topic% --remove %remove% --auth %auth%
 
 ```
 

@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-  oint vk УдалитьПост --post %post% --auth "ПолучитьПараметрыВК()"
+  oint vk УдалитьПост --post %post% --auth %auth%
 
 ```
 

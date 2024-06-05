@@ -30,7 +30,7 @@ sidebar_position: 4
 
 ```sh title="CLI command example"
  
- oint vk WriteInDiscussion --topic %topic% --text %text% --auth "GetVKParameters()"
+ oint vk WriteInDiscussion --topic %topic% --text %text% --auth %auth%
 
 ```
 

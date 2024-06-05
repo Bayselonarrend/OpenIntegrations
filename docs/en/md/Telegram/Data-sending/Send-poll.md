@@ -46,7 +46,7 @@ sidebar_position: 10
 
 ```sh title="CLI command example"
  
- oint telegram SendPoll --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --question "What's your favorite color?" --options %options% --anonymous %anonymous%
+ oint telegram SendPoll --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --question %question% --options %options% --anonymous %anonymous%
 
 ```
 

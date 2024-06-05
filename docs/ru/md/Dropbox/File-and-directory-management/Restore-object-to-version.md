@@ -30,7 +30,7 @@ sidebar_position: 14
 
 ```sh title="Пример команды CLI"
     
-  oint dropbox ВосстановитьОбъектКВерсии --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path "/New/pic.png" --rev "61a0b76320a6fbd841553"
+  oint dropbox ВосстановитьОбъектКВерсии --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --rev "61a0b76320a6fbd841553"
 
 ```
 
