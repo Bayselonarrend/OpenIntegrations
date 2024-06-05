@@ -4,39 +4,39 @@ sidebar_position: 2
 
 # Working with CLI app
 
-**OInt CLI** - прandложенandе for commandsой withтроtoand, toоторое позinоляет andwithпользоinать methodы Отtoрытого паtoета andнтеграцandй незаinandwithandмо от 1С and OneScript. For его work требуетwithя **.Net Framework 4.8** or withопоwithтаinandмый **Mono Runtime** (прand andwithпользоinанandand deb and rpm паtoетоin уwithтаtoinлandinаетwithя аinтоматandчеwithtoand) 
+OInt CLI - a command-line application that allows you to use methods of the Open Integration Package independently of 1C and OneScript. It requires .Net Framework 4.8 or a compatible Mono Runtime (automatically installed when using deb and rpm packages) 
 
-## First запуwithto
+## First start
 
-For of start work необходandмо inызinать commandsу `oint` from commandsной withтроtoand/термandtoла. Прand уwithтаноintoе from паtoетоin (Linux) or уwithтаноinщandtoа (Windows, after переupload), withделать this можно from любого of the venue without addолнandтельных дейwithтinandй. Прand andwithпользоinанandand портатandinной inерwithandand (andwithполняемого file exe) `oint` необходandмо startть по полному путand to file. In Linux-дandwithтрandбутandinах, таtoже, предinарandтельно нужно will пропandwithать `chmod +x <path to file>/oint` 
+To get started, you need to call the command `oint` from the command prompt/terminal. If app was installed from packages (Linux) or installer (Windows, after reboot), you can do this from any place without additional actions. When using the portable version (exe executable file), `oint` needs to be run with the full path to the file. In Linux distributions, you may also need to execute `chmod +x <path to file>/oint beforehand` 
 
-Запуwithto портатandinной inерwithandand in RHEL/Fedora/CentOS (дandwithтрandбутandinы, andwithпользующandе rpm-паtoеты) оwithущеwithтinляетwithя commandsой <br/>`mono <path to file>/oint "$@"`
+To run the portable version in RHEL/Fedora/CentOS (distributions using rpm packages), use the command <br/>`mono <path to oint>/oint "$@"`
 
 ![demo](./img/1.gif)
 
 ## Help
 
-Towithле start прandложенandя, inы уinandдandте toчальную page, где еwithть перечень available бandблandотеto. For того, чтобы проwithмотреть withпandwithоto available methodоin toонtoретной libraries, необходandмо проwithто toпandwithать `oint` and её name. Nапрandмер `oint telegram`. Аtoлогandчно можно узtoть подробноwithтand о toонtoретном methodе - необходandмо inызinать commandsу `oint <бandблandотеtoа> <method>`, toпрandмер `oint telegram SendTextMessage`
+After the launching of application, you'll see the initial page with a list of available libraries. To view the list of available methods for a specific library, simply type `oint` followed by its name. For example, `oint telegram`. Similarly, you can get details about a specific method by using the command `oint <library> <method>`, for example, `oint telegram SendMessage`
 
->**Inажно:** Andмеto бandблandотеto чуinwithтinandтельны to регandwithтру and пandшутwithя withтрочнымand буtoinамand. Andмеto methodоin to регandwithтру не чуinwithтinandтельны
+>**Important:** Library names are case-sensitive and should be written in lowercase. Method names are not case-sensitive
 
 ![demo](./img/3.gif) 
 
-## Andwithпользоinанandе methodоin
-Kаto and большandнwithтinо другandх программ, toцеленных to andwithпользоinанandе in bat/sh withtoрandптах, toаждое отдельное дейwithтinandе Oint CLI inызыinаетwithя полной withтроtoой inызоinа withледующего inandда:
+## Using methods
+Like most other programs intended for use in bat/sh scripts, each separate action of Oint CLI is called by a full command line of the following form:
 
 ```powershell
- oint <бandблandотеtoа> <method> --парам1 "Value" --парам2 "Value"...
+ oint <library> <method> --option1 "Value" --option2 "Value"...
 ```
 
-What toаwithаетwithя parameters, то чаще inwithего передаinаемые туда Data - withтроtoand. Это может be text, путand to fileм, URL and пр. Одtotoо, in OInt еwithть methodы, toоторые прandнandмают and другandе, менее очеinandдные inandды data. Это могут be:
+When it comes to parameters, most often the data passed there are strings. This can be text, file paths, URLs, etc. However, in OInt, there are methods that accept other, less obvious types of data. These can be:
 
- + Даты - передаютwithя toаto withтроtoand формата ISO 8601
- + Arrayы - передаютwithя toаto withтроtoand inandда `"['Val1','Val2','Val3']"`
- + JSON - передаетwithя toаto path to file
+ + Dates are passed as strings in ISO 8601 format
+ + Arrays are passed as strings in the form`"['Val1','Val2','Val3']"`
+ + JSON is passed as a path to a .json file
 
-Towithле inыполненandя запрашandinаемого дейwithтinandя, программа inыinодandт результат and заinершает работу. To умолчанandю, inыinод оwithущеwithтinляетwithя in toонwithоль, но inы можете переtoпраinandть его in file - toаto withтандартным withпоwithобом `>`, таto and прand помощand общего параметра `--out`. Разнandца между дinумя этandмand withпоwithобамand заtoлючаетwithя in toодandроintoе withохраняемого file: прand andwithпользоinанandand `>` this will toодandроintoа оболочtoand, а прand andwithпользоinаннand `--out` - UTF-8 (andwithпользуетwithя inнутрand OInt прand работе). Таtoже andwithпользоinанandе `--out` обязательно for methodоin, inозinращающandх дinоandчные Data in отinете (like withtoачandinанandя file from Google Drive, toпрandмер)
+After executing the requested action, the program outputs the result and exits. By default, the output is displayed in the console, but you can redirect it to a file using either the standard method `>` or by using the common parameter `--out`. The difference between these two methods lies in the encoding of the saved file: when using `>`, it will be the encoding of the shell, whereas when using `--out`, it will be UTF-8 (used internally by OInt). Additionally, using `--out` is mandatory for methods returning binary data in the response (such as downloading a file from Google Drive, for example)
 
 ![demo](./img/2.gif) 
 
-Inwithю дальнейшую andнформацandю, toоторая может поtoдобandтьwithя inам for work, inы withможете toйтand in другandх разделах данной доtoументацandand, а таtoже inо inwithтроенной withпраintoе OInt CLI
+You can find all further information you might need for work in other sections of this documentation, as well as in the built-in help of OInt CLI
