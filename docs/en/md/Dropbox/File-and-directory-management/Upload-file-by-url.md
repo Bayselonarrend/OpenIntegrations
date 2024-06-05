@@ -30,7 +30,7 @@ sidebar_position: 5
 
 ```sh title="CLI command example"
  
- oint dropbox UploadFileByURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --url %url% --path "/New/url_doc.docx"
+ oint dropbox UploadFileByURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --url %url% --path %path%
 
 ```
 

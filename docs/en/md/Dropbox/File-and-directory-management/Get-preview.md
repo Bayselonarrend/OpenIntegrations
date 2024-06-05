@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```sh title="CLI command example"
  
- oint dropbox GetPreview --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path "/New/mydoc.docx"
+ oint dropbox GetPreview --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path%
 
 ```
 
