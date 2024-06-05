@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# DeleteSelection
+# Delete selection
  Deletes the selection by ID
 
 
