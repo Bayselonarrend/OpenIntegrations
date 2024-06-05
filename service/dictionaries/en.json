@@ -3538,6 +3538,20 @@
 "Материалы встреч": "Meeting materials",
 "Море":"Sea",
 "Москва": "Moscow",
-"Перемещенная": "Moved"
-
+"Перемещенная": "Moved",
+"**Открытый пакет интеграций**":"**Open Integrations Package**",
+"набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript. Он состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех.": " is a set of tools for integration with some popular APIs via CLI, 1C, or OneScript. It consists of common modules, each responsible for its own API, as well as several utility modules that are common to all.",
+"Реализованные методы выполняют конечные задачи (вроде *ОтправитьСообщение()* или *СоздатьПост()*), что позволяет использовать их без углубления в реализацию. Однако, код, при этом, достаточно сильно декомпозирован - методы авторизации, получения данных и пр. по возможности вынесены в отдельные функции. Это позволяет легко добавлять новые методы, даже если они еще не реализованы в самой библиотеке на текущий момент.":"The implemented methods perform specific tasks (such as *SendMessage()* or *CreatePost()*), allowing them to be used without delving into the implementation details. However, the code is highly decomposed – authorization methods, data retrieval, etc., are separated into individual functions where possible. This makes it easy to add new methods, even if they are not yet implemented in the library at the current time.",
+"Релизы библиотеки выходят в пяти вариантах:":"The library releases come in five variants:",
+"Как CLI приложение для Windows и Linux (exe, rpm, deb)":"As a CLI application for Windows and Linux (exe, rpm, deb)",
+"Как XML файлы расширения для загрузки через конфигуратор":"As XML extension files for loading via the configurator",
+"Как EDT проект расширения":"As an EDT extension project",
+"Как отдельный файл расширения формата cfe":"As a standalone extension file in cfe format",
+"Как OneScript пакет расширения ospx":"As a OneScript extension package in ospx format",
+"Вне зависимости от выбранного сопособа установки, получать файлы необходимо из": "Regardless of the chosen installation method, the files must be obtained from the",
+", так как в самих файлах репозитория бывают промежуточные данные и функции, находящиеся в процессе разработки.":"section, as the repository files may contain intermediate data and functions that are still in development.",
+"Подробнее о каждом варианте релиза в разделе [Про варианты релизов]": "For more details about each release variant, see the section [About Release Variants]",
+"Общие модули проекта бывают двух видов:":"The project's common modules come in two types:",
+"Модули непосредственной работы с API":"Modules for direct interaction with APIs",
+"Не рекомендуется использовать методы служебных модулей в других местах вашей конфигурации (если вы собираетесь обновляться до новых версий в дальнейшем). Для сохранения обратной совместимости, количество/назначение параметров и типы возвращаемых значений для методов работы с API не изменяются, но это не применимо к служебным модулям, которые могут изменяться как угодно для оптимизации и дополнения под новые нужды. Если вам необходим функционал из служебных модулей, рекомендуется скопировать его себе отдельно":"It is not recommended to use the methods of utility modules in other parts of your configuration (if you plan to update to new versions in the future). To maintain backward compatibility, the number/purpose of parameters and the return types for API interaction methods do not change, but this does not apply to utility modules, which can be modified in any way for optimization and adaptation to new requirements. If you need functionality from the utility modules, it is recommended to copy it separately"
 }
