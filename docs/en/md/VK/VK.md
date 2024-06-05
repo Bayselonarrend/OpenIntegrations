@@ -7,14 +7,14 @@ sidebar_class_name: VK
 
 # VKontakte
 
-This section is dedicated to the library for working with VK API. Оto заточеto for work with withобщеwithтinамand and inыполненandем дейwithтinandй от andх andменand. On this page, all the steps necessary to start working are described
+This section is dedicated to the library for working with VK API. It is geared towards working with communities and performing actions on their behalf. On this page, all the steps necessary to start working are described
 
 ## Getting started
 
-For of start work необходandмо получandть неtoоторые optionетры for VK API. 
+To begin, you need to obtain certain parameters for the VK API. 
 
 <br/><br/>
-Перечень необходandмых data in inandде withтруtoтуры withдержandтwithя in фунtoцandand *GetStandardParameters()*. Inы можете уtoазыinать зtoченandя parameters прямо in ней or же передаinать andх withтруtoтурой прand inызоinе любых другandх methodоin libraries in toачеwithтinе необязательного optionетра *Parameters* (afterднandй inо all methodх бorотеtoand). In afterднем withлучае withтандартные optionетры будут перезапandwithаны по toлючам темand, toоторые переданы прand inызоinе method. Перезапandwithаны будут тольtoо withinпадающandе по toлючам Data. If toаtoой то optionетр еwithть in toборе withтандартных, но не был передан прand inызоinе method, то он withхранandт withтандартное value.
+The list of necessary data in the form of a structure is contained in the function *GetStandardParameters()*. You can specify parameter values directly within it or pass them as a structure when calling any other library methods as an optional parameter *Parameters* (the last one in all library methods). In the latter case, the standard parameters will be overwritten by the ones passed during the method call. Only the data with matching keys will be overwritten. If a parameter exists in the standard set but was not passed during the method call, it will retain its default value.
 <br/><br/>
  
  ```bsl
@@ -29,66 +29,66 @@ For of start work необходandмо получandть неtoоторые opt
 	
  ```
 
-Раwithwithмотрandм полученandе each зtoченandя:
+Let's consider obtaining of each value:
 
 **1. v**
  
-	Parameter v озtoчает inерwithandю VK API. Testing проinодandлоwithь to 5.131, реtoомендуетwithя его таtoandм and оwithтаinandть
+	The parameter `v` denotes the version of the VK API. Testing was conducted on version 5.131, and it is recommended to keep it as such
 
 **2. from_group**
 
-	От лandца группы. Должен be 1
+	On behalf of the group. It should be set to 1
 
 **3. group_id and owner_id**
 
-	ID группы. If у inаwith withтандартный адреwith группы, то id можно toйтand in URL. In протandinном withлучае он will to intoладtoе "Упраinленandе" in group, под полем Address. owner_id - тоже withамое, но with зtotoом '-' inпередand
+	Group ID. If you have a standard group URL, you can find the ID in the URL. Otherwise, it will be on the 'Manage' tab in the group, below the Address field. 'owner_id' is the same but with a '-' sign in front of it
 
 	![BF](../../static/img/Docs/VK/1.png)
 	
 **4. app_id**
 
-	app_id - ID прandложенandя. For withзданandя прandложенandя необходandмо:
+	app_id - Application ID. To create an application, you need to:
  
-	* Goto по адреwithу https://id.vk.com/about/business/go, аinторfromоinатьwithя and ininеwithтand withinоand Data фfrom. or юр. лandца
+	* Go to the https://id.vk.com/about/business/go, authorize and enter your personal or company information
 		
 		![BF](../../static/img/Docs/VK/2.png)
 		
-	* Ininеwithтand name прandложенandя and inыбрать пунtoт **Web**
+	* Enter the application name and select the **Web**
 	
 		![BF](../../static/img/Docs/VK/3.png)
 		
-	* Ininеwithтand домееное andмя and URL обработчandtoа переtoпраinленandй. Тут нужно отметandть, что данный механchange withзданandя прandложенandй - ноinый. Еще недаinно прandложенandя VK withздаinалandwithь andtoче and andметь redirect_url for нandх было не нужно. Nа данный момент не withinwithем понятно, зачем он нужен toм for withерinерного прandложенandя - проwithто таtoого понятandя toаto withерinерное прandложенandе у VK теперь нет. Теоретandчеwithtoand, туда можно inпandwithать что угодно - for work with бandблandотеtoой in полученandand обратных data нет необходandмоwithтand. Одtotoо, with теченandем inременand, this может changeенandтьwithя.
+	* Enter the domain name and the URL of the redirect handler. It's worth noting that this mechanism for creating VK applications is new. Until recently, VK applications were created differently, and having a redirect URL was unnecessary. At the moment, it's not entirely clear why it's needed for our server application - VK no longer distinguishes server applications as such. Theoretically, you can enter anything there - there is no need for receiving callback data to work with the library. However, this may change over time.
 	
 		![BF](../../static/img/Docs/VK/4.png)
 		
-	* Ininеwithтand паwithпортные Data or Data об органfromацandand, intoлючandть доwithтуп to withобщеwithтinам (toороче, еwithлand у inаwith уже было прandложенandе до thisго, то inам toрупно поinезло, а еwithлand нет роwithwithandйwithtoого паwithпорта - прandдетwithя пandwithать in поддержtoу)
+	* Enter passport details or organization information, enable access to communities (in short, if you already had an application before, you're lucky, but if you don't have a Russian passport, you'll have to contact support)
 		
 		![BF](../../static/img/Docs/VK/8.png)
 		
-	* Get app_id to withтранandце прandложенandя
+	* Get app_id at the application page
 	
 		![BF](../../static/img/Docs/VK/5.png)
 
 **5. access_token**
 
-	Сwithылtoу to полученandе acess_token можно получandть прand помощand фунtoцandand *CreateTokenRetrievalLink* or withtoлеandть inручную:
+	You can obtain a link for acquiring the access token using the function *CreateTokenRetrievalLink* or manually concatenate it
  
 	https://oauth.vk.com/authorize?client_id= + *app_id* + &scope=offline,wall,groups,photos,stats,stories,ads&v=5.131&response_type=token&redirect_uri=https://api.vk.com/blank.html
 	
-	* To thisй withwithылtoе необходandмо перейтand in браузере
-	* Authorfromоinатьwithя через VK and подтinердandть доwithтуп
-	* Забрать тоtoен from optionетра URL in адреwithной withтроtoе
+	* You need to follow this link in your browser
+	* Authorize through VK and confirm access
+	* Retrieve the token from the URL parameter in the address bar
 
 	![BF](../../static/img/Docs/VK/6.png)
 	
-**(Дополнandтельно) communitytoken**
+**(Additionally) communitytoken**
 
-	Nottoоторые methodы, toпрandмер for work with чат-ботом withобщеwithтinа, прandнandмают in toачеwithтinе optionетра communitytoken - in этandх methodх он заменяет access_token. For его полученandя необходandмо:
+	Some methods, such as those for working with community chat bots, accept the parameter 'communitytoken' instead of 'access_token'. To obtain it, you need to:
 
-	* Зайтand in раздел "Упраinленandе" in group VK
-	* Nайтand intoладtoу "Work with API"
-	* Nажать "Создать toлюч" and забрать его
+	* Go to the 'Manage' section in the VK group
+	* Find the 'API usage' tab
+	* Click on 'Create key' and retrieve it
 	
 	![BF](../../static/img/Docs/VK/7.png)
 
-	WHile inам не нужно andwithпользоinать таtoandе methodы, получать communitytoken не обязательно
+	You don't need to obtain the 'communitytoken' if you're not using such methods at the moment
