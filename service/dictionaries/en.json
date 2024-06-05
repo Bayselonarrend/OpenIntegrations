@@ -3585,5 +3585,7 @@
 "Данные варианты релизов предназначены для использования в OneScript-проектах":"These release options are intended for use in OneScript projects",
 "это OSPX пакет, предназначенный для установки через пакетный менеджер OPM. Вы можете использовать его для оффлайн установки при помощи команды":"this is an OSPX package intended for installation via the OPM package manager. You can use it for offline installation using the command",
 "Если отсутствие интернета на машине не предполагается, гораздо проще установить OInt напрямую из хаба пакетов. Скачивания файла для этого не требуется, достаточно выполнить команду":"But it is much easier to install OInt directly from the package hub. You don't need to download any files for this, just execute the command",
-"Открытый Пакет Интеграций": "Open Integrations Package"
+"Открытый Пакет Интеграций": "Open Integrations Package",
+"https://en.openintegrations.dev": "https://openintegrations.dev",
+"Ресурсы": "Other"
 }
