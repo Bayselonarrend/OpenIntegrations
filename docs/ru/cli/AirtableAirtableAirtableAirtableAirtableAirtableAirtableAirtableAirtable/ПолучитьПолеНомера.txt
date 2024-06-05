@@ -1,1 +1,0 @@
-﻿oint airtable ПолучитьПолеНомера --title "Номер" --precision "0"
