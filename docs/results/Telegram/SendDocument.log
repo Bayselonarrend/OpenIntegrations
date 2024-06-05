@@ -1,0 +1,28 @@
+﻿ {
+ "ok": true,
+ "result": {
+  "message_id": 4937,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1717594309,
+  "document": {
+   "file_name": "document.docx",
+   "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+   "file_id": "BQACAgIAAxkDAAITSWZgaMW56Eg918hH4GLtrsbzSPBjAAKNTAACBlMBS4aPiWERFmimNQQ",
+   "file_unique_id": "AgADjUwAAgZTAUs",
+   "file_size": 24069
+  },
+  "caption": "Строковое значение"
+ }
+}
