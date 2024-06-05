@@ -34,6 +34,7 @@ sidebar_position: 5
     
   oint yadisk ПолучитьСсылкуСкачиванияПубличногоОбъекта --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --path %path%
 
+
 ```
 
 

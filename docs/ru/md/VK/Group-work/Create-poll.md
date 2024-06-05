@@ -37,6 +37,7 @@ sidebar_position: 4
     
   oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" --options %options% --picture %picture% --auth "ПолучитьПараметрыВК()"
 
+
 ```
 
 

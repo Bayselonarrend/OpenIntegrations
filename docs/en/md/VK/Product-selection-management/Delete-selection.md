@@ -30,6 +30,7 @@ sidebar_position: 7
  
  oint vk DeleteSelection --sel %sel% --auth %auth%
 
+
 ```
 
 

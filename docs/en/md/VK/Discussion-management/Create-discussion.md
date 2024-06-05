@@ -32,6 +32,7 @@ sidebar_position: 1
  
  oint vk CreateDiscussion --title %title% --text %text% --auth "GetVKParameters()"
 
+
 ```
 
 

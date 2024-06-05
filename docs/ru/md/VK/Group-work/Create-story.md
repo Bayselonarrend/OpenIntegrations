@@ -29,7 +29,6 @@ sidebar_position: 7
        
     Результат = OPI_VK.СоздатьИсторию(Картинка , URL, Параметры);
 
-    OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьИсторию", "VK");
     
         
     Результат = OPI_VK.СоздатьИсторию(ИВФ, , Параметры);
@@ -40,6 +39,7 @@ sidebar_position: 7
 ```sh title="Пример команды CLI"
     
   oint vk СоздатьИсторию --picture "https://openintegrations.dev/test_data/picture.jpg" --url %url% --auth %auth%
+
 
 ```
 

@@ -36,6 +36,7 @@ Sends a message that arrives in the channel but is visible only to a specific us
  
  oint slack SendEphemeralMessage --token %token% --channel "C070VPMKN8J" --text %text% --user %user% --blocks %blocks%
 
+
 ```
 
 

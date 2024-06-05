@@ -31,6 +31,7 @@ sidebar_position: 1
     
   oint vk ПолучитьСтатистику --datefrom %datefrom% --dateto %dateto% --auth %auth%
 
+
 ```
 
 

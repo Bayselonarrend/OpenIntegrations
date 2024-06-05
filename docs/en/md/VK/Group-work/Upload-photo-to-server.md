@@ -27,6 +27,7 @@ sidebar_position: 11
  
  oint vk UploadPhotoToServer --file %file% --auth %auth% --type %type%
 
+
 ```
 
 

@@ -36,6 +36,7 @@ sidebar_position: 5
  
  oint yadisk CreateObjectCopy --token "y0_AgAAAABdylaOAA..." --from "/Alpaca.png" --to "/Alpaca (copy).png" --rewrite %rewrite%
 
+
 ```
 
 

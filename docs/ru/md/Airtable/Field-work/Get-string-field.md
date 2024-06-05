@@ -31,6 +31,7 @@ sidebar_position: 3
     
   oint airtable ПолучитьПолеСтроковое --title "Строковое"
 
+
 ```
 
 

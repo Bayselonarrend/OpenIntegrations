@@ -29,6 +29,7 @@ sidebar_position: 1
  
  oint vk GetSelectionList --auth %auth%
 
+
 ```
 
 

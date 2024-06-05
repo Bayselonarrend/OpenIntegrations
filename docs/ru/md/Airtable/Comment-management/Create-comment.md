@@ -38,6 +38,7 @@ sidebar_position: 2
     
   oint airtable СоздатьКомментарий --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --text "Тестовый комментарий"
 
+
 ```
 
 

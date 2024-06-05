@@ -21,8 +21,7 @@ sidebar_position: 9
 	
  Title = "New main thread name " + String(New UUID);
  Token = "6129457865:AAFyzNYOAFbu...";
- Chat = "-1001971186208"; 
- 
+ Chat = "-1001971186208";
  Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
 
 	
@@ -31,6 +30,7 @@ sidebar_position: 9
 ```sh title="CLI command example"
  
  oint telegram EditMainForumTopicName --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title%
+
 
 ```
 

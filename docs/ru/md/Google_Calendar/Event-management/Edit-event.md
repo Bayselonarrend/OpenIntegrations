@@ -35,6 +35,7 @@ sidebar_position: 6
     
   oint gcalendar ИзменитьСобытие --token %token% --calendar %calendar% --props %props% --event %event%
 
+
 ```
 
 

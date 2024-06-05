@@ -38,6 +38,7 @@ sidebar_position: 3
  
  oint vk CreateProductCollection --title %title% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
 
+
 ```
 
 

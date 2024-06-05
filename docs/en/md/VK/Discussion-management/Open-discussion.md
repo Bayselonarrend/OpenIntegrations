@@ -29,6 +29,7 @@ sidebar_position: 3
  
  oint vk OpenDiscussion --topic %topic% --auth %auth%
 
+
 ```
 
 

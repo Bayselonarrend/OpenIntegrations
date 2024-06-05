@@ -39,6 +39,7 @@ sidebar_position: 4
     
   oint airtable УдалитьЗаписи --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --records %records%
 
+
 ```
 
 

@@ -1,0 +1,1 @@
+﻿oint slack ПолучитьДанныеФайла --token %token% --fileid "F070VL6FQFM"
