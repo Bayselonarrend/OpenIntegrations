@@ -317,7 +317,7 @@ EndFunction
 
 #EndRegion 
 
-#Region BlockWork
+#Region BlocksManagment
 
 // Create block
 // Creates a new block based on an existing block
