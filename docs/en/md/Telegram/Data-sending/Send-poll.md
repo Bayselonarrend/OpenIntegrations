@@ -32,9 +32,7 @@ sidebar_position: 10
  AnswersArray.Add("Green");
  AnswersArray.Add("Blue");
  
- Result = OPI_Telegram.SendPoll(Token, ChatID, Question, AnswersArray, False);
- 
- 
+ Result = OPI_Telegram.SendPoll(Token, ChatID, Question, AnswersArray, False); 
  Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
 
 	

@@ -34,10 +34,7 @@ sidebar_position: 2
  ImageDD = New BinaryData(ImagePath);
  
  Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
-
- Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
-
- 
+ Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath); 
  Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
 
 	

@@ -34,10 +34,7 @@ sidebar_position: 4
  AudioDD = New BinaryData(AudioPath);
  
  Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
-
  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
-
- 
  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
 
 	

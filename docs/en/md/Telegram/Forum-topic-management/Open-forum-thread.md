@@ -24,8 +24,6 @@ sidebar_position: 5
  Topic = "2673";
 
  Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
-
- 
  Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);
 
 	
