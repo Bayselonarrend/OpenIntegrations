@@ -31,7 +31,7 @@ sidebar_class_name: Notion
 
 ![BF](../../static/img/Docs/Notion/5.png)
 
-6. Получите ID это страинцы. Это можно сделать нажав Share -> Copy link или просто скопировав из URL
+6. Получите ID этой страинцы. Это можно сделать нажав Share -> Copy link или просто скопировав из URL
 
 ![BF](../../static/img/Docs/Notion/6.png)	
 
