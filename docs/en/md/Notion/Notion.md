@@ -9,7 +9,7 @@ sidebar_class_name: Notion
 
 Этот раздел поwithinящен библиотеtoе for work with Notion API. Nа данной withтранице опиwithаны inwithе дейwithтinия, необходимые for полноценного of start work
 
-## Nачало work
+## Getting started
 
 1. Перейдите **[in раздел интеграций портала for разработчиtoоin](https://www.notion.so/my-integrations)**
 
