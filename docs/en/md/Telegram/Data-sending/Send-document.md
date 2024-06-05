@@ -34,10 +34,7 @@ sidebar_position: 5
  DocumentDD = New BinaryData(DocumentPath);
  
  Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
-
  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
-
- 
  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD);
 
 	

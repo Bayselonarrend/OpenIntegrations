@@ -27,8 +27,6 @@ sidebar_position: 1
  Text = "String value";
  
  Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
-
- 
  Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
 
 	
