@@ -37,7 +37,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-  oint telegram СоздатьСсылкуПриглашение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --title "Ссылка  + Строка(ТекущаяДата)" --expire %expire% --limit %limit%
+  oint telegram СоздатьСсылкуПриглашение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --title %title% --expire %expire% --limit %limit%
 
 ```
 

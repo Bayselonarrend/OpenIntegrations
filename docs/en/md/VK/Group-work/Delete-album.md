@@ -28,7 +28,7 @@ sidebar_position: 6
 
 ```sh title="CLI command example"
  
- oint vk DeleteAlbum --album %album% --auth "GetVKParameters()"
+ oint vk DeleteAlbum --album %album% --auth %auth%
 
 ```
 

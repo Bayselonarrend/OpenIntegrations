@@ -30,7 +30,7 @@ sidebar_position: 2
 
 ```sh title="CLI command example"
  
- oint dropbox AddTag --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path "/New/mydoc.docx" --tag "Important"
+ oint dropbox AddTag --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --tag %tag%
 
 ```
 

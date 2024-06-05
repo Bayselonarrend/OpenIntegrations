@@ -39,7 +39,7 @@ sidebar_position: 7
 
 ```sh title="CLI command example"
  
- oint vk CreateStory --picture "https://openintegrations.dev/test_data/picture.jpg // URL, Path to file or Binary Data" --url "https://github.com/Bayselonarrend/OpenIntegrations" --auth "GetVKParameters()"
+ oint vk CreateStory --picture "https://openintegrations.dev/test_data/picture.jpg" --url %url% --auth %auth%
 
 ```
 

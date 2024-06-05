@@ -39,7 +39,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-  oint vk СоздатьИсторию --picture "https://openintegrations.dev/test_data/picture.jpg       // URL, Путь к файлу или Двоичные данные" --url "https://github.com/Bayselonarrend/OpenIntegrations" --auth "ПолучитьПараметрыВК()"
+  oint vk СоздатьИсторию --picture "https://openintegrations.dev/test_data/picture.jpg" --url %url% --auth %auth%
 
 ```
 
