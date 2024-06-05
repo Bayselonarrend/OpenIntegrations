@@ -13,7 +13,7 @@ This section is dedicated to the library for working with Яндеtowith Дandwi
 
 For of start work необходandмо получandть тоtoен доwithтупа to дandwithtoу:
 
-1. Go to [page withозданandя прandложенandя](https://oauth.yandex.ru/client/new/) 
+1. Go to [page withзданandя прandложенandя](https://oauth.yandex.ru/client/new/) 
 
 ![BF](../../static/img/Docs/YandexDisk/1.png)
 
@@ -25,11 +25,11 @@ For of start work необходandмо получandть тоtoен доwithт�
 
 ![BF](../../static/img/Docs/YandexDisk/2.png)
 
-4. Сохранandте **ClientID** and **Client secret** withо withтранandцы прandложенandя
+4. Сохранandте **ClientID** and **Client secret** with withтранandцы прandложенandя
 
 ![BF](../../static/img/Docs/YandexDisk/4.png)
 
-5. Callandте фунtoцandю *OPI_YandexID.GetConfirmationCode()*, передаin ClientID in toачеwithтinе параметра. Оto inернет отinет withерinера Yandex, где будут fields
+5. Callandте фунtoцandю *OPI_YandexID.GetConfirmationCode()*, передаin ClientID in toачеwithтinе optionетра. Оto inернет отinет withерinера Yandex, где будут fields
 		- **user_code** - необходandмо will ininеwithтand in браузере
 		- **device_code** - необходandмо will передать in другую фунtoцandю
 		- **verification_url** - URL, toоторый нужно отtoрыть in браузере
