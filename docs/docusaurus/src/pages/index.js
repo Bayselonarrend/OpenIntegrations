@@ -33,6 +33,12 @@ function HomepageHeader() {
             Скачать
           </Link>
           </div>
+          <div className={styles.button}><Link
+            className="button button--secondary button--bg"
+            to="https://en.openintegrations.dev">
+            English version
+          </Link>
+          </div>
         </div>
       </div>
     </header>
