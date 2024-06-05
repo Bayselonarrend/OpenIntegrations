@@ -21,6 +21,7 @@ sidebar_position: 6
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  WorkID = "G8YbueOu2nsAAAAAAAAAAQ";
  Status = "in_progress";
+ 
  WHile Status = "in_progress" Do 
  
  Result = OPI_Dropbox.GetUploadStatusByURL(Token, WorkID);

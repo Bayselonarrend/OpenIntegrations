@@ -27,10 +27,7 @@ sidebar_position: 7
  CopyFile(Image, AndVF);
  Image = New BinaryData(AndVF);
  
- Result = OPI_VK.CreateStory(Image, URL, Parameters);
-
- 
- 
+ Result = OPI_VK.CreateStory(Image, URL, Parameters); 
  Result = OPI_VK.CreateStory(AndVF,, Parameters);
 
 	
