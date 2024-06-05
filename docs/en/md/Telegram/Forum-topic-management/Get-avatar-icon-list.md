@@ -29,6 +29,7 @@ sidebar_position: 1
  
  oint telegram GetAvatarIconList --token %token%
 
+
 ```
 
 

@@ -31,6 +31,7 @@ sidebar_position: 5
  
  oint vk AddProductPropertyVariant --value %value% --prop %prop% --auth %auth%
 
+
 ```
 
 

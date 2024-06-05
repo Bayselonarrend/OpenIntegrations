@@ -38,6 +38,7 @@ sidebar_position: 2
     
   oint airtable ИзменитьТаблицу --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --title "Тестовая таблица 2 (изм.)" --description "Новая таблица (изм.)"
 
+
 ```
 
 

@@ -29,7 +29,6 @@ sidebar_position: 7
  
  Result = OPI_VK.CreateStory(Image, URL, Parameters);
 
- OPI_TestDataRetrieval.WriteLog(Result, "CreateStory", "VK");
  
  
  Result = OPI_VK.CreateStory(AndVF,, Parameters);
@@ -40,6 +39,7 @@ sidebar_position: 7
 ```sh title="CLI command example"
  
  oint vk CreateStory --picture "https://openintegrations.dev/test_data/picture.jpg" --url %url% --auth %auth%
+
 
 ```
 

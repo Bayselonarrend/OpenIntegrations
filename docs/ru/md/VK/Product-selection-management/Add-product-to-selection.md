@@ -31,6 +31,7 @@ sidebar_position: 5
     
   oint vk ДобавитьТоварВПодборку --items %items% --sel %sel% --auth %auth%
 
+
 ```
 
 

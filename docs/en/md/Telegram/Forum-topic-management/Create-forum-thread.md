@@ -34,6 +34,7 @@ sidebar_position: 2
  
  oint telegram CreateForumThread --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title% --icon %icon%
 
+
 ```
 
 

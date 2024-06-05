@@ -32,6 +32,7 @@ sidebar_position: 1
  
  oint telegram Ban --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
 
+
 ```
 
 

@@ -26,6 +26,7 @@ sidebar_position: 5
     
   oint slack СделатьФайлПубличным --token %token% --fileid %fileid%
 
+
 ```
 
 

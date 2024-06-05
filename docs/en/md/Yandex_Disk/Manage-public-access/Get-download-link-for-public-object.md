@@ -34,6 +34,7 @@ sidebar_position: 5
  
  oint yadisk GetDownloadLinkForPublicObject --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --path %path%
 
+
 ```
 
 

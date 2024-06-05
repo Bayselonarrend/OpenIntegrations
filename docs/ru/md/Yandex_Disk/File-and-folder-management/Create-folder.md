@@ -32,6 +32,7 @@ sidebar_position: 2
     
   oint yadisk СоздатьПапку --token "y0_AgAAAABdylaOAA..." --path "/Тестовая папка"
 
+
 ```
 
 

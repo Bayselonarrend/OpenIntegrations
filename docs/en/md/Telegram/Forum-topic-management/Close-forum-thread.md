@@ -25,9 +25,7 @@ sidebar_position: 4
 
  
  Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
- 
- OPI_TestDataRetrieval.WriteLog(Result, "CloseForumTopic (main)");
- 
+
  
  Result = OPI_Telegram.CloseForumThread(Token, Chat, Topic);
 
@@ -37,6 +35,7 @@ sidebar_position: 4
 ```sh title="CLI command example"
  
  oint telegram CloseForumThread --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
+
 
 ```
 

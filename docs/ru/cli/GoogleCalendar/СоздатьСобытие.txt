@@ -1,0 +1,1 @@
+﻿oint gcalendar СоздатьСобытие --token %token% --calendar %calendar% --props %props%

@@ -30,9 +30,7 @@ sidebar_position: 9
  Phone = "88005553535";
  
  Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
- 
- OPI_TestDataRetrieval.WriteLog(Result, "SendContact", "Telegram"); 
- 
+
  
  Result = OPI_Telegram.SendContact(Token, ChannelID, Name, LastName, Phone);
 
@@ -42,6 +40,7 @@ sidebar_position: 9
 ```sh title="CLI command example"
  
  oint telegram SendContact --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --name "John" --surname "Doe" --phone "88005553535" --keyboard %keyboard%
+
 
 ```
 

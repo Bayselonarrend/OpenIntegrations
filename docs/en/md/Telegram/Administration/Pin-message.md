@@ -32,6 +32,7 @@ sidebar_position: 4
  
  oint telegram PinMessage --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4951"
 
+
 ```
 
 

@@ -44,6 +44,7 @@ sidebar_position: 3
     
   oint airtable СоздатьБазу --token %token% --ws "wspdf8yl1yZz3PmWZ" --title "Тестовая база" --tablesdata %tablesdata%
 
+
 ```
 
 

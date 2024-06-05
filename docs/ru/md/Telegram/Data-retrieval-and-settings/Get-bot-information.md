@@ -27,6 +27,7 @@ sidebar_position: 1
     
   oint telegram ПолучитьИнформациюБота --token "6129457865:AAFyzNYOAFbu..."
 
+
 ```
 
 

@@ -34,6 +34,7 @@ sidebar_position: 3
     
   oint gcalendar ИзменитьМетаданныеКалендаря --token %token% --calendar %calendar% --title "Тестовый календарь (изм.)" --description "Тестовое описание"
 
+
 ```
 
 

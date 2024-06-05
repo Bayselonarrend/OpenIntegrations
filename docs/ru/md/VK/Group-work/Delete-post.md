@@ -30,6 +30,7 @@ sidebar_position: 3
     
   oint vk УдалитьПост --post %post% --auth %auth%
 
+
 ```
 
 

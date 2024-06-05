@@ -31,6 +31,7 @@ sidebar_position: 2
     
   oint slack ПолучитьСписокРабочихОбластей --token %token% --cursor %cursor%
 
+
 ```
 
 
