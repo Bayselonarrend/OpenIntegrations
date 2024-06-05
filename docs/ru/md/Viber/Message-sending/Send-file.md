@@ -22,20 +22,20 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-  
-  ТокенКанала      = "523b58ba82afffaa-111111111111111-2222222222222222";
-  IDПользователя = "tMNGh111111111D+bT4g==";
-  
-  Ответ = OPI_Viber.ОтправитьФайл(ТокенКанала, "https://api.athenaeum.digital/1.txt", IDПользователя, Истина, "txt"); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                                         //JSON строка
-  
-
+      
+      ТокенКанала      = "523b58ba82afffaa-111111111111111-2222222222222222";
+      IDПользователя = "tMNGh111111111D+bT4g==";
+      
+      Ответ = OPI_Viber.ОтправитьФайл(ТокенКанала, "https://api.athenaeum.digital/1.txt", IDПользователя, Истина, "txt"); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                                         //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint viber ОтправитьФайл --token %token% --file %file% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --ext %ext% --size %size%
+      oint viber ОтправитьФайл --token %token% --file %file% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --ext %ext% --size %size%
 
 
 ```

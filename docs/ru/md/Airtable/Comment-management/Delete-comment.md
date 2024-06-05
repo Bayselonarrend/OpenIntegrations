@@ -21,22 +21,22 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  Запись  = "recV6DxeLQMBNJrUk";
-  Коммент = "comL1oGEDJvIQlMs1";
-  
-  Ответ = OPI_Airtable.УдалитьКомментарий(Токен, База, Таблица, Запись, Коммент); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                     //JSON строка
-  
-
+      
+      База    = "apptm8Xqo7TwMaipQ";
+      Таблица = "tbl9G4jVoTJpxYwSY";
+      Запись  = "recV6DxeLQMBNJrUk";
+      Коммент = "comL1oGEDJvIQlMs1";
+      
+      Ответ = OPI_Airtable.УдалитьКомментарий(Токен, База, Таблица, Запись, Коммент); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                     //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint airtable УдалитьКомментарий --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --comment %comment%
+      oint airtable УдалитьКомментарий --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --comment %comment%
 
 
 ```

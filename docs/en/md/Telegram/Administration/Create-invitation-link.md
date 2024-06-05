@@ -25,13 +25,13 @@ sidebar_position: 3
  ChannelID = "@testsichee"; 
  Day = 86400; 
  CurrentDate = OPI_Tools.GetCurrentDate();
-
+ 
  Title = "Link " + String(CurrentDate); 
  Expiration = CurrentDate + Day;
  UnixExpiration = OPI_Tools.UNIXTime(Expiration);
  
  Result = OPI_Telegram.CreateInvitationLink(Token, ChannelID, Title, Expiration, 200);
-
+ 
 	
 ```
 

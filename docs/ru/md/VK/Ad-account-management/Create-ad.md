@@ -22,17 +22,17 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_VK.СоздатьРекламноеОбъявление(1029683999, 166, 126, 221, 1607951446, Параметры);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Ответ = OPI_VK.СоздатьРекламноеОбъявление(1029683999, 166, 126, 221, 1607951446, Параметры);
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint vk СоздатьРекламноеОбъявление --campaign %campaign% --limit %limit% --category %category% --post %post% --cabinet %cabinet% --auth %auth%
+      oint vk СоздатьРекламноеОбъявление --campaign %campaign% --limit %limit% --category %category% --post %post% --cabinet %cabinet% --auth %auth%
 
 
 ```

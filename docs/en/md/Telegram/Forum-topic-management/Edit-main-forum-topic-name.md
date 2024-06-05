@@ -23,7 +23,7 @@ sidebar_position: 9
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
-
+ 
 	
 ```
 

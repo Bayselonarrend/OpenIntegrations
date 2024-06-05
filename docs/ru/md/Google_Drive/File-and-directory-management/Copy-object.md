@@ -20,21 +20,21 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
 	
-  
-  НовоеИмя          = "Скопированный файл.jpeg";
-  НовоеРасположение = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
-  Идентификатор     = "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk";
-  
-  Ответ = OPI_GoogleDrive.СкопироватьОбъект(Токен, Идентификатор, НовоеИмя, НовоеРасположение)  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                   //Строка
-  
-
+      
+      НовоеИмя          = "Скопированный файл.jpeg";
+      НовоеРасположение = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
+      Идентификатор     = "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk";
+      
+      Ответ = OPI_GoogleDrive.СкопироватьОбъект(Токен, Идентификатор, НовоеИмя, НовоеРасположение)  //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                   //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gdrive СкопироватьОбъект --token %token% --object "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk" --title "Скопированный файл.jpeg" --catalog %catalog%
+      oint gdrive СкопироватьОбъект --token %token% --object "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk" --title "Скопированный файл.jpeg" --catalog %catalog%
 
 
 ```

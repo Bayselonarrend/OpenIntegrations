@@ -22,7 +22,7 @@ sidebar_position: 3
  PostID = "2304";
  
  Result = OPI_VK.DeletePost(PostID, Parameters);
-
+ 
 	
 ```
 

@@ -24,7 +24,7 @@ sidebar_position: 1
  Message = "Red, yellow, blue, or some other?";
  
  Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
-
+ 
 	
 ```
 

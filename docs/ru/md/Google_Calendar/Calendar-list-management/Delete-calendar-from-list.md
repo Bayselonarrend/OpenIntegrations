@@ -18,17 +18,17 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_GoogleCalendar.УдалитьКалендарьИзСписка(Токен, "55868c32be16935f0..."); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                         //Строка
-  
-
+      
+      Ответ = OPI_GoogleCalendar.УдалитьКалендарьИзСписка(Токен, "55868c32be16935f0..."); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                         //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gcalendar УдалитьКалендарьИзСписка --token %token% --calendar %calendar%
+      oint gcalendar УдалитьКалендарьИзСписка --token %token% --calendar %calendar%
 
 
 ```

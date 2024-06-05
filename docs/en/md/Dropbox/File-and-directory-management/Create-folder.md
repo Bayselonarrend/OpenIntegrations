@@ -22,7 +22,7 @@ sidebar_position: 10
  Path = "/New catalog";
  
  Result = OPI_Dropbox.CreateFolder(Token, Path);
-
+ 
 	
 ```
 

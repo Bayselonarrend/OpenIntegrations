@@ -45,7 +45,7 @@ sidebar_position: 2
  AttachmentsArray.Add("video" + VideoOwner + "_" + VideoID);
  
  Result = OPI_VK.CreateCompositePost(Text, AttachmentsArray, False, URL, Parameters);
-
+ 
 	
 ```
 

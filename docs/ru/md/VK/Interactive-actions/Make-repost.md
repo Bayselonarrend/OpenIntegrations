@@ -21,17 +21,17 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  Ответ = OPI_VK.СделатьРепост(2571, -218704372, , , Параметры);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
-
+      
+      Ответ = OPI_VK.СделатьРепост(2571, -218704372, , , Параметры);
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint vk СделатьРепост --post %post% --from %from% --to %to% --ad %ad% --auth %auth%
+      oint vk СделатьРепост --post %post% --from %from% --to %to% --ad %ad% --auth %auth%
 
 
 ```

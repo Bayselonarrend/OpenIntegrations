@@ -19,19 +19,19 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
-  
-  Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
-  
-  Ответ = OPI_GoogleDrive.СкачатьФайл(Токен, Идентификатор);  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                 //Строка
-  
-
+      
+      Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+      
+      Ответ = OPI_GoogleDrive.СкачатьФайл(Токен, Идентификатор);  //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                 //Строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gdrive СкачатьФайл --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa" --out %out%
+      oint gdrive СкачатьФайл --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa" --out %out%
 
 
 ```

@@ -21,20 +21,20 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-    Токен    = "6129457865:AAFyzNYOAFbu...";
-    IDЧата   = "461699897";
-    IDКанала = "@testsichee";    
-    Текст    = "Строковое значение";
+        Токен    = "6129457865:AAFyzNYOAFbu...";
+        IDЧата   = "461699897";
+        IDКанала = "@testsichee";    
+        Текст    = "Строковое значение";
+        
+        Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, IDЧата, Текст);
+        Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, IDКанала, Текст);
     
-    Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, IDЧата, Текст);
-    Результат = OPI_Telegram.ОтправитьТекстовоеСообщение(Токен, IDКанала, Текст);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьТекстовоеСообщение --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --keyboard %keyboard% --parsemode %parsemode%
+      oint telegram ОтправитьТекстовоеСообщение --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --keyboard %keyboard% --parsemode %parsemode%
 
 
 ```

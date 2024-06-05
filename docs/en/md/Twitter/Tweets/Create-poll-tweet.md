@@ -29,7 +29,7 @@ sidebar_position: 5
  Response = OPI_Twitter.CreatePollTweet("How are you?", OptionArray, 60, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-
+ 
 	
 ```
 

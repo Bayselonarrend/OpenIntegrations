@@ -20,22 +20,22 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-  
-  База         = "apptm8Xqo7TwMaipQ";
-  Таблица      = "tbl9G4jVoTJpxYwSY";
-  Имя          = Строка(Новый УникальныйИдентификатор);
-  Поле         = OPI_Airtable.ПолучитьПолеНомера(Имя);
-  
-  Ответ = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, СтруктураПоля); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                            //JSON строка
-  
-
+      
+      База         = "apptm8Xqo7TwMaipQ";
+      Таблица      = "tbl9G4jVoTJpxYwSY";
+      Имя          = Строка(Новый УникальныйИдентификатор);
+      Поле         = OPI_Airtable.ПолучитьПолеНомера(Имя);
+      
+      Ответ = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, СтруктураПоля); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                            //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint airtable СоздатьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --fielddata %fielddata%
+      oint airtable СоздатьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --fielddata %fielddata%
 
 
 ```

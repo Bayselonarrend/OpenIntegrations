@@ -28,7 +28,7 @@ sidebar_position: 5
  Response = OPI_Viber.SendLocation(BotToken, "55.75", "37.6167", UserID, False); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-
+ 
 	
 ```
 

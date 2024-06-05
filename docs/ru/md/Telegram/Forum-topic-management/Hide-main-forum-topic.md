@@ -18,17 +18,17 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
 	
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    Чат         = "-1001971186208";
+        Токен       = "6129457865:AAFyzNYOAFbu...";
+        Чат         = "-1001971186208";
+        
+        Результат = OPI_Telegram.СкрытьГлавнуюТемуФорума(Токен, Чат);
     
-    Результат = OPI_Telegram.СкрытьГлавнуюТемуФорума(Токен, Чат);
-
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint telegram СкрытьГлавнуюТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum%
+      oint telegram СкрытьГлавнуюТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum%
 
 
 ```

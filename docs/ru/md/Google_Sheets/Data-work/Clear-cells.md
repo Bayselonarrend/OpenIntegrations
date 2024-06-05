@@ -20,25 +20,25 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-  
-  МассивЯчеек = Новый Массив;
-  МассивЯчеек.Добавить("B2");
-  МассивЯчеек.Добавить("A3");
-  МассивЯчеек.Добавить("B4");
-  
-  Книга = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
-  Лист  = "Лист2";
-  
-  Ответ = OPI_GoogleSheets.ОчиститьЯчейки(Токен, Книга, МассивЯчеек, Лист); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                               //JSON строка
-  
-
+      
+      МассивЯчеек = Новый Массив;
+      МассивЯчеек.Добавить("B2");
+      МассивЯчеек.Добавить("A3");
+      МассивЯчеек.Добавить("B4");
+      
+      Книга = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+      Лист  = "Лист2";
+      
+      Ответ = OPI_GoogleSheets.ОчиститьЯчейки(Токен, Книга, МассивЯчеек, Лист); //Соответствие
+      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                               //JSON строка
+      
+    
 	
 ```
 
 ```sh title="Пример команды CLI"
     
-  oint gsheets ОчиститьЯчейки --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --cells %cells% --sheetname "Лист2"
+      oint gsheets ОчиститьЯчейки --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --cells %cells% --sheetname "Лист2"
 
 
 ```
