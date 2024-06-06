@@ -143,6 +143,9 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/YandexDisk.png);
 }
 
+.Dropbox > div > a::before{
+  content: url(../../static/img/APIs/small/Dropbox.png);
+}
 
 /* CSS */
 .button {
