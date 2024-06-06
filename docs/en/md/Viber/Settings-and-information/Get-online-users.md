@@ -14,7 +14,7 @@ sidebar_position: 4
  | UserIDs | --users | String,Number,Array of String,Number | Viber User(s) ID |
 
  
- Returns: Key-Value Pair - serialized JSON response from Viber
+ Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
 ```bsl title="Code example"
 	

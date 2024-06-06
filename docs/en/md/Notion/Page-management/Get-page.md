@@ -14,7 +14,7 @@ sidebar_position: 3
  | Page | --page | String | Page ID |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	

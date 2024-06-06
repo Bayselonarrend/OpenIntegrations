@@ -13,7 +13,7 @@ sidebar_position: 1
  | Token | --token | String | Bot token |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Slack 
+ Returns: Map Of KeyAndValue - Serialized JSON response from Slack 
 
 ```bsl title="Code example"
 	

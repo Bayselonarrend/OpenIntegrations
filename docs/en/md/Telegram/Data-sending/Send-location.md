@@ -17,7 +17,7 @@ sidebar_position: 8
  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

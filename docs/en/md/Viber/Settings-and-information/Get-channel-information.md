@@ -13,7 +13,7 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
  | Token | --token | String | Token |
 
  
- Returns: Key-Value Pair - serialized JSON response from Viber
+ Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
 ```bsl title="Code example"
 	

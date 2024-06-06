@@ -14,7 +14,7 @@ sidebar_position: 1
  | Name | --title | String | Name of the created calendar |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

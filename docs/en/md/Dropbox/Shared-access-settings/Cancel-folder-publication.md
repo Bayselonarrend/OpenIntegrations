@@ -14,7 +14,7 @@ sidebar_position: 2
  | FolderID | --folder | String | ID of the public catalog (shared folder ID) |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

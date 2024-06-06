@@ -16,7 +16,7 @@ sidebar_position: 3
  | ViewOnly | --readonly | Boolean | Prohibits file editing for the external user |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

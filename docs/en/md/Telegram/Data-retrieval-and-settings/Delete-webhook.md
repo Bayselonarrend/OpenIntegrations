@@ -13,7 +13,7 @@ sidebar_position: 4
  | Token | --token | String | Bot token |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

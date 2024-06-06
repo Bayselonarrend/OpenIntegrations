@@ -15,7 +15,7 @@ sidebar_position: 2
  | Detailed | --depth | Boolean | Adds a list of files to the directory fields |
 
  
- Returns: Key-Value Pair - Array of directory mappings
+ Returns: Map Of KeyAndValue - Array of directory mappings
 
 ```bsl title="Code example"
 	

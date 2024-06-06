@@ -14,7 +14,7 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
  | URL | --url | String | URL for setting up Webhook |
 
  
- Returns: Key-Value Pair - serialized JSON response from Viber
+ Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
 ```bsl title="Code example"
 	

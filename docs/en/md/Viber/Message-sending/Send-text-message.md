@@ -17,7 +17,7 @@ sidebar_position: 1
  | Keyboard | --keyboard | Structure Of String | See CreateKeyboardFromArrayButton |
 
  
- Returns: Key-Value Pair - serialized JSON response from Viber
+ Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
 ```bsl title="Code example"
 	

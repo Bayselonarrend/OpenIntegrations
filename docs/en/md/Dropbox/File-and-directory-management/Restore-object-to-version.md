@@ -15,7 +15,7 @@ sidebar_position: 14
  | Version | --rev | String | ID of the version (revision) for restoration |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

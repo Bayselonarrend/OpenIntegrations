@@ -17,7 +17,7 @@ sidebar_position: 4
  | Comment | --comment | String | Comment identifier |
 
  
- Returns: Key-Value Pair - serialized JSON response from Airtable 
+ Returns: Map Of KeyAndValue - serialized JSON response from Airtable 
 
 ```bsl title="Code example"
 	

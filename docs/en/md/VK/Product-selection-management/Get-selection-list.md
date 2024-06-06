@@ -13,7 +13,7 @@ sidebar_position: 1
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: Key-Value Pair - Array of selection matches
+ Returns: Map Of KeyAndValue - Array of selection maps
 
 ```bsl title="Code example"
 	

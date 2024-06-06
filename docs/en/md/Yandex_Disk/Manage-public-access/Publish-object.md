@@ -14,7 +14,7 @@ sidebar_position: 1
  | Path | --path | String | Path to the object to be published |
 
  
- Returns: Key-Value Pair - serialized JSON response from Yandex 
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex 
 
 ```bsl title="Code example"
 	

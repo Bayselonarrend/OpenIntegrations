@@ -16,7 +16,7 @@ sidebar_position: 4
  | Records | --records | String, Array of String | Identifier or array of record identifiers |
 
  
- Returns: Key-Value Pair - serialized JSON response from Airtable
+ Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
 ```bsl title="Code example"
 	

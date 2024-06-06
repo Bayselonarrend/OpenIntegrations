@@ -16,7 +16,7 @@ sidebar_position: 3
  | Data | --data | Structure, Array of Structure | Set or array of sets of Key : Value pairs > Field : Indicator |
 
  
- Returns: Key-Value Pair - serialized JSON response from Airtable
+ Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
 ```bsl title="Code example"
 	

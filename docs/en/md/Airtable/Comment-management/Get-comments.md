@@ -17,7 +17,7 @@ sidebar_position: 1
  | Indent | --offset | String | Next page identifier of data from the previous request |
 
  
- Returns: Key-Value Pair - serialized JSON response from Airtable
+ Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
 ```bsl title="Code example"
 	

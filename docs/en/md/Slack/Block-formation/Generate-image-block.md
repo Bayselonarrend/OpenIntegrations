@@ -14,7 +14,7 @@ sidebar_position: 1
  | AlternateText | --alt | String | Alternate text of the image |
 
  
- Returns: Key-Value Pair - Image block
+ Returns: Map Of KeyAndValue - Image block
 
 ```bsl title="Code example"
 	

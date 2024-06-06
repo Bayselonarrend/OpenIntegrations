@@ -15,7 +15,7 @@ sidebar_position: 11
  | View | --type | String | Upload type (Post, Product, Story, Poll, Other) |
 
  
- Returns: Key-Value Pair - Serialized JSON response from VK 
+ Returns: Map Of KeyAndValue - Serialized JSON response from VK 
 
 ```bsl title="Code example"
 	

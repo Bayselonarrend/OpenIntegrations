@@ -17,7 +17,7 @@ Sends a message that arrives in the channel but is visible only to a specific us
  | Blocks | --blocks | Array of Structure | JSON array of block descriptions |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Slack
+ Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
 ```bsl title="Code example"
 	

@@ -17,7 +17,7 @@ sidebar_position: 10
  | Anonymous | --anonymous | Boolean | Poll anonymity |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

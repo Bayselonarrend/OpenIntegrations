@@ -16,7 +16,7 @@ sidebar_position: 6
  | Target | --to | String | File save path |
 
  
- Returns: Key-Value Pair - serialized JSON response from Yandex
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
 ```bsl title="Code example"
 	

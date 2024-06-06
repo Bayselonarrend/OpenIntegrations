@@ -15,7 +15,7 @@ sidebar_position: 2
  | Code | --code | String | Code from the authorization page |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

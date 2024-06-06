@@ -15,7 +15,7 @@ sidebar_position: 4
  | ToCart | --can | Boolean | To cart |
 
  
- Returns: Key-Value Pair - serialized JSON response from Yandex
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
 ```bsl title="Code example"
 	

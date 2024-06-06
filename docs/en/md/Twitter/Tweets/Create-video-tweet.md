@@ -15,7 +15,7 @@ sidebar_position: 4
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: Key-Value Pair - serialized JSON response from Twitter
+ Returns: Map Of KeyAndValue - serialized JSON response from Twitter
 
 ```bsl title="Code example"
 	

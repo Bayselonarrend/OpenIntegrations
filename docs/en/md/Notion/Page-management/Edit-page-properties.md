@@ -12,13 +12,13 @@ sidebar_position: 4
  |-|-|-|-|
  | Token | --token | String | Token |
  | Page | --page | String | ID of the page being modified |
- | Data | --data | Key-Value Pair | Matching of editable parameters |
+ | Data | --data | Map Of KeyAndValue | Map of editable parameters |
  | Icon | --icon | String | URL of the page icon image |
  | Cover | --cover | String | URL of the page cover image |
  | Archived | --archive | Boolean | Archive page or not (boolean) |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	

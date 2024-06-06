@@ -12,7 +12,7 @@ sidebar_position: 1
  |-|-|-|-|
 
  
- Returns: Key-Value Pair - Empty event template
+ Returns: Map Of KeyAndValue - Empty event template
 
 ```bsl title="Code example"
 	
@@ -30,13 +30,13 @@ sidebar_position: 1
 
 ```json title="Result"
 
-EventMatch = New Map;
- EventMatch.Insert("Description", ""); // Event description
- EventMatch.Insert("Title", "New event"); // Title events
- EventMatch.Insert("Venue", ""); // String description of the venue of the event
- EventMatch.Insert("StartDate", CurrentSessionDate()); // Date of start events
- EventMatch.Insert("EndDate", EventMatch["StartDate"] + 3600); // Date of end events
- EventMatch.Insert("ArrayOfAttachmentURLs", New Map); // Key - name, Value - URL to file
- EventMatch.Insert("SendNotifications", True); // Indication of sending notifications to participants
+EventMap = New Map;
+ EventMap.Insert("Description", ""); // Event description
+ EventMap.Insert("Title", "New event"); // Title events
+ EventMap.Insert("Venue", ""); // String description of the venue of the event
+ EventMap.Insert("StartDate", CurrentSessionDate()); // Date of start events
+ EventMap.Insert("EndDate", EventMap["StartDate"] + 3600); // Date of end events
+ EventMap.Insert("ArrayOfAttachmentURLs", New Map); // Key - name, Value - URL to file
+ EventMap.Insert("SendNotifications", True); // Indication of sending notifications to participants
 
 ```

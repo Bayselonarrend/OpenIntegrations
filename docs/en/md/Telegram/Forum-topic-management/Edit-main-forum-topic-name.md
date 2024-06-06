@@ -15,7 +15,7 @@ sidebar_position: 9
  | Title | --title | String | New main thread name |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	
