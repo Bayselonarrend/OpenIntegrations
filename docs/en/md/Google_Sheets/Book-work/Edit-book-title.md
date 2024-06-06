@@ -15,7 +15,7 @@ sidebar_position: 3
  | Name | --title | String | New name |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

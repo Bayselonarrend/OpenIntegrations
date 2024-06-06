@@ -18,7 +18,7 @@ sidebar_position: 2
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: Key-Value Pair - Serialized JSON response from VK
+ Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
 ```bsl title="Code example"
 	

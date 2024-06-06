@@ -12,10 +12,10 @@ sidebar_position: 2
  |-|-|-|-|
  | Token | --token | String | Token |
  | Parent | --base | String | Parent database ID |
- | Data | --data | Key-Value Pair | Properties match |
+ | Data | --data | Map Of KeyAndValue | Properties map |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	

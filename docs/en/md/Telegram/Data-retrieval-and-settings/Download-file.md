@@ -14,7 +14,7 @@ sidebar_position: 5
  | FileID | --fileid | String | File ID for downloading |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

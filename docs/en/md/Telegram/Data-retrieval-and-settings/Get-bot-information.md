@@ -13,7 +13,7 @@ Executes the getMe request, returning basic bot information: name, id, ability t
  | Token | --token | String | Bot token |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

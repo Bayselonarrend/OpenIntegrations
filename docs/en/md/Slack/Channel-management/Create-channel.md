@@ -15,7 +15,7 @@ sidebar_position: 3
  | Private | --private | Boolean | Create channel as private |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Slack
+ Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
 ```bsl title="Code example"
 	

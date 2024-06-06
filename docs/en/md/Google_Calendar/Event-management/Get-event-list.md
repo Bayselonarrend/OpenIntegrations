@@ -14,7 +14,7 @@ sidebar_position: 2
  | Calendar | --calendar | String | Calendar ID |
 
  
- Returns: Key-Value Pair - Array of event mappings
+ Returns: Map Of KeyAndValue - Array of event maps
 
 ```bsl title="Code example"
 	

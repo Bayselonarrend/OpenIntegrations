@@ -14,7 +14,7 @@ sidebar_position: 6
  | JobID | --job | String | ID of the asynchronous job from the UploadFileByURL response |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

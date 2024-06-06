@@ -13,7 +13,7 @@ sidebar_position: 5
  | Token | --token | String | Token |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

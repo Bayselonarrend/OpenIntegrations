@@ -13,7 +13,7 @@ sidebar_position: 1
  | Token | --token | String | Token |
 
  
- Returns: Key-Value Pair - Key > ID, Value > Emoji
+ Returns: Map Of KeyAndValue - Key > ID, Value > Emoji
 
 ```bsl title="Code example"
 	

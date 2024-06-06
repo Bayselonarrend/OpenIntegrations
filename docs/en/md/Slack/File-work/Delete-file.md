@@ -14,7 +14,7 @@ sidebar_position: 4
  | FileID | --fileid | String | File identifier |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Slack
+ Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
 ```bsl title="Code example"
 	

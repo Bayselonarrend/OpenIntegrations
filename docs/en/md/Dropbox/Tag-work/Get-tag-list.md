@@ -14,7 +14,7 @@ sidebar_position: 1
  | Paths | --paths | String, Array of String | Path or set of paths to the files |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

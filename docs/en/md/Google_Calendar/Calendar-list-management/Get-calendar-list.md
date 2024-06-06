@@ -13,7 +13,7 @@ sidebar_position: 1
  | Token | --token | String | Token |
 
  
- Returns: Key-Value Pair - Array of calendar data mappings
+ Returns: Map Of KeyAndValue - Array of calendar data mappings
 
 ```bsl title="Code example"
 	

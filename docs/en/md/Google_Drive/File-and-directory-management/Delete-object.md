@@ -14,7 +14,7 @@ sidebar_position: 9
  | Identifier | --object | String | Identifier of the object to delete |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

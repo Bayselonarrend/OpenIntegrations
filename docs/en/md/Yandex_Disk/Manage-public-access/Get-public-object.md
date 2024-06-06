@@ -16,7 +16,7 @@ sidebar_position: 4
  | OffsetFromStart | --offset | Number | Offset for getting nested objects not from the beginning of the list |
 
  
- Returns: Key-Value Pair - serialized JSON response from Yandex
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
 ```bsl title="Code example"
 	

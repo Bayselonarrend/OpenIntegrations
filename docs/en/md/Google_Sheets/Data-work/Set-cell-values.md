@@ -12,12 +12,12 @@ sidebar_position: 1
  |-|-|-|-|
  | Token | --token | String | Token |
  | Book | --spreadsheet | String | BookID |
- | ValueMapping | --data | Key-Value Pair | Fill data where the key is the cell name like A1 |
+ | ValueMapping | --data | Map Of KeyAndValue | Fill data where the key is the cell name like A1 |
  | Sheet | --sheetname | String | Sheet name (first sheet by default) |
  | MajorDimension | --dim | String | Main dimension when filling the array range |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	
