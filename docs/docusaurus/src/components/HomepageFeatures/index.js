@@ -73,6 +73,7 @@ export default function HomepageFeatures() {
             <a  className={styles.ico} href="/docs/Slack/"> <img src={require('../../../static/img/APIs/Slack.png').default} width='32px' /></a>
             <a  className={styles.ico} href="/docs/Airtable/"> <img src={require('../../../static/img/APIs/Airtable.png').default} width='32px' /></a>
             <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
+            <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Dropbox.png').default} width='32px' /></a>
             
           </span>
           <span className={styles.looptext}>
@@ -88,6 +89,7 @@ export default function HomepageFeatures() {
             <a  className={styles.ico} href="/docs/Slack/"> <img src={require('../../../static/img/APIs/Slack.png').default} width='32px' /></a>
             <a  className={styles.ico} href="/docs/Airtable/"> <img src={require('../../../static/img/APIs/Airtable.png').default} width='32px' /></a>
             <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Telegram.png').default} width='32px' /></a>
+            <a  className={styles.ico} href="/docs/Telegram/"> <img src={require('../../../static/img/APIs/Dropbox.png').default} width='32px' /></a>
             
           </span>
         </section>
