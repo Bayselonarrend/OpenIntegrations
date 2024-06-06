@@ -48,7 +48,7 @@
 // Name - String - Name of the created calendar - title
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function CreateCalendar(Val Token, Val Name) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -75,7 +75,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetCalendarMetadata(Val Token, Val Calendar) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -99,7 +99,7 @@ EndFunction
 // Description - String - New calendar description - description
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function EditCalendarMetadata(Val Token
     , Val Calendar
     , Val Name = ""
@@ -136,7 +136,7 @@ EndFunction
 // Token - String - Token - token
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function ClearMainCalendar(Val Token) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -157,7 +157,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function DeleteCalendar(Val Token, Val Calendar) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -182,7 +182,7 @@ EndFunction
 // Token - String - Token - token
 // 
 // Returns:
-// Key-Value Pair - Array of calendar data mappings
+// Map Of KeyAndValue - Array of calendar data mappings
 Function GetCalendarList(Val Token) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -204,7 +204,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function AddCalendarToList(Val Token, Val Calendar) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -230,7 +230,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetListCalendar(Val Token, Val Calendar) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -252,7 +252,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function DeleteCalendarFromList(Val Token, Val Calendar) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -277,7 +277,7 @@ EndFunction
 // Hidden - Boolean - Hidden calendar - hidden
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function EditListCalendar(Val Token
     , Val Calendar
     , Val PrimaryColor
@@ -311,7 +311,7 @@ EndFunction
 // Get event description !NOCLI
 // 
 // Returns:
-// Key-Value Pair - Empty event template
+// Map Of KeyAndValue - Empty event template
 Function GetEventDescription() Export
     
     CurrentDate = OPI_Tools.GetCurrentDate();
@@ -338,7 +338,7 @@ EndFunction
 // Calendar - String - Calendar ID - calendar
 // 
 // Returns:
-// Key-Value Pair - Array of event mappings
+// Map Of KeyAndValue - Array of event maps
 Function GetEventList(Val Token, Val Calendar) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -362,7 +362,7 @@ EndFunction
 // Event - String - Event ID - event
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetEvent(Val Token, Val Calendar, Val Event) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -387,7 +387,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token         
 // Calendar - String - Calendar ID - calendar
-// EventDescription - Key-Value Pair - Event description - props
+// EventDescription - Map Of KeyAndValue - Event description - props
 // 
 // Returns:
 // String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
@@ -405,7 +405,7 @@ EndFunction
 // Event - String - ID of the source calendar event - event
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -437,7 +437,7 @@ EndFunction
 // Event - String - Event ID - event
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export
     Return EventManagement(Token, Calendar, EventDescription, Event);
 EndFunction
@@ -451,7 +451,7 @@ EndFunction
 // Event - String - Event ID - event
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function DeleteEvent(Val Token, Val Calendar, Val Event) Export
     
     OPI_TypeConversion.GetLine(Token);

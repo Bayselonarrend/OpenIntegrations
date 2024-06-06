@@ -334,7 +334,7 @@ Function ReadJSONFile(Val Path) Export
     
 EndFunction
 
-Function RequestParametersToMatch(Val ParameterString) Export
+Function RequestParametersToMap(Val ParameterString) Export
 
     ReturnMapping = New Map;
     NumberOfParts = 2;
