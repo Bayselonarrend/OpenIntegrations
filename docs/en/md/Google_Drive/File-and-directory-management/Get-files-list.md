@@ -15,7 +15,7 @@ sidebar_position: 3
  | Directory | --catalog | String | Filter by parent directory ID |
 
  
- Returns: Key-Value Pair - Array of file mappings
+ Returns: Map Of KeyAndValue - Array of file mappings
 
 ```bsl title="Code example"
 	

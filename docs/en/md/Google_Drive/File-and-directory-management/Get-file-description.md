@@ -12,7 +12,7 @@ sidebar_position: 10
  |-|-|-|-|
 
  
- Returns: Key-Value Pair - File description
+ Returns: Map Of KeyAndValue - File description
 
 ```bsl title="Code example"
 	

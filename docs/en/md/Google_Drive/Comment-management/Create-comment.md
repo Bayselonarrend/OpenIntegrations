@@ -15,7 +15,7 @@ sidebar_position: 1
  | Comment | --text | String | Comment text |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

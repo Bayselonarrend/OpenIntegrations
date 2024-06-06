@@ -15,7 +15,7 @@ sidebar_position: 2
  | OnlyBase | --core | Boolean | True > service fields are deleted, only the block itself remains |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	

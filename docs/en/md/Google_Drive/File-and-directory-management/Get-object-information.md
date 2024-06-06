@@ -14,7 +14,7 @@ sidebar_position: 1
  | Identifier | --object | String | Identifier of the file or folder |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

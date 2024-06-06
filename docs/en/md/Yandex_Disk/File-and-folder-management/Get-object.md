@@ -14,7 +14,7 @@ sidebar_position: 3
  | Path | --path | String | Path to folder or file |
 
  
- Returns: Key-Value Pair - serialized JSON response from Yandex
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
 ```bsl title="Code example"
 	

@@ -12,7 +12,7 @@ sidebar_position: 8
  |-|-|-|-|
 
  
- Returns: Key-Value Pair - Empty product description:
+ Returns: Map Of KeyAndValue - Empty product description:
 
 
 ```bsl title="Code example"

@@ -17,7 +17,7 @@ sidebar_position: 1
  | Description | --description | String | Table description |
 
  
- Returns: Key-Value Pair - serialized JSON response from Airtable
+ Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
 ```bsl title="Code example"
 	

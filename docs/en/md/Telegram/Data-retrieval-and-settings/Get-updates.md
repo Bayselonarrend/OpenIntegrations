@@ -15,7 +15,7 @@ Executes a request getUpdates, returning information about bot events. Used in p
  | Offset | --offset | String, Number | Offset in the list of received messages |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

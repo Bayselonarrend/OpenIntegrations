@@ -12,10 +12,10 @@ sidebar_position: 4
  |-|-|-|-|
  | Token | --token | String | Token |
  | File | --file | BinaryData,String | File to be uploaded |
- | Description | --props | Key-Value Pair | JSON description or path to .json |
+ | Description | --props | Map Of KeyAndValue | JSON description or path to .json |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

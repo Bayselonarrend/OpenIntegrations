@@ -12,7 +12,7 @@ sidebar_position: 4
  |-|-|-|-|
  | Token | --token | String | Token |
  | Calendar | --calendar | String | Calendar ID |
- | EventDescription | --props | Key-Value Pair | Event description |
+ | EventDescription | --props | Map Of KeyAndValue | Event description |
 
  
  Returns: String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
@@ -24,16 +24,16 @@ sidebar_position: 4
  Attachments.Insert("Image1", "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
  Attachments.Insert("Image2", "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1");
  
- EventMatch = New Map;
- EventMatch.Insert("Description", Description);
- EventMatch.Insert("Title", Name);
- EventMatch.Insert("Venue", "On office");
- EventMatch.Insert("StartDate", CurrentSessionDate());
- EventMatch.Insert("EndDate", EventMatch["StartDate"] + 3600);
- EventMatch.Insert("ArrayOfAttachmentURLs", Attachments);
- EventMatch.Insert("SendNotifications", True);
+ EventMap = New Map;
+ EventMap.Insert("Description", Description);
+ EventMap.Insert("Title", Name);
+ EventMap.Insert("Venue", "On office");
+ EventMap.Insert("StartDate", CurrentSessionDate());
+ EventMap.Insert("EndDate", EventMap["StartDate"] + 3600);
+ EventMap.Insert("ArrayOfAttachmentURLs", Attachments);
+ EventMap.Insert("SendNotifications", True);
  
- Response = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMatch);
+ Response = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMap);
  Response = OPI_Tools.JSONString(Response);
  
  

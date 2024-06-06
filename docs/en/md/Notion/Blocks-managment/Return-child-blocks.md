@@ -14,7 +14,7 @@ sidebar_position: 3
  | BlockID | --block | String | Parent block ID |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	

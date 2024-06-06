@@ -16,7 +16,7 @@ sidebar_position: 3
  | Description | --description | String | New calendar description |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

@@ -16,7 +16,7 @@ sidebar_position: 5
  | Event | --event | String | ID of the source calendar event |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

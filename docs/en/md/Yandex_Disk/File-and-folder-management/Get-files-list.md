@@ -17,7 +17,7 @@ Gets a list of files with or without filtering by type List of available types: 
  | SortByDate | --datesort | Boolean | True > sort by date, False > alphabetically |
 
  
- Returns: Key-Value Pair - serialized JSON response from Yandex
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
 ```bsl title="Code example"
 	

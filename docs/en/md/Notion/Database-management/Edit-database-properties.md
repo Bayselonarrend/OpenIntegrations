@@ -17,7 +17,7 @@ sidebar_position: 3
  | Description | --description | String | New database description |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	

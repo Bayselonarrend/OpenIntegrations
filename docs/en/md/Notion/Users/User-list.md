@@ -13,7 +13,7 @@ sidebar_position: 1
  | Token | --token | String | Token |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	

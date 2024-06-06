@@ -16,15 +16,15 @@ sidebar_position: 6
  | Event | --event | String | Event ID |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	
  
- EventMatch = New Map;
- EventMatch.Insert("Description", "Test event description (change.)");
+ EventMap = New Map;
+ EventMap.Insert("Description", "Test event description (change.)");
  
- Response = OPI_GoogleCalendar.EditEvent(Token, "55868c32be16935f0...", EventMatch, "j4nonfcc0m2...");
+ Response = OPI_GoogleCalendar.EditEvent(Token, "55868c32be16935f0...", EventMap, "j4nonfcc0m2...");
  Response = OPI_Tools.JSONString(Response);
  
  

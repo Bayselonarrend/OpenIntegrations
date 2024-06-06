@@ -15,7 +15,7 @@ sidebar_position: 11
  | Address | --url | String | File URL |
 
  
- Returns: Key-Value Pair - serialized JSON response from Yandex
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
 ```bsl title="Code example"
 	

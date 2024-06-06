@@ -17,7 +17,7 @@ sidebar_position: 5
  | SendingToChannel | --ischannel | Boolean | Sending to channel or bot chat |
 
  
- Returns: Key-Value Pair - serialized JSON response from Viber
+ Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
 ```bsl title="Code example"
 	

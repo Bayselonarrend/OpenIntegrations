@@ -16,7 +16,7 @@ sidebar_position: 1
  | FieldStructure | --fielddata | Structure of Key-Value | Description of the new field |
 
  
- Returns: Key-Value Pair - serialized JSON response from Airtable
+ Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
 ```bsl title="Code example"
 	

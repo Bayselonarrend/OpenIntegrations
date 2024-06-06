@@ -15,7 +15,7 @@ sidebar_position: 4
  | ChannelArray | --channels | Array Of String | Array of channels for sending |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Slack
+ Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
 ```bsl title="Code example"
 	

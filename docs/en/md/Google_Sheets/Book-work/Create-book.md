@@ -15,7 +15,7 @@ sidebar_position: 1
  | ArrayOfSheetNames | --sheets | Array of String | Array of names to add new sheets to the book |
 
  
- Returns: Key-Value Pair - serialized JSON response from Google
+ Returns: Map Of KeyAndValue - serialized JSON response from Google
 
 ```bsl title="Code example"
 	

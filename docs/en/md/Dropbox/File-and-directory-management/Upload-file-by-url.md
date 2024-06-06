@@ -15,7 +15,7 @@ sidebar_position: 5
  | Path | --path | String | Save path on Dropbox |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

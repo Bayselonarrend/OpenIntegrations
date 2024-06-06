@@ -14,7 +14,7 @@ sidebar_position: 2
  | UserID | --user | String | Target user ID |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Notion
+ Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
 ```bsl title="Code example"
 	
