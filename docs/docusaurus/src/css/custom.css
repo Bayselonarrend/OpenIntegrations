@@ -94,7 +94,7 @@ li > a.menu__link {
 
 .Airtable a::before , .Telegram a::before, .VK a::before, .Viber a::before, .Twitter a::before,
 .Notion a::before, .GoogleCalendar a::before, .GoogleDrive a::before, .GoogleSheets a::before, 
-.Slack a::before, .YandexDisk a::before{
+.Slack a::before, .YandexDisk a::before, .Dropbox a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
