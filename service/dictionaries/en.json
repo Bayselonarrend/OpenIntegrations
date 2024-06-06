@@ -3732,6 +3732,21 @@
 "Найти вкладку \"Работа с API\"":"Find the 'API usage' tab",
 "Нажать \"Создать ключ\" и забрать его":"Click on 'Create key' and retrieve it",
 "Пока вам не нужно использовать такие методы, получать communitytoken не обязательно":"You don't need to obtain the 'communitytoken' if you're not using such methods at the moment",
-"Дополнительно":"Additionally"
+"Дополнительно":"Additionally",
+"Яндекс Диск": "Yandex Disk",
+"страницу создания приложения":"app creation page",
+"Введите название сервиса, выберите *Веб-сервисы* в качестве платформы. Redirect URI можно указать любой или выбрать пункт *Подставить URL для отладки* - для работы с библиотекой он не понадобится":"Enter the service name, select *Web services* as the platform. You can specify any *Redirect URI* or select the Insert debugging URL option - it will not be needed for working with the library",
+"В поле *Доступ к данным* добавьте разрешения как на скриншоте ниже, после чего нажмите *Создать приложение*":"In the **Data Access** field, add permissions as shown in the screenshot below, then click **Create Application**",
+"Сохраните **ClientID** и **Client secret** со страницы приложения":"Save **ClientID** and **ClientSecret** from the application page",
+"Вызовите функцию *OPI_YandexID.ПолучитьКодПодтверждения()*, передав ClientID в качестве параметра. Она вернет ответ сервера Yandex, где будут поля":"Call the function *OPI_YandexID.GetConfirmationCode()*, passing ClientID as a parameter. It will return a response from the Yandex server, which will contain the fields",
+"необходимо будет ввести в браузере":"you will need to enter in the browser",
+"необходимо будет передать в другую функцию":"you will need to pass to another function",
+"URL, который нужно открыть в браузере":"the URL that needs to be opened in the browser",
+"Результат функции ПреобразоватьКодВТокен(), если перевести его в JSON":"The result of the function ConvertCodeToToken(), if convert it to JSON",
+"**acess_token** используется во всех остальных функциях библиотеки, а при помощи **refresh_token** его можно обновить, когда срок жизни будет подходить к концу (при помощи функции *ОбновитьТокен()*)":"**access_token** is used in all other functions of the library, and with the help of **refresh_token**, it can be refreshed when its lifespan is nearing the end (using the function *RefreshToken()*)",
+"Результат функции ПолучитьКодПодтверждения(), если перевести его в JSON":"The result of the function GetConfirmationCode(), if convert it to JSON",
+"После ввода кода в пункте 6, вызовите функцию *OPI_YandexID.ПреобразоватьКодВТокен()*, передав туда **ClientID** и **ClientSecret** из пункта 4, а также **device_code** из пункта 5. Сохраните полученные **acess_token** и **refresh_token**":"After entering the code in step 6, call the function *OPI_YandexID.ConvertCodeToToken()*, passing **ClientID** and **ClientSecret** from step 4, as well as **device_code** from step 5. Save the obtained **access_token** and **refresh_token**",
+"Откройте URL из **verification_url** в барузере. Скорее всего это будет https://ya.ru/device. В появившееся поле введите **user_code** из пункта 5 ":"Open the URL from **verification_url** in the browser. Most likely, it will be https://ya.ru/device. In the field that appears, enter the **user_code** from step 5",
+"Для начала работы необходимо получить токен доступа к диску":"To start working, you need to obtain an access token for the disk"
 
 }
