@@ -18,7 +18,7 @@ sidebar_position: 3
  | Size | --size | Number | File size. If not filled in > determined automatically by downloading the file |
 
  
- Returns: Key-Value Pair - serialized JSON response from Viber
+ Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
 ```bsl title="Code example"
 	

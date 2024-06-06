@@ -14,7 +14,7 @@ sidebar_position: 2
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: Key-Value Pair - Array of product matches
+ Returns: Map Of KeyAndValue - Array of product maps
 
 ```bsl title="Code example"
 	

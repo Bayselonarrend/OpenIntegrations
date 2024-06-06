@@ -14,7 +14,7 @@ sidebar_position: 6
  | ChatID | --chat | String, Number | Target chat ID |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

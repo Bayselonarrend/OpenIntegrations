@@ -15,7 +15,7 @@ sidebar_position: 10
  | ThreadID | --topic | String, Number | Thread ID. Main if not filled |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

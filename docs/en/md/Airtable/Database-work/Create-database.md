@@ -13,10 +13,10 @@ sidebar_position: 3
  | Token | --token | String | Token |
  | Workspace | --ws | String | Workspace identifier |
  | Name | --title | String | New base name |
- | TableCollection | --tablesdata | Key-Value Pair | Table description: Key > name, Value > array of fields |
+ | TableCollection | --tablesdata | Map Of KeyAndValue | Table description: Key > name, Value > array of fields |
 
  
- Returns: Key-Value Pair - serialized JSON response from Airtable
+ Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
 ```bsl title="Code example"
 	

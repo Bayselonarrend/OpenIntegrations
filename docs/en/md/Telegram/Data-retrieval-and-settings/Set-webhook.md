@@ -14,7 +14,7 @@ sidebar_position: 3
  | URL | --url | String | Request handling address from Telegram (with https:) |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

@@ -15,7 +15,7 @@ sidebar_position: 13
  | Count | --amount | String, Number | Number of the latest versions of the object to display |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

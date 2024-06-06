@@ -17,7 +17,7 @@ sidebar_position: 1
  | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Telegram
+ Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
 ```bsl title="Code example"
 	

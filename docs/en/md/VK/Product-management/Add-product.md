@@ -10,12 +10,12 @@ sidebar_position: 4
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
- | ProductDescription | --product | Key-Value Pair | JSON description of the product or path |
+ | ProductDescription | --product | Map Of KeyAndValue | JSON description of the product or path |
  | Selection | --sel | String | Selection ID for placing the product, if needed |
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: Key-Value Pair - Serialized JSON response from VK
+ Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
 ```bsl title="Code example"
 	

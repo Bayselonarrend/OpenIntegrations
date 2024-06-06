@@ -14,7 +14,7 @@ sidebar_position: 6
  | FileID | --fileid | String | ID of the file to be accessed |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

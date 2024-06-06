@@ -15,7 +15,7 @@ sidebar_position: 8
  | Target | --to | String | Target path for the new object |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

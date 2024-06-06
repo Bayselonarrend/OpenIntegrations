@@ -15,7 +15,7 @@ sidebar_position: 7
  | Irrecoverable | --permanently | String | Delete object without the possibility of recovery |
 
  
- Returns: Key-Value Pair - serialized JSON response from Dropbox
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 ```bsl title="Code example"
 	

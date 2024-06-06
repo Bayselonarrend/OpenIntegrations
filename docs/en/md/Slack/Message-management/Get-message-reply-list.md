@@ -16,7 +16,7 @@ sidebar_position: 7
  | Cursor | --cursor | String | Pointer from the previous request, if the result rows > 100 |
 
  
- Returns: Key-Value Pair - Serialized JSON response from Slack
+ Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
 ```bsl title="Code example"
 	

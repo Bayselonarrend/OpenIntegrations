@@ -11,12 +11,12 @@ sidebar_position: 5
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Product | --item | Number, String | Identifier of the product being edited |
- | ProductDescription | --product | Key-Value Pair | JSON description of the product or path |
+ | ProductDescription | --product | Map Of KeyAndValue | JSON description of the product or path |
  | Selection | --sel | String | Identifier of the new selection, if needed |
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: Key-Value Pair - Serialized JSON response from VK
+ Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
 ```bsl title="Code example"
 	
