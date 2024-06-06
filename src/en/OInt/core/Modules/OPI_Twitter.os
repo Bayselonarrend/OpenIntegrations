@@ -83,7 +83,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function GetToken(Val Code, Val Parameters = "") Export
 
     OPI_TypeConversion.GetLine(Code);
@@ -111,7 +111,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function RefreshToken(Val Parameters = "") Export
     
     Parameters_ = GetStandardParameters(Parameters);
@@ -169,7 +169,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateCustomTweet(Val Text = ""
     , Val MediaArray = ""
     , Val PollOptionsArray = ""
@@ -230,7 +230,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateTextTweet(Val Text, Val Parameters = "") Export
     Return CreateCustomTweet(Text, , , , Parameters);    
 EndFunction
@@ -244,7 +244,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
     
     MediaArray = UploadAttachmentsArray(ImageArray, "photo", Parameters);
@@ -261,7 +261,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
     
     MediaArray = UploadAttachmentsArray(GifsArray, "animated_gif", Parameters);
@@ -278,7 +278,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
     
     MediaArray = UploadAttachmentsArray(VideosArray, "video", Parameters);
@@ -296,7 +296,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Twitter
+// Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export
     Return CreateCustomTweet(Text, , OptionArray, Duration, Parameters);    
 EndFunction
@@ -492,7 +492,7 @@ Function GetStandardParameters(Val Parameters = "")
     // The world gigacorporation of Elon Musk, by the way, a reminder ;)
     
     // P.S The "Twitter Developer settings page" is often mentioned further" - this 
-    // https://developer.twitter.com/en/portal/dashboard и inыбор toонtoретного проеtoта from withпиwithtoа (зtoчеto c toлючем)
+    // https://developer.twitter.com/en/portal/dashboard and inыбор toонtoретного проеtoта from withпandwithtoа (зtoчеto c toлючем)
     
     Parameters_ = New Map; 
     Permissions = "tweet.read tweet.write tweet.moderate.write users.read "
@@ -512,7 +512,7 @@ Function GetStandardParameters(Val Parameters = "")
     // For the next update, you need to use a new refresh_token, so hardcode 
     // won't work (access_token won't work either) 
     
-    // |--> RefreshToken() ->|access_token --> Andwithпользуетwithя in т-нии 2-х чаwithоin for запроwithоin
+    // |--> RefreshToken() ->|access_token --> Andwithпользуетwithя in т-нandand 2-х чаwithin for запроwithin
     // | |refresh_token --|
     // |--------[after 2 hrs.]-------------------|
      

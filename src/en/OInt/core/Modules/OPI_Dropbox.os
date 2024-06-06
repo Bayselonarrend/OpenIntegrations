@@ -65,7 +65,7 @@ EndFunction
 // Code - String - Code from the authorization page - code
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
     
     URL = "https://api.dropbox.com/oauth2/token";
@@ -103,7 +103,7 @@ EndFunction
 // RefreshToken - String - Refresh token - refresh
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function RefreshToken(Val AppKey, Val AppSecret, Val RefreshToken) Export
     
     String_ = "String";
@@ -129,7 +129,7 @@ EndFunction
 // Account - String - Account ID. Current token account if not filled - account
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetAccountInformation(Val Token, Val Account = "") Export
     
     If ValueIsFilled(Account) Then
@@ -149,7 +149,7 @@ EndFunction
 // Token - String - Token - token 
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetSpaceUsageData(Val Token) Export
     
     URL = "https://api.dropboxapi.com/2/users/get_space_usage";
@@ -178,7 +178,7 @@ EndFunction
 // Detailed - Boolean - Adds additional information fields for media files - detail 
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox 
+// Map Of KeyAndValue - serialized JSON response from Dropbox 
 Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export
     
     URL = "https://api.dropboxapi.com/2/files/get_metadata"; 
@@ -260,7 +260,7 @@ EndFunction
 // Overwrite - Boolean - Overwrite file in case of path conflicts - overwrite
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox 
+// Map Of KeyAndValue - serialized JSON response from Dropbox 
 Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export
     
     OPI_TypeConversion.GetBinaryData(File);
@@ -290,7 +290,7 @@ EndFunction
 // Path - String - Save path on Dropbox - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export
     
     URL = "https://api.dropboxapi.com/2/files/save_url"; 
@@ -314,7 +314,7 @@ EndFunction
 // JobID - String - ID of the asynchronous job from the UploadFileByURL response - job 
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetUploadStatusByURL(Val Token, Val JobID) Export
     
     URL = "https://api.dropboxapi.com/2/files/save_url/check_job_status"; 
@@ -338,7 +338,7 @@ EndFunction
 // Irrecoverable - String - Delete object without the possibility of recovery - permanently
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function DeleteObject(Val Token, Val Path, Val Irrecoverable = False) Export
     
     OPI_TypeConversion.GetBoolean(Irrecoverable);
@@ -364,7 +364,7 @@ EndFunction
 // Target - String - Target path for the new object - to
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function CopyObject(Val Token, Val From, Val Target) Export
    
     URL = "https://api.dropboxapi.com/2/files/copy_v2";
@@ -390,7 +390,7 @@ EndFunction
 // Target - String - Target path for the new object - to
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function MoveObject(Val Token, Val From, Val Target) Export
 
     URL = "https://api.dropboxapi.com/2/files/move_v2";
@@ -415,7 +415,7 @@ EndFunction
 // Path - String - Target path for creating the directory - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function CreateFolder(Val Token, Val Path) Export
     
     URL = "https://api.dropboxapi.com/2/files/create_folder_v2";
@@ -470,7 +470,7 @@ EndFunction
 // Count - String, Number - Number of the latest versions of the object to display - amount
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export
     
     URL = "https://api.dropboxapi.com/2/files/list_revisions"; 
@@ -495,7 +495,7 @@ EndFunction
 // Version - String - ID of the version (revision) for restoration - rev
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export
     
     URL = "https://api.dropboxapi.com/2/files/restore"; 
@@ -523,7 +523,7 @@ EndFunction
 // Paths - String, Array of String - Path or set of paths to the files - paths
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetTagList(Val Token, Val Paths) Export
     
     URL = "https://api.dropboxapi.com/2/files/tags/get";
@@ -548,7 +548,7 @@ EndFunction
 // Tag - String - Tag text - tag
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function AddTag(Val Token, Val Path, Val Tag) Export
     
     Return ProcessTag(Token, Path, Tag);
@@ -564,7 +564,7 @@ EndFunction
 // Tag - String - Tag text - tag
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function DeleteTag(Val Token, Val Path, Val Tag) Export
     
     Return ProcessTag(Token, Path, Tag, True);
@@ -583,7 +583,7 @@ EndFunction
 // Path - String - Path to the target directory - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function PublishFolder(Val Token, Val Path) Export
     
     URL = "https://api.dropboxapi.com/2/sharing/share_folder";
@@ -601,7 +601,7 @@ EndFunction
 // FolderID - String - ID of the public catalog (shared folder ID) - folder
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function CancelFolderPublication(Val Token, Val FolderID) Export
     
     URL = "https://api.dropboxapi.com/2/sharing/unshare_folder";
@@ -626,7 +626,7 @@ EndFunction
 // ViewOnly - Boolean - Prohibits file editing for the external user - readonly
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly = True) Export
     
     String_ = "String";
@@ -724,7 +724,7 @@ EndFunction
 // JobID - String - AsynchronousJobID - job
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export
     
     URL = "https://api.dropboxapi.com/2/sharing/check_job_status";
@@ -747,7 +747,7 @@ EndFunction
 // FileID - String - ID of the file to be accessed - fileid
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Dropbox
+// Map Of KeyAndValue - serialized JSON response from Dropbox
 Function CancelFilePublication(Val Token, Val FileID) Export
 	
 	OPI_TypeConversion.GetLine(FileID);

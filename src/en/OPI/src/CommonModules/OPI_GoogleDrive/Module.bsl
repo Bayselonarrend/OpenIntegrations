@@ -48,7 +48,7 @@
 // Identifier - String - Identifier of the file or folder - object
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetObjectInformation(Val Token, Val Identifier) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -75,7 +75,7 @@ EndFunction
 // Detailed - Boolean - Adds a list of files to the directory fields - depth
 // 
 // Returns:
-// Key-Value Pair - Array of directory mappings
+// Map Of KeyAndValue - Array of directory mappings
 Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -111,7 +111,7 @@ EndFunction
 // Directory - String - Filter by parent directory ID - catalog
 // 
 // Returns:
-// Key-Value Pair - Array of file mappings
+// Map Of KeyAndValue - Array of file mappings
 Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -144,10 +144,10 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // File - BinaryData,String - File to be uploaded - file
-// Description - Key-Value Pair - See GetFileDescription - props - JSON description or path to .json
+// Description - Map Of KeyAndValue - See GetFileDescription - props - JSON description or path to .json
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function UploadFile(Val Token, Val File, Val Description) Export
     Return FileManagement(Token, File, Description);   
 EndFunction
@@ -161,7 +161,7 @@ EndFunction
 // Parent - String - Parent - catalog
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function CreateFolder(Val Token, Val Name, Val Parent = "") Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -215,7 +215,7 @@ EndFunction
 // NewParent - String - New parent directory - catalog
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -256,7 +256,7 @@ EndFunction
 // NewName - String - New file name (if necessary) - title
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -283,7 +283,7 @@ EndFunction
 // Identifier - String - Identifier of the object to delete - object
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function DeleteObject(Val Token, Val Identifier) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -300,7 +300,7 @@ EndFunction
 // Get file description !NOCLI
 // 
 // Returns:
-// Key-Value Pair - File description
+// Map Of KeyAndValue - File description
 Function GetFileDescription() Export
     
     Description = New Map;
@@ -326,7 +326,7 @@ EndFunction
 // Comment - String - Comment text - text
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function CreateComment(Val Token, Val Identifier, Val Comment) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -354,7 +354,7 @@ EndFunction
 // CommentID - String - Comment identifier - comment
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetComment(Val Token, Val ObjectID, Val CommentID) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -381,7 +381,7 @@ EndFunction
 // ObjectID - String - Object identifier - object
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetCommentList(Val Token, Val ObjectID) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -408,7 +408,7 @@ EndFunction
 // CommentID - String - Comment identifier - comment
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function DeleteComment(Val Token, Val ObjectID, Val CommentID) Export
     
     OPI_TypeConversion.GetLine(Token);

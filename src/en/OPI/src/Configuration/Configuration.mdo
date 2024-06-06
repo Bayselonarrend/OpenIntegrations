@@ -3,7 +3,7 @@
   <name>OpenIntegrations</name>
   <synonym>
     <key>en</key>
-    <value>Open integrations package</value>
+    <value>OpenIntegrations</value>
   </synonym>
   <objectBelonging>Adopted</objectBelonging>
   <extension xsi:type="mdclassExtension:ConfigurationExtension">

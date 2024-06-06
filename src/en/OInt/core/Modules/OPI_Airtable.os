@@ -47,7 +47,7 @@
 // Indent - String - Next page identifier of the base list from the previous request - offset
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable 
+// Map Of KeyAndValue - serialized JSON response from Airtable 
 Function GetListOfBases(Val Token, Val Indent = "") Export
     
     OPI_TypeConversion.GetLine(Indent);
@@ -72,7 +72,7 @@ EndFunction
 // Base - String - Base identifier - base
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function GetDatabaseTables(Val Token, Val Base) Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -93,10 +93,10 @@ EndFunction
 // Token - String - Token - token
 // Workspace - String - Workspace identifier - ws
 // Name - String - New base name - title
-// TableCollection - Key-Value Pair - Table description: Key > name, Value > array of fields - tablesdata
+// TableCollection - Map Of KeyAndValue - Table description: Key > name, Value > array of fields - tablesdata
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export
     
     OPI_TypeConversion.GetCollection(TableCollection);
@@ -145,7 +145,7 @@ EndFunction
 // Description - String - Table description - description
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -171,7 +171,7 @@ EndFunction
 // Description - String - New description - description
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -204,7 +204,7 @@ EndFunction
 // FieldStructure - Structure of Key-Value - Description of the new field - fielddata
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -239,7 +239,7 @@ EndFunction
 // Description - String - New description - description
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", Val Description = "") Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -389,7 +389,7 @@ EndFunction
 // Indent - String - Next page identifier of data from the previous request - offset
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export
 
     OPI_TypeConversion.GetLine(Base);
@@ -417,7 +417,7 @@ EndFunction
 // Record - String - Record identifier in the table - record
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export
    
     OPI_TypeConversion.GetLine(Base);
@@ -443,7 +443,7 @@ EndFunction
 // Data - Structure, Array of Structure - Set or array of sets of Key : Value pairs > Field : Indicator - data
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export
 
     OPI_TypeConversion.GetLine(Base);
@@ -472,7 +472,7 @@ EndFunction
 // Records - String, Array of String - Identifier or array of record identifiers - records
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -512,7 +512,7 @@ EndFunction
 // Indent - String - Next page identifier of data from the previous request - offset
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -542,7 +542,7 @@ EndFunction
 // Text - String - Comment text - text
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -573,7 +573,7 @@ EndFunction
 // Text - String - New comment text - text
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable
+// Map Of KeyAndValue - serialized JSON response from Airtable
 Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export
     
     OPI_TypeConversion.GetLine(Base);
@@ -604,7 +604,7 @@ EndFunction
 // Comment - String - Comment identifier - comment
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Airtable 
+// Map Of KeyAndValue - serialized JSON response from Airtable 
 Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export
 
     OPI_TypeConversion.GetLine(Base);
