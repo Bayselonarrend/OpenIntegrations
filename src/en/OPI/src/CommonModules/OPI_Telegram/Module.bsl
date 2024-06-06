@@ -50,7 +50,7 @@
 // Token - String - Bot token - token
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function GetBotInformation(Val Token) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -71,7 +71,7 @@ EndFunction
 // Offset - String, Number - Offset in the list of received messages - offset
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -95,7 +95,7 @@ EndFunction
 // URL - String - Request handling address from Telegram (with https:) - url
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SetWebhook(Val Token, Val URL) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -117,7 +117,7 @@ EndFunction
 // Token - String - Bot token - token
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function DeleteWebhook(Val Token) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -137,7 +137,7 @@ EndFunction
 // FileID - String - File ID for downloading - fileid
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function DownloadFile(Val Token, Val FileID) Export
 
     Result = "result";
@@ -178,7 +178,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     OPI_TypeConversion.GetLine(DataString);
     
     DataString = DecodeString(DataString, StringEncodingMethod.URLencoding);
-    DataStructure = OPI_Tools.RequestParametersToMatch(DataString);
+    DataStructure = OPI_Tools.RequestParametersToMap(DataString);
     Key = "WebAppData";
     Hash = "";
     BinaryKey = GetBinaryDataFromString(Key);
@@ -245,7 +245,7 @@ EndFunction
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendTextMessage(Val Token
 	, Val ChatID
 	, Val Text
@@ -281,7 +281,7 @@ EndFunction
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendImage(Val Token
 	, Val ChatID
 	, Val Text
@@ -305,7 +305,7 @@ EndFunction
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendVideo(Val Token
 	, Val ChatID
 	, Val Text
@@ -329,7 +329,7 @@ EndFunction
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendAudio(Val Token
 	, Val ChatID
 	, Val Text
@@ -353,7 +353,7 @@ EndFunction
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendDocument(Val Token
 	, Val ChatID
 	, Val Text
@@ -377,7 +377,7 @@ EndFunction
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendGif(Val Token
 	, Val ChatID
 	, Val Text
@@ -401,7 +401,7 @@ EndFunction
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendMediaGroup(Val Token
 	, Val ChatID
 	, Val Text
@@ -452,7 +452,7 @@ EndFunction
 // Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export
 
 	String_ = "String";
@@ -487,7 +487,7 @@ EndFunction
 // Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export
 
 	String_ = "String";
@@ -522,7 +522,7 @@ EndFunction
 // Anonymous - Boolean - Poll anonymity - anonymous
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Anonymous = True) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -557,7 +557,7 @@ EndFunction
 // ToID - String, Number - Target chat ID or ChatID*TopicID - to
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -628,7 +628,7 @@ EndFunction
 // UserID - String, Number - Target user ID - user
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function Ban(Val Token, Val ChatID, Val UserID) Export
 
 	String_ = "String";
@@ -656,7 +656,7 @@ EndFunction
 // UserID - String, Number - Target user ID - user
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function Unban(Val Token, Val ChatID, Val UserID) Export
 
 	String_ = "String";
@@ -687,7 +687,7 @@ EndFunction
 // UserLimit - Number - User limit (infinite if not specified) - limit
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function CreateInvitationLink(Val Token
     , Val ChatID
     , Val Title = ""
@@ -721,7 +721,7 @@ EndFunction
 // MessageID - String, Number - Target message ID - message
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
     
     String_ = "String";
@@ -750,7 +750,7 @@ EndFunction
 // MessageID - String, Number - Target message ID - message
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
     
     String_ = "String";
@@ -777,7 +777,7 @@ EndFunction
 // ChatID - String, Number - Target chat ID - chat
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function GetParticipantCount(Val Token, Val ChatID) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -805,7 +805,7 @@ EndFunction
 // Token - String - Token - token
 // 
 // Returns:
-// Key-Value Pair - Key > ID, Value > Emoji
+// Map Of KeyAndValue - Key > ID, Value > Emoji
 Function GetAvatarIconList(Val Token) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -839,7 +839,7 @@ EndFunction
 // IconID - String - See GetAvatarIconList - icon
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export
     Return ForumTopicManagement(Token, ChatID, Title, IconID);
 EndFunction
@@ -855,7 +855,7 @@ EndFunction
 // IconID - String - See GetAvatarIconList - icon
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function EditForumTopic(Val Token
     , Val ChatID
     , Val ThreadID
@@ -874,7 +874,7 @@ EndFunction
 // ThreadID - String, Number - Thread ID - topic
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
     Return ManageForumThreadState(Token, ChatID, 2, ThreadID);    
 EndFunction
@@ -888,7 +888,7 @@ EndFunction
 // ThreadID - String, Number - Thread ID - topic
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
     Return ManageForumThreadState(Token, ChatID, 1, ThreadID);    
 EndFunction
@@ -902,7 +902,7 @@ EndFunction
 // ThreadID - String, Number - Thread ID - topic
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export
     Return ManageForumThreadState(Token, ChatID, 3, ThreadID);    
 EndFunction
@@ -915,7 +915,7 @@ EndFunction
 // ChatID - String, Number - Thread chat ID - forum
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function HideMainForumTopic(Val Token, Val ChatID) Export
     Return ManageMainTopicVisibility(Token, ChatID, True);
 EndFunction
@@ -928,7 +928,7 @@ EndFunction
 // ChatID - String, Number - Thread chat ID - forum
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function ShowMainForumTopic(Val Token, Val ChatID) Export
     Return ManageMainTopicVisibility(Token, ChatID, False);
 EndFunction
@@ -942,7 +942,7 @@ EndFunction
 // Title - String - New main thread name - title
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -968,7 +968,7 @@ EndFunction
 // ThreadID - String, Number - Thread ID. Main if not filled - topic
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from Telegram
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function ClearThreadPinnedMessagesList(Val Token, Val ChatID, Val ThreadID = "") Export
     
     OPI_TypeConversion.GetLine(Token);

@@ -45,7 +45,7 @@
 // ClientId - String - Client id - id
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetConfirmationCode(Val ClientId) Export
 
     OPI_TypeConversion.GetLine(ClientId);
@@ -66,7 +66,7 @@ EndFunction
 // DeviceCode - String - device_code from GetConfirmationCode() - device
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
     
     OPI_TypeConversion.GetLine(ClientId);
@@ -94,7 +94,7 @@ EndFunction
 // RefreshToken - String - Refresh token - refresh
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
     
     OPI_TypeConversion.GetLine(ClientId);
