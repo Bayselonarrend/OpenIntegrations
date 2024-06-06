@@ -49,7 +49,7 @@
 // ArrayOfSheetNames - Array of String - Array of names to add new sheets to the book - sheets
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function CreateBook(Val Token, Val Name, Val ArrayOfSheetNames) Export
     
     OPI_TypeConversion.GetLine(Name);
@@ -81,7 +81,7 @@ EndFunction
 // Identifier - String - BookIdentifier - spreadsheet
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetBook(Val Token, Val Identifier) Export
 
     OPI_TypeConversion.GetLine(Identifier); 
@@ -104,7 +104,7 @@ EndFunction
 // Name - String - New name - title
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function EditBookTitle(Val Token, Val Book, Val Name) Export
     
     OPI_TypeConversion.GetLine(Book);
@@ -142,7 +142,7 @@ EndFunction
 // Name - String - NewSheetName - title
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function AddSheet(Val Token, Val Book, Val Name) Export
     
     OPI_TypeConversion.GetLine(Book);
@@ -172,7 +172,7 @@ EndFunction
 // Sheet - String - IdentifierOfSheetToDelete - sheet
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function DeleteSheet(Val Token, Val Book, Val Sheet) Export
     
     OPI_TypeConversion.GetLine(Book);
@@ -204,7 +204,7 @@ EndFunction
 // Sheet - String - CopiedSheetID - sheet
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export
     
     OPI_TypeConversion.GetLine(From);
@@ -235,12 +235,12 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Book - String - BookID - spreadsheet 
-// ValueMapping - Key-Value Pair - Fill data where the key is the cell name like A1 - data
+// ValueMapping - Map Of KeyAndValue - Fill data where the key is the cell name like A1 - data
 // Sheet - String - Sheet name (first sheet by default) - sheetname
 // MajorDimension - String - Main dimension when filling the array range - dim
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function SetCellValues(Val Token
     , Val Book
     , Val ValueMapping
@@ -276,7 +276,7 @@ EndFunction
 // Sheet - String - Sheet name (first sheet by default) - sheetname
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function ClearCells(Val Token, Val Book, Val CellsArray, Val Sheet = "") Export
     
     OPI_TypeConversion.GetLine(Book);
@@ -304,7 +304,7 @@ EndFunction
 // Sheet - String - Sheet name (first sheet by default) - sheetname
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetCellValues(Val Token, Val Book, Val CellsArray = "", Val Sheet = "") Export
     
     OPI_TypeConversion.GetLine(Book);

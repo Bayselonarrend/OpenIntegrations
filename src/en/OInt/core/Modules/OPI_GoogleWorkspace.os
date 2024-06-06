@@ -83,7 +83,7 @@ EndFunction
 // Code - String - Code from browser - code
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
     
     OPI_TypeConversion.GetLine(ClientID);
@@ -114,7 +114,7 @@ EndFunction
 // RefreshToken - String - Refresh token - refresh
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Google
+// Map Of KeyAndValue - serialized JSON response from Google
 Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
     
     OPI_TypeConversion.GetLine(ClientID);

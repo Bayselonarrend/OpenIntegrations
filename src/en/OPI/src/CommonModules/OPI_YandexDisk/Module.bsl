@@ -50,7 +50,7 @@
 // Token - String - Token - token
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetDiskInformation(Val Token) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -70,7 +70,7 @@ EndFunction
 // Path - String - Path to the created folder - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function CreateFolder(Val Token, Val Path) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -106,7 +106,7 @@ EndFunction
 // Path - String - Path to folder or file - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetObject(Val Token, Val Path) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -131,7 +131,7 @@ EndFunction
 // ToCart - Boolean - To cart - can
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -160,7 +160,7 @@ EndFunction
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -200,7 +200,7 @@ EndFunction
 // Path - String - Path to the file for downloading - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetDownloadLink(Val Token, Val Path) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -257,7 +257,7 @@ EndFunction
 // SortByDate - Boolean - True > sort by date, False > alphabetically - datesort
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetFilesList(Val Token
     , Val Count = 0
     , Val OffsetFromStart = 0
@@ -308,7 +308,7 @@ EndFunction
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -349,7 +349,7 @@ EndFunction
 // Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex 
+// Map Of KeyAndValue - serialized JSON response from Yandex 
 Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -387,7 +387,7 @@ EndFunction
 // Address - String - File URL - url
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -420,7 +420,7 @@ EndFunction
 // Path - String - Path to the object to be published - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex 
+// Map Of KeyAndValue - serialized JSON response from Yandex 
 Function PublishObject(Val Token, Val Path) Export
     Return TogglePublicAccess(Token, Path, True);   
 EndFunction
@@ -433,7 +433,7 @@ EndFunction
 // Path - String - Path to the previously published object - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function CancelObjectPublication(Val Token, Val Path) Export
     Return TogglePublicAccess(Token, Path, False);
 EndFunction
@@ -447,7 +447,7 @@ EndFunction
 // OffsetFromStart - Number - Offset for getting objects not from the beginning of the list - offset
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -482,7 +482,7 @@ EndFunction
 // OffsetFromStart - Number - Offset for getting nested objects not from the beginning of the list - offset
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -519,7 +519,7 @@ EndFunction
 // Path - String - Path inside the object - path
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export
     
     OPI_TypeConversion.GetLine(Token);
@@ -552,7 +552,7 @@ EndFunction
 // Target - String - File save path - to
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Yandex
+// Map Of KeyAndValue - serialized JSON response from Yandex
 Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export
     
     OPI_TypeConversion.GetLine(Token);

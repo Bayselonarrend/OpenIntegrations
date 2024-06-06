@@ -83,7 +83,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreatePost(Val Text
     , Val ImageArray
     , Val Advertisement = False
@@ -98,13 +98,13 @@ Function CreatePost(Val Text
     For Each PostImage In ImageArray Do
         
         Parameters_ = GetStandardParameters(Parameters);
-        ResponseCorrespondence = GetImageCorrespondence(PostImage, Parameters_, "Post");
+        ResponseMap = GetImageMap(PostImage, Parameters_, "Post");
         
-        OwnerId = ResponseCorrespondence.Get("owner_id");
-        ObjectId = ResponseCorrespondence.Get("id");
+        OwnerId = ResponseMap.Get("owner_id");
+        ObjectId = ResponseMap.Get("id");
         
         If Not ValueIsFilled(OwnerId) Or Not ValueIsFilled(ObjectId) Then
-        	Return ResponseCorrespondence;
+        	Return ResponseMap;
         EndIf;
         
         OwnerId = OPI_Tools.NumberToString(OwnerId);
@@ -133,7 +133,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreateCompositePost(Val Text
     , Val Objects
     , Val Advertisement = False
@@ -167,7 +167,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function DeletePost(Val PostID, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(PostID);
@@ -191,7 +191,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Question);
@@ -231,14 +231,14 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
     Parameters_.Insert("question" , Question);
     
     Poll = OPI_Tools.Get("api.vk.com/method/polls.create", Parameters_);
-    PollCorrespondence = Poll.Get(Response_);
+    PollMap = Poll.Get(Response_);
     
-    If Not ValueIsFilled(PollCorrespondence) Then
+    If Not ValueIsFilled(PollMap) Then
     	Return Poll;
     EndIf;
     
-    OwnerId = PollCorrespondence.Get("owner_id");
-    ObjectId = PollCorrespondence.Get("id");
+    OwnerId = PollMap.Get("owner_id");
+    ObjectId = PollMap.Get("id");
     
     If Not ValueIsFilled(OwnerId) Or Not ValueIsFilled(ObjectId) Then
         Return Poll;
@@ -266,7 +266,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Name);
@@ -292,7 +292,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(AlbumID);
@@ -315,7 +315,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreateStory(Val Image, Val URL = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(URL);
@@ -340,7 +340,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(AlbumID);
@@ -363,7 +363,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function DeleteImage(Val ImageID, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(ImageID);
@@ -388,7 +388,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK 
+// Map Of KeyAndValue - Serialized JSON response from VK 
 Function UploadVideoToServer(Val Video
     , Val Name
     , Val Description = ""
@@ -437,7 +437,7 @@ EndFunction
 // View - String - Upload type (Post, Product, Story, Poll, Other) - type
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK 
+// Map Of KeyAndValue - Serialized JSON response from VK 
 Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export
        
     Parameters = GetStandardParameters(Parameters);
@@ -509,7 +509,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Name);
@@ -534,7 +534,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CloseDiscussion(Val DiscussionID, Val DeleteCompletely = False, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(DiscussionID);
@@ -558,7 +558,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(DiscussionID);
@@ -581,7 +581,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(DiscussionID);
@@ -610,7 +610,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(PostID);
@@ -643,7 +643,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function MakeRepost(Val PostID
     , Val WallID = ""
     , Val TargetWall = ""
@@ -683,7 +683,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function WriteMessage(Val Text
     , Val UserID
     , Val Communitytoken
@@ -724,7 +724,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Export
 
     Parameters_ = GetStandardParameters(Parameters);
@@ -798,7 +798,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export
     
     OPI_TypeConversion.GetDate(StartDate);
@@ -889,7 +889,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(AccountID);
@@ -938,7 +938,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreateAd(Val CampaignNumber
     , Val DailyLimit
     , Val CategoryNumber
@@ -999,7 +999,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function PauseAdvertisingAd(Val AccountID, Val AdID, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(AccountID);
@@ -1034,7 +1034,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function GetAdvertisingCategoryList(Val Parameters = "") Export
     
     Parameters_ = GetStandardParameters(Parameters);
@@ -1091,13 +1091,13 @@ Function GetProductCategoryList(Val Parameters = "") Export
     	Return Response;
     EndIf;
        
-    CategoryCorrespondence = New Map;
+    CategoryMap = New Map;
     
     For Each Category In Categories Do      
-        CategoryCorrespondence.Insert(Category["id"], Category["name"]);
+        CategoryMap.Insert(Category["id"], Category["name"]);
     EndDo;
        
-    Return CategoryCorrespondence;
+    Return CategoryMap;
     
 EndFunction
 
@@ -1109,7 +1109,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Array of product matches
+// Map Of KeyAndValue - Array of product maps
 Function GetProductList(Val Selection = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Selection);
@@ -1138,7 +1138,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function GetProductsByID(Val Products, Val Parameters = "") Export
     
     OPI_TypeConversion.GetCollection(Products);
@@ -1167,12 +1167,12 @@ EndFunction
 // Adds a new product to the community's catalog
 //
 // Parameters:
-// ProductDescription - Key-Value Pair - See GetProductDescription - product - JSON description of the product or path
+// ProductDescription - Map Of KeyAndValue - See GetProductDescription - product - JSON description of the product or path
 // Selection - String - Selection ID for placing the product, if needed - sel
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export        
     Return ProductManagement(ProductDescription, , Selection, Parameters);    
 EndFunction
@@ -1182,12 +1182,12 @@ EndFunction
 //
 // Parameters:
 // Product - Number, String - Identifier of the product being edited - item
-// ProductDescription - Key-Value Pair - See GetProductDescription - product - JSON description of the product or path
+// ProductDescription - Map Of KeyAndValue - See GetProductDescription - product - JSON description of the product or path
 // Selection - String - Identifier of the new selection, if needed - sel 
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export
     Return ProductManagement(ProductDescription, Product, Selection, Parameters);    
 EndFunction
@@ -1200,7 +1200,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function DeleteProduct(Val Product, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Product);
@@ -1223,7 +1223,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(ExistingGroup);
@@ -1253,7 +1253,7 @@ EndFunction
 // Get product description. !NOCLI
 // 
 // Returns:
-// Key-Value Pair - Empty product description:
+// Map Of KeyAndValue - Empty product description:
 // *Name - String - Product name
 // *Description - String - Product description
 // *Category - String - See GetProductCategoryList
@@ -1305,7 +1305,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Array of selection matches
+// Map Of KeyAndValue - Array of selection maps
 Function GetSelectionList(Val Parameters = "") Export
     
     Parameters_ = GetStandardParameters(Parameters);
@@ -1326,7 +1326,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function GetSelectionsByID(Val Selections, Val Parameters = "") Export
     
     OPI_TypeConversion.GetCollection(Selections);
@@ -1360,7 +1360,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function CreateProductCollection(Val Name
     , Val Image
     , Val Main = False
@@ -1383,7 +1383,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function EditProductCollection(Val Name
     , Val Selection
     , Val Image = ""
@@ -1404,7 +1404,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function AddProductToSelection(Val ProductsArray, Val Selection, Val Parameters = "") Export
     
     OPI_TypeConversion.GetCollection(ProductsArray);
@@ -1437,7 +1437,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Product);
@@ -1454,7 +1454,7 @@ Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters =
     
 EndFunction
 
-// DeleteSelection
+// Delete selection
 // Deletes the selection by ID
 //
 // Parameters:
@@ -1462,7 +1462,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK
+// Map Of KeyAndValue - Serialized JSON response from VK
 Function DeleteSelection(Val Selection, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Selection);
@@ -1487,7 +1487,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK 
+// Map Of KeyAndValue - Serialized JSON response from VK 
 Function GetPropertyList(Val Parameters = "") Export
     
     Response_ = "response";
@@ -1508,7 +1508,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK 
+// Map Of KeyAndValue - Serialized JSON response from VK 
 Function CreateProductProperty(Val Name, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Name);
@@ -1531,7 +1531,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK 
+// Map Of KeyAndValue - Serialized JSON response from VK 
 Function EditProductProperty(Val Name, Val Property, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Name);
@@ -1556,7 +1556,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK 
+// Map Of KeyAndValue - Serialized JSON response from VK 
 Function DeleteProductProperty(Val Property, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Property);
@@ -1579,7 +1579,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK    
+// Map Of KeyAndValue - Serialized JSON response from VK    
 Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Property);
@@ -1605,7 +1605,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK      
+// Map Of KeyAndValue - Serialized JSON response from VK      
 Function EditProductPropertyVariant(Val Value, Val Property, Val Option, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Value);
@@ -1631,7 +1631,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK     
+// Map Of KeyAndValue - Serialized JSON response from VK     
 Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(Option);
@@ -1656,7 +1656,7 @@ EndFunction
 // Parameters - Structure Of String - See GetStandardParameters - auth - Authorization JSON or path to .json
 // 
 // Returns:
-// Key-Value Pair - Serialized JSON response from VK 
+// Map Of KeyAndValue - Serialized JSON response from VK 
 Function GetOrderList(Val Parameters = "") Export
     
     Parameters = GetStandardParameters(Parameters);
@@ -1773,7 +1773,7 @@ Function GetImageID(Val Image, Val Parameters, Val View)
     
 EndFunction
 
-Function GetImageCorrespondence(Val Image, Val Parameters, Val View)
+Function GetImageMap(Val Image, Val Parameters, Val View)
 	
 	Response = UploadPhotoToServer(Image, Parameters, View);   
     ResponseArray = Response.Get("response");
@@ -1784,11 +1784,11 @@ Function GetImageCorrespondence(Val Image, Val Parameters, Val View)
     	If ResponseArray.Count() = 0 Then
     		Return Response;
     	Else
-    		ResponseCorrespondence = ResponseArray[0];
+    		ResponseMap = ResponseArray[0];
     	EndIf;
     EndIf;
      
-    Return ResponseCorrespondence;
+    Return ResponseMap;
        
 EndFunction
 
@@ -1816,7 +1816,7 @@ EndFunction
 
 Function DetermineImageUploadMethod(Val View)
     
-    MethodCorrespondence = New Map;
+    MethodMap = New Map;
     Upload = "Upload";
     Save = "Save";
     Way = "Way";
@@ -1824,40 +1824,40 @@ Function DetermineImageUploadMethod(Val View)
     
     If View = "Post" Then
        
-        MethodCorrespondence.Insert(Upload , "photos.getWallUploadServer");
-        MethodCorrespondence.Insert(Save, "photos.saveWallPhoto");
-        MethodCorrespondence.Insert(Photo , "photo");
-        MethodCorrespondence.Insert(Way , 1);
+        MethodMap.Insert(Upload , "photos.getWallUploadServer");
+        MethodMap.Insert(Save, "photos.saveWallPhoto");
+        MethodMap.Insert(Photo , "photo");
+        MethodMap.Insert(Way , 1);
         
     ElsIf View = "Product" Then
         
-        MethodCorrespondence.Insert(Upload , "market.getProductPhotoUploadServer");
-        MethodCorrespondence.Insert(Save, "market.saveProductPhoto");
-        MethodCorrespondence.Insert(Way , 2);
+        MethodMap.Insert(Upload , "market.getProductPhotoUploadServer");
+        MethodMap.Insert(Save, "market.saveProductPhoto");
+        MethodMap.Insert(Way , 2);
         
     ElsIf View = "Story" Then
         
-        MethodCorrespondence.Insert(Upload , "stories.getPhotoUploadServer");
-        MethodCorrespondence.Insert(Save, "stories.save");
-        MethodCorrespondence.Insert(Way , 3);
+        MethodMap.Insert(Upload , "stories.getPhotoUploadServer");
+        MethodMap.Insert(Save, "stories.save");
+        MethodMap.Insert(Way , 3);
     
     ElsIf View = "Poll" Then
         
-        MethodCorrespondence.Insert(Upload , "polls.getPhotoUploadServer");
-        MethodCorrespondence.Insert(Save, "polls.savePhoto");
-        MethodCorrespondence.Insert(Photo , "photo");
-        MethodCorrespondence.Insert(Way , 1);
+        MethodMap.Insert(Upload , "polls.getPhotoUploadServer");
+        MethodMap.Insert(Save, "polls.savePhoto");
+        MethodMap.Insert(Photo , "photo");
+        MethodMap.Insert(Way , 1);
         
     Else
         
-        MethodCorrespondence.Insert(Upload , "photos.getUploadServer");
-        MethodCorrespondence.Insert(Save, "photos.save");
-        MethodCorrespondence.Insert(Photo , "photos_list");
-        MethodCorrespondence.Insert(Way , 1);
+        MethodMap.Insert(Upload , "photos.getUploadServer");
+        MethodMap.Insert(Save, "photos.save");
+        MethodMap.Insert(Photo , "photos_list");
+        MethodMap.Insert(Way , 1);
         
     EndIf;
     
-    Return MethodCorrespondence;
+    Return MethodMap;
     
 EndFunction
 

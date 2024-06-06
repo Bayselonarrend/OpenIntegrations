@@ -51,7 +51,7 @@
 // URL - String - URL for setting up Webhook - url
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function SetWebhook(Val Token, Val URL) Export
     
     Parameters = New Structure;
@@ -70,7 +70,7 @@ EndFunction
 // Token - String - Token - token
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function GetChannelInformation(Val Token) Export
     
     URL = "https://chatapi.viber.com/pa/get_account_info";   
@@ -86,7 +86,7 @@ EndFunction
 // UserID - String, Number - Viber User ID - user
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function GetUserData(Val Token, Val UserID) Export
     
     URL = "https://chatapi.viber.com/pa/get_user_details";
@@ -108,7 +108,7 @@ EndFunction
 // UserIDs - String,Number,Array of String,Number - Viber User(s) ID - users
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function GetOnlineUsers(Val Token, Val UserIDs) Export
     
     URL = "https://chatapi.viber.com/pa/get_online";
@@ -137,7 +137,7 @@ EndFunction
 // Keyboard - Structure Of String - See CreateKeyboardFromArrayButton - keyboard
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function SendTextMessage(Val Token
     , Val Text
     , Val UserID
@@ -159,7 +159,7 @@ EndFunction
 // Description - String - Image annotation - description
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export
     
     Return SendMessage(Token, "picture", UserID, SendingToChannel, URL, Description);
@@ -178,7 +178,7 @@ EndFunction
 // Size - Number - File size. If not filled in > determined automatically by downloading the file - size
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function SendFile(Val Token
     , Val URL
     , Val UserID
@@ -216,7 +216,7 @@ EndFunction
 // SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function SendContact(Val Token
     , Val ContactName
     , Val PhoneNumber
@@ -242,7 +242,7 @@ EndFunction
 // SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export
     
     Parameters = New Structure;
@@ -263,7 +263,7 @@ EndFunction
 // SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
 // 
 // Returns:
-// Key-Value Pair - serialized JSON response from Viber
+// Map Of KeyAndValue - serialized JSON response from Viber
 Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export
     
     Return SendMessage(Token, "url", UserID, SendingToChannel, URL);
@@ -323,7 +323,7 @@ EndFunction
 // UserID - String, Number - Viber User ID
 // IsChannel - Boolean - Sending to channel or bot chat
 // Value - String, Structure - Value:
-// * URL - String - При отпраintoе URL
+// * URL - String - Прand отпраintoе URL
 // * Size - Number, String - File size in case of sending
 // * Extension - String - File extension in case of sending
 // Text - String - Message text
