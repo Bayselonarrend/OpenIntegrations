@@ -6,7 +6,7 @@ sidebar_position: 4
  Creates a new event
 
 
-*Function CreateEvent(Val Token, Val Calendar, Val EventDescription) ExportReturn EventManagement(Token, Calendar, EventDescription);EndFunction*
+*Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

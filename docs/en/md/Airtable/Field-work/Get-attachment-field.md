@@ -6,7 +6,7 @@ sidebar_position: 5
  Gets the description of a file field
 
 
-*Function GetAttachmentField(Val Name) ExportReturn PrimitiveFieldDescription(Name, "multipleAttachments");EndFunction*
+*Function GetAttachmentField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
