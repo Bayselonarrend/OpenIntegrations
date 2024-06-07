@@ -422,7 +422,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex 
 Function PublishObject(Val Token, Val Path) Export
-    Return TogglePublicAccess(Token, Path, True);   
+	
+    Return TogglePublicAccess(Token, Path, True);  
+     
 EndFunction
 
 // Unpublish object
@@ -435,7 +437,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function CancelObjectPublication(Val Token, Val Path) Export
+	
     Return TogglePublicAccess(Token, Path, False);
+    
 EndFunction
 
 // Get list of published objects.

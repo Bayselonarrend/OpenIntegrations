@@ -6,7 +6,7 @@ sidebar_position: 3
  Gets the description of a string field
 
 
-*Function GetStringField(Val Name) ExportReturn PrimitiveFieldDescription(Name, "richText");EndFunction*
+*Function GetStringField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
