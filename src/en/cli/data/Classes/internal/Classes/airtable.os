@@ -1,806 +1,806 @@
-﻿Функция ПолучитьСостав() Экспорт
+﻿Function GetComposition() Export
 
-    ТаблицаСостава = Новый ТаблицаЗначений();
-    ТаблицаСостава.Колонки.Добавить("Библиотека");
-    ТаблицаСостава.Колонки.Добавить("Модуль");
-    ТаблицаСостава.Колонки.Добавить("Метод");
-    ТаблицаСостава.Колонки.Добавить("МетодПоиска");
-    ТаблицаСостава.Колонки.Добавить("Параметр");
-    ТаблицаСостава.Колонки.Добавить("Описание");
-    ТаблицаСостава.Колонки.Добавить("ОписаниеМетода");
-    ТаблицаСостава.Колонки.Добавить("Область");
+    TableСоwithтаinа = New ValueTable();
+    TableСоwithтаinа.Columns.Add("Library");
+    TableСоwithтаinа.Columns.Add("Module");
+    TableСоwithтаinа.Columns.Add("Method");
+    TableСоwithтаinа.Columns.Add("SearchMethod");
+    TableСоwithтаinа.Columns.Add("Parameter");
+    TableСоwithтаinа.Columns.Add("Description");
+    TableСоwithтаinа.Columns.Add("MethodDescription");
+    TableСоwithтаinа.Columns.Add("Region");
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetListOfBases";
-    НоваяСтрока.МетодПоиска = "GETLISTOFBASES";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Working with databases";
-    НоваяСтрока.ОписаниеМетода   = "Gets the list of available bases";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetListOfBases";
-    НоваяСтрока.МетодПоиска = "GETLISTOFBASES";
-    НоваяСтрока.Параметр    = "--offset";
-    НоваяСтрока.Описание    = "Next page identifier of the base list from the previous request (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Working with databases";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetListOfBases";
+    NewLine.SearchMethod = "GETLISTOFBASES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Working with databases";
+    NewLine.MethodDescription   = "Gets the list of available bases";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetDatabaseTables";
-    НоваяСтрока.МетодПоиска = "GETDATABASETABLES";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Working with databases";
-    НоваяСтрока.ОписаниеМетода   = "Gets the schema of base tables";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetListOfBases";
+    NewLine.SearchMethod = "GETLISTOFBASES";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Next page identifier of the base list from the previous request (optional, def. val. - Empty)";
+    NewLine.Region     = "Working with databases";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetDatabaseTables";
-    НоваяСтрока.МетодПоиска = "GETDATABASETABLES";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Base identifier";
-    НоваяСтрока.Область     = "Working with databases";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetDatabaseTables";
+    NewLine.SearchMethod = "GETDATABASETABLES";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Working with databases";
+    NewLine.MethodDescription   = "Gets the schema of base tables";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateDatabase";
-    НоваяСтрока.МетодПоиска = "CREATEDATABASE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Working with databases";
-    НоваяСтрока.ОписаниеМетода   = "Creates a new database
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetDatabaseTables";
+    NewLine.SearchMethod = "GETDATABASETABLES";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Base identifier";
+    NewLine.Region     = "Working with databases";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateDatabase";
+    NewLine.SearchMethod = "CREATEDATABASE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Working with databases";
+    NewLine.MethodDescription   = "Creates a new database
     |
-    |    Структура JSON данных описания таблиц (параметр --tablesdata):
+    |    The structure of the JSON table properties data (parameter --tablesdata):
     |  {
-    |    ""Имя таблицы 1"": [
+    |    ""Table name 1"": [
     |                         {
-    |                          <Данные описание поля 1>
+    |                          <Field description data 1>
     |                         },
     |                         {
-    |                          <Данные описание поля 2>
+    |                          <Field description data 2>
     |                        },
     |                       ],
     |   ...
     |  }
     |
-    |Функции формирования описаний полей: ПолучитьПолеСтроковое, ПолучитьПолеНомера, ПолучитьПолеВложения, ПолучитьПолеФлажка, ПолучитьПолеДаты, ПолучитьПолеПочты, ПолучитьПолеТелефона, ПолучитьПолеСсылки
+    |Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateDatabase";
-    НоваяСтрока.МетодПоиска = "CREATEDATABASE";
-    НоваяСтрока.Параметр    = "--ws";
-    НоваяСтрока.Описание    = "Workspace identifier";
-    НоваяСтрока.Область     = "Working with databases";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateDatabase";
+    NewLine.SearchMethod = "CREATEDATABASE";
+    NewLine.Parameter    = "--ws";
+    NewLine.Description    = "Workspace identifier";
+    NewLine.Region     = "Working with databases";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateDatabase";
-    НоваяСтрока.МетодПоиска = "CREATEDATABASE";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "New base name";
-    НоваяСтрока.Область     = "Working with databases";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateDatabase";
+    NewLine.SearchMethod = "CREATEDATABASE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New base name";
+    NewLine.Region     = "Working with databases";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateDatabase";
-    НоваяСтрока.МетодПоиска = "CREATEDATABASE";
-    НоваяСтрока.Параметр    = "--tablesdata";
-    НоваяСтрока.Описание    = "Table description: Key > name, Value > array of fields";
-    НоваяСтрока.Область     = "Working with databases";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateDatabase";
+    NewLine.SearchMethod = "CREATEDATABASE";
+    NewLine.Parameter    = "--tablesdata";
+    NewLine.Description    = "Table description: Key > name, Value > array of fields";
+    NewLine.Region     = "Working with databases";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateTable";
-    НоваяСтрока.МетодПоиска = "CREATETABLE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Table management";
-    НоваяСтрока.ОписаниеМетода   = "Creates a new table in the base
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Table management";
+    NewLine.MethodDescription   = "Creates a new table in the base
     |
-    |    Структура JSON данных массива полей (параметр --fieldsdata):
+    |    The structure of the JSON array of fields data (parameter --fieldsdata):
     |    [
     |        {
-    |          <Данные описание поля 1>
+    |          <Field description data 1>
     |        },
     |        {
-    |          <Данные описание поля 2>
+    |          <Field description data 2>
     |        },
     |    ]
     |
-    |Функции формирования описаний полей: ПолучитьПолеСтроковое, ПолучитьПолеНомера, ПолучитьПолеВложения, ПолучитьПолеФлажка, ПолучитьПолеДаты, ПолучитьПолеПочты, ПолучитьПолеТелефона, ПолучитьПолеСсылки
+    |Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateTable";
-    НоваяСтрока.МетодПоиска = "CREATETABLE";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Base identifier";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateTable";
-    НоваяСтрока.МетодПоиска = "CREATETABLE";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "New table name";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateTable";
-    НоваяСтрока.МетодПоиска = "CREATETABLE";
-    НоваяСтрока.Параметр    = "--fieldsdata";
-    НоваяСтрока.Описание    = "Array of field descriptions";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateTable";
-    НоваяСтрока.МетодПоиска = "CREATETABLE";
-    НоваяСтрока.Параметр    = "--description";
-    НоваяСтрока.Описание    = "Table description (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyTable";
-    НоваяСтрока.МетодПоиска = "MODIFYTABLE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Table management";
-    НоваяСтрока.ОписаниеМетода   = "Changes the name and    |   or description of the base";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyTable";
-    НоваяСтрока.МетодПоиска = "MODIFYTABLE";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Base identifier";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyTable";
-    НоваяСтрока.МетодПоиска = "MODIFYTABLE";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyTable";
-    НоваяСтрока.МетодПоиска = "MODIFYTABLE";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "New name (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyTable";
-    НоваяСтрока.МетодПоиска = "MODIFYTABLE";
-    НоваяСтрока.Параметр    = "--description";
-    НоваяСтрока.Описание    = "New description (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Table management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateField";
-    НоваяСтрока.МетодПоиска = "CREATEFIELD";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Creates a new field in the table";
-
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Base identifier";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New table name";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--fieldsdata";
+    NewLine.Description    = "Array of field descriptions";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateTable";
+    NewLine.SearchMethod = "CREATETABLE";
+    NewLine.Parameter    = "--description";
+    NewLine.Description    = "Table description (optional, def. val. - Empty)";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyTable";
+    NewLine.SearchMethod = "MODIFYTABLE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Table management";
+    NewLine.MethodDescription   = "Changes the name and    |   or description of the base";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyTable";
+    NewLine.SearchMethod = "MODIFYTABLE";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Base identifier";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyTable";
+    NewLine.SearchMethod = "MODIFYTABLE";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyTable";
+    NewLine.SearchMethod = "MODIFYTABLE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New name (optional, def. val. - Empty)";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyTable";
+    NewLine.SearchMethod = "MODIFYTABLE";
+    NewLine.Parameter    = "--description";
+    NewLine.Description    = "New description (optional, def. val. - Empty)";
+    NewLine.Region     = "Table management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateField";
+    NewLine.SearchMethod = "CREATEFIELD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Creates a new field in the table";
+
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateField";
-    НоваяСтрока.МетодПоиска = "CREATEFIELD";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Base identifier";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateField";
-    НоваяСтрока.МетодПоиска = "CREATEFIELD";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateField";
-    НоваяСтрока.МетодПоиска = "CREATEFIELD";
-    НоваяСтрока.Параметр    = "--Description of the new field";
-    НоваяСтрока.Описание    = "fielddata";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyField";
-    НоваяСтрока.МетодПоиска = "MODIFYFIELD";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Changes the name and    |   or description of an existing table field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyField";
-    НоваяСтрока.МетодПоиска = "MODIFYFIELD";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Base identifier Base";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyField";
-    НоваяСтрока.МетодПоиска = "MODIFYFIELD";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyField";
-    НоваяСтрока.МетодПоиска = "MODIFYFIELD";
-    НоваяСтрока.Параметр    = "--field";
-    НоваяСтрока.Описание    = "Field identifier";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyField";
-    НоваяСтрока.МетодПоиска = "MODIFYFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "New name (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "ModifyField";
-    НоваяСтрока.МетодПоиска = "MODIFYFIELD";
-    НоваяСтрока.Параметр    = "--description";
-    НоваяСтрока.Описание    = "New description (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetStringField";
-    НоваяСтрока.МетодПоиска = "GETSTRINGFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "New field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of a string field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetNumberField";
-    НоваяСтрока.МетодПоиска = "GETNUMBERFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "New field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of a numeric field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetNumberField";
-    НоваяСтрока.МетодПоиска = "GETNUMBERFIELD";
-    НоваяСтрока.Параметр    = "--precision";
-    НоваяСтрока.Описание    = "Number of decimal places (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Working with fields";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetAttachmentField";
-    НоваяСтрока.МетодПоиска = "GETATTACHMENTFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "Field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of a file field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetCheckboxField";
-    НоваяСтрока.МетодПоиска = "GETCHECKBOXFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "Field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of a boolean field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetDateField";
-    НоваяСтрока.МетодПоиска = "GETDATEFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "Field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of a date field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetEmailField";
-    НоваяСтрока.МетодПоиска = "GETEMAILFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "Field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of an email field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetPhoneField";
-    НоваяСтрока.МетодПоиска = "GETPHONEFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "Field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of a phone number field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetLinkField";
-    НоваяСтрока.МетодПоиска = "GETLINKFIELD";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "Field name";
-    НоваяСтрока.Область     = "Working with fields";
-    НоваяСтрока.ОписаниеМетода   = "Gets the description of a URL field";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetListOfRecords";
-    НоваяСтрока.МетодПоиска = "GETLISTOFRECORDS";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Record management";
-    НоваяСтрока.ОписаниеМетода   = "Gets the list of records of the selected table";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetListOfRecords";
-    НоваяСтрока.МетодПоиска = "GETLISTOFRECORDS";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetListOfRecords";
-    НоваяСтрока.МетодПоиска = "GETLISTOFRECORDS";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetListOfRecords";
-    НоваяСтрока.МетодПоиска = "GETLISTOFRECORDS";
-    НоваяСтрока.Параметр    = "--offset";
-    НоваяСтрока.Описание    = "Next page identifier of data from the previous request (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetRecord";
-    НоваяСтрока.МетодПоиска = "GETRECORD";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Record management";
-    НоваяСтрока.ОписаниеМетода   = "Gets row data of the table by identifier";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetRecord";
-    НоваяСтрока.МетодПоиска = "GETRECORD";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetRecord";
-    НоваяСтрока.МетодПоиска = "GETRECORD";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetRecord";
-    НоваяСтрока.МетодПоиска = "GETRECORD";
-    НоваяСтрока.Параметр    = "--record";
-    НоваяСтрока.Описание    = "Record identifier in the table";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreatePosts";
-    НоваяСтрока.МетодПоиска = "CREATEPOSTS";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Record management";
-    НоваяСтрока.ОписаниеМетода   = "Creates one or an array of records by description or an array of field value descriptions";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreatePosts";
-    НоваяСтрока.МетодПоиска = "CREATEPOSTS";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreatePosts";
-    НоваяСтрока.МетодПоиска = "CREATEPOSTS";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreatePosts";
-    НоваяСтрока.МетодПоиска = "CREATEPOSTS";
-    НоваяСтрока.Параметр    = "--data";
-    НоваяСтрока.Описание    = "Set or array of sets of Key : Value pairs > Field : Indicator";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeletePosts";
-    НоваяСтрока.МетодПоиска = "DELETEPOSTS";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Record management";
-    НоваяСтрока.ОписаниеМетода   = "Deletes one or an array of records by identifiers";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeletePosts";
-    НоваяСтрока.МетодПоиска = "DELETEPOSTS";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeletePosts";
-    НоваяСтрока.МетодПоиска = "DELETEPOSTS";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeletePosts";
-    НоваяСтрока.МетодПоиска = "DELETEPOSTS";
-    НоваяСтрока.Параметр    = "--records";
-    НоваяСтрока.Описание    = "Identifier or array of record identifiers";
-    НоваяСтрока.Область     = "Record management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetComments";
-    НоваяСтрока.МетодПоиска = "GETCOMMENTS";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Comment management";
-    НоваяСтрока.ОписаниеМетода   = "Gets the list of comments for a record in the table";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetComments";
-    НоваяСтрока.МетодПоиска = "GETCOMMENTS";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetComments";
-    НоваяСтрока.МетодПоиска = "GETCOMMENTS";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetComments";
-    НоваяСтрока.МетодПоиска = "GETCOMMENTS";
-    НоваяСтрока.Параметр    = "--record";
-    НоваяСтрока.Описание    = "Record identifier in the table";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "GetComments";
-    НоваяСтрока.МетодПоиска = "GETCOMMENTS";
-    НоваяСтрока.Параметр    = "--offset";
-    НоваяСтрока.Описание    = "Next page identifier of data from the previous request (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateComment";
-    НоваяСтрока.МетодПоиска = "CREATECOMMENT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Comment management";
-    НоваяСтрока.ОписаниеМетода   = "Creates a comment for a record in the table";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateComment";
-    НоваяСтрока.МетодПоиска = "CREATECOMMENT";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateComment";
-    НоваяСтрока.МетодПоиска = "CREATECOMMENT";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateComment";
-    НоваяСтрока.МетодПоиска = "CREATECOMMENT";
-    НоваяСтрока.Параметр    = "--record";
-    НоваяСтрока.Описание    = "Record identifier in the table";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "CreateComment";
-    НоваяСтрока.МетодПоиска = "CREATECOMMENT";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Comment text";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "EditComment";
-    НоваяСтрока.МетодПоиска = "EDITCOMMENT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Comment management";
-    НоваяСтрока.ОписаниеМетода   = "Changes the text of an existing comment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "EditComment";
-    НоваяСтрока.МетодПоиска = "EDITCOMMENT";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "EditComment";
-    НоваяСтрока.МетодПоиска = "EDITCOMMENT";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "EditComment";
-    НоваяСтрока.МетодПоиска = "EDITCOMMENT";
-    НоваяСтрока.Параметр    = "--record";
-    НоваяСтрока.Описание    = "Record identifier in the table";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "EditComment";
-    НоваяСтрока.МетодПоиска = "EDITCOMMENT";
-    НоваяСтрока.Параметр    = "--comment";
-    НоваяСтрока.Описание    = "Comment identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "EditComment";
-    НоваяСтрока.МетодПоиска = "EDITCOMMENT";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "New comment text";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeleteComment";
-    НоваяСтрока.МетодПоиска = "DELETECOMMENT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Comment management";
-    НоваяСтрока.ОписаниеМетода   = "Deletes a comment for a table record";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeleteComment";
-    НоваяСтрока.МетодПоиска = "DELETECOMMENT";
-    НоваяСтрока.Параметр    = "--base";
-    НоваяСтрока.Описание    = "Database identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeleteComment";
-    НоваяСтрока.МетодПоиска = "DELETECOMMENT";
-    НоваяСтрока.Параметр    = "--table";
-    НоваяСтрока.Описание    = "Table identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeleteComment";
-    НоваяСтрока.МетодПоиска = "DELETECOMMENT";
-    НоваяСтрока.Параметр    = "--record";
-    НоваяСтрока.Описание    = "Record identifier in the table";
-    НоваяСтрока.Область     = "Comment management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "airtable";
-    НоваяСтрока.Модуль      = "OPI_Airtable";
-    НоваяСтрока.Метод       = "DeleteComment";
-    НоваяСтрока.МетодПоиска = "DELETECOMMENT";
-    НоваяСтрока.Параметр    = "--comment";
-    НоваяСтрока.Описание    = "Comment identifier";
-    НоваяСтрока.Область     = "Comment management";
-
-    Возврат ТаблицаСостава;
-КонецФункции
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateField";
+    NewLine.SearchMethod = "CREATEFIELD";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Base identifier";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateField";
+    NewLine.SearchMethod = "CREATEFIELD";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateField";
+    NewLine.SearchMethod = "CREATEFIELD";
+    NewLine.Parameter    = "--Description of the new field";
+    NewLine.Description    = "fielddata";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyField";
+    NewLine.SearchMethod = "MODIFYFIELD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Changes the name and    |   or description of an existing table field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyField";
+    NewLine.SearchMethod = "MODIFYFIELD";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Base identifier Base";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyField";
+    NewLine.SearchMethod = "MODIFYFIELD";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyField";
+    NewLine.SearchMethod = "MODIFYFIELD";
+    NewLine.Parameter    = "--field";
+    NewLine.Description    = "Field identifier";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyField";
+    NewLine.SearchMethod = "MODIFYFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New name (optional, def. val. - Empty)";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "ModifyField";
+    NewLine.SearchMethod = "MODIFYFIELD";
+    NewLine.Parameter    = "--description";
+    NewLine.Description    = "New description (optional, def. val. - Empty)";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetStringField";
+    NewLine.SearchMethod = "GETSTRINGFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of a string field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetNumberField";
+    NewLine.SearchMethod = "GETNUMBERFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of a numeric field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetNumberField";
+    NewLine.SearchMethod = "GETNUMBERFIELD";
+    NewLine.Parameter    = "--precision";
+    NewLine.Description    = "Number of decimal places (optional, def. val. - Empty)";
+    NewLine.Region     = "Working with fields";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetAttachmentField";
+    NewLine.SearchMethod = "GETATTACHMENTFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of a file field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetCheckboxField";
+    NewLine.SearchMethod = "GETCHECKBOXFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of a boolean field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetDateField";
+    NewLine.SearchMethod = "GETDATEFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of a date field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetEmailField";
+    NewLine.SearchMethod = "GETEMAILFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of an email field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetPhoneField";
+    NewLine.SearchMethod = "GETPHONEFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of a phone number field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetLinkField";
+    NewLine.SearchMethod = "GETLINKFIELD";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Field name";
+    NewLine.Region     = "Working with fields";
+    NewLine.MethodDescription   = "Gets the description of a URL field";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetListOfRecords";
+    NewLine.SearchMethod = "GETLISTOFRECORDS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Record management";
+    NewLine.MethodDescription   = "Gets the list of records of the selected table";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetListOfRecords";
+    NewLine.SearchMethod = "GETLISTOFRECORDS";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetListOfRecords";
+    NewLine.SearchMethod = "GETLISTOFRECORDS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetListOfRecords";
+    NewLine.SearchMethod = "GETLISTOFRECORDS";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Next page identifier of data from the previous request (optional, def. val. - Empty)";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetRecord";
+    NewLine.SearchMethod = "GETRECORD";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Record management";
+    NewLine.MethodDescription   = "Gets row data of the table by identifier";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetRecord";
+    NewLine.SearchMethod = "GETRECORD";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetRecord";
+    NewLine.SearchMethod = "GETRECORD";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetRecord";
+    NewLine.SearchMethod = "GETRECORD";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Record identifier in the table";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreatePosts";
+    NewLine.SearchMethod = "CREATEPOSTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Record management";
+    NewLine.MethodDescription   = "Creates one or an array of records by description or an array of field value descriptions";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreatePosts";
+    NewLine.SearchMethod = "CREATEPOSTS";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreatePosts";
+    NewLine.SearchMethod = "CREATEPOSTS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreatePosts";
+    NewLine.SearchMethod = "CREATEPOSTS";
+    NewLine.Parameter    = "--data";
+    NewLine.Description    = "Set or array of sets of Key : Value pairs > Field : Indicator";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeletePosts";
+    NewLine.SearchMethod = "DELETEPOSTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Record management";
+    NewLine.MethodDescription   = "Deletes one or an array of records by identifiers";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeletePosts";
+    NewLine.SearchMethod = "DELETEPOSTS";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeletePosts";
+    NewLine.SearchMethod = "DELETEPOSTS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeletePosts";
+    NewLine.SearchMethod = "DELETEPOSTS";
+    NewLine.Parameter    = "--records";
+    NewLine.Description    = "Identifier or array of record identifiers";
+    NewLine.Region     = "Record management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetComments";
+    NewLine.SearchMethod = "GETCOMMENTS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Comment management";
+    NewLine.MethodDescription   = "Gets the list of comments for a record in the table";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetComments";
+    NewLine.SearchMethod = "GETCOMMENTS";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetComments";
+    NewLine.SearchMethod = "GETCOMMENTS";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetComments";
+    NewLine.SearchMethod = "GETCOMMENTS";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Record identifier in the table";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "GetComments";
+    NewLine.SearchMethod = "GETCOMMENTS";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Next page identifier of data from the previous request (optional, def. val. - Empty)";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateComment";
+    NewLine.SearchMethod = "CREATECOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Comment management";
+    NewLine.MethodDescription   = "Creates a comment for a record in the table";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateComment";
+    NewLine.SearchMethod = "CREATECOMMENT";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateComment";
+    NewLine.SearchMethod = "CREATECOMMENT";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateComment";
+    NewLine.SearchMethod = "CREATECOMMENT";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Record identifier in the table";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "CreateComment";
+    NewLine.SearchMethod = "CREATECOMMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Comment text";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "EditComment";
+    NewLine.SearchMethod = "EDITCOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Comment management";
+    NewLine.MethodDescription   = "Changes the text of an existing comment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "EditComment";
+    NewLine.SearchMethod = "EDITCOMMENT";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "EditComment";
+    NewLine.SearchMethod = "EDITCOMMENT";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "EditComment";
+    NewLine.SearchMethod = "EDITCOMMENT";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Record identifier in the table";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "EditComment";
+    NewLine.SearchMethod = "EDITCOMMENT";
+    NewLine.Parameter    = "--comment";
+    NewLine.Description    = "Comment identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "EditComment";
+    NewLine.SearchMethod = "EDITCOMMENT";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "New comment text";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeleteComment";
+    NewLine.SearchMethod = "DELETECOMMENT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Comment management";
+    NewLine.MethodDescription   = "Deletes a comment for a table record";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeleteComment";
+    NewLine.SearchMethod = "DELETECOMMENT";
+    NewLine.Parameter    = "--base";
+    NewLine.Description    = "Database identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeleteComment";
+    NewLine.SearchMethod = "DELETECOMMENT";
+    NewLine.Parameter    = "--table";
+    NewLine.Description    = "Table identifier";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeleteComment";
+    NewLine.SearchMethod = "DELETECOMMENT";
+    NewLine.Parameter    = "--record";
+    NewLine.Description    = "Record identifier in the table";
+    NewLine.Region     = "Comment management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "airtable";
+    NewLine.Module      = "OPI_Airtable";
+    NewLine.Method       = "DeleteComment";
+    NewLine.SearchMethod = "DELETECOMMENT";
+    NewLine.Parameter    = "--comment";
+    NewLine.Description    = "Comment identifier";
+    NewLine.Region     = "Comment management";
+
+    Return TableСоwithтаinа;
+EndFunction
 

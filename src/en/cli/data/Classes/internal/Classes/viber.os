@@ -1,419 +1,419 @@
-﻿Функция ПолучитьСостав() Экспорт
+﻿Function GetComposition() Export
 
-    ТаблицаСостава = Новый ТаблицаЗначений();
-    ТаблицаСостава.Колонки.Добавить("Библиотека");
-    ТаблицаСостава.Колонки.Добавить("Модуль");
-    ТаблицаСостава.Колонки.Добавить("Метод");
-    ТаблицаСостава.Колонки.Добавить("МетодПоиска");
-    ТаблицаСостава.Колонки.Добавить("Параметр");
-    ТаблицаСостава.Колонки.Добавить("Описание");
-    ТаблицаСостава.Колонки.Добавить("ОписаниеМетода");
-    ТаблицаСостава.Колонки.Добавить("Область");
+    TableСоwithтаinа = New ValueTable();
+    TableСоwithтаinа.Columns.Add("Library");
+    TableСоwithтаinа.Columns.Add("Module");
+    TableСоwithтаinа.Columns.Add("Method");
+    TableСоwithтаinа.Columns.Add("SearchMethod");
+    TableСоwithтаinа.Columns.Add("Parameter");
+    TableСоwithтаinа.Columns.Add("Description");
+    TableСоwithтаinа.Columns.Add("MethodDescription");
+    TableСоwithтаinа.Columns.Add("Region");
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SetWebhook";
-    НоваяСтрока.МетодПоиска = "SETWEBHOOK";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Viber Token";
-    НоваяСтрока.Область     = "Settings and information";
-    НоваяСтрока.ОписаниеМетода   = "IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this.,
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SetWebhook";
+    NewLine.SearchMethod = "SETWEBHOOK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Viber Token";
+    NewLine.Region     = "Settings and information";
+    NewLine.MethodDescription   = "IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this.,
     |    which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published
     |    on the server - you can use an HTTP service. Information about new messages will also be sent there
     |    Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SetWebhook";
-    НоваяСтрока.МетодПоиска = "SETWEBHOOK";
-    НоваяСтрока.Параметр    = "--url";
-    НоваяСтрока.Описание    = "URL for setting up Webhook";
-    НоваяСтрока.Область     = "Settings and information";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SetWebhook";
+    NewLine.SearchMethod = "SETWEBHOOK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL for setting up Webhook";
+    NewLine.Region     = "Settings and information";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "GetChannelInformation";
-    НоваяСтрока.МетодПоиска = "GETCHANNELINFORMATION";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Settings and information";
-    НоваяСтрока.ОписаниеМетода   = "Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "GetChannelInformation";
+    NewLine.SearchMethod = "GETCHANNELINFORMATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Settings and information";
+    NewLine.MethodDescription   = "Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals
     |    The user ID from channel information is not suitable for sending messages through the bot - they are different";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "GetUserData";
-    НоваяСтрока.МетодПоиска = "GETUSERDATA";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Settings and information";
-    НоваяСтрока.ОписаниеМетода   = "Gets user information by ID";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "GetUserData";
-    НоваяСтрока.МетодПоиска = "GETUSERDATA";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "Viber User ID";
-    НоваяСтрока.Область     = "Settings and information";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "GetOnlineUsers";
-    НоваяСтрока.МетодПоиска = "GETONLINEUSERS";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Viber Token";
-    НоваяСтрока.Область     = "Settings and information";
-    НоваяСтрока.ОписаниеМетода   = "Gets the status of a user or several users by ID";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "GetOnlineUsers";
-    НоваяСтрока.МетодПоиска = "GETONLINEUSERS";
-    НоваяСтрока.Параметр    = "--users";
-    НоваяСтрока.Описание    = "Viber User(s) ID";
-    НоваяСтрока.Область     = "Settings and information";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendTextMessage";
-    НоваяСтрока.МетодПоиска = "SENDTEXTMESSAGE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Message sending";
-    НоваяСтрока.ОписаниеМетода   = "Sends a text message to a chat or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendTextMessage";
-    НоваяСтрока.МетодПоиска = "SENDTEXTMESSAGE";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Message text";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendTextMessage";
-    НоваяСтрока.МетодПоиска = "SENDTEXTMESSAGE";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID. For channel > administrator, for bot > recipient";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendTextMessage";
-    НоваяСтрока.МетодПоиска = "SENDTEXTMESSAGE";
-    НоваяСтрока.Параметр    = "--ischannel";
-    НоваяСтрока.Описание    = "Sending to channel or bot chat";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendTextMessage";
-    НоваяСтрока.МетодПоиска = "SENDTEXTMESSAGE";
-    НоваяСтрока.Параметр    = "--keyboard";
-    НоваяСтрока.Описание    = "See CreateKeyboardFromArrayButton (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendImage";
-    НоваяСтрока.МетодПоиска = "SENDIMAGE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Message sending";
-    НоваяСтрока.ОписаниеМетода   = "Sends an image to a chat or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendImage";
-    НоваяСтрока.МетодПоиска = "SENDIMAGE";
-    НоваяСтрока.Параметр    = "--picture";
-    НоваяСтрока.Описание    = "Image URL";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendImage";
-    НоваяСтрока.МетодПоиска = "SENDIMAGE";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID. For channel > administrator, for bot > recipient";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendImage";
-    НоваяСтрока.МетодПоиска = "SENDIMAGE";
-    НоваяСтрока.Параметр    = "--ischannel";
-    НоваяСтрока.Описание    = "Sending to channel or bot chat";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendImage";
-    НоваяСтрока.МетодПоиска = "SENDIMAGE";
-    НоваяСтрока.Параметр    = "--description";
-    НоваяСтрока.Описание    = "Image annotation (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendFile";
-    НоваяСтрока.МетодПоиска = "SENDFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Message sending";
-    НоваяСтрока.ОписаниеМетода   = "Sends a file (document) to a chat or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendFile";
-    НоваяСтрока.МетодПоиска = "SENDFILE";
-    НоваяСтрока.Параметр    = "--file";
-    НоваяСтрока.Описание    = "File URL";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendFile";
-    НоваяСтрока.МетодПоиска = "SENDFILE";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID. For channel > administrator, for bot > recipient";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendFile";
-    НоваяСтрока.МетодПоиска = "SENDFILE";
-    НоваяСтрока.Параметр    = "--ischannel";
-    НоваяСтрока.Описание    = "Sending to channel or bot chat";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendFile";
-    НоваяСтрока.МетодПоиска = "SENDFILE";
-    НоваяСтрока.Параметр    = "--ext";
-    НоваяСтрока.Описание    = "File extension";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendFile";
-    НоваяСтрока.МетодПоиска = "SENDFILE";
-    НоваяСтрока.Параметр    = "--size";
-    НоваяСтрока.Описание    = "File size. If not filled in > determined automatically by downloading the file (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendContact";
-    НоваяСтрока.МетодПоиска = "SENDCONTACT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Message sending";
-    НоваяСтрока.ОписаниеМетода   = "Sends a contact with a phone number to a chat or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendContact";
-    НоваяСтрока.МетодПоиска = "SENDCONTACT";
-    НоваяСтрока.Параметр    = "--name";
-    НоваяСтрока.Описание    = "Contact name";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendContact";
-    НоваяСтрока.МетодПоиска = "SENDCONTACT";
-    НоваяСтрока.Параметр    = "--phone";
-    НоваяСтрока.Описание    = "Phone number";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendContact";
-    НоваяСтрока.МетодПоиска = "SENDCONTACT";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID. For channel > administrator, for bot > recipient";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendContact";
-    НоваяСтрока.МетодПоиска = "SENDCONTACT";
-    НоваяСтрока.Параметр    = "--ischannel";
-    НоваяСтрока.Описание    = "Sending to channel or bot chat";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLocation";
-    НоваяСтрока.МетодПоиска = "SENDLOCATION";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Message sending";
-    НоваяСтрока.ОписаниеМетода   = "Sends geographic coordinates to a chat or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLocation";
-    НоваяСтрока.МетодПоиска = "SENDLOCATION";
-    НоваяСтрока.Параметр    = "--lat";
-    НоваяСтрока.Описание    = "Geographic latitude";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLocation";
-    НоваяСтрока.МетодПоиска = "SENDLOCATION";
-    НоваяСтрока.Параметр    = "--long";
-    НоваяСтрока.Описание    = "Geographic longitude";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLocation";
-    НоваяСтрока.МетодПоиска = "SENDLOCATION";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID. For channel > administrator, for bot > recipient";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLocation";
-    НоваяСтрока.МетодПоиска = "SENDLOCATION";
-    НоваяСтрока.Параметр    = "--ischannel";
-    НоваяСтрока.Описание    = "Sending to channel or bot chat";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLink";
-    НоваяСтрока.МетодПоиска = "SENDLINK";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Message sending";
-    НоваяСтрока.ОписаниеМетода   = "Sends a URL with a preview to a chat or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLink";
-    НоваяСтрока.МетодПоиска = "SENDLINK";
-    НоваяСтрока.Параметр    = "--url";
-    НоваяСтрока.Описание    = "SentLink";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLink";
-    НоваяСтрока.МетодПоиска = "SENDLINK";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID. For channel > administrator, for bot > recipient";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "SendLink";
-    НоваяСтрока.МетодПоиска = "SENDLINK";
-    НоваяСтрока.Параметр    = "--ischannel";
-    НоваяСтрока.Описание    = "Sending to channel or bot chat";
-    НоваяСтрока.Область     = "Message sending";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "CreateKeyboardFromArrayButton";
-    НоваяСтрока.МетодПоиска = "CREATEKEYBOARDFROMARRAYBUTTON";
-    НоваяСтрока.Параметр    = "--buttons";
-    НоваяСтрока.Описание    = "Array of buttons";
-    НоваяСтрока.Область     = "Message sending";
-    НоваяСтрока.ОписаниеМетода   = "Returns a keyboard structure for messages";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "viber";
-    НоваяСтрока.Модуль      = "OPI_Viber";
-    НоваяСтрока.Метод       = "CreateKeyboardFromArrayButton";
-    НоваяСтрока.МетодПоиска = "CREATEKEYBOARDFROMARRAYBUTTON";
-    НоваяСтрока.Параметр    = "--color";
-    НоваяСтрока.Описание    = "HEX color of buttons with # at the beginning (необяз. по ум. - #2db9b9)";
-    НоваяСтрока.Область     = "Message sending";
-
-    Возврат ТаблицаСостава;
-КонецФункции
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "GetUserData";
+    NewLine.SearchMethod = "GETUSERDATA";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Settings and information";
+    NewLine.MethodDescription   = "Gets user information by ID";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "GetUserData";
+    NewLine.SearchMethod = "GETUSERDATA";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "Viber User ID";
+    NewLine.Region     = "Settings and information";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "GetOnlineUsers";
+    NewLine.SearchMethod = "GETONLINEUSERS";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Viber Token";
+    NewLine.Region     = "Settings and information";
+    NewLine.MethodDescription   = "Gets the status of a user or several users by ID";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "GetOnlineUsers";
+    NewLine.SearchMethod = "GETONLINEUSERS";
+    NewLine.Parameter    = "--users";
+    NewLine.Description    = "Viber User(s) ID";
+    NewLine.Region     = "Settings and information";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a text message to a chat or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID. For channel > administrator, for bot > recipient";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--ischannel";
+    NewLine.Description    = "Sending to channel or bot chat";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendTextMessage";
+    NewLine.SearchMethod = "SENDTEXTMESSAGE";
+    NewLine.Parameter    = "--keyboard";
+    NewLine.Description    = "See CreateKeyboardFromArrayButton (optional, def. val. - Empty)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends an image to a chat or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--picture";
+    NewLine.Description    = "Image URL";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID. For channel > administrator, for bot > recipient";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--ischannel";
+    NewLine.Description    = "Sending to channel or bot chat";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendImage";
+    NewLine.SearchMethod = "SENDIMAGE";
+    NewLine.Parameter    = "--description";
+    NewLine.Description    = "Image annotation (optional, def. val. - Empty)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a file (document) to a chat or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File URL";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID. For channel > administrator, for bot > recipient";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--ischannel";
+    NewLine.Description    = "Sending to channel or bot chat";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--ext";
+    NewLine.Description    = "File extension";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--size";
+    NewLine.Description    = "File size. If not filled in > determined automatically by downloading the file (optional, def. val. - Empty)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a contact with a phone number to a chat or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Contact name";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--phone";
+    NewLine.Description    = "Phone number";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID. For channel > administrator, for bot > recipient";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendContact";
+    NewLine.SearchMethod = "SENDCONTACT";
+    NewLine.Parameter    = "--ischannel";
+    NewLine.Description    = "Sending to channel or bot chat";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends geographic coordinates to a chat or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--lat";
+    NewLine.Description    = "Geographic latitude";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--long";
+    NewLine.Description    = "Geographic longitude";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID. For channel > administrator, for bot > recipient";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLocation";
+    NewLine.SearchMethod = "SENDLOCATION";
+    NewLine.Parameter    = "--ischannel";
+    NewLine.Description    = "Sending to channel or bot chat";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLink";
+    NewLine.SearchMethod = "SENDLINK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a URL with a preview to a chat or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLink";
+    NewLine.SearchMethod = "SENDLINK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "SentLink";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLink";
+    NewLine.SearchMethod = "SENDLINK";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID. For channel > administrator, for bot > recipient";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "SendLink";
+    NewLine.SearchMethod = "SENDLINK";
+    NewLine.Parameter    = "--ischannel";
+    NewLine.Description    = "Sending to channel or bot chat";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "CreateKeyboardFromArrayButton";
+    NewLine.SearchMethod = "CREATEKEYBOARDFROMARRAYBUTTON";
+    NewLine.Parameter    = "--buttons";
+    NewLine.Description    = "Array of buttons";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Returns a keyboard structure for messages";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "viber";
+    NewLine.Module      = "OPI_Viber";
+    NewLine.Method       = "CreateKeyboardFromArrayButton";
+    NewLine.SearchMethod = "CREATEKEYBOARDFROMARRAYBUTTON";
+    NewLine.Parameter    = "--color";
+    NewLine.Description    = "HEX color of buttons with # at the beginning (optional, def. val. - #2db9b9)";
+    NewLine.Region     = "Message sending";
+
+    Return TableСоwithтаinа;
+EndFunction
 
