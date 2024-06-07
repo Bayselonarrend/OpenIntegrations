@@ -1,5 +1,5 @@
 
- :us: *This page, but on English there: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)*
+ <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/eng.png?1" align="left" width="32"> *This page, but on English here: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)*
 
 <hr>
 
