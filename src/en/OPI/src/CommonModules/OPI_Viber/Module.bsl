@@ -231,7 +231,7 @@ Function SendContact(Val Token
     
 EndFunction
 
-// SendLocation
+// Send location
 // Sends geographic coordinates to a chat or channel
 // 
 // Parameters:
@@ -253,7 +253,7 @@ Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val Se
     
 EndFunction
 
-// SendLink
+// Send link
 // Sends a URL with a preview to a chat or channel
 // 
 // Parameters:

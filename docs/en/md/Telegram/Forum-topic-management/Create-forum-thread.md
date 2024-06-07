@@ -6,7 +6,7 @@ sidebar_position: 2
  Creates a new thread in the group with theme functionality enabled
 
 
-*Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") ExportReturn ForumTopicManagement(Token, ChatID, Title, IconID);EndFunction*
+*Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

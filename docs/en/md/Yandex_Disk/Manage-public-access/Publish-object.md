@@ -6,7 +6,7 @@ sidebar_position: 1
  Publishes the disk object for public access
 
 
-*Function PublishObject(Val Token, Val Path) ExportReturn TogglePublicAccess(Token, Path, True);EndFunction*
+*Function PublishObject(Val Token, Val Path) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
