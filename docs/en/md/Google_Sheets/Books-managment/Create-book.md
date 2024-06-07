@@ -2,17 +2,17 @@
 sidebar_position: 1
 ---
 
-# CreateBook
- Creates a new book
+# Create spreadsheet
+ Creates a new spreadsheet
 
 
-*Function CreateBook(Val Token, Val Name, Val ArrayOfSheetNames) Export*
+*Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Token | --token | String | Token |
  | Name | --title | String | Name |
- | ArrayOfSheetNames | --sheets | Array of String | Array of names to add new sheets to the book |
+ | ArrayOfSheetNames | --sheets | Array of String | Array of names to add new sheets to the spreadsheet |
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
@@ -26,7 +26,7 @@ sidebar_position: 1
  
  Name = "TestTable";
  
- Response = OPI_GoogleSheets.CreateBook(Token, Name, ArrayOfSheetNames); //Map
+ Response = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, ArrayOfSheetNames); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
  
@@ -35,7 +35,7 @@ sidebar_position: 1
 
 ```sh title="CLI command example"
  
- oint gsheets CreateBook --token %token% --title "TestTable" --sheets %sheets%
+ oint gsheets CreateSpreadsheet --token %token% --title "TestTable" --sheets %sheets%
 
 
 ```

@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 
 # CopySheet
- Copies a sheet from one book to another
+ Copies a sheet from one spreadsheet to another
 
 
 *Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export*
@@ -11,8 +11,8 @@ sidebar_position: 3
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Token | --token | String | Token |
- | From | --from | String | SourceBookID |
- | Target | --to | String | DestinationBookID |
+ | From | --from | String | Source spreadsheet ID |
+ | Target | --to | String | Destination spreadsheet ID |
  | Sheet | --sheet | String | CopiedSheetID |
 
  
