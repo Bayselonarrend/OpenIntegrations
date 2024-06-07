@@ -1,544 +1,544 @@
-﻿Функция ПолучитьСостав() Экспорт
+﻿Function GetComposition() Export
 
-    ТаблицаСостава = Новый ТаблицаЗначений();
-    ТаблицаСостава.Колонки.Добавить("Библиотека");
-    ТаблицаСостава.Колонки.Добавить("Модуль");
-    ТаблицаСостава.Колонки.Добавить("Метод");
-    ТаблицаСостава.Колонки.Добавить("МетодПоиска");
-    ТаблицаСостава.Колонки.Добавить("Параметр");
-    ТаблицаСостава.Колонки.Добавить("Описание");
-    ТаблицаСостава.Колонки.Добавить("ОписаниеМетода");
-    ТаблицаСостава.Колонки.Добавить("Область");
+    TableСоwithтаinа = New ValueTable();
+    TableСоwithтаinа.Columns.Add("Library");
+    TableСоwithтаinа.Columns.Add("Module");
+    TableСоwithтаinа.Columns.Add("Method");
+    TableСоwithтаinа.Columns.Add("SearchMethod");
+    TableСоwithтаinа.Columns.Add("Parameter");
+    TableСоwithтаinа.Columns.Add("Description");
+    TableСоwithтаinа.Columns.Add("MethodDescription");
+    TableСоwithтаinа.Columns.Add("Region");
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetDiskInformation";
-    НоваяСтрока.МетодПоиска = "GETDISKINFORMATION";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Gets information about the current disk";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CreateFolder";
-    НоваяСтрока.МетодПоиска = "CREATEFOLDER";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Creates a directory on the disk";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetDiskInformation";
+    NewLine.SearchMethod = "GETDISKINFORMATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Gets information about the current disk";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CreateFolder";
-    НоваяСтрока.МетодПоиска = "CREATEFOLDER";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to the created folder";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CreateFolder";
+    NewLine.SearchMethod = "CREATEFOLDER";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Creates a directory on the disk";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetObject";
-    НоваяСтрока.МетодПоиска = "GETOBJECT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Gets information about a disk object at the specified path";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CreateFolder";
+    NewLine.SearchMethod = "CREATEFOLDER";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the created folder";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetObject";
-    НоваяСтрока.МетодПоиска = "GETOBJECT";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to folder or file";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetObject";
+    NewLine.SearchMethod = "GETOBJECT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Gets information about a disk object at the specified path";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "DeleteObject";
-    НоваяСтрока.МетодПоиска = "DELETEOBJECT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Deletes an object at the specified path";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetObject";
+    NewLine.SearchMethod = "GETOBJECT";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to folder or file";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "DeleteObject";
-    НоваяСтрока.МетодПоиска = "DELETEOBJECT";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to the folder or file to be deleted";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "DeleteObject";
+    NewLine.SearchMethod = "DELETEOBJECT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Deletes an object at the specified path";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "DeleteObject";
-    НоваяСтрока.МетодПоиска = "DELETEOBJECT";
-    НоваяСтрока.Параметр    = "--can";
-    НоваяСтрока.Описание    = "To cart (необяз. по ум. - True)";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "DeleteObject";
+    NewLine.SearchMethod = "DELETEOBJECT";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the folder or file to be deleted";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CreateObjectCopy";
-    НоваяСтрока.МетодПоиска = "CREATEOBJECTCOPY";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Creates a copy of the object at the specified path and path to the original";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "DeleteObject";
+    NewLine.SearchMethod = "DELETEOBJECT";
+    NewLine.Parameter    = "--can";
+    NewLine.Description    = "To cart (optional, def. val. - Да)";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CreateObjectCopy";
-    НоваяСтрока.МетодПоиска = "CREATEOBJECTCOPY";
-    НоваяСтрока.Параметр    = "--from";
-    НоваяСтрока.Описание    = "Path to the original file or directory";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CreateObjectCopy";
+    NewLine.SearchMethod = "CREATEOBJECTCOPY";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Creates a copy of the object at the specified path and path to the original";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CreateObjectCopy";
-    НоваяСтрока.МетодПоиска = "CREATEOBJECTCOPY";
-    НоваяСтрока.Параметр    = "--to";
-    НоваяСтрока.Описание    = "Destination path for the copy";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CreateObjectCopy";
+    NewLine.SearchMethod = "CREATEOBJECTCOPY";
+    NewLine.Parameter    = "--from";
+    NewLine.Description    = "Path to the original file or directory";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CreateObjectCopy";
-    НоваяСтрока.МетодПоиска = "CREATEOBJECTCOPY";
-    НоваяСтрока.Параметр    = "--rewrite";
-    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - False)";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CreateObjectCopy";
+    NewLine.SearchMethod = "CREATEOBJECTCOPY";
+    NewLine.Parameter    = "--to";
+    NewLine.Description    = "Destination path for the copy";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetDownloadLink";
-    НоваяСтрока.МетодПоиска = "GETDOWNLOADLINK";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Gets a download link for the file";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CreateObjectCopy";
+    NewLine.SearchMethod = "CREATEOBJECTCOPY";
+    NewLine.Parameter    = "--rewrite";
+    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetDownloadLink";
-    НоваяСтрока.МетодПоиска = "GETDOWNLOADLINK";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to the file for downloading";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetDownloadLink";
+    NewLine.SearchMethod = "GETDOWNLOADLINK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Gets a download link for the file";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "DownloadFile";
-    НоваяСтрока.МетодПоиска = "DOWNLOADFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Downloads a file at the specified path";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetDownloadLink";
+    NewLine.SearchMethod = "GETDOWNLOADLINK";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the file for downloading";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "DownloadFile";
-    НоваяСтрока.МетодПоиска = "DOWNLOADFILE";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to the file for downloading";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Downloads a file at the specified path";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "DownloadFile";
-    НоваяСтрока.МетодПоиска = "DOWNLOADFILE";
-    НоваяСтрока.Параметр    = "--out";
-    НоваяСтрока.Описание    = "File save path (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "File and folder management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the file for downloading";
+    NewLine.Region     = "File and folder management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of files with or without filtering by type
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "DownloadFile";
+    NewLine.SearchMethod = "DOWNLOADFILE";
+    NewLine.Parameter    = "--out";
+    NewLine.Description    = "File save path (optional, def. val. - Empty)";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Gets a list of files with or without filtering by type
     |    List of available types: audio, backup, book, compressed, data, development, 
     |    diskimage, document, encoded, executable, flash, font, 
     |    mage, settings, spreadsheet, text, unknown, video, web";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--amount";
-    НоваяСтрока.Описание    = "Number of returned objects (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--offset";
-    НоваяСтрока.Описание    = "Offset for getting objects not from the beginning of the list (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--type";
-    НоваяСтрока.Описание    = "Filter by file type (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--datesort";
-    НоваяСтрока.Описание    = "True > sort by date, False > alphabetically (необяз. по ум. - False)";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "MoveObject";
-    НоваяСтрока.МетодПоиска = "MOVEOBJECT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Moves the object to the specified path and path to the original";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "MoveObject";
-    НоваяСтрока.МетодПоиска = "MOVEOBJECT";
-    НоваяСтрока.Параметр    = "--from";
-    НоваяСтрока.Описание    = "Path to the original file or folder";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "MoveObject";
-    НоваяСтрока.МетодПоиска = "MOVEOBJECT";
-    НоваяСтрока.Параметр    = "--to";
-    НоваяСтрока.Описание    = "Destination path for moving";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "MoveObject";
-    НоваяСтрока.МетодПоиска = "MOVEOBJECT";
-    НоваяСтрока.Параметр    = "--rewrite";
-    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - False)";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Uploads a file to disk at the specified path";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path for saving the file to disk";
-    НоваяСтрока.Область     = "File and folder management";
-
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--amount";
+    NewLine.Description    = "Number of returned objects (optional, def. val. - Empty)";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty)";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Filter by file type (optional, def. val. - Empty)";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--datesort";
+    NewLine.Description    = "True > sort by date, False > alphabetically (optional, def. val. - No)";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "MoveObject";
+    NewLine.SearchMethod = "MOVEOBJECT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Moves the object to the specified path and path to the original";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "MoveObject";
+    NewLine.SearchMethod = "MOVEOBJECT";
+    NewLine.Parameter    = "--from";
+    NewLine.Description    = "Path to the original file or folder";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "MoveObject";
+    NewLine.SearchMethod = "MOVEOBJECT";
+    NewLine.Parameter    = "--to";
+    NewLine.Description    = "Destination path for moving";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "MoveObject";
+    NewLine.SearchMethod = "MOVEOBJECT";
+    NewLine.Parameter    = "--rewrite";
+    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Uploads a file to disk at the specified path";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path for saving the file to disk";
+    NewLine.Region     = "File and folder management";
+
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--file";
-    НоваяСтрока.Описание    = "File for upload";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--rewrite";
-    НоваяСтрока.Описание    = "Overwrite if a file with the same name already exists (необяз. по ум. - False)";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "UploadFileByURL";
-    НоваяСтрока.МетодПоиска = "UPLOADFILEBYURL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "File and folder management";
-    НоваяСтрока.ОписаниеМетода   = "Downloads a file to disk from the specified URL";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "UploadFileByURL";
-    НоваяСтрока.МетодПоиска = "UPLOADFILEBYURL";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to place the downloaded file";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "UploadFileByURL";
-    НоваяСтрока.МетодПоиска = "UPLOADFILEBYURL";
-    НоваяСтрока.Параметр    = "--url";
-    НоваяСтрока.Описание    = "File URL";
-    НоваяСтрока.Область     = "File and folder management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "PublishObject";
-    НоваяСтрока.МетодПоиска = "PUBLISHOBJECT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Manage public access";
-    НоваяСтрока.ОписаниеМетода   = "Publishes the disk object for public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "PublishObject";
-    НоваяСтрока.МетодПоиска = "PUBLISHOBJECT";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to the object to be published";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CancelObjectPublication";
-    НоваяСтрока.МетодПоиска = "CANCELOBJECTPUBLICATION";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Manage public access";
-    НоваяСтрока.ОписаниеМетода   = "Unpublishes a previously published object";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "CancelObjectPublication";
-    НоваяСтрока.МетодПоиска = "CANCELOBJECTPUBLICATION";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path to the previously published object";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetPublishedObjectsList";
-    НоваяСтрока.МетодПоиска = "GETPUBLISHEDOBJECTSLIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Manage public access";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of published objects";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetPublishedObjectsList";
-    НоваяСтрока.МетодПоиска = "GETPUBLISHEDOBJECTSLIST";
-    НоваяСтрока.Параметр    = "--amount";
-    НоваяСтрока.Описание    = "Number of returned objects (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetPublishedObjectsList";
-    НоваяСтрока.МетодПоиска = "GETPUBLISHEDOBJECTSLIST";
-    НоваяСтрока.Параметр    = "--offset";
-    НоваяСтрока.Описание    = "Offset for getting objects not from the beginning of the list (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetPublicObject";
-    НоваяСтрока.МетодПоиска = "GETPUBLICOBJECT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Manage public access";
-    НоваяСтрока.ОписаниеМетода   = "Gets information about the published object by its URL";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetPublicObject";
-    НоваяСтрока.МетодПоиска = "GETPUBLICOBJECT";
-    НоваяСтрока.Параметр    = "--url";
-    НоваяСтрока.Описание    = "Object address";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetPublicObject";
-    НоваяСтрока.МетодПоиска = "GETPUBLICOBJECT";
-    НоваяСтрока.Параметр    = "--amount";
-    НоваяСтрока.Описание    = "Number of returned nested objects (for catalog) (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetPublicObject";
-    НоваяСтрока.МетодПоиска = "GETPUBLICOBJECT";
-    НоваяСтрока.Параметр    = "--offset";
-    НоваяСтрока.Описание    = "Offset for getting nested objects not from the beginning of the list (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetDownloadLinkForPublicObject";
-    НоваяСтрока.МетодПоиска = "GETDOWNLOADLINKFORPUBLICOBJECT";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Manage public access";
-    НоваяСтрока.ОписаниеМетода   = "Gets a direct link to download the public object";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetDownloadLinkForPublicObject";
-    НоваяСтрока.МетодПоиска = "GETDOWNLOADLINKFORPUBLICOBJECT";
-    НоваяСтрока.Параметр    = "--url";
-    НоваяСтрока.Описание    = "Object address";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "GetDownloadLinkForPublicObject";
-    НоваяСтрока.МетодПоиска = "GETDOWNLOADLINKFORPUBLICOBJECT";
-    НоваяСтрока.Параметр    = "--path";
-    НоваяСтрока.Описание    = "Path inside the object (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "SavePublicObjectToDisk";
-    НоваяСтрока.МетодПоиска = "SAVEPUBLICOBJECTTODISK";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Token";
-    НоваяСтрока.Область     = "Manage public access";
-    НоваяСтрока.ОписаниеМетода   = "Saves the public object to your disk";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "SavePublicObjectToDisk";
-    НоваяСтрока.МетодПоиска = "SAVEPUBLICOBJECTTODISK";
-    НоваяСтрока.Параметр    = "--url";
-    НоваяСтрока.Описание    = "Object address";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "SavePublicObjectToDisk";
-    НоваяСтрока.МетодПоиска = "SAVEPUBLICOBJECTTODISK";
-    НоваяСтрока.Параметр    = "--from";
-    НоваяСтрока.Описание    = "Path within public catalog (folders only) (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Manage public access";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yadisk";
-    НоваяСтрока.Модуль      = "OPI_YandexDisk";
-    НоваяСтрока.Метод       = "SavePublicObjectToDisk";
-    НоваяСтрока.МетодПоиска = "SAVEPUBLICOBJECTTODISK";
-    НоваяСтрока.Параметр    = "--to";
-    НоваяСтрока.Описание    = "File save path (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Manage public access";
-
-    Возврат ТаблицаСостава;
-КонецФункции
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File for upload";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--rewrite";
+    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "UploadFileByURL";
+    NewLine.SearchMethod = "UPLOADFILEBYURL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "File and folder management";
+    NewLine.MethodDescription   = "Downloads a file to disk from the specified URL";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "UploadFileByURL";
+    NewLine.SearchMethod = "UPLOADFILEBYURL";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to place the downloaded file";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "UploadFileByURL";
+    NewLine.SearchMethod = "UPLOADFILEBYURL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "File URL";
+    NewLine.Region     = "File and folder management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "PublishObject";
+    NewLine.SearchMethod = "PUBLISHOBJECT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Manage public access";
+    NewLine.MethodDescription   = "Publishes the disk object for public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "PublishObject";
+    NewLine.SearchMethod = "PUBLISHOBJECT";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the object to be published";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CancelObjectPublication";
+    NewLine.SearchMethod = "CANCELOBJECTPUBLICATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Manage public access";
+    NewLine.MethodDescription   = "Unpublishes a previously published object";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "CancelObjectPublication";
+    NewLine.SearchMethod = "CANCELOBJECTPUBLICATION";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to the previously published object";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetPublishedObjectsList";
+    NewLine.SearchMethod = "GETPUBLISHEDOBJECTSLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Manage public access";
+    NewLine.MethodDescription   = "Gets a list of published objects";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetPublishedObjectsList";
+    NewLine.SearchMethod = "GETPUBLISHEDOBJECTSLIST";
+    NewLine.Parameter    = "--amount";
+    NewLine.Description    = "Number of returned objects (optional, def. val. - Empty)";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetPublishedObjectsList";
+    NewLine.SearchMethod = "GETPUBLISHEDOBJECTSLIST";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty)";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetPublicObject";
+    NewLine.SearchMethod = "GETPUBLICOBJECT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Manage public access";
+    NewLine.MethodDescription   = "Gets information about the published object by its URL";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetPublicObject";
+    NewLine.SearchMethod = "GETPUBLICOBJECT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Object address";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetPublicObject";
+    NewLine.SearchMethod = "GETPUBLICOBJECT";
+    NewLine.Parameter    = "--amount";
+    NewLine.Description    = "Number of returned nested objects (for catalog) (optional, def. val. - Empty)";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetPublicObject";
+    NewLine.SearchMethod = "GETPUBLICOBJECT";
+    NewLine.Parameter    = "--offset";
+    NewLine.Description    = "Offset for getting nested objects not from the beginning of the list (optional, def. val. - Empty)";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetDownloadLinkForPublicObject";
+    NewLine.SearchMethod = "GETDOWNLOADLINKFORPUBLICOBJECT";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Manage public access";
+    NewLine.MethodDescription   = "Gets a direct link to download the public object";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetDownloadLinkForPublicObject";
+    NewLine.SearchMethod = "GETDOWNLOADLINKFORPUBLICOBJECT";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Object address";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "GetDownloadLinkForPublicObject";
+    NewLine.SearchMethod = "GETDOWNLOADLINKFORPUBLICOBJECT";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path inside the object (optional, def. val. - Empty)";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "SavePublicObjectToDisk";
+    NewLine.SearchMethod = "SAVEPUBLICOBJECTTODISK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Token";
+    NewLine.Region     = "Manage public access";
+    NewLine.MethodDescription   = "Saves the public object to your disk";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "SavePublicObjectToDisk";
+    NewLine.SearchMethod = "SAVEPUBLICOBJECTTODISK";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "Object address";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "SavePublicObjectToDisk";
+    NewLine.SearchMethod = "SAVEPUBLICOBJECTTODISK";
+    NewLine.Parameter    = "--from";
+    NewLine.Description    = "Path within public catalog (folders only) (optional, def. val. - Empty)";
+    NewLine.Region     = "Manage public access";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yadisk";
+    NewLine.Module      = "OPI_YandexDisk";
+    NewLine.Method       = "SavePublicObjectToDisk";
+    NewLine.SearchMethod = "SAVEPUBLICOBJECTTODISK";
+    NewLine.Parameter    = "--to";
+    NewLine.Description    = "File save path (optional, def. val. - Empty)";
+    NewLine.Region     = "Manage public access";
+
+    Return TableСоwithтаinа;
+EndFunction
 

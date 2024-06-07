@@ -1,87 +1,87 @@
-﻿Функция ПолучитьСостав() Экспорт
+﻿Function GetComposition() Export
 
-    ТаблицаСостава = Новый ТаблицаЗначений();
-    ТаблицаСостава.Колонки.Добавить("Библиотека");
-    ТаблицаСостава.Колонки.Добавить("Модуль");
-    ТаблицаСостава.Колонки.Добавить("Метод");
-    ТаблицаСостава.Колонки.Добавить("МетодПоиска");
-    ТаблицаСостава.Колонки.Добавить("Параметр");
-    ТаблицаСостава.Колонки.Добавить("Описание");
-    ТаблицаСостава.Колонки.Добавить("ОписаниеМетода");
-    ТаблицаСостава.Колонки.Добавить("Область");
+    TableСоwithтаinа = New ValueTable();
+    TableСоwithтаinа.Columns.Add("Library");
+    TableСоwithтаinа.Columns.Add("Module");
+    TableСоwithтаinа.Columns.Add("Method");
+    TableСоwithтаinа.Columns.Add("SearchMethod");
+    TableСоwithтаinа.Columns.Add("Parameter");
+    TableСоwithтаinа.Columns.Add("Description");
+    TableСоwithтаinа.Columns.Add("MethodDescription");
+    TableСоwithтаinа.Columns.Add("Region");
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yandex";
-    НоваяСтрока.Модуль      = "OPI_YandexID";
-    НоваяСтрока.Метод       = "GetConfirmationCode";
-    НоваяСтрока.МетодПоиска = "GETCONFIRMATIONCODE";
-    НоваяСтрока.Параметр    = "--id";
-    НоваяСтрока.Описание    = "Client id";
-    НоваяСтрока.Область     = "Public";
-    НоваяСтрока.ОписаниеМетода   = "Gets the confirmation code and the address of the page where it needs to be entered";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yandex";
-    НоваяСтрока.Модуль      = "OPI_YandexID";
-    НоваяСтрока.Метод       = "ConvertCodeToToken";
-    НоваяСтрока.МетодПоиска = "CONVERTCODETOTOKEN";
-    НоваяСтрока.Параметр    = "--id";
-    НоваяСтрока.Описание    = "Client id";
-    НоваяСтрока.Область     = "Public";
-    НоваяСтрока.ОписаниеМетода   = "Converts the code to a token after entering the code when executing GetConfirmationCode";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yandex";
+    NewLine.Module      = "OPI_YandexID";
+    NewLine.Method       = "GetConfirmationCode";
+    NewLine.SearchMethod = "GETCONFIRMATIONCODE";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "Client id";
+    NewLine.Region     = "Public";
+    NewLine.MethodDescription   = "Gets the confirmation code and the address of the page where it needs to be entered";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yandex";
-    НоваяСтрока.Модуль      = "OPI_YandexID";
-    НоваяСтрока.Метод       = "ConvertCodeToToken";
-    НоваяСтрока.МетодПоиска = "CONVERTCODETOTOKEN";
-    НоваяСтрока.Параметр    = "--secret";
-    НоваяСтрока.Описание    = "Client secret";
-    НоваяСтрока.Область     = "Public";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yandex";
+    NewLine.Module      = "OPI_YandexID";
+    NewLine.Method       = "ConvertCodeToToken";
+    NewLine.SearchMethod = "CONVERTCODETOTOKEN";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "Client id";
+    NewLine.Region     = "Public";
+    NewLine.MethodDescription   = "Converts the code to a token after entering the code when executing GetConfirmationCode";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yandex";
-    НоваяСтрока.Модуль      = "OPI_YandexID";
-    НоваяСтрока.Метод       = "ConvertCodeToToken";
-    НоваяСтрока.МетодПоиска = "CONVERTCODETOTOKEN";
-    НоваяСтрока.Параметр    = "--device";
-    НоваяСтрока.Описание    = "device_code from GetConfirmationCode()";
-    НоваяСтрока.Область     = "Public";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yandex";
+    NewLine.Module      = "OPI_YandexID";
+    NewLine.Method       = "ConvertCodeToToken";
+    NewLine.SearchMethod = "CONVERTCODETOTOKEN";
+    NewLine.Parameter    = "--secret";
+    NewLine.Description    = "Client secret";
+    NewLine.Region     = "Public";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yandex";
-    НоваяСтрока.Модуль      = "OPI_YandexID";
-    НоваяСтрока.Метод       = "RefreshToken";
-    НоваяСтрока.МетодПоиска = "REFRESHTOKEN";
-    НоваяСтрока.Параметр    = "--id";
-    НоваяСтрока.Описание    = "Client id";
-    НоваяСтрока.Область     = "Public";
-    НоваяСтрока.ОписаниеМетода   = "Updates token by Refresh token";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yandex";
+    NewLine.Module      = "OPI_YandexID";
+    NewLine.Method       = "ConvertCodeToToken";
+    NewLine.SearchMethod = "CONVERTCODETOTOKEN";
+    NewLine.Parameter    = "--device";
+    NewLine.Description    = "device_code from GetConfirmationCode()";
+    NewLine.Region     = "Public";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yandex";
-    НоваяСтрока.Модуль      = "OPI_YandexID";
-    НоваяСтрока.Метод       = "RefreshToken";
-    НоваяСтрока.МетодПоиска = "REFRESHTOKEN";
-    НоваяСтрока.Параметр    = "--secret";
-    НоваяСтрока.Описание    = "Client secret";
-    НоваяСтрока.Область     = "Public";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yandex";
+    NewLine.Module      = "OPI_YandexID";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "Client id";
+    NewLine.Region     = "Public";
+    NewLine.MethodDescription   = "Updates token by Refresh token";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "yandex";
-    НоваяСтрока.Модуль      = "OPI_YandexID";
-    НоваяСтрока.Метод       = "RefreshToken";
-    НоваяСтрока.МетодПоиска = "REFRESHTOKEN";
-    НоваяСтрока.Параметр    = "--refresh";
-    НоваяСтрока.Описание    = "Refresh token";
-    НоваяСтрока.Область     = "Public";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yandex";
+    NewLine.Module      = "OPI_YandexID";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--secret";
+    NewLine.Description    = "Client secret";
+    NewLine.Region     = "Public";
 
-    Возврат ТаблицаСостава;
-КонецФункции
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "yandex";
+    NewLine.Module      = "OPI_YandexID";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--refresh";
+    NewLine.Description    = "Refresh token";
+    NewLine.Region     = "Public";
+
+    Return TableСоwithтаinа;
+EndFunction
 

@@ -1,26 +1,26 @@
-﻿Функция ПолучитьСостав() Экспорт
+﻿Function GetComposition() Export
 
-    ТаблицаСостава = Новый ТаблицаЗначений();
-    ТаблицаСостава.Колонки.Добавить("Библиотека");
-    ТаблицаСостава.Колонки.Добавить("Модуль");
-    ТаблицаСостава.Колонки.Добавить("Метод");
-    ТаблицаСостава.Колонки.Добавить("МетодПоиска");
-    ТаблицаСостава.Колонки.Добавить("Параметр");
-    ТаблицаСостава.Колонки.Добавить("Описание");
-    ТаблицаСостава.Колонки.Добавить("ОписаниеМетода");
-    ТаблицаСостава.Колонки.Добавить("Область");
+    TableСоwithтаinа = New ValueTable();
+    TableСоwithтаinа.Columns.Add("Library");
+    TableСоwithтаinа.Columns.Add("Module");
+    TableСоwithтаinа.Columns.Add("Method");
+    TableСоwithтаinа.Columns.Add("SearchMethod");
+    TableСоwithтаinа.Columns.Add("Parameter");
+    TableСоwithтаinа.Columns.Add("Description");
+    TableСоwithтаinа.Columns.Add("MethodDescription");
+    TableСоwithтаinа.Columns.Add("Region");
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "GetAuthorizationLink";
-    НоваяСтрока.МетодПоиска = "GETAUTHORIZATIONLINK";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Data and settings";
-    НоваяСтрока.ОписаниеМетода   = "Forms a link for authorization via the browser
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "GetAuthorizationLink";
+    NewLine.SearchMethod = "GETAUTHORIZATIONLINK";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Data and settings";
+    NewLine.MethodDescription   = "Forms a link for authorization via the browser
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -35,17 +35,17 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "GetToken";
-    НоваяСтрока.МетодПоиска = "GETTOKEN";
-    НоваяСтрока.Параметр    = "--code";
-    НоваяСтрока.Описание    = "Code obtained from authorization See GetAuthorizationLink";
-    НоваяСтрока.Область     = "Data and settings";
-    НоваяСтрока.ОписаниеМетода   = "Gets the token by the code obtained during authorization via the link from GetAuthorizationLink
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "GetToken";
+    NewLine.SearchMethod = "GETTOKEN";
+    NewLine.Parameter    = "--code";
+    NewLine.Description    = "Code obtained from authorization See GetAuthorizationLink";
+    NewLine.Region     = "Data and settings";
+    NewLine.MethodDescription   = "Gets the token by the code obtained during authorization via the link from GetAuthorizationLink
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -60,27 +60,27 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "GetToken";
-    НоваяСтрока.МетодПоиска = "GETTOKEN";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Data and settings";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "GetToken";
+    NewLine.SearchMethod = "GETTOKEN";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Data and settings";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "RefreshToken";
-    НоваяСтрока.МетодПоиска = "REFRESHTOKEN";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Data and settings";
-    НоваяСтрока.ОписаниеМетода   = "Updates the v2 token using the refresh_token
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "RefreshToken";
+    NewLine.SearchMethod = "REFRESHTOKEN";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Data and settings";
+    NewLine.MethodDescription   = "Updates the v2 token using the refresh_token
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -95,17 +95,17 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateTextTweet";
-    НоваяСтрока.МетодПоиска = "CREATETEXTTWEET";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Tweet text";
-    НоваяСтрока.Область     = "Tweets";
-    НоваяСтрока.ОписаниеМетода   = "Creates a tweet without attachments
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateTextTweet";
+    NewLine.SearchMethod = "CREATETEXTTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet without attachments
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -120,27 +120,27 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateTextTweet";
-    НоваяСтрока.МетодПоиска = "CREATETEXTTWEET";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateTextTweet";
+    NewLine.SearchMethod = "CREATETEXTTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateImageTweet";
-    НоваяСтрока.МетодПоиска = "CREATEIMAGETWEET";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Tweet text";
-    НоваяСтрока.Область     = "Tweets";
-    НоваяСтрока.ОписаниеМетода   = "Creates a tweet with an image attachment
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateImageTweet";
+    NewLine.SearchMethod = "CREATEIMAGETWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with an image attachment
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -155,37 +155,37 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateImageTweet";
-    НоваяСтрока.МетодПоиска = "CREATEIMAGETWEET";
-    НоваяСтрока.Параметр    = "--pictures";
-    НоваяСтрока.Описание    = "Image files array";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateImageTweet";
+    NewLine.SearchMethod = "CREATEIMAGETWEET";
+    NewLine.Parameter    = "--pictures";
+    NewLine.Description    = "Image files array";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateImageTweet";
-    НоваяСтрока.МетодПоиска = "CREATEIMAGETWEET";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateImageTweet";
+    NewLine.SearchMethod = "CREATEIMAGETWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateGifTweet";
-    НоваяСтрока.МетодПоиска = "CREATEGIFTWEET";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Tweet text";
-    НоваяСтрока.Область     = "Tweets";
-    НоваяСтрока.ОписаниеМетода   = "Creates a tweet with a gif attachment
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateGifTweet";
+    NewLine.SearchMethod = "CREATEGIFTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with a gif attachment
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -200,37 +200,37 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateGifTweet";
-    НоваяСтрока.МетодПоиска = "CREATEGIFTWEET";
-    НоваяСтрока.Параметр    = "--gifs";
-    НоваяСтрока.Описание    = "Gif files array";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateGifTweet";
+    NewLine.SearchMethod = "CREATEGIFTWEET";
+    NewLine.Parameter    = "--gifs";
+    NewLine.Description    = "Gif files array";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateGifTweet";
-    НоваяСтрока.МетодПоиска = "CREATEGIFTWEET";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateGifTweet";
+    NewLine.SearchMethod = "CREATEGIFTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateVideoTweet";
-    НоваяСтрока.МетодПоиска = "CREATEVIDEOTWEET";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Tweet text";
-    НоваяСтрока.Область     = "Tweets";
-    НоваяСтрока.ОписаниеМетода   = "Creates a tweet with a video attachment
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateVideoTweet";
+    NewLine.SearchMethod = "CREATEVIDEOTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with a video attachment
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -245,37 +245,37 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateVideoTweet";
-    НоваяСтрока.МетодПоиска = "CREATEVIDEOTWEET";
-    НоваяСтрока.Параметр    = "--videos";
-    НоваяСтрока.Описание    = "Video files array";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateVideoTweet";
+    NewLine.SearchMethod = "CREATEVIDEOTWEET";
+    NewLine.Parameter    = "--videos";
+    NewLine.Description    = "Video files array";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreateVideoTweet";
-    НоваяСтрока.МетодПоиска = "CREATEVIDEOTWEET";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreateVideoTweet";
+    NewLine.SearchMethod = "CREATEVIDEOTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreatePollTweet";
-    НоваяСтрока.МетодПоиска = "CREATEPOLLTWEET";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Tweet text";
-    НоваяСтрока.Область     = "Tweets";
-    НоваяСтрока.ОписаниеМетода   = "Creates a tweet with a poll
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Tweet text";
+    NewLine.Region     = "Tweets";
+    NewLine.MethodDescription   = "Creates a tweet with a poll
     |
-    |    Структура JSON данных авторизации (параметр --auth):
+    |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
     |     ""client_id""               : """",  
@@ -290,35 +290,35 @@
     |";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreatePollTweet";
-    НоваяСтрока.МетодПоиска = "CREATEPOLLTWEET";
-    НоваяСтрока.Параметр    = "--options";
-    НоваяСтрока.Описание    = "Poll options array";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--options";
+    NewLine.Description    = "Poll options array";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreatePollTweet";
-    НоваяСтрока.МетодПоиска = "CREATEPOLLTWEET";
-    НоваяСтрока.Параметр    = "--duration";
-    НоваяСтрока.Описание    = "Poll duration";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--duration";
+    NewLine.Description    = "Poll duration";
+    NewLine.Region     = "Tweets";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "twitter";
-    НоваяСтрока.Модуль      = "OPI_Twitter";
-    НоваяСтрока.Метод       = "CreatePollTweet";
-    НоваяСтрока.МетодПоиска = "CREATEPOLLTWEET";
-    НоваяСтрока.Параметр    = "--auth";
-    НоваяСтрока.Описание    = "Authorization JSON or path to .json (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Tweets";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "twitter";
+    NewLine.Module      = "OPI_Twitter";
+    NewLine.Method       = "CreatePollTweet";
+    NewLine.SearchMethod = "CREATEPOLLTWEET";
+    NewLine.Parameter    = "--auth";
+    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Region     = "Tweets";
 
-    Возврат ТаблицаСостава;
-КонецФункции
+    Return TableСоwithтаinа;
+EndFunction
 
