@@ -179,9 +179,9 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     
     DataString = DecodeString(DataString, StringEncodingMethod.URLencoding);
     DataStructure = OPI_Tools.RequestParametersToMap(DataString);
-    Key = "WebAppData";
+    KeyString = "WebAppData";
     Hash = "";
-    BinaryKey = GetBinaryDataFromString(Key);
+    BinaryKey = GetBinaryDataFromString(KeyString);
 
     Result = OPI_Cryptography.HMACSHA256(BinaryKey, GetBinaryDataFromString(Token));
 
