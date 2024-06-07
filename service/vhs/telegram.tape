@@ -9,8 +9,8 @@ Output "D:\REPOS\OpenIntegrations\docs\en\md\Start\img\2.gif"
 Set FontFamily "Consolas" 
 Set Shell "cmd"
 Set FontSize 10
-Set Width 720
-Set Height 480
+Set Width 868
+Set Height 619
 
  
 Type `oint telegram` Sleep 200ms Enter
