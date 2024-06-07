@@ -1,8 +1,8 @@
-﻿{
- "label": "Google Calendar",
- "position": 7,
- "link": {
- "type": "doc",
- "id": "GoogleCalendar"
- }
+{
+"label": null,
+"position": 7,
+"link": {
+"type": "doc",
+"id": "GoogleCalendar"
+}
 }
