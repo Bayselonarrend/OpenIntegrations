@@ -8,7 +8,7 @@ Output "D:\REPOS\OpenIntegrations\docs\en\md\Start\img\2.gif"
 
 Set FontFamily "Consolas" 
 Set Shell "cmd"
-Set FontSize 10
+Set FontSize 12
 Set Width 868
 Set Height 619
 
