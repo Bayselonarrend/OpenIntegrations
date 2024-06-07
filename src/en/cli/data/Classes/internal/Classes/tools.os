@@ -1,67 +1,67 @@
-﻿Функция ПолучитьСостав() Экспорт
+﻿Function GetComposition() Export
 
-    ТаблицаСостава = Новый ТаблицаЗначений();
-    ТаблицаСостава.Колонки.Добавить("Библиотека");
-    ТаблицаСостава.Колонки.Добавить("Модуль");
-    ТаблицаСостава.Колонки.Добавить("Метод");
-    ТаблицаСостава.Колонки.Добавить("МетодПоиска");
-    ТаблицаСостава.Колонки.Добавить("Параметр");
-    ТаблицаСостава.Колонки.Добавить("Описание");
-    ТаблицаСостава.Колонки.Добавить("ОписаниеМетода");
-    ТаблицаСостава.Колонки.Добавить("Область");
+    TableСоwithтаinа = New ValueTable();
+    TableСоwithтаinа.Columns.Add("Library");
+    TableСоwithтаinа.Columns.Add("Module");
+    TableСоwithтаinа.Columns.Add("Method");
+    TableСоwithтаinа.Columns.Add("SearchMethod");
+    TableСоwithтаinа.Columns.Add("Parameter");
+    TableСоwithтаinа.Columns.Add("Description");
+    TableСоwithтаinа.Columns.Add("MethodDescription");
+    TableСоwithтаinа.Columns.Add("Region");
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "tools";
-    НоваяСтрока.Модуль      = "Утилиты";
-    НоваяСтрока.Метод       = "РазложитьJSON";
-    НоваяСтрока.МетодПоиска = "РАЗЛОЖИТЬJSON";
-    НоваяСтрока.Параметр    = "--json";
-    НоваяСтрока.Описание    = "JSON данные";
-    НоваяСтрока.Область     = "Служебный программный интерфейс";
-    НоваяСтрока.ОписаниеМетода   = "Показывает значения, которые можно получить из переданного JSON и возвращает
-    |    конкретное значение при указании имени поля";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "tools";
-    НоваяСтрока.Модуль      = "Утилиты";
-    НоваяСтрока.Метод       = "РазложитьJSON";
-    НоваяСтрока.МетодПоиска = "РАЗЛОЖИТЬJSON";
-    НоваяСтрока.Параметр    = "--nesting";
-    НоваяСтрока.Описание    = "Ограничение на ур. вложенности разбора. На всю глубину по умолчанию (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Служебный программный интерфейс";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Утorты";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "РАЗЛОЖAndТЬJSON";
+    NewLine.Parameter    = "--json";
+    NewLine.Description    = "JSON data";
+    NewLine.Region     = "Служебный программный andнтерфейwith";
+    NewLine.MethodDescription   = "Displays the values that can be obtained from the passed JSON and returns
+    |    Specific Value When Specifying Field Name";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "tools";
-    НоваяСтрока.Модуль      = "Утилиты";
-    НоваяСтрока.Метод       = "РазложитьJSON";
-    НоваяСтрока.МетодПоиска = "РАЗЛОЖИТЬJSON";
-    НоваяСтрока.Параметр    = "--name";
-    НоваяСтрока.Описание    = "Имя поля для получения. Выводит весь список, если не указано (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Служебный программный интерфейс";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Утorты";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "РАЗЛОЖAndТЬJSON";
+    NewLine.Parameter    = "--nesting";
+    NewLine.Description    = "Parsing depth limit. Full depth by default (optional, def. val. - Empty)";
+    NewLine.Region     = "Служебный программный andнтерфейwith";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "tools";
-    НоваяСтрока.Модуль      = "Утилиты";
-    НоваяСтрока.Метод       = "РазложитьJSON";
-    НоваяСтрока.МетодПоиска = "РАЗЛОЖИТЬJSON";
-    НоваяСтрока.Параметр    = "--enc";
-    НоваяСтрока.Описание    = "Кодировка, в которой записаны JSON данные (необяз. по ум. - UTF-8)";
-    НоваяСтрока.Область     = "Служебный программный интерфейс";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Утorты";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "РАЗЛОЖAndТЬJSON";
+    NewLine.Parameter    = "--name";
+    NewLine.Description    = "Field name to retrieve. Displays the entire list if not specified (optional, def. val. - Empty)";
+    NewLine.Region     = "Служебный программный andнтерфейwith";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "tools";
-    НоваяСтрока.Модуль      = "Утилиты";
-    НоваяСтрока.Метод       = "ПреобразоватьBase64ВДвоичные";
-    НоваяСтрока.МетодПоиска = "ПРЕОБРАЗОВАТЬBASE64ВДВОИЧНЫЕ";
-    НоваяСтрока.Параметр    = "--in";
-    НоваяСтрока.Описание    = "Файл с Base64";
-    НоваяСтрока.Область     = "Служебный программный интерфейс";
-    НоваяСтрока.ОписаниеМетода   = "Преобразует файл с Base64 строкой в бинарный файл";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Утorты";
+    NewLine.Method       = "ParseJSON";
+    NewLine.SearchMethod = "РАЗЛОЖAndТЬJSON";
+    NewLine.Parameter    = "--enc";
+    NewLine.Description    = "Encoding of JSON Data (optional, def. val. - UTF-8)";
+    NewLine.Region     = "Служебный программный andнтерфейwith";
 
-    Возврат ТаблицаСостава;
-КонецФункции
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "tools";
+    NewLine.Module      = "Утorты";
+    NewLine.Method       = "ConvertBase64ToBinary";
+    NewLine.SearchMethod = "ПРЕОБРАЗОInАТЬBASE64InДInОAndЧNЫЕ";
+    NewLine.Parameter    = "--in";
+    NewLine.Description    = "Base64 File";
+    NewLine.Region     = "Служебный программный andнтерфейwith";
+    NewLine.MethodDescription   = "Convert file with Base64 string to binary file";
+
+    Return TableСоwithтаinа;
+EndFunction
 
