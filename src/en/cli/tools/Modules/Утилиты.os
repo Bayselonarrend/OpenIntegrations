@@ -1,232 +1,232 @@
-﻿// Команда CLI: tools
+﻿// CLI Command: tools
 
-Перем МаксимальнаяВложенность;
-Перем ИскомыйПараметр;
+Var MaximumNesting;
+Var DesiredParameter;
 
-#Область СлужебныйПрограммныйИнтерфейс
+#Region Internal
 
-// Разложить JSON на параметры
-// Показывает значения, которые можно получить из переданного JSON и возвращает
-// конкретное значение при указании имени поля
+// Parse JSON to Parameters
+// Displays the values that can be obtained from the passed JSON and returns
+// Specific Value When Specifying Field Name
 // 
-// Параметры:
-//  JSON                           - Строка  - JSON данные                                                          - json
-//  МаксимальныйУровеньВложенности - Число   - Ограничение на ур. вложенности разбора. На всю глубину по умолчанию  - nesting
-//  ИмяПараметра                   - Строка  - Имя поля для получения. Выводит весь список, если не указано         - name 
-//  Кодировка                      - Строка  - Кодировка, в которой записаны JSON данные                            - enc
+// Parameters:
+//  JSON                           - String  - JSON data                                                          - json
+//  MaximumNestingLevel - Number   - Parsing depth limit. Full depth by default  - nesting
+//  ParameterName                   - String  - Field name to retrieve. Displays the entire list if not specified         - name 
+//  Encoding                      - String  - Encoding of JSON Data                            - enc
 // 
-// Возвращаемое значение:
-//  Строка - пустая строка
-Функция РазложитьJSON(Знач JSON
-	, Знач МаксимальныйУровеньВложенности = 0
-	, Знач ИмяПараметра = ""
-	, Знач Кодировка = "UTF-8") Экспорт
+// Returns:
+//  String - empty string
+Function ParseJSON(Val JSON
+	, Val MaximumNestingLevel = 0
+	, Val ParameterName = ""
+	, Val Encoding = "UTF-8") Export
 
-	МаксимальнаяВложенность = Число(МаксимальныйУровеньВложенности);
-    ИскомыйПараметр         = ИмяПараметра;
+	MaximumNesting = Number(MaximumNestingLevel);
+    DesiredParameter         = ParameterName;
 
-	ПолучитьКоллекцию(JSON, Кодировка);
+	GetCollection(JSON, Encoding);
 
-	Если Не ТипЗнч(JSON) = Тип("Соответствие") Тогда
-		ВызватьИсключение "Ошибка преобразовани данных параметра JSON";
-	КонецЕсли;
+	If Not TypeOf(JSON) = Type("Map") Then
+		Raise "JSON Parameter Data Conversion Error";
+	EndIf;
 
-	Значение = ПолучитьЗначенияРекурсивно(JSON);
-	Возврат Значение;
+	Value = GetValuesRecursively(JSON);
+	Return Value;
 
-КонецФункции
+EndFunction
 
-// Преобразует файл с Base64 строкой в бинарный
-// Преобразует файл с Base64 строкой в бинарный файл
+// Convert Base64 String to Binary File
+// Convert file with Base64 string to binary file
 // 
-// Параметры:
-//  Вход  - Строка  - Файл с Base64       - in
+// Parameters:
+//  Entry  - String  - Base64 File       - in
 // 
-// Возвращаемое значение:
-//  Строка - пустая строка
-Функция ПреобразоватьBase64ВДвоичные(Знач Вход) Экспорт
+// Returns:
+//  String - empty string
+Function ConvertBase64ToBinary(Val Entry) Export
 
-	ВходнойФайл = Новый Файл(Вход);
+	InputFile = New File(Entry);
 
-	Если Не ВходнойФайл.Существует() Тогда
-		ВызватьИсключение("Не найден входной файл!");
-	КонецЕсли;
+	If Not InputFile.Exists() Then
+		Raise("Input File Not Found!");
+	EndIf;
 
-	ТекстовыйДокумент = Новый ТекстовыйДокумент();
-	ТекстовыйДокумент.Прочитать(Вход);
+	TextDocument = New TextDocument();
+	TextDocument.Read(Entry);
 	
-	B64 = ТекстовыйДокумент.ПолучитьТекст();
-    ДД  = Base64Значение(B64);
+	B64 = TextDocument.GetText();
+    BD  = Base64Value(B64);
 
-	Возврат ДД;
+	Return BD;
 
-КонецФункции
+EndFunction
 
-#КонецОбласти
+#EndRegion
 
-#Область СлужебныеПроцедурыИФункции
+#Region Private
 
-Функция ПолучитьЗначенияРекурсивно(Знач JSON, Знач Префикс = "", Знач ТекущаяВложенность = 1, СоответствиеПолей = "")
+Function GetValuesRecursively(Val JSON, Val Prefix = "", Val CurrentNesting = 1, FieldMapping = "")
 
-	Если Не ЗначениеЗаполнено(СоответствиеПолей) Тогда
-		СоответствиеПолей = Новый Соответствие;
-	КонецЕсли;
+	If Not ValueIsFilled(FieldMapping) Then
+		FieldMapping = New Map;
+	EndIf;
 
-	ВозвращаемоеЗначение = "";
+	ReturnValue = "";
 
-	Для Каждого Пара Из JSON Цикл
+	For Each Pair In JSON Do
 
-		Значение = Пара.Значение;
-		Ключ     = Префикс + Строка(Пара.Ключ);
+		Value = Pair.Value;
+		Key     = Prefix + String(Pair.Key);
 
-		ЭтоКоллекция = ТипЗнч(Значение) = Тип("Соответствие") Или ТипЗнч(Значение) = Тип("Структура");
-		СледующаяВложенность         = ТекущаяВложенность + 1;
-		СледующаяВложенностьДоступна = МаксимальнаяВложенность = 0 Или СледующаяВложенность <= МаксимальнаяВложенность;
+		ThisIsCollection = TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure");
+		NextNesting         = CurrentNesting + 1;
+		NextNestingAvailable = MaximumNesting = 0 Or NextNesting <= MaximumNesting;
 
-	    Если Не ЭтоКоллекция Или Не СледующаяВложенностьДоступна Тогда
+	    If Not ThisIsCollection Or Not NextNestingAvailable Then
 
-			Дублирования = СоответствиеПолей.Получить(Ключ);
+			duplicates = FieldMapping.Get(Key);
 
-			Если Дублирования = Неопределено Тогда
-				Счетчик         = 0;
-				ПеременнаяСреды = Ключ;
-			Иначе
-				Счетчик         = Дублирования + 1;
-				ПеременнаяСреды = Ключ + СтрЗаменить(Строка(Дублирования), Символы.НПП, "");
-			КонецЕсли;
+			If duplicates = Undefined Then
+				Counter         = 0;
+				EnvironmentVariable = Key;
+			Else
+				Counter         = duplicates + 1;
+				EnvironmentVariable = Key + StrReplace(String(duplicates), Chars.NPP, "");
+			EndIf;
 
-			СоответствиеПолей.Вставить(Ключ, Счетчик);
+			FieldMapping.Insert(Key, Counter);
 
-			ПолучитьСтроку(Значение);
+			GetLine(Value);
 
-			Если Не ЗначениеЗаполнено(ИскомыйПараметр) Тогда
-			    Сообщить(ПеременнаяСреды, СтатусСообщения.Информация);
-				Сообщить(Значение + Символы.ПС, СтатусСообщения.Внимание);
-			Иначе
+			If Not ValueIsFilled(DesiredParameter) Then
+			    Message(EnvironmentVariable, MessageStatus.Information);
+				Message(Value + Chars.LF, MessageStatus.Attention);
+			Else
 
-                Если ПеременнаяСреды = ИскомыйПараметр Тогда
-					ВозвращаемоеЗначение = Значение;
-					Прервать;
-				КонецЕсли;
+                If EnvironmentVariable = DesiredParameter Then
+					ReturnValue = Value;
+					Break;
+				EndIf;
 
-			КонецЕсли;	
-		Иначе
-			НовыйПрефикс = Ключ + "_";
-			ВозвращаемоеЗначение = ПолучитьЗначенияРекурсивно(Значение
-			    , НовыйПрефикс
-				, СледующаяВложенность
-				, СоответствиеПолей);
+			EndIf;	
+		Else
+			NewPrefix = Key + "_";
+			ReturnValue = GetValuesRecursively(Value
+			    , NewPrefix
+				, NextNesting
+				, FieldMapping);
 
-			Если ЗначениеЗаполнено(ВозвращаемоеЗначение) Тогда
-				Прервать;
-			КонецЕсли;
+			If ValueIsFilled(ReturnValue) Then
+				Break;
+			EndIf;
 
-		КонецЕсли;
+		EndIf;
 
-	КонецЦикла;
+	EndDo;
 
-	Возврат ?(ЗначениеЗаполнено(ВозвращаемоеЗначение), ВозвращаемоеЗначение, Символы.ПС);
+	Return ?(ValueIsFilled(ReturnValue), ReturnValue, Chars.LF);
 
-КонецФункции
+EndFunction
 
-Процедура ПолучитьСтроку(Значение)
+Procedure GetLine(Value)
 
-	ЭтоКоллекция = ТипЗнч(Значение) = Тип("Соответствие") Или ТипЗнч(Значение) = Тип("Структура") Или ТипЗнч(Значение) = Тип("Массив");
+	ThisIsCollection = TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Array");
 
-	Если ЭтоКоллекция Тогда
+	If ThisIsCollection Then
 
-		ПараметрыJSON = Новый ПараметрыЗаписиJSON(ПереносСтрокJSON.Windows
+		JSONParameters = New JSONWriterSettings(JSONLineBreak.Windows
         , " "
-        , Истина
-        , Истина
-        , Ложь
-        , Ложь
-        , Ложь
-        , Ложь);
+        , True
+        , True
+        , False
+        , False
+        , False
+        , False);
 
-        ЗаписьJSON = Новый ЗаписьJSON;
-        ЗаписьJSON.УстановитьСтроку(ПараметрыJSON);
+        JSONWriter = New JSONWriter;
+        JSONWriter.SetString(JSONParameters);
     
-        ЗаписатьJSON(ЗаписьJSON, Значение);
-        Значение = ЗаписьJSON.Закрыть();
+        WriteJSON(JSONWriter, Value);
+        Value = JSONWriter.Close();
 
-	Иначе
-		Значение = Строка(Значение);
-	КонецЕсли;
+	Else
+		Value = String(Value);
+	EndIf;
 
-КонецПроцедуры
+EndProcedure
 
-Процедура ПолучитьКоллекцию(Значение, Знач Кодировка)
+Procedure GetCollection(Value, Val Encoding)
     
-    Если Значение = Неопределено Тогда
-        Возврат;
-    КонецЕсли;
+    If Value = Undefined Then
+        Return;
+    EndIf;
     
-	ИсходноеЗначение = Значение;
+	InitialValue = Value;
 	
-	Если ЭтоКоллекция(Значение) Тогда
-		Возврат;
-	Иначе
+	If ThisIsCollection(Value) Then
+		Return;
+	Else
 		
-		Если ТипЗнч(Значение) = Тип("ДвоичныеДанные") Тогда
-			Значение = ПолучитьСтрокуИзДвоичныхДанных(Значение, Кодировка);
-		Иначе
-			Значение = Строка(Значение);
-		КонецЕсли;
+		If TypeOf(Value) = Type("BinaryData") Then
+			Value = GetStringFromBinaryData(Value, Encoding);
+		Else
+			Value = String(Value);
+		EndIf;
 		
-		Файл               = Новый Файл(Значение);
-		ТекстовыйДокумент  = Новый ТекстовыйДокумент();
+		File               = New File(Value);
+		TextDocument  = New TextDocument();
 		
-		Если Файл.Существует() Тогда
+		If File.Exists() Then
 			
-			ТекстовыйДокумент.Прочитать(Значение, Кодировка);
-			Значение = ТекстовыйДокумент.ПолучитьТекст();
+			TextDocument.Read(Value, Encoding);
+			Value = TextDocument.GetText();
 			
-		ИначеЕсли СтрНачинаетсяС(нРег(Значение), "http") Тогда
+		ElsIf StrStartsWith(Lower(Value), "http") Then
 			
-			ИВФ = ПолучитьИмяВременногоФайла();
-			КопироватьФайл(Значение, ИВФ);
-			ТекстовыйДокумент.Прочитать(ИВФ, Кодировка);
+			TFN = GetTempFileName();
+			CopyFile(Value, TFN);
+			TextDocument.Read(TFN, Encoding);
 
-			Значение = ТекстовыйДокумент.ПолучитьТекст();
+			Value = TextDocument.GetText();
 			
-			УдалитьФайлы(ИВФ);
+			DeleteFiles(TFN);
 			
-		Иначе
+		Else
 			
-			Значение = Строка(Значение);
+			Value = String(Value);
 			
-		КонецЕсли;
+		EndIf;
 			
-	КонецЕсли;
+	EndIf;
 
-	НормализоватьТекстовыйВвод(Значение);
-	ЧтениеJSON  = Новый ЧтениеJSON;
-	ЧтениеJSON.УстановитьСтроку(СокрЛП(Значение));
-	Значение = ПрочитатьJSON(ЧтениеJSON, Истина, Неопределено, ФорматДатыJSON.ISO);
-	ЧтениеJSON.Закрыть();
+	NormalizeTextInput(Value);
+	JSONReader  = New JSONReader;
+	JSONReader.SetString(TrimAll(Value));
+	Value = ReadJSON(JSONReader, True, Undefined, JSONDateFormat.ISO);
+	JSONReader.Close();
         
-КонецПроцедуры
+EndProcedure
 
-Процедура НормализоватьТекстовыйВвод(Текст)
+Procedure NormalizeTextInput(Text)
 
-	НачальнаяФигурная    = СтрНайти(Текст, "{");
-	ПоследняяФигурная    = СтрНайти(Текст, "}", НаправлениеПоиска.СКонца);
+	InitialCurly    = StrFind(Text, "{");
+	LastCurly    = StrFind(Text, "}", SearchDirection.FromEnd);
 
-	Если НачальнаяФигурная = 0 Или ПоследняяФигурная = 0 Тогда
-		Возврат;
-	КонецЕсли;
+	If InitialCurly = 0 Or LastCurly = 0 Then
+		Return;
+	EndIf;
 
-	Текст = Сред(Текст, НачальнаяФигурная, ПоследняяФигурная - НачальнаяФигурная + 1);
+	Text = Mid(Text, InitialCurly, LastCurly - InitialCurly + 1);
 
-КонецПроцедуры
+EndProcedure
 
-Функция ЭтоКоллекция(Знач Значение)
+Function ThisIsCollection(Val Value)
 
-	Возврат ТипЗнч(Значение) = Тип("Массив")
-			Или ТипЗнч(Значение) = Тип("Структура")
-			Или ТипЗнч(Значение) = Тип("Соответствие");
+	Return TypeOf(Value) = Type("Array")
+			Or TypeOf(Value) = Type("Structure")
+			Or TypeOf(Value) = Type("Map");
 			
-КонецФункции 
+EndFunction 
 
-#КонецОбласти
+#EndRegion

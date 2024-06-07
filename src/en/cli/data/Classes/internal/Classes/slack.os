@@ -1,1082 +1,1082 @@
-﻿Функция ПолучитьСостав() Экспорт
+﻿Function GetComposition() Export
 
-    ТаблицаСостава = Новый ТаблицаЗначений();
-    ТаблицаСостава.Колонки.Добавить("Библиотека");
-    ТаблицаСостава.Колонки.Добавить("Модуль");
-    ТаблицаСостава.Колонки.Добавить("Метод");
-    ТаблицаСостава.Колонки.Добавить("МетодПоиска");
-    ТаблицаСостава.Колонки.Добавить("Параметр");
-    ТаблицаСостава.Колонки.Добавить("Описание");
-    ТаблицаСостава.Колонки.Добавить("ОписаниеМетода");
-    ТаблицаСостава.Колонки.Добавить("Область");
+    TableСоwithтаinа = New ValueTable();
+    TableСоwithтаinа.Columns.Add("Library");
+    TableСоwithтаinа.Columns.Add("Module");
+    TableСоwithтаinа.Columns.Add("Method");
+    TableСоwithтаinа.Columns.Add("SearchMethod");
+    TableСоwithтаinа.Columns.Add("Parameter");
+    TableСоwithтаinа.Columns.Add("Description");
+    TableСоwithтаinа.Columns.Add("MethodDescription");
+    TableСоwithтаinа.Columns.Add("Region");
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetBotInformation";
-    НоваяСтрока.МетодПоиска = "GETBOTINFORMATION";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Management and settings";
-    НоваяСтрока.ОписаниеМетода   = "Gets basic information about the bot";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetWorkspaceList";
-    НоваяСтрока.МетодПоиска = "GETWORKSPACELIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Management and settings";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of workspaces where the bot is connected";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetBotInformation";
+    NewLine.SearchMethod = "GETBOTINFORMATION";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Management and settings";
+    NewLine.MethodDescription   = "Gets basic information about the bot";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetWorkspaceList";
-    НоваяСтрока.МетодПоиска = "GETWORKSPACELIST";
-    НоваяСтрока.Параметр    = "--cursor";
-    НоваяСтрока.Описание    = "Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Management and settings";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetWorkspaceList";
+    NewLine.SearchMethod = "GETWORKSPACELIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Management and settings";
+    NewLine.MethodDescription   = "Gets a list of workspaces where the bot is connected";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetUserList";
-    НоваяСтрока.МетодПоиска = "GETUSERLIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Management and settings";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of users in the workspace";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetWorkspaceList";
+    NewLine.SearchMethod = "GETWORKSPACELIST";
+    NewLine.Parameter    = "--cursor";
+    NewLine.Description    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Region     = "Management and settings";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetUserList";
-    НоваяСтрока.МетодПоиска = "GETUSERLIST";
-    НоваяСтрока.Параметр    = "--cursor";
-    НоваяСтрока.Описание    = "Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Management and settings";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetUserList";
+    NewLine.SearchMethod = "GETUSERLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Management and settings";
+    NewLine.MethodDescription   = "Gets a list of users in the workspace";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendMessage";
-    НоваяСтрока.МетодПоиска = "SENDMESSAGE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Message management";
-    НоваяСтрока.ОписаниеМетода   = "Sends a message at a selected hour";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetUserList";
+    NewLine.SearchMethod = "GETUSERLIST";
+    NewLine.Parameter    = "--cursor";
+    NewLine.Description    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Region     = "Management and settings";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendMessage";
-    НоваяСтрока.МетодПоиска = "SENDMESSAGE";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Message management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Sends a message at a selected hour";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendMessage";
-    НоваяСтрока.МетодПоиска = "SENDMESSAGE";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Message text (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Message management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendMessage";
-    НоваяСтрока.МетодПоиска = "SENDMESSAGE";
-    НоваяСтрока.Параметр    = "--date";
-    НоваяСтрока.Описание    = "Sending date for delayed message (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendMessage";
-    НоваяСтрока.МетодПоиска = "SENDMESSAGE";
-    НоваяСтрока.Параметр    = "--blocks";
-    НоваяСтрока.Описание    = "JSON array of block descriptions (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--date";
+    NewLine.Description    = "Sending date for delayed message (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendEphemeralMessage";
-    НоваяСтрока.МетодПоиска = "SENDEPHEMERALMESSAGE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Message management";
-    НоваяСтрока.ОписаниеМетода   = "Sends a message that arrives in the channel but is visible 
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendMessage";
+    NewLine.SearchMethod = "SENDMESSAGE";
+    NewLine.Parameter    = "--blocks";
+    NewLine.Description    = "JSON array of block descriptions (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendEphemeralMessage";
+    NewLine.SearchMethod = "SENDEPHEMERALMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Sends a message that arrives in the channel but is visible 
     |    only to a specific user";
 
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendEphemeralMessage";
-    НоваяСтрока.МетодПоиска = "SENDEPHEMERALMESSAGE";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendEphemeralMessage";
-    НоваяСтрока.МетодПоиска = "SENDEPHEMERALMESSAGE";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "Message text (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendEphemeralMessage";
-    НоваяСтрока.МетодПоиска = "SENDEPHEMERALMESSAGE";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendEphemeralMessage";
-    НоваяСтрока.МетодПоиска = "SENDEPHEMERALMESSAGE";
-    НоваяСтрока.Параметр    = "--blocks";
-    НоваяСтрока.Описание    = "JSON array of block descriptions (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "EditMessage";
-    НоваяСтрока.МетодПоиска = "EDITMESSAGE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Message management";
-    НоваяСтрока.ОписаниеМетода   = "Edits the content of an existing message";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "EditMessage";
-    НоваяСтрока.МетодПоиска = "EDITMESSAGE";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "EditMessage";
-    НоваяСтрока.МетодПоиска = "EDITMESSAGE";
-    НоваяСтрока.Параметр    = "--stamp";
-    НоваяСтрока.Описание    = "Message timestamp";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "EditMessage";
-    НоваяСтрока.МетодПоиска = "EDITMESSAGE";
-    НоваяСтрока.Параметр    = "--text";
-    НоваяСтрока.Описание    = "New message text (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "EditMessage";
-    НоваяСтрока.МетодПоиска = "EDITMESSAGE";
-    НоваяСтрока.Параметр    = "--blocks";
-    НоваяСтрока.Описание    = "JSON array of block descriptions (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteMessage";
-    НоваяСтрока.МетодПоиска = "DELETEMESSAGE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Message management";
-    НоваяСтрока.ОписаниеМетода   = "Deletes a channel message by timestamp";
-
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendEphemeralMessage";
+    NewLine.SearchMethod = "SENDEPHEMERALMESSAGE";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendEphemeralMessage";
+    NewLine.SearchMethod = "SENDEPHEMERALMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "Message text (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendEphemeralMessage";
+    NewLine.SearchMethod = "SENDEPHEMERALMESSAGE";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendEphemeralMessage";
+    NewLine.SearchMethod = "SENDEPHEMERALMESSAGE";
+    NewLine.Parameter    = "--blocks";
+    NewLine.Description    = "JSON array of block descriptions (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Edits the content of an existing message";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--stamp";
+    NewLine.Description    = "Message timestamp";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--text";
+    NewLine.Description    = "New message text (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "EditMessage";
+    NewLine.SearchMethod = "EDITMESSAGE";
+    NewLine.Parameter    = "--blocks";
+    NewLine.Description    = "JSON array of block descriptions (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Deletes a channel message by timestamp";
+
 
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteMessage";
-    НоваяСтрока.МетодПоиска = "DELETEMESSAGE";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteMessage";
-    НоваяСтрока.МетодПоиска = "DELETEMESSAGE";
-    НоваяСтрока.Параметр    = "--stamp";
-    НоваяСтрока.Описание    = "Timestamp or message ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteMessage";
-    НоваяСтрока.МетодПоиска = "DELETEMESSAGE";
-    НоваяСтрока.Параметр    = "--issheduled";
-    НоваяСтрока.Описание    = "Indicator of deleting a delayed message (необяз. по ум. - False)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetDelayedMessageList";
-    НоваяСтрока.МетодПоиска = "GETDELAYEDMESSAGELIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Message management";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of delayed channel messages";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetDelayedMessageList";
-    НоваяСтрока.МетодПоиска = "GETDELAYEDMESSAGELIST";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetDelayedMessageList";
-    НоваяСтрока.МетодПоиска = "GETDELAYEDMESSAGELIST";
-    НоваяСтрока.Параметр    = "--cursor";
-    НоваяСтрока.Описание    = "Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetMessageLink";
-    НоваяСтрока.МетодПоиска = "GETMESSAGELINK";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Message management";
-    НоваяСтрока.ОписаниеМетода   = "Gets a permanent URL to the channel message";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetMessageLink";
-    НоваяСтрока.МетодПоиска = "GETMESSAGELINK";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetMessageLink";
-    НоваяСтрока.МетодПоиска = "GETMESSAGELINK";
-    НоваяСтрока.Параметр    = "--stamp";
-    НоваяСтрока.Описание    = "Timestamp or message ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetMessageReplyList";
-    НоваяСтрока.МетодПоиска = "GETMESSAGEREPLYLIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Message management";
-    НоваяСтрока.ОписаниеМетода   = "Gets an array of messages that are replies to the specified";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetMessageReplyList";
-    НоваяСтрока.МетодПоиска = "GETMESSAGEREPLYLIST";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetMessageReplyList";
-    НоваяСтрока.МетодПоиска = "GETMESSAGEREPLYLIST";
-    НоваяСтрока.Параметр    = "--stamp";
-    НоваяСтрока.Описание    = "Timestamp or message ID";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetMessageReplyList";
-    НоваяСтрока.МетодПоиска = "GETMESSAGEREPLYLIST";
-    НоваяСтрока.Параметр    = "--cursor";
-    НоваяСтрока.Описание    = "Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Message management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelList";
-    НоваяСтрока.МетодПоиска = "GETCHANNELLIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of available channels";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelList";
-    НоваяСтрока.МетодПоиска = "GETCHANNELLIST";
-    НоваяСтрока.Параметр    = "--notarchived";
-    НоваяСтрока.Описание    = "Indicator of excluding archived channels (необяз. по ум. - False)";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelList";
-    НоваяСтрока.МетодПоиска = "GETCHANNELLIST";
-    НоваяСтрока.Параметр    = "--cursor";
-    НоваяСтрока.Описание    = "Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelUserList";
-    НоваяСтрока.МетодПоиска = "GETCHANNELUSERLIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of users in the specified channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelUserList";
-    НоваяСтрока.МетодПоиска = "GETCHANNELUSERLIST";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelUserList";
-    НоваяСтрока.МетодПоиска = "GETCHANNELUSERLIST";
-    НоваяСтрока.Параметр    = "--cursor";
-    НоваяСтрока.Описание    = "Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "CreateChannel";
-    НоваяСтрока.МетодПоиска = "CREATECHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Creates a new channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "CreateChannel";
-    НоваяСтрока.МетодПоиска = "CREATECHANNEL";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "Channel name";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "CreateChannel";
-    НоваяСтрока.МетодПоиска = "CREATECHANNEL";
-    НоваяСтрока.Параметр    = "--private";
-    НоваяСтрока.Описание    = "Create channel as private (необяз. по ум. - False)";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "ArchiveChannel";
-    НоваяСтрока.МетодПоиска = "ARCHIVECHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Archives an active channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "ArchiveChannel";
-    НоваяСтрока.МетодПоиска = "ARCHIVECHANNEL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannel";
-    НоваяСтрока.МетодПоиска = "GETCHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Gets information about the channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannel";
-    НоваяСтрока.МетодПоиска = "GETCHANNEL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelHistory";
-    НоваяСтрока.МетодПоиска = "GETCHANNELHISTORY";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Gets information about channel events";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetChannelHistory";
-    НоваяСтрока.МетодПоиска = "GETCHANNELHISTORY";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "InviteUsersToChannel";
-    НоваяСтрока.МетодПоиска = "INVITEUSERSTOCHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Adds specified users to the channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "InviteUsersToChannel";
-    НоваяСтрока.МетодПоиска = "INVITEUSERSTOCHANNEL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "InviteUsersToChannel";
-    НоваяСтрока.МетодПоиска = "INVITEUSERSTOCHANNEL";
-    НоваяСтрока.Параметр    = "--users";
-    НоваяСтрока.Описание    = "User ID Array";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "KickUserFromChannel";
-    НоваяСтрока.МетодПоиска = "KICKUSERFROMCHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Removes specified user from channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "KickUserFromChannel";
-    НоваяСтрока.МетодПоиска = "KICKUSERFROMCHANNEL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "KickUserFromChannel";
-    НоваяСтрока.МетодПоиска = "KICKUSERFROMCHANNEL";
-    НоваяСтрока.Параметр    = "--user";
-    НоваяСтрока.Описание    = "User ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "JoinChannel";
-    НоваяСтрока.МетодПоиска = "JOINCHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Adds the current bot to the channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "JoinChannel";
-    НоваяСтрока.МетодПоиска = "JOINCHANNEL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "LeaveChannel";
-    НоваяСтрока.МетодПоиска = "LEAVECHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Removes the current bot from the channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "LeaveChannel";
-    НоваяСтрока.МетодПоиска = "LEAVECHANNEL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SetChannelTopic";
-    НоваяСтрока.МетодПоиска = "SETCHANNELTOPIC";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Sets the channel topic";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SetChannelTopic";
-    НоваяСтрока.МетодПоиска = "SETCHANNELTOPIC";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SetChannelTopic";
-    НоваяСтрока.МетодПоиска = "SETCHANNELTOPIC";
-    НоваяСтрока.Параметр    = "--theme";
-    НоваяСтрока.Описание    = "Channel topic";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SetChannelGoal";
-    НоваяСтрока.МетодПоиска = "SETCHANNELGOAL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Sets the channel purpose (description)";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SetChannelGoal";
-    НоваяСтрока.МетодПоиска = "SETCHANNELGOAL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SetChannelGoal";
-    НоваяСтрока.МетодПоиска = "SETCHANNELGOAL";
-    НоваяСтрока.Параметр    = "--purpose";
-    НоваяСтрока.Описание    = "Channel purpose";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "RenameChannel";
-    НоваяСтрока.МетодПоиска = "RENAMECHANNEL";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Channel management";
-    НоваяСтрока.ОписаниеМетода   = "Changes the name of the channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "RenameChannel";
-    НоваяСтрока.МетодПоиска = "RENAMECHANNEL";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "RenameChannel";
-    НоваяСтрока.МетодПоиска = "RENAMECHANNEL";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "New channel name";
-    НоваяСтрока.Область     = "Channel management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "OpenDialog";
-    НоваяСтрока.МетодПоиска = "OPENDIALOG";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Dialog management";
-    НоваяСтрока.ОписаниеМетода   = "Opens a new dialog with one or more users";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "OpenDialog";
-    НоваяСтрока.МетодПоиска = "OPENDIALOG";
-    НоваяСтрока.Параметр    = "--users";
-    НоваяСтрока.Описание    = "User ID Array";
-    НоваяСтрока.Область     = "Dialog management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "CloseDialog";
-    НоваяСтрока.МетодПоиска = "CLOSEDIALOG";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "Dialog management";
-    НоваяСтрока.ОписаниеМетода   = "Closes an existing dialog";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "CloseDialog";
-    НоваяСтрока.МетодПоиска = "CLOSEDIALOG";
-    НоваяСтрока.Параметр    = "--conv";
-    НоваяСтрока.Описание    = "Dialog ID";
-    НоваяСтрока.Область     = "Dialog management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "File managment";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of files of the bot or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel for selection (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetFilesList";
-    НоваяСтрока.МетодПоиска = "GETFILESLIST";
-    НоваяСтрока.Параметр    = "--page";
-    НоваяСтрока.Описание    = "Page number (необяз. по ум. - 1)";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "File managment";
-    НоваяСтрока.ОписаниеМетода   = "Uploads a file to Slack servers";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--file";
-    НоваяСтрока.Описание    = "File for upload";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--filename";
-    НоваяСтрока.Описание    = "File name with extension";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "File name in Slack";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "UploadFile";
-    НоваяСтрока.МетодПоиска = "UPLOADFILE";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel ID (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetFileData";
-    НоваяСтрока.МетодПоиска = "GETFILEDATA";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "File managment";
-    НоваяСтрока.ОписаниеМетода   = "Gets information about the file";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetFileData";
-    НоваяСтрока.МетодПоиска = "GETFILEDATA";
-    НоваяСтрока.Параметр    = "--fileid";
-    НоваяСтрока.Описание    = "File identifier";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteFile";
-    НоваяСтрока.МетодПоиска = "DELETEFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "File managment";
-    НоваяСтрока.ОписаниеМетода   = "Deletes a file on Slack";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteFile";
-    НоваяСтрока.МетодПоиска = "DELETEFILE";
-    НоваяСтрока.Параметр    = "--fileid";
-    НоваяСтрока.Описание    = "File identifier";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "MakeFilePublic";
-    НоваяСтрока.МетодПоиска = "MAKEFILEPUBLIC";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "User token";
-    НоваяСтрока.Область     = "File managment";
-    НоваяСтрока.ОписаниеМетода   = "Creates a public URL for the file. Requires user token";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "MakeFilePublic";
-    НоваяСтрока.МетодПоиска = "MAKEFILEPUBLIC";
-    НоваяСтрока.Параметр    = "--fileid";
-    НоваяСтрока.Описание    = "File identifier";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "MakeFilePrivate";
-    НоваяСтрока.МетодПоиска = "MAKEFILEPRIVATE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "User token";
-    НоваяСтрока.Область     = "File managment";
-    НоваяСтрока.ОписаниеМетода   = "Removes the public URL from the file. Requires user token";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "MakeFilePrivate";
-    НоваяСтрока.МетодПоиска = "MAKEFILEPRIVATE";
-    НоваяСтрока.Параметр    = "--fileid";
-    НоваяСтрока.Описание    = "File identifier";
-    НоваяСтрока.Область     = "File managment";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetExternalFileList";
-    НоваяСтрока.МетодПоиска = "GETEXTERNALFILELIST";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "External files management";
-    НоваяСтрока.ОписаниеМетода   = "Gets a list of external files of a user or channel";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetExternalFileList";
-    НоваяСтрока.МетодПоиска = "GETEXTERNALFILELIST";
-    НоваяСтрока.Параметр    = "--channel";
-    НоваяСтрока.Описание    = "Channel for selection (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetExternalFileList";
-    НоваяСтрока.МетодПоиска = "GETEXTERNALFILELIST";
-    НоваяСтрока.Параметр    = "--cursor";
-    НоваяСтрока.Описание    = "Pointer from the previous request, if the result rows > 100 (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetExternalFile";
-    НоваяСтрока.МетодПоиска = "GETEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "External files management";
-    НоваяСтрока.ОписаниеМетода   = "Gets information about the external file";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GetExternalFile";
-    НоваяСтрока.МетодПоиска = "GETEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--fileid";
-    НоваяСтрока.Описание    = "File identifier";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "AddExternalFile";
-    НоваяСтрока.МетодПоиска = "ADDEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "External files management";
-    НоваяСтрока.ОписаниеМетода   = "Adds a new external file";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "AddExternalFile";
-    НоваяСтрока.МетодПоиска = "ADDEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--url";
-    НоваяСтрока.Описание    = "URL to external file";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "AddExternalFile";
-    НоваяСтрока.МетодПоиска = "ADDEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--title";
-    НоваяСтрока.Описание    = "File title for Slack";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendExternalFile";
-    НоваяСтрока.МетодПоиска = "SENDEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "External files management";
-    НоваяСтрока.ОписаниеМетода   = "Sends an external file to a list of channels";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendExternalFile";
-    НоваяСтрока.МетодПоиска = "SENDEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--fileid";
-    НоваяСтрока.Описание    = "File identifier";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "SendExternalFile";
-    НоваяСтрока.МетодПоиска = "SENDEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--channels";
-    НоваяСтрока.Описание    = "Array of channels for sending";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteExternalFile";
-    НоваяСтрока.МетодПоиска = "DELETEEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--token";
-    НоваяСтрока.Описание    = "Bot token";
-    НоваяСтрока.Область     = "External files management";
-    НоваяСтрока.ОписаниеМетода   = "Deletes an external file from Slack";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "DeleteExternalFile";
-    НоваяСтрока.МетодПоиска = "DELETEEXTERNALFILE";
-    НоваяСтрока.Параметр    = "--fileid";
-    НоваяСтрока.Описание    = "File identifier";
-    НоваяСтрока.Область     = "External files management";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GenerateImageBlock";
-    НоваяСтрока.МетодПоиска = "GENERATEIMAGEBLOCK";
-    НоваяСтрока.Параметр    = "--picture";
-    НоваяСтрока.Описание    = "Image URL";
-    НоваяСтрока.Область     = "Block formation";
-    НоваяСтрока.ОписаниеМетода   = "Generates a block with an image to add to the message block array";
-
-
-    НоваяСтрока = ТаблицаСостава.Добавить();
-    НоваяСтрока.Библиотека  = "slack";
-    НоваяСтрока.Модуль      = "OPI_Slack";
-    НоваяСтрока.Метод       = "GenerateImageBlock";
-    НоваяСтрока.МетодПоиска = "GENERATEIMAGEBLOCK";
-    НоваяСтрока.Параметр    = "--alt";
-    НоваяСтрока.Описание    = "Alternate text of the image (необяз. по ум. - Пустое значение)";
-    НоваяСтрока.Область     = "Block formation";
-
-    Возврат ТаблицаСостава;
-КонецФункции
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--stamp";
+    NewLine.Description    = "Timestamp or message ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteMessage";
+    NewLine.SearchMethod = "DELETEMESSAGE";
+    NewLine.Parameter    = "--issheduled";
+    NewLine.Description    = "Indicator of deleting a delayed message (optional, def. val. - No)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetDelayedMessageList";
+    NewLine.SearchMethod = "GETDELAYEDMESSAGELIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Gets a list of delayed channel messages";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetDelayedMessageList";
+    NewLine.SearchMethod = "GETDELAYEDMESSAGELIST";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetDelayedMessageList";
+    NewLine.SearchMethod = "GETDELAYEDMESSAGELIST";
+    NewLine.Parameter    = "--cursor";
+    NewLine.Description    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetMessageLink";
+    NewLine.SearchMethod = "GETMESSAGELINK";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Gets a permanent URL to the channel message";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetMessageLink";
+    NewLine.SearchMethod = "GETMESSAGELINK";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetMessageLink";
+    NewLine.SearchMethod = "GETMESSAGELINK";
+    NewLine.Parameter    = "--stamp";
+    NewLine.Description    = "Timestamp or message ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetMessageReplyList";
+    NewLine.SearchMethod = "GETMESSAGEREPLYLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Message management";
+    NewLine.MethodDescription   = "Gets an array of messages that are replies to the specified";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetMessageReplyList";
+    NewLine.SearchMethod = "GETMESSAGEREPLYLIST";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetMessageReplyList";
+    NewLine.SearchMethod = "GETMESSAGEREPLYLIST";
+    NewLine.Parameter    = "--stamp";
+    NewLine.Description    = "Timestamp or message ID";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetMessageReplyList";
+    NewLine.SearchMethod = "GETMESSAGEREPLYLIST";
+    NewLine.Parameter    = "--cursor";
+    NewLine.Description    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Region     = "Message management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelList";
+    NewLine.SearchMethod = "GETCHANNELLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Gets a list of available channels";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelList";
+    NewLine.SearchMethod = "GETCHANNELLIST";
+    NewLine.Parameter    = "--notarchived";
+    NewLine.Description    = "Indicator of excluding archived channels (optional, def. val. - No)";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelList";
+    NewLine.SearchMethod = "GETCHANNELLIST";
+    NewLine.Parameter    = "--cursor";
+    NewLine.Description    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelUserList";
+    NewLine.SearchMethod = "GETCHANNELUSERLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Gets a list of users in the specified channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelUserList";
+    NewLine.SearchMethod = "GETCHANNELUSERLIST";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelUserList";
+    NewLine.SearchMethod = "GETCHANNELUSERLIST";
+    NewLine.Parameter    = "--cursor";
+    NewLine.Description    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "CreateChannel";
+    NewLine.SearchMethod = "CREATECHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Creates a new channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "CreateChannel";
+    NewLine.SearchMethod = "CREATECHANNEL";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "Channel name";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "CreateChannel";
+    NewLine.SearchMethod = "CREATECHANNEL";
+    NewLine.Parameter    = "--private";
+    NewLine.Description    = "Create channel as private (optional, def. val. - No)";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "ArchiveChannel";
+    NewLine.SearchMethod = "ARCHIVECHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Archives an active channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "ArchiveChannel";
+    NewLine.SearchMethod = "ARCHIVECHANNEL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannel";
+    NewLine.SearchMethod = "GETCHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Gets information about the channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannel";
+    NewLine.SearchMethod = "GETCHANNEL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelHistory";
+    NewLine.SearchMethod = "GETCHANNELHISTORY";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Gets information about channel events";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetChannelHistory";
+    NewLine.SearchMethod = "GETCHANNELHISTORY";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "InviteUsersToChannel";
+    NewLine.SearchMethod = "INVITEUSERSTOCHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Adds specified users to the channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "InviteUsersToChannel";
+    NewLine.SearchMethod = "INVITEUSERSTOCHANNEL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "InviteUsersToChannel";
+    NewLine.SearchMethod = "INVITEUSERSTOCHANNEL";
+    NewLine.Parameter    = "--users";
+    NewLine.Description    = "User ID Array";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "KickUserFromChannel";
+    NewLine.SearchMethod = "KICKUSERFROMCHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Removes specified user from channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "KickUserFromChannel";
+    NewLine.SearchMethod = "KICKUSERFROMCHANNEL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "KickUserFromChannel";
+    NewLine.SearchMethod = "KICKUSERFROMCHANNEL";
+    NewLine.Parameter    = "--user";
+    NewLine.Description    = "User ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "JoinChannel";
+    NewLine.SearchMethod = "JOINCHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Adds the current bot to the channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "JoinChannel";
+    NewLine.SearchMethod = "JOINCHANNEL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "LeaveChannel";
+    NewLine.SearchMethod = "LEAVECHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Removes the current bot from the channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "LeaveChannel";
+    NewLine.SearchMethod = "LEAVECHANNEL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SetChannelTopic";
+    NewLine.SearchMethod = "SETCHANNELTOPIC";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Sets the channel topic";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SetChannelTopic";
+    NewLine.SearchMethod = "SETCHANNELTOPIC";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SetChannelTopic";
+    NewLine.SearchMethod = "SETCHANNELTOPIC";
+    NewLine.Parameter    = "--theme";
+    NewLine.Description    = "Channel topic";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SetChannelGoal";
+    NewLine.SearchMethod = "SETCHANNELGOAL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Sets the channel purpose (description)";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SetChannelGoal";
+    NewLine.SearchMethod = "SETCHANNELGOAL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SetChannelGoal";
+    NewLine.SearchMethod = "SETCHANNELGOAL";
+    NewLine.Parameter    = "--purpose";
+    NewLine.Description    = "Channel purpose";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "RenameChannel";
+    NewLine.SearchMethod = "RENAMECHANNEL";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Channel management";
+    NewLine.MethodDescription   = "Changes the name of the channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "RenameChannel";
+    NewLine.SearchMethod = "RENAMECHANNEL";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "RenameChannel";
+    NewLine.SearchMethod = "RENAMECHANNEL";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "New channel name";
+    NewLine.Region     = "Channel management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "OpenDialog";
+    NewLine.SearchMethod = "OPENDIALOG";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Dialog management";
+    NewLine.MethodDescription   = "Opens a new dialog with one or more users";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "OpenDialog";
+    NewLine.SearchMethod = "OPENDIALOG";
+    NewLine.Parameter    = "--users";
+    NewLine.Description    = "User ID Array";
+    NewLine.Region     = "Dialog management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "CloseDialog";
+    NewLine.SearchMethod = "CLOSEDIALOG";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "Dialog management";
+    NewLine.MethodDescription   = "Closes an existing dialog";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "CloseDialog";
+    NewLine.SearchMethod = "CLOSEDIALOG";
+    NewLine.Parameter    = "--conv";
+    NewLine.Description    = "Dialog ID";
+    NewLine.Region     = "Dialog management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "File managment";
+    NewLine.MethodDescription   = "Gets a list of files of the bot or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel for selection (optional, def. val. - Empty)";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetFilesList";
+    NewLine.SearchMethod = "GETFILESLIST";
+    NewLine.Parameter    = "--page";
+    NewLine.Description    = "Page number (optional, def. val. - 1)";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "File managment";
+    NewLine.MethodDescription   = "Uploads a file to Slack servers";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File for upload";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--filename";
+    NewLine.Description    = "File name with extension";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "File name in Slack";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "UploadFile";
+    NewLine.SearchMethod = "UPLOADFILE";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel ID (optional, def. val. - Empty)";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetFileData";
+    NewLine.SearchMethod = "GETFILEDATA";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "File managment";
+    NewLine.MethodDescription   = "Gets information about the file";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetFileData";
+    NewLine.SearchMethod = "GETFILEDATA";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "File managment";
+    NewLine.MethodDescription   = "Deletes a file on Slack";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteFile";
+    NewLine.SearchMethod = "DELETEFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "MakeFilePublic";
+    NewLine.SearchMethod = "MAKEFILEPUBLIC";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "User token";
+    NewLine.Region     = "File managment";
+    NewLine.MethodDescription   = "Creates a public URL for the file. Requires user token";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "MakeFilePublic";
+    NewLine.SearchMethod = "MAKEFILEPUBLIC";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "MakeFilePrivate";
+    NewLine.SearchMethod = "MAKEFILEPRIVATE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "User token";
+    NewLine.Region     = "File managment";
+    NewLine.MethodDescription   = "Removes the public URL from the file. Requires user token";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "MakeFilePrivate";
+    NewLine.SearchMethod = "MAKEFILEPRIVATE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "File managment";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetExternalFileList";
+    NewLine.SearchMethod = "GETEXTERNALFILELIST";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "External files management";
+    NewLine.MethodDescription   = "Gets a list of external files of a user or channel";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetExternalFileList";
+    NewLine.SearchMethod = "GETEXTERNALFILELIST";
+    NewLine.Parameter    = "--channel";
+    NewLine.Description    = "Channel for selection (optional, def. val. - Empty)";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetExternalFileList";
+    NewLine.SearchMethod = "GETEXTERNALFILELIST";
+    NewLine.Parameter    = "--cursor";
+    NewLine.Description    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetExternalFile";
+    NewLine.SearchMethod = "GETEXTERNALFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "External files management";
+    NewLine.MethodDescription   = "Gets information about the external file";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GetExternalFile";
+    NewLine.SearchMethod = "GETEXTERNALFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "AddExternalFile";
+    NewLine.SearchMethod = "ADDEXTERNALFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "External files management";
+    NewLine.MethodDescription   = "Adds a new external file";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "AddExternalFile";
+    NewLine.SearchMethod = "ADDEXTERNALFILE";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "URL to external file";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "AddExternalFile";
+    NewLine.SearchMethod = "ADDEXTERNALFILE";
+    NewLine.Parameter    = "--title";
+    NewLine.Description    = "File title for Slack";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendExternalFile";
+    NewLine.SearchMethod = "SENDEXTERNALFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "External files management";
+    NewLine.MethodDescription   = "Sends an external file to a list of channels";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendExternalFile";
+    NewLine.SearchMethod = "SENDEXTERNALFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "SendExternalFile";
+    NewLine.SearchMethod = "SENDEXTERNALFILE";
+    NewLine.Parameter    = "--channels";
+    NewLine.Description    = "Array of channels for sending";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteExternalFile";
+    NewLine.SearchMethod = "DELETEEXTERNALFILE";
+    NewLine.Parameter    = "--token";
+    NewLine.Description    = "Bot token";
+    NewLine.Region     = "External files management";
+    NewLine.MethodDescription   = "Deletes an external file from Slack";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "DeleteExternalFile";
+    NewLine.SearchMethod = "DELETEEXTERNALFILE";
+    NewLine.Parameter    = "--fileid";
+    NewLine.Description    = "File identifier";
+    NewLine.Region     = "External files management";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GenerateImageBlock";
+    NewLine.SearchMethod = "GENERATEIMAGEBLOCK";
+    NewLine.Parameter    = "--picture";
+    NewLine.Description    = "Image URL";
+    NewLine.Region     = "Block formation";
+    NewLine.MethodDescription   = "Generates a block with an image to add to the message block array";
+
+
+    NewLine = TableСоwithтаinа.Add();
+    NewLine.Library  = "slack";
+    NewLine.Module      = "OPI_Slack";
+    NewLine.Method       = "GenerateImageBlock";
+    NewLine.SearchMethod = "GENERATEIMAGEBLOCK";
+    NewLine.Parameter    = "--alt";
+    NewLine.Description    = "Alternate text of the image (optional, def. val. - Empty)";
+    NewLine.Region     = "Block formation";
+
+    Return TableСоwithтаinа;
+EndFunction
 
