@@ -103,7 +103,7 @@
 	|      - uses: actions/checkout@v4             
 	|      - uses: otymko/setup-onescript@v1.4
 	|        with:
-	|          version: " + Версия + " 
+	|          version: 1.9.0
 	|
 	|      - name: Установить cmdline, asserts и osparser
 	|        run: |
