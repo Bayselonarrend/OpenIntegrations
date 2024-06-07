@@ -81,7 +81,7 @@ The CLI version requires **.Net Framework 4.8** or **Mono of the corresponding v
 
 OpenIntegrations has detailed documentation with examples available at [https://en.openintegrations.dev](https://en.openintegrations.dev). There you can find both general guidelines for getting started with each specific API and descriptions of each method with code examples, parameters, and return values.
 
-![Docs](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/docs.png?4)
+![Docs](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/docs_eng.png?4)
 
 The CLI version of OpenIntegrations has its own built-in help for all methods. The help is displayed when calling the library without a method, a method without options, or by specifying the `--help` option.
 
