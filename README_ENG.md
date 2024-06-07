@@ -93,6 +93,5 @@ ___
 
 <br>
 
->- Открытый Пакет интеграций (OpenIntegrations)<br>
+>- Open Integrations Package (OpenIntegrations)<br>
 >Licensed under the MIT License<br>
->Список зависимостей находится в файле NOTICE<br>
