@@ -3,15 +3,15 @@ sidebar_position: 1
 ---
 
 # AddSheet
- Adds a new sheet to the book
+ Adds a new sheet to the spreadsheet
 
 
-*Function AddSheet(Val Token, Val Book, Val Name) Export*
+*Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Token | --token | String | Token |
- | Book | --spreadsheet | String | BookIdentifier |
+ | Spreadsheet | --spreadsheet | String | Spreadsheet identifier |
  | Name | --title | String | NewSheetName |
 
  
@@ -20,10 +20,10 @@ sidebar_position: 1
 ```bsl title="Code example"
 	
  
- Book = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Name = "TestSheet";
  
- Response = OPI_GoogleSheets.AddSheet(Token, Book, Name); //Map
+ Response = OPI_GoogleSheets.AddSheet(Token, Spreadsheet, Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
  

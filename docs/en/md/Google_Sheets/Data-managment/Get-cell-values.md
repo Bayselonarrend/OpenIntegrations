@@ -6,13 +6,13 @@ sidebar_position: 3
  Gets cell values of the table
 
 
-*Function GetCellValues(Val Token, Val Book, Val CellsArray = "", Val Sheet = "") Export*
+*Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Sheet = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Token | --token | String | Token |
- | Book | --spreadsheet | String | BookID |
- | CellsArray | --cells | Array of String | Array of A1-type cells to get (whole sheet if not filled) |
+ | Spreadsheet | --spreadsheet | String | SpreadsheetID |
+ | CellsArray | --cells | Array of String | Array of A1 type cells to get (whole sheet if not filled) |
  | Sheet | --sheetname | String | Sheet name (first sheet by default) |
 
  
@@ -26,10 +26,10 @@ sidebar_position: 3
  CellsArray.Add("A3");
  CellsArray.Add("B4");
  
- Book = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Sheet = "Sheet2";
  
- Response = OPI_GoogleSheets.GetCellValues(Token, Book, CellsArray, Sheet); //Map
+ Response = OPI_GoogleSheets.GetCellValues(Token, Spreadsheet, CellsArray, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
  
