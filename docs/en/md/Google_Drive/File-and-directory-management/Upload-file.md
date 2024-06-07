@@ -6,7 +6,7 @@ sidebar_position: 4
  Uploads a file to the drive
 
 
-*Function UploadFile(Val Token, Val File, Val Description) ExportReturn FileManagement(Token, File, Description);EndFunction*
+*Function UploadFile(Val Token, Val File, Val Description) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
