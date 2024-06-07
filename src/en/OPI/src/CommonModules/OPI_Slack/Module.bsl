@@ -677,7 +677,7 @@ EndFunction
 
 #EndRegion
 
-#Region FileWork
+#Region FileManagment
 
 // Get list of files
 // Gets a list of files of the bot or channel
@@ -833,7 +833,7 @@ EndFunction
 
 #EndRegion
 
-#Region DeletedFilesManagement
+#Region ExternalFilesManagement
 
 // Get list of external files
 // Gets a list of external files of a user or channel

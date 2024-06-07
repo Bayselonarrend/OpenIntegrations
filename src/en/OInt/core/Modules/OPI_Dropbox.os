@@ -513,7 +513,7 @@ EndFunction
 
 #EndRegion
 
-#Region TagWork
+#Region TagsManagment
 
 // Get list of tags
 // Gets the list of tags of the selected files
