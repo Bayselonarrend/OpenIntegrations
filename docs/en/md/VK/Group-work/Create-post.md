@@ -28,12 +28,12 @@ sidebar_position: 1
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
  Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
  
- AndVF = GetTempFileName("png"); 
- CopyFile(Image2, AndVF);
+ TFN = GetTempFileName("png"); 
+ CopyFile(Image2, TFN);
  
  ImageArray = New Array;
  ImageArray.Add(Image);
- ImageArray.Add(AndVF);
+ ImageArray.Add(TFN);
  
  Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
  Result = OPI_VK.CreatePost(Text, Image, False,, Parameters);

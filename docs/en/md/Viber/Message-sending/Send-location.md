@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# SendLocation
+# Send location
  Sends geographic coordinates to a chat or channel
 
 

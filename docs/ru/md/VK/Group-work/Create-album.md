@@ -30,7 +30,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint vk СоздатьАльбом --title %title% --description %description% --auth "ПолучитьПараметрыВК()"
+      oint vk СоздатьАльбом --title %title% --description %description% --auth %auth%
 
 
 ```
