@@ -274,7 +274,9 @@ EndFunction
 // Returns:
 // Structure - Field description
 Function GetStringField(Val Name) Export
+	
     Return PrimitiveFieldDescription(Name, "richText");
+    
 EndFunction
 
 // Get field (numeric)
@@ -304,7 +306,9 @@ EndFunction
 // Returns:
 // Structure - Field description
 Function GetAttachmentField(Val Name) Export
+	
     Return PrimitiveFieldDescription(Name, "multipleAttachments");
+    
 EndFunction
 
 // Get field (checkbox)
@@ -348,7 +352,9 @@ EndFunction
 // Returns:
 // Structure - Field description
 Function GetEmailField(Val Name) Export
+	
     Return PrimitiveFieldDescription(Name, "email");
+    
 EndFunction
 
 // Get field (phone)
@@ -360,7 +366,9 @@ EndFunction
 // Returns:
 // Structure - Field description
 Function GetPhoneField(Val Name) Export
+	
     Return PrimitiveFieldDescription(Name, "phoneNumber");
+    
 EndFunction
 
 // Get field (url)
@@ -372,7 +380,9 @@ EndFunction
 // Returns:
 // Structure - Field description
 Function GetLinkField(Val Name) Export
+	
     Return PrimitiveFieldDescription(Name, "url");
+    
 EndFunction
 
 #EndRegion

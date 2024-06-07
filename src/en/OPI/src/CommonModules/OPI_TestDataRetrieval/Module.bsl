@@ -178,8 +178,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "Viber_SendImage" , "Send image" , Viber);
     NewTest(TestTable, "Viber_SendFile" , "SendFile" , Viber);
     NewTest(TestTable, "Viber_SendContact" , "Send contact" , Viber);
-    NewTest(TestTable, "Viber_SendLocation" , "SendLocation" , Viber);
-    NewTest(TestTable, "Viber_SendLink" , "SendLink" , Viber);
+    NewTest(TestTable, "Viber_SendLocation" , "Send location" , Viber);
+    NewTest(TestTable, "Viber_SendLink" , "Send link" , Viber);
     
     NewTest(TestTable, "Notion_CreatePage" , "Create page" , Notion);
     NewTest(TestTable, "Notion_CreateEditDatabase" , "Create/Edit database" , Notion);
@@ -308,15 +308,15 @@ Function GetFilePath(Val Path, LocalParameter, Val SaveLocally = True) Export
     If StrFind(Path, "http") > 0 
         Or StrFind(Path, "www") > 0 Then
         
-        AndVF = GetTempFileName();
-        CopyFile(Path, AndVF);
-        Path = AndVF;
+        TFN = GetTempFileName();
+        CopyFile(Path, TFN);
+        Path = TFN;
         Binary = New BinaryData(Path);
         
         If SaveLocally Then
-            WriteParameter(LocalParameter, AndVF);
+            WriteParameter(LocalParameter, TFN);
         Else
-            DeleteFiles(AndVF);
+            DeleteFiles(TFN);
         EndIf;
         
     Else
