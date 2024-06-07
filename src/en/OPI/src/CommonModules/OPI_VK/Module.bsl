@@ -1173,8 +1173,10 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from VK
-Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export        
-    Return ProductManagement(ProductDescription, , Selection, Parameters);    
+Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export  
+	      
+    Return ProductManagement(ProductDescription, , Selection, Parameters);  
+      
 EndFunction
 
 // Edit product
@@ -1189,7 +1191,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from VK
 Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export
+	
     Return ProductManagement(ProductDescription, Product, Selection, Parameters);    
+    
 EndFunction
 
 // Delete product
