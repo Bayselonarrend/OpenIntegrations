@@ -1,0 +1,3222 @@
+﻿name: CLI | Сборка и тестирование (EN)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Decode:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v4 
+
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+
+      - name: Кэшировать данные
+        uses: actions/cache/save@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+  Build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4             
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.10.0 
+
+      - name: Установить cmdline, asserts и osparser
+        run: |
+          opm install cmdline
+          opm install asserts
+          opm install osparser
+          opm install coloratos
+      - name: Сформировать список методов ОПИ -> CLI
+        run: oscript ./.github/workflows/os/cli_parse.os
+
+      - name: Записать измененный список методов CLI
+        uses: stefanzweifel/git-auto-commit-action@v5   
+        with:
+          commit_user_name: Vitaly the Alpaca (bot) 
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
+
+      - name: Собрать и установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx  
+
+      - name: Собрать бинарник
+        run: |
+          cd ./src/en/cli
+          oscript -make core/Classes/Приложение.os oint
+
+      - name: Собрать exe
+        run: |
+          cd ./src/en/cli
+          oscript -make core/Classes/Приложение.os oint.exe
+
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: oint
+          path: ./src/en/cli/oint
+
+      - name: Создать каталог deb-пакета
+        run: |
+          mkdir -p .debpkg/usr/bin
+          cp ./src/en/cli/oint .debpkg/usr/bin/oint
+          chmod +x .debpkg/usr/bin/oint
+
+      - name: Собрать deb-пакет
+        uses: jiro4989/build-deb-action@v3
+        with:
+          package: oint
+          package_root: .debpkg
+          maintainer: Anton Titovets <bayselonarrend@gmail.com>
+          version: '1.10.0' # refs/tags/v*.*.*
+          arch: 'all'
+          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
+          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
+        outputs:
+		   file_name: oint_1.10.0_all_en.deb
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: oint-deb
+          path: |
+            ./*.deb
+
+      - name: Создать каталог rpm-пакета
+        run: |
+          mkdir -p .rpmpkg/usr/bin
+          mkdir -p .rpmpkg/usr/share/oint/bin
+          cp ./src/en/cli/oint .rpmpkg/usr/share/oint/bin/oint
+          echo 'mono /usr/share/oint/bin/oint "$@"' > .rpmpkg/usr/bin/oint
+          chmod +x .rpmpkg/usr/bin/oint
+
+      - name: Собрать rpm-пакет 
+        uses: jiro4989/build-rpm-action@v2
+        with:
+          summary: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services.  Mono-runtime with .NET Framework 4.8 support required'
+          package: oint
+          package_root: .rpmpkg
+          maintainer: Anton Titovets <bayselonarrend@gmail.com>
+          version: '1.10.0'
+          arch: 'x86_64'
+          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
+          requires: |
+            mono-core
+            Requires:       mono-locale-extras
+        outputs:
+		   file_name: oint-1.10.0.el7.x86_64_en.rpm
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oint-rpm
+          path: |
+            ./*.rpm
+            !./*-debuginfo-*.rpm
+
+  Testing-telegram:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить GetBotInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram GetBotInformation --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+
+
+
+      - name: Выполнить GetUpdates
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram GetUpdates --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --timeout "" \
+          --offset "" \
+
+
+
+      - name: Выполнить SetWebhook
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SetWebhook --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --url "${{ env.json_Telegram_URL }}" \
+
+
+
+      - name: Выполнить DeleteWebhook
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram DeleteWebhook --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+
+
+
+      - name: Выполнить DownloadFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram DownloadFile --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --fileid "" \
+
+
+
+      - name: Выполнить SendTextMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendTextMessage --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --keyboard "" \
+          --parsemode "" \
+
+
+
+      - name: Выполнить SendImage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendImage --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --picture "${{ env.json_Picture }}" \
+          --keyboard "" \
+          --parsemode "" \
+
+
+
+      - name: Выполнить SendVideo
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendVideo --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --video "${{ env.json_Video }}" \
+          --keyboard "" \
+          --parsemode "" \
+
+
+
+      - name: Выполнить SendAudio
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendAudio --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --audio "${{ env.json_Audio }}" \
+          --keyboard "" \
+          --parsemode "" \
+
+
+
+      - name: Выполнить SendDocument
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendDocument --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --doc "${{ env.json_Document }}" \
+          --keyboard "" \
+          --parsemode "" \
+
+
+
+      - name: Выполнить SendGif
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendGif --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --gif "${{ env.json_GIF }}" \
+          --keyboard "" \
+          --parsemode "" \
+
+
+
+      - name: Выполнить SendMediaGroup
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"${{ env.json_Picture }}\" : \"photo\",
+            \"${{ env.json_Picture2 }}\" : \"photo\"
+          } " > mediagroup.json
+
+
+          ./oint telegram SendMediaGroup --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --text "Тестовый текст" \
+          --media "mediagroup.json" \
+          --keyboard "" \
+          --parsemode "" \
+
+
+
+      - name: Выполнить SendLocation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendLocation --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --lat "48.87373649724122" \
+          --long "48.87373649724122" \
+          --keyboard "" \
+
+
+
+      - name: Выполнить SendContact
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendContact --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --name "Петр" \
+          --surname "Петров" \
+          --phone "+123456789" \
+          --keyboard "" \
+
+
+
+      - name: Выполнить SendPoll
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram SendPoll --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --question "Да или нет?" \
+          --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
+          --anonymous true \
+
+
+
+      - name: Выполнить ForwardMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram ForwardMessage --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
+          --from "${{ env.json_Telegram_ChannelID }}" \
+          --to "${{ env.json_Telegram_ChatID }}" \
+
+
+
+      - name: Выполнить FormKeyboardFromButtonArray
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram FormKeyboardFromButtonArray --debug --test \
+          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+          --under true \
+          --column false \
+
+
+
+      - name: Выполнить Ban
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram Ban --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --user "${{ env.json_Telegram_ChatID }}" \
+
+
+
+      - name: Выполнить Unban
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram Unban --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --user "${{ env.json_Telegram_ChatID }}" \
+
+
+
+      - name: Выполнить CreateInvitationLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram CreateInvitationLink --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --title "Тест" \
+          --expire "1" \
+          --limit "1" \
+
+
+
+      - name: Выполнить PinMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram PinMessage --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
+
+
+
+      - name: Выполнить UnpinMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram UnpinMessage --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
+
+
+
+      - name: Выполнить GetParticipantCount
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram GetParticipantCount --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+
+
+
+      - name: Выполнить GetAvatarIconList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram GetAvatarIconList --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+
+
+
+      - name: Выполнить CreateForumThread
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram CreateForumThread --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --title "Тест" \
+          --icon "5350444672789519765 " \
+
+
+
+      - name: Выполнить EditForumTopic
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram EditForumTopic --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+          --title "Тест" \
+          --icon "5350444672789519765 " \
+
+
+
+      - name: Выполнить CloseForumThread
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram CloseForumThread --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+
+
+
+      - name: Выполнить OpenForumThread
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram OpenForumThread --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+
+
+
+      - name: Выполнить DeleteForumTopic
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram DeleteForumTopic --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+
+
+
+      - name: Выполнить HideMainForumTopic
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram HideMainForumTopic --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+
+
+
+      - name: Выполнить ShowMainForumTopic
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram ShowMainForumTopic --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+
+
+
+      - name: Выполнить EditMainForumTopicName
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram EditMainForumTopicName --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить ClearThreadPinnedMessagesList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram ClearThreadPinnedMessagesList --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --forum "${{ env.json_Telegram_ForumID }}" \
+          --topic "${{ env.json_Telegram_TopicID }}" \
+
+  Testing-vk:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить CreateTokenRetrievalLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint vk CreateTokenRetrievalLink --debug --test \
+          --app "${{ env.json_VK_AppID }}" \
+
+
+
+      - name: Выполнить CreatePost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreatePost --debug --test \
+          --text "Тестовый текст" \
+          --pictures "['${{ env.json_Picture }}', '${{ env.json_Picture2 }}']" \
+          --ad false \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreateCompositePost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateCompositePost --debug --test \
+          --text "Тестовый текст" \
+          --objects "" \
+          --ad false \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить DeletePost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk DeletePost --debug --test \
+          --post "1159" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreatePoll
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreatePoll --debug --test \
+          --question "Да или нет?" \
+          --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
+          --picture "${{ env.json_Picture }}" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreateAlbum
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateAlbum --debug --test \
+          --title "Тест" \
+          --description "Тестовое описание" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить DeleteAlbum
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk DeleteAlbum --debug --test \
+          --album "303733811" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreateStory
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateStory --debug --test \
+          --picture "${{ env.json_Picture }}" \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить SaveImageToAlbum
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk SaveImageToAlbum --debug --test \
+          --album "303733811" \
+          --picture "${{ env.json_Picture }}" \
+          --description "Тестовое описание" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить DeleteImage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk DeleteImage --debug --test \
+          --pictureid "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить UploadVideoToServer
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk UploadVideoToServer --debug --test \
+          --file "" \
+          --title "Тест" \
+          --description "Тестовое описание" \
+          --album "303733811" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить UploadPhotoToServer
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk UploadPhotoToServer --debug --test \
+          --file "" \
+          --auth "auth.json" \
+          --type "" \
+
+
+
+      - name: Выполнить CreateDiscussion
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateDiscussion --debug --test \
+          --title "Тест" \
+          --text "Тестовый текст" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CloseDiscussion
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CloseDiscussion --debug --test \
+          --topic "1" \
+          --remove false \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить OpenDiscussion
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk OpenDiscussion --debug --test \
+          --topic "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить WriteInDiscussion
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk WriteInDiscussion --debug --test \
+          --topic "1" \
+          --text "Тестовый текст" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить LikePost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk LikePost --debug --test \
+          --post "1159" \
+          --wall "-${{ env.json_VK_GroupID }}" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить MakeRepost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk MakeRepost --debug --test \
+          --post "1159" \
+          --from "-${{ env.json_VK_GroupID }}" \
+          --to "-${{ env.json_VK_GroupID }}" \
+          --ad false \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить WriteMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk WriteMessage --debug --test \
+          --text "Тестовый текст" \
+          --user "${{ env.json_VK_UserID }}" \
+          --ct "${{ env.json_VK_CommunityToken }}" \
+          --keyboard "" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить WriteComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk WriteComment --debug --test \
+          --post "1159" \
+          --wall "-${{ env.json_VK_GroupID }}" \
+          --text "Тестовый текст" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить ShortenLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk ShortenLink --debug --test \
+          --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetStatistics
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetStatistics --debug --test \
+          --datefrom "2024-02-30T23:50:08+03:00" \
+          --dateto "2024-03-30T23:50:08+03:00" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetPostStatistics
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetPostStatistics --debug --test \
+          --posts "['1111111','2222222']" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreateAdvertisingCampaign
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateAdvertisingCampaign --debug --test \
+          --cabinet "${{ env.json_VK_AdsCabinetID }}" \
+          --title "Тест" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreateAd
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateAd --debug --test \
+          --campaign "1" \
+          --limit "1" \
+          --category "1" \
+          --post "1159" \
+          --cabinet "${{ env.json_VK_AdsCabinetID }}" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить PauseAdvertisingAd
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk PauseAdvertisingAd --debug --test \
+          --cabinet "${{ env.json_VK_AdsCabinetID }}" \
+          --adv "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetAdvertisingCategoryList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetAdvertisingCategoryList --debug --test \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetProductCategoryList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetProductCategoryList --debug --test \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetProductList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetProductList --debug --test \
+          --sel "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetProductsByID
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetProductsByID --debug --test \
+          --items "['1111111','2222222']" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить AddProduct
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"Имя\"                  : \"Тест\",
+            \"Описание\"             : \"Тест\",
+            \"Категория\"            : \"20173\",
+            \"Цена\"                 : \"1\",
+            \"СтараяЦена\"           : \"2\",
+            \"ДополнительныеФото\"   : [],
+            \"ЗначенияСвойств\"      : [],
+            \"ГлавныйВГруппе\"       : false,
+            \"Ширина\"               : \"1\",
+            \"Высота\"               : \"1\",
+            \"Глубина\"              : \"1\",
+            \"Вес\"                  : \"1\",
+            \"SKU\"                  : \"12345\",
+            \"ДоступныйОстаток\"     : \"1\"
+          } " > product.json
+
+
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk AddProduct --debug --test \
+          --product "product.json" \
+          --sel "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить EditProduct
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"Имя\"                  : \"Тест\",
+            \"Описание\"             : \"Тест\",
+            \"Категория\"            : \"20173\",
+            \"Цена\"                 : \"1\",
+            \"СтараяЦена\"           : \"2\",
+            \"ДополнительныеФото\"   : [],
+            \"ЗначенияСвойств\"      : [],
+            \"ГлавныйВГруппе\"       : false,
+            \"Ширина\"               : \"1\",
+            \"Высота\"               : \"1\",
+            \"Глубина\"              : \"1\",
+            \"Вес\"                  : \"1\",
+            \"SKU\"                  : \"12345\",
+            \"ДоступныйОстаток\"     : \"1\"
+          } " > product.json
+
+
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk EditProduct --debug --test \
+          --item "1" \
+          --product "product.json" \
+          --sel "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить DeleteProduct
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk DeleteProduct --debug --test \
+          --item "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GroupProducts
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GroupProducts --debug --test \
+          --items "['1111111','2222222']" \
+          --sellgroup "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetSelectionList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetSelectionList --debug --test \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetSelectionsByID
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetSelectionsByID --debug --test \
+          --sels "['1111111','2222222']" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreateProductCollection
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateProductCollection --debug --test \
+          --title "Тест" \
+          --picture "${{ env.json_Picture }}" \
+          --main false \
+          --hidden false \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить EditProductCollection
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk EditProductCollection --debug --test \
+          --title "Тест" \
+          --sel "1" \
+          --picture "${{ env.json_Picture }}" \
+          --main false \
+          --hidden false \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить AddProductToSelection
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk AddProductToSelection --debug --test \
+          --items "['1111111','2222222']" \
+          --sel "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить RemoveProductFromSelection
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk RemoveProductFromSelection --debug --test \
+          --item "1" \
+          --sel "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить DeleteSelection
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk DeleteSelection --debug --test \
+          --sel "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetPropertyList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetPropertyList --debug --test \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить CreateProductProperty
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk CreateProductProperty --debug --test \
+          --title "Тест" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить EditProductProperty
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk EditProductProperty --debug --test \
+          --title "Тест" \
+          --prop "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить DeleteProductProperty
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk DeleteProductProperty --debug --test \
+          --prop "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить AddProductPropertyVariant
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk AddProductPropertyVariant --debug --test \
+          --value "Тест" \
+          --prop "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить EditProductPropertyVariant
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk EditProductPropertyVariant --debug --test \
+          --value "Тест" \
+          --prop "1" \
+          --option "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить DeleteProductPropertyVariant
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk DeleteProductPropertyVariant --debug --test \
+          --option "1" \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить GetOrderList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          echo " {
+            \"access_token\": \"${{ env.json_VK_Token }}\",
+            \"from_group\"  : \"1\",
+            \"owner_id\"    : \"-${{ env.json_VK_GroupID }}\",
+            \"v\"           : \"5.131\",
+            \"app_id\"      : \"${{ env.json_VK_AppID }}\",
+            \"group_id\"    : \"${{ env.json_VK_GroupID }}\"
+          } " > auth.json
+
+
+          ./oint vk GetOrderList --debug --test \
+          --auth "auth.json" \
+
+
+
+      - name: Выполнить FormKeyboard
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint vk FormKeyboard --debug --test \
+          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+
+  Testing-viber:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить SetWebhook
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber SetWebhook --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --url "" \
+
+
+
+      - name: Выполнить GetChannelInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber GetChannelInformation --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+
+
+
+      - name: Выполнить GetUserData
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber GetUserData --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --user "${{ env.json_Viber_UserID }}" \
+
+
+
+      - name: Выполнить GetOnlineUsers
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber GetOnlineUsers --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --users "" \
+
+
+
+      - name: Выполнить SendTextMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber SendTextMessage --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --text "Тестовый текст" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+          --keyboard "" \
+
+
+
+      - name: Выполнить SendImage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber SendImage --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --picture "${{ env.json_Picture }}" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+          --description "Тестовое описание" \
+
+
+
+      - name: Выполнить SendFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber SendFile --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --file "" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+          --ext ".txt" \
+          --size "10" \
+
+
+
+      - name: Выполнить SendContact
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber SendContact --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --name "Петр" \
+          --phone "+123456789" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+
+
+
+      - name: Выполнить SendLocation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber SendLocation --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --lat "48.87373649724122" \
+          --long "48.87373649724122" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+
+
+
+      - name: Выполнить SendLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber SendLink --debug --test \
+          --token "${{ env.json_Viber_Token }}" \
+          --url "" \
+          --user "${{ env.json_Viber_UserID }}" \
+          --ischannel true \
+
+
+
+      - name: Выполнить CreateKeyboardFromArrayButton
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint viber CreateKeyboardFromArrayButton --debug --test \
+          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+          --color "" \
+
+  Testing-twitter:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить GetAuthorizationLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter GetAuthorizationLink --debug --test \
+          --auth "" \
+
+
+
+      - name: Выполнить GetToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter GetToken --debug --test \
+          --code "" \
+          --auth "" \
+
+
+
+      - name: Выполнить RefreshToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter RefreshToken --debug --test \
+          --auth "" \
+
+
+
+      - name: Выполнить CreateTextTweet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter CreateTextTweet --debug --test \
+          --text "Тестовый текст" \
+          --auth "" \
+
+
+
+      - name: Выполнить CreateImageTweet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter CreateImageTweet --debug --test \
+          --text "Тестовый текст" \
+          --pictures "" \
+          --auth "" \
+
+
+
+      - name: Выполнить CreateGifTweet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter CreateGifTweet --debug --test \
+          --text "Тестовый текст" \
+          --gifs "" \
+          --auth "" \
+
+
+
+      - name: Выполнить CreateVideoTweet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter CreateVideoTweet --debug --test \
+          --text "Тестовый текст" \
+          --videos "" \
+          --auth "" \
+
+
+
+      - name: Выполнить CreatePollTweet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint twitter CreatePollTweet --debug --test \
+          --text "Тестовый текст" \
+          --options "['Да', 'Нет', 'Затрудняюсь ответить']" \
+          --duration "" \
+          --auth "" \
+
+  Testing-notion:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить CreatePage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion CreatePage --debug --test \
+          --token "" \
+          --page "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить CreatePageInDatabase
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion CreatePageInDatabase --debug --test \
+          --token "" \
+          --base "" \
+          --data "" \
+
+
+
+      - name: Выполнить GetPage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion GetPage --debug --test \
+          --token "" \
+          --page "" \
+
+
+
+      - name: Выполнить EditPageProperties
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion EditPageProperties --debug --test \
+          --token "" \
+          --page "" \
+          --data "" \
+          --icon "" \
+          --cover "" \
+          --archive "" \
+
+
+
+      - name: Выполнить CreateDatabase
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion CreateDatabase --debug --test \
+          --token "" \
+          --page "" \
+          --title "Тест" \
+          --props "" \
+
+
+
+      - name: Выполнить GetDatabase
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion GetDatabase --debug --test \
+          --token "" \
+          --base "" \
+
+
+
+      - name: Выполнить EditDatabaseProperties
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion EditDatabaseProperties --debug --test \
+          --token "" \
+          --base "" \
+          --props "" \
+          --title "Тест" \
+          --description "Тестовое описание" \
+
+
+
+      - name: Выполнить CreateBlock
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion CreateBlock --debug --test \
+          --token "" \
+          --page "" \
+          --block "" \
+          --prev "" \
+
+
+
+      - name: Выполнить ReturnBlock
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion ReturnBlock --debug --test \
+          --token "" \
+          --block "" \
+          --core "" \
+
+
+
+      - name: Выполнить ReturnChildBlocks
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion ReturnChildBlocks --debug --test \
+          --token "" \
+          --block "" \
+
+
+
+      - name: Выполнить DeleteBlock
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion DeleteBlock --debug --test \
+          --token "" \
+          --block "" \
+
+
+
+      - name: Выполнить UserList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion UserList --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить GetUserData
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint notion GetUserData --debug --test \
+          --token "" \
+          --user "" \
+
+  Testing-yandex:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить GetConfirmationCode
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yandex GetConfirmationCode --debug --test \
+          --id "" \
+
+
+
+      - name: Выполнить ConvertCodeToToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yandex ConvertCodeToToken --debug --test \
+          --id "" \
+          --secret "" \
+          --device "" \
+
+
+
+      - name: Выполнить RefreshToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yandex RefreshToken --debug --test \
+          --id "" \
+          --secret "" \
+          --refresh "" \
+
+  Testing-yadisk:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить GetDiskInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk GetDiskInformation --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить CreateFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk CreateFolder --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить GetObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk GetObject --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить DeleteObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk DeleteObject --debug --test \
+          --token "" \
+          --path "" \
+          --can "" \
+
+
+
+      - name: Выполнить CreateObjectCopy
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk CreateObjectCopy --debug --test \
+          --token "" \
+          --from "" \
+          --to "" \
+          --rewrite "" \
+
+
+
+      - name: Выполнить GetDownloadLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk GetDownloadLink --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить DownloadFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk DownloadFile --debug --test \
+          --token "" \
+          --path "" \
+          --out "" \
+
+
+
+      - name: Выполнить GetFilesList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk GetFilesList --debug --test \
+          --token "" \
+          --amount "" \
+          --offset "" \
+          --type "" \
+          --datesort "" \
+
+
+
+      - name: Выполнить MoveObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk MoveObject --debug --test \
+          --token "" \
+          --from "" \
+          --to "" \
+          --rewrite "" \
+
+
+
+      - name: Выполнить UploadFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk UploadFile --debug --test \
+          --token "" \
+          --path "" \
+          --file "" \
+          --rewrite "" \
+
+
+
+      - name: Выполнить UploadFileByURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk UploadFileByURL --debug --test \
+          --token "" \
+          --path "" \
+          --url "" \
+
+
+
+      - name: Выполнить PublishObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk PublishObject --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить CancelObjectPublication
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk CancelObjectPublication --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить GetPublishedObjectsList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk GetPublishedObjectsList --debug --test \
+          --token "" \
+          --amount "" \
+          --offset "" \
+
+
+
+      - name: Выполнить GetPublicObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk GetPublicObject --debug --test \
+          --token "" \
+          --url "" \
+          --amount "" \
+          --offset "" \
+
+
+
+      - name: Выполнить GetDownloadLinkForPublicObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk GetDownloadLinkForPublicObject --debug --test \
+          --token "" \
+          --url "" \
+          --path "" \
+
+
+
+      - name: Выполнить SavePublicObjectToDisk
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint yadisk SavePublicObjectToDisk --debug --test \
+          --token "" \
+          --url "" \
+          --from "" \
+          --to "" \
+
+  Testing-google:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить FormCodeRetrievalLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint google FormCodeRetrievalLink --debug --test \
+          --id "" \
+          --calendar "" \
+          --drive "" \
+          --sheets "" \
+
+
+
+      - name: Выполнить GetTokenByCode
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint google GetTokenByCode --debug --test \
+          --id "" \
+          --secret "" \
+          --code "" \
+
+
+
+      - name: Выполнить RefreshToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint google RefreshToken --debug --test \
+          --id "" \
+          --secret "" \
+          --refresh "" \
+
+  Testing-gcalendar:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить CreateCalendar
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar CreateCalendar --debug --test \
+          --token "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить GetCalendarMetadata
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar GetCalendarMetadata --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить EditCalendarMetadata
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar EditCalendarMetadata --debug --test \
+          --token "" \
+          --calendar "" \
+          --title "Тест" \
+          --description "Тестовое описание" \
+
+
+
+      - name: Выполнить ClearMainCalendar
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar ClearMainCalendar --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить DeleteCalendar
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar DeleteCalendar --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить GetCalendarList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar GetCalendarList --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить AddCalendarToList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar AddCalendarToList --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить GetListCalendar
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar GetListCalendar --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить DeleteCalendarFromList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar DeleteCalendarFromList --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить EditListCalendar
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar EditListCalendar --debug --test \
+          --token "" \
+          --calendar "" \
+          --primary "" \
+          --secondary "" \
+          --hidden "" \
+
+
+
+      - name: Выполнить GetEventList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar GetEventList --debug --test \
+          --token "" \
+          --calendar "" \
+
+
+
+      - name: Выполнить GetEvent
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar GetEvent --debug --test \
+          --token "" \
+          --calendar "" \
+          --event "" \
+
+
+
+      - name: Выполнить CreateEvent
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar CreateEvent --debug --test \
+          --token "" \
+          --calendar "" \
+          --props "" \
+
+
+
+      - name: Выполнить MoveEvent
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar MoveEvent --debug --test \
+          --token "" \
+          --from "" \
+          --to "" \
+          --event "" \
+
+
+
+      - name: Выполнить EditEvent
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar EditEvent --debug --test \
+          --token "" \
+          --calendar "" \
+          --props "" \
+          --event "" \
+
+
+
+      - name: Выполнить DeleteEvent
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gcalendar DeleteEvent --debug --test \
+          --token "" \
+          --calendar "" \
+          --event "" \
+
+  Testing-gdrive:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить GetObjectInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive GetObjectInformation --debug --test \
+          --token "" \
+          --object "" \
+
+
+
+      - name: Выполнить GetDirectoriesList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive GetDirectoriesList --debug --test \
+          --token "" \
+          --querry "" \
+          --depth "" \
+
+
+
+      - name: Выполнить GetFilesList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive GetFilesList --debug --test \
+          --token "" \
+          --querry "" \
+          --catalog "" \
+
+
+
+      - name: Выполнить UploadFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive UploadFile --debug --test \
+          --token "" \
+          --file "" \
+          --props "" \
+
+
+
+      - name: Выполнить CreateFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive CreateFolder --debug --test \
+          --token "" \
+          --title "Тест" \
+          --catalog "" \
+
+
+
+      - name: Выполнить DownloadFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive DownloadFile --debug --test \
+          --token "" \
+          --object "" \
+          --out "" \
+
+
+
+      - name: Выполнить CopyObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive CopyObject --debug --test \
+          --token "" \
+          --object "" \
+          --title "Тест" \
+          --catalog "" \
+
+
+
+      - name: Выполнить UpdateFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive UpdateFile --debug --test \
+          --token "" \
+          --object "" \
+          --file "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить DeleteObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive DeleteObject --debug --test \
+          --token "" \
+          --object "" \
+
+
+
+      - name: Выполнить CreateComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive CreateComment --debug --test \
+          --token "" \
+          --object "" \
+          --text "Тестовый текст" \
+
+
+
+      - name: Выполнить GetComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive GetComment --debug --test \
+          --token "" \
+          --object "" \
+          --comment "" \
+
+
+
+      - name: Выполнить GetCommentList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive GetCommentList --debug --test \
+          --token "" \
+          --object "" \
+
+
+
+      - name: Выполнить DeleteComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gdrive DeleteComment --debug --test \
+          --token "" \
+          --object "" \
+          --comment "" \
+
+  Testing-gsheets:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить CreateBook
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets CreateBook --debug --test \
+          --token "" \
+          --title "Тест" \
+          --sheets "" \
+
+
+
+      - name: Выполнить GetBook
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets GetBook --debug --test \
+          --token "" \
+          --spreadsheet "" \
+
+
+
+      - name: Выполнить EditBookTitle
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets EditBookTitle --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить AddSheet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets AddSheet --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --title "Тест" \
+
+
+
+      - name: Выполнить DeleteSheet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets DeleteSheet --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --sheet "" \
+
+
+
+      - name: Выполнить CopySheet
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets CopySheet --debug --test \
+          --token "" \
+          --from "" \
+          --to "" \
+          --sheet "" \
+
+
+
+      - name: Выполнить SetCellValues
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets SetCellValues --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --data "" \
+          --sheetname "" \
+          --dim "" \
+
+
+
+      - name: Выполнить ClearCells
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets ClearCells --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --cells "" \
+          --sheetname "" \
+
+
+
+      - name: Выполнить GetCellValues
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint gsheets GetCellValues --debug --test \
+          --token "" \
+          --spreadsheet "" \
+          --type cells to get (whole sheet if not filled) "" \
+          --sheetname "" \
+
+  Testing-dropbox:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить GetAuthorizationLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetAuthorizationLink --debug --test \
+          --appkey "" \
+
+
+
+      - name: Выполнить GetToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetToken --debug --test \
+          --appkey "" \
+          --appsecret "" \
+          --code "" \
+
+
+
+      - name: Выполнить RefreshToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox RefreshToken --debug --test \
+          --appkey "" \
+          --appsecret "" \
+          --refresh "" \
+
+
+
+      - name: Выполнить GetAccountInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetAccountInformation --debug --test \
+          --token "" \
+          --account "" \
+
+
+
+      - name: Выполнить GetSpaceUsageData
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetSpaceUsageData --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить GetObjectInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetObjectInformation --debug --test \
+          --token "" \
+          --path "" \
+          --detail "" \
+
+
+
+      - name: Выполнить GetListOfFolderFiles
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetListOfFolderFiles --debug --test \
+          --token "" \
+          --path "" \
+          --detail "" \
+          --cursor "" \
+
+
+
+      - name: Выполнить GetPreview
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetPreview --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить UploadFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox UploadFile --debug --test \
+          --token "" \
+          --file "" \
+          --path "" \
+          --overwrite "" \
+
+
+
+      - name: Выполнить UploadFileByURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox UploadFileByURL --debug --test \
+          --token "" \
+          --url "" \
+          --path "" \
+
+
+
+      - name: Выполнить GetUploadStatusByURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetUploadStatusByURL --debug --test \
+          --token "" \
+          --job "" \
+
+
+
+      - name: Выполнить DeleteObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox DeleteObject --debug --test \
+          --token "" \
+          --path "" \
+          --permanently "" \
+
+
+
+      - name: Выполнить CopyObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox CopyObject --debug --test \
+          --token "" \
+          --form "" \
+          --to "" \
+
+
+
+      - name: Выполнить MoveObject
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox MoveObject --debug --test \
+          --token "" \
+          --form "" \
+          --to "" \
+
+
+
+      - name: Выполнить CreateFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox CreateFolder --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить DownloadFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox DownloadFile --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить DownloadFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox DownloadFolder --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить GetObjectVersionList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetObjectVersionList --debug --test \
+          --token "" \
+          --path "" \
+          --amount "" \
+
+
+
+      - name: Выполнить RestoreObjectToVersion
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox RestoreObjectToVersion --debug --test \
+          --token "" \
+          --path "" \
+          --rev "" \
+
+
+
+      - name: Выполнить GetTagList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetTagList --debug --test \
+          --token "" \
+          --paths "" \
+
+
+
+      - name: Выполнить AddTag
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox AddTag --debug --test \
+          --token "" \
+          --path "" \
+          --tag "" \
+
+
+
+      - name: Выполнить DeleteTag
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox DeleteTag --debug --test \
+          --token "" \
+          --path "" \
+          --tag "" \
+
+
+
+      - name: Выполнить PublishFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox PublishFolder --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить CancelFolderPublication
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox CancelFolderPublication --debug --test \
+          --token "" \
+          --folder "" \
+
+
+
+      - name: Выполнить AddUsersToFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox AddUsersToFile --debug --test \
+          --token "" \
+          --fileid "" \
+          --emails "" \
+          --readonly "" \
+
+
+
+      - name: Выполнить AddUsersToFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox AddUsersToFolder --debug --test \
+          --token "" \
+          --folder "" \
+          --emails "" \
+          --readonly "" \
+
+
+
+      - name: Выполнить GetAsynchronousChangeStatus
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox GetAsynchronousChangeStatus --debug --test \
+          --token "" \
+          --job "" \
+
+
+
+      - name: Выполнить CancelFilePublication
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox CancelFilePublication --debug --test \
+          --token "" \
+          --fileid "" \
+
+  Clear-Cache:
+    runs-on: ubuntu-latest
+    needs: [Testing-telegram, Testing-vk, Testing-viber]
+    if: ${{ always() }}
+    steps:
+      - name: Очистка кэша
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data"

@@ -1,55 +1,55 @@
-﻿Function GetComposition() Export
+﻿Function ПолучитьСостав() Export
 
-    TableСоwithтаinа = New ValueTable();
-    TableСоwithтаinа.Columns.Add("Library");
-    TableСоwithтаinа.Columns.Add("Module");
-    TableСоwithтаinа.Columns.Add("Method");
-    TableСоwithтаinа.Columns.Add("SearchMethod");
-    TableСоwithтаinа.Columns.Add("Parameter");
-    TableСоwithтаinа.Columns.Add("Description");
-    TableСоwithтаinа.Columns.Add("MethodDescription");
-    TableСоwithтаinа.Columns.Add("Region");
+    CompositionTable = New ValueTable();
+    CompositionTable.Columns.Add("Библиотека");
+    CompositionTable.Columns.Add("Модуль");
+    CompositionTable.Columns.Add("Метод");
+    CompositionTable.Columns.Add("МетодПоиска");
+    CompositionTable.Columns.Add("Параметр");
+    CompositionTable.Columns.Add("Описание");
+    CompositionTable.Columns.Add("ОписаниеМетода");
+    CompositionTable.Columns.Add("Область");
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreatePage";
-    NewLine.SearchMethod = "CREATEPAGE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Page management";
-    NewLine.MethodDescription   = "Creates a child page above another parent page";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreatePage";
-    NewLine.SearchMethod = "CREATEPAGE";
-    NewLine.Parameter    = "--page";
-    NewLine.Description    = "Parent ID";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreatePage";
+    NewLine.МетодПоиска = "CREATEPAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Page management";
+    NewLine.ОписаниеМетода   = "Creates a child page above another parent page";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreatePage";
-    NewLine.SearchMethod = "CREATEPAGE";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Page title";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreatePage";
+    NewLine.МетодПоиска = "CREATEPAGE";
+    NewLine.Параметр    = "--page";
+    NewLine.Описание    = "Parent ID";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreatePageInDatabase";
-    NewLine.SearchMethod = "CREATEPAGEINDATABASE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Page management";
-    NewLine.MethodDescription   = "Creates a page in the parent database
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreatePage";
+    NewLine.МетодПоиска = "CREATEPAGE";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Page title";
+    NewLine.Область     = "Page management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreatePageInDatabase";
+    NewLine.МетодПоиска = "CREATEPAGEINDATABASE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Page management";
+    NewLine.ОписаниеМетода   = "Creates a page in the parent database
     |
     |    The structure of the JSON page data (parameter --data):
     |    {
@@ -60,56 +60,56 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreatePageInDatabase";
-    NewLine.SearchMethod = "CREATEPAGEINDATABASE";
-    NewLine.Parameter    = "--base";
-    NewLine.Description    = "Parent database ID";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreatePageInDatabase";
+    NewLine.МетодПоиска = "CREATEPAGEINDATABASE";
+    NewLine.Параметр    = "--base";
+    NewLine.Описание    = "Parent database ID";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreatePageInDatabase";
-    NewLine.SearchMethod = "CREATEPAGEINDATABASE";
-    NewLine.Parameter    = "--data";
-    NewLine.Description    = "Properties map";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreatePageInDatabase";
+    NewLine.МетодПоиска = "CREATEPAGEINDATABASE";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "Properties map";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "GetPage";
-    NewLine.SearchMethod = "GETPAGE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Page management";
-    NewLine.MethodDescription   = "Gets information about the page by ID";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "GetPage";
+    NewLine.МетодПоиска = "GETPAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Page management";
+    NewLine.ОписаниеМетода   = "Gets information about the page by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "GetPage";
-    NewLine.SearchMethod = "GETPAGE";
-    NewLine.Parameter    = "--page";
-    NewLine.Description    = "Page ID";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "GetPage";
+    NewLine.МетодПоиска = "GETPAGE";
+    NewLine.Параметр    = "--page";
+    NewLine.Описание    = "Page ID";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditPageProperties";
-    NewLine.SearchMethod = "EDITPAGEPROPERTIES";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Page management";
-    NewLine.MethodDescription   = "|
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditPageProperties";
+    NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Page management";
+    NewLine.ОписаниеМетода   = "|
     |    The structure of the JSON page data (parameter --data):
     |    {
     |     ""DB field name 1""  : ""Value1"",
@@ -119,65 +119,65 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditPageProperties";
-    NewLine.SearchMethod = "EDITPAGEPROPERTIES";
-    NewLine.Parameter    = "--page";
-    NewLine.Description    = "ID of the page being modified";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditPageProperties";
+    NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
+    NewLine.Параметр    = "--page";
+    NewLine.Описание    = "ID of the page being modified";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditPageProperties";
-    NewLine.SearchMethod = "EDITPAGEPROPERTIES";
-    NewLine.Parameter    = "--data";
-    NewLine.Description    = "Map of editable parameters (optional, def. val. - Empty)";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditPageProperties";
+    NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "Map of editable parameters (optional, def. val. - Empty)";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditPageProperties";
-    NewLine.SearchMethod = "EDITPAGEPROPERTIES";
-    NewLine.Parameter    = "--icon";
-    NewLine.Description    = "URL of the page icon image (optional, def. val. - Empty)";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditPageProperties";
+    NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
+    NewLine.Параметр    = "--icon";
+    NewLine.Описание    = "URL of the page icon image (optional, def. val. - Empty)";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditPageProperties";
-    NewLine.SearchMethod = "EDITPAGEPROPERTIES";
-    NewLine.Parameter    = "--cover";
-    NewLine.Description    = "URL of the page cover image (optional, def. val. - Empty)";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditPageProperties";
+    NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
+    NewLine.Параметр    = "--cover";
+    NewLine.Описание    = "URL of the page cover image (optional, def. val. - Empty)";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditPageProperties";
-    NewLine.SearchMethod = "EDITPAGEPROPERTIES";
-    NewLine.Parameter    = "--archive";
-    NewLine.Description    = "Archive page or not (boolean) (optional, def. val. - False)";
-    NewLine.Region     = "Page management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditPageProperties";
+    NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
+    NewLine.Параметр    = "--archive";
+    NewLine.Описание    = "Archive page or not (boolean) (optional, def. val. - No)";
+    NewLine.Область     = "Page management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateDatabase";
-    NewLine.SearchMethod = "CREATEDATABASE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Database management";
-    NewLine.MethodDescription   = "Creates a database
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateDatabase";
+    NewLine.МетодПоиска = "CREATEDATABASE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Database management";
+    NewLine.ОписаниеМетода   = "Creates a database
     |
     |    The structure of the JSON database fields (parameter --props):
     |    {
@@ -196,66 +196,66 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateDatabase";
-    NewLine.SearchMethod = "CREATEDATABASE";
-    NewLine.Parameter    = "--page";
-    NewLine.Description    = "Parent page ID";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateDatabase";
+    NewLine.МетодПоиска = "CREATEDATABASE";
+    NewLine.Параметр    = "--page";
+    NewLine.Описание    = "Parent page ID";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateDatabase";
-    NewLine.SearchMethod = "CREATEDATABASE";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Database title";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateDatabase";
+    NewLine.МетодПоиска = "CREATEDATABASE";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Database title";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateDatabase";
-    NewLine.SearchMethod = "CREATEDATABASE";
-    NewLine.Parameter    = "--props";
-    NewLine.Description    = "Database properties (optional, def. val. - Empty)";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateDatabase";
+    NewLine.МетодПоиска = "CREATEDATABASE";
+    NewLine.Параметр    = "--props";
+    NewLine.Описание    = "Database properties (optional, def. val. - Empty)";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "GetDatabase";
-    NewLine.SearchMethod = "GETDATABASE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Database management";
-    NewLine.MethodDescription   = "Get database information";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "GetDatabase";
+    NewLine.МетодПоиска = "GETDATABASE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Database management";
+    NewLine.ОписаниеМетода   = "Get database information";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "GetDatabase";
-    NewLine.SearchMethod = "GETDATABASE";
-    NewLine.Parameter    = "--base";
-    NewLine.Description    = "Database ID";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "GetDatabase";
+    NewLine.МетодПоиска = "GETDATABASE";
+    NewLine.Параметр    = "--base";
+    NewLine.Описание    = "Database ID";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditDatabaseProperties";
-    NewLine.SearchMethod = "EDITDATABASEPROPERTIES";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Database management";
-    NewLine.MethodDescription   = "Edits properties of an existing database
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditDatabaseProperties";
+    NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Database management";
+    NewLine.ОписаниеМетода   = "Edits properties of an existing database
     |
     |    The structure of the JSON database fields (parameter --props):
     |    {
@@ -274,190 +274,190 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditDatabaseProperties";
-    NewLine.SearchMethod = "EDITDATABASEPROPERTIES";
-    NewLine.Parameter    = "--base";
-    NewLine.Description    = "Target database ID";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditDatabaseProperties";
+    NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
+    NewLine.Параметр    = "--base";
+    NewLine.Описание    = "Target database ID";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditDatabaseProperties";
-    NewLine.SearchMethod = "EDITDATABASEPROPERTIES";
-    NewLine.Parameter    = "--props";
-    NewLine.Description    = "New or modified database properties (optional, def. val. - Empty)";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditDatabaseProperties";
+    NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
+    NewLine.Параметр    = "--props";
+    NewLine.Описание    = "New or modified database properties (optional, def. val. - Empty)";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditDatabaseProperties";
-    NewLine.SearchMethod = "EDITDATABASEPROPERTIES";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "New database title (optional, def. val. - Empty)";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditDatabaseProperties";
+    NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "New database title (optional, def. val. - Empty)";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "EditDatabaseProperties";
-    NewLine.SearchMethod = "EDITDATABASEPROPERTIES";
-    NewLine.Parameter    = "--description";
-    NewLine.Description    = "New database description (optional, def. val. - Empty)";
-    NewLine.Region     = "Database management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "EditDatabaseProperties";
+    NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
+    NewLine.Параметр    = "--description";
+    NewLine.Описание    = "New database description (optional, def. val. - Empty)";
+    NewLine.Область     = "Database management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateBlock";
-    NewLine.SearchMethod = "CREATEBLOCK";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Blocks managment";
-    NewLine.MethodDescription   = "Creates a new block based on an existing block";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateBlock";
+    NewLine.МетодПоиска = "CREATEBLOCK";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Blocks managment";
+    NewLine.ОписаниеМетода   = "Creates a new block based on an existing block";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateBlock";
-    NewLine.SearchMethod = "CREATEBLOCK";
-    NewLine.Parameter    = "--page";
-    NewLine.Description    = "Parent block or page ID";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateBlock";
+    NewLine.МетодПоиска = "CREATEBLOCK";
+    NewLine.Параметр    = "--page";
+    NewLine.Описание    = "Parent block or page ID";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateBlock";
-    NewLine.SearchMethod = "CREATEBLOCK";
-    NewLine.Parameter    = "--block";
-    NewLine.Description    = "Block ID or block sample itself";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateBlock";
+    NewLine.МетодПоиска = "CREATEBLOCK";
+    NewLine.Параметр    = "--block";
+    NewLine.Описание    = "Block ID or block sample itself";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "CreateBlock";
-    NewLine.SearchMethod = "CREATEBLOCK";
-    NewLine.Parameter    = "--prev";
-    NewLine.Description    = "Block ID after which to insert the new one (optional, def. val. - Empty)";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "CreateBlock";
+    NewLine.МетодПоиска = "CREATEBLOCK";
+    NewLine.Параметр    = "--prev";
+    NewLine.Описание    = "Block ID after which to insert the new one (optional, def. val. - Empty)";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "ReturnBlock";
-    NewLine.SearchMethod = "RETURNBLOCK";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "ReturnBlock";
+    NewLine.МетодПоиска = "RETURNBLOCK";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "ReturnBlock";
-    NewLine.SearchMethod = "RETURNBLOCK";
-    NewLine.Parameter    = "--block";
-    NewLine.Description    = "Block ID";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "ReturnBlock";
+    NewLine.МетодПоиска = "RETURNBLOCK";
+    NewLine.Параметр    = "--block";
+    NewLine.Описание    = "Block ID";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "ReturnBlock";
-    NewLine.SearchMethod = "RETURNBLOCK";
-    NewLine.Parameter    = "--core";
-    NewLine.Description    = "True > service fields are deleted, only the block itself remains (optional, def. val. - True)";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "ReturnBlock";
+    NewLine.МетодПоиска = "RETURNBLOCK";
+    NewLine.Параметр    = "--core";
+    NewLine.Описание    = "True > service fields are deleted, only the block itself remains (optional, def. val. - Да)";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "ReturnChildBlocks";
-    NewLine.SearchMethod = "RETURNCHILDBLOCKS";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Blocks managment";
-    NewLine.MethodDescription   = "Returns list of child blocks of parent block";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "ReturnChildBlocks";
+    NewLine.МетодПоиска = "RETURNCHILDBLOCKS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Blocks managment";
+    NewLine.ОписаниеМетода   = "Returns list of child blocks of parent block";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "ReturnChildBlocks";
-    NewLine.SearchMethod = "RETURNCHILDBLOCKS";
-    NewLine.Parameter    = "--block";
-    NewLine.Description    = "Parent block ID";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "ReturnChildBlocks";
+    NewLine.МетодПоиска = "RETURNCHILDBLOCKS";
+    NewLine.Параметр    = "--block";
+    NewLine.Описание    = "Parent block ID";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "DeleteBlock";
-    NewLine.SearchMethod = "DELETEBLOCK";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Blocks managment";
-    NewLine.MethodDescription   = "Deletes block by ID";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "DeleteBlock";
+    NewLine.МетодПоиска = "DELETEBLOCK";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Blocks managment";
+    NewLine.ОписаниеМетода   = "Deletes block by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "DeleteBlock";
-    NewLine.SearchMethod = "DELETEBLOCK";
-    NewLine.Parameter    = "--block";
-    NewLine.Description    = "Block ID";
-    NewLine.Region     = "Blocks managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "DeleteBlock";
+    NewLine.МетодПоиска = "DELETEBLOCK";
+    NewLine.Параметр    = "--block";
+    NewLine.Описание    = "Block ID";
+    NewLine.Область     = "Blocks managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "UserList";
-    NewLine.SearchMethod = "USERLIST";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Users";
-    NewLine.MethodDescription   = "Returns a list of workspace users";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "UserList";
+    NewLine.МетодПоиска = "USERLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Users";
+    NewLine.ОписаниеМетода   = "Returns a list of workspace users";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "GetUserData";
-    NewLine.SearchMethod = "GETUSERDATA";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Users";
-    NewLine.MethodDescription   = "Gets user data by ID";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "GetUserData";
+    NewLine.МетодПоиска = "GETUSERDATA";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Users";
+    NewLine.ОписаниеМетода   = "Gets user data by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "notion";
-    NewLine.Module      = "OPI_Notion";
-    NewLine.Method       = "GetUserData";
-    NewLine.SearchMethod = "GETUSERDATA";
-    NewLine.Parameter    = "--user";
-    NewLine.Description    = "Target user ID";
-    NewLine.Region     = "Users";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "notion";
+    NewLine.Модуль      = "OPI_Notion";
+    NewLine.Метод       = "GetUserData";
+    NewLine.МетодПоиска = "GETUSERDATA";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "Target user ID";
+    NewLine.Область     = "Users";
 
-    Return TableСоwithтаinа;
+    Return CompositionTable;
 EndFunction
 

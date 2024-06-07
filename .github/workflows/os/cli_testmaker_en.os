@@ -1,4 +1,4 @@
-#Использовать "../../../src/ru/cli/data"
+#Использовать "../../../src/en/cli/data"
 
 Перем СоответствияПараметровЗначениям;
 Перем СоответствияПараметровПредобработкам;
@@ -36,7 +36,7 @@
 	СформироватьЗапуск();
 	СообщитьОкончаниеФайлаПроцесса();
 
-	ТекущийФайл.Записать("./.github/workflows/cli_test.yml");
+	ТекущийФайл.Записать("./.github/workflows/cli_test_en.yml");
 
 КонецПроцедуры
 
@@ -45,7 +45,7 @@
 	ТекущийФайл = Новый ТекстовыйДокумент();
 
 	ТекущийФайл.ДобавитьСтроку(
-		"name: CLI | Добавить пакеты в Draft
+		"name: CLI | Добавить пакеты в Draft (EN)
 		|
 		|on:
 		|  workflow_dispatch:
@@ -55,7 +55,7 @@
 	СообщитьСборку();
 	СообщитьЗаписьВДрафт();
 
-	ТекущийФайл.Записать("./.github/workflows/cli_draft.yml");
+	ТекущийФайл.Записать("./.github/workflows/cli_draft_en.yml");
 
 КонецПроцедуры
 
@@ -66,7 +66,7 @@
 Процедура СообщитьНачалоФайлаПроцесса()
 
 	ТекущийФайл.ДобавитьСтроку(
-	"name: CLI | Сборка и тестирование
+	"name: CLI | Сборка и тестирование (EN)
 	|
 	|on:
 	|  workflow_dispatch:
@@ -124,30 +124,30 @@
 	|
 	|      - name: Собрать и установить OInt
 	|        run: |
-	|          cd ./src/ru/OInt
+	|          cd ./src/en/OInt
 	|          opm build
 	|          opm install *.ospx  
 	|
 	|      - name: Собрать бинарник
 	|        run: |
-	|          cd ./src/ru/cli
+	|          cd ./src/en/cli
 	|          oscript -make core/Classes/Приложение.os oint
 	|
 	|      - name: Собрать exe
 	|        run: |
-	|          cd ./src/ru/cli
+	|          cd ./src/en/cli
 	|          oscript -make core/Classes/Приложение.os oint.exe
 	|
 	|      - name: Записать артефакт
 	|        uses: actions/upload-artifact@v4
 	|        with:
 	|          name: oint
-	|          path: ./src/ru/cli/oint
+	|          path: ./src/en/cli/oint
 	|
 	|      - name: Создать каталог deb-пакета
 	|        run: |
 	|          mkdir -p .debpkg/usr/bin
-	|          cp ./src/ru/cli/oint .debpkg/usr/bin/oint
+	|          cp ./src/en/cli/oint .debpkg/usr/bin/oint
 	|          chmod +x .debpkg/usr/bin/oint
 	|
 	|      - name: Собрать deb-пакет
@@ -159,9 +159,9 @@
 	|          version: '" + Версия + "' # refs/tags/v*.*.*
 	|          arch: 'all'
 	|          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
-	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
+	|          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
 	|        outputs:
-	|		   file_name: oint_" + Версия + "_all_ru.deb
+	|		   file_name: oint_" + Версия + "_all_en.deb
 	|
 	|      - uses: actions/upload-artifact@v3
 	|        with:
@@ -173,25 +173,25 @@
 	|        run: |
 	|          mkdir -p .rpmpkg/usr/bin
 	|          mkdir -p .rpmpkg/usr/share/oint/bin
-	|          cp ./src/ru/cli/oint .rpmpkg/usr/share/oint/bin/oint
+	|          cp ./src/en/cli/oint .rpmpkg/usr/share/oint/bin/oint
 	|          echo 'mono /usr/share/oint/bin/oint ""$@""' > .rpmpkg/usr/bin/oint
 	|          chmod +x .rpmpkg/usr/bin/oint
 	|
 	|      - name: Собрать rpm-пакет 
 	|        uses: jiro4989/build-rpm-action@v2
 	|        with:
-	|          summary: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки. Требуется mono-runtime с поддержкой .NET Framework 4.8'
+	|          summary: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services.  Mono-runtime with .NET Framework 4.8 support required'
 	|          package: oint
 	|          package_root: .rpmpkg
 	|          maintainer: Anton Titovets <bayselonarrend@gmail.com>
 	|          version: '" + Версия + "'
 	|          arch: 'x86_64'
-	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
+	|          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
 	|          requires: |
 	|            mono-core
 	|            Requires:       mono-locale-extras
 	|        outputs:
-	|		   file_name: oint-" + Версия + ".el7.x86_64_ru.rpm
+	|		   file_name: oint-" + Версия + ".el7.x86_64_en.rpm
 	|
 	|      - uses: actions/upload-artifact@v4
 	|        with:

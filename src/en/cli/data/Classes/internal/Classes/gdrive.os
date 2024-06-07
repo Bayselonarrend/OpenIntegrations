@@ -1,107 +1,107 @@
-﻿Function GetComposition() Export
+﻿Function ПолучитьСостав() Export
 
-    TableСоwithтаinа = New ValueTable();
-    TableСоwithтаinа.Columns.Add("Library");
-    TableСоwithтаinа.Columns.Add("Module");
-    TableСоwithтаinа.Columns.Add("Method");
-    TableСоwithтаinа.Columns.Add("SearchMethod");
-    TableСоwithтаinа.Columns.Add("Parameter");
-    TableСоwithтаinа.Columns.Add("Description");
-    TableСоwithтаinа.Columns.Add("MethodDescription");
-    TableСоwithтаinа.Columns.Add("Region");
+    CompositionTable = New ValueTable();
+    CompositionTable.Columns.Add("Библиотека");
+    CompositionTable.Columns.Add("Модуль");
+    CompositionTable.Columns.Add("Метод");
+    CompositionTable.Columns.Add("МетодПоиска");
+    CompositionTable.Columns.Add("Параметр");
+    CompositionTable.Columns.Add("Описание");
+    CompositionTable.Columns.Add("ОписаниеМетода");
+    CompositionTable.Columns.Add("Область");
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetObjectInformation";
-    NewLine.SearchMethod = "GETOBJECTINFORMATION";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets information about a folder or file by ID";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetObjectInformation";
-    NewLine.SearchMethod = "GETOBJECTINFORMATION";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Identifier of the file or folder";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetObjectInformation";
+    NewLine.МетодПоиска = "GETOBJECTINFORMATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets information about a folder or file by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetDirectoriesList";
-    NewLine.SearchMethod = "GETDIRECTORIESLIST";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets the list of drive directories";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetObjectInformation";
+    NewLine.МетодПоиска = "GETOBJECTINFORMATION";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Identifier of the file or folder";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetDirectoriesList";
-    NewLine.SearchMethod = "GETDIRECTORIESLIST";
-    NewLine.Parameter    = "--querry";
-    NewLine.Description    = "Filter by name (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetDirectoriesList";
+    NewLine.МетодПоиска = "GETDIRECTORIESLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets the list of drive directories";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetDirectoriesList";
-    NewLine.SearchMethod = "GETDIRECTORIESLIST";
-    NewLine.Parameter    = "--depth";
-    NewLine.Description    = "Adds a list of files to the directory fields (optional, def. val. - False)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetDirectoriesList";
+    NewLine.МетодПоиска = "GETDIRECTORIESLIST";
+    NewLine.Параметр    = "--querry";
+    NewLine.Описание    = "Filter by name (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetFilesList";
-    NewLine.SearchMethod = "GETFILESLIST";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets the list of files";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetDirectoriesList";
+    NewLine.МетодПоиска = "GETDIRECTORIESLIST";
+    NewLine.Параметр    = "--depth";
+    NewLine.Описание    = "Adds a list of files to the directory fields (optional, def. val. - No)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetFilesList";
-    NewLine.SearchMethod = "GETFILESLIST";
-    NewLine.Parameter    = "--querry";
-    NewLine.Description    = "Filter by name (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetFilesList";
+    NewLine.МетодПоиска = "GETFILESLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets the list of files";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetFilesList";
-    NewLine.SearchMethod = "GETFILESLIST";
-    NewLine.Parameter    = "--catalog";
-    NewLine.Description    = "Filter by parent directory ID (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetFilesList";
+    NewLine.МетодПоиска = "GETFILESLIST";
+    NewLine.Параметр    = "--querry";
+    NewLine.Описание    = "Filter by name (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "UploadFile";
-    NewLine.SearchMethod = "UPLOADFILE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Uploads a file to the drive
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetFilesList";
+    NewLine.МетодПоиска = "GETFILESLIST";
+    NewLine.Параметр    = "--catalog";
+    NewLine.Описание    = "Filter by parent directory ID (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "UploadFile";
+    NewLine.МетодПоиска = "UPLOADFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Uploads a file to the drive
     |
     |    The structure of the JSON object data (parameter --props):
     |    {
@@ -113,304 +113,304 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "UploadFile";
-    NewLine.SearchMethod = "UPLOADFILE";
-    NewLine.Parameter    = "--file";
-    NewLine.Description    = "File to be uploaded";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "UploadFile";
+    NewLine.МетодПоиска = "UPLOADFILE";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "File to be uploaded";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "UploadFile";
-    NewLine.SearchMethod = "UPLOADFILE";
-    NewLine.Parameter    = "--props";
-    NewLine.Description    = "JSON description or path to .json";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "UploadFile";
+    NewLine.МетодПоиска = "UPLOADFILE";
+    NewLine.Параметр    = "--props";
+    NewLine.Описание    = "JSON description or path to .json";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CreateFolder";
-    NewLine.SearchMethod = "CREATEFOLDER";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Creates an empty directory on the drive";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CreateFolder";
+    NewLine.МетодПоиска = "CREATEFOLDER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Creates an empty directory on the drive";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CreateFolder";
-    NewLine.SearchMethod = "CREATEFOLDER";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Folder name";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CreateFolder";
+    NewLine.МетодПоиска = "CREATEFOLDER";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Folder name";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CreateFolder";
-    NewLine.SearchMethod = "CREATEFOLDER";
-    NewLine.Parameter    = "--catalog";
-    NewLine.Description    = "Parent (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CreateFolder";
+    NewLine.МетодПоиска = "CREATEFOLDER";
+    NewLine.Параметр    = "--catalog";
+    NewLine.Описание    = "Parent (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DownloadFile";
-    NewLine.SearchMethod = "DOWNLOADFILE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets file by ID";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DownloadFile";
+    NewLine.МетодПоиска = "DOWNLOADFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets file by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DownloadFile";
-    NewLine.SearchMethod = "DOWNLOADFILE";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "File identifier";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DownloadFile";
+    NewLine.МетодПоиска = "DOWNLOADFILE";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "File identifier";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DownloadFile";
-    NewLine.SearchMethod = "DOWNLOADFILE";
-    NewLine.Parameter    = "--out";
-    NewLine.Description    = "File save path (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DownloadFile";
+    NewLine.МетодПоиска = "DOWNLOADFILE";
+    NewLine.Параметр    = "--out";
+    NewLine.Описание    = "File save path (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CopyObject";
-    NewLine.SearchMethod = "COPYOBJECT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Copies file or directory";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Copies file or directory";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CopyObject";
-    NewLine.SearchMethod = "COPYOBJECT";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Object identifier";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Object identifier";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CopyObject";
-    NewLine.SearchMethod = "COPYOBJECT";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "New object name (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "New object name (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CopyObject";
-    NewLine.SearchMethod = "COPYOBJECT";
-    NewLine.Parameter    = "--catalog";
-    NewLine.Description    = "New parent directory (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--catalog";
+    NewLine.Описание    = "New parent directory (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "UpdateFile";
-    NewLine.SearchMethod = "UPDATEFILE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Updates file binary data";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "UpdateFile";
+    NewLine.МетодПоиска = "UPDATEFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Updates file binary data";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "UpdateFile";
-    NewLine.SearchMethod = "UPDATEFILE";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Identifier of the object to update";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "UpdateFile";
+    NewLine.МетодПоиска = "UPDATEFILE";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Identifier of the object to update";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "UpdateFile";
-    NewLine.SearchMethod = "UPDATEFILE";
-    NewLine.Parameter    = "--file";
-    NewLine.Description    = "File source for update";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "UpdateFile";
+    NewLine.МетодПоиска = "UPDATEFILE";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "File source for update";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "UpdateFile";
-    NewLine.SearchMethod = "UPDATEFILE";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "New file name (if necessary) (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "UpdateFile";
+    NewLine.МетодПоиска = "UPDATEFILE";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "New file name (if necessary) (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DeleteObject";
-    NewLine.SearchMethod = "DELETEOBJECT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Deletes file or directory by ID";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Deletes file or directory by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DeleteObject";
-    NewLine.SearchMethod = "DELETEOBJECT";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Identifier of the object to delete";
-    NewLine.Region     = "File and directory management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Identifier of the object to delete";
+    NewLine.Область     = "File and directory management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CreateComment";
-    NewLine.SearchMethod = "CREATECOMMENT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Comment management";
-    NewLine.MethodDescription   = "Creates a comment for a file or directory";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CreateComment";
+    NewLine.МетодПоиска = "CREATECOMMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Comment management";
+    NewLine.ОписаниеМетода   = "Creates a comment for a file or directory";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CreateComment";
-    NewLine.SearchMethod = "CREATECOMMENT";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Identifier of the object that needs a comment";
-    NewLine.Region     = "Comment management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CreateComment";
+    NewLine.МетодПоиска = "CREATECOMMENT";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Identifier of the object that needs a comment";
+    NewLine.Область     = "Comment management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "CreateComment";
-    NewLine.SearchMethod = "CREATECOMMENT";
-    NewLine.Parameter    = "--text";
-    NewLine.Description    = "Comment text";
-    NewLine.Region     = "Comment management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "CreateComment";
+    NewLine.МетодПоиска = "CREATECOMMENT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Comment text";
+    NewLine.Область     = "Comment management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetComment";
-    NewLine.SearchMethod = "GETCOMMENT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Comment management";
-    NewLine.MethodDescription   = "Gets comment by ID";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetComment";
+    NewLine.МетодПоиска = "GETCOMMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Comment management";
+    NewLine.ОписаниеМетода   = "Gets comment by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetComment";
-    NewLine.SearchMethod = "GETCOMMENT";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Identifier of the file or directory where the comment is located";
-    NewLine.Region     = "Comment management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetComment";
+    NewLine.МетодПоиска = "GETCOMMENT";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Identifier of the file or directory where the comment is located";
+    NewLine.Область     = "Comment management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetComment";
-    NewLine.SearchMethod = "GETCOMMENT";
-    NewLine.Parameter    = "--comment";
-    NewLine.Description    = "Comment identifier";
-    NewLine.Region     = "Comment management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetComment";
+    NewLine.МетодПоиска = "GETCOMMENT";
+    NewLine.Параметр    = "--comment";
+    NewLine.Описание    = "Comment identifier";
+    NewLine.Область     = "Comment management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetCommentList";
-    NewLine.SearchMethod = "GETCOMMENTLIST";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Comment management";
-    NewLine.MethodDescription   = "Gets the list of all comments of the object";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetCommentList";
+    NewLine.МетодПоиска = "GETCOMMENTLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Comment management";
+    NewLine.ОписаниеМетода   = "Gets the list of all comments of the object";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "GetCommentList";
-    NewLine.SearchMethod = "GETCOMMENTLIST";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Object identifier";
-    NewLine.Region     = "Comment management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetCommentList";
+    NewLine.МетодПоиска = "GETCOMMENTLIST";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Object identifier";
+    NewLine.Область     = "Comment management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DeleteComment";
-    NewLine.SearchMethod = "DELETECOMMENT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Comment management";
-    NewLine.MethodDescription   = "Deletes comment by ID";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DeleteComment";
+    NewLine.МетодПоиска = "DELETECOMMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Comment management";
+    NewLine.ОписаниеМетода   = "Deletes comment by ID";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DeleteComment";
-    NewLine.SearchMethod = "DELETECOMMENT";
-    NewLine.Parameter    = "--object";
-    NewLine.Description    = "Identifier of the file or directory where the comment is located";
-    NewLine.Region     = "Comment management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DeleteComment";
+    NewLine.МетодПоиска = "DELETECOMMENT";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Identifier of the file or directory where the comment is located";
+    NewLine.Область     = "Comment management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "gdrive";
-    NewLine.Module      = "OPI_GoogleDrive";
-    NewLine.Method       = "DeleteComment";
-    NewLine.SearchMethod = "DELETECOMMENT";
-    NewLine.Parameter    = "--comment";
-    NewLine.Description    = "Comment identifier";
-    NewLine.Region     = "Comment management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "DeleteComment";
+    NewLine.МетодПоиска = "DELETECOMMENT";
+    NewLine.Параметр    = "--comment";
+    NewLine.Описание    = "Comment identifier";
+    NewLine.Область     = "Comment management";
 
-    Return TableСоwithтаinа;
+    Return CompositionTable;
 EndFunction
 
