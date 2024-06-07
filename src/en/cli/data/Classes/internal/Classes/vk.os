@@ -1,36 +1,36 @@
-﻿Function GetComposition() Export
+﻿Function ПолучитьСостав() Export
 
-    TableСоwithтаinа = New ValueTable();
-    TableСоwithтаinа.Columns.Add("Library");
-    TableСоwithтаinа.Columns.Add("Module");
-    TableСоwithтаinа.Columns.Add("Method");
-    TableСоwithтаinа.Columns.Add("SearchMethod");
-    TableСоwithтаinа.Columns.Add("Parameter");
-    TableСоwithтаinа.Columns.Add("Description");
-    TableСоwithтаinа.Columns.Add("MethodDescription");
-    TableСоwithтаinа.Columns.Add("Region");
+    CompositionTable = New ValueTable();
+    CompositionTable.Columns.Add("Библиотека");
+    CompositionTable.Columns.Add("Модуль");
+    CompositionTable.Columns.Add("Метод");
+    CompositionTable.Columns.Add("МетодПоиска");
+    CompositionTable.Columns.Add("Параметр");
+    CompositionTable.Columns.Add("Описание");
+    CompositionTable.Columns.Add("ОписаниеМетода");
+    CompositionTable.Columns.Add("Область");
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateTokenRetrievalLink";
-    NewLine.SearchMethod = "CREATETOKENRETRIEVALLINK";
-    NewLine.Parameter    = "--app";
-    NewLine.Description    = "app_id from application settings";
-    NewLine.Region     = "Token retrieval";
-    NewLine.MethodDescription   = "Getting a link for interactive token retrieval (access_token), which is necessary
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateTokenRetrievalLink";
+    NewLine.МетодПоиска = "CREATETOKENRETRIEVALLINK";
+    NewLine.Параметр    = "--app";
+    NewLine.Описание    = "app_id from application settings";
+    NewLine.Область     = "Token retrieval";
+    NewLine.ОписаниеМетода   = "Getting a link for interactive token retrieval (access_token), which is necessary
     |    for further actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePost";
-    NewLine.SearchMethod = "CREATEPOST";
-    NewLine.Parameter    = "--text";
-    NewLine.Description    = "Post text";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Creates a post with images
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePost";
+    NewLine.МетодПоиска = "CREATEPOST";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Post text";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Creates a post with images
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -42,55 +42,55 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePost";
-    NewLine.SearchMethod = "CREATEPOST";
-    NewLine.Parameter    = "--pictures";
-    NewLine.Description    = "Array of images";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePost";
+    NewLine.МетодПоиска = "CREATEPOST";
+    NewLine.Параметр    = "--pictures";
+    NewLine.Описание    = "Array of images";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePost";
-    NewLine.SearchMethod = "CREATEPOST";
-    NewLine.Parameter    = "--ad";
-    NewLine.Description    = "Sign ""This is an ad"" (optional, def. val. - False)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePost";
+    NewLine.МетодПоиска = "CREATEPOST";
+    NewLine.Параметр    = "--ad";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePost";
-    NewLine.SearchMethod = "CREATEPOST";
-    NewLine.Parameter    = "--url";
-    NewLine.Description    = "Link (URL) under the post (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePost";
+    NewLine.МетодПоиска = "CREATEPOST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePost";
-    NewLine.SearchMethod = "CREATEPOST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePost";
+    NewLine.МетодПоиска = "CREATEPOST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateCompositePost";
-    NewLine.SearchMethod = "CREATECOMPOSITEPOST";
-    NewLine.Parameter    = "--text";
-    NewLine.Description    = "Post text";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Creates a post based on an array of object identifiers (images, videos, etc..)
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateCompositePost";
+    NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Post text";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Creates a post based on an array of object identifiers (images, videos, etc..)
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -102,55 +102,55 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateCompositePost";
-    NewLine.SearchMethod = "CREATECOMPOSITEPOST";
-    NewLine.Parameter    = "--objects";
-    NewLine.Description    = "Array of identifiers like photo123_123";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateCompositePost";
+    NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
+    NewLine.Параметр    = "--objects";
+    NewLine.Описание    = "Array of identifiers like photo123_123";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateCompositePost";
-    NewLine.SearchMethod = "CREATECOMPOSITEPOST";
-    NewLine.Parameter    = "--ad";
-    NewLine.Description    = "Sign ""This is an ad"" (optional, def. val. - False)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateCompositePost";
+    NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
+    NewLine.Параметр    = "--ad";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateCompositePost";
-    NewLine.SearchMethod = "CREATECOMPOSITEPOST";
-    NewLine.Parameter    = "--url";
-    NewLine.Description    = "Link (URL) under the post (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateCompositePost";
+    NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateCompositePost";
-    NewLine.SearchMethod = "CREATECOMPOSITEPOST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateCompositePost";
+    NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeletePost";
-    NewLine.SearchMethod = "DELETEPOST";
-    NewLine.Parameter    = "--post";
-    NewLine.Description    = "Post ID";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Deletes a post by ID
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeletePost";
+    NewLine.МетодПоиска = "DELETEPOST";
+    NewLine.Параметр    = "--post";
+    NewLine.Описание    = "Post ID";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Deletes a post by ID
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -162,25 +162,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeletePost";
-    NewLine.SearchMethod = "DELETEPOST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeletePost";
+    NewLine.МетодПоиска = "DELETEPOST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePoll";
-    NewLine.SearchMethod = "CREATEPOLL";
-    NewLine.Parameter    = "--question";
-    NewLine.Description    = "Poll question";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Creates a poll with answer options
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePoll";
+    NewLine.МетодПоиска = "CREATEPOLL";
+    NewLine.Параметр    = "--question";
+    NewLine.Описание    = "Poll question";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Creates a poll with answer options
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -192,45 +192,45 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePoll";
-    NewLine.SearchMethod = "CREATEPOLL";
-    NewLine.Parameter    = "--options";
-    NewLine.Description    = "Array of answer options";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePoll";
+    NewLine.МетодПоиска = "CREATEPOLL";
+    NewLine.Параметр    = "--options";
+    NewLine.Описание    = "Array of answer options";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePoll";
-    NewLine.SearchMethod = "CREATEPOLL";
-    NewLine.Parameter    = "--picture";
-    NewLine.Description    = "Poll image (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePoll";
+    NewLine.МетодПоиска = "CREATEPOLL";
+    NewLine.Параметр    = "--picture";
+    NewLine.Описание    = "Poll image (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreatePoll";
-    NewLine.SearchMethod = "CREATEPOLL";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreatePoll";
+    NewLine.МетодПоиска = "CREATEPOLL";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAlbum";
-    NewLine.SearchMethod = "CREATEALBUM";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Album name";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Creates an album to store images
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAlbum";
+    NewLine.МетодПоиска = "CREATEALBUM";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Album name";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Creates an album to store images
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -242,35 +242,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAlbum";
-    NewLine.SearchMethod = "CREATEALBUM";
-    NewLine.Parameter    = "--description";
-    NewLine.Description    = "Album description (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAlbum";
+    NewLine.МетодПоиска = "CREATEALBUM";
+    NewLine.Параметр    = "--description";
+    NewLine.Описание    = "Album description (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAlbum";
-    NewLine.SearchMethod = "CREATEALBUM";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAlbum";
+    NewLine.МетодПоиска = "CREATEALBUM";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteAlbum";
-    NewLine.SearchMethod = "DELETEALBUM";
-    NewLine.Parameter    = "--album";
-    NewLine.Description    = "Album ID";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Deletes a previously created album
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteAlbum";
+    NewLine.МетодПоиска = "DELETEALBUM";
+    NewLine.Параметр    = "--album";
+    NewLine.Описание    = "Album ID";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Deletes a previously created album
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -282,25 +282,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteAlbum";
-    NewLine.SearchMethod = "DELETEALBUM";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteAlbum";
+    NewLine.МетодПоиска = "DELETEALBUM";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateStory";
-    NewLine.SearchMethod = "CREATESTORY";
-    NewLine.Parameter    = "--picture";
-    NewLine.Description    = "Story background";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Creates a story from an image
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateStory";
+    NewLine.МетодПоиска = "CREATESTORY";
+    NewLine.Параметр    = "--picture";
+    NewLine.Описание    = "Story background";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Creates a story from an image
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -312,35 +312,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateStory";
-    NewLine.SearchMethod = "CREATESTORY";
-    NewLine.Parameter    = "--url";
-    NewLine.Description    = "URL for button under the story (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateStory";
+    NewLine.МетодПоиска = "CREATESTORY";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL for button under the story (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateStory";
-    NewLine.SearchMethod = "CREATESTORY";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateStory";
+    NewLine.МетодПоиска = "CREATESTORY";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "SaveImageToAlbum";
-    NewLine.SearchMethod = "SAVEIMAGETOALBUM";
-    NewLine.Parameter    = "--album";
-    NewLine.Description    = "Album ID";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Saves an image to the community album
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "SaveImageToAlbum";
+    NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
+    NewLine.Параметр    = "--album";
+    NewLine.Описание    = "Album ID";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Saves an image to the community album
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -352,45 +352,45 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "SaveImageToAlbum";
-    NewLine.SearchMethod = "SAVEIMAGETOALBUM";
-    NewLine.Parameter    = "--picture";
-    NewLine.Description    = "Image file";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "SaveImageToAlbum";
+    NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
+    NewLine.Параметр    = "--picture";
+    NewLine.Описание    = "Image file";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "SaveImageToAlbum";
-    NewLine.SearchMethod = "SAVEIMAGETOALBUM";
-    NewLine.Parameter    = "--description";
-    NewLine.Description    = "Image description (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "SaveImageToAlbum";
+    NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
+    NewLine.Параметр    = "--description";
+    NewLine.Описание    = "Image description (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "SaveImageToAlbum";
-    NewLine.SearchMethod = "SAVEIMAGETOALBUM";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "SaveImageToAlbum";
+    NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteImage";
-    NewLine.SearchMethod = "DELETEIMAGE";
-    NewLine.Parameter    = "--pictureid";
-    NewLine.Description    = "Image ID";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Deletes an image from the album
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteImage";
+    NewLine.МетодПоиска = "DELETEIMAGE";
+    NewLine.Параметр    = "--pictureid";
+    NewLine.Описание    = "Image ID";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Deletes an image from the album
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -402,25 +402,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteImage";
-    NewLine.SearchMethod = "DELETEIMAGE";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteImage";
+    NewLine.МетодПоиска = "DELETEIMAGE";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadVideoToServer";
-    NewLine.SearchMethod = "UPLOADVIDEOTOSERVER";
-    NewLine.Parameter    = "--file";
-    NewLine.Description    = "Video file";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Uploads video to the group for further use
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadVideoToServer";
+    NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "Video file";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Uploads video to the group for further use
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -432,55 +432,55 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadVideoToServer";
-    NewLine.SearchMethod = "UPLOADVIDEOTOSERVER";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Video name";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadVideoToServer";
+    NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Video name";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadVideoToServer";
-    NewLine.SearchMethod = "UPLOADVIDEOTOSERVER";
-    NewLine.Parameter    = "--description";
-    NewLine.Description    = "Video description (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadVideoToServer";
+    NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
+    NewLine.Параметр    = "--description";
+    NewLine.Описание    = "Video description (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadVideoToServer";
-    NewLine.SearchMethod = "UPLOADVIDEOTOSERVER";
-    NewLine.Parameter    = "--album";
-    NewLine.Description    = "Album ID, if necessary (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadVideoToServer";
+    NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
+    NewLine.Параметр    = "--album";
+    NewLine.Описание    = "Album ID, if necessary (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadVideoToServer";
-    NewLine.SearchMethod = "UPLOADVIDEOTOSERVER";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadVideoToServer";
+    NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadPhotoToServer";
-    NewLine.SearchMethod = "UPLOADPHOTOTOSERVER";
-    NewLine.Parameter    = "--file";
-    NewLine.Description    = "Image file";
-    NewLine.Region     = "Community managment";
-    NewLine.MethodDescription   = "Uploads photo to server for further use
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadPhotoToServer";
+    NewLine.МетодПоиска = "UPLOADPHOTOTOSERVER";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "Image file";
+    NewLine.Область     = "Community managment";
+    NewLine.ОписаниеМетода   = "Uploads photo to server for further use
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -492,35 +492,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadPhotoToServer";
-    NewLine.SearchMethod = "UPLOADPHOTOTOSERVER";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadPhotoToServer";
+    NewLine.МетодПоиска = "UPLOADPHOTOTOSERVER";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "UploadPhotoToServer";
-    NewLine.SearchMethod = "UPLOADPHOTOTOSERVER";
-    NewLine.Parameter    = "--type";
-    NewLine.Description    = "Upload type (Post, Product, Story, Poll, Other) (optional, def. val. - Post)";
-    NewLine.Region     = "Community managment";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "UploadPhotoToServer";
+    NewLine.МетодПоиска = "UPLOADPHOTOTOSERVER";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Upload type (Post, Product, Story, Poll, Other) (optional, def. val. - Post)";
+    NewLine.Область     = "Community managment";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateDiscussion";
-    NewLine.SearchMethod = "CREATEDISCUSSION";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Discussion name";
-    NewLine.Region     = "Discussion management";
-    NewLine.MethodDescription   = "Creates a new discussion
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateDiscussion";
+    NewLine.МетодПоиска = "CREATEDISCUSSION";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Discussion name";
+    NewLine.Область     = "Discussion management";
+    NewLine.ОписаниеМетода   = "Creates a new discussion
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -532,35 +532,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateDiscussion";
-    NewLine.SearchMethod = "CREATEDISCUSSION";
-    NewLine.Parameter    = "--text";
-    NewLine.Description    = "Text of the first message";
-    NewLine.Region     = "Discussion management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateDiscussion";
+    NewLine.МетодПоиска = "CREATEDISCUSSION";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Text of the first message";
+    NewLine.Область     = "Discussion management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateDiscussion";
-    NewLine.SearchMethod = "CREATEDISCUSSION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Discussion management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateDiscussion";
+    NewLine.МетодПоиска = "CREATEDISCUSSION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Discussion management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CloseDiscussion";
-    NewLine.SearchMethod = "CLOSEDISCUSSION";
-    NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Discussion ID";
-    NewLine.Region     = "Discussion management";
-    NewLine.MethodDescription   = "Close or delete discussion
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CloseDiscussion";
+    NewLine.МетодПоиска = "CLOSEDISCUSSION";
+    NewLine.Параметр    = "--topic";
+    NewLine.Описание    = "Discussion ID";
+    NewLine.Область     = "Discussion management";
+    NewLine.ОписаниеМетода   = "Close or delete discussion
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -572,35 +572,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CloseDiscussion";
-    NewLine.SearchMethod = "CLOSEDISCUSSION";
-    NewLine.Parameter    = "--remove";
-    NewLine.Description    = "Delete completely (True) or close (optional, def. val. - False)";
-    NewLine.Region     = "Discussion management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CloseDiscussion";
+    NewLine.МетодПоиска = "CLOSEDISCUSSION";
+    NewLine.Параметр    = "--remove";
+    NewLine.Описание    = "Delete completely (True) or close (optional, def. val. - No)";
+    NewLine.Область     = "Discussion management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CloseDiscussion";
-    NewLine.SearchMethod = "CLOSEDISCUSSION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Discussion management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CloseDiscussion";
+    NewLine.МетодПоиска = "CLOSEDISCUSSION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Discussion management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "OpenDiscussion";
-    NewLine.SearchMethod = "OPENDISCUSSION";
-    NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Discussion ID";
-    NewLine.Region     = "Discussion management";
-    NewLine.MethodDescription   = "Opens a previously closed discussion
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "OpenDiscussion";
+    NewLine.МетодПоиска = "OPENDISCUSSION";
+    NewLine.Параметр    = "--topic";
+    NewLine.Описание    = "Discussion ID";
+    NewLine.Область     = "Discussion management";
+    NewLine.ОписаниеМетода   = "Opens a previously closed discussion
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -612,25 +612,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "OpenDiscussion";
-    NewLine.SearchMethod = "OPENDISCUSSION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Discussion management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "OpenDiscussion";
+    NewLine.МетодПоиска = "OPENDISCUSSION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Discussion management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteInDiscussion";
-    NewLine.SearchMethod = "WRITEINDISCUSSION";
-    NewLine.Parameter    = "--topic";
-    NewLine.Description    = "Discussion ID";
-    NewLine.Region     = "Discussion management";
-    NewLine.MethodDescription   = "Adds a message to the discussion on behalf of the group
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteInDiscussion";
+    NewLine.МетодПоиска = "WRITEINDISCUSSION";
+    NewLine.Параметр    = "--topic";
+    NewLine.Описание    = "Discussion ID";
+    NewLine.Область     = "Discussion management";
+    NewLine.ОписаниеМетода   = "Adds a message to the discussion on behalf of the group
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -642,35 +642,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteInDiscussion";
-    NewLine.SearchMethod = "WRITEINDISCUSSION";
-    NewLine.Parameter    = "--text";
-    NewLine.Description    = "Message text";
-    NewLine.Region     = "Discussion management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteInDiscussion";
+    NewLine.МетодПоиска = "WRITEINDISCUSSION";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Message text";
+    NewLine.Область     = "Discussion management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteInDiscussion";
-    NewLine.SearchMethod = "WRITEINDISCUSSION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Discussion management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteInDiscussion";
+    NewLine.МетодПоиска = "WRITEINDISCUSSION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Discussion management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "LikePost";
-    NewLine.SearchMethod = "LIKEPOST";
-    NewLine.Parameter    = "--post";
-    NewLine.Description    = "Post ID";
-    NewLine.Region     = "Interactive actions";
-    NewLine.MethodDescription   = "Likes a post
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "LikePost";
+    NewLine.МетодПоиска = "LIKEPOST";
+    NewLine.Параметр    = "--post";
+    NewLine.Описание    = "Post ID";
+    NewLine.Область     = "Interactive actions";
+    NewLine.ОписаниеМетода   = "Likes a post
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -682,35 +682,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "LikePost";
-    NewLine.SearchMethod = "LIKEPOST";
-    NewLine.Parameter    = "--wall";
-    NewLine.Description    = "ID of the wall where the post is located (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "LikePost";
+    NewLine.МетодПоиска = "LIKEPOST";
+    NewLine.Параметр    = "--wall";
+    NewLine.Описание    = "ID of the wall where the post is located (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "LikePost";
-    NewLine.SearchMethod = "LIKEPOST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "LikePost";
+    NewLine.МетодПоиска = "LIKEPOST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "MakeRepost";
-    NewLine.SearchMethod = "MAKEREPOST";
-    NewLine.Parameter    = "--post";
-    NewLine.Description    = "Post ID";
-    NewLine.Region     = "Interactive actions";
-    NewLine.MethodDescription   = "Reposts the record
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "MakeRepost";
+    NewLine.МетодПоиска = "MAKEREPOST";
+    NewLine.Параметр    = "--post";
+    NewLine.Описание    = "Post ID";
+    NewLine.Область     = "Interactive actions";
+    NewLine.ОписаниеМетода   = "Reposts the record
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -722,55 +722,55 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "MakeRepost";
-    NewLine.SearchMethod = "MAKEREPOST";
-    NewLine.Parameter    = "--from";
-    NewLine.Description    = "ID of the wall where the post is located (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "MakeRepost";
+    NewLine.МетодПоиска = "MAKEREPOST";
+    NewLine.Параметр    = "--from";
+    NewLine.Описание    = "ID of the wall where the post is located (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "MakeRepost";
-    NewLine.SearchMethod = "MAKEREPOST";
-    NewLine.Parameter    = "--to";
-    NewLine.Description    = "ID of the target wall or group (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "MakeRepost";
+    NewLine.МетодПоиска = "MAKEREPOST";
+    NewLine.Параметр    = "--to";
+    NewLine.Описание    = "ID of the target wall or group (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "MakeRepost";
-    NewLine.SearchMethod = "MAKEREPOST";
-    NewLine.Parameter    = "--ad";
-    NewLine.Description    = "Sign of an advertising post (optional, def. val. - False)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "MakeRepost";
+    NewLine.МетодПоиска = "MAKEREPOST";
+    NewLine.Параметр    = "--ad";
+    NewLine.Описание    = "Sign of an advertising post (optional, def. val. - No)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "MakeRepost";
-    NewLine.SearchMethod = "MAKEREPOST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "MakeRepost";
+    NewLine.МетодПоиска = "MAKEREPOST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteMessage";
-    NewLine.SearchMethod = "WRITEMESSAGE";
-    NewLine.Parameter    = "--text";
-    NewLine.Description    = "Message text";
-    NewLine.Region     = "Interactive actions";
-    NewLine.MethodDescription   = "Write a message to a user in the community's dialog
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteMessage";
+    NewLine.МетодПоиска = "WRITEMESSAGE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Message text";
+    NewLine.Область     = "Interactive actions";
+    NewLine.ОписаниеМетода   = "Write a message to a user in the community's dialog
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -782,55 +782,55 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteMessage";
-    NewLine.SearchMethod = "WRITEMESSAGE";
-    NewLine.Parameter    = "--user";
-    NewLine.Description    = "Recipient user ID";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteMessage";
+    NewLine.МетодПоиска = "WRITEMESSAGE";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "Recipient user ID";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteMessage";
-    NewLine.SearchMethod = "WRITEMESSAGE";
-    NewLine.Parameter    = "--ct";
-    NewLine.Description    = "Community chat bot token, which can be obtained in the settings";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteMessage";
+    NewLine.МетодПоиска = "WRITEMESSAGE";
+    NewLine.Параметр    = "--ct";
+    NewLine.Описание    = "Community chat bot token, which can be obtained in the settings";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteMessage";
-    NewLine.SearchMethod = "WRITEMESSAGE";
-    NewLine.Parameter    = "--keyboard";
-    NewLine.Description    = "JSON keyboard. See FormKeyboard (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteMessage";
+    NewLine.МетодПоиска = "WRITEMESSAGE";
+    NewLine.Параметр    = "--keyboard";
+    NewLine.Описание    = "JSON keyboard. See FormKeyboard (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteMessage";
-    NewLine.SearchMethod = "WRITEMESSAGE";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteMessage";
+    NewLine.МетодПоиска = "WRITEMESSAGE";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteComment";
-    NewLine.SearchMethod = "WRITECOMMENT";
-    NewLine.Parameter    = "--post";
-    NewLine.Description    = "ID of the target post";
-    NewLine.Region     = "Interactive actions";
-    NewLine.MethodDescription   = "Creates a comment under the selected record
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteComment";
+    NewLine.МетодПоиска = "WRITECOMMENT";
+    NewLine.Параметр    = "--post";
+    NewLine.Описание    = "ID of the target post";
+    NewLine.Область     = "Interactive actions";
+    NewLine.ОписаниеМетода   = "Creates a comment under the selected record
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -842,45 +842,45 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteComment";
-    NewLine.SearchMethod = "WRITECOMMENT";
-    NewLine.Parameter    = "--wall";
-    NewLine.Description    = "ID of the wall where the post is located";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteComment";
+    NewLine.МетодПоиска = "WRITECOMMENT";
+    NewLine.Параметр    = "--wall";
+    NewLine.Описание    = "ID of the wall where the post is located";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteComment";
-    NewLine.SearchMethod = "WRITECOMMENT";
-    NewLine.Parameter    = "--text";
-    NewLine.Description    = "Comment text";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteComment";
+    NewLine.МетодПоиска = "WRITECOMMENT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Comment text";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "WriteComment";
-    NewLine.SearchMethod = "WRITECOMMENT";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "WriteComment";
+    NewLine.МетодПоиска = "WRITECOMMENT";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "ShortenLink";
-    NewLine.SearchMethod = "SHORTENLINK";
-    NewLine.Parameter    = "--url";
-    NewLine.Description    = "URL for shortening";
-    NewLine.Region     = "Interactive actions";
-    NewLine.MethodDescription   = "Creates a shortened URL from a regular one
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "ShortenLink";
+    NewLine.МетодПоиска = "SHORTENLINK";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL for shortening";
+    NewLine.Область     = "Interactive actions";
+    NewLine.ОписаниеМетода   = "Creates a shortened URL from a regular one
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -892,25 +892,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "ShortenLink";
-    NewLine.SearchMethod = "SHORTENLINK";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Interactive actions";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "ShortenLink";
+    NewLine.МетодПоиска = "SHORTENLINK";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Interactive actions";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetStatistics";
-    NewLine.SearchMethod = "GETSTATISTICS";
-    NewLine.Parameter    = "--datefrom";
-    NewLine.Description    = "Start date of the period";
-    NewLine.Region     = "Statistics";
-    NewLine.MethodDescription   = "Gets the overall community statistics for a period
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetStatistics";
+    NewLine.МетодПоиска = "GETSTATISTICS";
+    NewLine.Параметр    = "--datefrom";
+    NewLine.Описание    = "Start date of the period";
+    NewLine.Область     = "Statistics";
+    NewLine.ОписаниеМетода   = "Gets the overall community statistics for a period
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -922,35 +922,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetStatistics";
-    NewLine.SearchMethod = "GETSTATISTICS";
-    NewLine.Parameter    = "--dateto";
-    NewLine.Description    = "End date of the period";
-    NewLine.Region     = "Statistics";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetStatistics";
+    NewLine.МетодПоиска = "GETSTATISTICS";
+    NewLine.Параметр    = "--dateto";
+    NewLine.Описание    = "End date of the period";
+    NewLine.Область     = "Statistics";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetStatistics";
-    NewLine.SearchMethod = "GETSTATISTICS";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Statistics";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetStatistics";
+    NewLine.МетодПоиска = "GETSTATISTICS";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Statistics";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetPostStatistics";
-    NewLine.SearchMethod = "GETPOSTSTATISTICS";
-    NewLine.Parameter    = "--posts";
-    NewLine.Description    = "Array of post IDs";
-    NewLine.Region     = "Statistics";
-    NewLine.MethodDescription   = "Gets statistics in terms of posts
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetPostStatistics";
+    NewLine.МетодПоиска = "GETPOSTSTATISTICS";
+    NewLine.Параметр    = "--posts";
+    NewLine.Описание    = "Array of post IDs";
+    NewLine.Область     = "Statistics";
+    NewLine.ОписаниеМетода   = "Gets statistics in terms of posts
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -962,25 +962,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetPostStatistics";
-    NewLine.SearchMethod = "GETPOSTSTATISTICS";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Statistics";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetPostStatistics";
+    NewLine.МетодПоиска = "GETPOSTSTATISTICS";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Statistics";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAdvertisingCampaign";
-    NewLine.SearchMethod = "CREATEADVERTISINGCAMPAIGN";
-    NewLine.Parameter    = "--cabinet";
-    NewLine.Description    = "Advertising account ID";
-    NewLine.Region     = "Ad account management";
-    NewLine.MethodDescription   = "Creates a campaign in the selected advertising account
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAdvertisingCampaign";
+    NewLine.МетодПоиска = "CREATEADVERTISINGCAMPAIGN";
+    NewLine.Параметр    = "--cabinet";
+    NewLine.Описание    = "Advertising account ID";
+    NewLine.Область     = "Ad account management";
+    NewLine.ОписаниеМетода   = "Creates a campaign in the selected advertising account
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -992,35 +992,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAdvertisingCampaign";
-    NewLine.SearchMethod = "CREATEADVERTISINGCAMPAIGN";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Campaign name";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAdvertisingCampaign";
+    NewLine.МетодПоиска = "CREATEADVERTISINGCAMPAIGN";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Campaign name";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAdvertisingCampaign";
-    NewLine.SearchMethod = "CREATEADVERTISINGCAMPAIGN";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAdvertisingCampaign";
+    NewLine.МетодПоиска = "CREATEADVERTISINGCAMPAIGN";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAd";
-    NewLine.SearchMethod = "CREATEAD";
-    NewLine.Parameter    = "--campaign";
-    NewLine.Description    = "Advertising campaign ID";
-    NewLine.Region     = "Ad account management";
-    NewLine.MethodDescription   = "Creates an advertising post based on a post
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAd";
+    NewLine.МетодПоиска = "CREATEAD";
+    NewLine.Параметр    = "--campaign";
+    NewLine.Описание    = "Advertising campaign ID";
+    NewLine.Область     = "Ad account management";
+    NewLine.ОписаниеМетода   = "Creates an advertising post based on a post
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1032,65 +1032,65 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAd";
-    NewLine.SearchMethod = "CREATEAD";
-    NewLine.Parameter    = "--limit";
-    NewLine.Description    = "Daily limit in rubles";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAd";
+    NewLine.МетодПоиска = "CREATEAD";
+    NewLine.Параметр    = "--limit";
+    NewLine.Описание    = "Daily limit in rubles";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAd";
-    NewLine.SearchMethod = "CREATEAD";
-    NewLine.Parameter    = "--category";
-    NewLine.Description    = "Advertising category number";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAd";
+    NewLine.МетодПоиска = "CREATEAD";
+    NewLine.Параметр    = "--category";
+    NewLine.Описание    = "Advertising category number";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAd";
-    NewLine.SearchMethod = "CREATEAD";
-    NewLine.Parameter    = "--post";
-    NewLine.Description    = "ID of the post used for advertising";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAd";
+    NewLine.МетодПоиска = "CREATEAD";
+    NewLine.Параметр    = "--post";
+    NewLine.Описание    = "ID of the post used for advertising";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAd";
-    NewLine.SearchMethod = "CREATEAD";
-    NewLine.Parameter    = "--cabinet";
-    NewLine.Description    = "Advertising account ID";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAd";
+    NewLine.МетодПоиска = "CREATEAD";
+    NewLine.Параметр    = "--cabinet";
+    NewLine.Описание    = "Advertising account ID";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateAd";
-    NewLine.SearchMethod = "CREATEAD";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateAd";
+    NewLine.МетодПоиска = "CREATEAD";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "PauseAdvertisingAd";
-    NewLine.SearchMethod = "PAUSEADVERTISINGAD";
-    NewLine.Parameter    = "--cabinet";
-    NewLine.Description    = "Advertising account ID";
-    NewLine.Region     = "Ad account management";
-    NewLine.MethodDescription   = "Pauses the display of the advertising post
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "PauseAdvertisingAd";
+    NewLine.МетодПоиска = "PAUSEADVERTISINGAD";
+    NewLine.Параметр    = "--cabinet";
+    NewLine.Описание    = "Advertising account ID";
+    NewLine.Область     = "Ad account management";
+    NewLine.ОписаниеМетода   = "Pauses the display of the advertising post
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1102,35 +1102,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "PauseAdvertisingAd";
-    NewLine.SearchMethod = "PAUSEADVERTISINGAD";
-    NewLine.Parameter    = "--adv";
-    NewLine.Description    = "Ad ID";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "PauseAdvertisingAd";
+    NewLine.МетодПоиска = "PAUSEADVERTISINGAD";
+    NewLine.Параметр    = "--adv";
+    NewLine.Описание    = "Ad ID";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "PauseAdvertisingAd";
-    NewLine.SearchMethod = "PAUSEADVERTISINGAD";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Ad account management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "PauseAdvertisingAd";
+    NewLine.МетодПоиска = "PAUSEADVERTISINGAD";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Ad account management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetAdvertisingCategoryList";
-    NewLine.SearchMethod = "GETADVERTISINGCATEGORYLIST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Ad account management";
-    NewLine.MethodDescription   = "Gets a list of advertising category IDs for creating an advertising post
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetAdvertisingCategoryList";
+    NewLine.МетодПоиска = "GETADVERTISINGCATEGORYLIST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Ad account management";
+    NewLine.ОписаниеМетода   = "Gets a list of advertising category IDs for creating an advertising post
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1142,15 +1142,15 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetProductCategoryList";
-    NewLine.SearchMethod = "GETPRODUCTCATEGORYLIST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
-    NewLine.MethodDescription   = "Gets a list of product category IDs to specify when creating a product
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetProductCategoryList";
+    NewLine.МетодПоиска = "GETPRODUCTCATEGORYLIST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Gets a list of product category IDs to specify when creating a product
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1162,15 +1162,15 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetProductList";
-    NewLine.SearchMethod = "GETPRODUCTLIST";
-    NewLine.Parameter    = "--sel";
-    NewLine.Description    = "Selection ID, if filtering is needed (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
-    NewLine.MethodDescription   = "Gets the community's product list
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetProductList";
+    NewLine.МетодПоиска = "GETPRODUCTLIST";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Selection ID, if filtering is needed (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Gets the community's product list
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1182,25 +1182,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetProductList";
-    NewLine.SearchMethod = "GETPRODUCTLIST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetProductList";
+    NewLine.МетодПоиска = "GETPRODUCTLIST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetProductsByID";
-    NewLine.SearchMethod = "GETPRODUCTSBYID";
-    NewLine.Parameter    = "--items";
-    NewLine.Description    = "Array of product IDs";
-    NewLine.Region     = "Product management";
-    NewLine.MethodDescription   = "Gets information about products by array of IDs
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetProductsByID";
+    NewLine.МетодПоиска = "GETPRODUCTSBYID";
+    NewLine.Параметр    = "--items";
+    NewLine.Описание    = "Array of product IDs";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Gets information about products by array of IDs
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1212,25 +1212,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetProductsByID";
-    NewLine.SearchMethod = "GETPRODUCTSBYID";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetProductsByID";
+    NewLine.МетодПоиска = "GETPRODUCTSBYID";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProduct";
-    NewLine.SearchMethod = "ADDPRODUCT";
-    NewLine.Parameter    = "--product";
-    NewLine.Description    = "JSON description of the product or path";
-    NewLine.Region     = "Product management";
-    NewLine.MethodDescription   = "Adds a new product to the community's catalog
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProduct";
+    NewLine.МетодПоиска = "ADDPRODUCT";
+    NewLine.Параметр    = "--product";
+    NewLine.Описание    = "JSON description of the product or path";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Adds a new product to the community's catalog
     |
     |    The structure of the JSON product description data (parameter --product):
     |    {
@@ -1263,35 +1263,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProduct";
-    NewLine.SearchMethod = "ADDPRODUCT";
-    NewLine.Parameter    = "--sel";
-    NewLine.Description    = "Selection ID for placing the product, if needed (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProduct";
+    NewLine.МетодПоиска = "ADDPRODUCT";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Selection ID for placing the product, if needed (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProduct";
-    NewLine.SearchMethod = "ADDPRODUCT";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProduct";
+    NewLine.МетодПоиска = "ADDPRODUCT";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProduct";
-    NewLine.SearchMethod = "EDITPRODUCT";
-    NewLine.Parameter    = "--item";
-    NewLine.Description    = "Identifier of the product being edited";
-    NewLine.Region     = "Product management";
-    NewLine.MethodDescription   = "Edits a previously created product
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProduct";
+    NewLine.МетодПоиска = "EDITPRODUCT";
+    NewLine.Параметр    = "--item";
+    NewLine.Описание    = "Identifier of the product being edited";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Edits a previously created product
     |
     |    The structure of the JSON product description data (parameter --product):
     |    {
@@ -1324,45 +1324,45 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProduct";
-    NewLine.SearchMethod = "EDITPRODUCT";
-    NewLine.Parameter    = "--product";
-    NewLine.Description    = "JSON description of the product or path";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProduct";
+    NewLine.МетодПоиска = "EDITPRODUCT";
+    NewLine.Параметр    = "--product";
+    NewLine.Описание    = "JSON description of the product or path";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProduct";
-    NewLine.SearchMethod = "EDITPRODUCT";
-    NewLine.Parameter    = "--sel";
-    NewLine.Description    = "Identifier of the new selection, if needed (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProduct";
+    NewLine.МетодПоиска = "EDITPRODUCT";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Identifier of the new selection, if needed (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProduct";
-    NewLine.SearchMethod = "EDITPRODUCT";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProduct";
+    NewLine.МетодПоиска = "EDITPRODUCT";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteProduct";
-    NewLine.SearchMethod = "DELETEPRODUCT";
-    NewLine.Parameter    = "--item";
-    NewLine.Description    = "Product ID";
-    NewLine.Region     = "Product management";
-    NewLine.MethodDescription   = "Deletes a previously created product
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteProduct";
+    NewLine.МетодПоиска = "DELETEPRODUCT";
+    NewLine.Параметр    = "--item";
+    NewLine.Описание    = "Product ID";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Deletes a previously created product
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1374,25 +1374,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteProduct";
-    NewLine.SearchMethod = "DELETEPRODUCT";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteProduct";
+    NewLine.МетодПоиска = "DELETEPRODUCT";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GroupProducts";
-    NewLine.SearchMethod = "GROUPPRODUCTS";
-    NewLine.Parameter    = "--items";
-    NewLine.Description    = "Array of product IDs";
-    NewLine.Region     = "Product management";
-    NewLine.MethodDescription   = "Groups products based on similar sets of properties
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GroupProducts";
+    NewLine.МетодПоиска = "GROUPPRODUCTS";
+    NewLine.Параметр    = "--items";
+    NewLine.Описание    = "Array of product IDs";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Groups products based on similar sets of properties
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1404,35 +1404,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GroupProducts";
-    NewLine.SearchMethod = "GROUPPRODUCTS";
-    NewLine.Parameter    = "--sellgroup";
-    NewLine.Description    = "ID of the existing group, if needed (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GroupProducts";
+    NewLine.МетодПоиска = "GROUPPRODUCTS";
+    NewLine.Параметр    = "--sellgroup";
+    NewLine.Описание    = "ID of the existing group, if needed (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GroupProducts";
-    NewLine.SearchMethod = "GROUPPRODUCTS";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GroupProducts";
+    NewLine.МетодПоиска = "GROUPPRODUCTS";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetSelectionList";
-    NewLine.SearchMethod = "GETSELECTIONLIST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
-    NewLine.MethodDescription   = "Gets the list of product selections
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetSelectionList";
+    NewLine.МетодПоиска = "GETSELECTIONLIST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
+    NewLine.ОписаниеМетода   = "Gets the list of product selections
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1444,15 +1444,15 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetSelectionsByID";
-    NewLine.SearchMethod = "GETSELECTIONSBYID";
-    NewLine.Parameter    = "--sels";
-    NewLine.Description    = "Selection IDs";
-    NewLine.Region     = "Product selection management";
-    NewLine.MethodDescription   = "Gets the list of selections by array of IDs
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetSelectionsByID";
+    NewLine.МетодПоиска = "GETSELECTIONSBYID";
+    NewLine.Параметр    = "--sels";
+    NewLine.Описание    = "Selection IDs";
+    NewLine.Область     = "Product selection management";
+    NewLine.ОписаниеМетода   = "Gets the list of selections by array of IDs
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1464,25 +1464,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetSelectionsByID";
-    NewLine.SearchMethod = "GETSELECTIONSBYID";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetSelectionsByID";
+    NewLine.МетодПоиска = "GETSELECTIONSBYID";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateProductCollection";
-    NewLine.SearchMethod = "CREATEPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Selection name";
-    NewLine.Region     = "Product selection management";
-    NewLine.MethodDescription   = "Creates an empty product selection
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateProductCollection";
+    NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Selection name";
+    NewLine.Область     = "Product selection management";
+    NewLine.ОписаниеМетода   = "Creates an empty product selection
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1494,55 +1494,55 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateProductCollection";
-    NewLine.SearchMethod = "CREATEPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--picture";
-    NewLine.Description    = "Image file";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateProductCollection";
+    NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--picture";
+    NewLine.Описание    = "Image file";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateProductCollection";
-    NewLine.SearchMethod = "CREATEPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--main";
-    NewLine.Description    = "Main (optional, def. val. - False)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateProductCollection";
+    NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--main";
+    NewLine.Описание    = "Main (optional, def. val. - No)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateProductCollection";
-    NewLine.SearchMethod = "CREATEPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--hidden";
-    NewLine.Description    = "Hidden (optional, def. val. - False)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateProductCollection";
+    NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--hidden";
+    NewLine.Описание    = "Hidden (optional, def. val. - No)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateProductCollection";
-    NewLine.SearchMethod = "CREATEPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateProductCollection";
+    NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductCollection";
-    NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "New selection name";
-    NewLine.Region     = "Product selection management";
-    NewLine.MethodDescription   = "Edits the properties of a product selection
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductCollection";
+    NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "New selection name";
+    NewLine.Область     = "Product selection management";
+    NewLine.ОписаниеМетода   = "Edits the properties of a product selection
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1554,65 +1554,65 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductCollection";
-    NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--sel";
-    NewLine.Description    = "Selection ID";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductCollection";
+    NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Selection ID";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductCollection";
-    NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--picture";
-    NewLine.Description    = "New selection image (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductCollection";
+    NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--picture";
+    NewLine.Описание    = "New selection image (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductCollection";
-    NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--main";
-    NewLine.Description    = "Main (optional, def. val. - False)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductCollection";
+    NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--main";
+    NewLine.Описание    = "Main (optional, def. val. - No)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductCollection";
-    NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--hidden";
-    NewLine.Description    = "Hidden (optional, def. val. - False)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductCollection";
+    NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--hidden";
+    NewLine.Описание    = "Hidden (optional, def. val. - No)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductCollection";
-    NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductCollection";
+    NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProductToSelection";
-    NewLine.SearchMethod = "ADDPRODUCTTOSELECTION";
-    NewLine.Parameter    = "--items";
-    NewLine.Description    = "Array of products or product";
-    NewLine.Region     = "Product selection management";
-    NewLine.MethodDescription   = "Adds a product to the selection
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProductToSelection";
+    NewLine.МетодПоиска = "ADDPRODUCTTOSELECTION";
+    NewLine.Параметр    = "--items";
+    NewLine.Описание    = "Array of products or product";
+    NewLine.Область     = "Product selection management";
+    NewLine.ОписаниеМетода   = "Adds a product to the selection
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1624,35 +1624,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProductToSelection";
-    NewLine.SearchMethod = "ADDPRODUCTTOSELECTION";
-    NewLine.Parameter    = "--sel";
-    NewLine.Description    = "Selection ID";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProductToSelection";
+    NewLine.МетодПоиска = "ADDPRODUCTTOSELECTION";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Selection ID";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProductToSelection";
-    NewLine.SearchMethod = "ADDPRODUCTTOSELECTION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProductToSelection";
+    NewLine.МетодПоиска = "ADDPRODUCTTOSELECTION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "RemoveProductFromSelection";
-    NewLine.SearchMethod = "REMOVEPRODUCTFROMSELECTION";
-    NewLine.Parameter    = "--item";
-    NewLine.Description    = "Product ID";
-    NewLine.Region     = "Product selection management";
-    NewLine.MethodDescription   = "Removes a previously added product from the selection
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "RemoveProductFromSelection";
+    NewLine.МетодПоиска = "REMOVEPRODUCTFROMSELECTION";
+    NewLine.Параметр    = "--item";
+    NewLine.Описание    = "Product ID";
+    NewLine.Область     = "Product selection management";
+    NewLine.ОписаниеМетода   = "Removes a previously added product from the selection
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1664,35 +1664,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "RemoveProductFromSelection";
-    NewLine.SearchMethod = "REMOVEPRODUCTFROMSELECTION";
-    NewLine.Parameter    = "--sel";
-    NewLine.Description    = "Selection ID";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "RemoveProductFromSelection";
+    NewLine.МетодПоиска = "REMOVEPRODUCTFROMSELECTION";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Selection ID";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "RemoveProductFromSelection";
-    NewLine.SearchMethod = "REMOVEPRODUCTFROMSELECTION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "RemoveProductFromSelection";
+    NewLine.МетодПоиска = "REMOVEPRODUCTFROMSELECTION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteSelection";
-    NewLine.SearchMethod = "DELETESELECTION";
-    NewLine.Parameter    = "--sel";
-    NewLine.Description    = "Selection ID";
-    NewLine.Region     = "Product selection management";
-    NewLine.MethodDescription   = "Deletes the selection by ID
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteSelection";
+    NewLine.МетодПоиска = "DELETESELECTION";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Selection ID";
+    NewLine.Область     = "Product selection management";
+    NewLine.ОписаниеМетода   = "Deletes the selection by ID
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1704,25 +1704,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteSelection";
-    NewLine.SearchMethod = "DELETESELECTION";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product selection management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteSelection";
+    NewLine.МетодПоиска = "DELETESELECTION";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product selection management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetPropertyList";
-    NewLine.SearchMethod = "GETPROPERTYLIST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product properties management";
-    NewLine.MethodDescription   = "Gets the list of properties of group products
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetPropertyList";
+    NewLine.МетодПоиска = "GETPROPERTYLIST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product properties management";
+    NewLine.ОписаниеМетода   = "Gets the list of properties of group products
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1734,15 +1734,15 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateProductProperty";
-    NewLine.SearchMethod = "CREATEPRODUCTPROPERTY";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "Property name";
-    NewLine.Region     = "Product properties management";
-    NewLine.MethodDescription   = "Creates a new property for use in products
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateProductProperty";
+    NewLine.МетодПоиска = "CREATEPRODUCTPROPERTY";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Property name";
+    NewLine.Область     = "Product properties management";
+    NewLine.ОписаниеМетода   = "Creates a new property for use in products
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1754,25 +1754,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "CreateProductProperty";
-    NewLine.SearchMethod = "CREATEPRODUCTPROPERTY";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "CreateProductProperty";
+    NewLine.МетодПоиска = "CREATEPRODUCTPROPERTY";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductProperty";
-    NewLine.SearchMethod = "EDITPRODUCTPROPERTY";
-    NewLine.Parameter    = "--title";
-    NewLine.Description    = "New name";
-    NewLine.Region     = "Product properties management";
-    NewLine.MethodDescription   = "Edits the existing product property
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductProperty";
+    NewLine.МетодПоиска = "EDITPRODUCTPROPERTY";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "New name";
+    NewLine.Область     = "Product properties management";
+    NewLine.ОписаниеМетода   = "Edits the existing product property
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1784,35 +1784,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductProperty";
-    NewLine.SearchMethod = "EDITPRODUCTPROPERTY";
-    NewLine.Parameter    = "--prop";
-    NewLine.Description    = "Property ID";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductProperty";
+    NewLine.МетодПоиска = "EDITPRODUCTPROPERTY";
+    NewLine.Параметр    = "--prop";
+    NewLine.Описание    = "Property ID";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductProperty";
-    NewLine.SearchMethod = "EDITPRODUCTPROPERTY";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductProperty";
+    NewLine.МетодПоиска = "EDITPRODUCTPROPERTY";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteProductProperty";
-    NewLine.SearchMethod = "DELETEPRODUCTPROPERTY";
-    NewLine.Parameter    = "--prop";
-    NewLine.Description    = "Property ID";
-    NewLine.Region     = "Product properties management";
-    NewLine.MethodDescription   = "Deletes the existing product property
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteProductProperty";
+    NewLine.МетодПоиска = "DELETEPRODUCTPROPERTY";
+    NewLine.Параметр    = "--prop";
+    NewLine.Описание    = "Property ID";
+    NewLine.Область     = "Product properties management";
+    NewLine.ОписаниеМетода   = "Deletes the existing product property
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1824,25 +1824,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteProductProperty";
-    NewLine.SearchMethod = "DELETEPRODUCTPROPERTY";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteProductProperty";
+    NewLine.МетодПоиска = "DELETEPRODUCTPROPERTY";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProductPropertyVariant";
-    NewLine.SearchMethod = "ADDPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--value";
-    NewLine.Description    = "Property value";
-    NewLine.Region     = "Product properties management";
-    NewLine.MethodDescription   = "Adds a variant for an existing property
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProductPropertyVariant";
+    NewLine.МетодПоиска = "ADDPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--value";
+    NewLine.Описание    = "Property value";
+    NewLine.Область     = "Product properties management";
+    NewLine.ОписаниеМетода   = "Adds a variant for an existing property
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1854,35 +1854,35 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProductPropertyVariant";
-    NewLine.SearchMethod = "ADDPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--prop";
-    NewLine.Description    = "Property ID where the variant is added";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProductPropertyVariant";
+    NewLine.МетодПоиска = "ADDPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--prop";
+    NewLine.Описание    = "Property ID where the variant is added";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "AddProductPropertyVariant";
-    NewLine.SearchMethod = "ADDPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "AddProductPropertyVariant";
+    NewLine.МетодПоиска = "ADDPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductPropertyVariant";
-    NewLine.SearchMethod = "EDITPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--value";
-    NewLine.Description    = "New property value";
-    NewLine.Region     = "Product properties management";
-    NewLine.MethodDescription   = "Edits the value of an existing product property variant
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductPropertyVariant";
+    NewLine.МетодПоиска = "EDITPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--value";
+    NewLine.Описание    = "New property value";
+    NewLine.Область     = "Product properties management";
+    NewLine.ОписаниеМетода   = "Edits the value of an existing product property variant
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1894,45 +1894,45 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductPropertyVariant";
-    NewLine.SearchMethod = "EDITPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--prop";
-    NewLine.Description    = "Property ID";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductPropertyVariant";
+    NewLine.МетодПоиска = "EDITPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--prop";
+    NewLine.Описание    = "Property ID";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductPropertyVariant";
-    NewLine.SearchMethod = "EDITPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--option";
-    NewLine.Description    = "Variant ID";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductPropertyVariant";
+    NewLine.МетодПоиска = "EDITPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--option";
+    NewLine.Описание    = "Variant ID";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "EditProductPropertyVariant";
-    NewLine.SearchMethod = "EDITPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "EditProductPropertyVariant";
+    NewLine.МетодПоиска = "EDITPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteProductPropertyVariant";
-    NewLine.SearchMethod = "DELETEPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--option";
-    NewLine.Description    = "Variant ID";
-    NewLine.Region     = "Product properties management";
-    NewLine.MethodDescription   = "Deletes the previously created product property variant
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteProductPropertyVariant";
+    NewLine.МетодПоиска = "DELETEPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--option";
+    NewLine.Описание    = "Variant ID";
+    NewLine.Область     = "Product properties management";
+    NewLine.ОписаниеМетода   = "Deletes the previously created product property variant
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1944,25 +1944,25 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "DeleteProductPropertyVariant";
-    NewLine.SearchMethod = "DELETEPRODUCTPROPERTYVARIANT";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Product properties management";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "DeleteProductPropertyVariant";
+    NewLine.МетодПоиска = "DELETEPRODUCTPROPERTYVARIANT";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Product properties management";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "GetOrderList";
-    NewLine.SearchMethod = "GETORDERLIST";
-    NewLine.Parameter    = "--auth";
-    NewLine.Description    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
-    NewLine.Region     = "Order management";
-    NewLine.MethodDescription   = "Returns the community's order list
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetOrderList";
+    NewLine.МетодПоиска = "GETORDERLIST";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Область     = "Order management";
+    NewLine.ОписаниеМетода   = "Returns the community's order list
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
@@ -1974,16 +1974,16 @@
     |";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "vk";
-    NewLine.Module      = "OPI_VK";
-    NewLine.Method       = "FormKeyboard";
-    NewLine.SearchMethod = "FORMKEYBOARD";
-    NewLine.Parameter    = "--buttons";
-    NewLine.Description    = "Array of button titles";
-    NewLine.Region     = "Others";
-    NewLine.MethodDescription   = "Forms a keyboard from an array of buttons";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "FormKeyboard";
+    NewLine.МетодПоиска = "FORMKEYBOARD";
+    NewLine.Параметр    = "--buttons";
+    NewLine.Описание    = "Array of button titles";
+    NewLine.Область     = "Others";
+    NewLine.ОписаниеМетода   = "Forms a keyboard from an array of buttons";
 
-    Return TableСоwithтаinа;
+    Return CompositionTable;
 EndFunction
 
