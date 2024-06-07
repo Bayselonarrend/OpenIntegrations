@@ -38,19 +38,19 @@
 
 #Region Public
 
-#Region BooksManagment
+#Region SpreadsheetsManagment
 
-// CreateBook
-// Creates a new book
+// Create spreadsheet
+// Creates a new spreadsheet
 // 
 // Parameters:
 // Token - String - Token - token
 // Name - String - Name - title
-// ArrayOfSheetNames - Array of String - Array of names to add new sheets to the book - sheets
+// ArrayOfSheetNames - Array of String - Array of names to add new sheets to the spreadsheet - sheets
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
-Function CreateBook(Val Token, Val Name, Val ArrayOfSheetNames) Export
+Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export
     
     OPI_TypeConversion.GetLine(Name);
     OPI_TypeConversion.GetCollection(ArrayOfSheetNames);
@@ -73,16 +73,16 @@ Function CreateBook(Val Token, Val Name, Val ArrayOfSheetNames) Export
 
 EndFunction
 
-// GetBook
-// Gets information about the book by ID
+// Get spreadsheet
+// Gets information about the spreadsheet by ID
 // 
 // Parameters:
 // Token - String - Token - token
-// Identifier - String - BookIdentifier - spreadsheet
+// Identifier - String - Spreadsheet identifier - spreadsheet
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
-Function GetBook(Val Token, Val Identifier) Export
+Function GetSpreadsheet(Val Token, Val Identifier) Export
 
     OPI_TypeConversion.GetLine(Identifier); 
     
@@ -95,23 +95,23 @@ Function GetBook(Val Token, Val Identifier) Export
 
 EndFunction
 
-// ChangeBookName
-// Changes the name of the existing book
+// Change spreadsheet name
+// Changes the name of the existing spreadsheet
 // 
 // Parameters:
 // Token - String - Token - token
-// Book - String - BookID - spreadsheet
+// Spreadsheet - String - SpreadsheetID - spreadsheet
 // Name - String - New name - title
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
-Function EditBookTitle(Val Token, Val Book, Val Name) Export
+Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export
     
-    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Spreadsheet);
     OPI_TypeConversion.GetLine(Name);
     
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + ":batchUpdate";
+    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Spreadsheet + ":batchUpdate";
     
     Change = New Structure("title", Name);
     ChangeRequest = New Structure("properties,fields", Change, "title");
@@ -133,22 +133,22 @@ EndFunction
 #Region WorkingWithSheets
 
 // AddSheet
-// Adds a new sheet to the book
+// Adds a new sheet to the spreadsheet
 // 
 // 
 // Parameters:
 // Token - String - Token - token
-// Book - String - BookIdentifier - spreadsheet
+// Spreadsheet - String - Spreadsheet identifier - spreadsheet
 // Name - String - NewSheetName - title
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
-Function AddSheet(Val Token, Val Book, Val Name) Export
+Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export
     
-    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Spreadsheet);
         
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + ":batchUpdate";
+    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Spreadsheet + ":batchUpdate";
     Sheet = CreateSheet(Name);
     
     Requests = New Array;
@@ -164,22 +164,22 @@ Function AddSheet(Val Token, Val Book, Val Name) Export
 EndFunction
 
 // DeleteSheet
-// Deletes a sheet from the book
+// Deletes a sheet from the spreadsheet
 // 
 // Parameters:
 // Token - String - Token - token
-// Book - String - BookIdentifier - spreadsheet
+// Spreadsheet - String - Spreadsheet identifier - spreadsheet
 // Sheet - String - IdentifierOfSheetToDelete - sheet
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
-Function DeleteSheet(Val Token, Val Book, Val Sheet) Export
+Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export
     
-    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Spreadsheet);
     OPI_TypeConversion.GetLine(Sheet);
         
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + ":batchUpdate";
+    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Spreadsheet + ":batchUpdate";
     
     Requests = New Array;
     Sheet = New Structure("sheetId" , Sheet);
@@ -195,12 +195,12 @@ Function DeleteSheet(Val Token, Val Book, Val Sheet) Export
 EndFunction
 
 // CopySheet
-// Copies a sheet from one book to another
+// Copies a sheet from one spreadsheet to another
 // 
 // Parameters:
 // Token - String - Token - token
-// From - String - SourceBookID - from
-// Target - String - DestinationBookID - to
+// From - String - Source spreadsheet ID - from
+// Target - String - Destination spreadsheet ID - to
 // Sheet - String - CopiedSheetID - sheet
 // 
 // Returns:
@@ -234,7 +234,7 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token
-// Book - String - BookID - spreadsheet 
+// Spreadsheet - String - SpreadsheetID - spreadsheet 
 // ValueMapping - Map Of KeyAndValue - Fill data where the key is the cell name like A1 - data
 // Sheet - String - Sheet name (first sheet by default) - sheetname
 // MajorDimension - String - Main dimension when filling the array range - dim
@@ -242,12 +242,12 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
 Function SetCellValues(Val Token
-    , Val Book
+    , Val Spreadsheet
     , Val ValueMapping
     , Val Sheet = ""
     , Val MajorDimension = "COLUMNS") Export
     
-    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Spreadsheet);
     OPI_TypeConversion.GetCollection(ValueMapping);
     
     If Not TypeOf(ValueMapping) = Type("Structure")
@@ -256,7 +256,7 @@ Function SetCellValues(Val Token
     EndIf;
     
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchUpdate";
+    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Spreadsheet + "/values:batchUpdate";
     DataArray = FormCellDataArray(ValueMapping, MajorDimension, Sheet);
 
     Parameters = New Structure("data,valueInputOption", DataArray, "USER_ENTERED");
@@ -271,19 +271,19 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token
-// Book - String - BookID - spreadsheet
+// Spreadsheet - String - SpreadsheetID - spreadsheet
 // CellsArray - Array of String - Array of cells like A1 to be cleared - cells
 // Sheet - String - Sheet name (first sheet by default) - sheetname
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
-Function ClearCells(Val Token, Val Book, Val CellsArray, Val Sheet = "") Export
+Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export
     
-    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Spreadsheet);
     OPI_TypeConversion.GetCollection(CellsArray);
     
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchClear";
+    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Spreadsheet + "/values:batchClear";
     
     FormCellNameArray(CellsArray, Sheet);
         
@@ -299,18 +299,18 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token
-// Book - String - BookID - spreadsheet
-// CellsArray - Array of String - Array of A1-type cells to get (whole sheet if not filled) - cells
+// Spreadsheet - String - SpreadsheetID - spreadsheet
+// CellsArray - Array of String - Array of A1 type cells to get (whole sheet if not filled) - cells
 // Sheet - String - Sheet name (first sheet by default) - sheetname
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
-Function GetCellValues(Val Token, Val Book, Val CellsArray = "", Val Sheet = "") Export
+Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Sheet = "") Export
     
-    OPI_TypeConversion.GetLine(Book);
+    OPI_TypeConversion.GetLine(Spreadsheet);
       
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Book + "/values:batchGet";
+    URL = "https://sheets.googleapis.com/v4/spreadsheets/" + Spreadsheet + "/values:batchGet";
   
     If ValueIsFilled(CellsArray) Then
         OPI_TypeConversion.GetCollection(CellsArray);  

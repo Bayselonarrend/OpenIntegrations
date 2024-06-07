@@ -13,84 +13,84 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "CreateBook";
-    NewLine.МетодПоиска = "CREATEBOOK";
+    NewLine.Метод       = "CreateSpreadsheet";
+    NewLine.МетодПоиска = "CREATESPREADSHEET";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Books managment";
-    NewLine.ОписаниеМетода   = "Creates a new book";
+    NewLine.Область     = "Spreadsheets managment";
+    NewLine.ОписаниеМетода   = "Creates a new spreadsheet";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "CreateBook";
-    NewLine.МетодПоиска = "CREATEBOOK";
+    NewLine.Метод       = "CreateSpreadsheet";
+    NewLine.МетодПоиска = "CREATESPREADSHEET";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "Name";
-    NewLine.Область     = "Books managment";
+    NewLine.Область     = "Spreadsheets managment";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "CreateBook";
-    NewLine.МетодПоиска = "CREATEBOOK";
+    NewLine.Метод       = "CreateSpreadsheet";
+    NewLine.МетодПоиска = "CREATESPREADSHEET";
     NewLine.Параметр    = "--sheets";
-    NewLine.Описание    = "Array of names to add new sheets to the book";
-    NewLine.Область     = "Books managment";
+    NewLine.Описание    = "Array of names to add new sheets to the spreadsheet";
+    NewLine.Область     = "Spreadsheets managment";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "GetBook";
-    NewLine.МетодПоиска = "GETBOOK";
+    NewLine.Метод       = "GetSpreadsheet";
+    NewLine.МетодПоиска = "GETSPREADSHEET";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Books managment";
-    NewLine.ОписаниеМетода   = "Gets information about the book by ID";
+    NewLine.Область     = "Spreadsheets managment";
+    NewLine.ОписаниеМетода   = "Gets information about the spreadsheet by ID";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "GetBook";
-    NewLine.МетодПоиска = "GETBOOK";
+    NewLine.Метод       = "GetSpreadsheet";
+    NewLine.МетодПоиска = "GETSPREADSHEET";
     NewLine.Параметр    = "--spreadsheet";
-    NewLine.Описание    = "BookIdentifier";
-    NewLine.Область     = "Books managment";
+    NewLine.Описание    = "Spreadsheet identifier";
+    NewLine.Область     = "Spreadsheets managment";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "EditBookTitle";
-    NewLine.МетодПоиска = "EDITBOOKTITLE";
+    NewLine.Метод       = "EditSpreadsheetTitle";
+    NewLine.МетодПоиска = "EDITSPREADSHEETTITLE";
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
-    NewLine.Область     = "Books managment";
-    NewLine.ОписаниеМетода   = "Changes the name of the existing book";
+    NewLine.Область     = "Spreadsheets managment";
+    NewLine.ОписаниеМетода   = "Changes the name of the existing spreadsheet";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "EditBookTitle";
-    NewLine.МетодПоиска = "EDITBOOKTITLE";
+    NewLine.Метод       = "EditSpreadsheetTitle";
+    NewLine.МетодПоиска = "EDITSPREADSHEETTITLE";
     NewLine.Параметр    = "--spreadsheet";
-    NewLine.Описание    = "BookID";
-    NewLine.Область     = "Books managment";
+    NewLine.Описание    = "SpreadsheetID";
+    NewLine.Область     = "Spreadsheets managment";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gsheets";
     NewLine.Модуль      = "OPI_GoogleSheets";
-    NewLine.Метод       = "EditBookTitle";
-    NewLine.МетодПоиска = "EDITBOOKTITLE";
+    NewLine.Метод       = "EditSpreadsheetTitle";
+    NewLine.МетодПоиска = "EDITSPREADSHEETTITLE";
     NewLine.Параметр    = "--title";
     NewLine.Описание    = "New name";
-    NewLine.Область     = "Books managment";
+    NewLine.Область     = "Spreadsheets managment";
 
 
     NewLine = CompositionTable.Add();
@@ -101,7 +101,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Working with sheets";
-    NewLine.ОписаниеМетода   = "Adds a new sheet to the book";
+    NewLine.ОписаниеМетода   = "Adds a new sheet to the spreadsheet";
 
 
     NewLine = CompositionTable.Add();
@@ -110,7 +110,7 @@
     NewLine.Метод       = "AddSheet";
     NewLine.МетодПоиска = "ADDSHEET";
     NewLine.Параметр    = "--spreadsheet";
-    NewLine.Описание    = "BookIdentifier";
+    NewLine.Описание    = "Spreadsheet identifier";
     NewLine.Область     = "Working with sheets";
 
 
@@ -132,7 +132,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Working with sheets";
-    NewLine.ОписаниеМетода   = "Deletes a sheet from the book";
+    NewLine.ОписаниеМетода   = "Deletes a sheet from the spreadsheet";
 
 
     NewLine = CompositionTable.Add();
@@ -141,7 +141,7 @@
     NewLine.Метод       = "DeleteSheet";
     NewLine.МетодПоиска = "DELETESHEET";
     NewLine.Параметр    = "--spreadsheet";
-    NewLine.Описание    = "BookIdentifier";
+    NewLine.Описание    = "Spreadsheet identifier";
     NewLine.Область     = "Working with sheets";
 
 
@@ -163,7 +163,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Working with sheets";
-    NewLine.ОписаниеМетода   = "Copies a sheet from one book to another";
+    NewLine.ОписаниеМетода   = "Copies a sheet from one spreadsheet to another";
 
 
     NewLine = CompositionTable.Add();
@@ -172,7 +172,7 @@
     NewLine.Метод       = "CopySheet";
     NewLine.МетодПоиска = "COPYSHEET";
     NewLine.Параметр    = "--from";
-    NewLine.Описание    = "SourceBookID";
+    NewLine.Описание    = "Source spreadsheet ID";
     NewLine.Область     = "Working with sheets";
 
 
@@ -182,7 +182,7 @@
     NewLine.Метод       = "CopySheet";
     NewLine.МетодПоиска = "COPYSHEET";
     NewLine.Параметр    = "--to";
-    NewLine.Описание    = "DestinationBookID";
+    NewLine.Описание    = "Destination spreadsheet ID";
     NewLine.Область     = "Working with sheets";
 
 
@@ -221,7 +221,7 @@
     NewLine.Метод       = "SetCellValues";
     NewLine.МетодПоиска = "SETCELLVALUES";
     NewLine.Параметр    = "--spreadsheet";
-    NewLine.Описание    = "BookID";
+    NewLine.Описание    = "SpreadsheetID";
     NewLine.Область     = "Data managment";
 
 
@@ -272,7 +272,7 @@
     NewLine.Метод       = "ClearCells";
     NewLine.МетодПоиска = "CLEARCELLS";
     NewLine.Параметр    = "--spreadsheet";
-    NewLine.Описание    = "BookID";
+    NewLine.Описание    = "SpreadsheetID";
     NewLine.Область     = "Data managment";
 
 
@@ -313,7 +313,7 @@
     NewLine.Метод       = "GetCellValues";
     NewLine.МетодПоиска = "GETCELLVALUES";
     NewLine.Параметр    = "--spreadsheet";
-    NewLine.Описание    = "BookID";
+    NewLine.Описание    = "SpreadsheetID";
     NewLine.Область     = "Data managment";
 
 
@@ -322,8 +322,8 @@
     NewLine.Модуль      = "OPI_GoogleSheets";
     NewLine.Метод       = "GetCellValues";
     NewLine.МетодПоиска = "GETCELLVALUES";
-    NewLine.Параметр    = "--type cells to get (whole sheet if not filled)";
-    NewLine.Описание    = "cells (optional, def. val. - Empty)";
+    NewLine.Параметр    = "--cells";
+    NewLine.Описание    = "Array of A1 type cells to get (whole sheet if not filled) (optional, def. val. - Empty)";
     NewLine.Область     = "Data managment";
 
 
