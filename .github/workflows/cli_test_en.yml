@@ -2779,32 +2779,32 @@ jobs:
 
 
 
-      - name: Выполнить CreateBook
+      - name: Выполнить CreateSpreadsheet
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint gsheets CreateBook --debug --test \
+          ./oint gsheets CreateSpreadsheet --debug --test \
           --token "" \
           --title "Тест" \
           --sheets "" \
 
 
 
-      - name: Выполнить GetBook
+      - name: Выполнить GetSpreadsheet
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint gsheets GetBook --debug --test \
+          ./oint gsheets GetSpreadsheet --debug --test \
           --token "" \
           --spreadsheet "" \
 
 
 
-      - name: Выполнить EditBookTitle
+      - name: Выполнить EditSpreadsheetTitle
         if: ${{ cancelled() }} == false
         run: |
  
-          ./oint gsheets EditBookTitle --debug --test \
+          ./oint gsheets EditSpreadsheetTitle --debug --test \
           --token "" \
           --spreadsheet "" \
           --title "Тест" \
@@ -2877,7 +2877,7 @@ jobs:
           ./oint gsheets GetCellValues --debug --test \
           --token "" \
           --spreadsheet "" \
-          --type cells to get (whole sheet if not filled) "" \
+          --cells "" \
           --sheetname "" \
 
   Testing-dropbox:
