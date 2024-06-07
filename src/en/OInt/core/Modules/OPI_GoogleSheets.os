@@ -38,7 +38,7 @@
 
 #Region Public
 
-#Region BookWork
+#Region BooksManagment
 
 // CreateBook
 // Creates a new book
@@ -130,7 +130,7 @@ EndFunction
 
 #EndRegion
 
-#Region SheetWork
+#Region WorkingWithSheets
 
 // AddSheet
 // Adds a new sheet to the book
@@ -227,7 +227,7 @@ EndFunction
 
 #EndRegion
 
-#Region DataWork
+#Region DataManagment
 
 // SetCellValues
 // Sets sheet cell values
