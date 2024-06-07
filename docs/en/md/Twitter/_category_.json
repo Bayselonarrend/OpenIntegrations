@@ -1,8 +1,8 @@
-﻿{
- "label": "Twitter",
- "position": 4,
- "link": {
- "type": "doc",
- "id": "Twitter"
- }
+{
+"label": null,
+"position": 4,
+"link": {
+"type": "doc",
+"id": "Twitter"
+}
 }
