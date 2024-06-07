@@ -1,772 +1,772 @@
-﻿Function GetComposition() Export
-
-    TableСоwithтаinа = New ValueTable();
-    TableСоwithтаinа.Columns.Add("Library");
-    TableСоwithтаinа.Columns.Add("Module");
-    TableСоwithтаinа.Columns.Add("Method");
-    TableСоwithтаinа.Columns.Add("SearchMethod");
-    TableСоwithтаinа.Columns.Add("Parameter");
-    TableСоwithтаinа.Columns.Add("Description");
-    TableСоwithтаinа.Columns.Add("MethodDescription");
-    TableСоwithтаinа.Columns.Add("Region");
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetAuthorizationLink";
-    NewLine.SearchMethod = "GETAUTHORIZATIONLINK";
-    NewLine.Parameter    = "--appkey";
-    NewLine.Description    = "Application key";
-    NewLine.Region     = "Account and authorization";
-    NewLine.MethodDescription   = "Generates an authorization link for browser transition";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetToken";
-    NewLine.SearchMethod = "GETTOKEN";
-    NewLine.Parameter    = "--appkey";
-    NewLine.Description    = "Application key";
-    NewLine.Region     = "Account and authorization";
-    NewLine.MethodDescription   = "Gets token based on the code from the GetAuthorizationLink page";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetToken";
-    NewLine.SearchMethod = "GETTOKEN";
-    NewLine.Parameter    = "--appsecret";
-    NewLine.Description    = "Application secret";
-    NewLine.Region     = "Account and authorization";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetToken";
-    NewLine.SearchMethod = "GETTOKEN";
-    NewLine.Parameter    = "--code";
-    NewLine.Description    = "Code from the authorization page";
-    NewLine.Region     = "Account and authorization";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "RefreshToken";
-    NewLine.SearchMethod = "REFRESHTOKEN";
-    NewLine.Parameter    = "--appkey";
-    NewLine.Description    = "Application key";
-    NewLine.Region     = "Account and authorization";
-    NewLine.MethodDescription   = "Gets a new token based on the refresh token";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "RefreshToken";
-    NewLine.SearchMethod = "REFRESHTOKEN";
-    NewLine.Parameter    = "--appsecret";
-    NewLine.Description    = "Application secret";
-    NewLine.Region     = "Account and authorization";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "RefreshToken";
-    NewLine.SearchMethod = "REFRESHTOKEN";
-    NewLine.Parameter    = "--refresh";
-    NewLine.Description    = "Refresh token";
-    NewLine.Region     = "Account and authorization";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetAccountInformation";
-    NewLine.SearchMethod = "GETACCOUNTINFORMATION";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Account and authorization";
-    NewLine.MethodDescription   = "Gets account information";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetAccountInformation";
-    NewLine.SearchMethod = "GETACCOUNTINFORMATION";
-    NewLine.Parameter    = "--account";
-    NewLine.Description    = "Account ID. Current token account if not filled (optional, def. val. - Empty)";
-    NewLine.Region     = "Account and authorization";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetSpaceUsageData";
-    NewLine.SearchMethod = "GETSPACEUSAGEDATA";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Account and authorization";
-    NewLine.MethodDescription   = "Gets information on the amount of used disk space";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetObjectInformation";
-    NewLine.SearchMethod = "GETOBJECTINFORMATION";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets information about a file or directory";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetObjectInformation";
-    NewLine.SearchMethod = "GETOBJECTINFORMATION";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetObjectInformation";
-    NewLine.SearchMethod = "GETOBJECTINFORMATION";
-    NewLine.Parameter    = "--detail";
-    NewLine.Description    = "Adds additional information fields for media files (optional, def. val. - False)";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetListOfFolderFiles";
-    NewLine.SearchMethod = "GETLISTOFFOLDERFILES";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetListOfFolderFiles";
-    NewLine.SearchMethod = "GETLISTOFFOLDERFILES";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the directory. Optional if the cursor is specified (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetListOfFolderFiles";
-    NewLine.SearchMethod = "GETLISTOFFOLDERFILES";
-    NewLine.Parameter    = "--detail";
-    NewLine.Description    = "Adds additional information fields for media files (optional, def. val. - False)";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetListOfFolderFiles";
-    NewLine.SearchMethod = "GETLISTOFFOLDERFILES";
-    NewLine.Parameter    = "--cursor";
-    NewLine.Description    = "Cursor from the previous request to get the next set of files (optional, def. val. - Empty)";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetPreview";
-    NewLine.SearchMethod = "GETPREVIEW";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets PDF or HTML preview of the object (for documents only)";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetPreview";
-    NewLine.SearchMethod = "GETPREVIEW";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "UploadFile";
-    NewLine.SearchMethod = "UPLOADFILE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Uploads a file to the cloud drive";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "UploadFile";
-    NewLine.SearchMethod = "UPLOADFILE";
-    NewLine.Parameter    = "--file";
-    NewLine.Description    = "Data file for upload";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "UploadFile";
-    NewLine.SearchMethod = "UPLOADFILE";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Save path on Dropbox";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "UploadFile";
-    NewLine.SearchMethod = "UPLOADFILE";
-    NewLine.Parameter    = "--overwrite";
-    NewLine.Description    = "Overwrite file in case of path conflicts (optional, def. val. - False)";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "UploadFileByURL";
-    NewLine.SearchMethod = "UPLOADFILEBYURL";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Uploads a file to the cloud drive by fetching it from the specified URL";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "UploadFileByURL";
-    NewLine.SearchMethod = "UPLOADFILEBYURL";
-    NewLine.Parameter    = "--url";
-    NewLine.Description    = "URL source of the file";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "UploadFileByURL";
-    NewLine.SearchMethod = "UPLOADFILEBYURL";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Save path on Dropbox";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetUploadStatusByURL";
-    NewLine.SearchMethod = "GETUPLOADSTATUSBYURL";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets the upload status of the file by URL";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetUploadStatusByURL";
-    NewLine.SearchMethod = "GETUPLOADSTATUSBYURL";
-    NewLine.Parameter    = "--job";
-    NewLine.Description    = "ID of the asynchronous job from the UploadFileByURL response";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DeleteObject";
-    NewLine.SearchMethod = "DELETEOBJECT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Deletes an object from the cloud drive";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DeleteObject";
-    NewLine.SearchMethod = "DELETEOBJECT";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the object to delete";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DeleteObject";
-    NewLine.SearchMethod = "DELETEOBJECT";
-    NewLine.Parameter    = "--permanently";
-    NewLine.Description    = "Delete object without the possibility of recovery (optional, def. val. - False)";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CopyObject";
-    NewLine.SearchMethod = "COPYOBJECT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Copies a file or directory to the selected path";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CopyObject";
-    NewLine.SearchMethod = "COPYOBJECT";
-    NewLine.Parameter    = "--form";
-    NewLine.Description    = "Path to the original object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CopyObject";
-    NewLine.SearchMethod = "COPYOBJECT";
-    NewLine.Parameter    = "--to";
-    NewLine.Description    = "Target path for the new object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "MoveObject";
-    NewLine.SearchMethod = "MOVEOBJECT";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Moves an object to the selected path";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "MoveObject";
-    NewLine.SearchMethod = "MOVEOBJECT";
-    NewLine.Parameter    = "--form";
-    NewLine.Description    = "Path to the original object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "MoveObject";
-    NewLine.SearchMethod = "MOVEOBJECT";
-    NewLine.Parameter    = "--to";
-    NewLine.Description    = "Target path for the new object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CreateFolder";
-    NewLine.SearchMethod = "CREATEFOLDER";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Creates an empty directory at the selected path";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CreateFolder";
-    NewLine.SearchMethod = "CREATEFOLDER";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Target path for creating the directory";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DownloadFile";
-    NewLine.SearchMethod = "DOWNLOADFILE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Downloads a file by the specified path or ID";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DownloadFile";
-    NewLine.SearchMethod = "DOWNLOADFILE";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path or ID of the file";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DownloadFolder";
-    NewLine.SearchMethod = "DOWNLOADFOLDER";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Downloads a zip archive with the contents of the specified directory";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DownloadFolder";
-    NewLine.SearchMethod = "DOWNLOADFOLDER";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path or ID of the directory";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetObjectVersionList";
-    NewLine.SearchMethod = "GETOBJECTVERSIONLIST";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Gets the list of versions (revisions) of the object";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetObjectVersionList";
-    NewLine.SearchMethod = "GETOBJECTVERSIONLIST";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetObjectVersionList";
-    NewLine.SearchMethod = "GETOBJECTVERSIONLIST";
-    NewLine.Parameter    = "--amount";
-    NewLine.Description    = "Number of the latest versions of the object to display (optional, def. val. - 10)";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "RestoreObjectToVersion";
-    NewLine.SearchMethod = "RESTOREOBJECTTOVERSION";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "File and directory management";
-    NewLine.MethodDescription   = "Restores object state to required version (revision)";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "RestoreObjectToVersion";
-    NewLine.SearchMethod = "RESTOREOBJECTTOVERSION";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the object";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "RestoreObjectToVersion";
-    NewLine.SearchMethod = "RESTOREOBJECTTOVERSION";
-    NewLine.Parameter    = "--rev";
-    NewLine.Description    = "ID of the version (revision) for restoration";
-    NewLine.Region     = "File and directory management";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetTagList";
-    NewLine.SearchMethod = "GETTAGLIST";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Tags managment";
-    NewLine.MethodDescription   = "Gets the list of tags of the selected files";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetTagList";
-    NewLine.SearchMethod = "GETTAGLIST";
-    NewLine.Parameter    = "--paths";
-    NewLine.Description    = "Path or set of paths to the files";
-    NewLine.Region     = "Tags managment";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddTag";
-    NewLine.SearchMethod = "ADDTAG";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Tags managment";
-    NewLine.MethodDescription   = "Adds a new text tag to a file or directory";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddTag";
-    NewLine.SearchMethod = "ADDTAG";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the object for which the tag needs to be created";
-    NewLine.Region     = "Tags managment";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddTag";
-    NewLine.SearchMethod = "ADDTAG";
-    NewLine.Parameter    = "--tag";
-    NewLine.Description    = "Tag text";
-    NewLine.Region     = "Tags managment";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DeleteTag";
-    NewLine.SearchMethod = "DELETETAG";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Tags managment";
-    NewLine.MethodDescription   = "Deletes the text tag of a file or directory";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DeleteTag";
-    NewLine.SearchMethod = "DELETETAG";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the object whose tag needs to be deleted";
-    NewLine.Region     = "Tags managment";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "DeleteTag";
-    NewLine.SearchMethod = "DELETETAG";
-    NewLine.Parameter    = "--tag";
-    NewLine.Description    = "Tag text";
-    NewLine.Region     = "Tags managment";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "PublishFolder";
-    NewLine.SearchMethod = "PUBLISHFOLDER";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Shared access settings";
-    NewLine.MethodDescription   = "Sets the directory to public access mode";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "PublishFolder";
-    NewLine.SearchMethod = "PUBLISHFOLDER";
-    NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to the target directory";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CancelFolderPublication";
-    NewLine.SearchMethod = "CANCELFOLDERPUBLICATION";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Shared access settings";
-    NewLine.MethodDescription   = "Cancels the public access mode for the directory";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CancelFolderPublication";
-    NewLine.SearchMethod = "CANCELFOLDERPUBLICATION";
-    NewLine.Parameter    = "--folder";
-    NewLine.Description    = "ID of the public catalog (shared folder ID)";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFile";
-    NewLine.SearchMethod = "ADDUSERSTOFILE";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Shared access settings";
-    NewLine.MethodDescription   = "Defines access to the file for an external user";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFile";
-    NewLine.SearchMethod = "ADDUSERSTOFILE";
-    NewLine.Parameter    = "--fileid";
-    NewLine.Description    = "ID of the file to be accessed";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFile";
-    NewLine.SearchMethod = "ADDUSERSTOFILE";
-    NewLine.Parameter    = "--emails";
-    NewLine.Description    = "List of email addresses of users being added";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFile";
-    NewLine.SearchMethod = "ADDUSERSTOFILE";
-    NewLine.Parameter    = "--readonly";
-    NewLine.Description    = "Prohibits file editing for the external user (optional, def. val. - True)";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFolder";
-    NewLine.SearchMethod = "ADDUSERSTOFOLDER";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Shared access settings";
-    NewLine.MethodDescription   = "Grants external users access to the directory";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFolder";
-    NewLine.SearchMethod = "ADDUSERSTOFOLDER";
-    NewLine.Parameter    = "--folder";
-    NewLine.Description    = "ID of the public catalog (shared folder ID)";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFolder";
-    NewLine.SearchMethod = "ADDUSERSTOFOLDER";
-    NewLine.Parameter    = "--emails";
-    NewLine.Description    = "List of email addresses of users being added";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "AddUsersToFolder";
-    NewLine.SearchMethod = "ADDUSERSTOFOLDER";
-    NewLine.Parameter    = "--readonly";
-    NewLine.Description    = "Prohibits file editing for the external user (optional, def. val. - True)";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetAsynchronousChangeStatus";
-    NewLine.SearchMethod = "GETASYNCHRONOUSCHANGESTATUS";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Shared access settings";
-    NewLine.MethodDescription   = "Gets the status of the asynchronous access change job";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "GetAsynchronousChangeStatus";
-    NewLine.SearchMethod = "GETASYNCHRONOUSCHANGESTATUS";
-    NewLine.Parameter    = "--job";
-    NewLine.Description    = "AsynchronousJobID";
-    NewLine.Region     = "Shared access settings";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CancelFilePublication";
-    NewLine.SearchMethod = "CANCELFILEPUBLICATION";
-    NewLine.Parameter    = "--token";
-    NewLine.Description    = "Token";
-    NewLine.Region     = "Shared access settings";
-    NewLine.MethodDescription   = "Prohibits access to the file for external users";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "dropbox";
-    NewLine.Module      = "OPI_Dropbox";
-    NewLine.Method       = "CancelFilePublication";
-    NewLine.SearchMethod = "CANCELFILEPUBLICATION";
-    NewLine.Parameter    = "--fileid";
-    NewLine.Description    = "ID of the file to be accessed";
-    NewLine.Region     = "Shared access settings";
-
-    Return TableСоwithтаinа;
+﻿Function ПолучитьСостав() Export
+
+    CompositionTable = New ValueTable();
+    CompositionTable.Columns.Add("Библиотека");
+    CompositionTable.Columns.Add("Модуль");
+    CompositionTable.Columns.Add("Метод");
+    CompositionTable.Columns.Add("МетодПоиска");
+    CompositionTable.Columns.Add("Параметр");
+    CompositionTable.Columns.Add("Описание");
+    CompositionTable.Columns.Add("ОписаниеМетода");
+    CompositionTable.Columns.Add("Область");
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetAuthorizationLink";
+    NewLine.МетодПоиска = "GETAUTHORIZATIONLINK";
+    NewLine.Параметр    = "--appkey";
+    NewLine.Описание    = "Application key";
+    NewLine.Область     = "Account and authorization";
+    NewLine.ОписаниеМетода   = "Generates an authorization link for browser transition";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetToken";
+    NewLine.МетодПоиска = "GETTOKEN";
+    NewLine.Параметр    = "--appkey";
+    NewLine.Описание    = "Application key";
+    NewLine.Область     = "Account and authorization";
+    NewLine.ОписаниеМетода   = "Gets token based on the code from the GetAuthorizationLink page";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetToken";
+    NewLine.МетодПоиска = "GETTOKEN";
+    NewLine.Параметр    = "--appsecret";
+    NewLine.Описание    = "Application secret";
+    NewLine.Область     = "Account and authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetToken";
+    NewLine.МетодПоиска = "GETTOKEN";
+    NewLine.Параметр    = "--code";
+    NewLine.Описание    = "Code from the authorization page";
+    NewLine.Область     = "Account and authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "RefreshToken";
+    NewLine.МетодПоиска = "REFRESHTOKEN";
+    NewLine.Параметр    = "--appkey";
+    NewLine.Описание    = "Application key";
+    NewLine.Область     = "Account and authorization";
+    NewLine.ОписаниеМетода   = "Gets a new token based on the refresh token";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "RefreshToken";
+    NewLine.МетодПоиска = "REFRESHTOKEN";
+    NewLine.Параметр    = "--appsecret";
+    NewLine.Описание    = "Application secret";
+    NewLine.Область     = "Account and authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "RefreshToken";
+    NewLine.МетодПоиска = "REFRESHTOKEN";
+    NewLine.Параметр    = "--refresh";
+    NewLine.Описание    = "Refresh token";
+    NewLine.Область     = "Account and authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetAccountInformation";
+    NewLine.МетодПоиска = "GETACCOUNTINFORMATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Account and authorization";
+    NewLine.ОписаниеМетода   = "Gets account information";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetAccountInformation";
+    NewLine.МетодПоиска = "GETACCOUNTINFORMATION";
+    NewLine.Параметр    = "--account";
+    NewLine.Описание    = "Account ID. Current token account if not filled (optional, def. val. - Empty)";
+    NewLine.Область     = "Account and authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetSpaceUsageData";
+    NewLine.МетодПоиска = "GETSPACEUSAGEDATA";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Account and authorization";
+    NewLine.ОписаниеМетода   = "Gets information on the amount of used disk space";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetObjectInformation";
+    NewLine.МетодПоиска = "GETOBJECTINFORMATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets information about a file or directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetObjectInformation";
+    NewLine.МетодПоиска = "GETOBJECTINFORMATION";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetObjectInformation";
+    NewLine.МетодПоиска = "GETOBJECTINFORMATION";
+    NewLine.Параметр    = "--detail";
+    NewLine.Описание    = "Adds additional information fields for media files (optional, def. val. - No)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetListOfFolderFiles";
+    NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetListOfFolderFiles";
+    NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the directory. Optional if the cursor is specified (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetListOfFolderFiles";
+    NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
+    NewLine.Параметр    = "--detail";
+    NewLine.Описание    = "Adds additional information fields for media files (optional, def. val. - No)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetListOfFolderFiles";
+    NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
+    NewLine.Параметр    = "--cursor";
+    NewLine.Описание    = "Cursor from the previous request to get the next set of files (optional, def. val. - Empty)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetPreview";
+    NewLine.МетодПоиска = "GETPREVIEW";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets PDF or HTML preview of the object (for documents only)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetPreview";
+    NewLine.МетодПоиска = "GETPREVIEW";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "UploadFile";
+    NewLine.МетодПоиска = "UPLOADFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Uploads a file to the cloud drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "UploadFile";
+    NewLine.МетодПоиска = "UPLOADFILE";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "Data file for upload";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "UploadFile";
+    NewLine.МетодПоиска = "UPLOADFILE";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Save path on Dropbox";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "UploadFile";
+    NewLine.МетодПоиска = "UPLOADFILE";
+    NewLine.Параметр    = "--overwrite";
+    NewLine.Описание    = "Overwrite file in case of path conflicts (optional, def. val. - No)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "UploadFileByURL";
+    NewLine.МетодПоиска = "UPLOADFILEBYURL";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Uploads a file to the cloud drive by fetching it from the specified URL";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "UploadFileByURL";
+    NewLine.МетодПоиска = "UPLOADFILEBYURL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL source of the file";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "UploadFileByURL";
+    NewLine.МетодПоиска = "UPLOADFILEBYURL";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Save path on Dropbox";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetUploadStatusByURL";
+    NewLine.МетодПоиска = "GETUPLOADSTATUSBYURL";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets the upload status of the file by URL";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetUploadStatusByURL";
+    NewLine.МетодПоиска = "GETUPLOADSTATUSBYURL";
+    NewLine.Параметр    = "--job";
+    NewLine.Описание    = "ID of the asynchronous job from the UploadFileByURL response";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Deletes an object from the cloud drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the object to delete";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DeleteObject";
+    NewLine.МетодПоиска = "DELETEOBJECT";
+    NewLine.Параметр    = "--permanently";
+    NewLine.Описание    = "Delete object without the possibility of recovery (optional, def. val. - No)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Copies a file or directory to the selected path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--form";
+    NewLine.Описание    = "Path to the original object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CopyObject";
+    NewLine.МетодПоиска = "COPYOBJECT";
+    NewLine.Параметр    = "--to";
+    NewLine.Описание    = "Target path for the new object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "MoveObject";
+    NewLine.МетодПоиска = "MOVEOBJECT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Moves an object to the selected path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "MoveObject";
+    NewLine.МетодПоиска = "MOVEOBJECT";
+    NewLine.Параметр    = "--form";
+    NewLine.Описание    = "Path to the original object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "MoveObject";
+    NewLine.МетодПоиска = "MOVEOBJECT";
+    NewLine.Параметр    = "--to";
+    NewLine.Описание    = "Target path for the new object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CreateFolder";
+    NewLine.МетодПоиска = "CREATEFOLDER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Creates an empty directory at the selected path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CreateFolder";
+    NewLine.МетодПоиска = "CREATEFOLDER";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Target path for creating the directory";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DownloadFile";
+    NewLine.МетодПоиска = "DOWNLOADFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Downloads a file by the specified path or ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DownloadFile";
+    NewLine.МетодПоиска = "DOWNLOADFILE";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path or ID of the file";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DownloadFolder";
+    NewLine.МетодПоиска = "DOWNLOADFOLDER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Downloads a zip archive with the contents of the specified directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DownloadFolder";
+    NewLine.МетодПоиска = "DOWNLOADFOLDER";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path or ID of the directory";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetObjectVersionList";
+    NewLine.МетодПоиска = "GETOBJECTVERSIONLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets the list of versions (revisions) of the object";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetObjectVersionList";
+    NewLine.МетодПоиска = "GETOBJECTVERSIONLIST";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetObjectVersionList";
+    NewLine.МетодПоиска = "GETOBJECTVERSIONLIST";
+    NewLine.Параметр    = "--amount";
+    NewLine.Описание    = "Number of the latest versions of the object to display (optional, def. val. - 10)";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "RestoreObjectToVersion";
+    NewLine.МетодПоиска = "RESTOREOBJECTTOVERSION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Restores object state to required version (revision)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "RestoreObjectToVersion";
+    NewLine.МетодПоиска = "RESTOREOBJECTTOVERSION";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the object";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "RestoreObjectToVersion";
+    NewLine.МетодПоиска = "RESTOREOBJECTTOVERSION";
+    NewLine.Параметр    = "--rev";
+    NewLine.Описание    = "ID of the version (revision) for restoration";
+    NewLine.Область     = "File and directory management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetTagList";
+    NewLine.МетодПоиска = "GETTAGLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Tags managment";
+    NewLine.ОписаниеМетода   = "Gets the list of tags of the selected files";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetTagList";
+    NewLine.МетодПоиска = "GETTAGLIST";
+    NewLine.Параметр    = "--paths";
+    NewLine.Описание    = "Path or set of paths to the files";
+    NewLine.Область     = "Tags managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddTag";
+    NewLine.МетодПоиска = "ADDTAG";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Tags managment";
+    NewLine.ОписаниеМетода   = "Adds a new text tag to a file or directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddTag";
+    NewLine.МетодПоиска = "ADDTAG";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the object for which the tag needs to be created";
+    NewLine.Область     = "Tags managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddTag";
+    NewLine.МетодПоиска = "ADDTAG";
+    NewLine.Параметр    = "--tag";
+    NewLine.Описание    = "Tag text";
+    NewLine.Область     = "Tags managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DeleteTag";
+    NewLine.МетодПоиска = "DELETETAG";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Tags managment";
+    NewLine.ОписаниеМетода   = "Deletes the text tag of a file or directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DeleteTag";
+    NewLine.МетодПоиска = "DELETETAG";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the object whose tag needs to be deleted";
+    NewLine.Область     = "Tags managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "DeleteTag";
+    NewLine.МетодПоиска = "DELETETAG";
+    NewLine.Параметр    = "--tag";
+    NewLine.Описание    = "Tag text";
+    NewLine.Область     = "Tags managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "PublishFolder";
+    NewLine.МетодПоиска = "PUBLISHFOLDER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Shared access settings";
+    NewLine.ОписаниеМетода   = "Sets the directory to public access mode";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "PublishFolder";
+    NewLine.МетодПоиска = "PUBLISHFOLDER";
+    NewLine.Параметр    = "--path";
+    NewLine.Описание    = "Path to the target directory";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CancelFolderPublication";
+    NewLine.МетодПоиска = "CANCELFOLDERPUBLICATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Shared access settings";
+    NewLine.ОписаниеМетода   = "Cancels the public access mode for the directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CancelFolderPublication";
+    NewLine.МетодПоиска = "CANCELFOLDERPUBLICATION";
+    NewLine.Параметр    = "--folder";
+    NewLine.Описание    = "ID of the public catalog (shared folder ID)";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFile";
+    NewLine.МетодПоиска = "ADDUSERSTOFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Shared access settings";
+    NewLine.ОписаниеМетода   = "Defines access to the file for an external user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFile";
+    NewLine.МетодПоиска = "ADDUSERSTOFILE";
+    NewLine.Параметр    = "--fileid";
+    NewLine.Описание    = "ID of the file to be accessed";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFile";
+    NewLine.МетодПоиска = "ADDUSERSTOFILE";
+    NewLine.Параметр    = "--emails";
+    NewLine.Описание    = "List of email addresses of users being added";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFile";
+    NewLine.МетодПоиска = "ADDUSERSTOFILE";
+    NewLine.Параметр    = "--readonly";
+    NewLine.Описание    = "Prohibits file editing for the external user (optional, def. val. - Да)";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFolder";
+    NewLine.МетодПоиска = "ADDUSERSTOFOLDER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Shared access settings";
+    NewLine.ОписаниеМетода   = "Grants external users access to the directory";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFolder";
+    NewLine.МетодПоиска = "ADDUSERSTOFOLDER";
+    NewLine.Параметр    = "--folder";
+    NewLine.Описание    = "ID of the public catalog (shared folder ID)";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFolder";
+    NewLine.МетодПоиска = "ADDUSERSTOFOLDER";
+    NewLine.Параметр    = "--emails";
+    NewLine.Описание    = "List of email addresses of users being added";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "AddUsersToFolder";
+    NewLine.МетодПоиска = "ADDUSERSTOFOLDER";
+    NewLine.Параметр    = "--readonly";
+    NewLine.Описание    = "Prohibits file editing for the external user (optional, def. val. - Да)";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetAsynchronousChangeStatus";
+    NewLine.МетодПоиска = "GETASYNCHRONOUSCHANGESTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Shared access settings";
+    NewLine.ОписаниеМетода   = "Gets the status of the asynchronous access change job";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "GetAsynchronousChangeStatus";
+    NewLine.МетодПоиска = "GETASYNCHRONOUSCHANGESTATUS";
+    NewLine.Параметр    = "--job";
+    NewLine.Описание    = "AsynchronousJobID";
+    NewLine.Область     = "Shared access settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CancelFilePublication";
+    NewLine.МетодПоиска = "CANCELFILEPUBLICATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Shared access settings";
+    NewLine.ОписаниеМетода   = "Prohibits access to the file for external users";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "dropbox";
+    NewLine.Модуль      = "OPI_Dropbox";
+    NewLine.Метод       = "CancelFilePublication";
+    NewLine.МетодПоиска = "CANCELFILEPUBLICATION";
+    NewLine.Параметр    = "--fileid";
+    NewLine.Описание    = "ID of the file to be accessed";
+    NewLine.Область     = "Shared access settings";
+
+    Return CompositionTable;
 EndFunction
 
