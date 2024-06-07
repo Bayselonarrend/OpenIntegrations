@@ -30,7 +30,7 @@ sidebar_position: 5
 
 ```sh title="CLI command example"
  
- oint vk CreateAlbum --title %title% --description %description% --auth "GetVKParameters()"
+ oint vk CreateAlbum --title %title% --description %description% --auth %auth%
 
 
 ```

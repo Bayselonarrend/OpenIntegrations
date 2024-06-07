@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# SendLink
+# Send link
  Sends a URL with a preview to a chat or channel
 
 

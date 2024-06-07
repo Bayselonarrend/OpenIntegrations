@@ -28,10 +28,10 @@ sidebar_position: 2
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
  Video = "https://openintegrations.dev/test_data/video.mp4"; // URL, Path or Binary Data
  
- AndVF = GetTempFileName("png"); 
- CopyFile(Image, AndVF);
+ TFN = GetTempFileName("png"); 
+ CopyFile(Image, TFN);
  
- ImageUpload = OPI_VK.UploadPhotoToServer(AndVF, Parameters)["response"][0];
+ ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
  VideoUpload = OPI_VK.UploadVideoToServer(Video, "NewVideo",,, Parameters);
  
  ImageOwner = OPI_Tools.NumberToString(ImageUpload["owner_id"]);

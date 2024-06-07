@@ -23,12 +23,12 @@ sidebar_position: 7
  URL = "https://github.com/Bayselonarrend/OpenIntegrations";
  
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
- AndVF = GetTempFileName("png");
- CopyFile(Image, AndVF);
- Image = New BinaryData(AndVF);
+ TFN = GetTempFileName("png");
+ CopyFile(Image, TFN);
+ Image = New BinaryData(TFN);
  
  Result = OPI_VK.CreateStory(Image, URL, Parameters); 
- Result = OPI_VK.CreateStory(AndVF,, Parameters);
+ Result = OPI_VK.CreateStory(TFN,, Parameters);
  
 	
 ```
