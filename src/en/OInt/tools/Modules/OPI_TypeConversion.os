@@ -122,12 +122,12 @@ Procedure GetCollection(Value) Export
                 
            ElsIf StrStartsWith(Lower(Value), "http") Then
                 
-                AndVF = GetTempFileName();
-                CopyFile(Value, AndVF);
-                JSONReader.OpenFile(AndVF);
+                TFN = GetTempFileName();
+                CopyFile(Value, TFN);
+                JSONReader.OpenFile(TFN);
                 JSONReader.Read();
                 
-                DeleteFiles(AndVF);
+                DeleteFiles(TFN);
                 
             Else
                 
@@ -238,14 +238,14 @@ Procedure GetLine(Value, Val FromSource = False) Export
                 
             ElsIf StrStartsWith(Lower(Value), "http") Then
                 
-                AndVF = GetTempFileName();
-                CopyFile(Value, AndVF);
+                TFN = GetTempFileName();
+                CopyFile(Value, TFN);
                 
-                TextReader = New TextReader(AndVF);
+                TextReader = New TextReader(TFN);
                 Value = TextReader.Read();
                 TextReader.Close();
                 
-                DeleteFiles(AndVF);
+                DeleteFiles(TFN);
                 
             Else
                 

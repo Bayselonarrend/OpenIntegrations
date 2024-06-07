@@ -6,7 +6,7 @@ sidebar_position: 5
  Reopens a previously closed forum thread
 
 
-*Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") ExportReturn ManageForumThreadState(Token, ChatID, 1, ThreadID);EndFunction*
+*Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

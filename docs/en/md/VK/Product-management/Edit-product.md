@@ -6,7 +6,7 @@ sidebar_position: 5
  Edits a previously created product
 
 
-*Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") ExportReturn ProductManagement(ProductDescription, Product, Selection, Parameters);EndFunction*
+*Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

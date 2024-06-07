@@ -6,7 +6,7 @@ sidebar_position: 9
  Gets the description of a phone number field
 
 
-*Function GetPhoneField(Val Name) ExportReturn PrimitiveFieldDescription(Name, "phoneNumber");EndFunction*
+*Function GetPhoneField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

@@ -6,7 +6,7 @@ sidebar_position: 6
  Edits an existing event
 
 
-*Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) ExportReturn EventManagement(Token, Calendar, EventDescription, Event);EndFunction*
+*Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

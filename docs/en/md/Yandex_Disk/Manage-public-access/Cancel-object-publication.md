@@ -6,7 +6,7 @@ sidebar_position: 2
  Unpublishes a previously published object
 
 
-*Function CancelObjectPublication(Val Token, Val Path) ExportReturn TogglePublicAccess(Token, Path, False);EndFunction*
+*Function CancelObjectPublication(Val Token, Val Path) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

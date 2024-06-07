@@ -137,7 +137,7 @@ EndFunction
 // FileID - String - File ID for downloading - fileid
 // 
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Telegram
+// BinaryData - file's binary data
 Function DownloadFile(Val Token, Val FileID) Export
 
     Result = "result";
@@ -841,7 +841,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export
+	
     Return ForumTopicManagement(Token, ChatID, Title, IconID);
+    
 EndFunction
 
 // Edit forum thread
@@ -876,7 +878,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
-    Return ManageForumThreadState(Token, ChatID, 2, ThreadID);    
+	
+    Return ManageForumThreadState(Token, ChatID, 2, ThreadID);  
+      
 EndFunction
 
 // Open forum thread
@@ -890,7 +894,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
-    Return ManageForumThreadState(Token, ChatID, 1, ThreadID);    
+	
+    Return ManageForumThreadState(Token, ChatID, 1, ThreadID); 
+       
 EndFunction
 
 // Delete forum thread
@@ -904,7 +910,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export
-    Return ManageForumThreadState(Token, ChatID, 3, ThreadID);    
+	
+    Return ManageForumThreadState(Token, ChatID, 3, ThreadID);   
+     
 EndFunction
 
 // Hide main forum thread
@@ -917,7 +925,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function HideMainForumTopic(Val Token, Val ChatID) Export
+	
     Return ManageMainTopicVisibility(Token, ChatID, True);
+    
 EndFunction
 
 // Show main forum thread
@@ -930,7 +940,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function ShowMainForumTopic(Val Token, Val ChatID) Export
+	
     Return ManageMainTopicVisibility(Token, ChatID, False);
+    
 EndFunction
 
 // Edit main forum thread name

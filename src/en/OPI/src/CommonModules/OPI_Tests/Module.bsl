@@ -599,8 +599,8 @@ Procedure VKAPI_CreateProductSelection() Export
     TypeNumber = Type("Number");
     Response_ = "response";
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
-    AndVF = GetTempFileName("png");   
-    Image.Write(AndVF);
+    TFN = GetTempFileName("png");   
+    Image.Write(TFN);
         
     Result = OPI_VK.CreateProductCollection("Test album"
         , Image
@@ -696,7 +696,7 @@ Procedure VKAPI_CreateProductSelection() Export
     OPI_Tools.Pause(5);
     Check_VKTrue(Result);
 
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     
     OPI_Tools.Pause(5);
     
@@ -712,8 +712,8 @@ Procedure VKAPI_CreateProductWithProperties() Export
     Yellow_ = "Yellow";
     Red_ = "Red";
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
-    AndVF = GetTempFileName("png");   
-    Image.Write(AndVF);
+    TFN = GetTempFileName("png");   
+    Image.Write(TFN);
     
     OptionArray = New Array;
     OptionArray.Add(Yellow_);
@@ -768,7 +768,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     EndDo;
   
     ImageArray = New Array;
-    ImageArray.Add(AndVF);
+    ImageArray.Add(TFN);
     ImageArray.Add(Image);
     
     Product = New Map();
@@ -859,7 +859,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     
     Check_VKTrue(Deletion);
 
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     
 EndProcedure
 
@@ -1054,8 +1054,8 @@ Procedure YDisk_UploadDeleteFile() Export
     Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
     Path = "/" + String(New UUID) + ".png";
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
-    AndVF = GetTempFileName("png");
-    Image.Write(AndVF);
+    TFN = GetTempFileName("png");
+    Image.Write(TFN);
 
     Result = OPI_YandexDisk.UploadFile(Token, Path, Image, True);
     
@@ -1070,7 +1070,7 @@ Procedure YDisk_UploadDeleteFile() Export
     
     Check_Empty(Result);
     
-    Result = OPI_YandexDisk.UploadFile(Token, Path, AndVF, True);
+    Result = OPI_YandexDisk.UploadFile(Token, Path, TFN, True);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFile");
     
@@ -1083,7 +1083,7 @@ Procedure YDisk_UploadDeleteFile() Export
     
     Check_Empty(Result);   
 
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     
     OPI_Tools.Pause(5);
     
@@ -2125,8 +2125,8 @@ Procedure Twitter_CreateTweetWithImage() Export
     Parameters = GetTwitterParameters();
     Text = "TestTweet" + String(New UUID);
     Image = OPI_TestDataRetrieval.GetBinary("Picture");
-    AndVF = GetTempFileName("png");
-    Image.Write(AndVF);
+    TFN = GetTempFileName("png");
+    Image.Write(TFN);
    
     Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters); 
     
@@ -2135,13 +2135,13 @@ Procedure Twitter_CreateTweetWithImage() Export
     Check_TwitterText(Result, Text);    
     
     Text = "TestTweet" + String(New UUID);
-    Result = OPI_Twitter.CreateImageTweet(Text, AndVF, Parameters);
+    Result = OPI_Twitter.CreateImageTweet(Text, TFN, Parameters);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateTweetImages");
     
     Check_TwitterText(Result, Text);
     
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     
     OPI_Tools.Pause(20);
     
@@ -2152,8 +2152,8 @@ Procedure Twitter_CreateTweetWithVideo() Export
     Parameters = GetTwitterParameters();
     Text = "TestTweet" + String(New UUID);
     Video = OPI_TestDataRetrieval.GetBinary("Video");
-    AndVF = GetTempFileName("mp4");
-    Video.Write(AndVF);
+    TFN = GetTempFileName("mp4");
+    Video.Write(TFN);
    
     Result = OPI_Twitter.CreateVideoTweet(Text, Video, Parameters);    
     
@@ -2162,13 +2162,13 @@ Procedure Twitter_CreateTweetWithVideo() Export
     Check_TwitterText(Result, Text);    
     
     Text = "TestTweet" + String(New UUID);
-    Result = OPI_Twitter.CreateVideoTweet(Text, AndVF, Parameters);
+    Result = OPI_Twitter.CreateVideoTweet(Text, TFN, Parameters);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateTweetVideo");
     
     Check_TwitterText(Result, Text);
     
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     
     OPI_Tools.Pause(20);
     
@@ -2179,8 +2179,8 @@ Procedure Twitter_CreateTweetWithGif() Export
     Parameters = GetTwitterParameters();
     Text = "TestTweet" + String(New UUID);
     GIF = OPI_TestDataRetrieval.GetBinary("GIF");
-    AndVF = GetTempFileName("gif");
-    GIF.Write(AndVF);
+    TFN = GetTempFileName("gif");
+    GIF.Write(TFN);
    
     Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);   
     
@@ -2189,13 +2189,13 @@ Procedure Twitter_CreateTweetWithGif() Export
     Check_TwitterText(Result, Text);    
     
     Text = "TestTweet" + String(New UUID);
-    Result = OPI_Twitter.CreateGifTweet(Text, AndVF, Parameters);
+    Result = OPI_Twitter.CreateGifTweet(Text, TFN, Parameters);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateTweetGif");
     
     Check_TwitterText(Result, Text);
     
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     
     OPI_Tools.Pause(20);
     
@@ -2527,13 +2527,13 @@ Procedure Slack_SendDeleteMessage() Export
     Block = OPI_Slack.GenerateImageBlock(Image, "Yo");
     JSONBlock = OPI_Tools.JSONString(Block);
     
-    AndVF = GetTempFileName("json");
+    TFN = GetTempFileName("json");
     
     TextDocument = New TextDocument();
     TextDocument.SetText(JSONBlock);
-    TextDocument.Write(AndVF);
+    TextDocument.Write(TFN);
         
-    Result = OPI_Slack.SendMessage(Token, Channel, Text, , AndVF);
+    Result = OPI_Slack.SendMessage(Token, Channel, Text, , TFN);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (json)");
     
@@ -2543,7 +2543,7 @@ Procedure Slack_SendDeleteMessage() Export
     
     Tags.Add(Result["ts"]);
     
-    Blocks = "['" + AndVF + "','" + AndVF + "']";
+    Blocks = "['" + TFN + "','" + TFN + "']";
     Result = OPI_Slack.SendMessage(Token, Channel, Text, , Blocks);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (json array)");
@@ -2554,7 +2554,7 @@ Procedure Slack_SendDeleteMessage() Export
     
     Tags.Add(Result["ts"]);
 
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
  
     For Each Timestamp In Tags Do
         
@@ -4445,12 +4445,12 @@ Procedure VK_CreatePost(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
     Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
     
-    AndVF = GetTempFileName("png");   
-    CopyFile(Image2, AndVF);
+    TFN = GetTempFileName("png");   
+    CopyFile(Image2, TFN);
     
     ImageArray = New Array;
     ImageArray.Add(Image);
-    ImageArray.Add(AndVF);
+    ImageArray.Add(TFN);
   
     Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
     
@@ -4473,7 +4473,7 @@ Procedure VK_CreatePost(FunctionParameters)
     
     OPI_Tools.Pause(5);   
     
-    Result = OPI_VK.CreatePost(Text, AndVF , True, URL, Parameters);
+    Result = OPI_VK.CreatePost(Text, TFN , True, URL, Parameters);
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (single path)");
 
@@ -4483,7 +4483,7 @@ Procedure VK_CreatePost(FunctionParameters)
     OPI_Tools.AddField("VK_PostID", PostID, "String", FunctionParameters);
     OPI_TestDataRetrieval.WriteParameter("VK_PostID", FunctionParameters["VK_PostID"]);
     
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     OPI_Tools.Pause(5);
     
 EndProcedure
@@ -4512,10 +4512,10 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
     Video = FunctionParameters["Video"]; // URL, Path or Binary Data
     
-    AndVF = GetTempFileName("png");   
-    CopyFile(Image, AndVF);
+    TFN = GetTempFileName("png");   
+    CopyFile(Image, TFN);
     
-    ImageUpload = OPI_VK.UploadPhotoToServer(AndVF, Parameters)["response"][0];
+    ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
     VideoUpload = OPI_VK.UploadVideoToServer(Video, "NewVideo", , , Parameters);
     
     ImageOwner = OPI_Tools.NumberToString(ImageUpload["owner_id"]);
@@ -4535,7 +4535,7 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateCompositePost", "VK");
     
     Check_VKPost(Result);
-    DeleteFiles(AndVF);    
+    DeleteFiles(TFN);    
         
     OPI_Tools.Pause(5);
      
@@ -4593,10 +4593,10 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
     AlbumID = FunctionParameters["VK_AlbumID"];
     
     Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
-    AndVF = GetTempFileName("png");
-    CopyFile(Image, AndVF);
+    TFN = GetTempFileName("png");
+    CopyFile(Image, TFN);
     
-    Image = New BinaryData(AndVF);
+    Image = New BinaryData(TFN);
     
     Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
     
@@ -4607,7 +4607,7 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
     ImageID = Result["response"][0]["id"]; // SKIP
     Result = OPI_VK.DeleteImage(ImageID, Parameters); // SKIP
             
-    Result = OPI_VK.SaveImageToAlbum(AlbumID, AndVF, ImageDescription, Parameters);
+    Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
     
     // END
    
@@ -4619,7 +4619,7 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
     FunctionParameters.Insert("VK_PictureID", ImageID);
     OPI_TestDataRetrieval.WriteParameter("VK_PictureID", ImageID);
     
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     OPI_Tools.Pause(5);
     
 EndProcedure
@@ -4664,9 +4664,9 @@ Procedure VK_CreateStory(FunctionParameters)
     URL = "https://github.com/Bayselonarrend/OpenIntegrations";
 
     Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
-    AndVF = GetTempFileName("png");
-    CopyFile(Image, AndVF);
-    Image = New BinaryData(AndVF);
+    TFN = GetTempFileName("png");
+    CopyFile(Image, TFN);
+    Image = New BinaryData(TFN);
        
     Result = OPI_VK.CreateStory(Image , URL, Parameters);
 
@@ -4674,7 +4674,7 @@ Procedure VK_CreateStory(FunctionParameters)
     
     Check_VKStory(Result); // SKIP
         
-    Result = OPI_VK.CreateStory(AndVF, , Parameters);
+    Result = OPI_VK.CreateStory(TFN, , Parameters);
     
     // END
     
@@ -4682,7 +4682,7 @@ Procedure VK_CreateStory(FunctionParameters)
     
     Check_VKStory(Result);
     
-    DeleteFiles(AndVF);
+    DeleteFiles(TFN);
     
     OPI_Tools.Pause(5);
         
