@@ -6,7 +6,7 @@ sidebar_position: 7
  Hides the main forum thread
 
 
-*Function HideMainForumTopic(Val Token, Val ChatID) ExportReturn ManageMainTopicVisibility(Token, ChatID, True);EndFunction*
+*Function HideMainForumTopic(Val Token, Val ChatID) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

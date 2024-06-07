@@ -6,7 +6,7 @@ sidebar_position: 4
  Adds a new product to the community's catalog
 
 
-*Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") ExportReturn ProductManagement(ProductDescription,, Selection, Parameters);EndFunction*
+*Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

@@ -6,7 +6,7 @@ sidebar_position: 8
  Gets the description of an email field
 
 
-*Function GetEmailField(Val Name) ExportReturn PrimitiveFieldDescription(Name, "email");EndFunction*
+*Function GetEmailField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

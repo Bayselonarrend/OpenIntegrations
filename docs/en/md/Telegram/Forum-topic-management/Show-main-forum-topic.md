@@ -6,7 +6,7 @@ sidebar_position: 8
  Shows a previously hidden main forum thread
 
 
-*Function ShowMainForumTopic(Val Token, Val ChatID) ExportReturn ManageMainTopicVisibility(Token, ChatID, False);EndFunction*
+*Function ShowMainForumTopic(Val Token, Val ChatID) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

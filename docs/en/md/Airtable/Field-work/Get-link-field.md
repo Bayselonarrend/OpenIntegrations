@@ -6,7 +6,7 @@ sidebar_position: 10
  Gets the description of a URL field
 
 
-*Function GetLinkField(Val Name) ExportReturn PrimitiveFieldDescription(Name, "url");EndFunction*
+*Function GetLinkField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
