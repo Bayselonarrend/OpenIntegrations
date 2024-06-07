@@ -6,12 +6,12 @@ sidebar_position: 1
  Sets sheet cell values
 
 
-*Function SetCellValues(Val Token, Val Book, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export*
+*Function SetCellValues(Val Token, Val Spreadsheet, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Token | --token | String | Token |
- | Book | --spreadsheet | String | BookID |
+ | Spreadsheet | --spreadsheet | String | SpreadsheetID |
  | ValueMapping | --data | Map Of KeyAndValue | Fill data where the key is the cell name like A1 |
  | Sheet | --sheetname | String | Sheet name (first sheet by default) |
  | MajorDimension | --dim | String | Main dimension when filling the array range |
@@ -32,10 +32,10 @@ sidebar_position: 1
  ValueMapping.Insert("B1", "ThisIsB1");
  ValueMapping.Insert("B4", "ThisIsB4");
  
- Book = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Sheet = "Sheet2";
  
- Response = OPI_GoogleSheets.SetCellValues(Token, Book, ValueMapping, Sheet); //Map
+ Response = OPI_GoogleSheets.SetCellValues(Token, Spreadsheet, ValueMapping, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
  

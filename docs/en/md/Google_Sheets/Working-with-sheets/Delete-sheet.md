@@ -3,15 +3,15 @@ sidebar_position: 2
 ---
 
 # DeleteSheet
- Deletes a sheet from the book
+ Deletes a sheet from the spreadsheet
 
 
-*Function DeleteSheet(Val Token, Val Book, Val Sheet) Export*
+*Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Token | --token | String | Token |
- | Book | --spreadsheet | String | BookIdentifier |
+ | Spreadsheet | --spreadsheet | String | Spreadsheet identifier |
  | Sheet | --sheet | String | IdentifierOfSheetToDelete |
 
  
@@ -20,10 +20,10 @@ sidebar_position: 2
 ```bsl title="Code example"
 	
  
- Book = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Sheet = "1790807910";
  
- Response = OPI_GoogleSheets.DeleteSheet(Token, Book, Sheet); //Map
+ Response = OPI_GoogleSheets.DeleteSheet(Token, Spreadsheet, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
  
