@@ -1,117 +1,117 @@
-﻿Function GetComposition() Export
+﻿Function ПолучитьСостав() Export
 
-    TableСоwithтаinа = New ValueTable();
-    TableСоwithтаinа.Columns.Add("Library");
-    TableСоwithтаinа.Columns.Add("Module");
-    TableСоwithтаinа.Columns.Add("Method");
-    TableСоwithтаinа.Columns.Add("SearchMethod");
-    TableСоwithтаinа.Columns.Add("Parameter");
-    TableСоwithтаinа.Columns.Add("Description");
-    TableСоwithтаinа.Columns.Add("MethodDescription");
-    TableСоwithтаinа.Columns.Add("Region");
+    CompositionTable = New ValueTable();
+    CompositionTable.Columns.Add("Библиотека");
+    CompositionTable.Columns.Add("Модуль");
+    CompositionTable.Columns.Add("Метод");
+    CompositionTable.Columns.Add("МетодПоиска");
+    CompositionTable.Columns.Add("Параметр");
+    CompositionTable.Columns.Add("Описание");
+    CompositionTable.Columns.Add("ОписаниеМетода");
+    CompositionTable.Columns.Add("Область");
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "FormCodeRetrievalLink";
-    NewLine.SearchMethod = "FORMCODERETRIEVALLINK";
-    NewLine.Parameter    = "--id";
-    NewLine.Description    = "Client ID";
-    NewLine.Region     = "Public";
-    NewLine.MethodDescription   = "Returns URL for browser authorization";
-
-
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "FormCodeRetrievalLink";
-    NewLine.SearchMethod = "FORMCODERETRIEVALLINK";
-    NewLine.Parameter    = "--calendar";
-    NewLine.Description    = "Calendar methods permission (optional, def. val. - True)";
-    NewLine.Region     = "Public";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "FormCodeRetrievalLink";
+    NewLine.МетодПоиска = "FORMCODERETRIEVALLINK";
+    NewLine.Параметр    = "--id";
+    NewLine.Описание    = "Client ID";
+    NewLine.Область     = "Public";
+    NewLine.ОписаниеМетода   = "Returns URL for browser authorization";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "FormCodeRetrievalLink";
-    NewLine.SearchMethod = "FORMCODERETRIEVALLINK";
-    NewLine.Parameter    = "--drive";
-    NewLine.Description    = "Drive methods permission (optional, def. val. - True)";
-    NewLine.Region     = "Public";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "FormCodeRetrievalLink";
+    NewLine.МетодПоиска = "FORMCODERETRIEVALLINK";
+    NewLine.Параметр    = "--calendar";
+    NewLine.Описание    = "Calendar methods permission (optional, def. val. - Да)";
+    NewLine.Область     = "Public";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "FormCodeRetrievalLink";
-    NewLine.SearchMethod = "FORMCODERETRIEVALLINK";
-    NewLine.Parameter    = "--sheets";
-    NewLine.Description    = "Sheets methods permission (optional, def. val. - True)";
-    NewLine.Region     = "Public";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "FormCodeRetrievalLink";
+    NewLine.МетодПоиска = "FORMCODERETRIEVALLINK";
+    NewLine.Параметр    = "--drive";
+    NewLine.Описание    = "Drive methods permission (optional, def. val. - Да)";
+    NewLine.Область     = "Public";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "GetTokenByCode";
-    NewLine.SearchMethod = "GETTOKENBYCODE";
-    NewLine.Parameter    = "--id";
-    NewLine.Description    = "Client ID";
-    NewLine.Region     = "Public";
-    NewLine.MethodDescription   = "Gets token by code from browser authorization";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "FormCodeRetrievalLink";
+    NewLine.МетодПоиска = "FORMCODERETRIEVALLINK";
+    NewLine.Параметр    = "--sheets";
+    NewLine.Описание    = "Sheets methods permission (optional, def. val. - Да)";
+    NewLine.Область     = "Public";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "GetTokenByCode";
-    NewLine.SearchMethod = "GETTOKENBYCODE";
-    NewLine.Parameter    = "--secret";
-    NewLine.Description    = "Client secret";
-    NewLine.Region     = "Public";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "GetTokenByCode";
+    NewLine.МетодПоиска = "GETTOKENBYCODE";
+    NewLine.Параметр    = "--id";
+    NewLine.Описание    = "Client ID";
+    NewLine.Область     = "Public";
+    NewLine.ОписаниеМетода   = "Gets token by code from browser authorization";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "GetTokenByCode";
-    NewLine.SearchMethod = "GETTOKENBYCODE";
-    NewLine.Parameter    = "--code";
-    NewLine.Description    = "Code from browser";
-    NewLine.Region     = "Public";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "GetTokenByCode";
+    NewLine.МетодПоиска = "GETTOKENBYCODE";
+    NewLine.Параметр    = "--secret";
+    NewLine.Описание    = "Client secret";
+    NewLine.Область     = "Public";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "RefreshToken";
-    NewLine.SearchMethod = "REFRESHTOKEN";
-    NewLine.Parameter    = "--id";
-    NewLine.Description    = "Client ID";
-    NewLine.Region     = "Public";
-    NewLine.MethodDescription   = "Updates token by Refresh token";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "GetTokenByCode";
+    NewLine.МетодПоиска = "GETTOKENBYCODE";
+    NewLine.Параметр    = "--code";
+    NewLine.Описание    = "Code from browser";
+    NewLine.Область     = "Public";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "RefreshToken";
-    NewLine.SearchMethod = "REFRESHTOKEN";
-    NewLine.Parameter    = "--secret";
-    NewLine.Description    = "Client secret";
-    NewLine.Region     = "Public";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "RefreshToken";
+    NewLine.МетодПоиска = "REFRESHTOKEN";
+    NewLine.Параметр    = "--id";
+    NewLine.Описание    = "Client ID";
+    NewLine.Область     = "Public";
+    NewLine.ОписаниеМетода   = "Updates token by Refresh token";
 
 
-    NewLine = TableСоwithтаinа.Add();
-    NewLine.Library  = "google";
-    NewLine.Module      = "OPI_GoogleWorkspace";
-    NewLine.Method       = "RefreshToken";
-    NewLine.SearchMethod = "REFRESHTOKEN";
-    NewLine.Parameter    = "--refresh";
-    NewLine.Description    = "Refresh token";
-    NewLine.Region     = "Public";
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "RefreshToken";
+    NewLine.МетодПоиска = "REFRESHTOKEN";
+    NewLine.Параметр    = "--secret";
+    NewLine.Описание    = "Client secret";
+    NewLine.Область     = "Public";
 
-    Return TableСоwithтаinа;
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "google";
+    NewLine.Модуль      = "OPI_GoogleWorkspace";
+    NewLine.Метод       = "RefreshToken";
+    NewLine.МетодПоиска = "REFRESHTOKEN";
+    NewLine.Параметр    = "--refresh";
+    NewLine.Описание    = "Refresh token";
+    NewLine.Область     = "Public";
+
+    Return CompositionTable;
 EndFunction
 
