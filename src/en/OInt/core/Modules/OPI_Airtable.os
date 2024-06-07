@@ -37,7 +37,7 @@
 
 #Region Public
 
-#Region DatabaseWork
+#Region WorkingWithDatabases
 
 // Get list of bases
 // Gets the list of available bases
@@ -192,7 +192,7 @@ EndFunction
 
 #EndRegion
 
-#Region FieldWork
+#Region WorkingWithFields
 
 // Create field
 // Creates a new field in the table
