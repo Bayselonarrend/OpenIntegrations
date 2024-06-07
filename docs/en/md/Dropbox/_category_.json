@@ -1,8 +1,8 @@
-﻿{
- "label": "Dropbox (pre-release)",
- "position": 12,
- "link": {
- "type": "doc",
- "id": "Dropbox"
- }
+{
+"label": null,
+"position": 12,
+"link": {
+"type": "doc",
+"id": "Dropbox"
+}
 }

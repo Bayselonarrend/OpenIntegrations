@@ -1,8 +1,8 @@
-﻿{
- "label": "Getting started",
- "position": 1,
- "link": {
- "type": "doc",
- "id": "Start"
- }
+{
+"label": null,
+"position": 1,
+"link": {
+"type": "doc",
+"id": "Start"
+}
 }

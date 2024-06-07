@@ -1,8 +1,8 @@
-﻿{
- "label": "Viber",
- "position": 3,
- "link": {
- "type": "doc",
- "id": "Viber"
- }
+{
+"label": null,
+"position": 3,
+"link": {
+"type": "doc",
+"id": "Viber"
+}
 }
