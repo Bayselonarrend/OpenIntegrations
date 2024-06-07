@@ -161,7 +161,7 @@
 	|          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
 	|          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
 	|        outputs:
-	|		   file_name: oint_" + Версия + "_all_en.deb
+	|          file_name: oint_" + Версия + "_all_en.deb
 	|
 	|      - uses: actions/upload-artifact@v3
 	|        with:
@@ -191,7 +191,7 @@
 	|            mono-core
 	|            Requires:       mono-locale-extras
 	|        outputs:
-	|		   file_name: oint-" + Версия + ".el7.x86_64_en.rpm
+	|          file_name: oint-" + Версия + ".el7.x86_64_en.rpm
 	|
 	|      - uses: actions/upload-artifact@v4
 	|        with:
