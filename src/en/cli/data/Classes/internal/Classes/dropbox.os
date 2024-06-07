@@ -142,7 +142,7 @@
     NewLine.Method       = "GetObjectInformation";
     NewLine.SearchMethod = "GETOBJECTINFORMATION";
     NewLine.Parameter    = "--detail";
-    NewLine.Description    = "Adds additional information fields for media files (optional, def. val. - No)";
+    NewLine.Description    = "Adds additional information fields for media files (optional, def. val. - False)";
     NewLine.Region     = "File and directory management";
 
 
@@ -173,7 +173,7 @@
     NewLine.Method       = "GetListOfFolderFiles";
     NewLine.SearchMethod = "GETLISTOFFOLDERFILES";
     NewLine.Parameter    = "--detail";
-    NewLine.Description    = "Adds additional information fields for media files (optional, def. val. - No)";
+    NewLine.Description    = "Adds additional information fields for media files (optional, def. val. - False)";
     NewLine.Region     = "File and directory management";
 
 
@@ -245,7 +245,7 @@
     NewLine.Method       = "UploadFile";
     NewLine.SearchMethod = "UPLOADFILE";
     NewLine.Parameter    = "--overwrite";
-    NewLine.Description    = "Overwrite file in case of path conflicts (optional, def. val. - No)";
+    NewLine.Description    = "Overwrite file in case of path conflicts (optional, def. val. - False)";
     NewLine.Region     = "File and directory management";
 
 
@@ -328,7 +328,7 @@
     NewLine.Method       = "DeleteObject";
     NewLine.SearchMethod = "DELETEOBJECT";
     NewLine.Parameter    = "--permanently";
-    NewLine.Description    = "Delete object without the possibility of recovery (optional, def. val. - No)";
+    NewLine.Description    = "Delete object without the possibility of recovery (optional, def. val. - False)";
     NewLine.Region     = "File and directory management";
 
 
@@ -681,7 +681,7 @@
     NewLine.Method       = "AddUsersToFile";
     NewLine.SearchMethod = "ADDUSERSTOFILE";
     NewLine.Parameter    = "--readonly";
-    NewLine.Description    = "Prohibits file editing for the external user (optional, def. val. - Да)";
+    NewLine.Description    = "Prohibits file editing for the external user (optional, def. val. - True)";
     NewLine.Region     = "Shared access settings";
 
 
@@ -722,7 +722,7 @@
     NewLine.Method       = "AddUsersToFolder";
     NewLine.SearchMethod = "ADDUSERSTOFOLDER";
     NewLine.Parameter    = "--readonly";
-    NewLine.Description    = "Prohibits file editing for the external user (optional, def. val. - Да)";
+    NewLine.Description    = "Prohibits file editing for the external user (optional, def. val. - True)";
     NewLine.Region     = "Shared access settings";
 
 

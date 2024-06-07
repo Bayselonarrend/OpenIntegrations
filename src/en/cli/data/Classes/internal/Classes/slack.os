@@ -254,7 +254,7 @@
     NewLine.Method       = "DeleteMessage";
     NewLine.SearchMethod = "DELETEMESSAGE";
     NewLine.Parameter    = "--issheduled";
-    NewLine.Description    = "Indicator of deleting a delayed message (optional, def. val. - No)";
+    NewLine.Description    = "Indicator of deleting a delayed message (optional, def. val. - False)";
     NewLine.Region     = "Message management";
 
 
@@ -378,7 +378,7 @@
     NewLine.Method       = "GetChannelList";
     NewLine.SearchMethod = "GETCHANNELLIST";
     NewLine.Parameter    = "--notarchived";
-    NewLine.Description    = "Indicator of excluding archived channels (optional, def. val. - No)";
+    NewLine.Description    = "Indicator of excluding archived channels (optional, def. val. - False)";
     NewLine.Region     = "Channel management";
 
 
@@ -450,7 +450,7 @@
     NewLine.Method       = "CreateChannel";
     NewLine.SearchMethod = "CREATECHANNEL";
     NewLine.Parameter    = "--private";
-    NewLine.Description    = "Create channel as private (optional, def. val. - No)";
+    NewLine.Description    = "Create channel as private (optional, def. val. - False)";
     NewLine.Region     = "Channel management";
 
 

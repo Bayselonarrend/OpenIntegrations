@@ -165,7 +165,7 @@
     NewLine.Method       = "EditPageProperties";
     NewLine.SearchMethod = "EDITPAGEPROPERTIES";
     NewLine.Parameter    = "--archive";
-    NewLine.Description    = "Archive page or not (boolean) (optional, def. val. - No)";
+    NewLine.Description    = "Archive page or not (boolean) (optional, def. val. - False)";
     NewLine.Region     = "Page management";
 
 
@@ -381,7 +381,7 @@
     NewLine.Method       = "ReturnBlock";
     NewLine.SearchMethod = "RETURNBLOCK";
     NewLine.Parameter    = "--core";
-    NewLine.Description    = "True > service fields are deleted, only the block itself remains (optional, def. val. - Да)";
+    NewLine.Description    = "True > service fields are deleted, only the block itself remains (optional, def. val. - True)";
     NewLine.Region     = "Blocks managment";
 
 

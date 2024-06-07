@@ -58,7 +58,7 @@
     NewLine.Method       = "GetDirectoriesList";
     NewLine.SearchMethod = "GETDIRECTORIESLIST";
     NewLine.Parameter    = "--depth";
-    NewLine.Description    = "Adds a list of files to the directory fields (optional, def. val. - No)";
+    NewLine.Description    = "Adds a list of files to the directory fields (optional, def. val. - False)";
     NewLine.Region     = "File and directory management";
 
 

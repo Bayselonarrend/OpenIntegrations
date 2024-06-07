@@ -246,7 +246,7 @@
     NewLine.Method       = "EditListCalendar";
     NewLine.SearchMethod = "EDITLISTCALENDAR";
     NewLine.Parameter    = "--hidden";
-    NewLine.Description    = "Hidden calendar (optional, def. val. - No)";
+    NewLine.Description    = "Hidden calendar (optional, def. val. - False)";
     NewLine.Region     = "Calendar list management";
 
 
