@@ -25,13 +25,13 @@ sidebar_position: 8
  AlbumID = "304549394";
  
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
- AndVF = GetTempFileName("png");
- CopyFile(Image, AndVF);
+ TFN = GetTempFileName("png");
+ CopyFile(Image, TFN);
  
- Image = New BinaryData(AndVF);
+ Image = New BinaryData(TFN);
  
  Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters); 
- Result = OPI_VK.SaveImageToAlbum(AlbumID, AndVF, ImageDescription, Parameters);
+ Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
  
 	
 ```

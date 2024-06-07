@@ -30,7 +30,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint vk СоздатьОбсуждение --title %title% --text %text% --auth "ПолучитьПараметрыВК()"
+      oint vk СоздатьОбсуждение --title %title% --text %text% --auth %auth%
 
 
 ```
