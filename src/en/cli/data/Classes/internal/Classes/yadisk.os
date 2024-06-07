@@ -90,7 +90,7 @@
     NewLine.Method       = "DeleteObject";
     NewLine.SearchMethod = "DELETEOBJECT";
     NewLine.Parameter    = "--can";
-    NewLine.Description    = "To cart (optional, def. val. - Да)";
+    NewLine.Description    = "To cart (optional, def. val. - True)";
     NewLine.Region     = "File and folder management";
 
 
@@ -131,7 +131,7 @@
     NewLine.Method       = "CreateObjectCopy";
     NewLine.SearchMethod = "CREATEOBJECTCOPY";
     NewLine.Parameter    = "--rewrite";
-    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
     NewLine.Region     = "File and folder management";
 
 
@@ -237,7 +237,7 @@
     NewLine.Method       = "GetFilesList";
     NewLine.SearchMethod = "GETFILESLIST";
     NewLine.Parameter    = "--datesort";
-    NewLine.Description    = "True > sort by date, False > alphabetically (optional, def. val. - No)";
+    NewLine.Description    = "True > sort by date, False > alphabetically (optional, def. val. - False)";
     NewLine.Region     = "File and folder management";
 
 
@@ -278,7 +278,7 @@
     NewLine.Method       = "MoveObject";
     NewLine.SearchMethod = "MOVEOBJECT";
     NewLine.Parameter    = "--rewrite";
-    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
     NewLine.Region     = "File and folder management";
 
 
@@ -319,7 +319,7 @@
     NewLine.Method       = "UploadFile";
     NewLine.SearchMethod = "UPLOADFILE";
     NewLine.Parameter    = "--rewrite";
-    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Description    = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
     NewLine.Region     = "File and folder management";
 
 
