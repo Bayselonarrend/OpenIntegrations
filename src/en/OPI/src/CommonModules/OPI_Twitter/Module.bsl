@@ -298,7 +298,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export
+	
     Return CreateCustomTweet(Text, , OptionArray, Duration, Parameters);    
+    
 EndFunction
 
 // Upload attachments array !NOCLI

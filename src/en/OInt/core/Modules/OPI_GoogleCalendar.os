@@ -391,8 +391,10 @@ EndFunction
 // 
 // Returns:
 // String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
-Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export    
+Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export   
+	 
     Return EventManagement(Token, Calendar, EventDescription);
+    
 EndFunction
 
 // Move event
@@ -439,7 +441,9 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
 Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export
+	
     Return EventManagement(Token, Calendar, EventDescription, Event);
+    
 EndFunction
 
 // Delete event
