@@ -58,7 +58,7 @@
     NewLine.Method       = "CreatePost";
     NewLine.SearchMethod = "CREATEPOST";
     NewLine.Parameter    = "--ad";
-    NewLine.Description    = "Sign ""This is an ad"" (optional, def. val. - No)";
+    NewLine.Description    = "Sign ""This is an ad"" (optional, def. val. - False)";
     NewLine.Region     = "Community managment";
 
 
@@ -118,7 +118,7 @@
     NewLine.Method       = "CreateCompositePost";
     NewLine.SearchMethod = "CREATECOMPOSITEPOST";
     NewLine.Parameter    = "--ad";
-    NewLine.Description    = "Sign ""This is an ad"" (optional, def. val. - No)";
+    NewLine.Description    = "Sign ""This is an ad"" (optional, def. val. - False)";
     NewLine.Region     = "Community managment";
 
 
@@ -578,7 +578,7 @@
     NewLine.Method       = "CloseDiscussion";
     NewLine.SearchMethod = "CLOSEDISCUSSION";
     NewLine.Parameter    = "--remove";
-    NewLine.Description    = "Delete completely (True) or close (optional, def. val. - No)";
+    NewLine.Description    = "Delete completely (True) or close (optional, def. val. - False)";
     NewLine.Region     = "Discussion management";
 
 
@@ -748,7 +748,7 @@
     NewLine.Method       = "MakeRepost";
     NewLine.SearchMethod = "MAKEREPOST";
     NewLine.Parameter    = "--ad";
-    NewLine.Description    = "Sign of an advertising post (optional, def. val. - No)";
+    NewLine.Description    = "Sign of an advertising post (optional, def. val. - False)";
     NewLine.Region     = "Interactive actions";
 
 
@@ -1510,7 +1510,7 @@
     NewLine.Method       = "CreateProductCollection";
     NewLine.SearchMethod = "CREATEPRODUCTCOLLECTION";
     NewLine.Parameter    = "--main";
-    NewLine.Description    = "Main (optional, def. val. - No)";
+    NewLine.Description    = "Main (optional, def. val. - False)";
     NewLine.Region     = "Product selection management";
 
 
@@ -1520,7 +1520,7 @@
     NewLine.Method       = "CreateProductCollection";
     NewLine.SearchMethod = "CREATEPRODUCTCOLLECTION";
     NewLine.Parameter    = "--hidden";
-    NewLine.Description    = "Hidden (optional, def. val. - No)";
+    NewLine.Description    = "Hidden (optional, def. val. - False)";
     NewLine.Region     = "Product selection management";
 
 
@@ -1580,7 +1580,7 @@
     NewLine.Method       = "EditProductCollection";
     NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
     NewLine.Parameter    = "--main";
-    NewLine.Description    = "Main (optional, def. val. - No)";
+    NewLine.Description    = "Main (optional, def. val. - False)";
     NewLine.Region     = "Product selection management";
 
 
@@ -1590,7 +1590,7 @@
     NewLine.Method       = "EditProductCollection";
     NewLine.SearchMethod = "EDITPRODUCTCOLLECTION";
     NewLine.Parameter    = "--hidden";
-    NewLine.Description    = "Hidden (optional, def. val. - No)";
+    NewLine.Description    = "Hidden (optional, def. val. - False)";
     NewLine.Region     = "Product selection management";
 
 
