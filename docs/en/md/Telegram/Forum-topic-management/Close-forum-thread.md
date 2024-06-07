@@ -6,7 +6,7 @@ sidebar_position: 4
  Closes the thread for new messages
 
 
-*Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") ExportReturn ManageForumThreadState(Token, ChatID, 2, ThreadID);EndFunction*
+*Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

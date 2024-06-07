@@ -6,7 +6,7 @@ sidebar_position: 6
  Deletes a forum thread
 
 
-*Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) ExportReturn ManageForumThreadState(Token, ChatID, 3, ThreadID);EndFunction*
+*Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|

@@ -6,7 +6,7 @@ sidebar_position: 5
  Creates a tweet with a poll
 
 
-*Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") ExportReturn CreateCustomTweet(Text,, OptionArray, Duration, Parameters);EndFunction*
+*Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
