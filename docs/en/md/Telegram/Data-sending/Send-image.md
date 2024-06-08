@@ -29,7 +29,7 @@ sidebar_position: 2
  Image = "https://openintegrations.dev/test_data/picture.jpg"; 
  
  ImagePath = GetTempFileName("png");
- CopyFile(Image, ImagePath);
+ FileCopy(Image, ImagePath);
  
  ImageDD = New BinaryData(ImagePath);
  

@@ -29,7 +29,7 @@ sidebar_position: 3
  Video = "https://openintegrations.dev/test_data/video.mp4";
  
  VideoPath = GetTempFileName("mp4");
- CopyFile(Video, VideoPath);
+ FileCopy(Video, VideoPath);
  
  VideoDD = New BinaryData(VideoPath);
  

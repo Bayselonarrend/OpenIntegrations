@@ -29,7 +29,7 @@ sidebar_position: 5
  Document = "https://openintegrations.dev/test_data/document.docx";
  
  DocumentPath = GetTempFileName("docx");
- CopyFile(Document, DocumentPath);
+ FileCopy(Document, DocumentPath);
  
  DocumentDD = New BinaryData(DocumentPath);
  
