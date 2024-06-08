@@ -123,7 +123,7 @@ Procedure GetCollection(Value) Export
            ElsIf StrStartsWith(Lower(Value), "http") Then
                 
                 TFN = GetTempFileName();
-                CopyFile(Value, TFN);
+                FileCopy(Value, TFN);
                 JSONReader.OpenFile(TFN);
                 JSONReader.Read();
                 
@@ -239,7 +239,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
             ElsIf StrStartsWith(Lower(Value), "http") Then
                 
                 TFN = GetTempFileName();
-                CopyFile(Value, TFN);
+                FileCopy(Value, TFN);
                 
                 TextReader = New TextReader(TFN);
                 Value = TextReader.Read();

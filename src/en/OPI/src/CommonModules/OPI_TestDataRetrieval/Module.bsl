@@ -309,7 +309,7 @@ Function GetFilePath(Val Path, LocalParameter, Val SaveLocally = True) Export
         Or StrFind(Path, "www") > 0 Then
         
         TFN = GetTempFileName();
-        CopyFile(Path, TFN);
+        FileCopy(Path, TFN);
         Path = TFN;
         Binary = New BinaryData(Path);
         
@@ -441,7 +441,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
 	
 	Try
 		
-		LogPath = "./docs/results";
+		LogPath = "./docs/ru/results";
 		LibraryLogPath = LogPath + "/" + Library;
 		
 		LogDirectory = New File(LogPath);

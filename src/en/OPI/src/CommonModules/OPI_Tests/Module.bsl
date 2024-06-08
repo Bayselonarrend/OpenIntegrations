@@ -3734,7 +3734,7 @@ Procedure Telegram_SendPicture(FunctionParameters)
     Image = FunctionParameters["Picture"]; 
     
     ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    FileCopy(Image, ImagePath);
     
     ImageDD = New BinaryData(ImagePath);
     
@@ -3778,7 +3778,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
     Video = FunctionParameters["Video"];
     
     VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    FileCopy(Video, VideoPath);
     
     VideoDD = New BinaryData(VideoPath);
     
@@ -3822,7 +3822,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
     Audio = FunctionParameters["Audio"];
     
     AudioPath = GetTempFileName("mp3");
-    CopyFile(Audio, AudioPath);
+    FileCopy(Audio, AudioPath);
     
     AudioDD = New BinaryData(AudioPath);
     
@@ -3866,7 +3866,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
     Document = FunctionParameters["Document"];
     
     DocumentPath = GetTempFileName("docx");
-    CopyFile(Document, DocumentPath);
+    FileCopy(Document, DocumentPath);
     
     DocumentDD = New BinaryData(DocumentPath);
     
@@ -3905,7 +3905,7 @@ Procedure Telegram_SendGif(FunctionParameters)
     GIF = FunctionParameters["GIF"];
     
     GifPath = GetTempFileName("gif");
-    CopyFile(GIF, GifPath);
+    FileCopy(GIF, GifPath);
     
     GifDD = New BinaryData(GifPath);
     
@@ -3944,10 +3944,10 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     Video = FunctionParameters["Video"];
  
     ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    FileCopy(Image, ImagePath);
            
     VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    FileCopy(Video, VideoPath);
     
     VideoDD = New BinaryData(VideoPath);
     
@@ -4446,7 +4446,7 @@ Procedure VK_CreatePost(FunctionParameters)
     Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
     
     TFN = GetTempFileName("png");   
-    CopyFile(Image2, TFN);
+    FileCopy(Image2, TFN);
     
     ImageArray = New Array;
     ImageArray.Add(Image);
@@ -4513,7 +4513,7 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     Video = FunctionParameters["Video"]; // URL, Path or Binary Data
     
     TFN = GetTempFileName("png");   
-    CopyFile(Image, TFN);
+    FileCopy(Image, TFN);
     
     ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
     VideoUpload = OPI_VK.UploadVideoToServer(Video, "NewVideo", , , Parameters);
@@ -4594,7 +4594,7 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
     
     Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
     TFN = GetTempFileName("png");
-    CopyFile(Image, TFN);
+    FileCopy(Image, TFN);
     
     Image = New BinaryData(TFN);
     
@@ -4665,7 +4665,7 @@ Procedure VK_CreateStory(FunctionParameters)
 
     Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
     TFN = GetTempFileName("png");
-    CopyFile(Image, TFN);
+    FileCopy(Image, TFN);
     Image = New BinaryData(TFN);
        
     Result = OPI_VK.CreateStory(Image , URL, Parameters);
@@ -4861,7 +4861,7 @@ Procedure Dropbox_UploadFile(FunctionParameters)
     Image = FunctionParameters["Picture"];
     
     ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    FileCopy(Image, ImagePath);
     
     Result = OPI_Dropbox.UploadFile(Token, ImagePath, Path, True);
     

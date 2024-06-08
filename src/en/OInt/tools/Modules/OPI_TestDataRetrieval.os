@@ -441,7 +441,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
 	
 	Try
 		
-		LogPath = "./docs/results";
+		LogPath = "./docs/ru/results";
 		LibraryLogPath = LogPath + "/" + Library;
 		
 		LogDirectory = New File(LogPath);
