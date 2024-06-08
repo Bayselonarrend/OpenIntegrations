@@ -1185,7 +1185,7 @@
 "Файл, Значение": "File, Value",
 "Добавить товар": "Add product",
 "Удалить записи": "Delete records",
-"КопироватьФайл": "CopyFile",
+"КопироватьФайл": "FileCopy",
 "СтрНачинаетсяС": "StrStartsWith",
 "ТекущаяКоманда": "CurrentCommand",
 "ПолучитьОбъект": "GetObject",
