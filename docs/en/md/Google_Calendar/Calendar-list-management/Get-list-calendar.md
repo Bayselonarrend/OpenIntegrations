@@ -22,7 +22,6 @@ sidebar_position: 3
  Response = OPI_GoogleCalendar.GetListCalendar(Token, "55868c32be16935f0..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

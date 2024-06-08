@@ -22,7 +22,6 @@ sidebar_position: 3
  Response = OPI_Viber.GetUserData(Token, UserID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

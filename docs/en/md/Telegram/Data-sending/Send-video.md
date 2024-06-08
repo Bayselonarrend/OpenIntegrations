@@ -36,7 +36,6 @@ sidebar_position: 3
  Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
  Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
  Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
- 
 	
 ```
 

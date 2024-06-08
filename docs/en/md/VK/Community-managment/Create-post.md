@@ -28,7 +28,7 @@ sidebar_position: 1
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
  Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
  
- TFN = GetTempFileName("png"); 
+ TFN = GetTempFileName("png");
  FileCopy(Image2, TFN);
  
  ImageArray = New Array;
@@ -37,7 +37,6 @@ sidebar_position: 1
  
  Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
  Result = OPI_VK.CreatePost(Text, Image, False,, Parameters);
- 
 	
 ```
 

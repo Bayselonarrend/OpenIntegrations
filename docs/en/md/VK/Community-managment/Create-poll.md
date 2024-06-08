@@ -29,7 +29,6 @@ sidebar_position: 4
  OptionArray.Add("Green");
  
  Result = OPI_VK.CreatePoll(Question, OptionArray,, Parameters);
- 
 	
 ```
 

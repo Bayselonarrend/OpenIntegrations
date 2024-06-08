@@ -25,7 +25,6 @@ sidebar_position: 10
  
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);
- 
 	
 ```
 

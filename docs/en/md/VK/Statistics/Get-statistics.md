@@ -23,7 +23,6 @@ sidebar_position: 1
  Response = OPI_VK.GetStatistics(CurrentSessionDate() - 60 * 60 * 24, CurrentSessionDate(), Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

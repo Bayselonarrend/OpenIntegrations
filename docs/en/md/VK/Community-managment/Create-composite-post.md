@@ -28,7 +28,7 @@ sidebar_position: 2
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
  Video = "https://openintegrations.dev/test_data/video.mp4"; // URL, Path or Binary Data
  
- TFN = GetTempFileName("png"); 
+ TFN = GetTempFileName("png");
  FileCopy(Image, TFN);
  
  ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
@@ -45,7 +45,6 @@ sidebar_position: 2
  AttachmentsArray.Add("video" + VideoOwner + "_" + VideoID);
  
  Result = OPI_VK.CreateCompositePost(Text, AttachmentsArray, False, URL, Parameters);
- 
 	
 ```
 

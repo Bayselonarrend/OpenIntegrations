@@ -23,7 +23,6 @@ sidebar_position: 7
  Response = OPI_Airtable.GetDateField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

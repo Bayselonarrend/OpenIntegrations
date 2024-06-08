@@ -18,12 +18,11 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
 	
-      
-      Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
-      
-      Ответ = OPI_GoogleDrive.УдалитьОбъект(Токен, Идентификатор);  //Соответствие
-      
-    
+  
+  Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+  
+  Ответ = OPI_GoogleDrive.УдалитьОбъект(Токен, Идентификатор);  //Соответствие
+  
 	
 ```
 

@@ -23,7 +23,6 @@ sidebar_position: 5
  Response = OPI_VK.AddProductPropertyVariant("Red", 260, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

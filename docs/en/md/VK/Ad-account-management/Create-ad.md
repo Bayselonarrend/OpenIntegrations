@@ -26,7 +26,6 @@ sidebar_position: 2
  Response = OPI_VK.CreateAd(1029683999, 166, 126, 221, 1607951446, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

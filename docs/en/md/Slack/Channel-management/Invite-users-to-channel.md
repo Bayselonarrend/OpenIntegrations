@@ -27,7 +27,6 @@ sidebar_position: 7
  Response = OPI_Slack.InviteUsersToChannel(Token, Channel, ArrayOfUsers); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

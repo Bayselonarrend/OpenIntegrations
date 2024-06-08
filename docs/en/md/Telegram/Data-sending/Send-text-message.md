@@ -23,12 +23,11 @@ sidebar_position: 1
 	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
- ChannelID = "@testsichee"; 
+ ChannelID = "@testsichee";
  Text = "String value";
  
  Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
  Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
- 
 	
 ```
 

@@ -27,7 +27,6 @@ sidebar_position: 4
  Response = OPI_YandexDisk.GetPublicObject(Token, URL); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

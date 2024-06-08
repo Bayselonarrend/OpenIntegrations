@@ -18,13 +18,12 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-      
-      Идентификатор = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
-      
-      Ответ = OPI_GoogleSheets.ПолучитьКнигу(Токен, Идентификатор); //Соответствие
-      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //JSON строка
-      
-    
+  
+  Идентификатор = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+  
+  Ответ = OPI_GoogleSheets.ПолучитьКнигу(Токен, Идентификатор); //Соответствие
+  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //JSON строка
+  
 	
 ```
 

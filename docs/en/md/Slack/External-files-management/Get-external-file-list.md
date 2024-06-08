@@ -25,7 +25,6 @@ sidebar_position: 1
  Response = OPI_Slack.GetExternalFileList(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

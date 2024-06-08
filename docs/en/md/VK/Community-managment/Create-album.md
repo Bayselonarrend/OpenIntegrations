@@ -24,7 +24,6 @@ sidebar_position: 5
  Description = "NewAlbumFromAutoTest";
  
  Result = OPI_VK.CreateAlbum(Name, Description, Parameters);
- 
 	
 ```
 

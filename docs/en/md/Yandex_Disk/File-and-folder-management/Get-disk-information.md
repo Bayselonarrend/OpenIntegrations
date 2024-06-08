@@ -22,7 +22,6 @@ sidebar_position: 1
  Response = OPI_YandexDisk.GetDiskInformation(Token); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

@@ -25,7 +25,6 @@ sidebar_position: 4
  
  Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
  Result = OPI_Telegram.CloseForumThread(Token, Chat, Topic);
- 
 	
 ```
 

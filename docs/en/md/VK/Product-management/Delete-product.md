@@ -22,7 +22,6 @@ sidebar_position: 6
  Response = OPI_VK.DeleteProduct(ProductID, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

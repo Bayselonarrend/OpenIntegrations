@@ -26,7 +26,6 @@ sidebar_position: 3
  Response = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

@@ -24,7 +24,6 @@ sidebar_position: 2
  Response = OPI_GoogleDrive.GetDirectoriesList(Token, Name, False); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

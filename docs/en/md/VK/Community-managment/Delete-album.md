@@ -22,7 +22,6 @@ sidebar_position: 6
  AlbumID = "304549394";
  
  Result = OPI_VK.DeleteAlbum(AlbumID, Parameters);
- 
 	
 ```
 

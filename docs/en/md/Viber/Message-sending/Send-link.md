@@ -27,7 +27,6 @@ sidebar_position: 6
  Response = OPI_Viber.SendLink(BotToken, "https://github.com/Bayselonarrend", UserID, False); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

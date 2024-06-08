@@ -29,7 +29,6 @@ sidebar_position: 1
  Response = OPI_Airtable.GetComments(Token, Base, Table, Record); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

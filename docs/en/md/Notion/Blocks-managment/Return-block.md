@@ -26,7 +26,6 @@ sidebar_position: 2
  Response = OPI_Notion.ReturnBlock(Token, BlockID);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

@@ -20,7 +20,6 @@ sidebar_position: 1
  
  Response = OPI_VK.GetProductCategoryList(Parameters); //Map
  
- 
 	
 ```
 
@@ -35,7 +34,6 @@ sidebar_position: 1
 ```json title="Result"
 
 Key Value
- 
  1210	"Business"
  1200	"Photo and video service"
  2162	"Repair and building"

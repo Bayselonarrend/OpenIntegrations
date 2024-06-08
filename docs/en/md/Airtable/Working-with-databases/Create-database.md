@@ -36,7 +36,6 @@ sidebar_position: 3
  Response = OPI_Airtable.CreateDatabase(Token, Workspace, Name, TableCollection); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

@@ -18,10 +18,9 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-        Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-        
-        Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен);
-    
+  Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+  
+  Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен);
 	
 ```
 

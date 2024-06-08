@@ -26,7 +26,6 @@ sidebar_position: 13
  Response = OPI_Slack.RenameChannel(Token, Channel, Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 
