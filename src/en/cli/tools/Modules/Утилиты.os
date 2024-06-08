@@ -48,7 +48,7 @@ Function ConvertBase64ToBinary(Val Entry) Export
 
 	InputFile = New File(Entry);
 
-	If Not InputFile.Exists() Then
+	If Not InputFile.Exist() Then
 		Raise("Input File Not Found!");
 	EndIf;
 
@@ -177,7 +177,7 @@ Procedure GetCollection(Value, Val Encoding)
 		File               = New File(Value);
 		TextDocument  = New TextDocument();
 		
-		If File.Exists() Then
+		If File.Exist() Then
 			
 			TextDocument.Read(Value, Encoding);
 			Value = TextDocument.GetText();
