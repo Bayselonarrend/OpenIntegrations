@@ -17,7 +17,8 @@ sidebar_position: 8
 
 ```bsl title="Code example"
 	
-
+ Result = OPI_VK.GetProductDescription();
+ 
 	
 ```
 
