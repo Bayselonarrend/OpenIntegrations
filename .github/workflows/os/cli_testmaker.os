@@ -158,7 +158,7 @@
 	|          maintainer: Anton Titovets <bayselonarrend@gmail.com>
 	|          version: '" + Версия + "' # refs/tags/v*.*.*
 	|          arch: 'all'
-	|          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
+	|          depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
 	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
 	|
 	|      - uses: actions/upload-artifact@v3
@@ -186,7 +186,7 @@
 	|          arch: 'x86_64'
 	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
 	|          requires: |
-	|            mono-core
+	|            mono-devel
 	|            Requires:       mono-locale-extras
 	|
 	|      - uses: actions/upload-artifact@v4
