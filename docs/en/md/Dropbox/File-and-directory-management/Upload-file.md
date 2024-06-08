@@ -25,7 +25,7 @@ sidebar_position: 4
  Image = "https://openintegrations.dev/test_data/picture.jpg";
  
  ImagePath = GetTempFileName("png");
- CopyFile(Image, ImagePath);
+ FileCopy(Image, ImagePath);
  
  Result = OPI_Dropbox.UploadFile(Token, ImagePath, Path, True);
  

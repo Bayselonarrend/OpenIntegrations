@@ -29,7 +29,7 @@ sidebar_position: 1
  Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
  
  TFN = GetTempFileName("png"); 
- CopyFile(Image2, TFN);
+ FileCopy(Image2, TFN);
  
  ImageArray = New Array;
  ImageArray.Add(Image);

@@ -24,7 +24,7 @@ sidebar_position: 7
  
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
  TFN = GetTempFileName("png");
- CopyFile(Image, TFN);
+ FileCopy(Image, TFN);
  Image = New BinaryData(TFN);
  
  Result = OPI_VK.CreateStory(Image, URL, Parameters); 
