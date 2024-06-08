@@ -29,7 +29,7 @@ sidebar_position: 2
  Video = "https://openintegrations.dev/test_data/video.mp4"; // URL, Path or Binary Data
  
  TFN = GetTempFileName("png"); 
- CopyFile(Image, TFN);
+ FileCopy(Image, TFN);
  
  ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
  VideoUpload = OPI_VK.UploadVideoToServer(Video, "NewVideo",,, Parameters);

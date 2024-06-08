@@ -29,7 +29,7 @@ sidebar_position: 6
  GIF = "https://openintegrations.dev/test_data/animation.gif";
  
  GifPath = GetTempFileName("gif");
- CopyFile(GIF, GifPath);
+ FileCopy(GIF, GifPath);
  
  GifDD = New BinaryData(GifPath);
  
