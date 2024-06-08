@@ -295,7 +295,7 @@ EndFunction
 
 Function JSONString(Val Data, Val Escaping = "None") Export
 
-    JSONParameters = New JSONWriterSettings(JSONLineBreak.Windows
+    JSONParameters = New JSONWriterSettings(JSONLineBreak.Auto
         , " "
         , True
         , JSONCharactersEscapeMode[Escaping]
