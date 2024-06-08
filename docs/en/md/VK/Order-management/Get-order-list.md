@@ -17,7 +17,9 @@ sidebar_position: 1
 
 ```bsl title="Code example"
 	
-
+ Parameters = GetVKParameters();
+ Result = OPI_VK.GetOrderList(Parameters);
+ 
 	
 ```
 
