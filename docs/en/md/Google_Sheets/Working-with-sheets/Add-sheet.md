@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# AddSheet
+# Add sheet
  Adds a new sheet to the spreadsheet
 
 

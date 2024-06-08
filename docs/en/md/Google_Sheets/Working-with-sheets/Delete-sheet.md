@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# DeleteSheet
+# Delete sheet
  Deletes a sheet from the spreadsheet
 
 
