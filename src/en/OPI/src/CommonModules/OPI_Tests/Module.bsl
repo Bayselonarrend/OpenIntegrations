@@ -977,7 +977,7 @@ Procedure VKAPI_UploadVideo() Export
     
     Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetOrderList");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer");
     
     OPI_TestDataRetrieval.ExpectsThat(Result["video_id"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["video_hash"]).Заполнено();
@@ -4976,7 +4976,7 @@ Procedure Dropbox_MoveObject(FunctionParameters)
     
     // END
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Dropbox_MoveObject", "Dropbox");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "Dropbox");
         
     Check_DropboxMetadata(Result, TargetPath);
     
@@ -5288,7 +5288,7 @@ Procedure Dropbox_AddUsersToFolder(FunctionParameters)
     
     // END
         
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddUserToFile", "Dropbox");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFolder", "Dropbox");
     
     Check_Empty(Result);
     

@@ -217,6 +217,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "DropboxAPI_CreateDeleteTag" , "Create/Delete tag" , Dropbox);
     NewTest(TestTable, "DropboxAPI_GetAccount" , "Get account data" , Dropbox);
     NewTest(TestTable, "DropboxAPI_AccessManagement" , "Access management" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetFolderFileList" , "Get list of folder files" , Dropbox);
    
     Return TestTable;
                                     
