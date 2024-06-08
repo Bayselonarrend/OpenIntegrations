@@ -36,14 +36,14 @@ Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 Name: "{group}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{#Repo}\Media\ex.ico"
 Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\start.bat"; IconFilename: "{#Repo}\Media\ex.ico"; Tasks: desktopicon
 Name: "{group}\Uninstall OInt"; Filename: "{uninstallexe}"; IconFilename: "{#Repo}\Media\wizard.ico"
-Name: "{group}\Web-documentation"; Filename: "https://www.openintegrations.dev/"  
+Name: "{group}\Web-documentation"; Filename: "https://www.en.openintegrations.dev/"  
 
 [Tasks]
-Name: desktopicon; Description: "Создать ярлык на рабочем столе"; 
+Name: desktopicon; Description: "Create a desktop shortcut"; 
 
 [Run]
 Filename: "{cmd}"; Parameters: "/k ""cd ""{app}"" && {#MyAppExeName}"""; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-Filename: "https://openintegrations.dev/docs/Nachalo-raboty/Rabota-s-CLI-versiei"; Flags: shellexec runasoriginaluser postinstall; Description: "Visit documentation www.openintegrations.dev"
+Filename: "https://en.openintegrations.dev/docs/Start/CLI_version"; Flags: shellexec runasoriginaluser postinstall; Description: "Visit documentation en.openintegrations.dev"
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
