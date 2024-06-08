@@ -132,7 +132,7 @@ EndFunction
 
 #Region WorkingWithSheets
 
-// AddSheet
+// Add sheet
 // Adds a new sheet to the spreadsheet
 // 
 // 
@@ -163,7 +163,7 @@ Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export
 
 EndFunction
 
-// DeleteSheet
+// Delete sheet
 // Deletes a sheet from the spreadsheet
 // 
 // Parameters:
@@ -194,7 +194,7 @@ Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export
 
 EndFunction
 
-// CopySheet
+// Copy sheet
 // Copies a sheet from one spreadsheet to another
 // 
 // Parameters:
@@ -229,7 +229,7 @@ EndFunction
 
 #Region DataManagment
 
-// SetCellValues
+// Set cell values
 // Sets sheet cell values
 // 
 // Parameters:
