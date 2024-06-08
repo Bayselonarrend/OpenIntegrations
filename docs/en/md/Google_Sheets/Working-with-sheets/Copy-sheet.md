@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# CopySheet
+# Copy sheet
  Copies a sheet from one spreadsheet to another
 
 
