@@ -19,12 +19,11 @@ sidebar_position: 14
 
 ```bsl title="Пример кода"
 	
-        Версия    = "61a0b76320a6fbd841553";
-        Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-        Путь      = "/New/pic.png";  
-        
-        Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);
-    
+  Версия    = "61a0b76320a6fbd841553";
+  Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+  Путь      = "/New/pic.png";
+  
+  Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);
 	
 ```
 

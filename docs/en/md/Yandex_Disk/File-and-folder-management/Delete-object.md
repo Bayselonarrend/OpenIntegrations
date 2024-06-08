@@ -25,7 +25,6 @@ sidebar_position: 4
  Response = OPI_YandexDisk.DeleteObject(Token, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

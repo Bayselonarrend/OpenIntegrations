@@ -26,7 +26,6 @@ sidebar_position: 11
  MessageID = "4951";
  
  Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);
- 
 	
 ```
 

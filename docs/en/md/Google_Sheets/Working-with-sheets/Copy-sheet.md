@@ -28,7 +28,6 @@ sidebar_position: 3
  Response = OPI_GoogleSheets.CopySheet(Token, From, Target, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

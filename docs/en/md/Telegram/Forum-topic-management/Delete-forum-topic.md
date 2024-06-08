@@ -24,7 +24,6 @@ sidebar_position: 6
  Topic = "2673";
  
  Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
- 
 	
 ```
 

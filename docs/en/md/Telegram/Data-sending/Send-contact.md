@@ -24,14 +24,13 @@ sidebar_position: 9
 	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
- ChannelID = "@testsichee"; 
+ ChannelID = "@testsichee";
  Name = "John";
  LastName = "Doe";
  Phone = "88005553535";
  
  Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
  Result = OPI_Telegram.SendContact(Token, ChannelID, Name, LastName, Phone);
- 
 	
 ```
 

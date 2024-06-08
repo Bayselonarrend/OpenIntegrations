@@ -20,14 +20,13 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
 	
-      
-      Токен = "y0_AgAAAABdylaOAA...";
-      URL   = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
-      
-      Ответ = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);   //Соответствие
-      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                          //Строка
-      
-    
+  
+  Токен = "y0_AgAAAABdylaOAA...";
+  URL   = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
+  
+  Ответ = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);   //Соответствие
+  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                          //Строка
+  
 	
 ```
 

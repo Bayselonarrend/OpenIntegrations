@@ -19,12 +19,11 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
 	
-        КлючПриложения   = "oynqxds...";
-        СекретПриложения = "tk2oewn...";
-        Код              = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
-    
-        Результат = OPI_Dropbox.ПолучитьТокен(КлючПриложения, СекретПриложения, Код);
-    
+  КлючПриложения   = "oynqxds...";
+  СекретПриложения = "tk2oewn...";
+  Код              = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
+  
+  Результат = OPI_Dropbox.ПолучитьТокен(КлючПриложения, СекретПриложения, Код);
 	
 ```
 

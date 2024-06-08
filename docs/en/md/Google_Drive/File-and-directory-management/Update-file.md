@@ -28,7 +28,6 @@ sidebar_position: 8
  Response = OPI_GoogleDrive.UpdateFile(Token, Identifier, ReplacementImage, NewName) //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

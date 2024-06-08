@@ -27,7 +27,6 @@ sidebar_position: 10
  Description = "Video description";
  
  Result = OPI_VK.UploadVideoToServer(Video, Name, Description,, Parameters);
- 
 	
 ```
 

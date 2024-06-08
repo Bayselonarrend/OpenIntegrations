@@ -24,7 +24,6 @@ sidebar_position: 2
  Response = OPI_YandexDisk.CreateFolder(Token, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

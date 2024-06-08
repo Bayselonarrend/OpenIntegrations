@@ -22,7 +22,6 @@ sidebar_position: 2
  Response = OPI_GoogleCalendar.GetEventList(Token, "55868c32be16935f0...");
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 
@@ -37,7 +36,6 @@ sidebar_position: 2
 ```json title="Result"
 
 [
- 
  {
  "eventType": "default",
  "attachments": [
@@ -84,7 +82,6 @@ sidebar_position: 2
  "etag": "\"3416857346088000\"",
  "kind": "calendar#event"
  },
- 
  ]
 
 ```

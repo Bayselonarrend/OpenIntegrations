@@ -27,7 +27,6 @@ sidebar_position: 7
  Response = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

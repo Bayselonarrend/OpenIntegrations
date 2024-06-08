@@ -18,11 +18,10 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
 	
-      
-      Ответ = OPI_Viber.УстановитьWebhook(Токен, "https://api.athenaeum.digital/opi/hs/viber");    //Соответствие
-      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                  //JSON строка
-      
-    
+  
+  Ответ = OPI_Viber.УстановитьWebhook(Токен, "https://api.athenaeum.digital/opi/hs/viber");    //Соответствие
+  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                  //JSON строка
+  
 	
 ```
 

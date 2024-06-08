@@ -21,7 +21,6 @@ sidebar_position: 7
 	
  Path = "/alpaca.png";
  Result = OPI_YandexDisk.DownloadFile(Token, Path);
- 
 	
 ```
 

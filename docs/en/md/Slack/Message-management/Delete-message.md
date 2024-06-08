@@ -27,7 +27,6 @@ sidebar_position: 4
  Response = OPI_Slack.DeleteMessage(Token, Channel, Timestamp); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

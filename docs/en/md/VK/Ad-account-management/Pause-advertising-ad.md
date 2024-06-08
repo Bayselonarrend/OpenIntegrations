@@ -23,7 +23,6 @@ sidebar_position: 3
  Response = OPI_VK.PauseAdvertisingAd(1234567890, 1029701085, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

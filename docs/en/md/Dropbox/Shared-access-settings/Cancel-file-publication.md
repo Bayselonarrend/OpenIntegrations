@@ -22,7 +22,6 @@ sidebar_position: 6
  File = "kJU6-a-pT48AAAAAAAAABw";
  
  Result = OPI_Dropbox.CancelFilePublication(Token, File);
- 
 	
 ```
 

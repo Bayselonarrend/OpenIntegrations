@@ -25,7 +25,6 @@ sidebar_position: 4
  Response = OPI_Airtable.GetNumberField(Name, Precision); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

@@ -24,7 +24,6 @@ sidebar_position: 2
  Code = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
  
  Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
- 
 	
 ```
 

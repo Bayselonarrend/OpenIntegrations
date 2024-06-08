@@ -23,7 +23,6 @@ sidebar_position: 5
  Response = OPI_VK.AddProductToSelection(8656559, 40, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

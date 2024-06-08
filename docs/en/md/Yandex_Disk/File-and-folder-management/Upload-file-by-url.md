@@ -27,7 +27,6 @@ sidebar_position: 11
  Response = OPI_YandexDisk.UploadFileByURL(Token, Path, Address); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

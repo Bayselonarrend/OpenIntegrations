@@ -22,7 +22,6 @@ sidebar_position: 7
  Response = OPI_VK.DeleteProductPropertyVariant(980 Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

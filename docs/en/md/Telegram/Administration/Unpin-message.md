@@ -24,7 +24,6 @@ sidebar_position: 5
  MessageID = "4951";
  
  Result = OPI_Telegram.UnpinMessage(Token, ChannelID, MessageID);
- 
 	
 ```
 

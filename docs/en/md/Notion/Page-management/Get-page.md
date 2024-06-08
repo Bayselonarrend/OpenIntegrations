@@ -25,7 +25,6 @@ sidebar_position: 3
  Response = OPI_Notion.GetPage(Token, Page);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

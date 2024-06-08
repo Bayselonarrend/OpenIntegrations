@@ -20,12 +20,11 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
 	
-        Токен  = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-        Почта  = "h5bk6ft62s@privaterelay.appleid.com";
-        Папка  = "5022319569"; // shared_folder_id
-        
-        Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почта, Ложь);
-    
+  Токен  = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+  Почта  = "h5bk6ft62s@privaterelay.appleid.com";
+  Папка  = "5022319569"; // shared_folder_id
+  
+  Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почта, Ложь);
 	
 ```
 

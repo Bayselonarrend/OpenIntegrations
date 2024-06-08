@@ -25,7 +25,6 @@ sidebar_position: 3
  File = "kJU6-a-pT48AAAAAAAAABw";
  
  Result = OPI_Dropbox.AddUsersToFile(Token, File, Email, False);
- 
 	
 ```
 

@@ -27,7 +27,6 @@ sidebar_position: 7
  Response = OPI_VK.GroupProducts(ProductsArray,, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

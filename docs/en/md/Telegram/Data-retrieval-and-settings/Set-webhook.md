@@ -22,7 +22,6 @@ sidebar_position: 3
  URL = "https://api.athenaeum.digital/opi/hs/twitter";
  
  Result = OPI_Telegram.SetWebhook(Token, URL);
- 
 	
 ```
 

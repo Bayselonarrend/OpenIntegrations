@@ -22,7 +22,6 @@ sidebar_position: 8
  Chat = "-1001971186208";
  
  Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
- 
 	
 ```
 

@@ -19,7 +19,6 @@ sidebar_position: 1
 	
  Parameters = GetVKParameters();
  Result = OPI_VK.GetOrderList(Parameters);
- 
 	
 ```
 

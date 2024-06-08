@@ -22,7 +22,6 @@ sidebar_position: 5
  Token = "6129457865:AAFyzNYOAFbu...";
  
  Result = OPI_Telegram.DownloadFile(Token, FileID);
- 
 	
 ```
 

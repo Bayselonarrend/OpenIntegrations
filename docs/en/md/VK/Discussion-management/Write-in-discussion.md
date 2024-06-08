@@ -24,7 +24,6 @@ sidebar_position: 4
  Message = "I like yellow more";
  
  Result = OPI_VK.WriteInDiscussion(DiscussionID, Message, Parameters);
- 
 	
 ```
 

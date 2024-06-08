@@ -17,14 +17,13 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-      
-      Ответ = OPI_Twitter.ОбновитьТокен(Параметры);
-      Константы.TwitterToken.Установить(Ответ["access_token"]);
-      Константы.TwitterRefresh.Установить(Ответ["refresh_token"]);
-      
-      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-      
-    
+  
+  Ответ = OPI_Twitter.ОбновитьТокен(Параметры);
+  Константы.TwitterToken.Установить(Ответ["access_token"]);
+  Константы.TwitterRefresh.Установить(Ответ["refresh_token"]);
+  
+  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+  
 	
 ```
 

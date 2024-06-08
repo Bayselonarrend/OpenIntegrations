@@ -24,7 +24,6 @@ sidebar_position: 5
  Response = OPI_Slack.GetChannel(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response);//JSON string
  
- 
 	
 ```
 

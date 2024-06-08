@@ -24,7 +24,6 @@ sidebar_position: 4
  
  Response = OPI_GoogleDrive.DeleteComment(Token, Identifier, Comment); //Map
  
- 
 	
 ```
 

@@ -23,7 +23,6 @@ sidebar_position: 9
  
  Response = OPI_GoogleDrive.DeleteObject(Token, Identifier); //Map
  
- 
 	
 ```
 

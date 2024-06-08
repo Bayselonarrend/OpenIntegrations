@@ -22,7 +22,6 @@ sidebar_position: 2
  Response = OPI_VK.CreateProductProperty("Color", Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

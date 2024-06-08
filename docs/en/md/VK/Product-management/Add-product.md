@@ -44,7 +44,6 @@ sidebar_position: 4
  Response = OPI_VK.AddProduct(Product, SelectionID, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

@@ -20,8 +20,7 @@ sidebar_position: 5
 	
  
  Response = OPI_GoogleCalendar.DeleteCalendar(Token, "55868c32be16935f0...");
- Response = OPI_Tools.JSONString(Response); 
- 
+ Response = OPI_Tools.JSONString(Response);
  
 	
 ```

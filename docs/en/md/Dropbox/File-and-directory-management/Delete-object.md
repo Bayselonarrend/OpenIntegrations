@@ -19,11 +19,10 @@ sidebar_position: 7
 
 ```bsl title="Code example"
 	
- Path = "/New/pic.png"; 
- Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..."; 
+ Path = "/New/pic.png";
+ Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  
  Result = OPI_Dropbox.DeleteObject(Token, Path);
- 
 	
 ```
 
