@@ -107,6 +107,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ДропБокс_РаботаСДоступами"
 
+      - name: Получить список файлов папки
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ДропБокс_ПолучитьСписокФайловПапки"
+
       - name: Записать логи
         if: ${{ cancelled() }} == false
         uses: actions/cache/save@v3
