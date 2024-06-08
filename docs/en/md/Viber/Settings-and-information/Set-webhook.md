@@ -22,7 +22,6 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
  Response = OPI_Viber.SetWebhook(Token, "https://api.athenaeum.digital/opi/hs/viber"); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

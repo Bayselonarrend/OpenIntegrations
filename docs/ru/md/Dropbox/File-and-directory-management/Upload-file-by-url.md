@@ -19,12 +19,11 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
 	
-        Путь  = "/New/url_doc.docx";  
-        Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-        URL   = "https://openintegrations.dev/test_data/document.docx";
-        
-        Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
-    
+  Путь  = "/New/url_doc.docx";
+  Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+  URL   = "https://openintegrations.dev/test_data/document.docx";
+  
+  Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
 	
 ```
 

@@ -30,7 +30,6 @@ sidebar_position: 2
  Response = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel); //Map
  Response = OPI_Tools.JSONString(Response);//JSON string
  
- 
 	
 ```
 

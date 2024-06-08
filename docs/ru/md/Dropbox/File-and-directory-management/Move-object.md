@@ -19,12 +19,11 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
 	
-        ОригиналныйПуть  = "/New/pic.png";
-        ЦелевойПуть      = "/pic.png";  
-        Токен            = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-        
-        Результат = OPI_Dropbox.ПереместитьОбъект(Токен, ОригиналныйПуть, ЦелевойПуть);
-    
+  ОригиналныйПуть  = "/New/pic.png";
+  ЦелевойПуть      = "/pic.png";
+  Токен            = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+  
+  Результат = OPI_Dropbox.ПереместитьОбъект(Токен, ОригиналныйПуть, ЦелевойПуть);
 	
 ```
 

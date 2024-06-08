@@ -22,16 +22,15 @@ sidebar_position: 3
 ```bsl title="Code example"
 	
  Token = "6129457865:AAFyzNYOAFbu...";
- ChannelID = "@testsichee"; 
- Day = 86400; 
+ ChannelID = "@testsichee";
+ Day = 86400;
  CurrentDate = OPI_Tools.GetCurrentDate();
  
- Title = "Link " + String(CurrentDate); 
+ Title = "Link " + String(CurrentDate);
  Expiration = CurrentDate + Day;
  UnixExpiration = OPI_Tools.UNIXTime(Expiration);
  
  Result = OPI_Telegram.CreateInvitationLink(Token, ChannelID, Title, Expiration, 200);
- 
 	
 ```
 

@@ -19,7 +19,6 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 	
  Application = "51694790";
  Result = OPI_VK.CreateTokenRetrievalLink(Application);
- 
 	
 ```
 

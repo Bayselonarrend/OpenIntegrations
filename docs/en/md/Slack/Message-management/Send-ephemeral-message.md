@@ -28,7 +28,6 @@ Sends a message that arrives in the channel but is visible only to a specific us
  Response = OPI_Slack.SendEphemeralMessage(Token, Channel,, User, Block); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

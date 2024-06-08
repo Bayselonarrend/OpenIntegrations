@@ -28,7 +28,6 @@ sidebar_position: 9
  Response = OPI_YandexDisk.MoveObject(Token, Original, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

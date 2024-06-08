@@ -24,7 +24,6 @@ sidebar_position: 1
  ChannelID = "@testsichee";
  
  Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
- 
 	
 ```
 

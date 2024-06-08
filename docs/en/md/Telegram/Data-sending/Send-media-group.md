@@ -32,7 +32,6 @@ sidebar_position: 7
  Response = OPI_Telegram.SendMediaGroup(Token, 1234567890, Description, FileMapping); //Map
  Response = OPI_Tools.JSONString(Response_); //JSON string
  
- 
 	
 ```
 

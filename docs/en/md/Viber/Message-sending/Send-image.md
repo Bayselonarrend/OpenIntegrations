@@ -28,7 +28,6 @@ sidebar_position: 2
  Response = OPI_Viber.SendImage(ChannelToken, "https://api.athenaeum.digital/logo.png", UserID, True, "Alpaca"); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

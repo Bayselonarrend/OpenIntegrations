@@ -19,14 +19,13 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
 	
-      
-      URL       = https://opi.neocities.org/test_data/document.docx;
-      Заголовок = "Новый файл";
-      
-      Ответ = OPI_Slack.ДобавитьВнешнийФайл(Токен, URL, Заголовок); //Соответствие
-      Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //JSON строка
-      
-    
+  
+  URL       = https://opi.neocities.org/test_data/document.docx;
+  Заголовок = "Новый файл";
+  
+  Ответ = OPI_Slack.ДобавитьВнешнийФайл(Токен, URL, Заголовок); //Соответствие
+  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //JSON строка
+  
 	
 ```
 

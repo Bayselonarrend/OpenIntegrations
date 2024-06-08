@@ -30,7 +30,6 @@ sidebar_position: 2
  Response = OPI_Airtable.ModifyTable(Token, Base, Table, Name, Description); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

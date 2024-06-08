@@ -24,7 +24,6 @@ sidebar_position: 1
  Response = OPI_YandexDisk.PublishObject(Token, Path); //Map; Link to file - Response["public_url"]
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

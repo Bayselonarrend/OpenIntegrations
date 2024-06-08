@@ -26,11 +26,10 @@ sidebar_position: 1
  
  Block = OPI_Notion.ReturnBlock(Token, "ca18df269bd24407852b91c30e..."); //Block as map. Can be changed.
  
- Response = OPI_Notion.CreateBlock(Token, Parent, Block); 
- Response = OPI_Notion.CreateBlock(Token, Parent, "46c1500ed40c4e89ba6a229003..."); 
- Response = OPI_Notion.CreateBlock(Token, Parent, "aa4137d4c8cc445d9f969c3968..."); 
+ Response = OPI_Notion.CreateBlock(Token, Parent, Block);
+ Response = OPI_Notion.CreateBlock(Token, Parent, "46c1500ed40c4e89ba6a229003...");
+ Response = OPI_Notion.CreateBlock(Token, Parent, "aa4137d4c8cc445d9f969c3968...");
  Response = OPI_Tools.JSONString(Response);
- 
  
 	
 ```
