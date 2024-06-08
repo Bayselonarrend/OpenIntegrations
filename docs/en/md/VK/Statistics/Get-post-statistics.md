@@ -26,7 +26,6 @@ sidebar_position: 2
  Response = OPI_VK.GetPostStatistics(ArrayOfPosts, VK_Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

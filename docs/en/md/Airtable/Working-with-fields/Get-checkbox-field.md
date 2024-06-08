@@ -23,7 +23,6 @@ sidebar_position: 6
  Response = OPI_Airtable.GetCheckboxField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

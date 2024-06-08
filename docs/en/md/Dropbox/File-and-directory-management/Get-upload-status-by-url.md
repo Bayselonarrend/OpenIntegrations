@@ -22,7 +22,7 @@ sidebar_position: 6
  WorkID = "G8YbueOu2nsAAAAAAAAAAQ";
  Status = "in_progress";
  
- WHile Status = "in_progress" Do 
+ WHile Status = "in_progress" Do
  
  Result = OPI_Dropbox.GetUploadStatusByURL(Token, WorkID);
  Status = Result[".tag"];
@@ -31,7 +31,6 @@ sidebar_position: 6
  
  
  EndDo;
- 
 	
 ```
 

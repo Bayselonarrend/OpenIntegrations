@@ -30,7 +30,6 @@ sidebar_position: 4
  Response = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

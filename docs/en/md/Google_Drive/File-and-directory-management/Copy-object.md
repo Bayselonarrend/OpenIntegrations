@@ -28,7 +28,6 @@ sidebar_position: 7
  Response = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, NewLocation) //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

@@ -36,7 +36,6 @@ sidebar_position: 1
  Response = OPI_Viber.SendTextMessage(BotToken, "Hello", UserID, False, Keyboard); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
- 
 	
 ```
 

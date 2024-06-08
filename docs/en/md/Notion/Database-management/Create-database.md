@@ -47,7 +47,6 @@ sidebar_position: 1
  Response = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 

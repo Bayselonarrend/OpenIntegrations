@@ -26,7 +26,6 @@ sidebar_position: 3
  Response = OPI_GoogleCalendar.EditCalendarMetadata(Token, "55868c32be16935f0...", Name, Description); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
- 
 	
 ```
 

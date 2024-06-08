@@ -26,7 +26,7 @@ sidebar_position: 2
  ChatID = "461699897";
  ChannelID = "@testsichee";
  Text = "String value";
- Image = "https://openintegrations.dev/test_data/picture.jpg"; 
+ Image = "https://openintegrations.dev/test_data/picture.jpg";
  
  ImagePath = GetTempFileName("png");
  FileCopy(Image, ImagePath);
@@ -34,9 +34,8 @@ sidebar_position: 2
  ImageDD = New BinaryData(ImagePath);
  
  Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
- Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath); 
+ Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
  Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
- 
 	
 ```
 

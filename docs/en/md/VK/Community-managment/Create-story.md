@@ -27,9 +27,8 @@ sidebar_position: 7
  FileCopy(Image, TFN);
  Image = New BinaryData(TFN);
  
- Result = OPI_VK.CreateStory(Image, URL, Parameters); 
+ Result = OPI_VK.CreateStory(Image, URL, Parameters);
  Result = OPI_VK.CreateStory(TFN,, Parameters);
- 
 	
 ```
 

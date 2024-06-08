@@ -25,7 +25,6 @@ sidebar_position: 2
  Response = OPI_VK.MakeRepost(2571, -218704372,,, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
- 
 	
 ```
 
