@@ -29,7 +29,7 @@ sidebar_position: 4
  Audio = "https://openintegrations.dev/test_data/song.mp3";
  
  AudioPath = GetTempFileName("mp3");
- CopyFile(Audio, AudioPath);
+ FileCopy(Audio, AudioPath);
  
  AudioDD = New BinaryData(AudioPath);
  
