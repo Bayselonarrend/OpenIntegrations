@@ -185,7 +185,7 @@ Procedure GetCollection(Value, Val Encoding)
 		ElsIf StrStartsWith(Lower(Value), "http") Then
 			
 			TFN = GetTempFileName();
-			CopyFile(Value, TFN);
+			FileCopy(Value, TFN);
 			TextDocument.Read(TFN, Encoding);
 
 			Value = TextDocument.GetText();
