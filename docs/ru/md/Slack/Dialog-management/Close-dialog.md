@@ -29,7 +29,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint slack ЗакрытьДиалог --token %token% --conv "D06UAKK1C6R"
+  oint slack ЗакрытьДиалог --token %token% --conv "D06UAKK1C6R"
 
 ```
 

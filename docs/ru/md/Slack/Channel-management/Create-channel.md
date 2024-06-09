@@ -30,7 +30,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint slack СоздатьКанал --token %token% --title %title% --private %private%
+  oint slack СоздатьКанал --token %token% --title %title% --private %private%
 
 ```
 

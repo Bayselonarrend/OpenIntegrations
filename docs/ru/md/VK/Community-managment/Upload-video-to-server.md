@@ -32,7 +32,7 @@ sidebar_position: 10
 
 ```sh title="Пример команды CLI"
     
-      oint vk ЗагрузитьВидеоНаСервер --file %file% --title %title% --description %description% --album %album% --auth %auth%
+  oint vk ЗагрузитьВидеоНаСервер --file %file% --title %title% --description %description% --album %album% --auth %auth%
 
 ```
 

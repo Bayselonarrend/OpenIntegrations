@@ -33,7 +33,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint viber ОтправитьЛокацию --token %token% --lat %lat% --long %long% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
+  oint viber ОтправитьЛокацию --token %token% --lat %lat% --long %long% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
 
 ```
 

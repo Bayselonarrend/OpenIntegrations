@@ -29,7 +29,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint dropbox ОбновитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --refresh "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV..."
+  oint dropbox ОбновитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --refresh "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV..."
 
 ```
 

@@ -31,7 +31,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint notion ВернутьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block% --core %core%
+  oint notion ВернутьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block% --core %core%
 
 ```
 

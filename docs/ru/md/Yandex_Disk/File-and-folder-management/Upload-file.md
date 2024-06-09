@@ -33,7 +33,7 @@ sidebar_position: 10
 
 ```sh title="Пример команды CLI"
     
-      oint yadisk ЗагрузитьФайл --token "y0_AgAAAABdylaOAA..." --path "/АльпакаИзФайла.png" --file "C:\logo.png" --rewrite %rewrite%
+  oint yadisk ЗагрузитьФайл --token "y0_AgAAAABdylaOAA..." --path "/АльпакаИзФайла.png" --file "C:\logo.png" --rewrite %rewrite%
 
 ```
 

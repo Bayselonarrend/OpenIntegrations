@@ -30,7 +30,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint slack ПолучитьСписокВнешнихФайлов --token %token% --channel "C070VPMKN8J" --cursor %cursor%
+  oint slack ПолучитьСписокВнешнихФайлов --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
 ```
 

@@ -30,7 +30,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint airtable ПолучитьПолеНомера --title "Номер" --precision "0"
+  oint airtable ПолучитьПолеНомера --title "Номер" --precision "0"
 
 ```
 

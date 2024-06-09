@@ -27,7 +27,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint gcalendar ПолучитьКалендарьСписка --token %token% --calendar %calendar%
+  oint gcalendar ПолучитьКалендарьСписка --token %token% --calendar %calendar%
 
 ```
 

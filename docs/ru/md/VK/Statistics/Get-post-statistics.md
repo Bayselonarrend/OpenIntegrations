@@ -31,7 +31,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint vk ПолучитьСтатистикуПостов --posts %posts% --auth %auth%
+  oint vk ПолучитьСтатистикуПостов --posts %posts% --auth %auth%
 
 ```
 
