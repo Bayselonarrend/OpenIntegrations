@@ -32,7 +32,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint notion СоздатьСтраницу --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Создано из 1С"
+  oint notion СоздатьСтраницу --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Создано из 1С"
 
 ```
 

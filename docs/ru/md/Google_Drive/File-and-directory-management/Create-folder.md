@@ -30,7 +30,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint gdrive СоздатьПапку --token %token% --title "Тестовая папка" --catalog %catalog%
+  oint gdrive СоздатьПапку --token %token% --title "Тестовая папка" --catalog %catalog%
 
 ```
 

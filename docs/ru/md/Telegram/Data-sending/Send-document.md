@@ -41,7 +41,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ОтправитьДокумент --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode%
+  oint telegram ОтправитьДокумент --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode%
 
 ```
 

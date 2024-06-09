@@ -29,7 +29,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint slack УдалитьФайл --token %token% --fileid "F070VL6FQFM"
+  oint slack УдалитьФайл --token %token% --fileid "F070VL6FQFM"
 
 ```
 

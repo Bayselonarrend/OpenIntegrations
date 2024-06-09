@@ -34,7 +34,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint gsheets СоздатьКнигу --token %token% --title "Тестовая таблица" --sheets %sheets%
+  oint gsheets СоздатьКнигу --token %token% --title "Тестовая таблица" --sheets %sheets%
 
 ```
 

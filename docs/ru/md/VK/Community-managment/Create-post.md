@@ -42,7 +42,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint vk СоздатьПост --text %text% --pictures %pictures% --ad %ad% --url %url% --auth %auth%
+  oint vk СоздатьПост --text %text% --pictures %pictures% --ad %ad% --url %url% --auth %auth%
 
 ```
 

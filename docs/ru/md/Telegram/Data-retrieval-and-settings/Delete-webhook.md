@@ -24,7 +24,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint telegram УдалитьWebhook --token "6129457865:AAFyzNYOAFbu..."
+  oint telegram УдалитьWebhook --token "6129457865:AAFyzNYOAFbu..."
 
 ```
 

@@ -36,7 +36,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint airtable УдалитьЗаписи --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --records %records%
+  oint airtable УдалитьЗаписи --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --records %records%
 
 ```
 

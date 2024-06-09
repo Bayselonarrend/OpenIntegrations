@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ПолучитьИнформациюБота --token "6129457865:AAFyzNYOAFbu..."
+  oint telegram ПолучитьИнформациюБота --token "6129457865:AAFyzNYOAFbu..."
 
 ```
 

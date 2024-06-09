@@ -26,7 +26,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint vk СократитьСсылку --url %url% --auth %auth%
+  oint vk СократитьСсылку --url %url% --auth %auth%
 
 ```
 

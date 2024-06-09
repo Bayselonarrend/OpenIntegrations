@@ -28,7 +28,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint vk ПоставитьЛайк --post %post% --wall %wall% --auth %auth%
+  oint vk ПоставитьЛайк --post %post% --wall %wall% --auth %auth%
 
 ```
 

@@ -27,7 +27,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint telegram УстановитьWebhook --token "6129457865:AAFyzNYOAFbu..." --url "https://api.athenaeum.digital/opi/hs/twitter"
+  oint telegram УстановитьWebhook --token "6129457865:AAFyzNYOAFbu..." --url "https://api.athenaeum.digital/opi/hs/twitter"
 
 ```
 

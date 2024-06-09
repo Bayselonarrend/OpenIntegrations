@@ -29,7 +29,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint yadisk СоздатьПапку --token "y0_AgAAAABdylaOAA..." --path "/Тестовая папка"
+  oint yadisk СоздатьПапку --token "y0_AgAAAABdylaOAA..." --path "/Тестовая папка"
 
 ```
 

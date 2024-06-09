@@ -22,7 +22,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint gcalendar ПолучитьОписаниеСобытия
+  oint gcalendar ПолучитьОписаниеСобытия
 
 ```
 

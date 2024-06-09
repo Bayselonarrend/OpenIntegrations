@@ -28,7 +28,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint vk СоздатьРекламнуюКампанию --cabinet %cabinet% --title %title% --auth %auth%
+  oint vk СоздатьРекламнуюКампанию --cabinet %cabinet% --title %title% --auth %auth%
 
 ```
 

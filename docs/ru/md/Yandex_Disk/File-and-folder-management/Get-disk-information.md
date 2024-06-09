@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint yadisk ПолучитьИнформациюОДиске --token "y0_AgAAAABdylaOAA..."
+  oint yadisk ПолучитьИнформациюОДиске --token "y0_AgAAAABdylaOAA..."
 
 ```
 

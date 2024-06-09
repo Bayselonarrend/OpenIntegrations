@@ -26,7 +26,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ПолучитьОбновления --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
+  oint telegram ПолучитьОбновления --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
 
 ```
 

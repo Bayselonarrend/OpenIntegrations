@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint vk ИзменитьСвойствоТовара --title %title% --prop %prop% --auth %auth%
+  oint vk ИзменитьСвойствоТовара --title %title% --prop %prop% --auth %auth%
 
 ```
 

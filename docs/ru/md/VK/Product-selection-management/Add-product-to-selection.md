@@ -28,7 +28,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint vk ДобавитьТоварВПодборку --items %items% --sel %sel% --auth %auth%
+  oint vk ДобавитьТоварВПодборку --items %items% --sel %sel% --auth %auth%
 
 ```
 

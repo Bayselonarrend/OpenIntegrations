@@ -30,7 +30,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint notion ПолучитьДанныеПользователя --token "secret_9RsfMrRMqZwqp0Zl0B..." --user "ed71865a989146bc86cdwdf24..."
+  oint notion ПолучитьДанныеПользователя --token "secret_9RsfMrRMqZwqp0Zl0B..." --user "ed71865a989146bc86cdwdf24..."
 
 ```
 

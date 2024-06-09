@@ -29,7 +29,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint airtable ПолучитьТаблицыБазы --token %token% --base "apptm8Xqo7TwMaipQ"
+  oint airtable ПолучитьТаблицыБазы --token %token% --base "apptm8Xqo7TwMaipQ"
 
 ```
 

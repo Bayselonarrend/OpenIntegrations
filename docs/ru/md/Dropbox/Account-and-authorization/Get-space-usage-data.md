@@ -25,7 +25,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint dropbox ПолучитьДанныеИспользованияПространства --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..."
+  oint dropbox ПолучитьДанныеИспользованияПространства --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..."
 
 ```
 

@@ -28,7 +28,7 @@ sidebar_position: 9
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ИзменитьИмяГлавнойТемыФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title%
+  oint telegram ИзменитьИмяГлавнойТемыФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title%
 
 ```
 

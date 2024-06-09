@@ -26,7 +26,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint vk ПолучитьСписокРекламныхКатегорий --auth %auth%
+  oint vk ПолучитьСписокРекламныхКатегорий --auth %auth%
 
 ```
 

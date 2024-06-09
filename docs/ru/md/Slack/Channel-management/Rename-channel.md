@@ -31,7 +31,7 @@ sidebar_position: 13
 
 ```sh title="Пример команды CLI"
     
-      oint slack ПереименоватьКанал --token %token% --channel "C070VPMKN8J" --title %title%
+  oint slack ПереименоватьКанал --token %token% --channel "C070VPMKN8J" --title %title%
 
 ```
 

@@ -33,7 +33,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint airtable ПолучитьЗапись --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk"
+  oint airtable ПолучитьЗапись --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk"
 
 ```
 

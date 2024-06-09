@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint dropbox ПолучитьСписокТегов --token %token% --paths %paths%
+  oint dropbox ПолучитьСписокТегов --token %token% --paths %paths%
 
 ```
 

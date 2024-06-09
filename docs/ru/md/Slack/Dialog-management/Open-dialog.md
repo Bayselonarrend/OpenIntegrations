@@ -31,7 +31,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint slack ОткрытьДиалог --token %token% --users %users%
+  oint slack ОткрытьДиалог --token %token% --users %users%
 
 ```
 

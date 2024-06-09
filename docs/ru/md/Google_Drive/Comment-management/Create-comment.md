@@ -31,7 +31,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint gdrive СоздатьКомментарий --token %token% --object "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW" --text %text%
+  oint gdrive СоздатьКомментарий --token %token% --object "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW" --text %text%
 
 ```
 

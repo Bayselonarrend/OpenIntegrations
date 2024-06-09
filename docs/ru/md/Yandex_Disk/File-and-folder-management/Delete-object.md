@@ -30,7 +30,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint yadisk УдалитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png" --can %can%
+  oint yadisk УдалитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png" --can %can%
 
 ```
 

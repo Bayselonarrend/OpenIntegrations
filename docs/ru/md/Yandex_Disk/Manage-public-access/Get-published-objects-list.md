@@ -30,7 +30,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint yadisk ПолучитьСписокОпубликованныхОбъектов --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset%
+  oint yadisk ПолучитьСписокОпубликованныхОбъектов --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset%
 
 ```
 

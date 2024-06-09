@@ -36,7 +36,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint gdrive ЗагрузитьФайл --token %token% --file %file% --props %props%
+  oint gdrive ЗагрузитьФайл --token %token% --file %file% --props %props%
 
 ```
 

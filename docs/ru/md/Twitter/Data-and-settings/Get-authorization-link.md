@@ -25,7 +25,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint twitter ПолучитьСсылкуАвторизации --auth %auth%
+  oint twitter ПолучитьСсылкуАвторизации --auth %auth%
 
 ```
 

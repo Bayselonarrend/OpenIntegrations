@@ -30,7 +30,7 @@ sidebar_position: 10
 
 ```sh title="Пример команды CLI"
     
-      oint gdrive ПолучитьОписаниеФайла
+  oint gdrive ПолучитьОписаниеФайла
 
 ```
 

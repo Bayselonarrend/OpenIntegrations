@@ -28,7 +28,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-      oint dropbox УдалитьОбъект --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --permanently %permanently%
+  oint dropbox УдалитьОбъект --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --permanently %permanently%
 
 ```
 

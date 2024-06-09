@@ -34,7 +34,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint gcalendar ИзменитьКалендарьСписка --token %token% --calendar %calendar% --primary %primary% --secondary %secondary% --hidden %hidden%
+  oint gcalendar ИзменитьКалендарьСписка --token %token% --calendar %calendar% --primary %primary% --secondary %secondary% --hidden %hidden%
 
 ```
 

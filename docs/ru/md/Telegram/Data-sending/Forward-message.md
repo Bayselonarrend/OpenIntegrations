@@ -31,7 +31,7 @@ sidebar_position: 11
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ПереслатьСообщение --token "6129457865:AAFyzNYOAFbu..." --message %message% --from %from% --to %to%
+  oint telegram ПереслатьСообщение --token "6129457865:AAFyzNYOAFbu..." --message %message% --from %from% --to %to%
 
 ```
 

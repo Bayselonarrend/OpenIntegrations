@@ -31,7 +31,7 @@ sidebar_position: 8
 
 ```sh title="Пример команды CLI"
     
-      oint slack ВыгнатьПользователяИзКанала --token %token% --channel "C070VPMKN8J" --user "U06UG1CAYH2"
+  oint slack ВыгнатьПользователяИзКанала --token %token% --channel "C070VPMKN8J" --user "U06UG1CAYH2"
 
 ```
 

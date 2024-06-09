@@ -31,7 +31,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint slack ОтправитьВнешнийФайл --token %token% --fileid "F070P52CU94" --channels %channels%
+  oint slack ОтправитьВнешнийФайл --token %token% --fileid "F070P52CU94" --channels %channels%
 
 ```
 

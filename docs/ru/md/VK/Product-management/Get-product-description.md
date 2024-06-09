@@ -23,7 +23,7 @@ sidebar_position: 8
 
 ```sh title="Пример команды CLI"
     
-      oint vk ПолучитьОписаниеТовара
+  oint vk ПолучитьОписаниеТовара
 
 ```
 

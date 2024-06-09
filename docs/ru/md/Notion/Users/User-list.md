@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint notion СписокПользователей --token "secret_9RsfMrRMqZwqp0Zl0B..."
+  oint notion СписокПользователей --token "secret_9RsfMrRMqZwqp0Zl0B..."
 
 ```
 

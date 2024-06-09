@@ -32,7 +32,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint slack УдалитьСообщение --token %token% --channel "C06UFNUTKUL" --stamp "1714146538.221929" --issheduled %issheduled%
+  oint slack УдалитьСообщение --token %token% --channel "C06UFNUTKUL" --stamp "1714146538.221929" --issheduled %issheduled%
 
 ```
 
