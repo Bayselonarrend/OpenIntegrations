@@ -7,6 +7,6 @@ OInt/coverage/stat.json
 data.json
 *.exe
 test.os
-/docs
 /test_logs
 Поток
+/docs/docusaurus/node_modules

@@ -1,0 +1,20 @@
+﻿  
+  {
+  "conferenceProperties": {
+  "allowedConferenceSolutionTypes": [
+  "hangoutsMeet"
+  ]
+  },
+  "accessRole": "owner",
+  "foregroundColor": "#000000",
+  "backgroundColor": "#ffd800",
+  "colorId": "6",
+  "description": "Тестовое описание",
+  "summary": "Тестовый календарь (изм.)",
+  "defaultReminders": [],
+  "timeZone": "UTC",
+  "id": "0da65d69eba1e4b27f980447827b251ca2d94ecb1d30dba22c83559c33d0ea29@group.calendar.google.com",
+  "etag": "\"1708424005038000\"",
+  "kind": "calendar#calendarListEntry"
+  }
+  

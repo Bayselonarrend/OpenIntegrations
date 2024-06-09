@@ -1,0 +1,1 @@
+﻿oint vk ДобавитьВариантСвойстваТовара --value %value% --prop %prop% --auth %auth%

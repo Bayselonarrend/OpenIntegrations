@@ -1,0 +1,1 @@
+﻿oint dropbox ПолучитьСписокТегов --token %token% --paths %paths%

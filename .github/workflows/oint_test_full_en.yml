@@ -1,0 +1,1291 @@
+﻿
+name: OINT | Полное тестирование (EN)
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Decode:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    steps:
+
+      - uses: actions/checkout@v4 
+
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+      - name: Записать тестовые данные в кэш
+        uses: actions/cache/save@v3
+        with:
+          key: test-data
+          path: ./data.json
+
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4             
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx    
+
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: oint
+          path: ./src/en/OInt/*.ospx
+
+
+  Testing-Telegram:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get bot information
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetBotInfo"
+
+      - name: Get updates
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetUpdates"
+
+      - name: Set Webhook
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SetWebhook"
+
+      - name: Send text message
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendTextMessage"
+
+      - name: Send image
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendImage"
+
+      - name: Send video
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendVideo"
+
+      - name: Send audio
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendAudio"
+
+      - name: Send document
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendDocument"
+
+      - name: Send GIF
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendGIF"
+
+      - name: Send mediagroup
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendMediaGroup"
+
+      - name: Send location
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendLocation"
+
+      - name: Send contact
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendContact"
+
+      - name: Send poll
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_SendPoll"
+
+      - name: Forward message
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_ForwardMessage"
+
+      - name: Ban/Unban
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_BanUnban"
+
+      - name: Create invitation link
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_CreateInvitationLink"
+
+      - name: Pin/Unpin message
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_PinUnpinMessage"
+
+      - name: Get participant count
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetMemberCount"
+
+      - name: Get forum avatars list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_GetForumAvatarsList"
+
+      - name: Create/Delete forum topic
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_CreateDeleteForumTopic"
+
+      - name: Change main topic name
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_ChangeMainTopicName"
+
+      - name: Hide/Show main topic
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "TelegramAPI_HideShowMainTopic"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Telegram
+          path: ./docs/results/Telegram
+
+
+  Testing-VK:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Create token retrieval link
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateTokenLink"
+
+      - name: Create/Delete post
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateDeletePost"
+
+      - name: Create/Delete composite post
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateCompositePost"
+
+      - name: Create poll
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreatePoll"
+
+      - name: Add/Delete image
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_SaveDeleteImage"
+
+      - name: Create story
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateStory"
+
+      - name: Actions with discussions
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_DiscussionMethods"
+
+      - name: Like/Repost/Comment
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_LikeRepostComment"
+
+      - name: Get statistics
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetStatistics"
+
+      - name: Get post statistics
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetPostStatistics"
+
+      - name: Create advertising campaign
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateAdCampaign"
+
+      - name: Send message
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_SendMessage"
+
+      - name: Get product categories
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetProductCategories"
+
+      - name: Create product and selection
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateProductSelection"
+
+      - name: Create product with properties
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_CreateProductWithProperties"
+
+      - name: Get product list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetProductList"
+
+      - name: Get selection list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetSelectionList"
+
+      - name: Get property list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetPropertyList"
+
+      - name: Get order list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_GetOrderList"
+
+      - name: Upload video
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKAPI_UploadVideo"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-VK
+          path: ./docs/results/VK
+
+
+  Testing-Viber:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get channel info
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_GetChannelInfo"
+
+      - name: Get user data
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_GetUserData"
+
+      - name: Get online users
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_GetOnlineUsers"
+
+      - name: Send text message
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_SendTextMessage"
+
+      - name: Send image
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_SendImage"
+
+      - name: SendFile
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_SendFile"
+
+      - name: Send contact
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_SendContact"
+
+      - name: Send location
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_SendLocation"
+
+      - name: Send link
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Viber_SendLink"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Viber
+          path: ./docs/results/Viber
+
+
+  Testing-Twitter:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get authorization link
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Twitter_GetAuthorizationLink"
+
+      - name: Refresh token
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Twitter_UpdateToken"
+
+      - name: Text tweet
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Twitter_CreateTextTweet"
+
+      - name: Tweet with image
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Twitter_CreateTweetWithImage"
+
+      - name: Tweet with video
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Twitter_CreateTweetWithVideo"
+
+      - name: Tweet with gif
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Twitter_CreateTweetWithGif"
+
+      - name: Tweet with poll
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Twitter_CreateTweetWithPoll"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Twitter
+          path: ./docs/results/Twitter
+
+
+      - name: Записать измененные данные
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: test-data_new
+          path: ./data.json
+
+
+  Testing-YandexDisk:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get disk information
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetDiskInfo"
+
+      - name: Create folder
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_CreateFolder"
+
+      - name: Upload by URL and get
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_UploadByUrlAndGetObject"
+
+      - name: Upload/Delete file
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_UploadDeleteFile"
+
+      - name: Create object copy
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_CreateObjectCopy"
+
+      - name: Get download link
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetDownloadLink"
+
+      - name: Get list of files
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetFileList"
+
+      - name: Move object
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_MoveObject"
+
+      - name: Actions with public objects
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_PublicObjectActions"
+
+      - name: Get published list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "YDisk_GetPublishedList"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-YandexDisk
+          path: ./docs/results/YandexDisk
+
+
+  Testing-GoogleWorkspace:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get authorization link
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GV_GetAuthorizationLink"
+
+      - name: Get token
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GV_GetToken"
+
+      - name: Refresh token
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GV_UpdateToken"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-GoogleWorkspace
+          path: ./docs/results/GoogleWorkspace
+
+
+      - name: Записать измененные данные
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: test-data_google
+          path: ./data.json
+
+
+  Testing-GoogleCalendar:
+    runs-on: ubuntu-latest
+    needs: Testing-GoogleWorkspace
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data_google
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get list of calendars
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GC_GetCalendarList"
+
+      - name: Create/Delete calendar
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GC_CreateDeleteCalendar"
+
+      - name: Create/Delete event
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GC_CreateDeleteEvent"
+
+      - name: Get list of events
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GC_GetEventList"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-GoogleCalendar
+          path: ./docs/results/GoogleCalendar
+
+
+  Testing-GoogleDrive:
+    runs-on: ubuntu-latest
+    needs: Testing-GoogleWorkspace
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data_google
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get list of directories
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_GetCatalogList"
+
+      - name: Upload/Delete file
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_UploadDeleteFile"
+
+      - name: Create/Delete Comment
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_CreateDeleteComment"
+
+      - name: Create/Delete catalog
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GD_CreateCatalog"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-GoogleDrive
+          path: ./docs/results/GoogleDrive
+
+
+  Testing-GoogleSheets:
+    runs-on: ubuntu-latest
+    needs: Testing-GoogleWorkspace
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data_google
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Create table
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GT_CreateTable"
+
+      - name: Get table
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GT_GetTable"
+
+      - name: Fill/Clear cells
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "GT_FillClearCells"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-GoogleSheets
+          path: ./docs/results/GoogleSheets
+
+
+  Testing-Notion:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Create page
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_CreatePage"
+
+      - name: Create/Edit database
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_CreateEditDatabase"
+
+      - name: Get page info
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_GetPageInfo"
+
+      - name: Get database info
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_GetDatabaseInfo"
+
+      - name: Create page in database
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_CreatePageInDatabase"
+
+      - name: Edit page properties
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_EditPageProperties"
+
+      - name: Create/Delete block
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_CreateDeleteBlock"
+
+      - name: Get users
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_GetUsers"
+
+      - name: Get user data
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Notion_GetUserData"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Notion
+          path: ./docs/results/Notion
+
+
+  Testing-Slack:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get bot information
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_GetBotInfo"
+
+      - name: Get user list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_GetUserList"
+
+      - name: Get region list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_GetRegionList"
+
+      - name: Send/Delete message
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_SendDeleteMessage"
+
+      - name: Send/Delete ephemeral
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_SendDeleteEphemeral"
+
+      - name: Get scheduled messages
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_GetScheduledMessages"
+
+      - name: Create/Archive channel
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_CreateArchiveChannel"
+
+      - name: Get channel list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_GetChannelList"
+
+      - name: Open/Close dialog
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_OpenCloseDialog"
+
+      - name: Get list of files
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_GetFileList"
+
+      - name: Upload/Delete file
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_UploadDeleteFile"
+
+      - name: Get external file list
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_GetExternalFileList"
+
+      - name: Upload/Delete external file
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "Slack_UploadDeleteExternalFile"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Slack
+          path: ./docs/results/Slack
+
+
+  Testing-Airtable:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Create/Edit database
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateDatabase"
+
+      - name: Create/Edit table
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateTable"
+
+      - name: Create/Edit field
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateField"
+
+      - name: Create/Delete records
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "AT_CreateDeleteRecords"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Airtable
+          path: ./docs/results/Airtable
+
+
+  Testing-Dropbox:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - uses: actions/checkout@v2 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+      
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data
+          path: ./data.json
+      
+      - name: Установить asserts и 1testrunner
+        run: |
+          opm install asserts
+          opm install 1testrunner
+
+      - name: Установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx
+
+
+
+      - name: Get/Update token
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_GetUpdateToken"
+
+      - name: Upload file
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_UploadFile"
+
+      - name: Upload file by URL
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_UploadFileByURL"
+
+      - name: Create folder
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_CreateFolder"
+
+      - name: Create/Delete tag
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_CreateDeleteTag"
+
+      - name: Get account data
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_GetAccount"
+
+      - name: Access management
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_AccessManagement"
+
+      - name: Get list of folder files
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "DropboxAPI_GetFolderFileList"
+
+      - name: Записать логи
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
+        with:
+          key: logs-Dropbox
+          path: ./docs/results/Dropbox
+
+  Encode:
+    runs-on: ubuntu-latest
+    needs: [Testing-Telegram,Testing-VK,Testing-Viber,Testing-Twitter,Testing-YandexDisk,Testing-GoogleWorkspace,Testing-GoogleCalendar,Testing-GoogleDrive,Testing-GoogleSheets,Testing-Notion,Testing-Slack,Testing-Airtable,Testing-Dropbox]
+    if: ${{ always() }}
+    permissions:
+      contents: write
+  
+    steps:
+
+      - uses: actions/checkout@v2 
+
+      - name: Обновить данные в репозитории
+        run: git pull https://github.com/Bayselonarrend/OpenIntegrations
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          key: test-data_new
+          path: ./data.json
+
+      - name: Зашифровать данные обратно
+        continue-on-error: false
+  
+        run: |
+          rm -f ./data.json.gpg
+          gpg --batch --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON" data.json
+          rm -f ./data.json
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+
+      - name: Получить логи Telegram
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Telegram
+          path: ./docs/results/Telegram
+
+
+      - name: Очистка логов Telegram
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Telegram"
+
+      - name: Получить логи VK
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-VK
+          path: ./docs/results/VK
+
+
+      - name: Очистка логов VK
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-VK"
+
+      - name: Получить логи Viber
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Viber
+          path: ./docs/results/Viber
+
+
+      - name: Очистка логов Viber
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Viber"
+
+      - name: Получить логи Twitter
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Twitter
+          path: ./docs/results/Twitter
+
+
+      - name: Очистка логов Twitter
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Twitter"
+
+      - name: Получить логи YandexDisk
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-YandexDisk
+          path: ./docs/results/YandexDisk
+
+
+      - name: Очистка логов YandexDisk
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-YandexDisk"
+
+      - name: Получить логи GoogleWorkspace
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleWorkspace
+          path: ./docs/results/GoogleWorkspace
+
+
+      - name: Очистка логов GoogleWorkspace
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-GoogleWorkspace"
+
+      - name: Получить логи GoogleCalendar
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleCalendar
+          path: ./docs/results/GoogleCalendar
+
+
+      - name: Очистка логов GoogleCalendar
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-GoogleCalendar"
+
+      - name: Получить логи GoogleDrive
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleDrive
+          path: ./docs/results/GoogleDrive
+
+
+      - name: Очистка логов GoogleDrive
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-GoogleDrive"
+
+      - name: Получить логи GoogleSheets
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleSheets
+          path: ./docs/results/GoogleSheets
+
+
+      - name: Очистка логов GoogleSheets
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-GoogleSheets"
+
+      - name: Получить логи Notion
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Notion
+          path: ./docs/results/Notion
+
+
+      - name: Очистка логов Notion
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Notion"
+
+      - name: Получить логи Slack
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Slack
+          path: ./docs/results/Slack
+
+
+      - name: Очистка логов Slack
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Slack"
+
+      - name: Получить логи Airtable
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Airtable
+          path: ./docs/results/Airtable
+
+
+      - name: Очистка логов Airtable
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Airtable"
+
+      - name: Получить логи Dropbox
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Dropbox
+          path: ./docs/results/Dropbox
+
+
+      - name: Очистка логов Dropbox
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Dropbox"
+
+
+      - name: Записать данные    
+        uses: stefanzweifel/git-auto-commit-action@v5   
+        with:
+          commit_user_name: Vitaly the Alpaca (bot) 
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
+
+
+  Clear-Cache:
+    runs-on: ubuntu-latest
+    needs: [Testing-Telegram, Testing-VK, Testing-Viber, Testing-Twitter, Testing-YandexDisk, Testing-GoogleWorkspace, Testing-GoogleCalendar, Testing-GoogleDrive, Testing-GoogleSheets, Testing-Notion, Testing-Slack, Testing-Airtable, Testing-Dropbox, Encode]
+    if: ${{ always() }}
+    steps:
+      - name: Очистка основного кэша
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data"
+
+      - name: Очистка кэша Google
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_google"
+
+      - name: Очистка кэша Twitter
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=test-data_new"

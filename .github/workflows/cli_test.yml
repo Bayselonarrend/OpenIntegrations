@@ -29,13 +29,14 @@ jobs:
       - uses: actions/checkout@v4             
       - uses: otymko/setup-onescript@v1.4
         with:
-          version: 1.9.0 
+          version: 1.9.0
 
       - name: Установить cmdline, asserts и osparser
         run: |
           opm install cmdline
           opm install asserts
           opm install osparser
+          opm install coloratos
       - name: Сформировать список методов ОПИ -> CLI
         run: oscript ./.github/workflows/os/cli_parse.os
 
@@ -49,30 +50,30 @@ jobs:
 
       - name: Собрать и установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx  
 
       - name: Собрать бинарник
         run: |
-          cd ./cli
+          cd ./src/ru/cli
           oscript -make core/Classes/Приложение.os oint
 
       - name: Собрать exe
         run: |
-          cd ./cli
+          cd ./src/ru/cli
           oscript -make core/Classes/Приложение.os oint.exe
 
       - name: Записать артефакт
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./cli/oint
+          path: ./src/ru/cli/oint
 
       - name: Создать каталог deb-пакета
         run: |
           mkdir -p .debpkg/usr/bin
-          cp ./cli/oint .debpkg/usr/bin/oint
+          cp ./src/ru/cli/oint .debpkg/usr/bin/oint
           chmod +x .debpkg/usr/bin/oint
 
       - name: Собрать deb-пакет
@@ -81,9 +82,9 @@ jobs:
           package: oint
           package_root: .debpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.9.0' # refs/tags/v*.*.*
+          version: '1.10.0' # refs/tags/v*.*.*
           arch: 'all'
-          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
+          depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
 
       - uses: actions/upload-artifact@v3
@@ -96,7 +97,7 @@ jobs:
         run: |
           mkdir -p .rpmpkg/usr/bin
           mkdir -p .rpmpkg/usr/share/oint/bin
-          cp ./cli/oint .rpmpkg/usr/share/oint/bin/oint
+          cp ./src/ru/cli/oint .rpmpkg/usr/share/oint/bin/oint
           echo 'mono /usr/share/oint/bin/oint "$@"' > .rpmpkg/usr/bin/oint
           chmod +x .rpmpkg/usr/bin/oint
 
@@ -107,11 +108,11 @@ jobs:
           package: oint
           package_root: .rpmpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.9.0'
+          version: '1.10.0'
           arch: 'x86_64'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
           requires: |
-            mono-core
+            mono-devel
             Requires:       mono-locale-extras
 
       - uses: actions/upload-artifact@v4
@@ -185,6 +186,16 @@ jobs:
  
           ./oint telegram УдалитьWebhook --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
+
+
+
+      - name: Выполнить СкачатьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram СкачатьФайл --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --fileid "" \
 
 
 
@@ -340,6 +351,17 @@ jobs:
           --message "${{ env.json_Telegram_ChannelMessageID }}" \
           --from "${{ env.json_Telegram_ChannelID }}" \
           --to "${{ env.json_Telegram_ChatID }}" \
+
+
+
+      - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram СформироватьКлавиатуруПоМассивуКнопок --debug --test \
+          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
+          --under true \
+          --column false \
 
 
 
@@ -516,27 +538,6 @@ jobs:
           --token "${{ env.json_Telegram_Token }}" \
           --forum "${{ env.json_Telegram_ForumID }}" \
           --topic "${{ env.json_Telegram_TopicID }}" \
-
-
-
-      - name: Выполнить СформироватьКлавиатуруПоМассивуКнопок
-        if: ${{ cancelled() }} == false
-        run: |
- 
-          ./oint telegram СформироватьКлавиатуруПоМассивуКнопок --debug --test \
-          --buttons "['Кнопка1','Кнопка2','Кнопка3']" \
-          --under true \
-          --column false \
-
-
-
-      - name: Выполнить СкачатьФайл
-        if: ${{ cancelled() }} == false
-        run: |
- 
-          ./oint telegram СкачатьФайл --debug --test \
-          --token "${{ env.json_Telegram_Token }}" \
-          --fileid "" \
 
   Testing-vk:
     runs-on: ubuntu-latest
@@ -2878,6 +2879,329 @@ jobs:
           --spreadsheet "" \
           --cells "" \
           --sheetname "" \
+
+  Testing-dropbox:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить ПолучитьСсылкуАвторизации
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСсылкуАвторизации --debug --test \
+          --appkey "" \
+
+
+
+      - name: Выполнить ПолучитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьТокен --debug --test \
+          --appkey "" \
+          --appsecret "" \
+          --code "" \
+
+
+
+      - name: Выполнить ОбновитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОбновитьТокен --debug --test \
+          --appkey "" \
+          --appsecret "" \
+          --refresh "" \
+
+
+
+      - name: Выполнить ПолучитьИнформациюОбАккаунте
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьИнформациюОбАккаунте --debug --test \
+          --token "" \
+          --account "" \
+
+
+
+      - name: Выполнить ПолучитьДанныеИспользованияПространства
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьДанныеИспользованияПространства --debug --test \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьИнформациюОбОбъекте
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьИнформациюОбОбъекте --debug --test \
+          --token "" \
+          --path "" \
+          --detail "" \
+
+
+
+      - name: Выполнить ПолучитьСписокФайловПапки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСписокФайловПапки --debug --test \
+          --token "" \
+          --path "" \
+          --detail "" \
+          --cursor "" \
+
+
+
+      - name: Выполнить ПолучитьПревью
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьПревью --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ЗагрузитьФайл --debug --test \
+          --token "" \
+          --file "" \
+          --path "" \
+          --overwrite "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайлПоURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ЗагрузитьФайлПоURL --debug --test \
+          --token "" \
+          --url "" \
+          --path "" \
+
+
+
+      - name: Выполнить ПолучитьСтатусЗагрузкиПоURL
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСтатусЗагрузкиПоURL --debug --test \
+          --token "" \
+          --job "" \
+
+
+
+      - name: Выполнить УдалитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox УдалитьОбъект --debug --test \
+          --token "" \
+          --path "" \
+          --permanently "" \
+
+
+
+      - name: Выполнить КопироватьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox КопироватьОбъект --debug --test \
+          --token "" \
+          --form "" \
+          --to "" \
+
+
+
+      - name: Выполнить ПереместитьОбъект
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПереместитьОбъект --debug --test \
+          --token "" \
+          --form "" \
+          --to "" \
+
+
+
+      - name: Выполнить СоздатьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox СоздатьПапку --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить СкачатьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox СкачатьФайл --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить СкачатьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox СкачатьПапку --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ПолучитьСписокВерсийОбъекта
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСписокВерсийОбъекта --debug --test \
+          --token "" \
+          --path "" \
+          --amount "" \
+
+
+
+      - name: Выполнить ВосстановитьОбъектКВерсии
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ВосстановитьОбъектКВерсии --debug --test \
+          --token "" \
+          --path "" \
+          --rev "" \
+
+
+
+      - name: Выполнить ПолучитьСписокТегов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСписокТегов --debug --test \
+          --token "" \
+          --paths "" \
+
+
+
+      - name: Выполнить ДобавитьТег
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ДобавитьТег --debug --test \
+          --token "" \
+          --path "" \
+          --tag "" \
+
+
+
+      - name: Выполнить УдалитьТег
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox УдалитьТег --debug --test \
+          --token "" \
+          --path "" \
+          --tag "" \
+
+
+
+      - name: Выполнить ОпубликоватьПапку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОпубликоватьПапку --debug --test \
+          --token "" \
+          --path "" \
+
+
+
+      - name: Выполнить ОтменитьПубликациюПапки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОтменитьПубликациюПапки --debug --test \
+          --token "" \
+          --folder "" \
+
+
+
+      - name: Выполнить ДобавитьПользователейКФайлу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ДобавитьПользователейКФайлу --debug --test \
+          --token "" \
+          --fileid "" \
+          --emails "" \
+          --readonly "" \
+
+
+
+      - name: Выполнить ДобавитьПользователейКПапке
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ДобавитьПользователейКПапке --debug --test \
+          --token "" \
+          --folder "" \
+          --emails "" \
+          --readonly "" \
+
+
+
+      - name: Выполнить ПолучитьСтатусАсинхронногоИзменения
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ПолучитьСтатусАсинхронногоИзменения --debug --test \
+          --token "" \
+          --job "" \
+
+
+
+      - name: Выполнить ОтменитьПубликациюФайла
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint dropbox ОтменитьПубликациюФайла --debug --test \
+          --token "" \
+          --fileid "" \
 
   Clear-Cache:
     runs-on: ubuntu-latest

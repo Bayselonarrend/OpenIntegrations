@@ -1,4 +1,4 @@
-#Использовать "../../../cli/data"
+#Использовать "../../../src/ru/cli/data"
 
 Перем СоответствияПараметровЗначениям;
 Перем СоответствияПараметровПредобработкам;
@@ -12,9 +12,10 @@
 	
 	СоответствияПараметровЗначениям      = Новый Соответствие();
 	СоответствияПараметровПредобработкам = Новый Соответствие();
+	ТекущийСоставБиблиотеки              = Новый СоставБиблиотеки();
 
-	ТаблицаПараметров = СоставБиблиотеки.ПолучитьСостав();
-	Версия            = СоставБиблиотеки.ПолучитьВерсию();
+	ТаблицаПараметров = ТекущийСоставБиблиотеки.ПолучитьПолныйСостав();
+	Версия            = ТекущийСоставБиблиотеки.ПолучитьВерсию();
 
 	ДобавитьСоответствияTelegram();
 	ДобавитьСоответствияVK();
@@ -102,13 +103,14 @@
 	|      - uses: actions/checkout@v4             
 	|      - uses: otymko/setup-onescript@v1.4
 	|        with:
-	|          version: " + Версия + " 
+	|          version: 1.9.0
 	|
 	|      - name: Установить cmdline, asserts и osparser
 	|        run: |
 	|          opm install cmdline
 	|          opm install asserts
 	|          opm install osparser
+	|          opm install coloratos
 	|      - name: Сформировать список методов ОПИ -> CLI
 	|        run: oscript ./.github/workflows/os/cli_parse.os
 	|
@@ -122,30 +124,30 @@
 	|
 	|      - name: Собрать и установить OInt
 	|        run: |
-	|          cd ./OInt
+	|          cd ./src/ru/OInt
 	|          opm build
 	|          opm install *.ospx  
 	|
 	|      - name: Собрать бинарник
 	|        run: |
-	|          cd ./cli
+	|          cd ./src/ru/cli
 	|          oscript -make core/Classes/Приложение.os oint
 	|
 	|      - name: Собрать exe
 	|        run: |
-	|          cd ./cli
+	|          cd ./src/ru/cli
 	|          oscript -make core/Classes/Приложение.os oint.exe
 	|
 	|      - name: Записать артефакт
 	|        uses: actions/upload-artifact@v4
 	|        with:
 	|          name: oint
-	|          path: ./cli/oint
+	|          path: ./src/ru/cli/oint
 	|
 	|      - name: Создать каталог deb-пакета
 	|        run: |
 	|          mkdir -p .debpkg/usr/bin
-	|          cp ./cli/oint .debpkg/usr/bin/oint
+	|          cp ./src/ru/cli/oint .debpkg/usr/bin/oint
 	|          chmod +x .debpkg/usr/bin/oint
 	|
 	|      - name: Собрать deb-пакет
@@ -156,7 +158,7 @@
 	|          maintainer: Anton Titovets <bayselonarrend@gmail.com>
 	|          version: '" + Версия + "' # refs/tags/v*.*.*
 	|          arch: 'all'
-	|          depends: 'mono-runtime, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
+	|          depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
 	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
 	|
 	|      - uses: actions/upload-artifact@v3
@@ -169,7 +171,7 @@
 	|        run: |
 	|          mkdir -p .rpmpkg/usr/bin
 	|          mkdir -p .rpmpkg/usr/share/oint/bin
-	|          cp ./cli/oint .rpmpkg/usr/share/oint/bin/oint
+	|          cp ./src/ru/cli/oint .rpmpkg/usr/share/oint/bin/oint
 	|          echo 'mono /usr/share/oint/bin/oint ""$@""' > .rpmpkg/usr/bin/oint
 	|          chmod +x .rpmpkg/usr/bin/oint
 	|
@@ -184,7 +186,7 @@
 	|          arch: 'x86_64'
 	|          desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
 	|          requires: |
-	|            mono-core
+	|            mono-devel
 	|            Requires:       mono-locale-extras
 	|
 	|      - uses: actions/upload-artifact@v4
@@ -478,6 +480,7 @@
 	СоответствияПараметровЗначениям.Вставить("gcalendar", СоответствиеПЗ);
 	СоответствияПараметровЗначениям.Вставить("gdrive", СоответствиеПЗ);
 	СоответствияПараметровЗначениям.Вставить("gsheets", СоответствиеПЗ);
+	СоответствияПараметровЗначениям.Вставить("dropbox", СоответствиеПЗ);
 
 КонецПроцедуры
 
