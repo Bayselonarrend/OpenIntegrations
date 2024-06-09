@@ -39,7 +39,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx    
 
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./OInt/*.ospx
+          path: ./src/ru/OInt/*.ospx
 
 
   Testing-Notion:
@@ -73,7 +73,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx
 
@@ -81,46 +81,46 @@ jobs:
 
       - name: Создать страницу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницу"
 
       - name: Создать/Изменить базу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьИзменитьБазу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьИзменитьБазу"
 
       - name: Получить информацию о странице
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОСтранице"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОСтранице"
 
       - name: Получить информацию о базе
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОБазе"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьИнформациюОБазе"
 
       - name: Создать страницу в базу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницуВБазу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьСтраницуВБазу"
 
       - name: Изменить свойства страницы
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ИзменитьСвойстваСтраницы"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ИзменитьСвойстваСтраницы"
 
       - name: Создать/Удалить блок
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьУдалитьБлок"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_СоздатьУдалитьБлок"
 
       - name: Получить пользователей
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьПользователей"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьПользователей"
 
       - name: Получить данные пользователя
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьДанныеПользователя"
-
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Ноушн_ПолучитьДанныеПользователя"
 
       - name: Записать логи
-        uses: actions/upload-artifact@v4
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
         with:
-          name: Notion
-          path: ./test_logs
+          key: logs-Notion
+          path: ./docs/results/Notion
 
 
       - name: Записать измененные данные
@@ -159,6 +159,23 @@ jobs:
           rm -f ./data.json
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
+
+      - name: Получить логи Notion
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Notion
+          path: ./docs/results/Notion
+
+
+      - name: Очистка логов Notion
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Notion"
+
 
       - name: Записать данные    
         uses: stefanzweifel/git-auto-commit-action@v5   

@@ -39,7 +39,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx    
 
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./OInt/*.ospx
+          path: ./src/ru/OInt/*.ospx
 
 
   Testing-GoogleSheets:
@@ -73,7 +73,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx
 
@@ -81,22 +81,22 @@ jobs:
 
       - name: Создать таблицу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГТ_СоздатьТаблицу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ГТ_СоздатьТаблицу"
 
       - name: Получить таблицу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГТ_ПолучитьТаблицу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ГТ_ПолучитьТаблицу"
 
       - name: Заполнить/Очистить ячейки
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "ГТ_ЗаполнитьОчиститьЯчейки"
-
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ГТ_ЗаполнитьОчиститьЯчейки"
 
       - name: Записать логи
-        uses: actions/upload-artifact@v4
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
         with:
-          name: GoogleSheets
-          path: ./test_logs
+          key: logs-GoogleSheets
+          path: ./docs/results/GoogleSheets
 
 
       - name: Записать измененные данные
@@ -135,6 +135,23 @@ jobs:
           rm -f ./data.json
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
+
+      - name: Получить логи GoogleSheets
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-GoogleSheets
+          path: ./docs/results/GoogleSheets
+
+
+      - name: Очистка логов GoogleSheets
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-GoogleSheets"
+
 
       - name: Записать данные    
         uses: stefanzweifel/git-auto-commit-action@v5   

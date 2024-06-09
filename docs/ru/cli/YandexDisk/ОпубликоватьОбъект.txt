@@ -1,0 +1,1 @@
+﻿oint yadisk ОпубликоватьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"

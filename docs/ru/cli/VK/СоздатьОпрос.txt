@@ -1,0 +1,1 @@
+﻿oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" --options "['Красный','Желтый','Зеленый']" --picture %picture% --auth %auth%
