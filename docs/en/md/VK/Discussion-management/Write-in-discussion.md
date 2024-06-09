@@ -31,7 +31,6 @@ sidebar_position: 4
  
  oint vk WriteInDiscussion --topic %topic% --text %text% --auth %auth%
 
-
 ```
 
 

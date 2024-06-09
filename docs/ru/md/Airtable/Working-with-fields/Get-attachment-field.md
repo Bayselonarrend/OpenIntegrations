@@ -30,7 +30,6 @@ sidebar_position: 5
     
       oint airtable ПолучитьПолеВложения --title "Вложение"
 
-
 ```
 
 

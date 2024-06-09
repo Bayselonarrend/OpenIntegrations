@@ -34,7 +34,6 @@ sidebar_position: 11
  
  oint yadisk UploadFileByURL --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png" --url "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png"
 
-
 ```
 
 

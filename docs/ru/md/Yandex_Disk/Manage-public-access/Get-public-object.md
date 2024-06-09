@@ -34,7 +34,6 @@ sidebar_position: 4
     
       oint yadisk ПолучитьПубличныйОбъект --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --amount %amount% --offset %offset%
 
-
 ```
 
 

@@ -27,7 +27,6 @@ sidebar_position: 4
     
       oint gcalendar ОчиститьОсновнойКалендарь --token %token%
 
-
 ```
 
 

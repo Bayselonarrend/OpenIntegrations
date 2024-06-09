@@ -31,7 +31,6 @@ sidebar_position: 5
     
       oint telegram ОткрепитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4951"
 
-
 ```
 
 

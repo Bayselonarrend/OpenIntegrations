@@ -44,7 +44,6 @@ sidebar_position: 1
     
       oint vk СоздатьПост --text %text% --pictures %pictures% --ad %ad% --url %url% --auth %auth%
 
-
 ```
 
 

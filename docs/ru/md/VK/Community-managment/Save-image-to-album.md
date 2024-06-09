@@ -39,7 +39,6 @@ sidebar_position: 8
     
       oint vk СохранитьКартинкуВАльбом --album %album% --picture "https://openintegrations.dev/test_data/picture.jpg" --description %description% --auth %auth%
 
-
 ```
 
 

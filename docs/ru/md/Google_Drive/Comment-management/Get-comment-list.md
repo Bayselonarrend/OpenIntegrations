@@ -31,7 +31,6 @@ sidebar_position: 3
     
       oint gdrive ПолучитьСписокКомментариев --token %token% --object %object%
 
-
 ```
 
 

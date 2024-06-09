@@ -29,7 +29,6 @@ sidebar_position: 1
  
  oint notion UserList --token "secret_9RsfMrRMqZwqp0Zl0B..."
 
-
 ```
 
 

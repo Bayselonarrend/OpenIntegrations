@@ -32,7 +32,6 @@ sidebar_position: 4
     
       oint slack АрхивироватьКанал --token %token% --channel "C070VPMKN8J"
 
-
 ```
 
 

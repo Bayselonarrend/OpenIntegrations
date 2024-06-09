@@ -43,7 +43,6 @@ sidebar_position: 4
  
  oint telegram SendAudio --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --audio "https://openintegrations.dev/test_data/song.mp3" --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

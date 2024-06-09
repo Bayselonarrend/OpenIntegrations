@@ -25,7 +25,6 @@ sidebar_position: 8
  
  oint vk GetProductDescription
 
-
 ```
 
 

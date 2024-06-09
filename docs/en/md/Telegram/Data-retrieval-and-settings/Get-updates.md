@@ -28,7 +28,6 @@ Executes a request getUpdates, returning information about bot events. Used in p
  
  oint telegram GetUpdates --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
 
-
 ```
 
 

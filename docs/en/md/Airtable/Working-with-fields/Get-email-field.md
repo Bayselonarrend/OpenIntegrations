@@ -30,7 +30,6 @@ sidebar_position: 8
  
  oint airtable GetEmailField --title "Email"
 
-
 ```
 
 

@@ -35,7 +35,6 @@ sidebar_position: 5
     
       oint viber ОтправитьЛокацию --token %token% --lat %lat% --long %long% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
 
-
 ```
 
 

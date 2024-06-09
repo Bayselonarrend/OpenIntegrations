@@ -28,7 +28,6 @@ sidebar_position: 2
     
       oint telegram ПолучитьОбновления --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
 
-
 ```
 
 

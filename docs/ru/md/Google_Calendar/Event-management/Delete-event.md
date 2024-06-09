@@ -30,7 +30,6 @@ sidebar_position: 7
     
       oint gcalendar УдалитьСобытие --token %token% --calendar %calendar% --event %event%
 
-
 ```
 
 

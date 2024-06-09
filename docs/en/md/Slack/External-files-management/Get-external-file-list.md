@@ -32,7 +32,6 @@ sidebar_position: 1
  
  oint slack GetExternalFileList --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
-
 ```
 
 

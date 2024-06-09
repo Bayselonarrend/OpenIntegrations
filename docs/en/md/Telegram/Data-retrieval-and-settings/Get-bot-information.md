@@ -26,7 +26,6 @@ Executes the getMe request, returning basic bot information: name, id, ability t
  
  oint telegram GetBotInformation --token "6129457865:AAFyzNYOAFbu..."
 
-
 ```
 
 

@@ -34,7 +34,6 @@ sidebar_position: 1
  
  oint notion CreatePage --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Created by 1C"
 
-
 ```
 
 

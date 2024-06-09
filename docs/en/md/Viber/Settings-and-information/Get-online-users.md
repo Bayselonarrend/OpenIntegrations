@@ -29,7 +29,6 @@ sidebar_position: 4
  
  oint viber GetOnlineUsers --token %token% --users %users%
 
-
 ```
 
 

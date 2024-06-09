@@ -43,7 +43,6 @@ sidebar_position: 3
  
  oint telegram SendVideo --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --video "https://openintegrations.dev/test_data/video.mp4" --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

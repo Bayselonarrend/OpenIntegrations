@@ -31,7 +31,6 @@ sidebar_position: 9
     
       oint slack ВступитьВКанал --token %token% --channel "C070VPMKN8J"
 
-
 ```
 
 

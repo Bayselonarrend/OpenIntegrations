@@ -29,7 +29,6 @@ sidebar_position: 2
     
       oint gcalendar ПолучитьСписокСобытий --token %token% --calendar %calendar%
 
-
 ```
 
 

@@ -47,7 +47,6 @@ sidebar_position: 2
  
  oint notion CreatePageInDatabase --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --data %data%
 
-
 ```
 
 

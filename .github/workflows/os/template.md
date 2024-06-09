@@ -22,7 +22,7 @@ sidebar_position: @Счетчик
 
 ```sh title="Пример команды CLI"
     
-  @ВызовCLI
+@ВызовCLI
 
 ```
 

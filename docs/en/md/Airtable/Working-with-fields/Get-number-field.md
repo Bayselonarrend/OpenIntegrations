@@ -32,7 +32,6 @@ sidebar_position: 4
  
  oint airtable GetNumberField --title "Number" --precision "0"
 
-
 ```
 
 

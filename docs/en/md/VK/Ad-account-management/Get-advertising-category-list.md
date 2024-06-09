@@ -28,7 +28,6 @@ sidebar_position: 4
  
  oint vk GetAdvertisingCategoryList --auth %auth%
 
-
 ```
 
 

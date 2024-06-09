@@ -36,7 +36,6 @@ sidebar_position: 3
  
  oint viber SendFile --token %token% --file %file% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --ext %ext% --size %size%
 
-
 ```
 
 

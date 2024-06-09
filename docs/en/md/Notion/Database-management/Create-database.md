@@ -54,7 +54,6 @@ sidebar_position: 1
  
  oint notion CreateDatabase --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "This base is from 1C" --props %props%
 
-
 ```
 
 

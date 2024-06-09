@@ -29,7 +29,6 @@ sidebar_position: 1
     
       oint viber УстановитьWebhook --token %token% --url %url%
 
-
 ```
 
 

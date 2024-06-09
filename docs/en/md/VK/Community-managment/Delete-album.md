@@ -29,7 +29,6 @@ sidebar_position: 6
  
  oint vk DeleteAlbum --album %album% --auth %auth%
 
-
 ```
 
 

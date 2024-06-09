@@ -29,7 +29,6 @@ sidebar_position: 2
     
       oint twitter ПолучитьТокен --code %code% --auth %auth%
 
-
 ```
 
 

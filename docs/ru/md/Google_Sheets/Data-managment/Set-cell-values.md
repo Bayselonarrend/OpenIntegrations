@@ -45,7 +45,6 @@ sidebar_position: 1
     
       oint gsheets УстановитьЗначенияЯчеек --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --data %data% --sheetname "Лист2" --dim %dim%
 
-
 ```
 
 

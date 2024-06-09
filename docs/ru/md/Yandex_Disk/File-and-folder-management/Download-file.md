@@ -28,7 +28,6 @@ sidebar_position: 7
     
       oint yadisk СкачатьФайл --token %token% --path %path% --out %out%
 
-
 ```
 
 

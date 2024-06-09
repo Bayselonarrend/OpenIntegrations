@@ -31,7 +31,6 @@ sidebar_position: 5
     
       oint vk СоздатьАльбом --title %title% --description %description% --auth %auth%
 
-
 ```
 
 

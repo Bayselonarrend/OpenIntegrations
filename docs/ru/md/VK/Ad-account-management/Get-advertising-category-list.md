@@ -28,7 +28,6 @@ sidebar_position: 4
     
       oint vk ПолучитьСписокРекламныхКатегорий --auth %auth%
 
-
 ```
 
 

@@ -33,7 +33,6 @@ sidebar_position: 11
     
       oint vk ЗагрузитьФотоНаСервер --file %file% --auth %auth% --type %type%
 
-
 ```
 
 

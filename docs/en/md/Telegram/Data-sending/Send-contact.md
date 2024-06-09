@@ -38,7 +38,6 @@ sidebar_position: 9
  
  oint telegram SendContact --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --name "John" --surname "Doe" --phone "88005553535" --keyboard %keyboard%
 
-
 ```
 
 

@@ -43,7 +43,6 @@ sidebar_position: 3
  
  oint airtable CreateDatabase --token %token% --ws "wspdf8yl1yZz3PmWZ" --title "TestDatabase" --tablesdata %tablesdata%
 
-
 ```
 
 

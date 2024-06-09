@@ -35,7 +35,6 @@ sidebar_position: 1
  
  oint telegram SendTextMessage --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

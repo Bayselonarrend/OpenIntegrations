@@ -32,7 +32,6 @@ sidebar_position: 1
  
  oint slack GetChannelList --token %token% --notarchived "True" --cursor %cursor%
 
-
 ```
 
 

@@ -43,7 +43,6 @@ sidebar_position: 2
  
  oint telegram SendImage --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --picture "https://openintegrations.dev/test_data/picture.jpg" --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

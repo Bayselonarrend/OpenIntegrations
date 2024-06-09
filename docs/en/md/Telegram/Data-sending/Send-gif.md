@@ -43,7 +43,6 @@ sidebar_position: 6
  
  oint telegram SendGif --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --gif "https://openintegrations.dev/test_data/animation.gif" --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

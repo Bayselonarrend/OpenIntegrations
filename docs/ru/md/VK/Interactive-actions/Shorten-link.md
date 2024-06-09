@@ -28,7 +28,6 @@ sidebar_position: 5
     
       oint vk СократитьСсылку --url %url% --auth %auth%
 
-
 ```
 
 

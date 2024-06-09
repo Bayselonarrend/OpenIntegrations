@@ -52,7 +52,6 @@ sidebar_position: 2
     
       oint vk СоздатьСоставнойПост --text %text% --objects %objects% --ad %ad% --url %url% --auth %auth%
 
-
 ```
 
 

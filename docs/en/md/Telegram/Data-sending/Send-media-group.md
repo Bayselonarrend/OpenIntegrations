@@ -39,7 +39,6 @@ sidebar_position: 7
  
  oint telegram SendMediaGroup --token "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ" --chat %chat% --text %text% --media %media% --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

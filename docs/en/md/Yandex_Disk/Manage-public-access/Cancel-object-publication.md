@@ -31,7 +31,6 @@ sidebar_position: 2
  
  oint yadisk CancelObjectPublication --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"
 
-
 ```
 
 

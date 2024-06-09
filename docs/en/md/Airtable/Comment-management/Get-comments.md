@@ -36,7 +36,6 @@ sidebar_position: 1
  
  oint airtable GetComments --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --offset %offset%
 
-
 ```
 
 

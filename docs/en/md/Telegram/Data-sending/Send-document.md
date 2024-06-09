@@ -43,7 +43,6 @@ sidebar_position: 5
  
  oint telegram SendDocument --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

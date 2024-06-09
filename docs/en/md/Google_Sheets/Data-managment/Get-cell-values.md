@@ -39,7 +39,6 @@ sidebar_position: 3
  
  oint gsheets GetCellValues --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --cells %cells% --sheetname "Sheet2"
 
-
 ```
 
 

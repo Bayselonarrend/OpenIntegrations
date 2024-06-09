@@ -34,7 +34,6 @@ sidebar_position: 11
     
       oint yadisk ЗагрузитьФайлПоURL --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png" --url "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png"
 
-
 ```
 
 

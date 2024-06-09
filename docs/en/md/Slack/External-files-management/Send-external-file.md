@@ -33,7 +33,6 @@ sidebar_position: 4
  
  oint slack SendExternalFile --token %token% --fileid "F070P52CU94" --channels %channels%
 
-
 ```
 
 

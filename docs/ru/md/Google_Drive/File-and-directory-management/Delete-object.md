@@ -30,7 +30,6 @@ sidebar_position: 9
     
       oint gdrive УдалитьОбъект --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa"
 
-
 ```
 
 

@@ -51,7 +51,6 @@ sidebar_position: 4
  
  oint vk AddProduct --product %product% --sel %sel% --auth %auth%
 
-
 ```
 
 

@@ -34,7 +34,6 @@ sidebar_position: 10
     
       oint vk ЗагрузитьВидеоНаСервер --file %file% --title %title% --description %description% --album %album% --auth %auth%
 
-
 ```
 
 

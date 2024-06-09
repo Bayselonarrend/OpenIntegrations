@@ -35,7 +35,6 @@ sidebar_position: 1
     
       oint vk СформироватьКлавиатуру --buttons %buttons%
 
-
 ```
 
 

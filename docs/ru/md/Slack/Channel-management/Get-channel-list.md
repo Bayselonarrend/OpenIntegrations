@@ -32,7 +32,6 @@ sidebar_position: 1
     
       oint slack ПолучитьСписокКаналов --token %token% --notarchived "Истина" --cursor %cursor%
 
-
 ```
 
 
