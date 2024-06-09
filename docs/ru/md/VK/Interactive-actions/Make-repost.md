@@ -30,7 +30,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint vk СделатьРепост --post %post% --from %from% --to %to% --ad %ad% --auth %auth%
+  oint vk СделатьРепост --post %post% --from %from% --to %to% --ad %ad% --auth %auth%
 
 ```
 

@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint vk СоздатьСсылкуПолученияТокена --app %app%
+  oint vk СоздатьСсылкуПолученияТокена --app %app%
 
 ```
 

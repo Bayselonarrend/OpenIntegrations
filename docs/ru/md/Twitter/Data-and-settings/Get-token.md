@@ -27,7 +27,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint twitter ПолучитьТокен --code %code% --auth %auth%
+  oint twitter ПолучитьТокен --code %code% --auth %auth%
 
 ```
 

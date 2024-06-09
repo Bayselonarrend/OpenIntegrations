@@ -32,7 +32,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-      oint slack ПригласитьПользователейВКанал --token %token% --channel "C070VPMKN8J" --users %users%
+  oint slack ПригласитьПользователейВКанал --token %token% --channel "C070VPMKN8J" --users %users%
 
 ```
 

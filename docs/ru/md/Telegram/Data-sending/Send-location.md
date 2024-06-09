@@ -34,7 +34,7 @@ sidebar_position: 8
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ОтправитьМестоположение --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --lat %lat% --long "48.87373649724122" --keyboard %keyboard%
+  oint telegram ОтправитьМестоположение --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --lat %lat% --long "48.87373649724122" --keyboard %keyboard%
 
 ```
 

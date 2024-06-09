@@ -33,7 +33,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-      oint viber СформироватьКлавиатуруИзМассиваКнопок --buttons %buttons% --color %color%
+  oint viber СформироватьКлавиатуруИзМассиваКнопок --buttons %buttons% --color %color%
 
 ```
 

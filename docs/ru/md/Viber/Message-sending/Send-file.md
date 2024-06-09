@@ -34,7 +34,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint viber ОтправитьФайл --token %token% --file %file% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --ext %ext% --size %size%
+  oint viber ОтправитьФайл --token %token% --file %file% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --ext %ext% --size %size%
 
 ```
 

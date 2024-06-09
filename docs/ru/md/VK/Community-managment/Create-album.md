@@ -29,7 +29,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint vk СоздатьАльбом --title %title% --description %description% --auth %auth%
+  oint vk СоздатьАльбом --title %title% --description %description% --auth %auth%
 
 ```
 

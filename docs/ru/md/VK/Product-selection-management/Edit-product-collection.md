@@ -37,7 +37,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint vk ИзменитьПодборкуТоваров --title %title% --sel %sel% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
+  oint vk ИзменитьПодборкуТоваров --title %title% --sel %sel% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
 
 ```
 

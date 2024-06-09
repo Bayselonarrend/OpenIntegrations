@@ -32,7 +32,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint twitter СоздатьТвитГифки --text %text% --gifs %gifs% --auth %auth%
+  oint twitter СоздатьТвитГифки --text %text% --gifs %gifs% --auth %auth%
 
 ```
 

@@ -27,7 +27,7 @@ sidebar_position: 9
 
 ```sh title="Пример команды CLI"
     
-      oint vk УдалитьКартинку --pictureid %pictureid% --auth %auth%
+  oint vk УдалитьКартинку --pictureid %pictureid% --auth %auth%
 
 ```
 

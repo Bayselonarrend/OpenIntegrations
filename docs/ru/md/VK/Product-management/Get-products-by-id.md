@@ -31,7 +31,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint vk ПолучитьТоварыПоИД --items %items% --auth %auth%
+  oint vk ПолучитьТоварыПоИД --items %items% --auth %auth%
 
 ```
 

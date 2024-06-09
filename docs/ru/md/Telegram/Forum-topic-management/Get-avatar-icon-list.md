@@ -26,7 +26,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ПолучитьСписокИконокАватаров --token %token%
+  oint telegram ПолучитьСписокИконокАватаров --token %token%
 
 ```
 

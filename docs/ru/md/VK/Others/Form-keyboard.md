@@ -33,7 +33,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint vk СформироватьКлавиатуру --buttons %buttons%
+  oint vk СформироватьКлавиатуру --buttons %buttons%
 
 ```
 

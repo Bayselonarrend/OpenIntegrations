@@ -45,7 +45,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint notion СоздатьСтраницуВБазу --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --data %data%
+  oint notion СоздатьСтраницуВБазу --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --data %data%
 
 ```
 

@@ -29,7 +29,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint yadisk ПолучитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
+  oint yadisk ПолучитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
 
 ```
 

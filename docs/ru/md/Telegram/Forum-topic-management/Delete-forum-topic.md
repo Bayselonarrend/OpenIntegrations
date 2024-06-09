@@ -29,7 +29,7 @@ sidebar_position: 6
 
 ```sh title="Пример команды CLI"
     
-      oint telegram УдалитьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
+  oint telegram УдалитьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
 ```
 

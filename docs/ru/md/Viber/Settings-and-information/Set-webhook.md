@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint viber УстановитьWebhook --token %token% --url %url%
+  oint viber УстановитьWebhook --token %token% --url %url%
 
 ```
 

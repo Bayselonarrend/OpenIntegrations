@@ -28,7 +28,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint airtable ПолучитьСписокБаз --token %token% --offset %offset%
+  oint airtable ПолучитьСписокБаз --token %token% --offset %offset%
 
 ```
 

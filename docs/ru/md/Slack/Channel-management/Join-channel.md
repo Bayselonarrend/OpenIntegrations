@@ -29,7 +29,7 @@ sidebar_position: 9
 
 ```sh title="Пример команды CLI"
     
-      oint slack ВступитьВКанал --token %token% --channel "C070VPMKN8J"
+  oint slack ВступитьВКанал --token %token% --channel "C070VPMKN8J"
 
 ```
 

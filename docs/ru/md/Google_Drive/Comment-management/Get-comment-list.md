@@ -29,7 +29,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint gdrive ПолучитьСписокКомментариев --token %token% --object %object%
+  oint gdrive ПолучитьСписокКомментариев --token %token% --object %object%
 
 ```
 

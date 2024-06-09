@@ -31,7 +31,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint slack ДобавитьВнешнийФайл --token %token% --url "https://opi.neocities.org/test_data/document.docx" --title %title%
+  oint slack ДобавитьВнешнийФайл --token %token% --url "https://opi.neocities.org/test_data/document.docx" --title %title%
 
 ```
 

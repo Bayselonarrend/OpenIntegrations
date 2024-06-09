@@ -29,7 +29,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint gdrive ПолучитьИнформациюОбОбъекте --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa"
+  oint gdrive ПолучитьИнформациюОбОбъекте --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa"
 
 ```
 

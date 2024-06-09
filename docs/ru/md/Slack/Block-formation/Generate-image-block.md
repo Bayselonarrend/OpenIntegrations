@@ -30,7 +30,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1" --alt %alt%
+  oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1" --alt %alt%
 
 ```
 

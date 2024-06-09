@@ -31,7 +31,7 @@ sidebar_position: 6
 
 ```sh title="Пример команды CLI"
     
-      oint slack ПолучитьСсылкуНаСообщение --token %token% --channel "C070VPMKN8J" --stamp "1714146538.221929"
+  oint slack ПолучитьСсылкуНаСообщение --token %token% --channel "C070VPMKN8J" --stamp "1714146538.221929"
 
 ```
 

@@ -35,7 +35,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint slack ЗагрузитьФайл --token %token% --file %file% --filename "megadoc.docx" --title %title% --channel "C123456"
+  oint slack ЗагрузитьФайл --token %token% --file %file% --filename "megadoc.docx" --title %title% --channel "C123456"
 
 ```
 

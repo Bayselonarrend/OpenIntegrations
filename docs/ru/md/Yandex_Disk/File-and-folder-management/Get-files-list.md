@@ -31,7 +31,7 @@ sidebar_position: 8
 
 ```sh title="Пример команды CLI"
     
-      oint yadisk ПолучитьСписокФайлов --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset% --type %type% --datesort %datesort%
+  oint yadisk ПолучитьСписокФайлов --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset% --type %type% --datesort %datesort%
 
 ```
 

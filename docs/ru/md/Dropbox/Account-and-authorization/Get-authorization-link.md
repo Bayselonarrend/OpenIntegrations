@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint dropbox ПолучитьСсылкуАвторизации --appkey "oynqxds..."
+  oint dropbox ПолучитьСсылкуАвторизации --appkey "oynqxds..."
 
 ```
 
