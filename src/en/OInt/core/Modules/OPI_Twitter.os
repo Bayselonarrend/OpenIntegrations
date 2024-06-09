@@ -494,7 +494,7 @@ Function GetStandardParameters(Val Parameters = "")
     // The world gigacorporation of Elon Musk, by the way, a reminder ;)
     
     // P.S The "Twitter Developer settings page" is often mentioned further" - this 
-    // https://developer.twitter.com/en/portal/dashboard and inыбр totoренг преtoа from withпandwithtoа (зtoчеto c toлючем)
+    // https://developer.twitter.com/en/portal/dashboard and inыбор toонtoретного проеtoта from withпandwithtoа (зtoчеto c toлючем)
     
     Parameters_ = New Map; 
     Permissions = "tweet.read tweet.write tweet.moderate.write users.read "
@@ -514,7 +514,7 @@ Function GetStandardParameters(Val Parameters = "")
     // For the next update, you need to use a new refresh_token, so hardcode 
     // won't work (access_token won't work either) 
     
-    // |--> RefreshToken() ->|access_token -->  in -нandand 2-х чаwithin for запрwithin
+    // |--> RefreshToken() ->|access_token --> Andwithпользуетwithя in т-нandand 2-х чаwithin for запроwithin
     // | |refresh_token --|
     // |--------[after 2 hrs.]-------------------|
      
