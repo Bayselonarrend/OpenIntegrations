@@ -1,0 +1,1 @@
+﻿oint gcalendar ПолучитьМетаданныеКалендаря --token %token% --calendar %calendar%

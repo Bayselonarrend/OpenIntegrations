@@ -1,0 +1,1 @@
+﻿oint vk НаписатьКомментарий --post %post% --wall %wall% --text %text% --auth %auth%

@@ -1,9 +1,9 @@
-name: OINT | Конвертация OPI -> OInt
+name: OPI | Конвертация OPI -> OInt -> CLI
 
 # Controls when the workflow will run
-on:
-  workflow_dispatch:
-
+on: 
+  [workflow_dispatch]
+  
 jobs:
 
   Convert:
@@ -22,11 +22,31 @@ jobs:
         with:
           version: 1.9.0 
 
+      - name: Установить зависимости
+        run: |
+          opm install cmdline
+          opm install asserts
+          opm install osparser
+          opm install coloratos
+
       - name: Выполнить скрипт преобразования OPI -> OInt
         run: oscript ./.github/workflows/os/convert.os
 
+      - name: Обновить словари
+        run: oscript ./.github/workflows/os/oint_dictionary.os
+
+      - name: Выполнить скрипт локализации
+        run: oscript ./.github/workflows/os/opi_translate.os
+
+      - name: Выполнить скрипт парсинга CLI
+        run: oscript ./.github/workflows/os/cli_parse.os
+
       - name: Обновить Workflow тестирования OInt
         run: oscript ./.github/workflows/os/oint_testmaker.os
+        
+      - name: Обновить Workflow тестирования OInt (EN)
+        run: oscript ./.github/workflows/os/oint_testmaker_en.os
+
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
         with:

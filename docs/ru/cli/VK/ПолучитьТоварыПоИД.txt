@@ -1,0 +1,1 @@
+﻿oint vk ПолучитьТоварыПоИД --items %items% --auth %auth%

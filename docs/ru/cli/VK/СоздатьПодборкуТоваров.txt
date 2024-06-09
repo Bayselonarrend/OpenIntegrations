@@ -1,0 +1,1 @@
+﻿oint vk СоздатьПодборкуТоваров --title %title% --picture %picture% --main %main% --hidden %hidden% --auth %auth%

@@ -1,0 +1,25 @@
+﻿ {
+ "ok": true,
+ "result": {
+  "message_id": 4697,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1717260877,
+  "contact": {
+   "phone_number": "88005553535",
+   "first_name": "Петр",
+   "last_name": "Петров"
+  }
+ }
+}

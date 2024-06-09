@@ -1,0 +1,1 @@
+﻿oint telegram СформироватьКлавиатуруПоМассивуКнопок --buttons %buttons% --under %under% --column %column%

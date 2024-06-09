@@ -1,0 +1,1 @@
+﻿oint gdrive ПолучитьСписокКомментариев --token %token% --object %object%
