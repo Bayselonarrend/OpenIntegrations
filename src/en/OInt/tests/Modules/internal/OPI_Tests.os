@@ -3219,7 +3219,7 @@ Procedure DropboxAPI_CreateDeleteTag() Export
     OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
     
     Dropbox_AddTag(TestParameters);
-    (TestParameters);
+    Dropbox_GetTagList(TestParameters);
     Dropbox_DeleteTag(TestParameters);
     
 EndProcedure
@@ -5098,7 +5098,7 @@ Procedure Dropbox_RestoreObjectToVersion(FunctionParameters)
     
 EndProcedure
 
-Procedure (FunctionParameters)
+Procedure Dropbox_GetTagList(FunctionParameters)
 
     Token = FunctionParameters["Dropbox_Token"];
     

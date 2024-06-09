@@ -227,9 +227,9 @@ Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") E
     // Count    : number
     // Date : date
     // Status : Map
-    // Аtoтandinный : green
+    // Active : green
     // Inactive    : red
-    // Архandin : yellow
+    // Archive : yellow
     
     // All pages created as children must have parent base properties
 
