@@ -1,0 +1,47 @@
+name: Документация | Распарсить тесты в примеры кода
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Convert:
+    runs-on: ubuntu-latest
+    permissions: 
+      actions: write
+      contents: write
+     
+    steps:
+    
+      - uses: actions/checkout@v2  
+        with:
+          token: ${{secrets.TOKEN}} 
+
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+                 
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+
+      - name: Установить osparser
+        run: |
+          opm install osparser
+      
+      - name: Выполнить скрипт парсинга тестов
+        run: oscript ./.github/workflows/os/docs_examples.os
+
+      - name: Удалить расшифрованный файл
+        continue-on-error: false
+  
+        run:  rm -f ./data.json
+
+      - uses: stefanzweifel/git-auto-commit-action@v5 
+        with:
+          commit_user_name: Vitaly the Alpaca (bot) 
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+          commit_message: Создание примеров кода документации на основе тестов

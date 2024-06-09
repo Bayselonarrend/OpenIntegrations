@@ -1,8 +1,10 @@
-![main](https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/24bc269c-d08f-44c6-9d50-81202083973d)
 
+ <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/eng.png?1" align="left" width="32"> *This page, but on English, here: [Click!](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/README_ENG.md)*
 
+<hr>
 
-
+![Main](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/main.gif#gh-dark-mode-only#gh-dark-mode-only)
+![Main-light](https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/main-light.gif#gh-light-mode-only)
 
 
 # Открытый пакет интеграций
@@ -16,22 +18,23 @@
 
 <br>
 
-Реализованные методы выполняют конечные задачи (вроде ОтправитьСообщение или СоздатьПост), что позволяет использовать их без углубления в реализацию. Однако, код, при этом, достаточно сильно декомпозирован - методы авторизации, получения данных и пр. по возможности вынесены в отдельные функции. Это позволяет легко добавлять новые методы, даже если они еще не реализованы в самой библиотеке на текущий момент. <br><br>
+Все реализованные методы выполняют отдельные практические задачи, вроде `ОтправитьСообщение` или `СоздатьПост`, что позволяет использовать их без углубления в реализацию. Код, при этом, достаточно сильно декомпозирован: методы авторизации, получения данных и пр. по возможности вынесены в отдельные функции. Это позволяет легко добавлять новые методы, даже если они еще не реализованы в самой библиотеке на текущий момент. <br><br>
 
-На данный момент реализованы методы для работы со следующими API:
+На сегодняшний день реализованы методы для работы со следующими API:
 <br>
   <div>
-  <a href="https://openintegrations.dev/docs/Telegram/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Telegram.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/VK/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/VK.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Viber/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Viber.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Twitter/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Twitter.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Notion/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Notion.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Yandex_Disk/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/YandexDisk.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Google_Calendar/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleCalendar.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Google_Drive/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleDrive.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Google_Sheets/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleSheets.png" width="32"></a>
-  <a href="https://openintegrations.dev/docs/Slack/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Slack.png" width="32"></a>
-    <a href="https://openintegrations.dev/docs/Airtable/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Airtable.png?6" width="32"></a>
+  <a href="https://openintegrations.dev/docs/Telegram/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Telegram.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/VK/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/VK.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Viber/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Viber.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Twitter/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Twitter.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Notion/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Notion.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Yandex_Disk/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/YandexDisk.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Google_Calendar/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleCalendar.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Google_Drive/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleDrive.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Google_Sheets/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleSheets.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Slack/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Slack.png" width="40"></a>
+  <a href="https://openintegrations.dev/docs/Airtable/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Airtable.png?6" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Dropbox/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Dropbox.png?6" width="40"></a>
 </div> 
 <br>
  
@@ -39,11 +42,11 @@
 
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
 
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/assets/105596284/f345b5b0-76ac-4511-980b-a9e86fee3067" align="right">
+<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/icons.png" align="right">
 
 <br><br>
 
-Релизы библиотеки выходят в пяти вариантах: 
+#### Релизы библиотеки выходят в пяти вариантах:
 - Как CLI приложение для Windows и Linux (exe, rpm, deb)
 - Как XML выгрузка расширения
 - Как EDT проект расширения
@@ -52,7 +55,7 @@
 
 <br/><br>
 
-При использовании версий для 1С и OneScript, вы также можете просто скопировать код общих модулей из релизов в свой проект руками. Однако, вне зависимости от выбранного сопособа установки, получать файлы необходимо из Release, так как в самих исходных файлах репозитория бывают промежуточные данные и функции, находящиеся в процессе разработки.
+При использовании версий для 1С и OneScript, вы также можете просто скопировать код общих модулей из релизов в свой проект руками. Однако, вне зависимости от выбранного сопособа установки, получать файлы необходимо из *Release*, так как в самих исходных файлах репозитория бывают промежуточные данные и функции, находящиеся в процессе разработки.
 
 <br/>
 
@@ -71,7 +74,7 @@
 ```
 <br>
 
-CLI версия дополнительно требует **.Net Framework 4.8** или **Mono соответствующей версии**. При установке из rpm или deb пакетов устанавливается автоматически
+CLI версия требует **.Net Framework 4.8** или **Mono соответствующей версии**. При установке из `rpm` или `deb` пакетов устанавливается автоматически
 
 <br/>
  
@@ -105,8 +108,7 @@ ___
 >- [OInt CLI - приложение Открытого пакета интеграций для командной строки](https://infostart.ru/1c/articles/2074205/)<br>
 >- [Библиотека для работы со Slack (open-source)](https://infostart.ru/1c/articles/2099282/)<br>
 
-
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png" align="right" width="256">
+<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/heartnstar.png?1" align="right" width="384">
 
 <br>
 

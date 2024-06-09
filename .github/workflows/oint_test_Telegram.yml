@@ -39,7 +39,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx    
 
@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: oint
-          path: ./OInt/*.ospx
+          path: ./src/ru/OInt/*.ospx
 
 
   Testing-Telegram:
@@ -73,7 +73,7 @@ jobs:
 
       - name: Установить OInt
         run: |
-          cd ./OInt
+          cd ./src/ru/OInt
           opm build
           opm install *.ospx
 
@@ -81,98 +81,98 @@ jobs:
 
       - name: Получить информацию бота
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьИнформациюБота"
 
       - name: Получить обновления
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьОбновления"
 
       - name: Установить Webhook
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УстановитьWebhook"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_УстановитьWebhook"
 
       - name: Отправить текстовое сообщение
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьТекстовоеСообщение"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьТекстовоеСообщение"
 
       - name: Отправить картинку
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКартинку"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКартинку"
 
       - name: Отправить видео
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьВидео"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьВидео"
 
       - name: Отправить аудио
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьАудио"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьАудио"
 
       - name: Отправить документ
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьДокумент"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьДокумент"
 
       - name: Отправить гифку
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьГифку"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьГифку"
 
       - name: Отправить медиагруппу
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМедиагруппу"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМедиагруппу"
 
       - name: Отправить местоположение
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМестоположение"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьМестоположение"
 
       - name: Отправить контакт
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКонтакт"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьКонтакт"
 
       - name: Отправить опрос
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьОпрос"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ОтправитьОпрос"
 
       - name: Переслать сообщение
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПереслатьСообщение"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПереслатьСообщение"
 
       - name: Бан/Разбан
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_БанРазбан"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_БанРазбан"
 
       - name: Создать ссылку-приглашение
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьСсылкуПриглашение"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьСсылкуПриглашение"
 
       - name: Закрепить/Открепить сообщение
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ЗакрепитьОткрепитьСообщение"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ЗакрепитьОткрепитьСообщение"
 
       - name: Получить число участников
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьЧислоУчастников"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьЧислоУчастников"
 
       - name: Получить список аватаров форума
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьСписокАватаровФорума"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ПолучитьСписокАватаровФорума"
 
       - name: Создать/Удалить тему форума
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьУдалитьТемуФорума"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СоздатьУдалитьТемуФорума"
 
       - name: Изменить имя главной темы
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_ИзменитьИмяГлавнойТемы"
 
       - name: Скрыть/Показать главную тему
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СкрытьПоказатьГлавнуюТему"
-
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Телеграм_СкрытьПоказатьГлавнуюТему"
 
       - name: Записать логи
-        uses: actions/upload-artifact@v4
+        if: ${{ cancelled() }} == false
+        uses: actions/cache/save@v3
         with:
-          name: Telegram
-          path: ./test_logs
+          key: logs-Telegram
+          path: ./docs/results/Telegram
 
 
       - name: Записать измененные данные
@@ -211,6 +211,23 @@ jobs:
           rm -f ./data.json
         env:
           ENC_JSON: ${{ secrets.ENC_JSON }}
+
+      - name: Получить логи Telegram
+        uses: actions/cache/restore@v3
+        with:
+          key: logs-Telegram
+          path: ./docs/results/Telegram
+
+
+      - name: Очистка логов Telegram
+        run: |
+          curl -L \
+          -X DELETE \
+          -H "Accept: application/vnd.github+json" \
+          -H "Authorization: Bearer ${{ secrets.TOKEN }}" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          "https://api.github.com/repos/Bayselonarrend/OpenIntegrations/actions/caches?key=logs-Telegram"
+
 
       - name: Записать данные    
         uses: stefanzweifel/git-auto-commit-action@v5   

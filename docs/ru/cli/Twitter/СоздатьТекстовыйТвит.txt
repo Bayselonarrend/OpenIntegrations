@@ -1,0 +1,1 @@
+﻿oint twitter СоздатьТекстовыйТвит --text %text% --auth %auth%

@@ -1,0 +1,117 @@
+﻿name: CLI | Добавить пакеты в Draft (EN)
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4             
+      - uses: otymko/setup-onescript@v1.4
+        with:
+          version: 1.9.0 
+
+      - name: Установить cmdline, asserts и osparser
+        run: |
+          opm install cmdline
+          opm install asserts
+          opm install osparser
+          opm install coloratos
+      - name: Сформировать список методов ОПИ -> CLI
+        run: oscript ./.github/workflows/os/cli_parse.os
+
+      - name: Записать измененный список методов CLI
+        uses: stefanzweifel/git-auto-commit-action@v5   
+        with:
+          commit_user_name: Vitaly the Alpaca (bot) 
+          commit_user_email: vitaly.the.alpaca@gmail.com
+          commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
+          commit_message: Обновление зашифрованных данных по результатам тестов (workflow)
+
+      - name: Собрать и установить OInt
+        run: |
+          cd ./src/en/OInt
+          opm build
+          opm install *.ospx  
+
+      - name: Собрать бинарник
+        run: |
+          cd ./src/en/cli
+          oscript -make core/Classes/Приложение.os oint
+
+      - name: Собрать exe
+        run: |
+          cd ./src/en/cli
+          oscript -make core/Classes/Приложение.os oint.exe
+
+      - name: Записать артефакт
+        uses: actions/upload-artifact@v4
+        with:
+          name: oint
+          path: ./src/en/cli/oint
+
+      - name: Создать каталог deb-пакета
+        run: |
+          mkdir -p .debpkg/usr/bin
+          cp ./src/en/cli/oint .debpkg/usr/bin/oint
+          chmod +x .debpkg/usr/bin/oint
+
+      - name: Собрать deb-пакет
+        uses: jiro4989/build-deb-action@v3
+        with:
+          package: oint
+          package_root: .debpkg
+          maintainer: Anton Titovets <bayselonarrend@gmail.com>
+          version: '1.10.0' # refs/tags/v*.*.*
+          arch: 'all'
+          depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
+          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: oint-deb
+          path: |
+            ./*.deb
+
+      - name: Создать каталог rpm-пакета
+        run: |
+          mkdir -p .rpmpkg/usr/bin
+          mkdir -p .rpmpkg/usr/share/oint/bin
+          cp ./src/en/cli/oint .rpmpkg/usr/share/oint/bin/oint
+          echo 'mono /usr/share/oint/bin/oint "$@"' > .rpmpkg/usr/bin/oint
+          chmod +x .rpmpkg/usr/bin/oint
+
+      - name: Собрать rpm-пакет 
+        uses: jiro4989/build-rpm-action@v2
+        with:
+          summary: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services.  Mono-runtime with .NET Framework 4.8 support required'
+          package: oint
+          package_root: .rpmpkg
+          maintainer: Anton Titovets <bayselonarrend@gmail.com>
+          version: '1.10.0'
+          arch: 'x86_64'
+          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
+          requires: |
+            mono-devel
+            Requires:       mono-locale-extras
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oint-rpm
+          path: |
+            ./*.rpm
+            !./*-debuginfo-*.rpm
+
+      - name: Добавить DEB
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload draft ./*.deb
+
+      - name: Добавить RPM
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release upload draft ./*.rpm

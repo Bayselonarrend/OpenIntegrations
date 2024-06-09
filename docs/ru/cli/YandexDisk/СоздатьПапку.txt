@@ -1,0 +1,1 @@
+﻿oint yadisk СоздатьПапку --token "y0_AgAAAABdylaOAA..." --path "/Тестовая папка"

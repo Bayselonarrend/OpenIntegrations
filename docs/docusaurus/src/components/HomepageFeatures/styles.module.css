@@ -1,0 +1,55 @@
+marquee{
+  padding: auto;
+}
+
+.api{
+  margin-right: 200px;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 80px;
+  width: 80px;
+}
+
+.ico{
+  padding: 176px;
+}
+
+.hero__title{
+  font-size: 10px;
+}
+.container {
+
+  display: flex;
+  white-space: nowrap;
+  width: 100%;
+  height: clamp(3em, 10vw, 6em);
+  overflow: hidden;
+  font-family: sans-serif;
+
+
+}
+
+.looptext {
+   animation: loopText 27s infinite linear;      
+}
+
+@keyframes loopText {
+
+ from {
+     transform: translateX(0);
+  }
+
+ to {
+     transform: translateX(-100%);
+  }
+
+}
+
