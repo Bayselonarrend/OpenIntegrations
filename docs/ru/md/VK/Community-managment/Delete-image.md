@@ -29,7 +29,6 @@ sidebar_position: 9
     
       oint vk УдалитьКартинку --pictureid %pictureid% --auth %auth%
 
-
 ```
 
 

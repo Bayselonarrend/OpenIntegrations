@@ -38,7 +38,6 @@ sidebar_position: 4
  
  oint gdrive UploadFile --token %token% --file %file% --props %props%
 
-
 ```
 
 

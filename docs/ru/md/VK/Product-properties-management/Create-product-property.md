@@ -29,7 +29,6 @@ sidebar_position: 2
     
       oint vk СоздатьСвойствоТовара --title %title% --auth %auth%
 
-
 ```
 
 

@@ -36,7 +36,6 @@ sidebar_position: 5
  
  oint gcalendar EditListCalendar --token %token% --calendar %calendar% --primary %primary% --secondary %secondary% --hidden %hidden%
 
-
 ```
 
 

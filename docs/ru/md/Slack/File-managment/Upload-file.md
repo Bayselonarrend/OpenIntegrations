@@ -37,7 +37,6 @@ sidebar_position: 2
     
       oint slack ЗагрузитьФайл --token %token% --file %file% --filename "megadoc.docx" --title %title% --channel "C123456"
 
-
 ```
 
 

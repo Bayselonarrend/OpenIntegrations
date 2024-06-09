@@ -29,7 +29,6 @@ sidebar_position: 7
     
       oint vk УдалитьВариантСвойстваТовара --option %option% --auth %auth%
 
-
 ```
 
 

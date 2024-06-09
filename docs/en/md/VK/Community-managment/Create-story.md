@@ -36,7 +36,6 @@ sidebar_position: 7
  
  oint vk CreateStory --picture "https://openintegrations.dev/test_data/picture.jpg" --url %url% --auth %auth%
 
-
 ```
 
 

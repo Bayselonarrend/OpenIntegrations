@@ -31,7 +31,6 @@ sidebar_position: 2
     
       oint yadisk ОтменитьПубликациюОбъекта --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
 
-
 ```
 
 

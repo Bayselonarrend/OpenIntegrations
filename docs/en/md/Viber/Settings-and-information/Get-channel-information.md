@@ -28,7 +28,6 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
  
  oint viber GetChannelInformation --token %token%
 
-
 ```
 
 

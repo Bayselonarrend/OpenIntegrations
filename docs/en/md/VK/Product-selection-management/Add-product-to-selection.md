@@ -30,7 +30,6 @@ sidebar_position: 5
  
  oint vk AddProductToSelection --items %items% --sel %sel% --auth %auth%
 
-
 ```
 
 

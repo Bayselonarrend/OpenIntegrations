@@ -30,7 +30,6 @@ sidebar_position: 6
  
  oint airtable GetCheckboxField --title "Checkbox"
 
-
 ```
 
 

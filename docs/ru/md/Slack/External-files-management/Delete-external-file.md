@@ -31,7 +31,6 @@ sidebar_position: 5
     
       oint slack УдалитьВнешнийФайл --token %token% --fileid "F070P52CU94"
 
-
 ```
 
 

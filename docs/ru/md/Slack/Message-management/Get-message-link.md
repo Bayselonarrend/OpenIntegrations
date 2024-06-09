@@ -33,7 +33,6 @@ sidebar_position: 6
     
       oint slack ПолучитьСсылкуНаСообщение --token %token% --channel "C070VPMKN8J" --stamp "1714146538.221929"
 
-
 ```
 
 

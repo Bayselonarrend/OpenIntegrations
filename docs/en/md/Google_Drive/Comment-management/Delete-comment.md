@@ -31,7 +31,6 @@ sidebar_position: 4
  
  oint gdrive DeleteComment --token %token% --object %object% --comment %comment%
 
-
 ```
 
 

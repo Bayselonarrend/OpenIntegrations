@@ -36,7 +36,6 @@ sidebar_position: 1
  
  oint gsheets CreateSpreadsheet --token %token% --title "TestTable" --sheets %sheets%
 
-
 ```
 
 

@@ -36,7 +36,6 @@ sidebar_position: 8
  
  oint telegram SendLocation --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --lat %lat% --long "48.87373649724122" --keyboard %keyboard%
 
-
 ```
 
 

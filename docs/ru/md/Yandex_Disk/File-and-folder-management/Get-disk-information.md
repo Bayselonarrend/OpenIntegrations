@@ -29,7 +29,6 @@ sidebar_position: 1
     
       oint yadisk ПолучитьИнформациюОДиске --token "y0_AgAAAABdylaOAA..."
 
-
 ```
 
 

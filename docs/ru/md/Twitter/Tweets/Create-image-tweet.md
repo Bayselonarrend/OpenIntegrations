@@ -34,7 +34,6 @@ sidebar_position: 2
     
       oint twitter СоздатьТвитКартинки --text %text% --pictures %pictures% --auth %auth%
 
-
 ```
 
 

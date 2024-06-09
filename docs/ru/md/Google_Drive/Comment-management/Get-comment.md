@@ -33,7 +33,6 @@ sidebar_position: 2
     
       oint gdrive ПолучитьКомментарий --token %token% --object %object% --comment "AAABI3NNNAY"
 
-
 ```
 
 

@@ -29,7 +29,6 @@ sidebar_position: 12
  
  oint dropbox DownloadFolder --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path%
 
-
 ```
 
 

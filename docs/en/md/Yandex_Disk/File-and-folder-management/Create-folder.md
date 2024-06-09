@@ -31,7 +31,6 @@ sidebar_position: 2
  
  oint yadisk CreateFolder --token "y0_AgAAAABdylaOAA..." --path "/TestFolder"
 
-
 ```
 
 

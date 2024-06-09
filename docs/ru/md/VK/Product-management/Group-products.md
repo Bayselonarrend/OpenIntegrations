@@ -34,7 +34,6 @@ sidebar_position: 7
     
       oint vk СгруппироватьТовары --items %items% --sellgroup %sellgroup% --auth %auth%
 
-
 ```
 
 

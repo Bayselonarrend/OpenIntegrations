@@ -26,7 +26,6 @@ sidebar_position: 6
     
       oint slack СделатьФайлПриватным --token %token% --fileid %fileid%
 
-
 ```
 
 

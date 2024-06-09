@@ -31,7 +31,6 @@ sidebar_position: 1
     
       oint yadisk ОпубликоватьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png"
 
-
 ```
 
 

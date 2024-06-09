@@ -31,7 +31,6 @@ sidebar_position: 3
     
       oint dropbox ОбновитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --refresh "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV..."
 
-
 ```
 
 

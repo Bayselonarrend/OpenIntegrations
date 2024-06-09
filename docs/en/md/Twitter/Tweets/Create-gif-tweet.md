@@ -34,7 +34,6 @@ sidebar_position: 3
  
  oint twitter CreateGifTweet --text %text% --gifs %gifs% --auth %auth%
 
-
 ```
 
 

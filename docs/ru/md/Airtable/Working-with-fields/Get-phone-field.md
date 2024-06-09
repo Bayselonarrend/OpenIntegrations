@@ -30,7 +30,6 @@ sidebar_position: 9
     
       oint airtable ПолучитьПолеТелефона --title "Телефон"
 
-
 ```
 
 

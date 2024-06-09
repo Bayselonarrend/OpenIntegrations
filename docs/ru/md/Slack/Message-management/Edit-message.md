@@ -36,7 +36,6 @@ sidebar_position: 3
     
       oint slack ИзменитьСообщение --token %token% --channel "C070VPMKN8J" --stamp "1714146538.221929" --text "Тестовое сообщение 2" --blocks %blocks%
 
-
 ```
 
 

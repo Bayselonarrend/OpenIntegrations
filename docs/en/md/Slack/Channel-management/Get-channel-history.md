@@ -31,7 +31,6 @@ sidebar_position: 6
  
  oint slack GetChannelHistory --token %token% --channel "C070VPMKN8J"
 
-
 ```
 
 
