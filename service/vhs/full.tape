@@ -8,6 +8,9 @@ Set Shell "cmd"
 Set FontSize 12
 Set Width 868
 Set Height 619
+Set WindowBar Colorful
+Set Theme "NightLion v2"
+
 
 Hide
 Type "set token=" Enter
