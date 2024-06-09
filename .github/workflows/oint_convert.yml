@@ -2,7 +2,7 @@ name: OPI | Конвертация OPI -> OInt -> CLI
 
 # Controls when the workflow will run
 on: 
-  [workflow_dispatch,push]
+  [workflow_dispatch]
   
 jobs:
 
