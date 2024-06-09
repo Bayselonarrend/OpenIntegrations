@@ -53,8 +53,8 @@
     |
     |    The structure of the JSON page data (parameter --data):
     |    {
-    |     ""DB field name 1""  : ""Value1"",
-    |     ""DB field name 2""  : ""Value2"",
+    |     ""DB field name 1""  : """",
+    |     ""DB field name 2""  : """",
     |     ...
     |    }
     |";
@@ -112,8 +112,8 @@
     NewLine.ОписаниеМетода   = "|
     |    The structure of the JSON page data (parameter --data):
     |    {
-    |     ""DB field name 1""  : ""Value1"",
-    |     ""DB field name 2""  : ""Value2"",
+    |     ""DB field name 1""  : """",
+    |     ""DB field name 2""  : """",
     |     ...
     |    }
     |";
@@ -184,8 +184,8 @@
     |     ""Name of field with regular type""     : ""Data type 1"",
     |     ""Name of field with a value selection""  : 
     |        {
-    |         ""Option1""  : ""green"",
-    |         ""Option2""  : ""red"",
+    |         """"  : ""green"",
+    |         """"  : ""red"",
     |         ...
     |        },
     |     ...
@@ -262,8 +262,8 @@
     |     ""Name of field with regular type""     : ""Data type 1"",
     |     ""Name of field with a value selection""  : 
     |        {
-    |         ""Option1""  : ""green"",
-    |         ""Option2""  : ""red"",
+    |         """"  : ""green"",
+    |         """"  : ""red"",
     |         ...
     |        },
     |     ...

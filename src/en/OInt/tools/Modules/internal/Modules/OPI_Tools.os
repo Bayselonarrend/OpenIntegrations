@@ -597,7 +597,9 @@ Function ExecuteRequestWithBinaryData(Val URL
     Request = CreateRequest(Address, AdditionalHeaders, DataType);
     Connection = CreateConnection(Server);
     
-    Request.SetBodyFromBinary(Data);
+    If Not Data.Size() = 0 Then
+        Request.SetBodyFromBinary(Data);
+    EndIf;
     
     Response = Connection.CallHTTPMethod(View, Request);
 
@@ -1029,7 +1031,7 @@ EndProcedure
 
 #Region GZip
 
-// Description withтруtoтур withм. здеwithь https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
+// Description withруtoур withм. зеwithь https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
 // Source: https://github.com/vbondarevsky/Connector 
 
 // Connector: convenient HTTP client for 1C:Enterprise 8
