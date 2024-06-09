@@ -321,8 +321,8 @@
     |     ""EndDate""           : """",      
     |     ""ArrayOfAttachmentURLs"" :           
     |         {
-    |          ""NameFile1"" : ""FileURL1"",
-    |          ""NameFile2"" : ""FileURL2"",
+    |          """" : """",
+    |          """" : """",
     |          ...
     |         },
     |     ""SendNotifications""   : true       
@@ -410,8 +410,8 @@
     |     ""EndDate""           : """",      
     |     ""ArrayOfAttachmentURLs"" :           
     |         {
-    |          ""NameFile1"" : ""FileURL1"",
-    |          ""NameFile2"" : ""FileURL2"",
+    |          """" : """",
+    |          """" : """",
     |          ...
     |         },
     |     ""SendNotifications""   : true       
