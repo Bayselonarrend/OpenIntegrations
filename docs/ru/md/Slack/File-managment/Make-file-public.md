@@ -24,7 +24,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint slack СделатьФайлПубличным --token %token% --fileid %fileid%
+  oint slack СделатьФайлПубличным --token %token% --fileid %fileid%
 
 ```
 

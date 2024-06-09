@@ -30,7 +30,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint slack АрхивироватьКанал --token %token% --channel "C070VPMKN8J"
+  oint slack АрхивироватьКанал --token %token% --channel "C070VPMKN8J"
 
 ```
 

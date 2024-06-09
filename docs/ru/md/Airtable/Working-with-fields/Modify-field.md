@@ -37,7 +37,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint airtable ИзменитьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --field "fld3IbFtHZtBHQwsk" --title %title% --description "Новое описание"
+  oint airtable ИзменитьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --field "fld3IbFtHZtBHQwsk" --title %title% --description "Новое описание"
 
 ```
 

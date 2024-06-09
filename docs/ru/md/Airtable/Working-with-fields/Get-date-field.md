@@ -28,7 +28,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-      oint airtable ПолучитьПолеДаты --title "Дата"
+  oint airtable ПолучитьПолеДаты --title "Дата"
 
 ```
 

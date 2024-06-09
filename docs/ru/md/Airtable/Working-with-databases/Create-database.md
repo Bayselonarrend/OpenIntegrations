@@ -41,7 +41,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint airtable СоздатьБазу --token %token% --ws "wspdf8yl1yZz3PmWZ" --title "Тестовая база" --tablesdata %tablesdata%
+  oint airtable СоздатьБазу --token %token% --ws "wspdf8yl1yZz3PmWZ" --title "Тестовая база" --tablesdata %tablesdata%
 
 ```
 

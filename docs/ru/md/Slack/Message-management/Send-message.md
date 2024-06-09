@@ -33,7 +33,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint slack ОтправитьСообщение --token %token% --channel "C070VPMKN8J" --text "Тестовое сообщение" --date %date% --blocks %blocks%
+  oint slack ОтправитьСообщение --token %token% --channel "C070VPMKN8J" --text "Тестовое сообщение" --date %date% --blocks %blocks%
 
 ```
 

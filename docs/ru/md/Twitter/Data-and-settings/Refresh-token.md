@@ -29,7 +29,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-      oint twitter ОбновитьТокен --auth %auth%
+  oint twitter ОбновитьТокен --auth %auth%
 
 ```
 

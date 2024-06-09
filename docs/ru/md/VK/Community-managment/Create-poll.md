@@ -34,7 +34,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" --options "['Красный','Желтый','Зеленый']" --picture %picture% --auth %auth%
+  oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" --options "['Красный','Желтый','Зеленый']" --picture %picture% --auth %auth%
 
 ```
 

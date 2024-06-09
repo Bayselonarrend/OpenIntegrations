@@ -32,7 +32,7 @@ sidebar_position: 12
 
 ```sh title="Пример команды CLI"
     
-      oint telegram СформироватьКлавиатуруПоМассивуКнопок --buttons %buttons% --under %under% --column %column%
+  oint telegram СформироватьКлавиатуруПоМассивуКнопок --buttons %buttons% --under %under% --column %column%
 
 ```
 

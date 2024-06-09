@@ -28,7 +28,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-      oint gcalendar УдалитьСобытие --token %token% --calendar %calendar% --event %event%
+  oint gcalendar УдалитьСобытие --token %token% --calendar %calendar% --event %event%
 
 ```
 

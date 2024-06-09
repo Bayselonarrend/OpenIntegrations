@@ -31,7 +31,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint telegram СоздатьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title% --icon %icon%
+  oint telegram СоздатьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title% --icon %icon%
 
 ```
 

@@ -27,7 +27,7 @@ sidebar_position: 6
 
 ```sh title="Пример команды CLI"
     
-      oint vk УдалитьАльбом --album %album% --auth %auth%
+  oint vk УдалитьАльбом --album %album% --auth %auth%
 
 ```
 

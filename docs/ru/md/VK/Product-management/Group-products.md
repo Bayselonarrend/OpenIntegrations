@@ -32,7 +32,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-      oint vk СгруппироватьТовары --items %items% --sellgroup %sellgroup% --auth %auth%
+  oint vk СгруппироватьТовары --items %items% --sellgroup %sellgroup% --auth %auth%
 
 ```
 

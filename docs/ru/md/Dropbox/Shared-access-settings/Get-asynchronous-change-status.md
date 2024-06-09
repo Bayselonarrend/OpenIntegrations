@@ -24,7 +24,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-      oint dropbox ПолучитьСтатусАсинхронногоИзменения --token %token% --job %job%
+  oint dropbox ПолучитьСтатусАсинхронногоИзменения --token %token% --job %job%
 
 ```
 

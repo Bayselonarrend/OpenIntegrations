@@ -27,7 +27,7 @@ sidebar_position: 6
 
 ```sh title="Пример команды CLI"
     
-      oint telegram ПолучитьЧислоУчастников --token "6129457865:AAFyzNYOAFbu..." --chat %chat%
+  oint telegram ПолучитьЧислоУчастников --token "6129457865:AAFyzNYOAFbu..." --chat %chat%
 
 ```
 

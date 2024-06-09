@@ -28,7 +28,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint vk ПолучитьСтатистику --datefrom %datefrom% --dateto %dateto% --auth %auth%
+  oint vk ПолучитьСтатистику --datefrom %datefrom% --dateto %dateto% --auth %auth%
 
 ```
 

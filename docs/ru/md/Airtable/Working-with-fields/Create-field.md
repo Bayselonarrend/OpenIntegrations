@@ -34,7 +34,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-      oint airtable СоздатьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --fielddata %fielddata%
+  oint airtable СоздатьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --fielddata %fielddata%
 
 ```
 

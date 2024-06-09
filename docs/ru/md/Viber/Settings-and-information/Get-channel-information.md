@@ -26,7 +26,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-      oint viber ПолучитьИнформациюОКанале --token %token%
+  oint viber ПолучитьИнформациюОКанале --token %token%
 
 ```
 

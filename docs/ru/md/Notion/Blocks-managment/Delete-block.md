@@ -30,7 +30,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-      oint notion УдалитьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block%
+  oint notion УдалитьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block%
 
 ```
 
