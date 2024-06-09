@@ -33,7 +33,6 @@ sidebar_position: 3
  
  oint vk GetProductsByID --items %items% --auth %auth%
 
-
 ```
 
 

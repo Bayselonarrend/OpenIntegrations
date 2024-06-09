@@ -29,7 +29,6 @@ sidebar_position: 1
     
       oint twitter СоздатьТекстовыйТвит --text %text% --auth %auth%
 
-
 ```
 
 

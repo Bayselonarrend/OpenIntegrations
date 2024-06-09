@@ -31,7 +31,6 @@ sidebar_position: 3
  
  oint gdrive GetFilesList --token %token% --querry %querry% --catalog "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4"
 
-
 ```
 
 

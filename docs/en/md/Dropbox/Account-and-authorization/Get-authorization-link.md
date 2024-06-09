@@ -26,7 +26,6 @@ sidebar_position: 1
  
  oint dropbox GetAuthorizationLink --appkey "oynqxds..."
 
-
 ```
 
 

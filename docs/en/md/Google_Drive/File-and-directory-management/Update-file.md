@@ -35,7 +35,6 @@ sidebar_position: 8
  
  oint gdrive UpdateFile --token %token% --object "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ" --file %file% --title "Updated file.jpeg"
 
-
 ```
 
 

@@ -36,7 +36,6 @@ sidebar_position: 4
  
  oint vk CreatePoll --question "What's your favorite color?" --options "['Red','Yellow','Green']" --picture %picture% --auth %auth%
 
-
 ```
 
 

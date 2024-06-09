@@ -32,7 +32,6 @@ sidebar_position: 5
  
  oint telegram OpenForumThread --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
-
 ```
 
 

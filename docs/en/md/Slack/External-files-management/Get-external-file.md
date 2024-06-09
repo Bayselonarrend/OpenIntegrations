@@ -31,7 +31,6 @@ sidebar_position: 2
  
  oint slack GetExternalFile --token %token% --fileid "F070P52CU94"
 
-
 ```
 
 

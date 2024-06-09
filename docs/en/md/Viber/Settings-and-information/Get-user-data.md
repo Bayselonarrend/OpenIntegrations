@@ -29,7 +29,6 @@ sidebar_position: 3
  
  oint viber GetUserData --token %token% --user %user%
 
-
 ```
 
 

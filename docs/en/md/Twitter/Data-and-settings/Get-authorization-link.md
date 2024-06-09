@@ -27,7 +27,6 @@ sidebar_position: 1
  
  oint twitter GetAuthorizationLink --auth %auth%
 
-
 ```
 
 

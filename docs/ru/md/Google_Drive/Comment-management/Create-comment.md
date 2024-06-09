@@ -33,7 +33,6 @@ sidebar_position: 1
     
       oint gdrive СоздатьКомментарий --token %token% --object "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW" --text %text%
 
-
 ```
 
 

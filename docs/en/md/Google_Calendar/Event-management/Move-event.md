@@ -31,7 +31,6 @@ sidebar_position: 5
  
  oint gcalendar MoveEvent --token %token% --from %from% --to %to% --event %event%
 
-
 ```
 
 

@@ -41,7 +41,6 @@ sidebar_position: 3
     
       oint notion ИзменитьСвойстваБазы --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --props %props% --title "Обновленный заголовок" --description "Обновленное описание базы"
 
-
 ```
 
 

@@ -41,7 +41,6 @@ sidebar_position: 10
     
       oint telegram ОтправитьОпрос --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --question %question% --options %options% --anonymous %anonymous%
 
-
 ```
 
 

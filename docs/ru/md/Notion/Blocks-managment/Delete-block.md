@@ -32,7 +32,6 @@ sidebar_position: 4
     
       oint notion УдалитьБлок --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block%
 
-
 ```
 
 

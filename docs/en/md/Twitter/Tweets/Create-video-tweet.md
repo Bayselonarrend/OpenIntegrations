@@ -34,7 +34,6 @@ sidebar_position: 4
  
  oint twitter CreateVideoTweet --text %text% --videos %videos% --auth %auth%
 
-
 ```
 
 

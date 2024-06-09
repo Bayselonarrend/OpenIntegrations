@@ -31,7 +31,6 @@ sidebar_position: 4
  
  oint slack DeleteFile --token %token% --fileid "F070VL6FQFM"
 
-
 ```
 
 

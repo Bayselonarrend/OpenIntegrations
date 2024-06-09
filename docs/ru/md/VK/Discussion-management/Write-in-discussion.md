@@ -31,7 +31,6 @@ sidebar_position: 4
     
       oint vk НаписатьВОбсуждение --topic %topic% --text %text% --auth %auth%
 
-
 ```
 
 

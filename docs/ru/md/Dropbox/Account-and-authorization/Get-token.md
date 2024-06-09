@@ -31,7 +31,6 @@ sidebar_position: 2
     
       oint dropbox ПолучитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"
 
-
 ```
 
 

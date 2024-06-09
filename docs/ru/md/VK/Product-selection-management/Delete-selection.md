@@ -29,7 +29,6 @@ sidebar_position: 7
     
       oint vk УдалитьПодборку --sel %sel% --auth %auth%
 
-
 ```
 
 

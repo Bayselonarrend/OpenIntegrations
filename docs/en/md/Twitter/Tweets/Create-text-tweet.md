@@ -29,7 +29,6 @@ sidebar_position: 1
  
  oint twitter CreateTextTweet --text %text% --auth %auth%
 
-
 ```
 
 

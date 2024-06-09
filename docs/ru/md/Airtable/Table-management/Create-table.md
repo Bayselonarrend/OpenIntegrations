@@ -46,7 +46,6 @@ sidebar_position: 1
     
       oint airtable СоздатьТаблицу --token %token% --base "apptm8Xqo7TwMaipQ" --title %title% --fieldsdata %fieldsdata% --description "Новая таблица"
 
-
 ```
 
 

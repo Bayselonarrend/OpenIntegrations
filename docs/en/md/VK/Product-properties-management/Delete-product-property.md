@@ -29,7 +29,6 @@ sidebar_position: 4
  
  oint vk DeleteProductProperty --prop %prop% --auth %auth%
 
-
 ```
 
 

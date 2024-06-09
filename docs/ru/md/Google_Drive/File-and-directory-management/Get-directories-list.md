@@ -31,7 +31,6 @@ sidebar_position: 2
     
       oint gdrive ПолучитьСписокКаталогов --token %token% --querry %querry% --depth %depth%
 
-
 ```
 
 

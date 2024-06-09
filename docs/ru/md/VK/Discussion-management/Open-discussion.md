@@ -28,7 +28,6 @@ sidebar_position: 3
     
       oint vk ОткрытьОбсуждение --topic %topic% --auth %auth%
 
-
 ```
 
 

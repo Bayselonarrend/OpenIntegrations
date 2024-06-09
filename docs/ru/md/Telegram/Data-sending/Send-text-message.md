@@ -35,7 +35,6 @@ sidebar_position: 1
     
       oint telegram ОтправитьТекстовоеСообщение --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --keyboard %keyboard% --parsemode %parsemode%
 
-
 ```
 
 

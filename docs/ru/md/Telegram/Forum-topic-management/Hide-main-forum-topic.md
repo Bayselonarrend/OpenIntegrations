@@ -29,7 +29,6 @@ sidebar_position: 7
     
       oint telegram СкрытьГлавнуюТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum%
 
-
 ```
 
 

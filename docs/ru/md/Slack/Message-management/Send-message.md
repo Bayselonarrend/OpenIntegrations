@@ -35,7 +35,6 @@ sidebar_position: 1
     
       oint slack ОтправитьСообщение --token %token% --channel "C070VPMKN8J" --text "Тестовое сообщение" --date %date% --blocks %blocks%
 
-
 ```
 
 

@@ -32,7 +32,6 @@ sidebar_position: 3
     
       oint yadisk ПолучитьСписокОпубликованныхОбъектов --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset%
 
-
 ```
 
 

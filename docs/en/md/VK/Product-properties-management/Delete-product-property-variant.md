@@ -29,7 +29,6 @@ sidebar_position: 7
  
  oint vk DeleteProductPropertyVariant --option %option% --auth %auth%
 
-
 ```
 
 

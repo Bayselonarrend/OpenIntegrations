@@ -32,7 +32,6 @@ sidebar_position: 3
     
       oint slack СоздатьКанал --token %token% --title %title% --private %private%
 
-
 ```
 
 

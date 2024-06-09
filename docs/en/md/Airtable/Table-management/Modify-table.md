@@ -37,7 +37,6 @@ sidebar_position: 2
  
  oint airtable ModifyTable --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --title "Test table 2 (change.)" --description "New table (change.)"
 
-
 ```
 
 

@@ -34,7 +34,6 @@ sidebar_position: 7
     
       oint slack ПригласитьПользователейВКанал --token %token% --channel "C070VPMKN8J" --users %users%
 
-
 ```
 
 

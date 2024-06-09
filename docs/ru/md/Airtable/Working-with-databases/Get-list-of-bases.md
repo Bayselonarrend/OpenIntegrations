@@ -30,7 +30,6 @@ sidebar_position: 1
     
       oint airtable ПолучитьСписокБаз --token %token% --offset %offset%
 
-
 ```
 
 

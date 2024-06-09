@@ -31,7 +31,6 @@ sidebar_position: 3
  
  oint slack GetFileData --token %token% --fileid "F070VL6FQFM"
 
-
 ```
 
 

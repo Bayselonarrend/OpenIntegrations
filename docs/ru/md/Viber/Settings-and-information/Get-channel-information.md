@@ -28,7 +28,6 @@ sidebar_position: 2
     
       oint viber ПолучитьИнформациюОКанале --token %token%
 
-
 ```
 
 

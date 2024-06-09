@@ -34,7 +34,6 @@ sidebar_position: 3
  
  oint vk WriteMessage --text %text% --user %user% --ct %ct% --keyboard %keyboard% --auth %auth%
 
-
 ```
 
 

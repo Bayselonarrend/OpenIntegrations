@@ -35,7 +35,6 @@ sidebar_position: 1
  
  oint slack SendMessage --token %token% --channel "C070VPMKN8J" --text "TestMessage" --date %date% --blocks %blocks%
 
-
 ```
 
 

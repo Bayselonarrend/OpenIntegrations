@@ -35,7 +35,6 @@ sidebar_position: 4
  
  oint viber SendContact --token %token% --name %name% --phone %phone% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
 
-
 ```
 
 

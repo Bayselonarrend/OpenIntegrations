@@ -31,7 +31,6 @@ sidebar_position: 3
  
  oint twitter RefreshToken --auth %auth%
 
-
 ```
 
 

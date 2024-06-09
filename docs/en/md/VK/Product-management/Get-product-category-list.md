@@ -27,7 +27,6 @@ sidebar_position: 1
  
  oint vk GetProductCategoryList --auth %auth%
 
-
 ```
 
 

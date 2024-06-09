@@ -29,7 +29,6 @@ sidebar_position: 2
  
  oint twitter GetToken --code %code% --auth %auth%
 
-
 ```
 
 

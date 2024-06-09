@@ -29,7 +29,6 @@ sidebar_position: 1
     
       oint gcalendar СоздатьКалендарь --token %token% --title %title%
 
-
 ```
 
 

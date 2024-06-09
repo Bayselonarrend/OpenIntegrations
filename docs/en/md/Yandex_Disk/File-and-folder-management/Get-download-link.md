@@ -31,7 +31,6 @@ sidebar_position: 6
  
  oint yadisk GetDownloadLink --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"
 
-
 ```
 
 

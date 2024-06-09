@@ -30,7 +30,6 @@ sidebar_position: 3
  
  oint vk PauseAdvertisingAd --cabinet %cabinet% --adv %adv% --auth %auth%
 
-
 ```
 
 

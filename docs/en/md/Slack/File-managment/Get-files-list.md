@@ -33,7 +33,6 @@ sidebar_position: 1
  
  oint slack GetFilesList --token %token% --channel "C123456" --page "1"
 
-
 ```
 
 

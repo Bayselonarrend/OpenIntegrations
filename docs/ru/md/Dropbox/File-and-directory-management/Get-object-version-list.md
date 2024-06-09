@@ -30,7 +30,6 @@ sidebar_position: 13
     
       oint dropbox ПолучитьСписокВерсийОбъекта --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --amount %amount%
 
-
 ```
 
 

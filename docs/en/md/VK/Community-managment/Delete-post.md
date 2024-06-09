@@ -29,7 +29,6 @@ sidebar_position: 3
  
  oint vk DeletePost --post %post% --auth %auth%
 
-
 ```
 
 

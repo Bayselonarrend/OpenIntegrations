@@ -31,7 +31,6 @@ sidebar_position: 2
  
  oint gsheets GetSpreadsheet --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc"
 
-
 ```
 
 

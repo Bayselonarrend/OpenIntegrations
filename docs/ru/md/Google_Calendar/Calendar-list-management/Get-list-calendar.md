@@ -29,7 +29,6 @@ sidebar_position: 3
     
       oint gcalendar ПолучитьКалендарьСписка --token %token% --calendar %calendar%
 
-
 ```
 
 

@@ -33,7 +33,6 @@ sidebar_position: 1
  
  oint slack OpenDialog --token %token% --users %users%
 
-
 ```
 
 

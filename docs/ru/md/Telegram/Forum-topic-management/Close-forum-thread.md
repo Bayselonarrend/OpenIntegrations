@@ -32,7 +32,6 @@ sidebar_position: 4
     
       oint telegram ЗакрытьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
-
 ```
 
 

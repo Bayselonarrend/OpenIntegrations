@@ -30,7 +30,6 @@ sidebar_position: 10
  
  oint airtable GetLinkField --title "Link"
 
-
 ```
 
 

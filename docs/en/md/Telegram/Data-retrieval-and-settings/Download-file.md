@@ -29,7 +29,6 @@ sidebar_position: 5
  
  oint telegram DownloadFile --token "6129457865:AAFyzNYOAFbu..." --fileid "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE"
 
-
 ```
 
 

@@ -29,7 +29,6 @@ sidebar_position: 2
  
  oint gcalendar GetEventList --token %token% --calendar %calendar%
 
-
 ```
 
 

@@ -29,7 +29,6 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
  
  oint viber SetWebhook --token %token% --url %url%
 
-
 ```
 
 
