@@ -35,7 +35,6 @@ sidebar_position: 9
  
  oint yadisk MoveObject --token "y0_AgAAAABdylaOAA..." --from "/Alpaca.png" --to "/TestFolder/Alpaca (Moved).png" --rewrite %rewrite%
 
-
 ```
 
 

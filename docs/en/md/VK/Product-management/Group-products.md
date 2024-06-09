@@ -34,7 +34,6 @@ sidebar_position: 7
  
  oint vk GroupProducts --items %items% --sellgroup %sellgroup% --auth %auth%
 
-
 ```
 
 

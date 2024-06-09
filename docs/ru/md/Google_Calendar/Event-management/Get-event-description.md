@@ -24,7 +24,6 @@ sidebar_position: 1
     
       oint gcalendar ПолучитьОписаниеСобытия
 
-
 ```
 
 

@@ -26,7 +26,6 @@ sidebar_position: 5
  
  oint dropbox GetAsynchronousChangeStatus --token %token% --job %job%
 
-
 ```
 
 

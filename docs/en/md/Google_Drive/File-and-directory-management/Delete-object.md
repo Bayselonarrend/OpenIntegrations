@@ -30,7 +30,6 @@ sidebar_position: 9
  
  oint gdrive DeleteObject --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa"
 
-
 ```
 
 

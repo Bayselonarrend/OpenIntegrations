@@ -31,7 +31,6 @@ sidebar_position: 4
  
  oint vk WriteComment --post %post% --wall %wall% --text %text% --auth %auth%
 
-
 ```
 
 

@@ -33,7 +33,6 @@ sidebar_position: 3
  
  oint gcalendar EditCalendarMetadata --token %token% --calendar %calendar% --title "TestCalendar (change.)" --description "TestDescription"
 
-
 ```
 
 

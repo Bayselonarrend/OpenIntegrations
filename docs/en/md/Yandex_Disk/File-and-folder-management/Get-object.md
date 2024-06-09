@@ -31,7 +31,6 @@ sidebar_position: 3
  
  oint yadisk GetObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"
 
-
 ```
 
 

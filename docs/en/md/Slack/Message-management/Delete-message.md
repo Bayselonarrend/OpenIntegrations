@@ -34,7 +34,6 @@ sidebar_position: 4
  
  oint slack DeleteMessage --token %token% --channel "C06UFNUTKUL" --stamp "1714146538.221929" --issheduled %issheduled%
 
-
 ```
 
 

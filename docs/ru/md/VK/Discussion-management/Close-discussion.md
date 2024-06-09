@@ -29,7 +29,6 @@ sidebar_position: 2
     
       oint vk ЗакрытьОбсуждение --topic %topic% --remove %remove% --auth %auth%
 
-
 ```
 
 

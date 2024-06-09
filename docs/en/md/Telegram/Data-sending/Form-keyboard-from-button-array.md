@@ -34,7 +34,6 @@ sidebar_position: 12
  
  oint telegram FormKeyboardFromButtonArray --buttons %buttons% --under %under% --column %column%
 
-
 ```
 
 

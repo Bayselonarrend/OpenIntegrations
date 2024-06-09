@@ -34,7 +34,6 @@ sidebar_position: 1
  
  oint airtable GetListOfRecords --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --offset %offset%
 
-
 ```
 
 

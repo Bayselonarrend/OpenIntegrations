@@ -31,7 +31,6 @@ sidebar_position: 5
  
  oint slack GetChannel --token %token% --channel "C070VPMKN8J"
 
-
 ```
 
 

@@ -38,7 +38,6 @@ sidebar_position: 9
     
       oint telegram ОтправитьКонтакт --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --name "Петр" --surname "Петров" --phone "88005553535" --keyboard %keyboard%
 
-
 ```
 
 

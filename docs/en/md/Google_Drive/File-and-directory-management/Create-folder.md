@@ -32,7 +32,6 @@ sidebar_position: 5
  
  oint gdrive CreateFolder --token %token% --title "TestFolder" --catalog %catalog%
 
-
 ```
 
 

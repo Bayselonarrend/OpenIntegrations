@@ -30,7 +30,6 @@ sidebar_position: 6
  
  oint vk RemoveProductFromSelection --item %item% --sel %sel% --auth %auth%
 
-
 ```
 
 

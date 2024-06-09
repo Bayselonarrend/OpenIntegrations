@@ -35,7 +35,6 @@ sidebar_position: 2
     
       oint slack ОтправитьЭфемерноеСообщение --token %token% --channel "C070VPMKN8J" --text %text% --user %user% --blocks %blocks%
 
-
 ```
 
 

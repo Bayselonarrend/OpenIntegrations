@@ -33,7 +33,6 @@ sidebar_position: 12
     
       oint slack УстановитьЦельКанала --token %token% --channel "C070VPMKN8J" --purpose "Тестовая цель"
 
-
 ```
 
 

@@ -36,7 +36,6 @@ sidebar_position: 4
     
       oint vk СоздатьОпрос --question "Какой ваш любимый цвет?" --options "['Красный','Желтый','Зеленый']" --picture %picture% --auth %auth%
 
-
 ```
 
 

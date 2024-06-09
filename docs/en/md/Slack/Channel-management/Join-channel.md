@@ -31,7 +31,6 @@ sidebar_position: 9
  
  oint slack JoinChannel --token %token% --channel "C070VPMKN8J"
 
-
 ```
 
 

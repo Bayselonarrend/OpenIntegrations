@@ -31,7 +31,6 @@ sidebar_position: 2
     
       oint airtable ПолучитьТаблицыБазы --token %token% --base "apptm8Xqo7TwMaipQ"
 
-
 ```
 
 

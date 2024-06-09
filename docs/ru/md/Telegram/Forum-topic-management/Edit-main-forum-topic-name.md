@@ -30,7 +30,6 @@ sidebar_position: 9
     
       oint telegram ИзменитьИмяГлавнойТемыФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title%
 
-
 ```
 
 
