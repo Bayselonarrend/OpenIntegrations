@@ -977,7 +977,7 @@ Procedure VKAPI_UploadVideo() Export
     
     Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
     
-    // ");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer");
     
     OPI_TestDataRetrieval.ExpectsThat(Result["video_id"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["video_hash"]).Заполнено();
@@ -3219,7 +3219,7 @@ Procedure DropboxAPI_CreateDeleteTag() Export
     OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
     
     Dropbox_AddTag(TestParameters);
-    (TestParameters);
+    Dropbox_GetTagList(TestParameters);
     Dropbox_DeleteTag(TestParameters);
     
 EndProcedure
@@ -4976,7 +4976,7 @@ Procedure Dropbox_MoveObject(FunctionParameters)
     
     // END
     
-    // ");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "Dropbox");
         
     Check_DropboxMetadata(Result, TargetPath);
     
@@ -5098,7 +5098,7 @@ Procedure Dropbox_RestoreObjectToVersion(FunctionParameters)
     
 EndProcedure
 
-Procedure (FunctionParameters)
+Procedure Dropbox_GetTagList(FunctionParameters)
 
     Token = FunctionParameters["Dropbox_Token"];
     
@@ -5288,7 +5288,7 @@ Procedure Dropbox_AddUsersToFolder(FunctionParameters)
     
     // END
         
-    // ");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFolder", "Dropbox");
     
     Check_Empty(Result);
     
