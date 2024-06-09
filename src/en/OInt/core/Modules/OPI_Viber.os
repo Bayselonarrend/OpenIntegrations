@@ -323,7 +323,7 @@ EndFunction
 // UserID - String, Number - Viber User ID
 // IsChannel - Boolean - Sending to channel or bot chat
 // Value - String, Structure - Value:
-// * URL - String - Прand праintoе URL
+// * URL - String - Прand отпраintoе URL
 // * Size - Number, String - File size in case of sending
 // * Extension - String - File extension in case of sending
 // Text - String - Message text

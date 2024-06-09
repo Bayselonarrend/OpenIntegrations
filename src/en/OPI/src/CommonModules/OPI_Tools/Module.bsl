@@ -1031,7 +1031,7 @@ EndProcedure
 
 #Region GZip
 
-// Description withруtoур withм. зеwithь https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
+// Description withтруtoтур withм. здеwithь https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
 // Source: https://github.com/vbondarevsky/Connector 
 
 // Connector: convenient HTTP client for 1C:Enterprise 8
