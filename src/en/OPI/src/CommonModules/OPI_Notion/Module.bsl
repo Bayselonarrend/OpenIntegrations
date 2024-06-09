@@ -227,7 +227,7 @@ Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") E
     // Count    : number
     // Date : date
     // Status : Map
-    // Аtoтandinный : green
+    // Аtoandinный : green
     // Inactive    : red
     // Архandin : yellow
     
