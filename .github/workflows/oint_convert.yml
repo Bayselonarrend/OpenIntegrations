@@ -1,9 +1,9 @@
 name: OPI | Конвертация OPI -> OInt -> CLI
 
 # Controls when the workflow will run
-on:
-  workflow_dispatch:
-
+on: 
+  [workflow_dispatch,push]
+  
 jobs:
 
   Convert:
@@ -31,6 +31,9 @@ jobs:
 
       - name: Выполнить скрипт преобразования OPI -> OInt
         run: oscript ./.github/workflows/os/convert.os
+
+      - name: Обновить словари
+        run: oscript ./.github/workflows/os/oint_dictionary.os
 
       - name: Выполнить скрипт локализации
         run: oscript ./.github/workflows/os/opi_translate.os
