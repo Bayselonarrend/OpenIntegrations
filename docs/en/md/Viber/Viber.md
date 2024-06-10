@@ -9,6 +9,10 @@ sidebar_class_name: Viber
 
 This section is dedicated to the library for working with Viber API. On this page, all the steps necessary to start working are described
 
+:::warning
+Starting from February 5, 2024, this method of creating bots is no longer valid: Rakuten has canceled the ability to create bots for free, and now working with the API requires verification under a commercial model. More details [here](https://help.viber.com/hc/en-us/articles/15247629658525-Bot-commercial-model)
+:::
+
 ## Getting started
 
 For Viber, there are two REST APIs: one for working with channels and the other for chatbots. In both cases, the main parameters are **Token** and **UserID**
