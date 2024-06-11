@@ -3684,7 +3684,10 @@ EndProcedure
 Procedure Check_BitrixTime(Val Result)
 	
 	Time = Result["result"];
-	Time = XMLValue(Type("Date"), Time);
+	
+	If Not TypeOf(Time) = Type("Date") Then
+	   Time = XMLValue(Type("Date"), Time);
+	EndIf;
 	
 	OPI_TestDataRetrieval.ExpectsThat(Time).ИмеетТип("Date").Заполнено();
 	
