@@ -243,6 +243,7 @@ EndFunction
 // Text - String - Message text - text
 // Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// RepliedID - String, Number - Reply to message ID - reply
 // 
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
@@ -250,7 +251,8 @@ Function SendTextMessage(Val Token
 	, Val ChatID
 	, Val Text
 	, Val Keyboard = ""
-	, Val Markup = "Markdown") Export
+	, Val Markup = "Markdown"
+	, Val RepliedID = 0) Export
 
     OPI_TypeConversion.GetLine(Token);    
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
@@ -258,7 +260,8 @@ Function SendTextMessage(Val Token
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode" , Markup , "String" , Parameters);
     OPI_Tools.AddField("text" , Text , "String" , Parameters);
-    OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
+    OPI_Tools.AddField("reply_markup" , Keyboard , "FileString", Parameters);
+    OPI_Tools.AddField("reply_to_message_id", RepliedID, "String" , Parameters);
     
     AddChatIdentifier(ChatID, Parameters);
     
