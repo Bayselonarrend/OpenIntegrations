@@ -96,7 +96,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleWorkspace
-          path: ./docs/results/GoogleWorkspace
+          path: ./docs/ru/results/GoogleWorkspace
 
 
       - name: Записать измененные данные
@@ -148,7 +148,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleWorkspace
-          path: ./docs/results/GoogleWorkspace
+          path: ./docs/ru/results/GoogleWorkspace
 
 
       - name: Очистка логов GoogleWorkspace

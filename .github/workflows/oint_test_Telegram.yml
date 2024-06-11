@@ -172,7 +172,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Telegram
-          path: ./docs/results/Telegram
+          path: ./docs/ru/results/Telegram
 
 
       - name: Записать измененные данные
@@ -216,7 +216,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Telegram
-          path: ./docs/results/Telegram
+          path: ./docs/ru/results/Telegram
 
 
       - name: Очистка логов Telegram

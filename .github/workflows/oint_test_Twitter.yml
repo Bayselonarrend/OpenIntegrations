@@ -112,7 +112,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Twitter
-          path: ./docs/results/Twitter
+          path: ./docs/ru/results/Twitter
 
 
       - name: Записать измененные данные
@@ -164,7 +164,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Twitter
-          path: ./docs/results/Twitter
+          path: ./docs/ru/results/Twitter
 
 
       - name: Очистка логов Twitter

@@ -120,7 +120,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Viber
-          path: ./docs/results/Viber
+          path: ./docs/ru/results/Viber
 
 
       - name: Записать измененные данные
@@ -164,7 +164,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Viber
-          path: ./docs/results/Viber
+          path: ./docs/ru/results/Viber
 
 
       - name: Очистка логов Viber

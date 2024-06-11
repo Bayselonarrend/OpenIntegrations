@@ -96,7 +96,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Bitrix24
-          path: ./docs/results/Bitrix24
+          path: ./docs/ru/results/Bitrix24
 
 
       - name: Записать измененные данные
@@ -140,7 +140,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Bitrix24
-          path: ./docs/results/Bitrix24
+          path: ./docs/ru/results/Bitrix24
 
 
       - name: Очистка логов Bitrix24

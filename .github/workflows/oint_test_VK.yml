@@ -164,7 +164,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-VK
-          path: ./docs/results/VK
+          path: ./docs/ru/results/VK
 
 
       - name: Записать измененные данные
@@ -208,7 +208,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-VK
-          path: ./docs/results/VK
+          path: ./docs/ru/results/VK
 
 
       - name: Очистка логов VK
