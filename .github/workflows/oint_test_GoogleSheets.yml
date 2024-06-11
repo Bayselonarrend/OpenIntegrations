@@ -96,7 +96,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleSheets
-          path: ./docs/results/GoogleSheets
+          path: ./docs/ru/results/GoogleSheets
 
 
       - name: Записать измененные данные
@@ -140,7 +140,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleSheets
-          path: ./docs/results/GoogleSheets
+          path: ./docs/ru/results/GoogleSheets
 
 
       - name: Очистка логов GoogleSheets

@@ -124,7 +124,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-YandexDisk
-          path: ./docs/results/YandexDisk
+          path: ./docs/ru/results/YandexDisk
 
 
       - name: Записать измененные данные
@@ -168,7 +168,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-YandexDisk
-          path: ./docs/results/YandexDisk
+          path: ./docs/ru/results/YandexDisk
 
 
       - name: Очистка логов YandexDisk

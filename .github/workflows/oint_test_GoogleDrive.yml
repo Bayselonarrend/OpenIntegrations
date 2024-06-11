@@ -100,7 +100,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleDrive
-          path: ./docs/results/GoogleDrive
+          path: ./docs/ru/results/GoogleDrive
 
 
       - name: Записать измененные данные
@@ -144,7 +144,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleDrive
-          path: ./docs/results/GoogleDrive
+          path: ./docs/ru/results/GoogleDrive
 
 
       - name: Очистка логов GoogleDrive

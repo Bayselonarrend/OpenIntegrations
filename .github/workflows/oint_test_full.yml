@@ -172,7 +172,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Telegram
-          path: ./docs/results/Telegram
+          path: ./docs/ru/results/Telegram
 
 
   Testing-VK:
@@ -289,7 +289,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-VK
-          path: ./docs/results/VK
+          path: ./docs/ru/results/VK
 
 
   Testing-Viber:
@@ -362,7 +362,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Viber
-          path: ./docs/results/Viber
+          path: ./docs/ru/results/Viber
 
 
   Testing-Twitter:
@@ -427,7 +427,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Twitter
-          path: ./docs/results/Twitter
+          path: ./docs/ru/results/Twitter
 
 
       - name: Записать измененные данные
@@ -512,7 +512,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-YandexDisk
-          path: ./docs/results/YandexDisk
+          path: ./docs/ru/results/YandexDisk
 
 
   Testing-GoogleWorkspace:
@@ -561,7 +561,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleWorkspace
-          path: ./docs/results/GoogleWorkspace
+          path: ./docs/ru/results/GoogleWorkspace
 
 
       - name: Записать измененные данные
@@ -622,7 +622,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleCalendar
-          path: ./docs/results/GoogleCalendar
+          path: ./docs/ru/results/GoogleCalendar
 
 
   Testing-GoogleDrive:
@@ -675,7 +675,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleDrive
-          path: ./docs/results/GoogleDrive
+          path: ./docs/ru/results/GoogleDrive
 
 
   Testing-GoogleSheets:
@@ -724,7 +724,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleSheets
-          path: ./docs/results/GoogleSheets
+          path: ./docs/ru/results/GoogleSheets
 
 
   Testing-Notion:
@@ -797,7 +797,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Notion
-          path: ./docs/results/Notion
+          path: ./docs/ru/results/Notion
 
 
   Testing-Slack:
@@ -886,7 +886,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Slack
-          path: ./docs/results/Slack
+          path: ./docs/ru/results/Slack
 
 
   Testing-Airtable:
@@ -939,7 +939,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Airtable
-          path: ./docs/results/Airtable
+          path: ./docs/ru/results/Airtable
 
 
   Testing-Dropbox:
@@ -1008,7 +1008,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Dropbox
-          path: ./docs/results/Dropbox
+          path: ./docs/ru/results/Dropbox
 
 
   Testing-Bitrix24:
@@ -1057,7 +1057,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Bitrix24
-          path: ./docs/results/Bitrix24
+          path: ./docs/ru/results/Bitrix24
 
   Encode:
     runs-on: ubuntu-latest
@@ -1093,7 +1093,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Telegram
-          path: ./docs/results/Telegram
+          path: ./docs/ru/results/Telegram
 
 
       - name: Очистка логов Telegram
@@ -1109,7 +1109,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-VK
-          path: ./docs/results/VK
+          path: ./docs/ru/results/VK
 
 
       - name: Очистка логов VK
@@ -1125,7 +1125,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Viber
-          path: ./docs/results/Viber
+          path: ./docs/ru/results/Viber
 
 
       - name: Очистка логов Viber
@@ -1141,7 +1141,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Twitter
-          path: ./docs/results/Twitter
+          path: ./docs/ru/results/Twitter
 
 
       - name: Очистка логов Twitter
@@ -1157,7 +1157,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-YandexDisk
-          path: ./docs/results/YandexDisk
+          path: ./docs/ru/results/YandexDisk
 
 
       - name: Очистка логов YandexDisk
@@ -1173,7 +1173,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleWorkspace
-          path: ./docs/results/GoogleWorkspace
+          path: ./docs/ru/results/GoogleWorkspace
 
 
       - name: Очистка логов GoogleWorkspace
@@ -1189,7 +1189,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleCalendar
-          path: ./docs/results/GoogleCalendar
+          path: ./docs/ru/results/GoogleCalendar
 
 
       - name: Очистка логов GoogleCalendar
@@ -1205,7 +1205,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleDrive
-          path: ./docs/results/GoogleDrive
+          path: ./docs/ru/results/GoogleDrive
 
 
       - name: Очистка логов GoogleDrive
@@ -1221,7 +1221,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleSheets
-          path: ./docs/results/GoogleSheets
+          path: ./docs/ru/results/GoogleSheets
 
 
       - name: Очистка логов GoogleSheets
@@ -1237,7 +1237,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Notion
-          path: ./docs/results/Notion
+          path: ./docs/ru/results/Notion
 
 
       - name: Очистка логов Notion
@@ -1253,7 +1253,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Slack
-          path: ./docs/results/Slack
+          path: ./docs/ru/results/Slack
 
 
       - name: Очистка логов Slack
@@ -1269,7 +1269,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Airtable
-          path: ./docs/results/Airtable
+          path: ./docs/ru/results/Airtable
 
 
       - name: Очистка логов Airtable
@@ -1285,7 +1285,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Dropbox
-          path: ./docs/results/Dropbox
+          path: ./docs/ru/results/Dropbox
 
 
       - name: Очистка логов Dropbox
@@ -1301,7 +1301,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Bitrix24
-          path: ./docs/results/Bitrix24
+          path: ./docs/ru/results/Bitrix24
 
 
       - name: Очистка логов Bitrix24
