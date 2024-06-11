@@ -1,0 +1,286 @@
+﻿// OneScript: ./OInt/core/Modules/OPI_Bitrix24.os
+// Lib: Bitrix24
+// CLI: bitrix24
+
+// MIT License
+
+// Copyright (c) 2023 Anton Tsitavets
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+// https://github.com/Bayselonarrend/OpenIntegrations
+
+// BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:UnreachableCode-off
+// BSLLS:CommentedCode-off
+
+//@skip-check module-structure-top-region
+//@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+//@skip-check method-too-many-params
+
+// Uncomment if OneScript is executed
+// #Use "../../tools"
+
+#Region Public
+
+#Region SettingsAndAdministartion
+
+// Get app authentication link
+// Forms a link for authorization via the browser
+// 
+// Parameters:
+// Domain - String - Current Bitrix URL (like 'portal.bitrix24.com')
+// ClientID - String - Client ID from app settings
+// 
+// Returns:
+// String - URL for browser transition
+Function GetAppAuthLink(Val Domain, Val ClientID) Export
+    
+    OPI_TypeConversion.GetLine(Domain);
+    OPI_TypeConversion.GetLine(ClientID);
+    
+    If Not StrStartsWith(Domain, "http") Then
+        URL = "https://" + Domain;
+    EndIf;
+    
+    If Not StrEndsWith(URL, "/") Then
+        URL = URL + "/";
+    EndIf;
+    
+    URL = URL + "oauth/authorize/?client_id=" + ClientID;
+    
+    Return URL;
+        
+EndFunction
+
+// Get token
+// Get token by auth code
+// 
+// Parameters:
+// ClientID - String - Client ID from app settings
+// ClientSecret - String - Client secret from app settings
+// Code - String - Code from browser auth page
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetToken(Val ClientID, Val ClientSecret, Val Code) Export
+    
+    URL = "https://oauth.bitrix.info/oauth/token/";
+    
+    Parameters = New Structure;
+    OPI_Tools.AddField("grant_type" , "authorization_code", "String", Parameters);
+    OPI_Tools.AddField("client_id" , ClientID , "String", Parameters);
+    OPI_Tools.AddField("client_secret", ClientSecret , "String", Parameters);
+    OPI_Tools.AddField("code" , Code , "String", Parameters);  
+    
+    Response = OPI_Tools.Get(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Refresh token
+// Update token by refresh token
+// 
+// Parameters:
+// ClientID - String - Client ID from app settings
+// ClientSecret - String - Client secret from app settings
+// Refresh - String - Refresh token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RefreshToken(Val ClientID, Val ClientSecret, Val Refresh) Export
+    
+    URL = "https://oauth.bitrix.info/oauth/token/";
+    
+    Parameters = New Structure;
+    OPI_Tools.AddField("grant_type" , "refresh_token" , "String", Parameters);
+    OPI_Tools.AddField("client_id" , ClientID , "String", Parameters);
+    OPI_Tools.AddField("client_secret", ClientSecret , "String", Parameters);
+    OPI_Tools.AddField("refresh_token", Refresh , "String", Parameters);  
+    
+    Response = OPI_Tools.Get(URL, Parameters);
+    
+    Return Response;
+
+EndFunction
+
+// Server time
+// Get current server time
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used
+// Token - String - Access token, when not-webhook method used 
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ServerTime(Val URL, Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "server.time");
+	Response = OPI_Tools.Get(URL, Parameters);
+	
+	Return Response;
+		
+EndFunction
+
+#EndRegion
+
+#Region NewsFeed
+
+// Create post.
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used
+// Text - String - Text of post
+// Visibility - String - Array or a single post target (UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group)
+// Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data
+// Title - String - Title
+// Token - String - Access token, when not-webhook method used
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreatePost(Val URL
+	, Val Text
+	, Val Visibility = "UA"
+	, Val Files = ""
+	, Val Title = ""
+	, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "log.blogpost.add");
+    OPI_Tools.AddField("POST_MESSAGE", Text , "String", Parameters);
+    OPI_Tools.AddField("POST_TITLE" , Title, "String", Parameters);
+    OPI_Tools.AddField("DEST" , Visibility , "Array", Parameters);
+    
+    If ValueIsFilled(Files) Then
+        
+        OPI_TypeConversion.GetCollection(Files);
+        
+        ArrayOfFiles = NormalizeFiles(Files);
+        
+        If Not ArrayOfFiles.Count() = 0 Then
+            Parameters.Insert("FILES", ArrayOfFiles);
+        EndIf;
+        
+    EndIf;
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Delete post.
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used
+// PostID - String, Number - Id of post to remove
+// Token - String - Access token, when not-webhook method used
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeletePost(Val URL, Val PostID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "log.blogpost.delete");
+    OPI_Tools.AddField("POST_ID", PostID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region Internal
+
+Function NormalizeAuth(URL, Val Token, Val Method = "")
+    
+    OPI_TypeConversion.GetLine(URL);
+    OPI_TypeConversion.GetLine(Token);
+    
+    Parameters = New Structure;
+    IsTokenAuth = ValueIsFilled(Token);
+    
+	UncorrectItems = New Array;
+	UncorrectItems.Add("https://");
+	UncorrectItems.Add("http://");
+	UncorrectItems.Add("www.");
+	
+	For Each DeletedElement In UncorrectItems Do
+		URL = StrReplace(URL, DeletedElement, "");
+	EndDo;
+	
+	URL = TrimAll(URL);
+	
+	If Not StrEndsWith(URL, "/") Then
+		URL = URL + "/";
+    EndIf;
+    
+    If IsTokenAuth Then
+        
+        If Not StrEndsWith(URL, "rest/") Then
+    		URL = URL + "rest/";
+        EndIf;
+        
+        Parameters.Insert("auth", Token);
+        
+    EndIf;
+	
+	If ValueIsFilled(Method) Then
+		URL = URL + TrimAll(Method);
+    EndIf;
+    
+    Return Parameters;
+
+EndFunction
+
+Function NormalizeFiles(Val Files)
+    
+    NormalizedFiles = New Array;
+
+    If Not TypeOf(Files) = Type("Map") Then
+        Return NormalizedFiles; 
+    EndIf;
+    
+    For Each File In Files Do
+        
+        CurrentArray = New Array;
+        CurrentFile = File.Value;
+        CurrentName = File.Key;
+        
+        OPI_TypeConversion.GetBinaryData(CurrentFile);
+        OPI_TypeConversion.GetLine(CurrentName);
+        
+        CurrentArray.Add(CurrentName);
+        CurrentArray.Add(Base64String(CurrentFile));
+        
+        NormalizedFiles.Add(CurrentArray);
+        
+    EndDo;
+    
+    Return NormalizedFiles;
+    
+EndFunction
+
+#EndRegion
