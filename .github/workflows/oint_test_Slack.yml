@@ -136,7 +136,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Slack
-          path: ./docs/results/Slack
+          path: ./docs/ru/results/Slack
 
 
       - name: Записать измененные данные
@@ -180,7 +180,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Slack
-          path: ./docs/results/Slack
+          path: ./docs/ru/results/Slack
 
 
       - name: Очистка логов Slack

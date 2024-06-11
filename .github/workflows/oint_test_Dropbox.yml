@@ -116,7 +116,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-Dropbox
-          path: ./docs/results/Dropbox
+          path: ./docs/ru/results/Dropbox
 
 
       - name: Записать измененные данные
@@ -160,7 +160,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-Dropbox
-          path: ./docs/results/Dropbox
+          path: ./docs/ru/results/Dropbox
 
 
       - name: Очистка логов Dropbox
