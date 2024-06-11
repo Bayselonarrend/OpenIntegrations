@@ -231,7 +231,7 @@
 		|        uses: actions/cache/restore@v3
 		|        with:
 		|          key: logs-" + ТекущаяБиблиотека + "
-		|          path: ./docs/results/" + ТекущаяБиблиотека + "
+		|          path: ./docs/ru/results/" + ТекущаяБиблиотека + "
 		|");
 
 		ТекущийДокумент.ДобавитьСтроку("
@@ -305,7 +305,7 @@
 	|        uses: actions/cache/save@v3
 	|        with:
 	|          key: logs-" + Раздел + "
-	|          path: ./docs/results/" + Раздел + "
+	|          path: ./docs/ru/results/" + Раздел + "
 	|";
 
 	Если Раздел = "Twitter" Тогда
