@@ -64,6 +64,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Slack" , StandardDependencies);
     Sections.Insert("Airtable" , StandardDependencies);
     Sections.Insert("Dropbox" , StandardDependencies);
+    Sections.Insert("Bitrix24" , StandardDependencies);
         
     Return Sections;
     
@@ -84,6 +85,7 @@ Function GetTestTable() Export
     Tables = "GoogleSheets";
     AirT = "Airtable";
     Dropbox = "Dropbox";
+    Bitrix = "Bitrix24";
     
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -218,6 +220,10 @@ Function GetTestTable() Export
     NewTest(TestTable, "DropboxAPI_GetAccount" , "Get account data" , Dropbox);
     NewTest(TestTable, "DropboxAPI_AccessManagement" , "Access management" , Dropbox);
     NewTest(TestTable, "DropboxAPI_GetFolderFileList" , "Get list of folder files" , Dropbox);
+    
+    NewTest(TestTable, "B24_TokenManagment" , "Token management" , Bitrix);
+    NewTest(TestTable, "B24_ServerTime" , "Server time" , Bitrix);
+    NewTest(TestTable, "B24_PostsManagment" , "Posts managment" , Bitrix);
    
     Return TestTable;
                                     
