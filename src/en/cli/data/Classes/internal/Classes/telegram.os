@@ -159,6 +159,16 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "telegram";
     NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "SendTextMessage";
+    NewLine.МетодПоиска = "SENDTEXTMESSAGE";
+    NewLine.Параметр    = "--reply";
+    NewLine.Описание    = "Reply to message ID (optional, def. val. - Empty)";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
     NewLine.Метод       = "SendImage";
     NewLine.МетодПоиска = "SENDIMAGE";
     NewLine.Параметр    = "--token";
