@@ -5460,7 +5460,7 @@ Procedure Bitrix24_ServerTime(FunctionParameters)
 	
 	Result = OPI_Bitrix24.ServerTime(URL);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "ServerTime (хуto)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
     
     Check_BitrixTime(Result); // SKIP
     
@@ -5490,7 +5490,7 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
 	
 	Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (хуto)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
     
     Check_BitrixPost(Result); // SKIP
     
@@ -5523,7 +5523,7 @@ Procedure Bitrix24_DeletePost(FunctionParameters)
 	
 	Result = OPI_Bitrix24.DeletePost(URL, PostID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "DeletePost (хуto)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
     
     Check_BitrixTrue(Result); // SKIP
     
