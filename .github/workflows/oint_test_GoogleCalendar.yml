@@ -100,7 +100,7 @@ jobs:
         uses: actions/cache/save@v3
         with:
           key: logs-GoogleCalendar
-          path: ./docs/results/GoogleCalendar
+          path: ./docs/ru/results/GoogleCalendar
 
 
       - name: Записать измененные данные
@@ -144,7 +144,7 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           key: logs-GoogleCalendar
-          path: ./docs/results/GoogleCalendar
+          path: ./docs/ru/results/GoogleCalendar
 
 
       - name: Очистка логов GoogleCalendar
