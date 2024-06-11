@@ -58,7 +58,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - False)";
     NewLine.Область     = "Community managment";
 
 
@@ -118,7 +118,7 @@
     NewLine.Метод       = "CreateCompositePost";
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - False)";
     NewLine.Область     = "Community managment";
 
 
@@ -578,7 +578,7 @@
     NewLine.Метод       = "CloseDiscussion";
     NewLine.МетодПоиска = "CLOSEDISCUSSION";
     NewLine.Параметр    = "--remove";
-    NewLine.Описание    = "Delete completely (True) or close (optional, def. val. - No)";
+    NewLine.Описание    = "Delete completely (True) or close (optional, def. val. - False)";
     NewLine.Область     = "Discussion management";
 
 
@@ -748,7 +748,7 @@
     NewLine.Метод       = "MakeRepost";
     NewLine.МетодПоиска = "MAKEREPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign of an advertising post (optional, def. val. - No)";
+    NewLine.Описание    = "Sign of an advertising post (optional, def. val. - False)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -1510,7 +1510,7 @@
     NewLine.Метод       = "CreateProductCollection";
     NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     NewLine.Параметр    = "--main";
-    NewLine.Описание    = "Main (optional, def. val. - No)";
+    NewLine.Описание    = "Main (optional, def. val. - False)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1520,7 +1520,7 @@
     NewLine.Метод       = "CreateProductCollection";
     NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     NewLine.Параметр    = "--hidden";
-    NewLine.Описание    = "Hidden (optional, def. val. - No)";
+    NewLine.Описание    = "Hidden (optional, def. val. - False)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1580,7 +1580,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--main";
-    NewLine.Описание    = "Main (optional, def. val. - No)";
+    NewLine.Описание    = "Main (optional, def. val. - False)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1590,7 +1590,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--hidden";
-    NewLine.Описание    = "Hidden (optional, def. val. - No)";
+    NewLine.Описание    = "Hidden (optional, def. val. - False)";
     NewLine.Область     = "Product selection management";
 
 
