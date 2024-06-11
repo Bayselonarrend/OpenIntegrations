@@ -13,7 +13,7 @@ An 1C/OneScript and CLI open-source toolkit for integrating with APIs of popular
 
 <br>
 
-The implemented methods perform specific tasks (such as ``SendMessage()`` or ``CreatePost()``), allowing them to be used without delving into the implementation details. However, the code is highly decomposed – authorization methods, data retrieval, etc., are separated into individual functions where possible. This makes it easy to add new methods, even if they are not yet implemented in the library at the current time. <br><br>
+The implemented methods perform specific tasks (such as ``SendMessage`` or ``CreatePost``), allowing them to be used without delving into the implementation details. However, the code is highly decomposed – authorization methods, data retrieval, etc., are separated into individual functions where possible. This makes it easy to add new methods, even if they are not yet implemented in the library at the current time. <br><br>
 
 List of currently available APIs:
 <br>
