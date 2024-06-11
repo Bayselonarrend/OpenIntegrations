@@ -3289,6 +3289,8 @@ Procedure B24_PostsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
 
     Bitrix24_CreatePost(TestParameters);
     Bitrix24_DeletePost(TestParameters);
@@ -5481,10 +5483,12 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
     
     Text = "Text of post";
     Title = "Post title";
+    Image1 = FunctionParameters["Picture"];
+    Image2 = FunctionParameters["Picture2"];
     
     Files = New Map;
-    Files.Insert("1.png", "C:\1.jpg");
-    Files.Insert("2.png", "C:\1.jpg");
+    Files.Insert("1.png", Image1);
+    Files.Insert("2.png", Image2);
     
     URL = FunctionParameters["Bitrix24_URL"];
 	
