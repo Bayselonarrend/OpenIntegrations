@@ -48,8 +48,8 @@
 // Forms a link for authorization via the browser
 // 
 // Parameters:
-// Domain - String - Current Bitrix URL (like 'portal.bitrix24.com')
-// ClientID - String - Client ID from app settings
+// Domain - String - Current Bitrix URL (like 'portal.bitrix24.com') - domain
+// ClientID - String - Client ID from app settings - clientid
 // 
 // Returns:
 // String - URL for browser transition
@@ -76,9 +76,9 @@ EndFunction
 // Get token by auth code
 // 
 // Parameters:
-// ClientID - String - Client ID from app settings
-// ClientSecret - String - Client secret from app settings
-// Code - String - Code from browser auth page
+// ClientID - String - Client ID from app settings - clientid
+// ClientSecret - String - Client secret from app settings - clientsecret
+// Code - String - Code from browser auth page - code
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -102,9 +102,9 @@ EndFunction
 // Update token by refresh token
 // 
 // Parameters:
-// ClientID - String - Client ID from app settings
-// ClientSecret - String - Client secret from app settings
-// Refresh - String - Refresh token
+// ClientID - String - Client ID from app settings - clientid
+// ClientSecret - String - Client secret from app settings - clientsecret
+// Refresh - String - Refresh token - refresh
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -128,8 +128,8 @@ EndFunction
 // Get current server time
 // 
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used
-// Token - String - Access token, when not-webhook method used 
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -146,15 +146,16 @@ EndFunction
 
 #Region NewsFeed
 
-// Create post.
+// Create post
+// Create a new post at news feed
 // 
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used
-// Text - String - Text of post
-// Visibility - String - Array or a single post target (UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group)
-// Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data
-// Title - String - Title
-// Token - String - Access token, when not-webhook method used
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Text - String - Text of post - text
+// Visibility - String - Array or a single post target (UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group) - vision
+// Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data - files
+// Title - String - Post title - title
+// Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -188,12 +189,13 @@ Function CreatePost(Val URL
     
 EndFunction
 
-// Delete post.
+// Delete post
+// Remove post from a news feed
 // 
 // Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used
-// PostID - String, Number - Id of post to remove
-// Token - String - Access token, when not-webhook method used
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
+// PostID - String, Number - Id of post to remove - postid
+// Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
