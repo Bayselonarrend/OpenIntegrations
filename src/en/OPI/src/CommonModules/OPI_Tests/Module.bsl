@@ -272,6 +272,7 @@ Procedure TelegramAPI_PinUnpinMessage() Export
         
 	Telegram_PinMessage(TestParameters);
 	Telegram_UnpinMessage(TestParameters);
+	Telegram_DeleteMessage(TestParameters);
 
 EndProcedure
 
