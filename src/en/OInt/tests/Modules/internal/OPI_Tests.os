@@ -3361,7 +3361,7 @@ Procedure Check_BinaryData(Val Result, Val Size = Undefined)
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("BinaryData"); 
     
     If Not Size = Undefined Then
-        OPI_TestDataRetrieval.ExpectsThat(Result.Size() >= Size.Равно(True); 
+        OPI_TestDataRetrieval.ExpectsThat(Result.Size() >= Size).Равно(True); 
     Else
         OPI_TestDataRetrieval.ExpectsThat(Result.Size() > MinimumSize).Равно(True);
     EndIf;
