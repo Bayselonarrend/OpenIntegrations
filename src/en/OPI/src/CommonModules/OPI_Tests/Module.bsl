@@ -237,6 +237,7 @@ Procedure TelegramAPI_ForwardMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
 
 	Telegram_ForwardMessage(TestParameters);
+	(TestParameters);
         
 EndProcedure
 
@@ -4495,6 +4496,24 @@ Procedure Telegram_ChangeMainTopicName(FunctionParameters)
     
     OPI_Tools.Pause(5);
     	
+EndProcedure
+
+Procedure (FunctionParameters)
+	
+	Token = FunctionParameters["Telegram_Token"];	
+	ChatID = FunctionParameters["Telegram_ChannelID"]; 
+	MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+	
+	Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
+	
+    // END
+    
+    // ");
+    
+    Check_TelegramTrue(Result);
+    
+    OPI_Tools.Pause(5);
+    
 EndProcedure
 
 #EndRegion
