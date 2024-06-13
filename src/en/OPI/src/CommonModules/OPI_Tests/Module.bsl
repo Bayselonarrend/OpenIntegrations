@@ -237,7 +237,6 @@ Procedure TelegramAPI_ForwardMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
 
 	Telegram_ForwardMessage(TestParameters);
-	Telegram_DeleteMessage(TestParameters);
         
 EndProcedure
 
