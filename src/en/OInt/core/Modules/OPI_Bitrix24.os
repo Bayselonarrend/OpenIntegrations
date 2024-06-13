@@ -155,6 +155,7 @@ EndFunction
 // Visibility - String - Array or a single post target (UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group) - vision
 // Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data - files
 // Title - String - Post title - title
+// Important - Boolean - Mark post as important - important 
 // Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
@@ -164,12 +165,16 @@ Function CreatePost(Val URL
 	, Val Visibility = "UA"
 	, Val Files = ""
 	, Val Title = ""
+	, Val Important = False
 	, Val Token = "") Export
+    
+    MakeBoolean(Important);
     
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.add");
     OPI_Tools.AddField("POST_MESSAGE", Text , "String", Parameters);
     OPI_Tools.AddField("POST_TITLE" , Title, "String", Parameters);
     OPI_Tools.AddField("DEST" , Visibility , "Array", Parameters);
+    OPI_Tools.AddField("IMPORTANT" , Important , "String", Parameters);
     
     If ValueIsFilled(Files) Then
         
@@ -203,6 +208,51 @@ Function DeletePost(Val URL, Val PostID, Val Token = "") Export
     
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.delete");
     OPI_Tools.AddField("POST_ID", PostID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get list of important post viewers
+// Return list of important post viewers ids
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
+// PostID - String, Number - Id of important post - postid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "log.blogpost.getusers.important");
+    OPI_Tools.AddField("POST_ID", PostID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get posts
+// Gen post or array of post with ID or rights selection
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
+// PostID - String, Number - Id of important post - postid
+// Filter - String - Post selection by rights (UA all, SGn work group, Un user, DRn depart, Gn group) - sel 
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetPosts(Val URL, Val PostID = "", Val Filter = "UA", Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "log.blogpost.get");
+    
+    OPI_Tools.AddField("POST_ID" , PostID, "String", Parameters);
+    OPI_Tools.AddField("LOG_RIGHTS", Filter , "String", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -265,7 +315,7 @@ Function NormalizeFiles(Val Files)
         Return NormalizedFiles; 
     EndIf;
     
-    For Each File In Files Do
+    For Each File In Files Do 
         
         CurrentArray = New Array;
         CurrentFile = File.Value;
@@ -284,5 +334,12 @@ Function NormalizeFiles(Val Files)
     Return NormalizedFiles;
     
 EndFunction
+
+Procedure MakeBoolean(Value)
+
+    OPI_TypeConversion.GetBoolean(Value);
+    Value = ?(Value, "Y", "N");
+    
+EndProcedure
 
 #EndRegion

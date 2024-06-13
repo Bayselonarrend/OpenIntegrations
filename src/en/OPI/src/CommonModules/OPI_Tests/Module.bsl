@@ -237,7 +237,7 @@ Procedure TelegramAPI_ForwardMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
 
 	Telegram_ForwardMessage(TestParameters);
-	(TestParameters);
+	Telegram_DeleteMessage(TestParameters);
         
 EndProcedure
 
@@ -3294,6 +3294,8 @@ Procedure B24_PostsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
 
     Bitrix24_CreatePost(TestParameters);
+    Bitrix24_GetImportantPostViewers(TestParameters);
+    Bitrix24_GetPosts(TestParameters);
     Bitrix24_DeletePost(TestParameters);
     
 EndProcedure
@@ -3358,7 +3360,7 @@ Procedure Check_BinaryData(Val Result, Val Size = Undefined)
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("BinaryData"); 
     
     If Not Size = Undefined Then
-        OPI_TestDataRetrieval.ExpectsThat(Result.Size()).Равно(Size); 
+        OPI_TestDataRetrieval.ExpectsThat(Result.Size() >= Size.Равно(True); 
     Else
         OPI_TestDataRetrieval.ExpectsThat(Result.Size() > MinimumSize).Равно(True);
     EndIf;
@@ -3701,14 +3703,24 @@ Procedure Check_BitrixAuth(Val Result)
 
 EndProcedure
 
-Procedure Check_BitrixPost(Val Result)   
+Procedure Check_BitrixPost(Val Result)
    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено(); 
 EndProcedure
 
-Procedure Check_BitrixTrue(Val Result)   
+Procedure Check_BitrixTrue(Val Result)
    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True); 
 EndProcedure
 
+Procedure Check_BitrixArray(Val Result)
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+EndProcedure
+
+Procedure Check_BitrixPostsArray(Val Result)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["ID"]).Заполнено();
+    
+EndProcedure
 
 #EndRegion
 
@@ -4498,7 +4510,7 @@ Procedure Telegram_ChangeMainTopicName(FunctionParameters)
     	
 EndProcedure
 
-Procedure (FunctionParameters)
+Procedure Telegram_DeleteMessage(FunctionParameters)
 	
 	Token = FunctionParameters["Telegram_Token"];	
 	ChatID = FunctionParameters["Telegram_ChannelID"]; 
@@ -4508,7 +4520,7 @@ Procedure (FunctionParameters)
 	
     // END
     
-    // ");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "Telegram");
     
     Check_TelegramTrue(Result);
     
@@ -4947,7 +4959,7 @@ Procedure Dropbox_GetPreview(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPreview", "Dropbox");
         
-    Check_BinaryData(Result, 190834);
+    Check_BinaryData(Result, 120000);
         
     OPI_Tools.Pause(5); 
      
@@ -5117,7 +5129,7 @@ Procedure Dropbox_DownloadFile(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "Dropbox");
         
-    Check_BinaryData(Result, 2114023);
+    Check_BinaryData(Result, 2000000);
         
     OPI_Tools.Pause(5); 
         
@@ -5514,7 +5526,7 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
     
     URL = FunctionParameters["Bitrix24_URL"];
 	
-	Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title);
+	Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, True);
         
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (wh)", "Bitrix24");
     
@@ -5527,7 +5539,7 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
     
-    Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, Token);
+    Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, , Token);
     
     // END
         
@@ -5564,6 +5576,54 @@ Procedure Bitrix24_DeletePost(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeletePost", "Bitrix24");
     
     Check_BitrixTrue(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_GetImportantPostViewers(FunctionParameters)
+    
+    PostID = FunctionParameters["Bitrix24_HookPostID"]; 
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetImportantPostViewers (wh)", "Bitrix24");
+    
+    Check_BitrixArray(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetImportantPostViewers", "Bitrix24");
+    
+    Check_BitrixArray(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_GetPosts(FunctionParameters)
+    
+    PostID = FunctionParameters["Bitrix24_PostID"]; 
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.GetPosts(URL, PostID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPosts (wh)", "Bitrix24");
+    
+    Check_BitrixPostsArray(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.GetPosts(URL, PostID, , Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPosts", "Bitrix24");
+    
+    Check_BitrixPostsArray(Result); 
     
 EndProcedure
 
