@@ -170,6 +170,16 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
+    NewLine.Параметр    = "--important";
+    NewLine.Описание    = "Mark post as important (optional, def. val. - False)";
+    NewLine.Область     = "News feed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreatePost";
+    NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "News feed";
@@ -201,6 +211,78 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeletePost";
     NewLine.МетодПоиска = "DELETEPOST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "News feed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetImportantPostViewers";
+    NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "News feed";
+    NewLine.ОписаниеМетода   = "Return list of important post viewers ids";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetImportantPostViewers";
+    NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
+    NewLine.Параметр    = "--postid";
+    NewLine.Описание    = "Id of important post";
+    NewLine.Область     = "News feed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetImportantPostViewers";
+    NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "News feed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetPosts";
+    NewLine.МетодПоиска = "GETPOSTS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "News feed";
+    NewLine.ОписаниеМетода   = "Gen post or array of post with ID or rights selection";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetPosts";
+    NewLine.МетодПоиска = "GETPOSTS";
+    NewLine.Параметр    = "--postid";
+    NewLine.Описание    = "Id of important post (optional, def. val. - Empty)";
+    NewLine.Область     = "News feed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetPosts";
+    NewLine.МетодПоиска = "GETPOSTS";
+    NewLine.Параметр    = "--sel";
+    NewLine.Описание    = "Post selection by rights (UA all, SGn work group, Un user, DRn depart, Gn group) (optional, def. val. - UA)";
+    NewLine.Область     = "News feed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetPosts";
+    NewLine.МетодПоиска = "GETPOSTS";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "News feed";
