@@ -1982,7 +1982,7 @@
 "Новый заголовок базы": "New database title",
 "Получить базу данных": "Get database",
 "ДобавитьРодителяБазы": "AddDatabaseParent",
-"Размер).Равно(Истина": "Size.Equal(True",
+"Размер).Равно(Истина": "Size).Equal(True",
 "Делает репост записи": "Reposts the record",
 "СформироватьТестыЯкс": "FormYAXTests",
 "Соответствие свойств": "Properties map",
