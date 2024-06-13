@@ -797,6 +797,31 @@ Function GetParticipantCount(Val Token, Val ChatID) Export
 
 EndFunction
 
+// Delete message
+// 
+// 
+// Parameters:
+// Token - String - Token - token
+// ChatID - String, Number - Target chat ID - chat
+// MessageID - String, Number -  - message
+// 
+// Returns:
+//  - 
+Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
+	
+	OPI_TypeConversion.GetLine(Token);
+	
+	URL = "api.telegram.org/bot" + Token + "/deleteMessage";
+	
+	Parameters = New Structure;
+	OPI_Tools.AddField("message_id", MessageID, "String", Parameters);
+	OPI_Tools.AddField("chat_id" , ChatID , "String", Parameters);
+	
+	Response = OPI_Tools.Get(URL, Parameters);
+	Return Response;
+
+EndFunction
+
 #EndRegion
 
 #Region ForumTopicManagement

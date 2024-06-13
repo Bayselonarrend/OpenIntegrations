@@ -974,6 +974,36 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "telegram";
     NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Token";
+    NewLine.Область     = "Administration";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Target chat ID";
+    NewLine.Область     = "Administration";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "";
+    NewLine.Область     = "Administration";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
     NewLine.Метод       = "GetAvatarIconList";
     NewLine.МетодПоиска = "GETAVATARICONLIST";
     NewLine.Параметр    = "--token";
