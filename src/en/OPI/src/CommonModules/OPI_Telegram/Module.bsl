@@ -798,15 +798,15 @@ Function GetParticipantCount(Val Token, Val ChatID) Export
 EndFunction
 
 // Delete message
-// 
+// Delete message from chat or channel
 // 
 // Parameters:
 // Token - String - Token - token
 // ChatID - String, Number - Target chat ID - chat
-// MessageID - String, Number -  - message
+// MessageID - String, Number - ID of message to delete - message
 // 
 // Returns:
-//  - 
+// Map Of KeyAndValue - Serialized JSON response from Telegram
 Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
 	
 	OPI_TypeConversion.GetLine(Token);

@@ -979,6 +979,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Administration";
+    NewLine.ОписаниеМетода   = "Delete message from chat or channel";
 
 
     NewLine = CompositionTable.Add();
@@ -997,7 +998,7 @@
     NewLine.Метод       = "DeleteMessage";
     NewLine.МетодПоиска = "DELETEMESSAGE";
     NewLine.Параметр    = "--message";
-    NewLine.Описание    = "";
+    NewLine.Описание    = "ID of message to delete";
     NewLine.Область     = "Administration";
 
 
