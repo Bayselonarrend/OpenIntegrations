@@ -356,6 +356,259 @@ EndFunction
 
 #EndRegion
 
+#Region Tasks
+
+// Get task fields structure
+// Gets a structure with a description of the fields for creating a task
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskFieldsStructure(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.getFields");
+    Response = OPI_Tools.Get(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction    
+
+// Get task
+// Get task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.get", Token);
+    Return Response;
+    
+EndFunction
+
+// Create task
+// Create new task by fields structure (see GetTaskFieldsStructure)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure of Key-Value - Task fields structure - fields
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateTask(Val URL, Val FieldsStructure, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.add");
+    OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+
+EndFunction
+
+// Update task
+// Update a task
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// FieldsStructure - Structure of Key-Value - Task fields structure - fields
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateTask(Val URL, Val TaskID, Val FieldsStructure, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.update");
+    OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
+    OPI_Tools.AddField("taskId", TaskID , "String" , Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+
+EndFunction
+
+// Delete task
+// Delete task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.delete", Token);
+    Return Response;
+    
+EndFunction
+
+// Approve task
+// Approve task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ApproveTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.approve", Token);
+    Return Response;
+    
+EndFunction
+
+// Disapprove task
+// Disapprove task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DisapproveTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.disapprove", Token);
+    Return Response;
+    
+EndFunction
+
+// Complete task
+// Complete task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CompleteTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.complete", Token);
+    Return Response;
+    
+EndFunction
+
+// Renew task
+// Returns a task to work by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RenewTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.renew", Token);
+    Return Response;
+    
+EndFunction
+
+// Defer task
+// Defer task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeferTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.defer", Token);
+    Return Response;
+    
+EndFunction
+
+// Pause task
+// Pause a task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function PauseTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.pause", Token);
+    Return Response;
+    
+EndFunction
+
+// Start a task
+// Start a task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function StartTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.start", Token);
+    Return Response;
+    
+EndFunction
+
+// Start watching a task
+// Start watching a task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function StartWatchingTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.startwatch", Token);
+    Return Response;
+    
+EndFunction
+
+// Stop watching the task
+// Stop watching a task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function StopWatchingTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.stopwatch", Token);
+    Return Response;
+    
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Internal
@@ -435,5 +688,16 @@ Procedure MakeBoolean(Value)
     Value = ?(Value, "Y", "N");
     
 EndProcedure
+
+Function ManageTask(Val URL, Val TaskID, Val Method, Val Token = "")
+    
+    Parameters = NormalizeAuth(URL, Token, Method);
+    OPI_Tools.AddField("taskId", TaskID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
 
 #EndRegion
