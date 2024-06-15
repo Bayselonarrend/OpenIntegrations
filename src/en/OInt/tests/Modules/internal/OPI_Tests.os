@@ -3294,8 +3294,11 @@ Procedure B24_PostsManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
 
     Bitrix24_CreatePost(TestParameters);
+    Bitrix24_UpdatePost(TestParameters);
     Bitrix24_GetImportantPostViewers(TestParameters);
     Bitrix24_GetPosts(TestParameters);
+    Bitrix24_CreateComment(TestParameters);
+    Bitrix_AddPostRecipients(TestParameters);
     Bitrix24_DeletePost(TestParameters);
     
 EndProcedure
@@ -3703,7 +3706,7 @@ Procedure Check_BitrixAuth(Val Result)
 
 EndProcedure
 
-Procedure Check_BitrixPost(Val Result)
+Procedure Check_BitrixNumber(Val Result)
    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено(); 
 EndProcedure
 
@@ -5530,7 +5533,7 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
         
     OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (wh)", "Bitrix24");
     
-    Check_BitrixPost(Result); // SKIP
+    Check_BitrixNumber(Result); // SKIP
     
     PostID = Result["result"]; // SKIP
     OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookPostID", PostID); // SKIP    
@@ -5545,12 +5548,44 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
         
     OPI_TestDataRetrieval.WriteLog(Result, "CreatePost", "Bitrix24");
     
-    Check_BitrixPost(Result); 
+    Check_BitrixNumber(Result); 
     
     PostID = Result["result"];
     
     OPI_TestDataRetrieval.WriteParameter("Bitrix24_PostID", PostID);    
     FunctionParameters.Insert("Bitrix24_PostID", PostID);
+    
+EndProcedure
+
+Procedure Bitrix24_UpdatePost(FunctionParameters)
+    
+    Text = "New post text";
+    Title = "New post title";
+    Image1 = FunctionParameters["Picture"];
+    PostID = FunctionParameters["Bitrix24_PostID"];
+    
+    Files = New Map;
+    Files.Insert("1.png", Image1);
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePost (wh)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    PostID = FunctionParameters["Bitrix24_HookPostID"];
+    
+    Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdatePost", "Bitrix24");
+    
+    Check_BitrixNumber(Result); 
     
 EndProcedure
 
@@ -5624,6 +5659,57 @@ Procedure Bitrix24_GetPosts(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetPosts", "Bitrix24");
     
     Check_BitrixPostsArray(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_CreateComment(FunctionParameters)
+    
+    Text = "Comment for post";
+    PostID = FunctionParameters["Bitrix24_PostID"]; 
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.CrateComment(URL, PostID, Text);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment (wh)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+    
+    Text = "Another comment";
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.CrateComment(URL, PostID, Text, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "CrateComment", "Bitrix24");
+    
+    Check_BitrixNumber(Result); 
+    
+EndProcedure
+
+Procedure Bitrix_AddPostRecipients(FunctionParameters)
+    
+    Visibility = "UA";
+    PostID = FunctionParameters["Bitrix24_PostID"]; 
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostRecipients (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostRecipients", "Bitrix24");
+    
+    Check_BitrixTrue(Result); 
     
 EndProcedure
 
