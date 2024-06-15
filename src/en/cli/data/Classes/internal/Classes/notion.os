@@ -109,7 +109,8 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Page management";
-    NewLine.ОписаниеМетода   = "|
+    NewLine.ОписаниеМетода   = "Changes the properties of an existing page
+    |
     |    The structure of the JSON page data (parameter --data):
     |    {
     |     ""DB field name 1""  : ""Value1"",
@@ -363,6 +364,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Blocks managment";
+    NewLine.ОписаниеМетода   = "Returns the block structure by ID";
 
 
     NewLine = CompositionTable.Add();

@@ -152,7 +152,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Text - String - Text of post - text
-// Visibility - String - Array or a single post target (UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group) - vision
+// Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
 // Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data - files
 // Title - String - Post title - title
 // Important - Boolean - Mark post as important - important 
@@ -172,9 +172,55 @@ Function CreatePost(Val URL
     
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.add");
     OPI_Tools.AddField("POST_MESSAGE", Text , "String", Parameters);
-    OPI_Tools.AddField("POST_TITLE" , Title, "String", Parameters);
+    OPI_Tools.AddField("POST_TITLE" , Title , "String", Parameters);
     OPI_Tools.AddField("DEST" , Visibility , "Array", Parameters);
     OPI_Tools.AddField("IMPORTANT" , Important , "String", Parameters);
+    
+    If ValueIsFilled(Files) Then
+        
+        OPI_TypeConversion.GetCollection(Files);
+        
+        ArrayOfFiles = NormalizeFiles(Files);
+        
+        If Not ArrayOfFiles.Count() = 0 Then
+            Parameters.Insert("FILES", ArrayOfFiles);
+        EndIf;
+        
+    EndIf;
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Update post
+// Change post data
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// PostID - String, Number - Post ID - postid
+// Text - String - Text of post - text
+// Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
+// Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data - files
+// Title - String - Post title - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdatePost(Val URL
+    , Val PostID 
+    , Val Text
+    , Val Visibility = "UA"
+    , Val Files = ""
+    , Val Title = ""
+    , Val Token = "") Export
+        
+    Parameters = NormalizeAuth(URL, Token, "log.blogpost.update");
+    OPI_Tools.AddField("POST_MESSAGE", Text , "String", Parameters);
+    OPI_Tools.AddField("POST_TITLE" , Title , "String", Parameters);
+    OPI_Tools.AddField("DEST" , Visibility , "Array", Parameters);
+    OPI_Tools.AddField("POST_ID" , PostID , "String", Parameters);
     
     If ValueIsFilled(Files) Then
         
@@ -242,7 +288,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Id of important post - postid
-// Filter - String - Post selection by rights (UA all, SGn work group, Un user, DRn depart, Gn group) - sel 
+// Filter - String - Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group - sel 
 // Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
@@ -253,6 +299,54 @@ Function GetPosts(Val URL, Val PostID = "", Val Filter = "UA", Val Token = "") E
     
     OPI_Tools.AddField("POST_ID" , PostID, "String", Parameters);
     OPI_Tools.AddField("LOG_RIGHTS", Filter , "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Create comment
+// Adds a comment to the post
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
+// PostID - String, Number - Post ID - postid
+// Text - String - Comment text - text
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CrateComment(Val URL, Val PostID, Val Text, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "log.blogcomment.add");
+    
+    OPI_Tools.AddField("POST_ID" , PostID, "String", Parameters);
+    OPI_Tools.AddField("TEXT" , Text , "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Add new recipients to a post
+// Adds new groups or users to the recipients
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// PostID - String, Number - Post ID - postid
+// Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AddPostRecipients(Val URL, Val PostID, Val Visibility, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "log.blogpost.share");
+    
+    OPI_Tools.AddField("POST_ID" , PostID, "String", Parameters);
+    OPI_Tools.AddField("DEST" , Visibility, "String", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -311,25 +405,25 @@ Function NormalizeFiles(Val Files)
     
     NormalizedFiles = New Array;
 
-    If Not TypeOf(Files) = Type("Map") Then
-        Return NormalizedFiles; 
-    EndIf;
+    If TypeOf(Files) = Type("Map") Then
+        
+        For Each File In Files Do 
+            
+            CurrentArray = New Array;
+            CurrentFile = File.Value;
+            CurrentName = File.Key;
+            
+            OPI_TypeConversion.GetBinaryData(CurrentFile);
+            OPI_TypeConversion.GetLine(CurrentName);
+            
+            CurrentArray.Add(CurrentName);
+            CurrentArray.Add(Base64String(CurrentFile));
+            
+            NormalizedFiles.Add(CurrentArray);
+            
+        EndDo;
     
-    For Each File In Files Do 
-        
-        CurrentArray = New Array;
-        CurrentFile = File.Value;
-        CurrentName = File.Key;
-        
-        OPI_TypeConversion.GetBinaryData(CurrentFile);
-        OPI_TypeConversion.GetLine(CurrentName);
-        
-        CurrentArray.Add(CurrentName);
-        CurrentArray.Add(Base64String(CurrentFile));
-        
-        NormalizedFiles.Add(CurrentArray);
-        
-    EndDo;
+    EndIf;
     
     Return NormalizedFiles;
     

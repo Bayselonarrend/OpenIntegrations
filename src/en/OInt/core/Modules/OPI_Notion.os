@@ -127,7 +127,8 @@ Function GetPage(Val Token, Val Page) Export
     
 EndFunction
 
-// Edit page properties.
+// Edit page properties
+// Changes the properties of an existing page
 // 
 // Parameters:
 // Token - String - Token - token
@@ -366,7 +367,8 @@ Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Exp
        
 EndFunction
 
-// Return block.
+// Return block
+// Returns the block structure by ID
 // 
 // Parameters:
 // Token - String - Token - token
