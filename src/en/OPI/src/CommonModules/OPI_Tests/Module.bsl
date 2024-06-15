@@ -3303,6 +3303,30 @@ Procedure B24_PostsManagment() Export
     
 EndProcedure
 
+Procedure B24_TaskManagment() Export
+    
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    
+    Bitrix24_GetTaskFieldsStructure(TestParameters);
+    Bitrix24_CreateTask(TestParameters);
+    Bitrix24_UpdateTask(TestParameters);
+    Bitrix24_GetTask(TestParameters);
+    Bitrix24_DeferTask(TestParameters);
+    Bitrix24_CompleteTask(TestParameters);
+    // Bitrxi24_DisapproveTask(TestParameters);
+    Bitrix24_ApproveTask(TestParameters);
+    Bitrix24_RenewTask(TestParameters);
+    Bitrix24_StartTask(TestParameters);
+    Bitrix24_StartWatchingTask(TestParameters);
+    Bitrix24_StopWatchingTask(TestParameters);
+    Bitrix24_PauseTask(TestParameters);   
+    Bitrix24_DeleteTask(TestParameters);
+    
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -3724,6 +3748,19 @@ Procedure Check_BitrixPostsArray(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["ID"]).Заполнено();
     
 EndProcedure
+
+Procedure Check_BitrixFields(Val Result)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["fields"]).Заполнено();
+    
+EndProcedure
+
+Procedure Check_BitrixTask(Val Result)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["task"]).Заполнено();
+    
+EndProcedure
+
 
 #EndRegion
 
@@ -5710,6 +5747,385 @@ Procedure Bitrix_AddPostRecipients(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddPostRecipients", "Bitrix24");
     
     Check_BitrixTrue(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_GetTaskFieldsStructure(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.GetTaskFieldsStructure(URL);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixFields(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.GetTaskFieldsStructure(URL, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTaskFieldsStructure", "Bitrix24");
+    
+    Check_BitrixFields(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_CreateTask(FunctionParameters)
+    
+    // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+    
+    Hour = 3600;
+    Day = 24;
+    Responsible = 1;
+    
+    TaskData = New Structure;
+    TaskData.Insert("TITLE", "New task");
+    TaskData.Insert("DESCRIPTION", "New task description");
+    TaskData.Insert("PRIORITY", "2");
+    TaskData.Insert("DEADLINE", CurrentDate() + Hour * Day);
+    TaskData.Insert("RESPONSIBLE_ID", Responsible);
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+        
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+    
+    TaskID = Result["result"]["task"]["id"]; // SKIP
+    
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookTaskID", TaskID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_HookTaskID", TaskID); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateTask", "Bitrix24");
+    
+    Check_BitrixTask(Result); 
+    
+    TaskID = Result["result"]["task"]["id"];
+    
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_TaskID", TaskID);    
+    FunctionParameters.Insert("Bitrix24_TaskID", TaskID);
+    
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Bitrix24_UpdateTask(FunctionParameters)
+    
+    // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+    
+    TaskData = New Structure;
+    TaskData.Insert("TITLE", "Another task title");
+    TaskData.Insert("DESCRIPTION", "Another task description");
+    TaskData.Insert("PRIORITY", "1");
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+    
+    Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UpdateTask", "Bitrix24");
+    
+    Check_BitrixTask(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_GetTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.GetTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.GetTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_ApproveTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.ApproveTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.ApproveTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ApproveTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_DisapproveTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.DisapproveTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.DisapproveTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DisapproveTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_CompleteTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.CompleteTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.CompleteTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CompleteTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_RenewTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.RenewTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.RenewTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "RenewTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_DeferTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.DeferTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.DeferTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeferTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_StartTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.StartTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.StartTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "StartTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_StartWatchingTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.StartWatchingTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.StartWatchingTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "StartWatchingTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_StopWatchingTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "StopWatchingTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+
+Procedure Bitrix24_PauseTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.PauseTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.PauseTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PauseTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_DeleteTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.DeleteTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.DeleteTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
     
 EndProcedure
 
