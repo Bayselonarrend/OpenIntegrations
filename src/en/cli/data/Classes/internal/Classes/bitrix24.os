@@ -496,6 +496,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksList";
+    NewLine.МетодПоиска = "GETTASKSLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks";
+    NewLine.ОписаниеМетода   = "Get tasks list (50 at one response max))";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksList";
+    NewLine.МетодПоиска = "GETTASKSLIST";
+    NewLine.Параметр    = "--Structure of task filter (see GetTaskFieldsStructure)";
+    NewLine.Описание    = "filter (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksList";
+    NewLine.МетодПоиска = "GETTASKSLIST";
+    NewLine.Параметр    = "--offset";
+    NewLine.Описание    = "Offset of tasks list (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksList";
+    NewLine.МетодПоиска = "GETTASKSLIST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateTask";
     NewLine.МетодПоиска = "CREATETASK";
     NewLine.Параметр    = "--url";
@@ -973,6 +1014,37 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RemoveTaskFromFavorites";
     NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskHistory";
+    NewLine.МетодПоиска = "GETTASKHISTORY";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks";
+    NewLine.ОписаниеМетода   = "Get history of task changing";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskHistory";
+    NewLine.МетодПоиска = "GETTASKHISTORY";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskHistory";
+    NewLine.МетодПоиска = "GETTASKHISTORY";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Tasks";
