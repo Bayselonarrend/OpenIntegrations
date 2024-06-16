@@ -3317,10 +3317,10 @@ Procedure B24_TaskManagment() Export
     Bitrix24_GetTask(TestParameters);
     Bitrix24_AddTaskToFavorites(TestParameters);
     Bitrix24_RemoveTaskFromFavorites(TestParameters);
-    Bitrxi24_DelegateTask(TestParameters);
+    Bitrix24_DelegateTask(TestParameters);
     Bitrix24_DeferTask(TestParameters);
     Bitrix24_CompleteTask(TestParameters);
-    Bitrxi24_DisapproveTask(TestParameters);
+    Bitrix24_DisapproveTask(TestParameters);
     Bitrix24_ApproveTask(TestParameters);
     Bitrix24_RenewTask(TestParameters);
     Bitrix24_StartTask(TestParameters);
@@ -6138,7 +6138,7 @@ Procedure Bitrix24_DeleteTask(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrxi24_DelegateTask(FunctionParameters)
+Procedure Bitrix24_DelegateTask(FunctionParameters)
     
     URL = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
