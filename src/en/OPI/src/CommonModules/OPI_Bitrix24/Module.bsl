@@ -29,8 +29,6 @@
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
-// BSLLS:UnreachableCode-off
-// BSLLS:CommentedCode-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -603,6 +601,63 @@ EndFunction
 Function StopWatchingTask(Val URL, Val TaskID, Val Token = "") Export
     
     Response = ManageTask(URL, TaskID, "tasks.task.stopwatch", Token);
+    Return Response;
+    
+EndFunction
+
+// Delegate task
+// Delegate task to another user
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// UserID - Number, String - ID of responsible user - user
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DelegateTask(Val URL, Val TaskID, Val UserID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.delegate");
+    OPI_Tools.AddField("taskId", TaskID , "String", Parameters);
+    OPI_Tools.AddField("userId", UserID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Add task to favorites list
+// Add task to favorites list
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AddTaskToFavorites(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.favorite.add", Token);
+    Return Response;
+    
+EndFunction
+
+// Remove task from favorites list
+// Delete task from favorites list
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RemoveTaskFromFavorites(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.favorite.remove", Token);
     Return Response;
     
 EndFunction
