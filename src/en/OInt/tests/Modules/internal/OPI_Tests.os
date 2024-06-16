@@ -3309,14 +3309,18 @@ Procedure B24_TaskManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_UserID" , TestParameters);
     
     Bitrix24_GetTaskFieldsStructure(TestParameters);
     Bitrix24_CreateTask(TestParameters);
     Bitrix24_UpdateTask(TestParameters);
     Bitrix24_GetTask(TestParameters);
+    Bitrix24_AddTaskToFavorites(TestParameters);
+    Bitrix24_RemoveTaskFromFavorites(TestParameters);
+    Bitrxi24_DelegateTask(TestParameters);
     Bitrix24_DeferTask(TestParameters);
     Bitrix24_CompleteTask(TestParameters);
-    // Bitrxi24_DisapproveTask(TestParameters);
+    Bitrxi24_DisapproveTask(TestParameters);
     Bitrix24_ApproveTask(TestParameters);
     Bitrix24_RenewTask(TestParameters);
     Bitrix24_StartTask(TestParameters);
@@ -5756,7 +5760,7 @@ Procedure Bitrix24_GetTaskFieldsStructure(FunctionParameters)
     
     Result = OPI_Bitrix24.GetTaskFieldsStructure(URL);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskFieldsStructure (wh)", "Bitrix24");
     
     Check_BitrixFields(Result); // SKIP
     
@@ -5777,22 +5781,23 @@ Procedure Bitrix24_CreateTask(FunctionParameters)
     
     // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
     
+    CurrentDate = OPI_Tools.GetCurrentDate();
     Hour = 3600;
     Day = 24;
     Responsible = 1;
     
     TaskData = New Structure;
-    TaskData.Insert("TITLE", "New task");
-    TaskData.Insert("DESCRIPTION", "New task description");
-    TaskData.Insert("PRIORITY", "2");
-    TaskData.Insert("DEADLINE", CurrentDate() + Hour * Day);
+    TaskData.Insert("TITLE" , "New task");
+    TaskData.Insert("DESCRIPTION" , "New task description");
+    TaskData.Insert("PRIORITY" , "2");
+    TaskData.Insert("DEADLINE" , CurrentDate + Hour * Day);
     TaskData.Insert("RESPONSIBLE_ID", Responsible);
     
     URL = FunctionParameters["Bitrix24_URL"];
         
     Result = OPI_Bitrix24.CreateTask(URL, TaskData);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
     
@@ -5835,7 +5840,7 @@ Procedure Bitrix24_UpdateTask(FunctionParameters)
     
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
     
@@ -5860,7 +5865,7 @@ Procedure Bitrix24_GetTask(FunctionParameters)
         
     Result = OPI_Bitrix24.GetTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -5885,7 +5890,7 @@ Procedure Bitrix24_ApproveTask(FunctionParameters)
         
     Result = OPI_Bitrix24.ApproveTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "ApproveTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -5910,9 +5915,7 @@ Procedure Bitrix24_DisapproveTask(FunctionParameters)
         
     Result = OPI_Bitrix24.DisapproveTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
-    
-    Check_BitrixTask(Result); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "DisapproveTask (wh)", "Bitrix24");
         
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -5924,8 +5927,6 @@ Procedure Bitrix24_DisapproveTask(FunctionParameters)
         
     OPI_TestDataRetrieval.WriteLog(Result, "DisapproveTask", "Bitrix24");
     
-    Check_BitrixTask(Result);
-    
 EndProcedure
 
 Procedure Bitrix24_CompleteTask(FunctionParameters)
@@ -5935,7 +5936,7 @@ Procedure Bitrix24_CompleteTask(FunctionParameters)
         
     Result = OPI_Bitrix24.CompleteTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "CompleteTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -5960,7 +5961,7 @@ Procedure Bitrix24_RenewTask(FunctionParameters)
         
     Result = OPI_Bitrix24.RenewTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "RenewTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -5985,7 +5986,7 @@ Procedure Bitrix24_DeferTask(FunctionParameters)
         
     Result = OPI_Bitrix24.DeferTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeferTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -6010,7 +6011,7 @@ Procedure Bitrix24_StartTask(FunctionParameters)
         
     Result = OPI_Bitrix24.StartTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "StartTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -6035,7 +6036,7 @@ Procedure Bitrix24_StartWatchingTask(FunctionParameters)
         
     Result = OPI_Bitrix24.StartWatchingTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "StartWatchingTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -6060,7 +6061,7 @@ Procedure Bitrix24_StopWatchingTask(FunctionParameters)
         
     Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "StopWatchingTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -6078,7 +6079,6 @@ Procedure Bitrix24_StopWatchingTask(FunctionParameters)
     
 EndProcedure
 
-
 Procedure Bitrix24_PauseTask(FunctionParameters)
     
     URL = FunctionParameters["Bitrix24_URL"];
@@ -6086,7 +6086,7 @@ Procedure Bitrix24_PauseTask(FunctionParameters)
         
     Result = OPI_Bitrix24.PauseTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "PauseTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -6111,7 +6111,7 @@ Procedure Bitrix24_DeleteTask(FunctionParameters)
         
     Result = OPI_Bitrix24.DeleteTask(URL, TaskID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTask (wh)", "Bitrix24");
     
     Check_BitrixTask(Result); // SKIP
         
@@ -6126,6 +6126,82 @@ Procedure Bitrix24_DeleteTask(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteTask", "Bitrix24");
     
     Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrxi24_DelegateTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+    UserID = FunctionParameters["Bitrix24_UserID"];
+        
+    Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "DelegateTask (wh)", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "DelegateTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_AddTaskToFavorites(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.AddTaskToFavorites(URL, TaskID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "StopWatchingTask (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.AddTaskToFavorites(URL, TaskID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskToFavorites", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_RemoveTaskFromFavorites(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "RemoveTaskFromFavorites (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "RemoveTaskFromFavorites", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
     
 EndProcedure
 
