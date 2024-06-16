@@ -391,6 +391,29 @@ Function GetTask(Val URL, Val TaskID, Val Token = "") Export
     
 EndFunction
 
+// Get tasks list
+// Get tasks list (50 at one response max))
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FilterStructure - Structure of Key-Value - Structure of task filter (see GetTaskFieldsStructure) - filter
+// Indent - Number, String - Offset of tasks list - offset
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTasksList(Val URL, Val FilterStructure = "", Val Indent = 0, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.list");
+    OPI_Tools.AddField("filter", FilterStructure, "Collection", Parameters);
+    OPI_Tools.AddField("start" , Indent , "String" , Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // Create task
 // Create new task by fields structure (see GetTaskFieldsStructure)
 // 
@@ -660,6 +683,67 @@ Function RemoveTaskFromFavorites(Val URL, Val TaskID, Val Token = "") Export
     Response = ManageTask(URL, TaskID, "tasks.task.favorite.remove", Token);
     Return Response;
     
+EndFunction
+
+// Get task history
+// Get history of task changing
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskHistory(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.history.list", Token);
+    Return Response;
+    
+EndFunction
+
+// Get structure of tasks filter
+// Return filter structure for GetTasksList
+// 
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetTasksFilterStructure() Export
+    
+    // More
+    // https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php
+    
+    FilterStructure = New Structure;
+    FilterStructure.Insert("ID" , "<identifier of topic>");
+    FilterStructure.Insert("PARENT_ID" , "<identifier of parrent of topic>");
+    FilterStructure.Insert("GROUP_ID" , "<identifier works of group>");
+    FilterStructure.Insert("CREATED_BY" , "<producer>");
+    FilterStructure.Insert("STATUS_CHANGED_BY", "<user, last that change status of topic>");
+    FilterStructure.Insert("PRIORITY" , "<priority>");
+    FilterStructure.Insert("FORUM_TOPIC_ID" , "<identifier of topic of forum>");
+    FilterStructure.Insert("RESPONSIBLE_ID" , "<performer>");
+    FilterStructure.Insert("TITLE" , "<name of topic (may search to for pattern [%_])>");
+    FilterStructure.Insert("TAG" , "<tag>");
+    FilterStructure.Insert("REAL_STATUS" , "<status of topic>");
+    FilterStructure.Insert("MARK" , "<mark>");
+    FilterStructure.Insert("SITE_ID" , "<identifier site>");
+    FilterStructure.Insert("ADD_IN_REPORT" , "<task in report (Y|N)>");
+    FilterStructure.Insert("DATE_START" , "<date of start of completing>");
+    FilterStructure.Insert("DEADLINE" , "<last deadline>");
+    FilterStructure.Insert("CREATED_DATE" , "<date of create>");
+    FilterStructure.Insert("CLOSED_DATE" , "<date of complete>");
+    FilterStructure.Insert("CHANGED_DATE" , "<date of last change>");
+    FilterStructure.Insert("ACCOMPLICE" , "<identifier co-preformer>");
+    FilterStructure.Insert("AUDITOR" , "<identifier of auditor>");
+    FilterStructure.Insert("DEPENDS_ON" , "<identifier previous of topic>");
+    FilterStructure.Insert("ONLY_ROOT_TASKS" , "<only of topic, that not be subtask (Y|N)>");
+    FilterStructure.Insert("STAGE_ID" , "<stage>");
+    FilterStructure.Insert("UF_CRM_TASK" , "<elements CRM>");
+    FilterStructure.Insert("STATUS"
+        , "<status for of sorting. Similar REAL_STATUS, but have additionally three meta-of status>");
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
+        
 EndFunction
 
 #EndRegion
