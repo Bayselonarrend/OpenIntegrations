@@ -31,3 +31,8 @@ Licensed under the MIT License
  * by oscript-library
  * -
  * https://github.com/oscript-library/asserts
+
+Для оформления OInt CLI используется пакет coloratos
+* by Vladimir Nadulich (240596448)
+* -
+* https://github.com/240596448/coloratos
