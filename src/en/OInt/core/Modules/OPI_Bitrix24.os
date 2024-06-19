@@ -912,15 +912,15 @@ Function UploadFileToStorage(Val URL
     Method = "disk.storage.uploadfile";
 
     FileData = New Structure("NAME", Name);
-    FileData = New Map();
-    FileData.Insert(Name, File);
+    FileContent = New Map();
+    FileContent.Insert(Name, File);
     
     Parameters = NormalizeAuth(URL, Token, Method);
     OPI_Tools.AddField("data" , FileData, "Collection", Parameters);
     OPI_Tools.AddField("rights", Rights , "Array" , Parameters);
     OPI_Tools.AddField("id" , StorageID, "String" , Parameters);
 
-    FileArray = NormalizeFiles(FileData);
+    FileArray = NormalizeFiles(FileContent);
     FileArray.Add(Name);
     
     If Not FileArray.Count() = 0 Then
