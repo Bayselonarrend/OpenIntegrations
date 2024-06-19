@@ -1,0 +1,32 @@
+﻿    {
+ "result": {
+  "ID": 354,
+  "NAME": "f85162a9-6a32-4c6e-bd14-d646ef1225d7.jpg",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "file",
+  "PARENT_ID": "3",
+  "DELETED_TYPE": 0,
+  "GLOBAL_CONTENT_VERSION": 1,
+  "FILE_ID": 402,
+  "SIZE": "26",
+  "CREATE_TIME": "2024-06-19T07:58:48+00:00",
+  "UPDATE_TIME": "2024-06-19T07:58:48+00:00",
+  "DELETE_TIME": null,
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": null,
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/download/?token=disk%7CaWQ9MzU0Jl89Y3lLRWxxQTM4czBOVUZVaTFBWkdpR243TTZ1ZmpZVnE%3D%7CImRvd25sb2FkfGRpc2t8YVdROU16VTBKbDg5WTNsTFJXeHhRVE00Y3pCT1ZVWlZhVEZCV2tkcFIyNDNUVFoxWm1wWlZuRT18MXw0c3dva3VuYjN0azdoN2R0Ig%3D%3D.SqrPlfJGlnWNQW97yjMhq1lsEN8HqMI8ciUeya1vk28%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/f85162a9-6a32-4c6e-bd14-d646ef1225d7.jpg"
+ },
+ "time": {
+  "start": 1718783924.27352,
+  "finish": 1718783928.1243,
+  "duration": 3.8507809638977,
+  "processing": 3.80054116249084,
+  "date_start": "2024-06-19T07:58:44+00:00",
+  "date_finish": "2024-06-19T07:58:48+00:00",
+  "operating_reset_at": 1718784524,
+  "operating": 3.80051302909851
+ }
+}
