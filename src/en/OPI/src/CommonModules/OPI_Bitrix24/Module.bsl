@@ -151,7 +151,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Text - String - Text of post - text
 // Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
-// Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data - files
+// Files - String - Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data - files
 // Title - String - Post title - title
 // Important - Boolean - Mark post as important - important 
 // Token - String - Access token, when not-webhook method used - token
@@ -200,7 +200,7 @@ EndFunction
 // PostID - String, Number - Post ID - postid
 // Text - String - Text of post - text
 // Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
-// Files - String - Data inложенandй, где toлюч > andмя file, value > path to file andдand дinоandчные Data - files
+// Files - String - Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data - files
 // Title - String - Post title - title
 // Token - String - Access token, when not-webhook method used - token
 // 
@@ -396,17 +396,17 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FilterStructure - Structure of Key-Value - Structure of task filter (see GetTaskFieldsStructure) - filter
+// Filter - Structure of Key-Value - Structure of task filter (see GetTaskFieldsStructure) - filter
 // Indent - Number, String - Offset of tasks list - offset
 // Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetTasksList(Val URL, Val FilterStructure = "", Val Indent = 0, Val Token = "") Export
+Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export
     
     Parameters = NormalizeAuth(URL, Token, "tasks.task.list");
-    OPI_Tools.AddField("filter", FilterStructure, "Collection", Parameters);
-    OPI_Tools.AddField("start" , Indent , "String" , Parameters);
+    OPI_Tools.AddField("filter", Filter, "Collection", Parameters);
+    OPI_Tools.AddField("start" , Indent, "String" , Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -702,15 +702,43 @@ Function GetTaskHistory(Val URL, Val TaskID, Val Token = "") Export
     
 EndFunction
 
+// Get comments list for a task
+// Get user comments list for a task
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Filter - Structure of Key-Value - Comments filter structure (see GetCommentsFilterStructure) - filter
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskCommentsList(Val URL, Val TaskID, Val Filter = "", Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.delegate");
+    OPI_Tools.AddField("TASKID", TaskID, "String" , Parameters);
+    OPI_Tools.AddField("FILTER", Filter , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // Get structure of tasks filter
 // Return filter structure for GetTasksList
 // 
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// 
 // Returns:
 // Structure of Key-Value - Fields structure 
-Function GetTasksFilterStructure() Export
+Function GetTasksFilterStructure(Val Clear = False) Export
     
     // More
     // https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php
+    
+    OPI_TypeConversion.GetBoolean(Clear);
     
     FilterStructure = New Structure;
     FilterStructure.Insert("ID" , "<identifier of topic>");
@@ -740,10 +768,141 @@ Function GetTasksFilterStructure() Export
     FilterStructure.Insert("UF_CRM_TASK" , "<elements CRM>");
     FilterStructure.Insert("STATUS"
         , "<status for of sorting. Similar REAL_STATUS, but have additionally three meta-of status>");
+        
+    If Clear Then
+    	For Each Filter In FilterStructure Do
+    		Filter.Value = "";
+    	EndDo;
+    EndIf;
 
     //@skip-check constructor-function-return-section
     Return FilterStructure;
         
+EndFunction
+
+// Get structure of comments filter
+// Return filter structure for GetTaskCommentsList
+// 
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//  
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetCommentsFilterStructure(Val Clear = False) Export
+	
+	// More
+	// https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php
+	
+	OPI_TypeConversion.GetBoolean(Clear);
+	
+	FilterStructure = New Structure;
+	FilterStructure.Insert("ID" , "<identifier of comment>");
+	FilterStructure.Insert("AUTHOR_ID " , "<identifier of author of comment>");
+	FilterStructure.Insert("AUTHOR_NAME ", "<name of author>");
+	FilterStructure.Insert("POST_DATE " , "<date of publish of comment>");
+	
+	If Clear Then
+    	For Each Filter In FilterStructure Do
+    		Filter.Value = "";
+    	EndDo;
+	EndIf;
+	    
+    //@skip-check constructor-function-return-section
+	Return FilterStructure;
+	
+EndFunction
+
+#EndRegion
+
+#Region Drive
+
+// Get list of storages
+// Get list of available files storages
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetStoragesList(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.storage.getlist");
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+
+EndFunction
+
+// Upload file to a storage.
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Name - String - File name with extension - title
+// File - String, BinaryData - File for upload - file        
+// StorageID - String - Storage id - storage
+// Rights - String - Rights array if required - rights
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UploadFileToStorage(Val URL
+    , Val Name
+    , Val File
+    , Val StorageID = ""
+    , Val Rights = ""
+    , Val Token = "") Export
+    
+    OPI_TypeConversion.GetLine(StorageID);
+    OPI_TypeConversion.GetLine(Name);
+    
+    If ValueIsFilled(StorageID) Then
+        Method = "disk.storage.uploadfile";
+    Else
+        
+    EndIf;
+    
+    FileData = New Structure("NAME", Name);
+    FileData = New Map();
+    FileData.Insert(Name, File);
+    
+    Parameters = NormalizeAuth(URL, Token, Method);
+    OPI_Tools.AddField("data" , FileData, "Collection", Parameters);
+    OPI_Tools.AddField("rights", Rights , "Array" , Parameters);
+    OPI_Tools.AddField("id" , StorageID, "String" , Parameters);
+
+    FileArray = NormalizeFiles(FileData);
+    FileArray.Add(Name);
+    
+    If Not FileArray.Count() = 0 Then
+        Parameters.Insert("fileContent", FileArray);
+    EndIf;
+  
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Delete file
+// Delete file by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - ID of removing file - fileid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteFile(Val URL, Val FileID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.file.delete");
+    OPI_Tools.AddField("id", FileID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+
 EndFunction
 
 #EndRegion
