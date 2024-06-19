@@ -3348,7 +3348,7 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_UploadFileToStorage(TestParameters);
     Bitrix24_GetStorageObjects(TestParameters);
     Bitrix24_DeleteFile(TestParameters);
-    Bitrix24_ CreateStorageFolder(TestParameters);
+    Bitrix24_CreateStorageFolder(TestParameters);
     Bitrix24_DeleteFolder(TestParameters);
     
 EndProcedure
@@ -6406,7 +6406,7 @@ Procedure Bitrix24_DeleteFile(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrix24_ CreateStorageFolder(FunctionParameters)
+Procedure Bitrix24_CreateStorageFolder(FunctionParameters)
     
     StorageID = 3;
     Name = "New catalog";
