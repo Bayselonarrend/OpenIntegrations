@@ -834,13 +834,66 @@ Function GetStoragesList(Val URL, Val Token = "") Export
 
 EndFunction
 
-// Upload file to a storage.
+// Get list of storages, available for current app
+// Get a list of storages with which the application can work to store its data
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetAppStoragesList(Val URL, Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "disk.storage.getlist");
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get storage
+// Get information about storage
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String, Number - Storage ID - storageid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetStorage(Val URL, Val StorageID, Val Token = "") Export
+	
+	Response = FileManagement(URL, StorageID, "disk.storage.get", Token);
+	Return Response;
+	
+EndFunction
+
+// Get a list of child storage objects
+// Get a list of files and folders, located at the root of the storage
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String, Number - Storage ID - storageid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetStorageObjects(Val URL, Val StorageID, Val Token = "") Export
+	
+	Response = FileManagement(URL, StorageID, "disk.storage.getchildren", Token);
+	Return Response;
+	
+EndFunction
+
+// Upload file to a storage
+// Upload file to storage root
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Name - String - File name with extension - title
 // File - String, BinaryData - File for upload - file        
-// StorageID - String - Storage id - storage
+// StorageID - String - Storage id - storageid
 // Rights - String - Rights array if required - rights
 // Token - String - Access token, when not-webhook method used - token
 // 
@@ -849,19 +902,15 @@ EndFunction
 Function UploadFileToStorage(Val URL
     , Val Name
     , Val File
-    , Val StorageID = ""
+    , Val StorageID
     , Val Rights = ""
     , Val Token = "") Export
     
     OPI_TypeConversion.GetLine(StorageID);
     OPI_TypeConversion.GetLine(Name);
     
-    If ValueIsFilled(StorageID) Then
-        Method = "disk.storage.uploadfile";
-    Else
-        
-    EndIf;
-    
+    Method = "disk.storage.uploadfile";
+
     FileData = New Structure("NAME", Name);
     FileData = New Map();
     FileData.Insert(Name, File);
@@ -884,6 +933,34 @@ Function UploadFileToStorage(Val URL
     
 EndFunction
 
+// Create folder at the storage
+// Create new foldera at the storage
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String - Storage ID - storageid
+// Name - String - Folder name - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") Export
+	
+	OPI_TypeConversion.GetLine(Name);
+	
+	FolderStructure = New Structure("NAME", Name);
+	
+	Parameters = NormalizeAuth(URL, Token, "disk.storage.addfolder");
+	
+    OPI_Tools.AddField("id" , StorageID , "String" , Parameters);
+    OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;	
+    
+EndFunction
+
 // Delete file
 // Delete file by ID
 // 
@@ -896,13 +973,26 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteFile(Val URL, Val FileID, Val Token = "") Export
     
-    Parameters = NormalizeAuth(URL, Token, "disk.file.delete");
-    OPI_Tools.AddField("id", FileID, "String", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;
+	Response = FileManagement(URL, FileID, "disk.file.delete", Token);
+	Return Response;
 
+EndFunction
+
+// Delete folder
+// Remove folder with subfolders
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - ID of folder to be deleted - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export
+	
+	Response = FileManagement(URL, FolderID, "disk.folder.deletetree", Token);
+	Return Response;
+	
 EndFunction
 
 #EndRegion
@@ -995,6 +1085,17 @@ Function ManageTask(Val URL, Val TaskID, Val Method, Val Token = "")
     Response = OPI_Tools.Post(URL, Parameters);
     
     Return Response;
+    
+EndFunction
+
+Function FileManagement(Val URL, Val FileID, Val Method, Val Token = "")
+
+    Parameters = NormalizeAuth(URL, Token, Method);
+    OPI_Tools.AddField("id", FileID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;	 
     
 EndFunction
 

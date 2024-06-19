@@ -1137,11 +1137,95 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetAppStoragesList";
+    NewLine.МетодПоиска = "GETAPPSTORAGESLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Drive";
+    NewLine.ОписаниеМетода   = "Get a list of storages with which the application can work to store its data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetAppStoragesList";
+    NewLine.МетодПоиска = "GETAPPSTORAGESLIST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetStorage";
+    NewLine.МетодПоиска = "GETSTORAGE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Drive";
+    NewLine.ОписаниеМетода   = "Get information about storage";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetStorage";
+    NewLine.МетодПоиска = "GETSTORAGE";
+    NewLine.Параметр    = "--storageid";
+    NewLine.Описание    = "Storage ID";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetStorage";
+    NewLine.МетодПоиска = "GETSTORAGE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetStorageObjects";
+    NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Drive";
+    NewLine.ОписаниеМетода   = "Get a list of files and folders, located at the root of the storage";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetStorageObjects";
+    NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
+    NewLine.Параметр    = "--storageid";
+    NewLine.Описание    = "Storage ID";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetStorageObjects";
+    NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UploadFileToStorage";
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Область     = "Drive";
+    NewLine.ОписаниеМетода   = "Upload file to storage root";
 
 
     NewLine = CompositionTable.Add();
@@ -1169,8 +1253,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UploadFileToStorage";
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--storage";
-    NewLine.Описание    = "Storage id (optional, def. val. - Empty)";
+    NewLine.Параметр    = "--storageid";
+    NewLine.Описание    = "Storage id";
     NewLine.Область     = "Drive";
 
 
@@ -1189,6 +1273,47 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UploadFileToStorage";
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateStorageFolder";
+    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Drive";
+    NewLine.ОписаниеМетода   = "Create new foldera at the storage";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateStorageFolder";
+    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
+    NewLine.Параметр    = "--storageid";
+    NewLine.Описание    = "Storage ID";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateStorageFolder";
+    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Folder name";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateStorageFolder";
+    NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Drive";
@@ -1220,6 +1345,37 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteFile";
     NewLine.МетодПоиска = "DELETEFILE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteFolder";
+    NewLine.МетодПоиска = "DELETEFOLDER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Drive";
+    NewLine.ОписаниеМетода   = "Remove folder with subfolders";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteFolder";
+    NewLine.МетодПоиска = "DELETEFOLDER";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "ID of folder to be deleted";
+    NewLine.Область     = "Drive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteFolder";
+    NewLine.МетодПоиска = "DELETEFOLDER";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Drive";
