@@ -6325,7 +6325,7 @@ Procedure Bitrix24_GetAppStoragesList(FunctionParameters)
     URL = FunctionParameters["Bitrix24_URL"];     
     Result = OPI_Bitrix24.GetAppStoragesList(URL);
         
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetAppStoragesList (wh)", "Bitrix24");
     
     Check_BitrixStorage(Result); // SKIP
             
@@ -6416,7 +6416,7 @@ Procedure Bitrix24_ CreateStorageFolder(FunctionParameters)
     
     Result = OPI_Bitrix24.CreateStorageFolder(URL, StorageID, Filename2);
         
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateStorageFolder (wh)", "Bitrix24");
     
     Check_BitrixFile(Result); // SKIP
     
@@ -6448,7 +6448,7 @@ Procedure Bitrix24_DeleteFolder(FunctionParameters)
     
     Result = OPI_Bitrix24.DeleteFolder(URL, FolderID);
         
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteFolder (wh)", "Bitrix24");
     
     Check_BitrixTrue(Result); // SKIP
             
@@ -6473,7 +6473,7 @@ Procedure Bitrix24_GetStorage(FunctionParameters)
     
     Result = OPI_Bitrix24.GetStorage(URL, StorageID);
         
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetStorage (wh)", "Bitrix24");
     
     Check_BitrixFile(Result); // SKIP
             
@@ -6497,7 +6497,7 @@ Procedure Bitrix24_GetStorageObjects(FunctionParameters)
     
     Result = OPI_Bitrix24.GetStorageObjects(URL, StorageID);
         
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetStorageObjects (wh)", "Bitrix24");
     
     Check_BitrixArray(Result); // SKIP
             
