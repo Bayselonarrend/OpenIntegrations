@@ -5952,7 +5952,7 @@ Procedure Bitrix24_DisapproveTask(FunctionParameters)
     URL = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
         
-    OPI_Bitrix24.DisapproveTask(URL, TaskID);
+    Result = OPI_Bitrix24.DisapproveTask(URL, TaskID);
         
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DisapproveTask (wh)", "Bitrix24");
         
@@ -5960,7 +5960,7 @@ Procedure Bitrix24_DisapproveTask(FunctionParameters)
     Token = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
     
-    OPI_Bitrix24.DisapproveTask(URL, TaskID, Token);
+    Result = OPI_Bitrix24.DisapproveTask(URL, TaskID, Token);
     
     // END
         
