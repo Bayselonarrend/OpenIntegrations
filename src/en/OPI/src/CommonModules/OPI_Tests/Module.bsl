@@ -3333,6 +3333,21 @@ Procedure B24_TaskManagment() Export
     
 EndProcedure
 
+Procedure B24_WorkingWithDrive() Export
+    
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
+
+    Bitrix24_GetStoragesList(TestParameters);
+    Bitrix24_UploadFileToStorage(TestParameters);
+    Bitrix24_DeleteFile(TestParameters);
+    
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -3773,6 +3788,16 @@ EndProcedure
 
 Procedure Check_BitrixTasksList(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["tasks"]).ИмеетТип("Array");
+EndProcedure
+
+Procedure Check_BitrixStorage(Val Result)
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["total"]).Заполнено();
+EndProcedure
+
+Procedure Check_BitrixFile(Val Result)
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["ID"]).Заполнено();
 EndProcedure
 
 #EndRegion
@@ -6242,14 +6267,14 @@ EndProcedure
 Procedure Bitrix24_GetTasksList(FunctionParameters)
     
     // Full filter structer you can find at GetTasksFilterStructure method
-    FilterStructure = New Structure;
-    FilterStructure.Insert("CREATED_BY" , 1);
-    FilterStructure.Insert("RESPONSIBLE_ID", 10);
+    Filter = New Structure;
+    Filter.Insert("CREATED_BY" , 1);
+    Filter.Insert("RESPONSIBLE_ID", 10);
     
     Indent = 1;
     URL = FunctionParameters["Bitrix24_URL"];
         
-    Result = OPI_Bitrix24.GetTasksList(URL, FilterStructure);
+    Result = OPI_Bitrix24.GetTasksList(URL, Filter);
         
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTasksList (wh)", "Bitrix24");
     
@@ -6265,6 +6290,92 @@ Procedure Bitrix24_GetTasksList(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTasksList", "Bitrix24");
     
     Check_BitrixTasksList(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetStoragesList(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];     
+    Result = OPI_Bitrix24.GetStoragesList(URL);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, ")", "Bitrix24");
+    
+    Check_BitrixStorage(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.GetStoragesList(URL, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetStoragesList", "Bitrix24");
+    
+    Check_BitrixStorage(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_UploadFileToStorage(FunctionParameters)
+    
+    Filename1 = String(New UUID) + ".jpg";
+    Filename2 = String(New UUID) + ".jpg";
+    
+    Image1 = FunctionParameters["Picture"];
+    Image2 = FunctionParameters["Picture2"];
+    
+    DestinationID = 3;
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.UploadFileToStorage(URL, Filename1, Image1, DestinationID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFileInХранorще (хуto)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+    
+    FileID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookFileID", FileID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_HookFileID", FileID); // SKIP
+
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.UploadFileToStorage(URL, Filename2, Image2, DestinationID, , Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UploadFileInХранorще", "Bitrix24");
+    
+    Check_BitrixFile(Result); 
+    
+    FileID = Result["result"]["ID"];                                    
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_FileID", FileID);    
+    FunctionParameters.Insert("Bitrix24_FileID", FileID);                
+    
+EndProcedure
+
+Procedure Bitrix24_DeleteFile(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_HookFileID"];
+    
+    Result = OPI_Bitrix24.DeleteFile(URL, FileID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (хуto)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+       
+    Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
     
 EndProcedure
 
