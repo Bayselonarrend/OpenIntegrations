@@ -142,7 +142,7 @@ EndFunction
 
 #EndRegion
 
-#Region NewsFeed
+#Region FeedPostsManagment
 
 // Create post
 // Create a new post at news feed
@@ -354,7 +354,7 @@ EndFunction
 
 #EndRegion
 
-#Region Tasks
+#Region TasksManagment
 
 // Get task fields structure
 // Gets a structure with a description of the fields for creating a task
@@ -814,7 +814,7 @@ EndFunction
 
 #EndRegion
 
-#Region Drive
+#Region StoragesAndFilesManagment
 
 // Get list of storages
 // Get list of available files storages
@@ -834,8 +834,8 @@ Function GetStoragesList(Val URL, Val Token = "") Export
 
 EndFunction
 
-// Get list of storages, available for current app
-// Get a list of storages with which the application can work to store its data
+// Get storage for application data
+// Get information about storage with which the application can work to store its data
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -843,9 +843,9 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetAppStoragesList(Val URL, Val Token = "") Export
+Function GetAppSotrage(Val URL, Val Token = "") Export
 	
-	Parameters = NormalizeAuth(URL, Token, "disk.storage.getlist");
+	Parameters = NormalizeAuth(URL, Token, "disk.storage.getforapp");
     Response = OPI_Tools.Post(URL, Parameters);
     
     Return Response;
@@ -867,6 +867,30 @@ Function GetStorage(Val URL, Val StorageID, Val Token = "") Export
 	Response = FileManagement(URL, StorageID, "disk.storage.get", Token);
 	Return Response;
 	
+EndFunction
+
+// Rename storage
+// Change storage name (for app storage only, see. GetAppStorage)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String, Number - Storage ID - storageid
+// Name - String - New storage name - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// HTTPResponse - Rename storage
+Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "disk.storage.rename");
+	
+    OPI_Tools.AddField("id" , StorageID , "String", Parameters);
+    OPI_Tools.AddField("newName", Name, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
 EndFunction
 
 // Get a list of child storage objects
@@ -921,10 +945,9 @@ Function UploadFileToStorage(Val URL
     OPI_Tools.AddField("id" , StorageID, "String" , Parameters);
 
     FileArray = NormalizeFiles(FileContent);
-    FileArray.Add(Name);
     
     If Not FileArray.Count() = 0 Then
-        Parameters.Insert("fileContent", FileArray);
+        Parameters.Insert("fileContent", FileArray[0]);
     EndIf;
   
     Response = OPI_Tools.Post(URL, Parameters);
