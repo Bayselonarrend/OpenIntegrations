@@ -741,33 +741,33 @@ Function GetTasksFilterStructure(Val Clear = False) Export
     OPI_TypeConversion.GetBoolean(Clear);
     
     FilterStructure = New Structure;
-    FilterStructure.Insert("ID" , "<identifier of topic>");
-    FilterStructure.Insert("PARENT_ID" , "<identifier of parrent of topic>");
-    FilterStructure.Insert("GROUP_ID" , "<identifier works of group>");
+    FilterStructure.Insert("ID" , "<task identifier>");
+    FilterStructure.Insert("PARENT_ID" , "<parent task identifier>");
+    FilterStructure.Insert("GROUP_ID" , "<workgroup identifier>");
     FilterStructure.Insert("CREATED_BY" , "<producer>");
-    FilterStructure.Insert("STATUS_CHANGED_BY", "<user, last that change status of topic>");
+    FilterStructure.Insert("STATUS_CHANGED_BY", "<the user who last changed the task status>");
     FilterStructure.Insert("PRIORITY" , "<priority>");
-    FilterStructure.Insert("FORUM_TOPIC_ID" , "<identifier of topic of forum>");
+    FilterStructure.Insert("FORUM_TOPIC_ID" , "<forum topic identifier>");
     FilterStructure.Insert("RESPONSIBLE_ID" , "<performer>");
-    FilterStructure.Insert("TITLE" , "<name of topic (may search to for pattern [%_])>");
+    FilterStructure.Insert("TITLE" , "<task name (can be searched using the template [%_])>");
     FilterStructure.Insert("TAG" , "<tag>");
-    FilterStructure.Insert("REAL_STATUS" , "<status of topic>");
+    FilterStructure.Insert("REAL_STATUS" , "<task status>");
     FilterStructure.Insert("MARK" , "<mark>");
-    FilterStructure.Insert("SITE_ID" , "<identifier site>");
-    FilterStructure.Insert("ADD_IN_REPORT" , "<task in report (Y|N)>");
-    FilterStructure.Insert("DATE_START" , "<date of start of completing>");
-    FilterStructure.Insert("DEADLINE" , "<last deadline>");
-    FilterStructure.Insert("CREATED_DATE" , "<date of create>");
-    FilterStructure.Insert("CLOSED_DATE" , "<date of complete>");
-    FilterStructure.Insert("CHANGED_DATE" , "<date of last change>");
-    FilterStructure.Insert("ACCOMPLICE" , "<identifier co-preformer>");
-    FilterStructure.Insert("AUDITOR" , "<identifier of auditor>");
-    FilterStructure.Insert("DEPENDS_ON" , "<identifier previous of topic>");
-    FilterStructure.Insert("ONLY_ROOT_TASKS" , "<only of topic, that not be subtask (Y|N)>");
+    FilterStructure.Insert("SITE_ID" , "<site identifier>");
+    FilterStructure.Insert("ADD_IN_REPORT" , "<task in the report (Y|N)>");
+    FilterStructure.Insert("DATE_START" , "<start date>");
+    FilterStructure.Insert("DEADLINE" , "<deadline>");
+    FilterStructure.Insert("CREATED_DATE" , "<date of creation>");
+    FilterStructure.Insert("CLOSED_DATE" , "<completion date>");
+    FilterStructure.Insert("CHANGED_DATE" , "<date of last modification>");
+    FilterStructure.Insert("ACCOMPLICE" , "<co-executor identifier>");
+    FilterStructure.Insert("AUDITOR" , "<auditor identifier>");
+    FilterStructure.Insert("DEPENDS_ON" , "<previous task identifier>");
+    FilterStructure.Insert("ONLY_ROOT_TASKS" , "<only tasks that are not subtasks (Y|N)>");
     FilterStructure.Insert("STAGE_ID" , "<stage>");
-    FilterStructure.Insert("UF_CRM_TASK" , "<elements CRM>");
+    FilterStructure.Insert("UF_CRM_TASK" , "<CRM elements>");
     FilterStructure.Insert("STATUS"
-        , "<status for of sorting. Similar REAL_STATUS, but have additionally three meta-of status>");
+        , "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>");
         
     If Clear Then
     	For Each Filter In FilterStructure Do
@@ -796,10 +796,10 @@ Function GetCommentsFilterStructure(Val Clear = False) Export
 	OPI_TypeConversion.GetBoolean(Clear);
 	
 	FilterStructure = New Structure;
-	FilterStructure.Insert("ID" , "<identifier of comment>");
-	FilterStructure.Insert("AUTHOR_ID " , "<identifier of author of comment>");
-	FilterStructure.Insert("AUTHOR_NAME ", "<name of author>");
-	FilterStructure.Insert("POST_DATE " , "<date of publish of comment>");
+	FilterStructure.Insert("ID" , "<comment identifier>");
+	FilterStructure.Insert("AUTHOR_ID " , "<comment author identifier>");
+	FilterStructure.Insert("AUTHOR_NAME ", "<author's name>");
+	FilterStructure.Insert("POST_DATE " , "<comment publication date>");
 	
 	If Clear Then
     	For Each Filter In FilterStructure Do
