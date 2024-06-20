@@ -2,8 +2,8 @@
 sidebar_position: 4
 ---
 
-# Edit page properties.
-
+# Edit page properties
+ Changes the properties of an existing page
 
 
 *Function EditPageProperties(Val Token, Val Page, Val Data = "", Val Icon = "", Val Cover = "", Val Archived = False) Export*
