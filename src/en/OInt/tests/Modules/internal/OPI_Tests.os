@@ -3343,7 +3343,8 @@ Procedure B24_WorkingWithDrive() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
 
     Bitrix24_GetStoragesList(TestParameters);
-    Bitrix24_GetAppStoragesList(TestParameters);
+    Bitrix24_GetAppStorage(TestParameters);
+    Bitrix24_RenameStorage(TestParameters);
     Bitrix24_GetStorage(TestParameters);
     Bitrix24_UploadFileToStorage(TestParameters);
     Bitrix24_GetStorageObjects(TestParameters);
@@ -6320,25 +6321,22 @@ Procedure Bitrix24_GetStoragesList(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrix24_GetAppStoragesList(FunctionParameters)
-    
-    URL = FunctionParameters["Bitrix24_URL"];     
-    Result = OPI_Bitrix24.GetAppStoragesList(URL);
-        
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAppStoragesList (wh)", "Bitrix24");
-    
-    Check_BitrixStorage(Result); // SKIP
-            
+Procedure Bitrix24_GetAppStorage(FunctionParameters)
+                
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
        
-    Result = OPI_Bitrix24.GetAppStoragesList(URL, Token);
+    Result = OPI_Bitrix24.GetAppSotrage(URL, Token);
     
     // END
         
     OPI_TestDataRetrieval.WriteLog(Result, "GetAppStoragesList", "Bitrix24");
     
-    Check_BitrixStorage(Result);
+    Check_BitrixFile(Result);
+    
+    StorageID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_StorageID", StorageID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_StorageID", StorageID); // SKIP
     
 EndProcedure
 
@@ -6511,6 +6509,23 @@ Procedure Bitrix24_GetStorageObjects(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetStorageObjects", "Bitrix24");
     
     Check_BitrixArray(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_RenameStorage(FunctionParameters)
+	  
+    Name = "New storage name";             
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    StorageID = FunctionParameters["Bitrix24_StorageID"];
+       
+    Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameStorage", "Bitrix24");
+    
+    Check_BitrixFile(Result);
     
 EndProcedure
 
