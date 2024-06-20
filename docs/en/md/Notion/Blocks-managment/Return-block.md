@@ -2,8 +2,8 @@
 sidebar_position: 2
 ---
 
-# Return block.
-
+# Return block
+ Returns the block structure by ID
 
 
 *Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export*

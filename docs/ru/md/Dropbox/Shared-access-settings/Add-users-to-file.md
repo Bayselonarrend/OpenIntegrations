@@ -37,6 +37,23 @@ sidebar_position: 3
 
 ```json title="Результат"
 
-
+[
+ {
+  "member": {
+   ".tag": "email",
+   "email": "h5bk6ft62s@privaterelay.appleid.com"
+  },
+  "result": {
+   ".tag": "success",
+   "success": {
+    ".tag": "editor"
+   }
+  },
+  "sckey_sha1": "ee2d8fd2cee052e103a52aa74be85bbebb8e6bb4",
+  "invitation_signature": [
+   "ee2d8fd2cee052e103a52aa74be85bbebb8e6bb4:ed7721b375882c806612d4056dad9f317cc98a22"
+  ]
+ }
+]
 
 ```
