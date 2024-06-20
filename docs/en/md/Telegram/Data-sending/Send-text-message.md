@@ -6,7 +6,7 @@ sidebar_position: 1
  Sends a text message to a chat or channel
 
 
-*Function SendTextMessage(Val Token, Val ChatID, Val Text, Val Keyboard = "", Val Markup = "Markdown") Export*
+*Function SendTextMessage(Val Token, Val ChatID, Val Text, Val Keyboard = "", Val Markup = "Markdown", Val RepliedID = 0) Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -15,6 +15,7 @@ sidebar_position: 1
  | Text | --text | String | Message text |
  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
  | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
+ | RepliedID | --reply | String, Number | Reply to message ID |
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
