@@ -44,7 +44,7 @@ const config = {
         },
 
         docs: {
-          sidebarPath: './sidebars.js',
+          sidebarPath: './docs/sidebars.js',
         },
       }),
     ],
