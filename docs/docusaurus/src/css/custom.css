@@ -93,7 +93,9 @@ li > a.menu__link {
 
 .Airtable a::before , .Telegram a::before, .VK a::before, .Viber a::before, .Twitter a::before,
 .Notion a::before, .GoogleCalendar a::before, .GoogleDrive a::before, .GoogleSheets a::before, 
-.Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before{
+.Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
+.Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before,
+.Start a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -148,6 +150,34 @@ li > a.menu__link {
 
 .Bitrix24 > div > a::before{
   content: url(../../static/img/APIs/small/Bitrix24.png);
+}
+
+.Messenger > div > a::before{
+  content: url(../../static/img/Categories/chat.png);
+}
+
+.Social > div > a::before{
+  content: url(../../static/img/Categories/social-media.png);
+}
+
+.Database > div > a::before{
+  content: url(../../static/img/Categories/database.png);
+}
+
+.Calendar > div > a::before{
+  content: url(../../static/img/Categories/calendar.png);
+}
+
+.CRM > div > a::before{
+  content: url(../../static/img/Categories/crm.png);
+}
+
+.Folder > div > a::before{
+  content: url(../../static/img/Categories/folder.png);
+}
+
+.Start > div > a::before{
+  content: url(../../static/img/Categories/welcome.png);
 }
 
 /* CSS */

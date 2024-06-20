@@ -42,6 +42,10 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+
+        docs: {
+          sidebarPath: './sidebars.js',
+        },
       }),
     ],
   ],
@@ -64,6 +68,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
+      docs:{
+        sidebar:{
+          autoCollapseCategories: true
+        }
+      },
 
       colorMode: {
         defaultMode: 'light',
@@ -80,7 +89,7 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'defaultSidebar',
+            sidebarId: 'docs',
             position: 'left',
             label: 'Описания методов',
           },
@@ -99,7 +108,7 @@ const config = {
             items: [
               {
                 label: 'Описания методов',
-                to: '/docs/Start',
+                to: '/docs/Instructions/Start',
               },
             ],
           },
