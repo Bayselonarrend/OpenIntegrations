@@ -87,14 +87,13 @@ a:hover, .navbar__title:hover{
 }
 
 
-
 li > a.menu__link {
   justify-content: flex-start;
 }
 
 .Airtable a::before , .Telegram a::before, .VK a::before, .Viber a::before, .Twitter a::before,
 .Notion a::before, .GoogleCalendar a::before, .GoogleDrive a::before, .GoogleSheets a::before, 
-.Slack a::before, .YandexDisk a::before, .Dropbox a::before{
+.Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -145,6 +144,10 @@ li > a.menu__link {
 
 .Dropbox > div > a::before{
   content: url(../../static/img/APIs/small/Dropbox.png);
+}
+
+.Bitrix24 > div > a::before{
+  content: url(../../static/img/APIs/small/Bitrix24.png);
 }
 
 /* CSS */
