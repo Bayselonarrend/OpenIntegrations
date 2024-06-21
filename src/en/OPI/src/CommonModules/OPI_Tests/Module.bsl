@@ -419,7 +419,7 @@ Procedure VKAPI_LikeRepostComment() Export
     PostID = Result["response"]["post_id"]; 
     
     OPI_TestDataRetrieval.WriteParameter("VK_PostID", PostID);
-    TestParameters.Insert("VK_PostID", PostID);
+    OPI_TestDataRetrieval.ParameterToCollection("VK_PostID", TestParameters);
     
     VK_LikePost(TestParameters); 
     VK_MakeRepost(TestParameters); 
@@ -437,6 +437,8 @@ Procedure VKAPI_GetStatistics() Export
     TestParameters = New Structure();
     
     VK_GetStatistics(TestParameters);
+    
+    OPI_Tools.Pause(5);
 
 EndProcedure
 
@@ -446,59 +448,27 @@ Procedure VKAPI_GetPostStatistics() Export
     
     VK_GetPostStatistics(TestParameters);
     
+    OPI_Tools.Pause(5);
+    
 EndProcedure
 
 Procedure VKAPI_CreateAdCampaign() Export
  
     Parameters = GetVKParameters();
-    CabinetID = OPI_TestDataRetrieval.GetParameter("VK_AdsCabinetID");
-    Name = "Test ads";
-    TypeMap = Type("Map");
-    TypeNumber = Type("Number");
-    Response_ = "response";
-    UID_ = "id";
-        
-    Result = OPI_VK.CreateAdvertisingCampaign(CabinetID, Name, Parameters);
+    Text = "Post from autotest";
+     
+    Result = OPI_VK.CreatePost(Text, New Array, , , Parameters);  
+    PostID = Result["response"]["post_id"]; 
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateAdCampaign");
+    OPI_TestDataRetrieval.WriteParameter("VK_PostID", PostID);
     
-    Result = Result[Response_][0];
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap); 
-    OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID_]).ИмеетТип(TypeNumber).Заполнено();
-        
-    CampaignID = Result[UID_];
-    CategoryID = 126;
-    Limit = 150;
-    
-    Result = OPI_VK.CreatePost(Name, New Array, , , Parameters); 
-    PostID = Result[Response_]["post_id"]; 
-        
-    Result = OPI_VK.CreateAd(CampaignID
-        , Limit
-        , CategoryID
-        , PostID
-        , CabinetID
-        , Parameters);
-        
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateAd");
-            
-    Result = Result[Response_][0];
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap); 
-    OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип(TypeNumber).Равно(602);
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID_]).ИмеетТип(TypeNumber).Заполнено();
-        
-    AnnouncementID = Result[UID_];
-    Result = OPI_VK.PauseAdvertisingAd(CabinetID, AnnouncementID, Parameters);
-    
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PauseAdvertisement");
-    
-    Result = Result[Response_][0];
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap); 
-    OPI_TestDataRetrieval.ExpectsThat(Result[UID_]).ИмеетТип(TypeNumber).Заполнено();
+    TestParameters = New Structure();
+    OPI_TestDataRetrieval.ParameterToCollection("VK_AdsCabinetID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VK_PostID" , TestParameters);
+     
+    VK_CreateAdCampaign(TestParameters);
+    VK_CreateAd(TestParameters);
+    VK_PauseAdvertising(TestParameters);
  
     OPI_VK.DeletePost(PostID, Parameters);
     
@@ -508,22 +478,13 @@ EndProcedure
 
 Procedure VKAPI_SendMessage() Export
  
-    Parameters = GetVKParameters();
-    User = OPI_TestDataRetrieval.GetParameter("VK_UserID");
-    Token = OPI_TestDataRetrieval.GetParameter("VK_CommunityToken");
-    Text = "Message from autotest";
+    TestParameters = New Structure;
     
-    ButtonArray = New Array;
-    ButtonArray.Add("Button 1");
-    ButtonArray.Add("Button 2"); 
-    
-    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
-    Result = OPI_VK.WriteMessage(Text, User, Token, Keyboard, Parameters);
-    
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage");
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map"); 
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+    OPI_TestDataRetrieval.ParameterToCollection("VK_UserID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VK_CommunityToken", TestParameters);
+
+    VK_ FormKeyboard(TestParameters);
+    VK_WriteMessage(TestParameters);
     
     OPI_Tools.Pause(5);
   
@@ -531,15 +492,10 @@ EndProcedure
 
 Procedure VKAPI_GetProductCategories() Export
  
-    Parameters = GetVKParameters();
-    Result = OPI_VK.GetProductCategoryList(Parameters);
-    
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductCategoryList");
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
-        .ИмеетТип("Map")
-        .Заполнено();
+    TestParameters = New Structure;
         
+    VK_GetProductCategoryList(TestParameters);
+    
     OPI_Tools.Pause(5);
     
 EndProcedure
@@ -3372,6 +3328,22 @@ Procedure Check_BinaryData(Val Result, Val Size = Undefined)
     
 EndProcedure
 
+Procedure Check_Array(Val Result, Val Count = Undefined)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Array");
+    
+    If Not Count = Undefined Then
+       OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетДлину(Count); 
+    EndIf; 
+    
+EndProcedure
+
+Procedure Check_Map(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result) .ИмеетТип("Map").Заполнено();  
+            
+EndProcedure
+
 Procedure Check_TelegramTrue(Val Result)
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -3628,6 +3600,32 @@ EndProcedure
 Procedure Check_VKPostsStatistic(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(2);
+        
+EndProcedure
+
+Procedure Check_VKCampaign(Val Result)
+
+    Result = Result["response"][0];
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map"); 
+    OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип("Number").Равно(602);
+    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKAd(Val Result)
+
+    Result = Result["response"][0];
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map"); 
+    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKMessage(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map"); 
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
         
 EndProcedure
 
@@ -5037,6 +5035,124 @@ Procedure VK_GetPostStatistics(FunctionParameters)
     
     OPI_Tools.Pause(5);
         
+EndProcedure
+
+Procedure VK_CreateAdCampaign(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    AccountID = FunctionParameters["VK_AdsCabinetID"];
+    Name = "New campaign";
+    
+    Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);
+    
+    // END
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateAdCampaign", "VK");
+    
+    Check_VKCampaign(Result);
+        
+    CampaignID = Result["response"][0]["id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_AdsCampaignID", CampaignID);
+    FunctionParameters.Insert("VK_AdsCampaignID", CampaignID);
+        
+EndProcedure
+
+Procedure VK_CreateAd(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    CampaignNumber = FunctionParameters["VK_AdsCampaignID"];
+    DailyLimit = 150;
+    CategoryNumber = 126;
+    PostID = FunctionParameters["VK_PostID"];
+    AccountID = FunctionParameters["VK_AdsCabinetID"];
+        
+    Result = OPI_VK.CreateAd(CampaignNumber
+        , DailyLimit
+        , CategoryNumber
+        , PostID
+        , AccountID
+        , Parameters);
+        
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateAd", "VK");
+            
+    Check_VKCampaign(Result);
+        
+    AnnouncementID = Result["response"][0]["id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_AdsPostID", AnnouncementID);
+    FunctionParameters.Insert("VK_AdsPostID", AnnouncementID);
+        
+EndProcedure
+
+Procedure VK_PauseAdvertising(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    AccountID = FunctionParameters["VK_AdsCabinetID"];
+    AdID = FunctionParameters["VK_AdsPostID"];
+    
+    Result = OPI_VK.PauseAdvertising(AccountID, AdID, Parameters);
+    
+    // END
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PauseAdvertisement", "VK");
+    
+    Check_VKAd(Result);
+        
+EndProcedure
+
+Procedure VK_ FormKeyboard(FunctionParameters)
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2"); 
+    
+    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
+    
+    // END
+    
+    Check_String(Keyboard);
+        
+EndProcedure
+
+Procedure VK_WriteMessage(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Text = "Message from autotest";
+    UserID = FunctionParameters["VK_UserID"];
+    Communitytoken = FunctionParameters["VK_CommunityToken"];
+    
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2"); 
+    
+    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
+    Result = OPI_VK.WriteMessage(Text, UserID, Communitytoken, Keyboard, Parameters);
+    
+    // END
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage", "VK");
+    
+    Check_VKMessage(Result);   
+        
+EndProcedure
+
+Procedure VK_GetProductCategoryList(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Result = OPI_VK.GetProductCategoryList(Parameters);
+    
+    // END
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductCategoryList");
+    
+    Check_Map(Result);
+    
 EndProcedure
 
 #EndRegion
