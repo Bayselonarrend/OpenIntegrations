@@ -501,111 +501,20 @@ Procedure VKAPI_GetProductCategories() Export
 EndProcedure
 
 Procedure VKAPI_CreateProductSelection() Export
- 
-    Parameters = GetVKParameters();
-    TypeMap = Type("Map");
-    TypeNumber = Type("Number");
-    Response_ = "response";
-    Image = OPI_TestDataRetrieval.GetBinary("Picture");
-    TFN = GetTempFileName("png");   
-    Image.Write(TFN);
+     
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
         
-    Result = OPI_VK.CreateProductCollection("Test album"
-        , Image
-        , True
-        , False
-        , Parameters);  
-        
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductCollection");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["albums_count"]).ИмеетТип(TypeNumber).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["market_album_id"]).ИмеетТип(TypeNumber).Заполнено();
-             
-    SelectionID = Result[Response_]["market_album_id"];
-    
-    Result = OPI_VK.EditProductCollection("EditedCollection", SelectionID, , , , Parameters);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "EditProductCollection");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]).ИмеетТип(TypeNumber).Равно(1);
- 
-    ImageArray = New Array;
-    ImageArray.Add(OPI_TestDataRetrieval.GetBinary("Picture"));
-    ImageArray.Add(OPI_TestDataRetrieval.GetBinary("Picture2"));
-    
-    Product = New Map();
-    Product.Insert("Name" , "TestProduct");    
-    Product.Insert("Description" , "Product description");
-    Product.Insert("Category" , "20173");           
-    Product.Insert("Price" , 1);                
-    Product.Insert("OldPrice" , 15);     
-    Product.Insert("MainPhoto" , Image);                   
-    Product.Insert("URL" , "https://github.com/Bayselonarrend/OpenIntegrations");     
-    Product.Insert("AdditionalPhotos" , ImageArray);     
-    Product.Insert("MainInGroup" , True);                 
-    Product.Insert("Width" , 20);     
-    Product.Insert("Height" , 30);     
-    Product.Insert("Depth" , 40);     
-    Product.Insert("Weight" , 100);
-    Product.Insert("SKU" , "12345");
-    Product.Insert("AvailableBalance" , "10");
-    
-    Result = OPI_VK.AddProduct(Product, SelectionID, Parameters); // Adding product
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "AddProduct");
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["market_item_id"]).ИмеетТип(TypeNumber).Заполнено();
-        
-    ProductID = Result[Response_]["market_item_id"];
-    
-    Product = New Map;
-    Product.Insert("Name", "EditedTestProduct");
-    
-    Result = OPI_VK.EditProduct(ProductID, Product, , Parameters); // Change product
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "EditProduct");
-    
-    Check_VKTrue(Result);
-    
-    Result = OPI_VK.AddProductToSelection(ProductID, SelectionID, Parameters); // Adding in selection
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "AddProductToSelection");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]).ИмеетТип(TypeNumber).Заполнено();
-        
-    Result = OPI_VK.RemoveProductFromSelection(ProductID, SelectionID, Parameters); // Deletes from selections
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "RemoveProductFromSelection");
-    
-    OPI_Tools.Pause(5);
-    Check_VKTrue(Result);
-        
-    Result = OPI_VK.DeleteProduct(ProductID, Parameters); // Deletion product
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProduct");
-    
-    OPI_Tools.Pause(5);
-    Check_VKTrue(Result);
-        
-    Result = OPI_VK.DeleteSelection(SelectionID, Parameters); // Removal selections
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelection");
-    
-    OPI_Tools.Pause(5);
-    Check_VKTrue(Result);
+    CreateProductCollection(TestParameters);
+    EditProductCollection(TestParameters);
+    VK_AddProduct(TestParameters);
+    VK_EditProduct(TestParameters);
+    VK_AddProductToCollection(TestParameters);    
+    VK_RemoveProductFromCollection(TestParameters);
+    VK_DeleteProduct(TestParameters);
+    VK_DeleteCollection(TestParameters);
 
-    DeleteFiles(TFN);
-    
     OPI_Tools.Pause(5);
     
 EndProcedure
@@ -3622,10 +3531,25 @@ Procedure Check_VKAd(Val Result)
         
 EndProcedure
 
-Procedure Check_VKMessage(Val Result)
+Procedure Check_VKNumber(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map"); 
     OPI_TestDataRetrieval.ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKCollection(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["albums_count"]).ИмеетТип("Number").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["market_album_id"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKProduct(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["market_item_id"]).ИмеетТип("Number").Заполнено();
         
 EndProcedure
 
@@ -5137,7 +5061,7 @@ Procedure VK_WriteMessage(FunctionParameters)
     
     OPI_TestDataRetrieval.WriteLog(Result, "WriteMessage", "VK");
     
-    Check_VKMessage(Result);   
+    Check_VKNumber(Result);   
         
 EndProcedure
 
@@ -5149,10 +5073,192 @@ Procedure VK_GetProductCategoryList(FunctionParameters)
     
     // END
     
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCategoryList");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCategoryList", "VK");
     
     Check_Map(Result);
     
+EndProcedure
+
+Procedure CreateProductCollection(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Name = "TestCollection";
+    Image = FunctionParameters["Picture"];
+    Main = True;
+    Hidden = False;
+    
+    Result = OPI_VK.CreateProductCollection(Name
+        , Image
+        , Main
+        , Hidden
+        , Parameters);  
+        
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductCollection", "VK");
+    
+    Check_VKCollection(Result);
+    
+    OPI_Tools.Pause(5);
+             
+    SelectionID = Result["response"]["market_album_id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_MarketAlbumID", SelectionID);
+    FunctionParameters.Insert("VK_MarketAlbumID", SelectionID);
+        
+EndProcedure
+
+Procedure EditProductCollection(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Name = "EditedCollection";
+    Selection = FunctionParameters["VK_MarketAlbumID"]; 
+    
+    Result = OPI_VK.EditProductCollection(Name, Selection, , , , Parameters);
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "EditProductCollection", "VK");
+    
+    Check_VKTrue(Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_AddProduct(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Image1 = FunctionParameters["Picture"]; // URL, Path to file or binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path to file or binary Data
+    Selection = FunctionParameters["VK_MarketAlbumID"]; 
+    
+    ImageArray = New Array;
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+    
+    ProductDescription = New Map();
+    ProductDescription.Insert("Name" , "TestProduct");    
+    ProductDescription.Insert("Description" , "Product description");
+    ProductDescription.Insert("Category" , "20173");           
+    ProductDescription.Insert("Price" , 1);                
+    ProductDescription.Insert("OldPrice" , 15);     
+    ProductDescription.Insert("MainPhoto" , Image1);                   
+    ProductDescription.Insert("URL" , "https://github.com/Bayselonarrend/OpenIntegrations");     
+    ProductDescription.Insert("AdditionalPhotos" , ImageArray);     
+    ProductDescription.Insert("MainInGroup" , True);                 
+    ProductDescription.Insert("Width" , 20);     
+    ProductDescription.Insert("Height" , 30);     
+    ProductDescription.Insert("Depth" , 40);     
+    ProductDescription.Insert("Weight" , 100);
+    ProductDescription.Insert("SKU" , "12345");
+    ProductDescription.Insert("AvailableBalance" , "10");
+    
+    Result = OPI_VK.AddProduct(ProductDescription, Selection, Parameters); 
+    
+    // END         
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "AddProduct", "VK");
+    
+    Check_VKProduct(Result);
+        
+    ProductID = Result["response"]["market_item_id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID", ProductID);
+    FunctionParameters.Insert("VK_MarketItemID", ProductID);
+        
+EndProcedure
+
+Procedure VK_EditProduct(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Product = FunctionParameters["VK_MarketItemID"]; 
+    
+    ProductDescription = New Map;
+    ProductDescription.Insert("Name", "EditedTestProduct");
+    
+    Result = OPI_VK.EditProduct(Product, ProductDescription, , Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "EditProduct", "VK");
+    
+    Check_VKTrue(Result);
+        
+EndProcedure
+
+Procedure VK_AddProductToCollection(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Product = FunctionParameters["VK_MarketItemID"];
+    Selection = FunctionParameters["VK_MarketAlbumID"];
+     
+    Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);
+    
+    // END  
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "AddProductToCollection", "VK");
+    
+    Check_VKNumber(Result);
+    
+    OPI_Tools.Pause(5);
+       
+EndProcedure
+
+Procedure VK_RemoveProductFromCollection(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Product = FunctionParameters["VK_MarketItemID"];
+    Selection = FunctionParameters["VK_MarketAlbumID"];
+    
+    Result = OPI_VK.RemoveProductFromSelection(Product, Selection, Parameters); 
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "RemoveProductFromSelection", "VK");
+    
+    Check_VKTrue(Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_DeleteProduct(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Product = FunctionParameters["VK_MarketItemID"];
+    
+    Result = OPI_VK.DeleteProduct(Product, Parameters);
+    
+    // END                         
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProduct", "VK");
+    
+    Check_VKTrue(Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_DeleteCollection(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    Selection = FunctionParameters["VK_MarketAlbumID"];
+    
+    Result = OPI_VK.DeleteSelection(Selection, Parameters);            
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelection", "VK");
+    
+    Check_VKTrue(Result);
+    
+    OPI_Tools.Pause(5);
+        
 EndProcedure
 
 #EndRegion

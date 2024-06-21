@@ -1409,7 +1409,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from VK
-Function AddProductToSelection(Val ProductsArray, Val Selection, Val Parameters = "") Export
+Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters = "") Export
     
     OPI_TypeConversion.GetCollection(ProductsArray);
     OPI_TypeConversion.GetLine(Selection);
@@ -1922,7 +1922,7 @@ Function ProductManagement(Val ProductDescription, Val ProductID = "", Val Selec
     EndIf;
     
     If ValueIsFilled(Selection) And ValueIsFilled(ProductID) Then
-        AddProductToSelection(ProductID, Selection, Parameters_);
+        AddProductToCollection(ProductID, Selection, Parameters_);
     EndIf;
     
     Return Response;

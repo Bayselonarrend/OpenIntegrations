@@ -1607,8 +1607,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vk";
     NewLine.Модуль      = "OPI_VK";
-    NewLine.Метод       = "AddProductToSelection";
-    NewLine.МетодПоиска = "ADDPRODUCTTOSELECTION";
+    NewLine.Метод       = "AddProductToCollection";
+    NewLine.МетодПоиска = "ADDPRODUCTTOCOLLECTION";
     NewLine.Параметр    = "--items";
     NewLine.Описание    = "Array of products or product";
     NewLine.Область     = "Product selection management";
@@ -1627,8 +1627,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vk";
     NewLine.Модуль      = "OPI_VK";
-    NewLine.Метод       = "AddProductToSelection";
-    NewLine.МетодПоиска = "ADDPRODUCTTOSELECTION";
+    NewLine.Метод       = "AddProductToCollection";
+    NewLine.МетодПоиска = "ADDPRODUCTTOCOLLECTION";
     NewLine.Параметр    = "--sel";
     NewLine.Описание    = "Selection ID";
     NewLine.Область     = "Product selection management";
@@ -1637,8 +1637,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vk";
     NewLine.Модуль      = "OPI_VK";
-    NewLine.Метод       = "AddProductToSelection";
-    NewLine.МетодПоиска = "ADDPRODUCTTOSELECTION";
+    NewLine.Метод       = "AddProductToCollection";
+    NewLine.МетодПоиска = "ADDPRODUCTTOCOLLECTION";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
     NewLine.Область     = "Product selection management";
