@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetAppAuthLink --domain %domain% --clientid %clientid%
+ oint bitrix24 GetAppAuthLink --domain %domain% --clientid %clientid%
 
 ```
 

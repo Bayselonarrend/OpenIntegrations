@@ -29,7 +29,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ОбновитьТокен --clientid "local.6667fc928a50a9.70414732" --clientsecret "ZeKyeYIgy2NsHZqsIHY6GfG1V..." --refresh "a95e9b66006e9f06006b12e400000001000..."
+  oint bitrix24 ОбновитьТокен --clientid "local.6667fc928a50a9.70414732" --clientsecret "ZeKyeYIgy2NsHZqsIHY6GfG1V..." --refresh "a95e9b66006e9f06006b12e400000001000..."
 
 ```
 

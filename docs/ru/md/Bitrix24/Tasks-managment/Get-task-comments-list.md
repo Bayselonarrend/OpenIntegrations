@@ -26,7 +26,7 @@ sidebar_position: 20
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ПолучитьСписокКомментариевЗадачи --url %url% --task %task% --filter %filter% --token %token%
+  oint bitrix24 ПолучитьСписокКомментариевЗадачи --url %url% --task %task% --filter %filter% --token %token%
 
 ```
 

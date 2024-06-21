@@ -26,7 +26,7 @@ sidebar_position: 20
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetTaskCommentsList --url %url% --task %task% --filter %filter% --token %token%
+ oint bitrix24 GetTaskCommentsList --url %url% --task %task% --filter %filter% --token %token%
 
 ```
 

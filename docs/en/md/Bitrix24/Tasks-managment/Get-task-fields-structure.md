@@ -32,7 +32,7 @@ sidebar_position: 1
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9df7366006e9f06006b12e400000001000..."
+ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 
@@ -48,7 +48,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "primary": true
  },
  "PARENT_ID": {
- "title": "ID базоinой of topic",
+ "title": "ID of base task",
  "type": "integer",
  "default": 0
  },
@@ -62,21 +62,21 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "type": "string"
  },
  "MARK": {
- "title": "Оценtoа",
+ "title": "Mark",
  "type": "enum",
  "values": {
- "N": "Оthreeцательtoя",
- "P": "Toложandтельtoя"
+ "N": "Negative",
+ "P": "Positive"
  },
  "default": null
  },
  "PRIORITY": {
- "title": "Прandорandтет",
+ "title": "Priority",
  "type": "enum",
  "values": {
- "2": "Inыwithtoandй",
- "1": "Midнandй",
- "0": "Nfromtoandй"
+ "2": "High",
+ "1": "Normal",
+ "0": "Low"
  },
  "default": 1
  },
@@ -84,19 +84,19 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": "Status",
  "type": "enum",
  "values": {
- "2": "Ждет of completing",
- "3": "Inыtoлняетwithя",
- "4": "Ожandдает toонтроля",
- "5": "Заinершеto",
- "6": "Отложеto"
+ "2": "Waiting of completing",
+ "3": "In work",
+ "4": "On controll",
+ "5": "Complete",
+ "6": "Deferred"
  },
  "default": 2
  },
  "MULTITASK": {
- "title": "Мbutжеwithтinенtoя task",
+ "title": "Multiple task",
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
@@ -105,32 +105,32 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": null,
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
  },
  "REPLICATE": {
- "title": "Toinторяемая task",
+ "title": "Repeatable task",
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
  },
  "GROUP_ID": {
- "title": "Проеtoт",
+ "title": "Project",
  "type": "integer",
  "default": 0
  },
  "STAGE_ID": {
- "title": "Стадandя",
+ "title": "Stage",
  "type": "integer",
  "default": 0
  },
  "CREATED_BY": {
- "title": "Postаbutinщandto",
+ "title": "Producer",
  "type": "integer",
  "required": true
  },
@@ -152,7 +152,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "type": "array"
  },
  "CHANGED_BY": {
- "title": "Inменandл",
+ "title": "Changer",
  "type": "integer"
  },
  "CHANGED_DATE": {
@@ -160,7 +160,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "type": "datetime"
  },
  "STATUS_CHANGED_BY": {
- "title": "Inменandл status",
+ "title": "Changer status",
  "type": "integer"
  },
  "STATUS_CHANGED_DATE": {
@@ -168,12 +168,12 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "type": "datetime"
  },
  "CLOSED_BY": {
- "title": "Заtoрыл задачу",
+ "title": "Close task",
  "type": "integer",
  "default": null
  },
  "CLOSED_DATE": {
- "title": "Date заtoрытandя",
+ "title": "Date of closing",
  "type": "datetime",
  "default": null
  },
@@ -188,17 +188,17 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "default": null
  },
  "DEADLINE": {
- "title": "Kрайнandй deadline",
+ "title": "Last deadline",
  "type": "datetime",
  "default": null
  },
  "START_DATE_PLAN": {
- "title": "Плаbutinое toчало",
+ "title": "Planned start",
  "type": "datetime",
  "default": null
  },
  "END_DATE_PLAN": {
- "title": "Плаbutinое заinершенandе",
+ "title": "Planned end",
  "type": "datetime",
  "default": null
  },
@@ -213,7 +213,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "default": null
  },
  "COMMENTS_COUNT": {
- "title": "Kол-inо toомментарandеin",
+ "title": "Comments count",
  "type": "integer",
  "default": 0
  },
@@ -231,7 +231,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": null,
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
@@ -240,48 +240,48 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": null,
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
  },
  "TASK_CONTROL": {
- "title": "Прandнять работу",
+ "title": "Approve task",
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
  },
  "ADD_IN_REPORT": {
- "title": "Add in отчет",
+ "title": "Add in report",
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
  },
  "FORKED_BY_TEMPLATE_ID": {
- "title": "Создаbut from шаблоto",
+ "title": "Created from template",
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
  },
  "TIME_ESTIMATE": {
- "title": "Затрачеbutе inремя",
+ "title": "Time spend",
  "type": "integer"
  },
  "TIME_SPENT_IN_LOGS": {
- "title": "Затрачеbutе inремя from andwithторandand changedandй",
+ "title": "Time spend from changes history",
  "type": "integer"
  },
  "MATCH_WORK_TIME": {
- "title": "Skip inыходные днand",
+ "title": "Skip weekends",
  "type": "integer"
  },
  "FORUM_TOPIC_ID": {
@@ -297,10 +297,10 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "type": "string"
  },
  "SUBORDINATE": {
- "title": "Задача toдчandnotнbutго",
+ "title": "Task of dependent",
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": null
@@ -309,7 +309,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": null,
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": null
@@ -330,19 +330,19 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "default": null
  },
  "VIEWED_DATE": {
- "title": "Date of last проwithмотра",
+ "title": "Date of last view",
  "type": "datetime"
  },
  "SORTING": {
- "title": "Andндеtowith of sorting",
+ "title": "Index of sorting",
  "type": "double"
  },
  "DURATION_PLAN": {
- "title": "Затрачеbut (план)",
+ "title": "Spend (plan)",
  "type": "integer"
  },
  "DURATION_FACT": {
- "title": "Затрачеbut (фаtoтandчеwithtoand)",
+ "title": "Spend (fact)",
  "type": "integer"
  },
  "CHECKLIST": {
@@ -367,7 +367,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": null,
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
@@ -376,7 +376,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": null,
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
@@ -385,7 +385,7 @@ oint bitrix24 GetTaskFieldsStructure --url "b24-ar17wx.bitrix24.by" --token "b9d
  "title": null,
  "type": "enum",
  "values": {
- "Y": "Да",
+ "Y": "Yes",
  "N": "No"
  },
  "default": "N"
