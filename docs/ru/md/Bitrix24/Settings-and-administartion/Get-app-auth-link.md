@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ПолучитьСсылкуАвторизацииПриложения --domain %domain% --clientid %clientid%
+  oint bitrix24 ПолучитьСсылкуАвторизацииПриложения --domain %domain% --clientid %clientid%
 
 ```
 

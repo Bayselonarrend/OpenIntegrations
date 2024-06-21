@@ -47,7 +47,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 СоздатьНовость --url "b24-ar17wx.bitrix24.by" --text %text% --vision %vision% --files %files% --title %title% --important %important% --token "b9df7366006e9f06006b12e400000001000..."
+  oint bitrix24 СоздатьНовость --url "b24-ar17wx.bitrix24.by" --text %text% --vision %vision% --files %files% --title %title% --important %important% --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 
