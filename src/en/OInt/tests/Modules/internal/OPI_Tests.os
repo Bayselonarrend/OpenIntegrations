@@ -483,7 +483,7 @@ Procedure VKAPI_SendMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("VK_UserID", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VK_CommunityToken", TestParameters);
 
-    VK_ FormKeyboard(TestParameters);
+    VK_FormKeyboard(TestParameters);
     VK_WriteMessage(TestParameters);
     
     OPI_Tools.Pause(5);
@@ -5028,7 +5028,7 @@ Procedure VK_PauseAdvertising(FunctionParameters)
         
 EndProcedure
 
-Procedure VK_ FormKeyboard(FunctionParameters)
+Procedure VK_FormKeyboard(FunctionParameters)
 
     ButtonArray = New Array;
     ButtonArray.Add("Button 1");
