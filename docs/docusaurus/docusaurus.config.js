@@ -105,11 +105,11 @@ const config = {
             items: [
               {
                 label: 'English',
-                href:'https://en.openintegrations.dev',
+                href:"https://en.openintegrations.dev",
               },
               {
                 label: 'Русский',
-                href:'https://openintegrations.dev',
+                href:"https://openintegrations.dev",
               },
               // ... more items
             ],
