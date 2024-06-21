@@ -1000,7 +1000,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from VK
-Function PauseAdvertisingAd(Val AccountID, Val AdID, Val Parameters = "") Export
+Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export
     
     OPI_TypeConversion.GetLine(AccountID);
     OPI_TypeConversion.GetLine(AdID);
