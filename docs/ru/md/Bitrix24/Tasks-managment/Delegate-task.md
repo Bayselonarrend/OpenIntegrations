@@ -37,7 +37,7 @@ sidebar_position: 16
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ДелегироватьЗадачу --url "b24-ar17wx.bitrix24.by" --task "170" --user "10" --token "b9df7366006e9f06006b12e400000001000..."
+  oint bitrix24 ДелегироватьЗадачу --url "b24-ar17wx.bitrix24.by" --task "170" --user "10" --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 

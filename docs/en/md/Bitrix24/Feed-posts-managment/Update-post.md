@@ -14,7 +14,7 @@ sidebar_position: 2
  | PostID | --postid | String, Number | Post ID |
  | Text | --text | String | Text of post |
  | Visibility | --vision | String | Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group |
- | Files | --files | String | Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data |
+ | Files | --files | String | Attachment data where key > filename, value > file path or binary data |
  | Title | --title | String | Post title |
  | Token | --token | String | Access token, when not-webhook method used |
 
@@ -46,7 +46,7 @@ sidebar_position: 2
 
 ```sh title="CLI command example"
  
-oint bitrix24 UpdatePost --url "b24-ar17wx.bitrix24.by" --postid "122" --text %text% --vision %vision% --files %files% --title %title% --token "b9df7366006e9f06006b12e400000001000..."
+ oint bitrix24 UpdatePost --url "b24-ar17wx.bitrix24.by" --postid "122" --text %text% --vision %vision% --files %files% --title %title% --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 

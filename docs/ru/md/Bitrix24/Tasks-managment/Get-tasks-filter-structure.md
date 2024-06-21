@@ -23,7 +23,7 @@ sidebar_position: 21
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ПолучитьСтруктуруФильтраЗадач --empty %empty%
+  oint bitrix24 ПолучитьСтруктуруФильтраЗадач --empty %empty%
 
 ```
 

@@ -43,7 +43,7 @@ sidebar_position: 5
 
 ```sh title="CLI command example"
  
-oint bitrix24 UpdateTask --url "b24-ar17wx.bitrix24.by" --task "170" --fields %fields% --token "b9df7366006e9f06006b12e400000001000..."
+ oint bitrix24 UpdateTask --url "b24-ar17wx.bitrix24.by" --task "170" --fields %fields% --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 
