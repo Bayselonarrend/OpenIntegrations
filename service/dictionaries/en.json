@@ -2774,7 +2774,7 @@
 "ДобавитьЗаголовокСтраницы": "AddPageHeader",
 "OPI_ПолучениеДанныхТестов": "OPI_TestDataRetrieval",
 "Telegram_УдалитьСообщение": "Telegram_DeleteMessage",
-"VK_СформироватьКлавиатуру": "VK_ FormKeyboard",
+"VK_СформироватьКлавиатуру": "VK_FormKeyboard",
 "Обновленное описание базы": "Updated base description",
 "Телеграм_ОтправитьКонтакт": "TelegramAPI_SendContact",
 "РаботаСФайламиИКаталогами": "FileAndDirectoryManagement",
