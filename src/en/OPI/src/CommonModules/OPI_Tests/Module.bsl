@@ -411,49 +411,22 @@ EndProcedure
 
 Procedure VKAPI_LikeRepostComment() Export
  
+    TestParameters = New Structure();
     Parameters = GetVKParameters();
     Text = "Post from autotest";
-    Message = "Message from autotest";
-    TypeMap = Type("Map");
-    TypeNumber = Type("Number");
-    Response_ = "response";
+     
+    Result = OPI_VK.CreatePost(Text, New Array, , , Parameters);  
+    PostID = Result["response"]["post_id"]; 
     
-    Result = OPI_VK.CreatePost(Text, New Array, , , Parameters);
+    OPI_TestDataRetrieval.WriteParameter("VK_PostID", PostID);
+    TestParameters.Insert("VK_PostID", PostID);
     
-    PostID = Result[Response_]["post_id"];    
-    Result = OPI_VK.LikePost(PostID, , Parameters);
+    VK_LikePost(TestParameters); 
+    VK_MakeRepost(TestParameters); 
+    VK_WriteComment(TestParameters); 
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Like");
-    
-    OPI_Tools.Pause(5);
-      
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["likes"]).ИмеетТип(TypeNumber).Заполнено();
-        
-    ExternalPost = 2571;
-    ExternalWall = -218704372;
-        
-    Result = OPI_VK.MakeRepost(ExternalPost, ExternalWall, , , Parameters);
-    
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Repost");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["success"]).ИмеетТип(TypeNumber).Равно(1);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["wall_repost_count"]).ИмеетТип(TypeNumber).Равно(1); 
-        
-    Result = OPI_VK.WriteComment(PostID, Parameters["owner_id"], Message, Parameters);
-    
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "WriteComment");
-        
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["comment_id"]).ИмеетТип(TypeNumber).Заполнено();
-   
     OPI_VK.DeletePost(PostID, Parameters);
-    OPI_VK.DeletePost(Result[Response_]["post_id"], Parameters);
+    OPI_VK.DeletePost(TestParameters["Repost"], Parameters);
     
     OPI_Tools.Pause(5);
 
@@ -461,40 +434,18 @@ EndProcedure
 
 Procedure VKAPI_GetStatistics() Export
  
-    CurrentDate = OPI_Tools.GetCurrentDate();
-    Parameters = GetVKParameters();
-    Date0 = BegOfDay(CurrentDate);
-    Date1 = EndOfDay(Date0);
-    TypeMap = Type("Map");
-     
-    Result = OPI_VK.GetStatistics(Date0, Date1, Parameters);
+    TestParameters = New Structure();
     
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetStatistics");
-        
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"][0]["visitors"]).ИмеетТип(TypeMap).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["response"][0]["reach"]).ИмеетТип(TypeMap).Заполнено();
-    
-    OPI_Tools.Pause(5);
+    VK_GetStatistics(TestParameters);
 
 EndProcedure
 
 Procedure VKAPI_GetPostStatistics() Export
  
-    Parameters = GetVKParameters();
+    TestParameters = New Structure();
     
-    ArrayOfPosts = New Array;
-    ArrayOfPosts.Add(214);
-    ArrayOfPosts.Add(215);
+    VK_GetPostStatistics(TestParameters);
     
-    Result = OPI_VK.GetPostStatistics(ArrayOfPosts, Parameters);
-
-    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPostStatistics");
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(2);
-    
-    OPI_Tools.Pause(5);
-
 EndProcedure
 
 Procedure VKAPI_CreateAdCampaign() Export
@@ -3642,6 +3593,44 @@ Procedure Check_VKDiscussion(Val Result)
     
 EndProcedure
 
+Procedure Check_VKLike(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["likes"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKRepost(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["success"]).ИмеетТип("Number").Равно(1);
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["wall_repost_count"]).ИмеетТип("Number").Равно(1);
+        
+EndProcedure
+
+Procedure Check_VKComment(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["comment_id"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKStatistic(Val Result)
+    
+    TypeMap = "Map";
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"][0]["visitors"]).ИмеетТип(TypeMap).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"][0]["reach"]).ИмеетТип(TypeMap).Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKPostsStatistic(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(2);
+        
+EndProcedure
+
 Procedure Check_GKObject(Val Result, Val Name, Val Description)
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
@@ -4951,6 +4940,103 @@ Procedure VK_PostToDiscussion(FunctionParameters)
     
     Check_VKDiscussion(Result);
     
+EndProcedure
+
+Procedure VK_LikePost(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    PostID = FunctionParameters["VK_PostID"];
+   
+    
+    Result = OPI_VK.LikePost(PostID, , Parameters);
+    
+    // END
+       
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Like", "VK");
+    
+    Check_VKLike(Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_MakeRepost(FunctionParameters)
+    
+    Parameters = GetVKParameters();
+    PostID = 2571;
+    WallID = -218704372;
+        
+    Result = OPI_VK.MakeRepost(PostID, WallID, , , Parameters);
+
+    // END
+          
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Repost", "VK");
+    
+    Check_VKRepost(Result);
+    
+    FunctionParameters.Insert("Repost", Result["response"]["post_id"]);
+    
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VK_WriteComment(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    Text = "NewComment";
+    PostID = FunctionParameters["VK_PostID"];
+    WallID = Parameters["owner_id"];
+    
+    Result = OPI_VK.WriteComment(PostID, WallID, Text, Parameters);
+    
+    // END
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "WriteComment", "VK");
+        
+    Check_VKComment(Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_GetStatistics(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    StartDate = BegOfDay(CurrentDate);
+    EndDate = EndOfDay(StartDate);
+     
+    Result = OPI_VK.GetStatistics(StartDate, EndDate, Parameters);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetStatistics", "VK");
+    
+    Check_VKStatistic(Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_GetPostStatistics(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    ArrayOfPosts = New Array;
+    ArrayOfPosts.Add(214);
+    ArrayOfPosts.Add(215);
+    
+    Result = OPI_VK.GetPostStatistics(ArrayOfPosts, Parameters);
+
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPostStatistics", "VK");
+    
+    Check_VKPostsStatistic(Result);
+    
+    OPI_Tools.Pause(5);
+        
 EndProcedure
 
 #EndRegion
