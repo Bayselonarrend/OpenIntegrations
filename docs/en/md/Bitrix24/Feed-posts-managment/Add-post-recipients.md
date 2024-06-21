@@ -12,7 +12,7 @@ sidebar_position: 7
  |-|-|-|-|
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | PostID | --postid | String, Number | Post ID |
- | Visibility | --vision | String | Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group |
+ | Visibility | --vision | String | Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group |
  | Token | --token | String | Access token, when not-webhook method used |
 
  
