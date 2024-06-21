@@ -150,8 +150,8 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Text - String - Text of post - text
-// Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
-// Files - String - Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data - files
+// Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
+// Files - String - Attachment data where key > filename, value > file path or binary data - files
 // Title - String - Post title - title
 // Important - Boolean - Mark post as important - important 
 // Token - String - Access token, when not-webhook method used - token
@@ -199,8 +199,8 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // PostID - String, Number - Post ID - postid
 // Text - String - Text of post - text
-// Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
-// Files - String - Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data - files
+// Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
+// Files - String - Attachment data where key > filename, value > file path or binary data - files
 // Title - String - Post title - title
 // Token - String - Access token, when not-webhook method used - token
 // 
@@ -334,7 +334,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // PostID - String, Number - Post ID - postid
-// Visibility - String - Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group - vision
+// Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
 // Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
