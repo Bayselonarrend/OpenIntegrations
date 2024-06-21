@@ -39,7 +39,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 СоздатьКаталогВХранилище --url "b24-ar17wx.bitrix24.by" --storageid %storageid% --title %title% --token "b9df7366006e9f06006b12e400000001000..."
+  oint bitrix24 СоздатьКаталогВХранилище --url "b24-ar17wx.bitrix24.by" --storageid %storageid% --title %title% --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 

@@ -35,7 +35,7 @@ sidebar_position: 5
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel% --token "b9df7366006e9f06006b12e400000001000..."
+ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel% --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 
@@ -130,7 +130,7 @@ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel%
  "USER_TYPE": {
  "USER_TYPE_ID": "url_preview",
  "CLASS_NAME": "Bitrix\\Main\\UrlPreview\\UrlPreviewUserType",
- "DESCRIPTION": "Содержandмое withwithылtoand",
+ "DESCRIPTION": "Link data",
  "BASE_TYPE": "int"
  },
  "VALUE": null,
@@ -173,7 +173,7 @@ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel%
  "renderView"
  ],
  "USE_FIELD_COMPONENT": true,
- "DESCRIPTION": "Whole чandwithло",
+ "DESCRIPTION": "Whole number",
  "BASE_TYPE": "int"
  },
  "VALUE": null,
@@ -244,7 +244,7 @@ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel%
  "USER_TYPE": {
  "USER_TYPE_ID": "mail_message",
  "CLASS_NAME": "Bitrix\\Mail\\MessageUserType",
- "DESCRIPTION": "Пandwithьмо (email)",
+ "DESCRIPTION": "Letter (email)",
  "BASE_TYPE": "int",
  "VIEW_CALLBACK": [
  "Bitrix\\Mail\\MessageUserType",
@@ -286,7 +286,7 @@ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel%
  "MAX_VALUE": 0,
  "DEFAULT_VALUE": null
  },
- "EDIT_FORM_LABEL": "Important withобщенandе",
+ "EDIT_FORM_LABEL": "Important message",
  "LIST_COLUMN_LABEL": "Important",
  "LIST_FILTER_LABEL": "Important",
  "ERROR_MESSAGE": null,
@@ -303,7 +303,7 @@ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel%
  "renderView"
  ],
  "USE_FIELD_COMPONENT": true,
- "DESCRIPTION": "Whole чandwithло",
+ "DESCRIPTION": "Whole number",
  "BASE_TYPE": "int"
  },
  "VALUE": null,
@@ -331,8 +331,8 @@ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel%
  "USE_SECOND": "Y",
  "USE_TIMEZONE": "N"
  },
- "EDIT_FORM_LABEL": "Сроto дейwithтinandя",
- "LIST_COLUMN_LABEL": "Сроto",
+ "EDIT_FORM_LABEL": "Expiration date",
+ "LIST_COLUMN_LABEL": "Deadline",
  "LIST_FILTER_LABEL": null,
  "ERROR_MESSAGE": null,
  "HELP_MESSAGE": null,
@@ -348,7 +348,7 @@ oint bitrix24 GetPosts --url "b24-ar17wx.bitrix24.by" --postid "124" --sel %sel%
  "renderView"
  ],
  "USE_FIELD_COMPONENT": true,
- "DESCRIPTION": "Date with inремеnotм",
+ "DESCRIPTION": "Date with time",
  "BASE_TYPE": "datetime"
  },
  "VALUE": "",

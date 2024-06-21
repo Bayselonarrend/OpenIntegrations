@@ -13,7 +13,7 @@ sidebar_position: 1
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | Text | --text | String | Text of post |
  | Visibility | --vision | String | Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group |
- | Files | --files | String | Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data |
+ | Files | --files | String | Attachment data where key > filename, value > file path or binary data |
  | Title | --title | String | Post title |
  | Important | --important | Boolean | Mark post as important |
  | Token | --token | String | Access token, when not-webhook method used |
@@ -47,7 +47,7 @@ sidebar_position: 1
 
 ```sh title="CLI command example"
  
-oint bitrix24 CreatePost --url "b24-ar17wx.bitrix24.by" --text %text% --vision %vision% --files %files% --title %title% --important %important% --token "b9df7366006e9f06006b12e400000001000..."
+ oint bitrix24 CreatePost --url "b24-ar17wx.bitrix24.by" --text %text% --vision %vision% --files %files% --title %title% --important %important% --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 

@@ -40,7 +40,7 @@ sidebar_position: 3
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetTasksList --url "b24-ar17wx.bitrix24.by" --filter %filter% --offset %offset% --token "b9df7366006e9f06006b12e400000001000..."
+ oint bitrix24 GetTasksList --url "b24-ar17wx.bitrix24.by" --filter %filter% --offset %offset% --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 

@@ -31,7 +31,7 @@ sidebar_position: 1
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetStoragesList --url "b24-ar17wx.bitrix24.by" --token "b9df7366006e9f06006b12e400000001000..."
+ oint bitrix24 GetStoragesList --url "b24-ar17wx.bitrix24.by" --token "b9df7366006e9f06006b12e400000001000..."
 
 ```
 
@@ -42,7 +42,7 @@ oint bitrix24 GetStoragesList --url "b24-ar17wx.bitrix24.by" --token "b9df736600
  "result": [
  {
  "ID": "3",
- "NAME": "Общandй дandwithto",
+ "NAME": "Main drive",
  "CODE": null,
  "MODULE_ID": "disk",
  "ENTITY_TYPE": "common",
@@ -87,7 +87,7 @@ oint bitrix24 GetStoragesList --url "b24-ar17wx.bitrix24.by" --token "b9df736600
  },
  {
  "ID": "12",
- "NAME": "Toддержtoа Bitrix24",
+ "NAME": "Support Bitrix24",
  "CODE": null,
  "MODULE_ID": "disk",
  "ENTITY_TYPE": "user",
@@ -96,7 +96,7 @@ oint bitrix24 GetStoragesList --url "b24-ar17wx.bitrix24.by" --token "b9df736600
  },
  {
  "ID": "14",
- "NAME": "Марта",
+ "NAME": "Marta",
  "CODE": null,
  "MODULE_ID": "disk",
  "ENTITY_TYPE": "user",

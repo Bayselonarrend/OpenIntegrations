@@ -29,7 +29,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-oint telegram УдалитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat "@testsichee" --message "5385"
+  oint telegram УдалитьСообщение --token "6129457865:AAFyzNYOAFbu..." --chat "@testsichee" --message "5385"
 
 ```
 
