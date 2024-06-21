@@ -141,7 +141,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--vision";
-    NewLine.Описание    = "Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group (optional, def. val. - UA)";
+    NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -151,7 +151,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--files";
-    NewLine.Описание    = "Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data (optional, def. val. - Empty)";
+    NewLine.Описание    = "Attachment data where key > filename, value > file path or binary data (optional, def. val. - Empty)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -222,7 +222,7 @@
     NewLine.Метод       = "UpdatePost";
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--vision";
-    NewLine.Описание    = "Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group (optional, def. val. - UA)";
+    NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -232,7 +232,7 @@
     NewLine.Метод       = "UpdatePost";
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--files";
-    NewLine.Описание    = "Data inложенandй, где toлюч > name file, value > path to file andдand дinоandчные Data (optional, def. val. - Empty)";
+    NewLine.Описание    = "Attachment data where key > filename, value > file path or binary data (optional, def. val. - Empty)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -427,7 +427,7 @@
     NewLine.Метод       = "AddPostRecipients";
     NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
     NewLine.Параметр    = "--vision";
-    NewLine.Описание    = "Array or a single post target: UA all, SG<X> work group, U<X> user, DR<X> depart., G<X> group";
+    NewLine.Описание    = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group";
     NewLine.Область     = "Feed posts managment";
 
 

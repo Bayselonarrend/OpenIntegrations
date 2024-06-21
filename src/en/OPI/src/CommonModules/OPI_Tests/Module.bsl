@@ -3261,7 +3261,7 @@ Procedure B24_TokenManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_ClientID" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_ClientSecret", TestParameters);
     
-    Bitrix24_GetAuthLink(TestParameters);
+    Bitrix24_GetAppAuthLink(TestParameters);
     
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Code", TestParameters);
     
@@ -5515,7 +5515,7 @@ EndProcedure
 
 #Region Bitrix24
 
-Procedure Bitrix24_GetAuthLink(FunctionParameters)
+Procedure Bitrix24_GetAppAuthLink(FunctionParameters)
     
     Domain = FunctionParameters["Bitrix24_Domain"];
     ClientID = FunctionParameters["Bitrix24_ClientID"];
