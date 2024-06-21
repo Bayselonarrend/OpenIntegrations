@@ -98,6 +98,22 @@ const config = {
             label: 'GitHub',
             position: 'right',
           },
+          {
+            type: 'dropdown',
+            label: 'Translation',
+            position: 'right',
+            items: [
+              {
+                label: 'English',
+                href: 'https://en.openintegrations.dev',
+              },
+              {
+                label: 'Русский',
+                href: 'https://openintegrations.dev',
+              },
+              // ... more items
+            ],
+          },
         ],
       },
       footer: {
