@@ -1085,8 +1085,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vk";
     NewLine.Модуль      = "OPI_VK";
-    NewLine.Метод       = "PauseAdvertisingAd";
-    NewLine.МетодПоиска = "PAUSEADVERTISINGAD";
+    NewLine.Метод       = "PauseAdvertising";
+    NewLine.МетодПоиска = "PAUSEADVERTISING";
     NewLine.Параметр    = "--cabinet";
     NewLine.Описание    = "Advertising account ID";
     NewLine.Область     = "Ad account management";
@@ -1105,8 +1105,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vk";
     NewLine.Модуль      = "OPI_VK";
-    NewLine.Метод       = "PauseAdvertisingAd";
-    NewLine.МетодПоиска = "PAUSEADVERTISINGAD";
+    NewLine.Метод       = "PauseAdvertising";
+    NewLine.МетодПоиска = "PAUSEADVERTISING";
     NewLine.Параметр    = "--adv";
     NewLine.Описание    = "Ad ID";
     NewLine.Область     = "Ad account management";
@@ -1115,8 +1115,8 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vk";
     NewLine.Модуль      = "OPI_VK";
-    NewLine.Метод       = "PauseAdvertisingAd";
-    NewLine.МетодПоиска = "PAUSEADVERTISINGAD";
+    NewLine.Метод       = "PauseAdvertising";
+    NewLine.МетодПоиска = "PAUSEADVERTISING";
     NewLine.Параметр    = "--auth";
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
     NewLine.Область     = "Ad account management";
