@@ -545,124 +545,42 @@ EndProcedure
 
 Procedure VKAPI_GetProductList() Export
  
-    Parameters = GetVKParameters();
-    Image = OPI_TestDataRetrieval.GetBinary("Picture"); 
+    TestParameters = New Structure;
     
-    ImageArray = New Array;
-    ImageArray.Add(Image);
-    
-    Product = New Map();
-    Product.Insert("Name" , "TestProduct2");    
-    Product.Insert("Description" , "Product description");
-    Product.Insert("Category" , "20173");           
-    Product.Insert("Price" , 1);                
-    Product.Insert("OldPrice" , 15);     
-    Product.Insert("MainPhoto" , Image);                   
-    Product.Insert("URL" , "https://github.com/Bayselonarrend/OpenIntegrations");     
-    Product.Insert("AdditionalPhotos" , ImageArray);     
-    Product.Insert("MainInGroup" , True);             
-    Product.Insert("GroupNumber" , Undefined);      
-    Product.Insert("Width" , 20);     
-    Product.Insert("Height" , 30);     
-    Product.Insert("Depth" , 40);     
-    Product.Insert("Weight" , 100);
-    Product.Insert("SKU" , 12345);
-    Product.Insert("AvailableBalance" , "10");
-    
-    Result = OPI_VK.AddProduct(Product, , Parameters);
-    ProductID = Result["response"]["market_item_id"];
-    OPI_Tools.Pause(5);
-    
-    Result = OPI_VK.GetProductList(, Parameters);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductList");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
-        .ИмеетТип("Array").Заполнено();
-              
-    OPI_VK.DeleteProduct(ProductID, Parameters);
-    
-    OPI_Tools.Pause(5);
+    VK_GetProductList(TestParameters);
     
 EndProcedure
 
 Procedure VKAPI_GetSelectionList() Export
- 
-    Parameters = GetVKParameters();
-    Image = OPI_TestDataRetrieval.GetBinary("Picture");    
-    Result = OPI_VK.CreateProductCollection("TestCollection"
-        , Image
-        , True
-        , False
-        , Parameters); 
      
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductCollection");
-       
-    SelectionID = Result["response"]["market_album_id"];      
-    Result = OPI_VK.GetSelectionList(Parameters);
+    TestParameters = New Structure;
     
-    OPI_TestDataRetrieval.WriteLog(Result, "GetSelectionList");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
-        .ИмеетТип("Array").Заполнено();
-        
-    OPI_VK.DeleteSelection(SelectionID, Parameters); 
-    
-    OPI_Tools.Pause(5);
+    VK_GetSelectionList(TestParameters);
     
 EndProcedure
 
 Procedure VKAPI_GetPropertyList() Export
  
-    Parameters = GetVKParameters();
-    Result = OPI_VK.GetPropertyList(Parameters);
+    TestParameters = New Structure;
     
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPropertyList");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
-        .ИмеетТип("Array").Заполнено();
-        
-    OPI_Tools.Pause(5);
+    VK_GetPropertyList(TestParameters);
 
 EndProcedure
 
 Procedure VKAPI_GetOrderList() Export
  
-    Parameters = GetVKParameters();
-    Result = OPI_VK.GetOrderList(Parameters);
+    TestParameters = New Structure;
     
-    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderList");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result) 
-        .ИмеетТип("Array").Заполнено();
-        
-    OPI_Tools.Pause(5);
+    VK_GetOrderList(TestParameters);
     
 EndProcedure
 
 Procedure VKAPI_UploadVideo() Export
     
-    Parameters = GetVKParameters();
-    Video = OPI_TestDataRetrieval.GetParameter("Video");
-    Name = "NewVideo";
-    Description = "Video description";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Video", TestParameters);
     
-    Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer");
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result["video_id"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["video_hash"]).Заполнено();
-    
-    OPI_Tools.Pause(5);
+    VK_UploadVideoToServer(TestParameters);
     
 EndProcedure
 
@@ -3444,6 +3362,13 @@ Procedure Check_VKProductsGroup(Val Result)
         
 EndProcedure
 
+Procedure Check_VKVideo(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["video_id"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["video_hash"]).Заполнено();
+        
+EndProcedure
+
 Procedure Check_GKObject(Val Result, Val Name, Val Description)
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
@@ -5386,6 +5311,82 @@ Procedure VK_DeleteProductProperty(FunctionParameters)
     
     Check_VKTrue(Result);
         
+EndProcedure
+
+Procedure VK_GetProductList(FunctionParameters)
+
+    Parameters = GetVKParameters();    
+    Result = OPI_VK.GetProductList(, Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductList", "VK");
+    
+    Check_Array(Result);
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_GetSelectionList(FunctionParameters)
+
+    Parameters = GetVKParameters();    
+    Result = OPI_VK.GetSelectionList(Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSelectionList", "VK");
+    
+    Check_Array(Result);
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_GetPropertyList(FunctionParameters)
+
+    Parameters = GetVKParameters(); 
+    Result = OPI_VK.GetPropertyList(Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPropertyList", "VK");
+    
+    Check_Array(Result);
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_GetOrderList(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    Result = OPI_VK.GetOrderList(Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderList", "VK");
+    
+    Check_Array(Result);
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_UploadVideoToServer(FunctionParameters)
+    
+    Parameters = GetVKParameters();
+    
+    Video = FunctionParameters["Video"];
+    Name = "NewVideo";
+    Description = "Video description";
+    
+    Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer", "VK");
+    
+    Check_VKVideo(Result);
+    
+    OPI_Tools.Pause(5);
+    
 EndProcedure
 
 #EndRegion
