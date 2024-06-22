@@ -1,0 +1,55 @@
+﻿    {
+ "result": [
+  {
+   "ID": "568",
+   "NAME": "Картинка2.jpg",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "file",
+   "PARENT_ID": "3",
+   "DELETED_TYPE": "0",
+   "GLOBAL_CONTENT_VERSION": "1",
+   "FILE_ID": "558",
+   "SIZE": "2114023",
+   "CREATE_TIME": "2024-06-22T09:07:30+00:00",
+   "UPDATE_TIME": "2024-06-22T09:07:30+00:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/download/?token=disk%7CaWQ9NTY4Jl89SHlraTVBbnJZY1FHRVptZzlGVDR3TXpXeWJQazF3YjQ%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5UWTRKbDg5U0hscmFUVkJibkpaWTFGSFJWcHRaemxHVkRSM1RYcFhlV0pRYXpGM1lqUT18MXw0c3dva3VuYjN0azdoN2R0Ig%3D%3D.wHRm%2BvfCe8zQPCO3qryQHdMQEW9qYPhc5GqAVN8lNHs%3D",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка2.jpg"
+  },
+  {
+   "ID": "570",
+   "NAME": "Картинка1.jpg",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "file",
+   "PARENT_ID": "3",
+   "DELETED_TYPE": "0",
+   "GLOBAL_CONTENT_VERSION": "1",
+   "FILE_ID": "560",
+   "SIZE": "805189",
+   "CREATE_TIME": "2024-06-22T09:07:32+00:00",
+   "UPDATE_TIME": "2024-06-22T09:07:32+00:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/download/?token=disk%7CaWQ9NTcwJl89UllucWRuaDUwUTRaSXZGMUlSemlNWUhqMFk3Q0FPaXI%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5UY3dKbDg5VWxsdWNXUnVhRFV3VVRSYVNYWkdNVWxTZW1sTldVaHFNRmszUTBGUGFYST18MXw0c3dva3VuYjN0azdoN2R0Ig%3D%3D.MuWJn4simqTvpRERg3BEHN50At6bc4PW1S0eLtT5HiI%3D",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
+  }
+ ],
+ "total": 2,
+ "time": {
+  "start": 1719047252.81489,
+  "finish": 1719047252.8601,
+  "duration": 0.0452079772949219,
+  "processing": 0.0158112049102783,
+  "date_start": "2024-06-22T09:07:32+00:00",
+  "date_finish": "2024-06-22T09:07:32+00:00",
+  "operating_reset_at": 1719047852,
+  "operating": 0
+ }
+}
