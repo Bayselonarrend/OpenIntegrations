@@ -522,161 +522,24 @@ EndProcedure
 Procedure VKAPI_CreateProductWithProperties() Export
  
     Parameters = GetVKParameters();
-    TypeMap = Type("Map");
-    TypeNumber = Type("Number");
-    MII_ = "market_item_id";
-    Response_ = "response";
-    Yellow_ = "Yellow";
-    Red_ = "Red";
-    Image = OPI_TestDataRetrieval.GetBinary("Picture");
-    TFN = GetTempFileName("png");   
-    Image.Write(TFN);
     
-    OptionArray = New Array;
-    OptionArray.Add(Yellow_);
-    OptionArray.Add("Blue");
-    OptionArray.Add(Red_);
-    
-    Result = OPI_VK.CreateProductProperty("Color", Parameters);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductProperty");
-    
-    OPI_Tools.Pause(5);
-    
-    Property = Result[Response_]["property_id"];
-    Property = OPI_Tools.NumberToString(Property);
-     
-    PropertyMap = New Map;
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["property_id"]).ИмеетТип(TypeNumber).Заполнено();
-        
-    Result = OPI_VK.EditProductProperty("Color (change.)", Property, Parameters);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "EditProductProperty");
-    
-    OPI_Tools.Pause(5);
-    
-    Check_VKTrue(Result);
-   
-    For Each Option In OptionArray Do
-        
-        Result = OPI_VK.AddProductPropertyVariant(Option, Property, Parameters);
-        
-        OPI_TestDataRetrieval.WriteLog(Result, "AddProductPropertyVariant");
-        
-        OPI_Tools.Pause(5);
-        
-        OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-        OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["variant_id"]).ИмеетТип(TypeNumber).Заполнено();
-            
-        VariantID = Result[Response_]["variant_id"];
-        PropertyMap.Insert(Option, VariantID);
-        
-        Result = OPI_VK.EditProductPropertyVariant(Option + String(New UUID())
-            , Property
-            , VariantID
-            , Parameters);
-            
-        OPI_TestDataRetrieval.WriteLog(Result, "EditProductPropertyVariant");
-        
-    Check_VKTrue(Result);
-              
-    EndDo;
-  
-    ImageArray = New Array;
-    ImageArray.Add(TFN);
-    ImageArray.Add(Image);
-    
-    Product = New Map();
-    Product.Insert("Name" , "TestProduct (" + Yellow_ + ")");    
-    Product.Insert("Description" , "Product description");
-    Product.Insert("Category" , "20173");           
-    Product.Insert("Price" , 1);                
-    Product.Insert("OldPrice" , 15);     
-    Product.Insert("MainPhoto" , Image);                   
-    Product.Insert("URL" , "https://github.com/Bayselonarrend/OpenIntegrations");     
-    Product.Insert("AdditionalPhotos" , ImageArray);     
-    Product.Insert("MainInGroup" , True);             
-    Product.Insert("GroupNumber" , Undefined);      
-    Product.Insert("Width" , 20);     
-    Product.Insert("Height" , 30);     
-    Product.Insert("Depth" , 40);     
-    Product.Insert("Weight" , 100);
-    Product.Insert("SKU" , 12345);
-    Product.Insert("AvailableBalance" , "10");
-    Product.Insert("PropertyValues" , PropertyMap[Yellow_]);
-    
-    Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product  
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "AddProduct");
-    
-    OPI_Tools.Pause(5);
-    
-    YellowID = Result[Response_]["market_item_id"];               
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_][MII_]).ИмеетТип(TypeNumber).Заполнено();
-        
-    Product.Insert("Name" , "TestProduct (" + Red_ + ")");
-    Product.Insert("PropertyValues", PropertyMap[Red_]);
-
-    Result = OPI_VK.AddProduct(Product, , Parameters); // Adding product
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "AddProduct");
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Picture", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
       
-    OPI_Tools.Pause(5);
+    VK_CreateProductProperty(TestParameters);
+    VK_EditProductProperty(TestParameters); 
+    VK_AddProductPropertyVariant(TestParameters); 
+    VK_EditProductPropertyVariant(TestParameters);     
+    VK_CreateProductWithProp(TestParameters);
+    VK_GetProductsByID(TestParameters);
+    VK_GroupProducts(TestParameters);
+     
+    OPI_VK.DeleteProduct(TestParameters["VK_MarketItemID2"], Parameters);
+    OPI_VK.DeleteProduct(TestParameters["VK_MarketItemID3"], Parameters);
     
-    RedID = Result[Response_][MII_];               
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_][MII_]).ИмеетТип(TypeNumber).Заполнено();
-        
-    ProductsArray = New Array;
-    ProductsArray.Add(YellowID);
-    ProductsArray.Add(RedID);
-    
-    Result = OPI_VK.GetProductsByID(ProductsArray, Parameters);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsByID");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["items"]).ИмеетТип("Array").ИмеетДлину(2);
-        
-    Result = OPI_VK.GroupProducts(ProductsArray, , Parameters);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "GroupProducts");
-    
-    OPI_Tools.Pause(5);
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Response_]["item_group_id"]).ИмеетТип(TypeNumber).Заполнено();
-       
-    OPI_VK.DeleteProduct(YellowID , Parameters);
-    OPI_VK.DeleteProduct(RedID, Parameters);
-    
-    For Each Option In PropertyMap Do
-        
-        Deletion = OPI_VK.DeleteProductPropertyVariant(Option.Value, Parameters);
-        
-        OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductPropertyVariant");
-        
-        OPI_Tools.Pause(5);
-        Check_VKTrue(Deletion);
-        
-    EndDo;
-        
-    Deletion = OPI_VK.DeleteProductProperty(Property, Parameters);
-   
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductProperty");
-        
-    OPI_Tools.Pause(5);
-    
-    Check_VKTrue(Deletion);
-
-    DeleteFiles(TFN);
+    VK_DeleteProductPropertyVariant(TestParameters);
+    VK_DeleteProductProperty(TestParameters);
     
 EndProcedure
 
@@ -3553,6 +3416,34 @@ Procedure Check_VKProduct(Val Result)
         
 EndProcedure
 
+Procedure Check_VKProp(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["property_id"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
+Procedure Check_VKPropVariant(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["variant_id"]).ИмеетТип("Number").Заполнено();
+            
+EndProcedure
+
+Procedure Check_VKProductData(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").ИмеетДлину(2);
+        
+EndProcedure
+
+Procedure Check_VKProductsGroup(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["response"]["item_group_id"]).ИмеетТип("Number").Заполнено();
+        
+EndProcedure
+
 Procedure Check_GKObject(Val Result, Val Name, Val Description)
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
@@ -5258,6 +5149,242 @@ Procedure VK_DeleteCollection(FunctionParameters)
     Check_VKTrue(Result);
     
     OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_CreateProductProperty(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Name = "Color";
+    
+    Result = OPI_VK.CreateProductProperty(Name, Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductProperty", "VK");
+    
+    Check_VKProp(Result);
+    
+    OPI_Tools.Pause(5);
+    
+    Property = Result["response"]["property_id"];
+    Property = OPI_Tools.NumberToString(Property);
+    
+    OPI_TestDataRetrieval.WriteParameter("VK_PropID", Property);
+    FunctionParameters.Insert("VK_PropID", Property);
+        
+EndProcedure
+
+Procedure VK_EditProductProperty(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Name = "Color (change.)";
+    Property = FunctionParameters["VK_PropID"];
+    
+    Result = OPI_VK.EditProductProperty(Name, Property, Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "EditProductProperty", "VK");
+    
+    OPI_Tools.Pause(5);
+    
+    Check_VKTrue(Result);
+        
+EndProcedure
+
+Procedure VK_AddProductPropertyVariant(FunctionParameters)
+
+    Counter = 1; // SKIP
+    Parameters = GetVKParameters();
+    
+    Property = FunctionParameters["VK_PropID"];
+    OptionArray = New Array;
+    OptionArray.Add("Yellow");
+    OptionArray.Add("Blue");
+    OptionArray.Add("Red");
+   
+    For Each Value In OptionArray Do
+        
+        Result = OPI_VK.AddProductPropertyVariant(Value, Property, Parameters);
+        
+        OPI_TestDataRetrieval.WriteLog(Result, "AddProductPropertyVariant", "VK");
+        
+        Check_VKPropVariant(Result); // SKIP     
+        OPI_Tools.Pause(5); // SKIP
+        
+        VariantID = Result["response"]["variant_id"]; // SKIP
+        ParameterName = "VK_PropVarID" + String(Counter); // SKIP
+        
+        OPI_TestDataRetrieval.WriteParameter(ParameterName, VariantID); // SKIP
+        FunctionParameters.Insert(ParameterName, VariantID);
+        Counter = Counter + 1; // SKIP
+                              
+    EndDo; 
+       
+    // END
+    
+EndProcedure
+
+Procedure VK_EditProductPropertyVariant(FunctionParameters)
+    
+    Parameters = GetVKParameters();
+    
+    Property = FunctionParameters["VK_PropID"];
+    Option = FunctionParameters["VK_PropVarID1"];
+    Value = "New variant name";
+    
+    Result = OPI_VK.EditProductPropertyVariant(Value
+            , Property
+            , Option
+            , Parameters);
+            
+    // END
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "EditProductPropertyVariant", "VK");
+        
+    Check_VKTrue(Result);
+    
+EndProcedure
+
+Procedure VK_CreateProductWithProp(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Image1 = FunctionParameters["Picture"];
+    Image2 = FunctionParameters["Picture2"];
+    PropVariant1 = FunctionParameters["VK_PropVarID1"];
+    PropVariant2 = FunctionParameters["VK_PropVarID2"];
+    
+    ImageArray = New Array;
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+    
+    Product = New Map();
+    Product.Insert("Name" , "Test product (with prop)");    
+    Product.Insert("Description" , "Product description");
+    Product.Insert("Category" , "20173");           
+    Product.Insert("Price" , 1);                
+    Product.Insert("OldPrice" , 15);     
+    Product.Insert("MainPhoto" , Image1);                   
+    Product.Insert("URL" , "https://github.com/Bayselonarrend/OpenIntegrations");     
+    Product.Insert("AdditionalPhotos" , ImageArray);     
+    Product.Insert("MainInGroup" , True);             
+    Product.Insert("GroupNumber" , Undefined);      
+    Product.Insert("Width" , 20);     
+    Product.Insert("Height" , 30);     
+    Product.Insert("Depth" , 40);     
+    Product.Insert("Weight" , 100);
+    Product.Insert("SKU" , 12345);
+    Product.Insert("AvailableBalance" , "10");
+    Product.Insert("PropertyValues" , PropVariant1);
+    
+    Result = OPI_VK.AddProduct(Product, , Parameters);              
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "ProductWithProp1");
+        
+    Check_VKProduct(Result);
+    
+    ProductID = Result["response"]["market_item_id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID2", ProductID);
+    FunctionParameters.Insert("VK_MarketItemID2", ProductID);
+    
+    Product.Insert("Name" , "Test product (another)");
+    Product.Insert("PropertyValues", PropVariant2);
+
+    Result = OPI_VK.AddProduct(Product, , Parameters);           
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "ProductWithProp2");
+    
+    Check_VKProduct(Result);
+    
+    ProductID = Result["response"]["market_item_id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID3", ProductID);
+    FunctionParameters.Insert("VK_MarketItemID3", ProductID);
+      
+    OPI_Tools.Pause(5);
+       
+EndProcedure
+
+Procedure VK_GetProductsByID(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    
+    Item1 = FunctionParameters["VK_MarketItemID2"];
+    Item2 = FunctionParameters["VK_MarketItemID3"];
+    
+    ProductsArray = New Array;
+    ProductsArray.Add(Item1);
+    ProductsArray.Add(Item2);
+    
+    Result = OPI_VK.GetProductsByID(ProductsArray, Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsByID", "VK");
+    
+    Check_VKProductData(Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure VK_GroupProducts(FunctionParameters)
+    
+    Parameters = GetVKParameters();
+    
+    Item1 = FunctionParameters["VK_MarketItemID2"];
+    Item2 = FunctionParameters["VK_MarketItemID3"];
+    
+    ProductsArray = New Array;
+    ProductsArray.Add(Item1);
+    ProductsArray.Add(Item2);
+    
+    Result = OPI_VK.GroupProducts(ProductsArray, , Parameters);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "GroupProducts", "VK");
+    
+    Check_VKProductsGroup(Result);
+    
+    OPI_Tools.Pause(5);
+    
+EndProcedure
+    
+Procedure VK_DeleteProductPropertyVariant(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    Option = FunctionParameters["VK_PropVarID1"];
+    
+    Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductPropertyVariant", "VK");
+    
+    Check_VKTrue(Result);
+    
+    OPI_Tools.Pause(5);
+                
+EndProcedure
+
+Procedure VK_DeleteProductProperty(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    Property = FunctionParameters["VK_PropID"];
+    
+    Result = OPI_VK.DeleteProductProperty(Property, Parameters);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductProperty");
+        
+    OPI_Tools.Pause(5);
+    
+    Check_VKTrue(Result);
         
 EndProcedure
 

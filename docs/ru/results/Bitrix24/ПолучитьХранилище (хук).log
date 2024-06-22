@@ -1,0 +1,21 @@
+﻿    {
+ "result": {
+  "ID": "3",
+  "NAME": "Общий диск",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "common",
+  "ENTITY_ID": "shared_files_s1",
+  "ROOT_OBJECT_ID": "3"
+ },
+ "time": {
+  "start": 1719047246.98121,
+  "finish": 1719047247.01442,
+  "duration": 0.0332071781158447,
+  "processing": 0.00487422943115234,
+  "date_start": "2024-06-22T09:07:26+00:00",
+  "date_finish": "2024-06-22T09:07:27+00:00",
+  "operating_reset_at": 1719047847,
+  "operating": 0
+ }
+}
