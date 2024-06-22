@@ -1,0 +1,21 @@
+﻿    {
+ "result": {
+  "ID": "18",
+  "NAME": "New storage name",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "restapp",
+  "ENTITY_ID": "2",
+  "ROOT_OBJECT_ID": "464"
+ },
+ "time": {
+  "start": 1719047245.69644,
+  "finish": 1719047245.72887,
+  "duration": 0.0324292182922363,
+  "processing": 0.00426101684570312,
+  "date_start": "2024-06-22T09:07:25+00:00",
+  "date_finish": "2024-06-22T09:07:25+00:00",
+  "operating_reset_at": 1719047845,
+  "operating": 0
+ }
+}
