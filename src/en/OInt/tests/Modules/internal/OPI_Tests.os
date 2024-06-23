@@ -590,38 +590,20 @@ EndProcedure
 
 Procedure YDisk_GetDiskInfo() Export
  
-    Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Map = "Map";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
     
-    Result = OPI_YandexDisk.GetDiskInformation(Token);
-    
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInformation");
-    
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["system_folders"]).ИмеетТип(Map);
-    OPI_TestDataRetrieval.ExpectsThat(Result["user"]).ИмеетТип(Map);
-    
-    OPI_Tools.Pause(5);
+    (TestParameters);
     
 EndProcedure
 
 Procedure YDisk_CreateFolder() Export
  
-   Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-   Path = "/" + String(New UUID);
-   
-   Result = OPI_YandexDisk.CreateFolder(Token, Path);
-   
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder");
-   
-   OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-   OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("dir");
-   OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + Path);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    
+    (TestParameters);
         
-   OPI_YandexDisk.DeleteObject(Token, Path, False);
-  
-   OPI_Tools.Pause(5);
-  
 EndProcedure
 
 Procedure YDisk_UploadByUrlAndGetObject() Export
@@ -3366,6 +3348,24 @@ Procedure Check_VKVideo(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["video_id"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["video_hash"]).Заполнено();
+        
+EndProcedure
+
+Procedure (Val Result)
+
+     = "Map";
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип().Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["system_folders"]).ИмеетТип();
+    OPI_TestDataRetrieval.ExpectsThat(Result["user"]).ИмеетТип();
+        
+EndProcedure
+
+Procedure (Val Result, Val Path)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("dir");
+    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + Path);
         
 EndProcedure
 
@@ -6963,6 +6963,44 @@ Procedure Bitrix24_RenameStorage(FunctionParameters)
     
     Check_BitrixFile(Result);
     
+EndProcedure
+
+#EndRegion
+
+#Region YandexDisk
+
+Procedure (FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Result = OPI_YandexDisk.GetDiskInformation(Token);
+    
+    // END
+    
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInformation", "YandexDisk");
+    
+    (Result);
+    
+    OPI_Tools.Pause(5);
+        
+EndProcedure
+
+Procedure (FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path = "/" + String(New UUID);
+   
+    Result = OPI_YandexDisk.CreateFolder(Token, Path);
+   
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "YandexDisk");
+   
+    (Result, Path);
+       
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
+  
+    OPI_Tools.Pause(5);
+   
 EndProcedure
 
 #EndRegion
