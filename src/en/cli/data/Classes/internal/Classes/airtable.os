@@ -543,7 +543,7 @@
     NewLine.Метод       = "CreatePosts";
     NewLine.МетодПоиска = "CREATEPOSTS";
     NewLine.Параметр    = "--data";
-    NewLine.Описание    = "Set or array of sets of Key : Value pairs > Field : Indicator";
+    NewLine.Описание    = "";
     NewLine.Область     = "Record management";
 
 
