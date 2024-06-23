@@ -142,7 +142,7 @@
     NewLine.Метод       = "GetObjectInformation";
     NewLine.МетодПоиска = "GETOBJECTINFORMATION";
     NewLine.Параметр    = "--detail";
-    NewLine.Описание    = "Adds additional information fields for media files (optional, def. val. - False)";
+    NewLine.Описание    = " (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -173,7 +173,7 @@
     NewLine.Метод       = "GetListOfFolderFiles";
     NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
     NewLine.Параметр    = "--detail";
-    NewLine.Описание    = "Adds additional information fields for media files (optional, def. val. - False)";
+    NewLine.Описание    = " (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -297,7 +297,7 @@
     NewLine.Метод       = "GetUploadStatusByURL";
     NewLine.МетодПоиска = "GETUPLOADSTATUSBYURL";
     NewLine.Параметр    = "--job";
-    NewLine.Описание    = "ID of the asynchronous job from the UploadFileByURL response";
+    NewLine.Описание    = "";
     NewLine.Область     = "File and directory management";
 
 
@@ -548,7 +548,6 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Tags managment";
-    NewLine.ОписаниеМетода   = "Adds a new text tag to a file or directory";
 
 
     NewLine = CompositionTable.Add();
@@ -734,7 +733,6 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Shared access settings";
-    NewLine.ОписаниеМетода   = "Gets the status of the asynchronous access change job";
 
 
     NewLine = CompositionTable.Add();
