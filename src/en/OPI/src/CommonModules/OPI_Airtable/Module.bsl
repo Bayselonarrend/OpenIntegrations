@@ -450,7 +450,7 @@ EndFunction
 // Token - String - Token - token
 // Base - String - Database identifier - base
 // Table - String - Table identifier - table
-// Data - Structure, Array of Structure -  - data
+// Data - Structure, Array of Structure - Set or array of sets of pairs Key : Value > Field : FieldValue - data
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable

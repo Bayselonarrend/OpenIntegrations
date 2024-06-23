@@ -25,7 +25,7 @@
 // SOFTWARE.        
 
 // https://github.com/Bayselonarrend/OpenIntegrations
-// ()
+// If you don't know where to start, you should find the GetStandardParameters method()
 // and read comments
 
 // BSLLS:NumberOfOptionalParams-off
