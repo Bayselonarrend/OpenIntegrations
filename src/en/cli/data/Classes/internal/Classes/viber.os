@@ -75,6 +75,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Viber Token";
     NewLine.Область     = "Settings and information";
+    NewLine.ОписаниеМетода   = "Gets the status of a user or multiple users by ID";
 
 
     NewLine = CompositionTable.Add();

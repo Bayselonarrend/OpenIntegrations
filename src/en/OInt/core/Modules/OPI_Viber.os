@@ -101,7 +101,7 @@ Function GetUserData(Val Token, Val UserID) Export
 EndFunction
 
 // Get online users
-// 
+// Gets the status of a user or multiple users by ID
 // 
 // Parameters:
 // Token - String - Viber Token - token

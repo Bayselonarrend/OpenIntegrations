@@ -593,7 +593,7 @@ Procedure YDisk_GetDiskInfo() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
     
-    (TestParameters);
+    YandexDisk_GetDiskInfo(TestParameters);
     
 EndProcedure
 
@@ -602,7 +602,7 @@ Procedure YDisk_CreateFolder() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
     
-    (TestParameters);
+    YandexDisk_CreateFolder(TestParameters);
         
 EndProcedure
 
@@ -3351,17 +3351,17 @@ Procedure Check_VKVideo(Val Result)
         
 EndProcedure
 
-Procedure (Val Result)
+Procedure Check_YaDiskDrive(Val Result)
 
-     = "Map";
+    Map_ = "Map";
     
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип().Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["system_folders"]).ИмеетТип();
-    OPI_TestDataRetrieval.ExpectsThat(Result["user"]).ИмеетТип();
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map_).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["system_folders"]).ИмеетТип(Map_);
+    OPI_TestDataRetrieval.ExpectsThat(Result["user"]).ИмеетТип(Map_);
         
 EndProcedure
 
-Procedure (Val Result, Val Path)
+Procedure Check_YaDiskFolder(Val Result, Val Path)
 
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("dir");
@@ -6969,7 +6969,7 @@ EndProcedure
 
 #Region YandexDisk
 
-Procedure (FunctionParameters)
+Procedure YandexDisk_GetDiskInfo(FunctionParameters)
 
     Token = FunctionParameters["YandexDisk_Token"];
     Result = OPI_YandexDisk.GetDiskInformation(Token);
@@ -6978,13 +6978,13 @@ Procedure (FunctionParameters)
     
     OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInformation", "YandexDisk");
     
-    (Result);
+    Check_YaDiskDrive(Result);
     
     OPI_Tools.Pause(5);
         
 EndProcedure
 
-Procedure (FunctionParameters)
+Procedure YandexDisk_CreateFolder(FunctionParameters)
 
     Token = FunctionParameters["YandexDisk_Token"];
     Path = "/" + String(New UUID);
@@ -6995,7 +6995,7 @@ Procedure (FunctionParameters)
    
     OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "YandexDisk");
    
-    (Result, Path);
+    Check_YaDiskFolder(Result, Path);
        
     OPI_YandexDisk.DeleteObject(Token, Path, False);
   
