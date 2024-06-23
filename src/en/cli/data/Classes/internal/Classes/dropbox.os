@@ -142,7 +142,7 @@
     NewLine.Метод       = "GetObjectInformation";
     NewLine.МетодПоиска = "GETOBJECTINFORMATION";
     NewLine.Параметр    = "--detail";
-    NewLine.Описание    = " (optional, def. val. - False)";
+    NewLine.Описание    = "Add information fields for mediafiles (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -173,7 +173,7 @@
     NewLine.Метод       = "GetListOfFolderFiles";
     NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
     NewLine.Параметр    = "--detail";
-    NewLine.Описание    = " (optional, def. val. - False)";
+    NewLine.Описание    = "Add information fields for mediafiles (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -297,7 +297,7 @@
     NewLine.Метод       = "GetUploadStatusByURL";
     NewLine.МетодПоиска = "GETUPLOADSTATUSBYURL";
     NewLine.Параметр    = "--job";
-    NewLine.Описание    = "";
+    NewLine.Описание    = "ID of async jsob from UploadFileByURL response";
     NewLine.Область     = "File and directory management";
 
 
@@ -548,6 +548,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Tags managment";
+    NewLine.ОписаниеМетода   = "Add new tag to file or folder";
 
 
     NewLine = CompositionTable.Add();
@@ -733,6 +734,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Shared access settings";
+    NewLine.ОписаниеМетода   = "Get async job status for access changes";
 
 
     NewLine = CompositionTable.Add();

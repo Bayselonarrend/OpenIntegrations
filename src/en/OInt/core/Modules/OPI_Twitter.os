@@ -25,7 +25,7 @@
 // SOFTWARE.
 
 // https://github.com/Bayselonarrend/OpenIntegrations
-// ()
+// If you don't know where to start, you should find the GetStandardParameters method()
 // and read comments
 
 // BSLLS:Typo-off
@@ -76,7 +76,7 @@ Function GetAuthorizationLink(Parameters = "") Export
 EndFunction
 
 // Get token
-// 
+// Gets the token by the code received when authorizing using the link from GetAuthorizationLink
 // 
 // Parameters:
 // Code - String - Code obtained from authorization See GetAuthorizationLink - code
@@ -482,7 +482,7 @@ EndFunction
 
 Function GetStandardParameters(Val Parameters = "")
     
-    // .
+    // The definition of the data required for the work is collected here.
     // For Twitter, this is quite a significant set, which is due to the presence of 2 APIs at once,
     // which, at the same time, are not created for different tasks, but are simply versions of each other.
     // The current version of the API is v2 and it requires obtaining temporary tokens. Despite the fact,
@@ -493,7 +493,7 @@ Function GetStandardParameters(Val Parameters = "")
     
     // The world gigacorporation of Elon Musk, by the way, a reminder ;)
     
-    // " - this 
+    // P.S The following is often referred to as the "Twitter Developer settings page" - this 
     // https://developer.twitter.com/en/portal/dashboard and chosing of project from list (key icon)
     
     Parameters_ = New Map; 

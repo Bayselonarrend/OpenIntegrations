@@ -175,7 +175,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Path - String - Path to the object - path
-// Detailed - Boolean -  - detail 
+// Detailed - Boolean - Add information fields for mediafiles - detail 
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox 
@@ -200,7 +200,7 @@ EndFunction
 // Parameters:
 // Token - String - Token - token
 // Path - String - Path to the directory. Optional if the cursor is specified - path
-// Detailed - Boolean -  - detail
+// Detailed - Boolean - Add information fields for mediafiles - detail
 // Cursor - String - Cursor from the previous request to get the next set of files - cursor
 // 
 // Returns:
@@ -311,7 +311,7 @@ EndFunction
 // 
 // Parameters:
 // Token - String - Token - token
-// JobID - String -  - job 
+// JobID - String - ID of async jsob from UploadFileByURL response - job 
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -540,7 +540,7 @@ Function GetTagList(Val Token, Val Paths) Export
 EndFunction
 
 // Add tag
-// 
+// Add new tag to file or folder
 // 
 // Parameters:
 // Token - String - Token - token
@@ -717,7 +717,7 @@ Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewO
 EndFunction
 
 // Get asynchronous change status
-// 
+// Get async job status for access changes
 // 
 // Parameters:
 // Token - String - Token - token

@@ -43,7 +43,8 @@
     NewLine.Параметр    = "--code";
     NewLine.Описание    = "Code obtained from authorization See GetAuthorizationLink";
     NewLine.Область     = "Data and settings";
-    NewLine.ОписаниеМетода   = "|
+    NewLine.ОписаниеМетода   = "Gets the token by the code received when authorizing using the link from GetAuthorizationLink
+    |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""redirect_uri""            : """",  
