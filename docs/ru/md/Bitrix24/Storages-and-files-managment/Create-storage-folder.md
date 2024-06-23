@@ -46,6 +46,34 @@ sidebar_position: 7
 
 ```json title="Результат"
 
-
+{
+ "result": {
+  "ID": 574,
+  "NAME": "Новый каталог",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "folder",
+  "REAL_OBJECT_ID": 574,
+  "PARENT_ID": "3",
+  "DELETED_TYPE": 0,
+  "CREATE_TIME": "2024-06-22T09:07:36+00:00",
+  "UPDATE_TIME": "2024-06-22T09:07:36+00:00",
+  "DELETE_TIME": null,
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": null,
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог"
+ },
+ "time": {
+  "start": 1719047256.22025,
+  "finish": 1719047256.27758,
+  "duration": 0.057330846786499,
+  "processing": 0.0276291370391846,
+  "date_start": "2024-06-22T09:07:36+00:00",
+  "date_finish": "2024-06-22T09:07:36+00:00",
+  "operating_reset_at": 1719047856,
+  "operating": 0
+ }
+}
 
 ```
