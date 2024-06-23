@@ -15,18 +15,18 @@ sidebar_class_name: NachaloRaboty
 
 Быстрый переход по документации
   <div>
-  <a href="https://openintegrations.dev/docs/Telegram/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Telegram.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/VK/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/VK.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Viber/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Viber.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Twitter/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Twitter.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Notion/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Notion.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Yandex_Disk/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/YandexDisk.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Google_Calendar/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleCalendar.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Google_Drive/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleDrive.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Google_Sheets/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/GoogleSheets.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Slack/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Slack.png" width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Airtable/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Airtable.png?6" width="40"/></a>
-   <a href="https://openintegrations.dev/docs/Dropbox/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Dropbox.png?6" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Telegram/"><img src="../static/img/APIs/Telegram.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/VK/"><img src="../static/img/APIs/VK.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Viber/"><img src="../static/img/APIs/Viber.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Twitter/"><img src="../static/img/APIs/Twitter.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Notion/"><img src="../static/img/APIs/Notion.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Yandex_Disk/"><img src="../static/img/APIs/YandexDisk.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Google_Calendar/"><img src="../static/img/APIs/GoogleCalendar.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Google_Drive/"><img src="../static/img/APIs/GoogleDrive.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Google_Sheets/"><img src="../static/img/APIs/GoogleSheets.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Slack/"><img src="../static/img/APIs/Slack.png" width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Airtable/"><img src="../static/img/APIs/Airtable.png?6" width="40"/></a>
+   <a href="https://openintegrations.dev/docs/Dropbox/"><img src="../static/img/APIs/Dropbox.png?6" width="40"/></a>
 </div> 
 
 <br/>
