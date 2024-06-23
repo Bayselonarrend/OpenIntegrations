@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 
 # Get token
- Gets the token by the code obtained during authorization via the link from GetAuthorizationLink
+ Gets the token by the code received when authorizing using the link from GetAuthorizationLink
 
 
 *Function GetToken(Val Code, Val Parameters = "") Export*
