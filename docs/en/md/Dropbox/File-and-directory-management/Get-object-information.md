@@ -12,7 +12,7 @@ sidebar_position: 1
  |-|-|-|-|
  | Token | --token | String | Token |
  | Path | --path | String | Path to the object |
- | Detailed | --detail | Boolean | Adds additional information fields for media files |
+ | Detailed | --detail | Boolean | Add information fields for mediafiles |
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox 

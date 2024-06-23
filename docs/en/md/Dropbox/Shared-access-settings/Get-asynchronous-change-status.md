@@ -3,7 +3,7 @@ sidebar_position: 5
 ---
 
 # Get asynchronous change status
- Gets the status of the asynchronous access change job
+ Get async job status for access changes
 
 
 *Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export*

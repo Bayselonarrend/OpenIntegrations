@@ -6,7 +6,7 @@ sidebar_position: 3
  Pauses the display of the advertising post
 
 
-*Function PauseAdvertisingAd(Val AccountID, Val AdID, Val Parameters = "") Export*
+*Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,7 +20,7 @@ sidebar_position: 3
 ```bsl title="Code example"
 	
  
- Response = OPI_VK.PauseAdvertisingAd(1234567890, 1029701085, Parameters);
+ Response = OPI_VK.PauseAdvertising(1234567890, 1029701085, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
 	
@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```sh title="CLI command example"
  
- oint vk PauseAdvertisingAd --cabinet %cabinet% --adv %adv% --auth %auth%
+ oint vk PauseAdvertising --cabinet %cabinet% --adv %adv% --auth %auth%
 
 ```
 

@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 
 # Get online users
- Gets the status of a user or several users by ID
+ Gets the status of a user or multiple users by ID
 
 
 *Function GetOnlineUsers(Val Token, Val UserIDs) Export*

@@ -41,6 +41,26 @@ sidebar_position: 3
 
 ```json title="Результат"
 
-
+{
+ "result": {
+  "ID": "3",
+  "NAME": "Общий диск",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "common",
+  "ENTITY_ID": "shared_files_s1",
+  "ROOT_OBJECT_ID": "3"
+ },
+ "time": {
+  "start": 1719047247.65416,
+  "finish": 1719047247.68963,
+  "duration": 0.0354659557342529,
+  "processing": 0.00417995452880859,
+  "date_start": "2024-06-22T09:07:27+00:00",
+  "date_finish": "2024-06-22T09:07:27+00:00",
+  "operating_reset_at": 1719047847,
+  "operating": 0
+ }
+}
 
 ```
