@@ -11,7 +11,7 @@ sidebar_position: 6
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | Token | --token | String | Token |
- | JobID | --job | String | ID of the asynchronous job from the UploadFileByURL response |
+ | JobID | --job | String | ID of async jsob from UploadFileByURL response |
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox

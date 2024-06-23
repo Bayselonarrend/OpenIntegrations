@@ -13,7 +13,7 @@ sidebar_position: 3
  | Token | --token | String | Token |
  | Base | --base | String | Database identifier |
  | Table | --table | String | Table identifier |
- | Data | --data | Structure, Array of Structure | Set or array of sets of Key : Value pairs > Field : Indicator |
+ | Data | --data | Structure, Array of Structure | Set or array of sets of pairs Key : Value > Field : FieldValue |
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable

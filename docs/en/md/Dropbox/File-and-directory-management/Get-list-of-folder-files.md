@@ -12,7 +12,7 @@ sidebar_position: 2
  |-|-|-|-|
  | Token | --token | String | Token |
  | Path | --path | String | Path to the directory. Optional if the cursor is specified |
- | Detailed | --detail | Boolean | Adds additional information fields for media files |
+ | Detailed | --detail | Boolean | Add information fields for mediafiles |
  | Cursor | --cursor | String | Cursor from the previous request to get the next set of files |
 
  

@@ -6,7 +6,7 @@ sidebar_position: 5
  Adds a product to the selection
 
 
-*Function AddProductToSelection(Val ProductsArray, Val Selection, Val Parameters = "") Export*
+*Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,7 +20,7 @@ sidebar_position: 5
 ```bsl title="Code example"
 	
  
- Response = OPI_VK.AddProductToSelection(8656559, 40, Parameters);
+ Response = OPI_VK.AddProductToCollection(8656559, 40, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
 	
@@ -28,7 +28,7 @@ sidebar_position: 5
 
 ```sh title="CLI command example"
  
- oint vk AddProductToSelection --items %items% --sel %sel% --auth %auth%
+ oint vk AddProductToCollection --items %items% --sel %sel% --auth %auth%
 
 ```
 

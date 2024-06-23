@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 
 # Add tag
- Adds a new text tag to a file or directory
+ Add new tag to file or folder
 
 
 *Function AddTag(Val Token, Val Path, Val Tag) Export*
