@@ -21,12 +21,11 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
           LC_ALL: "ru_RU.UTF-8"
         with:
-          projectBaseDir: ${{ github.workspace }}
+          projectBaseDir: ${{ github.workspace }}/src/ru
           args:
             -Dsonar.projectKey=OpenIntegrations
             -Dsonar.sourceEncoding=UTF-8 
             -Dsonar.inclusions=**/*.bsl
-
             
       - name: Анализ OInt
         uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
@@ -36,7 +35,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
           LC_ALL: "ru_RU.UTF-8"
         with:
-          projectBaseDir: ${{ github.workspace }}
+          projectBaseDir: ${{ github.workspace }}/src/ru
           args:
             -Dsonar.projectKey=OInt
             -Dsonar.sourceEncoding=UTF-8 
