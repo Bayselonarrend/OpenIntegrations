@@ -25,7 +25,7 @@ jobs:
           args:
             -Dsonar.projectKey=OpenIntegrations
             -Dsonar.sourceEncoding=UTF-8 
-            -Dsonar.inclusions=src/ru/*.bsl
+            -Dsonar.inclusions=**/src/ru/*.bsl
 
             
       - name: Анализ OInt
