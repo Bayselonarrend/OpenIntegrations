@@ -13,20 +13,20 @@ sidebar_class_name: NachaloRaboty
 
 <br/>
 
-Быстрый переход по документации
+Быстрый переход по документации:
   <div>
-  <a href="https://openintegrations.dev/docs/Telegram/"><img src={require('../../static/img/APIs/Telegram.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/VK/"><img src={require('../../static/img/APIs/VK.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Viber/"><img src={require('../../static/img/APIs/Viber.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Twitter/"><img src={require('../../static/img/APIs/Twitter.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Notion/"><img src={require('../../static/img/APIs/Notion.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Yandex_Disk/"><img src={require('../../static/img/APIs/YandexDisk.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Google_Calendar/"><img src={require('../../static/img/APIs/GoogleCalendar.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Google_Drive/"><img src={require('../../static/img/APIs/GoogleDrive.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Google_Sheets/"><img src={require('../../static/img/APIs/GoogleSheets.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Slack/"><img src={require('../../static/img/APIs/Slack.png').default} width="40"/></a>
-  <a href="https://openintegrations.dev/docs/Airtable/"><img src={require('../../static/img/APIs/Airtable.png').default} width="40"/></a>
-   <a href="https://openintegrations.dev/docs/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="40"/></a>
+  <a href="https://openintegrations.dev/docs/Telegram/"><img src={require('../../static/img/APIs/Telegram.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/VK/"><img src={require('../../static/img/APIs/VK.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Viber/"><img src={require('../../static/img/APIs/Viber.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Twitter/"><img src={require('../../static/img/APIs/Twitter.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Notion/"><img src={require('../../static/img/APIs/Notion.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Yandex_Disk/"><img src={require('../../static/img/APIs/YandexDisk.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Google_Calendar/"><img src={require('../../static/img/APIs/GoogleCalendar.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Google_Drive/"><img src={require('../../static/img/APIs/GoogleDrive.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Google_Sheets/"><img src={require('../../static/img/APIs/GoogleSheets.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Slack/"><img src={require('../../static/img/APIs/Slack.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Airtable/"><img src={require('../../static/img/APIs/Airtable.png').default} width="32"/></a>
+   <a href="https://openintegrations.dev/docs/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="32"/></a>
 </div> 
 
 <br/>
