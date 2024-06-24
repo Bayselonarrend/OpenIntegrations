@@ -25,7 +25,7 @@ jobs:
           args:
             -Dsonar.projectKey=OpenIntegrations
             -Dsonar.sourceEncoding=UTF-8 
-            -Dsonar.inclusions=**/*.bsl
+            -Dsonar.inclusions=**/ru/OPI/*.bsl
             
       - name: Анализ OInt
         uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
@@ -39,4 +39,4 @@ jobs:
           args:
             -Dsonar.projectKey=OInt
             -Dsonar.sourceEncoding=UTF-8 
-            -Dsonar.inclusions=**/*.os
+            -Dsonar.inclusions=**/ru/OInt/*.os
