@@ -40,7 +40,7 @@
  
 ## Релизы ##
 
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://tooomm.github.io/github-release-stats/?username=bayselonarrend&repository=OpenIntegrations)
 
 <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/icons.png" align="right">
 
