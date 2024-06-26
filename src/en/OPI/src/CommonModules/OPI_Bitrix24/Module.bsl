@@ -984,6 +984,75 @@ Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") E
     
 EndFunction
 
+// Get folder information
+// Get folder information
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFolder(Val URL, Val FolderID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FolderID, "disk.folder.get", Token);
+    Return Response;
+    
+EndFunction
+
+// Create new subfolder
+// Create new folder inside another folder
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Parent folder identifier - folderid
+// Name - String - Name of new folder - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateSubfolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
+    
+    OPI_TypeConversion.GetLine(Name);
+    
+    FolderStructure = New Structure("NAME", Name);
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.addsubfolder");
+    
+    OPI_Tools.AddField("id" , FolderID , "String" , Parameters);
+    OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;  
+    
+EndFunction
+
+// Copy folder
+// Copy one folder to another
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Parent folder identifier - folderid
+// DestinationID - String, Number - ID of target folder - tagetid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CopyFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.copyto");
+    
+    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
+    OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
 // Delete file
 // Delete file by ID
 // 

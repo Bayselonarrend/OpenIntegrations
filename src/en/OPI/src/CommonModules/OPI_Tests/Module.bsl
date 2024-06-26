@@ -2929,6 +2929,9 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_GetStorageObjects(TestParameters);
     Bitrix24_DeleteFile(TestParameters);
     Bitrix24_CreateStorageFolder(TestParameters);
+    Bitrix24_GetFolder(TestParameters);
+    Bitrix24_CreateSubfolder(TestParameters);
+    Bitrix24_CopyFolder(TestParameters);
     Bitrix24_DeleteFolder(TestParameters);
     
 EndProcedure
@@ -6962,6 +6965,92 @@ Procedure Bitrix24_RenameStorage(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "RenameStorage", "Bitrix24");
     
     Check_BitrixFile(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetFolder(FunctionParameters)
+   
+    URL = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    
+    Result = OPI_Bitrix24.GetFolder(URL, FolderID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetFolder (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.GetFolder(URL, FolderID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetFolder", "Bitrix24");
+    
+    Check_BitrixFile(Result);
+     
+EndProcedure
+
+Procedure Bitrix24_CreateSubfolder(FunctionParameters)
+    
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    Name = "New subfolder";
+    Filename2 = "New subfolder 2";
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Filename2);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateSubfolder (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+    
+    SubfolderID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookSubfolderID", SubfolderID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_HookSubfolderID", SubfolderID); // SKIP
+
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Name, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateSubfolder", "Bitrix24");
+    
+    Check_BitrixFile(Result); 
+    
+    SubfolderID = Result["result"]["ID"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_SubfolderID", SubfolderID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_SubfolderID", SubfolderID); // SKIP               
+    
+EndProcedure
+
+Procedure Bitrix24_CopyFolder(FunctionParameters)
+    
+    DestinationID = FunctionParameters["Bitrix24_HookSubfolderID"];
+    FolderID = FunctionParameters["Bitrix24_SubfolderID"];
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.CopyFolder(URL, FolderID, DestinationID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CopyFolder (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+    
+    DestinationID = FunctionParameters["Bitrix24_SubfolderID"];
+    FolderID = FunctionParameters["Bitrix24_HookSubfolderID"];
+
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.CopyFolder(URL, FolderID, DestinationID, Token);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CopyFolder", "Bitrix24");
+    
+    Check_BitrixFile(Result); 
     
 EndProcedure
 
