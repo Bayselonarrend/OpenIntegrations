@@ -1534,6 +1534,109 @@
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Storages and files managment";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderExternalLink";
+    NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Get external link to folder";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderExternalLink";
+    NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "Folder identifier";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderExternalLink";
+    NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderItems";
+    NewLine.МетодПоиска = "GETFOLDERITEMS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Get folder child elements";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderItems";
+    NewLine.МетодПоиска = "GETFOLDERITEMS";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "Folder identifier";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderItems";
+    NewLine.МетодПоиска = "GETFOLDERITEMS";
+    NewLine.Параметр    = "--Items filter (see GetFolderFilterStructure)";
+    NewLine.Описание    = "filter (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderItems";
+    NewLine.МетодПоиска = "GETFOLDERITEMS";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderFilterStructure";
+    NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Returns filter structure for child folder items";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderFilterStructure";
+    NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - False)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFolderFilterStructure";
+    NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
     Return CompositionTable;
 EndFunction
 
