@@ -1,0 +1,12 @@
+﻿    {
+ "ID": "integer",
+ "NAME": "string",
+ "TYPE": "enum",
+ "CODE": "string",
+ "STORAGE_ID": "integer",
+ "PARENT_ID": "integer",
+ "CREATE_TIME": "datetime",
+ "UPDATE_TIME": "datetime",
+ "DELETE_TIME": "datetime",
+ "DELETED_TYPE": "enum"
+}
