@@ -1087,6 +1087,82 @@ Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export
 	
 EndFunction
 
+// Get external link for folder
+// Get external link to folder
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFolderExternalLink(Val URL, Val FolderID, Val Token = "") Export
+	
+	Response = FileManagement(URL, FolderID, "disk.folder.getExternalLink", Token);
+	Return Response;
+	
+EndFunction
+
+// Get folder child elements
+// Get folder child elements
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Filter - Structure of Key-Value - Items filter (see GetFolderFilterStructure) - filter
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "disk.folder.getchildren");
+	OPI_Tools.AddField("id" , FolderID, "String" , Parameters);
+    OPI_Tools.AddField("filter", Filter , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get fields structure for folder items filter
+// Returns filter structure for child folder items
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Clear - Boolean - True > structure with empty values, False > field types at values - empty
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "disk.folder.getfields");
+	Filter = New Structure;
+	
+	Response = OPI_Tools.Post(URL, Parameters);
+	Fields = Response["result"];
+	
+	For Each Field In Fields Do
+		
+		Name = Field.Key;
+		Description = Field.Value;
+		
+		If Description["USE_IN_FILTER"] Then
+		
+			DataType = ?(Clear, "", Description["TYPE"]);	
+			Filter.Insert(Name, DataType);
+		
+		EndIf;
+		
+	EndDo;
+	
+	Return Filter;
+	
+EndFunction
+
 #EndRegion
 
 #EndRegion
