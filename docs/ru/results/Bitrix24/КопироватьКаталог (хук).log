@@ -1,0 +1,29 @@
+﻿    {
+ "result": {
+  "ID": 852,
+  "NAME": "Новый подкаталог",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "folder",
+  "REAL_OBJECT_ID": 852,
+  "PARENT_ID": "848",
+  "DELETED_TYPE": 0,
+  "CREATE_TIME": "2024-06-27T07:19:58+00:00",
+  "UPDATE_TIME": "2024-06-27T07:19:58+00:00",
+  "DELETE_TIME": null,
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": null,
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог/Новый подкаталог 2/Новый подкаталог"
+ },
+ "time": {
+  "start": 1719472798.11667,
+  "finish": 1719472798.18623,
+  "duration": 0.069566011428833,
+  "processing": 0.0400230884552002,
+  "date_start": "2024-06-27T07:19:58+00:00",
+  "date_finish": "2024-06-27T07:19:58+00:00",
+  "operating_reset_at": 1719473398,
+  "operating": 0
+ }
+}
