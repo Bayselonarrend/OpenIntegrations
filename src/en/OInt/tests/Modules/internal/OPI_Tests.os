@@ -2930,8 +2930,11 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_DeleteFile(TestParameters);
     Bitrix24_CreateStorageFolder(TestParameters);
     Bitrix24_GetFolder(TestParameters);
+    Bitrix24_GetFolderExternalLink(TestParameters);
     Bitrix24_CreateSubfolder(TestParameters);
     Bitrix24_CopyFolder(TestParameters);
+    Bitrix24_GetFolderFilterStructure(TestParameters);
+    Bitrix24_GetFolderItems(TestParameters);
     Bitrix24_DeleteFolder(TestParameters);
     
 EndProcedure
@@ -3015,8 +3018,14 @@ EndProcedure
 
 Procedure Check_Map(Val Result)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result) .ИмеетТип("Map").Заполнено();  
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();  
             
+EndProcedure
+
+Procedure Check_Structure(Val Result)
+
+	OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+	
 EndProcedure
 
 Procedure Check_TelegramTrue(Val Result)
@@ -3493,6 +3502,10 @@ EndProcedure
 
 Procedure Check_BitrixTrue(Val Result)
    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True); 
+EndProcedure
+
+Procedure Check_BitrixString(Val Result)
+   OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();  
 EndProcedure
 
 Procedure Check_BitrixArray(Val Result)
@@ -7051,6 +7064,77 @@ Procedure Bitrix24_CopyFolder(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CopyFolder", "Bitrix24");
     
     Check_BitrixFile(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_GetFolderExternalLink(FunctionParameters)
+	
+	URL = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    
+    Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderExternalLink (wh)", "Bitrix24");
+    
+    Check_BitrixString(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderExternalLink", "Bitrix24");
+    
+    Check_BitrixString(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetFolderFilterStructure(FunctionParameters)
+	
+	URL = FunctionParameters["Bitrix24_URL"];
+        
+    Result = OPI_Bitrix24.GetFolderFilterStructure(URL);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderFilterStructure (wh)", "Bitrix24");
+    
+    Check_Structure(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.GetFolderFilterStructure(URL, True, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderFilterStructure", "Bitrix24");
+    
+    Check_Structure(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetFolderItems(FunctionParameters)
+	
+	URL = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    
+    Result = OPI_Bitrix24.GetFolderItems(URL, FolderID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderItems (wh)", "Bitrix24");
+    
+    Check_BitrixArray(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.GetFolderItems(URL, FolderID, ,Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderItems", "Bitrix24");
+    
+    Check_BitrixArray(Result);
     
 EndProcedure
 
