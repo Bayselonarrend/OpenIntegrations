@@ -29,6 +29,8 @@
 // BSLLS:Typo-off
 // BSLLS:LatinAndCyrillicSymbolInWord-off
 // BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -83,12 +85,13 @@ EndFunction
 Function GetToken(Val ClientID, Val ClientSecret, Val Code) Export
     
     URL = "https://oauth.bitrix.info/oauth/token/";
+    String_ = "String";
     
     Parameters = New Structure;
-    OPI_Tools.AddField("grant_type" , "authorization_code", "String", Parameters);
-    OPI_Tools.AddField("client_id" , ClientID , "String", Parameters);
-    OPI_Tools.AddField("client_secret", ClientSecret , "String", Parameters);
-    OPI_Tools.AddField("code" , Code , "String", Parameters);  
+    OPI_Tools.AddField("grant_type" , "authorization_code", String_, Parameters);
+    OPI_Tools.AddField("client_id" , ClientID , String_, Parameters);
+    OPI_Tools.AddField("client_secret", ClientSecret , String_, Parameters);
+    OPI_Tools.AddField("code" , Code , String_, Parameters);  
     
     Response = OPI_Tools.Get(URL, Parameters);
     
@@ -109,12 +112,13 @@ EndFunction
 Function RefreshToken(Val ClientID, Val ClientSecret, Val Refresh) Export
     
     URL = "https://oauth.bitrix.info/oauth/token/";
+    String_ = "String";
     
     Parameters = New Structure;
-    OPI_Tools.AddField("grant_type" , "refresh_token" , "String", Parameters);
-    OPI_Tools.AddField("client_id" , ClientID , "String", Parameters);
-    OPI_Tools.AddField("client_secret", ClientSecret , "String", Parameters);
-    OPI_Tools.AddField("refresh_token", Refresh , "String", Parameters);  
+    OPI_Tools.AddField("grant_type" , "refresh_token" , String_, Parameters);
+    OPI_Tools.AddField("client_id" , ClientID , String_, Parameters);
+    OPI_Tools.AddField("client_secret", ClientSecret , String_, Parameters);
+    OPI_Tools.AddField("refresh_token", Refresh , String_, Parameters);  
     
     Response = OPI_Tools.Get(URL, Parameters);
     
@@ -168,11 +172,13 @@ Function CreatePost(Val URL
     
     MakeBoolean(Important);
     
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.add");
-    OPI_Tools.AddField("POST_MESSAGE", Text , "String", Parameters);
-    OPI_Tools.AddField("POST_TITLE" , Title , "String", Parameters);
+    OPI_Tools.AddField("POST_MESSAGE", Text , String_, Parameters);
+    OPI_Tools.AddField("POST_TITLE" , Title , String_, Parameters);
     OPI_Tools.AddField("DEST" , Visibility , "Array", Parameters);
-    OPI_Tools.AddField("IMPORTANT" , Important , "String", Parameters);
+    OPI_Tools.AddField("IMPORTANT" , Important , String_, Parameters);
     
     If ValueIsFilled(Files) Then
         
@@ -214,11 +220,13 @@ Function UpdatePost(Val URL
     , Val Title = ""
     , Val Token = "") Export
         
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.update");
-    OPI_Tools.AddField("POST_MESSAGE", Text , "String", Parameters);
-    OPI_Tools.AddField("POST_TITLE" , Title , "String", Parameters);
+    OPI_Tools.AddField("POST_MESSAGE", Text , String_, Parameters);
+    OPI_Tools.AddField("POST_TITLE" , Title , String_, Parameters);
     OPI_Tools.AddField("DEST" , Visibility , "Array", Parameters);
-    OPI_Tools.AddField("POST_ID" , PostID , "String", Parameters);
+    OPI_Tools.AddField("POST_ID" , PostID , String_, Parameters);
     
     If ValueIsFilled(Files) Then
         
@@ -1034,7 +1042,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Parent folder identifier - folderid
+// FolderID - String, Number - Folder identifier - folderid
 // DestinationID - String, Number - ID of target folder - tagetid
 // Token - String - Access token, when not-webhook method used - token
 // 
@@ -1043,6 +1051,30 @@ EndFunction
 Function CopyFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
     
     Parameters = NormalizeAuth(URL, Token, "disk.folder.copyto");
+    
+    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
+    OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
+// Move folder
+// Moves one folder inside another
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// DestinationID - String, Number - ID of target folder - tagetid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MoveFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.moveto");
     
     OPI_Tools.AddField("id" , FolderID , "String", Parameters);
     OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
@@ -1127,6 +1159,64 @@ Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") 
     
 EndFunction
 
+// Mark folder as deleted
+// Move folder to recycle bin
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MarkFolderAsDeleted(Val URL, Val FolderID, Val Token = "") Export
+	
+    Response = FileManagement(URL, FolderID, "disk.folder.markdeleted", Token);
+	Return Response;
+	
+EndFunction
+
+// Restore folder
+// Resotre folder form recycle bin
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RestoreFolder(Val URL, Val FolderID, Val Token = "") Export
+ 
+    Response = FileManagement(URL, FolderID, "disk.folder.restore", Token);
+    Return Response;  
+     
+EndFunction
+
+// Rename folder
+// Change folder name
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Name - String - New folders name - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.rename");
+    
+    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
+    OPI_Tools.AddField("newName", Name, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
 // Get fields structure for folder items filter
 // Returns filter structure for child folder items
 // 
@@ -1167,7 +1257,7 @@ EndFunction
 
 #EndRegion
 
-#Region Internal
+#Region Private
 
 Function NormalizeAuth(URL, Val Token, Val Method = "")
     
