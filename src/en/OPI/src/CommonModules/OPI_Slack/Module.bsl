@@ -28,6 +28,7 @@
 
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:Typo-off
+// BSLLS:UsingServiceTag-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions

@@ -1449,7 +1449,7 @@
     NewLine.Метод       = "CopyFolder";
     NewLine.МетодПоиска = "COPYFOLDER";
     NewLine.Параметр    = "--folderid";
-    NewLine.Описание    = "Parent folder identifier";
+    NewLine.Описание    = "Folder identifier";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1468,6 +1468,47 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CopyFolder";
     NewLine.МетодПоиска = "COPYFOLDER";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveFolder";
+    NewLine.МетодПоиска = "MOVEFOLDER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Moves one folder inside another";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveFolder";
+    NewLine.МетодПоиска = "MOVEFOLDER";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "Folder identifier";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveFolder";
+    NewLine.МетодПоиска = "MOVEFOLDER";
+    NewLine.Параметр    = "--tagetid";
+    NewLine.Описание    = "ID of target folder";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveFolder";
+    NewLine.МетодПоиска = "MOVEFOLDER";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Storages and files managment";
@@ -1602,6 +1643,109 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFolderItems";
     NewLine.МетодПоиска = "GETFOLDERITEMS";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkFolderAsDeleted";
+    NewLine.МетодПоиска = "MARKFOLDERASDELETED";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Move folder to recycle bin";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkFolderAsDeleted";
+    NewLine.МетодПоиска = "MARKFOLDERASDELETED";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "Folder identifier";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkFolderAsDeleted";
+    NewLine.МетодПоиска = "MARKFOLDERASDELETED";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RestoreFolder";
+    NewLine.МетодПоиска = "RESTOREFOLDER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Resotre folder form recycle bin";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RestoreFolder";
+    NewLine.МетодПоиска = "RESTOREFOLDER";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "Folder identifier";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RestoreFolder";
+    NewLine.МетодПоиска = "RESTOREFOLDER";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenameFolder";
+    NewLine.МетодПоиска = "RENAMEFOLDER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Change folder name";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenameFolder";
+    NewLine.МетодПоиска = "RENAMEFOLDER";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "Folder identifier";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenameFolder";
+    NewLine.МетодПоиска = "RENAMEFOLDER";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "New folders name";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenameFolder";
+    NewLine.МетодПоиска = "RENAMEFOLDER";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Storages and files managment";

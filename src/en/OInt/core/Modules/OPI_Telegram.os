@@ -31,6 +31,7 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:UnreachableCode-off
 // BSLLS:CommentedCode-off
+// BSLLS:UsingServiceTag-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -256,12 +257,14 @@ Function SendTextMessage(Val Token
 
     OPI_TypeConversion.GetLine(Token);    
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
+    
+    String_ = "String";
             
     Parameters = New Structure;
-    OPI_Tools.AddField("parse_mode" , Markup , "String" , Parameters);
-    OPI_Tools.AddField("text" , Text , "String" , Parameters);
+    OPI_Tools.AddField("parse_mode" , Markup , String_ , Parameters);
+    OPI_Tools.AddField("text" , Text , String_ , Parameters);
     OPI_Tools.AddField("reply_markup" , Keyboard , "FileString", Parameters);
-    OPI_Tools.AddField("reply_to_message_id", RepliedID, "String" , Parameters);
+    OPI_Tools.AddField("reply_to_message_id", RepliedID, String_ , Parameters);
     
     AddChatIdentifier(ChatID, Parameters);
     
