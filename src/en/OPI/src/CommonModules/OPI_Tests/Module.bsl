@@ -7133,7 +7133,7 @@ Procedure Bitrix24_GetFolderItems(FunctionParameters)
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
        
-    Result = OPI_Bitrix24.GetFolderItems(URL, FolderID, ,Token);
+    Result = OPI_Bitrix24.GetFolderItems(URL, FolderID, , Token);
     
     // END
         
