@@ -4839,7 +4839,7 @@ Procedure VK_CreateAd(FunctionParameters)
         
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateAd", "VK");
             
-    Check_VKCampaign(Result);
+    Check_Map(Result);
         
     AnnouncementID = Result["response"][0]["id"];
     OPI_TestDataRetrieval.WriteParameter("VK_AdsPostID", AnnouncementID);
@@ -4860,7 +4860,7 @@ Procedure VK_PauseAdvertising(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PauseAdvertisement", "VK");
     
-    Check_VKAd(Result);
+    Check_Map(Result);
         
 EndProcedure
 
