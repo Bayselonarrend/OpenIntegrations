@@ -817,6 +817,33 @@ Function ConvertParameterToString(Val Value)
     
 EndFunction
 
+Function SplitFileKey(Val FileData, Val ContentType)
+
+    DotReplacement = "___";
+    FileName = StrReplace(FileData, DotReplacement, ".");
+    NameParts = StrSplit(FileName, "|", False);
+    
+    If NameParts.Count() = 2 Then
+        FieldName = NameParts[0];
+        FileName = NameParts[1];
+    Else
+           
+        If ContentType = "image/jpeg" Then
+            FieldName = "photo";
+        Else
+            FieldName = Left(FileName, StrFind(FileName, ".") - 1);
+            FieldName = ?(ValueIsFilled(FieldName), FieldName, StrReplace(FileData,
+            DotReplacement, "."));
+        EndIf;
+    
+    EndIf;
+    
+    ReturnStructure = New Structure("FieldName,FileName", FieldName, FileName);
+    
+    Return ReturnStructure;
+    
+EndFunction
+
 Procedure SetRequestBody(Request, Val Parameters, Val JSON)
     
     Collection = TypeOf(Parameters) = Type("Structure") 
@@ -883,26 +910,19 @@ Procedure WriteMultipartFiles(TextRecord, Val Boundary, Val ContentType, Val Fil
     
     ContentType = TrimAll(ContentType);
     LineSeparator = Chars.CR + Chars.LF;
-    DotReplacement = "___";
-    
+     
     For Each File In Files Do
         
-        FilePath = StrReplace(File.Key, DotReplacement, ".");
+        DataStructure = SplitFileKey(File.Key, ContentType);
         
-        If ContentType = "image/jpeg" Then
-            SendingFileName = "photo";
-        Else
-            SendingFileName = StrReplace(File.Key, DotReplacement, ".");
-            SendingFileName = Left(SendingFileName, StrFind(SendingFileName, ".") - 1);
-            SendingFileName = ?(ValueIsFilled(SendingFileName), SendingFileName, StrReplace(File.Key,
-            DotReplacement, "."));
-        EndIf;
+        FieldName = DataStructure["FieldName"];
+        FileName = DataStructure["FileName"];
         
         TextRecord.WriteLine("--" + boundary + LineSeparator);
         TextRecord.WriteLine("Content-Disposition: form-data; name=""" 
-            + SendingFileName 
+            + FieldName 
             + """; filename=""" 
-            + FilePath
+            + FileName
             + """");
         TextRecord.WriteLine(LineSeparator);      
         
