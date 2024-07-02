@@ -1217,6 +1217,59 @@ Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
     
 EndFunction
 
+// Upload file to the folder
+// Upload local file to the folder
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Name - String - File name with extension - title
+// File - String, BinaryData - File for upload - file        
+// FolderID - String - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UploadFileToFolder(Val URL
+    , Val Name
+    , Val File
+    , Val FolderID
+    , Val Token = "") Export
+
+
+    OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetBinaryData(File);
+        
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.uploadFile");
+    OPI_Tools.AddField("id", FolderID, "String", Parameters);
+    
+    Response = OPI_Tools.Get(URL, Parameters);
+    Result = Response["result"];
+    
+    If ValueIsFilled(Result) Then
+        
+        FieldName = Result["field"];
+        UploadURL = Result["uploadUrl"];
+        
+        If ValueIsFilled(FieldName) And ValueIsFilled(UploadURL) Then
+        
+            FieldName = TrimAll(FieldName);
+            UploadURL = TrimAll(UploadURL);
+            FileName = FieldName + "|" + Name;
+            
+            FileMapping = New Map;
+            FileMapping.Insert(FileName, File);   
+            
+            Response = OPI_Tools.PostMultipart(UploadURL, , FileMapping); 
+             
+        EndIf;
+        
+    EndIf;
+    
+    
+    Return Response;  
+      
+EndFunction
+
 // Get fields structure for folder items filter
 // Returns filter structure for child folder items
 // 

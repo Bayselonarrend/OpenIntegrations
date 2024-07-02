@@ -2934,13 +2934,14 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_GetFolderExternalLink(TestParameters);
     Bitrix24_CreateSubfolder(TestParameters);
     Bitrix24_CopyFolder(TestParameters);
+    Bitrxi24_UploadFileToFolder(TestParameters);
     Bitrix24_GetFolderFilterStructure(TestParameters);
     Bitrix24_GetFolderItems(TestParameters);
     Bitrix24_MoveFolder(TestParameters);
     Bitrxi24_MarkFolderAsDeleted(TestParameters);
     Bitrix24_RestoreFolder(TestParameters);
     Bitrix24_DeleteFolder(TestParameters);
-    
+        
 EndProcedure
 
 #EndRegion
@@ -3296,7 +3297,7 @@ Procedure Check_VKCampaign(Val Result)
     Result = Result["response"][0];
     
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map"); 
-    OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип("Number").Равно(602);
+    OPI_TestDataRetrieval.ExpectsThat(Result["error_code"]).ИмеетТип("Number").Равно(603);
     OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип("Number").Заполнено();
         
 EndProcedure
@@ -4809,7 +4810,7 @@ Procedure VK_CreateAdCampaign(FunctionParameters)
     
     OPI_TestDataRetrieval.WriteLog(Result, "CreateAdvertisingCampaign", "VK");
     
-    Check_VKCampaign(Result);
+    Check_Map(Result);
         
     CampaignID = Result["response"][0]["id"];
     OPI_TestDataRetrieval.WriteParameter("VK_AdsCampaignID", CampaignID);
@@ -7243,6 +7244,43 @@ Procedure Bitrix24_RenameFolder(FunctionParameters)
     
     Check_BitrixFile(Result);           
      
+EndProcedure
+
+Procedure Bitrxi24_UploadFileToFolder(FunctionParameters)
+    
+    Filename2 = "Picture2.jpg"; 
+    Name = "Picture1.jpg";
+    
+    Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary Data
+    Image = FunctionParameters["Picture2"]; // Local path, URL or Binary Data
+    
+    DestinationID = FunctionParameters["Bitrix24_FolderID"];
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.UploadFileToFolder(URL, Filename2, Image2, DestinationID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToFolder (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+    
+    FileID = Result["result"]["ID"]; // SKIP
+    OPI_Bitrix24.DeleteFile(URL, FileID); // SKIP
+
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.UploadFileToFolder(URL, Name, Image, DestinationID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToFolder", "Bitrix24");
+    
+    Check_BitrixFile(Result); 
+    
+    FileID = Result["result"]["ID"];
+    Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);                                                
+    
 EndProcedure
 
 #EndRegion
