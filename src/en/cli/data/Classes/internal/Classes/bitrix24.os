@@ -1754,6 +1754,57 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UploadFileToFolder";
+    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Storages and files managment";
+    NewLine.ОписаниеМетода   = "Upload local file to the folder";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UploadFileToFolder";
+    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "File name with extension";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UploadFileToFolder";
+    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "File for upload";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UploadFileToFolder";
+    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
+    NewLine.Параметр    = "--folderid";
+    NewLine.Описание    = "Folder identifier";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UploadFileToFolder";
+    NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFolderFilterStructure";
     NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Параметр    = "--url";
