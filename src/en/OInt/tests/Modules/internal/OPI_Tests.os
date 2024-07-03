@@ -2876,7 +2876,7 @@ Procedure B24_PostsManagment() Export
     Bitrix24_UpdatePost(TestParameters);
     Bitrix24_GetImportantPostViewers(TestParameters);
     Bitrix24_GetPosts(TestParameters);
-    Bitrix24_CreateComment(TestParameters);
+    Bitrix24_AddPostComment(TestParameters);
     Bitrix_AddPostRecipients(TestParameters);
     Bitrix24_DeletePost(TestParameters);
     
@@ -2999,8 +2999,8 @@ Procedure B24_CommentsManagment() Export
     OPI_TestDataRetrieval.WriteParameter("Bitrix24_CommentsTaskID", TaskID);    
     TestParameters.Insert("Bitrix24_CommentsTaskID", TaskID);
 
-    Bitrix24_CreateComment(TestParameters);
-    Bitrix24_DeleteComment(TestParameters);
+    Bitrix24_AddTaskComment(TestParameters);
+    Bitrix24_DeleteTaskComment(TestParameters);
         
     OPI_Bitrix24.DeleteTask(URL, TaskID);                  
     
@@ -6274,15 +6274,15 @@ Procedure Bitrix24_GetPosts(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrix24_CreateComment(FunctionParameters)
+Procedure Bitrix24_AddPostComment(FunctionParameters)
     
     Text = "Comment for post";
     PostID = FunctionParameters["Bitrix24_PostID"]; 
     URL = FunctionParameters["Bitrix24_URL"];
     
-    Result = OPI_Bitrix24.CrateComment(URL, PostID, Text);
+    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostComment (wh)", "Bitrix24");
     
     Check_BitrixNumber(Result); // SKIP
     
@@ -6290,11 +6290,11 @@ Procedure Bitrix24_CreateComment(FunctionParameters)
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
     
-    Result = OPI_Bitrix24.CrateComment(URL, PostID, Text, Token);
+    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);
     
     // END
         
-    OPI_TestDataRetrieval.WriteLog(Result, "CrateComment", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostComment", "Bitrix24");
     
     Check_BitrixNumber(Result); 
     
@@ -7641,16 +7641,16 @@ Procedure Bitrix24_UnmuteTask(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrix24_CreateComment(FunctionParameters)
+Procedure Bitrix24_AddTaskComment(FunctionParameters)
     
     URL = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
     
     Text = "Task impossible, let's split up";
     
-    Result = OPI_Bitrix24.CreateComment(URL, TaskID, Text);
+    Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskComment (wh)", "Bitrix24");
     
     Check_BitrixNumber(Result); // SKIP
                                                                                 
@@ -7663,11 +7663,11 @@ Procedure Bitrix24_CreateComment(FunctionParameters)
     
     Text = "Task uninpossible, don't split up";
       
-    Result = OPI_Bitrix24.CreateComment(URL, TaskID, Text, Token);
+    Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text, Token);
     
     // END
         
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskComment", "Bitrix24");
     
     Check_BitrixNumber(Result);
     
@@ -7677,15 +7677,15 @@ Procedure Bitrix24_CreateComment(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrix24_DeleteComment(FunctionParameters)
+Procedure Bitrix24_DeleteTaskComment(FunctionParameters)
     
     URL = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
     CommentID = FunctionParameters["Bitrix24_HookCommentID"];
         
-    Result = OPI_Bitrix24.DeleteComment(URL, TaskID, CommentID);
+    Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskComment (wh)", "Bitrix24");
     
     Check_BitrixTrue(Result); // SKIP
         
@@ -7693,11 +7693,11 @@ Procedure Bitrix24_DeleteComment(FunctionParameters)
     Token = FunctionParameters["Bitrix24_Token"];
     CommentID = FunctionParameters["Bitrix24_CommentID"];
       
-    Result = OPI_Bitrix24.DeleteComment(URL, TaskID, CommentID, Token);
+    Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID, Token);
     
     // END
         
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskComment", "Bitrix24");
     
     Check_BitrixTrue(Result);
    
