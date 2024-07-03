@@ -1135,6 +1135,109 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CheckTaskAccesses";
+    NewLine.МетодПоиска = "CHECKTASKACCESSES";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Checks the availability of the task for users";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CheckTaskAccesses";
+    NewLine.МетодПоиска = "CHECKTASKACCESSES";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CheckTaskAccesses";
+    NewLine.МетодПоиска = "CHECKTASKACCESSES";
+    NewLine.Параметр    = "--users";
+    NewLine.Описание    = "User IDs for access checking (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CheckTaskAccesses";
+    NewLine.МетодПоиска = "CHECKTASKACCESSES";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MuteTask";
+    NewLine.МетодПоиска = "MUTETASK";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Mute task by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MuteTask";
+    NewLine.МетодПоиска = "MUTETASK";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MuteTask";
+    NewLine.МетодПоиска = "MUTETASK";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UnmuteTask";
+    NewLine.МетодПоиска = "UNMUTETASK";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Unmute task by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UnmuteTask";
+    NewLine.МетодПоиска = "UNMUTETASK";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UnmuteTask";
+    NewLine.МетодПоиска = "UNMUTETASK";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTasksFilterStructure";
     NewLine.МетодПоиска = "GETTASKSFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";

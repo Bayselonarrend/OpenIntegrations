@@ -1565,7 +1565,7 @@ Procedure GT_CreateTable() Export
     
     OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
     
-    Name = "Test table (change.)";
+    Name = "Test table (changed.)";
     
     Result = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name);
     
@@ -1579,7 +1579,7 @@ Procedure GT_GetTable() Export
     
     Token = OPI_TestDataRetrieval.GetParameter("Google_Token");
     Spreadsheet = OPI_TestDataRetrieval.GetParameter("GS_Spreadsheet");
-    Name = "Test table (change.)";
+    Name = "Test table (changed.)";
 
     Result = OPI_GoogleSheets.GetSpreadsheet(Token, Spreadsheet);
     
@@ -2895,6 +2895,8 @@ Procedure B24_TaskManagment() Export
     Bitrix24_CreateTask(TestParameters);
     Bitrix24_UpdateTask(TestParameters);
     Bitrix24_GetTask(TestParameters);
+    Bitrix24_MuteTask(TestParameters);
+    Bitrix24_UnmuteTask(TestParameters);
     Bitrix24_AddTaskToFavorites(TestParameters);
     Bitrix24_RemoveTaskFromFavorites(TestParameters);
     Bitrix24_DelegateTask(TestParameters);
@@ -2909,6 +2911,7 @@ Procedure B24_TaskManagment() Export
     Bitrix24_PauseTask(TestParameters);   
     Bitrix24_GetTaskHistory(TestParameters);
     Bitrix24_GetTasksList(TestParameters);
+    Bitrix24_CheckTaskAccesses(TestParameters);
          
     Name = "Topic picture.jpg";
     Image = TestParameters["Picture"]; 
@@ -3584,6 +3587,16 @@ Procedure Check_BitrixAttachment(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["attachmentId"]).Заполнено();
 EndProcedure
 
+Procedure Check_BitrixAvailableActions(Val Result, Val Count)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
+    
+    Actions = Result["result"]["allowedActions"];
+    OPI_TestDataRetrieval.ExpectsThat(Actions).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Actions.Count()).Равно(Count);
+    
+EndProcedure
+    
 #EndRegion
 
 #Region AtomicTests
@@ -7438,7 +7451,7 @@ EndProcedure
 Procedure Bitrix24_RenameFile(FunctionParameters)
     
     Name = "New file name.jpg";
-    Filename2 = "New file name.jpg";
+    Filename2 = "New file name 2.jpg";
     
     FileID2 = FunctionParameters["Bitrix24_HookFileID"];
     URL = FunctionParameters["Bitrix24_URL"];
@@ -7513,6 +7526,85 @@ Procedure Bitrix24_AttachFileToTopic(FunctionParameters)
     
     Check_BitrixAttachment(Result);
      
+EndProcedure
+
+Procedure Bitrix24_CheckTaskAccesses(FunctionParameters)
+    
+    ArrayOfUsers = New Array;
+    ArrayOfUsers.Add("1");
+    ArrayOfUsers.Add("10");
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CheckTaskAccesses (wh)", "Bitrix24");
+    
+    Check_BitrixAvailableActions(Result, ArrayOfUsers.Count()); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CheckTaskAccesses", "Bitrix24");
+    
+    Check_BitrixAvailableActions(Result, ArrayOfUsers.Count());
+    
+EndProcedure
+
+Procedure Bitrix24_MuteTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.MuteTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MuteTask (wh)", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.MuteTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MuteTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_UnmuteTask(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+        
+    Result = OPI_Bitrix24.UnmuteTask(URL, TaskID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UnmuteTask (wh)", "Bitrix24");
+    
+    Check_BitrixTask(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.UnmuteTask(URL, TaskID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UnmuteTask", "Bitrix24");
+    
+    Check_BitrixTask(Result);
+    
 EndProcedure
 
 #EndRegion
