@@ -2888,7 +2888,8 @@ Procedure B24_TaskManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_UserID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_UserID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
     
     Bitrix24_GetTaskFieldsStructure(TestParameters);
     Bitrix24_CreateTask(TestParameters);
@@ -2908,8 +2909,25 @@ Procedure B24_TaskManagment() Export
     Bitrix24_PauseTask(TestParameters);   
     Bitrix24_GetTaskHistory(TestParameters);
     Bitrix24_GetTasksList(TestParameters);
-    Bitrix24_DeleteTask(TestParameters);
+         
+    Name = "Topic picture.jpg";
+    Image = TestParameters["Picture"]; 
+    DestinationID = 3;
     
+    URL = TestParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.UploadFileToStorage(URL, Name, Image, DestinationID);
+    FileID = Result["result"]["ID"];                                     
+      
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_TaskFileID", FileID);    
+    TestParameters.Insert("Bitrix24_TaskFileID", FileID);
+    
+    Bitrix24_AttachFileToTopic(TestParameters);                 
+    
+    OPI_Bitrix24.DeleteFile(URL, FileID);
+    
+    Bitrix24_DeleteTask(TestParameters);
+      
 EndProcedure
 
 Procedure B24_WorkingWithDrive() Export
@@ -2927,14 +2945,21 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_GetStorage(TestParameters);
     Bitrix24_UploadFileToStorage(TestParameters);
     Bitrix24_GetStorageObjects(TestParameters);
-    Bitrix24_DeleteFile(TestParameters);
+    Bitrix24_GetFileInformation(TestParameters);
+    Bitrix24_GetFileExternalLink(TestParameters);
+    Bitrix24_RenameFile(TestParameters);
+    Bitrxi24_MarkFileAsDeleted(TestParameters);
+    Bitrix24_RestoreFile(TestParameters);
     Bitrix24_CreateStorageFolder(TestParameters);
     Bitrix24_RenameFolder(TestParameters);
-    Bitrix24_GetFolder(TestParameters);
+    Bitrix24_GetFolderInformation(TestParameters);
     Bitrix24_GetFolderExternalLink(TestParameters);
     Bitrix24_CreateSubfolder(TestParameters);
-    Bitrix24_CopyFolder(TestParameters);
+    Bitrix24_MoveFileToFolder(TestParameters);
+    Bitrxi24_MakeFolderCopy(TestParameters);
     Bitrxi24_UploadFileToFolder(TestParameters);
+    Bitrix24_MakeCopyFile(TestParameters);
+    Bitrix24_DeleteFile(TestParameters);
     Bitrix24_GetFolderFilterStructure(TestParameters);
     Bitrix24_GetFolderItems(TestParameters);
     Bitrix24_MoveFolder(TestParameters);
@@ -3521,7 +3546,7 @@ Procedure Check_BitrixList(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["list"]).ИмеетТип("Array");
 EndProcedure
 
-Procedure Check_BitrixPostsArray(Val Result)
+Procedure Check_BitrixObjectsArray(Val Result)
     
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["ID"]).Заполнено();
@@ -3552,6 +3577,11 @@ EndProcedure
 Procedure Check_BitrixFile(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["ID"]).Заполнено();
+EndProcedure
+
+Procedure Check_BitrixAttachment(Val Result)
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["attachmentId"]).Заполнено();
 EndProcedure
 
 #EndRegion
@@ -6182,7 +6212,7 @@ Procedure Bitrix24_GetPosts(FunctionParameters)
         
     OPI_TestDataRetrieval.WriteLog(Result, "GetPosts (wh)", "Bitrix24");
     
-    Check_BitrixPostsArray(Result); // SKIP
+    Check_BitrixObjectsArray(Result); // SKIP
     
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -6193,7 +6223,7 @@ Procedure Bitrix24_GetPosts(FunctionParameters)
         
     OPI_TestDataRetrieval.WriteLog(Result, "GetPosts", "Bitrix24");
     
-    Check_BitrixPostsArray(Result); 
+    Check_BitrixObjectsArray(Result); 
     
 EndProcedure
 
@@ -6987,25 +7017,25 @@ Procedure Bitrix24_RenameStorage(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrix24_GetFolder(FunctionParameters)
+Procedure Bitrix24_GetFolderInformation(FunctionParameters)
    
     URL = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
     
-    Result = OPI_Bitrix24.GetFolder(URL, FolderID);
+    Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderInformation (wh)", "Bitrix24");
     
     Check_BitrixFile(Result); // SKIP
             
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
        
-    Result = OPI_Bitrix24.GetFolder(URL, FolderID, Token);
+    Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID, Token);
     
     // END
         
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFolder", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderInformation", "Bitrix24");
     
     Check_BitrixFile(Result);
      
@@ -7046,16 +7076,16 @@ Procedure Bitrix24_CreateSubfolder(FunctionParameters)
     
 EndProcedure
 
-Procedure Bitrix24_CopyFolder(FunctionParameters)
+Procedure Bitrxi24_MakeFolderCopy(FunctionParameters)
     
     DestinationID = FunctionParameters["Bitrix24_HookSubfolderID"];
     FolderID = FunctionParameters["Bitrix24_SubfolderID"];
     
     URL = FunctionParameters["Bitrix24_URL"];
     
-    Result = OPI_Bitrix24.CopyFolder(URL, FolderID, DestinationID);
+    Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "CopyFolder (wh)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFolderCopy (wh)", "Bitrix24");
     
     Check_BitrixFile(Result); // SKIP
     
@@ -7065,9 +7095,9 @@ Procedure Bitrix24_CopyFolder(FunctionParameters)
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
     
-    Result = OPI_Bitrix24.CopyFolder(URL, FolderID, DestinationID, Token);
+    Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID, Token);
         
-    OPI_TestDataRetrieval.WriteLog(Result, "CopyFolder", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFolderCopy", "Bitrix24");
     
     Check_BitrixFile(Result); 
     
@@ -7281,6 +7311,208 @@ Procedure Bitrxi24_UploadFileToFolder(FunctionParameters)
     FileID = Result["result"]["ID"];
     Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);                                                
     
+EndProcedure
+
+Procedure Bitrix24_MakeCopyFile(FunctionParameters)
+    
+    FolderID = FunctionParameters["Bitrix24_HookFolderID"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeCopyFile (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+    
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID, Token);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeCopyFile", "Bitrix24");
+    
+    Check_BitrixFile(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_GetFileInformation(FunctionParameters)
+   
+    URL = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    
+    Result = OPI_Bitrix24.GetFileInformation(URL, FileID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.GetFileInformation(URL, FileID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "Bitrix24");
+    
+    Check_BitrixFile(Result);
+     
+EndProcedure
+
+Procedure Bitrix24_GetFileExternalLink(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    
+    Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileExternalLink (wh)", "Bitrix24");
+    
+    Check_BitrixString(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileExternalLink", "Bitrix24");
+    
+    Check_BitrixString(Result);
+    
+EndProcedure
+
+Procedure Bitrxi24_MarkFileAsDeleted(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    
+    Result = OPI_Bitrix24.MarkFileAsDeleted(URL, FileID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkFileAsDeleted (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.MarkFileAsDeleted(URL, FileID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkFileAsDeleted", "Bitrix24");
+    
+    Check_BitrixFile(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_RestoreFile(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    
+    Result = OPI_Bitrix24.RestoreFile(URL, FileID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreFile (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+       
+    Result = OPI_Bitrix24.RestoreFile(URL, FileID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreFile", "Bitrix24");
+    
+    Check_BitrixFile(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_RenameFile(FunctionParameters)
+    
+    Name = "New file name.jpg";
+    Filename2 = "New file name.jpg";
+    
+    FileID2 = FunctionParameters["Bitrix24_HookFileID"];
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFile (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFile", "Bitrix24");
+    
+    Check_BitrixFile(Result);           
+     
+EndProcedure
+
+Procedure Bitrix24_MoveFileToFolder(FunctionParameters)
+    
+    FolderID = FunctionParameters["Bitrix24_HookSubFolderID"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFileToFolder (wh)", "Bitrix24");
+    
+    Check_BitrixFile(Result); // SKIP
+    
+    FolderID = FunctionParameters["Bitrix24_SubFolderID"];
+
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID, Token);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFileToFolder", "Bitrix24");
+    
+    Check_BitrixFile(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_AttachFileToTopic(FunctionParameters)
+   
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+    FileID = FunctionParameters["Bitrix24_TaskFileID"];
+        
+    Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "AttachFileToTopic (wh)", "Bitrix24");
+    
+    Check_BitrixAttachment(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    
+    Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "AttachFileToTopic", "Bitrix24");
+    
+    Check_BitrixAttachment(Result);
+     
 EndProcedure
 
 #EndRegion
