@@ -483,6 +483,30 @@ Function DeleteTask(Val URL, Val TaskID, Val Token = "") Export
     
 EndFunction
 
+// Attach file to the topic
+// Attaches a file to the selected task
+// 
+// Parameters:
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// FileID - Number, String - File ID - fileid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AttachFileToTopic(Val URL, Val TaskID, Val FileID, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.files.attach");
+    OPI_Tools.AddField("fileId", FileID , "String", Parameters);
+    OPI_Tools.AddField("taskId", TaskID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+        
+EndFunction
+
 // Approve task
 // Approve task by ID
 // 
@@ -992,7 +1016,7 @@ Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") E
     
 EndFunction
 
-// Get folder information
+// Get information about folder
 // Get folder information
 // 
 // Parameters:
@@ -1002,7 +1026,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetFolder(Val URL, Val FolderID, Val Token = "") Export
+Function GetFolderInformation(Val URL, Val FolderID, Val Token = "") Export
     
     Response = FileManagement(URL, FolderID, "disk.folder.get", Token);
     Return Response;
@@ -1048,7 +1072,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function CopyFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
+Function MakeFolderCopy(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
     
     Parameters = NormalizeAuth(URL, Token, "disk.folder.copyto");
     
@@ -1229,11 +1253,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function UploadFileToFolder(Val URL
-    , Val Name
-    , Val File
-    , Val FolderID
-    , Val Token = "") Export
+Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token = "") Export
 
 
     OPI_TypeConversion.GetLine(Name);
@@ -1268,6 +1288,146 @@ Function UploadFileToFolder(Val URL
     
     Return Response;  
       
+EndFunction
+
+// Get information about file
+// Get information about file by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier - fileid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFileInformation(Val URL, Val FileID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FileID, "disk.file.get", Token);
+    Return Response;
+    
+EndFunction
+
+// Get external link for a file
+// Get external link to file
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier - fileid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFileExternalLink(Val URL, Val FileID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FileID, "disk.file.getExternalLink", Token);
+    Return Response;
+    
+EndFunction
+
+// Mark file as deleted
+// Move file to recycle bin
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier - fileid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MarkFileAsDeleted(Val URL, Val FileID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FileID, "disk.file.markdeleted", Token);
+    Return Response;
+    
+EndFunction
+
+// Restore file
+// Restore file from recycle bin
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier - fileid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RestoreFile(Val URL, Val FileID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FileID, "disk.file.restore", Token);
+    Return Response;
+    
+EndFunction
+
+// Copy file
+// Copy file from one destination to another
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - Original file ID - fileid
+// FolderID - String, Number - ID of copy destination folder - folderid                                   
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MakeFileCopy(Val URL, Val FileID, Val FolderID, Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "disk.file.copyto");
+    
+    OPI_Tools.AddField("id" , FileID , "String", Parameters);
+    OPI_Tools.AddField("targetFolderId", FolderID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
+// Move file
+// Move file from one destination to another
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File ID - fileid
+// FolderID - String, Number - ID of new destination folder - folderid                                   
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MoveFileToFolder(Val URL, Val FileID, Val FolderID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.file.moveto");
+    
+    OPI_Tools.AddField("id" , FileID , "String", Parameters);
+    OPI_Tools.AddField("targetFolderId", FolderID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
+// Rename file
+// Changes the name of an existing file
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - File identifier - fileid
+// Name - String - New folders name - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RenameFile(Val URL, Val FileID, Val Name, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.file.rename");
+    
+    OPI_Tools.AddField("id" , FileID , "String", Parameters);
+    OPI_Tools.AddField("newName", Name, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
 EndFunction
 
 // Get fields structure for folder items filter
