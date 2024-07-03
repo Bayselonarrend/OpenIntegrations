@@ -757,6 +757,63 @@ Function GetTaskCommentsList(Val URL, Val TaskID, Val Filter = "", Val Token = "
     
 EndFunction
 
+// Check task acesses for users
+// Checks the availability of the task for users
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Users - Array of String - User IDs for access checking - users
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CheckTaskAccesses(Val URL, Val TaskID, Val Users = "", Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.getaccess");
+    OPI_Tools.AddField("taskId", TaskID , "String" , Parameters);
+    OPI_Tools.AddField("users" , Users, "Array", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+        
+EndFunction
+
+// Mute task
+// Mute task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MuteTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.mute", Token);
+    Return Response;
+    
+EndFunction
+
+// Unmute task
+// Unmute task by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UnmuteTask(Val URL, Val TaskID, Val Token = "") Export
+    
+    Response = ManageTask(URL, TaskID, "tasks.task.unmute", Token);
+    Return Response;
+    
+EndFunction
+
 // Get structure of tasks filter
 // Return filter structure for GetTasksList
 // 
