@@ -364,24 +364,6 @@ EndFunction
 
 #Region TasksManagment
 
-// Get task fields structure
-// Gets a structure with a description of the fields for creating a task
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetTaskFieldsStructure(Val URL, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "tasks.task.getFields");
-    Response = OPI_Tools.Get(URL, Parameters);
-    
-    Return Response;
-    
-EndFunction    
-
 // Get task
 // Get task by ID
 // 
@@ -427,7 +409,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure of Key-Value - Task fields structure - fields
+// FieldsStructure - Structure of Key-Value - Task fields structure (see GetTaskFieldsStructure) - fields
 // Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
@@ -734,29 +716,6 @@ Function GetTaskHistory(Val URL, Val TaskID, Val Token = "") Export
     
 EndFunction
 
-// Get comments list for a task
-// Get user comments list for a task
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// TaskID - Number, String - Task ID - task
-// Filter - Structure of Key-Value - Comments filter structure (see GetCommentsFilterStructure) - filter
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetTaskCommentsList(Val URL, Val TaskID, Val Filter = "", Val Token = "") Export
-
-    Parameters = NormalizeAuth(URL, Token, "tasks.task.delegate");
-    OPI_Tools.AddField("TASKID", TaskID, "String" , Parameters);
-    OPI_Tools.AddField("FILTER", Filter , "Collection", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;
-    
-EndFunction
-
 // Check task acesses for users
 // Checks the availability of the task for users
 // 
@@ -814,6 +773,24 @@ Function UnmuteTask(Val URL, Val TaskID, Val Token = "") Export
     
 EndFunction
 
+// Get task fields structure
+// Gets a structure with a description of the fields for creating a task
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskFieldsStructure(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.getFields");
+    Response = OPI_Tools.Get(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction    
+
 // Get structure of tasks filter
 // Return filter structure for GetTasksList
 // 
@@ -869,6 +846,117 @@ Function GetTasksFilterStructure(Val Clear = False) Export
         
 EndFunction
 
+#EndRegion
+
+#Region CommentsAndResultsManagment
+
+// Get comments list for a task
+// Get user comments list for a task
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Filter - Structure of Key-Value - Comments filter structure (see GetCommentsFilterStructure) - filter
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskCommentsList(Val URL, Val TaskID, Val Filter = "", Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "task.commentitem.getlist");
+    OPI_Tools.AddField("TASKID", TaskID, "String" , Parameters);
+    OPI_Tools.AddField("FILTER", Filter , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Create comment
+// Create new comment to the task
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Text - String - Comment text - text
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateComment(Val URL, Val TaskID, Val Text, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.commentitem.add");
+    
+    Comment = New Structure;
+    OPI_Tools.AddField("POST_MESSAGE", Text, "String", Comment);
+    
+    OPI_Tools.AddField("TASKID", TaskID , "String" , Parameters);
+    OPI_Tools.AddField("FIELDS", Comment, "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Delete comment
+// Delete task comment by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// CommentID - Number, String - ID of comment to remove - comment
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export
+      
+    Parameters = NormalizeAuth(URL, Token, "task.commentitem.delete");
+    OPI_Tools.AddField("TASKID", TaskID , "String", Parameters);
+    OPI_Tools.AddField("ITEMID", CommentID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+      
+EndFunction
+
+// Get comment structure
+// Get comment fields structure
+// 
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//  
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetCommentStructure(Val Clear = False) Export
+    
+    // More
+    // https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/add.php
+    
+    OPI_TypeConversion.GetBoolean(Clear);
+    
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("AUTHOR_ID" , "<comment author identifier>");
+    FieldsStructure.Insert("AUTHOR_NAME" , "<Name of user (optional)>");
+    FieldsStructure.Insert("AUTHOR_EMAIL" , "<E-mail of user (optional)>");
+    FieldsStructure.Insert("USE_SMILES" , "<(Y|N) - parse comments for emoticons or not>");
+    FieldsStructure.Insert("POST_MESSAGE" , "<Message text>");
+    FieldsStructure.Insert("UF_FORUM_MESSAGE_DOC" , "<Files array with of drive for of attachments>");
+    
+    If Clear Then
+        For Each Field In FieldsStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+        
+    //@skip-check constructor-function-return-section
+    Return FieldsStructure;
+    
+EndFunction
+
 // Get structure of comments filter
 // Return filter structure for GetTaskCommentsList
 // 
@@ -878,27 +966,27 @@ EndFunction
 // Returns:
 // Structure of Key-Value - Fields structure 
 Function GetCommentsFilterStructure(Val Clear = False) Export
-	
-	// More
-	// https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php
-	
-	OPI_TypeConversion.GetBoolean(Clear);
-	
-	FilterStructure = New Structure;
-	FilterStructure.Insert("ID" , "<comment identifier>");
-	FilterStructure.Insert("AUTHOR_ID " , "<comment author identifier>");
-	FilterStructure.Insert("AUTHOR_NAME ", "<author's name>");
-	FilterStructure.Insert("POST_DATE " , "<comment publication date>");
-	
-	If Clear Then
-    	For Each Filter In FilterStructure Do
-    		Filter.Value = "";
-    	EndDo;
-	EndIf;
-	    
+    
+    // More
+    // https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php
+    
+    OPI_TypeConversion.GetBoolean(Clear);
+    
+    FilterStructure = New Structure;
+    FilterStructure.Insert("ID" , "<comment identifier>");
+    FilterStructure.Insert("AUTHOR_ID " , "<comment author identifier>");
+    FilterStructure.Insert("AUTHOR_NAME ", "<author's name>");
+    FilterStructure.Insert("POST_DATE " , "<comment publication date>");
+    
+    If Clear Then
+        For Each Filter In FilterStructure Do
+            Filter.Value = "";
+        EndDo;
+    EndIf;
+        
     //@skip-check constructor-function-return-section
-	Return FilterStructure;
-	
+    Return FilterStructure;
+    
 EndFunction
 
 #EndRegion
