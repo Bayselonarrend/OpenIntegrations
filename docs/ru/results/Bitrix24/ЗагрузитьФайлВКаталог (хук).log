@@ -1,0 +1,22 @@
+﻿    {
+ "result": {
+  "ID": 1738,
+  "NAME": "Картинка2.jpg",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "file",
+  "PARENT_ID": "1722",
+  "DELETED_TYPE": 0,
+  "GLOBAL_CONTENT_VERSION": 1,
+  "FILE_ID": 1140,
+  "SIZE": "2114023",
+  "CREATE_TIME": "2024-07-03T14:42:49+00:00",
+  "UPDATE_TIME": "2024-07-03T14:42:49+00:00",
+  "DELETE_TIME": null,
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": null,
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/download/?token=disk%7CaWQ9MTczOCZfPXRPSERjNGlDUHZsRzE5ZFRoSFZqS2xWSHhqQmw4V3lk%7CImRvd25sb2FkfGRpc2t8YVdROU1UY3pPQ1pmUFhSUFNFUmpOR2xEVUhac1J6RTVaRlJvU0ZacVMyeFdTSGhxUW13NFYzbGt8MXxmMnBwaDh1dWNjODlpczZjIg%3D%3D.5U5MKWi63XbYLuRco0HQCOoYJuO74BSI9MnH9H%2FUgDY%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Картинка2.jpg"
+ }
+}
