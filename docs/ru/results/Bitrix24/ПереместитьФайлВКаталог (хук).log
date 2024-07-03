@@ -1,0 +1,32 @@
+﻿    {
+ "result": {
+  "ID": "1716",
+  "NAME": "Новое имя файла.jpg",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "file",
+  "PARENT_ID": 1724,
+  "DELETED_TYPE": "0",
+  "GLOBAL_CONTENT_VERSION": "1",
+  "FILE_ID": "1134",
+  "SIZE": "805189",
+  "CREATE_TIME": "2024-07-03T14:42:28+00:00",
+  "UPDATE_TIME": "2024-07-03T14:42:36+00:00",
+  "DELETE_TIME": "2024-07-03T14:42:34+00:00",
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": "1",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/download/?token=disk%7CaWQ9MTcxNiZfPUc0SU9VOXN2QlpwaXdvRVYyQjZPbmljRWRSNDFyOXlv%7CImRvd25sb2FkfGRpc2t8YVdROU1UY3hOaVpmUFVjMFNVOVZPWE4yUWxwd2FYZHZSVll5UWpaUGJtbGpSV1JTTkRGeU9YbHZ8MXxmMnBwaDh1dWNjODlpczZjIg%3D%3D.vBcqyrYYG85BOZj2N9XKioJ7DIeDcuAddoU%2F%2FfWhzjM%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Новый подкаталог 2/Новое имя файла.jpg"
+ },
+ "time": {
+  "start": 1720017763.89076,
+  "finish": 1720017763.94792,
+  "duration": 0.057161808013916,
+  "processing": 0.0271549224853516,
+  "date_start": "2024-07-03T14:42:43+00:00",
+  "date_finish": "2024-07-03T14:42:43+00:00",
+  "operating_reset_at": 1720018363,
+  "operating": 0
+ }
+}
