@@ -1056,6 +1056,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Б24_РаботаСЗадачами"
 
+      - name: Работа с комментариями
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Б24_РаботаСКомментариями"
+
       - name: Работа с диском
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Б24_РаботаСДиском"
