@@ -2972,6 +2972,40 @@ Procedure B24_WorkingWithDrive() Export
         
 EndProcedure
 
+Procedure B24_CommentsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+      
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Hour = 3600;
+    Day = 24;
+    Responsible = 1;
+    
+    TaskData = New Structure;
+    TaskData.Insert("TITLE" , "New task");
+    TaskData.Insert("DESCRIPTION" , "New task description");
+    TaskData.Insert("PRIORITY" , "2");
+    TaskData.Insert("DEADLINE" , CurrentDate + Hour * Day);
+    TaskData.Insert("RESPONSIBLE_ID", Responsible);
+    
+    URL = TestParameters["Bitrix24_URL"];
+        
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData);
+    TaskID = Result["result"]["task"]["id"];               
+    
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_CommentsTaskID", TaskID);    
+    TestParameters.Insert("Bitrix24_CommentsTaskID", TaskID);
+
+    Bitrix24_CreateComment(TestParameters);
+    Bitrix24_DeleteComment(TestParameters);
+        
+    OPI_Bitrix24.DeleteTask(URL, TaskID);                  
+    
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -7605,6 +7639,68 @@ Procedure Bitrix24_UnmuteTask(FunctionParameters)
     
     Check_BitrixTask(Result);
     
+EndProcedure
+
+Procedure Bitrix24_CreateComment(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
+    
+    Text = "Task impossible, let's split up";
+    
+    Result = OPI_Bitrix24.CreateComment(URL, TaskID, Text);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateComment (хуto)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+                                                                                
+    CommentID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookCommentID", CommentID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_HookCommentID", CommentID); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Text = "Task uninpossible, don't split up";
+      
+    Result = OPI_Bitrix24.CreateComment(URL, TaskID, Text, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "Bitrix24");
+    
+    Check_BitrixNumber(Result);
+    
+    CommentID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_CommentID", CommentID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_CommentID", CommentID); // SKIP
+    
+EndProcedure
+
+Procedure Bitrix24_DeleteComment(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+        
+    Result = OPI_Bitrix24.DeleteComment(URL, TaskID, CommentID);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment (хуto)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+      
+    Result = OPI_Bitrix24.DeleteComment(URL, TaskID, CommentID, Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+   
 EndProcedure
 
 #EndRegion
