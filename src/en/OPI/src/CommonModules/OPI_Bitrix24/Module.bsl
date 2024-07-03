@@ -312,7 +312,7 @@ Function GetPosts(Val URL, Val PostID = "", Val Filter = "UA", Val Token = "") E
     
 EndFunction
 
-// Create comment
+// Add comment to post
 // Adds a comment to the post
 // 
 // Parameters:
@@ -323,7 +323,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function CrateComment(Val URL, Val PostID, Val Text, Val Token = "") Export
+Function AddPostComment(Val URL, Val PostID, Val Text, Val Token = "") Export
     
     Parameters = NormalizeAuth(URL, Token, "log.blogcomment.add");
     
@@ -873,7 +873,7 @@ Function GetTaskCommentsList(Val URL, Val TaskID, Val Filter = "", Val Token = "
     
 EndFunction
 
-// Create comment
+// Add comment to task
 // Create new comment to the task
 // 
 // Parameters:
@@ -884,7 +884,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function CreateComment(Val URL, Val TaskID, Val Text, Val Token = "") Export
+Function AddTaskComment(Val URL, Val TaskID, Val Text, Val Token = "") Export
     
     Parameters = NormalizeAuth(URL, Token, "task.commentitem.add");
     
@@ -911,7 +911,7 @@ EndFunction
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function DeleteComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export
+Function DeleteTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export
       
     Parameters = NormalizeAuth(URL, Token, "task.commentitem.delete");
     OPI_Tools.AddField("TASKID", TaskID , "String", Parameters);
