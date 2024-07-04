@@ -56,7 +56,7 @@
     NewLine.Библиотека  = "tools";
     NewLine.Модуль      = "Tools";
     NewLine.Метод       = "ConvertBase64ToBinary";
-    NewLine.МетодПоиска = "ПРЕОБРАЗОInАТЬBASE64InДInОAndЧNЫЕ";
+    NewLine.МетодПоиска = "ПРЕОБРАЗОInATЬBASE64InДInОAndЧNЫЕ";
     NewLine.Параметр    = "--in";
     NewLine.Описание    = "Base64 File";
     NewLine.Область     = "Service";

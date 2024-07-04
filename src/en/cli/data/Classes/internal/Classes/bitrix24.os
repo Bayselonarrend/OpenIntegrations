@@ -1176,6 +1176,108 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateTasksDependencies";
+    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Creates the dependency of one task to another";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateTasksDependencies";
+    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--taskfrom";
+    NewLine.Описание    = "From task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateTasksDependencies";
+    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--taskto";
+    NewLine.Описание    = "To task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateTasksDependencies";
+    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--linktype";
+    NewLine.Описание    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateTasksDependencies";
+    NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksDependencies";
+    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Removes the dependency of one task to another";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksDependencies";
+    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--taskfrom";
+    NewLine.Описание    = "From task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksDependencies";
+    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--taskto";
+    NewLine.Описание    = "To task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksDependencies";
+    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--linktype";
+    NewLine.Описание    = "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksDependencies";
+    NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskFieldsStructure";
     NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
     NewLine.Параметр    = "--url";
@@ -1231,16 +1333,47 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskCommentsList";
     NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
-    NewLine.Параметр    = "--Comments filter structure (see GetCommentsFilterStructure)";
-    NewLine.Описание    = "filter (optional, def. val. - Empty)";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Comments and results managment";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetTaskCommentsList";
-    NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
+    NewLine.Метод       = "GetTaskComment";
+    NewLine.МетодПоиска = "GETTASKCOMMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Comments and results managment";
+    NewLine.ОписаниеМетода   = "Gets task comment data by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskComment";
+    NewLine.МетодПоиска = "GETTASKCOMMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskComment";
+    NewLine.МетодПоиска = "GETTASKCOMMENT";
+    NewLine.Параметр    = "--comment";
+    NewLine.Описание    = "CommentID";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskComment";
+    NewLine.МетодПоиска = "GETTASKCOMMENT";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty)";
     NewLine.Область     = "Comments and results managment";
@@ -1290,6 +1423,57 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskComment";
+    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Comments and results managment";
+    NewLine.ОписаниеМетода   = "Changes task comment text";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskComment";
+    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskComment";
+    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
+    NewLine.Параметр    = "--comment";
+    NewLine.Описание    = "CommentID";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskComment";
+    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Comment text";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskComment";
+    NewLine.МетодПоиска = "UPDATETASKCOMMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteTaskComment";
     NewLine.МетодПоиска = "DELETETASKCOMMENT";
     NewLine.Параметр    = "--url";
@@ -1331,23 +1515,105 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetResultsList";
+    NewLine.МетодПоиска = "GETRESULTSLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Comments and results managment";
+    NewLine.ОписаниеМетода   = "Gets results list for task";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetResultsList";
+    NewLine.МетодПоиска = "GETRESULTSLIST";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetResultsList";
+    NewLine.МетодПоиска = "GETRESULTSLIST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateResultFromComment";
+    NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Comments and results managment";
+    NewLine.ОписаниеМетода   = "Create task result from comment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateResultFromComment";
+    NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
+    NewLine.Параметр    = "--comment";
+    NewLine.Описание    = "CommentID";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateResultFromComment";
+    NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteResultFromComment";
+    NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Comments and results managment";
+    NewLine.ОписаниеМетода   = "Deletes task result, created from a comment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteResultFromComment";
+    NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
+    NewLine.Параметр    = "--comment";
+    NewLine.Описание    = "CommentID";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteResultFromComment";
+    NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Область     = "Comments and results managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetCommentStructure";
     NewLine.МетодПоиска = "GETCOMMENTSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Область     = "Comments and results managment";
     NewLine.ОписаниеМетода   = "Get comment fields structure";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "bitrix24";
-    NewLine.Модуль      = "OPI_Bitrix24";
-    NewLine.Метод       = "GetCommentsFilterStructure";
-    NewLine.МетодПоиска = "GETCOMMENTSFILTERSTRUCTURE";
-    NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
-    NewLine.Область     = "Comments and results managment";
-    NewLine.ОписаниеМетода   = "Return filter structure for GetTaskCommentsList";
 
 
     NewLine = CompositionTable.Add();
