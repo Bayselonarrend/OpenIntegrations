@@ -773,6 +773,60 @@ Function UnmuteTask(Val URL, Val TaskID, Val Token = "") Export
     
 EndFunction
 
+// Create tasks dependencies
+// Creates the dependency of one task to another
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FromID - String, Number - From task ID - taskfrom
+// DestinationID - String, Number - To task ID - taskto
+// LinkType - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateTasksDependencies(Val URL, Val FromID, Val DestinationID, Val LinkType, Val Token = "") Export
+    
+    OPI_TypeConversion.GetLine(LinkType);
+    
+    Parameters = NormalizeAuth(URL, Token, "task.dependence.add");
+    OPI_Tools.AddField("taskIdFrom", FromID, "String" , Parameters);
+    OPI_Tools.AddField("taskIdTo" , DestinationID, "String" , Parameters);
+    OPI_Tools.AddField("linkType" , LinkType , "String" , Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+     
+EndFunction
+
+// Delete tasks dependencies
+// Removes the dependency of one task to another
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FromID - String, Number - From task ID - taskfrom
+// DestinationID - String, Number - To task ID - taskto
+// LinkType - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteTasksDependencies(Val URL, Val FromID, Val DestinationID, Val LinkType, Val Token = "") Export
+    
+    OPI_TypeConversion.GetLine(LinkType);
+    
+    Parameters = NormalizeAuth(URL, Token, "task.dependence.delete");
+    OPI_Tools.AddField("taskIdFrom", FromID, "String" , Parameters);
+    OPI_Tools.AddField("taskIdTo" , DestinationID, "String" , Parameters);
+    OPI_Tools.AddField("linkType" , LinkType , "String" , Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+     
+EndFunction
+
 // Get task fields structure
 // Gets a structure with a description of the fields for creating a task
 // 
@@ -856,16 +910,33 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Filter - Structure of Key-Value - Comments filter structure (see GetCommentsFilterStructure) - filter
 // Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetTaskCommentsList(Val URL, Val TaskID, Val Filter = "", Val Token = "") Export
+Function GetTaskCommentsList(Val URL, Val TaskID, Val Token = "") Export
 
-    Parameters = NormalizeAuth(URL, Token, "task.commentitem.getlist");
-    OPI_Tools.AddField("TASKID", TaskID, "String" , Parameters);
-    OPI_Tools.AddField("FILTER", Filter , "Collection", Parameters);
+    Response = ManageTask(URL, TaskID, "task.commentitem.getlist", Token);
+    Return Response;
+
+EndFunction
+
+// Get task comment
+// Gets task comment data by ID
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// CommentID - Number, String - CommentID - comment
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.commentitem.get");
+    OPI_Tools.AddField("TASKID", TaskID , "String", Parameters);
+    OPI_Tools.AddField("ITEMID", CommentID, "String", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -900,6 +971,35 @@ Function AddTaskComment(Val URL, Val TaskID, Val Text, Val Token = "") Export
     
 EndFunction
 
+// Update task comment
+// Changes task comment text
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// CommentID - Number, String - CommentID - comment
+// Text - String - Comment text - text
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateTaskComment(Val URL, Val TaskID, Val CommentID, Val Text, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.commentitem.update");
+    
+    Comment = New Structure;
+    OPI_Tools.AddField("POST_MESSAGE", Text, "String", Comment);
+    
+    OPI_Tools.AddField("TASKID", TaskID , "String" , Parameters);
+    OPI_Tools.AddField("ITEMID", CommentID, "String" , Parameters);
+    OPI_Tools.AddField("FIELDS", Comment , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // Delete comment
 // Delete task comment by ID
 // 
@@ -921,6 +1021,65 @@ Function DeleteTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") E
     
     Return Response;
       
+EndFunction
+
+// Get results list
+// Gets results list for task
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetResultsList(Val URL, Val TaskID, Val Token = "") Export
+	
+	Response = ManageTask(URL, TaskID, "tasks.task.result.list", Token);
+    Return Response;
+    
+EndFunction
+
+// Create result from comment
+// Create task result from comment
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// CommentID - Number, String - CommentID - comment
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateResultFromComment(Val URL, Val CommentID, Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "tasks.task.result.addFromComment");
+    OPI_Tools.AddField("commentId", CommentID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Delete result from comment
+// Deletes task result, created from a comment
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// CommentID - Number, String - CommentID - comment
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteResultFromComment(Val URL, Val CommentID, Val Token = "") Export
+	
+	Parameters = NormalizeAuth(URL, Token, "tasks.task.result.deleteFromComment");
+    OPI_Tools.AddField("commentId", CommentID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
 EndFunction
 
 // Get comment structure
@@ -954,38 +1113,6 @@ Function GetCommentStructure(Val Clear = False) Export
         
     //@skip-check constructor-function-return-section
     Return FieldsStructure;
-    
-EndFunction
-
-// Get structure of comments filter
-// Return filter structure for GetTaskCommentsList
-// 
-// Parameters:
-// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-//  
-// Returns:
-// Structure of Key-Value - Fields structure 
-Function GetCommentsFilterStructure(Val Clear = False) Export
-    
-    // More
-    // https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php
-    
-    OPI_TypeConversion.GetBoolean(Clear);
-    
-    FilterStructure = New Structure;
-    FilterStructure.Insert("ID" , "<comment identifier>");
-    FilterStructure.Insert("AUTHOR_ID " , "<comment author identifier>");
-    FilterStructure.Insert("AUTHOR_NAME ", "<author's name>");
-    FilterStructure.Insert("POST_DATE " , "<comment publication date>");
-    
-    If Clear Then
-        For Each Filter In FilterStructure Do
-            Filter.Value = "";
-        EndDo;
-    EndIf;
-        
-    //@skip-check constructor-function-return-section
-    Return FilterStructure;
     
 EndFunction
 
