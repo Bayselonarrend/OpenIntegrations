@@ -27,7 +27,7 @@
     NewLine.Метод       = "GetListOfBases";
     NewLine.МетодПоиска = "GETLISTOFBASES";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Next page identifier of the base list from the previous request (optional, def. val. - Empty)";
+    NewLine.Описание    = "Next page identifier of the base list from the previous request (optional, def. val. - Empty value)";
     NewLine.Область     = "Working with databases";
 
 
@@ -169,7 +169,7 @@
     NewLine.Метод       = "CreateTable";
     NewLine.МетодПоиска = "CREATETABLE";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "Table description (optional, def. val. - Empty)";
+    NewLine.Описание    = "Table description (optional, def. val. - Empty value)";
     NewLine.Область     = "Table management";
 
 
@@ -210,7 +210,7 @@
     NewLine.Метод       = "ModifyTable";
     NewLine.МетодПоиска = "MODIFYTABLE";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New name (optional, def. val. - Empty)";
+    NewLine.Описание    = "New name (optional, def. val. - Empty value)";
     NewLine.Область     = "Table management";
 
 
@@ -220,7 +220,7 @@
     NewLine.Метод       = "ModifyTable";
     NewLine.МетодПоиска = "MODIFYTABLE";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "New description (optional, def. val. - Empty)";
+    NewLine.Описание    = "New description (optional, def. val. - Empty value)";
     NewLine.Область     = "Table management";
 
 
@@ -312,7 +312,7 @@
     NewLine.Метод       = "ModifyField";
     NewLine.МетодПоиска = "MODIFYFIELD";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New name (optional, def. val. - Empty)";
+    NewLine.Описание    = "New name (optional, def. val. - Empty value)";
     NewLine.Область     = "Working with fields";
 
 
@@ -322,7 +322,7 @@
     NewLine.Метод       = "ModifyField";
     NewLine.МетодПоиска = "MODIFYFIELD";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "New description (optional, def. val. - Empty)";
+    NewLine.Описание    = "New description (optional, def. val. - Empty value)";
     NewLine.Область     = "Working with fields";
 
 
@@ -354,7 +354,7 @@
     NewLine.Метод       = "GetNumberField";
     NewLine.МетодПоиска = "GETNUMBERFIELD";
     NewLine.Параметр    = "--precision";
-    NewLine.Описание    = "Number of decimal places (optional, def. val. - Empty)";
+    NewLine.Описание    = "Number of decimal places (optional, def. val. - Empty value)";
     NewLine.Область     = "Working with fields";
 
 
@@ -461,7 +461,7 @@
     NewLine.Метод       = "GetListOfRecords";
     NewLine.МетодПоиска = "GETLISTOFRECORDS";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Next page identifier of data from the previous request (optional, def. val. - Empty)";
+    NewLine.Описание    = "Next page identifier of data from the previous request (optional, def. val. - Empty value)";
     NewLine.Область     = "Record management";
 
 
@@ -635,7 +635,7 @@
     NewLine.Метод       = "GetComments";
     NewLine.МетодПоиска = "GETCOMMENTS";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Next page identifier of data from the previous request (optional, def. val. - Empty)";
+    NewLine.Описание    = "Next page identifier of data from the previous request (optional, def. val. - Empty value)";
     NewLine.Область     = "Comment management";
 
 

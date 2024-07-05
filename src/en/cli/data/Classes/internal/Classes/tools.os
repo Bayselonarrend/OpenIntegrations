@@ -28,7 +28,7 @@
     NewLine.Метод       = "ParseJSON";
     NewLine.МетодПоиска = "PARSEJSON";
     NewLine.Параметр    = "--nesting";
-    NewLine.Описание    = "Parsing depth limit. Full depth by default (optional, def. val. - Empty)";
+    NewLine.Описание    = "Parsing depth limit. Full depth by default (optional, def. val. - Empty value)";
     NewLine.Область     = "Service";
 
 
@@ -38,7 +38,7 @@
     NewLine.Метод       = "ParseJSON";
     NewLine.МетодПоиска = "PARSEJSON";
     NewLine.Параметр    = "--name";
-    NewLine.Описание    = "Field name to retrieve. Displays the entire list if not specified (optional, def. val. - Empty)";
+    NewLine.Описание    = "Field name to retrieve. Displays the entire list if not specified (optional, def. val. - Empty value)";
     NewLine.Область     = "Service";
 
 

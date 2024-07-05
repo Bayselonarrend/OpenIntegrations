@@ -100,7 +100,7 @@
     NewLine.Метод       = "GetAccountInformation";
     NewLine.МетодПоиска = "GETACCOUNTINFORMATION";
     NewLine.Параметр    = "--account";
-    NewLine.Описание    = "Account ID. Current token account if not filled (optional, def. val. - Empty)";
+    NewLine.Описание    = "Account ID. Current token account if not filled (optional, def. val. - Empty value)";
     NewLine.Область     = "Account and authorization";
 
 
@@ -163,7 +163,7 @@
     NewLine.Метод       = "GetListOfFolderFiles";
     NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
     NewLine.Параметр    = "--path";
-    NewLine.Описание    = "Path to the directory. Optional if the cursor is specified (optional, def. val. - Empty)";
+    NewLine.Описание    = "Path to the directory. Optional if the cursor is specified (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -183,7 +183,7 @@
     NewLine.Метод       = "GetListOfFolderFiles";
     NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Cursor from the previous request to get the next set of files (optional, def. val. - Empty)";
+    NewLine.Описание    = "Cursor from the previous request to get the next set of files (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 

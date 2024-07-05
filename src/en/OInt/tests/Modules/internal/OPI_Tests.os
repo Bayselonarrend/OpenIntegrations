@@ -3654,7 +3654,7 @@ EndProcedure
 
 Procedure Check_BitrixUndefined(Val Result)
     
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Empty();
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).NotЗаtoлnotbut();
     OPI_TestDataRetrieval.ExpectsThat(Result["time"]).Заполнено();
 
 EndProcedure

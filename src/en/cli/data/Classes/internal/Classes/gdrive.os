@@ -48,7 +48,7 @@
     NewLine.Метод       = "GetDirectoriesList";
     NewLine.МетодПоиска = "GETDIRECTORIESLIST";
     NewLine.Параметр    = "--querry";
-    NewLine.Описание    = "Filter by name (optional, def. val. - Empty)";
+    NewLine.Описание    = "Filter by name (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -79,7 +79,7 @@
     NewLine.Метод       = "GetFilesList";
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--querry";
-    NewLine.Описание    = "Filter by name (optional, def. val. - Empty)";
+    NewLine.Описание    = "Filter by name (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -89,7 +89,7 @@
     NewLine.Метод       = "GetFilesList";
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--catalog";
-    NewLine.Описание    = "Filter by parent directory ID (optional, def. val. - Empty)";
+    NewLine.Описание    = "Filter by parent directory ID (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -160,7 +160,7 @@
     NewLine.Метод       = "CreateFolder";
     NewLine.МетодПоиска = "CREATEFOLDER";
     NewLine.Параметр    = "--catalog";
-    NewLine.Описание    = "Parent (optional, def. val. - Empty)";
+    NewLine.Описание    = "Parent (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -191,7 +191,7 @@
     NewLine.Метод       = "DownloadFile";
     NewLine.МетодПоиска = "DOWNLOADFILE";
     NewLine.Параметр    = "--out";
-    NewLine.Описание    = "File save path (optional, def. val. - Empty)";
+    NewLine.Описание    = "File save path (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -222,7 +222,7 @@
     NewLine.Метод       = "CopyObject";
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New object name (optional, def. val. - Empty)";
+    NewLine.Описание    = "New object name (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -232,7 +232,7 @@
     NewLine.Метод       = "CopyObject";
     NewLine.МетодПоиска = "COPYOBJECT";
     NewLine.Параметр    = "--catalog";
-    NewLine.Описание    = "New parent directory (optional, def. val. - Empty)";
+    NewLine.Описание    = "New parent directory (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 
@@ -273,7 +273,7 @@
     NewLine.Метод       = "UpdateFile";
     NewLine.МетодПоиска = "UPDATEFILE";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New file name (if necessary) (optional, def. val. - Empty)";
+    NewLine.Описание    = "New file name (if necessary) (optional, def. val. - Empty value)";
     NewLine.Область     = "File and directory management";
 
 

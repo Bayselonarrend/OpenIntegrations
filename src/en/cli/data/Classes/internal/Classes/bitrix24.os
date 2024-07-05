@@ -110,7 +110,7 @@
     NewLine.Метод       = "ServerTime";
     NewLine.МетодПоиска = "SERVERTIME";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Settings and administartion";
 
 
@@ -151,7 +151,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--files";
-    NewLine.Описание    = "Attachment data where key > filename, value > file path or binary data (optional, def. val. - Empty)";
+    NewLine.Описание    = "Attachment data where key > filename, value > file path or binary data (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -161,7 +161,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Post title (optional, def. val. - Empty)";
+    NewLine.Описание    = "Post title (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -181,7 +181,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -232,7 +232,7 @@
     NewLine.Метод       = "UpdatePost";
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--files";
-    NewLine.Описание    = "Attachment data where key > filename, value > file path or binary data (optional, def. val. - Empty)";
+    NewLine.Описание    = "Attachment data where key > filename, value > file path or binary data (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -242,7 +242,7 @@
     NewLine.Метод       = "UpdatePost";
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Post title (optional, def. val. - Empty)";
+    NewLine.Описание    = "Post title (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -252,7 +252,7 @@
     NewLine.Метод       = "UpdatePost";
     NewLine.МетодПоиска = "UPDATEPOST";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -283,7 +283,7 @@
     NewLine.Метод       = "DeletePost";
     NewLine.МетодПоиска = "DELETEPOST";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -314,7 +314,7 @@
     NewLine.Метод       = "GetImportantPostViewers";
     NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -335,7 +335,7 @@
     NewLine.Метод       = "GetPosts";
     NewLine.МетодПоиска = "GETPOSTS";
     NewLine.Параметр    = "--postid";
-    NewLine.Описание    = "Id of important post (optional, def. val. - Empty)";
+    NewLine.Описание    = "Id of important post (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -355,7 +355,7 @@
     NewLine.Метод       = "GetPosts";
     NewLine.МетодПоиска = "GETPOSTS";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -396,7 +396,7 @@
     NewLine.Метод       = "AddPostComment";
     NewLine.МетодПоиска = "ADDPOSTCOMMENT";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -437,7 +437,7 @@
     NewLine.Метод       = "AddPostRecipients";
     NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -468,7 +468,7 @@
     NewLine.Метод       = "GetTask";
     NewLine.МетодПоиска = "GETTASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -489,7 +489,7 @@
     NewLine.Метод       = "GetTasksList";
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--Structure of task filter (see GetTaskFieldsStructure)";
-    NewLine.Описание    = "filter (optional, def. val. - Empty)";
+    NewLine.Описание    = "filter (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -499,7 +499,7 @@
     NewLine.Метод       = "GetTasksList";
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset of tasks list (optional, def. val. - Empty)";
+    NewLine.Описание    = "Offset of tasks list (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -509,7 +509,7 @@
     NewLine.Метод       = "GetTasksList";
     NewLine.МетодПоиска = "GETTASKSLIST";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -540,7 +540,7 @@
     NewLine.Метод       = "CreateTask";
     NewLine.МетодПоиска = "CREATETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -581,7 +581,7 @@
     NewLine.Метод       = "UpdateTask";
     NewLine.МетодПоиска = "UPDATETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -612,7 +612,7 @@
     NewLine.Метод       = "DeleteTask";
     NewLine.МетодПоиска = "DELETETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -653,7 +653,7 @@
     NewLine.Метод       = "AttachFileToTopic";
     NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -684,7 +684,7 @@
     NewLine.Метод       = "ApproveTask";
     NewLine.МетодПоиска = "APPROVETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -715,7 +715,7 @@
     NewLine.Метод       = "DisapproveTask";
     NewLine.МетодПоиска = "DISAPPROVETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -746,7 +746,7 @@
     NewLine.Метод       = "CompleteTask";
     NewLine.МетодПоиска = "COMPLETETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -777,7 +777,7 @@
     NewLine.Метод       = "RenewTask";
     NewLine.МетодПоиска = "RENEWTASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -808,7 +808,7 @@
     NewLine.Метод       = "DeferTask";
     NewLine.МетодПоиска = "DEFERTASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -839,7 +839,7 @@
     NewLine.Метод       = "PauseTask";
     NewLine.МетодПоиска = "PAUSETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -870,7 +870,7 @@
     NewLine.Метод       = "StartTask";
     NewLine.МетодПоиска = "STARTTASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -901,7 +901,7 @@
     NewLine.Метод       = "StartWatchingTask";
     NewLine.МетодПоиска = "STARTWATCHINGTASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -932,7 +932,7 @@
     NewLine.Метод       = "StopWatchingTask";
     NewLine.МетодПоиска = "STOPWATCHINGTASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -973,7 +973,7 @@
     NewLine.Метод       = "DelegateTask";
     NewLine.МетодПоиска = "DELEGATETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1004,7 +1004,7 @@
     NewLine.Метод       = "AddTaskToFavorites";
     NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1035,7 +1035,7 @@
     NewLine.Метод       = "RemoveTaskFromFavorites";
     NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1066,7 +1066,7 @@
     NewLine.Метод       = "GetTaskHistory";
     NewLine.МетодПоиска = "GETTASKHISTORY";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1097,7 +1097,7 @@
     NewLine.Метод       = "CheckTaskAccesses";
     NewLine.МетодПоиска = "CHECKTASKACCESSES";
     NewLine.Параметр    = "--users";
-    NewLine.Описание    = "User IDs for access checking (optional, def. val. - Empty)";
+    NewLine.Описание    = "User IDs for access checking (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1107,7 +1107,7 @@
     NewLine.Метод       = "CheckTaskAccesses";
     NewLine.МетодПоиска = "CHECKTASKACCESSES";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1138,7 +1138,7 @@
     NewLine.Метод       = "MuteTask";
     NewLine.МетодПоиска = "MUTETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1169,7 +1169,7 @@
     NewLine.Метод       = "UnmuteTask";
     NewLine.МетодПоиска = "UNMUTETASK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1220,7 +1220,7 @@
     NewLine.Метод       = "CreateTasksDependencies";
     NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1271,7 +1271,7 @@
     NewLine.Метод       = "DeleteTasksDependencies";
     NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1292,7 +1292,7 @@
     NewLine.Метод       = "GetTaskFieldsStructure";
     NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1334,7 +1334,7 @@
     NewLine.Метод       = "GetTaskCommentsList";
     NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1375,7 +1375,7 @@
     NewLine.Метод       = "GetTaskComment";
     NewLine.МетодПоиска = "GETTASKCOMMENT";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1416,7 +1416,7 @@
     NewLine.Метод       = "AddTaskComment";
     NewLine.МетодПоиска = "ADDTASKCOMMENT";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1467,7 +1467,7 @@
     NewLine.Метод       = "UpdateTaskComment";
     NewLine.МетодПоиска = "UPDATETASKCOMMENT";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1508,7 +1508,7 @@
     NewLine.Метод       = "DeleteTaskComment";
     NewLine.МетодПоиска = "DELETETASKCOMMENT";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1539,7 +1539,7 @@
     NewLine.Метод       = "GetResultsList";
     NewLine.МетодПоиска = "GETRESULTSLIST";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1570,7 +1570,7 @@
     NewLine.Метод       = "CreateResultFromComment";
     NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1601,7 +1601,7 @@
     NewLine.Метод       = "DeleteResultFromComment";
     NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1633,7 +1633,7 @@
     NewLine.Метод       = "GetStoragesList";
     NewLine.МетодПоиска = "GETSTORAGESLIST";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1654,7 +1654,7 @@
     NewLine.Метод       = "GetAppSotrage";
     NewLine.МетодПоиска = "GETAPPSOTRAGE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1685,7 +1685,7 @@
     NewLine.Метод       = "GetStorage";
     NewLine.МетодПоиска = "GETSTORAGE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1726,7 +1726,7 @@
     NewLine.Метод       = "RenameStorage";
     NewLine.МетодПоиска = "RENAMESTORAGE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1757,7 +1757,7 @@
     NewLine.Метод       = "GetStorageObjects";
     NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1808,7 +1808,7 @@
     NewLine.Метод       = "UploadFileToStorage";
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--rights";
-    NewLine.Описание    = "Rights array if required (optional, def. val. - Empty)";
+    NewLine.Описание    = "Rights array if required (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1818,7 +1818,7 @@
     NewLine.Метод       = "UploadFileToStorage";
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1859,7 +1859,7 @@
     NewLine.Метод       = "CreateStorageFolder";
     NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1890,7 +1890,7 @@
     NewLine.Метод       = "GetFolderInformation";
     NewLine.МетодПоиска = "GETFOLDERINFORMATION";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1931,7 +1931,7 @@
     NewLine.Метод       = "CreateSubfolder";
     NewLine.МетодПоиска = "CREATESUBFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -1972,7 +1972,7 @@
     NewLine.Метод       = "MakeFolderCopy";
     NewLine.МетодПоиска = "MAKEFOLDERCOPY";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2013,7 +2013,7 @@
     NewLine.Метод       = "MoveFolder";
     NewLine.МетодПоиска = "MOVEFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2044,7 +2044,7 @@
     NewLine.Метод       = "DeleteFile";
     NewLine.МетодПоиска = "DELETEFILE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2075,7 +2075,7 @@
     NewLine.Метод       = "DeleteFolder";
     NewLine.МетодПоиска = "DELETEFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2106,7 +2106,7 @@
     NewLine.Метод       = "GetFolderExternalLink";
     NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2137,7 +2137,7 @@
     NewLine.Метод       = "GetFolderItems";
     NewLine.МетодПоиска = "GETFOLDERITEMS";
     NewLine.Параметр    = "--Items filter (see GetFolderFilterStructure)";
-    NewLine.Описание    = "filter (optional, def. val. - Empty)";
+    NewLine.Описание    = "filter (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2147,7 +2147,7 @@
     NewLine.Метод       = "GetFolderItems";
     NewLine.МетодПоиска = "GETFOLDERITEMS";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2178,7 +2178,7 @@
     NewLine.Метод       = "MarkFolderAsDeleted";
     NewLine.МетодПоиска = "MARKFOLDERASDELETED";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2209,7 +2209,7 @@
     NewLine.Метод       = "RestoreFolder";
     NewLine.МетодПоиска = "RESTOREFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2250,7 +2250,7 @@
     NewLine.Метод       = "RenameFolder";
     NewLine.МетодПоиска = "RENAMEFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2301,7 +2301,7 @@
     NewLine.Метод       = "UploadFileToFolder";
     NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2332,7 +2332,7 @@
     NewLine.Метод       = "GetFileInformation";
     NewLine.МетодПоиска = "GETFILEINFORMATION";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2363,7 +2363,7 @@
     NewLine.Метод       = "GetFileExternalLink";
     NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2394,7 +2394,7 @@
     NewLine.Метод       = "MarkFileAsDeleted";
     NewLine.МетодПоиска = "MARKFILEASDELETED";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2425,7 +2425,7 @@
     NewLine.Метод       = "RestoreFile";
     NewLine.МетодПоиска = "RESTOREFILE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2466,7 +2466,7 @@
     NewLine.Метод       = "MakeCopyFile";
     NewLine.МетодПоиска = "MAKECOPYFILE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2507,7 +2507,7 @@
     NewLine.Метод       = "MoveFileToFolder";
     NewLine.МетодПоиска = "MOVEFILETOFOLDER";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2548,7 +2548,7 @@
     NewLine.Метод       = "RenameFile";
     NewLine.МетодПоиска = "RENAMEFILE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
 
@@ -2579,7 +2579,7 @@
     NewLine.Метод       = "GetFolderFilterStructure";
     NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty)";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
 
     Return CompositionTable;

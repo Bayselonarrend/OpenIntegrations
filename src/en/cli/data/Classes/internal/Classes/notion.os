@@ -136,7 +136,7 @@
     NewLine.Метод       = "EditPageProperties";
     NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
     NewLine.Параметр    = "--data";
-    NewLine.Описание    = "Map of editable parameters (optional, def. val. - Empty)";
+    NewLine.Описание    = "Map of editable parameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Page management";
 
 
@@ -146,7 +146,7 @@
     NewLine.Метод       = "EditPageProperties";
     NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
     NewLine.Параметр    = "--icon";
-    NewLine.Описание    = "URL of the page icon image (optional, def. val. - Empty)";
+    NewLine.Описание    = "URL of the page icon image (optional, def. val. - Empty value)";
     NewLine.Область     = "Page management";
 
 
@@ -156,7 +156,7 @@
     NewLine.Метод       = "EditPageProperties";
     NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
     NewLine.Параметр    = "--cover";
-    NewLine.Описание    = "URL of the page cover image (optional, def. val. - Empty)";
+    NewLine.Описание    = "URL of the page cover image (optional, def. val. - Empty value)";
     NewLine.Область     = "Page management";
 
 
@@ -223,7 +223,7 @@
     NewLine.Метод       = "CreateDatabase";
     NewLine.МетодПоиска = "CREATEDATABASE";
     NewLine.Параметр    = "--props";
-    NewLine.Описание    = "Database properties (optional, def. val. - Empty)";
+    NewLine.Описание    = "Database properties (optional, def. val. - Empty value)";
     NewLine.Область     = "Database management";
 
 
@@ -291,7 +291,7 @@
     NewLine.Метод       = "EditDatabaseProperties";
     NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
     NewLine.Параметр    = "--props";
-    NewLine.Описание    = "New or modified database properties (optional, def. val. - Empty)";
+    NewLine.Описание    = "New or modified database properties (optional, def. val. - Empty value)";
     NewLine.Область     = "Database management";
 
 
@@ -301,7 +301,7 @@
     NewLine.Метод       = "EditDatabaseProperties";
     NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New database title (optional, def. val. - Empty)";
+    NewLine.Описание    = "New database title (optional, def. val. - Empty value)";
     NewLine.Область     = "Database management";
 
 
@@ -311,7 +311,7 @@
     NewLine.Метод       = "EditDatabaseProperties";
     NewLine.МетодПоиска = "EDITDATABASEPROPERTIES";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "New database description (optional, def. val. - Empty)";
+    NewLine.Описание    = "New database description (optional, def. val. - Empty value)";
     NewLine.Область     = "Database management";
 
 
@@ -352,7 +352,7 @@
     NewLine.Метод       = "CreateBlock";
     NewLine.МетодПоиска = "CREATEBLOCK";
     NewLine.Параметр    = "--prev";
-    NewLine.Описание    = "Block ID after which to insert the new one (optional, def. val. - Empty)";
+    NewLine.Описание    = "Block ID after which to insert the new one (optional, def. val. - Empty value)";
     NewLine.Область     = "Blocks managment";
 
 

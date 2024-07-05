@@ -241,7 +241,7 @@
     NewLine.Метод       = "SetCellValues";
     NewLine.МетодПоиска = "SETCELLVALUES";
     NewLine.Параметр    = "--sheetname";
-    NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty)";
+    NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
     NewLine.Область     = "Data managment";
 
 
@@ -292,7 +292,7 @@
     NewLine.Метод       = "ClearCells";
     NewLine.МетодПоиска = "CLEARCELLS";
     NewLine.Параметр    = "--sheetname";
-    NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty)";
+    NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
     NewLine.Область     = "Data managment";
 
 
@@ -323,7 +323,7 @@
     NewLine.Метод       = "GetCellValues";
     NewLine.МетодПоиска = "GETCELLVALUES";
     NewLine.Параметр    = "--cells";
-    NewLine.Описание    = "Array of A1 type cells to get (whole sheet if not filled) (optional, def. val. - Empty)";
+    NewLine.Описание    = "Array of A1 type cells to get (whole sheet if not filled) (optional, def. val. - Empty value)";
     NewLine.Область     = "Data managment";
 
 
@@ -333,7 +333,7 @@
     NewLine.Метод       = "GetCellValues";
     NewLine.МетодПоиска = "GETCELLVALUES";
     NewLine.Параметр    = "--sheetname";
-    NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty)";
+    NewLine.Описание    = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
     NewLine.Область     = "Data managment";
 
     Return CompositionTable;

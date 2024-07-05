@@ -79,7 +79,7 @@
     NewLine.Метод       = "EditCalendarMetadata";
     NewLine.МетодПоиска = "EDITCALENDARMETADATA";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New name (optional, def. val. - Empty)";
+    NewLine.Описание    = "New name (optional, def. val. - Empty value)";
     NewLine.Область     = "Calendar metadata management";
 
 
@@ -89,7 +89,7 @@
     NewLine.Метод       = "EditCalendarMetadata";
     NewLine.МетодПоиска = "EDITCALENDARMETADATA";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "New calendar description (optional, def. val. - Empty)";
+    NewLine.Описание    = "New calendar description (optional, def. val. - Empty value)";
     NewLine.Область     = "Calendar metadata management";
 
 
