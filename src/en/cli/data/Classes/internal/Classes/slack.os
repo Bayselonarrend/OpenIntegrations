@@ -38,7 +38,7 @@
     NewLine.Метод       = "GetWorkspaceList";
     NewLine.МетодПоиска = "GETWORKSPACELIST";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
     NewLine.Область     = "Management and settings";
 
 
@@ -59,7 +59,7 @@
     NewLine.Метод       = "GetUserList";
     NewLine.МетодПоиска = "GETUSERLIST";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
     NewLine.Область     = "Management and settings";
 
 
@@ -90,7 +90,7 @@
     NewLine.Метод       = "SendMessage";
     NewLine.МетодПоиска = "SENDMESSAGE";
     NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text (optional, def. val. - Empty)";
+    NewLine.Описание    = "Message text (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -100,7 +100,7 @@
     NewLine.Метод       = "SendMessage";
     NewLine.МетодПоиска = "SENDMESSAGE";
     NewLine.Параметр    = "--date";
-    NewLine.Описание    = "Sending date for delayed message (optional, def. val. - Empty)";
+    NewLine.Описание    = "Sending date for delayed message (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -110,7 +110,7 @@
     NewLine.Метод       = "SendMessage";
     NewLine.МетодПоиска = "SENDMESSAGE";
     NewLine.Параметр    = "--blocks";
-    NewLine.Описание    = "JSON array of block descriptions (optional, def. val. - Empty)";
+    NewLine.Описание    = "JSON array of block descriptions (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -142,7 +142,7 @@
     NewLine.Метод       = "SendEphemeralMessage";
     NewLine.МетодПоиска = "SENDEPHEMERALMESSAGE";
     NewLine.Параметр    = "--text";
-    NewLine.Описание    = "Message text (optional, def. val. - Empty)";
+    NewLine.Описание    = "Message text (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -152,7 +152,7 @@
     NewLine.Метод       = "SendEphemeralMessage";
     NewLine.МетодПоиска = "SENDEPHEMERALMESSAGE";
     NewLine.Параметр    = "--user";
-    NewLine.Описание    = "User ID (optional, def. val. - Empty)";
+    NewLine.Описание    = "User ID (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -162,7 +162,7 @@
     NewLine.Метод       = "SendEphemeralMessage";
     NewLine.МетодПоиска = "SENDEPHEMERALMESSAGE";
     NewLine.Параметр    = "--blocks";
-    NewLine.Описание    = "JSON array of block descriptions (optional, def. val. - Empty)";
+    NewLine.Описание    = "JSON array of block descriptions (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -203,7 +203,7 @@
     NewLine.Метод       = "EditMessage";
     NewLine.МетодПоиска = "EDITMESSAGE";
     NewLine.Параметр    = "--text";
-    NewLine.Описание    = "New message text (optional, def. val. - Empty)";
+    NewLine.Описание    = "New message text (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -213,7 +213,7 @@
     NewLine.Метод       = "EditMessage";
     NewLine.МетодПоиска = "EDITMESSAGE";
     NewLine.Параметр    = "--blocks";
-    NewLine.Описание    = "JSON array of block descriptions (optional, def. val. - Empty)";
+    NewLine.Описание    = "JSON array of block descriptions (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -285,7 +285,7 @@
     NewLine.Метод       = "GetDelayedMessageList";
     NewLine.МетодПоиска = "GETDELAYEDMESSAGELIST";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -357,7 +357,7 @@
     NewLine.Метод       = "GetMessageReplyList";
     NewLine.МетодПоиска = "GETMESSAGEREPLYLIST";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -388,7 +388,7 @@
     NewLine.Метод       = "GetChannelList";
     NewLine.МетодПоиска = "GETCHANNELLIST";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
     NewLine.Область     = "Channel management";
 
 
@@ -419,7 +419,7 @@
     NewLine.Метод       = "GetChannelUserList";
     NewLine.МетодПоиска = "GETCHANNELUSERLIST";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
     NewLine.Область     = "Channel management";
 
 
@@ -773,7 +773,7 @@
     NewLine.Метод       = "GetFilesList";
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--channel";
-    NewLine.Описание    = "Channel for selection (optional, def. val. - Empty)";
+    NewLine.Описание    = "Channel for selection (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -834,7 +834,7 @@
     NewLine.Метод       = "UploadFile";
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--channel";
-    NewLine.Описание    = "Channel ID (optional, def. val. - Empty)";
+    NewLine.Описание    = "Channel ID (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -939,7 +939,7 @@
     NewLine.Метод       = "GetExternalFileList";
     NewLine.МетодПоиска = "GETEXTERNALFILELIST";
     NewLine.Параметр    = "--channel";
-    NewLine.Описание    = "Channel for selection (optional, def. val. - Empty)";
+    NewLine.Описание    = "Channel for selection (optional, def. val. - Empty value)";
     NewLine.Область     = "External files management";
 
 
@@ -949,7 +949,7 @@
     NewLine.Метод       = "GetExternalFileList";
     NewLine.МетодПоиска = "GETEXTERNALFILELIST";
     NewLine.Параметр    = "--cursor";
-    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty)";
+    NewLine.Описание    = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
     NewLine.Область     = "External files management";
 
 
@@ -1074,7 +1074,7 @@
     NewLine.Метод       = "GenerateImageBlock";
     NewLine.МетодПоиска = "GENERATEIMAGEBLOCK";
     NewLine.Параметр    = "--alt";
-    NewLine.Описание    = "Alternate text of the image (optional, def. val. - Empty)";
+    NewLine.Описание    = "Alternate text of the image (optional, def. val. - Empty value)";
     NewLine.Область     = "Block formation";
 
     Return CompositionTable;

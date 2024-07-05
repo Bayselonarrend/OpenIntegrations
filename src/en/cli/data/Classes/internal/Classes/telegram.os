@@ -38,7 +38,7 @@
     NewLine.Метод       = "GetUpdates";
     NewLine.МетодПоиска = "GETUPDATES";
     NewLine.Параметр    = "--timeout";
-    NewLine.Описание    = "Waiting time for new events (optional, def. val. - Empty)";
+    NewLine.Описание    = "Waiting time for new events (optional, def. val. - Empty value)";
     NewLine.Область     = "Data retrieval and settings";
 
 
@@ -48,7 +48,7 @@
     NewLine.Метод       = "GetUpdates";
     NewLine.МетодПоиска = "GETUPDATES";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset in the list of received messages (optional, def. val. - Empty)";
+    NewLine.Описание    = "Offset in the list of received messages (optional, def. val. - Empty value)";
     NewLine.Область     = "Data retrieval and settings";
 
 
@@ -142,7 +142,7 @@
     NewLine.Метод       = "SendTextMessage";
     NewLine.МетодПоиска = "SENDTEXTMESSAGE";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -162,7 +162,7 @@
     NewLine.Метод       = "SendTextMessage";
     NewLine.МетодПоиска = "SENDTEXTMESSAGE";
     NewLine.Параметр    = "--reply";
-    NewLine.Описание    = "Reply to message ID (optional, def. val. - Empty)";
+    NewLine.Описание    = "Reply to message ID (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -213,7 +213,7 @@
     NewLine.Метод       = "SendImage";
     NewLine.МетодПоиска = "SENDIMAGE";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -274,7 +274,7 @@
     NewLine.Метод       = "SendVideo";
     NewLine.МетодПоиска = "SENDVIDEO";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -335,7 +335,7 @@
     NewLine.Метод       = "SendAudio";
     NewLine.МетодПоиска = "SENDAUDIO";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -396,7 +396,7 @@
     NewLine.Метод       = "SendDocument";
     NewLine.МетодПоиска = "SENDDOCUMENT";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -457,7 +457,7 @@
     NewLine.Метод       = "SendGif";
     NewLine.МетодПоиска = "SENDGIF";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -526,7 +526,7 @@
     NewLine.Метод       = "SendMediaGroup";
     NewLine.МетодПоиска = "SENDMEDIAGROUP";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -587,7 +587,7 @@
     NewLine.Метод       = "SendLocation";
     NewLine.МетодПоиска = "SENDLOCATION";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -648,7 +648,7 @@
     NewLine.Метод       = "SendContact";
     NewLine.МетодПоиска = "SENDCONTACT";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -864,7 +864,7 @@
     NewLine.Метод       = "CreateInvitationLink";
     NewLine.МетодПоиска = "CREATEINVITATIONLINK";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "Invitation title (optional, def. val. - Empty)";
+    NewLine.Описание    = "Invitation title (optional, def. val. - Empty value)";
     NewLine.Область     = "Administration";
 
 
@@ -874,7 +874,7 @@
     NewLine.Метод       = "CreateInvitationLink";
     NewLine.МетодПоиска = "CREATEINVITATIONLINK";
     NewLine.Параметр    = "--expire";
-    NewLine.Описание    = "Link expiration date (permanent if not specified) (optional, def. val. - Empty)";
+    NewLine.Описание    = "Link expiration date (permanent if not specified) (optional, def. val. - Empty value)";
     NewLine.Область     = "Administration";
 
 
@@ -884,7 +884,7 @@
     NewLine.Метод       = "CreateInvitationLink";
     NewLine.МетодПоиска = "CREATEINVITATIONLINK";
     NewLine.Параметр    = "--limit";
-    NewLine.Описание    = "User limit (infinite if not specified) (optional, def. val. - Empty)";
+    NewLine.Описание    = "User limit (infinite if not specified) (optional, def. val. - Empty value)";
     NewLine.Область     = "Administration";
 
 
@@ -1050,7 +1050,7 @@
     NewLine.Метод       = "CreateForumThread";
     NewLine.МетодПоиска = "CREATEFORUMTHREAD";
     NewLine.Параметр    = "--icon";
-    NewLine.Описание    = "See GetAvatarIconList (optional, def. val. - Empty)";
+    NewLine.Описание    = "See GetAvatarIconList (optional, def. val. - Empty value)";
     NewLine.Область     = "Forum topic management";
 
 
@@ -1091,7 +1091,7 @@
     NewLine.Метод       = "EditForumTopic";
     NewLine.МетодПоиска = "EDITFORUMTOPIC";
     NewLine.Параметр    = "--title";
-    NewLine.Описание    = "New title (optional, def. val. - Empty)";
+    NewLine.Описание    = "New title (optional, def. val. - Empty value)";
     NewLine.Область     = "Forum topic management";
 
 
@@ -1101,7 +1101,7 @@
     NewLine.Метод       = "EditForumTopic";
     NewLine.МетодПоиска = "EDITFORUMTOPIC";
     NewLine.Параметр    = "--icon";
-    NewLine.Описание    = "See GetAvatarIconList (optional, def. val. - Empty)";
+    NewLine.Описание    = "See GetAvatarIconList (optional, def. val. - Empty value)";
     NewLine.Область     = "Forum topic management";
 
 
@@ -1132,7 +1132,7 @@
     NewLine.Метод       = "CloseForumThread";
     NewLine.МетодПоиска = "CLOSEFORUMTHREAD";
     NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID (optional, def. val. - Empty)";
+    NewLine.Описание    = "Thread ID (optional, def. val. - Empty value)";
     NewLine.Область     = "Forum topic management";
 
 
@@ -1163,7 +1163,7 @@
     NewLine.Метод       = "OpenForumThread";
     NewLine.МетодПоиска = "OPENFORUMTHREAD";
     NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID (optional, def. val. - Empty)";
+    NewLine.Описание    = "Thread ID (optional, def. val. - Empty value)";
     NewLine.Область     = "Forum topic management";
 
 
@@ -1298,7 +1298,7 @@
     NewLine.Метод       = "ClearThreadPinnedMessagesList";
     NewLine.МетодПоиска = "CLEARTHREADPINNEDMESSAGESLIST";
     NewLine.Параметр    = "--topic";
-    NewLine.Описание    = "Thread ID. Main if not filled (optional, def. val. - Empty)";
+    NewLine.Описание    = "Thread ID. Main if not filled (optional, def. val. - Empty value)";
     NewLine.Область     = "Forum topic management";
 
     Return CompositionTable;
