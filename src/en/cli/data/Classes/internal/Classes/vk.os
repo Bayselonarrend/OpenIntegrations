@@ -68,7 +68,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty)";
+    NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -78,7 +78,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -128,7 +128,7 @@
     NewLine.Метод       = "CreateCompositePost";
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--url";
-    NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty)";
+    NewLine.Описание    = "Link (URL) under the post (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -138,7 +138,7 @@
     NewLine.Метод       = "CreateCompositePost";
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -168,7 +168,7 @@
     NewLine.Метод       = "DeletePost";
     NewLine.МетодПоиска = "DELETEPOST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -208,7 +208,7 @@
     NewLine.Метод       = "CreatePoll";
     NewLine.МетодПоиска = "CREATEPOLL";
     NewLine.Параметр    = "--picture";
-    NewLine.Описание    = "Poll image (optional, def. val. - Empty)";
+    NewLine.Описание    = "Poll image (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -218,7 +218,7 @@
     NewLine.Метод       = "CreatePoll";
     NewLine.МетодПоиска = "CREATEPOLL";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -248,7 +248,7 @@
     NewLine.Метод       = "CreateAlbum";
     NewLine.МетодПоиска = "CREATEALBUM";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "Album description (optional, def. val. - Empty)";
+    NewLine.Описание    = "Album description (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -258,7 +258,7 @@
     NewLine.Метод       = "CreateAlbum";
     NewLine.МетодПоиска = "CREATEALBUM";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -288,7 +288,7 @@
     NewLine.Метод       = "DeleteAlbum";
     NewLine.МетодПоиска = "DELETEALBUM";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -318,7 +318,7 @@
     NewLine.Метод       = "CreateStory";
     NewLine.МетодПоиска = "CREATESTORY";
     NewLine.Параметр    = "--url";
-    NewLine.Описание    = "URL for button under the story (optional, def. val. - Empty)";
+    NewLine.Описание    = "URL for button under the story (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -328,7 +328,7 @@
     NewLine.Метод       = "CreateStory";
     NewLine.МетодПоиска = "CREATESTORY";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -368,7 +368,7 @@
     NewLine.Метод       = "SaveImageToAlbum";
     NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "Image description (optional, def. val. - Empty)";
+    NewLine.Описание    = "Image description (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -378,7 +378,7 @@
     NewLine.Метод       = "SaveImageToAlbum";
     NewLine.МетодПоиска = "SAVEIMAGETOALBUM";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -408,7 +408,7 @@
     NewLine.Метод       = "DeleteImage";
     NewLine.МетодПоиска = "DELETEIMAGE";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -448,7 +448,7 @@
     NewLine.Метод       = "UploadVideoToServer";
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "Video description (optional, def. val. - Empty)";
+    NewLine.Описание    = "Video description (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -458,7 +458,7 @@
     NewLine.Метод       = "UploadVideoToServer";
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--album";
-    NewLine.Описание    = "Album ID, if necessary (optional, def. val. - Empty)";
+    NewLine.Описание    = "Album ID, if necessary (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -468,7 +468,7 @@
     NewLine.Метод       = "UploadVideoToServer";
     NewLine.МетодПоиска = "UPLOADVIDEOTOSERVER";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -498,7 +498,7 @@
     NewLine.Метод       = "UploadPhotoToServer";
     NewLine.МетодПоиска = "UPLOADPHOTOTOSERVER";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Community managment";
 
 
@@ -548,7 +548,7 @@
     NewLine.Метод       = "CreateDiscussion";
     NewLine.МетодПоиска = "CREATEDISCUSSION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Discussion management";
 
 
@@ -588,7 +588,7 @@
     NewLine.Метод       = "CloseDiscussion";
     NewLine.МетодПоиска = "CLOSEDISCUSSION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Discussion management";
 
 
@@ -618,7 +618,7 @@
     NewLine.Метод       = "OpenDiscussion";
     NewLine.МетодПоиска = "OPENDISCUSSION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Discussion management";
 
 
@@ -658,7 +658,7 @@
     NewLine.Метод       = "WriteInDiscussion";
     NewLine.МетодПоиска = "WRITEINDISCUSSION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Discussion management";
 
 
@@ -688,7 +688,7 @@
     NewLine.Метод       = "LikePost";
     NewLine.МетодПоиска = "LIKEPOST";
     NewLine.Параметр    = "--wall";
-    NewLine.Описание    = "ID of the wall where the post is located (optional, def. val. - Empty)";
+    NewLine.Описание    = "ID of the wall where the post is located (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -698,7 +698,7 @@
     NewLine.Метод       = "LikePost";
     NewLine.МетодПоиска = "LIKEPOST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -728,7 +728,7 @@
     NewLine.Метод       = "MakeRepost";
     NewLine.МетодПоиска = "MAKEREPOST";
     NewLine.Параметр    = "--from";
-    NewLine.Описание    = "ID of the wall where the post is located (optional, def. val. - Empty)";
+    NewLine.Описание    = "ID of the wall where the post is located (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -738,7 +738,7 @@
     NewLine.Метод       = "MakeRepost";
     NewLine.МетодПоиска = "MAKEREPOST";
     NewLine.Параметр    = "--to";
-    NewLine.Описание    = "ID of the target wall or group (optional, def. val. - Empty)";
+    NewLine.Описание    = "ID of the target wall or group (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -758,7 +758,7 @@
     NewLine.Метод       = "MakeRepost";
     NewLine.МетодПоиска = "MAKEREPOST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -808,7 +808,7 @@
     NewLine.Метод       = "WriteMessage";
     NewLine.МетодПоиска = "WRITEMESSAGE";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "JSON keyboard. See FormKeyboard (optional, def. val. - Empty)";
+    NewLine.Описание    = "JSON keyboard. See FormKeyboard (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -818,7 +818,7 @@
     NewLine.Метод       = "WriteMessage";
     NewLine.МетодПоиска = "WRITEMESSAGE";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -868,7 +868,7 @@
     NewLine.Метод       = "WriteComment";
     NewLine.МетодПоиска = "WRITECOMMENT";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -898,7 +898,7 @@
     NewLine.Метод       = "ShortenLink";
     NewLine.МетодПоиска = "SHORTENLINK";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -938,7 +938,7 @@
     NewLine.Метод       = "GetStatistics";
     NewLine.МетодПоиска = "GETSTATISTICS";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Statistics";
 
 
@@ -968,7 +968,7 @@
     NewLine.Метод       = "GetPostStatistics";
     NewLine.МетодПоиска = "GETPOSTSTATISTICS";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Statistics";
 
 
@@ -1008,7 +1008,7 @@
     NewLine.Метод       = "CreateAdvertisingCampaign";
     NewLine.МетодПоиска = "CREATEADVERTISINGCAMPAIGN";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Ad account management";
 
 
@@ -1078,7 +1078,7 @@
     NewLine.Метод       = "CreateAd";
     NewLine.МетодПоиска = "CREATEAD";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Ad account management";
 
 
@@ -1118,7 +1118,7 @@
     NewLine.Метод       = "PauseAdvertising";
     NewLine.МетодПоиска = "PAUSEADVERTISING";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Ad account management";
 
 
@@ -1128,7 +1128,7 @@
     NewLine.Метод       = "GetAdvertisingCategoryList";
     NewLine.МетодПоиска = "GETADVERTISINGCATEGORYLIST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Ad account management";
     NewLine.ОписаниеМетода   = "Gets a list of advertising category IDs for creating an advertising post
     |
@@ -1148,7 +1148,7 @@
     NewLine.Метод       = "GetProductCategoryList";
     NewLine.МетодПоиска = "GETPRODUCTCATEGORYLIST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Gets a list of product category IDs to specify when creating a product
     |
@@ -1168,7 +1168,7 @@
     NewLine.Метод       = "GetProductList";
     NewLine.МетодПоиска = "GETPRODUCTLIST";
     NewLine.Параметр    = "--sel";
-    NewLine.Описание    = "Selection ID, if filtering is needed (optional, def. val. - Empty)";
+    NewLine.Описание    = "Selection ID, if filtering is needed (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Gets the community's product list
     |
@@ -1188,7 +1188,7 @@
     NewLine.Метод       = "GetProductList";
     NewLine.МетодПоиска = "GETPRODUCTLIST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1218,7 +1218,7 @@
     NewLine.Метод       = "GetProductsByID";
     NewLine.МетодПоиска = "GETPRODUCTSBYID";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1269,7 +1269,7 @@
     NewLine.Метод       = "AddProduct";
     NewLine.МетодПоиска = "ADDPRODUCT";
     NewLine.Параметр    = "--sel";
-    NewLine.Описание    = "Selection ID for placing the product, if needed (optional, def. val. - Empty)";
+    NewLine.Описание    = "Selection ID for placing the product, if needed (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1279,7 +1279,7 @@
     NewLine.Метод       = "AddProduct";
     NewLine.МетодПоиска = "ADDPRODUCT";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1340,7 +1340,7 @@
     NewLine.Метод       = "EditProduct";
     NewLine.МетодПоиска = "EDITPRODUCT";
     NewLine.Параметр    = "--sel";
-    NewLine.Описание    = "Identifier of the new selection, if needed (optional, def. val. - Empty)";
+    NewLine.Описание    = "Identifier of the new selection, if needed (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1350,7 +1350,7 @@
     NewLine.Метод       = "EditProduct";
     NewLine.МетодПоиска = "EDITPRODUCT";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1380,7 +1380,7 @@
     NewLine.Метод       = "DeleteProduct";
     NewLine.МетодПоиска = "DELETEPRODUCT";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1410,7 +1410,7 @@
     NewLine.Метод       = "GroupProducts";
     NewLine.МетодПоиска = "GROUPPRODUCTS";
     NewLine.Параметр    = "--sellgroup";
-    NewLine.Описание    = "ID of the existing group, if needed (optional, def. val. - Empty)";
+    NewLine.Описание    = "ID of the existing group, if needed (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1420,7 +1420,7 @@
     NewLine.Метод       = "GroupProducts";
     NewLine.МетодПоиска = "GROUPPRODUCTS";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
 
 
@@ -1430,7 +1430,7 @@
     NewLine.Метод       = "GetSelectionList";
     NewLine.МетодПоиска = "GETSELECTIONLIST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Gets the list of product selections
     |
@@ -1470,7 +1470,7 @@
     NewLine.Метод       = "GetSelectionsByID";
     NewLine.МетодПоиска = "GETSELECTIONSBYID";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1530,7 +1530,7 @@
     NewLine.Метод       = "CreateProductCollection";
     NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1570,7 +1570,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--picture";
-    NewLine.Описание    = "New selection image (optional, def. val. - Empty)";
+    NewLine.Описание    = "New selection image (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1600,7 +1600,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1640,7 +1640,7 @@
     NewLine.Метод       = "AddProductToCollection";
     NewLine.МетодПоиска = "ADDPRODUCTTOCOLLECTION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1680,7 +1680,7 @@
     NewLine.Метод       = "RemoveProductFromSelection";
     NewLine.МетодПоиска = "REMOVEPRODUCTFROMSELECTION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1710,7 +1710,7 @@
     NewLine.Метод       = "DeleteSelection";
     NewLine.МетодПоиска = "DELETESELECTION";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1720,7 +1720,7 @@
     NewLine.Метод       = "GetPropertyList";
     NewLine.МетодПоиска = "GETPROPERTYLIST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Gets the list of properties of group products
     |
@@ -1760,7 +1760,7 @@
     NewLine.Метод       = "CreateProductProperty";
     NewLine.МетодПоиска = "CREATEPRODUCTPROPERTY";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
 
 
@@ -1800,7 +1800,7 @@
     NewLine.Метод       = "EditProductProperty";
     NewLine.МетодПоиска = "EDITPRODUCTPROPERTY";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
 
 
@@ -1830,7 +1830,7 @@
     NewLine.Метод       = "DeleteProductProperty";
     NewLine.МетодПоиска = "DELETEPRODUCTPROPERTY";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
 
 
@@ -1870,7 +1870,7 @@
     NewLine.Метод       = "AddProductPropertyVariant";
     NewLine.МетодПоиска = "ADDPRODUCTPROPERTYVARIANT";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
 
 
@@ -1920,7 +1920,7 @@
     NewLine.Метод       = "EditProductPropertyVariant";
     NewLine.МетодПоиска = "EDITPRODUCTPROPERTYVARIANT";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
 
 
@@ -1950,7 +1950,7 @@
     NewLine.Метод       = "DeleteProductPropertyVariant";
     NewLine.МетодПоиска = "DELETEPRODUCTPROPERTYVARIANT";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
 
 
@@ -1960,7 +1960,7 @@
     NewLine.Метод       = "GetOrderList";
     NewLine.МетодПоиска = "GETORDERLIST";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty)";
+    NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Order management";
     NewLine.ОписаниеМетода   = "Returns the community's order list
     |

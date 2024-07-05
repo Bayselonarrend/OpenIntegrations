@@ -135,7 +135,7 @@
     NewLine.Метод       = "SendTextMessage";
     NewLine.МетодПоиска = "SENDTEXTMESSAGE";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "See CreateKeyboardFromArrayButton (optional, def. val. - Empty)";
+    NewLine.Описание    = "See CreateKeyboardFromArrayButton (optional, def. val. - Empty value)";
     NewLine.Область     = "Message sending";
 
 
@@ -186,7 +186,7 @@
     NewLine.Метод       = "SendImage";
     NewLine.МетодПоиска = "SENDIMAGE";
     NewLine.Параметр    = "--description";
-    NewLine.Описание    = "Image annotation (optional, def. val. - Empty)";
+    NewLine.Описание    = "Image annotation (optional, def. val. - Empty value)";
     NewLine.Область     = "Message sending";
 
 
@@ -247,7 +247,7 @@
     NewLine.Метод       = "SendFile";
     NewLine.МетодПоиска = "SENDFILE";
     NewLine.Параметр    = "--size";
-    NewLine.Описание    = "File size. If not filled in > determined automatically by downloading the file (optional, def. val. - Empty)";
+    NewLine.Описание    = "File size. If not filled in > determined automatically by downloading the file (optional, def. val. - Empty value)";
     NewLine.Область     = "Message sending";
 
 
