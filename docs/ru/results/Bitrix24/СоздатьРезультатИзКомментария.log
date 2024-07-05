@@ -1,0 +1,24 @@
+﻿    {
+ "result": {
+  "id": 130,
+  "taskId": 432,
+  "commentId": 1376,
+  "createdBy": 1,
+  "createdAt": "2024-07-05T13:38:22+00:00",
+  "updatedAt": "2024-07-05T13:38:22+00:00",
+  "status": 0,
+  "text": "Задача изменена, расходимся",
+  "formattedText": "Задача изменена, расходимся",
+  "files": null
+ },
+ "time": {
+  "start": 1720186706.85195,
+  "finish": 1720186706.92671,
+  "duration": 0.0747611522674561,
+  "processing": 0.0460391044616699,
+  "date_start": "2024-07-05T13:38:26+00:00",
+  "date_finish": "2024-07-05T13:38:26+00:00",
+  "operating_reset_at": 1720187306,
+  "operating": 0
+ }
+}
