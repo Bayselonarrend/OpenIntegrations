@@ -183,7 +183,7 @@
     NewLine.Метод       = "DownloadFile";
     NewLine.МетодПоиска = "DOWNLOADFILE";
     NewLine.Параметр    = "--out";
-    NewLine.Описание    = "File save path (optional, def. val. - Empty)";
+    NewLine.Описание    = "File save path (optional, def. val. - Empty value)";
     NewLine.Область     = "File and folder management";
 
 
@@ -207,7 +207,7 @@
     NewLine.Метод       = "GetFilesList";
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--amount";
-    NewLine.Описание    = "Number of returned objects (optional, def. val. - Empty)";
+    NewLine.Описание    = "Number of returned objects (optional, def. val. - Empty value)";
     NewLine.Область     = "File and folder management";
 
 
@@ -217,7 +217,7 @@
     NewLine.Метод       = "GetFilesList";
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty)";
+    NewLine.Описание    = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty value)";
     NewLine.Область     = "File and folder management";
 
 
@@ -227,7 +227,7 @@
     NewLine.Метод       = "GetFilesList";
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--type";
-    NewLine.Описание    = "Filter by file type (optional, def. val. - Empty)";
+    NewLine.Описание    = "Filter by file type (optional, def. val. - Empty value)";
     NewLine.Область     = "File and folder management";
 
 
@@ -413,7 +413,7 @@
     NewLine.Метод       = "GetPublishedObjectsList";
     NewLine.МетодПоиска = "GETPUBLISHEDOBJECTSLIST";
     NewLine.Параметр    = "--amount";
-    NewLine.Описание    = "Number of returned objects (optional, def. val. - Empty)";
+    NewLine.Описание    = "Number of returned objects (optional, def. val. - Empty value)";
     NewLine.Область     = "Manage public access";
 
 
@@ -423,7 +423,7 @@
     NewLine.Метод       = "GetPublishedObjectsList";
     NewLine.МетодПоиска = "GETPUBLISHEDOBJECTSLIST";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty)";
+    NewLine.Описание    = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty value)";
     NewLine.Область     = "Manage public access";
 
 
@@ -454,7 +454,7 @@
     NewLine.Метод       = "GetPublicObject";
     NewLine.МетодПоиска = "GETPUBLICOBJECT";
     NewLine.Параметр    = "--amount";
-    NewLine.Описание    = "Number of returned nested objects (for catalog) (optional, def. val. - Empty)";
+    NewLine.Описание    = "Number of returned nested objects (for catalog) (optional, def. val. - Empty value)";
     NewLine.Область     = "Manage public access";
 
 
@@ -464,7 +464,7 @@
     NewLine.Метод       = "GetPublicObject";
     NewLine.МетодПоиска = "GETPUBLICOBJECT";
     NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offset for getting nested objects not from the beginning of the list (optional, def. val. - Empty)";
+    NewLine.Описание    = "Offset for getting nested objects not from the beginning of the list (optional, def. val. - Empty value)";
     NewLine.Область     = "Manage public access";
 
 
@@ -495,7 +495,7 @@
     NewLine.Метод       = "GetDownloadLinkForPublicObject";
     NewLine.МетодПоиска = "GETDOWNLOADLINKFORPUBLICOBJECT";
     NewLine.Параметр    = "--path";
-    NewLine.Описание    = "Path inside the object (optional, def. val. - Empty)";
+    NewLine.Описание    = "Path inside the object (optional, def. val. - Empty value)";
     NewLine.Область     = "Manage public access";
 
 
@@ -526,7 +526,7 @@
     NewLine.Метод       = "SavePublicObjectToDisk";
     NewLine.МетодПоиска = "SAVEPUBLICOBJECTTODISK";
     NewLine.Параметр    = "--from";
-    NewLine.Описание    = "Path within public catalog (folders only) (optional, def. val. - Empty)";
+    NewLine.Описание    = "Path within public catalog (folders only) (optional, def. val. - Empty value)";
     NewLine.Область     = "Manage public access";
 
 
@@ -536,7 +536,7 @@
     NewLine.Метод       = "SavePublicObjectToDisk";
     NewLine.МетодПоиска = "SAVEPUBLICOBJECTTODISK";
     NewLine.Параметр    = "--to";
-    NewLine.Описание    = "File save path (optional, def. val. - Empty)";
+    NewLine.Описание    = "File save path (optional, def. val. - Empty value)";
     NewLine.Область     = "Manage public access";
 
     Return CompositionTable;
