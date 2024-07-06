@@ -1,0 +1,21 @@
+﻿    {
+ "result": {
+  "POST_MESSAGE_HTML": null,
+  "ID": "1494",
+  "AUTHOR_ID": "1",
+  "AUTHOR_NAME": "Антон Титовец",
+  "AUTHOR_EMAIL": "",
+  "POST_DATE": "2024-07-06T19:52:07+00:00",
+  "POST_MESSAGE": "Задача изменена, не расходимся"
+ },
+ "time": {
+  "start": 1720295538.6466,
+  "finish": 1720295538.69971,
+  "duration": 0.0531067848205566,
+  "processing": 0.023021936416626,
+  "date_start": "2024-07-06T19:52:18+00:00",
+  "date_finish": "2024-07-06T19:52:18+00:00",
+  "operating_reset_at": 1720296138,
+  "operating": 0
+ }
+}
