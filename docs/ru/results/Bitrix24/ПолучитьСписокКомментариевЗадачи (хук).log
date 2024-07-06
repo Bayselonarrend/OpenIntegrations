@@ -1,0 +1,32 @@
+﻿    {
+ "result": [
+  {
+   "POST_MESSAGE_HTML": null,
+   "ID": "1494",
+   "AUTHOR_ID": "1",
+   "AUTHOR_NAME": "Антон Титовец",
+   "AUTHOR_EMAIL": "",
+   "POST_DATE": "2024-07-06T19:52:07+00:00",
+   "POST_MESSAGE": "Задача изменена, не расходимся"
+  },
+  {
+   "POST_MESSAGE_HTML": null,
+   "ID": "1496",
+   "AUTHOR_ID": "1",
+   "AUTHOR_NAME": "Антон Титовец",
+   "AUTHOR_EMAIL": "",
+   "POST_DATE": "2024-07-06T19:52:08+00:00",
+   "POST_MESSAGE": "Задача изменена, расходимся"
+  }
+ ],
+ "time": {
+  "start": 1720295536.91075,
+  "finish": 1720295536.96472,
+  "duration": 0.0539700984954834,
+  "processing": 0.0248382091522217,
+  "date_start": "2024-07-06T19:52:16+00:00",
+  "date_finish": "2024-07-06T19:52:16+00:00",
+  "operating_reset_at": 1720296136,
+  "operating": 0
+ }
+}
