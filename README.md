@@ -13,7 +13,7 @@
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.neocities.org/badges/2/736878759.json)](https://openyellow.notion.site/openyellow/24727888daa641af95514b46bee4d6f2?p=f78cea2066114067ab9069f06206219d&amp;pm=s)
 
 <br>
-Набор инструментов для интеграции с популярными API посредством CLI (Windows/Linux) и библиотека для 1C:Enterprise/OneScript <br>
+Набор инструментов для интеграции с популярными API посредством CLI (Windows/Linux) и библиотеки (расширения) для 1C:Enterprise/OneScript <br>
 
 
 <br>
