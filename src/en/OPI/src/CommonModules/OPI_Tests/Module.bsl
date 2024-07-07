@@ -678,7 +678,7 @@ Procedure YDisk_CreateObjectCopy() Export
         + "OpenIntegrations/main/Media/logo.png";
 
     OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(25);
       
     Result = OPI_YandexDisk.CreateObjectCopy(Token, OriginalPath, CopyPath, True);
     
