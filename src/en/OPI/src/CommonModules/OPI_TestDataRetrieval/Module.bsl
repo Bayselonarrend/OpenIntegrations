@@ -227,6 +227,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "B24_TaskManagment" , "Tasks managment" , Bitrix);
     NewTest(TestTable, "B24_CommentsManagment" , "Comments managment" , Bitrix);
     NewTest(TestTable, "B24_WorkingWithDrive" , "Working with drive" , Bitrix);
+    NewTest(TestTable, "B24_Kanban" , "Kanban" , Bitrix);
     
     Return TestTable;
                                     
