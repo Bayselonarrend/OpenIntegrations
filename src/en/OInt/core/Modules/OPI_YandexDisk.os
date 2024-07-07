@@ -398,7 +398,7 @@ Function UploadFileByURL(Val Token, Val Path, Val Address) Export
     URL = "https://cloud-api.yandex.net/v1/disk/resources/upload";
     
     Parameters = New Structure;
-    Parameters.Insert("url" , EncodeString(Address, StringEncodingMethod.URLInURLEncoding));
+    Parameters.Insert("url" , EncodeString(Address, StringEncodingMethod.URLencoding));
     Parameters.Insert("path", Path);
     
     Parameters = OPI_Tools.RequestParametersToString(Parameters); 
@@ -569,7 +569,7 @@ Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Expo
     Href = "href";
     
     Parameters = New Structure;
-    Parameters.Insert("public_key", URL);
+    Parameters.Insert("public_key", EncodeString(URL, StringEncodingMethod.URLencoding));
     
     If ValueIsFilled(From) Then
         Parameters.Insert("path", From);
