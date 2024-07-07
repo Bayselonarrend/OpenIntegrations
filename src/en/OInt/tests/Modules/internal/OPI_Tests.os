@@ -3013,6 +3013,18 @@ Procedure B24_CommentsManagment() Export
     
 EndProcedure
 
+Procedure B24_Kanban() Export
+    
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    
+    Bitrix24_AddKanbanStage(TestParameters);
+    Bitrix24_DeleteKanbanStage(TestParameters);
+    
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -7913,7 +7925,7 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
     
     Check_BitrixArray(Result); // SKIP
     
-    OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
+    OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType); // SKIP
     
     FromID = FunctionParameters["Bitrix24_TaskID"];
     DestinationID = FunctionParameters["Bitrix24_HookTaskID"];
@@ -7929,6 +7941,71 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTasksDependencies", "Bitrix24");
     
     Check_BitrixArray(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_AddKanbanStage(FunctionParameters)
+    
+    Name = "New stage";
+    Color = "0026FF";
+  
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, 6);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "AddKanbanStage (wh)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+    
+    PrevStageID = Result["result"];
+    
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookStageID", PrevStageID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_HookStageID", PrevStageID); // SKIP
+    
+    Name = "New stage 2";
+    Color = "0026FF";
+       
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, PrevStageID, , True, Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "AddKanbanStage", "Bitrix24");
+    
+    Check_BitrixNumber(Result); 
+    
+    StageID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_StageID", StageID);    
+    FunctionParameters.Insert("Bitrix24_StageID", StageID);                  
+    
+EndProcedure
+
+Procedure Bitrix24_DeleteKanbanStage(FunctionParameters)
+    
+    StageID = FunctionParameters["Bitrix24_HookStageID"];
+      
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, True);
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteKanbanStage (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP 
+    
+    StageID = FunctionParameters["Bitrix24_StageID"];
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, , Token);
+    
+    // END
+        
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteKanbanStage", "Bitrix24");
+    
+    Check_BitrixTrue(Result); 
     
 EndProcedure
 
