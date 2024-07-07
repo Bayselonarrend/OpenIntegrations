@@ -1118,6 +1118,73 @@ EndFunction
 
 #EndRegion
 
+#Region Kanban
+
+// Add kanban stage
+// Add new stage of kanban or My Plan
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Name - String - New stage name - title
+// Color - String - HEX of new stage color - color
+// PrevStageID - String, Number - ID of the stage after which a new stage should be inserted (at the beginning by default.) - prevstage
+// EntityID - String, Number - ID of kanban owner (group or user) - entityid
+// AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AddKanbanStage(Val URL
+    , Val Name
+    , Val Color = "FFD800"
+    , Val PrevStageID = 0
+    , Val EntityID = 0
+    , Val AsAdmin = False
+    , Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.stages.add");
+    Fields = New Structure;
+    
+    OPI_Tools.AddField("TITLE" , Name , "String", Fields);
+    OPI_Tools.AddField("COLOR" , Color , "String", Fields);
+    OPI_Tools.AddField("AFTER_ID" , PrevStageID , "String", Fields);
+    OPI_Tools.AddField("ENTITY_ID", EntityID , "String", Fields);
+    OPI_Tools.AddField("isAdmin" , AsAdmin, "Boolean", Fields);
+    
+    Parameters.Insert("fields", Fields);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// ID of the stage to be deleted
+// Removes a kanban stage, provided there are no tasks in it
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// StageID - String, Number - ID of stage to dele - stage
+// AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteKanbanStage(Val URL, Val StageID, Val AsAdmin = False, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.stages.delete");
+    
+    OPI_Tools.AddField("id" , StageID , "String", Parameters);
+    OPI_Tools.AddField("isAdmin", AsAdmin, "Boolean", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+#EndRegion
+
 #Region StoragesAndFilesManagment
 
 // Get list of storages
