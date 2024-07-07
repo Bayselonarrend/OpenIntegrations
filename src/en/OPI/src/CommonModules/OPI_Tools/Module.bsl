@@ -806,11 +806,11 @@ Function ConvertParameterToString(Val Value)
 
     If TypeOf(Value) = Type("Array") Then
         Value = StrConcat(Value, ",");
-        Value = EncodeString(Value, StringEncodingMethod.URLencoding);
+        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
         Value = "[" + Value + "]"; 
     Else
         Value = NumberToString(Value);
-        Value = EncodeString(Value, StringEncodingMethod.URLencoding);
+        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
     EndIf;
     
     Return Value;
