@@ -6,12 +6,10 @@ sidebar_position: 16
  Delegate task to another user
 
 
-
-
 <br/>
 
 
-*Function DelegateTask(Val URL, Val TaskID, Val UserID, Val Token = "") Export*
+`Function DelegateTask(Val URL, Val TaskID, Val UserID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 16
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

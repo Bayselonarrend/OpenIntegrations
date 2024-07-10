@@ -6,12 +6,10 @@ sidebar_position: 1
  Sets sheet cell values
 
 
-
-
 <br/>
 
 
-*Function SetCellValues(Val Token, Val Spreadsheet, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export*
+`Function SetCellValues(Val Token, Val Spreadsheet, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

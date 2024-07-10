@@ -6,12 +6,10 @@ sidebar_position: 7
  Hides the main forum thread
 
 
-
-
 <br/>
 
 
-*Function HideMainForumTopic(Val Token, Val ChatID) Export*
+`Function HideMainForumTopic(Val Token, Val ChatID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

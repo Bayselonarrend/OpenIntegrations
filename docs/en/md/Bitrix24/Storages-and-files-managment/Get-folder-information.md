@@ -6,12 +6,10 @@ sidebar_position: 8
  Get folder information
 
 
-
-
 <br/>
 
 
-*Function GetFolderInformation(Val URL, Val FolderID, Val Token = "") Export*
+`Function GetFolderInformation(Val URL, Val FolderID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

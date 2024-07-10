@@ -6,12 +6,10 @@ sidebar_position: 5
  Adds a product to the selection
 
 
-
-
 <br/>
 
 
-*Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters = "") Export*
+`Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

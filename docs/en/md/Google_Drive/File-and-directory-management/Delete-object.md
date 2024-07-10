@@ -6,12 +6,10 @@ sidebar_position: 9
  Deletes file or directory by ID
 
 
-
-
 <br/>
 
 
-*Function DeleteObject(Val Token, Val Identifier) Export*
+`Function DeleteObject(Val Token, Val Identifier) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 9
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

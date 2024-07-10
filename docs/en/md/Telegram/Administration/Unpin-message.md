@@ -6,12 +6,10 @@ sidebar_position: 5
  Unpins a message in the chat header
 
 
-
-
 <br/>
 
 
-*Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export*
+`Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

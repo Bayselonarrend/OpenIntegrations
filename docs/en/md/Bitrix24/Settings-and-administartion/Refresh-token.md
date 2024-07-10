@@ -6,12 +6,10 @@ sidebar_position: 3
  Update token by refresh token
 
 
-
-
 <br/>
 
 
-*Function RefreshToken(Val ClientID, Val ClientSecret, Val Refresh) Export*
+`Function RefreshToken(Val ClientID, Val ClientSecret, Val Refresh) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

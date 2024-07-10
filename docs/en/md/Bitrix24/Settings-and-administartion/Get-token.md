@@ -6,12 +6,10 @@ sidebar_position: 2
  Get token by auth code
 
 
-
-
 <br/>
 
 
-*Function GetToken(Val ClientID, Val ClientSecret, Val Code) Export*
+`Function GetToken(Val ClientID, Val ClientSecret, Val Code) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

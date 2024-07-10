@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets task comment data by ID
 
 
-
-
 <br/>
 
 
-*Function GetTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export*
+`Function GetTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

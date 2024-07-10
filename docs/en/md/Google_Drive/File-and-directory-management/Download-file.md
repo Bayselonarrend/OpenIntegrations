@@ -6,12 +6,10 @@ sidebar_position: 6
  Gets file by ID
 
 
-
-
 <br/>
 
 
-*Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export*
+`Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 6
 
  
  Returns: BinaryData,String - Binary data or file path when SavePath parameter is specified
+
+
+
 
 
 ```bsl title="Code example"

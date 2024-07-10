@@ -6,12 +6,10 @@ sidebar_position: 2
  Changes the name and/or description of an existing table field
 
 
-
-
 <br/>
 
 
-*Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", Val Description = "") Export*
+`Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", Val Description = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

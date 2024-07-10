@@ -6,12 +6,10 @@ sidebar_position: 4
  Gets a list of advertising category IDs for creating an advertising post
 
 
-
-
 <br/>
 
 
-*Function GetAdvertisingCategoryList(Val Parameters = "") Export*
+`Function GetAdvertisingCategoryList(Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 4
  Adds a message to the discussion on behalf of the group
 
 
-
-
 <br/>
 
 
-*Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export*
+`Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

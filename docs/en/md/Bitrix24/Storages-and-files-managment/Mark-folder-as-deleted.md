@@ -6,12 +6,10 @@ sidebar_position: 16
  Move folder to recycle bin
 
 
-
-
 <br/>
 
 
-*Function MarkFolderAsDeleted(Val URL, Val FolderID, Val Token = "") Export*
+`Function MarkFolderAsDeleted(Val URL, Val FolderID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 16
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

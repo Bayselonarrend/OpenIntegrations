@@ -6,12 +6,10 @@ sidebar_position: 1
  Forms a link for authorization via the browser
 
 
-
-
 <br/>
 
 
-*Function GetAuthorizationLink(Parameters = "") Export*
+`Function GetAuthorizationLink(Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: String - URL for browser transition
+
+
+
 
 
 ```bsl title="Code example"

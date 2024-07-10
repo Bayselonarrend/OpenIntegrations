@@ -6,12 +6,10 @@ sidebar_position: 1
  Adds a new sheet to the spreadsheet
 
 
-
-
 <br/>
 
 
-*Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export*
+`Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

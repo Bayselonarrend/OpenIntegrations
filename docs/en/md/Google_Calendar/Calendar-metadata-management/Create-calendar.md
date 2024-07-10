@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates an empty calendar
 
 
-
-
 <br/>
 
 
-*Function CreateCalendar(Val Token, Val Name) Export*
+`Function CreateCalendar(Val Token, Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

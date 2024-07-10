@@ -6,12 +6,10 @@ sidebar_position: 4
  Uploads a file to the drive
 
 
-
-
 <br/>
 
 
-*Function UploadFile(Val Token, Val File, Val Description) Export*
+`Function UploadFile(Val Token, Val File, Val Description) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

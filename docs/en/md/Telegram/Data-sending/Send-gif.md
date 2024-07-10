@@ -6,12 +6,10 @@ sidebar_position: 6
  Sends a GIF to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendGif(Val Token, Val ChatID, Val Text, Val GIF, Val Keyboard = "", Val Markup = "Markdown") Export*
+`Function SendGif(Val Token, Val ChatID, Val Text, Val GIF, Val Keyboard = "", Val Markup = "Markdown") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 6
  Gets a permanent URL to the channel message
 
 
-
-
 <br/>
 
 
-*Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export*
+`Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

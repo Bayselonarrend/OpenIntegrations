@@ -6,12 +6,10 @@ sidebar_position: 4
  Gets information about the published object by its URL
 
 
-
-
 <br/>
 
 
-*Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export*
+`Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

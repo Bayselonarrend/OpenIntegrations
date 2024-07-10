@@ -6,12 +6,10 @@ sidebar_position: 4
  Deletes a channel message by timestamp
 
 
-
-
 <br/>
 
 
-*Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export*
+`Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

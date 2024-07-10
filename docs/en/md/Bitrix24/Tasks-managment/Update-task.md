@@ -6,12 +6,10 @@ sidebar_position: 4
  Update a task
 
 
-
-
 <br/>
 
 
-*Function UpdateTask(Val URL, Val TaskID, Val FieldsStructure, Val Token = "") Export*
+`Function UpdateTask(Val URL, Val TaskID, Val FieldsStructure, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

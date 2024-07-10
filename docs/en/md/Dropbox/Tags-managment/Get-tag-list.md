@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets the list of tags of the selected files
 
 
-
-
 <br/>
 
 
-*Function GetTagList(Val Token, Val Paths) Export*
+`Function GetTagList(Val Token, Val Paths) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

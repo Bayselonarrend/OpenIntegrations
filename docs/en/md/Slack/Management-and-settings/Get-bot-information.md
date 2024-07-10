@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets basic information about the bot
 
 
-
-
 <br/>
 
 
-*Function GetBotInformation(Val Token) Export*
+`Function GetBotInformation(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack 
+
+
+
 
 
 ```bsl title="Code example"

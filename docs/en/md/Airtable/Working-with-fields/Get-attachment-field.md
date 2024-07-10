@@ -6,12 +6,10 @@ sidebar_position: 5
  Gets the description of a file field
 
 
-
-
 <br/>
 
 
-*Function GetAttachmentField(Val Name) Export*
+`Function GetAttachmentField(Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 5
 
  
  Returns: Structure - Field description
+
+
+
 
 
 ```bsl title="Code example"

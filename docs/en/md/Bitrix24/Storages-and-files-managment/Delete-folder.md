@@ -6,12 +6,10 @@ sidebar_position: 13
  Remove folder with subfolders
 
 
-
-
 <br/>
 
 
-*Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export*
+`Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 13
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

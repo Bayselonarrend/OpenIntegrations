@@ -6,12 +6,10 @@ sidebar_position: 8
  Sends location by geographic latitude and longitude to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export*
+`Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

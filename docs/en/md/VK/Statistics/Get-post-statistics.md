@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets statistics in terms of posts
 
 
-
-
 <br/>
 
 
-*Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export*
+`Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Array of Arbitrary - Array of post statistics data
+
+
+
 
 
 ```bsl title="Code example"

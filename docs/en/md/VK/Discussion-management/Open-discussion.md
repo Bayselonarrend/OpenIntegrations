@@ -6,12 +6,10 @@ sidebar_position: 3
  Opens a previously closed discussion
 
 
-
-
 <br/>
 
 
-*Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export*
+`Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

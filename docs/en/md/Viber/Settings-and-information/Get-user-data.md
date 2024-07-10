@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets user information by ID
 
 
-
-
 <br/>
 
 
-*Function GetUserData(Val Token, Val UserID) Export*
+`Function GetUserData(Val Token, Val UserID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
+
+
+
 
 
 ```bsl title="Code example"

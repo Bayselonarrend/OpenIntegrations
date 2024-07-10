@@ -6,12 +6,10 @@ sidebar_position: 3
  Adds a new external file
 
 
-
-
 <br/>
 
 
-*Function AddExternalFile(Val Token, Val URL, Val Title) Export*
+`Function AddExternalFile(Val Token, Val URL, Val Title) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

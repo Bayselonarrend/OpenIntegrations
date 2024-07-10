@@ -6,12 +6,10 @@ sidebar_position: 1
  Sends a text message to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendTextMessage(Val Token, Val Text, Val UserID, Val SendingToChannel, Val Keyboard = "") Export*
+`Function SendTextMessage(Val Token, Val Text, Val UserID, Val SendingToChannel, Val Keyboard = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
+
+
+
 
 
 ```bsl title="Code example"

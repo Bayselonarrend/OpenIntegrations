@@ -6,12 +6,10 @@ sidebar_position: 6
  Saves the public object to your disk
 
 
-
-
 <br/>
 
 
-*Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export*
+`Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

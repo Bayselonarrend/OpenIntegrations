@@ -6,12 +6,10 @@ sidebar_position: 8
  Copies a file or directory to the selected path
 
 
-
-
 <br/>
 
 
-*Function CopyObject(Val Token, Val From, Val Target) Export*
+`Function CopyObject(Val Token, Val From, Val Target) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

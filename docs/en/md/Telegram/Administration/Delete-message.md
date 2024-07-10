@@ -6,12 +6,10 @@ sidebar_position: 7
  Delete message from chat or channel
 
 
-
-
 <br/>
 
 
-*Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export*
+`Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

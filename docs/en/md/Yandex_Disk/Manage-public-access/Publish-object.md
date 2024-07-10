@@ -6,12 +6,10 @@ sidebar_position: 1
  Publishes the disk object for public access
 
 
-
-
 <br/>
 
 
-*Function PublishObject(Val Token, Val Path) Export*
+`Function PublishObject(Val Token, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex 
+
+
+
 
 
 ```bsl title="Code example"

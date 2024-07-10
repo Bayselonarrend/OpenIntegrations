@@ -6,12 +6,10 @@ sidebar_position: 7
  Sends a set of files to a chat or channel. Media types: audio, document, photo, video
 
 
-
-
 <br/>
 
 
-*Function SendMediaGroup(Val Token, Val ChatID, Val Text, Val FileMapping, Val Keyboard = "", Val Markup = "Markdown") Export*
+`Function SendMediaGroup(Val Token, Val ChatID, Val Text, Val FileMapping, Val Keyboard = "", Val Markup = "Markdown") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 8
  Deletes task result, created from a comment
 
 
-
-
 <br/>
 
 
-*Function DeleteResultFromComment(Val URL, Val CommentID, Val Token = "") Export*
+`Function DeleteResultFromComment(Val URL, Val CommentID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

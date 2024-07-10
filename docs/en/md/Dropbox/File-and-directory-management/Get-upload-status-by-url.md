@@ -6,12 +6,10 @@ sidebar_position: 6
  Gets the upload status of the file by URL
 
 
-
-
 <br/>
 
 
-*Function GetUploadStatusByURL(Val Token, Val JobID) Export*
+`Function GetUploadStatusByURL(Val Token, Val JobID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

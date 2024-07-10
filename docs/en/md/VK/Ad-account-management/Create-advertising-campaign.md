@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a campaign in the selected advertising account
 
 
-
-
 <br/>
 
 
-*Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export*
+`Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

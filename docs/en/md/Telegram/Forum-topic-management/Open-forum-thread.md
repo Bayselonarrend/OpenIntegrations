@@ -6,12 +6,10 @@ sidebar_position: 5
  Reopens a previously closed forum thread
 
 
-
-
 <br/>
 
 
-*Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export*
+`Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

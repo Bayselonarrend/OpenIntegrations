@@ -6,12 +6,10 @@ sidebar_position: 2
  Creates a comment for a record in the table
 
 
-
-
 <br/>
 
 
-*Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export*
+`Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 1
 Getting a link for interactive token retrieval (access_token), which is necessary for further actions
 
 
-
-
 <br/>
 
 
-*Function CreateTokenRetrievalLink(Val App_id) Export*
+`Function CreateTokenRetrievalLink(Val App_id) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 
  
  Returns: String - URL to go to in the browser 
+
+
+
 
 
 ```bsl title="Code example"

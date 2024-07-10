@@ -6,12 +6,10 @@ sidebar_position: 3
  Changes the text of an existing comment
 
 
-
-
 <br/>
 
 
-*Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export*
+`Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

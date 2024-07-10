@@ -6,12 +6,10 @@ sidebar_position: 1
  Likes a post
 
 
-
-
 <br/>
 
 
-*Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export*
+`Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

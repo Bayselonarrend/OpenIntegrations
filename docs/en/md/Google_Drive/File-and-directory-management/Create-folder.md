@@ -6,12 +6,10 @@ sidebar_position: 5
  Creates an empty directory on the drive
 
 
-
-
 <br/>
 
 
-*Function CreateFolder(Val Token, Val Name, Val Parent = "") Export*
+`Function CreateFolder(Val Token, Val Name, Val Parent = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

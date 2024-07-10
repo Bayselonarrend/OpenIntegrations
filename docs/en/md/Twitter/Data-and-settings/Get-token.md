@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets the token by the code received when authorizing using the link from GetAuthorizationLink
 
 
-
-
 <br/>
 
 
-*Function GetToken(Val Code, Val Parameters = "") Export*
+`Function GetToken(Val Code, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+
+
+
 
 
 ```bsl title="Code example"

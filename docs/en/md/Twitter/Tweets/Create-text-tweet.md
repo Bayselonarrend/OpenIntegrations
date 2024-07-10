@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a tweet without attachments
 
 
-
-
 <br/>
 
 
-*Function CreateTextTweet(Val Text, Val Parameters = "") ExportReturn CreateCustomTweet(Text,,,, Parameters);EndFunction*
+`Function CreateTextTweet(Val Text, Val Parameters = "") ExportReturn CreateCustomTweet(Text,,,, Parameters);EndFunction`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+
+
+
 
 
 ```bsl title="Code example"

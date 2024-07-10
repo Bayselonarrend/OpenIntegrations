@@ -6,12 +6,10 @@ sidebar_position: 12
  Generates a simple JSON keyboard from an array of buttons for a message or bottom panel
 
 
-
-
 <br/>
 
 
-*Function FormKeyboardFromButtonArray(Val ButtonArray, Val UnderMessage = False, Val OneByOne = True) Export*
+`Function FormKeyboardFromButtonArray(Val ButtonArray, Val UnderMessage = False, Val OneByOne = True) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 12
 
  
  Returns: String - Keyboard JSON
+
+
+
 
 
 ```bsl title="Code example"

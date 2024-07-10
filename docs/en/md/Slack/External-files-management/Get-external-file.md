@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets information about the external file
 
 
-
-
 <br/>
 
 
-*Function GetExternalFile(Val Token, Val FileID) Export*
+`Function GetExternalFile(Val Token, Val FileID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

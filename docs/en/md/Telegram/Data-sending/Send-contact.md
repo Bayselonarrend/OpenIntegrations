@@ -6,12 +6,10 @@ sidebar_position: 9
  Sends a contact with name and phone number
 
 
-
-
 <br/>
 
 
-*Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export*
+`Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 9
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

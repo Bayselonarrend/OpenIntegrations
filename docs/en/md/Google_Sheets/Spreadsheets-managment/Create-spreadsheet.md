@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a new spreadsheet
 
 
-
-
 <br/>
 
 
-*Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export*
+`Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

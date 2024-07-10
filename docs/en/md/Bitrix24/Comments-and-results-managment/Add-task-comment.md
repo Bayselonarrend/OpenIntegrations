@@ -6,12 +6,10 @@ sidebar_position: 3
  Create new comment to the task
 
 
-
-
 <br/>
 
 
-*Function AddTaskComment(Val URL, Val TaskID, Val Text, Val Token = "") Export*
+`Function AddTaskComment(Val URL, Val TaskID, Val Text, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

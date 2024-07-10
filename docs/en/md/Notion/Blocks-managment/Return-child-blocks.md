@@ -6,12 +6,10 @@ sidebar_position: 3
  Returns list of child blocks of parent block
 
 
-
-
 <br/>
 
 
-*Function ReturnChildBlocks(Val Token, Val BlockID) Export*
+`Function ReturnChildBlocks(Val Token, Val BlockID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

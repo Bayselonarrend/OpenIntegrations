@@ -6,12 +6,10 @@ sidebar_position: 5
  Adds a variant for an existing property
 
 
-
-
 <br/>
 
 
-*Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export*
+`Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
+
+
+
 
 
 ```bsl title="Code example"

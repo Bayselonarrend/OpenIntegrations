@@ -6,12 +6,10 @@ sidebar_position: 4
  Return list of important post viewers ids
 
 
-
-
 <br/>
 
 
-*Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export*
+`Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,13 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+<br/>
+:::tip
+Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_getusers_important.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

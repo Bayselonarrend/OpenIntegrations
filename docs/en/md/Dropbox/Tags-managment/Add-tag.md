@@ -6,12 +6,10 @@ sidebar_position: 2
  Add new tag to file or folder
 
 
-
-
 <br/>
 
 
-*Function AddTag(Val Token, Val Path, Val Tag) Export*
+`Function AddTag(Val Token, Val Path, Val Tag) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

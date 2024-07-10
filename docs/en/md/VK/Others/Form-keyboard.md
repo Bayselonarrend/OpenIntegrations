@@ -6,12 +6,10 @@ sidebar_position: 1
  Forms a keyboard from an array of buttons
 
 
-
-
 <br/>
 
 
-*Function FormKeyboard(Val ButtonArray) Export*
+`Function FormKeyboard(Val ButtonArray) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: String - Keyboard JSON
+
+
+
 
 
 ```bsl title="Code example"

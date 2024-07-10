@@ -6,14 +6,10 @@ sidebar_position: 1
  Create a new post at news feed
 
 
-:::tip
-API method: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_add.php)
-:::
-
 <br/>
 
 
-*Function CreatePost(Val URL, Val Text, Val Visibility = "UA", Val Files = "", Val Title = "", Val Important = False, Val Token = "") Export*
+`Function CreatePost(Val URL, Val Text, Val Visibility = "UA", Val Files = "", Val Title = "", Val Important = False, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -27,6 +23,13 @@ API method: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_help/log/log_blogpo
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+<br/>
+:::tip
+Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_add.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

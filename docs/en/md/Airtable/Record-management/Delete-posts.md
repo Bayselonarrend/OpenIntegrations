@@ -6,12 +6,10 @@ sidebar_position: 4
  Deletes one or an array of records by identifiers
 
 
-
-
 <br/>
 
 
-*Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export*
+`Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

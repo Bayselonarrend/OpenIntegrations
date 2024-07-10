@@ -6,12 +6,10 @@ sidebar_position: 12
  Downloads a zip archive with the contents of the specified directory
 
 
-
-
 <br/>
 
 
-*Function DownloadFolder(Val Token, Val Path) Export*
+`Function DownloadFolder(Val Token, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 12
 
  
  Returns: BinaryData - binary data of the zip archive with the contents of the directory
+
+
+
 
 
 ```bsl title="Code example"

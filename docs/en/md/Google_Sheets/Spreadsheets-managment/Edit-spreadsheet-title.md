@@ -6,12 +6,10 @@ sidebar_position: 3
  Changes the name of the existing spreadsheet
 
 
-
-
 <br/>
 
 
-*Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export*
+`Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

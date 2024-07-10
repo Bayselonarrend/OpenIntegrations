@@ -6,12 +6,10 @@ sidebar_position: 5
  Get async job status for access changes
 
 
-
-
 <br/>
 
 
-*Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export*
+`Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 	

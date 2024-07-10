@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets the list of product selections
 
 
-
-
 <br/>
 
 
-*Function GetSelectionList(Val Parameters = "") Export*
+`Function GetSelectionList(Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Array of selection maps
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets comment by ID
 
 
-
-
 <br/>
 
 
-*Function GetComment(Val Token, Val ObjectID, Val CommentID) Export*
+`Function GetComment(Val Token, Val ObjectID, Val CommentID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

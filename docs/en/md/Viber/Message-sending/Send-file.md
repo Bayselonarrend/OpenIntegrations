@@ -6,12 +6,10 @@ sidebar_position: 3
  Sends a file (document) to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export*
+`Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
+
+
+
 
 
 ```bsl title="Code example"

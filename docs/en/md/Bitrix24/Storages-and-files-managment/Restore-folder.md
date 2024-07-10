@@ -6,12 +6,10 @@ sidebar_position: 17
  Resotre folder form recycle bin
 
 
-
-
 <br/>
 
 
-*Function RestoreFolder(Val URL, Val FolderID, Val Token = "") Export*
+`Function RestoreFolder(Val URL, Val FolderID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 17
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

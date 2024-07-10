@@ -6,12 +6,10 @@ sidebar_position: 4
  Deletes block by ID
 
 
-
-
 <br/>
 
 
-*Function DeleteBlock(Val Token, Val BlockID) Export*
+`Function DeleteBlock(Val Token, Val BlockID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

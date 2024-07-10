@@ -6,12 +6,10 @@ sidebar_position: 6
  Removes the public URL from the file. Requires user token
 
 
-
-
 <br/>
 
 
-*Function MakeFilePrivate(Val Token, Val FileID) Export*
+`Function MakeFilePrivate(Val Token, Val FileID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 	

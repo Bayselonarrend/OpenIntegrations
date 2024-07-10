@@ -6,12 +6,10 @@ sidebar_position: 3
  Creates a link for joining a closed chat
 
 
-
-
 <br/>
 
 
-*Function CreateInvitationLink(Val Token, Val ChatID, Val Title = "", Val ExpirationDate = "", Val UserLimit = 0) Export*
+`Function CreateInvitationLink(Val Token, Val ChatID, Val Title = "", Val ExpirationDate = "", Val UserLimit = 0) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

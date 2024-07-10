@@ -6,12 +6,10 @@ sidebar_position: 11
  Sets the channel topic
 
 
-
-
 <br/>
 
 
-*Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export*
+`Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 11
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

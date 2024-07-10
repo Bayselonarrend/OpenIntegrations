@@ -6,12 +6,10 @@ sidebar_position: 2
  Uploads a file to Slack servers
 
 
-
-
 <br/>
 
 
-*Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export*
+`Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

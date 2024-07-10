@@ -6,12 +6,10 @@ sidebar_position: 5
  Edits a previously created product
 
 
-
-
 <br/>
 
 
-*Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export*
+`Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

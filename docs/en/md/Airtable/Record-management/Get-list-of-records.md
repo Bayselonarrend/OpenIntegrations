@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets the list of records of the selected table
 
 
-
-
 <br/>
 
 
-*Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export*
+`Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

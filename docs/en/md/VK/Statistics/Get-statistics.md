@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets the overall community statistics for a period
 
 
-
-
 <br/>
 
 
-*Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export*
+`Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

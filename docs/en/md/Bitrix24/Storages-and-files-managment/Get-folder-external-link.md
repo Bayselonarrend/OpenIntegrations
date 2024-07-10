@@ -6,12 +6,10 @@ sidebar_position: 14
  Get external link to folder
 
 
-
-
 <br/>
 
 
-*Function GetFolderExternalLink(Val URL, Val FolderID, Val Token = "") Export*
+`Function GetFolderExternalLink(Val URL, Val FolderID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 14
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

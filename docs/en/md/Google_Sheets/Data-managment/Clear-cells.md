@@ -6,12 +6,10 @@ sidebar_position: 2
  Clears the value in cells
 
 
-
-
 <br/>
 
 
-*Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export*
+`Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

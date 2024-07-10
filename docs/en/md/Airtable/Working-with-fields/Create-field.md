@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a new field in the table
 
 
-
-
 <br/>
 
 
-*Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export*
+`Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

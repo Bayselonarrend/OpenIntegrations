@@ -6,12 +6,10 @@ sidebar_position: 3
  Creates a new channel
 
 
-
-
 <br/>
 
 
-*Function CreateChannel(Val Token, Val Name, Val Private = False) Export*
+`Function CreateChannel(Val Token, Val Name, Val Private = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

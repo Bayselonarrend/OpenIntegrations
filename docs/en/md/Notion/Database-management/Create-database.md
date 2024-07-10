@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a database
 
 
-
-
 <br/>
 
 
-*Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export*
+`Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

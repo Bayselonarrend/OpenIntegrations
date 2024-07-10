@@ -6,12 +6,10 @@ sidebar_position: 6
  Removes a previously added product from the selection
 
 
-
-
 <br/>
 
 
-*Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export*
+`Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

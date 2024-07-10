@@ -6,12 +6,10 @@ sidebar_position: 13
  Changes the name of the channel
 
 
-
-
 <br/>
 
 
-*Function RenameChannel(Val Token, Val Channel, Val Name) Export*
+`Function RenameChannel(Val Token, Val Channel, Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 13
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

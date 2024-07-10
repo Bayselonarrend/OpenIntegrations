@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets an event by ID
 
 
-
-
 <br/>
 
 
-*Function GetEvent(Val Token, Val Calendar, Val Event) Export*
+`Function GetEvent(Val Token, Val Calendar, Val Event) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

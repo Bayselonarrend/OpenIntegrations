@@ -6,12 +6,10 @@ sidebar_position: 10
  Uploads video to the group for further use
 
 
-
-
 <br/>
 
 
-*Function UploadVideoToServer(Val Video, Val Name, Val Description = "", Val Album = "", Val Parameters = "") Export*
+`Function UploadVideoToServer(Val Video, Val Name, Val Description = "", Val Album = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 10
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
+
+
+
 
 
 ```bsl title="Code example"

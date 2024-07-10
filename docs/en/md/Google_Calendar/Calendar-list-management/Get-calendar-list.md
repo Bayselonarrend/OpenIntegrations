@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets an array of account calendars
 
 
-
-
 <br/>
 
 
-*Function GetCalendarList(Val Token) Export*
+`Function GetCalendarList(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Array of calendar data mappings
+
+
+
 
 
 ```bsl title="Code example"

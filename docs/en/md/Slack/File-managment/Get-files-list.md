@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets a list of files of the bot or channel
 
 
-
-
 <br/>
 
 
-*Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export*
+`Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

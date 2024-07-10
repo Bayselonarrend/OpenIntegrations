@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets the list of all comments of the object
 
 
-
-
 <br/>
 
 
-*Function GetCommentList(Val Token, Val ObjectID) Export*
+`Function GetCommentList(Val Token, Val ObjectID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

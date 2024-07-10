@@ -6,12 +6,10 @@ sidebar_position: 6
  Adds a comment to the post
 
 
-
-
 <br/>
 
 
-*Function AddPostComment(Val URL, Val PostID, Val Text, Val Token = "") Export*
+`Function AddPostComment(Val URL, Val PostID, Val Text, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,13 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+<br/>
+:::tip
+Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest_help/log/log_blogcomment_add.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"
