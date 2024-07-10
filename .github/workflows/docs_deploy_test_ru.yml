@@ -33,7 +33,7 @@ jobs:
         yarn build
 
     - name: Развертывание на neocities
-      uses: jonchang/deploy-neocities@latest
+      uses: jonchang/deploy-neocities@master
       with:
         key: ${{ secrets.NEOCITIES_API_TOKEN_TEST }}
         dir: ./docs/docusaurus/build
