@@ -6,8 +6,6 @@ sidebar_position: 5
  Get async job status for access changes
 
 
-<br/>
-
 
 `Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export`
 

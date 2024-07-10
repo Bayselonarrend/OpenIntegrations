@@ -6,8 +6,6 @@ sidebar_position: 4
  Update a task
 
 
-<br/>
-
 
 `Function UpdateTask(Val URL, Val TaskID, Val FieldsStructure, Val Token = "") Export`
 

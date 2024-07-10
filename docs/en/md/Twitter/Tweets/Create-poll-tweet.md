@@ -6,8 +6,6 @@ sidebar_position: 5
  Creates a tweet with a poll
 
 
-<br/>
-
 
 `Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export`
 

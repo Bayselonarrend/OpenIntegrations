@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets user information by ID
 
 
-<br/>
-
 
 `Function GetUserData(Val Token, Val UserID) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 4
  Pins a message in the chat header
 
 
-<br/>
-
 
 `Function PinMessage(Val Token, Val ChatID, Val MessageID) Export`
 

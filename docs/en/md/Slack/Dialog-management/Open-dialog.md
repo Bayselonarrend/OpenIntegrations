@@ -6,8 +6,6 @@ sidebar_position: 1
  Opens a new dialog with one or more users
 
 
-<br/>
-
 
 `Function OpenDialog(Val Token, Val ArrayOfUsers) Export`
 

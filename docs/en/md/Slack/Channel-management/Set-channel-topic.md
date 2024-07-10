@@ -6,8 +6,6 @@ sidebar_position: 11
  Sets the channel topic
 
 
-<br/>
-
 
 `Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 3
  Deletes a post by ID
 
 
-<br/>
-
 
 `Function DeletePost(Val PostID, Val Parameters = "") Export`
 

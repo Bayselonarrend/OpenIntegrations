@@ -6,8 +6,6 @@ sidebar_position: 8
 Получает список файлов с или без отбора по типу Список доступных типов: audio, backup, book, compressed, data, development, diskimage, document, encoded, executable, flash, font, mage, settings, spreadsheet, text, unknown, video, web
 
 
-<br/>
-
 
 `Функция ПолучитьСписокФайлов(Знач Токен, Знач Количество = 0, Знач СмещениеОтНачала = 0, Знач ОтборПоТипу = "", Знач СортироватьПоДате = Ложь) Экспорт`
 

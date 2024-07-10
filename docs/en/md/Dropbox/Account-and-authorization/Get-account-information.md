@@ -6,8 +6,6 @@ sidebar_position: 4
  Gets account information
 
 
-<br/>
-
 
 `Function GetAccountInformation(Val Token, Val Account = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 3
  Edits properties of an existing database
 
 
-<br/>
-
 
 `Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export`
 

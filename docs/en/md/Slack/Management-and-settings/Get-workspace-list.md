@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets a list of workspaces where the bot is connected
 
 
-<br/>
-
 
 `Function GetWorkspaceList(Val Token, Val Cursor = "") Export`
 

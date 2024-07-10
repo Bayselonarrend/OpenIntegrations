@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets basic information about the bot
 
 
-<br/>
-
 
 `Function GetBotInformation(Val Token) Export`
 

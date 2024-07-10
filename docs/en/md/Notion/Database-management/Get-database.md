@@ -6,8 +6,6 @@ sidebar_position: 2
  Get database information
 
 
-<br/>
-
 
 `Function GetDatabase(Val Token, Val Base) Export`
 

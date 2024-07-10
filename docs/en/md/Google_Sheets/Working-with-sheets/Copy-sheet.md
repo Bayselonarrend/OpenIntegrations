@@ -6,8 +6,6 @@ sidebar_position: 3
  Copies a sheet from one spreadsheet to another
 
 
-<br/>
-
 
 `Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export`
 

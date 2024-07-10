@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets information about channel events
 
 
-<br/>
-
 
 `Function GetChannelHistory(Val Token, Val Channel) Export`
 

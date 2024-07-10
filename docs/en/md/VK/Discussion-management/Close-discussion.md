@@ -6,8 +6,6 @@ sidebar_position: 2
  Close or delete discussion
 
 
-<br/>
-
 
 `Function CloseDiscussion(Val DiscussionID, Val DeleteCompletely = False, Val Parameters = "") Export`
 

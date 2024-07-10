@@ -6,8 +6,6 @@ sidebar_position: 10
  Creates an empty directory at the selected path
 
 
-<br/>
-
 
 `Function CreateFolder(Val Token, Val Path) Export`
 

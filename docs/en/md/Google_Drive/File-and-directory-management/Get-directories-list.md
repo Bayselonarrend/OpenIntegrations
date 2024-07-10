@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets the list of drive directories
 
 
-<br/>
-
 
 `Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export`
 

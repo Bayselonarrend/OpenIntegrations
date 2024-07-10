@@ -6,8 +6,6 @@ sidebar_position: 8
  Copies a file or directory to the selected path
 
 
-<br/>
-
 
 `Function CopyObject(Val Token, Val From, Val Target) Export`
 

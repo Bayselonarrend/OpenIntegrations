@@ -6,8 +6,6 @@ sidebar_position: 6
  Prohibits access to the file for external users
 
 
-<br/>
-
 
 `Function CancelFilePublication(Val Token, Val FileID) Export`
 

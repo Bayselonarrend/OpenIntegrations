@@ -6,8 +6,6 @@ sidebar_position: 9
  Deletes an image from the album
 
 
-<br/>
-
 
 `Function DeleteImage(Val ImageID, Val Parameters = "") Export`
 

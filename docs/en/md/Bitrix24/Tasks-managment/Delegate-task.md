@@ -6,8 +6,6 @@ sidebar_position: 16
  Delegate task to another user
 
 
-<br/>
-
 
 `Function DelegateTask(Val URL, Val TaskID, Val UserID, Val Token = "") Export`
 

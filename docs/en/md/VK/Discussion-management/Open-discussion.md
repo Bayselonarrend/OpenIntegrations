@@ -6,8 +6,6 @@ sidebar_position: 3
  Opens a previously closed discussion
 
 
-<br/>
-
 
 `Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export`
 

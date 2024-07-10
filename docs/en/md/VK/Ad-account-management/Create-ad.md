@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates an advertising post based on a post
 
 
-<br/>
-
 
 `Function CreateAd(Val CampaignNumber, Val DailyLimit, Val CategoryNumber, Val PostID, Val AccountID, Val Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 3
  Creates one or an array of records by description or an array of field value descriptions
 
 
-<br/>
-
 
 `Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export`
 

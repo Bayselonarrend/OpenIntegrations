@@ -6,8 +6,6 @@ sidebar_position: 5
  Creates an album to store images
 
 
-<br/>
-
 
 `Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export`
 

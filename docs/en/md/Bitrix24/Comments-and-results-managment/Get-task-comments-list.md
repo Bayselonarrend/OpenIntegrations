@@ -6,8 +6,6 @@ sidebar_position: 1
  Get user comments list for a task
 
 
-<br/>
-
 
 `Function GetTaskCommentsList(Val URL, Val TaskID, Val Token = "") Export`
 

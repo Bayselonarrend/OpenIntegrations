@@ -6,8 +6,6 @@ sidebar_position: 3
  Sends a video to a chat or channel
 
 
-<br/>
-
 
 `Function SendVideo(Val Token, Val ChatID, Val Text, Val Video, Val Keyboard = "", Val Markup = "Markdown") Export`
 

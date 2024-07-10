@@ -6,8 +6,6 @@ sidebar_position: 26
  Changes the name of an existing file
 
 
-<br/>
-
 
 `Function RenameFile(Val URL, Val FileID, Val Name, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes a channel message by timestamp
 
 
-<br/>
-
 
 `Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export`
 

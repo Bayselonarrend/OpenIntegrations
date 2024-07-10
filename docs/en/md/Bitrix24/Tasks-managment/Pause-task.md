@@ -6,8 +6,6 @@ sidebar_position: 12
  Pause a task by ID
 
 
-<br/>
-
 
 `Function PauseTask(Val URL, Val TaskID, Val Token = "") Export`
 

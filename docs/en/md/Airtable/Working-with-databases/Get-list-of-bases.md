@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the list of available bases
 
 
-<br/>
-
 
 `Function GetListOfBases(Val Token, Val Indent = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates a post based on an array of object identifiers (images, videos, etc..)
 
 
-<br/>
-
 
 `Function CreateCompositePost(Val Text, Val Objects, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export`
 

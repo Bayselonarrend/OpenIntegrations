@@ -6,8 +6,6 @@ sidebar_position: 19
  Get history of task changing
 
 
-<br/>
-
 
 `Function GetTaskHistory(Val URL, Val TaskID, Val Token = "") Export`
 

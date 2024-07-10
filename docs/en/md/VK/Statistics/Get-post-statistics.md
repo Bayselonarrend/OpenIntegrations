@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets statistics in terms of posts
 
 
-<br/>
-
 
 `Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export`
 

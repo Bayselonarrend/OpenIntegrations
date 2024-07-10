@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets comment by ID
 
 
-<br/>
-
 
 `Function GetComment(Val Token, Val ObjectID, Val CommentID) Export`
 

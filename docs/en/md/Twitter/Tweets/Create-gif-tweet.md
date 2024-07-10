@@ -6,8 +6,6 @@ sidebar_position: 3
  Creates a tweet with a gif attachment
 
 
-<br/>
-
 
 `Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export`
 

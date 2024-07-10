@@ -6,8 +6,6 @@ sidebar_position: 5
  Download file from Telegram servers
 
 
-<br/>
-
 
 `Function DownloadFile(Val Token, Val FileID) Export`
 

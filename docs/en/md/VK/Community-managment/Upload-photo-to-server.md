@@ -6,8 +6,6 @@ sidebar_position: 11
  Uploads photo to server for further use
 
 
-<br/>
-
 
 `Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export`
 

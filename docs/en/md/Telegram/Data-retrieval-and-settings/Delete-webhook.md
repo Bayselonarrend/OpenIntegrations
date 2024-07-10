@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes the bot event handler URL for webhook operation
 
 
-<br/>
-
 
 `Function DeleteWebhook(Val Token) Export`
 

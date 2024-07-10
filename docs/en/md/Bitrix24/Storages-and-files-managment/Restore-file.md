@@ -6,8 +6,6 @@ sidebar_position: 23
  Restore file from recycle bin
 
 
-<br/>
-
 
 `Function RestoreFile(Val URL, Val FileID, Val Token = "") Export`
 

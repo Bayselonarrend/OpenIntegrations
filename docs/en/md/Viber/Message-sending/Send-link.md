@@ -6,8 +6,6 @@ sidebar_position: 6
  Sends a URL with a preview to a chat or channel
 
 
-<br/>
-
 
 `Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export`
 

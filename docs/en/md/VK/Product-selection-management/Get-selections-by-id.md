@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets the list of selections by array of IDs
 
 
-<br/>
-
 
 `Function GetSelectionsByID(Val Selections, Val Parameters = "") Export`
 

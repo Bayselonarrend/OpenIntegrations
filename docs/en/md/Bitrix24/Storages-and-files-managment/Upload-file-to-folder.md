@@ -6,8 +6,6 @@ sidebar_position: 19
  Upload local file to the folder
 
 
-<br/>
-
 
 `Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token = "") Export`
 

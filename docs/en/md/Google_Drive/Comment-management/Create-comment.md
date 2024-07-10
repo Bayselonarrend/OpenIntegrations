@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a comment for a file or directory
 
 
-<br/>
-
 
 `Function CreateComment(Val Token, Val Identifier, Val Comment) Export`
 
