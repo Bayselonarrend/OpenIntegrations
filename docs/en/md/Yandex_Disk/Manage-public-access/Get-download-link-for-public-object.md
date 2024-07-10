@@ -6,12 +6,10 @@ sidebar_position: 5
  Gets a direct link to download the public object
 
 
-
-
 <br/>
 
 
-*Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export*
+`Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

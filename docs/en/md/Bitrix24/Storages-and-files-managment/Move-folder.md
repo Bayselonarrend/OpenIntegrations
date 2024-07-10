@@ -6,12 +6,10 @@ sidebar_position: 11
  Moves one folder inside another
 
 
-
-
 <br/>
 
 
-*Function MoveFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export*
+`Function MoveFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 11
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 6
  Deletes a previously created product
 
 
-
-
 <br/>
 
 
-*Function DeleteProduct(Val Product, Val Parameters = "") Export*
+`Function DeleteProduct(Val Product, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

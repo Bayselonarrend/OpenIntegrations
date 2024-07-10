@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets the list of files
 
 
-
-
 <br/>
 
 
-*Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export*
+`Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Array of file mappings
+
+
+
 
 
 ```bsl title="Code example"

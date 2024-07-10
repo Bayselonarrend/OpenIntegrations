@@ -6,12 +6,10 @@ sidebar_position: 11
  Uploads photo to server for further use
 
 
-
-
 <br/>
 
 
-*Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export*
+`Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 11
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
+
+
+
 
 
 ```bsl title="Code example"

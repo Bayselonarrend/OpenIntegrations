@@ -6,12 +6,10 @@ sidebar_position: 3
  Get information about storage
 
 
-
-
 <br/>
 
 
-*Function GetStorage(Val URL, Val StorageID, Val Token = "") Export*
+`Function GetStorage(Val URL, Val StorageID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

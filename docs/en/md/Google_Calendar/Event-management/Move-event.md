@@ -6,12 +6,10 @@ sidebar_position: 5
  Moves an event to another calendar
 
 
-
-
 <br/>
 
 
-*Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event) Export*
+`Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

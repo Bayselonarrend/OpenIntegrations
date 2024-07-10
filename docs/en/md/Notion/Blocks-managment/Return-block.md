@@ -6,12 +6,10 @@ sidebar_position: 2
  Returns the block structure by ID
 
 
-
-
 <br/>
 
 
-*Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export*
+`Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

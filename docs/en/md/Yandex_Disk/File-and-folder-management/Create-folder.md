@@ -6,12 +6,10 @@ sidebar_position: 2
  Creates a directory on the disk
 
 
-
-
 <br/>
 
 
-*Function CreateFolder(Val Token, Val Path) Export*
+`Function CreateFolder(Val Token, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

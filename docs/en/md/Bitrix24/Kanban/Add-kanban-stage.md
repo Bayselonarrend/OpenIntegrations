@@ -6,12 +6,10 @@ sidebar_position: 1
  Add new stage of kanban or My Plan
 
 
-
-
 <br/>
 
 
-*Function AddKanbanStage(Val URL, Val Name, Val Color = "FFD800", Val PrevStageID = 0, Val EntityID = 0, Val AsAdmin = False, Val Token = "") Export*
+`Function AddKanbanStage(Val URL, Val Name, Val Color = "FFD800", Val PrevStageID = 0, Val EntityID = 0, Val AsAdmin = False, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -25,6 +23,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets the schema of base tables
 
 
-
-
 <br/>
 
 
-*Function GetDatabaseTables(Val Token, Val Base) Export*
+`Function GetDatabaseTables(Val Token, Val Base) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 2
  Adds an existing calendar to the user's list
 
 
-
-
 <br/>
 
 
-*Function AddCalendarToList(Val Token, Val Calendar) Export*
+`Function AddCalendarToList(Val Token, Val Calendar) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

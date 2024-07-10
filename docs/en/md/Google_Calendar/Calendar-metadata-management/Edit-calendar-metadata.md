@@ -6,12 +6,10 @@ sidebar_position: 3
  Edits properties of an existing calendar
 
 
-
-
 <br/>
 
 
-*Function EditCalendarMetadata(Val Token, Val Calendar, Val Name = "", Val Description = "") Export*
+`Function EditCalendarMetadata(Val Token, Val Calendar, Val Name = "", Val Description = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

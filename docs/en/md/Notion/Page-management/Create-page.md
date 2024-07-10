@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a child page above another parent page
 
 
-
-
 <br/>
 
 
-*Function CreatePage(Val Token, Val Parent, Val Title) Export*
+`Function CreatePage(Val Token, Val Parent, Val Title) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

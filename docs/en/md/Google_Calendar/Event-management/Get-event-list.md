@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets the list of all calendar events
 
 
-
-
 <br/>
 
 
-*Function GetEventList(Val Token, Val Calendar) Export*
+`Function GetEventList(Val Token, Val Calendar) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Array of event maps
+
+
+
 
 
 ```bsl title="Code example"

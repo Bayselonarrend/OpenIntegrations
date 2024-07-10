@@ -6,12 +6,10 @@ sidebar_position: 1
  Generates a block with an image to add to the message block array
 
 
-
-
 <br/>
 
 
-*Function GenerateImageBlock(Val URL, Val AlternateText = "") Export*
+`Function GenerateImageBlock(Val URL, Val AlternateText = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Image block
+
+
+
 
 
 ```bsl title="Code example"

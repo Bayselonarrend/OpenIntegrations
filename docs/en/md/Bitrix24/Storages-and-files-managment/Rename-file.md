@@ -6,12 +6,10 @@ sidebar_position: 26
  Changes the name of an existing file
 
 
-
-
 <br/>
 
 
-*Function RenameFile(Val URL, Val FileID, Val Name, Val Token = "") Export*
+`Function RenameFile(Val URL, Val FileID, Val Name, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 26
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

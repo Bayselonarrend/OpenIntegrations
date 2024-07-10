@@ -6,12 +6,10 @@ sidebar_position: 1
  Returns a list of workspace users
 
 
-
-
 <br/>
 
 
-*Function UserList(Val Token) Export*
+`Function UserList(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

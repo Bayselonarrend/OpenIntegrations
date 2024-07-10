@@ -6,12 +6,10 @@ sidebar_position: 7
  Downloads a file at the specified path
 
 
-
-
 <br/>
 
 
-*Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export*
+`Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 7
 
  
  Returns: BinaryData,String - Binary data or file path when SavePath parameter is specified
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets information about the spreadsheet by ID
 
 
-
-
 <br/>
 
 
-*Function GetSpreadsheet(Val Token, Val Identifier) Export*
+`Function GetSpreadsheet(Val Token, Val Identifier) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a new discussion
 
 
-
-
 <br/>
 
 
-*Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export*
+`Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

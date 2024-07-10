@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets a new token based on the refresh token
 
 
-
-
 <br/>
 
 
-*Function RefreshToken(Val AppKey, Val AppSecret, Val RefreshToken) Export*
+`Function RefreshToken(Val AppKey, Val AppSecret, Val RefreshToken) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

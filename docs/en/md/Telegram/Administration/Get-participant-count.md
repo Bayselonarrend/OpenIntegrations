@@ -6,12 +6,10 @@ sidebar_position: 6
  Gets the total number of chat participants
 
 
-
-
 <br/>
 
 
-*Function GetParticipantCount(Val Token, Val ChatID) Export*
+`Function GetParticipantCount(Val Token, Val ChatID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

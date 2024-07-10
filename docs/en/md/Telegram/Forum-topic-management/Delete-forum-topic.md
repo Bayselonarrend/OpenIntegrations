@@ -6,12 +6,10 @@ sidebar_position: 6
  Deletes a forum thread
 
 
-
-
 <br/>
 
 
-*Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export*
+`Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

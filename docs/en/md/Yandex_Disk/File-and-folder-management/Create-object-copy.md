@@ -6,12 +6,10 @@ sidebar_position: 5
  Creates a copy of the object at the specified path and path to the original
 
 
-
-
 <br/>
 
 
-*Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export*
+`Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

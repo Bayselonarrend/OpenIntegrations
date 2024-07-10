@@ -6,12 +6,10 @@ sidebar_position: 27
  Returns filter structure for child folder items
 
 
-
-
 <br/>
 
 
-*Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export*
+`Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 27
 
  
  Returns: Structure of Key-Value - Fields structure 
+
+
+
 
 
 ```bsl title="Code example"

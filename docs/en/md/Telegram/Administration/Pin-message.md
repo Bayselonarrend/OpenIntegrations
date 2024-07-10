@@ -6,12 +6,10 @@ sidebar_position: 4
  Pins a message in the chat header
 
 
-
-
 <br/>
 
 
-*Function PinMessage(Val Token, Val ChatID, Val MessageID) Export*
+`Function PinMessage(Val Token, Val ChatID, Val MessageID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

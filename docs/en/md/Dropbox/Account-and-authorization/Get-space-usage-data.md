@@ -6,12 +6,10 @@ sidebar_position: 5
  Gets information on the amount of used disk space
 
 
-
-
 <br/>
 
 
-*Function GetSpaceUsageData(Val Token) Export*
+`Function GetSpaceUsageData(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

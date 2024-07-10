@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets information about the current disk
 
 
-
-
 <br/>
 
 
-*Function GetDiskInformation(Val Token) Export*
+`Function GetDiskInformation(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

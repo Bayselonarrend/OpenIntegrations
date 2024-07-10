@@ -6,12 +6,10 @@ sidebar_position: 3
  Deletes the text tag of a file or directory
 
 
-
-
 <br/>
 
 
-*Function DeleteTag(Val Token, Val Path, Val Tag) Export*
+`Function DeleteTag(Val Token, Val Path, Val Tag) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

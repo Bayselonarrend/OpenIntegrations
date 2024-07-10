@@ -6,12 +6,10 @@ sidebar_position: 21
  Get external link to file
 
 
-
-
 <br/>
 
 
-*Function GetFileExternalLink(Val URL, Val FileID, Val Token = "") Export*
+`Function GetFileExternalLink(Val URL, Val FileID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 21
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

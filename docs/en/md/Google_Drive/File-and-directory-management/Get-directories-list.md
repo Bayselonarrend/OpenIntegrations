@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets the list of drive directories
 
 
-
-
 <br/>
 
 
-*Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export*
+`Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Array of directory mappings
+
+
+
 
 
 ```bsl title="Code example"

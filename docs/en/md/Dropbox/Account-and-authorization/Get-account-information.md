@@ -6,12 +6,10 @@ sidebar_position: 4
  Gets account information
 
 
-
-
 <br/>
 
 
-*Function GetAccountInformation(Val Token, Val Account = "") Export*
+`Function GetAccountInformation(Val Token, Val Account = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

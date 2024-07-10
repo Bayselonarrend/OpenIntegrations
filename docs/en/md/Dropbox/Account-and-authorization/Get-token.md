@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets token based on the code from the GetAuthorizationLink page
 
 
-
-
 <br/>
 
 
-*Function GetToken(Val AppKey, Val AppSecret, Val Code) Export*
+`Function GetToken(Val AppKey, Val AppSecret, Val Code) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

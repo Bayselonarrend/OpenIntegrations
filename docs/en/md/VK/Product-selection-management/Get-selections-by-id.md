@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets the list of selections by array of IDs
 
 
-
-
 <br/>
 
 
-*Function GetSelectionsByID(Val Selections, Val Parameters = "") Export*
+`Function GetSelectionsByID(Val Selections, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

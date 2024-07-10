@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets information about products by array of IDs
 
 
-
-
 <br/>
 
 
-*Function GetProductsByID(Val Products, Val Parameters = "") Export*
+`Function GetProductsByID(Val Products, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

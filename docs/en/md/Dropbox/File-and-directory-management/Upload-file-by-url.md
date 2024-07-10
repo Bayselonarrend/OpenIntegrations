@@ -6,12 +6,10 @@ sidebar_position: 5
  Uploads a file to the cloud drive by fetching it from the specified URL
 
 
-
-
 <br/>
 
 
-*Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export*
+`Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

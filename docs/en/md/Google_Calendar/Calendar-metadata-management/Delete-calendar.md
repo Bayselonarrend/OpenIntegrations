@@ -6,12 +6,10 @@ sidebar_position: 5
  Deletes a calendar by ID
 
 
-
-
 <br/>
 
 
-*Function DeleteCalendar(Val Token, Val Calendar) Export*
+`Function DeleteCalendar(Val Token, Val Calendar) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

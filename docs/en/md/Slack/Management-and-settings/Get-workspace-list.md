@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets a list of workspaces where the bot is connected
 
 
-
-
 <br/>
 
 
-*Function GetWorkspaceList(Val Token, Val Cursor = "") Export*
+`Function GetWorkspaceList(Val Token, Val Cursor = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"
