@@ -43,5 +43,5 @@ jobs:
       uses: bcomnes/deploy-to-neocities@v2
       with:
         api_token: ${{ secrets.NEOCITIES_API_TOKEN_TEST }}
-        cleanup: false
+        cleanup: true
         dist_dir: ./docs/docusaurus/build
