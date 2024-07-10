@@ -27,15 +27,13 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- OptionArray = New Array;
+OptionArray = New Array;
  OptionArray.Add("Good");
  OptionArray.Add("Nothing special");
  OptionArray.Add("Bad");
  
  Response = OPI_Twitter.CreatePollTweet("How are you?", OptionArray, 60, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -47,7 +45,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  "data": {
  "text": "How are you?",
  "id": "1746082302268969388",

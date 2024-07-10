@@ -27,13 +27,11 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Base = "apptm8Xqo7TwMaipQ";
+Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
  
  Response = OPI_Airtable.GetListOfRecords(Token, Base, Table, Indent); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "records": [
  {
  "id": "recGyJ0MlN1H3GMuN",

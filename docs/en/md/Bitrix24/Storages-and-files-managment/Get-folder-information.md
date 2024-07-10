@@ -26,7 +26,7 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  FolderID = "2490";
  
  Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID);
@@ -47,7 +47,7 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "ID": "1722",
  "NAME": "New catalog",

@@ -28,7 +28,7 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
+Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
  Question = "What's your favorite color?";
@@ -52,7 +52,7 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "result": {
  "message_id": 4648,

@@ -27,8 +27,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Родитель  = "5dd94c34fab04bff9...";
   Заголовок = "Эта база была создана из 1С";
   
@@ -53,7 +52,6 @@ sidebar_position: 1
   
   Ответ = OPI_Notion.СоздатьБазуДанных(Токен, Родитель, Заголовок, Свойства);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -65,7 +63,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "43adcae7-c8ee-4a7d-aba6-c2c43ad2c33b",
   "public_url": null,
   "url": "https://www.notion.so/048ba0ce4f474e33900540d249b01949",

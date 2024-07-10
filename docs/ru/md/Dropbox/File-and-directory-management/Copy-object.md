@@ -26,7 +26,7 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-  Оригинал  = "/New/pic.png";
+Оригинал  = "/New/pic.png";
   Копия     = "/New/pic_copy.png";
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   
@@ -42,7 +42,7 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-    {
+{
  "metadata": {
   ".tag": "file",
   "name": "pic_copy.png",

@@ -25,12 +25,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "y0_AgAAAABdylaOAA...";
+Токен = "y0_AgAAAABdylaOAA...";
   Путь  = "/Тестовая папка"
   Ответ = OPI_YandexDisk.СоздатьПапку(Токен, Путь); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);       //Строка
-  
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "revision": 1707461457546792,
   "comment_ids": {
   "public_resource": "1573541518:ba32b9efac79ab1b04707a4278a1ff583d7b0403ea306035f1b910e56c6ef3ac",

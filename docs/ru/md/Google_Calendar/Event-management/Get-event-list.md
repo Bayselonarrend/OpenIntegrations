@@ -25,10 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_GoogleCalendar.ПолучитьСписокСобытий(Токен, "55868c32be16935f0...");
+Ответ = OPI_GoogleCalendar.ПолучитьСписокСобытий(Токен, "55868c32be16935f0...");
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  [
+[
   {
   "eventType": "default",
   "attachments": [

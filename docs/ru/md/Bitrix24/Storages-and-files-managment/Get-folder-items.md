@@ -27,7 +27,7 @@ sidebar_position: 15
 
 
 ```bsl title="Пример кода"
-  URL        = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL        = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDКаталога = "2490";
   
   Результат  = OPI_Bitrix24.ПолучитьДочерниеЭлементыКаталога(URL, IDКаталога);
@@ -48,7 +48,7 @@ sidebar_position: 15
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [
   {
    "ID": "848",

@@ -33,7 +33,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  Текст     = "Новый текст новости";
+Текст     = "Новый текст новости";
   Заголовок = "Новый заголовок новости";
   Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";
   IDНовости = "124";
@@ -62,7 +62,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 86,
  "time": {
   "start": 1718473311.53949,

@@ -27,7 +27,7 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
- DestinationID = "2492";
+DestinationID = "2492";
  FolderID = "2494";
  
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
@@ -55,7 +55,7 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "ID": 1732,
  "NAME": "New subfolder 2",

@@ -24,10 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_GoogleCalendar.ПолучитьСписокКалендарей(Токен); //Соответствие
+Ответ = OPI_GoogleCalendar.ПолучитьСписокКалендарей(Токен); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                 //Строка
-  
 ```
 	
 
@@ -39,7 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  [
+[
   {
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [

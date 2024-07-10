@@ -27,8 +27,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Родитель  = "5dd94c34fab04bff9...";
   
   Блок      = OPI_Notion.ВернутьБлок(Токен, "ca18df269bd24407852b91c30e...");       //Блок как соответствие. С ним можно свершать манипуляции.
@@ -37,7 +36,6 @@ sidebar_position: 1
   Ответ = OPI_Notion.СоздатьБлок(Токен, Родитель, "46c1500ed40c4e89ba6a229003...");
   Ответ = OPI_Notion.СоздатьБлок(Токен, Родитель, "aa4137d4c8cc445d9f969c3968...");
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -49,7 +47,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "4de46f5b-d38b-4df5-b26e-32127db1096b",
   "block": {},
   "type": "block",

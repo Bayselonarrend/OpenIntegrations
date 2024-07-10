@@ -28,7 +28,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
+Parameters = GetVKParameters();
  Text = "Post from autotest";
  URL = "https://github.com/Bayselonarrend/OpenIntegrations";
  
@@ -63,7 +63,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "post_id": 2126
  }

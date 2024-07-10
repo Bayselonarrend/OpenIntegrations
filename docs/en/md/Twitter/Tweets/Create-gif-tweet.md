@@ -26,14 +26,12 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- ImageArray = New Array;
+ImageArray = New Array;
  ImageArray.Add("C:\1.gif");
  ImageArray.Add("C:\2.gif");
  
  Response = OPI_Twitter.CreateGifTweet("Gifs", ImageArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "data": {
  "text": "Nature https://t.co/VWkWU11111",
  "id": "1746086669499924991",

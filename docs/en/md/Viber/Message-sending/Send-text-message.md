@@ -28,8 +28,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
+BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
  UserID = "d3jxe1111111111jYGgZg==";
  
  ButtonArray = New Array;
@@ -42,7 +41,6 @@ sidebar_position: 1
  
  Response = OPI_Viber.SendTextMessage(BotToken, "Hello", UserID, False, Keyboard); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -54,7 +52,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "chat_hostname": "SN-CHAT-10_",
  "message_token": 5925400810709476620,
  "status_message": "ok",

@@ -27,8 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- CellsArray = New Array;
+CellsArray = New Array;
  CellsArray.Add("B2");
  CellsArray.Add("A3");
  CellsArray.Add("B4");
@@ -38,7 +37,6 @@ sidebar_position: 3
  
  Response = OPI_GoogleSheets.GetCellValues(Token, Spreadsheet, CellsArray, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -50,7 +48,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
  "valueRanges": [
  {

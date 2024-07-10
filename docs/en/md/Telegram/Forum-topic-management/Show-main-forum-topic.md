@@ -25,7 +25,7 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
+Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  
  Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
@@ -40,7 +40,7 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "result": true
 }

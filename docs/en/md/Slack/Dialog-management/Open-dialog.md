@@ -25,14 +25,12 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- ArrayOfUsers = New Array;
+ArrayOfUsers = New Array;
  ArrayOfUsers.Add("U123456");
  ArrayOfUsers.Add("U654321");
  
  Response = OPI_Slack.OpenDialog(Token, ArrayOfUsers); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "no_op": false,
  "already_open": false,

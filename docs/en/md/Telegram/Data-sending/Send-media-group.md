@@ -29,8 +29,7 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- 
- Token = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
+Token = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
  Description = "Pictures group";
  FileMapping = New Map;
  FileMapping.Insert("C:\OPI\alpaca.png", "photo");
@@ -38,7 +37,6 @@ sidebar_position: 7
  
  Response = OPI_Telegram.SendMediaGroup(Token, 1234567890, Description, FileMapping); //Map
  Response = OPI_Tools.JSONString(Response_); //JSON string
- 
 ```
 	
 
@@ -50,7 +48,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "result": [
  {

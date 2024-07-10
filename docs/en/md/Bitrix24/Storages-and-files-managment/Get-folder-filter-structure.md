@@ -26,7 +26,7 @@ sidebar_position: 27
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.GetFolderFilterStructure(URL);
  
@@ -46,7 +46,7 @@ sidebar_position: 27
 ```
 
 ```json title="Result"
- {
+{
  "ID": "",
  "NAME": "",
  "TYPE": "",

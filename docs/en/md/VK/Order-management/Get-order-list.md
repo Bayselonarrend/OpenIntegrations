@@ -24,7 +24,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
+Parameters = GetVKParameters();
  Result = OPI_VK.GetOrderList(Parameters);
 ```
 	
@@ -37,7 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- [
+[
  {
  "id": 397209,
  "group_id": 218861756,

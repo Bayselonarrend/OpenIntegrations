@@ -26,10 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.LikePost(221,,Parameters);
+Response = OPI_VK.LikePost(221,,Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -41,7 +39,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "likes": 1
  }

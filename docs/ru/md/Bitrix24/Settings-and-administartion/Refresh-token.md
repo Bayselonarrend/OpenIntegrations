@@ -26,7 +26,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  ClientID     = "local.6667fc928a50a9.70414732";
+ClientID     = "local.6667fc928a50a9.70414732";
   ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
   Refresh      = "a95e9b66006e9f06006b12e400000001000...";
   
@@ -42,7 +42,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-    {
+{
  "access_token": "63a46866006e9f06006b12e4000000010000071997e1f54c1043e9f7193734af3018df",
  "expires": 1718133859,
  "expires_in": 3600,

@@ -26,7 +26,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Токен          = "6129457865:AAFyzNYOAFbu...";
+Токен          = "6129457865:AAFyzNYOAFbu...";
   IDПользователя = "461699897";
   IDКанала       = "@testsichee";
   
@@ -42,7 +42,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": false,
  "error_code": 400,
  "description": "Bad Request: can't remove chat owner"

@@ -26,12 +26,10 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Channel = "C070VPMKN8J";
+Channel = "C070VPMKN8J";
  
  Response = OPI_Slack.GetDelayedMessageList(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -43,7 +41,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "scheduled_messages": [],
  "response_metadata": {

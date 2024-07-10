@@ -25,12 +25,10 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.GetObjectInformation(Token, Identifier); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "linkShareMetadata": {
  "securityUpdateEnabled": true,
  "securityUpdateEligible": false

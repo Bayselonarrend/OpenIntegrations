@@ -29,8 +29,7 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  
-  Токен              = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
+Токен              = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
   Описание           = "Группа картинок";
   СоответствиеФайлов = Новый Соответствие;
   СоответствиеФайлов.Вставить("C:\OPI\alpaca.png"     , "photo");
@@ -38,7 +37,6 @@ sidebar_position: 7
   
   Ответ = OPI_Telegram.ОтправитьМедиагруппу(Токен, 1234567890, Описание, СоответствиеФайлов); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ_);                                                //JSON строка
-  
 ```
 	
 
@@ -50,7 +48,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": [
   {

@@ -26,8 +26,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  
-  Вложения        = Новый Соответствие;
+Вложения        = Новый Соответствие;
   Вложения.Вставить("Картинка1", "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
   Вложения.Вставить("Картинка2", "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1");
   
@@ -42,7 +41,6 @@ sidebar_position: 4
   
   Ответ = OPI_GoogleCalendar.СоздатьСобытие(Токен, Календарь, СоответствиеСобытия);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -54,7 +52,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-  {
+{
   "eventType": "default",
   "attachments": [
   {
