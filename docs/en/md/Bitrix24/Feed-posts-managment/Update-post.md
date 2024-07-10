@@ -6,6 +6,11 @@ sidebar_position: 2
  Change post data
 
 
+
+
+<br/>
+
+
 *Function UpdatePost(Val URL, Val PostID, Val Text, Val Visibility = "UA", Val Files = "", Val Title = "", Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -21,8 +26,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  Text = "New post text";
  Title = "New post title";
  Image1 = "https://openintegrations.dev/test_data/picture.jpg";
@@ -41,8 +46,9 @@ sidebar_position: 2
  PostID = "122";
  
  Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text,, Files, Title, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -50,10 +56,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": 86,
  "time": {
  "start": 1718473311.53949,
@@ -66,5 +70,4 @@ sidebar_position: 2
  "operating": 0.326629877090454
  }
 }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 12
  Generates a simple JSON keyboard from an array of buttons for a message or bottom panel
 
 
+
+
+<br/>
+
+
 *Function FormKeyboardFromButtonArray(Val ButtonArray, Val UnderMessage = False, Val OneByOne = True) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 12
  
  Returns: String - Keyboard JSON
 
+
 ```bsl title="Code example"
-	
  
  ButtonArray = New Array;
  ButtonArray.Add("Great");
@@ -27,8 +32,9 @@ sidebar_position: 12
  
  Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, True);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 12
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "inline_keyboard":[
  [
  {
@@ -62,5 +66,4 @@ sidebar_position: 12
  ],
  "rows":1
  }
-
 ```

@@ -1,0 +1,1 @@
+﻿oint bitrix24 УдалитьЗависимостьЗадач --url %url% --taskfrom %taskfrom% --taskto %taskto% --linktype %linktype% --token %token%

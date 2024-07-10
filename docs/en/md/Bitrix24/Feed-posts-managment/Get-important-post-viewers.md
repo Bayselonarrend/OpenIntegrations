@@ -6,6 +6,11 @@ sidebar_position: 4
  Return list of important post viewers ids
 
 
+
+
+<br/>
+
+
 *Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  PostID = "122";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -29,8 +34,9 @@ sidebar_position: 4
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": [
  "1"
  ],
@@ -56,5 +60,4 @@ sidebar_position: 4
  "operating": 0
  }
 }
-
 ```

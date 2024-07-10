@@ -6,6 +6,11 @@ sidebar_position: 6
  Sends a GIF to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendGif(Val Token, Val ChatID, Val Text, Val GIF, Val Keyboard = "", Val Markup = "Markdown") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -36,8 +41,9 @@ sidebar_position: 6
  Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,10 +51,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4643,
@@ -114,5 +118,4 @@ sidebar_position: 6
  "caption": "String value"
  }
 }
-
 ```

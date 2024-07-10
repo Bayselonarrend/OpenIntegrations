@@ -6,6 +6,11 @@ sidebar_position: 1
  Forms a link for authorization via the browser
 
 
+
+
+<br/>
+
+
 *Function GetAppAuthLink(Val Domain, Val ClientID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,11 +21,15 @@ sidebar_position: 1
  
  Returns: String - URL for browser transition
 
+
 ```bsl title="Code example"
+ Domain = "b24-ar17wx.bitrix24.by";
+ ClientID = "local.6667fc928a50a9.70414732";
+ 
+ Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
+```
 	
 
-	
-```
 
 ```sh title="CLI command example"
  
@@ -28,9 +37,6 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-"https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
-
+ "https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
 ```

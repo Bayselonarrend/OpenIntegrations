@@ -6,6 +6,11 @@ sidebar_position: 7
  Удаляет объект с облачного диска
 
 
+
+
+<br/>
+
+
 *Функция УдалитьОбъект(Знач Токен, Знач Путь, Знач Безвозвратно = Ложь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,14 +22,15 @@ sidebar_position: 7
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
 
+
 ```bsl title="Пример кода"
-	
   Путь      = "/New/pic.png";
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   
   Результат = OPI_Dropbox.УдалитьОбъект(Токен, Путь);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -32,10 +38,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "metadata": {
   ".tag": "file",
   "name": "pic.png",
@@ -50,5 +54,4 @@ sidebar_position: 7
   "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
  }
 }
-
 ```

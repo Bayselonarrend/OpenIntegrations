@@ -6,6 +6,11 @@ sidebar_position: 4
  Pins a message in the chat header
 
 
+
+
+<br/>
+
+
 *Function PinMessage(Val Token, Val ChatID, Val MessageID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChannelID = "@testsichee";
  MessageID = "4951";
  
  Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,12 +39,9 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": true
 }
-
 ```

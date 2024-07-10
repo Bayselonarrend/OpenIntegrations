@@ -6,6 +6,11 @@ sidebar_position: 4
  Получает информацию об аккаунте
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьИнформациюОбАккаунте(Знач Токен, Знач Аккаунт = "") Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,13 +21,14 @@ sidebar_position: 4
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
 
+
 ```bsl title="Пример кода"
-	
   Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   
   Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -30,10 +36,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "account_id": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE",
  "name": {
   "given_name": "Антон",
@@ -58,5 +62,4 @@ sidebar_position: 4
   "home_namespace_id": "3179550035"
  }
 }
-
 ```

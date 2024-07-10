@@ -6,6 +6,11 @@ sidebar_position: 3
  Adds a new external file
 
 
+
+
+<br/>
+
+
 *Function AddExternalFile(Val Token, Val URL, Val Title) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  URL = https://opi.neocities.org/test_data/document.docx;
  Title = "NewFile";
@@ -26,8 +31,9 @@ sidebar_position: 3
  Response = OPI_Slack.AddExternalFile(Token, URL, Title); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "file": {
  "id": "F070P52CU94",
@@ -76,5 +80,4 @@ sidebar_position: 3
  "file_access": "visible"
  }
  }
-
 ```

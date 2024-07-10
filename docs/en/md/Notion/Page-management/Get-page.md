@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets information about the page by ID
 
 
+
+
+<br/>
+
+
 *Function GetPage(Val Token, Val Page) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Page = "a574281614174169bf55dbae4...";
@@ -25,8 +30,9 @@ sidebar_position: 3
  Response = OPI_Notion.GetPage(Token, Page);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "61eaaa91-41fc-4523-a445-602805afb281",
  "public_url": null,
  "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",
@@ -193,5 +197,4 @@ sidebar_position: 3
  "id": "a5742816-1417-4169-bf55-dbae44f46d9c",
  "object": "page"
  }
-
 ```

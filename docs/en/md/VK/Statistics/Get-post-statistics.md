@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets statistics in terms of posts
 
 
+
+
+<br/>
+
+
 *Function GetPostStatistics(Val PostIDsArray, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 2
  
  Returns: Array of Arbitrary - Array of post statistics data
 
+
 ```bsl title="Code example"
-	
  
  ArrayOfPosts = New Array;
  ArrayOfPosts.Add(214);
@@ -26,8 +31,9 @@ sidebar_position: 2
  Response = OPI_VK.GetPostStatistics(ArrayOfPosts, VK_Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "ad_report": 0,
  "ad_coverage": 0,
@@ -84,5 +88,4 @@ sidebar_position: 2
  "post_id": 215
  }
  ]
-
 ```

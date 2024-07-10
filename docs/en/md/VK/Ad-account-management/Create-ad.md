@@ -6,6 +6,11 @@ sidebar_position: 2
  Creates an advertising post based on a post
 
 
+
+
+<br/>
+
+
 *Function CreateAd(Val CampaignNumber, Val DailyLimit, Val CategoryNumber, Val PostID, Val AccountID, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,14 +25,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.CreateAd(1029683999, 166, 126, 221, 1607951446, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,15 +41,12 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": [
  {
  "id": 171372386
  }
  ]
  }
-
 ```

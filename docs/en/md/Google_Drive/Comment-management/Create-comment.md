@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a comment for a file or directory
 
 
+
+
+<br/>
+
+
 *Function CreateComment(Val Token, Val Identifier, Val Comment) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Identifier = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
  Comment = "NewComment";
@@ -26,8 +31,9 @@ sidebar_position: 1
  Response = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "content": "NewComment",
  "htmlContent": "NewComment",
  "author": {
@@ -54,5 +58,4 @@ sidebar_position: 1
  "deleted": false,
  "id": "AAABI3NNNAY"
  }
-
 ```

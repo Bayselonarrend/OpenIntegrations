@@ -6,6 +6,11 @@ sidebar_position: 4
  Загружает файл на облачный диск
 
 
+
+
+<br/>
+
+
 *Функция ЗагрузитьФайл(Знач Токен, Знач Файл, Знач Путь, Знач Перезаписывать = Ложь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -18,8 +23,8 @@ sidebar_position: 4
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox 
 
+
 ```bsl title="Пример кода"
-	
   Путь      = "/New/pic.png";
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
@@ -28,8 +33,9 @@ sidebar_position: 4
   КопироватьФайл(Картинка, КартинкаПуть);
   
   Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -37,10 +43,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "name": "pic.png",
  "path_lower": "/new/pic.png",
  "path_display": "/New/pic.png",
@@ -52,5 +56,4 @@ sidebar_position: 4
  "is_downloadable": true,
  "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
 }
-
 ```

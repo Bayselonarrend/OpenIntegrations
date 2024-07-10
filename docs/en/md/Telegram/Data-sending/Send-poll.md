@@ -6,6 +6,11 @@ sidebar_position: 10
  Sends a poll with answer options
 
 
+
+
+<br/>
+
+
 *Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Anonymous = True) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 10
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -34,8 +39,9 @@ sidebar_position: 10
  
  Result = OPI_Telegram.SendPoll(Token, ChatID, Question, AnswersArray, False);
  Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -43,10 +49,8 @@ sidebar_position: 10
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4648,
@@ -93,5 +97,4 @@ sidebar_position: 10
  }
  }
 }
-
 ```

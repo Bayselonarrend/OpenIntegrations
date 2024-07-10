@@ -6,6 +6,11 @@ sidebar_position: 8
  Updates file binary data
 
 
+
+
+<br/>
+
+
 *Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 8
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  NewName = "Updated file.jpeg";
  ReplacementImage = "C:\OPI\image2.jpg";
@@ -28,8 +33,9 @@ sidebar_position: 8
  Response = OPI_GoogleDrive.UpdateFile(Token, Identifier, ReplacementImage, NewName) //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,14 +43,11 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "mimeType": "image/jpeg",
  "name": "UpdatedFile.jpg",
  "id": "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ",
  "kind": "drive#file"
  }
-
 ```

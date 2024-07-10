@@ -6,6 +6,11 @@ sidebar_position: 4
  Sends an external file to a list of channels
 
 
+
+
+<br/>
+
+
 *Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  FileID = "F070P52CU94";
@@ -26,8 +31,9 @@ sidebar_position: 4
  Response = OPI_Slack.SendExternalFile(Token, FileID, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "file": {
  "id": "F070P52CU94",
@@ -93,5 +97,4 @@ sidebar_position: 4
  "file_access": "visible"
  }
  }
-
 ```

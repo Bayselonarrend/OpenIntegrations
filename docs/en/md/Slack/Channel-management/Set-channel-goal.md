@@ -6,6 +6,11 @@ sidebar_position: 12
  Sets the channel purpose (description)
 
 
+
+
+<br/>
+
+
 *Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 12
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Purpose = "TestGoal";
  Channel = "C070VPMKN8J";
@@ -26,8 +31,9 @@ sidebar_position: 12
  Response = OPI_Slack.SetChannelGoal(Token, Channel, Purpose); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 12
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": {
  "id": "C070VPMKN8J",
@@ -80,5 +84,4 @@ sidebar_position: 12
  "previous_names": []
  }
  }
-
 ```

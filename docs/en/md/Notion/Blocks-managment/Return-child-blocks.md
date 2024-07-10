@@ -6,6 +6,11 @@ sidebar_position: 3
  Returns list of child blocks of parent block
 
 
+
+
+<br/>
+
+
 *Function ReturnChildBlocks(Val Token, Val BlockID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Block = "46c1500ed40c4e89ba6a22900...";
@@ -25,8 +30,9 @@ sidebar_position: 3
  Response = OPI_Notion.ReturnChildBlocks(Token, BlockID);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "fea2a37b-5507-451d-a4be-14433811a69e",
  "block": {},
  "type": "block",
@@ -133,5 +137,4 @@ sidebar_position: 3
  ],
  "object": "list"
  }
-
 ```

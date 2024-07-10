@@ -6,6 +6,11 @@ sidebar_position: 7
  Hides the main forum thread
 
 
+
+
+<br/>
+
+
 *Function HideMainForumTopic(Val Token, Val ChatID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  
  Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,12 +37,9 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": true
 }
-
 ```

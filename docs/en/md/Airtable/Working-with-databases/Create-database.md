@@ -6,6 +6,11 @@ sidebar_position: 3
  Creates a new database
 
 
+
+
+<br/>
+
+
 *Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Workspace = "wspdf8yl1yZz3PmWZ";
  Name = "TestDatabase";
@@ -36,8 +41,9 @@ sidebar_position: 3
  Response = OPI_Airtable.CreateDatabase(Token, Workspace, Name, TableCollection); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,10 +51,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "id": "applEsyJmBRm12AuN",
  "tables": [
  {
@@ -80,5 +84,4 @@ sidebar_position: 3
  }
  ]
  }
-
 ```

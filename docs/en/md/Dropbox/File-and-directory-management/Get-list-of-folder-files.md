@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified
 
 
+
+
+<br/>
+
+
 *Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,14 +23,15 @@ sidebar_position: 2
  
  Returns: HTTPResponse - Get list of folder files
 
+
 ```bsl title="Code example"
-	
  Path = "/New";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  
  Result = OPI_Dropbox.GetListOfFolderFiles(Token, Path, True);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,9 +39,7 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
 {
  "entries": [
  {
@@ -68,5 +72,4 @@ sidebar_position: 2
  "cursor": "AAEXfuMhG6Xl2ENYH4uAoLS_nOUV4SC7ChaMxK4ZIphj9x5INumYZrHv6jqph4fgkOy6PpFTTaaJ4BTjzVGZnTk7tB5wCCp1Eogn8gCW-Agz-ej4X6ir5p-KX63vBgDV0OZ-boy78oUXMJeOtU9sjEij34BoqBCtWYOFje4PXhEV3KwVySRWzPlXSEq9arMo1AaP8PFuDxx6JTxSGRdcQwnc",
  "has_more": false
 }
-
 ```

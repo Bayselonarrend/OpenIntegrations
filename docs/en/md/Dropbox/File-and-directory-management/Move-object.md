@@ -6,6 +6,11 @@ sidebar_position: 9
  Moves an object to the selected path
 
 
+
+
+<br/>
+
+
 *Function MoveObject(Val Token, Val From, Val Target) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 9
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  OriginalPath = "/New/pic.png";
  TargetPath = "/pic.png";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  
  Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "metadata": {
  ".tag": "file",
  "name": "pic.png",
@@ -51,5 +55,4 @@ sidebar_position: 9
  "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
  }
 }
-
 ```

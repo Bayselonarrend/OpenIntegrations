@@ -6,6 +6,11 @@ sidebar_position: 4
  Creates a tweet with a video attachment
 
 
+
+
+<br/>
+
+
 *Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
 
+
 ```bsl title="Code example"
-	
  
  ImageArray = New Array;
  ImageArray.Add("C:\1.mp4");
@@ -27,8 +32,9 @@ sidebar_position: 4
  Response = OPI_Twitter.CreateVideoTweet("Nature", ImageArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "data": {
  "text": "Alpaca https://t.co/OodoWT1AAA",
  "id": "1745753004542726629",
@@ -48,5 +52,4 @@ sidebar_position: 4
  ]
  }
  }
-
 ```

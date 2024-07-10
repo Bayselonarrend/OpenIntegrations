@@ -6,6 +6,11 @@ sidebar_position: 4
  Creates a comment under the selected record
 
 
+
+
+<br/>
+
+
 *Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,14 +23,15 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.WriteComment(221, -218861756, "Hello", Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,14 +39,11 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "parents_stack": [],
  "comment_id": 229
  }
  }
-
 ```

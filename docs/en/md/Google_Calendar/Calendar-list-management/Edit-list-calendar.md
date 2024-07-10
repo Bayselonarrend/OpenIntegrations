@@ -6,6 +6,11 @@ sidebar_position: 5
  Edits the properties of a calendar from the user's list
 
 
+
+
+<br/>
+
+
 *Function EditListCalendar(Val Token, Val Calendar, Val PrimaryColor, Val SecondaryColor, Val Hidden = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  
  Black = "#000000";
@@ -29,8 +34,9 @@ sidebar_position: 5
  Response = OPI_GoogleCalendar.EditListCalendar(Token, "55868c32be16935f0...", Black, Yellow, False); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "conferenceProperties": {
  "allowedConferenceSolutionTypes": [
  "hangoutsMeet"
@@ -59,5 +63,4 @@ sidebar_position: 5
  "etag": "\"1708424005038000\"",
  "kind": "calendar#calendarListEntry"
  }
-
 ```

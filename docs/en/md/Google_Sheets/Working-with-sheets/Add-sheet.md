@@ -6,6 +6,11 @@ sidebar_position: 1
  Adds a new sheet to the spreadsheet
 
 
+
+
+<br/>
+
+
 *Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Name = "TestSheet";
@@ -26,8 +31,9 @@ sidebar_position: 1
  Response = OPI_GoogleSheets.AddSheet(Token, Spreadsheet, Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
  "replies": [
  {
@@ -57,5 +61,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 4
  Get current server time
 
 
+
+
+<br/>
+
+
 *Function ServerTime(Val URL, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.ServerTime(URL);
@@ -27,8 +32,9 @@ sidebar_position: 4
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.ServerTime(URL, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": "2024-06-13T18:40:54+00:00",
  "time": {
  "start": 1718304054.57877,
@@ -52,5 +56,4 @@ sidebar_position: 4
  "operating": 0
  }
 }
-
 ```

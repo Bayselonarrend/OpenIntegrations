@@ -6,6 +6,11 @@ sidebar_position: 4
  Gets account information
 
 
+
+
+<br/>
+
+
 *Function GetAccountInformation(Val Token, Val Account = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,13 +21,14 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  
  Result = OPI_Dropbox.GetAccountInformation(Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,17 +36,15 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "account_id": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE",
  "name": {
  "given_name": "Anton",
  "surname": "Titovets",
  "familiar_name": "Anton",
  "display_name": "Anton Titovets",
- "abbreviated_name": "АТ"
+ "abbreviated_name": "AT"
  },
  "email": "bayselonarrend@gmail.com",
  "email_verified": true,
@@ -58,5 +62,4 @@ sidebar_position: 4
  "home_namespace_id": "3179550035"
  }
 }
-
 ```

@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Удалить задачу
  Удаляет задачу по ID
+
+
+
+
+<br/>
 
 
 *Функция УдалитьЗадачу(Знач URL, Знач IDЗадачи, Знач Токен = "") Экспорт*
@@ -17,8 +22,8 @@ sidebar_position: 6
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
+
 ```bsl title="Пример кода"
-	
   URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDЗадачи = "168";
   
@@ -30,8 +35,9 @@ sidebar_position: 6
   IDЗадачи  = "170";
   
   Результат = OPI_Bitrix24.УдалитьЗадачу(URL, IDЗадачи, Токен);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -39,10 +45,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "result": {
   "task": true
  },
@@ -57,5 +61,4 @@ sidebar_position: 6
   "operating": 0
  }
 }
-
 ```

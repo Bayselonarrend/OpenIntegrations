@@ -6,6 +6,11 @@ sidebar_position: 1
  Likes a post
 
 
+
+
+<br/>
+
+
 *Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.LikePost(221,,Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,13 +38,10 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "likes": 1
  }
  }
-
 ```

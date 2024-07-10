@@ -6,6 +6,11 @@ sidebar_position: 6
  Gets the description of a boolean field
 
 
+
+
+<br/>
+
+
 *Function GetCheckboxField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,16 +20,17 @@ sidebar_position: 6
  
  Returns: Structure - Field description
 
+
 ```bsl title="Code example"
-	
  
  Name = "Checkbox";
  
  Response = OPI_Airtable.GetCheckboxField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "name": "Checkbox",
  "type": "checkbox",
  "options": {
@@ -43,5 +47,4 @@ sidebar_position: 6
  "color": "yellowBright"
  }
  }
-
 ```

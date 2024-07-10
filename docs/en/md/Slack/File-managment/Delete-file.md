@@ -6,6 +6,11 @@ sidebar_position: 4
  Deletes a file on Slack
 
 
+
+
+<br/>
+
+
 *Function DeleteFile(Val Token, Val FileID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  FileID = "F070VL6FQFM";
  
  Response = OPI_Slack.DeleteFile(Token, FileID); //Map
  Response = OPI_Tools.JSONString(Response);//JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,11 +39,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true
  }
-
 ```

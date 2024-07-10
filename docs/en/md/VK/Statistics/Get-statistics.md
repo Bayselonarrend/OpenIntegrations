@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets the overall community statistics for a period
 
 
+
+
+<br/>
+
+
 *Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.GetStatistics(CurrentSessionDate() - 60 * 60 * 24, CurrentSessionDate(), Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": [
  {
  "visitors": {
@@ -543,5 +547,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

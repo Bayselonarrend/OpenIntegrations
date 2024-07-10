@@ -6,6 +6,11 @@ sidebar_position: 2
  Sends an image to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendImage(Val Token, Val ChatID, Val Text, Val Image, Val Keyboard = "", Val Markup = "Markdown") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -36,8 +41,9 @@ sidebar_position: 2
  Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
  Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
  Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,10 +51,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4639,
@@ -106,5 +110,4 @@ sidebar_position: 2
  "caption": "String value"
  }
 }
-
 ```

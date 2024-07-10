@@ -6,6 +6,11 @@ sidebar_position: 19
  Get history of task changing
 
 
+
+
+<br/>
+
+
 *Function GetTaskHistory(Val URL, Val TaskID, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 19
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "168";
  
@@ -30,8 +35,9 @@ sidebar_position: 19
  TaskID = "170";
  
  Result = OPI_Bitrix24.GetTaskHistory(URL, TaskID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 19
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "list": [
  {
@@ -298,5 +302,4 @@ sidebar_position: 19
  "operating": 0
  }
 }
-
 ```

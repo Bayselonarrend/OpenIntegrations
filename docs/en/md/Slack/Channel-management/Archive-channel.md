@@ -6,6 +6,11 @@ sidebar_position: 4
  Archives an active channel
 
 
+
+
+<br/>
+
+
 *Function ArchiveChannel(Val Token, Val Channel) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  
  Channel = "C070VPMKN8J";
@@ -25,8 +30,9 @@ sidebar_position: 4
  Response = OPI_Slack.ArchiveChannel(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,11 +40,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true
  }
-
 ```

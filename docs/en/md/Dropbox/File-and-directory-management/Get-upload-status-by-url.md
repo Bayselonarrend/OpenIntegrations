@@ -6,6 +6,11 @@ sidebar_position: 6
  Gets the upload status of the file by URL
 
 
+
+
+<br/>
+
+
 *Function GetUploadStatusByURL(Val Token, Val JobID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  WorkID = "G8YbueOu2nsAAAAAAAAAAQ";
  Status = "in_progress";
@@ -31,8 +36,9 @@ sidebar_position: 6
  
  
  EndDo;
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -40,10 +46,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  ".tag": "complete",
  "name": "url_doc.docx",
  "path_lower": "/new/url_doc.docx",
@@ -56,5 +60,4 @@ sidebar_position: 6
  "is_downloadable": true,
  "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
 }
-
 ```
