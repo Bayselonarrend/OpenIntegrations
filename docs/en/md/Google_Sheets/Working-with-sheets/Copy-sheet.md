@@ -27,7 +27,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-From = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ 
+ From = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Target = "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s";
  Sheet = "25093199";
  

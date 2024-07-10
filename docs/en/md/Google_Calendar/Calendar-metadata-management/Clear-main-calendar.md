@@ -24,7 +24,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Response = OPI_GoogleCalendar.ClearMainCalendar(Token);
+ 
+ Response = OPI_GoogleCalendar.ClearMainCalendar(Token);
 ```
 	
 

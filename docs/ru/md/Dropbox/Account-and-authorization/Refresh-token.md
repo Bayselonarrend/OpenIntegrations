@@ -26,7 +26,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-КлючПриложения   = "oynqxds...";
+  КлючПриложения   = "oynqxds...";
   СекретПриложения = "tk2oewn...";
   РефрешТокен      = "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV...";
   

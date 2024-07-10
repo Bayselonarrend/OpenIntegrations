@@ -25,7 +25,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+ 
+ Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Block = "ca18df269bd24407852b91c30...";
  
  Response = OPI_Notion.DeleteBlock(Token, BlockID);

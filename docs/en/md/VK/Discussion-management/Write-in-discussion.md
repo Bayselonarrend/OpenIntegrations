@@ -26,7 +26,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Parameters = GetVKParameters();
+ Parameters = GetVKParameters();
  DiscussionID = "51206275";
  Message = "I like yellow more";
  

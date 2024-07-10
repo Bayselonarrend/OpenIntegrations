@@ -27,7 +27,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-База     = "apptm8Xqo7TwMaipQ";
+  
+  База     = "apptm8Xqo7TwMaipQ";
   Таблица  = "tbl9G4jVoTJpxYwSY";
   Числовой = 10;
   Строчный = "Привет";

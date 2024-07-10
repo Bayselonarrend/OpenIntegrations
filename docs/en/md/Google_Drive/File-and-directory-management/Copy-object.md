@@ -27,7 +27,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-NewName = "CopiedFile.jpeg";
+ 
+ NewName = "CopiedFile.jpeg";
  NewLocation = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
  Identifier = "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk";
  

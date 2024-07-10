@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-// The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+ // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
  
  TaskData = New Structure;
  TaskData.Insert("TITLE", "Another task title");

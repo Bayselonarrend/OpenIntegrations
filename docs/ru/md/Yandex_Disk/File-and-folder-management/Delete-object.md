@@ -26,7 +26,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-Токен = "y0_AgAAAABdylaOAA...";
+  
+  Токен = "y0_AgAAAABdylaOAA...";
   Путь  = "/Альпака.png"
   Ответ = OPI_YandexDisk.УдалитьОбъект(Токен, Путь);  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);         //Строка

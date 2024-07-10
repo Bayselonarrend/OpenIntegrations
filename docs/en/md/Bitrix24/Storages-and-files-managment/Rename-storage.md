@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Name = "New storage name";
+ Name = "New storage name";
  URL = "b24-ar17wx.bitrix24.by";
  Token = "b9df7366006e9f06006b12e400000001000...";
  StorageID = "18";

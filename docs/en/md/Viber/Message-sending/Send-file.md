@@ -29,7 +29,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-ChannelToken = "523b58ba82afffaa-111111111111111-2222222222222222";
+ 
+ ChannelToken = "523b58ba82afffaa-111111111111111-2222222222222222";
  UserID = "tMNGh111111111D+bT4g==";
  
  Response = OPI_Viber.SendFile(ChannelToken, "https://api.athenaeum.digital/1.txt", UserID, True, "txt"); //Map

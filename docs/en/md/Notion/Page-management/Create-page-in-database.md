@@ -26,7 +26,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+ 
+ Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
  Image = New Map;
  Image.Insert("Logo", "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg");

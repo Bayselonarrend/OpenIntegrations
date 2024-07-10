@@ -28,7 +28,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+  
+  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   База      = "5dd94c34fab04bff9...";
   Заголовок = "Обновленный заголовок";
   Описание  = "Обновленное описание базы";

@@ -27,7 +27,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-Product = New Map;
+ 
+ Product = New Map;
  Product.Insert("Name", "EditedTestProduct");
  
  Response = OPI_VK.EditProduct(ProductID, Product,, Parameters);

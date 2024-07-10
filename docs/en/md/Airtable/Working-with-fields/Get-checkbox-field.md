@@ -24,7 +24,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-Name = "Checkbox";
+ 
+ Name = "Checkbox";
  
  Response = OPI_Airtable.GetCheckboxField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string

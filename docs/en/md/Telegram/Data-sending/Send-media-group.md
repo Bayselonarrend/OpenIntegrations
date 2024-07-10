@@ -29,7 +29,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-Token = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
+ 
+ Token = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
  Description = "Pictures group";
  FileMapping = New Map;
  FileMapping.Insert("C:\OPI\alpaca.png", "photo");

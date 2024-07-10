@@ -26,7 +26,7 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-Parameters = GetVKParameters();
+ Parameters = GetVKParameters();
  Name = "AlbumFromAutoTest";
  Description = "NewAlbumFromAutoTest";
  

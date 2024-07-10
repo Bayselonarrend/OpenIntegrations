@@ -27,7 +27,8 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-НовоеИмя          = "Обновленный файл.jpeg";
+  
+  НовоеИмя          = "Обновленный файл.jpeg";
   КартинкаЗамены    = "C:\OPI\image2.jpg";
   Идентификатор     = "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ";
   

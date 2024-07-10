@@ -27,7 +27,7 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-Parameters = GetVKParameters();
+ Parameters = GetVKParameters();
  ImageDescription = "AutoTestImage";
  AlbumID = "304549394";
  

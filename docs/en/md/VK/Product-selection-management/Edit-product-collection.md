@@ -29,7 +29,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Response = OPI_VK.EditProductCollection("EditedCollection"
+ 
+ Response = OPI_VK.EditProductCollection("EditedCollection"
 , 40
 , Image
 , True

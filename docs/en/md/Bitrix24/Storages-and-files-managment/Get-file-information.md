@@ -26,7 +26,7 @@ sidebar_position: 20
 
 
 ```bsl title="Code example"
-URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  FileID = "2484";
  
  Result = OPI_Bitrix24.GetFileInformation(URL, FileID);

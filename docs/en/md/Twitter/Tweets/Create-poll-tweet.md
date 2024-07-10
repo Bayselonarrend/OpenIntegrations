@@ -27,7 +27,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-OptionArray = New Array;
+ 
+ OptionArray = New Array;
  OptionArray.Add("Good");
  OptionArray.Add("Nothing special");
  OptionArray.Add("Bad");

@@ -28,7 +28,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
+ 
+ BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
  UserID = "d3jxe1111111111jYGgZg==";
  
  Response = OPI_Viber.SendContact(BotToken, "John Doe", "+749521231", UserID, False); //Map

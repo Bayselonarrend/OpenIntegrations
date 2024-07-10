@@ -28,7 +28,8 @@ Sends a message that arrives in the channel but is visible only to a specific us
 
 
 ```bsl title="Code example"
-Channel = "C070VPMKN8J";
+ 
+ Channel = "C070VPMKN8J";
  Block = OPI_Slack.GenerateImageBlock("https://opi.neocities.org/test_data/picture.jpg", "Image");
  
  Response = OPI_Slack.SendEphemeralMessage(Token, Channel,, User, Block); //Map

@@ -25,7 +25,7 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-Token = "6129457865:AAFyzNYOAFbu...";
+ Token = "6129457865:AAFyzNYOAFbu...";
  ChannelID = "@testsichee";
  
  Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);

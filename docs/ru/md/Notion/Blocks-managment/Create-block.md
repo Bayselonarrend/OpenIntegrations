@@ -27,7 +27,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+  
+  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Родитель  = "5dd94c34fab04bff9...";
   
   Блок      = OPI_Notion.ВернутьБлок(Токен, "ca18df269bd24407852b91c30e...");       //Блок как соответствие. С ним можно свершать манипуляции.

@@ -28,7 +28,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Parameters = GetVKParameters();
+ Parameters = GetVKParameters();
  Text = "Post from autotest";
  URL = "https://github.com/Bayselonarrend/OpenIntegrations";
  

@@ -26,7 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-PageNumber = 1;
+ 
+ PageNumber = 1;
  Channel = "C123456";
  
  Response = OPI_Slack.GetFilesList(Token, Channel, PageNumber); //Map

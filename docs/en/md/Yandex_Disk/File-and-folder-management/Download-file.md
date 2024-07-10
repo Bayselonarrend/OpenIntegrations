@@ -26,7 +26,7 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-Path = "/alpaca.png";
+ Path = "/alpaca.png";
  Result = OPI_YandexDisk.DownloadFile(Token, Path);
 ```
 	

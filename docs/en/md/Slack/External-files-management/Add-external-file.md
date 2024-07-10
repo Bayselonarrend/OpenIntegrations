@@ -26,7 +26,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-URL = https://opi.neocities.org/test_data/document.docx;
+ 
+ URL = https://opi.neocities.org/test_data/document.docx;
  Title = "NewFile";
  
  Response = OPI_Slack.AddExternalFile(Token, URL, Title); //Map

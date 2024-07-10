@@ -29,7 +29,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Base = "apptm8Xqo7TwMaipQ";
+ 
+ Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
  Record = "recV6DxeLQMBNJrUk";
  Comment = "comL1oGEDJvIQlMs1";

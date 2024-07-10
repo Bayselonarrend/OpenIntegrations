@@ -28,7 +28,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Channel = "C070VPMKN8J";
+ 
+ Channel = "C070VPMKN8J";
  Text = "TestMessage";
  
  Response = OPI_Slack.SendMessage(Token, Channel, Text); //Map

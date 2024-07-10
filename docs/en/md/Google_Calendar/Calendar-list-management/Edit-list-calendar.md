@@ -28,7 +28,9 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-Black = "#000000";
+ 
+ 
+ Black = "#000000";
  Yellow = "#ffd800";
  
  Response = OPI_GoogleCalendar.EditListCalendar(Token, "55868c32be16935f0...", Black, Yellow, False); //Map

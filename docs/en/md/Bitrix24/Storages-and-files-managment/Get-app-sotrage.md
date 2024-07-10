@@ -25,7 +25,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-URL = "b24-ar17wx.bitrix24.by";
+ URL = "b24-ar17wx.bitrix24.by";
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetAppSotrage(URL, Token);

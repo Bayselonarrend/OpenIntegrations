@@ -25,7 +25,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-Токен  = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+  Токен  = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   Папка  = "5022319569";
   
   Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);

@@ -28,7 +28,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Token = "6129457865:AAFyzNYOAFbu...";
+ Token = "6129457865:AAFyzNYOAFbu...";
  ChannelID = "@testsichee";
  Day = 86400;
  CurrentDate = OPI_Tools.GetCurrentDate();

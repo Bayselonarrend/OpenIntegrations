@@ -24,7 +24,8 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
 
 
 ```bsl title="Code example"
-Response = OPI_Viber.GetChannelInformation(ChannelToken); //Map
+ 
+ Response = OPI_Viber.GetChannelInformation(ChannelToken); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
 	

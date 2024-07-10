@@ -26,7 +26,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Token = "y0_AgAAAABdylaOAA...";
+ 
+ Token = "y0_AgAAAABdylaOAA...";
  
  Response = OPI_YandexDisk.GetPublishedObjectsList(Token, 2, 1); //Map
  Response = OPI_Tools.JSONString(Response); //String

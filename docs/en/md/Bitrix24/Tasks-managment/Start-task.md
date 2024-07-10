@@ -26,7 +26,7 @@ sidebar_position: 13
 
 
 ```bsl title="Code example"
-URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "168";
  
  Result = OPI_Bitrix24.StartTask(URL, TaskID);

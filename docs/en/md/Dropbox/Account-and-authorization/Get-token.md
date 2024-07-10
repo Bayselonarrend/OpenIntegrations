@@ -26,7 +26,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-AppKey = "oynqxds...";
+ AppKey = "oynqxds...";
  AppSecret = "tk2oewn...";
  Code = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
  

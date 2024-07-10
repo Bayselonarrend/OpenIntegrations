@@ -27,7 +27,8 @@ sidebar_position: 10
 
 
 ```bsl title="Пример кода"
-Токен = "y0_AgAAAABdylaOAA...";
+  
+  Токен = "y0_AgAAAABdylaOAA...";
   Путь  = "/АльпакаИзФайла.png";
   Файл  = "C:\logo.png";
   

@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Identifier = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ 
+ Identifier = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  
  Response = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string

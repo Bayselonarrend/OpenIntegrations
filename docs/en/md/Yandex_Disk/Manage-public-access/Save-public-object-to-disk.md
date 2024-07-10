@@ -27,7 +27,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-Token = "y0_AgAAAABdylaOAA...";
+ 
+ Token = "y0_AgAAAABdylaOAA...";
  URL = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
  
  Response = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL); //Map

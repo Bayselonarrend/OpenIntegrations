@@ -30,7 +30,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-PostID = "124";
+ PostID = "124";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.GetPosts(URL, PostID);

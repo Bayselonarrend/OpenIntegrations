@@ -24,7 +24,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Response = OPI_Twitter.RefreshToken(Parameters);
+ 
+ Response = OPI_Twitter.RefreshToken(Parameters);
  Constants.TwitterToken.Set(Response["access_token"]);
  Constants.TwitterRefresh.Set(Response["refresh_token"]);
  

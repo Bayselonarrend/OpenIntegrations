@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+ Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Email = "h5bk6ft62s@privaterelay.appleid.com";
  Folder = "5022319569"; // shared_folder_id
  

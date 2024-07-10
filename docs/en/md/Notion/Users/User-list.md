@@ -24,7 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+ 
+ Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Response = OPI_Notion.UserList(Token);
  Response = OPI_Tools.JSONString(Response);
 ```

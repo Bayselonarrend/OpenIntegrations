@@ -28,7 +28,8 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-Канал = "C070VPMKN8J";
+  
+  Канал = "C070VPMKN8J";
   Блок  = OPI_Slack.СформироватьБлокКартинку("https://opi.neocities.org/test_data/picture.jpg", "Картинка");
   
   Ответ = OPI_Slack.ОтправитьЭфемерноеСообщение(Токен, Канал, , Пользователь, Блок); //Соответствие

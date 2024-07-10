@@ -25,7 +25,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Response = OPI_Twitter.CreateTextTweet("Regular text tweet", Parameters);
+ 
+ Response = OPI_Twitter.CreateTextTweet("Regular text tweet", Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

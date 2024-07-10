@@ -30,7 +30,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-Наименование = "Новая стадия";
+  Наименование = "Новая стадия";
   Цвет         = "0026FF";
   URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   

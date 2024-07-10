@@ -27,7 +27,7 @@ sidebar_position: 24
 
 
 ```bsl title="Пример кода"
-IDКаталога = "2488";
+  IDКаталога = "2488";
   IDФайла    = "2484";
   
   URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";

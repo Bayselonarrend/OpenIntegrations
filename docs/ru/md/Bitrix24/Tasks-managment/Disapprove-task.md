@@ -26,7 +26,7 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDЗадачи = "168";
   
   Результат = OPI_Bitrix24.ОтклонитьЗадачу(URL, IDЗадачи);
