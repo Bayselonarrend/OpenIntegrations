@@ -6,12 +6,10 @@ sidebar_position: 2
  Creates a post based on an array of object identifiers (images, videos, etc..)
 
 
-
-
 <br/>
 
 
-*Function CreateCompositePost(Val Text, Val Objects, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export*
+`Function CreateCompositePost(Val Text, Val Objects, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

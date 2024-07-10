@@ -6,12 +6,10 @@ sidebar_position: 11
  Downloads a file to disk from the specified URL
 
 
-
-
 <br/>
 
 
-*Function UploadFileByURL(Val Token, Val Path, Val Address) Export*
+`Function UploadFileByURL(Val Token, Val Path, Val Address) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 11
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

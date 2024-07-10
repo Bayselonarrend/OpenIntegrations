@@ -6,12 +6,10 @@ sidebar_position: 1
  Get user comments list for a task
 
 
-
-
 <br/>
 
 
-*Function GetTaskCommentsList(Val URL, Val TaskID, Val Token = "") Export*
+`Function GetTaskCommentsList(Val URL, Val TaskID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

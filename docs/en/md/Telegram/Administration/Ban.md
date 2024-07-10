@@ -6,12 +6,10 @@ sidebar_position: 1
  Bans a user in the selected chat
 
 
-
-
 <br/>
 
 
-*Function Ban(Val Token, Val ChatID, Val UserID) Export*
+`Function Ban(Val Token, Val ChatID, Val UserID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

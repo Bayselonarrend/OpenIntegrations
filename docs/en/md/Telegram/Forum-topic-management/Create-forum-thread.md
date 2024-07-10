@@ -6,12 +6,10 @@ sidebar_position: 2
  Creates a new thread in the group with theme functionality enabled
 
 
-
-
 <br/>
 
 
-*Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export*
+`Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

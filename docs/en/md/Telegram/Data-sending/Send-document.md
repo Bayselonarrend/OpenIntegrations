@@ -6,12 +6,10 @@ sidebar_position: 5
  Sends a document to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendDocument(Val Token, Val ChatID, Val Text, Val Document, Val Keyboard = "", Val Markup = "Markdown") Export*
+`Function SendDocument(Val Token, Val ChatID, Val Text, Val Document, Val Keyboard = "", Val Markup = "Markdown") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 2
  Sends an image to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export*
+`Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
+
+
+
 
 
 ```bsl title="Code example"

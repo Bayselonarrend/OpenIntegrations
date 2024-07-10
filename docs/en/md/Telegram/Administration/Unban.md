@@ -6,12 +6,10 @@ sidebar_position: 2
  Unbans a previously banned user
 
 
-
-
 <br/>
 
 
-*Function Unban(Val Token, Val ChatID, Val UserID) Export*
+`Function Unban(Val Token, Val ChatID, Val UserID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

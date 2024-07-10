@@ -6,12 +6,10 @@ sidebar_position: 20
  Checks the availability of the task for users
 
 
-
-
 <br/>
 
 
-*Function CheckTaskAccesses(Val URL, Val TaskID, Val Users = "", Val Token = "") Export*
+`Function CheckTaskAccesses(Val URL, Val TaskID, Val Users = "", Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 20
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

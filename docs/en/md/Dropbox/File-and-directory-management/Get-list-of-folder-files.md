@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified
 
 
-
-
 <br/>
 
 
-*Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export*
+`Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 2
 
  
  Returns: HTTPResponse - Get list of folder files
+
+
+
 
 
 ```bsl title="Code example"

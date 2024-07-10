@@ -6,12 +6,10 @@ sidebar_position: 2
  Executes a request /getUpdates, returning information about bot events. Used in polling mode
 
 
-
-
 <br/>
 
 
-*Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export*
+`Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

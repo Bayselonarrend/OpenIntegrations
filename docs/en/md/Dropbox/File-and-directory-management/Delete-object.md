@@ -6,12 +6,10 @@ sidebar_position: 7
  Deletes an object from the cloud drive
 
 
-
-
 <br/>
 
 
-*Function DeleteObject(Val Token, Val Path, Val Irrecoverable = False) Export*
+`Function DeleteObject(Val Token, Val Path, Val Irrecoverable = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

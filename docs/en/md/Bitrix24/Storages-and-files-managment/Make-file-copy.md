@@ -6,12 +6,10 @@ sidebar_position: 24
  Copy file from one destination to another
 
 
-
-
 <br/>
 
 
-*Function MakeFileCopy(Val URL, Val FileID, Val FolderID, Val Token = "") Export*
+`Function MakeFileCopy(Val URL, Val FileID, Val FolderID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 24
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

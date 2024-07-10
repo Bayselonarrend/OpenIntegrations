@@ -6,12 +6,10 @@ sidebar_position: 10
  Creates an empty directory at the selected path
 
 
-
-
 <br/>
 
 
-*Function CreateFolder(Val Token, Val Path) Export*
+`Function CreateFolder(Val Token, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 10
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

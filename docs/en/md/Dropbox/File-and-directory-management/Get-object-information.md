@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets information about a file or directory
 
 
-
-
 <br/>
 
 
-*Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export*
+`Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox 
+
+
+
 
 
 ```bsl title="Code example"

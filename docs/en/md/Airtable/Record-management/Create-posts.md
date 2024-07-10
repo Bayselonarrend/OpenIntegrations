@@ -6,12 +6,10 @@ sidebar_position: 3
  Creates one or an array of records by description or an array of field value descriptions
 
 
-
-
 <br/>
 
 
-*Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export*
+`Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

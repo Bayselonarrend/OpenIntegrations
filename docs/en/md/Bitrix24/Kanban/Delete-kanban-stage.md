@@ -6,12 +6,10 @@ sidebar_position: 2
  Removes a kanban (My Plan) stage, provided there are no tasks in it
 
 
-
-
 <br/>
 
 
-*Function DeleteKanbanStage(Val URL, Val StageID, Val AsAdmin = False, Val Token = "") Export*
+`Function DeleteKanbanStage(Val URL, Val StageID, Val AsAdmin = False, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

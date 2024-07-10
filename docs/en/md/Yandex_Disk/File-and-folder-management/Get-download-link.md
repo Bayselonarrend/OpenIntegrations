@@ -6,12 +6,10 @@ sidebar_position: 6
  Gets a download link for the file
 
 
-
-
 <br/>
 
 
-*Function GetDownloadLink(Val Token, Val Path) Export*
+`Function GetDownloadLink(Val Token, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

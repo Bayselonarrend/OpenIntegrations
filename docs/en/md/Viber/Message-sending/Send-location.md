@@ -6,12 +6,10 @@ sidebar_position: 5
  Sends geographic coordinates to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export*
+`Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
+
+
+
 
 
 ```bsl title="Code example"

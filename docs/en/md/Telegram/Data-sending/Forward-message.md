@@ -6,12 +6,10 @@ sidebar_position: 11
  Forwards a message between chats or within a chat
 
 
-
-
 <br/>
 
 
-*Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export*
+`Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 11
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

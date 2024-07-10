@@ -6,12 +6,10 @@ sidebar_position: 11
  Defer task by ID
 
 
-
-
 <br/>
 
 
-*Function DeferTask(Val URL, Val TaskID, Val Token = "") Export*
+`Function DeferTask(Val URL, Val TaskID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 11
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

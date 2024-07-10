@@ -6,12 +6,10 @@ sidebar_position: 13
  Gets the list of versions (revisions) of the object
 
 
-
-
 <br/>
 
 
-*Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export*
+`Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 13
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

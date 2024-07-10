@@ -6,12 +6,10 @@ sidebar_position: 5
  Creates a public URL for the file. Requires user token
 
 
-
-
 <br/>
 
 
-*Function MakeFilePublic(Val Token, Val FileID) Export*
+`Function MakeFilePublic(Val Token, Val FileID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 	

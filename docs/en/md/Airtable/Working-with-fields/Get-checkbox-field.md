@@ -6,12 +6,10 @@ sidebar_position: 6
  Gets the description of a boolean field
 
 
-
-
 <br/>
 
 
-*Function GetCheckboxField(Val Name) Export*
+`Function GetCheckboxField(Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 6
 
  
  Returns: Structure - Field description
+
+
+
 
 
 ```bsl title="Code example"

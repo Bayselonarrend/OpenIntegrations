@@ -6,12 +6,10 @@ sidebar_position: 2
  Deletes a sheet from the spreadsheet
 
 
-
-
 <br/>
 
 
-*Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export*
+`Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

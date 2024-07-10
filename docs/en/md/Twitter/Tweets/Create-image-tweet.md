@@ -6,12 +6,10 @@ sidebar_position: 2
  Creates a tweet with an image attachment
 
 
-
-
 <br/>
 
 
-*Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export*
+`Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+
+
+
 
 
 ```bsl title="Code example"

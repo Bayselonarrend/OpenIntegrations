@@ -6,12 +6,10 @@ sidebar_position: 2
  Changes the name and/or description of the base
 
 
-
-
 <br/>
 
 
-*Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export*
+`Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

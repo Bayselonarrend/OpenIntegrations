@@ -6,12 +6,10 @@ sidebar_position: 6
  Gets information about channel events
 
 
-
-
 <br/>
 
 
-*Function GetChannelHistory(Val Token, Val Channel) Export*
+`Function GetChannelHistory(Val Token, Val Channel) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

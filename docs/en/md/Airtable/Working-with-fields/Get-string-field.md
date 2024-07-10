@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets the description of a string field
 
 
-
-
 <br/>
 
 
-*Function GetStringField(Val Name) Export*
+`Function GetStringField(Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 3
 
  
  Returns: Structure - Field description
+
+
+
 
 
 ```bsl title="Code example"

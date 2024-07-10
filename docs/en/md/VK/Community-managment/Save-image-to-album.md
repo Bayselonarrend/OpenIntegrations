@@ -6,12 +6,10 @@ sidebar_position: 8
  Saves an image to the community album
 
 
-
-
 <br/>
 
 
-*Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export*
+`Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

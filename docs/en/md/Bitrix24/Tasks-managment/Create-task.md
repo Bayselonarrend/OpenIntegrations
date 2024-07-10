@@ -6,12 +6,10 @@ sidebar_position: 3
  Create new task by fields structure (see GetTaskFieldsStructure)
 
 
-
-
 <br/>
 
 
-*Function CreateTask(Val URL, Val FieldsStructure, Val Token = "") Export*
+`Function CreateTask(Val URL, Val FieldsStructure, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

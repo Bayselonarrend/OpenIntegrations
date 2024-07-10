@@ -6,12 +6,10 @@ sidebar_position: 7
  Groups products based on similar sets of properties
 
 
-
-
 <br/>
 
 
-*Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters = "") Export*
+`Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 1
  Returns the community's order list
 
 
-
-
 <br/>
 
 
-*Function GetOrderList(Val Parameters = "") Export*
+`Function GetOrderList(Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
+
+
+
 
 
 ```bsl title="Code example"

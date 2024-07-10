@@ -6,12 +6,10 @@ sidebar_position: 2
  Get tasks list (50 at one response max))
 
 
-
-
 <br/>
 
 
-*Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export*
+`Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

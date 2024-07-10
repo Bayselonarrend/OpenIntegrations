@@ -6,12 +6,10 @@ sidebar_position: 9
  Moves an object to the selected path
 
 
-
-
 <br/>
 
 
-*Function MoveObject(Val Token, Val From, Val Target) Export*
+`Function MoveObject(Val Token, Val From, Val Target) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 9
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets the community's product list
 
 
-
-
 <br/>
 
 
-*Function GetProductList(Val Selection = "", Val Parameters = "") Export*
+`Function GetProductList(Val Selection = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Array of product maps
+
+
+
 
 
 ```bsl title="Code example"

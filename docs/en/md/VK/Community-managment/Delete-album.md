@@ -6,12 +6,10 @@ sidebar_position: 6
  Deletes a previously created album
 
 
-
-
 <br/>
 
 
-*Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export*
+`Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

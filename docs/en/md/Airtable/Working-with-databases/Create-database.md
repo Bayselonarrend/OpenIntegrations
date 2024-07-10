@@ -6,12 +6,10 @@ sidebar_position: 3
  Creates a new database
 
 
-
-
 <br/>
 
 
-*Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export*
+`Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

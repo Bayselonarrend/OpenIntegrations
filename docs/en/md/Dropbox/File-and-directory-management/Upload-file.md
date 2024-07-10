@@ -6,12 +6,10 @@ sidebar_position: 4
  Uploads a file to the cloud drive
 
 
-
-
 <br/>
 
 
-*Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export*
+`Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox 
+
+
+
 
 
 ```bsl title="Code example"

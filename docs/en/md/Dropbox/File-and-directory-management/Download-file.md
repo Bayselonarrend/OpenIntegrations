@@ -6,12 +6,10 @@ sidebar_position: 11
  Downloads a file by the specified path or ID
 
 
-
-
 <br/>
 
 
-*Function DownloadFile(Val Token, Val Path) Export*
+`Function DownloadFile(Val Token, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 11
 
  
  Returns: BinaryData - binary data of the file
+
+
+
 
 
 ```bsl title="Code example"

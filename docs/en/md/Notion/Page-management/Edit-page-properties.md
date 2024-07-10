@@ -6,12 +6,10 @@ sidebar_position: 4
  Changes the properties of an existing page
 
 
-
-
 <br/>
 
 
-*Function EditPageProperties(Val Token, Val Page, Val Data = "", Val Icon = "", Val Cover = "", Val Archived = False) Export*
+`Function EditPageProperties(Val Token, Val Page, Val Data = "", Val Icon = "", Val Cover = "", Val Archived = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -24,6 +22,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

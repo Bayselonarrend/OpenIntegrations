@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets a calendar from the user's list by ID
 
 
-
-
 <br/>
 
 
-*Function GetListCalendar(Val Token, Val Calendar) Export*
+`Function GetListCalendar(Val Token, Val Calendar) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 8
  Removes specified user from channel
 
 
-
-
 <br/>
 
 
-*Function KickUserFromChannel(Val Token, Val Channel, Val User) Export*
+`Function KickUserFromChannel(Val Token, Val Channel, Val User) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

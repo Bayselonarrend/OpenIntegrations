@@ -6,12 +6,10 @@ sidebar_position: 4
  Gets the description of a numeric field
 
 
-
-
 <br/>
 
 
-*Function GetNumberField(Val Name, Val Precision = 0) Export*
+`Function GetNumberField(Val Name, Val Precision = 0) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 4
 
  
  Returns: Structure - Field description
+
+
+
 
 
 ```bsl title="Code example"

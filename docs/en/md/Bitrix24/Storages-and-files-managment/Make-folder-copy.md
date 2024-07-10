@@ -6,12 +6,10 @@ sidebar_position: 10
  Copy one folder to another
 
 
-
-
 <br/>
 
 
-*Function MakeFolderCopy(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export*
+`Function MakeFolderCopy(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 10
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

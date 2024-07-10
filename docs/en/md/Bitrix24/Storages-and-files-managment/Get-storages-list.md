@@ -6,12 +6,10 @@ sidebar_position: 1
  Get list of available files storages
 
 
-
-
 <br/>
 
 
-*Function GetStoragesList(Val URL, Val Token = "") Export*
+`Function GetStoragesList(Val URL, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

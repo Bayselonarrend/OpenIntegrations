@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets the list of comments for a record in the table
 
 
-
-
 <br/>
 
 
-*Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export*
+`Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

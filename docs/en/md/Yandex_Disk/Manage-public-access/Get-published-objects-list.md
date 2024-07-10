@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets a list of published objects
 
 
-
-
 <br/>
 
 
-*Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export*
+`Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

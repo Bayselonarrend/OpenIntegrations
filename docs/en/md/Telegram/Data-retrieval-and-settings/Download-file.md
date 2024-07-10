@@ -6,12 +6,10 @@ sidebar_position: 5
  Download file from Telegram servers
 
 
-
-
 <br/>
 
 
-*Function DownloadFile(Val Token, Val FileID) Export*
+`Function DownloadFile(Val Token, Val FileID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 5
 
  
  Returns: BinaryData - file's binary data
+
+
+
 
 
 ```bsl title="Code example"

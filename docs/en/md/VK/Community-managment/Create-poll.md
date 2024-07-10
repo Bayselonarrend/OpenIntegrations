@@ -6,12 +6,10 @@ sidebar_position: 4
  Creates a poll with answer options
 
 
-
-
 <br/>
 
 
-*Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export*
+`Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

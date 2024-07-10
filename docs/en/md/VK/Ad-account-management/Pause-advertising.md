@@ -6,12 +6,10 @@ sidebar_position: 3
  Pauses the display of the advertising post
 
 
-
-
 <br/>
 
 
-*Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export*
+`Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

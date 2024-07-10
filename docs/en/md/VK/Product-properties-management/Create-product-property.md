@@ -6,12 +6,10 @@ sidebar_position: 2
  Creates a new property for use in products
 
 
-
-
 <br/>
 
 
-*Function CreateProductProperty(Val Name, Val Parameters = "") Export*
+`Function CreateProductProperty(Val Name, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 26
  Return filter structure for GetTasksList
 
 
-
-
 <br/>
 
 
-*Function GetTasksFilterStructure(Val Clear = False) Export*
+`Function GetTasksFilterStructure(Val Clear = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 26
 
  
  Returns: Structure of Key-Value - Fields structure 
+
+
+
 
 
 	

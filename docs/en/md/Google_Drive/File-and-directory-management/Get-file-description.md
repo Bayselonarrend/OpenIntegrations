@@ -6,18 +6,19 @@ sidebar_position: 10
 
 
 
-
-
 <br/>
 
 
-*Function GetFileDescription() Export*
+`Function GetFileDescription() Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
 
  
  Returns: Map Of KeyAndValue - File description
+
+
+
 
 
 ```bsl title="Code example"

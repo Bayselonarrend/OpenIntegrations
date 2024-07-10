@@ -6,12 +6,10 @@ sidebar_position: 4
  Creates a new event
 
 
-
-
 <br/>
 
 
-*Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export*
+`Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 4
 
  
  Returns: String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
+
+
+
 
 
 ```bsl title="Code example"

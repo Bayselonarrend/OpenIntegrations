@@ -6,12 +6,10 @@ sidebar_position: 1
  Opens a new dialog with one or more users
 
 
-
-
 <br/>
 
 
-*Function OpenDialog(Val Token, Val ArrayOfUsers) Export*
+`Function OpenDialog(Val Token, Val ArrayOfUsers) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

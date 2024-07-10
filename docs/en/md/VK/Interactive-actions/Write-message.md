@@ -6,12 +6,10 @@ sidebar_position: 3
  Write a message to a user in the community's dialog
 
 
-
-
 <br/>
 
 
-*Function WriteMessage(Val Text, Val UserID, Val Communitytoken, Val Keyboard = "", Val Parameters = "") Export*
+`Function WriteMessage(Val Text, Val UserID, Val Communitytoken, Val Keyboard = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

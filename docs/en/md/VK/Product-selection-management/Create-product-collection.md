@@ -6,12 +6,10 @@ sidebar_position: 3
  Creates an empty product selection
 
 
-
-
 <br/>
 
 
-*Function CreateProductCollection(Val Name, Val Image, Val Main = False, Val Hidden = False, Val Parameters = "") Export*
+`Function CreateProductCollection(Val Name, Val Image, Val Main = False, Val Hidden = False, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

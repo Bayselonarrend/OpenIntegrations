@@ -6,12 +6,10 @@ sidebar_position: 4
  Clears the event list of the primary calendar
 
 
-
-
 <br/>
 
 
-*Function ClearMainCalendar(Val Token) Export*
+`Function ClearMainCalendar(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

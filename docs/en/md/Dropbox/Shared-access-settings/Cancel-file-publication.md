@@ -6,12 +6,10 @@ sidebar_position: 6
  Prohibits access to the file for external users
 
 
-
-
 <br/>
 
 
-*Function CancelFilePublication(Val Token, Val FileID) Export*
+`Function CancelFilePublication(Val Token, Val FileID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

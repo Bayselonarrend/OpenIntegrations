@@ -6,12 +6,10 @@ sidebar_position: 2
  Creates a page in the parent database
 
 
-
-
 <br/>
 
 
-*Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export*
+`Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

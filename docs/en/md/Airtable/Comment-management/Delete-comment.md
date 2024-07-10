@@ -6,12 +6,10 @@ sidebar_position: 4
  Deletes a comment for a table record
 
 
-
-
 <br/>
 
 
-*Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export*
+`Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable 
+
+
+
 
 
 ```bsl title="Code example"

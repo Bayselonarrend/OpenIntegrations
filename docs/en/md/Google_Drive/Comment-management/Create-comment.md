@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a comment for a file or directory
 
 
-
-
 <br/>
 
 
-*Function CreateComment(Val Token, Val Identifier, Val Comment) Export*
+`Function CreateComment(Val Token, Val Identifier, Val Comment) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

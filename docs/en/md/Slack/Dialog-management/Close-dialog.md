@@ -6,12 +6,10 @@ sidebar_position: 2
  Closes an existing dialog
 
 
-
-
 <br/>
 
 
-*Function CloseDialog(Val Token, Val Dialog) Export*
+`Function CloseDialog(Val Token, Val Dialog) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

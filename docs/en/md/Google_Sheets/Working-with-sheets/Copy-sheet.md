@@ -6,12 +6,10 @@ sidebar_position: 3
  Copies a sheet from one spreadsheet to another
 
 
-
-
 <br/>
 
 
-*Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export*
+`Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

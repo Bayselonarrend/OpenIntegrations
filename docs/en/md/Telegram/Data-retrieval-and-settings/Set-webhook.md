@@ -6,12 +6,10 @@ sidebar_position: 3
  Set webhook URL for bot event handling in webhook mode
 
 
-
-
 <br/>
 
 
-*Function SetWebhook(Val Token, Val URL) Export*
+`Function SetWebhook(Val Token, Val URL) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

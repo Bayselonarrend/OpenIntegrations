@@ -6,12 +6,10 @@ sidebar_position: 7
  Adds new groups or users to the recipients
 
 
-
-
 <br/>
 
 
-*Function AddPostRecipients(Val URL, Val PostID, Val Visibility, Val Token = "") Export*
+`Function AddPostRecipients(Val URL, Val PostID, Val Visibility, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,13 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+<br/>
+:::tip
+Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_share.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

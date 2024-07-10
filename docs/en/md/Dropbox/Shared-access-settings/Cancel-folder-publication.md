@@ -6,12 +6,10 @@ sidebar_position: 2
  Cancels the public access mode for the directory
 
 
-
-
 <br/>
 
 
-*Function CancelFolderPublication(Val Token, Val FolderID) Export*
+`Function CancelFolderPublication(Val Token, Val FolderID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

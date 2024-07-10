@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets a list of available channels
 
 
-
-
 <br/>
 
 
-*Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export*
+`Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

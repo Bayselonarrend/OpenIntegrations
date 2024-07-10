@@ -6,12 +6,10 @@ sidebar_position: 5
  Creates a shortened URL from a regular one
 
 
-
-
 <br/>
 
 
-*Function ShortenLink(Val URL, Val Parameters = "") Export*
+`Function ShortenLink(Val URL, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 5
 
  
  Returns: String - Shortened URL 
+
+
+
 
 
 ```bsl title="Code example"

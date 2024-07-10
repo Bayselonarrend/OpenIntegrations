@@ -6,12 +6,10 @@ sidebar_position: 2
 Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals The user ID from channel information is not suitable for sending messages through the bot - they are different
 
 
-
-
 <br/>
 
 
-*Function GetChannelInformation(Val Token) Export*
+`Function GetChannelInformation(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
+
+
+
 
 
 ```bsl title="Code example"

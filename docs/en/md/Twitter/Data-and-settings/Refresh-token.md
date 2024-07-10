@@ -6,12 +6,10 @@ sidebar_position: 3
  Updates the v2 token using the refresh_token
 
 
-
-
 <br/>
 
 
-*Function RefreshToken(Val Parameters = "") Export*
+`Function RefreshToken(Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+
+
+
 
 
 ```bsl title="Code example"
