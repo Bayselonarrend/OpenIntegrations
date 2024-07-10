@@ -26,7 +26,7 @@ sidebar_position: 14
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  FolderID = "2490";
  
  Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID);
@@ -47,7 +47,7 @@ sidebar_position: 14
 ```
 
 ```json title="Result"
- {
+{
  "result": "https://b24-ar17wx.bitrix24.by/~hWalI",
  "time": {
  "start": 1719472796.12325,

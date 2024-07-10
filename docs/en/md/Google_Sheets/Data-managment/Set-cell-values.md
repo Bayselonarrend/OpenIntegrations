@@ -28,8 +28,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- ValueMapping = New Map;
+ValueMapping = New Map;
  ValueMapping.Insert("A1", "ThisIsA1");
  ValueMapping.Insert("A2", "ThisIsA2");
  ValueMapping.Insert("B2", "ThisIsB2");
@@ -44,7 +43,6 @@ sidebar_position: 1
  
  Response = OPI_GoogleSheets.SetCellValues(Token, Spreadsheet, ValueMapping, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -56,7 +54,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
  "totalUpdatedRows": 4,
  "totalUpdatedColumns": 2,

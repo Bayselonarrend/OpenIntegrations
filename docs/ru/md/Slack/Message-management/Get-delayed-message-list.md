@@ -26,12 +26,10 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  
-  Канал = "C070VPMKN8J";
+Канал = "C070VPMKN8J";
   
   Ответ = OPI_Slack.ПолучитьСписокОтложенныхСообщений(Токен, Канал); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                        //JSON строка
-  
 ```
 	
 
@@ -43,7 +41,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-  {
+{
   "ok": true,
   "scheduled_messages": [],
   "response_metadata": {

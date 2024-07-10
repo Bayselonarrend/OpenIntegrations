@@ -26,13 +26,11 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- 
- User = "U06UG1CAYH2";
+User = "U06UG1CAYH2";
  Channel = "C070VPMKN8J";
  
  Response = OPI_Slack.KickUserFromChannel(Token, Channel, User); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
- {
+{
  "ok": true
  }
 ```

@@ -26,7 +26,7 @@ sidebar_position: 17
 
 
 ```bsl title="Пример кода"
-  URL        = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL        = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDКаталога = "2490";
   
   Результат  = OPI_Bitrix24.ВосстановитьКаталог(URL, IDКаталога);
@@ -47,7 +47,7 @@ sidebar_position: 17
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "936",
   "NAME": "Новый каталог",

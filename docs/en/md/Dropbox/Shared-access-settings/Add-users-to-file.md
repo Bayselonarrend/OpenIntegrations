@@ -27,7 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Email = "h5bk6ft62s@privaterelay.appleid.com";
  File = "kJU6-a-pT48AAAAAAAAABw";
  
@@ -43,7 +43,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- [
+[
  {
  "member": {
  ".tag": "email",

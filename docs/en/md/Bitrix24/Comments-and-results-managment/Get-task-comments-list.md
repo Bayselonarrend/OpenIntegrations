@@ -26,7 +26,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "504";
  
  Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID);
@@ -47,7 +47,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "result": [
  {
  "POST_MESSAGE_HTML": null,

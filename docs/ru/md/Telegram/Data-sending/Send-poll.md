@@ -28,7 +28,7 @@ sidebar_position: 10
 
 
 ```bsl title="Пример кода"
-  Токен    = "6129457865:AAFyzNYOAFbu...";
+Токен    = "6129457865:AAFyzNYOAFbu...";
   IDЧата   = "461699897";
   IDКанала = "@testsichee";
   Вопрос   = "Какой ваш любимый цвет?";
@@ -52,7 +52,7 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": {
   "message_id": 4648,

@@ -27,7 +27,7 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
+Parameters = GetVKParameters();
  ImageDescription = "AutoTestImage";
  AlbumID = "304549394";
  
@@ -50,7 +50,7 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
- {
+{
  "response": [
  {
  "album_id": 304498513,

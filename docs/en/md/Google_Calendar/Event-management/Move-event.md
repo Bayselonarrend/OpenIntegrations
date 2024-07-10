@@ -27,10 +27,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Response = OPI_GoogleCalendar.MoveEvent(Token, "bayselonarrend@gmail.com", "55868c32be16935f0...", "j4nonfcc0m2..."); //Map
+Response = OPI_GoogleCalendar.MoveEvent(Token, "bayselonarrend@gmail.com", "55868c32be16935f0...", "j4nonfcc0m2..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  "eventType": "default",
  "attachments": [
  {

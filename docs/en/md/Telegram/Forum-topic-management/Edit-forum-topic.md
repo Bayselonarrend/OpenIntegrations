@@ -28,7 +28,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
+Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  Topic = "2673";
  NewName = "NewTestTitle";
@@ -46,7 +46,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "result": true
 }

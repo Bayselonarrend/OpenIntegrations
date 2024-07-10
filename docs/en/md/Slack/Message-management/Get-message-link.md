@@ -26,13 +26,11 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- 
- Channel = "C070VPMKN8J";
+Channel = "C070VPMKN8J";
  Timestamp = "1714146538.221929";
  
  Response = OPI_Slack.GetMessageLink(Token, Channel, Timestamp); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "permalink": "https://openintegrationsgroup.slack.com/archives/C06UFNUTKUL/p1714146538221929",
  "channel": "C06UFNUTKUL"

@@ -28,7 +28,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  Токен         = "6129457865:AAFyzNYOAFbu...";
+Токен         = "6129457865:AAFyzNYOAFbu...";
   IDКанала      = "@testsichee";
   Сутки         = 86400;
   ТекущаяДата   = OPI_Инструменты.ПолучитьТекущуюДату();
@@ -49,7 +49,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": {
   "invite_link": "https://t.me/+W-9MzjOejStiYzYy",

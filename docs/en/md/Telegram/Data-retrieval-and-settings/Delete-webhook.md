@@ -24,7 +24,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
+Token = "6129457865:AAFyzNYOAFbu...";
  Result = OPI_Telegram.DeleteWebhook(Token);
 ```
 	
@@ -37,7 +37,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "result": true,
  "description": "Webhook was deleted"

@@ -26,8 +26,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
  Image = New Map;
  Image.Insert("Logo", "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg");
@@ -46,7 +45,6 @@ sidebar_position: 2
  
  Response = OPI_Notion.CreatePageInDatabase(Token, Base, Data);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -58,7 +56,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "request_id": "03fd3bd2-6dd1-4ca2-bf85-9233748a745f",
  "public_url": null,
  "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",

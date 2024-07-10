@@ -27,7 +27,7 @@ sidebar_position: 24
 
 
 ```bsl title="Code example"
- FolderID = "2488";
+FolderID = "2488";
  FileID = "2484";
  
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
@@ -54,7 +54,7 @@ sidebar_position: 24
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "ID": 1744,
  "NAME": "New file name.jpg",

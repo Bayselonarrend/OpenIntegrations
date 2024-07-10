@@ -25,7 +25,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Домен    = "b24-ar17wx.bitrix24.by";
+Домен    = "b24-ar17wx.bitrix24.by";
   ClientID = "local.6667fc928a50a9.70414732";
   
   Результат = OPI_Bitrix24.ПолучитьСсылкуАвторизацииПриложения(Домен, ClientID);
@@ -40,5 +40,5 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    "https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
+"https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
 ```

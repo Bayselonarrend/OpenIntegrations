@@ -28,13 +28,11 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Канал = "C070VPMKN8J";
+Канал = "C070VPMKN8J";
   Блок  = OPI_Slack.СформироватьБлокКартинку("https://opi.neocities.org/test_data/picture.jpg", "Картинка");
   
   Ответ = OPI_Slack.ОтправитьЭфемерноеСообщение(Токен, Канал, , Пользователь, Блок); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                        //JSON строка
-  
 ```
 	
 
@@ -46,7 +44,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "ok": true,
   "message_ts": "1714146540.000300"
   }

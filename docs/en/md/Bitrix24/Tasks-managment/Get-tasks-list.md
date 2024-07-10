@@ -27,7 +27,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- // Full filter structer you can find at GetTasksFilterStructure method
+// Full filter structer you can find at GetTasksFilterStructure method
  Filter = New Structure;
  Filter.Insert("CREATED_BY", 1);
  Filter.Insert("RESPONSIBLE_ID", 10);
@@ -53,7 +53,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "tasks": [
  {

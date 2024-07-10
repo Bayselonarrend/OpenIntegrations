@@ -26,8 +26,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- ImageArray = New Array;
+ImageArray = New Array;
  ImageArray.Add(Image);
  ImageArray.Add(Image);
  
@@ -50,7 +49,6 @@ sidebar_position: 4
  
  Response = OPI_VK.AddProduct(Product, SelectionID, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -62,7 +60,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "market_item_id": 8656047
  }

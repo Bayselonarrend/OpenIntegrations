@@ -28,12 +28,10 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  КТ    = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb...";
+КТ    = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb...";
   Ответ = OPI_VK.НаписатьСообщение("Я бот, а ты нет >:)", 657811122, КТ, , Параметры);
   
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-  {
+{
   "response": 7
   }
 ```

@@ -25,11 +25,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  
-  Ответ = OPI_Airtable.ПолучитьСписокБаз(Токен); //Соответствие
+Ответ = OPI_Airtable.ПолучитьСписокБаз(Токен); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);    //JSON строка
-  
 ```
 	
 
@@ -41,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "bases": [
   {
   "id": "appGarzKZ0lu3gzoa",

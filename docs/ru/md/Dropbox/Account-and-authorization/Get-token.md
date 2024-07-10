@@ -26,7 +26,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  КлючПриложения   = "oynqxds...";
+КлючПриложения   = "oynqxds...";
   СекретПриложения = "tk2oewn...";
   Код              = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
   
@@ -42,7 +42,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "error": "invalid_grant",
  "error_description": "code doesn't exist or has expired"
 }

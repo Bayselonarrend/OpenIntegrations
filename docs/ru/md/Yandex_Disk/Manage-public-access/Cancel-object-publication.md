@@ -25,12 +25,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "y0_AgAAAABdylaOAA...";
+Токен = "y0_AgAAAABdylaOAA...";
   Путь  = "/Альпака.png"
   Ответ = OPI_YandexDisk.ОтменитьПубликациюОбъекта(Токен, Путь);  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                     //Строка
-  
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "md5": "8d7bf7d7ee61113f9044f3a28496e458",
   "sha256": "f7607461b40164d5064d1d5085cbe1e94ecb1326e7ff8db857931b2ccd14b7f8",
   "revision": 1707477571749555,

@@ -28,15 +28,13 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.CreateProductCollection("TestCollection"
+Response = OPI_VK.CreateProductCollection("TestCollection"
 , Image
 , True
 , False
 , Parameters);
  
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -48,7 +46,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "albums_count": 23,
  "market_album_id": 39

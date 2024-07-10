@@ -26,14 +26,12 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
  Title = "Created by 1C";
  
  Response = OPI_Notion.CreatePage(Token, Parent, Title);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "request_id": "f145f634-ea3a-4f74-b079-f365ecbcf583",
  "public_url": null,
  "url": "https://www.notion.so/1-4392f919813c4c8d84017d973bddaabf",

@@ -26,12 +26,10 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
+Token = "y0_AgAAAABdylaOAA...";
  Path = "/Alpaca.png"
  Response = OPI_YandexDisk.DeleteObject(Token, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -43,5 +41,5 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- <empty string>
+<empty string>
 ```

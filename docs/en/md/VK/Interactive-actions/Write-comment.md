@@ -27,10 +27,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.WriteComment(221, -218861756, "Hello", Parameters);
+Response = OPI_VK.WriteComment(221, -218861756, "Hello", Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "parents_stack": [],
  "comment_id": 229

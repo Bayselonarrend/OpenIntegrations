@@ -29,8 +29,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  
-  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Страница  = "5dd94c34fab04bff9...";
   Иконка    = "https://opi.neocities.org/img/logo.png";
   Обложка   = "https://opi.neocities.org/assets/images/logo_long-e69f28017feff1759ffcfe3f4e7bbf2a.png";
@@ -47,7 +46,6 @@ sidebar_position: 4
   , Архивировать);
   
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -59,7 +57,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "a02741b2-4eb8-43ae-9a2e-542d5dd10687",
   "public_url": null,
   "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",

@@ -25,12 +25,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Диалог = "D06UAKK1C6R";
+Диалог = "D06UAKK1C6R";
   
   Ответ = OPI_Slack.ЗакрытьДиалог(Токен, Диалог); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);     //JSON строка
-  
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "ok": true,
   "already_closed": false,
   "no_op": false

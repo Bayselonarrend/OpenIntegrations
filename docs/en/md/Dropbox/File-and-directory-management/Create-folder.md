@@ -25,7 +25,7 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
- Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Path = "/New catalog";
  
  Result = OPI_Dropbox.CreateFolder(Token, Path);
@@ -40,7 +40,7 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
- {
+{
  "metadata": {
  "name": "New catalog",
  "path_lower": "/new catalog",

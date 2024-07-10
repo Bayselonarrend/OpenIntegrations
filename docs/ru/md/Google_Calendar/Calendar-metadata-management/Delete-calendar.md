@@ -25,10 +25,8 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_GoogleCalendar.УдалитьКалендарь(Токен, "55868c32be16935f0...");
+Ответ = OPI_GoogleCalendar.УдалитьКалендарь(Токен, "55868c32be16935f0...");
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -40,5 +38,5 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-  ""
+""
 ```

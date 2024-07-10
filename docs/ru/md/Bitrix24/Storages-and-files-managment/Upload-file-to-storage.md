@@ -29,7 +29,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  Наименование2  = "Картинка2.jpg";
+Наименование2  = "Картинка2.jpg";
   Наименование   = "Картинка1.jpg";
   
   Картинка2 = "https://openintegrations.dev/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
@@ -58,7 +58,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": 356,
   "NAME": "26417397-8431-4343-9c0f-a40d4a2831c8.jpg",

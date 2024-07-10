@@ -26,11 +26,9 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  Каталог   = "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4";
+Каталог   = "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4";
   Ответ     = OPI_GoogleDrive.ПолучитьСписокФайлов(Токен, , Каталог);  //Соответствие
   Ответ     = OPI_Инструменты.JSONСтрокой(Ответ);                      //Строка
-  
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-  [
+[
   {
   "sha256Checksum": "1a03612de72929ef42a272cb17123871bf9b7723c89f9659765a49f744b6162b",
   "linkShareMetadata": {

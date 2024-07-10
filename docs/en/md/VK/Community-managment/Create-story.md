@@ -26,7 +26,7 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
+Parameters = GetVKParameters();
  URL = "https://github.com/Bayselonarrend/OpenIntegrations";
  
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
@@ -47,7 +47,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "count": 1,
  "items": [

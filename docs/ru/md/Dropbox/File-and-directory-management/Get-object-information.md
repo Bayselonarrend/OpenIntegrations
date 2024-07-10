@@ -26,7 +26,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Путь      = "/New/pic.png";
+Путь      = "/New/pic.png";
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   
   Результат = OPI_Dropbox.ПолучитьИнформациюОбОбъекте(Токен, Путь, Истина);
@@ -41,7 +41,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  ".tag": "file",
  "name": "pic.png",
  "path_lower": "/new/pic.png",

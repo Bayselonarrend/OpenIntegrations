@@ -27,8 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  База     = "apptm8Xqo7TwMaipQ";
+База     = "apptm8Xqo7TwMaipQ";
   Таблица  = "tbl9G4jVoTJpxYwSY";
   Числовой = 10;
   Строчный = "Привет";
@@ -42,7 +41,6 @@ sidebar_position: 3
   
   Ответ = OPI_Airtable.СоздатьЗаписи(Токен, База, Таблица, Данные); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                       //JSON строка
-  
 ```
 	
 
@@ -54,7 +52,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-  {
+{
   "records": [
   {
   "id": "recjHNKNZBWLZkZ7A",

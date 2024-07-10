@@ -26,13 +26,11 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
   Блок  = "ca18df269bd24407852b91c30...";
   
   Ответ = OPI_Notion.ВернутьБлок(Токен, ИДБлока);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "031886cc-537d-4025-b480-ecfdc9f2870c",
   "to_do": {
   "color": "default",

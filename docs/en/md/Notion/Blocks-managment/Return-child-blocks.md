@@ -25,13 +25,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Block = "46c1500ed40c4e89ba6a22900...";
  
  Response = OPI_Notion.ReturnChildBlocks(Token, BlockID);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -43,7 +41,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "request_id": "fea2a37b-5507-451d-a4be-14433811a69e",
  "block": {},
  "type": "block",

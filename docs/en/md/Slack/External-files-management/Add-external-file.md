@@ -26,13 +26,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- URL = https://opi.neocities.org/test_data/document.docx;
+URL = https://opi.neocities.org/test_data/document.docx;
  Title = "NewFile";
  
  Response = OPI_Slack.AddExternalFile(Token, URL, Title); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "file": {
  "id": "F070P52CU94",

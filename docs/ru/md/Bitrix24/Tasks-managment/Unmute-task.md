@@ -26,7 +26,7 @@ sidebar_position: 22
 
 
 ```bsl title="Пример кода"
-  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDЗадачи = "500";
   
   Результат = OPI_Bitrix24.ВключитьЗвукЗадачи(URL, IDЗадачи);
@@ -48,7 +48,7 @@ sidebar_position: 22
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "task": {
    "id": "290",

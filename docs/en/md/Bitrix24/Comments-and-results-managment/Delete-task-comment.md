@@ -27,7 +27,7 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "504";
  CommentID = "1718";
  
@@ -50,7 +50,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  "result": true,
  "time": {
  "start": 1720295541.27592,

@@ -27,8 +27,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
  Title = "This base is from 1C";
  
@@ -53,7 +52,6 @@ sidebar_position: 1
  
  Response = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -65,7 +63,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "request_id": "43adcae7-c8ee-4a7d-aba6-c2c43ad2c33b",
  "public_url": null,
  "url": "https://www.notion.so/048ba0ce4f474e33900540d249b01949",

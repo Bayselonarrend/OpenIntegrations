@@ -24,7 +24,7 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 
 
 ```bsl title="Code example"
- Application = "51694790";
+Application = "51694790";
  Result = OPI_VK.CreateTokenRetrievalLink(Application);
 ```
 	
@@ -37,5 +37,5 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 ```
 
 ```json title="Result"
- "https://oauth.vk.com/authorize?client_id=51694790&scope=offline,wall,groups,photos,stats,stories,ads,market,video&v=5.131&response_type=token&redirect_uri=https://api.vk.com/blank.html"
+"https://oauth.vk.com/authorize?client_id=51694790&scope=offline,wall,groups,photos,stats,stories,ads,market,video&v=5.131&response_type=token&redirect_uri=https://api.vk.com/blank.html"
 ```

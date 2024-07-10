@@ -24,11 +24,9 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
+Token = "y0_AgAAAABdylaOAA...";
  Response = OPI_YandexDisk.GetDiskInformation(Token); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "user": {
  "login": "bayselonarrend",
  "country": "by",

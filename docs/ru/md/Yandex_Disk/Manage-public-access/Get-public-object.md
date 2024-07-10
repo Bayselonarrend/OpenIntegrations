@@ -27,13 +27,11 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "y0_AgAAAABdylaOAA...";
+Токен = "y0_AgAAAABdylaOAA...";
   URL   = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
   
   Ответ = OPI_YandexDisk.ПолучитьПубличныйОбъект(Токен, URL);   //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //Строка
-  
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-  {
+{
   "modified": "2024-02-09T10:50:41+00:00",
   "sizes": [
   {

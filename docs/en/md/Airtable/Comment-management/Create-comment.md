@@ -28,15 +28,13 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Base = "apptm8Xqo7TwMaipQ";
+Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
  Record = "recV6DxeLQMBNJrUk";
  Text = "TestComment";
  
  Response = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -48,7 +46,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "id": "comL1oGEDJvIQlMs1",
  "author": {
  "id": "usrFlaAHlTfYWAbVW",

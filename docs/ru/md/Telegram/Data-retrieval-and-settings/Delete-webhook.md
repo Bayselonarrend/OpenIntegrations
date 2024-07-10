@@ -24,7 +24,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  Токен     = "6129457865:AAFyzNYOAFbu...";
+Токен     = "6129457865:AAFyzNYOAFbu...";
   Результат = OPI_Telegram.УдалитьWebhook(Токен);
 ```
 	
@@ -37,7 +37,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": true,
  "description": "Webhook was deleted"

@@ -27,7 +27,7 @@ sidebar_position: 25
 
 
 ```bsl title="Пример кода"
-  IDКаталога = "2492";
+IDКаталога = "2492";
   IDФайла    = "2484";
   
   URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
@@ -54,7 +54,7 @@ sidebar_position: 25
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "1716",
   "NAME": "Новое имя файла.jpg",

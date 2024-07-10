@@ -26,7 +26,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
+Token = "6129457865:AAFyzNYOAFbu...";
  UserID = "461699897";
  ChannelID = "@testsichee";
  
@@ -42,7 +42,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "ok": false,
  "error_code": 400,
  "description": "Bad Request: can't remove chat owner"

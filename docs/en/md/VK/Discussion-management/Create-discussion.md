@@ -26,7 +26,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
+Parameters = GetVKParameters();
  Name = "Discussing: Which color is better?";
  Message = "Red, yellow, blue, or some other?";
  
@@ -42,7 +42,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "response": 51182455
 }
 ```

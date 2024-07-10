@@ -27,8 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Workspace = "wspdf8yl1yZz3PmWZ";
+Workspace = "wspdf8yl1yZz3PmWZ";
  Name = "TestDatabase";
  
  FieldArray = New Array;
@@ -42,7 +41,6 @@ sidebar_position: 3
  
  Response = OPI_Airtable.CreateDatabase(Token, Workspace, Name, TableCollection); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -54,7 +52,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "id": "applEsyJmBRm12AuN",
  "tables": [
  {

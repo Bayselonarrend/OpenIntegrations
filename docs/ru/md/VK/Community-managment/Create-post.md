@@ -28,7 +28,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Параметры = ПолучитьПараметрыВК();
+Параметры = ПолучитьПараметрыВК();
   Текст     = "Пост из автотеста";
   URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
   
@@ -55,7 +55,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "response": {
   "post_id": 2123
  }

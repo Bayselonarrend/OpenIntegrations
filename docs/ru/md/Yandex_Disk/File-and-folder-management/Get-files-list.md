@@ -28,11 +28,9 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "y0_AgAAAABdylaOAA...";
+Токен = "y0_AgAAAABdylaOAA...";
   Ответ = OPI_YandexDisk.ПолучитьСписокФайлов(Токен, 2, 1, "image");  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //Строка
-  
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-  {
+{
   "limit": 2,
   "offset": 1,
   "items": [

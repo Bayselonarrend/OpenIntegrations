@@ -26,11 +26,9 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Name = "Description";
+Name = "Description";
  Response = OPI_GoogleDrive.GetDirectoriesList(Token, Name, False); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- [
+[
  {
  "linkShareMetadata": {
  "securityUpdateEnabled": true,

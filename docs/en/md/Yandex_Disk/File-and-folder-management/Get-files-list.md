@@ -28,11 +28,9 @@ Gets a list of files with or without filtering by type List of available types: 
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
+Token = "y0_AgAAAABdylaOAA...";
  Response = OPI_YandexDisk.GetFilesList(Token, 2, 1, "image"); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -44,7 +42,7 @@ Gets a list of files with or without filtering by type List of available types: 
 ```
 
 ```json title="Result"
- {
+{
  "limit": 2,
  "offset": 1,
  "items": [

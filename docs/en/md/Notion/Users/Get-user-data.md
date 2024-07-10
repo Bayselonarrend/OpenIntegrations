@@ -25,13 +25,11 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  UserID = "ed71865a989146bc86cdwdf24...";
  
  Response = OPI_Notion.GetUserData(Token, UserID);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -43,7 +41,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "request_id": "f33d34a8-f3cf-41b5-bdf5-4a07cf7d7118",
  "person": {
  "email": "ex@gmail.com"

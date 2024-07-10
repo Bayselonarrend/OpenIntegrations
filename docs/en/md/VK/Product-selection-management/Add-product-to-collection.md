@@ -26,10 +26,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.AddProductToCollection(8656559, 40, Parameters);
+Response = OPI_VK.AddProductToCollection(8656559, 40, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -41,7 +39,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  "response": 1
  }
 ```

@@ -26,10 +26,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- 
- Response = OPI_GoogleCalendar.DeleteEvent(Token, "55868c32be16935f0...", "j4nonfcc0m2..."); //Map
+Response = OPI_GoogleCalendar.DeleteEvent(Token, "55868c32be16935f0...", "j4nonfcc0m2..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -41,5 +39,5 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- ""
+""
 ```

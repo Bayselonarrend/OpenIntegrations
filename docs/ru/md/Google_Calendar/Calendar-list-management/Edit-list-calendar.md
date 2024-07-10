@@ -28,14 +28,11 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  
-  
-  Черный = "#000000";
+Черный = "#000000";
   Желтый = "#ffd800";
   
   Ответ  = OPI_GoogleCalendar.ИзменитьКалендарьСписка(Токен, "55868c32be16935f0...", Черный, Желтый, Ложь); //Соответствие
   Ответ  = OPI_Инструменты.JSONСтрокой(Ответ);                                                              //Строка
-  
 ```
 	
 
@@ -47,7 +44,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-  {
+{
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
   "hangoutsMeet"

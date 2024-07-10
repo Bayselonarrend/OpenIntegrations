@@ -28,14 +28,12 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  База    = "apptm8Xqo7TwMaipQ";
+База    = "apptm8Xqo7TwMaipQ";
   Таблица = "tbl9G4jVoTJpxYwSY";
   Запись  = "recV6DxeLQMBNJrUk";
   
   Ответ = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, Запись); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                             //JSON строка
-  
 ```
 	
 
@@ -47,7 +45,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "comments": [
   {
   "id": "comL1oGEDJvIQlMs1",
