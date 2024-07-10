@@ -6,6 +6,11 @@ sidebar_position: 5
  Moves an event to another calendar
 
 
+
+
+<br/>
+
+
 *Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,14 +23,15 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.MoveEvent(Token, "bayselonarrend@gmail.com", "55868c32be16935f0...", "j4nonfcc0m2..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "eventType": "default",
  "attachments": [
  {
@@ -82,5 +86,4 @@ sidebar_position: 5
  "etag": "\"3417540102468000\"",
  "kind": "calendar#event"
  }
-
 ```

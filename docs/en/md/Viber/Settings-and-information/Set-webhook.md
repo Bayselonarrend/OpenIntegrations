@@ -6,6 +6,11 @@ sidebar_position: 1
 IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this., which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published on the server - you can use an HTTP service. Information about new messages will also be sent there Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working
 
 
+
+
+<br/>
+
+
 *Function SetWebhook(Val Token, Val URL) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_Viber.SetWebhook(Token, "https://api.athenaeum.digital/opi/hs/viber"); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "event_types": [
  "subscribed",
  "unsubscribed",
@@ -51,5 +55,4 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
  "status_message": "ok",
  "status": 0
  }
-
 ```

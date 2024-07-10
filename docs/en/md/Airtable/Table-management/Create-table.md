@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a new table in the base
 
 
+
+
+<br/>
+
+
 *Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  TableName = "TestTable2";
@@ -39,8 +44,9 @@ sidebar_position: 1
  Response = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -48,10 +54,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "id": "tblT64aWyrMUAbUmF",
  "name": "TestTable2",
  "description": "NewTable",
@@ -122,5 +126,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

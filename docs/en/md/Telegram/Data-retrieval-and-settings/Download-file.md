@@ -6,6 +6,11 @@ sidebar_position: 5
  Download file from Telegram servers
 
 
+
+
+<br/>
+
+
 *Function DownloadFile(Val Token, Val FileID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 5
  
  Returns: BinaryData - file's binary data
 
+
 ```bsl title="Code example"
-	
  FileID = "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE";
  Token = "6129457865:AAFyzNYOAFbu...";
  
  Result = OPI_Telegram.DownloadFile(Token, FileID);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,9 +37,6 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
 <Binary file's binary data>
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 6
  Upload file to storage root
 
 
+
+
+<br/>
+
+
 *Function UploadFileToStorage(Val URL, Val Name, Val File, Val StorageID, Val Rights = "", Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  Filename2 = "Picture2.jpg";
  Name = "Picture1.jpg";
  
@@ -40,8 +45,9 @@ sidebar_position: 6
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.UploadFileToStorage(URL, Name, Image, DestinationID,, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -49,10 +55,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "ID": 356,
  "NAME": "26417397-8431-4343-9c0f-a40d4a2831c8.jpg",
@@ -84,5 +88,4 @@ sidebar_position: 6
  "operating": 0.227726936340332
  }
 }
-
 ```

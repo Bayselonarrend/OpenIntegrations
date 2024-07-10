@@ -1,0 +1,1 @@
+﻿oint bitrix24 ПроверитьДоступКЗадаче --url "b24-ar17wx.bitrix24.by" --task "502" --users %users% --token "56898d66006e9f06006b12e400000001000..."

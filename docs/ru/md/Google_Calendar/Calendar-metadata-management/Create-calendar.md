@@ -6,6 +6,11 @@ sidebar_position: 1
  Создает пустой календарь
 
 
+
+
+<br/>
+
+
 *Функция СоздатьКалендарь(Знач Токен, Знач Наименование) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,14 +21,15 @@ sidebar_position: 1
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Ответ = OPI_GoogleCalendar.СоздатьКалендарь(Токен, "Тестовый календарь"); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                               //Строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -31,10 +37,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
   "hangoutsMeet"
@@ -46,5 +50,4 @@ sidebar_position: 1
   "etag": "\"ZlOrbHnYjwJB0APkTQupgFm7F3s\"",
   "kind": "calendar#calendar"
   }
-
 ```

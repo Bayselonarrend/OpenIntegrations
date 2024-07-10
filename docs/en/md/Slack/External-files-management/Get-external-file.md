@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets information about the external file
 
 
+
+
+<br/>
+
+
 *Function GetExternalFile(Val Token, Val FileID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  FileID = "F070P52CU94";
  
  Response = OPI_Slack.GetExternalFile(Token, FileID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "file": {
  "id": "F070P52CU94",
@@ -74,5 +78,4 @@ sidebar_position: 2
  "file_access": "visible"
  }
  }
-
 ```

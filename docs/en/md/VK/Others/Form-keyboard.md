@@ -6,6 +6,11 @@ sidebar_position: 1
  Forms a keyboard from an array of buttons
 
 
+
+
+<br/>
+
+
 *Function FormKeyboard(Val ButtonArray) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,8 +20,8 @@ sidebar_position: 1
  
  Returns: String - Keyboard JSON
 
+
 ```bsl title="Code example"
-	
  
  ButtonArray = New Array;
  ButtonArray.Add("Button 1");
@@ -28,8 +33,9 @@ sidebar_position: 1
  
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,10 +43,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "buttons": [
  [
  {
@@ -59,5 +63,4 @@ sidebar_position: 1
  ],
  "one_time": false
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 1
  Переводит каталог в режим публичного доступа
 
 
+
+
+<br/>
+
+
 *Функция ОпубликоватьПапку(Знач Токен, Знач Путь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,14 +21,15 @@ sidebar_position: 1
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
 
+
 ```bsl title="Пример кода"
-	
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   Путь      = "/New";
   
   Результат = OPI_Dropbox.ОпубликоватьПапку(Токен, Путь);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -31,10 +37,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  ".tag": "complete",
  "access_type": {
   ".tag": "owner"
@@ -63,5 +67,4 @@ sidebar_position: 1
  },
  "folder_id": "id:kJU6-a-pT48AAAAAAAABXw"
 }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 3
  Defines access to the file for an external user
 
 
+
+
+<br/>
+
+
 *Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly = True) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,15 +23,16 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Email = "h5bk6ft62s@privaterelay.appleid.com";
  File = "kJU6-a-pT48AAAAAAAAABw";
  
  Result = OPI_Dropbox.AddUsersToFile(Token, File, Email, False);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "member": {
  ".tag": "email",
@@ -55,5 +59,4 @@ sidebar_position: 3
  ]
  }
 ]
-
 ```

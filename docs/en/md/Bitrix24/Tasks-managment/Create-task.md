@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Create task
  Create new task by fields structure (see GetTaskFieldsStructure)
+
+
+
+
+<br/>
 
 
 *Function CreateTask(Val URL, Val FieldsStructure, Val Token = "") Export*
@@ -11,14 +16,14 @@ sidebar_position: 4
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | FieldsStructure | --fields | Structure of Key-Value | Task fields structure |
+ | FieldsStructure | --fields | Structure of Key-Value | Task fields structure (see GetTaskFieldsStructure) |
  | Token | --token | String | Access token, when not-webhook method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
  
  CurrentDate = OPI_Tools.GetCurrentDate();
@@ -43,8 +48,9 @@ sidebar_position: 4
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -52,10 +58,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "task": {
  "id": "110",
@@ -198,5 +202,4 @@ sidebar_position: 4
  "operating": 0
  }
 }
-
 ```

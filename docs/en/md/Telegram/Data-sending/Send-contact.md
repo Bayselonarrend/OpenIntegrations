@@ -6,6 +6,11 @@ sidebar_position: 9
  Sends a contact with name and phone number
 
 
+
+
+<br/>
+
+
 *Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 9
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -31,8 +36,9 @@ sidebar_position: 9
  
  Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
  Result = OPI_Telegram.SendContact(Token, ChannelID, Name, LastName, Phone);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -40,10 +46,8 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4647,
@@ -68,5 +72,4 @@ sidebar_position: 9
  }
  }
 }
-
 ```

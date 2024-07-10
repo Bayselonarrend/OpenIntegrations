@@ -6,6 +6,11 @@ sidebar_position: 5
  Creates a shortened URL from a regular one
 
 
+
+
+<br/>
+
+
 *Function ShortenLink(Val URL, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,13 +21,14 @@ sidebar_position: 5
  
  Returns: String - Shortened URL 
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,9 +36,6 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-https://vk.cc/ctL1sM
-
+ https://vk.cc/ctL1sM
 ```

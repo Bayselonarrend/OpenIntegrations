@@ -6,6 +6,11 @@ sidebar_position: 4
  Uploads a file to the drive
 
 
+
+
+<br/>
+
+
 *Function UploadFile(Val Token, Val File, Val Description) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Description = New Map;
  Description.Insert("MIME", "image/jpeg");
@@ -31,8 +36,9 @@ sidebar_position: 4
  Response = OPI_GoogleDrive.UploadFile(Token, Image, Description); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -40,14 +46,11 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "mimeType": "image/jpeg",
  "name": "New file.jpg",
  "id": "16hPGNTMmbnXhz_g0vjGbrLP19h56RwIg",
  "kind": "drive#file"
  }
-
 ```

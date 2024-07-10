@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets an event by ID
 
 
+
+
+<br/>
+
+
 *Function GetEvent(Val Token, Val Calendar, Val Event) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.GetEvent(Token, "55868c32be16935f0...", "j4nonfcc0m2..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "eventType": "default",
  "attachments": [
  {
@@ -81,5 +85,4 @@ sidebar_position: 3
  "etag": "\"3417013976948000\"",
  "kind": "calendar#event"
  }
-
 ```

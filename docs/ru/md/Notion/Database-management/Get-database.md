@@ -6,6 +6,11 @@ sidebar_position: 2
  Получить данные о базе данных
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьБазуДанных(Знач Токен, Знач База) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,8 +21,8 @@ sidebar_position: 2
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
 
+
 ```bsl title="Пример кода"
-	
   
   Токен         = "secret_9RsfMrRMqZwqp0Zl0B...";
   База          = "048ba0ce4f474e33900540d24...";
@@ -25,8 +30,9 @@ sidebar_position: 2
   Ответ = OPI_Notion.ПолучитьБазуДанных(Токен, База);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -34,10 +40,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "request_id": "9c6e06e9-ffa5-4a3c-b4ff-0368553ca066",
   "public_url": null,
   "url": "https://www.notion.so/048ba0ce4f474e33900540d249b01949",
@@ -185,5 +189,4 @@ sidebar_position: 2
   },
   "object": "database"
   }
-
 ```

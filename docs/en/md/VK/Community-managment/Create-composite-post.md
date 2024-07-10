@@ -6,6 +6,11 @@ sidebar_position: 2
  Creates a post based on an array of object identifiers (images, videos, etc..)
 
 
+
+
+<br/>
+
+
 *Function CreateCompositePost(Val Text, Val Objects, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  Text = "Post from autotest";
  URL = "https://github.com/Bayselonarrend/OpenIntegrations";
@@ -45,8 +50,9 @@ sidebar_position: 2
  AttachmentsArray.Add("video" + VideoOwner + "_" + VideoID);
  
  Result = OPI_VK.CreateCompositePost(Text, AttachmentsArray, False, URL, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -54,13 +60,10 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "post_id": 2126
  }
 }
-
 ```

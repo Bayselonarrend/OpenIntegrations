@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets information about products by array of IDs
 
 
+
+
+<br/>
+
+
 *Function GetProductsByID(Val Products, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  ProductsArray = New Array;
  ProductsArray.Add("8656033");
@@ -26,8 +31,9 @@ sidebar_position: 3
  Response = OPI_VK.GetProductsByID(ProductsArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "items": [
  {
@@ -707,5 +711,4 @@ sidebar_position: 3
  "count": 2
  }
  }
-
 ```

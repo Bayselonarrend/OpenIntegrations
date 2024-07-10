@@ -6,6 +6,11 @@ sidebar_position: 3
  Update token by refresh token
 
 
+
+
+<br/>
+
+
 *Function RefreshToken(Val ClientID, Val ClientSecret, Val Refresh) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  ClientID = "local.6667fc928a50a9.70414732";
  ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
  Refresh = "a95e9b66006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.RefreshToken(ClientID, ClientSecret, Refresh);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "access_token": "63a46866006e9f06006b12e4000000010000071997e1f54c1043e9f7193734af3018df",
  "expires": 1718133859,
  "expires_in": 3600,
@@ -49,5 +53,4 @@ sidebar_position: 3
  "user_id": 1,
  "refresh_token": "53239066006e9f06006b12e4000000010000078523b1fc75d58d6f0fa98b4632bc70ce"
 }
-
 ```

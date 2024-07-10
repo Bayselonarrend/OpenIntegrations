@@ -6,6 +6,11 @@ sidebar_position: 2
  Удаляет лист из книги
 
 
+
+
+<br/>
+
+
 *Функция УдалитьЛист(Знач Токен, Знач Книга, Знач Лист) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,8 +22,8 @@ sidebar_position: 2
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Книга = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
   Лист  = "1790807910";
@@ -26,8 +31,9 @@ sidebar_position: 2
   Ответ = OPI_GoogleSheets.УдалитьЛист(Токен, Книга, Лист); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);               //JSON строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -35,14 +41,11 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "replies": [
   {}
   ]
   }
-
 ```

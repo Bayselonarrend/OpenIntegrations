@@ -6,6 +6,11 @@ sidebar_position: 1
  Создает новую книгу
 
 
+
+
+<br/>
+
+
 *Функция СоздатьКнигу(Знач Токен, Знач Наименование, Знач МассивИменЛистов) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,8 +22,8 @@ sidebar_position: 1
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   МассивИменЛистов = Новый Массив;
   МассивИменЛистов.Добавить("Лист1");
@@ -29,8 +34,9 @@ sidebar_position: 1
   Ответ = OPI_GoogleSheets.СоздатьКнигу(Токен, Наименование, МассивИменЛистов); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                   //JSON строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -38,10 +44,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "properties": {
   "title": "Тестовая таблица",
@@ -202,5 +206,4 @@ sidebar_position: 1
   ],
   "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc/edit"
   }
-
 ```

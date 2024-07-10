@@ -6,6 +6,11 @@ sidebar_position: 2
  Cancels the public access mode for the directory
 
 
+
+
+<br/>
+
+
 *Function CancelFolderPublication(Val Token, Val FolderID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Folder = "5022319569";
  
@@ -30,8 +35,9 @@ sidebar_position: 2
  CurrentStatus = Result[".tag"];
  OPI_Tools.Pause(3);
  EndDo;
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,11 +45,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  ".tag": "complete"
 }
-
 ```

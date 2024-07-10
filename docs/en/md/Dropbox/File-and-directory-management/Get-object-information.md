@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets information about a file or directory
 
 
+
+
+<br/>
+
+
 *Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox 
 
+
 ```bsl title="Code example"
-	
  Path = "/New/pic.png";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  
  Result = OPI_Dropbox.GetObjectInformation(Token, Path, True);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  ".tag": "file",
  "name": "pic.png",
  "path_lower": "/new/pic.png",
@@ -48,5 +52,4 @@ sidebar_position: 1
  "is_downloadable": true,
  "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
 }
-
 ```

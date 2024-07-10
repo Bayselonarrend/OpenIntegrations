@@ -6,6 +6,11 @@ sidebar_position: 3
  Устанавливает URL обработчика событий бота для работы в режиме Webhook
 
 
+
+
+<br/>
+
+
 *Функция УстановитьWebhook(Знач Токен, Знач URL) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,14 +21,15 @@ sidebar_position: 3
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
+
 ```bsl title="Пример кода"
-	
   Токен       = "6129457865:AAFyzNYOAFbu...";
   URL         = "https://api.athenaeum.digital/opi/hs/twitter";
   
   Результат   = OPI_Telegram.УстановитьWebhook(Токен, URL);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -31,13 +37,10 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "ok": true,
  "result": true,
  "description": "Webhook was set"
 }
-
 ```

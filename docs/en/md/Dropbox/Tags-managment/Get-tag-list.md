@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets the list of tags of the selected files
 
 
+
+
+<br/>
+
+
 *Function GetTagList(Val Token, Val Paths) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Token = "sl.B22821SXrkmxs9KAaC6M_ax_M33mEcEvKz9sqgcMO8Xwn0bvpx4_57UQqLR_gEuPS_Yk5yd3Tv...";
  
  PathsArray = New Array;
@@ -25,8 +30,9 @@ sidebar_position: 1
  PathsArray.Add("/New/mydoc.docx");
  
  Result = OPI_Dropbox.GetTagList(Token, PathsArray);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "paths_to_tags": [
  {
  "path": "/New/Dogs.mp3",
@@ -54,5 +58,4 @@ sidebar_position: 1
  }
  ]
 }
-
 ```

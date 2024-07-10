@@ -6,6 +6,11 @@ sidebar_position: 9
  Gets the description of a phone number field
 
 
+
+
+<br/>
+
+
 *Function GetPhoneField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,16 +20,17 @@ sidebar_position: 9
  
  Returns: Structure - Field description
 
+
 ```bsl title="Code example"
-	
  
  Name = "Phone";
  
  Response = OPI_Airtable.GetPhoneField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,12 +38,9 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "name": "Phone",
  "type": "phoneNumber"
  }
-
 ```

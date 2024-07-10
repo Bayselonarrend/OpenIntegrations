@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Get tasks list
  Get tasks list (50 at one response max))
+
+
+
+
+<br/>
 
 
 *Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export*
@@ -18,8 +23,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  // Full filter structer you can find at GetTasksFilterStructure method
  Filter = New Structure;
  Filter.Insert("CREATED_BY", 1);
@@ -35,8 +40,9 @@ sidebar_position: 3
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetTasksList(URL,, Indent, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -44,10 +50,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "tasks": [
  {
@@ -4015,5 +4019,4 @@ sidebar_position: 3
  "operating": 0
  }
 }
-
 ```

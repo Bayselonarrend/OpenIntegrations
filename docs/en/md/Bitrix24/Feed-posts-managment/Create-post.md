@@ -6,6 +6,13 @@ sidebar_position: 1
  Create a new post at news feed
 
 
+:::tip
+API method: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_add.php)
+:::
+
+<br/>
+
+
 *Function CreatePost(Val URL, Val Text, Val Visibility = "UA", Val Files = "", Val Title = "", Val Important = False, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -21,8 +28,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  Text = "Text of post";
  Title = "Post title";
  Image1 = "https://openintegrations.dev/test_data/picture.jpg";
@@ -42,8 +49,9 @@ sidebar_position: 1
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.CreatePost(URL, Text,, Files, Title,, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -51,10 +59,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": 18,
  "time": {
  "start": 1718130364.82176,
@@ -67,5 +73,4 @@ sidebar_position: 1
  "operating": 0.637988090515137
  }
 }
-
 ```

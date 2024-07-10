@@ -6,6 +6,11 @@ sidebar_position: 1
  Generates a block with an image to add to the message block array
 
 
+
+
+<br/>
+
+
 *Function GenerateImageBlock(Val URL, Val AlternateText = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Image block
 
+
 ```bsl title="Code example"
-	
  
  Text = "Alpaca picture";
  URL = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
@@ -25,8 +30,9 @@ sidebar_position: 1
  Response = OPI_Slack.GenerateImageBlock(URL, Text); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,13 +40,10 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "alt_text": "Yo",
  "image_url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1",
  "type": "image"
  }
-
 ```

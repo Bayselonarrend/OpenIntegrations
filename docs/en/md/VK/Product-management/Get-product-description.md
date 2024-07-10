@@ -6,6 +6,11 @@ sidebar_position: 8
 
 
 
+
+
+<br/>
+
+
 *Function GetProductDescription() Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,11 +20,12 @@ sidebar_position: 8
  Returns: Map Of KeyAndValue - Empty product description:
 
 
+
 ```bsl title="Code example"
-	
  Result = OPI_VK.GetProductDescription();
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -27,10 +33,8 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Result"
-
-Product = New Map();
+ Product = New Map();
  Product.Insert("Name", "New product"); // Product name
  Product.Insert("Description", "Product description"); // Product description
  Product.Insert("Category", "20173"); // See GetProductCategoryList()
@@ -47,5 +51,4 @@ Product = New Map();
  Product.Insert("Weight", Undefined); // In grams
  Product.Insert("SKU", Undefined); // SKU
  Product.Insert("AvailableBalance", 1);
-
 ```

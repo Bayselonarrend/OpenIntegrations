@@ -6,6 +6,11 @@ sidebar_position: 2
  Creates a tweet with an image attachment
 
 
+
+
+<br/>
+
+
 *Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
 
+
 ```bsl title="Code example"
-	
  
  ImageArray = New Array;
  ImageArray.Add("C:\logo.png");
@@ -27,8 +32,9 @@ sidebar_position: 2
  Response = OPI_Twitter.CreateImageTweet("Alpaca", ImageArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "data": {
  "text": "Alpaca https://t.co/OodoWT1AAA",
  "id": "1745753004542726629",
@@ -48,5 +52,4 @@ sidebar_position: 2
  ]
  }
  }
-
 ```

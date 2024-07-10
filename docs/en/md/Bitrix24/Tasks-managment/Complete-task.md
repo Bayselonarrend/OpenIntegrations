@@ -6,6 +6,11 @@ sidebar_position: 9
  Complete task by ID
 
 
+
+
+<br/>
+
+
 *Function CompleteTask(Val URL, Val TaskID, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 9
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "168";
  
@@ -30,8 +35,9 @@ sidebar_position: 9
  TaskID = "170";
  
  Result = OPI_Bitrix24.CompleteTask(URL, TaskID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "task": {
  "id": "110",
@@ -185,5 +189,4 @@ sidebar_position: 9
  "operating": 0.312941789627075
  }
 }
-
 ```

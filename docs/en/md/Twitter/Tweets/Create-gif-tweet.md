@@ -6,6 +6,11 @@ sidebar_position: 3
  Creates a tweet with a gif attachment
 
 
+
+
+<br/>
+
+
 *Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
 
+
 ```bsl title="Code example"
-	
  
  ImageArray = New Array;
  ImageArray.Add("C:\1.gif");
@@ -27,8 +32,9 @@ sidebar_position: 3
  Response = OPI_Twitter.CreateGifTweet("Gifs", ImageArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "data": {
  "text": "Nature https://t.co/VWkWU11111",
  "id": "1746086669499924991",
@@ -48,5 +52,4 @@ sidebar_position: 3
  ]
  }
  }
-
 ```

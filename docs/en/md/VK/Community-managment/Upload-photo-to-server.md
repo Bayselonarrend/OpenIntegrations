@@ -6,6 +6,11 @@ sidebar_position: 11
  Uploads photo to server for further use
 
 
+
+
+<br/>
+
+
 *Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 11
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
 
+
 ```bsl title="Code example"
-	
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
  
  TFN = GetTempFileName("png");
@@ -26,8 +31,9 @@ sidebar_position: 11
  
  ImageUpload = OPI_VK.UploadPhotoToServer(Image, Parameters);
  ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,9 +41,7 @@ sidebar_position: 11
 
 ```
 
-
 ```json title="Result"
-
 {
  "response":[
  {
@@ -51,5 +55,4 @@ sidebar_position: 11
  }
  ]
 }
-
 ```

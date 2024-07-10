@@ -6,6 +6,11 @@ sidebar_position: 10
  Returns a task to work by ID
 
 
+
+
+<br/>
+
+
 *Function RenewTask(Val URL, Val TaskID, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 10
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "168";
  
@@ -30,8 +35,9 @@ sidebar_position: 10
  TaskID = "170";
  
  Result = OPI_Bitrix24.RenewTask(URL, TaskID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 10
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "task": {
  "id": "110",
@@ -185,5 +189,4 @@ sidebar_position: 10
  "operating": 0.26146388053894
  }
 }
-
 ```

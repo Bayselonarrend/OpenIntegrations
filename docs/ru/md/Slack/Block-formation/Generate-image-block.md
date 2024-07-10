@@ -6,6 +6,11 @@ sidebar_position: 1
  Формирует блок с картинкой для добавления в массив блоков сообщения
 
 
+
+
+<br/>
+
+
 *Функция СформироватьБлокКартинку(Знач URL, Знач АльтернативныйТекст = "") Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,8 +21,8 @@ sidebar_position: 1
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение -  Блок картинки
 
+
 ```bsl title="Пример кода"
-	
   
   Текст = "Картинка альпаки";
   URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
@@ -25,8 +30,9 @@ sidebar_position: 1
   Ответ = OPI_Slack.СформироватьБлокКартинку(URL, Текст); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);             //JSON строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -34,13 +40,10 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "alt_text": "Yo",
   "image_url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1",
   "type": "image"
   }
-
 ```

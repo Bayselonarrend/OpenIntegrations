@@ -6,6 +6,11 @@ sidebar_position: 5
  Создает сокращенный URL из обычного
 
 
+
+
+<br/>
+
+
 *Функция СократитьСсылку(Знач URL, Знач Параметры = "") Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,13 +21,14 @@ sidebar_position: 5
   
   Возвращаемое значение:  Строка - Сокращенный URL 
 
+
 ```bsl title="Пример кода"
-	
   
   Ответ = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -30,9 +36,6 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Результат"
-
-https://vk.cc/ctL1sM
-
+  https://vk.cc/ctL1sM
 ```

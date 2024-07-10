@@ -6,6 +6,11 @@ sidebar_position: 4
  Deletes a channel message by timestamp
 
 
+
+
+<br/>
+
+
 *Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C06UFNUTKUL";
  Timestamp = "1714146538.221929";
@@ -27,8 +32,9 @@ sidebar_position: 4
  Response = OPI_Slack.DeleteMessage(Token, Channel, Timestamp); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,13 +42,10 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": "C06UFNUTKUL",
  "ts": "1714146538.221929"
  }
-
 ```
