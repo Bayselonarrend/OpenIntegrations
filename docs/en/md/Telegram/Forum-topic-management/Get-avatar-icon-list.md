@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the mapping of Emoji IDs for setting as forum theme icons
 
 
-<br/>
-
 
 `Function GetAvatarIconList(Val Token) Export`
 

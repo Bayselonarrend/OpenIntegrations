@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a new spreadsheet
 
 
-<br/>
-
 
 `Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export`
 

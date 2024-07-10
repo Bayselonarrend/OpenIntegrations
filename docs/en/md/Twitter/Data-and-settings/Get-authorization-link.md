@@ -6,8 +6,6 @@ sidebar_position: 1
  Forms a link for authorization via the browser
 
 
-<br/>
-
 
 `Function GetAuthorizationLink(Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets the token by the code received when authorizing using the link from GetAuthorizationLink
 
 
-<br/>
-
 
 `Function GetToken(Val Code, Val Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 7
  Adds new groups or users to the recipients
 
 
-<br/>
-
 
 `Function AddPostRecipients(Val URL, Val PostID, Val Visibility, Val Token = "") Export`
 

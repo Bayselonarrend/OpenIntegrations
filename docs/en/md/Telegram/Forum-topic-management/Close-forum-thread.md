@@ -6,8 +6,6 @@ sidebar_position: 4
  Closes the thread for new messages
 
 
-<br/>
-
 
 `Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export`
 

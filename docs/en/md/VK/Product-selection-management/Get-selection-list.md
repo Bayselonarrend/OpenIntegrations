@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the list of product selections
 
 
-<br/>
-
 
 `Function GetSelectionList(Val Parameters = "") Export`
 

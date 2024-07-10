@@ -6,8 +6,6 @@ sidebar_position: 1
  Generates an authorization link for browser transition
 
 
-<br/>
-
 
 `Function GetAuthorizationLink(Val AppKey) Export`
 

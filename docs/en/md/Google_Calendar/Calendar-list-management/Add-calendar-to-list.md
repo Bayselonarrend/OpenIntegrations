@@ -6,8 +6,6 @@ sidebar_position: 2
  Adds an existing calendar to the user's list
 
 
-<br/>
-
 
 `Function AddCalendarToList(Val Token, Val Calendar) Export`
 

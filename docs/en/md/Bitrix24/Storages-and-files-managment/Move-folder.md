@@ -6,8 +6,6 @@ sidebar_position: 11
  Moves one folder inside another
 
 
-<br/>
-
 
 `Function MoveFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export`
 

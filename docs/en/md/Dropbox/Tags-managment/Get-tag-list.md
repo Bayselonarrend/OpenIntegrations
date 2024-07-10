@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the list of tags of the selected files
 
 
-<br/>
-
 
 `Function GetTagList(Val Token, Val Paths) Export`
 

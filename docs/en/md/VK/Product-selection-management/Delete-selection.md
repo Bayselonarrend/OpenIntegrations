@@ -6,8 +6,6 @@ sidebar_position: 7
  Deletes the selection by ID
 
 
-<br/>
-
 
 `Function DeleteSelection(Val Selection, Val Parameters = "") Export`
 

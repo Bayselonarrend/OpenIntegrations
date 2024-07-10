@@ -6,8 +6,6 @@ sidebar_position: 1
  Adds a new sheet to the spreadsheet
 
 
-<br/>
-
 
 `Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export`
 

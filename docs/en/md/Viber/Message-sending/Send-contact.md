@@ -6,8 +6,6 @@ sidebar_position: 4
  Sends a contact with a phone number to a chat or channel
 
 
-<br/>
-
 
 `Function SendContact(Val Token, Val ContactName, Val PhoneNumber, Val UserID, Val SendingToChannel) Export`
 

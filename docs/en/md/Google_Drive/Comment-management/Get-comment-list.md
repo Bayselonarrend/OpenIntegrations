@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets the list of all comments of the object
 
 
-<br/>
-
 
 `Function GetCommentList(Val Token, Val ObjectID) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 5
  Uploads a file to the cloud drive by fetching it from the specified URL
 
 
-<br/>
-
 
 `Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
  Get token by auth code
 
 
-<br/>
-
 
 `Function GetToken(Val ClientID, Val ClientSecret, Val Code) Export`
 

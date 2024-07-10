@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates a tweet with an image attachment
 
 
-<br/>
-
 
 `Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 6
  Deletes a previously created product
 
 
-<br/>
-
 
 `Function DeleteProduct(Val Product, Val Parameters = "") Export`
 

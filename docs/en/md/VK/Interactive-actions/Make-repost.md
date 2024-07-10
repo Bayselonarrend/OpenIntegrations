@@ -6,8 +6,6 @@ sidebar_position: 2
  Reposts the record
 
 
-<br/>
-
 
 `Function MakeRepost(Val PostID, Val WallID = "", Val TargetWall = "", Val Advertising = False, Val Parameters = "") Export`
 

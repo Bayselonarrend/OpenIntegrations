@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes the existing product property
 
 
-<br/>
-
 
 `Function DeleteProductProperty(Val Property, Val Parameters = "") Export`
 

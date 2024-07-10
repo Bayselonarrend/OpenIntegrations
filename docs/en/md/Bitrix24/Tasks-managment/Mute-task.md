@@ -6,8 +6,6 @@ sidebar_position: 21
  Mute task by ID
 
 
-<br/>
-
 
 `Function MuteTask(Val URL, Val TaskID, Val Token = "") Export`
 

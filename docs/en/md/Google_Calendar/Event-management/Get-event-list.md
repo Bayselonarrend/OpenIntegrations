@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets the list of all calendar events
 
 
-<br/>
-
 
 `Function GetEventList(Val Token, Val Calendar) Export`
 

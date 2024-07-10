@@ -6,8 +6,6 @@ sidebar_position: 1
  Get task by ID
 
 
-<br/>
-
 
 `Function GetTask(Val URL, Val TaskID, Val Token = "") Export`
 

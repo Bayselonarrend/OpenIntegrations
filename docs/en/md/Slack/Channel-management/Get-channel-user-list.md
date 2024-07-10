@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets a list of users in the specified channel
 
 
-<br/>
-
 
 `Function GetChannelUserList(Val Token, Val Channel, Val Cursor = "") Export`
 

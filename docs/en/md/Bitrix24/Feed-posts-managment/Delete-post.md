@@ -6,8 +6,6 @@ sidebar_position: 3
  Remove post from a news feed
 
 
-<br/>
-
 
 `Function DeletePost(Val URL, Val PostID, Val Token = "") Export`
 

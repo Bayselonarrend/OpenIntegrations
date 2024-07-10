@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets the description of a string field
 
 
-<br/>
-
 
 `Function GetStringField(Val Name) Export`
 

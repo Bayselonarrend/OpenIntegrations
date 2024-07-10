@@ -6,8 +6,6 @@ sidebar_position: 16
  Move folder to recycle bin
 
 
-<br/>
-
 
 `Function MarkFolderAsDeleted(Val URL, Val FolderID, Val Token = "") Export`
 

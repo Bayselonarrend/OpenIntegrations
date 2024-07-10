@@ -6,8 +6,6 @@ sidebar_position: 1
  Returns the community's order list
 
 
-<br/>
-
 
 `Function GetOrderList(Val Parameters = "") Export`
 

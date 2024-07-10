@@ -6,8 +6,6 @@ sidebar_position: 10
  Removes the current bot from the channel
 
 
-<br/>
-
 
 `Function LeaveChannel(Val Token, Val Channel) Export`
 

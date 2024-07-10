@@ -6,8 +6,6 @@ sidebar_position: 4
  Uploads a file to the cloud drive
 
 
-<br/>
-
 
 `Function UploadFile(Val Token, Val File, Val Path, Val Overwrite = False) Export`
 

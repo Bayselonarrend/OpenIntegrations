@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets calendar information by ID
 
 
-<br/>
-
 
 `Function GetCalendarMetadata(Val Token, Val Calendar) Export`
 

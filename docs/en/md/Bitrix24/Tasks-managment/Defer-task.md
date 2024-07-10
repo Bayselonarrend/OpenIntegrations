@@ -6,8 +6,6 @@ sidebar_position: 11
  Defer task by ID
 
 
-<br/>
-
 
 `Function DeferTask(Val URL, Val TaskID, Val Token = "") Export`
 

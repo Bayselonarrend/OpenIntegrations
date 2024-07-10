@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets an array of account calendars
 
 
-<br/>
-
 
 `Function GetCalendarList(Val Token) Export`
 

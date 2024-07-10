@@ -6,8 +6,6 @@ sidebar_position: 3
  Changes the name of the existing spreadsheet
 
 
-<br/>
-
 
 `Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export`
 

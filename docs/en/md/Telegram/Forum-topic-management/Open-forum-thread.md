@@ -6,8 +6,6 @@ sidebar_position: 5
  Reopens a previously closed forum thread
 
 
-<br/>
-
 
 `Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 6
  Removes a previously added product from the selection
 
 
-<br/>
-
 
 `Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export`
 

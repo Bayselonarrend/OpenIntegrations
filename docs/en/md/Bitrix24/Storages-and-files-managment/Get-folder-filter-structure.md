@@ -6,8 +6,6 @@ sidebar_position: 27
  Returns filter structure for child folder items
 
 
-<br/>
-
 
 `Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export`
 

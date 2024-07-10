@@ -6,8 +6,6 @@ sidebar_position: 5
  Adds a variant for an existing property
 
 
-<br/>
-
 
 `Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
 Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals The user ID from channel information is not suitable for sending messages through the bot - they are different
 
 
-<br/>
-
 
 `Function GetChannelInformation(Val Token) Export`
 

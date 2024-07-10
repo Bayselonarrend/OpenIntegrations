@@ -6,8 +6,6 @@ sidebar_position: 7
  Groups products based on similar sets of properties
 
 
-<br/>
-
 
 `Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters = "") Export`
 

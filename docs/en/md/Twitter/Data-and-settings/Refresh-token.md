@@ -6,8 +6,6 @@ sidebar_position: 3
  Updates the v2 token using the refresh_token
 
 
-<br/>
-
 
 `Function RefreshToken(Val Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 14
  Start watching a task by ID
 
 
-<br/>
-
 
 `Function StartWatchingTask(Val URL, Val TaskID, Val Token = "") Export`
 

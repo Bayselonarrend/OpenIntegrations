@@ -6,8 +6,6 @@ sidebar_position: 8
  Updates file binary data
 
 
-<br/>
-
 
 `Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export`
 

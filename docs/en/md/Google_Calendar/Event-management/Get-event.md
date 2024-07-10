@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets an event by ID
 
 
-<br/>
-
 
 `Function GetEvent(Val Token, Val Calendar, Val Event) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 3
  Creates a new thread in the group with theme functionality enabled
 
 
-<br/>
-
 
 `Function EditForumTopic(Val Token, Val ChatID, Val ThreadID, Val Title = Undefined, Val IconID = Undefined) Export`
 

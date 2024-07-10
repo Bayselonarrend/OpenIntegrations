@@ -6,8 +6,6 @@ sidebar_position: 1
 
 
 
-<br/>
-
 
 `Function GetEventDescription() Export`
 

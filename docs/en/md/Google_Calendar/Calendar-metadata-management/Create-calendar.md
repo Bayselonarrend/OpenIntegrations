@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates an empty calendar
 
 
-<br/>
-
 
 `Function CreateCalendar(Val Token, Val Name) Export`
 

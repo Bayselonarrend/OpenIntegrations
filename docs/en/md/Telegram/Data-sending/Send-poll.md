@@ -6,8 +6,6 @@ sidebar_position: 10
  Sends a poll with answer options
 
 
-<br/>
-
 
 `Function SendPoll(Val Token, Val ChatID, Val Question, Val AnswersArray, Val Anonymous = True) Export`
 

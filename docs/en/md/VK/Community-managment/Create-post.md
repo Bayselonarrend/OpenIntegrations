@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a post with images
 
 
-<br/>
-
 
 `Function CreatePost(Val Text, Val ImageArray, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 7
  Create new foldera at the storage
 
 
-<br/>
-
 
 `Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") Export`
 

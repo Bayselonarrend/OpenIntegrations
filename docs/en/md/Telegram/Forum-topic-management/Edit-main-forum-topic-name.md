@@ -6,8 +6,6 @@ sidebar_position: 9
  Edits the name of the main forum thread
 
 
-<br/>
-
 
 `Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export`
 

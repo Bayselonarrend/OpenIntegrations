@@ -6,8 +6,6 @@ sidebar_position: 8
  Deletes task result, created from a comment
 
 
-<br/>
-
 
 `Function DeleteResultFromComment(Val URL, Val CommentID, Val Token = "") Export`
 

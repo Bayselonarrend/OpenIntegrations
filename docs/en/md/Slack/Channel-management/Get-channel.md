@@ -6,8 +6,6 @@ sidebar_position: 5
  Gets information about the channel
 
 
-<br/>
-
 
 `Function GetChannel(Val Token, Val Channel) Export`
 

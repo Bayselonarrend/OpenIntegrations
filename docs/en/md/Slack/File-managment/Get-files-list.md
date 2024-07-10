@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets a list of files of the bot or channel
 
 
-<br/>
-
 
 `Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export`
 

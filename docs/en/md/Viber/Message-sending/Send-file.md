@@ -6,8 +6,6 @@ sidebar_position: 3
  Sends a file (document) to a chat or channel
 
 
-<br/>
-
 
 `Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export`
 

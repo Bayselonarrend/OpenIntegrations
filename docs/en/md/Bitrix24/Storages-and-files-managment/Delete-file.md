@@ -6,8 +6,6 @@ sidebar_position: 12
  Delete file by ID
 
 
-<br/>
-
 
 `Function DeleteFile(Val URL, Val FileID, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 4
  Creates a new event
 
 
-<br/>
-
 
 `Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export`
 

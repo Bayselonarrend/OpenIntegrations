@@ -6,8 +6,6 @@ sidebar_position: 13
  Changes the name of the channel
 
 
-<br/>
-
 
 `Function RenameChannel(Val Token, Val Channel, Val Name) Export`
 

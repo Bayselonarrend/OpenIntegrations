@@ -6,8 +6,6 @@ sidebar_position: 3
  Creates a new channel
 
 
-<br/>
-
 
 `Function CreateChannel(Val Token, Val Name, Val Private = False) Export`
 

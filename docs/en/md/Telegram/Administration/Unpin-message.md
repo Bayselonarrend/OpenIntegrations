@@ -6,8 +6,6 @@ sidebar_position: 5
  Unpins a message in the chat header
 
 
-<br/>
-
 
 `Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export`
 

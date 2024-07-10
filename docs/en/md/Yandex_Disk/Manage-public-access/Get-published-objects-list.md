@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets a list of published objects
 
 
-<br/>
-
 
 `Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export`
 

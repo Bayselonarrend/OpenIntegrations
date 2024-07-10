@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets information about a disk object at the specified path
 
 
-<br/>
-
 
 `Function GetObject(Val Token, Val Path) Export`
 

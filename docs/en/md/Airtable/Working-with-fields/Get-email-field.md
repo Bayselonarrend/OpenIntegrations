@@ -6,8 +6,6 @@ sidebar_position: 8
  Gets the description of an email field
 
 
-<br/>
-
 
 `Function GetEmailField(Val Name) Export`
 

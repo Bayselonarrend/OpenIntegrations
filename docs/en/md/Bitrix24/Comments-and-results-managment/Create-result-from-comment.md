@@ -6,8 +6,6 @@ sidebar_position: 7
  Create task result from comment
 
 
-<br/>
-
 
 `Function CreateResultFromComment(Val URL, Val CommentID, Val Token = "") Export`
 

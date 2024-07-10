@@ -6,8 +6,6 @@ sidebar_position: 4
  Sends an external file to a list of channels
 
 
-<br/>
-
 
 `Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export`
 

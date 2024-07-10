@@ -6,8 +6,6 @@ sidebar_position: 3
  Pauses the display of the advertising post
 
 
-<br/>
-
 
 `Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export`
 

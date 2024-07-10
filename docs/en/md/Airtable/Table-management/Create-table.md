@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a new table in the base
 
 
-<br/>
-
 
 `Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export`
 

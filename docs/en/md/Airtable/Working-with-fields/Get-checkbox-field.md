@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets the description of a boolean field
 
 
-<br/>
-
 
 `Function GetCheckboxField(Val Name) Export`
 

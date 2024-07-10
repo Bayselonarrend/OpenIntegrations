@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a database
 
 
-<br/>
-
 
 `Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export`
 

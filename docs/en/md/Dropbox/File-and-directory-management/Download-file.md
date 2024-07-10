@@ -6,8 +6,6 @@ sidebar_position: 11
  Downloads a file by the specified path or ID
 
 
-<br/>
-
 
 `Function DownloadFile(Val Token, Val Path) Export`
 

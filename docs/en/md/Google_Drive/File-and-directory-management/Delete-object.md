@@ -6,8 +6,6 @@ sidebar_position: 9
  Deletes file or directory by ID
 
 
-<br/>
-
 
 `Function DeleteObject(Val Token, Val Identifier) Export`
 

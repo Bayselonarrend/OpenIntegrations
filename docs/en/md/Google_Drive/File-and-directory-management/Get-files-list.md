@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets the list of files
 
 
-<br/>
-
 
 `Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export`
 

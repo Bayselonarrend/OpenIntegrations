@@ -6,8 +6,6 @@ sidebar_position: 22
  Unmute task by ID
 
 
-<br/>
-
 
 `Function UnmuteTask(Val URL, Val TaskID, Val Token = "") Export`
 

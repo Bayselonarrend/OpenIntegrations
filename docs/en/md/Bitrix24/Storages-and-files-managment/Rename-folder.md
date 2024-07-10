@@ -6,8 +6,6 @@ sidebar_position: 18
  Change folder name
 
 
-<br/>
-
 
 `Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export`
 

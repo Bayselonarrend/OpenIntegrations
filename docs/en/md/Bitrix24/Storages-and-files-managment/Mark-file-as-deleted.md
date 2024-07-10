@@ -6,8 +6,6 @@ sidebar_position: 22
  Move file to recycle bin
 
 
-<br/>
-
 
 `Function MarkFileAsDeleted(Val URL, Val FileID, Val Token = "") Export`
 

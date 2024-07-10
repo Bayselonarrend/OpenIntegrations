@@ -6,8 +6,6 @@ sidebar_position: 7
  Creates a story from an image
 
 
-<br/>
-
 
 `Function CreateStory(Val Image, Val URL = "", Val Parameters = "") Export`
 

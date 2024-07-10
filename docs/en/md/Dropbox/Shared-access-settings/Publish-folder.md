@@ -6,8 +6,6 @@ sidebar_position: 1
  Sets the directory to public access mode
 
 
-<br/>
-
 
 `Function PublishFolder(Val Token, Val Path) Export`
 

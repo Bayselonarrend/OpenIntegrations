@@ -6,8 +6,6 @@ sidebar_position: 7
  Delete message from chat or channel
 
 
-<br/>
-
 
 `Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export`
 

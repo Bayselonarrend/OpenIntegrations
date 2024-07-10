@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets information about the spreadsheet by ID
 
 
-<br/>
-
 
 `Function GetSpreadsheet(Val Token, Val Identifier) Export`
 

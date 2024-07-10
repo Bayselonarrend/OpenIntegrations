@@ -6,8 +6,6 @@ sidebar_position: 13
  Remove folder with subfolders
 
 
-<br/>
-
 
 `Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export`
 

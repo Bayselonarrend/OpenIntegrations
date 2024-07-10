@@ -6,8 +6,6 @@ sidebar_position: 9
  Adds the current bot to the channel
 
 
-<br/>
-
 
 `Function JoinChannel(Val Token, Val Channel) Export`
 

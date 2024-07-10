@@ -6,8 +6,6 @@ sidebar_position: 3
  Create new comment to the task
 
 
-<br/>
-
 
 `Function AddTaskComment(Val URL, Val TaskID, Val Text, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 4
  Grants external users access to the directory
 
 
-<br/>
-
 
 `Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewOnly = True) Export`
 

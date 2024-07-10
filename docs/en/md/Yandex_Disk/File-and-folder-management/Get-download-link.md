@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets a download link for the file
 
 
-<br/>
-
 
 `Function GetDownloadLink(Val Token, Val Path) Export`
 

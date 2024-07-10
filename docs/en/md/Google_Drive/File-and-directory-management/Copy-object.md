@@ -6,8 +6,6 @@ sidebar_position: 7
  Copies file or directory
 
 
-<br/>
-
 
 `Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export`
 

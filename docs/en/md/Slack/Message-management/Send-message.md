@@ -6,8 +6,6 @@ sidebar_position: 1
  Sends a message at a selected hour
 
 
-<br/>
-
 
 `Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = "", Val Blocks = "") Export`
 

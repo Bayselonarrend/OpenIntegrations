@@ -6,8 +6,6 @@ sidebar_position: 3
  Get kanban (My Plan) stages info
 
 
-<br/>
-
 
 `Function GetKanbanStages(Val URL, Val EntityID = 0, Val AsAdmin = False, Val Token = "") Export`
 

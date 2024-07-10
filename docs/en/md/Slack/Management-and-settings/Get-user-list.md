@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets a list of users in the workspace
 
 
-<br/>
-
 
 `Function GetUserList(Val Token, Val Cursor = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates a comment for a record in the table
 
 
-<br/>
-
 
 `Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export`
 

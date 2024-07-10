@@ -6,8 +6,6 @@ sidebar_position: 8
  Saves an image to the community album
 
 
-<br/>
-
 
 `Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export`
 

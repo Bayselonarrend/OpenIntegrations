@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the overall community statistics for a period
 
 
-<br/>
-
 
 `Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export`
 

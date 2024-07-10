@@ -6,8 +6,6 @@ sidebar_position: 5
  Moves an event to another calendar
 
 
-<br/>
-
 
 `Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event) Export`
 

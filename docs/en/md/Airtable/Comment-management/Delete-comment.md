@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes a comment for a table record
 
 
-<br/>
-
 
 `Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export`
 

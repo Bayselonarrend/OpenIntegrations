@@ -6,8 +6,6 @@ sidebar_position: 9
  Moves the object to the specified path and path to the original
 
 
-<br/>
-
 
 `Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export`
 

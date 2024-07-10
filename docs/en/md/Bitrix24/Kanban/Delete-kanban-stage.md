@@ -6,8 +6,6 @@ sidebar_position: 2
  Removes a kanban (My Plan) stage, provided there are no tasks in it
 
 
-<br/>
-
 
 `Function DeleteKanbanStage(Val URL, Val StageID, Val AsAdmin = False, Val Token = "") Export`
 

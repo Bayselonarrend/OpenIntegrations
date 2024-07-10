@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets the upload status of the file by URL
 
 
-<br/>
-
 
 `Function GetUploadStatusByURL(Val Token, Val JobID) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates a new property for use in products
 
 
-<br/>
-
 
 `Function CreateProductProperty(Val Name, Val Parameters = "") Export`
 

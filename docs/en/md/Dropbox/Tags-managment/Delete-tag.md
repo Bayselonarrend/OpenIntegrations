@@ -6,8 +6,6 @@ sidebar_position: 3
  Deletes the text tag of a file or directory
 
 
-<br/>
-
 
 `Function DeleteTag(Val Token, Val Path, Val Tag) Export`
 

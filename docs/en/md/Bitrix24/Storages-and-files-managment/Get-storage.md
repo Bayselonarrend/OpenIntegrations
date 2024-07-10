@@ -6,8 +6,6 @@ sidebar_position: 3
  Get information about storage
 
 
-<br/>
-
 
 `Function GetStorage(Val URL, Val StorageID, Val Token = "") Export`
 
