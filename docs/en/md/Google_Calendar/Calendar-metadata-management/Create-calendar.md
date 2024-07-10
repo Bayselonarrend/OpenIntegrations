@@ -25,10 +25,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Response = OPI_GoogleCalendar.CreateCalendar(Token, "TestCalendar"); //Map
+Response = OPI_GoogleCalendar.CreateCalendar(Token, "TestCalendar"); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "conferenceProperties": {
  "allowedConferenceSolutionTypes": [
  "hangoutsMeet"

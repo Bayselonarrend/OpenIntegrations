@@ -26,8 +26,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Attachments = New Map;
+Attachments = New Map;
  Attachments.Insert("Image1", "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
  Attachments.Insert("Image2", "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1");
  
@@ -42,7 +41,6 @@ sidebar_position: 4
  
  Response = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMap);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -54,7 +52,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "eventType": "default",
  "attachments": [
  {

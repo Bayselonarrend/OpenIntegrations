@@ -27,14 +27,12 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  
-  НовоеИмя          = "Скопированный файл.jpeg";
+НовоеИмя          = "Скопированный файл.jpeg";
   НовоеРасположение = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
   Идентификатор     = "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk";
   
   Ответ = OPI_GoogleDrive.СкопироватьОбъект(Токен, Идентификатор, НовоеИмя, НовоеРасположение)  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                   //Строка
-  
 ```
 	
 
@@ -46,7 +44,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-  {
+{
   "mimeType": "image/jpeg",
   "name": "Скопированный файл.jpeg",
   "id": "1uxsMaxL1W5Y7z6-HhjE6QpyDxFPgW4Fy",

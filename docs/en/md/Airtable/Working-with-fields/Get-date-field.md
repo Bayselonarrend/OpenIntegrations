@@ -24,12 +24,10 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- 
- Name = "Date";
+Name = "Date";
  
  Response = OPI_Airtable.GetDateField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -41,7 +39,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "name": "Date",
  "type": "date",
  "options": {

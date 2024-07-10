@@ -25,12 +25,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  База = "apptm8Xqo7TwMaipQ";
+База = "apptm8Xqo7TwMaipQ";
   
   Ответ = OPI_Airtable.ПолучитьТаблицыБазы(Токен, База); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);            //JSON строка
-  
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "tables": [
   {
   "id": "tblqZzW78Rvsdt9gt",

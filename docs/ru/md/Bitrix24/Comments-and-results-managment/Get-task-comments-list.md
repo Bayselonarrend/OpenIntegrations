@@ -26,7 +26,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  URL         = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL         = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDЗадачи    = "504";
   
   Результат = OPI_Bitrix24.ПолучитьСписокКомментариевЗадачи(URL, IDЗадачи);
@@ -47,7 +47,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [
   {
    "POST_MESSAGE_HTML": null,

@@ -25,11 +25,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- 
- Response = OPI_Airtable.GetListOfBases(Token); //Map
+Response = OPI_Airtable.GetListOfBases(Token); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -41,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "bases": [
  {
  "id": "appGarzKZ0lu3gzoa",

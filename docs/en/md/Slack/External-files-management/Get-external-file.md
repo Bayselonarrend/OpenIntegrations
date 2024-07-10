@@ -25,12 +25,10 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- FileID = "F070P52CU94";
+FileID = "F070P52CU94";
  
  Response = OPI_Slack.GetExternalFile(Token, FileID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "file": {
  "id": "F070P52CU94",

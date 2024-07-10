@@ -29,7 +29,7 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- Filename2 = "Picture2.jpg";
+Filename2 = "Picture2.jpg";
  Name = "Picture1.jpg";
  
  Image2 = "https://openintegrations.dev/test_data/picture.jpg"; // Local path, URL or Binary Data
@@ -58,7 +58,7 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "ID": 356,
  "NAME": "26417397-8431-4343-9c0f-a40d4a2831c8.jpg",

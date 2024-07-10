@@ -26,7 +26,7 @@ sidebar_position: 13
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  FolderID = "480";
  
  Result = OPI_Bitrix24.DeleteFolder(URL, FolderID);
@@ -48,7 +48,7 @@ sidebar_position: 13
 ```
 
 ```json title="Result"
- {
+{
  "result": true,
  "time": {
  "start": 1719047257.50616,

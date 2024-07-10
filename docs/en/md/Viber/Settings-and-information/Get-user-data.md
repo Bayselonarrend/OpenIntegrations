@@ -25,10 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Response = OPI_Viber.GetUserData(Token, UserID); //Map
+Response = OPI_Viber.GetUserData(Token, UserID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "user": {
  "device_type": "iPhone8,4",
  "mnc": 1,

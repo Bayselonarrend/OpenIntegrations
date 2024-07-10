@@ -29,13 +29,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- ChannelToken = "523b58ba82afffaa-111111111111111-2222222222222222";
+ChannelToken = "523b58ba82afffaa-111111111111111-2222222222222222";
  UserID = "tMNGh111111111D+bT4g==";
  
  Response = OPI_Viber.SendFile(ChannelToken, "https://api.athenaeum.digital/1.txt", UserID, True, "txt"); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -47,7 +45,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "chat_hostname": "SN-CHAT-09_",
  "message_token": 5925491906424759104,
  "status_message": "ok",

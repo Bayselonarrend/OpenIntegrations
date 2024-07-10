@@ -25,10 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.GetProductList(, Parameters);
+Response = OPI_VK.GetProductList(, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- [
+[
  {
  "sku": "12 345",
  "is_main_variant": true,

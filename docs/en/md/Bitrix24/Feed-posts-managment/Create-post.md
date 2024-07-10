@@ -33,7 +33,7 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
- Text = "Text of post";
+Text = "Text of post";
  Title = "Post title";
  Image1 = "https://openintegrations.dev/test_data/picture.jpg";
  Image2 = "https://openintegrations.dev/test_data/picture2.jpg";
@@ -63,7 +63,7 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
- {
+{
  "result": 18,
  "time": {
  "start": 1718130364.82176,

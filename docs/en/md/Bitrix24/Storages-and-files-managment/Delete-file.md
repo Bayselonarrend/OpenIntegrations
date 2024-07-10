@@ -26,7 +26,7 @@ sidebar_position: 12
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  FileID = "488";
  
  Result = OPI_Bitrix24.DeleteFile(URL, FileID);
@@ -48,7 +48,7 @@ sidebar_position: 12
 ```
 
 ```json title="Result"
- {
+{
  "result": true,
  "time": {
  "start": 1718783933.86753,

@@ -25,11 +25,9 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
- 
- Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.DeleteObject(Token, Identifier); //Map
- 
 ```
 	
 
@@ -41,5 +39,5 @@ sidebar_position: 9
 ```
 
 ```json title="Result"
- ''
+''
 ```

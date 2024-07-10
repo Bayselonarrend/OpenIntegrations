@@ -26,7 +26,7 @@ sidebar_position: 11
 
 
 ```bsl title="Пример кода"
-  Картинка = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+Картинка = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
   
   ИВФ = ПолучитьИмяВременногоФайла("png");
   КопироватьФайл(Картинка, ИВФ);

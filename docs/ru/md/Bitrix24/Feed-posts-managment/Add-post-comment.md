@@ -30,7 +30,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  Текст     = "Комментарий к новости";
+Текст     = "Комментарий к новости";
   IDНовости = "260";
   URL       = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
@@ -53,7 +53,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 168,
  "time": {
   "start": 1720186639.67208,

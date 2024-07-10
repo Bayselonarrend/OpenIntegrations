@@ -25,7 +25,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  Токен       = "6129457865:AAFyzNYOAFbu...";
+Токен       = "6129457865:AAFyzNYOAFbu...";
   URL         = "https://api.athenaeum.digital/opi/hs/twitter";
   
   Результат   = OPI_Telegram.УстановитьWebhook(Токен, URL);
@@ -40,7 +40,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": true,
  "description": "Webhook was set"

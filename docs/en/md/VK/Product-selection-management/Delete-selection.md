@@ -25,10 +25,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.DeleteSelection(40, Parameters);
+Response = OPI_VK.DeleteSelection(40, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "response": 1
  }
 ```

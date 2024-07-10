@@ -25,7 +25,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   ИДРаботы = "G8YbueOu2nsAAAAAAAAAAQ";
   Статус   = "in_progress";
   
@@ -49,7 +49,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-    {
+{
  ".tag": "complete",
  "name": "url_doc.docx",
  "path_lower": "/new/url_doc.docx",

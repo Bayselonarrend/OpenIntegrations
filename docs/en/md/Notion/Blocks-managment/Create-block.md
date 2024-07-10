@@ -27,8 +27,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
  
  Block = OPI_Notion.ReturnBlock(Token, "ca18df269bd24407852b91c30e..."); //Block as map. Can be changed.
@@ -37,7 +36,6 @@ sidebar_position: 1
  Response = OPI_Notion.CreateBlock(Token, Parent, "46c1500ed40c4e89ba6a229003...");
  Response = OPI_Notion.CreateBlock(Token, Parent, "aa4137d4c8cc445d9f969c3968...");
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -49,7 +47,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "request_id": "4de46f5b-d38b-4df5-b26e-32127db1096b",
  "block": {},
  "type": "block",

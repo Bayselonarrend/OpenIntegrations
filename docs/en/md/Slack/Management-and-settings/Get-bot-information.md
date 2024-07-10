@@ -24,11 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- 
- Response = OPI_Slack.GetBotInformation(Token); //Map
+Response = OPI_Slack.GetBotInformation(Token); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -40,7 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "url": "https://openintegrationsgroup.slack.com/",
  "team": "OpenIntegrations",

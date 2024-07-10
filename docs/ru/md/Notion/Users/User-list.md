@@ -24,11 +24,9 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
   Ответ = OPI_Notion.СписокПользователей(Токен);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "ea9a6b96-0b02-4866-a60a-2958e514af38",
   "user": {},
   "type": "user",

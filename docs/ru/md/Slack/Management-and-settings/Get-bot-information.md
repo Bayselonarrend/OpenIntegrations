@@ -24,11 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  
-  Ответ = OPI_Slack.ПолучитьИнформациюОБоте(Токен); //Соответствие
+Ответ = OPI_Slack.ПолучитьИнформациюОБоте(Токен); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);       //JSON строка
-  
 ```
 	
 
@@ -40,7 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "ok": true,
   "url": "https://openintegrationsgroup.slack.com/",
   "team": "OpenIntegrations",

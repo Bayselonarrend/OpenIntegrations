@@ -24,9 +24,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.GetProductCategoryList(Parameters); //Map
- 
+Response = OPI_VK.GetProductCategoryList(Parameters); //Map
 ```
 	
 
@@ -38,7 +36,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- Key Value
+Key Value
  1210	"Business"
  1200	"Photo and video service"
  2162	"Repair and building"

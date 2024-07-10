@@ -27,13 +27,11 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
+Token = "y0_AgAAAABdylaOAA...";
  URL = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
  
  Response = OPI_YandexDisk.GetPublicObject(Token, URL); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "modified": "2024-02-09T10:50:41+00:00",
  "sizes": [
  {

@@ -28,15 +28,13 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  
-  База    = "apptm8Xqo7TwMaipQ";
+База    = "apptm8Xqo7TwMaipQ";
   Таблица = "tbl9G4jVoTJpxYwSY";
   Запись  = "recV6DxeLQMBNJrUk";
   Коммент = "comL1oGEDJvIQlMs1";
   
   Ответ = OPI_Airtable.УдалитьКомментарий(Токен, База, Таблица, Запись, Коммент); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                     //JSON строка
-  
 ```
 	
 
@@ -48,7 +46,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-  {
+{
   "id": "comL1oGEDJvIQlMs1",
   "deleted": true
   }

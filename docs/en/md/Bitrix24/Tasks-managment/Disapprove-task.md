@@ -26,7 +26,7 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "168";
  
  Result = OPI_Bitrix24.DisapproveTask(URL, TaskID);
@@ -48,7 +48,7 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
- {
+{
  "error": 1048582,
  "error_description": "Action on the task is not allowed"
 }

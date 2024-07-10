@@ -27,8 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Base = "apptm8Xqo7TwMaipQ";
+Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
  
  Records = New Array;
@@ -37,7 +36,6 @@ sidebar_position: 4
  
  Response = OPI_Airtable.DeletePosts(Token, Base, Table, Record); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -49,7 +47,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "records": [
  {
  "deleted": true,

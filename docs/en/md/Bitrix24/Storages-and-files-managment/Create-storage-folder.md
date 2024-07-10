@@ -27,7 +27,7 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- StorageID = 3;
+StorageID = 3;
  Name = "New catalog";
  Filename2 = "New folder 2";
  
@@ -52,7 +52,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "ID": 574,
  "NAME": "New catalog",

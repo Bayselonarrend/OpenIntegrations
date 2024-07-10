@@ -24,8 +24,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- ButtonArray = New Array;
+ButtonArray = New Array;
  ButtonArray.Add("Button 1");
  ButtonArray.Add("Button 2");
  
@@ -34,7 +33,6 @@ sidebar_position: 1
  Response = OPI_VK.WriteMessage("I am bot, but you - not >:)", 657846756, KТ, Keyboard, Parameters);
  
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -46,7 +44,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "buttons": [
  [
  {

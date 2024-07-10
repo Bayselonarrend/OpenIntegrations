@@ -26,7 +26,7 @@ sidebar_position: 14
 
 
 ```bsl title="Code example"
- Version = "61a0b76320a6fbd841553";
+Version = "61a0b76320a6fbd841553";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Path = "/New/pic.png";
  
@@ -42,7 +42,7 @@ sidebar_position: 14
 ```
 
 ```json title="Result"
- {
+{
  "name": "pic.png",
  "path_lower": "/new/pic.png",
  "path_display": "/New/pic.png",
