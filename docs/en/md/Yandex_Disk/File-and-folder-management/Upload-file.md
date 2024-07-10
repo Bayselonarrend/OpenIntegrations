@@ -27,14 +27,12 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
+Token = "y0_AgAAAABdylaOAA...";
  Path = "/AlpacaInFile.png";
  File = "C:\logo.png";
  
  Response = OPI_YandexDisk.UploadFile(Token, Path, File); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -46,5 +44,5 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
- <empty string>
+<empty string>
 ```

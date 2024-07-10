@@ -28,15 +28,13 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Base = "apptm8Xqo7TwMaipQ";
+Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
  Name = "Test table 2 (change.)";
  Description = "New table (change.)";
  
  Response = OPI_Airtable.ModifyTable(Token, Base, Table, Name, Description); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -48,7 +46,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "id": "tblT64aWyrMUAbUmF",
  "name": "Test table 2 (change.)",
  "description": "New table (change.)",

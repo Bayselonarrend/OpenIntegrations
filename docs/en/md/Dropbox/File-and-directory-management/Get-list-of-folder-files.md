@@ -27,7 +27,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- Path = "/New";
+Path = "/New";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  
  Result = OPI_Dropbox.GetListOfFolderFiles(Token, Path, True);

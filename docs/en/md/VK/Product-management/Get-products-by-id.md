@@ -25,14 +25,12 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- ProductsArray = New Array;
+ProductsArray = New Array;
  ProductsArray.Add("8656033");
  ProductsArray.Add("8656034");
  
  Response = OPI_VK.GetProductsByID(ProductsArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "items": [
  {

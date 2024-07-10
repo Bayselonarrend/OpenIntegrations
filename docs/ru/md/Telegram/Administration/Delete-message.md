@@ -26,7 +26,7 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  Токен        = "6129457865:AAFyzNYOAFbu...";
+Токен        = "6129457865:AAFyzNYOAFbu...";
   IDЧата       = "@testsichee";
   IDСообщения  = "5385";
   
@@ -42,7 +42,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": true
 }

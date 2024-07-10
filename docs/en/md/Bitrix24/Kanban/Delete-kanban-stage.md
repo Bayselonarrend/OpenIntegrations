@@ -27,7 +27,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- StageID = "126";
+StageID = "126";
  
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -51,7 +51,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "result": true,
  "time": {
  "start": 1720600367.83205,

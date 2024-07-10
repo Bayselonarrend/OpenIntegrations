@@ -25,11 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- 
- Response = OPI_Slack.GetWorkspaceList(Token); //Map
+Response = OPI_Slack.GetWorkspaceList(Token); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -41,7 +38,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "teams": [
  {

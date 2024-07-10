@@ -26,11 +26,9 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Directory = "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4";
+Directory = "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4";
  Response = OPI_GoogleDrive.GetFilesList(Token,, Directory); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- [
+[
  {
  "sha256Checksum": "1a03612de72929ef42a272cb17123871bf9b7723c89f9659765a49f744b6162b",
  "linkShareMetadata": {

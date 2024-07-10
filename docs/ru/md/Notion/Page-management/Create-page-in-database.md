@@ -26,8 +26,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Родитель  = "5dd94c34fab04bff9...";
   Картинка  = Новый Соответствие;
   Картинка.Вставить("Лого", "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg");
@@ -46,7 +45,6 @@ sidebar_position: 2
   
   Ответ = OPI_Notion.СоздатьСтраницуВБазу(Токен, База, Данные);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -58,7 +56,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "03fd3bd2-6dd1-4ca2-bf85-9233748a745f",
   "public_url": null,
   "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",

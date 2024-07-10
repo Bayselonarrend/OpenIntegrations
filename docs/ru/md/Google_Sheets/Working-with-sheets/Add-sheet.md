@@ -26,13 +26,11 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Книга        = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+Книга        = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
   Наименование = "Тестовый лист";
   
   Ответ = OPI_GoogleSheets.ДобавитьЛист(Токен, Книга, Наименование); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                        //JSON строка
-  
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "replies": [
   {

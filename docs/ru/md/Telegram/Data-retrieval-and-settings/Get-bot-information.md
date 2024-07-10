@@ -24,7 +24,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Токен       = "6129457865:AAFyzNYOAFbu...";
+Токен       = "6129457865:AAFyzNYOAFbu...";
   Результат   = OPI_Telegram.ПолучитьИнформациюБота(Токен);
 ```
 	
@@ -37,7 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": {
   "id": 6129457865,

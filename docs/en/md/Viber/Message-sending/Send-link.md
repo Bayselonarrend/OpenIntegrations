@@ -27,13 +27,11 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- 
- BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
+BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
  UserID = "d3jxe1111111111jYGgZg==";
  
  Response = OPI_Viber.SendLink(BotToken, "https://github.com/Bayselonarrend", UserID, False); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
- {
+{
  "billing_status": 1,
  "chat_hostname": "SN-CHAT-15_",
  "message_token": 5925752472607291800,

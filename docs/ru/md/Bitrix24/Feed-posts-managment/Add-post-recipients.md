@@ -30,7 +30,7 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  Видимость = "UA";
+Видимость = "UA";
   IDНовости = "124";
   URL       = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
@@ -52,7 +52,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1718473318.17435,

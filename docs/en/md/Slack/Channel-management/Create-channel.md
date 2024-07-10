@@ -26,12 +26,10 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Name = "testcov" + String(New UUID);
+Name = "testcov" + String(New UUID);
  
  Response = OPI_Slack.CreateChannel(Token, Name, False); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -43,7 +41,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "channel": {
  "id": "C070VPMKN8J",

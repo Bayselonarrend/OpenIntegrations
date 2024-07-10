@@ -25,10 +25,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.DeleteProductPropertyVariant(980 Parameters);
+Response = OPI_VK.DeleteProductPropertyVariant(980 Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "response": 1
  }
 ```

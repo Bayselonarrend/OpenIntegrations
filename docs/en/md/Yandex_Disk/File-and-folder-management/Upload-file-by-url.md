@@ -26,14 +26,12 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
+Token = "y0_AgAAAABdylaOAA...";
  Path = "/Alpaca.png";
  Address = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
  
  Response = OPI_YandexDisk.UploadFileByURL(Token, Path, Address); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 11
 ```
 
 ```json title="Result"
- {
+{
  "templated": false,
  "method": "GET",
  "href": "https://cloud-api.yandex.net/v1/disk/operations/b78a7ef2dd49971aa22e5e72f2e615db885da9947d7c61b2822de23a99e855a1"

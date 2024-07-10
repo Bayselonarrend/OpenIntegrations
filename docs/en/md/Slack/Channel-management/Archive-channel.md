@@ -25,13 +25,10 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- 
- Channel = "C070VPMKN8J";
+Channel = "C070VPMKN8J";
  
  Response = OPI_Slack.ArchiveChannel(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -43,7 +40,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "ok": true
  }
 ```

@@ -27,13 +27,11 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Channel = "C06UFNUTKUL";
+Channel = "C06UFNUTKUL";
  Timestamp = "1714146538.221929";
  
  Response = OPI_Slack.DeleteMessage(Token, Channel, Timestamp); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "channel": "C06UFNUTKUL",
  "ts": "1714146538.221929"

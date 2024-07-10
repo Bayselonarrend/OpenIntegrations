@@ -27,7 +27,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
+Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  Icon = "5357419403325481346";
  Name = "TestTopic " + String(New UUID);
@@ -44,7 +44,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "result": {
  "message_thread_id": 2457,

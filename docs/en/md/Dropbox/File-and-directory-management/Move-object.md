@@ -26,7 +26,7 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
- OriginalPath = "/New/pic.png";
+OriginalPath = "/New/pic.png";
  TargetPath = "/pic.png";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  
@@ -42,7 +42,7 @@ sidebar_position: 9
 ```
 
 ```json title="Result"
- {
+{
  "metadata": {
  ".tag": "file",
  "name": "pic.png",

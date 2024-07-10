@@ -30,7 +30,7 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
- Text = "Comment for post";
+Text = "Comment for post";
  PostID = "260";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -53,7 +53,7 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
- {
+{
  "result": 168,
  "time": {
  "start": 1720186639.67208,

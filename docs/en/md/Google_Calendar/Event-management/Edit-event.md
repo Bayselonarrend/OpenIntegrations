@@ -27,13 +27,11 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- 
- EventMap = New Map;
+EventMap = New Map;
  EventMap.Insert("Description", "Test event description (change.)");
  
  Response = OPI_GoogleCalendar.EditEvent(Token, "55868c32be16935f0...", EventMap, "j4nonfcc0m2...");
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
- {
+{
  "eventType": "default",
  "attachments": [
  {

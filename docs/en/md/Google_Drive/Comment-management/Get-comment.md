@@ -26,13 +26,11 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- AndДFile = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
+AndДFile = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
  CommentID = AAABI3NNNAY;
  
  Response = OPI_GoogleDrive.GetComment(Token, AndДFile, CommentID); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "content": "NewComment",
  "htmlContent": "NewComment",
  "author": {

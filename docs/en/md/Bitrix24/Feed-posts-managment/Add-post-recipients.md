@@ -30,7 +30,7 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
 
 
 ```bsl title="Code example"
- Visibility = "UA";
+Visibility = "UA";
  PostID = "124";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -52,7 +52,7 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
- {
+{
  "result": true,
  "time": {
  "start": 1718473318.17435,

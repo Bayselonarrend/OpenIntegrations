@@ -26,10 +26,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.PauseAdvertising(1234567890, 1029701085, Parameters);
+Response = OPI_VK.PauseAdvertising(1234567890, 1029701085, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -41,7 +39,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "response": [
  {
  "id": 1029701085

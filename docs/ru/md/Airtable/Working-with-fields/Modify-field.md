@@ -29,8 +29,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  База         = "apptm8Xqo7TwMaipQ";
+База         = "apptm8Xqo7TwMaipQ";
   Таблица      = "tbl9G4jVoTJpxYwSY";
   Поле         = "fld3IbFtHZtBHQwsk";
   Наименование = Строка(Новый УникальныйИдентификатор) + "(изм.)";
@@ -38,7 +37,6 @@ sidebar_position: 2
   
   Ответ = OPI_Airtable.ИзменитьПоле(Токен, База, Таблица, Поле, Наименование, Описание); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                            //JSON строка
-  
 ```
 	
 
@@ -50,7 +48,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "type": "number",
   "options": {
   "precision": 0

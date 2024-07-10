@@ -27,14 +27,12 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-  
-  НовоеИмя          = "Обновленный файл.jpeg";
+НовоеИмя          = "Обновленный файл.jpeg";
   КартинкаЗамены    = "C:\OPI\image2.jpg";
   Идентификатор     = "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ";
   
   Ответ = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, КартинкаЗамены, НовоеИмя)  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                           //Строка
-  
 ```
 	
 
@@ -46,7 +44,7 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-  {
+{
   "mimeType": "image/jpeg",
   "name": "Обновленный файл.jpg",
   "id": "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ",

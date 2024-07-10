@@ -30,7 +30,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Name = "New stage";
+Name = "New stage";
  Color = "0026FF";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -57,7 +57,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "result": 132,
  "time": {
  "start": 1720600360.58899,

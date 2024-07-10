@@ -27,7 +27,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  URL           = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL           = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDКомментария = "1718";
   IDЗадачи      = "504";
   
@@ -50,7 +50,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "POST_MESSAGE_HTML": null,
   "ID": "1496",

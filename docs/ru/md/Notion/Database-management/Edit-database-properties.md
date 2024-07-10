@@ -28,8 +28,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   База      = "5dd94c34fab04bff9...";
   Заголовок = "Обновленный заголовок";
   Описание  = "Обновленное описание базы";
@@ -40,7 +39,6 @@ sidebar_position: 3
   
   Ответ = OPI_Notion.ИзменитьСвойстваБазы(Токен, База, Свойства, Заголовок, Описание);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -52,7 +50,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "d42b5700-9325-439e-98ce-252a007f5ed7",
   "public_url": null,
   "url": "https://www.notion.so/048ba0ce4f474e33900540d249b01949",

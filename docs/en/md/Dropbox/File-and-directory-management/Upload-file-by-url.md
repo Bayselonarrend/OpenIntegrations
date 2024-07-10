@@ -26,7 +26,7 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- Path = "/New/url_doc.docx";
+Path = "/New/url_doc.docx";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  URL = "https://openintegrations.dev/test_data/document.docx";
  
@@ -42,7 +42,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  ".tag": "async_job_id",
  "async_job_id": "41d0vPCn2mYAAAAAAAAAAQ"
 }

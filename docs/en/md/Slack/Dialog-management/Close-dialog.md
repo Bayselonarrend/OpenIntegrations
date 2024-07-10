@@ -25,12 +25,10 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Dialog = "D06UAKK1C6R";
+Dialog = "D06UAKK1C6R";
  
  Response = OPI_Slack.CloseDialog(Token, Dialog); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "already_closed": false,
  "no_op": false

@@ -27,14 +27,12 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- 
- NewName = "CopiedFile.jpeg";
+NewName = "CopiedFile.jpeg";
  NewLocation = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
  Identifier = "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk";
  
  Response = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, NewLocation) //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 
@@ -46,7 +44,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "mimeType": "image/jpeg",
  "name": "CopiedFile.jpeg",
  "id": "1uxsMaxL1W5Y7z6-HhjE6QpyDxFPgW4Fy",

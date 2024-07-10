@@ -28,15 +28,13 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- FileName = "megadoc.docx";
+FileName = "megadoc.docx";
  File = New BinaryData("D:\" + FileName);
  Title = "NewFile";
  Channel = "C123456";
  
  Response = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel); //Map
  Response = OPI_Tools.JSONString(Response);//JSON string
- 
 ```
 	
 
@@ -48,7 +46,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "files": [
  {

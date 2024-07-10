@@ -25,12 +25,10 @@ sidebar_position: 9
 
 
 ```bsl title="Пример кода"
-  
-  Канал = "C070VPMKN8J";
+Канал = "C070VPMKN8J";
   
   Ответ = OPI_Slack.ВступитьВКанал(Токен, Канал); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);     //JSON строка
-  
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 9
 ```
 
 ```json title="Результат"
-  {
+{
   "ok": true,
   "channel": {
   "id": "C070VPMKN8J",

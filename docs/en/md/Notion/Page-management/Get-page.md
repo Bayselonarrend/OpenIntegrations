@@ -25,13 +25,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Page = "a574281614174169bf55dbae4...";
  
  Response = OPI_Notion.GetPage(Token, Page);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -43,7 +41,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "request_id": "61eaaa91-41fc-4523-a445-602805afb281",
  "public_url": null,
  "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",

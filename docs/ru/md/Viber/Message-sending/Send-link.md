@@ -27,13 +27,11 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  
-  ТокенБота      = "523b5b25ed27e6ec-111111111111111-2222222222222222";
+ТокенБота      = "523b5b25ed27e6ec-111111111111111-2222222222222222";
   IDПользователя = "d3jxe1111111111jYGgZg==";
   
   Ответ = OPI_Viber.ОтправитьСсылку(ТокенБота, "https://github.com/Bayselonarrend", IDПользователя, Ложь); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                              //JSON строка
-  
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-  {
+{
   "billing_status": 1,
   "chat_hostname": "SN-CHAT-15_",
   "message_token": 5925752472607291800,

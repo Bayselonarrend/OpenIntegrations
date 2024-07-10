@@ -25,10 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Response = OPI_GoogleCalendar.GetEventList(Token, "55868c32be16935f0...");
+Response = OPI_GoogleCalendar.GetEventList(Token, "55868c32be16935f0...");
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- [
+[
  {
  "eventType": "default",
  "attachments": [

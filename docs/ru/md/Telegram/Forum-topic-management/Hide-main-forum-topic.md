@@ -25,7 +25,7 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  Токен       = "6129457865:AAFyzNYOAFbu...";
+Токен       = "6129457865:AAFyzNYOAFbu...";
   Чат         = "-1001971186208";
   
   Результат = OPI_Telegram.СкрытьГлавнуюТемуФорума(Токен, Чат);
@@ -40,7 +40,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": true
 }

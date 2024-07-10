@@ -26,13 +26,11 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  URL       = https://opi.neocities.org/test_data/document.docx;
+URL       = https://opi.neocities.org/test_data/document.docx;
   Заголовок = "Новый файл";
   
   Ответ = OPI_Slack.ДобавитьВнешнийФайл(Токен, URL, Заголовок); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //JSON строка
-  
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-  {
+{
   "ok": true,
   "file": {
   "id": "F070P52CU94",

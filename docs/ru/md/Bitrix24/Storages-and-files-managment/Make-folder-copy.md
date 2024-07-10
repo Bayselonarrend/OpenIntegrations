@@ -27,7 +27,7 @@ sidebar_position: 10
 
 
 ```bsl title="Пример кода"
-  IDПриемника = "2492";
+IDПриемника = "2492";
   IDКаталога  = "2494";
   
   URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
@@ -55,7 +55,7 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": 1732,
   "NAME": "Новый подкаталог 2",

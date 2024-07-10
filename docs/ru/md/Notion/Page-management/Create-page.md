@@ -26,14 +26,12 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Родитель  = "5dd94c34fab04bff9...";
   Заголовок = "Создано из 1С";
   
   Ответ = OPI_Notion.СоздатьСтраницу(Токен, Родитель, Заголовок);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
-  
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "request_id": "f145f634-ea3a-4f74-b079-f365ecbcf583",
   "public_url": null,
   "url": "https://www.notion.so/1-4392f919813c4c8d84017d973bddaabf",

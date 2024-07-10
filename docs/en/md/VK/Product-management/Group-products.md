@@ -26,14 +26,12 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- 
- ProductsArray = New Array;
+ProductsArray = New Array;
  ProductsArray.Add(YellowItemID);
  ProductsArray.Add(RedItemID);
  
  Response = OPI_VK.GroupProducts(ProductsArray,, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "item_group_id": 5957
  }

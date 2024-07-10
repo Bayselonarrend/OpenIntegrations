@@ -32,7 +32,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- EventMap = New Map;
+EventMap = New Map;
  EventMap.Insert("Description", ""); // Event description
  EventMap.Insert("Title", "New event"); // Title events
  EventMap.Insert("Venue", ""); // String description of the venue of the event

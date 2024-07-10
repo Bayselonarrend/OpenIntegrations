@@ -25,10 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_GoogleCalendar.ДобавитьКалендарьВСписок(Токен, "55868c32be16935f0..."); //Соответствие
+Ответ = OPI_GoogleCalendar.ДобавитьКалендарьВСписок(Токен, "55868c32be16935f0..."); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                         //Строка
-  
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  {
+{
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
   "hangoutsMeet"

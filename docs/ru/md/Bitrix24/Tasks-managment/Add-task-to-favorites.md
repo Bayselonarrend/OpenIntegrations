@@ -26,7 +26,7 @@ sidebar_position: 17
 
 
 ```bsl title="Пример кода"
-  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDЗадачи = "168";
   
   Результат = OPI_Bitrix24.ДобавитьЗадачуВИзбранное(URL, IDЗадачи);
@@ -48,7 +48,7 @@ sidebar_position: 17
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1718569733.98858,

@@ -25,10 +25,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_GoogleCalendar.СоздатьКалендарь(Токен, "Тестовый календарь"); //Соответствие
+Ответ = OPI_GoogleCalendar.СоздатьКалендарь(Токен, "Тестовый календарь"); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                               //Строка
-  
 ```
 	
 
@@ -40,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  {
+{
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
   "hangoutsMeet"

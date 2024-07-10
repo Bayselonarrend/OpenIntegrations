@@ -27,7 +27,7 @@ sidebar_position: 20
 
 
 ```bsl title="Code example"
- ArrayOfUsers = New Array;
+ArrayOfUsers = New Array;
  ArrayOfUsers.Add("1");
  ArrayOfUsers.Add("10");
  
@@ -53,7 +53,7 @@ sidebar_position: 20
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "allowedActions": {
  "1": {

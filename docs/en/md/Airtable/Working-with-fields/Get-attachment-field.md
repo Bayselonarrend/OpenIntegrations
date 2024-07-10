@@ -24,12 +24,10 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Name = "Attachment";
+Name = "Attachment";
  
  Response = OPI_Airtable.GetAttachmentField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -41,7 +39,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  "name": "Attachment",
  "type": "multipleAttachments"
  }

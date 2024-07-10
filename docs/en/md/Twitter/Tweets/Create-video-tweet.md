@@ -26,14 +26,12 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- ImageArray = New Array;
+ImageArray = New Array;
  ImageArray.Add("C:\1.mp4");
  ImageArray.Add("C:\2.mp4");
  
  Response = OPI_Twitter.CreateVideoTweet("Nature", ImageArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "data": {
  "text": "Alpaca https://t.co/OodoWT1AAA",
  "id": "1745753004542726629",

@@ -26,13 +26,11 @@ sidebar_position: 13
 
 
 ```bsl title="Code example"
- 
- Name = "testcov" + String(New UUID);
+Name = "testcov" + String(New UUID);
  Channel = "C070VPMKN8J";
  
  Response = OPI_Slack.RenameChannel(Token, Channel, Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 13
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "channel": {
  "id": "C070VPMKN8J",

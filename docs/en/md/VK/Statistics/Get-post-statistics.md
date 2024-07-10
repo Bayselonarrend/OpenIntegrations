@@ -25,14 +25,12 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- ArrayOfPosts = New Array;
+ArrayOfPosts = New Array;
  ArrayOfPosts.Add(214);
  ArrayOfPosts.Add(215);
  
  Response = OPI_VK.GetPostStatistics(ArrayOfPosts, VK_Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -44,7 +42,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- [
+[
  {
  "ad_report": 0,
  "ad_coverage": 0,

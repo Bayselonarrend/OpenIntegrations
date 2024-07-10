@@ -26,7 +26,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
+Token = "6129457865:AAFyzNYOAFbu...";
  ChannelID = "@testsichee";
  MessageID = "4951";
  
@@ -42,7 +42,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
- {
+{
  "ok": true,
  "result": true
 }

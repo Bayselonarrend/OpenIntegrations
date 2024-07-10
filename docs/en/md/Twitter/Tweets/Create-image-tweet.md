@@ -26,14 +26,12 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- ImageArray = New Array;
+ImageArray = New Array;
  ImageArray.Add("C:\logo.png");
  ImageArray.Add("C:\logo_long.png");
  
  Response = OPI_Twitter.CreateImageTweet("Alpaca", ImageArray, Parameters);
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  "data": {
  "text": "Alpaca https://t.co/OodoWT1AAA",
  "id": "1745753004542726629",

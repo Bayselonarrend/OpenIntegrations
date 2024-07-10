@@ -26,11 +26,9 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Имя   = "Описание";
+Имя   = "Описание";
   Ответ = OPI_GoogleDrive.ПолучитьСписокКаталогов(Токен, Имя, Ложь);  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //Строка
-  
 ```
 	
 
@@ -42,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  [
+[
   {
   "linkShareMetadata": {
   "securityUpdateEnabled": true,

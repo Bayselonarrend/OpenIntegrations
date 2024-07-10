@@ -26,7 +26,7 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
+Parameters = GetVKParameters();
  Name = "AlbumFromAutoTest";
  Description = "NewAlbumFromAutoTest";
  
@@ -42,7 +42,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
- {
+{
  "response": {
  "id": 304498513,
  "owner_id": -218861756,

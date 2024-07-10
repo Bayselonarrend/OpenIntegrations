@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  Путь      = "/New/pic.png";
+Путь      = "/New/pic.png";
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
   
@@ -46,7 +46,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "name": "pic.png",
  "path_lower": "/new/pic.png",
  "path_display": "/New/pic.png",

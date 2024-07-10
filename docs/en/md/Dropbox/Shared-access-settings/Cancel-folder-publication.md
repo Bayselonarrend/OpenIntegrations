@@ -25,7 +25,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Folder = "5022319569";
  
  Result = OPI_Dropbox.CancelFolderPublication(Token, Folder);
@@ -48,7 +48,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
- {
+{
  ".tag": "complete"
 }
 ```

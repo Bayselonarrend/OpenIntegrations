@@ -26,7 +26,7 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  Параметры = ПолучитьПараметрыВК();
+Параметры = ПолучитьПараметрыВК();
   URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
   
   Картинка  = "https://openintegrations.dev/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
@@ -47,7 +47,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-    {
+{
  "response": {
   "count": 1,
   "items": [

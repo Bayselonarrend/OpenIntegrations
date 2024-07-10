@@ -26,12 +26,10 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- 
- Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.DownloadFile(Token, Identifier); //Map
  Response = OPI_Tools.JSONString(Response); //String
- 
 ```
 	
 

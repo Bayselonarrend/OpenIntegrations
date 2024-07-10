@@ -26,7 +26,7 @@ sidebar_position: 18
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "168";
  
  Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID);
@@ -48,7 +48,7 @@ sidebar_position: 18
 ```
 
 ```json title="Result"
- {
+{
  "result": true,
  "time": {
  "start": 1718569735.08926,

@@ -26,8 +26,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- ArrayOfSheetNames = New Array;
+ArrayOfSheetNames = New Array;
  ArrayOfSheetNames.Add("Sheet1");
  ArrayOfSheetNames.Add("Sheet2");
  
@@ -35,7 +34,6 @@ sidebar_position: 1
  
  Response = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, ArrayOfSheetNames); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -47,7 +45,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
  "properties": {
  "title": "TestTable",

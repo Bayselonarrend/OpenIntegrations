@@ -27,7 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.GetKanbanStages(URL,, True);
  
@@ -47,7 +47,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "result": {
  "20": {
  "ID": "20",

@@ -27,15 +27,13 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Base = "apptm8Xqo7TwMaipQ";
+Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
  Name = String(New UUID);
  Field = OPI_Airtable.GetNumberField(Name);
  
  Response = OPI_Airtable.CreateField(Token, Base, Table, FieldStructure); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -47,7 +45,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "type": "number",
  "options": {
  "precision": 0

@@ -24,10 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Response = GetAvatarIconList("6129457325:BWDF..."); //Map
+Response = GetAvatarIconList("6129457325:BWDF..."); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
- 
 ```
 	
 
@@ -39,7 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
- {
+{
  "5434144690511290129": "📰",
  "5312536423851630001": "💡",
  "5312016608254762256": "⚡️",

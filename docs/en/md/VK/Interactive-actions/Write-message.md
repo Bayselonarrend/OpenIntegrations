@@ -28,12 +28,10 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- KТ = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb...";
+KТ = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb...";
  Response = OPI_VK.WriteMessage("I am bot, but you - not >:)", 657811122, KТ,, Parameters);
  
  Response = OPI_Tools.JSONString(Response);
- 
 ```
 	
 
@@ -45,7 +43,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
- {
+{
  "response": 7
  }
 ```
