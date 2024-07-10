@@ -24,7 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Response = OPI_Twitter.GetAuthorizationLink(Parameters);
+ 
+ Response = OPI_Twitter.GetAuthorizationLink(Parameters);
 ```
 	
 

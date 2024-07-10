@@ -26,7 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-ArrayOfSheetNames = New Array;
+ 
+ ArrayOfSheetNames = New Array;
  ArrayOfSheetNames.Add("Sheet1");
  ArrayOfSheetNames.Add("Sheet2");
  

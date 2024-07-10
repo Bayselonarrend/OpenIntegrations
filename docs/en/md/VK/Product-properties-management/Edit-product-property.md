@@ -26,7 +26,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Response = OPI_VK.EditProductProperty("Color (change.)", Property, Parameters);
+ 
+ Response = OPI_VK.EditProductProperty("Color (change.)", Property, Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

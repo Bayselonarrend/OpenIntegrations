@@ -33,7 +33,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-Текст     = "Текст новости";
+  Текст     = "Текст новости";
   Заголовок = "Заголовок новости";
   Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";
   Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg";

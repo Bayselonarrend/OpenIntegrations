@@ -25,7 +25,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-ArrayOfUsers = New Array;
+ 
+ ArrayOfUsers = New Array;
  ArrayOfUsers.Add("U123456");
  ArrayOfUsers.Add("U654321");
  

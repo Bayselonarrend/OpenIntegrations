@@ -29,7 +29,8 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-Токен              = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
+  
+  Токен              = "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ";
   Описание           = "Группа картинок";
   СоответствиеФайлов = Новый Соответствие;
   СоответствиеФайлов.Вставить("C:\OPI\alpaca.png"     , "photo");

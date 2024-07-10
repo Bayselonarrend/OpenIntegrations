@@ -26,7 +26,8 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-Книга = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+  
+  Книга = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
   Лист  = "1790807910";
   
   Ответ = OPI_GoogleSheets.УдалитьЛист(Токен, Книга, Лист); //Соответствие

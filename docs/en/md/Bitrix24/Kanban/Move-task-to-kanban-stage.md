@@ -29,7 +29,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-TaskID = "528";
+ TaskID = "528";
  StageID = "126";
  
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";

@@ -27,7 +27,8 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
-Token = "y0_AgAAAABdylaOAA...";
+ 
+ Token = "y0_AgAAAABdylaOAA...";
  Original = "/Alpaca.png";
  Path = "/TestFolder/Alpaca (Moved).png";
  

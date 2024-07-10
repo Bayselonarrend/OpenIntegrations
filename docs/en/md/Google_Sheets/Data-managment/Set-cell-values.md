@@ -28,7 +28,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-ValueMapping = New Map;
+ 
+ ValueMapping = New Map;
  ValueMapping.Insert("A1", "ThisIsA1");
  ValueMapping.Insert("A2", "ThisIsA2");
  ValueMapping.Insert("B2", "ThisIsB2");

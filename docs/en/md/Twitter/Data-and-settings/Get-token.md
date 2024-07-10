@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Response = OPI_Twitter.GetToken(Code, Parameters);
+ 
+ Response = OPI_Twitter.GetToken(Code, Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

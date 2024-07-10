@@ -26,7 +26,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-// The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+ // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
  
  CurrentDate = OPI_Tools.GetCurrentDate();
  Hour = 3600;

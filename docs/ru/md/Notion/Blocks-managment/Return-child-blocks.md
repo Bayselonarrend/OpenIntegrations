@@ -25,7 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
+  
+  Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
   Блок  = "46c1500ed40c4e89ba6a22900...";
   
   Ответ = OPI_Notion.ВернутьДочерниеБлоки(Токен, ИДБлока);

@@ -26,7 +26,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ 
+ Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Sheet = "1790807910";
  
  Response = OPI_GoogleSheets.DeleteSheet(Token, Spreadsheet, Sheet); //Map

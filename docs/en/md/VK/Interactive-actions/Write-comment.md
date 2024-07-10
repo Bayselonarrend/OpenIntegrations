@@ -27,7 +27,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Response = OPI_VK.WriteComment(221, -218861756, "Hello", Parameters);
+ 
+ Response = OPI_VK.WriteComment(221, -218861756, "Hello", Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

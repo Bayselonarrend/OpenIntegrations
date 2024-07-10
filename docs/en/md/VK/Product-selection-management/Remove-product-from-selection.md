@@ -26,7 +26,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-Response = OPI_VK.RemoveProductFromSelection(8656559, 40, Parameters);
+ 
+ Response = OPI_VK.RemoveProductFromSelection(8656559, 40, Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

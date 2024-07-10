@@ -26,7 +26,8 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+  
+  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Родитель  = "5dd94c34fab04bff9...";
   Картинка  = Новый Соответствие;
   Картинка.Вставить("Лого", "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg");

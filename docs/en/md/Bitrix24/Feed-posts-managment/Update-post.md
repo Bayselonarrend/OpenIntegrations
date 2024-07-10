@@ -33,7 +33,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
-Text = "New post text";
+ Text = "New post text";
  Title = "New post title";
  Image1 = "https://openintegrations.dev/test_data/picture.jpg";
  PostID = "124";

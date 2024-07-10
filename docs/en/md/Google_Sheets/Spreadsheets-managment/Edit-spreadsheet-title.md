@@ -26,7 +26,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+ 
+ Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  Name = "Test table (changed.)";
  
  Response = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name); //Map
