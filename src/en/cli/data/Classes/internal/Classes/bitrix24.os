@@ -1278,6 +1278,303 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTasksChecklistElement";
+    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Adds new element of tasks checklist";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTasksChecklistElement";
+    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTasksChecklistElement";
+    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Text (title) of checklist element";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTasksChecklistElement";
+    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--complete";
+    NewLine.Описание    = "Mark as completed (optional, def. val. - False)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTasksChecklistElement";
+    NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTasksChecklistElement";
+    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Updates text of element of tasks checklist";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTasksChecklistElement";
+    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTasksChecklistElement";
+    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--element";
+    NewLine.Описание    = "Checklist element ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTasksChecklistElement";
+    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Text (title) of checklist element";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTasksChecklistElement";
+    NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksChecklistElement";
+    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Deletes element from tasks checklist";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksChecklistElement";
+    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksChecklistElement";
+    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--element";
+    NewLine.Описание    = "ID of deleted element";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTasksChecklistElement";
+    NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksChecklist";
+    NewLine.МетодПоиска = "GETTASKSCHECKLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Gets the list of elements on the task checklist";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksChecklist";
+    NewLine.МетодПоиска = "GETTASKSCHECKLIST";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksChecklist";
+    NewLine.МетодПоиска = "GETTASKSCHECKLIST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksChecklistElement";
+    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Gets tasks checklist element by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksChecklistElement";
+    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksChecklistElement";
+    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--element";
+    NewLine.Описание    = "Element ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTasksChecklistElement";
+    NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CompleteTasksChecklistElement";
+    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Mark an element as completed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CompleteTasksChecklistElement";
+    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CompleteTasksChecklistElement";
+    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--element";
+    NewLine.Описание    = "Element ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CompleteTasksChecklistElement";
+    NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenewTasksChecklistElement";
+    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Unmark an element as completed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenewTasksChecklistElement";
+    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenewTasksChecklistElement";
+    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--element";
+    NewLine.Описание    = "Element ID";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "RenewTasksChecklistElement";
+    NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskFieldsStructure";
     NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
     NewLine.Параметр    = "--url";
@@ -1682,6 +1979,77 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddKanbanStage";
     NewLine.МетодПоиска = "ADDKANBANSTAGE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateKanbansStage";
+    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Kanban";
+    NewLine.ОписаниеМетода   = "Changes the properties of the existing kanban or My plan stage";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateKanbansStage";
+    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "New stages name";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateKanbansStage";
+    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
+    NewLine.Параметр    = "--stage";
+    NewLine.Описание    = "Stage ID for change";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateKanbansStage";
+    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
+    NewLine.Параметр    = "--color";
+    NewLine.Описание    = "HEX of new stage color (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateKanbansStage";
+    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
+    NewLine.Параметр    = "--prevstage";
+    NewLine.Описание    = "Stage ID, after which the selected stage should be inserted (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateKanbansStage";
+    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
+    NewLine.Параметр    = "--admin";
+    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - False)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateKanbansStage";
+    NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";

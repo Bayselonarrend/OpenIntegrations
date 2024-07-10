@@ -129,6 +129,9 @@ EndFunction
 // Server time
 // Get current server time
 // 
+// Note
+// Method at API documentation: [server_time](@dev.1c-bitrix.ru/rest_help/general/server_time.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Token - String - Access token, when not-webhook method used - token
@@ -150,6 +153,9 @@ EndFunction
 
 // Create post
 // Create a new post at news feed
+// 
+// Note
+// Method at API documentation: [log.blogpost.add](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_add.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -201,6 +207,9 @@ EndFunction
 // Update post
 // Change post data
 // 
+// Note
+// Method at API documentation: [log.blogpost.update](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // PostID - String, Number - Post ID - postid
@@ -249,6 +258,9 @@ EndFunction
 // Delete post
 // Remove post from a news feed
 // 
+// Note
+// Method at API documentation: [log.blogpost.delete](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_delete.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Id of post to remove - postid
@@ -270,6 +282,9 @@ EndFunction
 // Get list of important post viewers
 // Return list of important post viewers ids
 // 
+// Note
+// Method at API documentation: [log.blogpost.getusers.important](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_getusers_important.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Id of important post - postid
@@ -290,6 +305,9 @@ EndFunction
 
 // Get posts
 // Gen post or array of post with ID or rights selection
+// 
+// Note
+// Method at API documentation: [log.blogpost.get](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_get.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
@@ -315,6 +333,9 @@ EndFunction
 // Add comment to post
 // Adds a comment to the post
 // 
+// Note
+// Method at API documentation: [log.blogcomment.add](@dev.1c-bitrix.ru/rest_help/log/log_blogcomment_add.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Post ID - postid
@@ -338,6 +359,9 @@ EndFunction
 
 // Add new recipients to a post
 // Adds new groups or users to the recipients
+// 
+// Note
+// Method at API documentation: [log.blogpost.share](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_share.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -827,6 +851,185 @@ Function DeleteTasksDependencies(Val URL, Val FromID, Val DestinationID, Val Lin
      
 EndFunction
 
+// Add tasks checklist element
+// Adds new element of tasks checklist
+// 
+// Note
+// Method at API documentation: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Text - String - Text (title) of checklist element - text
+// Completed - Boolean - Mark as completed - complete
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AddTasksChecklistElement(Val URL, Val TaskID, Val Text, Val Completed = False, Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.checklistitem.add");
+    Fields = New Structure;
+    
+    MakeBoolean(Completed);
+    
+    OPI_Tools.AddField("TITLE" , Text , "String", Fields);
+    OPI_Tools.AddField("IS_COMPLETE", Completed, "String", Fields);
+   
+    OPI_Tools.AddField("TASKID", TaskID, "String" , Parameters);
+    OPI_Tools.AddField("FIELDS", Fields , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+     
+EndFunction
+
+// Update tasks checklist element
+// Updates text of element of tasks checklist
+// 
+// Note
+// Method at API documentation: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// ElementID - Number, String - Checklist element ID - element
+// Text - String - Text (title) of checklist element - text
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Text, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.checklistitem.update");
+    Fields = New Structure;
+    
+    OPI_Tools.AddField("TITLE", Text, "String", Fields);
+   
+    OPI_Tools.AddField("TASKID", TaskID , "String" , Parameters);
+    OPI_Tools.AddField("ITEMID", ElementID, "String" , Parameters);
+    OPI_Tools.AddField("FIELDS", Fields , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+     
+EndFunction
+   
+// Delete tasks checklist element
+// Deletes element from tasks checklist
+// 
+// Note
+// Method at API documentation: [task.checklistitem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/delete.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// ElementID - Number, String - ID of deleted element - element
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Token = "") Export
+
+    Response = ChecklistElementManagment(URL, TaskID, ElementID, "task.checklistitem.delete", Token);
+    
+    Return Response;
+    
+EndFunction
+
+// Get tasks checklist
+// Gets the list of elements on the task checklist
+// 
+// Note
+// Method at API documentation: [task.checklistitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/getlist.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTasksChecklist(Val URL, Val TaskID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.checklistitem.getlist");
+    
+    OPI_Tools.AddField("TASKID", TaskID , "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get tasks checklist element
+// Gets tasks checklist element by ID
+// 
+// Note
+// Method at API documentation: [task.checklistitem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/get.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// ElementID - Number, String - Element ID - element
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Token = "") Export
+    
+    Response = ChecklistElementManagment(URL, TaskID, ElementID, "task.checklistitem.get", Token);
+    
+    Return Response;
+    
+EndFunction
+
+// Complete tasks checklist element
+// Mark an element as completed
+// 
+// Note
+// Method at API documentation: [task.checklistitem.complete](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/complete.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// ElementID - Number, String - Element ID - element
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CompleteTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Token = "") Export
+    
+    Response = ChecklistElementManagment(URL, TaskID, ElementID, "task.checklistitem.complete", Token);
+    
+    Return Response;
+    
+EndFunction
+
+// Renew tasks checklist element
+// Unmark an element as completed 
+// 
+// Note
+// Method at API documentation: [task.checklistitem.renew](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/renew.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - Number, String - Task ID - task
+// ElementID - Number, String - Element ID - element
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RenewTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Token = "") Export
+    
+    Response = ChecklistElementManagment(URL, TaskID, ElementID, "task.checklistitem.renew", Token);
+    
+    Return Response;
+    
+EndFunction
+
 // Get task fields structure
 // Gets a structure with a description of the fields for creating a task
 // 
@@ -1123,6 +1326,9 @@ EndFunction
 // Add kanban stage
 // Add new stage of kanban or My Plan
 // 
+// Note
+// Method at API documentation: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Name - String - New stage name - title
@@ -1145,11 +1351,13 @@ Function AddKanbanStage(Val URL
     Parameters = NormalizeAuth(URL, Token, "task.stages.add");
     Fields = New Structure;
     
+    MakeBoolean(AsAdmin);
+    
     OPI_Tools.AddField("TITLE" , Name , "String", Fields);
     OPI_Tools.AddField("COLOR" , Color , "String", Fields);
     OPI_Tools.AddField("AFTER_ID" , PrevStageID , "String", Fields);
     OPI_Tools.AddField("ENTITY_ID", EntityID , "String", Fields);
-    OPI_Tools.AddField("isAdmin" , AsAdmin, "Boolean", Fields);
+    OPI_Tools.AddField("isAdmin" , AsAdmin, "String", Fields);
     
     Parameters.Insert("fields", Fields);
     
@@ -1159,8 +1367,53 @@ Function AddKanbanStage(Val URL
     
 EndFunction
 
+// Change kanban stage
+// Changes the properties of the existing kanban or My plan stage
+// 
+// Note
+// Method at API documentation: [task.stages.update](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_update.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Name - String - New stages name - title
+// StageID - String, Number - Stage ID for change - stage
+// Color - String - HEX of new stage color - color
+// PrevStageID - String, Number - Stage ID, after which the selected stage should be inserted - prevstage
+// AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateKanbansStage(Val URL
+    , Val Name
+    , Val StageID
+    , Val Color = ""
+    , Val PrevStageID = 0
+    , Val AsAdmin = False
+    , Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.stages.update");
+    Fields = New Structure;
+    
+    OPI_Tools.AddField("TITLE" , Name , "String", Fields);
+    OPI_Tools.AddField("COLOR" , Color , "String", Fields);
+    OPI_Tools.AddField("AFTER_ID" , PrevStageID , "String", Fields);
+    OPI_Tools.AddField("isAdmin" , AsAdmin, "Boolean", Fields);
+    
+    OPI_Tools.AddField("id" , StageID, "String" , Parameters);
+    OPI_Tools.AddField("fields", Fields , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // ID of the stage to be deleted
 // Removes a kanban (My Plan) stage, provided there are no tasks in it
+// 
+// Note
+// Method at API documentation: [task.stages.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_delete.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1174,8 +1427,10 @@ Function DeleteKanbanStage(Val URL, Val StageID, Val AsAdmin = False, Val Token 
     
     Parameters = NormalizeAuth(URL, Token, "task.stages.delete");
     
+    MakeBoolean(AsAdmin);
+    
     OPI_Tools.AddField("id" , StageID , "String", Parameters);
-    OPI_Tools.AddField("isAdmin", AsAdmin, "Boolean", Parameters);
+    OPI_Tools.AddField("isAdmin", AsAdmin, "String", Parameters);
         
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -1185,6 +1440,9 @@ EndFunction
 
 // Get kanban stages
 // Get kanban (My Plan) stages info
+// 
+// Note
+// Method at API documentation: [task.stages.get](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_get.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1199,8 +1457,10 @@ Function GetKanbanStages(Val URL, Val EntityID = 0, Val AsAdmin = False, Val Tok
     EntityID = OPI_Tools.NumberToString(EntityID);
     Parameters = NormalizeAuth(URL, Token, "task.stages.get");
     
+    MakeBoolean(AsAdmin);
+    
     OPI_Tools.AddField("entityId", EntityID , "String", Parameters);
-    OPI_Tools.AddField("isAdmin" , AsAdmin, "Boolean", Parameters);
+    OPI_Tools.AddField("isAdmin" , AsAdmin, "String", Parameters);
         
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -1210,6 +1470,9 @@ EndFunction
 
 // Move task to kanban stage
 // Move task to another kanban stage
+// 
+// Note
+// Method at API documentation: [task.stages.movetask](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_movetask.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1318,7 +1581,7 @@ EndFunction
 // Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
-// HTTPResponse - Rename storage
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export
 	
 	Parameters = NormalizeAuth(URL, Token, "disk.storage.rename");
@@ -1879,6 +2142,13 @@ EndFunction
 
 #Region Private
 
+Procedure MakeBoolean(Value)
+
+    OPI_TypeConversion.GetBoolean(Value);
+    Value = ?(Value, "Y", "N");
+    
+EndProcedure
+
 Function NormalizeAuth(URL, Val Token, Val Method = "")
     
     OPI_TypeConversion.GetLine(URL);
@@ -1948,13 +2218,6 @@ Function NormalizeFiles(Val Files)
     
 EndFunction
 
-Procedure MakeBoolean(Value)
-
-    OPI_TypeConversion.GetBoolean(Value);
-    Value = ?(Value, "Y", "N");
-    
-EndProcedure
-
 Function ManageTask(Val URL, Val TaskID, Val Method, Val Token = "")
     
     Parameters = NormalizeAuth(URL, Token, Method);
@@ -1974,6 +2237,19 @@ Function FileManagement(Val URL, Val FileID, Val Method, Val Token = "")
     Response = OPI_Tools.Post(URL, Parameters);
     
     Return Response;	 
+    
+EndFunction
+
+Function ChecklistElementManagment(Val URL, Val TaskID, Val ElementID, Val Method, Val Token = "") 
+    
+    Parameters = NormalizeAuth(URL, Token, Method);
+    
+    OPI_Tools.AddField("TASKID", TaskID , "String", Parameters);
+    OPI_Tools.AddField("ITEMID", ElementID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
     
 EndFunction
 
