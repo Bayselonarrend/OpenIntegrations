@@ -26,7 +26,7 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-Token = "6129457865:AAFyzNYOAFbu...";
+ Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  Topic = "2673";
  

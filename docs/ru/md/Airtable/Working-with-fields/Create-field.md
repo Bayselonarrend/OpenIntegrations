@@ -27,7 +27,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-База         = "apptm8Xqo7TwMaipQ";
+  
+  База         = "apptm8Xqo7TwMaipQ";
   Таблица      = "tbl9G4jVoTJpxYwSY";
   Имя          = Строка(Новый УникальныйИдентификатор);
   Поле         = OPI_Airtable.ПолучитьПолеНомера(Имя);

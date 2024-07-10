@@ -27,7 +27,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+  
+  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Родитель  = "5dd94c34fab04bff9...";
   Заголовок = "Эта база была создана из 1С";
   

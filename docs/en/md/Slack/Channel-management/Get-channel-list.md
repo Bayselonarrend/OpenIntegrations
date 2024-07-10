@@ -26,7 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-ExcludeArchived = True;
+ 
+ ExcludeArchived = True;
  
  Response = OPI_Slack.GetChannelList(Token, ExcludeArchived); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string

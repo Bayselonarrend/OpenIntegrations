@@ -26,7 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Response = OPI_VK.CreateAdvertisingCampaign(1234567890, "New ads campaign", Parameters);
+ 
+ Response = OPI_VK.CreateAdvertisingCampaign(1234567890, "New ads campaign", Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

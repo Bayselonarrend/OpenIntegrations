@@ -26,7 +26,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-Токен       = "6129457865:AAFyzNYOAFbu...";
+  Токен       = "6129457865:AAFyzNYOAFbu...";
   Результат   = OPI_Telegram.ПолучитьОбновления(Токен);
 ```
 	

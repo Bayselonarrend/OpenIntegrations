@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-ArrayOfPosts = New Array;
+ 
+ ArrayOfPosts = New Array;
  ArrayOfPosts.Add(214);
  ArrayOfPosts.Add(215);
  

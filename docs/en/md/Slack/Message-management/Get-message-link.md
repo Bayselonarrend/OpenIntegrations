@@ -26,7 +26,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-Channel = "C070VPMKN8J";
+ 
+ Channel = "C070VPMKN8J";
  Timestamp = "1714146538.221929";
  
  Response = OPI_Slack.GetMessageLink(Token, Channel, Timestamp); //Map

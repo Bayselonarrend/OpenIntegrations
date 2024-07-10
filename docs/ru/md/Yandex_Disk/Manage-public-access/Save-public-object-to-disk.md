@@ -27,7 +27,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-Токен = "y0_AgAAAABdylaOAA...";
+  
+  Токен = "y0_AgAAAABdylaOAA...";
   URL   = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
   
   Ответ = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);   //Соответствие

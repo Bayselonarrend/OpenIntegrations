@@ -25,7 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-AndДFile = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
+ 
+ AndДFile = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
  
  Response = OPI_GoogleDrive.GetCommentList(Token, AndДFile); //Map
  Response = OPI_Tools.JSONString(Response); //String

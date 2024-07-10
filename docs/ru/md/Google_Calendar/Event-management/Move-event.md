@@ -27,7 +27,8 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-Ответ = OPI_GoogleCalendar.ПереместитьСобытие(Токен, "bayselonarrend@gmail.com", "55868c32be16935f0...", "j4nonfcc0m2...");  //Соответствие
+  
+  Ответ = OPI_GoogleCalendar.ПереместитьСобытие(Токен, "bayselonarrend@gmail.com", "55868c32be16935f0...", "j4nonfcc0m2...");  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                                                  //Строка
 ```
 	

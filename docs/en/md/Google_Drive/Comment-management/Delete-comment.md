@@ -26,7 +26,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+ 
+ Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.DeleteComment(Token, Identifier, Comment); //Map
 ```

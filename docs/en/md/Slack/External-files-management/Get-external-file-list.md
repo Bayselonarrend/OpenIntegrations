@@ -26,7 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Channel = "C070VPMKN8J";
+ 
+ Channel = "C070VPMKN8J";
  
  Response = OPI_Slack.GetExternalFileList(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string

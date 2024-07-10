@@ -26,7 +26,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-ClientID = "local.6667fc928a50a9.70414732";
+ ClientID = "local.6667fc928a50a9.70414732";
  ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
  Refresh = "a95e9b66006e9f06006b12e400000001000...";
  

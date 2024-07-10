@@ -29,7 +29,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-IDНовости = "122";
+  IDНовости = "122";
   URL       = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
   Результат = OPI_Bitrix24.УдалитьНовость(URL, IDНовости);

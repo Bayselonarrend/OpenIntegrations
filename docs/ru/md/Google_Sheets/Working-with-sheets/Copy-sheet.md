@@ -27,7 +27,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-Откуда = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+  
+  Откуда = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
   Куда   = "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s";
   Лист   = "25093199";
   

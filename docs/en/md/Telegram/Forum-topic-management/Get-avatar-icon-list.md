@@ -24,7 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Response = GetAvatarIconList("6129457325:BWDF..."); //Map
+ 
+ Response = GetAvatarIconList("6129457325:BWDF..."); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
 	

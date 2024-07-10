@@ -27,7 +27,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-CellsArray = New Array;
+ 
+ CellsArray = New Array;
  CellsArray.Add("B2");
  CellsArray.Add("A3");
  CellsArray.Add("B4");

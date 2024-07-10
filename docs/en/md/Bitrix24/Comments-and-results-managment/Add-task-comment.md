@@ -27,7 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "504";
  
  Text = "Task impossible, let's split up";

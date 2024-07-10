@@ -28,7 +28,7 @@ Method at API documentation: [server_time](https://dev.1c-bitrix.ru/rest_help/ge
 
 
 ```bsl title="Code example"
-URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.ServerTime(URL);
  

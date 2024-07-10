@@ -24,7 +24,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-Name = "Date";
+ 
+ Name = "Date";
  
  Response = OPI_Airtable.GetDateField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string

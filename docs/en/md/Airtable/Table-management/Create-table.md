@@ -28,7 +28,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Base = "apptm8Xqo7TwMaipQ";
+ 
+ Base = "apptm8Xqo7TwMaipQ";
  TableName = "TestTable2";
  Description = "NewTable";
  
