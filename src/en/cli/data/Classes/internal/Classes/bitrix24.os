@@ -1695,7 +1695,7 @@
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Область     = "Kanban";
-    NewLine.ОписаниеМетода   = "Removes a kanban stage, provided there are no tasks in it";
+    NewLine.ОписаниеМетода   = "Removes a kanban (My Plan) stage, provided there are no tasks in it";
 
 
     NewLine = CompositionTable.Add();
@@ -1723,6 +1723,108 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteKanbanStage";
     NewLine.МетодПоиска = "DELETEKANBANSTAGE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetKanbanStages";
+    NewLine.МетодПоиска = "GETKANBANSTAGES";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Kanban";
+    NewLine.ОписаниеМетода   = "Get kanban (My Plan) stages info";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetKanbanStages";
+    NewLine.МетодПоиска = "GETKANBANSTAGES";
+    NewLine.Параметр    = "--entityid";
+    NewLine.Описание    = "ID of kanban owner (group or user) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetKanbanStages";
+    NewLine.МетодПоиска = "GETKANBANSTAGES";
+    NewLine.Параметр    = "--admin";
+    NewLine.Описание    = "Allows you to get stages without checking permissions (for administrators) (optional, def. val. - False)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetKanbanStages";
+    NewLine.МетодПоиска = "GETKANBANSTAGES";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveTaskToKanbanStage";
+    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Kanban";
+    NewLine.ОписаниеМетода   = "Move task to another kanban stage";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveTaskToKanbanStage";
+    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "ID of task to move";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveTaskToKanbanStage";
+    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
+    NewLine.Параметр    = "--stage";
+    NewLine.Описание    = "Stage ID";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveTaskToKanbanStage";
+    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
+    NewLine.Параметр    = "--before";
+    NewLine.Описание    = "ID of the task to put the selected one in front of (if After not filled) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveTaskToKanbanStage";
+    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
+    NewLine.Параметр    = "--after";
+    NewLine.Описание    = "ID of the task to be followed by the selected (if Prev not filled) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MoveTaskToKanbanStage";
+    NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";

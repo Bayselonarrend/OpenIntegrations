@@ -1160,7 +1160,7 @@ Function AddKanbanStage(Val URL
 EndFunction
 
 // ID of the stage to be deleted
-// Removes a kanban stage, provided there are no tasks in it
+// Removes a kanban (My Plan) stage, provided there are no tasks in it
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1181,6 +1181,74 @@ Function DeleteKanbanStage(Val URL, Val StageID, Val AsAdmin = False, Val Token 
     
     Return Response;
     
+EndFunction
+
+// Get kanban stages
+// Get kanban (My Plan) stages info
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// EntityID - String, Number - ID of kanban owner (group or user) - entityid
+// AsAdmin - Boolean - Allows you to get stages without checking permissions (for administrators) - admin
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetKanbanStages(Val URL, Val EntityID = 0, Val AsAdmin = False, Val Token = "") Export
+    
+    EntityID = OPI_Tools.NumberToString(EntityID);
+    Parameters = NormalizeAuth(URL, Token, "task.stages.get");
+    
+    OPI_Tools.AddField("entityId", EntityID , "String", Parameters);
+    OPI_Tools.AddField("isAdmin" , AsAdmin, "Boolean", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Move task to kanban stage
+// Move task to another kanban stage
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - String, Number - ID of task to move - task
+// StageID - String, Number - Stage ID - stage
+// Prev - String, Number - ID of the task to put the selected one in front of (if After not filled) - before
+// After - String, Number - ID of the task to be followed by the selected (if Prev not filled) - after
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MoveTaskToKanbanStage(Val URL
+    , Val TaskID
+    , Val StageID
+    , Val Prev = 0
+    , Val After = 0
+    , Val Token = "") Export
+    
+    
+    Parameters = NormalizeAuth(URL, Token, "task.stages.movetask");
+    
+    OPI_Tools.AddField("id" , TaskID, "String", Parameters);
+    OPI_Tools.AddField("stageId", StageID, "String", Parameters);
+    
+    If ValueIsFilled(Prev) Then
+        
+        OPI_Tools.AddField("before", Prev, "String", Parameters);
+            
+    Else
+        
+        OPI_TypeConversion.GetLine(After);
+        OPI_Tools.AddField("after", After, "String", Parameters);
+        
+    EndIf;
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+     
 EndFunction
 
 #EndRegion
