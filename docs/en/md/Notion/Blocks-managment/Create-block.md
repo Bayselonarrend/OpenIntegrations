@@ -27,7 +27,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+ 
+ Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
  
  Block = OPI_Notion.ReturnBlock(Token, "ca18df269bd24407852b91c30e..."); //Block as map. Can be changed.

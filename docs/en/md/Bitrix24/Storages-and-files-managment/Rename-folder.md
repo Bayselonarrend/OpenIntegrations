@@ -27,7 +27,7 @@ sidebar_position: 18
 
 
 ```bsl title="Code example"
-Name = "New catalog";
+ Name = "New catalog";
  Filename2 = "New folder 2";
  
  FolderID2 = "2488";

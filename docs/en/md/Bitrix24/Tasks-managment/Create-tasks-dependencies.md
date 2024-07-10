@@ -28,7 +28,7 @@ sidebar_position: 23
 
 
 ```bsl title="Code example"
-FromID = "500";
+ FromID = "500";
  DestinationID = "502";
  LinkType = 0;
  

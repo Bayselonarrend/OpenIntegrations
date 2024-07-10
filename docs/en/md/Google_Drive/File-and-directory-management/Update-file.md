@@ -27,7 +27,8 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-NewName = "Updated file.jpeg";
+ 
+ NewName = "Updated file.jpeg";
  ReplacementImage = "C:\OPI\image2.jpg";
  Identifier = "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ";
  

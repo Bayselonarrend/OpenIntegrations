@@ -27,7 +27,8 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-НовоеИмя          = "Скопированный файл.jpeg";
+  
+  НовоеИмя          = "Скопированный файл.jpeg";
   НовоеРасположение = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
   Идентификатор     = "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk";
   

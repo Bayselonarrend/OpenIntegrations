@@ -28,7 +28,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-FileName = "megadoc.docx";
+ 
+ FileName = "megadoc.docx";
  File = New BinaryData("D:\" + FileName);
  Title = "NewFile";
  Channel = "C123456";

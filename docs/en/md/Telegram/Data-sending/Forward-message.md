@@ -27,7 +27,7 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
-Token = "6129457865:AAFyzNYOAFbu...";
+ Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
  MessageID = "4951";

@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Token = "y0_AgAAAABdylaOAA...";
+ 
+ Token = "y0_AgAAAABdylaOAA...";
  Path = "/TestFolder"
  Response = OPI_YandexDisk.CreateFolder(Token, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String

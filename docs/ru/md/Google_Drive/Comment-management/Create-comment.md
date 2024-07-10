@@ -26,7 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-Идентификатор = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
+  
+  Идентификатор = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
   Комментарий   = "Новый комментарий";
   
   Ответ = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);  //Соответствие

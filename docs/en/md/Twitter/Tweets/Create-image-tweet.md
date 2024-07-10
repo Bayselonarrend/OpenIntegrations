@@ -26,7 +26,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-ImageArray = New Array;
+ 
+ ImageArray = New Array;
  ImageArray.Add("C:\logo.png");
  ImageArray.Add("C:\logo_long.png");
  

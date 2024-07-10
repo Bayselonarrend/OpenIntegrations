@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Token = "y0_AgAAAABdylaOAA...";
+ 
+ Token = "y0_AgAAAABdylaOAA...";
  Path = "/Alpaca.png"
  Response = OPI_YandexDisk.CancelObjectPublication(Token, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String

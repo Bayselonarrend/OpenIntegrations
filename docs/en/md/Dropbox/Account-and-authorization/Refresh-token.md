@@ -26,7 +26,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-AppKey = "oynqxds...";
+ AppKey = "oynqxds...";
  AppSecret = "tk2oewn...";
  RefreshToken = "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV...";
  

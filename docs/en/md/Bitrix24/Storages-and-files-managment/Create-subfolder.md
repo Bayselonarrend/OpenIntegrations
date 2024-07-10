@@ -27,7 +27,7 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
-FolderID = "2490";
+ FolderID = "2490";
  Name = "New subfolder";
  Filename2 = "New subfolder 2";
  

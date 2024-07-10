@@ -26,7 +26,7 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  StorageID = 3;
  Result = OPI_Bitrix24.GetStorageObjects(URL, StorageID);
  

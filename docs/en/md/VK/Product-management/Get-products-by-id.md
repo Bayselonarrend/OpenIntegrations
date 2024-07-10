@@ -25,7 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-ProductsArray = New Array;
+ 
+ ProductsArray = New Array;
  ProductsArray.Add("8656033");
  ProductsArray.Add("8656034");
  

@@ -26,7 +26,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+  
+  Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
   
   Ответ = OPI_GoogleDrive.СкачатьФайл(Токен, Идентификатор);  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                 //Строка

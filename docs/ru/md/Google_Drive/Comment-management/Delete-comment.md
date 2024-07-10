@@ -26,7 +26,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
+  
+  Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
   
   Ответ = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, Комментарий);  //Соответствие
 ```

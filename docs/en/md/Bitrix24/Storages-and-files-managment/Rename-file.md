@@ -27,7 +27,7 @@ sidebar_position: 26
 
 
 ```bsl title="Code example"
-Name = "New file name.jpg";
+ Name = "New file name.jpg";
  Filename2 = "New file name 2.jpg";
  
  FileID2 = "2482";

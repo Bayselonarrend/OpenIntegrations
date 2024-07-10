@@ -25,7 +25,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-URL       = "b24-ar17wx.bitrix24.by";
+  URL       = "b24-ar17wx.bitrix24.by";
   Токен     = "b9df7366006e9f06006b12e400000001000...";
   
   Результат = OPI_Bitrix24.ПолучитьХранилищеПриложения(URL, Токен);

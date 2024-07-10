@@ -25,7 +25,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Response = OPI_VK.DeleteProductProperty(260, Parameters);
+ 
+ Response = OPI_VK.DeleteProductProperty(260, Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

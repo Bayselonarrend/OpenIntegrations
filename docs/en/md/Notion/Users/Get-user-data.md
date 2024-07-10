@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+ 
+ Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  UserID = "ed71865a989146bc86cdwdf24...";
  
  Response = OPI_Notion.GetUserData(Token, UserID);

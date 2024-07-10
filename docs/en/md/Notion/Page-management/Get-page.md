@@ -25,7 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+ 
+ Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Page = "a574281614174169bf55dbae4...";
  
  Response = OPI_Notion.GetPage(Token, Page);

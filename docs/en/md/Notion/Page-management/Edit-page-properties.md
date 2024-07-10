@@ -29,7 +29,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+ 
+ Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Page = "5dd94c34fab04bff9...";
  Icon = "https://opi.neocities.org/img/logo.png";
  Cover = "https://opi.neocities.org/assets/images/logo_long-e69f28017feff1759ffcfe3f4e7bbf2a.png";

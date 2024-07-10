@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Parameters = GetVKParameters();
+ Parameters = GetVKParameters();
  Question = "What's your favorite color?";
  
  OptionArray = New Array;

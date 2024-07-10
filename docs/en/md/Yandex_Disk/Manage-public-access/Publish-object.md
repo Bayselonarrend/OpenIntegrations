@@ -25,7 +25,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Token = "y0_AgAAAABdylaOAA...";
+ 
+ Token = "y0_AgAAAABdylaOAA...";
  Path = "/Alpaca.png"
  Response = OPI_YandexDisk.PublishObject(Token, Path); //Map; Link to file - Response["public_url"]
  Response = OPI_Tools.JSONString(Response); //String

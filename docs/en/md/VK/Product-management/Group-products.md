@@ -26,7 +26,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-ProductsArray = New Array;
+ 
+ ProductsArray = New Array;
  ProductsArray.Add(YellowItemID);
  ProductsArray.Add(RedItemID);
  

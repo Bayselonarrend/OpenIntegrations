@@ -28,7 +28,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-База    = "apptm8Xqo7TwMaipQ";
+  
+  База    = "apptm8Xqo7TwMaipQ";
   Таблица = "tbl9G4jVoTJpxYwSY";
   Запись  = "recV6DxeLQMBNJrUk";
   Коммент = "comL1oGEDJvIQlMs1";

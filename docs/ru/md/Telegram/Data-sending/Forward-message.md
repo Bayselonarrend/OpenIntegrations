@@ -27,7 +27,7 @@ sidebar_position: 11
 
 
 ```bsl title="Пример кода"
-Токен       = "6129457865:AAFyzNYOAFbu...";
+  Токен       = "6129457865:AAFyzNYOAFbu...";
   IDЧата      = "461699897";
   IDКанала    = "@testsichee";
   IDСообщения = "4951";

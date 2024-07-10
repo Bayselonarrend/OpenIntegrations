@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Response = OPI_VK.GetSelectionsByID(Selections, Parameters);
+ 
+ Response = OPI_VK.GetSelectionsByID(Selections, Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

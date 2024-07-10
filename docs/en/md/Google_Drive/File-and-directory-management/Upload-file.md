@@ -26,7 +26,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-Description = New Map;
+ 
+ Description = New Map;
  Description.Insert("MIME", "image/jpeg");
  Description.Insert("Name", "New file.jpg");
  Description.Insert("Description", "This is a new file");

@@ -26,7 +26,8 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
-Channel = "C070VPMKN8J";
+ 
+ Channel = "C070VPMKN8J";
  Topic = "TestTopic";
  
  Response = OPI_Slack.SetChannelTopic(Token, Channel, Topic); //Map

@@ -29,7 +29,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+  
+  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Страница  = "5dd94c34fab04bff9...";
   Иконка    = "https://opi.neocities.org/img/logo.png";
   Обложка   = "https://opi.neocities.org/assets/images/logo_long-e69f28017feff1759ffcfe3f4e7bbf2a.png";

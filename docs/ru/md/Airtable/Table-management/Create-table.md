@@ -28,7 +28,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-База       = "apptm8Xqo7TwMaipQ";
+  
+  База       = "apptm8Xqo7TwMaipQ";
   ИмяТаблицы = "Тестовая таблица 2";
   Описание   = "Новая таблица";
   

@@ -27,7 +27,7 @@ sidebar_position: 25
 
 
 ```bsl title="Code example"
-FolderID = "2492";
+ FolderID = "2492";
  FileID = "2484";
  
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";

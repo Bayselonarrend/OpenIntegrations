@@ -25,7 +25,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-Base = "apptm8Xqo7TwMaipQ";
+ 
+ Base = "apptm8Xqo7TwMaipQ";
  
  Response = OPI_Airtable.GetDatabaseTables(Token, Base); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string

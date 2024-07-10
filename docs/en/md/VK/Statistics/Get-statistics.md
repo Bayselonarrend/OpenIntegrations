@@ -26,7 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-Response = OPI_VK.GetStatistics(CurrentSessionDate() - 60 * 60 * 24, CurrentSessionDate(), Parameters);
+ 
+ Response = OPI_VK.GetStatistics(CurrentSessionDate() - 60 * 60 * 24, CurrentSessionDate(), Parameters);
  Response = OPI_Tools.JSONString(Response);
 ```
 	

@@ -27,7 +27,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Workspace = "wspdf8yl1yZz3PmWZ";
+ 
+ Workspace = "wspdf8yl1yZz3PmWZ";
  Name = "TestDatabase";
  
  FieldArray = New Array;

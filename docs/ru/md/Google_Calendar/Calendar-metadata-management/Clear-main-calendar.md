@@ -24,7 +24,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-Ответ = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
+  
+  Ответ = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
 ```
 	
 

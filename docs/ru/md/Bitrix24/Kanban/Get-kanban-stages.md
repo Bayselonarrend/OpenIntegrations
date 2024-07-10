@@ -27,7 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-URL       = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
   Результат = OPI_Bitrix24.ПолучитьСтадииКанбана(URL, , Истина);
   

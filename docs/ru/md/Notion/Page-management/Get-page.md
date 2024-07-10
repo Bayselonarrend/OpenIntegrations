@@ -25,7 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+  
+  Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
   Страница  = "a574281614174169bf55dbae4...";
   
   Ответ = OPI_Notion.ПолучитьСтраницу(Токен, Страница);

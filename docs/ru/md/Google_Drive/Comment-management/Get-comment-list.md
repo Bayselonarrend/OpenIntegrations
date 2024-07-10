@@ -25,7 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-ИДФайла = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
+  
+  ИДФайла = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
   
   Ответ = OPI_GoogleDrive.ПолучитьСписокКомментариев(Токен, ИДФайла); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //Строка

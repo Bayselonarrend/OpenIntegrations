@@ -27,7 +27,8 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-Token = "y0_AgAAAABdylaOAA...";
+ 
+ Token = "y0_AgAAAABdylaOAA...";
  Path = "/AlpacaInFile.png";
  File = "C:\logo.png";
  

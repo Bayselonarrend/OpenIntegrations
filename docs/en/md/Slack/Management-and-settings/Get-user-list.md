@@ -25,7 +25,9 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Response = OPI_Slack.GetUserList(Token, Cursor); //Map
+ 
+ 
+ Response = OPI_Slack.GetUserList(Token, Cursor); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
 	

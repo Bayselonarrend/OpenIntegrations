@@ -23,7 +23,8 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-Description = New Map;
+ 
+ Description = New Map;
  Description.Insert("MIME", "image/jpeg"); // MIME-type uploading file
  Description.Insert("Name", "New file.jpg"); // File name with extension
  Description.Insert("Description", "This is a new file"); // File description

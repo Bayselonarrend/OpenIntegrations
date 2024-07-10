@@ -24,7 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-ButtonArray = New Array;
+ 
+ ButtonArray = New Array;
  ButtonArray.Add("Button 1");
  ButtonArray.Add("Button 2");
  

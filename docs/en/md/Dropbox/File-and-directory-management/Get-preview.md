@@ -25,7 +25,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+ Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Path = "/New/mydoc.docx";
  
  Result = OPI_Dropbox.GetPreview(Token, Path);
