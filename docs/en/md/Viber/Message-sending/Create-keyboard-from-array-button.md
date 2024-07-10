@@ -20,6 +20,7 @@ sidebar_position: 7
  Returns: Structure - Create a keyboard from an array of buttons:
 
 
+<br/>
 
 
 

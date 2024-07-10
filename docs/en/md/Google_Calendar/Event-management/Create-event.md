@@ -20,6 +20,7 @@ sidebar_position: 4
  
  Returns: String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
 
+<br/>
 
 
 

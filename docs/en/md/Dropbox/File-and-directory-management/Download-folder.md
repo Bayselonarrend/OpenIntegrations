@@ -19,6 +19,7 @@ sidebar_position: 12
  
  Returns: BinaryData - binary data of the zip archive with the contents of the directory
 
+<br/>
 
 
 

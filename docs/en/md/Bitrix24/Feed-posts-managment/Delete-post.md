@@ -20,8 +20,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-
 <br/>
+
 :::tip
 Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_delete.php)
 :::

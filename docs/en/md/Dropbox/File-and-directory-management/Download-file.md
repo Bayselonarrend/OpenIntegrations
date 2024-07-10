@@ -19,6 +19,7 @@ sidebar_position: 11
  
  Returns: BinaryData - binary data of the file
 
+<br/>
 
 
 

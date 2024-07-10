@@ -21,8 +21,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-
 <br/>
+
 :::tip
 Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_share.php)
 :::

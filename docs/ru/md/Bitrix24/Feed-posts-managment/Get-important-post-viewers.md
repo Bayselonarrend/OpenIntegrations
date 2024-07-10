@@ -20,8 +20,8 @@ sidebar_position: 4
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
-
 <br/>
+
 :::tip
 Метод в документации API: [log.blogpost.getusers.important](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_getusers_important.php)
 :::
