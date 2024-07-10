@@ -6,6 +6,11 @@ sidebar_position: 2
  Sends an image to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
+
 ```bsl title="Code example"
-	
  
  ChannelToken = "523b58ba82afffaa-111111111111111-2222222222222222";
  UserID = "tMNGh111111111D+bT4g==";
@@ -28,8 +33,9 @@ sidebar_position: 2
  Response = OPI_Viber.SendImage(ChannelToken, "https://api.athenaeum.digital/logo.png", UserID, True, "Alpaca"); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,14 +43,11 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "chat_hostname": "SN-CHAT-12_",
  "message_token": 5925484936191962157,
  "status_message": "ok",
  "status": 0
  }
-
 ```

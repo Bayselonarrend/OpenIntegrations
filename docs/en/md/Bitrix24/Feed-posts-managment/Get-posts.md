@@ -6,6 +6,11 @@ sidebar_position: 5
  Gen post or array of post with ID or rights selection
 
 
+
+
+<br/>
+
+
 *Function GetPosts(Val URL, Val PostID = "", Val Filter = "UA", Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  PostID = "124";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -30,8 +35,9 @@ sidebar_position: 5
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetPosts(URL, PostID,, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": [
  {
  "ID": "40",
@@ -410,5 +414,4 @@ sidebar_position: 5
  "operating": 0
  }
 }
-
 ```

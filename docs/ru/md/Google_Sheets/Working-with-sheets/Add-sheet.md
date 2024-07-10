@@ -6,6 +6,11 @@ sidebar_position: 1
  Добавляет новый лист в книгу
 
 
+
+
+<br/>
+
+
 *Функция ДобавитьЛист(Знач Токен, Знач Книга, Знач Наименование) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,8 +22,8 @@ sidebar_position: 1
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Книга        = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
   Наименование = "Тестовый лист";
@@ -26,8 +31,9 @@ sidebar_position: 1
   Ответ = OPI_GoogleSheets.ДобавитьЛист(Токен, Книга, Наименование); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                        //JSON строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -35,10 +41,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "replies": [
   {
@@ -57,5 +61,4 @@ sidebar_position: 1
   }
   ]
   }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 5
  Gets the description of a file field
 
 
+
+
+<br/>
+
+
 *Function GetAttachmentField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,16 +20,17 @@ sidebar_position: 5
  
  Returns: Structure - Field description
 
+
 ```bsl title="Code example"
-	
  
  Name = "Attachment";
  
  Response = OPI_Airtable.GetAttachmentField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,12 +38,9 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "name": "Attachment",
  "type": "multipleAttachments"
  }
-
 ```

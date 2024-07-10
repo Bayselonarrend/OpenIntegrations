@@ -6,6 +6,11 @@ sidebar_position: 3
  Копирует лист из одной книги в другую
 
 
+
+
+<br/>
+
+
 *Функция КопироватьЛист(Знач Токен, Знач Откуда, Знач Куда, Знач Лист) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -18,8 +23,8 @@ sidebar_position: 3
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Откуда = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
   Куда   = "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s";
@@ -28,8 +33,9 @@ sidebar_position: 3
   Ответ = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //JSON строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -37,10 +43,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "sheetId": 1790807910,
   "title": "Лист2 (копия)",
   "index": 2,
@@ -50,5 +54,4 @@ sidebar_position: 3
   "columnCount": 26
   }
   }
-
 ```

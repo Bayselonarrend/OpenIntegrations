@@ -6,6 +6,11 @@ sidebar_position: 11
  Sets the channel topic
 
 
+
+
+<br/>
+
+
 *Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 11
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  Topic = "TestTopic";
@@ -26,8 +31,9 @@ sidebar_position: 11
  Response = OPI_Slack.SetChannelTopic(Token, Channel, Topic); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 11
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": {
  "id": "C070VPMKN8J",
@@ -80,5 +84,4 @@ sidebar_position: 11
  "previous_names": []
  }
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 6
  Edits an existing event
 
 
+
+
+<br/>
+
+
 *Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  EventMap = New Map;
  EventMap.Insert("Description", "Test event description (change.)");
@@ -27,8 +32,9 @@ sidebar_position: 6
  Response = OPI_GoogleCalendar.EditEvent(Token, "55868c32be16935f0...", EventMap, "j4nonfcc0m2...");
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "eventType": "default",
  "attachments": [
  {
@@ -85,5 +89,4 @@ sidebar_position: 6
  "etag": "\"3417542724802000\"",
  "kind": "calendar#event"
  }
-
 ```

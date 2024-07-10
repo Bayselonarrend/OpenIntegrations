@@ -6,6 +6,11 @@ sidebar_position: 6
  Deletes a forum thread
 
 
+
+
+<br/>
+
+
 *Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  Topic = "2673";
  
  Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,12 +39,9 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": true
 }
-
 ```

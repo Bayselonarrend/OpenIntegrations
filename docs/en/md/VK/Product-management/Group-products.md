@@ -6,6 +6,11 @@ sidebar_position: 7
  Groups products based on similar sets of properties
 
 
+
+
+<br/>
+
+
 *Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  ProductsArray = New Array;
  ProductsArray.Add(YellowItemID);
@@ -27,8 +32,9 @@ sidebar_position: 7
  Response = OPI_VK.GroupProducts(ProductsArray,, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,13 +42,10 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "item_group_id": 5957
  }
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 7
  Delete message from chat or channel
 
 
+
+
+<br/>
+
+
 *Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "@testsichee";
  MessageID = "5385";
  
  Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,12 +39,9 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": true
 }
-
 ```

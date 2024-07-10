@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets row data of the table by identifier
 
 
+
+
+<br/>
+
+
 *Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -28,8 +33,9 @@ sidebar_position: 2
  Response = OPI_Airtable.GetRecord(Token, Base, Table, Record); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,10 +43,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "id": "recV6DxeLQMBNJrUk",
  "createdTime": "2024-05-10T19:39:51Z",
  "fields": {
@@ -48,5 +52,4 @@ sidebar_position: 2
  "String": "Hello\n"
  }
  }
-
 ```

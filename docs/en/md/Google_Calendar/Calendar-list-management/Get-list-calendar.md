@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets a calendar from the user's list by ID
 
 
+
+
+<br/>
+
+
 *Function GetListCalendar(Val Token, Val Calendar) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.GetListCalendar(Token, "55868c32be16935f0..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "conferenceProperties": {
  "allowedConferenceSolutionTypes": [
  "hangoutsMeet"
@@ -52,5 +56,4 @@ sidebar_position: 3
  "etag": "\"1708423563386000\"",
  "kind": "calendar#calendarListEntry"
  }
-
 ```

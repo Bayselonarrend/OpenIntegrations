@@ -6,6 +6,11 @@ sidebar_position: 11
  Forwards a message between chats or within a chat
 
 
+
+
+<br/>
+
+
 *Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,16 +23,17 @@ sidebar_position: 11
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
  MessageID = "4951";
  
  Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 11
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4649,
@@ -78,5 +82,4 @@ sidebar_position: 11
  "text": "String value"
  }
 }
-
 ```

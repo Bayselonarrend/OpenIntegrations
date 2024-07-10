@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets the token by the code received when authorizing using the link from GetAuthorizationLink
 
 
+
+
+<br/>
+
+
 *Function GetToken(Val Code, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_Twitter.GetToken(Code, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,15 +37,12 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "refresh_token": "TmttM11111111111111111MY2dkNy1EZklLNmxIT1111111111111111xNTg2ODI6MTowOnJ0OjE",
  "access_token": "UTBtWXd11111111111111111111113TkRxWEdxdF9hVlQzOjE3MDUwNTMxNTg2ODE6MTowOmF0OjE",
  "scope": "mute.write tweet.moderate.write block.read follows.read offline.access list.write bookmark.read list.read tweet.write space.read block.write like.write like.read users.read tweet.read bookmark.write mute.read follows.write",
  "expires_in": 7200,
  "token_type": "bearer"
  }
-
 ```

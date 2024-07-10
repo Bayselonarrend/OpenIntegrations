@@ -6,6 +6,11 @@ sidebar_position: 1
  Sets sheet cell values
 
 
+
+
+<br/>
+
+
 *Function SetCellValues(Val Token, Val Spreadsheet, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  ValueMapping = New Map;
  ValueMapping.Insert("A1", "ThisIsA1");
@@ -38,8 +43,9 @@ sidebar_position: 1
  Response = OPI_GoogleSheets.SetCellValues(Token, Spreadsheet, ValueMapping, Sheet); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -47,10 +53,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
  "totalUpdatedRows": 4,
  "totalUpdatedColumns": 2,
@@ -115,5 +119,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

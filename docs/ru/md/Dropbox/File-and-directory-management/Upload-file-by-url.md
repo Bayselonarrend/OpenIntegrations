@@ -6,6 +6,11 @@ sidebar_position: 5
  Загружает файл на облачный диск, получая его по указанному URL
 
 
+
+
+<br/>
+
+
 *Функция ЗагрузитьФайлПоURL(Знач Токен, Знач URLФайла, Знач Путь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,15 +22,16 @@ sidebar_position: 5
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
 
+
 ```bsl title="Пример кода"
-	
   Путь  = "/New/url_doc.docx";
   Токен = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   URL   = "https://openintegrations.dev/test_data/document.docx";
   
   Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -33,12 +39,9 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  ".tag": "async_job_id",
  "async_job_id": "41d0vPCn2mYAAAAAAAAAAQ"
 }
-
 ```

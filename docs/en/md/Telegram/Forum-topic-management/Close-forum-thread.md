@@ -6,6 +6,11 @@ sidebar_position: 4
  Closes the thread for new messages
 
 
+
+
+<br/>
+
+
 *Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,16 +22,17 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  Topic = "2673";
  
  Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
  Result = OPI_Telegram.CloseForumThread(Token, Chat, Topic);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,12 +40,9 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": true
 }
-
 ```

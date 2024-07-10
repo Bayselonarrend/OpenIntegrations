@@ -3,7 +3,12 @@ sidebar_position: 1
 ---
 
 # Get bot information
-Executes the getMe request, returning basic bot information: name, id, ability to add the bot to groups, etc..
+ Executes the /getMe request, returning basic bot information: name, id, ability to add the bot to groups, etc..
+
+
+
+
+<br/>
 
 
 *Function GetBotInformation(Val Token) Export*
@@ -15,12 +20,13 @@ Executes the getMe request, returning basic bot information: name, id, ability t
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  Result = OPI_Telegram.GetBotInformation(Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -28,10 +34,8 @@ Executes the getMe request, returning basic bot information: name, id, ability t
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "id": 6129457865,
@@ -44,5 +48,4 @@ Executes the getMe request, returning basic bot information: name, id, ability t
  "can_connect_to_business": false
  }
 }
-
 ```

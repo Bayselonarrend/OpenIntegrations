@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets the list of comments for a record in the table
 
 
+
+
+<br/>
+
+
 *Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -29,8 +34,9 @@ sidebar_position: 1
  Response = OPI_Airtable.GetComments(Token, Base, Table, Record); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "comments": [
  {
  "id": "comL1oGEDJvIQlMs1",
@@ -57,5 +61,4 @@ sidebar_position: 1
  ],
  "offset": null
  }
-
 ```

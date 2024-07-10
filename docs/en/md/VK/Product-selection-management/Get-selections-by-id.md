@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets the list of selections by array of IDs
 
 
+
+
+<br/>
+
+
 *Function GetSelectionsByID(Val Selections, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.GetSelectionsByID(Selections, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "is_hidden": false,
  "is_main": true,
@@ -111,5 +115,4 @@ sidebar_position: 2
  "id": 38
  }
  ]
-
 ```

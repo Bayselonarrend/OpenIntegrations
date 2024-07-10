@@ -6,6 +6,11 @@ sidebar_position: 4
  Gets a list of advertising category IDs for creating an advertising post
 
 
+
+
+<br/>
+
+
 *Function GetAdvertisingCategoryList(Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,14 +20,15 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.GetAdvertisingCategoryList(Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,10 +36,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "v2": [
  {
@@ -64,5 +68,4 @@ sidebar_position: 4
  ]
  }
  }
-
 ```

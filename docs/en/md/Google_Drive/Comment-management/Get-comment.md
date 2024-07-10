@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets comment by ID
 
 
+
+
+<br/>
+
+
 *Function GetComment(Val Token, Val ObjectID, Val CommentID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  AndДFile = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
  CommentID = AAABI3NNNAY;
@@ -26,8 +31,9 @@ sidebar_position: 2
  Response = OPI_GoogleDrive.GetComment(Token, AndДFile, CommentID); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "content": "NewComment",
  "htmlContent": "NewComment",
  "author": {
@@ -54,5 +58,4 @@ sidebar_position: 2
  "deleted": false,
  "id": "AAABI3NNNAY"
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 3
  Opens a previously closed discussion
 
 
+
+
+<br/>
+
+
 *Function OpenDiscussion(Val DiscussionID, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,13 +21,14 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  DiscussionID = "51206275";
  Result = OPI_VK.OpenDiscussion(DiscussionID, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,11 +36,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
 }
-
 ```

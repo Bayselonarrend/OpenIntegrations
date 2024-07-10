@@ -6,6 +6,11 @@ sidebar_position: 2
  Reposts the record
 
 
+
+
+<br/>
+
+
 *Function MakeRepost(Val PostID, Val WallID = "", Val TargetWall = "", Val Advertising = False, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,14 +24,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.MakeRepost(2571, -218704372,,, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "mail_repost_count": 2,
  "likes_count": 7,
@@ -52,5 +56,4 @@ sidebar_position: 2
  "success": 1
  }
  }
-
 ```

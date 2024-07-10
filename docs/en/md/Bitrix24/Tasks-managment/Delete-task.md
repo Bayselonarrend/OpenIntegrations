@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Delete task
  Delete task by ID
+
+
+
+
+<br/>
 
 
 *Function DeleteTask(Val URL, Val TaskID, Val Token = "") Export*
@@ -17,8 +22,8 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  TaskID = "168";
  
@@ -30,8 +35,9 @@ sidebar_position: 6
  TaskID = "170";
  
  Result = OPI_Bitrix24.DeleteTask(URL, TaskID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "task": true
  },
@@ -57,5 +61,4 @@ sidebar_position: 6
  "operating": 0
  }
 }
-
 ```

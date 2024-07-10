@@ -6,6 +6,11 @@ sidebar_position: 3
  Pauses the display of the advertising post
 
 
+
+
+<br/>
+
+
 *Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.PauseAdvertising(1234567890, 1029701085, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,15 +38,12 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": [
  {
  "id": 1029701085
  }
  ]
  }
-
 ```

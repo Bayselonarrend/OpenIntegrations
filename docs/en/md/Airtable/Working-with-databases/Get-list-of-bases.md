@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets the list of available bases
 
 
+
+
+<br/>
+
+
 *Function GetListOfBases(Val Token, Val Indent = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,15 +21,16 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable 
 
+
 ```bsl title="Code example"
-	
  
  
  Response = OPI_Airtable.GetListOfBases(Token); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "bases": [
  {
  "id": "appGarzKZ0lu3gzoa",
@@ -84,5 +88,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

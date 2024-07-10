@@ -6,6 +6,11 @@ sidebar_position: 5
  Adds a variant for an existing property
 
 
+
+
+<br/>
+
+
 *Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.AddProductPropertyVariant("Red", 260, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,13 +38,10 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "variant_id": 980
  }
  }
-
 ```

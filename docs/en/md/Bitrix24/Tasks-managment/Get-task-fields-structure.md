@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 1
+sidebar_position: 25
 ---
 
 # Get task fields structure
  Gets a structure with a description of the fields for creating a task
+
+
+
+
+<br/>
 
 
 *Function GetTaskFieldsStructure(Val URL, Val Token = "") Export*
@@ -16,8 +21,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.GetTaskFieldsStructure(URL);
@@ -27,8 +32,9 @@ sidebar_position: 1
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetTaskFieldsStructure(URL, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "fields": {
  "ID": {
@@ -420,5 +424,4 @@ sidebar_position: 1
  "operating": 0
  }
 }
-
 ```

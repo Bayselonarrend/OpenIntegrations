@@ -6,6 +6,11 @@ sidebar_position: 1
  Returns the community's order list
 
 
+
+
+<br/>
+
+
 *Function GetOrderList(Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,12 +20,13 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  Result = OPI_VK.GetOrderList(Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -28,10 +34,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "id": 397209,
  "group_id": 218861756,
@@ -218,5 +222,4 @@ sidebar_position: 1
  }
  }
 ]
-
 ```

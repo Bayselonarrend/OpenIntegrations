@@ -6,6 +6,11 @@ sidebar_position: 2
 Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals The user ID from channel information is not suitable for sending messages through the bot - they are different
 
 
+
+
+<br/>
+
+
 *Function GetChannelInformation(Val Token) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,14 +20,15 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_Viber.GetChannelInformation(ChannelToken); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,10 +36,8 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "members": [
  {
  "role": "admin",
@@ -57,5 +61,4 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
  "status_message": "ok",
  "status": 0
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a child page above another parent page
 
 
+
+
+<br/>
+
+
 *Function CreatePage(Val Token, Val Parent, Val Title) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
@@ -27,8 +32,9 @@ sidebar_position: 1
  Response = OPI_Notion.CreatePage(Token, Parent, Title);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "f145f634-ea3a-4f74-b079-f365ecbcf583",
  "public_url": null,
  "url": "https://www.notion.so/1-4392f919813c4c8d84017d973bddaabf",
@@ -88,5 +92,4 @@ sidebar_position: 1
  "id": "4392f919-813c-4c8d-8401-7d973bddaabf",
  "object": "page"
  }
-
 ```

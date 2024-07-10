@@ -6,6 +6,11 @@ sidebar_position: 6
  Gets the total number of chat participants
 
 
+
+
+<br/>
+
+
 *Function GetParticipantCount(Val Token, Val ChatID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChannelID = "@testsichee";
  
  Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,12 +37,9 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": 2
 }
-
 ```

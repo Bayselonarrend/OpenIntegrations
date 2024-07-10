@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a new block based on an existing block
 
 
+
+
+<br/>
+
+
 *Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
@@ -31,8 +36,9 @@ sidebar_position: 1
  Response = OPI_Notion.CreateBlock(Token, Parent, "aa4137d4c8cc445d9f969c3968...");
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -40,10 +46,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "4de46f5b-d38b-4df5-b26e-32127db1096b",
  "block": {},
  "type": "block",
@@ -96,5 +100,4 @@ sidebar_position: 1
  ],
  "object": "list"
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 4
  Deletes an object at the specified path
 
 
+
+
+<br/>
+
+
 *Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,16 +22,17 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  Path = "/Alpaca.png"
  Response = OPI_YandexDisk.DeleteObject(Token, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,9 +40,6 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-<empty string>
-
+ <empty string>
 ```

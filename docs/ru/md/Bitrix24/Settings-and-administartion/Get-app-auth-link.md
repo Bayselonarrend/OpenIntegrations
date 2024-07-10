@@ -6,6 +6,11 @@ sidebar_position: 1
  Формирует ссылку для авторизации через браузер
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьСсылкуАвторизацииПриложения(Знач Домен, Знач ClientID) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,11 +21,15 @@ sidebar_position: 1
   
   Возвращаемое значение:   Строка - URL для перехода в браузере
 
+
 ```bsl title="Пример кода"
+  Домен    = "b24-ar17wx.bitrix24.by";
+  ClientID = "local.6667fc928a50a9.70414732";
+  
+  Результат = OPI_Bitrix24.ПолучитьСсылкуАвторизацииПриложения(Домен, ClientID);
+```
 	
 
-	
-```
 
 ```sh title="Пример команды CLI"
     
@@ -28,9 +37,6 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-"https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
-
+    "https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
 ```

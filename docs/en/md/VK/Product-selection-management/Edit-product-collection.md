@@ -6,6 +6,11 @@ sidebar_position: 4
  Edits the properties of a product selection
 
 
+
+
+<br/>
+
+
 *Function EditProductCollection(Val Name, Val Selection, Val Image = "", Val Main = False, Val Hidden = False, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.EditProductCollection("EditedCollection"
 , 40
@@ -32,8 +37,9 @@ sidebar_position: 4
  
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -41,11 +47,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 6
  Gets a permanent URL to the channel message
 
 
+
+
+<br/>
+
+
 *Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  Timestamp = "1714146538.221929";
@@ -26,8 +31,9 @@ sidebar_position: 6
  Response = OPI_Slack.GetMessageLink(Token, Channel, Timestamp); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,13 +41,10 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "permalink": "https://openintegrationsgroup.slack.com/archives/C06UFNUTKUL/p1714146538221929",
  "channel": "C06UFNUTKUL"
  }
-
 ```

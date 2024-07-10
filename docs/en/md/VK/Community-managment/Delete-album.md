@@ -6,6 +6,11 @@ sidebar_position: 6
  Deletes a previously created album
 
 
+
+
+<br/>
+
+
 *Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  AlbumID = "304549394";
  
  Result = OPI_VK.DeleteAlbum(AlbumID, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,11 +37,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
 }
-
 ```

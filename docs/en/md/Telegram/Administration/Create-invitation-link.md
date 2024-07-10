@@ -6,6 +6,11 @@ sidebar_position: 3
  Creates a link for joining a closed chat
 
 
+
+
+<br/>
+
+
 *Function CreateInvitationLink(Val Token, Val ChatID, Val Title = "", Val ExpirationDate = "", Val UserLimit = 0) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChannelID = "@testsichee";
  Day = 86400;
@@ -31,8 +36,9 @@ sidebar_position: 3
  UnixExpiration = OPI_Tools.UNIXTime(Expiration);
  
  Result = OPI_Telegram.CreateInvitationLink(Token, ChannelID, Title, Expiration, 200);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -40,10 +46,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "invite_link": "https://t.me/+W-9MzjOejStiYzYy",
@@ -61,5 +65,4 @@ sidebar_position: 3
  "is_revoked": false
  }
 }
-
 ```

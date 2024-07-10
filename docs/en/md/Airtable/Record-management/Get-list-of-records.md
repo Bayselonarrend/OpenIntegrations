@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets the list of records of the selected table
 
 
+
+
+<br/>
+
+
 *Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -27,8 +32,9 @@ sidebar_position: 1
  Response = OPI_Airtable.GetListOfRecords(Token, Base, Table, Indent); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "records": [
  {
  "id": "recGyJ0MlN1H3GMuN",
@@ -67,5 +71,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

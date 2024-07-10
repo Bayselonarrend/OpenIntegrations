@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets an array of account calendars
 
 
+
+
+<br/>
+
+
 *Function GetCalendarList(Val Token) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,14 +20,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Array of calendar data mappings
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.GetCalendarList(Token); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,10 +36,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "conferenceProperties": {
  "allowedConferenceSolutionTypes": [
@@ -169,5 +173,4 @@ sidebar_position: 1
  "kind": "calendar#calendarListEntry"
  }
  ]
-
 ```

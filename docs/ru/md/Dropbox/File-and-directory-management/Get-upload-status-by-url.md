@@ -6,6 +6,11 @@ sidebar_position: 6
  Получает статус загрузки файла по URL
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьСтатусЗагрузкиПоURL(Знач Токен, Знач IDРаботы) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,8 +21,8 @@ sidebar_position: 6
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
 
+
 ```bsl title="Пример кода"
-	
   Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   ИДРаботы = "G8YbueOu2nsAAAAAAAAAAQ";
   Статус   = "in_progress";
@@ -31,8 +36,9 @@ sidebar_position: 6
   
   
   КонецЦикла;
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -40,10 +46,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  ".tag": "complete",
  "name": "url_doc.docx",
  "path_lower": "/new/url_doc.docx",
@@ -56,5 +60,4 @@ sidebar_position: 6
  "is_downloadable": true,
  "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
 }
-
 ```

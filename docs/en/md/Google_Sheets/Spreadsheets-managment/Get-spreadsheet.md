@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets information about the spreadsheet by ID
 
 
+
+
+<br/>
+
+
 *Function GetSpreadsheet(Val Token, Val Identifier) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Identifier = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
  
  Response = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,13 +39,11 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
  "properties": {
- "title": "Test table (change.)",
+ "title": "Test table (changed.)",
  "locale": "ru_RU",
  "autoRecalc": "ON_CHANGE",
  "timeZone": "Etc/GMT",
@@ -197,5 +201,4 @@ sidebar_position: 2
  ],
  "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc/edit"
  }
-
 ```

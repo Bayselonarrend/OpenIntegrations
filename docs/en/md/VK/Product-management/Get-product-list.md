@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets the community's product list
 
 
+
+
+<br/>
+
+
 *Function GetProductList(Val Selection = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Array of product maps
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.GetProductList(, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "sku": "12 345",
  "is_main_variant": true,
@@ -342,5 +346,4 @@ sidebar_position: 2
  "availability": 0
  }
  ]
-
 ```

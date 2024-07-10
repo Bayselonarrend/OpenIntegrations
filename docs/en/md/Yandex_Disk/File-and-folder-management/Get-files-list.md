@@ -6,6 +6,11 @@ sidebar_position: 8
 Gets a list of files with or without filtering by type List of available types: audio, backup, book, compressed, data, development, diskimage, document, encoded, executable, flash, font, mage, settings, spreadsheet, text, unknown, video, web
 
 
+
+
+<br/>
+
+
 *Function GetFilesList(Val Token, Val Count = 0, Val OffsetFromStart = 0, Val FilterByType = "", Val SortByDate = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,15 +24,16 @@ Gets a list of files with or without filtering by type List of available types: 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  Response = OPI_YandexDisk.GetFilesList(Token, 2, 1, "image"); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ Gets a list of files with or without filtering by type List of available types: 
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "limit": 2,
  "offset": 1,
  "items": [
@@ -192,5 +196,4 @@ Gets a list of files with or without filtering by type List of available types: 
  }
  ]
  }
-
 ```

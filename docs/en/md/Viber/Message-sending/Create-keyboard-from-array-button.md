@@ -6,6 +6,11 @@ sidebar_position: 7
  Returns a keyboard structure for messages
 
 
+
+
+<br/>
+
+
 *Function CreateKeyboardFromArrayButton(Val ButtonArray, Val ButtonColor = "#2db9b9") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 7
  Returns: Structure - Create a keyboard from an array of buttons:
 
 
+
 ```bsl title="Code example"
-	
  
  ButtonArray = New Array;
  ButtonArray.Add("Button 1");
@@ -28,8 +33,9 @@ sidebar_position: 7
  Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray); //Structure
  JSON = OPI_Tools.JSONString(Keyboard); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,10 +43,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "Buttons": [
  {
  "ActionType": "reply",
@@ -66,5 +70,4 @@ sidebar_position: 7
  ],
  "Type": "keyboard"
  }
-
 ```

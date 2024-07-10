@@ -6,6 +6,11 @@ sidebar_position: 3
  Edits the content of an existing message
 
 
+
+
+<br/>
+
+
 *Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val BlockArray = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  Timestamp = "1714146538.221929";
@@ -29,8 +34,9 @@ sidebar_position: 3
  Response = OPI_Slack.EditMessage(Token, Channel, Timestamp, Text); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": "C06UFNUTKUL",
  "ts": "1714146538.221929",
@@ -85,5 +89,4 @@ sidebar_position: 3
  ]
  }
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 5
  Скачивает файл с серверов Telegram
 
 
+
+
+<br/>
+
+
 *Функция СкачатьФайл(Знач Токен, Знач IDФайла) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,14 +21,15 @@ sidebar_position: 5
   
   Возвращаемое значение:   ДвоичныеДанные - данные файла
 
+
 ```bsl title="Пример кода"
-	
   IDФайла = "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE";
   Токен   = "6129457865:AAFyzNYOAFbu...";
   
   Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -31,9 +37,6 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Результат"
-
 <Двоичные данные файла>
-
 ```

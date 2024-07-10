@@ -6,6 +6,11 @@ sidebar_position: 7
  Gets an array of messages that are replies to the specified
 
 
+
+
+<br/>
+
+
 *Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  Timestamp = "1714146538.221929";
@@ -27,8 +32,9 @@ sidebar_position: 7
  Response = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "messages": [
  {
@@ -88,5 +92,4 @@ sidebar_position: 7
  ],
  "has_more": false
  }
-
 ```

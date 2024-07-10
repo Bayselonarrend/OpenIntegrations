@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets the list of all calendar events
 
 
+
+
+<br/>
+
+
 *Function GetEventList(Val Token, Val Calendar) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Array of event maps
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.GetEventList(Token, "55868c32be16935f0...");
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "eventType": "default",
  "attachments": [
@@ -82,5 +86,4 @@ sidebar_position: 2
  "kind": "calendar#event"
  },
  ]
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 2
  Creates a directory on the disk
 
 
+
+
+<br/>
+
+
 *Function CreateFolder(Val Token, Val Path) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  Path = "/TestFolder"
  Response = OPI_YandexDisk.CreateFolder(Token, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "revision": 1707461457546792,
  "comment_ids": {
  "public_resource": "1573541518:ba32b9efac79ab1b04707a4278a1ff583d7b0403ea306035f1b910e56c6ef3ac",
@@ -58,5 +62,4 @@ sidebar_position: 2
  "sort": ""
  }
  }
-
 ```

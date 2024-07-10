@@ -6,6 +6,11 @@ sidebar_position: 7
  Adds new groups or users to the recipients
 
 
+
+
+<br/>
+
+
 *Function AddPostRecipients(Val URL, Val PostID, Val Visibility, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  Visibility = "UA";
  PostID = "124";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
@@ -31,8 +36,9 @@ sidebar_position: 7
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -40,10 +46,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": true,
  "time": {
  "start": 1718473318.17435,
@@ -56,5 +60,4 @@ sidebar_position: 7
  "operating": 0
  }
 }
-
 ```

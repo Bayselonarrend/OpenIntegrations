@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets the schema of base tables
 
 
+
+
+<br/>
+
+
 *Function GetDatabaseTables(Val Token, Val Base) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  
  Response = OPI_Airtable.GetDatabaseTables(Token, Base); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "tables": [
  {
  "id": "tblqZzW78Rvsdt9gt",
@@ -67,5 +71,4 @@ sidebar_position: 2
  }
  ]
  }
-
 ```

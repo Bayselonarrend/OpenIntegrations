@@ -6,6 +6,11 @@ sidebar_position: 2
  Creates a page in the parent database
 
 
+
+
+<br/>
+
+
 *Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Parent = "5dd94c34fab04bff9...";
@@ -40,8 +45,9 @@ sidebar_position: 2
  Response = OPI_Notion.CreatePageInDatabase(Token, Base, Data);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -49,10 +55,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "03fd3bd2-6dd1-4ca2-bf85-9233748a745f",
  "public_url": null,
  "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",
@@ -198,5 +202,4 @@ sidebar_position: 2
  "id": "a5742816-1417-4169-bf55-dbae44f46d9c",
  "object": "page"
  }
-
 ```

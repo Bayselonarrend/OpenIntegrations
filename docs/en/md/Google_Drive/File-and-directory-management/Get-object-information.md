@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets information about a folder or file by ID
 
 
+
+
+<br/>
+
+
 *Function GetObjectInformation(Val Token, Val Identifier) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.GetObjectInformation(Token, Identifier); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "linkShareMetadata": {
  "securityUpdateEnabled": true,
  "securityUpdateEligible": false
@@ -140,5 +144,4 @@ sidebar_position: 1
  "kind": "drive#file",
  "thumbnailVersion": "0"
  }
-
 ```

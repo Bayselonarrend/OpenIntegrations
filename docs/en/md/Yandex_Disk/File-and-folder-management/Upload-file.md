@@ -6,6 +6,11 @@ sidebar_position: 10
  Uploads a file to disk at the specified path
 
 
+
+
+<br/>
+
+
 *Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 10
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex 
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  Path = "/AlpacaInFile.png";
@@ -28,8 +33,9 @@ sidebar_position: 10
  Response = OPI_YandexDisk.UploadFile(Token, Path, File); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,9 +43,6 @@ sidebar_position: 10
 
 ```
 
-
 ```json title="Result"
-
-<empty string>
-
+ <empty string>
 ```

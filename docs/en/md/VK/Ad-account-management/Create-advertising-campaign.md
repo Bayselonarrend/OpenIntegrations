@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a campaign in the selected advertising account
 
 
+
+
+<br/>
+
+
 *Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.CreateAdvertisingCampaign(1234567890, "New ads campaign", Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,15 +38,12 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": [
  {
  "id": 1029701085
  }
  ]
  }
-
 ```

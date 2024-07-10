@@ -6,6 +6,11 @@ sidebar_position: 4
  Deletes one or an array of records by identifiers
 
 
+
+
+<br/>
+
+
 *Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -31,8 +36,9 @@ sidebar_position: 4
  Response = OPI_Airtable.DeletePosts(Token, Base, Table, Record); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -40,10 +46,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "records": [
  {
  "deleted": true,
@@ -55,5 +59,4 @@ sidebar_position: 4
  }
  ]
  }
-
 ```

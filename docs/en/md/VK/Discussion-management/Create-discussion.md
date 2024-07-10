@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a new discussion
 
 
+
+
+<br/>
+
+
 *Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  Name = "Discussing: Which color is better?";
  Message = "Red, yellow, blue, or some other?";
  
  Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,11 +39,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 51182455
 }
-
 ```

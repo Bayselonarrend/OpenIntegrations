@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates an empty calendar
 
 
+
+
+<br/>
+
+
 *Function CreateCalendar(Val Token, Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.CreateCalendar(Token, "TestCalendar"); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "conferenceProperties": {
  "allowedConferenceSolutionTypes": [
  "hangoutsMeet"
@@ -46,5 +50,4 @@ sidebar_position: 1
  "etag": "\"ZlOrbHnYjwJB0APkTQupgFm7F3s\"",
  "kind": "calendar#calendar"
  }
-
 ```

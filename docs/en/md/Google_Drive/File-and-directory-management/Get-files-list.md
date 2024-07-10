@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets the list of files
 
 
+
+
+<br/>
+
+
 *Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Array of file mappings
 
+
 ```bsl title="Code example"
-	
  
  Directory = "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4";
  Response = OPI_GoogleDrive.GetFilesList(Token,, Directory); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "sha256Checksum": "1a03612de72929ef42a272cb17123871bf9b7723c89f9659765a49f744b6162b",
  "linkShareMetadata": {
@@ -171,5 +175,4 @@ sidebar_position: 3
  "size": "2114025"
  }
  ]
-
 ```

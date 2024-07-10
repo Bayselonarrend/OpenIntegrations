@@ -6,6 +6,11 @@ sidebar_position: 4
  Удаляет URL обработчика событий бота для работы в режиме Webhook
 
 
+
+
+<br/>
+
+
 *Функция УдалитьWebhook(Знач Токен) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -15,12 +20,13 @@ sidebar_position: 4
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
+
 ```bsl title="Пример кода"
-	
   Токен     = "6129457865:AAFyzNYOAFbu...";
   Результат = OPI_Telegram.УдалитьWebhook(Токен);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -28,13 +34,10 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "ok": true,
  "result": true,
  "description": "Webhook was deleted"
 }
-
 ```

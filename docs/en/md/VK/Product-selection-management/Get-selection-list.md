@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets the list of product selections
 
 
+
+
+<br/>
+
+
 *Function GetSelectionList(Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,14 +20,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Array of selection maps
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.GetSelectionList(Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,10 +36,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "is_hidden": false,
  "is_main": true,
@@ -110,5 +114,4 @@ sidebar_position: 1
  "id": 38
  }
  ]
-
 ```

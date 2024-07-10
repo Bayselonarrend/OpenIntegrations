@@ -6,6 +6,11 @@ sidebar_position: 7
  Принимает задачу по ID
 
 
+
+
+<br/>
+
+
 *Функция ПринятьЗадачу(Знач URL, Знач IDЗадачи, Знач Токен = "") Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,8 +22,8 @@ sidebar_position: 7
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
+
 ```bsl title="Пример кода"
-	
   URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDЗадачи = "168";
   
@@ -30,8 +35,9 @@ sidebar_position: 7
   IDЗадачи  = "170";
   
   Результат = OPI_Bitrix24.ПринятьЗадачу(URL, IDЗадачи, Токен);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -39,10 +45,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "result": {
   "task": {
    "id": "110",
@@ -213,5 +217,4 @@ sidebar_position: 7
   "operating": 0
  }
 }
-
 ```

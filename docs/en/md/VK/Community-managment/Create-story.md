@@ -6,6 +6,11 @@ sidebar_position: 7
  Creates a story from an image
 
 
+
+
+<br/>
+
+
 *Function CreateStory(Val Image, Val URL = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  URL = "https://github.com/Bayselonarrend/OpenIntegrations";
  
@@ -29,8 +34,9 @@ sidebar_position: 7
  
  Result = OPI_VK.CreateStory(Image, URL, Parameters);
  Result = OPI_VK.CreateStory(TFN,, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "count": 1,
  "items": [
@@ -134,5 +138,4 @@ sidebar_position: 7
  ]
  }
 }
-
 ```

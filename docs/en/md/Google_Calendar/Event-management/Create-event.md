@@ -6,6 +6,11 @@ sidebar_position: 4
  Creates a new event
 
 
+
+
+<br/>
+
+
 *Function CreateEvent(Val Token, Val Calendar, Val EventDescription) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 4
  
  Returns: String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
 
+
 ```bsl title="Code example"
-	
  
  Attachments = New Map;
  Attachments.Insert("Image1", "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
@@ -36,8 +41,9 @@ sidebar_position: 4
  Response = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMap);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,10 +51,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "eventType": "default",
  "attachments": [
  {
@@ -94,5 +98,4 @@ sidebar_position: 4
  "etag": "\"3417013976948000\"",
  "kind": "calendar#event"
  }
-
 ```

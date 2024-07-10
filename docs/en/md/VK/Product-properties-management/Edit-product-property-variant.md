@@ -6,6 +6,11 @@ sidebar_position: 6
  Edits the value of an existing product property variant
 
 
+
+
+<br/>
+
+
 *Function EditProductPropertyVariant(Val Value, Val Property, Val Option, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,14 +23,15 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.EditProductPropertyVariant("Yellow", 260, 980 Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,11 +39,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
  }
-
 ```

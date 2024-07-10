@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets the mapping of Emoji IDs for setting as forum theme icons
 
 
+
+
+<br/>
+
+
 *Function GetAvatarIconList(Val Token) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,14 +20,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Key > ID, Value > Emoji
 
+
 ```bsl title="Code example"
-	
  
  Response = GetAvatarIconList("6129457325:BWDF..."); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,10 +36,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "5434144690511290129": "📰",
  "5312536423851630001": "💡",
  "5312016608254762256": "⚡️",
@@ -147,5 +151,4 @@ sidebar_position: 1
  "5237999392438371490": "🦮",
  "5235912661102773458": "🐈"
 }
-
 ```

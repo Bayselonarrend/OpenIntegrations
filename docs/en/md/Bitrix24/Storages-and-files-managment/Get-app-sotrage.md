@@ -6,6 +6,11 @@ sidebar_position: 2
  Get information about storage with which the application can work to store its data
 
 
+
+
+<br/>
+
+
 *Function GetAppSotrage(Val URL, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "b24-ar17wx.bitrix24.by";
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetAppSotrage(URL, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,8 +38,3 @@ sidebar_position: 2
 ```
 
 
-```json title="Result"
-
-
-
-```

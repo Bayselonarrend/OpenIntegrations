@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets calendar information by ID
 
 
+
+
+<br/>
+
+
 *Function GetCalendarMetadata(Val Token, Val Calendar) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.GetCalendarMetadata(Token, "55868c32be16935f0..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "conferenceProperties": {
  "allowedConferenceSolutionTypes": [
  "hangoutsMeet"
@@ -47,5 +51,4 @@ sidebar_position: 2
  "etag": "\"4A10_PI6FFY129ggELzZ8veUU-U\"",
  "kind": "calendar#calendar"
  }
-
 ```

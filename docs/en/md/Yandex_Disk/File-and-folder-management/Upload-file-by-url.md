@@ -6,6 +6,11 @@ sidebar_position: 11
  Downloads a file to disk from the specified URL
 
 
+
+
+<br/>
+
+
 *Function UploadFileByURL(Val Token, Val Path, Val Address) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 11
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  Path = "/Alpaca.png";
@@ -27,8 +32,9 @@ sidebar_position: 11
  Response = OPI_YandexDisk.UploadFileByURL(Token, Path, Address); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,13 +42,10 @@ sidebar_position: 11
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "templated": false,
  "method": "GET",
  "href": "https://cloud-api.yandex.net/v1/disk/operations/b78a7ef2dd49971aa22e5e72f2e615db885da9947d7c61b2822de23a99e855a1"
  }
-
 ```

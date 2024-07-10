@@ -6,6 +6,11 @@ sidebar_position: 1
  Get list of available files storages
 
 
+
+
+<br/>
+
+
 *Function GetStoragesList(Val URL, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  Result = OPI_Bitrix24.GetStoragesList(URL);
  
@@ -26,8 +31,9 @@ sidebar_position: 1
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetStoragesList(URL, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": [
  {
  "ID": "3",
@@ -116,5 +120,4 @@ sidebar_position: 1
  "operating": 0
  }
 }
-
 ```

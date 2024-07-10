@@ -6,6 +6,11 @@ sidebar_position: 3
  Remove post from a news feed
 
 
+
+
+<br/>
+
+
 *Function DeletePost(Val URL, Val PostID, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  PostID = "122";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -30,8 +35,9 @@ sidebar_position: 3
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.DeletePost(URL, PostID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": true,
  "time": {
  "start": 1718130367.40777,
@@ -55,5 +59,4 @@ sidebar_position: 3
  "operating": 0.310499906539917
  }
 }
-
 ```

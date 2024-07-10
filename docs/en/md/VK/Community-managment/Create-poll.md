@@ -6,6 +6,11 @@ sidebar_position: 4
  Creates a poll with answer options
 
 
+
+
+<br/>
+
+
 *Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  Question = "What's your favorite color?";
  
@@ -29,8 +34,9 @@ sidebar_position: 4
  OptionArray.Add("Green");
  
  Result = OPI_VK.CreatePoll(Question, OptionArray,, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,13 +44,10 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "post_id": 2127
  }
 }
-
 ```

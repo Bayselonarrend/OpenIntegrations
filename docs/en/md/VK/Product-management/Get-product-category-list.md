@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets a list of product category IDs to specify when creating a product
 
 
+
+
+<br/>
+
+
 *Function GetProductCategoryList(Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,13 +20,14 @@ sidebar_position: 1
  
  Returns: Map Of String - Key - ID, Value - Name
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.GetProductCategoryList(Parameters); //Map
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -29,13 +35,10 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-Key Value
+ Key Value
  1210	"Business"
  1200	"Photo and video service"
  2162	"Repair and building"
  ...
-
 ```

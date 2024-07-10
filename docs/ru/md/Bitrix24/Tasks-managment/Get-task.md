@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Получить задачу
  Получает задачу по ID
+
+
+
+
+<br/>
 
 
 *Функция ПолучитьЗадачу(Знач URL, Знач IDЗадачи, Знач Токен = "") Экспорт*
@@ -17,8 +22,8 @@ sidebar_position: 2
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
+
 ```bsl title="Пример кода"
-	
   URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDЗадачи = "168";
   
@@ -30,8 +35,9 @@ sidebar_position: 2
   IDЗадачи  = "170";
   
   Результат = OPI_Bitrix24.ПолучитьЗадачу(URL, IDЗадачи, Токен);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -39,10 +45,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "result": {
   "task": {
    "id": "110",
@@ -185,5 +189,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```

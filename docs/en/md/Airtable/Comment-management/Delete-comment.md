@@ -6,6 +6,11 @@ sidebar_position: 4
  Deletes a comment for a table record
 
 
+
+
+<br/>
+
+
 *Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable 
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -30,8 +35,9 @@ sidebar_position: 4
  Response = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,12 +45,9 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "id": "comL1oGEDJvIQlMs1",
  "deleted": true
  }
-
 ```

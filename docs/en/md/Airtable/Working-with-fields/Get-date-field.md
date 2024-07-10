@@ -6,6 +6,11 @@ sidebar_position: 7
  Gets the description of a date field
 
 
+
+
+<br/>
+
+
 *Function GetDateField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,16 +20,17 @@ sidebar_position: 7
  
  Returns: Structure - Field description
 
+
 ```bsl title="Code example"
-	
  
  Name = "Date";
  
  Response = OPI_Airtable.GetDateField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "name": "Date",
  "type": "date",
  "options": {
@@ -45,5 +49,4 @@ sidebar_position: 7
  }
  }
  }
-
 ```

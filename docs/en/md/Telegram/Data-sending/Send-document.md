@@ -6,6 +6,11 @@ sidebar_position: 5
  Sends a document to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendDocument(Val Token, Val ChatID, Val Text, Val Document, Val Keyboard = "", Val Markup = "Markdown") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -36,8 +41,9 @@ sidebar_position: 5
  Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,10 +51,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4642,
@@ -76,5 +80,4 @@ sidebar_position: 5
  "caption": "String value"
  }
 }
-
 ```

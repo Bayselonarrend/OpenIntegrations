@@ -6,6 +6,11 @@ sidebar_position: 9
  Moves the object to the specified path and path to the original
 
 
+
+
+<br/>
+
+
 *Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 9
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  Original = "/Alpaca.png";
@@ -28,8 +33,9 @@ sidebar_position: 9
  Response = OPI_YandexDisk.MoveObject(Token, Original, Path); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,10 +43,8 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "md5": "8d7bf7d7ee61113f9044f3a28496e458",
  "sha256": "f7607461b40164d5064d1d5085cbe1e94ecb1326e7ff8db857931b2ccd14b7f8",
  "revision": 1707469557170087,
@@ -112,5 +116,4 @@ sidebar_position: 9
  },
  "mime_type": "image/png"
  }
-
 ```

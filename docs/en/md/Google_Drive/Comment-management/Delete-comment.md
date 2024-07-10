@@ -6,6 +6,11 @@ sidebar_position: 4
  Deletes comment by ID
 
 
+
+
+<br/>
+
+
 *Function DeleteComment(Val Token, Val ObjectID, Val CommentID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.DeleteComment(Token, Identifier, Comment); //Map
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,9 +39,6 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-''
-
+ ''
 ```

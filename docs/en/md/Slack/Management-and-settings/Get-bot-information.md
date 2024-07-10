@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets basic information about the bot
 
 
+
+
+<br/>
+
+
 *Function GetBotInformation(Val Token) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,15 +20,16 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack 
 
+
 ```bsl title="Code example"
-	
  
  
  Response = OPI_Slack.GetBotInformation(Token); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "url": "https://openintegrationsgroup.slack.com/",
  "team": "OpenIntegrations",
@@ -44,5 +48,4 @@ sidebar_position: 1
  "bot_id": "B06TZ0MJV5M",
  "is_enterprise_install": false
  }
-
 ```

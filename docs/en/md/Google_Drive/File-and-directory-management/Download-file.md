@@ -6,6 +6,11 @@ sidebar_position: 6
  Gets file by ID
 
 
+
+
+<br/>
+
+
 *Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,16 +22,17 @@ sidebar_position: 6
  
  Returns: BinaryData,String - Binary data or file path when SavePath parameter is specified
 
+
 ```bsl title="Code example"
-	
  
  Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.DownloadFile(Token, Identifier); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,9 +40,6 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
 <Binary file's binary data>
-
 ```

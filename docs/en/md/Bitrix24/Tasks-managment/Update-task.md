@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Update task
  Update a task
+
+
+
+
+<br/>
 
 
 *Function UpdateTask(Val URL, Val TaskID, Val FieldsStructure, Val Token = "") Export*
@@ -18,8 +23,8 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
  
  TaskData = New Structure;
@@ -38,8 +43,9 @@ sidebar_position: 5
  TaskID = "170";
  
  Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -47,10 +53,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "task": {
  "id": "110",
@@ -193,5 +197,4 @@ sidebar_position: 5
  "operating": 0.202054023742676
  }
 }
-
 ```
