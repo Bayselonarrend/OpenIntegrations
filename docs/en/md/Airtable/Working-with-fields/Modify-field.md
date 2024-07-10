@@ -6,8 +6,6 @@ sidebar_position: 2
  Changes the name and/or description of an existing table field
 
 
-<br/>
-
 
 `Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", Val Description = "") Export`
 

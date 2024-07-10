@@ -6,8 +6,6 @@ sidebar_position: 7
  Deletes an object from the cloud drive
 
 
-<br/>
-
 
 `Function DeleteObject(Val Token, Val Path, Val Irrecoverable = False) Export`
 

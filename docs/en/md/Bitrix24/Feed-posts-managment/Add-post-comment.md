@@ -6,8 +6,6 @@ sidebar_position: 6
  Adds a comment to the post
 
 
-<br/>
-
 
 `Function AddPostComment(Val URL, Val PostID, Val Text, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets a permanent URL to the channel message
 
 
-<br/>
-
 
 `Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export`
 

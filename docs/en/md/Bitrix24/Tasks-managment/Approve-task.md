@@ -6,8 +6,6 @@ sidebar_position: 7
  Approve task by ID
 
 
-<br/>
-
 
 `Function ApproveTask(Val URL, Val TaskID, Val Token = "") Export`
 

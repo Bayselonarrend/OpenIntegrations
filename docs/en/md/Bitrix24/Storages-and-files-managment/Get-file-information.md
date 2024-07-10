@@ -6,8 +6,6 @@ sidebar_position: 20
  Get information about file by ID
 
 
-<br/>
-
 
 `Function GetFileInformation(Val URL, Val FileID, Val Token = "") Export`
 

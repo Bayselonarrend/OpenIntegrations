@@ -6,8 +6,6 @@ sidebar_position: 1
 Getting a link for interactive token retrieval (access_token), which is necessary for further actions
 
 
-<br/>
-
 
 `Function CreateTokenRetrievalLink(Val App_id) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets file by ID
 
 
-<br/>
-
 
 `Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export`
 

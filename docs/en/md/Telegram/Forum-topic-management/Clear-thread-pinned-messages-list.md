@@ -6,8 +6,6 @@ sidebar_position: 10
  Clears the list of pinned messages in the forum thread
 
 
-<br/>
-
 
 `Function ClearThreadPinnedMessagesList(Val Token, Val ChatID, Val ThreadID = "") Export`
 

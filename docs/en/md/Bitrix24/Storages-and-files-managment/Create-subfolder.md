@@ -6,8 +6,6 @@ sidebar_position: 9
  Create new folder inside another folder
 
 
-<br/>
-
 
 `Function CreateSubfolder(Val URL, Val FolderID, Val Name, Val Token = "") Export`
 

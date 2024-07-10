@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a child page above another parent page
 
 
-<br/>
-
 
 `Function CreatePage(Val Token, Val Parent, Val Title) Export`
 

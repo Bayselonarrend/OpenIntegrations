@@ -6,8 +6,6 @@ sidebar_position: 25
  Gets a structure with a description of the fields for creating a task
 
 
-<br/>
-
 
 `Function GetTaskFieldsStructure(Val URL, Val Token = "") Export`
 

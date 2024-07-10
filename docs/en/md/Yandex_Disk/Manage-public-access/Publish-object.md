@@ -6,8 +6,6 @@ sidebar_position: 1
  Publishes the disk object for public access
 
 
-<br/>
-
 
 `Function PublishObject(Val Token, Val Path) Export`
 

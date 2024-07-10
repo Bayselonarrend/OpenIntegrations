@@ -6,8 +6,6 @@ sidebar_position: 3
  Changes the text of an existing comment
 
 
-<br/>
-
 
 `Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export`
 

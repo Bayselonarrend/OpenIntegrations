@@ -6,8 +6,6 @@ sidebar_position: 4
  Creates a tweet with a video attachment
 
 
-<br/>
-
 
 `Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export`
 

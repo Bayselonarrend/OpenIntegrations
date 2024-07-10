@@ -6,8 +6,6 @@ sidebar_position: 5
  Get a list of files and folders, located at the root of the storage
 
 
-<br/>
-
 
 `Function GetStorageObjects(Val URL, Val StorageID, Val Token = "") Export`
 

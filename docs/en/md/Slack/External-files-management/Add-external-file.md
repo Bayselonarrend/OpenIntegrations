@@ -6,8 +6,6 @@ sidebar_position: 3
  Adds a new external file
 
 
-<br/>
-
 
 `Function AddExternalFile(Val Token, Val URL, Val Title) Export`
 

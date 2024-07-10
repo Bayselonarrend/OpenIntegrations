@@ -6,8 +6,6 @@ sidebar_position: 2
 Sends a message that arrives in the channel but is visible only to a specific user
 
 
-<br/>
-
 
 `Function SendEphemeralMessage(Val Token, Val Channel, Val Text = "", Val User = "", Val Blocks = "") Export`
 

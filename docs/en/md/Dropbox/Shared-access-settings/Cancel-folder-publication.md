@@ -6,8 +6,6 @@ sidebar_position: 2
  Cancels the public access mode for the directory
 
 
-<br/>
-
 
 `Function CancelFolderPublication(Val Token, Val FolderID) Export`
 

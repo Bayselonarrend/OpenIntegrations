@@ -6,8 +6,6 @@ sidebar_position: 5
  Deletes an external file from Slack
 
 
-<br/>
-
 
 `Function DeleteExternalFile(Val Token, Val FileID) Export`
 

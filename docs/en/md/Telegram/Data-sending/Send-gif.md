@@ -6,8 +6,6 @@ sidebar_position: 6
  Sends a GIF to a chat or channel
 
 
-<br/>
-
 
 `Function SendGif(Val Token, Val ChatID, Val Text, Val GIF, Val Keyboard = "", Val Markup = "Markdown") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 1
  Create a new post at news feed
 
 
-<br/>
-
 
 `Function CreatePost(Val URL, Val Text, Val Visibility = "UA", Val Files = "", Val Title = "", Val Important = False, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a tweet without attachments
 
 
-<br/>
-
 
 `Function CreateTextTweet(Val Text, Val Parameters = "") ExportReturn CreateCustomTweet(Text,,,, Parameters);EndFunction`
 

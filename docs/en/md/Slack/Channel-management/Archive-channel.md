@@ -6,8 +6,6 @@ sidebar_position: 4
  Archives an active channel
 
 
-<br/>
-
 
 `Function ArchiveChannel(Val Token, Val Channel) Export`
 

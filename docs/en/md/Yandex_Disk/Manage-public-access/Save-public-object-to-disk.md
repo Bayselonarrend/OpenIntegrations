@@ -6,8 +6,6 @@ sidebar_position: 6
  Saves the public object to your disk
 
 
-<br/>
-
 
 `Function SavePublicObjectToDisk(Val Token, Val URL, From = "", Target = "") Export`
 

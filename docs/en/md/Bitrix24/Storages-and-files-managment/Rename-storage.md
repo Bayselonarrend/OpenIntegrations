@@ -6,8 +6,6 @@ sidebar_position: 4
  Change storage name (for app storage only, see. GetAppStorage)
 
 
-<br/>
-
 
 `Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export`
 

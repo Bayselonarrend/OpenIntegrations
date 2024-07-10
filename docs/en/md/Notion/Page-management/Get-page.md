@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets information about the page by ID
 
 
-<br/>
-
 
 `Function GetPage(Val Token, Val Page) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
  Changes the name and/or description of the base
 
 
-<br/>
-
 
 `Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export`
 

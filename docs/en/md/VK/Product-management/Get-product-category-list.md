@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets a list of product category IDs to specify when creating a product
 
 
-<br/>
-
 
 `Function GetProductCategoryList(Val Parameters = "") Export`
 

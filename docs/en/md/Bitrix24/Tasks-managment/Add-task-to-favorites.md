@@ -6,8 +6,6 @@ sidebar_position: 17
  Add task to favorites list
 
 
-<br/>
-
 
 `Function AddTaskToFavorites(Val URL, Val TaskID, Val Token = "") Export`
 

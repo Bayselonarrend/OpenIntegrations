@@ -6,8 +6,6 @@ sidebar_position: 1
  Forms a keyboard from an array of buttons
 
 
-<br/>
-
 
 `Function FormKeyboard(Val ButtonArray) Export`
 

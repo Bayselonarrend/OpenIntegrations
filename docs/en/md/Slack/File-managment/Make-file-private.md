@@ -6,8 +6,6 @@ sidebar_position: 6
  Removes the public URL from the file. Requires user token
 
 
-<br/>
-
 
 `Function MakeFilePrivate(Val Token, Val FileID) Export`
 

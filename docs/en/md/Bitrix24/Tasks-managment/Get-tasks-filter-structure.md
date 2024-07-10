@@ -6,8 +6,6 @@ sidebar_position: 26
  Return filter structure for GetTasksList
 
 
-<br/>
-
 
 `Function GetTasksFilterStructure(Val Clear = False) Export`
 

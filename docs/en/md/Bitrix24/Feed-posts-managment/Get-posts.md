@@ -6,8 +6,6 @@ sidebar_position: 5
  Gen post or array of post with ID or rights selection
 
 
-<br/>
-
 
 `Function GetPosts(Val URL, Val PostID = "", Val Filter = "UA", Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 24
  Copy file from one destination to another
 
 
-<br/>
-
 
 `Function MakeFileCopy(Val URL, Val FileID, Val FolderID, Val Token = "") Export`
 

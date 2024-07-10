@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets a calendar from the user's list by ID
 
 
-<br/>
-
 
 `Function GetListCalendar(Val Token, Val Calendar) Export`
 

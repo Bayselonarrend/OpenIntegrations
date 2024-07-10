@@ -6,8 +6,6 @@ sidebar_position: 2
  Change post data
 
 
-<br/>
-
 
 `Function UpdatePost(Val URL, Val PostID, Val Text, Val Visibility = "UA", Val Files = "", Val Title = "", Val Token = "") Export`
 

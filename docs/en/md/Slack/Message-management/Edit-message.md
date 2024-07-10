@@ -6,8 +6,6 @@ sidebar_position: 3
  Edits the content of an existing message
 
 
-<br/>
-
 
 `Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val BlockArray = "") Export`
 

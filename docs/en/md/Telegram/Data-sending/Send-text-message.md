@@ -6,8 +6,6 @@ sidebar_position: 1
  Sends a text message to a chat or channel
 
 
-<br/>
-
 
 `Function SendTextMessage(Val Token, Val ChatID, Val Text, Val Keyboard = "", Val Markup = "Markdown", Val RepliedID = 0) Export`
 

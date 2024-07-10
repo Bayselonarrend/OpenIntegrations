@@ -6,8 +6,6 @@ sidebar_position: 4
  Gets the status of a user or multiple users by ID
 
 
-<br/>
-
 
 `Function GetOnlineUsers(Val Token, Val UserIDs) Export`
 

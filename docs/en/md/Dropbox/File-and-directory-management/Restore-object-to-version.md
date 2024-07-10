@@ -6,8 +6,6 @@ sidebar_position: 14
  Restores object state to required version (revision)
 
 
-<br/>
-
 
 `Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 3
  Create new task by fields structure (see GetTaskFieldsStructure)
 
 
-<br/>
-
 
 `Function CreateTask(Val URL, Val FieldsStructure, Val Token = "") Export`
 

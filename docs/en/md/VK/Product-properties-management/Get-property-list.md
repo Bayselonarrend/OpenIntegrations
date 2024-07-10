@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the list of properties of group products
 
 
-<br/>
-
 
 `Function GetPropertyList(Val Parameters = "") Export`
 

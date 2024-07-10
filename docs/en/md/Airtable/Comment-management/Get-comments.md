@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the list of comments for a record in the table
 
 
-<br/>
-
 
 `Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export`
 

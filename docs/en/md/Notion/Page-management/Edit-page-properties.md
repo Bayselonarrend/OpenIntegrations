@@ -6,8 +6,6 @@ sidebar_position: 4
  Changes the properties of an existing page
 
 
-<br/>
-
 
 `Function EditPageProperties(Val Token, Val Page, Val Data = "", Val Icon = "", Val Cover = "", Val Archived = False) Export`
 

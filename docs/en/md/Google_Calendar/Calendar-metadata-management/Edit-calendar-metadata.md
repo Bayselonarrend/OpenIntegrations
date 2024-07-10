@@ -6,8 +6,6 @@ sidebar_position: 3
  Edits properties of an existing calendar
 
 
-<br/>
-
 
 `Function EditCalendarMetadata(Val Token, Val Calendar, Val Name = "", Val Description = "") Export`
 

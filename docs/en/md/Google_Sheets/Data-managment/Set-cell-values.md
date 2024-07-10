@@ -6,8 +6,6 @@ sidebar_position: 1
  Sets sheet cell values
 
 
-<br/>
-
 
 `Function SetCellValues(Val Token, Val Spreadsheet, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export`
 

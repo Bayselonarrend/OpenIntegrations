@@ -6,8 +6,6 @@ sidebar_position: 2
  Get information about storage with which the application can work to store its data
 
 
-<br/>
-
 
 `Function GetAppSotrage(Val URL, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 7
  Adds specified users to the channel
 
 
-<br/>
-
 
 `Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export`
 

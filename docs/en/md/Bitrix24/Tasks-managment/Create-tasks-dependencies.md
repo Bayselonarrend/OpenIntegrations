@@ -6,8 +6,6 @@ sidebar_position: 23
  Creates the dependency of one task to another
 
 
-<br/>
-
 
 `Function CreateTasksDependencies(Val URL, Val FromID, Val DestinationID, Val LinkType, Val Token = "") Export`
 

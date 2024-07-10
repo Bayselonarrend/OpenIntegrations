@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets token based on the code from the GetAuthorizationLink page
 
 
-<br/>
-
 
 `Function GetToken(Val AppKey, Val AppSecret, Val Code) Export`
 

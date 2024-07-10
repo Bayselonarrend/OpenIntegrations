@@ -6,8 +6,6 @@ sidebar_position: 5
  Delete task comment by ID
 
 
-<br/>
-
 
 `Function DeleteTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export`
 

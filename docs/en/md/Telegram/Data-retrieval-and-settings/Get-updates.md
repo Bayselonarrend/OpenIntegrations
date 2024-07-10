@@ -6,8 +6,6 @@ sidebar_position: 2
  Executes a request /getUpdates, returning information about bot events. Used in polling mode
 
 
-<br/>
-
 
 `Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes a file on Slack
 
 
-<br/>
-
 
 `Function DeleteFile(Val Token, Val FileID) Export`
 

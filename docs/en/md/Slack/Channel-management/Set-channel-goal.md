@@ -6,8 +6,6 @@ sidebar_position: 12
  Sets the channel purpose (description)
 
 
-<br/>
-
 
 `Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export`
 

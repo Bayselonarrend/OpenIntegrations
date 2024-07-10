@@ -6,8 +6,6 @@ sidebar_position: 10
  Returns a task to work by ID
 
 
-<br/>
-
 
 `Function RenewTask(Val URL, Val TaskID, Val Token = "") Export`
 

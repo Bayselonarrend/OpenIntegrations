@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates a page in the parent database
 
 
-<br/>
-
 
 `Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export`
 

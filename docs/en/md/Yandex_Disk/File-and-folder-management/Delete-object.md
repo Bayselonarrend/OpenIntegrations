@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes an object at the specified path
 
 
-<br/>
-
 
 `Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export`
 

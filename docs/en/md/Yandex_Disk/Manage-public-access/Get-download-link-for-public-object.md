@@ -6,8 +6,6 @@ sidebar_position: 5
  Gets a direct link to download the public object
 
 
-<br/>
-
 
 `Function GetDownloadLinkForPublicObject(Val Token, Val URL, Val Path = "") Export`
 

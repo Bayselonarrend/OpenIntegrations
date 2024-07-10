@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a new discussion
 
 
-<br/>
-
 
 `Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export`
 

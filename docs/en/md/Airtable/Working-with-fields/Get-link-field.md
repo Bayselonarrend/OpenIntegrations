@@ -6,8 +6,6 @@ sidebar_position: 10
  Gets the description of a URL field
 
 
-<br/>
-
 
 `Function GetLinkField(Val Name) Export`
 

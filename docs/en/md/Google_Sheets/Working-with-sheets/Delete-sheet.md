@@ -6,8 +6,6 @@ sidebar_position: 2
  Deletes a sheet from the spreadsheet
 
 
-<br/>
-
 
 `Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export`
 

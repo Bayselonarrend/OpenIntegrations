@@ -6,8 +6,6 @@ sidebar_position: 6
  Upload file to storage root
 
 
-<br/>
-
 
 `Function UploadFileToStorage(Val URL, Val Name, Val File, Val StorageID, Val Rights = "", Val Token = "") Export`
 

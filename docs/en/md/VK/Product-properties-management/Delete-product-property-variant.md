@@ -6,8 +6,6 @@ sidebar_position: 7
  Deletes the previously created product property variant
 
 
-<br/>
-
 
 `Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export`
 

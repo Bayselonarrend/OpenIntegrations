@@ -6,8 +6,6 @@ sidebar_position: 2
  Get tasks list (50 at one response max))
 
 
-<br/>
-
 
 `Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export`
 

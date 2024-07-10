@@ -6,8 +6,6 @@ sidebar_position: 4
  Sends an audio file to a chat or channel
 
 
-<br/>
-
 
 `Function SendAudio(Val Token, Val ChatID, Val Text, Val Audio, Val Keyboard = "", Val Markup = "Markdown") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 15
  Get folder child elements
 
 
-<br/>
-
 
 `Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") Export`
 

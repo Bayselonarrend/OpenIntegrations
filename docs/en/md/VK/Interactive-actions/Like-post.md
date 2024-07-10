@@ -6,8 +6,6 @@ sidebar_position: 1
  Likes a post
 
 
-<br/>
-
 
 `Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export`
 

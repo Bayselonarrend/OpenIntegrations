@@ -6,8 +6,6 @@ sidebar_position: 9
  Complete task by ID
 
 
-<br/>
-
 
 `Function CompleteTask(Val URL, Val TaskID, Val Token = "") Export`
 

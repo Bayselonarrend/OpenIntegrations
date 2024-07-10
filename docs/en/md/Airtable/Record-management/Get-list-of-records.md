@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets the list of records of the selected table
 
 
-<br/>
-
 
 `Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export`
 

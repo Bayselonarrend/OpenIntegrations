@@ -6,8 +6,6 @@ sidebar_position: 11
  Downloads a file to disk from the specified URL
 
 
-<br/>
-
 
 `Function UploadFileByURL(Val Token, Val Path, Val Address) Export`
 

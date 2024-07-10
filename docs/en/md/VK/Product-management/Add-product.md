@@ -6,8 +6,6 @@ sidebar_position: 4
  Adds a new product to the community's catalog
 
 
-<br/>
-
 
 `Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export`
 

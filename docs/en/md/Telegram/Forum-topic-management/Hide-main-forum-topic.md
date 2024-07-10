@@ -6,8 +6,6 @@ sidebar_position: 7
  Hides the main forum thread
 
 
-<br/>
-
 
 `Function HideMainForumTopic(Val Token, Val ChatID) Export`
 

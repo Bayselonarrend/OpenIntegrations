@@ -6,8 +6,6 @@ sidebar_position: 9
  Sends a contact with name and phone number
 
 
-<br/>
-
 
 `Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export`
 

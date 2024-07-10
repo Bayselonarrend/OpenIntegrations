@@ -6,8 +6,6 @@ sidebar_position: 8
  Disapprove task by ID
 
 
-<br/>
-
 
 `Function DisapproveTask(Val URL, Val TaskID, Val Token = "") Export`
 

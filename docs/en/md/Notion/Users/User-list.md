@@ -6,8 +6,6 @@ sidebar_position: 1
  Returns a list of workspace users
 
 
-<br/>
-
 
 `Function UserList(Val Token) Export`
 

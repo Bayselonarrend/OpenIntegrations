@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets the total number of chat participants
 
 
-<br/>
-
 
 `Function GetParticipantCount(Val Token, Val ChatID) Export`
 

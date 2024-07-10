@@ -6,8 +6,6 @@ sidebar_position: 3
  Обновляет токен по Refresh токену
 
 
-<br/>
-
 
 `Функция ОбновитьТокен(Знач ClientID, Знач ClientSecret, Знач Refresh) Экспорт`
 

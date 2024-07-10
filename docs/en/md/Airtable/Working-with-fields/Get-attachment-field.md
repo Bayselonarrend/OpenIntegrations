@@ -6,8 +6,6 @@ sidebar_position: 5
  Gets the description of a file field
 
 
-<br/>
-
 
 `Function GetAttachmentField(Val Name) Export`
 

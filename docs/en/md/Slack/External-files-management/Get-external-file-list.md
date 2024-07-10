@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets a list of external files of a user or channel
 
 
-<br/>
-
 
 `Function GetExternalFileList(Val Token, Val Channel = "", Val Cursor = "") Export`
 

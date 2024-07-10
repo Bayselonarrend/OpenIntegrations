@@ -6,8 +6,6 @@ sidebar_position: 7
  Deletes an event by ID
 
 
-<br/>
-
 
 `Function DeleteEvent(Val Token, Val Calendar, Val Event) Export`
 

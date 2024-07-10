@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets row data of the table by identifier
 
 
-<br/>
-
 
 `Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export`
 

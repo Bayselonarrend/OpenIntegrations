@@ -6,8 +6,6 @@ sidebar_position: 6
  Deletes a previously created album
 
 
-<br/>
-
 
 `Function DeleteAlbum(Val AlbumID, Val Parameters = "") Export`
 

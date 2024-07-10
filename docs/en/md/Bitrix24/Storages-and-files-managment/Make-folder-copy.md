@@ -6,8 +6,6 @@ sidebar_position: 10
  Copy one folder to another
 
 
-<br/>
-
 
 `Function MakeFolderCopy(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a new field in the table
 
 
-<br/>
-
 
 `Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export`
 

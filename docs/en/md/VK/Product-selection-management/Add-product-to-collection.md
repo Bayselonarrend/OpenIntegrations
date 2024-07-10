@@ -6,8 +6,6 @@ sidebar_position: 5
  Adds a product to the selection
 
 
-<br/>
-
 
 `Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters = "") Export`
 

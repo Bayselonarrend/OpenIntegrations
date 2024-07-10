@@ -6,8 +6,6 @@ sidebar_position: 3
  Edits the existing product property
 
 
-<br/>
-
 
 `Function EditProductProperty(Val Name, Val Property, Val Parameters = "") Export`
 

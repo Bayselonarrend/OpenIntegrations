@@ -6,8 +6,6 @@ sidebar_position: 17
  Resotre folder form recycle bin
 
 
-<br/>
-
 
 `Function RestoreFolder(Val URL, Val FolderID, Val Token = "") Export`
 

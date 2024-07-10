@@ -6,8 +6,6 @@ sidebar_position: 3
  Update token by refresh token
 
 
-<br/>
-
 
 `Function RefreshToken(Val ClientID, Val ClientSecret, Val Refresh) Export`
 

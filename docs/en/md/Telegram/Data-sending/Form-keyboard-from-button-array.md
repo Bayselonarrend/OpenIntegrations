@@ -6,8 +6,6 @@ sidebar_position: 12
  Generates a simple JSON keyboard from an array of buttons for a message or bottom panel
 
 
-<br/>
-
 
 `Function FormKeyboardFromButtonArray(Val ButtonArray, Val UnderMessage = False, Val OneByOne = True) Export`
 

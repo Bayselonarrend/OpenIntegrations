@@ -6,8 +6,6 @@ sidebar_position: 4
  Gets a list of advertising category IDs for creating an advertising post
 
 
-<br/>
-
 
 `Function GetAdvertisingCategoryList(Val Parameters = "") Export`
 

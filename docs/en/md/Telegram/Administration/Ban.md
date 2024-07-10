@@ -6,8 +6,6 @@ sidebar_position: 1
  Bans a user in the selected chat
 
 
-<br/>
-
 
 `Function Ban(Val Token, Val ChatID, Val UserID) Export`
 

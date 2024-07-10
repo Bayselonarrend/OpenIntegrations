@@ -6,8 +6,6 @@ sidebar_position: 15
  Stop watching a task by ID
 
 
-<br/>
-
 
 `Function StopWatchingTask(Val URL, Val TaskID, Val Token = "") Export`
 

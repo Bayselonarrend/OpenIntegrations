@@ -6,8 +6,6 @@ sidebar_position: 2
  Clears the value in cells
 
 
-<br/>
-
 
 `Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export`
 

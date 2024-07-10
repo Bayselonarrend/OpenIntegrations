@@ -6,8 +6,6 @@ sidebar_position: 1
  Generates a block with an image to add to the message block array
 
 
-<br/>
-
 
 `Function GenerateImageBlock(Val URL, Val AlternateText = "") Export`
 

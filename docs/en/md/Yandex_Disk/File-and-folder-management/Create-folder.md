@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates a directory on the disk
 
 
-<br/>
-
 
 `Function CreateFolder(Val Token, Val Path) Export`
 

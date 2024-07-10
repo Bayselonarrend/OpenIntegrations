@@ -6,8 +6,6 @@ sidebar_position: 7
  Returns a keyboard structure for messages
 
 
-<br/>
-
 
 `Function CreateKeyboardFromArrayButton(Val ButtonArray, Val ButtonColor = "#2db9b9") Export`
 

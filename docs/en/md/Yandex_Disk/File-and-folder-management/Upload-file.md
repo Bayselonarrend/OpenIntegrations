@@ -6,8 +6,6 @@ sidebar_position: 10
  Uploads a file to disk at the specified path
 
 
-<br/>
-
 
 `Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export`
 

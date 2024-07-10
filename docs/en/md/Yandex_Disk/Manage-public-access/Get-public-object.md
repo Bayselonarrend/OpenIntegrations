@@ -6,8 +6,6 @@ sidebar_position: 4
  Gets information about the published object by its URL
 
 
-<br/>
-
 
 `Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export`
 

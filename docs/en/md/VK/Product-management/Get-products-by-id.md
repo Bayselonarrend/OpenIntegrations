@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets information about products by array of IDs
 
 
-<br/>
-
 
 `Function GetProductsByID(Val Products, Val Parameters = "") Export`
 

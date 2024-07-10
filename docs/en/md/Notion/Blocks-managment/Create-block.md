@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a new block based on an existing block
 
 
-<br/>
-
 
 `Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export`
 

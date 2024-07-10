@@ -6,8 +6,6 @@ sidebar_position: 7
  Gets an array of messages that are replies to the specified
 
 
-<br/>
-
 
 `Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 12
  Downloads a zip archive with the contents of the specified directory
 
 
-<br/>
-
 
 `Function DownloadFolder(Val Token, Val Path) Export`
 

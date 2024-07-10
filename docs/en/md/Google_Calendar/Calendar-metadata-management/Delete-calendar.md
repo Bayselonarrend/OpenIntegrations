@@ -6,8 +6,6 @@ sidebar_position: 5
  Deletes a calendar by ID
 
 
-<br/>
-
 
 `Function DeleteCalendar(Val Token, Val Calendar) Export`
 

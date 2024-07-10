@@ -6,8 +6,6 @@ sidebar_position: 8
 
 
 
-<br/>
-
 
 `Function GetProductDescription() Export`
 

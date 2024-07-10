@@ -6,8 +6,6 @@ sidebar_position: 6
  Attaches a file to the selected task
 
 
-<br/>
-
 
 `Function AttachFileToTopic(Val URL, Val TaskID, Val FileID, Val Token = "") Export`
 

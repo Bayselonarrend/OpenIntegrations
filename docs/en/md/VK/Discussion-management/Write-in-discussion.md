@@ -6,8 +6,6 @@ sidebar_position: 4
  Adds a message to the discussion on behalf of the group
 
 
-<br/>
-
 
 `Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export`
 

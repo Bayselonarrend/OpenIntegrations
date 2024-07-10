@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified
 
 
-<br/>
-
 
 `Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export`
 

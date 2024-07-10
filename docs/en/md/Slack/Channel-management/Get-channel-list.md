@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets a list of available channels
 
 
-<br/>
-
 
 `Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export`
 

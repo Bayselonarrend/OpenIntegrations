@@ -6,8 +6,6 @@ sidebar_position: 21
  Get external link to file
 
 
-<br/>
-
 
 `Function GetFileExternalLink(Val URL, Val FileID, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 13
  Gets the list of versions (revisions) of the object
 
 
-<br/>
-
 
 `Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export`
 

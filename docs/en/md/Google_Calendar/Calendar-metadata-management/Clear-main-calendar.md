@@ -6,8 +6,6 @@ sidebar_position: 4
  Clears the event list of the primary calendar
 
 
-<br/>
-
 
 `Function ClearMainCalendar(Val Token) Export`
 

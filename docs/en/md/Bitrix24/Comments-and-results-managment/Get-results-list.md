@@ -6,8 +6,6 @@ sidebar_position: 6
  Gets results list for task
 
 
-<br/>
-
 
 `Function GetResultsList(Val URL, Val TaskID, Val Token = "") Export`
 

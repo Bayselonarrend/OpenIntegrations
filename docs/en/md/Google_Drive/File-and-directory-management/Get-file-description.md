@@ -6,8 +6,6 @@ sidebar_position: 10
 
 
 
-<br/>
-
 
 `Function GetFileDescription() Export`
 

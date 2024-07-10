@@ -6,8 +6,6 @@ sidebar_position: 6
  Deletes a forum thread
 
 
-<br/>
-
 
 `Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export`
 
