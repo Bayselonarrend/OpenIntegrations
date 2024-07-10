@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets information about the external file
 
 
-<br/>
-
 
 `Function GetExternalFile(Val Token, Val FileID) Export`
 

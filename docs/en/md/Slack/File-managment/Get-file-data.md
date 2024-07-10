@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets information about the file
 
 
-<br/>
-
 
 `Function GetFileData(Val Token, Val FileID) Export`
 

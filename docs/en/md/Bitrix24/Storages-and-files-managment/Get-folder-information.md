@@ -6,8 +6,6 @@ sidebar_position: 8
  Get folder information
 
 
-<br/>
-
 
 `Function GetFolderInformation(Val URL, Val FolderID, Val Token = "") Export`
 

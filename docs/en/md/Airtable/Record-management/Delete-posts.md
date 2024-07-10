@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes one or an array of records by identifiers
 
 
-<br/>
-
 
 `Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export`
 

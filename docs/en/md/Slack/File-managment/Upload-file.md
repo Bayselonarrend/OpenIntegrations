@@ -6,8 +6,6 @@ sidebar_position: 2
  Uploads a file to Slack servers
 
 
-<br/>
-
 
 `Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export`
 

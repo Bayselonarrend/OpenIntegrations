@@ -6,8 +6,6 @@ sidebar_position: 7
  Gets the description of a date field
 
 
-<br/>
-
 
 `Function GetDateField(Val Name) Export`
 

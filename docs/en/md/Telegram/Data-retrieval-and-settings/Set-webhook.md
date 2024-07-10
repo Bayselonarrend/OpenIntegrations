@@ -6,8 +6,6 @@ sidebar_position: 3
  Set webhook URL for bot event handling in webhook mode
 
 
-<br/>
-
 
 `Function SetWebhook(Val Token, Val URL) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 5
  Delete task by ID
 
 
-<br/>
-
 
 `Function DeleteTask(Val URL, Val TaskID, Val Token = "") Export`
 

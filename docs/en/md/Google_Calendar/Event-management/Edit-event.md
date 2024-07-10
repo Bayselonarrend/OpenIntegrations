@@ -6,8 +6,6 @@ sidebar_position: 6
  Edits an existing event
 
 
-<br/>
-
 
 `Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export`
 

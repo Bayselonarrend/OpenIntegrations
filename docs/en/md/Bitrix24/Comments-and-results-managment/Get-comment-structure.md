@@ -6,8 +6,6 @@ sidebar_position: 9
  Get comment fields structure
 
 
-<br/>
-
 
 `Function GetCommentStructure(Val Clear = False) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 2
  Closes an existing dialog
 
 
-<br/>
-
 
 `Function CloseDialog(Val Token, Val Dialog) Export`
 

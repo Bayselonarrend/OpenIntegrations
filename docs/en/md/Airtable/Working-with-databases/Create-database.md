@@ -6,8 +6,6 @@ sidebar_position: 3
  Creates a new database
 
 
-<br/>
-
 
 `Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export`
 

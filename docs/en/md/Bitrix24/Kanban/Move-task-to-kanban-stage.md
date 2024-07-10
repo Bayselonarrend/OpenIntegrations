@@ -6,8 +6,6 @@ sidebar_position: 4
  Move task to another kanban stage
 
 
-<br/>
-
 
 `Function MoveTaskToKanbanStage(Val URL, Val TaskID, Val StageID, Val Prev = 0, Val After = 0, Val Token = "") Export`
 

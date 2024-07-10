@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets information about a file or directory
 
 
-<br/>
-
 
 `Function GetObjectInformation(Val Token, Val Path, Val Detailed = False) Export`
 

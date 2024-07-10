@@ -6,8 +6,6 @@ sidebar_position: 3
  Creates a link for joining a closed chat
 
 
-<br/>
-
 
 `Function CreateInvitationLink(Val Token, Val ChatID, Val Title = "", Val ExpirationDate = "", Val UserLimit = 0) Export`
 

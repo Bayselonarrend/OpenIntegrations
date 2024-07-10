@@ -6,8 +6,6 @@ sidebar_position: 4
  Changes task comment text
 
 
-<br/>
-
 
 `Function UpdateTaskComment(Val URL, Val TaskID, Val CommentID, Val Text, Val Token = "") Export`
 

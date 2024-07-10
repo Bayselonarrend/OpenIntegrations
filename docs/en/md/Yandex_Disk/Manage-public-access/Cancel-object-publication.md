@@ -6,8 +6,6 @@ sidebar_position: 2
  Unpublishes a previously published object
 
 
-<br/>
-
 
 `Function CancelObjectPublication(Val Token, Val Path) Export`
 

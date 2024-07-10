@@ -6,8 +6,6 @@ sidebar_position: 5
  Gets a list of delayed channel messages
 
 
-<br/>
-
 
 `Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 7
  Downloads a file at the specified path
 
 
-<br/>
-
 
 `Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export`
 

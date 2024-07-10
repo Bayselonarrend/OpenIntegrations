@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets PDF or HTML preview of the object (for documents only)
 
 
-<br/>
-
 
 `Function GetPreview(Val Token, Val Path) Export`
 

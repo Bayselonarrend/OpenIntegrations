@@ -6,8 +6,6 @@ sidebar_position: 4
  Uploads a file to the drive
 
 
-<br/>
-
 
 `Function UploadFile(Val Token, Val File, Val Description) Export`
 

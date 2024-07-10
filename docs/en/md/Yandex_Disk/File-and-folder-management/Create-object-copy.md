@@ -6,8 +6,6 @@ sidebar_position: 5
  Creates a copy of the object at the specified path and path to the original
 
 
-<br/>
-
 
 `Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = False) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 3
  Gets cell values of the table
 
 
-<br/>
-
 
 `Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Sheet = "") Export`
 

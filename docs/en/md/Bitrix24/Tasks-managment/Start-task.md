@@ -6,8 +6,6 @@ sidebar_position: 13
  Start a task by ID
 
 
-<br/>
-
 
 `Function StartTask(Val URL, Val TaskID, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes block by ID
 
 
-<br/>
-
 
 `Function DeleteBlock(Val Token, Val BlockID) Export`
 

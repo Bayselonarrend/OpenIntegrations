@@ -6,8 +6,6 @@ sidebar_position: 4
  Removes a calendar from the user's list
 
 
-<br/>
-
 
 `Function DeleteCalendarFromList(Val Token, Val Calendar) Export`
 

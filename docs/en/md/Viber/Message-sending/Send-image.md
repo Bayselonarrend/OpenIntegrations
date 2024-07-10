@@ -6,8 +6,6 @@ sidebar_position: 2
  Sends an image to a chat or channel
 
 
-<br/>
-
 
 `Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export`
 

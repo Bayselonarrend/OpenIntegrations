@@ -6,8 +6,6 @@ sidebar_position: 14
  Get external link to folder
 
 
-<br/>
-
 
 `Function GetFolderExternalLink(Val URL, Val FolderID, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 18
  Delete task from favorites list
 
 
-<br/>
-
 
 `Function RemoveTaskFromFavorites(Val URL, Val TaskID, Val Token = "") Export`
 

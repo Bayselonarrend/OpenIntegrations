@@ -6,8 +6,6 @@ sidebar_position: 1
  Executes the /getMe request, returning basic bot information: name, id, ability to add the bot to groups, etc..
 
 
-<br/>
-
 
 `Function GetBotInformation(Val Token) Export`
 

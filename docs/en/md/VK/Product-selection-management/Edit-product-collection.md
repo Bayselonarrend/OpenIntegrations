@@ -6,8 +6,6 @@ sidebar_position: 4
  Edits the properties of a product selection
 
 
-<br/>
-
 
 `Function EditProductCollection(Val Name, Val Selection, Val Image = "", Val Main = False, Val Hidden = False, Val Parameters = "") Export`
 

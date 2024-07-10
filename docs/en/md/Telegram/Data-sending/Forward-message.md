@@ -6,8 +6,6 @@ sidebar_position: 11
  Forwards a message between chats or within a chat
 
 
-<br/>
-
 
 `Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export`
 

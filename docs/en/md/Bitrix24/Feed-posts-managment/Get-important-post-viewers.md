@@ -6,8 +6,6 @@ sidebar_position: 4
  Return list of important post viewers ids
 
 
-<br/>
-
 
 `Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export`
 

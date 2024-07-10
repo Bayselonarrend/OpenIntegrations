@@ -6,8 +6,6 @@ sidebar_position: 5
  Sends geographic coordinates to a chat or channel
 
 
-<br/>
-
 
 `Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export`
 

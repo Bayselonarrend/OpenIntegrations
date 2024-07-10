@@ -6,8 +6,6 @@ sidebar_position: 2
  Add new tag to file or folder
 
 
-<br/>
-
 
 `Function AddTag(Val Token, Val Path, Val Tag) Export`
 

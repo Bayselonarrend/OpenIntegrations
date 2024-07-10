@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets information about the current disk
 
 
-<br/>
-
 
 `Function GetDiskInformation(Val Token) Export`
 

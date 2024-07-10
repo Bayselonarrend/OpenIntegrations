@@ -6,8 +6,6 @@ sidebar_position: 5
  Creates an empty directory on the drive
 
 
-<br/>
-
 
 `Function CreateFolder(Val Token, Val Name, Val Parent = "") Export`
 

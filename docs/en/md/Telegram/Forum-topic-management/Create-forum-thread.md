@@ -6,8 +6,6 @@ sidebar_position: 2
  Creates a new thread in the group with theme functionality enabled
 
 
-<br/>
-
 
 `Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export`
 

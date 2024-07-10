@@ -6,8 +6,6 @@ sidebar_position: 5
  Sends a document to a chat or channel
 
 
-<br/>
-
 
 `Function SendDocument(Val Token, Val ChatID, Val Text, Val Document, Val Keyboard = "", Val Markup = "Markdown") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 1
  Creates a campaign in the selected advertising account
 
 
-<br/>
-
 
 `Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 5
  Creates a shortened URL from a regular one
 
 
-<br/>
-
 
 `Function ShortenLink(Val URL, Val Parameters = "") Export`
 

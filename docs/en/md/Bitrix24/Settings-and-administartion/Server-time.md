@@ -6,8 +6,6 @@ sidebar_position: 4
  Get current server time
 
 
-<br/>
-
 
 `Function ServerTime(Val URL, Val Token = "") Export`
 

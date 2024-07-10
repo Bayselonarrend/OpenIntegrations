@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets the community's product list
 
 
-<br/>
-
 
 `Function GetProductList(Val Selection = "", Val Parameters = "") Export`
 

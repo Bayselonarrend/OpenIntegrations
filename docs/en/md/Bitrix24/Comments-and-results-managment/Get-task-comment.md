@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets task comment data by ID
 
 
-<br/>
-
 
 `Function GetTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 9
  Gets the description of a phone number field
 
 
-<br/>
-
 
 `Function GetPhoneField(Val Name) Export`
 

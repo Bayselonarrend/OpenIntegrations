@@ -6,8 +6,6 @@ sidebar_position: 8
  Shows a previously hidden main forum thread
 
 
-<br/>
-
 
 `Function ShowMainForumTopic(Val Token, Val ChatID) Export`
 

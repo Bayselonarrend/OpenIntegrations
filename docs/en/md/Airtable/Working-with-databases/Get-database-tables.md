@@ -6,8 +6,6 @@ sidebar_position: 2
  Gets the schema of base tables
 
 
-<br/>
-
 
 `Function GetDatabaseTables(Val Token, Val Base) Export`
 

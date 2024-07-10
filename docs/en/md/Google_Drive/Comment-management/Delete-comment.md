@@ -6,8 +6,6 @@ sidebar_position: 4
  Deletes comment by ID
 
 
-<br/>
-
 
 `Function DeleteComment(Val Token, Val ObjectID, Val CommentID) Export`
 

@@ -6,8 +6,6 @@ sidebar_position: 1
  Get list of available files storages
 
 
-<br/>
-
 
 `Function GetStoragesList(Val URL, Val Token = "") Export`
 

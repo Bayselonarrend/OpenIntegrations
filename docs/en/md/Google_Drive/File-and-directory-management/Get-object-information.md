@@ -6,8 +6,6 @@ sidebar_position: 1
  Gets information about a folder or file by ID
 
 
-<br/>
-
 
 `Function GetObjectInformation(Val Token, Val Identifier) Export`
 
