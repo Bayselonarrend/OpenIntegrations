@@ -6,12 +6,10 @@ sidebar_position: 7
  Deletes the previously created product property variant
 
 
-
-
 <br/>
 
 
-*Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export*
+`Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
+
+
+
 
 
 ```bsl title="Code example"

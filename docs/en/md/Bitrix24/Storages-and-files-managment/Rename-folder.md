@@ -6,12 +6,10 @@ sidebar_position: 18
  Change folder name
 
 
-
-
 <br/>
 
 
-*Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export*
+`Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 18
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

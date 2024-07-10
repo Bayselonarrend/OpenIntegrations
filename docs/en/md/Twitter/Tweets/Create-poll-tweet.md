@@ -6,12 +6,10 @@ sidebar_position: 5
  Creates a tweet with a poll
 
 
-
-
 <br/>
 
 
-*Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export*
+`Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+
+
+
 
 
 ```bsl title="Code example"

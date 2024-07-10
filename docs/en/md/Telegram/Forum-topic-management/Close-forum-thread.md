@@ -6,12 +6,10 @@ sidebar_position: 4
  Closes the thread for new messages
 
 
-
-
 <br/>
 
 
-*Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export*
+`Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

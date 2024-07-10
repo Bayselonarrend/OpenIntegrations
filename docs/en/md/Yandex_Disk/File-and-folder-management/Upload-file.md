@@ -6,12 +6,10 @@ sidebar_position: 10
  Uploads a file to disk at the specified path
 
 
-
-
 <br/>
 
 
-*Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export*
+`Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 10
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex 
+
+
+
 
 
 ```bsl title="Code example"

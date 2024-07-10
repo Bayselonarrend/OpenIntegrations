@@ -6,12 +6,10 @@ sidebar_position: 3
  Creates a tweet with a gif attachment
 
 
-
-
 <br/>
 
 
-*Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export*
+`Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+
+
+
 
 
 ```bsl title="Code example"

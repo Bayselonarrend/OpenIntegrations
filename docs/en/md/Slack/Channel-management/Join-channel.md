@@ -6,12 +6,10 @@ sidebar_position: 9
  Adds the current bot to the channel
 
 
-
-
 <br/>
 
 
-*Function JoinChannel(Val Token, Val Channel) Export*
+`Function JoinChannel(Val Token, Val Channel) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 9
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

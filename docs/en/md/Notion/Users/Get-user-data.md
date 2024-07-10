@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets user data by ID
 
 
-
-
 <br/>
 
 
-*Function GetUserData(Val Token, Val UserID) Export*
+`Function GetUserData(Val Token, Val UserID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

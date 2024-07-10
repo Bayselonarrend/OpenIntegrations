@@ -6,12 +6,10 @@ sidebar_position: 1
  Generates an authorization link for browser transition
 
 
-
-
 <br/>
 
 
-*Function GetAuthorizationLink(Val AppKey) Export*
+`Function GetAuthorizationLink(Val AppKey) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: String - URL for browser transition
+
+
+
 
 
 ```bsl title="Code example"

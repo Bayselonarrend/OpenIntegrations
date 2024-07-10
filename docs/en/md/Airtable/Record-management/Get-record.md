@@ -6,12 +6,10 @@ sidebar_position: 2
  Gets row data of the table by identifier
 
 
-
-
 <br/>
 
 
-*Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export*
+`Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
+
+
+
 
 
 ```bsl title="Code example"

@@ -6,12 +6,10 @@ sidebar_position: 7
  Copies file or directory
 
 
-
-
 <br/>
 
 
-*Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export*
+`Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

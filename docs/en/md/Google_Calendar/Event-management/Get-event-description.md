@@ -6,18 +6,19 @@ sidebar_position: 1
 
 
 
-
-
 <br/>
 
 
-*Function GetEventDescription() Export*
+`Function GetEventDescription() Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
 
  
  Returns: Map Of KeyAndValue - Empty event template
+
+
+
 
 
 	

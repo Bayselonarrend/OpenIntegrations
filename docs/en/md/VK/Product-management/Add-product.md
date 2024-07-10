@@ -6,12 +6,10 @@ sidebar_position: 4
  Adds a new product to the community's catalog
 
 
-
-
 <br/>
 
 
-*Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export*
+`Function AddProduct(Val ProductDescription, Val Selection = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

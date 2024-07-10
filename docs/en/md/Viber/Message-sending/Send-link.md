@@ -6,12 +6,10 @@ sidebar_position: 6
  Sends a URL with a preview to a chat or channel
 
 
-
-
 <br/>
 
 
-*Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export*
+`Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
+
+
+
 
 
 ```bsl title="Code example"

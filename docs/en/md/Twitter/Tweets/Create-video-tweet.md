@@ -6,12 +6,10 @@ sidebar_position: 4
  Creates a tweet with a video attachment
 
 
-
-
 <br/>
 
 
-*Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export*
+`Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+
+
+
 
 
 ```bsl title="Code example"

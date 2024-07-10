@@ -6,12 +6,10 @@ sidebar_position: 4
  Deletes the bot event handler URL for webhook operation
 
 
-
-
 <br/>
 
 
-*Function DeleteWebhook(Val Token) Export*
+`Function DeleteWebhook(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

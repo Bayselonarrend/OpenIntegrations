@@ -6,12 +6,10 @@ sidebar_position: 9
  Moves the object to the specified path and path to the original
 
 
-
-
 <br/>
 
 
-*Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export*
+`Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 9
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

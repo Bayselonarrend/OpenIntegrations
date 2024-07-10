@@ -6,12 +6,10 @@ sidebar_position: 1
  Executes the /getMe request, returning basic bot information: name, id, ability to add the bot to groups, etc..
 
 
-
-
 <br/>
 
 
-*Function GetBotInformation(Val Token) Export*
+`Function GetBotInformation(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

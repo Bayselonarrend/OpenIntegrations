@@ -6,12 +6,10 @@ sidebar_position: 23
  Restore file from recycle bin
 
 
-
-
 <br/>
 
 
-*Function RestoreFile(Val URL, Val FileID, Val Token = "") Export*
+`Function RestoreFile(Val URL, Val FileID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 23
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

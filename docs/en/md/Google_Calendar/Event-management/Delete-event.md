@@ -6,12 +6,10 @@ sidebar_position: 7
  Deletes an event by ID
 
 
-
-
 <br/>
 
 
-*Function DeleteEvent(Val Token, Val Calendar, Val Event) Export*
+`Function DeleteEvent(Val Token, Val Calendar, Val Event) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

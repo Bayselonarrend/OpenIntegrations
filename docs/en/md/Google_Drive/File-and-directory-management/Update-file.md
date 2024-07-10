@@ -6,12 +6,10 @@ sidebar_position: 8
  Updates file binary data
 
 
-
-
 <br/>
 
 
-*Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export*
+`Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

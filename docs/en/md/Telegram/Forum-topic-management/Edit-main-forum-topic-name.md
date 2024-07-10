@@ -6,12 +6,10 @@ sidebar_position: 9
  Edits the name of the main forum thread
 
 
-
-
 <br/>
 
 
-*Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export*
+`Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 9
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

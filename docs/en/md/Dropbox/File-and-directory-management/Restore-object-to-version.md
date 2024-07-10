@@ -6,12 +6,10 @@ sidebar_position: 14
  Restores object state to required version (revision)
 
 
-
-
 <br/>
 
 
-*Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export*
+`Function RestoreObjectToVersion(Val Token, Val Path, Val Version) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 14
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+
+
+
 
 
 ```bsl title="Code example"

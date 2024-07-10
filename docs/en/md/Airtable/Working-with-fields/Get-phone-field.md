@@ -6,12 +6,10 @@ sidebar_position: 9
  Gets the description of a phone number field
 
 
-
-
 <br/>
 
 
-*Function GetPhoneField(Val Name) Export*
+`Function GetPhoneField(Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 9
 
  
  Returns: Structure - Field description
+
+
+
 
 
 ```bsl title="Code example"

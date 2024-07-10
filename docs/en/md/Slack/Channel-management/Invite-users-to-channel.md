@@ -6,12 +6,10 @@ sidebar_position: 7
  Adds specified users to the channel
 
 
-
-
 <br/>
 
 
-*Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export*
+`Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 7
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

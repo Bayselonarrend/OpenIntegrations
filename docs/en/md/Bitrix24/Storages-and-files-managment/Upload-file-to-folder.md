@@ -6,12 +6,10 @@ sidebar_position: 19
  Upload local file to the folder
 
 
-
-
 <br/>
 
 
-*Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token = "") Export*
+`Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -23,6 +21,9 @@ sidebar_position: 19
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

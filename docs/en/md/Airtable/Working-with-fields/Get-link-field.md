@@ -6,12 +6,10 @@ sidebar_position: 10
  Gets the description of a URL field
 
 
-
-
 <br/>
 
 
-*Function GetLinkField(Val Name) Export*
+`Function GetLinkField(Val Name) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 10
 
  
  Returns: Structure - Field description
+
+
+
 
 
 ```bsl title="Code example"

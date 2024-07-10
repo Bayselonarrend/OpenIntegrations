@@ -6,12 +6,10 @@ sidebar_position: 1
  Creates a new block based on an existing block
 
 
-
-
 <br/>
 
 
-*Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export*
+`Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

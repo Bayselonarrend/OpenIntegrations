@@ -6,12 +6,10 @@ sidebar_position: 4
  Change storage name (for app storage only, see. GetAppStorage)
 
 
-
-
 <br/>
 
 
-*Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export*
+`Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: HTTPResponse - Rename storage
+
+
+
 
 
 ```bsl title="Code example"

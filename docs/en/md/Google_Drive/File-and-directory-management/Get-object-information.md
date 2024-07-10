@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets information about a folder or file by ID
 
 
-
-
 <br/>
 
 
-*Function GetObjectInformation(Val Token, Val Identifier) Export*
+`Function GetObjectInformation(Val Token, Val Identifier) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

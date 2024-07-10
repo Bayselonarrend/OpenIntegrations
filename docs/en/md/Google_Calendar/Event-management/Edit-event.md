@@ -6,12 +6,10 @@ sidebar_position: 6
  Edits an existing event
 
 
-
-
 <br/>
 
 
-*Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export*
+`Function EditEvent(Val Token, Val Calendar, Val EventDescription, Val Event) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 6
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
+
+
+
 
 
 ```bsl title="Code example"

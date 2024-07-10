@@ -6,12 +6,10 @@ sidebar_position: 3
  Gets information about the page by ID
 
 
-
-
 <br/>
 
 
-*Function GetPage(Val Token, Val Page) Export*
+`Function GetPage(Val Token, Val Page) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 3
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
+
+
+
 
 
 ```bsl title="Code example"

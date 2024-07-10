@@ -6,12 +6,10 @@ sidebar_position: 2
  Unpublishes a previously published object
 
 
-
-
 <br/>
 
 
-*Function CancelObjectPublication(Val Token, Val Path) Export*
+`Function CancelObjectPublication(Val Token, Val Path) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 2
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+
+
+
 
 
 ```bsl title="Code example"

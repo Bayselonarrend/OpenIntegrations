@@ -6,12 +6,10 @@ sidebar_position: 8
  Shows a previously hidden main forum thread
 
 
-
-
 <br/>
 
 
-*Function ShowMainForumTopic(Val Token, Val ChatID) Export*
+`Function ShowMainForumTopic(Val Token, Val ChatID) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+
+
+
 
 
 ```bsl title="Code example"

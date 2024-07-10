@@ -6,12 +6,10 @@ sidebar_position: 8
  Disapprove task by ID
 
 
-
-
 <br/>
 
 
-*Function DisapproveTask(Val URL, Val TaskID, Val Token = "") Export*
+`Function DisapproveTask(Val URL, Val TaskID, Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 8
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

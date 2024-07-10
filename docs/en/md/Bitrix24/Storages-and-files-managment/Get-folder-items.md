@@ -6,12 +6,10 @@ sidebar_position: 15
  Get folder child elements
 
 
-
-
 <br/>
 
 
-*Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") Export*
+`Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 15
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+
+
+
 
 
 ```bsl title="Code example"

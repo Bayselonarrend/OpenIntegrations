@@ -6,18 +6,19 @@ sidebar_position: 8
 
 
 
-
-
 <br/>
 
 
-*Function GetProductDescription() Export*
+`Function GetProductDescription() Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
 
  
  Returns: Map Of KeyAndValue - Empty product description:
+
+
+
 
 
 

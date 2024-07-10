@@ -6,12 +6,10 @@ sidebar_position: 1
  Gets the mapping of Emoji IDs for setting as forum theme icons
 
 
-
-
 <br/>
 
 
-*Function GetAvatarIconList(Val Token) Export*
+`Function GetAvatarIconList(Val Token) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -19,6 +17,9 @@ sidebar_position: 1
 
  
  Returns: Map Of KeyAndValue - Key > ID, Value > Emoji
+
+
+
 
 
 ```bsl title="Code example"

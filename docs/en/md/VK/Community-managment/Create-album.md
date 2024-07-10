@@ -6,12 +6,10 @@ sidebar_position: 5
  Creates an album to store images
 
 
-
-
 <br/>
 
 
-*Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export*
+`Function CreateAlbum(Val Name, Val Description = "", Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -21,6 +19,9 @@ sidebar_position: 5
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"

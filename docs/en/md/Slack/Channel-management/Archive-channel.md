@@ -6,12 +6,10 @@ sidebar_position: 4
  Archives an active channel
 
 
-
-
 <br/>
 
 
-*Function ArchiveChannel(Val Token, Val Channel) Export*
+`Function ArchiveChannel(Val Token, Val Channel) Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -20,6 +18,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+
+
+
 
 
 ```bsl title="Code example"

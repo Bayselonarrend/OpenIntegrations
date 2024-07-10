@@ -6,12 +6,10 @@ sidebar_position: 4
  Creates a comment under the selected record
 
 
-
-
 <br/>
 
 
-*Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Export*
+`Function WriteComment(Val PostID, Val WallID, Val Text, Val Parameters = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -22,6 +20,9 @@ sidebar_position: 4
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
+
+
+
 
 
 ```bsl title="Code example"
