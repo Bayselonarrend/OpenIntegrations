@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets a list of workspaces where the bot is connected
 
 
+
+
+<br/>
+
+
 *Function GetWorkspaceList(Val Token, Val Cursor = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,15 +21,16 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  
  Response = OPI_Slack.GetWorkspaceList(Token); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "teams": [
  {
@@ -44,5 +48,4 @@ sidebar_position: 2
  }
  ]
  }
-
 ```

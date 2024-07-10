@@ -6,6 +6,11 @@ sidebar_position: 4
  Удаляет блок по ID
 
 
+
+
+<br/>
+
+
 *Функция УдалитьБлок(Знач Токен, Знач ИДБлока) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,8 +21,8 @@ sidebar_position: 4
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
 
+
 ```bsl title="Пример кода"
-	
   
   Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
   Блок  = "ca18df269bd24407852b91c30...";
@@ -25,8 +30,9 @@ sidebar_position: 4
   Ответ = OPI_Notion.УдалитьБлок(Токен, ИДБлока);
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -34,10 +40,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "request_id": "62b95ed2-c9af-4be8-b75a-f6e4f69aef14",
   "to_do": {
   "color": "default",
@@ -82,5 +86,4 @@ sidebar_position: 4
   "id": "d7021bdd-15b9-44ab-abcb-02bd2b1a5f6a",
   "object": "block"
   }
-
 ```

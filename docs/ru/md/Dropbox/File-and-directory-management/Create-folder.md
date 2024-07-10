@@ -6,6 +6,11 @@ sidebar_position: 10
  Создает пустой каталог по выбранному пути
 
 
+
+
+<br/>
+
+
 *Функция СоздатьПапку(Знач Токен, Знач Путь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,14 +21,15 @@ sidebar_position: 10
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
 
+
 ```bsl title="Пример кода"
-	
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   Путь      = "/Новый каталог";
   
   Результат = OPI_Dropbox.СоздатьПапку(Токен, Путь);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -31,10 +37,8 @@ sidebar_position: 10
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "metadata": {
   "name": "Новый каталог",
   "path_lower": "/новый каталог",
@@ -42,5 +46,4 @@ sidebar_position: 10
   "id": "id:kJU6-a-pT48AAAAAAAABZA"
  }
 }
-
 ```

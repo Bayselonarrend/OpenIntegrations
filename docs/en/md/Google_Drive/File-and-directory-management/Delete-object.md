@@ -6,6 +6,11 @@ sidebar_position: 9
  Deletes file or directory by ID
 
 
+
+
+<br/>
+
+
 *Function DeleteObject(Val Token, Val Identifier) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,15 +21,16 @@ sidebar_position: 9
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
  
  Response = OPI_GoogleDrive.DeleteObject(Token, Identifier); //Map
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,9 +38,6 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-''
-
+ ''
 ```

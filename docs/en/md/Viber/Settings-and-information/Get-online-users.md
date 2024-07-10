@@ -6,6 +6,11 @@ sidebar_position: 4
  Gets the status of a user or multiple users by ID
 
 
+
+
+<br/>
+
+
 *Function GetOnlineUsers(Val Token, Val UserIDs) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_Viber.GetOnlineUsers(Token, UserID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "users": [
  {
  "last_online": 1704796869778,
@@ -46,5 +50,4 @@ sidebar_position: 4
  "status_message": "ok",
  "status": 0
  }
-
 ```

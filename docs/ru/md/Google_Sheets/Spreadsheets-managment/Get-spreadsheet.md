@@ -6,6 +6,11 @@ sidebar_position: 2
  Получает информацию о книге по ID
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьКнигу(Знач Токен, Знач Идентификатор) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,16 +21,17 @@ sidebar_position: 2
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Идентификатор = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
   
   Ответ = OPI_GoogleSheets.ПолучитьКнигу(Токен, Идентификатор); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //JSON строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -33,10 +39,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "properties": {
   "title": "Тестовая таблица (изм.)",
@@ -197,5 +201,4 @@ sidebar_position: 2
   ],
   "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc/edit"
   }
-
 ```

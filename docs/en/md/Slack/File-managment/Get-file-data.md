@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets information about the file
 
 
+
+
+<br/>
+
+
 *Function GetFileData(Val Token, Val FileID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  FileID = "F070VL6FQFM";
  
  Response = OPI_Slack.GetFileData(Token, FileID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "file": {
  "id": "F070VL6FQFM",
@@ -78,5 +82,4 @@ sidebar_position: 3
  "next_cursor": ""
  }
  }
-
 ```

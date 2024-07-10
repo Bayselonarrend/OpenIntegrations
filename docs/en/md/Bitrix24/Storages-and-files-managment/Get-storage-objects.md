@@ -6,6 +6,11 @@ sidebar_position: 5
  Get a list of files and folders, located at the root of the storage
 
 
+
+
+<br/>
+
+
 *Function GetStorageObjects(Val URL, Val StorageID, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  StorageID = 3;
  Result = OPI_Bitrix24.GetStorageObjects(URL, StorageID);
@@ -28,8 +33,9 @@ sidebar_position: 5
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetStorageObjects(URL, StorageID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,10 +43,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": [
  {
  "ID": "568",
@@ -95,5 +99,4 @@ sidebar_position: 5
  "operating": 0
  }
 }
-
 ```

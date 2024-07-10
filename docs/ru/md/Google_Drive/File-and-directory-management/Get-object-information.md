@@ -6,6 +6,11 @@ sidebar_position: 1
  Получает информацию о папке или файле по ID
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьИнформациюОбОбъекте(Знач Токен, Знач Идентификатор) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,16 +21,17 @@ sidebar_position: 1
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
   
   Ответ = OPI_GoogleDrive.ПолучитьИнформациюОбОбъекте(Токен, Идентификатор);  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                 //Строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -33,10 +39,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "linkShareMetadata": {
   "securityUpdateEnabled": true,
   "securityUpdateEligible": false
@@ -140,5 +144,4 @@ sidebar_position: 1
   "kind": "drive#file",
   "thumbnailVersion": "0"
   }
-
 ```

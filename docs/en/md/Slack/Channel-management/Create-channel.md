@@ -6,6 +6,11 @@ sidebar_position: 3
  Creates a new channel
 
 
+
+
+<br/>
+
+
 *Function CreateChannel(Val Token, Val Name, Val Private = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,16 +22,17 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Name = "testcov" + String(New UUID);
  
  Response = OPI_Slack.CreateChannel(Token, Name, False); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": {
  "id": "C070VPMKN8J",
@@ -81,5 +85,4 @@ sidebar_position: 3
  "priority": 0
  }
  }
-
 ```

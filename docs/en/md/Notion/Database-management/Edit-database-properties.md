@@ -6,6 +6,11 @@ sidebar_position: 3
  Edits properties of an existing database
 
 
+
+
+<br/>
+
+
 *Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Base = "5dd94c34fab04bff9...";
@@ -34,8 +39,9 @@ sidebar_position: 3
  Response = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -43,10 +49,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "d42b5700-9325-439e-98ce-252a007f5ed7",
  "public_url": null,
  "url": "https://www.notion.so/048ba0ce4f474e33900540d249b01949",
@@ -194,5 +198,4 @@ sidebar_position: 3
  },
  "object": "database"
  }
-
 ```

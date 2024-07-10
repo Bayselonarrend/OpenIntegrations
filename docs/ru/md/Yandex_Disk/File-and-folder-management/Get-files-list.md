@@ -6,6 +6,11 @@ sidebar_position: 8
 Получает список файлов с или без отбора по типу Список доступных типов: audio, backup, book, compressed, data, development, diskimage, document, encoded, executable, flash, font, mage, settings, spreadsheet, text, unknown, video, web
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьСписокФайлов(Знач Токен, Знач Количество = 0, Знач СмещениеОтНачала = 0, Знач ОтборПоТипу = "", Знач СортироватьПоДате = Ложь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -19,15 +24,16 @@ sidebar_position: 8
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
 
+
 ```bsl title="Пример кода"
-	
   
   Токен = "y0_AgAAAABdylaOAA...";
   Ответ = OPI_YandexDisk.ПолучитьСписокФайлов(Токен, 2, 1, "image");  //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //Строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -35,10 +41,8 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "limit": 2,
   "offset": 1,
   "items": [
@@ -192,5 +196,4 @@ sidebar_position: 8
   }
   ]
   }
-
 ```

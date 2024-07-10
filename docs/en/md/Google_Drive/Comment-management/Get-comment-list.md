@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets the list of all comments of the object
 
 
+
+
+<br/>
+
+
 *Function GetCommentList(Val Token, Val ObjectID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  AndДFile = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
  
  Response = OPI_GoogleDrive.GetCommentList(Token, AndДFile); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "comments": [
  {
  "content": "NewComment",
@@ -57,5 +61,4 @@ sidebar_position: 3
  ],
  "kind": "drive#commentList"
  }
-
 ```

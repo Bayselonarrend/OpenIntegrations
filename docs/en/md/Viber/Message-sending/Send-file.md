@@ -6,6 +6,11 @@ sidebar_position: 3
  Sends a file (document) to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
+
 ```bsl title="Code example"
-	
  
  ChannelToken = "523b58ba82afffaa-111111111111111-2222222222222222";
  UserID = "tMNGh111111111D+bT4g==";
@@ -29,8 +34,9 @@ sidebar_position: 3
  Response = OPI_Viber.SendFile(ChannelToken, "https://api.athenaeum.digital/1.txt", UserID, True, "txt"); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,14 +44,11 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "chat_hostname": "SN-CHAT-09_",
  "message_token": 5925491906424759104,
  "status_message": "ok",
  "status": 0
  }
-
 ```

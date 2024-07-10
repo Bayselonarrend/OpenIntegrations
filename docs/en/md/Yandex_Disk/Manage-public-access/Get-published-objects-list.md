@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets a list of published objects
 
 
+
+
+<br/>
+
+
 *Function GetPublishedObjectsList(Val Token, Val Count = 0, Val OffsetFromStart = 0) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,16 +22,17 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  
  Response = OPI_YandexDisk.GetPublishedObjectsList(Token, 2, 1); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "limit": 2,
  "offset": 1,
  "items": [
@@ -187,5 +191,4 @@ sidebar_position: 3
  }
  ]
  }
-
 ```

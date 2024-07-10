@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets a list of users in the workspace
 
 
+
+
+<br/>
+
+
 *Function GetUserList(Val Token, Val Cursor = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,15 +21,16 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  
  Response = OPI_Slack.GetUserList(Token, Cursor); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "members": [
  {
@@ -190,5 +194,4 @@ sidebar_position: 3
  "next_cursor": ""
  }
  }
-
 ```

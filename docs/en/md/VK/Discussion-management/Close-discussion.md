@@ -6,6 +6,11 @@ sidebar_position: 2
  Close or delete discussion
 
 
+
+
+<br/>
+
+
 *Function CloseDiscussion(Val DiscussionID, Val DeleteCompletely = False, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,13 +22,14 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  DiscussionID = "51206275";
  Result = OPI_VK.CloseDiscussion(DiscussionID, False, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,11 +37,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
 }
-
 ```

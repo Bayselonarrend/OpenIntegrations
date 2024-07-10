@@ -6,6 +6,11 @@ sidebar_position: 8
  Removes specified user from channel
 
 
+
+
+<br/>
+
+
 *Function KickUserFromChannel(Val Token, Val Channel, Val User) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 8
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  User = "U06UG1CAYH2";
  Channel = "C070VPMKN8J";
@@ -26,8 +31,9 @@ sidebar_position: 8
  Response = OPI_Slack.KickUserFromChannel(Token, Channel, User); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,11 +41,8 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 3
  Changes the text of an existing comment
 
 
+
+
+<br/>
+
+
 *Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -32,8 +37,9 @@ sidebar_position: 3
  Response = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -41,10 +47,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "id": "comL1oGEDJvIQlMs1",
  "author": {
  "id": "usrFlaAHlTfYWAbVW",
@@ -55,5 +59,4 @@ sidebar_position: 3
  "createdTime": "2024-05-10T19:39:52Z",
  "lastUpdatedTime": "2024-05-10T19:39:51.967Z"
  }
-
 ```

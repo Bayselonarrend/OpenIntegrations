@@ -6,6 +6,11 @@ sidebar_position: 6
  Gets information about channel events
 
 
+
+
+<br/>
+
+
 *Function GetChannelHistory(Val Token, Val Channel) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  
  Response = OPI_Slack.GetChannelHistory(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "messages": [
  {
@@ -76,5 +80,4 @@ sidebar_position: 6
  "channel_actions_ts": null,
  "channel_actions_count": 0
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 7
  Deletes the selection by ID
 
 
+
+
+<br/>
+
+
 *Function DeleteSelection(Val Selection, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.DeleteSelection(40, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,11 +37,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
  }
-
 ```

@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 8
+sidebar_position: 12
 ---
 
 # Delete file
  Delete file by ID
+
+
+
+
+<br/>
 
 
 *Function DeleteFile(Val URL, Val FileID, Val Token = "") Export*
@@ -17,8 +22,8 @@ sidebar_position: 8
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  FileID = "488";
  
@@ -30,8 +35,9 @@ sidebar_position: 8
  FileID = "478";
  
  Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": true,
  "time": {
  "start": 1718783933.86753,
@@ -55,5 +59,4 @@ sidebar_position: 8
  "operating": 3.73615193367004
  }
 }
-
 ```

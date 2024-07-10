@@ -6,6 +6,11 @@ sidebar_position: 2
  Adds an existing calendar to the user's list
 
 
+
+
+<br/>
+
+
 *Function AddCalendarToList(Val Token, Val Calendar) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_GoogleCalendar.AddCalendarToList(Token, "55868c32be16935f0..."); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "conferenceProperties": {
  "allowedConferenceSolutionTypes": [
  "hangoutsMeet"
@@ -53,5 +57,4 @@ sidebar_position: 2
  "etag": "\"1708423365033000\"",
  "kind": "calendar#calendarListEntry"
  }
-
 ```

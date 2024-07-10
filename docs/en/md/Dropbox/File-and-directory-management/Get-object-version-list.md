@@ -6,6 +6,11 @@ sidebar_position: 13
  Gets the list of versions (revisions) of the object
 
 
+
+
+<br/>
+
+
 *Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 13
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Path = "/New/pic.png";
  
  Result = OPI_Dropbox.GetObjectVersionList(Token, Path, 1);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,10 +38,8 @@ sidebar_position: 13
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "is_deleted": false,
  "entries": [
  {
@@ -52,5 +56,4 @@ sidebar_position: 13
  }
  ]
 }
-
 ```

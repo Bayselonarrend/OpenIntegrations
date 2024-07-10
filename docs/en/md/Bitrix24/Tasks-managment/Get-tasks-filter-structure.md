@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 21
+sidebar_position: 26
 ---
 
 # Get structure of tasks filter
  Return filter structure for GetTasksList
+
+
+
+
+<br/>
 
 
 *Function GetTasksFilterStructure(Val Clear = False) Export*
@@ -15,11 +20,9 @@ sidebar_position: 21
  
  Returns: Structure of Key-Value - Fields structure 
 
-```bsl title="Code example"
-	
 
 	
-```
+
 
 ```sh title="CLI command example"
  
@@ -28,8 +31,3 @@ sidebar_position: 21
 ```
 
 
-```json title="Result"
-
-
-
-```

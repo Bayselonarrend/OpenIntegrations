@@ -6,6 +6,11 @@ sidebar_position: 3
  Creates one or an array of records by description or an array of field value descriptions
 
 
+
+
+<br/>
+
+
 *Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -36,8 +41,9 @@ sidebar_position: 3
  Response = OPI_Airtable.CreatePosts(Token, Base, Table, Data); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,10 +51,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "records": [
  {
  "id": "recjHNKNZBWLZkZ7A",
@@ -68,5 +72,4 @@ sidebar_position: 3
  }
  ]
  }
-
 ```

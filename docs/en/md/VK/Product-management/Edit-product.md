@@ -6,6 +6,11 @@ sidebar_position: 5
  Edits a previously created product
 
 
+
+
+<br/>
+
+
 *Function EditProduct(Val Product, Val ProductDescription, Val Selection = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Product = New Map;
  Product.Insert("Name", "EditedTestProduct");
@@ -27,8 +32,9 @@ sidebar_position: 5
  Response = OPI_VK.EditProduct(ProductID, Product,, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,11 +42,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
  }
-
 ```

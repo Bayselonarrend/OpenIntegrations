@@ -6,6 +6,11 @@ sidebar_position: 2
  Changes the name and/or description of the base
 
 
+
+
+<br/>
+
+
 *Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -30,8 +35,9 @@ sidebar_position: 2
  Response = OPI_Airtable.ModifyTable(Token, Base, Table, Name, Description); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "id": "tblT64aWyrMUAbUmF",
  "name": "Test table 2 (change.)",
  "description": "New table (change.)",
@@ -113,5 +117,4 @@ sidebar_position: 2
  }
  ]
  }
-
 ```

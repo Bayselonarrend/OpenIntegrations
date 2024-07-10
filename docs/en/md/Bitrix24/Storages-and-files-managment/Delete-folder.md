@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 9
+sidebar_position: 13
 ---
 
 # Delete folder
  Remove folder with subfolders
+
+
+
+
+<br/>
 
 
 *Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export*
@@ -17,8 +22,8 @@ sidebar_position: 9
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  FolderID = "480";
  
@@ -30,8 +35,9 @@ sidebar_position: 9
  FolderID = "482";
  
  Result = OPI_Bitrix24.DeleteFolder(URL, FolderID, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": true,
  "time": {
  "start": 1719047257.50616,
@@ -55,5 +59,4 @@ sidebar_position: 9
  "operating": 0
  }
 }
-
 ```

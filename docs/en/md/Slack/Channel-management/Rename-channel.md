@@ -6,6 +6,11 @@ sidebar_position: 13
  Changes the name of the channel
 
 
+
+
+<br/>
+
+
 *Function RenameChannel(Val Token, Val Channel, Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 13
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Name = "testcov" + String(New UUID);
  Channel = "C070VPMKN8J";
@@ -26,8 +31,9 @@ sidebar_position: 13
  Response = OPI_Slack.RenameChannel(Token, Channel, Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 13
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": {
  "id": "C070VPMKN8J",
@@ -83,5 +87,4 @@ sidebar_position: 13
  ]
  }
  }
-
 ```

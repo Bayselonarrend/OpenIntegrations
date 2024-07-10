@@ -6,6 +6,11 @@ sidebar_position: 4
  Sends an audio file to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendAudio(Val Token, Val ChatID, Val Text, Val Audio, Val Keyboard = "", Val Markup = "Markdown") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -36,8 +41,9 @@ sidebar_position: 4
  Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,10 +51,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4641,
@@ -79,5 +83,4 @@ sidebar_position: 4
  "caption": "String value"
  }
 }
-
 ```

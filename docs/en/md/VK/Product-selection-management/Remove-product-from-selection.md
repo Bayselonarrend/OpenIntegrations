@@ -6,6 +6,11 @@ sidebar_position: 6
  Removes a previously added product from the selection
 
 
+
+
+<br/>
+
+
 *Function RemoveProductFromSelection(Val Product, Val Selection, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,14 +22,15 @@ sidebar_position: 6
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_VK.RemoveProductFromSelection(8656559, 40, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,11 +38,8 @@ sidebar_position: 6
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
  }
-
 ```

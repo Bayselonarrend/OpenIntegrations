@@ -6,6 +6,11 @@ sidebar_position: 7
  Adds specified users to the channel
 
 
+
+
+<br/>
+
+
 *Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  ArrayOfUsers = New Array;
@@ -27,8 +32,9 @@ sidebar_position: 7
  Response = OPI_Slack.InviteUsersToChannel(Token, Channel, ArrayOfUsers); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": {
  "id": "C070VPMKN8J",
@@ -82,5 +86,4 @@ sidebar_position: 7
  "previous_names": []
  }
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 5
  Creates a tweet with a poll
 
 
+
+
+<br/>
+
+
 *Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 5
  
  Returns: Map Of KeyAndValue - serialized JSON response from Twitter
 
+
 ```bsl title="Code example"
-	
  
  OptionArray = New Array;
  OptionArray.Add("Good");
@@ -29,8 +34,9 @@ sidebar_position: 5
  Response = OPI_Twitter.CreatePollTweet("How are you?", OptionArray, 60, Parameters);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 5
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "data": {
  "text": "How are you?",
  "id": "1746082302268969388",
@@ -50,5 +54,4 @@ sidebar_position: 5
  ]
  }
  }
-
 ```

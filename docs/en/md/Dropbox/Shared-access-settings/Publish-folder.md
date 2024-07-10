@@ -6,6 +6,11 @@ sidebar_position: 1
  Sets the directory to public access mode
 
 
+
+
+<br/>
+
+
 *Function PublishFolder(Val Token, Val Path) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Path = "/New";
  
  Result = OPI_Dropbox.PublishFolder(Token, Path);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  ".tag": "complete",
  "access_type": {
  ".tag": "owner"
@@ -63,5 +67,4 @@ sidebar_position: 1
  },
  "folder_id": "id:kJU6-a-pT48AAAAAAAABXw"
 }
-
 ```

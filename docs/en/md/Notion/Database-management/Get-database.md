@@ -6,6 +6,11 @@ sidebar_position: 2
  Get database information
 
 
+
+
+<br/>
+
+
 *Function GetDatabase(Val Token, Val Base) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Base = "048ba0ce4f474e33900540d24...";
@@ -25,8 +30,9 @@ sidebar_position: 2
  Response = OPI_Notion.GetDatabase(Token, Base);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "9c6e06e9-ffa5-4a3c-b4ff-0368553ca066",
  "public_url": null,
  "url": "https://www.notion.so/048ba0ce4f474e33900540d249b01949",
@@ -185,5 +189,4 @@ sidebar_position: 2
  },
  "object": "database"
  }
-
 ```

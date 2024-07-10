@@ -6,6 +6,11 @@ sidebar_position: 4
  Deletes block by ID
 
 
+
+
+<br/>
+
+
 *Function DeleteBlock(Val Token, Val BlockID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Block = "ca18df269bd24407852b91c30...";
@@ -25,8 +30,9 @@ sidebar_position: 4
  Response = OPI_Notion.DeleteBlock(Token, BlockID);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "62b95ed2-c9af-4be8-b75a-f6e4f69aef14",
  "to_do": {
  "color": "default",
@@ -82,5 +86,4 @@ sidebar_position: 4
  "id": "d7021bdd-15b9-44ab-abcb-02bd2b1a5f6a",
  "object": "block"
  }
-
 ```

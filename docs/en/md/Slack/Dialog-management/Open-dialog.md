@@ -6,6 +6,11 @@ sidebar_position: 1
  Opens a new dialog with one or more users
 
 
+
+
+<br/>
+
+
 *Function OpenDialog(Val Token, Val ArrayOfUsers) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,8 +21,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  ArrayOfUsers = New Array;
  ArrayOfUsers.Add("U123456");
@@ -26,8 +31,9 @@ sidebar_position: 1
  Response = OPI_Slack.OpenDialog(Token, ArrayOfUsers); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "no_op": false,
  "already_open": false,
@@ -46,5 +50,4 @@ sidebar_position: 1
  "id": "D06UAKK1C6R"
  }
  }
-
 ```

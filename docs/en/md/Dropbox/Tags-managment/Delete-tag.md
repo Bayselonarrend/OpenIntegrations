@@ -6,6 +6,11 @@ sidebar_position: 3
  Deletes the text tag of a file or directory
 
 
+
+
+<br/>
+
+
 *Function DeleteTag(Val Token, Val Path, Val Tag) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  Tag = "Important";
  Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
  Path = "/New/mydoc.docx";
  
  Result = OPI_Dropbox.DeleteTag(Token, Path, Tag);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,9 +39,6 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{}
-
+ {}
 ```

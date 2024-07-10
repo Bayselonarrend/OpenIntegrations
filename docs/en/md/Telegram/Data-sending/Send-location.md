@@ -6,6 +6,11 @@ sidebar_position: 8
  Sends location by geographic latitude and longitude to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 8
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -29,8 +34,9 @@ sidebar_position: 8
  
  Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
  Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4646,
@@ -65,5 +69,4 @@ sidebar_position: 8
  }
  }
 }
-
 ```

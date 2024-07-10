@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets information about the current disk
 
 
+
+
+<br/>
+
+
 *Function GetDiskInformation(Val Token) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,15 +20,16 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  Response = OPI_YandexDisk.GetDiskInformation(Token); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "user": {
  "login": "bayselonarrend",
  "country": "by",
@@ -70,5 +74,4 @@ sidebar_position: 1
  "paid_max_file_size": 53687091200,
  "max_file_size": 1073741824
  }
-
 ```

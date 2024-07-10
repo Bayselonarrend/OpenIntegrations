@@ -6,6 +6,11 @@ sidebar_position: 4
  Gets information about the published object by its URL
 
 
+
+
+<br/>
+
+
 *Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 4
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+
 ```bsl title="Code example"
-	
  
  Token = "y0_AgAAAABdylaOAA...";
  URL = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
@@ -27,8 +32,9 @@ sidebar_position: 4
  Response = OPI_YandexDisk.GetPublicObject(Token, URL); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,10 +42,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "modified": "2024-02-09T10:50:41+00:00",
  "sizes": [
  {
@@ -119,5 +123,4 @@ sidebar_position: 4
  "antivirus_status": "clean",
  "mime_type": "image/png"
  }
-
 ```

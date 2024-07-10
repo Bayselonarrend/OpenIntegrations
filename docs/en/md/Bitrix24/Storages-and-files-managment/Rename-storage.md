@@ -6,6 +6,11 @@ sidebar_position: 4
  Change storage name (for app storage only, see. GetAppStorage)
 
 
+
+
+<br/>
+
+
 *Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,16 +23,17 @@ sidebar_position: 4
  
  Returns: HTTPResponse - Rename storage
 
+
 ```bsl title="Code example"
-	
  Name = "New storage name";
  URL = "b24-ar17wx.bitrix24.by";
  Token = "b9df7366006e9f06006b12e400000001000...";
  StorageID = "18";
  
  Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 4
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "ID": "18",
  "NAME": "New storage name",
@@ -59,5 +63,4 @@ sidebar_position: 4
  "operating": 0
  }
 }
-
 ```

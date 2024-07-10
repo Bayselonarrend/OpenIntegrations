@@ -6,6 +6,11 @@ sidebar_position: 2
  Uploads a file to Slack servers
 
 
+
+
+<br/>
+
+
 *Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  FileName = "megadoc.docx";
  File = New BinaryData("D:\" + FileName);
@@ -30,8 +35,9 @@ sidebar_position: 2
  Response = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel); //Map
  Response = OPI_Tools.JSONString(Response);//JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "files": [
  {
@@ -82,5 +86,4 @@ sidebar_position: 2
  }
  ]
  }
-
 ```

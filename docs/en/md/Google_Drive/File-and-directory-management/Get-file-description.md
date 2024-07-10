@@ -6,6 +6,11 @@ sidebar_position: 10
 
 
 
+
+
+<br/>
+
+
 *Function GetFileDescription() Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -14,8 +19,8 @@ sidebar_position: 10
  
  Returns: Map Of KeyAndValue - File description
 
+
 ```bsl title="Code example"
-	
  
  Description = New Map;
  Description.Insert("MIME", "image/jpeg"); // MIME-type uploading file
@@ -25,8 +30,9 @@ sidebar_position: 10
  
  Return Description;
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,8 +41,3 @@ sidebar_position: 10
 ```
 
 
-```json title="Result"
-
-
-
-```

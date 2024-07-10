@@ -6,6 +6,11 @@ sidebar_position: 8
  Gets the description of an email field
 
 
+
+
+<br/>
+
+
 *Function GetEmailField(Val Name) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,16 +20,17 @@ sidebar_position: 8
  
  Returns: Structure - Field description
 
+
 ```bsl title="Code example"
-	
  
  Name = "Email";
  
  Response = OPI_Airtable.GetEmailField(Name); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -32,12 +38,9 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "name": "Email",
  "type": "email"
  }
-
 ```

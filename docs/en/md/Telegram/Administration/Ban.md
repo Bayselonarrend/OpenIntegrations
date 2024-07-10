@@ -6,6 +6,11 @@ sidebar_position: 1
  Bans a user in the selected chat
 
 
+
+
+<br/>
+
+
 *Function Ban(Val Token, Val ChatID, Val UserID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  UserID = "461699897";
  ChannelID = "@testsichee";
  
  Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,13 +39,10 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": false,
  "error_code": 400,
  "description": "Bad Request: can't remove chat owner"
 }
-
 ```

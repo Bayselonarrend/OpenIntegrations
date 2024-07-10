@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 9
+sidebar_position: 13
 ---
 
 # Удалить каталог
  Удаляет каталог с подкаталогами
+
+
+
+
+<br/>
 
 
 *Функция УдалитьКаталог(Знач URL, Знач IDКаталога, Знач Токен = "") Экспорт*
@@ -17,8 +22,8 @@ sidebar_position: 9
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
+
 ```bsl title="Пример кода"
-	
   URL        = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDКаталога = "480";
   
@@ -30,8 +35,9 @@ sidebar_position: 9
   IDКаталога  = "482";
   
   Результат = OPI_Bitrix24.УдалитьКаталог(URL, IDКаталога, Токен);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -39,10 +45,8 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "result": true,
  "time": {
   "start": 1719047257.50616,
@@ -55,5 +59,4 @@ sidebar_position: 9
   "operating": 0
  }
 }
-
 ```

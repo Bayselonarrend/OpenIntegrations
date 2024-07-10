@@ -6,6 +6,11 @@ sidebar_position: 2
  Получает токен по коду авторизации
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьТокен(Знач ClientID, Знач ClientSecret, Знач Code) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,15 +22,16 @@ sidebar_position: 2
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
+
 ```bsl title="Пример кода"
-	
   ClientID     = "local.6667fc928a50a9.70414732";
   ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
   Code         = "2b096866006e9f06006b12e400000001000007fc1bc681f7ed7f13f2d449980628008c";
   
   Результат = OPI_Bitrix24.ПолучитьТокен(ClientID, ClientSecret, Code);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -33,12 +39,9 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "error": "expired_token",
  "error_description": "The authorization token provided has expired."
 }
-
 ```

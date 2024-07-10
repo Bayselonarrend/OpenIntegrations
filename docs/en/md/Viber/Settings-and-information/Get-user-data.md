@@ -6,6 +6,11 @@ sidebar_position: 3
  Gets user information by ID
 
 
+
+
+<br/>
+
+
 *Function GetUserData(Val Token, Val UserID) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
+
 ```bsl title="Code example"
-	
  
  Response = OPI_Viber.GetUserData(Token, UserID); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "user": {
  "device_type": "iPhone8,4",
  "mnc": 1,
@@ -52,5 +56,4 @@ sidebar_position: 3
  "status_message": "ok",
  "status": 0
  }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a post with images
 
 
+
+
+<br/>
+
+
 *Function CreatePost(Val Text, Val ImageArray, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  Text = "Post from autotest";
  URL = "https://github.com/Bayselonarrend/OpenIntegrations";
@@ -37,8 +42,9 @@ sidebar_position: 1
  
  Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
  Result = OPI_VK.CreatePost(Text, Image, False,, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -46,13 +52,10 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": {
  "post_id": 2123
  }
 }
-
 ```

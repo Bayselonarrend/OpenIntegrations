@@ -6,6 +6,11 @@ sidebar_position: 10
  Removes the current bot from the channel
 
 
+
+
+<br/>
+
+
 *Function LeaveChannel(Val Token, Val Channel) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,16 +21,17 @@ sidebar_position: 10
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  
  Response = OPI_Slack.LeaveChannel(Token, Channel); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,11 +39,8 @@ sidebar_position: 10
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true
  }
-
 ```

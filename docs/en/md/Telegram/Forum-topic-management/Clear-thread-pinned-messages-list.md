@@ -6,6 +6,11 @@ sidebar_position: 10
  Clears the list of pinned messages in the forum thread
 
 
+
+
+<br/>
+
+
 *Function ClearThreadPinnedMessagesList(Val Token, Val ChatID, Val ThreadID = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,16 +22,17 @@ sidebar_position: 10
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
  Topic = "2673";
  
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,12 +40,9 @@ sidebar_position: 10
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": true
 }
-
 ```

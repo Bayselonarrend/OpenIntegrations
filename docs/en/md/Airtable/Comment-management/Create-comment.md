@@ -6,6 +6,11 @@ sidebar_position: 2
  Creates a comment for a record in the table
 
 
+
+
+<br/>
+
+
 *Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable
 
+
 ```bsl title="Code example"
-	
  
  Base = "apptm8Xqo7TwMaipQ";
  Table = "tbl9G4jVoTJpxYwSY";
@@ -30,8 +35,9 @@ sidebar_position: 2
  Response = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -39,10 +45,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "id": "comL1oGEDJvIQlMs1",
  "author": {
  "id": "usrFlaAHlTfYWAbVW",
@@ -53,5 +57,4 @@ sidebar_position: 2
  "createdTime": "2024-05-10T19:39:51.561Z",
  "lastUpdatedTime": null
  }
-
 ```

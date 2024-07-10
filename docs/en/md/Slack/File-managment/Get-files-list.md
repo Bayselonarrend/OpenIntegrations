@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets a list of files of the bot or channel
 
 
+
+
+<br/>
+
+
 *Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  PageNumber = 1;
  Channel = "C123456";
@@ -26,8 +31,9 @@ sidebar_position: 1
  Response = OPI_Slack.GetFilesList(Token, Channel, PageNumber); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "files": [
  {
@@ -78,5 +82,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

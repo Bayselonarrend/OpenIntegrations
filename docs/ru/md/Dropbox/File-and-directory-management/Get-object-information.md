@@ -6,6 +6,11 @@ sidebar_position: 1
  Получает информацию о файле или каталоге
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьИнформациюОбОбъекте(Знач Токен, Знач Путь, Знач Подробно = Ложь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -17,14 +22,15 @@ sidebar_position: 1
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox 
 
+
 ```bsl title="Пример кода"
-	
   Путь      = "/New/pic.png";
   Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
   
   Результат = OPI_Dropbox.ПолучитьИнформациюОбОбъекте(Токен, Путь, Истина);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -32,10 +38,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  ".tag": "file",
  "name": "pic.png",
  "path_lower": "/new/pic.png",
@@ -48,5 +52,4 @@ sidebar_position: 1
  "is_downloadable": true,
  "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
 }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 1
  Gets a list of available channels
 
 
+
+
+<br/>
+
+
 *Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,16 +22,17 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  ExcludeArchived = True;
  
  Response = OPI_Slack.GetChannelList(Token, ExcludeArchived); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -34,10 +40,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channels": [
  {
@@ -85,5 +89,4 @@ sidebar_position: 1
  }
  ]
  }
-
 ```

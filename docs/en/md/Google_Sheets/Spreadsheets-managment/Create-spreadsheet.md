@@ -6,6 +6,11 @@ sidebar_position: 1
  Creates a new spreadsheet
 
 
+
+
+<br/>
+
+
 *Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  ArrayOfSheetNames = New Array;
  ArrayOfSheetNames.Add("Sheet1");
@@ -29,8 +34,9 @@ sidebar_position: 1
  Response = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, ArrayOfSheetNames); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
  "properties": {
  "title": "TestTable",
@@ -202,5 +206,4 @@ sidebar_position: 1
  ],
  "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc/edit"
  }
-
 ```

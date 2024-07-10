@@ -6,6 +6,11 @@ sidebar_position: 1
  Sends a message at a selected hour
 
 
+
+
+<br/>
+
+
 *Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = "", Val Blocks = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
+
 ```bsl title="Code example"
-	
  
  Channel = "C070VPMKN8J";
  Text = "TestMessage";
@@ -28,8 +33,9 @@ sidebar_position: 1
  Response = OPI_Slack.SendMessage(Token, Channel, Text); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,10 +43,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "channel": "C06UFNUTKUL",
  "ts": "1714146538.221929",
@@ -84,5 +88,4 @@ sidebar_position: 1
  ]
  }
  }
-
 ```

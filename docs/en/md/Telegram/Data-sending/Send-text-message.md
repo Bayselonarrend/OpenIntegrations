@@ -6,6 +6,11 @@ sidebar_position: 1
  Sends a text message to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendTextMessage(Val Token, Val ChatID, Val Text, Val Keyboard = "", Val Markup = "Markdown", Val RepliedID = 0) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -20,8 +25,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  ChatID = "461699897";
  ChannelID = "@testsichee";
@@ -29,8 +34,9 @@ sidebar_position: 1
  
  Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
  Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -38,10 +44,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": {
  "message_id": 4638,
@@ -62,5 +66,4 @@ sidebar_position: 1
  "text": "String value"
  }
 }
-
 ```

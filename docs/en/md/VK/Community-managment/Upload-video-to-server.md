@@ -6,6 +6,11 @@ sidebar_position: 10
  Uploads video to the group for further use
 
 
+
+
+<br/>
+
+
 *Function UploadVideoToServer(Val Video, Val Name, Val Description = "", Val Album = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,16 +24,17 @@ sidebar_position: 10
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK 
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  Video = "C:/nature.mp4";
  Name = "NewVideo";
  Description = "Video description";
  
  Result = OPI_VK.UploadVideoToServer(Video, Name, Description,, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -36,15 +42,12 @@ sidebar_position: 10
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "video_hash": "a833866c6db82314f7",
  "size": 1137878,
  "direct_link": "https://vkvd124.mycdn.me/?expires=1718104740308&srcIp=20.172.5.93&pr=40&srcAg=UNKNOWN&ms=185.226.53.168&type=4&sig=bcm4dKyuOlo&ct=27&urls=45.136.20.202&clientType=14&appId=512000384397&zs=43&id=6569231256185",
  "owner_id": -218861756,
  "video_id": 456239138
 }
-
 ```

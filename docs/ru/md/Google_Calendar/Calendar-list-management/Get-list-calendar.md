@@ -6,6 +6,11 @@ sidebar_position: 3
  Получает календарь из списка пользователя по ID
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьКалендарьСписка(Знач Токен, Знач Календарь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,14 +21,15 @@ sidebar_position: 3
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Ответ = OPI_GoogleCalendar.ПолучитьКалендарьСписка(Токен, "55868c32be16935f0..."); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                        //Строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -31,10 +37,8 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
   "hangoutsMeet"
@@ -52,5 +56,4 @@ sidebar_position: 3
   "etag": "\"1708423563386000\"",
   "kind": "calendar#calendarListEntry"
   }
-
 ```

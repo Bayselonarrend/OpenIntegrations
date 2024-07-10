@@ -6,6 +6,11 @@ sidebar_position: 3
  Set webhook URL for bot event handling in webhook mode
 
 
+
+
+<br/>
+
+
 *Function SetWebhook(Val Token, Val URL) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 3
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  URL = "https://api.athenaeum.digital/opi/hs/twitter";
  
  Result = OPI_Telegram.SetWebhook(Token, URL);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,13 +37,10 @@ sidebar_position: 3
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": true,
  "description": "Webhook was set"
 }
-
 ```

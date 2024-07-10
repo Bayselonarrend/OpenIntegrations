@@ -6,6 +6,11 @@ sidebar_position: 2
  Returns the block structure by ID
 
 
+
+
+<br/>
+
+
 *Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,8 +22,8 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Block = "ca18df269bd24407852b91c30...";
@@ -26,8 +31,9 @@ sidebar_position: 2
  Response = OPI_Notion.ReturnBlock(Token, BlockID);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -35,10 +41,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "031886cc-537d-4025-b480-ecfdc9f2870c",
  "to_do": {
  "color": "default",
@@ -83,5 +87,4 @@ sidebar_position: 2
  "id": "d7021bdd-15b9-44ab-abcb-02bd2b1a5f6a",
  "object": "block"
  }
-
 ```

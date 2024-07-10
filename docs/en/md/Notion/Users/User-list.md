@@ -6,6 +6,11 @@ sidebar_position: 1
  Returns a list of workspace users
 
 
+
+
+<br/>
+
+
 *Function UserList(Val Token) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -15,15 +20,16 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Notion
 
+
 ```bsl title="Code example"
-	
  
  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
  Response = OPI_Notion.UserList(Token);
  Response = OPI_Tools.JSONString(Response);
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,10 +37,8 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "request_id": "ea9a6b96-0b02-4866-a60a-2958e514af38",
  "user": {},
  "type": "user",
@@ -68,5 +72,4 @@ sidebar_position: 1
  ],
  "object": "list"
  }
-
 ```

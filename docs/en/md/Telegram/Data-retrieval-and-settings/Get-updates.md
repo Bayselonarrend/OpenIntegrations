@@ -3,7 +3,12 @@ sidebar_position: 2
 ---
 
 # Get updates
-Executes a request getUpdates, returning information about bot events. Used in polling mode
+ Executes a request /getUpdates, returning information about bot events. Used in polling mode
+
+
+
+
+<br/>
 
 
 *Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export*
@@ -17,12 +22,13 @@ Executes a request getUpdates, returning information about bot events. Used in p
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
 
+
 ```bsl title="Code example"
-	
  Token = "6129457865:AAFyzNYOAFbu...";
  Result = OPI_Telegram.GetUpdates(Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -30,10 +36,8 @@ Executes a request getUpdates, returning information about bot events. Used in p
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "ok": true,
  "result": [
  {
@@ -360,5 +364,4 @@ Executes a request getUpdates, returning information about bot events. Used in p
  }
  ]
 }
-
 ```

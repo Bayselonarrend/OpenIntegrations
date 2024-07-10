@@ -6,6 +6,11 @@ sidebar_position: 2
  Get token by auth code
 
 
+
+
+<br/>
+
+
 *Function GetToken(Val ClientID, Val ClientSecret, Val Code) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  ClientID = "local.6667fc928a50a9.70414732";
  ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
  Code = "2b096866006e9f06006b12e400000001000007fc1bc681f7ed7f13f2d449980628008c";
  
  Result = OPI_Bitrix24.GetToken(ClientID, ClientSecret, Code);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,12 +39,9 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "error": "expired_token",
  "error_description": "The authorization token provided has expired."
 }
-
 ```

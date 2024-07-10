@@ -6,6 +6,11 @@ sidebar_position: 7
  Copies file or directory
 
 
+
+
+<br/>
+
+
 *Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - serialized JSON response from Google
 
+
 ```bsl title="Code example"
-	
  
  NewName = "CopiedFile.jpeg";
  NewLocation = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
@@ -28,8 +33,9 @@ sidebar_position: 7
  Response = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, NewLocation) //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -37,14 +43,11 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "mimeType": "image/jpeg",
  "name": "CopiedFile.jpeg",
  "id": "1uxsMaxL1W5Y7z6-HhjE6QpyDxFPgW4Fy",
  "kind": "drive#file"
  }
-
 ```

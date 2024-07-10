@@ -6,6 +6,11 @@ sidebar_position: 7
  Create new foldera at the storage
 
 
+
+
+<br/>
+
+
 *Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 7
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
+
 ```bsl title="Code example"
-	
  StorageID = 3;
  Name = "New catalog";
  Filename2 = "New folder 2";
@@ -34,8 +39,9 @@ sidebar_position: 7
  Token = "b9df7366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.CreateStorageFolder(URL, StorageID, Name, Token);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -43,10 +49,8 @@ sidebar_position: 7
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "result": {
  "ID": 574,
  "NAME": "New catalog",
@@ -75,5 +79,4 @@ sidebar_position: 7
  "operating": 0
  }
 }
-
 ```

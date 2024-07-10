@@ -1,9 +1,14 @@
 ﻿---
-sidebar_position: 8
+sidebar_position: 12
 ---
 
 # Удалить файл
  Удаляет файл по ID
+
+
+
+
+<br/>
 
 
 *Функция УдалитьФайл(Знач URL, Знач IDФайла, Знач Токен = "") Экспорт*
@@ -17,8 +22,8 @@ sidebar_position: 8
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
+
 ```bsl title="Пример кода"
-	
   URL       = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   IDФайла   = "488";
   
@@ -30,8 +35,9 @@ sidebar_position: 8
   IDФайла   = "478";
   
   Результат = OPI_Bitrix24.УдалитьФайл(URL, IDФайла, Токен);
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -39,10 +45,8 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Результат"
-
-{
+    {
  "result": true,
  "time": {
   "start": 1718783933.86753,
@@ -55,5 +59,4 @@ sidebar_position: 8
   "operating": 3.73615193367004
  }
 }
-
 ```

@@ -6,6 +6,11 @@ sidebar_position: 2
  Получает информацию о календаре по ID
 
 
+
+
+<br/>
+
+
 *Функция ПолучитьМетаданныеКалендаря(Знач Токен, Знач Календарь) Экспорт*
 
   | Параметр | CLI опция | Тип | Назначение |
@@ -16,14 +21,15 @@ sidebar_position: 2
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
 
+
 ```bsl title="Пример кода"
-	
   
   Ответ = OPI_GoogleCalendar.ПолучитьМетаданныеКалендаря(Токен, "55868c32be16935f0..."); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                            //Строка
   
-	
 ```
+	
+
 
 ```sh title="Пример команды CLI"
     
@@ -31,10 +37,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Результат"
-
-{
+  {
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
   "hangoutsMeet"
@@ -47,5 +51,4 @@ sidebar_position: 2
   "etag": "\"4A10_PI6FFY129ggELzZ8veUU-U\"",
   "kind": "calendar#calendar"
   }
-
 ```

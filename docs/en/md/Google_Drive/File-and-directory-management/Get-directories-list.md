@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets the list of drive directories
 
 
+
+
+<br/>
+
+
 *Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - Array of directory mappings
 
+
 ```bsl title="Code example"
-	
  
  Name = "Description";
  Response = OPI_GoogleDrive.GetDirectoriesList(Token, Name, False); //Map
  Response = OPI_Tools.JSONString(Response); //String
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,10 +39,8 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-[
+ [
  {
  "linkShareMetadata": {
  "securityUpdateEnabled": true,
@@ -142,5 +146,4 @@ sidebar_position: 2
  "kind": "drive#file"
  }
  ]
-
 ```

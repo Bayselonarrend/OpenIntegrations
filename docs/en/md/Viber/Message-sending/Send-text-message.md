@@ -6,6 +6,11 @@ sidebar_position: 1
  Sends a text message to a chat or channel
 
 
+
+
+<br/>
+
+
 *Function SendTextMessage(Val Token, Val Text, Val UserID, Val SendingToChannel, Val Keyboard = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -19,8 +24,8 @@ sidebar_position: 1
  
  Returns: Map Of KeyAndValue - serialized JSON response from Viber
 
+
 ```bsl title="Code example"
-	
  
  BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
  UserID = "d3jxe1111111111jYGgZg==";
@@ -36,8 +41,9 @@ sidebar_position: 1
  Response = OPI_Viber.SendTextMessage(BotToken, "Hello", UserID, False, Keyboard); //Map
  Response = OPI_Tools.JSONString(Response); //JSON string
  
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -45,14 +51,11 @@ sidebar_position: 1
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "chat_hostname": "SN-CHAT-10_",
  "message_token": 5925400810709476620,
  "status_message": "ok",
  "status": 0
  }
-
 ```

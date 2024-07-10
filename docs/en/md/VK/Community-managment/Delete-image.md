@@ -6,6 +6,11 @@ sidebar_position: 9
  Deletes an image from the album
 
 
+
+
+<br/>
+
+
 *Function DeleteImage(Val ImageID, Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -16,14 +21,15 @@ sidebar_position: 9
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  ImageID = "457244340";
  
  Result = OPI_VK.DeleteImage(ImageID, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -31,11 +37,8 @@ sidebar_position: 9
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": 1
 }
-
 ```

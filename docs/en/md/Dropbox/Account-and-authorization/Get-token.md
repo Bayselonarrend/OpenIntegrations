@@ -6,6 +6,11 @@ sidebar_position: 2
  Gets token based on the code from the GetAuthorizationLink page
 
 
+
+
+<br/>
+
+
 *Function GetToken(Val AppKey, Val AppSecret, Val Code) Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -17,15 +22,16 @@ sidebar_position: 2
  
  Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
+
 ```bsl title="Code example"
-	
  AppKey = "oynqxds...";
  AppSecret = "tk2oewn...";
  Code = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
  
  Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -33,12 +39,9 @@ sidebar_position: 2
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "error": "invalid_grant",
  "error_description": "code doesn't exist or has expired"
 }
-
 ```

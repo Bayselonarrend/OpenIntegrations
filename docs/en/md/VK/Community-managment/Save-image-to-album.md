@@ -6,6 +6,11 @@ sidebar_position: 8
  Saves an image to the community album
 
 
+
+
+<br/>
+
+
 *Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export*
 
  | Parameter | CLI option | Type | Destination |
@@ -18,8 +23,8 @@ sidebar_position: 8
  
  Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
+
 ```bsl title="Code example"
-	
  Parameters = GetVKParameters();
  ImageDescription = "AutoTestImage";
  AlbumID = "304549394";
@@ -32,8 +37,9 @@ sidebar_position: 8
  
  Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
  Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
-	
 ```
+	
+
 
 ```sh title="CLI command example"
  
@@ -41,10 +47,8 @@ sidebar_position: 8
 
 ```
 
-
 ```json title="Result"
-
-{
+ {
  "response": [
  {
  "album_id": 304498513,
@@ -120,5 +124,4 @@ sidebar_position: 8
  }
  ]
 }
-
 ```
