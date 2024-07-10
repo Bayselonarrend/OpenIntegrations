@@ -22,6 +22,7 @@ Gets a list of files with or without filtering by type List of available types: 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
+<br/>
 
 
 

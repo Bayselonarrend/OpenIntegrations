@@ -20,6 +20,7 @@ sidebar_position: 7
  
  Returns: BinaryData,String - Binary data or file path when SavePath parameter is specified
 
+<br/>
 
 
 
