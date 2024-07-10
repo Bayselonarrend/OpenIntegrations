@@ -19,6 +19,7 @@ sidebar_position: 5
  
  Returns: String - Shortened URL 
 
+<br/>
 
 
 

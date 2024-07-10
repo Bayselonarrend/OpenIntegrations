@@ -19,6 +19,7 @@ sidebar_position: 3
  
  Returns: BinaryData - document preview 
 
+<br/>
 
 
 

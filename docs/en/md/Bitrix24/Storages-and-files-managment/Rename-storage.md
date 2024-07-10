@@ -21,6 +21,7 @@ sidebar_position: 4
  
  Returns: HTTPResponse - Rename storage
 
+<br/>
 
 
 

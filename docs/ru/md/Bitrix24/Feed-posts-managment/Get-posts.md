@@ -21,8 +21,8 @@ sidebar_position: 5
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
 
-
 <br/>
+
 :::tip
 Метод в документации API: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_get.php)
 :::
