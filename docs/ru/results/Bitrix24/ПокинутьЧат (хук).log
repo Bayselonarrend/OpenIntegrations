@@ -1,0 +1,13 @@
+﻿    {
+ "result": true,
+ "time": {
+  "start": 1720816599.13785,
+  "finish": 1720816599.21331,
+  "duration": 0.0754590034484863,
+  "processing": 0.0492467880249023,
+  "date_start": "2024-07-12T20:36:39+00:00",
+  "date_finish": "2024-07-12T20:36:39+00:00",
+  "operating_reset_at": 1720817199,
+  "operating": 0
+ }
+}
