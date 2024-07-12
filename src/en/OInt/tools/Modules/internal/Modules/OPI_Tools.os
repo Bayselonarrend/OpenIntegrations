@@ -506,6 +506,10 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
         OPI_TypeConversion.GetDate(Value);
         Value = UNIXTime(Value);
         
+    ElsIf Type = "DateISO" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value = XMLString(Value);
+        
     ElsIf Type = "Collection" Then
         OPI_TypeConversion.GetCollection(Value); 
         

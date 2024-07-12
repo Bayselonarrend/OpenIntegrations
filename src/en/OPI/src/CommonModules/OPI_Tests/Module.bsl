@@ -2920,6 +2920,7 @@ Procedure B24_TaskManagment() Export
     Bitrix24_CompleteTasksChecklistElement(TestParameters);
     Bitrix24_RenewTasksChecklistElement(TestParameters);
     Bitrix24_DeleteTasksChecklistElement(TestParameters);
+    Bitrix24_GetDailyPlan(TestParameters);
          
     Name = "Topic picture.jpg";
     Image = TestParameters["Picture"]; 
@@ -3020,6 +3021,43 @@ Procedure B24_CommentsManagment() Export
     
 EndProcedure
 
+Procedure B24_Timekeeping() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+      
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Hour = 3600;
+    Day = 24;
+    Responsible = 1;
+    
+    TaskData = New Structure;
+    TaskData.Insert("TITLE" , "New task");
+    TaskData.Insert("DESCRIPTION" , "New task description");
+    TaskData.Insert("PRIORITY" , "2");
+    TaskData.Insert("DEADLINE" , CurrentDate + Hour * Day);
+    TaskData.Insert("RESPONSIBLE_ID", Responsible);
+    
+    URL = TestParameters["Bitrix24_URL"];
+        
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData);
+    TaskID = Result["result"]["task"]["id"];               
+    
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ElapsedTaskID", TaskID);    
+    TestParameters.Insert("Bitrix24_ElapsedTaskID", TaskID);
+
+    Bitrix24_AddTaskTimeAccounting(TestParameters);
+    Bitrix24_GetTaskTimeAccounting(TestParameters);
+    Bitrix24_GetTaskTimeAccountingList(TestParameters);
+    Bitrix24_UpdateTaskTimeAccounting(TestParameters);
+    Bitrix24_DeleteTaskTimeAccounting(TestParameters);
+          
+    OPI_Bitrix24.DeleteTask(URL, TaskID);                  
+    
+EndProcedure
+
 Procedure B24_Kanban() Export
     
     TestParameters = New Structure;
@@ -3056,6 +3094,20 @@ Procedure B24_Kanban() Export
     
     Bitrix24_DeleteKanbanStage(TestParameters);
             
+EndProcedure
+
+Procedure B24_ChatManagment() Export
+    
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    
+    Bitrix24_CreateChat(TestParameters);
+    Bitrix24_GetChatUsers(TestParameters);
+    Bitrix24_LeaveChat(TestParameters);
+    
 EndProcedure
 
 #EndRegion
@@ -8317,6 +8369,294 @@ Procedure Bitrix24_RenewTasksChecklistElement(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "RenewTasksChecklistElement", "Bitrix24");
     
     Check_BitrixTrue(Result); 
+    
+EndProcedure
+
+Procedure Bitrix24_AddTaskTimeAccounting(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    
+    Time = 3600;
+    
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddTaskTimeAccounting (wh)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+                                                                                
+    SpendingID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookTimeID", SpendingID); // SKIP   
+    FunctionParameters.Insert("Bitrix24_HookTimeID", SpendingID); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Text = "Time spent on work";
+    UserID = 10;
+    Time = 7200;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+      
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL
+        , TaskID
+        , Time
+        , UserID
+        , Text
+        , SetupDate
+        , Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AddTaskTimeAccounting", "Bitrix24");
+    
+    Check_BitrixNumber(Result);
+    
+    SpendingID = Result["result"];                                              
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_TimeID", SpendingID);     
+    FunctionParameters.Insert("Bitrix24_TimeID", SpendingID);                   
+    
+EndProcedure
+
+Procedure Bitrix24_UpdateTaskTimeAccounting(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+    
+    Text = "The text I forgot last time";
+    Time = 4800;
+    
+    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskTimeAccounting (wh)", "Bitrix24");
+    
+    Check_BitrixUndefined(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+    
+    Text = "New time record";
+    Time = 4800;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+      
+    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL
+        , TaskID
+        , RecordID
+        , Time
+        , Text
+        , SetupDate
+        , Token);
+    
+    // END
+        
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskTimeAccounting", "Bitrix24");
+    
+    Check_BitrixUndefined(Result);           
+    
+EndProcedure
+
+Procedure Bitrix24_DeleteTaskTimeAccounting(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+    
+    Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskTimeAccounting (wh)", "Bitrix24");
+    
+    Check_BitrixUndefined(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+    
+    Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskTimeAccounting", "Bitrix24");
+    
+    Check_BitrixUndefined(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetTaskTimeAccounting(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+    
+    Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccounting (wh)", "Bitrix24");
+    
+    Check_BitrixObject(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+    
+    Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccounting", "Bitrix24");
+    
+    Check_BitrixObject(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetTaskTimeAccountingList(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    
+    Result = OPI_Bitrix24.GetTaskTimeAccountingList(URL, TaskID);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccountingList (wh)", "Bitrix24");
+    
+    Check_BitrixObjectsArray(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.GetTaskTimeAccountingList(URL, TaskID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetTaskTimeAccountingList", "Bitrix24");
+    
+    Check_BitrixObjectsArray(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetDailyPlan(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.GetDailyPlan(URL);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDailyPlan (wh)", "Bitrix24");
+    
+    Check_BitrixArray(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.GetDailyPlan(URL, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDailyPlan", "Bitrix24");
+    
+    Check_BitrixArray(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_CreateChat(FunctionParameters)
+    
+    Image = FunctionParameters["Picture"];
+    OPI_TypeConversion.GetBinaryData(Image);
+    
+    B64Image = GetBase64StringFromBinaryData(Image);
+    
+    MembersArray = New Array;
+    MembersArray.Add(1);
+    MembersArray.Add(10);
+    
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE" , "OPEN");
+    ChatStructure.Insert("TITLE" , "New chat");
+    ChatStructure.Insert("DESCRIPTION", "This is a new chat");
+    ChatStructure.Insert("COLOR" , "GREEN");
+    ChatStructure.Insert("MESSAGE" , "Welcome to new chat");
+    ChatStructure.Insert("USERS" , MembersArray);
+    ChatStructure.Insert("AVATAR" , B64Image);
+    ChatStructure.Insert("OWNER_ID" , 10);
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    
+    Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateChat (wh)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+    
+    ChatID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookChatID", ChatID); // SKIP  
+    FunctionParameters.Insert("Bitrix24_HookChatID", ChatID); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE" , "CHAT");
+    ChatStructure.Insert("TITLE" , "Private chat");
+    ChatStructure.Insert("USERS" , MembersArray);
+    
+    Result = OPI_Bitrix24.CreateChat(URL, ChatStructure, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateChat", "Bitrix24");
+    
+    Check_BitrixNumber(Result);
+    
+    ChatID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ChatID", ChatID); // SKIP  
+    FunctionParameters.Insert("Bitrix24_ChatID", ChatID); // SKIP
+    
+EndProcedure
+
+Procedure Bitrix24_GetChatUsers(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+    
+    Result = OPI_Bitrix24.GetChatUsers(URL, ChatID);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserListChatа (хуto)", "Bitrix24");
+    
+    Check_BitrixArray(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+    
+    Result = OPI_Bitrix24.GetChatUsers(URL, ChatID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserListChatа", "Bitrix24");
+    
+    Check_BitrixArray(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_LeaveChat(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+    
+    Result = OPI_Bitrix24.LeaveChat(URL, ChatID);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "LeaveChat (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+    
+    Result = OPI_Bitrix24.LeaveChat(URL, ChatID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "LeaveChat", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
     
 EndProcedure
 
