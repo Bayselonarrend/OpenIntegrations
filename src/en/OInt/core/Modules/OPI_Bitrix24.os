@@ -2393,6 +2393,221 @@ Function LeaveChat(Val URL, Val ChatID, Val Token = "") Export
     
 EndFunction
 
+// Add users to chat
+// Adds users to the chat by ID array
+// 
+// Note
+// Method at API documentation: [im.chat.user.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12097)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// UserIDs - Array of string, number - New members IDs - users
+// HideHistory - Boolean - Hide old messages from new members - hide
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AddUsersToChat(Val URL
+    , Val ChatID
+    , Val UserIDs
+    , Val HideHistory = False
+    , Val Token = "") Export
+    
+    MakeBoolean(HideHistory);
+    
+    Parameters = NormalizeAuth(URL, Token, "im.chat.user.add");
+    
+    OPI_Tools.AddField("CHAT_ID" , ChatID , "String" , Parameters);
+    OPI_Tools.AddField("USERS" , UserIDs, "Collection", Parameters);
+    OPI_Tools.AddField("HIDE_HISTORY", HideHistory , "String" , Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+         
+EndFunction
+
+// Delete user from chat
+// Deletes user from chat
+// 
+// Note
+// Method at API documentation: [im.chat.user.delete](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12099)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// UserID - String, Number - User ID - user
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteUserFromChat(Val URL, Val ChatID, Val UserID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.chat.user.delete");
+    
+    OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
+    OPI_Tools.AddField("USER_ID", UserID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Change chat title
+// Change text of chat title
+// 
+// Note
+// Method at API documentation: [im.chat.updateTitle](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Title - String - New title - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ChangeChatTitle(Val URL, Val ChatID, Val Title, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.chat.updateTitle");
+    
+    OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
+    OPI_Tools.AddField("TITLE" , Title, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Change chat color
+// Chat chat color for mobile app
+// 
+// Note
+// Method at API documentation: [im.chat.updateTitle](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
+// Available colors: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, 
+// MARENGO, GRAY, GRAPHITE
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Color - String - New chat color - color
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ChangeChatColor(Val URL, Val ChatID, Val Color, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.chat.updateColor");
+    
+    OPI_Tools.AddField("CHAT_ID", ChatID, "String", Parameters);
+    OPI_Tools.AddField("COLOR" , Color , "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Change chat picture
+// Setup new chat picture
+// 
+// Note
+// Method at API documentation: [im.chat.updateAvatar](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12109)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Image - String, BinaryData - Picture data - picture
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ChangeChatPicture(Val URL, Val ChatID, Val Image, Val Token = "") Export
+    
+    OPI_TypeConversion.GetBinaryData(Image);
+    
+    Image = Base64String(Image);
+    Parameters = NormalizeAuth(URL, Token, "im.chat.updateAvatar");
+    
+    OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
+    OPI_Tools.AddField("AVATAR" , Image, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Change chat owner
+// Change chat owner
+// 
+// Note
+// Method at API documentation: [im.chat.setOwner](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12111)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// UserID - String, Number - User ID - user
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ChangeChatOwner(Val URL, Val ChatID, Val UserID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.chat.setOwner");
+    
+    OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
+    OPI_Tools.AddField("USER_ID", UserID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Disable chat notifications
+// Disable chat notifications
+// 
+// Note
+// Method at API documentation: [im.chat.mute](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11473)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DisableChatNotifications(Val URL, Val ChatID, Val Token = "") Export
+    
+    Response = ChatNotificationsSwitch(URL, ChatID, True, Token);
+    Return Response;
+    
+EndFunction
+
+// Enable chat notifications
+// Enable chat notifications
+// 
+// Note
+// Method at API documentation: [im.chat.mute](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11473)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function EnableChatNotifications(Val URL, Val ChatID, Val Token = "") Export
+    
+    Response = ChatNotificationsSwitch(URL, ChatID, False, Token);
+    Return Response;
+    
+EndFunction
+
 // Get chats structure
 // Get chat fields structure
 // 
@@ -2547,6 +2762,21 @@ Function ChatManagment(Val URL, Val ChatID, Val Method, Val Token = "")
 
     Parameters = NormalizeAuth(URL, Token, Method);
     OPI_Tools.AddField("CHAT_ID", ChatID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;   
+    
+EndFunction
+
+Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
+
+    MakeBoolean(Off);
+    
+    Parameters = NormalizeAuth(URL, Token, "im.chat.mute");
+    
+    OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
+    OPI_Tools.AddField("MUTE" , Off, "String", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
