@@ -2608,6 +2608,221 @@ Function EnableChatNotifications(Val URL, Val ChatID, Val Token = "") Export
     
 EndFunction
 
+// Get chat messages list
+// Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified
+// 
+// Note
+// Method at API documentation: [im.dialog.messages.get](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11479)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// LastID - String, Number - Id of last message - last
+// FirstID - String, Number - ID of first message - first
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetChatMessagesList(Val URL
+    , Val ChatID
+    , Val LastID = ""
+    , Val FirstID = ""
+    , Val Token = "") Export
+    
+    OPI_TypeConversion.GetLine(LastID);
+    OPI_TypeConversion.GetLine(FirstID);
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.messages.get");
+    
+    OPI_Tools.AddField("DIALOG_ID", ChatID , "String", Parameters);
+    OPI_Tools.AddField("LAST_ID" , LastID, "String", Parameters);
+    OPI_Tools.AddField("FIRST_ID" , FirstID , "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Mark message as readed
+// Mark current and all previous messages as readed
+// 
+// Note
+// Method at API documentation: [im.dialog.read](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12053)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// MessageID - String, Number - Id of last readed message - message
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MarkMessageAsReaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.read");
+    
+    OPI_Tools.AddField("DIALOG_ID" , ChatID , "String", Parameters);
+    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Mark message as unreaded
+// Mark current and all messages after as unreaded
+// 
+// Note
+// Method at API documentation: [im.dialog.unread](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12055)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// MessageID - String, Number - ID of last unreaded message - message
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MarkMessageAsUnreaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.unread");
+    
+    OPI_Tools.AddField("DIALOG_ID" , ChatID , "String", Parameters);
+    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+    
+// Get dialog
+// Get chat data by ID
+// 
+// Note
+// Method at API documentation: [im.dialog.get](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12886)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetDialog(Val URL, Val ChatID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.get");
+    
+    OPI_Tools.AddField("DIALOG_ID", ChatID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get chat members list
+// Get chat members list
+// 
+// Note
+// Method at API documentation: [im.dialog.users.list](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23800)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetChatMembersList(Val URL, Val ChatID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.users.list");
+    
+    OPI_Tools.AddField("DIALOG_ID", ChatID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Send write notification
+// Send "Writing..." status to dialog..."
+// 
+// Note
+// Method at API documentation: [im.dialog.writing](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23802)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function SendWritingNotification(Val URL, Val ChatID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.writing");
+    
+    OPI_Tools.AddField("DIALOG_ID", ChatID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Read all
+// Mark all message as readed
+// 
+// Note
+// Method at API documentation: [im.dialog.read.all](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23804)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ReadAll(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.read.all");       
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Send message
+// Send message to dialog
+// 
+// Note
+// Method at API documentation: [im.message.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12115)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// Text - String - Message text - text
+// Attachments - Array of Structure - Array of attachments - blocks
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function SendMessage(Val URL, Val ChatID, Val Text, Val Attachments = "", Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.message.add");
+    
+    OPI_Tools.AddField("DIALOG_ID", ChatID , "String", Parameters);
+    OPI_Tools.AddField("MESSAGE" , Text , "String", Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments, "Array", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // Get chats structure
 // Get chat fields structure
 // 
@@ -2639,6 +2854,52 @@ Function GetChatStructure(Val Clear = False) Export
     //@skip-check constructor-function-return-section
     Return ChatStructure;
     
+EndFunction
+
+// Get picture block
+// Make picture block for SendMessage method
+// 
+// Note
+// Blocks at API documentation: [Link](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&CHAPTER_ID=07867)
+// 
+// Parameters:
+// Name - String - Picture name - title
+// URL - String - URL of sending picture - url
+// 
+// Returns:
+// Structure - PictureBlock
+Function GetPictureBlock(Val Name, Val URL) Export
+
+    PictureStructure = New Structure;   
+    OPI_Tools.AddField("NAME", Name, "String", PictureStructure);
+    OPI_Tools.AddField("LINK", URL , "String", PictureStructure);
+    
+    //@skip-check constructor-function-return-section
+    Return New Structure("IMAGE", PictureStructure);
+     
+EndFunction
+
+// Get file block
+// Make file block for SendMessage method
+// 
+// Note
+// Blocks at API documentation: [Link](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&CHAPTER_ID=07867)
+// 
+// Parameters:
+// Name - String - Picture name - title
+// URL - String - File URL - url
+// 
+// Returns:
+// Structure - FileBlock
+Function GetFileBlock(Val Name, Val URL) Export
+
+    PictureStructure = New Structure;   
+    OPI_Tools.AddField("NAME", Name, "String", PictureStructure);
+    OPI_Tools.AddField("LINK", URL , "String", PictureStructure);
+    
+    //@skip-check constructor-function-return-section
+    Return New Structure("FILE", PictureStructure);
+     
 EndFunction
 
 #EndRegion

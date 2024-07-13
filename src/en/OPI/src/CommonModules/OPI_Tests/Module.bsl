@@ -3114,6 +3114,14 @@ Procedure B24_ChatManagment() Export
     Bitrix24_ChangeChatPicture(TestParameters);
     Bitrix24_DisableChatNotifications(TestParameters);
     Bitrix24_EnableChatNotifications(TestParameters);
+    Bitrix24_GetChatMessagesList(TestParameters);
+    Bitrix24_MarkMessageAsReaded(TestParameters);
+    Bitrix24_MarkMessageAsUnreaded(TestParameters);
+    Bitrix24_GetDialog(TestParameters);
+    Bitrix24_GetChatMembersList(TestParameters);
+    Bitrix24_SendWritingNotification(TestParameters);
+    Bitrix24_SendMessage(TestParameters);
+    Bitrix24_ReadAll(TestParameters);
     Bitrix24_ChangeChatOwner(TestParameters);
     Bitrix24_LeaveChat(TestParameters);
     
@@ -3206,6 +3214,12 @@ Procedure Check_Structure(Val Result)
 
 	OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
 	
+EndProcedure
+
+Procedure Check_True(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Boolean").Равно(True);  
+      
 EndProcedure
 
 Procedure Check_TelegramTrue(Val Result)
@@ -3761,6 +3775,26 @@ Procedure Check_BitrixResultsList(Val Result)
 	
 	OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["text"]).Заполнено();
+    
+EndProcedure
+
+Procedure Check_BitrixMessages(Val Result)
+   
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["messages"]).ИмеетТип("Array");
+     
+EndProcedure
+
+Procedure Check_BitrixDialog(Val Result)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["dialogId"]).Заполнено();
+    
+EndProcedure
+
+Procedure Check_BitrixMessage(Val Result)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["id"]).Заполнено();
     
 EndProcedure
 
@@ -8885,6 +8919,224 @@ Procedure Bitrix24_ChangeChatOwner(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatOwner", "Bitrix24");
     
     Check_BitrixTrue(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_GetChatMessagesList(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat4"; 
+    
+    Result = OPI_Bitrix24.GetChatMessagesList(URL, ChatID);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChatMessagesList (wh)", "Bitrix24");
+    
+    Check_BitrixMessages(Result); // SKIP
+    
+    MessageID = Result["result"]["messages"][0]["id"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ChatMessageID", MessageID); // SKIP  
+    FunctionParameters.Insert("Bitrix24_ChatMessageID", MessageID); // SKIP
+
+    
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+    
+    Result = OPI_Bitrix24.GetChatMessagesList(URL, UserID, , 0,Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChatMessagesList", "Bitrix24");
+    
+    Check_BitrixMessages(Result);
+    
+    MessageID = Result["result"]["messages"][0]["id"];                             
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_UserMessageID", MessageID);    
+    FunctionParameters.Insert("Bitrix24_UserMessageID", MessageID);                   
+    
+EndProcedure
+
+Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"]; 
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+    
+    Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded (wh)", "Bitrix24");
+    
+    Check_BitrixDialog(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+    
+    Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID,Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded", "Bitrix24");
+    
+    Check_BitrixDialog(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_MarkMessageAsUnreaded(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"]; 
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+    
+    Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, ChatID, MessageID);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsUnreaded)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+    
+    Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, UserID, MessageID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsUnreaded", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_GetDialog(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"]; 
+
+    Result = OPI_Bitrix24.GetDialog(URL, ChatID);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDialog (wh)", "Bitrix24");
+    
+    Check_BitrixMessage(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+    
+    Result = OPI_Bitrix24.GetDialog(URL, UserID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDialog", "Bitrix24");
+    
+    Check_BitrixMessage(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_GetChatMembersList(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"]; 
+
+    Result = OPI_Bitrix24.GetChatMembersList(URL, ChatID);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserListDialogа (хуto)", "Bitrix24");
+    
+    Check_BitrixArray(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+    
+    Result = OPI_Bitrix24.GetChatMembersList(URL, UserID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserListDialogа", "Bitrix24");
+    
+    Check_BitrixArray(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_SendWritingNotification(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"]; 
+
+    Result = OPI_Bitrix24.SendWritingNotification(URL, ChatID);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendWritingNotification (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+    
+    Result = OPI_Bitrix24.SendWritingNotification(URL, UserID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendWritingNotification", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_ReadAll(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.ReadAll(URL);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ReadAll (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.ReadAll(URL, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ReadAll", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_SendMessage(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"]; 
+    Text = "Message text";
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";   
+    
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1", Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+
+    Result = OPI_Bitrix24.SendMessage(URL, ChatID, Text, Attachments);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (хуto)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+    
+    Result = OPI_Bitrix24.SendMessage(URL, UserID, Text, , Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMessage", "Bitrix24");
+    
+    Check_BitrixNumber(Result);
     
 EndProcedure
 
