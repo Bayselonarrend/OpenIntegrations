@@ -3121,6 +3121,9 @@ Procedure B24_ChatManagment() Export
     Bitrix24_GetChatMembersList(TestParameters);
     Bitrix24_SendWritingNotification(TestParameters);
     Bitrix24_SendMessage(TestParameters);
+    Bitrix24_EditMessage(TestParameters);
+    Bitrix24_SetMessageReaction(TestParameters);
+    Bitrix24_DeleteMessage(TestParameters);
     Bitrix24_ReadAll(TestParameters);
     Bitrix24_ChangeChatOwner(TestParameters);
     Bitrix24_LeaveChat(TestParameters);
@@ -3214,12 +3217,6 @@ Procedure Check_Structure(Val Result)
 
 	OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
 	
-EndProcedure
-
-Procedure Check_True(Val Result)
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Boolean").Равно(True);  
-      
 EndProcedure
 
 Procedure Check_TelegramTrue(Val Result)
@@ -9125,6 +9122,10 @@ Procedure Bitrix24_SendMessage(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "SendMessage)", "Bitrix24");
     
     Check_BitrixNumber(Result); // SKIP
+    
+    MessageID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_ChatMessageID", MessageID); // SKIP  
+    FunctionParameters.Insert("Bitrix24_ChatMessageID", MessageID); // SKIP
         
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -9138,6 +9139,94 @@ Procedure Bitrix24_SendMessage(FunctionParameters)
     
     Check_BitrixNumber(Result);
     
+    MessageID = Result["result"];                                                  
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_UserMessageID", MessageID);    
+    FunctionParameters.Insert("Bitrix24_UserMessageID", MessageID);                   
+    
+EndProcedure
+
+Procedure Bitrix24_EditMessage(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+    
+    Text = "New message text";
+
+    Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+            
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+    
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";   
+    
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1", Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    
+    Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage", "Bitrix24");
+    
+    Check_BitrixTrue(Result);             
+    
+EndProcedure
+
+Procedure Bitrix24_DeleteMessage(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Result = OPI_Bitrix24.DeleteMessage(URL, MessageID);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+    
+    Result = OPI_Bitrix24.DeleteMessage(URL, MessageID, Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_SetMessageReaction(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "SetMessageReaction (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+    
+    Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID, Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "SetMessageReaction", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+        
 EndProcedure
 
 #EndRegion
