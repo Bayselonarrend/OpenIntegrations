@@ -1575,6 +1575,27 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDailyPlan";
+    NewLine.МетодПоиска = "GETDAILYPLAN";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Tasks managment";
+    NewLine.ОписаниеМетода   = "Gets the task plan for the current users day";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDailyPlan";
+    NewLine.МетодПоиска = "GETDAILYPLAN";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tasks managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskFieldsStructure";
     NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
     NewLine.Параметр    = "--url";
@@ -2196,6 +2217,261 @@
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTaskTimeAccounting";
+    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Adds information about the user's time spent to the task";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTaskTimeAccounting";
+    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "ID of task for time accounting";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTaskTimeAccounting";
+    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--amount";
+    NewLine.Описание    = "Time spent in seconds";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTaskTimeAccounting";
+    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "ID of user for time accounting (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTaskTimeAccounting";
+    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Comment text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTaskTimeAccounting";
+    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--date";
+    NewLine.Описание    = "Date the record was set (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddTaskTimeAccounting";
+    NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTaskTimeAccounting";
+    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Deletes record of time accounting";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTaskTimeAccounting";
+    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "ID of task for time accounting";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTaskTimeAccounting";
+    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--record";
+    NewLine.Описание    = "Time record ID";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteTaskTimeAccounting";
+    NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskTimeAccountingList";
+    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTINGLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Get list of time accounting records for task";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskTimeAccountingList";
+    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTINGLIST";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskTimeAccountingList";
+    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTINGLIST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskTimeAccounting";
+    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Get time accounting record data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskTimeAccounting";
+    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskTimeAccounting";
+    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--record";
+    NewLine.Описание    = "Time record ID";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTaskTimeAccounting";
+    NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskTimeAccounting";
+    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Update time accounting record data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskTimeAccounting";
+    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--task";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskTimeAccounting";
+    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--record";
+    NewLine.Описание    = "Time record ID";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskTimeAccounting";
+    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--amount";
+    NewLine.Описание    = "Time spent in seconds";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskTimeAccounting";
+    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Comment text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskTimeAccounting";
+    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--date";
+    NewLine.Описание    = "Date the record was set (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateTaskTimeAccounting";
+    NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
 
 
     NewLine = CompositionTable.Add();
@@ -3163,6 +3439,110 @@
     NewLine.Параметр    = "--webhook method used";
     NewLine.Описание    = "token (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages and files managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateChat";
+    NewLine.МетодПоиска = "CREATECHAT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Creates a new chat based on the field structure";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateChat";
+    NewLine.МетодПоиска = "CREATECHAT";
+    NewLine.Параметр    = "--Chat fields structure. See GetChatStructure";
+    NewLine.Описание    = "fields";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateChat";
+    NewLine.МетодПоиска = "CREATECHAT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatUsers";
+    NewLine.МетодПоиска = "GETCHATUSERS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Gets the list of chat users by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatUsers";
+    NewLine.МетодПоиска = "GETCHATUSERS";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatUsers";
+    NewLine.МетодПоиска = "GETCHATUSERS";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "LeaveChat";
+    NewLine.МетодПоиска = "LEAVECHAT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Removes the current user from the chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "LeaveChat";
+    NewLine.МетодПоиска = "LEAVECHAT";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "LeaveChat";
+    NewLine.МетодПоиска = "LEAVECHAT";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatStructure";
+    NewLine.МетодПоиска = "GETCHATSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - False)";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Get chat fields structure";
 
     Return CompositionTable;
 EndFunction
