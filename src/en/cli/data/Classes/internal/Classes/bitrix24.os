@@ -4153,6 +4153,119 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "EditMessage";
+    NewLine.МетодПоиска = "EDITMESSAGE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Edit dialog message content";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "EditMessage";
+    NewLine.МетодПоиска = "EDITMESSAGE";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "ID of the message to be edited";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "EditMessage";
+    NewLine.МетодПоиска = "EDITMESSAGE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "New message text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "EditMessage";
+    NewLine.МетодПоиска = "EDITMESSAGE";
+    NewLine.Параметр    = "--blocks";
+    NewLine.Описание    = "New blocks array (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "EditMessage";
+    NewLine.МетодПоиска = "EDITMESSAGE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetMessageReaction";
+    NewLine.МетодПоиска = "SETMESSAGEREACTION";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Set or remove reaction mark on the message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetMessageReaction";
+    NewLine.МетодПоиска = "SETMESSAGEREACTION";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "Message ID";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetMessageReaction";
+    NewLine.МетодПоиска = "SETMESSAGEREACTION";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Deletes a dialog message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "ID of the message to be deleted";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetChatStructure";
     NewLine.МетодПоиска = "GETCHATSTRUCTURE";
     NewLine.Параметр    = "--empty";

@@ -391,6 +391,9 @@ EndFunction
 // Get task
 // Get task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.get](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_get.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -407,6 +410,9 @@ EndFunction
 
 // Get tasks list
 // Get tasks list (50 at one response max))
+// 
+// Note
+// Method at API documentation: [tasks.task.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -431,6 +437,9 @@ EndFunction
 // Create task
 // Create new task by fields structure (see GetTaskFieldsStructure)
 // 
+// Note
+// Method at API documentation: [tasks.task.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_add.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FieldsStructure - Structure of Key-Value - Task fields structure (see GetTaskFieldsStructure) - fields
@@ -451,6 +460,9 @@ EndFunction
 
 // Update task
 // Update a task
+// 
+// Note
+// Method at API documentation: [tasks.task.update](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_update.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -475,6 +487,9 @@ EndFunction
 // Delete task
 // Delete task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delete.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -491,6 +506,9 @@ EndFunction
 
 // Attach file to the topic
 // Attaches a file to the selected task
+// 
+// Note
+// Method at API documentation: [tasks.task.files.attach](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_files_attach.php)
 // 
 // Parameters:
 // Parameters:
@@ -516,6 +534,9 @@ EndFunction
 // Approve task
 // Approve task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.approve](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_approve.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -532,6 +553,9 @@ EndFunction
 
 // Disapprove task
 // Disapprove task by ID
+// 
+// Note
+// Method at API documentation: [tasks.task.disapprove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_disapprove.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -550,6 +574,9 @@ EndFunction
 // Complete task
 // Complete task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.complete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_complete.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -566,6 +593,9 @@ EndFunction
 
 // Renew task
 // Returns a task to work by ID
+// 
+// Note
+// Method at API documentation: [tasks.task.renew](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_renew.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -584,6 +614,9 @@ EndFunction
 // Defer task
 // Defer task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.defer](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_defer.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -600,6 +633,9 @@ EndFunction
 
 // Pause task
 // Pause a task by ID
+// 
+// Note
+// Method at API documentation: [tasks.task.pause](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_pause.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -618,6 +654,9 @@ EndFunction
 // Start a task
 // Start a task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.start](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_start.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -634,6 +673,9 @@ EndFunction
 
 // Start watching a task
 // Start watching a task by ID
+// 
+// Note
+// Method at API documentation: [tasks.task.startwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_startwatch.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -652,6 +694,9 @@ EndFunction
 // Stop watching the task
 // Stop watching a task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.stopwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_stopwatch.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -668,6 +713,9 @@ EndFunction
 
 // Delegate task
 // Delegate task to another user
+// 
+// Note
+// Method at API documentation: [tasks.task.delegate](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delegate.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -692,6 +740,9 @@ EndFunction
 // Add task to favorites list
 // Add task to favorites list
 // 
+// Note
+// Method at API documentation: [tasks.task.favorite.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -708,6 +759,9 @@ EndFunction
 
 // Remove task from favorites list
 // Delete task from favorites list
+// 
+// Note
+// Method at API documentation: [tasks.task.favorite.remove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_remove.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -726,6 +780,9 @@ EndFunction
 // Get task history
 // Get history of task changing
 // 
+// Note
+// Method at API documentation: [tasks.task.history.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_history_list.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -742,6 +799,9 @@ EndFunction
 
 // Check task acesses for users
 // Checks the availability of the task for users
+// 
+// Note
+// Method at API documentation: [tasks.task.getaccess](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getaccess.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -766,6 +826,9 @@ EndFunction
 // Mute task
 // Mute task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.mute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -783,6 +846,9 @@ EndFunction
 // Unmute task
 // Unmute task by ID
 // 
+// Note
+// Method at API documentation: [tasks.task.unmute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -799,6 +865,9 @@ EndFunction
 
 // Create tasks dependencies
 // Creates the dependency of one task to another
+// 
+// Note
+// Method at API documentation: [task.dependence.add](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_add.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -826,6 +895,9 @@ EndFunction
 
 // Delete tasks dependencies
 // Removes the dependency of one task to another
+// 
+// Note
+// Method at API documentation: [task.dependence.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_delete.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -889,7 +961,7 @@ EndFunction
 // Updates text of element of tasks checklist
 // 
 // Note
-// Method at API documentation: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
+// Method at API documentation: [task.checklistitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/update.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1055,6 +1127,9 @@ EndFunction
 // Get task fields structure
 // Gets a structure with a description of the fields for creating a task
 // 
+// Note
+// Method at API documentation: [tasks.task.getFields](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Token - String - Access token, when not-webhook method used - token
@@ -1132,6 +1207,9 @@ EndFunction
 // Get comments list for a task
 // Get user comments list for a task
 // 
+// Note
+// Method at API documentation: [task.commentitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -1148,6 +1226,9 @@ EndFunction
 
 // Get task comment
 // Gets task comment data by ID
+// 
+// Note
+// Method at API documentation: [task.commentitem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/get.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1171,6 +1252,9 @@ EndFunction
 
 // Add comment to task
 // Create new comment to the task
+// 
+// Note
+// Method at API documentation: [task.commentitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/add.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1198,6 +1282,9 @@ EndFunction
 
 // Update task comment
 // Changes task comment text
+// 
+// Note
+// Method at API documentation: [task.commentitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/update.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1228,6 +1315,9 @@ EndFunction
 // Delete comment
 // Delete task comment by ID
 // 
+// Note
+// Method at API documentation: [task.commentitem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/delete.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -1251,6 +1341,9 @@ EndFunction
 // Get results list
 // Gets results list for task
 // 
+// Note
+// Method at API documentation: [tasks.task.result.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result.list.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -1267,6 +1360,9 @@ EndFunction
 
 // Create result from comment
 // Create task result from comment
+// 
+// Note
+// Method at API documentation: [tasks.task.result.addFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_addFromComment.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1288,6 +1384,9 @@ EndFunction
 
 // Delete result from comment
 // Deletes task result, created from a comment
+// 
+// Note
+// Method at API documentation: [tasks.task.result.deleteFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_deleteFromComment.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1349,7 +1448,7 @@ EndFunction
 // Add new stage of kanban or My Plan
 // 
 // Note
-// Method at API documentation: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
+// Method at API documentation: [task.stages.add](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_add.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1663,6 +1762,9 @@ EndFunction
 
 // Update task time accounting
 // Update time accounting record data
+// 
+// Note
+// Method at API documentation: [task.elapseditem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/update.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -2816,6 +2918,85 @@ Function SendMessage(Val URL, Val ChatID, Val Text, Val Attachments = "", Val To
     OPI_Tools.AddField("DIALOG_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("MESSAGE" , Text , "String", Parameters);
     OPI_Tools.AddField("ATTACH" , Attachments, "Array", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Edit message
+// Edit dialog message content
+// 
+// Note
+// Method at API documentation: [im.message.update](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12117)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// MessageID - String, Number - ID of the message to be edited - message
+// Text - String - New message text - text
+// Attachments - Array of Structure - New blocks array - blocks
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function EditMessage(Val URL, Val MessageID, Val Text = "", Val Attachments = "", Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.message.update");
+    
+    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
+    OPI_Tools.AddField("MESSAGE" , Text , "String", Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments , "Array", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Set message reaction
+// Set or remove reaction mark on the message
+// 
+// Note
+// Method at API documentation: [im.message.like](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12121)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// MessageID - String, Number - Message ID - message
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function SetMessageReaction(Val URL, Val MessageID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.message.like");
+    
+    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Delete message
+// Deletes a dialog message
+// 
+// Note
+// Method at API documentation: [im.message.delete](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12119)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// MessageID - String, Number - ID of the message to be deleted - message
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteMessage(Val URL, Val MessageID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.message.delete");
+    
+    OPI_Tools.AddField("MESSAGE_ID", MessageID , "String", Parameters);
         
     Response = OPI_Tools.Post(URL, Parameters);
     
