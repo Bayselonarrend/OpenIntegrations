@@ -1030,6 +1030,28 @@ Function RenewTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Toke
     
 EndFunction
 
+// Get users daily tasks plan
+// Gets the task plan for the current users day
+// 
+// Note
+// Method at API documentation: [task.planner.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/planner/getlist.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetDailyPlan(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.planner.getlist");
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // Get task fields structure
 // Gets a structure with a description of the fields for creating a task
 // 
@@ -1512,6 +1534,170 @@ Function MoveTaskToKanbanStage(Val URL
     
     Return Response;
      
+EndFunction
+
+#EndRegion
+
+#Region Timekeeping
+
+// Add task time accounting
+// Adds information about the user's time spent to the task
+// 
+// Note
+// Method at API documentation: [task.elapseditem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/add.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - String, Number - ID of task for time accounting - task
+// Time - String, Number - Time spent in seconds - amount
+// UserID - String, Number - ID of user for time accounting - user
+// Text - String - Comment text - text
+// SetupDate - String - Date the record was set - date
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AddTaskTimeAccounting(Val URL
+    , Val TaskID
+    , Val Time
+    , Val UserID = ""
+    , Val Text = ""
+    , Val SetupDate = ""
+    , Val Token = "") Export
+        
+    Parameters = NormalizeAuth(URL, Token, "task.elapseditem.add");
+    Fields = New Structure;
+        
+    OPI_Tools.AddField("SECONDS" , Time , "String" , Fields);
+    OPI_Tools.AddField("COMMENT_TEXT", Text , "String" , Fields);
+    OPI_Tools.AddField("USER_ID" , UserID, "String" , Fields);
+    OPI_Tools.AddField("CREATED_DATE", SetupDate , "DateISO", Fields);
+   
+    OPI_Tools.AddField("TASKID" , TaskID, "String" , Parameters);
+    OPI_Tools.AddField("ARFIELDS", Fields , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+        
+EndFunction
+
+// Delete task time accounting
+// Deletes record of time accounting
+// 
+// Note
+// Method at API documentation: [task.elapseditem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/delete.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - String, Number - ID of task for time accounting - task
+// RecordID - String, Number - Time record ID - record
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteTaskTimeAccounting(Val URL, Val TaskID, Val RecordID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.elapseditem.delete");
+    
+    OPI_Tools.AddField("TASKID", TaskID, "String", Parameters);
+    OPI_Tools.AddField("ITEMID", RecordID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get task time accounting list
+// Get list of time accounting records for task
+// 
+// Note
+// Method at API documentation: [task.elapseditem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/getlist.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - String, Number - Task ID - task
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskTimeAccountingList(Val URL, Val TaskID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.elapseditem.getlist");
+    
+    OPI_Tools.AddField("TASKID", TaskID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get task time accounting
+// Get time accounting record data
+// 
+// Note
+// Method at API documentation: [task.elapseditem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/get.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - String, Number - Task ID - task
+// RecordID - String, Number - Time record ID - record
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskTimeAccounting(Val URL, Val TaskID, Val RecordID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.elapseditem.get");
+    
+    OPI_Tools.AddField("TASKID", TaskID, "String", Parameters);
+    OPI_Tools.AddField("ITEMID", RecordID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Update task time accounting
+// Update time accounting record data
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// TaskID - String, Number - Task ID - task
+// RecordID - String, Number - Time record ID - record
+// Time - String, Number - Time spent in seconds - amount
+// Text - String - Comment text - text
+// SetupDate - String - Date the record was set - date
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateTaskTimeAccounting(Val URL
+    , Val TaskID
+    , Val RecordID
+    , Val Time
+    , Val Text = ""
+    , Val SetupDate = ""
+    , Val Token = "") Export
+        
+    Parameters = NormalizeAuth(URL, Token, "task.elapseditem.update");
+    Fields = New Structure;
+        
+    OPI_Tools.AddField("SECONDS" , Time , "String" , Fields);
+    OPI_Tools.AddField("COMMENT_TEXT", Text , "String" , Fields);
+    OPI_Tools.AddField("CREATED_DATE", SetupDate , "DateISO", Fields);
+   
+    OPI_Tools.AddField("TASKID" , TaskID, "String" , Parameters);
+    OPI_Tools.AddField("ITEMID" , RecordID, "String" , Parameters);
+    OPI_Tools.AddField("ARFIELDS", Fields , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+        
 EndFunction
 
 #EndRegion
@@ -2138,6 +2324,110 @@ EndFunction
 
 #EndRegion
 
+#Region ChatsAndMessages
+
+// Create chat
+// Creates a new chat based on the field structure
+// 
+// Note
+// Method at API documentation: [im.chat.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12093)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatStructure - Structure of Key-Value - Chat fields structure. See GetChatStructure - fields 
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateChat(Val URL, Val ChatStructure, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.chat.add");
+    
+    For Each Element In ChatStructure Do
+        Parameters.Insert(Element.Key, Element.Value);
+    EndDo;
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+       
+EndFunction
+
+// Get chats users
+// Gets the list of chat users by ID
+// 
+// Note
+// Method at API documentation: [im.chat.user.list](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12095)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetChatUsers(Val URL, Val ChatID, Val Token = "") Export
+    
+    Response = ChatManagment(URL, ChatID, "im.chat.user.list", Token);  
+    Return Response;
+    
+EndFunction
+
+// Leave chat
+// Removes the current user from the chat room
+// 
+// Note
+// Method at API documentation: [im.chat.leave](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12101)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function LeaveChat(Val URL, Val ChatID, Val Token = "") Export
+    
+    Response = ChatManagment(URL, ChatID, "im.chat.leave", Token);  
+    Return Response;
+    
+EndFunction
+
+// Get chats structure
+// Get chat fields structure
+// 
+// Parameters:
+// Clear - Boolean - True > structure with empty values, False > field types at values - empty
+// 
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetChatStructure(Val Clear = False) Export
+    
+    OPI_TypeConversion.GetBoolean(Clear);
+    
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE" , "<Chat type OPEN (Public) | CHAT (Private)>");
+    ChatStructure.Insert("TITLE" , "<Chat title>");
+    ChatStructure.Insert("DESCRIPTION", "<Chat description>");
+    ChatStructure.Insert("COLOR" , "<Chat color: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, ...>");
+    ChatStructure.Insert("MESSAGE" , "<First chat message>");
+    ChatStructure.Insert("USERS" , "<Chat members array>");
+    ChatStructure.Insert("AVATAR" , "<Base64 chat picture>");
+    ChatStructure.Insert("OWNER_ID" , "<ID of chat owner. Current user by default>");
+            
+    If Clear Then
+        For Each Element In ChatStructure Do
+            Element.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ChatStructure;
+    
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -2250,6 +2540,17 @@ Function ChecklistElementManagment(Val URL, Val TaskID, Val ElementID, Val Metho
     Response = OPI_Tools.Post(URL, Parameters);
     
     Return Response;
+    
+EndFunction
+
+Function ChatManagment(Val URL, Val ChatID, Val Method, Val Token = "")
+
+    Parameters = NormalizeAuth(URL, Token, Method);
+    OPI_Tools.AddField("CHAT_ID", ChatID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;   
     
 EndFunction
 
