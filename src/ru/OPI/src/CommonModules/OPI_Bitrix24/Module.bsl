@@ -391,6 +391,9 @@
 // Получить задачу
 // Получает задачу по ID
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.get](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_get.php)
+// 
 // Параметры:
 //  URL       - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
 //  IDЗадачи  - Число,Строка - ID задачи                                                        - task
@@ -407,6 +410,9 @@
 
 // Получить список задач
 // Получает список задач (50 шт. за запрос максимум) с фильтром или без (см. ПолучитьСтруктуруФильтраЗадач)
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php)
 // 
 // Параметры:
 //  URL      - Строка                     - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
@@ -431,6 +437,9 @@
 // Создать задачу
 // Создает новую задачу по структуре полей (см. ПолучитьСтруктуруЗадачи)
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_add.php)
+// 
 // Параметры:
 //  URL            - Строка - URL внешнего вебхука или адрес Bitrix24 при использовании токена         - url
 //  СтруктураПолей - Структура Из КлючИЗначение - Структура полей задачи (см. ПолучитьСтруктуруЗадачи) - fields
@@ -451,6 +460,9 @@
 
 // Изменить задачу
 // Изменяет существующую задачу
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.update](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_update.php)
 // 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -475,6 +487,9 @@
 // Удалить задачу
 // Удаляет задачу по ID
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delete.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -491,6 +506,9 @@
 
 // Добавить файл в задачу
 // Прикрепляет файл к выбранной задаче
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.files.attach](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_files_attach.php)
 // 
 // Параметры:
 // Параметры:
@@ -516,6 +534,9 @@
 // Принять задачу
 // Принимает задачу по ID
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.approve](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_approve.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -532,6 +553,9 @@
 
 // Отклонить задачу
 // Отклоняет задачу по ID
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.disapprove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_disapprove.php)
 // 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -550,6 +574,9 @@
 // Завершить задачу
 // Завершает задачу по ID
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.complete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_complete.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -566,6 +593,9 @@
 
 // Возобновить задачу
 // Возвращает в работу задачу по ID
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.renew](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_renew.php)
 // 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -584,6 +614,9 @@
 // Отложить задачу
 // Откладывает задачу по ID
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.defer](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_defer.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -600,6 +633,9 @@
 
 // Приостановить задачу
 // Приостанавливает задачу по ID
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.pause](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_pause.php)
 // 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -618,6 +654,9 @@
 // Начать выполнение задачи
 // Начинает выполнение задачи по ID
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.start](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_start.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -634,6 +673,9 @@
 
 // Начать наблюдать за задачей
 // Начинает наблюдение за задачей по ID
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.startwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_startwatch.php)
 // 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -652,6 +694,9 @@
 // Прекратить наблюдать за задачей
 // Прекращает наблюдение за задчей по ID
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.stopwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_stopwatch.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -668,6 +713,9 @@
 
 // Делегировать задачу
 // Делегирует задачу на другого пользователя
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.delegate](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delegate.php)
 // 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -692,6 +740,9 @@
 // Добавить задачу в избранное
 // Добавляет задачу в список избранного
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.favorite.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -708,6 +759,9 @@
 
 // Убрать задачу из избранного
 // Удаляет задачу из списка избранного
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.favorite.remove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_remove.php)
 // 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -726,6 +780,9 @@
 // Получить историю задачи
 // Получает историю изменений задачи
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.history.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_history_list.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -742,6 +799,9 @@
 
 // Проверить доступ к задаче
 // Проверяет доступность задачи для пользователей
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.getaccess](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getaccess.php)
 // 
 // Параметры:
 //  URL          - Строка           - URL внешнего вебхука или адрес Bitrix24 при использовании токена  - url
@@ -766,6 +826,9 @@
 // Отключить звук задачи
 // Устанавливает режим Без звука для задачи
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.mute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -783,6 +846,9 @@
 // Включить звук задачи
 // Отключает режим Без звука для задачи
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.unmute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
+// 
 // Параметры:
 //  URL            - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
 //  IDЗадачи       - Число,Строка - ID задачи                                                          - task
@@ -799,6 +865,9 @@
 
 // Создать зависимость задач
 // Создает зависимость одной задачи от другой
+// 
+// Примечание:
+// Метод в документации API: [task.dependence.add](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_add.php)
 // 
 // Параметры:
 //  URL         - Строка        - URL внешнего вебхука или адрес Bitrix24 при использовании токена      - url
@@ -826,6 +895,9 @@
 
 // Удалить зависимость задач
 // Удаляет зависимость одной задачи от другой
+// 
+// Примечание:
+// Метод в документации API: [task.dependence.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_delete.php)
 // 
 // Параметры:
 //  URL         - Строка        - URL внешнего вебхука или адрес Bitrix24 при использовании токена      - url
@@ -889,7 +961,7 @@
 // Изменяет текст элемента чеклиста задачи
 // 
 // Примечание:
-// Метод в документации API: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
+// Метод в документации API: [task.checklistitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/update.php)
 // 
 // Параметры:
 //  URL            - Строка        - URL внешнего вебхука или адрес Bitrix24 при использовании токена   - url
@@ -1055,6 +1127,9 @@
 // Получить структуру задачи
 // Получает структуру с описанем полей для создания задачи
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.getFields](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)
+// 
 // Параметры:
 //  URL       - Строка - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
 //  Токен     - Строка - Токен авторизации, если используется не вебхук                   - token
@@ -1132,6 +1207,9 @@
 // Получить список комментариев задачи
 // Полчает список комментариев пользователей к задаче по ID
 // 
+// Примечание:
+// Метод в документации API: [task.commentitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php)
+// 
 // Параметры:
 //  URL       - Строка         - URL внешнего вебхука или адрес Bitrix24 при использовании токена  - url
 //  IDЗадачи  - Число, Строка  - ID задачи                                                         - task
@@ -1148,6 +1226,9 @@
 
 // Получить комменатрий задачи
 // Получает информацию о комментарии задачи по ID
+// 
+// Примечание:
+// Метод в документации API: [task.commentitem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/get.php)
 // 
 // Параметры:
 //  URL           - Строка         - URL внешнего вебхука или адрес Bitrix24 при использовании токена  - url
@@ -1171,6 +1252,9 @@
 
 // Добавить комментарий задачи
 // Создает комментарий к задаче
+// 
+// Примечание:
+// Метод в документации API: [task.commentitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/add.php)
 // 
 // Параметры:
 //  URL       - Строка         - URL внешнего вебхука или адрес Bitrix24 при использовании токена  - url
@@ -1198,6 +1282,9 @@
 
 // Изменить комментарий задачи
 // Изменяет текст комментария задачи
+// 
+// Примечание:
+// Метод в документации API: [task.commentitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/update.php)
 // 
 // Параметры:
 //  URL           - Строка         - URL внешнего вебхука или адрес Bitrix24 при использовании токена  - url
@@ -1228,6 +1315,9 @@
 // Удалить комментарий
 // Удаляет существующий комментарий задачи
 // 
+// Примечание:
+// Метод в документации API: [task.commentitem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/delete.php)
+// 
 // Параметры:
 //  URL                  - Строка         - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
 //  IDЗадачи             - Число, Строка  - ID задачи                                                        - task
@@ -1251,6 +1341,9 @@
 // Получить список результатов
 // Получает список результатов задачи
 // 
+// Примечание:
+// Метод в документации API: [tasks.task.result.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result.list.php)
+// 
 // Параметры:
 //  URL       - Строка       - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
 //  IDЗадачи  - Число,Строка - ID задачи                                                        - task
@@ -1267,6 +1360,9 @@
 
 // Создать результат из комментария
 // Создает результат задачи из комментария
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.result.addFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_addFromComment.php)
 // 
 // Параметры:
 //  URL                  - Строка         - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
@@ -1288,6 +1384,9 @@
 
 // Удалить результат из комментария
 // Удаляет ранее созданный результат из комментария
+// 
+// Примечание:
+// Метод в документации API: [tasks.task.result.deleteFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_deleteFromComment.php)
 // 
 // Параметры:
 //  URL                  - Строка         - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
@@ -1349,7 +1448,7 @@
 // Добавляет стабию канбана или Моего плана
 // 
 // Примечание:
-// Метод в документации API: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
+// Метод в документации API: [task.stages.add](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_add.php)
 // 
 // Параметры:
 //  URL              - Строка        - URL внешнего вебхука или адрес Bitrix24 при использовании токена     - url
@@ -1663,6 +1762,9 @@
 
 // Изменить трудозатраты задачи
 // Изменяет данные записи о трудозатратах задачи
+// 
+// Примечание:
+// Метод в документации API: [task.elapseditem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/update.php)
 // 
 // Параметры:
 //  URL            - Строка        - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
