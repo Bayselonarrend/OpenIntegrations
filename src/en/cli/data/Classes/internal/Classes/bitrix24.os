@@ -3855,12 +3855,352 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMessagesList";
+    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMessagesList";
+    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMessagesList";
+    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
+    NewLine.Параметр    = "--last";
+    NewLine.Описание    = "Id of last message (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMessagesList";
+    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
+    NewLine.Параметр    = "--first";
+    NewLine.Описание    = "ID of first message (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMessagesList";
+    NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsReaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Mark current and all previous messages as readed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsReaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsReaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "Id of last readed message";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsReaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASREADED";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsUnreaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Mark current and all messages after as unreaded";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsUnreaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsUnreaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "ID of last unreaded message";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "MarkMessageAsUnreaded";
+    NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDialog";
+    NewLine.МетодПоиска = "GETDIALOG";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Get chat data by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDialog";
+    NewLine.МетодПоиска = "GETDIALOG";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDialog";
+    NewLine.МетодПоиска = "GETDIALOG";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMembersList";
+    NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Get chat members list";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMembersList";
+    NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatMembersList";
+    NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendWritingNotification";
+    NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Send "Writing..." status to dialog..."";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendWritingNotification";
+    NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendWritingNotification";
+    NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "ReadAll";
+    NewLine.МетодПоиска = "READALL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Mark all message as readed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "ReadAll";
+    NewLine.МетодПоиска = "READALL";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendMessage";
+    NewLine.МетодПоиска = "SENDMESSAGE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Send message to dialog";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendMessage";
+    NewLine.МетодПоиска = "SENDMESSAGE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID (as chatXXX) or User ID (as XXX)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendMessage";
+    NewLine.МетодПоиска = "SENDMESSAGE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Message text";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendMessage";
+    NewLine.МетодПоиска = "SENDMESSAGE";
+    NewLine.Параметр    = "--blocks";
+    NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendMessage";
+    NewLine.МетодПоиска = "SENDMESSAGE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetChatStructure";
     NewLine.МетодПоиска = "GETCHATSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - False)";
     NewLine.Область     = "Chats and messages";
     NewLine.ОписаниеМетода   = "Get chat fields structure";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetPictureBlock";
+    NewLine.МетодПоиска = "GETPICTUREBLOCK";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Picture name";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Make picture block for SendMessage method";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetPictureBlock";
+    NewLine.МетодПоиска = "GETPICTUREBLOCK";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of sending picture";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFileBlock";
+    NewLine.МетодПоиска = "GETFILEBLOCK";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Picture name";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Make file block for SendMessage method";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetFileBlock";
+    NewLine.МетодПоиска = "GETFILEBLOCK";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "File URL";
+    NewLine.Область     = "Chats and messages";
 
     Return CompositionTable;
 EndFunction
