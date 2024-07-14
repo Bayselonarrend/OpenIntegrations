@@ -15,19 +15,19 @@ The implemented methods perform specific tasks (such as *SendMessage()* or *Crea
 
 Fast navigation:
  <div>
- <a href="https://en.openintegrations.dev/docs/Telegram/"><img src={require('../../static/img/APIs/Telegram.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/VK/"><img src={require('../../static/img/APIs/VK.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Viber/"><img src={require('../../static/img/APIs/Viber.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Twitter/"><img src={require('../../static/img/APIs/Twitter.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Notion/"><img src={require('../../static/img/APIs/Notion.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Yandex_Disk/"><img src={require('../../static/img/APIs/YandexDisk.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Google_Calendar/"><img src={require('../../static/img/APIs/GoogleCalendar.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Google_Drive/"><img src={require('../../static/img/APIs/GoogleDrive.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Google_Sheets/"><img src={require('../../static/img/APIs/GoogleSheets.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Slack/"><img src={require('../../static/img/APIs/Slack.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Airtable/"><img src={require('../../static/img/APIs/Airtable.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="32"/></a>
- <a href="https://en.openintegrations.dev/docs/Bitrix24/"><img src={require('../../static/img/APIs/Bitrix24.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Telegram/"><img src={require('../../static/img/APIs/Telegram.png').default} width="32"/></a>
+ <a href="/docs/Instructions/VK/"><img src={require('../../static/img/APIs/VK.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Viber/"><img src={require('../../static/img/APIs/Viber.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Twitter/"><img src={require('../../static/img/APIs/Twitter.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Notion/"><img src={require('../../static/img/APIs/Notion.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Yandex_Disk/"><img src={require('../../static/img/APIs/YandexDisk.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Google_Calendar/"><img src={require('../../static/img/APIs/GoogleCalendar.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Google_Drive/"><img src={require('../../static/img/APIs/GoogleDrive.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Google_Sheets/"><img src={require('../../static/img/APIs/GoogleSheets.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Slack/"><img src={require('../../static/img/APIs/Slack.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Airtable/"><img src={require('../../static/img/APIs/Airtable.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="32"/></a>
+ <a href="/docs/Instructions/Bitrix24/"><img src={require('../../static/img/APIs/Bitrix24.png').default} width="32"/></a>
 </div> 
 
 <br/>
