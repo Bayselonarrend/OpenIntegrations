@@ -2509,7 +2509,7 @@
 "Тестовая таблица (доп": "Test table (new",
 "Новый текст сообщения": "New message text",
 "ПолучитьЗначенияЯчеек": "GetCellValues",
-"ИзменитьЦветЧата (хук": "ChangeChatColor",
+"ИзменитьЦветЧата (хук": "ChangeChatColor (wh",
 "ПолучитьЧеклистЗадачи": "GetTasksChecklist",
 "ДобавитьСерверныйТест": "AddServerTest",
 "ВыполнитьЗапросСТелом": "ExecuteRequestWithBody",
