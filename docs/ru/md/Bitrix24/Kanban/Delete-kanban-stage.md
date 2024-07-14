@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Удалить стадию канбана
@@ -21,7 +21,10 @@ sidebar_position: 2
 
 <br/>
 
-
+:::tip
+Метод в документации API: [task.stages.delete](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_delete.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

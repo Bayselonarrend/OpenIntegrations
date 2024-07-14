@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # ID of the stage to be deleted
@@ -21,7 +21,10 @@ sidebar_position: 2
 
 <br/>
 
-
+:::tip
+Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_delete.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

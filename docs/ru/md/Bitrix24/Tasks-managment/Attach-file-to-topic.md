@@ -21,7 +21,10 @@ sidebar_position: 6
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.files.attach](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_files_attach.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

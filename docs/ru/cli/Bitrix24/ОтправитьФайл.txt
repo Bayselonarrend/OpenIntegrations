@@ -1,0 +1,1 @@
+﻿oint bitrix24 ОтправитьФайл --url %url% --chat %chat% --fileid %fileid% --description %description% --token %token%

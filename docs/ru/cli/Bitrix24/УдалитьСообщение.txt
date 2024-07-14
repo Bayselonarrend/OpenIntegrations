@@ -1,0 +1,1 @@
+﻿oint bitrix24 УдалитьСообщение --url %url% --message %message% --token %token%

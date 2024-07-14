@@ -21,7 +21,10 @@ sidebar_position: 3
 
 <br/>
 
-
+:::tip
+Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/add.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

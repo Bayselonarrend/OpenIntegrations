@@ -1,0 +1,20 @@
+﻿    URL         = ПараметрыФункции["Bitrix24_URL"];
+    IDСообщения = ПараметрыФункции["Bitrix24_ChatMessageID"];
+    
+    Текст    = "Новый текст сообщения";
+
+    Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
+        
+            
+    URL            = ПараметрыФункции["Bitrix24_Domain"];
+    Токен          = ПараметрыФункции["Bitrix24_Token"];
+    IDСообщения    = ПараметрыФункции["Bitrix24_UserMessageID"];
+    
+    Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";   
+    
+    Вложения = Новый Массив;
+    Вложения.Добавить(OPI_Bitrix24.ПолучитьБлокКартинки("Картинка1", Картинка));
+    Вложения.Добавить(OPI_Bitrix24.ПолучитьБлокФайла("Файл1.docx", Файл));
+    
+    Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст, Вложения, Токен);

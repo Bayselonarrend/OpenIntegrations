@@ -20,7 +20,10 @@ sidebar_position: 7
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.approve](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_approve.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

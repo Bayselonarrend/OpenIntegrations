@@ -14,7 +14,7 @@ sidebar_position: 1
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | Text | --text | String | Text of post |
  | Visibility | --vision | String | Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group |
- | Files | --files | String | Attachment data where key > filename, value > file path or binary data |
+ | Files | --files | Map Of KeyAndValue | Key > file name, value > path or binary data |
  | Title | --title | String | Post title |
  | Important | --important | Boolean | Mark post as important |
  | Token | --token | String | Access token, when not-webhook method used |

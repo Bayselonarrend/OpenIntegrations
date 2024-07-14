@@ -1,0 +1,1 @@
+﻿oint bitrix24 СменитьВладельцаЧата --url %url% --chat %chat% --user %user% --token %token%
