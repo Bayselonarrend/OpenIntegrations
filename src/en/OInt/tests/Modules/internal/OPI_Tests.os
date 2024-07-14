@@ -8013,7 +8013,7 @@ Procedure Bitrix24_UpdateTaskComment(FunctionParameters)
         
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskComment (wh)", "Bitrix24");
     
-    Check_BitrixTrue(Result); // SKIP                                                                                
+    Check_BitrixTrue(Result); // SKIP
         
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -8184,7 +8184,7 @@ Procedure Bitrix24_MoveTaskToKanbanStage(FunctionParameters)
     
     Check_BitrixTrue(Result);
     
-    OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, 2, , , Token)
+    OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, 2, , , Token);
     
 EndProcedure
 
@@ -8944,12 +8944,11 @@ Procedure Bitrix24_GetChatMessagesList(FunctionParameters)
     OPI_TestDataRetrieval.WriteParameter("Bitrix24_ChatMessageID", MessageID); // SKIP  
     FunctionParameters.Insert("Bitrix24_ChatMessageID", MessageID); // SKIP
 
-    
     URL = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
     UserID = 10;
     
-    Result = OPI_Bitrix24.GetChatMessagesList(URL, UserID, , 0,Token);
+    Result = OPI_Bitrix24.GetChatMessagesList(URL, UserID, , 0, Token);
     
     // END
    
@@ -8980,7 +8979,7 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
     UserID = 10;
     MessageID = FunctionParameters["Bitrix24_UserMessageID"];
     
-    Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID,Token);
+    Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);
     
     // END
    
