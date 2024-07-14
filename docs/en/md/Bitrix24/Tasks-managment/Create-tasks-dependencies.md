@@ -29,8 +29,8 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
- FromID = "500";
- DestinationID = "502";
+ FromID = "720";
+ DestinationID = "722";
  LinkType = 0;
  
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
@@ -38,12 +38,13 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
  Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
  
  
- FromID = "502";
- DestinationID = "500";
+ 
+ FromID = "722";
+ DestinationID = "720";
  LinkType = 2;
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "56898d66006e9f06006b12e400000001000...";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```

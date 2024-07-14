@@ -28,17 +28,17 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  URL         = ПараметрыФункции["Bitrix24_URL"];
-  IDЧата      = "chat" + ПараметрыФункции["Bitrix24_HookChatID"];
-  IDСообщения = ПараметрыФункции["Bitrix24_ChatMessageID"];
+  URL         = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDЧата      = "chat" + "264";
+  IDСообщения = "5506";
   
   Результат = OPI_Bitrix24.ОтметитьСообщениеКакНепрочитанное(URL, IDЧата, IDСообщения);
   
   
-  URL            = ПараметрыФункции["Bitrix24_Domain"];
-  Токен          = ПараметрыФункции["Bitrix24_Token"];
+  URL            = "b24-ar17wx.bitrix24.by";
+  Токен          = "adf89366006e9f06006b12e400000001000...";
   IDПользователя = 10;
-  IDСообщения    = ПараметрыФункции["Bitrix24_UserMessageID"];
+  IDСообщения    = "5508";
   
   Результат = OPI_Bitrix24.ОтметитьСообщениеКакНепрочитанное(URL, IDПользователя, IDСообщения, Токен);
 ```

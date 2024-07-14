@@ -28,13 +28,13 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
 
 ```bsl title="Code example"
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- FileID = "2484";
+ FileID = "3272";
  
  Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
  
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "56898d66006e9f06006b12e400000001000...";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID, Token);
 ```
