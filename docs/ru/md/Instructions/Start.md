@@ -26,7 +26,8 @@ sidebar_class_name: NachaloRaboty
   <a href="https://openintegrations.dev/docs/Google_Sheets/"><img src={require('../../static/img/APIs/GoogleSheets.png').default} width="32"/></a>
   <a href="https://openintegrations.dev/docs/Slack/"><img src={require('../../static/img/APIs/Slack.png').default} width="32"/></a>
   <a href="https://openintegrations.dev/docs/Airtable/"><img src={require('../../static/img/APIs/Airtable.png').default} width="32"/></a>
-   <a href="https://openintegrations.dev/docs/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="32"/></a>
+  <a href="https://openintegrations.dev/docs/Bitrix24/"><img src={require('../../static/img/APIs/Bitrix24.png').default} width="32"/></a>
 </div> 
 
 <br/>
