@@ -22,7 +22,10 @@ sidebar_position: 24
 
 <br/>
 
-
+:::tip
+Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_delete.php)
+:::
+<br/>
 
 
 	
@@ -34,4 +37,18 @@ sidebar_position: 24
 
 ```
 
-
+```json title="Result"
+{
+ "result": [],
+ "time": {
+ "start": 1720816479.3837,
+ "finish": 1720816479.41872,
+ "duration": 0.0350160598754883,
+ "processing": 0.00787091255187988,
+ "date_start": "2024-07-12T20:34:39+00:00",
+ "date_finish": "2024-07-12T20:34:39+00:00",
+ "operating_reset_at": 1720817079,
+ "operating": 0
+ }
+}
+```

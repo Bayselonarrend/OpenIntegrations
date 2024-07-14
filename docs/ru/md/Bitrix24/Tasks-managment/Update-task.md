@@ -21,7 +21,10 @@ sidebar_position: 4
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.update](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_update.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

@@ -1,0 +1,1 @@
+﻿oint bitrix24 ОтключитьУведомленияЧата --url %url% --chat %chat% --token %token%

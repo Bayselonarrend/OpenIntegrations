@@ -1,0 +1,1 @@
+﻿oint bitrix24 ОтметитьСообщениеКакНепрочитанное --url %url% --chat %chat% --message %message% --token %token%

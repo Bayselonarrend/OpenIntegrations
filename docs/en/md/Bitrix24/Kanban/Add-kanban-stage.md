@@ -24,7 +24,10 @@ sidebar_position: 1
 
 <br/>
 
-
+:::tip
+Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_add.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

@@ -1,0 +1,1 @@
+﻿oint bitrix24 ПолучитьСписокСообщенийЧата --url %url% --chat %chat% --last %last% --first %first% --token %token%

@@ -20,7 +20,10 @@ sidebar_position: 18
 
 <br/>
 
-
+:::tip
+Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_remove.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

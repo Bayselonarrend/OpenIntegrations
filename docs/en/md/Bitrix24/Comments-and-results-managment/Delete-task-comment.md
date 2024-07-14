@@ -21,7 +21,10 @@ sidebar_position: 5
 
 <br/>
 
-
+:::tip
+Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/delete.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"
