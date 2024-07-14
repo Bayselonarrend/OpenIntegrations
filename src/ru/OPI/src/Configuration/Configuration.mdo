@@ -57,7 +57,6 @@
   <commonModules>CommonModule.OPI_Slack</commonModules>
   <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Dropbox</commonModules>
-  <commonModules>CommonModule.OPI_Bitrix24</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
 </mdclass:Configuration>

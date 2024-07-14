@@ -22,7 +22,10 @@ sidebar_position: 23
 
 <br/>
 
-
+:::tip
+Метод в документации API: [task.dependence.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_add.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

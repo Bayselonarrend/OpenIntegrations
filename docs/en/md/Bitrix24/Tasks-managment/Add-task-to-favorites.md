@@ -20,7 +20,10 @@ sidebar_position: 17
 
 <br/>
 
-
+:::tip
+Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

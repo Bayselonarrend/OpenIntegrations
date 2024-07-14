@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Получить стадии канбана
@@ -21,7 +21,10 @@ sidebar_position: 3
 
 <br/>
 
-
+:::tip
+Метод в документации API: [task.stages.get](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_get.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

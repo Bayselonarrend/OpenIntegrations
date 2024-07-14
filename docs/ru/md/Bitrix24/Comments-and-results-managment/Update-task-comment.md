@@ -22,7 +22,10 @@ sidebar_position: 4
 
 <br/>
 
-
+:::tip
+Метод в документации API: [task.commentitem.update](https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/update.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

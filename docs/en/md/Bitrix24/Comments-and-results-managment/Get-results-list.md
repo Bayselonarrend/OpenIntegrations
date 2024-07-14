@@ -20,7 +20,10 @@ sidebar_position: 6
 
 <br/>
 
-
+:::tip
+Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result.list.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

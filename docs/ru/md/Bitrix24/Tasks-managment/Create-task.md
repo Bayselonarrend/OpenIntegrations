@@ -20,7 +20,10 @@ sidebar_position: 3
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_add.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

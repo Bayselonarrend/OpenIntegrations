@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 25
+sidebar_position: 26
 ---
 
 # Получить структуру задачи
@@ -19,7 +19,10 @@ sidebar_position: 25
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.getFields](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

@@ -15,7 +15,7 @@ sidebar_position: 2
  | PostID | --postid | String, Number | Post ID |
  | Text | --text | String | Text of post |
  | Visibility | --vision | String | Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group |
- | Files | --files | String | Attachment data where key > filename, value > file path or binary data |
+ | Files | --files | Map Of KeyAndValue | Key > file name, value > path or binary data |
  | Title | --title | String | Post title |
  | Token | --token | String | Access token, when not-webhook method used |
 

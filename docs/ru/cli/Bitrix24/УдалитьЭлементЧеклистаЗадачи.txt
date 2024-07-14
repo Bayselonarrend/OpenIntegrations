@@ -1,0 +1,1 @@
+﻿oint bitrix24 УдалитьЭлементЧеклистаЗадачи --url %url% --task %task% --element %element% --token %token%

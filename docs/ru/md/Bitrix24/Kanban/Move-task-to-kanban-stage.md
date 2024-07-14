@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Перенести задачу в стадию канбана
@@ -23,7 +23,10 @@ sidebar_position: 4
 
 <br/>
 
-
+:::tip
+Метод в документации API: [task.stages.movetask](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_movetask.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

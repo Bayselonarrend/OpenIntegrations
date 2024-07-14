@@ -21,7 +21,10 @@ sidebar_position: 16
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delegate.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

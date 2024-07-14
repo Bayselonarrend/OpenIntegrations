@@ -1,0 +1,1 @@
+﻿oint bitrix24 ДобавитьПользователейВЧат --url %url% --chat %chat% --users %users% --hide %hide% --token %token%

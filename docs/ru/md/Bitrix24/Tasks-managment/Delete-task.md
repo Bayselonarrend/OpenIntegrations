@@ -20,7 +20,10 @@ sidebar_position: 5
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delete.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

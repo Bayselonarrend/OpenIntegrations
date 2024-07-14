@@ -20,7 +20,10 @@ sidebar_position: 10
 
 <br/>
 
-
+:::tip
+Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_renew.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

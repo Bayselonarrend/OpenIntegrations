@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Get kanban stages
@@ -21,7 +21,10 @@ sidebar_position: 3
 
 <br/>
 
-
+:::tip
+Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_get.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"
@@ -517,7 +520,7 @@ sidebar_position: 3
  },
  "2": {
  "ID": "2",
- "TITLE": "Not withplanandроinаны",
+ "TITLE": "Not planned",
  "SORT": "4000",
  "COLOR": "00C4FB",
  "SYSTEM_TYPE": "",
@@ -529,7 +532,7 @@ sidebar_position: 3
  },
  "4": {
  "ID": "4",
- "TITLE": "Сделаю to notделе",
+ "TITLE": "For this week",
  "SORT": "4100",
  "COLOR": "47D1E2",
  "SYSTEM_TYPE": "",
