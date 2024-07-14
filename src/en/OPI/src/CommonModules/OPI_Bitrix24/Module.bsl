@@ -161,7 +161,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Text - String - Text of post - text
 // Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
-// Files - String - Attachment data where key > filename, value > file path or binary data - files
+// Files - Map Of KeyAndValue - Key > file name, value > path or binary data - files
 // Title - String - Post title - title
 // Important - Boolean - Mark post as important - important 
 // Token - String - Access token, when not-webhook method used - token
@@ -215,7 +215,7 @@ EndFunction
 // PostID - String, Number - Post ID - postid
 // Text - String - Text of post - text
 // Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
-// Files - String - Attachment data where key > filename, value > file path or binary data - files
+// Files - Map Of KeyAndValue - Key > file name, value > path or binary data - files
 // Title - String - Post title - title
 // Token - String - Access token, when not-webhook method used - token
 // 
@@ -923,6 +923,108 @@ Function DeleteTasksDependencies(Val URL, Val FromID, Val DestinationID, Val Lin
      
 EndFunction
 
+// Get users daily tasks plan
+// Gets the task plan for the current users day
+// 
+// Note
+// Method at API documentation: [task.planner.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/planner/getlist.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetDailyPlan(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "task.planner.getlist");
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Get task fields structure
+// Gets a structure with a description of the fields for creating a task
+// 
+// Note
+// Method at API documentation: [tasks.task.getFields](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTaskFieldsStructure(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.getFields");
+    Response = OPI_Tools.Get(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction    
+
+// Get structure of tasks filter
+// Return filter structure for GetTasksList
+// 
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// 
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetTasksFilterStructure(Val Clear = False) Export
+    
+    // More
+    // https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php
+    
+    OPI_TypeConversion.GetBoolean(Clear);
+    
+    FilterStructure = New Structure;
+    FilterStructure.Insert("ID" , "<task identifier>");
+    FilterStructure.Insert("PARENT_ID" , "<parent task identifier>");
+    FilterStructure.Insert("GROUP_ID" , "<workgroup identifier>");
+    FilterStructure.Insert("CREATED_BY" , "<producer>");
+    FilterStructure.Insert("STATUS_CHANGED_BY", "<the user who last changed the task status>");
+    FilterStructure.Insert("PRIORITY" , "<priority>");
+    FilterStructure.Insert("FORUM_TOPIC_ID" , "<forum topic identifier>");
+    FilterStructure.Insert("RESPONSIBLE_ID" , "<performer>");
+    FilterStructure.Insert("TITLE" , "<task name (can be searched using the template [%_])>");
+    FilterStructure.Insert("TAG" , "<tag>");
+    FilterStructure.Insert("REAL_STATUS" , "<task status>");
+    FilterStructure.Insert("MARK" , "<mark>");
+    FilterStructure.Insert("SITE_ID" , "<site identifier>");
+    FilterStructure.Insert("ADD_IN_REPORT" , "<task in the report (Y|N)>");
+    FilterStructure.Insert("DATE_START" , "<start date>");
+    FilterStructure.Insert("DEADLINE" , "<deadline>");
+    FilterStructure.Insert("CREATED_DATE" , "<date of creation>");
+    FilterStructure.Insert("CLOSED_DATE" , "<completion date>");
+    FilterStructure.Insert("CHANGED_DATE" , "<date of last modification>");
+    FilterStructure.Insert("ACCOMPLICE" , "<co-executor identifier>");
+    FilterStructure.Insert("AUDITOR" , "<auditor identifier>");
+    FilterStructure.Insert("DEPENDS_ON" , "<previous task identifier>");
+    FilterStructure.Insert("ONLY_ROOT_TASKS" , "<only tasks that are not subtasks (Y|N)>");
+    FilterStructure.Insert("STAGE_ID" , "<stage>");
+    FilterStructure.Insert("UF_CRM_TASK" , "<CRM elements>");
+    FilterStructure.Insert("STATUS"
+        , "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>");
+        
+    If Clear Then
+    	For Each Filter In FilterStructure Do
+    		Filter.Value = "";
+    	EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
+        
+EndFunction
+
+#EndRegion
+
+#Region TasksChecklistsManagment
+
 // Add tasks checklist element
 // Adds new element of tasks checklist
 // 
@@ -1100,104 +1202,6 @@ Function RenewTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Toke
     
     Return Response;
     
-EndFunction
-
-// Get users daily tasks plan
-// Gets the task plan for the current users day
-// 
-// Note
-// Method at API documentation: [task.planner.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/planner/getlist.php)
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetDailyPlan(Val URL, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "task.planner.getlist");
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;
-    
-EndFunction
-
-// Get task fields structure
-// Gets a structure with a description of the fields for creating a task
-// 
-// Note
-// Method at API documentation: [tasks.task.getFields](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetTaskFieldsStructure(Val URL, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "tasks.task.getFields");
-    Response = OPI_Tools.Get(URL, Parameters);
-    
-    Return Response;
-    
-EndFunction    
-
-// Get structure of tasks filter
-// Return filter structure for GetTasksList
-// 
-// Parameters:
-// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// 
-// Returns:
-// Structure of Key-Value - Fields structure 
-Function GetTasksFilterStructure(Val Clear = False) Export
-    
-    // More
-    // https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php
-    
-    OPI_TypeConversion.GetBoolean(Clear);
-    
-    FilterStructure = New Structure;
-    FilterStructure.Insert("ID" , "<task identifier>");
-    FilterStructure.Insert("PARENT_ID" , "<parent task identifier>");
-    FilterStructure.Insert("GROUP_ID" , "<workgroup identifier>");
-    FilterStructure.Insert("CREATED_BY" , "<producer>");
-    FilterStructure.Insert("STATUS_CHANGED_BY", "<the user who last changed the task status>");
-    FilterStructure.Insert("PRIORITY" , "<priority>");
-    FilterStructure.Insert("FORUM_TOPIC_ID" , "<forum topic identifier>");
-    FilterStructure.Insert("RESPONSIBLE_ID" , "<performer>");
-    FilterStructure.Insert("TITLE" , "<task name (can be searched using the template [%_])>");
-    FilterStructure.Insert("TAG" , "<tag>");
-    FilterStructure.Insert("REAL_STATUS" , "<task status>");
-    FilterStructure.Insert("MARK" , "<mark>");
-    FilterStructure.Insert("SITE_ID" , "<site identifier>");
-    FilterStructure.Insert("ADD_IN_REPORT" , "<task in the report (Y|N)>");
-    FilterStructure.Insert("DATE_START" , "<start date>");
-    FilterStructure.Insert("DEADLINE" , "<deadline>");
-    FilterStructure.Insert("CREATED_DATE" , "<date of creation>");
-    FilterStructure.Insert("CLOSED_DATE" , "<completion date>");
-    FilterStructure.Insert("CHANGED_DATE" , "<date of last modification>");
-    FilterStructure.Insert("ACCOMPLICE" , "<co-executor identifier>");
-    FilterStructure.Insert("AUDITOR" , "<auditor identifier>");
-    FilterStructure.Insert("DEPENDS_ON" , "<previous task identifier>");
-    FilterStructure.Insert("ONLY_ROOT_TASKS" , "<only tasks that are not subtasks (Y|N)>");
-    FilterStructure.Insert("STAGE_ID" , "<stage>");
-    FilterStructure.Insert("UF_CRM_TASK" , "<CRM elements>");
-    FilterStructure.Insert("STATUS"
-        , "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>");
-        
-    If Clear Then
-    	For Each Filter In FilterStructure Do
-    		Filter.Value = "";
-    	EndDo;
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return FilterStructure;
-        
 EndFunction
 
 #EndRegion
@@ -1804,10 +1808,13 @@ EndFunction
 
 #EndRegion
 
-#Region StoragesAndFilesManagment
+#Region StoragesManagment
 
 // Get list of storages
 // Get list of available files storages
+// 
+// Note
+// Method at API documentation: [disk.storage.getlist](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getlist.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1827,6 +1834,9 @@ EndFunction
 // Get storage for application data
 // Get information about storage with which the application can work to store its data
 // 
+// Note
+// Method at API documentation: [disk.storage.getforapp](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getforapp.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Token - String - Access token, when not-webhook method used - token
@@ -1845,6 +1855,9 @@ EndFunction
 // Get storage
 // Get information about storage
 // 
+// Note
+// Method at API documentation: [disk.storage.get](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_get.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // StorageID - String, Number - Storage ID - storageid
@@ -1861,6 +1874,9 @@ EndFunction
 
 // Rename storage
 // Change storage name (for app storage only, see. GetAppStorage)
+// 
+// Note
+// Method at API documentation: [disk.storage.rename](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_rename.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1886,6 +1902,9 @@ EndFunction
 // Get a list of child storage objects
 // Get a list of files and folders, located at the root of the storage
 // 
+// Note
+// Method at API documentation: [disk.storage.getchildren](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getchildren.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // StorageID - String, Number - Storage ID - storageid
@@ -1900,8 +1919,327 @@ Function GetStorageObjects(Val URL, Val StorageID, Val Token = "") Export
 	
 EndFunction
 
+// Create folder at the storage
+// Create new foldera at the storage
+// 
+// Note
+// Method at API documentation: [disk.storage.addfolder](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_addfolder.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// StorageID - String - Storage ID - storageid
+// Name - String - Folder name - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") Export
+	
+	OPI_TypeConversion.GetLine(Name);
+	
+	FolderStructure = New Structure("NAME", Name);
+	
+	Parameters = NormalizeAuth(URL, Token, "disk.storage.addfolder");
+	
+    OPI_Tools.AddField("id" , StorageID , "String" , Parameters);
+    OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;	
+    
+EndFunction
+
+#EndRegion
+
+#Region CatalogsManagment
+
+// Get information about folder
+// Get folder information
+// 
+// Note
+// Method at API documentation: [disk.folder.get](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_get.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFolderInformation(Val URL, Val FolderID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FolderID, "disk.folder.get", Token);
+    Return Response;
+    
+EndFunction
+
+// Create new subfolder
+// Create new folder inside another folder
+// 
+// Note
+// Method at API documentation: [disk.folder.addsubfolder](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_addsubfolder.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Parent folder identifier - folderid
+// Name - String - Name of new folder - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateSubfolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
+    
+    OPI_TypeConversion.GetLine(Name);
+    
+    FolderStructure = New Structure("NAME", Name);
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.addsubfolder");
+    
+    OPI_Tools.AddField("id" , FolderID , "String" , Parameters);
+    OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;  
+    
+EndFunction
+
+// Copy folder
+// Copy one folder to another
+// 
+// Note
+// Method at API documentation: [disk.folder.copyto](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_copyto.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// DestinationID - String, Number - ID of target folder - tagetid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MakeFolderCopy(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.copyto");
+    
+    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
+    OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
+// Move folder
+// Moves one folder inside another
+// 
+// Note
+// Method at API documentation: [disk.folder.moveto](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_moveto.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// DestinationID - String, Number - ID of target folder - tagetid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MoveFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.moveto");
+    
+    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
+    OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
+// Delete folder
+// Remove folder with subfolders
+// 
+// Note
+// Method at API documentation: [disk.folder.deletetree](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_deletetree.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - ID of folder to be deleted - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FolderID, "disk.folder.deletetree", Token);
+    Return Response;
+    
+EndFunction
+
+// Get external link for folder
+// Get external link to folder
+// 
+// Note
+// Method at API documentation: [disk.folder.getExternalLink](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getexternallink.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFolderExternalLink(Val URL, Val FolderID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FolderID, "disk.folder.getExternalLink", Token);
+    Return Response;
+    
+EndFunction
+
+// Get folder child elements
+// Get folder child elements
+// 
+// Note
+// Method at API documentation: [disk.folder.getchildren](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getchildren.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Filter - Structure of Key-Value - Items filter (see GetFolderFilterStructure) - filter
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.getchildren");
+    OPI_Tools.AddField("id" , FolderID, "String" , Parameters);
+    OPI_Tools.AddField("filter", Filter , "Collection", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Mark folder as deleted
+// Move folder to recycle bin
+// 
+// Note
+// Method at API documentation: [disk.folder.markdeleted](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_markdeleted.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MarkFolderAsDeleted(Val URL, Val FolderID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FolderID, "disk.folder.markdeleted", Token);
+    Return Response;
+    
+EndFunction
+
+// Restore folder
+// Resotre folder form recycle bin
+// 
+// Note
+// Method at API documentation: [disk.folder.restore](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_restore.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RestoreFolder(Val URL, Val FolderID, Val Token = "") Export
+ 
+    Response = FileManagement(URL, FolderID, "disk.folder.restore", Token);
+    Return Response;  
+     
+EndFunction
+
+// Rename folder
+// Change folder name
+// 
+// Note
+// Method at API documentation: [disk.folder.rename](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_rename.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FolderID - String, Number - Folder identifier - folderid
+// Name - String - New folders name - title
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.rename");
+    
+    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
+    OPI_Tools.AddField("newName", Name, "String", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response; 
+    
+EndFunction
+
+// Get fields structure for folder items filter
+// Returns filter structure for child folder items
+// 
+// Note
+// Method at API documentation: [disk.folder.getfields](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getfields.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Clear - Boolean - True > structure with empty values, False > field types at values - empty
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.folder.getfields");
+    Filter = New Structure;
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    Fields = Response["result"];
+    
+    For Each Field In Fields Do
+        
+        Name = Field.Key;
+        Description = Field.Value;
+        
+        If Description["USE_IN_FILTER"] Then
+        
+            DataType = ?(Clear, "", Description["TYPE"]);    
+            Filter.Insert(Name, DataType);
+        
+        EndIf;
+        
+    EndDo;
+    
+    Return Filter;
+    
+EndFunction
+
+#EndRegion
+
+#Region FileManagment
+
 // Upload file to a storage
 // Upload file to storage root
+// 
+// Note
+// Method at API documentation: [disk.storage.uploadfile](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_uploadfile.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -1946,261 +2284,11 @@ Function UploadFileToStorage(Val URL
     
 EndFunction
 
-// Create folder at the storage
-// Create new foldera at the storage
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// StorageID - String - Storage ID - storageid
-// Name - String - Folder name - title
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") Export
-	
-	OPI_TypeConversion.GetLine(Name);
-	
-	FolderStructure = New Structure("NAME", Name);
-	
-	Parameters = NormalizeAuth(URL, Token, "disk.storage.addfolder");
-	
-    OPI_Tools.AddField("id" , StorageID , "String" , Parameters);
-    OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;	
-    
-EndFunction
-
-// Get information about folder
-// Get folder information
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetFolderInformation(Val URL, Val FolderID, Val Token = "") Export
-    
-    Response = FileManagement(URL, FolderID, "disk.folder.get", Token);
-    Return Response;
-    
-EndFunction
-
-// Create new subfolder
-// Create new folder inside another folder
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Parent folder identifier - folderid
-// Name - String - Name of new folder - title
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function CreateSubfolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
-    
-    OPI_TypeConversion.GetLine(Name);
-    
-    FolderStructure = New Structure("NAME", Name);
-    
-    Parameters = NormalizeAuth(URL, Token, "disk.folder.addsubfolder");
-    
-    OPI_Tools.AddField("id" , FolderID , "String" , Parameters);
-    OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;  
-    
-EndFunction
-
-// Copy folder
-// Copy one folder to another
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// DestinationID - String, Number - ID of target folder - tagetid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function MakeFolderCopy(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "disk.folder.copyto");
-    
-    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
-    OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response; 
-    
-EndFunction
-
-// Move folder
-// Moves one folder inside another
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// DestinationID - String, Number - ID of target folder - tagetid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function MoveFolder(Val URL, Val FolderID, Val DestinationID, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "disk.folder.moveto");
-    
-    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
-    OPI_Tools.AddField("targetFolderId", DestinationID, "String", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response; 
-    
-EndFunction
-
-// Delete file
-// Delete file by ID
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FileID - String, Number - ID of removing file - fileid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function DeleteFile(Val URL, Val FileID, Val Token = "") Export
-    
-	Response = FileManagement(URL, FileID, "disk.file.delete", Token);
-	Return Response;
-
-EndFunction
-
-// Delete folder
-// Remove folder with subfolders
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - ID of folder to be deleted - folderid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export
-	
-	Response = FileManagement(URL, FolderID, "disk.folder.deletetree", Token);
-	Return Response;
-	
-EndFunction
-
-// Get external link for folder
-// Get external link to folder
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetFolderExternalLink(Val URL, Val FolderID, Val Token = "") Export
-	
-	Response = FileManagement(URL, FolderID, "disk.folder.getExternalLink", Token);
-	Return Response;
-	
-EndFunction
-
-// Get folder child elements
-// Get folder child elements
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Filter - Structure of Key-Value - Items filter (see GetFolderFilterStructure) - filter
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetFolderItems(Val URL, Val FolderID, Val Filter = "", Val Token = "") Export
-	
-	Parameters = NormalizeAuth(URL, Token, "disk.folder.getchildren");
-	OPI_Tools.AddField("id" , FolderID, "String" , Parameters);
-    OPI_Tools.AddField("filter", Filter , "Collection", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;
-    
-EndFunction
-
-// Mark folder as deleted
-// Move folder to recycle bin
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function MarkFolderAsDeleted(Val URL, Val FolderID, Val Token = "") Export
-	
-    Response = FileManagement(URL, FolderID, "disk.folder.markdeleted", Token);
-	Return Response;
-	
-EndFunction
-
-// Restore folder
-// Resotre folder form recycle bin
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function RestoreFolder(Val URL, Val FolderID, Val Token = "") Export
- 
-    Response = FileManagement(URL, FolderID, "disk.folder.restore", Token);
-    Return Response;  
-     
-EndFunction
-
-// Rename folder
-// Change folder name
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FolderID - String, Number - Folder identifier - folderid
-// Name - String - New folders name - title
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "disk.folder.rename");
-    
-    OPI_Tools.AddField("id" , FolderID , "String", Parameters);
-    OPI_Tools.AddField("newName", Name, "String", Parameters);
-    
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response; 
-    
-EndFunction
-
 // Upload file to the folder
 // Upload local file to the folder
+// 
+// Note
+// Method at API documentation: [disk.folder.uploadfile](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_uploadfile.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -2251,6 +2339,9 @@ EndFunction
 // Get information about file
 // Get information about file by ID
 // 
+// Note
+// Method at API documentation: [disk.file.get](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_get.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
@@ -2265,8 +2356,31 @@ Function GetFileInformation(Val URL, Val FileID, Val Token = "") Export
     
 EndFunction
 
+// Delete file
+// Delete file by ID
+// 
+// Note
+// Method at API documentation: [disk.file.delete](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_delete.php)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FileID - String, Number - ID of removing file - fileid
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteFile(Val URL, Val FileID, Val Token = "") Export
+    
+    Response = FileManagement(URL, FileID, "disk.file.delete", Token);
+    Return Response;
+
+EndFunction
+
 // Get external link for a file
 // Get external link to file
+// 
+// Note
+// Method at API documentation: [disk.file.getExternalLink](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_getexternallink.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -2285,6 +2399,9 @@ EndFunction
 // Mark file as deleted
 // Move file to recycle bin
 // 
+// Note
+// Method at API documentation: [disk.file.markdeleted](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_markdeleted.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
@@ -2301,6 +2418,9 @@ EndFunction
 
 // Restore file
 // Restore file from recycle bin
+// 
+// Note
+// Method at API documentation: [disk.file.restore](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_restore.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -2319,6 +2439,9 @@ EndFunction
 // Copy file
 // Copy file from one destination to another
 // 
+// Note
+// Method at API documentation: [disk.file.copyto](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_copyto.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - Original file ID - fileid
@@ -2328,8 +2451,8 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function MakeFileCopy(Val URL, Val FileID, Val FolderID, Val Token = "") Export
-	
-	Parameters = NormalizeAuth(URL, Token, "disk.file.copyto");
+    
+    Parameters = NormalizeAuth(URL, Token, "disk.file.copyto");
     
     OPI_Tools.AddField("id" , FileID , "String", Parameters);
     OPI_Tools.AddField("targetFolderId", FolderID, "String", Parameters);
@@ -2342,6 +2465,9 @@ EndFunction
 
 // Move file
 // Move file from one destination to another
+// 
+// Note
+// Method at API documentation: [disk.file.moveto](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_moveto.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
@@ -2367,6 +2493,9 @@ EndFunction
 // Rename file
 // Changes the name of an existing file
 // 
+// Note
+// Method at API documentation: [disk.file.rename](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_rename.php)
+// 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
@@ -2388,45 +2517,9 @@ Function RenameFile(Val URL, Val FileID, Val Name, Val Token = "") Export
     
 EndFunction
 
-// Get fields structure for folder items filter
-// Returns filter structure for child folder items
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Clear - Boolean - True > structure with empty values, False > field types at values - empty
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Structure of Key-Value - Fields structure 
-Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export
-	
-	Parameters = NormalizeAuth(URL, Token, "disk.folder.getfields");
-	Filter = New Structure;
-	
-	Response = OPI_Tools.Post(URL, Parameters);
-	Fields = Response["result"];
-	
-	For Each Field In Fields Do
-		
-		Name = Field.Key;
-		Description = Field.Value;
-		
-		If Description["USE_IN_FILTER"] Then
-		
-			DataType = ?(Clear, "", Description["TYPE"]);	
-			Filter.Insert(Name, DataType);
-		
-		EndIf;
-		
-	EndDo;
-	
-	Return Filter;
-	
-EndFunction
-
 #EndRegion
 
-#Region ChatsAndMessages
+#Region ChatsAndDialogsManagment
 
 // Create chat
 // Creates a new chat based on the field structure
@@ -2746,60 +2839,6 @@ Function GetChatMessagesList(Val URL
     
 EndFunction
 
-// Mark message as readed
-// Mark current and all previous messages as readed
-// 
-// Note
-// Method at API documentation: [im.dialog.read](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12053)
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// MessageID - String, Number - Id of last readed message - message
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function MarkMessageAsReaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "im.dialog.read");
-    
-    OPI_Tools.AddField("DIALOG_ID" , ChatID , "String", Parameters);
-    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
-        
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;
-    
-EndFunction
-
-// Mark message as unreaded
-// Mark current and all messages after as unreaded
-// 
-// Note
-// Method at API documentation: [im.dialog.unread](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12055)
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// MessageID - String, Number - ID of last unreaded message - message
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function MarkMessageAsUnreaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
-    
-    Parameters = NormalizeAuth(URL, Token, "im.dialog.unread");
-    
-    OPI_Tools.AddField("DIALOG_ID" , ChatID , "String", Parameters);
-    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
-        
-    Response = OPI_Tools.Post(URL, Parameters);
-    
-    Return Response;
-    
-EndFunction
-    
 // Get dialog
 // Get chat data by ID
 // 
@@ -2895,6 +2934,63 @@ Function ReadAll(Val URL, Val Token = "") Export
     Return Response;
     
 EndFunction
+
+// Get chat files folder
+// Get information about folder for chat files
+// 
+// Note
+// Method at API documentation: [im.disk.folder.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11483)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetChatFilesFolder(Val URL, Val ChatID, Val Token = "") Export
+    
+    Response = ChatManagment(URL, ChatID, "im.disk.folder.get", Token);  
+    Return Response;
+    
+EndFunction
+
+// Get chats structure
+// Get chat fields structure
+// 
+// Parameters:
+// Clear - Boolean - True > structure with empty values, False > field types at values - empty
+// 
+// Returns:
+// Structure of Key-Value - Fields structure 
+Function GetChatStructure(Val Clear = False) Export
+    
+    OPI_TypeConversion.GetBoolean(Clear);
+    
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE" , "<Chat type OPEN (Public) | CHAT (Private)>");
+    ChatStructure.Insert("TITLE" , "<Chat title>");
+    ChatStructure.Insert("DESCRIPTION", "<Chat description>");
+    ChatStructure.Insert("COLOR" , "<Chat color: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, ...>");
+    ChatStructure.Insert("MESSAGE" , "<First chat message>");
+    ChatStructure.Insert("USERS" , "<Chat members array>");
+    ChatStructure.Insert("AVATAR" , "<Base64 chat picture>");
+    ChatStructure.Insert("OWNER_ID" , "<ID of chat owner. Current user by default>");
+            
+    If Clear Then
+        For Each Element In ChatStructure Do
+            Element.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ChatStructure;
+    
+EndFunction
+
+#EndRegion
+
+#Region MessageManagement
 
 // Send message
 // Send message to dialog
@@ -3004,26 +3100,6 @@ Function DeleteMessage(Val URL, Val MessageID, Val Token = "") Export
     
 EndFunction
 
-// Get chat files folder
-// Get information about folder for chat files
-// 
-// Note
-// Method at API documentation: [im.disk.folder.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11483)
-// 
-// Parameters:
-// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when not-webhook method used - token
-// 
-// Returns:
-// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
-Function GetChatFilesFolder(Val URL, Val ChatID, Val Token = "") Export
-    
-    Response = ChatManagment(URL, ChatID, "im.disk.folder.get", Token);  
-    Return Response;
-    
-EndFunction
-
 // SendFile
 // Send disk file to chat
 // 
@@ -3053,39 +3129,60 @@ Function SendFile(Val URL, Val ChatID, Val FileID, Val Description = "", Val Tok
       
 EndFunction
 
-// Get chats structure
-// Get chat fields structure
+// Mark message as readed
+// Mark current and all previous messages as readed
+// 
+// Note
+// Method at API documentation: [im.dialog.read](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12053)
 // 
 // Parameters:
-// Clear - Boolean - True > structure with empty values, False > field types at values - empty
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// MessageID - String, Number - Id of last readed message - message
+// Token - String - Access token, when not-webhook method used - token
 // 
 // Returns:
-// Structure of Key-Value - Fields structure 
-Function GetChatStructure(Val Clear = False) Export
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MarkMessageAsReaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
     
-    OPI_TypeConversion.GetBoolean(Clear);
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.read");
     
-    ChatStructure = New Structure;
-    ChatStructure.Insert("TYPE" , "<Chat type OPEN (Public) | CHAT (Private)>");
-    ChatStructure.Insert("TITLE" , "<Chat title>");
-    ChatStructure.Insert("DESCRIPTION", "<Chat description>");
-    ChatStructure.Insert("COLOR" , "<Chat color: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, ...>");
-    ChatStructure.Insert("MESSAGE" , "<First chat message>");
-    ChatStructure.Insert("USERS" , "<Chat members array>");
-    ChatStructure.Insert("AVATAR" , "<Base64 chat picture>");
-    ChatStructure.Insert("OWNER_ID" , "<ID of chat owner. Current user by default>");
-            
-    If Clear Then
-        For Each Element In ChatStructure Do
-            Element.Value = "";
-        EndDo;
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return ChatStructure;
+    OPI_Tools.AddField("DIALOG_ID" , ChatID , "String", Parameters);
+    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
     
 EndFunction
 
+// Mark message as unreaded
+// Mark current and all messages after as unreaded
+// 
+// Note
+// Method at API documentation: [im.dialog.unread](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12055)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
+// MessageID - String, Number - ID of last unreaded message - message
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function MarkMessageAsUnreaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.dialog.unread");
+    
+    OPI_Tools.AddField("DIALOG_ID" , ChatID , "String", Parameters);
+    OPI_Tools.AddField("MESSAGE_ID", MessageID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+   
 // Get picture block
 // Make picture block for SendMessage method
 // 
@@ -3131,7 +3228,7 @@ Function GetFileBlock(Val Name, Val URL) Export
     Return New Structure("FILE", PictureStructure);
      
 EndFunction
-
+ 
 #EndRegion
 
 #EndRegion
