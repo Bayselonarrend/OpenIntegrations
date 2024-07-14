@@ -1,0 +1,96 @@
+﻿    {
+ "result": [
+  {
+   "id": 1,
+   "active": true,
+   "name": "Антон Титовец",
+   "first_name": "Антон",
+   "last_name": "Титовец",
+   "work_position": null,
+   "color": "#df532d",
+   "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
+   "gender": "M",
+   "birthday": "",
+   "extranet": false,
+   "network": false,
+   "bot": false,
+   "connector": false,
+   "external_auth_id": "socservices",
+   "status": "online",
+   "idle": false,
+   "last_activity_date": "2024-07-14T09:00:58+00:00",
+   "mobile_last_date": false,
+   "absent": false,
+   "departments": [
+    1
+   ],
+   "phones": false,
+   "bot_data": null
+  },
+  {
+   "id": 10,
+   "active": true,
+   "name": "Techno Pizza",
+   "first_name": "Techno",
+   "last_name": "Pizza",
+   "work_position": null,
+   "color": "#ab7761",
+   "avatar": "",
+   "gender": "M",
+   "birthday": "",
+   "extranet": false,
+   "network": false,
+   "bot": false,
+   "connector": false,
+   "external_auth_id": "socservices",
+   "status": "online",
+   "idle": false,
+   "last_activity_date": "2024-07-13T18:36:23+00:00",
+   "mobile_last_date": false,
+   "absent": false,
+   "departments": [
+    1
+   ],
+   "phones": false,
+   "bot_data": null
+  },
+  {
+   "id": 12,
+   "active": true,
+   "name": "Bay Selonarrend",
+   "first_name": "Bay",
+   "last_name": "Selonarrend",
+   "work_position": null,
+   "color": "#64a513",
+   "avatar": "",
+   "gender": "M",
+   "birthday": "",
+   "extranet": false,
+   "network": false,
+   "bot": false,
+   "connector": false,
+   "external_auth_id": "socservices",
+   "status": "online",
+   "idle": false,
+   "last_activity_date": "2024-07-13T07:19:21+00:00",
+   "mobile_last_date": false,
+   "absent": false,
+   "departments": [
+    1
+   ],
+   "phones": false,
+   "bot_data": null
+  }
+ ],
+ "total": 3,
+ "time": {
+  "start": 1720969160.79911,
+  "finish": 1720969160.83241,
+  "duration": 0.0333011150360107,
+  "processing": 0.00782608985900879,
+  "date_start": "2024-07-14T14:59:20+00:00",
+  "date_finish": "2024-07-14T14:59:20+00:00",
+  "operating_reset_at": 1720969760,
+  "operating": 0
+ }
+}
