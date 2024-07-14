@@ -29,15 +29,15 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
 
 ```bsl title="Code example"
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- TaskID = "504";
- CommentID = "1718";
+ TaskID = "724";
+ CommentID = "2264";
  
  Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID);
  
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "56898d66006e9f06006b12e400000001000...";
- CommentID = "1720";
+ Token = "adf89366006e9f06006b12e400000001000...";
+ CommentID = "2266";
  
  Result = OPI_Bitrix24.DeleteTaskComment(URL, TaskID, CommentID, Token);
 ```

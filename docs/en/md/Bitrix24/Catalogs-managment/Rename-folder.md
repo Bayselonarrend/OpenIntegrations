@@ -31,15 +31,15 @@ Method at API documentation: [disk.folder.rename](https://dev.1c-bitrix.ru/rest_
  Name = "New catalog";
  Filename2 = "New folder 2";
  
- FolderID2 = "2488";
+ FolderID2 = "3276";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.RenameFolder(URL, FolderID2, Filename2);
  
  
- FolderID = "2490";
+ FolderID = "3278";
  URL = "b24-ar17wx.bitrix24.by";
- Token = "56898d66006e9f06006b12e400000001000...";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.RenameFolder(URL, FolderID, Name, Token);
 ```
