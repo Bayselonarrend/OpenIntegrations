@@ -27,15 +27,15 @@ Method at API documentation: [im.message.like](https://dev.1c-bitrix.ru/learning
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
- MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ MessageID = "5506";
  
  Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID);
  
  
- URL = FunctionParameters["Bitrix24_Domain"];
- Token = FunctionParameters["Bitrix24_Token"];
- MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
+ MessageID = "5508";
  
  Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID, Token);
 ```

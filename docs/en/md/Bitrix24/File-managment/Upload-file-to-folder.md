@@ -35,7 +35,7 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
  Image2 = "https://openintegrations.dev/test_data/picture.jpg"; // Local path, URL or Binary Data
  Image = "https://openintegrations.dev/test_data/picture2.jpg"; // Local path, URL or Binary Data
  
- DestinationID = "2490";
+ DestinationID = "3278";
  
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
@@ -44,7 +44,7 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
  
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "56898d66006e9f06006b12e400000001000...";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.UploadFileToFolder(URL, Name, Image, DestinationID, Token);
 ```

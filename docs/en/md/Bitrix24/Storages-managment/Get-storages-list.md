@@ -31,7 +31,7 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
  
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "b9df7366006e9f06006b12e400000001000...";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.GetStoragesList(URL, Token);
 ```

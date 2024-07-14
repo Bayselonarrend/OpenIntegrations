@@ -28,17 +28,17 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  URL     = ПараметрыФункции["Bitrix24_URL"];
-  IDЧата  = ПараметрыФункции["Bitrix24_HookChatID"];
+  URL     = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDЧата  = "264";
   
   IDПользователя = 10;
   
   Результат = OPI_Bitrix24.ИсключитьПользователяИзЧата(URL, IDЧата, IDПользователя);
   
   
-  URL            = ПараметрыФункции["Bitrix24_Domain"];
-  Токен          = ПараметрыФункции["Bitrix24_Token"];
-  IDЧата         = ПараметрыФункции["Bitrix24_ChatID"];
+  URL            = "b24-ar17wx.bitrix24.by";
+  Токен          = "adf89366006e9f06006b12e400000001000...";
+  IDЧата         = "266";
   
   Результат = OPI_Bitrix24.ИсключитьПользователяИзЧата(URL, IDЧата, IDПользователя, Токен);
 ```
