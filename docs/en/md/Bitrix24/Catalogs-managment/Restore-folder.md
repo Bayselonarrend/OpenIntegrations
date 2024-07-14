@@ -28,13 +28,13 @@ Method at API documentation: [disk.folder.restore](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="Code example"
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- FolderID = "2490";
+ FolderID = "3278";
  
  Result = OPI_Bitrix24.RestoreFolder(URL, FolderID);
  
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "56898d66006e9f06006b12e400000001000...";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.RestoreFolder(URL, FolderID, Token);
 ```

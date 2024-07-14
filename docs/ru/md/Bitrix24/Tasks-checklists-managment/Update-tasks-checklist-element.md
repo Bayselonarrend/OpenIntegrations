@@ -29,9 +29,9 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  URL        = ПараметрыФункции["Bitrix24_URL"];
-  IDЗадачи   = ПараметрыФункции["Bitrix24_HookTaskID"];
-  IDЭлемента = ПараметрыФункции["Bitrix24_HookCheckElementID"];
+  URL        = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDЗадачи   = "720";
+  IDЭлемента = "164";
   
   Текст    = "Новый текст пункта чек-листа";
   
@@ -39,10 +39,10 @@ sidebar_position: 2
   
   
   
-  URL        = ПараметрыФункции["Bitrix24_Domain"];
-  Токен      = ПараметрыФункции["Bitrix24_Token"];
-  IDЗадачи   = ПараметрыФункции["Bitrix24_TaskID"];
-  IDЭлемента = ПараметрыФункции["Bitrix24_CheckElementID"];
+  URL        = "b24-ar17wx.bitrix24.by";
+  Токен      = "adf89366006e9f06006b12e400000001000...";
+  IDЗадачи   = "722";
+  IDЭлемента = "168";
   
   Результат = OPI_Bitrix24.ИзменитьЭлементЧеклистаЗадачи(URL, IDЗадачи, IDЭлемента, Текст, Токен);
 ```

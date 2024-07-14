@@ -29,15 +29,15 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="Code example"
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- TaskID = "168";
+ TaskID = "720";
  UserID = "10";
  
  Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID);
  
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "b9df7366006e9f06006b12e400000001000...";
- TaskID = "170";
+ Token = "adf89366006e9f06006b12e400000001000...";
+ TaskID = "722";
  
  Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID, Token);
 ```

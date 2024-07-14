@@ -29,7 +29,7 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="Code example"
  Text = "Comment for post";
- PostID = "260";
+ PostID = "320";
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
@@ -37,7 +37,7 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
  
  Text = "Another comment";
  URL = "b24-ar17wx.bitrix24.by";
- Token = "56898d66006e9f06006b12e400000001000...";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);
 ```

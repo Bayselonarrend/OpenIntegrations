@@ -32,17 +32,17 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
- ChatID = FunctionParameters["Bitrix24_HookChatID"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ ChatID = "264";
  
  Color = "AZURE";
  
  Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color);
  
  
- URL = FunctionParameters["Bitrix24_Domain"];
- Token = FunctionParameters["Bitrix24_Token"];
- ChatID = FunctionParameters["Bitrix24_ChatID"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
+ ChatID = "266";
  
  Color = "PURPLE";
  
