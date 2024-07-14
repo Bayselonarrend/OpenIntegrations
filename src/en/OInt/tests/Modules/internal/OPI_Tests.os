@@ -8795,7 +8795,7 @@ Procedure Bitrix24_ChangeChatColor(FunctionParameters)
     
     Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color);
             
-    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatColor)", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatColor (wh)", "Bitrix24");
     
     Check_BitrixTrue(Result); // SKIP
     
