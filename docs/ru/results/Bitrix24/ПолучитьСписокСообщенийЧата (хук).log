@@ -1,0 +1,102 @@
+﻿    {
+ "result": {
+  "chat_id": 4,
+  "messages": [
+   {
+    "id": 3850,
+    "chat_id": 4,
+    "author_id": 10,
+    "date": "2024-07-13T14:54:05+00:00",
+    "text": "Тестовое сообщение",
+    "unread": false,
+    "uuid": "d1d92897-eee1-4109-8de5-1c6d4db41664",
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 3848,
+    "chat_id": 4,
+    "author_id": 0,
+    "date": "2024-07-13T14:52:17+00:00",
+    "text": "Антон Титовец пригласил в чат [USER=10 REPLACE]Techno Pizza[/USER]",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": {
+     "CODE": [
+      "CHAT_JOIN"
+     ],
+     "NOTIFY": "N"
+    },
+    "disappearing_date": null
+   },
+   {
+    "id": 6,
+    "chat_id": 4,
+    "author_id": 0,
+    "date": "2024-02-15T19:26:23+00:00",
+    "text": "[b]Групповой чат[/b]\nОбщайтесь, делитесь файлами, комментируйте сообщения коллег и ставьте лайки.",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": {
+     "COMPONENT_ID": "ChatCreationMessage"
+    },
+    "disappearing_date": null
+   },
+   {
+    "id": 4,
+    "chat_id": 4,
+    "author_id": 0,
+    "date": "2024-02-15T19:26:23+00:00",
+    "text": "Антон Титовец создал чат",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   }
+  ],
+  "users": [
+   {
+    "id": 10,
+    "active": true,
+    "name": "Techno Pizza",
+    "first_name": "Techno",
+    "last_name": "Pizza",
+    "work_position": null,
+    "color": "#ab7761",
+    "avatar": "",
+    "gender": "M",
+    "birthday": "",
+    "extranet": false,
+    "network": false,
+    "bot": false,
+    "connector": false,
+    "external_auth_id": "socservices",
+    "status": "online",
+    "idle": false,
+    "last_activity_date": "2024-07-13T18:36:23+00:00",
+    "mobile_last_date": false,
+    "absent": false,
+    "departments": [
+     1
+    ],
+    "phones": false,
+    "desktop_last_date": false
+   }
+  ],
+  "files": []
+ },
+ "time": {
+  "start": 1720969155.77354,
+  "finish": 1720969155.81325,
+  "duration": 0.0397109985351562,
+  "processing": 0.0163500308990478,
+  "date_start": "2024-07-14T14:59:15+00:00",
+  "date_finish": "2024-07-14T14:59:15+00:00",
+  "operating_reset_at": 1720969755,
+  "operating": 0
+ }
+}
