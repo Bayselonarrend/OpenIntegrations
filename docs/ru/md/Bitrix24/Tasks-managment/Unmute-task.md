@@ -20,7 +20,10 @@ sidebar_position: 22
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.unmute](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

@@ -20,7 +20,10 @@ sidebar_position: 15
 
 <br/>
 
-
+:::tip
+Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_stopwatch.php)
+:::
+<br/>
 
 
 ```bsl title="Code example"

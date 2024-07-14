@@ -20,7 +20,10 @@ sidebar_position: 19
 
 <br/>
 
-
+:::tip
+Метод в документации API: [tasks.task.history.list](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_history_list.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

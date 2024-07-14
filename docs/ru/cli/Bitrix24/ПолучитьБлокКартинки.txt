@@ -1,0 +1,1 @@
+﻿oint bitrix24 ПолучитьБлокКартинки --title %title% --url %url%

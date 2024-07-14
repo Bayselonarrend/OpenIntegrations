@@ -20,7 +20,10 @@ sidebar_position: 1
 
 <br/>
 
-
+:::tip
+Метод в документации API: [task.commentitem.getlist](https://dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"
