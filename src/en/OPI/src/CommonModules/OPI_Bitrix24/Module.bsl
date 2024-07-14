@@ -2237,7 +2237,7 @@ Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token
             FileMapping = New Map;
             FileMapping.Insert(FileName, File);   
             
-            Response = OPI_Tools.PostMultipart(UploadURL, , FileMapping); 
+            Response = OPI_Tools.PostMultipart(UploadURL, , FileMapping, ""); 
              
         EndIf;
         
@@ -3002,6 +3002,55 @@ Function DeleteMessage(Val URL, Val MessageID, Val Token = "") Export
     
     Return Response;
     
+EndFunction
+
+// Get chat files folder
+// Get information about folder for chat files
+// 
+// Note
+// Method at API documentation: [im.disk.folder.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11483)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetChatFilesFolder(Val URL, Val ChatID, Val Token = "") Export
+    
+    Response = ChatManagment(URL, ChatID, "im.disk.folder.get", Token);  
+    Return Response;
+    
+EndFunction
+
+// SendFile
+// Send disk file to chat
+// 
+// Note
+// Method at API documentation: [im.disk.file.commit](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11485)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// ChatID - String, Number - Chat ID - chat
+// FileID - String, Number - File ID from UploadFileToFolder method - fileid
+// Description - String - File description - description
+// Token - String - Access token, when not-webhook method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function SendFile(Val URL, Val ChatID, Val FileID, Val Description = "", Val Token = "") Export
+  
+    Parameters = NormalizeAuth(URL, Token, "im.disk.file.commit");
+    
+    OPI_Tools.AddField("CHAT_ID" , ChatID , "String", Parameters);
+    OPI_Tools.AddField("UPLOAD_ID", FileID , "String", Parameters);
+    OPI_Tools.AddField("MESSAGE" , Description, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+      
 EndFunction
 
 // Get chats structure
