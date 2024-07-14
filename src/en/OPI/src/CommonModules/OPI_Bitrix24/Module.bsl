@@ -31,6 +31,7 @@
 // BSLLS:IncorrectLineBreak-off
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:LineLength-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -510,7 +511,6 @@ EndFunction
 // Note
 // Method at API documentation: [tasks.task.files.attach](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_files_attach.php)
 // 
-// Parameters:
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
@@ -1042,15 +1042,17 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function AddTasksChecklistElement(Val URL, Val TaskID, Val Text, Val Completed = False, Token = "") Export
     
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "task.checklistitem.add");
     Fields = New Structure;
     
     MakeBoolean(Completed);
     
-    OPI_Tools.AddField("TITLE" , Text , "String", Fields);
-    OPI_Tools.AddField("IS_COMPLETE", Completed, "String", Fields);
+    OPI_Tools.AddField("TITLE" , Text , String_, Fields);
+    OPI_Tools.AddField("IS_COMPLETE", Completed, String_, Fields);
    
-    OPI_Tools.AddField("TASKID", TaskID, "String" , Parameters);
+    OPI_Tools.AddField("TASKID", TaskID, String_ , Parameters);
     OPI_Tools.AddField("FIELDS", Fields , "Collection", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
@@ -1076,13 +1078,15 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function UpdateTasksChecklistElement(Val URL, Val TaskID, Val ElementID, Val Text, Val Token = "") Export
     
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "task.checklistitem.update");
     Fields = New Structure;
     
-    OPI_Tools.AddField("TITLE", Text, "String", Fields);
+    OPI_Tools.AddField("TITLE", Text, String_, Fields);
    
-    OPI_Tools.AddField("TASKID", TaskID , "String" , Parameters);
-    OPI_Tools.AddField("ITEMID", ElementID, "String" , Parameters);
+    OPI_Tools.AddField("TASKID", TaskID , String_ , Parameters);
+    OPI_Tools.AddField("ITEMID", ElementID, String_ , Parameters);
     OPI_Tools.AddField("FIELDS", Fields , "Collection", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
@@ -1301,13 +1305,15 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function UpdateTaskComment(Val URL, Val TaskID, Val CommentID, Val Text, Val Token = "") Export
     
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "task.commentitem.update");
     
     Comment = New Structure;
     OPI_Tools.AddField("POST_MESSAGE", Text, "String", Comment);
     
-    OPI_Tools.AddField("TASKID", TaskID , "String" , Parameters);
-    OPI_Tools.AddField("ITEMID", CommentID, "String" , Parameters);
+    OPI_Tools.AddField("TASKID", TaskID , String_ , Parameters);
+    OPI_Tools.AddField("ITEMID", CommentID, String_ , Parameters);
     OPI_Tools.AddField("FIELDS", Comment , "Collection", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
@@ -1473,16 +1479,18 @@ Function AddKanbanStage(Val URL
     , Val AsAdmin = False
     , Val Token = "") Export
     
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "task.stages.add");
     Fields = New Structure;
     
     MakeBoolean(AsAdmin);
     
-    OPI_Tools.AddField("TITLE" , Name , "String", Fields);
-    OPI_Tools.AddField("COLOR" , Color , "String", Fields);
-    OPI_Tools.AddField("AFTER_ID" , PrevStageID , "String", Fields);
-    OPI_Tools.AddField("ENTITY_ID", EntityID , "String", Fields);
-    OPI_Tools.AddField("isAdmin" , AsAdmin, "String", Fields);
+    OPI_Tools.AddField("TITLE" , Name , String_, Fields);
+    OPI_Tools.AddField("COLOR" , Color , String_, Fields);
+    OPI_Tools.AddField("AFTER_ID" , PrevStageID , String_, Fields);
+    OPI_Tools.AddField("ENTITY_ID", EntityID , String_, Fields);
+    OPI_Tools.AddField("isAdmin" , AsAdmin, String_, Fields);
     
     Parameters.Insert("fields", Fields);
     
@@ -1517,15 +1525,17 @@ Function UpdateKanbansStage(Val URL
     , Val AsAdmin = False
     , Val Token = "") Export
     
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "task.stages.update");
     Fields = New Structure;
     
-    OPI_Tools.AddField("TITLE" , Name , "String", Fields);
-    OPI_Tools.AddField("COLOR" , Color , "String", Fields);
-    OPI_Tools.AddField("AFTER_ID" , PrevStageID , "String", Fields);
+    OPI_Tools.AddField("TITLE" , Name , String_, Fields);
+    OPI_Tools.AddField("COLOR" , Color , String_, Fields);
+    OPI_Tools.AddField("AFTER_ID" , PrevStageID , String_, Fields);
     OPI_Tools.AddField("isAdmin" , AsAdmin, "Boolean", Fields);
     
-    OPI_Tools.AddField("id" , StageID, "String" , Parameters);
+    OPI_Tools.AddField("id" , StageID, String_ , Parameters);
     OPI_Tools.AddField("fields", Fields , "Collection", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
@@ -1616,20 +1626,21 @@ Function MoveTaskToKanbanStage(Val URL
     , Val After = 0
     , Val Token = "") Export
     
+    String_ = "String";
     
     Parameters = NormalizeAuth(URL, Token, "task.stages.movetask");
     
-    OPI_Tools.AddField("id" , TaskID, "String", Parameters);
-    OPI_Tools.AddField("stageId", StageID, "String", Parameters);
+    OPI_Tools.AddField("id" , TaskID, String_, Parameters);
+    OPI_Tools.AddField("stageId", StageID, String_, Parameters);
     
     If ValueIsFilled(Prev) Then
         
-        OPI_Tools.AddField("before", Prev, "String", Parameters);
+        OPI_Tools.AddField("before", Prev, String_, Parameters);
             
     Else
         
         OPI_TypeConversion.GetLine(After);
-        OPI_Tools.AddField("after", After, "String", Parameters);
+        OPI_Tools.AddField("after", After, String_, Parameters);
         
     EndIf;
         
@@ -1668,15 +1679,17 @@ Function AddTaskTimeAccounting(Val URL
     , Val SetupDate = ""
     , Val Token = "") Export
         
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "task.elapseditem.add");
     Fields = New Structure;
         
-    OPI_Tools.AddField("SECONDS" , Time , "String" , Fields);
-    OPI_Tools.AddField("COMMENT_TEXT", Text , "String" , Fields);
-    OPI_Tools.AddField("USER_ID" , UserID, "String" , Fields);
+    OPI_Tools.AddField("SECONDS" , Time , String_ , Fields);
+    OPI_Tools.AddField("COMMENT_TEXT", Text , String_ , Fields);
+    OPI_Tools.AddField("USER_ID" , UserID, String_ , Fields);
     OPI_Tools.AddField("CREATED_DATE", SetupDate , "DateISO", Fields);
    
-    OPI_Tools.AddField("TASKID" , TaskID, "String" , Parameters);
+    OPI_Tools.AddField("TASKID" , TaskID, String_ , Parameters);
     OPI_Tools.AddField("ARFIELDS", Fields , "Collection", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
@@ -1788,16 +1801,18 @@ Function UpdateTaskTimeAccounting(Val URL
     , Val Text = ""
     , Val SetupDate = ""
     , Val Token = "") Export
-        
+      
+    String_ = "String";
+      
     Parameters = NormalizeAuth(URL, Token, "task.elapseditem.update");
     Fields = New Structure;
         
-    OPI_Tools.AddField("SECONDS" , Time , "String" , Fields);
-    OPI_Tools.AddField("COMMENT_TEXT", Text , "String" , Fields);
+    OPI_Tools.AddField("SECONDS" , Time , String_ , Fields);
+    OPI_Tools.AddField("COMMENT_TEXT", Text , String_ , Fields);
     OPI_Tools.AddField("CREATED_DATE", SetupDate , "DateISO", Fields);
    
-    OPI_Tools.AddField("TASKID" , TaskID, "String" , Parameters);
-    OPI_Tools.AddField("ITEMID" , RecordID, "String" , Parameters);
+    OPI_Tools.AddField("TASKID" , TaskID, String_ , Parameters);
+    OPI_Tools.AddField("ITEMID" , RecordID, String_ , Parameters);
     OPI_Tools.AddField("ARFIELDS", Fields , "Collection", Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
@@ -2301,7 +2316,6 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token = "") Export
 
-
     OPI_TypeConversion.GetLine(Name);
     OPI_TypeConversion.GetBinaryData(File);
         
@@ -2329,8 +2343,7 @@ Function UploadFileToFolder(Val URL, Val Name, Val File, Val FolderID, Val Token
              
         EndIf;
         
-    EndIf;
-    
+    EndIf;  
     
     Return Response;  
       
@@ -2824,14 +2837,16 @@ Function GetChatMessagesList(Val URL
     , Val FirstID = ""
     , Val Token = "") Export
     
+    String_ = "String";
+    
     OPI_TypeConversion.GetLine(LastID);
     OPI_TypeConversion.GetLine(FirstID);
     
     Parameters = NormalizeAuth(URL, Token, "im.dialog.messages.get");
     
-    OPI_Tools.AddField("DIALOG_ID", ChatID , "String", Parameters);
-    OPI_Tools.AddField("LAST_ID" , LastID, "String", Parameters);
-    OPI_Tools.AddField("FIRST_ID" , FirstID , "String", Parameters);
+    OPI_Tools.AddField("DIALOG_ID", ChatID , String_, Parameters);
+    OPI_Tools.AddField("LAST_ID" , LastID, String_, Parameters);
+    OPI_Tools.AddField("FIRST_ID" , FirstID , String_, Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -3117,11 +3132,13 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function SendFile(Val URL, Val ChatID, Val FileID, Val Description = "", Val Token = "") Export
   
+    String_ = "String";
+    
     Parameters = NormalizeAuth(URL, Token, "im.disk.file.commit");
     
-    OPI_Tools.AddField("CHAT_ID" , ChatID , "String", Parameters);
-    OPI_Tools.AddField("UPLOAD_ID", FileID , "String", Parameters);
-    OPI_Tools.AddField("MESSAGE" , Description, "String", Parameters);
+    OPI_Tools.AddField("CHAT_ID" , ChatID , String_, Parameters);
+    OPI_Tools.AddField("UPLOAD_ID", FileID , String_, Parameters);
+    OPI_Tools.AddField("MESSAGE" , Description, String_, Parameters);
         
     Response = OPI_Tools.Post(URL, Parameters);
     

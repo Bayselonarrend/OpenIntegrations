@@ -826,8 +826,9 @@ Function SplitFileKey(Val FileData, Val ContentType)
     DotReplacement = "___";
     FileName = StrReplace(FileData, DotReplacement, ".");
     NameParts = StrSplit(FileName, "|", False);
+    NameParts = 2;
     
-    If NameParts.Count() = 2 Then
+    If NameParts.Count() = NameParts Then
         FieldName = NameParts[0];
         FileName = NameParts[1];
     Else
