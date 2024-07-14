@@ -4266,6 +4266,88 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatFilesFolder";
+    NewLine.МетодПоиска = "GETCHATFILESFOLDER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Get information about folder for chat files";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatFilesFolder";
+    NewLine.МетодПоиска = "GETCHATFILESFOLDER";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetChatFilesFolder";
+    NewLine.МетодПоиска = "GETCHATFILESFOLDER";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and messages";
+    NewLine.ОписаниеМетода   = "Send disk file to chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--chat";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--fileid";
+    NewLine.Описание    = "File ID from UploadFileToFolder method";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--description";
+    NewLine.Описание    = "File description (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--webhook method used";
+    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and messages";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetChatStructure";
     NewLine.МетодПоиска = "GETCHATSTRUCTURE";
     NewLine.Параметр    = "--empty";

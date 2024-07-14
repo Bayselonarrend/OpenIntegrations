@@ -3104,6 +3104,7 @@ Procedure B24_ChatManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document" , TestParameters);
     
     Bitrix24_CreateChat(TestParameters);
     Bitrix24_GetChatUsers(TestParameters);
@@ -3124,6 +3125,8 @@ Procedure B24_ChatManagment() Export
     Bitrix24_EditMessage(TestParameters);
     Bitrix24_SetMessageReaction(TestParameters);
     Bitrix24_DeleteMessage(TestParameters);
+    Bitrix24_GetChatFilesFolder(TestParameters);
+    Bitrix24_SendFile(TestParameters);
     Bitrix24_ReadAll(TestParameters);
     Bitrix24_ChangeChatOwner(TestParameters);
     Bitrix24_LeaveChat(TestParameters);
@@ -3792,6 +3795,13 @@ Procedure Check_BitrixMessage(Val Result)
     
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["id"]).Заполнено();
+    
+EndProcedure
+
+Procedure Check_BitrixFileMessage(Val Result)
+    
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["MESSAGE_ID"]).Заполнено();
     
 EndProcedure
 
@@ -9227,6 +9237,70 @@ Procedure Bitrix24_SetMessageReaction(FunctionParameters)
     
     Check_BitrixTrue(Result);
         
+EndProcedure
+
+Procedure Bitrix24_GetChatFilesFolder(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"]; 
+
+    Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
+            
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChatFilesFolder)", "Bitrix24");
+    
+    Check_BitrixObject(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+    
+    Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChatFilesFolder", "Bitrix24");
+    
+    Check_BitrixObject(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_SendFile(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"]; 
+    File = FunctionParameters["Document"]; // Binary Data, URL or path to file
+    Description = "Very important file";
+    
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
+    FolderID = Directory["result"]["ID"];
+    
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID);
+    FileID = UploadedFile["result"]["ID"];
+
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile (хуto)", "Bitrix24");
+    
+    Check_BitrixFileMessage(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+    
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
+    FolderID = Directory["result"]["ID"];
+    
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID, Token);
+    FileID = UploadedFile["result"]["ID"];
+
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description, Token);
+    
+    // END
+   
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "Bitrix24");
+    
+    Check_BitrixFileMessage(Result);
+
 EndProcedure
 
 #EndRegion
