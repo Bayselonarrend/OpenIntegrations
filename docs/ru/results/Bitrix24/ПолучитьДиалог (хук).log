@@ -1,0 +1,90 @@
+﻿    {
+ "result": {
+  "id": 252,
+  "parent_chat_id": 0,
+  "parent_message_id": 0,
+  "name": "Новый заголовок чата",
+  "description": "Это новый чат",
+  "owner": 1,
+  "extranet": false,
+  "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/2324/ff58db95aecdfa09ae61b51b5fd8f63f/disk/06b/06b49cc0c4490aea3e281692f335be6c/c97ddd75dc26054a692826e25ca4ed12",
+  "color": "#29619b",
+  "type": "open",
+  "counter": 7,
+  "user_counter": 3,
+  "message_count": 9,
+  "unread_id": 5304,
+  "restrictions": {
+   "avatar": true,
+   "rename": true,
+   "extend": true,
+   "call": true,
+   "mute": true,
+   "leave": true,
+   "leave_owner": true,
+   "send": true,
+   "user_list": true
+  },
+  "last_message_id": 5336,
+  "last_id": 0,
+  "marked_id": 0,
+  "disk_folder_id": 0,
+  "entity_type": "",
+  "entity_id": "",
+  "entity_data_1": "",
+  "entity_data_2": "",
+  "entity_data_3": "",
+  "mute_list": [],
+  "date_create": "2024-07-14T14:58:58+00:00",
+  "message_type": "O",
+  "disappearing_time": 0,
+  "public": "",
+  "role": "owner",
+  "entity_link": {
+   "type": "",
+   "url": ""
+  },
+  "permissions": {
+   "manage_users_add": "member",
+   "manage_users_delete": "manager",
+   "manage_ui": "member",
+   "manage_settings": "owner",
+   "manage_messages": "member",
+   "can_post": "member"
+  },
+  "is_new": false,
+  "readed_list": [
+   {
+    "user_id": 10,
+    "user_name": "Techno Pizza",
+    "message_id": 5312,
+    "date": null
+   },
+   {
+    "user_id": 12,
+    "user_name": "Bay Selonarrend",
+    "message_id": 5312,
+    "date": null
+   }
+  ],
+  "manager_list": [
+   1
+  ],
+  "last_message_views": {
+   "message_id": 5336,
+   "first_viewers": [],
+   "count_of_viewers": 0
+  },
+  "dialog_id": "chat252"
+ },
+ "time": {
+  "start": 1720969159.53413,
+  "finish": 1720969159.57418,
+  "duration": 0.0400509834289551,
+  "processing": 0.0138471126556396,
+  "date_start": "2024-07-14T14:59:19+00:00",
+  "date_finish": "2024-07-14T14:59:19+00:00",
+  "operating_reset_at": 1720969759,
+  "operating": 0
+ }
+}
