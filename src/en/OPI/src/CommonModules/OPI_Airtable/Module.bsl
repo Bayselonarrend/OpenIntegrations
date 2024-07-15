@@ -202,7 +202,7 @@ EndFunction
 // Token - String - Token - token
 // Base - String - Base identifier - base
 // Table - String - Table identifier - table
-// FieldStructure - Structure of Key-Value - Description of the new field - fielddata
+// FieldStructure - Structure of KeyAndValue - Description of the new field - fielddata
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
