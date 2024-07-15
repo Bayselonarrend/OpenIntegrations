@@ -109,8 +109,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ServerTime";
     NewLine.МетодПоиска = "SERVERTIME";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Settings and administartion";
 
 
@@ -180,8 +180,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -251,8 +251,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UpdatePost";
     NewLine.МетодПоиска = "UPDATEPOST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -282,8 +282,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeletePost";
     NewLine.МетодПоиска = "DELETEPOST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -313,8 +313,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetImportantPostViewers";
     NewLine.МетодПоиска = "GETIMPORTANTPOSTVIEWERS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -354,8 +354,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetPosts";
     NewLine.МетодПоиска = "GETPOSTS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -395,8 +395,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddPostComment";
     NewLine.МетодПоиска = "ADDPOSTCOMMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -436,8 +436,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddPostRecipients";
     NewLine.МетодПоиска = "ADDPOSTRECIPIENTS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -467,8 +467,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTask";
     NewLine.МетодПоиска = "GETTASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -508,8 +508,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTasksList";
     NewLine.МетодПоиска = "GETTASKSLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -539,8 +539,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateTask";
     NewLine.МетодПоиска = "CREATETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -580,8 +580,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UpdateTask";
     NewLine.МетодПоиска = "UPDATETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -611,8 +611,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteTask";
     NewLine.МетодПоиска = "DELETETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -652,8 +652,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AttachFileToTopic";
     NewLine.МетодПоиска = "ATTACHFILETOTOPIC";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -683,8 +683,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ApproveTask";
     NewLine.МетодПоиска = "APPROVETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -714,8 +714,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DisapproveTask";
     NewLine.МетодПоиска = "DISAPPROVETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -745,8 +745,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CompleteTask";
     NewLine.МетодПоиска = "COMPLETETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -776,8 +776,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RenewTask";
     NewLine.МетодПоиска = "RENEWTASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -807,8 +807,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeferTask";
     NewLine.МетодПоиска = "DEFERTASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -838,8 +838,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "PauseTask";
     NewLine.МетодПоиска = "PAUSETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -869,8 +869,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "StartTask";
     NewLine.МетодПоиска = "STARTTASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -900,8 +900,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "StartWatchingTask";
     NewLine.МетодПоиска = "STARTWATCHINGTASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -931,8 +931,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "StopWatchingTask";
     NewLine.МетодПоиска = "STOPWATCHINGTASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -972,8 +972,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DelegateTask";
     NewLine.МетодПоиска = "DELEGATETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1003,8 +1003,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddTaskToFavorites";
     NewLine.МетодПоиска = "ADDTASKTOFAVORITES";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1034,8 +1034,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RemoveTaskFromFavorites";
     NewLine.МетодПоиска = "REMOVETASKFROMFAVORITES";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1065,8 +1065,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskHistory";
     NewLine.МетодПоиска = "GETTASKHISTORY";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1106,8 +1106,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CheckTaskAccesses";
     NewLine.МетодПоиска = "CHECKTASKACCESSES";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1137,8 +1137,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MuteTask";
     NewLine.МетодПоиска = "MUTETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1168,8 +1168,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UnmuteTask";
     NewLine.МетодПоиска = "UNMUTETASK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1219,8 +1219,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateTasksDependencies";
     NewLine.МетодПоиска = "CREATETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1270,8 +1270,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteTasksDependencies";
     NewLine.МетодПоиска = "DELETETASKSDEPENDENCIES";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1291,8 +1291,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetDailyPlan";
     NewLine.МетодПоиска = "GETDAILYPLAN";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1312,8 +1312,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskFieldsStructure";
     NewLine.МетодПоиска = "GETTASKFIELDSSTRUCTURE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -1374,8 +1374,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddTasksChecklistElement";
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -1425,8 +1425,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UpdateTasksChecklistElement";
     NewLine.МетодПоиска = "UPDATETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -1466,8 +1466,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteTasksChecklistElement";
     NewLine.МетодПоиска = "DELETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -1497,8 +1497,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTasksChecklist";
     NewLine.МетодПоиска = "GETTASKSCHECKLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -1538,8 +1538,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTasksChecklistElement";
     NewLine.МетодПоиска = "GETTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -1579,8 +1579,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CompleteTasksChecklistElement";
     NewLine.МетодПоиска = "COMPLETETASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -1620,8 +1620,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RenewTasksChecklistElement";
     NewLine.МетодПоиска = "RENEWTASKSCHECKLISTELEMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -1651,8 +1651,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskCommentsList";
     NewLine.МетодПоиска = "GETTASKCOMMENTSLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1692,8 +1692,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskComment";
     NewLine.МетодПоиска = "GETTASKCOMMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1733,8 +1733,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddTaskComment";
     NewLine.МетодПоиска = "ADDTASKCOMMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1784,8 +1784,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UpdateTaskComment";
     NewLine.МетодПоиска = "UPDATETASKCOMMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1825,8 +1825,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteTaskComment";
     NewLine.МетодПоиска = "DELETETASKCOMMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1856,8 +1856,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetResultsList";
     NewLine.МетодПоиска = "GETRESULTSLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1887,8 +1887,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateResultFromComment";
     NewLine.МетодПоиска = "CREATERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -1918,8 +1918,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteResultFromComment";
     NewLine.МетодПоиска = "DELETERESULTFROMCOMMENT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Comments and results managment";
 
 
@@ -2000,8 +2000,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddKanbanStage";
     NewLine.МетодПоиска = "ADDKANBANSTAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";
 
 
@@ -2071,8 +2071,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UpdateKanbansStage";
     NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";
 
 
@@ -2112,8 +2112,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteKanbanStage";
     NewLine.МетодПоиска = "DELETEKANBANSTAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";
 
 
@@ -2153,8 +2153,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetKanbanStages";
     NewLine.МетодПоиска = "GETKANBANSTAGES";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";
 
 
@@ -2214,8 +2214,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MoveTaskToKanbanStage";
     NewLine.МетодПоиска = "MOVETASKTOKANBANSTAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Kanban";
 
 
@@ -2285,8 +2285,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddTaskTimeAccounting";
     NewLine.МетодПоиска = "ADDTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Timekeeping";
 
 
@@ -2326,8 +2326,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteTaskTimeAccounting";
     NewLine.МетодПоиска = "DELETETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Timekeeping";
 
 
@@ -2357,8 +2357,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskTimeAccountingList";
     NewLine.МетодПоиска = "GETTASKTIMEACCOUNTINGLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Timekeeping";
 
 
@@ -2398,8 +2398,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTaskTimeAccounting";
     NewLine.МетодПоиска = "GETTASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Timekeeping";
 
 
@@ -2469,8 +2469,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UpdateTaskTimeAccounting";
     NewLine.МетодПоиска = "UPDATETASKTIMEACCOUNTING";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Timekeeping";
 
 
@@ -2490,8 +2490,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetStoragesList";
     NewLine.МетодПоиска = "GETSTORAGESLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages managment";
 
 
@@ -2511,8 +2511,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetAppSotrage";
     NewLine.МетодПоиска = "GETAPPSOTRAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages managment";
 
 
@@ -2542,8 +2542,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetStorage";
     NewLine.МетодПоиска = "GETSTORAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages managment";
 
 
@@ -2583,8 +2583,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RenameStorage";
     NewLine.МетодПоиска = "RENAMESTORAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages managment";
 
 
@@ -2614,8 +2614,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetStorageObjects";
     NewLine.МетодПоиска = "GETSTORAGEOBJECTS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages managment";
 
 
@@ -2655,8 +2655,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateStorageFolder";
     NewLine.МетодПоиска = "CREATESTORAGEFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Storages managment";
 
 
@@ -2686,8 +2686,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFolderInformation";
     NewLine.МетодПоиска = "GETFOLDERINFORMATION";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2727,8 +2727,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateSubfolder";
     NewLine.МетодПоиска = "CREATESUBFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2768,8 +2768,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MakeFolderCopy";
     NewLine.МетодПоиска = "MAKEFOLDERCOPY";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2809,8 +2809,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MoveFolder";
     NewLine.МетодПоиска = "MOVEFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2840,8 +2840,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteFolder";
     NewLine.МетодПоиска = "DELETEFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2871,8 +2871,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFolderExternalLink";
     NewLine.МетодПоиска = "GETFOLDEREXTERNALLINK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2912,8 +2912,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFolderItems";
     NewLine.МетодПоиска = "GETFOLDERITEMS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2943,8 +2943,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MarkFolderAsDeleted";
     NewLine.МетодПоиска = "MARKFOLDERASDELETED";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -2974,8 +2974,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RestoreFolder";
     NewLine.МетодПоиска = "RESTOREFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -3015,8 +3015,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RenameFolder";
     NewLine.МетодПоиска = "RENAMEFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -3046,8 +3046,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFolderFilterStructure";
     NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -3107,8 +3107,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UploadFileToStorage";
     NewLine.МетодПоиска = "UPLOADFILETOSTORAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3158,8 +3158,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UploadFileToFolder";
     NewLine.МетодПоиска = "UPLOADFILETOFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3189,8 +3189,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFileInformation";
     NewLine.МетодПоиска = "GETFILEINFORMATION";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3220,8 +3220,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteFile";
     NewLine.МетодПоиска = "DELETEFILE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3251,8 +3251,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFileExternalLink";
     NewLine.МетодПоиска = "GETFILEEXTERNALLINK";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3282,8 +3282,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MarkFileAsDeleted";
     NewLine.МетодПоиска = "MARKFILEASDELETED";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3313,8 +3313,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RestoreFile";
     NewLine.МетодПоиска = "RESTOREFILE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3354,8 +3354,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MakeCopyFile";
     NewLine.МетодПоиска = "MAKECOPYFILE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3395,8 +3395,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MoveFileToFolder";
     NewLine.МетодПоиска = "MOVEFILETOFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3436,8 +3436,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "RenameFile";
     NewLine.МетодПоиска = "RENAMEFILE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
 
@@ -3467,8 +3467,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateChat";
     NewLine.МетодПоиска = "CREATECHAT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3498,8 +3498,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetChatUsers";
     NewLine.МетодПоиска = "GETCHATUSERS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3529,8 +3529,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "LeaveChat";
     NewLine.МетодПоиска = "LEAVECHAT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3580,8 +3580,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddUsersToChat";
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3621,8 +3621,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteUserFromChat";
     NewLine.МетодПоиска = "DELETEUSERFROMCHAT";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3662,8 +3662,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ChangeChatTitle";
     NewLine.МетодПоиска = "CHANGECHATTITLE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3703,8 +3703,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ChangeChatColor";
     NewLine.МетодПоиска = "CHANGECHATCOLOR";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3744,8 +3744,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ChangeChatPicture";
     NewLine.МетодПоиска = "CHANGECHATPICTURE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3785,8 +3785,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ChangeChatOwner";
     NewLine.МетодПоиска = "CHANGECHATOWNER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3816,8 +3816,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DisableChatNotifications";
     NewLine.МетодПоиска = "DISABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3847,8 +3847,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "EnableChatNotifications";
     NewLine.МетодПоиска = "ENABLECHATNOTIFICATIONS";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3898,8 +3898,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetChatMessagesList";
     NewLine.МетодПоиска = "GETCHATMESSAGESLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3929,8 +3929,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetDialog";
     NewLine.МетодПоиска = "GETDIALOG";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3960,8 +3960,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetChatMembersList";
     NewLine.МетодПоиска = "GETCHATMEMBERSLIST";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -3991,8 +3991,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "SendWritingNotification";
     NewLine.МетодПоиска = "SENDWRITINGNOTIFICATION";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -4012,8 +4012,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ReadAll";
     NewLine.МетодПоиска = "READALL";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -4043,8 +4043,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetChatFilesFolder";
     NewLine.МетодПоиска = "GETCHATFILESFOLDER";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -4105,8 +4105,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "SendMessage";
     NewLine.МетодПоиска = "SENDMESSAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -4156,8 +4156,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "EditMessage";
     NewLine.МетодПоиска = "EDITMESSAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -4187,8 +4187,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "SetMessageReaction";
     NewLine.МетодПоиска = "SETMESSAGEREACTION";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -4218,8 +4218,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "DeleteMessage";
     NewLine.МетодПоиска = "DELETEMESSAGE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -4269,8 +4269,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "SendFile";
     NewLine.МетодПоиска = "SENDFILE";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -4310,8 +4310,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MarkMessageAsReaded";
     NewLine.МетодПоиска = "MARKMESSAGEASREADED";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
@@ -4351,8 +4351,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "MarkMessageAsUnreaded";
     NewLine.МетодПоиска = "MARKMESSAGEASUNREADED";
-    NewLine.Параметр    = "--webhook method used";
-    NewLine.Описание    = "token (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Message management";
 
 
