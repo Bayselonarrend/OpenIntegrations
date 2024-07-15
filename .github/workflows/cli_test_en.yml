@@ -3390,7 +3390,7 @@ jobs:
  
           ./oint bitrix24 GetTasksList --debug --test \
           --url "" \
-          --Structure of task filter (see GetTaskFieldsStructure) "" \
+          --filter "" \
           --offset "" \
           --token "" \
 
@@ -3402,7 +3402,7 @@ jobs:
  
           ./oint bitrix24 CreateTask --debug --test \
           --url "" \
-          --Task fields structure (see GetTaskFieldsStructure) "" \
+          --fields "" \
           --token "" \
 
 
@@ -3414,7 +3414,7 @@ jobs:
           ./oint bitrix24 UpdateTask --debug --test \
           --url "" \
           --task "" \
-          --Task fields structure "" \
+          --fields "" \
           --token "" \
 
 
@@ -4137,7 +4137,7 @@ jobs:
           ./oint bitrix24 GetFolderItems --debug --test \
           --url "" \
           --folderid "" \
-          --Items filter (see GetFolderFilterStructure) "" \
+          --filter "" \
           --token "" \
 
 
@@ -4311,7 +4311,7 @@ jobs:
  
           ./oint bitrix24 CreateChat --debug --test \
           --url "" \
-          --Chat fields structure. See GetChatStructure "" \
+          --fields "" \
           --token "" \
 
 
