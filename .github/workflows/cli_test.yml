@@ -3215,6 +3215,1403 @@ jobs:
           --token "" \
           --fileid "" \
 
+  Testing-bitrix24:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить ПолучитьСсылкуАвторизацииПриложения
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСсылкуАвторизацииПриложения --debug --test \
+          --domain "" \
+          --clientid "" \
+
+
+
+      - name: Выполнить ПолучитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьТокен --debug --test \
+          --clientid "" \
+          --clientsecret "" \
+          --code "" \
+
+
+
+      - name: Выполнить ОбновитьТокен
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОбновитьТокен --debug --test \
+          --clientid "" \
+          --clientsecret "" \
+          --refresh "" \
+
+
+
+      - name: Выполнить СерверноеВремя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СерверноеВремя --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьНовость
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьНовость --debug --test \
+          --url "" \
+          --text "Тестовый текст" \
+          --vision "" \
+          --files "" \
+          --title "Тест" \
+          --important "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьНовость
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьНовость --debug --test \
+          --url "" \
+          --postid "" \
+          --text "Тестовый текст" \
+          --vision "" \
+          --files "" \
+          --title "Тест" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьНовость
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьНовость --debug --test \
+          --url "" \
+          --postid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокПросмотревшихВажное
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокПросмотревшихВажное --debug --test \
+          --url "" \
+          --postid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьНовости
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьНовости --debug --test \
+          --url "" \
+          --postid "" \
+          --sel "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьКомментарийНовости
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьКомментарийНовости --debug --test \
+          --url "" \
+          --postid "" \
+          --text "Тестовый текст" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьПолучателейКНовости
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьПолучателейКНовости --debug --test \
+          --url "" \
+          --postid "" \
+          --vision "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокЗадач
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокЗадач --debug --test \
+          --url "" \
+          --filter "" \
+          --offset "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьЗадачу --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьФайлВЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьФайлВЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --fileid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПринятьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПринятьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтклонитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтклонитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ЗавершитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ЗавершитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ВозобновитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ВозобновитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтложитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтложитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПриостановитьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПриостановитьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить НачатьВыполнениеЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 НачатьВыполнениеЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить НачатьНаблюдатьЗаЗадачей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 НачатьНаблюдатьЗаЗадачей --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПрекратитьНаблюдатьЗаЗадачей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПрекратитьНаблюдатьЗаЗадачей --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДелегироватьЗадачу
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДелегироватьЗадачу --debug --test \
+          --url "" \
+          --task "" \
+          --user "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьЗадачуВИзбранное
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьЗадачуВИзбранное --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить УбратьЗадачуИзИзбранного
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УбратьЗадачуИзИзбранного --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьИсториюЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьИсториюЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПроверитьДоступКЗадаче
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПроверитьДоступКЗадаче --debug --test \
+          --url "" \
+          --task "" \
+          --users "" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтключитьЗвукЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтключитьЗвукЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ВключитьЗвукЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ВключитьЗвукЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьЗависимостьЗадач
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьЗависимостьЗадач --debug --test \
+          --url "" \
+          --taskfrom "" \
+          --taskto "" \
+          --linktype "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьЗависимостьЗадач
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьЗависимостьЗадач --debug --test \
+          --url "" \
+          --taskfrom "" \
+          --taskto "" \
+          --linktype "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьПланЗадачНаДень
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьПланЗадачНаДень --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруЗадачи --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруФильтраЗадач
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруФильтраЗадач --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить ДобавитьЭлементЧеклистаЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьЭлементЧеклистаЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --text "Тестовый текст" \
+          --complete "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьЭлементЧеклистаЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьЭлементЧеклистаЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --text "Тестовый текст" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьЭлементЧеклистаЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьЭлементЧеклистаЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьЧеклистЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьЧеклистЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьЭлементЧеклистаЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьЭлементЧеклистаЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --token "" \
+
+
+
+      - name: Выполнить ВыполнитьЭлементЧеклистаЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ВыполнитьЭлементЧеклистаЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --token "" \
+
+
+
+      - name: Выполнить ВозобновитьЭлементЧеклистаЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ВозобновитьЭлементЧеклистаЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокКомментариевЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокКомментариевЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьКомменатрийЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьКомменатрийЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --comment "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьКомментарийЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьКомментарийЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --text "Тестовый текст" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьКомментарийЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьКомментарийЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --comment "" \
+          --text "Тестовый текст" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьКомментарийЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьКомментарийЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --comment "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокРезультатов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокРезультатов --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьРезультатИзКомментария
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьРезультатИзКомментария --debug --test \
+          --url "" \
+          --comment "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьРезультатИзКомментария
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьРезультатИзКомментария --debug --test \
+          --url "" \
+          --comment "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруКомментария
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруКомментария --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить ДобавитьСтадиюКанбана
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьСтадиюКанбана --debug --test \
+          --url "" \
+          --title "Тест" \
+          --color "" \
+          --prevstage "" \
+          --entityid "" \
+          --admin "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьСтадиюКанбана
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьСтадиюКанбана --debug --test \
+          --url "" \
+          --title "Тест" \
+          --stage "" \
+          --color "" \
+          --prevstage "" \
+          --admin "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьСтадиюКанбана
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьСтадиюКанбана --debug --test \
+          --url "" \
+          --stage "" \
+          --admin "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтадииКанбана
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтадииКанбана --debug --test \
+          --url "" \
+          --entityid "" \
+          --admin "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПеренестиЗадачуВСтадиюКанбана
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПеренестиЗадачуВСтадиюКанбана --debug --test \
+          --url "" \
+          --task "" \
+          --stage "" \
+          --before "" \
+          --after "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьТрудозатратыЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьТрудозатратыЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --amount "" \
+          --user "" \
+          --text "Тестовый текст" \
+          --date "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьТрудозатратыЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьТрудозатратыЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --record "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокТрудозатратЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокТрудозатратЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьТрудозатратыЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьТрудозатратыЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --record "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьТрудозатратыЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьТрудозатратыЗадачи --debug --test \
+          --url "" \
+          --task "" \
+          --record "" \
+          --amount "" \
+          --text "Тестовый текст" \
+          --date "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокХранилищ
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокХранилищ --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьХранилищеПриложения
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьХранилищеПриложения --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьХранилище
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьХранилище --debug --test \
+          --url "" \
+          --storageid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПереименоватьХранилище
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПереименоватьХранилище --debug --test \
+          --url "" \
+          --storageid "" \
+          --title "Тест" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСодержимоеХранилища
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСодержимоеХранилища --debug --test \
+          --url "" \
+          --storageid "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьКаталогВХранилище
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьКаталогВХранилище --debug --test \
+          --url "" \
+          --storageid "" \
+          --title "Тест" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьИнформациюОКаталоге
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьИнформациюОКаталоге --debug --test \
+          --url "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьПодкаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьПодкаталог --debug --test \
+          --url "" \
+          --folderid "" \
+          --title "Тест" \
+          --token "" \
+
+
+
+      - name: Выполнить СкопироватьКаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СкопироватьКаталог --debug --test \
+          --url "" \
+          --folderid "" \
+          --tagetid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПереместитьКаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПереместитьКаталог --debug --test \
+          --url "" \
+          --folderid "" \
+          --tagetid "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьКаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьКаталог --debug --test \
+          --url "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьВнешнююСсылкуКаталога
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьВнешнююСсылкуКаталога --debug --test \
+          --url "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьДочерниеЭлементыКаталога
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьДочерниеЭлементыКаталога --debug --test \
+          --url "" \
+          --folderid "" \
+          --filter "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПоместитьКаталогВКорзину
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПоместитьКаталогВКорзину --debug --test \
+          --url "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ВосстановитьКаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ВосстановитьКаталог --debug --test \
+          --url "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПереименоватьКаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПереименоватьКаталог --debug --test \
+          --url "" \
+          --folderid "" \
+          --title "Тест" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруФильтраКаталога
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруФильтраКаталога --debug --test \
+          --url "" \
+          --empty "" \
+          --token "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайлВХранилище
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ЗагрузитьФайлВХранилище --debug --test \
+          --url "" \
+          --title "Тест" \
+          --file "" \
+          --storageid "" \
+          --rights "" \
+          --token "" \
+
+
+
+      - name: Выполнить ЗагрузитьФайлВКаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ЗагрузитьФайлВКаталог --debug --test \
+          --url "" \
+          --title "Тест" \
+          --file "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьИнформациюОФайле
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьИнформациюОФайле --debug --test \
+          --url "" \
+          --fileid "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьФайл --debug --test \
+          --url "" \
+          --fileid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьВнешнююСсылкуФайла
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьВнешнююСсылкуФайла --debug --test \
+          --url "" \
+          --fileid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПоместитьФайлВКорзину
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПоместитьФайлВКорзину --debug --test \
+          --url "" \
+          --fileid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ВосстановитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ВосстановитьФайл --debug --test \
+          --url "" \
+          --fileid "" \
+          --token "" \
+
+
+
+      - name: Выполнить СкопироватьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СкопироватьФайл --debug --test \
+          --url "" \
+          --fileid "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПереместитьФайлВКаталог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПереместитьФайлВКаталог --debug --test \
+          --url "" \
+          --fileid "" \
+          --folderid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПереименоватьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПереименоватьФайл --debug --test \
+          --url "" \
+          --fileid "" \
+          --title "Тест" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьЧат
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьЧат --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокПользователейЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокПользователейЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПокинутьЧат
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПокинутьЧат --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьПользователейВЧат
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьПользователейВЧат --debug --test \
+          --url "" \
+          --chat "" \
+          --users "" \
+          --hide "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИсключитьПользователяИзЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИсключитьПользователяИзЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --user "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьЗаголовокЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьЗаголовокЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --title "Тест" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьЦветЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьЦветЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --color "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьКартинкуЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьКартинкуЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --picture "${{ env.json_Picture }}" \
+          --token "" \
+
+
+
+      - name: Выполнить СменитьВладельцаЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СменитьВладельцаЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --user "" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтключитьУведомленияЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтключитьУведомленияЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ВключитьУведомленияЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ВключитьУведомленияЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокСообщенийЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокСообщенийЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --last "" \
+          --first "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьДиалог
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьДиалог --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокПользователейДиалога
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокПользователейДиалога --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтправитьУведомлениеОВводе
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтправитьУведомлениеОВводе --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПрочитатьВсе
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПрочитатьВсе --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьКаталогФайловЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьКаталогФайловЧата --debug --test \
+          --url "" \
+          --chat "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруЧата
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруЧата --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить ОтправитьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтправитьСообщение --debug --test \
+          --url "" \
+          --chat "" \
+          --text "Тестовый текст" \
+          --blocks "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьСообщение --debug --test \
+          --url "" \
+          --message "" \
+          --text "Тестовый текст" \
+          --blocks "" \
+          --token "" \
+
+
+
+      - name: Выполнить УстановитьРеакциюНаСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УстановитьРеакциюНаСообщение --debug --test \
+          --url "" \
+          --message "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьСообщение --debug --test \
+          --url "" \
+          --message "" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтправитьФайл
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтправитьФайл --debug --test \
+          --url "" \
+          --chat "" \
+          --fileid "" \
+          --description "Тестовое описание" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтметитьСообщениеКакПрочитанное
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтметитьСообщениеКакПрочитанное --debug --test \
+          --url "" \
+          --chat "" \
+          --message "" \
+          --token "" \
+
+
+
+      - name: Выполнить ОтметитьСообщениеКакНепрочитанное
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ОтметитьСообщениеКакНепрочитанное --debug --test \
+          --url "" \
+          --chat "" \
+          --message "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьБлокКартинки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьБлокКартинки --debug --test \
+          --title "Тест" \
+          --url "" \
+
+
+
+      - name: Выполнить ПолучитьБлокФайла
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьБлокФайла --debug --test \
+          --title "Тест" \
+          --url "" \
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]
