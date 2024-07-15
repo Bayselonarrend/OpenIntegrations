@@ -2904,7 +2904,7 @@ Function GetChatMembersList(Val URL, Val ChatID, Val Token = "") Export
 EndFunction
 
 // Send write notification
-// Send "Writing..." status to dialog..."
+// Send Writing... status to dialog...
 // 
 // Note
 // Method at API documentation: [im.dialog.writing](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23802)
