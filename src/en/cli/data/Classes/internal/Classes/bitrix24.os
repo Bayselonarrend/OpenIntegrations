@@ -3973,7 +3973,7 @@
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Область     = "Chats and dialogs managment";
-    NewLine.ОписаниеМетода   = "Send "Writing..." status to dialog..."";
+    NewLine.ОписаниеМетода   = "Send Writing... status to dialog...";
 
 
     NewLine = CompositionTable.Add();
