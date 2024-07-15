@@ -6306,8 +6306,8 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
     
     Text = "Text of post";
     Title = "Post title";
-    Image1 = FunctionParameters["Picture"];
-    Image2 = FunctionParameters["Picture2"];
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
     
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -6347,7 +6347,7 @@ Procedure Bitrix24_UpdatePost(FunctionParameters)
     
     Text = "New post text";
     Title = "New post title";
-    Image1 = FunctionParameters["Picture"];
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
     PostID = FunctionParameters["Bitrix24_PostID"];
     
     Files = New Map;
@@ -7039,7 +7039,7 @@ Procedure Bitrix24_GetAppStorage(FunctionParameters)
     
     // END
         
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAppStoragesList", "Bitrix24");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAppSotrage", "Bitrix24");
     
     Check_BitrixObject(Result);
     
