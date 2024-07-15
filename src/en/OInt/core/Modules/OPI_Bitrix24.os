@@ -135,7 +135,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -165,7 +165,7 @@ EndFunction
 // Files - Map Of KeyAndValue - Key > file name, value > path or binary data - files
 // Title - String - Post title - title
 // Important - Boolean - Mark post as important - important 
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -218,7 +218,7 @@ EndFunction
 // Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
 // Files - Map Of KeyAndValue - Key > file name, value > path or binary data - files
 // Title - String - Post title - title
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -265,7 +265,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Id of post to remove - postid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -289,7 +289,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Id of important post - postid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -314,7 +314,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Id of important post - postid
 // Filter - String - Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group - sel 
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -341,7 +341,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url 
 // PostID - String, Number - Post ID - postid
 // Text - String - Comment text - text
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -368,7 +368,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // PostID - String, Number - Post ID - postid
 // Visibility - String - Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group - vision
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -398,7 +398,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -419,7 +419,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Filter - Structure of Key-Value - Structure of task filter (see GetTaskFieldsStructure) - filter
 // Indent - Number, String - Offset of tasks list - offset
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -444,7 +444,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FieldsStructure - Structure of Key-Value - Task fields structure (see GetTaskFieldsStructure) - fields
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -469,7 +469,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // FieldsStructure - Structure of Key-Value - Task fields structure - fields
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -494,7 +494,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -515,7 +515,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // FileID - Number, String - File ID - fileid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -540,7 +540,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -560,7 +560,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -580,7 +580,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -600,7 +600,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -620,7 +620,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -640,7 +640,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -660,7 +660,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -680,7 +680,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -700,7 +700,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -721,7 +721,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // UserID - Number, String - ID of responsible user - user
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -746,7 +746,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -766,7 +766,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -786,7 +786,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -807,7 +807,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // Users - Array of String - User IDs for access checking - users
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -832,7 +832,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -852,7 +852,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -874,7 +874,7 @@ EndFunction
 // FromID - String, Number - From task ID - taskfrom
 // DestinationID - String, Number - To task ID - taskto
 // LinkType - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -904,7 +904,7 @@ EndFunction
 // FromID - String, Number - From task ID - taskfrom
 // DestinationID - String, Number - To task ID - taskto
 // LinkType - String, Number - Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish - linktype
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -931,7 +931,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -953,7 +953,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1036,7 +1036,7 @@ EndFunction
 // TaskID - Number, String - Task ID - task
 // Text - String - Text (title) of checklist element - text
 // Completed - Boolean - Mark as completed - complete
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1072,7 +1072,7 @@ EndFunction
 // TaskID - Number, String - Task ID - task
 // ElementID - Number, String - Checklist element ID - element
 // Text - String - Text (title) of checklist element - text
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1105,7 +1105,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // ElementID - Number, String - ID of deleted element - element
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1126,7 +1126,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1152,7 +1152,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // ElementID - Number, String - Element ID - element
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1174,7 +1174,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // ElementID - Number, String - Element ID - element
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1196,7 +1196,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // ElementID - Number, String - Element ID - element
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1221,7 +1221,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1242,7 +1242,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // CommentID - Number, String - CommentID - comment
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1268,7 +1268,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // Text - String - Comment text - text
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1299,7 +1299,7 @@ EndFunction
 // TaskID - Number, String - Task ID - task
 // CommentID - Number, String - CommentID - comment
 // Text - String - Comment text - text
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1332,7 +1332,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
 // CommentID - Number, String - ID of comment to remove - comment
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1357,7 +1357,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1377,7 +1377,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // CommentID - Number, String - CommentID - comment
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1401,7 +1401,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // CommentID - Number, String - CommentID - comment
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1467,7 +1467,7 @@ EndFunction
 // PrevStageID - String, Number - ID of the stage after which a new stage should be inserted (at the beginning by default.) - prevstage
 // EntityID - String, Number - ID of kanban owner (group or user) - entityid
 // AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1513,7 +1513,7 @@ EndFunction
 // Color - String - HEX of new stage color - color
 // PrevStageID - String, Number - Stage ID, after which the selected stage should be inserted - prevstage
 // AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1554,7 +1554,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // StageID - String, Number - ID of stage to dele - stage
 // AsAdmin - Boolean - Allows you to add stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1583,7 +1583,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // EntityID - String, Number - ID of kanban owner (group or user) - entityid
 // AsAdmin - Boolean - Allows you to get stages without checking permissions (for administrators) - admin
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1615,7 +1615,7 @@ EndFunction
 // StageID - String, Number - Stage ID - stage
 // Prev - String, Number - ID of the task to put the selected one in front of (if After not filled) - before
 // After - String, Number - ID of the task to be followed by the selected (if Prev not filled) - after
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1667,7 +1667,7 @@ EndFunction
 // UserID - String, Number - ID of user for time accounting - user
 // Text - String - Comment text - text
 // SetupDate - String - Date the record was set - date
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1708,7 +1708,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - String, Number - ID of task for time accounting - task
 // RecordID - String, Number - Time record ID - record
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1734,7 +1734,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - String, Number - Task ID - task
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1760,7 +1760,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - String, Number - Task ID - task
 // RecordID - String, Number - Time record ID - record
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1790,7 +1790,7 @@ EndFunction
 // Time - String, Number - Time spent in seconds - amount
 // Text - String - Comment text - text
 // SetupDate - String - Date the record was set - date
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1833,7 +1833,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1854,7 +1854,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1876,7 +1876,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // StorageID - String, Number - Storage ID - storageid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1897,7 +1897,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // StorageID - String, Number - Storage ID - storageid
 // Name - String - New storage name - title
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1923,7 +1923,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // StorageID - String, Number - Storage ID - storageid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1944,7 +1944,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // StorageID - String - Storage ID - storageid
 // Name - String - Folder name - title
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1978,7 +1978,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -1999,7 +1999,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Parent folder identifier - folderid
 // Name - String - Name of new folder - title
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2030,7 +2030,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
 // DestinationID - String, Number - ID of target folder - tagetid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2057,7 +2057,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
 // DestinationID - String, Number - ID of target folder - tagetid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2083,7 +2083,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - ID of folder to be deleted - folderid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2103,7 +2103,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2124,7 +2124,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
 // Filter - Structure of Key-Value - Items filter (see GetFolderFilterStructure) - filter
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2149,7 +2149,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2169,7 +2169,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2190,7 +2190,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
 // Name - String - New folders name - title
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2216,7 +2216,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // Clear - Boolean - True > structure with empty values, False > field types at values - empty
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Structure of Key-Value - Fields structure 
@@ -2262,7 +2262,7 @@ EndFunction
 // File - String, BinaryData - File for upload - file        
 // StorageID - String - Storage id - storageid
 // Rights - String - Rights array if required - rights
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2310,7 +2310,7 @@ EndFunction
 // Name - String - File name with extension - title
 // File - String, BinaryData - File for upload - file        
 // FolderID - String - Folder identifier - folderid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2358,7 +2358,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2378,7 +2378,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - ID of removing file - fileid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2398,7 +2398,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2418,7 +2418,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2438,7 +2438,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2459,7 +2459,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - Original file ID - fileid
 // FolderID - String, Number - ID of copy destination folder - folderid                                   
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2486,7 +2486,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File ID - fileid
 // FolderID - String, Number - ID of new destination folder - folderid                                   
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2513,7 +2513,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FileID - String, Number - File identifier - fileid
 // Name - String - New folders name - title
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2543,7 +2543,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatStructure - Structure of Key-Value - Chat fields structure. See GetChatStructure - fields 
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2570,7 +2570,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2590,7 +2590,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2612,7 +2612,7 @@ EndFunction
 // ChatID - String, Number - Chat ID - chat
 // UserIDs - Array of string, number - New members IDs - users
 // HideHistory - Boolean - Hide old messages from new members - hide
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2646,7 +2646,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
 // UserID - String, Number - User ID - user
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2673,7 +2673,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
 // Title - String - New title - title
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2701,7 +2701,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
 // Color - String - New chat color - color
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2728,7 +2728,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
 // Image - String, BinaryData - Picture data - picture
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2758,7 +2758,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
 // UserID - String, Number - User ID - user
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2784,7 +2784,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2804,7 +2804,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2826,7 +2826,7 @@ EndFunction
 // ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
 // LastID - String, Number - Id of last message - last
 // FirstID - String, Number - ID of first message - first
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2862,7 +2862,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2887,7 +2887,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2912,7 +2912,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2936,7 +2936,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -2958,7 +2958,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID - chat
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3017,7 +3017,7 @@ EndFunction
 // ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
 // Text - String - Message text - text
 // Attachments - Array of Structure - Array of attachments - blocks
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3046,7 +3046,7 @@ EndFunction
 // MessageID - String, Number - ID of the message to be edited - message
 // Text - String - New message text - text
 // Attachments - Array of Structure - New blocks array - blocks
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3073,7 +3073,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // MessageID - String, Number - Message ID - message
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3098,7 +3098,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // MessageID - String, Number - ID of the message to be deleted - message
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3125,7 +3125,7 @@ EndFunction
 // ChatID - String, Number - Chat ID - chat
 // FileID - String, Number - File ID from UploadFileToFolder method - fileid
 // Description - String - File description - description
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3155,7 +3155,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
 // MessageID - String, Number - Id of last readed message - message
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -3182,7 +3182,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // ChatID - String, Number - Chat ID (as chatXXX) or User ID (as XXX) - chat
 // MessageID - String, Number - ID of last unreaded message - message
-// Token - String - Access token, when not-webhook method used - token
+// Token - String - Access token, when app auth method used - token
 // 
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
