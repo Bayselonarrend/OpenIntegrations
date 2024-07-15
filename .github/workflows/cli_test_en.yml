@@ -3215,6 +3215,1403 @@ jobs:
           --token "" \
           --fileid "" \
 
+  Testing-bitrix24:
+    runs-on: ubuntu-latest
+    needs: [Decode, Build]
+    steps:
+
+      - name: Получить тестовые данные из кэша
+        uses: actions/cache/restore@v3
+        with:
+          path: ./data.json
+          key: test-data
+
+      - name: Скачать артефакт с исполняемым файлом
+        uses: actions/download-artifact@v4
+        with:
+          name: oint 
+
+      - name: JSON в переменные
+        uses: rgarcia-phi/json-to-variables@v1.1.0
+        with:
+          filename: 'data.json'
+          masked: true
+
+      - name: chmod для OInt
+        run: chmod +x ./oint
+
+
+
+
+      - name: Выполнить GetAppAuthLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetAppAuthLink --debug --test \
+          --domain "" \
+          --clientid "" \
+
+
+
+      - name: Выполнить GetToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetToken --debug --test \
+          --clientid "" \
+          --clientsecret "" \
+          --code "" \
+
+
+
+      - name: Выполнить RefreshToken
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RefreshToken --debug --test \
+          --clientid "" \
+          --clientsecret "" \
+          --refresh "" \
+
+
+
+      - name: Выполнить ServerTime
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ServerTime --debug --test \
+          --url "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CreatePost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreatePost --debug --test \
+          --url "" \
+          --text "Тестовый текст" \
+          --vision "" \
+          --files "" \
+          --title "Тест" \
+          --important "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UpdatePost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdatePost --debug --test \
+          --url "" \
+          --postid "" \
+          --text "Тестовый текст" \
+          --vision "" \
+          --files "" \
+          --title "Тест" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeletePost
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeletePost --debug --test \
+          --url "" \
+          --postid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetImportantPostViewers
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetImportantPostViewers --debug --test \
+          --url "" \
+          --postid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetPosts
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetPosts --debug --test \
+          --url "" \
+          --postid "" \
+          --sel "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить AddPostComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddPostComment --debug --test \
+          --url "" \
+          --postid "" \
+          --text "Тестовый текст" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить AddPostRecipients
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddPostRecipients --debug --test \
+          --url "" \
+          --postid "" \
+          --vision "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTasksList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTasksList --debug --test \
+          --url "" \
+          --Structure of task filter (see GetTaskFieldsStructure) "" \
+          --offset "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CreateTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateTask --debug --test \
+          --url "" \
+          --Task fields structure (see GetTaskFieldsStructure) "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UpdateTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateTask --debug --test \
+          --url "" \
+          --task "" \
+          --Task fields structure "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить AttachFileToTopic
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AttachFileToTopic --debug --test \
+          --url "" \
+          --task "" \
+          --fileid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить ApproveTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ApproveTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DisapproveTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DisapproveTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CompleteTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CompleteTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RenewTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RenewTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeferTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeferTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить PauseTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 PauseTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить StartTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 StartTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить StartWatchingTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 StartWatchingTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить StopWatchingTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 StopWatchingTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DelegateTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DelegateTask --debug --test \
+          --url "" \
+          --task "" \
+          --user "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить AddTaskToFavorites
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddTaskToFavorites --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RemoveTaskFromFavorites
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RemoveTaskFromFavorites --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTaskHistory
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTaskHistory --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CheckTaskAccesses
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CheckTaskAccesses --debug --test \
+          --url "" \
+          --task "" \
+          --users "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MuteTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MuteTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UnmuteTask
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UnmuteTask --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CreateTasksDependencies
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateTasksDependencies --debug --test \
+          --url "" \
+          --taskfrom "" \
+          --taskto "" \
+          --linktype "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteTasksDependencies
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteTasksDependencies --debug --test \
+          --url "" \
+          --taskfrom "" \
+          --taskto "" \
+          --linktype "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetDailyPlan
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetDailyPlan --debug --test \
+          --url "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTaskFieldsStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTaskFieldsStructure --debug --test \
+          --url "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTasksFilterStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTasksFilterStructure --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить AddTasksChecklistElement
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddTasksChecklistElement --debug --test \
+          --url "" \
+          --task "" \
+          --text "Тестовый текст" \
+          --complete "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UpdateTasksChecklistElement
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateTasksChecklistElement --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --text "Тестовый текст" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteTasksChecklistElement
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteTasksChecklistElement --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTasksChecklist
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTasksChecklist --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTasksChecklistElement
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTasksChecklistElement --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CompleteTasksChecklistElement
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CompleteTasksChecklistElement --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RenewTasksChecklistElement
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RenewTasksChecklistElement --debug --test \
+          --url "" \
+          --task "" \
+          --element "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTaskCommentsList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTaskCommentsList --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTaskComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTaskComment --debug --test \
+          --url "" \
+          --task "" \
+          --comment "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить AddTaskComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddTaskComment --debug --test \
+          --url "" \
+          --task "" \
+          --text "Тестовый текст" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UpdateTaskComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateTaskComment --debug --test \
+          --url "" \
+          --task "" \
+          --comment "" \
+          --text "Тестовый текст" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteTaskComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteTaskComment --debug --test \
+          --url "" \
+          --task "" \
+          --comment "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetResultsList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetResultsList --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CreateResultFromComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateResultFromComment --debug --test \
+          --url "" \
+          --comment "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteResultFromComment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteResultFromComment --debug --test \
+          --url "" \
+          --comment "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetCommentStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetCommentStructure --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить AddKanbanStage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddKanbanStage --debug --test \
+          --url "" \
+          --title "Тест" \
+          --color "" \
+          --prevstage "" \
+          --entityid "" \
+          --admin "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UpdateKanbansStage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateKanbansStage --debug --test \
+          --url "" \
+          --title "Тест" \
+          --stage "" \
+          --color "" \
+          --prevstage "" \
+          --admin "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteKanbanStage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteKanbanStage --debug --test \
+          --url "" \
+          --stage "" \
+          --admin "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetKanbanStages
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetKanbanStages --debug --test \
+          --url "" \
+          --entityid "" \
+          --admin "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MoveTaskToKanbanStage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MoveTaskToKanbanStage --debug --test \
+          --url "" \
+          --task "" \
+          --stage "" \
+          --before "" \
+          --after "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить AddTaskTimeAccounting
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddTaskTimeAccounting --debug --test \
+          --url "" \
+          --task "" \
+          --amount "" \
+          --user "" \
+          --text "Тестовый текст" \
+          --date "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteTaskTimeAccounting
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteTaskTimeAccounting --debug --test \
+          --url "" \
+          --task "" \
+          --record "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTaskTimeAccountingList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTaskTimeAccountingList --debug --test \
+          --url "" \
+          --task "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetTaskTimeAccounting
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTaskTimeAccounting --debug --test \
+          --url "" \
+          --task "" \
+          --record "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UpdateTaskTimeAccounting
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateTaskTimeAccounting --debug --test \
+          --url "" \
+          --task "" \
+          --record "" \
+          --amount "" \
+          --text "Тестовый текст" \
+          --date "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetStoragesList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetStoragesList --debug --test \
+          --url "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetAppSotrage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetAppSotrage --debug --test \
+          --url "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetStorage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetStorage --debug --test \
+          --url "" \
+          --storageid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RenameStorage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RenameStorage --debug --test \
+          --url "" \
+          --storageid "" \
+          --title "Тест" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetStorageObjects
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetStorageObjects --debug --test \
+          --url "" \
+          --storageid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CreateStorageFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateStorageFolder --debug --test \
+          --url "" \
+          --storageid "" \
+          --title "Тест" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetFolderInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetFolderInformation --debug --test \
+          --url "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CreateSubfolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateSubfolder --debug --test \
+          --url "" \
+          --folderid "" \
+          --title "Тест" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MakeFolderCopy
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MakeFolderCopy --debug --test \
+          --url "" \
+          --folderid "" \
+          --tagetid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MoveFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MoveFolder --debug --test \
+          --url "" \
+          --folderid "" \
+          --tagetid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteFolder --debug --test \
+          --url "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetFolderExternalLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetFolderExternalLink --debug --test \
+          --url "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetFolderItems
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetFolderItems --debug --test \
+          --url "" \
+          --folderid "" \
+          --Items filter (see GetFolderFilterStructure) "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MarkFolderAsDeleted
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MarkFolderAsDeleted --debug --test \
+          --url "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RestoreFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RestoreFolder --debug --test \
+          --url "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RenameFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RenameFolder --debug --test \
+          --url "" \
+          --folderid "" \
+          --title "Тест" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetFolderFilterStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetFolderFilterStructure --debug --test \
+          --url "" \
+          --empty "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UploadFileToStorage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UploadFileToStorage --debug --test \
+          --url "" \
+          --title "Тест" \
+          --file "" \
+          --storageid "" \
+          --rights "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить UploadFileToFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UploadFileToFolder --debug --test \
+          --url "" \
+          --title "Тест" \
+          --file "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetFileInformation
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetFileInformation --debug --test \
+          --url "" \
+          --fileid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteFile --debug --test \
+          --url "" \
+          --fileid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetFileExternalLink
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetFileExternalLink --debug --test \
+          --url "" \
+          --fileid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MarkFileAsDeleted
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MarkFileAsDeleted --debug --test \
+          --url "" \
+          --fileid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RestoreFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RestoreFile --debug --test \
+          --url "" \
+          --fileid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MakeCopyFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MakeCopyFile --debug --test \
+          --url "" \
+          --fileid "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MoveFileToFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MoveFileToFolder --debug --test \
+          --url "" \
+          --fileid "" \
+          --folderid "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить RenameFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 RenameFile --debug --test \
+          --url "" \
+          --fileid "" \
+          --title "Тест" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить CreateChat
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateChat --debug --test \
+          --url "" \
+          --Chat fields structure. See GetChatStructure "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetChatUsers
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetChatUsers --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить LeaveChat
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 LeaveChat --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить AddUsersToChat
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddUsersToChat --debug --test \
+          --url "" \
+          --chat "" \
+          --users "" \
+          --hide "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteUserFromChat
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteUserFromChat --debug --test \
+          --url "" \
+          --chat "" \
+          --user "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить ChangeChatTitle
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ChangeChatTitle --debug --test \
+          --url "" \
+          --chat "" \
+          --title "Тест" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить ChangeChatColor
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ChangeChatColor --debug --test \
+          --url "" \
+          --chat "" \
+          --color "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить ChangeChatPicture
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ChangeChatPicture --debug --test \
+          --url "" \
+          --chat "" \
+          --picture "${{ env.json_Picture }}" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить ChangeChatOwner
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ChangeChatOwner --debug --test \
+          --url "" \
+          --chat "" \
+          --user "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DisableChatNotifications
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DisableChatNotifications --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить EnableChatNotifications
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 EnableChatNotifications --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetChatMessagesList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetChatMessagesList --debug --test \
+          --url "" \
+          --chat "" \
+          --last "" \
+          --first "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetDialog
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetDialog --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetChatMembersList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetChatMembersList --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить SendWritingNotification
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 SendWritingNotification --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить ReadAll
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ReadAll --debug --test \
+          --url "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetChatFilesFolder
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetChatFilesFolder --debug --test \
+          --url "" \
+          --chat "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetChatStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetChatStructure --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить SendMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 SendMessage --debug --test \
+          --url "" \
+          --chat "" \
+          --text "Тестовый текст" \
+          --blocks "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить EditMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 EditMessage --debug --test \
+          --url "" \
+          --message "" \
+          --text "Тестовый текст" \
+          --blocks "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить SetMessageReaction
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 SetMessageReaction --debug --test \
+          --url "" \
+          --message "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить DeleteMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteMessage --debug --test \
+          --url "" \
+          --message "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить SendFile
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 SendFile --debug --test \
+          --url "" \
+          --chat "" \
+          --fileid "" \
+          --description "Тестовое описание" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MarkMessageAsReaded
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MarkMessageAsReaded --debug --test \
+          --url "" \
+          --chat "" \
+          --message "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить MarkMessageAsUnreaded
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 MarkMessageAsUnreaded --debug --test \
+          --url "" \
+          --chat "" \
+          --message "" \
+          --webhook method used "" \
+
+
+
+      - name: Выполнить GetPictureBlock
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetPictureBlock --debug --test \
+          --title "Тест" \
+          --url "" \
+
+
+
+      - name: Выполнить GetFileBlock
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetFileBlock --debug --test \
+          --title "Тест" \
+          --url "" \
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]
