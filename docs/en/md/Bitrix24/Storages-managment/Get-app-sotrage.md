@@ -40,4 +40,26 @@ Method at API documentation: [disk.storage.getforapp](https://dev.1c-bitrix.ru/r
 
 ```
 
-
+```json title="Result"
+{
+ "result": {
+ "ID": "18",
+ "NAME": "New storage name",
+ "CODE": null,
+ "MODULE_ID": "disk",
+ "ENTITY_TYPE": "restapp",
+ "ENTITY_ID": "2",
+ "ROOT_OBJECT_ID": "464"
+ },
+ "time": {
+ "start": 1721067694.96416,
+ "finish": 1721067694.99489,
+ "duration": 0.0307230949401856,
+ "processing": 0.00391507148742676,
+ "date_start": "2024-07-15T18:21:34+00:00",
+ "date_finish": "2024-07-15T18:21:34+00:00",
+ "operating_reset_at": 1721068294,
+ "operating": 0
+ }
+}
+```
