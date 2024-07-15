@@ -417,7 +417,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Filter - Structure of Key-Value - Structure of task filter (see GetTaskFieldsStructure) - filter
+// Filter - Structure of KeyAndValue - Structure of task filter (see GetTaskFieldsStructure) - filter
 // Indent - Number, String - Offset of tasks list - offset
 // Token - String - Access token, when app auth method used - token
 // 
@@ -443,7 +443,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure of Key-Value - Task fields structure (see GetTaskFieldsStructure) - fields
+// FieldsStructure - Structure of KeyAndValue - Task fields structure (see GetTaskFieldsStructure) - fields
 // Token - String - Access token, when app auth method used - token
 // 
 // Returns:
@@ -468,7 +468,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // TaskID - Number, String - Task ID - task
-// FieldsStructure - Structure of Key-Value - Task fields structure - fields
+// FieldsStructure - Structure of KeyAndValue - Task fields structure - fields
 // Token - String - Access token, when app auth method used - token
 // 
 // Returns:
@@ -973,7 +973,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 // 
 // Returns:
-// Structure of Key-Value - Fields structure 
+// Structure of KeyAndValue - Fields structure 
 Function GetTasksFilterStructure(Val Clear = False) Export
     
     // More
@@ -1423,7 +1423,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //  
 // Returns:
-// Structure of Key-Value - Fields structure 
+// Structure of KeyAndValue - Fields structure 
 Function GetCommentStructure(Val Clear = False) Export
     
     // More
@@ -2123,7 +2123,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
-// Filter - Structure of Key-Value - Items filter (see GetFolderFilterStructure) - filter
+// Filter - Structure of KeyAndValue - Items filter (see GetFolderFilterStructure) - filter
 // Token - String - Access token, when app auth method used - token
 // 
 // Returns:
@@ -2219,7 +2219,7 @@ EndFunction
 // Token - String - Access token, when app auth method used - token
 // 
 // Returns:
-// Structure of Key-Value - Fields structure 
+// Structure of KeyAndValue - Fields structure 
 Function GetFolderFilterStructure(Val URL, Val Clear = False, Val Token = "") Export
     
     Parameters = NormalizeAuth(URL, Token, "disk.folder.getfields");
@@ -2542,7 +2542,7 @@ EndFunction
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// ChatStructure - Structure of Key-Value - Chat fields structure. See GetChatStructure - fields 
+// ChatStructure - Structure of KeyAndValue - Chat fields structure. See GetChatStructure - fields 
 // Token - String - Access token, when app auth method used - token
 // 
 // Returns:
@@ -2976,7 +2976,7 @@ EndFunction
 // Clear - Boolean - True > structure with empty values, False > field types at values - empty
 // 
 // Returns:
-// Structure of Key-Value - Fields structure 
+// Structure of KeyAndValue - Fields structure 
 Function GetChatStructure(Val Clear = False) Export
     
     OPI_TypeConversion.GetBoolean(Clear);

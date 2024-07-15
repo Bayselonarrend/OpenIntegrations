@@ -232,7 +232,9 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Working with fields";
-    NewLine.ОписаниеМетода   = "Creates a new field in the table";
+    NewLine.ОписаниеМетода   = "Creates a new field in the table
+    |Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
+    |";
 
 
     NewLine = CompositionTable.Add();
@@ -260,8 +262,8 @@
     NewLine.Модуль      = "OPI_Airtable";
     NewLine.Метод       = "CreateField";
     NewLine.МетодПоиска = "CREATEFIELD";
-    NewLine.Параметр    = "--Description of the new field";
-    NewLine.Описание    = "fielddata";
+    NewLine.Параметр    = "--fielddata";
+    NewLine.Описание    = "Description of the new field";
     NewLine.Область     = "Working with fields";
 
 
