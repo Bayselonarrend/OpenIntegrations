@@ -3281,7 +3281,7 @@ jobs:
  
           ./oint bitrix24 ServerTime --debug --test \
           --url "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3296,7 +3296,7 @@ jobs:
           --files "" \
           --title "Тест" \
           --important "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3311,7 +3311,7 @@ jobs:
           --vision "" \
           --files "" \
           --title "Тест" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3322,7 +3322,7 @@ jobs:
           ./oint bitrix24 DeletePost --debug --test \
           --url "" \
           --postid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3333,7 +3333,7 @@ jobs:
           ./oint bitrix24 GetImportantPostViewers --debug --test \
           --url "" \
           --postid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3345,7 +3345,7 @@ jobs:
           --url "" \
           --postid "" \
           --sel "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3357,7 +3357,7 @@ jobs:
           --url "" \
           --postid "" \
           --text "Тестовый текст" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3369,7 +3369,7 @@ jobs:
           --url "" \
           --postid "" \
           --vision "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3380,7 +3380,7 @@ jobs:
           ./oint bitrix24 GetTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3392,7 +3392,7 @@ jobs:
           --url "" \
           --Structure of task filter (see GetTaskFieldsStructure) "" \
           --offset "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3403,7 +3403,7 @@ jobs:
           ./oint bitrix24 CreateTask --debug --test \
           --url "" \
           --Task fields structure (see GetTaskFieldsStructure) "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3415,7 +3415,7 @@ jobs:
           --url "" \
           --task "" \
           --Task fields structure "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3426,7 +3426,7 @@ jobs:
           ./oint bitrix24 DeleteTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3438,7 +3438,7 @@ jobs:
           --url "" \
           --task "" \
           --fileid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3449,7 +3449,7 @@ jobs:
           ./oint bitrix24 ApproveTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3460,7 +3460,7 @@ jobs:
           ./oint bitrix24 DisapproveTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3471,7 +3471,7 @@ jobs:
           ./oint bitrix24 CompleteTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3482,7 +3482,7 @@ jobs:
           ./oint bitrix24 RenewTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3493,7 +3493,7 @@ jobs:
           ./oint bitrix24 DeferTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3504,7 +3504,7 @@ jobs:
           ./oint bitrix24 PauseTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3515,7 +3515,7 @@ jobs:
           ./oint bitrix24 StartTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3526,7 +3526,7 @@ jobs:
           ./oint bitrix24 StartWatchingTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3537,7 +3537,7 @@ jobs:
           ./oint bitrix24 StopWatchingTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3549,7 +3549,7 @@ jobs:
           --url "" \
           --task "" \
           --user "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3560,7 +3560,7 @@ jobs:
           ./oint bitrix24 AddTaskToFavorites --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3571,7 +3571,7 @@ jobs:
           ./oint bitrix24 RemoveTaskFromFavorites --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3582,7 +3582,7 @@ jobs:
           ./oint bitrix24 GetTaskHistory --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3594,7 +3594,7 @@ jobs:
           --url "" \
           --task "" \
           --users "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3605,7 +3605,7 @@ jobs:
           ./oint bitrix24 MuteTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3616,7 +3616,7 @@ jobs:
           ./oint bitrix24 UnmuteTask --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3629,7 +3629,7 @@ jobs:
           --taskfrom "" \
           --taskto "" \
           --linktype "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3642,7 +3642,7 @@ jobs:
           --taskfrom "" \
           --taskto "" \
           --linktype "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3652,7 +3652,7 @@ jobs:
  
           ./oint bitrix24 GetDailyPlan --debug --test \
           --url "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3662,7 +3662,7 @@ jobs:
  
           ./oint bitrix24 GetTaskFieldsStructure --debug --test \
           --url "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3684,7 +3684,7 @@ jobs:
           --task "" \
           --text "Тестовый текст" \
           --complete "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3697,7 +3697,7 @@ jobs:
           --task "" \
           --element "" \
           --text "Тестовый текст" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3709,7 +3709,7 @@ jobs:
           --url "" \
           --task "" \
           --element "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3720,7 +3720,7 @@ jobs:
           ./oint bitrix24 GetTasksChecklist --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3732,7 +3732,7 @@ jobs:
           --url "" \
           --task "" \
           --element "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3744,7 +3744,7 @@ jobs:
           --url "" \
           --task "" \
           --element "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3756,7 +3756,7 @@ jobs:
           --url "" \
           --task "" \
           --element "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3767,7 +3767,7 @@ jobs:
           ./oint bitrix24 GetTaskCommentsList --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3779,7 +3779,7 @@ jobs:
           --url "" \
           --task "" \
           --comment "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3791,7 +3791,7 @@ jobs:
           --url "" \
           --task "" \
           --text "Тестовый текст" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3804,7 +3804,7 @@ jobs:
           --task "" \
           --comment "" \
           --text "Тестовый текст" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3816,7 +3816,7 @@ jobs:
           --url "" \
           --task "" \
           --comment "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3827,7 +3827,7 @@ jobs:
           ./oint bitrix24 GetResultsList --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3838,7 +3838,7 @@ jobs:
           ./oint bitrix24 CreateResultFromComment --debug --test \
           --url "" \
           --comment "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3849,7 +3849,7 @@ jobs:
           ./oint bitrix24 DeleteResultFromComment --debug --test \
           --url "" \
           --comment "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3873,7 +3873,7 @@ jobs:
           --prevstage "" \
           --entityid "" \
           --admin "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3888,7 +3888,7 @@ jobs:
           --color "" \
           --prevstage "" \
           --admin "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3900,7 +3900,7 @@ jobs:
           --url "" \
           --stage "" \
           --admin "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3912,7 +3912,7 @@ jobs:
           --url "" \
           --entityid "" \
           --admin "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3926,7 +3926,7 @@ jobs:
           --stage "" \
           --before "" \
           --after "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3941,7 +3941,7 @@ jobs:
           --user "" \
           --text "Тестовый текст" \
           --date "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3953,7 +3953,7 @@ jobs:
           --url "" \
           --task "" \
           --record "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3964,7 +3964,7 @@ jobs:
           ./oint bitrix24 GetTaskTimeAccountingList --debug --test \
           --url "" \
           --task "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3976,7 +3976,7 @@ jobs:
           --url "" \
           --task "" \
           --record "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -3991,7 +3991,7 @@ jobs:
           --amount "" \
           --text "Тестовый текст" \
           --date "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4001,7 +4001,7 @@ jobs:
  
           ./oint bitrix24 GetStoragesList --debug --test \
           --url "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4011,7 +4011,7 @@ jobs:
  
           ./oint bitrix24 GetAppSotrage --debug --test \
           --url "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4022,7 +4022,7 @@ jobs:
           ./oint bitrix24 GetStorage --debug --test \
           --url "" \
           --storageid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4034,7 +4034,7 @@ jobs:
           --url "" \
           --storageid "" \
           --title "Тест" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4045,7 +4045,7 @@ jobs:
           ./oint bitrix24 GetStorageObjects --debug --test \
           --url "" \
           --storageid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4057,7 +4057,7 @@ jobs:
           --url "" \
           --storageid "" \
           --title "Тест" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4068,7 +4068,7 @@ jobs:
           ./oint bitrix24 GetFolderInformation --debug --test \
           --url "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4080,7 +4080,7 @@ jobs:
           --url "" \
           --folderid "" \
           --title "Тест" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4092,7 +4092,7 @@ jobs:
           --url "" \
           --folderid "" \
           --tagetid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4104,7 +4104,7 @@ jobs:
           --url "" \
           --folderid "" \
           --tagetid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4115,7 +4115,7 @@ jobs:
           ./oint bitrix24 DeleteFolder --debug --test \
           --url "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4126,7 +4126,7 @@ jobs:
           ./oint bitrix24 GetFolderExternalLink --debug --test \
           --url "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4138,7 +4138,7 @@ jobs:
           --url "" \
           --folderid "" \
           --Items filter (see GetFolderFilterStructure) "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4149,7 +4149,7 @@ jobs:
           ./oint bitrix24 MarkFolderAsDeleted --debug --test \
           --url "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4160,7 +4160,7 @@ jobs:
           ./oint bitrix24 RestoreFolder --debug --test \
           --url "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4172,7 +4172,7 @@ jobs:
           --url "" \
           --folderid "" \
           --title "Тест" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4183,7 +4183,7 @@ jobs:
           ./oint bitrix24 GetFolderFilterStructure --debug --test \
           --url "" \
           --empty "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4197,7 +4197,7 @@ jobs:
           --file "" \
           --storageid "" \
           --rights "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4210,7 +4210,7 @@ jobs:
           --title "Тест" \
           --file "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4221,7 +4221,7 @@ jobs:
           ./oint bitrix24 GetFileInformation --debug --test \
           --url "" \
           --fileid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4232,7 +4232,7 @@ jobs:
           ./oint bitrix24 DeleteFile --debug --test \
           --url "" \
           --fileid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4243,7 +4243,7 @@ jobs:
           ./oint bitrix24 GetFileExternalLink --debug --test \
           --url "" \
           --fileid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4254,7 +4254,7 @@ jobs:
           ./oint bitrix24 MarkFileAsDeleted --debug --test \
           --url "" \
           --fileid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4265,7 +4265,7 @@ jobs:
           ./oint bitrix24 RestoreFile --debug --test \
           --url "" \
           --fileid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4277,7 +4277,7 @@ jobs:
           --url "" \
           --fileid "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4289,7 +4289,7 @@ jobs:
           --url "" \
           --fileid "" \
           --folderid "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4301,7 +4301,7 @@ jobs:
           --url "" \
           --fileid "" \
           --title "Тест" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4312,7 +4312,7 @@ jobs:
           ./oint bitrix24 CreateChat --debug --test \
           --url "" \
           --Chat fields structure. See GetChatStructure "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4323,7 +4323,7 @@ jobs:
           ./oint bitrix24 GetChatUsers --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4334,7 +4334,7 @@ jobs:
           ./oint bitrix24 LeaveChat --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4347,7 +4347,7 @@ jobs:
           --chat "" \
           --users "" \
           --hide "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4359,7 +4359,7 @@ jobs:
           --url "" \
           --chat "" \
           --user "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4371,7 +4371,7 @@ jobs:
           --url "" \
           --chat "" \
           --title "Тест" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4383,7 +4383,7 @@ jobs:
           --url "" \
           --chat "" \
           --color "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4395,7 +4395,7 @@ jobs:
           --url "" \
           --chat "" \
           --picture "${{ env.json_Picture }}" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4407,7 +4407,7 @@ jobs:
           --url "" \
           --chat "" \
           --user "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4418,7 +4418,7 @@ jobs:
           ./oint bitrix24 DisableChatNotifications --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4429,7 +4429,7 @@ jobs:
           ./oint bitrix24 EnableChatNotifications --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4442,7 +4442,7 @@ jobs:
           --chat "" \
           --last "" \
           --first "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4453,7 +4453,7 @@ jobs:
           ./oint bitrix24 GetDialog --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4464,7 +4464,7 @@ jobs:
           ./oint bitrix24 GetChatMembersList --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4475,7 +4475,7 @@ jobs:
           ./oint bitrix24 SendWritingNotification --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4485,7 +4485,7 @@ jobs:
  
           ./oint bitrix24 ReadAll --debug --test \
           --url "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4496,7 +4496,7 @@ jobs:
           ./oint bitrix24 GetChatFilesFolder --debug --test \
           --url "" \
           --chat "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4518,7 +4518,7 @@ jobs:
           --chat "" \
           --text "Тестовый текст" \
           --blocks "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4531,7 +4531,7 @@ jobs:
           --message "" \
           --text "Тестовый текст" \
           --blocks "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4542,7 +4542,7 @@ jobs:
           ./oint bitrix24 SetMessageReaction --debug --test \
           --url "" \
           --message "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4553,7 +4553,7 @@ jobs:
           ./oint bitrix24 DeleteMessage --debug --test \
           --url "" \
           --message "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4566,7 +4566,7 @@ jobs:
           --chat "" \
           --fileid "" \
           --description "Тестовое описание" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4578,7 +4578,7 @@ jobs:
           --url "" \
           --chat "" \
           --message "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
@@ -4590,7 +4590,7 @@ jobs:
           --url "" \
           --chat "" \
           --message "" \
-          --webhook method used "" \
+          --token "" \
 
 
 
