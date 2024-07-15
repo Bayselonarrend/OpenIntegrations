@@ -21,9 +21,9 @@ sidebar_class_name: NachaloRaboty
   <a href="/docs/Instructions/Twitter/"><img src={require('../../static/img/APIs/Twitter.png').default} width="32"/></a>
   <a href="/docs/Instructions/Notion/"><img src={require('../../static/img/APIs/Notion.png').default} width="32"/></a>
   <a href="/docs/Instructions/Yandex_Disk/"><img src={require('../../static/img/APIs/YandexDisk.png').default} width="32"/></a>
-  <a href="/docs/Instructions/Google_Calendar/"><img src={require('../../static/img/APIs/GoogleCalendar.png').default} width="32"/></a>
-  <a href="/docs/Instructions/Google_Drive/"><img src={require('../../static/img/APIs/GoogleDrive.png').default} width="32"/></a>
-  <a href="/docs/Instructions/Google_Sheets/"><img src={require('../../static/img/APIs/GoogleSheets.png').default} width="32"/></a>
+  <a href="/docs/Instructions/GoogleCalendar/"><img src={require('../../static/img/APIs/GoogleCalendar.png').default} width="32"/></a>
+  <a href="/docs/Instructions/GoogleDrive/"><img src={require('../../static/img/APIs/GoogleDrive.png').default} width="32"/></a>
+  <a href="/docs/Instructions/GoogleSheets/"><img src={require('../../static/img/APIs/GoogleSheets.png').default} width="32"/></a>
   <a href="/docs/Instructions/Slack/"><img src={require('../../static/img/APIs/Slack.png').default} width="32"/></a>
   <a href="/docs/Instructions/Airtable/"><img src={require('../../static/img/APIs/Airtable.png').default} width="32"/></a>
   <a href="/docs/Instructions/Dropbox/"><img src={require('../../static/img/APIs/Dropbox.png').default} width="32"/></a>
