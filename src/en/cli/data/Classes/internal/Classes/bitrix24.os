@@ -488,8 +488,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetTasksList";
     NewLine.МетодПоиска = "GETTASKSLIST";
-    NewLine.Параметр    = "--Structure of task filter (see GetTaskFieldsStructure)";
-    NewLine.Описание    = "filter (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Structure of task filter (see GetTaskFieldsStructure) (optional, def. val. - Empty value)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -529,8 +529,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateTask";
     NewLine.МетодПоиска = "CREATETASK";
-    NewLine.Параметр    = "--Task fields structure (see GetTaskFieldsStructure)";
-    NewLine.Описание    = "fields";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Task fields structure (see GetTaskFieldsStructure)";
     NewLine.Область     = "Tasks managment";
 
 
@@ -570,8 +570,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "UpdateTask";
     NewLine.МетодПоиска = "UPDATETASK";
-    NewLine.Параметр    = "--Task fields structure";
-    NewLine.Описание    = "fields";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Task fields structure";
     NewLine.Область     = "Tasks managment";
 
 
@@ -2902,8 +2902,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetFolderItems";
     NewLine.МетодПоиска = "GETFOLDERITEMS";
-    NewLine.Параметр    = "--Items filter (see GetFolderFilterStructure)";
-    NewLine.Описание    = "filter (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Items filter (see GetFolderFilterStructure) (optional, def. val. - Empty value)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -3457,8 +3457,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateChat";
     NewLine.МетодПоиска = "CREATECHAT";
-    NewLine.Параметр    = "--Chat fields structure. See GetChatStructure";
-    NewLine.Описание    = "fields";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Chat fields structure. See GetChatStructure";
     NewLine.Область     = "Chats and dialogs managment";
 
 
