@@ -42,6 +42,6 @@ jobs:
     - name: Развертывание на neocities
       uses: bcomnes/deploy-to-neocities@v2
       with:
-        api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
+        api_token: ${{ secrets.NEOCITIES_EN_API_TOKEN }}
         cleanup: true
         dist_dir: ./docs/docusaurus/build
