@@ -2695,8 +2695,7 @@ EndFunction
 // 
 // Note
 // Method at API documentation: [im.chat.updateTitle](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
-// Available colors: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, 
-// MARENGO, GRAY, GRAPHITE
+// 
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
