@@ -82,7 +82,7 @@ jobs:
           package: oint
           package_root: .debpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.10.0' # refs/tags/v*.*.*
+          version: '1.11.0' # refs/tags/v*.*.*
           arch: 'all'
           depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
           desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
@@ -108,7 +108,7 @@ jobs:
           package: oint
           package_root: .rpmpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.10.0'
+          version: '1.11.0'
           arch: 'x86_64'
           desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
           requires: |
@@ -209,6 +209,7 @@ jobs:
           --text "Тестовый текст" \
           --keyboard "" \
           --parsemode "" \
+          --reply "" \
 
 
 
@@ -429,6 +430,17 @@ jobs:
           ./oint telegram GetParticipantCount --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
+
+
+
+      - name: Выполнить DeleteMessage
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram DeleteMessage --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
 
 
 
@@ -1090,7 +1102,7 @@ jobs:
 
 
 
-      - name: Выполнить PauseAdvertisingAd
+      - name: Выполнить PauseAdvertising
         if: ${{ cancelled() }} == false
         run: |
  
@@ -1104,7 +1116,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint vk PauseAdvertisingAd --debug --test \
+          ./oint vk PauseAdvertising --debug --test \
           --cabinet "${{ env.json_VK_AdsCabinetID }}" \
           --adv "1" \
           --auth "auth.json" \
@@ -1395,7 +1407,7 @@ jobs:
 
 
 
-      - name: Выполнить AddProductToSelection
+      - name: Выполнить AddProductToCollection
         if: ${{ cancelled() }} == false
         run: |
  
@@ -1409,7 +1421,7 @@ jobs:
           } " > auth.json
 
 
-          ./oint vk AddProductToSelection --debug --test \
+          ./oint vk AddProductToCollection --debug --test \
           --items "['1111111','2222222']" \
           --sel "1" \
           --auth "auth.json" \

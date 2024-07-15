@@ -82,7 +82,7 @@ jobs:
           package: oint
           package_root: .debpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.10.0' # refs/tags/v*.*.*
+          version: '1.11.0' # refs/tags/v*.*.*
           arch: 'all'
           depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
@@ -108,7 +108,7 @@ jobs:
           package: oint
           package_root: .rpmpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.10.0'
+          version: '1.11.0'
           arch: 'x86_64'
           desc: 'OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки'
           requires: |
@@ -209,6 +209,7 @@ jobs:
           --text "Тестовый текст" \
           --keyboard "" \
           --parsemode "" \
+          --reply "" \
 
 
 
@@ -429,6 +430,17 @@ jobs:
           ./oint telegram ПолучитьЧислоУчастников --debug --test \
           --token "${{ env.json_Telegram_Token }}" \
           --chat "${{ env.json_Telegram_ChannelID }}" \
+
+
+
+      - name: Выполнить УдалитьСообщение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint telegram УдалитьСообщение --debug --test \
+          --token "${{ env.json_Telegram_Token }}" \
+          --chat "${{ env.json_Telegram_ChannelID }}" \
+          --message "${{ env.json_Telegram_ChannelMessageID }}" \
 
 
 
