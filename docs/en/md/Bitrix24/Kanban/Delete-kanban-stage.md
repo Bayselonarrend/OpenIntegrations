@@ -14,7 +14,7 @@ sidebar_position: 3
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | StageID | --stage | String, Number | ID of stage to dele |
  | AsAdmin | --admin | Boolean | Allows you to add stages without checking permissions (for administrators) |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

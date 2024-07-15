@@ -16,7 +16,7 @@ sidebar_position: 5
  | StageID | --stage | String, Number | Stage ID |
  | Prev | --before | String, Number | ID of the task to put the selected one in front of (if After not filled) |
  | After | --after | String, Number | ID of the task to be followed by the selected (if Prev not filled) |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

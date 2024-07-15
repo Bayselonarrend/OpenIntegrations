@@ -14,7 +14,7 @@ sidebar_position: 7
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | ChatID | --chat | String, Number | Chat ID |
  | Color | --color | String | New chat color |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
@@ -24,9 +24,7 @@ sidebar_position: 7
 :::tip
 Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
 
- Available colors: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, 
-
- MARENGO, GRAY, GRAPHITE
+ Available colors: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, MARENGO, GRAY, GRAPHITE
 :::
 <br/>
 

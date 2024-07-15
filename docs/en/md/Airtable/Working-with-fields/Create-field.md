@@ -14,7 +14,7 @@ sidebar_position: 1
  | Token | --token | String | Token |
  | Base | --base | String | Base identifier |
  | Table | --table | String | Table identifier |
- | FieldStructure | --fielddata | Structure of Key-Value | Description of the new field |
+ | FieldStructure | --fielddata | Structure of KeyAndValue | Description of the new field |
 
  
  Returns: Map Of KeyAndValue - serialized JSON response from Airtable

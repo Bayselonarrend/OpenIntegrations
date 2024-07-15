@@ -14,7 +14,7 @@ sidebar_position: 7
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | PostID | --postid | String, Number | Post ID |
  | Visibility | --vision | String | Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

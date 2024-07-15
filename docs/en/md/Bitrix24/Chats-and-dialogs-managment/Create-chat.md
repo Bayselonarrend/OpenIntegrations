@@ -12,8 +12,8 @@ sidebar_position: 1
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | ChatStructure | --fields | Structure of Key-Value | Chat fields structure. See GetChatStructure |
- | Token | --token | String | Access token, when not-webhook method used |
+ | ChatStructure | --fields | Structure of KeyAndValue | Chat fields structure. See GetChatStructure |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

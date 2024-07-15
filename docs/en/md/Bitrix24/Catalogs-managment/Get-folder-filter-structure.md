@@ -13,10 +13,10 @@ sidebar_position: 11
  |-|-|-|-|
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | Clear | --empty | Boolean | True > structure with empty values, False > field types at values |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
- Returns: Structure of Key-Value - Fields structure 
+ Returns: Structure of KeyAndValue - Fields structure 
 
 <br/>
 
