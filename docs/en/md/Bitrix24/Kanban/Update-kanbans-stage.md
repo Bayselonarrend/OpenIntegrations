@@ -17,7 +17,7 @@ sidebar_position: 2
  | Color | --color | String | HEX of new stage color |
  | PrevStageID | --prevstage | String, Number | Stage ID, after which the selected stage should be inserted |
  | AsAdmin | --admin | Boolean | Allows you to add stages without checking permissions (for administrators) |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
