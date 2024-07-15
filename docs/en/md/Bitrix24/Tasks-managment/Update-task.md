@@ -13,8 +13,8 @@ sidebar_position: 4
  |-|-|-|-|
  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
  | TaskID | --task | Number, String | Task ID |
- | FieldsStructure | --fields | Structure of Key-Value | Task fields structure |
- | Token | --token | String | Access token, when not-webhook method used |
+ | FieldsStructure | --fields | Structure of KeyAndValue | Task fields structure |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

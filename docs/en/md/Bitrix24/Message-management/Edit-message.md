@@ -15,7 +15,7 @@ sidebar_position: 2
  | MessageID | --message | String, Number | ID of the message to be edited |
  | Text | --text | String | New message text |
  | Attachments | --blocks | Array of Structure | New blocks array |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

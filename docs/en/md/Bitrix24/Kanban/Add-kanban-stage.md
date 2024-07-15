@@ -17,7 +17,7 @@ sidebar_position: 1
  | PrevStageID | --prevstage | String, Number | ID of the stage after which a new stage should be inserted (at the beginning by default.) |
  | EntityID | --entityid | String, Number | ID of kanban owner (group or user) |
  | AsAdmin | --admin | Boolean | Allows you to add stages without checking permissions (for administrators) |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

@@ -15,7 +15,7 @@ sidebar_position: 12
  | ChatID | --chat | String, Number | Chat ID (as chatXXX) or User ID (as XXX) |
  | LastID | --last | String, Number | Id of last message |
  | FirstID | --first | String, Number | ID of first message |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

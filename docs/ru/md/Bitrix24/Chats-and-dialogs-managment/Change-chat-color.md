@@ -24,9 +24,7 @@ sidebar_position: 7
 :::tip
 Метод в документации API: [im.chat.updateTitle](https://dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
 
- Доступные цвета: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, 
-
- MARENGO, GRAY, GRAPHITE
+ Доступные цвета: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, MARENGO, GRAY, GRAPHITE
 :::
 <br/>
 

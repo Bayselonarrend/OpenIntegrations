@@ -15,7 +15,7 @@ sidebar_position: 4
  | ChatID | --chat | String, Number | Chat ID |
  | UserIDs | --users | Array of string, number | New members IDs |
  | HideHistory | --hide | Boolean | Hide old messages from new members |
- | Token | --token | String | Access token, when not-webhook method used |
+ | Token | --token | String | Access token, when app auth method used |
 
  
  Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
