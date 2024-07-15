@@ -2695,8 +2695,7 @@
 // 
 // Примечание:
 // Метод в документации API: [im.chat.updateTitle](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
-// Доступные цвета: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, 
-// MARENGO, GRAY, GRAPHITE
+// Доступные цвета: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, MARENGO, GRAY, GRAPHITE
 // 
 // Параметры:
 //  URL    - Строка        - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
