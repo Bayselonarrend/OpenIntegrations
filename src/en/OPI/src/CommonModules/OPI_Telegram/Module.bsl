@@ -357,6 +357,7 @@ EndFunction
 // Document - BinaryData,String - Document file - doc
 // Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
+// FileName - String - Custom displayed file name with extension, if necessary - filename
 // 
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
@@ -365,9 +366,10 @@ Function SendDocument(Val Token
 	, Val Text
 	, Val Document
 	, Val Keyboard = ""
-	, Val Markup = "Markdown") Export
+	, Val Markup = "Markdown"
+	, Val FileName = "") Export
 
-    Return SendFile(Token, ChatID, Text, Document, "document", Keyboard, Markup);
+    Return SendFile(Token, ChatID, Text, Document, "document", Keyboard, Markup, FileName);
 
 EndFunction
 
@@ -1041,7 +1043,14 @@ EndFunction
 
 #Region Private
 
-Function SendFile(Val Token, Val ChatID, Val Text, Val File, Val View, Val Keyboard, Val Markup)
+Function SendFile(Val Token
+    , Val ChatID
+    , Val Text
+    , Val File
+    , Val View
+    , Val Keyboard
+    , Val Markup
+    , Val FileName = "")
 
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(ChatID);
@@ -1054,6 +1063,8 @@ Function SendFile(Val Token, Val ChatID, Val Text, Val File, Val View, Val Keybo
     ConvertFileData(File, Extension, View);
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
     
+    FileName = ?(ValueIsFilled(FileName), View + "|" + FileName, View + Extension);
+    
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode" , Markup , "String" , Parameters);
     OPI_Tools.AddField("caption" , Text , "String" , Parameters);
@@ -1061,11 +1072,11 @@ Function SendFile(Val Token, Val ChatID, Val Text, Val File, Val View, Val Keybo
     
     AddChatIdentifier(ChatID, Parameters);
 
-    FileStructure = New Structure;
-    FileStructure.Insert(View + Extension, File);
+    FileMapping = New Map;
+    FileMapping.Insert(FileName, File);
 
     URL = "api.telegram.org/bot" + Token + Method;
-    Response = OPI_Tools.PostMultipart(URL, Parameters, FileStructure, "mixed");
+    Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping, "mixed");
 
     Return Response;
 

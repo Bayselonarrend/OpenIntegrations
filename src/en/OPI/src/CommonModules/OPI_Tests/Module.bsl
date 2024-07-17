@@ -4051,6 +4051,12 @@ Procedure Telegram_SendDocument(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendDocument", "Telegram");
     
     Check_TelegramDocument(Result, Text); // SKIP
+    
+    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendDocument (with name)", "Telegram");
+    
+    Check_TelegramDocument(Result, Text); // SKIP
   
     Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
     
@@ -4058,7 +4064,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
     
     Check_TelegramDocument(Result, Text); // SKIP
       
-    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD);
+    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");
     
     // END 
     
