@@ -209,7 +209,7 @@
 // Изменяет новость в ленте
 // 
 // Примечание:
-// Метод в документации API: [log.blogpost.update](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php.php)
+// Метод в документации API: [log.blogpost.update](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php)
 // 
 // Параметры:
 //  URL       - Строка - URL внешнего вебхука или адрес Bitrix24 при использовании токена                    - url
