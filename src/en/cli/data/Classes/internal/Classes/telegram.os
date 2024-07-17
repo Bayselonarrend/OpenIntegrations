@@ -413,6 +413,16 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "telegram";
     NewLine.Модуль      = "OPI_Telegram";
+    NewLine.Метод       = "SendDocument";
+    NewLine.МетодПоиска = "SENDDOCUMENT";
+    NewLine.Параметр    = "--filename";
+    NewLine.Описание    = "Custom displayed file name with extension, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Data sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "telegram";
+    NewLine.Модуль      = "OPI_Telegram";
     NewLine.Метод       = "SendGif";
     NewLine.МетодПоиска = "SENDGIF";
     NewLine.Параметр    = "--token";

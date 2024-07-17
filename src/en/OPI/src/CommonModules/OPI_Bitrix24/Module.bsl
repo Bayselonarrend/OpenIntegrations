@@ -209,7 +209,7 @@ EndFunction
 // Change post data
 // 
 // Note
-// Method at API documentation: [log.blogpost.update](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php.php)
+// Method at API documentation: [log.blogpost.update](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php)
 // 
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
