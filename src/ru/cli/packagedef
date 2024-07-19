@@ -11,3 +11,4 @@
     .ЗависитОт("oint")
     .ЗависитОт("cmdline")
     .ЗависитОт("coloratos")
+    .ИсполняемыйФайл("core/Classes/app.os", "oint")
