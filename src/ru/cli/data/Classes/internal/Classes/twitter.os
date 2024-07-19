@@ -22,15 +22,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
@@ -47,15 +47,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
@@ -82,15 +82,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
@@ -107,15 +107,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
@@ -146,15 +146,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
@@ -195,15 +195,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
@@ -244,15 +244,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
@@ -293,15 +293,15 @@
     |
     |    Структура JSON данных авторизации (параметр --auth):
     |    {
-    |     ""redirect_uri""            : """",  
-    |     ""client_id""               : """",  
-    |     ""client_secret""           : """",  
-    |     ""access_token""            : """",  
-    |     ""refresh_token""           : """",  
-    |     ""oauth_token""             : """",  
-    |     ""oauth_token_secret""      : """",  
-    |     ""oauth_consumer_key""      : """", 
-    |     ""oauth_consumer_secret""   : """"  
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
     |    }
     |";
 
