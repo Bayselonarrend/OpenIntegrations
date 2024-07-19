@@ -185,6 +185,7 @@ Procedure TelegramAPI_SendMediaGroup() Export
     OPI_TestDataRetrieval.ParameterToCollection("String" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Video" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document" , TestParameters);
     
     Telegram_SendMediaGroup(TestParameters);
 
@@ -4143,10 +4144,27 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMediaGroup", "Telegram");
     
-    Check_TelegramMediaGroup(Result); 
+    Check_TelegramMediaGroup(Result);
+    
+    DocumentURL = FunctionParameters["Document"];  
+    DocumentPath = GetTempFileName("docx");
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    
+    FileCopy(DocumentURL, DocumentPath);
+    
+    MediaGroup = New Map;
+    MediaGroup.Insert(DocumentURL , "document");
+    MediaGroup.Insert(DocumentPath, "document"); 
+    
+    Result = OPI_Telegram.SendMediaGroup(Token, ChannelID, Text, MediaGroup);
+    
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendMediaGroup (docs)", "Telegram");
+    
+    Check_TelegramMediaGroup(Result);
    
     DeleteFiles(VideoPath);
     DeleteFiles(ImagePath);
+    DeleteFiles(DocumentPath);
     
     OPI_Tools.Pause(5);
         

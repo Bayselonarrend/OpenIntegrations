@@ -400,6 +400,9 @@ EndFunction
 // Send media group
 // Sends a set of files to a chat or channel. Media types: audio, document, photo, video
 // 
+// Note
+// Map: Key - File, Value - media type
+// 
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
@@ -431,19 +434,18 @@ Function SendMediaGroup(Val Token
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
 
     URL = "api.telegram.org/bot" + Token + "/sendMediaGroup";
-    FileStructure = New Structure;
     Media = New Array;
     Parameters = New Structure;
     
     AddChatIdentifier(ChatID, Parameters);
-    FormMediaArray(FileMapping, Text, FileStructure, Media);
+    ConvertFilesToMedia(FileMapping, Text, Media);
     
     OPI_Tools.AddField("parse_mode" , Markup , String_ , Parameters);
     OPI_Tools.AddField("caption" , Text , String_ , Parameters);
     OPI_Tools.AddField("media" , Media , String_ , Parameters);
     OPI_Tools.AddField("reply_markup", Keyboard, "FileString", Parameters);
 
-    Response = OPI_Tools.PostMultipart(URL, Parameters, FileStructure, "mixed");
+    Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping, "mixed");
 
     Return Response;
 
@@ -1060,10 +1062,15 @@ Function SendFile(Val Token
     Method = "";
     
     DetermineSendMethod(View, Method, Extension);
-    ConvertFileData(File, Extension, View);
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
     
-    FileName = ?(ValueIsFilled(FileName), View + "|" + FileName, View + Extension);
+    If Not ValueIsFilled(FileName) Then
+        FileName = ConvertFileData(File, View, "");
+    Else
+        OPI_TypeConversion.GetBinaryData(File);
+    EndIf;
+    
+    FileName = View + "|" + FileName;
     
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode" , Markup , "String" , Parameters);
@@ -1102,8 +1109,7 @@ Function ForumTopicManagement(Val Token
     Else    
         Method = "/createForumTopic";    
     EndIf;
-    
-    OPI_Tools.RemoveEmptyCollectionFields(Parameters);       
+       
     Response = OPI_Tools.Get("api.telegram.org/bot" + Token + Method, Parameters);
     
     Return Response;
@@ -1205,9 +1211,7 @@ Function CreateLongKeyboard(Val ButtonArray)
 
 EndFunction
 
-Procedure FormMediaArray(Val FileMapping, Val Text, FileStructure, Media)
-    
-    Counter = 0;
+Procedure ConvertFilesToMedia(FileMapping, Text, Media)
     
     OPI_TypeConversion.GetCollection(FileMapping);
     OPI_TypeConversion.GetLine(Text);
@@ -1216,44 +1220,36 @@ Procedure FormMediaArray(Val FileMapping, Val Text, FileStructure, Media)
         Raise("Failed to Retrieve Information from JSON media!");
         Return;
     EndIf;
-   
-    For Each CurrentFile In FileMapping Do
-        
-        If Not TypeOf(CurrentFile.Key) = Type("BinaryData") Then
-            
-            Binary = CurrentFile.Key;
-            OPI_TypeConversion.GetBinaryData(Binary);
-            
-            ThisFile = New File(CurrentFile.Key);           
-            MediaName = CurrentFile.Value 
-                + String(Counter) 
-                + ?(CurrentFile.Value = "document", ThisFile.Extension, "");
-                
-            FullMediaName = StrReplace(MediaName, ".", "___");
-            
-        Else
-            Binary = CurrentFile.Key;
-            MediaName = CurrentFile.Value + String(Counter);
-            FullMediaName = MediaName;
-        EndIf;
-        
-        FileStructure.Insert(FullMediaName, Binary);
-        
-        MediaStructure = New Structure;
-        MediaStructure.Insert("type" , CurrentFile.Value);
-        MediaStructure.Insert("media", "attach://" + MediaName);
-        
-        If Counter = 0 Then
-            MediaStructure.Insert("caption", Text);
-        EndIf;
-        
-        Media.Add(MediaStructure);
-        
-        Counter = Counter + 1;
-        
-    EndDo;
+    
+    TempMap = New Map;
+    Counter = 0;
+    
+	For Each CurrentFile In FileMapping Do
+
+		CurrentData = CurrentFile.Key;
+		TypeOfMedia = CurrentFile.Value;
+		Extension = "";
+
+        MediaName = ConvertFileData(CurrentData, TypeOfMedia, Counter);
+
+		TempMap.Insert(MediaName + "|" + MediaName, CurrentData);
+
+		MediaStructure = New Structure;
+		MediaStructure.Insert("type" , TypeOfMedia);
+		MediaStructure.Insert("media", "attach://" + MediaName);
+
+		If Counter = 0 Then
+			MediaStructure.Insert("caption", Text);
+		EndIf;
+
+		Media.Add(MediaStructure);
+
+		Counter = Counter + 1;
+
+	EndDo;
 
     Media = OPI_Tools.JSONString(Media);
+    FileMapping = TempMap; 
     
 EndProcedure
 
@@ -1294,18 +1290,25 @@ Procedure DetermineSendMethod(Val View, Method, Extension)
 
 EndProcedure
 
-Procedure ConvertFileData(File, Extension, View)
+Function ConvertFileData(File, View, Counter)
     
-    If Not TypeOf(File) = Type("BinaryData") Then
+    FileName = "";
+    
+    If TypeOf(File) = Type("String") And View = "document" Then
         
         CurrentFile = New File(File);
-        Extension = ?(View = "document", CurrentFile.Extension, Extension);
-        OPI_TypeConversion.GetBinaryData(File);
+        FileName = CurrentFile.Name;
         
     EndIf;
-
-    Extension = StrReplace(Extension, ".", "___");
     
-EndProcedure
+    If Not ValueIsFilled(FileName) Then
+        FileName = View + String(Counter);
+    EndIf;
+    
+    OPI_TypeConversion.GetBinaryData(File);
+    
+    Return FileName;
+    
+EndFunction
 
 #EndRegion
