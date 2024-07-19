@@ -79,7 +79,7 @@
 
    Также CLI версия доступна как пакет `oint-cli`, устанавливаемый из OPM 
    ```powershell
-   opm install oint-cli
+       opm install oint-cli
    ```
 
 
