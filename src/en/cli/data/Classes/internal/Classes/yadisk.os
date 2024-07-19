@@ -90,7 +90,7 @@
     NewLine.Метод       = "DeleteObject";
     NewLine.МетодПоиска = "DELETEOBJECT";
     NewLine.Параметр    = "--can";
-    NewLine.Описание    = "To cart (optional, def. val. - Yes)";
+    NewLine.Описание    = "To cart (optional, def. val. - True)";
     NewLine.Область     = "File and folder management";
 
 
@@ -131,7 +131,7 @@
     NewLine.Метод       = "CreateObjectCopy";
     NewLine.МетодПоиска = "CREATEOBJECTCOPY";
     NewLine.Параметр    = "--rewrite";
-    NewLine.Описание    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Описание    = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
     NewLine.Область     = "File and folder management";
 
 
@@ -237,7 +237,7 @@
     NewLine.Метод       = "GetFilesList";
     NewLine.МетодПоиска = "GETFILESLIST";
     NewLine.Параметр    = "--datesort";
-    NewLine.Описание    = "True > sort by date, False > alphabetically (optional, def. val. - No)";
+    NewLine.Описание    = "True > sort by date, False > alphabetically (optional, def. val. - False)";
     NewLine.Область     = "File and folder management";
 
 
@@ -278,7 +278,7 @@
     NewLine.Метод       = "MoveObject";
     NewLine.МетодПоиска = "MOVEOBJECT";
     NewLine.Параметр    = "--rewrite";
-    NewLine.Описание    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Описание    = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
     NewLine.Область     = "File and folder management";
 
 
@@ -319,7 +319,7 @@
     NewLine.Метод       = "UploadFile";
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--rewrite";
-    NewLine.Описание    = "Overwrite if a file with the same name already exists (optional, def. val. - No)";
+    NewLine.Описание    = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
     NewLine.Область     = "File and folder management";
 
 
