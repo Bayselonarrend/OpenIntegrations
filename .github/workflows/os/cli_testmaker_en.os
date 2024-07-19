@@ -131,12 +131,12 @@
 	|      - name: Собрать бинарник
 	|        run: |
 	|          cd ./src/en/cli
-	|          oscript -make core/Classes/Приложение.os oint
+	|          oscript -make core/Classes/app.os oint
 	|
 	|      - name: Собрать exe
 	|        run: |
 	|          cd ./src/en/cli
-	|          oscript -make core/Classes/Приложение.os oint.exe
+	|          oscript -make core/Classes/app.os oint.exe
 	|
 	|      - name: Записать артефакт
 	|        uses: actions/upload-artifact@v4
