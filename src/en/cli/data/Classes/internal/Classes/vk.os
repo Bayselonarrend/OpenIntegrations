@@ -35,9 +35,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -58,7 +58,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - False)";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
     NewLine.Область     = "Community managment";
 
 
@@ -95,9 +95,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -118,7 +118,7 @@
     NewLine.Метод       = "CreateCompositePost";
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - False)";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
     NewLine.Область     = "Community managment";
 
 
@@ -155,9 +155,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -185,9 +185,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -235,9 +235,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -275,9 +275,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -305,9 +305,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -345,9 +345,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -395,9 +395,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -425,9 +425,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -485,9 +485,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -525,9 +525,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -565,9 +565,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -578,7 +578,7 @@
     NewLine.Метод       = "CloseDiscussion";
     NewLine.МетодПоиска = "CLOSEDISCUSSION";
     NewLine.Параметр    = "--remove";
-    NewLine.Описание    = "Delete completely (True) or close (optional, def. val. - False)";
+    NewLine.Описание    = "Delete completely (True) or close (optional, def. val. - No)";
     NewLine.Область     = "Discussion management";
 
 
@@ -605,9 +605,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -635,9 +635,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -675,9 +675,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -715,9 +715,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -748,7 +748,7 @@
     NewLine.Метод       = "MakeRepost";
     NewLine.МетодПоиска = "MAKEREPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign of an advertising post (optional, def. val. - False)";
+    NewLine.Описание    = "Sign of an advertising post (optional, def. val. - No)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -775,9 +775,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -835,9 +835,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -885,9 +885,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -915,9 +915,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -955,9 +955,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -985,9 +985,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1025,9 +1025,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1095,9 +1095,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1135,9 +1135,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1155,9 +1155,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1175,9 +1175,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1205,9 +1205,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1234,31 +1234,31 @@
     |
     |    The structure of the JSON product description data (parameter --product):
     |    {
-    |     ""Name""                : ""New product"",
-    |     ""Description""           : ""Product description"",
-    |     ""Category""          : ""20173"",
-    |     ""Price""               : 1,
-    |     ""OldPrice""         : """",
-    |     ""MainPhoto""       : """",
-    |     ""URL""                : """",
-    |     ""AdditionalPhotos"" : [],
-    |     ""PropertyValues""    : [],
-    |     ""MainInGroup""     : ""False"",
-    |     ""Width""             : """",
-    |     ""Height""             : """",
-    |     ""Depth""            : """",
-    |     ""Weight""                : """",
-    |     ""SKU""                : """",
-    |     ""AvailableBalance""   : ""1""
+    |     ""Name"": ""New product"",
+    |     ""Description"": ""Product description"",
+    |     ""Category"": ""20173"",
+    |     ""Price"": 1,
+    |     ""OldPrice"": """",
+    |     ""MainPhoto"": """",
+    |     ""URL"": """",
+    |     ""AdditionalPhotos"": [],
+    |     ""PropertyValues"": [],
+    |     ""MainInGroup"": ""False"",
+    |     ""Width"": """",
+    |     ""Height"": """",
+    |     ""Depth"": """",
+    |     ""Weight"": """",
+    |     ""SKU"": """",
+    |     ""AvailableBalance"": ""1""
     |    }
     |
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1295,31 +1295,31 @@
     |
     |    The structure of the JSON product description data (parameter --product):
     |    {
-    |     ""Name""                : ""New product"",
-    |     ""Description""           : ""Product description"",
-    |     ""Category""          : ""20173"",
-    |     ""Price""               : 1,
-    |     ""OldPrice""         : """",
-    |     ""MainPhoto""       : """",
-    |     ""URL""                : """",
-    |     ""AdditionalPhotos"" : [],
-    |     ""PropertyValues""    : [],
-    |     ""MainInGroup""     : ""False"",
-    |     ""Width""             : """",
-    |     ""Height""             : """",
-    |     ""Depth""            : """",
-    |     ""Weight""                : """",
-    |     ""SKU""                : """",
-    |     ""AvailableBalance""   : ""1""
+    |     ""Name"": ""New product"",
+    |     ""Description"": ""Product description"",
+    |     ""Category"": ""20173"",
+    |     ""Price"": 1,
+    |     ""OldPrice"": """",
+    |     ""MainPhoto"": """",
+    |     ""URL"": """",
+    |     ""AdditionalPhotos"": [],
+    |     ""PropertyValues"": [],
+    |     ""MainInGroup"": ""False"",
+    |     ""Width"": """",
+    |     ""Height"": """",
+    |     ""Depth"": """",
+    |     ""Weight"": """",
+    |     ""SKU"": """",
+    |     ""AvailableBalance"": ""1""
     |    }
     |
     |
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1367,9 +1367,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1397,9 +1397,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1437,9 +1437,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1457,9 +1457,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1487,9 +1487,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1510,7 +1510,7 @@
     NewLine.Метод       = "CreateProductCollection";
     NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     NewLine.Параметр    = "--main";
-    NewLine.Описание    = "Main (optional, def. val. - False)";
+    NewLine.Описание    = "Main (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1520,7 +1520,7 @@
     NewLine.Метод       = "CreateProductCollection";
     NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     NewLine.Параметр    = "--hidden";
-    NewLine.Описание    = "Hidden (optional, def. val. - False)";
+    NewLine.Описание    = "Hidden (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1547,9 +1547,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1580,7 +1580,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--main";
-    NewLine.Описание    = "Main (optional, def. val. - False)";
+    NewLine.Описание    = "Main (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1590,7 +1590,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--hidden";
-    NewLine.Описание    = "Hidden (optional, def. val. - False)";
+    NewLine.Описание    = "Hidden (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1617,9 +1617,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1657,9 +1657,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1697,9 +1697,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1727,9 +1727,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1747,9 +1747,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1777,9 +1777,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1817,9 +1817,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1847,9 +1847,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1887,9 +1887,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1937,9 +1937,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
@@ -1967,9 +1967,9 @@
     |    The structure of the JSON authentication data (parameter --auth):
     |    {
     |     ""access_token"": """",
-    |     ""owner_id""    : """",   
-    |     ""app_id""      : """",  
-    |     ""group_id""    : """"  
+    |     ""owner_id"": """",   
+    |     ""app_id"": """",  
+    |     ""group_id"": """"  
     |    }
     |";
 
