@@ -40,7 +40,7 @@
 </div> 
 <br>
  
-## Релизы ##
+## Установка и варианты релизов ##
 
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://tooomm.github.io/github-release-stats/?username=bayselonarrend&repository=OpenIntegrations)
 
