@@ -246,7 +246,7 @@
     NewLine.Метод       = "EditListCalendar";
     NewLine.МетодПоиска = "EDITLISTCALENDAR";
     NewLine.Параметр    = "--hidden";
-    NewLine.Описание    = "Hidden calendar (optional, def. val. - False)";
+    NewLine.Описание    = "Hidden calendar (optional, def. val. - No)";
     NewLine.Область     = "Calendar list management";
 
 
@@ -314,18 +314,18 @@
     |
     |    The structure of the JSON event data (parameter --props):
     |    {
-    |     ""Description""                : """", 
-    |     ""Title""               : """", 
-    |     ""Venue""         : """", 
-    |     ""StartDate""              : """",
-    |     ""EndDate""           : """",      
-    |     ""ArrayOfAttachmentURLs"" :           
+    |     ""Description"": """", 
+    |     ""Title"": """", 
+    |     ""Venue"": """", 
+    |     ""StartDate"": """",
+    |     ""EndDate"": """",      
+    |     ""ArrayOfAttachmentURLs"":           
     |         {
-    |          ""NameFile1"" : ""FileURL1"",
-    |          ""NameFile2"" : ""FileURL2"",
+    |          ""NameFile1"": ""FileURL1"",
+    |          ""NameFile2"": ""FileURL2"",
     |          ...
     |         },
-    |     ""SendNotifications""   : true       
+    |     ""SendNotifications"": true       
     |    }
     |";
 
@@ -403,18 +403,18 @@
     |
     |    The structure of the JSON event data (parameter --props):
     |    {
-    |     ""Description""                : """", 
-    |     ""Title""               : """", 
-    |     ""Venue""         : """", 
-    |     ""StartDate""              : """",
-    |     ""EndDate""           : """",      
-    |     ""ArrayOfAttachmentURLs"" :           
+    |     ""Description"": """", 
+    |     ""Title"": """", 
+    |     ""Venue"": """", 
+    |     ""StartDate"": """",
+    |     ""EndDate"": """",      
+    |     ""ArrayOfAttachmentURLs"":           
     |         {
-    |          ""NameFile1"" : ""FileURL1"",
-    |          ""NameFile2"" : ""FileURL2"",
+    |          ""NameFile1"": ""FileURL1"",
+    |          ""NameFile2"": ""FileURL2"",
     |          ...
     |         },
-    |     ""SendNotifications""   : true       
+    |     ""SendNotifications"": true       
     |    }
     |";
 

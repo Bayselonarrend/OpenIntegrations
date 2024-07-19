@@ -58,7 +58,7 @@
     NewLine.Метод       = "GetDirectoriesList";
     NewLine.МетодПоиска = "GETDIRECTORIESLIST";
     NewLine.Параметр    = "--depth";
-    NewLine.Описание    = "Adds a list of files to the directory fields (optional, def. val. - False)";
+    NewLine.Описание    = "Adds a list of files to the directory fields (optional, def. val. - No)";
     NewLine.Область     = "File and directory management";
 
 
@@ -105,10 +105,10 @@
     |
     |    The structure of the JSON object data (parameter --props):
     |    {
-    |     ""MIME""        : ""image/jpeg"",
-    |     ""Name""         : ""New file.jpg"",
-    |     ""Description""    : ""This is a new file"",
-    |     ""Parent""    : ""root""
+    |     ""MIME"": ""image/jpeg"",
+    |     ""Name"": ""New file.jpg"",
+    |     ""Description"": ""This is a new file"",
+    |     ""Parent"": ""root""
     |    }
     |";
 

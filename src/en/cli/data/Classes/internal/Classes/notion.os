@@ -53,8 +53,8 @@
     |
     |    The structure of the JSON page data (parameter --data):
     |    {
-    |     ""DB field name 1""  : ""Value1"",
-    |     ""DB field name 2""  : ""Value2"",
+    |     ""DB field name 1"": ""Value1"",
+    |     ""DB field name 2"": ""Value2"",
     |     ...
     |    }
     |";
@@ -113,8 +113,8 @@
     |
     |    The structure of the JSON page data (parameter --data):
     |    {
-    |     ""DB field name 1""  : ""Value1"",
-    |     ""DB field name 2""  : ""Value2"",
+    |     ""DB field name 1"": ""Value1"",
+    |     ""DB field name 2"": ""Value2"",
     |     ...
     |    }
     |";
@@ -166,7 +166,7 @@
     NewLine.Метод       = "EditPageProperties";
     NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
     NewLine.Параметр    = "--archive";
-    NewLine.Описание    = "Archive page or not (boolean) (optional, def. val. - False)";
+    NewLine.Описание    = "Archive page or not (boolean) (optional, def. val. - No)";
     NewLine.Область     = "Page management";
 
 
@@ -182,11 +182,11 @@
     |
     |    The structure of the JSON database fields (parameter --props):
     |    {
-    |     ""Name of field with regular type""     : ""Data type 1"",
-    |     ""Name of field with a value selection""  : 
+    |     ""Name of field with regular type"": ""Data type 1"",
+    |     ""Name of field with a value selection"": 
     |        {
-    |         ""Option1""  : ""green"",
-    |         ""Option2""  : ""red"",
+    |         ""Option1"": ""green"",
+    |         ""Option2"": ""red"",
     |         ...
     |        },
     |     ...
@@ -260,11 +260,11 @@
     |
     |    The structure of the JSON database fields (parameter --props):
     |    {
-    |     ""Name of field with regular type""     : ""Data type 1"",
-    |     ""Name of field with a value selection""  : 
+    |     ""Name of field with regular type"": ""Data type 1"",
+    |     ""Name of field with a value selection"": 
     |        {
-    |         ""Option1""  : ""green"",
-    |         ""Option2""  : ""red"",
+    |         ""Option1"": ""green"",
+    |         ""Option2"": ""red"",
     |         ...
     |        },
     |     ...
@@ -383,7 +383,7 @@
     NewLine.Метод       = "ReturnBlock";
     NewLine.МетодПоиска = "RETURNBLOCK";
     NewLine.Параметр    = "--core";
-    NewLine.Описание    = "True > service fields are deleted, only the block itself remains (optional, def. val. - True)";
+    NewLine.Описание    = "True > service fields are deleted, only the block itself remains (optional, def. val. - Yes)";
     NewLine.Область     = "Blocks managment";
 
 
