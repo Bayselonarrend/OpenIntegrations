@@ -32,6 +32,7 @@
 // BSLLS:UnreachableCode-off
 // BSLLS:CommentedCode-off
 // BSLLS:UsingServiceTag-off
+// BSLLS:NumberOfParams-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -1270,7 +1271,6 @@
 
 		ТекущиеДанные = ТекущийФайл.Ключ;
 		ТипМедиа      = ТекущийФайл.Значение;
-		Расширение    = "";
 
         ИмяМедиа = ПреобразоватьДанныеФайла(ТекущиеДанные, ТипМедиа, Счетчик);
 
