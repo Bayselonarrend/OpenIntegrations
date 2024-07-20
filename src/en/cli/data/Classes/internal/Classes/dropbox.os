@@ -142,7 +142,7 @@
     NewLine.Метод       = "GetObjectInformation";
     NewLine.МетодПоиска = "GETOBJECTINFORMATION";
     NewLine.Параметр    = "--detail";
-    NewLine.Описание    = "Add information fields for mediafiles (optional, def. val. - No)";
+    NewLine.Описание    = "Add information fields for mediafiles (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -173,7 +173,7 @@
     NewLine.Метод       = "GetListOfFolderFiles";
     NewLine.МетодПоиска = "GETLISTOFFOLDERFILES";
     NewLine.Параметр    = "--detail";
-    NewLine.Описание    = "Add information fields for mediafiles (optional, def. val. - No)";
+    NewLine.Описание    = "Add information fields for mediafiles (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -245,7 +245,7 @@
     NewLine.Метод       = "UploadFile";
     NewLine.МетодПоиска = "UPLOADFILE";
     NewLine.Параметр    = "--overwrite";
-    NewLine.Описание    = "Overwrite file in case of path conflicts (optional, def. val. - No)";
+    NewLine.Описание    = "Overwrite file in case of path conflicts (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -328,7 +328,7 @@
     NewLine.Метод       = "DeleteObject";
     NewLine.МетодПоиска = "DELETEOBJECT";
     NewLine.Параметр    = "--permanently";
-    NewLine.Описание    = "Delete object without the possibility of recovery (optional, def. val. - No)";
+    NewLine.Описание    = "Delete object without the possibility of recovery (optional, def. val. - False)";
     NewLine.Область     = "File and directory management";
 
 
@@ -681,7 +681,7 @@
     NewLine.Метод       = "AddUsersToFile";
     NewLine.МетодПоиска = "ADDUSERSTOFILE";
     NewLine.Параметр    = "--readonly";
-    NewLine.Описание    = "Prohibits file editing for the external user (optional, def. val. - Yes)";
+    NewLine.Описание    = "Prohibits file editing for the external user (optional, def. val. - True)";
     NewLine.Область     = "Shared access settings";
 
 
@@ -722,7 +722,7 @@
     NewLine.Метод       = "AddUsersToFolder";
     NewLine.МетодПоиска = "ADDUSERSTOFOLDER";
     NewLine.Параметр    = "--readonly";
-    NewLine.Описание    = "Prohibits file editing for the external user (optional, def. val. - Yes)";
+    NewLine.Описание    = "Prohibits file editing for the external user (optional, def. val. - True)";
     NewLine.Область     = "Shared access settings";
 
 
