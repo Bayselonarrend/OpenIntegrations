@@ -1057,11 +1057,8 @@ Function SendFile(Val Token
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(ChatID);
     OPI_TypeConversion.GetLine(View);
+    OPI_TypeConversion.GetLine(Text);
 
-    Extension = "";
-    Method = "";
-    
-    DetermineSendMethod(View, Method, Extension);
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
     
     If Not ValueIsFilled(FileName) Then
@@ -1082,6 +1079,7 @@ Function SendFile(Val Token
     FileMapping = New Map;
     FileMapping.Insert(FileName, File);
 
+    Method = DetermineSendMethod(View);
     URL = "api.telegram.org/bot" + Token + Method;
     Response = OPI_Tools.PostMultipart(URL, Parameters, FileMapping, "mixed");
 
@@ -1211,6 +1209,50 @@ Function CreateLongKeyboard(Val ButtonArray)
 
 EndFunction
 
+Function DetermineSendMethod(Val View)
+    
+    If View = "photo" Then
+        Method = "/sendPhoto";
+    ElsIf View = "video" Then
+        Method = "/sendVideo";
+    ElsIf View = "audio" Then
+        Method = "/sendAudio";
+    ElsIf View = "animation" Then
+        Method = "/sendAnimation";
+    Else
+        Method = "/sendDocument";
+    EndIf;
+
+    Return Method;
+    
+EndFunction
+
+Function ConvertFileData(File, View, Counter)
+    
+    FileName = "";
+    
+    If TypeOf(File) = Type("String") And View = "document" Then
+        
+        CurrentFile = New File(File);
+        FileName = CurrentFile.Name;
+        
+    EndIf;
+    
+    If Not ValueIsFilled(FileName) Then
+        FileName = View + String(Counter);
+        
+        If View = "animation" Then
+            FileName = FileName + ".gif";   
+        EndIf;
+        
+    EndIf;
+    
+    OPI_TypeConversion.GetBinaryData(File);
+    
+    Return FileName;
+    
+EndFunction
+
 Procedure ConvertFilesToMedia(FileMapping, Text, Media)
     
     OPI_TypeConversion.GetCollection(FileMapping);
@@ -1270,45 +1312,5 @@ Procedure AddChatIdentifier(Val ChatID, Parameters)
     Parameters.Insert("chat_id", ChatID);
 
 EndProcedure
-
-Procedure DetermineSendMethod(Val View, Method, Extension)
-    
-    If View = "photo" Then
-        Method = "/sendPhoto";
-    ElsIf View = "video" Then
-        Method = "/sendVideo";
-    ElsIf View = "audio" Then
-        Method = "/sendAudio";
-    ElsIf View = "document" Then
-        Method = "/sendDocument";
-    ElsIf View = "animation" Then
-        Method = "/sendAnimation";
-        Extension = ".gif";
-    Else
-        Raise "Incorrect sending view";
-    EndIf;
-
-EndProcedure
-
-Function ConvertFileData(File, View, Counter)
-    
-    FileName = "";
-    
-    If TypeOf(File) = Type("String") And View = "document" Then
-        
-        CurrentFile = New File(File);
-        FileName = CurrentFile.Name;
-        
-    EndIf;
-    
-    If Not ValueIsFilled(FileName) Then
-        FileName = View + String(Counter);
-    EndIf;
-    
-    OPI_TypeConversion.GetBinaryData(File);
-    
-    Return FileName;
-    
-EndFunction
 
 #EndRegion
