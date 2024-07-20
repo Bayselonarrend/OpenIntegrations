@@ -545,7 +545,7 @@
     NewLine.Метод       = "CreatePosts";
     NewLine.МетодПоиска = "CREATEPOSTS";
     NewLine.Параметр    = "--data";
-    NewLine.Описание    = "Set or array of sets of pairs Key : Value > Field : FieldValue";
+    NewLine.Описание    = "Set or array of sets of pairs Key: Value > Field: FieldValue";
     NewLine.Область     = "Record management";
 
 
