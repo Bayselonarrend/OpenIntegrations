@@ -880,12 +880,14 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function CreateTasksDependencies(Val URL, Val FromID, Val DestinationID, Val LinkType, Val Token = "") Export
     
+    String_ = "String";
+    
     OPI_TypeConversion.GetLine(LinkType);
     
     Parameters = NormalizeAuth(URL, Token, "task.dependence.add");
-    OPI_Tools.AddField("taskIdFrom", FromID, "String" , Parameters);
-    OPI_Tools.AddField("taskIdTo" , DestinationID, "String" , Parameters);
-    OPI_Tools.AddField("linkType" , LinkType , "String" , Parameters);
+    OPI_Tools.AddField("taskIdFrom", FromID, String_, Parameters);
+    OPI_Tools.AddField("taskIdTo" , DestinationID, String_, Parameters);
+    OPI_Tools.AddField("linkType" , LinkType , String_, Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
@@ -910,12 +912,14 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteTasksDependencies(Val URL, Val FromID, Val DestinationID, Val LinkType, Val Token = "") Export
     
+    String_ = "String";
+    
     OPI_TypeConversion.GetLine(LinkType);
     
     Parameters = NormalizeAuth(URL, Token, "task.dependence.delete");
-    OPI_Tools.AddField("taskIdFrom", FromID, "String" , Parameters);
-    OPI_Tools.AddField("taskIdTo" , DestinationID, "String" , Parameters);
-    OPI_Tools.AddField("linkType" , LinkType , "String" , Parameters);
+    OPI_Tools.AddField("taskIdFrom", FromID, String_, Parameters);
+    OPI_Tools.AddField("taskIdTo" , DestinationID, String_, Parameters);
+    OPI_Tools.AddField("linkType" , LinkType , String_, Parameters);
     
     Response = OPI_Tools.Post(URL, Parameters);
     
