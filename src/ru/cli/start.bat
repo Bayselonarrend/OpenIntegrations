@@ -1,1 +1,0 @@
-cmd /k oint.exe
