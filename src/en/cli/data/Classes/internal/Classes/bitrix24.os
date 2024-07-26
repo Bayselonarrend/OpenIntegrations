@@ -3537,6 +3537,37 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUsers";
+    NewLine.МетодПоиска = "GETUSERS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.ОписаниеМетода   = "Get users information for dialog";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUsers";
+    NewLine.МетодПоиска = "GETUSERS";
+    NewLine.Параметр    = "--users";
+    NewLine.Описание    = "Usesr ID or array of users IDs";
+    NewLine.Область     = "Chats and dialogs managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUsers";
+    NewLine.МетодПоиска = "GETUSERS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and dialogs managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddUsersToChat";
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
     NewLine.Параметр    = "--url";
@@ -3999,6 +4030,58 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserStatus";
+    NewLine.МетодПоиска = "GETUSERSTATUS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.ОписаниеМетода   = "Gets the status (online) of the current user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserStatus";
+    NewLine.МетодПоиска = "GETUSERSTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and dialogs managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetUserStatus";
+    NewLine.МетодПоиска = "SETUSERSTATUS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Chats and dialogs managment";
+    NewLine.ОписаниеМетода   = "Sets the status (online) of the current user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetUserStatus";
+    NewLine.МетодПоиска = "SETUSERSTATUS";
+    NewLine.Параметр    = "--status";
+    NewLine.Описание    = "Status value: online, dnd, away";
+    NewLine.Область     = "Chats and dialogs managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "SetUserStatus";
+    NewLine.МетодПоиска = "SETUSERSTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chats and dialogs managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "ReadAll";
     NewLine.МетодПоиска = "READALL";
     NewLine.Параметр    = "--url";
@@ -4396,6 +4479,159 @@
     NewLine.Параметр    = "--url";
     NewLine.Описание    = "File URL";
     NewLine.Область     = "Message management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreatePersonalNotification";
+    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Notifications managment";
+    NewLine.ОписаниеМетода   = "Creates a personal notification to the user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreatePersonalNotification";
+    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "User ID for sending the notification";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreatePersonalNotification";
+    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Notification text";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreatePersonalNotification";
+    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
+    NewLine.Параметр    = "--another notif. will be deleted";
+    NewLine.Описание    = "tag";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreatePersonalNotification";
+    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
+    NewLine.Параметр    = "--blocks";
+    NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreatePersonalNotification";
+    NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateSystemNotification";
+    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Notifications managment";
+    NewLine.ОписаниеМетода   = "Creates a system notification to the user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateSystemNotification";
+    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
+    NewLine.Параметр    = "--user";
+    NewLine.Описание    = "User ID for sending the notification";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateSystemNotification";
+    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Notification text";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateSystemNotification";
+    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
+    NewLine.Параметр    = "--another notif. will be deleted";
+    NewLine.Описание    = "tag";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateSystemNotification";
+    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
+    NewLine.Параметр    = "--blocks";
+    NewLine.Описание    = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateSystemNotification";
+    NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteNotification";
+    NewLine.МетодПоиска = "DELETENOTIFICATION";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Notifications managment";
+    NewLine.ОписаниеМетода   = "Delete notification by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteNotification";
+    NewLine.МетодПоиска = "DELETENOTIFICATION";
+    NewLine.Параметр    = "--notif";
+    NewLine.Описание    = "Notification ID";
+    NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteNotification";
+    NewLine.МетодПоиска = "DELETENOTIFICATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Notifications managment";
 
     Return CompositionTable;
 EndFunction
