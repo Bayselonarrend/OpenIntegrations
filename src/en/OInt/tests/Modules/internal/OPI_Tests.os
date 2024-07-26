@@ -3107,6 +3107,9 @@ Procedure B24_ChatManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Document" , TestParameters);
     
+    Bitrix24_GetUserStatus(TestParameters);
+    Bitrix24_SetUserStatus(TestParameters);
+    Bitrix24_GetUsers(TestParameters);
     Bitrix24_CreateChat(TestParameters);
     Bitrix24_GetChatUsers(TestParameters);
     Bitrix24_DeleteUserFromChat(TestParameters);
@@ -3131,6 +3134,22 @@ Procedure B24_ChatManagment() Export
     Bitrix24_ReadAll(TestParameters);
     Bitrix24_ChangeChatOwner(TestParameters);
     Bitrix24_LeaveChat(TestParameters);
+    
+EndProcedure
+
+Procedure B24_NotificationsManagment() Export
+   
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document" , TestParameters);
+     
+    Bitrix24_CreatePersonalNotification(TestParameters);
+    Bitrix24_CreateSystemNotification(TestParameters);
+    Bitrix24_DeleteNotification(TestParameters);
     
 EndProcedure
 
@@ -3678,6 +3697,10 @@ EndProcedure
 
 Procedure Check_BitrixTrue(Val Result)
    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True); 
+EndProcedure    
+
+Procedure Check_BitrixBool(Val Result)
+   OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Boolean"); 
 EndProcedure
 
 Procedure Check_BitrixString(Val Result)
@@ -9324,6 +9347,191 @@ Procedure Bitrix24_SendFile(FunctionParameters)
     
     Check_BitrixFileMessage(Result);
 
+EndProcedure
+
+Procedure Bitrix24_GetUsers(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    ArrayOfUsers = New Array;
+    
+    ArrayOfUsers.Add(1);
+    ArrayOfUsers.Add(10);
+
+    Result = OPI_Bitrix24.GetUsers(URL, ArrayOfUsers);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUsers (wh)", "Bitrix24");
+    
+    Check_BitrixMap(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    UserIDs = 10;
+    
+    Result = OPI_Bitrix24.GetUsers(URL, UserIDs, Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUsers", "Bitrix24");
+    
+    Check_BitrixMap(Result);
+        
+EndProcedure
+
+Procedure Bitrix24_GetUserStatus(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetUserStatus(URL);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserStatus (wh)", "Bitrix24");
+    
+    Check_BitrixString(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    
+    Result = OPI_Bitrix24.GetUserStatus(URL, Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserStatus", "Bitrix24");
+    
+    Check_BitrixString(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_SetUserStatus(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    Status = "dnd";
+
+    Result = OPI_Bitrix24.SetUserStatus(URL, Status);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "SetUserStatus (wh)", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    Status = "away";
+    
+    Result = OPI_Bitrix24.SetUserStatus(URL, Status, Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "SetUserStatus", "Bitrix24");
+    
+    Check_BitrixTrue(Result);
+    
+EndProcedure
+
+Procedure Bitrix24_CreatePersonalNotification(FunctionParameters)
+    
+    UserID = 1;
+    
+    URL = FunctionParameters["Bitrix24_URL"]; 
+    Text = "Message text";
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";   
+    
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1", Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+
+    Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, ,Attachments);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePersonalNotification)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+    
+    MessageID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_PersoalHookNotifyID", MessageID); // SKIP  
+    FunctionParameters.Insert("Bitrix24_PersoalHookNotifyID", MessageID); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    Tag = "New";
+    UserID = 10;
+    
+    Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, Tag, , Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePersonalNotification", "Bitrix24");
+    
+    Check_BitrixNumber(Result);
+    
+    MessageID = Result["result"];                                                  
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_PersoalNotifyID", MessageID);    
+    FunctionParameters.Insert("Bitrix24_PersoalNotifyID", MessageID);                   
+    
+EndProcedure
+
+Procedure Bitrix24_CreateSystemNotification(FunctionParameters)
+    
+    UserID = 1;
+    
+    URL = FunctionParameters["Bitrix24_URL"]; 
+    Text = "Message text";
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";   
+    
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1", Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+
+    Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSystemNotification (wh)", "Bitrix24");
+    
+    Check_BitrixNumber(Result); // SKIP
+    
+    MessageID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_SystemHookNotifyID", MessageID); // SKIP  
+    FunctionParameters.Insert("Bitrix24_SystemHookNotifyID", MessageID); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    Tag = "New";
+    UserID = 10;
+    
+    Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, Tag, , Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSystemNotification", "Bitrix24");
+    
+    Check_BitrixNumber(Result);
+    
+    MessageID = Result["result"];                                                  
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_SystemNotifyID", MessageID);    
+    FunctionParameters.Insert("Bitrix24_SystemNotifyID", MessageID);                   
+    
+EndProcedure
+
+Procedure Bitrix24_DeleteNotification(FunctionParameters)
+    
+    URL = FunctionParameters["Bitrix24_URL"];
+    NotificationID = FunctionParameters["Bitrix24_PersoalHookNotifyID"];
+    
+    Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID);
+            
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteNotification", "Bitrix24");
+    
+    Check_BitrixTrue(Result); // SKIP
+        
+    URL = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    NotificationID = FunctionParameters["Bitrix24_PersoalNotifyID"];
+    
+    Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID, Token);
+    
+    // END
+   
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteNotification (app)", "Bitrix24");
+    
+    Check_BitrixBool(Result);
+    
 EndProcedure
 
 #EndRegion
