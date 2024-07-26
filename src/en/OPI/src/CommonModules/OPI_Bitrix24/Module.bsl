@@ -2605,6 +2605,31 @@ Function LeaveChat(Val URL, Val ChatID, Val Token = "") Export
     
 EndFunction
 
+// Get users
+// Get users information for dialog
+// 
+// Note
+// Method at API documentation: [im.user.list.get ](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11493)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserIDs - Array of String, Number - Usesr ID or array of users IDs - users
+// Token - String - Access token, when app auth method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetUsers(Val URL, Val UserIDs, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.user.list.get");
+    
+    OPI_Tools.AddField("ID", UserIDs, "Array", Parameters);
+    
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // Add users to chat
 // Adds users to the chat by ID array
 // 
@@ -2932,6 +2957,53 @@ Function SendWritingNotification(Val URL, Val ChatID, Val Token = "") Export
     
 EndFunction
 
+// Get user status
+// Gets the status (online) of the current user
+// 
+// Note
+// Method at API documentation: [im.user.status.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11497)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetUserStatus(Val URL, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.user.status.get");
+            
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Set user status
+// Sets the status (online) of the current user
+// 
+// Note
+// Method at API documentation: [im.user.status.set](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11499)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Status - String, Number - Status value: online, dnd, away - status
+// Token - String - Access token, when app auth method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function SetUserStatus(Val URL, Val Status, Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.user.status.set");
+    
+    OPI_Tools.AddField("STATUS", Status, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
 // Read all
 // Mark all message as readed
 // 
@@ -3249,6 +3321,107 @@ Function GetFileBlock(Val Name, Val URL) Export
      
 EndFunction
  
+#EndRegion
+
+#Region NotificationsManagment
+
+// Create personal notification
+// Creates a personal notification to the user
+// 
+// Note
+// Method at API documentation: [im.notify.personal.add](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12129)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - User ID for sending the notification - user
+// Text - String - Notification text - text
+// Tag - String - Uniqueness Tag. Id already exist - another notif. will be deleted - tag
+// Attachments - Array of Structure - Array of attachments - blocks
+// Token - String - Access token, when app auth method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreatePersonalNotification(Val URL
+    , Val UserID
+    , Val Text
+    , Val Tag
+    , Val Attachments = ""
+    , Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.notify.personal.add");
+    
+    OPI_Tools.AddField("USER_ID", UserID, "String", Parameters);
+    OPI_Tools.AddField("MESSAGE", Text , "String", Parameters);
+    OPI_Tools.AddField("TAG" , Tag , "String", Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments , "Array", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Create system notification
+// Creates a system notification to the user
+// 
+// Note
+// Method at API documentation: [im.notify.system.add](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12131)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - User ID for sending the notification - user
+// Text - String - Notification text - text
+// Tag - String - Uniqueness Tag. Id already exist - another notif. will be deleted - tag
+// Attachments - Array of Structure - Array of attachments - blocks
+// Token - String - Access token, when app auth method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateSystemNotification(Val URL
+    , Val UserID
+    , Val Text
+    , Val Tag
+    , Val Attachments = ""
+    , Val Token = "") Export
+    
+    Parameters = NormalizeAuth(URL, Token, "im.notify.system.add");
+    
+    OPI_Tools.AddField("USER_ID", UserID, "String", Parameters);
+    OPI_Tools.AddField("MESSAGE", Text , "String", Parameters);
+    OPI_Tools.AddField("TAG" , Tag , "String", Parameters);
+    OPI_Tools.AddField("ATTACH" , Attachments , "Array", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+    
+EndFunction
+
+// Delete notification
+// Delete notification by ID
+// 
+// Note
+// Method at API documentation: [im.notify.delete](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12133)
+// 
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// NotificationID - String, Number - Notification ID - notif
+// Token - String - Access token, when app auth method used - token
+// 
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteNotification(Val URL, Val NotificationID, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "im.notify.delete");
+    
+    OPI_Tools.AddField("ID", NotificationID, "String", Parameters);
+        
+    Response = OPI_Tools.Post(URL, Parameters);
+    
+    Return Response;
+        
+EndFunction
+
 #EndRegion
 
 #EndRegion
