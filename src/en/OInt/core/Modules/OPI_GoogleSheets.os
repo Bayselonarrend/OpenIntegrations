@@ -314,17 +314,23 @@ Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Shee
     URL     = "https://sheets.googleapis.com/v4/spreadsheets/" + Spreadsheet + "/values:batchGet";
 
     If ValueIsFilled(CellsArray) Then
+
         OPI_TypeConversion.GetCollection(CellsArray);
         FormCellNameArray(CellsArray, Sheet);
+        First = True;
 
-        First         = True;
         For Each Cell In CellsArray Do
+
             Delimiter = ?(First, "?", "&");
             URL = URL + Delimiter + "ranges=" + Cell;
             First     = False;
+
         EndDo;
+
     Else
-        URL = URL + "?ranges ='" + Sheet + "'";
+
+        URL = URL + "?ranges='" + Sheet + "'";
+
     EndIf;
 
     Response = OPI_Tools.Get(URL, , Headers);

@@ -4518,7 +4518,7 @@
     NewLine.Метод       = "CreatePersonalNotification";
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--another notif. will be deleted";
-    NewLine.Описание    = "tag";
+    NewLine.Описание    = "tag (optional, def. val. - Empty value)";
     NewLine.Область     = "Notifications managment";
 
 
@@ -4579,7 +4579,7 @@
     NewLine.Метод       = "CreateSystemNotification";
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--another notif. will be deleted";
-    NewLine.Описание    = "tag";
+    NewLine.Описание    = "tag (optional, def. val. - Empty value)";
     NewLine.Область     = "Notifications managment";
 
 
