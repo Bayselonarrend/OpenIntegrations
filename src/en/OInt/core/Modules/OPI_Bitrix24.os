@@ -1029,6 +1029,18 @@ EndFunction
 
 #Region CustomsTasksFieldsManagment
 
+// Get list of custom task fields
+// Gets list of custom task fields
+//
+// Note
+// Method at API documentation: [task.item.userfield.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/getlist.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetCustomTaskFieldsList(Val URL, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "task.item.userfield.getlist");
@@ -3565,6 +3577,140 @@ Function DeleteNotification(Val URL, Val NotificationID, Val Token = "") Export
     Parameters = NormalizeAuth(URL, Token, "im.notify.delete");
 
     OPI_Tools.AddField("ID", NotificationID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
+#Region DepartmentsManagment
+
+// Create department
+// Creates a new department
+//
+// Note
+// Method at API documentation: [department.add](@dev.1c-bitrix.ru/rest_help/departments/department_add.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Name - String - Department name - title
+// ParentID - String, Number - ID of parent department - parentid
+// HeadID - String, Number - ID of department manager - headid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateDepartment(Val URL
+    , Val Name
+    , Val ParentID = ""
+    , Val HeadID = ""
+    , Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "department.add");
+
+    OPI_Tools.AddField("NAME"   , Name    , "String", Parameters);
+    OPI_Tools.AddField("PARENT" , ParentID, "String", Parameters);
+    OPI_Tools.AddField("UF_HEAD", HeadID  , "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Update department
+// Update an existing department
+//
+// Note
+// Method at API documentation: [department.update](@dev.1c-bitrix.ru/rest_help/departments/department_update.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// DepartmentID - String, Number - Department ID - depid
+// Name - String - Department name - title
+// ParentID - String, Number - ID of parent department - parentid
+// HeadID - String, Number - ID of department manager - headid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateDepartment(Val URL
+    , Val DepartmentID
+    , Val Name = ""
+    , Val ParentID = ""
+    , Val HeadID = ""
+    , Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "department.update");
+
+    OPI_Tools.AddField("ID"     , DepartmentID, "String", Parameters);
+    OPI_Tools.AddField("NAME"   , Name        , "String", Parameters);
+    OPI_Tools.AddField("PARENT" , ParentID    , "String", Parameters);
+    OPI_Tools.AddField("UF_HEAD", HeadID      , "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get departments
+// Gets a list of departments by ID or filter
+//
+// Note
+// Method at API documentation: [department.get](@dev.1c-bitrix.ru/rest_help/departments/department_get.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// DepartmentID - String, Number - Selection by department ID - depid
+// Name - String - Filter by name - title
+// ParentID - String, Number - Filter by parent ID - parentid
+// HeadID - String, Number - Filter by manager ID - headid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetDepartments(Val URL
+    , Val DepartmentID = ""
+    , Val Name = ""
+    , Val ParentID = ""
+    , Val HeadID = ""
+    , Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "department.get");
+
+    OPI_Tools.AddField("ID"     , DepartmentID, "String", Parameters);
+    OPI_Tools.AddField("NAME"   , Name        , "String", Parameters);
+    OPI_Tools.AddField("PARENT" , ParentID    , "String", Parameters);
+    OPI_Tools.AddField("UF_HEAD", HeadID      , "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete department
+// Delets department by ID
+//
+// Note
+// Method at API documentation: [department.delete](@dev.1c-bitrix.ru/rest_help/departments/department_delete.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// DepartmentID - String, Number - Department ID for deletion - depid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteDepartment(Val URL, Val DepartmentID, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "department.delete");
+
+    OPI_Tools.AddField("ID", DepartmentID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
