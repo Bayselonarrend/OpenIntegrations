@@ -1027,6 +1027,155 @@ EndFunction
 
 #EndRegion
 
+#Region CustomsTasksFieldsManagment
+
+Function GetCustomTaskFieldsList(Val URL, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "task.item.userfield.getlist");
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Add custom task field
+// Adds a new custom field to be added to the task
+//
+// Note
+// Method at API documentation: [task.item.userfield.add](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/add.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Type - String - Field type: string, double, date, boolean - type
+// Name - String - Text identifier (name) of the field - fieldname
+// ExternalID - String - Text identifier for external integration - externalid
+// Title - String - Field title - title
+// Signature - Structure of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function AddCustomTaskField(Val URL
+    , Val Type
+    , Val Name
+    , Val ExternalID = ""
+    , Val Title = ""
+    , Val Signature = ""
+    , Val Token = "") Export
+
+    String_ = "String";
+
+    Parameters = NormalizeAuth(URL, Token, "task.item.userfield.add");
+    Fields     = New Structure;
+
+    OPI_Tools.AddField("USER_TYPE_ID"   , Type      , String_     , Fields);
+    OPI_Tools.AddField("FIELD_NAME"     , Name      , String_     , Fields);
+    OPI_Tools.AddField("XML_ID"         , ExternalID, String_     , Fields);
+    OPI_Tools.AddField("LABEL"          , Title     , String_     , Fields);
+    OPI_Tools.AddField("EDIT_FORM_LABEL", Signature , "Collection", Fields);
+
+    OPI_Tools.AddField("PARAMS", Fields, "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Update custom task field
+// Updates a custom task field data
+//
+// Note
+// Method at API documentation: [task.item.userfield.update](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/update.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldID - String, Number - Field ID for updating - fieldid
+// ExternalID - String - Text identifier for external integration - externalid
+// Title - String - Field title - title
+// Signature - Structure of KeyAndValue - Form label. Key: en or ru, Value: Lable text - label
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateCustomTaskField(Val URL
+    , Val FieldID
+    , Val ExternalID = ""
+    , Val Title = ""
+    , Val Signature = ""
+    , Val Token = "") Export
+
+    String_ = "String";
+
+    Parameters = NormalizeAuth(URL, Token, "task.item.userfield.update");
+    Fields     = New Structure;
+
+    OPI_Tools.AddField("XML_ID"         , ExternalID, String_     , Fields);
+    OPI_Tools.AddField("LABEL"          , Title     , String_     , Fields);
+    OPI_Tools.AddField("EDIT_FORM_LABEL", Signature , "Collection", Fields);
+
+    OPI_Tools.AddField("ID"  , FieldID, String_     , Parameters);
+    OPI_Tools.AddField("DATA", Fields , "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Gets a custom task field
+// Get custom task field data
+//
+// Note
+// Method at API documentation: [task.item.userfield.get](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/get.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldID - String, Number - Field ID for retrieval - fieldid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetCustomTaskField(Val URL, Val FieldID, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "task.item.userfield.get");
+
+    OPI_Tools.AddField("ID", FieldID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete custom task field
+// Deletes a custom task field
+//
+// Note
+// Method at API documentation: [task.item.userfield.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/delete.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldID - String, Number - Field ID for deletion - fieldid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteCustomTaskField(Val URL, Val FieldID, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "task.item.userfield.delete");
+
+    OPI_Tools.AddField("ID", FieldID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #Region TasksChecklistsManagment
 
 // Add tasks checklist element

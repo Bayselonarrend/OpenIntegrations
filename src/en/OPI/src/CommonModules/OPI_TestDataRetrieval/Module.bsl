@@ -221,16 +221,17 @@ Function GetTestTable() Export
     NewTest(TestTable, "DropboxAPI_AccessManagement"  , "Access management"        , Dropbox);
     NewTest(TestTable, "DropboxAPI_GetFolderFileList" , "Get list of folder files" , Dropbox);
 
-    NewTest(TestTable, "B24_TokenManagment"         , "Token management"        , Bitrix);
-    NewTest(TestTable, "B24_ServerTime"             , "Server time"             , Bitrix);
-    NewTest(TestTable, "B24_PostsManagment"         , "Posts managment"         , Bitrix);
-    NewTest(TestTable, "B24_TaskManagment"          , "Tasks managment"         , Bitrix);
-    NewTest(TestTable, "B24_CommentsManagment"      , "Comments managment"      , Bitrix);
-    NewTest(TestTable, "B24_WorkingWithDrive"       , "Working with drive"      , Bitrix);
-    NewTest(TestTable, "B24_Kanban"                 , "Kanban"                  , Bitrix);
-    NewTest(TestTable, "B24_Timekeeping"            , "Timekeeping"             , Bitrix);
-    NewTest(TestTable, "B24_ChatManagment"          , "Chats works"             , Bitrix);
-    NewTest(TestTable, "B24_NotificationsManagment" , "Notifications managment" , Bitrix);
+    NewTest(TestTable, "B24_TokenManagment"         , "Token management"                , Bitrix);
+    NewTest(TestTable, "B24_ServerTime"             , "Server time"                     , Bitrix);
+    NewTest(TestTable, "B24_PostsManagment"         , "Posts managment"                 , Bitrix);
+    NewTest(TestTable, "B24_TaskManagment"          , "Tasks managment"                 , Bitrix);
+    NewTest(TestTable, "B24_CommentsManagment"      , "Comments managment"              , Bitrix);
+    NewTest(TestTable, "B24_WorkingWithDrive"       , "Working with drive"              , Bitrix);
+    NewTest(TestTable, "B24_Kanban"                 , "Kanban"                          , Bitrix);
+    NewTest(TestTable, "B24_Timekeeping"            , "Timekeeping"                     , Bitrix);
+    NewTest(TestTable, "B24_ChatManagment"          , "Chats works"                     , Bitrix);
+    NewTest(TestTable, "B24_NotificationsManagment" , "Notifications managment"         , Bitrix);
+    NewTest(TestTable, "B24_TaskFieldsManagment"    , "Working with custom task fields" , Bitrix);
 
     Return TestTable;
 
