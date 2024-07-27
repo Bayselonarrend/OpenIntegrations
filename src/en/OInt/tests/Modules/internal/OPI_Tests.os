@@ -3172,12 +3172,14 @@ Procedure B24_NotificationsManagment() Export
 
 EndProcedure
 
-Procedure B24_TaskFieldsManagment() Export
+Procedure () Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"            , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token"          , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_HookTaskFieldID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_TaskFieldID"    , TestParameters);
 
     Bitrix24_AddCustomTaskField(TestParameters);
     Bitrix24_UpdateCustomTaskField(TestParameters);

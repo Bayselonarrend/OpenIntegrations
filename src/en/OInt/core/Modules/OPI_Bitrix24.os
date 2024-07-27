@@ -3611,9 +3611,9 @@ Function CreateDepartment(Val URL
 
     Parameters = NormalizeAuth(URL, Token, "department.add");
 
-    OPI_Tools.AddField("NAME"   , Name    , "String", Parameters);
-    OPI_Tools.AddField("PARENT" , ParentID, "String", Parameters);
-    OPI_Tools.AddField("UF_HEAD", HeadID  , "String", Parameters);
+    OPI_Tools.AddField("NAME"   , Name     , "String", Parameters);
+    OPI_Tools.AddField("PARENT" , ParentID , "String", Parameters);
+    OPI_Tools.AddField("UF_HEAD", HeadID   , "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
