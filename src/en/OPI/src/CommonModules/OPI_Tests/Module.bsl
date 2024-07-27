@@ -68,71 +68,71 @@ EndFunction
 
 Procedure TelegramAPI_GetBotInfo() Export
 
- 	TestParameters = New Structure;
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+     TestParameters = New Structure;
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
-	Telegram_GetBotInformation(TestParameters);
+    Telegram_GetBotInformation(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_GetUpdates() Export
 
- 	TestParameters = New Structure;
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+     TestParameters = New Structure;
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
- 	Telegram_DeleteWebhook(TestParameters);
-	Telegram_GetUpdates(TestParameters);
+     Telegram_DeleteWebhook(TestParameters);
+    Telegram_GetUpdates(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SetWebhook() Export
 
- 	TestParameters = New Structure;
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_URL"  , TestParameters);
+     TestParameters = New Structure;
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_URL"  , TestParameters);
 
-	Telegram_SetWebhook(TestParameters);
-	Telegram_DeleteWebhook(TestParameters);
+    Telegram_SetWebhook(TestParameters);
+    Telegram_DeleteWebhook(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendTextMessage() Export
 
     TestParameters = New Structure;
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
 
-	Telegram_SendTextMessage(TestParameters);
+    Telegram_SendTextMessage(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendImage() Export
 
     TestParameters = New Structure;
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Picture"           , TestParameters);
 
-	Telegram_SendPicture(TestParameters);
-	Telegram_DownloadFile(TestParameters);
+    Telegram_SendPicture(TestParameters);
+    Telegram_DownloadFile(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_SendVideo() Export
 
     TestParameters = New Structure;
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
- 	OPI_TestDataRetrieval.ParameterToCollection("Video"             , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
+     OPI_TestDataRetrieval.ParameterToCollection("Video"             , TestParameters);
 
-	Telegram_SendVideo(TestParameters);
-	Telegram_DownloadFile(TestParameters);
+    Telegram_SendVideo(TestParameters);
+    Telegram_DownloadFile(TestParameters);
 
 EndProcedure
 
@@ -225,7 +225,7 @@ Procedure TelegramAPI_SendPoll() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
 
-	Telegram_SendPoll(TestParameters);
+    Telegram_SendPoll(TestParameters);
 
 EndProcedure
 
@@ -237,7 +237,7 @@ Procedure TelegramAPI_ForwardMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID"       , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
 
-	Telegram_ForwardMessage(TestParameters);
+    Telegram_ForwardMessage(TestParameters);
 
 EndProcedure
 
@@ -259,7 +259,7 @@ Procedure TelegramAPI_CreateInvitationLink() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
 
-	Telegram_CreateInviteLink(TestParameters);
+    Telegram_CreateInviteLink(TestParameters);
 
 EndProcedure
 
@@ -270,9 +270,9 @@ Procedure TelegramAPI_PinUnpinMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID"       , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelMessageID", TestParameters);
 
-	Telegram_PinMessage(TestParameters);
-	Telegram_UnpinMessage(TestParameters);
-	Telegram_DeleteMessage(TestParameters);
+    Telegram_PinMessage(TestParameters);
+    Telegram_UnpinMessage(TestParameters);
+    Telegram_DeleteMessage(TestParameters);
 
 EndProcedure
 
@@ -291,7 +291,7 @@ Procedure TelegramAPI_GetForumAvatarsList() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
-	Telegram_GetForumAvatarList(TestParameters);
+    Telegram_GetForumAvatarList(TestParameters);
 
 EndProcedure
 
@@ -303,33 +303,33 @@ Procedure TelegramAPI_CreateDeleteForumTopic() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("String"          , TestParameters);
 
-	Telegram_CreateForumTopic(TestParameters);
-	Telegram_EditForumTopic(TestParameters);
-	Telegram_CloseForumTopic(TestParameters);
-	Telegram_OpenForumTopic(TestParameters);
-	Telegram_ClearPinnedMessagesList(TestParameters);
-	Telegram_DeleteForumTopic(TestParameters);
+    Telegram_CreateForumTopic(TestParameters);
+    Telegram_EditForumTopic(TestParameters);
+    Telegram_CloseForumTopic(TestParameters);
+    Telegram_OpenForumTopic(TestParameters);
+    Telegram_ClearPinnedMessagesList(TestParameters);
+    Telegram_DeleteForumTopic(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_HideShowMainTopic() Export
 
- 	TestParameters = New Structure;
+     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
 
-	Telegram_HideMainForumTopic(TestParameters);
-	Telegram_ShowMainForumTopic(TestParameters);
+    Telegram_HideMainForumTopic(TestParameters);
+    Telegram_ShowMainForumTopic(TestParameters);
 
 EndProcedure
 
 Procedure TelegramAPI_ChangeMainTopicName() Export
 
- 	TestParameters = New Structure;
+     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ForumID", TestParameters);
 
-	Telegram_ChangeMainTopicName(TestParameters);
+    Telegram_ChangeMainTopicName(TestParameters);
 
 EndProcedure
 
@@ -1806,13 +1806,13 @@ EndProcedure
 
 Procedure Notion_CreatePage() Export
 
-	Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
-	Title  = "TestTitle";
+    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
+    Title  = "TestTitle";
 
-	Result = OPI_Notion.CreatePage(Token, Parent, Title);
+    Result = OPI_Notion.CreatePage(Token, Parent, Title);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreatePage");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreatePage");
 
     Check_NotionObject(Result);
 
@@ -1820,46 +1820,46 @@ EndProcedure
 
 Procedure Notion_CreateEditDatabase() Export
 
-	Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
-	Title  = "TestTitle";
+    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
+    Title  = "TestTitle";
 
-	Properties = New Map;
-	Properties.Insert("Name"         , "title");
-	Properties.Insert("Description"  , "rich_text");
-	Properties.Insert("Number"       , "number");
-	Properties.Insert("Status"       , "status");
-	Properties.Insert("CreationDate" , "date");
-	Properties.Insert("Image"        , "files");
-	Properties.Insert("Active"       , "checkbox");
-	Properties.Insert("Website"      , "url");
-	Properties.Insert("Email"        , "email");
-	Properties.Insert("Phone"        , "phone_number");
-	Properties.Insert("User"         , "people");
+    Properties = New Map;
+    Properties.Insert("Name"         , "title");
+    Properties.Insert("Description"  , "rich_text");
+    Properties.Insert("Number"       , "number");
+    Properties.Insert("Status"       , "status");
+    Properties.Insert("CreationDate" , "date");
+    Properties.Insert("Image"        , "files");
+    Properties.Insert("Active"       , "checkbox");
+    Properties.Insert("Website"      , "url");
+    Properties.Insert("Email"        , "email");
+    Properties.Insert("Phone"        , "phone_number");
+    Properties.Insert("User"         , "people");
 
-	ValueSelection = New Map;
-	ValueSelection.Insert("New"        , "green");
-	ValueSelection.Insert("InProgress" , "yellow");
-	ValueSelection.Insert("Remote"     , "red");
-	Properties.Insert("Status", ValueSelection);
+    ValueSelection = New Map;
+    ValueSelection.Insert("New"        , "green");
+    ValueSelection.Insert("InProgress" , "yellow");
+    ValueSelection.Insert("Remote"     , "red");
+    Properties.Insert("Status", ValueSelection);
 
-	Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
+    Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase");
 
     Check_NotionObject(Result, "database");
 
     Base     = Result["id"];
     Title    = "TestTitle";
-	Description = "TestDescription";
+    Description = "TestDescription";
 
-	Properties = New Map;
-	Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
-	Properties.Insert("Website"); // Field "Website" will deleted
+    Properties = New Map;
+    Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
+    Properties.Insert("Website"); // Field "Website" will deleted
 
-	Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
+    Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditDatabaseProperties");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditDatabaseProperties");
 
     Check_NotionObject(Result, "database");
 
@@ -1867,12 +1867,12 @@ EndProcedure
 
 Procedure Notion_GetPageInfo() Export
 
-	Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Page  = OPI_TestDataRetrieval.GetParameter("Notion_Page");
+    Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Page  = OPI_TestDataRetrieval.GetParameter("Notion_Page");
 
-	Result = OPI_Notion.GetPage(Token, Page);
+    Result = OPI_Notion.GetPage(Token, Page);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPage");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPage");
 
     Check_NotionObject(Result);
 
@@ -1880,12 +1880,12 @@ EndProcedure
 
 Procedure Notion_GetDatabaseInfo() Export
 
-	Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Base  = OPI_TestDataRetrieval.GetParameter("Notion_Base");
+    Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Base  = OPI_TestDataRetrieval.GetParameter("Notion_Base");
 
-	Result = OPI_Notion.GetDatabase(Token, Base);
+    Result = OPI_Notion.GetDatabase(Token, Base);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDatabase");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetDatabase");
 
     Check_NotionObject(Result, "database");
 
@@ -1893,28 +1893,28 @@ EndProcedure
 
 Procedure Notion_CreatePageInDatabase() Export
 
-	Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Base  = OPI_TestDataRetrieval.GetParameter("Notion_Base");
+    Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Base  = OPI_TestDataRetrieval.GetParameter("Notion_Base");
 
-	Image = New Map;
-	Image.Insert("Logo", OPI_TestDataRetrieval.GetParameter("Picture"));
+    Image = New Map;
+    Image.Insert("Logo", OPI_TestDataRetrieval.GetParameter("Picture"));
 
-	Properties = New Map;
-	Properties.Insert("Name"         , "LLC Vector");
-	Properties.Insert("Description"  , "OurFirstClient");
-	Properties.Insert("Number"       , 1);
-	Properties.Insert("Status"       , "Regular");
-	Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
-	Properties.Insert("Image"        , Image);
-	Properties.Insert("Active"       , True);
-	Properties.Insert("Website"      , "https://vector.ru");
-	Properties.Insert("Email"        , "mail@vector.ru");
-	Properties.Insert("Phone"        , "88005553535");
-	Properties.Insert("Status"	      , "New");
+    Properties = New Map;
+    Properties.Insert("Name"         , "LLC Vector");
+    Properties.Insert("Description"  , "OurFirstClient");
+    Properties.Insert("Number"       , 1);
+    Properties.Insert("Status"       , "Regular");
+    Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
+    Properties.Insert("Image"        , Image);
+    Properties.Insert("Active"       , True);
+    Properties.Insert("Website"      , "https://vector.ru");
+    Properties.Insert("Email"        , "mail@vector.ru");
+    Properties.Insert("Phone"        , "88005553535");
+    Properties.Insert("Status"          , "New");
 
-	Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
+    Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreatePageInDatabase");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreatePageInDatabase");
 
     Check_NotionObject(Result);
 
@@ -1925,24 +1925,24 @@ EndProcedure
 
 Procedure Notion_EditPageProperties() Export
 
-	Token   = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Page    = OPI_TestDataRetrieval.GetParameter("Notion_Page");
-	Icon    = OPI_TestDataRetrieval.GetParameter("Picture");
-	Cover   = OPI_TestDataRetrieval.GetParameter("Picture2");
-	Archive = False;
+    Token   = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Page    = OPI_TestDataRetrieval.GetParameter("Notion_Page");
+    Icon    = OPI_TestDataRetrieval.GetParameter("Picture");
+    Cover   = OPI_TestDataRetrieval.GetParameter("Picture2");
+    Archive = False;
 
-	Properties = New Map;
-	Properties.Insert("Active" , False);
-	Properties.Insert("Email"  , "vector@mail.ru");
+    Properties = New Map;
+    Properties.Insert("Active" , False);
+    Properties.Insert("Email"  , "vector@mail.ru");
 
-	Result = OPI_Notion.EditPageProperties(Token
-		, Page
-		, Properties
-		, Icon
-		, Cover
-		, Archive);
+    Result = OPI_Notion.EditPageProperties(Token
+        , Page
+        , Properties
+        , Icon
+        , Cover
+        , Archive);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditPageProperties");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditPageProperties");
 
     Check_NotionObject(Result);
 
@@ -1950,32 +1950,32 @@ EndProcedure
 
 Procedure Notion_CreateDeleteBlock() Export
 
-	Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
-	Block  = OPI_TestDataRetrieval.GetParameter("Notion_Block");
+    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
+    Block  = OPI_TestDataRetrieval.GetParameter("Notion_Block");
 
-	Result = OPI_Notion.ReturnBlock(Token, Block);
+    Result = OPI_Notion.ReturnBlock(Token, Block);
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ReturnBlock");
 
     Check_NotionObject(Result, "block");
 
-	Result = OPI_Notion.CreateBlock(Token, Parent, Result);
+    Result = OPI_Notion.CreateBlock(Token, Parent, Result);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateBlock");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateBlock");
 
     Check_NotionObject(Result, "list");
 
     Block = Result["results"][0]["id"];
-	Result   = OPI_Notion.ReturnChildBlocks(Token, Block);
+    Result   = OPI_Notion.ReturnChildBlocks(Token, Block);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "ReturnChildBlocks");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ReturnChildBlocks");
 
     Check_NotionObject(Result, "list");
 
-	Result = OPI_Notion.DeleteBlock(Token, Block);
+    Result = OPI_Notion.DeleteBlock(Token, Block);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteBlock");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteBlock");
 
     Check_NotionObject(Result, "block");
 
@@ -1983,10 +1983,10 @@ EndProcedure
 
 Procedure Notion_GetUsers() Export
 
-	Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	Result = OPI_Notion.UserList(Token);
+    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    Result = OPI_Notion.UserList(Token);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "UserList");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UserList");
 
     Check_NotionObject(Result, "list");
 
@@ -1994,11 +1994,11 @@ EndProcedure
 
 Procedure Notion_GetUserData() Export
 
-	Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-	User   = OPI_TestDataRetrieval.GetParameter("Notion_User");
-	Result = OPI_Notion.GetUserData(Token, User);
+    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
+    User   = OPI_TestDataRetrieval.GetParameter("Notion_User");
+    Result = OPI_Notion.GetUserData(Token, User);
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserData");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUserData");
 
     Check_NotionObject(Result, "user");
 
@@ -2855,7 +2855,7 @@ EndProcedure
 
 Procedure B24_ServerTime() Export
 
-	TestParameters = New Structure;
+    TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
@@ -3238,7 +3238,7 @@ EndProcedure
 
 Procedure Check_Structure(Val Result)
 
-	OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
 
 EndProcedure
 
@@ -3674,13 +3674,13 @@ EndProcedure
 
 Procedure Check_BitrixTime(Val Result)
 
-	Time = Result["result"];
+    Time = Result["result"];
 
-	If Not TypeOf(Time) = Type("Date") Then
-	   Time             = XMLValue(Type("Date"), Time);
-	EndIf;
+    If Not TypeOf(Time) = Type("Date") Then
+       Time             = XMLValue(Type("Date"), Time);
+    EndIf;
 
-	OPI_TestDataRetrieval.ExpectsThat(Time).ИмеетТип("Date").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Time).ИмеетТип("Date").Заполнено();
 
 EndProcedure
 
@@ -3790,14 +3790,14 @@ EndProcedure
 
 Procedure Check_BitrixCommentsList(Val Result)
 
-	OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["POST_MESSAGE"]).Заполнено();
 
 EndProcedure
 
 Procedure Check_BitrixResultsList(Val Result)
 
-	OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["text"]).Заполнено();
 
 EndProcedure
@@ -3852,10 +3852,10 @@ EndProcedure
 
 Procedure Telegram_GetUpdates(FunctionParameters)
 
-	Token     = FunctionParameters["Telegram_Token"];
+    Token     = FunctionParameters["Telegram_Token"];
     Result = OPI_Telegram.GetUpdates(Token);
 
-	// END
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetUpdates", "Telegram");
 
@@ -3884,12 +3884,12 @@ EndProcedure
 
 Procedure Telegram_DeleteWebhook(FunctionParameters)
 
-	Token  = FunctionParameters["Telegram_Token"];
-	Result = OPI_Telegram.DeleteWebhook(Token);
+    Token  = FunctionParameters["Telegram_Token"];
+    Result = OPI_Telegram.DeleteWebhook(Token);
 
-	// END
+    // END
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteWebhook", "Telegram");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteWebhook", "Telegram");
 
     Check_TelegramWebhookDeletion(Result);
 
@@ -3899,10 +3899,10 @@ EndProcedure
 
 Procedure Telegram_SendTextMessage(FunctionParameters)
 
-	Token     = FunctionParameters["Telegram_Token"];
-	ChatID    = FunctionParameters["Telegram_ChatID"];
-	ChannelID = FunctionParameters["Telegram_ChannelID"];
-	Text      = FunctionParameters["String"];
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text      = FunctionParameters["String"];
 
     Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
 
@@ -4288,8 +4288,8 @@ EndProcedure
 
 Procedure Telegram_DownloadFile(FunctionParameters)
 
-	FileID = FunctionParameters["Telegram_FileID"];
-	Token  = FunctionParameters["Telegram_Token"];
+    FileID = FunctionParameters["Telegram_FileID"];
+    Token  = FunctionParameters["Telegram_Token"];
 
     Result = OPI_Telegram.DownloadFile(Token, FileID);
 
@@ -4314,7 +4314,7 @@ Procedure Telegram_ForwardMessage(FunctionParameters)
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage", "Telegram");
 
-	Check_TelegramForward(Result, MessageID);
+    Check_TelegramForward(Result, MessageID);
 
     OPI_Tools.Pause(5);
 
@@ -4322,18 +4322,18 @@ EndProcedure
 
 Procedure Telegram_Ban(FunctionParameters)
 
-	Token        = FunctionParameters["Telegram_Token"];
+    Token        = FunctionParameters["Telegram_Token"];
     UserID    = FunctionParameters["Telegram_ChatID"];
     ChannelID = FunctionParameters["Telegram_ChannelID"];
 
-	Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
+    Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
 
-	// END
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Ban", "Telegram");
 
-	Check_TelegramBan(Result);
-	OPI_Tools.Pause(5);
+    Check_TelegramBan(Result);
+    OPI_Tools.Pause(5);
 
 EndProcedure
 
@@ -4343,14 +4343,14 @@ Procedure Telegram_Unban(FunctionParameters)
     UserID    = FunctionParameters["Telegram_ChatID"];
     ChannelID = FunctionParameters["Telegram_ChannelID"];
 
-	Result = OPI_Telegram.Unban(Token, ChannelID, UserID);
+    Result = OPI_Telegram.Unban(Token, ChannelID, UserID);
 
-	// END
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "Unban", "Telegram");
 
-	Check_TelegramBan(Result);
-	OPI_Tools.Pause(5);
+    Check_TelegramBan(Result);
+    OPI_Tools.Pause(5);
 
 EndProcedure
 
@@ -4371,7 +4371,7 @@ Procedure Telegram_CreateInviteLink(FunctionParameters)
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateInvitationLink", "Telegram");
 
-	Check_TelegramInvitation(Result, Title, UnixExpiration);
+    Check_TelegramInvitation(Result, Title, UnixExpiration);
 
     OPI_Tools.Pause(5);
 
@@ -4385,11 +4385,11 @@ Procedure Telegram_PinMessage(FunctionParameters)
 
     Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
 
-	// END
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PinMessage", "Telegram");
 
-	Check_TelegramTrue(Result);
+    Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
 
@@ -4403,11 +4403,11 @@ Procedure Telegram_UnpinMessage(FunctionParameters)
 
     Result = OPI_Telegram.UnpinMessage(Token, ChannelID, MessageID);
 
-	// END
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DetachMessage", "Telegram");
 
-	Check_TelegramTrue(Result);
+    Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
 
@@ -4432,10 +4432,10 @@ EndProcedure
 
 Procedure Telegram_GetForumAvatarList(FunctionParameters)
 
-	Token  = FunctionParameters["Telegram_Token"];
-	Result = OPI_Telegram.GetAvatarIconList(Token);
+    Token  = FunctionParameters["Telegram_Token"];
+    Result = OPI_Telegram.GetAvatarIconList(Token);
 
-	// END
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetAvatarIconList", "Telegram");
 
@@ -4447,14 +4447,14 @@ EndProcedure
 
 Procedure Telegram_CreateForumTopic(FunctionParameters)
 
-	Token   = FunctionParameters["Telegram_Token"];
+    Token   = FunctionParameters["Telegram_Token"];
     Chat = FunctionParameters["Telegram_ForumID"];
     Icon = "5357419403325481346";
     Name = "TestTopic " + String(New UUID);
 
-	Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
+    Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
 
-	// END
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreateForumTopic", "Telegram");
 
@@ -4464,10 +4464,10 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
     OPI_Tools.AddField("Telegram_TopicID", Topic, "String", FunctionParameters);
     OPI_TestDataRetrieval.WriteParameter("Telegram_TopicID", FunctionParameters["Telegram_TopicID"]);
 
-	Check_TelegramCreateTopic(Result, Name, Icon);
+    Check_TelegramCreateTopic(Result, Name, Icon);
 
-	ChatTopic = Chat + "*" + Topic;
-	Text      = FunctionParameters["String"];
+    ChatTopic = Chat + "*" + Topic;
+    Text      = FunctionParameters["String"];
     Result = OPI_Telegram.SendTextMessage(Token, ChatTopic, Text);
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (forum)");
@@ -4478,7 +4478,7 @@ EndProcedure
 
 Procedure Telegram_EditForumTopic(FunctionParameters)
 
-	Token      = FunctionParameters["Telegram_Token"];
+    Token      = FunctionParameters["Telegram_Token"];
     Chat    = FunctionParameters["Telegram_ForumID"];
     Topic   = FunctionParameters["Telegram_TopicID"];
     NewName = "NewTestTitle";
@@ -4498,15 +4498,15 @@ EndProcedure
 
 Procedure Telegram_CloseForumTopic(FunctionParameters)
 
-	Token    = FunctionParameters["Telegram_Token"];
+    Token    = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
     OPI_Telegram.OpenForumThread(Token, Chat); // SKIP
 
-	Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
+    Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "CloseForumTopic (main)");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CloseForumTopic (main)");
 
     Check_TelegramTrue(Result); // SKIP
 
@@ -4524,13 +4524,13 @@ EndProcedure
 
 Procedure Telegram_OpenForumTopic(FunctionParameters)
 
-	Token    = FunctionParameters["Telegram_Token"];
+    Token    = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
-	Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
+    Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
 
-	// !OInt OPI_TestDataRetrieval.WriteLog(Result, "OpenForumTopic (main)");
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "OpenForumTopic (main)");
 
     Check_TelegramTrue(Result); // SKIP
 
@@ -4548,7 +4548,7 @@ EndProcedure
 
 Procedure Telegram_DeleteForumTopic(FunctionParameters)
 
-	Token    = FunctionParameters["Telegram_Token"];
+    Token    = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
@@ -4566,7 +4566,7 @@ EndProcedure
 
 Procedure Telegram_ClearPinnedMessagesList(FunctionParameters)
 
-	Token    = FunctionParameters["Telegram_Token"];
+    Token    = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
@@ -4590,7 +4590,7 @@ EndProcedure
 
 Procedure Telegram_HideMainForumTopic(FunctionParameters)
 
-	Token   = FunctionParameters["Telegram_Token"];
+    Token   = FunctionParameters["Telegram_Token"];
     Chat = FunctionParameters["Telegram_ForumID"];
 
     Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
@@ -4607,7 +4607,7 @@ EndProcedure
 
 Procedure Telegram_ShowMainForumTopic(FunctionParameters)
 
-	Token   = FunctionParameters["Telegram_Token"];
+    Token   = FunctionParameters["Telegram_Token"];
     Chat = FunctionParameters["Telegram_ForumID"];
 
     Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
@@ -4624,8 +4624,8 @@ EndProcedure
 
 Procedure Telegram_ChangeMainTopicName(FunctionParameters)
 
-	Title   = "New main thread name " + String(New UUID);
-	Token   = FunctionParameters["Telegram_Token"];
+    Title   = "New main thread name " + String(New UUID);
+    Token   = FunctionParameters["Telegram_Token"];
     Chat = FunctionParameters["Telegram_ForumID"];
 
     Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
@@ -4642,11 +4642,11 @@ EndProcedure
 
 Procedure Telegram_DeleteMessage(FunctionParameters)
 
-	Token     = FunctionParameters["Telegram_Token"];
-	ChatID    = FunctionParameters["Telegram_ChannelID"];
-	MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChannelID"];
+    MessageID = FunctionParameters["Telegram_ChannelMessageID"];
 
-	Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
+    Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
 
     // END
 
@@ -6252,7 +6252,7 @@ EndProcedure
 
 Procedure Dropbox_CancelFilePublication(FunctionParameters)
 
-	Token   = FunctionParameters["Dropbox_Token"];
+    Token   = FunctionParameters["Dropbox_Token"];
     File = FunctionParameters["Dropbox_FileID"];
 
     Result = OPI_Dropbox.CancelFilePublication(Token, File);
@@ -6274,7 +6274,7 @@ Procedure Bitrix24_GetAppAuthLink(FunctionParameters)
     Domain   = FunctionParameters["Bitrix24_Domain"];
     ClientID = FunctionParameters["Bitrix24_ClientID"];
 
-	Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
+    Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
 
     // END
 
@@ -6292,7 +6292,7 @@ Procedure Bitrix24_GetToken(FunctionParameters)
     ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
     Code         = FunctionParameters["Bitrix24_Code"];
 
-	Result = OPI_Bitrix24.GetToken(ClientID, ClientSecret, Code);
+    Result = OPI_Bitrix24.GetToken(ClientID, ClientSecret, Code);
 
     // END
 
@@ -6311,7 +6311,7 @@ Procedure Bitrix24_RefreshToken(FunctionParameters)
     ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
     Refresh      = FunctionParameters["Bitrix24_Refresh"];
 
-	Result = OPI_Bitrix24.RefreshToken(ClientID, ClientSecret, Refresh);
+    Result = OPI_Bitrix24.RefreshToken(ClientID, ClientSecret, Refresh);
 
     // END
 
@@ -6328,9 +6328,9 @@ EndProcedure
 
 Procedure Bitrix24_ServerTime(FunctionParameters)
 
-	URL = FunctionParameters["Bitrix24_URL"];
+    URL = FunctionParameters["Bitrix24_URL"];
 
-	Result = OPI_Bitrix24.ServerTime(URL);
+    Result = OPI_Bitrix24.ServerTime(URL);
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ServerTime (wh)", "Bitrix24");
 
@@ -6362,7 +6362,7 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-	Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, True);
+    Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, True);
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (wh)", "Bitrix24");
 
@@ -6427,7 +6427,7 @@ Procedure Bitrix24_DeletePost(FunctionParameters)
     PostID = FunctionParameters["Bitrix24_HookPostID"];
     URL    = FunctionParameters["Bitrix24_URL"];
 
-	Result = OPI_Bitrix24.DeletePost(URL, PostID);
+    Result = OPI_Bitrix24.DeletePost(URL, PostID);
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeletePost (wh)", "Bitrix24");
 
@@ -7222,7 +7222,7 @@ EndProcedure
 
 Procedure Bitrix24_GetStorage(FunctionParameters)
 
-	URL          = FunctionParameters["Bitrix24_URL"];
+    URL          = FunctionParameters["Bitrix24_URL"];
     StorageID = 3;
 
     Result = OPI_Bitrix24.GetStorage(URL, StorageID);
@@ -7373,7 +7373,7 @@ EndProcedure
 
 Procedure Bitrix24_GetFolderExternalLink(FunctionParameters)
 
-	URL         = FunctionParameters["Bitrix24_URL"];
+    URL         = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
     Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID);
@@ -7397,7 +7397,7 @@ EndProcedure
 
 Procedure Bitrix24_GetFolderFilterStructure(FunctionParameters)
 
-	URL = FunctionParameters["Bitrix24_URL"];
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.GetFolderFilterStructure(URL);
 
@@ -7420,7 +7420,7 @@ EndProcedure
 
 Procedure Bitrix24_GetFolderItems(FunctionParameters)
 
-	URL         = FunctionParameters["Bitrix24_URL"];
+    URL         = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
     Result = OPI_Bitrix24.GetFolderItems(URL, FolderID);
@@ -7444,7 +7444,7 @@ EndProcedure
 
 Procedure Bitrxi24_MarkFolderAsDeleted(FunctionParameters)
 
-	URL         = FunctionParameters["Bitrix24_URL"];
+    URL         = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
     Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID);

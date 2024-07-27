@@ -89,7 +89,7 @@ Function CreateFolder(Val Token, Val Path) Export
     ResponseURL = Response[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
-    	Return Response;
+        Return Response;
     EndIf;
 
     Response = OPI_Tools.Get(ResponseURL, , Headers);
@@ -183,7 +183,7 @@ Function CreateObjectCopy(Val Token, Val Original, Val Path, Val Overwrite = Fal
     ResponseURL = Response[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
-	    Return Response;
+        Return Response;
     EndIf;
 
     Response = OPI_Tools.Get(ResponseURL, , Headers);
@@ -230,14 +230,14 @@ EndFunction
 Function DownloadFile(Val Token, Val Path, Val SavePath = "") Export
 
     OPI_TypeConversion.GetLine(SavePath);
-	Response = GetDownloadLink(Token, Path);
-	URL      = Response["href"];
+    Response = GetDownloadLink(Token, Path);
+    URL      = Response["href"];
 
-	If Not ValueIsFilled(URL) Then
-		Return Response;
-	EndIf;
+    If Not ValueIsFilled(URL) Then
+        Return Response;
+    EndIf;
 
-	Response = OPI_Tools.Get(URL, , , SavePath);
+    Response = OPI_Tools.Get(URL, , , SavePath);
 
     Return Response;
 
@@ -330,7 +330,7 @@ Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Ex
     ResponseURL = Response[Href];
 
     If Not ValueIsFilled(ResponseURL) Then
-    	Return Response;
+        Return Response;
     EndIf;
 
     Response = OPI_Tools.Get(ResponseURL, , Headers);
@@ -369,7 +369,7 @@ Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
     URL      = Response[Href];
 
     If Not ValueIsFilled(URL) Then
-    	Return Response;
+        Return Response;
     EndIf;
 
     Response = OPI_Tools.PutMultipart(URL, New Structure(), File, "multipart", Headers);
