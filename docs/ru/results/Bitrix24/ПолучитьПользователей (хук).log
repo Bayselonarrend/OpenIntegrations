@@ -1,0 +1,66 @@
+﻿    {
+ "result": {
+  "1": {
+   "id": 1,
+   "active": true,
+   "name": "Антон Титовец",
+   "first_name": "Антон",
+   "last_name": "Титовец",
+   "work_position": null,
+   "color": "#df532d",
+   "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
+   "gender": "M",
+   "birthday": "",
+   "extranet": false,
+   "network": false,
+   "bot": false,
+   "connector": false,
+   "external_auth_id": "socservices",
+   "status": "online",
+   "idle": false,
+   "last_activity_date": "2024-07-26T16:40:14+00:00",
+   "mobile_last_date": false,
+   "absent": false,
+   "departments": [
+    1
+   ],
+   "phones": false
+  },
+  "10": {
+   "id": 10,
+   "active": true,
+   "name": "Techno Pizza",
+   "first_name": "Techno",
+   "last_name": "Pizza",
+   "work_position": null,
+   "color": "#ab7761",
+   "avatar": "",
+   "gender": "M",
+   "birthday": "",
+   "extranet": false,
+   "network": false,
+   "bot": false,
+   "connector": false,
+   "external_auth_id": "socservices",
+   "status": "online",
+   "idle": false,
+   "last_activity_date": "2024-07-13T18:36:23+00:00",
+   "mobile_last_date": false,
+   "absent": false,
+   "departments": [
+    1
+   ],
+   "phones": false
+  }
+ },
+ "time": {
+  "start": 1722083795.95109,
+  "finish": 1722083795.98854,
+  "duration": 0.0374538898468018,
+  "processing": 0.0117349624633789,
+  "date_start": "2024-07-27T12:36:35+00:00",
+  "date_finish": "2024-07-27T12:36:35+00:00",
+  "operating_reset_at": 1722084395,
+  "operating": 0
+ }
+}
