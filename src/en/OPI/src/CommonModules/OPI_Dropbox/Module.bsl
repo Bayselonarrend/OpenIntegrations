@@ -655,8 +655,8 @@ Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly 
     EndDo;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("file"   , FileID       , String_, Parameters);
-    OPI_Tools.AddField("members", ArrayOfUsers , "Array", Parameters);
+    OPI_Tools.AddField("file"   , FileID       , String_ , Parameters);
+    OPI_Tools.AddField("members", ArrayOfUsers , "Array" , Parameters);
 
     Mode = ?(ViewOnly, "viewer", "editor");
 
@@ -706,8 +706,8 @@ Function AddUsersToFolder(Val Token, Val FolderID, Val EmailAddresses, Val ViewO
     EndDo;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("shared_folder_id", FolderID     , String_, Parameters);
-    OPI_Tools.AddField("members"         , ArrayOfUsers , "Array", Parameters);
+    OPI_Tools.AddField("shared_folder_id", FolderID     , String_ , Parameters);
+    OPI_Tools.AddField("members"         , ArrayOfUsers , "Array" , Parameters);
 
     Headers = GetRequestHeaders(Token);
 
@@ -919,8 +919,8 @@ Function CloseSession(Val Token, Val Path, Val Mode, Val TotalSize, Val Session)
     URL = "https://content.dropboxapi.com/2/files/upload_session/finish";
 
     Commit = New Structure();
-    OPI_Tools.AddField("mode", Mode, "String", Commit);
-    OPI_Tools.AddField("path", Path, "String", Commit);
+    OPI_Tools.AddField("mode", Mode , "String", Commit);
+    OPI_Tools.AddField("path", Path , "String", Commit);
 
     Cursor = New Structure("offset,session_id", TotalSize, Session);
 

@@ -122,7 +122,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Bot token";
     NewLine.Область     = "Message management";
-    NewLine.ОписаниеМетода   = "Sends a message that arrives in the channel but is visible 
+    NewLine.ОписаниеМетода   = "Sends a message that arrives in the channel but is visible
     |    only to a specific user";
 
 
