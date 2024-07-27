@@ -611,7 +611,7 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
 
         SignatureString = SignatureString
             + TableRow.Key
-            + "         ="
+            + " ="
             + TableRow.Value
             + "&";
 
@@ -635,16 +635,16 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
 
     Signature = EncodeString(Base64String(Signature), StringEncodingMethod.URLencoding);
 
-    Delimiter = """,";
-    AuthorizationHeader          = AuthorizationHeader
+    Delimiter           = """,";
+    AuthorizationHeader = AuthorizationHeader
         + "OAuth "
-        + "oauth_consumer_key    =""" + Parameters[OCK] + Delimiter
-        + "oauth_token           =""" + Parameters[OTK] + Delimiter
+        + "oauth_consumer_key =""" + Parameters[OCK] + Delimiter
+        + "oauth_token =""" + Parameters[OTK] + Delimiter
         + "oauth_signature_method=""" + HashingMethod + Delimiter
-        + "oauth_timestamp       =""" + CurrentUNIXDate + Delimiter
-        + "oauth_nonce           =""" + CurrentUNIXDate + Delimiter
-        + "oauth_version         =""" + APIVersion + Delimiter
-        + "oauth_signature       =""" + Signature;
+        + "oauth_timestamp =""" + CurrentUNIXDate + Delimiter
+        + "oauth_nonce =""" + CurrentUNIXDate + Delimiter
+        + "oauth_version =""" + APIVersion + Delimiter
+        + "oauth_signature =""" + Signature;
 
         HeaderMapping = New Map;
         HeaderMapping.Insert("authorization", AuthorizationHeader);

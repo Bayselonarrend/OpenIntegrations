@@ -292,7 +292,7 @@ Function EditListCalendar(Val Token
     OPI_TypeConversion.GetBoolean(Hidden);
 
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL     = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar + "?colorRgbFormat    =true";
+    URL = "https://www.googleapis.com/calendar/v3/users/me/calendarList/" + Calendar + "?colorRgbFormat=true";
 
     Parameters = New Map;
     Parameters.Insert("hidden"         , Hidden);
@@ -491,12 +491,12 @@ Function ConvertDate(Val Date)
         Return Undefined;
     EndIf;
 
-    If Date        = BegOfDay(Date) Then
+    If Date   = BegOfDay(Date) Then
         DateFormat = "DF=yyyy-MM-dd";
-        Field      = "date";
+        Field = "date";
     Else
         DateFormat = "DF=yyyy-MM-ddTHH:mm:ssZ";
-        Field      = "dateTime";
+        Field = "dateTime";
     EndIf;
 
     Date = Format(Date, DateFormat);
