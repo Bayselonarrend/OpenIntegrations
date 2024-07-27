@@ -196,8 +196,8 @@
     НоваяСтрока.Описание    = "Токен";
     НоваяСтрока.Область     = "Работа с файлами и папками";
     НоваяСтрока.ОписаниеМетода   = "Получает список файлов с или без отбора по типу
-    |    Список доступных типов: audio, backup, book, compressed, data, development, 
-    |                            diskimage, document, encoded, executable, flash, font, 
+    |    Список доступных типов: audio, backup, book, compressed, data, development,
+    |                            diskimage, document, encoded, executable, flash, font,
     |                            mage, settings, spreadsheet, text, unknown, video, web";
 
 

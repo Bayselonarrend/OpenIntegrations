@@ -182,10 +182,10 @@ Function CreatePost(Val URL
     String_ = "String";
 
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.add");
-    OPI_Tools.AddField("POST_MESSAGE", Text       , String_, Parameters);
-    OPI_Tools.AddField("POST_TITLE"  , Title      , String_, Parameters);
-    OPI_Tools.AddField("DEST"        , Visibility , "Array", Parameters);
-    OPI_Tools.AddField("IMPORTANT"   , Important  , String_, Parameters);
+    OPI_Tools.AddField("POST_MESSAGE", Text       , String_ , Parameters);
+    OPI_Tools.AddField("POST_TITLE"  , Title      , String_ , Parameters);
+    OPI_Tools.AddField("DEST"        , Visibility , "Array" , Parameters);
+    OPI_Tools.AddField("IMPORTANT"   , Important  , String_ , Parameters);
 
     If ValueIsFilled(Files) Then
 
@@ -233,10 +233,10 @@ Function UpdatePost(Val URL
     String_ = "String";
 
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.update");
-    OPI_Tools.AddField("POST_MESSAGE", Text       , String_, Parameters);
-    OPI_Tools.AddField("POST_TITLE"  , Title      , String_, Parameters);
-    OPI_Tools.AddField("DEST"        , Visibility , "Array", Parameters);
-    OPI_Tools.AddField("POST_ID"     , PostID     , String_, Parameters);
+    OPI_Tools.AddField("POST_MESSAGE", Text       , String_ , Parameters);
+    OPI_Tools.AddField("POST_TITLE"  , Title      , String_ , Parameters);
+    OPI_Tools.AddField("DEST"        , Visibility , "Array" , Parameters);
+    OPI_Tools.AddField("POST_ID"     , PostID     , String_ , Parameters);
 
     If ValueIsFilled(Files) Then
 
