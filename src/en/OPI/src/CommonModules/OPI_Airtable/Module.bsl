@@ -493,7 +493,7 @@ Function DeletePosts(Val Token, Val Base, Val Table, Val Records) Export
     RecordString = "";
 
     For Each Record In Records Do
-        RecordString    = RecordString
+        RecordString = RecordString
             + ?(ValueIsFilled(RecordString), "&", "?")
             + "records[]="
             + OPI_Tools.NumberToString(Record);

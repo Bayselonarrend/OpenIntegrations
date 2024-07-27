@@ -69,7 +69,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Dropbox
 Function GetToken(Val AppKey, Val AppSecret, Val Code) Export
 
-    URL      = "https://api.dropbox.com/oauth2/token";
+    URL = "https://api.dropbox.com/oauth2/token";
     DataType = "application/x-www-form-urlencoded; charset=utf-8";
 
     Parameters = New Structure;
