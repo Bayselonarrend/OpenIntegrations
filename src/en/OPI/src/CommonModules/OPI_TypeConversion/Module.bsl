@@ -310,16 +310,16 @@ EndProcedure
 Function ThisIsCollection(Val Value)
 
     Return TypeOf(Value)        = Type("Array")
-            Or TypeOf(Value) = Type("Structure")
-            Or TypeOf(Value) = Type("Map");
+            Or TypeOf(Value)    = Type("Structure")
+            Or TypeOf(Value)    = Type("Map");
 
 EndFunction
 
 Function ThisIsSymbolic(Val Value)
 
     Return TypeOf(Value)        = Type("String")
-            Or TypeOf(Value) = Type("Number")
-            Or TypeOf(Value) = Type("Date");
+            Or TypeOf(Value)    = Type("Number")
+            Or TypeOf(Value)    = Type("Date");
 
 EndFunction
 

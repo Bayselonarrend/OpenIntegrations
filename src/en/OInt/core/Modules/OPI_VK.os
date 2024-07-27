@@ -1758,8 +1758,8 @@ EndFunction
 Function GetImageID(Val Image, Val Parameters, Val View)
 
     Response_   = "response";
-    Response = UploadPhotoToServer(Image, Parameters, View);
-    Result   = Response[Response_];
+    Response    = UploadPhotoToServer(Image, Parameters, View);
+    Result      = Response[Response_];
 
     If ValueIsFilled(Result) Then
         PhotoID = Result["photo_id"];
@@ -1780,7 +1780,7 @@ EndFunction
 Function GetImageMap(Val Image, Val Parameters, Val View)
 
     Response         = UploadPhotoToServer(Image, Parameters, View);
-    ResponseArray = Response.Get("response");
+    ResponseArray    = Response.Get("response");
 
     If Not ValueIsFilled(ResponseArray) Or Not TypeOf(ResponseArray) = Type("Array") Then
         Return Response;
@@ -1800,7 +1800,7 @@ Function GetSelectionArray(Val Selections, Val Parameters = "")
 
     Response_  = "response";
     Selections = GetSelectionsByID(Selections, Parameters);
-    Result  = Selections[Response_];
+    Result     = Selections[Response_];
 
     If ValueIsFilled(Result) Then
 
