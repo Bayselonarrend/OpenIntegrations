@@ -39,75 +39,75 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2019, LLC 1C-Soft
-// All rights reserved. This program and accompanying materials are provided 
+// All rights reserved. This program and accompanying materials are provided
 // under the terms of the Attribution 4.0 International (CC BY 4.0 license)
 // License text available at:
 // https://creativecommons.org/licenses/by/4.0/legalcode
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Function HMACSHA256(Val Key, Val Data) Export
-    
+
     Return HMAC(Key, Data, HashFunction.SHA256, 64);
-    
+
 EndFunction
 
 Function Hash(BinaryData, Type) Export
-    
+
     Hashing = New DataHashing(Type);
     Hashing.Append(BinaryData);
-    
+
     Return Hashing.HashSum;
-        
+
 EndFunction
 
 Function HMAC(Val Key, Val Data, Type, BlockSize) Export
-    
+
     Twice = 2;
-    
+
     If Key.Size() > BlockSize Then
         Key = Hash(Key, Type);
     EndIf;
-    
+
     If Key.Size() <= BlockSize Then
-        Key = GetHexStringFromBinaryData(Key);
-        Key = Left(Key + RepeatString("00", BlockSize), BlockSize * Twice);
+        Key        = GetHexStringFromBinaryData(Key);
+        Key        = Left(Key + RepeatString("00", BlockSize), BlockSize * Twice);
     EndIf;
-    
+
     Key = GetBinaryDataBufferFromBinaryData(GetBinaryDataFromHexString(Key));
-    
+
     Ipad = GetBinaryDataBufferFromHexString(RepeatString("36", BlockSize));
     Opad = GetBinaryDataBufferFromHexString(RepeatString("5c", BlockSize));
-    
+
     Ipad.WriteBitwiseXor(0, Key);
     Ikeypad = GetBinaryDataFromBinaryDataBuffer(ipad);
-    
+
     Opad.WriteBitwiseXor(0, Key);
     Okeypad = GetBinaryDataFromBinaryDataBuffer(opad);
-    
+
     Return Hash(UniteBinaryData(okeypad, Hash(UniteBinaryData(ikeypad, Data), Type)), Type);
-    
+
 EndFunction
 
 Function UniteBinaryData(BinaryData1, BinaryData2) Export
-    
+
     BinaryDataArray = New Array;
     BinaryDataArray.Add(BinaryData1);
     BinaryDataArray.Add(BinaryData2);
-    
+
     Return ConcatBinaryData(BinaryDataArray);
-    
+
 EndFunction
 
 Function RepeatString(String, Count) Export
-    
+
     Parts = New Array(Count);
-    
+
     For K = 1 To Count Do
         Parts.Add(String);
     EndDo;
 
     Return StrConcat(Parts, "");
-    
+
 EndFunction
 
 #EndRegion
