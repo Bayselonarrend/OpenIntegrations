@@ -47,6 +47,9 @@ jobs:
       - name: Обновить Workflow тестирования OInt (EN)
         run: oscript ./.github/workflows/os/oint_testmaker_en.os
 
+      - name: Скрипт форматирования модулей
+        run: oscript ./.github/workflows/os/format.os
+
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
         with:
