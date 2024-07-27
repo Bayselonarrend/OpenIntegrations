@@ -250,11 +250,11 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendTextMessage(Val Token
-	, Val ChatID
-	, Val Text
-	, Val Keyboard = ""
-	, Val Markup = "Markdown"
-	, Val RepliedID = 0) Export
+    , Val ChatID
+    , Val Text
+    , Val Keyboard = ""
+    , Val Markup = "Markdown"
+    , Val RepliedID = 0) Export
 
     OPI_TypeConversion.GetLine(Token);
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
@@ -290,11 +290,11 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendImage(Val Token
-	, Val ChatID
-	, Val Text
-	, Val Image
-	, Val Keyboard = ""
-	, Val Markup = "Markdown") Export
+    , Val ChatID
+    , Val Text
+    , Val Image
+    , Val Keyboard = ""
+    , Val Markup = "Markdown") Export
 
     Return SendFile(Token, ChatID, Text, Image, "photo", Keyboard, Markup);
 
@@ -314,11 +314,11 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendVideo(Val Token
-	, Val ChatID
-	, Val Text
-	, Val Video
-	, Val Keyboard = ""
-	, Val Markup = "Markdown") Export
+    , Val ChatID
+    , Val Text
+    , Val Video
+    , Val Keyboard = ""
+    , Val Markup = "Markdown") Export
 
     Return SendFile(Token, ChatID, Text, Video, "video", Keyboard, Markup);
 
@@ -338,11 +338,11 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendAudio(Val Token
-	, Val ChatID
-	, Val Text
-	, Val Audio
-	, Val Keyboard = ""
-	, Val Markup = "Markdown") Export
+    , Val ChatID
+    , Val Text
+    , Val Audio
+    , Val Keyboard = ""
+    , Val Markup = "Markdown") Export
 
     Return SendFile(Token, ChatID, Text, Audio, "audio", Keyboard, Markup);
 
@@ -363,12 +363,12 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendDocument(Val Token
-	, Val ChatID
-	, Val Text
-	, Val Document
-	, Val Keyboard = ""
-	, Val Markup = "Markdown"
-	, Val FileName = "") Export
+    , Val ChatID
+    , Val Text
+    , Val Document
+    , Val Keyboard = ""
+    , Val Markup = "Markdown"
+    , Val FileName = "") Export
 
     Return SendFile(Token, ChatID, Text, Document, "document", Keyboard, Markup, FileName);
 
@@ -388,11 +388,11 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendGif(Val Token
-	, Val ChatID
-	, Val Text
-	, Val GIF
-	, Val Keyboard = ""
-	, Val Markup = "Markdown") Export
+    , Val ChatID
+    , Val Text
+    , Val GIF
+    , Val Keyboard = ""
+    , Val Markup = "Markdown") Export
 
     Return SendFile(Token, ChatID, Text, GIF, "animation", Keyboard, Markup);
 
@@ -415,18 +415,18 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendMediaGroup(Val Token
-	, Val ChatID
-	, Val Text
-	, Val FileMapping
-	, Val Keyboard = ""
-	, Val Markup = "Markdown") Export
+    , Val ChatID
+    , Val Text
+    , Val FileMapping
+    , Val Keyboard = ""
+    , Val Markup = "Markdown") Export
 
     // FileMapping
     // Key - File, Value - Type
     // Types: audio, document, photo, video
     // Different types cannot be mixed!
 
-	String_ = "String";
+    String_ = "String";
 
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(ChatID);
@@ -466,7 +466,7 @@ EndFunction
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export
 
-	String_ = "String";
+    String_ = "String";
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(ChatID);
 
@@ -501,7 +501,7 @@ EndFunction
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export
 
-	String_ = "String";
+    String_ = "String";
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(ChatID);
 
@@ -642,7 +642,7 @@ EndFunction
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function Ban(Val Token, Val ChatID, Val UserID) Export
 
-	String_ = "String";
+    String_ = "String";
     OPI_TypeConversion.GetLine(Token);
 
     URL = "api.telegram.org/bot" + Token + "/banChatMember";
@@ -670,7 +670,7 @@ EndFunction
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function Unban(Val Token, Val ChatID, Val UserID) Export
 
-	String_ = "String";
+    String_ = "String";
     OPI_TypeConversion.GetLine(Token);
 
     URL = "api.telegram.org/bot" + Token + "/unbanChatMember";
@@ -705,7 +705,7 @@ Function CreateInvitationLink(Val Token
     , Val ExpirationDate = ""
     , Val UserLimit = 0) Export
 
-	String_ = "String";
+    String_ = "String";
     OPI_TypeConversion.GetLine(Token);
 
     URL = "api.telegram.org/bot" + Token + "/createChatInviteLink";
@@ -817,16 +817,16 @@ EndFunction
 // Map Of KeyAndValue - Serialized JSON response from Telegram
 Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
 
-	OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Token);
 
-	URL = "api.telegram.org/bot" + Token + "/deleteMessage";
+    URL = "api.telegram.org/bot" + Token + "/deleteMessage";
 
-	Parameters = New Structure;
-	OPI_Tools.AddField("message_id", MessageID, "String", Parameters);
-	OPI_Tools.AddField("chat_id"   , ChatID   , "String", Parameters);
+    Parameters = New Structure;
+    OPI_Tools.AddField("message_id", MessageID, "String", Parameters);
+    OPI_Tools.AddField("chat_id"   , ChatID   , "String", Parameters);
 
-	Response = OPI_Tools.Get(URL, Parameters);
-	Return Response;
+    Response = OPI_Tools.Get(URL, Parameters);
+    Return Response;
 
 EndFunction
 
@@ -852,7 +852,7 @@ Function GetAvatarIconList(Val Token) Export
     Icons    = Response[Result];
 
     If Not ValueIsFilled(Icons) Then
-    	Return Response;
+        Return Response;
     EndIf;
 
     Collection = New Map;
@@ -1267,28 +1267,28 @@ Procedure ConvertFilesToMedia(FileMapping, Text, Media)
     TempMap = New Map;
     Counter = 0;
 
-	For Each CurrentFile In FileMapping Do
+    For Each CurrentFile In FileMapping Do
 
-		CurrentData = CurrentFile.Key;
-		TypeOfMedia = CurrentFile.Value;
+        CurrentData = CurrentFile.Key;
+        TypeOfMedia = CurrentFile.Value;
 
         MediaName = ConvertFileData(CurrentData, TypeOfMedia, Counter);
 
-		TempMap.Insert(MediaName + "|" + MediaName, CurrentData);
+        TempMap.Insert(MediaName + "|" + MediaName, CurrentData);
 
-		MediaStructure = New Structure;
-		MediaStructure.Insert("type" , TypeOfMedia);
-		MediaStructure.Insert("media", "attach://" + MediaName);
+        MediaStructure = New Structure;
+        MediaStructure.Insert("type" , TypeOfMedia);
+        MediaStructure.Insert("media", "attach://" + MediaName);
 
-		If Counter = 0 Then
-			MediaStructure.Insert("caption", Text);
-		EndIf;
+        If Counter = 0 Then
+            MediaStructure.Insert("caption", Text);
+        EndIf;
 
-		Media.Add(MediaStructure);
+        Media.Add(MediaStructure);
 
-		Counter = Counter + 1;
+        Counter = Counter + 1;
 
-	EndDo;
+    EndDo;
 
     Media       = OPI_Tools.JSONString(Media);
     FileMapping = TempMap;
