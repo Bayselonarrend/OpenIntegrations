@@ -617,11 +617,11 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
     Response           = "";
     ChunkSize          = 268435456;
     BytesRead          = 0;
-    CurrentPosition = 0;
-    TotalSize       = Binary.Size();
-    StrTotalSize    = OPI_Tools.NumberToString(TotalSize);
-    DataReader      = New DataReader(Binary);
-    SourceStream    = DataReader.SourceStream();
+    CurrentPosition    = 0;
+    TotalSize          = Binary.Size();
+    StrTotalSize       = OPI_Tools.NumberToString(TotalSize);
+    DataReader         = New DataReader(Binary);
+    SourceStream       = DataReader.SourceStream();
 
     WHile BytesRead < TotalSize Do
 
