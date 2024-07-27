@@ -337,7 +337,7 @@ Function CreateComment(Val Token, Val Identifier, Val Comment) Export
     OPI_TypeConversion.GetLine(Comment);
 
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL     = "https://www.googleapis.com/drive/v3/files/" + Identifier + "/comments?fields    =*";
+    URL = "https://www.googleapis.com/drive/v3/files/" + Identifier + "/comments?fields=*";
 
     Parameters = New Structure;
     Parameters.Insert("content", Comment);
@@ -708,7 +708,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
         Return Response;
     EndIf;
 
-    UploadedData       = StrReplace(UploadedData, "bytes      =", "");
+    UploadedData = StrReplace(UploadedData, "bytes=", "");
     ArrayOfInformation = StrSplit(UploadedData, "-", False);
     PartsRequired      = 2;
 
