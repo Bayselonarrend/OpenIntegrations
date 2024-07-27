@@ -664,8 +664,8 @@ EndFunction
 
 Function GetProcessingStatus(Val Parameters, Val Fields, Val URL)
 
-    ProcessingInfo   = "processing_info";
-    Authorization    = CreateAuthorizationHeaderV1(Parameters, Fields, "POST", URL);
+    ProcessingInfo = "processing_info";
+    Authorization  = CreateAuthorizationHeaderV1(Parameters, Fields, "POST", URL);
 
     Response    = OPI_Tools.Post(URL, Fields, Authorization, False);
     Information = Response[ProcessingInfo];

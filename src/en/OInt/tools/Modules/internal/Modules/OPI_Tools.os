@@ -244,6 +244,7 @@ Function RequestParametersToString(Val Parameters) Export
             + "="
             + ParameterValue
             + "&";
+
     EndDo;
 
     ParameterString = Left(ParameterString, StrLen(ParameterString) - 1);
@@ -809,12 +810,16 @@ EndFunction
 Function ConvertParameterToString(Val Value)
 
     If TypeOf(Value) = Type("Array") Then
-        Value        = StrConcat(Value, ",");
-        Value        = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
-        Value        = "[" + Value + "]";
+
+        Value = StrConcat(Value, ",");
+        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+        Value = "[" + Value + "]";
+
     Else
-        Value        = NumberToString(Value);
-        Value        = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+
+        Value = NumberToString(Value);
+        Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
+
     EndIf;
 
     Return Value;
@@ -834,11 +839,14 @@ Function SplitFileKey(Val FileData, Val ContentType)
     Else
 
         If ContentType = "image/jpeg" Then
-            FieldName  = "photo";
+
+            FieldName = "photo";
+
         Else
-            FieldName  = Left(FileName, StrFind(FileName, ".") - 1);
-            FieldName  = ?(ValueIsFilled(FieldName), FieldName, StrReplace(FileData,
-            DotReplacement, "."));
+
+            FieldName = Left(FileName, StrFind(FileName, ".") - 1);
+            FieldName = ?(ValueIsFilled(FieldName), FieldName, StrReplace(FileData, DotReplacement, "."));
+
         EndIf;
 
     EndIf;
@@ -856,12 +864,18 @@ Procedure SetRequestBody(Request, Val Parameters, Val JSON)
         Or TypeOf(Parameters) = Type("Array");
 
     If JSON Then
-        Data            = JSONString(Parameters);
+
+        Data = JSONString(Parameters);
+
     ElsIf Not Collection Then
-        Data            = Parameters;
+
+        Data = Parameters;
+
     Else
+
         ParameterString = RequestParametersToString(Parameters);
         Data            = Right(ParameterString, StrLen(ParameterString) - 1);
+
     EndIf;
 
     If TypeOf(Data) = Type("String") Then
