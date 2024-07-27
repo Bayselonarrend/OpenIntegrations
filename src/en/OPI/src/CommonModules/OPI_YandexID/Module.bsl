@@ -41,77 +41,77 @@
 
 // Get confirmation code
 // Gets the confirmation code and the address of the page where it needs to be entered
-// 
+//
 // Parameters:
 // ClientId - String - Client id - id
-// 
+//
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function GetConfirmationCode(Val ClientId) Export
 
     OPI_TypeConversion.GetLine(ClientId);
-    
+
     Parameters = New Structure("client_id", ClientId);
-    Response = OPI_Tools.Post("https://oauth.yandex.ru/device/code", Parameters, , False);
-    
+    Response   = OPI_Tools.Post("https://oauth.yandex.ru/device/code", Parameters, , False);
+
     Return Response;
-    
+
 EndFunction
 
 // Convert code to token
 // Converts the code to a token after entering the code when executing GetConfirmationCode
-// 
+//
 // Parameters:
 // ClientId - String - Client id - id
 // ClientSecret - String - Client secret - secret
 // DeviceCode - String - device_code from GetConfirmationCode() - device
-// 
+//
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
-    
+
     OPI_TypeConversion.GetLine(ClientId);
     OPI_TypeConversion.GetLine(ClientSecret);
     OPI_TypeConversion.GetLine(DeviceCode);
-    
+
     Parameters = New Structure;
-    Parameters.Insert("grant_type" , "device_code");
-    Parameters.Insert("code" , DeviceCode);
-    Parameters.Insert("client_id" , ClientId);
+    Parameters.Insert("grant_type"    , "device_code");
+    Parameters.Insert("code"          , DeviceCode);
+    Parameters.Insert("client_id"     , ClientId);
     Parameters.Insert("client_secret" , ClientSecret);
-    
+
     Response = OPI_Tools.Post("https://oauth.yandex.ru/token", Parameters, , False);
-    
+
     Return Response;
-    
+
 EndFunction
 
 // Refresh token
 // Updates token by Refresh token
-// 
+//
 // Parameters:
 // ClientId - String - Client id - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
-// 
+//
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
-    
+
     OPI_TypeConversion.GetLine(ClientId);
     OPI_TypeConversion.GetLine(ClientSecret);
     OPI_TypeConversion.GetLine(RefreshToken);
-    
+
     Parameters = New Structure;
-    Parameters.Insert("grant_type" , "refresh_token");
+    Parameters.Insert("grant_type"    , "refresh_token");
     Parameters.Insert("refresh_token" , RefreshToken);
-    Parameters.Insert("client_id" , ClientId);
+    Parameters.Insert("client_id"     , ClientId);
     Parameters.Insert("client_secret" , ClientSecret);
-    
+
     Response = OPI_Tools.Post("https://oauth.yandex.ru/token", Parameters, , False);
-    
+
     Return Response;
-    
+
 EndFunction
 
 #EndRegion
