@@ -151,7 +151,7 @@ Procedure GetCollection(Value) Export
     Except
 
         Value = InitialValue;
-    	GetArray(Value);
+        GetArray(Value);
 
     EndTry;
 
@@ -169,17 +169,17 @@ Procedure GetArray(Value) Export
 
         CommaInQuotes = "','";
 
-	    Value = StrReplace(Value, "['"   , "");
-	    Value = StrReplace(Value, "']"   , "");
-	    Value = StrReplace(Value, "', '" , CommaInQuotes);
-	    Value = StrReplace(Value, "' , '", CommaInQuotes);
-	    Value = StrReplace(Value, "' ,'" , CommaInQuotes);
+        Value = StrReplace(Value, "['"   , "");
+        Value = StrReplace(Value, "']"   , "");
+        Value = StrReplace(Value, "', '" , CommaInQuotes);
+        Value = StrReplace(Value, "' , '", CommaInQuotes);
+        Value = StrReplace(Value, "' ,'" , CommaInQuotes);
 
-	    Value = StrSplit(Value, CommaInQuotes, False);
+        Value = StrSplit(Value, CommaInQuotes, False);
 
-	    For N        = 0 To Value.UBound() Do
-	        Value[N] = TrimAll(Value[N]);
-	    EndDo;
+        For N        = 0 To Value.UBound() Do
+            Value[N] = TrimAll(Value[N]);
+        EndDo;
 
     Else
 
@@ -187,7 +187,7 @@ Procedure GetArray(Value) Export
             Value        = OPI_Tools.NumberToString(Value);
         EndIf;
 
-	    OPI_Tools.ValueToArray(Value);
+        OPI_Tools.ValueToArray(Value);
 
     EndIf;
 
@@ -309,7 +309,7 @@ EndProcedure
 
 Function ThisIsCollection(Val Value)
 
-	Return TypeOf(Value)        = Type("Array")
+    Return TypeOf(Value)        = Type("Array")
             Or TypeOf(Value) = Type("Structure")
             Or TypeOf(Value) = Type("Map");
 
@@ -317,7 +317,7 @@ EndFunction
 
 Function ThisIsSymbolic(Val Value)
 
-	Return TypeOf(Value)        = Type("String")
+    Return TypeOf(Value)        = Type("String")
             Or TypeOf(Value) = Type("Number")
             Or TypeOf(Value) = Type("Date");
 

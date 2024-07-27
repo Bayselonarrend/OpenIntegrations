@@ -751,13 +751,13 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Dropbox
 Function CancelFilePublication(Val Token, Val FileID) Export
 
-	OPI_TypeConversion.GetLine(FileID);
+    OPI_TypeConversion.GetLine(FileID);
 
     If Not StrStartsWith(FileID, "id:") Then
         FileID = "id:" + FileID;
     EndIf;
 
-	URL = "https://api.dropboxapi.com/2/sharing/unshare_file";
+    URL = "https://api.dropboxapi.com/2/sharing/unshare_file";
 
     Parameters = New Structure;
     OPI_Tools.AddField("file", FileID, "String", Parameters);

@@ -141,10 +141,10 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function ServerTime(Val URL, Val Token = "") Export
 
-	Parameters = NormalizeAuth(URL, Token, "server.time");
-	Response   = OPI_Tools.Get(URL, Parameters);
+    Parameters = NormalizeAuth(URL, Token, "server.time");
+    Response   = OPI_Tools.Get(URL, Parameters);
 
-	Return Response;
+    Return Response;
 
 EndFunction
 
@@ -170,12 +170,12 @@ EndFunction
 // Returns:
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function CreatePost(Val URL
-	, Val Text
-	, Val Visibility = "UA"
-	, Val Files = ""
-	, Val Title = ""
-	, Val Important = False
-	, Val Token = "") Export
+    , Val Text
+    , Val Visibility = "UA"
+    , Val Files = ""
+    , Val Title = ""
+    , Val Important = False
+    , Val Token = "") Export
 
     MakeBoolean(Important);
 
@@ -1015,9 +1015,9 @@ Function GetTasksFilterStructure(Val Clear = False) Export
         , "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>");
 
     If Clear Then
-    	For Each Filter In FilterStructure Do
-    		Filter.Value = "";
-    	EndDo;
+        For Each Filter In FilterStructure Do
+            Filter.Value = "";
+        EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -1367,7 +1367,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetResultsList(Val URL, Val TaskID, Val Token = "") Export
 
-	Response = ManageTask(URL, TaskID, "tasks.task.result.list", Token);
+    Response = ManageTask(URL, TaskID, "tasks.task.result.list", Token);
     Return Response;
 
 EndFunction
@@ -1387,7 +1387,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function CreateResultFromComment(Val URL, Val CommentID, Val Token = "") Export
 
-	Parameters = NormalizeAuth(URL, Token, "tasks.task.result.addFromComment");
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.result.addFromComment");
     OPI_Tools.AddField("commentId", CommentID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
@@ -1411,7 +1411,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function DeleteResultFromComment(Val URL, Val CommentID, Val Token = "") Export
 
-	Parameters = NormalizeAuth(URL, Token, "tasks.task.result.deleteFromComment");
+    Parameters = NormalizeAuth(URL, Token, "tasks.task.result.deleteFromComment");
     OPI_Tools.AddField("commentId", CommentID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
@@ -1864,7 +1864,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetAppSotrage(Val URL, Val Token = "") Export
 
-	Parameters  = NormalizeAuth(URL, Token, "disk.storage.getforapp");
+    Parameters  = NormalizeAuth(URL, Token, "disk.storage.getforapp");
     Response = OPI_Tools.Post(URL, Parameters);
 
     Return Response;
@@ -1886,8 +1886,8 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetStorage(Val URL, Val StorageID, Val Token = "") Export
 
-	Response = FileManagement(URL, StorageID, "disk.storage.get", Token);
-	Return Response;
+    Response = FileManagement(URL, StorageID, "disk.storage.get", Token);
+    Return Response;
 
 EndFunction
 
@@ -1907,7 +1907,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function RenameStorage(Val URL, Val StorageID, Val Name, Val Token = "") Export
 
-	Parameters = NormalizeAuth(URL, Token, "disk.storage.rename");
+    Parameters = NormalizeAuth(URL, Token, "disk.storage.rename");
 
     OPI_Tools.AddField("id"     , StorageID , "String", Parameters);
     OPI_Tools.AddField("newName", Name      , "String", Parameters);
@@ -1933,8 +1933,8 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetStorageObjects(Val URL, Val StorageID, Val Token = "") Export
 
-	Response = FileManagement(URL, StorageID, "disk.storage.getchildren", Token);
-	Return Response;
+    Response = FileManagement(URL, StorageID, "disk.storage.getchildren", Token);
+    Return Response;
 
 EndFunction
 
@@ -1954,11 +1954,11 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function CreateStorageFolder(Val URL, Val StorageID, Val Name, Val Token = "") Export
 
-	OPI_TypeConversion.GetLine(Name);
+    OPI_TypeConversion.GetLine(Name);
 
-	FolderStructure = New Structure("NAME", Name);
+    FolderStructure = New Structure("NAME", Name);
 
-	Parameters = NormalizeAuth(URL, Token, "disk.storage.addfolder");
+    Parameters = NormalizeAuth(URL, Token, "disk.storage.addfolder");
 
     OPI_Tools.AddField("id"  , StorageID      , "String"    , Parameters);
     OPI_Tools.AddField("data", FolderStructure, "Collection", Parameters);
@@ -3443,33 +3443,33 @@ Function NormalizeAuth(URL, Val Token, Val Method = "")
     Parameters  = New Structure;
     IsTokenAuth = ValueIsFilled(Token);
 
-	UncorrectItems = New Array;
-	UncorrectItems.Add("https://");
-	UncorrectItems.Add("http://");
-	UncorrectItems.Add("www.");
+    UncorrectItems = New Array;
+    UncorrectItems.Add("https://");
+    UncorrectItems.Add("http://");
+    UncorrectItems.Add("www.");
 
-	For Each DeletedElement In UncorrectItems Do
-		URL = StrReplace(URL, DeletedElement, "");
-	EndDo;
+    For Each DeletedElement In UncorrectItems Do
+        URL = StrReplace(URL, DeletedElement, "");
+    EndDo;
 
-	URL = TrimAll(URL);
+    URL = TrimAll(URL);
 
-	If Not StrEndsWith(URL, "/") Then
-		URL = URL + "/";
+    If Not StrEndsWith(URL, "/") Then
+        URL = URL + "/";
     EndIf;
 
     If IsTokenAuth Then
 
         If Not StrEndsWith(URL, "rest/") Then
-    		URL = URL + "rest/";
+            URL = URL + "rest/";
         EndIf;
 
         Parameters.Insert("auth", Token);
 
     EndIf;
 
-	If ValueIsFilled(Method) Then
-		URL = URL + TrimAll(Method);
+    If ValueIsFilled(Method) Then
+        URL = URL + TrimAll(Method);
     EndIf;
 
     Return Parameters;

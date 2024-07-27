@@ -604,8 +604,8 @@ Function UploadLargeFile(Val Description, Val FileMapping, Val Headers, Val Iden
         Return Response;
     EndIf;
 
-	UploadResponse = UploadFileInParts(Binary, UploadURL);
-	Response       = ?(ValueIsFilled(UploadResponse), UploadResponse, Response);
+    UploadResponse = UploadFileInParts(Binary, UploadURL);
+    Response       = ?(ValueIsFilled(UploadResponse), UploadResponse, Response);
 
     OPI_Tools.ProcessResponse(Response);
     Return Response;
@@ -614,9 +614,9 @@ EndFunction
 
 Function UploadFileInParts(Val Binary, Val UploadURL)
 
-	Response           = "";
-	ChunkSize          = 268435456;
-	BytesRead          = 0;
+    Response           = "";
+    ChunkSize          = 268435456;
+    BytesRead          = 0;
     CurrentPosition = 0;
     TotalSize       = Binary.Size();
     StrTotalSize    = OPI_Tools.NumberToString(TotalSize);
@@ -649,15 +649,15 @@ Function UploadFileInParts(Val Binary, Val UploadURL)
 
         Response = OPI_Tools.Put(UploadURL, CurrentData, AdditionalHeaders, False, True);
 
-		CheckResult = CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
+        CheckResult = CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, CurrentPosition);
 
-		If ValueIsFilled(CheckResult) Then
-			Return CheckResult;
-		EndIf;
+        If ValueIsFilled(CheckResult) Then
+            Return CheckResult;
+        EndIf;
 
         // !OInt KB = 1024;
         // !OInt MB = KB * KB;
-		// !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
+        // !OInt Message(OPI_Tools.ProgressInfo(CurrentPosition, TotalSize, "MB", MB));
 
         // !OInt RunGarbageCollection();
         // !OInt FreeObject(CurrentData);
@@ -695,7 +695,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
         Else
 
             OPI_Tools.ProcessResponse(Response);
-        	Return Response;
+            Return Response;
 
         EndIf;
 
@@ -713,7 +713,7 @@ Function CheckPartUpload(Response, StrTotalSize, AdditionalHeaders, UploadURL, C
     PartsRequired      = 2;
 
     If Not ArrayOfInformation.Count() = PartsRequired Then
-    	OPI_Tools.ProcessResponse(Response);
+        OPI_Tools.ProcessResponse(Response);
         Return Response;
     EndIf;
 

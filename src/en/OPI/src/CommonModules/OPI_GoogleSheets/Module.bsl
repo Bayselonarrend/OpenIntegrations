@@ -359,7 +359,7 @@ EndProcedure
 Procedure AddSheetName(Cell, Val Sheet)
 
     If ValueIsFilled(Sheet) Then
-		Cell = "'" + Sheet + "'!" + Cell;
+        Cell = "'" + Sheet + "'!" + Cell;
     EndIf;
 
 EndProcedure

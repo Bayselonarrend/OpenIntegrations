@@ -104,7 +104,7 @@ Function CreatePost(Val Text
         ObjectId = ResponseMap.Get("id");
 
         If Not ValueIsFilled(OwnerId) Or Not ValueIsFilled(ObjectId) Then
-        	Return ResponseMap;
+            Return ResponseMap;
         EndIf;
 
         OwnerId  = OPI_Tools.NumberToString(OwnerId);
@@ -208,11 +208,11 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
 
         If ValueIsFilled(Photo) Then
 
-        	PhotoID = Photo["id"];
+            PhotoID = Photo["id"];
 
-        	If Not ValueIsFilled(PhotoID) Then
-            	Return Response;
-        	EndIf;
+            If Not ValueIsFilled(PhotoID) Then
+                Return Response;
+            EndIf;
 
         Else
             Return Response;
@@ -234,7 +234,7 @@ Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Paramete
     PollMap = Poll.Get(Response_);
 
     If Not ValueIsFilled(PollMap) Then
-    	Return Poll;
+        Return Poll;
     EndIf;
 
     OwnerId  = PollMap.Get("owner_id");
@@ -395,26 +395,26 @@ Function UploadVideoToServer(Val Video
     , Val Album = ""
     , Val Parameters = "") Export
 
-	String_    = "String";
-	Parameters = GetStandardParameters(Parameters);
+    String_    = "String";
+    Parameters = GetStandardParameters(Parameters);
 
-	OPI_Tools.AddField("name"       , Name        , String_, Parameters);
-	OPI_Tools.AddField("description", Description , String_, Parameters);
-	OPI_Tools.AddField("album_id"   , Album       , String_, Parameters);
+    OPI_Tools.AddField("name"       , Name        , String_, Parameters);
+    OPI_Tools.AddField("description", Description , String_, Parameters);
+    OPI_Tools.AddField("album_id"   , Album       , String_, Parameters);
 
-	Response = OPI_Tools.Get("api.vk.com/method/video.save", Parameters);
+    Response = OPI_Tools.Get("api.vk.com/method/video.save", Parameters);
 
     Result = Response["response"];
 
     If Not ValueIsFilled(Result) Then
-		Return Response;
+        Return Response;
     EndIf;
 
-	URL = Result["upload_url"];
+    URL = Result["upload_url"];
 
-	If Not ValueIsFilled(URL) Then
-		Return Response;
-	EndIf;
+    If Not ValueIsFilled(URL) Then
+        Return Response;
+    EndIf;
 
     FileMapping = New Map;
     OPI_Tools.AddField("video_file.mp4", Video, "BinaryData", FileMapping);
@@ -771,16 +771,16 @@ Function ShortenLink(Val URL, Val Parameters = "") Export
 
     If ValueIsFilled(Result) Then
 
-    	URL = Result["short_url"];
+        URL = Result["short_url"];
 
-    	If ValueIsFilled(URL) Then
-    		Return URL;
-    	Else
-    		Return Response;
-    	EndIf;
+        If ValueIsFilled(URL) Then
+            Return URL;
+        Else
+            Return Response;
+        EndIf;
 
     Else
-    	Return Response;
+        Return Response;
     EndIf;
 
 EndFunction
@@ -1065,14 +1065,14 @@ Function GetProductCategoryList(Val Parameters = "") Export
 
     If ValueIsFilled(Result) Then
 
-    	Count = Result["count"];
+        Count = Result["count"];
 
-    	If Not ValueIsFilled(Count) Then
-    		Return Response;
-    	EndIf;
+        If Not ValueIsFilled(Count) Then
+            Return Response;
+        EndIf;
 
     Else
-    	Return Response;
+        Return Response;
     EndIf;
 
     Parameters_.Insert("count", Count);
@@ -1081,14 +1081,14 @@ Function GetProductCategoryList(Val Parameters = "") Export
 
     If ValueIsFilled(Result) Then
 
-    	Categories = Result["items"];
+        Categories = Result["items"];
 
-    	If Not ValueIsFilled(Categories) Then
-    		Return Response;
-    	EndIf;
+        If Not ValueIsFilled(Categories) Then
+            Return Response;
+        EndIf;
 
     Else
-    	Return Response;
+        Return Response;
     EndIf;
 
     CategoryMap = New Map;
@@ -1380,7 +1380,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - New selection name - title
-// Selection - String - Selection ID					 - sel
+// Selection - String - Selection ID                     - sel
 // Image - String, BinaryData - New selection image - picture
 // Main - Boolean - Main - main
 // Hidden - Boolean - Hidden - hidden
@@ -1757,19 +1757,19 @@ EndFunction
 
 Function GetImageID(Val Image, Val Parameters, Val View)
 
-	Response_   = "response";
+    Response_   = "response";
     Response = UploadPhotoToServer(Image, Parameters, View);
     Result   = Response[Response_];
 
     If ValueIsFilled(Result) Then
-    	PhotoID = Result["photo_id"];
+        PhotoID = Result["photo_id"];
 
-    	If Not ValueIsFilled(PhotoID) Then
-    		Return Response;
-    	EndIf;
+        If Not ValueIsFilled(PhotoID) Then
+            Return Response;
+        EndIf;
 
     Else
-    	Return Response;
+        Return Response;
     EndIf;
 
     PhotoID = OPI_Tools.NumberToString(PhotoID);
@@ -1779,17 +1779,17 @@ EndFunction
 
 Function GetImageMap(Val Image, Val Parameters, Val View)
 
-	Response         = UploadPhotoToServer(Image, Parameters, View);
+    Response         = UploadPhotoToServer(Image, Parameters, View);
     ResponseArray = Response.Get("response");
 
     If Not ValueIsFilled(ResponseArray) Or Not TypeOf(ResponseArray) = Type("Array") Then
-    	Return Response;
+        Return Response;
     Else
-    	If ResponseArray.Count() = 0 Then
-    		Return Response;
-    	Else
-    		ResponseMap = ResponseArray[0];
-    	EndIf;
+        If ResponseArray.Count() = 0 Then
+            Return Response;
+        Else
+            ResponseMap = ResponseArray[0];
+        EndIf;
     EndIf;
 
     Return ResponseMap;
@@ -1798,20 +1798,20 @@ EndFunction
 
 Function GetSelectionArray(Val Selections, Val Parameters = "")
 
-	Response_  = "response";
-	Selections = GetSelectionsByID(Selections, Parameters);
+    Response_  = "response";
+    Selections = GetSelectionsByID(Selections, Parameters);
     Result  = Selections[Response_];
 
     If ValueIsFilled(Result) Then
 
-    	SelectionArray = Result["items"];
+        SelectionArray = Result["items"];
 
-    	If Not ValueIsFilled(SelectionArray) Then
-    		Return Selections;
-    	EndIf;
+        If Not ValueIsFilled(SelectionArray) Then
+            Return Selections;
+        EndIf;
 
-	Else
-		Return Selections;
+    Else
+        Return Selections;
     EndIf;
 
     Return SelectionArray;
@@ -1914,11 +1914,11 @@ Function ProductManagement(Val ProductDescription, Val ProductID = "", Val Selec
         ProductID = Result["market_item_id"];
 
         If Not ValueIsFilled(ProductID) Then
-        	Return Response;
+            Return Response;
         EndIf;
 
     Else
-    	Return Response;
+        Return Response;
     EndIf;
 
     If ValueIsFilled(Selection) And ValueIsFilled(ProductID) Then
@@ -2060,14 +2060,14 @@ Procedure FillProductRequestFields(Val ProductDescription, Parameters)
         Result   = Response[Response_];
 
         If ValueIsFilled(Result) Then
-        	PhotoID = Result["photo_id"];
+            PhotoID = Result["photo_id"];
 
-        	If Not ValueIsFilled(PhotoID) Then
-        		Return;
-        	EndIf;
+            If Not ValueIsFilled(PhotoID) Then
+                Return;
+            EndIf;
 
         Else
-        	Return;
+            Return;
         EndIf;
 
         PhotoID = OPI_Tools.NumberToString(PhotoID);
@@ -2116,9 +2116,9 @@ Procedure AddAdditionalProductPhotos(Val PhotoArray, Parameters)
 
                 PhotoID = GetImageID(Photo, Parameters, "Product");
 
-		        If Not TypeOf(PhotoID) = Type("String") Then
-		    		Return;
-		    	EndIf;
+                If Not TypeOf(PhotoID) = Type("String") Then
+                    Return;
+                EndIf;
 
                 PhotoString = PhotoString + PhotoID + ",";
 

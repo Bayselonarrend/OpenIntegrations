@@ -345,15 +345,15 @@ EndFunction
 
 Procedure ParameterToCollection(Parameter, Collection) Export
 
-	Value = GetParameter(Parameter);
-	Collection.Insert(Parameter, Value);
+    Value = GetParameter(Parameter);
+    Collection.Insert(Parameter, Value);
 
 EndProcedure
 
 Procedure BinaryToCollection(Parameter, Collection) Export
 
-	Value = GetBinary(Parameter);
-	Collection.Insert(Parameter, Value);
+    Value = GetBinary(Parameter);
+    Collection.Insert(Parameter, Value);
 
 EndProcedure
 
@@ -384,8 +384,8 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
     Message(Chars.LF);
 
     If ValueIsFilled(Library) Then
-		WriteLogFile(Data, Method, Library);
-	EndIf;
+        WriteLogFile(Data, Method, Library);
+    EndIf;
 
 EndProcedure
 
@@ -410,11 +410,11 @@ Function DataFilePath()
 
     For Each PossiblePath In PossiblePaths Do
 
-	    RepositoryFile = New File(PossiblePath);
+        RepositoryFile = New File(PossiblePath);
 
-	    If RepositoryFile.Exist() Then
-	        Path = PossiblePath;
-	    EndIf;
+        If RepositoryFile.Exist() Then
+            Path = PossiblePath;
+        EndIf;
 
     EndDo;
 
@@ -453,35 +453,35 @@ EndProcedure
 
 Procedure WriteLogFile(Val Data, Val Method, Val Library)
 
-	Try
+    Try
 
-		LogPath        = "./docs/ru/results";
-		LibraryLogPath = LogPath + "/" + Library;
+        LogPath        = "./docs/ru/results";
+        LibraryLogPath = LogPath + "/" + Library;
 
-		LogDirectory = New File(LogPath);
+        LogDirectory = New File(LogPath);
 
-		If Not LogDirectory.Exist() Then
-			CreateDirectory(LogPath);
-		EndIf;
+        If Not LogDirectory.Exist() Then
+            CreateDirectory(LogPath);
+        EndIf;
 
-		LibraryLogCatalog = New File(LibraryLogPath);
+        LibraryLogCatalog = New File(LibraryLogPath);
 
         If Not LibraryLogCatalog.Exist() Then
             CreateDirectory(LibraryLogPath);
         EndIf;
 
-		FilePath = LibraryLogPath + "/" + Method + ".log";
-		LogFile  = New File(FilePath);
+        FilePath = LibraryLogPath + "/" + Method + ".log";
+        LogFile  = New File(FilePath);
 
-		If Not LogFile.Exist() Then
-			LogDocument = New TextDocument;
-			LogDocument.SetText(Data);
-			LogDocument.Write(FilePath);
-		EndIf;
+        If Not LogFile.Exist() Then
+            LogDocument = New TextDocument;
+            LogDocument.SetText(Data);
+            LogDocument.Write(FilePath);
+        EndIf;
 
-	Except
-		Message("Failed to write log file!: " + ErrorDescription());
-	EndTry;
+    Except
+        Message("Failed to write log file!: " + ErrorDescription());
+    EndTry;
 
 EndProcedure
 

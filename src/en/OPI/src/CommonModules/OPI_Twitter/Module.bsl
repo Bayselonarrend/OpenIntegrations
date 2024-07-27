@@ -202,7 +202,7 @@ Function CreateCustomTweet(Val Text = ""
 
         If PollOptionsArray.Count() > 0 Then
 
-        	OptionStructure = New Structure("options,duration_minutes", PollOptionsArray, PollDuration);
+            OptionStructure = New Structure("options,duration_minutes", PollOptionsArray, PollDuration);
             Fields.Insert("poll", OptionStructure);
 
         EndIf;
@@ -664,22 +664,22 @@ EndFunction
 
 Function GetProcessingStatus(Val Parameters, Val Fields, Val URL)
 
-	ProcessingInfo   = "processing_info";
+    ProcessingInfo   = "processing_info";
     Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, "POST", URL);
 
     Response    = OPI_Tools.Post(URL, Fields, Authorization, False);
     Information = Response[ProcessingInfo];
 
     If Not ValueIsFilled(Information) Then
-    	Return Response;
+        Return Response;
     EndIf;
 
     ProcessingStatus = Information["state"];
 
     If Not ValueIsFilled(ProcessingStatus) Then
-    	Return Response;
+        Return Response;
     Else
-    	Return ProcessingStatus;
+        Return ProcessingStatus;
     EndIf;
 
 EndFunction
