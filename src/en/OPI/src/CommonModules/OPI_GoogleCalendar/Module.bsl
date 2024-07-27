@@ -417,7 +417,7 @@ Function MoveEvent(Val Token, Val SourceCalendar, Val TargetCalendar, Val Event)
     OPI_TypeConversion.GetLine(Event);
 
     Headers = OPI_GoogleWorkspace.GetAuthorizationHeader(Token);
-    URL = "https://www.googleapis.com/calendar/v3/calendars/"
+    URL     = "https://www.googleapis.com/calendar/v3/calendars/"
         + SourceCalendar
         + "/events/"
         + Event
