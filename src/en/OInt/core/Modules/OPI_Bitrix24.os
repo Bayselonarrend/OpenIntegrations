@@ -3344,7 +3344,7 @@ EndFunction
 Function CreatePersonalNotification(Val URL
     , Val UserID
     , Val Text
-    , Val Tag
+    , Val Tag = ""
     , Val Attachments = ""
     , Val Token = "") Export
 
@@ -3380,7 +3380,7 @@ EndFunction
 Function CreateSystemNotification(Val URL
     , Val UserID
     , Val Text
-    , Val Tag
+    , Val Tag = ""
     , Val Attachments = ""
     , Val Token = "") Export
 
