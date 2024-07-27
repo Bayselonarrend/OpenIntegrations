@@ -1082,7 +1082,7 @@ jobs:
 
       - name: Working with custom task fields
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "B24_TaskFieldsManagment"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os ""
 
       - name: Departments managment
         if: ${{ cancelled() }} == false

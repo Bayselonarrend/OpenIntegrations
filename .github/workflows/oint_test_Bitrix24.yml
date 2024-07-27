@@ -121,7 +121,7 @@ jobs:
 
       - name: Работа с польз. полями задач
         if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Б24_РаботаСППолямиЗадач"
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Б24_РаботаСПолямиЗадач"
 
       - name: Управление подразделениями
         if: ${{ cancelled() }} == false
