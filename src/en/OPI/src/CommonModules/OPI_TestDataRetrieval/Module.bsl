@@ -232,6 +232,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "B24_ChatManagment"          , "Chats works"                     , Bitrix);
     NewTest(TestTable, "B24_NotificationsManagment" , "Notifications managment"         , Bitrix);
     NewTest(TestTable, "B24_TaskFieldsManagment"    , "Working with custom task fields" , Bitrix);
+    NewTest(TestTable, "B24_DepartmentsManagment"   , "Departments managment"           , Bitrix);
 
     Return TestTable;
 

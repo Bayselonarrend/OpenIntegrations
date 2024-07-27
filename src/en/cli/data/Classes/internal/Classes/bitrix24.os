@@ -1331,6 +1331,27 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCustomTaskFieldsList";
+    NewLine.МетодПоиска = "GETCUSTOMTASKFIELDSLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.ОписаниеМетода   = "Gets list of custom task fields";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCustomTaskFieldsList";
+    NewLine.МетодПоиска = "GETCUSTOMTASKFIELDSLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddCustomTaskField";
     NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
     NewLine.Параметр    = "--url";
@@ -4826,6 +4847,210 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Notifications managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDepartment";
+    NewLine.МетодПоиска = "CREATEDEPARTMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Departments managment";
+    NewLine.ОписаниеМетода   = "Creates a new department";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDepartment";
+    NewLine.МетодПоиска = "CREATEDEPARTMENT";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Department name";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDepartment";
+    NewLine.МетодПоиска = "CREATEDEPARTMENT";
+    NewLine.Параметр    = "--parentid";
+    NewLine.Описание    = "ID of parent department (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDepartment";
+    NewLine.МетодПоиска = "CREATEDEPARTMENT";
+    NewLine.Параметр    = "--headid";
+    NewLine.Описание    = "ID of department manager (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDepartment";
+    NewLine.МетодПоиска = "CREATEDEPARTMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDepartment";
+    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Departments managment";
+    NewLine.ОписаниеМетода   = "Update an existing department";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDepartment";
+    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
+    NewLine.Параметр    = "--depid";
+    NewLine.Описание    = "Department ID";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDepartment";
+    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Department name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDepartment";
+    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
+    NewLine.Параметр    = "--parentid";
+    NewLine.Описание    = "ID of parent department (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDepartment";
+    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
+    NewLine.Параметр    = "--headid";
+    NewLine.Описание    = "ID of department manager (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDepartment";
+    NewLine.МетодПоиска = "UPDATEDEPARTMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDepartments";
+    NewLine.МетодПоиска = "GETDEPARTMENTS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Departments managment";
+    NewLine.ОписаниеМетода   = "Gets a list of departments by ID or filter";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDepartments";
+    NewLine.МетодПоиска = "GETDEPARTMENTS";
+    NewLine.Параметр    = "--depid";
+    NewLine.Описание    = "Selection by department ID (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDepartments";
+    NewLine.МетодПоиска = "GETDEPARTMENTS";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Filter by name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDepartments";
+    NewLine.МетодПоиска = "GETDEPARTMENTS";
+    NewLine.Параметр    = "--parentid";
+    NewLine.Описание    = "Filter by parent ID (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDepartments";
+    NewLine.МетодПоиска = "GETDEPARTMENTS";
+    NewLine.Параметр    = "--headid";
+    NewLine.Описание    = "Filter by manager ID (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDepartments";
+    NewLine.МетодПоиска = "GETDEPARTMENTS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteDepartment";
+    NewLine.МетодПоиска = "DELETEDEPARTMENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Departments managment";
+    NewLine.ОписаниеМетода   = "Delets department by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteDepartment";
+    NewLine.МетодПоиска = "DELETEDEPARTMENT";
+    NewLine.Параметр    = "--depid";
+    NewLine.Описание    = "Department ID for deletion";
+    NewLine.Область     = "Departments managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteDepartment";
+    NewLine.МетодПоиска = "DELETEDEPARTMENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Departments managment";
 
     Return CompositionTable;
 EndFunction
