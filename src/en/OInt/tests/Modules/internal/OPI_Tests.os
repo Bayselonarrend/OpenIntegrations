@@ -1849,8 +1849,8 @@ Procedure Notion_CreateEditDatabase() Export
 
     Check_NotionObject(Result, "database");
 
-    Base     = Result["id"];
-    Title    = "TestTitle";
+    Base        = Result["id"];
+    Title       = "TestTitle";
     Description = "TestDescription";
 
     Properties = New Map;
@@ -1900,16 +1900,16 @@ Procedure Notion_CreatePageInDatabase() Export
     Image.Insert("Logo", OPI_TestDataRetrieval.GetParameter("Picture"));
 
     Properties = New Map;
-    Properties.Insert("Name"         , "LLC Vector");
-    Properties.Insert("Description"  , "OurFirstClient");
-    Properties.Insert("Number"       , 1);
-    Properties.Insert("Status"       , "Regular");
-    Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
-    Properties.Insert("Image"        , Image);
-    Properties.Insert("Active"       , True);
-    Properties.Insert("Website"      , "https://vector.ru");
-    Properties.Insert("Email"        , "mail@vector.ru");
-    Properties.Insert("Phone"        , "88005553535");
+    Properties.Insert("Name"            , "LLC Vector");
+    Properties.Insert("Description"     , "OurFirstClient");
+    Properties.Insert("Number"          , 1);
+    Properties.Insert("Status"          , "Regular");
+    Properties.Insert("CreationDate"    , OPI_Tools.GetCurrentDate());
+    Properties.Insert("Image"           , Image);
+    Properties.Insert("Active"          , True);
+    Properties.Insert("Website"         , "https://vector.ru");
+    Properties.Insert("Email"           , "mail@vector.ru");
+    Properties.Insert("Phone"           , "88005553535");
     Properties.Insert("Status"          , "New");
 
     Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
@@ -1966,7 +1966,7 @@ Procedure Notion_CreateDeleteBlock() Export
 
     Check_NotionObject(Result, "list");
 
-    Block = Result["results"][0]["id"];
+    Block    = Result["results"][0]["id"];
     Result   = OPI_Notion.ReturnChildBlocks(Token, Block);
 
     OPI_TestDataRetrieval.WriteLog(Result, "ReturnChildBlocks");
@@ -3853,7 +3853,7 @@ EndProcedure
 Procedure Telegram_GetUpdates(FunctionParameters)
 
     Token     = FunctionParameters["Telegram_Token"];
-    Result = OPI_Telegram.GetUpdates(Token);
+    Result    = OPI_Telegram.GetUpdates(Token);
 
     // END
 
@@ -4323,8 +4323,8 @@ EndProcedure
 Procedure Telegram_Ban(FunctionParameters)
 
     Token        = FunctionParameters["Telegram_Token"];
-    UserID    = FunctionParameters["Telegram_ChatID"];
-    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    UserID       = FunctionParameters["Telegram_ChatID"];
+    ChannelID    = FunctionParameters["Telegram_ChannelID"];
 
     Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
 
@@ -4448,9 +4448,9 @@ EndProcedure
 Procedure Telegram_CreateForumTopic(FunctionParameters)
 
     Token   = FunctionParameters["Telegram_Token"];
-    Chat = FunctionParameters["Telegram_ForumID"];
-    Icon = "5357419403325481346";
-    Name = "TestTopic " + String(New UUID);
+    Chat    = FunctionParameters["Telegram_ForumID"];
+    Icon    = "5357419403325481346";
+    Name    = "TestTopic " + String(New UUID);
 
     Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
 
@@ -4468,7 +4468,7 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
 
     ChatTopic = Chat + "*" + Topic;
     Text      = FunctionParameters["String"];
-    Result = OPI_Telegram.SendTextMessage(Token, ChatTopic, Text);
+    Result    = OPI_Telegram.SendTextMessage(Token, ChatTopic, Text);
 
     OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (forum)");
 
@@ -4479,10 +4479,10 @@ EndProcedure
 Procedure Telegram_EditForumTopic(FunctionParameters)
 
     Token      = FunctionParameters["Telegram_Token"];
-    Chat    = FunctionParameters["Telegram_ForumID"];
-    Topic   = FunctionParameters["Telegram_TopicID"];
-    NewName = "NewTestTitle";
-    NewIcon = "5310132165583840589";
+    Chat       = FunctionParameters["Telegram_ForumID"];
+    Topic      = FunctionParameters["Telegram_TopicID"];
+    NewName    = "NewTestTitle";
+    NewIcon    = "5310132165583840589";
 
     Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
 
@@ -4499,8 +4499,8 @@ EndProcedure
 Procedure Telegram_CloseForumTopic(FunctionParameters)
 
     Token    = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+    Chat     = FunctionParameters["Telegram_ForumID"];
+    Topic    = FunctionParameters["Telegram_TopicID"];
 
     OPI_Telegram.OpenForumThread(Token, Chat); // SKIP
 
@@ -4525,8 +4525,8 @@ EndProcedure
 Procedure Telegram_OpenForumTopic(FunctionParameters)
 
     Token    = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+    Chat     = FunctionParameters["Telegram_ForumID"];
+    Topic    = FunctionParameters["Telegram_TopicID"];
 
     Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
 
@@ -4549,8 +4549,8 @@ EndProcedure
 Procedure Telegram_DeleteForumTopic(FunctionParameters)
 
     Token    = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+    Chat     = FunctionParameters["Telegram_ForumID"];
+    Topic    = FunctionParameters["Telegram_TopicID"];
 
     Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
 
@@ -4567,8 +4567,8 @@ EndProcedure
 Procedure Telegram_ClearPinnedMessagesList(FunctionParameters)
 
     Token    = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+    Chat     = FunctionParameters["Telegram_ForumID"];
+    Topic    = FunctionParameters["Telegram_TopicID"];
 
     Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
 
@@ -4591,7 +4591,7 @@ EndProcedure
 Procedure Telegram_HideMainForumTopic(FunctionParameters)
 
     Token   = FunctionParameters["Telegram_Token"];
-    Chat = FunctionParameters["Telegram_ForumID"];
+    Chat    = FunctionParameters["Telegram_ForumID"];
 
     Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
 
@@ -4608,7 +4608,7 @@ EndProcedure
 Procedure Telegram_ShowMainForumTopic(FunctionParameters)
 
     Token   = FunctionParameters["Telegram_Token"];
-    Chat = FunctionParameters["Telegram_ForumID"];
+    Chat    = FunctionParameters["Telegram_ForumID"];
 
     Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
 
@@ -4626,7 +4626,7 @@ Procedure Telegram_ChangeMainTopicName(FunctionParameters)
 
     Title   = "New main thread name " + String(New UUID);
     Token   = FunctionParameters["Telegram_Token"];
-    Chat = FunctionParameters["Telegram_ForumID"];
+    Chat    = FunctionParameters["Telegram_ForumID"];
 
     Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
 
@@ -6253,7 +6253,7 @@ EndProcedure
 Procedure Dropbox_CancelFilePublication(FunctionParameters)
 
     Token   = FunctionParameters["Dropbox_Token"];
-    File = FunctionParameters["Dropbox_FileID"];
+    File    = FunctionParameters["Dropbox_FileID"];
 
     Result = OPI_Dropbox.CancelFilePublication(Token, File);
 
@@ -7223,7 +7223,7 @@ EndProcedure
 Procedure Bitrix24_GetStorage(FunctionParameters)
 
     URL          = FunctionParameters["Bitrix24_URL"];
-    StorageID = 3;
+    StorageID    = 3;
 
     Result = OPI_Bitrix24.GetStorage(URL, StorageID);
 
@@ -7374,7 +7374,7 @@ EndProcedure
 Procedure Bitrix24_GetFolderExternalLink(FunctionParameters)
 
     URL         = FunctionParameters["Bitrix24_URL"];
-    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    FolderID    = FunctionParameters["Bitrix24_FolderID"];
 
     Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID);
 
@@ -7421,7 +7421,7 @@ EndProcedure
 Procedure Bitrix24_GetFolderItems(FunctionParameters)
 
     URL         = FunctionParameters["Bitrix24_URL"];
-    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    FolderID    = FunctionParameters["Bitrix24_FolderID"];
 
     Result = OPI_Bitrix24.GetFolderItems(URL, FolderID);
 
@@ -7445,7 +7445,7 @@ EndProcedure
 Procedure Bitrxi24_MarkFolderAsDeleted(FunctionParameters)
 
     URL         = FunctionParameters["Bitrix24_URL"];
-    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    FolderID    = FunctionParameters["Bitrix24_FolderID"];
 
     Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID);
 
