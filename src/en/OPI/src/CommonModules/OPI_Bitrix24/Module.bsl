@@ -349,8 +349,8 @@ Function AddPostComment(Val URL, Val PostID, Val Text, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "log.blogcomment.add");
 
-    OPI_Tools.AddField("POST_ID" , PostID, "String", Parameters);
-    OPI_Tools.AddField("TEXT"    , Text  , "String", Parameters);
+    OPI_Tools.AddField("POST_ID", PostID, "String", Parameters);
+    OPI_Tools.AddField("TEXT"   , Text  , "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -376,8 +376,8 @@ Function AddPostRecipients(Val URL, Val PostID, Val Visibility, Val Token = "") 
 
     Parameters = NormalizeAuth(URL, Token, "log.blogpost.share");
 
-    OPI_Tools.AddField("POST_ID" , PostID    , "String", Parameters);
-    OPI_Tools.AddField("DEST"    , Visibility, "String", Parameters);
+    OPI_Tools.AddField("POST_ID", PostID    , "String", Parameters);
+    OPI_Tools.AddField("DEST"   , Visibility, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
@@ -1343,6 +1343,7 @@ EndFunction
 Function DeleteTaskComment(Val URL, Val TaskID, Val CommentID, Val Token = "") Export
 
     Parameters = NormalizeAuth(URL, Token, "task.commentitem.delete");
+
     OPI_Tools.AddField("TASKID", TaskID   , "String", Parameters);
     OPI_Tools.AddField("ITEMID", CommentID, "String", Parameters);
 
@@ -1864,8 +1865,8 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 Function GetAppSotrage(Val URL, Val Token = "") Export
 
-    Parameters  = NormalizeAuth(URL, Token, "disk.storage.getforapp");
-    Response    = OPI_Tools.Post(URL, Parameters);
+    Parameters = NormalizeAuth(URL, Token, "disk.storage.getforapp");
+    Response   = OPI_Tools.Post(URL, Parameters);
 
     Return Response;
 

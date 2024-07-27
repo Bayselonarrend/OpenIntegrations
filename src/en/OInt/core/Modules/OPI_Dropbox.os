@@ -655,8 +655,8 @@ Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly 
     EndDo;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("file"   , FileID       , String_ , Parameters);
-    OPI_Tools.AddField("members", ArrayOfUsers , "Array" , Parameters);
+    OPI_Tools.AddField("file"   , FileID      , String_ , Parameters);
+    OPI_Tools.AddField("members", ArrayOfUsers, "Array" , Parameters);
 
     Mode = ?(ViewOnly, "viewer", "editor");
 

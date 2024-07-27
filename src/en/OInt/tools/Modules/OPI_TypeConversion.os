@@ -35,7 +35,6 @@
 //@skip-check wrong-string-literal-content
 
 #Use "./internal"
-
 #Region Internal
 
 Procedure GetBinaryData(Value) Export
@@ -54,15 +53,10 @@ Procedure GetBinaryData(Value) Export
 
             If File.Exist() Then
                 Value = New BinaryData(Value);
-
             ElsIf StrFind(Value, "//") Then
-
                 Value = OPI_Tools.Get(Value);
-
             Else
-
                 Value = Base64Value(Value);
-
             EndIf;
 
         EndIf;
@@ -121,7 +115,7 @@ Procedure GetCollection(Value) Export
 
                 JSONReader.OpenFile(Value);
 
-           ElsIf StrStartsWith(Lower(Value), "http") Then
+            ElsIf StrStartsWith(Lower(Value), "http") Then
 
                 TFN = GetTempFileName();
                 CopyFile(Value, TFN);
@@ -163,9 +157,7 @@ Procedure GetArray(Value) Export
         Return;
     EndIf;
 
-    If TypeOf(Value) = Type("String")
-        And StrStartsWith(Value, "[")
-        And StrEndsWith(Value, "]") Then
+    If TypeOf(Value) = Type("String") And StrStartsWith(Value, "[") And StrEndsWith(Value, "]") Then
 
         CommaInQuotes = "','";
 
@@ -309,17 +301,14 @@ EndProcedure
 
 Function ThisIsCollection(Val Value)
 
-    Return TypeOf(Value)        = Type("Array")
-            Or TypeOf(Value)    = Type("Structure")
-            Or TypeOf(Value)    = Type("Map");
+    Return TypeOf(Value) = Type("Array") Or TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type(
+        "Map");
 
 EndFunction
 
 Function ThisIsSymbolic(Val Value)
 
-    Return TypeOf(Value)        = Type("String")
-            Or TypeOf(Value)    = Type("Number")
-            Or TypeOf(Value)    = Type("Date");
+    Return TypeOf(Value) = Type("String") Or TypeOf(Value) = Type("Number") Or TypeOf(Value) = Type("Date");
 
 EndFunction
 
