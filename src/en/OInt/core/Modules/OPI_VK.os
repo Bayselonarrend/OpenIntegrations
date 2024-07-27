@@ -148,10 +148,10 @@ Function CreateCompositePost(Val Text
     AttachmentsString = StrConcat(Objects, ",");
     AttachmentsString = AttachmentsString + LinkUnderPost;
 
-    Parameters.Insert("message"        , Text);
-    Parameters.Insert("attachments"    , AttachmentsString);
-    Parameters.Insert("mark_as_ads"    , ?(Advertisement, 1, 0));
-    Parameters.Insert("close_comments" , ?(Advertisement, 1, 0));
+    Parameters.Insert("message"       , Text);
+    Parameters.Insert("attachments"   , AttachmentsString);
+    Parameters.Insert("mark_as_ads"   , ?(Advertisement, 1, 0));
+    Parameters.Insert("close_comments", ?(Advertisement, 1, 0));
 
     Response = OPI_Tools.Get("api.vk.com/method/wall.post", Parameters);
 
@@ -1380,7 +1380,7 @@ EndFunction
 //
 // Parameters:
 // Name - String - New selection name - title
-// Selection - String - Selection ID                     - sel
+// Selection - String - Selection ID - sel
 // Image - String, BinaryData - New selection image - picture
 // Main - Boolean - Main - main
 // Hidden - Boolean - Hidden - hidden
@@ -1757,9 +1757,9 @@ EndFunction
 
 Function GetImageID(Val Image, Val Parameters, Val View)
 
-    Response_   = "response";
-    Response    = UploadPhotoToServer(Image, Parameters, View);
-    Result      = Response[Response_];
+    Response_ = "response";
+    Response  = UploadPhotoToServer(Image, Parameters, View);
+    Result    = Response[Response_];
 
     If ValueIsFilled(Result) Then
         PhotoID = Result["photo_id"];
@@ -1779,8 +1779,8 @@ EndFunction
 
 Function GetImageMap(Val Image, Val Parameters, Val View)
 
-    Response         = UploadPhotoToServer(Image, Parameters, View);
-    ResponseArray    = Response.Get("response");
+    Response      = UploadPhotoToServer(Image, Parameters, View);
+    ResponseArray = Response.Get("response");
 
     If Not ValueIsFilled(ResponseArray) Or Not TypeOf(ResponseArray) = Type("Array") Then
         Return Response;
@@ -2060,6 +2060,7 @@ Procedure FillProductRequestFields(Val ProductDescription, Parameters)
         Result   = Response[Response_];
 
         If ValueIsFilled(Result) Then
+
             PhotoID = Result["photo_id"];
 
             If Not ValueIsFilled(PhotoID) Then
