@@ -324,7 +324,7 @@ Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Shee
             First     = False;
         EndDo;
     Else
-        URL           = URL + "?ranges          ='" + Sheet + "'";
+        URL           = URL + "?ranges           ='" + Sheet + "'";
     EndIf;
 
     Response = OPI_Tools.Get(URL, , Headers);

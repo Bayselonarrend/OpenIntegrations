@@ -1949,8 +1949,8 @@ Function SelectionManagement(Val Name
     EndIf;
 
     Parameters_.Insert("title"      , Name);
-    Parameters_.Insert("main_album" , ?(Main  , 1, 0));
-    Parameters_.Insert("is_hidden"  , ?(Hidden, 1, 0));
+    Parameters_.Insert("main_album" , ?(Main   , 1, 0));
+    Parameters_.Insert("is_hidden"  , ?(Hidden , 1, 0));
 
     If ValueIsFilled(SelectionID) Then
         Parameters_.Insert("album_id", SelectionID);

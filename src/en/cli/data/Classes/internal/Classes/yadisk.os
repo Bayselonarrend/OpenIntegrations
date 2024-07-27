@@ -196,8 +196,8 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "File and folder management";
     NewLine.ОписаниеМетода   = "Gets a list of files with or without filtering by type
-    |    List of available types: audio, backup, book, compressed, data, development, 
-    |    diskimage, document, encoded, executable, flash, font, 
+    |    List of available types: audio, backup, book, compressed, data, development,
+    |    diskimage, document, encoded, executable, flash, font,
     |    mage, settings, spreadsheet, text, unknown, video, web";
 
 

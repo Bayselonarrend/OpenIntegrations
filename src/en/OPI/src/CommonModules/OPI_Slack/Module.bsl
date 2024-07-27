@@ -750,9 +750,9 @@ Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = 
     SlackFile = New Structure("id, title", Identifier, Title);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("filename"  , FileName , String_, Parameters);
-    OPI_Tools.AddField("channel_id", Channel  , String_, Parameters);
-    OPI_Tools.AddField("files"     , SlackFile, "Array", Parameters);
+    OPI_Tools.AddField("filename"  , FileName , String_ , Parameters);
+    OPI_Tools.AddField("channel_id", Channel  , String_ , Parameters);
+    OPI_Tools.AddField("files"     , SlackFile, "Array" , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 

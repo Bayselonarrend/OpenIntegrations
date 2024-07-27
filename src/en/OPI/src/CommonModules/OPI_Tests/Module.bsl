@@ -1838,9 +1838,9 @@ Procedure Notion_CreateEditDatabase() Export
 	Properties.Insert("User"         , "people");
 
 	ValueSelection = New Map;
-	ValueSelection.Insert("New"       , "green");
-	ValueSelection.Insert("InProgress", "yellow");
-	ValueSelection.Insert("Remote"    , "red");
+	ValueSelection.Insert("New"        , "green");
+	ValueSelection.Insert("InProgress" , "yellow");
+	ValueSelection.Insert("Remote"     , "red");
 	Properties.Insert("Status", ValueSelection);
 
 	Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
@@ -9170,8 +9170,8 @@ Procedure Bitrix24_SendMessage(FunctionParameters)
     File   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.SendMessage(URL, ChatID, Text, Attachments);
 
@@ -9222,8 +9222,8 @@ Procedure Bitrix24_EditMessage(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
 
@@ -9435,8 +9435,8 @@ Procedure Bitrix24_CreatePersonalNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, ,Attachments);
 
@@ -9477,8 +9477,8 @@ Procedure Bitrix24_CreateSystemNotification(FunctionParameters)
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Attachments = New Array;
-    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1" , Image));
-    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx", File));
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
 
