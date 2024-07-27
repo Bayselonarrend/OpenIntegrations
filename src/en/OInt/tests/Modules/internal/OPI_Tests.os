@@ -3153,6 +3153,21 @@ Procedure B24_NotificationsManagment() Export
 
 EndProcedure
 
+Procedure B24_TaskFieldsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    Bitrix24_AddCustomTaskField(TestParameters);
+    Bitrix24_UpdateCustomTaskField(TestParameters);
+    Bitrix24_GetCustomTaskField(TestParameters);
+    Bitrix24_GetCustomTaskFieldsList(TestParameters);
+    Bitrix24_DeleteCustomTaskField(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -9531,6 +9546,153 @@ Procedure Bitrix24_DeleteNotification(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteNotification (app)", "Bitrix24");
 
     Check_BitrixBool(Result);
+
+EndProcedure
+
+Procedure Bitrix24_AddCustomTaskField(FunctionParameters)
+
+    //URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    Type = "date";
+    Name = "BIRTHDAY_FIELD";
+
+    Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddCustomTaskField (wh)", "Bitrix24");
+
+    Check_BitrixNumber(Result); // SKIP
+
+    FieldID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookTaskFieldID", FieldID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookTaskFieldID", FieldID); // SKIP
+
+    //URL = FunctionParameters["Bitrix24_Domain"];
+    //Token = FunctionParameters["Bitrix24_Token"];
+
+    Type       = "string";
+    Name       = "TEXT_FIELD";
+    ExternalID = "BITRIX_TEXT_FIELD";
+    Title      = "Text field";
+    Signature  = New Structure("en,ru", "Some field", "Nekotoroe pole");
+
+
+    Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name, ExternalID, Title, Signature, );
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddCustomTaskField", "Bitrix24");
+
+    Check_BitrixNumber(Result);
+
+    FieldID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_TaskFieldID", FieldID);
+    FunctionParameters.Insert("Bitrix24_TaskFieldID", FieldID);
+
+EndProcedure
+
+Procedure Bitrix24_UpdateCustomTaskField(FunctionParameters)
+
+    //URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+    Title = "New title";
+
+    Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCustomTaskField (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    //URL = FunctionParameters["Bitrix24_Domain"];
+    //Token = FunctionParameters["Bitrix24_Token"];
+
+    FieldID    = FunctionParameters["Bitrix24_TaskFieldID"];
+    ExternalID = "NEW_TEXT_FIELD";
+    Signature  = New Structure("en,ru", "Updated field", "Izmenennoe pole");
+
+    Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, ExternalID, , Signature, );
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateCustomTaskField", "Bitrix24");
+
+    Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetCustomTaskField(FunctionParameters)
+
+    //URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+
+    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomTaskField (wh)", "Bitrix24");
+
+    Check_BitrixObject(Result); // SKIP
+
+    //URL = FunctionParameters["Bitrix24_Domain"];
+    //Token = FunctionParameters["Bitrix24_Token"];
+    FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
+
+    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID, );
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomTaskField", "Bitrix24");
+
+    Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetCustomTaskFieldsList(FunctionParameters)
+
+    //URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+
+    Result = OPI_Bitrix24.GetCustomTaskFieldsList(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomTaskFieldsList (wh)", "Bitrix24");
+
+    Check_BitrixArray(Result); // SKIP
+
+    //URL = FunctionParameters["Bitrix24_Domain"];
+    //Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetCustomTaskFieldsList(URL);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCustomTaskFieldsList", "Bitrix24");
+
+    Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure Bitrix24_DeleteCustomTaskField(FunctionParameters)
+
+    //URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+
+    Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCustomTaskField (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    //URL = FunctionParameters["Bitrix24_Domain"];
+    //Token = FunctionParameters["Bitrix24_Token"];
+    FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
+
+    Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID, );
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCustomTaskField", "Bitrix24");
+
+    Check_BitrixTrue(Result);
 
 EndProcedure
 

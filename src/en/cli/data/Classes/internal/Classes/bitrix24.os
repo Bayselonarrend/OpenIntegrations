@@ -1331,6 +1331,200 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddCustomTaskField";
+    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.ОписаниеМетода   = "Adds a new custom field to be added to the task";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddCustomTaskField";
+    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Field type: string, double, date, boolean";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddCustomTaskField";
+    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--fieldname";
+    NewLine.Описание    = "Text identifier (name) of the field";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddCustomTaskField";
+    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--externalid";
+    NewLine.Описание    = "Text identifier for external integration (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddCustomTaskField";
+    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Field title (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddCustomTaskField";
+    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--label";
+    NewLine.Описание    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "AddCustomTaskField";
+    NewLine.МетодПоиска = "ADDCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCustomTaskField";
+    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.ОписаниеМетода   = "Updates a custom task field data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCustomTaskField";
+    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--fieldid";
+    NewLine.Описание    = "Field ID for updating";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCustomTaskField";
+    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--externalid";
+    NewLine.Описание    = "Text identifier for external integration (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCustomTaskField";
+    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Field title (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCustomTaskField";
+    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--label";
+    NewLine.Описание    = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateCustomTaskField";
+    NewLine.МетодПоиска = "UPDATECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCustomTaskField";
+    NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.ОписаниеМетода   = "Get custom task field data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCustomTaskField";
+    NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--fieldid";
+    NewLine.Описание    = "Field ID for retrieval";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCustomTaskField";
+    NewLine.МетодПоиска = "GETCUSTOMTASKFIELD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteCustomTaskField";
+    NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Customs tasks fields managment";
+    NewLine.ОписаниеМетода   = "Deletes a custom task field";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteCustomTaskField";
+    NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--fieldid";
+    NewLine.Описание    = "Field ID for deletion";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteCustomTaskField";
+    NewLine.МетодПоиска = "DELETECUSTOMTASKFIELD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Customs tasks fields managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "AddTasksChecklistElement";
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--url";
