@@ -1865,7 +1865,7 @@ EndFunction
 Function GetAppSotrage(Val URL, Val Token = "") Export
 
     Parameters  = NormalizeAuth(URL, Token, "disk.storage.getforapp");
-    Response = OPI_Tools.Post(URL, Parameters);
+    Response    = OPI_Tools.Post(URL, Parameters);
 
     Return Response;
 
