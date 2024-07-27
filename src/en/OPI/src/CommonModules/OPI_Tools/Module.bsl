@@ -241,7 +241,7 @@ Function RequestParametersToString(Val Parameters) Export
 
         ParameterString = ParameterString
             + Parameter.Key
-            + "         ="
+            + "="
             + ParameterValue
             + "&";
     EndDo;
@@ -555,7 +555,7 @@ Function ExecuteRequestWithBody(Val URL
         Parameters = New Structure;
     EndIf;
 
-    DataType     = ?(JSON, "application/json; charset    =utf-8", "application/x-www-form-urlencoded; charset    =utf-8");
+    DataType = ?(JSON, "application/json; charset=utf-8", "application/x-www-form-urlencoded; charset=utf-8");
     URLStructure = SplitURL(URL);
     Server       = URLStructure["Server"];
     Address      = URLStructure["Address"];
@@ -675,7 +675,7 @@ Function ExecuteMultipartRequest(Val URL
     Error         = 400;
     Boundary      = StrReplace(String(New UUID), "-", "");
     LineSeparator = Chars.CR + Chars.LF;
-    DataType      = "multipart/form-data; boundary     =" + Boundary;
+    DataType = "multipart/form-data; boundary=" + Boundary;
     URLStructure  = SplitURL(URL);
     Server        = URLStructure["Server"];
     Address       = URLStructure["Address"];
@@ -739,7 +739,7 @@ Function ExecuteMultipartRelatedRequest(Val URL
     Error         = 400;
     Boundary      = StrReplace(String(New UUID), "-", "");
     LineSeparator = Chars.CR + Chars.LF;
-    DataType      = "multipart/related; boundary     =" + Boundary;
+    DataType = "multipart/related; boundary=" + Boundary;
     URLStructure  = SplitURL(URL);
     Server        = URLStructure["Server"];
     Address       = URLStructure["Address"];
