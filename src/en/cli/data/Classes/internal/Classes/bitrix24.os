@@ -5052,6 +5052,192 @@
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Departments managment";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCurrentUser";
+    NewLine.МетодПоиска = "GETCURRENTUSER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Get current user data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetCurrentUser";
+    NewLine.МетодПоиска = "GETCURRENTUSER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUser";
+    NewLine.МетодПоиска = "GETUSER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Gets user information by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUser";
+    NewLine.МетодПоиска = "GETUSER";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "User ID";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUser";
+    NewLine.МетодПоиска = "GETUSER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateUser";
+    NewLine.МетодПоиска = "CREATEUSER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Create new user by fields structure";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateUser";
+    NewLine.МетодПоиска = "CREATEUSER";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "New user data. See. GetUserFieldsStructure";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateUser";
+    NewLine.МетодПоиска = "CREATEUSER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateUser";
+    NewLine.МетодПоиска = "UPDATEUSER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Updates user data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateUser";
+    NewLine.МетодПоиска = "UPDATEUSER";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "User ID";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateUser";
+    NewLine.МетодПоиска = "UPDATEUSER";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "New user data. See. GetUserFieldsStructure";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateUser";
+    NewLine.МетодПоиска = "UPDATEUSER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "ChangeUserStatus";
+    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Activates or deactivates (fire) the selected user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "ChangeUserStatus";
+    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "User ID";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "ChangeUserStatus";
+    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
+    NewLine.Параметр    = "--fire";
+    NewLine.Описание    = "True > Deactivation, False > Activation (optional, def. val. - True)";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "ChangeUserStatus";
+    NewLine.МетодПоиска = "CHANGEUSERSTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserFieldsStructure";
+    NewLine.МетодПоиска = "GETUSERFIELDSSTRUCTURE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Gets the field structure for creating or modifying user information";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserFieldsStructure";
+    NewLine.МетодПоиска = "GETUSERFIELDSSTRUCTURE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Users managment";
+
     Return CompositionTable;
 EndFunction
 

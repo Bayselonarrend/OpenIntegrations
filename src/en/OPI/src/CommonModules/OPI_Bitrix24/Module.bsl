@@ -3720,6 +3720,163 @@ EndFunction
 
 #EndRegion
 
+#Region UsersManagment
+
+// Get current user
+// Get current user data
+//
+// Note
+// Method at API documentation: [user.current](@dev.1c-bitrix.ru/rest_help/users/user_current.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetCurrentUser(Val URL, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "user.current");
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get user
+// Gets user information by ID
+//
+// Note
+// Method at API documentation: [user.get](@dev.1c-bitrix.ru/rest_help/users/user_get.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - User ID - userid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetUser(Val URL, Val UserID, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "user.get");
+
+    OPI_Tools.AddField("ID", UserID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Create user
+// Create new user by fields structure
+//
+// Note
+// Method at API documentation: [user.add](@dev.1c-bitrix.ru/rest_help/users/user_add.php)
+// If you want to add an extranet user, you must pass in the fields: EXTRANET: Y and SONET_GROUP_ID: [...]
+// If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateUser(Val URL, Val FieldsStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "user.add");
+
+    For Each Field In FieldsStructure Do
+        Parameters.Insert(Field.Key, Field.Value);
+    EndDo;
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Update user
+// Updates user data
+//
+// Note
+// Method at API documentation: [user.update](@dev.1c-bitrix.ru/rest_help/users/user_update.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - User ID - userid
+// FieldsStructure - Structure of KeyAndValue - New user data. See. GetUserFieldsStructure - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateUser(Val URL, Val UserID, Val FieldsStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "user.update");
+
+    For Each Field In FieldsStructure Do
+        Parameters.Insert(Field.Key, Field.Value);
+    EndDo;
+
+    OPI_Tools.AddField("ID", UserID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Change user status
+// Activates or deactivates (fire) the selected user
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - User ID - userid
+// Fire - Boolean - True > Deactivation, False > Activation - fire
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function ChangeUserStatus(Val URL, Val UserID, Val Fire = True, Val Token = "") Export
+
+    Active = Not Fire;
+
+    MakeBoolean(Active);
+
+    Parameters = New Structure("ACTIVE", Active);
+
+    Response = UpdateUser(URL, UserID, Parameters, Token);
+
+    Return Response;
+
+EndFunction
+
+// Get user fields structure
+// Gets the field structure for creating or modifying user information
+//
+// Note
+// Method at API documentation: [user.fields](@dev.1c-bitrix.ru/rest_help/users/user_fields.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetUserFieldsStructure(Val URL, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "user.fields");
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
