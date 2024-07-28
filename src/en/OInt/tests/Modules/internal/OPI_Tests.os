@@ -3172,7 +3172,7 @@ Procedure B24_NotificationsManagment() Export
 
 EndProcedure
 
-Procedure () Export
+Procedure B24_TasksFieldsManagment() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"            , TestParameters);
@@ -3200,6 +3200,22 @@ Procedure B24_DepartmentsManagment() Export
     Bitrix24_GetDepartments(TestParameters);
     Bitrix24_UpdateDepartment(TestParameters);
     Bitrix24_DeleteDepartment(TestParameters);
+
+EndProcedure
+
+Procedure B2_UsersManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    Bitrix24_GetCurrentUser(TestParameters);
+    Bitrix24_GetUserFieldsStructure(TestParameters);
+    Bitrix24_CreateUser(TestParameters);
+    Bitrix24_UpdateUser(TestParameters);
+    Bitrix24_GetUser(TestParameters);
+    Bitrix24_ChangeUserStatus(TestParameters);
 
 EndProcedure
 
@@ -9800,6 +9816,186 @@ Procedure Bitrix24_GetDepartments(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDepartments", "Bitrix24");
+
+    Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetCurrentUser(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetCurrentUser(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCurrentUser (wh)", "Bitrix24");
+
+    Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetCurrentUser(URL, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCurrentUser", "Bitrix24");
+
+    Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetUserFieldsStructure(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetUserFieldsStructure(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserFieldsStructure (wh)", "Bitrix24");
+
+    Check_BitrixObject(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetUserFieldsStructure(URL, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserFieldsStructure", "Bitrix24");
+
+    Check_BitrixObject(Result);
+
+EndProcedure
+
+Procedure Bitrix24_CreateUser(FunctionParameters)
+
+    URL   = FunctionParameters["Bitrix24_URL"];
+    Email = String(New UUID) + "@exepmple.org";
+    // The full structure can be obtained with the function GetUserFieldsStructure
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"        , Email);
+    UserStructure.Insert("UF_DEPARTMENT", 7);
+
+    Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateUser (wh)", "Bitrix24");
+
+    Check_BitrixNumber(Result); // SKIP
+
+    UserID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookUserID", UserID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookUserID", UserID); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    Email = String(New UUID) + "@exepmple.org";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"          , Email);
+    UserStructure.Insert("NAME"           , "Vitaly");
+    UserStructure.Insert("LAST_NAME"      , "Alpaca");
+    UserStructure.Insert("PERSONAL_MOBILE", "88003553535");
+    UserStructure.Insert("UF_DEPARTMENT"  , 1);
+
+    Result = OPI_Bitrix24.CreateUser(URL, UserStructure, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateUser", "Bitrix24");
+
+    Check_BitrixNumber(Result);
+
+    UserID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_UserID", UserID);
+    FunctionParameters.Insert("Bitrix24_UserID", UserID);
+
+EndProcedure
+
+Procedure Bitrix24_UpdateUser(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    UserID = FunctionParameters["Bitrix24_HookUserID"];
+    Email  = String(New UUID) + "@exepmple.org";
+
+    // The full structure can be obtained with the function GetUserFieldsStructure
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"        , Email);
+    UserStructure.Insert("UF_DEPARTMENT", 1);
+
+    Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateUser (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = FunctionParameters["Bitrix24_UserID"];
+    Email  = String(New UUID) + "@exepmple.org";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"         , Email);
+    UserStructure.Insert("NAME"          , "Oleg");
+    UserStructure.Insert("LAST_NAME"     , "Lama");
+    UserStructure.Insert("UF_DEPARTMENT" , 7);
+
+    Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateUser", "Bitrix24");
+
+    Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_ChangeUserStatus(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    UserID = FunctionParameters["Bitrix24_HookUserID"];
+
+    Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeUserStatus (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = FunctionParameters["Bitrix24_UserID"];
+
+    Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeUserStatus", "Bitrix24");
+
+    Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetUser(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    UserID = FunctionParameters["Bitrix24_HookUserID"];
+
+    Result = OPI_Bitrix24.GetUser(URL, UserID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUser (wh)", "Bitrix24");
+
+    Check_BitrixArray(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = FunctionParameters["Bitrix24_UserID"];
+
+    Result = OPI_Bitrix24.GetUser(URL, UserID, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUser", "Bitrix24");
 
     Check_BitrixArray(Result);
 
