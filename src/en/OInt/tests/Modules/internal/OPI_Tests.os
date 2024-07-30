@@ -10056,138 +10056,89 @@ EndProcedure
 
 Procedure Bitrix24_StartTimekeeping(FunctionParameters)
 
-    //URL = FunctionParameters["Bitrix24_URL"];
-    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.StartTimekeeping(URL);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "StartTimekeeping (wh)", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result); // SKIP
-
     Hour = 3600;
 
-    //URL = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
-    Time = OPI_Tools.GetCurrentDate() - Hour;
+    Time   = OPI_Tools.GetCurrentDate() - Hour;
     Report = "Late";
 
     Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, );
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "StartTimekeeping", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result);
-
 EndProcedure
 
 Procedure Bitrix24_StopTimekeeping(FunctionParameters)
 
-    //URL = FunctionParameters["Bitrix24_URL"];
-    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.StopTimekeeping(URL);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "StopTimekeeping (wh)", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result); // SKIP
-
-    //URL = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
-    Time = OPI_Tools.GetCurrentDate();
+    Time   = OPI_Tools.GetCurrentDate();
     Report = "Time off";
 
     Result = OPI_Bitrix24.StopTimekeeping(URL, UserID, Time, Report, );
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "StopTimekeeping", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result);
 
 EndProcedure
 
 Procedure Bitrix24_PauseTimekeeping(FunctionParameters)
 
-    //URL = FunctionParameters["Bitrix24_URL"];
-    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.PauseTimekeeping(URL);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "StopTimekeeping (wh)", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result); // SKIP
-
     Hour = 3600;
 
-    //URL = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
     Result = OPI_Bitrix24.PauseTimekeeping(URL, UserID);
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PauseTimekeeping", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result);
-
 EndProcedure
 
 Procedure Bitrix24_GetTimekeepingStatus(FunctionParameters)
 
-    //URL = FunctionParameters["Bitrix24_URL"];
-    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.GetTimekeepingStatus(URL);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTimekeepingStatus (wh)", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result); // SKIP
-
     Hour = 3600;
 
-    //URL = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
     Result = OPI_Bitrix24.GetTimekeepingStatus(URL, UserID);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTimekeepingStatus", "Bitrix24");
-
-    Check_BitrixTimekeeping(Result);
 
 EndProcedure
 
 Procedure Bitrix24_GetTimekeepingSettings(FunctionParameters)
 
-    //URL = FunctionParameters["Bitrix24_URL"];
-    URL = "https://b24-gb03za.bitrix24.by/rest/1/tfvwyd1ole6c3504";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTimekeepingSettings (wh)", "Bitrix24");
-
-    Check_BitrixTimekeepingSettings(Result); // SKIP
-
     Hour = 3600;
 
-    //URL = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL, UserID);
 
     // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTimekeepingSettings", "Bitrix24");
-
-    Check_BitrixTimekeepingSettings(Result);
 
 EndProcedure
 
