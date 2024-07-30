@@ -511,6 +511,10 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
         OPI_TypeConversion.GetDate(Value);
         Value  = XMLString(Value);
 
+    ElsIf Type = "DateISOZ" Then
+        OPI_TypeConversion.GetDate(Value);
+        Value  = XMLString(Value) + "Z";
+
     ElsIf Type = "Collection" Then
         OPI_TypeConversion.GetCollection(Value);
 
@@ -529,7 +533,7 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
     ElsIf Type = "Number" Then
         OPI_TypeConversion.GetNumber(Value);
 
-    Else
+    ElsIf Not Type = "Current" Then
         OPI_TypeConversion.GetLine(Value);
 
     EndIf;
