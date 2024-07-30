@@ -3676,6 +3676,67 @@ jobs:
 
 
 
+      - name: Выполнить GetCustomTaskFieldsList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetCustomTaskFieldsList --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить AddCustomTaskField
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 AddCustomTaskField --debug --test \
+          --url "" \
+          --type "" \
+          --fieldname "" \
+          --externalid "" \
+          --title "Тест" \
+          --label "" \
+          --token "" \
+
+
+
+      - name: Выполнить UpdateCustomTaskField
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateCustomTaskField --debug --test \
+          --url "" \
+          --fieldid "" \
+          --externalid "" \
+          --title "Тест" \
+          --label "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetCustomTaskField
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetCustomTaskField --debug --test \
+          --url "" \
+          --fieldid "" \
+          --token "" \
+
+
+
+      - name: Выполнить DeleteCustomTaskField
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteCustomTaskField --debug --test \
+          --url "" \
+          --fieldid "" \
+          --token "" \
+
+
+
       - name: Выполнить AddTasksChecklistElement
         if: ${{ cancelled() }} == false
         run: |
@@ -3992,6 +4053,65 @@ jobs:
           --amount "" \
           --text "Тестовый текст" \
           --date "" \
+          --token "" \
+
+
+
+      - name: Выполнить StartTimekeeping
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 StartTimekeeping --debug --test \
+          --url "" \
+          --userid "" \
+          --time "" \
+          --report "" \
+          --token "" \
+
+
+
+      - name: Выполнить StopTimekeeping
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 StopTimekeeping --debug --test \
+          --url "" \
+          --userid "" \
+          --time "" \
+          --report "" \
+          --token "" \
+
+
+
+      - name: Выполнить PauseTimekeeping
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 PauseTimekeeping --debug --test \
+          --url "" \
+          --userid "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetTimekeepingStatus
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTimekeepingStatus --debug --test \
+          --url "" \
+          --userid "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetTimekeepingSettings
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetTimekeepingSettings --debug --test \
+          --url "" \
+          --userid "" \
           --token "" \
 
 
@@ -4339,6 +4459,17 @@ jobs:
 
 
 
+      - name: Выполнить GetUsers
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetUsers --debug --test \
+          --url "" \
+          --users "" \
+          --token "" \
+
+
+
       - name: Выполнить AddUsersToChat
         if: ${{ cancelled() }} == false
         run: |
@@ -4480,6 +4611,27 @@ jobs:
 
 
 
+      - name: Выполнить GetUserStatus
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetUserStatus --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить SetUserStatus
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 SetUserStatus --debug --test \
+          --url "" \
+          --status "" \
+          --token "" \
+
+
+
       - name: Выполнить ReadAll
         if: ${{ cancelled() }} == false
         run: |
@@ -4612,6 +4764,183 @@ jobs:
           ./oint bitrix24 GetFileBlock --debug --test \
           --title "Тест" \
           --url "" \
+
+
+
+      - name: Выполнить CreatePersonalNotification
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreatePersonalNotification --debug --test \
+          --url "" \
+          --user "" \
+          --text "Тестовый текст" \
+          --another notif. will be deleted "" \
+          --blocks "" \
+          --token "" \
+
+
+
+      - name: Выполнить CreateSystemNotification
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateSystemNotification --debug --test \
+          --url "" \
+          --user "" \
+          --text "Тестовый текст" \
+          --another notif. will be deleted "" \
+          --blocks "" \
+          --token "" \
+
+
+
+      - name: Выполнить DeleteNotification
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteNotification --debug --test \
+          --url "" \
+          --notif "" \
+          --token "" \
+
+
+
+      - name: Выполнить CreateDepartment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateDepartment --debug --test \
+          --url "" \
+          --title "Тест" \
+          --parentid "" \
+          --headid "" \
+          --token "" \
+
+
+
+      - name: Выполнить UpdateDepartment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateDepartment --debug --test \
+          --url "" \
+          --depid "" \
+          --title "Тест" \
+          --parentid "" \
+          --headid "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetDepartments
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetDepartments --debug --test \
+          --url "" \
+          --depid "" \
+          --title "Тест" \
+          --parentid "" \
+          --headid "" \
+          --token "" \
+
+
+
+      - name: Выполнить DeleteDepartment
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteDepartment --debug --test \
+          --url "" \
+          --depid "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetCurrentUser
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetCurrentUser --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetUser
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetUser --debug --test \
+          --url "" \
+          --userid "" \
+          --token "" \
+
+
+
+      - name: Выполнить CreateUser
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateUser --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить UpdateUser
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateUser --debug --test \
+          --url "" \
+          --userid "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить ChangeUserStatus
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ChangeUserStatus --debug --test \
+          --url "" \
+          --userid "" \
+          --fire "" \
+          --token "" \
+
+
+
+      - name: Выполнить FindUsers
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 FindUsers --debug --test \
+          --url "" \
+          --filter "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetUserFieldsStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetUserFieldsStructure --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetUserFilterStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetUserFilterStructure --debug --test \
+          --empty "" \
 
   Clear-Cache:
     runs-on: ubuntu-latest
