@@ -30,17 +30,17 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  URL = ПараметрыФункции["Bitrix24_URL"];
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
-  IDПоля    = ПараметрыФункции["Bitrix24_HookTaskFieldID"];
+  IDПоля    = "";
   Заголовок = "Новый заголовок";
   
   Результат = OPI_Bitrix24.ИзменитьПользовательскоеПолеЗадачи(URL, IDПоля, , Заголовок);
   
-  URL   = ПараметрыФункции["Bitrix24_Domain"];
-  Токен = ПараметрыФункции["Bitrix24_Token"];
+  URL   = "b24-ar17wx.bitrix24.by";
+  Токен = "adf89366006e9f06006b12e400000001000...";
   
-  IDПоля     = ПараметрыФункции["Bitrix24_TaskFieldID"];
+  IDПоля     = "";
   ВнешнийКод = "NEW_TEXT_FIELD";
   Подпись    = Новый Структура("en,ru", "Updated field", "Измененное поле");
   
@@ -51,7 +51,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ИзменитьПользовательскоеПолеЗадачи --url %url% --fieldid %fieldid% --externalid %externalid% --title %title% --label %label% --token %token%
+  oint bitrix24 ИзменитьПользовательскоеПолеЗадачи --url %url% --fieldid %fieldid% --externalid %externalid% --title %title% --label %label% --token %token%
 
 ```
 

@@ -33,8 +33,8 @@ sidebar_position: 1
 ```bsl title="Пример кода"
   Текст     = "Текст новости";
   Заголовок = "Заголовок новости";
-  Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";
-  Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg";
+  Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";  // URL, Путь или Двоичные данные
+  Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
   
   Файлы     = Новый Соответствие;
   Файлы.Вставить("1.png", Картинка1);
@@ -43,6 +43,7 @@ sidebar_position: 1
   URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
   Результат = OPI_Bitrix24.СоздатьНовость(URL, Текст, , Файлы, Заголовок, Истина);
+  
   
   
   

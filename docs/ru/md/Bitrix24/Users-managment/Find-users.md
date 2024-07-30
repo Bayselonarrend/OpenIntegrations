@@ -27,7 +27,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  URL = ПараметрыФункции["Bitrix24_URL"];
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
   СтруктураФильтра = Новый Структура;
   СтруктураФильтра.Вставить("NAME"              , "Виталий");
@@ -40,8 +40,8 @@ sidebar_position: 6
   
   
   
-  URL   = ПараметрыФункции["Bitrix24_Domain"];
-  Токен = ПараметрыФункции["Bitrix24_Token"];
+  URL   = "b24-ar17wx.bitrix24.by";
+  Токен = "adf89366006e9f06006b12e400000001000...";
   
   СтруктураФильтра = Новый Структура;
   СтруктураФильтра.Вставить("UF_DEPARTMENT_NAME", "Битрикс");
@@ -53,7 +53,7 @@ sidebar_position: 6
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 НайтиПользователей --url %url% --filter %filter% --token %token%
+  oint bitrix24 НайтиПользователей --url %url% --filter %filter% --token %token%
 
 ```
 

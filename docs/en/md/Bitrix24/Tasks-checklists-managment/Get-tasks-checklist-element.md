@@ -35,6 +35,7 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
  Result = OPI_Bitrix24.GetTasksChecklistElement(URL, TaskID, ElementID);
  
  
+ 
  TaskID = "722";
  ElementID = "168";
  

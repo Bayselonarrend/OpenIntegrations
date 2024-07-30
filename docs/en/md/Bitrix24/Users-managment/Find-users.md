@@ -27,7 +27,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  FilterStructure = New Structure;
  FilterStructure.Insert("NAME", "Vitaly");
@@ -40,8 +40,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
  
  
  
- URL = FunctionParameters["Bitrix24_URL"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  FilterStructure = New Structure;
  FilterStructure.Insert("UF_DEPARTMENT_NAME", "Bitrix");
@@ -53,7 +53,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 ```sh title="CLI command example"
  
-oint bitrix24 FindUsers --url %url% --filter %filter% --token %token%
+ oint bitrix24 FindUsers --url %url% --filter %filter% --token %token%
 
 ```
 

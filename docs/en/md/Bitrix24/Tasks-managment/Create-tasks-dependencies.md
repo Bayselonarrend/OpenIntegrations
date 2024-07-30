@@ -39,6 +39,8 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
  
  
  
+ 
+ 
  FromID = "722";
  DestinationID = "720";
  LinkType = 2;

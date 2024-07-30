@@ -30,19 +30,19 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
- DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
+ DepartmentID = "";
  ParentID = 7;
  
  Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID,, ParentID);
  
  
  
- URL = FunctionParameters["Bitrix24_UR"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
- DepartmentID = FunctionParameters["Bitrix24_DepID"];
+ DepartmentID = "";
  Name = "New department";
  ParentID = 1;
  HeadID = 10;
@@ -59,7 +59,7 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 
 ```sh title="CLI command example"
  
-oint bitrix24 UpdateDepartment --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
+ oint bitrix24 UpdateDepartment --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
 
 ```
 

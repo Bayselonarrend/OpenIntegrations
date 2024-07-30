@@ -33,8 +33,8 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
 ```bsl title="Code example"
  Text = "Text of post";
  Title = "Post title";
- Image1 = "https://openintegrations.dev/test_data/picture.jpg";
- Image2 = "https://openintegrations.dev/test_data/picture2.jpg";
+ Image1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+ Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
  
  Files = New Map;
  Files.Insert("1.png", Image1);
@@ -43,6 +43,7 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.CreatePost(URL, Text,, Files, Title, True);
+ 
  
  
  

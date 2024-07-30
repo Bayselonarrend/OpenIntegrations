@@ -33,7 +33,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```bsl title="Code example"
  Text = "New post text";
  Title = "New post title";
- Image1 = "https://openintegrations.dev/test_data/picture.jpg";
+ Image1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
  PostID = "320";
  
  Files = New Map;
@@ -42,6 +42,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text,, Files, Title);
+ 
  
  
  URL = "b24-ar17wx.bitrix24.by";
