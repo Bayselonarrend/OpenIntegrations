@@ -4927,8 +4927,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreatePersonalNotification";
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
-    NewLine.Параметр    = "--another notif. will be deleted";
-    NewLine.Описание    = "tag (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--tag";
+    NewLine.Описание    = " (optional, def. val. - Empty value)";
     NewLine.Область     = "Notifications managment";
 
 
@@ -4988,8 +4988,8 @@
     NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "CreateSystemNotification";
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
-    NewLine.Параметр    = "--another notif. will be deleted";
-    NewLine.Описание    = "tag (optional, def. val. - Empty value)";
+    NewLine.Параметр    = "--tag";
+    NewLine.Описание    = " (optional, def. val. - Empty value)";
     NewLine.Область     = "Notifications managment";
 
 
