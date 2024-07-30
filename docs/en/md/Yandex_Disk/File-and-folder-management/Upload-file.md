@@ -17,7 +17,7 @@ sidebar_position: 10
  | Overwrite | --rewrite | Boolean | Overwrite if a file with the same name already exists |
 
  
- Returns: Map Of KeyAndValue - serialized JSON response from Yandex 
+ Returns: Map Of KeyAndValue - serialized JSON response from Yandex
 
 <br/>
 

@@ -14,7 +14,7 @@ sidebar_position: 9
  | Clear | --empty | Boolean | True > structure with empty valuse, False > field descriptions at values |
 
  
- Returns: Structure of KeyAndValue - Fields structure 
+ Returns: Structure of KeyAndValue - Fields structure
 
 <br/>
 

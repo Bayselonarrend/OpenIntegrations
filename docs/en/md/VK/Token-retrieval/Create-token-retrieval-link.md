@@ -14,7 +14,7 @@ Getting a link for interactive token retrieval (access_token), which is necessar
  | app_id | --app | String, Number | app_id from application settings |
 
  
- Returns: String - URL to go to in the browser 
+ Returns: String - URL to go to in the browser
 
 <br/>
 

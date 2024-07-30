@@ -16,7 +16,7 @@ sidebar_position: 11
  | Token | --token | String | Access token, when app auth method used |
 
  
- Returns: Structure of KeyAndValue - Fields structure 
+ Returns: Structure of KeyAndValue - Fields structure
 
 <br/>
 

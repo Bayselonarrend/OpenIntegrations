@@ -14,7 +14,7 @@ sidebar_position: 1
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: Map Of KeyAndValue - Serialized JSON response from VK 
+ Returns: Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
