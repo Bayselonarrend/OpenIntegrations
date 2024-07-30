@@ -1,0 +1,27 @@
+﻿    {
+ "result": {
+  "STATUS": "CLOSED",
+  "TIME_START": "2024-07-30T07:10:51+00:00",
+  "TIME_FINISH": "2024-07-30T08:32:03+00:00",
+  "DURATION": "00:00:00",
+  "TIME_LEAKS": "00:09:59",
+  "ACTIVE": false,
+  "IP_OPEN": "",
+  "IP_CLOSE": "52.234.27.3",
+  "LAT_OPEN": 0,
+  "LON_OPEN": 0,
+  "LAT_CLOSE": 0,
+  "LON_CLOSE": 0,
+  "TZ_OFFSET": 10800
+ },
+ "time": {
+  "start": 1722328323.49641,
+  "finish": 1722328323.5823,
+  "duration": 0.085892915725708,
+  "processing": 0.0622799396514893,
+  "date_start": "2024-07-30T08:32:03+00:00",
+  "date_finish": "2024-07-30T08:32:03+00:00",
+  "operating_reset_at": 1722328923,
+  "operating": 0
+ }
+}
