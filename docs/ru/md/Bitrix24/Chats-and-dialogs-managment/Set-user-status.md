@@ -27,15 +27,15 @@ sidebar_position: 18
 
 
 ```bsl title="Пример кода"
-  URL    = ПараметрыФункции["Bitrix24_URL"];
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   Статус = "dnd";
   
   Результат = OPI_Bitrix24.УстановитьСтатусПользователя(URL, Статус);
   
   
   
-  URL      = ПараметрыФункции["Bitrix24_Domain"];
-  Токен    = ПараметрыФункции["Bitrix24_Token"];
+  URL      = "b24-ar17wx.bitrix24.by";
+  Токен    = "adf89366006e9f06006b12e400000001000...";
   Статус   = "away";
   
   Результат = OPI_Bitrix24.УстановитьСтатусПользователя(URL, Статус, Токен);
@@ -45,7 +45,7 @@ sidebar_position: 18
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 УстановитьСтатусПользователя --url %url% --status %status% --token %token%
+  oint bitrix24 УстановитьСтатусПользователя --url %url% --status %status% --token %token%
 
 ```
 

@@ -33,12 +33,15 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
 ```bsl title="Code example"
  Name = "New stage";
  Color = "0026FF";
+ 
  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, 6);
  
  
+ 
  PrevStageID = Result["result"];
+ 
  
  Name = "New stage 2";
  Color = "0026FF";

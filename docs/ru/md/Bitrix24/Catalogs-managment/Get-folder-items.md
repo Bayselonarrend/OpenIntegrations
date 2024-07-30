@@ -28,10 +28,11 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  URL        = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
-  IDКаталога = "3278";
+  URL           = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDКаталога    = "3278";
   
   Результат  = OPI_Bitrix24.ПолучитьДочерниеЭлементыКаталога(URL, IDКаталога);
+  
   
   
   URL         = "b24-ar17wx.bitrix24.by";

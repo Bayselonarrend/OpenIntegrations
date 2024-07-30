@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  URL                 = ПараметрыФункции["Bitrix24_URL"];
+  URL                 = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   МассивПользователей = Новый Массив;
   
   МассивПользователей.Добавить(1);
@@ -37,8 +37,8 @@ sidebar_position: 4
   
   
   
-  URL             = ПараметрыФункции["Bitrix24_Domain"];
-  Токен           = ПараметрыФункции["Bitrix24_Token"];
+  URL             = "b24-ar17wx.bitrix24.by";
+  Токен           = "adf89366006e9f06006b12e400000001000...";
   IDПользователей = 10;
   
   Результат = OPI_Bitrix24.ПолучитьПользователей(URL, IDПользователей, Токен);
@@ -48,7 +48,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ПолучитьПользователей --url %url% --users %users% --token %token%
+  oint bitrix24 ПолучитьПользователей --url %url% --users %users% --token %token%
 
 ```
 

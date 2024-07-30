@@ -30,19 +30,19 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  URL = ПараметрыФункции["Bitrix24_URL"];
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
-  IDПодразделения = ПараметрыФункции["Bitrix24_HookDepID"];
+  IDПодразделения = "";
   IDРодителя      = 7;
   
   Результат = OPI_Bitrix24.ИзменитьПодразделение(URL, IDПодразделения, , IDРодителя);
   
   
   
-  URL      = ПараметрыФункции["Bitrix24_Domain"];
-  Токен    = ПараметрыФункции["Bitrix24_Token"];
+  URL      = "b24-ar17wx.bitrix24.by";
+  Токен    = "adf89366006e9f06006b12e400000001000...";
   
-  IDПодразделения = ПараметрыФункции["Bitrix24_DepID"];
+  IDПодразделения = "";
   Наименование    = "Новое подразделение";
   IDРодителя      = 1;
   IDРуководителя  = 10;
@@ -59,7 +59,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ИзменитьПодразделение --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
+  oint bitrix24 ИзменитьПодразделение --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
 
 ```
 

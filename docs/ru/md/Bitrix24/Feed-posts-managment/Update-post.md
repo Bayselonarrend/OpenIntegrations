@@ -33,7 +33,7 @@ sidebar_position: 2
 ```bsl title="Пример кода"
   Текст     = "Новый текст новости";
   Заголовок = "Новый заголовок новости";
-  Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";
+  Картинка1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
   IDНовости = "320";
   
   Файлы     = Новый Соответствие;
@@ -42,6 +42,7 @@ sidebar_position: 2
   URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
   Результат = OPI_Bitrix24.ИзменитьНовость(URL, IDНовости, Текст, , Файлы, Заголовок);
+  
   
   
   URL       = "b24-ar17wx.bitrix24.by";

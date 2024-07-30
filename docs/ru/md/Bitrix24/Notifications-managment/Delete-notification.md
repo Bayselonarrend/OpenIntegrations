@@ -27,16 +27,16 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  URL           = ПараметрыФункции["Bitrix24_URL"];
-  IDУведомления = ПараметрыФункции["Bitrix24_PersoalHookNotifyID"];
+  URL           = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDУведомления = "";
   
   Результат = OPI_Bitrix24.УдалитьУведомление(URL, IDУведомления);
   
   
   
-  URL           = ПараметрыФункции["Bitrix24_Domain"];
-  Токен         = ПараметрыФункции["Bitrix24_Token"];
-  IDУведомления = ПараметрыФункции["Bitrix24_PersoalNotifyID"];
+  URL           = "b24-ar17wx.bitrix24.by";
+  Токен         = "adf89366006e9f06006b12e400000001000...";
+  IDУведомления = "";
   
   Результат = OPI_Bitrix24.УдалитьУведомление(URL, IDУведомления, Токен);
 ```
@@ -45,7 +45,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 УдалитьУведомление --url %url% --notif %notif% --token %token%
+  oint bitrix24 УдалитьУведомление --url %url% --notif %notif% --token %token%
 
 ```
 

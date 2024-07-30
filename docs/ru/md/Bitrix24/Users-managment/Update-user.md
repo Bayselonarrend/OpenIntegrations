@@ -28,8 +28,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  URL            = ПараметрыФункции["Bitrix24_URL"];
-  IDПользователя = ПараметрыФункции["Bitrix24_HookUserID"];
+  URL            = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDПользователя = "";
   Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
   
   // Полную структуру можно получить функцией ПолучитьСтурктуруПользователя
@@ -42,9 +42,9 @@ sidebar_position: 4
   
   
   
-  URL            = ПараметрыФункции["Bitrix24_Domain"];
-  Токен          = ПараметрыФункции["Bitrix24_Token"];
-  IDПользователя = ПараметрыФункции["Bitrix24_UserID"];
+  URL            = "b24-ar17wx.bitrix24.by";
+  Токен          = "adf89366006e9f06006b12e400000001000...";
+  IDПользователя = "10";
   Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
   
   СтруктураПользователя = Новый Структура;
@@ -60,7 +60,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ИзменитьПользователя --url %url% --userid %userid% --fields %fields% --token %token%
+  oint bitrix24 ИзменитьПользователя --url %url% --userid %userid% --fields %fields% --token %token%
 
 ```
 

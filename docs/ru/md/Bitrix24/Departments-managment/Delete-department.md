@@ -27,16 +27,16 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  URL             = ПараметрыФункции["Bitrix24_URL"];
-  IDПодразделения = ПараметрыФункции["Bitrix24_DepID"];
+  URL             = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDПодразделения = "";
   
   Результат = OPI_Bitrix24.УдалитьПодразделение(URL, IDПодразделения);
   
   
   
-  URL             = ПараметрыФункции["Bitrix24_Domain"];
-  Токен           = ПараметрыФункции["Bitrix24_Token"];
-  IDПодразделения = ПараметрыФункции["Bitrix24_HookDepID"];
+  URL             = "b24-ar17wx.bitrix24.by";
+  Токен           = "adf89366006e9f06006b12e400000001000...";
+  IDПодразделения = "";
   
   Результат = OPI_Bitrix24.УдалитьПодразделение(URL, IDПодразделения, Токен);
 ```
@@ -45,7 +45,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 УдалитьПодразделение --url %url% --depid %depid% --token %token%
+  oint bitrix24 УдалитьПодразделение --url %url% --depid %depid% --token %token%
 
 ```
 

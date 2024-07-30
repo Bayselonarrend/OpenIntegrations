@@ -27,14 +27,14 @@ Method at API documentation: [task.item.userfield.get](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
- FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ FieldID = "";
  
  Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID);
  
- URL = FunctionParameters["Bitrix24_UR"];
- Token = FunctionParameters["Bitrix24_Token"];
- FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
+ FieldID = "";
  
  Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID, );
 ```
@@ -43,7 +43,7 @@ Method at API documentation: [task.item.userfield.get](https://dev.1c-bitrix.ru/
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetCustomTaskField --url %url% --fieldid %fieldid% --token %token%
+ oint bitrix24 GetCustomTaskField --url %url% --fieldid %fieldid% --token %token%
 
 ```
 

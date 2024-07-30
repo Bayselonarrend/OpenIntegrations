@@ -29,14 +29,14 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  URL = ПараметрыФункции["Bitrix24_URL"];
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   
   Результат = OPI_Bitrix24.НачатьУчетВремени(URL);
   
   Час = 3600;
   
-  URL            = ПараметрыФункции["Bitrix24_Domain"];
-  Токен          = ПараметрыФункции["Bitrix24_Token"];
+  URL            = "b24-ar17wx.bitrix24.by";
+  Токен          = "adf89366006e9f06006b12e400000001000...";
   IDПользователя = 1;
   Время          = OPI_Инструменты.ПолучитьТекущуюДату() - Час;
   Отчет          = "Опоздание";
@@ -48,7 +48,7 @@ sidebar_position: 6
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 НачатьУчетВремени --url %url% --userid %userid% --time %time% --report %report% --token %token%
+  oint bitrix24 НачатьУчетВремени --url %url% --userid %userid% --time %time% --report %report% --token %token%
 
 ```
 

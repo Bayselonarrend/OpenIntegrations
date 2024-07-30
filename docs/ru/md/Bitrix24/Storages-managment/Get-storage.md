@@ -27,10 +27,11 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  URL         = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
-  IDХранилища = 3;
+  URL            = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDХранилища    = 3;
   
   Результат = OPI_Bitrix24.ПолучитьХранилище(URL, IDХранилища);
+  
   
   
   URL         = "b24-ar17wx.bitrix24.by";

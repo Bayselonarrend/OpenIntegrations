@@ -1,11 +1,12 @@
 ﻿    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
     IDЧата  = "264";
-    
+
     Результат = OPI_Bitrix24.ПокинутьЧат(URL, IDЧата);
 
-    
+
+
     URL       = "b24-ar17wx.bitrix24.by";
     Токен     = "adf89366006e9f06006b12e400000001000...";
     IDЧата    = "266";
-    
+
     Результат = OPI_Bitrix24.ПокинутьЧат(URL, IDЧата, Токен);
