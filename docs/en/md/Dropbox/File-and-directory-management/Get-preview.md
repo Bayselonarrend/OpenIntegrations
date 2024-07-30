@@ -15,7 +15,7 @@ sidebar_position: 3
  | Path | --path | String | Path to the object |
 
  
- Returns: BinaryData - document preview 
+ Returns: BinaryData - document preview
 
 <br/>
 
