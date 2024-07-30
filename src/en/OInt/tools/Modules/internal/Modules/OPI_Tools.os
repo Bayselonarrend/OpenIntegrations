@@ -509,11 +509,11 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
 
     ElsIf Type = "DateISO" Then
         OPI_TypeConversion.GetDate(Value);
-        Value  = XMLString(Value);
+        Value  = Left(XMLString(Value), 19);
 
     ElsIf Type = "DateISOZ" Then
         OPI_TypeConversion.GetDate(Value);
-        Value  = XMLString(Value) + "Z";
+        Value  = Left(XMLString(Value), 19) + "Z";
 
     ElsIf Type = "Collection" Then
         OPI_TypeConversion.GetCollection(Value);
