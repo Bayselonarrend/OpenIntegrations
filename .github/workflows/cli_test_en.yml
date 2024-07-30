@@ -4775,7 +4775,7 @@ jobs:
           --url "" \
           --user "" \
           --text "Тестовый текст" \
-          --another notif. will be deleted "" \
+          --tag "" \
           --blocks "" \
           --token "" \
 
@@ -4789,7 +4789,7 @@ jobs:
           --url "" \
           --user "" \
           --text "Тестовый текст" \
-          --another notif. will be deleted "" \
+          --tag "" \
           --blocks "" \
           --token "" \
 
