@@ -2692,6 +2692,201 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StartTimekeeping";
+    NewLine.МетодПоиска = "STARTTIMEKEEPING";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Starts user timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StartTimekeeping";
+    NewLine.МетодПоиска = "STARTTIMEKEEPING";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StartTimekeeping";
+    NewLine.МетодПоиска = "STARTTIMEKEEPING";
+    NewLine.Параметр    = "--time";
+    NewLine.Описание    = "Start time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StartTimekeeping";
+    NewLine.МетодПоиска = "STARTTIMEKEEPING";
+    NewLine.Параметр    = "--report";
+    NewLine.Описание    = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StartTimekeeping";
+    NewLine.МетодПоиска = "STARTTIMEKEEPING";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StopTimekeeping";
+    NewLine.МетодПоиска = "STOPTIMEKEEPING";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Stops user timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StopTimekeeping";
+    NewLine.МетодПоиска = "STOPTIMEKEEPING";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StopTimekeeping";
+    NewLine.МетодПоиска = "STOPTIMEKEEPING";
+    NewLine.Параметр    = "--time";
+    NewLine.Описание    = "Stop time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StopTimekeeping";
+    NewLine.МетодПоиска = "STOPTIMEKEEPING";
+    NewLine.Параметр    = "--report";
+    NewLine.Описание    = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "StopTimekeeping";
+    NewLine.МетодПоиска = "STOPTIMEKEEPING";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "PauseTimekeeping";
+    NewLine.МетодПоиска = "PAUSETIMEKEEPING";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Pauses user timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "PauseTimekeeping";
+    NewLine.МетодПоиска = "PAUSETIMEKEEPING";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "PauseTimekeeping";
+    NewLine.МетодПоиска = "PAUSETIMEKEEPING";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTimekeepingStatus";
+    NewLine.МетодПоиска = "GETTIMEKEEPINGSTATUS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Gets user timekeeping status";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTimekeepingStatus";
+    NewLine.МетодПоиска = "GETTIMEKEEPINGSTATUS";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTimekeepingStatus";
+    NewLine.МетодПоиска = "GETTIMEKEEPINGSTATUS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTimekeepingSettings";
+    NewLine.МетодПоиска = "GETTIMEKEEPINGSETTINGS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Timekeeping";
+    NewLine.ОписаниеМетода   = "Gets user timekeeping settings";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTimekeepingSettings";
+    NewLine.МетодПоиска = "GETTIMEKEEPINGSETTINGS";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetTimekeepingSettings";
+    NewLine.МетодПоиска = "GETTIMEKEEPINGSETTINGS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Timekeeping";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetStoragesList";
     NewLine.МетодПоиска = "GETSTORAGESLIST";
     NewLine.Параметр    = "--url";
@@ -5221,6 +5416,37 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "bitrix24";
     NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "FindUsers";
+    NewLine.МетодПоиска = "FINDUSERS";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Gets the list of users according to the specified filter";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "FindUsers";
+    NewLine.МетодПоиска = "FINDUSERS";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Filter. See GetUserFilterStructure";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "FindUsers";
+    NewLine.МетодПоиска = "FINDUSERS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
     NewLine.Метод       = "GetUserFieldsStructure";
     NewLine.МетодПоиска = "GETUSERFIELDSSTRUCTURE";
     NewLine.Параметр    = "--url";
@@ -5237,6 +5463,17 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
     NewLine.Область     = "Users managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetUserFilterStructure";
+    NewLine.МетодПоиска = "GETUSERFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Область     = "Users managment";
+    NewLine.ОписаниеМетода   = "Returns the field structure for filtering users in the FindUsers method";
 
     Return CompositionTable;
 EndFunction

@@ -1987,6 +1987,147 @@ Function UpdateTaskTimeAccounting(Val URL
 
 EndFunction
 
+// Start timekeeping
+// Starts user timekeeping
+//
+// Note
+// Method at API documentation: [timeman.open](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_open.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default - userid
+// Time - Date - Start time. The date must match the current. Current time by default. - time
+// Report - String - Reason for change. Required when Time is specified and free schedule is disabled - report
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function StartTimekeeping(Val URL
+    , Val UserID = ""
+    , Val Time = ""
+    , Val Report = ""
+    , Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "timeman.open");
+
+    OPI_Tools.AddField("USER_ID", UserID , "String"  , Parameters);
+    OPI_Tools.AddField("TIME"   , Time   , "DateISOZ", Parameters);
+    OPI_Tools.AddField("REPORT" , Report , "String"  , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Stop timekeeping
+// Stops user timekeeping
+//
+// Note
+// Method at API documentation: [timeman.close](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_close.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default - userid
+// Time - Date - Stop time. The date must match the current. Current time by default. - time
+// Report - String - Reason for change. Required when Time is specified and free schedule is disabled - report
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function StopTimekeeping(Val URL
+    , Val UserID = ""
+    , Val Time = ""
+    , Val Report = ""
+    , Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "timeman.close");
+
+    OPI_Tools.AddField("USER_ID", UserID , "String"  , Parameters);
+    OPI_Tools.AddField("TIME"   , Time   , "DateISOZ", Parameters);
+    OPI_Tools.AddField("REPORT" , Report , "String"  , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Stop timekeeping
+// Pauses user timekeeping
+//
+// Note
+// Method at API documentation: [timeman.pause](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_pause.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default - userid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function PauseTimekeeping(Val URL, Val UserID = "", Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "timeman.pause");
+
+    OPI_Tools.AddField("USER_ID", UserID, "String" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get timekeeping status
+// Gets user timekeeping status
+//
+// Note
+// Method at API documentation: [timeman.status](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_status.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default - userid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTimekeepingStatus(Val URL, Val UserID = "", Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "timeman.status");
+
+    OPI_Tools.AddField("USER_ID", UserID, "String" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get timekeeping settings
+// Gets user timekeeping settings
+//
+// Note
+// Method at API documentation: [timeman.settings](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_settings.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// UserID - String, Number - Users ID. Current by default - userid
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetTimekeepingSettings(Val URL, Val UserID = "", Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "timeman.settings");
+
+    OPI_Tools.AddField("USER_ID", UserID, "String" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #Region StoragesManagment
@@ -3853,6 +3994,31 @@ Function ChangeUserStatus(Val URL, Val UserID, Val Fire = True, Val Token = "") 
 
 EndFunction
 
+// Find users
+// Gets the list of users according to the specified filter
+//
+// Note
+// Method at API documentation: [user.update](@dev.1c-bitrix.ru/rest_help/users/user_update.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FilterStructure - Structure of KeyAndValue - Filter. See GetUserFilterStructure - filter
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function FindUsers(Val URL, Val FilterStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "user.search");
+
+    OPI_Tools.AddField("FILTER", FilterStructure, "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Get user fields structure
 // Gets the field structure for creating or modifying user information
 //
@@ -3872,6 +4038,36 @@ Function GetUserFieldsStructure(Val URL, Val Token = "") Export
     Response = OPI_Tools.Post(URL, Parameters);
 
     Return Response;
+
+EndFunction
+
+// Get user filter structure
+// Returns the field structure for filtering users in the FindUsers method
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetUserFilterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("NAME"              , "<name>");
+    FilterStructure.Insert("LAST_NAME"         , "<surname>");
+    FilterStructure.Insert("WORK_POSITION"     , "<position>");
+    FilterStructure.Insert("UF_DEPARTMENT_NAME", "<name department>");
+    FilterStructure.Insert("USER_TYPE"         , "<type employee, extranet, email>");
+
+    If Clear Then
+        For Each Filter In FilterStructure Do
+            Filter.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
 
 EndFunction
 
