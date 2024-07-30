@@ -3638,7 +3638,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // UserID - String, Number - User ID for sending the notification - user
 // Text - String - Notification text - text
-// Tag - String -  - tag
+// Tag - String - Uniqueness Tag. If already exist, other notif. will be deleted - tag
 // Attachments - Array of Structure - Array of attachments - blocks
 // Token - String - Access token, when app auth method used - token
 //
@@ -3674,7 +3674,7 @@ EndFunction
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // UserID - String, Number - User ID for sending the notification - user
 // Text - String - Notification text - text
-// Tag - String -  - tag
+// Tag - String - Uniqueness Tag. If already exist, other notif. will be deleted - tag
 // Attachments - Array of Structure - Array of attachments - blocks
 // Token - String - Access token, when app auth method used - token
 //

@@ -4928,7 +4928,7 @@
     NewLine.Метод       = "CreatePersonalNotification";
     NewLine.МетодПоиска = "CREATEPERSONALNOTIFICATION";
     NewLine.Параметр    = "--tag";
-    NewLine.Описание    = " (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
     NewLine.Область     = "Notifications managment";
 
 
@@ -4989,7 +4989,7 @@
     NewLine.Метод       = "CreateSystemNotification";
     NewLine.МетодПоиска = "CREATESYSTEMNOTIFICATION";
     NewLine.Параметр    = "--tag";
-    NewLine.Описание    = " (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
     NewLine.Область     = "Notifications managment";
 
 
