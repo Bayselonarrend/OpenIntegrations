@@ -15,7 +15,7 @@ sidebar_position: 5
  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
  
- Returns: String - Shortened URL 
+ Returns: String - Shortened URL
 
 <br/>
 

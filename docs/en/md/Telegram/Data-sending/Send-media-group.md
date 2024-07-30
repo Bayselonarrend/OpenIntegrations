@@ -23,7 +23,10 @@ sidebar_position: 7
 
 <br/>
 
-
+:::tip
+Map: Key - File, Value - media type
+:::
+<br/>
 
 
 ```bsl title="Code example"

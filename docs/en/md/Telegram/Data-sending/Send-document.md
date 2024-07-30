@@ -7,7 +7,7 @@ sidebar_position: 5
 
 
 
-`Function SendDocument(Val Token, Val ChatID, Val Text, Val Document, Val Keyboard = "", Val Markup = "Markdown") Export`
+`Function SendDocument(Val Token, Val ChatID, Val Text, Val Document, Val Keyboard = "", Val Markup = "Markdown", Val FileName = "") Export`
 
  | Parameter | CLI option | Type | Destination |
  |-|-|-|-|
@@ -17,6 +17,7 @@ sidebar_position: 5
  | Document | --doc | BinaryData,String | Document file |
  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
  | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
+ | FileName | --filename | String | Custom displayed file name with extension, if necessary |
 
  
  Returns: Map Of KeyAndValue - Serialized JSON response from Telegram

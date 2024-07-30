@@ -16,7 +16,7 @@ sidebar_position: 1
  | Detailed | --detail | Boolean | Add information fields for mediafiles |
 
  
- Returns: Map Of KeyAndValue - serialized JSON response from Dropbox 
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 <br/>
 

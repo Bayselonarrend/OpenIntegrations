@@ -25,7 +25,7 @@ sidebar_position: 2
 <br/>
 
 :::tip
-Метод в документации API: [log.blogpost.update](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php.php)
+Метод в документации API: [log.blogpost.update](https://dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php)
 :::
 <br/>
 

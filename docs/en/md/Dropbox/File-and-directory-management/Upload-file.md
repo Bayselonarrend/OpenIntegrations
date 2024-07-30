@@ -17,7 +17,7 @@ sidebar_position: 4
  | Overwrite | --overwrite | Boolean | Overwrite file in case of path conflicts |
 
  
- Returns: Map Of KeyAndValue - serialized JSON response from Dropbox 
+ Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
 
 <br/>
 

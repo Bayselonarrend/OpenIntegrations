@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 18
+sidebar_position: 21
 ---
 
 # Get chats structure
@@ -14,7 +14,7 @@ sidebar_position: 18
  | Clear | --empty | Boolean | True > structure with empty values, False > field types at values |
 
  
- Returns: Structure of KeyAndValue - Fields structure 
+ Returns: Structure of KeyAndValue - Fields structure
 
 <br/>
 

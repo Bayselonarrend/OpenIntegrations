@@ -14,7 +14,7 @@ sidebar_position: 1
  | Token | --token | String | Bot token |
 
  
- Returns: Map Of KeyAndValue - Serialized JSON response from Slack 
+ Returns: Map Of KeyAndValue - Serialized JSON response from Slack
 
 <br/>
 
