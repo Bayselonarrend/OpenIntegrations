@@ -1,0 +1,1 @@
+﻿oint bitrix24 ИзменитьПользовательскоеПолеЗадачи --url %url% --fieldid %fieldid% --externalid %externalid% --title %title% --label %label% --token %token%

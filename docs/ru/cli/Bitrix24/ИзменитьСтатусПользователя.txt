@@ -1,0 +1,1 @@
+﻿oint bitrix24 ИзменитьСтатусПользователя --url %url% --userid %userid% --fire %fire% --token %token%

@@ -1,0 +1,1 @@
+﻿oint bitrix24 СоздатьПерсональноеУведомление --url %url% --user %user% --text %text% --tag %tag% --blocks %blocks% --token %token%
