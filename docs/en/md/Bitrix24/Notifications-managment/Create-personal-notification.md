@@ -32,7 +32,7 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
 ```bsl title="Code example"
  UserID = 1;
  
- URL = FunctionParameters["Bitrix24_URL"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  Text = "Message text";
  Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
  File = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -46,8 +46,8 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
  
  
  
- URL = FunctionParameters["Bitrix24_Domain"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  Tag = "New";
  UserID = 10;
  
@@ -58,7 +58,7 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
 
 ```sh title="CLI command example"
  
-oint bitrix24 CreatePersonalNotification --url %url% --user %user% --text %text% --tag %tag% --blocks %blocks% --token %token%
+ oint bitrix24 CreatePersonalNotification --url %url% --user %user% --text %text% --tag %tag% --blocks %blocks% --token %token%
 
 ```
 

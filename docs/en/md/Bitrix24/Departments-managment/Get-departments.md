@@ -30,15 +30,15 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
- DepartmentID = FunctionParameters["Bitrix24_DepID"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ DepartmentID = "";
  
  Result = OPI_Bitrix24.GetDepartments(URL, DepartmentID);
  
  
  
- URL = FunctionParameters["Bitrix24_Domain"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  HeadID = 1;
  
  Result = OPI_Bitrix24.GetDepartments(URL,,,, HeadID, Token);
@@ -48,7 +48,7 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
 
 ```sh title="CLI command example"
  
-oint bitrix24 GetDepartments --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
+ oint bitrix24 GetDepartments --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
 
 ```
 

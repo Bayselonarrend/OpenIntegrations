@@ -29,7 +29,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Name = "Main department";
  ParentID = 1;
@@ -39,11 +39,11 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
  
  
  
- URL = FunctionParameters["Bitrix24_UR"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
  Name = "Subordinate department";
- ParentID = FunctionParameters["Bitrix24_HookDepID"];
+ ParentID = "";
  HeadID = 1;
  
  Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID, HeadID, Token);
@@ -53,7 +53,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 
 ```sh title="CLI command example"
  
-oint bitrix24 CreateDepartment --url %url% --title %title% --parentid %parentid% --headid %headid% --token %token%
+ oint bitrix24 CreateDepartment --url %url% --title %title% --parentid %parentid% --headid %headid% --token %token%
 
 ```
 
