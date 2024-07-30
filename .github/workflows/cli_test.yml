@@ -3676,6 +3676,67 @@ jobs:
 
 
 
+      - name: Выполнить ПолучитьСписокПользовательскихПолейЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокПользовательскихПолейЗадачи --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ДобавитьПользовательскоеПолеЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ДобавитьПользовательскоеПолеЗадачи --debug --test \
+          --url "" \
+          --type "" \
+          --fieldname "" \
+          --externalid "" \
+          --title "Тест" \
+          --label "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьПользовательскоеПолеЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьПользовательскоеПолеЗадачи --debug --test \
+          --url "" \
+          --fieldid "" \
+          --externalid "" \
+          --title "Тест" \
+          --label "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьПользовательскоеПолеЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьПользовательскоеПолеЗадачи --debug --test \
+          --url "" \
+          --fieldid "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьПользовательскоеПолеЗадачи
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьПользовательскоеПолеЗадачи --debug --test \
+          --url "" \
+          --fieldid "" \
+          --token "" \
+
+
+
       - name: Выполнить ДобавитьЭлементЧеклистаЗадачи
         if: ${{ cancelled() }} == false
         run: |
@@ -3992,6 +4053,65 @@ jobs:
           --amount "" \
           --text "Тестовый текст" \
           --date "" \
+          --token "" \
+
+
+
+      - name: Выполнить НачатьУчетВремени
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 НачатьУчетВремени --debug --test \
+          --url "" \
+          --userid "" \
+          --time "" \
+          --report "" \
+          --token "" \
+
+
+
+      - name: Выполнить ЗавершитьУчетВремени
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ЗавершитьУчетВремени --debug --test \
+          --url "" \
+          --userid "" \
+          --time "" \
+          --report "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПриостановитьУчетВремени
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПриостановитьУчетВремени --debug --test \
+          --url "" \
+          --userid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтатусУчетаВремени
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтатусУчетаВремени --debug --test \
+          --url "" \
+          --userid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьНастройкиУчетаВремени
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьНастройкиУчетаВремени --debug --test \
+          --url "" \
+          --userid "" \
           --token "" \
 
 
@@ -4339,6 +4459,17 @@ jobs:
 
 
 
+      - name: Выполнить ПолучитьПользователей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьПользователей --debug --test \
+          --url "" \
+          --users "" \
+          --token "" \
+
+
+
       - name: Выполнить ДобавитьПользователейВЧат
         if: ${{ cancelled() }} == false
         run: |
@@ -4480,6 +4611,27 @@ jobs:
 
 
 
+      - name: Выполнить ПолучитьСтатусПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтатусПользователя --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить УстановитьСтатусПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УстановитьСтатусПользователя --debug --test \
+          --url "" \
+          --status "" \
+          --token "" \
+
+
+
       - name: Выполнить ПрочитатьВсе
         if: ${{ cancelled() }} == false
         run: |
@@ -4612,6 +4764,183 @@ jobs:
           ./oint bitrix24 ПолучитьБлокФайла --debug --test \
           --title "Тест" \
           --url "" \
+
+
+
+      - name: Выполнить СоздатьПерсональноеУведомление
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьПерсональноеУведомление --debug --test \
+          --url "" \
+          --user "" \
+          --text "Тестовый текст" \
+          --другие увед. будут удалены "" \
+          --blocks "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьСистемноеУведомление
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьСистемноеУведомление --debug --test \
+          --url "" \
+          --user "" \
+          --text "Тестовый текст" \
+          --другие увед. будут удалены "" \
+          --blocks "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьУведомление
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьУведомление --debug --test \
+          --url "" \
+          --notif "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьПодразделение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьПодразделение --debug --test \
+          --url "" \
+          --title "Тест" \
+          --parentid "" \
+          --headid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьПодразделение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьПодразделение --debug --test \
+          --url "" \
+          --depid "" \
+          --title "Тест" \
+          --parentid "" \
+          --headid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьПодразделения
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьПодразделения --debug --test \
+          --url "" \
+          --depid "" \
+          --title "Тест" \
+          --parentid "" \
+          --headid "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьПодразделение
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьПодразделение --debug --test \
+          --url "" \
+          --depid "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьТекущегоПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьТекущегоПользователя --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьПользователя --debug --test \
+          --url "" \
+          --userid "" \
+          --token "" \
+
+
+
+      - name: Выполнить СоздатьПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьПользователя --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьПользователя --debug --test \
+          --url "" \
+          --userid "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьСтатусПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьСтатусПользователя --debug --test \
+          --url "" \
+          --userid "" \
+          --fire "" \
+          --token "" \
+
+
+
+      - name: Выполнить НайтиПользователей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 НайтиПользователей --debug --test \
+          --url "" \
+          --filter "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтурктуруПользователя
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтурктуруПользователя --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруФильтраПользователей
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруФильтраПользователей --debug --test \
+          --empty "" \
 
   Clear-Cache:
     runs-on: ubuntu-latest
