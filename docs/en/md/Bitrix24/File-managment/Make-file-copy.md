@@ -36,12 +36,14 @@ Method at API documentation: [disk.file.copyto](https://dev.1c-bitrix.ru/rest_he
  Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID);
  
  
+ 
  FolderID = "3278";
  
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID, Token);
+ 
  
  Check_BitrixObject(Result);
 ```

@@ -36,11 +36,12 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
  
  
  
+ 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  UserID = 10;
  
- Result = OPI_Bitrix24.GetChatMessagesList(URL, UserID,, 0,Token);
+ Result = OPI_Bitrix24.GetChatMessagesList(URL, UserID,, 0, Token);
 ```
 	
 

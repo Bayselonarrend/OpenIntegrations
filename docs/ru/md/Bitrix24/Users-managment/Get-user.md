@@ -27,16 +27,16 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  URL            = ПараметрыФункции["Bitrix24_URL"];
-  IDПользователя = ПараметрыФункции["Bitrix24_HookUserID"];
+  URL            = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDПользователя = "";
   
   Результат = OPI_Bitrix24.ПолучитьПользователя(URL, IDПользователя);
   
   
   
-  URL            = ПараметрыФункции["Bitrix24_Domain"];
-  Токен          = ПараметрыФункции["Bitrix24_Token"];
-  IDПользователя = ПараметрыФункции["Bitrix24_UserID"];
+  URL            = "b24-ar17wx.bitrix24.by";
+  Токен          = "adf89366006e9f06006b12e400000001000...";
+  IDПользователя = "10";
   
   Результат = OPI_Bitrix24.ПолучитьПользователя(URL, IDПользователя, Токен);
 ```
@@ -45,7 +45,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ПолучитьПользователя --url %url% --userid %userid% --token %token%
+  oint bitrix24 ПолучитьПользователя --url %url% --userid %userid% --token %token%
 
 ```
 

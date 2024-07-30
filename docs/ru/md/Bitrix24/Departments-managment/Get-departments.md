@@ -30,15 +30,15 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  URL             = ПараметрыФункции["Bitrix24_URL"];
-  IDПодразделения = ПараметрыФункции["Bitrix24_DepID"];
+  URL             = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDПодразделения = "";
   
   Результат = OPI_Bitrix24.ПолучитьПодразделения(URL, IDПодразделения);
   
   
   
-  URL             = ПараметрыФункции["Bitrix24_Domain"];
-  Токен           = ПараметрыФункции["Bitrix24_Token"];
+  URL             = "b24-ar17wx.bitrix24.by";
+  Токен           = "adf89366006e9f06006b12e400000001000...";
   IDРуководителя  = 1;
   
   Результат = OPI_Bitrix24.ПолучитьПодразделения(URL, , , , IDРуководителя, Токен);
@@ -48,7 +48,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ПолучитьПодразделения --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
+  oint bitrix24 ПолучитьПодразделения --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
 
 ```
 

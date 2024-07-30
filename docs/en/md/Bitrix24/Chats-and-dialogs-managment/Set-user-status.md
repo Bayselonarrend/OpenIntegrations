@@ -27,15 +27,15 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  Status = "dnd";
  
  Result = OPI_Bitrix24.SetUserStatus(URL, Status);
  
  
  
- URL = FunctionParameters["Bitrix24_UR"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  Status = "away";
  
  Result = OPI_Bitrix24.SetUserStatus(URL, Status, Token);
@@ -45,7 +45,7 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 
 ```sh title="CLI command example"
  
-oint bitrix24 SetUserStatus --url %url% --status %status% --token %token%
+ oint bitrix24 SetUserStatus --url %url% --status %status% --token %token%
 
 ```
 

@@ -51,6 +51,8 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
  Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
  
  
+ 
+ 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  

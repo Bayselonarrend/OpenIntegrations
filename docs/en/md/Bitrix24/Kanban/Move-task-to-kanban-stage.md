@@ -38,6 +38,7 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
  Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
  
  
+ 
  StageID = "198";
  
  URL = "b24-ar17wx.bitrix24.by";

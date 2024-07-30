@@ -32,7 +32,7 @@ sidebar_position: 1
 ```bsl title="Пример кода"
   IDПользователя = 1;
   
-  URL      = ПараметрыФункции["Bitrix24_URL"];
+  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
   Текст    = "Текст сообщения";
   Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
   Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -46,8 +46,8 @@ sidebar_position: 1
   
   
   
-  URL            = ПараметрыФункции["Bitrix24_Domain"];
-  Токен          = ПараметрыФункции["Bitrix24_Token"];
+  URL            = "b24-ar17wx.bitrix24.by";
+  Токен          = "adf89366006e9f06006b12e400000001000...";
   Тег            = "Новый";
   IDПользователя = 10;
   
@@ -58,7 +58,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 СоздатьПерсональноеУведомление --url %url% --user %user% --text %text% --tag %tag% --blocks %blocks% --token %token%
+  oint bitrix24 СоздатьПерсональноеУведомление --url %url% --user %user% --text %text% --tag %tag% --blocks %blocks% --token %token%
 
 ```
 

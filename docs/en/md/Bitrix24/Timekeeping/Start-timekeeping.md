@@ -29,14 +29,14 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
  Result = OPI_Bitrix24.StartTimekeeping(URL);
  
  Hour = 3600;
  
- URL = FunctionParameters["Bitrix24_Domain"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  UserID = 1;
  Time = OPI_Tools.GetCurrentDate() - Hour;
  Report = "Late";
@@ -48,7 +48,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 
 ```sh title="CLI command example"
  
-oint bitrix24 StartTimekeeping --url %url% --userid %userid% --time %time% --report %report% --token %token%
+ oint bitrix24 StartTimekeeping --url %url% --userid %userid% --time %time% --report %report% --token %token%
 
 ```
 

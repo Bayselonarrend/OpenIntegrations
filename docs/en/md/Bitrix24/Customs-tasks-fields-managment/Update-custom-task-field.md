@@ -30,17 +30,17 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
 
 
 ```bsl title="Code example"
- URL = FunctionParameters["Bitrix24_URL"];
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
  
- FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+ FieldID = "";
  Title = "New title";
  
  Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID,, Title);
  
- URL = FunctionParameters["Bitrix24_URL"];
- Token = FunctionParameters["Bitrix24_Token"];
+ URL = "b24-ar17wx.bitrix24.by";
+ Token = "adf89366006e9f06006b12e400000001000...";
  
- FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
+ FieldID = "";
  ExternalID = "NEW_TEXT_FIELD";
  Signature = New Structure("en,ru", "Updated field", "Izmenennoe pole");
  
@@ -51,7 +51,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
 
 ```sh title="CLI command example"
  
-oint bitrix24 UpdateCustomTaskField --url %url% --fieldid %fieldid% --externalid %externalid% --title %title% --label %label% --token %token%
+ oint bitrix24 UpdateCustomTaskField --url %url% --fieldid %fieldid% --externalid %externalid% --title %title% --label %label% --token %token%
 
 ```
 

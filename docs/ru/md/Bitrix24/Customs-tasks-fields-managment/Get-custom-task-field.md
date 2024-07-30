@@ -27,14 +27,14 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  URL      = ПараметрыФункции["Bitrix24_URL"];
-  IDПоля   = ПараметрыФункции["Bitrix24_HookTaskFieldID"];
+  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  IDПоля   = "";
   
   Результат = OPI_Bitrix24.ПолучитьПользовательскоеПолеЗадачи(URL, IDПоля);
   
-  URL      = ПараметрыФункции["Bitrix24_Domain"];
-  Токен    = ПараметрыФункции["Bitrix24_Token"];
-  IDПоля   = ПараметрыФункции["Bitrix24_TaskFieldID"];
+  URL      = "b24-ar17wx.bitrix24.by";
+  Токен    = "adf89366006e9f06006b12e400000001000...";
+  IDПоля   = "";
   
   Результат = OPI_Bitrix24.ПолучитьПользовательскоеПолеЗадачи(URL, IDПоля, );
 ```
@@ -43,7 +43,7 @@ sidebar_position: 4
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ПолучитьПользовательскоеПолеЗадачи --url %url% --fieldid %fieldid% --token %token%
+  oint bitrix24 ПолучитьПользовательскоеПолеЗадачи --url %url% --fieldid %fieldid% --token %token%
 
 ```
 
