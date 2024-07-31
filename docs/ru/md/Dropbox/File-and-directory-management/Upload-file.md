@@ -26,7 +26,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
   Путь      = "/New/pic.png";
-  Токен     = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+  Токен     = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
   Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
   
   КартинкаПуть = ПолучитьИмяВременногоФайла("png");

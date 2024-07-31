@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Token = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
+ Token = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
  Path = "/New";
  
  Result = OPI_Dropbox.PublishFolder(Token, Path);

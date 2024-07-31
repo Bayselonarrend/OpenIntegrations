@@ -25,9 +25,16 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.EditProductPropertyVariant("Yellow", 260, 980 Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Property = "607";
+ Option = "1924";
+ Value = "New variant name";
+ 
+ Result = OPI_VK.EditProductPropertyVariant(Value
+, Property
+, Option
+, Parameters);
 ```
 	
 

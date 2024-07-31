@@ -23,9 +23,11 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.CreateProductProperty("Color", Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Name = "Color";
+ 
+ Result = OPI_VK.CreateProductProperty(Name, Parameters);
 ```
 	
 

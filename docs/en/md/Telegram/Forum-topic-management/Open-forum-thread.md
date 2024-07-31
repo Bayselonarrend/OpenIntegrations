@@ -26,9 +26,12 @@ sidebar_position: 5
 ```bsl title="Code example"
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
- Topic = "2673";
+ Topic = "3566";
  
  Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
+ 
+ 
+ 
  Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);
 ```
 	
