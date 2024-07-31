@@ -24,9 +24,12 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.PauseAdvertising(1234567890, 1029701085, Parameters);
- Response = OPI_Tools.JSONString(Response);
+ AccountID = "1607951446";
+ AdID = "0";
+ 
+ Result = OPI_VK.PauseAdvertising(AccountID, AdID, Parameters);
 ```
 	
 

@@ -23,13 +23,16 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
+ 
+ Item1 = "9286828";
+ Item2 = "9286829";
  
  ProductsArray = New Array;
- ProductsArray.Add("8656033");
- ProductsArray.Add("8656034");
+ ProductsArray.Add(Item1);
+ ProductsArray.Add(Item2);
  
- Response = OPI_VK.GetProductsByID(ProductsArray, Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Result = OPI_VK.GetProductsByID(ProductsArray, Parameters);
 ```
 	
 

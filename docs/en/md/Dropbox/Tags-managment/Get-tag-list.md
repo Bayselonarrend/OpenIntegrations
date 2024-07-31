@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Token = "sl.B22821SXrkmxs9KAaC6M_ax_M33mEcEvKz9sqgcMO8Xwn0bvpx4_57UQqLR_gEuPS_Yk5yd3Tv...";
+ Token = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
  
  PathsArray = New Array;
  PathsArray.Add("/New/Dogs.mp3");

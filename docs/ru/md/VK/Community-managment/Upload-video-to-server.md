@@ -27,7 +27,8 @@ sidebar_position: 10
 
 ```bsl title="Пример кода"
   Параметры    = ПолучитьПараметрыВК();
-  Видео        = "C:/nature.mp4";
+  
+  Видео        = "https://openintegrations.dev/test_data/video.mp4";
   Наименование = "Новое видео";
   Описание     = "Описание видео";
   

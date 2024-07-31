@@ -23,16 +23,16 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  Токен  = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-  Папка  = "5022319569";
+  Токен  = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
+  Папка  = "4999224241";
   
   Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
   ТекущийСтатус = "in_progress";
   IDРаботы      = Результат["async_job_id"];
   
   Пока ТекущийСтатус = "in_progress" Цикл
-  Результат     = OPI_Dropbox.ПолучитьСтатусАсинхронногоИзменения(Токен, IDРаботы);
-  ТекущийСтатус = Результат[".tag"];
+  Результат      = OPI_Dropbox.ПолучитьСтатусАсинхронногоИзменения(Токен, IDРаботы);
+  ТекущийСтатус  = Результат[".tag"];
   OPI_Инструменты.Пауза(3);
   КонецЦикла;
 ```

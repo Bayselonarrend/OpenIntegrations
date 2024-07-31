@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Токен = "sl.B22821SXrkmxs9KAaC6M_ax_M33mEcEvKz9sqgcMO8Xwn0bvpx4_57UQqLR_gEuPS_Yk5yd3Tv...";
+  Токен = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
   
   МассивПутей = Новый Массив;
   МассивПутей.Добавить("/New/Dogs.mp3");

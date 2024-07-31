@@ -24,9 +24,13 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.GetStatistics(CurrentSessionDate() - 60 * 60 * 24, CurrentSessionDate(), Parameters);
- Response = OPI_Tools.JSONString(Response);
+ CurrentDate = OPI_Tools.GetCurrentDate();
+ StartDate = BegOfDay(CurrentDate);
+ EndDate = EndOfDay(StartDate);
+ 
+ Result = OPI_VK.GetStatistics(StartDate, EndDate, Parameters);
 ```
 	
 

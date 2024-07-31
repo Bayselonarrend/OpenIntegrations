@@ -25,12 +25,14 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Product = New Map;
- Product.Insert("Name", "EditedTestProduct");
+ Product = "9286826";
  
- Response = OPI_VK.EditProduct(ProductID, Product,, Parameters);
- Response = OPI_Tools.JSONString(Response);
+ ProductDescription = New Map;
+ ProductDescription.Insert("Name", "EditedTestProduct");
+ 
+ Result = OPI_VK.EditProduct(Product, ProductDescription,, Parameters);
 ```
 	
 

@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  Токен    = "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L...";
-  ИДРаботы = "G8YbueOu2nsAAAAAAAAAAQ";
+  Токен    = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
+  ИДРаботы = "84FjnUN0m_4AAAAAAAAAAQ";
   Статус   = "in_progress";
   
   Пока Статус = "in_progress" Цикл
