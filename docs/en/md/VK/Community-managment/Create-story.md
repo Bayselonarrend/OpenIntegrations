@@ -34,8 +34,6 @@ sidebar_position: 7
  
  Result = OPI_VK.CreateStory(Image, URL, Parameters);
  
- 
- 
  Result = OPI_VK.CreateStory(TFN,, Parameters);
 ```
 	

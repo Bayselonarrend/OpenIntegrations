@@ -36,8 +36,6 @@ sidebar_position: 9
  
  Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
  
- 
- 
  Result = OPI_Telegram.SendContact(Token, ChannelID, Name, LastName, Phone);
 ```
 	

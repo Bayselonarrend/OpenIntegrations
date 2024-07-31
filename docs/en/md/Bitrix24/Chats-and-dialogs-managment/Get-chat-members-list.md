@@ -32,8 +32,6 @@ Method at API documentation: [im.dialog.users.list](https://dev.1c-bitrix.ru/lea
  
  Result = OPI_Bitrix24.GetChatMembersList(URL, ChatID);
  
- 
- 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  UserID = 10;

@@ -39,8 +39,6 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
  
  Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color);
  
- 
- 
  Name = "New stage name 2";
  Color = "000000";
  StageID = "198";

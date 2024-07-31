@@ -35,8 +35,6 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
  
  Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID);
  
- 
- 
  DestinationID = "3282";
  FolderID = "3280";
  
@@ -44,7 +42,6 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
  Token = "adf89366006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID, Token);
- 
  
  Check_BitrixObject(Result);
 ```

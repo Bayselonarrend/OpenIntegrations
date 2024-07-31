@@ -37,8 +37,6 @@ sidebar_position: 5
   
   Результат = OPI_Bitrix24.ПеренестиЗадачуВСтадиюКанбана(URL, IDЗадачи, IDСтадии);
   
-  
-  
   IDСтадии  = "198";
   
   URL       = "b24-ar17wx.bitrix24.by";

@@ -34,8 +34,6 @@ sidebar_position: 8
  
  Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
  
- 
- 
  Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
 ```
 	

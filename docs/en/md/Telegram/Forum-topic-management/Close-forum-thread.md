@@ -28,10 +28,7 @@ sidebar_position: 4
  Chat = "-1001971186208";
  Topic = "3566";
  
- 
  Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
- 
- 
  
  Result = OPI_Telegram.CloseForumThread(Token, Chat, Topic);
 ```

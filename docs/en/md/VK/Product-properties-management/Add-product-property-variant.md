@@ -36,11 +36,7 @@ sidebar_position: 5
  
  Result = OPI_VK.AddProductPropertyVariant(Value, Property, Parameters);
  
- 
- 
- 
  FunctionParameters.Insert(ParameterName, VariantID);
- 
  EndDo;
 ```
 	

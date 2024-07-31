@@ -34,8 +34,6 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
  
  Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID);
  
- 
- 
  TaskID = "722";
  ElementID = "168";
  
