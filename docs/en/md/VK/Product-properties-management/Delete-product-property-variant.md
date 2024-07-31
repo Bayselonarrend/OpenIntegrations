@@ -23,9 +23,16 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.DeleteProductPropertyVariant(980 Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Option = "1924";
+ 
+ Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
+ 
+ 
+ Check_VKTrue(Result);
+ 
+ OPI_Tools.Pause(5);
 ```
 	
 

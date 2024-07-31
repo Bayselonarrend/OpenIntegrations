@@ -22,8 +22,9 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.GetProductCategoryList(Parameters); //Map
+ Result = OPI_VK.GetProductCategoryList(Parameters);
 ```
 	
 

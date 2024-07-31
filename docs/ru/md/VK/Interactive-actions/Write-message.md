@@ -26,11 +26,18 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
+  Параметры      = ПолучитьПараметрыВК();
   
-  КТ    = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb...";
-  Ответ = OPI_VK.НаписатьСообщение("Я бот, а ты нет >:)", 657811122, КТ, , Параметры);
+  Текст          = "Сообщение из автотеста";
+  IDПользователя = "657846756";
+  Communitytoken = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8I...";
   
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+  МассивКнопок = Новый Массив;
+  МассивКнопок.Добавить("Button 1");
+  МассивКнопок.Добавить("Button 2");
+  
+  Клавиатура = OPI_VK.СформироватьКлавиатуру(МассивКнопок);
+  Результат  = OPI_VK.НаписатьСообщение(Текст, IDПользователя, Communitytoken, Клавиатура, Параметры);
 ```
 	
 

@@ -24,9 +24,12 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.CreateAdvertisingCampaign(1234567890, "New ads campaign", Parameters);
- Response = OPI_Tools.JSONString(Response);
+ AccountID = "1607951446";
+ Name = "New campaign";
+ 
+ Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);
 ```
 	
 

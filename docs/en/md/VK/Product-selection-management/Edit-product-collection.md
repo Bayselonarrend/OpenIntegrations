@@ -27,15 +27,17 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.EditProductCollection("EditedCollection"
-, 40
-, Image
-, True
-, False
-, Parameters);
+ Name = "EditedCollection";
+ Selection = "123";
  
- Response = OPI_Tools.JSONString(Response);
+ Result = OPI_VK.EditProductCollection(Name, Selection,,,, Parameters);
+ 
+ 
+ Check_VKTrue(Result);
+ 
+ OPI_Tools.Pause(5);
 ```
 	
 

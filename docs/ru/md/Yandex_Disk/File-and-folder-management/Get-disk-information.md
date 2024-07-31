@@ -22,10 +22,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "y0_AgAAAABdylaOAA...";
-  Ответ = OPI_YandexDisk.ПолучитьИнформациюОДиске(Токен); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);             //Строка
+  Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+  Результат = OPI_YandexDisk.ПолучитьИнформациюОДиске(Токен);
 ```
 	
 

@@ -23,11 +23,10 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
+ Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+ Path = "/" + String(New UUID);
  
- Token = "y0_AgAAAABdylaOAA...";
- Path = "/TestFolder"
- Response = OPI_YandexDisk.CreateFolder(Token, Path); //Map
- Response = OPI_Tools.JSONString(Response); //String
+ Result = OPI_YandexDisk.CreateFolder(Token, Path);
 ```
 	
 

@@ -24,9 +24,9 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Токен          = "6129457865:AAFyzNYOAFbu...";
-  IDПользователя = "461699897";
-  IDКанала       = "@testsichee";
+  Токен             = "6129457865:AAFyzNYOAFbu...";
+  IDПользователя    = "461699897";
+  IDКанала          = "@testsichee";
   
   Результат = OPI_Telegram.Бан(Токен, IDКанала, IDПользователя);
 ```

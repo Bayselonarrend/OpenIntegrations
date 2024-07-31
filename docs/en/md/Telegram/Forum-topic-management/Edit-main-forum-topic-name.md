@@ -27,6 +27,7 @@ sidebar_position: 9
  Title = "New main thread name " + String(New UUID);
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
+ 
  Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
 ```
 	

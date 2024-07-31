@@ -25,9 +25,12 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
+ Text = "NewComment";
+ PostID = "3114";
+ WallID = Parameters["owner_id"];
  
- Response = OPI_VK.WriteComment(221, -218861756, "Hello", Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Result = OPI_VK.WriteComment(PostID, WallID, Text, Parameters);
 ```
 	
 

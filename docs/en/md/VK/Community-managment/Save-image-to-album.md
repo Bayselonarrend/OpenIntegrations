@@ -27,7 +27,7 @@ sidebar_position: 8
 ```bsl title="Code example"
  Parameters = GetVKParameters();
  ImageDescription = "AutoTestImage";
- AlbumID = "304549394";
+ AlbumID = "305001965";
  
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
  TFN = GetTempFileName("png");
@@ -36,6 +36,10 @@ sidebar_position: 8
  Image = New BinaryData(TFN);
  
  Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
+ 
+ 
+ 
+ 
  Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
 ```
 	

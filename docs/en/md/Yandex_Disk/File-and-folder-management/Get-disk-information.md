@@ -22,10 +22,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
- Response = OPI_YandexDisk.GetDiskInformation(Token); //Map
- Response = OPI_Tools.JSONString(Response); //String
+ Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+ Result = OPI_YandexDisk.GetDiskInformation(Token);
 ```
 	
 

@@ -24,9 +24,12 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.AddProductToCollection(8656559, 40, Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Product = "9286826";
+ Selection = "123";
+ 
+ Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);
 ```
 	
 
