@@ -32,8 +32,6 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
  
  Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID);
  
- 
- 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  CommentID = "2266";

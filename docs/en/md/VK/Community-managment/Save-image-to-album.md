@@ -37,9 +37,6 @@ sidebar_position: 8
  
  Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
  
- 
- 
- 
  Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
 ```
 	

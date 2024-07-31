@@ -34,7 +34,6 @@ sidebar_position: 4
  
  Result = OPI_VK.EditProductCollection(Name, Selection,,,, Parameters);
  
- 
  Check_VKTrue(Result);
  
  OPI_Tools.Pause(5);

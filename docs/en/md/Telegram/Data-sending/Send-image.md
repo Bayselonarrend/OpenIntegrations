@@ -40,11 +40,7 @@ sidebar_position: 2
  
  Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
  
- 
- 
  Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
- 
- 
  
  Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
 ```

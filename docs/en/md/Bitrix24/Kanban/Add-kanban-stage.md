@@ -38,10 +38,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
  
  Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, 6);
  
- 
- 
  PrevStageID = Result["result"];
- 
  
  Name = "New stage 2";
  Color = "0026FF";

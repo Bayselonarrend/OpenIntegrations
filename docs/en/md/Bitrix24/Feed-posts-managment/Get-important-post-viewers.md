@@ -32,8 +32,6 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
  
  Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
  
- 
- 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  

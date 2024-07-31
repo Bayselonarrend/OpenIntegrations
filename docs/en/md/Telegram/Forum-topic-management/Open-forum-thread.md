@@ -30,8 +30,6 @@ sidebar_position: 5
  
  Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
  
- 
- 
  Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);
 ```
 	

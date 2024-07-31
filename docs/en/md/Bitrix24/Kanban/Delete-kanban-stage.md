@@ -34,8 +34,6 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
  
  Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, True);
  
- 
- 
  StageID = "198";
  
  URL = "b24-ar17wx.bitrix24.by";
