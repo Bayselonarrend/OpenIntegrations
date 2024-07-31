@@ -37,10 +37,6 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
  
  Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
  
- 
- 
- 
- 
  FromID = "722";
  DestinationID = "720";
  LinkType = 2;

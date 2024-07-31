@@ -30,8 +30,6 @@ Method at API documentation: [im.user.status.get](https://dev.1c-bitrix.ru/learn
  
  Result = OPI_Bitrix24.GetUserStatus(URL);
  
- 
- 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  

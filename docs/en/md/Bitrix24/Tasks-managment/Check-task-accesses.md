@@ -37,8 +37,6 @@ Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/res
  
  Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers);
  
- 
- 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  TaskID = "722";

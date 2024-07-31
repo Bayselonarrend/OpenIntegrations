@@ -34,7 +34,6 @@ sidebar_position: 6
  
  OPI_Tools.Pause(5);
  
- 
  EndDo;
 ```
 	
