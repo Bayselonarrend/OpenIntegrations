@@ -29,7 +29,6 @@ sidebar_position: 7
  
  Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
  
- 
  Check_VKTrue(Result);
  
  OPI_Tools.Pause(5);

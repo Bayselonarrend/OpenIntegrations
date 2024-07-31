@@ -42,8 +42,6 @@ sidebar_position: 1
  
  Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
  
- 
- 
  Result = OPI_VK.CreatePost(Text, Image, False,, Parameters);
 ```
 	

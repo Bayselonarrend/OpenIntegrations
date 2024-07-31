@@ -35,8 +35,6 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
  
  Result = OPI_Bitrix24.GetDepartments(URL, DepartmentID);
  
- 
- 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  HeadID = 1;

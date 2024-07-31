@@ -32,8 +32,6 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
  
  Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
  
- 
- 
  URL = "b24-ar17wx.bitrix24.by";
  Token = "adf89366006e9f06006b12e400000001000...";
  
