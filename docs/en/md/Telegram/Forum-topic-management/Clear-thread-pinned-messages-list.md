@@ -26,9 +26,12 @@ sidebar_position: 10
 ```bsl title="Code example"
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
- Topic = "2673";
+ Topic = "3566";
  
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
+ 
+ 
+ 
  Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);
 ```
 	

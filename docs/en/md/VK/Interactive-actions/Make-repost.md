@@ -26,9 +26,11 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
+ PostID = 2571;
+ WallID = -218704372;
  
- Response = OPI_VK.MakeRepost(2571, -218704372,,, Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Result = OPI_VK.MakeRepost(PostID, WallID,,, Parameters);
 ```
 	
 

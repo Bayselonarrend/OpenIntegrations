@@ -25,7 +25,7 @@ sidebar_position: 4
 
 ```bsl title="Code example"
  Parameters = GetVKParameters();
- DiscussionID = "51206275";
+ DiscussionID = "51705921";
  Message = "I like yellow more";
  
  Result = OPI_VK.WriteInDiscussion(DiscussionID, Message, Parameters);

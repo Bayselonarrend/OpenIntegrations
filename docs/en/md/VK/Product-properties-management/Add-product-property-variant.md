@@ -24,9 +24,24 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
+ Parameters = GetVKParameters();
  
- Response = OPI_VK.AddProductPropertyVariant("Red", 260, Parameters);
- Response = OPI_Tools.JSONString(Response);
+ Property = "607";
+ OptionArray = New Array;
+ OptionArray.Add("Yellow");
+ OptionArray.Add("Blue");
+ OptionArray.Add("Red");
+ 
+ For Each Value In OptionArray Do
+ 
+ Result = OPI_VK.AddProductPropertyVariant(Value, Property, Parameters);
+ 
+ 
+ 
+ 
+ FunctionParameters.Insert(ParameterName, VariantID);
+ 
+ EndDo;
 ```
 	
 
