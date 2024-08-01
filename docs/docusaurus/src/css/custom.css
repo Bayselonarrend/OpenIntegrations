@@ -238,7 +238,7 @@ li > a.menu__link {
   display: none;
 }
 
-.navbar-community-menu:after {
+.navbar-icon-menu:after {
   transition: opacity 0.2s;
   content: "";
   width: 24px;
@@ -250,11 +250,11 @@ li > a.menu__link {
   margin-right: 12px;
 }
 
-.navbar-community-menu:hover:after {
+.navbar-icon-menu:after {
   opacity: 0.5;
 }
 
-.navbar-community-menu:after, .navbar-community-link:after {
+.navbar-icon-menu:after, .navbar-community-link:after {
   border-style: none !important;
   margin-left: -5px !important;
 }
