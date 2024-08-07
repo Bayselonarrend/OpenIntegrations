@@ -88,6 +88,7 @@ jobs:
       - name: Изменить имя пакета deb
         run: |
           cp oint_1.11.1_all.deb oint_1.11.1_all_ru.deb
+          rm oint_1.11.1_all.deb
 
       - uses: actions/upload-artifact@v3
         with:
@@ -120,6 +121,8 @@ jobs:
       - name: Изменить имя пакета rpm
         run: |
           cp oint-1.11.1-1.el7.x86_64.rpm oint-1.11.1-1.el7.x86_64_ru.rpm
+          rm oint-debuginfo-1.11.1-1.el7.x86_64.rpm
+          rm oint-1.11.1-1.el7.x86_64.rpm
 
       - uses: actions/upload-artifact@v4
         with:
