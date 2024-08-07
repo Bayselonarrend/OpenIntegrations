@@ -1,33 +1,36 @@
-name: CLI  | Обновить yml процесса тестирования
+name: 1. MAIN | Основной процесс OPI -> OInt -> CLI
 
-on:
-  workflow_dispatch:  
+# Controls when the workflow will run
+on: 
+  [workflow_dispatch]
+  
 jobs:
 
-  Make-CLI-Tests:
-
+  Convert:
     runs-on: ubuntu-latest
     permissions: 
       actions: write
       contents: write
-        
-    steps:    
+     
+    steps:
+    
       - uses: actions/checkout@v2  
         with:
-          token: ${{secrets.TOKEN}}
-          
+          token: ${{secrets.TOKEN}}   
+                 
       - uses: otymko/setup-onescript@v1.4
         with:
           version: 1.9.0 
 
-      - name: Установить cmdline, asserts и osparser
+      - name: Установить зависимости
         run: |
           opm install cmdline
           opm install asserts
           opm install osparser
-          
-      - name: Сформировать список методов ОПИ -> CLI
-        run: oscript ./.github/workflows/os/cli_parse.os
+          opm install coloratos
+
+      - name: Основной процесс преобразований
+        run: oscript ./.github/workflows/os/main.os
 
       - name: Обновить Workflow тестирования CLI
         run: oscript ./.github/workflows/os/cli_testmaker.os
@@ -40,4 +43,6 @@ jobs:
           commit_user_name: Vitaly the Alpaca (bot) 
           commit_user_email: vitaly.the.alpaca@gmail.com
           commit_author: Vitaly the Alpaca <vitaly.the.alpaca@gmail.com>
-          commit_message: Обновление yml файла - cli_test.yml (workflow)
+          commit_message: Преобразование OPI -> OInt (workflow)
+
+
