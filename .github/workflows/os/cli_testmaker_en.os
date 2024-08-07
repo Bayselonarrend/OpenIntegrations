@@ -161,11 +161,15 @@
 	|          depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
 	|          desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
 	|
+	|      - name: Изменить имя пакета deb
+	|        run: |
+	|          mw oint_" + Версия + "_all.deb oint_" + Версия + "_all_en.deb
+	|
 	|      - uses: actions/upload-artifact@v3
 	|        with:
 	|          name: oint-deb
 	|          path: |
-	|            ./*.deb
+	|            ./oint_" + Версия + "_all_en.deb
 	|
 	|      - name: Создать каталог rpm-пакета
 	|        run: |
@@ -189,12 +193,15 @@
 	|            mono-devel
 	|            Requires:       mono-locale-extras
 	|
+	|      - name: Изменить имя пакета rpm
+	|        run: |
+	|          mw oint-" + Версия + "-1.el7.x86_64.rpm oint-" + Версия + "-1.el7.x86_64_en.rpm
+	|
 	|      - uses: actions/upload-artifact@v4
 	|        with:
 	|          name: oint-rpm
 	|          path: |
-	|            ./*.rpm
-	|            !./*-debuginfo-*.rpm");
+	|            ./oint-" + Версия + "-1.el7.x86_64_en.rpm");
 
 КонецПроцедуры
 
