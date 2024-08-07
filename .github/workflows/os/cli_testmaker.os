@@ -162,6 +162,7 @@
 	|      - name: Изменить имя пакета deb
 	|        run: |
 	|          cp oint_" + Версия + "_all.deb oint_" + Версия + "_all_ru.deb
+	|          rm oint_" + Версия + "_all.deb
 	|
 	|      - uses: actions/upload-artifact@v3
 	|        with:
@@ -194,6 +195,8 @@
 	|      - name: Изменить имя пакета rpm
 	|        run: |
 	|          cp oint-" + Версия + "-1.el7.x86_64.rpm oint-" + Версия + "-1.el7.x86_64_ru.rpm
+	|          rm oint-debuginfo-" + Версия + "-1.el7.x86_64.rpm
+	|          rm oint-" + Версия + "-1.el7.x86_64.rpm
 	|
 	|      - uses: actions/upload-artifact@v4
 	|        with:
