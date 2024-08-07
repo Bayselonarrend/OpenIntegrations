@@ -1,0 +1,11 @@
+{
+"root": "./src/",
+"mainLang": "ru",
+"packageSrc": "OInt/",
+"configurationSrc": "OPI/src/",
+"dictionariesSrc": "./service/dictionaries/",
+"version": "1.11.1",
+"additionalLangs": [
+"en"
+]
+}
