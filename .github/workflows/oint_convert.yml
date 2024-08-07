@@ -1,4 +1,4 @@
-name: OPI | Основной процесс OPI -> OInt -> CLI
+name: 1. MAIN | Основной процесс OPI -> OInt -> CLI
 
 # Controls when the workflow will run
 on: 
@@ -31,17 +31,6 @@ jobs:
 
       - name: Основной процесс преобразований
         run: oscript ./.github/workflows/os/main.os
-
-      - name: Выполнить скрипт парсинга CLI
-        run: oscript ./.github/workflows/os/cli_parse.os
-
-      - name: Обновить Workflow тестирования OInt
-        run: oscript ./.github/workflows/os/oint_testmaker.os
-        
-      - name: Обновить Workflow тестирования OInt (EN)
-        run: oscript ./.github/workflows/os/oint_testmaker_en.os
-
-
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
         with:

@@ -1,10 +1,12 @@
 {
+"version": "1.11.1",
 "root": "./src/",
 "mainLang": "ru",
 "packageSrc": "OInt/",
 "configurationSrc": "OPI/src/",
 "dictionariesSrc": "./service/dictionaries/",
-"version": "1.11.1",
+"workflowsSrc": "./.github/workflows/",
+"locVarsSrc": "./service/localization_vars/",
 "additionalLangs": [
 "en"
 ]

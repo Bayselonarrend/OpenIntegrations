@@ -1,0 +1,8 @@
+{
+    "methodString":"Метод",
+    "synonymString":"Синоним",
+    "sectionsString":"Раздел",
+    "testsModule":"OPI_Тесты",
+    "testsTableMethod":"OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()",
+    "testsSectionsMethod":"OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()"
+}

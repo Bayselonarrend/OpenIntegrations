@@ -1,0 +1,8 @@
+{
+    "methodString":"Method",
+    "synonymString":"Synonym",
+    "sectionsString":"Section",
+    "testsModule":"OPI_Tests",
+    "testsTableMethod":"OPI_TestDataRetrieval.GetTestTable()",
+    "testsSectionsMethod":"OPI_TestDataRetrieval.GetTestingSectionMapping()"
+}
