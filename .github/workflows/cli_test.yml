@@ -37,8 +37,6 @@ jobs:
           opm install asserts
           opm install osparser
           opm install coloratos
-      - name: Сформировать список методов ОПИ -> CLI
-        run: oscript ./.github/workflows/os/cli_parse.os
 
       - name: Записать измененный список методов CLI
         uses: stefanzweifel/git-auto-commit-action@v5   
