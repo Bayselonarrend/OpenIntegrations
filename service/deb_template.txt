@@ -1,0 +1,8 @@
+Package: oint
+Version: %1
+Installed-Size: %2
+Architecture: all
+Maintainer: Anton Titovets <bayselonarrend@gmail.com>
+Depends: mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all
+Description: %3
+Homepage: %4
