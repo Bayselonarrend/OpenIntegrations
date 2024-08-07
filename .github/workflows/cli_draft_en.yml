@@ -79,7 +79,7 @@ jobs:
         with:
           name: oint-deb
           path: |
-            oint_1.11.1_all_en.deb
+            ./oint_1.11.1_all_en.deb
 
       - name: Создать каталог rpm-пакета
         run: |
@@ -111,8 +111,7 @@ jobs:
         with:
           name: oint-rpm
           path: |
-            ./*.rpm
-            !./*-debuginfo-*.rpm
+            ./oint-1.11.1-1.el7.x86_64_en.rpm
 
       - name: Добавить DEB
         env:
