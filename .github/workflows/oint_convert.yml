@@ -1,4 +1,4 @@
-name: OPI | Конвертация OPI -> OInt -> CLI
+name: OPI | Основной процесс OPI -> OInt -> CLI
 
 # Controls when the workflow will run
 on: 
@@ -29,14 +29,8 @@ jobs:
           opm install osparser
           opm install coloratos
 
-      - name: Выполнить скрипт преобразования OPI -> OInt
-        run: oscript ./.github/workflows/os/convert.os
-
-      - name: Обновить словари
-        run: oscript ./.github/workflows/os/oint_dictionary.os
-
-      - name: Выполнить скрипт локализации
-        run: oscript ./.github/workflows/os/opi_translate.os
+      - name: Основной процесс преобразований
+        run: oscript ./.github/workflows/os/main.os
 
       - name: Выполнить скрипт парсинга CLI
         run: oscript ./.github/workflows/os/cli_parse.os
@@ -47,8 +41,6 @@ jobs:
       - name: Обновить Workflow тестирования OInt (EN)
         run: oscript ./.github/workflows/os/oint_testmaker_en.os
 
-      - name: Скрипт форматирования модулей
-        run: oscript ./.github/workflows/os/format.os
 
 
       - uses: stefanzweifel/git-auto-commit-action@v5 
