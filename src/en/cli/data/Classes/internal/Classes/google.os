@@ -27,7 +27,7 @@
     NewLine.Метод       = "FormCodeRetrievalLink";
     NewLine.МетодПоиска = "FORMCODERETRIEVALLINK";
     NewLine.Параметр    = "--calendar";
-    NewLine.Описание    = "Calendar methods permission (optional, def. val. - Yes)";
+    NewLine.Описание    = "Calendar methods permission (optional, def. val. - True)";
     NewLine.Область     = "Public";
 
 
@@ -37,7 +37,7 @@
     NewLine.Метод       = "FormCodeRetrievalLink";
     NewLine.МетодПоиска = "FORMCODERETRIEVALLINK";
     NewLine.Параметр    = "--drive";
-    NewLine.Описание    = "Drive methods permission (optional, def. val. - Yes)";
+    NewLine.Описание    = "Drive methods permission (optional, def. val. - True)";
     NewLine.Область     = "Public";
 
 
@@ -47,7 +47,7 @@
     NewLine.Метод       = "FormCodeRetrievalLink";
     NewLine.МетодПоиска = "FORMCODERETRIEVALLINK";
     NewLine.Параметр    = "--sheets";
-    NewLine.Описание    = "Sheets methods permission (optional, def. val. - Yes)";
+    NewLine.Описание    = "Sheets methods permission (optional, def. val. - True)";
     NewLine.Область     = "Public";
 
 
