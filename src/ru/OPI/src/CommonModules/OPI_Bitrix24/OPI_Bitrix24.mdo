@@ -3,7 +3,7 @@
   <name>OPI_Bitrix24</name>
   <synonym>
     <key>ru</key>
-    <value>Bitrix24 (OPI)</value>
+    <value>Bitrix24 (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

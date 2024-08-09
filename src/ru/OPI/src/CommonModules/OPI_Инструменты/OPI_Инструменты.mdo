@@ -3,7 +3,7 @@
   <name>OPI_Инструменты</name>
   <synonym>
     <key>ru</key>
-    <value>OPI инструменты</value>
+    <value>Инструменты (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

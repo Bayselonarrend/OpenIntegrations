@@ -3,7 +3,7 @@
   <name>OPI_ПреобразованиеТипов</name>
   <synonym>
     <key>ru</key>
-    <value>Преобразование типов (OPI)</value>
+    <value>Преобразование типов (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
