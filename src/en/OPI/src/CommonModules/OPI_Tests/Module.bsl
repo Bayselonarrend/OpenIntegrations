@@ -10231,7 +10231,7 @@ EndProcedure
 
 Procedure VkTeams_CheckToken(FunctionParameters)
 
-    Token     = FunctionParameters["VkTeams_Token"];
+    Token  = FunctionParameters["VkTeams_Token"];
     Result = OPI_VKTeams.CheckToken(Token);
 
     // END
@@ -10262,7 +10262,7 @@ Procedure VkTeams_GetEvents(FunctionParameters)
         // Event handling...
 
         If Not Events.Count() = 0 Then
-            LastID = Events[Events.UBound()]["eventId"];
+            LastID            = Events[Events.UBound()]["eventId"];
         EndIf;
 
     EndDo;
