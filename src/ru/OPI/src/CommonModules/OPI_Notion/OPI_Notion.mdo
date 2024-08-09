@@ -3,7 +3,7 @@
   <name>OPI_Notion</name>
   <synonym>
     <key>ru</key>
-    <value>Методы работы с Notion (ОПИ)</value>
+    <value>Notion (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -3,7 +3,7 @@
   <name>OPI_Twitter</name>
   <synonym>
     <key>ru</key>
-    <value>Методы работы с Twitter (ОПИ)</value>
+    <value>Twitter (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
