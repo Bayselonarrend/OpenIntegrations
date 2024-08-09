@@ -23,8 +23,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- Token = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
- Folder = "4999224241";
+ Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+ Folder = "3417285987";
  
  Result = OPI_Dropbox.CancelFolderPublication(Token, Folder);
  CurrentStatus = "in_progress";
