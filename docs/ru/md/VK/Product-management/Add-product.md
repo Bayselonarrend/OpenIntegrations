@@ -28,7 +28,7 @@ sidebar_position: 4
   
   Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";  // URL, Путь к файлу или двоичные данные
   Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Путь к файлу или двоичные данные
-  Подборка  = "123";
+  Подборка  = "125";
   
   МассивКартинок = Новый Массив;
   МассивКартинок.Добавить(Картинка1);

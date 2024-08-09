@@ -25,7 +25,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
  Parameters = GetVKParameters();
- DiscussionID = "51705921";
+ DiscussionID = "51798392";
  Result = OPI_VK.CloseDiscussion(DiscussionID, False, Parameters);
 ```
 	

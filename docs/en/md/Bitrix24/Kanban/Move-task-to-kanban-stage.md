@@ -30,17 +30,17 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
- TaskID = "726";
- StageID = "196";
+ TaskID = "1086";
+ StageID = "318";
  
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
  
  Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
  
- StageID = "198";
+ StageID = "320";
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "adf89366006e9f06006b12e400000001000...";
+ Token = "fe3fa966006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID,,, Token);
 ```

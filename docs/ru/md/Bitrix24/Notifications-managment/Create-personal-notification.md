@@ -32,7 +32,7 @@ sidebar_position: 1
 ```bsl title="Пример кода"
   IDПользователя = 1;
   
-  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
   Текст    = "Текст сообщения";
   Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
   Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -44,7 +44,7 @@ sidebar_position: 1
   Результат = OPI_Bitrix24.СоздатьПерсональноеУведомление(URL, IDПользователя, Текст, ,Вложения);
   
   URL            = "b24-ar17wx.bitrix24.by";
-  Токен          = "adf89366006e9f06006b12e400000001000...";
+  Токен          = "fe3fa966006e9f06006b12e400000001000...";
   Тег            = "Новый";
   IDПользователя = 10;
   

@@ -27,13 +27,13 @@ Method at API documentation: [im.dialog.writing](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- ChatID = "chat" + "264";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ ChatID = "chat" + "450";
  
  Result = OPI_Bitrix24.SendWritingNotification(URL, ChatID);
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "adf89366006e9f06006b12e400000001000...";
+ Token = "fe3fa966006e9f06006b12e400000001000...";
  UserID = 10;
  
  Result = OPI_Bitrix24.SendWritingNotification(URL, UserID, Token);

@@ -23,7 +23,7 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- Token = "sl.B5DKxgWeuOJQRiKaP3qEV_mcJXoc4byIFf1vAj1olHf6D9wUJRhHVWbXWZwmUYId6zZCWSPgiO...";
+ Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
  File = "kJU6-a-pT48AAAAAAAAABw";
  
  Result = OPI_Dropbox.CancelFilePublication(Token, File);

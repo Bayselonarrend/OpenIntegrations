@@ -29,17 +29,17 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- TaskID = "724";
- CommentID = "2264";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ TaskID = "1082";
+ CommentID = "2932";
  
  Text = "The task has been changed, do not split up";
  
  Result = OPI_Bitrix24.UpdateTaskComment(URL, TaskID, CommentID, Text);
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "adf89366006e9f06006b12e400000001000...";
- CommentID = "2266";
+ Token = "fe3fa966006e9f06006b12e400000001000...";
+ CommentID = "2936";
  
  Text = "The task has been changed, let's split up";
  

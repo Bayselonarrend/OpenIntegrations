@@ -28,17 +28,17 @@ sidebar_position: 9
 
 
 ```bsl title="Пример кода"
-  IDКаталога = "3280";
-  IDФайла    = "3272";
+  IDКаталога = "5018";
+  IDФайла    = "5010";
   
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
   
   Результат = OPI_Bitrix24.ПереместитьФайлВКаталог(URL, IDФайла, IDКаталога);
   
-  IDКаталога = "3282";
+  IDКаталога = "5020";
   
   URL   = "b24-ar17wx.bitrix24.by";
-  Токен = "adf89366006e9f06006b12e400000001000...";
+  Токен = "fe3fa966006e9f06006b12e400000001000...";
   
   Результат = OPI_Bitrix24.ПереместитьФайлВКаталог(URL, IDФайла, IDКаталога, Токен);
   
