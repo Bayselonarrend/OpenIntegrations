@@ -29,8 +29,8 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- ChatID = "chat" + "264";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ ChatID = "chat" + "450";
  Text = "Message text";
  Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
  File = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -42,7 +42,7 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
  Result = OPI_Bitrix24.SendMessage(URL, ChatID, Text, Attachments);
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "adf89366006e9f06006b12e400000001000...";
+ Token = "fe3fa966006e9f06006b12e400000001000...";
  UserID = 10;
  
  Result = OPI_Bitrix24.SendMessage(URL, UserID, Text,, Token);

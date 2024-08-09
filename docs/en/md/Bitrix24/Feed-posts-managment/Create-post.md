@@ -40,12 +40,12 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
  Files.Insert("1.png", Image1);
  Files.Insert("2.png", Image2);
  
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
  
  Result = OPI_Bitrix24.CreatePost(URL, Text,, Files, Title, True);
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "adf89366006e9f06006b12e400000001000...";
+ Token = "fe3fa966006e9f06006b12e400000001000...";
  
  Result = OPI_Bitrix24.CreatePost(URL, Text,, Files, Title,, Token);
 ```

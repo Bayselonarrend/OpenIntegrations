@@ -27,14 +27,14 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- ChatID = "264";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ ChatID = "450";
  
  Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "adf89366006e9f06006b12e400000001000...";
- ChatID = "266";
+ Token = "fe3fa966006e9f06006b12e400000001000...";
+ ChatID = "452";
  
  Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
 ```
