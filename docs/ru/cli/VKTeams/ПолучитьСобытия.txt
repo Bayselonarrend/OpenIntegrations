@@ -1,0 +1,1 @@
+﻿oint vkteams ПолучитьСобытия --token %token% --last %last% --timeout %timeout%
