@@ -3,7 +3,7 @@
   <name>OPI_Slack</name>
   <synonym>
     <key>en</key>
-    <value>Slack</value>
+    <value>Slack (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -254,7 +254,7 @@
     NewLine.Метод       = "DeleteMessage";
     NewLine.МетодПоиска = "DELETEMESSAGE";
     NewLine.Параметр    = "--issheduled";
-    NewLine.Описание    = "Indicator of deleting a delayed message (optional, def. val. - False)";
+    NewLine.Описание    = "Indicator of deleting a delayed message (optional, def. val. - No)";
     NewLine.Область     = "Message management";
 
 
@@ -378,7 +378,7 @@
     NewLine.Метод       = "GetChannelList";
     NewLine.МетодПоиска = "GETCHANNELLIST";
     NewLine.Параметр    = "--notarchived";
-    NewLine.Описание    = "Indicator of excluding archived channels (optional, def. val. - False)";
+    NewLine.Описание    = "Indicator of excluding archived channels (optional, def. val. - No)";
     NewLine.Область     = "Channel management";
 
 
@@ -450,7 +450,7 @@
     NewLine.Метод       = "CreateChannel";
     NewLine.МетодПоиска = "CREATECHANNEL";
     NewLine.Параметр    = "--private";
-    NewLine.Описание    = "Create channel as private (optional, def. val. - False)";
+    NewLine.Описание    = "Create channel as private (optional, def. val. - No)";
     NewLine.Область     = "Channel management";
 
 

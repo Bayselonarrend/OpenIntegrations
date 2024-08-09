@@ -3,7 +3,7 @@
   <name>OPI_YandexDisk</name>
   <synonym>
     <key>en</key>
-    <value>Yandex Disk methods (OPI)</value>
+    <value>Yandex.Disk (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

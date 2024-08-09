@@ -3,7 +3,7 @@
   <name>OPI_Bitrix24</name>
   <synonym>
     <key>en</key>
-    <value>Bitrix24 (OPI)</value>
+    <value>Bitrix24 (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

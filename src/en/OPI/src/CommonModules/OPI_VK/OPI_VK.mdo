@@ -3,7 +3,7 @@
   <name>OPI_VK</name>
   <synonym>
     <key>en</key>
-    <value>VK integration methods (OPI)</value>
+    <value>VK (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

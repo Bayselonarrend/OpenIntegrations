@@ -5,6 +5,10 @@
     <key></key>
     <value>OPI google sheets</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Google Sheets (OpenIntegrations)</value>
+  </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

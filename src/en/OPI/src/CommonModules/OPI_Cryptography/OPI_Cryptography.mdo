@@ -3,7 +3,7 @@
   <name>OPI_Cryptography</name>
   <synonym>
     <key>en</key>
-    <value>Cryptography (OPI)</value>
+    <value>Cryptography (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

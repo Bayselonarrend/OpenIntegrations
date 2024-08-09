@@ -3,7 +3,7 @@
   <name>OPI_Tools</name>
   <synonym>
     <key>en</key>
-    <value>OPI tools</value>
+    <value>Tools (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
