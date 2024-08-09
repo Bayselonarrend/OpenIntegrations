@@ -26,7 +26,7 @@
   <usePurposes>PersonalComputer</usePurposes>
   <scriptVariant>Russian</scriptVariant>
   <vendor>Bayselonarrend</vendor>
-  <version>1.11.1</version>
+  <version>1.12.0</version>
   <detailedInformation>
     <key>ru</key>
     <value>Открытый пакет интеграций - набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. Он состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех.</value>
@@ -58,6 +58,7 @@
   <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Dropbox</commonModules>
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
+  <commonModules>CommonModule.OPI_VkTeams</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
 </mdclass:Configuration>
