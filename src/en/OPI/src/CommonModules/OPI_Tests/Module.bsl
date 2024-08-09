@@ -3227,6 +3227,30 @@ EndProcedure
 
 #EndRegion
 
+#Region VkTeams
+
+Procedure VKT_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token", TestParameters);
+
+    VkTeams_CheckToken(TestParameters);
+    VkTeams_GetEvents(TestParameters);
+
+EndProcedure
+
+Procedure VKT_MessagesSending() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID", TestParameters);
+
+    VkTeams_SendTextMessage(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -3912,6 +3936,27 @@ Procedure Check_BitrixTimekeepingSettings(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["UF_TIMEMAN"]).ИмеетТип("Boolean");
+
+EndProcedure
+
+Procedure Check_VKTUser(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ExpectsThat(Result["userId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTEvents(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ExpectsThat(Result["events"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_VKTMessage(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ExpectsThat(Result["msgId"]).Заполнено();
 
 EndProcedure
 
@@ -10175,6 +10220,82 @@ Procedure YandexDisk_CreateFolder(FunctionParameters)
     Check_YaDiskFolder(Result, Path);
 
     OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
+#Region VkTeams
+
+Procedure VkTeams_CheckToken(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    Result = OPI_VKTeams.CheckToken(Token);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CheckToken", "VkTeams");
+
+    Check_VKTUser(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VkTeams_GetEvents(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    LastID = 0;
+
+    For N = 1 To 5 Do // In real work - endless цandtoл
+
+        Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
+
+        // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetEvents", "VkTeams");
+
+        Check_VKTEvents(Result); // SKIP
+
+        Events = Result["events"];
+
+        // Event handling...
+
+        If Not Events.Count() = 0 Then
+            LastID = Events[Events.UBound()]["eventId"];
+        EndIf;
+
+    EndDo;
+
+    // END
+
+    OPI_Tools.Pause(3);
+
+EndProcedure
+
+Procedure VkTeams_SendTextMessage(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Text   = "Message text";
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (проwithтое)", "VkTeams");
+
+    Check_VKTMessage(Result); // SKIP
+
+    Text    = "<b>Bold text</b>";
+    ReplyID = Result["msgId"];
+    Markup  = "HTML";
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, , Markup);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "VkTeams");
+
+    Check_VKTMessage(Result);
 
     OPI_Tools.Pause(5);
 

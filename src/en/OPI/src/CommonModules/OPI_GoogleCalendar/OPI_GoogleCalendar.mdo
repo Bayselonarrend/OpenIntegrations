@@ -5,6 +5,10 @@
     <key></key>
     <value>OPI google calendar</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Google Calendar (OpenIntegrations)</value>
+  </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

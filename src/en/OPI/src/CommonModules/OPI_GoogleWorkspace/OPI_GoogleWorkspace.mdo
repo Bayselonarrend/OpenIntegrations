@@ -5,6 +5,10 @@
     <key></key>
     <value>OPI google workspace</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Google Workspace (OpenIntegrations)</value>
+  </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
