@@ -65,6 +65,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Airtable"       , StandardDependencies);
     Sections.Insert("Dropbox"        , StandardDependencies);
     Sections.Insert("Bitrix24"       , StandardDependencies);
+    Sections.Insert("VkTeams"        , StandardDependencies);
 
     Return Sections;
 
@@ -86,6 +87,7 @@ Function GetTestTable() Export
     AirT      = "Airtable";
     Dropbox   = "Dropbox";
     Bitrix    = "Bitrix24";
+    VKT       = "VkTeams";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -234,6 +236,9 @@ Function GetTestTable() Export
     NewTest(TestTable, "B24_TasksFieldsManagment"   , "Working with custom task fields" , Bitrix);
     NewTest(TestTable, "B24_DepartmentsManagment"   , "Departments managment"           , Bitrix);
     NewTest(TestTable, "B2_UsersManagment"          , "Users managment"                 , Bitrix);
+
+    NewTest(TestTable, "VKT_CommonMethods" , "Common methods" , VKT);
+    NewTest(TestTable, "VKT_MessagesSending" , "Messages sending" , VKT);
 
     Return TestTable;
 

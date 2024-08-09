@@ -3,7 +3,7 @@
   <name>OPI_Notion</name>
   <synonym>
     <key>en</key>
-    <value>Notion methods (OPI)</value>
+    <value>Notion (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

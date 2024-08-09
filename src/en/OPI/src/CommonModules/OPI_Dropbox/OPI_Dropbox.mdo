@@ -7,7 +7,7 @@
   </synonym>
   <synonym>
     <key>en</key>
-    <value>Drop box</value>
+    <value>Dropbox (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

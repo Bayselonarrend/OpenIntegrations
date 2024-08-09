@@ -3,7 +3,7 @@
   <name>OPI_Twitter</name>
   <synonym>
     <key>en</key>
-    <value>Twitter methods (OPI)</value>
+    <value>Twitter (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
