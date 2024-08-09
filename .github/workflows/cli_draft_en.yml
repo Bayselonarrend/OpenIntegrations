@@ -64,21 +64,21 @@ jobs:
           package: oint
           package_root: .debpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.11.1' # refs/tags/v*.*.*
+          version: '1.12.0' # refs/tags/v*.*.*
           arch: 'all'
           depends: 'mono-devel, libmono-system-core4.0-cil | libmono-system-core4.5-cil, libmono-system4.0-cil | libmono-system4.5-cil, libmono-corlib4.0-cil | libmono-corlib4.5-cil, libmono-i18n4.0-all | libmono-i18n4.5-all'
           desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
 
       - name: Изменить имя пакета deb
         run: |
-          cp oint_1.11.1_all.deb oint_1.11.1_all_en.deb
-          rm oint_1.11.1_all.deb
+          cp oint_1.12.0_all.deb oint_1.12.0_all_en.deb
+          rm oint_1.12.0_all.deb
 
       - uses: actions/upload-artifact@v3
         with:
           name: oint-deb
           path: |
-            ./oint_1.11.1_all_en.deb
+            ./oint_1.12.0_all_en.deb
 
       - name: Создать каталог rpm-пакета
         run: |
@@ -95,7 +95,7 @@ jobs:
           package: oint
           package_root: .rpmpkg
           maintainer: Anton Titovets <bayselonarrend@gmail.com>
-          version: '1.11.1'
+          version: '1.12.0'
           arch: 'x86_64'
           desc: 'OInt CLI - CLI toolkit for integrating with APIs of popular online services'
           requires: |
@@ -104,15 +104,15 @@ jobs:
 
       - name: Изменить имя пакета rpm
         run: |
-          cp oint-1.11.1-1.el7.x86_64.rpm oint-1.11.1-1.el7.x86_64_en.rpm
-          rm oint-debuginfo-1.11.1-1.el7.x86_64.rpm
-          rm oint-1.11.1-1.el7.x86_64.rpm
+          cp oint-1.12.0-1.el7.x86_64.rpm oint-1.12.0-1.el7.x86_64_en.rpm
+          rm oint-debuginfo-1.12.0-1.el7.x86_64.rpm
+          rm oint-1.12.0-1.el7.x86_64.rpm
 
       - uses: actions/upload-artifact@v4
         with:
           name: oint-rpm
           path: |
-            ./oint-1.11.1-1.el7.x86_64_en.rpm
+            ./oint-1.12.0-1.el7.x86_64_en.rpm
 
       - name: Добавить DEB
         env:
