@@ -3,7 +3,7 @@
   <name>OPI_YandexDisk</name>
   <synonym>
     <key>ru</key>
-    <value>Методы работы с Yandex Disk (ОПИ)</value>
+    <value>Yandex.Disk (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
