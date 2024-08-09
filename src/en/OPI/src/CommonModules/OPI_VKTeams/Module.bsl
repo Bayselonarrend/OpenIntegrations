@@ -83,7 +83,7 @@ Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export
 
     URL        = "/events/get";
     Parameters = NormalizeMain(URL, Token);
-    LastID  = OPI_Tools.NumberToString(LastID);
+    LastID     = OPI_Tools.NumberToString(LastID);
 
     OPI_Tools.AddField("lastEventId", LastID  , "String", Parameters);
     OPI_Tools.AddField("pollTime"   , Timeout , "String", Parameters);

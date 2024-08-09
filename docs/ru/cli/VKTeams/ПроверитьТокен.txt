@@ -1,0 +1,1 @@
+﻿oint vkteams ПроверитьТокен --token %token%
