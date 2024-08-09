@@ -17,6 +17,7 @@ sidebar_class_name: NachaloRaboty
   <div>
   <a href="/docs/Instructions/Telegram/"><img src={require('../../static/img/APIs/Telegram.png').default} width="32"/></a>
   <a href="/docs/Instructions/VK/"><img src={require('../../static/img/APIs/VK.png').default} width="32"/></a>
+  <a href="/docs/Instructions/VKTeams/"><img src={require('../../static/img/APIs/VKTeams.png').default} width="32"/></a>
   <a href="/docs/Instructions/Viber/"><img src={require('../../static/img/APIs/Viber.png').default} width="32"/></a>
   <a href="/docs/Instructions/Twitter/"><img src={require('../../static/img/APIs/Twitter.png').default} width="32"/></a>
   <a href="/docs/Instructions/Notion/"><img src={require('../../static/img/APIs/Notion.png').default} width="32"/></a>
