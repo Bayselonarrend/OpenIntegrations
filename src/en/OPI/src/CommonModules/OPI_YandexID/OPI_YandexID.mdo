@@ -3,7 +3,7 @@
   <name>OPI_YandexID</name>
   <synonym>
     <key>en</key>
-    <value>Yandex ID methods (OPI)</value>
+    <value>YandexID (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -3,7 +3,7 @@
   <name>OPI_TypeConversion</name>
   <synonym>
     <key>en</key>
-    <value>Type conversion (OPI)</value>
+    <value>Type conversion (OpenIntegrations)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
