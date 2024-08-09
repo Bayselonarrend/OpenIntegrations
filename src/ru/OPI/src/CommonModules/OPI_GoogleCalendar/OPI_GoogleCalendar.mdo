@@ -5,6 +5,10 @@
     <key></key>
     <value>OPI google calendar</value>
   </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Google Calendar (ОПИ)</value>
+  </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

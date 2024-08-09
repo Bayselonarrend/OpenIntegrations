@@ -5,6 +5,10 @@
     <key></key>
     <value>OPI google drive</value>
   </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Google Drive (ОПИ)</value>
+  </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

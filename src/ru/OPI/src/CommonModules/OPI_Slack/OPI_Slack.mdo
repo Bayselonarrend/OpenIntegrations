@@ -3,7 +3,7 @@
   <name>OPI_Slack</name>
   <synonym>
     <key>ru</key>
-    <value>Slack</value>
+    <value>Slack (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -3,7 +3,7 @@
   <name>OPI_YandexID</name>
   <synonym>
     <key>ru</key>
-    <value>Методы работы с Yandex ID (ОПИ)</value>
+    <value>YandexID (ОПИ)</value>
   </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>

@@ -5,6 +5,10 @@
     <key></key>
     <value>OPI google workspace</value>
   </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Google Workspace (ОПИ)</value>
+  </synonym>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
