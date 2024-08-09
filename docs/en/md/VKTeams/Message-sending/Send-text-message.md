@@ -40,4 +40,9 @@ You can mention a user by appending their userId to the text in the following fo
 
 ```
 
-
+```json title="Result"
+{
+ "msgId": "7401135795345555471",
+ "ok": true
+}
+```
