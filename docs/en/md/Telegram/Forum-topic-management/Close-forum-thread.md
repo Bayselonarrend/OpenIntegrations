@@ -26,7 +26,7 @@ sidebar_position: 4
 ```bsl title="Code example"
  Token = "6129457865:AAFyzNYOAFbu...";
  Chat = "-1001971186208";
- Topic = "3566";
+ Topic = "3896";
  
  Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
  

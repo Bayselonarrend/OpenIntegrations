@@ -25,7 +25,7 @@ sidebar_position: 7
 ```bsl title="Code example"
  Parameters = GetVKParameters();
  
- Selection = "123";
+ Selection = "125";
  
  Result = OPI_VK.DeleteSelection(Selection, Parameters);
 ```

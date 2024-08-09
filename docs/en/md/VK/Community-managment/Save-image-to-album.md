@@ -27,7 +27,7 @@ sidebar_position: 8
 ```bsl title="Code example"
  Parameters = GetVKParameters();
  ImageDescription = "AutoTestImage";
- AlbumID = "305001965";
+ AlbumID = "305187504";
  
  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
  TFN = GetTempFileName("png");

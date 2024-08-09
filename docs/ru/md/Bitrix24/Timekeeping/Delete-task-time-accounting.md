@@ -28,15 +28,15 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
-  IDЗадачи  = "728";
-  IDЗаписи  = "76";
+  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  IDЗадачи  = "1088";
+  IDЗаписи  = "306";
   
   Результат = OPI_Bitrix24.УдалитьТрудозатратыЗадачи(URL, IDЗадачи, IDЗаписи);
   
   URL       = "b24-ar17wx.bitrix24.by";
-  Токен     = "adf89366006e9f06006b12e400000001000...";
-  IDЗаписи  = "78";
+  Токен     = "fe3fa966006e9f06006b12e400000001000...";
+  IDЗаписи  = "308";
   
   Результат = OPI_Bitrix24.УдалитьТрудозатратыЗадачи(URL, IDЗадачи, IDЗаписи, Токен);
 ```

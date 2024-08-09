@@ -27,14 +27,14 @@ Method at API documentation: [task.item.userfield.get](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/4swokunb3tk7h7dt/";
- FieldID = "";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ FieldID = "255";
  
  Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID);
  
  URL = "b24-ar17wx.bitrix24.by";
- Token = "adf89366006e9f06006b12e400000001000...";
- FieldID = "";
+ Token = "fe3fa966006e9f06006b12e400000001000...";
+ FieldID = "257";
  
  Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID, );
 ```
