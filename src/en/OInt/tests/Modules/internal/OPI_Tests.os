@@ -3242,10 +3242,13 @@ EndProcedure
 Procedure VKT_MessagesSending() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_MessageID", TestParameters);
 
     VkTeams_SendTextMessage(TestParameters);
+    VKTeams_ForwardMessage(TestParameters);
 
 EndProcedure
 
@@ -10227,9 +10230,9 @@ EndProcedure
 
 #EndRegion
 
-#Region VkTeams
+#Region VKTeams
 
-Procedure VkTeams_CheckToken(FunctionParameters)
+Procedure VKTeams_CheckToken(FunctionParameters)
 
     Token  = FunctionParameters["VkTeams_Token"];
     Result = OPI_VKTeams.CheckToken(Token);
@@ -10244,12 +10247,12 @@ Procedure VkTeams_CheckToken(FunctionParameters)
 
 EndProcedure
 
-Procedure VkTeams_GetEvents(FunctionParameters)
+Procedure VKTeams_GetEvents(FunctionParameters)
 
     Token  = FunctionParameters["VkTeams_Token"];
     LastID = 0;
 
-    For N = 1 To 5 Do // In real work - endless цandtoл
+    For N = 1 To 5 Do // In real work - endless loop
 
         Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
 
@@ -10273,7 +10276,7 @@ Procedure VkTeams_GetEvents(FunctionParameters)
 
 EndProcedure
 
-Procedure VkTeams_SendTextMessage(FunctionParameters)
+Procedure VKTeams_SendTextMessage(FunctionParameters)
 
     Token  = FunctionParameters["VkTeams_Token"];
     ChatID = FunctionParameters["VkTeams_ChatID"];
@@ -10285,8 +10288,9 @@ Procedure VkTeams_SendTextMessage(FunctionParameters)
 
     Check_VKTMessage(Result); // SKIP
 
+    ChatID  = FunctionParameters["VkTeams_ChatID2"];
+    ReplyID = FunctionParameters["VkTeams_MessageID"];
     Text    = "<b>Bold text</b>";
-    ReplyID = Result["msgId"];
     Markup  = "HTML";
 
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, , Markup);
@@ -10297,7 +10301,36 @@ Procedure VkTeams_SendTextMessage(FunctionParameters)
 
     Check_VKTMessage(Result);
 
+    MessageID = Result["msgId"];
+    OPI_TestDataRetrieval.WriteParameter("VkTeams_MessageID", MessageID);
+    FunctionParameters.Insert("VkTeams_MessageID", MessageID);
+
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VKTeams_ForwardMessage(FunctionParameters)
+
+    Token      = FunctionParameters["VkTeams_Token"];
+    ChatID     = FunctionParameters["VkTeams_ChatID"];
+    FromChatID = FunctionParameters["VkTeams_ChatID2"];
+    MessageID  = FunctionParameters["VkTeams_MessageID"];
+
+    Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage (simple)", "VkTeams");
+
+    Check_VKTMessage(Result); // SKIP
+
+    Text = "Additional text";
+
+    Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage", "VkTeams");
+
+    Check_VKTMessage(Result);
 
 EndProcedure
 
