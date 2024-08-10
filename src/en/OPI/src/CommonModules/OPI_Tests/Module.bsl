@@ -3232,10 +3232,12 @@ EndProcedure
 Procedure VKT_CommonMethods() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_FileID", TestParameters);
 
     VkTeams_CheckToken(TestParameters);
     VkTeams_GetEvents(TestParameters);
+    VKTeams_GetFileInformation(TestParameters);
 
 EndProcedure
 
@@ -3246,9 +3248,12 @@ Procedure VKT_MessagesSending() Export
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_MessageID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
 
     VkTeams_SendTextMessage(TestParameters);
     VKTeams_ForwardMessage(TestParameters);
+    VKTeams_SendFile(TestParameters);
+    VKTeams_ResendFile(TestParameters);
 
 EndProcedure
 
@@ -3960,6 +3965,14 @@ Procedure Check_VKTMessage(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
     OPI_TestDataRetrieval.ExpectsThat(Result["msgId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTFile(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
+    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["size"]).Заполнено();
 
 EndProcedure
 
@@ -10331,6 +10344,81 @@ Procedure VKTeams_ForwardMessage(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage", "VkTeams");
 
     Check_VKTMessage(Result);
+
+EndProcedure
+
+Procedure VKTeams_SendFile(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Text   = "File caption";
+
+    File     = FunctionParameters["Document"]; // URL
+    FilePath = GetTempFileName("docx"); // Path
+
+    FileCopy(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile (URL)", "VkTeams");
+
+    Check_VKTMessage(Result); // SKIP
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile (Path)", "VkTeams");
+
+    Check_VKTMessage(Result); // SKIP
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "VkTeams");
+
+    Check_VKTMessage(Result);
+
+    DeleteFiles(FilePath);
+
+    FileID = Result["fileId"];
+    OPI_TestDataRetrieval.WriteParameter("VkTeams_FileID", FileID);
+    FunctionParameters.Insert("VkTeams_FileID", FileID);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VKTeams_ResendFile(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_FileID"];
+    Text   = "File caption";
+
+    Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text, "SameDoc.docx");
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ResendFile", "VkTeams");
+
+    Check_VKTMessage(Result);
+
+EndProcedure
+
+Procedure VKTeams_GetFileInformation(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    FileID = FunctionParameters["VkTeams_FileID"];
+
+    Result = OPI_VKTeams.GetFileInformation(Token, FileID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "VkTeams");
+
+    Check_VKTFile(Result);
 
 EndProcedure
 
