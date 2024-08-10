@@ -1129,13 +1129,13 @@ jobs:
 
 
 
-      - name: Общие методы
-        if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ВКТ_ОбщиеМетоды"
-
       - name: Отправка сообщений
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ВКТ_ОтправкаСообщений"
+
+      - name: Общие методы
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "ВКТ_ОбщиеМетоды"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
