@@ -1129,13 +1129,13 @@ jobs:
 
 
 
-      - name: Common methods
-        if: ${{ cancelled() }} == false
-        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKT_CommonMethods"
-
       - name: Messages sending
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKT_MessagesSending"
+
+      - name: Common methods
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "VKT_CommonMethods"
 
       - name: Записать логи
         if: ${{ cancelled() }} == false
