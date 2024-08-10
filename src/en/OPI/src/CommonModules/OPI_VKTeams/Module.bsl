@@ -94,6 +94,31 @@ Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export
 
 EndFunction
 
+// Get information about file
+// Gets information about a file by ID
+//
+// Note
+// Method at API documentation: [GET /files/getInfo](@teams.vk.com/botapi/#/files/get_files_getInfo)
+//
+// Parameters:
+// Token - String - Bot token - token
+// FileID - String, Number - File ID - fileid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function GetFileInformation(Val Token, Val FileID) Export
+
+    URL        = "/files/getInfo";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("fileId", FileID , "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #Region MessageSending
@@ -130,6 +155,92 @@ Function SendTextMessage(Val Token
     OPI_Tools.AddField("replyMsgId"          , ReplyID  , "String"    , Parameters);
     OPI_Tools.AddField("inlineKeyboardMarkup", Keyboard , "Collection", Parameters);
     OPI_Tools.AddField("parseMode"           , Markup   , "String"    , Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// SendFile
+// Sends the file to the chat
+//
+// Note
+// Method at API documentation: [POST /messages/sendFile](@teams.vk.com/botapi/#/messages/post_messages_sendFile)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID for sending - chatid
+// File - BinaryData, String - File for sending - file
+// Text - String - File caption - text
+// FileName - String - Displayed file name - filename
+// Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function SendFile(Val Token
+    , Val ChatID
+    , Val File
+    , Val Text = ""
+    , Val FileName = ""
+    , Val Markup = "MarkdownV2") Export
+
+    URL        = "/messages/sendFile";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId"    , ChatID , "String" , Parameters);
+    OPI_Tools.AddField("caption"   , Text   , "String" , Parameters);
+    OPI_Tools.AddField("parseMode" , Markup , "String" , Parameters);
+
+    If TypeOf(File)   = Type("String") Then
+        FileObject    = New File(File);
+        DisplayedName = FileObject.Name;
+    Else
+        DisplayedName = "file";
+    EndIf;
+
+    OPI_TypeConversion.GetBinaryData(File);
+    DisplayedName = ?(ValueIsFilled(FileName), FileName, DisplayedName);
+
+    Files = New Map;
+    Files.Insert("file|" + DisplayedName, File);
+
+    Response = OPI_Tools.PostMultipart(URL, Parameters, Files, "");
+
+    Return Response;
+
+EndFunction
+
+// Resend file
+// Sends a previously uploaded file by ID
+//
+// Note
+// Method at API documentation: [GET /messages/sendFile](@teams.vk.com/botapi/#/messages/get_messages_sendFile)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID for sending - chatid
+// FileID - String, Number - File ID to send - fileid
+// Text - String - File caption - text
+// FileName - String - Displayed file name - filename
+// Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function ResendFile(Val Token
+    , Val ChatID
+    , Val FileID
+    , Val Text = ""
+    , Val FileName = ""
+    , Val Markup = "MarkdownV2") Export
+
+    URL        = "/messages/sendFile";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId"    , ChatID , "String", Parameters);
+    OPI_Tools.AddField("caption"   , Text   , "String", Parameters);
+    OPI_Tools.AddField("parseMode" , Markup , "String", Parameters);
+    OPI_Tools.AddField("fileId"    , FileID , "String", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 

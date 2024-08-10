@@ -55,6 +55,27 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vkteams";
     NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetFileInformation";
+    NewLine.МетодПоиска = "GETFILEINFORMATION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Common methods";
+    NewLine.ОписаниеМетода   = "Gets information about a file by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetFileInformation";
+    NewLine.МетодПоиска = "GETFILEINFORMATION";
+    NewLine.Параметр    = "--fileid";
+    NewLine.Описание    = "File ID";
+    NewLine.Область     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "SendTextMessage";
     NewLine.МетодПоиска = "SENDTEXTMESSAGE";
     NewLine.Параметр    = "--token";
@@ -108,6 +129,128 @@
     NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "SendTextMessage";
     NewLine.МетодПоиска = "SENDTEXTMESSAGE";
+    NewLine.Параметр    = "--parsemod";
+    NewLine.Описание    = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends the file to the chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID for sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "File for sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "File caption (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--filename";
+    NewLine.Описание    = "Displayed file name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendFile";
+    NewLine.МетодПоиска = "SENDFILE";
+    NewLine.Параметр    = "--parsemod";
+    NewLine.Описание    = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendFile";
+    NewLine.МетодПоиска = "RESENDFILE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends a previously uploaded file by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendFile";
+    NewLine.МетодПоиска = "RESENDFILE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID for sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendFile";
+    NewLine.МетодПоиска = "RESENDFILE";
+    NewLine.Параметр    = "--fileid";
+    NewLine.Описание    = "File ID to send";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendFile";
+    NewLine.МетодПоиска = "RESENDFILE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "File caption (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendFile";
+    NewLine.МетодПоиска = "RESENDFILE";
+    NewLine.Параметр    = "--filename";
+    NewLine.Описание    = "Displayed file name (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendFile";
+    NewLine.МетодПоиска = "RESENDFILE";
     NewLine.Параметр    = "--parsemod";
     NewLine.Описание    = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
     NewLine.Область     = "Message sending";
