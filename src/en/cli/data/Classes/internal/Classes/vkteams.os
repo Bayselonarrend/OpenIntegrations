@@ -112,6 +112,57 @@
     NewLine.Описание    = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
     NewLine.Область     = "Message sending";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ForwardMessage";
+    NewLine.МетодПоиска = "FORWARDMESSAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Forwards an existing message to the current dialog box";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ForwardMessage";
+    NewLine.МетодПоиска = "FORWARDMESSAGE";
+    NewLine.Параметр    = "--message";
+    NewLine.Описание    = "Original message ID";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ForwardMessage";
+    NewLine.МетодПоиска = "FORWARDMESSAGE";
+    NewLine.Параметр    = "--fromid";
+    NewLine.Описание    = "Source chat ID";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ForwardMessage";
+    NewLine.МетодПоиска = "FORWARDMESSAGE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID for message sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ForwardMessage";
+    NewLine.МетодПоиска = "FORWARDMESSAGE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Additional message text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
     Return CompositionTable;
 EndFunction
 

@@ -137,6 +137,38 @@ Function SendTextMessage(Val Token
 
 EndFunction
 
+// Forward message
+// Forwards an existing message to the current dialog box
+//
+// Note
+// Only the chatId from events can be passed to the FromChatID (the code from the chat link is not suitable))
+// Method at API documentation: [GET /messages/sendText](@teams.vk.com/botapi/#/messages/get_messages_sendText)
+//
+// Parameters:
+// Token - String - Bot token - token
+// MessageID - String, Number - Original message ID - message
+// FromChatID - String, Number - Source chat ID - fromid
+// ChatID - String, Number - Chat ID for message sending - chatid
+// Text - String - Additional message text - text
+//
+// Returns:
+// HTTPResponse - Forward message
+Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Val Text = "") Export
+
+    URL        = "/messages/sendText";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId"       , ChatID    , "String", Parameters);
+    OPI_Tools.AddField("text"         , Text      , "String", Parameters);
+    OPI_Tools.AddField("forwardChatId", FromChatID, "String", Parameters);
+    OPI_Tools.AddField("forwardMsgId" , MessageID , "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
