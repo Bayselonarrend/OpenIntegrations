@@ -709,7 +709,7 @@
     NewLine.Метод       = "SendPoll";
     NewLine.МетодПоиска = "SENDPOLL";
     NewLine.Параметр    = "--anonymous";
-    NewLine.Описание    = "Poll anonymity (optional, def. val. - Yes)";
+    NewLine.Описание    = "Poll anonymity (optional, def. val. - True)";
     NewLine.Область     = "Data sending";
 
 
@@ -771,7 +771,7 @@
     NewLine.Метод       = "FormKeyboardFromButtonArray";
     NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Параметр    = "--under";
-    NewLine.Описание    = "Keyboard under the message or on the bottom panel (optional, def. val. - No)";
+    NewLine.Описание    = "Keyboard under the message or on the bottom panel (optional, def. val. - False)";
     NewLine.Область     = "Data sending";
 
 
@@ -781,7 +781,7 @@
     NewLine.Метод       = "FormKeyboardFromButtonArray";
     NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Параметр    = "--column";
-    NewLine.Описание    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - True)";
     NewLine.Область     = "Data sending";
 
 
