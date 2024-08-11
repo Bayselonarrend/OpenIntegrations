@@ -180,7 +180,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "Viber_GetOnlineUsers"  , "Get online users"  , Viber);
     NewTest(TestTable, "Viber_SendTextMessage" , "Send text message" , Viber);
     NewTest(TestTable, "Viber_SendImage"       , "Send image"        , Viber);
-    NewTest(TestTable, "Viber_SendFile"        , "SendFile"          , Viber);
+    NewTest(TestTable, "Viber_SendFile"        , "Send file"         , Viber);
     NewTest(TestTable, "Viber_SendContact"     , "Send contact"      , Viber);
     NewTest(TestTable, "Viber_SendLocation"    , "Send location"     , Viber);
     NewTest(TestTable, "Viber_SendLink"        , "Send link"         , Viber);

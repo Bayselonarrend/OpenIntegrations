@@ -3493,7 +3493,7 @@ Function DeleteMessage(Val URL, Val MessageID, Val Token = "") Export
 
 EndFunction
 
-// SendFile
+// Send file
 // Send disk file to chat
 //
 // Note

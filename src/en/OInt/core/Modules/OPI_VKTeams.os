@@ -162,7 +162,7 @@ Function SendTextMessage(Val Token
 
 EndFunction
 
-// SendFile
+// Send file
 // Sends the file to the chat
 //
 // Note
@@ -206,6 +206,55 @@ Function SendFile(Val Token
     Files.Insert("file|" + DisplayedName, File);
 
     Response = OPI_Tools.PostMultipart(URL, Parameters, Files, "");
+
+    Return Response;
+
+EndFunction
+
+// Send voice
+// Sends an audio file as a voice message
+//
+// Note
+// If you want the client to display this file as a playable voice message, it must be in aac, ogg, or m4a format
+// Method at API documentation: [POST /messages/sendVoice](@teams.vk.com/botapi/#/messages/post_messages_sendVoice)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID for sending - chatid
+// File - BinaryData, String - File for sending - file
+// FileType - String - Audio type: aac, ogg or m4a - type
+// ReplyID - String, Number - Replying message id if necessary - reply
+// Keyboard - Array Of String - Buttons to the message if necessary - keyboard
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function SendVoice(Val Token
+    , Val ChatID
+    , Val File
+    , Val FileType = "m4a"
+    , Val ReplyID = 0
+    , Val Keyboard = "") Export
+
+    URL        = "/messages/sendVoice";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_TypeConversion.GetLine(FileType);
+
+    MIMETypeMapping = New Map;
+    MIMETypeMapping.Insert("m4a", "audio/mp4");
+    MIMETypeMapping.Insert("ogg", "audio/ogg");
+    MIMETypeMapping.Insert("aac", "audio/aac");
+
+    OPI_Tools.AddField("chatId"              , ChatID   , "String"    , Parameters);
+    OPI_Tools.AddField("inlineKeyboardMarkup", Keyboard , "Collection", Parameters);
+    OPI_Tools.AddField("replyMsgId"          , ReplyID  , "String"    , Parameters);
+
+    OPI_TypeConversion.GetBinaryData(File);
+
+    Files = New Map;
+    Files.Insert("file|voice", File);
+
+    Response = OPI_Tools.PostMultipart(URL, Parameters, Files, MIMETypeMapping[FileType]);
 
     Return Response;
 
