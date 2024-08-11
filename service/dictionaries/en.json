@@ -1609,7 +1609,7 @@
 "Base64Значение": "Base64Value",
 "ПолучитьСтроку": "GetLine",
 "необяз. по ум.": "optional, def. val.",
-"Отправить файл": "SendFile",
+"Отправить файл": "Send file",
 "ПолучитьВерсию": "GetVersion",
 "СтруктураЯчеек": "CellStructure",
 "Перезаписывать": "Overwrite",
