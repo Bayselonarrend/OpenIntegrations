@@ -242,3 +242,6 @@ li > a.menu__link {
   display: none;
 }
 
+.wp_logo{
+  margin-right: 10px;
+}
