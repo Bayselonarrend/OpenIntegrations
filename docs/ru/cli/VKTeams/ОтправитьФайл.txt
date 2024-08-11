@@ -1,0 +1,1 @@
+﻿oint vkteams ОтправитьФайл --token %token% --chatid %chatid% --file %file% --text %text% --filename %filename% --parsemod %parsemod%
