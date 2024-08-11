@@ -198,6 +198,88 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vkteams";
     NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Changes the text of an existing message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID for message sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--messageid";
+    NewLine.Описание    = "Message ID for editing";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "New message text";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "EditMessageText";
+    NewLine.МетодПоиска = "EDITMESSAGETEXT";
+    NewLine.Параметр    = "--parsemod";
+    NewLine.Описание    = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Deletes a message by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID for message sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "DeleteMessage";
+    NewLine.МетодПоиска = "DELETEMESSAGE";
+    NewLine.Параметр    = "--messageid";
+    NewLine.Описание    = "Message ID for editing";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "ResendFile";
     NewLine.МетодПоиска = "RESENDFILE";
     NewLine.Параметр    = "--token";
