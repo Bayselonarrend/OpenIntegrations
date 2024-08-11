@@ -211,6 +211,69 @@ Function SendFile(Val Token
 
 EndFunction
 
+// Change the message text
+// Changes the text of an existing message
+//
+// Note
+// You can mention a user by appending their userId to the text in the following format @[userId]
+// Method at API documentation: [GET /messages/editText](@teams.vk.com/botapi/#/messages/get_messages_editText)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID for message sending - chatid
+// MessageID - String, Number - Message ID for editing - messageid
+// Text - String - New message text - text
+// Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function EditMessageText(Val Token
+    , Val ChatID
+    , Val MessageID
+    , Val Text
+    , Val Markup = "MarkdownV2") Export
+
+    URL        = "/messages/editText";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId"   , ChatID    , "String" , Parameters);
+    OPI_Tools.AddField("text"     , Text      , "String" , Parameters);
+    OPI_Tools.AddField("msgId"    , MessageID , "String" , Parameters);
+    OPI_Tools.AddField("parseMode", Markup    , "String" , Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete message
+// Deletes a message by ID
+//
+// Note
+// Method at API documentation: [GET /messages/deleteMessages](@teams.vk.com/botapi/#/messages/get_messages_deleteMessages)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID for message sending - chatid
+// MessageID - String, Number - Message ID for editing - messageid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
+
+    URL        = "/messages/deleteMessages";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId", ChatID   , "String", Parameters);
+    OPI_Tools.AddField("msgId" , MessageID, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Resend file
 // Sends a previously uploaded file by ID
 //
