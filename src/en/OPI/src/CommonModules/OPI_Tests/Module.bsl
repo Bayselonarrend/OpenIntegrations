@@ -3249,6 +3249,7 @@ Procedure VKT_MessagesSending() Export
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_MessageID", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Audio2"           , TestParameters);
 
     VkTeams_SendTextMessage(TestParameters);
     VKTeams_ForwardMessage(TestParameters);
@@ -3256,6 +3257,7 @@ Procedure VKT_MessagesSending() Export
     VKTeams_ResendFile(TestParameters);
     VKTeams_EditMessageText(TestParameters);
     VKTeams_DeleteMessage(TestParameters);
+    VKTeams_SendVoice(TestParameters);
 
 EndProcedure
 
@@ -10471,6 +10473,50 @@ Procedure VKTeams_DeleteMessage(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText", "VkTeams");
 
     Check_VKTTrue(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VKTeams_SendVoice(FunctionParameters)
+
+    Token   = FunctionParameters["VkTeams_Token"];
+    ChatID  = FunctionParameters["VkTeams_ChatID2"];
+    ReplyID = FunctionParameters["VkTeams_MessageID"];
+    Text    = "File caption";
+
+    File     = FunctionParameters["Audio2"] ; // URL
+    FilePath = GetTempFileName("m4a"); // Path
+
+    FileCopy(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (URL)", "VkTeams");
+
+    Check_VKTMessage(Result); // SKIP
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, ,ReplyID);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (Path)", "VkTeams");
+
+    Check_VKTMessage(Result); // SKIP
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "VkTeams");
+
+    Check_VKTMessage(Result);
+
+    DeleteFiles(FilePath);
+
+    FileID = Result["fileId"];
+    OPI_TestDataRetrieval.WriteParameter("VkTeams_VoiceID", FileID);
+    FunctionParameters.Insert("VkTeams_VoiceID", FileID);
 
     OPI_Tools.Pause(5);
 

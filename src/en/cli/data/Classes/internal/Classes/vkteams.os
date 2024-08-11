@@ -198,6 +198,67 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vkteams";
     NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendVoice";
+    NewLine.МетодПоиска = "SENDVOICE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends an audio file as a voice message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendVoice";
+    NewLine.МетодПоиска = "SENDVOICE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID for sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendVoice";
+    NewLine.МетодПоиска = "SENDVOICE";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "File for sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendVoice";
+    NewLine.МетодПоиска = "SENDVOICE";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Audio type: aac, ogg or m4a (optional, def. val. - m4a)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendVoice";
+    NewLine.МетодПоиска = "SENDVOICE";
+    NewLine.Параметр    = "--reply";
+    NewLine.Описание    = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SendVoice";
+    NewLine.МетодПоиска = "SENDVOICE";
+    NewLine.Параметр    = "--keyboard";
+    NewLine.Описание    = "Buttons to the message if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "EditMessageText";
     NewLine.МетодПоиска = "EDITMESSAGETEXT";
     NewLine.Параметр    = "--token";
