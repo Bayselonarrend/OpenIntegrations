@@ -3254,6 +3254,8 @@ Procedure VKT_MessagesSending() Export
     VKTeams_ForwardMessage(TestParameters);
     VKTeams_SendFile(TestParameters);
     VKTeams_ResendFile(TestParameters);
+    VKTeams_EditMessageText(TestParameters);
+    VKTeams_DeleteMessage(TestParameters);
 
 EndProcedure
 
@@ -3965,6 +3967,12 @@ Procedure Check_VKTMessage(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
     OPI_TestDataRetrieval.ExpectsThat(Result["msgId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTTrue(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
 
 EndProcedure
 
@@ -10419,6 +10427,52 @@ Procedure VKTeams_GetFileInformation(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "VkTeams");
 
     Check_VKTFile(Result);
+
+EndProcedure
+
+Procedure VKTeams_EditMessageText(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+    Text      = "New message text";
+
+    Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText (simple)", "VkTeams");
+
+    Check_VKTTrue(Result); // SKIP
+
+    Text   = "<b>New bold message text</b>";
+    Markup = "HTML";
+
+    Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text, Markup);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VKTeams_DeleteMessage(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+
+    Result = OPI_VKTeams.DeleteMessage(Token, ChatID, MessageID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+    OPI_Tools.Pause(5);
 
 EndProcedure
 
