@@ -167,7 +167,7 @@ Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Des
 
 EndFunction
 
-// SendFile
+// Send file
 // Sends a file (document) to a chat or channel
 //
 // Parameters:
