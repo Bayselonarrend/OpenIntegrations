@@ -205,8 +205,7 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Data managment";
     NewLine.ОписаниеМетода   = "Sets sheet cell values
-    |
-    |    The structure of the JSON cells data (parameter --data):
+    |    Data structure for option --data:
     |    {
     |     ""A1"": ""These are cell data of A1"",
     |     ""B2"": ""These are cell data of B2"",
