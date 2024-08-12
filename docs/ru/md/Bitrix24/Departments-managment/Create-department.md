@@ -29,7 +29,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   
   Наименование = "Главное подразделение";
   IDРодителя   = 1;

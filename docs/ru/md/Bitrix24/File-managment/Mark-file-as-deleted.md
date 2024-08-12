@@ -27,7 +27,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   IDФайла = "5010";
   
   Результат  = OPI_Bitrix24.ПоместитьФайлВКорзину(URL, IDФайла);

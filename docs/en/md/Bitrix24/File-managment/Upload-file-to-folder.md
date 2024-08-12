@@ -37,7 +37,7 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
  
  DestinationID = "5016";
  
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  
  Result = OPI_Bitrix24.UploadFileToFolder(URL, Filename2, Image2, DestinationID);
  

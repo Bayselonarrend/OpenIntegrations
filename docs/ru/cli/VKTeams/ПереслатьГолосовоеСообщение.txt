@@ -1,0 +1,1 @@
+﻿oint vkteams ПереслатьГолосовоеСообщение --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --fileid "I000bPVBYaNQkn9Fg3oY0066ba35811bd"

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Удалить сообщение
@@ -26,12 +26,19 @@ sidebar_position: 4
 <br/>
 
 
+```bsl title="Пример кода"
+  Токен       = "001.3501506236.091...";
+  IDЧата      = "689203963@chat.agent";
+  IDСообщения = "7402287649739767956";
+  
+  Результат = OPI_VKTeams.УдалитьСообщение(Токен, IDЧата, IDСообщения);
+```
 	
 
 
 ```sh title="Пример команды CLI"
     
-oint vkteams УдалитьСообщение --token %token% --chatid %chatid% --messageid %messageid%
+  oint vkteams УдалитьСообщение --token %token% --chatid %chatid% --messageid %messageid%
 
 ```
 

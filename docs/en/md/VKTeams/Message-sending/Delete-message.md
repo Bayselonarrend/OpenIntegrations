@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Delete message
@@ -26,12 +26,19 @@ Method at API documentation: [GET /messages/deleteMessages](https://teams.vk.com
 <br/>
 
 
+```bsl title="Code example"
+ Token = "001.3501506236.091...";
+ ChatID = "689203963@chat.agent";
+ MessageID = "7402287649739767956";
+ 
+ Result = OPI_VKTeams.DeleteMessage(Token, ChatID, MessageID);
+```
 	
 
 
 ```sh title="CLI command example"
  
-oint vkteams DeleteMessage --token %token% --chatid %chatid% --messageid %messageid%
+ oint vkteams DeleteMessage --token %token% --chatid %chatid% --messageid %messageid%
 
 ```
 

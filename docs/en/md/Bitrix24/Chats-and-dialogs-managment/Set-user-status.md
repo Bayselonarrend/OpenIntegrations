@@ -27,7 +27,7 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  Status = "dnd";
  
  Result = OPI_Bitrix24.SetUserStatus(URL, Status);

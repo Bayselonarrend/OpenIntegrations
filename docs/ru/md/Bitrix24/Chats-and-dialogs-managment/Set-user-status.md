@@ -27,7 +27,7 @@ sidebar_position: 18
 
 
 ```bsl title="Пример кода"
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   Статус = "dnd";
   
   Результат = OPI_Bitrix24.УстановитьСтатусПользователя(URL, Статус);

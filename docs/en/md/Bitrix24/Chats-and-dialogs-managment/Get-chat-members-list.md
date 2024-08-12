@@ -27,7 +27,7 @@ Method at API documentation: [im.dialog.users.list](https://dev.1c-bitrix.ru/lea
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  ChatID = "chat" + "450";
  
  Result = OPI_Bitrix24.GetChatMembersList(URL, ChatID);

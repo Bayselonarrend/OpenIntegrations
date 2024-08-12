@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Change the message text
@@ -30,12 +30,25 @@ You can mention a user by appending their userId to the text in the following fo
 <br/>
 
 
+```bsl title="Code example"
+ Token = "001.3501506236.091...";
+ ChatID = "689203963@chat.agent";
+ MessageID = "7402287649739767956";
+ Text = "New message text";
+ 
+ Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text);
+ 
+ Text = "<b>New bold message text</b>";
+ Markup = "HTML";
+ 
+ Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text, Markup);
+```
 	
 
 
 ```sh title="CLI command example"
  
-oint vkteams EditMessageText --token %token% --chatid %chatid% --messageid %messageid% --text %text% --parsemod %parsemod%
+ oint vkteams EditMessageText --token %token% --chatid %chatid% --messageid %messageid% --text %text% --parsemod %parsemod%
 
 ```
 

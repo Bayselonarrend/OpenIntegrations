@@ -30,7 +30,7 @@ sidebar_position: 6
 ```bsl title="Пример кода"
   Текст     = "Комментарий к новости";
   IDНовости = "440";
-  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   
   Результат = OPI_Bitrix24.ДобавитьКомментарийНовости(URL, IDНовости, Текст);
   

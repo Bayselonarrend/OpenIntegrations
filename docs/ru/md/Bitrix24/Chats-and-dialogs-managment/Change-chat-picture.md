@@ -28,7 +28,7 @@ sidebar_position: 9
 
 
 ```bsl title="Пример кода"
-  URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   IDЧата  = "450";
   
   Картинка = "https://openintegrations.dev/test_data/picture2.jpg";

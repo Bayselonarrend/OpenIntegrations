@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Изменить текст сообщения
@@ -30,12 +30,25 @@ sidebar_position: 3
 <br/>
 
 
+```bsl title="Пример кода"
+  Токен       = "001.3501506236.091...";
+  IDЧата      = "689203963@chat.agent";
+  IDСообщения = "7402287649739767956";
+  Текст       = "Новый текст сообщения";
+  
+  Результат = OPI_VKTeams.ИзменитьТекстСообщения(Токен, IDЧата, IDСообщения, Текст);
+  
+  Текст         = "<b>Новый полужирный текст сообщения</b>";
+  Разметка      = "HTML";
+  
+  Результат = OPI_VKTeams.ИзменитьТекстСообщения(Токен, IDЧата, IDСообщения, Текст, Разметка);
+```
 	
 
 
 ```sh title="Пример команды CLI"
     
-oint vkteams ИзменитьТекстСообщения --token %token% --chatid %chatid% --messageid %messageid% --text %text% --parsemod %parsemod%
+  oint vkteams ИзменитьТекстСообщения --token %token% --chatid %chatid% --messageid %messageid% --text %text% --parsemod %parsemod%
 
 ```
 
