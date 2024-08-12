@@ -3262,6 +3262,17 @@ Procedure VKT_MessagesSending() Export
 
 EndProcedure
 
+Procedure VKT_ChatManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2" , TestParameters);
+
+    VKTeams_RemoveChatMembers(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -10536,6 +10547,22 @@ Procedure VKTeams_ResendVoice(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ResendVoice", "VkTeams");
 
     Check_VKTMessage(Result);
+
+EndProcedure
+
+Procedure VKTeams_RemoveChatMembers(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Result = OPI_VKTeams.RemoveChatMembers(Token, ChatID, User);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "RemoveChatMembers", "VkTeams");
+
+    Check_VKTTrue(Result);
 
 EndProcedure
 

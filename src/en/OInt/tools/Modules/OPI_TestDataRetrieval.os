@@ -239,6 +239,7 @@ Function GetTestTable() Export
 
     NewTest(TestTable, "VKT_MessagesSending" , "Messages sending" , VKT);
     NewTest(TestTable, "VKT_CommonMethods"   , "Common methods"   , VKT);
+    NewTest(TestTable, "VKT_ChatManagment"   , "Chat managment"   , VKT);
 
     Return TestTable;
 
