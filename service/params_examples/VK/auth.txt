@@ -1,0 +1,6 @@
+{
+ "access_token": "",
+ "owner_id"    : "",   
+ "app_id"      : "",  
+ "group_id"    : ""  
+}

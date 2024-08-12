@@ -19,8 +19,7 @@
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data and settings";
     NewLine.ОписаниеМетода   = "Forms a link for authorization via the browser
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  
@@ -44,8 +43,7 @@
     NewLine.Описание    = "Code obtained from authorization See GetAuthorizationLink";
     NewLine.Область     = "Data and settings";
     NewLine.ОписаниеМетода   = "Gets the token by the code received when authorizing using the link from GetAuthorizationLink
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  
@@ -79,8 +77,7 @@
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Data and settings";
     NewLine.ОписаниеМетода   = "Updates the v2 token using the refresh_token
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  
@@ -104,8 +101,7 @@
     NewLine.Описание    = "Tweet text";
     NewLine.Область     = "Tweets";
     NewLine.ОписаниеМетода   = "Creates a tweet without attachments
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  
@@ -139,8 +135,7 @@
     NewLine.Описание    = "Tweet text";
     NewLine.Область     = "Tweets";
     NewLine.ОписаниеМетода   = "Creates a tweet with an image attachment
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  
@@ -184,8 +179,7 @@
     NewLine.Описание    = "Tweet text";
     NewLine.Область     = "Tweets";
     NewLine.ОписаниеМетода   = "Creates a tweet with a gif attachment
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  
@@ -229,8 +223,7 @@
     NewLine.Описание    = "Tweet text";
     NewLine.Область     = "Tweets";
     NewLine.ОписаниеМетода   = "Creates a tweet with a video attachment
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  
@@ -274,8 +267,7 @@
     NewLine.Описание    = "Tweet text";
     NewLine.Область     = "Tweets";
     NewLine.ОписаниеМетода   = "Creates a tweet with a poll
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""redirect_uri"": """",  
     |     ""client_id"": """",  

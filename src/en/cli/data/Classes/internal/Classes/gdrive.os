@@ -58,7 +58,7 @@
     NewLine.Метод       = "GetDirectoriesList";
     NewLine.МетодПоиска = "GETDIRECTORIESLIST";
     NewLine.Параметр    = "--depth";
-    NewLine.Описание    = "Adds a list of files to the directory fields (optional, def. val. - False)";
+    NewLine.Описание    = "Adds a list of files to the directory fields (optional, def. val. - No)";
     NewLine.Область     = "File and directory management";
 
 
@@ -102,8 +102,7 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "File and directory management";
     NewLine.ОписаниеМетода   = "Uploads a file to the drive
-    |
-    |    The structure of the JSON object data (parameter --props):
+    |    Data structure for option --props:
     |    {
     |     ""MIME"": ""image/jpeg"",
     |     ""Name"": ""New file.jpg"",

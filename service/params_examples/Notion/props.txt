@@ -1,0 +1,13 @@
+{
+ "Имя поля БД c обычным типом"     : "Тип данных 1",
+ "Имя поля БД с выбором значения"  : 
+    {
+     "Вариант1"  : "green",
+     "Вариант2"  : "red",
+     ...
+    },
+ ...
+}
+
+Доуступные типы: title(ключевой), rich_text, number, status,
+date, files, checkbox, url, email, phone_number, people

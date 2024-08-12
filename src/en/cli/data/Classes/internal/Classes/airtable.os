@@ -61,9 +61,8 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Working with databases";
     NewLine.ОписаниеМетода   = "Creates a new database
-    |
-    |    The structure of the JSON table properties data (parameter --tablesdata):
-    |  {
+    |    Data structure for option --tablesdata:
+    |    {
     |    ""Table name 1"": [
     |                         {
     |                          <Field description data 1>
@@ -72,10 +71,10 @@
     |                          <Field description data 2>
     |                        },
     |                       ],
-    |   ...
-    |  }
-    |
-    |Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
+    |    ...
+    |    }
+    |    
+    |    Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
     |";
 
 
@@ -118,9 +117,8 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Table management";
     NewLine.ОписаниеМетода   = "Creates a new table in the base
-    |
-    |    The structure of the JSON array of fields data (parameter --fieldsdata):
     |    [
+    |    Data structure for option --fieldsdata:
     |        {
     |          <Field description data 1>
     |        },
@@ -128,8 +126,8 @@
     |          <Field description data 2>
     |        },
     |    ]
-    |
-    |Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
+    |    
+    |    Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
     |";
 
 
@@ -233,7 +231,7 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Working with fields";
     NewLine.ОписаниеМетода   = "Creates a new field in the table
-    |Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
+    |    Functions for generating field descriptions: GetStringField, GetNumberField, GetAttachmentField, GetCheckboxField, GetDateField, GetEmailField, GetPhoneField, GetLinkField
     |";
 
 

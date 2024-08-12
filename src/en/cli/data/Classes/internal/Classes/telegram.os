@@ -490,8 +490,7 @@
     NewLine.Описание    = "Bot token";
     NewLine.Область     = "Data sending";
     NewLine.ОписаниеМетода   = "Sends a set of files to a chat or channel. Media types: audio, document, photo, video
-    |
-    |    The structure of the JSON media group data (parameter --media):
+    |    Data structure for option --media:
     |    {
     |     ""FilePath"": ""TypeOfMedia"",
     |     ""FilePath"": ""TypeOfMedia"",
@@ -709,7 +708,7 @@
     NewLine.Метод       = "SendPoll";
     NewLine.МетодПоиска = "SENDPOLL";
     NewLine.Параметр    = "--anonymous";
-    NewLine.Описание    = "Poll anonymity (optional, def. val. - True)";
+    NewLine.Описание    = "Poll anonymity (optional, def. val. - Yes)";
     NewLine.Область     = "Data sending";
 
 
@@ -771,7 +770,7 @@
     NewLine.Метод       = "FormKeyboardFromButtonArray";
     NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Параметр    = "--under";
-    NewLine.Описание    = "Keyboard under the message or on the bottom panel (optional, def. val. - False)";
+    NewLine.Описание    = "Keyboard under the message or on the bottom panel (optional, def. val. - No)";
     NewLine.Область     = "Data sending";
 
 
@@ -781,7 +780,7 @@
     NewLine.Метод       = "FormKeyboardFromButtonArray";
     NewLine.МетодПоиска = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Параметр    = "--column";
-    NewLine.Описание    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - True)";
+    NewLine.Описание    = "True > buttons are displayed in a column, False > in a row (optional, def. val. - Yes)";
     NewLine.Область     = "Data sending";
 
 
