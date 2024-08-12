@@ -42,7 +42,7 @@
  
 ## Установка и варианты релизов ##
 
-[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://tooomm.github.io/github-release-stats/?username=bayselonarrend&repository=OpenIntegrations)
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://github.com/Bayselonarrend/OpenIntegrations/releases/tag/1.11.1)
 
 <img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/icons.png" align="right">
 
