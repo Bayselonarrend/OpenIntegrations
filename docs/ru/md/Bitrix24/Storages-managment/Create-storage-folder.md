@@ -32,7 +32,7 @@ sidebar_position: 6
   Наименование  = "Новый каталог";
   Наименование2 = "Новый каталог 2";
   
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   
   Результат = OPI_Bitrix24.СоздатьКаталогВХранилище(URL, IDХранилища, Наименование2);
   

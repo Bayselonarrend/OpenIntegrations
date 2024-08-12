@@ -28,7 +28,7 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 
 ```bsl title="Code example"
  PostID = "438";
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  
  Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
  

@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# SendFile
+# Send file
  Sends the file to the chat
 
 
@@ -29,12 +29,30 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
 <br/>
 
 
+```bsl title="Code example"
+ Token = "001.3501506236.091...";
+ ChatID = "AoLI0egLWBSLR1Ngn2w";
+ Text = "File caption";
+ 
+ File = "https://openintegrations.dev/test_data/document.docx"; // URL
+ FilePath = GetTempFileName("docx"); // Path
+ 
+ FileCopy(File, FilePath);
+ 
+ FileBD = New BinaryData(FilePath); // Binary
+ 
+ Result = OPI_VKTeams.SendFile(Token, ChatID, File);
+ 
+ Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
+ 
+ Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
+```
 	
 
 
 ```sh title="CLI command example"
  
-oint vkteams SendFile --token %token% --chatid %chatid% --file %file% --text %text% --filename %filename% --parsemod %parsemod%
+ oint vkteams SendFile --token %token% --chatid %chatid% --file %file% --text %text% --filename %filename% --parsemod %parsemod%
 
 ```
 

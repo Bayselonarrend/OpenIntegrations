@@ -32,7 +32,7 @@ sidebar_position: 20
   МассивПользователей.Добавить("1");
   МассивПользователей.Добавить("10");
   
-  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   IDЗадачи = "1078";
   
   Результат = OPI_Bitrix24.ПроверитьДоступКЗадаче(URL, IDЗадачи, МассивПользователей);

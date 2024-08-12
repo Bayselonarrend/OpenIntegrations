@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 # Переслать сообщение
@@ -30,12 +30,24 @@ sidebar_position: 6
 <br/>
 
 
+```bsl title="Пример кода"
+  Токен           = "001.3501506236.091...";
+  IDЧата          = "AoLI0egLWBSLR1Ngn2w";
+  IDЧатаИсточника = "689203963@chat.agent";
+  IDСообщения     = "7402287649739767956";
+  
+  Результат = OPI_VKTeams.ПереслатьСообщение(Токен, IDСообщения, IDЧатаИсточника, IDЧата);
+  
+  Текст = "Дополнительный текст";
+  
+  Результат = OPI_VKTeams.ПереслатьСообщение(Токен, IDСообщения, IDЧатаИсточника, IDЧата, Текст);
+```
 	
 
 
 ```sh title="Пример команды CLI"
     
-oint vkteams ПереслатьСообщение --token %token% --message %message% --fromid %fromid% --chatid %chatid% --text %text%
+  oint vkteams ПереслатьСообщение --token %token% --message %message% --fromid %fromid% --chatid %chatid% --text %text%
 
 ```
 

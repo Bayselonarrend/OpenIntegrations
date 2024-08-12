@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Переслать файл
@@ -29,12 +29,20 @@ sidebar_position: 5
 <br/>
 
 
+```bsl title="Пример кода"
+  Токен    = "001.3501506236.091...";
+  IDЧата   = "AoLI0egLWBSLR1Ngn2w";
+  IDФайла  = "sXhpbA5K2ZCOdG5ROIfRan66ba356d1bd";
+  Текст    = "Подпись к файлу";
+  
+  Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст, "ТотЖеДокумент.docx");
+```
 	
 
 
 ```sh title="Пример команды CLI"
     
-oint vkteams ПереслатьФайл --token %token% --chatid %chatid% --fileid %fileid% --text %text% --filename %filename% --parsemod %parsemod%
+  oint vkteams ПереслатьФайл --token %token% --chatid %chatid% --fileid %fileid% --text %text% --filename %filename% --parsemod %parsemod%
 
 ```
 

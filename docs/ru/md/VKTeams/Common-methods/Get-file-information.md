@@ -25,12 +25,18 @@ sidebar_position: 3
 <br/>
 
 
+```bsl title="Пример кода"
+  Токен    = "001.3501506236.091...";
+  IDФайла  = "sXhpbA5K2ZCOdG5ROIfRan66ba356d1bd";
+  
+  Результат = OPI_VKTeams.ПолучитьИнформациюОФайле(Токен, IDФайла);
+```
 	
 
 
 ```sh title="Пример команды CLI"
     
-oint vkteams ПолучитьИнформациюОФайле --token %token% --fileid %fileid%
+  oint vkteams ПолучитьИнформациюОФайле --token %token% --fileid %fileid%
 
 ```
 

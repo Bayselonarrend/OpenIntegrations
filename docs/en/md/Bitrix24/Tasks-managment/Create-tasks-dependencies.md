@@ -33,7 +33,7 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
  DestinationID = "1080";
  LinkType = 0;
  
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  
  Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
  

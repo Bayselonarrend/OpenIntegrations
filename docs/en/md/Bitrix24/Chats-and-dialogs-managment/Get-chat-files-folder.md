@@ -27,7 +27,7 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  ChatID = "450";
  
  Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);

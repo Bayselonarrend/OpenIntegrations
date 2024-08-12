@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Resend file
@@ -29,12 +29,20 @@ Method at API documentation: [GET /messages/sendFile](https://teams.vk.com/botap
 <br/>
 
 
+```bsl title="Code example"
+ Token = "001.3501506236.091...";
+ ChatID = "AoLI0egLWBSLR1Ngn2w";
+ FileID = "sXhpbA5K2ZCOdG5ROIfRan66ba356d1bd";
+ Text = "File caption";
+ 
+ Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text, "SameDoc.docx");
+```
 	
 
 
 ```sh title="CLI command example"
  
-oint vkteams ResendFile --token %token% --chatid %chatid% --fileid %fileid% --text %text% --filename %filename% --parsemod %parsemod%
+ oint vkteams ResendFile --token %token% --chatid %chatid% --fileid %fileid% --text %text% --filename %filename% --parsemod %parsemod%
 
 ```
 
