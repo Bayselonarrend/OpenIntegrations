@@ -28,7 +28,7 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  ChatID = "450";
  
  Image = "https://openintegrations.dev/test_data/picture2.jpg";

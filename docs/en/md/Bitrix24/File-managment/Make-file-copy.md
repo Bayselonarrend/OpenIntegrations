@@ -31,7 +31,7 @@ Method at API documentation: [disk.file.copyto](https://dev.1c-bitrix.ru/rest_he
  FolderID = "5014";
  FileID = "5010";
  
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  
  Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID);
  

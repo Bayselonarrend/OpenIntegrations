@@ -41,7 +41,7 @@ sidebar_position: 3
   СтруктураЗадачи.Вставить("DEADLINE"      , ТекущаяДата + Час * Сутки);
   СтруктураЗадачи.Вставить("RESPONSIBLE_ID", Исполнитель);
   
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   
   Результат = OPI_Bitrix24.СоздатьЗадачу(URL, СтруктураЗадачи);
   

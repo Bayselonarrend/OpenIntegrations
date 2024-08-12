@@ -29,12 +29,30 @@ sidebar_position: 2
 <br/>
 
 
+```bsl title="Пример кода"
+  Токен    = "001.3501506236.091...";
+  IDЧата   = "AoLI0egLWBSLR1Ngn2w";
+  Текст    = "Подпись к файлу";
+  
+  Файл     = "https://openintegrations.dev/test_data/document.docx";        // URL
+  ФайлПуть = ПолучитьИмяВременногоФайла("docx");  // Путь
+  
+  КопироватьФайл(Файл, ФайлПуть);
+  
+  ФайлДД   = Новый ДвоичныеДанные(ФайлПуть);      // Двоичные
+  
+  Результат = OPI_VKTeams.ОтправитьФайл(Токен, IDЧата, Файл);
+  
+  Результат = OPI_VKTeams.ОтправитьФайл(Токен, IDЧата, ФайлПуть, Текст);
+  
+  Результат = OPI_VKTeams.ОтправитьФайл(Токен, IDЧата, Файл, Текст, "ВажныйДокумент.docx");
+```
 	
 
 
 ```sh title="Пример команды CLI"
     
-oint vkteams ОтправитьФайл --token %token% --chatid %chatid% --file %file% --text %text% --filename %filename% --parsemod %parsemod%
+  oint vkteams ОтправитьФайл --token %token% --chatid %chatid% --file %file% --text %text% --filename %filename% --parsemod %parsemod%
 
 ```
 
