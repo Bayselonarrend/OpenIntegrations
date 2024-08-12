@@ -1,6 +1,6 @@
 ﻿    Путь      = "/New/pic.png";
-    Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
+    Токен     = ПараметрыФункции["Dropbox_Token"];
+    Картинка  = ПараметрыФункции["Picture"];
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);

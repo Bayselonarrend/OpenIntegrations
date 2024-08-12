@@ -1,5 +1,5 @@
-﻿    Токен    = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-    ИДРаботы = "M-k-JxYXrrEAAAAAAAAAAQ";
+﻿    Токен    = ПараметрыФункции["Dropbox_Token"];
+    ИДРаботы = ПараметрыФункции["Dropbox_Job"];
     Статус   = "in_progress";
 
     Пока Статус = "in_progress" Цикл

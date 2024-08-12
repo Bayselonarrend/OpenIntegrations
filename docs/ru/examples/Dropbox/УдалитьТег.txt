@@ -1,5 +1,5 @@
 ﻿    Тег       = "Важное";
-    Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Токен     = ПараметрыФункции["Dropbox_Token"];
     Путь      = "/New/mydoc.docx";
 
     Результат = OPI_Dropbox.УдалитьТег(Токен, Путь, Тег);

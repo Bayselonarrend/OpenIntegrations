@@ -171,7 +171,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--important";
-    NewLine.Описание    = "Mark post as important (optional, def. val. - No)";
+    NewLine.Описание    = "Mark post as important (optional, def. val. - False)";
     NewLine.Область     = "Feed posts managment";
 
 
@@ -1323,7 +1323,7 @@
     NewLine.Метод       = "GetTasksFilterStructure";
     NewLine.МетодПоиска = "GETTASKSFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Область     = "Tasks managment";
     NewLine.ОписаниеМетода   = "Return filter structure for GetTasksList";
 
@@ -1580,7 +1580,7 @@
     NewLine.Метод       = "AddTasksChecklistElement";
     NewLine.МетодПоиска = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Параметр    = "--complete";
-    NewLine.Описание    = "Mark as completed (optional, def. val. - No)";
+    NewLine.Описание    = "Mark as completed (optional, def. val. - False)";
     NewLine.Область     = "Tasks checklists managment";
 
 
@@ -2144,7 +2144,7 @@
     NewLine.Метод       = "GetCommentStructure";
     NewLine.МетодПоиска = "GETCOMMENTSTRUCTURE";
     NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Область     = "Comments and results managment";
     NewLine.ОписаниеМетода   = "Get comment fields structure";
 
@@ -2206,7 +2206,7 @@
     NewLine.Метод       = "AddKanbanStage";
     NewLine.МетодПоиска = "ADDKANBANSTAGE";
     NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - False)";
     NewLine.Область     = "Kanban";
 
 
@@ -2277,7 +2277,7 @@
     NewLine.Метод       = "UpdateKanbansStage";
     NewLine.МетодПоиска = "UPDATEKANBANSSTAGE";
     NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - False)";
     NewLine.Область     = "Kanban";
 
 
@@ -2318,7 +2318,7 @@
     NewLine.Метод       = "DeleteKanbanStage";
     NewLine.МетодПоиска = "DELETEKANBANSTAGE";
     NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Описание    = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - False)";
     NewLine.Область     = "Kanban";
 
 
@@ -2359,7 +2359,7 @@
     NewLine.Метод       = "GetKanbanStages";
     NewLine.МетодПоиска = "GETKANBANSTAGES";
     NewLine.Параметр    = "--admin";
-    NewLine.Описание    = "Allows you to get stages without checking permissions (for administrators) (optional, def. val. - No)";
+    NewLine.Описание    = "Allows you to get stages without checking permissions (for administrators) (optional, def. val. - False)";
     NewLine.Область     = "Kanban";
 
 
@@ -3447,7 +3447,7 @@
     NewLine.Метод       = "GetFolderFilterStructure";
     NewLine.МетодПоиска = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
+    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - False)";
     NewLine.Область     = "Catalogs managment";
 
 
@@ -4012,7 +4012,7 @@
     NewLine.Метод       = "AddUsersToChat";
     NewLine.МетодПоиска = "ADDUSERSTOCHAT";
     NewLine.Параметр    = "--hide";
-    NewLine.Описание    = "Hide old messages from new members (optional, def. val. - No)";
+    NewLine.Описание    = "Hide old messages from new members (optional, def. val. - False)";
     NewLine.Область     = "Chats and dialogs managment";
 
 
@@ -4547,7 +4547,7 @@
     NewLine.Метод       = "GetChatStructure";
     NewLine.МетодПоиска = "GETCHATSTRUCTURE";
     NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - No)";
+    NewLine.Описание    = "True > structure with empty values, False > field types at values (optional, def. val. - False)";
     NewLine.Область     = "Chats and dialogs managment";
     NewLine.ОписаниеМетода   = "Get chat fields structure";
 
@@ -5399,7 +5399,7 @@
     NewLine.Метод       = "ChangeUserStatus";
     NewLine.МетодПоиска = "CHANGEUSERSTATUS";
     NewLine.Параметр    = "--fire";
-    NewLine.Описание    = "True > Deactivation, False > Activation (optional, def. val. - Yes)";
+    NewLine.Описание    = "True > Deactivation, False > Activation (optional, def. val. - True)";
     NewLine.Область     = "Users managment";
 
 
@@ -5471,7 +5471,7 @@
     NewLine.Метод       = "GetUserFilterStructure";
     NewLine.МетодПоиска = "GETUSERFILTERSTRUCTURE";
     NewLine.Параметр    = "--empty";
-    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Область     = "Users managment";
     NewLine.ОписаниеМетода   = "Returns the field structure for filtering users in the FindUsers method";
 
