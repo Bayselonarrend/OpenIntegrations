@@ -3258,6 +3258,7 @@ Procedure VKT_MessagesSending() Export
     VKTeams_EditMessageText(TestParameters);
     VKTeams_DeleteMessage(TestParameters);
     VKTeams_SendVoice(TestParameters);
+    VKTeams_ResendVoice(TestParameters);
 
 EndProcedure
 
@@ -10519,6 +10520,22 @@ Procedure VKTeams_SendVoice(FunctionParameters)
     FunctionParameters.Insert("VkTeams_VoiceID", FileID);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VKTeams_ResendVoice(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_VoiceID"];
+
+    Result = OPI_VKTeams.ResendVoice(Token, ChatID, FileID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ResendVoice", "VkTeams");
+
+    Check_VKTMessage(Result);
 
 EndProcedure
 

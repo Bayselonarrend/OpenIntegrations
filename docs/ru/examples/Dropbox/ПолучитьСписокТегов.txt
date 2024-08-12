@@ -1,4 +1,4 @@
-﻿    Токен = ПараметрыФункции["Dropbox_Token"];
+﻿    Токен = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
 
     МассивПутей = Новый Массив;
     МассивПутей.Добавить("/New/Dogs.mp3");

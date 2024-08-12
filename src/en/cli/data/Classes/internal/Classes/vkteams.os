@@ -402,6 +402,37 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vkteams";
     NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendVoice";
+    NewLine.МетодПоиска = "RESENDVOICE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Sends a previously uploaded voice message by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendVoice";
+    NewLine.МетодПоиска = "RESENDVOICE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID for sending";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ResendVoice";
+    NewLine.МетодПоиска = "RESENDVOICE";
+    NewLine.Параметр    = "--fileid";
+    NewLine.Описание    = "File ID of voice message";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "ForwardMessage";
     NewLine.МетодПоиска = "FORWARDMESSAGE";
     NewLine.Параметр    = "--token";
