@@ -8,6 +8,10 @@
 "workflowsSrc": "./.github/workflows/",
 "locVarsSrc": "./service/localization_vars/",
 "paramsExamplesSrc": "./service/params_examples/",
+"codeExamplesSrc": "./docs/ru/examples/",
+"testValuesSrc": "./docs/ru/data/",
+"testsModule": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os",
+"testsCheckFile": "./service/tests_set.json",
 "additionalLangs": [
 "en"
 ]
