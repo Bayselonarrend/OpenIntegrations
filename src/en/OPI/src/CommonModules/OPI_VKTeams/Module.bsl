@@ -360,6 +360,33 @@ Function ResendFile(Val Token
 
 EndFunction
 
+// Resend voice
+// Sends a previously uploaded voice message by ID
+//
+// Note
+// Method at API documentation: [GET /messages/sendVoice](@teams.vk.com/botapi/#/messages/get_messages_sendVoice)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID for sending - chatid
+// FileID - String, Number - File ID of voice message - fileid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function ResendVoice(Val Token, Val ChatID, Val FileID) Export
+
+    URL        = "/messages/sendVoice";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId", ChatID , "String", Parameters);
+    OPI_Tools.AddField("fileId", FileID , "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 // Forward message
 // Forwards an existing message to the current dialog box
 //
