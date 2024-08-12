@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# SendFile
+# Send file
  Sends a file (document) to a chat or channel
 
 

@@ -35,7 +35,7 @@ sidebar_position: 4
   СтруктураЗадачи.Вставить("DESCRIPTION", "Другое описание задачи");
   СтруктураЗадачи.Вставить("PRIORITY"   , "1");
   
-  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   IDЗадачи = "1078";
   
   Результат = OPI_Bitrix24.ИзменитьЗадачу(URL, IDЗадачи, СтруктураЗадачи);

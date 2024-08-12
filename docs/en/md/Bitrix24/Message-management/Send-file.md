@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# SendFile
+# Send file
  Send disk file to chat
 
 
@@ -29,7 +29,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/";
+ URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
  ChatID = "450";
  File = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
  Description = "Very important file";
