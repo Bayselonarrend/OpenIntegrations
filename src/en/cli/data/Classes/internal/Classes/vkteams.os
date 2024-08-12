@@ -480,6 +480,37 @@
     NewLine.Описание    = "Additional message text (optional, def. val. - Empty value)";
     NewLine.Область     = "Message sending";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "RemoveChatMembers";
+    NewLine.МетодПоиска = "REMOVECHATMEMBERS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Removes users from the chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "RemoveChatMembers";
+    NewLine.МетодПоиска = "REMOVECHATMEMBERS";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "RemoveChatMembers";
+    NewLine.МетодПоиска = "REMOVECHATMEMBERS";
+    NewLine.Параметр    = "--members";
+    NewLine.Описание    = "The member or members of the chat room to remove";
+    NewLine.Область     = "Chat management";
+
     Return CompositionTable;
 EndFunction
 

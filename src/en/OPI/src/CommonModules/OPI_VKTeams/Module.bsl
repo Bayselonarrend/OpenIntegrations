@@ -421,6 +421,55 @@ EndFunction
 
 #EndRegion
 
+#Region ChatManagement
+
+// Remove chat members
+// Removes users from the chat
+//
+// Note
+// Method at API documentation: [GET /chats/members/delete](@teams.vk.com/botapi/#/chats/get_chats_members_delete)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// Users - String, Number, Array of String, Number - The member or members of the chat room to remove - members
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function RemoveChatMembers(Val Token, Val ChatID, Val Users) Export
+
+    OPI_TypeConversion.GetArray(Users);
+
+    URL        = "/chats/members/delete";
+    Parameters = NormalizeMain(URL, Token);
+
+    MembersQuery = "";
+
+    For Each ChatMember In Users Do
+
+        CurrentUser  = OPI_Tools.NumberToString(ChatMember);
+        MembersQuery = ?(ValueIsFilled(MembersQuery), MembersQuery + ",", "[");
+
+        MembersQuery = MembersQuery
+            + "{""sn"":"""
+            + CurrentUser
+            + """}";
+
+    EndDo;
+
+    MembersQuery = MembersQuery + "]";
+
+    OPI_Tools.AddField("chatId" , ChatID      , "String", Parameters);
+    OPI_Tools.AddField("members", MembersQuery, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
