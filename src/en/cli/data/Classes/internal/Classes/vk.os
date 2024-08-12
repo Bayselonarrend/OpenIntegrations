@@ -31,8 +31,7 @@
     NewLine.Описание    = "Post text";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Creates a post with images
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -58,7 +57,7 @@
     NewLine.Метод       = "CreatePost";
     NewLine.МетодПоиска = "CREATEPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - False)";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
     NewLine.Область     = "Community managment";
 
 
@@ -91,8 +90,7 @@
     NewLine.Описание    = "Post text";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Creates a post based on an array of object identifiers (images, videos, etc..)
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -118,7 +116,7 @@
     NewLine.Метод       = "CreateCompositePost";
     NewLine.МетодПоиска = "CREATECOMPOSITEPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - False)";
+    NewLine.Описание    = "Sign ""This is an ad"" (optional, def. val. - No)";
     NewLine.Область     = "Community managment";
 
 
@@ -151,8 +149,7 @@
     NewLine.Описание    = "Post ID";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Deletes a post by ID
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -181,8 +178,7 @@
     NewLine.Описание    = "Poll question";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Creates a poll with answer options
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -231,8 +227,7 @@
     NewLine.Описание    = "Album name";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Creates an album to store images
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -271,8 +266,7 @@
     NewLine.Описание    = "Album ID";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Deletes a previously created album
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -301,8 +295,7 @@
     NewLine.Описание    = "Story background";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Creates a story from an image
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -341,8 +334,7 @@
     NewLine.Описание    = "Album ID";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Saves an image to the community album
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -391,8 +383,7 @@
     NewLine.Описание    = "Image ID";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Deletes an image from the album
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -421,8 +412,7 @@
     NewLine.Описание    = "Video file";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Uploads video to the group for further use
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -481,8 +471,7 @@
     NewLine.Описание    = "Image file";
     NewLine.Область     = "Community managment";
     NewLine.ОписаниеМетода   = "Uploads photo to server for further use
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -521,8 +510,7 @@
     NewLine.Описание    = "Discussion name";
     NewLine.Область     = "Discussion management";
     NewLine.ОписаниеМетода   = "Creates a new discussion
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -561,8 +549,7 @@
     NewLine.Описание    = "Discussion ID";
     NewLine.Область     = "Discussion management";
     NewLine.ОписаниеМетода   = "Close or delete discussion
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -578,7 +565,7 @@
     NewLine.Метод       = "CloseDiscussion";
     NewLine.МетодПоиска = "CLOSEDISCUSSION";
     NewLine.Параметр    = "--remove";
-    NewLine.Описание    = "Delete completely (True) or close (optional, def. val. - False)";
+    NewLine.Описание    = "Delete completely (True) or close (optional, def. val. - No)";
     NewLine.Область     = "Discussion management";
 
 
@@ -601,8 +588,7 @@
     NewLine.Описание    = "Discussion ID";
     NewLine.Область     = "Discussion management";
     NewLine.ОписаниеМетода   = "Opens a previously closed discussion
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -631,8 +617,7 @@
     NewLine.Описание    = "Discussion ID";
     NewLine.Область     = "Discussion management";
     NewLine.ОписаниеМетода   = "Adds a message to the discussion on behalf of the group
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -671,8 +656,7 @@
     NewLine.Описание    = "Post ID";
     NewLine.Область     = "Interactive actions";
     NewLine.ОписаниеМетода   = "Likes a post
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -711,8 +695,7 @@
     NewLine.Описание    = "Post ID";
     NewLine.Область     = "Interactive actions";
     NewLine.ОписаниеМетода   = "Reposts the record
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -748,7 +731,7 @@
     NewLine.Метод       = "MakeRepost";
     NewLine.МетодПоиска = "MAKEREPOST";
     NewLine.Параметр    = "--ad";
-    NewLine.Описание    = "Sign of an advertising post (optional, def. val. - False)";
+    NewLine.Описание    = "Sign of an advertising post (optional, def. val. - No)";
     NewLine.Область     = "Interactive actions";
 
 
@@ -771,8 +754,7 @@
     NewLine.Описание    = "Message text";
     NewLine.Область     = "Interactive actions";
     NewLine.ОписаниеМетода   = "Write a message to a user in the community's dialog
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -831,8 +813,7 @@
     NewLine.Описание    = "ID of the target post";
     NewLine.Область     = "Interactive actions";
     NewLine.ОписаниеМетода   = "Creates a comment under the selected record
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -881,8 +862,7 @@
     NewLine.Описание    = "URL for shortening";
     NewLine.Область     = "Interactive actions";
     NewLine.ОписаниеМетода   = "Creates a shortened URL from a regular one
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -911,8 +891,7 @@
     NewLine.Описание    = "Start date of the period";
     NewLine.Область     = "Statistics";
     NewLine.ОписаниеМетода   = "Gets the overall community statistics for a period
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -951,8 +930,7 @@
     NewLine.Описание    = "Array of post IDs";
     NewLine.Область     = "Statistics";
     NewLine.ОписаниеМетода   = "Gets statistics in terms of posts
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -981,8 +959,7 @@
     NewLine.Описание    = "Advertising account ID";
     NewLine.Область     = "Ad account management";
     NewLine.ОписаниеМетода   = "Creates a campaign in the selected advertising account
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1021,8 +998,7 @@
     NewLine.Описание    = "Advertising campaign ID";
     NewLine.Область     = "Ad account management";
     NewLine.ОписаниеМетода   = "Creates an advertising post based on a post
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1091,8 +1067,7 @@
     NewLine.Описание    = "Advertising account ID";
     NewLine.Область     = "Ad account management";
     NewLine.ОписаниеМетода   = "Pauses the display of the advertising post
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1131,8 +1106,7 @@
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Ad account management";
     NewLine.ОписаниеМетода   = "Gets a list of advertising category IDs for creating an advertising post
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1151,8 +1125,7 @@
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Gets a list of product category IDs to specify when creating a product
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1171,8 +1144,7 @@
     NewLine.Описание    = "Selection ID, if filtering is needed (optional, def. val. - Empty value)";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Gets the community's product list
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1201,8 +1173,7 @@
     NewLine.Описание    = "Array of product IDs";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Gets information about products by array of IDs
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1231,8 +1202,7 @@
     NewLine.Описание    = "JSON description of the product or path";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Adds a new product to the community's catalog
-    |
-    |    The structure of the JSON product description data (parameter --product):
+    |    Data structure for option --product:
     |    {
     |     ""Name"": ""New product"",
     |     ""Description"": ""Product description"",
@@ -1252,8 +1222,7 @@
     |     ""AvailableBalance"": ""1""
     |    }
     |
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1292,8 +1261,7 @@
     NewLine.Описание    = "Identifier of the product being edited";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Edits a previously created product
-    |
-    |    The structure of the JSON product description data (parameter --product):
+    |    Data structure for option --product:
     |    {
     |     ""Name"": ""New product"",
     |     ""Description"": ""Product description"",
@@ -1313,8 +1281,7 @@
     |     ""AvailableBalance"": ""1""
     |    }
     |
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1363,8 +1330,7 @@
     NewLine.Описание    = "Product ID";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Deletes a previously created product
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1393,8 +1359,7 @@
     NewLine.Описание    = "Array of product IDs";
     NewLine.Область     = "Product management";
     NewLine.ОписаниеМетода   = "Groups products based on similar sets of properties
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1433,8 +1398,7 @@
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Gets the list of product selections
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1453,8 +1417,7 @@
     NewLine.Описание    = "Selection IDs";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Gets the list of selections by array of IDs
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1483,8 +1446,7 @@
     NewLine.Описание    = "Selection name";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Creates an empty product selection
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1510,7 +1472,7 @@
     NewLine.Метод       = "CreateProductCollection";
     NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     NewLine.Параметр    = "--main";
-    NewLine.Описание    = "Main (optional, def. val. - False)";
+    NewLine.Описание    = "Main (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1520,7 +1482,7 @@
     NewLine.Метод       = "CreateProductCollection";
     NewLine.МетодПоиска = "CREATEPRODUCTCOLLECTION";
     NewLine.Параметр    = "--hidden";
-    NewLine.Описание    = "Hidden (optional, def. val. - False)";
+    NewLine.Описание    = "Hidden (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1543,8 +1505,7 @@
     NewLine.Описание    = "New selection name";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Edits the properties of a product selection
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1580,7 +1541,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--main";
-    NewLine.Описание    = "Main (optional, def. val. - False)";
+    NewLine.Описание    = "Main (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1590,7 +1551,7 @@
     NewLine.Метод       = "EditProductCollection";
     NewLine.МетодПоиска = "EDITPRODUCTCOLLECTION";
     NewLine.Параметр    = "--hidden";
-    NewLine.Описание    = "Hidden (optional, def. val. - False)";
+    NewLine.Описание    = "Hidden (optional, def. val. - No)";
     NewLine.Область     = "Product selection management";
 
 
@@ -1613,8 +1574,7 @@
     NewLine.Описание    = "Array of products or product";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Adds a product to the selection
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1653,8 +1613,7 @@
     NewLine.Описание    = "Product ID";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Removes a previously added product from the selection
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1693,8 +1652,7 @@
     NewLine.Описание    = "Selection ID";
     NewLine.Область     = "Product selection management";
     NewLine.ОписаниеМетода   = "Deletes the selection by ID
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1723,8 +1681,7 @@
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Gets the list of properties of group products
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1743,8 +1700,7 @@
     NewLine.Описание    = "Property name";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Creates a new property for use in products
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1773,8 +1729,7 @@
     NewLine.Описание    = "New name";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Edits the existing product property
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1813,8 +1768,7 @@
     NewLine.Описание    = "Property ID";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Deletes the existing product property
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1843,8 +1797,7 @@
     NewLine.Описание    = "Property value";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Adds a variant for an existing property
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1883,8 +1836,7 @@
     NewLine.Описание    = "New property value";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Edits the value of an existing product property variant
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1933,8 +1885,7 @@
     NewLine.Описание    = "Variant ID";
     NewLine.Область     = "Product properties management";
     NewLine.ОписаниеМетода   = "Deletes the previously created product property variant
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   
@@ -1963,8 +1914,7 @@
     NewLine.Описание    = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
     NewLine.Область     = "Order management";
     NewLine.ОписаниеМетода   = "Returns the community's order list
-    |
-    |    The structure of the JSON authentication data (parameter --auth):
+    |    Data structure for option --auth:
     |    {
     |     ""access_token"": """",
     |     ""owner_id"": """",   

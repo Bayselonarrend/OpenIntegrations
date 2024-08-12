@@ -50,8 +50,7 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Page management";
     NewLine.ОписаниеМетода   = "Creates a page in the parent database
-    |
-    |    The structure of the JSON page data (parameter --data):
+    |    Data structure for option --data:
     |    {
     |     ""DB field name 1"": ""Value1"",
     |     ""DB field name 2"": ""Value2"",
@@ -110,8 +109,7 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Page management";
     NewLine.ОписаниеМетода   = "Changes the properties of an existing page
-    |
-    |    The structure of the JSON page data (parameter --data):
+    |    Data structure for option --data:
     |    {
     |     ""DB field name 1"": ""Value1"",
     |     ""DB field name 2"": ""Value2"",
@@ -166,7 +164,7 @@
     NewLine.Метод       = "EditPageProperties";
     NewLine.МетодПоиска = "EDITPAGEPROPERTIES";
     NewLine.Параметр    = "--archive";
-    NewLine.Описание    = "Archive page or not (boolean) (optional, def. val. - False)";
+    NewLine.Описание    = "Archive page or not (boolean) (optional, def. val. - No)";
     NewLine.Область     = "Page management";
 
 
@@ -179,8 +177,7 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Database management";
     NewLine.ОписаниеМетода   = "Creates a database
-    |
-    |    The structure of the JSON database fields (parameter --props):
+    |    Data structure for option --props:
     |    {
     |     ""Name of field with regular type"": ""Data type 1"",
     |     ""Name of field with a value selection"": 
@@ -257,8 +254,7 @@
     NewLine.Описание    = "Token";
     NewLine.Область     = "Database management";
     NewLine.ОписаниеМетода   = "Edits properties of an existing database
-    |
-    |    The structure of the JSON database fields (parameter --props):
+    |    Data structure for option --props:
     |    {
     |     ""Name of field with regular type"": ""Data type 1"",
     |     ""Name of field with a value selection"": 
@@ -383,7 +379,7 @@
     NewLine.Метод       = "ReturnBlock";
     NewLine.МетодПоиска = "RETURNBLOCK";
     NewLine.Параметр    = "--core";
-    NewLine.Описание    = "True > service fields are deleted, only the block itself remains (optional, def. val. - True)";
+    NewLine.Описание    = "True > service fields are deleted, only the block itself remains (optional, def. val. - Yes)";
     NewLine.Область     = "Blocks managment";
 
 
