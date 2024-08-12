@@ -1,14 +1,14 @@
-﻿    IDПриемника = ПараметрыФункции["Bitrix24_HookfolderID"];
-    IDКаталога  = ПараметрыФункции["Bitrix24_SubfolderID"];
+﻿    IDПриемника = "5014";
+    IDКаталога  = "5020";
 
-    URL = ПараметрыФункции["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
 
     Результат = OPI_Bitrix24.ПереместитьКаталог(URL, IDКаталога, IDПриемника);
 
-    IDКаталога  = ПараметрыФункции["Bitrix24_HookSubfolderID"];
+    IDКаталога  = "5018";
 
-    URL   = ПараметрыФункции["Bitrix24_Domain"];
-    Токен = ПараметрыФункции["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "fe3fa966006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПереместитьКаталог(URL, IDКаталога, IDПриемника, Токен);
 
