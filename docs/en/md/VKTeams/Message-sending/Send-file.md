@@ -30,11 +30,11 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
 
 
 ```bsl title="Code example"
-  Token  = FunctionParameters["VkTeams_Token"];
-  ChatID = FunctionParameters["VkTeams_ChatID"];
+  Token  = "001.3501506236.091...";
+  ChatID = "AoLI0egLWBSLR1Ngn2w";
   Text   = "File caption";
   
-  File     = FunctionParameters["Document"]; // URL
+  File     = "https://openintegrations.dev/test_data/document.docx"; // URL
   FilePath = GetTempFileName("docx"); // Path
   
   CopyFile(File, FilePath);
@@ -43,11 +43,7 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
   
   Result = OPI_VKTeams.SendFile(Token, ChatID, File);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendFile (URL)", "VkTeams");
-  
   Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendFile (Path)", "VkTeams");
   
   Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
 ```

@@ -27,11 +27,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  ChatID    = FunctionParameters["Telegram_ChatID"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
-  Text      = FunctionParameters["String"];
-  Video     = FunctionParameters["Video"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  ChatID    = "461699897";
+  ChannelID = "@testsichee";
+  Text      = "Строковое значение";
+  Video     = "https://openintegrations.dev/test_data/video.mp4";
   
   VideoPath = GetTempFileName("mp4");
   CopyFile(Video, VideoPath);
@@ -40,11 +40,7 @@ sidebar_position: 3
   
   Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendVideo", "Telegram");
-  
   Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendVideo (Path)");
   
   Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
 ```

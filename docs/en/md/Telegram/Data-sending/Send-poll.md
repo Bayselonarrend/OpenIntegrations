@@ -26,9 +26,9 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  ChatID    = FunctionParameters["Telegram_ChatID"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  ChatID    = "461699897";
+  ChannelID = "@testsichee";
   Question  = "What's your favorite color?";
   
   AnswersArray = New Array;
@@ -39,11 +39,7 @@ sidebar_position: 10
   
   Result = OPI_Telegram.SendPoll(Token, ChatID , Question, AnswersArray, False);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "Telegram");
-  
   Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendPoll (channel)");
 ```
 
 

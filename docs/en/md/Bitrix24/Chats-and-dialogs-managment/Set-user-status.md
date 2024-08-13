@@ -27,15 +27,13 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
-  URL    = FunctionParameters["Bitrix24_URL"];
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   Status = "dnd";
   
   Result = OPI_Bitrix24.SetUserStatus(URL, Status);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SetUserStatus (wh)", "Bitrix24");
-  
-  URL    = FunctionParameters["Bitrix24_Domain"];
-  Token  = FunctionParameters["Bitrix24_Token"];
+  URL    = "b24-ar17wx.bitrix24.by";
+  Token  = "fe3fa966006e9f06006b12e400000001000...";
   Status = "away";
   
   Result = OPI_Bitrix24.SetUserStatus(URL, Status, Token);

@@ -27,11 +27,11 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  ChatID    = FunctionParameters["Telegram_ChatID"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
-  Text      = FunctionParameters["String"];
-  GIF       = FunctionParameters["GIF"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  ChatID    = "461699897";
+  ChannelID = "@testsichee";
+  Text      = "Строковое значение";
+  GIF       = "https://openintegrations.dev/test_data/animation.gif";
   
   GifPath = GetTempFileName("gif");
   CopyFile(GIF, GifPath);
@@ -40,11 +40,7 @@ sidebar_position: 6
   
   Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendGif", "Telegram");
-  
   Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendGif (Path)");
   
   Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
 ```

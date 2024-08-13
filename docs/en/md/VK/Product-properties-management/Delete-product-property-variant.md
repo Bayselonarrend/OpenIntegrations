@@ -25,11 +25,9 @@ sidebar_position: 7
 ```bsl title="Code example"
   Parameters = GetVKParameters();
   
-  Option = FunctionParameters["VK_PropVarID1"];
+  Option = "2054";
   
   Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductPropertyVariant", "VK");
   
   Check_VKTrue(Result);
   

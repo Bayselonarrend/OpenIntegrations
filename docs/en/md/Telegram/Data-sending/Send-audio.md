@@ -27,11 +27,11 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  ChatID    = FunctionParameters["Telegram_ChatID"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
-  Text      = FunctionParameters["String"];
-  Audio     = FunctionParameters["Audio"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  ChatID    = "461699897";
+  ChannelID = "@testsichee";
+  Text      = "Строковое значение";
+  Audio     = "https://openintegrations.dev/test_data/song.mp3";
   
   AudioPath = GetTempFileName("mp3");
   CopyFile(Audio, AudioPath);
@@ -40,11 +40,7 @@ sidebar_position: 4
   
   Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendAudio", "Telegram");
-  
   Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendAudio (Path)");
   
   Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
 ```

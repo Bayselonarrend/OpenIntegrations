@@ -24,9 +24,9 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  Token = FunctionParameters["Telegram_Token"];
-  Chat  = FunctionParameters["Telegram_ForumID"];
-  Topic = FunctionParameters["Telegram_TopicID"];
+  Token = "6129457865:AAFyzNYOAFbu...";
+  Chat  = "-1001971186208";
+  Topic = "3896";
   
   Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
 ```

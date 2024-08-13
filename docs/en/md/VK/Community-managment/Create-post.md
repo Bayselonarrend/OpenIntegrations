@@ -30,8 +30,8 @@ sidebar_position: 1
   Text       = "Post from autotest";
   URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
   
-  Image  = FunctionParameters["Picture"]; // URL, Path or Binary Data
-  Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+  Image  = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+  Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
   
   TFN = GetTempFileName("png");
   CopyFile(Image2, TFN);
@@ -41,8 +41,6 @@ sidebar_position: 1
   ImageArray.Add(TFN);
   
   Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "CreatePost", "VK");
   
   Result = OPI_VK.CreatePost(Text, Image, False , , Parameters);
 ```
