@@ -1,0 +1,31 @@
+﻿  {
+  "response": {
+  "v2": [
+  {
+  "subcategories": [
+  {
+  "subcategories": [
+  {
+  "name": "Mobile phones and tablets",
+  "id": 202
+  },
+  {
+  "name": "Audio and video",
+  "id": 203
+  },
+  {
+  "name": "Portable gadgets",
+  "id": 204
+  },
+  {
+  "name": "Consoles",
+  "id": 205
+  },
+  ...
+  ]
+  }
+  ]
+  }
+  ]
+  }
+  }

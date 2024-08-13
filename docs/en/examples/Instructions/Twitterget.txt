@@ -1,0 +1,34 @@
+﻿  
+  Parameters_.Insert("redirect_uri", "");
+  Parameters_.Insert("scope", "");
+  Parameters_.Insert("client_id", "");
+  Parameters_.Insert("client_secret", "");
+  Parameters_.Insert("access_token", "");
+  Parameters_.Insert("refresh_token", "");
+  Parameters_.Insert("oauth_token", "");
+  Parameters_.Insert("oauth_token_secret", "");
+  Parameters_.Insert("oauth_consumer_key", "");
+  Parameters_.Insert("oauth_consumer_secret", "");
+  
+  
+  Function Twitterget(Request)
+  
+  Code = Request.RequestParameters["code"];
+  TokenResponse = OPI_Twitter.GetToken(Code, Parameters);
+  
+  Constants.TwitterRefresh.Set(ResponseToken["refresh_token"]);
+  Constants.TwitterToken.Set(ResponseToken["access_token"]);
+  
+  Response = New HTTPServiceResponse(200);
+  Return Response;
+  
+  EndFunction
+  
+  
+  Procedure UpdateTokenEveryTwoHours(Val Parameters)
+  
+  Response = OPI_Twitter.RefreshToken(Parameters);
+  Constants.TwitterToken.Set(Response["access_token"]);
+  Constants.TwitterRefresh.Set(Response["refresh_token"]);
+  
+  EndProcedure

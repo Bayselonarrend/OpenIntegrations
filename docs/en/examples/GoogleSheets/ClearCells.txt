@@ -1,0 +1,11 @@
+﻿  
+  CellsArray = New Array;
+  CellsArray.Add("B2");
+  CellsArray.Add("A3");
+  CellsArray.Add("B4");
+  
+  Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+  Sheet = "Sheet2";
+  
+  Response = OPI_GoogleSheets.ClearCells(Token, Spreadsheet, CellsArray, Sheet); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

@@ -1,0 +1,6 @@
+﻿  
+  Purpose = "TestGoal";
+  Channel = "C070VPMKN8J";
+  
+  Response = OPI_Slack.SetChannelGoal(Token, Channel, Purpose); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

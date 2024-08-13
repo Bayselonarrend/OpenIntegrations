@@ -1,0 +1,15 @@
+﻿  {
+  "response": {
+  "mail_repost_count": 2,
+  "likes_count": 7,
+  "reposts_count": 3,
+  "post_id": 228,
+  "badges": {
+  "owner_id": -218704372,
+  "id": 2571,
+  "type": 11
+  },
+  "wall_repost_count": 1,
+  "success": 1
+  }
+  }

@@ -1,0 +1,5 @@
+﻿  
+  Channel = "C070VPMKN8J";
+  
+  Response = OPI_Slack.GetChannelHistory(Token, Channel); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

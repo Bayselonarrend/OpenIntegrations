@@ -1,0 +1,16 @@
+﻿  
+  ValueMapping = New Map;
+  ValueMapping.Insert("A1", "ThisIsA1");
+  ValueMapping.Insert("A2", "ThisIsA2");
+  ValueMapping.Insert("B2", "ThisIsB2");
+  ValueMapping.Insert("B3", "ThisIsB3");
+  ValueMapping.Insert("A3", "ThisIsA3");
+  ValueMapping.Insert("A4", "ThisIsA4");
+  ValueMapping.Insert("B1", "ThisIsB1");
+  ValueMapping.Insert("B4", "ThisIsB4");
+  
+  Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+  Sheet = "Sheet2";
+  
+  Response = OPI_GoogleSheets.SetCellValues(Token, Spreadsheet, ValueMapping, Sheet); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
