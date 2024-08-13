@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  Token = FunctionParameters["Dropbox_Token"];
-  File  = FunctionParameters["Dropbox_FileID"];
+  Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+  File  = "kJU6-a-pT48AAAAAAAAABw";
   
   Result = OPI_Dropbox.CancelFilePublication(Token, File);
 ```

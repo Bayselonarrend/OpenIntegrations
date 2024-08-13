@@ -27,7 +27,7 @@ sidebar_position: 5
 ```bsl title="Code example"
   Parameters = GetVKParameters();
   
-  Product = FunctionParameters["VK_MarketItemID"];
+  Product = "9372711";
   
   ProductDescription = New Map;
   ProductDescription.Insert("Name", "EditedTestProduct");

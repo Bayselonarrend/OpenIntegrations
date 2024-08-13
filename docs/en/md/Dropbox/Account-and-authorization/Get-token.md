@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  AppKey    = FunctionParameters["Dropbox_Appkey"];
-  AppSecret = FunctionParameters["Dropbox_Appsecret"];
-  Code      = FunctionParameters["Dropbox_Code"];
+  AppKey    = "oynqxds...";
+  AppSecret = "tk2oewn...";
+  Code      = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
   
   Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
 ```

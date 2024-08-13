@@ -25,8 +25,8 @@ sidebar_position: 5
 
 ```bsl title="Code example"
   Path  = "/New/url_doc.docx";
-  Token = FunctionParameters["Dropbox_Token"];
-  URL   = FunctionParameters["Document"];
+  Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+  URL   = "https://openintegrations.dev/test_data/document.docx";
   
   Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
 ```

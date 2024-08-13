@@ -25,8 +25,8 @@ sidebar_position: 3
 ```bsl title="Code example"
   Parameters = GetVKParameters();
   
-  Item1 = FunctionParameters["VK_MarketItemID2"];
-  Item2 = FunctionParameters["VK_MarketItemID3"];
+  Item1 = "9372712";
+  Item2 = "9372714";
   
   ProductsArray = New Array;
   ProductsArray.Add(Item1);

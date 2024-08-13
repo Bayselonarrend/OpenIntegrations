@@ -27,14 +27,12 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  ChatID    = FunctionParameters["Telegram_ChatID"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
-  Text      = FunctionParameters["String"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  ChatID    = "461699897";
+  ChannelID = "@testsichee";
+  Text      = "Строковое значение";
   
   Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Telegram");
   
   Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
 ```

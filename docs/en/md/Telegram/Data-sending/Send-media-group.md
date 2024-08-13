@@ -30,11 +30,11 @@ Map: Key - File, Value - media type
 
 
 ```bsl title="Code example"
-  Token  = FunctionParameters["Telegram_Token"];
-  ChatID = FunctionParameters["Telegram_ChatID"];
-  Text   = FunctionParameters["String"];
-  Image  = FunctionParameters["Picture"];
-  Video  = FunctionParameters["Video"];
+  Token  = "6129457865:AAFyzNYOAFbu...";
+  ChatID = "461699897";
+  Text   = "Строковое значение";
+  Image  = "https://openintegrations.dev/test_data/picture.jpg";
+  Video  = "https://openintegrations.dev/test_data/video.mp4";
   
   ImagePath = GetTempFileName("png");
   CopyFile(Image, ImagePath);

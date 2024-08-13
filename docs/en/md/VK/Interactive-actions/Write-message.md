@@ -29,8 +29,8 @@ sidebar_position: 3
   Parameters = GetVKParameters();
   
   Text           = "Message from autotest";
-  UserID         = FunctionParameters["VK_UserID"];
-  Communitytoken = FunctionParameters["VK_CommunityToken"];
+  UserID         = "657846756";
+  Communitytoken = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8I...";
   
   ButtonArray = New Array;
   ButtonArray.Add("Button 1");

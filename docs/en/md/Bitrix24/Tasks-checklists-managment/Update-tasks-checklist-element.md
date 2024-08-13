@@ -29,20 +29,18 @@ Method at API documentation: [task.checklistitem.update](https://dev.1c-bitrix.r
 
 
 ```bsl title="Code example"
-  URL       = FunctionParameters["Bitrix24_URL"];
-  TaskID    = FunctionParameters["Bitrix24_HookTaskID"];
-  ElementID = FunctionParameters["Bitrix24_HookCheckElementID"];
+  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+  TaskID    = "1078";
+  ElementID = "396";
   
   Text = "New elements text";
   
   Result = OPI_Bitrix24.UpdateTasksChecklistElement(URL, TaskID, ElementID, Text);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "UpdateTasksChecklistElement (wh)", "Bitrix24");
-  
-  URL       = FunctionParameters["Bitrix24_Domain"];
-  Token     = FunctionParameters["Bitrix24_Token"];
-  TaskID    = FunctionParameters["Bitrix24_TaskID"];
-  ElementID = FunctionParameters["Bitrix24_CheckElementID"];
+  URL       = "b24-ar17wx.bitrix24.by";
+  Token     = "fe3fa966006e9f06006b12e400000001000...";
+  TaskID    = "1080";
+  ElementID = "400";
   
   Result = OPI_Bitrix24.UpdateTasksChecklistElement(URL, TaskID, ElementID, Text, Token);
 ```

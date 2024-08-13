@@ -23,7 +23,7 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-  Token = FunctionParameters["Dropbox_Token"];
+  Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
   Path  = "/New catalog";
   
   Result = OPI_Dropbox.CreateFolder(Token, Path);

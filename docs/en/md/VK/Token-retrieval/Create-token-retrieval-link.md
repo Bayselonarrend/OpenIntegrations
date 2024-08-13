@@ -22,7 +22,7 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 
 
 ```bsl title="Code example"
-  Application = FunctionParameters["VK_AppID"];
+  Application = "51694790";
   Result      = OPI_VK.CreateTokenRetrievalLink(Application);
 ```
 

@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  UserID    = FunctionParameters["Telegram_ChatID"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  UserID    = "461699897";
+  ChannelID = "@testsichee";
   
   Result = OPI_Telegram.Unban(Token, ChannelID, UserID);
 ```

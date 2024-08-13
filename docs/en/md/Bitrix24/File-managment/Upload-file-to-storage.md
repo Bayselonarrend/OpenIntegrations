@@ -33,19 +33,17 @@ Method at API documentation: [disk.storage.uploadfile](https://dev.1c-bitrix.ru/
   Filename2 = "Picture2.jpg";
   Name      = "Picture1.jpg";
   
-  Image2 = FunctionParameters["Picture"]; // Local path, URL or Binary Data
-  Image  = FunctionParameters["Picture2"]; // Local path, URL or Binary Data
+  Image2 = "https://openintegrations.dev/test_data/picture.jpg"; // Local path, URL or Binary Data
+  Image  = "https://openintegrations.dev/test_data/picture2.jpg"; // Local path, URL or Binary Data
   
   DestinationID = 3;
   
-  URL = FunctionParameters["Bitrix24_URL"];
+  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   
   Result = OPI_Bitrix24.UploadFileToStorage(URL, Filename2, Image2, DestinationID);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "UploadFileToStorage (wh)", "Bitrix24");
-  
-  URL   = FunctionParameters["Bitrix24_Domain"];
-  Token = FunctionParameters["Bitrix24_Token"];
+  URL   = "b24-ar17wx.bitrix24.by";
+  Token = "fe3fa966006e9f06006b12e400000001000...";
   
   Result = OPI_Bitrix24.UploadFileToStorage(URL, Name, Image, DestinationID, , Token);
 ```

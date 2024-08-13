@@ -27,16 +27,14 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
-  URL          = FunctionParameters["Bitrix24_URL"];
-  DepartmentID = FunctionParameters["Bitrix24_DepID"];
+  URL          = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+  DepartmentID = "70";
   
   Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "DeleteDepartment (wh)", "Bitrix24");
-  
-  URL          = FunctionParameters["Bitrix24_Domain"];
-  Token        = FunctionParameters["Bitrix24_Token"];
-  DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
+  URL          = "b24-ar17wx.bitrix24.by";
+  Token        = "fe3fa966006e9f06006b12e400000001000...";
+  DepartmentID = "68";
   
   Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID, Token);
 ```
