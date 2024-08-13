@@ -1,9 +1,9 @@
 ﻿    Parameters = GetVKParameters();
 
-    Image1       = FunctionParameters["Picture"];
-    Image2       = FunctionParameters["Picture2"];
-    PropVariant1 = FunctionParameters["VK_PropVarID1"];
-    PropVariant2 = FunctionParameters["VK_PropVarID2"];
+    Image1       = "https://openintegrations.dev/test_data/picture.jpg";
+    Image2       = "https://openintegrations.dev/test_data/picture2.jpg";
+    PropVariant1 = "2054";
+    PropVariant2 = "2055";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

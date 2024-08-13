@@ -1,5 +1,5 @@
-﻿    Токен  = ПараметрыФункции["Dropbox_Token"];
-    Папка  = ПараметрыФункции["Dropbox_SharedFolder"];
+﻿    Токен  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Папка  = "3417285987";
 
     Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
     ТекущийСтатус = "in_progress";
