@@ -26,19 +26,12 @@ Method at API documentation: [GET /messages/sendVoice](https://teams.vk.com/bota
 <br/>
 
 
-```bsl title="Code example"
- Token = "001.3501506236.091...";
- ChatID = "AoLI0egLWBSLR1Ngn2w";
- FileID = "I000bPVBYaNQkn9Fg3oY0066ba35811bd";
- 
- Result = OPI_VKTeams.ResendVoice(Token, ChatID, FileID);
-```
 	
 
 
 ```sh title="CLI command example"
  
-oint vkteams ResendVoice --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --fileid "I000bPVBYaNQkn9Fg3oY0066ba35811bd"
+ oint vkteams ResendVoice --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --fileid "I000bPVBYaNQkn9Fg3oY0066ba35811bd"
 
 ```
 
