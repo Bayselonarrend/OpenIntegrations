@@ -1,8 +1,8 @@
 {
+"Image": "https://openintegrations.dev/test_data/picture.jpg // URL, Path or Binary Data",
+"Image2": "https://openintegrations.dev/test_data/picture2.jpg // URL, Path or Binary Data",
 "Parameters": "GetVKParameters()",
 "Text": "Post from autotest",
 "URL": "https://github.com/Bayselonarrend/OpenIntegrations",
-"Image": "https://openintegrations.dev/test_data/picture.jpg // URL, Path or Binary Data",
-"Image2": "https://openintegrations.dev/test_data/picture2.jpg // URL, Path or Binary Data",
 "TFN": "GetTempFileName(png)"
 }
