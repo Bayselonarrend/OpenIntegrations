@@ -414,8 +414,8 @@ Function DataFilePath()
     Path          = "";
     PossiblePaths = New Array;
     PossiblePaths.Add("./data.json");
-    PossiblePaths.Add("C:\GDrive\Мой Drive\data.json");
-    PossiblePaths.Add("D:\GD\Мой Drive\data.json");
+    PossiblePaths.Add("C:\GDrive\Мой Диск\data.json");
+    PossiblePaths.Add("D:\GD\Мой Диск\data.json");
 
     For Each PossiblePath In PossiblePaths Do
 
@@ -464,7 +464,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
 
     Try
 
-        LogPath        = "./docs/ru/results";
+        LogPath        = "./docs/en/results";
         LibraryLogPath = LogPath + "/" + Library;
 
         LogDirectory = New File(LogPath);

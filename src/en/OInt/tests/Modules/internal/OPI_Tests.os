@@ -2879,7 +2879,7 @@ Procedure B24_PostsManagment() Export
     Bitrix24_GetImportantPostViewers(TestParameters);
     Bitrix24_GetPosts(TestParameters);
     Bitrix24_AddPostComment(TestParameters);
-    Bitrix_AddPostRecipients(TestParameters);
+    Bitrix24_AddPostRecipients(TestParameters);
     Bitrix24_DeletePost(TestParameters);
 
 EndProcedure
@@ -2962,7 +2962,7 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_GetFileInformation(TestParameters);
     Bitrix24_GetFileExternalLink(TestParameters);
     Bitrix24_RenameFile(TestParameters);
-    Bitrxi24_MarkFileAsDeleted(TestParameters);
+    Bitrix24_MarkFileAsDeleted(TestParameters);
     Bitrix24_RestoreFile(TestParameters);
     Bitrix24_CreateStorageFolder(TestParameters);
     Bitrix24_RenameFolder(TestParameters);
@@ -2970,14 +2970,14 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_GetFolderExternalLink(TestParameters);
     Bitrix24_CreateSubfolder(TestParameters);
     Bitrix24_MoveFileToFolder(TestParameters);
-    Bitrxi24_MakeFolderCopy(TestParameters);
-    Bitrxi24_UploadFileToFolder(TestParameters);
+    Bitrix24_MakeFolderCopy(TestParameters);
+    Bitrix24_UploadFileToFolder(TestParameters);
     Bitrix24_MakeCopyFile(TestParameters);
     Bitrix24_DeleteFile(TestParameters);
     Bitrix24_GetFolderFilterStructure(TestParameters);
     Bitrix24_GetFolderItems(TestParameters);
     Bitrix24_MoveFolder(TestParameters);
-    Bitrxi24_MarkFolderAsDeleted(TestParameters);
+    Bitrix24_MarkFolderAsDeleted(TestParameters);
     Bitrix24_RestoreFolder(TestParameters);
     Bitrix24_DeleteFolder(TestParameters);
 
@@ -6690,7 +6690,7 @@ Procedure Bitrix24_AddPostComment(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrix_AddPostRecipients(FunctionParameters)
+Procedure Bitrix24_AddPostRecipients(FunctionParameters)
 
     Visibility = "UA";
     PostID     = FunctionParameters["Bitrix24_PostID"];
@@ -7513,7 +7513,7 @@ Procedure Bitrix24_CreateSubfolder(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrxi24_MakeFolderCopy(FunctionParameters)
+Procedure Bitrix24_MakeFolderCopy(FunctionParameters)
 
     DestinationID = FunctionParameters["Bitrix24_HookSubfolderID"];
     FolderID      = FunctionParameters["Bitrix24_SubfolderID"];
@@ -7611,7 +7611,7 @@ Procedure Bitrix24_GetFolderItems(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrxi24_MarkFolderAsDeleted(FunctionParameters)
+Procedure Bitrix24_MarkFolderAsDeleted(FunctionParameters)
 
     URL      = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
@@ -7713,7 +7713,7 @@ Procedure Bitrix24_RenameFolder(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrxi24_UploadFileToFolder(FunctionParameters)
+Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
 
     Filename2 = "Picture2.jpg";
     Name      = "Picture1.jpg";
@@ -7824,7 +7824,7 @@ Procedure Bitrix24_GetFileExternalLink(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrxi24_MarkFileAsDeleted(FunctionParameters)
+Procedure Bitrix24_MarkFileAsDeleted(FunctionParameters)
 
     URL    = FunctionParameters["Bitrix24_URL"];
     FileID = FunctionParameters["Bitrix24_FileID"];
