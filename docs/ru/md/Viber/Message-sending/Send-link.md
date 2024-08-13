@@ -32,7 +32,7 @@ sidebar_position: 6
   Ответ = OPI_Viber.ОтправитьСсылку(ТокенБота, "https://github.com/Bayselonarrend", IDПользователя, Ложь); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                              //JSON строка
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

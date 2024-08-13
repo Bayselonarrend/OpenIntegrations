@@ -30,7 +30,7 @@ sidebar_position: 1
   
   Результат = OPI_Telegram.Бан(Токен, IDКанала, IDПользователя);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

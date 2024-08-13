@@ -38,7 +38,7 @@ sidebar_position: 3
   
   Результат = OPI_Bitrix24.УдалитьНовость(URL, IDНовости, Токен);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"
