@@ -51,7 +51,7 @@ Method at API documentation: [im.user.list.get ](https://dev.1c-bitrix.ru/learni
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "10": {
   "id": 10,
@@ -91,4 +91,5 @@ Method at API documentation: [im.user.list.get ](https://dev.1c-bitrix.ru/learni
   "operating": 0
   }
   }
+
 ```

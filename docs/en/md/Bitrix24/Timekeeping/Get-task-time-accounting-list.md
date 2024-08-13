@@ -47,7 +47,7 @@ Method at API documentation: [task.elapseditem.getlist](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "40",
@@ -86,4 +86,5 @@ Method at API documentation: [task.elapseditem.getlist](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
+
 ```

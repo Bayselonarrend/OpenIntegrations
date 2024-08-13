@@ -47,7 +47,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
+  {
   "ok": true,
   "result": {
   "invite_link": "https://t.me/+W-9MzjOejStiYzYy",
@@ -65,4 +65,5 @@ sidebar_position: 3
   "is_revoked": false
   }
   }
+
 ```

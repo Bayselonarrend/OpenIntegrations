@@ -43,5 +43,6 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
-<empty string>
+  <empty string>
+
 ```

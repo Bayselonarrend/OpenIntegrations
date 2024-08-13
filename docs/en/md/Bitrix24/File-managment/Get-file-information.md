@@ -47,7 +47,7 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "1716",
   "NAME": "Picture1.jpg",
@@ -79,4 +79,5 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
   "operating": 0
   }
   }
+
 ```

@@ -48,7 +48,7 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": 3250
   },
@@ -63,4 +63,5 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
   "operating": 0
   }
   }
+
 ```

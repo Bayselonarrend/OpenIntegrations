@@ -36,7 +36,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "members": [
   {
   "role": "admin",
@@ -60,4 +61,6 @@ sidebar_position: 2
   "status_message": "ok",
   "status": 0
   }
+  
+
 ```

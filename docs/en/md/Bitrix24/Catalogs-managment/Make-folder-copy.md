@@ -55,7 +55,7 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": 1732,
   "NAME": "New subfolder 2",
@@ -84,4 +84,5 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
+
 ```

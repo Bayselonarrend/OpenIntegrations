@@ -47,7 +47,7 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "1722",
   "NAME": "New catalog",
@@ -76,4 +76,5 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
   "operating": 0
   }
   }
+
 ```

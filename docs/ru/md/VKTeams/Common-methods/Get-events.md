@@ -54,8 +54,9 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+    {
  "events": [],
  "ok": true
 }
+
 ```

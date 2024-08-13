@@ -47,7 +47,7 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "id": 130,
@@ -85,4 +85,5 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
+
 ```

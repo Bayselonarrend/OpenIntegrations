@@ -46,7 +46,8 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
+  {
   ".tag": "complete"
   }
+
 ```

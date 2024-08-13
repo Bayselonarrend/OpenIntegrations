@@ -54,7 +54,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
+  {
   "id": "tblT64aWyrMUAbUmF",
   "name": "TestTable2",
   "description": "NewTable",
@@ -125,4 +125,5 @@ sidebar_position: 1
   }
   ]
   }
+
 ```

@@ -40,7 +40,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-{
+  {
   "response": {
   "id": 304498513,
   "owner_id": -218861756,
@@ -57,4 +57,5 @@ sidebar_position: 5
   "upload_by_admins_only": 1
   }
   }
+
 ```

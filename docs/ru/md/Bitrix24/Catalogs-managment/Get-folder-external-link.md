@@ -47,7 +47,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-{
+    {
  "result": "https://b24-ar17wx.bitrix24.by/~hWalI",
  "time": {
   "start": 1719472796.12325,
@@ -60,4 +60,5 @@ sidebar_position: 6
   "operating": 0
  }
 }
+
 ```

@@ -38,7 +38,8 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "buttons": [
   [
   {
@@ -57,4 +58,6 @@ sidebar_position: 1
   ],
   "one_time": false
   }
+  
+
 ```

@@ -49,7 +49,7 @@ Method at API documentation: [timeman.pause](https://dev.1c-bitrix.ru/rest_help/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "STATUS": "PAUSED",
   "TIME_START": "2024-07-30T07:10:51+00:00",
@@ -76,4 +76,5 @@ Method at API documentation: [timeman.pause](https://dev.1c-bitrix.ru/rest_help/
   "operating": 0
   }
   }
+
 ```

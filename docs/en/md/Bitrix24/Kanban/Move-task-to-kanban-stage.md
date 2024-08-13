@@ -54,7 +54,7 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720600364.06058,
@@ -67,4 +67,5 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
+
 ```

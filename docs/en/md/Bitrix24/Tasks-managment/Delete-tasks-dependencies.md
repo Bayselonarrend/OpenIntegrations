@@ -41,7 +41,7 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-{
+  {
   "result": [],
   "time": {
   "start": 1720816479.3837,
@@ -54,4 +54,5 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
+
 ```

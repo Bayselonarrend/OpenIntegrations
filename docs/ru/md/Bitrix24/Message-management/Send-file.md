@@ -64,7 +64,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "FILES": {
    "upload3254": {
@@ -140,4 +140,5 @@ sidebar_position: 5
   "operating": 0
  }
 }
+
 ```

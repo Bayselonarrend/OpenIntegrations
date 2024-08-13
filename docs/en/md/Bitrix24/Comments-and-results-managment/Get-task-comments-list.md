@@ -47,7 +47,7 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "POST_MESSAGE_HTML": null,
@@ -79,4 +79,5 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
+
 ```

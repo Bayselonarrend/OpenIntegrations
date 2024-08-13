@@ -60,7 +60,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "110",
@@ -203,4 +203,5 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
   "operating": 0
   }
   }
+
 ```

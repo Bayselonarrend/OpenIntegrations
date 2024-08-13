@@ -42,7 +42,8 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "modified": "2024-02-09T10:50:41+00:00",
   "sizes": [
   {
@@ -122,4 +123,6 @@ sidebar_position: 4
   "antivirus_status": "clean",
   "mime_type": "image/png"
   }
+  
+
 ```

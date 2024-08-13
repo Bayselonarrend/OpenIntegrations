@@ -55,7 +55,7 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720865688.95778,
@@ -68,4 +68,5 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
   "operating": 0
   }
   }
+
 ```

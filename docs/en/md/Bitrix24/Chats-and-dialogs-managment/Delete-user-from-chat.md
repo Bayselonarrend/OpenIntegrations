@@ -51,7 +51,7 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720865685.25089,
@@ -64,4 +64,5 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
   "operating": 0
   }
   }
+
 ```

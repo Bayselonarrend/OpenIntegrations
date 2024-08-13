@@ -38,8 +38,9 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
-{
+  {
   "name": "Link",
   "type": "url"
   }
+
 ```

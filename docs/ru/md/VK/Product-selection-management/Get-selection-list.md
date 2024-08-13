@@ -35,7 +35,8 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-[
+  
+  [
   {
   "is_hidden": false,
   "is_main": true,
@@ -112,4 +113,6 @@ sidebar_position: 1
   "id": 38
   }
   ]
+  
+
 ```

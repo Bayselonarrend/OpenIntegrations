@@ -37,7 +37,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
+  {
   "ok": true,
   "result": [
   {
@@ -364,4 +364,5 @@ sidebar_position: 2
   }
   ]
   }
+
 ```
