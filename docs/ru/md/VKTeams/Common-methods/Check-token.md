@@ -37,9 +37,4 @@ sidebar_position: 1
 
 ```
 
-```json title="Результат"
-{
- "userId": "1011893356",
- "ok": true
-}
-```
+

@@ -53,9 +53,4 @@ Method at API documentation: [GET /events/get](https://teams.vk.com/botapi/#/eve
 
 ```
 
-```json title="Result"
-{
- "events": [],
- "ok": true
-}
-```
+
