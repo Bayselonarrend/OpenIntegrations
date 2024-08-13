@@ -1,0 +1,29 @@
+﻿ {
+ "result": {
+  "ID": "5940",
+  "NAME": "New subfolder",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "folder",
+  "REAL_OBJECT_ID": "5940",
+  "PARENT_ID": 5934,
+  "DELETED_TYPE": "0",
+  "CREATE_TIME": "2024-08-13T17:25:52+00:00",
+  "UPDATE_TIME": "2024-08-13T17:25:54+00:00",
+  "DELETE_TIME": null,
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": "0",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New folder 2/New subfolder"
+ },
+ "time": {
+  "start": 1723569965.98059,
+  "finish": 1723569966.04243,
+  "duration": 0.0618400573730469,
+  "processing": 0.0352840423583984,
+  "date_start": "2024-08-13T17:26:05+00:00",
+  "date_finish": "2024-08-13T17:26:06+00:00",
+  "operating_reset_at": 1723570566,
+  "operating": 0
+ }
+}

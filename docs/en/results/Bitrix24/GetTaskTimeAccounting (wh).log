@@ -1,0 +1,24 @@
+﻿ {
+ "result": {
+  "ID": "370",
+  "TASK_ID": "1242",
+  "USER_ID": "1",
+  "COMMENT_TEXT": "",
+  "SECONDS": "3600",
+  "MINUTES": "60",
+  "SOURCE": "2",
+  "CREATED_DATE": "2024-08-13T17:26:20+00:00",
+  "DATE_START": "2024-08-13T17:26:20+00:00",
+  "DATE_STOP": "2024-08-13T17:26:20+00:00"
+ },
+ "time": {
+  "start": 1723569981.93322,
+  "finish": 1723569981.97438,
+  "duration": 0.0411550998687744,
+  "processing": 0.0180709362030029,
+  "date_start": "2024-08-13T17:26:21+00:00",
+  "date_finish": "2024-08-13T17:26:21+00:00",
+  "operating_reset_at": 1723570581,
+  "operating": 0
+ }
+}
