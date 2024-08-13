@@ -1,0 +1,14 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Image = FunctionParameters["Picture2"];
+
+    Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);

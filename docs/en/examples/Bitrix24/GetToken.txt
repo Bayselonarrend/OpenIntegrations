@@ -1,0 +1,5 @@
+﻿    ClientID     = FunctionParameters["Bitrix24_ClientID"];
+    ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
+    Code         = FunctionParameters["Bitrix24_Code"];
+
+    Result = OPI_Bitrix24.GetToken(ClientID, ClientSecret, Code);

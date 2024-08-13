@@ -1,0 +1,5 @@
+﻿    Version = FunctionParameters["Dropbox_FileRevision"];
+    Token   = FunctionParameters["Dropbox_Token"];
+    Path    = "/New/pic.png";
+
+    Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);

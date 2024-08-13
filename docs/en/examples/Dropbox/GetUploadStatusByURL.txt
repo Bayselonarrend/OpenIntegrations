@@ -1,0 +1,14 @@
+﻿    Token  = FunctionParameters["Dropbox_Token"];
+    WorkID = FunctionParameters["Dropbox_Job"];
+    Status = "in_progress";
+
+    WHile Status = "in_progress" Do
+
+        Result = OPI_Dropbox.GetUploadStatusByURL(Token, WorkID);
+        Status = Result[".tag"];
+
+        OPI_Tools.Pause(5);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "GetUploadStatusByURL", "Dropbox");
+
+    EndDo;

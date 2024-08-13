@@ -1,0 +1,5 @@
+﻿    Token  = FunctionParameters["Dropbox_Token"];
+    Email  = FunctionParameters["Dropbox_OtherUser"];
+    Folder = FunctionParameters["Dropbox_SharedFolder"]; // shared_folder_id
+
+    Result = OPI_Dropbox.AddUsersToFolder(Token, Folder, Email, False);

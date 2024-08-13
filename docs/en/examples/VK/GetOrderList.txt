@@ -1,0 +1,2 @@
+﻿    Parameters = GetVKParameters();
+    Result     = OPI_VK.GetOrderList(Parameters);

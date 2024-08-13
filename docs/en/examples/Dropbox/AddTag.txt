@@ -1,0 +1,5 @@
+﻿    Tag   = "Important";
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/mydoc.docx";
+
+    Result = OPI_Dropbox.AddTag(Token, Path, Tag);

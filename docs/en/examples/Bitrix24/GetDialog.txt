@@ -1,0 +1,12 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+
+    Result = OPI_Bitrix24.GetDialog(URL, ChatID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDialog (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 10;
+
+    Result = OPI_Bitrix24.GetDialog(URL, UserID, Token);

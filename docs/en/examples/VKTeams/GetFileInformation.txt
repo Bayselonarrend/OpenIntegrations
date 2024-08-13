@@ -1,0 +1,4 @@
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    FileID = FunctionParameters["VkTeams_FileID"];
+
+    Result = OPI_VKTeams.GetFileInformation(Token, FileID);

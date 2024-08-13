@@ -1,0 +1,11 @@
+﻿    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetTimekeepingStatus(URL);
+
+    Hour = 3600;
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = 1;
+
+    Result = OPI_Bitrix24.GetTimekeepingStatus(URL, UserID);

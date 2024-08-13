@@ -1,0 +1,14 @@
+﻿    StorageID = 3;
+    Name      = "New catalog";
+    Filename2 = "New folder 2";
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateStorageFolder(URL, StorageID, Filename2);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateStorageFolder (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.CreateStorageFolder(URL, StorageID, Name, Token);

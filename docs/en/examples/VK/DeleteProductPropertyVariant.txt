@@ -1,0 +1,11 @@
+﻿    Parameters = GetVKParameters();
+
+    Option = FunctionParameters["VK_PropVarID1"];
+
+    Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductPropertyVariant", "VK");
+
+    Check_VKTrue(Result);
+
+    OPI_Tools.Pause(5);

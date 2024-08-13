@@ -1,0 +1,23 @@
+﻿    URL = FunctionParameters["Bitrix24_URL"];
+
+    DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
+    ParentID     = 7;
+
+    Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID, , ParentID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateDepartment (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    DepartmentID = FunctionParameters["Bitrix24_DepID"];
+    Name         = "New department";
+    ParentID     = 1;
+    HeadID       = 10;
+
+    Result = OPI_Bitrix24.UpdateDepartment(URL
+        , DepartmentID
+        , Name
+        , ParentID
+        , HeadID
+        , Token);

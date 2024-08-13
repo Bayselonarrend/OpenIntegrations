@@ -1,0 +1,26 @@
+﻿    URL      = FunctionParameters["Bitrix24_URL"];
+    TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+
+    Text = "The text I forgot last time";
+    Time = 4800;
+
+    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskTimeAccounting (wh)", "Bitrix24");
+
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+
+    Text      = "New time record";
+    Time      = 4800;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+
+    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL
+        , TaskID
+        , RecordID
+        , Time
+        , Text
+        , SetupDate
+        , Token);

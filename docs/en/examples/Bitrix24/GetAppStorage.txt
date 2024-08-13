@@ -1,0 +1,4 @@
+﻿    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetAppSotrage(URL, Token);

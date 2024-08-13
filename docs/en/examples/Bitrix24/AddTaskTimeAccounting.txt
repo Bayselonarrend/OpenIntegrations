@@ -1,0 +1,24 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
+
+    Time = 3600;
+
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskTimeAccounting (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Text      = "Time spent on work";
+    UserID    = 10;
+    Time      = 7200;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL
+        , TaskID
+        , Time
+        , UserID
+        , Text
+        , SetupDate
+        , Token);

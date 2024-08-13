@@ -1,0 +1,4 @@
+﻿    Domain   = FunctionParameters["Bitrix24_Domain"];
+    ClientID = FunctionParameters["Bitrix24_ClientID"];
+
+    Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);

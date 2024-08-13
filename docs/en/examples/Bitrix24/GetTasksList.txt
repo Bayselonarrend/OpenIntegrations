@@ -1,0 +1,16 @@
+﻿    // Full filter structer you can find at GetTasksFilterStructure method
+    Filter = New Structure;
+    Filter.Insert("CREATED_BY" , 1);
+    Filter.Insert("RESPONSIBLE_ID", 10);
+
+    Indent = 1;
+    URL    = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetTasksList(URL, Filter);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTasksList (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetTasksList(URL, , Indent, Token);

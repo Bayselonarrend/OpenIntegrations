@@ -1,0 +1,7 @@
+﻿    Parameters = GetVKParameters();
+
+    Video       = FunctionParameters["Video"];
+    Name        = "NewVideo";
+    Description = "Video description";
+
+    Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
