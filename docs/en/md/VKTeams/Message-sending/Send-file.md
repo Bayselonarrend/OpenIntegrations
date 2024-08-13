@@ -56,10 +56,4 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
 
 ```
 
-```json title="Result"
-{
- "fileId": "XrJ30XSsGyVg0tOK52eUzi66b7e3a21bd",
- "msgId": "7401634797530906691",
- "ok": true
-}
-```
+

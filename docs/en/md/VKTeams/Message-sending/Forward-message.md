@@ -51,9 +51,4 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
 
 ```
 
-```json title="Result"
-{
- "msgId": "7401634788940972096",
- "ok": true
-}
-```
+

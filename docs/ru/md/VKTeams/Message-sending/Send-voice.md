@@ -55,7 +55,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint vkteams ОтправитьГолосовоеСообщение --token "001.3501506236.091..." --chatid "689203963@chat.agent" --file "https://openintegrations.dev/test_data/song.m4a" --type %type% --reply "7401868177463836806" --keyboard %keyboard%
+  oint vkteams ОтправитьГолосовоеСообщение --token "001.3501506236.091..." --chatid "689203963@chat.agent" --file "https://openintegrations.dev/test_data/song.m4a" --type %type% --reply "7401868177463836806" --keyboard %keyboard%
 
 ```
 
