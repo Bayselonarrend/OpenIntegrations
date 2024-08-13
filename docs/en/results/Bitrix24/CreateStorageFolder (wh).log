@@ -1,0 +1,29 @@
+﻿ {
+ "result": {
+  "ID": 5934,
+  "NAME": "New folder 2",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "folder",
+  "REAL_OBJECT_ID": 5934,
+  "PARENT_ID": "3",
+  "DELETED_TYPE": 0,
+  "CREATE_TIME": "2024-08-13T17:25:47+00:00",
+  "UPDATE_TIME": "2024-08-13T17:25:47+00:00",
+  "DELETE_TIME": null,
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": null,
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New folder 2"
+ },
+ "time": {
+  "start": 1723569947.07953,
+  "finish": 1723569947.15003,
+  "duration": 0.0704970359802246,
+  "processing": 0.030817985534668,
+  "date_start": "2024-08-13T17:25:47+00:00",
+  "date_finish": "2024-08-13T17:25:47+00:00",
+  "operating_reset_at": 1723570547,
+  "operating": 0
+ }
+}

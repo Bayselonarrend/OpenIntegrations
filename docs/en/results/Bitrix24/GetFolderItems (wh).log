@@ -1,0 +1,69 @@
+﻿ {
+ "result": [
+  {
+   "ID": "5938",
+   "NAME": "New subfolder 2",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "folder",
+   "REAL_OBJECT_ID": "5938",
+   "PARENT_ID": "5936",
+   "DELETED_TYPE": "0",
+   "CREATE_TIME": "2024-08-13T17:25:51+00:00",
+   "UPDATE_TIME": "2024-08-13T17:25:53+00:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder 2"
+  },
+  {
+   "ID": "5940",
+   "NAME": "New subfolder",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "folder",
+   "REAL_OBJECT_ID": "5940",
+   "PARENT_ID": "5936",
+   "DELETED_TYPE": "0",
+   "CREATE_TIME": "2024-08-13T17:25:52+00:00",
+   "UPDATE_TIME": "2024-08-13T17:25:54+00:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder"
+  },
+  {
+   "ID": "5958",
+   "NAME": "New file name.jpg",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "file",
+   "PARENT_ID": "5936",
+   "DELETED_TYPE": "0",
+   "GLOBAL_CONTENT_VERSION": "1",
+   "FILE_ID": "4230",
+   "SIZE": "805189",
+   "CREATE_TIME": "2024-08-13T17:26:02+00:00",
+   "UPDATE_TIME": "2024-08-13T17:26:02+00:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/ztbez14mrbxz3l1s/download/?token=disk%7CaWQ9NTk1OCZfPWFGNnlURW5vMnBYSHZkTU5idWxTUm5UTEd2c2ltWEd0%7CImRvd25sb2FkfGRpc2t8YVdROU5UazFPQ1pmUFdGR05ubFVSVzV2TW5CWVNIWmtUVTVpZFd4VFVtNVVURWQyYzJsdFdFZDB8MXx6dGJlejE0bXJieHozbDFzIg%3D%3D.OGgK%2B%2Ba%2FTE4uNqxSnj10O3ztIfQzOSG6zAQ8krnN0s8%3D",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/New file name.jpg"
+  }
+ ],
+ "total": 3,
+ "time": {
+  "start": 1723569964.89419,
+  "finish": 1723569964.92333,
+  "duration": 0.0291478633880615,
+  "processing": 0.00692319869995117,
+  "date_start": "2024-08-13T17:26:04+00:00",
+  "date_finish": "2024-08-13T17:26:04+00:00",
+  "operating_reset_at": 1723570564,
+  "operating": 0
+ }
+}

@@ -1,0 +1,21 @@
+﻿ {
+ "result": {
+  "POST_MESSAGE_HTML": null,
+  "ID": "3358",
+  "AUTHOR_ID": "1",
+  "AUTHOR_NAME": "Антон Титовец",
+  "AUTHOR_EMAIL": "",
+  "POST_DATE": "2024-08-13T17:25:20+00:00",
+  "POST_MESSAGE": "The task has been changed, do not split up"
+ },
+ "time": {
+  "start": 1723569927.55445,
+  "finish": 1723569927.59734,
+  "duration": 0.0428919792175293,
+  "processing": 0.0203390121459961,
+  "date_start": "2024-08-13T17:25:27+00:00",
+  "date_finish": "2024-08-13T17:25:27+00:00",
+  "operating_reset_at": 1723570527,
+  "operating": 0
+ }
+}

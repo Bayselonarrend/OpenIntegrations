@@ -1,0 +1,90 @@
+﻿ {
+ "result": {
+  "id": 514,
+  "parent_chat_id": 0,
+  "parent_message_id": 0,
+  "name": "New chat title",
+  "description": "This is a new chat",
+  "owner": 1,
+  "extranet": false,
+  "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/4234/ff58db95aecdfa09ae61b51b5fd8f63f/disk/06b/06b49cc0c4490aea3e281692f335be6c/c97ddd75dc26054a692826e25ca4ed12",
+  "color": "#29619b",
+  "type": "open",
+  "counter": 7,
+  "user_counter": 3,
+  "message_count": 9,
+  "unread_id": 9620,
+  "restrictions": {
+   "avatar": true,
+   "rename": true,
+   "extend": true,
+   "call": true,
+   "mute": true,
+   "leave": true,
+   "leave_owner": true,
+   "send": true,
+   "user_list": true
+  },
+  "last_message_id": 9652,
+  "last_id": 0,
+  "marked_id": 0,
+  "disk_folder_id": 0,
+  "entity_type": "",
+  "entity_id": "",
+  "entity_data_1": "",
+  "entity_data_2": "",
+  "entity_data_3": "",
+  "mute_list": [],
+  "date_create": "2024-08-13T17:26:45+00:00",
+  "message_type": "O",
+  "disappearing_time": 0,
+  "public": "",
+  "role": "owner",
+  "entity_link": {
+   "type": "",
+   "url": ""
+  },
+  "permissions": {
+   "manage_users_add": "member",
+   "manage_users_delete": "manager",
+   "manage_ui": "member",
+   "manage_settings": "owner",
+   "manage_messages": "member",
+   "can_post": "member"
+  },
+  "is_new": false,
+  "readed_list": [
+   {
+    "user_id": 10,
+    "user_name": "Techno Pizza",
+    "message_id": 9628,
+    "date": null
+   },
+   {
+    "user_id": 12,
+    "user_name": "Bay Selonarrend",
+    "message_id": 9628,
+    "date": null
+   }
+  ],
+  "manager_list": [
+   1
+  ],
+  "last_message_views": {
+   "message_id": 9652,
+   "first_viewers": [],
+   "count_of_viewers": 0
+  },
+  "dialog_id": "chat514"
+ },
+ "time": {
+  "start": 1723570040.07564,
+  "finish": 1723570040.44176,
+  "duration": 0.366122007369995,
+  "processing": 0.342746019363403,
+  "date_start": "2024-08-13T17:27:20+00:00",
+  "date_finish": "2024-08-13T17:27:20+00:00",
+  "operating_reset_at": 1723570640,
+  "operating": 0.342724800109863
+ }
+}

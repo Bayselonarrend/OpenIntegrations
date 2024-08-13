@@ -1,0 +1,38 @@
+﻿ {
+ "result": [
+  {
+   "id": 418,
+   "taskId": 1238,
+   "commentId": 3360,
+   "createdBy": 1,
+   "createdAt": "2024-08-13T17:25:21+00:00",
+   "updatedAt": "2024-08-13T17:25:21+00:00",
+   "status": 0,
+   "text": "The task has been changed, let's split up",
+   "formattedText": "The task has been changed, let's split up",
+   "files": []
+  },
+  {
+   "id": 416,
+   "taskId": 1238,
+   "commentId": 3358,
+   "createdBy": 1,
+   "createdAt": "2024-08-13T17:25:20+00:00",
+   "updatedAt": "2024-08-13T17:25:20+00:00",
+   "status": 0,
+   "text": "The task has been changed, do not split up",
+   "formattedText": "The task has been changed, do not split up",
+   "files": []
+  }
+ ],
+ "time": {
+  "start": 1723569924.15194,
+  "finish": 1723569924.18045,
+  "duration": 0.0285148620605469,
+  "processing": 0.00672817230224609,
+  "date_start": "2024-08-13T17:25:24+00:00",
+  "date_finish": "2024-08-13T17:25:24+00:00",
+  "operating_reset_at": 1723570524,
+  "operating": 0
+ }
+}

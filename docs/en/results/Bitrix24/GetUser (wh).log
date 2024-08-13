@@ -1,0 +1,32 @@
+﻿ {
+ "result": [
+  {
+   "ID": "142",
+   "XML_ID": "56968662",
+   "ACTIVE": true,
+   "EMAIL": "a4521427-055d-4acf-b90c-59f414017a71@exepmple.org",
+   "LAST_LOGIN": "",
+   "DATE_REGISTER": "2024-08-13T00:00:00+00:00",
+   "IS_ONLINE": "N",
+   "TIMESTAMP_X": {},
+   "PERSONAL_GENDER": "",
+   "PERSONAL_BIRTHDAY": "",
+   "UF_EMPLOYMENT_DATE": "",
+   "UF_DEPARTMENT": [
+    1
+   ],
+   "USER_TYPE": "employee"
+  }
+ ],
+ "total": 1,
+ "time": {
+  "start": 1723570097.62125,
+  "finish": 1723570097.66172,
+  "duration": 0.0404667854309082,
+  "processing": 0.0128500461578369,
+  "date_start": "2024-08-13T17:28:17+00:00",
+  "date_finish": "2024-08-13T17:28:17+00:00",
+  "operating_reset_at": 1723570697,
+  "operating": 0
+ }
+}
