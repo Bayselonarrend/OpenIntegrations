@@ -1,0 +1,5 @@
+﻿    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+
+    Result = OPI_VKTeams.DeleteMessage(Token, ChatID, MessageID);

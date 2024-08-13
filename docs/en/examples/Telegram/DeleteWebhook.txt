@@ -1,0 +1,2 @@
+﻿    Token  = FunctionParameters["Telegram_Token"];
+    Result = OPI_Telegram.DeleteWebhook(Token);

@@ -1,0 +1,7 @@
+﻿    Parameters = GetVKParameters();
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    StartDate   = BegOfDay(CurrentDate);
+    EndDate     = EndOfDay(StartDate);
+
+    Result = OPI_VK.GetStatistics(StartDate, EndDate, Parameters);

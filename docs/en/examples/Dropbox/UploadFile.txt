@@ -1,0 +1,8 @@
+﻿    Path  = "/New/pic.png";
+    Token = FunctionParameters["Dropbox_Token"];
+    Image = FunctionParameters["Picture"];
+
+    ImagePath = GetTempFileName("png");
+    CopyFile(Image, ImagePath);
+
+    Result = OPI_Dropbox.UploadFile(Token, ImagePath, Path, True);

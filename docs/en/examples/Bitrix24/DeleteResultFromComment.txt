@@ -1,0 +1,12 @@
+﻿    URL       = FunctionParameters["Bitrix24_URL"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+
+    Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "Delete result from comment)", "Bitrix24");
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID, Token);

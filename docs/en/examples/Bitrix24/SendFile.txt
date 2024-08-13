@@ -1,0 +1,26 @@
+﻿    URL         = FunctionParameters["Bitrix24_URL"];
+    ChatID      = FunctionParameters["Bitrix24_HookChatID"];
+    File        = FunctionParameters["Document"]; // Binary Data, URL or path to file
+    Description = "Very important file";
+
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
+    FolderID  = Directory["result"]["ID"];
+
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID);
+    FileID       = UploadedFile["result"]["ID"];
+
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
+    FolderID  = Directory["result"]["ID"];
+
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID, Token);
+    FileID       = UploadedFile["result"]["ID"];
+
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description, Token);

@@ -1,0 +1,15 @@
+﻿    Name      = "New file name.jpg";
+    Filename2 = "New file name 2.jpg";
+
+    FileID2 = FunctionParameters["Bitrix24_HookFileID"];
+    URL     = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFile (wh)", "Bitrix24");
+
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);

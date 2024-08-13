@@ -1,0 +1,5 @@
+﻿    ClientID     = FunctionParameters["Bitrix24_ClientID"];
+    ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
+    Refresh      = FunctionParameters["Bitrix24_Refresh"];
+
+    Result = OPI_Bitrix24.RefreshToken(ClientID, ClientSecret, Refresh);

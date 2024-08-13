@@ -1,0 +1,12 @@
+﻿    Token      = FunctionParameters["VkTeams_Token"];
+    ChatID     = FunctionParameters["VkTeams_ChatID"];
+    FromChatID = FunctionParameters["VkTeams_ChatID2"];
+    MessageID  = FunctionParameters["VkTeams_MessageID"];
+
+    Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage (simple)", "VkTeams");
+
+    Text = "Additional text";
+
+    Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID, Text);

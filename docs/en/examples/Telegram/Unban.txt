@@ -1,0 +1,5 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    UserID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+
+    Result = OPI_Telegram.Unban(Token, ChannelID, UserID);

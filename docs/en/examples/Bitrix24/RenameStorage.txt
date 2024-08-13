@@ -1,0 +1,6 @@
+﻿    Name      = "New storage name";
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    StorageID = FunctionParameters["Bitrix24_StorageID"];
+
+    Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);

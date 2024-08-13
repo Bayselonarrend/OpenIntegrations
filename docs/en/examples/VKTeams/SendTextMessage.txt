@@ -1,0 +1,14 @@
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Text   = "Message text";
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage)", "VkTeams");
+
+    ChatID  = FunctionParameters["VkTeams_ChatID2"];
+    ReplyID = FunctionParameters["VkTeams_MessageID"];
+    Text    = "<b>Bold text</b>";
+    Markup  = "HTML";
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, , Markup);

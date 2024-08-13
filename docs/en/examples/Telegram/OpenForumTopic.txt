@@ -1,0 +1,9 @@
+﻿    Token = FunctionParameters["Telegram_Token"];
+    Chat  = FunctionParameters["Telegram_ForumID"];
+    Topic = FunctionParameters["Telegram_TopicID"];
+
+    Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
+
+    OPI_TestDataRetrieval.WriteLog(Result, "OpenForumTopic (main)");
+
+    Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);

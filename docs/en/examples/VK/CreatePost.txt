@@ -1,0 +1,19 @@
+﻿    Parameters = GetVKParameters();
+    Text       = "Post from autotest";
+    URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
+
+    Image  = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+
+    TFN = GetTempFileName("png");
+    CopyFile(Image2, TFN);
+
+    ImageArray = New Array;
+    ImageArray.Add(Image);
+    ImageArray.Add(TFN);
+
+    Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost", "VK");
+
+    Result = OPI_VK.CreatePost(Text, Image, False , , Parameters);

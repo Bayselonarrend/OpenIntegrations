@@ -1,0 +1,15 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
+
+    Text = "Task impossible, let's split up";
+
+    Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTaskComment (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Text = "Task uninpossible, don't split up";
+
+    Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text, Token);

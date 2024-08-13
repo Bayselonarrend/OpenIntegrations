@@ -1,0 +1,13 @@
+﻿    Text   = "Comment for post";
+    PostID = FunctionParameters["Bitrix24_PostID"];
+    URL    = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostComment (wh)", "Bitrix24");
+
+    Text  = "Another comment";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);

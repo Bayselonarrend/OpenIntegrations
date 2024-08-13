@@ -1,0 +1,16 @@
+﻿    Parameters = GetVKParameters();
+
+    Property    = FunctionParameters["VK_PropID"];
+    OptionArray = New Array;
+    OptionArray.Add("Yellow");
+    OptionArray.Add("Blue");
+    OptionArray.Add("Red");
+
+    For Each Value In OptionArray Do
+
+        Result = OPI_VK.AddProductPropertyVariant(Value, Property, Parameters);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "AddProductPropertyVariant", "VK");
+
+        FunctionParameters.Insert(ParameterName, VariantID);
+    EndDo;
