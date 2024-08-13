@@ -1,0 +1,12 @@
+﻿    Visibility = "UA";
+    PostID     = FunctionParameters["Bitrix24_PostID"];
+    URL        = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddPostRecipients (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility, Token);
