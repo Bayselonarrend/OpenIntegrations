@@ -1,0 +1,18 @@
+﻿ {
+ "result": {
+  "dialogId": "chat514",
+  "chatId": 514,
+  "lastId": 9652,
+  "counter": 0
+ },
+ "time": {
+  "start": 1723570037.88821,
+  "finish": 1723570037.92823,
+  "duration": 0.0400221347808838,
+  "processing": 0.0171449184417725,
+  "date_start": "2024-08-13T17:27:17+00:00",
+  "date_finish": "2024-08-13T17:27:17+00:00",
+  "operating_reset_at": 1723570637,
+  "operating": 0
+ }
+}

@@ -1,0 +1,15 @@
+﻿ {
+ "result": {
+  "attachmentId": 1776
+ },
+ "time": {
+  "start": 1723569915.73766,
+  "finish": 1723569915.80993,
+  "duration": 0.072274923324585,
+  "processing": 0.0442979335784912,
+  "date_start": "2024-08-13T17:25:15+00:00",
+  "date_finish": "2024-08-13T17:25:15+00:00",
+  "operating_reset_at": 1723570515,
+  "operating": 0
+ }
+}

@@ -1,0 +1,76 @@
+﻿ {
+ "result": {
+  "FILES": {
+   "upload5966": {
+    "id": 5966,
+    "chatId": 514,
+    "date": {},
+    "type": "file",
+    "name": "Imortant doc.docx",
+    "extension": "docx",
+    "size": 24071,
+    "image": false,
+    "status": "done",
+    "progress": 100,
+    "authorId": 1,
+    "authorName": "Антон Титовец",
+    "urlPreview": "",
+    "urlShow": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=5966&fileName=Imortant%20doc.docx",
+    "urlDownload": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=5966&fileName=Imortant%20doc.docx",
+    "viewerAttrs": {
+     "viewer": null,
+     "viewerType": "cloud-document",
+     "src": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=5966&fileName=Imortant%20doc.docx",
+     "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
+     "viewerSeparateItem": true,
+     "viewerExtension": "im.integration.viewer",
+     "objectId": "5966",
+     "imChatId": 514,
+     "title": "Imortant doc.docx",
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Битрикс24 Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"5966\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+    }
+   }
+  },
+  "DISK_ID": [
+   "5966"
+  ],
+  "FILE_MODELS": {
+   "upload5966": {
+    "id": 5966,
+    "name": "Imortant doc.docx",
+    "createTime": {},
+    "updateTime": {},
+    "deleteTime": null,
+    "code": null,
+    "xmlId": null,
+    "storageId": 6,
+    "realObjectId": 5966,
+    "parentId": 5962,
+    "deletedType": 0,
+    "createdBy": "1",
+    "updatedBy": "1",
+    "deletedBy": "0",
+    "typeFile": 4,
+    "globalContentVersion": 2,
+    "fileId": 4238,
+    "size": 24071,
+    "etag": "bf0a93c96ce33b11f6346a673bb6b419",
+    "links": {
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=5966",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=5966&action=showObjectInGrid&ncc=1"
+    }
+   }
+  },
+  "MESSAGE_ID": 9660
+ },
+ "time": {
+  "start": 1723570061.42678,
+  "finish": 1723570061.52879,
+  "duration": 0.102010011672974,
+  "processing": 0.0749430656433106,
+  "date_start": "2024-08-13T17:27:41+00:00",
+  "date_finish": "2024-08-13T17:27:41+00:00",
+  "operating_reset_at": 1723570661,
+  "operating": 0
+ }
+}

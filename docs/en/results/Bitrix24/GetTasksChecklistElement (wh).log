@@ -1,0 +1,26 @@
+﻿ {
+ "result": {
+  "ID": "524",
+  "TASK_ID": "1234",
+  "PARENT_ID": "522",
+  "CREATED_BY": "1",
+  "TITLE": "New elements text",
+  "SORT_INDEX": "1",
+  "IS_COMPLETE": "Y",
+  "IS_IMPORTANT": "N",
+  "TOGGLED_BY": null,
+  "TOGGLED_DATE": "",
+  "MEMBERS": [],
+  "ATTACHMENTS": []
+ },
+ "time": {
+  "start": 1723569907.47302,
+  "finish": 1723569907.51865,
+  "duration": 0.0456271171569824,
+  "processing": 0.0211000442504883,
+  "date_start": "2024-08-13T17:25:07+00:00",
+  "date_finish": "2024-08-13T17:25:07+00:00",
+  "operating_reset_at": 1723570507,
+  "operating": 0
+ }
+}
