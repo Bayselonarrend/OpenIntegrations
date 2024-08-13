@@ -1,4 +1,4 @@
-﻿    IDФайла = "CQACAgIAAx0EcNsaZQACGsRmqTObImcQhvZfQC9f7KStfGzIWwACJFYAAjcMSUk5-shFORxZRjUE";
+﻿    IDФайла = "CQACAgIAAx0EcNsaZQACFyZmiag7zFs6JY4l17pWGP-irOnPZwACwk0AAqi7UUi6DAhERXKjUjUE";
     Токен   = "6129457865:AAFyzNYOAFbu...";
 
     Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
