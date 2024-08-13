@@ -28,15 +28,15 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  IDНовости = "440";
-  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Результат = OPI_Bitrix24.ПолучитьНовости(URL, IDНовости);
-  
-  URL       = "b24-ar17wx.bitrix24.by";
-  Токен     = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Результат = OPI_Bitrix24.ПолучитьНовости(URL, IDНовости, , Токен);
+    IDНовости = "440";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Результат = OPI_Bitrix24.ПолучитьНовости(URL, IDНовости);
+
+    URL       = "b24-ar17wx.bitrix24.by";
+    Токен     = "fe3fa966006e9f06006b12e400000001000...";
+
+    Результат = OPI_Bitrix24.ПолучитьНовости(URL, IDНовости, , Токен);
 ```
 
 

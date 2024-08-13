@@ -24,12 +24,12 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  
-  Product   = "9372711";
-  Selection = "125";
-  
-  Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);
+    Parameters = GetVKParameters();
+
+    Product   = "9372711";
+    Selection = "125";
+
+    Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);
 ```
 
 

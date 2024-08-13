@@ -24,8 +24,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  Token  = "6129457865:AAFyzNYOAFbu...";
-  Result = OPI_Telegram.GetUpdates(Token);
+    Token  = "6129457865:AAFyzNYOAFbu...";
+    Result = OPI_Telegram.GetUpdates(Token);
 ```
 
 

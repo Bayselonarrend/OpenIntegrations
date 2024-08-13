@@ -28,18 +28,18 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 
 
 ```bsl title="Code example"
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  ChatID = "450";
-  
-  Image = "https://openintegrations.dev/test_data/picture2.jpg";
-  
-  Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
-  
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  ChatID = "452";
-  
-  Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    ChatID = "450";
+
+    Image = "https://openintegrations.dev/test_data/picture2.jpg";
+
+    Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    ChatID = "452";
+
+    Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);
 ```
 
 

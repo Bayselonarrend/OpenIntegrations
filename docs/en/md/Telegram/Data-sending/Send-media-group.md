@@ -30,25 +30,25 @@ Map: Key - File, Value - media type
 
 
 ```bsl title="Code example"
-  Token  = "6129457865:AAFyzNYOAFbu...";
-  ChatID = "461699897";
-  Text   = "Строковое значение";
-  Image  = "https://openintegrations.dev/test_data/picture.jpg";
-  Video  = "https://openintegrations.dev/test_data/video.mp4";
-  
-  ImagePath = GetTempFileName("png");
-  CopyFile(Image, ImagePath);
-  
-  VideoPath = GetTempFileName("mp4");
-  CopyFile(Video, VideoPath);
-  
-  VideoDD = New BinaryData(VideoPath);
-  
-  MediaGroup = New Map;
-  MediaGroup.Insert(ImagePath, "photo");
-  MediaGroup.Insert(VideoDD  , "video");
-  
-  Result = OPI_Telegram.SendMediaGroup(Token, ChatID, Text, MediaGroup);
+    Token  = "6129457865:AAFyzNYOAFbu...";
+    ChatID = "461699897";
+    Text   = "Строковое значение";
+    Image  = "https://openintegrations.dev/test_data/picture.jpg";
+    Video  = "https://openintegrations.dev/test_data/video.mp4";
+
+    ImagePath = GetTempFileName("png");
+    CopyFile(Image, ImagePath);
+
+    VideoPath = GetTempFileName("mp4");
+    CopyFile(Video, VideoPath);
+
+    VideoDD = New BinaryData(VideoPath);
+
+    MediaGroup = New Map;
+    MediaGroup.Insert(ImagePath, "photo");
+    MediaGroup.Insert(VideoDD  , "video");
+
+    Result = OPI_Telegram.SendMediaGroup(Token, ChatID, Text, MediaGroup);
 ```
 
 

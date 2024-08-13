@@ -27,16 +27,16 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  TaskID = "1078";
-  
-  Result = OPI_Bitrix24.GetTaskHistory(URL, TaskID);
-  
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  TaskID = "1080";
-  
-  Result = OPI_Bitrix24.GetTaskHistory(URL, TaskID, Token);
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    TaskID = "1078";
+
+    Result = OPI_Bitrix24.GetTaskHistory(URL, TaskID);
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    TaskID = "1080";
+
+    Result = OPI_Bitrix24.GetTaskHistory(URL, TaskID, Token);
 ```
 
 

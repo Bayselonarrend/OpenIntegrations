@@ -27,22 +27,22 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "461699897";
-  ChannelID = "@testsichee";
-  Text      = "Строковое значение";
-  Audio     = "https://openintegrations.dev/test_data/song.mp3";
-  
-  AudioPath = GetTempFileName("mp3");
-  CopyFile(Audio, AudioPath);
-  
-  AudioDD = New BinaryData(AudioPath);
-  
-  Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
-  
-  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
-  
-  Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+    Audio     = "https://openintegrations.dev/test_data/song.mp3";
+
+    AudioPath = GetTempFileName("mp3");
+    CopyFile(Audio, AudioPath);
+
+    AudioDD = New BinaryData(AudioPath);
+
+    Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
+
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
+
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
 ```
 
 

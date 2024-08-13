@@ -29,22 +29,22 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  Наименование2  = "Картинка2.jpg";
-  Наименование   = "Картинка1.jpg";
-  
-  Картинка2 = "https://openintegrations.dev/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
-  Картинка  = "https://openintegrations.dev/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
-  
-  IDПриемника = "5016";
-  
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование2, Картинка2, IDПриемника);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Токен = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование, Картинка, IDПриемника, Токен);
+    Наименование2  = "Картинка2.jpg";
+    Наименование   = "Картинка1.jpg";
+
+    Картинка2 = "https://openintegrations.dev/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
+    Картинка  = "https://openintegrations.dev/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
+
+    IDПриемника = "5016";
+
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование2, Картинка2, IDПриемника);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "fe3fa966006e9f06006b12e400000001000...";
+
+    Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование, Картинка, IDПриемника, Токен);
 ```
 
 

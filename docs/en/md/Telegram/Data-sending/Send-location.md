@@ -26,15 +26,15 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "461699897";
-  ChannelID = "@testsichee";
-  Width     = "48.87373649724122";
-  Longitude = "48.87373649724122";
-  
-  Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
-  
-  Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Width     = "48.87373649724122";
+    Longitude = "48.87373649724122";
+
+    Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
+
+    Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
 ```
 
 

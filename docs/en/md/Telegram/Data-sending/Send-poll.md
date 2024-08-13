@@ -26,20 +26,20 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "461699897";
-  ChannelID = "@testsichee";
-  Question  = "What's your favorite color?";
-  
-  AnswersArray = New Array;
-  AnswersArray.Add("Red");
-  AnswersArray.Add("Yellow");
-  AnswersArray.Add("Green");
-  AnswersArray.Add("Blue");
-  
-  Result = OPI_Telegram.SendPoll(Token, ChatID , Question, AnswersArray, False);
-  
-  Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Question  = "What's your favorite color?";
+
+    AnswersArray = New Array;
+    AnswersArray.Add("Red");
+    AnswersArray.Add("Yellow");
+    AnswersArray.Add("Green");
+    AnswersArray.Add("Blue");
+
+    Result = OPI_Telegram.SendPoll(Token, ChatID , Question, AnswersArray, False);
+
+    Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
 ```
 
 

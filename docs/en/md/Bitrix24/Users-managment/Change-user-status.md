@@ -25,16 +25,16 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  UserID = "78";
-  
-  Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True);
-  
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  UserID = "80";
-  
-  Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True, Token);
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    UserID = "78";
+
+    Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True);
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    UserID = "80";
+
+    Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True, Token);
 ```
 
 

@@ -23,10 +23,10 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  Токен       = "6129457865:AAFyzNYOAFbu...";
-  IDКанала    = "@testsichee";
-  
-  Результат  = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDКанала);
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDКанала    = "@testsichee";
+
+    Результат  = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDКанала);
 ```
 
 

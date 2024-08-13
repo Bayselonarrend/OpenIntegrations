@@ -27,14 +27,14 @@ Method at API documentation: [disk.folder.getfields](https://dev.1c-bitrix.ru/re
 
 
 ```bsl title="Code example"
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.GetFolderFilterStructure(URL);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.GetFolderFilterStructure(URL, True, Token);
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.GetFolderFilterStructure(URL);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.GetFolderFilterStructure(URL, True, Token);
 ```
 
 
