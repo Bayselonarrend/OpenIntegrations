@@ -1,7 +1,7 @@
 ﻿    Parameters = GetVKParameters();
 
-    Item1 = "9372712";
-    Item2 = "9372714";
+    Item1 = FunctionParameters["VK_MarketItemID2"];
+    Item2 = FunctionParameters["VK_MarketItemID3"];
 
     ProductsArray = New Array;
     ProductsArray.Add(Item1);

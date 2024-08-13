@@ -1,4 +1,4 @@
-﻿    Токен    = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-    Файл     = "kJU6-a-pT48AAAAAAAAABw";
+﻿    Токен    = ПараметрыФункции["Dropbox_Token"];
+    Файл     = ПараметрыФункции["Dropbox_FileID"];
 
     Результат = OPI_Dropbox.ОтменитьПубликациюФайла(Токен, Файл);

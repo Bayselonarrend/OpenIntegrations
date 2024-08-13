@@ -1,4 +1,4 @@
-﻿    Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+﻿    Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New catalog";
 
     Result = OPI_Dropbox.CreateFolder(Token, Path);
