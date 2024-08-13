@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
-    Video       = FunctionParameters["Video"];
+    Video       = "https://openintegrations.dev/test_data/video.mp4";
     Name        = "NewVideo";
     Description = "Video description";
 

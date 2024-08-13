@@ -1,5 +1,5 @@
-﻿    Token  = FunctionParameters["Dropbox_Token"];
-    Folder = FunctionParameters["Dropbox_SharedFolder"];
+﻿    Token  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Folder = "3417285987";
 
     Result        = OPI_Dropbox.CancelFolderPublication(Token, Folder);
     CurrentStatus = "in_progress";

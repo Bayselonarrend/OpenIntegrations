@@ -1,12 +1,12 @@
-﻿    URL       = FunctionParameters["Bitrix24_URL"];
-    ChatID    = "chat" + FunctionParameters["Bitrix24_HookChatID"];
-    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    ChatID    = "chat" + "450";
+    MessageID = "8682";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
 
-    URL       = FunctionParameters["Bitrix24_Domain"];
-    Token     = FunctionParameters["Bitrix24_Token"];
+    URL       = "b24-ar17wx.bitrix24.by";
+    Token     = "fe3fa966006e9f06006b12e400000001000...";
     UserID    = 10;
-    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+    MessageID = "8684";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);
