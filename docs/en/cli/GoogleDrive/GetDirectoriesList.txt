@@ -1,0 +1,1 @@
+﻿oint gdrive GetDirectoriesList --token %token% --querry %querry% --depth %depth%

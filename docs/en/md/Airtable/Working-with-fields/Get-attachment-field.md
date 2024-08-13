@@ -9,12 +9,12 @@ sidebar_position: 5
 
 `Function GetAttachmentField(Val Name) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Field name |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Field name |
 
- 
- Returns: Structure - Field description
+  
+  Returns:  Structure - Field description
 
 <br/>
 
@@ -22,24 +22,24 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Name = "Attachment";
- 
- Response = OPI_Airtable.GetAttachmentField(Name); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Name = "Attachment";
+  
+  Response = OPI_Airtable.GetAttachmentField(Name); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint airtable GetAttachmentField --title "Attachment"
+    
+  oint airtable GetAttachmentField --title "Attachment"
 
 ```
 
 ```json title="Result"
 {
- "name": "Attachment",
- "type": "multipleAttachments"
- }
+  "name": "Attachment",
+  "type": "multipleAttachments"
+  }
 ```

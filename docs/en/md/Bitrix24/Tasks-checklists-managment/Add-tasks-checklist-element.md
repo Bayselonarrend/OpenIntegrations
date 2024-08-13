@@ -9,16 +9,16 @@ sidebar_position: 1
 
 `Function AddTasksChecklistElement(Val URL, Val TaskID, Val Text, Val Completed = False, Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | TaskID | --task | Number, String | Task ID |
- | Text | --text | String | Text (title) of checklist element |
- | Completed | --complete | Boolean | Mark as completed |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | TaskID | --task | Number, String | Task ID |
+  | Text | --text | String | Text (title) of checklist element |
+  | Completed | --complete | Boolean | Mark as completed |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -29,40 +29,42 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- TaskID = "1078";
- 
- Text = "Checklist element";
- 
- Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- TaskID = "1080";
- 
- Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text,, Token);
+  URL    = FunctionParameters["Bitrix24_URL"];
+  TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+  
+  Text = "Checklist element";
+  
+  Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "AddTasksChecklistElement (wh)", "Bitrix24");
+  
+  URL    = FunctionParameters["Bitrix24_Domain"];
+  Token  = FunctionParameters["Bitrix24_Token"];
+  TaskID = FunctionParameters["Bitrix24_TaskID"];
+  
+  Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, , Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 AddTasksChecklistElement --url %url% --task %task% --text %text% --complete %complete% --token %token%
+    
+  oint bitrix24 AddTasksChecklistElement --url "b24-ar17wx.bitrix24.by" --task "1080" --text "Checklist element" --complete %complete% --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": 96,
- "time": {
- "start": 1720816505.3041,
- "finish": 1720816505.37014,
- "duration": 0.0660440921783447,
- "processing": 0.0380921363830566,
- "date_start": "2024-07-12T20:35:05+00:00",
- "date_finish": "2024-07-12T20:35:05+00:00",
- "operating_reset_at": 1720817105,
- "operating": 0
- }
-}
+  "result": 96,
+  "time": {
+  "start": 1720816505.3041,
+  "finish": 1720816505.37014,
+  "duration": 0.0660440921783447,
+  "processing": 0.0380921363830566,
+  "date_start": "2024-07-12T20:35:05+00:00",
+  "date_finish": "2024-07-12T20:35:05+00:00",
+  "operating_reset_at": 1720817105,
+  "operating": 0
+  }
+  }
 ```

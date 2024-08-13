@@ -47,7 +47,7 @@ sidebar_position: 5
   
   Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументДД, , , "customname.docx");
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

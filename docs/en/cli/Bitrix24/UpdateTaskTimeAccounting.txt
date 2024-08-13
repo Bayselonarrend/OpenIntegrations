@@ -1,0 +1,1 @@
+﻿oint bitrix24 UpdateTaskTimeAccounting --url "b24-ar17wx.bitrix24.by" --task "1088" --record "308" --amount "4800" --text "The text I forgot last time" --date %date% --token "fe3fa966006e9f06006b12e400000001000..."

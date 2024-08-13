@@ -1,0 +1,1 @@
+﻿oint vk CreateDiscussion --title "Discussing: Which color is better?" --text %text% --auth "GetVKParameters()"

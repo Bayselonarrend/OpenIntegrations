@@ -1,0 +1,1 @@
+﻿oint vkteams ForwardMessage --token "001.3501506236.091..." --message "7402287649739767956" --fromid "689203963@chat.agent" --chatid "AoLI0egLWBSLR1Ngn2w" --text "Additional text"

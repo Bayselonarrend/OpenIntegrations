@@ -9,12 +9,12 @@ sidebar_position: 1
 
 `Function GetAuthorizationLink(Val AppKey) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | AppKey | --appkey | String | Application key |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | AppKey | --appkey | String | Application key |
 
- 
- Returns: String - URL for browser transition
+  
+  Returns:  String - URL for browser transition
 
 <br/>
 
@@ -22,15 +22,15 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- AppKey = "oynqxds...";
- Result = OPI_Dropbox.GetAuthorizationLink(AppKey);
+  AppKey = FunctionParameters["Dropbox_Appkey"];
+  Result = OPI_Dropbox.GetAuthorizationLink(AppKey);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint dropbox GetAuthorizationLink --appkey "oynqxds..."
+    
+  oint dropbox GetAuthorizationLink --appkey "oynqxds..."
 
 ```
 

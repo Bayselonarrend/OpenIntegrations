@@ -33,7 +33,7 @@ sidebar_position: 2
   Ответ = OPI_Viber.ОтправитьКартинку(ТокенКанала, "https://api.athenaeum.digital/logo.png", IDПользователя, Истина, "Альпака"); //Соответствие
   Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                                                    //JSON строка
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

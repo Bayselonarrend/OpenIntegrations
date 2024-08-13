@@ -9,13 +9,13 @@ sidebar_position: 2
 
 `Function CreateProductProperty(Val Name, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Property name |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Property name |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -23,25 +23,25 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- 
- Name = "Color";
- 
- Result = OPI_VK.CreateProductProperty(Name, Parameters);
+  Parameters = GetVKParameters();
+  
+  Name = "Color";
+  
+  Result = OPI_VK.CreateProductProperty(Name, Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk CreateProductProperty --title %title% --auth %auth%
+    
+  oint vk CreateProductProperty --title "Color" --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": {
- "property_id": 260
- }
- }
+  "response": {
+  "property_id": 260
+  }
+  }
 ```

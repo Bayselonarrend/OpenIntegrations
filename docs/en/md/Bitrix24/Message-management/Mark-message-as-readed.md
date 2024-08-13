@@ -9,15 +9,15 @@ sidebar_position: 6
 
 `Function MarkMessageAsReaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | ChatID | --chat | String, Number | Chat ID (as chatXXX) or User ID (as XXX) |
- | MessageID | --message | String, Number | Id of last readed message |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | ChatID | --chat | String, Number | Chat ID (as chatXXX) or User ID (as XXX) |
+  | MessageID | --message | String, Number | Id of last readed message |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -28,45 +28,47 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- ChatID = "chat" + "450";
- MessageID = "8682";
- 
- Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- UserID = 10;
- MessageID = "8684";
- 
- Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);
+  URL       = FunctionParameters["Bitrix24_URL"];
+  ChatID    = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+  MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+  
+  Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsReaded (wh)", "Bitrix24");
+  
+  URL       = FunctionParameters["Bitrix24_Domain"];
+  Token     = FunctionParameters["Bitrix24_Token"];
+  UserID    = 10;
+  MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+  
+  Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 MarkMessageAsReaded --url %url% --chat %chat% --message %message% --token %token%
+    
+  oint bitrix24 MarkMessageAsReaded --url "b24-ar17wx.bitrix24.by" --chat "chat + 450" --message "8684" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": {
- "dialogId": 10,
- "chatId": 10,
- "lastId": 5262,
- "counter": 0
- },
- "time": {
- "start": 1720969157.61149,
- "finish": 1720969157.65659,
- "duration": 0.0451040267944336,
- "processing": 0.0171201229095459,
- "date_start": "2024-07-14T14:59:17+00:00",
- "date_finish": "2024-07-14T14:59:17+00:00",
- "operating_reset_at": 1720969757,
- "operating": 0
- }
-}
+  "result": {
+  "dialogId": 10,
+  "chatId": 10,
+  "lastId": 5262,
+  "counter": 0
+  },
+  "time": {
+  "start": 1720969157.61149,
+  "finish": 1720969157.65659,
+  "duration": 0.0451040267944336,
+  "processing": 0.0171201229095459,
+  "date_start": "2024-07-14T14:59:17+00:00",
+  "date_finish": "2024-07-14T14:59:17+00:00",
+  "operating_reset_at": 1720969757,
+  "operating": 0
+  }
+  }
 ```

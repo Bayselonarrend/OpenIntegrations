@@ -38,7 +38,7 @@ sidebar_position: 4
   
   Результат = OPI_Bitrix24.УдалитьФайл(URL, IDФайла, Токен);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

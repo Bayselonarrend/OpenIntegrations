@@ -9,13 +9,13 @@ sidebar_position: 3
 
 `Function GetFileInformation(Val Token, Val FileID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | FileID | --fileid | String, Number | File ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | FileID | --fileid | String, Number | File ID |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK Teams
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
 
 <br/>
 
@@ -26,18 +26,20 @@ Method at API documentation: [GET /files/getInfo](https://teams.vk.com/botapi/#/
 
 
 ```bsl title="Code example"
- Token = "001.3501506236.091...";
- FileID = "sXhpbA5K2ZCOdG5ROIfRan66ba356d1bd";
- 
- Result = OPI_VKTeams.GetFileInformation(Token, FileID);
+  Token  = FunctionParameters["VkTeams_Token"];
+  FileID = FunctionParameters["VkTeams_FileID"];
+  
+  Result = OPI_VKTeams.GetFileInformation(Token, FileID);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vkteams GetFileInformation --token %token% --fileid %fileid%
+    
+  oint vkteams GetFileInformation --token "001.3501506236.091..." --fileid "sXhpbA5K2ZCOdG5ROIfRan66ba356d1bd"
 
 ```
 
+```json title="Result"
 
+```

@@ -9,12 +9,12 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 
 `Function CreateTokenRetrievalLink(Val App_id) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | app_id | --app | String, Number | app_id from application settings |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | app_id | --app | String, Number | app_id from application settings |
 
- 
- Returns: String - URL to go to in the browser
+  
+  Returns:  String - URL to go to in the browser
 
 <br/>
 
@@ -22,15 +22,15 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 
 
 ```bsl title="Code example"
- Application = "51694790";
- Result = OPI_VK.CreateTokenRetrievalLink(Application);
+  Application = FunctionParameters["VK_AppID"];
+  Result      = OPI_VK.CreateTokenRetrievalLink(Application);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk CreateTokenRetrievalLink --app %app%
+    
+  oint vk CreateTokenRetrievalLink --app %app%
 
 ```
 

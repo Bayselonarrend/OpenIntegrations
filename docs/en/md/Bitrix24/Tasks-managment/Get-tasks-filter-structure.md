@@ -9,25 +9,30 @@ sidebar_position: 27
 
 `Function GetTasksFilterStructure(Val Clear = False) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Clear | --empty | Boolean | True > structure with empty valuse, False > field descriptions at values |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Clear | --empty | Boolean | True > structure with empty valuse, False > field descriptions at values |
 
- 
- Returns: Structure of KeyAndValue - Fields structure
+  
+  Returns:  Structure of KeyAndValue - Fields structure
 
 <br/>
 
 
 
 
-	
-
-
-```sh title="CLI command example"
- 
- oint bitrix24 GetTasksFilterStructure --empty %empty%
+```bsl title="Code example"
 
 ```
 
 
+
+```sh title="CLI command example"
+    
+  oint bitrix24 GetTasksFilterStructure --empty %empty%
+
+```
+
+```json title="Result"
+
+```

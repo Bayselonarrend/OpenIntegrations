@@ -9,13 +9,13 @@ sidebar_position: 3
 
 `Function DeletePost(Val PostID, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | PostID | --post | String, Number | Post ID |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | PostID | --post | String, Number | Post ID |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -23,22 +23,22 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- PostID = "3356";
- 
- Result = OPI_VK.DeletePost(PostID, Parameters);
+  Parameters = GetVKParameters();
+  PostID     = FunctionParameters["VK_PostID"];
+  
+  Result = OPI_VK.DeletePost(PostID, Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk DeletePost --post %post% --auth %auth%
+    
+  oint vk DeletePost --post "3356" --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": 1
-}
+  "response": 1
+  }
 ```

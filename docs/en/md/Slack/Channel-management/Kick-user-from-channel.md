@@ -9,14 +9,14 @@ sidebar_position: 8
 
 `Function KickUserFromChannel(Val Token, Val Channel, Val User) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | Channel | --channel | String | Channel ID |
- | User | --user | String | User ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | Channel | --channel | String | Channel ID |
+  | User | --user | String | User ID |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
 
 <br/>
 
@@ -24,24 +24,24 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- 
- User = "U06UG1CAYH2";
- Channel = "C070VPMKN8J";
- 
- Response = OPI_Slack.KickUserFromChannel(Token, Channel, User); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  User = "U06UG1CAYH2";
+  Channel = "C070VPMKN8J";
+  
+  Response = OPI_Slack.KickUserFromChannel(Token, Channel, User); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint slack KickUserFromChannel --token %token% --channel "C070VPMKN8J" --user "U06UG1CAYH2"
+    
+  oint slack KickUserFromChannel --token %token% --channel "C070VPMKN8J" --user "U06UG1CAYH2"
 
 ```
 
 ```json title="Result"
 {
- "ok": true
- }
+  "ok": true
+  }
 ```

@@ -1,0 +1,1 @@
+﻿oint bitrix24 ChangeChatPicture --url "b24-ar17wx.bitrix24.by" --chat "452" --picture "https://openintegrations.dev/test_data/picture2.jpg" --token "fe3fa966006e9f06006b12e400000001000..."

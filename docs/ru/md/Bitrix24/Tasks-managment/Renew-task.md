@@ -38,7 +38,7 @@ sidebar_position: 10
   
   Результат = OPI_Bitrix24.ВозобновитьЗадачу(URL, IDЗадачи, Токен);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

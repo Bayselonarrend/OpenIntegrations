@@ -1,0 +1,1 @@
+﻿oint slack JoinChannel --token %token% --channel "C070VPMKN8J"

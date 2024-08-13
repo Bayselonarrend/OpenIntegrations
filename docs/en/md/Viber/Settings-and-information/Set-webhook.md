@@ -9,13 +9,13 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
 
 `Function SetWebhook(Val Token, Val URL) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Viber Token |
- | URL | --url | String | URL for setting up Webhook |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Viber Token |
+  | URL | --url | String | URL for setting up Webhook |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Viber
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Viber
 
 <br/>
 
@@ -23,35 +23,35 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
 
 
 ```bsl title="Code example"
- 
- Response = OPI_Viber.SetWebhook(Token, "https://api.athenaeum.digital/opi/hs/viber"); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Response = OPI_Viber.SetWebhook(Token, "https://api.athenaeum.digital/opi/hs/viber"); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint viber SetWebhook --token %token% --url %url%
+    
+  oint viber SetWebhook --token %token% --url %url%
 
 ```
 
 ```json title="Result"
 {
- "event_types": [
- "subscribed",
- "unsubscribed",
- "webhook",
- "conversation_started",
- "client_status",
- "action",
- "delivered",
- "failed",
- "message",
- "seen"
- ],
- "chat_hostname": "SN-CHAT-12_",
- "status_message": "ok",
- "status": 0
- }
+  "event_types": [
+  "subscribed",
+  "unsubscribed",
+  "webhook",
+  "conversation_started",
+  "client_status",
+  "action",
+  "delivered",
+  "failed",
+  "message",
+  "seen"
+  ],
+  "chat_hostname": "SN-CHAT-12_",
+  "status_message": "ok",
+  "status": 0
+  }
 ```

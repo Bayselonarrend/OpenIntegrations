@@ -9,12 +9,12 @@ sidebar_position: 9
 
 `Function GetPhoneField(Val Name) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Field name |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Field name |
 
- 
- Returns: Structure - Field description
+  
+  Returns:  Structure - Field description
 
 <br/>
 
@@ -22,24 +22,24 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
- 
- Name = "Phone";
- 
- Response = OPI_Airtable.GetPhoneField(Name); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Name = "Phone";
+  
+  Response = OPI_Airtable.GetPhoneField(Name); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint airtable GetPhoneField --title "Phone"
+    
+  oint airtable GetPhoneField --title "Phone"
 
 ```
 
 ```json title="Result"
 {
- "name": "Phone",
- "type": "phoneNumber"
- }
+  "name": "Phone",
+  "type": "phoneNumber"
+  }
 ```

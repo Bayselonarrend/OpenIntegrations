@@ -1,0 +1,1 @@
+﻿oint yadisk GetObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"

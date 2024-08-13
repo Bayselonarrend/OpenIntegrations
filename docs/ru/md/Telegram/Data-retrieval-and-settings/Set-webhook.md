@@ -28,7 +28,7 @@ sidebar_position: 3
   
   Результат   = OPI_Telegram.УстановитьWebhook(Токен, URL);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

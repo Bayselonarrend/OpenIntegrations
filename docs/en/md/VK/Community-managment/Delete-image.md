@@ -9,13 +9,13 @@ sidebar_position: 9
 
 `Function DeleteImage(Val ImageID, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | ImageID | --pictureid | String, Number | Image ID |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | ImageID | --pictureid | String, Number | Image ID |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -23,22 +23,22 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- ImageID = "457246566";
- 
- Result = OPI_VK.DeleteImage(ImageID, Parameters);
+  Parameters = GetVKParameters();
+  ImageID    = FunctionParameters["VK_PictureID"];
+  
+  Result = OPI_VK.DeleteImage(ImageID, Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk DeleteImage --pictureid %pictureid% --auth %auth%
+    
+  oint vk DeleteImage --pictureid "457246566" --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": 1
-}
+  "response": 1
+  }
 ```

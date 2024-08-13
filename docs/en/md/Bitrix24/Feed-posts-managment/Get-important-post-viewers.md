@@ -9,14 +9,14 @@ sidebar_position: 4
 
 `Function GetImportantPostViewers(Val URL, Val PostID, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | PostID | --postid | String, Number | Id of important post |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | PostID | --postid | String, Number | Id of important post |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -27,39 +27,41 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 
 
 ```bsl title="Code example"
- PostID = "438";
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- 
- Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- 
- Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
+  PostID = FunctionParameters["Bitrix24_HookPostID"];
+  URL    = FunctionParameters["Bitrix24_URL"];
+  
+  Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "GetImportantPostViewers (wh)", "Bitrix24");
+  
+  URL   = FunctionParameters["Bitrix24_Domain"];
+  Token = FunctionParameters["Bitrix24_Token"];
+  
+  Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 GetImportantPostViewers --url "b24-ar17wx.bitrix24.by" --postid "122" --token "b9df7366006e9f06006b12e400000001000..."
+    
+  oint bitrix24 GetImportantPostViewers --url "b24-ar17wx.bitrix24.by" --postid "438" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": [
- "1"
- ],
- "time": {
- "start": 1718304109.47482,
- "finish": 1718304109.50417,
- "duration": 0.0293447971343994,
- "processing": 0.000212907791137695,
- "date_start": "2024-06-13T18:41:49+00:00",
- "date_finish": "2024-06-13T18:41:49+00:00",
- "operating_reset_at": 1718304709,
- "operating": 0
- }
-}
+  "result": [
+  "1"
+  ],
+  "time": {
+  "start": 1718304109.47482,
+  "finish": 1718304109.50417,
+  "duration": 0.0293447971343994,
+  "processing": 0.000212907791137695,
+  "date_start": "2024-06-13T18:41:49+00:00",
+  "date_finish": "2024-06-13T18:41:49+00:00",
+  "operating_reset_at": 1718304709,
+  "operating": 0
+  }
+  }
 ```

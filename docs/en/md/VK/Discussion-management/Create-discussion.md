@@ -9,14 +9,14 @@ sidebar_position: 1
 
 `Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Discussion name |
- | FirstMessageText | --text | String | Text of the first message |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Discussion name |
+  | FirstMessageText | --text | String | Text of the first message |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -24,23 +24,23 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- Name = "Discussing: Which color is better?";
- Message = "Red, yellow, blue, or some other?";
- 
- Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
+  Parameters = GetVKParameters();
+  Name       = "Discussing: Which color is better?";
+  Message    = "Red, yellow, blue, or some other?";
+  
+  Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk CreateDiscussion --title %title% --text %text% --auth %auth%
+    
+  oint vk CreateDiscussion --title "Discussing: Which color is better?" --text %text% --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": 51182455
-}
+  "response": 51182455
+  }
 ```

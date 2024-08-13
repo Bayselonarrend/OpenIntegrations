@@ -9,14 +9,14 @@ sidebar_position: 5
 
 `Function DeleteFolder(Val URL, Val FolderID, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | FolderID | --folderid | String, Number | ID of folder to be deleted |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | FolderID | --folderid | String, Number | ID of folder to be deleted |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -27,38 +27,40 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- FolderID = "5014";
- 
- Result = OPI_Bitrix24.DeleteFolder(URL, FolderID);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- FolderID = "5016";
- 
- Result = OPI_Bitrix24.DeleteFolder(URL, FolderID, Token);
+  URL      = FunctionParameters["Bitrix24_URL"];
+  FolderID = FunctionParameters["Bitrix24_HookFolderID"];
+  
+  Result = OPI_Bitrix24.DeleteFolder(URL, FolderID);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "DeleteFolder (wh)", "Bitrix24");
+  
+  URL      = FunctionParameters["Bitrix24_Domain"];
+  Token    = FunctionParameters["Bitrix24_Token"];
+  FolderID = FunctionParameters["Bitrix24_FolderID"];
+  
+  Result = OPI_Bitrix24.DeleteFolder(URL, FolderID, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 DeleteFolder --url "b24-ar17wx.bitrix24.by" --folderid "482" --token "b9df7366006e9f06006b12e400000001000..."
+    
+  oint bitrix24 DeleteFolder --url "b24-ar17wx.bitrix24.by" --folderid "5016" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": true,
- "time": {
- "start": 1719047257.50616,
- "finish": 1719047257.55445,
- "duration": 0.048285961151123,
- "processing": 0.0174880027770996,
- "date_start": "2024-06-22T09:07:37+00:00",
- "date_finish": "2024-06-22T09:07:37+00:00",
- "operating_reset_at": 1719047857,
- "operating": 0
- }
-}
+  "result": true,
+  "time": {
+  "start": 1719047257.50616,
+  "finish": 1719047257.55445,
+  "duration": 0.048285961151123,
+  "processing": 0.0174880027770996,
+  "date_start": "2024-06-22T09:07:37+00:00",
+  "date_finish": "2024-06-22T09:07:37+00:00",
+  "operating_reset_at": 1719047857,
+  "operating": 0
+  }
+  }
 ```

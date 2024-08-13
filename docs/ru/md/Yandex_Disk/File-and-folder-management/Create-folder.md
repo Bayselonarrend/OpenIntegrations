@@ -28,7 +28,7 @@ sidebar_position: 2
   
   Результат = OPI_YandexDisk.СоздатьПапку(Токен, Путь);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

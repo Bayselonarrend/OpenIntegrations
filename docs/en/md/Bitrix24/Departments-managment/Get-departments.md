@@ -9,17 +9,17 @@ sidebar_position: 3
 
 `Function GetDepartments(Val URL, Val DepartmentID = "", Val Name = "", Val ParentID = "", Val HeadID = "", Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | DepartmentID | --depid | String, Number | Selection by department ID |
- | Name | --title | String | Filter by name |
- | ParentID | --parentid | String, Number | Filter by parent ID |
- | HeadID | --headid | String, Number | Filter by manager ID |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | DepartmentID | --depid | String, Number | Selection by department ID |
+  | Name | --title | String | Filter by name |
+  | ParentID | --parentid | String, Number | Filter by parent ID |
+  | HeadID | --headid | String, Number | Filter by manager ID |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -30,47 +30,49 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- DepartmentID = "70";
- 
- Result = OPI_Bitrix24.GetDepartments(URL, DepartmentID);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- HeadID = 1;
- 
- Result = OPI_Bitrix24.GetDepartments(URL,,,, HeadID, Token);
+  URL          = FunctionParameters["Bitrix24_URL"];
+  DepartmentID = FunctionParameters["Bitrix24_DepID"];
+  
+  Result = OPI_Bitrix24.GetDepartments(URL, DepartmentID);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "GetDepartments (wh)", "Bitrix24");
+  
+  URL    = FunctionParameters["Bitrix24_Domain"];
+  Token  = FunctionParameters["Bitrix24_Token"];
+  HeadID = 1;
+  
+  Result = OPI_Bitrix24.GetDepartments(URL, , , , HeadID, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 GetDepartments --url %url% --depid %depid% --title %title% --parentid %parentid% --headid %headid% --token %token%
+    
+  oint bitrix24 GetDepartments --url "b24-ar17wx.bitrix24.by" --depid "70" --title %title% --parentid %parentid% --headid "1" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": [
- {
- "ID": "42",
- "NAME": "Subordinate department",
- "SORT": 500,
- "PARENT": "40",
- "UF_HEAD": "1"
- }
- ],
- "total": 1,
- "time": {
- "start": 1722171478.80371,
- "finish": 1722171478.83794,
- "duration": 0.034229040145874,
- "processing": 0.00419092178344727,
- "date_start": "2024-07-28T12:57:58+00:00",
- "date_finish": "2024-07-28T12:57:58+00:00",
- "operating_reset_at": 1722172078,
- "operating": 0
- }
-}
+  "result": [
+  {
+  "ID": "42",
+  "NAME": "Subordinate department",
+  "SORT": 500,
+  "PARENT": "40",
+  "UF_HEAD": "1"
+  }
+  ],
+  "total": 1,
+  "time": {
+  "start": 1722171478.80371,
+  "finish": 1722171478.83794,
+  "duration": 0.034229040145874,
+  "processing": 0.00419092178344727,
+  "date_start": "2024-07-28T12:57:58+00:00",
+  "date_finish": "2024-07-28T12:57:58+00:00",
+  "operating_reset_at": 1722172078,
+  "operating": 0
+  }
+  }
 ```

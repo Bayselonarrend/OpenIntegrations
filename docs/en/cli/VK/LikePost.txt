@@ -1,0 +1,1 @@
+﻿oint vk LikePost --post "3356" --wall %wall% --auth "GetVKParameters()"

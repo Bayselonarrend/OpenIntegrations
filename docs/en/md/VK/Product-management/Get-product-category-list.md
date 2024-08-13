@@ -9,12 +9,12 @@ sidebar_position: 1
 
 `Function GetProductCategoryList(Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of String - Key - ID, Value - Name
+  
+  Returns:  Map Of String - Key - ID, Value - Name
 
 <br/>
 
@@ -22,23 +22,23 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- 
- Result = OPI_VK.GetProductCategoryList(Parameters);
+  Parameters = GetVKParameters();
+  
+  Result = OPI_VK.GetProductCategoryList(Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk GetProductCategoryList --auth %auth%
+    
+  oint vk GetProductCategoryList --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 Key Value
- 1210	"Business"
- 1200	"Photo and video service"
- 2162	"Repair and building"
- ...
+  1210	"Business"
+  1200	"Photo and video service"
+  2162	"Repair and building"
+  ...
 ```

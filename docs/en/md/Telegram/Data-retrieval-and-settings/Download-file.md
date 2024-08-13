@@ -9,13 +9,13 @@ sidebar_position: 5
 
 `Function DownloadFile(Val Token, Val FileID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | FileID | --fileid | String | File ID for downloading |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | FileID | --fileid | String | File ID for downloading |
 
- 
- Returns: BinaryData - file's binary data
+  
+  Returns:  BinaryData - file's binary data
 
 <br/>
 
@@ -23,17 +23,17 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- FileID = "CQACAgIAAx0EcNsaZQACGsRmqTObImcQhvZfQC9f7KStfGzIWwACJFYAAjcMSUk5-shFORxZRjUE";
- Token = "6129457865:AAFyzNYOAFbu...";
- 
- Result = OPI_Telegram.DownloadFile(Token, FileID);
+  FileID = FunctionParameters["Telegram_FileID"];
+  Token  = FunctionParameters["Telegram_Token"];
+  
+  Result = OPI_Telegram.DownloadFile(Token, FileID);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint telegram DownloadFile --token "6129457865:AAFyzNYOAFbu..." --fileid "AgACAgIAAx0EcNsaZQACE1lmXraQ7CsFNZ2Jrqimp9A0ir3mQQACmtkxG77-sUoMcnd_RvALsgEAAwIAA3MAAzUE"
+    
+  oint telegram DownloadFile --token "6129457865:AAFyzNYOAFbu..." --fileid "CQACAgIAAx0EcNsaZQACGsRmqTObImcQhvZfQC9f7KStfGzIWwACJFYAAjcMSUk5-shFORxZRjUE"
 
 ```
 

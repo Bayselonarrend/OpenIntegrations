@@ -1,0 +1,1 @@
+﻿oint bitrix24 UploadFileToStorage --url "b24-ar17wx.bitrix24.by" --title "Picture1.jpg" --file %file% --storageid %storageid% --rights %rights% --token "fe3fa966006e9f06006b12e400000001000..."

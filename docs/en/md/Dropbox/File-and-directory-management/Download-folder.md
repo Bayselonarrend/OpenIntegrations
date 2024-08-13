@@ -9,13 +9,13 @@ sidebar_position: 12
 
 `Function DownloadFolder(Val Token, Val Path) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | Path | --path | String | Path or ID of the directory |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | Path | --path | String | Path or ID of the directory |
 
- 
- Returns: BinaryData - binary data of the zip archive with the contents of the directory
+  
+  Returns:  BinaryData - binary data of the zip archive with the contents of the directory
 
 <br/>
 
@@ -23,17 +23,17 @@ sidebar_position: 12
 
 
 ```bsl title="Code example"
- Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
- Path = "/New";
- 
- Result = OPI_Dropbox.DownloadFolder(Token, Path);
+  Token = FunctionParameters["Dropbox_Token"];
+  Path  = "/New";
+  
+  Result = OPI_Dropbox.DownloadFolder(Token, Path);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint dropbox DownloadFolder --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path%
+    
+  oint dropbox DownloadFolder --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --path %path%
 
 ```
 

@@ -1,0 +1,1 @@
+﻿oint yadisk DownloadFile --token %token% --path "/alpaca.png" --out %out%
