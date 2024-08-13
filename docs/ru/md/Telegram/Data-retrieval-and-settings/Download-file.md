@@ -28,7 +28,7 @@ sidebar_position: 5
   
   Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

@@ -24,7 +24,7 @@ sidebar_position: 8
 ```bsl title="Пример кода"
 
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

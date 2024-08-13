@@ -33,7 +33,7 @@ sidebar_position: 7
   
   OPI_Инструменты.Пауза(5);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

@@ -25,7 +25,7 @@ sidebar_position: 1
   Токен       = "6129457865:AAFyzNYOAFbu...";
   Результат   = OPI_Telegram.ПолучитьИнформациюБота(Токен);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

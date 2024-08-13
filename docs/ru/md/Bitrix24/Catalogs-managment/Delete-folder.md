@@ -38,7 +38,7 @@ sidebar_position: 5
   
   Результат = OPI_Bitrix24.УдалитьКаталог(URL, IDКаталога, Токен);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"
