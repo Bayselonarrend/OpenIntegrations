@@ -1,5 +1,5 @@
 ﻿    Путь  = "/New/url_doc.docx";
-    Токен = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-    URL   = "https://openintegrations.dev/test_data/document.docx";
+    Токен = ПараметрыФункции["Dropbox_Token"];
+    URL   = ПараметрыФункции["Document"];
 
     Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
