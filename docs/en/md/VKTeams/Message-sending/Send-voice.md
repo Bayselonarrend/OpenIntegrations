@@ -32,12 +32,12 @@ If you want the client to display this file as a playable voice message, it must
 
 
 ```bsl title="Code example"
-  Token   = FunctionParameters["VkTeams_Token"];
-  ChatID  = FunctionParameters["VkTeams_ChatID2"];
-  ReplyID = FunctionParameters["VkTeams_MessageID"];
+  Token   = "001.3501506236.091...";
+  ChatID  = "689203963@chat.agent";
+  ReplyID = "7402287649739767956";
   Text    = "File caption";
   
-  File     = FunctionParameters["Audio2"] ; // URL
+  File     = "https://openintegrations.dev/test_data/song.m4a" ; // URL
   FilePath = GetTempFileName("m4a"); // Path
   
   CopyFile(File, FilePath);
@@ -46,11 +46,7 @@ If you want the client to display this file as a playable voice message, it must
   
   Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (URL)", "VkTeams");
-  
   Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, ,ReplyID);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (Path)", "VkTeams");
   
   Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
 ```

@@ -29,15 +29,13 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
 
 ```bsl title="Code example"
   Visibility = "UA";
-  PostID     = FunctionParameters["Bitrix24_PostID"];
-  URL        = FunctionParameters["Bitrix24_URL"];
+  PostID     = "440";
+  URL        = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   
   Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "AddPostRecipients (wh)", "Bitrix24");
-  
-  URL   = FunctionParameters["Bitrix24_Domain"];
-  Token = FunctionParameters["Bitrix24_Token"];
+  URL   = "b24-ar17wx.bitrix24.by";
+  Token = "fe3fa966006e9f06006b12e400000001000...";
   
   Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility, Token);
 ```

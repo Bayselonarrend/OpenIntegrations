@@ -27,15 +27,13 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="Code example"
-  URL    = FunctionParameters["Bitrix24_URL"];
-  TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+  TaskID = "1082";
   
   Result = OPI_Bitrix24.GetResultsList(URL, TaskID);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "GetResultsList (wh)", "Bitrix24");
-  
-  URL   = FunctionParameters["Bitrix24_Domain"];
-  Token = FunctionParameters["Bitrix24_Token"];
+  URL   = "b24-ar17wx.bitrix24.by";
+  Token = "fe3fa966006e9f06006b12e400000001000...";
   
   Result = OPI_Bitrix24.GetResultsList(URL, TaskID, Token);
 ```

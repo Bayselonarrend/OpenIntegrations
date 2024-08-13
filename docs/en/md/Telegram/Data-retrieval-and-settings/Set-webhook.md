@@ -23,8 +23,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Token = FunctionParameters["Telegram_Token"];
-  URL   = FunctionParameters["Telegram_URL"];
+  Token = "6129457865:AAFyzNYOAFbu...";
+  URL   = "https://api.athenaeum.digital/opi/hs/twitter";
   
   Result = OPI_Telegram.SetWebhook(Token, URL);
 ```

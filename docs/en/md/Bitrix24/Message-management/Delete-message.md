@@ -27,16 +27,14 @@ Method at API documentation: [im.message.delete](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
-  URL       = FunctionParameters["Bitrix24_URL"];
-  MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+  MessageID = "8682";
   
   Result = OPI_Bitrix24.DeleteMessage(URL, MessageID);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage (wh)", "Bitrix24");
-  
-  URL       = FunctionParameters["Bitrix24_Domain"];
-  Token     = FunctionParameters["Bitrix24_Token"];
-  MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+  URL       = "b24-ar17wx.bitrix24.by";
+  Token     = "fe3fa966006e9f06006b12e400000001000...";
+  MessageID = "8684";
   
   Result = OPI_Bitrix24.DeleteMessage(URL, MessageID, Token);
 ```

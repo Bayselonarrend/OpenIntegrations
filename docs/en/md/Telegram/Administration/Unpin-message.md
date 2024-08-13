@@ -24,9 +24,9 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
-  MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  ChannelID = "@testsichee";
+  MessageID = "6846";
   
   Result = OPI_Telegram.UnpinMessage(Token, ChannelID, MessageID);
 ```

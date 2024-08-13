@@ -23,8 +23,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  FileID = FunctionParameters["Telegram_FileID"];
-  Token  = FunctionParameters["Telegram_Token"];
+  FileID = "CQACAgIAAx0EcNsaZQACGsRmqTObImcQhvZfQC9f7KStfGzIWwACJFYAAjcMSUk5-shFORxZRjUE";
+  Token  = "6129457865:AAFyzNYOAFbu...";
   
   Result = OPI_Telegram.DownloadFile(Token, FileID);
 ```

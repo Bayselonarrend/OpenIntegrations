@@ -28,11 +28,11 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  Token     = FunctionParameters["Telegram_Token"];
-  ChatID    = FunctionParameters["Telegram_ChatID"];
-  ChannelID = FunctionParameters["Telegram_ChannelID"];
-  Text      = FunctionParameters["String"];
-  Document  = FunctionParameters["Document"];
+  Token     = "6129457865:AAFyzNYOAFbu...";
+  ChatID    = "461699897";
+  ChannelID = "@testsichee";
+  Text      = "Строковое значение";
+  Document  = "https://openintegrations.dev/test_data/document.docx";
   
   DocumentPath = GetTempFileName("docx");
   CopyFile(Document, DocumentPath);
@@ -41,15 +41,9 @@ sidebar_position: 5
   
   Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendDocument", "Telegram");
-  
   Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendDocument (with name)", "Telegram");
-  
   Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "SendDocument (Path)");
   
   Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");
 ```

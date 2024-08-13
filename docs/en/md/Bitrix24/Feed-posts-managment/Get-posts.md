@@ -28,15 +28,13 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-  PostID = FunctionParameters["Bitrix24_PostID"];
-  URL    = FunctionParameters["Bitrix24_URL"];
+  PostID = "440";
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   
   Result = OPI_Bitrix24.GetPosts(URL, PostID);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "GetPosts (wh)", "Bitrix24");
-  
-  URL   = FunctionParameters["Bitrix24_Domain"];
-  Token = FunctionParameters["Bitrix24_Token"];
+  URL   = "b24-ar17wx.bitrix24.by";
+  Token = "fe3fa966006e9f06006b12e400000001000...";
   
   Result = OPI_Bitrix24.GetPosts(URL, PostID, , Token);
 ```

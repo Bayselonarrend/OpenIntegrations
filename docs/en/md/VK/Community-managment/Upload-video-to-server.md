@@ -28,7 +28,7 @@ sidebar_position: 10
 ```bsl title="Code example"
   Parameters = GetVKParameters();
   
-  Video       = FunctionParameters["Video"];
+  Video       = "https://openintegrations.dev/test_data/video.mp4";
   Name        = "NewVideo";
   Description = "Video description";
   
