@@ -1,0 +1,7 @@
+﻿  
+  ImageArray = New Array;
+  ImageArray.Add("C:\1.gif");
+  ImageArray.Add("C:\2.gif");
+  
+  Response = OPI_Twitter.CreateGifTweet("Gifs", ImageArray, Parameters);
+  Response = OPI_Tools.JSONString(Response);

@@ -1,0 +1,7 @@
+﻿  
+  NewName = "CopiedFile.jpeg";
+  NewLocation = "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ";
+  Identifier = "1F8pfXPgltiOG2fPv88uStwegYj1tRoFk";
+  
+  Response = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, NewLocation) //Map
+  Response = OPI_Tools.JSONString(Response); //String

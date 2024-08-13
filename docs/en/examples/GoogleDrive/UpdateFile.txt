@@ -1,0 +1,7 @@
+﻿  
+  NewName = "Updated file.jpeg";
+  ReplacementImage = "C:\OPI\image2.jpg";
+  Identifier = "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ";
+  
+  Response = OPI_GoogleDrive.UpdateFile(Token, Identifier, ReplacementImage, NewName) //Map
+  Response = OPI_Tools.JSONString(Response); //String

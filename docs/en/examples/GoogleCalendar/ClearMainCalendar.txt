@@ -1,0 +1,2 @@
+﻿  
+  Response = OPI_GoogleCalendar.ClearMainCalendar(Token);

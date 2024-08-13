@@ -1,0 +1,17 @@
+﻿  
+  Base = "apptm8Xqo7TwMaipQ";
+  TableName = "TestTable2";
+  Description = "NewTable";
+  
+  FieldArray = New Array;
+  FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
+  FieldArray.Add(OPI_Airtable.GetStringField("String"));
+  FieldArray.Add(OPI_Airtable.GetAttachmentField("Attachment"));
+  FieldArray.Add(OPI_Airtable.GetCheckboxField("Checkbox"));
+  FieldArray.Add(OPI_Airtable.GetDateField("Date"));
+  FieldArray.Add(OPI_Airtable.GetPhoneField("Phone"));
+  FieldArray.Add(OPI_Airtable.GetEmailField("Email"));
+  FieldArray.Add(OPI_Airtable.GetLinkField("Link"));
+  
+  Response = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

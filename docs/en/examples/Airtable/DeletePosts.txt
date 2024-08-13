@@ -1,0 +1,10 @@
+﻿  
+  Base = "apptm8Xqo7TwMaipQ";
+  Table = "tbl9G4jVoTJpxYwSY";
+  
+  Records = New Array;
+  Records.Add("recjHNKNZBWLZkZ7A");
+  Records.Add("recGyJ0MlN1H3GMuN");
+  
+  Response = OPI_Airtable.DeletePosts(Token, Base, Table, Record); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

@@ -1,0 +1,10 @@
+﻿  {
+  "name": "Date",
+  "type": "date",
+  "options": {
+  "dateFormat": {
+  "format": "YYYY-MM-DD",
+  "name": "iso"
+  }
+  }
+  }

@@ -1,0 +1,6 @@
+﻿  
+  User = "U06UG1CAYH2";
+  Channel = "C070VPMKN8J";
+  
+  Response = OPI_Slack.KickUserFromChannel(Token, Channel, User); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

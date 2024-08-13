@@ -1,0 +1,9 @@
+﻿  
+  Base = "apptm8Xqo7TwMaipQ";
+  Table = "tbl9G4jVoTJpxYwSY";
+  Record = "recV6DxeLQMBNJrUk";
+  Comment = "comL1oGEDJvIQlMs1";
+  Text = "Test comment (change.)";
+  
+  Response = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

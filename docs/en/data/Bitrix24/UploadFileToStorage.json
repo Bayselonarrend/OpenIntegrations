@@ -1,0 +1,9 @@
+{
+"Filename2": "Picture2.jpg",
+"Name": "Picture1.jpg",
+"Image2": "https://openintegrations.dev/test_data/picture.jpg // Local path, URL or Binary Data",
+"Image": "https://openintegrations.dev/test_data/picture2.jpg // Local path, URL or Binary Data",
+"DestinationID": "3",
+"URL": "b24-ar17wx.bitrix24.by",
+"Token": "fe3fa966006e9f06006b12e400000001000..."
+}

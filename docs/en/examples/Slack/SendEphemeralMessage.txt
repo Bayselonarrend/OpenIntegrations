@@ -1,0 +1,6 @@
+﻿  
+  Channel = "C070VPMKN8J";
+  Block = OPI_Slack.GenerateImageBlock("https://opi.neocities.org/test_data/picture.jpg", "Image");
+  
+  Response = OPI_Slack.SendEphemeralMessage(Token, Channel,, User, Block); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

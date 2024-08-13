@@ -1,0 +1,7 @@
+﻿  
+  ImageArray = New Array;
+  ImageArray.Add("C:\logo.png");
+  ImageArray.Add("C:\logo_long.png");
+  
+  Response = OPI_Twitter.CreateImageTweet("Alpaca", ImageArray, Parameters);
+  Response = OPI_Tools.JSONString(Response);

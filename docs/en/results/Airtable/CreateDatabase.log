@@ -1,0 +1,32 @@
+﻿  {
+  "id": "applEsyJmBRm12AuN",
+  "tables": [
+  {
+  "id": "tblqZzW78Rvsdt9gt",
+  "name": "TestTable",
+  "primaryFieldId": "fldj9Z3fEpLzv40d0",
+  "fields": [
+  {
+  "type": "number",
+  "options": {
+  "precision": 0
+  },
+  "id": "fldj9Z3fEpLzv40d0",
+  "name": "Number"
+  },
+  {
+  "type": "richText",
+  "id": "fldX1kR7lienmcdEj",
+  "name": "String"
+  }
+  ],
+  "views": [
+  {
+  "id": "viwbKE3PS9jl6bqJl",
+  "name": "Grid view",
+  "type": "grid"
+  }
+  ]
+  }
+  ]
+  }

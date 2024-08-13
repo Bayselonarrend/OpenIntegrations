@@ -1,0 +1,14 @@
+﻿  
+  BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
+  UserID = "d3jxe1111111111jYGgZg==";
+  
+  ButtonArray = New Array;
+  
+  ButtonArray.Add("Button 1");
+  ButtonArray.Add("Button 2");
+  ButtonArray.Add("Button 3");
+  
+  Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
+  
+  Response = OPI_Viber.SendTextMessage(BotToken, "Hello", UserID, False, Keyboard); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

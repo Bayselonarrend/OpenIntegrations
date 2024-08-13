@@ -1,0 +1,7 @@
+﻿  {
+  "name": "Number",
+  "type": "number",
+  "options": {
+  "precision": 0
+  }
+  }

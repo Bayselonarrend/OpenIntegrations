@@ -1,0 +1,3 @@
+﻿  
+  Response = OPI_Viber.GetOnlineUsers(Token, UserID); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
