@@ -30,22 +30,22 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
 
 
 ```bsl title="Code example"
-  Token  = "001.3501506236.091...";
-  ChatID = "AoLI0egLWBSLR1Ngn2w";
-  Text   = "File caption";
-  
-  File     = "https://openintegrations.dev/test_data/document.docx"; // URL
-  FilePath = GetTempFileName("docx"); // Path
-  
-  CopyFile(File, FilePath);
-  
-  FileBD = New BinaryData(FilePath); // Binary
-  
-  Result = OPI_VKTeams.SendFile(Token, ChatID, File);
-  
-  Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
-  
-  Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
+    Token  = "001.3501506236.091...";
+    ChatID = "AoLI0egLWBSLR1Ngn2w";
+    Text   = "File caption";
+
+    File     = "https://openintegrations.dev/test_data/document.docx"; // URL
+    FilePath = GetTempFileName("docx"); // Path
+
+    CopyFile(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File);
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
 ```
 
 

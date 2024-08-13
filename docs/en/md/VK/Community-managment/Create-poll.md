@@ -25,15 +25,15 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  Question   = "What's your favorite color?";
-  
-  OptionArray = New Array;
-  OptionArray.Add("Red");
-  OptionArray.Add("Yellow");
-  OptionArray.Add("Green");
-  
-  Result = OPI_VK.CreatePoll(Question, OptionArray, , Parameters);
+    Parameters = GetVKParameters();
+    Question   = "What's your favorite color?";
+
+    OptionArray = New Array;
+    OptionArray.Add("Red");
+    OptionArray.Add("Yellow");
+    OptionArray.Add("Green");
+
+    Result = OPI_VK.CreatePoll(Question, OptionArray, , Parameters);
 ```
 
 

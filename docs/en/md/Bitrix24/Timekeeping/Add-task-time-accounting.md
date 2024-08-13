@@ -31,28 +31,28 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  TaskID = "1088";
-  
-  Time = 3600;
-  
-  Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Text      = "Time spent on work";
-  UserID    = 10;
-  Time      = 7200;
-  SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
-  
-  Result = OPI_Bitrix24.AddTaskTimeAccounting(URL
-  , TaskID
-  , Time
-  , UserID
-  , Text
-  , SetupDate
-  , Token);
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    TaskID = "1088";
+
+    Time = 3600;
+
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Text      = "Time spent on work";
+    UserID    = 10;
+    Time      = 7200;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+
+    Result = OPI_Bitrix24.AddTaskTimeAccounting(URL
+        , TaskID
+        , Time
+        , UserID
+        , Text
+        , SetupDate
+        , Token);
 ```
 
 

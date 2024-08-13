@@ -29,19 +29,19 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 
 
 ```bsl title="Code example"
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.StartTimekeeping(URL);
-  
-  Hour = 3600;
-  
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  UserID = 1;
-  Time   = OPI_Tools.GetCurrentDate() - Hour;
-  Report = "Late";
-  
-  Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, );
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.StartTimekeeping(URL);
+
+    Hour = 3600;
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    UserID = 1;
+    Time   = OPI_Tools.GetCurrentDate() - Hour;
+    Report = "Late";
+
+    Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, );
 ```
 
 

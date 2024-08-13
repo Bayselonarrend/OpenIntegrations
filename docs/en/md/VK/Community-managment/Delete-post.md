@@ -23,10 +23,10 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  PostID     = "3356";
-  
-  Result = OPI_VK.DeletePost(PostID, Parameters);
+    Parameters = GetVKParameters();
+    PostID     = "3356";
+
+    Result = OPI_VK.DeletePost(PostID, Parameters);
 ```
 
 

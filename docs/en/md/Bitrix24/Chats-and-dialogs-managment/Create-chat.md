@@ -27,38 +27,38 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 
 
 ```bsl title="Code example"
-  Image = "https://openintegrations.dev/test_data/picture.jpg";
-  OPI_TypeConversion.GetBinaryData(Image);
-  
-  B64Image = GetBase64StringFromBinaryData(Image);
-  
-  MembersArray = New Array;
-  MembersArray.Add(10);
-  MembersArray.Add(1);
-  
-  ChatStructure = New Structure;
-  ChatStructure.Insert("TYPE"       , "OPEN");
-  ChatStructure.Insert("TITLE"      , "New chat");
-  ChatStructure.Insert("DESCRIPTION", "This is a new chat");
-  ChatStructure.Insert("COLOR"      , "GREEN");
-  ChatStructure.Insert("MESSAGE"    , "Welcome to new chat");
-  ChatStructure.Insert("USERS"      , MembersArray);
-  ChatStructure.Insert("AVATAR"     , B64Image);
-  ChatStructure.Insert("OWNER_ID"   , 1);
-  
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  ChatStructure = New Structure;
-  ChatStructure.Insert("TYPE"  , "CHAT");
-  ChatStructure.Insert("TITLE" , "Private chat");
-  ChatStructure.Insert("USERS" , MembersArray);
-  
-  Result = OPI_Bitrix24.CreateChat(URL, ChatStructure, Token);
+    Image = "https://openintegrations.dev/test_data/picture.jpg";
+    OPI_TypeConversion.GetBinaryData(Image);
+
+    B64Image = GetBase64StringFromBinaryData(Image);
+
+    MembersArray = New Array;
+    MembersArray.Add(10);
+    MembersArray.Add(1);
+
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE"       , "OPEN");
+    ChatStructure.Insert("TITLE"      , "New chat");
+    ChatStructure.Insert("DESCRIPTION", "This is a new chat");
+    ChatStructure.Insert("COLOR"      , "GREEN");
+    ChatStructure.Insert("MESSAGE"    , "Welcome to new chat");
+    ChatStructure.Insert("USERS"      , MembersArray);
+    ChatStructure.Insert("AVATAR"     , B64Image);
+    ChatStructure.Insert("OWNER_ID"   , 1);
+
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    ChatStructure = New Structure;
+    ChatStructure.Insert("TYPE"  , "CHAT");
+    ChatStructure.Insert("TITLE" , "Private chat");
+    ChatStructure.Insert("USERS" , MembersArray);
+
+    Result = OPI_Bitrix24.CreateChat(URL, ChatStructure, Token);
 ```
 
 

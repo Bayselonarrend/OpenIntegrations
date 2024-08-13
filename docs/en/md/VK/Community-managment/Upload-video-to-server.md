@@ -26,13 +26,13 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  
-  Video       = "https://openintegrations.dev/test_data/video.mp4";
-  Name        = "NewVideo";
-  Description = "Video description";
-  
-  Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
+    Parameters = GetVKParameters();
+
+    Video       = "https://openintegrations.dev/test_data/video.mp4";
+    Name        = "NewVideo";
+    Description = "Video description";
+
+    Result = OPI_VK.UploadVideoToServer(Video, Name, Description, , Parameters);
 ```
 
 

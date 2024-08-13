@@ -27,22 +27,22 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "461699897";
-  ChannelID = "@testsichee";
-  Text      = "Строковое значение";
-  Video     = "https://openintegrations.dev/test_data/video.mp4";
-  
-  VideoPath = GetTempFileName("mp4");
-  CopyFile(Video, VideoPath);
-  
-  VideoDD = New BinaryData(VideoPath);
-  
-  Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
-  
-  Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
-  
-  Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+    Video     = "https://openintegrations.dev/test_data/video.mp4";
+
+    VideoPath = GetTempFileName("mp4");
+    CopyFile(Video, VideoPath);
+
+    VideoDD = New BinaryData(VideoPath);
+
+    Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
+
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
+
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
 ```
 
 

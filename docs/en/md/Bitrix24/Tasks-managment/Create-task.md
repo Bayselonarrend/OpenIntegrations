@@ -27,28 +27,28 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
 
 
 ```bsl title="Code example"
-  // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
-  
-  CurrentDate = OPI_Tools.GetCurrentDate();
-  Hour        = 3600;
-  Day         = 24;
-  Responsible = 1;
-  
-  TaskData = New Structure;
-  TaskData.Insert("TITLE"         , "New task");
-  TaskData.Insert("DESCRIPTION"   , "New task description");
-  TaskData.Insert("PRIORITY"      , "2");
-  TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
-  TaskData.Insert("RESPONSIBLE_ID", Responsible);
-  
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.CreateTask(URL, TaskData);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);
+    // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Hour        = 3600;
+    Day         = 24;
+    Responsible = 1;
+
+    TaskData = New Structure;
+    TaskData.Insert("TITLE"         , "New task");
+    TaskData.Insert("DESCRIPTION"   , "New task description");
+    TaskData.Insert("PRIORITY"      , "2");
+    TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
+    TaskData.Insert("RESPONSIBLE_ID", Responsible);
+
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);
 ```
 
 

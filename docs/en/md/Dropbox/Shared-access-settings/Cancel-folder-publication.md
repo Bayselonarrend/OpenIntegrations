@@ -23,18 +23,18 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  Token  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  Folder = "3417285987";
-  
-  Result        = OPI_Dropbox.CancelFolderPublication(Token, Folder);
-  CurrentStatus = "in_progress";
-  JobID         = Result["async_job_id"];
-  
-  WHile CurrentStatus = "in_progress" Do
-  Result          = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
-  CurrentStatus   = Result[".tag"];
-  OPI_Tools.Pause(3);
-  EndDo;
+    Token  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Folder = "3417285987";
+
+    Result        = OPI_Dropbox.CancelFolderPublication(Token, Folder);
+    CurrentStatus = "in_progress";
+    JobID         = Result["async_job_id"];
+
+    WHile CurrentStatus = "in_progress" Do
+        Result          = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
+        CurrentStatus   = Result[".tag"];
+        OPI_Tools.Pause(3);
+    EndDo;
 ```
 
 

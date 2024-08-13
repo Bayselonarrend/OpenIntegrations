@@ -24,13 +24,13 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  
-  CurrentDate = OPI_Tools.GetCurrentDate();
-  StartDate   = BegOfDay(CurrentDate);
-  EndDate     = EndOfDay(StartDate);
-  
-  Result = OPI_VK.GetStatistics(StartDate, EndDate, Parameters);
+    Parameters = GetVKParameters();
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    StartDate   = BegOfDay(CurrentDate);
+    EndDate     = EndOfDay(StartDate);
+
+    Result = OPI_VK.GetStatistics(StartDate, EndDate, Parameters);
 ```
 
 

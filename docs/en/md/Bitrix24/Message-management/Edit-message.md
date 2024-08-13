@@ -29,25 +29,25 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
-  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  MessageID = "8682";
-  
-  Text = "New message text";
-  
-  Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
-  
-  URL       = "b24-ar17wx.bitrix24.by";
-  Token     = "fe3fa966006e9f06006b12e400000001000...";
-  MessageID = "8684";
-  
-  Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
-  File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
-  
-  Attachments = New Array;
-  Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
-  Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
-  
-  Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    MessageID = "8682";
+
+    Text = "New message text";
+
+    Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
+
+    URL       = "b24-ar17wx.bitrix24.by";
+    Token     = "fe3fa966006e9f06006b12e400000001000...";
+    MessageID = "8684";
+
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+
+    Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);
 ```
 
 

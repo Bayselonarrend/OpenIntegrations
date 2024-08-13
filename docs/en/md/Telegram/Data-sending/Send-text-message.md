@@ -27,14 +27,14 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "461699897";
-  ChannelID = "@testsichee";
-  Text      = "Строковое значение";
-  
-  Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
-  
-  Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+
+    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
+
+    Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
 ```
 
 

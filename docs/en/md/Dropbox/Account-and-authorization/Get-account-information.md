@@ -23,9 +23,9 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  
-  Result = OPI_Dropbox.GetAccountInformation(Token);
+    Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+
+    Result = OPI_Dropbox.GetAccountInformation(Token);
 ```
 
 

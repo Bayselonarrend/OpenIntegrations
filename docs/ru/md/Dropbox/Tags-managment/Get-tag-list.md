@@ -23,13 +23,13 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  Токен = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  
-  МассивПутей = Новый Массив;
-  МассивПутей.Добавить("/New/Dogs.mp3");
-  МассивПутей.Добавить("/New/mydoc.docx");
-  
-  Результат = OPI_Dropbox.ПолучитьСписокТегов(Токен, МассивПутей);
+    Токен = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+
+    МассивПутей = Новый Массив;
+    МассивПутей.Добавить("/New/Dogs.mp3");
+    МассивПутей.Добавить("/New/mydoc.docx");
+
+    Результат = OPI_Dropbox.ПолучитьСписокТегов(Токен, МассивПутей);
 ```
 
 

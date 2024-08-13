@@ -22,11 +22,11 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  ButtonArray = New Array;
-  ButtonArray.Add("Button 1");
-  ButtonArray.Add("Button 2");
-  
-  Keyboard = OPI_VK.FormKeyboard(ButtonArray);
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+
+    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
 ```
 
 

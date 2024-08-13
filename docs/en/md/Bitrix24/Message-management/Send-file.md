@@ -29,30 +29,30 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
-  URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  ChatID      = "450";
-  File        = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
-  Description = "Very important file";
-  
-  Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
-  FolderID  = Directory["result"]["ID"];
-  
-  UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID);
-  FileID       = UploadedFile["result"]["ID"];
-  
-  Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
-  
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  ChatID = "452";
-  
-  Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
-  FolderID  = Directory["result"]["ID"];
-  
-  UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID, Token);
-  FileID       = UploadedFile["result"]["ID"];
-  
-  Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description, Token);
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    ChatID      = "450";
+    File        = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
+    Description = "Very important file";
+
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
+    FolderID  = Directory["result"]["ID"];
+
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID);
+    FileID       = UploadedFile["result"]["ID"];
+
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    ChatID = "452";
+
+    Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
+    FolderID  = Directory["result"]["ID"];
+
+    UploadedFile = OPI_Bitrix24.UploadFileToFolder(URL, "Imortant doc.docx", File, FolderID, Token);
+    FileID       = UploadedFile["result"]["ID"];
+
+    Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description, Token);
 ```
 
 

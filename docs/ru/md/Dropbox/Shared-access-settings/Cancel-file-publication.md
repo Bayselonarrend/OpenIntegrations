@@ -23,10 +23,10 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  Токен    = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  Файл     = "kJU6-a-pT48AAAAAAAAABw";
-  
-  Результат = OPI_Dropbox.ОтменитьПубликациюФайла(Токен, Файл);
+    Токен    = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Файл     = "kJU6-a-pT48AAAAAAAAABw";
+
+    Результат = OPI_Dropbox.ОтменитьПубликациюФайла(Токен, Файл);
 ```
 
 

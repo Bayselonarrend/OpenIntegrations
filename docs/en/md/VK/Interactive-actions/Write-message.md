@@ -26,18 +26,18 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  
-  Text           = "Message from autotest";
-  UserID         = "657846756";
-  Communitytoken = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8I...";
-  
-  ButtonArray = New Array;
-  ButtonArray.Add("Button 1");
-  ButtonArray.Add("Button 2");
-  
-  Keyboard = OPI_VK.FormKeyboard(ButtonArray);
-  Result   = OPI_VK.WriteMessage(Text, UserID, Communitytoken, Keyboard, Parameters);
+    Parameters = GetVKParameters();
+
+    Text           = "Message from autotest";
+    UserID         = "657846756";
+    Communitytoken = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8I...";
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+
+    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
+    Result   = OPI_VK.WriteMessage(Text, UserID, Communitytoken, Keyboard, Parameters);
 ```
 
 

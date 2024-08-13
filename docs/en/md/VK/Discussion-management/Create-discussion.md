@@ -24,11 +24,11 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  Name       = "Discussing: Which color is better?";
-  Message    = "Red, yellow, blue, or some other?";
-  
-  Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
+    Parameters = GetVKParameters();
+    Name       = "Discussing: Which color is better?";
+    Message    = "Red, yellow, blue, or some other?";
+
+    Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
 ```
 
 
