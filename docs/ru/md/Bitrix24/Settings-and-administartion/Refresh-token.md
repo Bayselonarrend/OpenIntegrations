@@ -30,7 +30,7 @@ sidebar_position: 3
   
   Результат = OPI_Bitrix24.ОбновитьТокен(ClientID, ClientSecret, Refresh);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

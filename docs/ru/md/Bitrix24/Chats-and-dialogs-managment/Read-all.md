@@ -35,7 +35,7 @@ sidebar_position: 19
   
   Результат = OPI_Bitrix24.ПрочитатьВсе(URL, Токен);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

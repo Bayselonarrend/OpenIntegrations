@@ -9,13 +9,13 @@ sidebar_position: 1
 
 `Function GetStoragesList(Val URL, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -26,100 +26,102 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- Result = OPI_Bitrix24.GetStoragesList(URL);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- 
- Result = OPI_Bitrix24.GetStoragesList(URL, Token);
+  URL    = FunctionParameters["Bitrix24_URL"];
+  Result = OPI_Bitrix24.GetStoragesList(URL);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "GetStoragesList (wh)", "Bitrix24");
+  
+  URL   = FunctionParameters["Bitrix24_Domain"];
+  Token = FunctionParameters["Bitrix24_Token"];
+  
+  Result = OPI_Bitrix24.GetStoragesList(URL, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 GetStoragesList --url "b24-ar17wx.bitrix24.by" --token "b9df7366006e9f06006b12e400000001000..."
+    
+  oint bitrix24 GetStoragesList --url "b24-ar17wx.bitrix24.by" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": [
- {
- "ID": "3",
- "NAME": "Main drive",
- "CODE": null,
- "MODULE_ID": "disk",
- "ENTITY_TYPE": "common",
- "ENTITY_ID": "shared_files_s1",
- "ROOT_OBJECT_ID": "3"
- },
- {
- "ID": "1",
- "NAME": "Anton Titovets",
- "CODE": null,
- "MODULE_ID": "disk",
- "ENTITY_TYPE": "user",
- "ENTITY_ID": "1",
- "ROOT_OBJECT_ID": "1"
- },
- {
- "ID": "16",
- "NAME": "iscript13@gmail.com",
- "CODE": null,
- "MODULE_ID": "disk",
- "ENTITY_TYPE": "user",
- "ENTITY_ID": "10",
- "ROOT_OBJECT_ID": "270"
- },
- {
- "ID": "4",
- "NAME": "Payment Processing Customer Support",
- "CODE": null,
- "MODULE_ID": "disk",
- "ENTITY_TYPE": "user",
- "ENTITY_ID": "2",
- "ROOT_OBJECT_ID": "4"
- },
- {
- "ID": "10",
- "NAME": "CoPilot",
- "CODE": null,
- "MODULE_ID": "disk",
- "ENTITY_TYPE": "user",
- "ENTITY_ID": "4",
- "ROOT_OBJECT_ID": "52"
- },
- {
- "ID": "12",
- "NAME": "Support Bitrix24",
- "CODE": null,
- "MODULE_ID": "disk",
- "ENTITY_TYPE": "user",
- "ENTITY_ID": "6",
- "ROOT_OBJECT_ID": "70"
- },
- {
- "ID": "14",
- "NAME": "Marta",
- "CODE": null,
- "MODULE_ID": "disk",
- "ENTITY_TYPE": "user",
- "ENTITY_ID": "8",
- "ROOT_OBJECT_ID": "72"
- }
- ],
- "total": 7,
- "time": {
- "start": 1718783911.64028,
- "finish": 1718783911.69026,
- "duration": 0.0499801635742188,
- "processing": 0.00660109519958496,
- "date_start": "2024-06-19T07:58:31+00:00",
- "date_finish": "2024-06-19T07:58:31+00:00",
- "operating_reset_at": 1718784511,
- "operating": 0
- }
-}
+  "result": [
+  {
+  "ID": "3",
+  "NAME": "Main drive",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "common",
+  "ENTITY_ID": "shared_files_s1",
+  "ROOT_OBJECT_ID": "3"
+  },
+  {
+  "ID": "1",
+  "NAME": "Anton Titovets",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "user",
+  "ENTITY_ID": "1",
+  "ROOT_OBJECT_ID": "1"
+  },
+  {
+  "ID": "16",
+  "NAME": "iscript13@gmail.com",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "user",
+  "ENTITY_ID": "10",
+  "ROOT_OBJECT_ID": "270"
+  },
+  {
+  "ID": "4",
+  "NAME": "Payment Processing Customer Support",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "user",
+  "ENTITY_ID": "2",
+  "ROOT_OBJECT_ID": "4"
+  },
+  {
+  "ID": "10",
+  "NAME": "CoPilot",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "user",
+  "ENTITY_ID": "4",
+  "ROOT_OBJECT_ID": "52"
+  },
+  {
+  "ID": "12",
+  "NAME": "Support Bitrix24",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "user",
+  "ENTITY_ID": "6",
+  "ROOT_OBJECT_ID": "70"
+  },
+  {
+  "ID": "14",
+  "NAME": "Marta",
+  "CODE": null,
+  "MODULE_ID": "disk",
+  "ENTITY_TYPE": "user",
+  "ENTITY_ID": "8",
+  "ROOT_OBJECT_ID": "72"
+  }
+  ],
+  "total": 7,
+  "time": {
+  "start": 1718783911.64028,
+  "finish": 1718783911.69026,
+  "duration": 0.0499801635742188,
+  "processing": 0.00660109519958496,
+  "date_start": "2024-06-19T07:58:31+00:00",
+  "date_finish": "2024-06-19T07:58:31+00:00",
+  "operating_reset_at": 1718784511,
+  "operating": 0
+  }
+  }
 ```

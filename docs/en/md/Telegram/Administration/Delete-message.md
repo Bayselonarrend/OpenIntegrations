@@ -9,14 +9,14 @@ sidebar_position: 7
 
 `Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | ChatID | --chat | String, Number | Target chat ID |
- | MessageID | --message | String, Number | ID of message to delete |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | ChatID | --chat | String, Number | Target chat ID |
+  | MessageID | --message | String, Number | ID of message to delete |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
 
 <br/>
 
@@ -24,24 +24,24 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
- ChatID = "@testsichee";
- MessageID = "6846";
- 
- Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
+  Token     = FunctionParameters["Telegram_Token"];
+  ChatID    = FunctionParameters["Telegram_ChannelID"];
+  MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+  
+  Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint telegram DeleteMessage --token "6129457865:AAFyzNYOAFbu..." --chat "@testsichee" --message "5385"
+    
+  oint telegram DeleteMessage --token "6129457865:AAFyzNYOAFbu..." --chat "@testsichee" --message "6846"
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "result": true
-}
+  "ok": true,
+  "result": true
+  }
 ```

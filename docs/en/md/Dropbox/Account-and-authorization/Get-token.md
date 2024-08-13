@@ -9,14 +9,14 @@ sidebar_position: 2
 
 `Function GetToken(Val AppKey, Val AppSecret, Val Code) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | AppKey | --appkey | String | Application key |
- | AppSecret | --appsecret | String | Application secret |
- | Code | --code | String | Code from the authorization page |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | AppKey | --appkey | String | Application key |
+  | AppSecret | --appsecret | String | Application secret |
+  | Code | --code | String | Code from the authorization page |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
 
 <br/>
 
@@ -24,24 +24,24 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- AppKey = "oynqxds...";
- AppSecret = "tk2oewn...";
- Code = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
- 
- Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
+  AppKey    = FunctionParameters["Dropbox_Appkey"];
+  AppSecret = FunctionParameters["Dropbox_Appsecret"];
+  Code      = FunctionParameters["Dropbox_Code"];
+  
+  Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint dropbox GetToken --appkey "oynqxds..." --appsecret "tk2oewn..." --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"
+    
+  oint dropbox GetToken --appkey "oynqxds..." --appsecret "tk2oewn..." --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"
 
 ```
 
 ```json title="Result"
 {
- "error": "invalid_grant",
- "error_description": "code doesn't exist or has expired"
-}
+  "error": "invalid_grant",
+  "error_description": "code doesn't exist or has expired"
+  }
 ```

@@ -1,0 +1,1 @@
+﻿oint vk CreateAd --campaign "1030425511" --limit "150" --category "126" --post "3356" --cabinet "1607951446" --auth "GetVKParameters()"

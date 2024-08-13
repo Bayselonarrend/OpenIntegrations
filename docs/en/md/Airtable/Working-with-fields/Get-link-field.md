@@ -9,12 +9,12 @@ sidebar_position: 10
 
 `Function GetLinkField(Val Name) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Field name |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Field name |
 
- 
- Returns: Structure - Field description
+  
+  Returns:  Structure - Field description
 
 <br/>
 
@@ -22,24 +22,24 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
- 
- Name = "Link";
- 
- Response = OPI_Airtable.GetLinkField(Name); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Name = "Link";
+  
+  Response = OPI_Airtable.GetLinkField(Name); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint airtable GetLinkField --title "Link"
+    
+  oint airtable GetLinkField --title "Link"
 
 ```
 
 ```json title="Result"
 {
- "name": "Link",
- "type": "url"
- }
+  "name": "Link",
+  "type": "url"
+  }
 ```

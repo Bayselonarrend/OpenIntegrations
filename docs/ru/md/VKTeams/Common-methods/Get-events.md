@@ -44,7 +44,7 @@ sidebar_position: 2
   
   КонецЦикла;
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"
@@ -53,4 +53,9 @@ sidebar_position: 2
 
 ```
 
-
+```json title="Результат"
+{
+ "events": [],
+ "ok": true
+}
+```

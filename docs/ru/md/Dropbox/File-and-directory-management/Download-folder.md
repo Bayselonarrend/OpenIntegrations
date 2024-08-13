@@ -28,7 +28,7 @@ sidebar_position: 12
   
   Результат = OPI_Dropbox.СкачатьПапку(Токен, Путь);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

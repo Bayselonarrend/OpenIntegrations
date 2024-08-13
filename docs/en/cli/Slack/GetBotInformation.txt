@@ -1,0 +1,1 @@
+﻿oint slack GetBotInformation --token %token%

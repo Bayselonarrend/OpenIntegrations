@@ -7,15 +7,15 @@ sidebar_position: 1
 
 
 
-`Function CreateTextTweet(Val Text, Val Parameters = "") ExportReturn CreateCustomTweet(Text,,,, Parameters);EndFunction`
+`Function CreateTextTweet(Val Text, Val Parameters = "") ExportReturn CreateCustomTweet(Text, , , , Parameters);EndFunction`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Text | --text | String | Tweet text |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Text | --text | String | Tweet text |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Twitter
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
 
 <br/>
 
@@ -23,27 +23,27 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Response = OPI_Twitter.CreateTextTweet("Regular text tweet", Parameters);
- Response = OPI_Tools.JSONString(Response);
+  
+  Response = OPI_Twitter.CreateTextTweet("Regular text tweet", Parameters);
+  Response = OPI_Tools.JSONString(Response);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint twitter CreateTextTweet --text %text% --auth %auth%
+    
+  oint twitter CreateTextTweet --text %text% --auth %auth%
 
 ```
 
 ```json title="Result"
 {
- "data": {
- "text": "Regular text tweet",
- "id": "1745752006310895822",
- "edit_history_tweet_ids": [
- "1745752006310895822"
- ]
- }
- }
+  "data": {
+  "text": "Regular text tweet",
+  "id": "1745752006310895822",
+  "edit_history_tweet_ids": [
+  "1745752006310895822"
+  ]
+  }
+  }
 ```

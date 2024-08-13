@@ -30,7 +30,7 @@ sidebar_position: 5
   
   Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

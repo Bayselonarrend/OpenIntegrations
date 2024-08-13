@@ -1,0 +1,1 @@
+﻿oint bitrix24 AddTasksChecklistElement --url "b24-ar17wx.bitrix24.by" --task "1080" --text "Checklist element" --complete %complete% --token "fe3fa966006e9f06006b12e400000001000..."

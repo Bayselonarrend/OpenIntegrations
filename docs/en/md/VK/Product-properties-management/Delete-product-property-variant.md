@@ -9,13 +9,13 @@ sidebar_position: 7
 
 `Function DeleteProductPropertyVariant(Val Option, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Option | --option | String, Number | Variant ID |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Option | --option | String, Number | Variant ID |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -23,27 +23,29 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- 
- Option = "2054";
- 
- Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
- 
- Check_VKTrue(Result);
- 
- OPI_Tools.Pause(5);
+  Parameters = GetVKParameters();
+  
+  Option = FunctionParameters["VK_PropVarID1"];
+  
+  Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductPropertyVariant", "VK");
+  
+  Check_VKTrue(Result);
+  
+  OPI_Tools.Pause(5);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk DeleteProductPropertyVariant --option %option% --auth %auth%
+    
+  oint vk DeleteProductPropertyVariant --option "2054" --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": 1
- }
+  "response": 1
+  }
 ```
