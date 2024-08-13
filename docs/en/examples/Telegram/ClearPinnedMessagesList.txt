@@ -1,9 +1,7 @@
-﻿    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+﻿    Token = "6129457865:AAFyzNYOAFbu...";
+    Chat  = "-1001971186208";
+    Topic = "3896";
 
     Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ClearPinnedMessagesList (main)");
 
     Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);

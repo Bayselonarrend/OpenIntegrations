@@ -1,12 +1,10 @@
-﻿    URL            = FunctionParameters["Bitrix24_URL"];
-    NotificationID = FunctionParameters["Bitrix24_PersoalHookNotifyID"];
+﻿    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    NotificationID = "8690";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteNotification", "Bitrix24");
-
-    URL            = FunctionParameters["Bitrix24_Domain"];
-    Token          = FunctionParameters["Bitrix24_Token"];
-    NotificationID = FunctionParameters["Bitrix24_PersoalNotifyID"];
+    URL            = "b24-ar17wx.bitrix24.by";
+    Token          = "fe3fa966006e9f06006b12e400000001000...";
+    NotificationID = "8692";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID, Token);

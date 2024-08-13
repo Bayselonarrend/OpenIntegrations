@@ -1,12 +1,10 @@
-﻿    URL       = FunctionParameters["Bitrix24_URL"];
-    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    MessageID = "8682";
 
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetMessageReaction (wh)", "Bitrix24");
-
-    URL       = FunctionParameters["Bitrix24_Domain"];
-    Token     = FunctionParameters["Bitrix24_Token"];
-    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+    URL       = "b24-ar17wx.bitrix24.by";
+    Token     = "fe3fa966006e9f06006b12e400000001000...";
+    MessageID = "8684";
 
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID, Token);
