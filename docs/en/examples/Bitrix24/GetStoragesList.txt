@@ -1,0 +1,9 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    Result = OPI_Bitrix24.GetStoragesList(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStoragesList (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetStoragesList(URL, Token);

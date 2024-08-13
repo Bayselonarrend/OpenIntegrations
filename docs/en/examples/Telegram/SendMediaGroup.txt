@@ -1,0 +1,19 @@
+﻿    Token  = FunctionParameters["Telegram_Token"];
+    ChatID = FunctionParameters["Telegram_ChatID"];
+    Text   = FunctionParameters["String"];
+    Image  = FunctionParameters["Picture"];
+    Video  = FunctionParameters["Video"];
+
+    ImagePath = GetTempFileName("png");
+    CopyFile(Image, ImagePath);
+
+    VideoPath = GetTempFileName("mp4");
+    CopyFile(Video, VideoPath);
+
+    VideoDD = New BinaryData(VideoPath);
+
+    MediaGroup = New Map;
+    MediaGroup.Insert(ImagePath, "photo");
+    MediaGroup.Insert(VideoDD  , "video");
+
+    Result = OPI_Telegram.SendMediaGroup(Token, ChatID, Text, MediaGroup);

@@ -1,0 +1,7 @@
+﻿    Token   = FunctionParameters["Telegram_Token"];
+    Chat    = FunctionParameters["Telegram_ForumID"];
+    Topic   = FunctionParameters["Telegram_TopicID"];
+    NewName = "NewTestTitle";
+    NewIcon = "5310132165583840589";
+
+    Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);

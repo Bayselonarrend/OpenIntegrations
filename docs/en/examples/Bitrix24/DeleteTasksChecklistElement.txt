@@ -1,0 +1,15 @@
+﻿    URL       = FunctionParameters["Bitrix24_URL"];
+    TaskID    = FunctionParameters["Bitrix24_HookTaskID"];
+    ElementID = FunctionParameters["Bitrix24_HookCheckElementID"];
+
+    Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTasksChecklistElement (wh)", "Bitrix24");
+
+    TaskID    = FunctionParameters["Bitrix24_TaskID"];
+    ElementID = FunctionParameters["Bitrix24_CheckElementID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID, Token);

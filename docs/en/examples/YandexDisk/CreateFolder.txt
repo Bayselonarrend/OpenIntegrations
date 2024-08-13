@@ -1,0 +1,4 @@
+﻿    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = "/" + String(New UUID);
+
+    Result = OPI_YandexDisk.CreateFolder(Token, Path);

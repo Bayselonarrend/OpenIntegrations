@@ -1,0 +1,20 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text      = FunctionParameters["String"];
+    Video     = FunctionParameters["Video"];
+
+    VideoPath = GetTempFileName("mp4");
+    CopyFile(Video, VideoPath);
+
+    VideoDD = New BinaryData(VideoPath);
+
+    Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendVideo", "Telegram");
+
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendVideo (Path)");
+
+    Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);

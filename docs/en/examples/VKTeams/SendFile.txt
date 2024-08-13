@@ -1,0 +1,20 @@
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Text   = "File caption";
+
+    File     = FunctionParameters["Document"]; // URL
+    FilePath = GetTempFileName("docx"); // Path
+
+    CopyFile(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (URL)", "VkTeams");
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (Path)", "VkTeams");
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");

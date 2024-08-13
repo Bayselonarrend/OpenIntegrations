@@ -1,0 +1,12 @@
+﻿    URL          = FunctionParameters["Bitrix24_URL"];
+    DepartmentID = FunctionParameters["Bitrix24_DepID"];
+
+    Result = OPI_Bitrix24.GetDepartments(URL, DepartmentID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDepartments (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    HeadID = 1;
+
+    Result = OPI_Bitrix24.GetDepartments(URL, , , , HeadID, Token);

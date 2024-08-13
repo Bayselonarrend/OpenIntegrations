@@ -1,0 +1,5 @@
+﻿    Parameters  = GetVKParameters();
+    Name        = "AlbumFromAutoTest";
+    Description = "NewAlbumFromAutoTest";
+
+    Result = OPI_VK.CreateAlbum(Name, Description, Parameters);

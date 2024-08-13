@@ -1,0 +1,15 @@
+﻿    URL = FunctionParameters["Bitrix24_URL"];
+
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
+    Title   = "New title";
+
+    Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    FieldID    = FunctionParameters["Bitrix24_TaskFieldID"];
+    ExternalID = "NEW_TEXT_FIELD";
+    Signature  = New Structure("en,ru", "Updated field", "Izmenennoe pole");
+
+    Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, ExternalID, , Signature, Token);

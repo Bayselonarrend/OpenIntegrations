@@ -1,0 +1,13 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+    UserID = FunctionParameters["Bitrix24_UserID"];
+
+    Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DelegateTask (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+
+    Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID, Token);

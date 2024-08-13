@@ -1,0 +1,18 @@
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    LastID = 0;
+
+    For N = 1 To 5 Do // In real work - endless loop
+
+        Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "GetEvents", "VkTeams");
+
+        Events = Result["events"];
+
+        // Event handling...
+
+        If Not Events.Count() = 0 Then
+            LastID            = Events[Events.UBound()]["eventId"];
+        EndIf;
+
+    EndDo;

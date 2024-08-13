@@ -1,0 +1,24 @@
+﻿    URL   = FunctionParameters["Bitrix24_URL"];
+    Email = String(New UUID) + "@exepmple.org";
+    // The full structure can be obtained with the function GetUserFieldsStructure
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"        , Email);
+    UserStructure.Insert("UF_DEPARTMENT", 7);
+
+    Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateUser (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+    Email = String(New UUID) + "@exepmple.org";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"          , Email);
+    UserStructure.Insert("NAME"           , "Vitaly");
+    UserStructure.Insert("LAST_NAME"      , "Alpaca");
+    UserStructure.Insert("PERSONAL_MOBILE", "88003553535");
+    UserStructure.Insert("UF_DEPARTMENT"  , 1);
+
+    Result = OPI_Bitrix24.CreateUser(URL, UserStructure, Token);

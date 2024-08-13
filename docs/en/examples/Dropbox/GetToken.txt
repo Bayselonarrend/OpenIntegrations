@@ -1,0 +1,5 @@
+﻿    AppKey    = FunctionParameters["Dropbox_Appkey"];
+    AppSecret = FunctionParameters["Dropbox_Appsecret"];
+    Code      = FunctionParameters["Dropbox_Code"];
+
+    Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);

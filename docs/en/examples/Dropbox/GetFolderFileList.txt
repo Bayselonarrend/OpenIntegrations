@@ -1,0 +1,4 @@
+﻿    Path  = "/New";
+    Token = FunctionParameters["Dropbox_Token"];
+
+    Result = OPI_Dropbox.GetListOfFolderFiles(Token, Path, True);

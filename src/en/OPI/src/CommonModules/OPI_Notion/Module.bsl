@@ -225,11 +225,11 @@ Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") E
     // Name : title
     // Description : rich_text
     // InProgress : checkbox
-    // Count    : number
+    // Count : number
     // Date : date
     // Status : Map
     // Active : green
-    // Inactive    : red
+    // Inactive : red
     // Archive : yellow
 
     // All pages created as children must have parent base properties

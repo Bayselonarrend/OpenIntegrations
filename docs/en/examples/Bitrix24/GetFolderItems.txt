@@ -1,0 +1,11 @@
+﻿    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Result = OPI_Bitrix24.GetFolderItems(URL, FolderID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFolderItems (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetFolderItems(URL, FolderID, , Token);

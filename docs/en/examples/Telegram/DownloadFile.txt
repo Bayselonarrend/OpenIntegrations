@@ -1,0 +1,4 @@
+﻿    FileID = FunctionParameters["Telegram_FileID"];
+    Token  = FunctionParameters["Telegram_Token"];
+
+    Result = OPI_Telegram.DownloadFile(Token, FileID);

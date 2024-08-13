@@ -1,0 +1,5 @@
+﻿    Original = "/New/pic.png";
+    Copy     = "/New/pic_copy.png";
+    Token    = FunctionParameters["Dropbox_Token"];
+
+    Result = OPI_Dropbox.CopyObject(Token, Original, Copy);

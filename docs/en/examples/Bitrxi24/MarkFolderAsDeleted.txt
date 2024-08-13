@@ -1,0 +1,11 @@
+﻿    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+
+    Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkFolderAsDeleted (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID, Token);

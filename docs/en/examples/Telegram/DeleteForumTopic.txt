@@ -1,0 +1,5 @@
+﻿    Token = FunctionParameters["Telegram_Token"];
+    Chat  = FunctionParameters["Telegram_ForumID"];
+    Topic = FunctionParameters["Telegram_TopicID"];
+
+    Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);

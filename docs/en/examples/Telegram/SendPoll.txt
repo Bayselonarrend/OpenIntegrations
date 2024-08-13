@@ -1,0 +1,18 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Question  = "What's your favorite color?";
+
+    AnswersArray = New Array;
+    AnswersArray.Add("Red");
+    AnswersArray.Add("Yellow");
+    AnswersArray.Add("Green");
+    AnswersArray.Add("Blue");
+
+    Result = OPI_Telegram.SendPoll(Token, ChatID , Question, AnswersArray, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll", "Telegram");
+
+    Result = OPI_Telegram.SendPoll(Token, ChannelID, Question, AnswersArray, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPoll (channel)");

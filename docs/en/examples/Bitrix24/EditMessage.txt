@@ -1,0 +1,21 @@
+﻿    URL       = FunctionParameters["Bitrix24_URL"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Text = "New message text";
+
+    Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage (wh)", "Bitrix24");
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+
+    Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text, Attachments, Token);

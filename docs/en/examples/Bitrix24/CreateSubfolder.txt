@@ -1,0 +1,14 @@
+﻿    FolderID  = FunctionParameters["Bitrix24_FolderID"];
+    Name      = "New subfolder";
+    Filename2 = "New subfolder 2";
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Filename2);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSubfolder (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Name, Token);

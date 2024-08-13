@@ -1,0 +1,10 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text      = FunctionParameters["String"];
+
+    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Telegram");
+
+    Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);

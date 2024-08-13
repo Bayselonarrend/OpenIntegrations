@@ -1,0 +1,15 @@
+﻿    Parameters       = GetVKParameters();
+    ImageDescription = "AutoTestImage";
+    AlbumID          = FunctionParameters["VK_AlbumID"];
+
+    Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
+    TFN   = GetTempFileName("png");
+    CopyFile(Image, TFN);
+
+    Image = New BinaryData(TFN);
+
+    Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SaveImageToAlbum", "VK");
+
+    Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);

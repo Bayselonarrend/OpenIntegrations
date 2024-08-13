@@ -1,0 +1,12 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    Status = "dnd";
+
+    Result = OPI_Bitrix24.SetUserStatus(URL, Status);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetUserStatus (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    Status = "away";
+
+    Result = OPI_Bitrix24.SetUserStatus(URL, Status, Token);

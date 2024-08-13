@@ -1,0 +1,4 @@
+﻿    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/mydoc.docx";
+
+    Result = OPI_Dropbox.GetPreview(Token, Path);

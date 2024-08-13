@@ -1,0 +1,3 @@
+﻿    Parameters = GetVKParameters();
+
+    Result = OPI_VK.GetProductCategoryList(Parameters);

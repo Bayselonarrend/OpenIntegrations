@@ -1,0 +1,17 @@
+﻿    URL       = FunctionParameters["Bitrix24_URL"];
+    TaskID    = FunctionParameters["Bitrix24_CommentsTaskID"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+
+    Text = "The task has been changed, do not split up";
+
+    Result = OPI_Bitrix24.UpdateTaskComment(URL, TaskID, CommentID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTaskComment (wh)", "Bitrix24");
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Text = "The task has been changed, let's split up";
+
+    Result = OPI_Bitrix24.UpdateTaskComment(URL, TaskID, CommentID, Text, Token);

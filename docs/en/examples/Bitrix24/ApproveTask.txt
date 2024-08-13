@@ -1,0 +1,12 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+
+    Result = OPI_Bitrix24.ApproveTask(URL, TaskID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ApproveTask (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+
+    Result = OPI_Bitrix24.ApproveTask(URL, TaskID, Token);

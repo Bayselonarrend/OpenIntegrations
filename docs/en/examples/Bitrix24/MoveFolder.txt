@@ -1,0 +1,19 @@
+﻿    DestinationID = FunctionParameters["Bitrix24_HookfolderID"];
+    FolderID      = FunctionParameters["Bitrix24_SubfolderID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFolder (wh)", "Bitrix24");
+
+    FolderID = FunctionParameters["Bitrix24_HookSubfolderID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID, Token);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveFolder", "Bitrix24");
+
+    Check_BitrixObject(Result);

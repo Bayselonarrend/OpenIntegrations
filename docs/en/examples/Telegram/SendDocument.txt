@@ -1,0 +1,24 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text      = FunctionParameters["String"];
+    Document  = FunctionParameters["Document"];
+
+    DocumentPath = GetTempFileName("docx");
+    CopyFile(Document, DocumentPath);
+
+    DocumentDD = New BinaryData(DocumentPath);
+
+    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendDocument", "Telegram");
+
+    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendDocument (with name)", "Telegram");
+
+    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendDocument (Path)");
+
+    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");

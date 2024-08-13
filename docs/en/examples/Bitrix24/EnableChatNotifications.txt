@@ -1,0 +1,12 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Result = OPI_Bitrix24.EnableChatNotifications(URL, ChatID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EnableChatNotifications (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Result = OPI_Bitrix24.EnableChatNotifications(URL, ChatID, Token);

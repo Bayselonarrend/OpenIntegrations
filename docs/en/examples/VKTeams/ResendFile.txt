@@ -1,0 +1,6 @@
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_FileID"];
+    Text   = "File caption";
+
+    Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text, "SameDoc.docx");

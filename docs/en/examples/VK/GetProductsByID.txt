@@ -1,0 +1,10 @@
+﻿    Parameters = GetVKParameters();
+
+    Item1 = FunctionParameters["VK_MarketItemID2"];
+    Item2 = FunctionParameters["VK_MarketItemID3"];
+
+    ProductsArray = New Array;
+    ProductsArray.Add(Item1);
+    ProductsArray.Add(Item2);
+
+    Result = OPI_VK.GetProductsByID(ProductsArray, Parameters);

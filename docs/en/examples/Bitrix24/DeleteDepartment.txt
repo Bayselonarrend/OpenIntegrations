@@ -1,0 +1,12 @@
+﻿    URL          = FunctionParameters["Bitrix24_URL"];
+    DepartmentID = FunctionParameters["Bitrix24_DepID"];
+
+    Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDepartment (wh)", "Bitrix24");
+
+    URL          = FunctionParameters["Bitrix24_Domain"];
+    Token        = FunctionParameters["Bitrix24_Token"];
+    DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
+
+    Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID, Token);

@@ -1,0 +1,14 @@
+﻿    URL       = FunctionParameters["Bitrix24_URL"];
+    ChatID    = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+
+    Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, ChatID, MessageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MarkMessageAsUnreaded)", "Bitrix24");
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    UserID    = 10;
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+
+    Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, UserID, MessageID, Token);

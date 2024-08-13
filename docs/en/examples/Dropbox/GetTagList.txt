@@ -1,0 +1,7 @@
+﻿    Token = FunctionParameters["Dropbox_Token"];
+
+    PathsArray = New Array;
+    PathsArray.Add("/New/Dogs.mp3");
+    PathsArray.Add("/New/mydoc.docx");
+
+    Result = OPI_Dropbox.GetTagList(Token, PathsArray);

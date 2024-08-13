@@ -1,0 +1,13 @@
+﻿    URL      = FunctionParameters["Bitrix24_URL"];
+    TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+
+    Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTaskTimeAccounting (wh)", "Bitrix24");
+
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
+
+    Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID, Token);

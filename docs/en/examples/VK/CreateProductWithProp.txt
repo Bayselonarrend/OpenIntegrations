@@ -1,0 +1,54 @@
+﻿    Parameters = GetVKParameters();
+
+    Image1       = FunctionParameters["Picture"];
+    Image2       = FunctionParameters["Picture2"];
+    PropVariant1 = FunctionParameters["VK_PropVarID1"];
+    PropVariant2 = FunctionParameters["VK_PropVarID2"];
+
+    ImageArray = New Array;
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    Product = New Map();
+    Product.Insert("Name"             , "Test product (with prop)");
+    Product.Insert("Description"      , "Product description");
+    Product.Insert("Category"         , "20173");
+    Product.Insert("Price"            , 1);
+    Product.Insert("OldPrice"         , 15);
+    Product.Insert("MainPhoto"        , Image1);
+    Product.Insert("URL"              , "https://github.com/Bayselonarrend/OpenIntegrations");
+    Product.Insert("AdditionalPhotos" , ImageArray);
+    Product.Insert("MainInGroup"      , True);
+    Product.Insert("GroupNumber"      , Undefined);
+    Product.Insert("Width"            , 20);
+    Product.Insert("Height"           , 30);
+    Product.Insert("Depth"            , 40);
+    Product.Insert("Weight"           , 100);
+    Product.Insert("SKU"              , 12345);
+    Product.Insert("AvailableBalance" , "10");
+    Product.Insert("PropertyValues"   , PropVariant1);
+
+    Result = OPI_VK.AddProduct(Product, , Parameters);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProductWithProp1");
+
+    Check_VKProduct(Result);
+
+    ProductID = Result["response"]["market_item_id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID2", ProductID);
+    FunctionParameters.Insert("VK_MarketItemID2", ProductID);
+
+    Product.Insert("Name"          , "Test product (another)");
+    Product.Insert("PropertyValues", PropVariant2);
+
+    Result = OPI_VK.AddProduct(Product, , Parameters);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ProductWithProp2");
+
+    Check_VKProduct(Result);
+
+    ProductID = Result["response"]["market_item_id"];
+    OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID3", ProductID);
+    FunctionParameters.Insert("VK_MarketItemID3", ProductID);
+
+    OPI_Tools.Pause(5);

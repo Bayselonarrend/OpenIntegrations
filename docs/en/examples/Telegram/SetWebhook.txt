@@ -1,0 +1,4 @@
+﻿    Token = FunctionParameters["Telegram_Token"];
+    URL   = FunctionParameters["Telegram_URL"];
+
+    Result = OPI_Telegram.SetWebhook(Token, URL);

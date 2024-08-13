@@ -1,0 +1,19 @@
+﻿    Text   = "Text of post";
+    Title  = "Post title";
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+
+    Files = New Map;
+    Files.Insert("1.png", Image1);
+    Files.Insert("2.png", Image2);
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, , Token);

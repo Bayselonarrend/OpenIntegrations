@@ -1,0 +1,12 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_HookFileID"];
+
+    Result = OPI_Bitrix24.DeleteFile(URL, FileID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
+
+    Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);
