@@ -1,0 +1,19 @@
+﻿  {
+  "buttons": [
+  [
+  {
+  "action": {
+  "type": "text",
+  "label": "Button 1"
+  }
+  },
+  {
+  "action": {
+  "type": "text",
+  "label": "Button 2"
+  }
+  }
+  ]
+  ],
+  "one_time": false
+  }

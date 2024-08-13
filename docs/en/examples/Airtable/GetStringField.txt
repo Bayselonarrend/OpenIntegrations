@@ -1,0 +1,5 @@
+﻿  
+  Name = "String";
+  
+  Response = OPI_Airtable.GetStringField(Name); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

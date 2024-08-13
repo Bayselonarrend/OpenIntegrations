@@ -1,0 +1,5 @@
+﻿  
+  FileID = "F070VL6FQFM";
+  
+  Response = OPI_Slack.DeleteFile(Token, FileID); //Map
+  Response = OPI_Tools.JSONString(Response);//JSON string

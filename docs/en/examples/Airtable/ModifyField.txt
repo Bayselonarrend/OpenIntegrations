@@ -1,0 +1,9 @@
+﻿  
+  Base = "apptm8Xqo7TwMaipQ";
+  Table = "tbl9G4jVoTJpxYwSY";
+  Field = "fld3IbFtHZtBHQwsk";
+  Name = String(New UUID) + "(change.)";
+  Description = "New description";
+  
+  Response = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

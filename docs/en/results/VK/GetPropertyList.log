@@ -1,0 +1,21 @@
+﻿  [
+  {
+  "variants": [
+  {
+  "title": "Yellow",
+  "id": 962
+  },
+  {
+  "title": "Blue",
+  "id": 963
+  },
+  {
+  "title": "Red",
+  "id": 964
+  }
+  ],
+  "type": "text",
+  "title": "Color",
+  "id": 255
+  }
+  ]

@@ -1,0 +1,8 @@
+{
+"Token": "6129457865:AAFyzNYOAFbu...",
+"ChatID": "461699897",
+"ChannelID": "@testsichee",
+"Text": "String value",
+"Audio": "https://openintegrations.dev/test_data/song.mp3",
+"AudioPath": "GetTempFileName(mp3)"
+}

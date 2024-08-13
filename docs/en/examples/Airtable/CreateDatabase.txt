@@ -1,0 +1,15 @@
+﻿  
+  Workspace = "wspdf8yl1yZz3PmWZ";
+  Name = "TestDatabase";
+  
+  FieldArray = New Array;
+  FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
+  FieldArray.Add(OPI_Airtable.GetStringField("String"));
+  
+  TableName = "TestTable";
+  
+  TableCollection = New Map;
+  TableCollection.Insert(TableName, FieldArray);
+  
+  Response = OPI_Airtable.CreateDatabase(Token, Workspace, Name, TableCollection); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

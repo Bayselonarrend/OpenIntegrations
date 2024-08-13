@@ -1,0 +1,20 @@
+﻿  
+  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+  Parent = "5dd94c34fab04bff9...";
+  Image = New Map;
+  Image.Insert("Logo", "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg");
+  
+  Data = New Map;
+  Data.Insert("Name", "LLC Vector");
+  Data.Insert("Description", "OurFirstClient");
+  Data.Insert("Number", 1);
+  Data.Insert("Status", "Regular");
+  Data.Insert("CreationDate", CurrentSessionDate());
+  Data.Insert("Image", Image);
+  Data.Insert("Active", True);
+  Data.Insert("Email", "mail@vector.ru");
+  Data.Insert("Phone", "88005553535");
+  Data.Insert("Status", "New");
+  
+  Response = OPI_Notion.CreatePageInDatabase(Token, Base, Data);
+  Response = OPI_Tools.JSONString(Response);

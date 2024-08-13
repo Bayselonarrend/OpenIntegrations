@@ -1,0 +1,28 @@
+﻿  {
+  "ok": true,
+  "result": {
+  "message_id": 4642,
+  "from": {
+  "id": 6129457865,
+  "is_bot": true,
+  "first_name": "Vitaly The Bot",
+  "username": "sicheebot"
+  },
+  "chat": {
+  "id": 461699897,
+  "first_name": "Anton",
+  "last_name": "Titowets",
+  "username": "JKIee",
+  "type": "private"
+  },
+  "date": 1717072414,
+  "document": {
+  "file_name": "document.docx",
+  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "file_id": "BQACAgIAAxkDAAISImZYch5MDU2ibeJ0S46yZfw6Dmb2AAKtUAACYCjISp3o6gzXeDCVNQQ",
+  "file_unique_id": "AgADrVAAAmAoyEo",
+  "file_size": 24069
+  },
+  "caption": "String value"
+  }
+  }

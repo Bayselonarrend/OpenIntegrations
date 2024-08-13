@@ -1,0 +1,5 @@
+{
+"Parameters": "GetVKParameters()",
+"StartDate": "BegOfDay(CurrentDate)",
+"EndDate": "EndOfDay(StartDate)"
+}

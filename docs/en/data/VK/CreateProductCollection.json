@@ -1,0 +1,7 @@
+{
+"Parameters": "GetVKParameters()",
+"Name": "TestCollection",
+"Image": "https://openintegrations.dev/test_data/picture.jpg",
+"Main": "True",
+"Hidden": "False"
+}

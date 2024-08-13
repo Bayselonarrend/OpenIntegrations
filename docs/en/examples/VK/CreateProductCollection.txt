@@ -1,0 +1,12 @@
+﻿  Parameters = GetVKParameters();
+  
+  Name = "TestCollection";
+  Image = "https://openintegrations.dev/test_data/picture.jpg";
+  Main = True;
+  Hidden = False;
+  
+  Result = OPI_VK.CreateProductCollection(Name
+  , Image
+  , Main
+  , Hidden
+  , Parameters);

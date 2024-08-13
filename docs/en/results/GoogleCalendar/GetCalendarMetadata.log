@@ -1,0 +1,13 @@
+﻿  {
+  "conferenceProperties": {
+  "allowedConferenceSolutionTypes": [
+  "hangoutsMeet"
+  ]
+  },
+  "description": "TestDescription",
+  "summary": "TestCalendar (change.)",
+  "timeZone": "UTC",
+  "id": "155868c32be26e4c4123a107810d40b929b516935f080e4747261fdc3416227c@group.calendar.google.com",
+  "etag": "\"4A10_PI6FFY129ggELzZ8veUU-U\"",
+  "kind": "calendar#calendar"
+  }

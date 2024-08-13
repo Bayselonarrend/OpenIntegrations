@@ -1,0 +1,72 @@
+﻿  {
+  "result": {
+  "allowedActions": {
+  "1": {
+  "ACCEPT": false,
+  "DECLINE": false,
+  "COMPLETE": true,
+  "APPROVE": false,
+  "DISAPPROVE": false,
+  "START": true,
+  "PAUSE": false,
+  "DELEGATE": true,
+  "REMOVE": true,
+  "EDIT": true,
+  "DEFER": true,
+  "RENEW": false,
+  "CREATE": true,
+  "CHANGE_DEADLINE": true,
+  "CHECKLIST_ADD_ITEMS": true,
+  "ADD_FAVORITE": true,
+  "DELETE_FAVORITE": false,
+  "RATE": true,
+  "EDIT.ORIGINATOR": false,
+  "CHECKLIST.REORDER": true,
+  "ELAPSEDTIME.ADD": true,
+  "DAYPLAN.TIMER.TOGGLE": false,
+  "EDIT.PLAN": true,
+  "CHECKLIST.ADD": true,
+  "FAVORITE.ADD": true,
+  "FAVORITE.DELETE": false
+  },
+  "10": {
+  "ACCEPT": false,
+  "DECLINE": false,
+  "COMPLETE": true,
+  "APPROVE": false,
+  "DISAPPROVE": false,
+  "START": true,
+  "PAUSE": false,
+  "DELEGATE": true,
+  "REMOVE": false,
+  "EDIT": false,
+  "DEFER": true,
+  "RENEW": false,
+  "CREATE": true,
+  "CHANGE_DEADLINE": false,
+  "CHECKLIST_ADD_ITEMS": true,
+  "ADD_FAVORITE": true,
+  "DELETE_FAVORITE": false,
+  "RATE": false,
+  "EDIT.ORIGINATOR": false,
+  "CHECKLIST.REORDER": false,
+  "ELAPSEDTIME.ADD": true,
+  "DAYPLAN.TIMER.TOGGLE": false,
+  "EDIT.PLAN": false,
+  "CHECKLIST.ADD": true,
+  "FAVORITE.ADD": true,
+  "FAVORITE.DELETE": false
+  }
+  }
+  },
+  "time": {
+  "start": 1720017732.79312,
+  "finish": 1720017732.85673,
+  "duration": 0.0636129379272461,
+  "processing": 0.0308799743652344,
+  "date_start": "2024-07-03T14:42:12+00:00",
+  "date_finish": "2024-07-03T14:42:12+00:00",
+  "operating_reset_at": 1720018332,
+  "operating": 0
+  }
+  }

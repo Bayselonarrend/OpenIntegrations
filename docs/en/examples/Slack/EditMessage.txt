@@ -1,0 +1,7 @@
+﻿  
+  Channel = "C070VPMKN8J";
+  Timestamp = "1714146538.221929";
+  Text = "TestMessage2";
+  
+  Response = OPI_Slack.EditMessage(Token, Channel, Timestamp, Text); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

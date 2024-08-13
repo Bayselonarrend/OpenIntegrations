@@ -1,0 +1,7 @@
+﻿  
+  ButtonArray = New Array;
+  ButtonArray.Add("Great");
+  ButtonArray.Add("Ok");
+  ButtonArray.Add("Bad");
+  
+  Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, True);
