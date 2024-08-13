@@ -58,7 +58,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-{
+  {
   "result": 132,
   "time": {
   "start": 1720600360.58899,
@@ -71,4 +71,5 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
   "operating": 0
   }
   }
+
 ```

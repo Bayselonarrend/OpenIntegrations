@@ -50,7 +50,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-{
+    {
  "ok": true,
  "result": [
   {
@@ -153,4 +153,5 @@ sidebar_position: 7
   }
  ]
 }
+
 ```

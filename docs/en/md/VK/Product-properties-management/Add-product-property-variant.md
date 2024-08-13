@@ -49,9 +49,10 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-{
+  {
   "response": {
   "variant_id": 980
   }
   }
+
 ```

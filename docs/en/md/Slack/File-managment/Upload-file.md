@@ -45,7 +45,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
+  {
   "ok": true,
   "files": [
   {
@@ -85,4 +85,5 @@ sidebar_position: 2
   }
   ]
   }
+
 ```

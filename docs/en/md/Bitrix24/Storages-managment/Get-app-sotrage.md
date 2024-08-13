@@ -41,7 +41,7 @@ Method at API documentation: [disk.storage.getforapp](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "18",
   "NAME": "New storage name",
@@ -62,4 +62,5 @@ Method at API documentation: [disk.storage.getforapp](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
+
 ```

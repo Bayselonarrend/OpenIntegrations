@@ -52,7 +52,7 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": "936",
   "NAME": "Новый каталог",
@@ -81,4 +81,5 @@ sidebar_position: 10
   "operating": 0
  }
 }
+
 ```

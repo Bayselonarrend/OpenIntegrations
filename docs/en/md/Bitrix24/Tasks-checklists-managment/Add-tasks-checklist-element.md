@@ -52,7 +52,7 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-{
+  {
   "result": 96,
   "time": {
   "start": 1720816505.3041,
@@ -65,4 +65,5 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
+
 ```

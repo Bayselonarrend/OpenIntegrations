@@ -51,7 +51,7 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720600367.83205,
@@ -64,4 +64,5 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
+
 ```

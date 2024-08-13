@@ -48,7 +48,7 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1719047257.50616,
@@ -61,4 +61,5 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
+
 ```

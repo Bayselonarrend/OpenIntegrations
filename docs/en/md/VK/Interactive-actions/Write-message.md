@@ -49,7 +49,8 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
+  {
   "response": 7
   }
+
 ```

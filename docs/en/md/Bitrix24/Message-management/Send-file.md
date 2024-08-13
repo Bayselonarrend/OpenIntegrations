@@ -64,7 +64,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "FILES": {
   "upload3254": {
@@ -140,4 +140,5 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
   "operating": 0
   }
   }
+
 ```

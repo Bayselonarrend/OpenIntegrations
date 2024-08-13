@@ -39,9 +39,10 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
+  {
   "response": {
   "likes": 1
   }
   }
+
 ```

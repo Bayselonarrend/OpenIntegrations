@@ -47,7 +47,7 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "20": {
   "ID": "20",
@@ -553,4 +553,5 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
   "operating": 0
   }
   }
+
 ```

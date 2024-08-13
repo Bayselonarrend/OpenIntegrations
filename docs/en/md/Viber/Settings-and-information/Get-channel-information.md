@@ -36,7 +36,7 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
 ```
 
 ```json title="Result"
-{
+  {
   "members": [
   {
   "role": "admin",
@@ -60,4 +60,5 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
   "status_message": "ok",
   "status": 0
   }
+
 ```

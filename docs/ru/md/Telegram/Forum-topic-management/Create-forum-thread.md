@@ -42,7 +42,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+    {
  "ok": true,
  "result": {
   "message_thread_id": 2457,
@@ -51,4 +51,5 @@ sidebar_position: 2
   "icon_custom_emoji_id": "5357419403325481346"
  }
 }
+
 ```

@@ -56,7 +56,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "12",
@@ -274,4 +274,5 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
   "operating": 0
   }
   }
+
 ```

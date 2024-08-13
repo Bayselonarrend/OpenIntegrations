@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_h
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": true
   },
@@ -63,4 +63,5 @@ Method at API documentation: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_h
   "operating": 0
   }
   }
+
 ```

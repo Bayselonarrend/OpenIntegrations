@@ -40,7 +40,8 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "request_id": "61eaaa91-41fc-4523-a445-602805afb281",
   "public_url": null,
   "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",
@@ -196,4 +197,6 @@ sidebar_position: 3
   "id": "a5742816-1417-4169-bf55-dbae44f46d9c",
   "object": "page"
   }
+  
+
 ```

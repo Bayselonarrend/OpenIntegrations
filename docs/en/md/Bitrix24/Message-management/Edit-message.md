@@ -59,7 +59,7 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720969165.17314,
@@ -72,4 +72,5 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
   "operating": 0
   }
   }
+
 ```

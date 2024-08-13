@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "list": [
   {
@@ -304,4 +304,5 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```

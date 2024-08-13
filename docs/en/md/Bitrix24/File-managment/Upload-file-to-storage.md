@@ -57,7 +57,7 @@ Method at API documentation: [disk.storage.uploadfile](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": 356,
   "NAME": "26417397-8431-4343-9c0f-a40d4a2831c8.jpg",
@@ -89,4 +89,5 @@ Method at API documentation: [disk.storage.uploadfile](https://dev.1c-bitrix.ru/
   "operating": 0.227726936340332
   }
   }
+
 ```

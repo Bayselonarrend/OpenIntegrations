@@ -38,7 +38,8 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "name": "Флажок",
   "type": "checkbox",
   "options": {
@@ -46,4 +47,6 @@ sidebar_position: 6
   "color": "yellowBright"
   }
   }
+  
+
 ```

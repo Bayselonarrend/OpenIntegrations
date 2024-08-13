@@ -45,8 +45,9 @@ sidebar_position: 17
 ```
 
 ```json title="Результат"
-{
+    {
  "error": "expired_token",
  "error_description": "The access token provided has expired."
 }
+
 ```

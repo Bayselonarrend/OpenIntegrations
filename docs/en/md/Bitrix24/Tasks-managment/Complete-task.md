@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "110",
@@ -191,4 +191,5 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
   "operating": 0.312941789627075
   }
   }
+
 ```

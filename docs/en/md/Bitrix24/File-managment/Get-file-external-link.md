@@ -47,7 +47,7 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
 ```
 
 ```json title="Result"
-{
+  {
   "result": "https://b24-ar17wx.bitrix24.by/~pT3DD",
   "time": {
   "start": 1720017752.7023,
@@ -60,4 +60,5 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
   "operating": 0
   }
   }
+
 ```

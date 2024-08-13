@@ -53,7 +53,7 @@ Method at API documentation: [tasks.task.list](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "tasks": [
   {
@@ -4021,4 +4021,5 @@ Method at API documentation: [tasks.task.list](https://dev.1c-bitrix.ru/rest_hel
   "operating": 0
   }
   }
+
 ```

@@ -50,7 +50,7 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "attachmentId": 598
   },
@@ -65,4 +65,5 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```

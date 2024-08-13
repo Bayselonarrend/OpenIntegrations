@@ -46,7 +46,7 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
-{
+  {
   "ok": true,
   "result": {
   "message_id": 4646,
@@ -70,4 +70,5 @@ sidebar_position: 8
   }
   }
   }
+
 ```

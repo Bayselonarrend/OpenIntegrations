@@ -47,7 +47,8 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "id": "comL1oGEDJvIQlMs1",
   "author": {
   "id": "usrFlaAHlTfYWAbVW",
@@ -58,4 +59,6 @@ sidebar_position: 3
   "createdTime": "2024-05-10T19:39:52Z",
   "lastUpdatedTime": "2024-05-10T19:39:51.967Z"
   }
+  
+
 ```

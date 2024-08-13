@@ -41,7 +41,7 @@ Gets a list of files with or without filtering by type List of available types: 
 ```
 
 ```json title="Result"
-{
+  {
   "limit": 2,
   "offset": 1,
   "items": [
@@ -195,4 +195,5 @@ Gets a list of files with or without filtering by type List of available types: 
   }
   ]
   }
+
 ```

@@ -53,7 +53,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "tasks": [
    {
@@ -4021,4 +4021,5 @@ sidebar_position: 2
   "operating": 0
  }
 }
+
 ```

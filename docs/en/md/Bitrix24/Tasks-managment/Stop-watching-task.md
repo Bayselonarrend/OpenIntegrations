@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "110",
@@ -191,4 +191,5 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
   "operating": 0.175670862197876
   }
   }
+
 ```

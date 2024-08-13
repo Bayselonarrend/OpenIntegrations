@@ -53,7 +53,7 @@ Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "allowedActions": {
   "1": {
@@ -125,4 +125,5 @@ Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
+
 ```

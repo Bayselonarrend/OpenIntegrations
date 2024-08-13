@@ -54,7 +54,7 @@ Method at API documentation: [task.checklistitem.update](https://dev.1c-bitrix.r
 ```
 
 ```json title="Result"
-{
+  {
   "result": null,
   "time": {
   "start": 1720816506.52861,
@@ -67,4 +67,5 @@ Method at API documentation: [task.checklistitem.update](https://dev.1c-bitrix.r
   "operating": 0
   }
   }
+
 ```

@@ -39,9 +39,10 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
+  {
   "response": {
   "property_id": 260
   }
   }
+
 ```

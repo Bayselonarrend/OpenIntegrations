@@ -53,7 +53,7 @@ sidebar_position: 20
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "allowedActions": {
    "1": {
@@ -125,4 +125,5 @@ sidebar_position: 20
   "operating": 0
  }
 }
+
 ```

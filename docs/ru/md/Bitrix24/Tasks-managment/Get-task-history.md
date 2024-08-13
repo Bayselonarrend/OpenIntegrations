@@ -48,7 +48,7 @@ sidebar_position: 19
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "list": [
    {
@@ -304,4 +304,5 @@ sidebar_position: 19
   "operating": 0
  }
 }
+
 ```

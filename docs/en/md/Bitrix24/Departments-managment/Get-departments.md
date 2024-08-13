@@ -51,7 +51,7 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "42",
@@ -73,4 +73,5 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
   "operating": 0
   }
   }
+
 ```

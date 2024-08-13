@@ -48,7 +48,7 @@ Method at API documentation: [im.dialog.get](https://dev.1c-bitrix.ru/learning/c
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "id": 10,
   "parent_chat_id": 0,
@@ -130,4 +130,5 @@ Method at API documentation: [im.dialog.get](https://dev.1c-bitrix.ru/learning/c
   "operating": 0
   }
   }
+
 ```

@@ -35,7 +35,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-[
+  [
   {
   "id": 397209,
   "group_id": 218861756,
@@ -222,4 +222,5 @@ sidebar_position: 1
   }
   }
   ]
+
 ```

@@ -38,7 +38,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
+  {
   "eventType": "default",
   "attachments": [
   {
@@ -84,4 +84,5 @@ sidebar_position: 3
   "etag": "\"3417013976948000\"",
   "kind": "calendar#event"
   }
+
 ```

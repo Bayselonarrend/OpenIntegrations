@@ -54,7 +54,7 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "1716",
   "NAME": "New file name.jpg",
@@ -86,4 +86,5 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
+
 ```

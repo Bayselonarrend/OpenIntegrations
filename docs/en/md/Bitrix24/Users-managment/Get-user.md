@@ -48,7 +48,7 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "60",
@@ -83,4 +83,5 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
   "operating": 0
   }
   }
+
 ```

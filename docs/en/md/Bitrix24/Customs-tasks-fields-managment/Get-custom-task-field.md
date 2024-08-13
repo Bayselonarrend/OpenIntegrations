@@ -48,7 +48,7 @@ Method at API documentation: [task.item.userfield.get](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "261",
   "ENTITY_ID": "TASKS_TASK",
@@ -183,4 +183,5 @@ Method at API documentation: [task.item.userfield.get](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```

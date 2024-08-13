@@ -48,7 +48,7 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "94",
@@ -90,4 +90,5 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
   "operating": 0
   }
   }
+
 ```

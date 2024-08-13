@@ -45,7 +45,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-{
+    {
  "result": "2024-06-13T18:40:54+00:00",
  "time": {
   "start": 1718304054.57877,
@@ -58,4 +58,5 @@ sidebar_position: 4
   "operating": 0
  }
 }
+
 ```

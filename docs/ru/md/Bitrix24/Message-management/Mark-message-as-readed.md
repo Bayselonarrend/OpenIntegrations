@@ -51,7 +51,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "dialogId": 10,
   "chatId": 10,
@@ -69,4 +69,5 @@ sidebar_position: 6
   "operating": 0
  }
 }
+
 ```

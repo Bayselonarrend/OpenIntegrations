@@ -48,7 +48,7 @@ Method at API documentation: [disk.folder.getchildren](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "848",
@@ -97,4 +97,5 @@ Method at API documentation: [disk.folder.getchildren](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```

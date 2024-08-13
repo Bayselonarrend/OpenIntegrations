@@ -47,7 +47,7 @@ Method at API documentation: [disk.folder.markdeleted](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "936",
   "NAME": "New catalog",
@@ -76,4 +76,5 @@ Method at API documentation: [disk.folder.markdeleted](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```

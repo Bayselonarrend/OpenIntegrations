@@ -41,7 +41,8 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "limit": 2,
   "offset": 1,
   "items": [
@@ -195,4 +196,6 @@ sidebar_position: 8
   }
   ]
   }
+  
+
 ```

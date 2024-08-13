@@ -45,7 +45,7 @@ Method at API documentation: [user.current](https://dev.1c-bitrix.ru/rest_help/u
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "1",
   "XML_ID": "53818298",
@@ -79,4 +79,5 @@ Method at API documentation: [user.current](https://dev.1c-bitrix.ru/rest_help/u
   "operating": 0
   }
   }
+
 ```

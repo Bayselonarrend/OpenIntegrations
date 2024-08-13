@@ -49,7 +49,7 @@ sidebar_position: 9
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "STATUS": "PAUSED",
   "TIME_START": "2024-07-30T07:10:51+00:00",
@@ -76,4 +76,5 @@ sidebar_position: 9
   "operating": 0
  }
 }
+
 ```

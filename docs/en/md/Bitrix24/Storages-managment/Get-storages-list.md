@@ -44,7 +44,7 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "3",
@@ -122,4 +122,5 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
+
 ```

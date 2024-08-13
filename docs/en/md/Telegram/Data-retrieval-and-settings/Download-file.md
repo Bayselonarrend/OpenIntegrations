@@ -38,5 +38,6 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-<Binary file's binary data>
+  <Binary file's binary data>
+
 ```

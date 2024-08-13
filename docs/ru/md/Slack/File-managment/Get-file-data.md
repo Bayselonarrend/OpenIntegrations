@@ -39,7 +39,8 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "ok": true,
   "file": {
   "id": "F070VL6FQFM",
@@ -81,4 +82,6 @@ sidebar_position: 3
   "next_cursor": ""
   }
   }
+  
+
 ```

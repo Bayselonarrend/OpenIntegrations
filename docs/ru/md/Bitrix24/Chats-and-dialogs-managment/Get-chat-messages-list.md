@@ -50,7 +50,7 @@ sidebar_position: 13
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "chat_id": 10,
   "messages": [
@@ -396,4 +396,5 @@ sidebar_position: 13
   "operating": 0
  }
 }
+
 ```

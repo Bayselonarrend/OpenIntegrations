@@ -39,9 +39,10 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
+  {
   "ok": true,
   "already_closed": false,
   "no_op": false
   }
+
 ```

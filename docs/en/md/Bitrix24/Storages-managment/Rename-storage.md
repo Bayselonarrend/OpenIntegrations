@@ -45,7 +45,7 @@ Method at API documentation: [disk.storage.rename](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "18",
   "NAME": "New storage name",
@@ -66,4 +66,5 @@ Method at API documentation: [disk.storage.rename](https://dev.1c-bitrix.ru/rest
   "operating": 0
   }
   }
+
 ```

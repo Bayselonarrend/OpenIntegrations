@@ -48,7 +48,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "40",
@@ -416,4 +416,5 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
+
 ```
