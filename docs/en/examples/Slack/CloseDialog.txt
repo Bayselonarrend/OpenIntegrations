@@ -1,0 +1,5 @@
+﻿  
+  Dialog = "D06UAKK1C6R";
+  
+  Response = OPI_Slack.CloseDialog(Token, Dialog); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

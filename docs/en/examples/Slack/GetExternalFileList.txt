@@ -1,0 +1,5 @@
+﻿  
+  Channel = "C070VPMKN8J";
+  
+  Response = OPI_Slack.GetExternalFileList(Token, Channel); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

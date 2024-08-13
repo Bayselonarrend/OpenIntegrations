@@ -1,0 +1,8 @@
+﻿  
+  Base = "apptm8Xqo7TwMaipQ";
+  Table = "tbl9G4jVoTJpxYwSY";
+  Name = String(New UUID);
+  Field = OPI_Airtable.GetNumberField(Name);
+  
+  Response = OPI_Airtable.CreateField(Token, Base, Table, FieldStructure); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

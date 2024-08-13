@@ -1,0 +1,6 @@
+﻿  
+  URL = https://opi.neocities.org/test_data/document.docx;
+  Title = "NewFile";
+  
+  Response = OPI_Slack.AddExternalFile(Token, URL, Title); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

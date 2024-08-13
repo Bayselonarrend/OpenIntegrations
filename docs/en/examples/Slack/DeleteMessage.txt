@@ -1,0 +1,6 @@
+﻿  
+  Channel = "C06UFNUTKUL";
+  Timestamp = "1714146538.221929";
+  
+  Response = OPI_Slack.DeleteMessage(Token, Channel, Timestamp); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

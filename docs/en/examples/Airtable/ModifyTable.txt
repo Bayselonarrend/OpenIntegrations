@@ -1,0 +1,8 @@
+﻿  
+  Base = "apptm8Xqo7TwMaipQ";
+  Table = "tbl9G4jVoTJpxYwSY";
+  Name = "Test table 2 (change.)";
+  Description = "New table (change.)";
+  
+  Response = OPI_Airtable.ModifyTable(Token, Base, Table, Name, Description); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string

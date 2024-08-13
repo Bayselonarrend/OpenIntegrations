@@ -1,0 +1,6 @@
+﻿  
+  Name = "Number";
+  Precision = "0";
+  
+  Response = OPI_Airtable.GetNumberField(Name, Precision); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
