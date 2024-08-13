@@ -9,12 +9,12 @@ sidebar_position: 4
 
 `Function GetAdvertisingCategoryList(Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -22,49 +22,49 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.GetAdvertisingCategoryList(Parameters);
- Response = OPI_Tools.JSONString(Response);
+  
+  Response = OPI_VK.GetAdvertisingCategoryList(Parameters);
+  Response = OPI_Tools.JSONString(Response);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk GetAdvertisingCategoryList --auth %auth%
+    
+  oint vk GetAdvertisingCategoryList --auth %auth%
 
 ```
 
 ```json title="Result"
 {
- "response": {
- "v2": [
- {
- "subcategories": [
- {
- "subcategories": [
- {
- "name": "Mobile phones and tablets",
- "id": 202
- },
- {
- "name": "Audio and video",
- "id": 203
- },
- {
- "name": "Portable gadgets",
- "id": 204
- },
- {
- "name": "Consoles",
- "id": 205
- },
- ...
- ]
- }
- ]
- }
- ]
- }
- }
+  "response": {
+  "v2": [
+  {
+  "subcategories": [
+  {
+  "subcategories": [
+  {
+  "name": "Mobile phones and tablets",
+  "id": 202
+  },
+  {
+  "name": "Audio and video",
+  "id": 203
+  },
+  {
+  "name": "Portable gadgets",
+  "id": 204
+  },
+  {
+  "name": "Consoles",
+  "id": 205
+  },
+  ...
+  ]
+  }
+  ]
+  }
+  ]
+  }
+  }
 ```

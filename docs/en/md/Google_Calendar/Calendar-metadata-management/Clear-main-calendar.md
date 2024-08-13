@@ -9,12 +9,12 @@ sidebar_position: 4
 
 `Function ClearMainCalendar(Val Token) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Google
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Google
 
 <br/>
 
@@ -22,15 +22,15 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Response = OPI_GoogleCalendar.ClearMainCalendar(Token);
+  
+  Response = OPI_GoogleCalendar.ClearMainCalendar(Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint gcalendar ClearMainCalendar --token %token%
+    
+  oint gcalendar ClearMainCalendar --token %token%
 
 ```
 

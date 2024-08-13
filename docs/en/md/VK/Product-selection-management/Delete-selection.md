@@ -9,13 +9,13 @@ sidebar_position: 7
 
 `Function DeleteSelection(Val Selection, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Selection | --sel | String | Selection ID |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Selection | --sel | String | Selection ID |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -23,23 +23,23 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- 
- Selection = "125";
- 
- Result = OPI_VK.DeleteSelection(Selection, Parameters);
+  Parameters = GetVKParameters();
+  
+  Selection = "125";
+  
+  Result = OPI_VK.DeleteSelection(Selection, Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk DeleteSelection --sel %sel% --auth %auth%
+    
+  oint vk DeleteSelection --sel "125" --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": 1
- }
+  "response": 1
+  }
 ```

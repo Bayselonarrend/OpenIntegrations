@@ -37,7 +37,7 @@ sidebar_position: 7
   
   Результат = OPI_Bitrix24.ВосстановитьФайл(URL, IDФайла, Токен);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

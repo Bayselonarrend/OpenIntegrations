@@ -9,14 +9,14 @@ sidebar_position: 7
 
 `Function ResendVoice(Val Token, Val ChatID, Val FileID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | ChatID | --chatid | String, Number | Chat ID for sending |
- | FileID | --fileid | String, Number | File ID of voice message |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | ChatID | --chatid | String, Number | Chat ID for sending |
+  | FileID | --fileid | String, Number | File ID of voice message |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK Teams
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
 
 <br/>
 
@@ -26,13 +26,22 @@ Method at API documentation: [GET /messages/sendVoice](https://teams.vk.com/bota
 <br/>
 
 
-	
-
-
-```sh title="CLI command example"
- 
- oint vkteams ResendVoice --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --fileid "I000bPVBYaNQkn9Fg3oY0066ba35811bd"
-
+```bsl title="Code example"
+  Token  = FunctionParameters["VkTeams_Token"];
+  ChatID = FunctionParameters["VkTeams_ChatID"];
+  FileID = FunctionParameters["VkTeams_VoiceID"];
+  
+  Result = OPI_VKTeams.ResendVoice(Token, ChatID, FileID);
 ```
 
 
+
+```sh title="CLI command example"
+    
+  oint vkteams ResendVoice --token %token% --chatid %chatid% --fileid %fileid%
+
+```
+
+```json title="Result"
+
+```

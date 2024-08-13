@@ -9,13 +9,13 @@ sidebar_position: 6
 
 `Function CancelFilePublication(Val Token, Val FileID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | FileID | --fileid | String | ID of the file to be accessed |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | FileID | --fileid | String | ID of the file to be accessed |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
 
 <br/>
 
@@ -23,17 +23,17 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
- File = "kJU6-a-pT48AAAAAAAAABw";
- 
- Result = OPI_Dropbox.CancelFilePublication(Token, File);
+  Token = FunctionParameters["Dropbox_Token"];
+  File  = FunctionParameters["Dropbox_FileID"];
+  
+  Result = OPI_Dropbox.CancelFilePublication(Token, File);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint dropbox CancelFilePublication --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --fileid %fileid%
+    
+  oint dropbox CancelFilePublication --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --fileid %fileid%
 
 ```
 

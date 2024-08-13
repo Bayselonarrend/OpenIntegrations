@@ -9,14 +9,14 @@ sidebar_position: 1
 
 `Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | AccountID | --cabinet | String, Number | Advertising account ID |
- | Name | --title | String | Campaign name |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | AccountID | --cabinet | String, Number | Advertising account ID |
+  | Name | --title | String | Campaign name |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -24,28 +24,28 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- 
- AccountID = "1607951446";
- Name = "New campaign";
- 
- Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);
+  Parameters = GetVKParameters();
+  
+  AccountID = "1607951446";
+  Name = "New campaign";
+  
+  Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk CreateAdvertisingCampaign --cabinet %cabinet% --title %title% --auth %auth%
+    
+  oint vk CreateAdvertisingCampaign --cabinet "1607951446" --title %title% --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": [
- {
- "id": 1029701085
- }
- ]
- }
+  "response": [
+  {
+  "id": 1029701085
+  }
+  ]
+  }
 ```

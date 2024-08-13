@@ -9,13 +9,13 @@ sidebar_position: 17
 
 `Function GetUserStatus(Val URL, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -26,27 +26,29 @@ Method at API documentation: [im.user.status.get](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- 
- Result = OPI_Bitrix24.GetUserStatus(URL);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- 
- Result = OPI_Bitrix24.GetUserStatus(URL, Token);
+  URL = FunctionParameters["Bitrix24_URL"];
+  
+  Result = OPI_Bitrix24.GetUserStatus(URL);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "GetUserStatus (wh)", "Bitrix24");
+  
+  URL   = FunctionParameters["Bitrix24_Domain"];
+  Token = FunctionParameters["Bitrix24_Token"];
+  
+  Result = OPI_Bitrix24.GetUserStatus(URL, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 GetUserStatus --url %url% --token %token%
+    
+  oint bitrix24 GetUserStatus --url "b24-ar17wx.bitrix24.by" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "error": "expired_token",
- "error_description": "The access token provided has expired."
-}
+  "error": "expired_token",
+  "error_description": "The access token provided has expired."
+  }
 ```

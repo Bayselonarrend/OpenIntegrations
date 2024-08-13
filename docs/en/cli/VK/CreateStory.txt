@@ -1,0 +1,1 @@
+﻿oint vk CreateStory --picture "https://openintegrations.dev/test_data/picture.jpg // URL, Path to file or Binary Data" --url "https://github.com/Bayselonarrend/OpenIntegrations" --auth "GetVKParameters()"

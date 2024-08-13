@@ -25,7 +25,7 @@ sidebar_position: 4
   Токен     = "6129457865:AAFyzNYOAFbu...";
   Результат = OPI_Telegram.УдалитьWebhook(Токен);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

@@ -9,13 +9,13 @@ sidebar_position: 3
 
 `Function GetPreview(Val Token, Val Path) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | Path | --path | String | Path to the object |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | Path | --path | String | Path to the object |
 
- 
- Returns: BinaryData - document preview
+  
+  Returns:  BinaryData - document preview
 
 <br/>
 
@@ -23,17 +23,17 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
- Path = "/New/mydoc.docx";
- 
- Result = OPI_Dropbox.GetPreview(Token, Path);
+  Token = FunctionParameters["Dropbox_Token"];
+  Path  = "/New/mydoc.docx";
+  
+  Result = OPI_Dropbox.GetPreview(Token, Path);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint dropbox GetPreview --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path%
+    
+  oint dropbox GetPreview --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --path %path%
 
 ```
 

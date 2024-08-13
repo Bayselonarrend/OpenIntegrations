@@ -30,7 +30,7 @@ sidebar_position: 2
   
   Результат = OPI_Bitrix24.ПолучитьТокен(ClientID, ClientSecret, Code);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"
