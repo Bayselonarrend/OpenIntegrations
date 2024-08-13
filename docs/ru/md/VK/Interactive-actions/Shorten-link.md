@@ -26,7 +26,7 @@ sidebar_position: 5
   
   Ответ = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"
