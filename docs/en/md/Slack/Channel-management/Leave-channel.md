@@ -9,13 +9,13 @@ sidebar_position: 10
 
 `Function LeaveChannel(Val Token, Val Channel) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | Channel | --channel | String | Channel ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | Channel | --channel | String | Channel ID |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
 
 <br/>
 
@@ -23,23 +23,23 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
- 
- Channel = "C070VPMKN8J";
- 
- Response = OPI_Slack.LeaveChannel(Token, Channel); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Channel = "C070VPMKN8J";
+  
+  Response = OPI_Slack.LeaveChannel(Token, Channel); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint slack LeaveChannel --token %token% --channel "C070VPMKN8J"
+    
+  oint slack LeaveChannel --token %token% --channel "C070VPMKN8J"
 
 ```
 
 ```json title="Result"
 {
- "ok": true
- }
+  "ok": true
+  }
 ```

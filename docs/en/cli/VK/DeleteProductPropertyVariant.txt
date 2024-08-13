@@ -1,0 +1,1 @@
+﻿oint vk DeleteProductPropertyVariant --option "2054" --auth "GetVKParameters()"

@@ -26,7 +26,14 @@ sidebar_position: 7
 <br/>
 
 
-	
+```bsl title="Пример кода"
+  Токен    = "001.3501506236.091...";
+  IDЧата   = "AoLI0egLWBSLR1Ngn2w";
+  IDФайла  = "I000bPVBYaNQkn9Fg3oY0066ba35811bd";
+  
+  Результат = OPI_VKTeams.ПереслатьГолосовоеСообщение(Токен, IDЧата, IDФайла);
+```
+        
 
 
 ```sh title="Пример команды CLI"
@@ -35,4 +42,6 @@ sidebar_position: 7
 
 ```
 
+```json title="Результат"
 
+```

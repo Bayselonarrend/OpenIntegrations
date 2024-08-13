@@ -27,7 +27,7 @@ sidebar_position: 7
   Путь      = "/alpaca.png";
   Результат = OPI_YandexDisk.СкачатьФайл(Токен, Путь);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

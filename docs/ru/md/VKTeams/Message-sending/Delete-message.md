@@ -33,7 +33,7 @@ sidebar_position: 5
   
   Результат = OPI_VKTeams.УдалитьСообщение(Токен, IDЧата, IDСообщения);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"
@@ -42,4 +42,6 @@ sidebar_position: 5
 
 ```
 
+```json title="Результат"
 
+```

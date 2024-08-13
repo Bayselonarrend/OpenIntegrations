@@ -9,13 +9,13 @@ sidebar_position: 5
 
 `Function ShortenLink(Val URL, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL for shortening |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL for shortening |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: String - Shortened URL
+  
+  Returns:  String - Shortened URL
 
 <br/>
 
@@ -23,15 +23,15 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Response = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
+  
+  Response = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk ShortenLink --url %url% --auth %auth%
+    
+  oint vk ShortenLink --url %url% --auth %auth%
 
 ```
 

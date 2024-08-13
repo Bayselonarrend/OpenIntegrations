@@ -9,12 +9,12 @@ sidebar_position: 1
 
 `Function GetAuthorizationLink(Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: String - URL for browser transition
+  
+  Returns:  String - URL for browser transition
 
 <br/>
 
@@ -22,15 +22,15 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- Response = OPI_Twitter.GetAuthorizationLink(Parameters);
+  
+  Response = OPI_Twitter.GetAuthorizationLink(Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint twitter GetAuthorizationLink --auth %auth%
+    
+  oint twitter GetAuthorizationLink --auth %auth%
 
 ```
 

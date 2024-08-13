@@ -1,0 +1,1 @@
+﻿oint vk AddProduct --product %product% --sel "125" --auth "GetVKParameters()"

@@ -2,40 +2,43 @@
 sidebar_position: 1
 ---
 
-# Get description events 
+# Get event description 
 
 
 
 
 `Function GetEventDescription() Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
 
- 
- Returns: Map Of KeyAndValue - Empty event template
+  
+  Returns:  Map Of KeyAndValue - Empty event template
 
 <br/>
 
 
 
 
-	
+```bsl title="Code example"
+
+```
+
 
 
 ```sh title="CLI command example"
- 
- oint gcalendar GetEventDescription
+    
+  oint gcalendar GetEventDescription
 
 ```
 
 ```json title="Result"
 EventMap = New Map;
- EventMap.Insert("Description", ""); // Event description
- EventMap.Insert("Title", "New event"); // Title events
- EventMap.Insert("Venue", ""); // String description of the venue of the event
- EventMap.Insert("StartDate", CurrentSessionDate()); // Date of start events
- EventMap.Insert("EndDate", EventMap["StartDate"] + 3600); // Date of end events
- EventMap.Insert("ArrayOfAttachmentURLs", New Map); // Key - name, Value - URL to file
- EventMap.Insert("SendNotifications", True); // Indication of sending notifications to participants
+  EventMap.Insert("Description", ""); // Event description
+  EventMap.Insert("Title", "New event"); // Title events
+  EventMap.Insert("Venue", ""); // String description of the venue of the event
+  EventMap.Insert("StartDate", CurrentSessionDate()); // Date of start events
+  EventMap.Insert("EndDate", EventMap["StartDate"] + 3600); // Date of end events
+  EventMap.Insert("ArrayOfAttachmentURLs", New Map); // Key - name, Value - URL to file
+  EventMap.Insert("SendNotifications", True); // Indication of sending notifications to participants
 ```

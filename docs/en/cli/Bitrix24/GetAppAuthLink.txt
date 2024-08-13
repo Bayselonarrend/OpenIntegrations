@@ -1,0 +1,1 @@
+﻿oint bitrix24 GetAppAuthLink --domain "b24-ar17wx.bitrix24.by" --clientid "local.6667fc928a50a9.70414732"

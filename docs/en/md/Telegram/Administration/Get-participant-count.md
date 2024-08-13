@@ -9,13 +9,13 @@ sidebar_position: 6
 
 `Function GetParticipantCount(Val Token, Val ChatID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | ChatID | --chat | String, Number | Target chat ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | ChatID | --chat | String, Number | Target chat ID |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
 
 <br/>
 
@@ -23,23 +23,23 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
- ChannelID = "@testsichee";
- 
- Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);
+  Token     = FunctionParameters["Telegram_Token"];
+  ChannelID = FunctionParameters["Telegram_ChannelID"];
+  
+  Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint telegram GetParticipantCount --token "6129457865:AAFyzNYOAFbu..." --chat %chat%
+    
+  oint telegram GetParticipantCount --token "6129457865:AAFyzNYOAFbu..." --chat %chat%
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "result": 2
-}
+  "ok": true,
+  "result": 2
+  }
 ```

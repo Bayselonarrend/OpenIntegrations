@@ -1,0 +1,1 @@
+﻿oint yadisk GetDiskInformation --token "y0_AgAAAABdylaOAAs0QgAAAAD5i-a..."

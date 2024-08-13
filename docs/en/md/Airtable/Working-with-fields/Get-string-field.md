@@ -9,12 +9,12 @@ sidebar_position: 3
 
 `Function GetStringField(Val Name) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | New field name |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | New field name |
 
- 
- Returns: Structure - Field description
+  
+  Returns:  Structure - Field description
 
 <br/>
 
@@ -22,24 +22,24 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Name = "String";
- 
- Response = OPI_Airtable.GetStringField(Name); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Name = "String";
+  
+  Response = OPI_Airtable.GetStringField(Name); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint airtable GetStringField --title "String"
+    
+  oint airtable GetStringField --title "String"
 
 ```
 
 ```json title="Result"
 {
- "name": "String",
- "type": "richText"
- }
+  "name": "String",
+  "type": "richText"
+  }
 ```

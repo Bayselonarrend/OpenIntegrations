@@ -9,13 +9,13 @@ sidebar_position: 4
 
 `Function GetOnlineUsers(Val Token, Val UserIDs) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Viber Token |
- | UserIDs | --users | String,Number,Array of String,Number | Viber User(s) ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Viber Token |
+  | UserIDs | --users | String,Number,Array of String,Number | Viber User(s) ID |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Viber
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Viber
 
 <br/>
 
@@ -23,30 +23,30 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Response = OPI_Viber.GetOnlineUsers(Token, UserID); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Response = OPI_Viber.GetOnlineUsers(Token, UserID); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint viber GetOnlineUsers --token %token% --users %users%
+    
+  oint viber GetOnlineUsers --token %token% --users %users%
 
 ```
 
 ```json title="Result"
 {
- "users": [
- {
- "last_online": 1704796869778,
- "online_status_message": "offline",
- "online_status": 1,
- "id": "d3jxe111111111YGgZg=="
- }
- ],
- "status_message": "ok",
- "status": 0
- }
+  "users": [
+  {
+  "last_online": 1704796869778,
+  "online_status_message": "offline",
+  "online_status": 1,
+  "id": "d3jxe111111111YGgZg=="
+  }
+  ],
+  "status_message": "ok",
+  "status": 0
+  }
 ```

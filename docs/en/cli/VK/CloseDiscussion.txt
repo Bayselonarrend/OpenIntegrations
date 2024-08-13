@@ -1,0 +1,1 @@
+﻿oint vk CloseDiscussion --topic "51798392" --remove %remove% --auth "GetVKParameters()"

@@ -9,12 +9,12 @@ sidebar_position: 1
 
 `Function GetBotInformation(Val Token) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
 
 <br/>
 
@@ -22,29 +22,29 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- 
- 
- Response = OPI_Slack.GetBotInformation(Token); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  
+  Response = OPI_Slack.GetBotInformation(Token); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint slack GetBotInformation --token %token%
+    
+  oint slack GetBotInformation --token %token%
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "url": "https://openintegrationsgroup.slack.com/",
- "team": "OpenIntegrations",
- "user": "openintegrations",
- "team_id": "T06UD92BS3C",
- "user_id": "U06UG1CAYH2",
- "bot_id": "B06TZ0MJV5M",
- "is_enterprise_install": false
- }
+  "ok": true,
+  "url": "https://openintegrationsgroup.slack.com/",
+  "team": "OpenIntegrations",
+  "user": "openintegrations",
+  "team_id": "T06UD92BS3C",
+  "user_id": "U06UG1CAYH2",
+  "bot_id": "B06TZ0MJV5M",
+  "is_enterprise_install": false
+  }
 ```

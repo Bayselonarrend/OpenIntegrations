@@ -9,15 +9,15 @@ sidebar_position: 4
 
 `Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | Channel | --channel | String | Channel ID |
- | Timestamp | --stamp | String | Timestamp or message ID |
- | IsDelayed | --issheduled | Boolean | Indicator of deleting a delayed message |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | Channel | --channel | String | Channel ID |
+  | Timestamp | --stamp | String | Timestamp or message ID |
+  | IsDelayed | --issheduled | Boolean | Indicator of deleting a delayed message |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
 
 <br/>
 
@@ -25,26 +25,26 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Channel = "C06UFNUTKUL";
- Timestamp = "1714146538.221929";
- 
- Response = OPI_Slack.DeleteMessage(Token, Channel, Timestamp); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Channel = "C06UFNUTKUL";
+  Timestamp = "1714146538.221929";
+  
+  Response = OPI_Slack.DeleteMessage(Token, Channel, Timestamp); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint slack DeleteMessage --token %token% --channel "C06UFNUTKUL" --stamp "1714146538.221929" --issheduled %issheduled%
+    
+  oint slack DeleteMessage --token %token% --channel "C06UFNUTKUL" --stamp "1714146538.221929" --issheduled %issheduled%
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "channel": "C06UFNUTKUL",
- "ts": "1714146538.221929"
- }
+  "ok": true,
+  "channel": "C06UFNUTKUL",
+  "ts": "1714146538.221929"
+  }
 ```

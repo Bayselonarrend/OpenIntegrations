@@ -9,15 +9,15 @@ sidebar_position: 8
 
 `Function ChangeChatColor(Val URL, Val ChatID, Val Color, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | ChatID | --chat | String, Number | Chat ID |
- | Color | --color | String | New chat color |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | ChatID | --chat | String, Number | Chat ID |
+  | Color | --color | String | New chat color |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -30,42 +30,44 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- ChatID = "450";
- 
- Color = "AZURE";
- 
- Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- ChatID = "452";
- 
- Color = "PURPLE";
- 
- Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color, Token);
+  URL    = FunctionParameters["Bitrix24_URL"];
+  ChatID = FunctionParameters["Bitrix24_HookChatID"];
+  
+  Color = "AZURE";
+  
+  Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatColor (wh)", "Bitrix24");
+  
+  URL    = FunctionParameters["Bitrix24_Domain"];
+  Token  = FunctionParameters["Bitrix24_Token"];
+  ChatID = FunctionParameters["Bitrix24_ChatID"];
+  
+  Color = "PURPLE";
+  
+  Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 ChangeChatColor --url %url% --chat %chat% --color %color% --token %token%
+    
+  oint bitrix24 ChangeChatColor --url "b24-ar17wx.bitrix24.by" --chat "452" --color "PURPLE" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": true,
- "time": {
- "start": 1720865688.95778,
- "finish": 1720865689.02493,
- "duration": 0.0671589374542236,
- "processing": 0.0428512096405029,
- "date_start": "2024-07-13T10:14:48+00:00",
- "date_finish": "2024-07-13T10:14:49+00:00",
- "operating_reset_at": 1720866288,
- "operating": 0
- }
-}
+  "result": true,
+  "time": {
+  "start": 1720865688.95778,
+  "finish": 1720865689.02493,
+  "duration": 0.0671589374542236,
+  "processing": 0.0428512096405029,
+  "date_start": "2024-07-13T10:14:48+00:00",
+  "date_finish": "2024-07-13T10:14:49+00:00",
+  "operating_reset_at": 1720866288,
+  "operating": 0
+  }
+  }
 ```

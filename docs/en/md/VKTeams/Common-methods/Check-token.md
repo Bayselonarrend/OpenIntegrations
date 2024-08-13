@@ -9,12 +9,12 @@ sidebar_position: 1
 
 `Function CheckToken(Val Token) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK Teams
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
 
 <br/>
 
@@ -25,16 +25,18 @@ Method at API documentation: [GET /self/get](https://teams.vk.com/botapi/#/self/
 
 
 ```bsl title="Code example"
- Token = "001.3501506236.091...";
- Result = OPI_VKTeams.CheckToken(Token);
+  Token  = FunctionParameters["VkTeams_Token"];
+  Result = OPI_VKTeams.CheckToken(Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vkteams CheckToken --token %token%
+    
+  oint vkteams CheckToken --token "001.3501506236.091..."
 
 ```
 
+```json title="Result"
 
+```

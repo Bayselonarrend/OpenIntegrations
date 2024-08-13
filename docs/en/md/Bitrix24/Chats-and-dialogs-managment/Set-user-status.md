@@ -9,14 +9,14 @@ sidebar_position: 18
 
 `Function SetUserStatus(Val URL, Val Status, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | Status | --status | String, Number | Status value: online, dnd, away |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | Status | --status | String, Number | Status value: online, dnd, away |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -27,38 +27,40 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- Status = "dnd";
- 
- Result = OPI_Bitrix24.SetUserStatus(URL, Status);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- Status = "away";
- 
- Result = OPI_Bitrix24.SetUserStatus(URL, Status, Token);
+  URL    = FunctionParameters["Bitrix24_URL"];
+  Status = "dnd";
+  
+  Result = OPI_Bitrix24.SetUserStatus(URL, Status);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "SetUserStatus (wh)", "Bitrix24");
+  
+  URL    = FunctionParameters["Bitrix24_Domain"];
+  Token  = FunctionParameters["Bitrix24_Token"];
+  Status = "away";
+  
+  Result = OPI_Bitrix24.SetUserStatus(URL, Status, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 SetUserStatus --url %url% --status %status% --token %token%
+    
+  oint bitrix24 SetUserStatus --url "b24-ar17wx.bitrix24.by" --status "away" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": true,
- "time": {
- "start": 1722083795.3692,
- "finish": 1722083795.39818,
- "duration": 0.0289750099182129,
- "processing": 0.00522208213806152,
- "date_start": "2024-07-27T12:36:35+00:00",
- "date_finish": "2024-07-27T12:36:35+00:00",
- "operating_reset_at": 1722084395,
- "operating": 0
- }
-}
+  "result": true,
+  "time": {
+  "start": 1722083795.3692,
+  "finish": 1722083795.39818,
+  "duration": 0.0289750099182129,
+  "processing": 0.00522208213806152,
+  "date_start": "2024-07-27T12:36:35+00:00",
+  "date_finish": "2024-07-27T12:36:35+00:00",
+  "operating_reset_at": 1722084395,
+  "operating": 0
+  }
+  }
 ```

@@ -1,0 +1,1 @@
+﻿oint vk SaveImageToAlbum --album "305187504" --picture "https://openintegrations.dev/test_data/picture.jpg // URL, Path to file or Binary Data" --description %description% --auth "GetVKParameters()"

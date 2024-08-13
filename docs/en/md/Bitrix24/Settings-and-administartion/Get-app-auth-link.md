@@ -9,13 +9,13 @@ sidebar_position: 1
 
 `Function GetAppAuthLink(Val Domain, Val ClientID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Domain | --domain | String | Current Bitrix URL (like 'portal.bitrix24.com') |
- | ClientID | --clientid | String | Client ID from app settings |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Domain | --domain | String | Current Bitrix URL (like 'portal.bitrix24.com') |
+  | ClientID | --clientid | String | Client ID from app settings |
 
- 
- Returns: String - URL for browser transition
+  
+  Returns:  String - URL for browser transition
 
 <br/>
 
@@ -23,17 +23,17 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
- Domain = "b24-ar17wx.bitrix24.by";
- ClientID = "local.6667fc928a50a9.70414732";
- 
- Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
+  Domain   = FunctionParameters["Bitrix24_Domain"];
+  ClientID = FunctionParameters["Bitrix24_ClientID"];
+  
+  Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 GetAppAuthLink --domain %domain% --clientid %clientid%
+    
+  oint bitrix24 GetAppAuthLink --domain "b24-ar17wx.bitrix24.by" --clientid "local.6667fc928a50a9.70414732"
 
 ```
 

@@ -9,13 +9,13 @@ sidebar_position: 2
 
 `Function CloseDialog(Val Token, Val Dialog) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | Dialog | --conv | String | Dialog ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | Dialog | --conv | String | Dialog ID |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
 
 <br/>
 
@@ -23,25 +23,25 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
- 
- Dialog = "D06UAKK1C6R";
- 
- Response = OPI_Slack.CloseDialog(Token, Dialog); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Dialog = "D06UAKK1C6R";
+  
+  Response = OPI_Slack.CloseDialog(Token, Dialog); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint slack CloseDialog --token %token% --conv "D06UAKK1C6R"
+    
+  oint slack CloseDialog --token %token% --conv "D06UAKK1C6R"
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "already_closed": false,
- "no_op": false
- }
+  "ok": true,
+  "already_closed": false,
+  "no_op": false
+  }
 ```

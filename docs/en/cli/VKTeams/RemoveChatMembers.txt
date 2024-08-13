@@ -1,0 +1,1 @@
+﻿oint vkteams RemoveChatMembers --token %token% --chatid %chatid% --members %members%

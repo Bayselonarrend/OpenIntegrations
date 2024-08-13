@@ -1,0 +1,1 @@
+﻿oint vk CreateProductCollection --title "TestCollection" --picture "https://openintegrations.dev/test_data/picture.jpg" --main "True" --hidden "False" --auth "GetVKParameters()"

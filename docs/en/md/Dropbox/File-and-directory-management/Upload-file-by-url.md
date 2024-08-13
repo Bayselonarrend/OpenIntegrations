@@ -9,14 +9,14 @@ sidebar_position: 5
 
 `Function UploadFileByURL(Val Token, Val FileURL, Val Path) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | FileURL | --url | String | URL source of the file |
- | Path | --path | String | Save path on Dropbox |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | FileURL | --url | String | URL source of the file |
+  | Path | --path | String | Save path on Dropbox |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
 
 <br/>
 
@@ -24,24 +24,24 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- Path = "/New/url_doc.docx";
- Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
- URL = "https://openintegrations.dev/test_data/document.docx";
- 
- Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
+  Path  = "/New/url_doc.docx";
+  Token = FunctionParameters["Dropbox_Token"];
+  URL   = FunctionParameters["Document"];
+  
+  Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint dropbox UploadFileByURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --url %url% --path %path%
+    
+  oint dropbox UploadFileByURL --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --url %url% --path %path%
 
 ```
 
 ```json title="Result"
 {
- ".tag": "async_job_id",
- "async_job_id": "41d0vPCn2mYAAAAAAAAAAQ"
-}
+  ".tag": "async_job_id",
+  "async_job_id": "41d0vPCn2mYAAAAAAAAAAQ"
+  }
 ```

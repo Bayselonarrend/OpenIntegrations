@@ -9,14 +9,14 @@ sidebar_position: 4
 
 `Function DeleteObject(Val Token, Val Path, Val ToCart = True) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | Path | --path | String | Path to the folder or file to be deleted |
- | ToCart | --can | Boolean | To cart |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | Path | --path | String | Path to the folder or file to be deleted |
+  | ToCart | --can | Boolean | To cart |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Yandex
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
 
 <br/>
 
@@ -24,18 +24,18 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- 
- Token = "y0_AgAAAABdylaOAA...";
- Path = "/Alpaca.png"
- Response = OPI_YandexDisk.DeleteObject(Token, Path); //Map
- Response = OPI_Tools.JSONString(Response); //String
+  
+  Token = "y0_AgAAAABdylaOAA...";
+  Path = "/Alpaca.png"
+  Response = OPI_YandexDisk.DeleteObject(Token, Path); //Map
+  Response = OPI_Tools.JSONString(Response); //String
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint yadisk DeleteObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png" --can %can%
+    
+  oint yadisk DeleteObject --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png" --can %can%
 
 ```
 

@@ -1,0 +1,1 @@
+﻿oint vkteams SendVoice --token "001.3501506236.091..." --chatid "689203963@chat.agent" --file "https://openintegrations.dev/test_data/song.m4a  // URL" --type %type% --reply "7402287649739767956" --keyboard %keyboard%

@@ -9,14 +9,14 @@ sidebar_position: 4
 
 `Function PinMessage(Val Token, Val ChatID, Val MessageID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | ChatID | --chat | String, Number | Target chat ID |
- | MessageID | --message | String, Number | Target message ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | ChatID | --chat | String, Number | Target chat ID |
+  | MessageID | --message | String, Number | Target message ID |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
 
 <br/>
 
@@ -24,24 +24,24 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
- ChannelID = "@testsichee";
- MessageID = "6846";
- 
- Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
+  Token     = FunctionParameters["Telegram_Token"];
+  ChannelID = FunctionParameters["Telegram_ChannelID"];
+  MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+  
+  Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint telegram PinMessage --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "4951"
+    
+  oint telegram PinMessage --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --message "6846"
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "result": true
-}
+  "ok": true,
+  "result": true
+  }
 ```

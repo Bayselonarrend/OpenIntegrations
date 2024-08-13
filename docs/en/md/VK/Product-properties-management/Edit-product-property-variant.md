@@ -9,15 +9,15 @@ sidebar_position: 6
 
 `Function EditProductPropertyVariant(Val Value, Val Property, Val Option, Val Parameters = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Value | --value | String | New property value |
- | Property | --prop | String, Number | Property ID |
- | Option | --option | String, Number | Variant ID |
- | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Value | --value | String | New property value |
+  | Property | --prop | String, Number | Property ID |
+  | Option | --option | String, Number | Variant ID |
+  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from VK
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
 
 <br/>
 
@@ -25,28 +25,28 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
- Parameters = GetVKParameters();
- 
- Property = "648";
- Option = "2054";
- Value = "New variant name";
- 
- Result = OPI_VK.EditProductPropertyVariant(Value
-, Property
-, Option
-, Parameters);
+  Parameters = GetVKParameters();
+  
+  Property = FunctionParameters["VK_PropID"];
+  Option   = FunctionParameters["VK_PropVarID1"];
+  Value    = "New variant name";
+  
+  Result = OPI_VK.EditProductPropertyVariant(Value
+  , Property
+  , Option
+  , Parameters);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint vk EditProductPropertyVariant --value %value% --prop %prop% --option %option% --auth %auth%
+    
+  oint vk EditProductPropertyVariant --value %value% --prop "648" --option "2054" --auth "GetVKParameters()"
 
 ```
 
 ```json title="Result"
 {
- "response": 1
- }
+  "response": 1
+  }
 ```

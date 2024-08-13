@@ -9,13 +9,13 @@ sidebar_position: 9
 
 `Function GetFileBlock(Val Name, Val URL) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Picture name |
- | URL | --url | String | File URL |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Picture name |
+  | URL | --url | String | File URL |
 
- 
- Returns: Structure - FileBlock
+  
+  Returns:  Structure - FileBlock
 
 <br/>
 
@@ -25,13 +25,18 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 <br/>
 
 
-	
-
-
-```sh title="CLI command example"
- 
- oint bitrix24 GetFileBlock --title %title% --url %url%
+```bsl title="Code example"
 
 ```
 
 
+
+```sh title="CLI command example"
+    
+  oint bitrix24 GetFileBlock --title %title% --url %url%
+
+```
+
+```json title="Result"
+
+```

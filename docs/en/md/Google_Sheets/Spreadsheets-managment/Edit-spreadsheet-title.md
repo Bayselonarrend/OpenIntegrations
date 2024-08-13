@@ -9,14 +9,14 @@ sidebar_position: 3
 
 `Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | Spreadsheet | --spreadsheet | String | SpreadsheetID |
- | Name | --title | String | New name |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | Spreadsheet | --spreadsheet | String | SpreadsheetID |
+  | Name | --title | String | New name |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Google
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Google
 
 <br/>
 
@@ -24,27 +24,27 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
- 
- Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
- Name = "Test table (changed.)";
- 
- Response = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Spreadsheet = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
+  Name = "Test table (changed.)";
+  
+  Response = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint gsheets EditSpreadsheetTitle --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --title "Test table (changed.)"
+    
+  oint gsheets EditSpreadsheetTitle --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --title "Test table (changed.)"
 
 ```
 
 ```json title="Result"
 {
- "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
- "replies": [
- {}
- ]
- }
+  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
+  "replies": [
+  {}
+  ]
+  }
 ```

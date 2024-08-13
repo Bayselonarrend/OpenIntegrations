@@ -30,7 +30,7 @@ sidebar_position: 10
   
   Возврат Описание;
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"
@@ -39,4 +39,6 @@ sidebar_position: 10
 
 ```
 
+```json title="Результат"
 
+```

@@ -9,14 +9,14 @@ sidebar_position: 5
 
 `Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | Channel | --channel | String | Channel ID |
- | Cursor | --cursor | String | Pointer from the previous request, if the result rows > 100 |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | Channel | --channel | String | Channel ID |
+  | Cursor | --cursor | String | Pointer from the previous request, if the result rows > 100 |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Slack
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
 
 <br/>
 
@@ -24,27 +24,27 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Channel = "C070VPMKN8J";
- 
- Response = OPI_Slack.GetDelayedMessageList(Token, Channel); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Channel = "C070VPMKN8J";
+  
+  Response = OPI_Slack.GetDelayedMessageList(Token, Channel); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint slack GetDelayedMessageList --token %token% --channel "C070VPMKN8J" --cursor %cursor%
+    
+  oint slack GetDelayedMessageList --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "scheduled_messages": [],
- "response_metadata": {
- "next_cursor": ""
- }
- }
+  "ok": true,
+  "scheduled_messages": [],
+  "response_metadata": {
+  "next_cursor": ""
+  }
+  }
 ```

@@ -1,0 +1,1 @@
+﻿oint bitrix24 CreatePost --url "b24-ar17wx.bitrix24.by" --text "Text of post" --vision %vision% --files %files% --title "Post title" --important %important% --token "fe3fa966006e9f06006b12e400000001000..."

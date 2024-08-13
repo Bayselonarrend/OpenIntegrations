@@ -25,7 +25,7 @@ sidebar_position: 1
   Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
   Результат = OPI_YandexDisk.ПолучитьИнформациюОДиске(Токен);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

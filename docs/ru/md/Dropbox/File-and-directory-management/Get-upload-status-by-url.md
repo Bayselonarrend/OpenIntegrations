@@ -36,7 +36,7 @@ sidebar_position: 6
   
   КонецЦикла;
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"

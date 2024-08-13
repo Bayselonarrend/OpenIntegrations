@@ -1,0 +1,1 @@
+﻿oint vk ShortenLink --url %url% --auth %auth%

@@ -9,13 +9,13 @@ sidebar_position: 5
 
 `Function DeleteCalendar(Val Token, Val Calendar) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | Calendar | --calendar | String | Calendar ID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | Calendar | --calendar | String | Calendar ID |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Google
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Google
 
 <br/>
 
@@ -23,16 +23,16 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
- 
- Response = OPI_GoogleCalendar.DeleteCalendar(Token, "55868c32be16935f0...");
- Response = OPI_Tools.JSONString(Response);
+  
+  Response = OPI_GoogleCalendar.DeleteCalendar(Token, "55868c32be16935f0...");
+  Response = OPI_Tools.JSONString(Response);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint gcalendar DeleteCalendar --token %token% --calendar %calendar%
+    
+  oint gcalendar DeleteCalendar --token %token% --calendar %calendar%
 
 ```
 

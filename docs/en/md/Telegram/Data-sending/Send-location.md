@@ -9,16 +9,16 @@ sidebar_position: 8
 
 `Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
- | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
- | Latitude | --lat | String, Number | Geographic latitude |
- | Longitude | --long | String, Number | Geographic longitude |
- | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
+  | Latitude | --lat | String, Number | Geographic latitude |
+  | Longitude | --long | String, Number | Geographic longitude |
+  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
 
 <br/>
 
@@ -26,48 +26,50 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
- ChatID = "461699897";
- ChannelID = "@testsichee";
- Width = "48.87373649724122";
- Longitude = "48.87373649724122";
- 
- Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
- 
- Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
+  Token     = FunctionParameters["Telegram_Token"];
+  ChatID    = FunctionParameters["Telegram_ChatID"];
+  ChannelID = FunctionParameters["Telegram_ChannelID"];
+  Width     = FunctionParameters["Lat"];
+  Longitude = FunctionParameters["Long"];
+  
+  Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "SendLocation", "Telegram");
+  
+  Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint telegram SendLocation --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --lat %lat% --long "48.87373649724122" --keyboard %keyboard%
+    
+  oint telegram SendLocation --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --lat %lat% --long "48.87373649724122" --keyboard %keyboard%
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "result": {
- "message_id": 4646,
- "from": {
- "id": 6129457865,
- "is_bot": true,
- "first_name": "Vitaly The Bot",
- "username": "sicheebot"
- },
- "chat": {
- "id": 461699897,
- "first_name": "Anton",
- "last_name": "Titowets",
- "username": "JKIee",
- "type": "private"
- },
- "date": 1717072442,
- "location": {
- "latitude": 48.873739,
- "longitude": 48.873733
- }
- }
-}
+  "ok": true,
+  "result": {
+  "message_id": 4646,
+  "from": {
+  "id": 6129457865,
+  "is_bot": true,
+  "first_name": "Vitaly The Bot",
+  "username": "sicheebot"
+  },
+  "chat": {
+  "id": 461699897,
+  "first_name": "Anton",
+  "last_name": "Titowets",
+  "username": "JKIee",
+  "type": "private"
+  },
+  "date": 1717072442,
+  "location": {
+  "latitude": 48.873739,
+  "longitude": 48.873733
+  }
+  }
+  }
 ```

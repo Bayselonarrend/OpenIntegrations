@@ -9,14 +9,14 @@ sidebar_position: 5
 
 `Function DeleteTask(Val URL, Val TaskID, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | TaskID | --task | Number, String | Task ID |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | TaskID | --task | Number, String | Task ID |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -27,40 +27,42 @@ Method at API documentation: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- TaskID = "1078";
- 
- Result = OPI_Bitrix24.DeleteTask(URL, TaskID);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- TaskID = "1080";
- 
- Result = OPI_Bitrix24.DeleteTask(URL, TaskID, Token);
+  URL    = FunctionParameters["Bitrix24_URL"];
+  TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+  
+  Result = OPI_Bitrix24.DeleteTask(URL, TaskID);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "DeleteTask (wh)", "Bitrix24");
+  
+  URL    = FunctionParameters["Bitrix24_Domain"];
+  Token  = FunctionParameters["Bitrix24_Token"];
+  TaskID = FunctionParameters["Bitrix24_TaskID"];
+  
+  Result = OPI_Bitrix24.DeleteTask(URL, TaskID, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 DeleteTask --url "b24-ar17wx.bitrix24.by" --task "170" --token "b9df7366006e9f06006b12e400000001000..."
+    
+  oint bitrix24 DeleteTask --url "b24-ar17wx.bitrix24.by" --task "1080" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": {
- "task": true
- },
- "time": {
- "start": 1718473350.68409,
- "finish": 1718473350.80999,
- "duration": 0.125902891159058,
- "processing": 0.0892560482025146,
- "date_start": "2024-06-15T17:42:30+00:00",
- "date_finish": "2024-06-15T17:42:30+00:00",
- "operating_reset_at": 1718473950,
- "operating": 0
- }
-}
+  "result": {
+  "task": true
+  },
+  "time": {
+  "start": 1718473350.68409,
+  "finish": 1718473350.80999,
+  "duration": 0.125902891159058,
+  "processing": 0.0892560482025146,
+  "date_start": "2024-06-15T17:42:30+00:00",
+  "date_finish": "2024-06-15T17:42:30+00:00",
+  "operating_reset_at": 1718473950,
+  "operating": 0
+  }
+  }
 ```

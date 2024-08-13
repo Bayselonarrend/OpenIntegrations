@@ -1,0 +1,1 @@
+﻿oint vkteams SendTextMessage --token "001.3501506236.091..." --chatid "689203963@chat.agent" --text "<b>Bold text</b>" --reply "7402287649739767956" --keyboard %keyboard% --parsemod "HTML"

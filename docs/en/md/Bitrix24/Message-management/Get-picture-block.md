@@ -9,13 +9,13 @@ sidebar_position: 8
 
 `Function GetPictureBlock(Val Name, Val URL) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Picture name |
- | URL | --url | String | URL of sending picture |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Picture name |
+  | URL | --url | String | URL of sending picture |
 
- 
- Returns: Structure - PictureBlock
+  
+  Returns:  Structure - PictureBlock
 
 <br/>
 
@@ -25,13 +25,18 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 <br/>
 
 
-	
-
-
-```sh title="CLI command example"
- 
- oint bitrix24 GetPictureBlock --title %title% --url %url%
+```bsl title="Code example"
 
 ```
 
 
+
+```sh title="CLI command example"
+    
+  oint bitrix24 GetPictureBlock --title %title% --url %url%
+
+```
+
+```json title="Result"
+
+```

@@ -9,14 +9,14 @@ sidebar_position: 4
 
 `Function DeleteMessage(Val URL, Val MessageID, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | MessageID | --message | String, Number | ID of the message to be deleted |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | MessageID | --message | String, Number | ID of the message to be deleted |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -27,38 +27,40 @@ Method at API documentation: [im.message.delete](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- MessageID = "8682";
- 
- Result = OPI_Bitrix24.DeleteMessage(URL, MessageID);
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- MessageID = "8684";
- 
- Result = OPI_Bitrix24.DeleteMessage(URL, MessageID, Token);
+  URL       = FunctionParameters["Bitrix24_URL"];
+  MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
+  
+  Result = OPI_Bitrix24.DeleteMessage(URL, MessageID);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage (wh)", "Bitrix24");
+  
+  URL       = FunctionParameters["Bitrix24_Domain"];
+  Token     = FunctionParameters["Bitrix24_Token"];
+  MessageID = FunctionParameters["Bitrix24_UserMessageID"];
+  
+  Result = OPI_Bitrix24.DeleteMessage(URL, MessageID, Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 DeleteMessage --url %url% --message %message% --token %token%
+    
+  oint bitrix24 DeleteMessage --url "b24-ar17wx.bitrix24.by" --message "8684" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": true,
- "time": {
- "start": 1720969167.77137,
- "finish": 1720969167.82331,
- "duration": 0.051936149597168,
- "processing": 0.0215229988098145,
- "date_start": "2024-07-14T14:59:27+00:00",
- "date_finish": "2024-07-14T14:59:27+00:00",
- "operating_reset_at": 1720969767,
- "operating": 0
- }
-}
+  "result": true,
+  "time": {
+  "start": 1720969167.77137,
+  "finish": 1720969167.82331,
+  "duration": 0.051936149597168,
+  "processing": 0.0215229988098145,
+  "date_start": "2024-07-14T14:59:27+00:00",
+  "date_finish": "2024-07-14T14:59:27+00:00",
+  "operating_reset_at": 1720969767,
+  "operating": 0
+  }
+  }
 ```

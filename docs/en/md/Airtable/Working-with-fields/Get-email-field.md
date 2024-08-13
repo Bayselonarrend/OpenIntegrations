@@ -9,12 +9,12 @@ sidebar_position: 8
 
 `Function GetEmailField(Val Name) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Name | --title | String | Field name |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Field name |
 
- 
- Returns: Structure - Field description
+  
+  Returns:  Structure - Field description
 
 <br/>
 
@@ -22,24 +22,24 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
- 
- Name = "Email";
- 
- Response = OPI_Airtable.GetEmailField(Name); //Map
- Response = OPI_Tools.JSONString(Response); //JSON string
+  
+  Name = "Email";
+  
+  Response = OPI_Airtable.GetEmailField(Name); //Map
+  Response = OPI_Tools.JSONString(Response); //JSON string
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint airtable GetEmailField --title "Email"
+    
+  oint airtable GetEmailField --title "Email"
 
 ```
 
 ```json title="Result"
 {
- "name": "Email",
- "type": "email"
- }
+  "name": "Email",
+  "type": "email"
+  }
 ```

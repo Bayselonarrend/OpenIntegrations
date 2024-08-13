@@ -50,7 +50,7 @@ sidebar_position: 3
   
   Результат = OPI_VKTeams.ОтправитьГолосовоеСообщение(Токен, IDЧата, Файл);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"
@@ -59,4 +59,6 @@ sidebar_position: 3
 
 ```
 
+```json title="Результат"
 
+```

@@ -9,26 +9,31 @@ sidebar_position: 5
 
 `Function GetAsynchronousChangeStatus(Val Token, Val JobID) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Token |
- | JobID | --job | String | AsynchronousJobID |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | JobID | --job | String | AsynchronousJobID |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON response from Dropbox
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
 
 <br/>
 
 
 
 
-	
-
-
-```sh title="CLI command example"
- 
- oint dropbox GetAsynchronousChangeStatus --token %token% --job %job%
+```bsl title="Code example"
 
 ```
 
 
+
+```sh title="CLI command example"
+    
+  oint dropbox GetAsynchronousChangeStatus --token %token% --job %job%
+
+```
+
+```json title="Result"
+
+```

@@ -9,12 +9,12 @@ sidebar_position: 4
 
 `Function DeleteWebhook(Val Token) Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | Token | --token | String | Bot token |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
 
- 
- Returns: Map Of KeyAndValue - Serialized JSON response from Telegram
+  
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
 
 <br/>
 
@@ -22,22 +22,22 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
- Token = "6129457865:AAFyzNYOAFbu...";
- Result = OPI_Telegram.DeleteWebhook(Token);
+  Token  = FunctionParameters["Telegram_Token"];
+  Result = OPI_Telegram.DeleteWebhook(Token);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint telegram DeleteWebhook --token "6129457865:AAFyzNYOAFbu..."
+    
+  oint telegram DeleteWebhook --token "6129457865:AAFyzNYOAFbu..."
 
 ```
 
 ```json title="Result"
 {
- "ok": true,
- "result": true,
- "description": "Webhook was deleted"
-}
+  "ok": true,
+  "result": true,
+  "description": "Webhook was deleted"
+  }
 ```

@@ -31,7 +31,7 @@ sidebar_position: 3
   
   Результат = OPI_VKTeams.ПолучитьИнформациюОФайле(Токен, IDФайла);
 ```
-	
+        
 
 
 ```sh title="Пример команды CLI"
@@ -40,4 +40,12 @@ sidebar_position: 3
 
 ```
 
-
+```json title="Результат"
+{
+ "filename": "ВажныйДокумент.docx",
+ "size": 24071,
+ "type": "application",
+ "url": "https://ub.icq.net/files/get/XrJ30TgJvcpZoiAEu1MC46e1MCbBs3NXwqSkBiZgCEkXOsNmPmAnw2XXpEM4WXMcylct3N2s3XwyMI5Cj7GDKtY6FmpmOHLgYC2xUanmVRf4gtn0zVatipXHgtriTJACrKfemXbqJuLCNOYZJieYS72mwqu1MC/%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+ "ok": true
+}
+```

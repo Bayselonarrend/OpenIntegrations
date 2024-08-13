@@ -1,0 +1,1 @@
+﻿oint twitter CreateVideoTweet --text %text% --videos %videos% --auth %auth%

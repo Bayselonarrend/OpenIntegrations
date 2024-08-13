@@ -9,15 +9,15 @@ sidebar_position: 9
 
 `Function MoveFileToFolder(Val URL, Val FileID, Val FolderID, Val Token = "") Export`
 
- | Parameter | CLI option | Type | Destination |
- |-|-|-|-|
- | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
- | FileID | --fileid | String, Number | File ID |
- | FolderID | --folderid | String, Number | ID of new destination folder |
- | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
+  | FileID | --fileid | String, Number | File ID |
+  | FolderID | --folderid | String, Number | ID of new destination folder |
+  | Token | --token | String | Access token, when app auth method used |
 
- 
- Returns: Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+  
+  Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
 <br/>
 
@@ -28,62 +28,66 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
- FolderID = "5018";
- FileID = "5010";
- 
- URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
- 
- Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID);
- 
- FolderID = "5020";
- 
- URL = "b24-ar17wx.bitrix24.by";
- Token = "fe3fa966006e9f06006b12e400000001000...";
- 
- Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID, Token);
- 
- Check_BitrixObject(Result);
+  FolderID = FunctionParameters["Bitrix24_HookSubFolderID"];
+  FileID   = FunctionParameters["Bitrix24_FileID"];
+  
+  URL = FunctionParameters["Bitrix24_URL"];
+  
+  Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "MoveFileToFolder (wh)", "Bitrix24");
+  
+  FolderID = FunctionParameters["Bitrix24_SubFolderID"];
+  
+  URL   = FunctionParameters["Bitrix24_Domain"];
+  Token = FunctionParameters["Bitrix24_Token"];
+  
+  Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID, Token);
+  
+  OPI_TestDataRetrieval.WriteLog(Result, "MoveFileToFolder", "Bitrix24");
+  
+  Check_BitrixObject(Result);
 ```
-	
+
 
 
 ```sh title="CLI command example"
- 
- oint bitrix24 MoveFileToFolder --url "b24-ar17wx.bitrix24.by" --fileid "2484" --folderid "2494" --token "56898d66006e9f06006b12e400000001000..."
+    
+  oint bitrix24 MoveFileToFolder --url "b24-ar17wx.bitrix24.by" --fileid "5010" --folderid "5020" --token "fe3fa966006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Result"
 {
- "result": {
- "ID": "1716",
- "NAME": "New file name.jpg",
- "CODE": null,
- "STORAGE_ID": "3",
- "TYPE": "file",
- "PARENT_ID": 1726,
- "DELETED_TYPE": "0",
- "GLOBAL_CONTENT_VERSION": "1",
- "FILE_ID": "1134",
- "SIZE": "805189",
- "CREATE_TIME": "2024-07-03T14:42:28+00:00",
- "UPDATE_TIME": "2024-07-03T14:42:36+00:00",
- "DELETE_TIME": "2024-07-03T14:42:34+00:00",
- "CREATED_BY": "1",
- "UPDATED_BY": "1",
- "DELETED_BY": "1",
- "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=fe708566006e9f06006b12e4000000010000076fcba303ea853529aed2cefade1444b3&token=disk%7CaWQ9MTcxNiZfPUtKOGRTc3BCNmFoWDN3bjdXVVJzV2FEbWdrOXNOQk5K%7CImRvd25sb2FkfGRpc2t8YVdROU1UY3hOaVpmUFV0S09HUlRjM0JDTm1Gb1dETjNiamRYVlZKelYyRkViV2RyT1hOT1FrNUt8ZmU3MDg1NjYwMDZlOWYwNjAwNmIxMmU0MDAwMDAwMDEwMDAwMDc2ZmNiYTMwM2VhODUzNTI5YWVkMmNlZmFkZTE0NDRiMyI%3D.TUnzDUP0VCd8GRkzGSamf6aYWKIRqoB9Fpi6xFrBwBA%3D",
- "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/New subfolder/New file name.jpg"
- },
- "time": {
- "start": 1720017764.56434,
- "finish": 1720017764.63176,
- "duration": 0.0674228668212891,
- "processing": 0.0307409763336182,
- "date_start": "2024-07-03T14:42:44+00:00",
- "date_finish": "2024-07-03T14:42:44+00:00",
- "operating_reset_at": 1720018364,
- "operating": 0
- }
-}
+  "result": {
+  "ID": "1716",
+  "NAME": "New file name.jpg",
+  "CODE": null,
+  "STORAGE_ID": "3",
+  "TYPE": "file",
+  "PARENT_ID": 1726,
+  "DELETED_TYPE": "0",
+  "GLOBAL_CONTENT_VERSION": "1",
+  "FILE_ID": "1134",
+  "SIZE": "805189",
+  "CREATE_TIME": "2024-07-03T14:42:28+00:00",
+  "UPDATE_TIME": "2024-07-03T14:42:36+00:00",
+  "DELETE_TIME": "2024-07-03T14:42:34+00:00",
+  "CREATED_BY": "1",
+  "UPDATED_BY": "1",
+  "DELETED_BY": "1",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=fe708566006e9f06006b12e4000000010000076fcba303ea853529aed2cefade1444b3&token=disk%7CaWQ9MTcxNiZfPUtKOGRTc3BCNmFoWDN3bjdXVVJzV2FEbWdrOXNOQk5K%7CImRvd25sb2FkfGRpc2t8YVdROU1UY3hOaVpmUFV0S09HUlRjM0JDTm1Gb1dETjNiamRYVlZKelYyRkViV2RyT1hOT1FrNUt8ZmU3MDg1NjYwMDZlOWYwNjAwNmIxMmU0MDAwMDAwMDEwMDAwMDc2ZmNiYTMwM2VhODUzNTI5YWVkMmNlZmFkZTE0NDRiMyI%3D.TUnzDUP0VCd8GRkzGSamf6aYWKIRqoB9Fpi6xFrBwBA%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/New subfolder/New file name.jpg"
+  },
+  "time": {
+  "start": 1720017764.56434,
+  "finish": 1720017764.63176,
+  "duration": 0.0674228668212891,
+  "processing": 0.0307409763336182,
+  "date_start": "2024-07-03T14:42:44+00:00",
+  "date_finish": "2024-07-03T14:42:44+00:00",
+  "operating_reset_at": 1720018364,
+  "operating": 0
+  }
+  }
 ```

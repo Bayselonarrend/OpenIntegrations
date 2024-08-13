@@ -21,7 +21,10 @@ sidebar_position: 27
 
 
 
-	
+```bsl title="Пример кода"
+
+```
+        
 
 
 ```sh title="Пример команды CLI"
@@ -30,4 +33,6 @@ sidebar_position: 27
 
 ```
 
+```json title="Результат"
 
+```

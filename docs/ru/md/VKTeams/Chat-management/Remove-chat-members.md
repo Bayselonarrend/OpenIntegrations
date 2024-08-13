@@ -26,13 +26,22 @@ sidebar_position: 1
 <br/>
 
 
-	
+```bsl title="Пример кода"
+  Токен        = "001.3501506236.091...";
+  IDЧата       = "689203963@chat.agent";
+  Пользователь = 1011987091;
+  
+  Результат = OPI_VKTeams.ИсключитьПользователейЧата(Токен, IDЧата, Пользователь);
+```
+        
 
 
 ```sh title="Пример команды CLI"
     
-oint vkteams ИсключитьПользователейЧата --token %token% --chatid %chatid% --members %members%
+  oint vkteams ИсключитьПользователейЧата --token %token% --chatid %chatid% --members %members%
 
 ```
 
+```json title="Результат"
 
+```
