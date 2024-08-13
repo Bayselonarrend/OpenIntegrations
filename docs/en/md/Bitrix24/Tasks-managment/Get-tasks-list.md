@@ -28,20 +28,20 @@ Method at API documentation: [tasks.task.list](https://dev.1c-bitrix.ru/rest_hel
 
 
 ```bsl title="Code example"
-  // Full filter structer you can find at GetTasksFilterStructure method
-  Filter = New Structure;
-  Filter.Insert("CREATED_BY" , 1);
-  Filter.Insert("RESPONSIBLE_ID", 10);
-  
-  Indent = 1;
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.GetTasksList(URL, Filter);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.GetTasksList(URL, , Indent, Token);
+    // Full filter structer you can find at GetTasksFilterStructure method
+    Filter = New Structure;
+    Filter.Insert("CREATED_BY" , 1);
+    Filter.Insert("RESPONSIBLE_ID", 10);
+
+    Indent = 1;
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.GetTasksList(URL, Filter);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.GetTasksList(URL, , Indent, Token);
 ```
 
 

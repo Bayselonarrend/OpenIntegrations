@@ -31,23 +31,23 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Type = "date";
-  Name = "BIRTHDAY_FIELD";
-  
-  Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Type       = "string";
-  Name       = "TEXT_FIELD";
-  ExternalID = "BITRIX_TEXT_FIELD";
-  Title      = "Text field";
-  Signature  = New Structure("en,ru", "Some field", "Nekotoroe pole");
-  
-  Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name, ExternalID, Title, Signature, Token);
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Type = "date";
+    Name = "BIRTHDAY_FIELD";
+
+    Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Type       = "string";
+    Name       = "TEXT_FIELD";
+    ExternalID = "BITRIX_TEXT_FIELD";
+    Title      = "Text field";
+    Signature  = New Structure("en,ru", "Some field", "Nekotoroe pole");
+
+    Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name, ExternalID, Title, Signature, Token);
 ```
 
 

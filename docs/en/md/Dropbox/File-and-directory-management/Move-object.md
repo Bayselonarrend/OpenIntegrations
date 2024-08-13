@@ -24,11 +24,11 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
-  OriginalPath = "/New/pic.png";
-  TargetPath   = "/pic.png";
-  Token        = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  
-  Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);
+    OriginalPath = "/New/pic.png";
+    TargetPath   = "/pic.png";
+    Token        = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+
+    Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);
 ```
 
 

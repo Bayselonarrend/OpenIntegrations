@@ -24,11 +24,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Tag   = "Important";
-  Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  Path  = "/New/mydoc.docx";
-  
-  Result = OPI_Dropbox.DeleteTag(Token, Path, Tag);
+    Tag   = "Important";
+    Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Path  = "/New/mydoc.docx";
+
+    Result = OPI_Dropbox.DeleteTag(Token, Path, Tag);
 ```
 
 

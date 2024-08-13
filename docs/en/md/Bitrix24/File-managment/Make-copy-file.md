@@ -28,21 +28,21 @@ Method at API documentation: [disk.file.copyto](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-  FolderID = "5014";
-  FileID   = "5010";
-  
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID);
-  
-  FolderID = "5016";
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID, Token);
-  
-  Check_BitrixObject(Result);
+    FolderID = "5014";
+    FileID   = "5010";
+
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID);
+
+    FolderID = "5016";
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID, Token);
+
+    Check_BitrixObject(Result);
 ```
 
 

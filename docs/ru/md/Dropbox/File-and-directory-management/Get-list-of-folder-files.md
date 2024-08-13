@@ -25,10 +25,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  Путь      = "/New";
-  Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  
-  Результат = OPI_Dropbox.ПолучитьСписокФайловПапки(Токен, Путь, Истина);
+    Путь      = "/New";
+    Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+
+    Результат = OPI_Dropbox.ПолучитьСписокФайловПапки(Токен, Путь, Истина);
 ```
 
 

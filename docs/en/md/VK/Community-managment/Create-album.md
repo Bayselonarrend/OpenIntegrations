@@ -24,11 +24,11 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  Parameters  = GetVKParameters();
-  Name        = "AlbumFromAutoTest";
-  Description = "NewAlbumFromAutoTest";
-  
-  Result = OPI_VK.CreateAlbum(Name, Description, Parameters);
+    Parameters  = GetVKParameters();
+    Name        = "AlbumFromAutoTest";
+    Description = "NewAlbumFromAutoTest";
+
+    Result = OPI_VK.CreateAlbum(Name, Description, Parameters);
 ```
 
 

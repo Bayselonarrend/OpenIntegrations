@@ -24,11 +24,11 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  Тег       = "Важное";
-  Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  Путь      = "/New/mydoc.docx";
-  
-  Результат = OPI_Dropbox.УдалитьТег(Токен, Путь, Тег);
+    Тег       = "Важное";
+    Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Путь      = "/New/mydoc.docx";
+
+    Результат = OPI_Dropbox.УдалитьТег(Токен, Путь, Тег);
 ```
 
 

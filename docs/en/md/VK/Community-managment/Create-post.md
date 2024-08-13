@@ -26,23 +26,23 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  Text       = "Post from autotest";
-  URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
-  
-  Image  = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-  Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
-  
-  TFN = GetTempFileName("png");
-  CopyFile(Image2, TFN);
-  
-  ImageArray = New Array;
-  ImageArray.Add(Image);
-  ImageArray.Add(TFN);
-  
-  Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
-  
-  Result = OPI_VK.CreatePost(Text, Image, False , , Parameters);
+    Parameters = GetVKParameters();
+    Text       = "Post from autotest";
+    URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
+
+    Image  = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
+
+    TFN = GetTempFileName("png");
+    CopyFile(Image2, TFN);
+
+    ImageArray = New Array;
+    ImageArray.Add(Image);
+    ImageArray.Add(TFN);
+
+    Result = OPI_VK.CreatePost(Text, ImageArray, True, URL, Parameters);
+
+    Result = OPI_VK.CreatePost(Text, Image, False , , Parameters);
 ```
 
 

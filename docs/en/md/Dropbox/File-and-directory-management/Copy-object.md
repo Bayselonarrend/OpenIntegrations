@@ -24,11 +24,11 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-  Original = "/New/pic.png";
-  Copy     = "/New/pic_copy.png";
-  Token    = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  
-  Result = OPI_Dropbox.CopyObject(Token, Original, Copy);
+    Original = "/New/pic.png";
+    Copy     = "/New/pic_copy.png";
+    Token    = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+
+    Result = OPI_Dropbox.CopyObject(Token, Original, Copy);
 ```
 
 

@@ -28,19 +28,19 @@ Method at API documentation: [disk.folder.rename](https://dev.1c-bitrix.ru/rest_
 
 
 ```bsl title="Code example"
-  Name      = "New catalog";
-  Filename2 = "New folder 2";
-  
-  FolderID2 = "5014";
-  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.RenameFolder(URL, FolderID2, Filename2);
-  
-  FolderID = "5016";
-  URL      = "b24-ar17wx.bitrix24.by";
-  Token    = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.RenameFolder(URL, FolderID, Name, Token);
+    Name      = "New catalog";
+    Filename2 = "New folder 2";
+
+    FolderID2 = "5014";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.RenameFolder(URL, FolderID2, Filename2);
+
+    FolderID = "5016";
+    URL      = "b24-ar17wx.bitrix24.by";
+    Token    = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.RenameFolder(URL, FolderID, Name, Token);
 ```
 
 
