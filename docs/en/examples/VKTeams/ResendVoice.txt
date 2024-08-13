@@ -1,0 +1,5 @@
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_VoiceID"];
+
+    Result = OPI_VKTeams.ResendVoice(Token, ChatID, FileID);

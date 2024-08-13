@@ -1,0 +1,16 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+
+    Color = "AZURE";
+
+    Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatColor (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
+
+    Color = "PURPLE";
+
+    Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color, Token);

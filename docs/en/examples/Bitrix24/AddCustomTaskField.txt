@@ -1,0 +1,17 @@
+﻿    URL = FunctionParameters["Bitrix24_URL"];
+
+    Type = "date";
+    Name = "BIRTHDAY_FIELD";
+
+    Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Type       = "string";
+    Name       = "TEXT_FIELD";
+    ExternalID = "BITRIX_TEXT_FIELD";
+    Title      = "Text field";
+    Signature  = New Structure("en,ru", "Some field", "Nekotoroe pole");
+
+    Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name, ExternalID, Title, Signature, Token);

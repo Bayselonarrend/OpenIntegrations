@@ -4,5 +4,9 @@
     "sectionsString":"Section",
     "testsModule":"OPI_Tests",
     "testsTableMethod":"OPI_TestDataRetrieval.GetTestTable()",
-    "testsSectionsMethod":"OPI_TestDataRetrieval.GetTestingSectionMapping()"
+    "testsSectionsMethod":"OPI_TestDataRetrieval.GetTestingSectionMapping()",
+    "codeExamplesSrc": "./docs/en/examples/",
+    "testValuesSrc": "./docs/en/data/",
+    "testsModulePath": "./src/en/OInt/tests/Modules/internal/OPI_Tests.os",
+    "testsRegionName":"AtomicTests"
 }

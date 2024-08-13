@@ -1,0 +1,26 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    UserID = FunctionParameters["Bitrix24_HookUserID"];
+    Email  = String(New UUID) + "@exepmple.org";
+
+    // The full structure can be obtained with the function GetUserFieldsStructure
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"        , Email);
+    UserStructure.Insert("UF_DEPARTMENT", 1);
+
+    Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateUser (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = FunctionParameters["Bitrix24_UserID"];
+    Email  = String(New UUID) + "@exepmple.org";
+
+    UserStructure = New Structure;
+    UserStructure.Insert("EMAIL"         , Email);
+    UserStructure.Insert("NAME"          , "Oleg");
+    UserStructure.Insert("LAST_NAME"     , "Lama");
+    UserStructure.Insert("UF_DEPARTMENT" , 7);
+
+    Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure, Token);

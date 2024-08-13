@@ -1,0 +1,19 @@
+﻿    // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+
+    TaskData = New Structure;
+    TaskData.Insert("TITLE"      , "Another task title");
+    TaskData.Insert("DESCRIPTION", "Another task description");
+    TaskData.Insert("PRIORITY"   , "1");
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+
+    Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateTask (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+
+    Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);

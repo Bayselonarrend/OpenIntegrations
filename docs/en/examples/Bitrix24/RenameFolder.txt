@@ -1,0 +1,15 @@
+﻿    Name      = "New catalog";
+    Filename2 = "New folder 2";
+
+    FolderID2 = FunctionParameters["Bitrix24_HookFolderID"];
+    URL       = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.RenameFolder(URL, FolderID2, Filename2);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameFolder (wh)", "Bitrix24");
+
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.RenameFolder(URL, FolderID, Name, Token);

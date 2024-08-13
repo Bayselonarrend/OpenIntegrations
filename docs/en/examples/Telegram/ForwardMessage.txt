@@ -1,0 +1,6 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+
+    Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);

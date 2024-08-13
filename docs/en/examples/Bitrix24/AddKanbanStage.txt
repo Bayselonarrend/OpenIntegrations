@@ -1,0 +1,18 @@
+﻿    Name  = "New stage";
+    Color = "0026FF";
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, 6);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddKanbanStage (wh)", "Bitrix24");
+
+    PrevStageID = Result["result"];
+
+    Name  = "New stage 2";
+    Color = "0026FF";
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, PrevStageID, , True, Token);

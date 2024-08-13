@@ -1,0 +1,12 @@
+﻿    PostID = FunctionParameters["Bitrix24_HookPostID"];
+    URL    = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.DeletePost(URL, PostID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeletePost (wh)", "Bitrix24");
+
+    PostID = FunctionParameters["Bitrix24_PostID"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.DeletePost(URL, PostID, Token);

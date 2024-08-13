@@ -1,0 +1,13 @@
+﻿    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+    Text      = "New message text";
+
+    Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText (simple)", "VkTeams");
+
+    Text   = "<b>New bold message text</b>";
+    Markup = "HTML";
+
+    Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text, Markup);

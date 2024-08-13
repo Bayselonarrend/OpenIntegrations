@@ -1,0 +1,2 @@
+﻿    Token  = FunctionParameters["VkTeams_Token"];
+    Result = OPI_VKTeams.CheckToken(Token);

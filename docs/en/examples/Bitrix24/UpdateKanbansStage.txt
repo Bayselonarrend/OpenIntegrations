@@ -1,0 +1,18 @@
+﻿    Name    = "New stage name";
+    Color   = "000000";
+    StageID = FunctionParameters["Bitrix24_HookStageID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateKanbansStage (wh)", "Bitrix24");
+
+    Name    = "New stage name 2";
+    Color   = "000000";
+    StageID = FunctionParameters["Bitrix24_StageID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color, 6, True, Token);

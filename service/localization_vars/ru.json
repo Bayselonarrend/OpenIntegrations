@@ -4,5 +4,9 @@
     "sectionsString":"Раздел",
     "testsModule":"OPI_Тесты",
     "testsTableMethod":"OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()",
-    "testsSectionsMethod":"OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()"
+    "testsSectionsMethod":"OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()",
+    "codeExamplesSrc": "./docs/ru/examples/",
+    "testValuesSrc": "./docs/ru/data/",
+    "testsModulePath": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os",
+    "testsRegionName":"АтомарныеТесты"
 }

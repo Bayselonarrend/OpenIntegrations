@@ -1,0 +1,21 @@
+﻿    Token   = FunctionParameters["VkTeams_Token"];
+    ChatID  = FunctionParameters["VkTeams_ChatID2"];
+    ReplyID = FunctionParameters["VkTeams_MessageID"];
+    Text    = "File caption";
+
+    File     = FunctionParameters["Audio2"] ; // URL
+    FilePath = GetTempFileName("m4a"); // Path
+
+    CopyFile(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (URL)", "VkTeams");
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, ,ReplyID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (Path)", "VkTeams");
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);

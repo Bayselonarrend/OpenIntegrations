@@ -1,0 +1,12 @@
+﻿    Parameters = GetVKParameters();
+
+    Text           = "Message from autotest";
+    UserID         = FunctionParameters["VK_UserID"];
+    Communitytoken = FunctionParameters["VK_CommunityToken"];
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+
+    Keyboard = OPI_VK.FormKeyboard(ButtonArray);
+    Result   = OPI_VK.WriteMessage(Text, UserID, Communitytoken, Keyboard, Parameters);

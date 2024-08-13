@@ -1,0 +1,20 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text      = FunctionParameters["String"];
+    Audio     = FunctionParameters["Audio"];
+
+    AudioPath = GetTempFileName("mp3");
+    CopyFile(Audio, AudioPath);
+
+    AudioDD = New BinaryData(AudioPath);
+
+    Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendAudio", "Telegram");
+
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendAudio (Path)");
+
+    Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);

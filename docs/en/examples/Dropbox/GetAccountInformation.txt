@@ -1,0 +1,3 @@
+﻿    Token = FunctionParameters["Dropbox_Token"];
+
+    Result = OPI_Dropbox.GetAccountInformation(Token);

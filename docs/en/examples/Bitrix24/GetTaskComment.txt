@@ -1,0 +1,13 @@
+﻿    URL       = FunctionParameters["Bitrix24_URL"];
+    CommentID = FunctionParameters["Bitrix24_HookCommentID"];
+    TaskID    = FunctionParameters["Bitrix24_CommentsTaskID"];
+
+    Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTaskComment (wh)", "Bitrix24");
+
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
+    CommentID = FunctionParameters["Bitrix24_CommentID"];
+
+    Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID, Token);

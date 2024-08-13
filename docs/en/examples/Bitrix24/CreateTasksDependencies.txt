@@ -1,0 +1,20 @@
+﻿    FromID        = FunctionParameters["Bitrix24_HookTaskID"];
+    DestinationID = FunctionParameters["Bitrix24_TaskID"];
+    LinkType      = 0;
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTasksDependencies (wh)", "Bitrix24");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTasksDependencies (wh)", "Bitrix24");
+
+    FromID        = FunctionParameters["Bitrix24_TaskID"];
+    DestinationID = FunctionParameters["Bitrix24_HookTaskID"];
+    LinkType      = 2;
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token);

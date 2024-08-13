@@ -1,0 +1,5 @@
+﻿    Parameters = GetVKParameters();
+
+    Selection = FunctionParameters["VK_MarketAlbumID"];
+
+    Result = OPI_VK.DeleteSelection(Selection, Parameters);

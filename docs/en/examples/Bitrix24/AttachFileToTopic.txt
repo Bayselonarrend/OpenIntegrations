@@ -1,0 +1,13 @@
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+    FileID = FunctionParameters["Bitrix24_TaskFileID"];
+
+    Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AttachFileToTopic (wh)", "Bitrix24");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    TaskID = FunctionParameters["Bitrix24_TaskID"];
+
+    Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID, Token);

@@ -1,0 +1,20 @@
+﻿    URL = FunctionParameters["Bitrix24_URL"];
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("NAME"              , "Vitaly");
+    FilterStructure.Insert("LAST_NAME"         , "Alpaca");
+    FilterStructure.Insert("WORK_POSITION"     , "DevOps engineer");
+    FilterStructure.Insert("UF_DEPARTMENT_NAME", "Marketing department");
+    FilterStructure.Insert("USER_TYPE"         , "employee");
+
+    Result = OPI_Bitrix24.FindUsers(URL, FilterStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "FindUsers (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("UF_DEPARTMENT_NAME", "Bitrix");
+
+    Result = OPI_Bitrix24.FindUsers(URL, FilterStructure, Token);

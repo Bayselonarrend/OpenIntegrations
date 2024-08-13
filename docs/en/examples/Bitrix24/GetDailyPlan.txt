@@ -1,0 +1,10 @@
+﻿    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetDailyPlan(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDailyPlan (wh)", "Bitrix24");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetDailyPlan(URL, Token);

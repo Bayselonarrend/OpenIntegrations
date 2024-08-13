@@ -1,0 +1,4 @@
+﻿    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/pic.png";
+
+    Result = OPI_Dropbox.DownloadFile(Token, Path);

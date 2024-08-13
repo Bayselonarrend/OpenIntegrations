@@ -1,0 +1,15 @@
+﻿    TaskID  = FunctionParameters["Bitrix24_KanbanTaskID"];
+    StageID = FunctionParameters["Bitrix24_HookStageID"];
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveTaskToKanbanStage (wh)", "Bitrix24");
+
+    StageID = FunctionParameters["Bitrix24_StageID"];
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID, , , Token);

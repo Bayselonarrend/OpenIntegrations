@@ -1,0 +1,11 @@
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Width     = FunctionParameters["Lat"];
+    Longitude = FunctionParameters["Long"];
+
+    Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation", "Telegram");
+
+    Result = OPI_Telegram.SendLocation(Token, ChannelID, Width, Longitude);
