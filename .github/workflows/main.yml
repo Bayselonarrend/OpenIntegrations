@@ -29,6 +29,11 @@ jobs:
           opm install osparser
           opm install coloratos
 
+      - name: Расшифровать тестовые данные
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$ENC_JSON" --output ./data.json ./data.json.gpg        
+        env:
+          ENC_JSON: ${{ secrets.ENC_JSON }}
+
       - name: Основной процесс преобразований
         run: oscript ./.github/workflows/os/main.os
 
