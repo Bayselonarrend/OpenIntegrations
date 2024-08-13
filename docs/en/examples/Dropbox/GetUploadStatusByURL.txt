@@ -1,5 +1,5 @@
-﻿    Token  = FunctionParameters["Dropbox_Token"];
-    WorkID = FunctionParameters["Dropbox_Job"];
+﻿    Token  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    WorkID = "M-k-JxYXrrEAAAAAAAAAAQ";
     Status = "in_progress";
 
     WHile Status = "in_progress" Do

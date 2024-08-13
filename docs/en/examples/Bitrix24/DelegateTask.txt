@@ -1,11 +1,11 @@
-﻿    URL    = FunctionParameters["Bitrix24_URL"];
-    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
-    UserID = FunctionParameters["Bitrix24_UserID"];
+﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    TaskID = "1078";
+    UserID = "80";
 
     Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID);
 
-    URL    = FunctionParameters["Bitrix24_Domain"];
-    Token  = FunctionParameters["Bitrix24_Token"];
-    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    TaskID = "1080";
 
     Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID, Token);
