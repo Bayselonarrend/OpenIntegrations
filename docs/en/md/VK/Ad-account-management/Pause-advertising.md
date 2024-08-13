@@ -26,8 +26,8 @@ sidebar_position: 3
 ```bsl title="Code example"
   Parameters = GetVKParameters();
   
-  AccountID = FunctionParameters["VK_AdsCabinetID"];
-  AdID      = FunctionParameters["VK_AdsPostID"];
+  AccountID = "1607951446";
+  AdID      = "0";
   
   Result = OPI_VK.PauseAdvertising(AccountID, AdID, Parameters);
 ```

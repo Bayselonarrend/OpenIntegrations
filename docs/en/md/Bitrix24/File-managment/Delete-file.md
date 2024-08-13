@@ -27,16 +27,14 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-  URL    = FunctionParameters["Bitrix24_URL"];
-  FileID = FunctionParameters["Bitrix24_HookFileID"];
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+  FileID = "5008";
   
   Result = OPI_Bitrix24.DeleteFile(URL, FileID);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile (wh)", "Bitrix24");
-  
-  URL    = FunctionParameters["Bitrix24_Domain"];
-  Token  = FunctionParameters["Bitrix24_Token"];
-  FileID = FunctionParameters["Bitrix24_FileID"];
+  URL    = "b24-ar17wx.bitrix24.by";
+  Token  = "fe3fa966006e9f06006b12e400000001000...";
+  FileID = "5010";
   
   Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);
 ```

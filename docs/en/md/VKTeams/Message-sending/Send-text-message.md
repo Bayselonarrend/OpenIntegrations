@@ -32,16 +32,14 @@ You can mention a user by appending their userId to the text in the following fo
 
 
 ```bsl title="Code example"
-  Token  = FunctionParameters["VkTeams_Token"];
-  ChatID = FunctionParameters["VkTeams_ChatID"];
+  Token  = "001.3501506236.091...";
+  ChatID = "AoLI0egLWBSLR1Ngn2w";
   Text   = "Message text";
   
   Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage)", "VkTeams");
-  
-  ChatID  = FunctionParameters["VkTeams_ChatID2"];
-  ReplyID = FunctionParameters["VkTeams_MessageID"];
+  ChatID  = "689203963@chat.agent";
+  ReplyID = "7402287649739767956";
   Text    = "<b>Bold text</b>";
   Markup  = "HTML";
   

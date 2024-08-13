@@ -28,8 +28,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 
 ```bsl title="Code example"
-  URL    = FunctionParameters["Bitrix24_URL"];
-  UserID = FunctionParameters["Bitrix24_HookUserID"];
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+  UserID = "78";
   Email  = String(New UUID) + "@exepmple.org";
   
   // The full structure can be obtained with the function GetUserFieldsStructure
@@ -40,11 +40,9 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
   
   Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "UpdateUser (wh)", "Bitrix24");
-  
-  URL    = FunctionParameters["Bitrix24_Domain"];
-  Token  = FunctionParameters["Bitrix24_Token"];
-  UserID = FunctionParameters["Bitrix24_UserID"];
+  URL    = "b24-ar17wx.bitrix24.by";
+  Token  = "fe3fa966006e9f06006b12e400000001000...";
+  UserID = "80";
   Email  = String(New UUID) + "@exepmple.org";
   
   UserStructure = New Structure;

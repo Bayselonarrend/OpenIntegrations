@@ -27,16 +27,14 @@ Method at API documentation: [im.chat.user.list](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
-  URL    = FunctionParameters["Bitrix24_URL"];
-  ChatID = FunctionParameters["Bitrix24_HookChatID"];
+  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+  ChatID = "450";
   
   Result = OPI_Bitrix24.GetChatUsers(URL, ChatID);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "GetChatUsers (wh)", "Bitrix24");
-  
-  URL    = FunctionParameters["Bitrix24_Domain"];
-  Token  = FunctionParameters["Bitrix24_Token"];
-  ChatID = FunctionParameters["Bitrix24_ChatID"];
+  URL    = "b24-ar17wx.bitrix24.by";
+  Token  = "fe3fa966006e9f06006b12e400000001000...";
+  ChatID = "452";
   
   Result = OPI_Bitrix24.GetChatUsers(URL, ChatID, Token);
 ```

@@ -27,7 +27,7 @@ Method at API documentation: [im.user.list.get ](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
-  URL          = FunctionParameters["Bitrix24_URL"];
+  URL          = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
   ArrayOfUsers = New Array;
   
   ArrayOfUsers.Add(1);
@@ -35,10 +35,8 @@ Method at API documentation: [im.user.list.get ](https://dev.1c-bitrix.ru/learni
   
   Result = OPI_Bitrix24.GetUsers(URL, ArrayOfUsers);
   
-  OPI_TestDataRetrieval.WriteLog(Result, "GetUsers (wh)", "Bitrix24");
-  
-  URL     = FunctionParameters["Bitrix24_Domain"];
-  Token   = FunctionParameters["Bitrix24_Token"];
+  URL     = "b24-ar17wx.bitrix24.by";
+  Token   = "fe3fa966006e9f06006b12e400000001000...";
   UserIDs = 10;
   
   Result = OPI_Bitrix24.GetUsers(URL, UserIDs, Token);

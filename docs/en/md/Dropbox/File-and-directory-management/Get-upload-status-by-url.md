@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  Token  = FunctionParameters["Dropbox_Token"];
-  WorkID = FunctionParameters["Dropbox_Job"];
+  Token  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+  WorkID = "M-k-JxYXrrEAAAAAAAAAAQ";
   Status = "in_progress";
   
   WHile Status = "in_progress" Do
@@ -33,8 +33,6 @@ sidebar_position: 6
   Status = Result[".tag"];
   
   OPI_Tools.Pause(5);
-  
-  OPI_TestDataRetrieval.WriteLog(Result, "GetUploadStatusByURL", "Dropbox");
   
   EndDo;
 ```

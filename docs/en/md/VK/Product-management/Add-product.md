@@ -26,9 +26,9 @@ sidebar_position: 4
 ```bsl title="Code example"
   Parameters = GetVKParameters();
   
-  Image1    = FunctionParameters["Picture"]; // URL, Path to file or binary Data
-  Image2    = FunctionParameters["Picture2"]; // URL, Path to file or binary Data
-  Selection = FunctionParameters["VK_MarketAlbumID"];
+  Image1    = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or binary Data
+  Image2    = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path to file or binary Data
+  Selection = "125";
   
   ImageArray = New Array;
   ImageArray.Add(Image1);

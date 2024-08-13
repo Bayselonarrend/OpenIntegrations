@@ -25,9 +25,9 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Token = FunctionParameters["Dropbox_Token"];
-  Email = FunctionParameters["Dropbox_OtherUser"];
-  File  = FunctionParameters["Dropbox_FileID"];
+  Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+  Email = "h5bk6ft62s@privaterelay.appleid.com";
+  File  = "kJU6-a-pT48AAAAAAAAABw";
   
   Result = OPI_Dropbox.AddUsersToFile(Token, File, Email, False);
 ```
