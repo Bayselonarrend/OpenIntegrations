@@ -44,7 +44,8 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "data": {
   "text": "Как дела?",
   "id": "1746082302268969388",
@@ -53,4 +54,6 @@ sidebar_position: 5
   ]
   }
   }
+  
+
 ```

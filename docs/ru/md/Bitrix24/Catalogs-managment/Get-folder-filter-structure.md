@@ -46,7 +46,7 @@ sidebar_position: 11
 ```
 
 ```json title="Результат"
-{
+    {
  "ID": "",
  "NAME": "",
  "TYPE": "",
@@ -58,4 +58,5 @@ sidebar_position: 11
  "DELETE_TIME": "",
  "DELETED_TYPE": ""
 }
+
 ```

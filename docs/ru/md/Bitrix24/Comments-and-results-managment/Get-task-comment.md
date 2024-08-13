@@ -50,7 +50,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "POST_MESSAGE_HTML": null,
   "ID": "1496",
@@ -71,4 +71,5 @@ sidebar_position: 2
   "operating": 0
  }
 }
+
 ```

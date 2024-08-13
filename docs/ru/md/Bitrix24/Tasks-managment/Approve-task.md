@@ -48,7 +48,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "task": {
    "id": "110",
@@ -219,4 +219,5 @@ sidebar_position: 7
   "operating": 0
  }
 }
+
 ```

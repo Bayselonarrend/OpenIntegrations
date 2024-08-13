@@ -51,7 +51,7 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "dialogId": 10,
   "chatId": 10,
@@ -69,4 +69,5 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
   "operating": 0
   }
   }
+
 ```

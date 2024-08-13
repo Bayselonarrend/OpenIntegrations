@@ -56,7 +56,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "110",
@@ -199,4 +199,5 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
   "operating": 0.202054023742676
   }
   }
+
 ```

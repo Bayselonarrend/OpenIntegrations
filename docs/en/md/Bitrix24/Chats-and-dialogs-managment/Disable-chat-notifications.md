@@ -48,7 +48,7 @@ Method at API documentation: [im.chat.mute](https://dev.1c-bitrix.ru/learning/co
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720865694.86568,
@@ -61,4 +61,5 @@ Method at API documentation: [im.chat.mute](https://dev.1c-bitrix.ru/learning/co
   "operating": 0
   }
   }
+
 ```

@@ -49,7 +49,7 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1718473318.17435,
@@ -62,4 +62,5 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
+
 ```

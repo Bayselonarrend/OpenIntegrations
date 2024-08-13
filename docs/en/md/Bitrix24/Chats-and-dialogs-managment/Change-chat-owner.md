@@ -51,7 +51,7 @@ Method at API documentation: [im.chat.setOwner](https://dev.1c-bitrix.ru/learnin
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720865697.10595,
@@ -64,4 +64,5 @@ Method at API documentation: [im.chat.setOwner](https://dev.1c-bitrix.ru/learnin
   "operating": 0
   }
   }
+
 ```

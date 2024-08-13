@@ -45,7 +45,7 @@ sidebar_position: 26
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "fields": {
    "ID": {
@@ -426,4 +426,5 @@ sidebar_position: 26
   "operating": 0
  }
 }
+
 ```

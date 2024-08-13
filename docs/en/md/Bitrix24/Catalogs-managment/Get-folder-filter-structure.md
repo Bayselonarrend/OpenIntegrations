@@ -46,7 +46,7 @@ Method at API documentation: [disk.folder.getfields](https://dev.1c-bitrix.ru/re
 ```
 
 ```json title="Result"
-{
+  {
   "ID": "",
   "NAME": "",
   "TYPE": "",
@@ -58,4 +58,5 @@ Method at API documentation: [disk.folder.getfields](https://dev.1c-bitrix.ru/re
   "DELETE_TIME": "",
   "DELETED_TYPE": ""
   }
+
 ```

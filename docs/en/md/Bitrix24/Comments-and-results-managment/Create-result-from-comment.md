@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "id": 130,
   "taskId": 432,
@@ -72,4 +72,5 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
   "operating": 0
   }
   }
+
 ```

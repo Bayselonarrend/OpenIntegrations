@@ -42,7 +42,8 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "records": [
   {
   "id": "recGyJ0MlN1H3GMuN",
@@ -70,4 +71,6 @@ sidebar_position: 1
   }
   ]
   }
+  
+
 ```

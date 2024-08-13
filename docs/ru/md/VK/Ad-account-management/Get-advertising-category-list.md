@@ -36,7 +36,8 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "response": {
   "v2": [
   {
@@ -59,6 +60,7 @@ sidebar_position: 4
   "name": "Игровые приставки",
   "id": 205
   },
+  
   ...
   ]
   }
@@ -67,4 +69,5 @@ sidebar_position: 4
   ]
   }
   }
+
 ```

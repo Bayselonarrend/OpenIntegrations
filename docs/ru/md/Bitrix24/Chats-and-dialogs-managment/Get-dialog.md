@@ -48,7 +48,7 @@ sidebar_position: 14
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "id": 10,
   "parent_chat_id": 0,
@@ -130,4 +130,5 @@ sidebar_position: 14
   "operating": 0
  }
 }
+
 ```

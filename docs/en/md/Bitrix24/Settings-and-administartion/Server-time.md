@@ -45,7 +45,7 @@ Method at API documentation: [server_time](https://dev.1c-bitrix.ru/rest_help/ge
 ```
 
 ```json title="Result"
-{
+  {
   "result": "2024-06-13T18:40:54+00:00",
   "time": {
   "start": 1718304054.57877,
@@ -58,4 +58,5 @@ Method at API documentation: [server_time](https://dev.1c-bitrix.ru/rest_help/ge
   "operating": 0
   }
   }
+
 ```

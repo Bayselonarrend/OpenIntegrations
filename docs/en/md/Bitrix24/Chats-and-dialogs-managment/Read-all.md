@@ -45,7 +45,7 @@ Method at API documentation: [im.dialog.read.all](https://dev.1c-bitrix.ru/learn
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720969176.30834,
@@ -58,4 +58,5 @@ Method at API documentation: [im.dialog.read.all](https://dev.1c-bitrix.ru/learn
   "operating": 0
   }
   }
+
 ```

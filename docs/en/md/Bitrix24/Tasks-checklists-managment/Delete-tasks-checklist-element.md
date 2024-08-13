@@ -52,7 +52,7 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720816512.25818,
@@ -65,4 +65,5 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
   "operating": 0
   }
   }
+
 ```

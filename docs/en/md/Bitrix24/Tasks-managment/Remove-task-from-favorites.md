@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1718569735.08926,
@@ -61,4 +61,5 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
   "operating": 0
   }
   }
+
 ```

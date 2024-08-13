@@ -66,7 +66,7 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": null,
   "time": {
   "start": 1720816585.70407,
@@ -79,4 +79,5 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```

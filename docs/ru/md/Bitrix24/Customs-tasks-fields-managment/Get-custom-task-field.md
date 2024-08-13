@@ -48,7 +48,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": "261",
   "ENTITY_ID": "TASKS_TASK",
@@ -183,4 +183,5 @@ sidebar_position: 4
   "operating": 0
  }
 }
+
 ```

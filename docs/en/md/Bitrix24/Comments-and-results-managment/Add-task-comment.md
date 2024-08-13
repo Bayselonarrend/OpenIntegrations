@@ -52,7 +52,7 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-{
+  {
   "result": 1376,
   "time": {
   "start": 1720186702.77405,
@@ -65,4 +65,5 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
   "operating": 0.724542856216431
   }
   }
+
 ```

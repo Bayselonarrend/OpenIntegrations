@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
 ```
 
 ```json title="Result"
-{
+  {
   "result": null,
   "time": {
   "start": 1720295536.04613,
@@ -61,4 +61,5 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
   "operating": 0
   }
   }
+
 ```

@@ -51,7 +51,7 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720865692.90718,
@@ -64,4 +64,5 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
   "operating": 0.884703874588013
   }
   }
+
 ```

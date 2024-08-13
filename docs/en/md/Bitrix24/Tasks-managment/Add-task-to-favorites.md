@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1718569733.98858,
@@ -61,4 +61,5 @@ Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```

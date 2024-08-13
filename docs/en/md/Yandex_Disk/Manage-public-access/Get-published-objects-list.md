@@ -40,7 +40,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
+  {
   "limit": 2,
   "offset": 1,
   "items": [
@@ -190,4 +190,5 @@ sidebar_position: 3
   }
   ]
   }
+
 ```

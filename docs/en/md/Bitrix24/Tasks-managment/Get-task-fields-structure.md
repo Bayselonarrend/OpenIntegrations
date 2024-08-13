@@ -45,7 +45,7 @@ Method at API documentation: [tasks.task.getFields](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "fields": {
   "ID": {
@@ -426,4 +426,5 @@ Method at API documentation: [tasks.task.getFields](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
+
 ```

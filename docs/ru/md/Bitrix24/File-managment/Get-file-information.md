@@ -47,7 +47,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": "1716",
   "NAME": "Картинка1.jpg",
@@ -79,4 +79,5 @@ sidebar_position: 3
   "operating": 0
  }
 }
+
 ```

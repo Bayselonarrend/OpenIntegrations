@@ -45,7 +45,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": "1",
   "XML_ID": "53818298",
@@ -79,4 +79,5 @@ sidebar_position: 1
   "operating": 0
  }
 }
+
 ```

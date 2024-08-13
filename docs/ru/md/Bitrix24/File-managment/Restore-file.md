@@ -47,7 +47,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": "1716",
   "NAME": "Новое имя файла.jpg",
@@ -79,4 +79,5 @@ sidebar_position: 7
   "operating": 0
  }
 }
+
 ```

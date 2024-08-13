@@ -37,7 +37,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-[
+  [
   {
   "eventType": "default",
   "attachments": [
@@ -85,4 +85,5 @@ sidebar_position: 2
   "kind": "calendar#event"
   },
   ]
+
 ```

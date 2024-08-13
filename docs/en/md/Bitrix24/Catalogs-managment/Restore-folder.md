@@ -47,7 +47,7 @@ Method at API documentation: [disk.folder.restore](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "936",
   "NAME": "New catalog",
@@ -76,4 +76,5 @@ Method at API documentation: [disk.folder.restore](https://dev.1c-bitrix.ru/rest
   "operating": 0
   }
   }
+
 ```

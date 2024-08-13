@@ -58,7 +58,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720816577.57757,
@@ -71,4 +71,5 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
+
 ```

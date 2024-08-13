@@ -48,7 +48,7 @@ Method at API documentation: [im.dialog.users.list](https://dev.1c-bitrix.ru/lea
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "id": 10,
@@ -117,4 +117,5 @@ Method at API documentation: [im.dialog.users.list](https://dev.1c-bitrix.ru/lea
   "operating": 0
   }
   }
+
 ```

@@ -47,7 +47,7 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   "1"
   ],
@@ -62,4 +62,5 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
   "operating": 0
   }
   }
+
 ```

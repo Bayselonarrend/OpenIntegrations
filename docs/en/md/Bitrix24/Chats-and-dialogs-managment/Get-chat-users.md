@@ -48,7 +48,7 @@ Method at API documentation: [im.chat.user.list](https://dev.1c-bitrix.ru/learni
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   1,
   10
@@ -64,4 +64,5 @@ Method at API documentation: [im.chat.user.list](https://dev.1c-bitrix.ru/learni
   "operating": 0
   }
   }
+
 ```

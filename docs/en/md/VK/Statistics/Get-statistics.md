@@ -42,7 +42,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
+  {
   "response": [
   {
   "visitors": {
@@ -550,4 +550,5 @@ sidebar_position: 1
   }
   ]
   }
+
 ```

@@ -50,7 +50,7 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720295541.27592,
@@ -63,4 +63,5 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
+
 ```
