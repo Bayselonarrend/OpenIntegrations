@@ -31,30 +31,30 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-  URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  TaskID   = "1088";
-  RecordID = "306";
-  
-  Text = "The text I forgot last time";
-  Time = 4800;
-  
-  Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
-  
-  URL      = "b24-ar17wx.bitrix24.by";
-  Token    = "fe3fa966006e9f06006b12e400000001000...";
-  RecordID = "308";
-  
-  Text      = "New time record";
-  Time      = 4800;
-  SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
-  
-  Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL
-  , TaskID
-  , RecordID
-  , Time
-  , Text
-  , SetupDate
-  , Token);
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    TaskID   = "1088";
+    RecordID = "306";
+
+    Text = "The text I forgot last time";
+    Time = 4800;
+
+    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
+
+    URL      = "b24-ar17wx.bitrix24.by";
+    Token    = "fe3fa966006e9f06006b12e400000001000...";
+    RecordID = "308";
+
+    Text      = "New time record";
+    Time      = 4800;
+    SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
+
+    Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL
+        , TaskID
+        , RecordID
+        , Time
+        , Text
+        , SetupDate
+        , Token);
 ```
 
 

@@ -28,19 +28,19 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-  Name      = "New file name.jpg";
-  Filename2 = "New file name 2.jpg";
-  
-  FileID2 = "5008";
-  URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
-  
-  FileID = "5010";
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);
+    Name      = "New file name.jpg";
+    Filename2 = "New file name 2.jpg";
+
+    FileID2 = "5008";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
+
+    FileID = "5010";
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);
 ```
 
 

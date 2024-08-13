@@ -28,12 +28,12 @@ Method at API documentation: [disk.storage.rename](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
-  Name      = "New storage name";
-  URL       = "b24-ar17wx.bitrix24.by";
-  Token     = "fe3fa966006e9f06006b12e400000001000...";
-  StorageID = "18";
-  
-  Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);
+    Name      = "New storage name";
+    URL       = "b24-ar17wx.bitrix24.by";
+    Token     = "fe3fa966006e9f06006b12e400000001000...";
+    StorageID = "18";
+
+    Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);
 ```
 
 

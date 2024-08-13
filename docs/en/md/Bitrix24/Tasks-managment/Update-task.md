@@ -28,23 +28,23 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
-  // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
-  
-  TaskData = New Structure;
-  TaskData.Insert("TITLE"      , "Another task title");
-  TaskData.Insert("DESCRIPTION", "Another task description");
-  TaskData.Insert("PRIORITY"   , "1");
-  
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  TaskID = "1078";
-  
-  Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
-  
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  TaskID = "1080";
-  
-  Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);
+    // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+
+    TaskData = New Structure;
+    TaskData.Insert("TITLE"      , "Another task title");
+    TaskData.Insert("DESCRIPTION", "Another task description");
+    TaskData.Insert("PRIORITY"   , "1");
+
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    TaskID = "1078";
+
+    Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    TaskID = "1080";
+
+    Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);
 ```
 
 

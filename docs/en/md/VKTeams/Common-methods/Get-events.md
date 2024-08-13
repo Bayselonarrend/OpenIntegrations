@@ -27,22 +27,22 @@ Method at API documentation: [GET /events/get](https://teams.vk.com/botapi/#/eve
 
 
 ```bsl title="Code example"
-  Token  = "001.3501506236.091...";
-  LastID = 0;
-  
-  For N = 1 To 5 Do // In real work - endless loop
-  
-  Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
-  
-  Events = Result["events"];
-  
-  // Event handling...
-  
-  If Not Events.Count() = 0 Then
-  LastID            = Events[Events.UBound()]["eventId"];
-  EndIf;
-  
-  EndDo;
+    Token  = "001.3501506236.091...";
+    LastID = 0;
+
+    For N = 1 To 5 Do // In real work - endless loop
+
+        Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
+
+        Events = Result["events"];
+
+        // Event handling...
+
+        If Not Events.Count() = 0 Then
+            LastID            = Events[Events.UBound()]["eventId"];
+        EndIf;
+
+    EndDo;
 ```
 
 

@@ -23,10 +23,10 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  IDФайла = "CQACAgIAAx0EcNsaZQACGsRmqTObImcQhvZfQC9f7KStfGzIWwACJFYAAjcMSUk5-shFORxZRjUE";
-  Токен   = "6129457865:AAFyzNYOAFbu...";
-  
-  Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
+    IDФайла = "CQACAgIAAx0EcNsaZQACGsRmqTObImcQhvZfQC9f7KStfGzIWwACJFYAAjcMSUk5-shFORxZRjUE";
+    Токен   = "6129457865:AAFyzNYOAFbu...";
+
+    Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
 ```
 
 

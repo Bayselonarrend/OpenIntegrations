@@ -27,24 +27,24 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 
 ```bsl title="Code example"
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  FilterStructure = New Structure;
-  FilterStructure.Insert("NAME"              , "Vitaly");
-  FilterStructure.Insert("LAST_NAME"         , "Alpaca");
-  FilterStructure.Insert("WORK_POSITION"     , "DevOps engineer");
-  FilterStructure.Insert("UF_DEPARTMENT_NAME", "Marketing department");
-  FilterStructure.Insert("USER_TYPE"         , "employee");
-  
-  Result = OPI_Bitrix24.FindUsers(URL, FilterStructure);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  FilterStructure = New Structure;
-  FilterStructure.Insert("UF_DEPARTMENT_NAME", "Bitrix");
-  
-  Result = OPI_Bitrix24.FindUsers(URL, FilterStructure, Token);
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("NAME"              , "Vitaly");
+    FilterStructure.Insert("LAST_NAME"         , "Alpaca");
+    FilterStructure.Insert("WORK_POSITION"     , "DevOps engineer");
+    FilterStructure.Insert("UF_DEPARTMENT_NAME", "Marketing department");
+    FilterStructure.Insert("USER_TYPE"         , "employee");
+
+    Result = OPI_Bitrix24.FindUsers(URL, FilterStructure);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("UF_DEPARTMENT_NAME", "Bitrix");
+
+    Result = OPI_Bitrix24.FindUsers(URL, FilterStructure, Token);
 ```
 
 

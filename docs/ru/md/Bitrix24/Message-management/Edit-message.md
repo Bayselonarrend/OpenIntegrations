@@ -29,25 +29,25 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  IDСообщения = "8682";
-  
-  Текст    = "Новый текст сообщения";
-  
-  Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
-  
-  URL            = "b24-ar17wx.bitrix24.by";
-  Токен          = "fe3fa966006e9f06006b12e400000001000...";
-  IDСообщения    = "8684";
-  
-  Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
-  Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
-  
-  Вложения = Новый Массив;
-  Вложения.Добавить(OPI_Bitrix24.ПолучитьБлокКартинки("Картинка1", Картинка));
-  Вложения.Добавить(OPI_Bitrix24.ПолучитьБлокФайла("Файл1.docx"  , Файл));
-  
-  Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст, Вложения, Токен);
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    IDСообщения = "8682";
+
+    Текст    = "Новый текст сообщения";
+
+    Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
+
+    URL            = "b24-ar17wx.bitrix24.by";
+    Токен          = "fe3fa966006e9f06006b12e400000001000...";
+    IDСообщения    = "8684";
+
+    Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Вложения = Новый Массив;
+    Вложения.Добавить(OPI_Bitrix24.ПолучитьБлокКартинки("Картинка1", Картинка));
+    Вложения.Добавить(OPI_Bitrix24.ПолучитьБлокФайла("Файл1.docx"  , Файл));
+
+    Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст, Вложения, Токен);
 ```
 
 

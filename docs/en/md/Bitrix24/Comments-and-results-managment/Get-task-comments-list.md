@@ -27,15 +27,15 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
 
 
 ```bsl title="Code example"
-  URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  TaskID = "1082";
-  
-  Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID, Token);
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    TaskID = "1082";
+
+    Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID, Token);
 ```
 
 

@@ -25,14 +25,14 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  Путь      = "/New/pic.png";
-  Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
-  
-  КартинкаПуть = ПолучитьИмяВременногоФайла("png");
-  КопироватьФайл(Картинка, КартинкаПуть);
-  
-  Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);
+    Путь      = "/New/pic.png";
+    Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
+
+    КартинкаПуть = ПолучитьИмяВременногоФайла("png");
+    КопироватьФайл(Картинка, КартинкаПуть);
+
+    Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);
 ```
 
 

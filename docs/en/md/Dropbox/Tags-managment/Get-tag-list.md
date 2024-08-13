@@ -23,13 +23,13 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  
-  PathsArray = New Array;
-  PathsArray.Add("/New/Dogs.mp3");
-  PathsArray.Add("/New/mydoc.docx");
-  
-  Result = OPI_Dropbox.GetTagList(Token, PathsArray);
+    Token = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+
+    PathsArray = New Array;
+    PathsArray.Add("/New/Dogs.mp3");
+    PathsArray.Add("/New/mydoc.docx");
+
+    Result = OPI_Dropbox.GetTagList(Token, PathsArray);
 ```
 
 

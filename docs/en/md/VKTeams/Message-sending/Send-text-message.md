@@ -32,18 +32,18 @@ You can mention a user by appending their userId to the text in the following fo
 
 
 ```bsl title="Code example"
-  Token  = "001.3501506236.091...";
-  ChatID = "AoLI0egLWBSLR1Ngn2w";
-  Text   = "Message text";
-  
-  Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
-  
-  ChatID  = "689203963@chat.agent";
-  ReplyID = "7402287649739767956";
-  Text    = "<b>Bold text</b>";
-  Markup  = "HTML";
-  
-  Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, , Markup);
+    Token  = "001.3501506236.091...";
+    ChatID = "AoLI0egLWBSLR1Ngn2w";
+    Text   = "Message text";
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
+
+    ChatID  = "689203963@chat.agent";
+    ReplyID = "7402287649739767956";
+    Text    = "<b>Bold text</b>";
+    Markup  = "HTML";
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, , Markup);
 ```
 
 

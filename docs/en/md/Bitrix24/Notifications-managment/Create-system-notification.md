@@ -30,25 +30,25 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
 
 
 ```bsl title="Code example"
-  UserID = 1;
-  
-  URL   = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  Text  = "Message text";
-  Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
-  File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
-  
-  Attachments = New Array;
-  Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
-  Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
-  
-  Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
-  
-  URL    = "b24-ar17wx.bitrix24.by";
-  Token  = "fe3fa966006e9f06006b12e400000001000...";
-  Tag    = "New";
-  UserID = 10;
-  
-  Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, Tag, , Token);
+    UserID = 1;
+
+    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    Text  = "Message text";
+    Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+
+    Attachments = New Array;
+    Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
+    Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
+
+    Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
+
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "fe3fa966006e9f06006b12e400000001000...";
+    Tag    = "New";
+    UserID = 10;
+
+    Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, Tag, , Token);
 ```
 
 

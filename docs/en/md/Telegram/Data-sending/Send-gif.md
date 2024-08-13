@@ -27,22 +27,22 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "461699897";
-  ChannelID = "@testsichee";
-  Text      = "Строковое значение";
-  GIF       = "https://openintegrations.dev/test_data/animation.gif";
-  
-  GifPath = GetTempFileName("gif");
-  CopyFile(GIF, GifPath);
-  
-  GifDD = New BinaryData(GifPath);
-  
-  Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
-  
-  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
-  
-  Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+    GIF       = "https://openintegrations.dev/test_data/animation.gif";
+
+    GifPath = GetTempFileName("gif");
+    CopyFile(GIF, GifPath);
+
+    GifDD = New BinaryData(GifPath);
+
+    Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
+
+    Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
+
+    Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
 ```
 
 

@@ -24,11 +24,11 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "@testsichee";
-  MessageID = "6846";
-  
-  Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "@testsichee";
+    MessageID = "6846";
+
+    Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
 ```
 
 

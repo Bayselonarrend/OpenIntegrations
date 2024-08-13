@@ -30,21 +30,21 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
 
 
 ```bsl title="Code example"
-  URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  
-  FieldID = "255";
-  Title   = "New title";
-  
-  Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  FieldID    = "257";
-  ExternalID = "NEW_TEXT_FIELD";
-  Signature  = New Structure("en,ru", "Updated field", "Izmenennoe pole");
-  
-  Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, ExternalID, , Signature, Token);
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+
+    FieldID = "255";
+    Title   = "New title";
+
+    Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    FieldID    = "257";
+    ExternalID = "NEW_TEXT_FIELD";
+    Signature  = New Structure("en,ru", "Updated field", "Izmenennoe pole");
+
+    Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, ExternalID, , Signature, Token);
 ```
 
 

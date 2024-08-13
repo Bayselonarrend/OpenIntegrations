@@ -28,19 +28,19 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
 
 
 ```bsl title="Code example"
-  URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
-  TaskID    = "1078";
-  ElementID = "396";
-  
-  Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID);
-  
-  TaskID    = "1080";
-  ElementID = "400";
-  
-  URL   = "b24-ar17wx.bitrix24.by";
-  Token = "fe3fa966006e9f06006b12e400000001000...";
-  
-  Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID, Token);
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    TaskID    = "1078";
+    ElementID = "396";
+
+    Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID);
+
+    TaskID    = "1080";
+    ElementID = "400";
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "fe3fa966006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```
 
 

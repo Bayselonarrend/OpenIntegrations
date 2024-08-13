@@ -23,18 +23,18 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  Token  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  WorkID = "M-k-JxYXrrEAAAAAAAAAAQ";
-  Status = "in_progress";
-  
-  WHile Status = "in_progress" Do
-  
-  Result = OPI_Dropbox.GetUploadStatusByURL(Token, WorkID);
-  Status = Result[".tag"];
-  
-  OPI_Tools.Pause(5);
-  
-  EndDo;
+    Token  = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    WorkID = "M-k-JxYXrrEAAAAAAAAAAQ";
+    Status = "in_progress";
+
+    WHile Status = "in_progress" Do
+
+        Result = OPI_Dropbox.GetUploadStatusByURL(Token, WorkID);
+        Status = Result[".tag"];
+
+        OPI_Tools.Pause(5);
+
+    EndDo;
 ```
 
 

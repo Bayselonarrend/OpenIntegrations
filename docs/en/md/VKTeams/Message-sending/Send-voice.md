@@ -32,23 +32,23 @@ If you want the client to display this file as a playable voice message, it must
 
 
 ```bsl title="Code example"
-  Token   = "001.3501506236.091...";
-  ChatID  = "689203963@chat.agent";
-  ReplyID = "7402287649739767956";
-  Text    = "File caption";
-  
-  File     = "https://openintegrations.dev/test_data/song.m4a" ; // URL
-  FilePath = GetTempFileName("m4a"); // Path
-  
-  CopyFile(File, FilePath);
-  
-  FileBD = New BinaryData(FilePath); // Binary
-  
-  Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
-  
-  Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, ,ReplyID);
-  
-  Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+    Token   = "001.3501506236.091...";
+    ChatID  = "689203963@chat.agent";
+    ReplyID = "7402287649739767956";
+    Text    = "File caption";
+
+    File     = "https://openintegrations.dev/test_data/song.m4a" ; // URL
+    FilePath = GetTempFileName("m4a"); // Path
+
+    CopyFile(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, ,ReplyID);
+
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
 ```
 
 

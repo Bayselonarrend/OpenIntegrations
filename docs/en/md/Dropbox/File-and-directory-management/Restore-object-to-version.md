@@ -24,11 +24,11 @@ sidebar_position: 14
 
 
 ```bsl title="Code example"
-  Version = "61e7b3e423325bd841553";
-  Token   = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
-  Path    = "/New/pic.png";
-  
-  Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);
+    Version = "61e7b3e423325bd841553";
+    Token   = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Path    = "/New/pic.png";
+
+    Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);
 ```
 
 

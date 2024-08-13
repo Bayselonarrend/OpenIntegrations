@@ -26,13 +26,13 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Token   = "6129457865:AAFyzNYOAFbu...";
-  Chat    = "-1001971186208";
-  Topic   = "3896";
-  NewName = "NewTestTitle";
-  NewIcon = "5310132165583840589";
-  
-  Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
+    Token   = "6129457865:AAFyzNYOAFbu...";
+    Chat    = "-1001971186208";
+    Topic   = "3896";
+    NewName = "NewTestTitle";
+    NewIcon = "5310132165583840589";
+
+    Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
 ```
 
 

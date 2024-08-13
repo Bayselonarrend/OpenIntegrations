@@ -27,11 +27,11 @@ Method at API documentation: [GET /chats/members/delete](https://teams.vk.com/bo
 
 
 ```bsl title="Code example"
-  Token  = "001.3501506236.091...";
-  ChatID = "689203963@chat.agent";
-  User   = 1011987091;
-  
-  Result = OPI_VKTeams.RemoveChatMembers(Token, ChatID, User);
+    Token  = "001.3501506236.091...";
+    ChatID = "689203963@chat.agent";
+    User   = 1011987091;
+
+    Result = OPI_VKTeams.RemoveChatMembers(Token, ChatID, User);
 ```
 
 

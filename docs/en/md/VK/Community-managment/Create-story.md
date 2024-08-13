@@ -24,17 +24,17 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
-  
-  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
-  TFN   = GetTempFileName("png");
-  CopyFile(Image, TFN);
-  Image = New BinaryData(TFN);
-  
-  Result = OPI_VK.CreateStory(Image , URL, Parameters);
-  
-  Result = OPI_VK.CreateStory(TFN, , Parameters);
+    Parameters = GetVKParameters();
+    URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
+
+    Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
+    TFN   = GetTempFileName("png");
+    CopyFile(Image, TFN);
+    Image = New BinaryData(TFN);
+
+    Result = OPI_VK.CreateStory(Image , URL, Parameters);
+
+    Result = OPI_VK.CreateStory(TFN, , Parameters);
 ```
 
 

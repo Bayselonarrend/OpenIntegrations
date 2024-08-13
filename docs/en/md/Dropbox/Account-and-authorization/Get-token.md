@@ -24,11 +24,11 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  AppKey    = "oynqxds...";
-  AppSecret = "tk2oewn...";
-  Code      = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
-  
-  Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
+    AppKey    = "oynqxds...";
+    AppSecret = "tk2oewn...";
+    Code      = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
+
+    Result = OPI_Dropbox.GetToken(AppKey, AppSecret, Code);
 ```
 
 

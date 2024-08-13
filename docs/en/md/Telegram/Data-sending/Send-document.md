@@ -28,24 +28,24 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  Token     = "6129457865:AAFyzNYOAFbu...";
-  ChatID    = "461699897";
-  ChannelID = "@testsichee";
-  Text      = "Строковое значение";
-  Document  = "https://openintegrations.dev/test_data/document.docx";
-  
-  DocumentPath = GetTempFileName("docx");
-  CopyFile(Document, DocumentPath);
-  
-  DocumentDD = New BinaryData(DocumentPath);
-  
-  Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
-  
-  Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
-  
-  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
-  
-  Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+    Document  = "https://openintegrations.dev/test_data/document.docx";
+
+    DocumentPath = GetTempFileName("docx");
+    CopyFile(Document, DocumentPath);
+
+    DocumentDD = New BinaryData(DocumentPath);
+
+    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
+
+    Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
+
+    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
+
+    Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");
 ```
 
 
