@@ -51,8 +51,9 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-{
+    {
  "error": "WRONG_DATETIME_FORMAT",
  "error_description": "Wrong datetime format"
 }
+
 ```

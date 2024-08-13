@@ -56,7 +56,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": 1740,
   "NAME": "Картинка1.jpg",
@@ -78,4 +78,5 @@ sidebar_position: 2
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Картинка1.jpg"
  }
 }
+
 ```

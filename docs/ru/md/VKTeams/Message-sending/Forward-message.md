@@ -52,8 +52,9 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-{
+    {
  "msgId": "7401634788940972096",
  "ok": true
 }
+
 ```

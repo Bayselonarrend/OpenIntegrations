@@ -51,7 +51,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": 850,
   "NAME": "Новый подкаталог",
@@ -80,4 +80,5 @@ sidebar_position: 2
   "operating": 0
  }
 }
+
 ```

@@ -46,7 +46,7 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
-{
+  {
   ".tag": "complete",
   "name": "url_doc.docx",
   "path_lower": "/new/url_doc.docx",
@@ -59,4 +59,5 @@ sidebar_position: 6
   "is_downloadable": true,
   "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   }
+
 ```

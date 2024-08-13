@@ -37,7 +37,8 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "user": {
   "device_type": "iPhone8,4",
   "mnc": 1,
@@ -55,4 +56,6 @@ sidebar_position: 3
   "status_message": "ok",
   "status": 0
   }
+  
+
 ```

@@ -48,7 +48,7 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1722083795.3692,
@@ -61,4 +61,5 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
   "operating": 0
   }
   }
+
 ```

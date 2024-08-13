@@ -52,7 +52,7 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "96",
   "TASK_ID": "632",
@@ -78,4 +78,5 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
+
 ```

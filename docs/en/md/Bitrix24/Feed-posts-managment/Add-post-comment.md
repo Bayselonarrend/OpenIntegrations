@@ -50,7 +50,7 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-{
+  {
   "result": 168,
   "time": {
   "start": 1720186639.67208,
@@ -63,4 +63,5 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
   "operating": 0
   }
   }
+
 ```

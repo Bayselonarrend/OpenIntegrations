@@ -70,7 +70,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 ```
 
 ```json title="Result"
-{
+  {
   "result": 26,
   "time": {
   "start": 1720816597.42171,
@@ -83,4 +83,5 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
   "operating": 0
   }
   }
+
 ```

@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.unmute](https://dev.1c-bitrix.ru/rest_h
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "290",
@@ -191,4 +191,5 @@ Method at API documentation: [tasks.task.unmute](https://dev.1c-bitrix.ru/rest_h
   "operating": 0
   }
   }
+
 ```

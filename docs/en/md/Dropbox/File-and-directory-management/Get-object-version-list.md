@@ -39,7 +39,7 @@ sidebar_position: 13
 ```
 
 ```json title="Result"
-{
+  {
   "is_deleted": false,
   "entries": [
   {
@@ -56,4 +56,5 @@ sidebar_position: 13
   }
   ]
   }
+
 ```

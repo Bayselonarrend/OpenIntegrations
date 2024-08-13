@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.startwatch](https://dev.1c-bitrix.ru/re
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "110",
@@ -201,4 +201,5 @@ Method at API documentation: [tasks.task.startwatch](https://dev.1c-bitrix.ru/re
   "operating": 0.279598951339722
   }
   }
+
 ```

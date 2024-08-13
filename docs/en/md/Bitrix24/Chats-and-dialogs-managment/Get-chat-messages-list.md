@@ -50,7 +50,7 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "chat_id": 10,
   "messages": [
@@ -396,4 +396,5 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
   "operating": 0
   }
   }
+
 ```

@@ -63,7 +63,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1722328395.63697,
@@ -76,4 +76,5 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
   "operating": 0.310055017471314
   }
   }
+
 ```

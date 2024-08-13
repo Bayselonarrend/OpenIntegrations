@@ -53,7 +53,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "STATUS": "OPENED",
   "TIME_START": "2024-07-30T07:10:51+00:00",
@@ -80,4 +80,5 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
   "operating": 0.181692123413086
   }
   }
+
 ```

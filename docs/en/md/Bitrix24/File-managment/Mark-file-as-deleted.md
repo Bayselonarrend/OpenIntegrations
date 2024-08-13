@@ -47,7 +47,7 @@ Method at API documentation: [disk.file.markdeleted](https://dev.1c-bitrix.ru/re
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "1716",
   "NAME": "New file name.jpg",
@@ -79,4 +79,5 @@ Method at API documentation: [disk.file.markdeleted](https://dev.1c-bitrix.ru/re
   "operating": 0
   }
   }
+
 ```

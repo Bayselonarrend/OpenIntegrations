@@ -47,7 +47,7 @@ Method at API documentation: [disk.storage.get](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "3",
   "NAME": "Main drive",
@@ -68,4 +68,5 @@ Method at API documentation: [disk.storage.get](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
+
 ```

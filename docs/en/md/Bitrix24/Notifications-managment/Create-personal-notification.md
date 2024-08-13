@@ -60,7 +60,7 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
 ```
 
 ```json title="Result"
-{
+  {
   "result": 7450,
   "time": {
   "start": 1722087269.44996,
@@ -73,4 +73,5 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
   "operating": 0
   }
   }
+
 ```

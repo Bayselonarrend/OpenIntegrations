@@ -38,7 +38,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "ok": true,
   "teams": [
   {
@@ -47,4 +48,6 @@ sidebar_position: 2
   }
   ]
   }
+  
+
 ```

@@ -45,7 +45,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": "ID",
   "XML_ID": "Внешний код",
@@ -123,4 +123,5 @@ sidebar_position: 7
   "operating": 0
  }
 }
+
 ```

@@ -38,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
+    {
  ".tag": "complete",
  "access_type": {
   ".tag": "owner"
@@ -67,4 +67,5 @@ sidebar_position: 1
  },
  "folder_id": "id:kJU6-a-pT48AAAAAAAABXw"
 }
+
 ```

@@ -51,7 +51,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": 850,
   "NAME": "New subfolder",
@@ -80,4 +80,5 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
+
 ```

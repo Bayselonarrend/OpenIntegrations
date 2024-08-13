@@ -52,7 +52,7 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720816511.09347,
@@ -65,4 +65,5 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
+
 ```

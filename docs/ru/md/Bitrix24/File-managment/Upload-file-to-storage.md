@@ -57,7 +57,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "ID": 356,
   "NAME": "26417397-8431-4343-9c0f-a40d4a2831c8.jpg",
@@ -89,4 +89,5 @@ sidebar_position: 1
   "operating": 0.227726936340332
  }
 }
+
 ```

@@ -45,7 +45,7 @@ Method at API documentation: [user.fields](https://dev.1c-bitrix.ru/rest_help/us
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "ID",
   "XML_ID": "Innotшнandй toод",
@@ -123,4 +123,5 @@ Method at API documentation: [user.fields](https://dev.1c-bitrix.ru/rest_help/us
   "operating": 0
   }
   }
+
 ```

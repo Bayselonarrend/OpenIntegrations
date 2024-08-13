@@ -50,7 +50,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "attachmentId": 598
  },
@@ -65,4 +65,5 @@ sidebar_position: 6
   "operating": 0
  }
 }
+
 ```

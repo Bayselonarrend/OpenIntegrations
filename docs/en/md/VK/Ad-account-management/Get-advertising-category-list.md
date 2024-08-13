@@ -36,7 +36,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-{
+  {
   "response": {
   "v2": [
   {
@@ -67,4 +67,5 @@ sidebar_position: 4
   ]
   }
   }
+
 ```

@@ -51,7 +51,7 @@ Method at API documentation: [disk.storage.addfolder](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": 574,
   "NAME": "New catalog",
@@ -80,4 +80,5 @@ Method at API documentation: [disk.storage.addfolder](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
+
 ```

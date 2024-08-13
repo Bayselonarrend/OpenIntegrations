@@ -60,7 +60,7 @@ Map: Key - File, Value - media type
 ```
 
 ```json title="Result"
-{
+  {
   "ok": true,
   "result": [
   {
@@ -163,4 +163,5 @@ Map: Key - File, Value - media type
   }
   ]
   }
+
 ```

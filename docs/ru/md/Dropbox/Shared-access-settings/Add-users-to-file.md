@@ -41,7 +41,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-[
+    [
  {
   "member": {
    ".tag": "email",
@@ -59,4 +59,5 @@ sidebar_position: 3
   ]
  }
 ]
+
 ```

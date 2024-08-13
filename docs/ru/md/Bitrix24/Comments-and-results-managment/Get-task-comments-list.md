@@ -47,7 +47,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
+    {
  "result": [
   {
    "POST_MESSAGE_HTML": null,
@@ -79,4 +79,5 @@ sidebar_position: 1
   "operating": 0
  }
 }
+
 ```

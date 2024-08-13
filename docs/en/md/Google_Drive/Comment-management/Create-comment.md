@@ -41,7 +41,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
+  {
   "content": "NewComment",
   "htmlContent": "NewComment",
   "author": {
@@ -57,4 +57,5 @@ sidebar_position: 1
   "deleted": false,
   "id": "AAABI3NNNAY"
   }
+
 ```

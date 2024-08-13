@@ -56,7 +56,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1722114796.23423,
@@ -69,4 +69,5 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
   "operating": 0
   }
   }
+
 ```

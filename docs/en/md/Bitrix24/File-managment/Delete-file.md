@@ -48,7 +48,7 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1718783933.86753,
@@ -61,4 +61,5 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
   "operating": 3.73615193367004
   }
   }
+
 ```

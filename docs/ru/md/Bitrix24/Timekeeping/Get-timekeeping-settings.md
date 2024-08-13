@@ -49,7 +49,7 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "UF_TIMEMAN": true,
   "UF_TM_FREE": false,
@@ -70,4 +70,5 @@ sidebar_position: 10
   "operating": 0
  }
 }
+
 ```

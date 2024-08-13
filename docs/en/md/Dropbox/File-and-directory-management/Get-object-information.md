@@ -39,7 +39,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
+  {
   ".tag": "file",
   "name": "pic.png",
   "path_lower": "/new/pic.png",
@@ -52,4 +52,5 @@ sidebar_position: 1
   "is_downloadable": true,
   "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
   }
+
 ```

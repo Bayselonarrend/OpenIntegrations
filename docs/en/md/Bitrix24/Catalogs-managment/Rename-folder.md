@@ -52,7 +52,7 @@ Method at API documentation: [disk.folder.rename](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "ID": "936",
   "NAME": "New catalog",
@@ -81,4 +81,5 @@ Method at API documentation: [disk.folder.rename](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
+
 ```

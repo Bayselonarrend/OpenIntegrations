@@ -60,7 +60,7 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
 ```
 
 ```json title="Result"
-{
+  {
   "result": 7454,
   "time": {
   "start": 1722087270.72466,
@@ -73,4 +73,5 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
   "operating": 0
   }
   }
+
 ```

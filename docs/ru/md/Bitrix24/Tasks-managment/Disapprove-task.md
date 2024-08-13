@@ -48,8 +48,9 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-{
+    {
  "error": 1048582,
  "error_description": "Действие над задачей не разрешено"
 }
+
 ```

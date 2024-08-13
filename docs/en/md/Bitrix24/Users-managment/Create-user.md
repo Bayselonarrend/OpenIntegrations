@@ -64,7 +64,7 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
 ```
 
 ```json title="Result"
-{
+  {
   "result": 60,
   "time": {
   "start": 1722328388.80414,
@@ -77,4 +77,5 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
   "operating": 3.0273129940033
   }
   }
+
 ```

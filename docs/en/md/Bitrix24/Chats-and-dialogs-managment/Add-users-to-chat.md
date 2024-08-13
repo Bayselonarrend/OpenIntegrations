@@ -55,7 +55,7 @@ Method at API documentation: [im.chat.user.add](https://dev.1c-bitrix.ru/learnin
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720865686.43672,
@@ -68,4 +68,5 @@ Method at API documentation: [im.chat.user.add](https://dev.1c-bitrix.ru/learnin
   "operating": 0
   }
   }
+
 ```

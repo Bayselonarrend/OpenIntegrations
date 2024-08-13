@@ -37,7 +37,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-{
+  {
   "account_id": "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE",
   "name": {
   "given_name": "Anton",
@@ -62,4 +62,5 @@ sidebar_position: 4
   "home_namespace_id": "3179550035"
   }
   }
+
 ```

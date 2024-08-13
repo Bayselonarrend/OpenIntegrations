@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.approve](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "110",
@@ -219,4 +219,5 @@ Method at API documentation: [tasks.task.approve](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
+
 ```

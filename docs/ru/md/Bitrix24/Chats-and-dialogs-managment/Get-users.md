@@ -51,7 +51,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-{
+    {
  "result": {
   "10": {
    "id": 10,
@@ -91,4 +91,5 @@ sidebar_position: 4
   "operating": 0
  }
 }
+
 ```

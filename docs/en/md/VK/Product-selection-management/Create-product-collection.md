@@ -49,10 +49,11 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
+  {
   "response": {
   "albums_count": 23,
   "market_album_id": 39
   }
   }
+
 ```

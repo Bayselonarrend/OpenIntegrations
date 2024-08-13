@@ -51,8 +51,9 @@ Method at API documentation: [timeman.close](https://dev.1c-bitrix.ru/rest_help/
 ```
 
 ```json title="Result"
-{
+  {
   "error": "WRONG_DATETIME_FORMAT",
   "error_description": "Wrong datetime format"
   }
+
 ```

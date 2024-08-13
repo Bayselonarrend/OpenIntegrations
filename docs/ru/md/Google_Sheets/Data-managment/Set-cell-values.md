@@ -53,7 +53,8 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "totalUpdatedRows": 4,
   "totalUpdatedColumns": 2,
@@ -118,4 +119,6 @@ sidebar_position: 1
   }
   ]
   }
+  
+
 ```

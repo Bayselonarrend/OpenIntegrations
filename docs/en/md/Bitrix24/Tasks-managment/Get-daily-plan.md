@@ -45,7 +45,7 @@ Method at API documentation: [task.planner.getlist](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-{
+  {
   "result": [],
   "time": {
   "start": 1720816513.42336,
@@ -58,4 +58,5 @@ Method at API documentation: [task.planner.getlist](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
+
 ```

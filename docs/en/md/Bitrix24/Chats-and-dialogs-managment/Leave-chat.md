@@ -48,7 +48,7 @@ Method at API documentation: [im.chat.leave](https://dev.1c-bitrix.ru/learning/c
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720816599.74716,
@@ -61,4 +61,5 @@ Method at API documentation: [im.chat.leave](https://dev.1c-bitrix.ru/learning/c
   "operating": 0
   }
   }
+
 ```

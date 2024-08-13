@@ -42,7 +42,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "data": {
   "text": "Альпака https://t.co/OodoWT1AAA",
   "id": "1745753004542726629",
@@ -51,4 +52,6 @@ sidebar_position: 2
   ]
   }
   }
+  
+
 ```

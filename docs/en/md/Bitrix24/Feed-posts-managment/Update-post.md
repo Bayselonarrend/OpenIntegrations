@@ -59,7 +59,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-{
+  {
   "result": 86,
   "time": {
   "start": 1718473311.53949,
@@ -72,4 +72,5 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
   "operating": 0.326629877090454
   }
   }
+
 ```

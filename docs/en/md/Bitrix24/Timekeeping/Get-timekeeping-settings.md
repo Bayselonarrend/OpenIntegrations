@@ -49,7 +49,7 @@ Method at API documentation: [timeman.settings](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "UF_TIMEMAN": true,
   "UF_TM_FREE": false,
@@ -70,4 +70,5 @@ Method at API documentation: [timeman.settings](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
+
 ```

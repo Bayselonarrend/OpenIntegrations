@@ -47,7 +47,7 @@ Method at API documentation: [disk.storage.getchildren](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-{
+  {
   "result": [
   {
   "ID": "568",
@@ -102,4 +102,5 @@ Method at API documentation: [disk.storage.getchildren](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
+
 ```

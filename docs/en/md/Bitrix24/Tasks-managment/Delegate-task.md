@@ -50,7 +50,7 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-{
+  {
   "result": {
   "task": {
   "id": "154",
@@ -203,4 +203,5 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
   "operating": 0.450687170028686
   }
   }
+
 ```

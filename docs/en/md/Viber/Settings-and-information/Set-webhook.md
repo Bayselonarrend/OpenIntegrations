@@ -37,7 +37,7 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
 ```
 
 ```json title="Result"
-{
+  {
   "event_types": [
   "subscribed",
   "unsubscribed",
@@ -54,4 +54,5 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
   "status_message": "ok",
   "status": 0
   }
+
 ```

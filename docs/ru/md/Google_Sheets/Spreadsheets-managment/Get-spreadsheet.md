@@ -39,7 +39,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+  
+  {
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "properties": {
   "title": "Тестовая таблица (изм.)",
@@ -200,4 +201,6 @@ sidebar_position: 2
   ],
   "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc/edit"
   }
+  
+
 ```

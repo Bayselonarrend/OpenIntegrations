@@ -57,7 +57,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-{
+    {
  "ok": true,
  "result": {
   "message_id": 4642,
@@ -85,4 +85,5 @@ sidebar_position: 5
   "caption": "Строковое значение"
  }
 }
+
 ```

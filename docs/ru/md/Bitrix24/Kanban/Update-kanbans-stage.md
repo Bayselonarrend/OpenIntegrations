@@ -58,7 +58,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
+    {
  "result": true,
  "time": {
   "start": 1720816577.57757,
@@ -71,4 +71,5 @@ sidebar_position: 2
   "operating": 0
  }
 }
+
 ```

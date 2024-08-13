@@ -48,7 +48,7 @@ Method at API documentation: [im.message.delete](https://dev.1c-bitrix.ru/learni
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1720969167.77137,
@@ -61,4 +61,5 @@ Method at API documentation: [im.message.delete](https://dev.1c-bitrix.ru/learni
   "operating": 0
   }
   }
+
 ```

@@ -48,7 +48,7 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 ```
 
 ```json title="Result"
-{
+  {
   "result": true,
   "time": {
   "start": 1722171482.56495,
@@ -61,4 +61,5 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
   "operating": 0
   }
   }
+
 ```

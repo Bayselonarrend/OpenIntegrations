@@ -55,7 +55,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 ```
 
 ```json title="Result"
-{
+  {
   "result": 42,
   "time": {
   "start": 1722171476.78229,
@@ -68,4 +68,5 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
   "operating": 0.389190912246704
   }
   }
+
 ```
