@@ -1,5 +1,5 @@
 {
-"Parameters": "GetVKParameters()",
 "PostID": "3356",
+"Parameters": "GetVKParameters()",
 "WallID": "Parameters[owner_id]"
 }

@@ -2,8 +2,8 @@
 "URL": "b24-ar17wx.bitrix24.by",
 "ChatID": "452",
 "File": "https://openintegrations.dev/test_data/document.docx // Binary Data, URL or path to file",
+"Token": "fe3fa966006e9f06006b12e400000001000...",
 "Description": "Very important file",
 "FolderID": "Directory[result][ID]",
-"FileID": "UploadedFile[result][ID]",
-"Token": "fe3fa966006e9f06006b12e400000001000..."
+"FileID": "UploadedFile[result][ID]"
 }
