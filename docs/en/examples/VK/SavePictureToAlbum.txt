@@ -1,8 +1,8 @@
 ﻿    Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
-    AlbumID          = FunctionParameters["VK_AlbumID"];
+    AlbumID          = "305187504";
 
-    Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
+    Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
     TFN   = GetTempFileName("png");
     CopyFile(Image, TFN);
 
