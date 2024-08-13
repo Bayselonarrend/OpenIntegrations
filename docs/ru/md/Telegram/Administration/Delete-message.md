@@ -30,7 +30,7 @@ sidebar_position: 7
   
   Результат = OPI_Telegram.УдалитьСообщение(Токен, IDЧата, IDСообщения);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

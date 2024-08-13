@@ -29,7 +29,7 @@ sidebar_position: 7
   
   Результат = OPI_Dropbox.УдалитьОбъект(Токен, Путь);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

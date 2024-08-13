@@ -25,7 +25,7 @@ sidebar_position: 4
   
   Ответ = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

@@ -30,7 +30,7 @@ sidebar_position: 2
   
   Результат = OPI_Telegram.Разбан(Токен, IDКанала, IDПользователя);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

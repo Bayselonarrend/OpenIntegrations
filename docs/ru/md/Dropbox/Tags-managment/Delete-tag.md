@@ -30,7 +30,7 @@ sidebar_position: 3
   
   Результат = OPI_Dropbox.УдалитьТег(Токен, Путь, Тег);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"

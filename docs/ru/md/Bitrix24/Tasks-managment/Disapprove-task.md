@@ -38,7 +38,7 @@ sidebar_position: 8
   
   Результат = OPI_Bitrix24.ОтклонитьЗадачу(URL, IDЗадачи, Токен);
 ```
-        
+
 
 
 ```sh title="Пример команды CLI"
