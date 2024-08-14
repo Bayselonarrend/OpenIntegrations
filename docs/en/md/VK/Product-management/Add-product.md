@@ -28,7 +28,7 @@ sidebar_position: 4
 
     Image1    = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or binary Data
     Image2    = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path to file or binary Data
-    Selection = "125";
+    Selection = "122";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

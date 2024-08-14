@@ -24,11 +24,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Token = "y0_AgAAAABdylaOAA...";
-  
-  Response = OPI_YandexDisk.GetPublishedObjectsList(Token, 2, 1); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token           = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Count           = 2;
+    OffsetFromStart = 1;
+
+    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, OffsetFromStart);
 ```
 
 

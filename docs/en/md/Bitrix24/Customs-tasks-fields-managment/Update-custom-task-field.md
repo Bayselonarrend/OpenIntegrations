@@ -30,7 +30,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     FieldID = "255";
     Title   = "New title";
@@ -38,7 +38,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
     Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fe3fa966006e9f06006b12e400000001000...";
+    Token = "7a63bc66006e9f06006b12e400000001000...";
 
     FieldID    = "257";
     ExternalID = "NEW_TEXT_FIELD";

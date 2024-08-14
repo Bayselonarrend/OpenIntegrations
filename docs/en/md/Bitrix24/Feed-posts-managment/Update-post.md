@@ -34,18 +34,18 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Text   = "New post text";
     Title  = "New post title";
     Image1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "440";
+    PostID = "502";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "fe3fa966006e9f06006b12e400000001000...";
-    PostID = "438";
+    Token  = "7a63bc66006e9f06006b12e400000001000...";
+    PostID = "500";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```

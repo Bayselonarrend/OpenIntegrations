@@ -24,12 +24,12 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  
-  Token = "y0_AgAAAABdylaOAA...";
-  URL = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
-  
-  Response = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    URL   = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
+
+    Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
+
+    Check_YaDiskLink(Result);
 ```
 
 

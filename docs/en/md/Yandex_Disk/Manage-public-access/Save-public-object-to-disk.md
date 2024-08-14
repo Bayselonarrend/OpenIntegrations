@@ -25,12 +25,12 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  
-  Token = "y0_AgAAAABdylaOAA...";
-  URL = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
-  
-  Response = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    URL   = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
+
+    Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
+
+    Check_YaDiskPath(Result, "", False);
 ```
 
 

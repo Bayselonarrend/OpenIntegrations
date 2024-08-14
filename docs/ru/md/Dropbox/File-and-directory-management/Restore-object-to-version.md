@@ -24,8 +24,8 @@ sidebar_position: 14
 
 
 ```bsl title="Пример кода"
-    Версия    = "61e7b3e423325bd841553";
-    Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
+    Версия    = "61f9f2f55c06dbd841553";
+    Токен     = "sl.B6_e9uxZDzud1x7oZyvJJEiFu78rkVmLclhxrJ0KMVVZNxl9XbxwWUr5wv8IKSqnoi6KyNyRe0...";
     Путь      = "/New/pic.png";
 
     Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);
