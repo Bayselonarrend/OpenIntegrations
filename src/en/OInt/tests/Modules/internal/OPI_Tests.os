@@ -610,162 +610,46 @@ EndProcedure
 
 Procedure YDisk_UploadByUrlAndGetObject() Export
 
-    Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Path  = "/" + String(New UUID) + ".png";
-    URL   = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
 
-    OPI_YandexDisk.UploadFileByURL(Token, Path, URL);
-    OPI_Tools.Pause(5);
-
-    Result = OPI_YandexDisk.GetObject(Token, Path);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObject");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + Path);
-
-     OPI_YandexDisk.DeleteObject(Token, Path, False);
-
-     OPI_Tools.Pause(5);
+    YandexDisk_UploadFileByURL(TestParameters);
+    YandexDisk_GetObject(TestParameters);
+    YandexDisk_DeleteObject(TestParameters);
 
 EndProcedure
 
 Procedure YDisk_UploadDeleteFile() Export
 
-    Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Path  = "/" + String(New UUID) + ".png";
-    Image = OPI_TestDataRetrieval.GetBinary("Picture");
-    TFN   = GetTempFileName("png");
-    Image.Write(TFN);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
 
-    Result = OPI_YandexDisk.UploadFile(Token, Path, Image, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile");
-
-    Check_Empty(Result);
-    OPI_Tools.Pause(5);
-
-    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject");
-
-    Check_Empty(Result);
-
-    Result = OPI_YandexDisk.UploadFile(Token, Path, TFN, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile");
-
-    Check_Empty(Result);
-    OPI_Tools.Pause(5);
-
-    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject");
-
-    Check_Empty(Result);
-
-    DeleteFiles(TFN);
-
-    OPI_Tools.Pause(5);
+    YandexDisk_UploadFile(TestParameters);
 
 EndProcedure
 
 Procedure YDisk_CreateObjectCopy() Export
 
-    Token        = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
     OriginalPath = "/" + String(New UUID) + ".png";
-    CopyPath     = "/" + String(New UUID) + ".png";
-    URL          = "https://raw.githubusercontent.com/Bayselonarrend/"
-        + "OpenIntegrations/main/Media/logo.png";
 
     OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
-    OPI_Tools.Pause(25);
+    OPI_Tools.Pause(35);
 
-    Result = OPI_YandexDisk.CreateObjectCopy(Token, OriginalPath, CopyPath, True);
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_OriginalFilePath", OriginalPath);
+    TestParameters.Insert("YandexDisk_OriginalFilePath", OriginalPath);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateObjectCopy");
+    YandexDisk_CreateObjectCopy(TestParameters);
 
-    OPI_Tools.Pause(5);
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + CopyPath);
-
-     OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
-     OPI_YandexDisk.DeleteObject(Token, CopyPath    , False);
-
-     OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YDisk_GetDownloadLink() Export
-
-    Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Path  = "/" + String(New UUID) + ".png";
-    URL   = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
-
-    OPI_YandexDisk.UploadFileByURL(Token, Path, URL);
-    OPI_Tools.Pause(5);
-
-    Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLink");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["method"]).Равно("GET");
-    OPI_TestDataRetrieval.ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
-
-    URL = Result["href"];
-
-    Result = OPI_YandexDisk.DownloadFile(Token, Path);
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
-
-    OPI_YandexDisk.DeleteObject(Token, Path, False);
-
-EndProcedure
-
-Procedure YDisk_GetFileList() Export
-
-    Token  = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Count  = 2;
-    Indent = 1;
-
-    Result = OPI_YandexDisk.GetFilesList(Token, Count, Indent, "image");
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Равно(Count);
-    OPI_TestDataRetrieval.ExpectsThat(Result["offset"]).Равно(Indent);
-    OPI_TestDataRetrieval.ExpectsThat(Result["items"]).ИмеетТип("Array");
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YDisk_MoveObject() Export
-
-    Token        = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    OriginalPath = "/" + String(New UUID) + ".png";
-    CopyPath     = "/" + String(New UUID) + ".png";
-    URL          = "https://raw.githubusercontent.com/Bayselonarrend/"
-        + "OpenIntegrations/main/Media/logo.png";
-
-    Result = OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL");
-
-    OPI_Tools.Pause(15);
-
-    Result = OPI_YandexDisk.MoveObject(Token, OriginalPath, CopyPath, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + CopyPath);
+    CopyPath = TestParameters["YandexDisk_CopyFilePath"];
 
     OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
     OPI_YandexDisk.DeleteObject(Token, CopyPath    , False);
@@ -774,62 +658,94 @@ Procedure YDisk_MoveObject() Export
 
 EndProcedure
 
-Procedure YDisk_PublicObjectActions() Export
+Procedure YDisk_GetDownloadLink() Export
 
-    PUrl  = "public_url";
-    Map   = "Map";
-    Token = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Path  = "/" + String(New UUID) + ".png";
-    URL   = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
+    Path = "/" + String(New UUID) + ".png";
 
     OPI_YandexDisk.UploadFileByURL(Token, Path, URL);
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(35);
 
-    ResultArray = New Array;
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_PathForLink", Path);
+    TestParameters.Insert("YandexDisk_PathForLink", Path);
 
-    ResultArray.Add(OPI_YandexDisk.PublishObject(Token, Path));
-    PublicURL = ResultArray[0][PUrl];
-
-    Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, PublicURL);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLinkForPublicObject");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["method"]).Равно("GET");
-    OPI_TestDataRetrieval.ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
-
-    Result = OPI_YandexDisk.GetPublicObject(Token, PublicURL);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-    OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("/");
-
-    ResultArray.Add(OPI_YandexDisk.SavePublicObjectToDisk(Token, PublicURL));
-
-    ResultArray.Add(OPI_YandexDisk.CancelObjectPublication(Token, Path));
-
-    Counter = 0;
-    For Each Result In ResultArray Do
-
-        OPI_TestDataRetrieval.WriteLog(Result, "PublicationChange");
-
-        OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(Map).Заполнено();
-        OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
-        OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Заполнено();
-
-        If Counter = 0 Then
-            OPI_TestDataRetrieval.ExpectsThat(Result[PUrl]).ИмеетТип("String").Заполнено();
-        Else
-            OPI_TestDataRetrieval.ExpectsThat(Result[PUrl]).ИмеетТип("Undefined");
-        EndIf;
-
-        Counter = Counter + 1;
-
-    EndDo;
+    YandexDisk_GetDownloadLink(TestParameters);
+    YandexDisk_DownloadFile(TestParameters);
 
     OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+EndProcedure
+
+Procedure YDisk_GetFileList() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+
+    YandexDisk_GetFilesList(TestParameters);
+
+EndProcedure
+
+Procedure YDisk_MoveObject() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
+    OriginalPath = "/" + String(New UUID) + ".png";
+
+    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    OPI_Tools.Pause(35);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_OriginalFilePath", OriginalPath);
+    TestParameters.Insert("YandexDisk_OriginalFilePath", OriginalPath);
+
+    YandexDisk_MoveObject(TestParameters);
+
+    NewPath = TestParameters["YandexDisk_NewFilePath"];
+
+    OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
+    OPI_YandexDisk.DeleteObject(Token, NewPath     , False);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YDisk_PublicObjectActions() Export
+
+    PUrl = "public_url";
+    Map  = "Map";
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
+    OriginalPath = "/" + String(New UUID) + ".png";
+
+    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    OPI_Tools.Pause(35);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_OriginalFilePath", OriginalPath);
+    TestParameters.Insert("YandexDisk_OriginalFilePath", OriginalPath);
+
+    YandexDisk_PublishObject(TestParameters);
+    YandexDisk_GetDownloadLinkForPublicObject(TestParameters);
+    YandexDisk_GetPublicObject(TestParameters);
+    YandexDisk_SavePublicObjectToDisk(TestParameters);
+    YandexDisk_CancelObjectPublication(TestParameters);
+
+    OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
 
     OPI_Tools.Pause(5);
 
@@ -837,20 +753,10 @@ EndProcedure
 
 Procedure YDisk_GetPublishedList() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("YandexDisk_Token");
-    Count  = 2;
-    Indent = 1;
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
 
-    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, Indent);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectsList");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Равно(Count);
-    OPI_TestDataRetrieval.ExpectsThat(Result["offset"]).Равно(Indent);
-    OPI_TestDataRetrieval.ExpectsThat(Result["items"]).ИмеетТип("Array");
-
-    OPI_Tools.Pause(5);
+    YandexDisk_GetPublishedObjectsList(TestParameters);
 
 EndProcedure
 
@@ -3693,6 +3599,55 @@ Procedure Check_YaDiskFolder(Val Result, Val Path)
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("dir");
     OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + Path);
+
+EndProcedure
+
+Procedure Check_YaDiskPath(Val Result, Val Path = "", Val Public = Undefined)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Равно("file");
+
+    If ValueIsFilled(Path) Then
+        OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Равно("disk:" + Path);
+    Else
+        OPI_TestDataRetrieval.ExpectsThat(Result["path"]).Заполнено();
+    EndIf;
+
+    If Not Public = Undefined Then
+
+        If Public Then
+             OPI_TestDataRetrieval.ExpectsThat(Result["public_url"]).ИмеетТип("String").Заполнено();
+        Else
+            OPI_TestDataRetrieval.ExpectsThat(Result["public_url"]).ИмеетТип("Undefined");
+        EndIf;
+
+    EndIf;
+
+EndProcedure
+
+Procedure Check_YaDiskLink(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["method"]).Равно("GET");
+    OPI_TestDataRetrieval.ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
+
+EndProcedure
+
+Procedure Check_YaDiskProc(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["href"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["method"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_YaDiskFilesList(Val Result, Val Count, Val Indent)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["limit"]).Равно(Count);
+    OPI_TestDataRetrieval.ExpectsThat(Result["offset"]).Равно(Indent);
+    OPI_TestDataRetrieval.ExpectsThat(Result["items"]).ИмеетТип("Array");
+
 
 EndProcedure
 
@@ -10263,6 +10218,288 @@ Procedure YandexDisk_CreateFolder(FunctionParameters)
 
 EndProcedure
 
+Procedure YandexDisk_UploadFileByURL(FunctionParameters)
+
+    Token   = FunctionParameters["YandexDisk_Token"];
+    Address = FunctionParameters["Picture"];
+    Path    = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.UploadFileByURL(Token, Path, Address);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL", "YandexDisk");
+
+    Check_YaDiskProc(Result);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_FileByURLPath", Path);
+    FunctionParameters.Insert("YandexDisk_FileByURLPath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
+
+    Result = OPI_YandexDisk.GetObject(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path);
+
+EndProcedure
+
+Procedure YandexDisk_DeleteObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
+
+    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    OPI_Tools.Pause(5);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "YandexDisk");
+
+    Check_Empty(Result);
+
+EndProcedure
+
+Procedure YandexDisk_UploadFile(FunctionParameters)
+
+    Path1 = "/" + String(New UUID) + ".png";
+    Path2 = "/" + String(New UUID) + ".png";
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Image = FunctionParameters["Picture"]; // URL
+
+    TFN = GetTempFileName("png"); // Path
+    CopyFile(Image, TFN);
+
+    Result = OPI_YandexDisk.UploadFile(Token, Path1, Image, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (URL)", "YandexDisk");
+
+    Check_Empty(Result); // SKIP
+
+    OPI_Tools.Pause(5); // SKIP
+
+    Result = OPI_YandexDisk.UploadFile(Token, Path2, TFN, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "YandexDisk");
+
+    Check_Empty(Result);
+
+    OPI_Tools.Pause(5);
+
+    Result = OPI_YandexDisk.DeleteObject(Token, Path1, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (URL)", "YandexDisk");
+
+    Check_Empty(Result);
+
+    Result = OPI_YandexDisk.DeleteObject(Token, Path2, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (Path)", "YandexDisk");
+
+    Check_Empty(Result);
+
+    DeleteFiles(TFN);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_CreateObjectCopy(FunctionParameters)
+
+    Token    = FunctionParameters["YandexDisk_Token"];
+    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+    Path     = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateObjectCopy", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_CopyFilePath", Path);
+    FunctionParameters.Insert("YandexDisk_CopyFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetDownloadLink(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path     = FunctionParameters["YandexDisk_PathForLink"];
+
+    Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLink", "YandexDisk");
+
+    Check_YaDiskLink(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_DownloadFile(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_PathForLink"];
+
+    Result = OPI_YandexDisk.DownloadFile(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "YandexDisk");
+
+    Check_BinaryData(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetFilesList(FunctionParameters)
+
+    Token           = FunctionParameters["YandexDisk_Token"];
+    Count           = 2;
+    OffsetFromStart = 1;
+    FilterByType    = "image";
+
+    Result = OPI_YandexDisk.GetFilesList(Token, Count, OffsetFromStart, FilterByType);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "YandexDisk");
+
+    Check_YaDiskFilesList(Result, Count, OffsetFromStart);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_MoveObject(FunctionParameters)
+
+    Token    = FunctionParameters["YandexDisk_Token"];
+    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+    Path     = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.MoveObject(Token, Original, Path, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_NewFilePath", Path);
+    FunctionParameters.Insert("YandexDisk_NewFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetPublishedObjectsList(FunctionParameters)
+
+    Token           = FunctionParameters["YandexDisk_Token"];
+    Count           = 2;
+    OffsetFromStart = 1;
+
+    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, OffsetFromStart);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectsList", "YandexDisk");
+
+    Check_YaDiskFilesList(Result, Count, OffsetFromStart);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_PublishObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
+
+    Result = OPI_YandexDisk.PublishObject(Token, Path);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PublishObject", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path, True);
+
+    URL = Result["public_url"];
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_PublicURL", URL);
+    FunctionParameters.Insert("YandexDisk_PublicURL", URL);
+
+EndProcedure
+
+Procedure YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLinkForPublicObject", "YandexDisk");
+
+    Check_YaDiskLink(Result);
+
+EndProcedure
+
+Procedure YandexDisk_GetPublicObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Result = OPI_YandexDisk.GetPublicObject(Token, URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject");
+
+    Check_YaDiskPath(Result, "", True);
+
+EndProcedure
+
+Procedure YandexDisk_SavePublicObjectToDisk(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk");
+
+    Check_YaDiskPath(Result, "", False);
+
+EndProcedure
+
+Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
+
+    Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CancelObjectPublication", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path, False);
+
+EndProcedure
+
 #EndRegion
 
 #Region VKTeams
@@ -10520,7 +10757,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "VkTeams");
+    OPI_TestDataRetrieval.WriteLog(Result, "SendVoice", "VkTeams");
 
     Check_VKTMessage(Result);
 

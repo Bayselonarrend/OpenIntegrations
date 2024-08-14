@@ -1,8 +1,5 @@
-﻿  
-  Токен = "y0_AgAAAABdylaOAA...";
-  Путь  = "/Альпака.png";
-  Адрес = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
-  
-  Ответ = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, Адрес); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                    //Строка
-  
+﻿    Токен   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Адрес   = "https://openintegrations.dev/test_data/picture.jpg";
+    Путь    = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
+
+    Результат = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, Адрес);
