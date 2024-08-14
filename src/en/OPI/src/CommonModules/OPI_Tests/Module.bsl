@@ -10342,7 +10342,7 @@ EndProcedure
 Procedure YandexDisk_GetDownloadLink(FunctionParameters)
 
     Token = FunctionParameters["YandexDisk_Token"];
-    Path     = FunctionParameters["YandexDisk_PathForLink"];
+    Path  = FunctionParameters["YandexDisk_PathForLink"];
 
     Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
 
@@ -10537,7 +10537,9 @@ Procedure VKTeams_GetEvents(FunctionParameters)
         // Event handling...
 
         If Not Events.Count() = 0 Then
-            LastID            = Events[Events.UBound()]["eventId"];
+
+            LastID = Events[Events.UBound()]["eventId"];
+
         EndIf;
 
     EndDo;
