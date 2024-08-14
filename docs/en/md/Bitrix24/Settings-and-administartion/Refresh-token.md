@@ -26,7 +26,7 @@ sidebar_position: 3
 ```bsl title="Code example"
     ClientID     = "local.6667fc928a50a9.70414732";
     ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
-    Refresh      = "eebed066006e9f06006b12e400000001000...";
+    Refresh      = "6ae2e366006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RefreshToken(ClientID, ClientSecret, Refresh);
 ```

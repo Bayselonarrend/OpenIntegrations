@@ -24,8 +24,10 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-Путь      = "/alpaca.png";
-Результат = OPI_YandexDisk.СкачатьФайл(Токен, Путь);
+    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Путь  = "/b88bbbcb-0261-4669-a161-28887de75ef6.png";
+
+    Результат = OPI_YandexDisk.СкачатьФайл(Токен, Путь);
 ```
 
 

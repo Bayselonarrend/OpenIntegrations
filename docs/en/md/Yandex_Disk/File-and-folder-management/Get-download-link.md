@@ -23,11 +23,10 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  
-  Token = "y0_AgAAAABdylaOAA...";
-  Path = "/Alpaca.png"
-  Response = OPI_YandexDisk.GetDownloadLink(Token, Path); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Path  = "/b88bbbcb-0261-4669-a161-28887de75ef6.png";
+
+    Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
 ```
 
 

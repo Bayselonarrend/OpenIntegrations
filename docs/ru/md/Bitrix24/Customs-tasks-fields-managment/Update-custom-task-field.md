@@ -30,7 +30,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     IDПоля    = "255";
     Заголовок = "Новый заголовок";
@@ -38,7 +38,7 @@ sidebar_position: 3
     Результат = OPI_Bitrix24.ИзменитьПользовательскоеПолеЗадачи(URL, IDПоля, , Заголовок);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "fe3fa966006e9f06006b12e400000001000...";
+    Токен = "7a63bc66006e9f06006b12e400000001000...";
 
     IDПоля     = "257";
     ВнешнийКод = "NEW_TEXT_FIELD";

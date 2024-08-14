@@ -31,7 +31,7 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Type = "date";
     Name = "BIRTHDAY_FIELD";
@@ -39,7 +39,7 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
     Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fe3fa966006e9f06006b12e400000001000...";
+    Token = "7a63bc66006e9f06006b12e400000001000...";
 
     Type       = "string";
     Name       = "TEXT_FIELD";

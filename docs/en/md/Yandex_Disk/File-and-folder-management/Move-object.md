@@ -25,13 +25,11 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
-  
-  Token = "y0_AgAAAABdylaOAA...";
-  Original = "/Alpaca.png";
-  Path = "/TestFolder/Alpaca (Moved).png";
-  
-  Response = OPI_YandexDisk.MoveObject(Token, Original, Path); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Original = "/b91ade1a-0731-4dd9-b453-199debd673c4.png";
+    Path     = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.MoveObject(Token, Original, Path, True);
 ```
 
 

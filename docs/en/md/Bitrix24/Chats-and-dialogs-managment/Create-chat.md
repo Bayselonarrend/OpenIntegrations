@@ -46,12 +46,12 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
     ChatStructure.Insert("AVATAR"     , B64Image);
     ChatStructure.Insert("OWNER_ID"   , 1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fe3fa966006e9f06006b12e400000001000...";
+    Token = "7a63bc66006e9f06006b12e400000001000...";
 
     ChatStructure = New Structure;
     ChatStructure.Insert("TYPE"  , "CHAT");
