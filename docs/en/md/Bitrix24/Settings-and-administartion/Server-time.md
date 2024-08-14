@@ -26,7 +26,7 @@ Method at API documentation: [server_time](https://dev.1c-bitrix.ru/rest_help/ge
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.ServerTime(URL);
 
@@ -45,7 +45,7 @@ Method at API documentation: [server_time](https://dev.1c-bitrix.ru/rest_help/ge
 ```
 
 ```json title="Result"
-  {
+{
   "result": "2024-06-13T18:40:54+00:00",
   "time": {
   "start": 1718304054.57877,
@@ -58,5 +58,4 @@ Method at API documentation: [server_time](https://dev.1c-bitrix.ru/rest_help/ge
   "operating": 0
   }
   }
-
 ```

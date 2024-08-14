@@ -35,7 +35,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "user": {
   "login": "bayselonarrend",
   "country": "by",
@@ -71,5 +71,4 @@ sidebar_position: 1
   "paid_max_file_size": 53687091200,
   "max_file_size": 1073741824
   }
-
 ```

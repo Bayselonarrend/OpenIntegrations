@@ -38,8 +38,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "name": "Дата",
   "type": "date",
   "options": {
@@ -49,6 +48,4 @@ sidebar_position: 7
   }
   }
   }
-  
-
 ```

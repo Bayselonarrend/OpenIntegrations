@@ -26,7 +26,7 @@ sidebar_position: 25
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПолучитьПланЗадачНаДень(URL);
 
@@ -45,7 +45,7 @@ sidebar_position: 25
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [],
  "time": {
   "start": 1720816513.42336,
@@ -58,5 +58,4 @@ sidebar_position: 25
   "operating": 0
  }
 }
-
 ```

@@ -41,8 +41,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "content": "Новый комментарий",
   "htmlContent": "Новый комментарий",
   "author": {
@@ -58,6 +57,4 @@ sidebar_position: 2
   "deleted": false,
   "id": "AAABI3NNNAY"
   }
-  
-
 ```

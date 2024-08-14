@@ -39,8 +39,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "ok": true,
   "messages": [
   {
@@ -80,6 +79,4 @@ sidebar_position: 6
   "channel_actions_ts": null,
   "channel_actions_count": 0
   }
-  
-
 ```

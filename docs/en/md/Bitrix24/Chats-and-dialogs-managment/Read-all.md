@@ -26,7 +26,7 @@ Method at API documentation: [im.dialog.read.all](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.ReadAll(URL);
 
@@ -45,7 +45,7 @@ Method at API documentation: [im.dialog.read.all](https://dev.1c-bitrix.ru/learn
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720969176.30834,
@@ -58,5 +58,4 @@ Method at API documentation: [im.dialog.read.all](https://dev.1c-bitrix.ru/learn
   "operating": 0
   }
   }
-
 ```

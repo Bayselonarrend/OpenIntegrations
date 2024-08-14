@@ -37,7 +37,7 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
 
     DestinationID = "5016";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Filename2, Image2, DestinationID);
 
@@ -56,7 +56,7 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": 1740,
   "NAME": "Picture1.jpg",
@@ -78,5 +78,4 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/Picture1.jpg"
   }
   }
-
 ```

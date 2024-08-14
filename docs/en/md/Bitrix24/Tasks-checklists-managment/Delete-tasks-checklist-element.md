@@ -28,7 +28,7 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID    = "1078";
     ElementID = "396";
 
@@ -52,7 +52,7 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720816512.25818,
@@ -65,5 +65,4 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
   "operating": 0
   }
   }
-
 ```

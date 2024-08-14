@@ -41,7 +41,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "paths_to_tags": [
   {
   "path": "/New/Dogs.mp3",
@@ -58,5 +58,4 @@ sidebar_position: 1
   }
   ]
   }
-
 ```

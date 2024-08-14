@@ -29,7 +29,7 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЧата      = "450";
     Файл        = "https://openintegrations.dev/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
     Описание    = "Очень важный файл";
@@ -64,7 +64,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "FILES": {
    "upload3254": {
@@ -140,5 +140,4 @@ sidebar_position: 5
   "operating": 0
  }
 }
-
 ```

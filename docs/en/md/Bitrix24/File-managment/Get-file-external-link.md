@@ -27,7 +27,7 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     FileID = "5010";
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
@@ -47,7 +47,7 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
 ```
 
 ```json title="Result"
-  {
+{
   "result": "https://b24-ar17wx.bitrix24.by/~pT3DD",
   "time": {
   "start": 1720017752.7023,
@@ -60,5 +60,4 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
   "operating": 0
   }
   }
-
 ```

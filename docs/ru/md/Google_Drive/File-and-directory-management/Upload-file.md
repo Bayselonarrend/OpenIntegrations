@@ -46,13 +46,10 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "mimeType": "image/jpeg",
   "name": "Новый файл.jpg",
   "id": "16hPGNTMmbnXhz_g0vjGbrLP19h56RwIg",
   "kind": "drive#file"
   }
-  
-
 ```

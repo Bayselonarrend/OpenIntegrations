@@ -43,7 +43,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-  {
+{
   "sheetId": 1790807910,
   "title": "Sheet2 (copy)",
   "index": 2,
@@ -53,5 +53,4 @@ sidebar_position: 3
   "columnCount": 26
   }
   }
-
 ```

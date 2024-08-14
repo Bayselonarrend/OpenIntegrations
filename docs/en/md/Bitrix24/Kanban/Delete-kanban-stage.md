@@ -30,7 +30,7 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
 ```bsl title="Code example"
     StageID = "318";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, True);
 
@@ -51,7 +51,7 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720600367.83205,
@@ -64,5 +64,4 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
-
 ```

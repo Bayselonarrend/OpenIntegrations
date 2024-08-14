@@ -40,12 +40,11 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "ok": true,
   "files": [],
   "response_metadata": {
   "next_cursor": ""
   }
   }
-
 ```

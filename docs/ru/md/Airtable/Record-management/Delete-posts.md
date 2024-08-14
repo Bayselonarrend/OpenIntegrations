@@ -46,8 +46,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "records": [
   {
   "deleted": true,
@@ -59,6 +58,4 @@ sidebar_position: 4
   }
   ]
   }
-  
-
 ```

@@ -42,7 +42,7 @@ sidebar_position: 11
 ```
 
 ```json title="Result"
-  {
+{
   "response":[
   {
   "album_id":289219319,
@@ -55,5 +55,4 @@ sidebar_position: 11
   }
   ]
   }
-
 ```

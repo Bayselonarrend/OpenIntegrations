@@ -47,7 +47,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-  {
+{
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "valueRanges": [
   {
@@ -79,5 +79,4 @@ sidebar_position: 3
   }
   ]
   }
-
 ```

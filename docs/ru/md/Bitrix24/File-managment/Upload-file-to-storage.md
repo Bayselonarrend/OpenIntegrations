@@ -38,7 +38,7 @@ sidebar_position: 1
 
     IDПриемника = 3;
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ЗагрузитьФайлВХранилище(URL, Наименование2, Картинка2, IDПриемника);
 
@@ -57,7 +57,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": 356,
   "NAME": "26417397-8431-4343-9c0f-a40d4a2831c8.jpg",
@@ -89,5 +89,4 @@ sidebar_position: 1
   "operating": 0.227726936340332
  }
 }
-
 ```

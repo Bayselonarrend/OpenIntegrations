@@ -29,7 +29,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.StartTimekeeping(URL);
 
@@ -53,7 +53,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "STATUS": "OPENED",
   "TIME_START": "2024-07-30T07:10:51+00:00",
@@ -80,5 +80,4 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
   "operating": 0.181692123413086
   }
   }
-
 ```

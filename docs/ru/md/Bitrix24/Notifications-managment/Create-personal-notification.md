@@ -32,7 +32,7 @@ sidebar_position: 1
 ```bsl title="Пример кода"
     IDПользователя = 1;
 
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     Текст    = "Текст сообщения";
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -60,7 +60,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 7450,
  "time": {
   "start": 1722087269.44996,
@@ -73,5 +73,4 @@ sidebar_position: 1
   "operating": 0
  }
 }
-
 ```

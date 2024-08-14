@@ -41,7 +41,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  [
+[
   {
   "ad_report": 0,
   "ad_coverage": 0,
@@ -87,5 +87,4 @@ sidebar_position: 2
   "post_id": 215
   }
   ]
-
 ```

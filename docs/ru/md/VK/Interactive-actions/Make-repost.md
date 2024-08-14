@@ -42,8 +42,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "response": {
   "mail_repost_count": 2,
   "likes_count": 7,
@@ -58,6 +57,4 @@ sidebar_position: 2
   "success": 1
   }
   }
-  
-
 ```

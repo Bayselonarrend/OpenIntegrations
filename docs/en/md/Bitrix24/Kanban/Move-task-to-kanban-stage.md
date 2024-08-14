@@ -33,7 +33,7 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
     TaskID  = "1086";
     StageID = "318";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
 
@@ -54,7 +54,7 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720600364.06058,
@@ -67,5 +67,4 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
-
 ```

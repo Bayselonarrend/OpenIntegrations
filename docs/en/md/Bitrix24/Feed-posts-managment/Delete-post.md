@@ -28,7 +28,7 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="Code example"
     PostID = "438";
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.DeletePost(URL, PostID);
 
@@ -48,7 +48,7 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1718130367.40777,
@@ -61,5 +61,4 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
   "operating": 0.310499906539917
   }
   }
-
 ```

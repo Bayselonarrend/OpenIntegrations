@@ -27,7 +27,7 @@ Method at API documentation: [task.elapseditem.getlist](https://dev.1c-bitrix.ru
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1088";
 
     Result = OPI_Bitrix24.GetTaskTimeAccountingList(URL, TaskID);
@@ -47,7 +47,7 @@ Method at API documentation: [task.elapseditem.getlist](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   {
   "ID": "40",
@@ -86,5 +86,4 @@ Method at API documentation: [task.elapseditem.getlist](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
-
 ```

@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     CommentID = "2932";
 
     Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID);
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
 ```
 
 ```json title="Result"
-  {
+{
   "result": null,
   "time": {
   "start": 1720295536.04613,
@@ -61,5 +61,4 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
   "operating": 0
   }
   }
-
 ```

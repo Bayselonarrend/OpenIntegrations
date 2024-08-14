@@ -32,7 +32,7 @@ sidebar_position: 6
     Наименование  = "Новый каталог";
     Наименование2 = "Новый каталог 2";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.СоздатьКаталогВХранилище(URL, IDХранилища, Наименование2);
 
@@ -51,7 +51,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": 574,
   "NAME": "Новый каталог",
@@ -80,5 +80,4 @@ sidebar_position: 6
   "operating": 0
  }
 }
-
 ```

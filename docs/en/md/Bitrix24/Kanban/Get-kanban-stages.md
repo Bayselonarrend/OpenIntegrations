@@ -28,7 +28,7 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetKanbanStages(URL, , True);
 
@@ -47,7 +47,7 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "20": {
   "ID": "20",
@@ -553,5 +553,4 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
   "operating": 0
   }
   }
-
 ```
