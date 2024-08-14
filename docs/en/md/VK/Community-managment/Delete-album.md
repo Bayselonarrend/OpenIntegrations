@@ -24,7 +24,7 @@ sidebar_position: 6
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    AlbumID    = "305187504";
+    AlbumID    = "305362578";
 
     Result = OPI_VK.DeleteAlbum(AlbumID, Parameters);
 ```

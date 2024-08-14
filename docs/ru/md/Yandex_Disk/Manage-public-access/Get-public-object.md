@@ -25,12 +25,12 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  
-  Токен = "y0_AgAAAABdylaOAA...";
-  URL   = "https://disk.yandex.by/i/txwzakUVtxgjoQ"
-  
-  Ответ = OPI_YandexDisk.ПолучитьПубличныйОбъект(Токен, URL);   //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                   //Строка
+    Токен  = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    URL    = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
+
+    Результат   = OPI_YandexDisk.ПолучитьПубличныйОбъект(Токен, URL);
+
+    Проверка_ЯДискПуть(Результат, "", Истина);
 ```
 
 

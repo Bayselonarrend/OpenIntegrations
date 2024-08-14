@@ -26,7 +26,7 @@ sidebar_position: 5
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
-    MessageID = "6846";
+    MessageID = "7181";
 
     Result = OPI_Telegram.UnpinMessage(Token, ChannelID, MessageID);
 ```

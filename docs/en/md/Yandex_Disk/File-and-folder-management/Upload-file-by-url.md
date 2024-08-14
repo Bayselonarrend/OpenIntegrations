@@ -24,13 +24,11 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
-  
-  Token = "y0_AgAAAABdylaOAA...";
-  Path = "/Alpaca.png";
-  Address = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png";
-  
-  Response = OPI_YandexDisk.UploadFileByURL(Token, Path, Address); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Address = "https://openintegrations.dev/test_data/picture.jpg";
+    Path    = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.UploadFileByURL(Token, Path, Address);
 ```
 
 
