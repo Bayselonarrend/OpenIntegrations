@@ -39,7 +39,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Files = New Map;
     Files.Insert("1.png", Image1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
@@ -59,7 +59,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-  {
+{
   "result": 86,
   "time": {
   "start": 1718473311.53949,
@@ -72,5 +72,4 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
   "operating": 0.326629877090454
   }
   }
-
 ```

@@ -40,7 +40,7 @@ sidebar_position: 14
 ```
 
 ```json title="Result"
-  {
+{
   "name": "pic.png",
   "path_lower": "/new/pic.png",
   "path_display": "/New/pic.png",
@@ -52,5 +52,4 @@ sidebar_position: 14
   "is_downloadable": true,
   "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
   }
-
 ```

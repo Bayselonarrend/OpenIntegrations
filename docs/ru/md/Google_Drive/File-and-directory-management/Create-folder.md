@@ -40,13 +40,10 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "mimeType": "application/vnd.google-apps.folder",
   "name": "Тестовая папка",
   "id": "1fIqr5pJV3QybT5sPeZhBD_0TIvtL5Ovc",
   "kind": "drive#file"
   }
-  
-
 ```

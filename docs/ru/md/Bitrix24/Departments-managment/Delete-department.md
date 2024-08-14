@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    URL             = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL             = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDПодразделения = "70";
 
     Результат = OPI_Bitrix24.УдалитьПодразделение(URL, IDПодразделения);
@@ -48,7 +48,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1722171482.56495,
@@ -61,5 +61,4 @@ sidebar_position: 4
   "operating": 0
  }
 }
-
 ```

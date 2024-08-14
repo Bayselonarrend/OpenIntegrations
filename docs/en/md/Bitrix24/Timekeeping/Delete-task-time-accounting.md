@@ -28,7 +28,7 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID   = "1088";
     RecordID = "306";
 
@@ -50,7 +50,7 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-  {
+{
   "result": null,
   "time": {
   "start": 1720816586.91135,
@@ -63,5 +63,4 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
-
 ```

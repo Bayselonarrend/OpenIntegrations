@@ -32,7 +32,7 @@ sidebar_position: 10
     Наименование2 = "Новое имя файла 2.jpg";
 
     IDФайла2  = "5008";
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПереименоватьФайл(URL, IDФайла2, Наименование2);
 
@@ -52,7 +52,7 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "1716",
   "NAME": "Новое имя файла.jpg",
@@ -84,5 +84,4 @@ sidebar_position: 10
   "operating": 0
  }
 }
-
 ```

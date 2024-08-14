@@ -47,8 +47,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "type": "number",
   "options": {
   "precision": 0
@@ -57,6 +56,4 @@ sidebar_position: 2
   "name": "9c0d2a82-7bf9-40b7-8052-ae3ebadc72d5(изм.)",
   "description": "Новое описание"
   }
-  
-
 ```

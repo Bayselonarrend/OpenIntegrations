@@ -28,7 +28,7 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "450";
 
     Title = "New chat title";
@@ -53,7 +53,7 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720865687.70928,
@@ -66,5 +66,4 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
   "operating": 0
   }
   }
-
 ```

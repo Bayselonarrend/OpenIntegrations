@@ -29,7 +29,7 @@ sidebar_position: 13
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЧата  = "chat4";
 
     Результат = OPI_Bitrix24.ПолучитьСписокСообщенийЧата(URL, IDЧата);
@@ -50,7 +50,7 @@ sidebar_position: 13
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "chat_id": 10,
   "messages": [
@@ -396,5 +396,4 @@ sidebar_position: 13
   "operating": 0
  }
 }
-
 ```

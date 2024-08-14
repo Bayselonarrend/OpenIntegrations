@@ -45,7 +45,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "18",
   "NAME": "Новое имя хранилища",
@@ -66,5 +66,4 @@ sidebar_position: 4
   "operating": 0
  }
 }
-
 ```

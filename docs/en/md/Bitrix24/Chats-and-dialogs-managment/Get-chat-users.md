@@ -27,7 +27,7 @@ Method at API documentation: [im.chat.user.list](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "450";
 
     Result = OPI_Bitrix24.GetChatUsers(URL, ChatID);
@@ -48,7 +48,7 @@ Method at API documentation: [im.chat.user.list](https://dev.1c-bitrix.ru/learni
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   1,
   10
@@ -64,5 +64,4 @@ Method at API documentation: [im.chat.user.list](https://dev.1c-bitrix.ru/learni
   "operating": 0
   }
   }
-
 ```

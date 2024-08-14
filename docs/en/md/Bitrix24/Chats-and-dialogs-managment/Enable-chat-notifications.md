@@ -27,7 +27,7 @@ Method at API documentation: [im.chat.mute](https://dev.1c-bitrix.ru/learning/co
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "450";
 
     Result = OPI_Bitrix24.EnableChatNotifications(URL, ChatID);
@@ -48,7 +48,7 @@ Method at API documentation: [im.chat.mute](https://dev.1c-bitrix.ru/learning/co
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720865695.99933,
@@ -61,5 +61,4 @@ Method at API documentation: [im.chat.mute](https://dev.1c-bitrix.ru/learning/co
   "operating": 0
   }
   }
-
 ```

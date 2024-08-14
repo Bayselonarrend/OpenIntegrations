@@ -43,8 +43,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "sheetId": 1790807910,
   "title": "Лист2 (копия)",
   "index": 2,
@@ -54,6 +53,4 @@ sidebar_position: 3
   "columnCount": 26
   }
   }
-  
-
 ```

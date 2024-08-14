@@ -40,9 +40,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "error": "invalid_grant",
  "error_description": "code doesn't exist or has expired"
 }
-
 ```

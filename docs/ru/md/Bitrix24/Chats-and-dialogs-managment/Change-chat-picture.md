@@ -28,7 +28,7 @@ sidebar_position: 9
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЧата  = "450";
 
     Картинка = "https://openintegrations.dev/test_data/picture2.jpg";
@@ -51,7 +51,7 @@ sidebar_position: 9
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1720865692.90718,
@@ -64,5 +64,4 @@ sidebar_position: 9
   "operating": 0.884703874588013
  }
 }
-
 ```

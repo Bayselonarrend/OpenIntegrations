@@ -41,8 +41,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "ok": true,
   "no_op": false,
   "already_open": false,
@@ -50,6 +49,4 @@ sidebar_position: 1
   "id": "D06UAKK1C6R"
   }
   }
-  
-
 ```

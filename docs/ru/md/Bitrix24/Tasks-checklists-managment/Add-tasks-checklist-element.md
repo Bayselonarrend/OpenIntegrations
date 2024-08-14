@@ -29,7 +29,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЗадачи = "1078";
 
     Текст    = "Пункт чек-листа";
@@ -52,7 +52,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 96,
  "time": {
   "start": 1720816505.3041,
@@ -65,5 +65,4 @@ sidebar_position: 1
   "operating": 0
  }
 }
-
 ```

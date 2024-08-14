@@ -35,7 +35,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": {
   "id": 6129457865,
@@ -48,5 +48,4 @@ sidebar_position: 1
   "can_connect_to_business": false
  }
 }
-
 ```

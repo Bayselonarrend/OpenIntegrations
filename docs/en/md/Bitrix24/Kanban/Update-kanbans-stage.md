@@ -35,7 +35,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
     Color   = "000000";
     StageID = "318";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color);
 
@@ -58,7 +58,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720816577.57757,
@@ -71,5 +71,4 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
-
 ```

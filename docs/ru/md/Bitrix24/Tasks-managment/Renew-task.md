@@ -27,7 +27,7 @@ sidebar_position: 10
 
 
 ```bsl title="Пример кода"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЗадачи = "1078";
 
     Результат = OPI_Bitrix24.ВозобновитьЗадачу(URL, IDЗадачи);
@@ -48,7 +48,7 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "task": {
    "id": "110",
@@ -191,5 +191,4 @@ sidebar_position: 10
   "operating": 0.26146388053894
  }
 }
-
 ```

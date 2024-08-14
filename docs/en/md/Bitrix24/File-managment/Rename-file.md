@@ -32,7 +32,7 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
     Filename2 = "New file name 2.jpg";
 
     FileID2 = "5008";
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
 
@@ -52,7 +52,7 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "1716",
   "NAME": "New file name.jpg",
@@ -84,5 +84,4 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
-
 ```

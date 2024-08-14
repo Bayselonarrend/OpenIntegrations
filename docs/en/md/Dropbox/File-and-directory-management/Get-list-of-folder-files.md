@@ -40,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "entries": [
   {
   ".tag": "file",
@@ -72,5 +72,4 @@ sidebar_position: 2
   "cursor": "AAEXfuMhG6Xl2ENYH4uAoLS_nOUV4SC7ChaMxK4ZIphj9x5INumYZrHv6jqph4fgkOy6PpFTTaaJ4BTjzVGZnTk7tB5wCCp1Eogn8gCW-Agz-ej4X6ir5p-KX63vBgDV0OZ-boy78oUXMJeOtU9sjEij34BoqBCtWYOFje4PXhEV3KwVySRWzPlXSEq9arMo1AaP8PFuDxx6JTxSGRdcQwnc",
   "has_more": false
   }
-
 ```

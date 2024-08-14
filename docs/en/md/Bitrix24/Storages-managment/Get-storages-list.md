@@ -26,7 +26,7 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     Result = OPI_Bitrix24.GetStoragesList(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
@@ -44,7 +44,7 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   {
   "ID": "3",
@@ -122,5 +122,4 @@ Method at API documentation: [disk.storage.getlist](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
-
 ```

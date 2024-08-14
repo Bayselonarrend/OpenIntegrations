@@ -27,7 +27,7 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     FolderID = "5014";
 
     Result = OPI_Bitrix24.DeleteFolder(URL, FolderID);
@@ -48,7 +48,7 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1719047257.50616,
@@ -61,5 +61,4 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
-
 ```

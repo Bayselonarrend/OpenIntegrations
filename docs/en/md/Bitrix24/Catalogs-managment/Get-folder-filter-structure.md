@@ -27,7 +27,7 @@ Method at API documentation: [disk.folder.getfields](https://dev.1c-bitrix.ru/re
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetFolderFilterStructure(URL);
 
@@ -46,7 +46,7 @@ Method at API documentation: [disk.folder.getfields](https://dev.1c-bitrix.ru/re
 ```
 
 ```json title="Result"
-  {
+{
   "ID": "",
   "NAME": "",
   "TYPE": "",
@@ -58,5 +58,4 @@ Method at API documentation: [disk.folder.getfields](https://dev.1c-bitrix.ru/re
   "DELETE_TIME": "",
   "DELETED_TYPE": ""
   }
-
 ```

@@ -39,7 +39,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "md5": "8d7bf7d7ee61113f9044f3a28496e458",
   "sha256": "f7607461b40164d5064d1d5085cbe1e94ecb1326e7ff8db857931b2ccd14b7f8",
   "revision": 1707475863191537,
@@ -113,5 +113,4 @@ sidebar_position: 1
   "private_resource": "1573541518:bda4781175def7529059950870dd72cd70beef0ff592e7102e731fd2cb631ec3"
   }
   }
-
 ```

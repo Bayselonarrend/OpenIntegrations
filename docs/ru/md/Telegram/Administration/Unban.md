@@ -40,10 +40,9 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": false,
  "error_code": 400,
  "description": "Bad Request: can't remove chat owner"
 }
-
 ```

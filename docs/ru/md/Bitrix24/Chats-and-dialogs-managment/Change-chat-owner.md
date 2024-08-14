@@ -28,7 +28,7 @@ sidebar_position: 10
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЧата  = "450";
 
     IDПользователя = 10;
@@ -51,7 +51,7 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1720865697.10595,
@@ -64,5 +64,4 @@ sidebar_position: 10
   "operating": 0
  }
 }
-
 ```

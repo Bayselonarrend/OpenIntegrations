@@ -26,7 +26,7 @@ Method at API documentation: [user.current](https://dev.1c-bitrix.ru/rest_help/u
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetCurrentUser(URL);
 
@@ -45,7 +45,7 @@ Method at API documentation: [user.current](https://dev.1c-bitrix.ru/rest_help/u
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "1",
   "XML_ID": "53818298",
@@ -79,5 +79,4 @@ Method at API documentation: [user.current](https://dev.1c-bitrix.ru/rest_help/u
   "operating": 0
   }
   }
-
 ```

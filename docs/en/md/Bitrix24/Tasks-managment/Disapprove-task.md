@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.disapprove](https://dev.1c-bitrix.ru/re
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1078";
 
     Result = OPI_Bitrix24.DisapproveTask(URL, TaskID);
@@ -48,9 +48,8 @@ Method at API documentation: [tasks.task.disapprove](https://dev.1c-bitrix.ru/re
 ```
 
 ```json title="Result"
-  {
+{
   "error": 1048582,
   "error_description": "Action on the task is not allowed"
   }
-
 ```

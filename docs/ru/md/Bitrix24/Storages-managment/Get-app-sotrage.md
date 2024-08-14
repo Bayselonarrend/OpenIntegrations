@@ -41,7 +41,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "18",
   "NAME": "New storage name",
@@ -62,5 +62,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```

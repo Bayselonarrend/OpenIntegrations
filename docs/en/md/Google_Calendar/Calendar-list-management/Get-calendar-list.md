@@ -36,7 +36,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  [
+[
   {
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
@@ -172,5 +172,4 @@ sidebar_position: 1
   "kind": "calendar#calendarListEntry"
   }
   ]
-
 ```

@@ -35,8 +35,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  [
+[
   {
   "variants": [
   {
@@ -57,6 +56,4 @@ sidebar_position: 1
   "id": 255
   }
   ]
-  
-
 ```

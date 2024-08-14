@@ -31,7 +31,7 @@ sidebar_position: 9
     IDКаталога = "5018";
     IDФайла    = "5010";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПереместитьФайлВКаталог(URL, IDФайла, IDКаталога);
 
@@ -54,7 +54,7 @@ sidebar_position: 9
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "1716",
   "NAME": "Новое имя файла.jpg",
@@ -86,5 +86,4 @@ sidebar_position: 9
   "operating": 0
  }
 }
-
 ```

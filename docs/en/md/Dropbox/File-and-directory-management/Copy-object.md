@@ -40,7 +40,7 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
-  {
+{
   "metadata": {
   ".tag": "file",
   "name": "pic_copy.png",
@@ -55,5 +55,4 @@ sidebar_position: 8
   "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
   }
   }
-
 ```

@@ -43,5 +43,7 @@ Method at API documentation: [GET /chats/members/delete](https://teams.vk.com/bo
 ```
 
 ```json title="Result"
-
+{
+ "ok": true
+}
 ```

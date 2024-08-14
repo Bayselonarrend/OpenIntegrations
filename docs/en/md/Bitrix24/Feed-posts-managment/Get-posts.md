@@ -29,7 +29,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
 
 ```bsl title="Code example"
     PostID = "440";
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetPosts(URL, PostID);
 
@@ -48,7 +48,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   {
   "ID": "40",
@@ -416,5 +416,4 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
-
 ```

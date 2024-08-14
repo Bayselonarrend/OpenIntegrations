@@ -39,8 +39,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  [
+[
   {
   "linkShareMetadata": {
   "securityUpdateEnabled": true,
@@ -146,6 +145,4 @@ sidebar_position: 2
   "kind": "drive#file"
   }
   ]
-  
-
 ```

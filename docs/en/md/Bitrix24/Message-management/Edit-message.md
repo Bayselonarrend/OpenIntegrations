@@ -29,7 +29,7 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     MessageID = "8682";
 
     Text = "New message text";
@@ -59,7 +59,7 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720969165.17314,
@@ -72,5 +72,4 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
   "operating": 0
   }
   }
-
 ```

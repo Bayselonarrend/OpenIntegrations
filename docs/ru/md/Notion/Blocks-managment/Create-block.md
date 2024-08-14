@@ -46,8 +46,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "request_id": "4de46f5b-d38b-4df5-b26e-32127db1096b",
   "block": {},
   "type": "block",
@@ -100,6 +99,4 @@ sidebar_position: 1
   ],
   "object": "list"
   }
-  
-
 ```

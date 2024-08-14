@@ -27,7 +27,7 @@ Method at API documentation: [disk.file.markdeleted](https://dev.1c-bitrix.ru/re
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     FileID = "5010";
 
     Result = OPI_Bitrix24.MarkFileAsDeleted(URL, FileID);
@@ -47,7 +47,7 @@ Method at API documentation: [disk.file.markdeleted](https://dev.1c-bitrix.ru/re
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "1716",
   "NAME": "New file name.jpg",
@@ -79,5 +79,4 @@ Method at API documentation: [disk.file.markdeleted](https://dev.1c-bitrix.ru/re
   "operating": 0
   }
   }
-
 ```

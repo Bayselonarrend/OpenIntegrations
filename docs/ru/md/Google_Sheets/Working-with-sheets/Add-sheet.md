@@ -41,8 +41,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "replies": [
   {
@@ -61,6 +60,4 @@ sidebar_position: 1
   }
   ]
   }
-  
-
 ```

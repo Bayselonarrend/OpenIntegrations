@@ -28,7 +28,7 @@ Method at API documentation: [task.checklistitem.complete](https://dev.1c-bitrix
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID    = "1078";
     ElementID = "396";
 
@@ -52,7 +52,7 @@ Method at API documentation: [task.checklistitem.complete](https://dev.1c-bitrix
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720816509.8981,
@@ -65,5 +65,4 @@ Method at API documentation: [task.checklistitem.complete](https://dev.1c-bitrix
   "operating": 0
   }
   }
-
 ```

@@ -32,7 +32,7 @@ sidebar_position: 2
     Наименование  = "Новый подкаталог";
     Наименование2 = "Новый подкаталог 2";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.СоздатьПодкаталог(URL, IDКаталога, Наименование2);
 
@@ -51,7 +51,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": 850,
   "NAME": "Новый подкаталог",
@@ -80,5 +80,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```

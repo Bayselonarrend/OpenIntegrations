@@ -40,8 +40,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "ok": true,
   "channel": {
   "id": "C070VPMKN8J",
@@ -85,6 +84,4 @@ sidebar_position: 3
   "priority": 0
   }
   }
-  
-
 ```

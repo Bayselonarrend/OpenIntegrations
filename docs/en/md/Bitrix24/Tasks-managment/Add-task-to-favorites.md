@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1078";
 
     Result = OPI_Bitrix24.AddTaskToFavorites(URL, TaskID);
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1718569733.98858,
@@ -61,5 +61,4 @@ Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
-
 ```

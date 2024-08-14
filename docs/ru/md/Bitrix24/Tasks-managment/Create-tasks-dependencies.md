@@ -33,7 +33,7 @@ sidebar_position: 23
     IDПриемника = "1080";
     ТипСвязи    = 0;
 
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.СоздатьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи);
 
@@ -56,7 +56,7 @@ sidebar_position: 23
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [],
  "time": {
   "start": 1720186655.56394,
@@ -69,5 +69,4 @@ sidebar_position: 23
   "operating": 0.692637920379639
  }
 }
-
 ```

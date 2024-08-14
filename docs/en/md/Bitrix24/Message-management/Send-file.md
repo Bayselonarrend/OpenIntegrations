@@ -29,7 +29,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID      = "450";
     File        = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
@@ -64,7 +64,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "FILES": {
   "upload3254": {
@@ -140,5 +140,4 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
   "operating": 0
   }
   }
-
 ```

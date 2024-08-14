@@ -39,7 +39,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
   "properties": {
   "title": "Test table (changed.)",
@@ -200,5 +200,4 @@ sidebar_position: 2
   ],
   "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc/edit"
   }
-
 ```

@@ -51,11 +51,10 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "chat_hostname": "SN-CHAT-10_",
   "message_token": 5925400810709476620,
   "status_message": "ok",
   "status": 0
   }
-
 ```

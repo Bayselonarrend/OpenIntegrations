@@ -37,7 +37,7 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-  {
+{
   "users": [
   {
   "last_online": 1704796869778,
@@ -49,5 +49,4 @@ sidebar_position: 4
   "status_message": "ok",
   "status": 0
   }
-
 ```

@@ -27,7 +27,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDПоля   = "255";
 
     Результат = OPI_Bitrix24.ПолучитьПользовательскоеПолеЗадачи(URL, IDПоля);
@@ -48,7 +48,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "261",
   "ENTITY_ID": "TASKS_TASK",
@@ -183,5 +183,4 @@ sidebar_position: 4
   "operating": 0
  }
 }
-
 ```

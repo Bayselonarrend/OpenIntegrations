@@ -27,7 +27,7 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     UserID = "78";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID);
@@ -48,7 +48,7 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   {
   "ID": "60",
@@ -83,5 +83,4 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
   "operating": 0
   }
   }
-
 ```

@@ -44,7 +44,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-  {
+{
   "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
   "hangoutsMeet"
@@ -62,5 +62,4 @@ sidebar_position: 5
   "etag": "\"1708424005038000\"",
   "kind": "calendar#calendarListEntry"
   }
-
 ```

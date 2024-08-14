@@ -41,14 +41,11 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "response": [
   {
   "id": 1029701085
   }
   ]
   }
-  
-
 ```

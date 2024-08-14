@@ -34,7 +34,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
     Name  = "New stage";
     Color = "0026FF";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, 6);
 
@@ -58,7 +58,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-  {
+{
   "result": 132,
   "time": {
   "start": 1720600360.58899,
@@ -71,5 +71,4 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
   "operating": 0
   }
   }
-
 ```

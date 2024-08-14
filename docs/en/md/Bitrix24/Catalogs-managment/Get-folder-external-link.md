@@ -27,7 +27,7 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     FolderID = "5016";
 
     Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID);
@@ -47,7 +47,7 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
 ```
 
 ```json title="Result"
-  {
+{
   "result": "https://b24-ar17wx.bitrix24.by/~hWalI",
   "time": {
   "start": 1719472796.12325,
@@ -60,5 +60,4 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
   "operating": 0
   }
   }
-
 ```

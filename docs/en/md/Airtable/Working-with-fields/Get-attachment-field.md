@@ -38,9 +38,8 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-  {
+{
   "name": "Attachment",
   "type": "multipleAttachments"
   }
-
 ```

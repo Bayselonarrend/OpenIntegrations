@@ -31,7 +31,7 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Type = "date";
     Name = "BIRTHDAY_FIELD";
@@ -59,7 +59,7 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-  {
+{
   "result": 261,
   "time": {
   "start": 1722114794.52732,
@@ -72,5 +72,4 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
-
 ```

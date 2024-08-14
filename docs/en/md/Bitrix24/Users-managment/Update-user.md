@@ -28,7 +28,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     UserID = "78";
     Email  = String(New UUID) + "@exepmple.org";
 
@@ -63,7 +63,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1722328395.63697,
@@ -76,5 +76,4 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
   "operating": 0.310055017471314
   }
   }
-
 ```

@@ -27,7 +27,7 @@ Method at API documentation: [timeman.settings](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL);
 
@@ -49,7 +49,7 @@ Method at API documentation: [timeman.settings](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "UF_TIMEMAN": true,
   "UF_TM_FREE": false,
@@ -70,5 +70,4 @@ Method at API documentation: [timeman.settings](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
-
 ```

@@ -27,7 +27,7 @@ Method at API documentation: [im.notify.delete](https://dev.1c-bitrix.ru/learnin
 
 
 ```bsl title="Code example"
-    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     NotificationID = "8690";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID);
@@ -48,7 +48,7 @@ Method at API documentation: [im.notify.delete](https://dev.1c-bitrix.ru/learnin
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1722087271.36087,
@@ -61,5 +61,4 @@ Method at API documentation: [im.notify.delete](https://dev.1c-bitrix.ru/learnin
   "operating": 0
   }
   }
-
 ```

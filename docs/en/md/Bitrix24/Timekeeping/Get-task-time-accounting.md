@@ -28,7 +28,7 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID   = "1088";
     RecordID = "306";
 
@@ -50,7 +50,7 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "42",
   "TASK_ID": "638",
@@ -74,5 +74,4 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
   "operating": 0
   }
   }
-
 ```

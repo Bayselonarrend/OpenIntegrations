@@ -38,7 +38,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "bases": [
   {
   "id": "appGarzKZ0lu3gzoa",
@@ -87,5 +87,4 @@ sidebar_position: 1
   }
   ]
   }
-
 ```

@@ -28,7 +28,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПолучитьСтадииКанбана(URL, , Истина);
 
@@ -47,7 +47,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "20": {
    "ID": "20",
@@ -553,5 +553,4 @@ sidebar_position: 4
   "operating": 0
  }
 }
-
 ```

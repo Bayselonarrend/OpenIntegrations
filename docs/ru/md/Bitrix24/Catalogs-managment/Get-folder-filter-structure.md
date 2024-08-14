@@ -27,7 +27,7 @@ sidebar_position: 11
 
 
 ```bsl title="Пример кода"
-    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат  = OPI_Bitrix24.ПолучитьСтруктуруФильтраКаталога(URL);
 
@@ -46,7 +46,7 @@ sidebar_position: 11
 ```
 
 ```json title="Результат"
-    {
+{
  "ID": "",
  "NAME": "",
  "TYPE": "",
@@ -58,5 +58,4 @@ sidebar_position: 11
  "DELETE_TIME": "",
  "DELETED_TYPE": ""
 }
-
 ```

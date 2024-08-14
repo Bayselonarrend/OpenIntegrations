@@ -27,7 +27,7 @@ Method at API documentation: [disk.storage.getchildren](https://dev.1c-bitrix.ru
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     StorageID = 3;
 
     Result = OPI_Bitrix24.GetStorageObjects(URL, StorageID);
@@ -47,7 +47,7 @@ Method at API documentation: [disk.storage.getchildren](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   {
   "ID": "568",
@@ -102,5 +102,4 @@ Method at API documentation: [disk.storage.getchildren](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
-
 ```

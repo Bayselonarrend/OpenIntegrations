@@ -27,7 +27,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     СтруктураФильтра = Новый Структура;
     СтруктураФильтра.Вставить("NAME"              , "Виталий");
@@ -56,7 +56,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [
   {
    "ID": "12",
@@ -274,5 +274,4 @@ sidebar_position: 6
   "operating": 0
  }
 }
-
 ```

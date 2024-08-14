@@ -1,5 +1,5 @@
 ﻿    Тег       = "Важное";
-    Токен     = "sl.B4gp-iE6U2BXAeEhqhHwN00_GAOFjvVi4j_C9r2yZ5sjIUcTga38IbFN49TKhxrmzyrNjttkXA...";
+    Токен     = "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ...";
     Путь      = "/New/mydoc.docx";
 
     Результат = OPI_Dropbox.ДобавитьТег(Токен, Путь, Тег);

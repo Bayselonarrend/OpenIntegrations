@@ -51,7 +51,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-  {
+{
   "records": [
   {
   "id": "recjHNKNZBWLZkZ7A",
@@ -71,5 +71,4 @@ sidebar_position: 3
   }
   ]
   }
-
 ```

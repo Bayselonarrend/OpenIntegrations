@@ -32,7 +32,7 @@ Method at API documentation: [disk.storage.addfolder](https://dev.1c-bitrix.ru/r
     Name      = "New catalog";
     Filename2 = "New folder 2";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.CreateStorageFolder(URL, StorageID, Filename2);
 
@@ -51,7 +51,7 @@ Method at API documentation: [disk.storage.addfolder](https://dev.1c-bitrix.ru/r
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": 574,
   "NAME": "New catalog",
@@ -80,5 +80,4 @@ Method at API documentation: [disk.storage.addfolder](https://dev.1c-bitrix.ru/r
   "operating": 0
   }
   }
-
 ```

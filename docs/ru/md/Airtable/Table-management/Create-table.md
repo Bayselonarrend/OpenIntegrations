@@ -54,8 +54,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "id": "tblT64aWyrMUAbUmF",
   "name": "Тестовая таблица 2",
   "description": "Новая таблица",
@@ -126,6 +125,4 @@ sidebar_position: 1
   }
   ]
   }
-  
-
 ```

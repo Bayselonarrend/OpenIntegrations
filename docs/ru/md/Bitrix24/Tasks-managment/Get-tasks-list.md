@@ -34,7 +34,7 @@ sidebar_position: 2
     Фильтр.Вставить("RESPONSIBLE_ID", 10);
 
     Отступ   = 1;
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокЗадач(URL, Фильтр);
 
@@ -53,7 +53,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "tasks": [
    {
@@ -4021,5 +4021,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```

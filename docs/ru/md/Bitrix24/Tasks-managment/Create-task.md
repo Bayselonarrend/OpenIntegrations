@@ -41,7 +41,7 @@ sidebar_position: 3
     СтруктураЗадачи.Вставить("DEADLINE"      , ТекущаяДата + Час * Сутки);
     СтруктураЗадачи.Вставить("RESPONSIBLE_ID", Исполнитель);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.СоздатьЗадачу(URL, СтруктураЗадачи);
 
@@ -60,7 +60,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "task": {
    "id": "110",
@@ -203,5 +203,4 @@ sidebar_position: 3
   "operating": 0
  }
 }
-
 ```

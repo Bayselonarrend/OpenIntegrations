@@ -31,7 +31,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Тип = "date";
     Имя = "BIRTHDAY_FIELD";
@@ -59,7 +59,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 261,
  "time": {
   "start": 1722114794.52732,
@@ -72,5 +72,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```
