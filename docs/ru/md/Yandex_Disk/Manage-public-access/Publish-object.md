@@ -27,12 +27,6 @@ sidebar_position: 1
     Путь   = "/b91ade1a-0731-4dd9-b453-199debd673c4.png";
 
     Результат = OPI_YandexDisk.ОпубликоватьОбъект(Токен, Путь);
-
-    Проверка_ЯДискПуть(Результат, Путь, Истина);
-
-    URL = Результат["public_url"];
-    OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("YandexDisk_PublicURL", URL);
-    ПараметрыФункции.Вставить("YandexDisk_PublicURL", URL);
 ```
 
 
