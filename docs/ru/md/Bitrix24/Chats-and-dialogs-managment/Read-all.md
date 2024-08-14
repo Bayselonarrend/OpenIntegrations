@@ -26,7 +26,7 @@ sidebar_position: 19
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПрочитатьВсе(URL);
 
@@ -45,7 +45,7 @@ sidebar_position: 19
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1720969176.30834,
@@ -58,5 +58,4 @@ sidebar_position: 19
   "operating": 0
  }
 }
-
 ```

@@ -35,7 +35,7 @@ sidebar_position: 2
     Цвет         = "000000";
     IDСтадии     = "318";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ИзменитьСтадиюКанбана(URL, Наименование, IDСтадии, Цвет);
 
@@ -58,7 +58,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1720816577.57757,
@@ -71,5 +71,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```

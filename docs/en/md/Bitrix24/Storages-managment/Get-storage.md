@@ -27,7 +27,7 @@ Method at API documentation: [disk.storage.get](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     StorageID = 3;
 
     Result = OPI_Bitrix24.GetStorage(URL, StorageID);
@@ -47,7 +47,7 @@ Method at API documentation: [disk.storage.get](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "3",
   "NAME": "Main drive",
@@ -68,5 +68,4 @@ Method at API documentation: [disk.storage.get](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
-
 ```

@@ -46,7 +46,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-    {
+{
  "response": {
   "count": 1,
   "items": [
@@ -139,5 +139,4 @@ sidebar_position: 7
   ]
  }
 }
-
 ```

@@ -28,7 +28,7 @@ Method at API documentation: [im.dialog.unread](https://dev.1c-bitrix.ru/learnin
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID    = "chat" + "450";
     MessageID = "8682";
 
@@ -51,7 +51,7 @@ Method at API documentation: [im.dialog.unread](https://dev.1c-bitrix.ru/learnin
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720969158.8803,
@@ -64,5 +64,4 @@ Method at API documentation: [im.dialog.unread](https://dev.1c-bitrix.ru/learnin
   "operating": 0
   }
   }
-
 ```

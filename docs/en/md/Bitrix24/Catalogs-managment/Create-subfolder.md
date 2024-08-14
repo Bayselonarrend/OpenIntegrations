@@ -32,7 +32,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
     Name      = "New subfolder";
     Filename2 = "New subfolder 2";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Filename2);
 
@@ -51,7 +51,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": 850,
   "NAME": "New subfolder",
@@ -80,5 +80,4 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
-
 ```

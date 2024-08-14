@@ -27,7 +27,7 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1082";
 
     Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID);
@@ -47,7 +47,7 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   {
   "POST_MESSAGE_HTML": null,
@@ -79,5 +79,4 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
   "operating": 0
   }
   }
-
 ```

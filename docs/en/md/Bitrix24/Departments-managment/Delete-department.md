@@ -27,7 +27,7 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
-    URL          = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL          = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     DepartmentID = "70";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID);
@@ -48,7 +48,7 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1722171482.56495,
@@ -61,5 +61,4 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
   "operating": 0
   }
   }
-
 ```

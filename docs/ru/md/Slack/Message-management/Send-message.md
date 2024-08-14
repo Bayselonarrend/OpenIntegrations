@@ -43,8 +43,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "ok": true,
   "channel": "C06UFNUTKUL",
   "ts": "1714146538.221929",
@@ -88,6 +87,4 @@ sidebar_position: 1
   ]
   }
   }
-  
-
 ```

@@ -27,7 +27,7 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDФайла = "5010";
 
     Результат  = OPI_Bitrix24.ПолучитьВнешнююСсылкуФайла(URL, IDФайла);
@@ -47,7 +47,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-    {
+{
  "result": "https://b24-ar17wx.bitrix24.by/~pT3DD",
  "time": {
   "start": 1720017752.7023,
@@ -60,5 +60,4 @@ sidebar_position: 5
   "operating": 0
  }
 }
-
 ```

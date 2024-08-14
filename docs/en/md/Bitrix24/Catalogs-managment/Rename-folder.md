@@ -32,7 +32,7 @@ Method at API documentation: [disk.folder.rename](https://dev.1c-bitrix.ru/rest_
     Filename2 = "New folder 2";
 
     FolderID2 = "5014";
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.RenameFolder(URL, FolderID2, Filename2);
 
@@ -52,7 +52,7 @@ Method at API documentation: [disk.folder.rename](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "936",
   "NAME": "New catalog",
@@ -81,5 +81,4 @@ Method at API documentation: [disk.folder.rename](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
-
 ```

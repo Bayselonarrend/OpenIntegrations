@@ -26,7 +26,7 @@ Method at API documentation: [user.fields](https://dev.1c-bitrix.ru/rest_help/us
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetUserFieldsStructure(URL);
 
@@ -45,7 +45,7 @@ Method at API documentation: [user.fields](https://dev.1c-bitrix.ru/rest_help/us
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "ID",
   "XML_ID": "Innotшнandй toод",
@@ -123,5 +123,4 @@ Method at API documentation: [user.fields](https://dev.1c-bitrix.ru/rest_help/us
   "operating": 0
   }
   }
-
 ```

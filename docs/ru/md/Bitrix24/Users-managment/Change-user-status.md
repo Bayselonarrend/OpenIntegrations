@@ -25,7 +25,7 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDПользователя = "78";
 
     Результат = OPI_Bitrix24.ИзменитьСтатусПользователя(URL, IDПользователя, Истина);
@@ -46,7 +46,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1722328399.68494,
@@ -59,5 +59,4 @@ sidebar_position: 5
   "operating": 0.5396409034729
  }
 }
-
 ```

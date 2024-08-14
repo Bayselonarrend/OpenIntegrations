@@ -43,5 +43,9 @@ Method at API documentation: [GET /messages/sendVoice](https://teams.vk.com/bota
 ```
 
 ```json title="Result"
-
+{
+ "fileId": "I000be4KKMDOLDbYUqPbXs66bb96bd1bd",
+ "msgId": "7402676176776331485",
+ "ok": true
+}
 ```

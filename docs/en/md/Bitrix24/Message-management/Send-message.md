@@ -29,7 +29,7 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "chat" + "450";
     Text   = "Message text";
     Image  = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
@@ -57,7 +57,7 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
 ```
 
 ```json title="Result"
-  {
+{
   "result": 5342,
   "time": {
   "start": 1720969163.89343,
@@ -70,5 +70,4 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
   "operating": 0
   }
   }
-
 ```

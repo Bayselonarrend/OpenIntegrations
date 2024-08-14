@@ -40,8 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "ok": true,
   "members": [
   "U06UG1CAYH2"
@@ -50,6 +49,4 @@ sidebar_position: 2
   "next_cursor": ""
   }
   }
-  
-
 ```

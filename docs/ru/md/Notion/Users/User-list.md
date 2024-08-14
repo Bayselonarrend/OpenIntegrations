@@ -37,8 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "request_id": "ea9a6b96-0b02-4866-a60a-2958e514af38",
   "user": {},
   "type": "user",
@@ -72,6 +71,4 @@ sidebar_position: 1
   ],
   "object": "list"
   }
-  
-
 ```

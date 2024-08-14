@@ -38,7 +38,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-  {
+{
   "ok": true,
   "members": [
   {
@@ -193,5 +193,4 @@ sidebar_position: 3
   "next_cursor": ""
   }
   }
-
 ```

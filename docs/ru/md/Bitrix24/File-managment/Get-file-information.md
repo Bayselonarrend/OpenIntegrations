@@ -27,7 +27,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDФайла = "5010";
 
     Результат  = OPI_Bitrix24.ПолучитьИнформациюОФайле(URL, IDФайла);
@@ -47,7 +47,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "1716",
   "NAME": "Картинка1.jpg",
@@ -79,5 +79,4 @@ sidebar_position: 3
   "operating": 0
  }
 }
-
 ```

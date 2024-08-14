@@ -27,7 +27,7 @@ Method at API documentation: [disk.folder.restore](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     FolderID = "5016";
 
     Result = OPI_Bitrix24.RestoreFolder(URL, FolderID);
@@ -47,7 +47,7 @@ Method at API documentation: [disk.folder.restore](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "936",
   "NAME": "New catalog",
@@ -76,5 +76,4 @@ Method at API documentation: [disk.folder.restore](https://dev.1c-bitrix.ru/rest
   "operating": 0
   }
   }
-
 ```

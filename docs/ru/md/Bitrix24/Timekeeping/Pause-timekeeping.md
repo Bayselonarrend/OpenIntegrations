@@ -27,7 +27,7 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПриостановитьУчетВремени(URL);
 
@@ -49,7 +49,7 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "STATUS": "PAUSED",
   "TIME_START": "2024-07-30T07:10:51+00:00",
@@ -76,5 +76,4 @@ sidebar_position: 8
   "operating": 0
  }
 }
-
 ```

@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1078";
 
     Result = OPI_Bitrix24.DeferTask(URL, TaskID);
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "task": {
   "id": "110",
@@ -191,5 +191,4 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
   "operating": 0.131969928741455
   }
   }
-
 ```

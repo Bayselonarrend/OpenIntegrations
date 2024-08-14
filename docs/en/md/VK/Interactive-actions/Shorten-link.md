@@ -36,6 +36,5 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-  https://vk.cc/ctL1sM
-
+https://vk.cc/ctL1sM
 ```

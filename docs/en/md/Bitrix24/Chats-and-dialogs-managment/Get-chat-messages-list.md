@@ -29,7 +29,7 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "chat4";
 
     Result = OPI_Bitrix24.GetChatMessagesList(URL, ChatID);
@@ -50,7 +50,7 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "chat_id": 10,
   "messages": [
@@ -396,5 +396,4 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
   "operating": 0
   }
   }
-
 ```

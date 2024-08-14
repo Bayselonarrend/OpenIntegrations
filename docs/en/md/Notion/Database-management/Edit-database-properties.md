@@ -49,7 +49,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-  {
+{
   "request_id": "d42b5700-9325-439e-98ce-252a007f5ed7",
   "public_url": null,
   "url": "https://www.notion.so/048ba0ce4f474e33900540d249b01949",
@@ -197,5 +197,4 @@ sidebar_position: 3
   },
   "object": "database"
   }
-
 ```

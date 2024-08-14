@@ -28,7 +28,7 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "450";
 
     Image = "https://openintegrations.dev/test_data/picture2.jpg";
@@ -51,7 +51,7 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720865692.90718,
@@ -64,5 +64,4 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
   "operating": 0.884703874588013
   }
   }
-
 ```

@@ -29,7 +29,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Name     = "Main department";
     ParentID = 1;
@@ -55,7 +55,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 ```
 
 ```json title="Result"
-  {
+{
   "result": 42,
   "time": {
   "start": 1722171476.78229,
@@ -68,5 +68,4 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
   "operating": 0.389190912246704
   }
   }
-
 ```

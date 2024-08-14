@@ -40,12 +40,11 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-  {
+{
   "ok": true,
   "scheduled_messages": [],
   "response_metadata": {
   "next_cursor": ""
   }
   }
-
 ```

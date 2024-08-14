@@ -26,7 +26,7 @@ sidebar_position: 17
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПолучитьСтатусПользователя(URL);
 
@@ -45,9 +45,8 @@ sidebar_position: 17
 ```
 
 ```json title="Результат"
-    {
+{
  "error": "expired_token",
  "error_description": "The access token provided has expired."
 }
-
 ```

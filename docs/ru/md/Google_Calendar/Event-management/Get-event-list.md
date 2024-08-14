@@ -37,8 +37,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  [
+[
   
   {
   "eventType": "default",
@@ -88,6 +87,4 @@ sidebar_position: 2
   },
   
   ]
-  
-
 ```

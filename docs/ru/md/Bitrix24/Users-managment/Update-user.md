@@ -28,7 +28,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDПользователя = "78";
     Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
 
@@ -63,7 +63,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1722328395.63697,
@@ -76,5 +76,4 @@ sidebar_position: 4
   "operating": 0.310055017471314
  }
 }
-
 ```

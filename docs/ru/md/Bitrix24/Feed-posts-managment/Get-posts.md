@@ -29,7 +29,7 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     IDНовости = "440";
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПолучитьНовости(URL, IDНовости);
 
@@ -48,7 +48,7 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [
   {
    "ID": "40",
@@ -416,5 +416,4 @@ sidebar_position: 5
   "operating": 0
  }
 }
-
 ```

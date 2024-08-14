@@ -51,7 +51,7 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-  {
+{
   "id": "applEsyJmBRm12AuN",
   "tables": [
   {
@@ -83,5 +83,4 @@ sidebar_position: 3
   }
   ]
   }
-
 ```

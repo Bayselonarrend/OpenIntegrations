@@ -38,5 +38,8 @@ Method at API documentation: [GET /self/get](https://teams.vk.com/botapi/#/self/
 ```
 
 ```json title="Result"
-
+{
+ "userId": "1011893356",
+ "ok": true
+}
 ```

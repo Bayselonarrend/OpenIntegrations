@@ -40,8 +40,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "ok": true,
   "channels": [
   {
@@ -89,6 +88,4 @@ sidebar_position: 1
   }
   ]
   }
-  
-
 ```

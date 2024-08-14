@@ -28,7 +28,7 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "450";
 
     UserID = 10;
@@ -51,7 +51,7 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720865685.25089,
@@ -64,5 +64,4 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
   "operating": 0
   }
   }
-
 ```

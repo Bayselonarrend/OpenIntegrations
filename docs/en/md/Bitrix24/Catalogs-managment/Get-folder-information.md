@@ -27,7 +27,7 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     FolderID = "5016";
 
     Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID);
@@ -47,7 +47,7 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "1722",
   "NAME": "New catalog",
@@ -76,5 +76,4 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
   "operating": 0
   }
   }
-
 ```

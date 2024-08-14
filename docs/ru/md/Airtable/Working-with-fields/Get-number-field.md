@@ -40,14 +40,11 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "name": "Номер",
   "type": "number",
   "options": {
   "precision": 0
   }
   }
-  
-
 ```

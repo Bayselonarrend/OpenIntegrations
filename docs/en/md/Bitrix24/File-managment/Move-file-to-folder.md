@@ -31,7 +31,7 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
     FolderID = "5018";
     FileID   = "5010";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID);
 
@@ -54,7 +54,7 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": "1716",
   "NAME": "New file name.jpg",
@@ -86,5 +86,4 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
   "operating": 0
   }
   }
-
 ```

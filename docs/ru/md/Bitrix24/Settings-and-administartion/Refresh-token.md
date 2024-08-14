@@ -40,7 +40,7 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-    {
+{
  "access_token": "63a46866006e9f06006b12e4000000010000071997e1f54c1043e9f7193734af3018df",
  "expires": 1718133859,
  "expires_in": 3600,
@@ -53,5 +53,4 @@ sidebar_position: 3
  "user_id": 1,
  "refresh_token": "53239066006e9f06006b12e4000000010000078523b1fc75d58d6f0fa98b4632bc70ce"
 }
-
 ```

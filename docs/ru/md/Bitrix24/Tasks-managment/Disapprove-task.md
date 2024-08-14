@@ -27,7 +27,7 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЗадачи = "1078";
 
     Результат = OPI_Bitrix24.ОтклонитьЗадачу(URL, IDЗадачи);
@@ -48,9 +48,8 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-    {
+{
  "error": 1048582,
  "error_description": "Действие над задачей не разрешено"
 }
-
 ```

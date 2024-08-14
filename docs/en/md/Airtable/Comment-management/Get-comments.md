@@ -44,7 +44,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "comments": [
   {
   "id": "comL1oGEDJvIQlMs1",
@@ -60,5 +60,4 @@ sidebar_position: 1
   ],
   "offset": null
   }
-
 ```

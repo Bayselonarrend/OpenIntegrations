@@ -40,7 +40,7 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
     Files.Insert("1.png", Image1);
     Files.Insert("2.png", Image2);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, True);
 
@@ -59,7 +59,7 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": 18,
   "time": {
   "start": 1718130364.82176,
@@ -72,5 +72,4 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
   "operating": 0.637988090515137
   }
   }
-
 ```

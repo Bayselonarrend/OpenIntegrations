@@ -61,10 +61,9 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "response": {
   "post_id": 2126
   }
   }
-
 ```

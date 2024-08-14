@@ -44,7 +44,7 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-  {
+{
   "data": {
   "text": "How are you?",
   "id": "1746082302268969388",
@@ -53,5 +53,4 @@ sidebar_position: 5
   ]
   }
   }
-
 ```

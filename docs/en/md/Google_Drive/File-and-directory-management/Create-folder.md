@@ -40,11 +40,10 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-  {
+{
   "mimeType": "application/vnd.google-apps.folder",
   "name": "TestFolder",
   "id": "1fIqr5pJV3QybT5sPeZhBD_0TIvtL5Ovc",
   "kind": "drive#file"
   }
-
 ```

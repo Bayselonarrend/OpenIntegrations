@@ -32,7 +32,7 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
 ```bsl title="Code example"
     UserID = 1;
 
-    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     Text  = "Message text";
     Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -60,7 +60,7 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
 ```
 
 ```json title="Result"
-  {
+{
   "result": 7454,
   "time": {
   "start": 1722087270.72466,
@@ -73,5 +73,4 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
   "operating": 0
   }
   }
-
 ```

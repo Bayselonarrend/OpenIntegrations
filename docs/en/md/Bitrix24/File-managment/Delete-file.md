@@ -27,7 +27,7 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     FileID = "5008";
 
     Result = OPI_Bitrix24.DeleteFile(URL, FileID);
@@ -48,7 +48,7 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1718783933.86753,
@@ -61,5 +61,4 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
   "operating": 3.73615193367004
   }
   }
-
 ```

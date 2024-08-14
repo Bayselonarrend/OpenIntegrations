@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1078";
 
     Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID);
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1718569735.08926,
@@ -61,5 +61,4 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
   "operating": 0
   }
   }
-
 ```

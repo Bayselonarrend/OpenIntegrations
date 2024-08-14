@@ -41,5 +41,11 @@ Method at API documentation: [GET /files/getInfo](https://teams.vk.com/botapi/#/
 ```
 
 ```json title="Result"
-
+{
+ "filename": "ImportantDocument.docx",
+ "size": 24071,
+ "type": "application",
+ "url": "https://ub.icq.net/files/get/vqgXEKhdWYGb2IlixsIS3vxsISW8oxaIkQWff1DD5WQ1bmyCmGILM8v19hQ5FIiuvlrSfGbajGnvEjBGPTU84I2e6fP1r3bftIiyfQksabQYvGX3NEOIaEY14SfS7FzSFkGvLSSjC6gIpUkp71EtWd71gGxsIS/ImportantDocument.docx",
+ "ok": true
+}
 ```

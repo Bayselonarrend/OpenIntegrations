@@ -43,8 +43,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "id": "recV6DxeLQMBNJrUk",
   "createdTime": "2024-05-10T19:39:51Z",
   "fields": {
@@ -52,6 +51,4 @@ sidebar_position: 2
   "Строковое": "Привет\n"
   }
   }
-  
-
 ```

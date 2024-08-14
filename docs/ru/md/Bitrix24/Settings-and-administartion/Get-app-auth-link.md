@@ -38,6 +38,5 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    "https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
-
+"https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
 ```

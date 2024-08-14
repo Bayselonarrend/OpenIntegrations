@@ -42,7 +42,7 @@ sidebar_position: 12
 ```
 
 ```json title="Result"
-  {
+{
   "inline_keyboard":[
   [
   {
@@ -65,5 +65,4 @@ sidebar_position: 12
   ],
   "rows":1
   }
-
 ```
