@@ -1,6 +1,6 @@
 ﻿    Токен  = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
     URL    = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
-    
+
     Результат   = OPI_YandexDisk.ПолучитьПубличныйОбъект(Токен, URL);
 
     Проверка_ЯДискПуть(Результат, "", Истина);
