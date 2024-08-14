@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     CommentID = "2932";
 
     Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID);
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "id": 130,
   "taskId": 432,
@@ -72,5 +72,4 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
   "operating": 0
   }
   }
-
 ```

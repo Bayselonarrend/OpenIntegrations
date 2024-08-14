@@ -41,7 +41,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
     TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
     TaskData.Insert("RESPONSIBLE_ID", Responsible);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData);
 
@@ -60,7 +60,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "task": {
   "id": "110",
@@ -203,5 +203,4 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
   "operating": 0
   }
   }
-
 ```

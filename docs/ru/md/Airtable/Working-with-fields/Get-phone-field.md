@@ -38,11 +38,8 @@ sidebar_position: 9
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "name": "Телефон",
   "type": "phoneNumber"
   }
-  
-
 ```

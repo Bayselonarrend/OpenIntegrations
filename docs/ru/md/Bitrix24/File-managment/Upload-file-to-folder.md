@@ -37,7 +37,7 @@ sidebar_position: 2
 
     IDПриемника = "5016";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование2, Картинка2, IDПриемника);
 
@@ -56,7 +56,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": 1740,
   "NAME": "Картинка1.jpg",
@@ -78,5 +78,4 @@ sidebar_position: 2
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Картинка1.jpg"
  }
 }
-
 ```

@@ -32,7 +32,7 @@ sidebar_position: 20
     МассивПользователей.Добавить("1");
     МассивПользователей.Добавить("10");
 
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЗадачи = "1078";
 
     Результат = OPI_Bitrix24.ПроверитьДоступКЗадаче(URL, IDЗадачи, МассивПользователей);
@@ -53,7 +53,7 @@ sidebar_position: 20
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "allowedActions": {
    "1": {
@@ -125,5 +125,4 @@ sidebar_position: 20
   "operating": 0
  }
 }
-
 ```

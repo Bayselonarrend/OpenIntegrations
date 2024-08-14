@@ -29,7 +29,7 @@ Method at API documentation: [timeman.close](https://dev.1c-bitrix.ru/rest_help/
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.StopTimekeeping(URL);
 
@@ -51,9 +51,8 @@ Method at API documentation: [timeman.close](https://dev.1c-bitrix.ru/rest_help/
 ```
 
 ```json title="Result"
-  {
+{
   "error": "WRONG_DATETIME_FORMAT",
   "error_description": "Wrong datetime format"
   }
-
 ```

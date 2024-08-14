@@ -31,7 +31,7 @@ sidebar_position: 4
     IDПриемника = "5014";
     IDКаталога  = "5020";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПереместитьКаталог(URL, IDКаталога, IDПриемника);
 
@@ -54,7 +54,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "ID": "938",
   "NAME": "Новый подкаталог 2",
@@ -83,5 +83,4 @@ sidebar_position: 4
   "operating": 0
  }
 }
-
 ```

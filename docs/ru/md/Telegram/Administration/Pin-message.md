@@ -40,9 +40,8 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "ok": true,
  "result": true
 }
-
 ```

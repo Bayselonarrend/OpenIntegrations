@@ -40,9 +40,8 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "error": "expired_token",
   "error_description": "The authorization token provided has expired."
   }
-
 ```

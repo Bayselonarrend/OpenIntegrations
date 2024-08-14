@@ -27,7 +27,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDПользователя = "78";
 
     Результат = OPI_Bitrix24.ПолучитьПользователя(URL, IDПользователя);
@@ -48,7 +48,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [
   {
    "ID": "60",
@@ -83,5 +83,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```

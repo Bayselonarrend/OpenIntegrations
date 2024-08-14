@@ -43,10 +43,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "response": 1
   }
-  
-
 ```

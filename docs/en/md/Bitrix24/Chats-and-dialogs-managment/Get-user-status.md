@@ -26,7 +26,7 @@ Method at API documentation: [im.user.status.get](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetUserStatus(URL);
 
@@ -45,9 +45,8 @@ Method at API documentation: [im.user.status.get](https://dev.1c-bitrix.ru/learn
 ```
 
 ```json title="Result"
-  {
+{
   "error": "expired_token",
   "error_description": "The access token provided has expired."
   }
-
 ```

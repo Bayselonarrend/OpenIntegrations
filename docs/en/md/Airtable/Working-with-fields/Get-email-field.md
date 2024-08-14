@@ -38,9 +38,8 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
-  {
+{
   "name": "Email",
   "type": "email"
   }
-
 ```

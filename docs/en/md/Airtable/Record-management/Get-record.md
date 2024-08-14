@@ -43,7 +43,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "id": "recV6DxeLQMBNJrUk",
   "createdTime": "2024-05-10T19:39:51Z",
   "fields": {
@@ -51,5 +51,4 @@ sidebar_position: 2
   "String": "Hello\n"
   }
   }
-
 ```

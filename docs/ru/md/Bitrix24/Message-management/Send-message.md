@@ -29,7 +29,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЧата   = "chat" + "450";
     Текст    = "Текст сообщения";
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
@@ -57,7 +57,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 5342,
  "time": {
   "start": 1720969163.89343,
@@ -70,5 +70,4 @@ sidebar_position: 1
   "operating": 0
  }
 }
-
 ```

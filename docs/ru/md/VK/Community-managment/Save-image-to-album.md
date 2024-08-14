@@ -49,7 +49,7 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-    {
+{
  "response": [
   {
    "album_id": 304498513,
@@ -125,5 +125,4 @@ sidebar_position: 8
   }
  ]
 }
-
 ```

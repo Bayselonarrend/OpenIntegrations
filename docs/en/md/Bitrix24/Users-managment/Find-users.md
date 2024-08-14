@@ -27,7 +27,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     FilterStructure = New Structure;
     FilterStructure.Insert("NAME"              , "Vitaly");
@@ -56,7 +56,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   {
   "ID": "12",
@@ -274,5 +274,4 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
   "operating": 0
   }
   }
-
 ```

@@ -30,7 +30,7 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     Текст     = "Комментарий к новости";
     IDНовости = "440";
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ДобавитьКомментарийНовости(URL, IDНовости, Текст);
 
@@ -50,7 +50,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 168,
  "time": {
   "start": 1720186639.67208,
@@ -63,5 +63,4 @@ sidebar_position: 6
   "operating": 0
  }
 }
-
 ```

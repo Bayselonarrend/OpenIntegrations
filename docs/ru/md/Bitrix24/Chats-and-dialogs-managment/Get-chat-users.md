@@ -27,7 +27,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЧата  = "450";
 
     Результат = OPI_Bitrix24.ПолучитьСписокПользователейЧата(URL, IDЧата);
@@ -48,7 +48,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [
   1,
   10
@@ -64,5 +64,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```

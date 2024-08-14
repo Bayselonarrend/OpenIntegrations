@@ -42,8 +42,7 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "ok": true,
   "messages": [
   {
@@ -92,6 +91,4 @@ sidebar_position: 7
   ],
   "has_more": false
   }
-  
-
 ```

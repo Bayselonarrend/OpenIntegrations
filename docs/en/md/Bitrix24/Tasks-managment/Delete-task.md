@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1078";
 
     Result = OPI_Bitrix24.DeleteTask(URL, TaskID);
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_h
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "task": true
   },
@@ -63,5 +63,4 @@ Method at API documentation: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_h
   "operating": 0
   }
   }
-
 ```

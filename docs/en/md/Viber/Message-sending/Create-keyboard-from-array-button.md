@@ -43,7 +43,7 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
-  {
+{
   "Buttons": [
   {
   "ActionType": "reply",
@@ -69,5 +69,4 @@ sidebar_position: 7
   ],
   "Type": "keyboard"
   }
-
 ```

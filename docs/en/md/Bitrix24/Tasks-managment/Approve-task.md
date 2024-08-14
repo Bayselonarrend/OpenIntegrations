@@ -27,7 +27,7 @@ Method at API documentation: [tasks.task.approve](https://dev.1c-bitrix.ru/rest_
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1078";
 
     Result = OPI_Bitrix24.ApproveTask(URL, TaskID);
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.approve](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "task": {
   "id": "110",
@@ -219,5 +219,4 @@ Method at API documentation: [tasks.task.approve](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
-
 ```

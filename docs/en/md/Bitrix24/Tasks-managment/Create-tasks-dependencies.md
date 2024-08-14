@@ -33,7 +33,7 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
     DestinationID = "1080";
     LinkType      = 0;
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
@@ -56,7 +56,7 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-  {
+{
   "result": [],
   "time": {
   "start": 1720186655.56394,
@@ -69,5 +69,4 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
   "operating": 0.692637920379639
   }
   }
-
 ```

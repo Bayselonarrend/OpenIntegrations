@@ -29,7 +29,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Наименование = "Главное подразделение";
     IDРодителя   = 1;
@@ -55,7 +55,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 42,
  "time": {
   "start": 1722171476.78229,
@@ -68,5 +68,4 @@ sidebar_position: 1
   "operating": 0.389190912246704
  }
 }
-
 ```

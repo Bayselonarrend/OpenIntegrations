@@ -46,7 +46,7 @@ sidebar_position: 1
     СтруктураЧата.Вставить("AVATAR"     , B64Картинка);
     СтруктураЧата.Вставить("OWNER_ID"   , 1);
 
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.СоздатьЧат(URL, СтруктураЧата);
 
@@ -70,7 +70,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 26,
  "time": {
   "start": 1720816597.42171,
@@ -83,5 +83,4 @@ sidebar_position: 1
   "operating": 0
  }
 }
-
 ```

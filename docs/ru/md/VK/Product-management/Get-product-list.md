@@ -36,8 +36,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-  
-  [
+[
   {
   "sku": "12 345",
   "is_main_variant": true,
@@ -345,6 +344,4 @@ sidebar_position: 2
   "availability": 0
   }
   ]
-  
-
 ```

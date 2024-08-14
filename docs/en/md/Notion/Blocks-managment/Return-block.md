@@ -41,7 +41,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "request_id": "031886cc-537d-4025-b480-ecfdc9f2870c",
   "to_do": {
   "color": "default",
@@ -86,5 +86,4 @@ sidebar_position: 2
   "id": "d7021bdd-15b9-44ab-abcb-02bd2b1a5f6a",
   "object": "block"
   }
-
 ```

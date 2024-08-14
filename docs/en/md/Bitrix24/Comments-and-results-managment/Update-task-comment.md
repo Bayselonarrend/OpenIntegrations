@@ -29,7 +29,7 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID    = "1082";
     CommentID = "2932";
 
@@ -55,7 +55,7 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720186705.11133,
@@ -68,5 +68,4 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
   "operating": 0
   }
   }
-
 ```

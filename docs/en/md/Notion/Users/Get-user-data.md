@@ -40,7 +40,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "request_id": "f33d34a8-f3cf-41b5-bdf5-4a07cf7d7118",
   "person": {
   "email": "ex@gmail.com"
@@ -51,5 +51,4 @@ sidebar_position: 2
   "id": "ed71865a-9891-1111-86cd-1111111",
   "object": "user"
   }
-
 ```

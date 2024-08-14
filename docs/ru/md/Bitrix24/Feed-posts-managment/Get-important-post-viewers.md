@@ -28,7 +28,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     IDНовости = "438";
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокПросмотревшихВажное(URL, IDНовости);
 
@@ -47,7 +47,7 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-    {
+{
  "result": [
   "1"
  ],
@@ -62,5 +62,4 @@ sidebar_position: 4
   "operating": 0
  }
 }
-
 ```

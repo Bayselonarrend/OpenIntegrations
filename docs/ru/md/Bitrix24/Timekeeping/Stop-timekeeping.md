@@ -29,7 +29,7 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.ЗавершитьУчетВремени(URL);
 
@@ -51,9 +51,8 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-    {
+{
  "error": "WRONG_DATETIME_FORMAT",
  "error_description": "Wrong datetime format"
 }
-
 ```

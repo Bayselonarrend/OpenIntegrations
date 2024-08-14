@@ -46,7 +46,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
     ChatStructure.Insert("AVATAR"     , B64Image);
     ChatStructure.Insert("OWNER_ID"   , 1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
 
@@ -70,7 +70,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 ```
 
 ```json title="Result"
-  {
+{
   "result": 26,
   "time": {
   "start": 1720816597.42171,
@@ -83,5 +83,4 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
   "operating": 0
   }
   }
-
 ```

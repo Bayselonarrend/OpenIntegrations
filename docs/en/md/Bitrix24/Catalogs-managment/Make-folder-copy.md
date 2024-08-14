@@ -31,7 +31,7 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
     DestinationID = "5018";
     FolderID      = "5020";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID);
 
@@ -55,7 +55,7 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "ID": 1732,
   "NAME": "New subfolder 2",
@@ -84,5 +84,4 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
   "operating": 0
   }
   }
-
 ```

@@ -38,11 +38,8 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "name": "Вложение",
   "type": "multipleAttachments"
   }
-  
-
 ```

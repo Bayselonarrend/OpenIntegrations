@@ -54,7 +54,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "ok": true,
   "result": {
   "message_id": 4639,
@@ -112,5 +112,4 @@ sidebar_position: 2
   "caption": "String value"
   }
   }
-
 ```

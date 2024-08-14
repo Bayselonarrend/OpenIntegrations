@@ -27,7 +27,7 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     Status = "dnd";
 
     Result = OPI_Bitrix24.SetUserStatus(URL, Status);
@@ -48,7 +48,7 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1722083795.3692,
@@ -61,5 +61,4 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
   "operating": 0
   }
   }
-
 ```

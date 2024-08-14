@@ -40,7 +40,7 @@ sidebar_position: 1
     Файлы.Вставить("1.png", Картинка1);
     Файлы.Вставить("2.png", Картинка2);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Результат = OPI_Bitrix24.СоздатьНовость(URL, Текст, , Файлы, Заголовок, Истина);
 
@@ -59,7 +59,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-    {
+{
  "result": 18,
  "time": {
   "start": 1718130364.82176,
@@ -72,5 +72,4 @@ sidebar_position: 1
   "operating": 0.637988090515137
  }
 }
-
 ```

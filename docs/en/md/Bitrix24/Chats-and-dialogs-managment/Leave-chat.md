@@ -27,7 +27,7 @@ Method at API documentation: [im.chat.leave](https://dev.1c-bitrix.ru/learning/c
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     ChatID = "450";
 
     Result = OPI_Bitrix24.LeaveChat(URL, ChatID);
@@ -48,7 +48,7 @@ Method at API documentation: [im.chat.leave](https://dev.1c-bitrix.ru/learning/c
 ```
 
 ```json title="Result"
-  {
+{
   "result": true,
   "time": {
   "start": 1720816599.74716,
@@ -61,5 +61,4 @@ Method at API documentation: [im.chat.leave](https://dev.1c-bitrix.ru/learning/c
   "operating": 0
   }
   }
-
 ```

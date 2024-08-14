@@ -28,7 +28,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDЧата      = "chat" + "450";
     IDСообщения = "8682";
 
@@ -51,7 +51,7 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-    {
+{
  "result": {
   "dialogId": 10,
   "chatId": 10,
@@ -69,5 +69,4 @@ sidebar_position: 6
   "operating": 0
  }
 }
-
 ```

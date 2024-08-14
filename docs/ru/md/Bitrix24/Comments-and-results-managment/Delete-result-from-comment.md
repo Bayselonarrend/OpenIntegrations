@@ -27,7 +27,7 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    URL           = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL           = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDКомментария = "2932";
 
     Результат = OPI_Bitrix24.УдалитьРезультатИзКомментария(URL, IDКомментария);
@@ -48,7 +48,7 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-    {
+{
  "result": null,
  "time": {
   "start": 1720295536.04613,
@@ -61,5 +61,4 @@ sidebar_position: 8
   "operating": 0
  }
 }
-
 ```

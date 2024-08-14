@@ -1,6 +1,6 @@
 ﻿    Token   = "6129457865:AAFyzNYOAFbu...";
     Chat    = "-1001971186208";
-    Topic   = "3313";
+    Topic   = "3896";
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 

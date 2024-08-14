@@ -28,7 +28,7 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     TaskID = "1078";
     UserID = "80";
 
@@ -50,7 +50,7 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
 ```
 
 ```json title="Result"
-  {
+{
   "result": {
   "task": {
   "id": "154",
@@ -203,5 +203,4 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
   "operating": 0.450687170028686
   }
   }
-
 ```

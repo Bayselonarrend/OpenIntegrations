@@ -37,8 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-  
-  {
+{
   "event_types": [
   "subscribed",
   "unsubscribed",
@@ -55,6 +54,4 @@ sidebar_position: 1
   "status_message": "ok",
   "status": 0
   }
-  
-
 ```

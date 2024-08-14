@@ -37,7 +37,7 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-  {
+{
   "data": {
   "text": "Regular text tweet",
   "id": "1745752006310895822",
@@ -46,5 +46,4 @@ sidebar_position: 1
   ]
   }
   }
-
 ```

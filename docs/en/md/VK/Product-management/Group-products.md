@@ -45,10 +45,9 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
-  {
+{
   "response": {
   "item_group_id": 5957
   }
   }
-
 ```

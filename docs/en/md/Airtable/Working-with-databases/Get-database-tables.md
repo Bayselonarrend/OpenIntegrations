@@ -39,7 +39,7 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-  {
+{
   "tables": [
   {
   "id": "tblqZzW78Rvsdt9gt",
@@ -70,5 +70,4 @@ sidebar_position: 2
   }
   ]
   }
-
 ```

@@ -28,7 +28,7 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 
 ```bsl title="Code example"
     PostID = "438";
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
 
     Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
 
@@ -47,7 +47,7 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 ```
 
 ```json title="Result"
-  {
+{
   "result": [
   "1"
   ],
@@ -62,5 +62,4 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
   "operating": 0
   }
   }
-
 ```

@@ -29,7 +29,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2ppp8uucc891111/";
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
     IDСообщения = "8682";
 
     Текст    = "Новый текст сообщения";
@@ -59,7 +59,7 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-    {
+{
  "result": true,
  "time": {
   "start": 1720969165.17314,
@@ -72,5 +72,4 @@ sidebar_position: 2
   "operating": 0
  }
 }
-
 ```
