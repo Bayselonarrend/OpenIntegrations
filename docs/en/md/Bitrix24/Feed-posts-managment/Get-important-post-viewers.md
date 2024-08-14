@@ -27,13 +27,13 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 
 
 ```bsl title="Code example"
-    PostID = "438";
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
+    PostID = "500";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fe3fa966006e9f06006b12e400000001000...";
+    Token = "7a63bc66006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
 ```

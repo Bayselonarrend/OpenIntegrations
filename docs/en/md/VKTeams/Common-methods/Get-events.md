@@ -39,7 +39,9 @@ Method at API documentation: [GET /events/get](https://teams.vk.com/botapi/#/eve
         // Event handling...
 
         If Not Events.Count() = 0 Then
-            LastID            = Events[Events.UBound()]["eventId"];
+
+            LastID = Events[Events.UBound()]["eventId"];
+
         EndIf;
 
     EndDo;

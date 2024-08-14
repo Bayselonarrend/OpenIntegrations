@@ -28,17 +28,17 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/f2pp...";
-    TaskID    = "1078";
-    ElementID = "396";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    TaskID    = "1254";
+    ElementID = "540";
 
     Result = OPI_Bitrix24.RenewTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "1080";
-    ElementID = "400";
+    TaskID    = "1256";
+    ElementID = "544";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fe3fa966006e9f06006b12e400000001000...";
+    Token = "7a63bc66006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RenewTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```
