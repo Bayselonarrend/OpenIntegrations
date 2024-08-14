@@ -28,8 +28,6 @@ sidebar_position: 5
     URL    = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
 
     Результат  = OPI_YandexDisk.ПолучитьСсылкуСкачиванияПубличногоОбъекта(Токен, URL);
-
-    Проверка_ЯДискСсылка(Результат);
 ```
 
 

@@ -27,12 +27,6 @@ sidebar_position: 1
     Path  = "/b91ade1a-0731-4dd9-b453-199debd673c4.png";
 
     Result = OPI_YandexDisk.PublishObject(Token, Path);
-
-    Check_YaDiskPath(Result, Path, True);
-
-    URL = Result["public_url"];
-    OPI_TestDataRetrieval.WriteParameter("YandexDisk_PublicURL", URL);
-    FunctionParameters.Insert("YandexDisk_PublicURL", URL);
 ```
 
 

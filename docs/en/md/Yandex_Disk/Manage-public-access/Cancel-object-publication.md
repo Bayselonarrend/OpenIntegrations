@@ -27,8 +27,6 @@ sidebar_position: 2
     Path  = "/b91ade1a-0731-4dd9-b453-199debd673c4.png";
 
     Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
-
-    Check_YaDiskPath(Result, Path, False);
 ```
 
 

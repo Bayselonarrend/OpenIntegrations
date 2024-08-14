@@ -10261,9 +10261,9 @@ Procedure YandexDisk_DeleteObject(FunctionParameters)
 
     Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
 
-    OPI_Tools.Pause(5);
-
     // END
+
+    OPI_Tools.Pause(5);
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "YandexDisk");
 
@@ -10438,6 +10438,8 @@ Procedure YandexDisk_PublishObject(FunctionParameters)
 
     Result = OPI_YandexDisk.PublishObject(Token, Path);
 
+    // END
+
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PublishObject", "YandexDisk");
 
     Check_YaDiskPath(Result, Path, True);
@@ -10455,6 +10457,8 @@ Procedure YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
 
     Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
 
+    // END
+
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObjectDownloadLink", "YandexDisk");
 
     Check_YaDiskLink(Result);
@@ -10467,6 +10471,8 @@ Procedure YandexDisk_GetPublicObject(FunctionParameters)
     URL   = FunctionParameters["YandexDisk_PublicURL"];
 
     Result = OPI_YandexDisk.GetPublicObject(Token, URL);
+
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject");
 
@@ -10481,6 +10487,8 @@ Procedure YandexDisk_SavePublicObjectToDisk(FunctionParameters)
 
     Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
 
+    // END
+
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk");
 
     Check_YaDiskPath(Result, "", False);
@@ -10493,6 +10501,8 @@ Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
     Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
 
     Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
+
+    // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CancelObjectPublication", "YandexDisk");
 
