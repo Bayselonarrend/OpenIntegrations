@@ -29,8 +29,6 @@ sidebar_position: 6
     URL    = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
 
     Результат   = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);
-
-    Проверка_ЯДискПуть(Результат, "", Ложь);
 ```
 
 

@@ -29,8 +29,6 @@ sidebar_position: 6
     URL   = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
 
     Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
-
-    Check_YaDiskPath(Result, "", False);
 ```
 
 

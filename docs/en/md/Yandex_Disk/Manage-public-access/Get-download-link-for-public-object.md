@@ -28,8 +28,6 @@ sidebar_position: 5
     URL   = "https://yadi.sk/d/SkGfnxKeOI0oYQ";
 
     Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
-
-    Check_YaDiskLink(Result);
 ```
 
 
