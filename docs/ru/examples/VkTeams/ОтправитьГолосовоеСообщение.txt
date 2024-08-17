@@ -1,9 +1,9 @@
 ﻿    Токен         = "001.3501506236.091...";
     IDЧата        = "689203963@chat.agent";
-    IDЦитируемого = "7403992850540527813";
+    IDЦитируемого = "7401463509940174907";
     Текст         = "Подпись к файлу";
 
-    Файл     = "https://openintegrations.dev/test_data/song.m4a"  ;        // URL
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a"  ;        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
