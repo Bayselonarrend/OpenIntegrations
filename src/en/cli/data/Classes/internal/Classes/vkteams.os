@@ -542,6 +542,79 @@
     NewLine.Описание    = "Image file";
     NewLine.Область     = "Chat management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatInfo";
+    NewLine.МетодПоиска = "GETCHATINFO";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Gets basic information about the chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatInfo";
+    NewLine.МетодПоиска = "GETCHATINFO";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatAdmins";
+    NewLine.МетодПоиска = "GETCHATADMINS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Gets the list of chat administrators";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatAdmins";
+    NewLine.МетодПоиска = "GETCHATADMINS";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatMembers";
+    NewLine.МетодПоиска = "GETCHATMEMBERS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Gets the list of chat members";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatMembers";
+    NewLine.МетодПоиска = "GETCHATMEMBERS";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatMembers";
+    NewLine.МетодПоиска = "GETCHATMEMBERS";
+    NewLine.Параметр    = "--cursor";
+    NewLine.Описание    = "Next page marker from the previous request (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chat management";
+
     Return CompositionTable;
 EndFunction
 
