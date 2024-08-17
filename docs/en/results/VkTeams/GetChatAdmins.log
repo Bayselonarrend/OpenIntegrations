@@ -1,0 +1,12 @@
+﻿ {
+ "admins": [
+  {
+   "userId": "1011893356"
+  },
+  {
+   "creator": true,
+   "userId": "bayselonarrend@openintegrations.bizml.ru"
+  }
+ ],
+ "ok": true
+}
