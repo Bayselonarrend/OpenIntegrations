@@ -3174,8 +3174,10 @@ Procedure VKT_ChatManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture3"        , TestParameters);
 
     VKTeams_RemoveChatMembers(TestParameters);
+    VKTeams_ChangeChatPicture(TestParameters);
 
 EndProcedure
 
@@ -10643,7 +10645,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
 
     Check_VKTMessage(Result); // SKIP
 
-    Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FileBD, Text, "ImportantDocument.docx");
 
     // END
 
@@ -10765,7 +10767,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     Check_VKTMessage(Result); // SKIP
 
-    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, FileBD);
 
     // END
 
@@ -10812,6 +10814,42 @@ Procedure VKTeams_RemoveChatMembers(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "RemoveChatMembers", "VkTeams");
 
     Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure VKTeams_ChangeChatPicture(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    File     = FunctionParameters["Picture3"]; // URL
+    FilePath = GetTempFileName("png"); // Path
+
+    CopyFile(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, File);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (URL)", "VkTeams");
+
+    Check_VKTTrue(Result); // SKIP
+
+    Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, FilePath);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (Path)", "VkTeams");
+
+    Check_VKTTrue(Result); // SKIP
+
+    Result = OPI_VKTeams.ChangeChatPicture(Token, ChatID, FileBD);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+    DeleteFiles(FilePath);
 
 EndProcedure
 

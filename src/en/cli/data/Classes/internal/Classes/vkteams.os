@@ -511,6 +511,37 @@
     NewLine.Описание    = "The member or members of the chat room to remove";
     NewLine.Область     = "Chat management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ChangeChatPicture";
+    NewLine.МетодПоиска = "CHANGECHATPICTURE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Changes the chat avatar picture";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ChangeChatPicture";
+    NewLine.МетодПоиска = "CHANGECHATPICTURE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ChangeChatPicture";
+    NewLine.МетодПоиска = "CHANGECHATPICTURE";
+    NewLine.Параметр    = "--file";
+    NewLine.Описание    = "Image file";
+    NewLine.Область     = "Chat management";
+
     Return CompositionTable;
 EndFunction
 
