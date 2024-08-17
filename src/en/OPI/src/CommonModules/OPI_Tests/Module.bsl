@@ -3181,6 +3181,8 @@ Procedure VKT_ChatManagment() Export
     VKTeams_GetChatInfo(TestParameters);
     VKTeams_GetChatAdmins(TestParameters);
     VKTeams_GetChatMembers(TestParameters);
+    VKTeams_GetChatBlockedUsers(TestParameters);
+    VKTeams_GetChatJoinRequests(TestParameters);
 
 EndProcedure
 
@@ -10911,6 +10913,36 @@ Procedure VKTeams_GetChatMembers(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChatMembers", "VkTeams");
 
     Check_VKTList(Result, "members");
+
+EndProcedure
+
+Procedure VKTeams_GetChatBlockedUsers(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Result = OPI_VKTeams.GetChatBlockedUsers(Token, ChatID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChatBlockedUsers", "VkTeams");
+
+    Check_VKTList(Result, "users");
+
+EndProcedure
+
+Procedure VKTeams_GetChatJoinRequests(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Result = OPI_VKTeams.GetChatJoinRequests(Token, ChatID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetChatJoinRequests", "VkTeams");
+
+    Check_VKTList(Result, "users");
 
 EndProcedure
 

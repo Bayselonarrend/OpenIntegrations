@@ -1,5 +1,5 @@
 ﻿    Parameters = GetVKParameters();
 
-    Selection = "122";
+    Selection = "";
 
     Result = OPI_VK.DeleteSelection(Selection, Parameters);

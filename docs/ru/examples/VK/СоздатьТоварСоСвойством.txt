@@ -1,9 +1,9 @@
 ﻿    Параметры = ПолучитьПараметрыВК();
 
-    Картинка1        = "https://openintegrations.dev/test_data/picture.jpg";
-    Картинка2        = "https://openintegrations.dev/test_data/picture2.jpg";
-    ВариантСвойства1 = "2138";
-    ВариантСвойства2 = "2139";
+    Картинка1        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка2        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    ВариантСвойства1 = "";
+    ВариантСвойства2 = "";
 
     МассивКартинок   = Новый Массив;
     МассивКартинок.Добавить(Картинка1);
