@@ -468,6 +468,37 @@ Function RemoveChatMembers(Val Token, Val ChatID, Val Users) Export
 
 EndFunction
 
+// Change chat picture
+// Changes the chat avatar picture
+//
+// Note
+// Method at API documentation: [POST ​/chats​/avatar​/set](@teams.vk.com/botapi/#/chats/post_chats_avatar_set)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// File - BinaryData, String - Image file - file
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function ChangeChatPicture(Val Token, Val ChatID, Val File) Export
+
+    URL        = "/chats/avatar/set";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
+
+    OPI_TypeConversion.GetBinaryData(File);
+
+    Files = New Map;
+    Files.Insert("image|image", File);
+
+    Response = OPI_Tools.PostMultipart(URL, Parameters, Files, "image/xyz");
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
