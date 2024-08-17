@@ -499,6 +499,70 @@ Function ChangeChatPicture(Val Token, Val ChatID, Val File) Export
 
 EndFunction
 
+// Get information about the chat room
+// Gets basic information about the chat
+//
+// Note
+// Method at API documentation: [GET /chats/getInfo](@teams.vk.com/botapi/#/chats/get_chats_getInfo)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function GetChatInfo(Val Token, Val ChatID) Export
+
+    Method   = "/chats/getInfo";
+    Response = GetChatData(Token, ChatID, Method);
+
+    Return Response;
+
+EndFunction
+
+// Get chat admins
+// Gets the list of chat administrators
+//
+// Note
+// Method at API documentation: [GET /chats/getAdmins](@teams.vk.com/botapi/#/chats/get_chats_getAdmins)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function GetChatAdmins(Val Token, Val ChatID) Export
+
+    Method   = "/chats/getAdmins";
+    Response = GetChatData(Token, ChatID, Method);
+
+    Return Response;
+
+EndFunction
+
+// Get chat members
+// Gets the list of chat members
+//
+// Note
+// Method at API documentation: [GET /chats/getMembers](@teams.vk.com/botapi/#/chats/get_chats_getMembers)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// Cursor - String - Next page marker from the previous request - cursor
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function GetChatMembers(Val Token, Val ChatID, Val Cursor = "") Export
+
+    Method   = "/chats/getMembers";
+    Response = GetChatData(Token, ChatID, Method, Cursor);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -512,6 +576,20 @@ Function NormalizeMain(URL, Val Token)
     OPI_Tools.AddField("token", Token, "String", Parameters);
 
     Return Parameters;
+
+EndFunction
+
+Function GetChatData(Val Token, Val ChatID, Val Method, Val Cursor = "")
+
+    URL        = Method;
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
+    OPI_Tools.AddField("cursor", Cursor, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
 
 EndFunction
 

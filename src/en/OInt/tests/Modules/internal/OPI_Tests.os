@@ -3178,6 +3178,9 @@ Procedure VKT_ChatManagment() Export
 
     VKTeams_RemoveChatMembers(TestParameters);
     VKTeams_ChangeChatPicture(TestParameters);
+    VKTeams_GetChatInfo(TestParameters);
+    VKTeams_GetChatAdmins(TestParameters);
+    VKTeams_GetChatMembers(TestParameters);
 
 EndProcedure
 
@@ -3952,6 +3955,19 @@ Procedure Check_VKTFile(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
     OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["size"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTList(Val Result, Val FieldName)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result[FieldName]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_VKTChat(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["inviteLink"]).Заполнено();
 
 EndProcedure
 
@@ -10850,6 +10866,51 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
     Check_VKTTrue(Result);
 
     DeleteFiles(FilePath);
+
+EndProcedure
+
+Procedure VKTeams_GetChatInfo(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Result = OPI_VKTeams.GetChatInfo(Token, ChatID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatInfo", "VkTeams");
+
+    Check_VKTChat(Result);
+
+EndProcedure
+
+Procedure VKTeams_GetChatAdmins(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Result = OPI_VKTeams.GetChatAdmins(Token, ChatID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatAdmins", "VkTeams");
+
+    Check_VKTList(Result, "admins");
+
+EndProcedure
+
+Procedure VKTeams_GetChatMembers(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Result = OPI_VKTeams.GetChatMembers(Token, ChatID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatMembers", "VkTeams");
+
+    Check_VKTList(Result, "members");
 
 EndProcedure
 
