@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
     AccountID = "1607951446";
-    AdID      = "0";
+    AdID      = "";
 
     Result = OPI_VK.PauseAdvertising(AccountID, AdID, Parameters);

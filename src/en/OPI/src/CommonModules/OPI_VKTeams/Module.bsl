@@ -563,6 +563,50 @@ Function GetChatMembers(Val Token, Val ChatID, Val Cursor = "") Export
 
 EndFunction
 
+// Get chat blocked users
+// Gets the list of blocked chat users
+//
+// Note
+// To call this method, the bot must be an administrator in the chat room.
+// Method at API documentation: [GET ​/chats​/getBlockedUsers](@teams.vk.com/botapi/#/chats/get_chats_getBlockedUsers)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function GetChatBlockedUsers(Val Token, Val ChatID) Export
+
+    Method   = "/chats/getBlockedUsers";
+    Response = GetChatData(Token, ChatID, Method);
+
+    Return Response;
+
+EndFunction
+
+// Get chat join requests
+// Gets a list of requests to join the chat room
+//
+// Note
+// To call this method, the bot must be an administrator in the chat room.
+// Method at API documentation: [GET ​​/chats​/getPendingUsers](@teams.vk.com/botapi/#/chats/get_chats_getPendingUsers)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function GetChatJoinRequests(Val Token, Val ChatID) Export
+
+    Method   = "/chats/getPendingUsers";
+    Response = GetChatData(Token, ChatID, Method);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion

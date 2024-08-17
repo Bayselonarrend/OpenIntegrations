@@ -1,6 +1,6 @@
-﻿    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID      = "522";
-    File        = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
+﻿    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    ChatID      = "454";
+    File        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
@@ -12,8 +12,8 @@
     Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7a63bc66006e9f06006b12e400000001000...";
-    ChatID = "524";
+    Token  = "c03fa966006e9f06006b12e400000001000...";
+    ChatID = "456";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
     FolderID  = Directory["result"]["ID"];
