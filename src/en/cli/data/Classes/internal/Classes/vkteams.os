@@ -615,6 +615,48 @@
     NewLine.Описание    = "Next page marker from the previous request (optional, def. val. - Empty value)";
     NewLine.Область     = "Chat management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatBlockedUsers";
+    NewLine.МетодПоиска = "GETCHATBLOCKEDUSERS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Gets the list of blocked chat users";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatBlockedUsers";
+    NewLine.МетодПоиска = "GETCHATBLOCKEDUSERS";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatJoinRequests";
+    NewLine.МетодПоиска = "GETCHATJOINREQUESTS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Gets a list of requests to join the chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "GetChatJoinRequests";
+    NewLine.МетодПоиска = "GETCHATJOINREQUESTS";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
     Return CompositionTable;
 EndFunction
 
