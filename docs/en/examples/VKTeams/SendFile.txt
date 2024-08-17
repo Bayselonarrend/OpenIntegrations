@@ -13,4 +13,4 @@
 
     Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
 
-    Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FileBD, Text, "ImportantDocument.docx");
