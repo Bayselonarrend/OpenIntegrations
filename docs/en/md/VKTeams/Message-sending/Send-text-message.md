@@ -47,7 +47,8 @@ You can mention a user by appending their userId to the text in the following fo
     ButtonsLineArray = New Array;
 
     ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));
-    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2",               , "https://openintegrations.dev"));
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2", , "https://openintegrations.dev"));
 
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);

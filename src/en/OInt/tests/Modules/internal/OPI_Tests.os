@@ -3170,6 +3170,7 @@ Procedure VKT_MessagesSending() Export
     VKTeams_DeleteMessage(TestParameters);
     VKTeams_SendVoice(TestParameters);
     VKTeams_ResendVoice(TestParameters);
+    VKTeams_MakeActionButton(TestParameters);
 
 EndProcedure
 
@@ -10621,7 +10622,8 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
     ButtonsLineArray = New Array;
 
     ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));
-    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2",               , "https://openintegrations.dev"));
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2", , "https://openintegrations.dev"));
 
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);
@@ -10780,7 +10782,7 @@ Procedure VKTeams_DeleteMessage(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText", "VkTeams");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "VkTeams");
 
     Check_VKTTrue(Result);
 
@@ -11154,7 +11156,7 @@ Procedure VKTeams_AnswerButtonEvent(FunctionParameters)
 
                     OPI_TestDataRetrieval.WriteLog(Result, "AnswerButtonEvent", "VkTeams");
 
-                    Check_VKTTrue(Result);
+                    Check_VKTTrue(Result); // SKIP
 
                 EndIf;
 
@@ -11169,6 +11171,22 @@ Procedure VKTeams_AnswerButtonEvent(FunctionParameters)
     // END
 
     OPI_Tools.Pause(3);
+
+EndProcedure
+
+Procedure VKTeams_MakeActionButton(FunctionParameters)
+
+    Keyboard         = New Array;
+    ButtonsLineArray = New Array;
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2", , "https://openintegrations.dev"));
+
+    Keyboard.Add(ButtonsLineArray);
+    Keyboard.Add(ButtonsLineArray);
+
+    // END
 
 EndProcedure
 
