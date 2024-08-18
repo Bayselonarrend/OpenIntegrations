@@ -815,9 +815,23 @@ Function ConvertParameterToString(Val Value)
 
     If TypeOf(Value) = Type("Array") Then
 
+        For N        = 0 To Value.UBound() Do
+            Value[N] = ConvertParameterToString(Value[N]);
+        EndDo;
+
         Value = StrConcat(Value, ",");
         Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
         Value = "[" + Value + "]";
+
+    ElsIf TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure") Then
+
+        JSONParameters = New JSONWriterSettings(JSONLineBreak.No, "");
+
+        JSONWriter = New JSONWriter;
+        JSONWriter.SetString(JSONParameters);
+
+        WriteJSON(JSONWriter, Value);
+        Value = JSONWriter.Close();
 
     ElsIf TypeOf(Value) = Type("Boolean") Then
 

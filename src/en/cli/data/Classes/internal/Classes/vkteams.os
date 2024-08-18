@@ -546,6 +546,98 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vkteams";
     NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "AnswerButtonEvent";
+    NewLine.МетодПоиска = "ANSWERBUTTONEVENT";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Returns a response to the user when a keyboard button is pressed";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "AnswerButtonEvent";
+    NewLine.МетодПоиска = "ANSWERBUTTONEVENT";
+    NewLine.Параметр    = "--queryid";
+    NewLine.Описание    = "Identifier of the callback query received by the bot";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "AnswerButtonEvent";
+    NewLine.МетодПоиска = "ANSWERBUTTONEVENT";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Answer text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "AnswerButtonEvent";
+    NewLine.МетодПоиска = "ANSWERBUTTONEVENT";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL to be opened by the client application (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "AnswerButtonEvent";
+    NewLine.МетодПоиска = "ANSWERBUTTONEVENT";
+    NewLine.Параметр    = "--showalert";
+    NewLine.Описание    = "Display the answer as an alert) (optional, def. val. - No)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "MakeActionButton";
+    NewLine.МетодПоиска = "MAKEACTIONBUTTON";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Button text";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Forms an action button for the message keyboard (see SendTextMessage)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "MakeActionButton";
+    NewLine.МетодПоиска = "MAKEACTIONBUTTON";
+    NewLine.Параметр    = "--data";
+    NewLine.Описание    = "The value returned in the event. Only if the URL is not filled (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "MakeActionButton";
+    NewLine.МетодПоиска = "MAKEACTIONBUTTON";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL to create the page open button. Only if the Value is not filled in (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "MakeActionButton";
+    NewLine.МетодПоиска = "MAKEACTIONBUTTON";
+    NewLine.Параметр    = "--style";
+    NewLine.Описание    = "Button style: primary, attention or base (optional, def. val. - base)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "RemoveChatMembers";
     NewLine.МетодПоиска = "REMOVECHATMEMBERS";
     NewLine.Параметр    = "--token";
