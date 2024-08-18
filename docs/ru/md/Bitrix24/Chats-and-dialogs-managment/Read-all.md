@@ -26,12 +26,12 @@ sidebar_position: 19
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Результат = OPI_Bitrix24.ПрочитатьВсе(URL);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "7a63bc66006e9f06006b12e400000001000...";
+    Токен          = "c03fa966006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПрочитатьВсе(URL, Токен);
 ```

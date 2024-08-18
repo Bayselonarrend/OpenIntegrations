@@ -28,16 +28,16 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "522";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    ChatID = "454";
 
     UserID = 10;
 
     Result = OPI_Bitrix24.DeleteUserFromChat(URL, ChatID, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7a63bc66006e9f06006b12e400000001000...";
-    ChatID = "524";
+    Token  = "c03fa966006e9f06006b12e400000001000...";
+    ChatID = "456";
 
     Result = OPI_Bitrix24.DeleteUserFromChat(URL, ChatID, UserID, Token);
 ```

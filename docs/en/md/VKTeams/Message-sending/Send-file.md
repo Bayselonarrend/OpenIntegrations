@@ -34,7 +34,7 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
     ChatID = "AoLI0egLWBSLR1Ngn2w";
     Text   = "File caption";
 
-    File     = "https://openintegrations.dev/test_data/document.docx"; // URL
+    File     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL
     FilePath = GetTempFileName("docx"); // Path
 
     CopyFile(File, FilePath);
@@ -45,7 +45,7 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
 
     Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
 
-    Result = OPI_VKTeams.SendFile(Token, ChatID, File, Text, "ImportantDocument.docx");
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FileBD, Text, "ImportantDocument.docx");
 ```
 
 

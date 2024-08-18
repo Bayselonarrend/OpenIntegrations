@@ -1,0 +1,1 @@
+﻿oint vkteams ОдобритьЗаявкуНаВступление --token "001.3501506236.091..." --chatid "689203963@chat.agent" --userid %userid%

@@ -26,7 +26,7 @@ sidebar_position: 7
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "@testsichee";
-    MessageID = "7181";
+    MessageID = "5920";
 
     Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
 ```
