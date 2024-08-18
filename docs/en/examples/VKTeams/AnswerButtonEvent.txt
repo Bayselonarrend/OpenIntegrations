@@ -17,8 +17,6 @@
                     EventID = callbackData["queryId"];
                     Result  = OPI_VKTeams.AnswerButtonEvent(Token, EventID, "Get it!");
 
-                    Check_VKTTrue(Result);
-
                 EndIf;
 
             EndDo;

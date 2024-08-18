@@ -50,8 +50,6 @@ This method call should be used in response to receiving a callbackQuery event
                     EventID = callbackData["queryId"];
                     Result  = OPI_VKTeams.AnswerButtonEvent(Token, EventID, "Get it!");
 
-                    Check_VKTTrue(Result);
-
                 EndIf;
 
             EndDo;
