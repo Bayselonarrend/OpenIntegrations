@@ -722,6 +722,48 @@ Function UnblockChatUser(Val Token, Val ChatID, Val UserID) Export
 
 EndFunction
 
+// Approve pending
+// Confirms the user's request to join a private chat room
+//
+// Note
+// Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// UserID - String, Number - User ID. For all active requests if not filled in - userid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function ApprovePending(Val Token, Val ChatID, Val UserID = "") Export
+
+    Response = ResolvePending(Token, ChatID, True, UserID);
+
+    Return Response;
+
+EndFunction
+
+// Disapprove pending
+// Rejects the user's request to join a private chat room
+//
+// Note
+// Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// UserID - String, Number - User ID. For all active requests if not filled in - userid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function DisapprovePending(Val Token, Val ChatID, Val UserID = "") Export
+
+    Response = ResolvePending(Token, ChatID, False, UserID);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -745,6 +787,26 @@ Function GetChatData(Val Token, Val ChatID, Val Method, Val Cursor = "")
 
     OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
     OPI_Tools.AddField("cursor", Cursor, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+Function ResolvePending(Val Token, Val ChatID, Val Response, Val UserID = "")
+
+    URL        = "/chats/resolvePending";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId" , ChatID   , "String" , Parameters);
+    OPI_Tools.AddField("approve", Response , "Boolean", Parameters);
+
+    If ValueIsFilled(UserID) Then
+        OPI_Tools.AddField("userId"  , UserID, "String" , Parameters);
+    Else
+        OPI_Tools.AddField("everyone", True  , "Boolean", Parameters);
+    EndIf;
 
     Response = OPI_Tools.Get(URL, Parameters);
 

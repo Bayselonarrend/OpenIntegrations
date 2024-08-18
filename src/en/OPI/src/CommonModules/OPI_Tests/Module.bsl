@@ -3187,6 +3187,8 @@ Procedure VKT_ChatManagment() Export
     VKTeams_GetChatJoinRequests(TestParameters);
     VKTeams_BlockChatUser(TestParameters);
     VKTeams_UnblockChatUser(TestParameters);
+    VKTeams_ApprovePending(TestParameters);
+    VKTeams_DisapprovePending(TestParameters);
 
 EndProcedure
 
@@ -3974,6 +3976,14 @@ Procedure Check_VKTChat(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["type"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["inviteLink"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTPending(Val Result)
+
+    If Not Result["ok"] Then
+        OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно("User is not pending or nobody in pending list");
+    EndIf;
 
 EndProcedure
 
@@ -11011,6 +11021,50 @@ Procedure VKTeams_UnpinMessage(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UnpinMessage", "VkTeams");
 
     Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure VKTeams_ApprovePending(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Result = OPI_VKTeams.ApprovePending(Token, ChatID, User);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ApprovePending (single)", "VkTeams");
+
+    Check_VKTPending(Result); // SKIP
+
+    Result = OPI_VKTeams.ApprovePending(Token, ChatID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ApprovePending", "VkTeams");
+
+    Check_VKTPending(Result);
+
+EndProcedure
+
+Procedure VKTeams_DisapprovePending(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Result = OPI_VKTeams.DisapprovePending(Token, ChatID, User);
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DisapprovePending (single)", "VkTeams");
+
+    Check_VKTPending(Result); // SKIP
+
+    Result = OPI_VKTeams.DisapprovePending(Token, ChatID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "DisapprovePending", "VkTeams");
+
+    Check_VKTPending(Result);
 
 EndProcedure
 
