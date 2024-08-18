@@ -10609,7 +10609,7 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
 
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (simple)", "VkTeams");
 
     Check_VKTMessage(Result); // SKIP
 
