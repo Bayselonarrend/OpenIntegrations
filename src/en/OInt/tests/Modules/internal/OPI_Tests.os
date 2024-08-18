@@ -3189,6 +3189,9 @@ Procedure VKT_ChatManagment() Export
     VKTeams_UnblockChatUser(TestParameters);
     VKTeams_ApprovePending(TestParameters);
     VKTeams_DisapprovePending(TestParameters);
+    VKTeams_SetChatTitle(TestParameters);
+    VKTeams_SetChatDescription(TestParameters);
+    VKTeams_SetChatRules(TestParameters);
 
 EndProcedure
 
@@ -11065,6 +11068,55 @@ Procedure VKTeams_DisapprovePending(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DisapprovePending", "VkTeams");
 
     Check_VKTPending(Result);
+
+EndProcedure
+
+Procedure VKTeams_SetChatTitle(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Text   = "New title";
+
+    Result = OPI_VKTeams.SetChatTitle(Token, ChatID, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChatTitle", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+EndProcedure
+
+
+Procedure VKTeams_SetChatDescription(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Text   = "New description";
+
+    Result = OPI_VKTeams.SetChatDescription(Token, ChatID, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChatDescription", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure VKTeams_SetChatRules(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Text   = "Text of the new rules";
+
+    Result = OPI_VKTeams.SetChatRules(Token, ChatID, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChatRules", "VkTeams");
+
+    Check_VKTTrue(Result);
 
 EndProcedure
 

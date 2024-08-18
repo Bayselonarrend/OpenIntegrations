@@ -667,6 +667,7 @@ EndFunction
 // Blocks the selected user in chat
 //
 // Note
+// To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats​/blockUser](@teams.vk.com/botapi/#/chats/get_chats_blockUser)
 //
 // Parameters:
@@ -699,6 +700,7 @@ EndFunction
 // Unblocks a previously blocked user in the chat room
 //
 // Note
+// To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/unblockUser](@teams.vk.com/botapi/#/chats/get_chats_unblockUser)
 //
 // Parameters:
@@ -726,6 +728,7 @@ EndFunction
 // Confirms the user's request to join a private chat room
 //
 // Note
+// To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
 //
 // Parameters:
@@ -747,6 +750,7 @@ EndFunction
 // Rejects the user's request to join a private chat room
 //
 // Note
+// To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
 //
 // Parameters:
@@ -759,6 +763,72 @@ EndFunction
 Function DisapprovePending(Val Token, Val ChatID, Val UserID = "") Export
 
     Response = ResolvePending(Token, ChatID, False, UserID);
+
+    Return Response;
+
+EndFunction
+
+// Set chat title
+// Sets new chat title
+//
+// Note
+// To call this method, the bot must be an administrator in the chat room.
+// Method at API documentation: [GET ​​/chats/setTitle](@teams.vk.com/botapi/#/chats/get_chats_setTitle)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// Text - String - Title text - text
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function SetChatTitle(Val Token, Val ChatID, Val Text) Export
+
+    Response = UpdateChatParameters(Token, ChatID, "title", Text);
+
+    Return Response;
+
+EndFunction
+
+// Set chat description
+// Sets new chat description
+//
+// Note
+// To call this method, the bot must be an administrator in the chat room.
+// Method at API documentation: [GET ​​/chats/setAbout](@teams.vk.com/botapi/#/chats/get_chats_setAbout)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// Text - String - Description text - text
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function SetChatDescription(Val Token, Val ChatID, Val Text) Export
+
+    Response = UpdateChatParameters(Token, ChatID, "about", Text);
+
+    Return Response;
+
+EndFunction
+
+// Set chat rules
+// Sets new chat rules
+//
+// Note
+// To call this method, the bot must be an administrator in the chat room.
+// Method at API documentation: [GET /chats/setRules](@teams.vk.com/botapi/#/chats/get_chats_setRules)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// Text - String - Rules Text - text
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function SetChatRules(Val Token, Val ChatID, Val Text) Export
+
+    Response = UpdateChatParameters(Token, ChatID, "rules", Text);
 
     Return Response;
 
@@ -807,6 +877,20 @@ Function ResolvePending(Val Token, Val ChatID, Val Response, Val UserID = "")
     Else
         OPI_Tools.AddField("everyone", True  , "Boolean", Parameters);
     EndIf;
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+Function UpdateChatParameters(Val Token, Val ChatID, Val Parameter, Val Value)
+
+    URL        = "/chats/set" + Title(Parameter);
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId" , ChatID , "String", Parameters);
+    OPI_Tools.AddField(Parameter, Value  , "String", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
