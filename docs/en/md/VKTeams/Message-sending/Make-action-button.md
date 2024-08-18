@@ -25,7 +25,15 @@ sidebar_position: 12
 
 
 ```bsl title="Code example"
+    Keyboard         = New Array;
+    ButtonsLineArray = New Array;
 
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2", , "https://openintegrations.dev"));
+
+    Keyboard.Add(ButtonsLineArray);
+    Keyboard.Add(ButtonsLineArray);
 ```
 
 
