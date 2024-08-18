@@ -45,5 +45,7 @@ sidebar_position: 13
 ```
 
 ```json title="Результат"
-
+{
+ "ok": true
+}
 ```

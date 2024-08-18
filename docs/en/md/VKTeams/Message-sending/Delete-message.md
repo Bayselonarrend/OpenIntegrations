@@ -43,5 +43,7 @@ Method at API documentation: [GET /messages/deleteMessages](https://teams.vk.com
 ```
 
 ```json title="Result"
-
+{
+ "ok": true
+}
 ```
