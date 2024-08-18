@@ -791,6 +791,68 @@
     NewLine.Описание    = "User ID";
     NewLine.Область     = "Chat management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ApprovePending";
+    NewLine.МетодПоиска = "APPROVEPENDING";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Confirms the user's request to join a private chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ApprovePending";
+    NewLine.МетодПоиска = "APPROVEPENDING";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "ApprovePending";
+    NewLine.МетодПоиска = "APPROVEPENDING";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "User ID. For all active requests if not filled in (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "DisapprovePending";
+    NewLine.МетодПоиска = "DISAPPROVEPENDING";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Rejects the user's request to join a private chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "DisapprovePending";
+    NewLine.МетодПоиска = "DISAPPROVEPENDING";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "DisapprovePending";
+    NewLine.МетодПоиска = "DISAPPROVEPENDING";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "User ID. For all active requests if not filled in (optional, def. val. - Empty value)";
+    NewLine.Область     = "Chat management";
+
     Return CompositionTable;
 EndFunction
 
