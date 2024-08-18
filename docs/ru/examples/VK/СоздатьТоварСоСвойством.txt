@@ -2,8 +2,8 @@
 
     Картинка1        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Картинка2        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
-    ВариантСвойства1 = "";
-    ВариантСвойства2 = "";
+    ВариантСвойства1 = "2138";
+    ВариантСвойства2 = "2139";
 
     МассивКартинок   = Новый Массив;
     МассивКартинок.Добавить(Картинка1);

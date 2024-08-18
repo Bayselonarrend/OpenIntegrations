@@ -33,7 +33,7 @@ You can mention a user by appending their userId to the text in the following fo
 ```bsl title="Code example"
     Token     = "001.3501506236.091...";
     ChatID    = "689203963@chat.agent";
-    MessageID = "7402898905190367422";
+    MessageID = "7401463509940174907";
     Text      = "New message text";
 
     Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text);

@@ -29,14 +29,14 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="Code example"
     Text   = "Comment for post";
-    PostID = "502";
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    PostID = "436";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
 
     Text  = "Another comment";
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "7a63bc66006e9f06006b12e400000001000...";
+    Token = "c03fa966006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);
 ```

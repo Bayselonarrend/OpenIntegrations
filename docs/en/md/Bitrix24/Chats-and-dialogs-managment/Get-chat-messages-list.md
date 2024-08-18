@@ -29,13 +29,13 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
     ChatID = "chat4";
 
     Result = OPI_Bitrix24.GetChatMessagesList(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7a63bc66006e9f06006b12e400000001000...";
+    Token  = "c03fa966006e9f06006b12e400000001000...";
     UserID = 10;
 
     Result = OPI_Bitrix24.GetChatMessagesList(URL, UserID, , 0, Token);

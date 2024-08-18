@@ -28,15 +28,15 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "1254";
-    FileID = "6038";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    TaskID = "1074";
+    FileID = "5026";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7a63bc66006e9f06006b12e400000001000...";
-    TaskID = "1256";
+    Token  = "c03fa966006e9f06006b12e400000001000...";
+    TaskID = "1076";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID, Token);
 ```

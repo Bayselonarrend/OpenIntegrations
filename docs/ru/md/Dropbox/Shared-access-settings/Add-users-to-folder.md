@@ -25,9 +25,9 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен  = "sl.B6_e9uxZDzud1x7oZyvJJEiFu78rkVmLclhxrJ0KMVVZNxl9XbxwWUr5wv8IKSqnoi6KyNyRe0...";
+    Токен  = "sl.B4gp-iE6U2BXAeEhqhHwN00_GAOFjvVi4j_C9r2yZ5sjIUcTga38IbFN49TKhxrmzyrNjttkXA...";
     Почта  = "h5bk6ft62s@privaterelay.appleid.com";
-    Папка  = "5119546785"; // shared_folder_id
+    Папка  = "3308017555"; // shared_folder_id
 
     Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почта, Ложь);
 ```

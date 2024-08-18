@@ -27,7 +27,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Картинка = "https://openintegrations.dev/test_data/picture.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка);
 
     B64Картинка = ПолучитьBase64СтрокуИзДвоичныхДанных(Картинка);
@@ -46,12 +46,12 @@ sidebar_position: 1
     СтруктураЧата.Вставить("AVATAR"     , B64Картинка);
     СтруктураЧата.Вставить("OWNER_ID"   , 1);
 
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Результат = OPI_Bitrix24.СоздатьЧат(URL, СтруктураЧата);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "7a63bc66006e9f06006b12e400000001000...";
+    Токен     = "c03fa966006e9f06006b12e400000001000...";
 
     СтруктураЧата = Новый Структура;
     СтруктураЧата.Вставить("TYPE"       , "CHAT");

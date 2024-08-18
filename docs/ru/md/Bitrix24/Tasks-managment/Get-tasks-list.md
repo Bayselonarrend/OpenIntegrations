@@ -34,12 +34,12 @@ sidebar_position: 2
     Фильтр.Вставить("RESPONSIBLE_ID", 10);
 
     Отступ   = 1;
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокЗадач(URL, Фильтр);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "7a63bc66006e9f06006b12e400000001000...";
+    Токен     = "c03fa966006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокЗадач(URL, , Отступ, Токен);
 ```

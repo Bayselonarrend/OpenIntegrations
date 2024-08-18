@@ -1,0 +1,1 @@
+﻿oint vkteams GetChatAdmins --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w"

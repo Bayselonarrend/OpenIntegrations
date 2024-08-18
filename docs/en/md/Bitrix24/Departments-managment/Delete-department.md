@@ -27,14 +27,14 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
-    URL          = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DepartmentID = "142";
+    URL          = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    DepartmentID = "74";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID);
 
     URL          = "b24-ar17wx.bitrix24.by";
-    Token        = "7a63bc66006e9f06006b12e400000001000...";
-    DepartmentID = "140";
+    Token        = "c03fa966006e9f06006b12e400000001000...";
+    DepartmentID = "72";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID, Token);
 ```
