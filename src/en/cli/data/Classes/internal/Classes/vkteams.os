@@ -446,7 +446,7 @@
     NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "ForwardMessage";
     NewLine.МетодПоиска = "FORWARDMESSAGE";
-    NewLine.Параметр    = "--message";
+    NewLine.Параметр    = "--messageid";
     NewLine.Описание    = "Original message ID";
     NewLine.Область     = "Message sending";
 
@@ -478,6 +478,68 @@
     NewLine.МетодПоиска = "FORWARDMESSAGE";
     NewLine.Параметр    = "--text";
     NewLine.Описание    = "Additional message text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "PinMessage";
+    NewLine.МетодПоиска = "PINMESSAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Pins the selected message in the chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "PinMessage";
+    NewLine.МетодПоиска = "PINMESSAGE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "PinMessage";
+    NewLine.МетодПоиска = "PINMESSAGE";
+    NewLine.Параметр    = "--messageid";
+    NewLine.Описание    = "ID of the message to be pinned";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "UnpinMessage";
+    NewLine.МетодПоиска = "UNPINMESSAGE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Message sending";
+    NewLine.ОписаниеМетода   = "Unpins a previously pinned chat message";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "UnpinMessage";
+    NewLine.МетодПоиска = "UNPINMESSAGE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "UnpinMessage";
+    NewLine.МетодПоиска = "UNPINMESSAGE";
+    NewLine.Параметр    = "--messageid";
+    NewLine.Описание    = "ID of the message to be unpinned";
     NewLine.Область     = "Message sending";
 
 
