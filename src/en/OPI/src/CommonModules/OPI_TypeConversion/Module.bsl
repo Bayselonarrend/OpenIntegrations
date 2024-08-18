@@ -169,8 +169,10 @@ Procedure GetArray(Value) Export
 
         Value = StrSplit(Value, CommaInQuotes, False);
 
-        For N        = 0 To Value.UBound() Do
+        For N = 0 To Value.UBound() Do
+
             Value[N] = TrimAll(Value[N]);
+
         EndDo;
 
     Else
@@ -194,9 +196,13 @@ Procedure GetBoolean(Value) Export
     Try
 
         If TypeOf(Value) = Type("Boolean") Then
+
             Return;
+
         Else
-            Value        = Boolean(Value);
+
+            Value = Boolean(Value);
+
         EndIf;
 
     Except
@@ -276,9 +282,13 @@ Procedure GetDate(Value) Export
     Try
 
         If TypeOf(Value) = Type(Date) Then
+
             Return;
+
         Else
-            Value        = XMLValue(Type(Date), Value);
+
+            Value = XMLValue(Type(Date), Value);
+
         EndIf;
 
     Except
@@ -301,14 +311,17 @@ EndProcedure
 
 Function ThisIsCollection(Val Value)
 
-    Return TypeOf(Value) = Type("Array") Or TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type(
-        "Map");
+    Return TypeOf(Value) = Type("Array")
+        Or TypeOf(Value) = Type("Structure")
+        Or TypeOf(Value) = Type("Map");
 
 EndFunction
 
 Function ThisIsSymbolic(Val Value)
 
-    Return TypeOf(Value) = Type("String") Or TypeOf(Value) = Type("Number") Or TypeOf(Value) = Type("Date");
+    Return TypeOf(Value) = Type("String")
+        Or TypeOf(Value) = Type("Number")
+        Or TypeOf(Value) = Type("Date");
 
 EndFunction
 

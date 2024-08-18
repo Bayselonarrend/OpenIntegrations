@@ -819,6 +819,10 @@ Function ConvertParameterToString(Val Value)
         Value = EncodeString(Value, StringEncodingMethod.URLInURLEncoding);
         Value = "[" + Value + "]";
 
+    ElsIf TypeOf(Value) = Type("Boolean") Then
+
+        Value = ?(Value, "true", "false");
+
     Else
 
         Value = NumberToString(Value);
