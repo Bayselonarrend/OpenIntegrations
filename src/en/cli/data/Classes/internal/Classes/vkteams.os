@@ -657,6 +657,78 @@
     NewLine.Описание    = "Chat ID";
     NewLine.Область     = "Chat management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "BlockChatUser";
+    NewLine.МетодПоиска = "BLOCKCHATUSER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Blocks the selected user in chat";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "BlockChatUser";
+    NewLine.МетодПоиска = "BLOCKCHATUSER";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "BlockChatUser";
+    NewLine.МетодПоиска = "BLOCKCHATUSER";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "User ID to be blocked";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "BlockChatUser";
+    NewLine.МетодПоиска = "BLOCKCHATUSER";
+    NewLine.Параметр    = "--dellast";
+    NewLine.Описание    = "Delete last messages before blocking (optional, def. val. - No)";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "UnblockChatUser";
+    NewLine.МетодПоиска = "UNBLOCKCHATUSER";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Unblocks a previously blocked user in the chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "UnblockChatUser";
+    NewLine.МетодПоиска = "UNBLOCKCHATUSER";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "UnblockChatUser";
+    NewLine.МетодПоиска = "UNBLOCKCHATUSER";
+    NewLine.Параметр    = "--userid";
+    NewLine.Описание    = "User ID";
+    NewLine.Область     = "Chat management";
+
     Return CompositionTable;
 EndFunction
 
