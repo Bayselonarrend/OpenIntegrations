@@ -853,6 +853,99 @@
     NewLine.Описание    = "User ID. For all active requests if not filled in (optional, def. val. - Empty value)";
     NewLine.Область     = "Chat management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatTitle";
+    NewLine.МетодПоиска = "SETCHATTITLE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Sets new chat title";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatTitle";
+    NewLine.МетодПоиска = "SETCHATTITLE";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatTitle";
+    NewLine.МетодПоиска = "SETCHATTITLE";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Title text";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatDescription";
+    NewLine.МетодПоиска = "SETCHATDESCRIPTION";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Sets new chat description";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatDescription";
+    NewLine.МетодПоиска = "SETCHATDESCRIPTION";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatDescription";
+    NewLine.МетодПоиска = "SETCHATDESCRIPTION";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Description text";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatRules";
+    NewLine.МетодПоиска = "SETCHATRULES";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Bot token";
+    NewLine.Область     = "Chat management";
+    NewLine.ОписаниеМетода   = "Sets new chat rules";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatRules";
+    NewLine.МетодПоиска = "SETCHATRULES";
+    NewLine.Параметр    = "--chatid";
+    NewLine.Описание    = "Chat ID";
+    NewLine.Область     = "Chat management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vkteams";
+    NewLine.Модуль      = "OPI_VKTeams";
+    NewLine.Метод       = "SetChatRules";
+    NewLine.МетодПоиска = "SETCHATRULES";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Rules Text";
+    NewLine.Область     = "Chat management";
+
     Return CompositionTable;
 EndFunction
 
