@@ -607,6 +607,65 @@ Function GetChatJoinRequests(Val Token, Val ChatID) Export
 
 EndFunction
 
+// Block chat user
+// Blocks the selected user in chat
+//
+// Note
+// Method at API documentation: [GET ​​/chats​/blockUser](@teams.vk.com/botapi/#/chats/get_chats_blockUser)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// UserID - String, Number - User ID to be blocked - userid
+// DeleteLastMessages - Boolean - Delete last messages before blocking - dellast
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function BlockChatUser(Val Token
+    , Val ChatID
+    , Val UserID
+    , Val DeleteLastMessages = False) Export
+
+    URL        = "/chats/blockUser";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId"         , ChatID            , "String" , Parameters);
+    OPI_Tools.AddField("userId"         , UserID            , "String" , Parameters);
+    OPI_Tools.AddField("delLastMessages", DeleteLastMessages, "Boolean", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Unblock chat user
+// Unblocks a previously blocked user in the chat room
+//
+// Note
+// Method at API documentation: [GET ​​/chats/unblockUser](@teams.vk.com/botapi/#/chats/get_chats_unblockUser)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// UserID - String, Number - User ID - userid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function UnblockChatUser(Val Token, Val ChatID, Val UserID) Export
+
+    URL        = "/chats/unblockUser";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId", ChatID , "String", Parameters);
+    OPI_Tools.AddField("userId", UserID , "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
