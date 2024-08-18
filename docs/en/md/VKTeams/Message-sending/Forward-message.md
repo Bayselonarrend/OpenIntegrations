@@ -12,13 +12,13 @@ sidebar_position: 8
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
   | Token | --token | String | Bot token |
-  | MessageID | --message | String, Number | Original message ID |
+  | MessageID | --messageid | String, Number | Original message ID |
   | FromChatID | --fromid | String, Number | Source chat ID |
   | ChatID | --chatid | String, Number | Chat ID for message sending |
   | Text | --text | String | Additional message text |
 
   
-  Returns:  HTTPResponse - Forward message
+  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
 
 <br/>
 
@@ -34,7 +34,7 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
     Token      = "001.3501506236.091...";
     ChatID     = "AoLI0egLWBSLR1Ngn2w";
     FromChatID = "689203963@chat.agent";
-    MessageID  = "7402898905190367422";
+    MessageID  = "7401463509940174907";
 
     Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID);
 

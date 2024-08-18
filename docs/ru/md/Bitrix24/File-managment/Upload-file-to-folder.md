@@ -32,17 +32,17 @@ sidebar_position: 2
     Наименование2  = "Картинка2.jpg";
     Наименование   = "Картинка1.jpg";
 
-    Картинка2 = "https://openintegrations.dev/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
-    Картинка  = "https://openintegrations.dev/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
 
-    IDПриемника = "6048";
+    IDПриемника = "5052";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование2, Картинка2, IDПриемника);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "7a63bc66006e9f06006b12e400000001000...";
+    Токен = "c03fa966006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование, Картинка, IDПриемника, Токен);
 ```

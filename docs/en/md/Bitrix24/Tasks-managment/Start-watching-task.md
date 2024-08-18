@@ -27,14 +27,14 @@ Method at API documentation: [tasks.task.startwatch](https://dev.1c-bitrix.ru/re
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "1254";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    TaskID = "1074";
 
     Result = OPI_Bitrix24.StartWatchingTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7a63bc66006e9f06006b12e400000001000...";
-    TaskID = "1256";
+    Token  = "c03fa966006e9f06006b12e400000001000...";
+    TaskID = "1076";
 
     Result = OPI_Bitrix24.StartWatchingTask(URL, TaskID, Token);
 ```

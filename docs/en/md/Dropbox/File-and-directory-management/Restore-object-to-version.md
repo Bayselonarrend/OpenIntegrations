@@ -24,8 +24,8 @@ sidebar_position: 14
 
 
 ```bsl title="Code example"
-    Version = "61f9f2f55c06dbd841553";
-    Token   = "sl.B6_e9uxZDzud1x7oZyvJJEiFu78rkVmLclhxrJ0KMVVZNxl9XbxwWUr5wv8IKSqnoi6KyNyRe0...";
+    Version = "61947933c4742bd841553";
+    Token   = "sl.B4gp-iE6U2BXAeEhqhHwN00_GAOFjvVi4j_C9r2yZ5sjIUcTga38IbFN49TKhxrmzyrNjttkXA...";
     Path    = "/New/pic.png";
 
     Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);

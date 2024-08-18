@@ -32,7 +32,7 @@ sidebar_position: 2
     CampaignNumber = "1030466671";
     DailyLimit     = 150;
     CategoryNumber = 126;
-    PostID         = "3529";
+    PostID         = "2021";
     AccountID      = "1607951446";
 
     Result = OPI_VK.CreateAd(CampaignNumber

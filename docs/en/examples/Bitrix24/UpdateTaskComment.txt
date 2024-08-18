@@ -1,6 +1,6 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    TaskID    = "1084";
-    CommentID = "2940";
+    TaskID    = "1258";
+    CommentID = "3402";
 
     Text = "The task has been changed, do not split up";
 

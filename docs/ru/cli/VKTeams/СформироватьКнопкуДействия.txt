@@ -1,0 +1,1 @@
+﻿oint vkteams СформироватьКнопкуДействия --text %text% --data %data% --url %url% --style %style%

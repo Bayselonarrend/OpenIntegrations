@@ -1,5 +1,5 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    CommentID = "2940";
+    CommentID = "3402";
 
     Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID);
 

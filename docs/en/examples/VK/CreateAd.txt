@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
-    CampaignNumber = "";
+    CampaignNumber = "1030466671";
     DailyLimit     = 150;
     CategoryNumber = 126;
     PostID         = "2021";

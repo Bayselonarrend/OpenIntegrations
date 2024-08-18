@@ -32,17 +32,17 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
     Filename2 = "Picture2.jpg";
     Name      = "Picture1.jpg";
 
-    Image2 = "https://openintegrations.dev/test_data/picture.jpg"; // Local path, URL or Binary Data
-    Image  = "https://openintegrations.dev/test_data/picture2.jpg"; // Local path, URL or Binary Data
+    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // Local path, URL or Binary Data
+    Image  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // Local path, URL or Binary Data
 
-    DestinationID = "6048";
+    DestinationID = "5052";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Filename2, Image2, DestinationID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "7a63bc66006e9f06006b12e400000001000...";
+    Token = "c03fa966006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Name, Image, DestinationID, Token);
 ```

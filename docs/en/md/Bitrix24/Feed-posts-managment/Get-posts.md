@@ -28,13 +28,13 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    PostID = "502";
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    PostID = "436";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Result = OPI_Bitrix24.GetPosts(URL, PostID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "7a63bc66006e9f06006b12e400000001000...";
+    Token = "c03fa966006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetPosts(URL, PostID, , Token);
 ```
