@@ -1,0 +1,1 @@
+gpg --batch --symmetric --cipher-algo AES256 --passphrase="$ENC_JSON" data.json

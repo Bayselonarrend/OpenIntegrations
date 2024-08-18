@@ -1,0 +1,1 @@
+﻿oint vkteams ИзменитьАватарЧата --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --file "https://openintegrations.dev/test_data/spy2.png"

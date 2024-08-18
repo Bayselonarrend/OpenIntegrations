@@ -2,7 +2,7 @@
 
     Image1    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path to file or binary Data
     Image2    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Path to file or binary Data
-    Selection = "";
+    Selection = "122";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

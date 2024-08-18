@@ -33,18 +33,18 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 ```bsl title="Code example"
     Name    = "New stage name";
     Color   = "000000";
-    StageID = "390";
+    StageID = "322";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
 
     Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color);
 
     Name    = "New stage name 2";
     Color   = "000000";
-    StageID = "392";
+    StageID = "324";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "7a63bc66006e9f06006b12e400000001000...";
+    Token = "c03fa966006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color, 6, True, Token);
 ```

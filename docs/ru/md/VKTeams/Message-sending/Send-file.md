@@ -34,7 +34,7 @@ sidebar_position: 2
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
     Текст    = "Подпись к файлу";
 
-    Файл     = "https://openintegrations.dev/test_data/document.docx";        // URL
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("docx");  // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -45,7 +45,7 @@ sidebar_position: 2
 
     Результат = OPI_VKTeams.ОтправитьФайл(Токен, IDЧата, ФайлПуть, Текст);
 
-    Результат = OPI_VKTeams.ОтправитьФайл(Токен, IDЧата, Файл, Текст, "ВажныйДокумент.docx");
+    Результат = OPI_VKTeams.ОтправитьФайл(Токен, IDЧата, ФайлДД, Текст, "ВажныйДокумент.docx");
 ```
 
 

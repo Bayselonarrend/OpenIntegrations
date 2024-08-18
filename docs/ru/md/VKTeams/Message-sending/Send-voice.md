@@ -34,10 +34,10 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен         = "001.3501506236.091...";
     IDЧата        = "689203963@chat.agent";
-    IDЦитируемого = "7402898905190367422";
+    IDЦитируемого = "7401463509940174907";
     Текст         = "Подпись к файлу";
 
-    Файл     = "https://openintegrations.dev/test_data/song.m4a"  ;        // URL
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a"  ;        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -48,7 +48,7 @@ sidebar_position: 3
 
     Результат = OPI_VKTeams.ОтправитьГолосовоеСообщение(Токен, IDЧата, ФайлПуть, ,IDЦитируемого);
 
-    Результат = OPI_VKTeams.ОтправитьГолосовоеСообщение(Токен, IDЧата, Файл);
+    Результат = OPI_VKTeams.ОтправитьГолосовоеСообщение(Токен, IDЧата, ФайлДД);
 ```
 
 
@@ -60,5 +60,9 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-
+{
+ "fileId": "I000bAvKAbBkpO2IN0gXEY66c0998a1bd",
+ "msgId": "7404086605381632210",
+ "ok": true
+}
 ```

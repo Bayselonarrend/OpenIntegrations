@@ -34,10 +34,10 @@ If you want the client to display this file as a playable voice message, it must
 ```bsl title="Code example"
     Token   = "001.3501506236.091...";
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7402898905190367422";
+    ReplyID = "7401463509940174907";
     Text    = "File caption";
 
-    File     = "https://openintegrations.dev/test_data/song.m4a" ; // URL
+    File     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a" ; // URL
     FilePath = GetTempFileName("m4a"); // Path
 
     CopyFile(File, FilePath);
@@ -48,7 +48,7 @@ If you want the client to display this file as a playable voice message, it must
 
     Result = OPI_VKTeams.SendVoice(Token, ChatID, FilePath, ,ReplyID);
 
-    Result = OPI_VKTeams.SendVoice(Token, ChatID, File);
+    Result = OPI_VKTeams.SendVoice(Token, ChatID, FileBD);
 ```
 
 
@@ -60,5 +60,9 @@ If you want the client to display this file as a playable voice message, it must
 ```
 
 ```json title="Result"
-
+{
+ "fileId": "I000brjuglT3K5cB4dWEht66c111071bd",
+ "msgId": "7404217984136249577",
+ "ok": true
+}
 ```
