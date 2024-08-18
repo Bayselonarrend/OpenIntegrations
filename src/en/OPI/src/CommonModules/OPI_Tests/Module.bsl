@@ -3158,6 +3158,9 @@ Procedure VKT_MessagesSending() Export
     OPI_TestDataRetrieval.ParameterToCollection("Audio2"           , TestParameters);
 
     VkTeams_SendTextMessage(TestParameters);
+    OPI_Tools.Pause(60);
+
+    VKTeams_AnswerButtonEvent(TestParameters);
     VKTeams_ForwardMessage(TestParameters);
     VKTeams_SendFile(TestParameters);
     VKTeams_ResendFile(TestParameters);
@@ -10614,7 +10617,16 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
     Text    = "<b>Bold text</b>";
     Markup  = "HTML";
 
-    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, , Markup);
+    Keyboard         = New Array;
+    ButtonsLineArray = New Array;
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2",               , "https://openintegrations.dev"));
+
+    Keyboard.Add(ButtonsLineArray);
+    Keyboard.Add(ButtonsLineArray);
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);
 
     // END
 
@@ -11087,7 +11099,6 @@ Procedure VKTeams_SetChatTitle(FunctionParameters)
 
 EndProcedure
 
-
 Procedure VKTeams_SetChatDescription(FunctionParameters)
 
     Token  = FunctionParameters["VkTeams_Token"];
@@ -11117,6 +11128,47 @@ Procedure VKTeams_SetChatRules(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SetChatRules", "VkTeams");
 
     Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure VKTeams_AnswerButtonEvent(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    LastID = 0;
+
+    For N = 1 To 5 Do
+
+        Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
+        Events = Result["events"];
+
+        If Not Events.Count() = 0 Then
+
+            For Each Event In Events Do
+
+                callbackData = Event["payload"];
+
+                If callbackData["callbackData"] = "ButtonEvent1" Then
+
+                    EventID = callbackData["queryId"];
+                    Result  = OPI_VKTeams.AnswerButtonEvent(Token, EventID, "Get it!");
+
+                    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "AnswerButtonEvent", "VkTeams");
+
+                    Check_VKTTrue(Result);
+
+                EndIf;
+
+            EndDo;
+
+            LastID = Events[Events.UBound()]["eventId"];
+
+        EndIf;
+
+    EndDo;
+
+    // END
+
+    OPI_Tools.Pause(3);
 
 EndProcedure
 

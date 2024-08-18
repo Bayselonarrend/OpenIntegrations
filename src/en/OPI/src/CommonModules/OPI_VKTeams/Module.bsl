@@ -475,6 +475,65 @@ Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
 
 EndFunction
 
+// Answer button event
+// Returns a response to the user when a keyboard button is pressed
+//
+// Note
+// This method call should be used in response to receiving a callbackQuery event
+// Method at API documentation: [GET /messages/answerCallbackQuery](@teams.vk.com/botapi/#/messages/get_messages_answerCallbackQuery)
+//
+// Parameters:
+// Token - String - Bot token - token
+// EventID - String - Identifier of the callback query received by the bot - queryid
+// Text - String - Answer text - text
+// URL - String - URL to be opened by the client application - url
+// AsAlert - Boolean - Display the answer as an alert) - showalert
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function AnswerButtonEvent(Val Token
+    , Val EventID
+    , Val Text = ""
+    , Val URL = ""
+    , Val AsAlert = False) Export
+
+    URL        = "/messages/answerCallbackQuery";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("queryId"  , EventID , "String" , Parameters);
+    OPI_Tools.AddField("text"     , Text    , "String" , Parameters);
+    OPI_Tools.AddField("url"      , URL     , "String" , Parameters);
+    OPI_Tools.AddField("showAlert", AsAlert , "Boolean", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Make action button
+// Forms an action button for the message keyboard (see SendTextMessage)
+//
+// Parameters:
+// Text - String - Button text - text
+// Value - String - The value returned in the event. Only if the URL is not filled - data
+// URL - String - URL to create the page open button. Only if the Value is not filled in - url
+// Style - String - Button style: primary, attention or base - style
+//
+// Returns:
+// Structure - Button for keyboard
+Function MakeActionButton(Val Text, Val Value = "", Val URL = "", Val Style = "base") Export
+
+    ButtonStructure = New Structure;
+    OPI_Tools.AddField("text"        , Text  , "String", ButtonStructure);
+    OPI_Tools.AddField("callbackData", Value , "String", ButtonStructure);
+    OPI_Tools.AddField("url"         , URL   , "String", ButtonStructure);
+    OPI_Tools.AddField("style"       , Style , "String", ButtonStructure);
+
+    Return ButtonStructure;
+
+EndFunction
+
 #EndRegion
 
 #Region ChatManagement
