@@ -825,7 +825,7 @@ Function ConvertParameterToString(Val Value)
 
     ElsIf TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure") Then
 
-        JSONParameters = New JSONWriterSettings(JSONLineBreak.No, "");
+        JSONParameters = New JSONWriterSettings(JSONLineBreak.None, "");
 
         JSONWriter = New JSONWriter;
         JSONWriter.SetString(JSONParameters);
