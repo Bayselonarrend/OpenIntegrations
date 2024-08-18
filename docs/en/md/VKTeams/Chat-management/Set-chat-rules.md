@@ -45,5 +45,7 @@ To call this method, the bot must be an administrator in the chat room.
 ```
 
 ```json title="Result"
-
+{
+ "ok": true
+}
 ```

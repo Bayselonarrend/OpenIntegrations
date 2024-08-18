@@ -47,5 +47,8 @@ sidebar_position: 10
 ```
 
 ```json title="Результат"
-
+{
+ "ok": false,
+ "description": "User is not pending or nobody in pending list"
+}
 ```
