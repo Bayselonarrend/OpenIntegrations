@@ -9,4 +9,13 @@
     Text    = "<b>Bold text</b>";
     Markup  = "HTML";
 
-    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, , Markup);
+    Keyboard         = New Array;
+    ButtonsLineArray = New Array;
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2",               , "https://openintegrations.dev"));
+
+    Keyboard.Add(ButtonsLineArray);
+    Keyboard.Add(ButtonsLineArray);
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);
