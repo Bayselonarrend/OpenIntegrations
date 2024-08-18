@@ -69,8 +69,8 @@ EndFunction
 
 Procedure TelegramAPI_GetBotInfo() Export
 
-     TestParameters = New Structure;
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
     Telegram_GetBotInformation(TestParameters);
 
@@ -78,10 +78,10 @@ EndProcedure
 
 Procedure TelegramAPI_GetUpdates() Export
 
-     TestParameters = New Structure;
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
-     Telegram_DeleteWebhook(TestParameters);
+    Telegram_DeleteWebhook(TestParameters);
     Telegram_GetUpdates(TestParameters);
 
 EndProcedure
@@ -100,10 +100,10 @@ EndProcedure
 Procedure TelegramAPI_SendTextMessage() Export
 
     TestParameters = New Structure;
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
-     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChatID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Telegram_ChannelID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
 
     Telegram_SendTextMessage(TestParameters);
 
@@ -3162,6 +3162,8 @@ Procedure VKT_MessagesSending() Export
     VKTeams_SendFile(TestParameters);
     VKTeams_ResendFile(TestParameters);
     VKTeams_EditMessageText(TestParameters);
+    VKTeams_PinMessage(TestParameters);
+    VKTeams_UnpinMessage(TestParameters);
     VKTeams_DeleteMessage(TestParameters);
     VKTeams_SendVoice(TestParameters);
     VKTeams_ResendVoice(TestParameters);
@@ -10975,6 +10977,38 @@ Procedure VKTeams_UnblockChatUser(FunctionParameters)
     // END
 
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UnblockChatUser", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure VKTeams_PinMessage(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+
+    Result = OPI_VKTeams.PinMessage(Token, ChatID, MessageID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "PinMessage", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure VKTeams_UnpinMessage(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+
+    Result = OPI_VKTeams.UnpinMessage(Token, ChatID, MessageID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UnpinMessage", "VkTeams");
 
     Check_VKTTrue(Result);
 

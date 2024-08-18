@@ -396,13 +396,13 @@ EndFunction
 //
 // Parameters:
 // Token - String - Bot token - token
-// MessageID - String, Number - Original message ID - message
+// MessageID - String, Number - Original message ID - messageid
 // FromChatID - String, Number - Source chat ID - fromid
 // ChatID - String, Number - Chat ID for message sending - chatid
 // Text - String - Additional message text - text
 //
 // Returns:
-// HTTPResponse - Forward message
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
 Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Val Text = "") Export
 
     URL        = "/messages/sendText";
@@ -412,6 +412,62 @@ Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Va
     OPI_Tools.AddField("text"         , Text      , "String", Parameters);
     OPI_Tools.AddField("forwardChatId", FromChatID, "String", Parameters);
     OPI_Tools.AddField("forwardMsgId" , MessageID , "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Pin message
+// Pins the selected message in the chat room
+//
+// Note
+// To call this method, the bot must be an administrator in the chat room
+// Method at API documentation: [GET /chats/pinMessage](@teams.vk.com/botapi/#/chats/get_chats_pinMessage)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// MessageID - String, Number - ID of the message to be pinned - messageid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
+
+    URL        = "/chats/pinMessage";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId", ChatID   , "String", Parameters);
+    OPI_Tools.AddField("msgId" , MessageID, "String", Parameters);
+
+    Response = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Unpin message
+// Unpins a previously pinned chat message
+//
+// Note
+// To call this method, the bot must be an administrator in the chat room
+// Method at API documentation: [GET /chats/unpinMessage](@teams.vk.com/botapi/#/chats/get_chats_unpinMessage)
+//
+// Parameters:
+// Token - String - Bot token - token
+// ChatID - String, Number - Chat ID - chatid
+// MessageID - String, Number - ID of the message to be unpinned - messageid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from VK Teams
+Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
+
+    URL        = "/chats/unpinMessage";
+    Parameters = NormalizeMain(URL, Token);
+
+    OPI_Tools.AddField("chatId", ChatID   , "String", Parameters);
+    OPI_Tools.AddField("msgId" , MessageID, "String", Parameters);
 
     Response = OPI_Tools.Get(URL, Parameters);
 
