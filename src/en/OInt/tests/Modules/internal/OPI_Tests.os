@@ -3183,6 +3183,8 @@ Procedure VKT_ChatManagment() Export
     VKTeams_GetChatMembers(TestParameters);
     VKTeams_GetChatBlockedUsers(TestParameters);
     VKTeams_GetChatJoinRequests(TestParameters);
+    VKTeams_BlockChatUser(TestParameters);
+    VKTeams_UnblockChatUser(TestParameters);
 
 EndProcedure
 
@@ -10943,6 +10945,38 @@ Procedure VKTeams_GetChatJoinRequests(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetChatJoinRequests", "VkTeams");
 
     Check_VKTList(Result, "users");
+
+EndProcedure
+
+Procedure VKTeams_BlockChatUser(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Result = OPI_VKTeams.BlockChatUser(Token, ChatID, User, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "BlockChatUser", "VkTeams");
+
+    Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure VKTeams_UnblockChatUser(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Result = OPI_VKTeams.UnblockChatUser(Token, ChatID, User);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UnblockChatUser", "VkTeams");
+
+    Check_VKTTrue(Result);
 
 EndProcedure
 
