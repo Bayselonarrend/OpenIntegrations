@@ -1,13 +1,13 @@
-﻿    TaskID  = "1090";
-    StageID = "322";
+﻿    TaskID  = "1260";
+    StageID = "390";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
 
-    StageID = "324";
+    StageID = "392";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c03fa966006e9f06006b12e400000001000...";
+    Token = "7a63bc66006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID, , , Token);
