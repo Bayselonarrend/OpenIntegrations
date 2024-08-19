@@ -1,5 +1,5 @@
 ﻿#define MyAppName "OInt"
-#define MyAppVersion "1.11.1"
+#define MyAppVersion "1.12.0"
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
 #define MyAppExeName "oint.exe"
