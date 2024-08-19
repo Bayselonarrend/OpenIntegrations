@@ -2,7 +2,7 @@
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
     Текст    = "Подпись к файлу";
 
-    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";        // URL
+    Файл     = "https://openintegrations.dev/test_data/document.docx";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("docx");  // Путь
 
     КопироватьФайл(Файл, ФайлПуть);

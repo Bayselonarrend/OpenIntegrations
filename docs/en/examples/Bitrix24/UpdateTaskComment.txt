@@ -1,4 +1,4 @@
-﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
     TaskID    = "1258";
     CommentID = "3402";
 
@@ -7,8 +7,8 @@
     Result = OPI_Bitrix24.UpdateTaskComment(URL, TaskID, CommentID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "c03fa966006e9f06006b12e400000001000...";
-    CommentID = "2942";
+    Token     = "7a63bc66006e9f06006b12e400000001000...";
+    CommentID = "3404";
 
     Text = "The task has been changed, let's split up";
 
