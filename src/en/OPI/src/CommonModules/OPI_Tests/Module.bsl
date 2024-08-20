@@ -3201,6 +3201,21 @@ EndProcedure
 
 #EndRegion
 
+#Region OzonSeller
+
+Procedure OzonAPI_AttributesAndFeatures() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+
+    Ozon_GetCategoriesAndProductTypesTree(TestParameters);
+    Ozon_GetCategoryAttributes(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -3991,6 +4006,21 @@ Procedure Check_VKTPending(Val Result)
     If Not Result["ok"] Then
         OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно("User is not pending or nobody in pending list");
     EndIf;
+
+EndProcedure
+
+Procedure Check_OzonCategoryList(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["category_name"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonAttributesList(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["description"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["id"]).Заполнено();
 
 EndProcedure
 
@@ -11187,6 +11217,50 @@ Procedure VKTeams_MakeActionButton(FunctionParameters)
     Keyboard.Add(ButtonsLineArray);
 
     // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Keyboard, "MakeActionButton", "VkTeams");
+
+EndProcedure
+
+#EndRegion
+
+#Region Ozon
+
+Procedure Ozon_GetCategoriesAndProductTypesTree(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey = FunctionParameters["Ozon_ApiKey"];
+
+    Result = OPI_Ozon.GetCategoriesAndProductTypesTree(ClientID, APIKey, "EN");
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetCategoriesAndProductTypesTree (EN)", "Ozon");
+
+    Check_OzonCategoryList(Result); // SKIP
+
+    Result = OPI_Ozon.GetCategoriesAndProductTypesTree(ClientID, APIKey);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetCategoriesAndProductTypesTree", "Ozon");
+
+    Check_OzonCategoryList(Result);
+
+EndProcedure
+
+Procedure Ozon_GetCategoryAttributes(FunctionParameters)
+
+    ClientID      = FunctionParameters["Ozon_ClientID"];
+    APIKey     = FunctionParameters["Ozon_ApiKey"];
+    CategoryID = 17029016;
+    TypeID     = 970778135;
+
+    Result = OPI_Ozon.GetCategoryAttributes(ClientID, APIKey, CategoryID, TypeID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetCategoryAttributes", "Ozon");
+
+    Check_OzonAttributesList(Result);
 
 EndProcedure
 

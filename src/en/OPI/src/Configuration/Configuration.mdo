@@ -59,6 +59,7 @@
   <commonModules>CommonModule.OPI_Dropbox</commonModules>
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
   <commonModules>CommonModule.OPI_VKTeams</commonModules>
+  <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
 </mdclass:Configuration>
