@@ -95,7 +95,7 @@ li > a.menu__link {
 .Notion a::before, .GoogleCalendar a::before, .GoogleDrive a::before, .GoogleSheets a::before, 
 .Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
 .Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
-.VKTeams a::before, .Start a::before{
+.VKTeams a::before, .Ozon a::before, .Start a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -154,6 +154,10 @@ li > a.menu__link {
 
 .VKTeams > div > a::before{
   content: url(../../static/img/APIs/small/VKTeams.png);
+}
+
+.Ozon > div > a::before{
+  content: url(../../static/img/APIs/small/Ozon.png);
 }
 
 .Messenger > div > a::before{
