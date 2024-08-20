@@ -25,8 +25,8 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Path  = "/New/url_doc.docx";
-    Token = "sl.B4gp-iE6U2BXAeEhqhHwN00_GAOFjvVi4j_C9r2yZ5sjIUcTga38IbFN49TKhxrmzyrNjttkXA...";
-    URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    Token = "sl.B7RRdlnDML6hoVUHl6bk7CQxx0SFu8rLlSxh2VTkVQIh_m6CJKk_MYsdfWowBOji0Gn-hg1kNb...";
+    URL   = "https://openintegrations.dev/test_data/document.docx";
 
     Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
 ```

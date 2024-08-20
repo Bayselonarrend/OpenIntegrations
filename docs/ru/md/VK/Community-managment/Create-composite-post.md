@@ -30,8 +30,8 @@ sidebar_position: 2
     Текст     = "Пост из автотеста";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Путь или Двоичные данные
-    Видео    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";   // URL, Путь или Двоичные данные
+    Картинка = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    Видео    = "https://openintegrations.dev/test_data/video.mp4";   // URL, Путь или Двоичные данные
 
     ИВФ = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
