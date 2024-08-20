@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="92adf299-b8d6-4a34-abeb-f61d5c388e17">
+  <name>OPI_Ozon</name>
+  <synonym>
+    <key>ru</key>
+    <value>Ozon (ОПИ)</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

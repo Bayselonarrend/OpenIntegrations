@@ -66,6 +66,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Dropbox"        , StandardDependencies);
     Sections.Insert("Bitrix24"       , StandardDependencies);
     Sections.Insert("VkTeams"        , StandardDependencies);
+    Sections.Insert("Ozon"           , StandardDependencies);
 
     Return Sections;
 
@@ -88,6 +89,7 @@ Function GetTestTable() Export
     Dropbox   = "Dropbox";
     Bitrix    = "Bitrix24";
     VKT       = "VkTeams";
+    Ozon      = "Ozon";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -240,6 +242,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "VKT_MessagesSending" , "Messages sending" , VKT);
     NewTest(TestTable, "VKT_CommonMethods"   , "Common methods"   , VKT);
     NewTest(TestTable, "VKT_ChatManagment"   , "Chat managment"   , VKT);
+
+    NewTest(TestTable, "OzonAPI_AttributesAndFeatures" , "Attributes and features" , Ozon);
 
     Return TestTable;
 
