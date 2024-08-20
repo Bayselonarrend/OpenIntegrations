@@ -1,6 +1,6 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_VKTeams.os
-// Lib: VKTeams
-// CLI: vkteams
+﻿// OneScript: ./OInt/core/Modules/OPI_Ozon.os
+// Lib: Ozon
+// CLI: ozon
 
 // MIT License
 
