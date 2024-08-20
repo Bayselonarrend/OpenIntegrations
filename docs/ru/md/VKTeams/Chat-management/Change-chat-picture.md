@@ -30,7 +30,7 @@ sidebar_position: 2
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
 
-    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/spy2.png";        // URL
+    Файл     = "https://openintegrations.dev/test_data/spy2.png";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("png");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);

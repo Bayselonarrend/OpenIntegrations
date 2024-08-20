@@ -29,7 +29,7 @@ sidebar_position: 3
     Параметры = ПолучитьПараметрыВК();
 
     Название = "Тестовая подборка";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка = "https://openintegrations.dev/test_data/picture.jpg";
     Основная = Истина;
     Скрытая  = Ложь;
 

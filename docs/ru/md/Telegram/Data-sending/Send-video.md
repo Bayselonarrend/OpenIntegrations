@@ -31,7 +31,7 @@ sidebar_position: 3
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Видео    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
+    Видео    = "https://openintegrations.dev/test_data/video.mp4";
 
     ВидеоПуть = ПолучитьИмяВременногоФайла("mp4");
     КопироватьФайл(Видео, ВидеоПуть);

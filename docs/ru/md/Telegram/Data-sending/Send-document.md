@@ -32,7 +32,7 @@ sidebar_position: 5
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Документ = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    Документ = "https://openintegrations.dev/test_data/document.docx";
 
     ДокументПуть = ПолучитьИмяВременногоФайла("docx");
     КопироватьФайл(Документ, ДокументПуть);

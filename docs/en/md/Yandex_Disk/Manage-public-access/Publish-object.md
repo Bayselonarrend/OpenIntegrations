@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/b91ade1a-0731-4dd9-b453-199debd673c4.png";
+    Path  = "/e83a731c-d5ba-4a54-8101-1425030038e1.png";
 
     Result = OPI_YandexDisk.PublishObject(Token, Path);
 ```

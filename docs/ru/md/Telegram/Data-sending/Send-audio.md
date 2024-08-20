@@ -31,7 +31,7 @@ sidebar_position: 4
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Аудио    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.mp3";
+    Аудио    = "https://openintegrations.dev/test_data/song.mp3";
 
     АудиоПуть = ПолучитьИмяВременногоФайла("mp3");
     КопироватьФайл(Аудио, АудиоПуть);

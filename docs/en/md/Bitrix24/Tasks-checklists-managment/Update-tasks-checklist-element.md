@@ -29,18 +29,18 @@ Method at API documentation: [task.checklistitem.update](https://dev.1c-bitrix.r
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    TaskID    = "1074";
-    ElementID = "404";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    TaskID    = "1394";
+    ElementID = "652";
 
     Text = "New elements text";
 
     Result = OPI_Bitrix24.UpdateTasksChecklistElement(URL, TaskID, ElementID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "c03fa966006e9f06006b12e400000001000...";
-    TaskID    = "1076";
-    ElementID = "408";
+    Token     = "ec4dc366006e9f06006b12e400000001000...";
+    TaskID    = "1396";
+    ElementID = "656";
 
     Result = OPI_Bitrix24.UpdateTasksChecklistElement(URL, TaskID, ElementID, Text, Token);
 ```

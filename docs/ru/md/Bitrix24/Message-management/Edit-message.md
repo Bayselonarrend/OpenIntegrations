@@ -29,16 +29,16 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    IDСообщения = "8738";
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDСообщения = "10602";
 
     Текст    = "Новый текст сообщения";
 
     Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "c03fa966006e9f06006b12e400000001000...";
-    IDСообщения    = "8740";
+    Токен          = "ec4dc366006e9f06006b12e400000001000...";
+    IDСообщения    = "10604";
 
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";

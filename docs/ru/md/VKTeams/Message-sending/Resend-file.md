@@ -32,7 +32,7 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла  = "ikA4wZjxn8yVTbBmGGVhcJ66c1fef91bd";
+    IDФайла  = "mrtbiFfEDNJq1NKKXxA5fA66c340a01bd";
     Текст    = "Подпись к файлу";
 
     Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст, "ТотЖеДокумент.docx");

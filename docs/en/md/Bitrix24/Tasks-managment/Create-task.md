@@ -41,12 +41,12 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
     TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
     TaskData.Insert("RESPONSIBLE_ID", Responsible);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c03fa966006e9f06006b12e400000001000...";
+    Token = "ec4dc366006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);
 ```

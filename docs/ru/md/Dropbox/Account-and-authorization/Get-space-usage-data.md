@@ -22,7 +22,7 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B4gp-iE6U2BXAeEhqhHwN00_GAOFjvVi4j_C9r2yZ5sjIUcTga38IbFN49TKhxrmzyrNjttkXA...";
+    Токен = "sl.B7RRdlnDML6hoVUHl6bk7CQxx0SFu8rLlSxh2VTkVQIh_m6CJKk_MYsdfWowBOji0Gn-hg1kNb...";
 
     Результат = OPI_Dropbox.ПолучитьДанныеИспользованияПространства(Токен);
 ```

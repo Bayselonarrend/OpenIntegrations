@@ -23,7 +23,7 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    FileID = "CQACAgIAAx0EcNsaZQACFyZmiag7zFs6JY4l17pWGP-irOnPZwACwk0AAqi7UUi6DAhERXKjUjUE";
+    FileID = "CQACAgIAAx0EcNsaZQACHQ9mwzJ_CeYQXCXEQpbDV7rOUEO9DAACxlMAAppkGUqMy1WTPv_0njUE";
     Token  = "6129457865:AAFyzNYOAFbu...";
 
     Result = OPI_Telegram.DownloadFile(Token, FileID);
