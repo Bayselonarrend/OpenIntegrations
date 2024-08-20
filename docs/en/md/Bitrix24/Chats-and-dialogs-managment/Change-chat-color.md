@@ -30,16 +30,16 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    ChatID = "454";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    ChatID = "578";
 
     Color = "AZURE";
 
     Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c03fa966006e9f06006b12e400000001000...";
-    ChatID = "456";
+    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    ChatID = "580";
 
     Color = "PURPLE";
 

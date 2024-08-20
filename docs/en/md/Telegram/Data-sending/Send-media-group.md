@@ -33,8 +33,8 @@ Map: Key - File, Value - media type
     Token  = "6129457865:AAFyzNYOAFbu...";
     ChatID = "461699897";
     Text   = "Строковое значение";
-    Image  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Video  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
+    Image  = "https://openintegrations.dev/test_data/picture.jpg";
+    Video  = "https://openintegrations.dev/test_data/video.mp4";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);

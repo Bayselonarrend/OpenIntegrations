@@ -31,7 +31,7 @@ sidebar_position: 2
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка = "https://openintegrations.dev/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);

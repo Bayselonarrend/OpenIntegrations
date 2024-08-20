@@ -30,8 +30,8 @@ sidebar_position: 2
     Text       = "Post from autotest";
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
-    Video = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Path or Binary Data
+    Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    Video = "https://openintegrations.dev/test_data/video.mp4"; // URL, Path or Binary Data
 
     TFN = GetTempFileName("png");
     CopyFile(Image, TFN);

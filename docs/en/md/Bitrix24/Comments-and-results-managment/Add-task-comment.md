@@ -28,15 +28,15 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    TaskID = "1258";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    TaskID = "1398";
 
     Text = "Task impossible, let's split up";
 
     Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c03fa966006e9f06006b12e400000001000...";
+    Token = "ec4dc366006e9f06006b12e400000001000...";
 
     Text = "Task uninpossible, don't split up";
 

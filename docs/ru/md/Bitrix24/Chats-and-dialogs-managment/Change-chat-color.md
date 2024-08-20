@@ -30,16 +30,16 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    IDЧата  = "454";
+    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDЧата  = "578";
 
     Цвет    = "AZURE";
 
     Результат = OPI_Bitrix24.ИзменитьЦветЧата(URL, IDЧата, Цвет);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "c03fa966006e9f06006b12e400000001000...";
-    IDЧата         = "456";
+    Токен          = "ec4dc366006e9f06006b12e400000001000...";
+    IDЧата         = "580";
 
     Цвет           = "PURPLE";
 
