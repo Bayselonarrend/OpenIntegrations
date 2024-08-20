@@ -27,7 +27,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 
 
 ```bsl title="Code example"
-    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image = "https://openintegrations.dev/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image);
 
     B64Image = GetBase64StringFromBinaryData(Image);
@@ -46,12 +46,12 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
     ChatStructure.Insert("AVATAR"     , B64Image);
     ChatStructure.Insert("OWNER_ID"   , 1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c03fa966006e9f06006b12e400000001000...";
+    Token = "ec4dc366006e9f06006b12e400000001000...";
 
     ChatStructure = New Structure;
     ChatStructure.Insert("TYPE"  , "CHAT");

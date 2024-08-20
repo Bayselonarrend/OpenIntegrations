@@ -31,7 +31,7 @@ sidebar_position: 6
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    GIF       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif";
+    GIF       = "https://openintegrations.dev/test_data/animation.gif";
 
     GifPath = GetTempFileName("gif");
     CopyFile(GIF, GifPath);

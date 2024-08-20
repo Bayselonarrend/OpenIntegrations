@@ -25,7 +25,7 @@ sidebar_position: 11
 
 ```bsl title="Пример кода"
     Токен   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Адрес   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Адрес   = "https://openintegrations.dev/test_data/picture.jpg";
     Путь    = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, Адрес);

@@ -33,19 +33,19 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     Текст     = "Новый текст новости";
     Заголовок = "Новый заголовок новости";
-    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Путь или Двоичные данные
-    IDНовости = "436";
+    Картинка1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    IDНовости = "560";
 
     Файлы     = Новый Соответствие;
     Файлы.Вставить("1.png", Картинка1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Результат = OPI_Bitrix24.ИзменитьНовость(URL, IDНовости, Текст, , Файлы, Заголовок);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "c03fa966006e9f06006b12e400000001000...";
-    IDНовости = "434";
+    Токен     = "ec4dc366006e9f06006b12e400000001000...";
+    IDНовости = "558";
 
     Результат = OPI_Bitrix24.ИзменитьНовость(URL, IDНовости, Текст, , Файлы, Заголовок, Токен);
 ```

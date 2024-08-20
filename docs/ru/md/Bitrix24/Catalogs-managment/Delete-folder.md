@@ -27,14 +27,14 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    IDКаталога = "5050";
+    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDКаталога = "6878";
 
     Результат = OPI_Bitrix24.УдалитьКаталог(URL, IDКаталога);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "c03fa966006e9f06006b12e400000001000...";
-    IDКаталога  = "5052";
+    Токен       = "ec4dc366006e9f06006b12e400000001000...";
+    IDКаталога  = "6880";
 
     Результат = OPI_Bitrix24.УдалитьКаталог(URL, IDКаталога, Токен);
 ```

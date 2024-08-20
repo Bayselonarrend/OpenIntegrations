@@ -26,9 +26,9 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Путь к файлу или двоичные данные
-    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Путь к файлу или двоичные данные
-    Подборка  = "122";
+    Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";  // URL, Путь к файлу или двоичные данные
+    Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Путь к файлу или двоичные данные
+    Подборка  = "123";
 
     МассивКартинок = Новый Массив;
     МассивКартинок.Добавить(Картинка1);

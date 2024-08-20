@@ -31,7 +31,7 @@ sidebar_position: 6
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Гифка    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif";
+    Гифка    = "https://openintegrations.dev/test_data/animation.gif";
 
     ГифкаПуть = ПолучитьИмяВременногоФайла("gif");
     КопироватьФайл(Гифка, ГифкаПуть);

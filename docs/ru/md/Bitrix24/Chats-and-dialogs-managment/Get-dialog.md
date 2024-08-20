@@ -27,13 +27,13 @@ sidebar_position: 14
 
 
 ```bsl title="Пример кода"
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    IDЧата      = "chat" + "454";
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDЧата      = "chat" + "578";
 
     Результат = OPI_Bitrix24.ПолучитьДиалог(URL, IDЧата);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "c03fa966006e9f06006b12e400000001000...";
+    Токен          = "ec4dc366006e9f06006b12e400000001000...";
     IDПользователя = 10;
 
     Результат = OPI_Bitrix24.ПолучитьДиалог(URL, IDПользователя, Токен);

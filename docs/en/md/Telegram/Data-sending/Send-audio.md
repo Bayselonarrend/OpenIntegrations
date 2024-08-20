@@ -31,7 +31,7 @@ sidebar_position: 4
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Audio     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.mp3";
+    Audio     = "https://openintegrations.dev/test_data/song.mp3";
 
     AudioPath = GetTempFileName("mp3");
     CopyFile(Audio, AudioPath);

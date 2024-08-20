@@ -30,7 +30,7 @@ Method at API documentation: [POST ​/chats​/avatar​/set](https://teams.vk.
     Token  = "001.3501506236.091...";
     ChatID = "AoLI0egLWBSLR1Ngn2w";
 
-    File     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/spy2.png"; // URL
+    File     = "https://openintegrations.dev/test_data/spy2.png"; // URL
     FilePath = GetTempFileName("png"); // Path
 
     CopyFile(File, FilePath);

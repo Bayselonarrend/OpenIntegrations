@@ -27,14 +27,14 @@ Method at API documentation: [im.notify.delete](https://dev.1c-bitrix.ru/learnin
 
 
 ```bsl title="Code example"
-    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    NotificationID = "8746";
+    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    NotificationID = "10610";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Token          = "c03fa966006e9f06006b12e400000001000...";
-    NotificationID = "8748";
+    Token          = "ec4dc366006e9f06006b12e400000001000...";
+    NotificationID = "10612";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID, Token);
 ```

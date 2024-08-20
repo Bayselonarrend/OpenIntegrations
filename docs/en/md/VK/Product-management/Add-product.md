@@ -26,9 +26,9 @@ sidebar_position: 4
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Image1    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path to file or binary Data
-    Image2    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Path to file or binary Data
-    Selection = "122";
+    Image1    = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or binary Data
+    Image2    = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path to file or binary Data
+    Selection = "123";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

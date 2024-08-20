@@ -27,14 +27,14 @@ Method at API documentation: [im.chat.mute](https://dev.1c-bitrix.ru/learning/co
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
-    ChatID = "454";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    ChatID = "578";
 
     Result = OPI_Bitrix24.EnableChatNotifications(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c03fa966006e9f06006b12e400000001000...";
-    ChatID = "456";
+    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    ChatID = "580";
 
     Result = OPI_Bitrix24.EnableChatNotifications(URL, ChatID, Token);
 ```

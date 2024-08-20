@@ -28,7 +28,7 @@ sidebar_position: 3
 ```bsl title="Code example"
     Token   = "6129457865:AAFyzNYOAFbu...";
     Chat    = "-1001971186208";
-    Topic   = "3313";
+    Topic   = "4264";
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 

@@ -32,7 +32,7 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
 ```bsl title="Code example"
     UserID = 1;
 
-    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/ztbe...";
+    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
     Text  = "Message text";
     Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -44,7 +44,7 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c03fa966006e9f06006b12e400000001000...";
+    Token  = "ec4dc366006e9f06006b12e400000001000...";
     Tag    = "New";
     UserID = 10;
 
