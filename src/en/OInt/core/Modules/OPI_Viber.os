@@ -316,28 +316,12 @@ EndFunction
 
 #Region Private
 
-// Send message.
-//
-// Parameters:
-// Token - String - Token
-// Type - String - TypeOfSentMessage
-// UserID - String, Number - Viber User ID
-// IsChannel - Boolean - Sending to channel or bot chat
-// Value - String, Structure - Value:
-// * URL - String - When sending data is URL
-// * Size - Number, String - File size in case of sending
-// * Extension - String - File extension in case of sending
-// Text - String - Message text
-// Keyboard - Structure Of String - Keyboard, if needed, see CreateKeyboardFromArrayButton
-//
-// Returns:
-// Arbitrary, HTTPResponse - Send message
 Function SendMessage(Val Token
     , Val Type
     , Val UserID
     , Val IsChannel
-    , Val Value = ""
-    , Val Text = ""
+    , Val Value    = ""
+    , Val Text     = ""
     , Val Keyboard = "")
 
     OPI_TypeConversion.GetLine(Token);
@@ -360,10 +344,12 @@ Function SendMessage(Val Token
 
     If ValueIsFilled(Value) Then
 
-        If Type    = "file" Then
+        If Type = "file" Then
+
             ParametersStructure.Insert("media"    , Value["URL"]);
             ParametersStructure.Insert("size"     , Value["Size"]);
             ParametersStructure.Insert("file_name", "File." + Value["Extension"]);
+
         ElsIf Type = "contact" Then
             ParametersStructure.Insert("contact"  , Value);
         ElsIf Type = "location" Then
