@@ -1,0 +1,7 @@
+﻿    ClientID    = "2128753";
+    APIKey      = "7cc90d26-33e4-499b...";
+    CategoryID  = 17054869;
+    TypeID      = 97311;
+    AttributeID = 85;
+
+    Result = OPI_Ozon.GetAttributeValues(ClientID, APIKey, CategoryID, TypeID, AttributeID);

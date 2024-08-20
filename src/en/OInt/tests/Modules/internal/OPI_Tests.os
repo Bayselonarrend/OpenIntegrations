@@ -3211,6 +3211,8 @@ Procedure OzonAPI_AttributesAndFeatures() Export
 
     Ozon_GetCategoriesAndProductTypesTree(TestParameters);
     Ozon_GetCategoryAttributes(TestParameters);
+    Ozon_GetAttributeValues(TestParameters);
+    Ozon_SearchAttributeValue(TestParameters);
 
 EndProcedure
 
@@ -4020,6 +4022,14 @@ Procedure Check_OzonAttributesList(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["description"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonListOfAttributesValues(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["value"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["id"]).Заполнено();
 
 EndProcedure
@@ -11261,6 +11271,48 @@ Procedure Ozon_GetCategoryAttributes(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetCategoryAttributes", "Ozon");
 
     Check_OzonAttributesList(Result);
+
+EndProcedure
+
+Procedure Ozon_GetAttributeValues(FunctionParameters)
+
+    ClientID    = FunctionParameters["Ozon_ClientID"];
+    APIKey      = FunctionParameters["Ozon_ApiKey"];
+    CategoryID  = 17054869;
+    TypeID      = 97311;
+    AttributeID = 85;
+
+    Result = OPI_Ozon.GetAttributeValues(ClientID, APIKey, CategoryID, TypeID, AttributeID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAttributeValues", "Ozon");
+
+    Check_OzonListOfAttributesValues(Result);
+
+EndProcedure
+
+Procedure Ozon_SearchAttributeValue(FunctionParameters)
+
+    ClientID    = FunctionParameters["Ozon_ClientID"];
+    APIKey      = FunctionParameters["Ozon_ApiKey"];
+    CategoryID  = 17054869;
+    TypeID      = 97311;
+    AttributeID = 85;
+    Value       = "Sunshine";
+
+    Result = OPI_Ozon.SearchAttributeValue(ClientID
+        , APIKey
+        , CategoryID
+        , TypeID
+        , AttributeID
+        , Value);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SearchAttributeValue", "Ozon");
+
+    Check_OzonListOfAttributesValues(Result);
 
 EndProcedure
 
