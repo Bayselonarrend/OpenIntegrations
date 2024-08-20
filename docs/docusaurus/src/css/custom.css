@@ -94,7 +94,7 @@ li > a.menu__link {
 .Airtable a::before , .Telegram a::before, .VK a::before, .Viber a::before, .Twitter a::before,
 .Notion a::before, .GoogleCalendar a::before, .GoogleDrive a::before, .GoogleSheets a::before, 
 .Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
-.Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before,
+.Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
 .VKTeams a::before, .Start a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
@@ -178,6 +178,10 @@ li > a.menu__link {
 
 .Folder > div > a::before{
   content: url(../../static/img/Categories/folder.png);
+}
+
+.Commerce > div > a::before{
+  content: url(../../static/img/Categories/e-commerce.png);
 }
 
 .Start > div > a::before{

@@ -11228,8 +11228,8 @@ EndProcedure
 
 Procedure Ozon_GetCategoriesAndProductTypesTree(FunctionParameters)
 
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey = FunctionParameters["Ozon_ApiKey"];
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     Result = OPI_Ozon.GetCategoriesAndProductTypesTree(ClientID, APIKey, "EN");
 
@@ -11249,7 +11249,7 @@ EndProcedure
 
 Procedure Ozon_GetCategoryAttributes(FunctionParameters)
 
-    ClientID      = FunctionParameters["Ozon_ClientID"];
+    ClientID   = FunctionParameters["Ozon_ClientID"];
     APIKey     = FunctionParameters["Ozon_ApiKey"];
     CategoryID = 17029016;
     TypeID     = 970778135;
