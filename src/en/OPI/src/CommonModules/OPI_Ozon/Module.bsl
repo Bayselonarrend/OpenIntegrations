@@ -111,6 +111,93 @@ Function GetCategoryAttributes(Val ClientID
 
 EndFunction
 
+// Get attribute values
+// Gets the list of available values of the attribute
+//
+// Note
+// You can find out if there is a nested catalog by the GetCharacteristicsCategories method()
+// Method at API documentation: [post /v1/description-category/attribute/values](@docs.ozon.ru/api/seller/#operation/DescriptionCategoryAPI_GetAttributeValues)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// CategoryID - String, Number - Category identifier - categoryid
+// TypeID - String, Number - Item type identifier - typeid
+// AttributeID - String, Number - Attribute IDs for obtaining values - attributeid
+// CatalogID - String, Number - ID of the first catalog in the response - start
+// Lang - String - Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) - lang
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetAttributeValues(Val ClientID
+    , Val APIKey
+    , Val CategoryID
+    , Val TypeID
+    , Val AttributeID
+    , Val CatalogID = 1
+    , Val Lang = "DEFAULT") Export
+
+    URL = "https://api-seller.ozon.ru/v1/description-category/attribute/values";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 200;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("description_category_id", CategoryID   , "String", Parameters);
+    OPI_Tools.AddField("type_id"                , TypeID       , "String", Parameters);
+    OPI_Tools.AddField("attribute_id"           , AttributeID  , "String", Parameters);
+    OPI_Tools.AddField("language"               , Lang         , "String", Parameters);
+    OPI_Tools.AddField("limit"                  , Limit        , "String", Parameters);
+    OPI_Tools.AddField("last_value_id"          , CatalogID - 1, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Search attribute value
+// Gets the reference values of the attribute by the specified value
+//
+// Note
+// You can find out if there is a nested catalog by the GetCharacteristicsCategories method()
+// Method at API documentation: [post /v1/description-category/attribute/values/search](@docs.ozon.ru/api/seller/#operation/DescriptionCategoryAPI_SearchAttributeValues)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// CategoryID - String, Number - Category identifier - categoryid
+// TypeID - String, Number - Item type identifier - typeid
+// AttributeID - String, Number - Attribute IDs for obtaining values - attributeid
+// Value - String - Search value - value
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function SearchAttributeValue(Val ClientID
+    , Val APIKey
+    , Val CategoryID
+    , Val TypeID
+    , Val AttributeID
+    , Val Value) Export
+
+    URL = "https://api-seller.ozon.ru/v1/description-category/attribute/values/search";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 100;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("description_category_id", CategoryID  , "String", Parameters);
+    OPI_Tools.AddField("type_id"                , TypeID      , "String", Parameters);
+    OPI_Tools.AddField("attribute_id"           , AttributeID , "String", Parameters);
+    OPI_Tools.AddField("limit"                  , Limit       , "String", Parameters);
+    OPI_Tools.AddField("value"                  , Value       , "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
