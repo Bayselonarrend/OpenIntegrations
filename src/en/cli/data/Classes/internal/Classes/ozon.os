@@ -227,12 +227,167 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateUpdateProducts";
+    NewLine.МетодПоиска = "CREATEUPDATEPRODUCTS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Creates new products or updates existing products, based on data structures";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateUpdateProducts";
+    NewLine.МетодПоиска = "CREATEUPDATEPRODUCTS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateUpdateProducts";
+    NewLine.МетодПоиска = "CREATEUPDATEPRODUCTS";
+    NewLine.Параметр    = "--items";
+    NewLine.Описание    = "Array or one structure of product description fields";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductCreationStatus";
+    NewLine.МетодПоиска = "GETPRODUCTCREATIONSTATUS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Gets the status of adding a new product by task ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductCreationStatus";
+    NewLine.МетодПоиска = "GETPRODUCTCREATIONSTATUS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductCreationStatus";
+    NewLine.МетодПоиска = "GETPRODUCTCREATIONSTATUS";
+    NewLine.Параметр    = "--taskid";
+    NewLine.Описание    = "Add product task ID";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetProductStructure";
     NewLine.МетодПоиска = "GETPRODUCTSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Uploading and updating products";
     NewLine.ОписаниеМетода   = "Gets the structure of product standard fields";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "AddProductVideo";
+    NewLine.МетодПоиска = "ADDPRODUCTVIDEO";
+    NewLine.Параметр    = "--item";
+    NewLine.Описание    = "The basic structure of the product fields. See GetProductStructure";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Adds video to product attributes";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "AddProductVideo";
+    NewLine.МетодПоиска = "ADDPRODUCTVIDEO";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of the video";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "AddProductVideo";
+    NewLine.МетодПоиска = "ADDPRODUCTVIDEO";
+    NewLine.Параметр    = "--title";
+    NewLine.Описание    = "Technical name of the video";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "AddProductVideoCover";
+    NewLine.МетодПоиска = "ADDPRODUCTVIDEOCOVER";
+    NewLine.Параметр    = "--item";
+    NewLine.Описание    = "The basic structure of the product fields. See GetProductStructure";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Adds a video cover to the product attributes";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "AddProductVideoCover";
+    NewLine.МетодПоиска = "ADDPRODUCTVIDEOCOVER";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of the video cover";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CompleteComplexAttribute";
+    NewLine.МетодПоиска = "COMPLETECOMPLEXATTRIBUTE";
+    NewLine.Параметр    = "--object";
+    NewLine.Описание    = "Complex attribute structure or product structure";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Formats the value in attribute format and adds it to the <attributes> array of the collection";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CompleteComplexAttribute";
+    NewLine.МетодПоиска = "COMPLETECOMPLEXATTRIBUTE";
+    NewLine.Параметр    = "--attributeid";
+    NewLine.Описание    = "Attribute ID";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CompleteComplexAttribute";
+    NewLine.МетодПоиска = "COMPLETECOMPLEXATTRIBUTE";
+    NewLine.Параметр    = "--complexid";
+    NewLine.Описание    = "Complex attribute ID";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CompleteComplexAttribute";
+    NewLine.МетодПоиска = "COMPLETECOMPLEXATTRIBUTE";
+    NewLine.Параметр    = "--values";
+    NewLine.Описание    = "Value or array of values to add to <values> field";
+    NewLine.Область     = "Uploading and updating products";
 
     Return CompositionTable;
 EndFunction
