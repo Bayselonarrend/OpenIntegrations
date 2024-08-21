@@ -200,6 +200,55 @@ EndFunction
 
 #EndRegion
 
+#Region UploadingAndUpdatingProducts
+
+// Get product structure
+// Gets the structure of product standard fields
+//
+// Note
+// This structure should be supplemented with fields that depend on the product category from GetCategoryAttributes()
+// The first image in the image array (images field) will be the main image
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetProductStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", "<ID category product>");
+    ItemStructure.Insert("name"                   , "<name product>");
+    ItemStructure.Insert("offer_id"               , "<offer>");
+    ItemStructure.Insert("barcode"                , "<barcode>");
+    ItemStructure.Insert("price"                  , "<price>");
+    ItemStructure.Insert("old_price"              , "<old price>");
+    ItemStructure.Insert("vat"                    , "<VAT rate, e.g. 0.2>");
+    ItemStructure.Insert("height"                 , "<height>");
+    ItemStructure.Insert("width"                  , "<width>");
+    ItemStructure.Insert("depth"                  , "<depth>");
+    ItemStructure.Insert("dimension_unit"         , "<unit of measure for sizes, e.g. mm>");
+    ItemStructure.Insert("weight"                 , "<weight>");
+    ItemStructure.Insert("weight_unit"            , "<unit of measurement for weight, e.g. g>");
+    ItemStructure.Insert("images"                 , "<array of product images URLs>");
+    ItemStructure.Insert("images360"              , "<array of 360 images URLs>");
+    ItemStructure.Insert("color_image"            , "<marketing color for pictures>");
+
+    If Clear Then
+        For Each Field In ItemStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ItemStructure;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
