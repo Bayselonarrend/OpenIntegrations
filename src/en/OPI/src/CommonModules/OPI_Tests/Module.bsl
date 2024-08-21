@@ -3216,6 +3216,16 @@ Procedure OzonAPI_AttributesAndFeatures() Export
 
 EndProcedure
 
+Procedure OzonAPI_UploadingAndUpdatingProducts() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+
+    Ozon_GetProductStructure(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -11313,6 +11323,18 @@ Procedure Ozon_SearchAttributeValue(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "SearchAttributeValue", "Ozon");
 
     Check_OzonListOfAttributesValues(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductStructure(FunctionParameters)
+
+    Result = OPI_Ozon.GetProductStructure();
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductStructure", "Ozon");
+
+    Check_Structure(Result);
 
 EndProcedure
 

@@ -243,7 +243,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "VKT_CommonMethods"   , "Common methods"   , VKT);
     NewTest(TestTable, "VKT_ChatManagment"   , "Chat managment"   , VKT);
 
-    NewTest(TestTable, "OzonAPI_AttributesAndFeatures" , "Attributes and features" , Ozon);
+    NewTest(TestTable, "OzonAPI_AttributesAndFeatures"        , "Attributes and features"         , Ozon);
+    NewTest(TestTable, "OzonAPI_UploadingAndUpdatingProducts" , "Uploading and updating products" , Ozon);
 
     Return TestTable;
 
