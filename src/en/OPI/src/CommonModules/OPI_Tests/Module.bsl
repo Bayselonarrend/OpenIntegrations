@@ -3221,8 +3221,15 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"      , TestParameters);
 
     Ozon_GetProductStructure(TestParameters);
+    Ozon_CreateUpdateProducts(TestParameters);
+    Ozon_GetProductCreationStatus(TestParameters);
+    Ozon_AddProductVideo(TestParameters);
+    Ozon_AddProductVideoCover(TestParameters);
+    Ozon_CompleteComplexAttribute(TestParameters);
 
 EndProcedure
 
@@ -4041,6 +4048,18 @@ Procedure Check_OzonListOfAttributesValues(Val Result)
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["value"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonUploadTask(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["task_id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonNewProducts(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
 
 EndProcedure
 
@@ -11335,6 +11354,182 @@ Procedure Ozon_GetProductStructure(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductStructure", "Ozon");
 
     Check_Structure(Result);
+
+EndProcedure
+
+Procedure Ozon_CreateUpdateProducts(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Image1   = FunctionParameters["Picture"];
+    Image2   = FunctionParameters["Picture2"];
+    Video    = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
+
+    ImageArray = New Array;
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    // Common fields
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1000");
+    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+    ItemStructure.Insert("images"                 , ImageArray);
+
+    // Video
+
+    OPI_Ozon.AddProductVideo(ItemStructure, Video, "viedo1");
+
+    // Attributes individualized for different categories
+
+    CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
+    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
+    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576 , "gray");
+    CategoryAttribute4 = New Structure("dictionary_value_id,value", 95911 , "Protective film set for X3 NFC. Dark cotton");
+
+    CategoryAttribute5 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
+
+
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076 , 0, CategoryAttribute1);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 85   , 0, CategoryAttribute2);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 10096, 0, CategoryAttribute3);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 8229 , 0, CategoryAttribute4);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048 , 0, CategoryAttribute5);
+
+    Result = OPI_Ozon.CreateUpdateProducts(ClientID, APIKey, ItemStructure);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductStructure", "Ozon");
+
+    Check_OzonUploadTask(Result);
+
+    TaskID = Result["result"]["task_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_TaskID", TaskID);
+    FunctionParameters.Insert("Ozon_TaskID", TaskID);
+
+    OPI_Tools.Pause(60);
+
+EndProcedure
+
+Procedure Ozon_AddProductVideo(FunctionParameters)
+
+    Video = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1000");
+    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+
+    // Video
+
+    OPI_Ozon.AddProductVideo(ItemStructure, Video, "viedo1");
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(ItemStructure, "AddProductVideo", "Ozon");
+
+    Check_Structure(ItemStructure);
+
+EndProcedure
+
+Procedure Ozon_AddProductVideoCover(FunctionParameters)
+
+    Video = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1000");
+    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+
+    // Videocover
+
+    OPI_Ozon.AddProductVideoCover(ItemStructure, Video);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(ItemStructure, "AddProductVideoCover", "Ozon");
+
+    Check_Structure(ItemStructure);
+
+EndProcedure
+
+Procedure Ozon_CompleteComplexAttribute(FunctionParameters)
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1000");
+    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+
+    CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
+
+    CategoryAttribute2 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
+
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076 , 0, CategoryAttribute1);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048 , 0, CategoryAttribute2);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(ItemStructure, "CompleteComplexAttribute", "Ozon");
+
+    Check_Structure(ItemStructure);
+
+EndProcedure
+
+Procedure Ozon_GetProductCreationStatus(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    TaskID   = FunctionParameters["Ozon_TaskID"];
+
+    Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus", "Ozon");
+
+    Check_OzonNewProducts(Result);
 
 EndProcedure
 
