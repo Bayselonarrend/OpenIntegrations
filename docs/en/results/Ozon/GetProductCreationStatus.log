@@ -1,0 +1,13 @@
+﻿ {
+ "result": {
+  "items": [
+   {
+    "offer_id": "143210608",
+    "product_id": 0,
+    "status": "pending",
+    "errors": []
+   }
+  ],
+  "total": 1
+ }
+}
