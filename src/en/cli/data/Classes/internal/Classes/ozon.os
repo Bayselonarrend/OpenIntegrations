@@ -223,6 +223,17 @@
     NewLine.Описание    = "Search value";
     NewLine.Область     = "Attributes and features";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductStructure";
+    NewLine.МетодПоиска = "GETPRODUCTSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Gets the structure of product standard fields";
+
     Return CompositionTable;
 EndFunction
 
