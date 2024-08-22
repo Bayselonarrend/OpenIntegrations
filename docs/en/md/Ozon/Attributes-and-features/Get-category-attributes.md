@@ -2,52 +2,52 @@
 sidebar_position: 2
 ---
 
-# Получить характеристики категории
- Получает характеристики для указанной категории и типа товара
+# Get category attributes
+ Gets the characteristics for the specified category and product type
 
 
 
-`Функция ПолучитьХарактеристикиКатегории(Знач IDКлиента, Знач КлючAPI, Знач IDКатегории, Знач IDТипа, Знач Язык = "DEFAULT") Экспорт`
+`Function GetCategoryAttributes(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val Lang = "DEFAULT") Export`
 
-  | Параметр | CLI опция | Тип | Назначение |
+  | Parameter | CLI option | Type | Description |
   |-|-|-|-|
-  | IDКлиента | --clientid | Строка | Идентификатор клиента |
-  | КлючAPI | --apikey | Строка | API ключ |
-  | IDКатегории | --categoryid | Строка, Число | Идентификатор категории |
-  | IDТипа | --typeid | Строка, Число | Идентификатор типа товара |
-  | Язык | --lang | Строка | Язык ответа: DEFAULT (русский), RU, EN, TR (турецкий), ZH_HANS (китайский) |
+  | ClientID | --clientid | String | Client identifier |
+  | APIKey | --apikey | String | API key |
+  | CategoryID | --categoryid | String, Number | Category identifier |
+  | TypeID | --typeid | String, Number | Item type identifier |
+  | Lang | --lang | String | Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) |
 
   
-  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
+  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
 
 <br/>
 
 :::tip
-Если у dictionary_id значение 0, у атрибута нет вложенных справочников. Если значение другое, то справочники есть. Получить их можно методом ПолучитьЗначенияХарактеристик()
+If dictionary_id has a value of 0, the attribute has no nested directories. If the value is different, there are directories. You can get them using the GetValuesCharacteristics method()
 
- Метод в документации API: [post /v1/description-category/attribute](https://docs.ozon.ru/api/seller/#operation/DescriptionCategoryAPI_GetAttributes)
+ Method at API documentation: [post /v1/description-category/attribute](https://docs.ozon.ru/api/seller/#operation/DescriptionCategoryAPI_GetAttributes)
 :::
 <br/>
 
 
-```bsl title="Пример кода"
-    IDКлиента      = "2128753";
-    КлючAPI        = "7cc90d26-33e4-499b...";
-    IDКатегории    = 17029016;
-    IDТипа         = 970778135;
+```bsl title="Code example"
+    ClientID   = "2128753";
+    APIKey     = "7cc90d26-33e4-499b...";
+    CategoryID = 17029016;
+    TypeID     = 970778135;
 
-    Результат = OPI_Ozon.ПолучитьХарактеристикиКатегории(IDКлиента, КлючAPI, IDКатегории, IDТипа);
+    Result = OPI_Ozon.GetCategoryAttributes(ClientID, APIKey, CategoryID, TypeID);
 ```
 
 
 
-```sh title="Пример команды CLI"
+```sh title="CLI command example"
     
-  oint ozon ПолучитьХарактеристикиКатегории --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --lang %lang%
+  oint ozon GetCategoryAttributes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --lang %lang%
 
 ```
 
-```json title="Результат"
+```json title="Result"
 {
  "result": [
   {

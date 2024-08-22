@@ -1,0 +1,1 @@
+﻿oint ozon ДобавитьВидеоТовара --item %item% --url %url% --title %title%
