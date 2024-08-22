@@ -45,5 +45,30 @@ sidebar_position: 12
 ```
 
 ```json title="Результат"
-
+[
+ [
+  {
+   "text": "Кнопка1",
+   "callbackData": "НажатиеКнопки1",
+   "style": "attention"
+  },
+  {
+   "text": "Кнопка2",
+   "url": "https://openintegrations.dev",
+   "style": "base"
+  }
+ ],
+ [
+  {
+   "text": "Кнопка1",
+   "callbackData": "НажатиеКнопки1",
+   "style": "attention"
+  },
+  {
+   "text": "Кнопка2",
+   "url": "https://openintegrations.dev",
+   "style": "base"
+  }
+ ]
+]
 ```
