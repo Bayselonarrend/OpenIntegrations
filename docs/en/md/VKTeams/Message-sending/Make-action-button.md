@@ -45,5 +45,30 @@ sidebar_position: 12
 ```
 
 ```json title="Result"
-
+[
+ [
+  {
+   "text": "Button1",
+   "callbackData": "ButtonEvent1",
+   "style": "attention"
+  },
+  {
+   "text": "Button2",
+   "url": "https://openintegrations.dev",
+   "style": "base"
+  }
+ ],
+ [
+  {
+   "text": "Button1",
+   "callbackData": "ButtonEvent1",
+   "style": "attention"
+  },
+  {
+   "text": "Button2",
+   "url": "https://openintegrations.dev",
+   "style": "base"
+  }
+ ]
+]
 ```
