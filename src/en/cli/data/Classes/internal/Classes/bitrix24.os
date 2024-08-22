@@ -5475,6 +5475,213 @@
     NewLine.Область     = "Users managment";
     NewLine.ОписаниеМетода   = "Returns the field structure for filtering users in the FindUsers method";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateLead";
+    NewLine.МетодПоиска = "CREATELEAD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Leads managment";
+    NewLine.ОписаниеМетода   = "Creates a new lead by fields structure (see GetLeadStructure)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateLead";
+    NewLine.МетодПоиска = "CREATELEAD";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Lead fields structure (see GetLeadStructure)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateLead";
+    NewLine.МетодПоиска = "CREATELEAD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteLead";
+    NewLine.МетодПоиска = "DELETELEAD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Leads managment";
+    NewLine.ОписаниеМетода   = "Deletes a lead by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteLead";
+    NewLine.МетодПоиска = "DELETELEAD";
+    NewLine.Параметр    = "--lead";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteLead";
+    NewLine.МетодПоиска = "DELETELEAD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLead";
+    NewLine.МетодПоиска = "GETLEAD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Leads managment";
+    NewLine.ОписаниеМетода   = "Gets a lead by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLead";
+    NewLine.МетодПоиска = "GETLEAD";
+    NewLine.Параметр    = "--lead";
+    NewLine.Описание    = "Lead ID";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLead";
+    NewLine.МетодПоиска = "GETLEAD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLeadsList";
+    NewLine.МетодПоиска = "GETLEADSLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Leads managment";
+    NewLine.ОписаниеМетода   = "Gets a list of leads (50 per request max) with or without filtering (see GetLeadFilterStructure)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLeadsList";
+    NewLine.МетодПоиска = "GETLEADSLIST";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Lead filter structure (see GetLeadFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLeadsList";
+    NewLine.МетодПоиска = "GETLEADSLIST";
+    NewLine.Параметр    = "--offset";
+    NewLine.Описание    = "Offset from the beginning of the list to get leads > 50 recursively (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLeadsList";
+    NewLine.МетодПоиска = "GETLEADSLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateLead";
+    NewLine.МетодПоиска = "UPDATELEAD";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Leads managment";
+    NewLine.ОписаниеМетода   = "Modifies an existing lead";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateLead";
+    NewLine.МетодПоиска = "UPDATELEAD";
+    NewLine.Параметр    = "--lead";
+    NewLine.Описание    = "Task ID";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateLead";
+    NewLine.МетодПоиска = "UPDATELEAD";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Structure of lead fields";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateLead";
+    NewLine.МетодПоиска = "UPDATELEAD";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLeadStructure";
+    NewLine.МетодПоиска = "GETLEADSTRUCTURE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Leads managment";
+    NewLine.ОписаниеМетода   = "Gets a structure with field descriptions for creating a lead";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLeadStructure";
+    NewLine.МетодПоиска = "GETLEADSTRUCTURE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Leads managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetLeadFilterStructure";
+    NewLine.МетодПоиска = "GETLEADFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Leads managment";
+    NewLine.ОписаниеМетода   = "Returns the field structure for filtering leads in the GetLeadsList method";
+
     Return CompositionTable;
 EndFunction
 

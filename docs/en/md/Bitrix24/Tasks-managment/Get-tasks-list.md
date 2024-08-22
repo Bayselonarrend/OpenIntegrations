@@ -28,7 +28,7 @@ Method at API documentation: [tasks.task.list](https://dev.1c-bitrix.ru/rest_hel
 
 
 ```bsl title="Code example"
-    // Full filter structer you can find at GetTasksFilterStructure method
+    // Full filter structure you can find at GetTasksFilterStructure method
     Filter = New Structure;
     Filter.Insert("CREATED_BY" , 1);
     Filter.Insert("RESPONSIBLE_ID", 10);

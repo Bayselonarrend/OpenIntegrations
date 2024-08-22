@@ -4073,6 +4073,199 @@ EndFunction
 
 #EndRegion
 
+#Region LeadsManagment
+
+// Create lead
+// Creates a new lead by fields structure (see GetLeadStructure)
+//
+// Note
+// Method at API documentation: [crm.lead.add](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_add.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure of KeyAndValue - Lead fields structure (see GetLeadStructure) - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateLead(Val URL, Val FieldsStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.lead.add");
+
+    OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete lead
+// Deletes a lead by ID
+//
+// Note
+// Method at API documentation: [crm.lead.delete](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_delete.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// LeadID - Number, String - Task ID - lead
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteLead(Val URL, Val LeadID, Val Token = "") Export
+
+    Response = ManageLead(URL, LeadID, "crm.lead.delete", Token);
+    Return Response;
+
+EndFunction
+
+// Get lead
+// Gets a lead by ID
+//
+// Note
+// Method at API documentation: [crm.lead.get](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_get.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// LeadID - Number, String - Lead ID - lead
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetLead(Val URL, Val LeadID, Val Token = "") Export
+
+    Response = ManageLead(URL, LeadID, "crm.lead.get", Token);
+    Return Response;
+
+EndFunction
+
+// Get leads list
+// Gets a list of leads (50 per request max) with or without filtering (see GetLeadFilterStructure)
+//
+// Note
+// Method at API documentation: [crm.lead.list](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_list.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Filter - Structure of KeyAndValue - Lead filter structure (see GetLeadFilterStructure) - filter
+// Indent - Number, String - Offset from the beginning of the list to get leads > 50 recursively - offset
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetLeadsList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.lead.list");
+
+    OPI_Tools.AddField("filter", Filter, "Collection", Parameters);
+    OPI_Tools.AddField("start" , Indent, "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Update lead
+// Modifies an existing lead
+//
+// Note
+// Method at API documentation: [crm.lead.update](dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// LeadID - Number, String - Task ID - lead
+// FieldsStructure - Structure of KeyAndValue - Structure of lead fields - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateLead(Val URL, Val LeadID, Val FieldsStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.lead.update");
+
+    OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
+    OPI_Tools.AddField("id"    , LeadID         , "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get lead structure
+// Gets a structure with field descriptions for creating a lead
+//
+// Note
+// Method at API documentation: [crm.lead.fields](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_fields.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetLeadStructure(Val URL, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.lead.fields");
+    Response   = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get lead filter structure
+// Returns the field structure for filtering leads in the GetLeadsList method
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetLeadFilterStructure(Val Clear = False) Export
+
+    // More
+    // https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_list.php
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("ID"                 , "<lead identifier>");
+    FilterStructure.Insert("ASSIGNED_BY_ID"     , "<responsible person identifier");
+    FilterStructure.Insert("COMPANY_ID"         , "<company identifier>");
+    FilterStructure.Insert("COMPANY_TITLE"      , "<company name>");
+    FilterStructure.Insert("CONTACT_ID"         , "<contact identifier>");
+    FilterStructure.Insert("CREATED_BY_ID"      , "<author identifier>");
+    FilterStructure.Insert("CURRENCY_ID"        , "<currency identifier>");
+    FilterStructure.Insert("DATE_CLOSED"        , "<closing date>");
+    FilterStructure.Insert("DATE_CREATE"        , "<date of creation>");
+    FilterStructure.Insert("DATE_MODIFY"        , "<date of change>");
+    FilterStructure.Insert("EMAIL"              , "<email address>");
+    FilterStructure.Insert("HAS_EMAIL"          , "<email address is filled in (Y|N)>");
+    FilterStructure.Insert("HAS_PHONE"          , "<phone number is filled in (Y|N)>");
+    FilterStructure.Insert("IS_RETURN_CUSTOMER" , "<repeat lead (Y|N)>");
+    FilterStructure.Insert("MODIFY_BY_ID"       , "<author ID of the last change>");
+    FilterStructure.Insert("MOVED_BY_ID"        , "<identifier of the author of moving the lead to the current stage>");
+    FilterStructure.Insert("MOVED_TIME"         , "<date of moving the lead to the current stage>");
+    FilterStructure.Insert("OPENED"             , "<feature is available for all (Y|N)>");
+    FilterStructure.Insert("OPPORTUNITY"        , "<expected amount>");
+    FilterStructure.Insert("STATUS_ID"          , "<status identifier>");
+    FilterStructure.Insert("TITLE"              , "<lead name (can be searched by template [%_])>");
+
+    If Clear Then
+        For Each Filter In FilterStructure Do
+            Filter.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -4207,6 +4400,17 @@ Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
 
     OPI_Tools.AddField("CHAT_ID", ChatID , "String", Parameters);
     OPI_Tools.AddField("MUTE"   , Off    , "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+Function ManageLead(Val URL, Val LeadID, Val Method, Val Token = "")
+
+    Parameters = NormalizeAuth(URL, Token, Method);
+    OPI_Tools.AddField("id", LeadID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
