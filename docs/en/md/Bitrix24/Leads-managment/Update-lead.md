@@ -22,7 +22,7 @@ sidebar_position: 5
 <br/>
 
 :::tip
-Method at API documentation: [crm.lead.update](dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
+Method at API documentation: [crm.lead.update](https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
 :::
 <br/>
 
@@ -34,7 +34,7 @@ Method at API documentation: [crm.lead.update](dev.1c-bitrix.ru/rest_help/crm/le
     FieldsStructure.Insert("TITLE"          , "SuperClient");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    LeadID = "";
+    LeadID = "24";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure);
 
@@ -42,8 +42,8 @@ Method at API documentation: [crm.lead.update](dev.1c-bitrix.ru/rest_help/crm/le
     FieldsStructure.Insert("LAST_NAME" , "Evgeniev");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
-    LeadID = "";
+    Token  = "6476c766006e9f06006b12e400000001000...";
+    LeadID = "26";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure, Token);
 ```
