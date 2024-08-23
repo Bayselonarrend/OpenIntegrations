@@ -4171,7 +4171,7 @@
 // Изменяет существующий лид
 //
 // Примечание:
-// Метод в документации API: [crm.lead.update](dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
+// Метод в документации API: [crm.lead.update](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
 //
 // Параметры:
 //  URL            - Строка                     - URL внешнего вебхука или адрес Bitrix24 при использовании токена - url
