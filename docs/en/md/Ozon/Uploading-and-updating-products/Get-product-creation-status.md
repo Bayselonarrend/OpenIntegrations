@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Get product creation status
@@ -29,7 +29,7 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
 ```bsl title="Code example"
     ClientID = "2128753";
     APIKey   = "7cc90d26-33e4-499b...";
-    TaskID   = "1282012944";
+    TaskID   = "1284925477";
 
     Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
 ```
