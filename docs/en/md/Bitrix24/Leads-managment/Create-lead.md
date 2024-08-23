@@ -60,7 +60,7 @@ Method at API documentation: [crm.lead.add](https://dev.1c-bitrix.ru/rest_help/c
 
 ```sh title="CLI command example"
     
-oint bitrix24 CreateLead --url "b24-ar17wx.bitrix24.by" --fields %fields% --token "ec4dc366006e9f06006b12e400000001000..."
+  oint bitrix24 CreateLead --url "b24-ar17wx.bitrix24.by" --fields %fields% --token "ec4dc366006e9f06006b12e400000001000..."
 
 ```
 
