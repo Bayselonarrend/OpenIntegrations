@@ -4171,7 +4171,7 @@ EndFunction
 // Modifies an existing lead
 //
 // Note
-// Method at API documentation: [crm.lead.update](dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
+// Method at API documentation: [crm.lead.update](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
