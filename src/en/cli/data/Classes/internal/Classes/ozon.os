@@ -258,6 +258,68 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateProductByOzonID";
+    NewLine.МетодПоиска = "CREATEPRODUCTBYOZONID";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Creates a product by specified Ozon ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateProductByOzonID";
+    NewLine.МетодПоиска = "CREATEPRODUCTBYOZONID";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateProductByOzonID";
+    NewLine.МетодПоиска = "CREATEPRODUCTBYOZONID";
+    NewLine.Параметр    = "--items";
+    NewLine.Описание    = "Array or one simplified structure of product fields";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsAttributes";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSATTRIBUTES";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Updates the attributes of the selected items";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsAttributes";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSATTRIBUTES";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsAttributes";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSATTRIBUTES";
+    NewLine.Параметр    = "--items";
+    NewLine.Описание    = "Array or one structure of product attribute fields";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetProductCreationStatus";
     NewLine.МетодПоиска = "GETPRODUCTCREATIONSTATUS";
     NewLine.Параметр    = "--clientid";
@@ -295,6 +357,28 @@
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Uploading and updating products";
     NewLine.ОписаниеМетода   = "Gets the structure of product standard fields";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetSimplifiedProductStructure";
+    NewLine.МетодПоиска = "GETSIMPLIFIEDPRODUCTSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Gets the structure for creating a product based on Ozon ID in the CreateProductByOzonID function()";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetAttributesUpdateStructure";
+    NewLine.МетодПоиска = "GETATTRIBUTESUPDATESTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Gets the structure for updating product characteristics in the UpdateProductsAttributes function()";
 
 
     NewLine = CompositionTable.Add();
