@@ -38,7 +38,7 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
     FolderID = "6882";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ec4dc366006e9f06006b12e400000001000...";
+    Token = "6476c766006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID, Token);
 

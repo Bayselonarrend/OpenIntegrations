@@ -35,7 +35,7 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
     Result = OPI_Bitrix24.GetChatMessagesList(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    Token  = "6476c766006e9f06006b12e400000001000...";
     UserID = 10;
 
     Result = OPI_Bitrix24.GetChatMessagesList(URL, UserID, , 0, Token);
