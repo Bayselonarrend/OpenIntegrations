@@ -34,7 +34,7 @@ Method at API documentation: [timeman.status](https://dev.1c-bitrix.ru/rest_help
     Hour = 3600;
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    Token  = "6476c766006e9f06006b12e400000001000...";
     UserID = 1;
 
     Result = OPI_Bitrix24.GetTimekeepingStatus(URL, UserID);

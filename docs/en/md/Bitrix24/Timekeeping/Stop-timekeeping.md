@@ -34,7 +34,7 @@ Method at API documentation: [timeman.close](https://dev.1c-bitrix.ru/rest_help/
     Result = OPI_Bitrix24.StopTimekeeping(URL);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    Token  = "6476c766006e9f06006b12e400000001000...";
     UserID = 1;
     Time   = OPI_Tools.GetCurrentDate();
     Report = "Time off";

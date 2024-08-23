@@ -44,7 +44,7 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, ,Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    Token  = "6476c766006e9f06006b12e400000001000...";
     Tag    = "New";
     UserID = 10;
 

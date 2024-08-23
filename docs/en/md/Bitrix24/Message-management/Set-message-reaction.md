@@ -33,7 +33,7 @@ Method at API documentation: [im.message.like](https://dev.1c-bitrix.ru/learning
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "ec4dc366006e9f06006b12e400000001000...";
+    Token     = "6476c766006e9f06006b12e400000001000...";
     MessageID = "10604";
 
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID, Token);

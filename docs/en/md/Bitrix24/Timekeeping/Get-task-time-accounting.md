@@ -35,7 +35,7 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
     Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "ec4dc366006e9f06006b12e400000001000...";
+    Token    = "6476c766006e9f06006b12e400000001000...";
     RecordID = "436";
 
     Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID, Token);

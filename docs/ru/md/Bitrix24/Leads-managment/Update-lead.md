@@ -22,7 +22,7 @@ sidebar_position: 5
 <br/>
 
 :::tip
-Метод в документации API: [crm.lead.update](dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
+Метод в документации API: [crm.lead.update](https://dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
 :::
 <br/>
 
@@ -34,7 +34,7 @@ sidebar_position: 5
     СтруктураПолей.Вставить("TITLE"          , "Суперклиент");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЛида = "";
+    IDЛида = "24";
 
     Результат = OPI_Bitrix24.ИзменитьЛид(URL, IDЛида, СтруктураПолей);
 
@@ -42,8 +42,8 @@ sidebar_position: 5
     СтруктураПолей.Вставить("LAST_NAME"      , "Евгеньев");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "ec4dc366006e9f06006b12e400000001000...";
-    IDЛида = "";
+    Токен  = "6476c766006e9f06006b12e400000001000...";
+    IDЛида = "26";
 
     Результат = OPI_Bitrix24.ИзменитьЛид(URL, IDЛида, СтруктураПолей, Токен);
 ```
