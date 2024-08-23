@@ -33,7 +33,7 @@ Method at API documentation: [tasks.task.disapprove](https://dev.1c-bitrix.ru/re
     Result = OPI_Bitrix24.DisapproveTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    Token  = "6476c766006e9f06006b12e400000001000...";
     TaskID = "1396";
 
     Result = OPI_Bitrix24.DisapproveTask(URL, TaskID, Token);

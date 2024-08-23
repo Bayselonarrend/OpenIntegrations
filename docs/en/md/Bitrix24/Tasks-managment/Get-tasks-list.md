@@ -28,7 +28,7 @@ Method at API documentation: [tasks.task.list](https://dev.1c-bitrix.ru/rest_hel
 
 
 ```bsl title="Code example"
-    // Full filter structer you can find at GetTasksFilterStructure method
+    // Full filter structure you can find at GetTasksFilterStructure method
     Filter = New Structure;
     Filter.Insert("CREATED_BY" , 1);
     Filter.Insert("RESPONSIBLE_ID", 10);
@@ -39,7 +39,7 @@ Method at API documentation: [tasks.task.list](https://dev.1c-bitrix.ru/rest_hel
     Result = OPI_Bitrix24.GetTasksList(URL, Filter);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ec4dc366006e9f06006b12e400000001000...";
+    Token = "6476c766006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetTasksList(URL, , Indent, Token);
 ```
