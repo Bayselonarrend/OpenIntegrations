@@ -52,10 +52,22 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ИзменитьЛид --url "b24-ar17wx.bitrix24.by" --lead %lead% --fields %fields% --token "ec4dc366006e9f06006b12e400000001000..."
+  oint bitrix24 ИзменитьЛид --url "b24-ar17wx.bitrix24.by" --lead %lead% --fields %fields% --token "ec4dc366006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Результат"
-
+{
+ "result": true,
+ "time": {
+  "start": 1724348726.37858,
+  "finish": 1724348726.5149,
+  "duration": 0.136314153671265,
+  "processing": 0.11129903793335,
+  "date_start": "2024-08-22T17:45:26+00:00",
+  "date_finish": "2024-08-22T17:45:26+00:00",
+  "operating_reset_at": 1724349326,
+  "operating": 0.111276865005493
+ }
+}
 ```
