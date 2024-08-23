@@ -44,7 +44,7 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
     Result = OPI_Bitrix24.CreatePersonalNotification(URL, UserID, Text, ,Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    Token  = "6476c766006e9f06006b12e400000001000...";
     Tag    = "New";
     UserID = 10;
 

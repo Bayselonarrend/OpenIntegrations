@@ -3131,6 +3131,23 @@ Procedure B2_UsersManagment() Export
 
 EndProcedure
 
+Procedure B24_LeadsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    Bitrix24_GetLeadsList(TestParameters);
+    Bitrix24_GetLeadFilterStructure(TestParameters);
+    Bitrix24_GetLeadStructure(TestParameters);
+    Bitrix24_CreateLead(TestParameters);
+    Bitrix24_GetLead(TestParameters);
+    Bitrix24_UpdateLead(TestParameters);
+    Bitrix24_DeleteLead(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region VkTeams
@@ -3877,8 +3894,17 @@ Procedure Check_BitrixStorage(Val Result)
 EndProcedure
 
 Procedure Check_BitrixObject(Val Result)
+
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Map");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixLead(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["PHONE"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["NAME"]).Заполнено();
+
 EndProcedure
 
 Procedure Check_BitrixAttachment(Val Result)
@@ -7262,7 +7288,7 @@ EndProcedure
 
 Procedure Bitrix24_GetTasksList(FunctionParameters)
 
-    // Full filter structer you can find at GetTasksFilterStructure method
+    // Full filter structure you can find at GetTasksFilterStructure method
     Filter = New Structure;
     Filter.Insert("CREATED_BY" , 1);
     Filter.Insert("RESPONSIBLE_ID", 10);
@@ -10287,6 +10313,201 @@ Procedure Bitrix24_GetTimekeepingSettings(FunctionParameters)
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL, UserID);
 
     // END
+
+EndProcedure
+
+Procedure Bitrix24_GetLeadFilterStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetLeadFilterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadFilterStructure", "Bitrix24");
+
+    Check_Structure(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetLeadStructure(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetLeadStructure(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadStructure (wh)", "Bitrix24");
+
+    Check_BitrixLead(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetLeadStructure(URL, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadStructure", "Bitrix24");
+
+    Check_BitrixLead(Result);
+
+EndProcedure
+
+Procedure Bitrix24_CreateLead(FunctionParameters)
+
+    EmailsArray = New Array;
+    EmailsArray.Add(New Structure("VALUE,VALUE_TYPE", "yo@example.com", "HOME"));
+    EmailsArray.Add(New Structure("VALUE,VALUE_TYPE", "hi@example.com", "WORK"));
+
+    PhonesArray = New Array;
+    PhonesArray.Add(New Structure("VALUE,VALUE_TYPE", "88005553535", "WORK"));
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("ADDRESS"        , "Pushkin st., b. 10");
+    FieldsStructure.Insert("ADDRESS_COUNTRY", "Russia");
+    FieldsStructure.Insert("EMAIL"          , EmailsArray);
+    FieldsStructure.Insert("NAME"           , "John");
+    FieldsStructure.Insert("LAST_NAME"      , "Doe");
+    FieldsStructure.Insert("PHONE"          , PhonesArray);
+    FieldsStructure.Insert("TITLE"          , "MegaClient");
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateLead(URL, FieldsStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateLead (wh)", "Bitrix24");
+
+    Check_BitrixNumber(Result); // SKIP
+
+    LeadID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookLeadID", LeadID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookLeadID", LeadID); // SKIP
+
+    FieldsStructure.Insert("NAME"      , "Ivan");
+    FieldsStructure.Insert("LAST_NAME" , "Ivanov");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.CreateLead(URL, FieldsStructure, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateLead", "Bitrix24");
+
+    Check_BitrixNumber(Result);
+
+    LeadID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_LeadID", LeadID);
+    FunctionParameters.Insert("Bitrix24_LeadID", LeadID);
+
+EndProcedure
+
+Procedure Bitrix24_UpdateLead(FunctionParameters)
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("ADDRESS"        , "Lermontov st., b. 20");
+    FieldsStructure.Insert("ADDRESS_COUNTRY", "Belarus");
+    FieldsStructure.Insert("TITLE"          , "SuperClient");
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
+
+    Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateLead (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    FieldsStructure.Insert("NAME"      , "Evgeniy");
+    FieldsStructure.Insert("LAST_NAME" , "Evgeniev");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    LeadID = FunctionParameters["Bitrix24_LeadID"];
+
+    Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateLead", "Bitrix24");
+
+    Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_DeleteLead(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
+
+    Result = OPI_Bitrix24.DeleteLead(URL, LeadID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteLead (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    LeadID = FunctionParameters["Bitrix24_LeadID"];
+
+    Result = OPI_Bitrix24.DeleteLead(URL, LeadID, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteLead", "Bitrix24");
+
+    Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetLead(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
+
+    Result = OPI_Bitrix24.GetLead(URL, LeadID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLead (wh)", "Bitrix24");
+
+    Check_BitrixLead(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    LeadID = FunctionParameters["Bitrix24_LeadID"];
+
+    Result = OPI_Bitrix24.GetLead(URL, LeadID, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLead", "Bitrix24");
+
+    Check_BitrixLead(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetLeadsList(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetLeadsList(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadsList (wh)", "Bitrix24");
+
+    Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Filter = New Structure;
+    Filter.Insert("TITLE"    , "MegaClient");
+    Filter.Insert("HAS_EMAIL", "Y");
+
+    Result = OPI_Bitrix24.GetLeadsList(URL, Filter, ,Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLeadsList", "Bitrix24");
+
+    Check_BitrixArray(Result);
 
 EndProcedure
 

@@ -38,7 +38,7 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
     Result = OPI_Bitrix24.ChangeChatColor(URL, ChatID, Color);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ec4dc366006e9f06006b12e400000001000...";
+    Token  = "6476c766006e9f06006b12e400000001000...";
     ChatID = "580";
 
     Color = "PURPLE";
