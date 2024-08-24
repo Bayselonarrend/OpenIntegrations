@@ -227,6 +227,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductList";
+    NewLine.МетодПоиска = "GETPRODUCTLIST";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Gets a list of products with or without filter";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductList";
+    NewLine.МетодПоиска = "GETPRODUCTLIST";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductList";
+    NewLine.МетодПоиска = "GETPRODUCTLIST";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Product selection filter. See GetProductsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductList";
+    NewLine.МетодПоиска = "GETPRODUCTLIST";
+    NewLine.Параметр    = "--last";
+    NewLine.Описание    = "ID of the last value (last_id) from the previous response (optional, def. val. - Empty value)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "CreateUpdateProducts";
     NewLine.МетодПоиска = "CREATEUPDATEPRODUCTS";
     NewLine.Параметр    = "--clientid";
@@ -379,6 +420,17 @@
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Uploading and updating products";
     NewLine.ОписаниеМетода   = "Gets the structure for updating product characteristics in the UpdateProductsAttributes function()";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsFilterStructure";
+    NewLine.МетодПоиска = "GETPRODUCTSFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Gets the structure for products list selecting in the GetProductList function";
 
 
     NewLine = CompositionTable.Add();
