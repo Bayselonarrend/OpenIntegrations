@@ -1,0 +1,25 @@
+﻿ {
+ "result": {
+  "items": [
+   {
+    "offer_id": "91132",
+    "product_id": 1156646653,
+    "status": "imported",
+    "errors": [
+     {
+      "code": "foreign_seller_card_copy_denied",
+      "field": "sku",
+      "attribute_id": 0,
+      "state": "new",
+      "level": "error",
+      "description": "Невозможно скопировать товар — карточка принадлежит продавцу из другой страны. Убедитесь, что вы копируете карточку продавца из вашей страны.",
+      "optional_description_elements": {},
+      "attribute_name": "",
+      "message": "Невозможно скопировать товар — карточка принадлежит продавцу из другой страны. Убедитесь, что вы копируете карточку продавца из вашей страны."
+     }
+    ]
+   }
+  ],
+  "total": 1
+ }
+}
