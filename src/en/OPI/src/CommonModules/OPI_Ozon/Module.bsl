@@ -202,6 +202,38 @@ EndFunction
 
 #Region UploadingAndUpdatingProducts
 
+// Get product list
+// Gets a list of products with or without filter
+//
+// Note
+// Method at API documentation: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// LastID - String, Number - ID of the last value (last_id) from the previous response - last
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+
+    URL = "https://api-seller.ozon.ru/v2/product/list";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 200;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
+    OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Create update product
 // Creates new products or updates existing products, based on data structures
 //
@@ -220,12 +252,56 @@ Function CreateUpdateProducts(Val ClientID, Val APIKey, Val ProductsArray) Expor
 
     URL = "https://api-seller.ozon.ru/v3/product/import";
 
-    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Response = SendObjectsDescription(ClientID, APIKey, ProductsArray, URL);
 
-    Parameters = New Structure;
-    OPI_Tools.AddField("items", ProductsArray, "Array", Parameters);
+    Return Response;
 
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
+EndFunction
+
+// Create products by Ozon ID
+// Creates a product by specified Ozon ID
+//
+// Note
+// You can get an empty structure using the GetSimplifiedProductStructure method()
+// It is not possible to update a product fields by Ozon ID
+// Method at API documentation: [post /v1/product/import-by-sku](@docs.ozon.ru/api/seller/#operation/ProductAPI_ImportProductsBySKU)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductsArray - Array Of String - Array or one simplified structure of product fields - items
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function CreateProductByOzonID(Val ClientID, Val APIKey, Val ProductsArray) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/import-by-sku";
+
+    Response = SendObjectsDescription(ClientID, APIKey, ProductsArray, URL);
+
+    Return Response;
+
+EndFunction
+
+// Update products attributes
+// Updates the attributes of the selected items
+//
+// Note
+// You can get an empty structure using the GetAttributesUpdateStructure method()
+// Method at API documentation: [post /v1/product/attributes/update](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductUpdateAttributes)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// AttributesArray - Array Of String - Array or one structure of product attribute fields - items
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function UpdateProductsAttributes(Val ClientID, Val APIKey, Val AttributesArray) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/attributes/update";
+
+    Response = SendObjectsDescription(ClientID, APIKey, AttributesArray, URL);
 
     Return Response;
 
@@ -292,6 +368,102 @@ Function GetProductStructure(Val Clear = False) Export
     ItemStructure.Insert("images"                 , "<array of product images URLs>");
     ItemStructure.Insert("images360"              , "<array of 360 images URLs>");
     ItemStructure.Insert("color_image"            , "<marketing color for pictures>");
+
+    If Clear Then
+        For Each Field In ItemStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ItemStructure;
+
+EndFunction
+
+// Get simplified product structure
+// Gets the structure for creating a product based on Ozon ID in the CreateProductByOzonID function()
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Product fields structure
+Function GetSimplifiedProductStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    ItemStructure = New Structure;
+
+    ItemStructure.Insert("name"         , "<name>");
+    ItemStructure.Insert("sku"          , "<product identifier in the Ozon system>");
+    ItemStructure.Insert("offer_id"     , "<offer>");
+    ItemStructure.Insert("price"        , "<price>");
+    ItemStructure.Insert("old_price"    , "<old price>");
+    ItemStructure.Insert("vat"          , "<VAT rate, e.g. 0.2>");
+    ItemStructure.Insert("currency_code", "<currency>");
+
+    If Clear Then
+        For Each Field In ItemStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ItemStructure;
+
+EndFunction
+
+// Get attributes update structure
+// Gets the structure for updating product characteristics in the UpdateProductsAttributes function()
+//
+// Note
+// <Attributes> are structures with complex_id, id and values fields. For their quick creation there is the CompleteComplexAttribute method()
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Product fields structure
+Function GetAttributesUpdateStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    ItemStructure = New Structure;
+
+    ItemStructure.Insert("offer_id"  , "<offer>");
+    ItemStructure.Insert("attributes", "<array of updated of attributes>");
+
+    If Clear Then
+        For Each Field In ItemStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ItemStructure;
+
+EndFunction
+
+// Get products filter structure
+// Gets the structure for products list selecting in the GetProductList function
+//
+// Note
+// The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Filter fields structure
+Function GetProductsFilterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    ItemStructure = New Structure;
+
+    ItemStructure.Insert("offer_id"  , "<array of sku>");
+    ItemStructure.Insert("product_id", "<array ID of products>");
+    ItemStructure.Insert("visibility", "<visibility>");
 
     If Clear Then
         For Each Field In ItemStructure Do
@@ -422,6 +594,17 @@ Function CreateRequestHeaders(Val ClientID, Val APIKey)
 
 EndFunction
 
+Function SendObjectsDescription(Val ClientID, Val APIKey, Val ArrayOfObjects, Val URL)
 
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("items", ArrayOfObjects, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
 
 #EndRegion

@@ -3247,6 +3247,12 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_AddProductVideo(TestParameters);
     Ozon_AddProductVideoCover(TestParameters);
     Ozon_CompleteComplexAttribute(TestParameters);
+    Ozon_CreateProductByOzonID(TestParameters);
+    Ozon_GetSimplifiedProductStructure(TestParameters);
+    Ozon_GetAttributesUpdateStructure(TestParameters);
+    Ozon_UpdateProductsAttributes(TestParameters);
+    Ozon_GetProductsFilterStructure(TestParameters);
+    Ozon_GetProductList(TestParameters);
 
 EndProcedure
 
@@ -4077,13 +4083,27 @@ Procedure Check_OzonListOfAttributesValues(Val Result)
 
 EndProcedure
 
-Procedure Check_OzonUploadTask(Val Result)
+Procedure Check_OzonUploadTask(Val Result, Val Embedded = True)
 
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["task_id"]).Заполнено();
+    If Embedded Then
+        TaskID = Result["result"]["task_id"];
+    Else
+        TaskID = Result["task_id"];
+    EndIf;
+
+    OPI_TestDataRetrieval.ExpectsThat(TaskID).Заполнено();
 
 EndProcedure
 
 Procedure Check_OzonNewProducts(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"][0]["status"]).Равно("imported");
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"][0]["errors"].Count()).Равно(0);
+
+EndProcedure
+
+Procedure Check_OzonObjectsArray(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
 
@@ -11632,7 +11652,7 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductStructure", "Ozon");
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateUpdateProducts", "Ozon");
 
     Check_OzonUploadTask(Result);
 
@@ -11640,7 +11660,7 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
     OPI_TestDataRetrieval.WriteParameter("Ozon_TaskID", TaskID);
     FunctionParameters.Insert("Ozon_TaskID", TaskID);
 
-    OPI_Tools.Pause(60);
+    OPI_Tools.Pause(120);
 
 EndProcedure
 
@@ -11750,7 +11770,155 @@ Procedure Ozon_GetProductCreationStatus(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus", "Ozon");
 
+    WHile Result["result"]["items"][0]["status"] = "pending" Do
+
+        OPI_Tools.Pause(30);
+        Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    EndDo;
+
     Check_OzonNewProducts(Result);
+
+EndProcedure
+
+Procedure Ozon_CreateProductByOzonID(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("name"         , "New imported product");
+    ItemStructure.Insert("sku"          , 1626044001);
+    ItemStructure.Insert("offer_id"     , "91132");
+    ItemStructure.Insert("price"        , "1100");
+    ItemStructure.Insert("old_price"    , "1100");
+    ItemStructure.Insert("vat"          , "0.1");
+    ItemStructure.Insert("currency_code", "RUB");
+
+    Result = OPI_Ozon.CreateProductByOzonID(ClientID, APIKey, ItemStructure);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductByOzonID", "Ozon");
+
+    Check_OzonUploadTask(Result);
+
+    TaskID = Result["result"]["task_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_SkuTaskID", TaskID);
+    FunctionParameters.Insert("Ozon_SkuTaskID", TaskID);
+
+    Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    WHile Result["result"]["items"][0]["status"] = "pending" Do
+
+        OPI_Tools.Pause(30);
+        Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    EndDo;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus (SKU)", "Ozon");
+
+    Check_OzonNewProducts(Result);
+
+EndProcedure
+
+Procedure Ozon_GetSimplifiedProductStructure(FunctionParameters)
+
+    Result = OPI_Ozon.GetSimplifiedProductStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSimplifiedProductStructure", "Ozon");
+
+    Check_Structure(Result);
+
+EndProcedure
+
+Procedure Ozon_GetAttributesUpdateStructure(FunctionParameters)
+
+    Result = OPI_Ozon.GetAttributesUpdateStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAttributesUpdateStructure", "Ozon");
+
+    Check_Structure(Result);
+
+EndProcedure
+
+Procedure Ozon_UpdateProductsAttributes(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    AttributesStructure = New Structure("offer_id", "143210608");
+
+    CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
+    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
+    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576 , "red");
+
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 5076 , 0, CategoryAttribute1);
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 85   , 0, CategoryAttribute2);
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 10096, 0, CategoryAttribute3);
+
+    Result = OPI_Ozon.UpdateProductsAttributes(ClientID, APIKey, AttributesStructure);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsAttributes", "Ozon");
+
+    Check_OzonUploadTask(Result, False);
+
+    TaskID = Result["task_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_AttUpdateTaskID", TaskID);
+    FunctionParameters.Insert("Ozon_AttUpdateTaskID", TaskID);
+
+    Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    WHile Result["result"]["items"][0]["status"] = "pending" Do
+
+        OPI_Tools.Pause(30);
+        Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    EndDo;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus (att.)", "Ozon");
+
+    Check_OzonNewProducts(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductsFilterStructure(FunctionParameters)
+
+    Result = OPI_Ozon.GetProductsFilterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsFilterStructure", "Ozon");
+
+    Check_Structure(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    IDArray = New Array;
+    IDArray.Add("143210608");
+
+    Filter = New Structure;
+    Filter.Insert("visibility" , "ALL");
+    Filter.Insert("offer_id"   , IDArray);
+
+    Result = OPI_Ozon.GetProductList(ClientID, APIKey, Filter);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductList", "Ozon");
+
+    Check_OzonObjectsArray(Result);
 
 EndProcedure
 
