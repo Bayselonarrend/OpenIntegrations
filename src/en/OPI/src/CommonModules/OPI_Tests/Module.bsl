@@ -3253,6 +3253,8 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_UpdateProductsAttributes(TestParameters);
     Ozon_GetProductsFilterStructure(TestParameters);
     Ozon_GetProductList(TestParameters);
+    Ozon_GetProductInformation(TestParameters);
+    Ozon_GetProductsContentRating(TestParameters);
 
 EndProcedure
 
@@ -4106,6 +4108,19 @@ EndProcedure
 Procedure Check_OzonObjectsArray(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OzonRatingArray(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["products"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OzonProduct(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["id"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["name"]).Заполнено();
 
 EndProcedure
 
@@ -11919,6 +11934,38 @@ Procedure Ozon_GetProductList(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductList", "Ozon");
 
     Check_OzonObjectsArray(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductsContentRating(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Result = OPI_Ozon.GetProductsContentRating(ClientID, APIKey, SKU);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductsContentRating", "Ozon");
+
+    Check_OzonRatingArray(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductInformation(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = "143210608";
+
+    Result = OPI_Ozon.GetProductInformation(ClientID, APIKey, , , SKU);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductInformation", "Ozon");
+
+    Check_OzonProduct(Result);
 
 EndProcedure
 
