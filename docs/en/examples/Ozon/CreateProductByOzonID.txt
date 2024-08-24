@@ -3,7 +3,7 @@
 
     ItemStructure = New Structure;
     ItemStructure.Insert("name"         , "New imported product");
-    ItemStructure.Insert("sku"          , 298789742);
+    ItemStructure.Insert("sku"          , 1626044001);
     ItemStructure.Insert("offer_id"     , "91132");
     ItemStructure.Insert("price"        , "1100");
     ItemStructure.Insert("old_price"    , "1100");

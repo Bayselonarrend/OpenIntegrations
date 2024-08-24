@@ -202,6 +202,38 @@ EndFunction
 
 #Region UploadingAndUpdatingProducts
 
+// Get product list
+// Gets a list of products with or without filter
+//
+// Note
+// Method at API documentation: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// LastID - String, Number - ID of the last value (last_id) from the previous response - last
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+
+    URL = "https://api-seller.ozon.ru/v2/product/list";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 200;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
+    OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Create update product
 // Creates new products or updates existing products, based on data structures
 //
@@ -400,6 +432,38 @@ Function GetAttributesUpdateStructure(Val Clear = False) Export
 
     ItemStructure.Insert("offer_id"  , "<offer>");
     ItemStructure.Insert("attributes", "<array of updated of attributes>");
+
+    If Clear Then
+        For Each Field In ItemStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ItemStructure;
+
+EndFunction
+
+// Get products filter structure
+// Gets the structure for products list selecting in the GetProductList function
+//
+// Note
+// The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Filter fields structure
+Function GetProductsFilterStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    ItemStructure = New Structure;
+
+    ItemStructure.Insert("offer_id"  , "<array of sku>");
+    ItemStructure.Insert("product_id", "<array ID of products>");
+    ItemStructure.Insert("visibility", "<visibility>");
 
     If Clear Then
         For Each Field In ItemStructure Do
