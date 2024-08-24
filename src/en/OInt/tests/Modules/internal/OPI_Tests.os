@@ -3230,6 +3230,7 @@ Procedure OzonAPI_AttributesAndFeatures() Export
     Ozon_GetCategoryAttributes(TestParameters);
     Ozon_GetAttributeValues(TestParameters);
     Ozon_SearchAttributeValue(TestParameters);
+    Ozon_GetProductsRequestsLimits(TestParameters);
 
 EndProcedure
 
@@ -3255,6 +3256,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_GetProductList(TestParameters);
     Ozon_GetProductInformation(TestParameters);
     Ozon_GetProductsContentRating(TestParameters);
+    Ozon_GetProductDescription(TestParameters);
 
 EndProcedure
 
@@ -4121,6 +4123,13 @@ Procedure Check_OzonProduct(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["id"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["name"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonLimits(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["daily_create"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["daily_update"]).Заполнено();
 
 EndProcedure
 
@@ -11966,6 +11975,37 @@ Procedure Ozon_GetProductInformation(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetProductInformation", "Ozon");
 
     Check_OzonProduct(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductDescription(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = "143210608";
+
+    Result = OPI_Ozon.GetProductDescription(ClientID, APIKey, , SKU);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductDescription", "Ozon");
+
+    Check_OzonProduct(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductsRequestsLimits(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Result = OPI_Ozon.GetProductsRequestsLimits(ClientID, APIKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsRequestsLimits", "Ozon");
+
+    Check_OzonLimits(Result);
 
 EndProcedure
 

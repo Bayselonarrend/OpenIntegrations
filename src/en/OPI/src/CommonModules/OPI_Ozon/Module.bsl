@@ -198,6 +198,30 @@ Function SearchAttributeValue(Val ClientID
 
 EndFunction
 
+// Get products requests limits
+// Get requests limits for products managment methods
+//
+// Note
+// Method at API documentation: [post /v4/product/info/limit](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetUploadQuota)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductsRequestsLimits(Val ClientID, Val APIKey) Export
+
+    URL = "https://api-seller.ozon.ru/v4/product/info/limit";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Response = OPI_Tools.Post(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
 #EndRegion
 
 #Region UploadingAndUpdatingProducts
@@ -262,6 +286,36 @@ Function GetProductInformation(Val ClientID, Val APIKey, Val ProductID = 0, Val 
     OPI_Tools.AddField("offer_id"  , SKU      , "String" , Parameters);
     OPI_Tools.AddField("product_id", ProductID, "Number" , Parameters);
     OPI_Tools.AddField("sku"       , SKU      , "Number" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get product description
+// Get product description by IDs
+//
+// Note
+// Method at API documentation: [post /v1/product/info/description](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoDescription)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductID - String, Number - Product identifier - productid
+// SKU - String, Number - Item identifier in the vendor's system (Article) - offerid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = "") Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/info/description";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("offer_id"  , SKU      , "String" , Parameters);
+    OPI_Tools.AddField("product_id", ProductID, "Number" , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
