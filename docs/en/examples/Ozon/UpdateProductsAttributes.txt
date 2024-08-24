@@ -1,0 +1,14 @@
+﻿    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
+
+    AttributesStructure = New Structure("offer_id", "143210608");
+
+    CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
+    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
+    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576 , "red");
+
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 5076 , 0, CategoryAttribute1);
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 85   , 0, CategoryAttribute2);
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 10096, 0, CategoryAttribute3);
+
+    Result = OPI_Ozon.UpdateProductsAttributes(ClientID, APIKey, AttributesStructure);

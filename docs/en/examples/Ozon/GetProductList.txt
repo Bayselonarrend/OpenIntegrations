@@ -1,0 +1,11 @@
+﻿    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
+
+    IDArray = New Array;
+    IDArray.Add("143210608");
+
+    Filter = New Structure;
+    Filter.Insert("visibility" , "ALL");
+    Filter.Insert("offer_id"   , IDArray);
+
+    Result = OPI_Ozon.GetProductList(ClientID, APIKey, Filter);
