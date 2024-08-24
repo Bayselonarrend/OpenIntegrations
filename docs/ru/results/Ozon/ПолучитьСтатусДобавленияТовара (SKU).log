@@ -1,0 +1,13 @@
+﻿    {
+ "result": {
+  "items": [
+   {
+    "offer_id": "91132",
+    "product_id": 1156646653,
+    "status": "imported",
+    "errors": []
+   }
+  ],
+  "total": 1
+ }
+}
