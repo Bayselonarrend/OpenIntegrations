@@ -234,6 +234,69 @@ Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 
 
 EndFunction
 
+// Get product information
+// Gets product information by identifiers
+//
+// Note
+// Specify the minimum price of the product after all promotions have been applied in your personal cabinet. The min_price parameter from the method response is being reworked and returns 0
+// The active_product parameter is deprecated, use the values of the visible parameter
+// The fbs_sku and fbo_sku parameters from the method response were disabled on August 15, 2023
+// Method at API documentation: [post /v2/product/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoV2)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductID - String, Number - Product identifier - productid
+// SKU - String, Number - Product identifier in the Ozon system (SKU) - sku
+// SKU - String, Number - Item identifier in the vendor's system (Article) - offerid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductInformation(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = 0, Val SKU = "") Export
+
+    URL = "https://api-seller.ozon.ru/v2/product/info";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("offer_id"  , SKU      , "String" , Parameters);
+    OPI_Tools.AddField("product_id", ProductID, "Number" , Parameters);
+    OPI_Tools.AddField("sku"       , SKU      , "Number" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get products content rating
+// Gets products content rating by SKU
+//
+// Note
+// Method at API documentation: [post /v1/product/rating-by-sku](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductRatingBySku)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// SKU - String, Number, Array of String, Number - One or array of SKUs - sku
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductsContentRating(Val ClientID, Val APIKey, Val SKU) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/rating-by-sku";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("skus", SKU, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Create update product
 // Creates new products or updates existing products, based on data structures
 //
