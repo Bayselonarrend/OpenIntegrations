@@ -1,0 +1,1 @@
+﻿oint ozon GetProductInformation --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%

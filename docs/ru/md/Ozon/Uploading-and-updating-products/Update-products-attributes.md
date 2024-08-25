@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 7
 ---
 
 # Обновить характеристики товаров
@@ -49,10 +49,12 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint ozon ОбновитьХарактеристикиТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
+  oint ozon ОбновитьХарактеристикиТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
 
 ```
 
 ```json title="Результат"
-
+{
+ "task_id": 1285618976
+}
 ```

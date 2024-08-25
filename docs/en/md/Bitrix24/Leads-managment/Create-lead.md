@@ -65,5 +65,17 @@ Method at API documentation: [crm.lead.add](https://dev.1c-bitrix.ru/rest_help/c
 ```
 
 ```json title="Result"
-
+{
+ "result": 34,
+ "time": {
+  "start": 1724490195.28511,
+  "finish": 1724490195.73827,
+  "duration": 0.4531569480896,
+  "processing": 0.428863048553467,
+  "date_start": "2024-08-24T09:03:15+00:00",
+  "date_finish": "2024-08-24T09:03:15+00:00",
+  "operating_reset_at": 1724490795,
+  "operating": 0.428843021392822
+ }
+}
 ```

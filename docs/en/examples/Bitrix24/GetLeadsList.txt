@@ -9,4 +9,4 @@
     Filter.Insert("TITLE"    , "MegaClient");
     Filter.Insert("HAS_EMAIL", "Y");
 
-    Result = OPI_Bitrix24.GetLeadsList(URL, Filter, ,Token);
+    Result = OPI_Bitrix24.GetLeadsList(URL, Filter, , Token);

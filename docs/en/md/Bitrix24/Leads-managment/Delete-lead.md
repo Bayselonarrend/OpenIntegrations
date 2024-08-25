@@ -12,7 +12,7 @@ sidebar_position: 2
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
   | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
-  | LeadID | --lead | Number, String | Task ID |
+  | LeadID | --lead | Number, String | Lead ID |
   | Token | --token | String | Access token, when app auth method used |
 
   
@@ -48,5 +48,17 @@ Method at API documentation: [crm.lead.delete](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-
+{
+ "result": true,
+ "time": {
+  "start": 1724490199.49719,
+  "finish": 1724490199.64436,
+  "duration": 0.147169828414917,
+  "processing": 0.123839855194092,
+  "date_start": "2024-08-24T09:03:19+00:00",
+  "date_finish": "2024-08-24T09:03:19+00:00",
+  "operating_reset_at": 1724490799,
+  "operating": 0.123820066452026
+ }
+}
 ```

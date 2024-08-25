@@ -1599,11 +1599,11 @@ Function GetCommentStructure(Val Clear = False) Export
 
     FieldsStructure = New Structure;
     FieldsStructure.Insert("AUTHOR_ID"            , "<comment author identifier>");
-    FieldsStructure.Insert("AUTHOR_NAME"          , "<Name of user (optional)>");
-    FieldsStructure.Insert("AUTHOR_EMAIL"         , "<E-mail of user (optional)>");
+    FieldsStructure.Insert("AUTHOR_NAME"          , "<Users name (optional)>");
+    FieldsStructure.Insert("AUTHOR_EMAIL"         , "<Users email (optional)>");
     FieldsStructure.Insert("USE_SMILES"           , "<(Y|N) - parse comments for emoticons or not>");
     FieldsStructure.Insert("POST_MESSAGE"         , "<Message text>");
-    FieldsStructure.Insert("UF_FORUM_MESSAGE_DOC" , "<Files array with of drive for of attachments>");
+    FieldsStructure.Insert("UF_FORUM_MESSAGE_DOC" , "<Array of files from disk to attach>");
 
     If Clear Then
         For Each Field In FieldsStructure Do
@@ -4057,8 +4057,8 @@ Function GetUserFilterStructure(Val Clear = False) Export
     FilterStructure.Insert("NAME"              , "<name>");
     FilterStructure.Insert("LAST_NAME"         , "<surname>");
     FilterStructure.Insert("WORK_POSITION"     , "<position>");
-    FilterStructure.Insert("UF_DEPARTMENT_NAME", "<name department>");
-    FilterStructure.Insert("USER_TYPE"         , "<type employee, extranet, email>");
+    FilterStructure.Insert("UF_DEPARTMENT_NAME", "<department name>");
+    FilterStructure.Insert("USER_TYPE"         , "<type: employee, extranet, email>");
 
     If Clear Then
         For Each Filter In FilterStructure Do
@@ -4108,7 +4108,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// LeadID - Number, String - Task ID - lead
+// LeadID - Number, String - Lead ID - lead
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4175,7 +4175,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// LeadID - Number, String - Task ID - lead
+// LeadID - Number, String - Lead ID - lead
 // FieldsStructure - Structure of KeyAndValue - Structure of lead fields - fields
 // Token - String - Access token, when app auth method used - token
 //
@@ -4232,7 +4232,7 @@ Function GetLeadFilterStructure(Val Clear = False) Export
 
     FilterStructure = New Structure;
     FilterStructure.Insert("ID"                 , "<lead identifier>");
-    FilterStructure.Insert("ASSIGNED_BY_ID"     , "<responsible person identifier");
+    FilterStructure.Insert("ASSIGNED_BY_ID"     , "<responsible person identifier>");
     FilterStructure.Insert("COMPANY_ID"         , "<company identifier>");
     FilterStructure.Insert("COMPANY_TITLE"      , "<company name>");
     FilterStructure.Insert("CONTACT_ID"         , "<contact identifier>");
@@ -4242,16 +4242,213 @@ Function GetLeadFilterStructure(Val Clear = False) Export
     FilterStructure.Insert("DATE_CREATE"        , "<date of creation>");
     FilterStructure.Insert("DATE_MODIFY"        , "<date of change>");
     FilterStructure.Insert("EMAIL"              , "<email address>");
-    FilterStructure.Insert("HAS_EMAIL"          , "<email address is filled in (Y|N)>");
-    FilterStructure.Insert("HAS_PHONE"          , "<phone number is filled in (Y|N)>");
-    FilterStructure.Insert("IS_RETURN_CUSTOMER" , "<repeat lead (Y|N)>");
+    FilterStructure.Insert("HAS_EMAIL"          , "<Email is filled (Y|N)>");
+    FilterStructure.Insert("HAS_PHONE"          , "<phone field is filled (Y|N)>");
+    FilterStructure.Insert("IS_RETURN_CUSTOMER" , "<reused lead flag (Y|N)>");
     FilterStructure.Insert("MODIFY_BY_ID"       , "<author ID of the last change>");
     FilterStructure.Insert("MOVED_BY_ID"        , "<identifier of the author of moving the lead to the current stage>");
     FilterStructure.Insert("MOVED_TIME"         , "<date of moving the lead to the current stage>");
     FilterStructure.Insert("OPENED"             , "<feature is available for all (Y|N)>");
     FilterStructure.Insert("OPPORTUNITY"        , "<expected amount>");
     FilterStructure.Insert("STATUS_ID"          , "<status identifier>");
-    FilterStructure.Insert("TITLE"              , "<lead name (can be searched by template [%_])>");
+    FilterStructure.Insert("TITLE"              , "<lead name (can be searched using the template [%_])>");
+
+    If Clear Then
+        For Each Filter In FilterStructure Do
+            Filter.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return FilterStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region DealsManagment
+
+// Create deal
+// Creates a new deal by field structure (see. GetDealStructure)
+//
+// Note
+// Method at API documentation: [crm.deal.add](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_add.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// FieldsStructure - Structure of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function CreateDeal(Val URL, Val FieldsStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.deal.add");
+
+    OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Delete deal
+// Deletes deal by ID
+//
+// Note
+// Method at API documentation: [crm.deal.delete](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_delete.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// DealID - Number, String - Deal ID - deal
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function DeleteDeal(Val URL, Val DealID, Val Token = "") Export
+
+    Response = ManageDeal(URL, DealID, "crm.deal.delete", Token);
+    Return Response;
+
+EndFunction
+
+// Get deal
+// Gets deal by ID
+//
+// Note
+// Method at API documentation: [crm.deal.get](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_get.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// DealID - Number, String - Deal ID - deal
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetDeal(Val URL, Val DealID, Val Token = "") Export
+
+    Response = ManageDeal(URL, DealID, "crm.deal.get", Token);
+    Return Response;
+
+EndFunction
+
+// Get deals list
+// Gets the list of deals (50 pcs per query max) with or without filtering (see. GetDealsFilterStructure)
+//
+// Note
+// Method at API documentation: [crm.deal.list](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_list.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Filter - Structure of KeyAndValue - Deals filter structure (see. GetDealsFilterStructure) - filter
+// Indent - Number, String - Offset from the beginning of the list to retrieve deals > 50 pcs recursively - offset
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetDealsList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.deal.list");
+
+    OPI_Tools.AddField("filter", Filter, "Collection", Parameters);
+    OPI_Tools.AddField("start" , Indent, "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Update deal
+// Modifies an existing deal
+//
+// Note
+// Method at API documentation: [crm.deal.update](@https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// DealID - Number, String - Deal ID - deal
+// FieldsStructure - Structure of KeyAndValue - Deal fields structure - fields
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function UpdateDeal(Val URL, Val DealID, Val FieldsStructure, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.deal.update");
+
+    OPI_Tools.AddField("fields", FieldsStructure, "Collection", Parameters);
+    OPI_Tools.AddField("id"    , DealID         , "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get deal structure
+// Gets a structure with field descriptions for creating a deal
+//
+// Note
+// Method at API documentation: [crm.deal.fields](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_fields.php)
+//
+// Parameters:
+// URL - String - URL of webhook or a Bitrix24 domain, when token used - url
+// Token - String - Access token, when app auth method used - token
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
+Function GetDealStructure(Val URL, Val Token = "") Export
+
+    Parameters = NormalizeAuth(URL, Token, "crm.deal.fields");
+    Response   = OPI_Tools.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get deals filter structure
+// Returns the field structure for filtering deals in the GetDealsList method
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Fields structure
+Function GetDealsFilterStructure(Val Clear = False) Export
+
+    // More
+    // https://dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_list.php
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    FilterStructure = New Structure;
+    FilterStructure.Insert("ID"                 , "<Deal identifier>");
+    FilterStructure.Insert("ASSIGNED_BY_ID"     , "<responsible person identifier>");
+    FilterStructure.Insert("BEGINDATE"          , "<start date>");
+    FilterStructure.Insert("CATEGORY_ID"        , "<direction identifier>");
+    FilterStructure.Insert("CLOSEDATE"          , "<completion date>");
+    FilterStructure.Insert("COMPANY_ID"         , "<company identifier>");
+    FilterStructure.Insert("CONTACT_ID"         , "<contact identifier>");
+    FilterStructure.Insert("CREATED_BY_ID"      , "<author identifier>");
+    FilterStructure.Insert("CURRENCY_ID"        , "<currency identifier>");
+    FilterStructure.Insert("DATE_CREATE"        , "<date of creation>");
+    FilterStructure.Insert("DATE_MODIFY"        , "<date of change>");
+    FilterStructure.Insert("IS_NEW"             , "<new deal flag (Y|N)>");
+    FilterStructure.Insert("IS_RECURRING"       , "<is pattern (Y|N)>");
+    FilterStructure.Insert("IS_RETURN_CUSTOMER" , "<reused lead flag (Y|N)>");
+    FilterStructure.Insert("LEAD_ID"            , "<linked lead identifier>");
+    FilterStructure.Insert("MODIFY_BY_ID"       , "<author ID of the last change>");
+    FilterStructure.Insert("MOVED_BY_ID"        , "<identifier of the author of moving the deal to the current stage>");
+    FilterStructure.Insert("MOVED_TIME"         , "<date of moving the deal to the current stage>");
+    FilterStructure.Insert("OPENED"             , "<feature is available for all (Y|N)>");
+    FilterStructure.Insert("OPPORTUNITY"        , "<expected amount>");
+    FilterStructure.Insert("PROBABILITY"        , "<probability>");
+    FilterStructure.Insert("REQUISITE_ID"       , "<prop identifier>");
+    FilterStructure.Insert("STAGE_ID"           , "<stage identifier>");
+    FilterStructure.Insert("TITLE"              , "<deal name (can be searched using the template [%_])>");
+    FilterStructure.Insert("TYPE_ID"            , "<deal type>");
 
     If Clear Then
         For Each Filter In FilterStructure Do
@@ -4411,6 +4608,17 @@ Function ManageLead(Val URL, Val LeadID, Val Method, Val Token = "")
 
     Parameters = NormalizeAuth(URL, Token, Method);
     OPI_Tools.AddField("id", LeadID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+Function ManageDeal(Val URL, Val DealID, Val Method, Val Token = "")
+
+    Parameters = NormalizeAuth(URL, Token, Method);
+    OPI_Tools.AddField("id", DealID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters);
 
