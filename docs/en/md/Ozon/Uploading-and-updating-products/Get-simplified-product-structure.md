@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 10
 ---
 
 # Get simplified product structure
@@ -29,7 +29,7 @@ sidebar_position: 6
 
 ```sh title="CLI command example"
     
-oint ozon GetSimplifiedProductStructure --empty %empty%
+  oint ozon GetSimplifiedProductStructure --empty %empty%
 
 ```
 

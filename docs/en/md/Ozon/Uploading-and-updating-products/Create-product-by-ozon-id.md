@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 6
 ---
 
 # Create products by Ozon ID
@@ -36,7 +36,7 @@ You can get an empty structure using the GetSimplifiedProductStructure method()
 
     ItemStructure = New Structure;
     ItemStructure.Insert("name"         , "New imported product");
-    ItemStructure.Insert("sku"          , 298789742);
+    ItemStructure.Insert("sku"          , 1626044001);
     ItemStructure.Insert("offer_id"     , "91132");
     ItemStructure.Insert("price"        , "1100");
     ItemStructure.Insert("old_price"    , "1100");
@@ -50,10 +50,15 @@ You can get an empty structure using the GetSimplifiedProductStructure method()
 
 ```sh title="CLI command example"
     
-oint ozon CreateProductByOzonID --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
+  oint ozon CreateProductByOzonID --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
 
 ```
 
 ```json title="Result"
-
+{
+ "result": {
+  "task_id": 1285532034,
+  "unmatched_sku_list": []
+ }
+}
 ```
