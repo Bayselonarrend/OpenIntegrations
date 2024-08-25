@@ -39,10 +39,17 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПолучитьОписаниеТовара --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --offerid %offerid%
+  oint ozon ПолучитьОписаниеТовара --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --offerid %offerid%
 
 ```
 
 ```json title="Результат"
-
+{
+ "result": {
+  "id": 1111588191,
+  "offer_id": "143210608",
+  "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
+  "description": ""
+ }
+}
 ```

@@ -12184,9 +12184,9 @@ Procedure Ozon_GetProductInformation(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
-    SKU      = "143210608";
+    Article  = "143210608";
 
-    Result = OPI_Ozon.GetProductInformation(ClientID, APIKey, , , SKU);
+    Result = OPI_Ozon.GetProductInformation(ClientID, APIKey, , , Article);
 
     // END
 
@@ -12200,9 +12200,9 @@ Procedure Ozon_GetProductDescription(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
-    SKU      = "143210608";
+    Article  = "143210608";
 
-    Result = OPI_Ozon.GetProductDescription(ClientID, APIKey, , SKU);
+    Result = OPI_Ozon.GetProductDescription(ClientID, APIKey, , Article);
 
     // END
 
