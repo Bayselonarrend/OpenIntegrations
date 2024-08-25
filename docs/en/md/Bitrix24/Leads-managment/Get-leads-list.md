@@ -39,7 +39,7 @@ Method at API documentation: [crm.lead.list](https://dev.1c-bitrix.ru/rest_help/
     Filter.Insert("TITLE"    , "MegaClient");
     Filter.Insert("HAS_EMAIL", "Y");
 
-    Result = OPI_Bitrix24.GetLeadsList(URL, Filter, ,Token);
+    Result = OPI_Bitrix24.GetLeadsList(URL, Filter, , Token);
 ```
 
 
@@ -51,5 +51,18 @@ Method at API documentation: [crm.lead.list](https://dev.1c-bitrix.ru/rest_help/
 ```
 
 ```json title="Result"
-
+{
+ "result": [],
+ "total": 0,
+ "time": {
+  "start": 1724490192.37401,
+  "finish": 1724490192.41267,
+  "duration": 0.0386598110198975,
+  "processing": 0.0151891708374023,
+  "date_start": "2024-08-24T09:03:12+00:00",
+  "date_finish": "2024-08-24T09:03:12+00:00",
+  "operating_reset_at": 1724490792,
+  "operating": 0
+ }
+}
 ```

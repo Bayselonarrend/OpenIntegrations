@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 7
+sidebar_position: 11
 ---
 
 # Get attributes update structure
@@ -32,7 +32,7 @@ sidebar_position: 7
 
 ```sh title="CLI command example"
     
-oint ozon GetAttributesUpdateStructure --empty %empty%
+  oint ozon GetAttributesUpdateStructure --empty %empty%
 
 ```
 

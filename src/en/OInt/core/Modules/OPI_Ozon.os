@@ -469,8 +469,8 @@ Function GetProductStructure(Val Clear = False) Export
     OPI_TypeConversion.GetBoolean(Clear);
 
     ItemStructure = New Structure;
-    ItemStructure.Insert("description_category_id", "<ID category product>");
-    ItemStructure.Insert("name"                   , "<name product>");
+    ItemStructure.Insert("description_category_id", "<Product category ID>");
+    ItemStructure.Insert("name"                   , "<product name>");
     ItemStructure.Insert("offer_id"               , "<offer>");
     ItemStructure.Insert("barcode"                , "<barcode>");
     ItemStructure.Insert("price"                  , "<price>");
@@ -548,7 +548,7 @@ Function GetAttributesUpdateStructure(Val Clear = False) Export
     ItemStructure = New Structure;
 
     ItemStructure.Insert("offer_id"  , "<offer>");
-    ItemStructure.Insert("attributes", "<array of updated of attributes>");
+    ItemStructure.Insert("attributes", "<array of updatable attributes>");
 
     If Clear Then
         For Each Field In ItemStructure Do
@@ -578,8 +578,8 @@ Function GetProductsFilterStructure(Val Clear = False) Export
 
     ItemStructure = New Structure;
 
-    ItemStructure.Insert("offer_id"  , "<array of sku>");
-    ItemStructure.Insert("product_id", "<array ID of products>");
+    ItemStructure.Insert("offer_id"  , "<articles array>");
+    ItemStructure.Insert("product_id", "<Products IDs array>");
     ItemStructure.Insert("visibility", "<visibility>");
 
     If Clear Then
