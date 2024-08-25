@@ -53,10 +53,22 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 ИзменитьСделку --url "b24-ar17wx.bitrix24.by" --deal %deal% --fields %fields% --token "6476c766006e9f06006b12e400000001000..."
+  oint bitrix24 ИзменитьСделку --url "b24-ar17wx.bitrix24.by" --deal %deal% --fields %fields% --token "6476c766006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Результат"
-
+{
+ "result": true,
+ "time": {
+  "start": 1724580116.80617,
+  "finish": 1724580117.05249,
+  "duration": 0.246319055557251,
+  "processing": 0.223644971847534,
+  "date_start": "2024-08-25T10:01:56+00:00",
+  "date_finish": "2024-08-25T10:01:57+00:00",
+  "operating_reset_at": 1724580716,
+  "operating": 0.223623991012573
+ }
+}
 ```
