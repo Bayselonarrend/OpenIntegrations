@@ -1291,7 +1291,7 @@ Function GetProductDescription() Export
     Product.Insert("Height"           , Undefined); // In millimeters
     Product.Insert("Depth"            , Undefined); // In millimeters
     Product.Insert("Weight"           , Undefined); // In grams
-    Product.Insert("SKU"              , Undefined); // SKU
+    Product.Insert("SKU"              , Undefined); // Article
     Product.Insert("AvailableBalance" , 1);
 
     Return Product;

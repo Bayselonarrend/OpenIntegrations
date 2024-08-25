@@ -32,7 +32,7 @@ sidebar_position: 12
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПолучитьСтруктуруФильтраТоваров --empty %empty%
+  oint ozon ПолучитьСтруктуруФильтраТоваров --empty %empty%
 
 ```
 

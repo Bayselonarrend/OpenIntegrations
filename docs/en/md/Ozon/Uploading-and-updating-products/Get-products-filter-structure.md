@@ -32,7 +32,7 @@ The description of the filter fields can be found on the documentation page for 
 
 ```sh title="CLI command example"
     
-oint ozon GetProductsFilterStructure --empty %empty%
+  oint ozon GetProductsFilterStructure --empty %empty%
 
 ```
 

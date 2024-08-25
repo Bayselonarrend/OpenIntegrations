@@ -7,7 +7,7 @@ sidebar_position: 2
 
 
 
-`Function GetProductInformation(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = 0, Val SKU = "") Export`
+`Function GetProductInformation(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = 0, Val Article = "") Export`
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
@@ -15,7 +15,7 @@ sidebar_position: 2
   | APIKey | --apikey | String | API key |
   | ProductID | --productid | String, Number | Product identifier |
   | SKU | --sku | String, Number | Product identifier in the Ozon system (SKU) |
-  | SKU | --offerid | String, Number | Item identifier in the vendor's system (Article) |
+  | Article | --offerid | String, Number | Item identifier in the vendor's system (Article) |
 
   
   Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
@@ -37,16 +37,16 @@ Specify the minimum price of the product after all promotions have been applied 
 ```bsl title="Code example"
     ClientID = "2128753";
     APIKey   = "7cc90d26-33e4-499b...";
-    SKU      = "143210608";
+    Article  = "143210608";
 
-    Result = OPI_Ozon.GetProductInformation(ClientID, APIKey, , , SKU);
+    Result = OPI_Ozon.GetProductInformation(ClientID, APIKey, , , Article);
 ```
 
 
 
 ```sh title="CLI command example"
     
-oint ozon GetProductInformation --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%
+  oint ozon GetProductInformation --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%
 
 ```
 

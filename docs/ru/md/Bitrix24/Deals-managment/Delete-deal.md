@@ -43,10 +43,22 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-oint bitrix24 УдалитьСделку --url "b24-ar17wx.bitrix24.by" --deal %deal% --token "6476c766006e9f06006b12e400000001000..."
+  oint bitrix24 УдалитьСделку --url "b24-ar17wx.bitrix24.by" --deal %deal% --token "6476c766006e9f06006b12e400000001000..."
 
 ```
 
 ```json title="Результат"
-
+{
+ "result": true,
+ "time": {
+  "start": 1724580118.24201,
+  "finish": 1724580118.34407,
+  "duration": 0.102062940597534,
+  "processing": 0.0794758796691894,
+  "date_start": "2024-08-25T10:01:58+00:00",
+  "date_finish": "2024-08-25T10:01:58+00:00",
+  "operating_reset_at": 1724580718,
+  "operating": 0
+ }
+}
 ```

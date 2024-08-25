@@ -272,18 +272,18 @@ EndFunction
 // APIKey - String - API key - apikey
 // ProductID - String, Number - Product identifier - productid
 // SKU - String, Number - Product identifier in the Ozon system (SKU) - sku
-// SKU - String, Number - Item identifier in the vendor's system (Article) - offerid
+// Article - String, Number - Item identifier in the vendor's system (Article) - offerid
 //
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
-Function GetProductInformation(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = 0, Val SKU = "") Export
+Function GetProductInformation(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = 0, Val Article = "") Export
 
     URL = "https://api-seller.ozon.ru/v2/product/info";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("offer_id"  , SKU      , "String" , Parameters);
+    OPI_Tools.AddField("offer_id"  , Article  , "String" , Parameters);
     OPI_Tools.AddField("product_id", ProductID, "Number" , Parameters);
     OPI_Tools.AddField("sku"       , SKU      , "Number" , Parameters);
 
@@ -303,18 +303,18 @@ EndFunction
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
 // ProductID - String, Number - Product identifier - productid
-// SKU - String, Number - Item identifier in the vendor's system (Article) - offerid
+// Article - String, Number - Item identifier in the vendor's system (Article) - offerid
 //
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
-Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = "") Export
+Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val Article = "") Export
 
     URL = "https://api-seller.ozon.ru/v1/product/info/description";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("offer_id"  , SKU      , "String" , Parameters);
+    OPI_Tools.AddField("offer_id"  , Article  , "String" , Parameters);
     OPI_Tools.AddField("product_id", ProductID, "Number" , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
@@ -471,7 +471,7 @@ Function GetProductStructure(Val Clear = False) Export
     ItemStructure = New Structure;
     ItemStructure.Insert("description_category_id", "<Product category ID>");
     ItemStructure.Insert("name"                   , "<product name>");
-    ItemStructure.Insert("offer_id"               , "<offer>");
+    ItemStructure.Insert("offer_id"               , "<article>");
     ItemStructure.Insert("barcode"                , "<barcode>");
     ItemStructure.Insert("price"                  , "<price>");
     ItemStructure.Insert("old_price"              , "<old price>");
@@ -513,7 +513,7 @@ Function GetSimplifiedProductStructure(Val Clear = False) Export
 
     ItemStructure.Insert("name"         , "<name>");
     ItemStructure.Insert("sku"          , "<product identifier in the Ozon system>");
-    ItemStructure.Insert("offer_id"     , "<offer>");
+    ItemStructure.Insert("offer_id"     , "<article>");
     ItemStructure.Insert("price"        , "<price>");
     ItemStructure.Insert("old_price"    , "<old price>");
     ItemStructure.Insert("vat"          , "<VAT rate, e.g. 0.2>");
@@ -547,7 +547,7 @@ Function GetAttributesUpdateStructure(Val Clear = False) Export
 
     ItemStructure = New Structure;
 
-    ItemStructure.Insert("offer_id"  , "<offer>");
+    ItemStructure.Insert("offer_id"  , "<article>");
     ItemStructure.Insert("attributes", "<array of updatable attributes>");
 
     If Clear Then

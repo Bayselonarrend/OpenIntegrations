@@ -29,7 +29,7 @@ sidebar_position: 7
 
 ```sh title="CLI command example"
     
-oint bitrix24 GetDealsFilterStructure --empty %empty%
+  oint bitrix24 GetDealsFilterStructure --empty %empty%
 
 ```
 

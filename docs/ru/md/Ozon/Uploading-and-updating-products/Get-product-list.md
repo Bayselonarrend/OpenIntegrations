@@ -45,7 +45,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПолучитьСписокТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
+  oint ozon ПолучитьСписокТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
 
 ```
 
