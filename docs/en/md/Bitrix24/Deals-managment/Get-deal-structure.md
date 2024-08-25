@@ -40,7 +40,7 @@ Method at API documentation: [crm.deal.fields](https://dev.1c-bitrix.ru/rest_hel
 
 ```sh title="CLI command example"
     
-oint bitrix24 GetDealStructure --url "b24-ar17wx.bitrix24.by" --token "6476c766006e9f06006b12e400000001000..."
+  oint bitrix24 GetDealStructure --url "b24-ar17wx.bitrix24.by" --token "6476c766006e9f06006b12e400000001000..."
 
 ```
 

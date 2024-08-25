@@ -53,7 +53,7 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 
 ```sh title="CLI command example"
     
-oint bitrix24 UpdateDeal --url "b24-ar17wx.bitrix24.by" --deal %deal% --fields %fields% --token "6476c766006e9f06006b12e400000001000..."
+  oint bitrix24 UpdateDeal --url "b24-ar17wx.bitrix24.by" --deal %deal% --fields %fields% --token "6476c766006e9f06006b12e400000001000..."
 
 ```
 

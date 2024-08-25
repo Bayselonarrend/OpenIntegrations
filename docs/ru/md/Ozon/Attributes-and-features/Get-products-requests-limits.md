@@ -36,10 +36,25 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПолучитьЛимитыРаботыСТоварами --clientid "2128753" --apikey "7cc90d26-33e4-499b..."
+  oint ozon ПолучитьЛимитыРаботыСТоварами --clientid "2128753" --apikey "7cc90d26-33e4-499b..."
 
 ```
 
 ```json title="Результат"
-
+{
+ "daily_create": {
+  "usage": 0,
+  "limit": 1500,
+  "reset_at": "2024-08-26T00:00:00Z"
+ },
+ "daily_update": {
+  "usage": 2,
+  "limit": 5000,
+  "reset_at": "2024-08-26T00:00:00Z"
+ },
+ "total": {
+  "usage": 2,
+  "limit": 20000
+ }
+}
 ```
