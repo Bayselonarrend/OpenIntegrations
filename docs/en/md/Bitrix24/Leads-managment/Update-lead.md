@@ -12,7 +12,7 @@ sidebar_position: 5
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
   | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
-  | LeadID | --lead | Number, String | Task ID |
+  | LeadID | --lead | Number, String | Lead ID |
   | FieldsStructure | --fields | Structure of KeyAndValue | Structure of lead fields |
   | Token | --token | String | Access token, when app auth method used |
 
@@ -57,5 +57,17 @@ Method at API documentation: [crm.lead.update](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-
+{
+ "result": true,
+ "time": {
+  "start": 1724490198.00253,
+  "finish": 1724490198.16141,
+  "duration": 0.158878087997437,
+  "processing": 0.13422703742981,
+  "date_start": "2024-08-24T09:03:18+00:00",
+  "date_finish": "2024-08-24T09:03:18+00:00",
+  "operating_reset_at": 1724490798,
+  "operating": 0.134207010269165
+ }
+}
 ```

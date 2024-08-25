@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 3
+sidebar_position: 7
 ---
 
 # Update products attributes
@@ -49,7 +49,7 @@ You can get an empty structure using the GetAttributesUpdateStructure method()
 
 ```sh title="CLI command example"
     
-oint ozon UpdateProductsAttributes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
+  oint ozon UpdateProductsAttributes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
 
 ```
 

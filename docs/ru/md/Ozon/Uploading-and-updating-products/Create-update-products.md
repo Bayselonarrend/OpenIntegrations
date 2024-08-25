@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 1
+sidebar_position: 5
 ---
 
 # Создать обновить товары
@@ -88,5 +88,9 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-
+{
+ "result": {
+  "task_id": 1285616890
+ }
+}
 ```

@@ -3148,6 +3148,23 @@ Procedure B24_LeadsManagment() Export
 
 EndProcedure
 
+Procedure B24_DealsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_URL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Domain", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Bitrix24_Token" , TestParameters);
+
+    Bitrix24_GetDealsFilterStructure(TestParameters);
+    Bitrix24_GetDealStructure(TestParameters);
+    Bitrix24_CreateDeal(TestParameters);
+    Bitrix24_GetDeal(TestParameters);
+    Bitrix24_UpdateDeal(TestParameters);
+    Bitrix24_DeleteDeal(TestParameters);
+    Bitrix24_GetDealsList(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #Region VkTeams
@@ -3914,6 +3931,13 @@ Procedure Check_BitrixLead(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["PHONE"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["NAME"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixDeal(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["ID"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["BEGINDATE"]).Заполнено();
 
 EndProcedure
 
@@ -10545,11 +10569,205 @@ Procedure Bitrix24_GetLeadsList(FunctionParameters)
     Filter.Insert("TITLE"    , "MegaClient");
     Filter.Insert("HAS_EMAIL", "Y");
 
-    Result = OPI_Bitrix24.GetLeadsList(URL, Filter, ,Token);
+    Result = OPI_Bitrix24.GetLeadsList(URL, Filter, , Token);
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetLeadsList", "Bitrix24");
+
+    Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetDealsFilterStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetDealsFilterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealsFilterStructure", "Bitrix24");
+
+    Check_Structure(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetDealStructure(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetDealStructure(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealStructure (wh)", "Bitrix24");
+
+    Check_BitrixDeal(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.GetDealStructure(URL, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealStructure", "Bitrix24");
+
+    Check_BitrixDeal(Result);
+
+EndProcedure
+
+Procedure Bitrix24_CreateDeal(FunctionParameters)
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("TITLE"         , "Planned sale");
+    FieldsStructure.Insert("TYPE_ID"       , "GOODS");
+    FieldsStructure.Insert("STAGE_ID"      , "NEW");
+    FieldsStructure.Insert("COMPANY_ID"    , 1);
+    FieldsStructure.Insert("CONTACT_ID"    , 3);
+    FieldsStructure.Insert("OPENED"        , "Y");
+    FieldsStructure.Insert("ASSIGNED_BY_ID", 1);
+    FieldsStructure.Insert("PROBABILITY"   , 30);
+    FieldsStructure.Insert("CURRENCY_ID"   , "USD");
+    FieldsStructure.Insert("OPPORTUNITY"   , 5000);
+    FieldsStructure.Insert("CATEGORY_ID"   , 5);
+    FieldsStructure.Insert("BEGINDATE"     , "2024-01-01");
+    FieldsStructure.Insert("CLOSEDATE"     , "2030-01-01");
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateDeal(URL, FieldsStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDeal (wh)", "Bitrix24");
+
+    Check_BitrixNumber(Result); // SKIP
+
+    LeadID = Result["result"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_HookDealID", LeadID); // SKIP
+    FunctionParameters.Insert("Bitrix24_HookDealID", LeadID); // SKIP
+
+    FieldsStructure.Insert("TITLE"    , "Another deal");
+    FieldsStructure.Insert("CLOSEDATE", "2031-01-01");
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.CreateDeal(URL, FieldsStructure, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDeal", "Bitrix24");
+
+    Check_BitrixNumber(Result);
+
+    LeadID = Result["result"];
+    OPI_TestDataRetrieval.WriteParameter("Bitrix24_DealID", LeadID);
+    FunctionParameters.Insert("Bitrix24_DealID", LeadID);
+
+EndProcedure
+
+Procedure Bitrix24_UpdateDeal(FunctionParameters)
+
+    FieldsStructure = New Structure;
+    FieldsStructure.Insert("TITLE"       , "Sale in RUB");
+    FieldsStructure.Insert("CURRENCY_ID" , "RUB");
+    FieldsStructure.Insert("OPPORTUNITY" , 50000);
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateDeal (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    FieldsStructure.Insert("TITLE"    , "Future deal in RUB");
+    FieldsStructure.Insert("BEGINDATE", "2025-01-01");
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    DealID = FunctionParameters["Bitrix24_DealID"];
+
+    Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateDeal", "Bitrix24");
+
+    Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetDeal(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Result = OPI_Bitrix24.GetDeal(URL, DealID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDeal (wh)", "Bitrix24");
+
+    Check_BitrixDeal(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Result = OPI_Bitrix24.GetDeal(URL, DealID, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDeal", "Bitrix24");
+
+    Check_BitrixDeal(Result);
+
+EndProcedure
+
+Procedure Bitrix24_DeleteDeal(FunctionParameters)
+
+    URL    = FunctionParameters["Bitrix24_URL"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
+
+    Result = OPI_Bitrix24.DeleteDeal(URL, DealID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDeal (wh)", "Bitrix24");
+
+    Check_BitrixTrue(Result); // SKIP
+
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    DealID = FunctionParameters["Bitrix24_DealID"];
+
+    Result = OPI_Bitrix24.DeleteDeal(URL, DealID, Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteDeal", "Bitrix24");
+
+    Check_BitrixTrue(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetDealsList(FunctionParameters)
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.GetDealsList(URL);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealsList (wh)", "Bitrix24");
+
+    Check_BitrixArray(Result); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Filter = New Structure;
+    Filter.Insert("TITLE"      , "Sale in RUB");
+    Filter.Insert("CURRENCY_ID", "RUB");
+
+    Result = OPI_Bitrix24.GetDealsList(URL, Filter, , Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDealsList", "Bitrix24");
 
     Check_BitrixArray(Result);
 

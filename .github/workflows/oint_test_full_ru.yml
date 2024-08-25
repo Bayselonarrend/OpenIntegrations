@@ -1096,6 +1096,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Б24_РаботаСЛидами"
 
+      - name: Работа со сделками
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os "Б24_РаботаСоСделками"
+
       - name: Записать логи
         if: ${{ cancelled() }} == false
         uses: actions/cache/save@v3

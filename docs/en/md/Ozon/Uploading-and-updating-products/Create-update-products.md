@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 1
+sidebar_position: 5
 ---
 
 # Create update product
@@ -88,5 +88,9 @@ Methods of product structure formation: GetProductStructure(), AddProductVideo()
 ```
 
 ```json title="Result"
-
+{
+ "result": {
+  "task_id": 1285530068
+ }
+}
 ```

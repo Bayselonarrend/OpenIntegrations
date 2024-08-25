@@ -5524,7 +5524,7 @@
     NewLine.Метод       = "DeleteLead";
     NewLine.МетодПоиска = "DELETELEAD";
     NewLine.Параметр    = "--lead";
-    NewLine.Описание    = "Task ID";
+    NewLine.Описание    = "Lead ID";
     NewLine.Область     = "Leads managment";
 
 
@@ -5627,7 +5627,7 @@
     NewLine.Метод       = "UpdateLead";
     NewLine.МетодПоиска = "UPDATELEAD";
     NewLine.Параметр    = "--lead";
-    NewLine.Описание    = "Task ID";
+    NewLine.Описание    = "Lead ID";
     NewLine.Область     = "Leads managment";
 
 
@@ -5681,6 +5681,213 @@
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Leads managment";
     NewLine.ОписаниеМетода   = "Returns the field structure for filtering leads in the GetLeadsList method";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDeal";
+    NewLine.МетодПоиска = "CREATEDEAL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Deals managment";
+    NewLine.ОписаниеМетода   = "Creates a new deal by field structure (see. GetDealStructure)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDeal";
+    NewLine.МетодПоиска = "CREATEDEAL";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Deal fields structure (see. GetDealStructure)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "CreateDeal";
+    NewLine.МетодПоиска = "CREATEDEAL";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteDeal";
+    NewLine.МетодПоиска = "DELETEDEAL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Deals managment";
+    NewLine.ОписаниеМетода   = "Deletes deal by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteDeal";
+    NewLine.МетодПоиска = "DELETEDEAL";
+    NewLine.Параметр    = "--deal";
+    NewLine.Описание    = "Deal ID";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "DeleteDeal";
+    NewLine.МетодПоиска = "DELETEDEAL";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDeal";
+    NewLine.МетодПоиска = "GETDEAL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Deals managment";
+    NewLine.ОписаниеМетода   = "Gets deal by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDeal";
+    NewLine.МетодПоиска = "GETDEAL";
+    NewLine.Параметр    = "--deal";
+    NewLine.Описание    = "Deal ID";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDeal";
+    NewLine.МетодПоиска = "GETDEAL";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDealsList";
+    NewLine.МетодПоиска = "GETDEALSLIST";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Deals managment";
+    NewLine.ОписаниеМетода   = "Gets the list of deals (50 pcs per query max) with or without filtering (see. GetDealsFilterStructure)";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDealsList";
+    NewLine.МетодПоиска = "GETDEALSLIST";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Deals filter structure (see. GetDealsFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDealsList";
+    NewLine.МетодПоиска = "GETDEALSLIST";
+    NewLine.Параметр    = "--offset";
+    NewLine.Описание    = "Offset from the beginning of the list to retrieve deals > 50 pcs recursively (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDealsList";
+    NewLine.МетодПоиска = "GETDEALSLIST";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDeal";
+    NewLine.МетодПоиска = "UPDATEDEAL";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Deals managment";
+    NewLine.ОписаниеМетода   = "Modifies an existing deal";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDeal";
+    NewLine.МетодПоиска = "UPDATEDEAL";
+    NewLine.Параметр    = "--deal";
+    NewLine.Описание    = "Deal ID";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDeal";
+    NewLine.МетодПоиска = "UPDATEDEAL";
+    NewLine.Параметр    = "--fields";
+    NewLine.Описание    = "Deal fields structure";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "UpdateDeal";
+    NewLine.МетодПоиска = "UPDATEDEAL";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDealStructure";
+    NewLine.МетодПоиска = "GETDEALSTRUCTURE";
+    NewLine.Параметр    = "--url";
+    NewLine.Описание    = "URL of webhook or a Bitrix24 domain, when token used";
+    NewLine.Область     = "Deals managment";
+    NewLine.ОписаниеМетода   = "Gets a structure with field descriptions for creating a deal";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDealStructure";
+    NewLine.МетодПоиска = "GETDEALSTRUCTURE";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Область     = "Deals managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "bitrix24";
+    NewLine.Модуль      = "OPI_Bitrix24";
+    NewLine.Метод       = "GetDealsFilterStructure";
+    NewLine.МетодПоиска = "GETDEALSFILTERSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Deals managment";
+    NewLine.ОписаниеМетода   = "Returns the field structure for filtering deals in the GetDealsList method";
 
     Return CompositionTable;
 EndFunction
