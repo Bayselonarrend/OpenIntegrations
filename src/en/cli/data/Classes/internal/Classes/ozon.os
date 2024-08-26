@@ -505,6 +505,67 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductImages";
+    NewLine.МетодПоиска = "UPDATEPRODUCTIMAGES";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Update images and marketing color";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductImages";
+    NewLine.МетодПоиска = "UPDATEPRODUCTIMAGES";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductImages";
+    NewLine.МетодПоиска = "UPDATEPRODUCTIMAGES";
+    NewLine.Параметр    = "--productid";
+    NewLine.Описание    = "Product identifier";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductImages";
+    NewLine.МетодПоиска = "UPDATEPRODUCTIMAGES";
+    NewLine.Параметр    = "--images";
+    NewLine.Описание    = "Array of images URLs (optional, def. val. - Empty value)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductImages";
+    NewLine.МетодПоиска = "UPDATEPRODUCTIMAGES";
+    NewLine.Параметр    = "--images360";
+    NewLine.Описание    = "Array of 360 images (optional, def. val. - Empty value)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductImages";
+    NewLine.МетодПоиска = "UPDATEPRODUCTIMAGES";
+    NewLine.Параметр    = "--color";
+    NewLine.Описание    = "Marketing color (optional, def. val. - Empty value)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetProductCreationStatus";
     NewLine.МетодПоиска = "GETPRODUCTCREATIONSTATUS";
     NewLine.Параметр    = "--clientid";
@@ -530,6 +591,37 @@
     NewLine.МетодПоиска = "GETPRODUCTCREATIONSTATUS";
     NewLine.Параметр    = "--taskid";
     NewLine.Описание    = "Add product task ID";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CheckProductsImagesUpload";
+    NewLine.МетодПоиска = "CHECKPRODUCTSIMAGESUPLOAD";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Check images upload by products IDs";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CheckProductsImagesUpload";
+    NewLine.МетодПоиска = "CHECKPRODUCTSIMAGESUPLOAD";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CheckProductsImagesUpload";
+    NewLine.МетодПоиска = "CHECKPRODUCTSIMAGESUPLOAD";
+    NewLine.Параметр    = "--products";
+    NewLine.Описание    = "Product IDs to be inspected";
     NewLine.Область     = "Uploading and updating products";
 
 
