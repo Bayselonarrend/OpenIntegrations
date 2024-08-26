@@ -424,6 +424,48 @@ Function UpdateProductsAttributes(Val ClientID, Val APIKey, Val AttributesArray)
 
 EndFunction
 
+// Update product images
+// Update images and marketing color
+//
+// Note
+// On each method call, send all the images that should be on the product card
+// To upload, pass the URL of the image to public cloud storage. The format of the image is JPG or PNG
+// If you want to change the composition or order of the images, get the information using the GetProductInformation() method, copy the data of the images, images360, color_image fields, change and complete the composition or order as needed
+// Method at API documentation: [post /v1/product/pictures/import](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductImportPictures)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductID - String, Number - Product identifier - productid
+// ImagesArray - Array Of String - Array of images URLs - images
+// Array360 - Array Of String - Array of 360 images - images360
+// MarketingColor - String - Marketing color - color
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function UpdateProductImages(Val ClientID
+    , Val APIKey
+    , Val ProductID
+    , Val ImagesArray = ""
+    , Val Array360 = ""
+    , Val MarketingColor = "") Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/pictures/import";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("product_id" , ProductID     , "Number" , Parameters);
+    OPI_Tools.AddField("color_image", MarketingColor, "String" , Parameters);
+    OPI_Tools.AddField("images"     , ImagesArray   , "Array"  , Parameters);
+    OPI_Tools.AddField("images360"  , Array360      , "Array"  , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get product creation status
 // Gets the status of adding a new product by task ID
 //
@@ -445,6 +487,34 @@ Function GetProductCreationStatus(Val ClientID, Val APIKey, Val TaskID) Export
 
     Parameters = New Structure;
     OPI_Tools.AddField("task_id", TaskID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Check products images upload
+// Check images upload by products IDs
+//
+// Note
+// Method at API documentation: [post /v1/product/pictures/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductInfoPictures)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductsID - String, Number, Array of String, Number - Product IDs to be inspected - products
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function CheckProductsImagesUpload(Val ClientID, Val APIKey, Val ProductsID) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/pictures/info";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 

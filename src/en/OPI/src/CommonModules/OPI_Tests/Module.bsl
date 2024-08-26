@@ -3274,6 +3274,8 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_GetProductInformation(TestParameters);
     Ozon_GetProductsContentRating(TestParameters);
     Ozon_GetProductDescription(TestParameters);
+    Ozon_UpdateProductImages(TestParameters);
+    Ozon_CheckProductsImagesUpload(TestParameters);
 
 EndProcedure
 
@@ -4154,6 +4156,12 @@ Procedure Check_OzonLimits(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["daily_create"]).Заполнено();
     OPI_TestDataRetrieval.ExpectsThat(Result["daily_update"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonPictures(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["pictures"]).ИмеетТип("Array").Заполнено();
 
 EndProcedure
 
@@ -12162,6 +12170,10 @@ Procedure Ozon_GetProductList(FunctionParameters)
 
     Check_OzonObjectsArray(Result);
 
+    ProductID = Result["result"]["items"][0]["product_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_ProductID", ProductID);
+    FunctionParameters.Insert("Ozon_ProductID", ProductID);
+
 EndProcedure
 
 Procedure Ozon_GetProductsContentRating(FunctionParameters)
@@ -12224,6 +12236,52 @@ Procedure Ozon_GetProductsRequestsLimits(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "GetProductsRequestsLimits", "Ozon");
 
     Check_OzonLimits(Result);
+
+EndProcedure
+
+Procedure Ozon_UpdateProductImages(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Image1 = FunctionParameters["Picture"];
+    Image2 = FunctionParameters["Picture2"];
+
+    MarketingColor = "GREEN";
+
+    ImagesArray = New Array;
+    ImagesArray.Add(Image1);
+    ImagesArray.Add(Image2);
+
+    Result = OPI_Ozon.UpdateProductImages(ClientID
+        , APIKey
+        , ProductID
+        , ImagesArray
+        ,
+        , MarketingColor);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductImages", "Ozon");
+
+    Check_OzonPictures(Result);
+
+EndProcedure
+
+Procedure Ozon_CheckProductsImagesUpload(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Result = OPI_Ozon.CheckProductsImagesUpload(ClientID, APIKey, ProductID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "CheckProductsImagesUpload", "Ozon");
+
+    Check_OzonPictures(Result);
 
 EndProcedure
 
