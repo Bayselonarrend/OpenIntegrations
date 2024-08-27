@@ -258,34 +258,39 @@ Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 
 
 EndFunction
 
-// Get product information
-// Gets product information by identifiers
+// Get products informations
+// Gets information about products by an array of identifiers
 //
 // Note
 // Specify the minimum price of the product after all promotions have been applied in your personal cabinet. The min_price parameter from the method response is being reworked and returns 0
 // The active_product parameter is deprecated, use the values of the visible parameter
 // The fbs_sku and fbo_sku parameters from the method response were disabled on August 15, 2023
-// Method at API documentation: [post /v2/product/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoV2)
+// The body of the request must contain a single identifier or an array of identical identifiers, the response will be an array of items
+// Method at API documentation: [post /v2/product/info/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoListV2)
 //
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// ProductID - String, Number - Product identifier - productid
-// SKU - String, Number - Product identifier in the Ozon system (SKU) - sku
-// Article - String, Number - Item identifier in the vendor's system (Article) - offerid
+// ProductsID - Number, Array Of Number - Products identifier - productid
+// SKU - Number, Array Of Number - Products identifiers in the Ozon system (SKU) - sku
+// Articles - String, Array of String - Item identifiers in the vendor's system (Article) - offerid
 //
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
-Function GetProductInformation(Val ClientID, Val APIKey, Val ProductID = 0, Val SKU = 0, Val Article = "") Export
+Function GetProductsInformation(Val ClientID
+    , Val APIKey
+    , Val ProductsID = 0
+    , Val SKU = 0
+    , Val Articles = "") Export
 
-    URL = "https://api-seller.ozon.ru/v2/product/info";
+    URL = "https://api-seller.ozon.ru/v2/product/info/list";
 
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("offer_id"  , Article  , "String" , Parameters);
-    OPI_Tools.AddField("product_id", ProductID, "Number" , Parameters);
-    OPI_Tools.AddField("sku"       , SKU      , "Number" , Parameters);
+    OPI_Tools.AddField("offer_id"  , Articles  , "Array" , Parameters);
+    OPI_Tools.AddField("product_id", ProductsID, "Array" , Parameters);
+    OPI_Tools.AddField("sku"       , SKU       , "Array" , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -515,6 +520,46 @@ Function CheckProductsImagesUpload(Val ClientID, Val APIKey, Val ProductsID) Exp
 
     Parameters = New Structure;
     OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Update products articles
+// Modifies articles of existing products
+//
+// Note
+// Method at API documentation: [post /v1/product/update/offer-id](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductUpdateOfferID)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ArticlesMap - Map Of KeyAndValue - Articles: Key > current, Value > new - offers
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function UpdateProductsArticles(Val ClientID, Val APIKey, Val ArticlesMap) Export
+
+    OPI_TypeConversion.GetCollection(ArticlesMap);
+
+    If TypeOf(ArticlesMap) = Type("Array") Then
+        Raise "Article value type error ";
+    EndIf;
+
+    ArrayOfObjects = New Array;
+
+    For Each ArticlesPair In ArticlesMap Do
+        ArrayOfObjects.Add(New Structure("offer_id,new_offer_id", ArticlesPair.Key, ArticlesPair.Value));
+    EndDo;
+
+    URL = "https://api-seller.ozon.ru/v1/product/update/offer-id";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("update_offer_id", ArrayOfObjects, "Array", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
