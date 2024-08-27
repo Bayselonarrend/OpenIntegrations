@@ -289,19 +289,19 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetProductInformation";
-    NewLine.МетодПоиска = "GETPRODUCTINFORMATION";
+    NewLine.Метод       = "GetProductsInformation";
+    NewLine.МетодПоиска = "GETPRODUCTSINFORMATION";
     NewLine.Параметр    = "--clientid";
     NewLine.Описание    = "Client identifier";
     NewLine.Область     = "Uploading and updating products";
-    NewLine.ОписаниеМетода   = "Gets product information by identifiers";
+    NewLine.ОписаниеМетода   = "Gets information about products by an array of identifiers";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetProductInformation";
-    NewLine.МетодПоиска = "GETPRODUCTINFORMATION";
+    NewLine.Метод       = "GetProductsInformation";
+    NewLine.МетодПоиска = "GETPRODUCTSINFORMATION";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
     NewLine.Область     = "Uploading and updating products";
@@ -310,30 +310,30 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetProductInformation";
-    NewLine.МетодПоиска = "GETPRODUCTINFORMATION";
+    NewLine.Метод       = "GetProductsInformation";
+    NewLine.МетодПоиска = "GETPRODUCTSINFORMATION";
     NewLine.Параметр    = "--productid";
-    NewLine.Описание    = "Product identifier (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Products identifier (optional, def. val. - Empty value)";
     NewLine.Область     = "Uploading and updating products";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetProductInformation";
-    NewLine.МетодПоиска = "GETPRODUCTINFORMATION";
+    NewLine.Метод       = "GetProductsInformation";
+    NewLine.МетодПоиска = "GETPRODUCTSINFORMATION";
     NewLine.Параметр    = "--sku";
-    NewLine.Описание    = "Product identifier in the Ozon system (SKU) (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Products identifiers in the Ozon system (SKU) (optional, def. val. - Empty value)";
     NewLine.Область     = "Uploading and updating products";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetProductInformation";
-    NewLine.МетодПоиска = "GETPRODUCTINFORMATION";
+    NewLine.Метод       = "GetProductsInformation";
+    NewLine.МетодПоиска = "GETPRODUCTSINFORMATION";
     NewLine.Параметр    = "--offerid";
-    NewLine.Описание    = "Item identifier in the vendor's system (Article) (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Item identifiers in the vendor's system (Article) (optional, def. val. - Empty value)";
     NewLine.Область     = "Uploading and updating products";
 
 
@@ -622,6 +622,37 @@
     NewLine.МетодПоиска = "CHECKPRODUCTSIMAGESUPLOAD";
     NewLine.Параметр    = "--products";
     NewLine.Описание    = "Product IDs to be inspected";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsArticles";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSARTICLES";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Modifies articles of existing products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsArticles";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSARTICLES";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsArticles";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSARTICLES";
+    NewLine.Параметр    = "--offers";
+    NewLine.Описание    = "Articles: Key > current, Value > new";
     NewLine.Область     = "Uploading and updating products";
 
 

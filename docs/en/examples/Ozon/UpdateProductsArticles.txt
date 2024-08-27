@@ -1,0 +1,7 @@
+﻿    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
+
+    ArticlesMap = New Map;
+    ArticlesMap.Insert("143210608", "143210609");
+
+    Result = OPI_Ozon.UpdateProductsArticles(ClientID, APIKey, ArticlesMap);
