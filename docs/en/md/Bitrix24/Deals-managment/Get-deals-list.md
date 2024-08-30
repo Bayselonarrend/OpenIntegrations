@@ -51,5 +51,18 @@ Method at API documentation: [crm.deal.list](https://dev.1c-bitrix.ru/rest_help/
 ```
 
 ```json title="Result"
-
+{
+ "result": [],
+ "total": 0,
+ "time": {
+  "start": 1724584049.38281,
+  "finish": 1724584049.4266,
+  "duration": 0.0437829494476318,
+  "processing": 0.0159609317779541,
+  "date_start": "2024-08-25T11:07:29+00:00",
+  "date_finish": "2024-08-25T11:07:29+00:00",
+  "operating_reset_at": 1724584649,
+  "operating": 0
+ }
+}
 ```

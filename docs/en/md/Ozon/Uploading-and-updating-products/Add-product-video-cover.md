@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 14
+sidebar_position: 17
 ---
 
 # Add product video cover

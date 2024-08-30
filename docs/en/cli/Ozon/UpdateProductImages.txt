@@ -1,0 +1,1 @@
+﻿oint ozon UpdateProductImages --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --images %images% --images360 %images360% --color %color%

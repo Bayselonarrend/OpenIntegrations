@@ -54,5 +54,7 @@ You can get an empty structure using the GetAttributesUpdateStructure method()
 ```
 
 ```json title="Result"
-
+{
+ "task_id": 1286865441
+}
 ```

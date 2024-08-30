@@ -64,5 +64,17 @@ Method at API documentation: [crm.deal.add](https://dev.1c-bitrix.ru/rest_help/c
 ```
 
 ```json title="Result"
-
+{
+ "result": 74,
+ "time": {
+  "start": 1724584043.72863,
+  "finish": 1724584043.94602,
+  "duration": 0.21738600730896,
+  "processing": 0.192203044891357,
+  "date_start": "2024-08-25T11:07:23+00:00",
+  "date_finish": "2024-08-25T11:07:23+00:00",
+  "operating_reset_at": 1724584643,
+  "operating": 0.192182064056396
+ }
+}
 ```

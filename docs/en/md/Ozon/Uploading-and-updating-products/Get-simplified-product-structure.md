@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 10
+sidebar_position: 13
 ---
 
 # Get simplified product structure
@@ -34,5 +34,13 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
-
+{
+ "name": "<name>",
+ "sku": "<product identifier in the Ozon system>",
+ "offer_id": "<article>",
+ "price": "<price>",
+ "old_price": "<old price>",
+ "vat": "<VAT rate, e.g. 0.2>",
+ "currency_code": "<currency>"
+}
 ```
