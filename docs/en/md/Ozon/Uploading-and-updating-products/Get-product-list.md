@@ -50,5 +50,20 @@ Method at API documentation: [post /v2/product/list](https://docs.ozon.ru/api/se
 ```
 
 ```json title="Result"
-
+{
+ "result": {
+  "items": [
+   {
+    "product_id": 1111588191,
+    "offer_id": "143210608",
+    "is_fbo_visible": false,
+    "is_fbs_visible": false,
+    "archived": false,
+    "is_discounted": false
+   }
+  ],
+  "total": 1,
+  "last_id": "WzExMTE1ODgxOTEsMTExMTU4ODE5MV0="
+ }
+}
 ```

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 9
+sidebar_position: 12
 ---
 
 # Get product structure

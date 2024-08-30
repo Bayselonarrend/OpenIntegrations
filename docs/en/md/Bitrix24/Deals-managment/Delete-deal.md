@@ -48,5 +48,17 @@ Method at API documentation: [crm.deal.delete](https://dev.1c-bitrix.ru/rest_hel
 ```
 
 ```json title="Result"
-
+{
+ "result": true,
+ "time": {
+  "start": 1724584048.03319,
+  "finish": 1724584048.14273,
+  "duration": 0.109539985656738,
+  "processing": 0.0796740055084228,
+  "date_start": "2024-08-25T11:07:28+00:00",
+  "date_finish": "2024-08-25T11:07:28+00:00",
+  "operating_reset_at": 1724584648,
+  "operating": 0
+ }
+}
 ```
