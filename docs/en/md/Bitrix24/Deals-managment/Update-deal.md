@@ -58,5 +58,17 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 ```
 
 ```json title="Result"
-
+{
+ "result": true,
+ "time": {
+  "start": 1724584046.54833,
+  "finish": 1724584046.70114,
+  "duration": 0.152806997299194,
+  "processing": 0.124013900756836,
+  "date_start": "2024-08-25T11:07:26+00:00",
+  "date_finish": "2024-08-25T11:07:26+00:00",
+  "operating_reset_at": 1724584646,
+  "operating": 0.123990058898926
+ }
+}
 ```

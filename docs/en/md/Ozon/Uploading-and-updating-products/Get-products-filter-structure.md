@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 12
+sidebar_position: 15
 ---
 
 # Get products filter structure
@@ -37,5 +37,9 @@ The description of the filter fields can be found on the documentation page for 
 ```
 
 ```json title="Result"
-
+{
+ "offer_id": "<articles array>",
+ "product_id": "<Products IDs array>",
+ "visibility": "<visibility>"
+}
 ```

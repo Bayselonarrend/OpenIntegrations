@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 11
+sidebar_position: 14
 ---
 
 # Get attributes update structure
@@ -37,5 +37,8 @@ sidebar_position: 11
 ```
 
 ```json title="Result"
-
+{
+ "offer_id": "<article>",
+ "attributes": "<array of updatable attributes>"
+}
 ```
