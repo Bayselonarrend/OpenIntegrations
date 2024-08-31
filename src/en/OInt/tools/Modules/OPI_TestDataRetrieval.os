@@ -421,6 +421,7 @@ Function DataFilePath()
     Path          = "";
     PossiblePaths = New Array;
     PossiblePaths.Add("./data.json");
+    PossiblePaths.Add("C:\data.json");
     PossiblePaths.Add("C:\GDrive\Мой Диск\data.json");
     PossiblePaths.Add("D:\GD\Мой Диск\data.json");
 

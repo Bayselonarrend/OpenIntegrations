@@ -659,6 +659,68 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "ArchiveProducts";
+    NewLine.МетодПоиска = "ARCHIVEPRODUCTS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Moves selected items to the archive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "ArchiveProducts";
+    NewLine.МетодПоиска = "ARCHIVEPRODUCTS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "ArchiveProducts";
+    NewLine.МетодПоиска = "ARCHIVEPRODUCTS";
+    NewLine.Параметр    = "--products";
+    NewLine.Описание    = "Product IDs for archiving";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UnarchiveProducts";
+    NewLine.МетодПоиска = "UNARCHIVEPRODUCTS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Returns selected items from the archive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UnarchiveProducts";
+    NewLine.МетодПоиска = "UNARCHIVEPRODUCTS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UnarchiveProducts";
+    NewLine.МетодПоиска = "UNARCHIVEPRODUCTS";
+    NewLine.Параметр    = "--products";
+    NewLine.Описание    = "Product IDs for recovery";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetProductStructure";
     NewLine.МетодПоиска = "GETPRODUCTSTRUCTURE";
     NewLine.Параметр    = "--empty";
