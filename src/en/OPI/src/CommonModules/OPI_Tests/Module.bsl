@@ -3277,6 +3277,8 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_UpdateProductImages(TestParameters);
     Ozon_CheckProductsImagesUpload(TestParameters);
     Ozon_UpdateProductsArticles(TestParameters);
+    Ozon_ArchiveProducts(TestParameters);
+    Ozon_UnarchiveProducts(TestParameters);
 
 EndProcedure
 
@@ -4177,6 +4179,12 @@ EndProcedure
 Procedure Check_OzonNoErrors(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["errors"].Count()).Равно(0);
+
+EndProcedure
+
+Procedure Check_OzonTrue(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно(True);
 
 EndProcedure
 
@@ -12324,6 +12332,38 @@ Procedure Ozon_UpdateProductsArticles(FunctionParameters)
     // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsArticles (reverse)", "Ozon");
 
     Check_OzonNoErrors(Result);
+
+EndProcedure
+
+Procedure Ozon_ArchiveProducts(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts", "Ozon");
+
+    Check_OzonTrue(Result);
+
+EndProcedure
+
+Procedure Ozon_UnarchiveProducts(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Result = OPI_Ozon.UnarchiveProducts(ClientID, APIKey, ProductID);
+
+    // END
+
+    // !OInt OPI_TestDataRetrieval.WriteLog(Result, "UnarchiveProducts", "Ozon");
+
+    Check_OzonTrue(Result);
 
 EndProcedure
 

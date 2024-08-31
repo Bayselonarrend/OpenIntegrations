@@ -567,6 +567,64 @@ Function UpdateProductsArticles(Val ClientID, Val APIKey, Val ArticlesMap) Expor
 
 EndFunction
 
+// Archive products
+// Moves selected items to the archive
+//
+// Note
+// You can pass up to 100 identifiers at a time
+// Method at API documentation: [post /v1/product/archive](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductArchive)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductsID - String, Number, Array of String, Number - Product IDs for archiving - products
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function ArchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/archive";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Unarchive products
+// Returns selected items from the archive
+//
+// Note
+// You can restore from the archive no more than 10 products that were automatically archived per day. There are no restrictions on unarchiving products that were manually moved to the archive.
+// Method at API documentation: [post /v1/product/unarchive](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductUnarchive)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductsID - String, Number, Array of String, Number - Product IDs for recovery - products
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function UnarchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/unarchive";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get product structure
 // Gets the structure of product standard fields
 //
