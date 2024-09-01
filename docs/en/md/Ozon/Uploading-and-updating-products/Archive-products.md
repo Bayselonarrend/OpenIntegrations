@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 13
+sidebar_position: 12
 ---
 
 # Archive products
@@ -40,7 +40,7 @@ You can pass up to 100 identifiers at a time
 
 ```sh title="CLI command example"
     
-oint ozon ArchiveProducts --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
+  oint ozon ArchiveProducts --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
 
 ```
 

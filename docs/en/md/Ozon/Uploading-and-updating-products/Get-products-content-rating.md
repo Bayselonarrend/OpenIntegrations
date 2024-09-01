@@ -13,7 +13,7 @@ sidebar_position: 5
   |-|-|-|-|
   | ClientID | --clientid | String | Client identifier |
   | APIKey | --apikey | String | API key |
-  | SKU | --sku | String, Number, Array of String, Number | One or array of SKUs |
+  | SKU | --sku | Number, Array Of Number | Products identifiers in the Ozon system (SKU) |
 
   
   Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
