@@ -23,6 +23,8 @@ sidebar_position: 6
 :::tip
 Methods of product structure formation: GetProductStructure(), AddProductVideo(), AddProductVideoCover()
 
+ Uploading status check - GetProductCreationStatus()
+
  Method at API documentation: [post /v3/product/import](https://docs.ozon.ru/api/seller/#operation/ProductAPI_ImportProductsV3)
 :::
 <br/>

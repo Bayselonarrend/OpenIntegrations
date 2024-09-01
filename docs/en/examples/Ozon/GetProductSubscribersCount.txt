@@ -1,0 +1,5 @@
+﻿    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
+    SKU      = 1626044001;
+
+    Result = OPI_Ozon.GetProductSubscribersCount(ClientID, APIKey, SKU);

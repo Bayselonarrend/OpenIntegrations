@@ -1,0 +1,5 @@
+﻿    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
+    TaskID   = "";
+
+    Result = OPI_Ozon.GetCodesUploadStatus(ClientID, APIKey, TaskID);

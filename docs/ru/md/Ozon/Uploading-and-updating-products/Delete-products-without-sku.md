@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 15
+sidebar_position: 14
 ---
 
 # Удалить товары без SKU
@@ -31,11 +31,13 @@ sidebar_position: 15
 
 
 ```bsl title="Пример кода"
+    OPI_Инструменты.Пауза(30);
+
     IDКлиента = "2128753";
     КлючAPI   = "7cc90d26-33e4-499b...";
     IDТовара  = "1111588191";
 
-    OPI_Ozon.АрхивироватьТовары(IDКлиента, КлючAPI, IDТовара);
+    Результат = OPI_Ozon.АрхивироватьТовары(IDКлиента, КлючAPI, IDТовара);
 
     Артикул   = "143210608";
 
@@ -46,10 +48,18 @@ sidebar_position: 15
 
 ```sh title="Пример команды CLI"
     
-oint ozon УдалитьТоварыБезSKU --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --articles %articles%
+  oint ozon УдалитьТоварыБезSKU --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --articles %articles%
 
 ```
 
 ```json title="Результат"
-
+{
+ "status": [
+  {
+   "offer_id": "143210608",
+   "is_deleted": true,
+   "error": ""
+  }
+ ]
+}
 ```

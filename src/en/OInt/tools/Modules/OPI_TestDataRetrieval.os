@@ -400,7 +400,13 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
     Message(Chars.LF);
 
     If ValueIsFilled(Library) Then
-        WriteLogFile(Data, Method, Library);
+
+        Try
+            Library = New OpenSSLSecureConnection; // Check to work in 1C
+        Except
+            WriteLogFile(Data, Method, Library);
+        EndTry;
+
     EndIf;
 
 EndProcedure

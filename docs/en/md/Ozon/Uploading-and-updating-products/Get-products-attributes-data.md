@@ -45,7 +45,7 @@ Method at API documentation: [post /v3/products/info/attributes](https://docs.oz
 
 ```sh title="CLI command example"
     
-oint ozon GetProductsAttributesData --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
+  oint ozon GetProductsAttributesData --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
 
 ```
 
