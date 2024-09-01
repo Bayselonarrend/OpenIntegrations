@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 # Проверить загрузку изображений товаров
@@ -38,7 +38,7 @@ sidebar_position: 10
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПроверитьЗагрузкуИзображенийТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
+  oint ozon ПроверитьЗагрузкуИзображенийТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
 
 ```
 

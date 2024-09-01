@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 # Check products images upload
@@ -38,7 +38,7 @@ Method at API documentation: [post /v1/product/pictures/info](https://docs.ozon.
 
 ```sh title="CLI command example"
     
-oint ozon CheckProductsImagesUpload --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
+  oint ozon CheckProductsImagesUpload --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
 
 ```
 

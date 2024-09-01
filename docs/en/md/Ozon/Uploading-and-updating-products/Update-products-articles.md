@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 # Update products articles
@@ -40,7 +40,7 @@ Method at API documentation: [post /v1/product/update/offer-id](https://docs.ozo
 
 ```sh title="CLI command example"
     
-oint ozon UpdateProductsArticles --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --offers %offers%
+  oint ozon UpdateProductsArticles --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --offers %offers%
 
 ```
 
