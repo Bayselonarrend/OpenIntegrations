@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 13
+sidebar_position: 12
 ---
 
 # Архивировать товары
@@ -40,10 +40,12 @@ sidebar_position: 13
 
 ```sh title="Пример команды CLI"
     
-oint ozon АрхивироватьТовары --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
+  oint ozon АрхивироватьТовары --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
 
 ```
 
 ```json title="Результат"
-
+{
+ "result": true
+}
 ```

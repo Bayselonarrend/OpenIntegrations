@@ -372,7 +372,7 @@ EndFunction
 // Parameters:
 // ClientID - String - Client identifier - clientid
 // APIKey - String - API key - apikey
-// SKU - String, Number, Array of String, Number - One or array of SKUs - sku
+// SKU - Number, Array Of Number - Products identifiers in the Ozon system (SKU) - sku
 //
 // Returns:
 // Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
@@ -396,6 +396,7 @@ EndFunction
 //
 // Note
 // Methods of product structure formation: GetProductStructure(), AddProductVideo(), AddProductVideoCover()
+// Uploading status check - GetProductCreationStatus()
 // Method at API documentation: [post /v3/product/import](@docs.ozon.ru/api/seller/#operation/ProductAPI_ImportProductsV3)
 //
 // Parameters:
@@ -499,34 +500,6 @@ Function UpdateProductImages(Val ClientID
     OPI_Tools.AddField("color_image", MarketingColor, "String" , Parameters);
     OPI_Tools.AddField("images"     , ImagesArray   , "Array"  , Parameters);
     OPI_Tools.AddField("images360"  , Array360      , "Array"  , Parameters);
-
-    Response = OPI_Tools.Post(URL, Parameters, Headers);
-
-    Return Response;
-
-EndFunction
-
-// Get product creation status
-// Gets the status of adding a new product by task ID
-//
-// Note
-// Method at API documentation: [post /v1/product/import/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetImportProductsInfo)
-//
-// Parameters:
-// ClientID - String - Client identifier - clientid
-// APIKey - String - API key - apikey
-// TaskID - String, Number - Add product task ID - taskid
-//
-// Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
-Function GetProductCreationStatus(Val ClientID, Val APIKey, Val TaskID) Export
-
-    URL = "https://api-seller.ozon.ru/v1/product/import/info";
-
-    Headers = CreateRequestHeaders(ClientID, APIKey);
-
-    Parameters = New Structure;
-    OPI_Tools.AddField("task_id", TaskID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -693,6 +666,122 @@ Function DeleteProductsWithoutSKU(Val ClientID, Val APIKey, Val Articles) Export
 
     Parameters = New Structure;
     OPI_Tools.AddField("products", ProductsArray, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Upload product activations codes
+// Uploads activation codes for a digital product or service
+//
+// Note
+// The activation code is linked to the digital product card
+// Uploading status check - GetCodesUploadStatus()
+// Method at API documentation: [post /v1/product/upload_digital_codes](@docs.ozon.ru/api/seller/#operation/ProductAPI_UploadDigitalCode)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductID - Number - Product ID - productid
+// Codes - String, Array of String - Digital product activation codes - codes
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function UploadProductActivationCodes(Val ClientID, Val APIKey, Val ProductID, Val Codes) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/upload_digital_codes";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("product_id"   , ProductID, "Number", Parameters);
+    OPI_Tools.AddField("digital_codes", Codes    , "Array" , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get product subscribers count
+// Gets the number of users who clicked Know about arrival button on the product page
+//
+// Note
+// Method at API documentation: [post /v1/product/info/subscription](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoSubscription)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// SKU - Number, Array Of Number - Products identifiers in the Ozon system (SKU) - sku
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductSubscribersCount(Val ClientID, Val APIKey, Val SKU) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/info/subscription";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("skus", SKU, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get product creation status
+// Gets the status of adding a new product by task ID
+//
+// Note
+// Method at API documentation: [post /v1/product/import/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetImportProductsInfo)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// TaskID - String, Number - Add product task ID - taskid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductCreationStatus(Val ClientID, Val APIKey, Val TaskID) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/import/info";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("task_id", TaskID, "String", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get codes upload status
+// Gets the status of digital item codes upload by task ID
+//
+// Note
+// Method at API documentation: [post /v1/product/upload_digital_codes/info](@docs.ozon.ru/api/seller/#operation/ProductAPI_UploadDigitalCodeInfo)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// TaskID - String, Number - Add product task ID - taskid
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetCodesUploadStatus(Val ClientID, Val APIKey, Val TaskID) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/upload_digital_codes/info";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("task_id", TaskID, "String", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 14
+sidebar_position: 13
 ---
 
 # Unarchive products
@@ -40,7 +40,7 @@ You can restore from the archive no more than 10 products that were automaticall
 
 ```sh title="CLI command example"
     
-oint ozon UnarchiveProducts --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
+  oint ozon UnarchiveProducts --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
 
 ```
 

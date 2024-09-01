@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 15
+sidebar_position: 14
 ---
 
 # Delete products without SKU
@@ -31,11 +31,13 @@ The product must be pre-archived (see ArchiveProducts)
 
 
 ```bsl title="Code example"
+    OPI_Tools.Pause(30);
+
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
     ProductID = "1111588191";
 
-    OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
+    Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 
     Article = "143210608";
 
@@ -46,7 +48,7 @@ The product must be pre-archived (see ArchiveProducts)
 
 ```sh title="CLI command example"
     
-oint ozon DeleteProductsWithoutSKU --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --articles %articles%
+  oint ozon DeleteProductsWithoutSKU --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --articles %articles%
 
 ```
 
