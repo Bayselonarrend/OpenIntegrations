@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 16
+sidebar_position: 20
 ---
 
 # Add product video
