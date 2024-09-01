@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Обновить изображения товара
@@ -61,7 +61,7 @@ sidebar_position: 8
 
 ```sh title="Пример команды CLI"
     
-oint ozon ОбновитьИзображенияТовара --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --images %images% --images360 %images360% --color %color%
+  oint ozon ОбновитьИзображенияТовара --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --images %images% --images360 %images360% --color %color%
 
 ```
 

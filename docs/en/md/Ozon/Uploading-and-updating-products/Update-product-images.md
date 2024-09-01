@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # Update product images
@@ -61,7 +61,7 @@ On each method call, send all the images that should be on the product card
 
 ```sh title="CLI command example"
     
-oint ozon UpdateProductImages --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --images %images% --images360 %images360% --color %color%
+  oint ozon UpdateProductImages --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --images %images% --images360 %images360% --color %color%
 
 ```
 

@@ -258,6 +258,41 @@ Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 
 
 EndFunction
 
+// Get products attributes data
+// Retrieves product attributes descriptions with or without filtering
+//
+// Note
+// Method at API documentation: [post /v3/products/info/attributes](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductAttributesV3)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// LastID - String, Number - ID of the last value (last_id) from the previous response - last
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductsAttributesData(Val ClientID
+    , Val APIKey
+    , Val Filter = ""
+    , Val LastID = 0) Export
+
+    URL = "https://api-seller.ozon.ru/v3/products/info/attributes";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 200;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
+    OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get products informations
 // Gets information about products by an array of identifiers
 //
@@ -618,6 +653,46 @@ Function UnarchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
 
     Parameters = New Structure;
     OPI_Tools.AddField("product_id", ProductsID, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Delete products without SKU
+// Deletes products without SKU from archive
+//
+// Note
+// The product must be pre-archived (see ArchiveProducts)
+// Up to 500 identifiers can be passed in one request
+// Method at API documentation: [post /v2/products/delete](@docs.ozon.ru/api/seller/#operation/ProductAPI_DeleteProducts)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Articles - String, Number, Array of String, Number - Products articles - articles
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function DeleteProductsWithoutSKU(Val ClientID, Val APIKey, Val Articles) Export
+
+    OPI_TypeConversion.GetArray(Articles);
+
+    URL = "https://api-seller.ozon.ru/v2/products/delete";
+
+    Headers       = CreateRequestHeaders(ClientID, APIKey);
+    ProductsArray = New Array;
+
+    For Each Article In Articles Do
+
+        CurrentArticle = OPI_Tools.NumberToString(Article);
+        ProductsArray.Add(New Structure("offer_id", CurrentArticle));
+
+    EndDo;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("products", ProductsArray, "Array", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
