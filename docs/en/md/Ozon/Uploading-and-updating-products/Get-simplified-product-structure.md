@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 17
+sidebar_position: 20
 ---
 
 # Get simplified product structure

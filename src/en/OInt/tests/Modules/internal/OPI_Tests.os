@@ -3280,6 +3280,9 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_UpdateProductsArticles(TestParameters);
     Ozon_ArchiveProducts(TestParameters);
     Ozon_UnarchiveProducts(TestParameters);
+    Ozon_UploadProductActivationCodes(TestParameters);
+    Ozon_GetCodesUploadStatus(TestParameters);
+    Ozon_GetProductSubscribersCount(TestParameters);
     Ozon_DeleteProductsWithoutSKU(TestParameters);
 
 EndProcedure
@@ -4199,6 +4202,18 @@ EndProcedure
 Procedure Check_OzonProductsDeleting(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["status"][0]["is_deleted"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_OzonNewCodes(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["status"]).Равно("imported");
+
+EndProcedure
+
+Procedure Check_OzonSubscribers(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["count"]).ИмеетТип("Number");
 
 EndProcedure
 
@@ -12405,11 +12420,13 @@ EndProcedure
 
 Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
 
+    OPI_Tools.Pause(30);
+
     ClientID  = FunctionParameters["Ozon_ClientID"];
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = FunctionParameters["Ozon_ProductID"];
 
-    OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
+    Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 
     Article = "143210608";
 
@@ -12420,6 +12437,74 @@ Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductsWithoutSKU", "Ozon");
 
     Check_OzonProductsDeleting(Result);
+
+EndProcedure
+
+Procedure Ozon_UploadProductActivationCodes(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Codes = New Array;
+    Codes.Add("11111111");
+    Codes.Add("22222222");
+
+    Result = OPI_Ozon.UploadProductActivationCodes(ClientID, APIKey, ProductID, Codes);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadProductActivationCodes", "Ozon");
+
+    //Check_OzonUploadTask(Result);
+
+    //TaskID = Result["result"]["task_id"];
+    TaskID = 1;
+    OPI_TestDataRetrieval.WriteParameter("Ozon_CodesTaskID", TaskID);
+    FunctionParameters.Insert("Ozon_CodesTaskID", TaskID);
+
+    OPI_Tools.Pause(120);
+
+EndProcedure
+
+Procedure Ozon_GetCodesUploadStatus(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    TaskID   = FunctionParameters["Ozon_CodesTaskID"];
+
+    Result = OPI_Ozon.GetCodesUploadStatus(ClientID, APIKey, TaskID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCodesUploadStatus", "Ozon");
+
+    If ValueIsFilled(Result["result"]) Then
+        WHile Result["result"]["status"] = "pending" Do
+
+            OPI_Tools.Pause(30);
+            Result = OPI_Ozon.GetCodesUploadStatus(ClientID, APIKey, TaskID);
+
+        EndDo;
+    EndIf;
+
+    //Check_OzonCodesUpload(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductSubscribersCount(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Result = OPI_Ozon.GetProductSubscribersCount(ClientID, APIKey, SKU);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductSubscribersCount", "Ozon");
+
+    Check_OzonSubscribers(Result);
 
 EndProcedure
 
