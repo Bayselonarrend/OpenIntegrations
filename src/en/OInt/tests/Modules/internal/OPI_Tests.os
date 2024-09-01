@@ -3271,6 +3271,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_UpdateProductsAttributes(TestParameters);
     Ozon_GetProductsFilterStructure(TestParameters);
     Ozon_GetProductList(TestParameters);
+    Ozon_GetProductsAttributesData(TestParameters);
     Ozon_GetProductsInformation(TestParameters);
     Ozon_GetProductsContentRating(TestParameters);
     Ozon_GetProductDescription(TestParameters);
@@ -3279,6 +3280,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_UpdateProductsArticles(TestParameters);
     Ozon_ArchiveProducts(TestParameters);
     Ozon_UnarchiveProducts(TestParameters);
+    Ozon_DeleteProductsWithoutSKU(TestParameters);
 
 EndProcedure
 
@@ -4185,6 +4187,18 @@ EndProcedure
 Procedure Check_OzonTrue(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_OzonArray(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OzonProductsDeleting(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["status"][0]["is_deleted"]).Равно(True);
 
 EndProcedure
 
@@ -12199,6 +12213,28 @@ Procedure Ozon_GetProductList(FunctionParameters)
 
 EndProcedure
 
+Procedure Ozon_GetProductsAttributesData(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    IDArray = New Array;
+    IDArray.Add("143210608");
+
+    Filter = New Structure;
+    Filter.Insert("visibility", "ALL");
+    Filter.Insert("offer_id"  , IDArray);
+
+    Result = OPI_Ozon.GetProductsAttributesData(ClientID, APIKey, Filter);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsAttributesData", "Ozon");
+
+    Check_OzonArray(Result);
+
+EndProcedure
+
 Procedure Ozon_GetProductsContentRating(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
@@ -12364,6 +12400,26 @@ Procedure Ozon_UnarchiveProducts(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "UnarchiveProducts", "Ozon");
 
     Check_OzonTrue(Result);
+
+EndProcedure
+
+Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
+
+    Article = "143210608";
+
+    Result = OPI_Ozon.DeleteProductsWithoutSKU(ClientID, APIKey, Article);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductsWithoutSKU", "Ozon");
+
+    Check_OzonProductsDeleting(Result);
 
 EndProcedure
 

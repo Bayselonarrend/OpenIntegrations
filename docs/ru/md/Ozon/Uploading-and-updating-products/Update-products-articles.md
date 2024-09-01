@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 # Изменить артикулы товаров
@@ -40,7 +40,7 @@ sidebar_position: 11
 
 ```sh title="Пример команды CLI"
     
-oint ozon ИзменитьАртикулыТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --offers %offers%
+  oint ozon ИзменитьАртикулыТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --offers %offers%
 
 ```
 

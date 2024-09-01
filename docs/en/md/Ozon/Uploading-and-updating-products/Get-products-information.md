@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Get products informations
@@ -48,7 +48,7 @@ Specify the minimum price of the product after all promotions have been applied 
 
 ```sh title="CLI command example"
     
-oint ozon GetProductsInformation --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%
+  oint ozon GetProductsInformation --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%
 
 ```
 

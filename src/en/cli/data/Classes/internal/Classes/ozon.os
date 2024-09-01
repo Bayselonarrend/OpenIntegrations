@@ -289,6 +289,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsAttributesData";
+    NewLine.МетодПоиска = "GETPRODUCTSATTRIBUTESDATA";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Retrieves product attributes descriptions with or without filtering";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsAttributesData";
+    NewLine.МетодПоиска = "GETPRODUCTSATTRIBUTESDATA";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsAttributesData";
+    NewLine.МетодПоиска = "GETPRODUCTSATTRIBUTESDATA";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Product selection filter. See GetProductsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsAttributesData";
+    NewLine.МетодПоиска = "GETPRODUCTSATTRIBUTESDATA";
+    NewLine.Параметр    = "--last";
+    NewLine.Описание    = "ID of the last value (last_id) from the previous response (optional, def. val. - Empty value)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetProductsInformation";
     NewLine.МетодПоиска = "GETPRODUCTSINFORMATION";
     NewLine.Параметр    = "--clientid";
@@ -715,6 +756,37 @@
     NewLine.МетодПоиска = "UNARCHIVEPRODUCTS";
     NewLine.Параметр    = "--products";
     NewLine.Описание    = "Product IDs for recovery";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "DeleteProductsWithoutSKU";
+    NewLine.МетодПоиска = "DELETEPRODUCTSWITHOUTSKU";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Deletes products without SKU from archive";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "DeleteProductsWithoutSKU";
+    NewLine.МетодПоиска = "DELETEPRODUCTSWITHOUTSKU";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "DeleteProductsWithoutSKU";
+    NewLine.МетодПоиска = "DELETEPRODUCTSWITHOUTSKU";
+    NewLine.Параметр    = "--articles";
+    NewLine.Описание    = "Products articles";
     NewLine.Область     = "Uploading and updating products";
 
 

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Получить информацию о товарах
@@ -48,7 +48,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПолучитьИнформациюОТоварах --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%
+  oint ozon ПолучитьИнформациюОТоварах --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --sku %sku% --offerid %offerid%
 
 ```
 
