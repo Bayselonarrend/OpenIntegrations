@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 18
+sidebar_position: 19
 ---
 
 # Получить статус добавления кодов
@@ -38,10 +38,14 @@ sidebar_position: 18
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПолучитьСтатусДобавленияКодов --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --taskid %taskid%
+  oint ozon ПолучитьСтатусДобавленияКодов --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --taskid %taskid%
 
 ```
 
 ```json title="Результат"
-
+{
+ "code": 5,
+ "message": "Upload task not found",
+ "details": []
+}
 ```
