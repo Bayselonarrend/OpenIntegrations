@@ -21,7 +21,9 @@ sidebar_position: 5
 <br/>
 
 :::tip
-Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.ru/rest_help/disk/file/disk_file_getexternallink.php)
+The method has suddenly disappeared from the API on the cloud Bitrix24 where it was being tested (09/24). It might still work on other versions, but it's not guaranteed
+
+ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.ru/rest_help/disk/file/disk_file_getexternallink.php)
 :::
 <br/>
 

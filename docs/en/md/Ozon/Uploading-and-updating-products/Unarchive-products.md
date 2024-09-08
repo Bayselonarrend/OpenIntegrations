@@ -45,5 +45,7 @@ You can restore from the archive no more than 10 products that were automaticall
 ```
 
 ```json title="Result"
-
+{
+ "result": true
+}
 ```

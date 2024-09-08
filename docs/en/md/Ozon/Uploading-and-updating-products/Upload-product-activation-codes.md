@@ -47,10 +47,14 @@ The activation code is linked to the digital product card
 
 ```sh title="CLI command example"
     
-oint ozon UploadProductActivationCodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --codes %codes%
+  oint ozon UploadProductActivationCodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --codes %codes%
 
 ```
 
 ```json title="Result"
-
+{
+ "code": 7,
+ "message": "Is not service company",
+ "details": []
+}
 ```

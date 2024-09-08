@@ -834,6 +834,37 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetRelatedSKUs";
+    NewLine.МетодПоиска = "GETRELATEDSKUS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Uploading and updating products";
+    NewLine.ОписаниеМетода   = "Gets a single SKU from the old SKU FBS and SKU FBO identifiers";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetRelatedSKUs";
+    NewLine.МетодПоиска = "GETRELATEDSKUS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetRelatedSKUs";
+    NewLine.МетодПоиска = "GETRELATEDSKUS";
+    NewLine.Параметр    = "--sku";
+    NewLine.Описание    = "Products identifiers in the Ozon system (SKU)";
+    NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetProductCreationStatus";
     NewLine.МетодПоиска = "GETPRODUCTCREATIONSTATUS";
     NewLine.Параметр    = "--clientid";
@@ -1028,6 +1059,68 @@
     NewLine.Параметр    = "--values";
     NewLine.Описание    = "Value or array of values to add to <values> field";
     NewLine.Область     = "Uploading and updating products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "BindBarcodes";
+    NewLine.МетодПоиска = "BINDBARCODES";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Barcodes";
+    NewLine.ОписаниеМетода   = "Binds barcodes to products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "BindBarcodes";
+    NewLine.МетодПоиска = "BINDBARCODES";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Barcodes";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "BindBarcodes";
+    NewLine.МетодПоиска = "BINDBARCODES";
+    NewLine.Параметр    = "--barcodes";
+    NewLine.Описание    = "Key > product SKU, Value > barcode";
+    NewLine.Область     = "Barcodes";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateBarcodes";
+    NewLine.МетодПоиска = "CREATEBARCODES";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Barcodes";
+    NewLine.ОписаниеМетода   = "Generates new barcodes for products";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateBarcodes";
+    NewLine.МетодПоиска = "CREATEBARCODES";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Barcodes";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "CreateBarcodes";
+    NewLine.МетодПоиска = "CREATEBARCODES";
+    NewLine.Параметр    = "--productids";
+    NewLine.Описание    = "Products IDs for barcodes creating";
+    NewLine.Область     = "Barcodes";
 
     Return CompositionTable;
 EndFunction
