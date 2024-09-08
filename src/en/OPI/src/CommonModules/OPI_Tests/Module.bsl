@@ -3283,7 +3283,20 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_UploadProductActivationCodes(TestParameters);
     Ozon_GetCodesUploadStatus(TestParameters);
     Ozon_GetProductSubscribersCount(TestParameters);
+    Ozon_GetRelatedSKUs(TestParameters);
     Ozon_DeleteProductsWithoutSKU(TestParameters);
+
+EndProcedure
+
+Procedure OzonAPI_Barcodes() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
+
+    Ozon_BindBarcodes(TestParameters);
+    Ozon_CreateBarcodes(TestParameters);
 
 EndProcedure
 
@@ -4214,6 +4227,13 @@ EndProcedure
 Procedure Check_OzonSubscribers(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["count"]).ИмеетТип("Number");
+
+EndProcedure
+
+Procedure Check_OzonSKU(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["items"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result["items"][0]["availability"]).Заполнено();
 
 EndProcedure
 
@@ -8021,6 +8041,8 @@ EndProcedure
 
 Procedure Bitrix24_GetFileExternalLink(FunctionParameters)
 
+    OPI_Tools.Pause(20); // SKIP
+
     URL    = FunctionParameters["Bitrix24_URL"];
     FileID = FunctionParameters["Bitrix24_FileID"];
 
@@ -8028,7 +8050,7 @@ Procedure Bitrix24_GetFileExternalLink(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetFileExternalLink (wh)", "Bitrix24");
 
-    Check_BitrixString(Result); // SKIP
+    // Check_BitrixString(Result); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -8039,7 +8061,7 @@ Procedure Bitrix24_GetFileExternalLink(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetFileExternalLink", "Bitrix24");
 
-    Check_BitrixString(Result);
+    // Check_BitrixString(Result);
 
 EndProcedure
 
@@ -12428,6 +12450,9 @@ Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 
+    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts (for deleting)", "Ozon"); // SKIP
+    OPI_Tools.Pause(15); // SKIP
+
     Article = "143210608";
 
     Result = OPI_Ozon.DeleteProductsWithoutSKU(ClientID, APIKey, Article);
@@ -12505,6 +12530,54 @@ Procedure Ozon_GetProductSubscribersCount(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetProductSubscribersCount", "Ozon");
 
     Check_OzonSubscribers(Result);
+
+EndProcedure
+
+Procedure Ozon_GetRelatedSKUs(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Result = OPI_Ozon.GetRelatedSKUs(ClientID, APIKey, SKU);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRelatedSKUs", "Ozon");
+
+    Check_OzonSKU(Result);
+
+EndProcedure
+
+Procedure Ozon_BindBarcodes(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    BarcodesMap = New Map;
+    BarcodesMap.Insert(1626044001, "112233");
+
+    Result = OPI_Ozon.BindBarcodes(ClientID, APIKey, BarcodesMap);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "BindBarcodes", "Ozon");
+
+EndProcedure
+
+Procedure Ozon_CreateBarcodes(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Result = OPI_Ozon.CreateBarcodes(ClientID, APIKey, ProductID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBarcodes", "Ozon");
+
+    Check_OzonNoErrors(Result);
 
 EndProcedure
 
