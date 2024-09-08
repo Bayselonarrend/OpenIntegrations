@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 18
+sidebar_position: 19
 ---
 
 # Get codes upload status
@@ -38,10 +38,14 @@ Method at API documentation: [post /v1/product/upload_digital_codes/info](https:
 
 ```sh title="CLI command example"
     
-oint ozon GetCodesUploadStatus --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --taskid %taskid%
+  oint ozon GetCodesUploadStatus --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --taskid %taskid%
 
 ```
 
 ```json title="Result"
-
+{
+ "code": 5,
+ "message": "Upload task not found",
+ "details": []
+}
 ```

@@ -38,10 +38,17 @@ Method at API documentation: [post /v1/product/info/subscription](https://docs.o
 
 ```sh title="CLI command example"
     
-oint ozon GetProductSubscribersCount --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
+  oint ozon GetProductSubscribersCount --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
 
 ```
 
 ```json title="Result"
-
+{
+ "result": [
+  {
+   "sku": 1626044001,
+   "count": 0
+  }
+ ]
+}
 ```

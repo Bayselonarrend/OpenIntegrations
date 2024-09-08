@@ -696,8 +696,8 @@ Function UploadProductActivationCodes(Val ClientID, Val APIKey, Val ProductID, V
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("product_id"   , ProductID, "Number", Parameters);
-    OPI_Tools.AddField("digital_codes", Codes    , "Array" , Parameters);
+    OPI_Tools.AddField("product_id"   , ProductID, "Number" , Parameters);
+    OPI_Tools.AddField("digital_codes", Codes    , "Array"  , Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -726,6 +726,36 @@ Function GetProductSubscribersCount(Val ClientID, Val APIKey, Val SKU) Export
 
     Parameters = New Structure;
     OPI_Tools.AddField("skus", SKU, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get related SKUs
+// Gets a single SKU from the old SKU FBS and SKU FBO identifiers
+//
+// Note
+// The response will contain all SKUs associated with the passed SKUs. The method can process any SKU, even hidden or deleted.
+// Send up to 200 SKUs in a single request.
+// Method at API documentation: [post /v1/product/related-sku/get](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductGetRelatedSKU)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// SKU - Number, Array Of Number - Products identifiers in the Ozon system (SKU) - sku
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetRelatedSKUs(Val ClientID, Val APIKey, Val SKU) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/related-sku/get";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("sku", SKU, "Array", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -1028,6 +1058,82 @@ Function CompleteComplexAttribute(Collection, Val AttributeID, Val ComplexID, Va
 
     //@skip-check constructor-function-return-section
     Return Collection;
+
+EndFunction
+
+#EndRegion
+
+#Region Barcodes
+
+// Bind barcodes
+// Binds barcodes to products
+//
+// Note
+// Method at API documentation: [post /v1/barcode/add](@docs.ozon.ru/api/seller/#operation/add-barcode)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// BarcodesMap - Map Of KeyAndValue - Key > product SKU, Value > barcode - barcodes
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function BindBarcodes(Val ClientID, Val APIKey, Val BarcodesMap) Export
+
+    OPI_TypeConversion.GetCollection(BarcodesMap);
+
+    URL = "https://api-seller.ozon.ru/v1/barcode/add";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    BarcodesArray = New Array;
+
+    For Each Barcode In BarcodesMap Do
+
+        BarcodeStructure = New Structure;
+        OPI_Tools.AddField("sku"    , Barcode.Key  , "Number" , BarcodeStructure);
+        OPI_Tools.AddField("barcode", Barcode.Value, "String" , BarcodeStructure);
+
+        BarcodesArray.Add(BarcodeStructure);
+
+    EndDo;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("barcodes", BarcodesArray, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Create barcodes
+// Generates new barcodes for products
+//
+// Note
+// You can create barcodes for a maximum of 100 products per request
+// From one merchant account, you can use the method no more than 20 times per minute
+// Method at API documentation: [post /v1/barcode/generate](@docs.ozon.ru/api/seller/#operation/generate-barcode)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductsID - String, Array of String - Products IDs for barcodes creating - productids
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function CreateBarcodes(Val ClientID, Val APIKey, Val ProductsID) Export
+
+    URL = "https://api-seller.ozon.ru/v1/barcode/generate";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("product_ids", ProductsID, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
 
 EndFunction
 

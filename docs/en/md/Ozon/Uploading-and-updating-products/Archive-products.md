@@ -45,5 +45,7 @@ You can pass up to 100 identifiers at a time
 ```
 
 ```json title="Result"
-
+{
+ "result": true
+}
 ```

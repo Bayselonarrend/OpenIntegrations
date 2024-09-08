@@ -53,5 +53,13 @@ The product must be pre-archived (see ArchiveProducts)
 ```
 
 ```json title="Result"
-
+{
+ "status": [
+  {
+   "offer_id": "143210608",
+   "is_deleted": true,
+   "error": ""
+  }
+ ]
+}
 ```
