@@ -3325,6 +3325,18 @@ Procedure OzonAPI_WarehousesManagment() Export
 
 EndProcedure
 
+Procedure OzonAPI_PromotionsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+
+    Ozon_GetPromotionsList(TestParameters);
+    Ozon_GetCurrentPromoProducts(TestParameters);
+    Ozon_GetAvailablePromoProducts(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -12708,7 +12720,7 @@ EndProcedure
 
 Procedure Ozon_SetProductDiscount(FunctionParameters)
 
-    ClientID     = FunctionParameters["Ozon_ClientID"];
+    ClientID  = FunctionParameters["Ozon_ClientID"];
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = 1156646653;
 
@@ -12719,6 +12731,49 @@ Procedure Ozon_SetProductDiscount(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "SetProductDiscount", "Ozon");
+
+EndProcedure
+
+Procedure Ozon_GetPromotionsList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Result = OPI_Ozon.GetPromotionsList(ClientID, APIKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPromotionsList", "Ozon");
+
+    Check_OzonArray(Result);
+
+EndProcedure
+
+Procedure Ozon_GetAvailablePromoProducts(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    PromoID  = 111111111;
+
+    Result = OPI_Ozon.GetAvailablePromoProducts(ClientID, APIKey, PromoID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAvailablePromoProducts", "Ozon");
+
+EndProcedure
+
+Procedure Ozon_GetCurrentPromoProducts(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    PromoID  = 111111111;
+
+    Result = OPI_Ozon.GetCurrentPromoProducts(ClientID, APIKey, PromoID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCurrentPromoProducts", "Ozon");
 
 EndProcedure
 
