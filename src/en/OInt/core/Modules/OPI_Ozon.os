@@ -929,7 +929,7 @@ Function GetAttributesUpdateStructure(Val Clear = False) Export
 EndFunction
 
 // Get products filter structure
-// Gets the structure for products list selecting in the GetProductList function
+// Gets the structure for selecting the list of goods in the functions GetProductList and GetProductsStocks
 //
 // Note
 // The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
@@ -1141,6 +1141,38 @@ EndFunction
 
 #Region PricesAndStocks
 
+// Get products stocks
+// Gets the number of items in the balance with or without filtering
+//
+// Note
+// Method at API documentation: [post /v3/product/info/stocks](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoStocksV3)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// LastID - String, Number - ID of the last value (last_id) from the previous response - last
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+
+    URL = "https://api-seller.ozon.ru/v3/product/info/stocks";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 100;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
+    OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Update products stocks
 // Changes the information about the stock amount of a product
 //
@@ -1172,6 +1204,34 @@ Function UpdateProductsStocks(Val ClientID, Val APIKey, Val Stocks) Export
 
 EndFunction
 
+// Update products prices
+// Changes the price of one or more items
+//
+// Note
+// Method at API documentation: [post /v1/product/import/prices](@docs.ozon.ru/api/seller/#operation/ProductAPI_ImportProductsPrices)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Prices - Array of Structure - Products prices. See GetProductPriceStructure - prices
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function UpdateProductsPrices(Val ClientID, Val APIKey, Val Prices) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/import/prices";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("prices", Prices, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Get product stocks structure
 // Gets the data structure for udpating product stocks in the UpdateProductsStocks function
 //
@@ -1193,6 +1253,44 @@ Function GetProductStocksStructure(Val Clear = False) Export
     ItemStructure.Insert("product_id"  , "<Product ID>");
     ItemStructure.Insert("stock"       , "<amount>");
     ItemStructure.Insert("warehouse_id", "<Warehouse ID>");
+
+    If Clear Then
+        For Each Field In ItemStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ItemStructure;
+
+EndFunction
+
+// Get product price structure
+// Gets the product price structure for the UpdateProductsPrices function
+//
+// Note
+// The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v1/product/import/prices](@docs.ozon.ru/api/seller/#operation/ProductAPI_ImportProductsPrices)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Filter fields structure
+Function GetProductPriceStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    ItemStructure = New Structure;
+
+    ItemStructure.Insert("auto_action_enabled"   , "<Enable auto application of shares: ENABLED or DISABLED>");
+    ItemStructure.Insert("currency_code"         , "<currency>");
+    ItemStructure.Insert("min_price"             , "<minimum price of product after promotions have been applied>");
+    ItemStructure.Insert("offer_id"              , "<product identifier in the sellers system>");
+    ItemStructure.Insert("old_price"             , "<price before discounts; specify 0 if no discounts are available>");
+    ItemStructure.Insert("price"                 , "<product price with discounts>");
+    ItemStructure.Insert("price_strategy_enabled", "<auto application of price strategies: ENABLED or DISABLED>");
+    ItemStructure.Insert("product_id"            , "<Product ID>");
+
 
     If Clear Then
         For Each Field In ItemStructure Do
