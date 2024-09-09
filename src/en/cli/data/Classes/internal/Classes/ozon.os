@@ -965,7 +965,7 @@
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Uploading and updating products";
-    NewLine.ОписаниеМетода   = "Gets the structure for products list selecting in the GetProductList function";
+    NewLine.ОписаниеМетода   = "Gets the structure for selecting the list of goods in the functions GetProductList and GetProductsStocks";
 
 
     NewLine = CompositionTable.Add();
@@ -1126,6 +1126,47 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsStocks";
+    NewLine.МетодПоиска = "GETPRODUCTSSTOCKS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Gets the number of items in the balance with or without filtering";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsStocks";
+    NewLine.МетодПоиска = "GETPRODUCTSSTOCKS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsStocks";
+    NewLine.МетодПоиска = "GETPRODUCTSSTOCKS";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Product selection filter. See GetProductsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsStocks";
+    NewLine.МетодПоиска = "GETPRODUCTSSTOCKS";
+    NewLine.Параметр    = "--last";
+    NewLine.Описание    = "ID of the last value (last_id) from the previous response (optional, def. val. - Empty value)";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "UpdateProductsStocks";
     NewLine.МетодПоиска = "UPDATEPRODUCTSSTOCKS";
     NewLine.Параметр    = "--clientid";
@@ -1157,12 +1198,54 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsPrices";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSPRICES";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Changes the price of one or more items";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsPrices";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSPRICES";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsPrices";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSPRICES";
+    NewLine.Параметр    = "--prices";
+    NewLine.Описание    = "Products prices. See GetProductPriceStructure";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetProductStocksStructure";
     NewLine.МетодПоиска = "GETPRODUCTSTOCKSSTRUCTURE";
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Prices and stocks";
     NewLine.ОписаниеМетода   = "Gets the data structure for udpating product stocks in the UpdateProductsStocks function";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductPriceStructure";
+    NewLine.МетодПоиска = "GETPRODUCTPRICESTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Gets the product price structure for the UpdateProductsPrices function";
 
 
     NewLine = CompositionTable.Add();
