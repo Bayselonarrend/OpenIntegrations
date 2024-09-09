@@ -965,7 +965,7 @@
     NewLine.Параметр    = "--empty";
     NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
     NewLine.Область     = "Uploading and updating products";
-    NewLine.ОписаниеМетода   = "Gets the structure for selecting the list of goods in the functions GetProductList and GetProductsStocks";
+    NewLine.ОписаниеМетода   = "Gets the structure for selecting the list of products";
 
 
     NewLine = CompositionTable.Add();
@@ -1167,6 +1167,78 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsPrices";
+    NewLine.МетодПоиска = "GETPRODUCTSPRICES";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Gets products prices with or without filter";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsPrices";
+    NewLine.МетодПоиска = "GETPRODUCTSPRICES";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsPrices";
+    NewLine.МетодПоиска = "GETPRODUCTSPRICES";
+    NewLine.Параметр    = "--filter";
+    NewLine.Описание    = "Product selection filter. See GetProductsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductsPrices";
+    NewLine.МетодПоиска = "GETPRODUCTSPRICES";
+    NewLine.Параметр    = "--last";
+    NewLine.Описание    = "ID of the last value (last_id) from the previous response (optional, def. val. - Empty value)";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetDiscountInformation";
+    NewLine.МетодПоиска = "GETDISCOUNTINFORMATION";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Retrieves discount and main product information by SKU of the discounted items";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetDiscountInformation";
+    NewLine.МетодПоиска = "GETDISCOUNTINFORMATION";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetDiscountInformation";
+    NewLine.МетодПоиска = "GETDISCOUNTINFORMATION";
+    NewLine.Параметр    = "--sku";
+    NewLine.Описание    = "SKU of discounted products";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "UpdateProductsStocks";
     NewLine.МетодПоиска = "UPDATEPRODUCTSSTOCKS";
     NewLine.Параметр    = "--clientid";
@@ -1223,6 +1295,47 @@
     NewLine.МетодПоиска = "UPDATEPRODUCTSPRICES";
     NewLine.Параметр    = "--prices";
     NewLine.Описание    = "Products prices. See GetProductPriceStructure";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "SetProductDiscount";
+    NewLine.МетодПоиска = "SETPRODUCTDISCOUNT";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Sets the amount of discount on discounted products sold under the FBS scheme";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "SetProductDiscount";
+    NewLine.МетодПоиска = "SETPRODUCTDISCOUNT";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "SetProductDiscount";
+    NewLine.МетодПоиска = "SETPRODUCTDISCOUNT";
+    NewLine.Параметр    = "--productid";
+    NewLine.Описание    = "Product identifier";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "SetProductDiscount";
+    NewLine.МетодПоиска = "SETPRODUCTDISCOUNT";
+    NewLine.Параметр    = "--discount";
+    NewLine.Описание    = "Discount amount";
     NewLine.Область     = "Prices and stocks";
 
 
