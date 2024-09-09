@@ -248,6 +248,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "OzonAPI_AttributesAndFeatures"        , "Attributes and features"         , Ozon);
     NewTest(TestTable, "OzonAPI_UploadingAndUpdatingProducts" , "Uploading and updating products" , Ozon);
     NewTest(TestTable, "OzonAPI_Barcodes"                     , "Barcodes"                        , Ozon);
+    NewTest(TestTable, "OzonAPI_WarehousesManagment"          , "Warehouses managment"            , Ozon);
 
     Return TestTable;
 
