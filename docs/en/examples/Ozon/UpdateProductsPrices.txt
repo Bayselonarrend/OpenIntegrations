@@ -5,10 +5,10 @@
     Prices = New Structure;
     Prices.Insert("auto_action_enabled"   , "DISABLED");
     Prices.Insert("currency_code"         , "RUB");
-    Prices.Insert("min_price"             , "200");
-    Prices.Insert("offer_id"              , "143210608");
-    Prices.Insert("old_price"             , "0");
-    Prices.Insert("price"                 , "200");
+    Prices.Insert("min_price"             , "1300");
+    Prices.Insert("offer_id"              , "143210610");
+    Prices.Insert("old_price"             , "1400");
+    Prices.Insert("price"                 , "1300");
     Prices.Insert("price_strategy_enabled", "DISABLED");
     Prices.Insert("product_id"            , ProductID);
 

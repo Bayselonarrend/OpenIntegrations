@@ -1,7 +1,7 @@
 ﻿    ClientID = "2128753";
     APIKey   = "7cc90d26-33e4-499b...";
 
-    AttributesStructure = New Structure("offer_id", "143210608");
+    AttributesStructure = New Structure("offer_id", "143210609");
 
     CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
     CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
