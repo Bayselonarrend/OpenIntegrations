@@ -1139,6 +1139,102 @@ EndFunction
 
 #EndRegion
 
+#Region PricesAndStocks
+
+// Update products stocks
+// Changes the information about the stock amount of a product
+//
+// Note
+// You can change availability for 100 products per request. You can send up to 80 requests per minute from one merchant account.
+// You can only update the stock of an item in one warehouse once every 2 minutes. You can set the availability of a product only after its status changes to price_sent
+// Stocks of bulky goods can only be renewed in the warehouses designated for them
+// Method at API documentation: [post /v2/products/stocks](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductsStocksV2)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Stocks - Array of Structure - Array of stocks data. See GetProductStocksStructure - stocks
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function UpdateProductsStocks(Val ClientID, Val APIKey, Val Stocks) Export
+
+    URL = "https://api-seller.ozon.ru/v2/products/stocks";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("stocks", Stocks, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get product stocks structure
+// Gets the data structure for udpating product stocks in the UpdateProductsStocks function
+//
+// Note
+// The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v2/products/stocks](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductsStocksV2)
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure of KeyAndValue - Filter fields structure
+Function GetProductStocksStructure(Val Clear = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+
+    ItemStructure = New Structure;
+
+    ItemStructure.Insert("offer_id"    , "<article>");
+    ItemStructure.Insert("product_id"  , "<Product ID>");
+    ItemStructure.Insert("stock"       , "<amount>");
+    ItemStructure.Insert("warehouse_id", "<Warehouse ID>");
+
+    If Clear Then
+        For Each Field In ItemStructure Do
+            Field.Value = "";
+        EndDo;
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return ItemStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region WarehousesManagment
+
+// Get warehouses list
+// Gets compnay warehouses list
+//
+// Note
+// Method at API documentation: [post /v1/warehouse/list](@docs.ozon.ru/api/seller/#operation/WarehouseAPI_WarehouseList)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetWarehousesList(Val ClientID, Val APIKey) Export
+
+    URL = "https://api-seller.ozon.ru/v1/warehouse/list";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Response = OPI_Tools.Post(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
