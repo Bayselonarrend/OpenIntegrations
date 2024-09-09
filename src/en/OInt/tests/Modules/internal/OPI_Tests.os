@@ -3300,11 +3300,23 @@ Procedure OzonAPI_Barcodes() Export
 
 EndProcedure
 
+Procedure OzonAPI_PricesAndStocks() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
+
+    Ozon_GetProductsStocks(TestParameters);
+    Ozon_UpdateProductsPrices(TestParameters);
+
+EndProcedure
+
 Procedure OzonAPI_WarehousesManagment() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
 
     Ozon_GetWarehousesList(TestParameters);
 
@@ -4167,6 +4179,12 @@ EndProcedure
 Procedure Check_OzonObjectsArray(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OzonUpdatedArray(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"][0]["updated"]).Равно(True);
 
 EndProcedure
 
@@ -12593,8 +12611,8 @@ EndProcedure
 
 Procedure Ozon_GetWarehousesList(FunctionParameters)
 
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey = FunctionParameters["Ozon_ApiKey"];
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     Result = OPI_Ozon.GetWarehousesList(ClientID, APIKey);
 
@@ -12603,6 +12621,54 @@ Procedure Ozon_GetWarehousesList(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetWarehousesList", "Ozon");
 
     Check_OzonArray(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductsStocks(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    IDArray = New Array;
+    IDArray.Add("143210608");
+
+    Filter = New Structure;
+    Filter.Insert("visibility" , "ALL");
+    Filter.Insert("offer_id"   , IDArray);
+
+    Result = OPI_Ozon.GetProductsStocks(ClientID, APIKey, Filter);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsStocks", "Ozon");
+
+    Check_OzonObjectsArray(Result);
+
+EndProcedure
+
+Procedure Ozon_UpdateProductsPrices(FunctionParameters)
+
+    ClientID     = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Prices = New Structure;
+    Prices.Insert("auto_action_enabled"   , "DISABLED");
+    Prices.Insert("currency_code"         , "RUB");
+    Prices.Insert("min_price"             , "200");
+    Prices.Insert("offer_id"              , "143210608");
+    Prices.Insert("old_price"             , "0");
+    Prices.Insert("price"                 , "200");
+    Prices.Insert("price_strategy_enabled", "DISABLED");
+    Prices.Insert("product_id"            , ProductID);
+
+    Result = OPI_Ozon.UpdateProductsPrices(ClientID, APIKey, Prices);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsPrices", "Ozon");
+
+    Check_OzonUpdatedArray(Result);
 
 EndProcedure
 

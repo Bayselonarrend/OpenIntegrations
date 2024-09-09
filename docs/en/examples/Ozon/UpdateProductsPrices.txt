@@ -1,0 +1,15 @@
+﻿    ClientID     = "2128753";
+    APIKey    = "7cc90d26-33e4-499b...";
+    ProductID = "1111588191";
+
+    Prices = New Structure;
+    Prices.Insert("auto_action_enabled"   , "DISABLED");
+    Prices.Insert("currency_code"         , "RUB");
+    Prices.Insert("min_price"             , "200");
+    Prices.Insert("offer_id"              , "143210608");
+    Prices.Insert("old_price"             , "0");
+    Prices.Insert("price"                 , "200");
+    Prices.Insert("price_strategy_enabled", "DISABLED");
+    Prices.Insert("product_id"            , ProductID);
+
+    Result = OPI_Ozon.UpdateProductsPrices(ClientID, APIKey, Prices);
