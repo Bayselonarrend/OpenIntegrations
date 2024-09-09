@@ -3300,6 +3300,16 @@ Procedure OzonAPI_Barcodes() Export
 
 EndProcedure
 
+Procedure OzonAPI_WarehousesManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey" , TestParameters);
+
+    Ozon_GetWarehousesList(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -12578,6 +12588,21 @@ Procedure Ozon_CreateBarcodes(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateBarcodes", "Ozon");
 
     Check_OzonNoErrors(Result);
+
+EndProcedure
+
+Procedure Ozon_GetWarehousesList(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey = FunctionParameters["Ozon_ApiKey"];
+
+    Result = OPI_Ozon.GetWarehousesList(ClientID, APIKey);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetWarehousesList", "Ozon");
+
+    Check_OzonArray(Result);
 
 EndProcedure
 
