@@ -1202,6 +1202,10 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_WarehousesManagment"
 
+      - name: Prices and stocks
+        if: ${{ cancelled() }} == false
+        run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/en/OInt/tests/Modules/internal/OPI_Tests.os "OzonAPI_PricesAndStocks"
+
       - name: Записать логи
         if: ${{ cancelled() }} == false
         uses: actions/cache/save@v3
