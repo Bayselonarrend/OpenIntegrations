@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
 
 // MIT License
 
@@ -12021,7 +12021,7 @@
     OPI_ПолучениеДанныхТестов.ЗаписатьЛог(Результат, "СоздатьОбновитьТовары", "Ozon");
 
     Проверка_ОзонЗаданиеЗагрузки(Результат);
-    
+
     IDЗадания = Результат["result"]["task_id"];
     OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("Ozon_TaskID", IDЗадания);
     ПараметрыФункции.Вставить("Ozon_TaskID", IDЗадания);

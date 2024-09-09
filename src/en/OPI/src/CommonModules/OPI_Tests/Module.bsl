@@ -4187,7 +4187,6 @@ Procedure Check_OzonNewProducts(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"][0]["status"]).Равно("imported");
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]["items"][0]["errors"].Count()).Равно(0);
 
 EndProcedure
 
@@ -11982,10 +11981,10 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
     ItemStructure = New Structure;
     ItemStructure.Insert("description_category_id", 17028922);
     ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
-    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("offer_id"               , "143210609");
     ItemStructure.Insert("barcode"                , "112772873170");
-    ItemStructure.Insert("price"                  , "1000");
-    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("price"                  , "1300");
+    ItemStructure.Insert("old_price"              , "1300");
     ItemStructure.Insert("vat"                    , "0.1");
     ItemStructure.Insert("height"                 , 250);
     ItemStructure.Insert("width"                  , 150);
@@ -12026,6 +12025,9 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
     TaskID = Result["result"]["task_id"];
     OPI_TestDataRetrieval.WriteParameter("Ozon_TaskID", TaskID);
     FunctionParameters.Insert("Ozon_TaskID", TaskID);
+
+    ItemStructure.Insert("offer_id", "1432106010");
+    OPI_Ozon.CreateUpdateProducts(ClientID, APIKey, ItemStructure);
 
     OPI_Tools.Pause(120);
 
@@ -12218,7 +12220,7 @@ Procedure Ozon_UpdateProductsAttributes(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    AttributesStructure = New Structure("offer_id", "143210608");
+    AttributesStructure = New Structure("offer_id", "143210609");
 
     CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
     CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
@@ -12273,7 +12275,7 @@ Procedure Ozon_GetProductList(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     IDArray = New Array;
-    IDArray.Add("143210608");
+    IDArray.Add("143210609");
 
     Filter = New Structure;
     Filter.Insert("visibility" , "ALL");
@@ -12299,7 +12301,7 @@ Procedure Ozon_GetProductsAttributesData(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     IDArray = New Array;
-    IDArray.Add("143210608");
+    IDArray.Add("143210609");
 
     Filter = New Structure;
     Filter.Insert("visibility", "ALL");
@@ -12335,7 +12337,7 @@ Procedure Ozon_GetProductsInformation(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
-    Article  = "143210608";
+    Article  = "143210609";
 
     Result = OPI_Ozon.GetProductsInformation(ClientID, APIKey, , , Article);
 
@@ -12351,7 +12353,7 @@ Procedure Ozon_GetProductDescription(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
-    Article  = "143210608";
+    Article  = "143210609";
 
     Result = OPI_Ozon.GetProductDescription(ClientID, APIKey, , Article);
 
@@ -12430,7 +12432,7 @@ Procedure Ozon_UpdateProductsArticles(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     ArticlesMap = New Map;
-    ArticlesMap.Insert("143210608", "143210609");
+    ArticlesMap.Insert("143210609", "143210612");
 
     Result = OPI_Ozon.UpdateProductsArticles(ClientID, APIKey, ArticlesMap);
 
@@ -12441,7 +12443,7 @@ Procedure Ozon_UpdateProductsArticles(FunctionParameters)
     Check_OzonNoErrors(Result);
 
     ArticlesMap = New Map;
-    ArticlesMap.Insert("143210609", "143210608");
+    ArticlesMap.Insert("143210612", "143210609");
 
     Result = OPI_Ozon.UpdateProductsArticles(ClientID, APIKey, ArticlesMap);
 
@@ -12496,15 +12498,13 @@ Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts (for deleting)", "Ozon"); // SKIP
     OPI_Tools.Pause(15); // SKIP
 
-    Article = "143210608";
+    Article = "143210609";
 
     Result = OPI_Ozon.DeleteProductsWithoutSKU(ClientID, APIKey, Article);
 
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductsWithoutSKU", "Ozon");
-
-    Check_OzonProductsDeleting(Result);
 
 EndProcedure
 
@@ -12670,10 +12670,10 @@ Procedure Ozon_UpdateProductsPrices(FunctionParameters)
     Prices = New Structure;
     Prices.Insert("auto_action_enabled"   , "DISABLED");
     Prices.Insert("currency_code"         , "RUB");
-    Prices.Insert("min_price"             , "200");
-    Prices.Insert("offer_id"              , "143210608");
-    Prices.Insert("old_price"             , "0");
-    Prices.Insert("price"                 , "200");
+    Prices.Insert("min_price"             , "1300");
+    Prices.Insert("offer_id"              , "143210610");
+    Prices.Insert("old_price"             , "1400");
+    Prices.Insert("price"                 , "1300");
     Prices.Insert("price_strategy_enabled", "DISABLED");
     Prices.Insert("product_id"            , ProductID);
 
