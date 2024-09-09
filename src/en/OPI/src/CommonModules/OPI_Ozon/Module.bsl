@@ -1412,6 +1412,34 @@ EndFunction
 
 #EndRegion
 
+#Region PromotionsManagment
+
+// Get promotions list
+// Gets a list of available promotions
+//
+// Note
+// Method at API documentation: [post /v1/actions](@docs.ozon.ru/api/seller/#operation/Promos)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetPromotionsList(Val ClientID, Val APIKey) Export
+
+    URL = "https://api-seller.ozon.ru/v1/actions";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
 #Region WarehousesManagment
 
 // Get warehouses list
@@ -1433,6 +1461,70 @@ Function GetWarehousesList(Val ClientID, Val APIKey) Export
     Headers = CreateRequestHeaders(ClientID, APIKey);
 
     Response = OPI_Tools.Post(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get available promo products
+// Gets the products available in the selected promotion
+//
+// Note
+// Method at API documentation: [post /v1/actions/candidates](@docs.ozon.ru/api/seller/#operation/PromosCandidates)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// PromoID - Number - Promo ID - actionid
+// Indent - Number - Offst of items list - offset
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetAvailablePromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
+
+    URL = "https://api-seller.ozon.ru/v1/actions/candidates";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 100;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("action_id", PromoID, "Number", Parameters);
+    OPI_Tools.AddField("limit"    , Limit  , "Number", Parameters);
+    OPI_Tools.AddField("offset"   , Indent , "Number", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get current promo products
+// Gets the products featured in the selected promotion
+//
+// Note
+// Method at API documentation: [post /v1/actions/products](@docs.ozon.ru/api/seller/#operation/PromosProducts)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// PromoID - Number - Promo ID - actionid
+// Indent - Number - Offst of items list - offset
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetCurrentPromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
+
+    URL = "https://api-seller.ozon.ru/v1/actions/products";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 100;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("action_id", PromoID, "Number", Parameters);
+    OPI_Tools.AddField("limit"    , Limit  , "Number", Parameters);
+    OPI_Tools.AddField("offset"   , Indent , "Number", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
 
     Return Response;
 
