@@ -3309,6 +3309,9 @@ Procedure OzonAPI_PricesAndStocks() Export
 
     Ozon_GetProductsStocks(TestParameters);
     Ozon_UpdateProductsPrices(TestParameters);
+    Ozon_GetProductsPrices(TestParameters);
+    Ozon_GetDiscountInformation(TestParameters);
+    Ozon_SetProductDiscount(TestParameters);
 
 EndProcedure
 
@@ -4234,9 +4237,9 @@ Procedure Check_OzonTrue(Val Result)
 
 EndProcedure
 
-Procedure Check_OzonArray(Val Result)
+Procedure Check_OzonArray(Val Result, Val Field = "result")
 
-    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).ИмеетТип("Array");
+    OPI_TestDataRetrieval.ExpectsThat(Result[Field]).ИмеетТип("Array");
 
 EndProcedure
 
@@ -12648,7 +12651,7 @@ EndProcedure
 
 Procedure Ozon_UpdateProductsPrices(FunctionParameters)
 
-    ClientID     = FunctionParameters["Ozon_ClientID"];
+    ClientID  = FunctionParameters["Ozon_ClientID"];
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = FunctionParameters["Ozon_ProductID"];
 
@@ -12669,6 +12672,53 @@ Procedure Ozon_UpdateProductsPrices(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsPrices", "Ozon");
 
     Check_OzonUpdatedArray(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductsPrices(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Result = OPI_Ozon.GetProductsPrices(ClientID, APIKey, New Structure);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsPrices", "Ozon");
+
+    Check_OzonObjectsArray(Result);
+
+EndProcedure
+
+Procedure Ozon_GetDiscountInformation(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Result = OPI_Ozon.GetDiscountInformation(ClientID, APIKey, SKU);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDiscountInformation", "Ozon");
+
+    Check_OzonArray(Result, "items");
+
+EndProcedure
+
+Procedure Ozon_SetProductDiscount(FunctionParameters)
+
+    ClientID     = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = 1156646653;
+
+    Discount = 10;
+
+    Result = OPI_Ozon.SetProductDiscount(ClientID, APIKey, ProductID, Discount);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetProductDiscount", "Ozon");
 
 EndProcedure
 
