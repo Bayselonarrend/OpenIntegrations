@@ -1122,6 +1122,69 @@
     NewLine.Описание    = "Products IDs for barcodes creating";
     NewLine.Область     = "Barcodes";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsStocks";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSSTOCKS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Changes the information about the stock amount of a product";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsStocks";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSSTOCKS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "UpdateProductsStocks";
+    NewLine.МетодПоиска = "UPDATEPRODUCTSSTOCKS";
+    NewLine.Параметр    = "--stocks";
+    NewLine.Описание    = "Array of stocks data. See GetProductStocksStructure";
+    NewLine.Область     = "Prices and stocks";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetProductStocksStructure";
+    NewLine.МетодПоиска = "GETPRODUCTSTOCKSSTRUCTURE";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Prices and stocks";
+    NewLine.ОписаниеМетода   = "Gets the data structure for udpating product stocks in the UpdateProductsStocks function";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetWarehousesList";
+    NewLine.МетодПоиска = "GETWAREHOUSESLIST";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Warehouses managment";
+    NewLine.ОписаниеМетода   = "Gets compnay warehouses list";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetWarehousesList";
+    NewLine.МетодПоиска = "GETWAREHOUSESLIST";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Warehouses managment";
+
     Return CompositionTable;
 EndFunction
 

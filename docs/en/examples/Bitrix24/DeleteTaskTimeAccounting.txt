@@ -1,11 +1,11 @@
 ﻿    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID   = "1402";
-    RecordID = "434";
+    TaskID   = "1524";
+    RecordID = "482";
 
     Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "6476c766006e9f06006b12e400000001000...";
-    RecordID = "436";
+    Token    = "b529cb66006e9f06006b12e400000001000...";
+    RecordID = "484";
 
     Result = OPI_Bitrix24.DeleteTaskTimeAccounting(URL, TaskID, RecordID, Token);
