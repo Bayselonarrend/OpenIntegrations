@@ -252,6 +252,10 @@ Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 
     OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
     OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
 
+    If Not Parameters.Property("filter") Then
+        Parameters.Insert("filter", New Structure);
+    EndIf;
+
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
     Return Response;
@@ -286,6 +290,10 @@ Function GetProductsAttributesData(Val ClientID
     OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
     OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
     OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
+
+    If Not Parameters.Property("filter") Then
+        Parameters.Insert("filter", New Structure);
+    EndIf;
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
@@ -929,9 +937,10 @@ Function GetAttributesUpdateStructure(Val Clear = False) Export
 EndFunction
 
 // Get products filter structure
-// Gets the structure for selecting the list of goods in the functions GetProductList and GetProductsStocks
+// Gets the structure for selecting the list of products
 //
 // Note
+// Related functions: GetProductList, GetProductsStocks, GetProductsPrices
 // The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v2/product/list](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
 //
 // Parameters:
@@ -1167,6 +1176,74 @@ Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID
     OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
     OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
 
+    If Not Parameters.Property("filter") Then
+        Parameters.Insert("filter", New Structure);
+    EndIf;
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get products prices
+// Gets products prices with or without filter
+//
+// Note
+// Method at API documentation: [post /v4/product/info/prices](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoPricesV4)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// Filter - Structure of KeyAndValue - Product selection filter. See GetProductsFilterStructure - filter
+// LastID - String, Number - ID of the last value (last_id) from the previous response - last
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetProductsPrices(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
+
+    URL = "https://api-seller.ozon.ru/v4/product/info/prices";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+    Limit   = 300;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("filter" , Filter , "Collection", Parameters);
+    OPI_Tools.AddField("limit"  , Limit  , "String"    , Parameters);
+    OPI_Tools.AddField("last_id", LastID , "String"    , Parameters);
+
+    If Not Parameters.Property("filter") Then
+        Parameters.Insert("filter", New Structure);
+    EndIf;
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get discount information
+// Retrieves discount and main product information by SKU of the discounted items
+//
+// Note
+// Method at API documentation: [post /v1/product/info/discounted](@docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoDiscounted)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// SKU - Number, Array Of Number - SKU of discounted products - sku
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetDiscountInformation(Val ClientID, Val APIKey, Val SKU) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/info/discounted";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("discounted_skus", SKU, "Array", Parameters);
+
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
     Return Response;
@@ -1225,6 +1302,36 @@ Function UpdateProductsPrices(Val ClientID, Val APIKey, Val Prices) Export
 
     Parameters = New Structure;
     OPI_Tools.AddField("prices", Prices, "Array", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Set product discount
+// Sets the amount of discount on discounted products sold under the FBS scheme
+//
+// Note
+// Method at API documentation: [post /v1/product/update/discount](@docs.ozon.ru/api/seller/#operation/ProductAPI_ProductUpdateDiscount)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+// ProductID - String, Number - Product identifier - productid
+// Discount - String, Number - Discount amount - discount
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function SetProductDiscount(Val ClientID, Val APIKey, Val ProductID, Val Discount) Export
+
+    URL = "https://api-seller.ozon.ru/v1/product/update/discount";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("discount"  , Discount , "Number", Parameters);
+    OPI_Tools.AddField("product_id", ProductID, "Number", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
 
