@@ -53,8 +53,8 @@ The activation code is linked to the digital product card
 
 ```json title="Result"
 {
- "code": 7,
- "message": "Is not service company",
- "details": []
+    "result": {
+    "task_id": 123479811
+    }
 }
 ```
