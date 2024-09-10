@@ -1438,34 +1438,6 @@ Function GetPromotionsList(Val ClientID, Val APIKey) Export
 
 EndFunction
 
-#EndRegion
-
-#Region WarehousesManagment
-
-// Get warehouses list
-// Gets compnay warehouses list
-//
-// Note
-// Method at API documentation: [post /v1/warehouse/list](@docs.ozon.ru/api/seller/#operation/WarehouseAPI_WarehouseList)
-//
-// Parameters:
-// ClientID - String - Client identifier - clientid
-// APIKey - String - API key - apikey
-//
-// Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
-Function GetWarehousesList(Val ClientID, Val APIKey) Export
-
-    URL = "https://api-seller.ozon.ru/v1/warehouse/list";
-
-    Headers = CreateRequestHeaders(ClientID, APIKey);
-
-    Response = OPI_Tools.Post(URL, , Headers);
-
-    Return Response;
-
-EndFunction
-
 // Get available promo products
 // Gets the products available in the selected promotion
 //
@@ -1525,6 +1497,34 @@ Function GetCurrentPromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Inde
     OPI_Tools.AddField("offset"   , Indent , "Number", Parameters);
 
     Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
+#Region WarehousesManagment
+
+// Get warehouses list
+// Gets compnay warehouses list
+//
+// Note
+// Method at API documentation: [post /v1/warehouse/list](@docs.ozon.ru/api/seller/#operation/WarehouseAPI_WarehouseList)
+//
+// Parameters:
+// ClientID - String - Client identifier - clientid
+// APIKey - String - API key - apikey
+//
+// Returns:
+// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+Function GetWarehousesList(Val ClientID, Val APIKey) Export
+
+    URL = "https://api-seller.ozon.ru/v1/warehouse/list";
+
+    Headers = CreateRequestHeaders(ClientID, APIKey);
+
+    Response = OPI_Tools.Post(URL, , Headers);
 
     Return Response;
 
