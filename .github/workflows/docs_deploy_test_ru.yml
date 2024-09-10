@@ -24,7 +24,6 @@ jobs:
     - name: Установка зависимостей
       run: |
         cd ./docs/docusaurus
-        npm config set registry http://registry.npmjs.org
         npm install
       
     - name: Сборка
