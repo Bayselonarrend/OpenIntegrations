@@ -32,7 +32,7 @@ Method at API documentation: [post /v3/products/info/attributes](https://docs.oz
     APIKey   = "7cc90d26-33e4-499b...";
 
     IDArray = New Array;
-    IDArray.Add("143210608");
+    IDArray.Add("143210609");
 
     Filter = New Structure;
     Filter.Insert("visibility", "ALL");

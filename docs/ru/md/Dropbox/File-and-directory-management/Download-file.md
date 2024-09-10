@@ -23,7 +23,7 @@ sidebar_position: 11
 
 
 ```bsl title="Пример кода"
-    Токен     = "sl.B7RRdlnDML6hoVUHl6bk7CQxx0SFu8rLlSxh2VTkVQIh_m6CJKk_MYsdfWowBOji0Gn-hg1kNb...";
+    Токен     = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
     Путь      = "/New/pic.png";
 
     Результат = OPI_Dropbox.СкачатьФайл(Токен, Путь);

@@ -30,7 +30,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 ```bsl title="Code example"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID      = "578";
+    ChatID      = "642";
     File        = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
 
@@ -43,8 +43,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "6476c766006e9f06006b12e400000001000...";
-    ChatID = "580";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
+    ChatID = "644";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
     FolderID  = Directory["result"]["ID"];
