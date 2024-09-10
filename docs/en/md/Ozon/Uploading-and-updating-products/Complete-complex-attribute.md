@@ -14,7 +14,7 @@ sidebar_position: 26
   | Collection | --object | Structure Of String | Complex attribute structure or product structure |
   | AttributeID | --attributeid | String, Number | Attribute ID |
   | ComplexID | --complexid | String, Number | Complex attribute ID |
-  | Values | --values | Arbitrary | Value or array of values to add to <values> field |
+  | Values | --values | Arbitrary | Value or array of values to add to Values field |
 
   
   Returns:  Structure - A collection enhanced with a new attribute

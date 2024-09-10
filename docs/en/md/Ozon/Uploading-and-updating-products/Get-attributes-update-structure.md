@@ -19,7 +19,7 @@ sidebar_position: 22
 <br/>
 
 :::tip
-<Attributes> are structures with complex_id, id and values fields. For their quick creation there is the CompleteComplexAttribute method()
+Attributes are structures with complex_id, id and values fields. For their quick creation there is the CompleteComplexAttribute method()
 :::
 <br/>
 
