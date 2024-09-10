@@ -53,8 +53,8 @@ sidebar_position: 15
 
 ```json title="Результат"
 {
- "code": 7,
- "message": "Is not service company",
- "details": []
+    "result": {
+    "task_id": 123479811
+    }
 }
 ```
