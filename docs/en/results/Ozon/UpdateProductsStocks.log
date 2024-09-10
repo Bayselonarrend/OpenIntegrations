@@ -1,0 +1,16 @@
+﻿ {
+ "result": [
+  {
+   "warehouse_id": 1,
+   "product_id": 0,
+   "offer_id": "143210610",
+   "updated": false,
+   "errors": [
+    {
+     "code": "WAREHOUSE_NOT_FOUND",
+     "message": "warehouse has wrong id: 1"
+    }
+   ]
+  }
+ ]
+}
