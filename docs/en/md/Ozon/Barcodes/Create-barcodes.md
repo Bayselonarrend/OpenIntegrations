@@ -42,10 +42,12 @@ You can create barcodes for a maximum of 100 products per request
 
 ```sh title="CLI command example"
     
-oint ozon CreateBarcodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productids %productids%
+  oint ozon CreateBarcodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productids %productids%
 
 ```
 
 ```json title="Result"
-
+{
+ "errors": []
+}
 ```

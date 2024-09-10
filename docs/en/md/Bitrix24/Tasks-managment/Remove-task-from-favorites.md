@@ -28,13 +28,13 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "1394";
+    TaskID = "1514";
 
     Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "6476c766006e9f06006b12e400000001000...";
-    TaskID = "1396";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
+    TaskID = "1516";
 
     Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID, Token);
 ```
