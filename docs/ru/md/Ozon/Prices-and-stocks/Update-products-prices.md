@@ -54,8 +54,13 @@ sidebar_position: 5
 
 ```json title="Результат"
 {
- "code": 3,
- "message": "proto: (line 11:18): invalid value for int64 type: \"\"",
- "details": []
+ "result": [
+  {
+   "product_id": 1179230269,
+   "offer_id": "143210608",
+   "updated": true,
+   "errors": []
+  }
+ ]
 }
 ```
