@@ -862,7 +862,9 @@ Function GetProductStructure(Val Clear = False) Export
     ItemStructure.Insert("color_image"            , "<marketing color for pictures>");
 
     If Clear Then
-        ItemStructure.Clear();
+        For Each Field In ItemStructure Do
+            ItemStructure.Insert(Field.Key, "");
+        EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -893,7 +895,9 @@ Function GetSimplifiedProductStructure(Val Clear = False) Export
     ItemStructure.Insert("currency_code", "<currency>");
 
     If Clear Then
-        ItemStructure.Clear();
+        For Each Field In ItemStructure Do
+            ItemStructure.Insert(Field.Key, "");
+        EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -922,7 +926,9 @@ Function GetAttributesUpdateStructure(Val Clear = False) Export
     ItemStructure.Insert("attributes", "<array of updatable attributes>");
 
     If Clear Then
-        ItemStructure.Clear();
+        For Each Field In ItemStructure Do
+            ItemStructure.Insert(Field.Key, "");
+        EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -953,7 +959,9 @@ Function GetProductsFilterStructure(Val Clear = False) Export
     ItemStructure.Insert("visibility", "<visibility>");
 
     If Clear Then
-        ItemStructure.Clear();
+        For Each Field In ItemStructure Do
+            ItemStructure.Insert(Field.Key, "");
+        EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -1354,7 +1362,9 @@ Function GetProductStocksStructure(Val Clear = False) Export
     StocksStructure.Insert("warehouse_id", "<Warehouse ID>");
 
     If Clear Then
-        StocksStructure.Clear();
+        For Each Field In StocksStructure Do
+            StocksStructure.Insert(Field.Key, "");
+        EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -1390,7 +1400,9 @@ Function GetProductPriceStructure(Val Clear = False) Export
 
 
     If Clear Then
-        ItemStructure.Clear();
+        For Each Field In ItemStructure Do
+            ItemStructure.Insert(Field.Key, "");
+        EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
