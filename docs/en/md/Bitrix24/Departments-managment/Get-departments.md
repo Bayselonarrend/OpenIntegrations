@@ -31,12 +31,12 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
 
 ```bsl title="Code example"
     URL          = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DepartmentID = "198";
+    DepartmentID = "248";
 
     Result = OPI_Bitrix24.GetDepartments(URL, DepartmentID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "6476c766006e9f06006b12e400000001000...";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
     HeadID = 1;
 
     Result = OPI_Bitrix24.GetDepartments(URL, , , , HeadID, Token);

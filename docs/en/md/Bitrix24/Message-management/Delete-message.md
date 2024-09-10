@@ -28,13 +28,13 @@ Method at API documentation: [im.message.delete](https://dev.1c-bitrix.ru/learni
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    MessageID = "10602";
+    MessageID = "11572";
 
     Result = OPI_Bitrix24.DeleteMessage(URL, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "6476c766006e9f06006b12e400000001000...";
-    MessageID = "10604";
+    Token     = "b529cb66006e9f06006b12e400000001000...";
+    MessageID = "11574";
 
     Result = OPI_Bitrix24.DeleteMessage(URL, MessageID, Token);
 ```

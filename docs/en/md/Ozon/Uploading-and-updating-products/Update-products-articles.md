@@ -31,7 +31,7 @@ Method at API documentation: [post /v1/product/update/offer-id](https://docs.ozo
     APIKey   = "7cc90d26-33e4-499b...";
 
     ArticlesMap = New Map;
-    ArticlesMap.Insert("143210608", "143210609");
+    ArticlesMap.Insert("143210609", "143210612");
 
     Result = OPI_Ozon.UpdateProductsArticles(ClientID, APIKey, ArticlesMap);
 ```

@@ -28,13 +28,13 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    CommentID = "3710";
+    CommentID = "3974";
 
     Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "6476c766006e9f06006b12e400000001000...";
-    CommentID = "3712";
+    Token     = "b529cb66006e9f06006b12e400000001000...";
+    CommentID = "3976";
 
     Result = OPI_Bitrix24.DeleteResultFromComment(URL, CommentID, Token);
 ```

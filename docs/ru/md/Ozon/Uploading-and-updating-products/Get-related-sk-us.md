@@ -42,10 +42,21 @@ sidebar_position: 17
 
 ```sh title="Пример команды CLI"
     
-oint ozon ПолучитьСвязанныеSKU --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
+  oint ozon ПолучитьСвязанныеSKU --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
 
 ```
 
 ```json title="Результат"
-
+{
+ "items": [
+  {
+   "delivery_schema": "SDS",
+   "sku": 1626044001,
+   "product_id": 1108702494,
+   "availability": "AVAILABLE",
+   "deleted_at": null
+  }
+ ],
+ "errors": []
+}
 ```

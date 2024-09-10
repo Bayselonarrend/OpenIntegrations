@@ -42,10 +42,12 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-oint ozon СоздатьШтрихкоды --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productids %productids%
+  oint ozon СоздатьШтрихкоды --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productids %productids%
 
 ```
 
 ```json title="Результат"
-
+{
+ "errors": []
+}
 ```

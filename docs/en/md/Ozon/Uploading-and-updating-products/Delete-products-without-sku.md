@@ -39,7 +39,7 @@ The product must be pre-archived (see ArchiveProducts)
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 
-    Article = "143210608";
+    Article = "143210609";
 
     Result = OPI_Ozon.DeleteProductsWithoutSKU(ClientID, APIKey, Article);
 ```

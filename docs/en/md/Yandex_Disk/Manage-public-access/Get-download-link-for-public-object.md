@@ -25,7 +25,7 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL   = "https://yadi.sk/d/XNPvDXuWUP39gA";
+    URL   = "https://yadi.sk/d/rjIP3w63zqt1Zw";
 
     Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
 ```

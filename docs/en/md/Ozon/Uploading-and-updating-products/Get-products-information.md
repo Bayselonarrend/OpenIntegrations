@@ -39,7 +39,7 @@ Specify the minimum price of the product after all promotions have been applied 
 ```bsl title="Code example"
     ClientID = "2128753";
     APIKey   = "7cc90d26-33e4-499b...";
-    Article  = "143210608";
+    Article  = "143210609";
 
     Result = OPI_Ozon.GetProductsInformation(ClientID, APIKey, , , Article);
 ```

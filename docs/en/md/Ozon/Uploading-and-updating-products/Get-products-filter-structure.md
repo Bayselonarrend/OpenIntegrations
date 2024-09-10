@@ -3,7 +3,7 @@ sidebar_position: 23
 ---
 
 # Get products filter structure
- Gets the structure for products list selecting in the GetProductList function
+ Gets the structure for selecting the list of products
 
 
 
@@ -19,7 +19,9 @@ sidebar_position: 23
 <br/>
 
 :::tip
-The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v2/product/list](https://docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
+Related functions: GetProductList, GetProductsStocks, GetProductsPrices
+
+ The description of the filter fields can be found on the documentation page for product list retrieving method: [post /v2/product/list](https://docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductList)
 :::
 <br/>
 
