@@ -3,7 +3,7 @@ sidebar_position: 26
 ---
 
 # Complete the complex attribute
- Formats the value in attribute format and adds it to the <attributes> array of the collection
+ Formats the value in attribute format and adds it to the Attributes array of the collection
 
 
 
