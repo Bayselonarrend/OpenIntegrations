@@ -1028,7 +1028,7 @@
     NewLine.Параметр    = "--object";
     NewLine.Описание    = "Complex attribute structure or product structure";
     NewLine.Область     = "Uploading and updating products";
-    NewLine.ОписаниеМетода   = "Formats the value in attribute format and adds it to the <attributes> array of the collection";
+    NewLine.ОписаниеМетода   = "Formats the value in attribute format and adds it to the Attributes array of the collection";
 
 
     NewLine = CompositionTable.Add();
