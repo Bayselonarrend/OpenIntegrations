@@ -1057,7 +1057,7 @@
     NewLine.Метод       = "CompleteComplexAttribute";
     NewLine.МетодПоиска = "COMPLETECOMPLEXATTRIBUTE";
     NewLine.Параметр    = "--values";
-    NewLine.Описание    = "Value or array of values to add to <values> field";
+    NewLine.Описание    = "Value or array of values to add to Values field";
     NewLine.Область     = "Uploading and updating products";
 
 

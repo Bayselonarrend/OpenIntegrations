@@ -909,7 +909,7 @@ EndFunction
 // Gets the structure for updating product characteristics in the UpdateProductsAttributes function()
 //
 // Note
-// <Attributes> are structures with complex_id, id and values fields. For their quick creation there is the CompleteComplexAttribute method()
+// Attributes are structures with complex_id, id and values fields. For their quick creation there is the CompleteComplexAttribute method()
 //
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
@@ -1049,7 +1049,7 @@ EndFunction
 // Collection - Structure Of String - Complex attribute structure or product structure - object
 // AttributeID - String, Number - Attribute ID - attributeid
 // ComplexID - String, Number - Complex attribute ID - complexid
-// Values - Arbitrary - Value or array of values to add to <values> field - values
+// Values - Arbitrary - Value or array of values to add to Values field - values
 //
 // Returns:
 // Structure - A collection enhanced with a new attribute
