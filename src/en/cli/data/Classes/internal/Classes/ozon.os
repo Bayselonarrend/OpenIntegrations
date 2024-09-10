@@ -1385,6 +1385,88 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "ozon";
     NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetAvailablePromoProducts";
+    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Promotions managment";
+    NewLine.ОписаниеМетода   = "Gets the products available in the selected promotion";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetAvailablePromoProducts";
+    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Promotions managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetAvailablePromoProducts";
+    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
+    NewLine.Параметр    = "--actionid";
+    NewLine.Описание    = "Promo ID";
+    NewLine.Область     = "Promotions managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetAvailablePromoProducts";
+    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
+    NewLine.Параметр    = "--offset";
+    NewLine.Описание    = "Offst of items list (optional, def. val. - Empty value)";
+    NewLine.Область     = "Promotions managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetCurrentPromoProducts";
+    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
+    NewLine.Параметр    = "--clientid";
+    NewLine.Описание    = "Client identifier";
+    NewLine.Область     = "Promotions managment";
+    NewLine.ОписаниеМетода   = "Gets the products featured in the selected promotion";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetCurrentPromoProducts";
+    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
+    NewLine.Параметр    = "--apikey";
+    NewLine.Описание    = "API key";
+    NewLine.Область     = "Promotions managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetCurrentPromoProducts";
+    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
+    NewLine.Параметр    = "--actionid";
+    NewLine.Описание    = "Promo ID";
+    NewLine.Область     = "Promotions managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
+    NewLine.Метод       = "GetCurrentPromoProducts";
+    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
+    NewLine.Параметр    = "--offset";
+    NewLine.Описание    = "Offst of items list (optional, def. val. - Empty value)";
+    NewLine.Область     = "Promotions managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "ozon";
+    NewLine.Модуль      = "OPI_Ozon";
     NewLine.Метод       = "GetWarehousesList";
     NewLine.МетодПоиска = "GETWAREHOUSESLIST";
     NewLine.Параметр    = "--clientid";
@@ -1400,88 +1482,6 @@
     NewLine.МетодПоиска = "GETWAREHOUSESLIST";
     NewLine.Параметр    = "--apikey";
     NewLine.Описание    = "API key";
-    NewLine.Область     = "Warehouses managment";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetAvailablePromoProducts";
-    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
-    NewLine.Параметр    = "--clientid";
-    NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Warehouses managment";
-    NewLine.ОписаниеМетода   = "Gets the products available in the selected promotion";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetAvailablePromoProducts";
-    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
-    NewLine.Параметр    = "--apikey";
-    NewLine.Описание    = "API key";
-    NewLine.Область     = "Warehouses managment";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetAvailablePromoProducts";
-    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
-    NewLine.Параметр    = "--actionid";
-    NewLine.Описание    = "Promo ID";
-    NewLine.Область     = "Warehouses managment";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetAvailablePromoProducts";
-    NewLine.МетодПоиска = "GETAVAILABLEPROMOPRODUCTS";
-    NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offst of items list (optional, def. val. - Empty value)";
-    NewLine.Область     = "Warehouses managment";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetCurrentPromoProducts";
-    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
-    NewLine.Параметр    = "--clientid";
-    NewLine.Описание    = "Client identifier";
-    NewLine.Область     = "Warehouses managment";
-    NewLine.ОписаниеМетода   = "Gets the products featured in the selected promotion";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetCurrentPromoProducts";
-    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
-    NewLine.Параметр    = "--apikey";
-    NewLine.Описание    = "API key";
-    NewLine.Область     = "Warehouses managment";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetCurrentPromoProducts";
-    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
-    NewLine.Параметр    = "--actionid";
-    NewLine.Описание    = "Promo ID";
-    NewLine.Область     = "Warehouses managment";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "ozon";
-    NewLine.Модуль      = "OPI_Ozon";
-    NewLine.Метод       = "GetCurrentPromoProducts";
-    NewLine.МетодПоиска = "GETCURRENTPROMOPRODUCTS";
-    NewLine.Параметр    = "--offset";
-    NewLine.Описание    = "Offst of items list (optional, def. val. - Empty value)";
     NewLine.Область     = "Warehouses managment";
 
     Return CompositionTable;
