@@ -1040,7 +1040,7 @@ Function AddProductVideoCover(ItemStructure, Val URL) Export
 EndFunction
 
 // Complete the complex attribute
-// Formats the value in attribute format and adds it to the <attributes> array of the collection
+// Formats the value in attribute format and adds it to the Attributes array of the collection
 //
 // Note
 // In 1C the method can be used as a procedure, without getting a return value. Return value is required for CLI version
