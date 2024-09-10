@@ -862,9 +862,7 @@ Function GetProductStructure(Val Clear = False) Export
     ItemStructure.Insert("color_image"            , "<marketing color for pictures>");
 
     If Clear Then
-        For Each Field In ItemStructure Do
-            Field.Value = "";
-        EndDo;
+        ItemStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -895,9 +893,7 @@ Function GetSimplifiedProductStructure(Val Clear = False) Export
     ItemStructure.Insert("currency_code", "<currency>");
 
     If Clear Then
-        For Each Field In ItemStructure Do
-            Field.Value = "";
-        EndDo;
+        ItemStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -926,9 +922,7 @@ Function GetAttributesUpdateStructure(Val Clear = False) Export
     ItemStructure.Insert("attributes", "<array of updatable attributes>");
 
     If Clear Then
-        For Each Field In ItemStructure Do
-            Field.Value = "";
-        EndDo;
+        ItemStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -959,9 +953,7 @@ Function GetProductsFilterStructure(Val Clear = False) Export
     ItemStructure.Insert("visibility", "<visibility>");
 
     If Clear Then
-        For Each Field In ItemStructure Do
-            Field.Value = "";
-        EndDo;
+        ItemStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -1362,9 +1354,7 @@ Function GetProductStocksStructure(Val Clear = False) Export
     StocksStructure.Insert("warehouse_id", "<Warehouse ID>");
 
     If Clear Then
-        For Each Field In StocksStructure Do
-            Field.Value = "";
-        EndDo;
+        StocksStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -1400,9 +1390,7 @@ Function GetProductPriceStructure(Val Clear = False) Export
 
 
     If Clear Then
-        For Each Field In ItemStructure Do
-            Field.Value = "";
-        EndDo;
+        ItemStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
