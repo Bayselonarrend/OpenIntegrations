@@ -40,10 +40,19 @@ Method at API documentation: [post /v1/barcode/add](https://docs.ozon.ru/api/sel
 
 ```sh title="CLI command example"
     
-oint ozon BindBarcodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --barcodes %barcodes%
+  oint ozon BindBarcodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --barcodes %barcodes%
 
 ```
 
 ```json title="Result"
-
+{
+ "errors": [
+  {
+   "barcode": "112233",
+   "code": "item_not_found",
+   "error": "sellerID of item 1626044001 is not 2128753",
+   "sku": 1626044001
+  }
+ ]
+}
 ```

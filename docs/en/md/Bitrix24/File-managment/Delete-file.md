@@ -28,13 +28,13 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FileID = "6872";
+    FileID = "7578";
 
     Result = OPI_Bitrix24.DeleteFile(URL, FileID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "6476c766006e9f06006b12e400000001000...";
-    FileID = "6874";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
+    FileID = "7580";
 
     Result = OPI_Bitrix24.DeleteFile(URL, FileID, Token);
 ```
