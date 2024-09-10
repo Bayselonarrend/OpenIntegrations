@@ -1015,9 +1015,7 @@ Function GetTasksFilterStructure(Val Clear = False) Export
         , "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>");
 
     If Clear Then
-        For Each Filter In FilterStructure Do
-            Filter.Value = "";
-        EndDo;
+        FilterStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -1606,9 +1604,7 @@ Function GetCommentStructure(Val Clear = False) Export
     FieldsStructure.Insert("UF_FORUM_MESSAGE_DOC" , "<Array of files from disk to attach>");
 
     If Clear Then
-        For Each Field In FieldsStructure Do
-            Field.Value = "";
-        EndDo;
+        FieldsStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -3372,9 +3368,7 @@ Function GetChatStructure(Val Clear = False) Export
     ChatStructure.Insert("OWNER_ID"   , "<ID of chat owner. Current user by default>");
 
     If Clear Then
-        For Each Element In ChatStructure Do
-            Element.Value = "";
-        EndDo;
+        ChatStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -4062,9 +4056,7 @@ Function GetUserFilterStructure(Val Clear = False) Export
     FilterStructure.Insert("USER_TYPE"         , "<type: employee, extranet, email>");
 
     If Clear Then
-        For Each Filter In FilterStructure Do
-            Filter.Value = "";
-        EndDo;
+        FilterStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -4255,9 +4247,7 @@ Function GetLeadFilterStructure(Val Clear = False) Export
     FilterStructure.Insert("TITLE"              , "<lead name (can be searched using the template [%_])>");
 
     If Clear Then
-        For Each Filter In FilterStructure Do
-            Filter.Value = "";
-        EndDo;
+        FilterStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
@@ -4452,9 +4442,7 @@ Function GetDealsFilterStructure(Val Clear = False) Export
     FilterStructure.Insert("TYPE_ID"            , "<deal type>");
 
     If Clear Then
-        For Each Filter In FilterStructure Do
-            Filter.Value = "";
-        EndDo;
+        FilterStructure.Clear();
     EndIf;
 
     //@skip-check constructor-function-return-section
