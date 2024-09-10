@@ -3309,9 +3309,12 @@ Procedure OzonAPI_PricesAndStocks() Export
 
     Ozon_GetProductsStocks(TestParameters);
     Ozon_UpdateProductsPrices(TestParameters);
+    Ozon_UpdateProductsStocks(TestParameters);
     Ozon_GetProductsPrices(TestParameters);
     Ozon_GetDiscountInformation(TestParameters);
     Ozon_SetProductDiscount(TestParameters);
+    Ozon_GetProductStocksStructure(TestParameters);
+    Ozon_GetProductPriceStructure(TestParameters);
 
 EndProcedure
 
@@ -3383,7 +3386,11 @@ EndFunction
 #Region Checks
 
 Procedure Check_Empty(Val Result)
-    OPI_TestDataRetrieval.ExpectsThat(ValueIsFilled(Result)).Равно(False);
+
+    If Not Lower(String(Result)) = "null" Then
+        OPI_TestDataRetrieval.ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
 EndProcedure
 
 Procedure Check_String(Val Result)
@@ -12687,6 +12694,26 @@ Procedure Ozon_UpdateProductsPrices(FunctionParameters)
 
 EndProcedure
 
+Procedure Ozon_UpdateProductsStocks(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Stocks = New Structure;
+    Stocks.Insert("offer_id"    , "143210610");
+    Stocks.Insert("product_id"  , ProductID);
+    Stocks.Insert("stock"       , 20);
+    Stocks.Insert("warehouse_id", 1);
+
+    Result = OPI_Ozon.UpdateProductsStocks(ClientID, APIKey, Stocks);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsStocks", "Ozon");
+
+EndProcedure
+
 Procedure Ozon_GetProductsPrices(FunctionParameters)
 
     ClientID = FunctionParameters["Ozon_ClientID"];
@@ -12774,6 +12801,30 @@ Procedure Ozon_GetCurrentPromoProducts(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetCurrentPromoProducts", "Ozon");
+
+EndProcedure
+
+Procedure Ozon_GetProductStocksStructure(FunctionParameters)
+
+    Result = OPI_Ozon.GetProductStocksStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductStocksStructure", "Ozon");
+
+    Check_Structure(Result);
+
+EndProcedure
+
+Procedure Ozon_GetProductPriceStructure(FunctionParameters)
+
+    Result = OPI_Ozon.GetProductPriceStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductPriceStructure", "Ozon");
+
+    Check_Structure(Result);
 
 EndProcedure
 

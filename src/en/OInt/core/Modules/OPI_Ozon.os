@@ -1354,21 +1354,21 @@ Function GetProductStocksStructure(Val Clear = False) Export
 
     OPI_TypeConversion.GetBoolean(Clear);
 
-    ItemStructure = New Structure;
+    StocksStructure = New Structure;
 
-    ItemStructure.Insert("offer_id"    , "<article>");
-    ItemStructure.Insert("product_id"  , "<Product ID>");
-    ItemStructure.Insert("stock"       , "<amount>");
-    ItemStructure.Insert("warehouse_id", "<Warehouse ID>");
+    StocksStructure.Insert("offer_id"    , "<article>");
+    StocksStructure.Insert("product_id"  , "<Product ID>");
+    StocksStructure.Insert("stock"       , "<amount>");
+    StocksStructure.Insert("warehouse_id", "<Warehouse ID>");
 
     If Clear Then
-        For Each Field In ItemStructure Do
+        For Each Field In StocksStructure Do
             Field.Value = "";
         EndDo;
     EndIf;
 
     //@skip-check constructor-function-return-section
-    Return ItemStructure;
+    Return StocksStructure;
 
 EndFunction
 
