@@ -1,0 +1,11 @@
+﻿    ClientID  = "2128753";
+    APIKey    = "7cc90d26-33e4-499b...";
+    ProductID = "1111588191";
+
+    Stocks = New Structure;
+    Stocks.Insert("offer_id"    , "143210610");
+    Stocks.Insert("product_id"  , ProductID);
+    Stocks.Insert("stock"       , 20);
+    Stocks.Insert("warehouse_id", 1);
+
+    Result = OPI_Ozon.UpdateProductsStocks(ClientID, APIKey, Stocks);
