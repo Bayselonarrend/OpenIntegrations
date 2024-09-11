@@ -46,10 +46,6 @@
 
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/bayselonarrend/OpenIntegrations/total?logo=github)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
 
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/icons.png" align="right">
-
-<br><br>
-
 #### Релизы библиотеки выходят в пяти вариантах:
 - Как CLI приложение для Windows и Linux (exe, rpm, deb)
 - Как XML выгрузка расширения
