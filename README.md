@@ -121,10 +121,11 @@ ___
 >- [Библиотека для работы с Bitrix24: живая лента, задачи, файлы и личные сообщения](https://infostart.ru/1c/articles/2148213/)<br>
 >- [Работа с онлайн сервисами из консоли через OInt CLI](https://infostart.ru/1c/articles/2159665/)<br>
 
-<img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/heartnstar.png?1" align="right" width="384">
-
 <br>
+
 
 >- Открытый Пакет интеграций (OpenIntegrations)<br>
 >Licensed under the MIT License<br>
 >Список зависимостей находится в файле NOTICE<br>
+
+
