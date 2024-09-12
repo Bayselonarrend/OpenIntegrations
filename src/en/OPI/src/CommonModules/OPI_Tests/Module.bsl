@@ -764,211 +764,35 @@ EndProcedure
 
 #Region Viber
 
-Procedure Viber_GetChannelInfo() Export
+Procedure Viber_DataRetrieval() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    Result = OPI_Viber.GetChannelInformation(Token);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelToken"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelAdminID", TestParameters);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelInformation");
-
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure Viber_GetUserData() Export
-
-    Token  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    User   = OPI_TestDataRetrieval.GetParameter("Viber_ChannelAdminID");
-    Result = OPI_Viber.GetUserData(Token, User);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["chat_hostname"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["status_message"]).Заполнено();
-    OPI_Tools.Pause(5);
+    Viber_GetChannelInformation(TestParameters);
+    Viber_GetUserData(TestParameters);
+    Viber_GetOnlineUsers(TestParameters);
 
 EndProcedure
 
-Procedure Viber_GetOnlineUsers() Export
-
-    Token  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    User   = OPI_TestDataRetrieval.GetParameter("Viber_UserID");
-    Result = OPI_Viber.GetOnlineUsers(Token, User);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetOnlineUsers");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["users"]).ИмеетТип("Array");
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure Viber_SendTextMessage() Export
-
-    Text          = "TestMessage";
-    ChannelToken  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    BotToken      = OPI_TestDataRetrieval.GetParameter("Viber_Token");
-    User          = OPI_TestDataRetrieval.GetParameter("Viber_UserID");
-    Administrator = OPI_TestDataRetrieval.GetParameter("Viber_ChannelAdminID");
-
-    ButtonArray = New Array;
-    ButtonArray.Add("Button 1");
-    ButtonArray.Add("Button 2");
-    ButtonArray.Add("Button 3");
-
-    Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
-
-    Result = OPI_Viber.SendTextMessage(BotToken, Text, User, False, Keyboard);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    Result = OPI_Viber.SendTextMessage(ChannelToken, Text, Administrator, True, Keyboard);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure Viber_SendImage() Export
-
-    Text          = "TestMessage";
-    Image         = OPI_TestDataRetrieval.GetParameter("Picture");
-    ChannelToken  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    BotToken      = OPI_TestDataRetrieval.GetParameter("Viber_Token");
-    User          = OPI_TestDataRetrieval.GetParameter("Viber_UserID");
-    Administrator = OPI_TestDataRetrieval.GetParameter("Viber_ChannelAdminID");
-
-    Result = OPI_Viber.SendImage(BotToken, Image, User, False, Text);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendImage");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    Result = OPI_Viber.SendImage(ChannelToken, Image, Administrator, True, Text);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendImage");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure Viber_SendFile() Export
-
-    Document      = OPI_TestDataRetrieval.GetParameter("Document");
-    ChannelToken  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    BotToken      = OPI_TestDataRetrieval.GetParameter("Viber_Token");
-    User          = OPI_TestDataRetrieval.GetParameter("Viber_UserID");
-    Administrator = OPI_TestDataRetrieval.GetParameter("Viber_ChannelAdminID");
-
-    Result = OPI_Viber.SendFile(BotToken, Document, User, False, "docx");
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    Result = OPI_Viber.SendFile(ChannelToken, Document, Administrator, True, "docx");
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure Viber_SendContact() Export
-
-    Name          = "Petr Petrov";
-    Phone         = "+123456789";
-    ChannelToken  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    BotToken      = OPI_TestDataRetrieval.GetParameter("Viber_Token");
-    User          = OPI_TestDataRetrieval.GetParameter("Viber_UserID");
-    Administrator = OPI_TestDataRetrieval.GetParameter("Viber_ChannelAdminID");
-
-    Result = OPI_Viber.SendContact(BotToken, Name, Phone, User, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendContact");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    Result = OPI_Viber.SendContact(ChannelToken, Name, Phone, Administrator, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendContact");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure Viber_SendLocation() Export
-
-    Latitude      = "48.87373649724122";
-    Longitude     = "2.2954639195323967";
-    ChannelToken  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    BotToken      = OPI_TestDataRetrieval.GetParameter("Viber_Token");
-    User          = OPI_TestDataRetrieval.GetParameter("Viber_UserID");
-    Administrator = OPI_TestDataRetrieval.GetParameter("Viber_ChannelAdminID");
-
-    Result = OPI_Viber.SendLocation(BotToken, Latitude, Longitude, User, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    Result = OPI_Viber.SendLocation(ChannelToken, Latitude, Longitude, Administrator, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure Viber_SendLink() Export
-
-    URL           = "https://github.com/Bayselonarrend/OpenIntegrations";
-    ChannelToken  = OPI_TestDataRetrieval.GetParameter("Viber_ChannelToken");
-    BotToken      = OPI_TestDataRetrieval.GetParameter("Viber_Token");
-    User          = OPI_TestDataRetrieval.GetParameter("Viber_UserID");
-    Administrator = OPI_TestDataRetrieval.GetParameter("Viber_ChannelAdminID");
-
-    Result = OPI_Viber.SendLink(BotToken, URL, User, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLink");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    Result = OPI_Viber.SendLink(ChannelToken, URL, Administrator, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLink");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
-    Check_ViberOk(Result);
-
-    OPI_Tools.Pause(5);
+Procedure Viber_MessagesSending() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelToken"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelAdminID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_Token"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_UserID"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"            , TestParameters);
+
+    Viber_CreateKeyboardFromArrayButton(TestParameters);
+    Viber_SendTextMessage(TestParameters);
+    Viber_SendImage(TestParameters);
+    Viber_SendFile(TestParameters);
+    Viber_SendContact(TestParameters);
+    Viber_SendLocation(TestParameters);
+    Viber_SendLink(TestParameters);
 
 EndProcedure
 
@@ -3842,6 +3666,29 @@ Procedure Check_ViberOk(Val Result)
 
 EndProcedure
 
+Procedure Check_ViberUser(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["chat_hostname"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["status_message"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_ViberOnline(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["status_message"]).Равно("ok");
+    OPI_TestDataRetrieval.ExpectsThat(Result["status"]).Равно(0);
+    OPI_TestDataRetrieval.ExpectsThat(Result["users"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_ViberMessage(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["message_token"]).Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["status_message"]).Равно("ok");
+    OPI_TestDataRetrieval.ExpectsThat(Result["status"]).Равно(0);
+
+EndProcedure
+
 Procedure Check_NotionObject(Val Result, Val View = "page")
 
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -6159,6 +6006,589 @@ Procedure VK_UploadVideoToServer(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer", "VK");
 
     Check_VKVideo(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
+#Region YandexDisk
+
+Procedure YandexDisk_GetDiskInfo(FunctionParameters)
+
+    Token  = FunctionParameters["YandexDisk_Token"];
+    Result = OPI_YandexDisk.GetDiskInformation(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInformation", "YandexDisk");
+
+    Check_YaDiskDrive(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_CreateFolder(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = "/" + String(New UUID);
+
+    Result = OPI_YandexDisk.CreateFolder(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "YandexDisk");
+
+    Check_YaDiskFolder(Result, Path);
+
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_UploadFileByURL(FunctionParameters)
+
+    Token   = FunctionParameters["YandexDisk_Token"];
+    Address = FunctionParameters["Picture"];
+    Path    = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.UploadFileByURL(Token, Path, Address);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL", "YandexDisk");
+
+    Check_YaDiskProc(Result);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_FileByURLPath", Path);
+    FunctionParameters.Insert("YandexDisk_FileByURLPath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
+
+    Result = OPI_YandexDisk.GetObject(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path);
+
+EndProcedure
+
+Procedure YandexDisk_DeleteObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
+
+    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    // END
+
+    OPI_Tools.Pause(5);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "YandexDisk");
+
+    Check_Empty(Result);
+
+EndProcedure
+
+Procedure YandexDisk_UploadFile(FunctionParameters)
+
+    Path1 = "/" + String(New UUID) + ".png";
+    Path2 = "/" + String(New UUID) + ".png";
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Image = FunctionParameters["Picture"]; // URL
+
+    TFN = GetTempFileName("png"); // Path
+    FileCopy(Image, TFN);
+
+    Result = OPI_YandexDisk.UploadFile(Token, Path1, Image, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (URL)", "YandexDisk");
+
+    Check_Empty(Result); // SKIP
+
+    OPI_Tools.Pause(5); // SKIP
+
+    Result = OPI_YandexDisk.UploadFile(Token, Path2, TFN, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "YandexDisk");
+
+    Check_Empty(Result);
+
+    OPI_Tools.Pause(5);
+
+    Result = OPI_YandexDisk.DeleteObject(Token, Path1, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (URL)", "YandexDisk");
+
+    Check_Empty(Result);
+
+    Result = OPI_YandexDisk.DeleteObject(Token, Path2, False);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (Path)", "YandexDisk");
+
+    Check_Empty(Result);
+
+    DeleteFiles(TFN);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_CreateObjectCopy(FunctionParameters)
+
+    Token    = FunctionParameters["YandexDisk_Token"];
+    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+    Path     = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateObjectCopy", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_CopyFilePath", Path);
+    FunctionParameters.Insert("YandexDisk_CopyFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetDownloadLink(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_PathForLink"];
+
+    Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLink", "YandexDisk");
+
+    Check_YaDiskLink(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_DownloadFile(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_PathForLink"];
+
+    Result = OPI_YandexDisk.DownloadFile(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "YandexDisk");
+
+    Check_BinaryData(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetFilesList(FunctionParameters)
+
+    Token           = FunctionParameters["YandexDisk_Token"];
+    Count           = 2;
+    OffsetFromStart = 1;
+    FilterByType    = "image";
+
+    Result = OPI_YandexDisk.GetFilesList(Token, Count, OffsetFromStart, FilterByType);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "YandexDisk");
+
+    Check_YaDiskFilesList(Result, Count, OffsetFromStart);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_MoveObject(FunctionParameters)
+
+    Token    = FunctionParameters["YandexDisk_Token"];
+    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+    Path     = "/" + String(New UUID) + ".png";
+
+    Result = OPI_YandexDisk.MoveObject(Token, Original, Path, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_NewFilePath", Path);
+    FunctionParameters.Insert("YandexDisk_NewFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_GetPublishedObjectsList(FunctionParameters)
+
+    Token           = FunctionParameters["YandexDisk_Token"];
+    Count           = 2;
+    OffsetFromStart = 1;
+
+    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, OffsetFromStart);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectsList", "YandexDisk");
+
+    Check_YaDiskFilesList(Result, Count, OffsetFromStart);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure YandexDisk_PublishObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
+
+    Result = OPI_YandexDisk.PublishObject(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PublishObject", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path, True);
+
+    URL = Result["public_url"];
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_PublicURL", URL);
+    FunctionParameters.Insert("YandexDisk_PublicURL", URL);
+
+EndProcedure
+
+Procedure YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLinkForPublicObject", "YandexDisk");
+
+    Check_YaDiskLink(Result);
+
+EndProcedure
+
+Procedure YandexDisk_GetPublicObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Result = OPI_YandexDisk.GetPublicObject(Token, URL);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject");
+
+    Check_YaDiskPath(Result, "", True);
+
+EndProcedure
+
+Procedure YandexDisk_SavePublicObjectToDisk(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk");
+
+    Check_YaDiskPath(Result, "", False);
+
+EndProcedure
+
+Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
+
+    Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CancelObjectPublication", "YandexDisk");
+
+    Check_YaDiskPath(Result, Path, False);
+
+EndProcedure
+
+#EndRegion
+
+#Region Viber
+
+Procedure Viber_GetChannelInformation(FunctionParameters)
+
+    Token  = FunctionParameters["Viber_ChannelToken"];
+    Result = OPI_Viber.GetChannelInformation(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelInformation", "Viber");
+
+    Check_ViberOk(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_GetUserData(FunctionParameters)
+
+    Token  = FunctionParameters["Viber_ChannelToken"];
+    UserID = FunctionParameters["Viber_ChannelAdminID"];
+
+    Result = OPI_Viber.GetUserData(Token, UserID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData", "Viber");
+
+    Check_ViberUser(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_GetOnlineUsers(FunctionParameters)
+
+    Token  = FunctionParameters["Viber_ChannelToken"];
+    UserID = FunctionParameters["Viber_ChannelAdminID"];
+
+    Result = OPI_Viber.GetOnlineUsers(Token, UserID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOnlineUsers", "Viber");
+
+    Check_ViberOnline(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_CreateKeyboardFromArrayButton(FunctionParameters)
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+    ButtonArray.Add("Button 3");
+
+    Result = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateKeyboardFromArrayButton", "Viber");
+
+EndProcedure
+
+Procedure Viber_SendTextMessage(FunctionParameters)
+
+    Text = "TestMessage";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+    ButtonArray.Add("Button 3");
+
+    Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
+
+    Result = OPI_Viber.SendTextMessage(Token, Text, UserID, SendingToChannel, Keyboard);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Viber"); // SKIP
+    Check_ViberMessage(Result); // SKIP
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendTextMessage(Token, Text, UserID, SendingToChannel, Keyboard);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (channel)", "Viber");
+
+    Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_SendImage(FunctionParameters)
+
+    Description = "TestMessage";
+    URL         = FunctionParameters["Picture"];
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendImage(Token, URL, UserID, SendingToChannel, Description);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendImage", "Viber"); // SKIP
+    Check_ViberMessage(Result); // SKIP
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendImage(Token, URL, UserID, SendingToChannel, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPicture (channel)", "Viber");
+
+    Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_SendFile(FunctionParameters)
+
+    Extension = "docx";
+    URL       = FunctionParameters["Document"];
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendFile(Token, URL, UserID, SendingToChannel, Extension);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "Viber"); // SKIP
+    Check_ViberMessage(Result); // SKIP
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendFile(Token, URL, UserID, SendingToChannel, Extension);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (channel)", "Viber");
+
+    Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_SendContact(FunctionParameters)
+
+    Name  = "Petr Petrov";
+    Phone = "+123456789";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendContact(Token, Name, Phone, UserID, SendingToChannel);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendContact", "Viber"); // SKIP
+    Check_ViberMessage(Result); // SKIP
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendContact(Token, Name, Phone, UserID, SendingToChannel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendContact (channel)", "Viber");
+
+    Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_SendLocation(FunctionParameters)
+
+    Latitude  = "48.87373649724122";
+    Longitude = "2.2954639195323967";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation", "Viber"); // SKIP
+    Check_ViberMessage(Result); // SKIP
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation (channel)", "Viber");
+
+    Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Viber_SendLink(FunctionParameters)
+
+    URL = "https://github.com/Bayselonarrend/OpenIntegrations";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendLink(Token, URL, UserID, SendingToChannel);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLink", "Viber"); // SKIP
+    Check_ViberMessage(Result); // SKIP
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendLink(Token, URL, UserID, SendingToChannel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLink (channel)", "Viber");
+
+    Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
 
@@ -10901,336 +11331,6 @@ Procedure Bitrix24_GetDealsList(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetDealsList", "Bitrix24");
 
     Check_BitrixArray(Result);
-
-EndProcedure
-
-#EndRegion
-
-#Region YandexDisk
-
-Procedure YandexDisk_GetDiskInfo(FunctionParameters)
-
-    Token  = FunctionParameters["YandexDisk_Token"];
-    Result = OPI_YandexDisk.GetDiskInformation(Token);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInformation", "YandexDisk");
-
-    Check_YaDiskDrive(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_CreateFolder(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = "/" + String(New UUID);
-
-    Result = OPI_YandexDisk.CreateFolder(Token, Path);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "YandexDisk");
-
-    Check_YaDiskFolder(Result, Path);
-
-    OPI_YandexDisk.DeleteObject(Token, Path, False);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_UploadFileByURL(FunctionParameters)
-
-    Token   = FunctionParameters["YandexDisk_Token"];
-    Address = FunctionParameters["Picture"];
-    Path    = "/" + String(New UUID) + ".png";
-
-    Result = OPI_YandexDisk.UploadFileByURL(Token, Path, Address);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL", "YandexDisk");
-
-    Check_YaDiskProc(Result);
-
-    OPI_TestDataRetrieval.WriteParameter("YandexDisk_FileByURLPath", Path);
-    FunctionParameters.Insert("YandexDisk_FileByURLPath", Path);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_GetObject(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
-
-    Result = OPI_YandexDisk.GetObject(Token, Path);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "YandexDisk");
-
-    Check_YaDiskPath(Result, Path);
-
-EndProcedure
-
-Procedure YandexDisk_DeleteObject(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
-
-    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
-
-    // END
-
-    OPI_Tools.Pause(5);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "YandexDisk");
-
-    Check_Empty(Result);
-
-EndProcedure
-
-Procedure YandexDisk_UploadFile(FunctionParameters)
-
-    Path1 = "/" + String(New UUID) + ".png";
-    Path2 = "/" + String(New UUID) + ".png";
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Image = FunctionParameters["Picture"]; // URL
-
-    TFN = GetTempFileName("png"); // Path
-    FileCopy(Image, TFN);
-
-    Result = OPI_YandexDisk.UploadFile(Token, Path1, Image, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (URL)", "YandexDisk");
-
-    Check_Empty(Result); // SKIP
-
-    OPI_Tools.Pause(5); // SKIP
-
-    Result = OPI_YandexDisk.UploadFile(Token, Path2, TFN, True);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "YandexDisk");
-
-    Check_Empty(Result);
-
-    OPI_Tools.Pause(5);
-
-    Result = OPI_YandexDisk.DeleteObject(Token, Path1, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (URL)", "YandexDisk");
-
-    Check_Empty(Result);
-
-    Result = OPI_YandexDisk.DeleteObject(Token, Path2, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (Path)", "YandexDisk");
-
-    Check_Empty(Result);
-
-    DeleteFiles(TFN);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_CreateObjectCopy(FunctionParameters)
-
-    Token    = FunctionParameters["YandexDisk_Token"];
-    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
-    Path     = "/" + String(New UUID) + ".png";
-
-    Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateObjectCopy", "YandexDisk");
-
-    Check_YaDiskPath(Result, Path);
-
-    OPI_TestDataRetrieval.WriteParameter("YandexDisk_CopyFilePath", Path);
-    FunctionParameters.Insert("YandexDisk_CopyFilePath", Path);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_GetDownloadLink(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = FunctionParameters["YandexDisk_PathForLink"];
-
-    Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLink", "YandexDisk");
-
-    Check_YaDiskLink(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_DownloadFile(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = FunctionParameters["YandexDisk_PathForLink"];
-
-    Result = OPI_YandexDisk.DownloadFile(Token, Path);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "YandexDisk");
-
-    Check_BinaryData(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_GetFilesList(FunctionParameters)
-
-    Token           = FunctionParameters["YandexDisk_Token"];
-    Count           = 2;
-    OffsetFromStart = 1;
-    FilterByType    = "image";
-
-    Result = OPI_YandexDisk.GetFilesList(Token, Count, OffsetFromStart, FilterByType);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "YandexDisk");
-
-    Check_YaDiskFilesList(Result, Count, OffsetFromStart);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_MoveObject(FunctionParameters)
-
-    Token    = FunctionParameters["YandexDisk_Token"];
-    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
-    Path     = "/" + String(New UUID) + ".png";
-
-    Result = OPI_YandexDisk.MoveObject(Token, Original, Path, True);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "YandexDisk");
-
-    Check_YaDiskPath(Result, Path);
-
-    OPI_TestDataRetrieval.WriteParameter("YandexDisk_NewFilePath", Path);
-    FunctionParameters.Insert("YandexDisk_NewFilePath", Path);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_GetPublishedObjectsList(FunctionParameters)
-
-    Token           = FunctionParameters["YandexDisk_Token"];
-    Count           = 2;
-    OffsetFromStart = 1;
-
-    Result = OPI_YandexDisk.GetPublishedObjectsList(Token, Count, OffsetFromStart);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectsList", "YandexDisk");
-
-    Check_YaDiskFilesList(Result, Count, OffsetFromStart);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure YandexDisk_PublishObject(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
-
-    Result = OPI_YandexDisk.PublishObject(Token, Path);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "PublishObject", "YandexDisk");
-
-    Check_YaDiskPath(Result, Path, True);
-
-    URL = Result["public_url"];
-    OPI_TestDataRetrieval.WriteParameter("YandexDisk_PublicURL", URL);
-    FunctionParameters.Insert("YandexDisk_PublicURL", URL);
-
-EndProcedure
-
-Procedure YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    URL   = FunctionParameters["YandexDisk_PublicURL"];
-
-    Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLinkForPublicObject", "YandexDisk");
-
-    Check_YaDiskLink(Result);
-
-EndProcedure
-
-Procedure YandexDisk_GetPublicObject(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    URL   = FunctionParameters["YandexDisk_PublicURL"];
-
-    Result = OPI_YandexDisk.GetPublicObject(Token, URL);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject");
-
-    Check_YaDiskPath(Result, "", True);
-
-EndProcedure
-
-Procedure YandexDisk_SavePublicObjectToDisk(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    URL   = FunctionParameters["YandexDisk_PublicURL"];
-
-    Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk");
-
-    Check_YaDiskPath(Result, "", False);
-
-EndProcedure
-
-Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
-
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
-
-    Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CancelObjectPublication", "YandexDisk");
-
-    Check_YaDiskPath(Result, Path, False);
 
 EndProcedure
 
