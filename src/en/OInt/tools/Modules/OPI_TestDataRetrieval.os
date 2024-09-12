@@ -177,15 +177,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "Twitter_CreateTweetWithGif"   , "Tweet with gif"         , Twitter);
     NewTest(TestTable, "Twitter_CreateTweetWithPoll"  , "Tweet with poll"        , Twitter);
 
-    NewTest(TestTable, "Viber_GetChannelInfo"  , "Get channel info"  , Viber);
-    NewTest(TestTable, "Viber_GetUserData"     , "Get user data"     , Viber);
-    NewTest(TestTable, "Viber_GetOnlineUsers"  , "Get online users"  , Viber);
-    NewTest(TestTable, "Viber_SendTextMessage" , "Send text message" , Viber);
-    NewTest(TestTable, "Viber_SendImage"       , "Send image"        , Viber);
-    NewTest(TestTable, "Viber_SendFile"        , "Send file"         , Viber);
-    NewTest(TestTable, "Viber_SendContact"     , "Send contact"      , Viber);
-    NewTest(TestTable, "Viber_SendLocation"    , "Send location"     , Viber);
-    NewTest(TestTable, "Viber_SendLink"        , "Send link"         , Viber);
+    NewTest(TestTable, "Viber_DataRetrieval"   , "Data retrieval"   , Viber);
+    NewTest(TestTable, "Viber_MessagesSending" , "Messages sending" , Viber);
 
     NewTest(TestTable, "Notion_CreatePage"           , "Create page"             , Notion);
     NewTest(TestTable, "Notion_CreateEditDatabase"   , "Create/Edit database"    , Notion);
