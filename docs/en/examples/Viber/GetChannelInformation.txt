@@ -1,3 +1,2 @@
-﻿  
-  Response = OPI_Viber.GetChannelInformation(ChannelToken); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+﻿    Token  = "523b58ba82afffaa-7ef3b426...";
+    Result = OPI_Viber.GetChannelInformation(Token);
