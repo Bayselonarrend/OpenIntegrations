@@ -179,11 +179,25 @@ Function ProcessTMAData(Val DataString, Val Token) Export
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(DataString);
 
-    DataString    = DecodeString(DataString, StringEncodingMethod.URLencoding);
-    DataStructure = OPI_Tools.RequestParametersToMap(DataString);
-    KeyString     = "WebAppData";
-    Hash          = "";
-    BinaryKey     = GetBinaryDataFromString(KeyString);
+    If StrStartsWith(DataString, "?") Then
+        DataString = Right(DataString, StrLen(DataString) - 1);
+    EndIf;
+
+    EncodingString = OPI_Tools.RequestParametersToMap(DataString);
+    DataStructure  = New Map;
+
+    For Each DataElement In EncodingString Do
+
+        CurrentKey   = DecodeString(DataElement.Key, StringEncodingMethod.URLencoding);
+        CurrentValue = DecodeString(DataElement.Value, StringEncodingMethod.URLencoding);
+
+        DataStructure.Insert(CurrentKey, CurrentValue);
+
+    EndDo;
+
+    KeyString = "WebAppData";
+    Hash      = "";
+    BinaryKey = GetBinaryDataFromString(KeyString);
 
     Result = OPI_Cryptography.HMACSHA256(BinaryKey, GetBinaryDataFromString(Token));
 
@@ -206,7 +220,7 @@ Function ProcessTMAData(Val DataString, Val Token) Export
 
     For Each DataString In TValue Do
 
-        If DataString.Key <> "hash" Then
+        If DataString.Key <> "hash" And DataString.Key <> "cookie" Then
             DCS = DCS + DataString.Key + "=" + DataString.Value + Chars.LF;
             ReturnMapping.Insert(DataString.Key, DataString.Value);
         Else
@@ -257,9 +271,12 @@ Function SendTextMessage(Val Token
     , Val RepliedID = 0) Export
 
     OPI_TypeConversion.GetLine(Token);
+    OPI_TypeConversion.GetLine(Text);
     OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
 
     String_ = "String";
+
+    Text = DecodeString(Text, StringEncodingMethod.URLInURLEncoding);
 
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode"         , Markup   , String_     , Parameters);
@@ -270,7 +287,7 @@ Function SendTextMessage(Val Token
     AddChatIdentifier(ChatID, Parameters);
 
     URL      = "api.telegram.org/bot" + Token + "/sendMessage";
-    Response = OPI_Tools.Get(URL, Parameters);
+    Response = OPI_Tools.Post(URL, Parameters);
 
     Return Response;
 
