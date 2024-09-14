@@ -3423,6 +3423,13 @@ Procedure Check_TelegramNumber(Val Result)
 
 EndProcedure
 
+Procedure Check_TelegramOk(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    OPI_TestDataRetrieval.ExpectsThat(Result["ok"]).Равно(True);
+
+EndProcedure
+
 Procedure Check_TelegramCreateTopic(Val Result, Val Name, Icon)
 
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -4224,6 +4231,30 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     MessageID = OPI_Tools.NumberToString(Result["result"]["message_id"]);
     OPI_TestDataRetrieval.WriteParameter("Telegram_ChannelMessageID", MessageID);
+
+    Text = "<b>Text html %F0%9F%93%9E 10%</b>";
+
+    Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text, , "HTML");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (HTML)");
+
+    Check_TelegramOk(Result);
+
+    Text = "%F0%9F%A4%BC";
+
+    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (emoji)");
+
+    Check_TelegramOk(Result);
+
+    Text = "Text %F0%9F%A5%9D and emoji \(10%\)";
+
+    Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text, , "MarkdownV2");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (text and emoji)");
+
+    Check_TelegramOk(Result);
 
     OPI_Tools.Pause(5);
 
