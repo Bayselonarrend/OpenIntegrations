@@ -74,7 +74,7 @@
 			Синоним = Тест[СтрокаСиноним];
 
 			ТекстРаботы = ТекстРаботы + "
-			|					bat encoding: 'windows-1251', script:'chcp 65001 & 1testrunner -run """ + ФайлТестов + """ """ + Метод + """ '
+			|					bat encoding: 'windows-1251', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """ '
 			|
 			|";
 
