@@ -28,7 +28,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
 
 
 ```bsl title="Code example"
-    FolderID  = "7586";
+    FolderID  = "8828";
     Name      = "New subfolder";
     Filename2 = "New subfolder 2";
 
@@ -37,7 +37,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
     Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Filename2);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b529cb66006e9f06006b12e400000001000...";
+    Token = "8b80e066006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Name, Token);
 ```

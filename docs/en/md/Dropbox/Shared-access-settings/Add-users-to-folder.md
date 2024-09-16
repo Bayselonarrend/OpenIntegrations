@@ -25,9 +25,9 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token  = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Token  = "sl.B8qNQrapBwdKlUxK9u1kzEIubZPglTP1HW7SS2eULe9E3cG8zqvRiIHoYfVTTG5v0bUTVYp7dX...";
     Email  = "h5bk6ft62s@privaterelay.appleid.com";
-    Folder = "11156736001"; // shared_folder_id
+    Folder = "11315516993"; // shared_folder_id
 
     Result = OPI_Dropbox.AddUsersToFolder(Token, Folder, Email, False);
 ```

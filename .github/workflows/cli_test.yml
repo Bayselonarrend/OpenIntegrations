@@ -4950,6 +4950,158 @@ jobs:
           ./oint bitrix24 ПолучитьСтруктуруФильтраПользователей --debug --test \
           --empty "" \
 
+
+
+      - name: Выполнить СоздатьЛид
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьЛид --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьЛид
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьЛид --debug --test \
+          --url "" \
+          --lead "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьЛид
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьЛид --debug --test \
+          --url "" \
+          --lead "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокЛидов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокЛидов --debug --test \
+          --url "" \
+          --filter "" \
+          --offset "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьЛид
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьЛид --debug --test \
+          --url "" \
+          --lead "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруЛида
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруЛида --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруФильтраЛидов
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруФильтраЛидов --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить СоздатьСделку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 СоздатьСделку --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить УдалитьСделку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 УдалитьСделку --debug --test \
+          --url "" \
+          --deal "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСделку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСделку --debug --test \
+          --url "" \
+          --deal "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСписокСделок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСписокСделок --debug --test \
+          --url "" \
+          --filter "" \
+          --offset "" \
+          --token "" \
+
+
+
+      - name: Выполнить ИзменитьСделку
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ИзменитьСделку --debug --test \
+          --url "" \
+          --deal "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруСделки
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруСделки --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить ПолучитьСтруктуруФильтраСделок
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 ПолучитьСтруктуруФильтраСделок --debug --test \
+          --empty "" \
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]
