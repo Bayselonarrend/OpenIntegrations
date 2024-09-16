@@ -1,9 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Prepare') {
             steps {
                     checkout scm
+                    bat 'opm install osparser'
+                    bat 'opm install cmdline'
+                    bat 'opm install asserts'
+                    bat 'opm install osparser'
+                    bat 'opm install coloratos'
             }
         }
 
