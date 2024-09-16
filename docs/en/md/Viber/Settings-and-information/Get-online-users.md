@@ -23,9 +23,10 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Response = OPI_Viber.GetOnlineUsers(Token, UserID); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token  = "523b58ba82afffaa-7ef3b426...";
+    UserID = "tMNGhftyUPrB3r1lD+bT4g==";
+
+    Result = OPI_Viber.GetOnlineUsers(Token, UserID);
 ```
 
 

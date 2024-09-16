@@ -29,7 +29,7 @@ Method at API documentation: [post /v1/product/upload_digital_codes/info](https:
 ```bsl title="Code example"
     ClientID = "2128753";
     APIKey   = "7cc90d26-33e4-499b...";
-    TaskID   = "";
+    TaskID   = "1";
 
     Result = OPI_Ozon.GetCodesUploadStatus(ClientID, APIKey, TaskID);
 ```

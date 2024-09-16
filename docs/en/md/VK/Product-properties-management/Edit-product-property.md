@@ -27,7 +27,7 @@ sidebar_position: 3
     Parameters = GetVKParameters();
 
     Name     = "Color (change.)";
-    Property = "720";
+    Property = "757";
 
     Result = OPI_VK.EditProductProperty(Name, Property, Parameters);
 ```

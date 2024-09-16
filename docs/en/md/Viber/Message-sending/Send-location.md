@@ -26,12 +26,20 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  
-  BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
-  UserID = "d3jxe1111111111jYGgZg==";
-  
-  Response = OPI_Viber.SendLocation(BotToken, "55.75", "37.6167", UserID, False); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Latitude  = "48.87373649724122";
+    Longitude = "2.2954639195323967";
+
+    UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
+    Token            = "523b5b25ed27e6ec-fdf013e4...";
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);
+
+    UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
+    Token            = "523b58ba82afffaa-7ef3b426...";
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);
 ```
 
 

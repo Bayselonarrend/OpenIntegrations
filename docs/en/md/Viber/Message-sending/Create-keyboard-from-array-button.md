@@ -24,14 +24,12 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-  
-  ButtonArray = New Array;
-  ButtonArray.Add("Button 1");
-  ButtonArray.Add("Button 2");
-  ButtonArray.Add("Button 3");
-  
-  Keyboard = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray); //Structure
-  JSON = OPI_Tools.JSONString(Keyboard); //String
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+    ButtonArray.Add("Button 3");
+
+    Result = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
 ```
 
 

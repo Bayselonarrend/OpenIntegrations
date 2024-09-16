@@ -31,7 +31,7 @@ You can restore from the archive no more than 10 products that were automaticall
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1111588191";
+    ProductID = "1180662438";
 
     Result = OPI_Ozon.UnarchiveProducts(ClientID, APIKey, ProductID);
 ```

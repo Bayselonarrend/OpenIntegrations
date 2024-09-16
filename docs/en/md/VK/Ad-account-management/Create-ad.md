@@ -29,10 +29,10 @@ sidebar_position: 2
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    CampaignNumber = "1030500683";
+    CampaignNumber = "1030548424";
     DailyLimit     = 150;
     CategoryNumber = 126;
-    PostID         = "3754";
+    PostID         = "3934";
     AccountID      = "1607951446";
 
     Result = OPI_VK.CreateAd(CampaignNumber
