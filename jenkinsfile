@@ -29,7 +29,7 @@ pipeline {
                     bat encoding: 'UTF-8', script:'git commit -m "Main build (Jenkins)"'
 
                     withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
-                        пше "git push -u origin main"
+                        bat "git push -u origin main"
                     }
                         
                     
