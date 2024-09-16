@@ -26,7 +26,7 @@ pipeline {
                             def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
                             bat encoding: 'UTF-8', script:"git config user.email VitalyTheAlpaca@gmail.com"
                             bat encoding: 'UTF-8', script:"git config user.name VitalyTheAlpaca"
-                            bat encoding: 'UTF-8', script:"git config --global core.ignorecase false"
+                            bat encoding: 'UTF-8', script:"git config --global core.ignorecase true"
                             bat encoding: 'UTF-8', script:"git add ."
                             bat encoding: 'UTF-8', script:"git commit -m 'Основная сборка (Jenkins)'"
                             bat encoding: 'UTF-8', script:"git push https://${GIT_USERNAME}:${encodedPassword}@github.com/${GIT_USERNAME}/openintegrations.git"
