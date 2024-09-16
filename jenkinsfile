@@ -22,14 +22,13 @@ pipeline {
             steps {
                 script {
                     
-                    bat encoding: 'UTF-8', script:"git config user.email VitalyTheAlpaca@gmail.com"
-                    bat encoding: 'UTF-8', script:"git config user.name VitalyTheAlpaca"
-                    bat encoding: 'UTF-8', script:"git config --global core.ignorecase true"
-                    bat encoding: 'UTF-8', script:"git add ."
-                    bat encoding: 'UTF-8', script:'git commit -m "Main build (Jenkins)"'
-
                     withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
-                        bat "git push -u origin main"
+                        bat "git config user.email VitalyTheAlpaca@gmail.com"
+                        bat "git config user.name VitalyTheAlpaca"
+                        bat "git config --global core.ignorecase true"
+                        bat "git add ."
+                        bat 'git commit -m "Main build (Jenkins)"'
+                        bat "git push origin main"
                     }
                         
                     
