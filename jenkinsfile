@@ -4,7 +4,7 @@ pipeline {
         stage('Prepare') {
             steps {
                     
-                    bat "echo 'Pulling... ' + env.GIT_BRANCH"
+                    bat "git branch"
                     bat encoding: 'UTF-8', script:'opm install osparser'
                     bat encoding: 'UTF-8', script:'opm install cmdline'
                     bat encoding: 'UTF-8', script:'opm install asserts'
