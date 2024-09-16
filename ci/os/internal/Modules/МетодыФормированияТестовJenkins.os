@@ -80,7 +80,7 @@
 			Синоним = Тест[СтрокаСиноним];
 
 			ТекстРаботы = ТекстРаботы + "
-			|					bat encoding: 'UTF8', script:'chcp 437 & 1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
+			|					bat encoding: 'UTF8', script:'chcp 1251 & 1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
 			|
 			|";
 
