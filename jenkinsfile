@@ -21,17 +21,18 @@ pipeline {
         stage('Update GIT') {
             steps {
                 script {
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        withCredentials([usernamePassword(credentialsId: 'gitmain', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                            def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
-                            bat encoding: 'UTF-8', script:"git config user.email VitalyTheAlpaca@gmail.com"
-                            bat encoding: 'UTF-8', script:"git config user.name VitalyTheAlpaca"
-                            bat encoding: 'UTF-8', script:"git config --global core.ignorecase true"
-                            bat encoding: 'UTF-8', script:"git add ."
-                            bat encoding: 'UTF-8', script:'git commit -m "Main build (Jenkins)"'
-                            bat encoding: 'UTF-8', script:"git push https://${GIT_USERNAME}:${encodedPassword}@github.com/${GIT_USERNAME}/openintegrations.git"
-                        }
+                    
+                    bat encoding: 'UTF-8', script:"git config user.email VitalyTheAlpaca@gmail.com"
+                    bat encoding: 'UTF-8', script:"git config user.name VitalyTheAlpaca"
+                    bat encoding: 'UTF-8', script:"git config --global core.ignorecase true"
+                    bat encoding: 'UTF-8', script:"git add ."
+                    bat encoding: 'UTF-8', script:'git commit -m "Main build (Jenkins)"'
+
+                    withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+                        пше "git push -u origin main"
                     }
+                        
+                    
                 }
             }
         }
