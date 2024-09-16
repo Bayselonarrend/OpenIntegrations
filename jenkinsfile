@@ -25,7 +25,7 @@ pipeline {
                     
                     withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
                         bat "git config user.email vitaly.the.alpaca@gmail.com"
-                        bat "git config user.name Vitaly the Alpaca (bot) "
+                        bat 'git config user.name "Vitaly the Alpaca (bot)"'
                         bat "git config --global core.ignorecase true"
                         bat "git add ."
                         bat 'git commit -m "Main build (Jenkins)"'
