@@ -80,7 +80,7 @@
 			Синоним = Тест[СтрокаСиноним];
 
 			ТекстРаботы = ТекстРаботы + "
-			|					powershell encoding: 'UTF8', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """ '
+			|					powershell encoding: 'UTF8', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """ > " + Метод + ".log & chcp 65001 & type " + Метод + ".txt'
 			|
 			|";
 
