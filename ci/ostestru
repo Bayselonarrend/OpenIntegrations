@@ -6,70 +6,70 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьИнформациюБота" > Телеграм_ПолучитьИнформациюБота.log & chcp 65001 & type Телеграм_ПолучитьИнформациюБота.txt & del Телеграм_ПолучитьИнформациюБота.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьИнформациюБота" > Телеграм_ПолучитьИнформациюБота.log & chcp 65001 & type Телеграм_ПолучитьИнформациюБота.txt & del Телеграм_ПолучитьИнформациюБота.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьОбновления" > Телеграм_ПолучитьОбновления.log & chcp 65001 & type Телеграм_ПолучитьОбновления.txt & del Телеграм_ПолучитьОбновления.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьОбновления" > Телеграм_ПолучитьОбновления.log & chcp 65001 & type Телеграм_ПолучитьОбновления.txt & del Телеграм_ПолучитьОбновления.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_УстановитьWebhook" > Телеграм_УстановитьWebhook.log & chcp 65001 & type Телеграм_УстановитьWebhook.txt & del Телеграм_УстановитьWebhook.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_УстановитьWebhook" > Телеграм_УстановитьWebhook.log & chcp 65001 & type Телеграм_УстановитьWebhook.txt & del Телеграм_УстановитьWebhook.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьТекстовоеСообщение" > Телеграм_ОтправитьТекстовоеСообщение.log & chcp 65001 & type Телеграм_ОтправитьТекстовоеСообщение.txt & del Телеграм_ОтправитьТекстовоеСообщение.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьТекстовоеСообщение" > Телеграм_ОтправитьТекстовоеСообщение.log & chcp 65001 & type Телеграм_ОтправитьТекстовоеСообщение.txt & del Телеграм_ОтправитьТекстовоеСообщение.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКартинку" > Телеграм_ОтправитьКартинку.log & chcp 65001 & type Телеграм_ОтправитьКартинку.txt & del Телеграм_ОтправитьКартинку.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКартинку" > Телеграм_ОтправитьКартинку.log & chcp 65001 & type Телеграм_ОтправитьКартинку.txt & del Телеграм_ОтправитьКартинку.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьВидео" > Телеграм_ОтправитьВидео.log & chcp 65001 & type Телеграм_ОтправитьВидео.txt & del Телеграм_ОтправитьВидео.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьВидео" > Телеграм_ОтправитьВидео.log & chcp 65001 & type Телеграм_ОтправитьВидео.txt & del Телеграм_ОтправитьВидео.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьАудио" > Телеграм_ОтправитьАудио.log & chcp 65001 & type Телеграм_ОтправитьАудио.txt & del Телеграм_ОтправитьАудио.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьАудио" > Телеграм_ОтправитьАудио.log & chcp 65001 & type Телеграм_ОтправитьАудио.txt & del Телеграм_ОтправитьАудио.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьДокумент" > Телеграм_ОтправитьДокумент.log & chcp 65001 & type Телеграм_ОтправитьДокумент.txt & del Телеграм_ОтправитьДокумент.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьДокумент" > Телеграм_ОтправитьДокумент.log & chcp 65001 & type Телеграм_ОтправитьДокумент.txt & del Телеграм_ОтправитьДокумент.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьГифку" > Телеграм_ОтправитьГифку.log & chcp 65001 & type Телеграм_ОтправитьГифку.txt & del Телеграм_ОтправитьГифку.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьГифку" > Телеграм_ОтправитьГифку.log & chcp 65001 & type Телеграм_ОтправитьГифку.txt & del Телеграм_ОтправитьГифку.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМедиагруппу" > Телеграм_ОтправитьМедиагруппу.log & chcp 65001 & type Телеграм_ОтправитьМедиагруппу.txt & del Телеграм_ОтправитьМедиагруппу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМедиагруппу" > Телеграм_ОтправитьМедиагруппу.log & chcp 65001 & type Телеграм_ОтправитьМедиагруппу.txt & del Телеграм_ОтправитьМедиагруппу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМестоположение" > Телеграм_ОтправитьМестоположение.log & chcp 65001 & type Телеграм_ОтправитьМестоположение.txt & del Телеграм_ОтправитьМестоположение.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМестоположение" > Телеграм_ОтправитьМестоположение.log & chcp 65001 & type Телеграм_ОтправитьМестоположение.txt & del Телеграм_ОтправитьМестоположение.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКонтакт" > Телеграм_ОтправитьКонтакт.log & chcp 65001 & type Телеграм_ОтправитьКонтакт.txt & del Телеграм_ОтправитьКонтакт.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКонтакт" > Телеграм_ОтправитьКонтакт.log & chcp 65001 & type Телеграм_ОтправитьКонтакт.txt & del Телеграм_ОтправитьКонтакт.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьОпрос" > Телеграм_ОтправитьОпрос.log & chcp 65001 & type Телеграм_ОтправитьОпрос.txt & del Телеграм_ОтправитьОпрос.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьОпрос" > Телеграм_ОтправитьОпрос.log & chcp 65001 & type Телеграм_ОтправитьОпрос.txt & del Телеграм_ОтправитьОпрос.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПереслатьСообщение" > Телеграм_ПереслатьСообщение.log & chcp 65001 & type Телеграм_ПереслатьСообщение.txt & del Телеграм_ПереслатьСообщение.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПереслатьСообщение" > Телеграм_ПереслатьСообщение.log & chcp 65001 & type Телеграм_ПереслатьСообщение.txt & del Телеграм_ПереслатьСообщение.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_БанРазбан" > Телеграм_БанРазбан.log & chcp 65001 & type Телеграм_БанРазбан.txt & del Телеграм_БанРазбан.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_БанРазбан" > Телеграм_БанРазбан.log & chcp 65001 & type Телеграм_БанРазбан.txt & del Телеграм_БанРазбан.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьСсылкуПриглашение" > Телеграм_СоздатьСсылкуПриглашение.log & chcp 65001 & type Телеграм_СоздатьСсылкуПриглашение.txt & del Телеграм_СоздатьСсылкуПриглашение.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьСсылкуПриглашение" > Телеграм_СоздатьСсылкуПриглашение.log & chcp 65001 & type Телеграм_СоздатьСсылкуПриглашение.txt & del Телеграм_СоздатьСсылкуПриглашение.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ЗакрепитьОткрепитьСообщение" > Телеграм_ЗакрепитьОткрепитьСообщение.log & chcp 65001 & type Телеграм_ЗакрепитьОткрепитьСообщение.txt & del Телеграм_ЗакрепитьОткрепитьСообщение.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ЗакрепитьОткрепитьСообщение" > Телеграм_ЗакрепитьОткрепитьСообщение.log & chcp 65001 & type Телеграм_ЗакрепитьОткрепитьСообщение.txt & del Телеграм_ЗакрепитьОткрепитьСообщение.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьЧислоУчастников" > Телеграм_ПолучитьЧислоУчастников.log & chcp 65001 & type Телеграм_ПолучитьЧислоУчастников.txt & del Телеграм_ПолучитьЧислоУчастников.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьЧислоУчастников" > Телеграм_ПолучитьЧислоУчастников.log & chcp 65001 & type Телеграм_ПолучитьЧислоУчастников.txt & del Телеграм_ПолучитьЧислоУчастников.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьСписокАватаровФорума" > Телеграм_ПолучитьСписокАватаровФорума.log & chcp 65001 & type Телеграм_ПолучитьСписокАватаровФорума.txt & del Телеграм_ПолучитьСписокАватаровФорума.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьСписокАватаровФорума" > Телеграм_ПолучитьСписокАватаровФорума.log & chcp 65001 & type Телеграм_ПолучитьСписокАватаровФорума.txt & del Телеграм_ПолучитьСписокАватаровФорума.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьУдалитьТемуФорума" > Телеграм_СоздатьУдалитьТемуФорума.log & chcp 65001 & type Телеграм_СоздатьУдалитьТемуФорума.txt & del Телеграм_СоздатьУдалитьТемуФорума.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьУдалитьТемуФорума" > Телеграм_СоздатьУдалитьТемуФорума.log & chcp 65001 & type Телеграм_СоздатьУдалитьТемуФорума.txt & del Телеграм_СоздатьУдалитьТемуФорума.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ИзменитьИмяГлавнойТемы" > Телеграм_ИзменитьИмяГлавнойТемы.log & chcp 65001 & type Телеграм_ИзменитьИмяГлавнойТемы.txt & del Телеграм_ИзменитьИмяГлавнойТемы.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ИзменитьИмяГлавнойТемы" > Телеграм_ИзменитьИмяГлавнойТемы.log & chcp 65001 & type Телеграм_ИзменитьИмяГлавнойТемы.txt & del Телеграм_ИзменитьИмяГлавнойТемы.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СкрытьПоказатьГлавнуюТему" > Телеграм_СкрытьПоказатьГлавнуюТему.log & chcp 65001 & type Телеграм_СкрытьПоказатьГлавнуюТему.txt & del Телеграм_СкрытьПоказатьГлавнуюТему.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СкрытьПоказатьГлавнуюТему" > Телеграм_СкрытьПоказатьГлавнуюТему.log & chcp 65001 & type Телеграм_СкрытьПоказатьГлавнуюТему.txt & del Телеграм_СкрытьПоказатьГлавнуюТему.txt'
 
 
 			}
@@ -79,64 +79,64 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСсылкуТокена" > ВК_СоздатьСсылкуТокена.log & chcp 65001 & type ВК_СоздатьСсылкуТокена.txt & del ВК_СоздатьСсылкуТокена.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСсылкуТокена" > ВК_СоздатьСсылкуТокена.log & chcp 65001 & type ВК_СоздатьСсылкуТокена.txt & del ВК_СоздатьСсылкуТокена.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьУдалитьПост" > ВК_СоздатьУдалитьПост.log & chcp 65001 & type ВК_СоздатьУдалитьПост.txt & del ВК_СоздатьУдалитьПост.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьУдалитьПост" > ВК_СоздатьУдалитьПост.log & chcp 65001 & type ВК_СоздатьУдалитьПост.txt & del ВК_СоздатьУдалитьПост.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСоставнойПост" > ВК_СоздатьСоставнойПост.log & chcp 65001 & type ВК_СоздатьСоставнойПост.txt & del ВК_СоздатьСоставнойПост.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСоставнойПост" > ВК_СоздатьСоставнойПост.log & chcp 65001 & type ВК_СоздатьСоставнойПост.txt & del ВК_СоздатьСоставнойПост.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьОпрос" > ВК_СоздатьОпрос.log & chcp 65001 & type ВК_СоздатьОпрос.txt & del ВК_СоздатьОпрос.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьОпрос" > ВК_СоздатьОпрос.log & chcp 65001 & type ВК_СоздатьОпрос.txt & del ВК_СоздатьОпрос.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СохранитьУдалитьКартинку" > ВК_СохранитьУдалитьКартинку.log & chcp 65001 & type ВК_СохранитьУдалитьКартинку.txt & del ВК_СохранитьУдалитьКартинку.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СохранитьУдалитьКартинку" > ВК_СохранитьУдалитьКартинку.log & chcp 65001 & type ВК_СохранитьУдалитьКартинку.txt & del ВК_СохранитьУдалитьКартинку.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьИсторию" > ВК_СоздатьИсторию.log & chcp 65001 & type ВК_СоздатьИсторию.txt & del ВК_СоздатьИсторию.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьИсторию" > ВК_СоздатьИсторию.log & chcp 65001 & type ВК_СоздатьИсторию.txt & del ВК_СоздатьИсторию.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_МетодыОбсуждений" > ВК_МетодыОбсуждений.log & chcp 65001 & type ВК_МетодыОбсуждений.txt & del ВК_МетодыОбсуждений.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_МетодыОбсуждений" > ВК_МетодыОбсуждений.log & chcp 65001 & type ВК_МетодыОбсуждений.txt & del ВК_МетодыОбсуждений.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЛайкРепостКоммент" > ВК_ЛайкРепостКоммент.log & chcp 65001 & type ВК_ЛайкРепостКоммент.txt & del ВК_ЛайкРепостКоммент.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЛайкРепостКоммент" > ВК_ЛайкРепостКоммент.log & chcp 65001 & type ВК_ЛайкРепостКоммент.txt & del ВК_ЛайкРепостКоммент.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистику" > ВК_ПолучитьСтатистику.log & chcp 65001 & type ВК_ПолучитьСтатистику.txt & del ВК_ПолучитьСтатистику.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистику" > ВК_ПолучитьСтатистику.log & chcp 65001 & type ВК_ПолучитьСтатистику.txt & del ВК_ПолучитьСтатистику.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистикуПостов" > ВК_ПолучитьСтатистикуПостов.log & chcp 65001 & type ВК_ПолучитьСтатистикуПостов.txt & del ВК_ПолучитьСтатистикуПостов.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистикуПостов" > ВК_ПолучитьСтатистикуПостов.log & chcp 65001 & type ВК_ПолучитьСтатистикуПостов.txt & del ВК_ПолучитьСтатистикуПостов.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьРекламнуюКампанию" > ВК_СоздатьРекламнуюКампанию.log & chcp 65001 & type ВК_СоздатьРекламнуюКампанию.txt & del ВК_СоздатьРекламнуюКампанию.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьРекламнуюКампанию" > ВК_СоздатьРекламнуюКампанию.log & chcp 65001 & type ВК_СоздатьРекламнуюКампанию.txt & del ВК_СоздатьРекламнуюКампанию.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ОтправитьСообщение" > ВК_ОтправитьСообщение.log & chcp 65001 & type ВК_ОтправитьСообщение.txt & del ВК_ОтправитьСообщение.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ОтправитьСообщение" > ВК_ОтправитьСообщение.log & chcp 65001 & type ВК_ОтправитьСообщение.txt & del ВК_ОтправитьСообщение.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьКатегорииТоваров" > ВК_ПолучитьКатегорииТоваров.log & chcp 65001 & type ВК_ПолучитьКатегорииТоваров.txt & del ВК_ПолучитьКатегорииТоваров.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьКатегорииТоваров" > ВК_ПолучитьКатегорииТоваров.log & chcp 65001 & type ВК_ПолучитьКатегорииТоваров.txt & del ВК_ПолучитьКатегорииТоваров.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварПодборку" > ВК_СоздатьТоварПодборку.log & chcp 65001 & type ВК_СоздатьТоварПодборку.txt & del ВК_СоздатьТоварПодборку.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварПодборку" > ВК_СоздатьТоварПодборку.log & chcp 65001 & type ВК_СоздатьТоварПодборку.txt & del ВК_СоздатьТоварПодборку.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварСоСвойствами" > ВК_СоздатьТоварСоСвойствами.log & chcp 65001 & type ВК_СоздатьТоварСоСвойствами.txt & del ВК_СоздатьТоварСоСвойствами.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварСоСвойствами" > ВК_СоздатьТоварСоСвойствами.log & chcp 65001 & type ВК_СоздатьТоварСоСвойствами.txt & del ВК_СоздатьТоварСоСвойствами.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокТоваров" > ВК_ПолучитьСписокТоваров.log & chcp 65001 & type ВК_ПолучитьСписокТоваров.txt & del ВК_ПолучитьСписокТоваров.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокТоваров" > ВК_ПолучитьСписокТоваров.log & chcp 65001 & type ВК_ПолучитьСписокТоваров.txt & del ВК_ПолучитьСписокТоваров.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокПодборок" > ВК_ПолучитьСписокПодборок.log & chcp 65001 & type ВК_ПолучитьСписокПодборок.txt & del ВК_ПолучитьСписокПодборок.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокПодборок" > ВК_ПолучитьСписокПодборок.log & chcp 65001 & type ВК_ПолучитьСписокПодборок.txt & del ВК_ПолучитьСписокПодборок.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокСвойств" > ВК_ПолучитьСписокСвойств.log & chcp 65001 & type ВК_ПолучитьСписокСвойств.txt & del ВК_ПолучитьСписокСвойств.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокСвойств" > ВК_ПолучитьСписокСвойств.log & chcp 65001 & type ВК_ПолучитьСписокСвойств.txt & del ВК_ПолучитьСписокСвойств.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокЗаказов" > ВК_ПолучитьСписокЗаказов.log & chcp 65001 & type ВК_ПолучитьСписокЗаказов.txt & del ВК_ПолучитьСписокЗаказов.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокЗаказов" > ВК_ПолучитьСписокЗаказов.log & chcp 65001 & type ВК_ПолучитьСписокЗаказов.txt & del ВК_ПолучитьСписокЗаказов.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЗагрузитьВидео" > ВК_ЗагрузитьВидео.log & chcp 65001 & type ВК_ЗагрузитьВидео.txt & del ВК_ЗагрузитьВидео.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЗагрузитьВидео" > ВК_ЗагрузитьВидео.log & chcp 65001 & type ВК_ЗагрузитьВидео.txt & del ВК_ЗагрузитьВидео.txt'
 
 
 			}
@@ -146,10 +146,10 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ПолучениеИнформации" > Вайбер_ПолучениеИнформации.log & chcp 65001 & type Вайбер_ПолучениеИнформации.txt & del Вайбер_ПолучениеИнформации.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ПолучениеИнформации" > Вайбер_ПолучениеИнформации.log & chcp 65001 & type Вайбер_ПолучениеИнформации.txt & del Вайбер_ПолучениеИнформации.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ОтправкаСообщений" > Вайбер_ОтправкаСообщений.log & chcp 65001 & type Вайбер_ОтправкаСообщений.txt & del Вайбер_ОтправкаСообщений.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ОтправкаСообщений" > Вайбер_ОтправкаСообщений.log & chcp 65001 & type Вайбер_ОтправкаСообщений.txt & del Вайбер_ОтправкаСообщений.txt'
 
 
 			}
@@ -159,25 +159,25 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации" > Твиттер_ПолучитьСсылкуАвторизации.log & chcp 65001 & type Твиттер_ПолучитьСсылкуАвторизации.txt & del Твиттер_ПолучитьСсылкуАвторизации.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации" > Твиттер_ПолучитьСсылкуАвторизации.log & chcp 65001 & type Твиттер_ПолучитьСсылкуАвторизации.txt & del Твиттер_ПолучитьСсылкуАвторизации.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен" > Твиттер_ОбновитьТокен.log & chcp 65001 & type Твиттер_ОбновитьТокен.txt & del Твиттер_ОбновитьТокен.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен" > Твиттер_ОбновитьТокен.log & chcp 65001 & type Твиттер_ОбновитьТокен.txt & del Твиттер_ОбновитьТокен.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит" > Твиттер_СоздатьТекстовыйТвит.log & chcp 65001 & type Твиттер_СоздатьТекстовыйТвит.txt & del Твиттер_СоздатьТекстовыйТвит.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит" > Твиттер_СоздатьТекстовыйТвит.log & chcp 65001 & type Твиттер_СоздатьТекстовыйТвит.txt & del Твиттер_СоздатьТекстовыйТвит.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой" > Твиттер_СоздатьТвитСКартинкой.log & chcp 65001 & type Твиттер_СоздатьТвитСКартинкой.txt & del Твиттер_СоздатьТвитСКартинкой.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой" > Твиттер_СоздатьТвитСКартинкой.log & chcp 65001 & type Твиттер_СоздатьТвитСКартинкой.txt & del Твиттер_СоздатьТвитСКартинкой.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео" > Твиттер_СоздатьТвитСВидео.log & chcp 65001 & type Твиттер_СоздатьТвитСВидео.txt & del Твиттер_СоздатьТвитСВидео.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео" > Твиттер_СоздатьТвитСВидео.log & chcp 65001 & type Твиттер_СоздатьТвитСВидео.txt & del Твиттер_СоздатьТвитСВидео.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф" > Твиттер_СоздатьТвитСГиф.log & chcp 65001 & type Твиттер_СоздатьТвитСГиф.txt & del Твиттер_СоздатьТвитСГиф.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф" > Твиттер_СоздатьТвитСГиф.log & chcp 65001 & type Твиттер_СоздатьТвитСГиф.txt & del Твиттер_СоздатьТвитСГиф.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом" > Твиттер_СоздатьТвитСОпросом.log & chcp 65001 & type Твиттер_СоздатьТвитСОпросом.txt & del Твиттер_СоздатьТвитСОпросом.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом" > Твиттер_СоздатьТвитСОпросом.log & chcp 65001 & type Твиттер_СоздатьТвитСОпросом.txt & del Твиттер_СоздатьТвитСОпросом.txt'
 
 
 			}
@@ -187,34 +187,34 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьИнформациюОДиске" > ЯДиск_ПолучитьИнформациюОДиске.log & chcp 65001 & type ЯДиск_ПолучитьИнформациюОДиске.txt & del ЯДиск_ПолучитьИнформациюОДиске.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьИнформациюОДиске" > ЯДиск_ПолучитьИнформациюОДиске.log & chcp 65001 & type ЯДиск_ПолучитьИнформациюОДиске.txt & del ЯДиск_ПолучитьИнформациюОДиске.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьПапку" > ЯДиск_СоздатьПапку.log & chcp 65001 & type ЯДиск_СоздатьПапку.txt & del ЯДиск_СоздатьПапку.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьПапку" > ЯДиск_СоздатьПапку.log & chcp 65001 & type ЯДиск_СоздатьПапку.txt & del ЯДиск_СоздатьПапку.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект" > ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект.log & chcp 65001 & type ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект.txt & del ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект" > ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект.log & chcp 65001 & type ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект.txt & del ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьУдалитьФайл" > ЯДиск_ЗагрузитьУдалитьФайл.log & chcp 65001 & type ЯДиск_ЗагрузитьУдалитьФайл.txt & del ЯДиск_ЗагрузитьУдалитьФайл.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьУдалитьФайл" > ЯДиск_ЗагрузитьУдалитьФайл.log & chcp 65001 & type ЯДиск_ЗагрузитьУдалитьФайл.txt & del ЯДиск_ЗагрузитьУдалитьФайл.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьКопиюОбъекта" > ЯДиск_СоздатьКопиюОбъекта.log & chcp 65001 & type ЯДиск_СоздатьКопиюОбъекта.txt & del ЯДиск_СоздатьКопиюОбъекта.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьКопиюОбъекта" > ЯДиск_СоздатьКопиюОбъекта.log & chcp 65001 & type ЯДиск_СоздатьКопиюОбъекта.txt & del ЯДиск_СоздатьКопиюОбъекта.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСсылкуНаСкачивание" > ЯДиск_ПолучитьСсылкуНаСкачивание.log & chcp 65001 & type ЯДиск_ПолучитьСсылкуНаСкачивание.txt & del ЯДиск_ПолучитьСсылкуНаСкачивание.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСсылкуНаСкачивание" > ЯДиск_ПолучитьСсылкуНаСкачивание.log & chcp 65001 & type ЯДиск_ПолучитьСсылкуНаСкачивание.txt & del ЯДиск_ПолучитьСсылкуНаСкачивание.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокФайлов" > ЯДиск_ПолучитьСписокФайлов.log & chcp 65001 & type ЯДиск_ПолучитьСписокФайлов.txt & del ЯДиск_ПолучитьСписокФайлов.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокФайлов" > ЯДиск_ПолучитьСписокФайлов.log & chcp 65001 & type ЯДиск_ПолучитьСписокФайлов.txt & del ЯДиск_ПолучитьСписокФайлов.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПереместитьОбъект" > ЯДиск_ПереместитьОбъект.log & chcp 65001 & type ЯДиск_ПереместитьОбъект.txt & del ЯДиск_ПереместитьОбъект.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПереместитьОбъект" > ЯДиск_ПереместитьОбъект.log & chcp 65001 & type ЯДиск_ПереместитьОбъект.txt & del ЯДиск_ПереместитьОбъект.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ДействияПубличныхОбъектов" > ЯДиск_ДействияПубличныхОбъектов.log & chcp 65001 & type ЯДиск_ДействияПубличныхОбъектов.txt & del ЯДиск_ДействияПубличныхОбъектов.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ДействияПубличныхОбъектов" > ЯДиск_ДействияПубличныхОбъектов.log & chcp 65001 & type ЯДиск_ДействияПубличныхОбъектов.txt & del ЯДиск_ДействияПубличныхОбъектов.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокОпубликованных" > ЯДиск_ПолучитьСписокОпубликованных.log & chcp 65001 & type ЯДиск_ПолучитьСписокОпубликованных.txt & del ЯДиск_ПолучитьСписокОпубликованных.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокОпубликованных" > ЯДиск_ПолучитьСписокОпубликованных.log & chcp 65001 & type ЯДиск_ПолучитьСписокОпубликованных.txt & del ЯДиск_ПолучитьСписокОпубликованных.txt'
 
 
 			}
@@ -224,13 +224,13 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации" > ГВ_ПолучитьСсылкуАвторизации.log & chcp 65001 & type ГВ_ПолучитьСсылкуАвторизации.txt & del ГВ_ПолучитьСсылкуАвторизации.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации" > ГВ_ПолучитьСсылкуАвторизации.log & chcp 65001 & type ГВ_ПолучитьСсылкуАвторизации.txt & del ГВ_ПолучитьСсылкуАвторизации.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен" > ГВ_ПолучитьТокен.log & chcp 65001 & type ГВ_ПолучитьТокен.txt & del ГВ_ПолучитьТокен.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен" > ГВ_ПолучитьТокен.log & chcp 65001 & type ГВ_ПолучитьТокен.txt & del ГВ_ПолучитьТокен.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен" > ГВ_ОбновитьТокен.log & chcp 65001 & type ГВ_ОбновитьТокен.txt & del ГВ_ОбновитьТокен.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен" > ГВ_ОбновитьТокен.log & chcp 65001 & type ГВ_ОбновитьТокен.txt & del ГВ_ОбновитьТокен.txt'
 
 
 			}
@@ -240,16 +240,16 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей" > ГК_ПолучитьСписокКалендарей.log & chcp 65001 & type ГК_ПолучитьСписокКалендарей.txt & del ГК_ПолучитьСписокКалендарей.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей" > ГК_ПолучитьСписокКалендарей.log & chcp 65001 & type ГК_ПолучитьСписокКалендарей.txt & del ГК_ПолучитьСписокКалендарей.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьКалендарь" > ГК_СоздатьУдалитьКалендарь.log & chcp 65001 & type ГК_СоздатьУдалитьКалендарь.txt & del ГК_СоздатьУдалитьКалендарь.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьКалендарь" > ГК_СоздатьУдалитьКалендарь.log & chcp 65001 & type ГК_СоздатьУдалитьКалендарь.txt & del ГК_СоздатьУдалитьКалендарь.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьСобытие" > ГК_СоздатьУдалитьСобытие.log & chcp 65001 & type ГК_СоздатьУдалитьСобытие.txt & del ГК_СоздатьУдалитьСобытие.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьСобытие" > ГК_СоздатьУдалитьСобытие.log & chcp 65001 & type ГК_СоздатьУдалитьСобытие.txt & del ГК_СоздатьУдалитьСобытие.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокСобытий" > ГК_ПолучитьСписокСобытий.log & chcp 65001 & type ГК_ПолучитьСписокСобытий.txt & del ГК_ПолучитьСписокСобытий.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокСобытий" > ГК_ПолучитьСписокСобытий.log & chcp 65001 & type ГК_ПолучитьСписокСобытий.txt & del ГК_ПолучитьСписокСобытий.txt'
 
 
 			}
@@ -259,16 +259,16 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов" > ГД_ПолучитьСписокКаталогов.log & chcp 65001 & type ГД_ПолучитьСписокКаталогов.txt & del ГД_ПолучитьСписокКаталогов.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов" > ГД_ПолучитьСписокКаталогов.log & chcp 65001 & type ГД_ПолучитьСписокКаталогов.txt & del ГД_ПолучитьСписокКаталогов.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ЗагрузитьУдалитьФайл" > ГД_ЗагрузитьУдалитьФайл.log & chcp 65001 & type ГД_ЗагрузитьУдалитьФайл.txt & del ГД_ЗагрузитьУдалитьФайл.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ЗагрузитьУдалитьФайл" > ГД_ЗагрузитьУдалитьФайл.log & chcp 65001 & type ГД_ЗагрузитьУдалитьФайл.txt & del ГД_ЗагрузитьУдалитьФайл.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьУдалитьКомментарий" > ГД_СоздатьУдалитьКомментарий.log & chcp 65001 & type ГД_СоздатьУдалитьКомментарий.txt & del ГД_СоздатьУдалитьКомментарий.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьУдалитьКомментарий" > ГД_СоздатьУдалитьКомментарий.log & chcp 65001 & type ГД_СоздатьУдалитьКомментарий.txt & del ГД_СоздатьУдалитьКомментарий.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьКаталог" > ГД_СоздатьКаталог.log & chcp 65001 & type ГД_СоздатьКаталог.txt & del ГД_СоздатьКаталог.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьКаталог" > ГД_СоздатьКаталог.log & chcp 65001 & type ГД_СоздатьКаталог.txt & del ГД_СоздатьКаталог.txt'
 
 
 			}
@@ -278,13 +278,13 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу" > ГТ_СоздатьТаблицу.log & chcp 65001 & type ГТ_СоздатьТаблицу.txt & del ГТ_СоздатьТаблицу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу" > ГТ_СоздатьТаблицу.log & chcp 65001 & type ГТ_СоздатьТаблицу.txt & del ГТ_СоздатьТаблицу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ПолучитьТаблицу" > ГТ_ПолучитьТаблицу.log & chcp 65001 & type ГТ_ПолучитьТаблицу.txt & del ГТ_ПолучитьТаблицу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ПолучитьТаблицу" > ГТ_ПолучитьТаблицу.log & chcp 65001 & type ГТ_ПолучитьТаблицу.txt & del ГТ_ПолучитьТаблицу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ЗаполнитьОчиститьЯчейки" > ГТ_ЗаполнитьОчиститьЯчейки.log & chcp 65001 & type ГТ_ЗаполнитьОчиститьЯчейки.txt & del ГТ_ЗаполнитьОчиститьЯчейки.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ЗаполнитьОчиститьЯчейки" > ГТ_ЗаполнитьОчиститьЯчейки.log & chcp 65001 & type ГТ_ЗаполнитьОчиститьЯчейки.txt & del ГТ_ЗаполнитьОчиститьЯчейки.txt'
 
 
 			}
@@ -294,31 +294,31 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницу" > Ноушн_СоздатьСтраницу.log & chcp 65001 & type Ноушн_СоздатьСтраницу.txt & del Ноушн_СоздатьСтраницу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницу" > Ноушн_СоздатьСтраницу.log & chcp 65001 & type Ноушн_СоздатьСтраницу.txt & del Ноушн_СоздатьСтраницу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьИзменитьБазу" > Ноушн_СоздатьИзменитьБазу.log & chcp 65001 & type Ноушн_СоздатьИзменитьБазу.txt & del Ноушн_СоздатьИзменитьБазу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьИзменитьБазу" > Ноушн_СоздатьИзменитьБазу.log & chcp 65001 & type Ноушн_СоздатьИзменитьБазу.txt & del Ноушн_СоздатьИзменитьБазу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОСтранице" > Ноушн_ПолучитьИнформациюОСтранице.log & chcp 65001 & type Ноушн_ПолучитьИнформациюОСтранице.txt & del Ноушн_ПолучитьИнформациюОСтранице.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОСтранице" > Ноушн_ПолучитьИнформациюОСтранице.log & chcp 65001 & type Ноушн_ПолучитьИнформациюОСтранице.txt & del Ноушн_ПолучитьИнформациюОСтранице.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОБазе" > Ноушн_ПолучитьИнформациюОБазе.log & chcp 65001 & type Ноушн_ПолучитьИнформациюОБазе.txt & del Ноушн_ПолучитьИнформациюОБазе.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОБазе" > Ноушн_ПолучитьИнформациюОБазе.log & chcp 65001 & type Ноушн_ПолучитьИнформациюОБазе.txt & del Ноушн_ПолучитьИнформациюОБазе.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницуВБазу" > Ноушн_СоздатьСтраницуВБазу.log & chcp 65001 & type Ноушн_СоздатьСтраницуВБазу.txt & del Ноушн_СоздатьСтраницуВБазу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницуВБазу" > Ноушн_СоздатьСтраницуВБазу.log & chcp 65001 & type Ноушн_СоздатьСтраницуВБазу.txt & del Ноушн_СоздатьСтраницуВБазу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ИзменитьСвойстваСтраницы" > Ноушн_ИзменитьСвойстваСтраницы.log & chcp 65001 & type Ноушн_ИзменитьСвойстваСтраницы.txt & del Ноушн_ИзменитьСвойстваСтраницы.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ИзменитьСвойстваСтраницы" > Ноушн_ИзменитьСвойстваСтраницы.log & chcp 65001 & type Ноушн_ИзменитьСвойстваСтраницы.txt & del Ноушн_ИзменитьСвойстваСтраницы.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьУдалитьБлок" > Ноушн_СоздатьУдалитьБлок.log & chcp 65001 & type Ноушн_СоздатьУдалитьБлок.txt & del Ноушн_СоздатьУдалитьБлок.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьУдалитьБлок" > Ноушн_СоздатьУдалитьБлок.log & chcp 65001 & type Ноушн_СоздатьУдалитьБлок.txt & del Ноушн_СоздатьУдалитьБлок.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьПользователей" > Ноушн_ПолучитьПользователей.log & chcp 65001 & type Ноушн_ПолучитьПользователей.txt & del Ноушн_ПолучитьПользователей.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьПользователей" > Ноушн_ПолучитьПользователей.log & chcp 65001 & type Ноушн_ПолучитьПользователей.txt & del Ноушн_ПолучитьПользователей.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьДанныеПользователя" > Ноушн_ПолучитьДанныеПользователя.log & chcp 65001 & type Ноушн_ПолучитьДанныеПользователя.txt & del Ноушн_ПолучитьДанныеПользователя.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьДанныеПользователя" > Ноушн_ПолучитьДанныеПользователя.log & chcp 65001 & type Ноушн_ПолучитьДанныеПользователя.txt & del Ноушн_ПолучитьДанныеПользователя.txt'
 
 
 			}
@@ -328,43 +328,43 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьИнформациюОБоте" > Слак_ПолучитьИнформациюОБоте.log & chcp 65001 & type Слак_ПолучитьИнформациюОБоте.txt & del Слак_ПолучитьИнформациюОБоте.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьИнформациюОБоте" > Слак_ПолучитьИнформациюОБоте.log & chcp 65001 & type Слак_ПолучитьИнформациюОБоте.txt & del Слак_ПолучитьИнформациюОБоте.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокПользователей" > Слак_ПолучитьСписокПользователей.log & chcp 65001 & type Слак_ПолучитьСписокПользователей.txt & del Слак_ПолучитьСписокПользователей.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокПользователей" > Слак_ПолучитьСписокПользователей.log & chcp 65001 & type Слак_ПолучитьСписокПользователей.txt & del Слак_ПолучитьСписокПользователей.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокОбластей" > Слак_ПолучитьСписокОбластей.log & chcp 65001 & type Слак_ПолучитьСписокОбластей.txt & del Слак_ПолучитьСписокОбластей.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокОбластей" > Слак_ПолучитьСписокОбластей.log & chcp 65001 & type Слак_ПолучитьСписокОбластей.txt & del Слак_ПолучитьСписокОбластей.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьСообщение" > Слак_ОтправитьУдалитьСообщение.log & chcp 65001 & type Слак_ОтправитьУдалитьСообщение.txt & del Слак_ОтправитьУдалитьСообщение.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьСообщение" > Слак_ОтправитьУдалитьСообщение.log & chcp 65001 & type Слак_ОтправитьУдалитьСообщение.txt & del Слак_ОтправитьУдалитьСообщение.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьЭфемерное" > Слак_ОтправитьУдалитьЭфемерное.log & chcp 65001 & type Слак_ОтправитьУдалитьЭфемерное.txt & del Слак_ОтправитьУдалитьЭфемерное.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьЭфемерное" > Слак_ОтправитьУдалитьЭфемерное.log & chcp 65001 & type Слак_ОтправитьУдалитьЭфемерное.txt & del Слак_ОтправитьУдалитьЭфемерное.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьОтложенныеСообщения" > Слак_ПолучитьОтложенныеСообщения.log & chcp 65001 & type Слак_ПолучитьОтложенныеСообщения.txt & del Слак_ПолучитьОтложенныеСообщения.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьОтложенныеСообщения" > Слак_ПолучитьОтложенныеСообщения.log & chcp 65001 & type Слак_ПолучитьОтложенныеСообщения.txt & del Слак_ПолучитьОтложенныеСообщения.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_СоздатьАрхивироватьКанал" > Слак_СоздатьАрхивироватьКанал.log & chcp 65001 & type Слак_СоздатьАрхивироватьКанал.txt & del Слак_СоздатьАрхивироватьКанал.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_СоздатьАрхивироватьКанал" > Слак_СоздатьАрхивироватьКанал.log & chcp 65001 & type Слак_СоздатьАрхивироватьКанал.txt & del Слак_СоздатьАрхивироватьКанал.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокКаналов" > Слак_ПолучитьСписокКаналов.log & chcp 65001 & type Слак_ПолучитьСписокКаналов.txt & del Слак_ПолучитьСписокКаналов.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокКаналов" > Слак_ПолучитьСписокКаналов.log & chcp 65001 & type Слак_ПолучитьСписокКаналов.txt & del Слак_ПолучитьСписокКаналов.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОткрытьЗакрытьДиалог" > Слак_ОткрытьЗакрытьДиалог.log & chcp 65001 & type Слак_ОткрытьЗакрытьДиалог.txt & del Слак_ОткрытьЗакрытьДиалог.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОткрытьЗакрытьДиалог" > Слак_ОткрытьЗакрытьДиалог.log & chcp 65001 & type Слак_ОткрытьЗакрытьДиалог.txt & del Слак_ОткрытьЗакрытьДиалог.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокФайлов" > Слак_ПолучитьСписокФайлов.log & chcp 65001 & type Слак_ПолучитьСписокФайлов.txt & del Слак_ПолучитьСписокФайлов.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокФайлов" > Слак_ПолучитьСписокФайлов.log & chcp 65001 & type Слак_ПолучитьСписокФайлов.txt & del Слак_ПолучитьСписокФайлов.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьФайл" > Слак_ЗагрузитьУдалитьФайл.log & chcp 65001 & type Слак_ЗагрузитьУдалитьФайл.txt & del Слак_ЗагрузитьУдалитьФайл.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьФайл" > Слак_ЗагрузитьУдалитьФайл.log & chcp 65001 & type Слак_ЗагрузитьУдалитьФайл.txt & del Слак_ЗагрузитьУдалитьФайл.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокВФ" > Слак_ПолучитьСписокВФ.log & chcp 65001 & type Слак_ПолучитьСписокВФ.txt & del Слак_ПолучитьСписокВФ.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокВФ" > Слак_ПолучитьСписокВФ.log & chcp 65001 & type Слак_ПолучитьСписокВФ.txt & del Слак_ПолучитьСписокВФ.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьВФ" > Слак_ЗагрузитьУдалитьВФ.log & chcp 65001 & type Слак_ЗагрузитьУдалитьВФ.txt & del Слак_ЗагрузитьУдалитьВФ.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьВФ" > Слак_ЗагрузитьУдалитьВФ.log & chcp 65001 & type Слак_ЗагрузитьУдалитьВФ.txt & del Слак_ЗагрузитьУдалитьВФ.txt'
 
 
 			}
@@ -374,16 +374,16 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьБазу" > АТ_СоздатьБазу.log & chcp 65001 & type АТ_СоздатьБазу.txt & del АТ_СоздатьБазу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьБазу" > АТ_СоздатьБазу.log & chcp 65001 & type АТ_СоздатьБазу.txt & del АТ_СоздатьБазу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьТаблицу" > АТ_СоздатьТаблицу.log & chcp 65001 & type АТ_СоздатьТаблицу.txt & del АТ_СоздатьТаблицу.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьТаблицу" > АТ_СоздатьТаблицу.log & chcp 65001 & type АТ_СоздатьТаблицу.txt & del АТ_СоздатьТаблицу.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьПоле" > АТ_СоздатьПоле.log & chcp 65001 & type АТ_СоздатьПоле.txt & del АТ_СоздатьПоле.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьПоле" > АТ_СоздатьПоле.log & chcp 65001 & type АТ_СоздатьПоле.txt & del АТ_СоздатьПоле.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьУдалитьЗаписи" > АТ_СоздатьУдалитьЗаписи.log & chcp 65001 & type АТ_СоздатьУдалитьЗаписи.txt & del АТ_СоздатьУдалитьЗаписи.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьУдалитьЗаписи" > АТ_СоздатьУдалитьЗаписи.log & chcp 65001 & type АТ_СоздатьУдалитьЗаписи.txt & del АТ_СоздатьУдалитьЗаписи.txt'
 
 
 			}
@@ -393,28 +393,28 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьОбновитьТокен" > ДропБокс_ПолучитьОбновитьТокен.log & chcp 65001 & type ДропБокс_ПолучитьОбновитьТокен.txt & del ДропБокс_ПолучитьОбновитьТокен.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьОбновитьТокен" > ДропБокс_ПолучитьОбновитьТокен.log & chcp 65001 & type ДропБокс_ПолучитьОбновитьТокен.txt & del ДропБокс_ПолучитьОбновитьТокен.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайл" > ДропБокс_ЗагрузитьФайл.log & chcp 65001 & type ДропБокс_ЗагрузитьФайл.txt & del ДропБокс_ЗагрузитьФайл.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайл" > ДропБокс_ЗагрузитьФайл.log & chcp 65001 & type ДропБокс_ЗагрузитьФайл.txt & del ДропБокс_ЗагрузитьФайл.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайлПоURL" > ДропБокс_ЗагрузитьФайлПоURL.log & chcp 65001 & type ДропБокс_ЗагрузитьФайлПоURL.txt & del ДропБокс_ЗагрузитьФайлПоURL.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайлПоURL" > ДропБокс_ЗагрузитьФайлПоURL.log & chcp 65001 & type ДропБокс_ЗагрузитьФайлПоURL.txt & del ДропБокс_ЗагрузитьФайлПоURL.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьКаталог" > ДропБокс_СоздатьКаталог.log & chcp 65001 & type ДропБокс_СоздатьКаталог.txt & del ДропБокс_СоздатьКаталог.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьКаталог" > ДропБокс_СоздатьКаталог.log & chcp 65001 & type ДропБокс_СоздатьКаталог.txt & del ДропБокс_СоздатьКаталог.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьУдалитьТег" > ДропБокс_СоздатьУдалитьТег.log & chcp 65001 & type ДропБокс_СоздатьУдалитьТег.txt & del ДропБокс_СоздатьУдалитьТег.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьУдалитьТег" > ДропБокс_СоздатьУдалитьТег.log & chcp 65001 & type ДропБокс_СоздатьУдалитьТег.txt & del ДропБокс_СоздатьУдалитьТег.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьАккаунт" > ДропБокс_ПолучитьАккаунт.log & chcp 65001 & type ДропБокс_ПолучитьАккаунт.txt & del ДропБокс_ПолучитьАккаунт.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьАккаунт" > ДропБокс_ПолучитьАккаунт.log & chcp 65001 & type ДропБокс_ПолучитьАккаунт.txt & del ДропБокс_ПолучитьАккаунт.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_РаботаСДоступами" > ДропБокс_РаботаСДоступами.log & chcp 65001 & type ДропБокс_РаботаСДоступами.txt & del ДропБокс_РаботаСДоступами.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_РаботаСДоступами" > ДропБокс_РаботаСДоступами.log & chcp 65001 & type ДропБокс_РаботаСДоступами.txt & del ДропБокс_РаботаСДоступами.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьСписокФайловПапки" > ДропБокс_ПолучитьСписокФайловПапки.log & chcp 65001 & type ДропБокс_ПолучитьСписокФайловПапки.txt & del ДропБокс_ПолучитьСписокФайловПапки.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьСписокФайловПапки" > ДропБокс_ПолучитьСписокФайловПапки.log & chcp 65001 & type ДропБокс_ПолучитьСписокФайловПапки.txt & del ДропБокс_ПолучитьСписокФайловПапки.txt'
 
 
 			}
@@ -424,49 +424,49 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСТокеном" > Б24_РаботаСТокеном.log & chcp 65001 & type Б24_РаботаСТокеном.txt & del Б24_РаботаСТокеном.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСТокеном" > Б24_РаботаСТокеном.log & chcp 65001 & type Б24_РаботаСТокеном.txt & del Б24_РаботаСТокеном.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_СерверноеВремя" > Б24_СерверноеВремя.log & chcp 65001 & type Б24_СерверноеВремя.txt & del Б24_СерверноеВремя.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_СерверноеВремя" > Б24_СерверноеВремя.log & chcp 65001 & type Б24_СерверноеВремя.txt & del Б24_СерверноеВремя.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСНовостями" > Б24_РаботаСНовостями.log & chcp 65001 & type Б24_РаботаСНовостями.txt & del Б24_РаботаСНовостями.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСНовостями" > Б24_РаботаСНовостями.log & chcp 65001 & type Б24_РаботаСНовостями.txt & del Б24_РаботаСНовостями.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЗадачами" > Б24_РаботаСЗадачами.log & chcp 65001 & type Б24_РаботаСЗадачами.txt & del Б24_РаботаСЗадачами.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЗадачами" > Б24_РаботаСЗадачами.log & chcp 65001 & type Б24_РаботаСЗадачами.txt & del Б24_РаботаСЗадачами.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСКомментариями" > Б24_РаботаСКомментариями.log & chcp 65001 & type Б24_РаботаСКомментариями.txt & del Б24_РаботаСКомментариями.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСКомментариями" > Б24_РаботаСКомментариями.log & chcp 65001 & type Б24_РаботаСКомментариями.txt & del Б24_РаботаСКомментариями.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСДиском" > Б24_РаботаСДиском.log & chcp 65001 & type Б24_РаботаСДиском.txt & del Б24_РаботаСДиском.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСДиском" > Б24_РаботаСДиском.log & chcp 65001 & type Б24_РаботаСДиском.txt & del Б24_РаботаСДиском.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_Канбан" > Б24_Канбан.log & chcp 65001 & type Б24_Канбан.txt & del Б24_Канбан.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_Канбан" > Б24_Канбан.log & chcp 65001 & type Б24_Канбан.txt & del Б24_Канбан.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УчетРабочегоВремени" > Б24_УчетРабочегоВремени.log & chcp 65001 & type Б24_УчетРабочегоВремени.txt & del Б24_УчетРабочегоВремени.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УчетРабочегоВремени" > Б24_УчетРабочегоВремени.log & chcp 65001 & type Б24_УчетРабочегоВремени.txt & del Б24_УчетРабочегоВремени.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЧатами" > Б24_РаботаСЧатами.log & chcp 65001 & type Б24_РаботаСЧатами.txt & del Б24_РаботаСЧатами.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЧатами" > Б24_РаботаСЧатами.log & chcp 65001 & type Б24_РаботаСЧатами.txt & del Б24_РаботаСЧатами.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСУведомлениями" > Б24_РаботаСУведомлениями.log & chcp 65001 & type Б24_РаботаСУведомлениями.txt & del Б24_РаботаСУведомлениями.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСУведомлениями" > Б24_РаботаСУведомлениями.log & chcp 65001 & type Б24_РаботаСУведомлениями.txt & del Б24_РаботаСУведомлениями.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСПолямиЗадач" > Б24_РаботаСПолямиЗадач.log & chcp 65001 & type Б24_РаботаСПолямиЗадач.txt & del Б24_РаботаСПолямиЗадач.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСПолямиЗадач" > Б24_РаботаСПолямиЗадач.log & chcp 65001 & type Б24_РаботаСПолямиЗадач.txt & del Б24_РаботаСПолямиЗадач.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПодразделениями" > Б24_УправлениеПодразделениями.log & chcp 65001 & type Б24_УправлениеПодразделениями.txt & del Б24_УправлениеПодразделениями.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПодразделениями" > Б24_УправлениеПодразделениями.log & chcp 65001 & type Б24_УправлениеПодразделениями.txt & del Б24_УправлениеПодразделениями.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПользователями" > Б24_УправлениеПользователями.log & chcp 65001 & type Б24_УправлениеПользователями.txt & del Б24_УправлениеПользователями.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПользователями" > Б24_УправлениеПользователями.log & chcp 65001 & type Б24_УправлениеПользователями.txt & del Б24_УправлениеПользователями.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЛидами" > Б24_РаботаСЛидами.log & chcp 65001 & type Б24_РаботаСЛидами.txt & del Б24_РаботаСЛидами.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЛидами" > Б24_РаботаСЛидами.log & chcp 65001 & type Б24_РаботаСЛидами.txt & del Б24_РаботаСЛидами.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСоСделками" > Б24_РаботаСоСделками.log & chcp 65001 & type Б24_РаботаСоСделками.txt & del Б24_РаботаСоСделками.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСоСделками" > Б24_РаботаСоСделками.log & chcp 65001 & type Б24_РаботаСоСделками.txt & del Б24_РаботаСоСделками.txt'
 
 
 			}
@@ -476,13 +476,13 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОтправкаСообщений" > ВКТ_ОтправкаСообщений.log & chcp 65001 & type ВКТ_ОтправкаСообщений.txt & del ВКТ_ОтправкаСообщений.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОтправкаСообщений" > ВКТ_ОтправкаСообщений.log & chcp 65001 & type ВКТ_ОтправкаСообщений.txt & del ВКТ_ОтправкаСообщений.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОбщиеМетоды" > ВКТ_ОбщиеМетоды.log & chcp 65001 & type ВКТ_ОбщиеМетоды.txt & del ВКТ_ОбщиеМетоды.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОбщиеМетоды" > ВКТ_ОбщиеМетоды.log & chcp 65001 & type ВКТ_ОбщиеМетоды.txt & del ВКТ_ОбщиеМетоды.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_УправлениеЧатами" > ВКТ_УправлениеЧатами.log & chcp 65001 & type ВКТ_УправлениеЧатами.txt & del ВКТ_УправлениеЧатами.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_УправлениеЧатами" > ВКТ_УправлениеЧатами.log & chcp 65001 & type ВКТ_УправлениеЧатами.txt & del ВКТ_УправлениеЧатами.txt'
 
 
 			}
@@ -492,22 +492,22 @@ pipeline {
 			steps {
 					
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_АтрибутыИХарактеристики" > ОзонАПИ_АтрибутыИХарактеристики.log & chcp 65001 & type ОзонАПИ_АтрибутыИХарактеристики.txt & del ОзонАПИ_АтрибутыИХарактеристики.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_АтрибутыИХарактеристики" > ОзонАПИ_АтрибутыИХарактеристики.log & chcp 65001 & type ОзонАПИ_АтрибутыИХарактеристики.txt & del ОзонАПИ_АтрибутыИХарактеристики.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЗагрузкаИОбновлениеТоваров" > ОзонАПИ_ЗагрузкаИОбновлениеТоваров.log & chcp 65001 & type ОзонАПИ_ЗагрузкаИОбновлениеТоваров.txt & del ОзонАПИ_ЗагрузкаИОбновлениеТоваров.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЗагрузкаИОбновлениеТоваров" > ОзонАПИ_ЗагрузкаИОбновлениеТоваров.log & chcp 65001 & type ОзонАПИ_ЗагрузкаИОбновлениеТоваров.txt & del ОзонАПИ_ЗагрузкаИОбновлениеТоваров.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_Штрихкоды" > ОзонАПИ_Штрихкоды.log & chcp 65001 & type ОзонАПИ_Штрихкоды.txt & del ОзонАПИ_Штрихкоды.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_Штрихкоды" > ОзонАПИ_Штрихкоды.log & chcp 65001 & type ОзонАПИ_Штрихкоды.txt & del ОзонАПИ_Штрихкоды.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЦеныИОстаткиТоваров" > ОзонАПИ_ЦеныИОстаткиТоваров.log & chcp 65001 & type ОзонАПИ_ЦеныИОстаткиТоваров.txt & del ОзонАПИ_ЦеныИОстаткиТоваров.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЦеныИОстаткиТоваров" > ОзонАПИ_ЦеныИОстаткиТоваров.log & chcp 65001 & type ОзонАПИ_ЦеныИОстаткиТоваров.txt & del ОзонАПИ_ЦеныИОстаткиТоваров.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСАкциями" > ОзонАПИ_РаботаСАкциями.log & chcp 65001 & type ОзонАПИ_РаботаСАкциями.txt & del ОзонАПИ_РаботаСАкциями.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСАкциями" > ОзонАПИ_РаботаСАкциями.log & chcp 65001 & type ОзонАПИ_РаботаСАкциями.txt & del ОзонАПИ_РаботаСАкциями.txt'
 
 
-					cmd encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСоСкладами" > ОзонАПИ_РаботаСоСкладами.log & chcp 65001 & type ОзонАПИ_РаботаСоСкладами.txt & del ОзонАПИ_РаботаСоСкладами.txt
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСоСкладами" > ОзонАПИ_РаботаСоСкладами.log & chcp 65001 & type ОзонАПИ_РаботаСоСкладами.txt & del ОзонАПИ_РаботаСоСкладами.txt'
 
 
 			}
