@@ -81,7 +81,7 @@
 
 			ТекстРаботы = ТекстРаботы + "
 			|
-			|					bat encoding: 'UTF8', script:'chcp 65001 & 1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
+			|					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
 			|";
 
 		КонецЦикла;
