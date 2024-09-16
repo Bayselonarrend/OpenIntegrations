@@ -5,17 +5,17 @@ pipeline {
             steps {
                     
                     bat "git branch"
-                    bat encoding: 'UTF-8', script:'opm install osparser'
-                    bat encoding: 'UTF-8', script:'opm install cmdline'
-                    bat encoding: 'UTF-8', script:'opm install asserts'
-                    bat encoding: 'UTF-8', script:'opm install osparser'
-                    bat encoding: 'UTF-8', script:'opm install coloratos'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install osparser'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install cmdline'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install asserts'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install osparser'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & opm install coloratos'
             }
         }
 
         stage('Build') {
             steps {
-                    bat encoding: 'UTF-8', script:'oscript ./.github/workflows/os/main.os'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./.github/workflows/os/main.os'
             }
         }
 
