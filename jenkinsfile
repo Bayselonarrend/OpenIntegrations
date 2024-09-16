@@ -17,5 +17,22 @@ pipeline {
                     bat 'oscript ./.github/workflows/os/main.os'
             }
         }
+
+        stage('Update GIT') {
+            steps {
+                script {
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        withCredentials([usernamePassword(credentialsId: 'gitmain', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                            def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
+                            sh "git config user.email VitalyTheAlpaca@gmail.com"
+                            sh "git config user.name VitalyTheAlpaca"
+                            sh "git add ."
+                            sh "git commit -m 'Основная сборка (Jenkins)'"
+                            sh "git push https://${GIT_USERNAME}:${encodedPassword}@github.com/${GIT_USERNAME}/openintegrations.git"
+                        }
+                    }
+                }
+            }
+        }
     }
 }
