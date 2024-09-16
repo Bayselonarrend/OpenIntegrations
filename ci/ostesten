@@ -6,71 +6,71 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetBotInfo"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetUpdates"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetBotInfo" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SetWebhook"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetUpdates" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendTextMessage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SetWebhook" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendImage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendTextMessage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendVideo"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendImage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendAudio"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendVideo" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendDocument"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendAudio" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendGIF"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendDocument" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendMediaGroup"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendGIF" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendLocation"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendMediaGroup" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendContact"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendLocation" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendPoll"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendContact" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ForwardMessage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendPoll" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_BanUnban"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ForwardMessage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateInvitationLink"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_BanUnban" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_PinUnpinMessage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateInvitationLink" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetMemberCount"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_PinUnpinMessage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetForumAvatarsList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetMemberCount" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateDeleteForumTopic"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetForumAvatarsList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ChangeMainTopicName"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateDeleteForumTopic" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_HideShowMainTopic"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ChangeMainTopicName" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_HideShowMainTopic" & chcp 65001'
+
 
 			}
 		}
@@ -79,65 +79,65 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateTokenLink"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateDeletePost"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateTokenLink" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateCompositePost"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateDeletePost" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreatePoll"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateCompositePost" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SaveDeleteImage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreatePoll" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateStory"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SaveDeleteImage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_DiscussionMethods"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateStory" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_LikeRepostComment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_DiscussionMethods" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetStatistics"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_LikeRepostComment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPostStatistics"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetStatistics" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateAdCampaign"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPostStatistics" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SendMessage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateAdCampaign" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductCategories"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SendMessage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductSelection"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductCategories" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductWithProperties"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductSelection" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductWithProperties" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetSelectionList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPropertyList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetSelectionList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetOrderList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPropertyList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_UploadVideo"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetOrderList" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_UploadVideo" & chcp 65001'
+
 
 			}
 		}
@@ -146,11 +146,11 @@ pipeline {
 			steps {
 					
 
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_DataRetrieval" & chcp 65001'
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_DataRetrieval"'
 
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_MessagesSending" & chcp 65001'
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_MessagesSending"'
 
 			}
 		}
@@ -159,26 +159,26 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_GetAuthorizationLink"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_UpdateToken"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_GetAuthorizationLink" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTextTweet"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_UpdateToken" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithImage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTextTweet" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithVideo"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithImage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithGif"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithVideo" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithPoll"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithGif" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithPoll" & chcp 65001'
+
 
 			}
 		}
@@ -187,35 +187,35 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDiskInfo"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateFolder"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDiskInfo" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadByUrlAndGetObject"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateFolder" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadDeleteFile"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadByUrlAndGetObject" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateObjectCopy"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadDeleteFile" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDownloadLink"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateObjectCopy" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetFileList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDownloadLink" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_MoveObject"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetFileList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_PublicObjectActions"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_MoveObject" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetPublishedList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_PublicObjectActions" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetPublishedList" & chcp 65001'
+
 
 			}
 		}
@@ -224,14 +224,14 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetAuthorizationLink"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetToken"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetAuthorizationLink" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_UpdateToken"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetToken" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_UpdateToken" & chcp 65001'
+
 
 			}
 		}
@@ -240,17 +240,17 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetCalendarList"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteCalendar"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetCalendarList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteEvent"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteCalendar" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetEventList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteEvent" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetEventList" & chcp 65001'
+
 
 			}
 		}
@@ -259,17 +259,17 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_GetCatalogList"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_UploadDeleteFile"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_GetCatalogList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateDeleteComment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_UploadDeleteFile" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateCatalog"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateDeleteComment" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateCatalog" & chcp 65001'
+
 
 			}
 		}
@@ -278,14 +278,14 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_CreateTable"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_GetTable"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_CreateTable" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_FillClearCells"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_GetTable" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_FillClearCells" & chcp 65001'
+
 
 			}
 		}
@@ -294,32 +294,32 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePage"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateEditDatabase"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetPageInfo"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateEditDatabase" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetDatabaseInfo"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetPageInfo" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePageInDatabase"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetDatabaseInfo" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_EditPageProperties"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePageInDatabase" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateDeleteBlock"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_EditPageProperties" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUsers"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateDeleteBlock" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUserData"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUsers" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUserData" & chcp 65001'
+
 
 			}
 		}
@@ -328,44 +328,44 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetBotInfo"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetUserList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetBotInfo" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetRegionList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetUserList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteMessage"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetRegionList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteEphemeral"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteMessage" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetScheduledMessages"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteEphemeral" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_CreateArchiveChannel"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetScheduledMessages" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetChannelList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_CreateArchiveChannel" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_OpenCloseDialog"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetChannelList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetFileList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_OpenCloseDialog" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteFile"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetFileList" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetExternalFileList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteFile" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteExternalFile"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetExternalFileList" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteExternalFile" & chcp 65001'
+
 
 			}
 		}
@@ -374,17 +374,17 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDatabase"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateTable"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDatabase" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateField"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateTable" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDeleteRecords"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateField" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDeleteRecords" & chcp 65001'
+
 
 			}
 		}
@@ -393,29 +393,29 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetUpdateToken"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFile"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetUpdateToken" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFileByURL"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFile" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateFolder"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFileByURL" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateDeleteTag"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateFolder" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetAccount"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateDeleteTag" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_AccessManagement"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetAccount" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetFolderFileList"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_AccessManagement" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetFolderFileList" & chcp 65001'
+
 
 			}
 		}
@@ -424,50 +424,50 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TokenManagment"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ServerTime"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TokenManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_PostsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ServerTime" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TaskManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_PostsManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_CommentsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TaskManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_WorkingWithDrive"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_CommentsManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Kanban"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_WorkingWithDrive" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Timekeeping"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Kanban" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ChatManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Timekeeping" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_NotificationsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ChatManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TasksFieldsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_NotificationsManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DepartmentsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TasksFieldsManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B2_UsersManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DepartmentsManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_LeadsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B2_UsersManagment" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DealsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_LeadsManagment" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DealsManagment" & chcp 65001'
+
 
 			}
 		}
@@ -476,14 +476,14 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_MessagesSending"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_CommonMethods"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_MessagesSending" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_ChatManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_CommonMethods" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_ChatManagment" & chcp 65001'
+
 
 			}
 		}
@@ -492,23 +492,23 @@ pipeline {
 			steps {
 					
 
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_AttributesAndFeatures"'
-
-
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_UploadingAndUpdatingProducts"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_AttributesAndFeatures" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_Barcodes"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_UploadingAndUpdatingProducts" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PricesAndStocks"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_Barcodes" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PromotionsManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PricesAndStocks" & chcp 65001'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_WarehousesManagment"'
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PromotionsManagment" & chcp 65001'
+
+
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_WarehousesManagment" & chcp 65001'
+
 
 			}
 		}
