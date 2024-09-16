@@ -33,7 +33,7 @@ Method at API documentation: [crm.deal.list](https://dev.1c-bitrix.ru/rest_help/
     Result = OPI_Bitrix24.GetDealsList(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b529cb66006e9f06006b12e400000001000...";
+    Token = "8b80e066006e9f06006b12e400000001000...";
 
     Filter = New Structure;
     Filter.Insert("TITLE"      , "Sale in RUB");

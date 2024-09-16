@@ -4950,6 +4950,158 @@ jobs:
           ./oint bitrix24 GetUserFilterStructure --debug --test \
           --empty "" \
 
+
+
+      - name: Выполнить CreateLead
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateLead --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить DeleteLead
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteLead --debug --test \
+          --url "" \
+          --lead "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetLead
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetLead --debug --test \
+          --url "" \
+          --lead "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetLeadsList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetLeadsList --debug --test \
+          --url "" \
+          --filter "" \
+          --offset "" \
+          --token "" \
+
+
+
+      - name: Выполнить UpdateLead
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateLead --debug --test \
+          --url "" \
+          --lead "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetLeadStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetLeadStructure --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetLeadFilterStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetLeadFilterStructure --debug --test \
+          --empty "" \
+
+
+
+      - name: Выполнить CreateDeal
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 CreateDeal --debug --test \
+          --url "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить DeleteDeal
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 DeleteDeal --debug --test \
+          --url "" \
+          --deal "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetDeal
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetDeal --debug --test \
+          --url "" \
+          --deal "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetDealsList
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetDealsList --debug --test \
+          --url "" \
+          --filter "" \
+          --offset "" \
+          --token "" \
+
+
+
+      - name: Выполнить UpdateDeal
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 UpdateDeal --debug --test \
+          --url "" \
+          --deal "" \
+          --fields "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetDealStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetDealStructure --debug --test \
+          --url "" \
+          --token "" \
+
+
+
+      - name: Выполнить GetDealsFilterStructure
+        if: ${{ cancelled() }} == false
+        run: |
+ 
+          ./oint bitrix24 GetDealsFilterStructure --debug --test \
+          --empty "" \
+
   Clear-Cache:
     runs-on: ubuntu-latest
     needs: [Testing-telegram, Testing-vk, Testing-viber]

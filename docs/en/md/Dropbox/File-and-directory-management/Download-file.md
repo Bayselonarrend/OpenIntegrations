@@ -23,7 +23,7 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
-    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Token = "sl.B8qNQrapBwdKlUxK9u1kzEIubZPglTP1HW7SS2eULe9E3cG8zqvRiIHoYfVTTG5v0bUTVYp7dX...";
     Path  = "/New/pic.png";
 
     Result = OPI_Dropbox.DownloadFile(Token, Path);
