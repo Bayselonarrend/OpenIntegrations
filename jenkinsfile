@@ -4,17 +4,17 @@ pipeline {
         stage('Prepare') {
             steps {
                     checkout scm
-                    bat 'opm install osparser'
-                    bat 'opm install cmdline'
-                    bat 'opm install asserts'
-                    bat 'opm install osparser'
-                    bat 'opm install coloratos'
+                    bat encoding: 'UTF-8', script:'opm install osparser'
+                    bat encoding: 'UTF-8', script:'opm install cmdline'
+                    bat encoding: 'UTF-8', script:'opm install asserts'
+                    bat encoding: 'UTF-8', script:'opm install osparser'
+                    bat encoding: 'UTF-8', script:'opm install coloratos'
             }
         }
 
         stage('Build') {
             steps {
-                    bat 'oscript ./.github/workflows/os/main.os'
+                    bat encoding: 'UTF-8', script:'oscript ./.github/workflows/os/main.os'
             }
         }
 
@@ -24,11 +24,12 @@ pipeline {
                     catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                         withCredentials([usernamePassword(credentialsId: 'gitmain', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                             def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
-                            bat "git config user.email VitalyTheAlpaca@gmail.com"
-                            bat "git config user.name VitalyTheAlpaca"
-                            bat "git add ."
-                            bat "git commit -m 'Основная сборка (Jenkins)'"
-                            bat "git push https://${GIT_USERNAME}:${encodedPassword}@github.com/${GIT_USERNAME}/openintegrations.git"
+                            bat encoding: 'UTF-8', script:"git config user.email VitalyTheAlpaca@gmail.com"
+                            bat encoding: 'UTF-8', script:"git config user.name VitalyTheAlpaca"
+                            bat encoding: 'UTF-8', script:"git config --global core.ignorecase false"
+                            bat encoding: 'UTF-8', script:"git add ."
+                            bat encoding: 'UTF-8', script:"git commit -m 'Основная сборка (Jenkins)'"
+                            bat encoding: 'UTF-8', script:"git push https://${GIT_USERNAME}:${encodedPassword}@github.com/${GIT_USERNAME}/openintegrations.git"
                         }
                     }
                 }
