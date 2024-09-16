@@ -26,12 +26,20 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  BotToken = "523b5b25ed27e6ec-111111111111111-2222222222222222";
-  UserID = "d3jxe1111111111jYGgZg==";
-  
-  Response = OPI_Viber.SendContact(BotToken, "John Doe", "+749521231", UserID, False); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Name  = "Petr Petrov";
+    Phone = "+123456789";
+
+    UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
+    Token            = "523b5b25ed27e6ec-fdf013e4...";
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendContact(Token, Name, Phone, UserID, SendingToChannel);
+
+    UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
+    Token            = "523b58ba82afffaa-7ef3b426...";
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendContact(Token, Name, Phone, UserID, SendingToChannel);
 ```
 
 

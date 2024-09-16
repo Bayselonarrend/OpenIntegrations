@@ -33,7 +33,7 @@ Method at API documentation: [task.item.userfield.delete](https://dev.1c-bitrix.
     Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "b529cb66006e9f06006b12e400000001000...";
+    Token   = "8b80e066006e9f06006b12e400000001000...";
     FieldID = "257";
 
     Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID, );

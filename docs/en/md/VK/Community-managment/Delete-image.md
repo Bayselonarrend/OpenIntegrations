@@ -24,7 +24,7 @@ sidebar_position: 9
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    ImageID    = "457247397";
+    ImageID    = "457247777";
 
     Result = OPI_VK.DeleteImage(ImageID, Parameters);
 ```
