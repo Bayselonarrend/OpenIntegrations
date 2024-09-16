@@ -6,70 +6,70 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьИнформациюБота" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РџРѕР»СѓС‡РёС‚СЊРРЅС„РѕСЂРјР°С†РёСЋР‘РѕС‚Р°" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьОбновления" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РџРѕР»СѓС‡РёС‚СЊРћР±РЅРѕРІР»РµРЅРёСЏ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_УстановитьWebhook" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РЈСЃС‚Р°РЅРѕРІРёС‚СЊWebhook" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьТекстовоеСообщение" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊРўРµРєСЃС‚РѕРІРѕРµРЎРѕРѕР±С‰РµРЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКартинку" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊРљР°СЂС‚РёРЅРєСѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьВидео" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊР’РёРґРµРѕ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьАудио" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊРђСѓРґРёРѕ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьДокумент" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊР”РѕРєСѓРјРµРЅС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьГифку" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊР“РёС„РєСѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМедиагруппу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊРњРµРґРёР°РіСЂСѓРїРїСѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМестоположение" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊРњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКонтакт" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊРљРѕРЅС‚Р°РєС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьОпрос" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РћС‚РїСЂР°РІРёС‚СЊРћРїСЂРѕСЃ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПереслатьСообщение" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РџРµСЂРµСЃР»Р°С‚СЊРЎРѕРѕР±С‰РµРЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_БанРазбан" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_Р‘Р°РЅР Р°Р·Р±Р°РЅ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьСсылкуПриглашение" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РЎРѕР·РґР°С‚СЊРЎСЃС‹Р»РєСѓРџСЂРёРіР»Р°С€РµРЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ЗакрепитьОткрепитьСообщение" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_Р—Р°РєСЂРµРїРёС‚СЊРћС‚РєСЂРµРїРёС‚СЊРЎРѕРѕР±С‰РµРЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьЧислоУчастников" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РџРѕР»СѓС‡РёС‚СЊР§РёСЃР»РѕРЈС‡Р°СЃС‚РЅРёРєРѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьСписокАватаровФорума" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРђРІР°С‚Р°СЂРѕРІР¤РѕСЂСѓРјР°" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьУдалитьТемуФорума" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊРўРµРјСѓР¤РѕСЂСѓРјР°" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ИзменитьИмяГлавнойТемы" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РР·РјРµРЅРёС‚СЊРРјСЏР“Р»Р°РІРЅРѕР№РўРµРјС‹" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СкрытьПоказатьГлавнуюТему" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРµР»РµРіСЂР°Рј_РЎРєСЂС‹С‚СЊРџРѕРєР°Р·Р°С‚СЊР“Р»Р°РІРЅСѓСЋРўРµРјСѓ" '
 
 
 			}
@@ -79,64 +79,64 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСсылкуТокена" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊРЎСЃС‹Р»РєСѓРўРѕРєРµРЅР°" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьУдалитьПост" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊРџРѕСЃС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСоставнойПост" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊРЎРѕСЃС‚Р°РІРЅРѕР№РџРѕСЃС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьОпрос" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊРћРїСЂРѕСЃ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СохранитьУдалитьКартинку" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕС…СЂР°РЅРёС‚СЊРЈРґР°Р»РёС‚СЊРљР°СЂС‚РёРЅРєСѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьИсторию" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊРСЃС‚РѕСЂРёСЋ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_МетодыОбсуждений" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РњРµС‚РѕРґС‹РћР±СЃСѓР¶РґРµРЅРёР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЛайкРепостКоммент" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_Р›Р°Р№РєР РµРїРѕСЃС‚РљРѕРјРјРµРЅС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистику" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РџРѕР»СѓС‡РёС‚СЊРЎС‚Р°С‚РёСЃС‚РёРєСѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистикуПостов" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РџРѕР»СѓС‡РёС‚СЊРЎС‚Р°С‚РёСЃС‚РёРєСѓРџРѕСЃС‚РѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьРекламнуюКампанию" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊР РµРєР»Р°РјРЅСѓСЋРљР°РјРїР°РЅРёСЋ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ОтправитьСообщение" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РћС‚РїСЂР°РІРёС‚СЊРЎРѕРѕР±С‰РµРЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьКатегорииТоваров" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РџРѕР»СѓС‡РёС‚СЊРљР°С‚РµРіРѕСЂРёРёРўРѕРІР°СЂРѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварПодборку" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊРўРѕРІР°СЂРџРѕРґР±РѕСЂРєСѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварСоСвойствами" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РЎРѕР·РґР°С‚СЊРўРѕРІР°СЂРЎРѕРЎРІРѕР№СЃС‚РІР°РјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокТоваров" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРўРѕРІР°СЂРѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокПодборок" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРџРѕРґР±РѕСЂРѕРє" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокСвойств" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРЎРІРѕР№СЃС‚РІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокЗаказов" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєР—Р°РєР°Р·РѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЗагрузитьВидео" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Рљ_Р—Р°РіСЂСѓР·РёС‚СЊР’РёРґРµРѕ" '
 
 
 			}
@@ -146,10 +146,10 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ПолучениеИнформации" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Р°Р№Р±РµСЂ_РџРѕР»СѓС‡РµРЅРёРµРРЅС„РѕСЂРјР°С†РёРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ОтправкаСообщений" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’Р°Р№Р±РµСЂ_РћС‚РїСЂР°РІРєР°РЎРѕРѕР±С‰РµРЅРёР№" '
 
 
 			}
@@ -159,25 +159,25 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРІРёС‚С‚РµСЂ_РџРѕР»СѓС‡РёС‚СЊРЎСЃС‹Р»РєСѓРђРІС‚РѕСЂРёР·Р°С†РёРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРІРёС‚С‚РµСЂ_РћР±РЅРѕРІРёС‚СЊРўРѕРєРµРЅ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРІРёС‚С‚РµСЂ_РЎРѕР·РґР°С‚СЊРўРµРєСЃС‚РѕРІС‹Р№РўРІРёС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРІРёС‚С‚РµСЂ_РЎРѕР·РґР°С‚СЊРўРІРёС‚РЎРљР°СЂС‚РёРЅРєРѕР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРІРёС‚С‚РµСЂ_РЎРѕР·РґР°С‚СЊРўРІРёС‚РЎР’РёРґРµРѕ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРІРёС‚С‚РµСЂ_РЎРѕР·РґР°С‚СЊРўРІРёС‚РЎР“РёС„" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РўРІРёС‚С‚РµСЂ_РЎРѕР·РґР°С‚СЊРўРІРёС‚РЎРћРїСЂРѕСЃРѕРј" '
 
 
 			}
@@ -187,34 +187,34 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьИнформациюОДиске" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_РџРѕР»СѓС‡РёС‚СЊРРЅС„РѕСЂРјР°С†РёСЋРћР”РёСЃРєРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьПапку" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_РЎРѕР·РґР°С‚СЊРџР°РїРєСѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_Р—Р°РіСЂСѓР·РёС‚СЊРџРѕРђРґСЂРµСЃСѓРџРѕР»СѓС‡РёС‚СЊРћР±СЉРµРєС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьУдалитьФайл" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_Р—Р°РіСЂСѓР·РёС‚СЊРЈРґР°Р»РёС‚СЊР¤Р°Р№Р»" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьКопиюОбъекта" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_РЎРѕР·РґР°С‚СЊРљРѕРїРёСЋРћР±СЉРµРєС‚Р°" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСсылкуНаСкачивание" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_РџРѕР»СѓС‡РёС‚СЊРЎСЃС‹Р»РєСѓРќР°РЎРєР°С‡РёРІР°РЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокФайлов" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєР¤Р°Р№Р»РѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПереместитьОбъект" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_РџРµСЂРµРјРµСЃС‚РёС‚СЊРћР±СЉРµРєС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ДействияПубличныхОбъектов" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_Р”РµР№СЃС‚РІРёСЏРџСѓР±Р»РёС‡РЅС‹С…РћР±СЉРµРєС‚РѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокОпубликованных" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЇР”РёСЃРє_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРћРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С…" '
 
 
 			}
@@ -224,13 +224,13 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Р’_РџРѕР»СѓС‡РёС‚СЊРЎСЃС‹Р»РєСѓРђРІС‚РѕСЂРёР·Р°С†РёРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Р’_РџРѕР»СѓС‡РёС‚СЊРўРѕРєРµРЅ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Р’_РћР±РЅРѕРІРёС‚СЊРўРѕРєРµРЅ" '
 
 
 			}
@@ -240,16 +240,16 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Рљ_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРљР°Р»РµРЅРґР°СЂРµР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьКалендарь" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Рљ_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊРљР°Р»РµРЅРґР°СЂСЊ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьСобытие" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Рљ_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊРЎРѕР±С‹С‚РёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокСобытий" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Рљ_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРЎРѕР±С‹С‚РёР№" '
 
 
 			}
@@ -259,16 +259,16 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Р”_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРљР°С‚Р°Р»РѕРіРѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ЗагрузитьУдалитьФайл" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Р”_Р—Р°РіСЂСѓР·РёС‚СЊРЈРґР°Р»РёС‚СЊР¤Р°Р№Р»" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьУдалитьКомментарий" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Р”_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊРљРѕРјРјРµРЅС‚Р°СЂРёР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьКаталог" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Р”_РЎРѕР·РґР°С‚СЊРљР°С‚Р°Р»РѕРі" '
 
 
 			}
@@ -278,13 +278,13 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Рў_РЎРѕР·РґР°С‚СЊРўР°Р±Р»РёС†Сѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ПолучитьТаблицу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Рў_РџРѕР»СѓС‡РёС‚СЊРўР°Р±Р»РёС†Сѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ЗаполнитьОчиститьЯчейки" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р“Рў_Р—Р°РїРѕР»РЅРёС‚СЊРћС‡РёСЃС‚РёС‚СЊРЇС‡РµР№РєРё" '
 
 
 			}
@@ -294,31 +294,31 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РЎРѕР·РґР°С‚СЊРЎС‚СЂР°РЅРёС†Сѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьИзменитьБазу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РЎРѕР·РґР°С‚СЊРР·РјРµРЅРёС‚СЊР‘Р°Р·Сѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОСтранице" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РџРѕР»СѓС‡РёС‚СЊРРЅС„РѕСЂРјР°С†РёСЋРћРЎС‚СЂР°РЅРёС†Рµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОБазе" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РџРѕР»СѓС‡РёС‚СЊРРЅС„РѕСЂРјР°С†РёСЋРћР‘Р°Р·Рµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницуВБазу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РЎРѕР·РґР°С‚СЊРЎС‚СЂР°РЅРёС†СѓР’Р‘Р°Р·Сѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ИзменитьСвойстваСтраницы" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РР·РјРµРЅРёС‚СЊРЎРІРѕР№СЃС‚РІР°РЎС‚СЂР°РЅРёС†С‹" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьУдалитьБлок" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊР‘Р»РѕРє" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьПользователей" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РџРѕР»СѓС‡РёС‚СЊРџРѕР»СЊР·РѕРІР°С‚РµР»РµР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьДанныеПользователя" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РќРѕСѓС€РЅ_РџРѕР»СѓС‡РёС‚СЊР”Р°РЅРЅС‹РµРџРѕР»СЊР·РѕРІР°С‚РµР»СЏ" '
 
 
 			}
@@ -328,43 +328,43 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьИнформациюОБоте" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РџРѕР»СѓС‡РёС‚СЊРРЅС„РѕСЂРјР°С†РёСЋРћР‘РѕС‚Рµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокПользователей" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРџРѕР»СЊР·РѕРІР°С‚РµР»РµР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокОбластей" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРћР±Р»Р°СЃС‚РµР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьСообщение" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РћС‚РїСЂР°РІРёС‚СЊРЈРґР°Р»РёС‚СЊРЎРѕРѕР±С‰РµРЅРёРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьЭфемерное" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РћС‚РїСЂР°РІРёС‚СЊРЈРґР°Р»РёС‚СЊР­С„РµРјРµСЂРЅРѕРµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьОтложенныеСообщения" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РџРѕР»СѓС‡РёС‚СЊРћС‚Р»РѕР¶РµРЅРЅС‹РµРЎРѕРѕР±С‰РµРЅРёСЏ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_СоздатьАрхивироватьКанал" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РЎРѕР·РґР°С‚СЊРђСЂС…РёРІРёСЂРѕРІР°С‚СЊРљР°РЅР°Р»" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокКаналов" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєРљР°РЅР°Р»РѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОткрытьЗакрытьДиалог" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РћС‚РєСЂС‹С‚СЊР—Р°РєСЂС‹С‚СЊР”РёР°Р»РѕРі" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокФайлов" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєР¤Р°Р№Р»РѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьФайл" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_Р—Р°РіСЂСѓР·РёС‚СЊРЈРґР°Р»РёС‚СЊР¤Р°Р№Р»" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокВФ" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєР’Р¤" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьВФ" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РЎР»Р°Рє_Р—Р°РіСЂСѓР·РёС‚СЊРЈРґР°Р»РёС‚СЊР’Р¤" '
 
 
 			}
@@ -374,16 +374,16 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьБазу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РђРў_РЎРѕР·РґР°С‚СЊР‘Р°Р·Сѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьТаблицу" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РђРў_РЎРѕР·РґР°С‚СЊРўР°Р±Р»РёС†Сѓ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьПоле" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РђРў_РЎРѕР·РґР°С‚СЊРџРѕР»Рµ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьУдалитьЗаписи" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РђРў_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊР—Р°РїРёСЃРё" '
 
 
 			}
@@ -393,28 +393,28 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьОбновитьТокен" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_РџРѕР»СѓС‡РёС‚СЊРћР±РЅРѕРІРёС‚СЊРўРѕРєРµРЅ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайл" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_Р—Р°РіСЂСѓР·РёС‚СЊР¤Р°Р№Р»" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайлПоURL" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_Р—Р°РіСЂСѓР·РёС‚СЊР¤Р°Р№Р»РџРѕURL" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьКаталог" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_РЎРѕР·РґР°С‚СЊРљР°С‚Р°Р»РѕРі" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьУдалитьТег" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_РЎРѕР·РґР°С‚СЊРЈРґР°Р»РёС‚СЊРўРµРі" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьАккаунт" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_РџРѕР»СѓС‡РёС‚СЊРђРєРєР°СѓРЅС‚" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_РаботаСДоступами" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_Р Р°Р±РѕС‚Р°РЎР”РѕСЃС‚СѓРїР°РјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьСписокФайловПапки" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р”СЂРѕРїР‘РѕРєСЃ_РџРѕР»СѓС‡РёС‚СЊРЎРїРёСЃРѕРєР¤Р°Р№Р»РѕРІРџР°РїРєРё" '
 
 
 			}
@@ -424,49 +424,49 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСТокеном" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎРўРѕРєРµРЅРѕРј" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_СерверноеВремя" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_РЎРµСЂРІРµСЂРЅРѕРµР’СЂРµРјСЏ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСНовостями" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎРќРѕРІРѕСЃС‚СЏРјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЗадачами" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎР—Р°РґР°С‡Р°РјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСКомментариями" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎРљРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСДиском" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎР”РёСЃРєРѕРј" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_Канбан" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_РљР°РЅР±Р°РЅ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УчетРабочегоВремени" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_РЈС‡РµС‚Р Р°Р±РѕС‡РµРіРѕР’СЂРµРјРµРЅРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЧатами" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎР§Р°С‚Р°РјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСУведомлениями" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎРЈРІРµРґРѕРјР»РµРЅРёСЏРјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСПолямиЗадач" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎРџРѕР»СЏРјРёР—Р°РґР°С‡" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПодразделениями" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_РЈРїСЂР°РІР»РµРЅРёРµРџРѕРґСЂР°Р·РґРµР»РµРЅРёСЏРјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПользователями" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_РЈРїСЂР°РІР»РµРЅРёРµРџРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЛидами" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎР›РёРґР°РјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСоСделками" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р‘24_Р Р°Р±РѕС‚Р°РЎРѕРЎРґРµР»РєР°РјРё" '
 
 
 			}
@@ -476,13 +476,13 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОтправкаСообщений" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’РљРў_РћС‚РїСЂР°РІРєР°РЎРѕРѕР±С‰РµРЅРёР№" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОбщиеМетоды" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’РљРў_РћР±С‰РёРµРњРµС‚РѕРґС‹" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_УправлениеЧатами" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "Р’РљРў_РЈРїСЂР°РІР»РµРЅРёРµР§Р°С‚Р°РјРё" '
 
 
 			}
@@ -492,22 +492,22 @@ pipeline {
 			steps {
 					
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_АтрибутыИХарактеристики" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РћР·РѕРЅРђРџР_РђС‚СЂРёР±СѓС‚С‹РРҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЗагрузкаИОбновлениеТоваров" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РћР·РѕРЅРђРџР_Р—Р°РіСЂСѓР·РєР°РРћР±РЅРѕРІР»РµРЅРёРµРўРѕРІР°СЂРѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_Штрихкоды" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РћР·РѕРЅРђРџР_РЁС‚СЂРёС…РєРѕРґС‹" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЦеныИОстаткиТоваров" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РћР·РѕРЅРђРџР_Р¦РµРЅС‹РРћСЃС‚Р°С‚РєРёРўРѕРІР°СЂРѕРІ" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСАкциями" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РћР·РѕРЅРђРџР_Р Р°Р±РѕС‚Р°РЎРђРєС†РёСЏРјРё" '
 
 
-					bat 'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСоСкладами" '
+					bat encoding: 'UTF8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_РўРµСЃС‚С‹.os" "РћР·РѕРЅРђРџР_Р Р°Р±РѕС‚Р°РЎРѕРЎРєР»Р°РґР°РјРё" '
 
 
 			}
