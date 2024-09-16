@@ -6,70 +6,70 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetBotInfo" > TelegramAPI_GetBotInfo.log & chcp 65001 & type TelegramAPI_GetBotInfo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetBotInfo" > TelegramAPI_GetBotInfo.log & chcp 65001 & type TelegramAPI_GetBotInfo.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetUpdates" > TelegramAPI_GetUpdates.log & chcp 65001 & type TelegramAPI_GetUpdates.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetUpdates" > TelegramAPI_GetUpdates.log & chcp 65001 & type TelegramAPI_GetUpdates.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SetWebhook" > TelegramAPI_SetWebhook.log & chcp 65001 & type TelegramAPI_SetWebhook.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SetWebhook" > TelegramAPI_SetWebhook.log & chcp 65001 & type TelegramAPI_SetWebhook.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendTextMessage" > TelegramAPI_SendTextMessage.log & chcp 65001 & type TelegramAPI_SendTextMessage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendTextMessage" > TelegramAPI_SendTextMessage.log & chcp 65001 & type TelegramAPI_SendTextMessage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendImage" > TelegramAPI_SendImage.log & chcp 65001 & type TelegramAPI_SendImage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendImage" > TelegramAPI_SendImage.log & chcp 65001 & type TelegramAPI_SendImage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendVideo" > TelegramAPI_SendVideo.log & chcp 65001 & type TelegramAPI_SendVideo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendVideo" > TelegramAPI_SendVideo.log & chcp 65001 & type TelegramAPI_SendVideo.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendAudio" > TelegramAPI_SendAudio.log & chcp 65001 & type TelegramAPI_SendAudio.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendAudio" > TelegramAPI_SendAudio.log & chcp 65001 & type TelegramAPI_SendAudio.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendDocument" > TelegramAPI_SendDocument.log & chcp 65001 & type TelegramAPI_SendDocument.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendDocument" > TelegramAPI_SendDocument.log & chcp 65001 & type TelegramAPI_SendDocument.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendGIF" > TelegramAPI_SendGIF.log & chcp 65001 & type TelegramAPI_SendGIF.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendGIF" > TelegramAPI_SendGIF.log & chcp 65001 & type TelegramAPI_SendGIF.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendMediaGroup" > TelegramAPI_SendMediaGroup.log & chcp 65001 & type TelegramAPI_SendMediaGroup.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendMediaGroup" > TelegramAPI_SendMediaGroup.log & chcp 65001 & type TelegramAPI_SendMediaGroup.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendLocation" > TelegramAPI_SendLocation.log & chcp 65001 & type TelegramAPI_SendLocation.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendLocation" > TelegramAPI_SendLocation.log & chcp 65001 & type TelegramAPI_SendLocation.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendContact" > TelegramAPI_SendContact.log & chcp 65001 & type TelegramAPI_SendContact.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendContact" > TelegramAPI_SendContact.log & chcp 65001 & type TelegramAPI_SendContact.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendPoll" > TelegramAPI_SendPoll.log & chcp 65001 & type TelegramAPI_SendPoll.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_SendPoll" > TelegramAPI_SendPoll.log & chcp 65001 & type TelegramAPI_SendPoll.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ForwardMessage" > TelegramAPI_ForwardMessage.log & chcp 65001 & type TelegramAPI_ForwardMessage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ForwardMessage" > TelegramAPI_ForwardMessage.log & chcp 65001 & type TelegramAPI_ForwardMessage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_BanUnban" > TelegramAPI_BanUnban.log & chcp 65001 & type TelegramAPI_BanUnban.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_BanUnban" > TelegramAPI_BanUnban.log & chcp 65001 & type TelegramAPI_BanUnban.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateInvitationLink" > TelegramAPI_CreateInvitationLink.log & chcp 65001 & type TelegramAPI_CreateInvitationLink.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateInvitationLink" > TelegramAPI_CreateInvitationLink.log & chcp 65001 & type TelegramAPI_CreateInvitationLink.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_PinUnpinMessage" > TelegramAPI_PinUnpinMessage.log & chcp 65001 & type TelegramAPI_PinUnpinMessage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_PinUnpinMessage" > TelegramAPI_PinUnpinMessage.log & chcp 65001 & type TelegramAPI_PinUnpinMessage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetMemberCount" > TelegramAPI_GetMemberCount.log & chcp 65001 & type TelegramAPI_GetMemberCount.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetMemberCount" > TelegramAPI_GetMemberCount.log & chcp 65001 & type TelegramAPI_GetMemberCount.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetForumAvatarsList" > TelegramAPI_GetForumAvatarsList.log & chcp 65001 & type TelegramAPI_GetForumAvatarsList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetForumAvatarsList" > TelegramAPI_GetForumAvatarsList.log & chcp 65001 & type TelegramAPI_GetForumAvatarsList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateDeleteForumTopic" > TelegramAPI_CreateDeleteForumTopic.log & chcp 65001 & type TelegramAPI_CreateDeleteForumTopic.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_CreateDeleteForumTopic" > TelegramAPI_CreateDeleteForumTopic.log & chcp 65001 & type TelegramAPI_CreateDeleteForumTopic.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ChangeMainTopicName" > TelegramAPI_ChangeMainTopicName.log & chcp 65001 & type TelegramAPI_ChangeMainTopicName.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_ChangeMainTopicName" > TelegramAPI_ChangeMainTopicName.log & chcp 65001 & type TelegramAPI_ChangeMainTopicName.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_HideShowMainTopic" > TelegramAPI_HideShowMainTopic.log & chcp 65001 & type TelegramAPI_HideShowMainTopic.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_HideShowMainTopic" > TelegramAPI_HideShowMainTopic.log & chcp 65001 & type TelegramAPI_HideShowMainTopic.txt'
 
 
 			}
@@ -79,64 +79,64 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateTokenLink" > VKAPI_CreateTokenLink.log & chcp 65001 & type VKAPI_CreateTokenLink.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateTokenLink" > VKAPI_CreateTokenLink.log & chcp 65001 & type VKAPI_CreateTokenLink.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateDeletePost" > VKAPI_CreateDeletePost.log & chcp 65001 & type VKAPI_CreateDeletePost.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateDeletePost" > VKAPI_CreateDeletePost.log & chcp 65001 & type VKAPI_CreateDeletePost.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateCompositePost" > VKAPI_CreateCompositePost.log & chcp 65001 & type VKAPI_CreateCompositePost.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateCompositePost" > VKAPI_CreateCompositePost.log & chcp 65001 & type VKAPI_CreateCompositePost.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreatePoll" > VKAPI_CreatePoll.log & chcp 65001 & type VKAPI_CreatePoll.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreatePoll" > VKAPI_CreatePoll.log & chcp 65001 & type VKAPI_CreatePoll.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SaveDeleteImage" > VKAPI_SaveDeleteImage.log & chcp 65001 & type VKAPI_SaveDeleteImage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SaveDeleteImage" > VKAPI_SaveDeleteImage.log & chcp 65001 & type VKAPI_SaveDeleteImage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateStory" > VKAPI_CreateStory.log & chcp 65001 & type VKAPI_CreateStory.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateStory" > VKAPI_CreateStory.log & chcp 65001 & type VKAPI_CreateStory.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_DiscussionMethods" > VKAPI_DiscussionMethods.log & chcp 65001 & type VKAPI_DiscussionMethods.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_DiscussionMethods" > VKAPI_DiscussionMethods.log & chcp 65001 & type VKAPI_DiscussionMethods.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_LikeRepostComment" > VKAPI_LikeRepostComment.log & chcp 65001 & type VKAPI_LikeRepostComment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_LikeRepostComment" > VKAPI_LikeRepostComment.log & chcp 65001 & type VKAPI_LikeRepostComment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetStatistics" > VKAPI_GetStatistics.log & chcp 65001 & type VKAPI_GetStatistics.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetStatistics" > VKAPI_GetStatistics.log & chcp 65001 & type VKAPI_GetStatistics.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPostStatistics" > VKAPI_GetPostStatistics.log & chcp 65001 & type VKAPI_GetPostStatistics.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPostStatistics" > VKAPI_GetPostStatistics.log & chcp 65001 & type VKAPI_GetPostStatistics.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateAdCampaign" > VKAPI_CreateAdCampaign.log & chcp 65001 & type VKAPI_CreateAdCampaign.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateAdCampaign" > VKAPI_CreateAdCampaign.log & chcp 65001 & type VKAPI_CreateAdCampaign.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SendMessage" > VKAPI_SendMessage.log & chcp 65001 & type VKAPI_SendMessage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_SendMessage" > VKAPI_SendMessage.log & chcp 65001 & type VKAPI_SendMessage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductCategories" > VKAPI_GetProductCategories.log & chcp 65001 & type VKAPI_GetProductCategories.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductCategories" > VKAPI_GetProductCategories.log & chcp 65001 & type VKAPI_GetProductCategories.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductSelection" > VKAPI_CreateProductSelection.log & chcp 65001 & type VKAPI_CreateProductSelection.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductSelection" > VKAPI_CreateProductSelection.log & chcp 65001 & type VKAPI_CreateProductSelection.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductWithProperties" > VKAPI_CreateProductWithProperties.log & chcp 65001 & type VKAPI_CreateProductWithProperties.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateProductWithProperties" > VKAPI_CreateProductWithProperties.log & chcp 65001 & type VKAPI_CreateProductWithProperties.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductList" > VKAPI_GetProductList.log & chcp 65001 & type VKAPI_GetProductList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetProductList" > VKAPI_GetProductList.log & chcp 65001 & type VKAPI_GetProductList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetSelectionList" > VKAPI_GetSelectionList.log & chcp 65001 & type VKAPI_GetSelectionList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetSelectionList" > VKAPI_GetSelectionList.log & chcp 65001 & type VKAPI_GetSelectionList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPropertyList" > VKAPI_GetPropertyList.log & chcp 65001 & type VKAPI_GetPropertyList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetPropertyList" > VKAPI_GetPropertyList.log & chcp 65001 & type VKAPI_GetPropertyList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetOrderList" > VKAPI_GetOrderList.log & chcp 65001 & type VKAPI_GetOrderList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_GetOrderList" > VKAPI_GetOrderList.log & chcp 65001 & type VKAPI_GetOrderList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_UploadVideo" > VKAPI_UploadVideo.log & chcp 65001 & type VKAPI_UploadVideo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_UploadVideo" > VKAPI_UploadVideo.log & chcp 65001 & type VKAPI_UploadVideo.txt'
 
 
 			}
@@ -146,10 +146,10 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_DataRetrieval" > Viber_DataRetrieval.log & chcp 65001 & type Viber_DataRetrieval.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_DataRetrieval" > Viber_DataRetrieval.log & chcp 65001 & type Viber_DataRetrieval.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_MessagesSending" > Viber_MessagesSending.log & chcp 65001 & type Viber_MessagesSending.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_MessagesSending" > Viber_MessagesSending.log & chcp 65001 & type Viber_MessagesSending.txt'
 
 
 			}
@@ -159,25 +159,25 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_GetAuthorizationLink" > Twitter_GetAuthorizationLink.log & chcp 65001 & type Twitter_GetAuthorizationLink.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_GetAuthorizationLink" > Twitter_GetAuthorizationLink.log & chcp 65001 & type Twitter_GetAuthorizationLink.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_UpdateToken" > Twitter_UpdateToken.log & chcp 65001 & type Twitter_UpdateToken.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_UpdateToken" > Twitter_UpdateToken.log & chcp 65001 & type Twitter_UpdateToken.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTextTweet" > Twitter_CreateTextTweet.log & chcp 65001 & type Twitter_CreateTextTweet.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTextTweet" > Twitter_CreateTextTweet.log & chcp 65001 & type Twitter_CreateTextTweet.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithImage" > Twitter_CreateTweetWithImage.log & chcp 65001 & type Twitter_CreateTweetWithImage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithImage" > Twitter_CreateTweetWithImage.log & chcp 65001 & type Twitter_CreateTweetWithImage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithVideo" > Twitter_CreateTweetWithVideo.log & chcp 65001 & type Twitter_CreateTweetWithVideo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithVideo" > Twitter_CreateTweetWithVideo.log & chcp 65001 & type Twitter_CreateTweetWithVideo.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithGif" > Twitter_CreateTweetWithGif.log & chcp 65001 & type Twitter_CreateTweetWithGif.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithGif" > Twitter_CreateTweetWithGif.log & chcp 65001 & type Twitter_CreateTweetWithGif.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithPoll" > Twitter_CreateTweetWithPoll.log & chcp 65001 & type Twitter_CreateTweetWithPoll.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithPoll" > Twitter_CreateTweetWithPoll.log & chcp 65001 & type Twitter_CreateTweetWithPoll.txt'
 
 
 			}
@@ -187,34 +187,34 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDiskInfo" > YDisk_GetDiskInfo.log & chcp 65001 & type YDisk_GetDiskInfo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDiskInfo" > YDisk_GetDiskInfo.log & chcp 65001 & type YDisk_GetDiskInfo.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateFolder" > YDisk_CreateFolder.log & chcp 65001 & type YDisk_CreateFolder.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateFolder" > YDisk_CreateFolder.log & chcp 65001 & type YDisk_CreateFolder.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadByUrlAndGetObject" > YDisk_UploadByUrlAndGetObject.log & chcp 65001 & type YDisk_UploadByUrlAndGetObject.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadByUrlAndGetObject" > YDisk_UploadByUrlAndGetObject.log & chcp 65001 & type YDisk_UploadByUrlAndGetObject.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadDeleteFile" > YDisk_UploadDeleteFile.log & chcp 65001 & type YDisk_UploadDeleteFile.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_UploadDeleteFile" > YDisk_UploadDeleteFile.log & chcp 65001 & type YDisk_UploadDeleteFile.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateObjectCopy" > YDisk_CreateObjectCopy.log & chcp 65001 & type YDisk_CreateObjectCopy.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_CreateObjectCopy" > YDisk_CreateObjectCopy.log & chcp 65001 & type YDisk_CreateObjectCopy.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDownloadLink" > YDisk_GetDownloadLink.log & chcp 65001 & type YDisk_GetDownloadLink.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDownloadLink" > YDisk_GetDownloadLink.log & chcp 65001 & type YDisk_GetDownloadLink.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetFileList" > YDisk_GetFileList.log & chcp 65001 & type YDisk_GetFileList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetFileList" > YDisk_GetFileList.log & chcp 65001 & type YDisk_GetFileList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_MoveObject" > YDisk_MoveObject.log & chcp 65001 & type YDisk_MoveObject.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_MoveObject" > YDisk_MoveObject.log & chcp 65001 & type YDisk_MoveObject.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_PublicObjectActions" > YDisk_PublicObjectActions.log & chcp 65001 & type YDisk_PublicObjectActions.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_PublicObjectActions" > YDisk_PublicObjectActions.log & chcp 65001 & type YDisk_PublicObjectActions.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetPublishedList" > YDisk_GetPublishedList.log & chcp 65001 & type YDisk_GetPublishedList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetPublishedList" > YDisk_GetPublishedList.log & chcp 65001 & type YDisk_GetPublishedList.txt'
 
 
 			}
@@ -224,13 +224,13 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetAuthorizationLink" > GV_GetAuthorizationLink.log & chcp 65001 & type GV_GetAuthorizationLink.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetAuthorizationLink" > GV_GetAuthorizationLink.log & chcp 65001 & type GV_GetAuthorizationLink.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetToken" > GV_GetToken.log & chcp 65001 & type GV_GetToken.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_GetToken" > GV_GetToken.log & chcp 65001 & type GV_GetToken.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_UpdateToken" > GV_UpdateToken.log & chcp 65001 & type GV_UpdateToken.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GV_UpdateToken" > GV_UpdateToken.log & chcp 65001 & type GV_UpdateToken.txt'
 
 
 			}
@@ -240,16 +240,16 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetCalendarList" > GC_GetCalendarList.log & chcp 65001 & type GC_GetCalendarList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetCalendarList" > GC_GetCalendarList.log & chcp 65001 & type GC_GetCalendarList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteCalendar" > GC_CreateDeleteCalendar.log & chcp 65001 & type GC_CreateDeleteCalendar.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteCalendar" > GC_CreateDeleteCalendar.log & chcp 65001 & type GC_CreateDeleteCalendar.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteEvent" > GC_CreateDeleteEvent.log & chcp 65001 & type GC_CreateDeleteEvent.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_CreateDeleteEvent" > GC_CreateDeleteEvent.log & chcp 65001 & type GC_CreateDeleteEvent.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetEventList" > GC_GetEventList.log & chcp 65001 & type GC_GetEventList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GC_GetEventList" > GC_GetEventList.log & chcp 65001 & type GC_GetEventList.txt'
 
 
 			}
@@ -259,16 +259,16 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_GetCatalogList" > GD_GetCatalogList.log & chcp 65001 & type GD_GetCatalogList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_GetCatalogList" > GD_GetCatalogList.log & chcp 65001 & type GD_GetCatalogList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_UploadDeleteFile" > GD_UploadDeleteFile.log & chcp 65001 & type GD_UploadDeleteFile.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_UploadDeleteFile" > GD_UploadDeleteFile.log & chcp 65001 & type GD_UploadDeleteFile.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateDeleteComment" > GD_CreateDeleteComment.log & chcp 65001 & type GD_CreateDeleteComment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateDeleteComment" > GD_CreateDeleteComment.log & chcp 65001 & type GD_CreateDeleteComment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateCatalog" > GD_CreateCatalog.log & chcp 65001 & type GD_CreateCatalog.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GD_CreateCatalog" > GD_CreateCatalog.log & chcp 65001 & type GD_CreateCatalog.txt'
 
 
 			}
@@ -278,13 +278,13 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_CreateTable" > GT_CreateTable.log & chcp 65001 & type GT_CreateTable.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_CreateTable" > GT_CreateTable.log & chcp 65001 & type GT_CreateTable.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_GetTable" > GT_GetTable.log & chcp 65001 & type GT_GetTable.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_GetTable" > GT_GetTable.log & chcp 65001 & type GT_GetTable.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_FillClearCells" > GT_FillClearCells.log & chcp 65001 & type GT_FillClearCells.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GT_FillClearCells" > GT_FillClearCells.log & chcp 65001 & type GT_FillClearCells.txt'
 
 
 			}
@@ -294,31 +294,31 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePage" > Notion_CreatePage.log & chcp 65001 & type Notion_CreatePage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePage" > Notion_CreatePage.log & chcp 65001 & type Notion_CreatePage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateEditDatabase" > Notion_CreateEditDatabase.log & chcp 65001 & type Notion_CreateEditDatabase.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateEditDatabase" > Notion_CreateEditDatabase.log & chcp 65001 & type Notion_CreateEditDatabase.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetPageInfo" > Notion_GetPageInfo.log & chcp 65001 & type Notion_GetPageInfo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetPageInfo" > Notion_GetPageInfo.log & chcp 65001 & type Notion_GetPageInfo.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetDatabaseInfo" > Notion_GetDatabaseInfo.log & chcp 65001 & type Notion_GetDatabaseInfo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetDatabaseInfo" > Notion_GetDatabaseInfo.log & chcp 65001 & type Notion_GetDatabaseInfo.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePageInDatabase" > Notion_CreatePageInDatabase.log & chcp 65001 & type Notion_CreatePageInDatabase.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreatePageInDatabase" > Notion_CreatePageInDatabase.log & chcp 65001 & type Notion_CreatePageInDatabase.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_EditPageProperties" > Notion_EditPageProperties.log & chcp 65001 & type Notion_EditPageProperties.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_EditPageProperties" > Notion_EditPageProperties.log & chcp 65001 & type Notion_EditPageProperties.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateDeleteBlock" > Notion_CreateDeleteBlock.log & chcp 65001 & type Notion_CreateDeleteBlock.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_CreateDeleteBlock" > Notion_CreateDeleteBlock.log & chcp 65001 & type Notion_CreateDeleteBlock.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUsers" > Notion_GetUsers.log & chcp 65001 & type Notion_GetUsers.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUsers" > Notion_GetUsers.log & chcp 65001 & type Notion_GetUsers.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUserData" > Notion_GetUserData.log & chcp 65001 & type Notion_GetUserData.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Notion_GetUserData" > Notion_GetUserData.log & chcp 65001 & type Notion_GetUserData.txt'
 
 
 			}
@@ -328,43 +328,43 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetBotInfo" > Slack_GetBotInfo.log & chcp 65001 & type Slack_GetBotInfo.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetBotInfo" > Slack_GetBotInfo.log & chcp 65001 & type Slack_GetBotInfo.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetUserList" > Slack_GetUserList.log & chcp 65001 & type Slack_GetUserList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetUserList" > Slack_GetUserList.log & chcp 65001 & type Slack_GetUserList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetRegionList" > Slack_GetRegionList.log & chcp 65001 & type Slack_GetRegionList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetRegionList" > Slack_GetRegionList.log & chcp 65001 & type Slack_GetRegionList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteMessage" > Slack_SendDeleteMessage.log & chcp 65001 & type Slack_SendDeleteMessage.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteMessage" > Slack_SendDeleteMessage.log & chcp 65001 & type Slack_SendDeleteMessage.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteEphemeral" > Slack_SendDeleteEphemeral.log & chcp 65001 & type Slack_SendDeleteEphemeral.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteEphemeral" > Slack_SendDeleteEphemeral.log & chcp 65001 & type Slack_SendDeleteEphemeral.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetScheduledMessages" > Slack_GetScheduledMessages.log & chcp 65001 & type Slack_GetScheduledMessages.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetScheduledMessages" > Slack_GetScheduledMessages.log & chcp 65001 & type Slack_GetScheduledMessages.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_CreateArchiveChannel" > Slack_CreateArchiveChannel.log & chcp 65001 & type Slack_CreateArchiveChannel.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_CreateArchiveChannel" > Slack_CreateArchiveChannel.log & chcp 65001 & type Slack_CreateArchiveChannel.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetChannelList" > Slack_GetChannelList.log & chcp 65001 & type Slack_GetChannelList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetChannelList" > Slack_GetChannelList.log & chcp 65001 & type Slack_GetChannelList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_OpenCloseDialog" > Slack_OpenCloseDialog.log & chcp 65001 & type Slack_OpenCloseDialog.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_OpenCloseDialog" > Slack_OpenCloseDialog.log & chcp 65001 & type Slack_OpenCloseDialog.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetFileList" > Slack_GetFileList.log & chcp 65001 & type Slack_GetFileList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetFileList" > Slack_GetFileList.log & chcp 65001 & type Slack_GetFileList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteFile" > Slack_UploadDeleteFile.log & chcp 65001 & type Slack_UploadDeleteFile.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteFile" > Slack_UploadDeleteFile.log & chcp 65001 & type Slack_UploadDeleteFile.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetExternalFileList" > Slack_GetExternalFileList.log & chcp 65001 & type Slack_GetExternalFileList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetExternalFileList" > Slack_GetExternalFileList.log & chcp 65001 & type Slack_GetExternalFileList.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteExternalFile" > Slack_UploadDeleteExternalFile.log & chcp 65001 & type Slack_UploadDeleteExternalFile.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteExternalFile" > Slack_UploadDeleteExternalFile.log & chcp 65001 & type Slack_UploadDeleteExternalFile.txt'
 
 
 			}
@@ -374,16 +374,16 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDatabase" > AT_CreateDatabase.log & chcp 65001 & type AT_CreateDatabase.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDatabase" > AT_CreateDatabase.log & chcp 65001 & type AT_CreateDatabase.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateTable" > AT_CreateTable.log & chcp 65001 & type AT_CreateTable.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateTable" > AT_CreateTable.log & chcp 65001 & type AT_CreateTable.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateField" > AT_CreateField.log & chcp 65001 & type AT_CreateField.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateField" > AT_CreateField.log & chcp 65001 & type AT_CreateField.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDeleteRecords" > AT_CreateDeleteRecords.log & chcp 65001 & type AT_CreateDeleteRecords.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDeleteRecords" > AT_CreateDeleteRecords.log & chcp 65001 & type AT_CreateDeleteRecords.txt'
 
 
 			}
@@ -393,28 +393,28 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetUpdateToken" > DropboxAPI_GetUpdateToken.log & chcp 65001 & type DropboxAPI_GetUpdateToken.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetUpdateToken" > DropboxAPI_GetUpdateToken.log & chcp 65001 & type DropboxAPI_GetUpdateToken.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFile" > DropboxAPI_UploadFile.log & chcp 65001 & type DropboxAPI_UploadFile.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFile" > DropboxAPI_UploadFile.log & chcp 65001 & type DropboxAPI_UploadFile.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFileByURL" > DropboxAPI_UploadFileByURL.log & chcp 65001 & type DropboxAPI_UploadFileByURL.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_UploadFileByURL" > DropboxAPI_UploadFileByURL.log & chcp 65001 & type DropboxAPI_UploadFileByURL.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateFolder" > DropboxAPI_CreateFolder.log & chcp 65001 & type DropboxAPI_CreateFolder.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateFolder" > DropboxAPI_CreateFolder.log & chcp 65001 & type DropboxAPI_CreateFolder.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateDeleteTag" > DropboxAPI_CreateDeleteTag.log & chcp 65001 & type DropboxAPI_CreateDeleteTag.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_CreateDeleteTag" > DropboxAPI_CreateDeleteTag.log & chcp 65001 & type DropboxAPI_CreateDeleteTag.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetAccount" > DropboxAPI_GetAccount.log & chcp 65001 & type DropboxAPI_GetAccount.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetAccount" > DropboxAPI_GetAccount.log & chcp 65001 & type DropboxAPI_GetAccount.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_AccessManagement" > DropboxAPI_AccessManagement.log & chcp 65001 & type DropboxAPI_AccessManagement.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_AccessManagement" > DropboxAPI_AccessManagement.log & chcp 65001 & type DropboxAPI_AccessManagement.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetFolderFileList" > DropboxAPI_GetFolderFileList.log & chcp 65001 & type DropboxAPI_GetFolderFileList.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetFolderFileList" > DropboxAPI_GetFolderFileList.log & chcp 65001 & type DropboxAPI_GetFolderFileList.txt'
 
 
 			}
@@ -424,49 +424,49 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TokenManagment" > B24_TokenManagment.log & chcp 65001 & type B24_TokenManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TokenManagment" > B24_TokenManagment.log & chcp 65001 & type B24_TokenManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ServerTime" > B24_ServerTime.log & chcp 65001 & type B24_ServerTime.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ServerTime" > B24_ServerTime.log & chcp 65001 & type B24_ServerTime.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_PostsManagment" > B24_PostsManagment.log & chcp 65001 & type B24_PostsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_PostsManagment" > B24_PostsManagment.log & chcp 65001 & type B24_PostsManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TaskManagment" > B24_TaskManagment.log & chcp 65001 & type B24_TaskManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TaskManagment" > B24_TaskManagment.log & chcp 65001 & type B24_TaskManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_CommentsManagment" > B24_CommentsManagment.log & chcp 65001 & type B24_CommentsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_CommentsManagment" > B24_CommentsManagment.log & chcp 65001 & type B24_CommentsManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_WorkingWithDrive" > B24_WorkingWithDrive.log & chcp 65001 & type B24_WorkingWithDrive.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_WorkingWithDrive" > B24_WorkingWithDrive.log & chcp 65001 & type B24_WorkingWithDrive.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Kanban" > B24_Kanban.log & chcp 65001 & type B24_Kanban.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Kanban" > B24_Kanban.log & chcp 65001 & type B24_Kanban.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Timekeeping" > B24_Timekeeping.log & chcp 65001 & type B24_Timekeeping.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_Timekeeping" > B24_Timekeeping.log & chcp 65001 & type B24_Timekeeping.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ChatManagment" > B24_ChatManagment.log & chcp 65001 & type B24_ChatManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_ChatManagment" > B24_ChatManagment.log & chcp 65001 & type B24_ChatManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_NotificationsManagment" > B24_NotificationsManagment.log & chcp 65001 & type B24_NotificationsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_NotificationsManagment" > B24_NotificationsManagment.log & chcp 65001 & type B24_NotificationsManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TasksFieldsManagment" > B24_TasksFieldsManagment.log & chcp 65001 & type B24_TasksFieldsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TasksFieldsManagment" > B24_TasksFieldsManagment.log & chcp 65001 & type B24_TasksFieldsManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DepartmentsManagment" > B24_DepartmentsManagment.log & chcp 65001 & type B24_DepartmentsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DepartmentsManagment" > B24_DepartmentsManagment.log & chcp 65001 & type B24_DepartmentsManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B2_UsersManagment" > B2_UsersManagment.log & chcp 65001 & type B2_UsersManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B2_UsersManagment" > B2_UsersManagment.log & chcp 65001 & type B2_UsersManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_LeadsManagment" > B24_LeadsManagment.log & chcp 65001 & type B24_LeadsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_LeadsManagment" > B24_LeadsManagment.log & chcp 65001 & type B24_LeadsManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DealsManagment" > B24_DealsManagment.log & chcp 65001 & type B24_DealsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_DealsManagment" > B24_DealsManagment.log & chcp 65001 & type B24_DealsManagment.txt'
 
 
 			}
@@ -476,13 +476,13 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_MessagesSending" > VKT_MessagesSending.log & chcp 65001 & type VKT_MessagesSending.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_MessagesSending" > VKT_MessagesSending.log & chcp 65001 & type VKT_MessagesSending.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_CommonMethods" > VKT_CommonMethods.log & chcp 65001 & type VKT_CommonMethods.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_CommonMethods" > VKT_CommonMethods.log & chcp 65001 & type VKT_CommonMethods.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_ChatManagment" > VKT_ChatManagment.log & chcp 65001 & type VKT_ChatManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_ChatManagment" > VKT_ChatManagment.log & chcp 65001 & type VKT_ChatManagment.txt'
 
 
 			}
@@ -492,22 +492,22 @@ pipeline {
 			steps {
 					
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_AttributesAndFeatures" > OzonAPI_AttributesAndFeatures.log & chcp 65001 & type OzonAPI_AttributesAndFeatures.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_AttributesAndFeatures" > OzonAPI_AttributesAndFeatures.log & chcp 65001 & type OzonAPI_AttributesAndFeatures.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_UploadingAndUpdatingProducts" > OzonAPI_UploadingAndUpdatingProducts.log & chcp 65001 & type OzonAPI_UploadingAndUpdatingProducts.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_UploadingAndUpdatingProducts" > OzonAPI_UploadingAndUpdatingProducts.log & chcp 65001 & type OzonAPI_UploadingAndUpdatingProducts.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_Barcodes" > OzonAPI_Barcodes.log & chcp 65001 & type OzonAPI_Barcodes.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_Barcodes" > OzonAPI_Barcodes.log & chcp 65001 & type OzonAPI_Barcodes.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PricesAndStocks" > OzonAPI_PricesAndStocks.log & chcp 65001 & type OzonAPI_PricesAndStocks.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PricesAndStocks" > OzonAPI_PricesAndStocks.log & chcp 65001 & type OzonAPI_PricesAndStocks.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PromotionsManagment" > OzonAPI_PromotionsManagment.log & chcp 65001 & type OzonAPI_PromotionsManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PromotionsManagment" > OzonAPI_PromotionsManagment.log & chcp 65001 & type OzonAPI_PromotionsManagment.txt'
 
 
-					powershell encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_WarehousesManagment" > OzonAPI_WarehousesManagment.log & chcp 65001 & type OzonAPI_WarehousesManagment.txt'
+					cmd encoding: 'UTF8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_WarehousesManagment" > OzonAPI_WarehousesManagment.log & chcp 65001 & type OzonAPI_WarehousesManagment.txt'
 
 
 			}
