@@ -104,9 +104,7 @@
 	|   stages {
 	|      stage(Prepare){
 	|         steps{
-	|            powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt'
-	|            powershell encoding: 'UTF-8', script:'opm build'
-	|            powershell encoding: 'UTF-8', script:'opm install *.ospx'
+	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt -and opm build -and opm install *.ospx'
 	|         }
 	|      }
 	|");
