@@ -1,5 +1,5 @@
 ﻿    ClientID = "2128753";
     APIKey   = "7cc90d26-33e4-499b...";
-    TaskID   = "1289937770";
+    TaskID   = "1308538856";
 
     Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
