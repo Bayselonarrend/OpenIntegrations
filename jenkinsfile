@@ -28,7 +28,7 @@ pipeline {
                         bat "git config --global core.ignorecase true"
                         bat "git add ."
                         bat 'git commit -m "Main build (Jenkins)"'
-                        bat "git push origin main"
+                        bat "git push origin HEAD"
                     }
                         
                     
