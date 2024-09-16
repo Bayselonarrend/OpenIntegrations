@@ -80,7 +80,7 @@
 			Синоним = Тест[СтрокаСиноним];
 
 			ТекстРаботы = ТекстРаботы + "
-			|					cmd encoding: 'UTF8', script:'1testrunner -run """ 
+			|					bat encoding: 'UTF8', script:'1testrunner -run """ 
 				+ ФайлТестов 
 				+ """ """ 
 				+ Метод 
@@ -90,7 +90,7 @@
 				+ Метод 
 				+ ".txt & del "
 				+ Метод
-				+ ".txt
+				+ ".txt'
 			|
 			|";
 
