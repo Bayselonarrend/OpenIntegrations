@@ -100,8 +100,8 @@
 
 	ТекущийДокумент.ДобавитьСтроку(
 	"pipeline {
-	|	agent any
-	|	stages {
+	|   agent any
+	|   stages {
 	|      stage(Prepare){
 	|         steps{
 	|            powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt'
