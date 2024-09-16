@@ -7,70 +7,70 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьИнформациюБота"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьИнформациюБота"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьОбновления"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьОбновления"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_УстановитьWebhook"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_УстановитьWebhook"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьТекстовоеСообщение"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьТекстовоеСообщение"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКартинку"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКартинку"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьВидео"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьВидео"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьАудио"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьАудио"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьДокумент"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьДокумент"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьГифку"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьГифку"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМедиагруппу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМедиагруппу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМестоположение"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМестоположение"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКонтакт"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКонтакт"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьОпрос"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьОпрос"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПереслатьСообщение"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПереслатьСообщение"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_БанРазбан"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_БанРазбан"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьСсылкуПриглашение"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьСсылкуПриглашение"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ЗакрепитьОткрепитьСообщение"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ЗакрепитьОткрепитьСообщение"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьЧислоУчастников"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьЧислоУчастников"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьСписокАватаровФорума"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьСписокАватаровФорума"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьУдалитьТемуФорума"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьУдалитьТемуФорума"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ИзменитьИмяГлавнойТемы"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ИзменитьИмяГлавнойТемы"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СкрытьПоказатьГлавнуюТему"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СкрытьПоказатьГлавнуюТему"'
 
 			}
 		}
@@ -80,64 +80,64 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСсылкуТокена"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСсылкуТокена"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьУдалитьПост"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьУдалитьПост"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСоставнойПост"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСоставнойПост"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьОпрос"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьОпрос"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СохранитьУдалитьКартинку"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СохранитьУдалитьКартинку"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьИсторию"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьИсторию"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_МетодыОбсуждений"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_МетодыОбсуждений"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЛайкРепостКоммент"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЛайкРепостКоммент"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистику"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистику"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистикуПостов"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистикуПостов"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьРекламнуюКампанию"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьРекламнуюКампанию"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ОтправитьСообщение"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ОтправитьСообщение"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьКатегорииТоваров"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьКатегорииТоваров"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварПодборку"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварПодборку"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварСоСвойствами"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварСоСвойствами"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокТоваров"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокТоваров"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокПодборок"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокПодборок"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокСвойств"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокСвойств"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокЗаказов"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокЗаказов"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЗагрузитьВидео"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЗагрузитьВидео"'
 
 			}
 		}
@@ -147,10 +147,10 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ПолучениеИнформации"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ПолучениеИнформации"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ОтправкаСообщений"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ОтправкаСообщений"'
 
 			}
 		}
@@ -160,25 +160,25 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом"'
 
 			}
 		}
@@ -188,34 +188,34 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьИнформациюОДиске"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьИнформациюОДиске"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьПапку"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьПапку"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьУдалитьФайл"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьУдалитьФайл"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьКопиюОбъекта"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьКопиюОбъекта"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСсылкуНаСкачивание"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСсылкуНаСкачивание"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокФайлов"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокФайлов"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПереместитьОбъект"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПереместитьОбъект"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ДействияПубличныхОбъектов"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ДействияПубличныхОбъектов"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокОпубликованных"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокОпубликованных"'
 
 			}
 		}
@@ -225,13 +225,13 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
 
 			}
 		}
@@ -241,16 +241,16 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьКалендарь"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьКалендарь"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьСобытие"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьСобытие"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокСобытий"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокСобытий"'
 
 			}
 		}
@@ -260,16 +260,16 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ЗагрузитьУдалитьФайл"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ЗагрузитьУдалитьФайл"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьУдалитьКомментарий"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьУдалитьКомментарий"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьКаталог"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьКаталог"'
 
 			}
 		}
@@ -279,13 +279,13 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ПолучитьТаблицу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ПолучитьТаблицу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ЗаполнитьОчиститьЯчейки"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ЗаполнитьОчиститьЯчейки"'
 
 			}
 		}
@@ -295,31 +295,31 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьИзменитьБазу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьИзменитьБазу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОСтранице"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОСтранице"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОБазе"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОБазе"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницуВБазу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницуВБазу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ИзменитьСвойстваСтраницы"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ИзменитьСвойстваСтраницы"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьУдалитьБлок"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьУдалитьБлок"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьПользователей"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьПользователей"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьДанныеПользователя"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьДанныеПользователя"'
 
 			}
 		}
@@ -329,43 +329,43 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьИнформациюОБоте"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьИнформациюОБоте"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокПользователей"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокПользователей"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокОбластей"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокОбластей"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьСообщение"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьСообщение"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьЭфемерное"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьЭфемерное"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьОтложенныеСообщения"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьОтложенныеСообщения"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_СоздатьАрхивироватьКанал"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_СоздатьАрхивироватьКанал"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокКаналов"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокКаналов"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОткрытьЗакрытьДиалог"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОткрытьЗакрытьДиалог"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокФайлов"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокФайлов"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьФайл"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьФайл"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокВФ"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокВФ"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьВФ"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьВФ"'
 
 			}
 		}
@@ -375,16 +375,16 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьБазу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьБазу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьТаблицу"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьТаблицу"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьПоле"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьПоле"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьУдалитьЗаписи"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьУдалитьЗаписи"'
 
 			}
 		}
@@ -394,28 +394,28 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьОбновитьТокен"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьОбновитьТокен"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайл"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайл"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайлПоURL"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайлПоURL"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьКаталог"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьКаталог"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьУдалитьТег"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьУдалитьТег"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьАккаунт"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьАккаунт"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_РаботаСДоступами"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_РаботаСДоступами"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьСписокФайловПапки"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьСписокФайловПапки"'
 
 			}
 		}
@@ -425,49 +425,49 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСТокеном"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСТокеном"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_СерверноеВремя"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_СерверноеВремя"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСНовостями"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСНовостями"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЗадачами"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЗадачами"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСКомментариями"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСКомментариями"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСДиском"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСДиском"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_Канбан"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_Канбан"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УчетРабочегоВремени"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УчетРабочегоВремени"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЧатами"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЧатами"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСУведомлениями"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСУведомлениями"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСПолямиЗадач"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСПолямиЗадач"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПодразделениями"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПодразделениями"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПользователями"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПользователями"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЛидами"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЛидами"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСоСделками"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСоСделками"'
 
 			}
 		}
@@ -477,13 +477,13 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОтправкаСообщений"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОтправкаСообщений"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОбщиеМетоды"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОбщиеМетоды"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_УправлениеЧатами"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_УправлениеЧатами"'
 
 			}
 		}
@@ -493,22 +493,22 @@ pipeline {
 					
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_АтрибутыИХарактеристики"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_АтрибутыИХарактеристики"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЗагрузкаИОбновлениеТоваров"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЗагрузкаИОбновлениеТоваров"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_Штрихкоды"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_Штрихкоды"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЦеныИОстаткиТоваров"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЦеныИОстаткиТоваров"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСАкциями"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСАкциями"'
 
 
-					bat encoding: 'WINDOWS-1251', script:'chcp 65001 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСоСкладами"'
+					bat encoding: 'WINDOWS-1251', script:'chcp 1251 & 1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСоСкладами"'
 
 			}
 		}
