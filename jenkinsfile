@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Prepare') {
             steps {
-                    checkout scm
+                    
+                    bat "echo 'Pulling... ' + env.GIT_BRANCH"
                     bat encoding: 'UTF-8', script:'opm install osparser'
                     bat encoding: 'UTF-8', script:'opm install cmdline'
                     bat encoding: 'UTF-8', script:'opm install asserts'
