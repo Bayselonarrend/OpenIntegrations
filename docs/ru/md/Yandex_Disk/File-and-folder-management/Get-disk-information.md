@@ -22,7 +22,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Токен     = ПараметрыФункции["YandexDisk_Token"];
     Результат = OPI_YandexDisk.ПолучитьИнформациюОДиске(Токен);
 ```
 

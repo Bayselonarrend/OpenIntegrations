@@ -27,11 +27,11 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token     = "6129457865:AAFyzNYOAFbu...";
-    ChatID    = "461699897";
-    ChannelID = "@testsichee";
-    Text      = "Строковое значение";
-    Audio     = "https://openintegrations.dev/test_data/song.mp3";
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Text      = FunctionParameters["String"];
+    Audio     = FunctionParameters["Audio"];
 
     AudioPath = GetTempFileName("mp3");
     CopyFile(Audio, AudioPath);

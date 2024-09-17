@@ -23,8 +23,8 @@ sidebar_position: 7
 
 
 ```bsl title="Code example"
-    Token = "6129457865:AAFyzNYOAFbu...";
-    Chat  = "-1001971186208";
+    Token = FunctionParameters["Telegram_Token"];
+    Chat  = FunctionParameters["Telegram_ForumID"];
 
     Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
 ```

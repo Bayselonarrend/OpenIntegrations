@@ -23,8 +23,8 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен  = "sl.B9HHnFxl9-J3oLueLt54-qjl0GSSVNyh2I9wzwE3710eelU9a0HoNCFC-kPTP5LvOi2f0f1gli...";
-    Папка  = "11385952065";
+    Токен  = ПараметрыФункции["Dropbox_Token"];
+    Папка  = ПараметрыФункции["Dropbox_SharedFolder"];
 
     Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
     ТекущийСтатус = "in_progress";

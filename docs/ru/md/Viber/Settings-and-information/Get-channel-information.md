@@ -22,7 +22,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен     = "523b58ba82afffaa-7ef3b426...";
+    Токен     = ПараметрыФункции["Viber_ChannelToken"];
     Результат = OPI_Viber.ПолучитьИнформациюОКанале(Токен);
 ```
 

@@ -26,11 +26,11 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-    Token     = "6129457865:AAFyzNYOAFbu...";
-    ChatID    = "461699897";
-    ChannelID = "@testsichee";
-    Width     = "48.87373649724122";
-    Longitude = "48.87373649724122";
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Width     = FunctionParameters["Lat"];
+    Longitude = FunctionParameters["Long"];
 
     Result = OPI_Telegram.SendLocation(Token, ChatID, Width, Longitude);
 

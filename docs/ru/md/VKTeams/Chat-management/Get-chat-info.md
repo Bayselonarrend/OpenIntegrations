@@ -26,8 +26,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен    = "001.3501506236.091...";
-    IDЧата   = "AoLI0egLWBSLR1Ngn2w";
+    Токен    = ПараметрыФункции["VkTeams_Token"];
+    IDЧата   = ПараметрыФункции["VkTeams_ChatID"];
 
     Результат = OPI_VKTeams.ПолучитьИнформациюОЧате(Токен, IDЧата);
 ```

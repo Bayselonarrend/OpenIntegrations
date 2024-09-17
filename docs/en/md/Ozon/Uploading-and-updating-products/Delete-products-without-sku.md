@@ -33,9 +33,9 @@ The product must be pre-archived (see ArchiveProducts)
 ```bsl title="Code example"
     OPI_Tools.Pause(30);
 
-    ClientID  = "2128753";
-    APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1188436622";
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 

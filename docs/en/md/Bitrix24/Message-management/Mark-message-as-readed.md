@@ -28,16 +28,16 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
 
 
 ```bsl title="Code example"
-    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID    = "chat" + "786";
-    MessageID = "13100";
+    URL       = FunctionParameters["Bitrix24_URL"];
+    ChatID    = "chat" + FunctionParameters["Bitrix24_HookChatID"];
+    MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
 
-    URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "ae42e966006e9f06006b12e400000001000...";
+    URL       = FunctionParameters["Bitrix24_Domain"];
+    Token     = FunctionParameters["Bitrix24_Token"];
     UserID    = 10;
-    MessageID = "13102";
+    MessageID = FunctionParameters["Bitrix24_UserMessageID"];
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);
 ```

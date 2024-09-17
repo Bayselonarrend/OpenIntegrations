@@ -28,15 +28,15 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID   = "1888";
-    RecordID = "626";
+    URL      = FunctionParameters["Bitrix24_URL"];
+    TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
+    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
 
     Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID);
 
-    URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "ae42e966006e9f06006b12e400000001000...";
-    RecordID = "628";
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    RecordID = FunctionParameters["Bitrix24_TimeID"];
 
     Result = OPI_Bitrix24.GetTaskTimeAccounting(URL, TaskID, RecordID, Token);
 ```

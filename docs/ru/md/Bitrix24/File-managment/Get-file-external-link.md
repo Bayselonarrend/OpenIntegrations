@@ -29,13 +29,13 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDФайла = "9654";
+    URL     = ПараметрыФункции["Bitrix24_URL"];
+    IDФайла = ПараметрыФункции["Bitrix24_FileID"];
 
     Результат  = OPI_Bitrix24.ПолучитьВнешнююСсылкуФайла(URL, IDФайла);
 
-    URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "ae42e966006e9f06006b12e400000001000...";
+    URL         = ПараметрыФункции["Bitrix24_Domain"];
+    Токен       = ПараметрыФункции["Bitrix24_Token"];
 
     Результат = OPI_Bitrix24.ПолучитьВнешнююСсылкуФайла(URL, IDФайла, Токен);
 ```

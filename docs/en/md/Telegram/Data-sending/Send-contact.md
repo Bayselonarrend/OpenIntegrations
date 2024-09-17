@@ -27,12 +27,12 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
-    Token     = "6129457865:AAFyzNYOAFbu...";
-    ChatID    = "461699897";
-    ChannelID = "@testsichee";
-    Name      = "Петр";
-    LastName  = "Петров";
-    Phone     = "88005553535";
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
+    Name      = FunctionParameters["Name"];
+    LastName  = FunctionParameters["Surname"];
+    Phone     = FunctionParameters["Phone"];
 
     Result = OPI_Telegram.SendContact(Token, ChatID , Name, LastName, Phone);
 

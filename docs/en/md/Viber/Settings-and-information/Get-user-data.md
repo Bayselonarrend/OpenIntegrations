@@ -23,8 +23,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token  = "523b58ba82afffaa-7ef3b426...";
-    UserID = "tMNGhftyUPrB3r1lD+bT4g==";
+    Token  = FunctionParameters["Viber_ChannelToken"];
+    UserID = FunctionParameters["Viber_ChannelAdminID"];
 
     Result = OPI_Viber.GetUserData(Token, UserID);
 ```

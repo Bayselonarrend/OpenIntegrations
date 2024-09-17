@@ -27,14 +27,14 @@ Method at API documentation: [timeman.settings](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL);
 
     Hour = 3600;
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae42e966006e9f06006b12e400000001000...";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL, UserID);

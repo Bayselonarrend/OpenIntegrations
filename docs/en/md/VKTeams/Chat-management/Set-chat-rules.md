@@ -29,8 +29,8 @@ To call this method, the bot must be an administrator in the chat room.
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
-    ChatID = "689203963@chat.agent";
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
     Text   = "Text of the new rules";
 
     Result = OPI_VKTeams.SetChatRules(Token, ChatID, Text);

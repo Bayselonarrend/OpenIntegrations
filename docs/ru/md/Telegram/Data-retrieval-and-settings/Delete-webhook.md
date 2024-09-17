@@ -22,7 +22,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен     = "6129457865:AAFyzNYOAFbu...";
+    Токен     = ПараметрыФункции["Telegram_Token"];
     Результат = OPI_Telegram.УдалитьWebhook(Токен);
 ```
 

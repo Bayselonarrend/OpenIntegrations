@@ -26,8 +26,8 @@ Method at API documentation: [GET /files/getInfo](https://teams.vk.com/botapi/#/
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
-    FileID = "ZkZgp98NdoukByPb3s8tGk66dffe4c1bd";
+    Token  = FunctionParameters["VkTeams_Token"];
+    FileID = FunctionParameters["VkTeams_FileID"];
 
     Result = OPI_VKTeams.GetFileInformation(Token, FileID);
 ```

@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен          = "6129457865:AAFyzNYOAFbu...";
-    IDПользователя = "461699897";
-    IDКанала       = "@testsichee";
+    Токен          = ПараметрыФункции["Telegram_Token"];
+    IDПользователя = ПараметрыФункции["Telegram_ChatID"];
+    IDКанала       = ПараметрыФункции["Telegram_ChannelID"];
 
     Результат = OPI_Telegram.Разбан(Токен, IDКанала, IDПользователя);
 ```

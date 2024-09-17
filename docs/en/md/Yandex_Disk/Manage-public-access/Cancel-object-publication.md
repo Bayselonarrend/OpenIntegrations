@@ -23,8 +23,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/5184ca41-e3aa-4aea-a65a-d1ea1be07c4f.png";
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
 
     Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
 ```

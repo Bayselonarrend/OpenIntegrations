@@ -22,7 +22,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    AppKey = "oynqxds...";
+    AppKey = FunctionParameters["Dropbox_Appkey"];
     Result = OPI_Dropbox.GetAuthorizationLink(AppKey);
 ```
 

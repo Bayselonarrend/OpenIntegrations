@@ -27,13 +27,13 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL            = ПараметрыФункции["Bitrix24_URL"];
     IDХранилища    = 3;
 
     Результат = OPI_Bitrix24.ПолучитьХранилище(URL, IDХранилища);
 
-    URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "ae42e966006e9f06006b12e400000001000...";
+    URL         = ПараметрыФункции["Bitrix24_Domain"];
+    Токен       = ПараметрыФункции["Bitrix24_Token"];
 
     Результат = OPI_Bitrix24.ПолучитьХранилище(URL, IDХранилища, Токен);
 ```

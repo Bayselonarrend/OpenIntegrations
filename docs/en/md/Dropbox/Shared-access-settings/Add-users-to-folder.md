@@ -25,9 +25,9 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token  = "sl.B9HHnFxl9-J3oLueLt54-qjl0GSSVNyh2I9wzwE3710eelU9a0HoNCFC-kPTP5LvOi2f0f1gli...";
-    Email  = "h5bk6ft62s@privaterelay.appleid.com";
-    Folder = "11385952065"; // shared_folder_id
+    Token  = FunctionParameters["Dropbox_Token"];
+    Email  = FunctionParameters["Dropbox_OtherUser"];
+    Folder = FunctionParameters["Dropbox_SharedFolder"]; // shared_folder_id
 
     Result = OPI_Dropbox.AddUsersToFolder(Token, Folder, Email, False);
 ```

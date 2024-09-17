@@ -26,7 +26,7 @@ sidebar_position: 5
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Property    = "779";
+    Property    = FunctionParameters["VK_PropID"];
     OptionArray = New Array;
     OptionArray.Add("Yellow");
     OptionArray.Add("Blue");

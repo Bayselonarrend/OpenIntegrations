@@ -23,8 +23,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Domain   = "b24-ar17wx.bitrix24.by";
-    ClientID = "local.6667fc928a50a9.70414732";
+    Domain   = FunctionParameters["Bitrix24_Domain"];
+    ClientID = FunctionParameters["Bitrix24_ClientID"];
 
     Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
 ```

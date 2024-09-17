@@ -28,11 +28,11 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен    = "6129457865:AAFyzNYOAFbu...";
-    IDЧата   = "461699897";
-    IDКанала = "@testsichee";
-    Текст    = "Строковое значение";
-    Документ = "https://openintegrations.dev/test_data/document.docx";
+    Токен    = ПараметрыФункции["Telegram_Token"];
+    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
+    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
+    Текст    = ПараметрыФункции["String"];
+    Документ = ПараметрыФункции["Document"];
 
     ДокументПуть = ПолучитьИмяВременногоФайла("docx");
     КопироватьФайл(Документ, ДокументПуть);

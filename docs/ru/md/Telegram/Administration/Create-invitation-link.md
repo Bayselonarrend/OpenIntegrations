@@ -26,8 +26,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен         = "6129457865:AAFyzNYOAFbu...";
-    IDКанала      = "@testsichee";
+    Токен         = ПараметрыФункции["Telegram_Token"];
+    IDКанала      = ПараметрыФункции["Telegram_ChannelID"];
     Сутки         = 86400;
     ТекущаяДата   = OPI_Инструменты.ПолучитьТекущуюДату();
 

@@ -31,10 +31,10 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    IDКлиента = "2128753";
-    КлючAPI   = "7cc90d26-33e4-499b...";
-    Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";
-    Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg";
+    IDКлиента = ПараметрыФункции["Ozon_ClientID"];
+    КлючAPI   = ПараметрыФункции["Ozon_ApiKey"];
+    Картинка1 = ПараметрыФункции["Picture"];
+    Картинка2 = ПараметрыФункции["Picture2"];
     Видео     = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
 
     МассивКартинок = Новый Массив;

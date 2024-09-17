@@ -30,17 +30,17 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = ПараметрыФункции["Bitrix24_URL"];
 
-    IDПоля    = "255";
+    IDПоля    = ПараметрыФункции["Bitrix24_HookTaskFieldID"];
     Заголовок = "Новый заголовок";
 
     Результат = OPI_Bitrix24.ИзменитьПользовательскоеПолеЗадачи(URL, IDПоля, , Заголовок);
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "ae42e966006e9f06006b12e400000001000...";
+    URL   = ПараметрыФункции["Bitrix24_Domain"];
+    Токен = ПараметрыФункции["Bitrix24_Token"];
 
-    IDПоля     = "257";
+    IDПоля     = ПараметрыФункции["Bitrix24_TaskFieldID"];
     ВнешнийКод = "NEW_TEXT_FIELD";
     Подпись    = Новый Структура("en,ru", "Updated field", "Измененное поле");
 
