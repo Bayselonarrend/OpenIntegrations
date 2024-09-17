@@ -80,7 +80,7 @@
 			Синоним = Тест[СтрокаСиноним];
 
 			ТекстРаботы = ТекстРаботы + "
-			|					bat encoding: 'UTF-8', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
+			|					powershell encoding: 'UTF-8', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
 			|
 			|";
 
@@ -106,7 +106,7 @@
 	|         steps{
 	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.13.0.ospx; del oint-1.13.0.ospx'
 	|            withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-    |               powershell encoding: 'UTF-8', script:'""C:/Program Files (x86)/GnuPG/bin/gpg.exe"" --quiet --batch --yes --decrypt --passphrase=""${GPGKEY}"" --output ./data.json ./data.json.gpg'
+    |               bat encoding: 'UTF-8', script:'""C:/Program Files (x86)/GnuPG/bin/gpg.exe"" --quiet --batch --yes --decrypt --passphrase=""${GPGKEY}"" --output ./data.json ./data.json.gpg'
     |            }
 	|            
 	|         }
