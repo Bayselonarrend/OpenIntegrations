@@ -34,7 +34,7 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
     Token      = "001.3501506236.091...";
     ChatID     = "AoLI0egLWBSLR1Ngn2w";
     FromChatID = "689203963@chat.agent";
-    MessageID  = "7412922929362503032";
+    MessageID  = "7415516728832034620";
 
     Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID);
 

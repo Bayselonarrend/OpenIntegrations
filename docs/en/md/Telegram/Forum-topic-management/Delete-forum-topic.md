@@ -26,7 +26,7 @@ sidebar_position: 6
 ```bsl title="Code example"
     Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
-    Topic = "4611";
+    Topic = "4785";
 
     Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
 ```

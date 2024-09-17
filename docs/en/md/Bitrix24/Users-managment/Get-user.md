@@ -28,13 +28,13 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    UserID = "348";
+    UserID = "404";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "8b80e066006e9f06006b12e400000001000...";
-    UserID = "350";
+    Token  = "ae42e966006e9f06006b12e400000001000...";
+    UserID = "406";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID, Token);
 ```
