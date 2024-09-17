@@ -106,7 +106,7 @@
 	|         steps{
 	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.13.0.ospx; del oint-1.13.0.ospx'
 	|            withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-    |               powershell encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase=""${GPGKEY}"" --output ./data.json ./data.json.gpg'
+    |               powershell encoding: 'UTF-8', script:'""C:\Program Files (x86)\GnuPG\bin\gpg.exe"" --quiet --batch --yes --decrypt --passphrase=""${GPGKEY}"" --output ./data.json ./data.json.gpg'
     |            }
 	|            
 	|         }
@@ -124,7 +124,7 @@
 	|            script {
 	|               withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
 	|                  powershell encoding: 'UTF-8', script:'del ./data.json.gpg'
-    |                  powershell encoding: 'UTF-8', script:'gpg --batch --symmetric --cipher-algo AES256 --passphrase=""${GPGKEY}"" ./data.json'
+    |                  powershell encoding: 'UTF-8', script:'""C:\Program Files (x86)\GnuPG\bin\gpg.exe"" --batch --symmetric --cipher-algo AES256 --passphrase=""${GPGKEY}"" ./data.json'
     |                  powershell encoding: 'UTF-8', script:'del ./data.json'
     |               }
 	|            }
