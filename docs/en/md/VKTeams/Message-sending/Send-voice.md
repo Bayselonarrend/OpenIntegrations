@@ -34,7 +34,7 @@ If you want the client to display this file as a playable voice message, it must
 ```bsl title="Code example"
     Token   = "001.3501506236.091...";
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7412922929362503032";
+    ReplyID = "7415516728832034620";
     Text    = "File caption";
 
     File     = "https://openintegrations.dev/test_data/song.m4a" ; // URL

@@ -30,7 +30,7 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЧата      = "730";
+    IDЧата      = "786";
     Файл        = "https://openintegrations.dev/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
     Описание    = "Очень важный файл";
 
@@ -43,8 +43,8 @@ sidebar_position: 5
     Результат = OPI_Bitrix24.ОтправитьФайл(URL, IDЧата, IDФайла, Описание);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "8b80e066006e9f06006b12e400000001000...";
-    IDЧата = "732";
+    Токен  = "ae42e966006e9f06006b12e400000001000...";
+    IDЧата = "788";
 
     Каталог    = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата, Токен);
     IDКаталога = Каталог["result"]["ID"];
