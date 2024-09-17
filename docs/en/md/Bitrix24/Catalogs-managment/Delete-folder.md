@@ -27,14 +27,14 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="Code example"
-    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FolderID = "9658";
+    URL      = FunctionParameters["Bitrix24_URL"];
+    FolderID = FunctionParameters["Bitrix24_HookFolderID"];
 
     Result = OPI_Bitrix24.DeleteFolder(URL, FolderID);
 
-    URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "ae42e966006e9f06006b12e400000001000...";
-    FolderID = "9660";
+    URL      = FunctionParameters["Bitrix24_Domain"];
+    Token    = FunctionParameters["Bitrix24_Token"];
+    FolderID = FunctionParameters["Bitrix24_FolderID"];
 
     Result = OPI_Bitrix24.DeleteFolder(URL, FolderID, Token);
 ```

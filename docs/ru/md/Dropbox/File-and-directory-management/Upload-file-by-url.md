@@ -25,8 +25,8 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     Путь  = "/New/url_doc.docx";
-    Токен = "sl.B9HHnFxl9-J3oLueLt54-qjl0GSSVNyh2I9wzwE3710eelU9a0HoNCFC-kPTP5LvOi2f0f1gli...";
-    URL   = "https://openintegrations.dev/test_data/document.docx";
+    Токен = ПараметрыФункции["Dropbox_Token"];
+    URL   = ПараметрыФункции["Document"];
 
     Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
 ```

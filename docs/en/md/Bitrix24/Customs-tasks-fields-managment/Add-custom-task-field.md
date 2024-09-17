@@ -31,15 +31,15 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Type = "date";
     Name = "BIRTHDAY_FIELD";
 
     Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ae42e966006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Type       = "string";
     Name       = "TEXT_FIELD";

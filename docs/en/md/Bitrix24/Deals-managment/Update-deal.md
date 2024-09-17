@@ -34,17 +34,17 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
     FieldsStructure.Insert("CURRENCY_ID" , "RUB");
     FieldsStructure.Insert("OPPORTUNITY" , 50000);
 
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DealID = "368";
+    URL    = FunctionParameters["Bitrix24_URL"];
+    DealID = FunctionParameters["Bitrix24_HookDealID"];
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
 
     FieldsStructure.Insert("TITLE"    , "Future deal in RUB");
     FieldsStructure.Insert("BEGINDATE", "2025-01-01");
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae42e966006e9f06006b12e400000001000...";
-    DealID = "370";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    DealID = FunctionParameters["Bitrix24_DealID"];
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);
 ```

@@ -24,7 +24,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен             = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Токен             = ПараметрыФункции["YandexDisk_Token"];
     Количество        = 2;
     СмещениеОтНачала  = 1;
 

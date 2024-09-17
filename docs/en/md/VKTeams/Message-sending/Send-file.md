@@ -30,11 +30,11 @@ Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/bota
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
-    ChatID = "AoLI0egLWBSLR1Ngn2w";
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
     Text   = "File caption";
 
-    File     = "https://openintegrations.dev/test_data/document.docx"; // URL
+    File     = FunctionParameters["Document"]; // URL
     FilePath = GetTempFileName("docx"); // Path
 
     CopyFile(File, FilePath);

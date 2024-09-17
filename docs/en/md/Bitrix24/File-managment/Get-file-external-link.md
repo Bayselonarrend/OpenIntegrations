@@ -29,13 +29,13 @@ The method has suddenly disappeared from the API on the cloud Bitrix24 where it 
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FileID = "9654";
+    URL    = FunctionParameters["Bitrix24_URL"];
+    FileID = FunctionParameters["Bitrix24_FileID"];
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ae42e966006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID, Token);
 ```

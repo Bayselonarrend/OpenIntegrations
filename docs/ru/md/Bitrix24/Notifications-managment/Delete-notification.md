@@ -27,14 +27,14 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    URL           = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDУведомления = "14122";
+    URL           = ПараметрыФункции["Bitrix24_URL"];
+    IDУведомления = ПараметрыФункции["Bitrix24_PersoalHookNotifyID"];
 
     Результат = OPI_Bitrix24.УдалитьУведомление(URL, IDУведомления);
 
-    URL           = "b24-ar17wx.bitrix24.by";
-    Токен         = "ae42e966006e9f06006b12e400000001000...";
-    IDУведомления = "14124";
+    URL           = ПараметрыФункции["Bitrix24_Domain"];
+    Токен         = ПараметрыФункции["Bitrix24_Token"];
+    IDУведомления = ПараметрыФункции["Bitrix24_PersoalNotifyID"];
 
     Результат = OPI_Bitrix24.УдалитьУведомление(URL, IDУведомления, Токен);
 ```

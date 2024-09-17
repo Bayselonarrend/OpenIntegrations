@@ -23,7 +23,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Token = FunctionParameters["YandexDisk_Token"];
     Path  = "/" + String(New UUID);
 
     Result = OPI_YandexDisk.CreateFolder(Token, Path);

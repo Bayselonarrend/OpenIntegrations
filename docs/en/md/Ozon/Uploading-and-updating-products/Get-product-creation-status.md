@@ -27,9 +27,9 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
 
 
 ```bsl title="Code example"
-    ClientID = "2128753";
-    APIKey   = "7cc90d26-33e4-499b...";
-    TaskID   = "1317204260";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    TaskID   = FunctionParameters["Ozon_TaskID"];
 
     Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
 ```

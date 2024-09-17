@@ -30,17 +30,17 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 
 
 ```bsl title="Code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
-    DepartmentID = "390";
+    DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
     ParentID     = 7;
 
     Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID, , ParentID);
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ae42e966006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
-    DepartmentID = "392";
+    DepartmentID = FunctionParameters["Bitrix24_DepID"];
     Name         = "New department";
     ParentID     = 1;
     HeadID       = 10;

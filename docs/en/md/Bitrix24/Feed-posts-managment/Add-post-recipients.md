@@ -29,13 +29,13 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
 
 ```bsl title="Code example"
     Visibility = "UA";
-    PostID     = "748";
-    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    PostID     = FunctionParameters["Bitrix24_PostID"];
+    URL        = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility);
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ae42e966006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Result = OPI_Bitrix24.AddPostRecipients(URL, PostID, Visibility, Token);
 ```

@@ -155,16 +155,19 @@ Function GetTestTable() Export
     NewTest(TestTable, "GV_GetToken"             , "Get token"              , VSpace);
     NewTest(TestTable, "GV_UpdateToken"          , "Refresh token"          , VSpace);
 
+    NewTest(TestTable, "GV_UpdateToken"          , "Refresh token"          , Calendar);
     NewTest(TestTable, "GC_GetCalendarList"      , "Get list of calendars"  , Calendar);
     NewTest(TestTable, "GC_CreateDeleteCalendar" , "Create/Delete calendar" , Calendar);
     NewTest(TestTable, "GC_CreateDeleteEvent"    , "Create/Delete event"    , Calendar);
     NewTest(TestTable, "GC_GetEventList"         , "Get list of events"     , Calendar);
 
+    NewTest(TestTable, "GV_UpdateToken"         , "Refresh token"           , Drive);
     NewTest(TestTable, "GD_GetCatalogList"      , "Get list of directories" , Drive);
     NewTest(TestTable, "GD_UploadDeleteFile"    , "Upload/Delete file"      , Drive);
     NewTest(TestTable, "GD_CreateDeleteComment" , "Create/Delete Comment"   , Drive);
     NewTest(TestTable, "GD_CreateCatalog"       , "Create/Delete catalog"   , Drive);
 
+    NewTest(TestTable, "GV_UpdateToken"    , "Refresh token"    , Tables);
     NewTest(TestTable, "GT_CreateTable"    , "Create table"     , Tables);
     NewTest(TestTable, "GT_GetTable"       , "Get table"        , Tables);
     NewTest(TestTable, "GT_FillClearCells" , "Fill/Clear cells" , Tables);

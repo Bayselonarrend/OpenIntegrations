@@ -26,9 +26,9 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token   = "6129457865:AAFyzNYOAFbu...";
-    Chat    = "-1001971186208";
-    Topic   = "4785";
+    Token   = FunctionParameters["Telegram_Token"];
+    Chat    = FunctionParameters["Telegram_ForumID"];
+    Topic   = FunctionParameters["Telegram_TopicID"];
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 

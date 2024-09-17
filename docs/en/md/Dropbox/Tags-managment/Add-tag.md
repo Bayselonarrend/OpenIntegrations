@@ -25,7 +25,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Tag   = "Important";
-    Token = "sl.B9HHnFxl9-J3oLueLt54-qjl0GSSVNyh2I9wzwE3710eelU9a0HoNCFC-kPTP5LvOi2f0f1gli...";
+    Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New/mydoc.docx";
 
     Result = OPI_Dropbox.AddTag(Token, Path, Tag);

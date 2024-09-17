@@ -28,8 +28,8 @@ To call this method, the bot must be an administrator in the chat room.
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
-    ChatID = "AoLI0egLWBSLR1Ngn2w";
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
 
     Result = OPI_VKTeams.GetChatJoinRequests(Token, ChatID);
 ```
