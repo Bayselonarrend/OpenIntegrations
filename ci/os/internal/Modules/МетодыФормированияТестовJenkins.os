@@ -80,7 +80,7 @@
 			Синоним = Тест[СтрокаСиноним];
 
 			ТекстРаботы = ТекстРаботы + "
-			|					powershell encoding: 'UTF-8', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
+			|					bat encoding: 'UTF-8', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
 			|
 			|";
 
@@ -123,9 +123,9 @@
 	|         steps{
 	|            script {
 	|               withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-	|                  powershell encoding: 'UTF-8', script:'del ./data.json.gpg'
-    |                  powershell encoding: 'UTF-8', script:'""C:/Program Files (x86)/GnuPG/bin/gpg.exe"" --batch --symmetric --cipher-algo AES256 --passphrase=""${GPGKEY}"" ./data.json'
-    |                  powershell encoding: 'UTF-8', script:'del ./data.json'
+	|                  bat encoding: 'UTF-8', script:'del ./data.json.gpg'
+    |                  bat encoding: 'UTF-8', script:'""C:/Program Files (x86)/GnuPG/bin/gpg.exe"" --batch --symmetric --cipher-algo AES256 --passphrase=""${GPGKEY}"" ./data.json'
+    |                  bat encoding: 'UTF-8', script:'del ./data.json'
     |               }
 	|            }
 	|         }
