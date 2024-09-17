@@ -23,8 +23,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь  = "/2bc1f05d-1b52-43da-8986-2e4197275ec9.png";
+    Токен = ПараметрыФункции["YandexDisk_Token"];
+    Путь  = ПараметрыФункции["YandexDisk_FileByURLPath"];
 
     Результат = OPI_YandexDisk.ПолучитьОбъект(Токен, Путь);
 ```

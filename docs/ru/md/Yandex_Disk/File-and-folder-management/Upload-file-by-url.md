@@ -24,8 +24,8 @@ sidebar_position: 11
 
 
 ```bsl title="Пример кода"
-    Токен   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Адрес   = "https://openintegrations.dev/test_data/picture.jpg";
+    Токен   = ПараметрыФункции["YandexDisk_Token"];
+    Адрес   = ПараметрыФункции["Picture"];
     Путь    = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, Адрес);

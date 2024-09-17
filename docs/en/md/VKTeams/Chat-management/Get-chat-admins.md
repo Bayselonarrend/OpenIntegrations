@@ -26,8 +26,8 @@ Method at API documentation: [GET /chats/getAdmins](https://teams.vk.com/botapi/
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
-    ChatID = "AoLI0egLWBSLR1Ngn2w";
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
 
     Result = OPI_VKTeams.GetChatAdmins(Token, ChatID);
 ```

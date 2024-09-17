@@ -28,17 +28,17 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    IDКаталога = "9658";
-    IDФайла    = "9654";
+    IDКаталога = ПараметрыФункции["Bitrix24_HookFolderID"];
+    IDФайла    = ПараметрыФункции["Bitrix24_FileID"];
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = ПараметрыФункции["Bitrix24_URL"];
 
     Результат = OPI_Bitrix24.СкопироватьФайл(URL, IDФайла, IDКаталога);
 
-    IDКаталога = "9660";
+    IDКаталога = ПараметрыФункции["Bitrix24_FolderID"];
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "ae42e966006e9f06006b12e400000001000...";
+    URL   = ПараметрыФункции["Bitrix24_Domain"];
+    Токен = ПараметрыФункции["Bitrix24_Token"];
 
     Результат = OPI_Bitrix24.СкопироватьФайл(URL, IDФайла, IDКаталога, Токен);
 

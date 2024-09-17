@@ -28,16 +28,16 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
 
 
 ```bsl title="Code example"
-    StageID = "642";
+    StageID = FunctionParameters["Bitrix24_HookStageID"];
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, True);
 
-    StageID = "644";
+    StageID = FunctionParameters["Bitrix24_StageID"];
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ae42e966006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, , Token);
 ```

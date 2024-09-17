@@ -29,9 +29,9 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 
 ```bsl title="Code example"
-    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID      = "786";
-    File        = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
+    URL         = FunctionParameters["Bitrix24_URL"];
+    ChatID      = FunctionParameters["Bitrix24_HookChatID"];
+    File        = FunctionParameters["Document"]; // Binary Data, URL or path to file
     Description = "Very important file";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
@@ -42,9 +42,9 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
     Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae42e966006e9f06006b12e400000001000...";
-    ChatID = "788";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
     FolderID  = Directory["result"]["ID"];

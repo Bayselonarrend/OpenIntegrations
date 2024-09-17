@@ -27,11 +27,11 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен    = "6129457865:AAFyzNYOAFbu...";
-    IDЧата   = "461699897";
-    IDКанала = "@testsichee";
-    Текст    = "Строковое значение";
-    Гифка    = "https://openintegrations.dev/test_data/animation.gif";
+    Токен    = ПараметрыФункции["Telegram_Token"];
+    IDЧата   = ПараметрыФункции["Telegram_ChatID"];
+    IDКанала = ПараметрыФункции["Telegram_ChannelID"];
+    Текст    = ПараметрыФункции["String"];
+    Гифка    = ПараметрыФункции["GIF"];
 
     ГифкаПуть = ПолучитьИмяВременногоФайла("gif");
     КопироватьФайл(Гифка, ГифкаПуть);

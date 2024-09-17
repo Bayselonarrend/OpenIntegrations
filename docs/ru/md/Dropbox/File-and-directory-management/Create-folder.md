@@ -23,7 +23,7 @@ sidebar_position: 10
 
 
 ```bsl title="Пример кода"
-    Токен     = "sl.B9HHnFxl9-J3oLueLt54-qjl0GSSVNyh2I9wzwE3710eelU9a0HoNCFC-kPTP5LvOi2f0f1gli...";
+    Токен     = ПараметрыФункции["Dropbox_Token"];
     Путь      = "/Новый каталог";
 
     Результат = OPI_Dropbox.СоздатьПапку(Токен, Путь);

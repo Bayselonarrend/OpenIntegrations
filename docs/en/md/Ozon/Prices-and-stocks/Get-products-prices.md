@@ -28,8 +28,8 @@ Method at API documentation: [post /v4/product/info/prices](https://docs.ozon.ru
 
 
 ```bsl title="Code example"
-    ClientID = "2128753";
-    APIKey   = "7cc90d26-33e4-499b...";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     Result = OPI_Ozon.GetProductsPrices(ClientID, APIKey, New Structure);
 ```

@@ -27,9 +27,9 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    IDКлиента     = "2128753";
-    КлючAPI       = "7cc90d26-33e4-499b...";
-    IDТовара      = "1188436622";
+    IDКлиента     = ПараметрыФункции["Ozon_ClientID"];
+    КлючAPI       = ПараметрыФункции["Ozon_ApiKey"];
+    IDТовара      = ПараметрыФункции["Ozon_ProductID"];
 
     Цены = Новый Структура;
     Цены.Вставить("auto_action_enabled"   , "DISABLED");

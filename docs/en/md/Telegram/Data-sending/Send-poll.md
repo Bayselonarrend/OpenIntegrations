@@ -26,9 +26,9 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-    Token     = "6129457865:AAFyzNYOAFbu...";
-    ChatID    = "461699897";
-    ChannelID = "@testsichee";
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
     Question  = "What's your favorite color?";
 
     AnswersArray = New Array;

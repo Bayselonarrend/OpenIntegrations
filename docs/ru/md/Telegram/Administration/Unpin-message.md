@@ -24,9 +24,9 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    IDКанала    = "@testsichee";
-    IDСообщения = "8338";
+    Токен       = ПараметрыФункции["Telegram_Token"];
+    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
+    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
 
     Результат = OPI_Telegram.ОткрепитьСообщение(Токен, IDКанала, IDСообщения);
 ```

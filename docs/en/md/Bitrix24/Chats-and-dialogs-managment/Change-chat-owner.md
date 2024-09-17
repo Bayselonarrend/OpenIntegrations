@@ -28,16 +28,16 @@ Method at API documentation: [im.chat.setOwner](https://dev.1c-bitrix.ru/learnin
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "786";
+    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
 
     UserID = 10;
 
     Result = OPI_Bitrix24.ChangeChatOwner(URL, ChatID, UserID);
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae42e966006e9f06006b12e400000001000...";
-    ChatID = "788";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    ChatID = FunctionParameters["Bitrix24_ChatID"];
 
     Result = OPI_Bitrix24.ChangeChatOwner(URL, ChatID, UserID, Token);
 ```

@@ -25,8 +25,8 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL   = "https://yadi.sk/d/42PXIiDVyVUgCA";
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
 
     Result = OPI_YandexDisk.GetPublicObject(Token, URL);
 ```

@@ -33,9 +33,9 @@ You can change availability for 100 products per request. You can send up to 80 
 
 
 ```bsl title="Code example"
-    ClientID  = "2128753";
-    APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1188436622";
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
 
     Stocks = New Structure;
     Stocks.Insert("offer_id"    , "143210610");

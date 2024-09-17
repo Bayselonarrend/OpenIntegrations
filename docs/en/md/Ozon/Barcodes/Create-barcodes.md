@@ -31,9 +31,9 @@ You can create barcodes for a maximum of 100 products per request
 
 
 ```bsl title="Code example"
-    ClientID  = "2128753";
-    APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1188436622";
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
 
     Result = OPI_Ozon.CreateBarcodes(ClientID, APIKey, ProductID);
 ```

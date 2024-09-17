@@ -24,8 +24,8 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
-    Token   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Address = "https://openintegrations.dev/test_data/picture.jpg";
+    Token   = FunctionParameters["YandexDisk_Token"];
+    Address = FunctionParameters["Picture"];
     Path    = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.UploadFileByURL(Token, Path, Address);

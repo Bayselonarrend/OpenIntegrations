@@ -25,9 +25,9 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B9HHnFxl9-J3oLueLt54-qjl0GSSVNyh2I9wzwE3710eelU9a0HoNCFC-kPTP5LvOi2f0f1gli...";
-    Почта = "h5bk6ft62s@privaterelay.appleid.com";
-    Файл  = "kJU6-a-pT48AAAAAAAAABw";
+    Токен = ПараметрыФункции["Dropbox_Token"];
+    Почта = ПараметрыФункции["Dropbox_OtherUser"];
+    Файл  = ПараметрыФункции["Dropbox_FileID"];
 
     Результат = OPI_Dropbox.ДобавитьПользователейКФайлу(Токен, Файл, Почта, Ложь);
 ```

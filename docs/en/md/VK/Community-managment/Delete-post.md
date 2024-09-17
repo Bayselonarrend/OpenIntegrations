@@ -24,7 +24,7 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    PostID     = "4074";
+    PostID     = FunctionParameters["VK_PostID"];
 
     Result = OPI_VK.DeletePost(PostID, Parameters);
 ```

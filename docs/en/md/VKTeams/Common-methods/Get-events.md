@@ -27,7 +27,7 @@ Method at API documentation: [GET /events/get](https://teams.vk.com/botapi/#/eve
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
+    Token  = FunctionParameters["VkTeams_Token"];
     LastID = 0;
 
     For N = 1 To 5 Do // In real work - endless loop

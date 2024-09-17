@@ -36,12 +36,12 @@ On each method call, send all the images that should be on the product card
 
 
 ```bsl title="Code example"
-    ClientID  = "2128753";
-    APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1188436622";
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
 
-    Image1 = "https://openintegrations.dev/test_data/picture.jpg";
-    Image2 = "https://openintegrations.dev/test_data/picture2.jpg";
+    Image1 = FunctionParameters["Picture"];
+    Image2 = FunctionParameters["Picture2"];
 
     MarketingColor = "GREEN";
 

@@ -31,7 +31,7 @@ This method call should be used in response to receiving a callbackQuery event
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
+    Token  = FunctionParameters["VkTeams_Token"];
     LastID = 0;
 
     For N = 1 To 5 Do
