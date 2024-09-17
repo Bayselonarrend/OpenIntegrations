@@ -1,4 +1,4 @@
-﻿    Токен     = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+﻿    Токен     = ПараметрыФункции["Dropbox_Token"];
     Путь      = "/New";
 
     Результат = OPI_Dropbox.СкачатьПапку(Токен, Путь);

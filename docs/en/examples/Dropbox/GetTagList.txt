@@ -1,4 +1,4 @@
-﻿    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+﻿    Token = FunctionParameters["Dropbox_Token"];
 
     PathsArray = New Array;
     PathsArray.Add("/New/Dogs.mp3");

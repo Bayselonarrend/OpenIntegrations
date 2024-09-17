@@ -1,5 +1,5 @@
-﻿    Token       = "6129457865:AAFyzNYOAFbu...";
-    ChannelID   = "@testsichee";
+﻿    Token       = FunctionParameters["Telegram_Token"];
+    ChannelID   = FunctionParameters["Telegram_ChannelID"];
     Day         = 86400;
     CurrentDate = OPI_Tools.GetCurrentDate();
 

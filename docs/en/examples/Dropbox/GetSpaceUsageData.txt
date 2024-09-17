@@ -1,3 +1,3 @@
-﻿    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+﻿    Token = FunctionParameters["Dropbox_Token"];
 
     Result = OPI_Dropbox.GetSpaceUsageData(Token);
