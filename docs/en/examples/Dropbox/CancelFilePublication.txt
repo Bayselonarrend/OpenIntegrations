@@ -1,4 +1,4 @@
-﻿    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
-    File  = "kJU6-a-pT48AAAAAAAAABw";
+﻿    Token = FunctionParameters["Dropbox_Token"];
+    File  = FunctionParameters["Dropbox_FileID"];
 
     Result = OPI_Dropbox.CancelFilePublication(Token, File);

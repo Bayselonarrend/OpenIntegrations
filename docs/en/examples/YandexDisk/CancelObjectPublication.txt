@@ -1,4 +1,4 @@
-﻿    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/f8c33ea2-094d-4e57-97b3-806e5c27bd5a.png";
+﻿    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
 
     Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
