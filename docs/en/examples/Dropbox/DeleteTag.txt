@@ -1,5 +1,5 @@
 ﻿    Tag   = "Important";
-    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New/mydoc.docx";
 
     Result = OPI_Dropbox.DeleteTag(Token, Path, Tag);
