@@ -102,7 +102,7 @@
 	"pipeline {
 	|   agent any
 	|   stages {
-	|      stage(Prepare){
+	|      stage('Prepare'){
 	|         steps{
 	|            powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.13.0.ospx; del oint-1.13.0.ospx'
 	|            withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
