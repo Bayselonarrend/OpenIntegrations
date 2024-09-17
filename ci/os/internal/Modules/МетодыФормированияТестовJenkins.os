@@ -80,8 +80,9 @@
 			Синоним = Тест[СтрокаСиноним];
 
 			ТекстРаботы = ТекстРаботы + "
+			|               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 			|					powershell encoding: 'UTF-8', script:'1testrunner -run """ + ФайлТестов + """ """ + Метод + """'
-			|
+			|               }
 			|";
 
 		КонецЦикла;
