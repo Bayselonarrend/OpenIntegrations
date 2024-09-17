@@ -38,7 +38,7 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
     Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "8b80e066006e9f06006b12e400000001000...";
+    Token = "ae42e966006e9f06006b12e400000001000...";
 
     FieldID    = "257";
     ExternalID = "NEW_TEXT_FIELD";

@@ -36,13 +36,13 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
     TaskData.Insert("PRIORITY"   , "1");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "1740";
+    TaskID = "1880";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "8b80e066006e9f06006b12e400000001000...";
-    TaskID = "1742";
+    Token  = "ae42e966006e9f06006b12e400000001000...";
+    TaskID = "1882";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);
 ```

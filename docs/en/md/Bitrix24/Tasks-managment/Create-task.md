@@ -46,7 +46,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
     Result = OPI_Bitrix24.CreateTask(URL, TaskData);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "8b80e066006e9f06006b12e400000001000...";
+    Token = "ae42e966006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);
 ```

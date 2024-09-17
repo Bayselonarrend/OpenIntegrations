@@ -35,7 +35,7 @@ You can change availability for 100 products per request. You can send up to 80 
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1180662438";
+    ProductID = "1188436622";
 
     Stocks = New Structure;
     Stocks.Insert("offer_id"    , "143210610");
