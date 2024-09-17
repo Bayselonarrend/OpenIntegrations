@@ -11,8 +11,74 @@ pipeline {
          }
       }
 
-      stage('Testing'){
+
+      stage('Stage2'){
          parallel{
+
+
+        stage('Testing-GoogleWorkspace') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
+               }
+
+			}
+		}      }
+         }
+
+      stage('Stage4'){
+         parallel{
+
+
+        stage('Testing-Twitter') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом"'
+               }
+
+			}
+		}      }
+         }
+
+      stage('Stage5'){
+         parallel{
+
 
         stage('Testing-Telegram') {
 			steps {
@@ -211,41 +277,6 @@ pipeline {
 			}
 		}
 
-        stage('Testing-Twitter') {
-			steps {
-					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом"'
-               }
-
-			}
-		}
-
         stage('Testing-YandexDisk') {
 			steps {
 					
@@ -293,28 +324,13 @@ pipeline {
 			}
 		}
 
-        stage('Testing-GoogleWorkspace') {
+        stage('Testing-GoogleCalendar') {
 			steps {
 					
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен"'
-               }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
                }
-
-			}
-		}
-
-        stage('Testing-GoogleCalendar') {
-			steps {
-					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей"'
@@ -340,6 +356,10 @@ pipeline {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов"'
                }
 
@@ -361,6 +381,10 @@ pipeline {
         stage('Testing-GoogleSheets') {
 			steps {
 					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
+               }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу"'
@@ -656,11 +680,10 @@ pipeline {
                }
 
 			}
-		}
+		}      }
+         }
 
    }
-  }
-}
       post{
          always{
             script {

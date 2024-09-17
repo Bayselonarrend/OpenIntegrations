@@ -1,4 +1,4 @@
-﻿    Токен = ПараметрыФункции["YandexDisk_Token"];
-    Путь  = ПараметрыФункции["YandexDisk_PathForLink"];
+﻿    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Путь  = "/ced52016-2220-4e04-aa8b-a6fc063d165e.png";
 
     Результат = OPI_YandexDisk.СкачатьФайл(Токен, Путь);
