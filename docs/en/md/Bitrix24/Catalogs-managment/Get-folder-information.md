@@ -28,12 +28,12 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
 
 ```bsl title="Code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FolderID = "8828";
+    FolderID = "9660";
 
     Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "8b80e066006e9f06006b12e400000001000...";
+    Token = "ae42e966006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID, Token);
 ```

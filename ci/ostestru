@@ -11,6 +11,9 @@ pipeline {
          }
       }
 
+      stage('Testing'){
+         parallel{
+
         stage('Testing-Telegram') {
 			steps {
 					
@@ -656,6 +659,8 @@ pipeline {
 		}
 
    }
+  }
+}
       post{
          always{
             script {
