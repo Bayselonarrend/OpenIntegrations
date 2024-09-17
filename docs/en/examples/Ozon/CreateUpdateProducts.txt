@@ -1,7 +1,7 @@
-﻿    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
-    Image1   = FunctionParameters["Picture"];
-    Image2   = FunctionParameters["Picture2"];
+﻿    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
+    Image1   = "https://openintegrations.dev/test_data/picture.jpg";
+    Image2   = "https://openintegrations.dev/test_data/picture2.jpg";
     Video    = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
 
     ImageArray = New Array;

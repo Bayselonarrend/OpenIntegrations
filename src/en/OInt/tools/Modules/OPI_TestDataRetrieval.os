@@ -47,26 +47,23 @@
 
 Function GetTestingSectionMapping() Export
 
-    StandardDependencies = "[Decode, Build]";
-    GoogleDependencies   = "Testing-GoogleWorkspace";
-
     Sections = New Structure;
-    Sections.Insert("Telegram"       , StandardDependencies);
-    Sections.Insert("VK"             , StandardDependencies);
-    Sections.Insert("Viber"          , StandardDependencies);
-    Sections.Insert("Twitter"        , StandardDependencies);
-    Sections.Insert("YandexDisk"     , StandardDependencies);
-    Sections.Insert("GoogleWorkspace", StandardDependencies);
-    Sections.Insert("GoogleCalendar" , GoogleDependencies);
-    Sections.Insert("GoogleDrive"    , GoogleDependencies);
-    Sections.Insert("GoogleSheets"   , GoogleDependencies);
-    Sections.Insert("Notion"         , StandardDependencies);
-    Sections.Insert("Slack"          , StandardDependencies);
-    Sections.Insert("Airtable"       , StandardDependencies);
-    Sections.Insert("Dropbox"        , StandardDependencies);
-    Sections.Insert("Bitrix24"       , StandardDependencies);
-    Sections.Insert("VkTeams"        , StandardDependencies);
-    Sections.Insert("Ozon"           , StandardDependencies);
+    Sections.Insert("Telegram"       , 5);
+    Sections.Insert("VK"             , 5);
+    Sections.Insert("Viber"          , 5);
+    Sections.Insert("Twitter"        , 4);
+    Sections.Insert("YandexDisk"     , 5);
+    Sections.Insert("GoogleWorkspace", 2);
+    Sections.Insert("GoogleCalendar" , 5);
+    Sections.Insert("GoogleDrive"    , 5);
+    Sections.Insert("GoogleSheets"   , 5);
+    Sections.Insert("Notion"         , 5);
+    Sections.Insert("Slack"          , 5);
+    Sections.Insert("Airtable"       , 5);
+    Sections.Insert("Dropbox"        , 5);
+    Sections.Insert("Bitrix24"       , 5);
+    Sections.Insert("VkTeams"        , 5);
+    Sections.Insert("Ozon"           , 5);
 
     Return Sections;
 
