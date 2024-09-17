@@ -13,7 +13,7 @@ pipeline {
 
 
       stage('Stage2'){
-         parallel{
+         
 
 
         stage('Testing-GoogleWorkspace') {
@@ -33,11 +33,11 @@ pipeline {
                }
 
 			}
-		}      }
+		}      
          }
 
       stage('Stage4'){
-         parallel{
+         
 
 
         stage('Testing-Twitter') {
@@ -73,11 +73,11 @@ pipeline {
                }
 
 			}
-		}      }
+		}      
          }
 
       stage('Stage5'){
-         parallel{
+         
 
 
         stage('Testing-Telegram') {
@@ -680,7 +680,7 @@ pipeline {
                }
 
 			}
-		}      }
+		}      
          }
 
    }
