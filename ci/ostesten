@@ -12,9 +12,6 @@ pipeline {
       }
 
 
-      stage('Stage2'){
-         
-
 
         stage('Testing-GoogleWorkspace') {
 			steps {
@@ -33,11 +30,7 @@ pipeline {
                }
 
 			}
-		}      
-         }
-
-      stage('Stage4'){
-         
+		}
 
 
         stage('Testing-Twitter') {
@@ -73,11 +66,7 @@ pipeline {
                }
 
 			}
-		}      
-         }
-
-      stage('Stage5'){
-         
+		}
 
 
         stage('Testing-Telegram') {
@@ -680,8 +669,7 @@ pipeline {
                }
 
 			}
-		}      
-         }
+		}
 
    }
       post{
