@@ -24,7 +24,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token           = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Token           = FunctionParameters["YandexDisk_Token"];
     Count           = 2;
     OffsetFromStart = 1;
 

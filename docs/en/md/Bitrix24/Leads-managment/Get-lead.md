@@ -27,14 +27,14 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
 
 
 ```bsl title="Code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    LeadID = "192";
+    URL    = FunctionParameters["Bitrix24_URL"];
+    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID);
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae42e966006e9f06006b12e400000001000...";
-    LeadID = "194";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    LeadID = FunctionParameters["Bitrix24_LeadID"];
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID, Token);
 ```

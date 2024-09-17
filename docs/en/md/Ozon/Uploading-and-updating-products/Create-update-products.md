@@ -31,10 +31,10 @@ Methods of product structure formation: GetProductStructure(), AddProductVideo()
 
 
 ```bsl title="Code example"
-    ClientID = "2128753";
-    APIKey   = "7cc90d26-33e4-499b...";
-    Image1   = "https://openintegrations.dev/test_data/picture.jpg";
-    Image2   = "https://openintegrations.dev/test_data/picture2.jpg";
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Image1   = FunctionParameters["Picture"];
+    Image2   = FunctionParameters["Picture2"];
     Video    = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
 
     ImageArray = New Array;

@@ -24,7 +24,7 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-    Token  = "6129457865:AAFyzNYOAFbu...";
+    Token  = FunctionParameters["Telegram_Token"];
     Result = OPI_Telegram.GetUpdates(Token);
 ```
 

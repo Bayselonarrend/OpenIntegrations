@@ -27,7 +27,7 @@ sidebar_position: 7
     Parameters = GetVKParameters();
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path to file or Binary Data
     TFN   = GetTempFileName("png");
     CopyFile(Image, TFN);
     Image = New BinaryData(TFN);

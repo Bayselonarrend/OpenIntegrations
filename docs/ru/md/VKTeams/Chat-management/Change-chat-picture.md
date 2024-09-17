@@ -27,10 +27,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен    = "001.3501506236.091...";
-    IDЧата   = "AoLI0egLWBSLR1Ngn2w";
+    Токен    = ПараметрыФункции["VkTeams_Token"];
+    IDЧата   = ПараметрыФункции["VkTeams_ChatID"];
 
-    Файл     = "https://openintegrations.dev/test_data/spy2.png";        // URL
+    Файл     = ПараметрыФункции["Picture3"];        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("png");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);

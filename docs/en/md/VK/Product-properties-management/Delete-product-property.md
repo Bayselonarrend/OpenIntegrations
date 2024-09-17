@@ -25,7 +25,7 @@ sidebar_position: 4
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Property = "779";
+    Property = FunctionParameters["VK_PropID"];
 
     Result = OPI_VK.DeleteProductProperty(Property, Parameters);
 ```

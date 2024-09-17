@@ -32,8 +32,8 @@ You can find out if there is a nested catalog by the GetCharacteristicsCategorie
 
 
 ```bsl title="Code example"
-    ClientID    = "2128753";
-    APIKey      = "7cc90d26-33e4-499b...";
+    ClientID    = FunctionParameters["Ozon_ClientID"];
+    APIKey      = FunctionParameters["Ozon_ApiKey"];
     CategoryID  = 17054869;
     TypeID      = 97311;
     AttributeID = 85;

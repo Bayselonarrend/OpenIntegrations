@@ -27,9 +27,9 @@ Method at API documentation: [GET /messages/sendVoice](https://teams.vk.com/bota
 
 
 ```bsl title="Code example"
-    Token  = "001.3501506236.091...";
-    ChatID = "AoLI0egLWBSLR1Ngn2w";
-    FileID = "I000bSeg77KTQcif1rJayl66dffe5f1bd";
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_VoiceID"];
 
     Result = OPI_VKTeams.ResendVoice(Token, ChatID, FileID);
 ```

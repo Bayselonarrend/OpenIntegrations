@@ -26,8 +26,8 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Path  = "/New/pic.png";
-    Token = "sl.B9HHnFxl9-J3oLueLt54-qjl0GSSVNyh2I9wzwE3710eelU9a0HoNCFC-kPTP5LvOi2f0f1gli...";
-    Image = "https://openintegrations.dev/test_data/picture.jpg";
+    Token = FunctionParameters["Dropbox_Token"];
+    Image = FunctionParameters["Picture"];
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);
