@@ -522,14 +522,14 @@ pipeline {
 			}
 		}
 
-    }
+   }
       post{
          always{
             script {
                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-                  bat encoding: 'UTF-8', script:'del ./data.json.gpg'
+                  bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
                   bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --batch --symmetric --cipher-algo AES256 --passphrase="%GPGKEY%" ./data.json'
-                  bat encoding: 'UTF-8', script:'del ./data.json'
+                  bat encoding: 'UTF-8', script:'del "./data.json"'
                }
                withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
                   bat "git config user.email vitaly.the.alpaca@gmail.com"
