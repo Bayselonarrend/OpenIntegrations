@@ -5,7 +5,7 @@ pipeline {
          steps{
             powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.13.0.ospx; del oint-1.13.0.ospx'
             withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-               powershell encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --quiet --batch --yes --decrypt --passphrase="${GPGKEY}" --output ./data.json ./data.json.gpg'
+               bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/GnuPG/bin/gpg.exe" --quiet --batch --yes --decrypt --passphrase="${GPGKEY}" --output ./data.json ./data.json.gpg'
             }
             
          }
@@ -15,70 +15,70 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьИнформациюБота"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьИнформациюБота"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьОбновления"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьОбновления"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_УстановитьWebhook"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_УстановитьWebhook"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьТекстовоеСообщение"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьТекстовоеСообщение"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКартинку"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКартинку"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьВидео"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьВидео"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьАудио"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьАудио"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьДокумент"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьДокумент"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьГифку"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьГифку"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМедиагруппу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМедиагруппу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМестоположение"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьМестоположение"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКонтакт"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьКонтакт"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьОпрос"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ОтправитьОпрос"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПереслатьСообщение"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПереслатьСообщение"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_БанРазбан"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_БанРазбан"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьСсылкуПриглашение"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьСсылкуПриглашение"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ЗакрепитьОткрепитьСообщение"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ЗакрепитьОткрепитьСообщение"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьЧислоУчастников"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьЧислоУчастников"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьСписокАватаровФорума"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ПолучитьСписокАватаровФорума"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьУдалитьТемуФорума"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СоздатьУдалитьТемуФорума"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ИзменитьИмяГлавнойТемы"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_ИзменитьИмяГлавнойТемы"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СкрытьПоказатьГлавнуюТему"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Телеграм_СкрытьПоказатьГлавнуюТему"'
 
 
 			}
@@ -88,64 +88,64 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСсылкуТокена"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСсылкуТокена"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьУдалитьПост"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьУдалитьПост"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСоставнойПост"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьСоставнойПост"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьОпрос"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьОпрос"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СохранитьУдалитьКартинку"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СохранитьУдалитьКартинку"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьИсторию"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьИсторию"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_МетодыОбсуждений"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_МетодыОбсуждений"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЛайкРепостКоммент"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЛайкРепостКоммент"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистику"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистику"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистикуПостов"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСтатистикуПостов"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьРекламнуюКампанию"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьРекламнуюКампанию"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ОтправитьСообщение"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ОтправитьСообщение"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьКатегорииТоваров"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьКатегорииТоваров"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварПодборку"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварПодборку"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварСоСвойствами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_СоздатьТоварСоСвойствами"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокТоваров"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокТоваров"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокПодборок"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокПодборок"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокСвойств"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокСвойств"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокЗаказов"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ПолучитьСписокЗаказов"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЗагрузитьВидео"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВК_ЗагрузитьВидео"'
 
 
 			}
@@ -155,10 +155,10 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ПолучениеИнформации"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ПолучениеИнформации"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ОтправкаСообщений"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Вайбер_ОтправкаСообщений"'
 
 
 			}
@@ -168,25 +168,25 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом"'
 
 
 			}
@@ -196,34 +196,34 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьИнформациюОДиске"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьИнформациюОДиске"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьПапку"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьПапку"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьУдалитьФайл"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ЗагрузитьУдалитьФайл"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьКопиюОбъекта"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_СоздатьКопиюОбъекта"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСсылкуНаСкачивание"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСсылкуНаСкачивание"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокФайлов"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокФайлов"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПереместитьОбъект"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПереместитьОбъект"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ДействияПубличныхОбъектов"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ДействияПубличныхОбъектов"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокОпубликованных"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ЯДиск_ПолучитьСписокОпубликованных"'
 
 
 			}
@@ -233,13 +233,13 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьСсылкуАвторизации"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ПолучитьТокен"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_ОбновитьТокен"'
 
 
 			}
@@ -249,16 +249,16 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокКалендарей"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьКалендарь"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьКалендарь"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьСобытие"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_СоздатьУдалитьСобытие"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокСобытий"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГК_ПолучитьСписокСобытий"'
 
 
 			}
@@ -268,16 +268,16 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ПолучитьСписокКаталогов"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ЗагрузитьУдалитьФайл"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_ЗагрузитьУдалитьФайл"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьУдалитьКомментарий"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьУдалитьКомментарий"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьКаталог"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГД_СоздатьКаталог"'
 
 
 			}
@@ -287,13 +287,13 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_СоздатьТаблицу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ПолучитьТаблицу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ПолучитьТаблицу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ЗаполнитьОчиститьЯчейки"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГТ_ЗаполнитьОчиститьЯчейки"'
 
 
 			}
@@ -303,31 +303,31 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьИзменитьБазу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьИзменитьБазу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОСтранице"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОСтранице"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОБазе"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьИнформациюОБазе"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницуВБазу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьСтраницуВБазу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ИзменитьСвойстваСтраницы"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ИзменитьСвойстваСтраницы"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьУдалитьБлок"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_СоздатьУдалитьБлок"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьПользователей"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьПользователей"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьДанныеПользователя"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Ноушн_ПолучитьДанныеПользователя"'
 
 
 			}
@@ -337,43 +337,43 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьИнформациюОБоте"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьИнформациюОБоте"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокПользователей"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокПользователей"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокОбластей"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокОбластей"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьСообщение"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьСообщение"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьЭфемерное"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОтправитьУдалитьЭфемерное"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьОтложенныеСообщения"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьОтложенныеСообщения"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_СоздатьАрхивироватьКанал"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_СоздатьАрхивироватьКанал"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокКаналов"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокКаналов"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОткрытьЗакрытьДиалог"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ОткрытьЗакрытьДиалог"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокФайлов"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокФайлов"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьФайл"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьФайл"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокВФ"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ПолучитьСписокВФ"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьВФ"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Слак_ЗагрузитьУдалитьВФ"'
 
 
 			}
@@ -383,16 +383,16 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьБазу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьБазу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьТаблицу"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьТаблицу"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьПоле"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьПоле"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьУдалитьЗаписи"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "АТ_СоздатьУдалитьЗаписи"'
 
 
 			}
@@ -402,28 +402,28 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьОбновитьТокен"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьОбновитьТокен"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайл"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайл"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайлПоURL"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ЗагрузитьФайлПоURL"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьКаталог"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьКаталог"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьУдалитьТег"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_СоздатьУдалитьТег"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьАккаунт"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьАккаунт"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_РаботаСДоступами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_РаботаСДоступами"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьСписокФайловПапки"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ДропБокс_ПолучитьСписокФайловПапки"'
 
 
 			}
@@ -433,49 +433,49 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСТокеном"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСТокеном"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_СерверноеВремя"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_СерверноеВремя"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСНовостями"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСНовостями"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЗадачами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЗадачами"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСКомментариями"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСКомментариями"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСДиском"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСДиском"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_Канбан"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_Канбан"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УчетРабочегоВремени"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УчетРабочегоВремени"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЧатами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЧатами"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСУведомлениями"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСУведомлениями"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСПолямиЗадач"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСПолямиЗадач"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПодразделениями"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПодразделениями"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПользователями"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_УправлениеПользователями"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЛидами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСЛидами"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСоСделками"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Б24_РаботаСоСделками"'
 
 
 			}
@@ -485,13 +485,13 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОтправкаСообщений"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОтправкаСообщений"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОбщиеМетоды"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_ОбщиеМетоды"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_УправлениеЧатами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ВКТ_УправлениеЧатами"'
 
 
 			}
@@ -501,22 +501,22 @@ pipeline {
 			steps {
 					
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_АтрибутыИХарактеристики"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_АтрибутыИХарактеристики"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЗагрузкаИОбновлениеТоваров"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЗагрузкаИОбновлениеТоваров"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_Штрихкоды"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_Штрихкоды"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЦеныИОстаткиТоваров"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_ЦеныИОстаткиТоваров"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСАкциями"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСАкциями"'
 
 
-					bat encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСоСкладами"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ОзонАПИ_РаботаСоСкладами"'
 
 
 			}
