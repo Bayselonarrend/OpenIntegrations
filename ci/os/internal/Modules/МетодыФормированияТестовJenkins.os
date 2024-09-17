@@ -119,7 +119,7 @@
 
 	ТекущийДокумент.ДобавитьСтроку("
 	|
-	|      stage(Finish){
+	|      stage('Finish'){
 	|         steps{
 	|            script {
 	|               withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
