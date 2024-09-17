@@ -118,37 +118,27 @@
 Процедура СообщитьОкончаниеФайлаПроцесса(Знач СписокБиблиотек, Знач Язык, Знач СписокВлияний = "")
 
 	ТекущийДокумент.ДобавитьСтроку("
-	|
-	|      stage('Finish'){
-	|         steps{
+	|    }
+	|      post{
+	|         always{
 	|            script {
 	|               withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
 	|                  bat encoding: 'UTF-8', script:'del ./data.json.gpg'
     |                  bat encoding: 'UTF-8', script:'""C:/Program Files (x86)/GnuPG/bin/gpg.exe"" --batch --symmetric --cipher-algo AES256 --passphrase=""%GPGKEY%"" ./data.json'
     |                  bat encoding: 'UTF-8', script:'del ./data.json'
     |               }
+	|               withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+    |                  bat ""git config user.email vitaly.the.alpaca@gmail.com""
+    |                  bat 'git config user.name ""Vitaly the Alpaca (bot)""'
+    |                  bat ""git config --global core.ignorecase true""
+    |                  bat ""git add .""
+    |                  bat 'git commit -m ""Test data update (Jenkins)""'
+    |                  bat ""git push origin HEAD:main""
+    |               }
 	|            }
 	|         }
 	|      }
-	|      stage('Update GIT') {
-    |         steps {
-    |            script {
-    |                
-    |                withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
-    |                    bat ""git config user.email vitaly.the.alpaca@gmail.com""
-    |                    bat 'git config user.name ""Vitaly the Alpaca (bot)""'
-    |                    bat ""git config --global core.ignorecase true""
-    |                    bat ""git add .""
-    |                    bat 'git commit -m ""Test data update (Jenkins)""'
-    |                    bat ""git push origin HEAD:main""
-    |                }
-    |                    
-    |                
-    |            }
-    |        }
-    |    }
-	|
-	|    }
+	|    
 	|}");
 
 КонецПроцедуры
