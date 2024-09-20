@@ -207,6 +207,7 @@
 	КопироватьФайл(ПутьВыгрузки + "oint.exe", ПутьВыгрузки + "oint");
 
 	ТекстSh = "--name oint"
+	+ " -s dir"
 	+ " --license mit"
 	+ " --version " + Версия
 	+ " --architecture all"
@@ -216,12 +217,13 @@
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
 	+ " oint=/usr/bin/oint";
 
-	ТекстSh = Новый ТекстовыйДокумент();
-	ТекстSh.ДобавитьСтроку("fpm -s deb " + ТекстSh);
-	ТекстSh.ДобавитьСтроку("fpm -s rpm " + ТекстSh);
-
 	MakeSh = ПутьВыгрузки + "make.sh";
-	ТекстSh.Записать(MakeSh);
+
+	ТекстSh = Новый ЗаписьТекста(MakeSh, , , , Ложь);
+	ТекстSh.ЗаписатьСтроку("fpm -t deb " + ТекстSh);
+	ТекстSh.ЗаписатьСтроку("fpm -t rpm " + ТекстSh);
+	
+	ТекстSh.Закрыть();
 
 	ЗапуститьПриложение("C:\cygwin64\bin\bash.exe """ + MakeSh + """ > log.txt");
 
