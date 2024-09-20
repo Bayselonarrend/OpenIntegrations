@@ -3,8 +3,7 @@
 #define MyAppPublisher "bayselonarrend"
 #define MyAppURL "https://github.com/Bayselonarrend/OpenIntegrations"
 #define MyAppExeName "oint.exe"
-#define GDrive "G:"
-#define Repo "C:\Repos\OpI"
+#define Repo "C:\ProgramData\Jenkins\.jenkins\workspace\Release\"
 
 [Setup]
 DisableWelcomePage      = no
@@ -21,14 +20,14 @@ DefaultDirName          = {autopf}\{#MyAppName}
 DefaultGroupName        = {#MyAppName}
 DisableProgramGroupPage = yes
 LicenseFile             = {#Repo}\LICENSE
-OutputDir               = "{#GDrive}\Мой диск\Проекты\ОПИ\Релизы\{#MyAppVersion}"
+OutputDir               = "{#Repo}\{#MyAppVersion}"
 Compression             = lzma
 SolidCompression        = yes
 WizardStyle             = modern
 OutputBaseFilename      = oint_{#MyAppVersion}_installer_en
 
 [Files]
-Source: "{#GDrive}\Мой диск\Проекты\ОПИ\Релизы\{#MyAppVersion}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#Repo}\{#MyAppVersion}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#Repo}\src\ru\cli\start.bat"; DestDir: "{app}"
 Source: "{#Repo}\Media\logo.bmp"; Flags: dontcopy
 
