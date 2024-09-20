@@ -4,7 +4,7 @@ pipeline {
 
         stage('Release') {
             steps {
-                    bat encoding: 'UTF-8', script:'oscript ./ci/os/releasemaker.os'
+                    bat 'oscript ./ci/os/releasemaker.os'
             }
         }
     }
