@@ -17,10 +17,16 @@
 	Файл1С           = """C:\Program Files\1cv8\8.3.18.1208\bin\1cv8.exe""";
 	ПутьКРепозиторию = "C:\ProgramData\Jenkins\.jenkins\workspace\Main";
 	Сервер           = "AIONIOTISCORE:1742";
-	ПутьВыгрузки     = "C:\ProgramData\Jenkins\.jenkins\workspace\Main\build\" + Версия + "\";
+	ПутьВыгрузки     = "C:\ProgramData\Jenkins\.jenkins\workspace\Main\" + Версия + "\";
 	Кугвин           = "C:\cygwin64\bin\";
 	//----------------
 
+	ОбъектПутьВыгрузки = Новый Файл();
+	
+	Если Не ОбъектПутьВыгрузки.Существует() Тогда
+		СоздатьКаталог(ПутьВыгрузки);
+	КонецЕсли;
+	
 	МассивЛокализаций = Новый Массив();
 
 	СтруктураРус = Новый Структура();
