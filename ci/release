@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('Release') {
+            steps {
+                    powershell encoding: 'UTF-8', script:'oscript ./ci/os/releasemaker.os'
+            }
+        }
+    }
+}
