@@ -215,11 +215,12 @@
 	+ " --description ""OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки"""
 	+ " --url ""https://openintegrations.dev/"""
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
-	+ " " + Версия + "/oint=/usr/bin/oint";
+	+ " oint=/usr/bin/oint";
 
 	MakeSh = ПутьВыгрузки + "make.sh";
 
 	ДокументSh = Новый ТекстовыйДокумент();
+	ДокументSh.ДобавитьСтроку("cd " + Версия);
 	ДокументSh.ДобавитьСтроку("fpm -t deb " + ТекстSh);
 	ДокументSh.ДобавитьСтроку("fpm -t rpm " + ТекстSh);
 	
