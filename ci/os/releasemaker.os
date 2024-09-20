@@ -15,9 +15,9 @@
 
 	//Локальные данные
 	Файл1С           = """C:\Program Files\1cv8\8.3.18.1208\bin\1cv8.exe""";
-	ПутьКРепозиторию = "C:\ProgramData\Jenkins\.jenkins\workspace\Main";
+	ПутьКРепозиторию = "C:\ProgramData\Jenkins\.jenkins\workspace\Release";
 	Сервер           = "AIONIOTISCORE:1742";
-	ПутьВыгрузки     = "C:\ProgramData\Jenkins\.jenkins\workspace\Main\" + Версия + "\";
+	ПутьВыгрузки     = "C:\ProgramData\Jenkins\.jenkins\workspace\Release\" + Версия + "\";
 	Кугвин           = "C:\cygwin64\bin\";
 	//----------------
 
@@ -201,7 +201,7 @@
 	MakeSh = ПутьВыгрузки + "make.sh";
 	ТекстSh.Записать(MakeSh);
 
-	ЗапуститьПриложение("bash """ + MakeSh + """");
+	ЗапуститьПриложение("C:\cygwin64\bin\bash.exe """ + MakeSh + """");
 
 	УдалитьФайлы(MakeSh);
 	УдалитьФайлы(ПутьВыгрузки + "oint");
