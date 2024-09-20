@@ -215,7 +215,7 @@
 	+ " --description ""OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки"""
 	+ " --url ""https://openintegrations.dev/"""
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
-	+ " oint=/usr/bin/oint";
+	+ " " + Версия + "/oint=/usr/bin/oint";
 
 	MakeSh = ПутьВыгрузки + "make.sh";
 
