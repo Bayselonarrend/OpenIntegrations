@@ -1,3 +1,4 @@
-﻿  
-  Response = OPI_Twitter.CreateTextTweet("Regular text tweet", Parameters);
-  Response = OPI_Tools.JSONString(Response);
+﻿    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Result = OPI_Twitter.CreateTextTweet(Text, Parameters);

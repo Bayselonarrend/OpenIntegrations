@@ -169,13 +169,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "GT_GetTable"       , "Get table"        , Tables);
     NewTest(TestTable, "GT_FillClearCells" , "Fill/Clear cells" , Tables);
 
-    NewTest(TestTable, "Twitter_GetAuthorizationLink" , "Get authorization link" , Twitter);
-    NewTest(TestTable, "Twitter_UpdateToken"          , "Refresh token"          , Twitter);
-    NewTest(TestTable, "Twitter_CreateTextTweet"      , "Text tweet"             , Twitter);
-    NewTest(TestTable, "Twitter_CreateTweetWithImage" , "Tweet with image"       , Twitter);
-    NewTest(TestTable, "Twitter_CreateTweetWithVideo" , "Tweet with video"       , Twitter);
-    NewTest(TestTable, "Twitter_CreateTweetWithGif"   , "Tweet with gif"         , Twitter);
-    NewTest(TestTable, "Twitter_CreateTweetWithPoll"  , "Tweet with poll"        , Twitter);
+    NewTest(TestTable, "TwitterAPI_AccountData" , "Account data"    , Twitter);
+    NewTest(TestTable, "TwitterAPI_Tweets"      , "Tweets creation" , Twitter);
 
     NewTest(TestTable, "Viber_DataRetrieval"   , "Data retrieval"   , Viber);
     NewTest(TestTable, "Viber_MessagesSending" , "Messages sending" , Viber);
@@ -423,10 +418,8 @@ Function DataFilePath()
 
     Path          = "";
     PossiblePaths = New Array;
-    PossiblePaths.Add("./data.json");
-    PossiblePaths.Add("C:\data.json");
     PossiblePaths.Add("C:\GDrive\Мой Диск\data.json");
-    PossiblePaths.Add("D:\GD\Мой Диск\data.json");
+    PossiblePaths.Add("./data.json");
 
     For Each PossiblePath In PossiblePaths Do
 
@@ -434,6 +427,7 @@ Function DataFilePath()
 
         If RepositoryFile.Exist() Then
             Path = PossiblePath;
+            Break;
         EndIf;
 
     EndDo;
