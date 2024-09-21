@@ -6676,7 +6676,7 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     OPI_Tools.Pause(15);
 
     TFN = GetTempFileName();
-    Video.Write(TFN);
+    GIF.Write(TFN);
 
     Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateGifTweet(Text, TFN, Parameters);

@@ -38,31 +38,11 @@ pipeline {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_GetAuthorizationLink"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TwitterAPI_AccountData"'
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_UpdateToken"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTextTweet"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithImage"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithVideo"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithGif"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Twitter_CreateTweetWithPoll"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TwitterAPI_Tweets"'
                }
 
 			}
