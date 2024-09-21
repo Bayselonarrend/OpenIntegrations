@@ -38,31 +38,11 @@ pipeline {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ПолучитьСсылкуАвторизации"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ДанныеАккаунта"'
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_ОбновитьТокен"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТекстовыйТвит"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСКартинкой"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСВидео"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСГиф"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_СоздатьТвитСОпросом"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "Твиттер_Твиты"'
                }
 
 			}

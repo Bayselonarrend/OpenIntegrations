@@ -1,2 +1,2 @@
-﻿  
-  Response = OPI_Twitter.GetAuthorizationLink(Parameters);
+﻿    Parameters = GetTwitterAuthData();
+    Result     = OPI_Twitter.GetAuthorizationLink(Parameters);

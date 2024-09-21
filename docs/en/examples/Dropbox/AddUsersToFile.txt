@@ -1,5 +1,5 @@
-﻿    Token = FunctionParameters["Dropbox_Token"];
-    Email = FunctionParameters["Dropbox_OtherUser"];
-    File  = FunctionParameters["Dropbox_FileID"];
+﻿    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Email = "h5bk6ft62s@privaterelay.appleid.com";
+    File  = "kJU6-a-pT48AAAAAAAAABw";
 
     Result = OPI_Dropbox.AddUsersToFile(Token, File, Email, False);

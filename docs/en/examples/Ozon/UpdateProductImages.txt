@@ -1,9 +1,9 @@
-﻿    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey    = FunctionParameters["Ozon_ApiKey"];
-    ProductID = FunctionParameters["Ozon_ProductID"];
+﻿    ClientID  = "2128753";
+    APIKey    = "7cc90d26-33e4-499b...";
+    ProductID = "1111588191";
 
-    Image1 = FunctionParameters["Picture"];
-    Image2 = FunctionParameters["Picture2"];
+    Image1 = "https://openintegrations.dev/test_data/picture.jpg";
+    Image2 = "https://openintegrations.dev/test_data/picture2.jpg";
 
     MarketingColor = "GREEN";
 

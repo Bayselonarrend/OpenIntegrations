@@ -1,5 +1,5 @@
-﻿    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
+﻿    Token = "6129457865:AAFyzNYOAFbu...";
+    Chat  = "-1001971186208";
     Icon  = "5357419403325481346";
     Name  = "TestTopic " + String(New UUID);
 

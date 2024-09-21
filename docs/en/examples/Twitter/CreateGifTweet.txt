@@ -1,7 +1,13 @@
-﻿  
-  ImageArray = New Array;
-  ImageArray.Add("C:\1.gif");
-  ImageArray.Add("C:\2.gif");
-  
-  Response = OPI_Twitter.CreateGifTweet("Gifs", ImageArray, Parameters);
-  Response = OPI_Tools.JSONString(Response);
+﻿    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    GIF  = OPI_TestDataRetrieval.GetBinary("GIF"); // URL, Binary or Path to file
+    Gif2 = OPI_TestDataRetrieval.GetBinary("GIF"); // URL, Binary or Path to file
+
+    GifsArray = New Array;
+    GifsArray.Add(GIF);
+    GifsArray.Add(Gif2);
+
+    Result = OPI_Twitter.CreateGifTweet(Text, GifsArray, Parameters);
+
+    Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);
