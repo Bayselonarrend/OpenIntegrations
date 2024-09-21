@@ -1,6 +1,2 @@
-﻿  
-  Response = OPI_Twitter.RefreshToken(Parameters);
-  Constants.TwitterToken.Set(Response["access_token"]);
-  Constants.TwitterRefresh.Set(Response["refresh_token"]);
-  
-  Response = OPI_Tools.JSONString(Response);
+﻿    Parameters = GetTwitterAuthData();
+    Result     = OPI_Twitter.RefreshToken(Parameters);
