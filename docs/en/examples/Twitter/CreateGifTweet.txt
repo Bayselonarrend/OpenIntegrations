@@ -10,4 +10,5 @@
 
     Result = OPI_Twitter.CreateGifTweet(Text, GifsArray, Parameters);
 
+    Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);
