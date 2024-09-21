@@ -10,4 +10,5 @@
 
     Result = OPI_Twitter.CreateImageTweet(Text, ImageArray, Parameters);
 
+    Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters);

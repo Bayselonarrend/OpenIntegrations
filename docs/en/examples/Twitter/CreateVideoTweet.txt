@@ -10,4 +10,5 @@
 
     Result = OPI_Twitter.CreateVideoTweet(Text, VideosArray, Parameters);
 
+    Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateVideoTweet(Text, Video, Parameters);

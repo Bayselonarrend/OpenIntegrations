@@ -6583,6 +6583,7 @@ Procedure Twitter_CreateImageTweet(FunctionParameters)
     Check_TwitterText(Result, Text); // SKIP
     OPI_Tools.Pause(15); // SKIP
 
+    Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters);
 
     // END
@@ -6625,6 +6626,7 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
     Check_TwitterText(Result, Text); // SKIP
     OPI_Tools.Pause(15); // SKIP
 
+    Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateVideoTweet(Text, Video, Parameters);
 
     // END
@@ -6667,6 +6669,7 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     Check_TwitterText(Result, Text); // SKIP
     OPI_Tools.Pause(15); // SKIP
 
+    Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);
 
     // END
