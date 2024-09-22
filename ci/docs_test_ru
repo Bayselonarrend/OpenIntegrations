@@ -4,9 +4,10 @@ pipeline {
         stage('Prepare') {
             steps {
                     
-                    bat encoding: 'UTF-8', script:'xcopy /s /e ./docs/ru/md ./docs/docusaurus/docs'
-                    bat encoding: 'UTF-8', script:'cd ./docs/docusaurus'
-                    bat encoding: 'UTF-8', script:'"C:/Program Files (x86)/Yarn/bin" build'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & xcopy "docs/ru/md" "docs/docusaurus/docs" /s /e /i /y'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & npm install'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & "C:/Program Files (x86)/Yarn/bin/yarn" build'
             }
         }
     }
