@@ -3034,6 +3034,37 @@ EndProcedure
 
 #EndRegion
 
+#Region Neocities
+
+Procedure NC_FilesManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("NC_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Gif"      , TestParameters);
+
+    Neocities_UploadFile(TestParameters);
+    Neocities_UploadFiles(TestParameters);
+    Neocities_GetFilesList(TestParameters);
+    Neocities_DeleteSelectedFiles(TestParameters);
+
+EndProcedure
+
+Procedure NC_DataRetrieving() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("NC_Token"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("NC_Login"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("NC_Password", TestParameters);
+
+    Neocities_GetSiteData(TestParameters);
+    Neocities_GetToken(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -4013,6 +4044,19 @@ Procedure Check_OzonSKU(Val Result)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["items"]).ИмеетТип("Array");
     OPI_TestDataRetrieval.ExpectsThat(Result["items"][0]["availability"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_NCSuccess(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно("success");
+
+EndProcedure
+
+Procedure Check_NCFolderFiles(Val Result, Val Count)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно("success");
+    OPI_TestDataRetrieval.ExpectsThat(Result["files"].Count()).Равно(Count);
 
 EndProcedure
 
@@ -13046,6 +13090,138 @@ Procedure Ozon_GetProductPriceStructure(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetProductPriceStructure", "Ozon");
 
     Check_Structure(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region Neocities
+
+Procedure Neocities_UploadFile(FunctionParameters)
+
+    Token = FunctionParameters["NC_Token"];
+    Data  = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Path  = "testfolder/test_pic.png";
+
+    Result = OPI_Neocities.UploadFile(Token, Path, Data);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "Neocities");
+
+    Check_NCSuccess(Result);
+
+EndProcedure
+
+Procedure Neocities_UploadFiles(FunctionParameters)
+
+    Token = FunctionParameters["NC_Token"];
+
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+    GIF    = FunctionParameters["Gif"]; // URL, Path or Binary Data
+
+    FileMapping = New Map;
+    FileMapping.Insert("test/pic1.png", Image1);
+    FileMapping.Insert("test/gif.gif" , Image2);
+    FileMapping.Insert("pic2.png"     , GIF);
+
+    Result = OPI_Neocities.UploadFiles(Token, FileMapping);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFiles", "Neocities");
+
+    Check_NCSuccess(Result);
+
+EndProcedure
+
+Procedure Neocities_DeleteSelectedFiles(FunctionParameters)
+
+    Token = FunctionParameters["NC_Token"];
+
+    Paths = New Array;
+    Paths.Add("/test/pic1.png");
+    Paths.Add("/test/gif.gif");
+    Paths.Add("/pic2.png");
+
+    Result = OPI_Neocities.DeleteSelectedFiles(Token, Paths);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelectedFiles", "Neocities");
+
+    Check_NCSuccess(Result);
+
+    Result = OPI_Neocities.DeleteSelectedFiles(Token, "/testfolder");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelectedFiles (folder 1)");
+
+    Check_NCSuccess(Result);
+
+    Result = OPI_Neocities.DeleteSelectedFiles(Token, "/test");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelectedFiles (folder 2)");
+
+    Check_NCSuccess(Result);
+
+EndProcedure
+
+Procedure Neocities_GetFilesList(FunctionParameters)
+
+    Token = FunctionParameters["NC_Token"];
+    Path  = "test";
+
+    Result = OPI_Neocities.GetFilesList(Token);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "Neocities"); // SKIP
+
+    Check_NCSuccess(Result); // SKIP
+
+    Result = OPI_Neocities.GetFilesList(Token, Path);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList (Filter)");
+
+    Check_NCFolderFiles(Result, 2);
+
+EndProcedure
+
+Procedure Neocities_GetSiteData(FunctionParameters)
+
+    Token   = FunctionParameters["NC_Token"];
+    Website = "2athenaeum";
+
+    Result = OPI_Neocities.GetSiteData(Token);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSiteData", "Neocities"); // SKIP
+
+    Check_NCSuccess(Result); // SKIP
+
+    Result = OPI_Neocities.GetSiteData(Token, Website);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSiteData (Site)");
+
+    Check_NCSuccess(Result);
+
+EndProcedure
+
+Procedure Neocities_GetToken(FunctionParameters)
+
+    Login    = FunctionParameters["NC_Login"];
+    Password = FunctionParameters["NC_Password"];
+
+    Result = OPI_Neocities.GetToken(Login, Password);
+
+    // END
+
+    Result["api_key"] = "***";
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Neocities");
+
+    Check_NCSuccess(Result);
 
 EndProcedure
 
