@@ -1,5 +1,5 @@
 ﻿    Path  = "/New/url_doc.docx";
-    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
-    URL   = "https://openintegrations.dev/test_data/document.docx";
+    Token = "sl.B9UkyV2zUTP1LLTzgy6XcG5j_RdnQh84LmpC70BXg5rw9eXyYb0F7XGDXMiLrjc69YlZIFZqEi...";
+    URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
