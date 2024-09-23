@@ -1,0 +1,6 @@
+﻿    Token = "7419cd51de4037f7...";
+    Path  = "test";
+
+    Result = OPI_Neocities.GetFilesList(Token);
+
+    Result = OPI_Neocities.GetFilesList(Token, Path);

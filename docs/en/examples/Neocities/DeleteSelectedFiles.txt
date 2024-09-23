@@ -1,0 +1,8 @@
+﻿    Token = "7419cd51de4037f7...";
+
+    Paths = New Array;
+    Paths.Add("/test/pic1.png");
+    Paths.Add("/test/gif.gif");
+    Paths.Add("/pic2.png");
+
+    Result = OPI_Neocities.DeleteSelectedFiles(Token, Paths);
