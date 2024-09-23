@@ -651,6 +651,21 @@ pipeline {
 			}
 		}
 
+        stage('Testing-Neocities') {
+			steps {
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NC_FilesManagment"'
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NC_DataRetrieving"'
+               }
+
+			}
+		}
+
    }
       post{
          always{

@@ -42,7 +42,6 @@
 // Uncomment if OneScript is executed
 #Use "./internal"
 #Use asserts
-
 #Region Internal
 
 Function GetTestingSectionMapping() Export
@@ -64,6 +63,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Bitrix24"       , 5);
     Sections.Insert("VkTeams"        , 5);
     Sections.Insert("Ozon"           , 5);
+    Sections.Insert("Neocities"      , 5);
 
     Return Sections;
 
@@ -87,6 +87,7 @@ Function GetTestTable() Export
     Bitrix    = "Bitrix24";
     VKT       = "VkTeams";
     Ozon      = "Ozon";
+    Neocities = "Neocities";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -116,26 +117,26 @@ Function GetTestTable() Export
     NewTest(TestTable, "TelegramAPI_ChangeMainTopicName"    , "Change main topic name"    , Telegram);
     NewTest(TestTable, "TelegramAPI_HideShowMainTopic"      , "Hide/Show main topic"      , Telegram);
 
-    NewTest(TestTable, "VKAPI_CreateTokenLink"             , "Create token retrieval link"    , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateDeletePost"            , "Create/Delete post"             , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateCompositePost"         , "Create/Delete composite post"   , VKontakte);
-    NewTest(TestTable, "VKAPI_CreatePoll"                  , "Create poll"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_SaveDeleteImage"             , "Add/Delete image"               , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateStory"                 , "Create story"                   , VKontakte);
-    NewTest(TestTable, "VKAPI_DiscussionMethods"           , "Actions with discussions"       , VKontakte);
-    NewTest(TestTable, "VKAPI_LikeRepostComment"           , "Like/Repost/Comment"            , VKontakte);
-    NewTest(TestTable, "VKAPI_GetStatistics"               , "Get statistics"                 , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPostStatistics"           , "Get post statistics"            , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateAdCampaign"            , "Create advertising campaign"    , VKontakte);
-    NewTest(TestTable, "VKAPI_SendMessage"                 , "Send message"                   , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductCategories"        , "Get product categories"         , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductSelection"      , "Create product and selection"   , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductWithProperties" , "Create product with properties" , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductList"              , "Get product list"               , VKontakte);
-    NewTest(TestTable, "VKAPI_GetSelectionList"            , "Get selection list"             , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPropertyList"             , "Get property list"              , VKontakte);
-    NewTest(TestTable, "VKAPI_GetOrderList"                , "Get order list"                 , VKontakte);
-    NewTest(TestTable, "VKAPI_UploadVideo"                 , "Upload video"                   , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateTokenLink"            , "Create token retrieval link"    , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateDeletePost"           , "Create/Delete post"             , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateCompositePost"        , "Create/Delete composite post"   , VKontakte);
+    NewTest(TestTable, "VKAPI_CreatePoll"                 , "Create poll"                    , VKontakte);
+    NewTest(TestTable, "VKAPI_SaveDeleteImage"            , "Add/Delete image"               , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateStory"                , "Create story"                   , VKontakte);
+    NewTest(TestTable, "VKAPI_DiscussionMethods"          , "Actions with discussions"       , VKontakte);
+    NewTest(TestTable, "VKAPI_LikeRepostComment"          , "Like/Repost/Comment"            , VKontakte);
+    NewTest(TestTable, "VKAPI_GetStatistics"              , "Get statistics"                 , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPostStatistics"          , "Get post statistics"            , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateAdCampaign"           , "Create advertising campaign"    , VKontakte);
+    NewTest(TestTable, "VKAPI_SendMessage"                , "Send message"                   , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductCategories"       , "Get product categories"         , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductSelection"     , "Create product and selection"   , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductWithProperties", "Create product with properties" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductList"             , "Get product list"               , VKontakte);
+    NewTest(TestTable, "VKAPI_GetSelectionList"           , "Get selection list"             , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPropertyList"            , "Get property list"              , VKontakte);
+    NewTest(TestTable, "VKAPI_GetOrderList"               , "Get order list"                 , VKontakte);
+    NewTest(TestTable, "VKAPI_UploadVideo"                , "Upload video"                   , VKontakte);
 
     NewTest(TestTable, "YDisk_GetDiskInfo"            , "Get disk information"       , YDisk);
     NewTest(TestTable, "YDisk_CreateFolder"           , "Create folder"              , YDisk);
@@ -148,9 +149,9 @@ Function GetTestTable() Export
     NewTest(TestTable, "YDisk_PublicObjectActions"    , "Actions with public objects", YDisk);
     NewTest(TestTable, "YDisk_GetPublishedList"       , "Get published list"         , YDisk);
 
-    NewTest(TestTable, "GV_GetAuthorizationLink" , "Get authorization link" , VSpace);
-    NewTest(TestTable, "GV_GetToken"             , "Get token"              , VSpace);
-    NewTest(TestTable, "GV_UpdateToken"          , "Refresh token"          , VSpace);
+    NewTest(TestTable, "GV_GetAuthorizationLink", "Get authorization link", VSpace);
+    NewTest(TestTable, "GV_GetToken"            , "Get token"             , VSpace);
+    NewTest(TestTable, "GV_UpdateToken"         , "Refresh token"         , VSpace);
 
     NewTest(TestTable, "GV_UpdateToken"          , "Refresh token"          , Calendar);
     NewTest(TestTable, "GC_GetCalendarList"      , "Get list of calendars"  , Calendar);
@@ -158,19 +159,19 @@ Function GetTestTable() Export
     NewTest(TestTable, "GC_CreateDeleteEvent"    , "Create/Delete event"    , Calendar);
     NewTest(TestTable, "GC_GetEventList"         , "Get list of events"     , Calendar);
 
-    NewTest(TestTable, "GV_UpdateToken"         , "Refresh token"           , Drive);
-    NewTest(TestTable, "GD_GetCatalogList"      , "Get list of directories" , Drive);
-    NewTest(TestTable, "GD_UploadDeleteFile"    , "Upload/Delete file"      , Drive);
-    NewTest(TestTable, "GD_CreateDeleteComment" , "Create/Delete Comment"   , Drive);
-    NewTest(TestTable, "GD_CreateCatalog"       , "Create/Delete catalog"   , Drive);
+    NewTest(TestTable, "GV_UpdateToken"        , "Refresh token"           , Drive);
+    NewTest(TestTable, "GD_GetCatalogList"     , "Get list of directories" , Drive);
+    NewTest(TestTable, "GD_UploadDeleteFile"   , "Upload/Delete file"      , Drive);
+    NewTest(TestTable, "GD_CreateDeleteComment", "Create/Delete Comment"   , Drive);
+    NewTest(TestTable, "GD_CreateCatalog"      , "Create/Delete catalog"   , Drive);
 
-    NewTest(TestTable, "GV_UpdateToken"    , "Refresh token"    , Tables);
-    NewTest(TestTable, "GT_CreateTable"    , "Create table"     , Tables);
-    NewTest(TestTable, "GT_GetTable"       , "Get table"        , Tables);
-    NewTest(TestTable, "GT_FillClearCells" , "Fill/Clear cells" , Tables);
+    NewTest(TestTable, "GV_UpdateToken"   , "Refresh token"   , Tables);
+    NewTest(TestTable, "GT_CreateTable"   , "Create table"    , Tables);
+    NewTest(TestTable, "GT_GetTable"      , "Get table"       , Tables);
+    NewTest(TestTable, "GT_FillClearCells", "Fill/Clear cells", Tables);
 
-    NewTest(TestTable, "TwitterAPI_AccountData" , "Account data"    , Twitter);
-    NewTest(TestTable, "TwitterAPI_Tweets"      , "Tweets creation" , Twitter);
+    NewTest(TestTable, "TwitterAPI_AccountData", "Account data"   , Twitter);
+    NewTest(TestTable, "TwitterAPI_Tweets"     , "Tweets creation", Twitter);
 
     NewTest(TestTable, "Viber_DataRetrieval"   , "Data retrieval"   , Viber);
     NewTest(TestTable, "Viber_MessagesSending" , "Messages sending" , Viber);
@@ -199,46 +200,49 @@ Function GetTestTable() Export
     NewTest(TestTable, "Slack_GetExternalFileList"      , "Get external file list"      , Slack);
     NewTest(TestTable, "Slack_UploadDeleteExternalFile" , "Upload/Delete external file" , Slack);
 
-    NewTest(TestTable, "AT_CreateDatabase"      , "Create/Edit database"  , AirT);
-    NewTest(TestTable, "AT_CreateTable"         , "Create/Edit table"     , AirT);
-    NewTest(TestTable, "AT_CreateField"         , "Create/Edit field"     , AirT);
-    NewTest(TestTable, "AT_CreateDeleteRecords" , "Create/Delete records" , AirT);
+    NewTest(TestTable, "AT_CreateDatabase"     , "Create/Edit database"  , AirT);
+    NewTest(TestTable, "AT_CreateTable"        , "Create/Edit table"     , AirT);
+    NewTest(TestTable, "AT_CreateField"        , "Create/Edit field"     , AirT);
+    NewTest(TestTable, "AT_CreateDeleteRecords", "Create/Delete records" , AirT);
 
-    NewTest(TestTable, "DropboxAPI_GetUpdateToken"    , "Get/Update token"         , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFile"        , "Upload file"              , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFileByURL"   , "Upload file by URL"       , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateFolder"      , "Create folder"            , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateDeleteTag"   , "Create/Delete tag"        , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetAccount"        , "Get account data"         , Dropbox);
-    NewTest(TestTable, "DropboxAPI_AccessManagement"  , "Access management"        , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetFolderFileList" , "Get list of folder files" , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetUpdateToken"   , "Get/Update token"        , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFile"       , "Upload file"             , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFileByURL"  , "Upload file by URL"      , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateFolder"     , "Create folder"           , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateDeleteTag"  , "Create/Delete tag"       , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetAccount"       , "Get account data"        , Dropbox);
+    NewTest(TestTable, "DropboxAPI_AccessManagement" , "Access management"       , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetFolderFileList", "Get list of folder files", Dropbox);
 
-    NewTest(TestTable, "B24_TokenManagment"         , "Token management"                , Bitrix);
-    NewTest(TestTable, "B24_ServerTime"             , "Server time"                     , Bitrix);
-    NewTest(TestTable, "B24_PostsManagment"         , "Posts managment"                 , Bitrix);
-    NewTest(TestTable, "B24_TaskManagment"          , "Tasks managment"                 , Bitrix);
-    NewTest(TestTable, "B24_CommentsManagment"      , "Comments managment"              , Bitrix);
-    NewTest(TestTable, "B24_WorkingWithDrive"       , "Working with drive"              , Bitrix);
-    NewTest(TestTable, "B24_Kanban"                 , "Kanban"                          , Bitrix);
-    NewTest(TestTable, "B24_Timekeeping"            , "Timekeeping"                     , Bitrix);
-    NewTest(TestTable, "B24_ChatManagment"          , "Chats works"                     , Bitrix);
-    NewTest(TestTable, "B24_NotificationsManagment" , "Notifications managment"         , Bitrix);
-    NewTest(TestTable, "B24_TasksFieldsManagment"   , "Working with custom task fields" , Bitrix);
-    NewTest(TestTable, "B24_DepartmentsManagment"   , "Departments managment"           , Bitrix);
-    NewTest(TestTable, "B2_UsersManagment"          , "Users managment"                 , Bitrix);
-    NewTest(TestTable, "B24_LeadsManagment"         , "Leads managment"                 , Bitrix);
-    NewTest(TestTable, "B24_DealsManagment"         , "Deals managment"                 , Bitrix);
+    NewTest(TestTable, "B24_TokenManagment"         , "Token management"               , Bitrix);
+    NewTest(TestTable, "B24_ServerTime"             , "Server time"                    , Bitrix);
+    NewTest(TestTable, "B24_PostsManagment"         , "Posts managment"                , Bitrix);
+    NewTest(TestTable, "B24_TaskManagment"          , "Tasks managment"                , Bitrix);
+    NewTest(TestTable, "B24_CommentsManagment"      , "Comments managment"             , Bitrix);
+    NewTest(TestTable, "B24_WorkingWithDrive"       , "Working with drive"             , Bitrix);
+    NewTest(TestTable, "B24_Kanban"                 , "Kanban"                         , Bitrix);
+    NewTest(TestTable, "B24_Timekeeping"            , "Timekeeping"                    , Bitrix);
+    NewTest(TestTable, "B24_ChatManagment"          , "Chats works"                    , Bitrix);
+    NewTest(TestTable, "B24_NotificationsManagment" , "Notifications managment"        , Bitrix);
+    NewTest(TestTable, "B24_TasksFieldsManagment"   , "Working with custom task fields", Bitrix);
+    NewTest(TestTable, "B24_DepartmentsManagment"   , "Departments managment"          , Bitrix);
+    NewTest(TestTable, "B2_UsersManagment"          , "Users managment"                , Bitrix);
+    NewTest(TestTable, "B24_LeadsManagment"         , "Leads managment"                , Bitrix);
+    NewTest(TestTable, "B24_DealsManagment"         , "Deals managment"                , Bitrix);
 
-    NewTest(TestTable, "VKT_MessagesSending" , "Messages sending" , VKT);
-    NewTest(TestTable, "VKT_CommonMethods"   , "Common methods"   , VKT);
-    NewTest(TestTable, "VKT_ChatManagment"   , "Chat managment"   , VKT);
+    NewTest(TestTable, "VKT_MessagesSending", "Messages sending", VKT);
+    NewTest(TestTable, "VKT_CommonMethods"  , "Common methods"  , VKT);
+    NewTest(TestTable, "VKT_ChatManagment"  , "Chat managment"  , VKT);
 
-    NewTest(TestTable, "OzonAPI_AttributesAndFeatures"        , "Attributes and features"         , Ozon);
-    NewTest(TestTable, "OzonAPI_UploadingAndUpdatingProducts" , "Uploading and updating products" , Ozon);
-    NewTest(TestTable, "OzonAPI_Barcodes"                     , "Barcodes"                        , Ozon);
-    NewTest(TestTable, "OzonAPI_PricesAndStocks"              , "Prices and stocks"               , Ozon);
-    NewTest(TestTable, "OzonAPI_PromotionsManagment"          , "Promotions managment"            , Ozon);
-    NewTest(TestTable, "OzonAPI_WarehousesManagment"          , "Warehouses managment"            , Ozon);
+    NewTest(TestTable, "OzonAPI_AttributesAndFeatures"       , "Attributes and features"        , Ozon);
+    NewTest(TestTable, "OzonAPI_UploadingAndUpdatingProducts", "Uploading and updating products", Ozon);
+    NewTest(TestTable, "OzonAPI_Barcodes"                    , "Barcodes"                       , Ozon);
+    NewTest(TestTable, "OzonAPI_PricesAndStocks"             , "Prices and stocks"              , Ozon);
+    NewTest(TestTable, "OzonAPI_PromotionsManagment"         , "Promotions managment"           , Ozon);
+    NewTest(TestTable, "OzonAPI_WarehousesManagment"         , "Warehouses managment"           , Ozon);
+
+    NewTest(TestTable, "NC_FilesManagment" , "Files managment", Neocities);
+    NewTest(TestTable, "NC_DataRetrieving" , "Data retrieving", Neocities);
 
     Return TestTable;
 
@@ -284,14 +288,14 @@ EndFunction
 
 Function FormAssertsTests() Export
 
-   TestTable    = GetTestTable();
-   ArrayOfTests = New Array;
+    TestTable    = GetTestTable();
+    ArrayOfTests = New Array;
 
-   For Each Test In TestTable Do
-       ArrayOfTests.Add(Test.Method);
-   EndDo;
+    For Each Test In TestTable Do
+        ArrayOfTests.Add(Test.Method);
+    EndDo;
 
-   Return ArrayOfTests;
+    Return ArrayOfTests;
 
 EndFunction
 
@@ -306,7 +310,7 @@ Function GetBinary(Parameter) Export
 
     Path           = DataFilePath();
     LocalParameter = Parameter + "Local";
-    MainValue      = GetValueFromFile(Parameter , Path);
+    MainValue      = GetValueFromFile(Parameter, Path);
     LocalValue     = GetValueFromFile(LocalParameter, Path);
 
     LocalFile = New File(LocalValue);
@@ -327,8 +331,7 @@ EndFunction
 
 Function GetFilePath(Val Path, LocalParameter, Val SaveLocally = True) Export
 
-    If StrFind(Path, "http") > 0
-        Or StrFind(Path, "www") > 0 Then
+    If StrFind(Path, "http") > 0 Or StrFind(Path, "www") > 0 Then
 
         TFN    = GetTempFileName();
         CopyFile(Path, TFN);
