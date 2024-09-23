@@ -155,6 +155,37 @@
     NewLine.Описание    = "Selection of files by catalog. All if not filled in (optional, def. val. - Empty value)";
     NewLine.Область     = "File managment";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "neocities";
+    NewLine.Модуль      = "OPI_Neocities";
+    NewLine.Метод       = "SynchronizeFolders";
+    NewLine.МетодПоиска = "SYNCHRONIZEFOLDERS";
+    NewLine.Параметр    = "--token";
+    NewLine.Описание    = "Auth token";
+    NewLine.Область     = "File managment";
+    NewLine.ОписаниеМетода   = "Creates a copy of the local directory at the selected path on the Neocities server";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "neocities";
+    NewLine.Модуль      = "OPI_Neocities";
+    NewLine.Метод       = "SynchronizeFolders";
+    NewLine.МетодПоиска = "SYNCHRONIZEFOLDERS";
+    NewLine.Параметр    = "--local";
+    NewLine.Описание    = "Local source catalog";
+    NewLine.Область     = "File managment";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "neocities";
+    NewLine.Модуль      = "OPI_Neocities";
+    NewLine.Метод       = "SynchronizeFolders";
+    NewLine.МетодПоиска = "SYNCHRONIZEFOLDERS";
+    NewLine.Параметр    = "--remote";
+    NewLine.Описание    = "Remote receiver catalog. Root by default (optional, def. val. - Empty value)";
+    NewLine.Область     = "File managment";
+
     Return CompositionTable;
 EndFunction
 
