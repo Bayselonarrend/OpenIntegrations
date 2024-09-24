@@ -29,9 +29,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
     Token = "7419cd51de4037f7...";
     Path  = "test";
 
-    Result = OPI_Neocities.GetFilesList(Token);
-
     Result = OPI_Neocities.GetFilesList(Token, Path);
+
+    Result = OPI_Neocities.GetFilesList(Token);
 ```
 
 
