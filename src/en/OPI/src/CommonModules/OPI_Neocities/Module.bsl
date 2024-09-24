@@ -267,83 +267,34 @@ EndFunction
 // RemoteFolder - String - Remote receiver catalog. Root by default - remote
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Neocities
+// Structure of KeyAndValue - synchronization error information
 Function SynchronizeFolders(Val Token, Val LocalFolder, Val RemoteFolder = "") Export
 
     OPI_TypeConversion.GetLine(LocalFolder);
     OPI_TypeConversion.GetLine(RemoteFolder);
 
+    // !OInt Message("Start synchronization...");
+
     If ValueIsFilled(RemoteFolder) Then
         RemoteFolder = ?(StrEndsWith(RemoteFolder, "/"), RemoteFolder, RemoteFolder + "/");
     EndIf;
 
-    LocalFolder = StrReplace(LocalFolder, "\", "/");
-    LocalFolder = ?(StrEndsWith(LocalFolder, "/"), LocalFolder, LocalFolder + "/");
-
     RemoteFiles = GetFilesList(Token, RemoteFolder);
-    LocalFiles  = FindFiles(LocalFolder, "*", True);
 
     If Not RemoteFiles["result"] = "success" Then
         Return RemoteFiles;
     EndIf;
 
-    LocalPaths       = New Map;
-    LocalFolders     = New Map;
-    ArrayOfDeletions = New Array;
+    LocalPaths      = New Map;
+    LocalSubfolders = New Map;
 
-    For Each LocalFile In LocalFiles Do
+    GetLocalPathsSets(LocalFolder, RemoteFolder, LocalPaths, LocalSubfolders);
 
-        CurrentAbsPath = LocalFile.FullName;
-        CurrentRelPath = Right(CurrentAbsPath, StrLen(CurrentAbsPath) - StrLen(LocalFolder));
-        CurrentRelPath = RemoteFolder + CurrentRelPath;
+    ArrayOfDeletions = GetDeletedFiles(RemoteFiles, LocalPaths, LocalSubfolders);
+    Result           = MakeSynchronization(Token, ArrayOfDeletions, LocalPaths);
 
-        CurrentRelPath = StrReplace(CurrentRelPath, "\", "/");
-
-        If LocalFile.IsDirectory() Then
-            LocalFolders.Insert(CurrentRelPath, CurrentAbsPath);
-        Else
-            LocalPaths.Insert(CurrentRelPath, CurrentAbsPath);
-        EndIf;
-
-    EndDo;
-
-    For Each RemoteFile In RemoteFiles["files"] Do
-
-        PathOfRemote = RemoteFile["path"];
-
-        If RemoteFile["is_directory"] Then
-            ExistingRemote = LocalFolders[PathOfRemote];
-        Else
-            ExistingRemote = LocalPaths[PathOfRemote];
-        EndIf;
-
-        If ExistingRemote = Undefined Then
-            ArrayOfDeletions.Add(PathOfRemote);
-        EndIf;
-
-    EndDo;
-
-    If Not ArrayOfDeletions.Count() = 0 Then
-        Response = OPI_Neocities.DeleteSelectedFiles(Token, ArrayOfDeletions);
-
-        If Not Response["result"] = "success" Then
-            Return Response;
-        Else
-            DeletingMessage       = StrTemplate("Removed %1 unnecessary files", String(ArrayOfDeletions.Count()));
-            // !OInt Message(DeletingMessage);
-        EndIf;
-
-    EndIf;
-
-    For Each LocalPath In LocalPaths Do
-
-        Response = OPI_Neocities.UploadFile(Token, LocalPath.Key, LocalPath.Value);
-
-        // !OInt Message(LocalPath.Key + Chars.LF + Response["message"] + Chars.LF);
-
-    EndDo;
-
-    Return OPI_Neocities.GetSiteData(Token);
+    //@skip-check constructor-function-return-section
+    Return Result;
 
 EndFunction
 
@@ -362,5 +313,101 @@ Function CreateRequestHeaders(Val Token)
     Return Headers;
 
 EndFunction
+
+Function GetDeletedFiles(RemoteFiles, LocalPaths, LocalSubfolders)
+
+    ArrayOfDeletions = New Array;
+
+    For Each RemoteFile In RemoteFiles["files"] Do
+
+        PathOfRemote = RemoteFile["path"];
+
+        If RemoteFile["is_directory"] Then
+            ExistingRemote = LocalSubfolders[PathOfRemote];
+        Else
+            ExistingRemote = LocalPaths[PathOfRemote];
+        EndIf;
+
+        If ExistingRemote = Undefined Then
+            ArrayOfDeletions.Add(PathOfRemote);
+        EndIf;
+
+    EndDo;
+
+    Return ArrayOfDeletions;
+
+EndFunction
+
+//@skip-check module-unused-local-variable
+Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
+
+    ErrorsArray = New Array;
+
+    If Not ArrayOfDeletions.Count() = 0 Then
+
+        Response = OPI_Neocities.DeleteSelectedFiles(Token, ArrayOfDeletions);
+
+        If Not Response["result"] = "success" Then
+            ErrorsArray.Add(Response);
+        Else
+
+            DeletingMessage = StrTemplate("Removed %1 unnecessary files", String(ArrayOfDeletions.Count()));
+            // !OInt Message(DeletingMessage);
+
+        EndIf;
+
+    EndIf;
+
+    Total   = OPI_Tools.NumberToString(LocalPaths.Count());
+    Counter = 0;
+
+    For Each LocalPath In LocalPaths Do
+
+        Response = OPI_Neocities.UploadFile(Token, LocalPath.Key, LocalPath.Value);
+
+        If Not Response["result"] = "success" Then
+
+            ErrorsArray.Add(Response);
+
+        Else
+
+            Progress = "[" + OPI_Tools.NumberToString(Counter) + "/" + Total + "] ";
+            // !OInt Message(Progress + LocalPath.Key + Chars.LF + Response["message"] + Chars.LF);
+
+        EndIf;
+
+
+        Counter = Counter + 1;
+
+    EndDo;
+
+    Return New Structure("errors,items", ErrorsArray.Count(), ErrorsArray);
+
+EndFunction
+
+Procedure GetLocalPathsSets(LocalFolder, RemoteFolder, LocalPaths, LocalSubfolders)
+
+    LocalFolder = StrReplace(LocalFolder, "\", "/");
+    LocalFolder = ?(StrEndsWith(LocalFolder, "/"), LocalFolder, LocalFolder + "/");
+
+    LocalFiles = FindFiles(LocalFolder, "*", True);
+
+    For Each LocalFile In LocalFiles Do
+
+        CurrentAbsPath = LocalFile.FullName;
+        CurrentRelPath = Right(CurrentAbsPath, StrLen(CurrentAbsPath) - StrLen(LocalFolder));
+        CurrentRelPath = RemoteFolder + CurrentRelPath;
+
+        CurrentRelPath = StrReplace(CurrentRelPath, "\", "/");
+
+        If LocalFile.IsDirectory() Then
+            LocalSubfolders.Insert(CurrentRelPath, CurrentAbsPath);
+        Else
+            LocalPaths.Insert(CurrentRelPath, CurrentAbsPath);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
 
 #EndRegion
