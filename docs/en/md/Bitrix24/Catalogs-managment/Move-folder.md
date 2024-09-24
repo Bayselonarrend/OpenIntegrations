@@ -42,7 +42,7 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
 
     Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID, Token);
 
-    Check_BitrixObject(Result);
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
 ```
 
 
