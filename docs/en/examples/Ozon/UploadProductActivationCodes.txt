@@ -1,6 +1,6 @@
 ﻿    ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1194280055";
+    ProductID = "";
 
     Codes = New Array;
     Codes.Add("11111111");

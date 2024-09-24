@@ -40,7 +40,7 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
 ```sh title="CLI command example"
     
-oint neocities DeleteSelectedFiles --token "7419cd51de4037f7..." --paths %paths%
+  oint neocities DeleteSelectedFiles --token "7419cd51de4037f7..." --paths %paths%
 
 ```
 
