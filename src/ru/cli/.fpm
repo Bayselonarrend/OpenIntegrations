@@ -1,7 +1,7 @@
 -s dir
 --name oint
 --license mit
---version 1.13.0
+--version 1.14.0
 --architecture all
 --depends mono-complete 
 --description "OInt CLI - приложение для работы с API различных онлайн-сервисов из командной строки"
