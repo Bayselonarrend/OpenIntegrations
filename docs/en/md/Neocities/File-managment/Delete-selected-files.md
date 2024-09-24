@@ -45,5 +45,8 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 ```
 
 ```json title="Result"
-
+{
+ "result": "success",
+ "message": "file(s) have been deleted"
+}
 ```
