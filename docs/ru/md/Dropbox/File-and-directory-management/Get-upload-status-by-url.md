@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен    = ПараметрыФункции["Dropbox_Token"];
-    ИДРаботы = ПараметрыФункции["Dropbox_Job"];
+    Токен    = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    ИДРаботы = "sZ-0JstjDkYAAAAAAAAAAQ";
     Статус   = "in_progress";
 
     Пока Статус = "in_progress" Цикл

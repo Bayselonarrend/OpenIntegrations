@@ -14,7 +14,7 @@ sidebar_position: 5
   | Text | --text | String | Tweet text |
   | OptionArray | --options | Array of String | Poll options array |
   | Duration | --duration | String, Number | Poll duration |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
@@ -25,14 +25,14 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  
-  OptionArray = New Array;
-  OptionArray.Add("Good");
-  OptionArray.Add("Nothing special");
-  OptionArray.Add("Bad");
-  
-  Response = OPI_Twitter.CreatePollTweet("How are you?", OptionArray, 60, Parameters);
-  Response = OPI_Tools.JSONString(Response);
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    AnswersArray = New Array;
+    AnswersArray.Add("Option 1");
+    AnswersArray.Add("Option 2");
+
+    Result = OPI_Twitter.CreatePollTweet(Text, AnswersArray, 60, Parameters);
 ```
 
 

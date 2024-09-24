@@ -29,18 +29,18 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 
 
 ```bsl title="Code example"
-    URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Name     = "Main department";
     ParentID = 1;
 
     Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID);
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "b529cb66006e9f06006b12e400000001000...";
 
     Name     = "Subordinate department";
-    ParentID = FunctionParameters["Bitrix24_HookDepID"];
+    ParentID = "246";
     HeadID   = 1;
 
     Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID, HeadID, Token);

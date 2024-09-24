@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-    Token = FunctionParameters["YandexDisk_Token"];
-    Path  = FunctionParameters["YandexDisk_PathForLink"];
+    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Path  = "/ced52016-2220-4e04-aa8b-a6fc063d165e.png";
 
     Result = OPI_YandexDisk.GetDownloadLink(Token, Path);
 ```

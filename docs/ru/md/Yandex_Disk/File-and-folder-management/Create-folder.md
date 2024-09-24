@@ -23,7 +23,7 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен = ПараметрыФункции["YandexDisk_Token"];
+    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
     Путь  = "/" + Строка(Новый УникальныйИдентификатор);
 
     Результат = OPI_YandexDisk.СоздатьПапку(Токен, Путь);

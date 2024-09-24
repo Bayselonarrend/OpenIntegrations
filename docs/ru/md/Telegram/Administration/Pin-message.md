@@ -24,9 +24,9 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
-    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDКанала    = "@testsichee";
+    IDСообщения = "7649";
 
     Результат = OPI_Telegram.ЗакрепитьСообщение(Токен, IDКанала, IDСообщения);
 ```

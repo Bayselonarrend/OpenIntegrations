@@ -22,7 +22,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен       = ПараметрыФункции["Telegram_Token"];
+    Токен       = "6129457865:AAFyzNYOAFbu...";
     Результат   = OPI_Telegram.ПолучитьИнформациюБота(Токен);
 ```
 

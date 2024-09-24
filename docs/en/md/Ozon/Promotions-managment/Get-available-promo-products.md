@@ -28,8 +28,8 @@ Method at API documentation: [post /v1/actions/candidates](https://docs.ozon.ru/
 
 
 ```bsl title="Code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
     PromoID  = 111111111;
 
     Result = OPI_Ozon.GetAvailablePromoProducts(ClientID, APIKey, PromoID);

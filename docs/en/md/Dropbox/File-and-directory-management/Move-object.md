@@ -26,7 +26,7 @@ sidebar_position: 9
 ```bsl title="Code example"
     OriginalPath = "/New/pic.png";
     TargetPath   = "/pic.png";
-    Token        = FunctionParameters["Dropbox_Token"];
+    Token        = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
 
     Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);
 ```

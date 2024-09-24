@@ -1,0 +1,1 @@
+﻿oint neocities ПолучитьТокен --login "2athenaeum" --password "Rit..."

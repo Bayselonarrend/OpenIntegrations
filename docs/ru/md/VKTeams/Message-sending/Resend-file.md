@@ -30,9 +30,9 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен    = ПараметрыФункции["VkTeams_Token"];
-    IDЧата   = ПараметрыФункции["VkTeams_ChatID"];
-    IDФайла  = ПараметрыФункции["VkTeams_FileID"];
+    Токен    = "001.3501506236.091...";
+    IDЧата   = "AoLI0egLWBSLR1Ngn2w";
+    IDФайла  = "z4jogAQwvZkNzuErMbBNHa66cb1e6f1bd";
     Текст    = "Подпись к файлу";
 
     Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст, "ТотЖеДокумент.docx");

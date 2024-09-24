@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен    = ПараметрыФункции["Dropbox_Token"];
-    Файл     = ПараметрыФункции["Dropbox_FileID"];
+    Токен    = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Файл     = "kJU6-a-pT48AAAAAAAAABw";
 
     Результат = OPI_Dropbox.ОтменитьПубликациюФайла(Токен, Файл);
 ```

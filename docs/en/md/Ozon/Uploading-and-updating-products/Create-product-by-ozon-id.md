@@ -31,8 +31,8 @@ You can get an empty structure using the GetSimplifiedProductStructure method()
 
 
 ```bsl title="Code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
 
     ItemStructure = New Structure;
     ItemStructure.Insert("name"         , "New imported product");

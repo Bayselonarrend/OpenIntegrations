@@ -23,7 +23,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен = ПараметрыФункции["Dropbox_Token"];
+    Токен = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
 
     Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен);
 ```

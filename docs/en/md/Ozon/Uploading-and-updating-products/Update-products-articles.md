@@ -27,8 +27,8 @@ Method at API documentation: [post /v1/product/update/offer-id](https://docs.ozo
 
 
 ```bsl title="Code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
 
     ArticlesMap = New Map;
     ArticlesMap.Insert("143210609", "143210612");

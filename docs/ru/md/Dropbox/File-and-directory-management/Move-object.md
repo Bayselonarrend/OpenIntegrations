@@ -26,7 +26,7 @@ sidebar_position: 9
 ```bsl title="Пример кода"
     ОригиналныйПуть  = "/New/pic.png";
     ЦелевойПуть      = "/pic.png";
-    Токен            = ПараметрыФункции["Dropbox_Token"];
+    Токен            = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
 
     Результат = OPI_Dropbox.ПереместитьОбъект(Токен, ОригиналныйПуть, ЦелевойПуть);
 ```

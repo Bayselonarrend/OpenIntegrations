@@ -29,20 +29,20 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="Code example"
-    FromID        = FunctionParameters["Bitrix24_HookTaskID"];
-    DestinationID = FunctionParameters["Bitrix24_TaskID"];
+    FromID        = "1514";
+    DestinationID = "1516";
     LinkType      = 0;
 
-    URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = FunctionParameters["Bitrix24_TaskID"];
-    DestinationID = FunctionParameters["Bitrix24_HookTaskID"];
+    FromID        = "1516";
+    DestinationID = "1514";
     LinkType      = 2;
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "b529cb66006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```

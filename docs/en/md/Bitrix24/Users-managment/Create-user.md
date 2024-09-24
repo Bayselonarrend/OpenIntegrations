@@ -31,7 +31,7 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
 
 
 ```bsl title="Code example"
-    URL   = FunctionParameters["Bitrix24_URL"];
+    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
     Email = String(New UUID) + "@exepmple.org";
     // The full structure can be obtained with the function GetUserFieldsStructure
 
@@ -41,8 +41,8 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
 
     Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "b529cb66006e9f06006b12e400000001000...";
     Email = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;

@@ -24,9 +24,9 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-    Токен        = ПараметрыФункции["Telegram_Token"];
-    IDЧата       = ПараметрыФункции["Telegram_ChannelID"];
-    IDСообщения  = ПараметрыФункции["Telegram_ChannelMessageID"];
+    Токен        = "6129457865:AAFyzNYOAFbu...";
+    IDЧата       = "@testsichee";
+    IDСообщения  = "7649";
 
     Результат = OPI_Telegram.УдалитьСообщение(Токен, IDЧата, IDСообщения);
 ```

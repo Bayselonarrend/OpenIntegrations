@@ -27,14 +27,14 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    URL         = ПараметрыФункции["Bitrix24_URL"];
-    IDСообщения = ПараметрыФункции["Bitrix24_ChatMessageID"];
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDСообщения = "11572";
 
     Результат = OPI_Bitrix24.УдалитьСообщение(URL, IDСообщения);
 
-    URL            = ПараметрыФункции["Bitrix24_Domain"];
-    Токен          = ПараметрыФункции["Bitrix24_Token"];
-    IDСообщения    = ПараметрыФункции["Bitrix24_UserMessageID"];
+    URL            = "b24-ar17wx.bitrix24.by";
+    Токен          = "b529cb66006e9f06006b12e400000001000...";
+    IDСообщения    = "11574";
 
     Результат = OPI_Bitrix24.УдалитьСообщение(URL, IDСообщения, Токен);
 ```

@@ -31,15 +31,15 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    URL = ПараметрыФункции["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Тип = "date";
     Имя = "BIRTHDAY_FIELD";
 
     Результат = OPI_Bitrix24.ДобавитьПользовательскоеПолеЗадачи(URL, Тип, Имя);
 
-    URL   = ПараметрыФункции["Bitrix24_Domain"];
-    Токен = ПараметрыФункции["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "b529cb66006e9f06006b12e400000001000...";
 
     Тип        = "string";
     Имя        = "TEXT_FIELD";

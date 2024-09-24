@@ -13,7 +13,7 @@ sidebar_position: 3
   |-|-|-|-|
   | Text | --text | String | Tweet text |
   | GifsArray | --gifs | Array of String, BinaryData | Gif files array |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
@@ -24,13 +24,20 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  ImageArray = New Array;
-  ImageArray.Add("C:\1.gif");
-  ImageArray.Add("C:\2.gif");
-  
-  Response = OPI_Twitter.CreateGifTweet("Gifs", ImageArray, Parameters);
-  Response = OPI_Tools.JSONString(Response);
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    GIF  = OPI_TestDataRetrieval.GetBinary("GIF"); // URL, Binary or Path to file
+    Gif2 = OPI_TestDataRetrieval.GetBinary("GIF"); // URL, Binary or Path to file
+
+    GifsArray = New Array;
+    GifsArray.Add(GIF);
+    GifsArray.Add(Gif2);
+
+    Result = OPI_Twitter.CreateGifTweet(Text, GifsArray, Parameters);
+
+    Text   = "TestTweet" + String(New UUID);
+    Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);
 ```
 
 

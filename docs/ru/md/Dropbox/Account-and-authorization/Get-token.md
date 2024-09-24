@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    КлючПриложения   = ПараметрыФункции["Dropbox_Appkey"];
-    СекретПриложения = ПараметрыФункции["Dropbox_Appsecret"];
-    Код              = ПараметрыФункции["Dropbox_Code"];
+    КлючПриложения   = "oynqxds...";
+    СекретПриложения = "tk2oewn...";
+    Код              = "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8";
 
     Результат = OPI_Dropbox.ПолучитьТокен(КлючПриложения, СекретПриложения, Код);
 ```

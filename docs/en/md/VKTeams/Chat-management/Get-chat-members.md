@@ -27,8 +27,8 @@ Method at API documentation: [GET /chats/getMembers](https://teams.vk.com/botapi
 
 
 ```bsl title="Code example"
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = "001.3501506236.091...";
+    ChatID = "AoLI0egLWBSLR1Ngn2w";
 
     Result = OPI_VKTeams.GetChatMembers(Token, ChatID);
 ```

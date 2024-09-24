@@ -25,8 +25,8 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен     = ПараметрыФункции["YandexDisk_Token"];
-    Оригинал  = ПараметрыФункции["YandexDisk_OriginalFilePath"];
+    Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Оригинал  = "/f8c33ea2-094d-4e57-97b3-806e5c27bd5a.png";
     Путь      = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.СоздатьКопиюОбъекта(Токен, Оригинал, Путь, Истина);

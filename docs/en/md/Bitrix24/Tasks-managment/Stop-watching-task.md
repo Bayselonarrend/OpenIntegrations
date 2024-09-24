@@ -27,14 +27,14 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="Code example"
-    URL    = FunctionParameters["Bitrix24_URL"];
-    TaskID = FunctionParameters["Bitrix24_HookTaskID"];
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    TaskID = "1514";
 
     Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID);
 
-    URL    = FunctionParameters["Bitrix24_Domain"];
-    Token  = FunctionParameters["Bitrix24_Token"];
-    TaskID = FunctionParameters["Bitrix24_TaskID"];
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
+    TaskID = "1516";
 
     Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID, Token);
 ```

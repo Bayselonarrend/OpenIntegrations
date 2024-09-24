@@ -28,11 +28,11 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    Token     = FunctionParameters["Telegram_Token"];
-    ChatID    = FunctionParameters["Telegram_ChatID"];
-    ChannelID = FunctionParameters["Telegram_ChannelID"];
-    Text      = FunctionParameters["String"];
-    Document  = FunctionParameters["Document"];
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+    Document  = "https://openintegrations.dev/test_data/document.docx";
 
     DocumentPath = GetTempFileName("docx");
     CopyFile(Document, DocumentPath);
