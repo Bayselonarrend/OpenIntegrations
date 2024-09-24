@@ -16,8 +16,6 @@ pipeline {
         stage('Build') {
             steps {
                     bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/main.os'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/cli_testmaker.os'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/cli_testmaker_en.os'
                     bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/docs_main.os'
             }
         }
