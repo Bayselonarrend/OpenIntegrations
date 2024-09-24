@@ -50,5 +50,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-
+{
+ "result": "success",
+ "message": "your file(s) have been successfully uploaded"
+}
 ```
