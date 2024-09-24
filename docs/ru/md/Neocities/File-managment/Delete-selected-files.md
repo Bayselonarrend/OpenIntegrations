@@ -40,7 +40,7 @@ sidebar_position: 3
 
 ```sh title="Пример команды CLI"
     
-oint neocities УдалитьВыбранныеФайлы --token "7419cd51de4037f7..." --paths %paths%
+  oint neocities УдалитьВыбранныеФайлы --token "7419cd51de4037f7..." --paths %paths%
 
 ```
 

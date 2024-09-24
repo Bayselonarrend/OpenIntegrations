@@ -38,7 +38,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint neocities ПолучитьДанныеОСайте --token "7419cd51de4037f7..." --sitename %sitename%
+  oint neocities ПолучитьДанныеОСайте --token "7419cd51de4037f7..." --sitename %sitename%
 
 ```
 
