@@ -1,9 +1,9 @@
 ﻿    Parameters = GetVKParameters();
 
-    Image1       = "https://openintegrations.dev/test_data/picture.jpg";
-    Image2       = "https://openintegrations.dev/test_data/picture2.jpg";
-    PropVariant1 = "2239";
-    PropVariant2 = "2240";
+    Image1       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image2       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    PropVariant1 = "2410";
+    PropVariant2 = "2411";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);
@@ -30,7 +30,7 @@
 
     Result = OPI_VK.AddProduct(Product, , Parameters);
 
-    Check_VKProduct(Result);
+    OPI_TestDataRetrieval.Check_VKProduct(Result);
 
     ProductID = Result["response"]["market_item_id"];
     OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID2", ProductID);
@@ -41,7 +41,7 @@
 
     Result = OPI_VK.AddProduct(Product, , Parameters);
 
-    Check_VKProduct(Result);
+    OPI_TestDataRetrieval.Check_VKProduct(Result);
 
     ProductID = Result["response"]["market_item_id"];
     OPI_TestDataRetrieval.WriteParameter("VK_MarketItemID3", ProductID);

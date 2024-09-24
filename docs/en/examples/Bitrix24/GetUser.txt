@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    UserID = "260";
+    UserID = "443";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b529cb66006e9f06006b12e400000001000...";
-    UserID = "262";
+    Token  = "4f33ef66006e9f06006b12e400000001000...";
+    UserID = "445";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID, Token);

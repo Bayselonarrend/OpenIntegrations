@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="c8f0d0dd-27b1-4c84-9874-a0adeb256793">
+  <name>OPI_ТестыCLI</name>
+  <synonym>
+    <key>ru</key>
+    <value>Тесты CLI</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

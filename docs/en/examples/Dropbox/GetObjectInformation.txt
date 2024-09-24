@@ -1,4 +1,4 @@
 ﻿    Path  = "/New/pic.png";
-    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Token = "sl.B9UkyV2zUTP1LLTzgy6XcG5j_RdnQh84LmpC70BXg5rw9eXyYb0F7XGDXMiLrjc69YlZIFZqEi...";
 
     Result = OPI_Dropbox.GetObjectInformation(Token, Path, True);
