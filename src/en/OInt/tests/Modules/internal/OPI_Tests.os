@@ -9918,9 +9918,10 @@ Procedure Bitrix24_ChangeChatColor(FunctionParameters)
 
     Check_BitrixTrue(Result); // SKIP
 
-    URL    = FunctionParameters["Bitrix24_Domain"];
-    Token  = FunctionParameters["Bitrix24_Token"];
-    ChatID = FunctionParameters["Bitrix24_ChatID"];
+    OPI_Tools.Pause(10); // SKIP
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Color = "PURPLE";
 

@@ -46,5 +46,8 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 ```
 
 ```json title="Result"
-
+{
+ "errors": 0,
+ "items": []
+}
 ```
