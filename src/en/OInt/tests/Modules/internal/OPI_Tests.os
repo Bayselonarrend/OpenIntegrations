@@ -3048,6 +3048,7 @@ Procedure NC_FilesManagment() Export
     Neocities_UploadFiles(TestParameters);
     Neocities_GetFilesList(TestParameters);
     Neocities_DeleteSelectedFiles(TestParameters);
+    Neocities_SynchronizeFolders(TestParameters);
 
 EndProcedure
 
@@ -4057,6 +4058,13 @@ Procedure Check_NCFolderFiles(Val Result, Val Count)
 
     OPI_TestDataRetrieval.ExpectsThat(Result["result"]).Равно("success");
     OPI_TestDataRetrieval.ExpectsThat(Result["files"].Count()).Равно(Count);
+
+EndProcedure
+
+Procedure Check_NCSync(Val Result)
+
+    OPI_TestDataRetrieval.ExpectsThat(Result["errors"]).Равно(0);
+    OPI_TestDataRetrieval.ExpectsThat(Result["items"].Count()).Равно(0);
 
 EndProcedure
 
@@ -13222,6 +13230,23 @@ Procedure Neocities_GetToken(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Neocities");
 
     Check_NCSuccess(Result);
+
+EndProcedure
+
+Procedure Neocities_SynchronizeFolders(FunctionParameters)
+
+    Token = FunctionParameters["NC_Token"];
+
+    LocalFolder  = "C:\test_site";
+    RemoteFolder = "test";
+
+    Result = OPI_Neocities.SynchronizeFolders(Token, LocalFolder, RemoteFolder);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SynchronizeFolders", "Neocities");
+
+    Check_NCSync(Result);
 
 EndProcedure
 
