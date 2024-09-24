@@ -17,27 +17,31 @@
   --docusaurus-highlighted-code-line-bg: #004943;;
 }
 
-
 p{
   font-weight: lighter;
 }
-.main-wrapper,.navbar{
-  
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
 
-  backdrop-filter: blur( 11px );
-  -webkit-backdrop-filter: blur( 11px );
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.096);
-  margin: 20px;
-}
+@media (min-width: 996px) {
 
-.main-wrapper{
-  margin-top: 0px;
-  padding: 20px;
-  padding-top: 5px;
-  
+  .main-wrapper,.navbar{
+    
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+
+    backdrop-filter: blur( 11px );
+    -webkit-backdrop-filter: blur( 11px );
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.096);
+    margin: 20px;
+  }
+
+  .main-wrapper{
+    margin-top: 0px;
+    padding: 20px;
+    padding-top: 5px;
+    
+  }
+
 }
 
 .footer{
@@ -85,7 +89,6 @@ a:hover, .navbar__title:hover{
 .navbar__title{
   font-weight: 510;
 }
-
 
 li > a.menu__link {
   justify-content: flex-start;
