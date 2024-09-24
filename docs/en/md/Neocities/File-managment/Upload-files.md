@@ -50,5 +50,8 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 ```
 
 ```json title="Result"
-
+{
+ "result": "success",
+ "message": "your file(s) have been successfully uploaded"
+}
 ```

@@ -43,5 +43,16 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 ```
 
 ```json title="Result"
-
+{
+ "result": "success",
+ "info": {
+  "sitename": "opi-test",
+  "views": 7230,
+  "hits": 13957,
+  "created_at": "Thu, 20 Jun 2024 07:28:29 -0000",
+  "last_updated": "Tue, 24 Sep 2024 12:13:04 -0000",
+  "domain": null,
+  "tags": []
+ }
+}
 ```

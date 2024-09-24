@@ -308,28 +308,20 @@ EndFunction
 
 Function GetBinary(Parameter) Export
 
-    Path           = DataFilePath();
-    LocalParameter = Parameter + "Local";
-    MainValue      = GetValueFromFile(Parameter, Path);
-    LocalValue     = GetValueFromFile(LocalParameter, Path);
-
-    LocalFile = New File(LocalValue);
-
-    If LocalFile.Exist() Then
-        Value = New BinaryData(LocalValue);
-    Else
-        Value = MainValue;
-    EndIf;
+    Path  = DataFilePath();
+    Value = GetValueFromFile(Parameter, Path);
 
     If TypeOf(Value) = Type("String") Then
-        Value        = GetFilePath(Value, LocalParameter);
+
+        Value = GetFilePath(Value);
+
     EndIf;
 
     Return Value;
 
 EndFunction
 
-Function GetFilePath(Val Path, LocalParameter, Val SaveLocally = True) Export
+Function GetFilePath(Val Path) Export
 
     If StrFind(Path, "http") > 0 Or StrFind(Path, "www") > 0 Then
 
@@ -338,11 +330,7 @@ Function GetFilePath(Val Path, LocalParameter, Val SaveLocally = True) Export
         Path   = TFN;
         Binary = New BinaryData(Path);
 
-        If SaveLocally Then
-            WriteParameter(LocalParameter, TFN);
-        Else
-            DeleteFiles(TFN);
-        EndIf;
+        DeleteFiles(TFN);
 
     Else
 

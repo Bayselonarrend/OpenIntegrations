@@ -89,14 +89,26 @@ Function GetToken(Val Login, Val Password) Export
     OPI_TypeConversion.GetLine(Login);
     OPI_TypeConversion.GetLine(Password);
 
-    SecureConnection = New OpenSSLSecureConnection();
-    SafeConnection   = New HTTPConnection("neocities.org",443, Login, Password, , , SecureConnection);
+    URL = "neocities.org";
+
+    Try
+
+        SecureConnection = New OpenSSLSecureConnection();
+        SafeConnection   = New HTTPConnection(URL, 443, Login, Password, , , SecureConnection);
+
+    Except
+
+        URL            = "https://" + URL;
+        SafeConnection = New HTTPConnection(URL, 443, Login, Password);
+
+    EndTry;
 
     Response = SafeConnection.Get(New HTTPRequest("/api/key"));
 
     JSONReader = New JSONReader();
     JSONReader.OpenStream(Response.GetBodyAsStream());
-    Response   = ReadJSON(JSONReader);
+
+    Response = ReadJSON(JSONReader);
 
     Return Response;
 
