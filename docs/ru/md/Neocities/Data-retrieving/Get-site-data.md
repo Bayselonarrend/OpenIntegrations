@@ -43,5 +43,16 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-
+{
+ "result": "success",
+ "info": {
+  "sitename": "opi-test",
+  "views": 7270,
+  "hits": 14092,
+  "created_at": "Thu, 20 Jun 2024 07:28:29 -0000",
+  "last_updated": "Tue, 24 Sep 2024 14:23:20 -0000",
+  "domain": null,
+  "tags": []
+ }
+}
 ```
