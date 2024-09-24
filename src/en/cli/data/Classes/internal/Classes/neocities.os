@@ -99,8 +99,8 @@
     NewLine.Модуль      = "OPI_Neocities";
     NewLine.Метод       = "UploadFiles";
     NewLine.МетодПоиска = "UPLOADFILES";
-    NewLine.Параметр    = "--File";
-    NewLine.Описание    = "files";
+    NewLine.Параметр    = "--files";
+    NewLine.Описание    = "Files: Key > destination path on NC, Value > file";
     NewLine.Область     = "File managment";
 
 

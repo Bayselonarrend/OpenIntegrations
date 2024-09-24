@@ -144,7 +144,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Auth token - token
-// FileMapping - Map Of KeyAndValue - Files: Key > destination path on NC, Value - File - files
+// FileMapping - Map Of KeyAndValue - Files: Key > destination path on NC, Value > file - files
 // Singly - Boolean - True > sends files in separate requests - singly
 //
 // Returns:
