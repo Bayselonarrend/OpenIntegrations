@@ -4,7 +4,7 @@
 
 # Open Integrations Package
 ![Версия](https://img.shields.io/badge/1C_version-8.3.9-yellow)
-[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.neocities.org/badges/2/736878759.json)](https://openyellow.notion.site/openyellow/24727888daa641af95514b46bee4d6f2?p=f78cea2066114067ab9069f06206219d&amp;pm=s)
+[![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/736878759.json)](https://openyellow.org/grid?data=top&repo=736878759)
 
 <br>
 An 1C/OneScript and CLI open-source toolkit for integrating with APIs of popular online services <br>
