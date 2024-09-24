@@ -50,7 +50,10 @@ p{
 
 .hero{
   background-color: transparent;
-  padding-top: 10px;
+}
+
+.heroBanner{
+  margin-top: 10px;
 }
 
 
