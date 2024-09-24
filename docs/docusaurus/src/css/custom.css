@@ -95,7 +95,7 @@ li > a.menu__link {
 .Notion a::before, .GoogleCalendar a::before, .GoogleDrive a::before, .GoogleSheets a::before, 
 .Slack a::before, .YandexDisk a::before, .Dropbox a::before, .Bitrix24 a::before, .Messenger a::before,
 .Social a::before, .Database a::before, .Folder a::before, .Calendar a::before, .CRM a::before, .Commerce a::before,
-.VKTeams a::before, .Ozon a::before, .Start a::before{
+.VKTeams a::before, .Ozon a::before, .Neocities a::before, .Start a::before, .Other a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -160,6 +160,10 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/Ozon.png);
 }
 
+.Neocities > div > a::before{
+  content: url(../../static/img/APIs/small/Neocities.png);
+}
+
 .Messenger > div > a::before{
   content: url(../../static/img/Categories/chat.png);
 }
@@ -190,6 +194,10 @@ li > a.menu__link {
 
 .Start > div > a::before{
   content: url(../../static/img/Categories/welcome.png);
+}
+
+.Other > div > a::before{
+  content: url(../../static/img/Categories/other.png);
 }
 
 /* CSS */
