@@ -24,8 +24,8 @@ sidebar_position: 14
 
 
 ```bsl title="Пример кода"
-    Версия    = ПараметрыФункции["Dropbox_FileRevision"];
-    Токен     = ПараметрыФункции["Dropbox_Token"];
+    Версия    = "62080dd30eb20bd841553";
+    Токен     = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
     Путь      = "/New/pic.png";
 
     Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);

@@ -34,7 +34,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
     Name  = "New stage";
     Color = "0026FF";
 
-    URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, 6);
 
@@ -43,8 +43,8 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
     Name  = "New stage 2";
     Color = "0026FF";
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "b529cb66006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, PrevStageID, , True, Token);
 ```

@@ -12,7 +12,7 @@ sidebar_position: 1
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
   | Text | --text | String | Tweet text |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
@@ -23,9 +23,10 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Response = OPI_Twitter.CreateTextTweet("Regular text tweet", Parameters);
-  Response = OPI_Tools.JSONString(Response);
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Result = OPI_Twitter.CreateTextTweet(Text, Parameters);
 ```
 
 

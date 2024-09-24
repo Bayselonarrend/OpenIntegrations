@@ -13,7 +13,7 @@ sidebar_position: 2
   |-|-|-|-|
   | Text | --text | String | Tweet text |
   | ImageArray | --pictures | Array of String, BinaryData | Image files array |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
@@ -24,13 +24,20 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  ImageArray = New Array;
-  ImageArray.Add("C:\logo.png");
-  ImageArray.Add("C:\logo_long.png");
-  
-  Response = OPI_Twitter.CreateImageTweet("Alpaca", ImageArray, Parameters);
-  Response = OPI_Tools.JSONString(Response);
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Image  = OPI_TestDataRetrieval.GetBinary("Picture"); // URL, Binary or Path to file
+    Image2 = OPI_TestDataRetrieval.GetBinary("Picture2"); // URL, Binary or Path to file
+
+    ImageArray = New Array;
+    ImageArray.Add(Image);
+    ImageArray.Add(Image2);
+
+    Result = OPI_Twitter.CreateImageTweet(Text, ImageArray, Parameters);
+
+    Text   = "TestTweet" + String(New UUID);
+    Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters);
 ```
 
 

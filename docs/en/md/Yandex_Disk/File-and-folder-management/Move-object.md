@@ -25,8 +25,8 @@ sidebar_position: 9
 
 
 ```bsl title="Code example"
-    Token    = FunctionParameters["YandexDisk_Token"];
-    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+    Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Original = "/f8c33ea2-094d-4e57-97b3-806e5c27bd5a.png";
     Path     = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.MoveObject(Token, Original, Path, True);

@@ -36,12 +36,12 @@ sidebar_position: 9
 
 
 ```bsl title="Пример кода"
-    IDКлиента = ПараметрыФункции["Ozon_ClientID"];
-    КлючAPI   = ПараметрыФункции["Ozon_ApiKey"];
-    IDТовара  = ПараметрыФункции["Ozon_ProductID"];
+    IDКлиента = "2128753";
+    КлючAPI   = "7cc90d26-33e4-499b...";
+    IDТовара  = "";
 
-    Картинка1 = ПараметрыФункции["Picture"];
-    Картинка2 = ПараметрыФункции["Picture2"];
+    Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";
+    Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg";
 
     МаркетинговыйЦвет = "GREEN";
 

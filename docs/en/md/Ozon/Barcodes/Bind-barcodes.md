@@ -27,8 +27,8 @@ Method at API documentation: [post /v1/barcode/add](https://docs.ozon.ru/api/sel
 
 
 ```bsl title="Code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
 
     BarcodesMap = New Map;
     BarcodesMap.Insert(1626044001, "112233");

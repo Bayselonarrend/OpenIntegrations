@@ -26,8 +26,8 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Путь      = "/New/pic.png";
-    Токен     = ПараметрыФункции["Dropbox_Token"];
-    Картинка  = ПараметрыФункции["Picture"];
+    Токен     = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);

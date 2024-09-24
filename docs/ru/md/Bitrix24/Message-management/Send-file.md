@@ -29,9 +29,9 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    URL         = ПараметрыФункции["Bitrix24_URL"];
-    IDЧата      = ПараметрыФункции["Bitrix24_HookChatID"];
-    Файл        = ПараметрыФункции["Document"]; // Двоичные данные, URL или путь к файлу
+    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDЧата      = "642";
+    Файл        = "https://openintegrations.dev/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
     Описание    = "Очень важный файл";
 
     Каталог    = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата);
@@ -42,9 +42,9 @@ sidebar_position: 5
 
     Результат = OPI_Bitrix24.ОтправитьФайл(URL, IDЧата, IDФайла, Описание);
 
-    URL    = ПараметрыФункции["Bitrix24_Domain"];
-    Токен  = ПараметрыФункции["Bitrix24_Token"];
-    IDЧата = ПараметрыФункции["Bitrix24_ChatID"];
+    URL    = "b24-ar17wx.bitrix24.by";
+    Токен  = "b529cb66006e9f06006b12e400000001000...";
+    IDЧата = "644";
 
     Каталог    = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата, Токен);
     IDКаталога = Каталог["result"]["ID"];

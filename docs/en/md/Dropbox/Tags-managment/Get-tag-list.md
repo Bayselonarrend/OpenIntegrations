@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Token = FunctionParameters["Dropbox_Token"];
+    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
 
     PathsArray = New Array;
     PathsArray.Add("/New/Dogs.mp3");

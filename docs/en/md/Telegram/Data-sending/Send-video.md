@@ -27,11 +27,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token     = FunctionParameters["Telegram_Token"];
-    ChatID    = FunctionParameters["Telegram_ChatID"];
-    ChannelID = FunctionParameters["Telegram_ChannelID"];
-    Text      = FunctionParameters["String"];
-    Video     = FunctionParameters["Video"];
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+    Video     = "https://openintegrations.dev/test_data/video.mp4";
 
     VideoPath = GetTempFileName("mp4");
     CopyFile(Video, VideoPath);

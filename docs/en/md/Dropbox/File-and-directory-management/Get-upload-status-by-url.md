@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-    Token  = FunctionParameters["Dropbox_Token"];
-    WorkID = FunctionParameters["Dropbox_Job"];
+    Token  = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    WorkID = "sZ-0JstjDkYAAAAAAAAAAQ";
     Status = "in_progress";
 
     WHile Status = "in_progress" Do
