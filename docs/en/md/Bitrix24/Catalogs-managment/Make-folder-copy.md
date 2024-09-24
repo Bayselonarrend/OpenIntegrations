@@ -43,7 +43,7 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
 
     Result = OPI_Bitrix24.MakeFolderCopy(URL, FolderID, DestinationID, Token);
 
-    Check_BitrixObject(Result);
+    OPI_TestDataRetrieval.Check_BitrixObject(Result);
 ```
 
 
