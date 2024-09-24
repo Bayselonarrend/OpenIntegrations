@@ -45,5 +45,8 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-
+{
+ "result": "success",
+ "message": "file(s) have been deleted"
+}
 ```

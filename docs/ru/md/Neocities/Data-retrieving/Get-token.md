@@ -41,5 +41,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-
+{
+ "result": "success",
+ "api_key": "***"
+}
 ```

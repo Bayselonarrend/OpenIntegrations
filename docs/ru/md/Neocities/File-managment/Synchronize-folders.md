@@ -46,5 +46,8 @@ sidebar_position: 5
 ```
 
 ```json title="Результат"
-
+{
+ "errors": 0,
+ "items": []
+}
 ```
