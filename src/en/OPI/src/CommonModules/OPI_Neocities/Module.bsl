@@ -106,7 +106,7 @@ Function GetToken(Val Login, Val Password) Export
     Response = SafeConnection.Get(New HTTPRequest("/api/key"));
 
     JSONReader = New JSONReader();
-    JSONReader.OpenStream(Response.GetBodyAsStream());
+    JSONReader.SetString(Response.GetBodyAsString());
 
     Response = ReadJSON(JSONReader);
 
