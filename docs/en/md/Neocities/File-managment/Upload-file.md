@@ -38,7 +38,7 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
 ```sh title="CLI command example"
     
-oint neocities UploadFile --token "7419cd51de4037f7..." --path %path% --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+  oint neocities UploadFile --token "7419cd51de4037f7..." --path %path% --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
 
 ```
 

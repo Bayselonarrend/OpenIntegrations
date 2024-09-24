@@ -41,7 +41,7 @@ sidebar_position: 5
 
 ```sh title="Пример команды CLI"
     
-oint neocities СинхронизироватьКаталоги --token "7419cd51de4037f7..." --local %local% --remote %remote%
+  oint neocities СинхронизироватьКаталоги --token "7419cd51de4037f7..." --local %local% --remote %remote%
 
 ```
 

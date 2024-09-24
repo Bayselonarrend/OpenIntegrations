@@ -45,7 +45,7 @@ sidebar_position: 2
 
 ```sh title="Пример команды CLI"
     
-oint neocities ЗагрузитьФайлы --token "7419cd51de4037f7..." --files %files% --singly %singly%
+  oint neocities ЗагрузитьФайлы --token "7419cd51de4037f7..." --files %files% --singly %singly%
 
 ```
 

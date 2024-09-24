@@ -45,7 +45,7 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
 ```sh title="CLI command example"
     
-oint neocities UploadFiles --token "7419cd51de4037f7..." --files %files% --singly %singly%
+  oint neocities UploadFiles --token "7419cd51de4037f7..." --files %files% --singly %singly%
 
 ```
 

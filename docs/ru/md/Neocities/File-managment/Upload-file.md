@@ -38,7 +38,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint neocities ЗагрузитьФайл --token "7419cd51de4037f7..." --path %path% --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+  oint neocities ЗагрузитьФайл --token "7419cd51de4037f7..." --path %path% --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
 
 ```
 
