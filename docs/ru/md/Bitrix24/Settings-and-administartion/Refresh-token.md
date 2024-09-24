@@ -24,9 +24,9 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    ClientID     = ПараметрыФункции["Bitrix24_ClientID"];
-    ClientSecret = ПараметрыФункции["Bitrix24_ClientSecret"];
-    Refresh      = ПараметрыФункции["Bitrix24_Refresh"];
+    ClientID     = "local.6667fc928a50a9.70414732";
+    ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
+    Refresh      = "a5a8f266006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ОбновитьТокен(ClientID, ClientSecret, Refresh);
 ```

@@ -27,9 +27,9 @@ Method at API documentation: [post /v1/product/import/prices](https://docs.ozon.
 
 
 ```bsl title="Code example"
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey    = FunctionParameters["Ozon_ApiKey"];
-    ProductID = FunctionParameters["Ozon_ProductID"];
+    ClientID  = "2128753";
+    APIKey    = "7cc90d26-33e4-499b...";
+    ProductID = "";
 
     Prices = New Structure;
     Prices.Insert("auto_action_enabled"   , "DISABLED");

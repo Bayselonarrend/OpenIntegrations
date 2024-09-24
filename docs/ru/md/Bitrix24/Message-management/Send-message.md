@@ -29,8 +29,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    URL      = ПараметрыФункции["Bitrix24_URL"];
-    IDЧата   = "chat" + ПараметрыФункции["Bitrix24_HookChatID"];
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDЧата   = "chat" + "642";
     Текст    = "Текст сообщения";
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -41,8 +41,8 @@ sidebar_position: 1
 
     Результат = OPI_Bitrix24.ОтправитьСообщение(URL, IDЧата, Текст, Вложения);
 
-    URL            = ПараметрыФункции["Bitrix24_Domain"];
-    Токен          = ПараметрыФункции["Bitrix24_Token"];
+    URL            = "b24-ar17wx.bitrix24.by";
+    Токен          = "b529cb66006e9f06006b12e400000001000...";
     IDПользователя = 10;
 
     Результат = OPI_Bitrix24.ОтправитьСообщение(URL, IDПользователя, Текст, , Токен);

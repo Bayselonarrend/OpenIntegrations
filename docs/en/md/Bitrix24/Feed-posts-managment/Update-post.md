@@ -33,19 +33,19 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```bsl title="Code example"
     Text   = "New post text";
     Title  = "New post title";
-    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    PostID = FunctionParameters["Bitrix24_PostID"];
+    Image1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    PostID = "604";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
 
-    URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
-    URL    = FunctionParameters["Bitrix24_Domain"];
-    Token  = FunctionParameters["Bitrix24_Token"];
-    PostID = FunctionParameters["Bitrix24_HookPostID"];
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
+    PostID = "602";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```

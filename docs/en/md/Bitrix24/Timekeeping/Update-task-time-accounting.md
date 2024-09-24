@@ -31,18 +31,18 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
 
 
 ```bsl title="Code example"
-    URL      = FunctionParameters["Bitrix24_URL"];
-    TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
-    RecordID = FunctionParameters["Bitrix24_HookTimeID"];
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    TaskID   = "1524";
+    RecordID = "482";
 
     Text = "The text I forgot last time";
     Time = 4800;
 
     Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
 
-    URL      = FunctionParameters["Bitrix24_Domain"];
-    Token    = FunctionParameters["Bitrix24_Token"];
-    RecordID = FunctionParameters["Bitrix24_TimeID"];
+    URL      = "b24-ar17wx.bitrix24.by";
+    Token    = "b529cb66006e9f06006b12e400000001000...";
+    RecordID = "484";
 
     Text      = "New time record";
     Time      = 4800;

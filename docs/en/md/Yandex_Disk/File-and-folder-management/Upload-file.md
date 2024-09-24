@@ -28,8 +28,8 @@ sidebar_position: 10
     Path1 = "/" + String(New UUID) + ".png";
     Path2 = "/" + String(New UUID) + ".png";
 
-    Token = FunctionParameters["YandexDisk_Token"];
-    Image = FunctionParameters["Picture"]; // URL
+    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL
 
     TFN = GetTempFileName("png"); // Path
     CopyFile(Image, TFN);

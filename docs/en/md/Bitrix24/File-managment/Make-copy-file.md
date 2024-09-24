@@ -28,17 +28,17 @@ Method at API documentation: [disk.file.copyto](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    FolderID = FunctionParameters["Bitrix24_HookFolderID"];
-    FileID   = FunctionParameters["Bitrix24_FileID"];
+    FolderID = "7584";
+    FileID   = "7580";
 
-    URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID);
 
-    FolderID = FunctionParameters["Bitrix24_FolderID"];
+    FolderID = "7586";
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "b529cb66006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MakeCopyFile(URL, FileID, FolderID, Token);
 

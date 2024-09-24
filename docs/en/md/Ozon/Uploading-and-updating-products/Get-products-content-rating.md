@@ -27,8 +27,8 @@ Method at API documentation: [post /v1/product/rating-by-sku](https://docs.ozon.
 
 
 ```bsl title="Code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
     SKU      = 1626044001;
 
     Result = OPI_Ozon.GetProductsContentRating(ClientID, APIKey, SKU);

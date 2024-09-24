@@ -27,10 +27,10 @@ Method at API documentation: [POST ​/chats​/avatar​/set](https://teams.vk.
 
 
 ```bsl title="Code example"
-    Token  = FunctionParameters["VkTeams_Token"];
-    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Token  = "001.3501506236.091...";
+    ChatID = "AoLI0egLWBSLR1Ngn2w";
 
-    File     = FunctionParameters["Picture3"]; // URL
+    File     = "https://openintegrations.dev/test_data/spy2.png"; // URL
     FilePath = GetTempFileName("png"); // Path
 
     CopyFile(File, FilePath);

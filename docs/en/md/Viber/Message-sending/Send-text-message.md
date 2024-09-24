@@ -28,8 +28,8 @@ sidebar_position: 1
 ```bsl title="Code example"
     Text = "TestMessage";
 
-    UserID           = FunctionParameters["Viber_UserID"];
-    Token            = FunctionParameters["Viber_Token"];
+    UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
+    Token            = "523b5b25ed27e6ec-fdf013e4...";
     SendingToChannel = False;
 
     ButtonArray = New Array;
@@ -41,8 +41,8 @@ sidebar_position: 1
 
     Result = OPI_Viber.SendTextMessage(Token, Text, UserID, SendingToChannel, Keyboard);
 
-    UserID           = FunctionParameters["Viber_ChannelAdminID"];
-    Token            = FunctionParameters["Viber_ChannelToken"];
+    UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
+    Token            = "523b58ba82afffaa-7ef3b426...";
     SendingToChannel = True;
 
     Result = OPI_Viber.SendTextMessage(Token, Text, UserID, SendingToChannel, Keyboard);

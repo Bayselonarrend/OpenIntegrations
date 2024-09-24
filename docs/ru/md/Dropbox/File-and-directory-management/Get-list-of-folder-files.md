@@ -26,7 +26,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Путь      = "/New";
-    Токен     = ПараметрыФункции["Dropbox_Token"];
+    Токен     = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
 
     Результат = OPI_Dropbox.ПолучитьСписокФайловПапки(Токен, Путь, Истина);
 ```

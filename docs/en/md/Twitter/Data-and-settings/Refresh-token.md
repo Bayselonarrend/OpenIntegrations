@@ -11,7 +11,7 @@ sidebar_position: 3
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
@@ -22,12 +22,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Response = OPI_Twitter.RefreshToken(Parameters);
-  Constants.TwitterToken.Set(Response["access_token"]);
-  Constants.TwitterRefresh.Set(Response["refresh_token"]);
-  
-  Response = OPI_Tools.JSONString(Response);
+    Parameters = GetTwitterAuthData();
+    Result     = OPI_Twitter.RefreshToken(Parameters);
 ```
 
 

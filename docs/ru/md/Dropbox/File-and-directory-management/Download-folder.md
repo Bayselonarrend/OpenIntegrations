@@ -23,7 +23,7 @@ sidebar_position: 12
 
 
 ```bsl title="Пример кода"
-    Токен     = ПараметрыФункции["Dropbox_Token"];
+    Токен     = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
     Путь      = "/New";
 
     Результат = OPI_Dropbox.СкачатьПапку(Токен, Путь);

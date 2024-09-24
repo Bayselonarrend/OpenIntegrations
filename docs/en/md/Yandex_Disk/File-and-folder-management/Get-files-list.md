@@ -26,7 +26,7 @@ Gets a list of files with or without filtering by type List of available types: 
 
 
 ```bsl title="Code example"
-    Token           = FunctionParameters["YandexDisk_Token"];
+    Token           = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
     Count           = 2;
     OffsetFromStart = 1;
     FilterByType    = "image";

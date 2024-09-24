@@ -27,14 +27,14 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    IDНовости = ПараметрыФункции["Bitrix24_HookPostID"];
-    URL       = ПараметрыФункции["Bitrix24_URL"];
+    IDНовости = "602";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Результат = OPI_Bitrix24.УдалитьНовость(URL, IDНовости);
 
-    IDНовости = ПараметрыФункции["Bitrix24_PostID"];
-    URL       = ПараметрыФункции["Bitrix24_Domain"];
-    Токен     = ПараметрыФункции["Bitrix24_Token"];
+    IDНовости = "604";
+    URL       = "b24-ar17wx.bitrix24.by";
+    Токен     = "b529cb66006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.УдалитьНовость(URL, IDНовости, Токен);
 ```

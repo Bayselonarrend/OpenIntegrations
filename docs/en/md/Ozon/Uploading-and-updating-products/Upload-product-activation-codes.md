@@ -32,9 +32,9 @@ The activation code is linked to the digital product card
 
 
 ```bsl title="Code example"
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey    = FunctionParameters["Ozon_ApiKey"];
-    ProductID = FunctionParameters["Ozon_ProductID"];
+    ClientID  = "2128753";
+    APIKey    = "7cc90d26-33e4-499b...";
+    ProductID = "";
 
     Codes = New Array;
     Codes.Add("11111111");

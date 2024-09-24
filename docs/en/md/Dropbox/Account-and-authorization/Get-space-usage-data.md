@@ -22,7 +22,7 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    Token = FunctionParameters["Dropbox_Token"];
+    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
 
     Result = OPI_Dropbox.GetSpaceUsageData(Token);
 ```

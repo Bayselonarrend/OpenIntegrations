@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDКанала    = "@testsichee";
 
     Результат  = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDКанала);
 ```

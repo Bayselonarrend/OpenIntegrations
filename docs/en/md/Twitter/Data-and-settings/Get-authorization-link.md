@@ -11,7 +11,7 @@ sidebar_position: 1
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  String - URL for browser transition
@@ -22,8 +22,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Response = OPI_Twitter.GetAuthorizationLink(Parameters);
+    Parameters = GetTwitterAuthData();
+    Result     = OPI_Twitter.GetAuthorizationLink(Parameters);
 ```
 
 

@@ -13,7 +13,7 @@ sidebar_position: 4
   |-|-|-|-|
   | Text | --text | String | Tweet text |
   | VideosArray | --videos | Array of String, BinaryData | Video files array |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
@@ -24,13 +24,20 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  ImageArray = New Array;
-  ImageArray.Add("C:\1.mp4");
-  ImageArray.Add("C:\2.mp4");
-  
-  Response = OPI_Twitter.CreateVideoTweet("Nature", ImageArray, Parameters);
-  Response = OPI_Tools.JSONString(Response);
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Video  = OPI_TestDataRetrieval.GetBinary("Video"); // URL, Binary or Path to file
+    Video2 = OPI_TestDataRetrieval.GetBinary("Video"); // URL, Binary or Path to file
+
+    VideosArray = New Array;
+    VideosArray.Add(Video);
+    VideosArray.Add(Video2);
+
+    Result = OPI_Twitter.CreateVideoTweet(Text, VideosArray, Parameters);
+
+    Text   = "TestTweet" + String(New UUID);
+    Result = OPI_Twitter.CreateVideoTweet(Text, Video, Parameters);
 ```
 
 
