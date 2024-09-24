@@ -36,7 +36,7 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
 ```sh title="CLI command example"
     
-oint neocities GetToken --login "2athenaeum" --password "Rit..."
+  oint neocities GetToken --login "2athenaeum" --password "Rit..."
 
 ```
 

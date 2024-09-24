@@ -41,7 +41,7 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
 ```sh title="CLI command example"
     
-oint neocities SynchronizeFolders --token "7419cd51de4037f7..." --local %local% --remote %remote%
+  oint neocities SynchronizeFolders --token "7419cd51de4037f7..." --local %local% --remote %remote%
 
 ```
 
