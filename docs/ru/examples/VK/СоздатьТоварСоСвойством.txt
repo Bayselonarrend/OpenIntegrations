@@ -1,9 +1,9 @@
 ﻿    Параметры = ПолучитьПараметрыВК();
 
-    Картинка1        = "https://openintegrations.dev/test_data/picture.jpg";
-    Картинка2        = "https://openintegrations.dev/test_data/picture2.jpg";
-    ВариантСвойства1 = "2239";
-    ВариантСвойства2 = "2240";
+    Картинка1        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка2        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    ВариантСвойства1 = "2410";
+    ВариантСвойства2 = "2411";
 
     МассивКартинок   = Новый Массив;
     МассивКартинок.Добавить(Картинка1);
@@ -30,7 +30,7 @@
 
     Результат = OPI_VK.ДобавитьТовар(Товар, , Параметры);
 
-    Проверка_ВКТовар(Результат);
+    OPI_ПолучениеДанныхТестов.Проверка_ВКТовар(Результат);
 
     ИДТовара  = Результат["response"]["market_item_id"];
     OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("VK_MarketItemID2", ИДТовара);
@@ -41,7 +41,7 @@
 
     Результат  = OPI_VK.ДобавитьТовар(Товар, , Параметры);
 
-    Проверка_ВКТовар(Результат);
+    OPI_ПолучениеДанныхТестов.Проверка_ВКТовар(Результат);
 
     ИДТовара  = Результат["response"]["market_item_id"];
     OPI_ПолучениеДанныхТестов.ЗаписатьПараметр("VK_MarketItemID3", ИДТовара);

@@ -294,6 +294,7 @@ Function SynchronizeFolders(Val Token, Val LocalFolder, Val RemoteFolder = "") E
     RemoteFiles = GetFilesList(Token, RemoteFolder);
 
     If Not RemoteFiles["result"] = "success" Then
+        //@skip-check constructor-function-return-section
         Return RemoteFiles;
     EndIf;
 
@@ -357,7 +358,7 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
     If Not ArrayOfDeletions.Count() = 0 Then
 
-        Response = OPI_Neocities.DeleteSelectedFiles(Token, ArrayOfDeletions);
+        Response = DeleteSelectedFiles(Token, ArrayOfDeletions);
 
         If Not Response["result"] = "success" Then
             ErrorsArray.Add(Response);
@@ -375,7 +376,7 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
     For Each LocalPath In LocalPaths Do
 
-        Response = OPI_Neocities.UploadFile(Token, LocalPath.Key, LocalPath.Value);
+        Response = UploadFile(Token, LocalPath.Key, LocalPath.Value);
 
         If Not Response["result"] = "success" Then
 
