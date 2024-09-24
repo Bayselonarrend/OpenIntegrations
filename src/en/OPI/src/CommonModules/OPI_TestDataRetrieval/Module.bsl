@@ -286,6 +286,30 @@ Function FormYAXTests() Export
 
 EndFunction
 
+Function FormYAXTestsCLI() Export
+
+    Module    = GetCommonModule("ЮТТесты");
+    Sections  = GetTestingSectionMapping();
+    TestTable = GetTestTable();
+
+    For Each Section In Sections Do
+
+        CurrentSection = Section.Key;
+        Filter         = New Structure("Section", CurrentSection);
+        SectionTests   = TestTable.FindRows(Filter);
+
+        Set = Module.ДобавитьТестовыйНабор("CLI_" + CurrentSection);
+
+        For Each Test In SectionTests Do
+            Set.ДобавитьСерверныйТест("CLI_" + Test.Method, Test.Synonym);
+        EndDo;
+
+    EndDo;
+
+    Return "";
+
+EndFunction
+
 Function FormAssertsTests() Export
 
     TestTable    = GetTestTable();
@@ -394,6 +418,1013 @@ Procedure WriteLog(Val Result, Val Method, Val Library = "") Export
 
 EndProcedure
 
+Procedure WriteLogCLI(Val Result, Val Method, Val Library = "") Export
+
+    WriteLog(Result, Method + " (CLI)");
+
+EndProcedure
+
+Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
+
+    ResultFile   = GetTempFileName();
+    LaunchString = "oint " + Library + " " + Method;
+
+    For Each Option In Options Do
+
+        CurrentValue = GetCLIFormedValue(Option.Value);
+
+        LaunchString = LaunchString
+            + " --"
+            + Option.Key
+            + " "
+            + CurrentValue;
+
+    EndDo;
+
+    RunApp(LaunchString + " --out """ + ResultFile + """", , True);
+
+    Try
+
+        JSONReader = New JSONReader();
+        JSONReader.OpenFile(ResultFile);
+        Result     = ReadJSON(JSONReader, True);
+        JSONReader.Close();
+
+        DeleteFiles(ResultFile);
+
+    Except
+
+        Result = New BinaryData(ResultFile);
+
+    EndTry;
+
+    Return Result;
+
+EndFunction
+
+#Region Checks
+
+Procedure Check_Empty(Val Result) Export
+
+    If Not Lower(String(Result)) = "null" Then
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_String(Val Result) Export
+    ExpectsThat(Result).ИмеетТип("String");
+EndProcedure
+
+Procedure Check_BinaryData(Val Result, Val Size = Undefined) Export
+
+    MinimumSize = 500000;
+
+    ExpectsThat(Result).ИмеетТип("BinaryData");
+
+    If Not Size = Undefined Then
+        ExpectsThat(Result.Size() >= Size).Равно(True);
+    Else
+        ExpectsThat(Result.Size() > MinimumSize).Равно(True);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_Array(Val Result, Val Count = Undefined) Export
+
+    ExpectsThat(Result).ИмеетТип("Array");
+
+    If Not Count = Undefined Then
+       ExpectsThat(Result).ИмеетДлину(Count);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_Map(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+EndProcedure
+
+Procedure Check_Structure(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+
+EndProcedure
+
+Procedure Check_TelegramTrue(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_TelegramBotInformation(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["username"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_TelegramArray(Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_TelegramWebhookSetup(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["description"]).Равно("Webhook was set");
+
+EndProcedure
+
+Procedure Check_TelegramWebhookDeletion(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["description"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_TelegramMessage(Val Result, Val Text) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["text"]).Равно(Text);
+
+EndProcedure
+
+Procedure Check_TelegramImage(Val Result, Val Text) Export
+
+    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_TelegramVideo(Val Result, Val Text) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["video"]["mime_type"]).Равно("video/mp4");
+
+EndProcedure
+
+Procedure Check_TelegramAudio(Val Result, Val Text) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["audio"]["mime_type"]).Равно("audio/mpeg");
+
+EndProcedure
+
+Procedure Check_TelegramDocument(Val Result, Val Text) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    ExpectsThat(Result["result"]["document"]).ИмеетТип("Map").Заполнено();
+
+EndProcedure
+
+Procedure Check_TelegramGif(Val Result, Val Text) Export
+
+    Result_ = "result";
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result[Result_]["caption"]).Равно(Text);
+    ExpectsThat(Result[Result_]["document"]).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result[Result_]["animation"]["mime_type"]).Равно("video/mp4");
+
+EndProcedure
+
+Procedure Check_TelegramMediaGroup(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_TelegramLocation(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["location"]).ИмеетТип("Map").Заполнено();
+
+EndProcedure
+
+Procedure Check_TelegramContact(Val Result, Val Name) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["contact"]).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["result"]["contact"]["first_name"]).Равно(Name);
+
+EndProcedure
+
+Procedure Check_TelegramPoll(Val Result, Val Question) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["poll"]).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["result"]["poll"]["question"]).Равно(Question);
+
+EndProcedure
+
+Procedure Check_TelegramForward(Val Result, Val MessageID) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["forward_origin"]["message_id"]).Равно(Number(MessageID));
+
+EndProcedure
+
+Procedure Check_TelegramBan(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["description"]).Равно("Bad Request: can't remove chat owner");
+
+EndProcedure
+
+Procedure Check_TelegramInvitation(Val Result, Val Title, Val UnixExpiration) Export
+
+    Result_ = "result";
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result[Result_]["member_limit"]).Равно(200);
+    ExpectsThat(Result[Result_]["name"]).Равно(Title);
+    ExpectsThat(Result[Result_]["expire_date"]).Равно(Number(UnixExpiration));
+
+EndProcedure
+
+Procedure Check_TelegramNumber(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]).ИмеетТип("Number");
+
+EndProcedure
+
+Procedure Check_TelegramOk(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_TelegramCreateTopic(Val Result, Val Name, Icon) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["result"]["name"]).Равно(Name);
+    ExpectsThat(Result["result"]["icon_custom_emoji_id"]).Равно(Icon);
+
+EndProcedure
+
+Procedure Check_VKPost(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTrue(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
+
+EndProcedure
+
+Procedure Check_VKAlbum(Val Result, Val Description) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["description"]).Равно(Description);
+
+EndProcedure
+
+Procedure Check_VKAlbumPicture(Val Result, Val ImageDescription, Val AlbumID) Export
+
+    Response = "response";
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result[Response][0]["text"]).Равно(ImageDescription);
+    ExpectsThat(Result[Response][0]["album_id"]).Равно(AlbumID);
+
+EndProcedure
+
+Procedure Check_VKStory(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["count"]).ИмеетТип("Number").Равно(1);
+    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKDiscussion(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKLike(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["likes"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKRepost(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["success"]).ИмеетТип("Number").Равно(1);
+    ExpectsThat(Result["response"]["wall_repost_count"]).ИмеетТип("Number").Равно(1);
+
+EndProcedure
+
+Procedure Check_VKComment(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["comment_id"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKStatistic(Val Result) Export
+
+    TypeMap = "Map";
+
+    ExpectsThat(Result).ИмеетТип(TypeMap).Заполнено();
+    ExpectsThat(Result["response"][0]["visitors"]).ИмеетТип(TypeMap).Заполнено();
+    ExpectsThat(Result["response"][0]["reach"]).ИмеетТип(TypeMap).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKPostsStatistic(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(2);
+
+EndProcedure
+
+Procedure Check_VKNumber(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKCollection(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["albums_count"]).ИмеетТип("Number").Заполнено();
+    ExpectsThat(Result["response"]["market_album_id"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKProduct(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["market_item_id"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKProp(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["property_id"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKPropVariant(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["variant_id"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKProductData(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").ИмеетДлину(2);
+
+EndProcedure
+
+Procedure Check_VKProductsGroup(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["item_group_id"]).ИмеетТип("Number").Заполнено();
+
+EndProcedure
+
+Procedure Check_VKVideo(Val Result) Export
+
+    ExpectsThat(Result["video_id"]).Заполнено();
+    ExpectsThat(Result["video_hash"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_YaDiskDrive(Val Result) Export
+
+    Map_ = "Map";
+
+    ExpectsThat(Result).ИмеетТип(Map_).Заполнено();
+    ExpectsThat(Result["system_folders"]).ИмеетТип(Map_);
+    ExpectsThat(Result["user"]).ИмеетТип(Map_);
+
+EndProcedure
+
+Procedure Check_YaDiskFolder(Val Result, Val Path) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("dir");
+    ExpectsThat(Result["path"]).Равно("disk:" + Path);
+
+EndProcedure
+
+Procedure Check_YaDiskPath(Val Result, Val Path = "", Val Public = Undefined) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["type"]).Равно("file");
+
+    If ValueIsFilled(Path) Then
+        ExpectsThat(Result["path"]).Равно("disk:" + Path);
+    Else
+        ExpectsThat(Result["path"]).Заполнено();
+    EndIf;
+
+    If Not Public = Undefined Then
+
+        If Public Then
+             ExpectsThat(Result["public_url"]).ИмеетТип("String").Заполнено();
+        Else
+            ExpectsThat(Result["public_url"]).ИмеетТип("Undefined");
+        EndIf;
+
+    EndIf;
+
+EndProcedure
+
+Procedure Check_YaDiskLink(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["method"]).Равно("GET");
+    ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
+
+EndProcedure
+
+Procedure Check_YaDiskProc(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["href"]).Заполнено();
+    ExpectsThat(Result["method"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_YaDiskFilesList(Val Result, Val Count, Val Indent) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["limit"]).Равно(Count);
+    ExpectsThat(Result["offset"]).Равно(Indent);
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+
+
+EndProcedure
+
+Procedure Check_GKObject(Val Result, Val Name, Val Description) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+EndProcedure
+
+Procedure Check_TwitterText(Val Result, Val Text) Export
+
+    ReplyText = Result["data"]["text"];
+    ReplyText = Left(ReplyText, StrLen(Text));
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(ReplyText).Равно(Text);
+
+EndProcedure
+
+Procedure Check_ViberOk(Val Result) Export
+
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+EndProcedure
+
+Procedure Check_ViberUser(Val Result) Export
+
+    ExpectsThat(Result["chat_hostname"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_ViberOnline(Val Result) Export
+
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+    ExpectsThat(Result["users"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_ViberMessage(Val Result) Export
+
+    ExpectsThat(Result["message_token"]).Заполнено();
+    ExpectsThat(Result["status_message"]).Равно("ok");
+    ExpectsThat(Result["status"]).Равно(0);
+
+EndProcedure
+
+Procedure Check_TwitterToken(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["access_token"]).Заполнено();
+    ExpectsThat(Result["refresh_token"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_NotionObject(Val Result, Val View = "page") Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["object"]).Равно(View);
+
+EndProcedure
+
+Procedure Check_SlackOk(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["ok"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_DropboxFile(Val Result, Val Path) Export
+
+    ExpectsThat(Result["path_display"]).Равно(Path);
+
+EndProcedure
+
+Procedure Check_DropboxMetadata(Val Result, Val Path) Export
+
+    ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
+
+EndProcedure
+
+Procedure Check_DropboxArray(Val Result, Val Count = Undefined) Export
+
+    ExpectsThat(Result["entries"]).ИмеетТип("Array");
+
+    If Not Count = Undefined Then
+        ExpectsThat(Result["entries"].Count()).Равно(Count);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_DropboxWork(Val Result) Export
+    ExpectsThat(Result["async_job_id"]).Заполнено();
+EndProcedure
+
+Procedure Check_DropboxStatus(Val Result) Export
+    ExpectsThat(Result[".tag"]).Равно("complete");
+EndProcedure
+
+Procedure Check_DropboxTags(Val Result, Val Count) Export
+
+    ExpectsThat(Result["paths_to_tags"]).ИмеетТип("Array");
+    ExpectsThat(Result["paths_to_tags"].Count()).Равно(Count);
+
+EndProcedure
+
+Procedure Check_DropboxAccount(Val Result) Export
+    ExpectsThat(Result["account_id"]).Заполнено();
+EndProcedure
+
+Procedure Check_DropboxSpace(Val Result) Export
+    ExpectsThat(Result["used"]).Заполнено();
+EndProcedure
+
+Procedure Check_DropboxMember(Val Result, Val Email, Val ViewOnly) Export
+    ExpectsThat(Result[0]["result"][".tag"]).Равно("success");
+    ExpectsThat(Result[0]["member"]["email"]).Равно(Email);
+    ExpectsThat(
+        Result[0]["result"]["success"][".tag"]).Равно(?(ViewOnly, "viewer", "editor"));
+EndProcedure
+
+Procedure Check_DropboxPublicFolder(Val Result) Export
+    ExpectsThat(Result["shared_folder_id"]).Заполнено();
+EndProcedure
+
+Procedure Check_BitrixTime(Val Result) Export
+
+    Time = Result["result"];
+
+    If Not TypeOf(Time) = Type("Date") Then
+       Time             = XMLValue(Type("Date"), Time);
+    EndIf;
+
+    ExpectsThat(Time).ИмеетТип("Date").Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixAuth(Val Result) Export
+
+    ExpectsThat(Result["access_token"]).Заполнено();
+    ExpectsThat(Result["refresh_token"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixNumber(Val Result) Export
+   ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
+EndProcedure
+
+Procedure Check_BitrixTrue(Val Result) Export
+   ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+EndProcedure
+
+Procedure Check_BitrixBool(Val Result) Export
+   ExpectsThat(Result["result"]).ИмеетТип("Boolean");
+EndProcedure
+
+Procedure Check_BitrixString(Val Result) Export
+   ExpectsThat(Result["result"]).ИмеетТип("String").Заполнено();
+EndProcedure
+
+Procedure Check_BitrixArray(Val Result) Export
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+EndProcedure
+
+Procedure Check_BitrixMap(Val Result) Export
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+EndProcedure
+
+Procedure Check_BitrixList(Val Result) Export
+    ExpectsThat(Result["result"]["list"]).ИмеетТип("Array");
+EndProcedure
+
+Procedure Check_BitrixObjectsArray(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["ID"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixFields(Val Result) Export
+
+    ExpectsThat(Result["result"]["fields"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixTask(Val Result) Export
+
+    ExpectsThat(Result["result"]["task"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixTasksList(Val Result) Export
+    ExpectsThat(Result["result"]["tasks"]).ИмеетТип("Array");
+EndProcedure
+
+Procedure Check_BitrixStorage(Val Result) Export
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["total"]).Заполнено();
+EndProcedure
+
+Procedure Check_BitrixObject(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixLead(Val Result) Export
+
+    ExpectsThat(Result["result"]["PHONE"]).Заполнено();
+    ExpectsThat(Result["result"]["NAME"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixDeal(Val Result) Export
+
+    ExpectsThat(Result["result"]["ID"]).Заполнено();
+    ExpectsThat(Result["result"]["BEGINDATE"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixAttachment(Val Result) Export
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["attachmentId"]).Заполнено();
+EndProcedure
+
+Procedure Check_BitrixAvailableActions(Val Result, Val Count) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+
+    Actions = Result["result"]["allowedActions"];
+    ExpectsThat(Actions).ИмеетТип("Map");
+    ExpectsThat(Actions.Count()).Равно(Count);
+
+EndProcedure
+
+Procedure Check_BitrixComment(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["POST_MESSAGE"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixResult(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["text"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixUndefined(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Undefined");
+    ExpectsThat(Result["time"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixCommentsList(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["POST_MESSAGE"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixResultsList(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["text"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixMessages(Val Result) Export
+
+    ExpectsThat(Result["result"]["messages"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_BitrixDialog(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["dialogId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixMessage(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixFileMessage(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["MESSAGE_ID"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixTimekeeping(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["STATUS"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_BitrixTimekeepingSettings(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Map");
+    ExpectsThat(Result["result"]["UF_TIMEMAN"]).ИмеетТип("Boolean");
+
+EndProcedure
+
+Procedure Check_VKTUser(Val Result) Export
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["userId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTEvents(Val Result) Export
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["events"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_VKTMessage(Val Result) Export
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["msgId"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTTrue(Val Result) Export
+
+    ExpectsThat(Result["ok"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_VKTFile(Val Result) Export
+
+    ExpectsThat(Result["ok"]).Равно(True);
+    ExpectsThat(Result["type"]).Заполнено();
+    ExpectsThat(Result["size"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTList(Val Result, Val FieldName) Export
+
+    ExpectsThat(Result[FieldName]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_VKTChat(Val Result) Export
+
+    ExpectsThat(Result["type"]).Заполнено();
+    ExpectsThat(Result["inviteLink"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKTPending(Val Result) Export
+
+    If Not Result["ok"] Then
+        ExpectsThat(Result["description"]).Равно("User is not pending or nobody in pending list");
+    EndIf;
+
+EndProcedure
+
+Procedure Check_OzonCategoryList(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["category_name"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonAttributesList(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["description"]).Заполнено();
+    ExpectsThat(Result["result"][0]["id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonListOfAttributesValues(Val Result) Export
+
+    ExpectsThat(Result["result"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"][0]["value"]).Заполнено();
+    ExpectsThat(Result["result"][0]["id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonUploadTask(Val Result, Val Embedded = True) Export
+
+    If Embedded Then
+        TaskID = Result["result"]["task_id"];
+    Else
+        TaskID = Result["task_id"];
+    EndIf;
+
+    ExpectsThat(TaskID).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonNewProducts(Val Result) Export
+
+    ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"]["items"][0]["status"]).Равно("imported");
+
+EndProcedure
+
+Procedure Check_OzonObjectsArray(Val Result) Export
+
+    ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OzonUpdatedArray(Val Result) Export
+
+    ExpectsThat(Result["result"][0]["updated"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_OzonRatingArray(Val Result) Export
+
+    ExpectsThat(Result["products"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OzonProduct(Val Result) Export
+
+    ExpectsThat(Result["result"]["id"]).Заполнено();
+    ExpectsThat(Result["result"]["name"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonProducts(Val Result) Export
+
+    ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
+    ExpectsThat(Result["result"]["items"][0]["name"]).Заполнено();
+    ExpectsThat(Result["result"]["items"][0]["id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonLimits(Val Result) Export
+
+    ExpectsThat(Result["daily_create"]).Заполнено();
+    ExpectsThat(Result["daily_update"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonPictures(Val Result) Export
+
+    ExpectsThat(Result["result"]["pictures"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
+Procedure Check_OzonNoErrors(Val Result) Export
+
+    ExpectsThat(Result["errors"].Count()).Равно(0);
+
+EndProcedure
+
+Procedure Check_OzonTrue(Val Result) Export
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_OzonArray(Val Result, Val Field = "result") Export
+
+    ExpectsThat(Result[Field]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_OzonProductsDeleting(Val Result) Export
+
+    ExpectsThat(Result["status"][0]["is_deleted"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_OzonNewCodes(Val Result) Export
+
+    ExpectsThat(Result["result"]["status"]).Равно("imported");
+
+EndProcedure
+
+Procedure Check_OzonSubscribers(Val Result) Export
+
+    ExpectsThat(Result["result"][0]["count"]).ИмеетТип("Number");
+
+EndProcedure
+
+Procedure Check_OzonSKU(Val Result) Export
+
+    ExpectsThat(Result["items"]).ИмеетТип("Array");
+    ExpectsThat(Result["items"][0]["availability"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_NCSuccess(Val Result) Export
+
+    ExpectsThat(Result["result"]).Равно("success");
+
+EndProcedure
+
+Procedure Check_NCFolderFiles(Val Result, Val Count) Export
+
+    ExpectsThat(Result["result"]).Равно("success");
+    ExpectsThat(Result["files"].Count()).Равно(Count);
+
+EndProcedure
+
+Procedure Check_NCSync(Val Result) Export
+
+    ExpectsThat(Result["errors"]).Равно(0);
+    ExpectsThat(Result["items"].Count()).Равно(0);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
@@ -432,6 +1463,58 @@ Function GetCommonModule(Val Name)
     Module = Eval(Name);
     SetSafeMode(False);
     Return Module;
+EndFunction
+
+Function GetCLIFormedValue(Val Value)
+
+    CurrentType = TypeOf(Value);
+
+    If CurrentType = Type("Number") Then
+
+        Value = OPI_Tools.NumberToString(Value);
+
+    ElsIf CurrentType = Type("String") Then
+
+        Value = """" + Value + """";
+
+    ElsIf CurrentType = Type("Date") Then
+
+        Value = XMLString(Value);
+
+    ElsIf CurrentType = Type("Array") Then
+
+        For N = 0 To Value.UBound() Do
+            Value.Set(N, GetCLIFormedValue(Value[N]));
+        EndDo;
+
+        Value = StrConcat(Value, "','");
+        Value = "['" + Value + "']";
+
+    ElsIf CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
+
+        JSONWriter     = New JSONWriter();
+        WriterSettings = New JSONWriterSettings(JSONLineBreak.None);
+        JSONWriter.SetString(WriterSettings);
+
+        WriteJSON(JSONWriter, Value);
+
+        Value = """" + JSONWriter.Close() + """";
+
+    ElsIf CurrentType = Type("BinaryData") Then
+
+        //@skip-check missing-temporary-file-deletion
+        TFN = GetTempFileName();
+        Value.Write(TFN);
+        Value = TFN;
+
+    Else
+
+        Raise "Invalid type " + String(CurrentType);
+
+    EndIf;
+
+    Return Value;
+
 EndFunction
 
 Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
