@@ -28,8 +28,8 @@ Method at API documentation: [post /v1/product/update/discount](https://docs.ozo
 
 
 ```bsl title="Code example"
-    ClientID  = FunctionParameters["Ozon_ClientID"];
-    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ClientID  = "2128753";
+    APIKey    = "7cc90d26-33e4-499b...";
     ProductID = 1156646653;
 
     Discount = 10;

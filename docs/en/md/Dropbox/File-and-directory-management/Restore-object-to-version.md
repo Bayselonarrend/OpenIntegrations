@@ -24,8 +24,8 @@ sidebar_position: 14
 
 
 ```bsl title="Code example"
-    Version = FunctionParameters["Dropbox_FileRevision"];
-    Token   = FunctionParameters["Dropbox_Token"];
+    Version = "62080dd30eb20bd841553";
+    Token   = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
     Path    = "/New/pic.png";
 
     Result = OPI_Dropbox.RestoreObjectToVersion(Token, Path, Version);

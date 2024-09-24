@@ -12,7 +12,7 @@ sidebar_position: 2
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
   | Code | --code | String | Code obtained from authorization See GetAuthorizationLink |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter

@@ -28,16 +28,16 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 
 
 ```bsl title="Code example"
-    URL    = FunctionParameters["Bitrix24_URL"];
-    ChatID = FunctionParameters["Bitrix24_HookChatID"];
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    ChatID = "642";
 
-    Image = FunctionParameters["Picture2"];
+    Image = "https://openintegrations.dev/test_data/picture2.jpg";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
 
-    URL    = FunctionParameters["Bitrix24_Domain"];
-    Token  = FunctionParameters["Bitrix24_Token"];
-    ChatID = FunctionParameters["Bitrix24_ChatID"];
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
+    ChatID = "644";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);
 ```

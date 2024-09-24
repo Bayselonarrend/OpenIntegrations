@@ -23,8 +23,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен          = ПараметрыФункции["Viber_ChannelToken"];
-    IDПользователя = ПараметрыФункции["Viber_ChannelAdminID"];
+    Токен          = "523b58ba82afffaa-7ef3b426...";
+    IDПользователя = "tMNGhftyUPrB3r1lD+bT4g==";
 
     Результат    = OPI_Viber.ПолучитьОнлайнПользователей(Токен, IDПользователя);
 ```

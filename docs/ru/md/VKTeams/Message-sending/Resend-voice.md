@@ -27,9 +27,9 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-    Токен    = ПараметрыФункции["VkTeams_Token"];
-    IDЧата   = ПараметрыФункции["VkTeams_ChatID"];
-    IDФайла  = ПараметрыФункции["VkTeams_VoiceID"];
+    Токен    = "001.3501506236.091...";
+    IDЧата   = "AoLI0egLWBSLR1Ngn2w";
+    IDФайла  = "I000btK8FycYcNj36ktHPY66cb1e821bd";
 
     Результат = OPI_VKTeams.ПереслатьГолосовоеСообщение(Токен, IDЧата, IDФайла);
 ```

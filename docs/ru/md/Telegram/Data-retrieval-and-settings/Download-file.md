@@ -23,8 +23,8 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    IDФайла = ПараметрыФункции["Telegram_FileID"];
-    Токен   = ПараметрыФункции["Telegram_Token"];
+    IDФайла = "CQACAgIAAx0EcNsaZQACHedmyyKLxXHJUc7gtgWgnOYt2TNz0wAC81MAAq2KWErDwWkyjov8RTUE";
+    Токен   = "6129457865:AAFyzNYOAFbu...";
 
     Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
 ```

@@ -33,17 +33,17 @@ Method at API documentation: [crm.lead.update](https://dev.1c-bitrix.ru/rest_hel
     FieldsStructure.Insert("ADDRESS_COUNTRY", "Belarus");
     FieldsStructure.Insert("TITLE"          , "SuperClient");
 
-    URL    = FunctionParameters["Bitrix24_URL"];
-    LeadID = FunctionParameters["Bitrix24_HookLeadID"];
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    LeadID = "48";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure);
 
     FieldsStructure.Insert("NAME"      , "Evgeniy");
     FieldsStructure.Insert("LAST_NAME" , "Evgeniev");
 
-    URL    = FunctionParameters["Bitrix24_Domain"];
-    Token  = FunctionParameters["Bitrix24_Token"];
-    LeadID = FunctionParameters["Bitrix24_LeadID"];
+    URL    = "b24-ar17wx.bitrix24.by";
+    Token  = "b529cb66006e9f06006b12e400000001000...";
+    LeadID = "50";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure, Token);
 ```

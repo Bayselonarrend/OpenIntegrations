@@ -27,13 +27,13 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 
 
 ```bsl title="Code example"
-    PostID = FunctionParameters["Bitrix24_HookPostID"];
-    URL    = FunctionParameters["Bitrix24_URL"];
+    PostID = "602";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "b529cb66006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
 ```

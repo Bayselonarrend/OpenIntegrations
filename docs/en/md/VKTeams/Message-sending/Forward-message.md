@@ -31,10 +31,10 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
 
 
 ```bsl title="Code example"
-    Token      = FunctionParameters["VkTeams_Token"];
-    ChatID     = FunctionParameters["VkTeams_ChatID"];
-    FromChatID = FunctionParameters["VkTeams_ChatID2"];
-    MessageID  = FunctionParameters["VkTeams_MessageID"];
+    Token      = "001.3501506236.091...";
+    ChatID     = "AoLI0egLWBSLR1Ngn2w";
+    FromChatID = "689203963@chat.agent";
+    MessageID  = "7407047289547522916";
 
     Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID);
 

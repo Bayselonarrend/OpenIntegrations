@@ -26,7 +26,7 @@ sidebar_position: 8
 ```bsl title="Code example"
     Original = "/New/pic.png";
     Copy     = "/New/pic_copy.png";
-    Token    = FunctionParameters["Dropbox_Token"];
+    Token    = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
 
     Result = OPI_Dropbox.CopyObject(Token, Original, Copy);
 ```

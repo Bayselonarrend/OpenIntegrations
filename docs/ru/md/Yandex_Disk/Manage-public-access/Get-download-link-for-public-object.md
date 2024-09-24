@@ -24,8 +24,8 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен  = ПараметрыФункции["YandexDisk_Token"];
-    URL    = ПараметрыФункции["YandexDisk_PublicURL"];
+    Токен  = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    URL    = "https://yadi.sk/d/rjIP3w63zqt1Zw";
 
     Результат  = OPI_YandexDisk.ПолучитьСсылкуСкачиванияПубличногоОбъекта(Токен, URL);
 ```

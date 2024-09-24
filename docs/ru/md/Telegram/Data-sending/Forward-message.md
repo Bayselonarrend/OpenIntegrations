@@ -25,10 +25,10 @@ sidebar_position: 11
 
 
 ```bsl title="Пример кода"
-    Токен       = ПараметрыФункции["Telegram_Token"];
-    IDЧата      = ПараметрыФункции["Telegram_ChatID"];
-    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
-    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
+    Токен       = "6129457865:AAFyzNYOAFbu...";
+    IDЧата      = "461699897";
+    IDКанала    = "@testsichee";
+    IDСообщения = "7649";
 
     Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
 ```

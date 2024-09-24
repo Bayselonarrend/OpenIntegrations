@@ -27,14 +27,14 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    URL      = ПараметрыФункции["Bitrix24_URL"];
-    IDПоля   = ПараметрыФункции["Bitrix24_HookTaskFieldID"];
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDПоля   = "255";
 
     Результат = OPI_Bitrix24.ПолучитьПользовательскоеПолеЗадачи(URL, IDПоля);
 
-    URL      = ПараметрыФункции["Bitrix24_Domain"];
-    Токен    = ПараметрыФункции["Bitrix24_Token"];
-    IDПоля   = ПараметрыФункции["Bitrix24_TaskFieldID"];
+    URL      = "b24-ar17wx.bitrix24.by";
+    Токен    = "b529cb66006e9f06006b12e400000001000...";
+    IDПоля   = "257";
 
     Результат = OPI_Bitrix24.ПолучитьПользовательскоеПолеЗадачи(URL, IDПоля, );
 ```

@@ -27,14 +27,14 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    URL      = ПараметрыФункции["Bitrix24_URL"];
-    IDСделки = ПараметрыФункции["Bitrix24_HookDealID"];
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDСделки = "80";
 
     Результат = OPI_Bitrix24.ПолучитьСделку(URL, IDСделки);
 
-    URL      = ПараметрыФункции["Bitrix24_Domain"];
-    Токен    = ПараметрыФункции["Bitrix24_Token"];
-    IDСделки = ПараметрыФункции["Bitrix24_HookDealID"];
+    URL      = "b24-ar17wx.bitrix24.by";
+    Токен    = "b529cb66006e9f06006b12e400000001000...";
+    IDСделки = "80";
 
     Результат = OPI_Bitrix24.ПолучитьСделку(URL, IDСделки, Токен);
 ```

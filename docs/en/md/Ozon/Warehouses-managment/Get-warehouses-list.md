@@ -26,8 +26,8 @@ Method at API documentation: [post /v1/warehouse/list](https://docs.ozon.ru/api/
 
 
 ```bsl title="Code example"
-    ClientID = FunctionParameters["Ozon_ClientID"];
-    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    ClientID = "2128753";
+    APIKey   = "7cc90d26-33e4-499b...";
 
     Result = OPI_Ozon.GetWarehousesList(ClientID, APIKey);
 ```
