@@ -1,38 +1,12 @@
 
-pipeline {
-   agent any
-   	stages {
-          stage('Prepare'){
+          stage('yandex'){
              steps{
-                powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.14.0.ospx; del oint-1.14.0.ospx'
-                powershell encoding: 'UTF-8', script:'oscript -make ./src/ru/cli/core/Classes/app.os oint.exe'          
+                test_yandex()
              }
           }
-          stage('Run'){
-             steps{
-test_tools()
-test_airtable()
-test_bitrix24()
-test_dropbox()
-test_gcalendar()
-test_gdrive()
-test_gsheets()
-test_google()
-test_neocities()
-test_notion()
-test_ozon()
-test_slack()
-test_telegram()
-test_twitter()
-test_viber()
-test_vk()
-test_vkteams()
-test_yadisk()
-test_yandex()
-
-             }
-          }
-      }
+   }
+  }    
+ }
 }
 
 
