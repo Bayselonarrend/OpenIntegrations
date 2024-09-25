@@ -24,7 +24,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe tools ПреобразоватьBase64ВДвоичные --in "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_tools()
 
     stage('Start-airtable') {
@@ -126,7 +126,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe airtable УдалитьКомментарий --token "test" --base "test" --table "test" --record "test" --comment "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_airtable()
 
     stage('Start-bitrix24') {
@@ -776,7 +776,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 ПолучитьСтруктуруФильтраСделок --empty "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_bitrix24()
 
     stage('Start-dropbox') {
@@ -898,7 +898,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe dropbox ОтменитьПубликациюФайла --token "test" --fileid "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_dropbox()
 
     stage('Start-gcalendar') {
@@ -972,7 +972,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe gcalendar УдалитьСобытие --token "test" --calendar "test" --event "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_gcalendar()
 
     stage('Start-gdrive') {
@@ -1034,7 +1034,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe gdrive УдалитьКомментарий --token "test" --object "test" --comment "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_gdrive()
 
     stage('Start-gsheets') {
@@ -1080,7 +1080,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe gsheets ПолучитьЗначенияЯчеек --token "test" --spreadsheet "test" --cells "test" --sheetname "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_gsheets()
 
     stage('Start-google') {
@@ -1102,7 +1102,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe google ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_google()
 
     stage('Start-neocities') {
@@ -1140,7 +1140,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe neocities СинхронизироватьКаталоги --token "test" --local "test" --remote "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_neocities()
 
     stage('Start-notion') {
@@ -1202,7 +1202,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe notion ПолучитьДанныеПользователя --token "test" --user "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_notion()
 
     stage('Start-ozon') {
@@ -1392,7 +1392,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСписокСкладов --clientid "test" --apikey "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_ozon()
 
     stage('Start-slack') {
@@ -1550,7 +1550,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe slack СформироватьБлокКартинку --picture "test" --alt "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_slack()
 
     stage('Start-telegram') {
@@ -1696,7 +1696,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "test" --forum "test" --topic "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_telegram()
 
     stage('Start-twitter') {
@@ -1738,7 +1738,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe twitter СоздатьТвитОпрос --text "test" --options "test" --duration "test" --auth "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_twitter()
 
     stage('Start-viber') {
@@ -1792,7 +1792,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe viber СформироватьКлавиатуруИзМассиваКнопок --buttons "test" --color "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_viber()
 
     stage('Start-vk') {
@@ -2002,7 +2002,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe vk СформироватьКлавиатуру --buttons "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_vk()
 
     stage('Start-vkteams') {
@@ -2128,7 +2128,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe vkteams УстановитьПравилаЧата --token "test" --chatid "test" --text "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_vkteams()
 
     stage('Start-yadisk') {
@@ -2206,7 +2206,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe yadisk СохранитьПубличныйОбъектНаДиск --token "test" --url "test" --from "test" --to "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_yadisk()
 
     stage('Start-yandex') {
@@ -2228,7 +2228,7 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe yandex ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-    }}}}
+    }}}})
     test_yandex()
 
    }
