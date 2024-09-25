@@ -1083,8 +1083,8 @@ Procedure GD_UploadDeleteFile() Export
 
     ArrayOfDeletions = New Array;
     Token            = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Image            = OPI_TestDataRetrieval.GetBinary("Picture");
-    ReplacementImage = OPI_TestDataRetrieval.GetBinary("Picture2");
+    Image            = OPI_TestDataRetrieval.GetParameter("Picture");
+    ReplacementImage = OPI_TestDataRetrieval.GetParameter("Picture2");
     Directory        = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
 
     Description = OPI_GoogleDrive.GetFileDescription();
@@ -1160,7 +1160,7 @@ Procedure GD_CreateDeleteComment() Export
     Comments_ = "comments";
     Token     = OPI_TestDataRetrieval.GetParameter("Google_Token");
     Directory = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
-    Image     = OPI_TestDataRetrieval.GetBinary("Picture");
+    Image     = OPI_TestDataRetrieval.GetParameter("Picture");
 
     Description = OPI_GoogleDrive.GetFileDescription();
     Description.Insert("Parent", Directory);
@@ -1993,7 +1993,7 @@ EndProcedure
 Procedure Slack_UploadDeleteFile() Export
 
     Token        = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    File         = OPI_TestDataRetrieval.GetBinary("Document");
+    File         = OPI_TestDataRetrieval.GetParameter("Document");
     Channel      = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
     ArrayOfFiles = New Array;
     FileName     = "megadoc.docx";
@@ -5659,8 +5659,8 @@ Procedure Twitter_CreateImageTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Image  = OPI_TestDataRetrieval.GetBinary("Picture"); // URL, Binary or Path to file
-    Image2 = OPI_TestDataRetrieval.GetBinary("Picture2"); // URL, Binary or Path to file
+    Image  = OPI_TestDataRetrieval.GetParameter("Picture"); // URL, Binary or Path to file
+    Image2 = OPI_TestDataRetrieval.GetParameter("Picture2"); // URL, Binary or Path to file
 
     ImageArray = New Array;
     ImageArray.Add(Image);
@@ -5702,8 +5702,8 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Video  = OPI_TestDataRetrieval.GetBinary("Video"); // URL, Binary or Path to file
-    Video2 = OPI_TestDataRetrieval.GetBinary("Video"); // URL, Binary or Path to file
+    Video  = OPI_TestDataRetrieval.GetParameter("Video"); // URL, Binary or Path to file
+    Video2 = OPI_TestDataRetrieval.GetParameter("Video"); // URL, Binary or Path to file
 
     VideosArray = New Array;
     VideosArray.Add(Video);
@@ -5745,8 +5745,8 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    GIF  = OPI_TestDataRetrieval.GetBinary("GIF"); // URL, Binary or Path to file
-    Gif2 = OPI_TestDataRetrieval.GetBinary("GIF"); // URL, Binary or Path to file
+    GIF  = OPI_TestDataRetrieval.GetParameter("GIF"); // URL, Binary or Path to file
+    Gif2 = OPI_TestDataRetrieval.GetParameter("GIF"); // URL, Binary or Path to file
 
     GifsArray = New Array;
     GifsArray.Add(GIF);
@@ -12276,7 +12276,7 @@ Procedure Neocities_SynchronizeFolders(FunctionParameters)
     Token = FunctionParameters["NC_Token"];
 
     LocalFolder  = "C:\test_site";
-    RemoteFolder = "test";
+    RemoteFolder = "test_sync";
 
     Result = OPI_Neocities.SynchronizeFolders(Token, LocalFolder, RemoteFolder);
 

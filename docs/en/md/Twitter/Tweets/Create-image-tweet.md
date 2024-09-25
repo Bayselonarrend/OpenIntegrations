@@ -27,8 +27,8 @@ sidebar_position: 2
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Image  = OPI_TestDataRetrieval.GetBinary("Picture"); // URL, Binary or Path to file
-    Image2 = OPI_TestDataRetrieval.GetBinary("Picture2"); // URL, Binary or Path to file
+    Image  = OPI_TestDataRetrieval.GetParameter("Picture"); // URL, Binary or Path to file
+    Image2 = OPI_TestDataRetrieval.GetParameter("Picture2"); // URL, Binary or Path to file
 
     ImageArray = New Array;
     ImageArray.Add(Image);

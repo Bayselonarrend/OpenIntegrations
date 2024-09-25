@@ -1,5 +1,5 @@
-﻿    Токен  = "sl.B9UkyV2zUTP1LLTzgy6XcG5j_RdnQh84LmpC70BXg5rw9eXyYb0F7XGDXMiLrjc69YlZIFZqEi...";
-    Папка  = "11435002545";
+﻿    Токен  = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Папка  = "11156736001";
 
     Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
     ТекущийСтатус = "in_progress";
