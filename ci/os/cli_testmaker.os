@@ -69,16 +69,32 @@
 
 Процедура СформироватьОпределения()
 	
+	Язык = "ru";
+	
+	ТекстРаботы = "
+	|pipeline {
+	|   agent any
+	|   	stages {
+	|          stage('Prepare'){
+	|             steps{
+	|                powershell encoding: 'UTF-8', script:'cd ./src/" + Язык + "/OInt; opm build; opm install oint-1.14.0.ospx; del oint-1.14.0.ospx'
+	|                powershell encoding: 'UTF-8', script:'oscript -make ./src/" + Язык + "/cli/core/Classes/app.os oint.exe'          
+	|             }
+	|          }
+	|";
+
 	Для Каждого Модуль Из Модули Цикл
 
 		ТекущаяКоманда = Модуль.Ключ;
 
 		ТекстРаботы = "
-		|def test_" + ТекущаяКоманда + "(){
-		|   pipeline {
-		|      stages() {
-		|         stage('" + ТекущаяКоманда + "'){
-		|             steps {
+		|stage(" + ТекущаяКоманда + "){
+		|   script{
+		|      def test_" + ТекущаяКоманда + "(){
+		|         pipeline {
+		|            stages() {
+		|               stage('" + ТекущаяКоманда + "'){
+		|                   steps {
 		|					
 		|";
 
@@ -114,7 +130,7 @@
 		КонецЦикла;
 
 		ТекстРаботы = ТекстРаботы + "
-		|}}}}}
+		|}}}}}test_" + ТекущаяКоманда + "()}}
 		|";
 
 
