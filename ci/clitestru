@@ -8,8 +8,6 @@ pipeline {
                 powershell encoding: 'UTF-8', script:'oscript -make ./src/ru/cli/core/Classes/app.os oint.exe'          
              }
           }
-          stage('Run'){
-             steps{
 test_tools()
 test_airtable()
 test_bitrix24()
@@ -30,8 +28,6 @@ test_vkteams()
 test_yadisk()
 test_yandex()
 
-             }
-          }
       }
 }
 
