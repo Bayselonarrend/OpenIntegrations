@@ -1,19 +1,8 @@
-﻿pipeline {
-   agent any
+﻿
+def test_tools() {
    stages {
-      stage('Prepare'){
-         steps{
-            powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.14.0.ospx; del oint-1.14.0.ospx'
-            powershell encoding: 'UTF-8', script:'oscript -make ./src/ru/cli/core/Classes/app.os oint.exe'          
-         }
-      }
-
-
-    stage('Start-tools') {
-       def test_tools() {
-          stages {
-             stage('tools'){
-			      steps {
+      stage('tools'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -24,14 +13,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe tools ПреобразоватьBase64ВДвоичные --in "test" --debug --test '
                }
 
-    }}}}}
-    test_tools()
+}}}}
 
-    stage('Start-airtable') {
-       def test_airtable() {
-          stages {
-             stage('airtable'){
-			      steps {
+def test_airtable() {
+   stages {
+      stage('airtable'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -126,14 +113,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe airtable УдалитьКомментарий --token "test" --base "test" --table "test" --record "test" --comment "test" --debug --test '
                }
 
-    }}}}}
-    test_airtable()
+}}}}
 
-    stage('Start-bitrix24') {
-       def test_bitrix24() {
-          stages {
-             stage('bitrix24'){
-			      steps {
+def test_bitrix24() {
+   stages {
+      stage('bitrix24'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -776,14 +761,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 ПолучитьСтруктуруФильтраСделок --empty "test" --debug --test '
                }
 
-    }}}}}
-    test_bitrix24()
+}}}}
 
-    stage('Start-dropbox') {
-       def test_dropbox() {
-          stages {
-             stage('dropbox'){
-			      steps {
+def test_dropbox() {
+   stages {
+      stage('dropbox'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -898,14 +881,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe dropbox ОтменитьПубликациюФайла --token "test" --fileid "test" --debug --test '
                }
 
-    }}}}}
-    test_dropbox()
+}}}}
 
-    stage('Start-gcalendar') {
-       def test_gcalendar() {
-          stages {
-             stage('gcalendar'){
-			      steps {
+def test_gcalendar() {
+   stages {
+      stage('gcalendar'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -972,14 +953,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe gcalendar УдалитьСобытие --token "test" --calendar "test" --event "test" --debug --test '
                }
 
-    }}}}}
-    test_gcalendar()
+}}}}
 
-    stage('Start-gdrive') {
-       def test_gdrive() {
-          stages {
-             stage('gdrive'){
-			      steps {
+def test_gdrive() {
+   stages {
+      stage('gdrive'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1034,14 +1013,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe gdrive УдалитьКомментарий --token "test" --object "test" --comment "test" --debug --test '
                }
 
-    }}}}}
-    test_gdrive()
+}}}}
 
-    stage('Start-gsheets') {
-       def test_gsheets() {
-          stages {
-             stage('gsheets'){
-			      steps {
+def test_gsheets() {
+   stages {
+      stage('gsheets'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1080,14 +1057,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe gsheets ПолучитьЗначенияЯчеек --token "test" --spreadsheet "test" --cells "test" --sheetname "test" --debug --test '
                }
 
-    }}}}}
-    test_gsheets()
+}}}}
 
-    stage('Start-google') {
-       def test_google() {
-          stages {
-             stage('google'){
-			      steps {
+def test_google() {
+   stages {
+      stage('google'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1102,14 +1077,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe google ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-    }}}}}
-    test_google()
+}}}}
 
-    stage('Start-neocities') {
-       def test_neocities() {
-          stages {
-             stage('neocities'){
-			      steps {
+def test_neocities() {
+   stages {
+      stage('neocities'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1140,14 +1113,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe neocities СинхронизироватьКаталоги --token "test" --local "test" --remote "test" --debug --test '
                }
 
-    }}}}}
-    test_neocities()
+}}}}
 
-    stage('Start-notion') {
-       def test_notion() {
-          stages {
-             stage('notion'){
-			      steps {
+def test_notion() {
+   stages {
+      stage('notion'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1202,14 +1173,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe notion ПолучитьДанныеПользователя --token "test" --user "test" --debug --test '
                }
 
-    }}}}}
-    test_notion()
+}}}}
 
-    stage('Start-ozon') {
-       def test_ozon() {
-          stages {
-             stage('ozon'){
-			      steps {
+def test_ozon() {
+   stages {
+      stage('ozon'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1392,14 +1361,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСписокСкладов --clientid "test" --apikey "test" --debug --test '
                }
 
-    }}}}}
-    test_ozon()
+}}}}
 
-    stage('Start-slack') {
-       def test_slack() {
-          stages {
-             stage('slack'){
-			      steps {
+def test_slack() {
+   stages {
+      stage('slack'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1550,14 +1517,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe slack СформироватьБлокКартинку --picture "test" --alt "test" --debug --test '
                }
 
-    }}}}}
-    test_slack()
+}}}}
 
-    stage('Start-telegram') {
-       def test_telegram() {
-          stages {
-             stage('telegram'){
-			      steps {
+def test_telegram() {
+   stages {
+      stage('telegram'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1696,14 +1661,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "test" --forum "test" --topic "test" --debug --test '
                }
 
-    }}}}}
-    test_telegram()
+}}}}
 
-    stage('Start-twitter') {
-       def test_twitter() {
-          stages {
-             stage('twitter'){
-			      steps {
+def test_twitter() {
+   stages {
+      stage('twitter'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1738,14 +1701,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe twitter СоздатьТвитОпрос --text "test" --options "test" --duration "test" --auth "test" --debug --test '
                }
 
-    }}}}}
-    test_twitter()
+}}}}
 
-    stage('Start-viber') {
-       def test_viber() {
-          stages {
-             stage('viber'){
-			      steps {
+def test_viber() {
+   stages {
+      stage('viber'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1792,14 +1753,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe viber СформироватьКлавиатуруИзМассиваКнопок --buttons "test" --color "test" --debug --test '
                }
 
-    }}}}}
-    test_viber()
+}}}}
 
-    stage('Start-vk') {
-       def test_vk() {
-          stages {
-             stage('vk'){
-			      steps {
+def test_vk() {
+   stages {
+      stage('vk'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2002,14 +1961,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe vk СформироватьКлавиатуру --buttons "test" --debug --test '
                }
 
-    }}}}}
-    test_vk()
+}}}}
 
-    stage('Start-vkteams') {
-       def test_vkteams() {
-          stages {
-             stage('vkteams'){
-			      steps {
+def test_vkteams() {
+   stages {
+      stage('vkteams'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2128,14 +2085,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe vkteams УстановитьПравилаЧата --token "test" --chatid "test" --text "test" --debug --test '
                }
 
-    }}}}}
-    test_vkteams()
+}}}}
 
-    stage('Start-yadisk') {
-       def test_yadisk() {
-          stages {
-             stage('yadisk'){
-			      steps {
+def test_yadisk() {
+   stages {
+      stage('yadisk'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2206,14 +2161,12 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe yadisk СохранитьПубличныйОбъектНаДиск --token "test" --url "test" --from "test" --to "test" --debug --test '
                }
 
-    }}}}}
-    test_yadisk()
+}}}}
 
-    stage('Start-yandex') {
-       def test_yandex() {
-          stages {
-             stage('yandex'){
-			      steps {
+def test_yandex() {
+   stages {
+      stage('yandex'){
+          steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2228,16 +2181,40 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe yandex ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-    }}}}}
-    test_yandex()
-
-   }
-      post{
-         always{
-            script {
-               bat encoding: 'UTF-8', script:'del "./oint.exe"'      
-            }
+}}}}
+pipeline {
+   agent any
+   stages {
+      stage('Prepare'){
+         steps{
+            powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.14.0.ospx; del oint-1.14.0.ospx'
+            powershell encoding: 'UTF-8', script:'oscript -make ./src/ru/cli/core/Classes/app.os oint.exe'          
          }
       }
-    
+      stage('Run'){
+         steps{
+test_tools()
+test_airtable()
+test_bitrix24()
+test_dropbox()
+test_gcalendar()
+test_gdrive()
+test_gsheets()
+test_google()
+test_neocities()
+test_notion()
+test_ozon()
+test_slack()
+test_telegram()
+test_twitter()
+test_viber()
+test_vk()
+test_vkteams()
+test_yadisk()
+test_yandex()
+
+         }
+      }
+   }
 }
+
