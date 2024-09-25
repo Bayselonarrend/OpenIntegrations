@@ -9,6 +9,7 @@
       }
 
 
+    def test_tools() {
         stage('tools') {
 			steps {
 					
@@ -23,7 +24,10 @@
 
 			}
 		}
+	}  
+test_tools()
 
+    def test_airtable() {
         stage('airtable') {
 			steps {
 					
@@ -122,7 +126,10 @@
 
 			}
 		}
+	}  
+test_airtable()
 
+    def test_bitrix24() {
         stage('bitrix24') {
 			steps {
 					
@@ -769,7 +776,10 @@
 
 			}
 		}
+	}  
+test_bitrix24()
 
+    def test_dropbox() {
         stage('dropbox') {
 			steps {
 					
@@ -888,7 +898,10 @@
 
 			}
 		}
+	}  
+test_dropbox()
 
+    def test_gcalendar() {
         stage('gcalendar') {
 			steps {
 					
@@ -959,7 +972,10 @@
 
 			}
 		}
+	}  
+test_gcalendar()
 
+    def test_gdrive() {
         stage('gdrive') {
 			steps {
 					
@@ -1018,7 +1034,10 @@
 
 			}
 		}
+	}  
+test_gdrive()
 
+    def test_gsheets() {
         stage('gsheets') {
 			steps {
 					
@@ -1061,7 +1080,10 @@
 
 			}
 		}
+	}  
+test_gsheets()
 
+    def test_google() {
         stage('google') {
 			steps {
 					
@@ -1080,7 +1102,10 @@
 
 			}
 		}
+	}  
+test_google()
 
+    def test_neocities() {
         stage('neocities') {
 			steps {
 					
@@ -1115,7 +1140,10 @@
 
 			}
 		}
+	}  
+test_neocities()
 
+    def test_notion() {
         stage('notion') {
 			steps {
 					
@@ -1174,7 +1202,10 @@
 
 			}
 		}
+	}  
+test_notion()
 
+    def test_ozon() {
         stage('ozon') {
 			steps {
 					
@@ -1361,7 +1392,10 @@
 
 			}
 		}
+	}  
+test_ozon()
 
+    def test_slack() {
         stage('slack') {
 			steps {
 					
@@ -1516,7 +1550,10 @@
 
 			}
 		}
+	}  
+test_slack()
 
+    def test_telegram() {
         stage('telegram') {
 			steps {
 					
@@ -1659,7 +1696,10 @@
 
 			}
 		}
+	}  
+test_telegram()
 
+    def test_twitter() {
         stage('twitter') {
 			steps {
 					
@@ -1698,7 +1738,10 @@
 
 			}
 		}
+	}  
+test_twitter()
 
+    def test_viber() {
         stage('viber') {
 			steps {
 					
@@ -1749,7 +1792,10 @@
 
 			}
 		}
+	}  
+test_viber()
 
+    def test_vk() {
         stage('vk') {
 			steps {
 					
@@ -1956,7 +2002,10 @@
 
 			}
 		}
+	}  
+test_vk()
 
+    def test_vkteams() {
         stage('vkteams') {
 			steps {
 					
@@ -2079,7 +2128,10 @@
 
 			}
 		}
+	}  
+test_vkteams()
 
+    def test_yadisk() {
         stage('yadisk') {
 			steps {
 					
@@ -2154,7 +2206,10 @@
 
 			}
 		}
+	}  
+test_yadisk()
 
+    def test_yandex() {
         stage('yandex') {
 			steps {
 					
@@ -2173,6 +2228,8 @@
 
 			}
 		}
+	}  
+test_yandex()
 
    }
       post{
