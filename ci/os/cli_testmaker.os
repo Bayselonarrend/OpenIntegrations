@@ -82,8 +82,6 @@
 	|                powershell encoding: 'UTF-8', script:'oscript -make ./src/" + Язык + "/cli/core/Classes/app.os oint.exe'          
 	|             }
 	|          }
-	|          stage('Run'){
-	|             steps{
 	|";
 
 	Для Каждого Модуль Из Модули Цикл
@@ -94,8 +92,6 @@
 	КонецЦикла;
 	
 	ТекстРаботы = ТекстРаботы + "
-	|             }
-	|          }
 	|      }
 	|}
 	|";
