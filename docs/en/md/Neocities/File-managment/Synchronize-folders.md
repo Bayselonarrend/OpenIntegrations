@@ -32,7 +32,7 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
     Token = "7419cd51de4037f7...";
 
     LocalFolder  = "C:\test_site";
-    RemoteFolder = "test";
+    RemoteFolder = "test_sync";
 
     Result = OPI_Neocities.SynchronizeFolders(Token, LocalFolder, RemoteFolder);
 ```
