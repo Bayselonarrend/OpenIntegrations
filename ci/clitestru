@@ -16,7 +16,9 @@ stage(tools){
 					powershell encoding: 'UTF-8', script:'./oint.exe tools ПреобразоватьBase64ВДвоичные --in "test" --debug --test '
                }
 
-}}}}}test_tools()}}
+}}}}}
+ test_tools()
+}}
 
 stage(airtable){
    script{
@@ -119,7 +121,9 @@ stage(airtable){
 					powershell encoding: 'UTF-8', script:'./oint.exe airtable УдалитьКомментарий --token "test" --base "test" --table "test" --record "test" --comment "test" --debug --test '
                }
 
-}}}}}test_airtable()}}
+}}}}}
+ test_airtable()
+}}
 
 stage(bitrix24){
    script{
@@ -770,7 +774,9 @@ stage(bitrix24){
 					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 ПолучитьСтруктуруФильтраСделок --empty "test" --debug --test '
                }
 
-}}}}}test_bitrix24()}}
+}}}}}
+ test_bitrix24()
+}}
 
 stage(dropbox){
    script{
@@ -893,7 +899,9 @@ stage(dropbox){
 					powershell encoding: 'UTF-8', script:'./oint.exe dropbox ОтменитьПубликациюФайла --token "test" --fileid "test" --debug --test '
                }
 
-}}}}}test_dropbox()}}
+}}}}}
+ test_dropbox()
+}}
 
 stage(gcalendar){
    script{
@@ -968,7 +976,9 @@ stage(gcalendar){
 					powershell encoding: 'UTF-8', script:'./oint.exe gcalendar УдалитьСобытие --token "test" --calendar "test" --event "test" --debug --test '
                }
 
-}}}}}test_gcalendar()}}
+}}}}}
+ test_gcalendar()
+}}
 
 stage(gdrive){
    script{
@@ -1031,7 +1041,9 @@ stage(gdrive){
 					powershell encoding: 'UTF-8', script:'./oint.exe gdrive УдалитьКомментарий --token "test" --object "test" --comment "test" --debug --test '
                }
 
-}}}}}test_gdrive()}}
+}}}}}
+ test_gdrive()
+}}
 
 stage(gsheets){
    script{
@@ -1078,7 +1090,9 @@ stage(gsheets){
 					powershell encoding: 'UTF-8', script:'./oint.exe gsheets ПолучитьЗначенияЯчеек --token "test" --spreadsheet "test" --cells "test" --sheetname "test" --debug --test '
                }
 
-}}}}}test_gsheets()}}
+}}}}}
+ test_gsheets()
+}}
 
 stage(google){
    script{
@@ -1101,7 +1115,9 @@ stage(google){
 					powershell encoding: 'UTF-8', script:'./oint.exe google ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-}}}}}test_google()}}
+}}}}}
+ test_google()
+}}
 
 stage(neocities){
    script{
@@ -1140,7 +1156,9 @@ stage(neocities){
 					powershell encoding: 'UTF-8', script:'./oint.exe neocities СинхронизироватьКаталоги --token "test" --local "test" --remote "test" --debug --test '
                }
 
-}}}}}test_neocities()}}
+}}}}}
+ test_neocities()
+}}
 
 stage(notion){
    script{
@@ -1203,7 +1221,9 @@ stage(notion){
 					powershell encoding: 'UTF-8', script:'./oint.exe notion ПолучитьДанныеПользователя --token "test" --user "test" --debug --test '
                }
 
-}}}}}test_notion()}}
+}}}}}
+ test_notion()
+}}
 
 stage(ozon){
    script{
@@ -1394,7 +1414,9 @@ stage(ozon){
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСписокСкладов --clientid "test" --apikey "test" --debug --test '
                }
 
-}}}}}test_ozon()}}
+}}}}}
+ test_ozon()
+}}
 
 stage(slack){
    script{
@@ -1553,7 +1575,9 @@ stage(slack){
 					powershell encoding: 'UTF-8', script:'./oint.exe slack СформироватьБлокКартинку --picture "test" --alt "test" --debug --test '
                }
 
-}}}}}test_slack()}}
+}}}}}
+ test_slack()
+}}
 
 stage(telegram){
    script{
@@ -1700,7 +1724,9 @@ stage(telegram){
 					powershell encoding: 'UTF-8', script:'./oint.exe telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "test" --forum "test" --topic "test" --debug --test '
                }
 
-}}}}}test_telegram()}}
+}}}}}
+ test_telegram()
+}}
 
 stage(twitter){
    script{
@@ -1743,7 +1769,9 @@ stage(twitter){
 					powershell encoding: 'UTF-8', script:'./oint.exe twitter СоздатьТвитОпрос --text "test" --options "test" --duration "test" --auth "test" --debug --test '
                }
 
-}}}}}test_twitter()}}
+}}}}}
+ test_twitter()
+}}
 
 stage(viber){
    script{
@@ -1798,7 +1826,9 @@ stage(viber){
 					powershell encoding: 'UTF-8', script:'./oint.exe viber СформироватьКлавиатуруИзМассиваКнопок --buttons "test" --color "test" --debug --test '
                }
 
-}}}}}test_viber()}}
+}}}}}
+ test_viber()
+}}
 
 stage(vk){
    script{
@@ -2009,7 +2039,9 @@ stage(vk){
 					powershell encoding: 'UTF-8', script:'./oint.exe vk СформироватьКлавиатуру --buttons "test" --debug --test '
                }
 
-}}}}}test_vk()}}
+}}}}}
+ test_vk()
+}}
 
 stage(vkteams){
    script{
@@ -2136,7 +2168,9 @@ stage(vkteams){
 					powershell encoding: 'UTF-8', script:'./oint.exe vkteams УстановитьПравилаЧата --token "test" --chatid "test" --text "test" --debug --test '
                }
 
-}}}}}test_vkteams()}}
+}}}}}
+ test_vkteams()
+}}
 
 stage(yadisk){
    script{
@@ -2215,7 +2249,9 @@ stage(yadisk){
 					powershell encoding: 'UTF-8', script:'./oint.exe yadisk СохранитьПубличныйОбъектНаДиск --token "test" --url "test" --from "test" --to "test" --debug --test '
                }
 
-}}}}}test_yadisk()}}
+}}}}}
+ test_yadisk()
+}}
 
 stage(yandex){
    script{
@@ -2238,7 +2274,9 @@ stage(yandex){
 					powershell encoding: 'UTF-8', script:'./oint.exe yandex ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-}}}}}test_yandex()}}
+}}}}}
+ test_yandex()
+}}
 pipeline {
    agent any
    stages {
