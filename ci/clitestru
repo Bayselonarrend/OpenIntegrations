@@ -1,10 +1,112 @@
 
+pipeline {
+   agent any
+   	stages {
+          stage('Prepare'){
+             steps{
+                powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install oint-1.14.0.ospx; del oint-1.14.0.ospx'
+                powershell encoding: 'UTF-8', script:'oscript -make ./src/ru/cli/core/Classes/app.os oint.exe'          
+             }
+          }
+          stage('Run Tests') {
+             parallel {
+
+          stage('tools'){
+             steps{
+                test_tools()
+             }
+          }
+          stage('airtable'){
+             steps{
+                test_airtable()
+             }
+          }
+          stage('bitrix24'){
+             steps{
+                test_bitrix24()
+             }
+          }
+          stage('dropbox'){
+             steps{
+                test_dropbox()
+             }
+          }
+          stage('gcalendar'){
+             steps{
+                test_gcalendar()
+             }
+          }
+          stage('gdrive'){
+             steps{
+                test_gdrive()
+             }
+          }
+          stage('gsheets'){
+             steps{
+                test_gsheets()
+             }
+          }
+          stage('google'){
+             steps{
+                test_google()
+             }
+          }
+          stage('neocities'){
+             steps{
+                test_neocities()
+             }
+          }
+          stage('notion'){
+             steps{
+                test_notion()
+             }
+          }
+          stage('ozon'){
+             steps{
+                test_ozon()
+             }
+          }
+          stage('slack'){
+             steps{
+                test_slack()
+             }
+          }
+          stage('telegram'){
+             steps{
+                test_telegram()
+             }
+          }
+          stage('twitter'){
+             steps{
+                test_twitter()
+             }
+          }
+          stage('viber'){
+             steps{
+                test_viber()
+             }
+          }
+          stage('vk'){
+             steps{
+                test_vk()
+             }
+          }
+          stage('vkteams'){
+             steps{
+                test_vkteams()
+             }
+          }
+          stage('yadisk'){
+             steps{
+                test_yadisk()
+             }
+          }
           stage('yandex'){
              steps{
                 test_yandex()
              }
           }
-   
+   } 
   }    
  }
 }
