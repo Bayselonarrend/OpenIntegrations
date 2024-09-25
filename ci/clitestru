@@ -1,7 +1,7 @@
 ﻿
-def test_tools() {
+def test_tools(){
    pipeline {
-      stages {
+      stages() {
          stage('tools'){
              steps {
 					
@@ -16,9 +16,9 @@ def test_tools() {
 
 }}}}}
 
-def test_airtable() {
+def test_airtable(){
    pipeline {
-      stages {
+      stages() {
          stage('airtable'){
              steps {
 					
@@ -117,9 +117,9 @@ def test_airtable() {
 
 }}}}}
 
-def test_bitrix24() {
+def test_bitrix24(){
    pipeline {
-      stages {
+      stages() {
          stage('bitrix24'){
              steps {
 					
@@ -766,9 +766,9 @@ def test_bitrix24() {
 
 }}}}}
 
-def test_dropbox() {
+def test_dropbox(){
    pipeline {
-      stages {
+      stages() {
          stage('dropbox'){
              steps {
 					
@@ -887,9 +887,9 @@ def test_dropbox() {
 
 }}}}}
 
-def test_gcalendar() {
+def test_gcalendar(){
    pipeline {
-      stages {
+      stages() {
          stage('gcalendar'){
              steps {
 					
@@ -960,9 +960,9 @@ def test_gcalendar() {
 
 }}}}}
 
-def test_gdrive() {
+def test_gdrive(){
    pipeline {
-      stages {
+      stages() {
          stage('gdrive'){
              steps {
 					
@@ -1021,9 +1021,9 @@ def test_gdrive() {
 
 }}}}}
 
-def test_gsheets() {
+def test_gsheets(){
    pipeline {
-      stages {
+      stages() {
          stage('gsheets'){
              steps {
 					
@@ -1066,9 +1066,9 @@ def test_gsheets() {
 
 }}}}}
 
-def test_google() {
+def test_google(){
    pipeline {
-      stages {
+      stages() {
          stage('google'){
              steps {
 					
@@ -1087,9 +1087,9 @@ def test_google() {
 
 }}}}}
 
-def test_neocities() {
+def test_neocities(){
    pipeline {
-      stages {
+      stages() {
          stage('neocities'){
              steps {
 					
@@ -1124,9 +1124,9 @@ def test_neocities() {
 
 }}}}}
 
-def test_notion() {
+def test_notion(){
    pipeline {
-      stages {
+      stages() {
          stage('notion'){
              steps {
 					
@@ -1185,9 +1185,9 @@ def test_notion() {
 
 }}}}}
 
-def test_ozon() {
+def test_ozon(){
    pipeline {
-      stages {
+      stages() {
          stage('ozon'){
              steps {
 					
@@ -1374,9 +1374,9 @@ def test_ozon() {
 
 }}}}}
 
-def test_slack() {
+def test_slack(){
    pipeline {
-      stages {
+      stages() {
          stage('slack'){
              steps {
 					
@@ -1531,9 +1531,9 @@ def test_slack() {
 
 }}}}}
 
-def test_telegram() {
+def test_telegram(){
    pipeline {
-      stages {
+      stages() {
          stage('telegram'){
              steps {
 					
@@ -1676,9 +1676,9 @@ def test_telegram() {
 
 }}}}}
 
-def test_twitter() {
+def test_twitter(){
    pipeline {
-      stages {
+      stages() {
          stage('twitter'){
              steps {
 					
@@ -1717,9 +1717,9 @@ def test_twitter() {
 
 }}}}}
 
-def test_viber() {
+def test_viber(){
    pipeline {
-      stages {
+      stages() {
          stage('viber'){
              steps {
 					
@@ -1770,9 +1770,9 @@ def test_viber() {
 
 }}}}}
 
-def test_vk() {
+def test_vk(){
    pipeline {
-      stages {
+      stages() {
          stage('vk'){
              steps {
 					
@@ -1979,9 +1979,9 @@ def test_vk() {
 
 }}}}}
 
-def test_vkteams() {
+def test_vkteams(){
    pipeline {
-      stages {
+      stages() {
          stage('vkteams'){
              steps {
 					
@@ -2104,9 +2104,9 @@ def test_vkteams() {
 
 }}}}}
 
-def test_yadisk() {
+def test_yadisk(){
    pipeline {
-      stages {
+      stages() {
          stage('yadisk'){
              steps {
 					
@@ -2181,9 +2181,9 @@ def test_yadisk() {
 
 }}}}}
 
-def test_yandex() {
+def test_yandex(){
    pipeline {
-      stages {
+      stages() {
          stage('yandex'){
              steps {
 					
