@@ -17,6 +17,7 @@ pipeline {
             steps {
                     bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/main.os'
                     bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/docs_main.os'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/cli_testmaker.os'
             }
         }
 
