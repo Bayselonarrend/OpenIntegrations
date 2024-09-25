@@ -9,9 +9,11 @@
       }
 
 
-    def test_tools() {
-        stage('tools') {
-			steps {
+    stage('Start-tools') {
+       def test_tools() {
+          stages {
+             stage('tools'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -22,14 +24,14 @@
 					powershell encoding: 'UTF-8', script:'./oint.exe tools ПреобразоватьBase64ВДвоичные --in "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_tools()
+    }}}}
+    test_tools()
 
-    def test_airtable() {
-        stage('airtable') {
-			steps {
+    stage('Start-airtable') {
+       def test_airtable() {
+          stages {
+             stage('airtable'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -124,14 +126,14 @@ test_tools()
 					powershell encoding: 'UTF-8', script:'./oint.exe airtable УдалитьКомментарий --token "test" --base "test" --table "test" --record "test" --comment "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_airtable()
+    }}}}
+    test_airtable()
 
-    def test_bitrix24() {
-        stage('bitrix24') {
-			steps {
+    stage('Start-bitrix24') {
+       def test_bitrix24() {
+          stages {
+             stage('bitrix24'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -774,14 +776,14 @@ test_airtable()
 					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 ПолучитьСтруктуруФильтраСделок --empty "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_bitrix24()
+    }}}}
+    test_bitrix24()
 
-    def test_dropbox() {
-        stage('dropbox') {
-			steps {
+    stage('Start-dropbox') {
+       def test_dropbox() {
+          stages {
+             stage('dropbox'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -896,14 +898,14 @@ test_bitrix24()
 					powershell encoding: 'UTF-8', script:'./oint.exe dropbox ОтменитьПубликациюФайла --token "test" --fileid "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_dropbox()
+    }}}}
+    test_dropbox()
 
-    def test_gcalendar() {
-        stage('gcalendar') {
-			steps {
+    stage('Start-gcalendar') {
+       def test_gcalendar() {
+          stages {
+             stage('gcalendar'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -970,14 +972,14 @@ test_dropbox()
 					powershell encoding: 'UTF-8', script:'./oint.exe gcalendar УдалитьСобытие --token "test" --calendar "test" --event "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_gcalendar()
+    }}}}
+    test_gcalendar()
 
-    def test_gdrive() {
-        stage('gdrive') {
-			steps {
+    stage('Start-gdrive') {
+       def test_gdrive() {
+          stages {
+             stage('gdrive'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1032,14 +1034,14 @@ test_gcalendar()
 					powershell encoding: 'UTF-8', script:'./oint.exe gdrive УдалитьКомментарий --token "test" --object "test" --comment "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_gdrive()
+    }}}}
+    test_gdrive()
 
-    def test_gsheets() {
-        stage('gsheets') {
-			steps {
+    stage('Start-gsheets') {
+       def test_gsheets() {
+          stages {
+             stage('gsheets'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1078,14 +1080,14 @@ test_gdrive()
 					powershell encoding: 'UTF-8', script:'./oint.exe gsheets ПолучитьЗначенияЯчеек --token "test" --spreadsheet "test" --cells "test" --sheetname "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_gsheets()
+    }}}}
+    test_gsheets()
 
-    def test_google() {
-        stage('google') {
-			steps {
+    stage('Start-google') {
+       def test_google() {
+          stages {
+             stage('google'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1100,14 +1102,14 @@ test_gsheets()
 					powershell encoding: 'UTF-8', script:'./oint.exe google ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_google()
+    }}}}
+    test_google()
 
-    def test_neocities() {
-        stage('neocities') {
-			steps {
+    stage('Start-neocities') {
+       def test_neocities() {
+          stages {
+             stage('neocities'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1138,14 +1140,14 @@ test_google()
 					powershell encoding: 'UTF-8', script:'./oint.exe neocities СинхронизироватьКаталоги --token "test" --local "test" --remote "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_neocities()
+    }}}}
+    test_neocities()
 
-    def test_notion() {
-        stage('notion') {
-			steps {
+    stage('Start-notion') {
+       def test_notion() {
+          stages {
+             stage('notion'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1200,14 +1202,14 @@ test_neocities()
 					powershell encoding: 'UTF-8', script:'./oint.exe notion ПолучитьДанныеПользователя --token "test" --user "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_notion()
+    }}}}
+    test_notion()
 
-    def test_ozon() {
-        stage('ozon') {
-			steps {
+    stage('Start-ozon') {
+       def test_ozon() {
+          stages {
+             stage('ozon'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1390,14 +1392,14 @@ test_notion()
 					powershell encoding: 'UTF-8', script:'./oint.exe ozon ПолучитьСписокСкладов --clientid "test" --apikey "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_ozon()
+    }}}}
+    test_ozon()
 
-    def test_slack() {
-        stage('slack') {
-			steps {
+    stage('Start-slack') {
+       def test_slack() {
+          stages {
+             stage('slack'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1548,14 +1550,14 @@ test_ozon()
 					powershell encoding: 'UTF-8', script:'./oint.exe slack СформироватьБлокКартинку --picture "test" --alt "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_slack()
+    }}}}
+    test_slack()
 
-    def test_telegram() {
-        stage('telegram') {
-			steps {
+    stage('Start-telegram') {
+       def test_telegram() {
+          stages {
+             stage('telegram'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1694,14 +1696,14 @@ test_slack()
 					powershell encoding: 'UTF-8', script:'./oint.exe telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "test" --forum "test" --topic "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_telegram()
+    }}}}
+    test_telegram()
 
-    def test_twitter() {
-        stage('twitter') {
-			steps {
+    stage('Start-twitter') {
+       def test_twitter() {
+          stages {
+             stage('twitter'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1736,14 +1738,14 @@ test_telegram()
 					powershell encoding: 'UTF-8', script:'./oint.exe twitter СоздатьТвитОпрос --text "test" --options "test" --duration "test" --auth "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_twitter()
+    }}}}
+    test_twitter()
 
-    def test_viber() {
-        stage('viber') {
-			steps {
+    stage('Start-viber') {
+       def test_viber() {
+          stages {
+             stage('viber'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -1790,14 +1792,14 @@ test_twitter()
 					powershell encoding: 'UTF-8', script:'./oint.exe viber СформироватьКлавиатуруИзМассиваКнопок --buttons "test" --color "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_viber()
+    }}}}
+    test_viber()
 
-    def test_vk() {
-        stage('vk') {
-			steps {
+    stage('Start-vk') {
+       def test_vk() {
+          stages {
+             stage('vk'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2000,14 +2002,14 @@ test_viber()
 					powershell encoding: 'UTF-8', script:'./oint.exe vk СформироватьКлавиатуру --buttons "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_vk()
+    }}}}
+    test_vk()
 
-    def test_vkteams() {
-        stage('vkteams') {
-			steps {
+    stage('Start-vkteams') {
+       def test_vkteams() {
+          stages {
+             stage('vkteams'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2126,14 +2128,14 @@ test_vk()
 					powershell encoding: 'UTF-8', script:'./oint.exe vkteams УстановитьПравилаЧата --token "test" --chatid "test" --text "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_vkteams()
+    }}}}
+    test_vkteams()
 
-    def test_yadisk() {
-        stage('yadisk') {
-			steps {
+    stage('Start-yadisk') {
+       def test_yadisk() {
+          stages {
+             stage('yadisk'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2204,14 +2206,14 @@ test_vkteams()
 					powershell encoding: 'UTF-8', script:'./oint.exe yadisk СохранитьПубличныйОбъектНаДиск --token "test" --url "test" --from "test" --to "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_yadisk()
+    }}}}
+    test_yadisk()
 
-    def test_yandex() {
-        stage('yandex') {
-			steps {
+    stage('Start-yandex') {
+       def test_yandex() {
+          stages {
+             stage('yandex'){
+			      steps {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -2226,10 +2228,8 @@ test_yadisk()
 					powershell encoding: 'UTF-8', script:'./oint.exe yandex ОбновитьТокен --id "test" --secret "test" --refresh "test" --debug --test '
                }
 
-			}
-		}
-	}  
-test_yandex()
+    }}}}
+    test_yandex()
 
    }
       post{
