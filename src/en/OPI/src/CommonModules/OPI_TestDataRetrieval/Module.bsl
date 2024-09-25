@@ -1493,7 +1493,7 @@ Function GetCLIFormedValue(Val Value)
     ElsIf CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
 
         JSONWriter     = New JSONWriter();
-        WriterSettings = New JSONWriterSettings(JSONLineBreak.None);
+        WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);
         JSONWriter.SetString(WriterSettings);
 
         WriteJSON(JSONWriter, Value);

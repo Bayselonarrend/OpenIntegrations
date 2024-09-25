@@ -995,12 +995,18 @@ EndProcedure
 
 Procedure CLI_Telegram_CreateForumTopic(FunctionParameters)
 
-    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Icon  = "5357419403325481346";
     Name  = "TestTopic " + String(New UUID);
+    Icon  = "5357419403325481346";
+    Chat  = FunctionParameters["Telegram_ForumID"];
+    Token = FunctionParameters["Telegram_Token"];
 
-    Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("forum" , Chat);
+    Options.Insert("icon"  , Icon);
+    Options.Insert("title" , Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CreateForumThread", Options);
 
     // END
 
@@ -1008,7 +1014,6 @@ Procedure CLI_Telegram_CreateForumTopic(FunctionParameters)
 
     Topic = Result["result"]["message_thread_id"];
 
-    FunctionParameters.Insert("Telegram_TopicID", Topic);
     OPI_Tools.AddField("Telegram_TopicID", Topic, "String", FunctionParameters);
     OPI_TestDataRetrieval.WriteParameter("Telegram_TopicID", FunctionParameters["Telegram_TopicID"]);
 
@@ -1019,25 +1024,24 @@ Procedure CLI_Telegram_CreateForumTopic(FunctionParameters)
     Result    = OPI_Telegram.SendTextMessage(Token, ChatTopic, Text);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage (forum)");
-
     OPI_TestDataRetrieval.Check_TelegramMessage(Result, Text);
 
 EndProcedure
 
 Procedure CLI_Telegram_EditForumTopic(FunctionParameters)
 
-    Token   = FunctionParameters["Telegram_Token"];
-    Chat    = FunctionParameters["Telegram_ForumID"];
-    Topic   = FunctionParameters["Telegram_TopicID"];
-    NewName = "NewTestTitle";
-    NewIcon = "5310132165583840589";
+    Options = New Structure;
+    Options.Insert("token" , FunctionParameters["Telegram_Token"]);
+    Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
+    Options.Insert("icon"  , "5310132165583840589");
+    Options.Insert("title" , "NewTestTitle");
+    Options.Insert("topic" , FunctionParameters["Telegram_TopicID"]);
 
-    Result = OPI_Telegram.EditForumTopic(Token, Chat, Topic, NewName, NewIcon);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "EditForumTopic", Options);
 
     // END
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "EditForumTopic", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -1048,22 +1052,25 @@ Procedure CLI_Telegram_CloseForumTopic(FunctionParameters)
 
     Token = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("forum" , Chat);
 
     OPI_Telegram.OpenForumThread(Token, Chat); // SKIP
 
-    Result = OPI_Telegram.CloseForumThread(Token, Chat); // Closes main topic
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CloseForumThread", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CloseForumTopic (main)");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result); // SKIP
 
-    Result = OPI_Telegram.CloseForumThread(Token, Chat, Topic);
+    Options.Insert("topic" , FunctionParameters["Telegram_TopicID"]);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CloseForumThread", Options);
 
     // END
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "CloseForumThread", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(25);
@@ -1072,22 +1079,20 @@ EndProcedure
 
 Procedure CLI_Telegram_OpenForumTopic(FunctionParameters)
 
-    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+    Options = New Structure;
+    Options.Insert("token" , FunctionParameters["Telegram_Token"]);
+    Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
 
-    Result = OPI_Telegram.OpenForumThread(Token, Chat); // Opens main topic
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "OpenForumThread", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "OpenForumTopic (main)");
+    OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
-    OPI_TestDataRetrieval.Check_TelegramTrue(Result); // SKIP
+    Options.Insert("topic" , FunctionParameters["Telegram_TopicID"]);
 
-    Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);
-
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "OpenForumThread", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "OpenForumThread", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(25);
@@ -1096,16 +1101,14 @@ EndProcedure
 
 Procedure CLI_Telegram_DeleteForumTopic(FunctionParameters)
 
-    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+    Options = New Structure;
+    Options.Insert("token" , FunctionParameters["Telegram_Token"]);
+    Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
+    Options.Insert("topic" , FunctionParameters["Telegram_TopicID"]);
 
-    Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
-
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DeleteForumTopic", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteForumTopic", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(25);
@@ -1114,22 +1117,20 @@ EndProcedure
 
 Procedure CLI_Telegram_ClearPinnedMessagesList(FunctionParameters)
 
-    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
-    Topic = FunctionParameters["Telegram_TopicID"];
+    Options = New Structure;
+    Options.Insert("token" , FunctionParameters["Telegram_Token"]);
+    Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
 
-    Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ClearThreadPinnedMessagesList", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearPinnedMessagesList (main)");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result); // SKIP
 
-    Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);
+    Options.Insert("topic" , FunctionParameters["Telegram_TopicID"]);
 
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ClearThreadPinnedMessagesList", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearThreadPinnedMessagesList", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -1138,15 +1139,13 @@ EndProcedure
 
 Procedure CLI_Telegram_HideMainForumTopic(FunctionParameters)
 
-    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
+    Options = New Structure;
+    Options.Insert("token" , FunctionParameters["Telegram_Token"]);
+    Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
 
-    Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
-
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "HideMainForumTopic", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "HideMainForumTopic", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -1155,15 +1154,13 @@ EndProcedure
 
 Procedure CLI_Telegram_ShowMainForumTopic(FunctionParameters)
 
-    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
+    Options = New Structure;
+    Options.Insert("token" , FunctionParameters["Telegram_Token"]);
+    Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
 
-    Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
-
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ShowMainForumTopic", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "ShowMainForumTopic", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -1172,16 +1169,15 @@ EndProcedure
 
 Procedure CLI_Telegram_ChangeMainTopicName(FunctionParameters)
 
-    Title = "New main thread name " + String(New UUID);
-    Token = FunctionParameters["Telegram_Token"];
-    Chat  = FunctionParameters["Telegram_ForumID"];
 
-    Result = OPI_Telegram.EditMainForumTopicName(Token, Chat, Title);
+    Options = New Structure;
+    Options.Insert("token" , FunctionParameters["Telegram_Token"]);
+    Options.Insert("forum" , FunctionParameters["Telegram_ForumID"]);
+    Options.Insert("title" , "New main thread name " + String(New UUID));
 
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "EditMainForumTopicName", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "EditMainForumTopicName", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -1190,16 +1186,14 @@ EndProcedure
 
 Procedure CLI_Telegram_DeleteMessage(FunctionParameters)
 
-    Token     = FunctionParameters["Telegram_Token"];
-    ChatID    = FunctionParameters["Telegram_ChannelID"];
-    MessageID = FunctionParameters["Telegram_ChannelMessageID"];
+    Options = New Structure;
+    Options.Insert("token"  , FunctionParameters["Telegram_Token"]);
+    Options.Insert("chat"   , FunctionParameters["Telegram_ChannelID"]);
+    Options.Insert("message", FunctionParameters["Telegram_ChannelMessageID"]);
 
-    Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
-
-    // END
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DeleteMessage", Options);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteMessage", "Telegram");
-
     OPI_TestDataRetrieval.Check_TelegramTrue(Result);
 
     OPI_Tools.Pause(5);
