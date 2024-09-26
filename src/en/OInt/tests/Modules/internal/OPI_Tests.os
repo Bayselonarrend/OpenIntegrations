@@ -5685,17 +5685,12 @@ Procedure Twitter_CreateImageTweet(FunctionParameters)
 
     Image = OPI_Tools.Get(Image);
 
-    TFN = GetTempFileName();
-    Image.Write(TFN);
-
     Text   = "TestTweet" + String(New UUID);
-    Result = OPI_Twitter.CreateImageTweet(Text, TFN, Parameters);
+    Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet (TFN)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
-
-    DeleteFiles(TFN);
 
     OPI_Tools.Pause(20);
 
@@ -5730,17 +5725,12 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
 
     Video = OPI_Tools.Get(Video);
 
-    TFN = GetTempFileName();
-    Video.Write(TFN);
-
     Text   = "TestTweet" + String(New UUID);
-    Result = OPI_Twitter.CreateVideoTweet(Text, TFN, Parameters);
+    Result = OPI_Twitter.CreateVideoTweet(Text, Video, Parameters);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet (TFN)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
-
-    DeleteFiles(TFN);
 
     OPI_Tools.Pause(20);
 
@@ -5775,17 +5765,12 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
 
     GIF = OPI_Tools.Get(GIF);
 
-    TFN = GetTempFileName();
-    GIF.Write(TFN);
-
     Text   = "TestTweet" + String(New UUID);
-    Result = OPI_Twitter.CreateGifTweet(Text, TFN, Parameters);
+    Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet (TFN)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
-
-    DeleteFiles(TFN);
 
     OPI_Tools.Pause(20);
 
