@@ -5728,7 +5728,7 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
-    Image = OPI_Tools.Get(Image);
+    Video = OPI_Tools.Get(Video);
 
     TFN = GetTempFileName();
     Video.Write(TFN);
@@ -5773,7 +5773,7 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
-    Image = OPI_Tools.Get(Image);
+    GIF = OPI_Tools.Get(GIF);
 
     TFN = GetTempFileName();
     GIF.Write(TFN);
