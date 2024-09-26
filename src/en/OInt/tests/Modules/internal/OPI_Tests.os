@@ -1087,6 +1087,8 @@ Procedure GD_UploadDeleteFile() Export
     ReplacementImage = OPI_TestDataRetrieval.GetParameter("Picture2");
     Directory        = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
 
+    Image = OPI_Tools.Get(Image);
+
     Description = OPI_GoogleDrive.GetFileDescription();
     Description.Insert("Parent", Directory);
 
@@ -5681,6 +5683,8 @@ Procedure Twitter_CreateImageTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
+    Image = OPI_Tools.Get(Image);
+
     TFN = GetTempFileName();
     Image.Write(TFN);
 
@@ -5724,6 +5728,8 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
+    Image = OPI_Tools.Get(Image);
+
     TFN = GetTempFileName();
     Video.Write(TFN);
 
@@ -5766,6 +5772,8 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet (single)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
+
+    Image = OPI_Tools.Get(Image);
 
     TFN = GetTempFileName();
     GIF.Write(TFN);
