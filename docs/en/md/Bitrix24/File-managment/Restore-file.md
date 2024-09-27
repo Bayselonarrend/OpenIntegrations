@@ -28,12 +28,12 @@ Method at API documentation: [disk.file.restore](https://dev.1c-bitrix.ru/rest_h
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FileID = "7580";
+    FileID = "10836";
 
     Result = OPI_Bitrix24.RestoreFile(URL, FileID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b529cb66006e9f06006b12e400000001000...";
+    Token = "c3abf666006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RestoreFile(URL, FileID, Token);
 ```

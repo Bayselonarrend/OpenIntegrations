@@ -34,7 +34,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Text   = "New post text";
     Title  = "New post title";
     Image1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "604";
+    PostID = "836";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -44,8 +44,8 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b529cb66006e9f06006b12e400000001000...";
-    PostID = "602";
+    Token  = "c3abf666006e9f06006b12e400000001000...";
+    PostID = "834";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```

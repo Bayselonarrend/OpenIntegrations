@@ -42,7 +42,7 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
     Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b529cb66006e9f06006b12e400000001000...";
+    Token = "c3abf666006e9f06006b12e400000001000...";
     Email = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;

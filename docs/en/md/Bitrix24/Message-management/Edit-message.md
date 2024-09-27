@@ -30,15 +30,15 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    MessageID = "11572";
+    MessageID = "15660";
 
     Text = "New message text";
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "b529cb66006e9f06006b12e400000001000...";
-    MessageID = "11574";
+    Token     = "c3abf666006e9f06006b12e400000001000...";
+    MessageID = "15662";
 
     Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";

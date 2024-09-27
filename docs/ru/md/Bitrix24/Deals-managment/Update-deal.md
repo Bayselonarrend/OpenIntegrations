@@ -35,7 +35,7 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
     СтруктураПолей.Вставить("OPPORTUNITY"   , 50000);
 
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDСделки = "80";
+    IDСделки = "542";
 
     Результат = OPI_Bitrix24.ИзменитьСделку(URL, IDСделки, СтруктураПолей);
 
@@ -43,8 +43,8 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
     СтруктураПолей.Вставить("BEGINDATE", "2025-01-01");
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "b529cb66006e9f06006b12e400000001000...";
-    IDСделки  = "82";
+    Токен     = "c3abf666006e9f06006b12e400000001000...";
+    IDСделки  = "544";
 
     Результат = OPI_Bitrix24.ИзменитьСделку(URL, IDСделки, СтруктураПолей, Токен);
 ```
