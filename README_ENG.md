@@ -34,6 +34,35 @@ List of currently available APIs:
   <a href="https://en.openintegrations.dev/docs/Instructions/Dropbox/"><img src="https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/Dropbox.png?6" width="40"></a>
 </div> 
 <br>
+
+## Work example
+
+Sending picture to Telegram chat for 1C/OneScript
+
+```bsl
+
+    Token    = "6129457865:AAFyzNYOAFbu...";
+    ChatID   = "461699897";
+    Text     = "Cool pic";
+    Picture  = "C:/picture.jpg";  // URL, путь на диске или Двоичные данные
+
+    Result = OPI_Telegram.SendImage(Token, ChatID, Text, Picture);
+
+```
+
+Same thing, but for CLI (bash example)
+
+```bash
+    oint telegram SendImage \
+        --token "6129457865:AAFyzNYOAFbu..." \
+        --chat 461699897 \
+        --text "Cool pic" \
+        --picture "picture.jpg"
+```
+
+You can use the standard `>` redirect or the oint's `--out` option to save the response in the console. For more details of working with the CLI version, see the corresponding [documentation section](https://en.openintegrations.dev/docs/Start/CLI_version)
+
+<br>
  
 ## Releases ##
 
