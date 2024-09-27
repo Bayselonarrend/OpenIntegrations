@@ -25,7 +25,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token = "sl.B7rnyEnvxxd-JcTKNUGp-osMJLfqK79ojSqINJc-rtpJlhgC6meGOUa-rM6gZGBAhHWVmrzuqt...";
+    Token = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
     Email = "h5bk6ft62s@privaterelay.appleid.com";
     File  = "kJU6-a-pT48AAAAAAAAABw";
 

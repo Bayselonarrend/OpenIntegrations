@@ -28,13 +28,13 @@ Method at API documentation: [crm.deal.get](https://dev.1c-bitrix.ru/rest_help/c
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DealID = "80";
+    DealID = "542";
 
     Result = OPI_Bitrix24.GetDeal(URL, DealID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b529cb66006e9f06006b12e400000001000...";
-    DealID = "80";
+    Token  = "c3abf666006e9f06006b12e400000001000...";
+    DealID = "542";
 
     Result = OPI_Bitrix24.GetDeal(URL, DealID, Token);
 ```
