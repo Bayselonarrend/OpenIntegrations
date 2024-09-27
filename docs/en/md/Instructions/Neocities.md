@@ -9,7 +9,7 @@ sidebar_class_name: Neocities
 
 This section is dedicated to the library for working with Neocities API. On this page, all the steps necessary to start working are described
 
-## Начало работы
+## Getting started
 
 1. Log in to the [Neocities portal](https://neocities.org) and go to settings
 
