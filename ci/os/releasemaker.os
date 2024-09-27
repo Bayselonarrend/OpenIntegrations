@@ -234,7 +234,7 @@
 
 	СоответствиеФайлов = Новый Соответствие();
 	СоответствиеФайлов.Вставить("deb", " oint=/usr/bin/oint");
-	СоответствиеФайлов.Вставить("rpm", " oint=/usr/share/oint/bin/oint oint.sh=/usr/bin/oint");
+	СоответствиеФайлов.Вставить("rpm", " --rpm-os linux oint=/usr/share/oint/bin/oint oint.sh=/usr/bin/oint");
 
 	Для Каждого Пакет Из СоответствиеПакетов Цикл
 
