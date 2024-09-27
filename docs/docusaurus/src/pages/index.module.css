@@ -16,6 +16,10 @@
   .heroBanner {
     padding: 2rem;
   }
+
+  .biglogo{
+    margin-top: 35px;
+  }
 }
 
 .buttons {
