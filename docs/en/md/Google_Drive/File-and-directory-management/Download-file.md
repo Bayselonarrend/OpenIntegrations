@@ -24,8 +24,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
-    Identifier = "1A0oqifjQs0coHvFLF4BFr7hCmOJxETDe";
+    Token      = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Identifier = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
 
     Result = OPI_GoogleDrive.DownloadFile(Token, Identifier);
 ```

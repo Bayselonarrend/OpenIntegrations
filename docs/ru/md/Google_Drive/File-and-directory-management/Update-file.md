@@ -25,9 +25,9 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+    Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "1A0oqifjQs0coHvFLF4BFr7hCmOJxETDe";
+    Идентификатор = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
     Файл          = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);

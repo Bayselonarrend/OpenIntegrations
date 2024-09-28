@@ -24,11 +24,11 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  
-  Имя = "Тестовая папка";
-  
-  Ответ = OPI_GoogleDrive.СоздатьПапку(Токен, Имя);  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);        //Строка
+    Токен    = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+    Имя      = "Тестовая папка";
+
+    Результат = OPI_GoogleDrive.СоздатьПапку(Токен, Имя, Каталог);
 ```
 
 

@@ -2,7 +2,7 @@
     Путь2     = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Токен    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL
+    Картинка = "https://openintegrations.dev/test_data/picture.jpg"; // URL
 
     ИВФ      = ПолучитьИмяВременногоФайла("png"); // Путь
     КопироватьФайл(Картинка, ИВФ);

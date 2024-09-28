@@ -24,10 +24,11 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  
-  Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
-  
-  Ответ = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, Комментарий);  //Соответствие
+    Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Идентификатор = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
+    ИДКомментария = "AAABV-Y8SW4";
+
+    Результат = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, ИДКомментария);
 ```
 
 
