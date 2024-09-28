@@ -1,16 +1,24 @@
-﻿  
-  Attachments = New Map;
-  Attachments.Insert("Image1", "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
-  Attachments.Insert("Image2", "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1");
-  
-  EventMap = New Map;
-  EventMap.Insert("Description", Description);
-  EventMap.Insert("Title", Name);
-  EventMap.Insert("Venue", "On office");
-  EventMap.Insert("StartDate", CurrentSessionDate());
-  EventMap.Insert("EndDate", EventMap["StartDate"] + 3600);
-  EventMap.Insert("ArrayOfAttachmentURLs", Attachments);
-  EventMap.Insert("SendNotifications", True);
-  
-  Response = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMap);
-  Response = OPI_Tools.JSONString(Response);
+﻿    CurrentDate = OPI_Tools.GetCurrentDate();
+    Token       = "ya29.a0AcM612wmMrqFTlqVAhDtCg-FwGV1Sa-uw5ooSYNBRfMbRu9Ma4PSo6bjPjhi-3v-xqIS7PL6khpK6eDTkTwUDORYMa4j4t3T6_y7emv4I...";
+    Calendar    = "";
+    Name        = "New event";
+    Description = "TestEventDescription";
+    Hour        = 3600;
+
+    Image1      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Binary or Path to file
+    Image2      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Binary or Path to file
+    Attachments = New Map;
+
+    Attachments.Insert("Image1", Image1);
+    Attachments.Insert("Image2", Image2);
+
+    EventDescription = New Map;
+    EventDescription.Insert("Description"           , Description);
+    EventDescription.Insert("Title"                 , Name);
+    EventDescription.Insert("Venue"                 , "InOffice");
+    EventDescription.Insert("StartDate"             , CurrentDate);
+    EventDescription.Insert("EndDate"               , EventDescription["StartDate"] + Hour);
+    EventDescription.Insert("ArrayOfAttachmentURLs" , Attachments);
+    EventDescription.Insert("SendNotifications"     , True);
+
+    Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventDescription);

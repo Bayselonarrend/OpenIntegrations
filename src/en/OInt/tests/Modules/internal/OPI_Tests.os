@@ -800,55 +800,17 @@ EndProcedure
 
 #Region GoogleWorkspace
 
-Procedure GV_GetAuthorizationLink() Export
+Procedure GW_Auth() Export
 
-    ClientID = OPI_TestDataRetrieval.GetParameter("Google_ClientID");
-    Result   = OPI_GoogleWorkspace.FormCodeRetrievalLink(ClientID);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
 
-    OPI_TestDataRetrieval.ExpectsThat(Result)
-        .ИмеетТип("String")
-        .Заполнено();
-
-    OPI_TestDataRetrieval.WriteParameter("Google_Link", Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure GV_GetToken() Export
-
-    ClientID     = OPI_TestDataRetrieval.GetParameter("Google_ClientID");
-    ClientSecret = OPI_TestDataRetrieval.GetParameter("Google_ClientSecret");
-    Code         = OPI_TestDataRetrieval.GetParameter("Google_Code");
-
-    Result = OPI_GoogleWorkspace.GetTokenByCode(ClientID, ClientSecret, Code);
-
-    If ValueIsFilled(Result["access_token"])
-        And ValueIsFilled(Result["refresh_token"]) Then
-
-        OPI_TestDataRetrieval.WriteParameter("Google_Token"  , Result["access_token"]);
-        OPI_TestDataRetrieval.WriteParameter("Google_Refresh", Result["refresh_token"]);
-
-    EndIf;
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure GV_UpdateToken() Export
-
-    ClientID     = OPI_TestDataRetrieval.GetParameter("Google_ClientID");
-    ClientSecret = OPI_TestDataRetrieval.GetParameter("Google_ClientSecret");
-    RefreshToken = OPI_TestDataRetrieval.GetParameter("Google_Refresh");
-
-    Result = OPI_GoogleWorkspace.RefreshToken(ClientID, ClientSecret, RefreshToken);
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Result["access_token"]).Заполнено();
-
-    OPI_TestDataRetrieval.WriteParameter("Google_Token", Result["access_token"]);
-
-    OPI_Tools.Pause(5);
+    GoogleWorkspace_FormCodeRetrievalLink(TestParameters);
+    GoogleWorkspace_GetTokenByCode(TestParameters);
+    GoogleWorkspace_RefreshToken(TestParameters);
 
 EndProcedure
 
@@ -858,96 +820,27 @@ EndProcedure
 
 Procedure GC_GetCalendarList() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Result = OPI_GoogleCalendar.GetCalendarList(Token);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result)
-        .ИмеетТип("Array");
-
-    OPI_Tools.Pause(5);
+    GoogleCalendar_GetCalendarList(TestParameters);
 
 EndProcedure
 
 Procedure GC_CreateDeleteCalendar() Export
 
-    Token       = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Name        = "TestCalendar";
-    Description = "TestDescription";
-    EditedName  = Name + " (change.)";
-    TypeMap     = Type("Map");
-    TypeString  = Type("String");
-    Summary     = "summary";
-    Black       = "#000000";
-    Yellow      = "#ffd800";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
 
-    Result = OPI_GoogleCalendar.CreateCalendar(Token, Name);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendar");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Summary]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип(TypeString).Заполнено();
-
-    Calendar = Result["id"];
-
-    Result = OPI_GoogleCalendar.EditCalendarMetadata(Token
-        , Calendar
-        , EditedName
-        , Description);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditCalendarMetadata");
-
-    OPI_TestDataRetrieval.Check_GKObject(Result, EditedName, Description);
-
-    Result = OPI_GoogleCalendar.GetCalendarMetadata(Token, Calendar);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarMetadata");
-
-    OPI_TestDataRetrieval.Check_GKObject(Result, EditedName, Description);
-
-    Result = OPI_GoogleCalendar.AddCalendarToList(Token, Calendar);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "AddCalendarToList");
-
-    OPI_TestDataRetrieval.Check_GKObject(Result, EditedName, Description);
-
-    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, Black, Yellow, False);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditListCalendar");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Summary]).Равно(EditedName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["foregroundColor"]).Равно(Black);
-    OPI_TestDataRetrieval.ExpectsThat(Result["backgroundColor"]).Равно(Yellow);
-
-    Result = OPI_GoogleCalendar.GetListCalendar(Token, Calendar);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListCalendar");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип(TypeMap);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Summary]).Равно(EditedName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["foregroundColor"]).Равно(Black);
-    OPI_TestDataRetrieval.ExpectsThat(Result["backgroundColor"]).Равно(Yellow);
-
-    Result = OPI_GoogleCalendar.ClearMainCalendar(Token);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ClearMainCalendar");
-
-    OPI_TestDataRetrieval.Check_Empty(Result);
-
-    Result = OPI_GoogleCalendar.DeleteCalendarFromList(Token, Calendar);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendarFromList");
-
-    OPI_TestDataRetrieval.Check_Empty(Result);
-
-    Result = OPI_GoogleCalendar.DeleteCalendar(Token, Calendar);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendar");
-
-    OPI_TestDataRetrieval.Check_Empty(Result);
+    GoogleCalendar_CreateCalendar(TestParameters);
+    GoogleCalendar_EditCalendarMetadata(TestParameters);
+    GoogleCalendar_GetCalendarMetadata(TestParameters);
+    GoogleCalendar_AddCalendarToList(TestParameters);
+    GoogleCalendar_EditListCalendar(TestParameters);
+    GoogleCalendar_GetListCalendar(TestParameters);
+    GoogleCalendar_ClearMainCalendar(TestParameters);
+    GoogleCalendar_DeleteCalendarFromList(TestParameters);
+    GoogleCalendar_DeleteCalendar(TestParameters);
 
     OPI_Tools.Pause(5);
 
@@ -955,80 +848,21 @@ EndProcedure
 
 Procedure GC_CreateDeleteEvent() Export
 
-    CurrentDate       = OPI_Tools.GetCurrentDate();
-    Token             = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Calendar          = OPI_TestDataRetrieval.GetParameter("Google_CalendarID");
-    Name = "New event";
-    Description       = "TestEventDescription";
-    EditedDescription = "Test event description (change.)";
-    UID = "id";
-    Hour = 3600;
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_NewCalendarID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_CalendarID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"            , TestParameters);
 
-    Attachments = New Map;
-
-    Attachments.Insert("Image1"
-        , "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
-    Attachments.Insert("Image2"
-        , "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1");
-
-    EventMap = New Map;
-    EventMap.Insert("Description"           , Description);
-    EventMap.Insert("Title"                 , Name);
-    EventMap.Insert("Venue"                 , "InOffice");
-    EventMap.Insert("StartDate"             , CurrentDate);
-    EventMap.Insert("EndDate"               , EventMap["StartDate"] + Hour);
-    EventMap.Insert("ArrayOfAttachmentURLs" , Attachments);
-    EventMap.Insert("SendNotifications"     , True);
-
-    Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMap);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateEvent");
-
-    Event = Result[UID];
-
-    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
-
-    EventMap = New Map;
-    EventMap.Insert("Description", EditedDescription);
-
-    Result = OPI_GoogleCalendar.EditEvent(Token, Calendar, EventMap, Event);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditEvent");
-
-    OPI_TestDataRetrieval.Check_GKObject(Result, Name, EditedDescription);
-
-    Result = OPI_GoogleCalendar.GetEvent(Token, Calendar, Event);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEvent");
-
-    OPI_TestDataRetrieval.Check_GKObject(Result, Name, EditedDescription);
-
-    Result = OPI_GoogleCalendar.MoveEvent(Token, Calendar, Calendar, Event);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "MoveEvent");
-
-    OPI_TestDataRetrieval.Check_GKObject(Result, Name, EditedDescription);
-
-    Result = OPI_GoogleCalendar.DeleteEvent(Token, Calendar, Event);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteEvent");
-
-    OPI_TestDataRetrieval.Check_Empty(Result);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
-Procedure GC_GetEventList() Export
-
-    Token    = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Calendar = OPI_TestDataRetrieval.GetParameter("Google_CalendarID");
-
-    Result = OPI_GoogleCalendar.GetEventList(Token, Calendar);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEventList");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Array");
+    GoogleCalendar_CreateCalendar(TestParameters);
+    GoogleCalendar_CreateEvent(TestParameters);
+    GoogleCalendar_EditEvent(TestParameters);
+    GoogleCalendar_GetEvent(TestParameters);
+    GoogleCalendar_MoveEvent(TestParameters);
+    GoogleCalendar_GetEventList(TestParameters);
+    GoogleCalendar_DeleteEvent(TestParameters);
+    GoogleCalendar_DeleteCalendar(TestParameters);
 
     OPI_Tools.Pause(5);
 
@@ -4565,8 +4399,8 @@ Procedure VK_AddProduct(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Image1    = FunctionParameters["Picture"]; // URL, Path to file or binary Data
-    Image2    = FunctionParameters["Picture2"]; // URL, Path to file or binary Data
+    Image1    = FunctionParameters["Picture"]; // URL, Binary or Path to file
+    Image2    = FunctionParameters["Picture2"]; // URL, Binary or Path to file
     Selection = FunctionParameters["VK_MarketAlbumID"];
 
     ImageArray = New Array;
@@ -5589,6 +5423,363 @@ Procedure Viber_SendLink(FunctionParameters)
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleWorkspace
+
+Procedure GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
+
+    ClientID = FunctionParameters["Google_ClientID"];
+    Result   = OPI_GoogleWorkspace.FormCodeRetrievalLink(ClientID);
+
+    // END
+
+    OPI_TestDataRetrieval.Check_String(Result);
+    OPI_TestDataRetrieval.WriteParameter("Google_Link", Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleWorkspace_GetTokenByCode(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    Code         = FunctionParameters["Google_Code"];
+
+    Result = OPI_GoogleWorkspace.GetTokenByCode(ClientID, ClientSecret, Code);
+
+    // END
+
+    If ValueIsFilled(Result["access_token"])
+        And ValueIsFilled(Result["refresh_token"]) Then
+
+        OPI_TestDataRetrieval.WriteParameter("Google_Token"  , Result["access_token"]);
+        OPI_TestDataRetrieval.WriteParameter("Google_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleWorkspace_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    RefreshToken = FunctionParameters["Google_Refresh"];
+
+    Result = OPI_GoogleWorkspace.RefreshToken(ClientID, ClientSecret, RefreshToken);
+
+    // END
+
+    OPI_TestDataRetrieval.Check_GoogleToken(Result);
+
+    OPI_TestDataRetrieval.WriteParameter("Google_Token", Result["access_token"]);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleCalendar
+
+Procedure GoogleCalendar_GetCalendarList(FunctionParameters)
+
+    Token  = FunctionParameters["Google_Token"];
+    Result = OPI_GoogleCalendar.GetCalendarList(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList", "GoogleCalendar");
+
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleCalendar_CreateCalendar(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+    Name  = "TestCalendar";
+
+    Result = OPI_GoogleCalendar.CreateCalendar(Token, Name);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendar", "GoogleCalendar");
+
+    OPI_TestDataRetrieval.Check_GoogleCalendar(Result, Name);
+
+    Calendar = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Google_NewCalendarID", Calendar);
+    OPI_Tools.AddField("Google_NewCalendarID", Calendar, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure GoogleCalendar_EditCalendarMetadata(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Calendar    = FunctionParameters["Google_NewCalendarID"];
+    Name        = "New name";
+    Description = "New description";
+
+    Result = OPI_GoogleCalendar.EditCalendarMetadata(Token, Calendar, Name, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditCalendarMetadata", "GoogleCalendar");
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure GoogleCalendar_GetCalendarMetadata(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Result = OPI_GoogleCalendar.GetCalendarMetadata(Token, Calendar);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarMetadata", "GoogleCalendar");
+
+    Name        = "New name";
+    Description = "New description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure GoogleCalendar_AddCalendarToList(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Result = OPI_GoogleCalendar.AddCalendarToList(Token, Calendar);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddCalendarToList", "GoogleCalendar");
+
+    Name        = "New name";
+    Description = "New description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure GoogleCalendar_EditListCalendar(FunctionParameters)
+
+    Token          = FunctionParameters["Google_Token"];
+    Calendar       = FunctionParameters["Google_NewCalendarID"];
+    PrimaryColor   = "#000000";
+    SecondaryColor = "#ffd800";
+    Hidden         = False;
+
+    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, False);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditListCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_GoogleCalendarColors(Result, PrimaryColor, SecondaryColor);
+
+EndProcedure
+
+Procedure GoogleCalendar_GetListCalendar(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Result = OPI_GoogleCalendar.GetListCalendar(Token, Calendar);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetListCalendar", "GoogleCalendar");
+
+    PrimaryColor   = "#000000";
+    SecondaryColor = "#ffd800";
+
+    OPI_TestDataRetrieval.Check_GoogleCalendarColors(Result, PrimaryColor, SecondaryColor);
+
+EndProcedure
+
+Procedure GoogleCalendar_ClearMainCalendar(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+
+    Result = OPI_GoogleCalendar.ClearMainCalendar(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearMainCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure GoogleCalendar_DeleteCalendarFromList(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Result = OPI_GoogleCalendar.DeleteCalendarFromList(Token, Calendar);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendarFromList", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure GoogleCalendar_DeleteCalendar(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Result = OPI_GoogleCalendar.DeleteCalendar(Token, Calendar);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure GoogleCalendar_CreateEvent(FunctionParameters)
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Token       = FunctionParameters["Google_Token"];
+    Calendar    = FunctionParameters["Google_NewCalendarID"];
+    Name        = "New event";
+    Description = "TestEventDescription";
+    Hour        = 3600;
+
+    Image1      = FunctionParameters["Picture"]; // URL, Binary or Path to file
+    Image2      = FunctionParameters["Picture2"]; // URL, Binary or Path to file
+    Attachments = New Map;
+
+    Attachments.Insert("Image1", Image1);
+    Attachments.Insert("Image2", Image2);
+
+    EventDescription = New Map;
+    EventDescription.Insert("Description"           , Description);
+    EventDescription.Insert("Title"                 , Name);
+    EventDescription.Insert("Venue"                 , "InOffice");
+    EventDescription.Insert("StartDate"             , CurrentDate);
+    EventDescription.Insert("EndDate"               , EventDescription["StartDate"] + Hour);
+    EventDescription.Insert("ArrayOfAttachmentURLs" , Attachments);
+    EventDescription.Insert("SendNotifications"     , True);
+
+    Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventDescription);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateEvent", "GoogleCalendar");
+
+    Event = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Google_EventID", Event);
+    OPI_Tools.AddField("Google_EventID", Event, "String", FunctionParameters);
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure GoogleCalendar_EditEvent(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Calendar    = FunctionParameters["Google_NewCalendarID"];
+    Event       = FunctionParameters["Google_EventID"];
+    Description = "New event description";
+
+    EventDescription = New Map;
+    EventDescription.Insert("Description", Description);
+
+    Result = OPI_GoogleCalendar.EditEvent(Token, Calendar, EventDescription, Event);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditEvent", "GoogleCalendar");
+
+    Name = "New event";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure GoogleCalendar_GetEvent(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+    Event    = FunctionParameters["Google_EventID"];
+
+    Result = OPI_GoogleCalendar.GetEvent(Token, Calendar, Event);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEvent", "GoogleCalendar");
+
+    Name        = "New event";
+    Description = "New event description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure GoogleCalendar_MoveEvent(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+    Event = FunctionParameters["Google_EventID"];
+
+    SourceCalendar = FunctionParameters["Google_NewCalendarID"];
+    TargetCalendar = FunctionParameters["Google_CalendarID"];
+
+    Result = OPI_GoogleCalendar.MoveEvent(Token, SourceCalendar, TargetCalendar, Event);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveEvent", "GoogleCalendar");
+
+    Name        = "New event";
+    Description = "New event description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+    OPI_GoogleCalendar.MoveEvent(Token, TargetCalendar, SourceCalendar, Event);
+
+EndProcedure
+
+Procedure GoogleCalendar_DeleteEvent(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+    Event    = FunctionParameters["Google_EventID"];
+
+    Result = OPI_GoogleCalendar.DeleteEvent(Token, Calendar, Event);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteEvent", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure GoogleCalendar_GetEventList(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Result = OPI_GoogleCalendar.GetEventList(Token, Calendar);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEventList", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
 

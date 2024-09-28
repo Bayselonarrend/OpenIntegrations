@@ -1,5 +1,6 @@
-﻿  
-  Name = "TestCalendar (change.)";
-  Description = "TestDescription";
-  Response = OPI_GoogleCalendar.EditCalendarMetadata(Token, "55868c32be16935f0...", Name, Description); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+﻿    Token       = "ya29.a0AcM612wmMrqFTlqVAhDtCg-FwGV1Sa-uw5ooSYNBRfMbRu9Ma4PSo6bjPjhi-3v-xqIS7PL6khpK6eDTkTwUDORYMa4j4t3T6_y7emv4I...";
+    Calendar    = "";
+    Name        = "New name";
+    Description = "New description";
+
+    Result = OPI_GoogleCalendar.EditCalendarMetadata(Token, Calendar, Name, Description);
