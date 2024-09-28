@@ -508,8 +508,8 @@ Procedure VKAPI_CreateProductSelection() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
 
-    CreateProductCollection(TestParameters);
-    EditProductCollection(TestParameters);
+    VK_CreateProductCollection(TestParameters);
+    VK_EditProductCollection(TestParameters);
     VK_AddProduct(TestParameters);
     VK_EditProduct(TestParameters);
     VK_AddProductToCollection(TestParameters);
@@ -4211,7 +4211,7 @@ Procedure VK_GetProductCategoryList(FunctionParameters)
 
 EndProcedure
 
-Procedure CreateProductCollection(FunctionParameters)
+Procedure VK_CreateProductCollection(FunctionParameters)
 
     Parameters = GetVKParameters();
 
@@ -4240,7 +4240,7 @@ Procedure CreateProductCollection(FunctionParameters)
 
 EndProcedure
 
-Procedure EditProductCollection(FunctionParameters)
+Procedure VK_EditProductCollection(FunctionParameters)
 
     Parameters = GetVKParameters();
 
