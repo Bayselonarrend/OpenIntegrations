@@ -1,5 +1,5 @@
 ﻿    Расширение = "docx";
-    URL        = "https://openintegrations.dev/test_data/document.docx";
+    URL        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";

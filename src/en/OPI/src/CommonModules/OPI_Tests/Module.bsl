@@ -884,7 +884,6 @@ EndProcedure
 
 Procedure GD_UploadDeleteFile() Export
 
-
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
@@ -897,7 +896,6 @@ Procedure GD_UploadDeleteFile() Export
     GoogleDrive_CopyObject(TestParameters);
     GoogleDrive_DownloadFile(TestParameters);
     GoogleDrive_UpdateFile(TestParameters);
-    GoogleDrive_CreateComment(TestParameters);
     GoogleDrive_DeleteObject(TestParameters);
 
     OPI_Tools.Pause(5);
@@ -906,83 +904,31 @@ EndProcedure
 
 Procedure GD_CreateDeleteComment() Export
 
-    Kind_     = "kind";
-    Content_  = "content";
-    Id_       = "id";
-    Comments_ = "comments";
-    Token     = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Directory = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
-    Image     = OPI_TestDataRetrieval.GetParameter("Picture");
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
 
-    Description = OPI_GoogleDrive.GetFileDescription();
-    Description.Insert("Parent", Directory);
+    TestParameters.Insert("ArrayOfDeletions", New Array);
 
-    Result     = OPI_GoogleDrive.UploadFile(Token, Image, Description);
-    Identifier = Result[Id_];
+    GoogleDrive_UploadFile(TestParameters);
 
-    Comment     = "NewComment";
-    ResultArray = New Array;
-    Result      = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
+    GoogleDrive_CreateComment(TestParameters);
+    GoogleDrive_GetComment(TestParameters);
+    GoogleDrive_GetCommentList(TestParameters);
+    GoogleDrive_DeleteComment(TestParameters);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment");
-
-    CommentID = Result[Id_];
-
-    ResultArray.Add(Result);
-
-    Result = OPI_GoogleDrive.GetComment(Token, Identifier, CommentID);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetComment");
-
-    ResultArray.Add(Result);
-
-    Result = OPI_GoogleDrive.GetCommentList(Token, Identifier);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCommentList");
-
-    Comments      = Result[Comments_];
-    CommentObject = Comments[Comments.UBound()];
-
-    ResultArray.Add(CommentObject);
-
-    For Each Result In ResultArray Do
-        OPI_TestDataRetrieval.ExpectsThat(Result[Content_]).Равно(Comment);
-        OPI_TestDataRetrieval.ExpectsThat(Result[Kind_]).Равно("drive#comment");
-    EndDo;
-
-    Result = OPI_GoogleDrive.DeleteComment(Token, Identifier, CommentID);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment");
-
-    OPI_TestDataRetrieval.ExpectsThat(ValueIsFilled(Result)).Равно(False);
-
-    OPI_GoogleDrive.DeleteObject(Token, Identifier);
+    GoogleDrive_DeleteObject(TestParameters);
 
 EndProcedure
 
 Procedure GD_CreateCatalog() Export
 
-    Name_     = "name";
-    Name      = "TestFolder";
-    Token     = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Directory = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
 
-    ResultArray = New Array;
-
-    ResultArray.Add(OPI_GoogleDrive.CreateFolder(Token, Name));
-    ResultArray.Add(OPI_GoogleDrive.CreateFolder(Token, Name, Directory));
-
-    For Each Result In ResultArray Do
-
-        OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder");
-
-        CatalogID = Result["id"];
-
-        OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(Name);
-
-        OPI_GoogleDrive.DeleteObject(Token, CatalogID);
-
-    EndDo;
+    GoogleDrive_CreateFolder(TestParameters);
 
 EndProcedure
 
@@ -5831,23 +5777,6 @@ Procedure GoogleDrive_UpdateFile(FunctionParameters)
 
 EndProcedure
 
-Procedure GoogleDrive_CreateComment(FunctionParameters)
-
-    Token      = FunctionParameters["Google_Token"];
-    Identifier = FunctionParameters["GD_File"];
-    Comment    = "Comment text";
-
-    Result = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
-
-    // END
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "GoogleDrive");
-    OPI_TestDataRetrieval.Check_GoogleComment(Result, Comment);
-
-    OPI_Tools.Pause(5);
-
-EndProcedure
-
 Procedure GoogleDrive_DeleteObject(FunctionParameters)
 
     Token      = FunctionParameters["Google_Token"];
@@ -5870,6 +5799,102 @@ Procedure GoogleDrive_DeleteObject(FunctionParameters)
         OPI_Tools.Pause(2);
 
     EndDo;
+
+EndProcedure
+
+Procedure GoogleDrive_CreateComment(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    Comment    = "Comment text";
+
+    Result = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleComment(Result, Comment);
+
+    Identifier = Result["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("GD_Comment", Identifier);
+    OPI_Tools.AddField("GD_Comment", Identifier, "String", FunctionParameters);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleDrive_GetComment(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    CommentID  = FunctionParameters["GD_Comment"];
+
+    Result = OPI_GoogleDrive.GetComment(Token, Identifier, CommentID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetComment", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleComment(Result, "Comment text");
+
+EndProcedure
+
+Procedure GoogleDrive_GetCommentList(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+
+    Result = OPI_GoogleDrive.GetCommentList(Token, Identifier);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCommentList", "GoogleDrive");
+
+    Comments      = Result["comments"];
+    CommentObject = Comments[Comments.UBound()];
+
+    OPI_TestDataRetrieval.Check_GoogleComment(CommentObject, "Comment text");
+
+EndProcedure
+
+Procedure GoogleDrive_DeleteComment(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    CommentID  = FunctionParameters["GD_Comment"];
+
+    Result = OPI_GoogleDrive.DeleteComment(Token, Identifier, CommentID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure GoogleDrive_CreateFolder(FunctionParameters)
+
+    Token     = FunctionParameters["Google_Token"];
+    Directory = FunctionParameters["GD_Catalog"];
+    Name      = "TestFolder";
+
+    Result = OPI_GoogleDrive.CreateFolder(Token, Name, Directory);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
+
+    CatalogID = Result["id"];
+    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
+
+    Result = OPI_GoogleDrive.CreateFolder(Token, Name);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder (root)");
+    OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
+
+    CatalogID = Result["id"];
+    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
 
 EndProcedure
 
