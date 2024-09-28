@@ -26,18 +26,18 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  Parameters = GetVKParameters();
-  
-  Name = "TestCollection";
-  Image = "https://openintegrations.dev/test_data/picture.jpg";
-  Main = True;
-  Hidden = False;
-  
-  Result = OPI_VK.CreateProductCollection(Name
-  , Image
-  , Main
-  , Hidden
-  , Parameters);
+    Parameters = GetVKParameters();
+
+    Name   = "TestCollection";
+    Image  = "https://openintegrations.dev/test_data/picture.jpg";
+    Main   = True;
+    Hidden = False;
+
+    Result = OPI_VK.CreateProductCollection(Name
+        , Image
+        , Main
+        , Hidden
+        , Parameters);
 ```
 
 

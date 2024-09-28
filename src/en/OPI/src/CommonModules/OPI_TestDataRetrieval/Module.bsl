@@ -164,7 +164,6 @@ Function GetTestTable() Export
 
     NewTest(TestTable, "GW_Auth"          , "Authorization"   , Tables);
     NewTest(TestTable, "GT_CreateTable"   , "Create table"    , Tables);
-    NewTest(TestTable, "GT_GetTable"      , "Get table"       , Tables);
     NewTest(TestTable, "GT_FillClearCells", "Fill/Clear cells", Tables);
 
     NewTest(TestTable, "TwitterAPI_AccountData", "Account data"   , Twitter);
@@ -997,6 +996,65 @@ Procedure Check_GoogleComment(Val Result, Val Comment) Export
 
     ExpectsThat(Result["content"]).Равно(Comment);
     ExpectsThat(Result["kind"]).Равно("drive#comment");
+
+EndProcedure
+
+Procedure Check_GoogleSpreadsheet(Val Result, Val Name, Val SheetArray = "") Export
+
+    ExpectsThat(Result["properties"]["title"]).Равно(Name);
+
+    If ValueIsFilled(SheetArray) Then
+
+        For N = 0 To SheetArray.UBound() Do
+
+            SheetName = Result["sheets"][N]["properties"]["title"];
+            ExpectsThat(SheetName).Равно(SheetArray[N]);
+
+        EndDo;
+
+    EndIf;
+
+EndProcedure
+
+Procedure Check_GoogleSheet(Val Result, Val Spreadsheet = "") Export
+
+    ExpectsThat(Result["title"]).Заполнено();
+
+    If ValueIsFilled(Spreadsheet) Then
+
+        ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
+
+    EndIf;
+
+EndProcedure
+
+Procedure Check_GoogleSpreadsheetElement(Val Result, Val Spreadsheet) Export
+
+    ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
+
+EndProcedure
+
+Procedure Check_GoogleSheetTitle(Val Result, Val Name) Export
+
+    ExpectsThat(Result["properties"]["title"]).Равно(Name);
+
+EndProcedure
+
+Procedure Check_GoogleCellUpdating(Val Result, Val Count) Export
+
+    ExpectsThat(Result["totalUpdatedCells"]).Равно(Count);
+
+EndProcedure
+
+Procedure Check_GoogleCellValues(Val Result, Val Count) Export
+
+    ExpectsThat(Result["valueRanges"].Count()).Равно(Count);
+
+EndProcedure
+
+Procedure Check_GoogleCellCleanning(Val Result, Val Count) Export
+
+    ExpectsThat(Result["clearedRanges"].Count()).Равно(Count);
 
 EndProcedure
 

@@ -23,11 +23,10 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  ИДФайла = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
-  
-  Ответ = OPI_GoogleDrive.ПолучитьСписокКомментариев(Токен, ИДФайла); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //Строка
+    Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Идентификатор = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
+
+    Результат = OPI_GoogleDrive.ПолучитьСписокКомментариев(Токен, Идентификатор);
 ```
 
 

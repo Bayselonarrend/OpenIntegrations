@@ -24,7 +24,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token     = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+    Token     = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
     Image     = "https://openintegrations.dev/test_data/picture.jpg";
     Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
