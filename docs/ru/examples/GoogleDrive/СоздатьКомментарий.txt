@@ -1,7 +1,5 @@
-﻿  
-  Идентификатор = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
-  Комментарий   = "Новый комментарий";
-  
-  Ответ = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                     //Строка
-  
+﻿    Токен         = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+    Идентификатор = "1A0oqifjQs0coHvFLF4BFr7hCmOJxETDe";
+    Комментарий   = "Текст комментария";
+
+    Результат   = OPI_GoogleDrive.СоздатьКомментарий(Токен, Идентификатор, Комментарий);

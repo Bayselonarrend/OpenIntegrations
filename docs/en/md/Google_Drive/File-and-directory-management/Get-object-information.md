@@ -23,11 +23,10 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Identifier = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
-  
-  Response = OPI_GoogleDrive.GetObjectInformation(Token, Identifier); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token      = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+    Identifier = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+
+    Result = OPI_GoogleDrive.GetObjectInformation(Token, Identifier);
 ```
 
 

@@ -24,12 +24,11 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Identifier = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
-  Comment = "NewComment";
-  
-  Response = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token      = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+    Identifier = "1A0oqifjQs0coHvFLF4BFr7hCmOJxETDe";
+    Comment    = "Comment text";
+
+    Result = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
 ```
 
 

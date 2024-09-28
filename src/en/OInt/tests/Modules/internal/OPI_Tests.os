@@ -874,115 +874,31 @@ EndProcedure
 
 Procedure GD_GetCatalogList() Export
 
-    MimeType_ = "mimeType";
-    Name_     = "name";
-    Name      = "TestFolder";
-    Token     = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Result    = OPI_GoogleDrive.GetDirectoriesList(Token, Name, True);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDirectoriesList");
-
-    Result = Result[0];
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно("application/vnd.google-apps.folder");
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Заполнено();
-
-    OPI_Tools.Pause(5);
-    Identifier = Result["id"];
-
-    OPI_TestDataRetrieval.WriteParameter("GD_Catalog", Identifier);
-
-    Result = OPI_GoogleDrive.GetObjectInformation(Token, Identifier);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInformation");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно("application/vnd.google-apps.folder");
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Заполнено();
-
-    OPI_Tools.Pause(5);
+    GoogleDrive_GetDirectoriesList(TestParameters);
+    GoogleDrive_GetObjectInformation(TestParameters);
 
 EndProcedure
 
 Procedure GD_UploadDeleteFile() Export
 
-    ExtraBytes = 2;
 
-    Kind_     = "kind";
-    Content_  = "content";
-    MIME_     = "MIME";
-    MimeType_ = "mimeType";
-    Name_     = "name";
-    Id_       = "id";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"    , TestParameters);
 
-    ArrayOfDeletions = New Array;
-    Token            = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Image            = OPI_TestDataRetrieval.GetParameter("Picture");
-    ReplacementImage = OPI_TestDataRetrieval.GetParameter("Picture2");
-    Directory        = OPI_TestDataRetrieval.GetParameter("GD_Catalog");
+    TestParameters.Insert("ArrayOfDeletions", New Array);
 
-    Image = OPI_Tools.Get(Image);
-
-    Description = OPI_GoogleDrive.GetFileDescription();
-    Description.Insert("Parent", Directory);
-
-    Result = OPI_GoogleDrive.UploadFile(Token, Image, Description);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно(Description[MIME_]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(Description["Name"]);
-
-    Identifier = Result[Id_];
-    ArrayOfDeletions.Add(Identifier);
-
-    NewName = "CopiedFile.jpeg";
-    Result  = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, "root");
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject");
-
-    OPI_Tools.Pause(5);
-
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно(Description[MIME_]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(NewName);
-
-    ArrayOfDeletions.Add(Result[Id_]);
-
-    Result = OPI_GoogleDrive.DownloadFile(Token, Identifier);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result.Size()).Равно(Image.Size() + ExtraBytes);
-    OPI_Tools.Pause(5);
-
-    NewName = "UpdatedFile.jpg";
-    Result  = OPI_GoogleDrive.UpdateFile(Token, Identifier, ReplacementImage, NewName);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UpdateFile");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result[MimeType_]).Равно(Description[MIME_]);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Name_]).Равно(NewName);
-
-    OPI_Tools.Pause(5);
-
-    Comment = "Yo";
-    Result  = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result[Content_]).Равно(Comment);
-    OPI_TestDataRetrieval.ExpectsThat(Result[Kind_]).Равно("drive#comment");
-
-    OPI_Tools.Pause(5);
-
-    For Each Deletable In ArrayOfDeletions Do
-        Result = OPI_GoogleDrive.DeleteObject(Token, Deletable);
-
-        OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject");
-
-        OPI_TestDataRetrieval.ExpectsThat(ValueIsFilled(Result)).Равно(False);
-        OPI_Tools.Pause(2);
-    EndDo;
+    GoogleDrive_UploadFile(TestParameters);
+    GoogleDrive_CopyObject(TestParameters);
+    GoogleDrive_DownloadFile(TestParameters);
+    GoogleDrive_UpdateFile(TestParameters);
+    GoogleDrive_CreateComment(TestParameters);
+    GoogleDrive_DeleteObject(TestParameters);
 
     OPI_Tools.Pause(5);
 
@@ -5780,6 +5696,180 @@ Procedure GoogleCalendar_GetEventList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetEventList", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleDrive
+
+Procedure GoogleDrive_GetDirectoriesList(FunctionParameters)
+
+    Name  = "TestFolder";
+    Token = FunctionParameters["Google_Token"];
+
+    Result = OPI_GoogleDrive.GetDirectoriesList(Token, Name, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDirectoriesList", "GoogleDrive");
+
+    Result = Result[0];
+
+    OPI_TestDataRetrieval.Check_GoogleCatalogs(Result);
+
+    Identifier = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("GD_Catalog", Identifier);
+    OPI_Tools.AddField("GD_Catalog", Identifier, "String", FunctionParameters);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleDrive_GetObjectInformation(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_Catalog"];
+
+    Result = OPI_GoogleDrive.GetObjectInformation(Token, Identifier);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInformation", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleDrive_UploadFile(FunctionParameters)
+
+    Token     = FunctionParameters["Google_Token"];
+    Image     = FunctionParameters["Picture"];
+    Directory = FunctionParameters["GD_Catalog"];
+
+    Description = OPI_GoogleDrive.GetFileDescription();
+    Description.Insert("Parent", Directory);
+
+    Result = OPI_GoogleDrive.UploadFile(Token, Image, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
+
+    Identifier = Result["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("GD_File", Identifier);
+    OPI_Tools.AddField("GD_File", Identifier, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure GoogleDrive_CopyObject(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    NewName    = "CopiedFile.jpeg";
+    NewParent  = "root";
+
+    Result = OPI_GoogleDrive.CopyObject(Token, Identifier, NewName, NewParent);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "GoogleDrive");
+
+    Description = New Structure("Name,MIME", NewName, "image/jpeg");
+    OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
+
+    Identifier = Result["id"];
+
+    ArrayOfDeletions = FunctionParameters["ArrayOfDeletions"];
+    ArrayOfDeletions.Add(Identifier);
+    FunctionParameters.Insert("ArrayOfDeletions", ArrayOfDeletions);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleDrive_DownloadFile(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+
+    Result = OPI_GoogleDrive.DownloadFile(Token, Identifier);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "GoogleDrive");
+
+    Size       = OPI_Tools.Get(FunctionParameters["Picture"]).Size();
+    ExtraBytes = 2;
+
+    OPI_TestDataRetrieval.Check_BinaryData(Result, Size + ExtraBytes);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleDrive_UpdateFile(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    NewName    = "UpdatedFile.jpg";
+    Identifier = FunctionParameters["GD_File"];
+    File       = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+
+    Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateFile", "GoogleDrive");
+
+    Description = New Structure("Name,MIME", NewName, "image/jpeg");
+    OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleDrive_CreateComment(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    Comment    = "Comment text";
+
+    Result = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleComment(Result, Comment);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure GoogleDrive_DeleteObject(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+
+    Result = OPI_GoogleDrive.DeleteObject(Token, Identifier);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    For Each Deletable In FunctionParameters["ArrayOfDeletions"] Do
+
+        Result = OPI_GoogleDrive.DeleteObject(Token, Deletable);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject");
+
+        OPI_TestDataRetrieval.Check_Empty(Result);
+        OPI_Tools.Pause(2);
+
+    EndDo;
 
 EndProcedure
 
