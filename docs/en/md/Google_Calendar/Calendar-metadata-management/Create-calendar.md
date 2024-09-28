@@ -23,9 +23,10 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Response = OPI_GoogleCalendar.CreateCalendar(Token, "TestCalendar"); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token = "ya29.a0AcM612yhdixI9i7TxOgZIa9kwI5a42S4MfHVMdYZeolUKySbI7x1gtyAhGDlso57x7N6WNRpp9BZX0N3MQOcZEdR6lDciUHI4nof3u9xi...";
+    Name  = "TestCalendar";
+
+    Result = OPI_GoogleCalendar.CreateCalendar(Token, Name);
 ```
 
 

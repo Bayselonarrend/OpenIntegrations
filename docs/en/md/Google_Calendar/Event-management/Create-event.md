@@ -24,22 +24,30 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Attachments = New Map;
-  Attachments.Insert("Image1", "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png");
-  Attachments.Insert("Image2", "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1");
-  
-  EventMap = New Map;
-  EventMap.Insert("Description", Description);
-  EventMap.Insert("Title", Name);
-  EventMap.Insert("Venue", "On office");
-  EventMap.Insert("StartDate", CurrentSessionDate());
-  EventMap.Insert("EndDate", EventMap["StartDate"] + 3600);
-  EventMap.Insert("ArrayOfAttachmentURLs", Attachments);
-  EventMap.Insert("SendNotifications", True);
-  
-  Response = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventMap);
-  Response = OPI_Tools.JSONString(Response);
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Token       = "ya29.a0AcM612yhdixI9i7TxOgZIa9kwI5a42S4MfHVMdYZeolUKySbI7x1gtyAhGDlso57x7N6WNRpp9BZX0N3MQOcZEdR6lDciUHI4nof3u9xi...";
+    Calendar    = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    Name        = "New event";
+    Description = "TestEventDescription";
+    Hour        = 3600;
+
+    Image1      = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Binary or Path to file
+    Image2      = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Binary or Path to file
+    Attachments = New Map;
+
+    Attachments.Insert("Image1", Image1);
+    Attachments.Insert("Image2", Image2);
+
+    EventDescription = New Map;
+    EventDescription.Insert("Description"           , Description);
+    EventDescription.Insert("Title"                 , Name);
+    EventDescription.Insert("Venue"                 , "InOffice");
+    EventDescription.Insert("StartDate"             , CurrentDate);
+    EventDescription.Insert("EndDate"               , EventDescription["StartDate"] + Hour);
+    EventDescription.Insert("ArrayOfAttachmentURLs" , Attachments);
+    EventDescription.Insert("SendNotifications"     , True);
+
+    Result = OPI_GoogleCalendar.CreateEvent(Token, Calendar, EventDescription);
 ```
 
 
