@@ -25,12 +25,15 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  
-  EventMap = New Map;
-  EventMap.Insert("Description", "Test event description (change.)");
-  
-  Response = OPI_GoogleCalendar.EditEvent(Token, "55868c32be16935f0...", EventMap, "j4nonfcc0m2...");
-  Response = OPI_Tools.JSONString(Response);
+    Token       = "ya29.a0AcM612yhdixI9i7TxOgZIa9kwI5a42S4MfHVMdYZeolUKySbI7x1gtyAhGDlso57x7N6WNRpp9BZX0N3MQOcZEdR6lDciUHI4nof3u9xi...";
+    Calendar    = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    Event       = "h51qr9dclbnie1hh633er26umo";
+    Description = "New event description";
+
+    EventDescription = New Map;
+    EventDescription.Insert("Description", Description);
+
+    Result = OPI_GoogleCalendar.EditEvent(Token, Calendar, EventDescription, Event);
 ```
 
 

@@ -23,9 +23,10 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_GoogleCalendar.СоздатьКалендарь(Токен, "Тестовый календарь"); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                               //Строка
+    Токен        = "ya29.a0AcM612yhdixI9i7TxOgZIa9kwI5a42S4MfHVMdYZeolUKySbI7x1gtyAhGDlso57x7N6WNRpp9BZX0N3MQOcZEdR6lDciUHI4nof3u9xi...";
+    Наименование = "Тестовый календарь";
+
+    Результат = OPI_GoogleCalendar.СоздатьКалендарь(Токен, Наименование);
 ```
 
 

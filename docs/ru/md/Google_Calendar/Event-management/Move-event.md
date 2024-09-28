@@ -25,9 +25,13 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_GoogleCalendar.ПереместитьСобытие(Токен, "bayselonarrend@gmail.com", "55868c32be16935f0...", "j4nonfcc0m2...");  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                                                  //Строка
+    Токен     = "ya29.a0AcM612yhdixI9i7TxOgZIa9kwI5a42S4MfHVMdYZeolUKySbI7x1gtyAhGDlso57x7N6WNRpp9BZX0N3MQOcZEdR6lDciUHI4nof3u9xi...";
+    Событие   = "h51qr9dclbnie1hh633er26umo";
+
+    КалендарьИсточник = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    КалендарьПриемник = "bayselonarrend@gmail.com";
+
+    Результат = OPI_GoogleCalendar.ПереместитьСобытие(Токен, КалендарьИсточник, КалендарьПриемник, Событие);
 ```
 
 

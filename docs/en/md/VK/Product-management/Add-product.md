@@ -26,8 +26,8 @@ sidebar_position: 4
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Image1    = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or binary Data
-    Image2    = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path to file or binary Data
+    Image1    = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Binary or Path to file
+    Image2    = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Binary or Path to file
     Selection = "121";
 
     ImageArray = New Array;
