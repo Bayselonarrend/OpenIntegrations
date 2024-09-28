@@ -26,13 +26,13 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  
-  
-  Black = "#000000";
-  Yellow = "#ffd800";
-  
-  Response = OPI_GoogleCalendar.EditListCalendar(Token, "55868c32be16935f0...", Black, Yellow, False); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token          = "ya29.a0AcM612yhdixI9i7TxOgZIa9kwI5a42S4MfHVMdYZeolUKySbI7x1gtyAhGDlso57x7N6WNRpp9BZX0N3MQOcZEdR6lDciUHI4nof3u9xi...";
+    Calendar       = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    PrimaryColor   = "#000000";
+    SecondaryColor = "#ffd800";
+    Hidden         = False;
+
+    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, False);
 ```
 
 
