@@ -1,4 +1,5 @@
-﻿  
-  Ответ = OPI_GoogleCalendar.УдалитьСобытие(Токен, "55868c32be16935f0...", "j4nonfcc0m2...");  //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                                  //Строка
-  
+﻿    Токен     = "ya29.a0AcM612wmMrqFTlqVAhDtCg-FwGV1Sa-uw5ooSYNBRfMbRu9Ma4PSo6bjPjhi-3v-xqIS7PL6khpK6eDTkTwUDORYMa4j4t3T6_y7emv4I...";
+    Календарь = "";
+    Событие   = "";
+
+    Результат = OPI_GoogleCalendar.УдалитьСобытие(Токен, Календарь, Событие);
