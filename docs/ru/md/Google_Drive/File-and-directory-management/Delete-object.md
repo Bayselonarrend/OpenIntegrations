@@ -23,10 +23,10 @@ sidebar_position: 9
 
 
 ```bsl title="Пример кода"
-  
-  Идентификатор = "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa";
-  
-  Ответ = OPI_GoogleDrive.УдалитьОбъект(Токен, Идентификатор);  //Соответствие
+    Токен         = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+    Идентификатор = "1A0oqifjQs0coHvFLF4BFr7hCmOJxETDe";
+
+    Результат = OPI_GoogleDrive.УдалитьОбъект(Токен, Идентификатор);
 ```
 
 

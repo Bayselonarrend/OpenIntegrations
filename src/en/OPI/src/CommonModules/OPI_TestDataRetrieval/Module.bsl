@@ -957,17 +957,46 @@ EndProcedure
 
 Procedure Check_GoogleCalendar(Val Result, Val Name) Export
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Result["summary"]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["summary"]).Равно(Name);
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
 
 EndProcedure
 
 Procedure Check_GoogleCalendarColors(Val Result, Val PrimaryColor, Val SecondaryColor) Export
 
-    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
-    OPI_TestDataRetrieval.ExpectsThat(Result["backgroundColor"]).Равно(SecondaryColor);
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
+    ExpectsThat(Result["backgroundColor"]).Равно(SecondaryColor);
+
+EndProcedure
+
+Procedure Check_GoogleCatalogs(Val Result) Export
+
+    ExpectsThat(Result["files"]).ИмеетТип("Array");
+    ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
+    ExpectsThat(Result["name"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GoogleCatalog(Val Result) Export
+
+    ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
+    ExpectsThat(Result["name"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GoogleObject(Val Result, Val Description) Export
+
+    ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
+    ExpectsThat(Result["name"]).Равно(Description["Name"]);
+
+EndProcedure
+
+Procedure Check_GoogleComment(Val Result, Val Comment) Export
+
+    ExpectsThat(Result["content"]).Равно(Comment);
+    ExpectsThat(Result["kind"]).Равно("drive#comment");
 
 EndProcedure
 
