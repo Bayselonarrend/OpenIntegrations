@@ -1,6 +1,6 @@
-﻿    Токен         = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+﻿    Токен         = "ya29.a0AcM612wmMrqFTlqVAhDtCg-FwGV1Sa-uw5ooSYNBRfMbRu9Ma4PSo6bjPjhi-3v-xqIS7PL6khpK6eDTkTwUDORYMa4j4t3T6_y7emv4I...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "1A0oqifjQs0coHvFLF4BFr7hCmOJxETDe";
-    Файл          = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Идентификатор = "";
+    Файл          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);
