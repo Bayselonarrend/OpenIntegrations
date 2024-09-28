@@ -938,139 +938,33 @@ EndProcedure
 
 Procedure GT_CreateTable() Export
 
-    Token = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Name  = "TestTable";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
 
-    SheetArray = New Array;
-    SheetArray.Add("Sheet1");
-    SheetArray.Add("Sheet2");
+    GoogleSheets_CreateSpreadsheet(TestParameters);
+    GoogleSheets_CopySheet(TestParameters);
+    GoogleSheets_AddSheet(TestParameters);
+    GoogleSheets_DeleteSheet(TestParameters);
+    GoogleSheets_EditSpreadsheetTitle(TestParameters);
+    GoogleSheets_GetTable(TestParameters);
 
-    Result = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, SheetArray);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateSpreadsheet");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["properties"]["title"]).Равно(Name);
-
-    For N = 0 To SheetArray.UBound() Do
-
-        SheetName = Result["sheets"][N]["properties"]["title"];
-        OPI_TestDataRetrieval.ExpectsThat(SheetName).Равно(SheetArray[N]);
-        Sheet     = Result["sheets"][N]["properties"]["sheetId"];
-        Sheet     = OPI_Tools.NumberToString(Sheet);
-
-    EndDo;
-
-    Spreadsheet = Result["spreadsheetId"];
-
-    OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet", Spreadsheet);
-    OPI_TestDataRetrieval.WriteParameter("GS_Sheet"      , Sheet);
-
-    Name   = "Test table (new.)";
-    Result = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, SheetArray);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CopySheet (new.)");
-
-    Spreadsheet2 = Result["spreadsheetId"];
-
-    Result = OPI_GoogleSheets.CopySheet(Token, Spreadsheet, Spreadsheet2, Sheet);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CopySheet");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["title"]).Заполнено();
-
-    Name = "TestSheet";
-
-    Result = OPI_GoogleSheets.AddSheet(Token, Spreadsheet, Name);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "AddSheet");
-
-    NewSheet = Result["replies"][0]["addSheet"]["properties"]["sheetId"];
-    NewSheet = OPI_Tools.NumberToString(NewSheet);
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-
-    Result = OPI_GoogleSheets.DeleteSheet(Token, Spreadsheet, NewSheet);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSheet");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-
-    Name = "Test table (changed.)";
-
-    Result = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditSpreadsheetTitle");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-
-EndProcedure
-
-Procedure GT_GetTable() Export
-
-    Token       = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Spreadsheet = OPI_TestDataRetrieval.GetParameter("GS_Spreadsheet");
-    Name        = "Test table (changed.)";
-
-    Result = OPI_GoogleSheets.GetSpreadsheet(Token, Spreadsheet);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTable");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["properties"]["title"]).Равно(Name);
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet"]);
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet2"]);
 
 EndProcedure
 
 Procedure GT_FillClearCells() Export
 
-    Token       = OPI_TestDataRetrieval.GetParameter("Google_Token");
-    Spreadsheet = OPI_TestDataRetrieval.GetParameter("GS_Spreadsheet");
-    Sheet       = "Sheet2";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token" , TestParameters);
 
-    CellStructure = New Map;
-    CellStructure.Insert("A1", "ThisIsA1");
-    CellStructure.Insert("A2", "ThisIsA2");
-    CellStructure.Insert("B2", "ThisIsB2");
-    CellStructure.Insert("B3", "ThisIsB3");
-    CellStructure.Insert("A3", "ThisIsA3");
-    CellStructure.Insert("A4", "ThisIsA4");
-    CellStructure.Insert("B1", "ThisIsB1");
-    CellStructure.Insert("B4", "ThisIsB4");
+    GoogleSheets_CreateSpreadsheet(TestParameters);
+    GoogleSheets_SetCellValues(TestParameters);
+    GoogleSheets_GetCellValues(TestParameters);
+    GoogleSheets_ClearCells(TestParameters);
 
-    CellsArray = New Array;
-    CellsArray.Add("B2");
-    CellsArray.Add("A3");
-    CellsArray.Add("B4");
-
-    Result = OPI_GoogleSheets.SetCellValues(Token, Spreadsheet, CellStructure, Sheet);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SetCellValues");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-    OPI_TestDataRetrieval.ExpectsThat(Result["totalUpdatedCells"]).Равно(CellStructure.Count());
-
-    Result = OPI_GoogleSheets.GetCellValues(Token, Spreadsheet, CellsArray, Sheet);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-    OPI_TestDataRetrieval.ExpectsThat(Result["valueRanges"].Count()).Равно(CellsArray.Count());
-
-    Result = OPI_GoogleSheets.GetCellValues(Token, Spreadsheet, , Sheet);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-
-    CellsArray = New Array;
-    CellsArray.Add("B2");
-    CellsArray.Add("A3");
-    CellsArray.Add("B4");
-
-    Result = OPI_GoogleSheets.ClearCells(Token, Spreadsheet, CellsArray, Sheet);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ClearCells");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["spreadsheetId"]).Равно(Spreadsheet);
-    OPI_TestDataRetrieval.ExpectsThat(Result["clearedRanges"].Count()).Равно(CellsArray.Count());
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet"]);
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet2"]);
 
 EndProcedure
 
@@ -5895,6 +5789,195 @@ Procedure GoogleDrive_CreateFolder(FunctionParameters)
 
     CatalogID = Result["id"];
     OPI_GoogleDrive.DeleteObject(Token, CatalogID);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleSheets
+
+Procedure GoogleSheets_CreateSpreadsheet(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+    Name  = "TestTable";
+
+    SheetArray = New Array;
+    SheetArray.Add("Sheet1");
+    SheetArray.Add("Sheet2");
+
+    Result = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, SheetArray);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSpreadsheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheet(Result, Name, SheetArray);
+
+    Spreadsheet = Result["spreadsheetId"];
+    Sheet       = Result["sheets"][0]["properties"]["sheetId"];
+    Sheet       = OPI_Tools.NumberToString(Sheet);
+
+    OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet", Spreadsheet);
+    OPI_TestDataRetrieval.WriteParameter("GS_Sheet"      , Sheet);
+
+    OPI_Tools.AddField("GS_Spreadsheet", Spreadsheet, "String", FunctionParameters);
+    OPI_Tools.AddField("GS_Sheet"      , Sheet      , "String", FunctionParameters);
+
+    Name   = "Test table (new.)";
+    Result = OPI_GoogleSheets.CreateSpreadsheet(Token, Name, SheetArray);
+
+    Spreadsheet = Result["spreadsheetId"];
+
+    OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet2", Spreadsheet);
+    OPI_Tools.AddField("GS_Spreadsheet2", Spreadsheet, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure GoogleSheets_CopySheet(FunctionParameters)
+
+    Token  = FunctionParameters["Google_Token"];
+    From   = FunctionParameters["GS_Spreadsheet"];
+    Target = FunctionParameters["GS_Spreadsheet2"];
+    Sheet  = FunctionParameters["GS_Sheet"];
+
+    Result = OPI_GoogleSheets.CopySheet(Token, From, Target, Sheet);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopySheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSheet(Result);
+
+EndProcedure
+
+Procedure GoogleSheets_AddSheet(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Name        = "TestSheet";
+
+    Result = OPI_GoogleSheets.AddSheet(Token, Spreadsheet, Name);
+
+    // END
+
+    NewSheet = Result["replies"][0]["addSheet"]["properties"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddSheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSheet(NewSheet);
+
+EndProcedure
+
+Procedure GoogleSheets_DeleteSheet(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = FunctionParameters["GS_Sheet"];
+
+    Result = OPI_GoogleSheets.DeleteSheet(Token, Spreadsheet, Sheet);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSheet");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
+
+EndProcedure
+
+Procedure GoogleSheets_EditSpreadsheetTitle(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Name        = "Test table (changed.)";
+
+    Result = OPI_GoogleSheets.EditSpreadsheetTitle(Token, Spreadsheet, Name);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditSpreadsheetTitle", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
+
+EndProcedure
+
+Procedure GoogleSheets_GetTable(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+
+    Result = OPI_GoogleSheets.GetSpreadsheet(Token, Spreadsheet);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTable", "GoogleSheets");
+
+    Name = "Test table (changed.)";
+    OPI_TestDataRetrieval.Check_GoogleSheetTitle(Result, Name);
+
+EndProcedure
+
+Procedure GoogleSheets_SetCellValues(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = "Sheet2";
+
+    ValueMapping = New Map;
+    ValueMapping.Insert("A1", "ThisIsA1");
+    ValueMapping.Insert("A2", "ThisIsA2");
+    ValueMapping.Insert("B2", "ThisIsB2");
+    ValueMapping.Insert("B3", "ThisIsB3");
+    ValueMapping.Insert("A3", "ThisIsA3");
+    ValueMapping.Insert("A4", "ThisIsA4");
+    ValueMapping.Insert("B1", "ThisIsB1");
+    ValueMapping.Insert("B4", "ThisIsB4");
+
+    Result = OPI_GoogleSheets.SetCellValues(Token, Spreadsheet, ValueMapping, Sheet);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetCellValues", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleCellUpdating(Result, ValueMapping.Count());
+
+EndProcedure
+
+Procedure GoogleSheets_GetCellValues(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = "Sheet2";
+
+    CellsArray = New Array;
+    CellsArray.Add("B2");
+    CellsArray.Add("A3");
+    CellsArray.Add("B4");
+
+    Result = OPI_GoogleSheets.GetCellValues(Token, Spreadsheet, CellsArray, Sheet);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleCellValues(Result, CellsArray.Count());
+
+    Result = OPI_GoogleSheets.GetCellValues(Token, Spreadsheet, , Sheet);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues (all)");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
+
+EndProcedure
+
+Procedure GoogleSheets_ClearCells(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = "Sheet2";
+
+    CellsArray = New Array;
+    CellsArray.Add("B2");
+    CellsArray.Add("A3");
+    CellsArray.Add("B4");
+
+    Result = OPI_GoogleSheets.ClearCells(Token, Spreadsheet, CellsArray, Sheet);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearCells", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleCellCleanning(Result, CellsArray.Count());
 
 EndProcedure
 

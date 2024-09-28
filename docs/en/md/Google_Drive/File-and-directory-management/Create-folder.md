@@ -24,11 +24,11 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  
-  Name = "TestFolder";
-  
-  Response = OPI_GoogleDrive.CreateFolder(Token, Name); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Token     = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+    Name      = "TestFolder";
+
+    Result = OPI_GoogleDrive.CreateFolder(Token, Name, Directory);
 ```
 
 

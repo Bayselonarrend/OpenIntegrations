@@ -2,7 +2,7 @@
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Image     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image     = "https://openintegrations.dev/test_data/picture.jpg";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);
