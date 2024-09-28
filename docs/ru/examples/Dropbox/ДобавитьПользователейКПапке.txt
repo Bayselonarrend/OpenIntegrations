@@ -1,5 +1,5 @@
-﻿    Токен  = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
+﻿    Токен  = "sl.B9UkyV2zUTP1LLTzgy6XcG5j_RdnQh84LmpC70BXg5rw9eXyYb0F7XGDXMiLrjc69YlZIFZqEi...";
     Почта  = "h5bk6ft62s@privaterelay.appleid.com";
-    Папка  = "11496030465"; // shared_folder_id
+    Папка  = "11435002545"; // shared_folder_id
 
     Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почта, Ложь);

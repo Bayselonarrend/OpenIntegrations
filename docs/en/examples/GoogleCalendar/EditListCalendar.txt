@@ -1,7 +1,7 @@
-﻿  
-  
-  Black = "#000000";
-  Yellow = "#ffd800";
-  
-  Response = OPI_GoogleCalendar.EditListCalendar(Token, "55868c32be16935f0...", Black, Yellow, False); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+﻿    Token          = "ya29.a0AcM612wmMrqFTlqVAhDtCg-FwGV1Sa-uw5ooSYNBRfMbRu9Ma4PSo6bjPjhi-3v-xqIS7PL6khpK6eDTkTwUDORYMa4j4t3T6_y7emv4I...";
+    Calendar       = "";
+    PrimaryColor   = "#000000";
+    SecondaryColor = "#ffd800";
+    Hidden         = False;
+
+    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, False);

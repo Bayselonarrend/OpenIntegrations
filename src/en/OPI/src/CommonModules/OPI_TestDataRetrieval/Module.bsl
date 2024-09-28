@@ -149,23 +149,20 @@ Function GetTestTable() Export
     NewTest(TestTable, "YDisk_PublicObjectActions"    , "Actions with public objects", YDisk);
     NewTest(TestTable, "YDisk_GetPublishedList"       , "Get published list"         , YDisk);
 
-    NewTest(TestTable, "GV_GetAuthorizationLink", "Get authorization link", VSpace);
-    NewTest(TestTable, "GV_GetToken"            , "Get token"             , VSpace);
-    NewTest(TestTable, "GV_UpdateToken"         , "Refresh token"         , VSpace);
+    NewTest(TestTable, "GW_Auth", "Authorization", VSpace);
 
-    NewTest(TestTable, "GV_UpdateToken"          , "Refresh token"          , Calendar);
+    NewTest(TestTable, "GW_Auth"                 , "Authorization"          , Calendar);
     NewTest(TestTable, "GC_GetCalendarList"      , "Get list of calendars"  , Calendar);
     NewTest(TestTable, "GC_CreateDeleteCalendar" , "Create/Delete calendar" , Calendar);
     NewTest(TestTable, "GC_CreateDeleteEvent"    , "Create/Delete event"    , Calendar);
-    NewTest(TestTable, "GC_GetEventList"         , "Get list of events"     , Calendar);
 
-    NewTest(TestTable, "GV_UpdateToken"        , "Refresh token"           , Drive);
+    NewTest(TestTable, "GW_Auth"               , "Authorization"           , Drive);
     NewTest(TestTable, "GD_GetCatalogList"     , "Get list of directories" , Drive);
     NewTest(TestTable, "GD_UploadDeleteFile"   , "Upload/Delete file"      , Drive);
     NewTest(TestTable, "GD_CreateDeleteComment", "Create/Delete Comment"   , Drive);
     NewTest(TestTable, "GD_CreateCatalog"      , "Create/Delete catalog"   , Drive);
 
-    NewTest(TestTable, "GV_UpdateToken"   , "Refresh token"   , Tables);
+    NewTest(TestTable, "GW_Auth"          , "Authorization"   , Tables);
     NewTest(TestTable, "GT_CreateTable"   , "Create table"    , Tables);
     NewTest(TestTable, "GT_GetTable"      , "Get table"       , Tables);
     NewTest(TestTable, "GT_FillClearCells", "Fill/Clear cells", Tables);
@@ -948,6 +945,29 @@ Procedure Check_ViberMessage(Val Result) Export
     ExpectsThat(Result["message_token"]).Заполнено();
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
+
+EndProcedure
+
+Procedure Check_GoogleToken(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_GoogleCalendar(Val Result, Val Name) Export
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["summary"]).Равно(Name);
+    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+
+EndProcedure
+
+Procedure Check_GoogleCalendarColors(Val Result, Val PrimaryColor, Val SecondaryColor) Export
+
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("Map");
+    OPI_TestDataRetrieval.ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
+    OPI_TestDataRetrieval.ExpectsThat(Result["backgroundColor"]).Равно(SecondaryColor);
 
 EndProcedure
 
