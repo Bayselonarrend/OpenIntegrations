@@ -24,10 +24,10 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  Name = "Description";
-  Response = OPI_GoogleDrive.GetDirectoriesList(Token, Name, False); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+    Name  = "TestFolder";
+    Token = "ya29.a0AcM612z6H4poMFq_1-p1k1-QF7c-gwUkVSsqTdSkNphsLEOb5P6mIEka1HO6Qtpa8blAWg966f9g85FujqfIsORbwU-wVy_3xEHh5ycBg...";
+
+    Result = OPI_GoogleDrive.GetDirectoriesList(Token, Name, True);
 ```
 
 
