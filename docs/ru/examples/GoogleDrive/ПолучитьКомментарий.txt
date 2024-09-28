@@ -1,7 +1,5 @@
-﻿  
-  ИДФайла         = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
-  ИДКомментария   = AAABI3NNNAY;
-  
-  Ответ = OPI_GoogleDrive.ПолучитьКомментарий(Токен, ИДФайла, ИДКомментария); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                 //Строка
-  
+﻿    Токен         = "ya29.a0AcM612wmMrqFTlqVAhDtCg-FwGV1Sa-uw5ooSYNBRfMbRu9Ma4PSo6bjPjhi-3v-xqIS7PL6khpK6eDTkTwUDORYMa4j4t3T6_y7emv4I...";
+    Идентификатор = "";
+    ИДКомментария = "";
+
+    Результат = OPI_GoogleDrive.ПолучитьКомментарий(Токен, Идентификатор, ИДКомментария);

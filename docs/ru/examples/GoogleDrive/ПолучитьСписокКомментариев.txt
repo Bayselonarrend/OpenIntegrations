@@ -1,6 +1,4 @@
-﻿  
-  ИДФайла = "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW";
-  
-  Ответ = OPI_GoogleDrive.ПолучитьСписокКомментариев(Токен, ИДФайла); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                         //Строка
-  
+﻿    Токен         = "ya29.a0AcM612wmMrqFTlqVAhDtCg-FwGV1Sa-uw5ooSYNBRfMbRu9Ma4PSo6bjPjhi-3v-xqIS7PL6khpK6eDTkTwUDORYMa4j4t3T6_y7emv4I...";
+    Идентификатор = "";
+
+    Результат = OPI_GoogleDrive.ПолучитьСписокКомментариев(Токен, Идентификатор);
