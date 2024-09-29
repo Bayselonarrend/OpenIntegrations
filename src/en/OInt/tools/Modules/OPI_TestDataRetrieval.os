@@ -185,11 +185,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "SlackGetData"                   , "Get data"                    , Slack);
     NewTest(TestTable, "Slack_SendDeleteMessage"        , "Send/Delete message"         , Slack);
     NewTest(TestTable, "Slack_CreateArchiveChannel"     , "Create/Archive channel"      , Slack);
-    NewTest(TestTable, "Slack_GetChannelList"           , "Get channel list"            , Slack);
     NewTest(TestTable, "Slack_OpenCloseDialog"          , "Open/Close dialog"           , Slack);
-    NewTest(TestTable, "Slack_GetFileList"              , "Get list of files"           , Slack);
     NewTest(TestTable, "Slack_UploadDeleteFile"         , "Upload/Delete file"          , Slack);
-    NewTest(TestTable, "Slack_GetExternalFileList"      , "Get external file list"      , Slack);
     NewTest(TestTable, "Slack_UploadDeleteExternalFile" , "Upload/Delete external file" , Slack);
 
     NewTest(TestTable, "AT_CreateDatabase"     , "Create/Edit database"  , AirT);
@@ -1140,6 +1137,86 @@ Procedure Check_SlackSheduled(Val Result) Export
 
     Check_SlackOk(Result);
     ExpectsThat(Result["scheduled_messages"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackChannel(Val Result, Val Name = "") Export
+
+    Data = Result["channel"];
+
+    Check_SlackOk(Result);
+
+    If ValueIsFilled(Name) Then
+        ExpectsThat(Data["name"]).Равно(Name);
+    EndIf;
+
+EndProcedure
+
+Procedure Check_SlackChannelTopic(Val Result, Val Topic) Export
+
+    Data = Result["channel"];
+
+    Check_SlackOk(Result);
+    ExpectsThat(Data["topic"]["value"]).Равно(Topic);
+
+EndProcedure
+
+Procedure Check_SlackChannelHistory(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["messages"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackChannelUsers(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["members"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackChannelsList(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["channels"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackDialog(Val Result) Export
+
+    Dialog = Result["channel"]["id"];
+    Check_SlackOk(Result);
+    ExpectsThat(Result["channel"]).ИмеетТип("Map");
+    ExpectsThat(Dialog).Заполнено();
+
+EndProcedure
+
+Procedure Check_SlackFilesList(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["files"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackFile(Val Result, Val FileName) Export
+
+    If ValueIsFilled(Result["files"]) Then
+        UploadedFile = Result["files"][0];
+    Else
+        UploadedFile = Result["file"];
+    EndIf;
+
+    Check_SlackOk(Result);
+    ExpectsThat(UploadedFile["name"]).Равно(FileName);
+
+EndProcedure
+
+Procedure Check_SlackExternalFile(Val Result, Val Title) Export
+
+    UploadedFile = Result["file"];
+
+    Check_SlackOk(Result);
+    ExpectsThat(UploadedFile["title"]).Равно(Title);
 
 EndProcedure
 
