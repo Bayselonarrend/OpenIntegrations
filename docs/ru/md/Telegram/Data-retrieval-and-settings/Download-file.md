@@ -23,7 +23,7 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    IDФайла = "CQACAgIAAx0EcNsaZQACIxpm-Ve__NKXmieuZqxhOaDQDHQMywACDGQAAi3jyUvZs2aV1F8WiDYE";
+    IDФайла = "CQACAgIAAx0EcNsaZQACIzFm-WB2un7AYov-xNbc_geFgGTM_gACbmQAAi3jyUs9kgABMFstY_82BA";
     Токен   = "6129457865:AAFyzNYOAFbu...";
 
     Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);

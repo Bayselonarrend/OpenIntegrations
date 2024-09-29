@@ -34,7 +34,7 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен         = "001.3501506236.091...";
     IDЧата        = "689203963@chat.agent";
-    IDЦитируемого = "7420064343284255240";
+    IDЦитируемого = "7419291601358293295";
     Текст         = "Подпись к файлу";
 
     Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a"  ;        // URL

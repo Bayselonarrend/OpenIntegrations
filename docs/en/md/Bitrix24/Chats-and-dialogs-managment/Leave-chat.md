@@ -28,13 +28,13 @@ Method at API documentation: [im.chat.leave](https://dev.1c-bitrix.ru/learning/c
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "898";
+    ChatID = "872";
 
     Result = OPI_Bitrix24.LeaveChat(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae6af966006e9f06006b12e400000001000...";
-    ChatID = "900";
+    Token  = "c3abf666006e9f06006b12e400000001000...";
+    ChatID = "874";
 
     Result = OPI_Bitrix24.LeaveChat(URL, ChatID, Token);
 ```
