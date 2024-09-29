@@ -24,12 +24,11 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  URL = https://opi.neocities.org/test_data/document.docx;
-  Title = "NewFile";
-  
-  Response = OPI_Slack.AddExternalFile(Token, URL, Title); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "xoxb-6965308400114-696804637...";
+    Title = "NewFile";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL, Binary Data or Path to file
+
+    Result = OPI_Slack.AddExternalFile(Token, File, Title);
 ```
 
 

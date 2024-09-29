@@ -36,10 +36,10 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
-  "refresh_token": "TmttM11111111111111111MY2dkNy1EZklLNmxIT1111111111111111xNTg2ODI6MTowOnJ0OjE",
-  "access_token": "UTBtWXd11111111111111111111113TkRxWEdxdF9hVlQzOjE3MDUwNTMxNTg2ODE6MTowOmF0OjE",
-  "scope": "mute.write tweet.moderate.write block.read follows.read offline.access list.write bookmark.read list.read tweet.write space.read block.write like.write like.read users.read tweet.read bookmark.write mute.read follows.write",
-  "expires_in": 7200,
-  "token_type": "bearer"
-  }
+ "token_type": "bearer",
+ "expires_in": 7200,
+ "access_token": "UTIxTTN1THpFM0plSWFzV3FnUVNmNHVmaUQ1Q251ZlpaSGpoM29odU9FX19ZOjE3Mjc2MTA5Nzc3ODU6MToxOmF0OjE",
+ "scope": "mute.write tweet.moderate.write block.read follows.read offline.access list.write bookmark.read list.read tweet.write space.read block.write like.write like.read users.read tweet.read bookmark.write mute.read follows.write",
+ "refresh_token": "eXZOOThOWE02Y0xJM0dZd3M3NWF2bDVCLVlXc003QWE1RkdPX2x1enN4Tzh6OjE3Mjc2MTA5Nzc3ODU6MToxOnJ0OjE"
+}
 ```

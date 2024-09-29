@@ -26,8 +26,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    Token          = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Calendar       = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    Token          = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Calendar       = "47826632f9a0502adba79d3cbf90c5d4040622779e07bb8ed56964a2e4f8492a@group.calendar.google.com";
     PrimaryColor   = "#000000";
     SecondaryColor = "#ffd800";
     Hidden         = False;
@@ -44,22 +44,5 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-{
-  "conferenceProperties": {
-  "allowedConferenceSolutionTypes": [
-  "hangoutsMeet"
-  ]
-  },
-  "accessRole": "owner",
-  "foregroundColor": "#000000",
-  "backgroundColor": "#ffd800",
-  "colorId": "6",
-  "description": "TestDescription",
-  "summary": "TestCalendar (change.)",
-  "defaultReminders": [],
-  "timeZone": "UTC",
-  "id": "0da65d69eba1e4b27f980447827b251ca2d94ecb1d30dba22c83559c33d0ea29@group.calendar.google.com",
-  "etag": "\"1708424005038000\"",
-  "kind": "calendar#calendarListEntry"
-  }
+
 ```

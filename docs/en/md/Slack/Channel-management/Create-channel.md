@@ -24,11 +24,10 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Name = "testcov" + String(New UUID);
-  
-  Response = OPI_Slack.CreateChannel(Token, Name, False); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "xoxb-6965308400114-696804637...";
+    Name  = "testconv" + String(New UUID);
+
+    Result = OPI_Slack.CreateChannel(Token, Name);
 ```
 
 

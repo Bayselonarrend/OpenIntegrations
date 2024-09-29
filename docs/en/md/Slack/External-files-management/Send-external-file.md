@@ -24,12 +24,11 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Channel = "C070VPMKN8J";
-  FileID = "F070P52CU94";
-  
-  Response = OPI_Slack.SendExternalFile(Token, FileID, Channel); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C06UFNUTKUL";
+    FileID  = "";
+
+    Result = OPI_Slack.SendExternalFile(Token, FileID, Channel);
 ```
 
 

@@ -25,10 +25,10 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Откуда = "1MvjT6qO5jQzS0O1o33GVv4ui59dIeDkdY8QLR6z5k9o";
-    Куда   = "1dBdQ9ddY6RDhzSrQ3xvab8rwrvXLEzNI-VHDY5gloao";
-    Лист   = "934061197";
+    Токен  = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Откуда = "1pqjld5QO6zoOe8zPMthfFhGcwwaE6FdlDyw-UHgEP5c";
+    Куда   = "1-ogKRDNtqYdnfqV32mzKeVWE3lXftgJMkJHwx3kkcSo";
+    Лист   = "1771443618";
 
     Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист);
 ```
@@ -43,13 +43,13 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
-  "sheetId": 1790807910,
-  "title": "Лист2 (копия)",
-  "index": 2,
-  "sheetType": "GRID",
-  "gridProperties": {
+ "sheetId": 1753921555,
+ "title": "Лист1 (копия)",
+ "index": 2,
+ "sheetType": "GRID",
+ "gridProperties": {
   "rowCount": 1000,
   "columnCount": 26
-  }
-  }
+ }
+}
 ```

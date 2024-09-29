@@ -24,7 +24,7 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
     Токен    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь     = "/81c378eb-eaf3-446c-9b78-b89c94fd8e50.png";
+    Путь     = "/86b5f33b-0ae3-41f8-913d-d0f72c20d85d.png";
 
     Результат = OPI_YandexDisk.ПолучитьСсылкуДляСкачивания(Токен, Путь);
 ```
@@ -39,8 +39,8 @@ sidebar_position: 6
 
 ```json title="Результат"
 {
-  "templated": false,
-  "method": "GET",
-  "href": "https://downloader.disk.yandex.ru/disk/5e035e14f3580573be69477a0a5a41a598227875d7c471604e386ee2dcfc7067/65c62a93/gwThwhLBKYvLhQCNnqAHis09lIY3JS6kMxocI4drJ-uZelc6zzgdG8REX8G87z9KG45VhprQarmCtb_OEKbojQ%3D%3D?uid=1573541518&filename=%D0%90%D0%BB%D1%8C%D0%BF%D0%B0%D0%BA%D0%B0.png&disposition=attachment&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=440431&hid=0e9b208e1aea0dbd58b4b43ccdc3ad5a&media_type=image&tknv=v2&etag=8d7bf7d7ee61113f9044f3a28496e458"
-  }
+ "href": "https://downloader.disk.yandex.ru/disk/7ea429910047f067a2bd4ae45d24a9678ec289038468ab5b1fd4135827772a09/66f97d3c/gwThwhLBKYvLhQCNnqAHivTyW17WRM8SPPMQOvH6-qbQz8d8VWOGlkwZCgoP8dJ0gy2XfMgP1GVEF7gL_kPWBA%3D%3D?uid=1573541518&filename=e850c656-ee28-49dd-a34e-12e849cc5578.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "method": "GET",
+ "templated": false
+}
 ```

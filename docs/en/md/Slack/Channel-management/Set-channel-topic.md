@@ -24,12 +24,11 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
-  
-  Channel = "C070VPMKN8J";
-  Topic = "TestTopic";
-  
-  Response = OPI_Slack.SetChannelTopic(Token, Channel, Topic); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "";
+    Topic   = "TestTopic";
+
+    Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);
 ```
 
 

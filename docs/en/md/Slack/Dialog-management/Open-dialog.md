@@ -23,13 +23,10 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  ArrayOfUsers = New Array;
-  ArrayOfUsers.Add("U123456");
-  ArrayOfUsers.Add("U654321");
-  
-  Response = OPI_Slack.OpenDialog(Token, ArrayOfUsers); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "xoxb-6965308400114-696804637...";
+    User  = "U06UABH3APP";
+
+    Result = OPI_Slack.OpenDialog(Token, User);
 ```
 
 

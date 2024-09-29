@@ -37,21 +37,5 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
 ```
 
 ```json title="Result"
-{
-  "event_types": [
-  "subscribed",
-  "unsubscribed",
-  "webhook",
-  "conversation_started",
-  "client_status",
-  "action",
-  "delivered",
-  "failed",
-  "message",
-  "seen"
-  ],
-  "chat_hostname": "SN-CHAT-12_",
-  "status_message": "ok",
-  "status": 0
-  }
+
 ```

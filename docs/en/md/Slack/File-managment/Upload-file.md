@@ -26,14 +26,16 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  FileName = "megadoc.docx";
-  File = New BinaryData("D:\" + FileName);
-  Title = "NewFile";
-  Channel = "C123456";
-  
-  Response = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel); //Map
-  Response = OPI_Tools.JSONString(Response);//JSON string
+    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C06UFNUTKUL";
+    File    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL, Binary Data or Path to file
+
+    FileName = "megadoc.docx";
+    Title    = "NewFile";
+
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title);
+
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel);
 ```
 
 
