@@ -773,6 +773,7 @@ Procedure Viber_DataRetrieval() Export
     Viber_GetChannelInformation(TestParameters);
     Viber_GetUserData(TestParameters);
     Viber_GetOnlineUsers(TestParameters);
+    Viber_SetWebhook(TestParameters);
 
 EndProcedure
 
@@ -861,6 +862,7 @@ Procedure GC_CreateDeleteEvent() Export
     GoogleCalendar_GetEvent(TestParameters);
     GoogleCalendar_MoveEvent(TestParameters);
     GoogleCalendar_GetEventList(TestParameters);
+    GoogleCalendar_GetEventDescription(TestParameters);
     GoogleCalendar_DeleteEvent(TestParameters);
     GoogleCalendar_DeleteCalendar(TestParameters);
 
@@ -896,7 +898,9 @@ Procedure GD_UploadDeleteFile() Export
     GoogleDrive_CopyObject(TestParameters);
     GoogleDrive_DownloadFile(TestParameters);
     GoogleDrive_UpdateFile(TestParameters);
+    GoogleDrive_GetFilesList(TestParameters);
     GoogleDrive_DeleteObject(TestParameters);
+    GoogleDrive_GetFileDescription(TestParameters);
 
     OPI_Tools.Pause(5);
 
@@ -942,6 +946,7 @@ Procedure GT_CreateTable() Export
     OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
 
     GoogleSheets_CreateSpreadsheet(TestParameters);
+    GoogleSheets_GetSpreadsheet(TestParameters);
     GoogleSheets_CopySheet(TestParameters);
     GoogleSheets_AddSheet(TestParameters);
     GoogleSheets_DeleteSheet(TestParameters);
@@ -975,6 +980,8 @@ EndProcedure
 Procedure TwitterAPI_AccountData() Export
 
     TestParameters = New Structure;
+
+    Twitter_GetToken(TestParameters);
     Twitter_GetAuthorizationLink(TestParameters);
     Twitter_RefreshToken(TestParameters);
 
@@ -4492,7 +4499,7 @@ Procedure YandexDisk_GetPublicObject(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject", "YandexDisk");
 
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, "", True);
 
@@ -4507,7 +4514,7 @@ Procedure YandexDisk_SavePublicObjectToDisk(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk");
+    OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk", "YandexDisk");
 
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, "", False);
 
@@ -4531,6 +4538,20 @@ EndProcedure
 #EndRegion
 
 #Region Viber
+
+Procedure Viber_SetWebhook(FunctionParameters)
+
+    Token = FunctionParameters["Viber_ChannelToken"];
+    URL   = "http://api.athenaeum.digital/hs/viber";
+
+    Result = OPI_Viber.SetWebhook(Token, URL);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetWebhook", "Viber");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
 
 Procedure Viber_GetChannelInformation(FunctionParameters)
 
@@ -5138,6 +5159,17 @@ Procedure GoogleCalendar_GetEventList(FunctionParameters)
 
 EndProcedure
 
+Procedure GoogleCalendar_GetEventDescription(FunctionParameters)
+
+    Result = OPI_GoogleCalendar.GetEventDescription();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEventDescription", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
 #EndRegion
 
 #Region GoogleDrive
@@ -5270,6 +5302,21 @@ Procedure GoogleDrive_UpdateFile(FunctionParameters)
 
 EndProcedure
 
+Procedure GoogleDrive_GetFilesList(FunctionParameters)
+
+    Token        = FunctionParameters["Google_Token"];
+    Directory    = "root";
+    NameContains = "data";
+
+    Result = OPI_GoogleDrive.GetFilesList(Token, NameContains, Directory);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
 Procedure GoogleDrive_DeleteObject(FunctionParameters)
 
     Token      = FunctionParameters["Google_Token"];
@@ -5292,6 +5339,17 @@ Procedure GoogleDrive_DeleteObject(FunctionParameters)
         OPI_Tools.Pause(2);
 
     EndDo;
+
+EndProcedure
+
+Procedure GoogleDrive_GetFileDescription(FunctionParameters)
+
+    Result = OPI_GoogleDrive.GetFileDescription();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileDescription", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -5431,6 +5489,26 @@ Procedure GoogleSheets_CreateSpreadsheet(FunctionParameters)
 
 EndProcedure
 
+Procedure GoogleSheets_GetSpreadsheet(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GS_Spreadsheet"];
+
+    Result = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier);
+
+    // END
+
+    Name = "TestTable";
+
+    SheetArray = New Array;
+    SheetArray.Add("Sheet1");
+    SheetArray.Add("Sheet2");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSpreadsheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheet(Result, Name, SheetArray);
+
+EndProcedure
+
 Procedure GoogleSheets_CopySheet(FunctionParameters)
 
     Token  = FunctionParameters["Google_Token"];
@@ -5474,7 +5552,7 @@ Procedure GoogleSheets_DeleteSheet(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSheet");
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSheet", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
 
 EndProcedure
@@ -6158,6 +6236,20 @@ EndProcedure
 #EndRegion
 
 #Region Twitter
+
+Procedure Twitter_GetToken(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Code       = "123456";
+
+    Result = OPI_Twitter.GetToken(Code, Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Twitter");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
 
 Procedure Twitter_GetAuthorizationLink(FunctionParameters)
 
