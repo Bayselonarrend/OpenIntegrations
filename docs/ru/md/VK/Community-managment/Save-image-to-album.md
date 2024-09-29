@@ -29,7 +29,7 @@ sidebar_position: 8
     ОписаниеКартинки = "Картинка автотест";
     ИДАльбома        = "305905563";
 
-    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
 

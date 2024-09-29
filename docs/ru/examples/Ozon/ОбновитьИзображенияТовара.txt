@@ -2,8 +2,8 @@
     КлючAPI   = "7cc90d26-33e4-499b...";
     IDТовара  = "1202180384";
 
-    Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";
-    Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg";
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     МаркетинговыйЦвет = "GREEN";
 

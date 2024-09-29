@@ -27,7 +27,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Описание = "Тестовое сообщение";
-    URL      = "https://openintegrations.dev/test_data/picture.jpg";
+    URL      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";

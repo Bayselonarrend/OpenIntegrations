@@ -29,7 +29,7 @@ sidebar_position: 10
     Path2 = "/" + String(New UUID) + ".png";
 
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL
 
     TFN = GetTempFileName("png"); // Path
     CopyFile(Image, TFN);

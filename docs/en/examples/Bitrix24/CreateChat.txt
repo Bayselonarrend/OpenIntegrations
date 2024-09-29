@@ -1,4 +1,4 @@
-﻿    Image = "https://openintegrations.dev/test_data/picture.jpg";
+﻿    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image);
 
     B64Image = GetBase64StringFromBinaryData(Image);
