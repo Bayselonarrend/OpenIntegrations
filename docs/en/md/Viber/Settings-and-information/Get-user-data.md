@@ -38,5 +38,9 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-
+{
+ "status": 6,
+ "status_message": "notSubscribed",
+ "chat_hostname": "SN-CHAT-03_"
+}
 ```

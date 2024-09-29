@@ -44,5 +44,22 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-
+{
+ "kind": "calendar#calendarListEntry",
+ "etag": "\"1727630335477000\"",
+ "id": "739cf8d11d0517973f88bc93554f2f43e832f38e012b391be0ad17d266a850bc@group.calendar.google.com",
+ "summary": "New name",
+ "description": "New description",
+ "timeZone": "Europe/Moscow",
+ "colorId": "6",
+ "backgroundColor": "#ffd800",
+ "foregroundColor": "#000000",
+ "accessRole": "owner",
+ "defaultReminders": [],
+ "conferenceProperties": {
+  "allowedConferenceSolutionTypes": [
+   "hangoutsMeet"
+  ]
+ }
+}
 ```
