@@ -1,0 +1,21 @@
+﻿    {
+ "antivirus_status": "clean",
+ "size": 2114023,
+ "comment_ids": {
+  "private_resource": "1573541518:36fe1d1a66d703f89e8a190ad094960fbc96506f435f11566d4185e0f1240f32",
+  "public_resource": "1573541518:36fe1d1a66d703f89e8a190ad094960fbc96506f435f11566d4185e0f1240f32"
+ },
+ "name": "1581a5db-5b3e-45b7-a615-c872b2a3314a.png",
+ "exif": {},
+ "created": "2024-09-29T15:14:11+03:00",
+ "resource_id": "1573541518:36fe1d1a66d703f89e8a190ad094960fbc96506f435f11566d4185e0f1240f32",
+ "modified": "2024-09-29T15:14:11+03:00",
+ "mime_type": "multipart",
+ "file": "https://downloader.disk.yandex.ru/disk/e6aac37f8c79d0495bf008e0dba428fd9af3b9e612ee84db9a24d7b9841775f5/66f97cd7/gwThwhLBKYvLhQCNnqAHitkpVSmm60RDsWC5hCtePBFyo7ABOWJ3Qg_vpGvQctHe9n3RjTeTJuqwxIatrr2uog%3D%3D?uid=1573541518&filename=1581a5db-5b3e-45b7-a615-c872b2a3314a.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "path": "disk:/1581a5db-5b3e-45b7-a615-c872b2a3314a.png",
+ "media_type": "image",
+ "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
+ "type": "file",
+ "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
+ "revision": 1727612052416363
+}

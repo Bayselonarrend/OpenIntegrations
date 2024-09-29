@@ -1,0 +1,22 @@
+﻿    {
+ "_embedded": {
+  "sort": "",
+  "items": [],
+  "limit": 20,
+  "offset": 0,
+  "path": "disk:/45e71524-1ddd-42e1-9e82-d24e2d22a220",
+  "total": 0
+ },
+ "name": "45e71524-1ddd-42e1-9e82-d24e2d22a220",
+ "exif": {},
+ "resource_id": "1573541518:8688269dd3b8b9b6fb4ea14d6291b0af3d3674ec9898c1e4c906523bed448ab1",
+ "created": "2024-09-29T15:14:00+03:00",
+ "modified": "2024-09-29T15:14:00+03:00",
+ "path": "disk:/45e71524-1ddd-42e1-9e82-d24e2d22a220",
+ "comment_ids": {
+  "private_resource": "1573541518:8688269dd3b8b9b6fb4ea14d6291b0af3d3674ec9898c1e4c906523bed448ab1",
+  "public_resource": "1573541518:8688269dd3b8b9b6fb4ea14d6291b0af3d3674ec9898c1e4c906523bed448ab1"
+ },
+ "type": "dir",
+ "revision": 1727612040930762
+}

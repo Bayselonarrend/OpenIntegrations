@@ -1,0 +1,32 @@
+﻿    {
+ "spreadsheetId": "13s7kQuIHdVJR_QYXS3upKMWgHwBCDqsyz2vj_qTJWPg",
+ "valueRanges": [
+  {
+   "range": "'Лист2'!B2",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это B2"
+    ]
+   ]
+  },
+  {
+   "range": "'Лист2'!A3",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это A3"
+    ]
+   ]
+  },
+  {
+   "range": "'Лист2'!B4",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это B4"
+    ]
+   ]
+  }
+ ]
+}
