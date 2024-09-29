@@ -198,7 +198,5 @@ Method at API documentation: [tasks.task.startwatch](https://dev.1c-bitrix.ru/re
   "date_start": "2024-06-15T17:42:24+00:00",
   "date_finish": "2024-06-15T17:42:25+00:00",
   "operating_reset_at": 1718473944,
-  "operating": 0.279598951339722
-  }
-  }
+...
 ```

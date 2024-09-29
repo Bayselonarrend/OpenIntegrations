@@ -190,10 +190,5 @@ sidebar_position: 3
   },
   "created_time": "2024-01-26T18:45:00.000Z",
   "last_edited_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "id": "a5742816-1417-4169-bf55-dbae44f46d9c",
-  "object": "page"
-  }
+...
 ```

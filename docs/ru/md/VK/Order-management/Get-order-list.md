@@ -185,41 +185,5 @@ sidebar_position: 1
        "width": 320,
        "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/wosvBQJa9bQ.jpg?size=320x320&quality=95&sign=ecd2cae5d09c0411ca0452a32c1f867e&c_uniq_tag=Iuzo5hOoQm39gPIAmS9zeIdcLeumdJzt4vN-xW85kJs&type=album"
       },
-      {
-       "height": 510,
-       "type": "r",
-       "width": 510,
-       "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/wosvBQJa9bQ.jpg?size=510x510&quality=95&sign=d53aa504f089cf710968a6cfed71585d&c_uniq_tag=fKqxZObF1j5m5Mu_QbeIDijtNIT9o7WNYsEu-N6xni4&type=album"
-      }
-     ],
-     "text": "",
-     "web_view_token": "5cf827ef295277edce",
-     "has_tags": false
-    },
-    "variants": [
-     "Красный"
-    ]
-   }
-  ],
-  "delivery": {
-   "address": "Минск",
-   "type_id": "default"
-  },
-  "recipient": {
-   "name": "Титовец Антон",
-   "phone": "+375447830891",
-   "display_text": "Титовец Антон, +375447830891"
-  },
-  "payment": {
-   "status": "Не оплачено",
-   "payment_status": "not_paid"
-  },
-  "seller": {
-   "title": "Магазин",
-   "name": "Test",
-   "group_id": 218861756,
-   "contact_id": -218861756
-  }
- }
-]
+...
 ```
