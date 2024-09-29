@@ -25,7 +25,7 @@ sidebar_position: 7
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07PXKKH2G1";
+    Channel = "C07PK52ES3U";
     User    = "U06UABH3APP";
 
     Result = OPI_Slack.InviteUsersToChannel(Token, Channel, User);

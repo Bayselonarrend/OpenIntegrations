@@ -21,7 +21,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-
+    Результат = OPI_GoogleCalendar.ПолучитьОписаниеСобытия();
 ```
 
 

@@ -23,11 +23,10 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  Identifier = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
-  
-  Response = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token      = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Identifier = "1IIUxPvgvrPCB92SXFISbKBFLAbmbHUIu_OysyC9w3Ow";
+
+    Result = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier);
 ```
 
 

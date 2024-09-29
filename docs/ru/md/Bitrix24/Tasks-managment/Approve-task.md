@@ -198,25 +198,5 @@ sidebar_position: 7
      "displaySortIndex": "",
      "isComplete": false,
      "isImportant": false,
-     "completedCount": 0,
-     "members": [],
-     "attachments": []
-    },
-    "action": [],
-    "descendants": []
-   },
-   "checkListCanAdd": true
-  }
- },
- "time": {
-  "start": 1718473338.92487,
-  "finish": 1718473338.9957,
-  "duration": 0.0708270072937012,
-  "processing": 0.0335841178894043,
-  "date_start": "2024-06-15T17:42:18+00:00",
-  "date_finish": "2024-06-15T17:42:18+00:00",
-  "operating_reset_at": 1718473938,
-  "operating": 0
- }
-}
+...
 ```

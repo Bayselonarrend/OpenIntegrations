@@ -24,7 +24,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен        = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Токен        = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
     Наименование = "Тестовая таблица";
 
     МассивЛистов = Новый Массив;
@@ -193,15 +193,5 @@ sidebar_position: 1
    "properties": {
     "sheetId": 1715306798,
     "title": "Лист2",
-    "index": 1,
-    "sheetType": "GRID",
-    "gridProperties": {
-     "rowCount": 1000,
-     "columnCount": 26
-    }
-   }
-  }
- ],
- "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/10X8iuovjxQu8ZmOZ-r1d9dO5bxLqh25FVttLvk2-Uzg/edit"
-}
+...
 ```

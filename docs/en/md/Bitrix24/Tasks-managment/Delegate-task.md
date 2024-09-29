@@ -200,7 +200,5 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
   "date_start": "2024-06-19T07:58:08+00:00",
   "date_finish": "2024-06-19T07:58:09+00:00",
   "operating_reset_at": 1718784488,
-  "operating": 0.450687170028686
-  }
-  }
+...
 ```
