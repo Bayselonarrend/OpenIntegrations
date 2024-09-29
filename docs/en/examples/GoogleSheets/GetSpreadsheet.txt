@@ -1,5 +1,4 @@
-﻿  
-  Identifier = "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc";
-  
-  Response = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+﻿    Token      = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Identifier = "1pqjld5QO6zoOe8zPMthfFhGcwwaE6FdlDyw-UHgEP5c";
+
+    Result = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier);

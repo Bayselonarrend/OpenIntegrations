@@ -1,4 +1,5 @@
-﻿  
-  Directory = "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4";
-  Response = OPI_GoogleDrive.GetFilesList(Token,, Directory); //Map
-  Response = OPI_Tools.JSONString(Response); //String
+﻿    Token        = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Directory    = "root";
+    NameContains = "data";
+
+    Result = OPI_GoogleDrive.GetFilesList(Token, NameContains, Directory);
