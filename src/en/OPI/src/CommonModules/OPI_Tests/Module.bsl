@@ -1199,196 +1199,33 @@ EndProcedure
 
 #Region Slack
 
-Procedure Slack_GetBotInfo() Export
+Procedure SlackGetData() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Result = OPI_Slack.GetBotInformation(Token);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token", TestParameters);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetBotInformation");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["bot_id"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["user_id"]).Заполнено();
-
-EndProcedure
-
-Procedure Slack_GetUserList() Export
-
-    Token  = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Result = OPI_Slack.GetUserList(Token);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["members"]).ИмеетТип("Array");
-
-EndProcedure
-
-Procedure Slack_GetRegionList() Export
-
-    Token  = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Result = OPI_Slack.GetWorkspaceList(Token);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetWorkspaceList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["teams"]).ИмеетТип("Array");
+    Slack_GetBotInformation(TestParameters);
+    Slack_GetUserList(TestParameters);
+    Slack_GetWorkspaceList(TestParameters);
 
 EndProcedure
 
 Procedure Slack_SendDeleteMessage() Export
 
-    Token   = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Channel = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
-    Text    = "TestMessage1";
-    Text2   = "TestMessage2";
-    Tags    = New Array;
-    Image   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
 
-    Result = OPI_Slack.SendMessage(Token, Channel, Text);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"   , TestParameters);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["message"]["text"]).Равно(Text);
-
-    Timestamp = Result["ts"];
-
-    Result = OPI_Slack.EditMessage(Token, Channel, Timestamp, Text2);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["message"]["text"]).Равно(Text2);
-
-    Result = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageReplyList");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["messages"]).ИмеетТип("Array");
-
-    Result = OPI_Slack.GetMessageLink(Token, Channel, Timestamp);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageLink");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["permalink"]).Заполнено();
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-
-    Tags.Add(Timestamp);
-
-    BlockArray = New Array;
-    Block      = OPI_Slack.GenerateImageBlock(Image, "Yo");
-    BlockArray.Add(Block);
-
-    Result = OPI_Slack.SendMessage(Token, Channel, Text, , BlockArray);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (picture)");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-
-    Tags.Add(Result["ts"]);
-
-    Block     = OPI_Slack.GenerateImageBlock(Image, "Yo");
-    JSONBlock = OPI_Tools.JSONString(Block);
-
-    TFN = GetTempFileName("json");
-
-    TextDocument = New TextDocument();
-    TextDocument.SetText(JSONBlock);
-    TextDocument.Write(TFN);
-
-    Result = OPI_Slack.SendMessage(Token, Channel, Text, , TFN);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (json)");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-
-    Tags.Add(Result["ts"]);
-
-    Blocks = "['" + TFN + "','" + TFN + "']";
-    Result = OPI_Slack.SendMessage(Token, Channel, Text, , Blocks);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (json array)");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-
-    Tags.Add(Result["ts"]);
-
-    DeleteFiles(TFN);
-
-    For Each Timestamp In Tags Do
-
-        Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp);
-
-        OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage");
-
-        OPI_TestDataRetrieval.Check_SlackOk(Result);
-        OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-        OPI_TestDataRetrieval.ExpectsThat(Result["ts"]).Заполнено();
-
-    EndDo;
-
-    Hour    = 3600;
-    Day     = 24;
-    Sending = OPI_Tools.GetCurrentDate() + (Day * Hour);
-    Result  = OPI_Slack.SendMessage(Token, Channel, Text, Sending);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (scheduled)");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).Равно(Channel);
-    OPI_TestDataRetrieval.ExpectsThat(Result["scheduled_message_id"]).Заполнено();
-
-    Timestamp = Result["scheduled_message_id"];
-    Result    = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-
-EndProcedure
-
-Procedure Slack_SendDeleteEphemeral() Export
-
-    Token   = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Channel = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
-    User    = OPI_TestDataRetrieval.GetParameter("Slack_User");
-    Image   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
-    Text    = "TestMessage1";
-
-    Block  = OPI_Slack.GenerateImageBlock(Image, "Yo");
-    Result = OPI_Slack.SendEphemeralMessage(Token, Channel, Text, User, Block);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["message_ts"]).Заполнено();
-
-EndProcedure
-
-Procedure Slack_GetScheduledMessages() Export
-
-    Token   = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Channel = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
-
-    Result = OPI_Slack.GetDelayedMessageList(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDelayedMessageList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["scheduled_messages"]).ИмеетТип("Array");
+    Slack_SendMessage(TestParameters);
+    Slack_EditMessage(TestParameters);
+    Slack_GetMessageReplyList(TestParameters);
+    Slack_GetMessageLink(TestParameters);
+    Slack_DeleteMessage(TestParameters);
+    Slack_SendEphemeralMessage(TestParameters);
+    Slack_GetDelayedMessageList(TestParameters);
 
 EndProcedure
 
@@ -5978,6 +5815,194 @@ Procedure GoogleSheets_ClearCells(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ClearCells", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleCellCleanning(Result, CellsArray.Count());
+
+EndProcedure
+
+#EndRegion
+
+#Region Slack
+
+Procedure Slack_GetBotInformation(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    Result = OPI_Slack.GetBotInformation(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBotInformation", "Slack");
+    OPI_TestDataRetrieval.Check_SlackBot(Result);
+
+EndProcedure
+
+Procedure Slack_GetUserList(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    Result = OPI_Slack.GetUserList(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackUsers(Result);
+
+EndProcedure
+
+Procedure Slack_GetWorkspaceList(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    Result = OPI_Slack.GetWorkspaceList(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetWorkspaceList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackWorkspaces(Result);
+
+EndProcedure
+
+Procedure Slack_SendMessage(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    // Text
+
+    Text   = "TestMessage1";
+    Result = OPI_Slack.SendMessage(Token, Channel, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage", "Slack"); // SKIP
+    OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel); // SKIP
+
+    Timestamp = Result["ts"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Slack_MessageTS", Timestamp); // SKIP
+    OPI_Tools.AddField("Slack_MessageTS", Timestamp, "String", FunctionParameters); // SKIP
+
+
+    // With attachments (picture block in the example)
+
+    Text       = "Message with picture";
+    Image      = FunctionParameters["Picture"];
+    BlockArray = New Array;
+
+    Block = OPI_Slack.GenerateImageBlock(Image, "Image");
+    BlockArray.Add(Block);
+
+    Result = OPI_Slack.SendMessage(Token, Channel, Text, , BlockArray);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (picture)"); // SKIP
+    OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel); // SKIP
+
+    // Sheduled
+
+    Text = "Sheduled message";
+    Hour = 3600;
+    Day  = 24;
+
+    SendingDate = OPI_Tools.GetCurrentDate() + (Day * Hour);
+    Result      = OPI_Slack.SendMessage(Token, Channel, Text, SendingDate);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (scheduled)");
+    OPI_TestDataRetrieval.Check_SlackSheduledMessage(Result, Channel);
+
+    Timestamp = Result["scheduled_message_id"];
+    Result    = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage (scheduled)");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_EditMessage(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Text = "TestMessage2";
+
+    Result = OPI_Slack.EditMessage(Token, Channel, Timestamp, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage", "Slack");
+    OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel);
+
+EndProcedure
+
+Procedure Slack_GetMessageReplyList(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Result = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageReplyList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackMessages(Result);
+
+EndProcedure
+
+Procedure Slack_GetMessageLink(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Result = OPI_Slack.GetMessageLink(Token, Channel, Timestamp);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageLink", "Slack");
+    OPI_TestDataRetrieval.Check_SlackMessageLink(Result, Channel);
+
+EndProcedure
+
+Procedure Slack_DeleteMessage(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_SendEphemeralMessage(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+    User    = FunctionParameters["Slack_User"];
+    Image   = FunctionParameters["Picture"];
+    Text    = "Ephemeral message";
+
+    Block  = OPI_Slack.GenerateImageBlock(Image, "Image");
+    Result = OPI_Slack.SendEphemeralMessage(Token, Channel, Text, User, Block);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendEphemeralMessage", "Slack");
+    OPI_TestDataRetrieval.Check_SlackEphemeral(Result);
+
+EndProcedure
+
+Procedure Slack_GetDelayedMessageList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    Result = OPI_Slack.GetDelayedMessageList(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDelayedMessageList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackSheduled(Result);
 
 EndProcedure
 
