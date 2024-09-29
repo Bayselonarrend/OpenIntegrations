@@ -28,13 +28,13 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2172";
+    TaskID = "2104";
 
     Result = OPI_Bitrix24.GetTasksChecklist(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae6af966006e9f06006b12e400000001000...";
-    TaskID = "2174";
+    Token  = "c3abf666006e9f06006b12e400000001000...";
+    TaskID = "2106";
 
     Result = OPI_Bitrix24.GetTasksChecklist(URL, TaskID, Token);
 ```

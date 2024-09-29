@@ -29,16 +29,16 @@ Method at API documentation: [task.checklistitem.complete](https://dev.1c-bitrix
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID    = "2172";
-    ElementID = "1272";
+    TaskID    = "2104";
+    ElementID = "1218";
 
     Result = OPI_Bitrix24.CompleteTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "2174";
-    ElementID = "1276";
+    TaskID    = "2106";
+    ElementID = "1222";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ae6af966006e9f06006b12e400000001000...";
+    Token = "c3abf666006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CompleteTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```

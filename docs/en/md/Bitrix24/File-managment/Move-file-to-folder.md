@@ -28,17 +28,17 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="Code example"
-    FolderID = "11262";
-    FileID   = "11254";
+    FolderID = "10844";
+    FileID   = "10836";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID);
 
-    FolderID = "11264";
+    FolderID = "10846";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ae6af966006e9f06006b12e400000001000...";
+    Token = "c3abf666006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID, Token);
 

@@ -26,7 +26,7 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Оригинал  = "/New/pic.png";
     Копия     = "/New/pic_copy.png";
-    Токен     = "sl.B91EDRcG6KqqbvQ9nc8sWhG3gvHG_3nWIpT8qbct8H-IHRKpi0kUuYPR64_hqVqYmsnnoR7HMj...";
+    Токен     = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
 
     Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);
 ```
