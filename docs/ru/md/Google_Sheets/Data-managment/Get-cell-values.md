@@ -25,8 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Книга  = "1MvjT6qO5jQzS0O1o33GVv4ui59dIeDkdY8QLR6z5k9o";
+    Токен  = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Книга  = "1pqjld5QO6zoOe8zPMthfFhGcwwaE6FdlDyw-UHgEP5c";
     Лист   = "Лист2";
 
     МассивЯчеек = Новый Массив;
@@ -47,35 +47,35 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "valueRanges": [
+ "spreadsheetId": "13s7kQuIHdVJR_QYXS3upKMWgHwBCDqsyz2vj_qTJWPg",
+ "valueRanges": [
   {
-  "range": "'Лист2'!B2",
-  "majorDimension": "ROWS",
-  "values": [
-  [
-  "Это B2"
-  ]
-  ]
+   "range": "'Лист2'!B2",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это B2"
+    ]
+   ]
   },
   {
-  "range": "'Лист2'!A3",
-  "majorDimension": "ROWS",
-  "values": [
-  [
-  "Это A3"
-  ]
-  ]
+   "range": "'Лист2'!A3",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это A3"
+    ]
+   ]
   },
   {
-  "range": "'Лист2'!B4",
-  "majorDimension": "ROWS",
-  "values": [
-  [
-  "Это B4"
-  ]
-  ]
+   "range": "'Лист2'!B4",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "Это B4"
+    ]
+   ]
   }
-  ]
-  }
+ ]
+}
 ```

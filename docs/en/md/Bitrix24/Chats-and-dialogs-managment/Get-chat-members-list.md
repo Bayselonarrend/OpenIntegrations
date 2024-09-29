@@ -28,12 +28,12 @@ Method at API documentation: [im.dialog.users.list](https://dev.1c-bitrix.ru/lea
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "chat" + "872";
+    ChatID = "chat" + "898";
 
     Result = OPI_Bitrix24.GetChatMembersList(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c3abf666006e9f06006b12e400000001000...";
+    Token  = "ae6af966006e9f06006b12e400000001000...";
     UserID = 10;
 
     Result = OPI_Bitrix24.GetChatMembersList(URL, UserID, Token);

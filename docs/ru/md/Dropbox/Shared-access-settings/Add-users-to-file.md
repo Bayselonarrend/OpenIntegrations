@@ -25,7 +25,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
+    Токен = "sl.B91EDRcG6KqqbvQ9nc8sWhG3gvHG_3nWIpT8qbct8H-IHRKpi0kUuYPR64_hqVqYmsnnoR7HMj...";
     Почта = "h5bk6ft62s@privaterelay.appleid.com";
     Файл  = "kJU6-a-pT48AAAAAAAAABw";
 

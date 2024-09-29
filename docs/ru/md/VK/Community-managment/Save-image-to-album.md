@@ -27,7 +27,7 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Параметры        = ПолучитьПараметрыВК();
     ОписаниеКартинки = "Картинка автотест";
-    ИДАльбома        = "305905563";
+    ИДАльбома        = "305922871";
 
     Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");

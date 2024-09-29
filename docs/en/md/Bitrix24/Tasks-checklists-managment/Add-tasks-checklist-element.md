@@ -30,15 +30,15 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2104";
+    TaskID = "2172";
 
     Text = "Checklist element";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c3abf666006e9f06006b12e400000001000...";
-    TaskID = "2106";
+    Token  = "ae6af966006e9f06006b12e400000001000...";
+    TaskID = "2174";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, , Token);
 ```

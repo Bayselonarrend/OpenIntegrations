@@ -24,12 +24,11 @@ sidebar_position: 12
 
 
 ```bsl title="Code example"
-  
-  Purpose = "TestGoal";
-  Channel = "C070VPMKN8J";
-  
-  Response = OPI_Slack.SetChannelGoal(Token, Channel, Purpose); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "";
+    Purpose = "TestGoal";
+
+    Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);
 ```
 
 

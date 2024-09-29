@@ -23,8 +23,8 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-    Token  = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
-    WorkID = "NfBupwP6DtIAAAAAAAAAAQ";
+    Token  = "sl.B91EDRcG6KqqbvQ9nc8sWhG3gvHG_3nWIpT8qbct8H-IHRKpi0kUuYPR64_hqVqYmsnnoR7HMj...";
+    WorkID = "P1wRJII53wkAAAAAAAAAAQ";
     Status = "in_progress";
 
     WHile Status = "in_progress" Do

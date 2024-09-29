@@ -37,21 +37,5 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
-  "event_types": [
-  "subscribed",
-  "unsubscribed",
-  "webhook",
-  "conversation_started",
-  "client_status",
-  "action",
-  "delivered",
-  "failed",
-  "message",
-  "seen"
-  ],
-  "chat_hostname": "SN-CHAT-12_",
-  "status_message": "ok",
-  "status": 0
-  }
+
 ```
