@@ -42,5 +42,10 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
-
+{
+ "kind": "drive#file",
+ "id": "1QLPdhfJMz9P3UJBMCvF4zYzi6yqDlYaU",
+ "name": "CopiedFile.jpeg",
+ "mimeType": "image/jpeg"
+}
 ```

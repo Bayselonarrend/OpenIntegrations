@@ -40,5 +40,9 @@ sidebar_position: 11
 ```
 
 ```json title="Result"
-
+{
+ "href": "https://cloud-api.yandex.net/v1/disk/operations/893775a2f99d1050d2dc89abc4f6741ce785fbed7b08fbc7da79dd8c0befcd06",
+ "method": "GET",
+ "templated": false
+}
 ```

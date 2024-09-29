@@ -40,5 +40,23 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-
+{
+ "spreadsheetId": "1CppTmECbHp9HaxzXF5NpNCiNvsZFruTdmBoyhPdtQe4",
+ "replies": [
+  {
+   "addSheet": {
+    "properties": {
+     "sheetId": 20832585,
+     "title": "TestSheet",
+     "index": 2,
+     "sheetType": "GRID",
+     "gridProperties": {
+      "rowCount": 1000,
+      "columnCount": 26
+     }
+    }
+   }
+  }
+ ]
+}
 ```
