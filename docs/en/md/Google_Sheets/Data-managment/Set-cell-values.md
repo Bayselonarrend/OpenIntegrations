@@ -52,5 +52,69 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-
+{
+ "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+ "totalUpdatedRows": 4,
+ "totalUpdatedColumns": 2,
+ "totalUpdatedCells": 8,
+ "totalUpdatedSheets": 1,
+ "responses": [
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!A1",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  },
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!A2",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  },
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!B2",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  },
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!B3",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  },
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!A3",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  },
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!A4",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  },
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!B1",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  },
+  {
+   "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+   "updatedRange": "Sheet2!B4",
+   "updatedRows": 1,
+   "updatedColumns": 1,
+   "updatedCells": 1
+  }
+ ]
+}
 ```
