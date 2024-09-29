@@ -25,13 +25,19 @@ p{
 
   .main-wrapper,.navbar{
     
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.075);
+    
+    border: 1px solid #ddd;
+    border-radius: 12px; /* Более округлые формы */
 
-    backdrop-filter: blur( 11px );
-    -webkit-backdrop-filter: blur( 11px );
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.096);
+    font-size: 1rem;
+    color: #333;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); /* Легкий текстовый отблеск */
+    box-shadow: 
+      inset 0 1px 3px rgba(255, 255, 255, 0.7), /* Мягкий внутренний свет */
+      0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая внешняя тень */
+    transition: all 0.3s ease;
+
+    
     margin: 20px;
   }
 
@@ -42,6 +48,28 @@ p{
     
   }
 
+}
+
+.navbar-github-link {
+  display: flex;
+  align-items: center; /* Вертикальное выравнивание */
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit; /* Унаследовать цвет текста */
+}
+
+.navbar-github-link::before {
+  content: '';
+  background-image: url('./../../static/img/github-logo.svg'); /* Замените на путь к вашему логотипу */
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20px; /* Ширина логотипа */
+  height: 20px; /* Высота логотипа */
+  margin-right: 5px; /* Отступ между изображением и текстом */
+}
+
+/* Если хотите добавить эффект при наведении */
+.navbar-github-link:hover {
+  opacity: 0.8; /* Легкая прозрачность при наведении */
 }
 
 .footer{
