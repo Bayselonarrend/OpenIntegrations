@@ -39,25 +39,25 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
-  "revision": 1707461457546792,
-  "comment_ids": {
-  "public_resource": "1573541518:ba32b9efac79ab1b04707a4278a1ff583d7b0403ea306035f1b910e56c6ef3ac",
-  "private_resource": "1573541518:ba32b9efac79ab1b04707a4278a1ff583d7b0403ea306035f1b910e56c6ef3ac"
-  },
-  "path": "disk:/Тестовая папка",
-  "modified": "2024-02-09T06:50:57+00:00",
-  "created": "2024-02-09T06:50:57+00:00",
-  "resource_id": "1573541518:ba32b9efac79ab1b04707a4278a1ff583d7b0403ea306035f1b910e56c6ef3ac",
-  "type": "dir",
-  "name": "Тестовая папка",
-  "exif": {},
-  "_embedded": {
-  "total": 0,
-  "path": "disk:/Тестовая папка",
+ "_embedded": {
+  "sort": "",
+  "items": [],
   "limit": 20,
   "offset": 0,
-  "items": [],
-  "sort": ""
-  }
-  }
+  "path": "disk:/45e71524-1ddd-42e1-9e82-d24e2d22a220",
+  "total": 0
+ },
+ "name": "45e71524-1ddd-42e1-9e82-d24e2d22a220",
+ "exif": {},
+ "resource_id": "1573541518:8688269dd3b8b9b6fb4ea14d6291b0af3d3674ec9898c1e4c906523bed448ab1",
+ "created": "2024-09-29T15:14:00+03:00",
+ "modified": "2024-09-29T15:14:00+03:00",
+ "path": "disk:/45e71524-1ddd-42e1-9e82-d24e2d22a220",
+ "comment_ids": {
+  "private_resource": "1573541518:8688269dd3b8b9b6fb4ea14d6291b0af3d3674ec9898c1e4c906523bed448ab1",
+  "public_resource": "1573541518:8688269dd3b8b9b6fb4ea14d6291b0af3d3674ec9898c1e4c906523bed448ab1"
+ },
+ "type": "dir",
+ "revision": 1727612040930762
+}
 ```

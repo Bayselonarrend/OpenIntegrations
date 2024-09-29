@@ -26,8 +26,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Token       = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Spreadsheet = "1MvjT6qO5jQzS0O1o33GVv4ui59dIeDkdY8QLR6z5k9o";
+    Token       = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Spreadsheet = "1pqjld5QO6zoOe8zPMthfFhGcwwaE6FdlDyw-UHgEP5c";
     Sheet       = "Sheet2";
 
     ValueMapping = New Map;
@@ -52,69 +52,5 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "totalUpdatedRows": 4,
-  "totalUpdatedColumns": 2,
-  "totalUpdatedCells": 8,
-  "totalUpdatedSheets": 1,
-  "responses": [
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!A1",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  },
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!A2",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  },
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!B2",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  },
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!B3",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  },
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!A3",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  },
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!A4",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  },
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!B1",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  },
-  {
-  "spreadsheetId": "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc",
-  "updatedRange": "'Sheet2'!B4",
-  "updatedRows": 1,
-  "updatedColumns": 1,
-  "updatedCells": 1
-  }
-  ]
-  }
+
 ```

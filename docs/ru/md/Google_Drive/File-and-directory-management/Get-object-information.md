@@ -23,8 +23,8 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Идентификатор = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+    Токен         = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Идентификатор = "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy";
 
     Результат   = OPI_GoogleDrive.ПолучитьИнформациюОбОбъекте(Токен, Идентификатор);
 ```
@@ -39,107 +39,107 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
-  "linkShareMetadata": {
-  "securityUpdateEnabled": true,
-  "securityUpdateEligible": false
-  },
-  "quotaBytesUsed": "0",
-  "folderColorRgb": "#8f8f8f",
-  "writersCanShare": true,
-  "lastModifyingUser": {
-  "emailAddress": "bayselonarrend@gmail.com",
-  "permissionId": "07468399490707249352",
-  "me": true,
-  "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocLx8JGurt0UjXFwwTiB6ZoDPWslW1EnfCTahrwrIllM6Q=s64",
-  "displayName": "Антон Титовец",
-  "kind": "drive#user"
-  },
-  "modifiedByMe": true,
-  "capabilities": {
-  "canUntrash": true,
-  "canTrash": true,
-  "canRemoveMyDriveParent": true,
-  "canRemoveContentRestriction": false,
-  "canRemoveChildren": true,
-  "canMoveItemWithinDrive": true,
-  "canMoveItemOutOfDrive": true,
-  "canMoveItemIntoTeamDrive": true,
-  "canModifyLabels": false,
-  "canModifyOwnerContentRestriction": false,
-  "canReadRevisions": false,
-  "canModifyContentRestriction": false,
-  "canShare": true,
-  "canModifyContent": true,
-  "canDownload": true,
-  "canMoveChildrenWithinDrive": true,
-  "canCopy": false,
-  "canModifyEditorContentRestriction": false,
-  "canChangeSecurityUpdateEnabled": false,
-  "canRename": true,
-  "canChangeCopyRequiresWriterPermission": false,
-  "canDelete": true,
-  "canChangeViewersCanCopyContent": false,
-  "canEdit": true,
-  "canReadLabels": false,
-  "canAddMyDriveParent": false,
-  "canComment": true,
-  "canAddChildren": true,
-  "canListChildren": true,
-  "canAcceptOwnership": false
-  },
-  "copyRequiresWriterPermission": false,
-  "modifiedTime": "2023-12-28T13:22:03.333Z",
-  "createdTime": "2023-12-28T13:22:00.683Z",
-  "viewedByMeTime": "2023-12-28T13:22:00.683Z",
-  "viewedByMe": true,
-  "shared": false,
-  "hasThumbnail": false,
-  "version": "3",
-  "owners": [
-  {
-  "emailAddress": "bayselonarrend@gmail.com",
-  "permissionId": "07468399490707249352",
-  "me": true,
-  "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocLx8JGurt0UjXFwwTiB6ZoDPWslW1EnfCTahrwrIllM6Q=s64",
-  "displayName": "Антон Титовец",
-  "kind": "drive#user"
-  }
-  ],
-  "isAppAuthorized": false,
-  "webViewLink": "https://drive.google.com/drive/folders/1dg_MhZrLoPSPYT0p3y-8dvGWoapbwiDm",
-  "spaces": [
+ "kind": "drive#file",
+ "id": "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM",
+ "name": "Тестовая папка",
+ "mimeType": "application/vnd.google-apps.folder",
+ "starred": false,
+ "trashed": false,
+ "explicitlyTrashed": false,
+ "parents": [
+  "0AN2vrbrhqfJrUk9PVA"
+ ],
+ "spaces": [
   "drive"
-  ],
-  "modifiedByMeTime": "2023-12-28T13:22:03.333Z",
-  "permissionIds": [
-  "07468399490707249352"
-  ],
-  "explicitlyTrashed": false,
-  "parents": [
-  "1603PU_Hrkvj4HeFJKYSVxZJDRoGvd3SJ"
-  ],
-  "ownedByMe": true,
-  "trashed": false,
-  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
-  "viewersCanCopyContent": true,
-  "mimeType": "application/vnd.google-apps.folder",
-  "permissions": [
+ ],
+ "version": "1",
+ "webViewLink": "https://drive.google.com/drive/folders/191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM",
+ "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
+ "hasThumbnail": false,
+ "thumbnailVersion": "0",
+ "viewedByMe": true,
+ "viewedByMeTime": "2024-05-30T07:31:43.495Z",
+ "createdTime": "2024-05-30T07:31:43.495Z",
+ "modifiedTime": "2024-05-30T07:31:44.676Z",
+ "modifiedByMeTime": "2024-05-30T07:31:44.676Z",
+ "modifiedByMe": true,
+ "owners": [
   {
-  "pendingOwner": false,
-  "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocLx8JGurt0UjXFwwTiB6ZoDPWslW1EnfCTahrwrIllM6Q=s64",
-  "role": "owner",
-  "emailAddress": "bayselonarrend@gmail.com",
-  "type": "user",
-  "deleted": false,
+   "kind": "drive#user",
+   "displayName": "Антон Титовец",
+   "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+   "me": true,
+   "permissionId": "07468399490707249352",
+   "emailAddress": "bayselonarrend@gmail.com"
+  }
+ ],
+ "lastModifyingUser": {
+  "kind": "drive#user",
   "displayName": "Антон Титовец",
-  "id": "07468399490707249352",
-  "kind": "drive#permission"
+  "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+  "me": true,
+  "permissionId": "07468399490707249352",
+  "emailAddress": "bayselonarrend@gmail.com"
+ },
+ "shared": false,
+ "ownedByMe": true,
+ "capabilities": {
+  "canAcceptOwnership": false,
+  "canAddChildren": true,
+  "canAddMyDriveParent": false,
+  "canChangeCopyRequiresWriterPermission": false,
+  "canChangeSecurityUpdateEnabled": false,
+  "canChangeViewersCanCopyContent": false,
+  "canComment": true,
+  "canCopy": false,
+  "canDelete": true,
+  "canDownload": true,
+  "canEdit": true,
+  "canListChildren": true,
+  "canModifyContent": true,
+  "canModifyContentRestriction": false,
+  "canModifyEditorContentRestriction": false,
+  "canModifyOwnerContentRestriction": false,
+  "canModifyLabels": false,
+  "canMoveChildrenWithinDrive": true,
+  "canMoveItemIntoTeamDrive": true,
+  "canMoveItemOutOfDrive": true,
+  "canMoveItemWithinDrive": true,
+  "canReadLabels": false,
+  "canReadRevisions": false,
+  "canRemoveChildren": true,
+  "canRemoveContentRestriction": false,
+  "canRemoveMyDriveParent": true,
+  "canRename": true,
+  "canShare": true,
+  "canTrash": true,
+  "canUntrash": true
+ },
+ "viewersCanCopyContent": true,
+ "copyRequiresWriterPermission": false,
+ "writersCanShare": true,
+ "permissions": [
+  {
+   "kind": "drive#permission",
+   "id": "07468399490707249352",
+   "type": "user",
+   "emailAddress": "bayselonarrend@gmail.com",
+   "role": "owner",
+   "displayName": "Антон Титовец",
+   "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+   "deleted": false,
+   "pendingOwner": false
   }
-  ],
-  "name": "ОПИ",
-  "starred": false,
-  "id": "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa",
-  "kind": "drive#file",
-  "thumbnailVersion": "0"
-  }
+ ],
+ "permissionIds": [
+  "07468399490707249352"
+ ],
+ "folderColorRgb": "#8f8f8f",
+ "quotaBytesUsed": "0",
+ "isAppAuthorized": false,
+ "linkShareMetadata": {
+  "securityUpdateEligible": false,
+  "securityUpdateEnabled": true
+ }
+}
 ```
