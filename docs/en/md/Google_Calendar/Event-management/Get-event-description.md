@@ -21,7 +21,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-
+    Result = OPI_GoogleCalendar.GetEventDescription();
 ```
 
 

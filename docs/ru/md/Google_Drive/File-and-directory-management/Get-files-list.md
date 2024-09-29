@@ -24,10 +24,11 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  Каталог   = "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4";
-  Ответ     = OPI_GoogleDrive.ПолучитьСписокФайлов(Токен, , Каталог);  //Соответствие
-  Ответ     = OPI_Инструменты.JSONСтрокой(Ответ);                      //Строка
+    Токен       = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Каталог     = "root";
+    ИмяСодержит = "data";
+
+    Результат   = OPI_GoogleDrive.ПолучитьСписокФайлов(Токен, ИмяСодержит, Каталог);
 ```
 
 

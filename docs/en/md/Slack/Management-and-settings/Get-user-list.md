@@ -186,9 +186,5 @@ sidebar_position: 3
   "who_can_share_contact_card": "EVERYONE"
   }
   ],
-  "cache_ts": 1714215811,
-  "response_metadata": {
-  "next_cursor": ""
-  }
-  }
+...
 ```

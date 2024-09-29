@@ -27,7 +27,7 @@ sidebar_position: 7
 ```bsl title="Code example"
     Token     = "xoxb-6965308400114-696804637...";
     Channel   = "C06UFNUTKUL";
-    Timestamp = "1727619071.222019";
+    Timestamp = "1727627095.229429";
 
     Result = OPI_Slack.GetMessageReplyList(Token, Channel, Timestamp);
 ```
