@@ -24,12 +24,11 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  
-  Channel = "C070VPMKN8J";
-  Timestamp = "1714146538.221929";
-  
-  Response = OPI_Slack.GetMessageLink(Token, Channel, Timestamp); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token     = "xoxb-6965308400114-696804637...";
+    Channel   = "C06UFNUTKUL";
+    Timestamp = "1727601574.499569";
+
+    Result = OPI_Slack.GetMessageLink(Token, Channel, Timestamp);
 ```
 
 

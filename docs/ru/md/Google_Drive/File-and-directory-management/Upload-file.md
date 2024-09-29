@@ -25,7 +25,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен    = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Картинка = "https://openintegrations.dev/test_data/picture.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла();

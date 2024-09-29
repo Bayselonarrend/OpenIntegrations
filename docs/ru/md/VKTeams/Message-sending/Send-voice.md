@@ -37,7 +37,7 @@ sidebar_position: 3
     IDЦитируемого = "7419291601358293295";
     Текст         = "Подпись к файлу";
 
-    Файл     = "https://openintegrations.dev/test_data/song.m4a"  ;        // URL
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a"  ;        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);

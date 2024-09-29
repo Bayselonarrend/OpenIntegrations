@@ -31,7 +31,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 ```bsl title="Code example"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
     ChatID      = "872";
-    File        = "https://openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
+    File        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
