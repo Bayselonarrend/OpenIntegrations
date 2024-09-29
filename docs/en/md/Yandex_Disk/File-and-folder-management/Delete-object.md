@@ -25,7 +25,7 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/3e70ff0a-a41a-4a16-b8dd-42752620b05c.png";
+    Path  = "/90663562-d505-474e-a778-e25c2cf50b4b.png";
 
     Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
 ```
