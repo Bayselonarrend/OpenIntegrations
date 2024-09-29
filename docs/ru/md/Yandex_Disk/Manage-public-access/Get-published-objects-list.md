@@ -190,8 +190,5 @@ sidebar_position: 3
    "md5": "403262e03464796e99ff362e913e9a4d",
    "revision": 1717260886231743
   }
- ],
- "limit": 2,
- "offset": 1
-}
+...
 ```

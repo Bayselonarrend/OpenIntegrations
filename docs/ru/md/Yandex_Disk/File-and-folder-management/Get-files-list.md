@@ -193,6 +193,5 @@ sidebar_position: 8
   }
  ],
  "limit": 2,
- "offset": 1
-}
+...
 ```
