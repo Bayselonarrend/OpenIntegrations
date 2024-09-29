@@ -1,0 +1,44 @@
+﻿ {
+ "kind": "calendar#event",
+ "etag": "\"3455260702978000\"",
+ "id": "nkeonu0b5b3flradhop3ist4vk",
+ "status": "cancelled",
+ "htmlLink": "https://www.google.com/calendar/event?eid=bmtlb251MGI1YjNmbHJhZGhvcDNpc3Q0dmsgYjA0MjAwMGYwYTRjYzU5ZTk2OWRkOTljZWMzNjk2ZmYwZDI2OWFhZTNkMWRhZjdmMjQ1N2RmMjg4ZmUzMzgzNUBn",
+ "created": "2024-09-29T17:19:10Z",
+ "updated": "2024-09-29T17:19:11.489Z",
+ "summary": "New event",
+ "description": "New event description",
+ "location": "InOffice",
+ "creator": {
+  "email": "bayselonarrend@gmail.com"
+ },
+ "organizer": {
+  "email": "bayselonarrend@gmail.com"
+ },
+ "start": {
+  "dateTime": "2024-09-29T23:19:10+03:00",
+  "timeZone": "Europe/Moscow"
+ },
+ "end": {
+  "dateTime": "2024-09-30T00:19:10+03:00",
+  "timeZone": "Europe/Moscow"
+ },
+ "iCalUID": "nkeonu0b5b3flradhop3ist4vk@google.com",
+ "sequence": 0,
+ "reminders": {
+  "useDefault": true
+ },
+ "attachments": [
+  {
+   "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
+   "title": "Image1",
+   "iconLink": ""
+  },
+  {
+   "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
+   "title": "Image2",
+   "iconLink": ""
+  }
+ ],
+ "eventType": "default"
+}

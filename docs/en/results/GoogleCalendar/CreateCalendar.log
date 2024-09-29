@@ -1,0 +1,12 @@
+﻿ {
+ "kind": "calendar#calendar",
+ "etag": "\"P29Vjnf90-Fz11sGIiQIq8IXACE\"",
+ "id": "739cf8d11d0517973f88bc93554f2f43e832f38e012b391be0ad17d266a850bc@group.calendar.google.com",
+ "summary": "TestCalendar",
+ "timeZone": "Europe/Moscow",
+ "conferenceProperties": {
+  "allowedConferenceSolutionTypes": [
+   "hangoutsMeet"
+  ]
+ }
+}

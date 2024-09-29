@@ -1,0 +1,450 @@
+﻿ [
+ {
+  "kind": "drive#file",
+  "copyRequiresWriterPermission": false,
+  "writersCanShare": true,
+  "viewedByMe": false,
+  "mimeType": "application/vnd.google-apps.folder",
+  "parents": [
+   "0AN2vrbrhqfJrUk9PVA"
+  ],
+  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
+  "shared": false,
+  "lastModifyingUser": {
+   "displayName": "Антон Титовец",
+   "kind": "drive#user",
+   "me": true,
+   "permissionId": "07468399490707249352",
+   "emailAddress": "bayselonarrend@gmail.com",
+   "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+  },
+  "owners": [
+   {
+    "displayName": "Антон Титовец",
+    "kind": "drive#user",
+    "me": true,
+    "permissionId": "07468399490707249352",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+   }
+  ],
+  "webViewLink": "https://drive.google.com/drive/folders/1Q3vl7hcmdeJvd86jC84pdGKW5772apUy",
+  "viewersCanCopyContent": true,
+  "permissions": [
+   {
+    "id": "07468399490707249352",
+    "displayName": "Антон Титовец",
+    "type": "user",
+    "kind": "drive#permission",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "role": "owner",
+    "deleted": false,
+    "pendingOwner": false
+   }
+  ],
+  "hasThumbnail": false,
+  "spaces": [
+   "drive"
+  ],
+  "folderColorRgb": "#8f8f8f",
+  "id": "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy",
+  "name": "TestFolder",
+  "description": "",
+  "starred": false,
+  "trashed": false,
+  "explicitlyTrashed": false,
+  "createdTime": "2024-06-03T07:24:06.147Z",
+  "modifiedTime": "2024-06-03T07:24:06.147Z",
+  "modifiedByMeTime": "2024-06-03T07:24:06.147Z",
+  "quotaBytesUsed": "0",
+  "version": "1",
+  "ownedByMe": true,
+  "isAppAuthorized": true,
+  "capabilities": {
+   "canChangeViewersCanCopyContent": false,
+   "canEdit": true,
+   "canCopy": false,
+   "canComment": true,
+   "canAddChildren": true,
+   "canDelete": true,
+   "canDownload": true,
+   "canListChildren": true,
+   "canRemoveChildren": true,
+   "canRename": true,
+   "canTrash": true,
+   "canReadRevisions": false,
+   "canChangeCopyRequiresWriterPermission": false,
+   "canMoveItemIntoTeamDrive": true,
+   "canUntrash": true,
+   "canModifyContent": true,
+   "canMoveItemOutOfDrive": true,
+   "canAddMyDriveParent": false,
+   "canRemoveMyDriveParent": true,
+   "canMoveItemWithinDrive": true,
+   "canShare": true,
+   "canMoveChildrenWithinDrive": true,
+   "canModifyContentRestriction": false,
+   "canChangeSecurityUpdateEnabled": false,
+   "canAcceptOwnership": false,
+   "canReadLabels": false,
+   "canModifyLabels": false,
+   "canModifyEditorContentRestriction": false,
+   "canModifyOwnerContentRestriction": false,
+   "canRemoveContentRestriction": false
+  },
+  "thumbnailVersion": "0",
+  "modifiedByMe": true,
+  "permissionIds": [
+   "07468399490707249352"
+  ],
+  "linkShareMetadata": {
+   "securityUpdateEligible": false,
+   "securityUpdateEnabled": true
+  },
+  "files": [
+   {
+    "kind": "drive#file",
+    "fileExtension": "jpg",
+    "copyRequiresWriterPermission": false,
+    "md5Checksum": "85b6518b95b58536480354d9d5fc3d8b",
+    "writersCanShare": true,
+    "viewedByMe": false,
+    "mimeType": "image/jpeg",
+    "parents": [
+     "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy"
+    ],
+    "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNAt8j6rvhsyCL9Et8cuRhQi9q0mNvptsJxkqOuI6hQRdeeaD3qFAf-OUABsEP8Mct_NfUxpkK4pPSrnM7jt0EtR_poFu3fZuvpwfrhrmJSfv0=s220",
+    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
+    "shared": false,
+    "lastModifyingUser": {
+     "displayName": "Антон Титовец",
+     "kind": "drive#user",
+     "me": true,
+     "permissionId": "07468399490707249352",
+     "emailAddress": "bayselonarrend@gmail.com",
+     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+    },
+    "owners": [
+     {
+      "displayName": "Антон Титовец",
+      "kind": "drive#user",
+      "me": true,
+      "permissionId": "07468399490707249352",
+      "emailAddress": "bayselonarrend@gmail.com",
+      "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+     }
+    ],
+    "headRevisionId": "0B92vrbrhqfJrRTVPUUhub2t5dytHRm93enlyY2hYakozV1dFPQ",
+    "webViewLink": "https://drive.google.com/file/d/1-vL_2o3B_v0-fYVKRgok5PmF3goKOsW3/view?usp=drivesdk",
+    "webContentLink": "https://drive.google.com/uc?id=1-vL_2o3B_v0-fYVKRgok5PmF3goKOsW3&export=download",
+    "size": "2114025",
+    "viewersCanCopyContent": true,
+    "permissions": [
+     {
+      "id": "07468399490707249352",
+      "displayName": "Антон Титовец",
+      "type": "user",
+      "kind": "drive#permission",
+      "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+      "emailAddress": "bayselonarrend@gmail.com",
+      "role": "owner",
+      "deleted": false,
+      "pendingOwner": false
+     }
+    ],
+    "hasThumbnail": true,
+    "spaces": [
+     "drive"
+    ],
+    "id": "1-vL_2o3B_v0-fYVKRgok5PmF3goKOsW3",
+    "name": "New file.jpg",
+    "description": "This is a new file",
+    "starred": false,
+    "trashed": false,
+    "explicitlyTrashed": false,
+    "createdTime": "2024-09-25T20:34:11.125Z",
+    "modifiedTime": "2024-09-25T20:34:11.125Z",
+    "modifiedByMeTime": "2024-09-25T20:34:11.125Z",
+    "quotaBytesUsed": "2114025",
+    "version": "2",
+    "originalFilename": "New file.jpg",
+    "ownedByMe": true,
+    "fullFileExtension": "jpg",
+    "isAppAuthorized": true,
+    "capabilities": {
+     "canChangeViewersCanCopyContent": true,
+     "canEdit": true,
+     "canCopy": true,
+     "canComment": true,
+     "canAddChildren": false,
+     "canDelete": true,
+     "canDownload": true,
+     "canListChildren": false,
+     "canRemoveChildren": false,
+     "canRename": true,
+     "canTrash": true,
+     "canReadRevisions": true,
+     "canChangeCopyRequiresWriterPermission": true,
+     "canMoveItemIntoTeamDrive": true,
+     "canUntrash": true,
+     "canModifyContent": true,
+     "canMoveItemOutOfDrive": true,
+     "canAddMyDriveParent": false,
+     "canRemoveMyDriveParent": true,
+     "canMoveItemWithinDrive": true,
+     "canShare": true,
+     "canMoveChildrenWithinDrive": false,
+     "canModifyContentRestriction": true,
+     "canChangeSecurityUpdateEnabled": false,
+     "canAcceptOwnership": false,
+     "canReadLabels": false,
+     "canModifyLabels": false,
+     "canModifyEditorContentRestriction": true,
+     "canModifyOwnerContentRestriction": true,
+     "canRemoveContentRestriction": false
+    },
+    "thumbnailVersion": "1",
+    "modifiedByMe": true,
+    "permissionIds": [
+     "07468399490707249352"
+    ],
+    "imageMediaMetadata": {
+     "flashUsed": true,
+     "meteringMode": "Pattern",
+     "exposureMode": "Auto",
+     "colorSpace": "sRGB",
+     "whiteBalance": "Auto",
+     "width": 3264,
+     "height": 2448,
+     "rotation": 0,
+     "time": "2012:08:03 08:21:50",
+     "cameraMake": "SONY",
+     "cameraModel": "DSC-H7",
+     "exposureTime": 0.00125,
+     "aperture": 5.6,
+     "focalLength": 5.2,
+     "isoSpeed": 100,
+     "exposureBias": 0,
+     "maxApertureValue": 2.875
+    },
+    "linkShareMetadata": {
+     "securityUpdateEligible": false,
+     "securityUpdateEnabled": true
+    },
+    "sha1Checksum": "ebdbaf8ed7fe21f6562fde438a2bb12ba49750f2",
+    "sha256Checksum": "1a03612de72929ef42a272cb17123871bf9b7723c89f9659765a49f744b6162b"
+   }
+  ]
+ },
+ {
+  "kind": "drive#file",
+  "copyRequiresWriterPermission": false,
+  "writersCanShare": true,
+  "viewedByMe": false,
+  "mimeType": "application/vnd.google-apps.folder",
+  "parents": [
+   "0AN2vrbrhqfJrUk9PVA"
+  ],
+  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
+  "shared": false,
+  "lastModifyingUser": {
+   "displayName": "Антон Титовец",
+   "kind": "drive#user",
+   "me": true,
+   "permissionId": "07468399490707249352",
+   "emailAddress": "bayselonarrend@gmail.com",
+   "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+  },
+  "owners": [
+   {
+    "displayName": "Антон Титовец",
+    "kind": "drive#user",
+    "me": true,
+    "permissionId": "07468399490707249352",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+   }
+  ],
+  "webViewLink": "https://drive.google.com/drive/folders/1O0dI2Md329mK9HfvxlJp_5bc5XgHc451",
+  "viewersCanCopyContent": true,
+  "permissions": [
+   {
+    "id": "07468399490707249352",
+    "displayName": "Антон Титовец",
+    "type": "user",
+    "kind": "drive#permission",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "role": "owner",
+    "deleted": false,
+    "pendingOwner": false
+   }
+  ],
+  "hasThumbnail": false,
+  "spaces": [
+   "drive"
+  ],
+  "folderColorRgb": "#8f8f8f",
+  "id": "1O0dI2Md329mK9HfvxlJp_5bc5XgHc451",
+  "name": "TestFolder",
+  "description": "",
+  "starred": false,
+  "trashed": false,
+  "explicitlyTrashed": false,
+  "createdTime": "2024-06-03T06:24:35.846Z",
+  "modifiedTime": "2024-06-03T06:24:35.846Z",
+  "modifiedByMeTime": "2024-06-03T06:24:35.846Z",
+  "quotaBytesUsed": "0",
+  "version": "1",
+  "ownedByMe": true,
+  "isAppAuthorized": true,
+  "capabilities": {
+   "canChangeViewersCanCopyContent": false,
+   "canEdit": true,
+   "canCopy": false,
+   "canComment": true,
+   "canAddChildren": true,
+   "canDelete": true,
+   "canDownload": true,
+   "canListChildren": true,
+   "canRemoveChildren": true,
+   "canRename": true,
+   "canTrash": true,
+   "canReadRevisions": false,
+   "canChangeCopyRequiresWriterPermission": false,
+   "canMoveItemIntoTeamDrive": true,
+   "canUntrash": true,
+   "canModifyContent": true,
+   "canMoveItemOutOfDrive": true,
+   "canAddMyDriveParent": false,
+   "canRemoveMyDriveParent": true,
+   "canMoveItemWithinDrive": true,
+   "canShare": true,
+   "canMoveChildrenWithinDrive": true,
+   "canModifyContentRestriction": false,
+   "canChangeSecurityUpdateEnabled": false,
+   "canAcceptOwnership": false,
+   "canReadLabels": false,
+   "canModifyLabels": false,
+   "canModifyEditorContentRestriction": false,
+   "canModifyOwnerContentRestriction": false,
+   "canRemoveContentRestriction": false
+  },
+  "thumbnailVersion": "0",
+  "modifiedByMe": true,
+  "permissionIds": [
+   "07468399490707249352"
+  ],
+  "linkShareMetadata": {
+   "securityUpdateEligible": false,
+   "securityUpdateEnabled": true
+  },
+  "files": []
+ },
+ {
+  "kind": "drive#file",
+  "copyRequiresWriterPermission": false,
+  "writersCanShare": true,
+  "viewedByMe": false,
+  "mimeType": "application/vnd.google-apps.folder",
+  "parents": [
+   "0AN2vrbrhqfJrUk9PVA"
+  ],
+  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
+  "shared": false,
+  "lastModifyingUser": {
+   "displayName": "Антон Титовец",
+   "kind": "drive#user",
+   "me": true,
+   "permissionId": "07468399490707249352",
+   "emailAddress": "bayselonarrend@gmail.com",
+   "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+  },
+  "owners": [
+   {
+    "displayName": "Антон Титовец",
+    "kind": "drive#user",
+    "me": true,
+    "permissionId": "07468399490707249352",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
+   }
+  ],
+  "webViewLink": "https://drive.google.com/drive/folders/1lOK6QCt1uQZtQea6PV19bLtR1WrhePv4",
+  "viewersCanCopyContent": true,
+  "permissions": [
+   {
+    "id": "07468399490707249352",
+    "displayName": "Антон Титовец",
+    "type": "user",
+    "kind": "drive#permission",
+    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
+    "emailAddress": "bayselonarrend@gmail.com",
+    "role": "owner",
+    "deleted": false,
+    "pendingOwner": false
+   }
+  ],
+  "hasThumbnail": false,
+  "spaces": [
+   "drive"
+  ],
+  "folderColorRgb": "#8f8f8f",
+  "id": "1lOK6QCt1uQZtQea6PV19bLtR1WrhePv4",
+  "name": "TestFolder",
+  "description": "",
+  "starred": false,
+  "trashed": false,
+  "explicitlyTrashed": false,
+  "createdTime": "2024-06-02T15:46:41.694Z",
+  "modifiedTime": "2024-06-02T15:46:41.694Z",
+  "modifiedByMeTime": "2024-06-02T15:46:41.694Z",
+  "quotaBytesUsed": "0",
+  "version": "1",
+  "ownedByMe": true,
+  "isAppAuthorized": true,
+  "capabilities": {
+   "canChangeViewersCanCopyContent": false,
+   "canEdit": true,
+   "canCopy": false,
+   "canComment": true,
+   "canAddChildren": true,
+   "canDelete": true,
+   "canDownload": true,
+   "canListChildren": true,
+   "canRemoveChildren": true,
+   "canRename": true,
+   "canTrash": true,
+   "canReadRevisions": false,
+   "canChangeCopyRequiresWriterPermission": false,
+   "canMoveItemIntoTeamDrive": true,
+   "canUntrash": true,
+   "canModifyContent": true,
+   "canMoveItemOutOfDrive": true,
+   "canAddMyDriveParent": false,
+   "canRemoveMyDriveParent": true,
+   "canMoveItemWithinDrive": true,
+   "canShare": true,
+   "canMoveChildrenWithinDrive": true,
+   "canModifyContentRestriction": false,
+   "canChangeSecurityUpdateEnabled": false,
+   "canAcceptOwnership": false,
+   "canReadLabels": false,
+   "canModifyLabels": false,
+   "canModifyEditorContentRestriction": false,
+   "canModifyOwnerContentRestriction": false,
+   "canRemoveContentRestriction": false
+  },
+  "thumbnailVersion": "0",
+  "modifiedByMe": true,
+  "permissionIds": [
+   "07468399490707249352"
+  ],
+  "linkShareMetadata": {
+   "securityUpdateEligible": false,
+   "securityUpdateEnabled": true
+  },
+  "files": []
+ }
+]
