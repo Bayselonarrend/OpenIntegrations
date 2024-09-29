@@ -1231,301 +1231,63 @@ EndProcedure
 
 Procedure Slack_CreateArchiveChannel() Export
 
-    Token   = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    User    = OPI_TestDataRetrieval.GetParameter("Slack_User");
-    Name    = "testconv" + String(New UUID);
-    Topic   = "TestTopic";
-    Purpose = "TestGoal";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"  , TestParameters);
 
-    #Region CreateChannel
-    Result = OPI_Slack.CreateChannel(Token, Name);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateChannel");
-
-    Data    = Result["channel"];
-    Channel = Data["id"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
-    #EndRegion
-
-    #Region SetChannelTopic
-    Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelTopic");
-
-    Data    = Result["channel"];
-    Channel = Data["id"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Data["topic"]["value"]).Равно(Topic);
-    #EndRegion
-
-    #Region SetChannelGoal
-    Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelGoal");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    #EndRegion
-
-    #Region GetChannel
-    Result = OPI_Slack.GetChannel(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannel");
-
-    Data    = Result["channel"];
-    Channel = Data["id"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
-    #EndRegion
-
-    #Region InviteUsersToChannel
-    Result = OPI_Slack.InviteUsersToChannel(Token, Channel, User);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "InviteUsersToChannel");
-
-    Data    = Result["channel"];
-    Channel = Data["id"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
-    #EndRegion
-
-    #Region KickUserFromChannel
-    Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "KickUserFromChannel");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    #EndRegion
-
-    #Region GetChannelHistory
-    Result = OPI_Slack.GetChannelHistory(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelHistory");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["messages"]).ИмеетТип("Array");
-    #EndRegion
-
-    #Region GetChannelUserList
-    Result = OPI_Slack.GetChannelUserList(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelUserList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["members"]).ИмеетТип("Array");
-    #EndRegion
-
-    #Region LeaveChannel
-    Result = OPI_Slack.LeaveChannel(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "LeaveChannel");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    #EndRegion
-
-    #Region JoinChannel
-    Result = OPI_Slack.JoinChannel(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "JoinChannel");
-
-    Data    = Result["channel"];
-    Channel = Data["id"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(Name);
-    #EndRegion
-
-    #Region RenameChannel
-    NewName = "testconv" + String(New UUID);
-    Result  = OPI_Slack.RenameChannel(Token, Channel, NewName);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameChannel");
-
-    Data    = Result["channel"];
-    Channel = Data["id"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Data["name"]).Равно(NewName);
-    #EndRegion
-
-    #Region ArchiveChannel
-    Result = OPI_Slack.ArchiveChannel(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveChannel");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    #EndRegion
-
-EndProcedure
-
-Procedure Slack_GetChannelList() Export
-
-    Token = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-
-    Result = OPI_Slack.GetChannelList(Token);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channels"]).ИмеетТип("Array");
+    Slack_CreateChannel(TestParameters);
+    Slack_SetChannelTopic(TestParameters);
+    Slack_SetChannelGoal(TestParameters);
+    Slack_GetChannel(TestParameters);
+    Slack_InviteUsersToChannel(TestParameters);
+    Slack_KickUserFromChannel(TestParameters);
+    Slack_GetChannelHistory(TestParameters);
+    Slack_GetChannelUserList(TestParameters);
+    Slack_LeaveChannel(TestParameters);
+    Slack_JoinChannel(TestParameters);
+    Slack_RenameChannel(TestParameters);
+    Slack_ArchiveChannel(TestParameters);
+    Slack_GetChannelList(TestParameters);
 
 EndProcedure
 
 Procedure Slack_OpenCloseDialog() Export
 
-    Token = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    User  = OPI_TestDataRetrieval.GetParameter("Slack_User");
-    Text  = "Yo, dude";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"  , TestParameters);
 
-    Result = OPI_Slack.OpenDialog(Token, User);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "OpenDialog");
-
-    Dialog = Result["channel"]["id"];
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["channel"]).ИмеетТип("Map");
-    OPI_TestDataRetrieval.ExpectsThat(Dialog).Заполнено();
-
-    Result = OPI_Slack.SendMessage(Token, Dialog, Text);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-
-    Result = OPI_Slack.CloseDialog(Token, Dialog);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CloseDialog");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-
-EndProcedure
-
-Procedure Slack_GetFileList() Export
-
-    Token   = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Channel = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
-
-    Result = OPI_Slack.GetFilesList(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
+    Slack_OpenDialog(TestParameters);
+    Slack_CloseDialog(TestParameters);
 
 EndProcedure
 
 Procedure Slack_UploadDeleteFile() Export
 
-    Token        = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    File         = OPI_TestDataRetrieval.GetParameter("Document");
-    Channel      = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
-    ArrayOfFiles = New Array;
-    FileName     = "megadoc.docx";
-    Title        = "NewFile";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
 
-    Result = OPI_Slack.UploadFile(Token, File, FileName, Title);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile");
-
-    UploadedFile = Result["files"][0];
-    ArrayOfFiles.Add(UploadedFile["id"]);
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["name"]).Равно(FileName);
-
-    Result = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (to channel)");
-
-    UploadedFile = Result["files"][0];
-    ArrayOfFiles.Add(UploadedFile["id"]);
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["name"]).Равно(FileName);
-
-    Result = OPI_Slack.GetFileData(Token, UploadedFile["id"]);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFile");
-
-    UploadedFile = Result["file"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["name"]).Равно(FileName);
-
-    For Each UploadedFile In ArrayOfFiles Do
-
-        Result = OPI_Slack.DeleteFile(Token, UploadedFile);
-
-        OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile");
-
-        OPI_TestDataRetrieval.Check_SlackOk(Result);
-
-    EndDo;
-
-EndProcedure
-
-Procedure Slack_GetExternalFileList() Export
-
-    Token   = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    Channel = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
-
-    Result = OPI_Slack.GetExternalFileList(Token);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
-
-    Result = OPI_Slack.GetExternalFileList(Token, Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(Result["files"]).ИмеетТип("Array");
+    Slack_GetFilesList(TestParameters);
+    Slack_UploadFile(TestParameters);
+    Slack_GetFileData(TestParameters);
+    Slack_DeleteFile(TestParameters);
 
 EndProcedure
 
 Procedure Slack_UploadDeleteExternalFile() Export
 
-    Token   = OPI_TestDataRetrieval.GetParameter("Slack_Token");
-    File    = OPI_TestDataRetrieval.GetParameter("Document");
-    Channel = OPI_TestDataRetrieval.GetParameter("Slack_Channel");
-    Title   = "NewFile";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
 
-    Result = OPI_Slack.AddExternalFile(Token, File, Title);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "AddExternalFile");
-
-    UploadedFile = Result["file"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["title"]).Равно(Title);
-
-    Result = OPI_Slack.GetExternalFile(Token, UploadedFile["id"]);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFile");
-
-    UploadedFile = Result["file"];
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-    OPI_TestDataRetrieval.ExpectsThat(UploadedFile["title"]).Равно(Title);
-
-    Result = OPI_Slack.SendExternalFile(Token, UploadedFile["id"], Channel);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendExternalFile");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
-
-    Result = OPI_Slack.DeleteExternalFile(Token, UploadedFile["id"]);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "SendExternalFile");
-
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
+    Slack_GetExternalFileList(TestParameters);
+    Slack_AddExternalFile(TestParameters);
+    Slack_GetExternalFile(TestParameters);
+    Slack_SendExternalFile(TestParameters);
+    Slack_DeleteExternalFile(TestParameters);
 
 EndProcedure
 
@@ -6003,6 +5765,393 @@ Procedure Slack_GetDelayedMessageList(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetDelayedMessageList", "Slack");
     OPI_TestDataRetrieval.Check_SlackSheduled(Result);
+
+EndProcedure
+
+Procedure Slack_CreateChannel(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+    Name  = "testconv" + String(New UUID);
+
+    Result = OPI_Slack.CreateChannel(Token, Name);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, Name);
+
+    Channel = Result["channel"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Slack_NewChannel", Channel);
+    OPI_Tools.AddField("Slack_NewChannel", Channel, "String", FunctionParameters);
+
+    OPI_TestDataRetrieval.WriteParameter("Slack_NewChannelName", Name);
+    OPI_Tools.AddField("Slack_NewChannelName", Name, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Slack_SetChannelTopic(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    Topic   = "TestTopic";
+
+    Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelTopic", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelTopic(Result, Topic);
+
+EndProcedure
+
+Procedure Slack_SetChannelGoal(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    Purpose = "TestGoal";
+
+    Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelGoal", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_GetChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Result = OPI_Slack.GetChannel(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
+
+EndProcedure
+
+Procedure Slack_InviteUsersToChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    User    = FunctionParameters["Slack_User"];
+
+    Result = OPI_Slack.InviteUsersToChannel(Token, Channel, User);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "InviteUsersToChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
+
+EndProcedure
+
+Procedure Slack_KickUserFromChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    User    = FunctionParameters["Slack_User"];
+
+    Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "KickUserFromChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_GetChannelHistory(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Result = OPI_Slack.GetChannelHistory(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelHistory", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelHistory(Result);
+
+EndProcedure
+
+Procedure Slack_GetChannelUserList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Result = OPI_Slack.GetChannelUserList(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelUserList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelUsers(Result);
+
+EndProcedure
+
+Procedure Slack_LeaveChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Result = OPI_Slack.LeaveChannel(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "LeaveChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_JoinChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Result = OPI_Slack.JoinChannel(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "JoinChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
+
+EndProcedure
+
+Procedure Slack_RenameChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    Name    = "testconv" + String(New UUID);
+
+    Result = OPI_Slack.RenameChannel(Token, Channel, Name);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, Name);
+
+EndProcedure
+
+Procedure Slack_ArchiveChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Result = OPI_Slack.ArchiveChannel(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_GetChannelList(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+
+    Result = OPI_Slack.GetChannelList(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelsList(Result);
+
+EndProcedure
+
+Procedure Slack_OpenDialog(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+    User  = FunctionParameters["Slack_User"];
+
+    Result = OPI_Slack.OpenDialog(Token, User);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "OpenDialog", "Slack");
+    OPI_TestDataRetrieval.Check_SlackDialog(Result);
+
+    Dialog = Result["channel"]["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("Slack_Dialog", Dialog);
+    OPI_Tools.AddField("Slack_Dialog", Dialog, "String", FunctionParameters);
+
+    Result = OPI_Slack.SendMessage(Token, Dialog, "Test dialog");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (dialog)");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_CloseDialog(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    Dialog = FunctionParameters["Slack_Dialog"];
+
+    Result = OPI_Slack.CloseDialog(Token, Dialog);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseDialog", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_GetFilesList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    Result = OPI_Slack.GetFilesList(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+    Result = OPI_Slack.GetFilesList(Token);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList (full)");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+EndProcedure
+
+Procedure Slack_UploadFile(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+    File    = FunctionParameters["Document"]; // URL, Binary Data or Path to file
+
+    FileName = "megadoc.docx";
+    Title    = "NewFile";
+
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "Slack"); // SKIP
+    OPI_TestDataRetrieval.Check_SlackFile(Result, FileName); // SKIP
+
+    UploadedFile = Result["files"][0]["id"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Slack_FileID", UploadedFile); // SKIP
+    OPI_Tools.AddField("Slack_FileID", UploadedFile, "String", FunctionParameters); // SKIP
+
+    Result = OPI_Slack.UploadFile(Token, File, FileName, Title, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (to channel)");
+    OPI_TestDataRetrieval.Check_SlackFile(Result, FileName);
+    OPI_Slack.DeleteFile(Token, Result["files"][0]["id"]);
+
+EndProcedure
+
+Procedure Slack_GetFileData(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Result = OPI_Slack.GetFileData(Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileData", "Slack");
+    OPI_TestDataRetrieval.Check_SlackFile(Result, "megadoc.docx");
+
+EndProcedure
+
+Procedure Slack_DeleteFile(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Result = OPI_Slack.DeleteFile(Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_GetExternalFileList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    Result = OPI_Slack.GetExternalFileList(Token, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+    Result = OPI_Slack.GetExternalFileList(Token);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList (full)");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+EndProcedure
+
+Procedure Slack_AddExternalFile(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+    Title = "NewFile";
+    File  = FunctionParameters["Document"]; // URL, Binary Data or Path to file
+
+    Result = OPI_Slack.AddExternalFile(Token, File, Title);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackExternalFile(Result, Title);
+
+    UploadedFile = Result["file"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Slack_ExtFileID", UploadedFile);
+    OPI_Tools.AddField("Slack_ExtFileID", UploadedFile, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Slack_GetExternalFile(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_ExtFileID"];
+
+    Result = OPI_Slack.GetExternalFile(Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackExternalFile(Result, "NewFile");
+
+EndProcedure
+
+Procedure Slack_SendExternalFile(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+    FileID  = FunctionParameters["Slack_ExtFileID"];
+
+    Result = OPI_Slack.SendExternalFile(Token, FileID, Channel);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_DeleteExternalFile(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_ExtFileID"];
+
+    Result = OPI_Slack.DeleteExternalFile(Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
 
