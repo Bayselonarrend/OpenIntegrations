@@ -31,8 +31,8 @@ sidebar_position: 4
     Описание       = "Описание тестового события";
     Час            = 3600;
 
-    Картинка1 = "https://openintegrations.dev/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
-    Картинка2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
     Вложения  = Новый Соответствие;
 
     Вложения.Вставить("Картинка1", Картинка1);

@@ -27,7 +27,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Картинка = "https://openintegrations.dev/test_data/picture.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка);
 
     B64Картинка = ПолучитьBase64СтрокуИзДвоичныхДанных(Картинка);

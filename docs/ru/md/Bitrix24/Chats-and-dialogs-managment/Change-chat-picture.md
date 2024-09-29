@@ -31,7 +31,7 @@ sidebar_position: 9
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
     IDЧата  = "872";
 
-    Картинка = "https://openintegrations.dev/test_data/picture2.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка);
 

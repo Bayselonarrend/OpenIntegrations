@@ -182,12 +182,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "Notion_GetUsers"             , "Get users"               , Notion);
     NewTest(TestTable, "Notion_GetUserData"          , "Get user data"           , Notion);
 
-    NewTest(TestTable, "Slack_GetBotInfo"               , "Get bot information"         , Slack);
-    NewTest(TestTable, "Slack_GetUserList"              , "Get user list"               , Slack);
-    NewTest(TestTable, "Slack_GetRegionList"            , "Get region list"             , Slack);
+    NewTest(TestTable, "SlackGetData"                   , "Get data"                    , Slack);
     NewTest(TestTable, "Slack_SendDeleteMessage"        , "Send/Delete message"         , Slack);
-    NewTest(TestTable, "Slack_SendDeleteEphemeral"      , "Send/Delete ephemeral"       , Slack);
-    NewTest(TestTable, "Slack_GetScheduledMessages"     , "Get scheduled messages"      , Slack);
     NewTest(TestTable, "Slack_CreateArchiveChannel"     , "Create/Archive channel"      , Slack);
     NewTest(TestTable, "Slack_GetChannelList"           , "Get channel list"            , Slack);
     NewTest(TestTable, "Slack_OpenCloseDialog"          , "Open/Close dialog"           , Slack);
@@ -1077,6 +1073,73 @@ Procedure Check_SlackOk(Val Result) Export
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
+
+EndProcedure
+
+Procedure Check_SlackBot(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["bot_id"]).Заполнено();
+    ExpectsThat(Result["user_id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_SlackUsers(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["members"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackWorkspaces(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["teams"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackMessage(Val Result, Val Text, Val Channel) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["channel"]).Равно(Channel);
+    ExpectsThat(Result["ts"]).Заполнено();
+    ExpectsThat(Result["message"]["text"]).Равно(Text);
+
+EndProcedure
+
+Procedure Check_SlackMessages(Val Result) Export
+
+    ExpectsThat(Result["messages"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_SlackMessageLink(Val Result, Val Channel) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["channel"]).Равно(Channel);
+    ExpectsThat(Result["permalink"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_SlackSheduledMessage(Val Result, Val Channel) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["channel"]).Равно(Channel);
+    ExpectsThat(Result["scheduled_message_id"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_SlackEphemeral(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["message_ts"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_SlackSheduled(Val Result) Export
+
+    Check_SlackOk(Result);
+    ExpectsThat(Result["scheduled_messages"]).ИмеетТип("Array");
 
 EndProcedure
 

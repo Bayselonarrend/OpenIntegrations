@@ -31,7 +31,7 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
     IDЧата      = "872";
-    Файл        = "https://openintegrations.dev/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
+    Файл        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
     Описание    = "Очень важный файл";
 
     Каталог    = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата);
