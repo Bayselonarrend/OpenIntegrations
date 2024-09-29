@@ -28,7 +28,7 @@ sidebar_position: 8
     Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
     НовоеИмя      = "Обновленный файл.jpg";
     Идентификатор = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
-    Файл          = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Файл          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);
 ```

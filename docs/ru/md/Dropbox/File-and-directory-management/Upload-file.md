@@ -27,7 +27,7 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Путь      = "/New/pic.png";
     Токен     = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
-    Картинка  = "https://openintegrations.dev/test_data/picture.jpg";
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);
