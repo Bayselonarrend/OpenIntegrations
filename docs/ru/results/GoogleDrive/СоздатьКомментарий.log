@@ -1,0 +1,16 @@
+﻿    {
+ "id": "AAABVtEUqC4",
+ "kind": "drive#comment",
+ "createdTime": "2024-09-29T12:20:05.167Z",
+ "modifiedTime": "2024-09-29T12:20:05.167Z",
+ "replies": [],
+ "author": {
+  "displayName": "Антон Титовец",
+  "kind": "drive#user",
+  "me": true,
+  "photoLink": "//lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s50-c-k-no"
+ },
+ "deleted": false,
+ "htmlContent": "Текст комментария",
+ "content": "Текст комментария"
+}

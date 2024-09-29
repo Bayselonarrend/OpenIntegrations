@@ -1,0 +1,14 @@
+﻿    {
+ "status": 0,
+ "status_message": "ok",
+ "id": "pa:5925427292815753130",
+ "chat_hostname": "SN-CHAT-06_",
+ "name": "1C Test",
+ "members": [
+  {
+   "id": "tMNGhftyUPrB3r1lD+bT4g==",
+   "name": "John",
+   "role": "superadmin"
+  }
+ ]
+}
