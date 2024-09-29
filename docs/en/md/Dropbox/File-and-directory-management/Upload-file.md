@@ -27,7 +27,7 @@ sidebar_position: 4
 ```bsl title="Code example"
     Path  = "/New/pic.png";
     Token = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
-    Image = "https://openintegrations.dev/test_data/picture.jpg";
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);

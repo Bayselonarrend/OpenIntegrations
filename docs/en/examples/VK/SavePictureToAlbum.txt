@@ -2,7 +2,7 @@
     ImageDescription = "AutoTestImage";
     AlbumID          = "305905563";
 
-    Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path to file or Binary Data
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path to file or Binary Data
     TFN   = GetTempFileName("png");
     CopyFile(Image, TFN);
 

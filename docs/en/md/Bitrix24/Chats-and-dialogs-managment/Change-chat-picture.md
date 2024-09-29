@@ -31,7 +31,7 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
     ChatID = "872";
 
-    Image = "https://openintegrations.dev/test_data/picture2.jpg";
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
 

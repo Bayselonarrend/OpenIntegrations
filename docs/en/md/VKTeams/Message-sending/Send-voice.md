@@ -37,7 +37,7 @@ If you want the client to display this file as a playable voice message, it must
     ReplyID = "7419291601358293295";
     Text    = "File caption";
 
-    File     = "https://openintegrations.dev/test_data/song.m4a" ; // URL
+    File     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a" ; // URL
     FilePath = GetTempFileName("m4a"); // Path
 
     CopyFile(File, FilePath);

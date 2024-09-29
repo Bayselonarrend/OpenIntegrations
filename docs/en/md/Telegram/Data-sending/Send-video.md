@@ -31,7 +31,7 @@ sidebar_position: 3
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Video     = "https://openintegrations.dev/test_data/video.mp4";
+    Video     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
 
     VideoPath = GetTempFileName("mp4");
     CopyFile(Video, VideoPath);
