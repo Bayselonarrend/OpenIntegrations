@@ -35,7 +35,7 @@ The product must be pre-archived (see ArchiveProducts)
 
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1204690101";
+    ProductID = "1202180384";
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 

@@ -31,7 +31,7 @@ You can pass up to 100 identifiers at a time
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1204690101";
+    ProductID = "1202180384";
 
     Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
 ```

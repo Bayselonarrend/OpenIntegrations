@@ -25,7 +25,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Тег       = "Важное";
-    Токен     = "sl.B91EDRcG6KqqbvQ9nc8sWhG3gvHG_3nWIpT8qbct8H-IHRKpi0kUuYPR64_hqVqYmsnnoR7HMj...";
+    Токен     = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
     Путь      = "/New/mydoc.docx";
 
     Результат = OPI_Dropbox.УдалитьТег(Токен, Путь, Тег);

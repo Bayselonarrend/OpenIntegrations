@@ -33,7 +33,7 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
     Result = OPI_Bitrix24.SetUserStatus(URL, Status);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "ae6af966006e9f06006b12e400000001000...";
+    Token  = "c3abf666006e9f06006b12e400000001000...";
     Status = "away";
 
     Result = OPI_Bitrix24.SetUserStatus(URL, Status, Token);
