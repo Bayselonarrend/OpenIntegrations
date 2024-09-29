@@ -25,8 +25,8 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     ТекущаяДата    = OPI_Инструменты.ПолучитьТекущуюДату();
-    Токен          = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Календарь      = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    Токен          = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Календарь      = "47826632f9a0502adba79d3cbf90c5d4040622779e07bb8ed56964a2e4f8492a@group.calendar.google.com";
     Наименование   = "Новое событие";
     Описание       = "Описание тестового события";
     Час            = 3600;
@@ -60,49 +60,49 @@ sidebar_position: 4
 
 ```json title="Результат"
 {
-  "eventType": "default",
-  "attachments": [
-  {
-  "iconLink": "",
-  "title": "Картинка2",
-  "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1"
-  },
-  {
-  "iconLink": "",
-  "title": "Картинка1",
-  "fileUrl": "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png"
-  }
-  ],
-  "reminders": {
+ "kind": "calendar#event",
+ "etag": "\"3455224619832000\"",
+ "id": "p0u9h3a7ouj4kg5682nesifg3o",
+ "status": "confirmed",
+ "htmlLink": "https://www.google.com/calendar/event?eid=cDB1OWgzYTdvdWo0a2c1NjgybmVzaWZnM28gMjZkMzIxMmM3NDYwYTQ2NDkwMWE1MTEzZDVjMWQ5MmRkZDExZWJlNDQ3MjJmMTBjYTVhNTJlZjdiMGFiNmI3ZUBn",
+ "created": "2024-09-29T12:18:29Z",
+ "updated": "2024-09-29T12:18:29.916Z",
+ "summary": "Новое событие",
+ "description": "Описание тестового события",
+ "location": "В офисе",
+ "creator": {
+  "email": "bayselonarrend@gmail.com"
+ },
+ "organizer": {
+  "email": "26d3212c7460a464901a5113d5c1d92ddd11ebe44722f10ca5a52ef7b0ab6b7e@group.calendar.google.com",
+  "displayName": "Тестовый календарь",
+  "self": true
+ },
+ "start": {
+  "dateTime": "2024-09-29T18:18:29+03:00",
+  "timeZone": "Europe/Moscow"
+ },
+ "end": {
+  "dateTime": "2024-09-29T19:18:29+03:00",
+  "timeZone": "Europe/Moscow"
+ },
+ "iCalUID": "p0u9h3a7ouj4kg5682nesifg3o@google.com",
+ "sequence": 0,
+ "reminders": {
   "useDefault": true
+ },
+ "attachments": [
+  {
+   "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
+   "title": "Картинка1",
+   "iconLink": ""
   },
-  "sequence": 0,
-  "start": {
-  "timeZone": "Europe/Minsk",
-  "dateTime": "2024-02-21T15:16:25+03:00"
-  },
-  "creator": {
-  "self": true,
-  "email": "bayselonarrend@gmail.com"
-  },
-  "end": {
-  "timeZone": "Europe/Minsk",
-  "dateTime": "2024-02-21T16:16:25+03:00"
-  },
-  "iCalUID": "j4nonfcc0m2mtop1vc8ivo8tb8@google.com",
-  "description": "Описание тестового события",
-  "updated": "2024-02-21T09:16:28.474Z",
-  "created": "2024-02-21T09:16:28.000Z",
-  "htmlLink": "https://www.google.com/calendar/event?eid=ajRub25mY2MwbTJtdG9wMXZjOGl2bzh0YjggYmF5c2Vsb25hcnJlbmRAbQ",
-  "location": "В оффисе",
-  "summary": "Новое событие",
-  "organizer": {
-  "self": true,
-  "email": "bayselonarrend@gmail.com"
-  },
-  "status": "confirmed",
-  "id": "j4nonfcc0m2mtop1vc8ivo8tb8",
-  "etag": "\"3417013976948000\"",
-  "kind": "calendar#event"
+  {
+   "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
+   "title": "Картинка2",
+   "iconLink": ""
   }
+ ],
+ "eventType": "default"
+}
 ```

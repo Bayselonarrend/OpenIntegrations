@@ -24,12 +24,10 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  PageNumber = 1;
-  Channel = "C123456";
-  
-  Response = OPI_Slack.GetFilesList(Token, Channel, PageNumber); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C06UFNUTKUL";
+
+    Result = OPI_Slack.GetFilesList(Token, Channel);
 ```
 
 

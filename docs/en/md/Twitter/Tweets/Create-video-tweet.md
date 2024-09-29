@@ -49,13 +49,5 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-{
-  "data": {
-  "text": "Alpaca https://t.co/OodoWT1AAA",
-  "id": "1745753004542726629",
-  "edit_history_tweet_ids": [
-  "1745753004542726629"
-  ]
-  }
-  }
+
 ```

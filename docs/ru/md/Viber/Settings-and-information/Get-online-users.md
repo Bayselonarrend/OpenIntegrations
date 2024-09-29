@@ -39,15 +39,15 @@ sidebar_position: 4
 
 ```json title="Результат"
 {
-  "users": [
+ "status": 0,
+ "status_message": "ok",
+ "users": [
   {
-  "last_online": 1704796869778,
-  "online_status_message": "offline",
-  "online_status": 1,
-  "id": "d3jxe111111111YGgZg=="
+   "id": "tMNGhftyUPrB3r1lD+bT4g==",
+   "online_status": 4,
+   "online_status_message": "unavailable",
+   "last_online": 0
   }
-  ],
-  "status_message": "ok",
-  "status": 0
-  }
+ ]
+}
 ```

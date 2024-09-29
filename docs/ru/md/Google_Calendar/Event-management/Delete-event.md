@@ -24,9 +24,9 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-    Токен     = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Календарь = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
-    Событие   = "h51qr9dclbnie1hh633er26umo";
+    Токен     = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Календарь = "47826632f9a0502adba79d3cbf90c5d4040622779e07bb8ed56964a2e4f8492a@group.calendar.google.com";
+    Событие   = "0eaontjjhmu1han6m7i1a51d30";
 
     Результат = OPI_GoogleCalendar.УдалитьСобытие(Токен, Календарь, Событие);
 ```
@@ -40,5 +40,5 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-""
+null
 ```

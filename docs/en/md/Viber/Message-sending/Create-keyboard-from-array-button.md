@@ -41,30 +41,5 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
-{
-  "Buttons": [
-  {
-  "ActionType": "reply",
-  "ActionBody": "Button 1",
-  "Text": "Button 1",
-  "BgColor": "#2db9b9",
-  "Coloumns": 3
-  },
-  {
-  "ActionType": "reply",
-  "ActionBody": "Button 2",
-  "Text": "Button 2",
-  "BgColor": "#2db9b9",
-  "Coloumns": 3
-  },
-  {
-  "ActionType": "reply",
-  "ActionBody": "Button 3",
-  "Text": "Button 3",
-  "BgColor": "#2db9b9",
-  "Coloumns": 3
-  }
-  ],
-  "Type": "keyboard"
-  }
+
 ```

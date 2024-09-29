@@ -38,13 +38,5 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
-  "data": {
-  "text": "Regular text tweet",
-  "id": "1745752006310895822",
-  "edit_history_tweet_ids": [
-  "1745752006310895822"
-  ]
-  }
-  }
+
 ```

@@ -25,7 +25,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь  = "/90663562-d505-474e-a778-e25c2cf50b4b.png";
+    Путь  = "/3e70ff0a-a41a-4a16-b8dd-42752620b05c.png";
 
     Результат = OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
 ```
@@ -39,5 +39,5 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-<пустая строка>
+null
 ```

@@ -25,9 +25,9 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Токен         = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
+    Идентификатор = "1VzNEKCqJX81aWHzQ40wAjcBakKOi_1dr";
     Файл          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);
@@ -43,9 +43,9 @@ sidebar_position: 8
 
 ```json title="Результат"
 {
-  "mimeType": "image/jpeg",
-  "name": "Обновленный файл.jpg",
-  "id": "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ",
-  "kind": "drive#file"
-  }
+ "kind": "drive#file",
+ "id": "1Hq_J0B0_SY3JVtP3ZvehUfnwinHMUxdt",
+ "name": "Обновленный файл.jpg",
+ "mimeType": "image/jpeg"
+}
 ```

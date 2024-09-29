@@ -25,10 +25,10 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    Token = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Event = "h51qr9dclbnie1hh633er26umo";
+    Token = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Event = "0eaontjjhmu1han6m7i1a51d30";
 
-    SourceCalendar = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    SourceCalendar = "47826632f9a0502adba79d3cbf90c5d4040622779e07bb8ed56964a2e4f8492a@group.calendar.google.com";
     TargetCalendar = "bayselonarrend@gmail.com";
 
     Result = OPI_GoogleCalendar.MoveEvent(Token, SourceCalendar, TargetCalendar, Event);
@@ -43,50 +43,5 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-{
-  "eventType": "default",
-  "attachments": [
-  {
-  "iconLink": "",
-  "title": "Image2",
-  "fileUrl": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1"
-  },
-  {
-  "iconLink": "",
-  "title": "Image1",
-  "fileUrl": "https://opi.neocities.org/assets/images/logo_long-e8fdcca6ff8b32e679ea49a1ccdd3eac.png"
-  }
-  ],
-  "reminders": {
-  "useDefault": true
-  },
-  "sequence": 0,
-  "start": {
-  "timeZone": "Europe/Minsk",
-  "dateTime": "2024-02-24T16:20:49+03:00"
-  },
-  "creator": {
-  "self": true,
-  "email": "bayselonarrend@gmail.com"
-  },
-  "end": {
-  "timeZone": "Europe/Minsk",
-  "dateTime": "2024-02-24T17:20:49+03:00"
-  },
-  "iCalUID": "f9kkj2omsqtt67g12qh2jig8uk@google.com",
-  "description": "TestEventDescription",
-  "updated": "2024-02-24T10:20:51.234Z",
-  "created": "2024-02-24T10:20:49.000Z",
-  "htmlLink": "https://www.google.com/calendar/event?eid=Zjlra2oyb21zcXR0NjdnMTJxaDJqaWc4dWsgYmF5c2Vsb25hcnJlbmRAbQ",
-  "location": "InOffice",
-  "summary": "New event",
-  "organizer": {
-  "self": true,
-  "email": "bayselonarrend@gmail.com"
-  },
-  "status": "confirmed",
-  "id": "f9kkj2omsqtt67g12qh2jig8uk",
-  "etag": "\"3417540102468000\"",
-  "kind": "calendar#event"
-  }
+
 ```

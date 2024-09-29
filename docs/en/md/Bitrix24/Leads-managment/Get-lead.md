@@ -28,13 +28,13 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    LeadID = "278";
+    LeadID = "304";
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c3abf666006e9f06006b12e400000001000...";
-    LeadID = "280";
+    Token  = "ae6af966006e9f06006b12e400000001000...";
+    LeadID = "306";
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID, Token);
 ```

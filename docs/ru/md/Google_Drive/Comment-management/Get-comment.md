@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Идентификатор = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
-    ИДКомментария = "AAABV-Y8SW4";
+    Токен         = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Идентификатор = "1VzNEKCqJX81aWHzQ40wAjcBakKOi_1dr";
+    ИДКомментария = "AAABVr3GfZ8";
 
     Результат = OPI_GoogleDrive.ПолучитьКомментарий(Токен, Идентификатор, ИДКомментария);
 ```
@@ -41,19 +41,19 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
-  "content": "Новый комментарий",
-  "htmlContent": "Новый комментарий",
-  "author": {
-  "photoLink": "//lh3.googleusercontent.com/a/ACg8ocLx8JGurt0UjXFwwTiB6ZoDPWslW1EnfCTahrwrIllM6Q=s50-c-k-no",
-  "me": true,
+ "id": "AAABVtEUqC4",
+ "kind": "drive#comment",
+ "createdTime": "2024-09-29T12:20:05.167Z",
+ "modifiedTime": "2024-09-29T12:20:05.167Z",
+ "replies": [],
+ "author": {
+  "displayName": "Антон Титовец",
   "kind": "drive#user",
-  "displayName": "Антон Титовец"
-  },
-  "replies": [],
-  "modifiedTime": "2024-03-17T12:53:45.469Z",
-  "createdTime": "2024-03-17T12:53:45.469Z",
-  "kind": "drive#comment",
-  "deleted": false,
-  "id": "AAABI3NNNAY"
-  }
+  "me": true,
+  "photoLink": "//lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s50-c-k-no"
+ },
+ "deleted": false,
+ "htmlContent": "Текст комментария",
+ "content": "Текст комментария"
+}
 ```

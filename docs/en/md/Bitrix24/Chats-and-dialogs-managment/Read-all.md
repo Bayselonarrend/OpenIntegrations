@@ -31,7 +31,7 @@ Method at API documentation: [im.dialog.read.all](https://dev.1c-bitrix.ru/learn
     Result = OPI_Bitrix24.ReadAll(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c3abf666006e9f06006b12e400000001000...";
+    Token = "ae6af966006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.ReadAll(URL, Token);
 ```

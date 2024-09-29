@@ -36,39 +36,42 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
-  "user": {
-  "login": "bayselonarrend",
-  "country": "by",
-  "uid": "1573541111",
-  "display_name": "bayselonarrend",
-  "is_child": false,
-  "reg_time": "2024-02-01T22:13:41+00:00"
-  },
-  "revision": 1707416628219047,
-  "system_folders": {
-  "photostream": "disk:/Фотокамера/",
-  "screenshots": "disk:/Скриншоты/",
-  "scans": "disk:/Сканы",
-  "messenger": "disk:/Файлы Мессенджера",
-  "facebook": "disk:/Социальные сети/Facebook",
-  "applications": "disk:/Приложения",
-  "downloads": "disk:/Загрузки/",
-  "mailru": "disk:/Социальные сети/Мой Мир",
-  "attach": "disk:/Почтовые вложения",
-  "instagram": "disk:/Социальные сети/Instagram",
-  "calendar": "disk:/Материалы встреч",
-  "social": "disk:/Социальные сети/",
-  "vkontakte": "disk:/Социальные сети/ВКонтакте",
+ "max_file_size": 1073741824,
+ "paid_max_file_size": 53687091200,
+ "total_space": 5368709120,
+ "reg_time": "2024-02-01T15:13:41+03:00",
+ "trash_size": 0,
+ "is_paid": false,
+ "is_idm_managed_folder_address_access": false,
+ "used_space": 773097729,
+ "system_folders": {
+  "odnoklassniki": "disk:/Социальные сети/Одноклассники",
   "google": "disk:/Социальные сети/Google+",
-  "odnoklassniki": "disk:/Социальные сети/Одноклассники"
-  },
-  "unlimited_autoupload_enabled": false,
-  "used_space": 73372937,
-  "trash_size": 0,
-  "reg_time": "2024-02-01T12:13:41+00:00",
-  "total_space": 5368709120,
-  "is_paid": false,
-  "paid_max_file_size": 53687091200,
-  "max_file_size": 1073741824
-  }
+  "instagram": "disk:/Социальные сети/Instagram",
+  "vkontakte": "disk:/Социальные сети/ВКонтакте",
+  "attach": "disk:/Почтовые вложения",
+  "mailru": "disk:/Социальные сети/Мой Мир",
+  "downloads": "disk:/Загрузки/",
+  "applications": "disk:/Приложения",
+  "facebook": "disk:/Социальные сети/Facebook",
+  "social": "disk:/Социальные сети/",
+  "messenger": "disk:/Файлы Мессенджера",
+  "calendar": "disk:/Материалы встреч",
+  "scans": "disk:/Сканы",
+  "screenshots": "disk:/Скриншоты/",
+  "photostream": "disk:/Фотокамера/"
+ },
+ "user": {
+  "reg_time": "2024-02-01T15:13:41+03:00",
+  "display_name": "bayselonarrend",
+  "uid": "1573541518",
+  "country": "by",
+  "is_child": false,
+  "login": "bayselonarrend"
+ },
+ "is_idm_managed_public_access": false,
+ "payment_flow": false,
+ "unlimited_autoupload_enabled": false,
+ "revision": 1727542907480516
+}
 ```

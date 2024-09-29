@@ -23,11 +23,10 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  
-  FileID = "F070P52CU94";
-  
-  Response = OPI_Slack.DeleteExternalFile(Token, FileID); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token  = "xoxb-6965308400114-696804637...";
+    FileID = "";
+
+    Result = OPI_Slack.DeleteExternalFile(Token, FileID);
 ```
 
 

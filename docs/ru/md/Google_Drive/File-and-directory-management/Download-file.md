@@ -24,8 +24,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Идентификатор = "1RijXw14hyQN_59ZOzJ9f35ezzU_qd114";
+    Токен         = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Идентификатор = "1VzNEKCqJX81aWHzQ40wAjcBakKOi_1dr";
 
     Результат = OPI_GoogleDrive.СкачатьФайл(Токен, Идентификатор);
 ```
@@ -39,5 +39,5 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-<Двоичные данные файла>
+НЕ JSON: FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…
 ```

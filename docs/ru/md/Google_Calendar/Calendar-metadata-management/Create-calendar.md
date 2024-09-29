@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен        = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
+    Токен        = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
     Наименование = "Тестовый календарь";
 
     Результат = OPI_GoogleCalendar.СоздатьКалендарь(Токен, Наименование);
@@ -39,15 +39,15 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
-  "conferenceProperties": {
+ "kind": "calendar#calendar",
+ "etag": "\"p9Ri3SBS0FA_g6zoRhq8X9T2oqc\"",
+ "id": "8b82e5e84747cf3a497bfbfa46baa7196614dd8f1211cd2ea79f02d2f9134b03@group.calendar.google.com",
+ "summary": "Тестовый календарь",
+ "timeZone": "Europe/Moscow",
+ "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
-  "hangoutsMeet"
+   "hangoutsMeet"
   ]
-  },
-  "summary": "Тестовый календарь",
-  "timeZone": "UTC",
-  "id": "75b64bec8700a640b004af3491867ac5e479884794f529699da23e7009f7d691@group.calendar.google.com",
-  "etag": "\"ZlOrbHnYjwJB0APkTQupgFm7F3s\"",
-  "kind": "calendar#calendar"
-  }
+ }
+}
 ```

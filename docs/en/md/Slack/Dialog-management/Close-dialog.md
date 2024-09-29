@@ -23,11 +23,10 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  Dialog = "D06UAKK1C6R";
-  
-  Response = OPI_Slack.CloseDialog(Token, Dialog); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token  = "xoxb-6965308400114-696804637...";
+    Dialog = "";
+
+    Result = OPI_Slack.CloseDialog(Token, Dialog);
 ```
 
 

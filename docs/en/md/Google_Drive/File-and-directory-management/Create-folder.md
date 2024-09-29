@@ -24,8 +24,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    Token     = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+    Token     = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Directory = "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy";
     Name      = "TestFolder";
 
     Result = OPI_GoogleDrive.CreateFolder(Token, Name, Directory);
@@ -40,10 +40,5 @@ sidebar_position: 5
 ```
 
 ```json title="Result"
-{
-  "mimeType": "application/vnd.google-apps.folder",
-  "name": "TestFolder",
-  "id": "1fIqr5pJV3QybT5sPeZhBD_0TIvtL5Ovc",
-  "kind": "drive#file"
-  }
+
 ```

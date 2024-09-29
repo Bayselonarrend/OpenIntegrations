@@ -24,8 +24,8 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен    = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+    Токен    = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Каталог  = "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy";
     Имя      = "Тестовая папка";
 
     Результат = OPI_GoogleDrive.СоздатьПапку(Токен, Имя, Каталог);
@@ -41,9 +41,9 @@ sidebar_position: 5
 
 ```json title="Результат"
 {
-  "mimeType": "application/vnd.google-apps.folder",
-  "name": "Тестовая папка",
-  "id": "1fIqr5pJV3QybT5sPeZhBD_0TIvtL5Ovc",
-  "kind": "drive#file"
-  }
+ "kind": "drive#file",
+ "id": "1tTvPUeaH9fQcuJbgmjWNv98Y5kjs9CPZ",
+ "name": "Тестовая папка",
+ "mimeType": "application/vnd.google-apps.folder"
+}
 ```

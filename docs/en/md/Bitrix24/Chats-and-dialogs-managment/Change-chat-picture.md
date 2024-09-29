@@ -29,15 +29,15 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "872";
+    ChatID = "898";
 
     Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c3abf666006e9f06006b12e400000001000...";
-    ChatID = "874";
+    Token  = "ae6af966006e9f06006b12e400000001000...";
+    ChatID = "900";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);
 ```

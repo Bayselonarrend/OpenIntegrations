@@ -25,8 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен        = "ya29.a0AcM612wLdbBK14FR2SE0d3WHabYb8Xtppm0oKCcbVrecgsA-a5DfsgZ29stOw4hu84F_IpHbKTJocsm1WpjLQPBT5MJ6p8D7H1PKa_iT0...";
-    Календарь    = "1b68863d126f9c4d9e971c673e25f6601a9622beafbcc10913cd78120c755c6a@group.calendar.google.com";
+    Токен        = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
+    Календарь    = "47826632f9a0502adba79d3cbf90c5d4040622779e07bb8ed56964a2e4f8492a@group.calendar.google.com";
     Наименование = "Новое наименование";
     Описание     = "Новое описание";
 
@@ -43,16 +43,16 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
-  "conferenceProperties": {
+ "kind": "calendar#calendar",
+ "etag": "\"30buO-D-Pc_G7UUV5nHihm9JgF8\"",
+ "id": "8b82e5e84747cf3a497bfbfa46baa7196614dd8f1211cd2ea79f02d2f9134b03@group.calendar.google.com",
+ "summary": "Новое наименование",
+ "description": "Новое описание",
+ "timeZone": "Europe/Moscow",
+ "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
-  "hangoutsMeet"
+   "hangoutsMeet"
   ]
-  },
-  "description": "Тестовое описание",
-  "summary": "Тестовый календарь (изм.)",
-  "timeZone": "UTC",
-  "id": "75b64bec8700a640b004af3491867ac5e479884794f529699da23e7009f7d691@group.calendar.google.com",
-  "etag": "\"x8eLqpmgoxpEDEXmEbsZxxgmJhc\"",
-  "kind": "calendar#calendar"
-  }
+ }
+}
 ```

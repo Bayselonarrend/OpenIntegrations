@@ -28,13 +28,13 @@ Method at API documentation: [crm.deal.delete](https://dev.1c-bitrix.ru/rest_hel
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DealID = "542";
+    DealID = "596";
 
     Result = OPI_Bitrix24.DeleteDeal(URL, DealID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c3abf666006e9f06006b12e400000001000...";
-    DealID = "544";
+    Token  = "ae6af966006e9f06006b12e400000001000...";
+    DealID = "598";
 
     Result = OPI_Bitrix24.DeleteDeal(URL, DealID, Token);
 ```
