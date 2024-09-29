@@ -402,15 +402,7 @@ pipeline {
 					
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetBotInfo"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetUserList"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetRegionList"'
+					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SlackGetData"'
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -418,19 +410,7 @@ pipeline {
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_SendDeleteEphemeral"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetScheduledMessages"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_CreateArchiveChannel"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetChannelList"'
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
@@ -438,15 +418,7 @@ pipeline {
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetFileList"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_UploadDeleteFile"'
-               }
-
-               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Slack_GetExternalFileList"'
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
