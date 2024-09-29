@@ -33,8 +33,8 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
 ```bsl title="Code example"
     Text   = "Text of post";
     Title  = "Post title";
-    Image1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    Image2 = "https://openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
+    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Path or Binary Data
 
     Files = New Map;
     Files.Insert("1.png", Image1);

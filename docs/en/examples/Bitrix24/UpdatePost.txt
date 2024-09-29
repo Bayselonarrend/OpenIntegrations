@@ -1,6 +1,6 @@
 ﻿    Text   = "New post text";
     Title  = "New post title";
-    Image1 = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
     PostID = "836";
 
     Files = New Map;
