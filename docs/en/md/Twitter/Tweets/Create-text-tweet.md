@@ -38,5 +38,13 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-
+{
+ "data": {
+  "id": "1840435412147355972",
+  "edit_history_tweet_ids": [
+   "1840435412147355972"
+  ],
+  "text": "TestTweet6ccd2da8-de87-4b65-9635-34dc904f8c60"
+ }
+}
 ```

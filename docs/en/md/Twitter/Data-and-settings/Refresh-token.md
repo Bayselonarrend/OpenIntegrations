@@ -35,5 +35,11 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-
+{
+ "token_type": "bearer",
+ "expires_in": 7200,
+ "access_token": "VlpMSGU5eEVtRlRpazlPaTZDOW1JY19UbWtXSkR0ZFg5bGdINHZrSGVXNV8xOjE3Mjc2Mjg5NjI4MTg6MToxOmF0OjE",
+ "scope": "mute.write tweet.moderate.write block.read follows.read offline.access list.write bookmark.read list.read tweet.write space.read block.write like.write like.read users.read tweet.read bookmark.write mute.read follows.write",
+ "refresh_token": "NHhNRWpXcXJqdWl4X1NvX0hwQ3dENU1zeHBqVjNqWjlhU0xQYUl3YkFCcV9XOjE3Mjc2Mjg5NjI4MTg6MTowOnJ0OjE"
+}
 ```

@@ -33,5 +33,13 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-
+{
+ "Description": "",
+ "Title": "New event",
+ "Venue": "",
+ "StartDate": "2024-09-29T20:19:15.0257123Z",
+ "EndDate": "2024-09-29T21:19:15.0257123Z",
+ "ArrayOfAttachmentURLs": {},
+ "SendNotifications": true
+}
 ```

@@ -40,5 +40,10 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-
+{
+ "spreadsheetId": "1CppTmECbHp9HaxzXF5NpNCiNvsZFruTdmBoyhPdtQe4",
+ "replies": [
+  {}
+ ]
+}
 ```

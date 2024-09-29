@@ -46,5 +46,36 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-
+{
+ "spreadsheetId": "1zXYjR7QQAKmb-F1V2zhS1eYoEYs9WIWo24e2-XKa-IQ",
+ "valueRanges": [
+  {
+   "range": "Sheet2!B2",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "ThisIsB2"
+    ]
+   ]
+  },
+  {
+   "range": "Sheet2!A3",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "ThisIsA3"
+    ]
+   ]
+  },
+  {
+   "range": "Sheet2!B4",
+   "majorDimension": "ROWS",
+   "values": [
+    [
+     "ThisIsB4"
+    ]
+   ]
+  }
+ ]
+}
 ```

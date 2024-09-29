@@ -40,5 +40,20 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-
+{
+ "id": "AAABV-b4bws",
+ "kind": "drive#comment",
+ "createdTime": "2024-09-29T17:20:47.165Z",
+ "modifiedTime": "2024-09-29T17:20:47.165Z",
+ "replies": [],
+ "author": {
+  "displayName": "Антон Титовец",
+  "kind": "drive#user",
+  "me": true,
+  "photoLink": "//lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s50-c-k-no"
+ },
+ "deleted": false,
+ "htmlContent": "Comment text",
+ "content": "Comment text"
+}
 ```

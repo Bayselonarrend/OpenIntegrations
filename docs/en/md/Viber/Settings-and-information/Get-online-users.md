@@ -38,5 +38,16 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-
+{
+ "status": 0,
+ "status_message": "ok",
+ "users": [
+  {
+   "id": "tMNGhftyUPrB3r1lD+bT4g==",
+   "online_status": 4,
+   "online_status_message": "unavailable",
+   "last_online": 0
+  }
+ ]
+}
 ```

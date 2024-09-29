@@ -33,5 +33,10 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
-
+{
+ "MIME": "image/jpeg",
+ "Name": "New file.jpg",
+ "Description": "This is a new file",
+ "Parent": "root"
+}
 ```

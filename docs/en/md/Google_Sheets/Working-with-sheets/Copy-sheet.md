@@ -42,5 +42,14 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-
+{
+ "sheetId": 1468201785,
+ "title": "Sheet1 (копия)",
+ "index": 2,
+ "sheetType": "GRID",
+ "gridProperties": {
+  "rowCount": 1000,
+  "columnCount": 26
+ }
+}
 ```

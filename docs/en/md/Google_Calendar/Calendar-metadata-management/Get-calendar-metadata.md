@@ -38,5 +38,17 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-
+{
+ "kind": "calendar#calendar",
+ "etag": "\"JdIz8lQzaU3RJOOasfFDICU1wDQ\"",
+ "id": "739cf8d11d0517973f88bc93554f2f43e832f38e012b391be0ad17d266a850bc@group.calendar.google.com",
+ "summary": "New name",
+ "description": "New description",
+ "timeZone": "Europe/Moscow",
+ "conferenceProperties": {
+  "allowedConferenceSolutionTypes": [
+   "hangoutsMeet"
+  ]
+ }
+}
 ```

@@ -49,5 +49,11 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
-
+{
+ "status": 0,
+ "status_message": "ok",
+ "message_token": 6021226622519493867,
+ "chat_hostname": "SN-CHAT-02_",
+ "billing_status": 3
+}
 ```
