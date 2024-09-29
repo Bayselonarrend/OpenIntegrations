@@ -97,7 +97,8 @@ const config = {
             href: 'https://github.com/Bayselonarrend/OpenIntegrations',
             label: 'GitHub',
             position: 'right',
-            
+            className: 'navbar-github-link', // Класс для кастомизации
+            'aria-label': 'GitHub repository',
           },
           {
             type: 'dropdown',
