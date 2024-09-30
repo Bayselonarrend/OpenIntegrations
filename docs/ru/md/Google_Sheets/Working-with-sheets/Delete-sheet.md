@@ -40,5 +40,10 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-
+{
+ "spreadsheetId": "1OKGkq2hZRHVwqeT98tQFEv2BbsUeoO267Wx42LBp1mg",
+ "replies": [
+  {}
+ ]
+}
 ```
