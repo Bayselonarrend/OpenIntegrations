@@ -38,5 +38,8 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-
+{
+ "error": "invalid_request",
+ "error_description": "Value passed for the authorization code was invalid."
+}
 ```
