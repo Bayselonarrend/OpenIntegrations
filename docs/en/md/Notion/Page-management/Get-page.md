@@ -23,12 +23,10 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Page = "a574281614174169bf55dbae4...";
-  
-  Response = OPI_Notion.GetPage(Token, Page);
-  Response = OPI_Tools.JSONString(Response);
+    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Page  = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
+
+    Result = OPI_Notion.GetPage(Token, Page);
 ```
 
 
