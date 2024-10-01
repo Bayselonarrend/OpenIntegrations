@@ -27,24 +27,22 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Page = "5dd94c34fab04bff9...";
-  Icon = "https://opi.neocities.org/img/logo.png";
-  Cover = "https://opi.neocities.org/assets/images/logo_long-e69f28017feff1759ffcfe3f4e7bbf2a.png";
-  
-  Properties = New Map;
-  Properties.Insert("Active", False);
-  Properties.Insert("Email", "vector@mail.ru");
-  
-  Response = OPI_Notion.EditPageProperties(Token
-  , Page
-  , Properties
-  , Icon
-  , Cover
-  , Archive);
-  
-  Response = OPI_Tools.JSONString(Response);
+    Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Page    = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
+    Icon    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Cover   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Archive = False;
+
+    Properties = New Map;
+    Properties.Insert("Active" , False);
+    Properties.Insert("Email"  , "vector@mail.ru");
+
+    Result = OPI_Notion.EditPageProperties(Token
+        , Page
+        , Properties
+        , Icon
+        , Cover
+        , Archive);
 ```
 
 

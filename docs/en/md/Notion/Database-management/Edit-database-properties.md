@@ -26,18 +26,17 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Base = "5dd94c34fab04bff9...";
-  Title = "Updated title";
-  Description = "Updated base description";
-  
-  Properties = New Map;
-  Properties.Insert("Email", "rich_text"); //Type fields "Email" will changed with email to text
-  Properties.Insert("Website"); //Field "Website" will deleted
-  
-  Response = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
-  Response = OPI_Tools.JSONString(Response);
+    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Base  = "11282aa7-fc4e-810b-ab77-cef5a2a3443e";
+
+    Title       = "TestTitle";
+    Description = "TestDescription";
+
+    Properties = New Map;
+    Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
+    Properties.Insert("Website"); // Field "Website" will deleted
+
+    Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
 ```
 
 

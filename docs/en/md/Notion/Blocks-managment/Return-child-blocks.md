@@ -23,12 +23,10 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Block = "46c1500ed40c4e89ba6a22900...";
-  
-  Response = OPI_Notion.ReturnChildBlocks(Token, BlockID);
-  Response = OPI_Tools.JSONString(Response);
+    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Block = "11282aa7-fc4e-8108-ad2f-ed75fb53373d";
+
+    Result = OPI_Notion.ReturnChildBlocks(Token, Block);
 ```
 
 

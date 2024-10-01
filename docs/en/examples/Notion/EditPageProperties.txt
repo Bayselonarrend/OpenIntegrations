@@ -1,5 +1,5 @@
 ﻿    Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page    = "5dd94c34-fab0-4bff-986b-7511c0779f77";
+    Page    = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
     Icon    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Cover   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
     Archive = False;
