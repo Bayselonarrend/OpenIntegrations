@@ -1,6 +1,4 @@
-﻿  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Page = "a574281614174169bf55dbae4...";
-  
-  Response = OPI_Notion.GetPage(Token, Page);
-  Response = OPI_Tools.JSONString(Response);
+﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Page  = "5dd94c34-fab0-4bff-986b-7511c0779f77";
+
+    Result = OPI_Notion.GetPage(Token, Page);

@@ -1,6 +1,6 @@
 ﻿    Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
-    AlbumID          = "305905563";
+    AlbumID          = "305922871";
 
     Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path to file or Binary Data
     TFN   = GetTempFileName("png");
