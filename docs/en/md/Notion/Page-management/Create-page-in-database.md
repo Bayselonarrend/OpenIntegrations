@@ -24,26 +24,27 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Parent = "5dd94c34fab04bff9...";
-  Image = New Map;
-  Image.Insert("Logo", "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg");
-  
-  Data = New Map;
-  Data.Insert("Name", "LLC Vector");
-  Data.Insert("Description", "OurFirstClient");
-  Data.Insert("Number", 1);
-  Data.Insert("Status", "Regular");
-  Data.Insert("CreationDate", CurrentSessionDate());
-  Data.Insert("Image", Image);
-  Data.Insert("Active", True);
-  Data.Insert("Email", "mail@vector.ru");
-  Data.Insert("Phone", "88005553535");
-  Data.Insert("Status", "New");
-  
-  Response = OPI_Notion.CreatePageInDatabase(Token, Base, Data);
-  Response = OPI_Tools.JSONString(Response);
+    Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Base   = "11282aa7-fc4e-810b-ab77-cef5a2a3443e";
+    Image_ = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Binary Data or Path to file
+
+    Image = New Map;
+    Image.Insert("Logo", Image_);
+
+    Properties = New Map;
+    Properties.Insert("Name"         , "LLC Vector");
+    Properties.Insert("Description"  , "OurFirstClient");
+    Properties.Insert("Number"       , 1);
+    Properties.Insert("Status"       , "Regular");
+    Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
+    Properties.Insert("Image"        , Image);
+    Properties.Insert("Active"       , True);
+    Properties.Insert("Website"      , "https://vector.ru");
+    Properties.Insert("Email"        , "mail@vector.ru");
+    Properties.Insert("Phone"        , "88005553535");
+    Properties.Insert("Status"       , "New");
+
+    Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
 ```
 
 

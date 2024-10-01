@@ -23,12 +23,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  Токен         = "secret_9RsfMrRMqZwqp0Zl0B...";
-  База          = "048ba0ce4f474e33900540d24...";
-  
-  Ответ = OPI_Notion.ПолучитьБазуДанных(Токен, База);
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);
+    Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
+    База  = "11282aa7-fc4e-810b-ab77-cef5a2a3443e";
+
+    Результат = OPI_Notion.ПолучитьБазуДанных(Токен, База);
 ```
 
 
