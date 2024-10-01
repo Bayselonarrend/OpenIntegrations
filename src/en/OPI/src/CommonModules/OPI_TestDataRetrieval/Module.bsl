@@ -172,15 +172,10 @@ Function GetTestTable() Export
     NewTest(TestTable, "Viber_DataRetrieval"   , "Data retrieval"   , Viber);
     NewTest(TestTable, "Viber_MessagesSending" , "Messages sending" , Viber);
 
-    NewTest(TestTable, "Notion_CreatePage"           , "Create page"             , Notion);
-    NewTest(TestTable, "Notion_CreateEditDatabase"   , "Create/Edit database"    , Notion);
-    NewTest(TestTable, "Notion_GetPageInfo"          , "Get page info"           , Notion);
-    NewTest(TestTable, "Notion_GetDatabaseInfo"      , "Get database info"       , Notion);
-    NewTest(TestTable, "Notion_CreatePageInDatabase" , "Create page in database" , Notion);
-    NewTest(TestTable, "Notion_EditPageProperties"   , "Edit page properties"    , Notion);
-    NewTest(TestTable, "Notion_CreateDeleteBlock"    , "Create/Delete block"     , Notion);
-    NewTest(TestTable, "Notion_GetUsers"             , "Get users"               , Notion);
-    NewTest(TestTable, "Notion_GetUserData"          , "Get user data"           , Notion);
+    NewTest(TestTable, "Notion_CreatePage"         , "Create page"          , Notion);
+    NewTest(TestTable, "Notion_CreateEditDatabase" , "Create/Edit database" , Notion);
+    NewTest(TestTable, "Notion_CreateDeleteBlock"  , "Create/Delete block"  , Notion);
+    NewTest(TestTable, "Notion_GetUsers"           , "Get users"            , Notion);
 
     NewTest(TestTable, "SlackGetData"                   , "Get data"                    , Slack);
     NewTest(TestTable, "Slack_SendDeleteMessage"        , "Send/Delete message"         , Slack);
@@ -1063,6 +1058,15 @@ Procedure Check_NotionObject(Val Result, Val View = "page") Export
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["object"]).Равно(View);
+
+EndProcedure
+
+Procedure Check_NotionBasePage(Val Result, Val Base) Export
+
+    Check_NotionObject(Result);
+
+    Parent = Result["parent"]["database_id"];
+    ExpectsThat(Parent).Равно(Base);
 
 EndProcedure
 

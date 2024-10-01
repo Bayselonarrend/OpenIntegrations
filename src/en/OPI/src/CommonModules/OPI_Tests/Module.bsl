@@ -1004,203 +1004,57 @@ EndProcedure
 
 Procedure Notion_CreatePage() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
-    Title  = "TestTitle";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"     , TestParameters);
 
-    Result = OPI_Notion.CreatePage(Token, Parent, Title);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePage");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result);
+    Notion_CreatePage(TestParameters);
+    Notion_GetPage(TestParameters);
+    Notion_EditPageProperties(TestParameters);
 
 EndProcedure
 
 Procedure Notion_CreateEditDatabase() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
-    Title  = "TestTitle";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
 
-    Properties = New Map;
-    Properties.Insert("Name"         , "title");
-    Properties.Insert("Description"  , "rich_text");
-    Properties.Insert("Number"       , "number");
-    Properties.Insert("Status"       , "status");
-    Properties.Insert("CreationDate" , "date");
-    Properties.Insert("Image"        , "files");
-    Properties.Insert("Active"       , "checkbox");
-    Properties.Insert("Website"      , "url");
-    Properties.Insert("Email"        , "email");
-    Properties.Insert("Phone"        , "phone_number");
-    Properties.Insert("User"         , "people");
-
-    ValueSelection = New Map;
-    ValueSelection.Insert("New"        , "green");
-    ValueSelection.Insert("InProgress" , "yellow");
-    ValueSelection.Insert("Remote"     , "red");
-    Properties.Insert("Status", ValueSelection);
-
-    Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
-
-    Base        = Result["id"];
-    Title       = "TestTitle";
-    Description = "TestDescription";
-
-    Properties = New Map;
-    Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
-    Properties.Insert("Website"); // Field "Website" will deleted
-
-    Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditDatabaseProperties");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
-
-EndProcedure
-
-Procedure Notion_GetPageInfo() Export
-
-    Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Page  = OPI_TestDataRetrieval.GetParameter("Notion_Page");
-
-    Result = OPI_Notion.GetPage(Token, Page);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPage");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result);
-
-EndProcedure
-
-Procedure Notion_GetDatabaseInfo() Export
-
-    Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Base  = OPI_TestDataRetrieval.GetParameter("Notion_Base");
-
-    Result = OPI_Notion.GetDatabase(Token, Base);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDatabase");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
-
-EndProcedure
-
-Procedure Notion_CreatePageInDatabase() Export
-
-    Token = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Base  = OPI_TestDataRetrieval.GetParameter("Notion_Base");
-
-    Image = New Map;
-    Image.Insert("Logo", OPI_TestDataRetrieval.GetParameter("Picture"));
-
-    Properties = New Map;
-    Properties.Insert("Name"         , "LLC Vector");
-    Properties.Insert("Description"  , "OurFirstClient");
-    Properties.Insert("Number"       , 1);
-    Properties.Insert("Status"       , "Regular");
-    Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
-    Properties.Insert("Image"        , Image);
-    Properties.Insert("Active"       , True);
-    Properties.Insert("Website"      , "https://vector.ru");
-    Properties.Insert("Email"        , "mail@vector.ru");
-    Properties.Insert("Phone"        , "88005553535");
-    Properties.Insert("Status"       , "New");
-
-    Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePageInDatabase");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result);
-
-    Parent = StrReplace(Result["parent"]["database_id"], "-", "");
-    OPI_TestDataRetrieval.ExpectsThat(Parent).Равно(Base);
-
-EndProcedure
-
-Procedure Notion_EditPageProperties() Export
-
-    Token   = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Page    = OPI_TestDataRetrieval.GetParameter("Notion_Page");
-    Icon    = OPI_TestDataRetrieval.GetParameter("Picture");
-    Cover   = OPI_TestDataRetrieval.GetParameter("Picture2");
-    Archive = False;
-
-    Properties = New Map;
-    Properties.Insert("Active" , False);
-    Properties.Insert("Email"  , "vector@mail.ru");
-
-    Result = OPI_Notion.EditPageProperties(Token
-        , Page
-        , Properties
-        , Icon
-        , Cover
-        , Archive);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditPageProperties");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result);
+    Notion_CreateDatabase(TestParameters);
+    Notion_EditDatabaseProperties(TestParameters);
+    Notion_GetDatabase(TestParameters);
+    Notion_CreatePageInDatabase(TestParameters);
 
 EndProcedure
 
 Procedure Notion_CreateDeleteBlock() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Parent = OPI_TestDataRetrieval.GetParameter("Notion_Parent");
-    Block  = OPI_TestDataRetrieval.GetParameter("Notion_Block");
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Block" , TestParameters);
 
-    Result = OPI_Notion.ReturnBlock(Token, Block);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ReturnBlock");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
-
-    Result = OPI_Notion.CreateBlock(Token, Parent, Result);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateBlock");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
-
-    Block  = Result["results"][0]["id"];
-    Result = OPI_Notion.ReturnChildBlocks(Token, Block);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ReturnChildBlocks");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
-
-    Result = OPI_Notion.DeleteBlock(Token, Block);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBlock");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
+    Notion_ReturnBlock(TestParameters);
+    Notion_CreateBlock(TestParameters);
+    Notion_ReturnChildBlocks(TestParameters);
+    Notion_DeleteBlock(TestParameters);
 
 EndProcedure
 
 Procedure Notion_GetUsers() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    Result = OPI_Notion.UserList(Token);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_User" , TestParameters);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UserList");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
-
-EndProcedure
-
-Procedure Notion_GetUserData() Export
-
-    Token  = OPI_TestDataRetrieval.GetParameter("Notion_Token");
-    User   = OPI_TestDataRetrieval.GetParameter("Notion_User");
-    Result = OPI_Notion.GetUserData(Token, User);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData");
-
-    OPI_TestDataRetrieval.Check_NotionObject(Result, "user");
+    Notion_GetUsers(TestParameters);
+    Notion_GetUserData(TestParameters);
 
 EndProcedure
+
 
 #EndRegion
 
@@ -6449,6 +6303,263 @@ Procedure Twitter_CreatePollTweet(TestParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
 
     OPI_Tools.Pause(20);
+
+EndProcedure
+
+#EndRegion
+
+#Region Notion
+
+Procedure Notion_CreatePage(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Parent = FunctionParameters["Notion_Parent"];
+    Title  = "TestTitle";
+
+    Result = OPI_Notion.CreatePage(Token, Parent, Title);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePage", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result);
+
+    Page = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Notion_Page", Page);
+    OPI_Tools.AddField("Notion_Page", Page, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Notion_CreateDatabase(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Parent = FunctionParameters["Notion_Parent"];
+    Title  = "TestTitle";
+
+    Properties = New Map;
+    Properties.Insert("Name"         , "title");
+    Properties.Insert("Description"  , "rich_text");
+    Properties.Insert("Number"       , "number");
+    Properties.Insert("Status"       , "status");
+    Properties.Insert("CreationDate" , "date");
+    Properties.Insert("Image"        , "files");
+    Properties.Insert("Active"       , "checkbox");
+    Properties.Insert("Website"      , "url");
+    Properties.Insert("Email"        , "email");
+    Properties.Insert("Phone"        , "phone_number");
+    Properties.Insert("User"         , "people");
+
+    ValueSelection = New Map;
+    ValueSelection.Insert("New"        , "green");
+    ValueSelection.Insert("InProgress" , "yellow");
+    ValueSelection.Insert("Remote"     , "red");
+
+    Properties.Insert("Status", ValueSelection);
+
+    Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
+
+    Base = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Notion_Base", Base);
+    OPI_Tools.AddField("Notion_Base", Base, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Notion_EditDatabaseProperties(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Base  = FunctionParameters["Notion_Base"];
+
+    Title       = "TestTitle";
+    Description = "TestDescription";
+
+    Properties = New Map;
+    Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
+    Properties.Insert("Website"); // Field "Website" will deleted
+
+    Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditDatabaseProperties", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
+
+EndProcedure
+
+Procedure Notion_GetPage(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Page  = FunctionParameters["Notion_Page"];
+
+    Result = OPI_Notion.GetPage(Token, Page);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPage", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result);
+
+EndProcedure
+
+Procedure Notion_GetDatabase(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Base  = FunctionParameters["Notion_Base"];
+
+    Result = OPI_Notion.GetDatabase(Token, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDatabase", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
+
+EndProcedure
+
+Procedure Notion_CreatePageInDatabase(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Base   = FunctionParameters["Notion_Base"];
+    Image_ = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+
+    Image = New Map;
+    Image.Insert("Logo", Image_);
+
+    Properties = New Map;
+    Properties.Insert("Name"         , "LLC Vector");
+    Properties.Insert("Description"  , "OurFirstClient");
+    Properties.Insert("Number"       , 1);
+    Properties.Insert("Status"       , "Regular");
+    Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
+    Properties.Insert("Image"        , Image);
+    Properties.Insert("Active"       , True);
+    Properties.Insert("Website"      , "https://vector.ru");
+    Properties.Insert("Email"        , "mail@vector.ru");
+    Properties.Insert("Phone"        , "88005553535");
+    Properties.Insert("Status"       , "New");
+
+    Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePageInDatabase", "Notion");
+    OPI_TestDataRetrieval.Check_NotionBasePage(Result, Base);
+
+EndProcedure
+
+Procedure Notion_EditPageProperties(FunctionParameters)
+
+    Token   = FunctionParameters["Notion_Token"];
+    Page    = FunctionParameters["Notion_Page"];
+    Icon    = FunctionParameters["Picture"];
+    Cover   = FunctionParameters["Picture2"];
+    Archive = False;
+
+    Properties = New Map;
+    Properties.Insert("Active" , False);
+    Properties.Insert("Email"  , "vector@mail.ru");
+
+    Result = OPI_Notion.EditPageProperties(Token
+        , Page
+        , Properties
+        , Icon
+        , Cover
+        , Archive);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditPageProperties", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result);
+
+EndProcedure
+
+Procedure Notion_ReturnBlock(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Block = FunctionParameters["Notion_Block"];
+
+    Result = OPI_Notion.ReturnBlock(Token, Block);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnBlock", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
+
+EndProcedure
+
+Procedure Notion_CreateBlock(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Parent = FunctionParameters["Notion_Parent"];
+    Block  = FunctionParameters["Notion_Block"];
+
+    BlockData = OPI_Notion.ReturnBlock(Token, Block);
+    Result    = OPI_Notion.CreateBlock(Token, Parent, BlockData);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBlock", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
+
+    Block = Result["results"][0]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Notion_NewBlock", Block);
+    OPI_Tools.AddField("Notion_NewBlock", Block, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Notion_ReturnChildBlocks(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Block = FunctionParameters["Notion_NewBlock"];
+
+    Result = OPI_Notion.ReturnChildBlocks(Token, Block);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnChildBlocks", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
+
+EndProcedure
+
+Procedure Notion_DeleteBlock(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Block = FunctionParameters["Notion_NewBlock"];
+
+    Result = OPI_Notion.DeleteBlock(Token, Block);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBlock", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
+
+EndProcedure
+
+Procedure Notion_GetUsers(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+
+    Result = OPI_Notion.UserList(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UserList", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
+
+EndProcedure
+
+Procedure Notion_GetUserData(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    User  = FunctionParameters["Notion_User"];
+
+    Result = OPI_Notion.GetUserData(Token, User);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "user");
 
 EndProcedure
 

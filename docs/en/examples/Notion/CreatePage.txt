@@ -1,7 +1,5 @@
-﻿  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Parent = "5dd94c34fab04bff9...";
-  Title = "Created by 1C";
-  
-  Response = OPI_Notion.CreatePage(Token, Parent, Title);
-  Response = OPI_Tools.JSONString(Response);
+﻿    Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Parent = "5dd94c34fab04bff986b7511c0779f77";
+    Title  = "TestTitle";
+
+    Result = OPI_Notion.CreatePage(Token, Parent, Title);
