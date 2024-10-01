@@ -1,6 +1,4 @@
-﻿  
-  Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-  Base = "048ba0ce4f474e33900540d24...";
-  
-  Response = OPI_Notion.GetDatabase(Token, Base);
-  Response = OPI_Tools.JSONString(Response);
+﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Base  = "178907f7d87441959771e805344339f5";
+
+    Result = OPI_Notion.GetDatabase(Token, Base);
