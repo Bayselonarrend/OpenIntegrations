@@ -39,14 +39,14 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
-  "request_id": "f33d34a8-f3cf-41b5-bdf5-4a07cf7d7118",
-  "person": {
-  "email": "ex@gmail.com"
-  },
-  "type": "person",
-  "avatar_url": null,
-  "name": "Bayselonarrend",
-  "id": "ed71865a-9891-1111-86cd-1111111",
-  "object": "user"
-  }
+ "object": "user",
+ "id": "ed71865a-9891-46bc-86cd-a92aa499cfdb",
+ "name": "Techno Pizza",
+ "avatar_url": null,
+ "type": "person",
+ "person": {
+  "email": "iscript13@gmail.com"
+ },
+ "request_id": "369952b6-e1f2-4b18-bbd8-5d7f8a44f2e0"
+}
 ```

@@ -57,149 +57,150 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
-  "request_id": "03fd3bd2-6dd1-4ca2-bf85-9233748a745f",
-  "public_url": null,
-  "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",
-  "properties": {
-  "Картинка": {
-  "files": [
-  {
-  "external": {
-  "url": "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg"
-  },
-  "type": "external",
-  "name": "Лого"
-  }
-  ],
-  "type": "files",
-  "id": "r%3Dfa"
-  },
-  "Активен": {
-  "checkbox": true,
-  "type": "checkbox",
-  "id": "q%3FQF"
-  },
-  "Телефон": {
-  "phone_number": "88005553535",
-  "type": "phone_number",
-  "id": "hDII"
-  },
-  "Пользователь": {
-  "people": [],
-  "type": "people",
-  "id": "%5D%40Md"
-  },
+ "object": "page",
+ "id": "11282aa7-fc4e-81a1-83fa-d321789b6885",
+ "created_time": "2024-10-01T18:37:00Z",
+ "last_edited_time": "2024-10-01T18:37:00Z",
+ "created_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "last_edited_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "cover": null,
+ "icon": null,
+ "parent": {
+  "type": "database_id",
+  "database_id": "11282aa7-fc4e-811c-9177-def14ccc3095"
+ },
+ "archived": false,
+ "in_trash": false,
+ "properties": {
   "Описание": {
-  "rich_text": [
-  {
-  "plain_text": "Наш первый клиент",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
-  },
-  "text": {
-  "link": null,
-  "content": "Наш первый клиент"
-  },
-  "href": null,
-  "type": "text"
-  }
-  ],
-  "type": "rich_text",
-  "id": "KnG%3F"
-  },
-  "Статус": {
-  "select": {
-  "color": "green",
-  "name": "Новый",
-  "id": "202b1d30-2095-40f1-8b91-f627d475d560"
-  },
-  "type": "select",
-  "id": "IDW%3C"
-  },
-  "Номер": {
-  "type": "number",
-  "number": 1,
-  "id": "CH__"
+   "id": "%3DiF~",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Наш первый клиент",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Наш первый клиент",
+     "href": null
+    }
+   ]
   },
   "Дата создания": {
-  "date": {
-  "time_zone": null,
-  "end": null,
-  "start": "2024-01-26T09:45:00.000+00:00"
+   "id": "COOh",
+   "type": "date",
+   "date": {
+    "start": "2024-10-01T12:37:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
   },
-  "type": "date",
-  "id": "BQN%5B"
+  "Телефон": {
+   "id": "%5Dtmh",
+   "type": "phone_number",
+   "phone_number": "88005553535"
   },
-  "Имя": {
-  "title": [
-  {
-  "plain_text": "ООО Вектор",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
+  "Статус": {
+   "id": "bWOW",
+   "type": "select",
+   "select": {
+    "id": "0d638280-6bd6-4578-a4c1-50cc8ae01134",
+    "name": "Новый",
+    "color": "green"
+   }
   },
-  "text": {
-  "link": null,
-  "content": "ООО Вектор"
-  },
-  "href": null,
-  "type": "text"
-  }
-  ],
-  "type": "title",
-  "id": "title"
+  "Номер": {
+   "id": "fD%7Dp",
+   "type": "number",
+   "number": 1
   },
   "Почта": {
-  "rich_text": [
-  {
-  "plain_text": "mail@vector.ru",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
+   "id": "ktOk",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
   },
-  "text": {
-  "link": null,
-  "content": "mail@vector.ru"
+  "Активен": {
+   "id": "qa%40q",
+   "type": "checkbox",
+   "checkbox": true
   },
-  "href": null,
-  "type": "text"
+  "Пользователь": {
+   "id": "yX%3F%5D",
+   "type": "people",
+   "people": []
+  },
+  "Картинка": {
+   "id": "%7D%5CeH",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Имя": {
+   "id": "title",
+   "type": "title",
+   "title": [
+    {
+     "type": "text",
+     "text": {
+      "content": "ООО Вектор",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "ООО Вектор",
+     "href": null
+    }
+   ]
   }
-  ],
-  "type": "rich_text",
-  "id": "%3CO%3AD"
-  }
-  },
-  "parent": {
-  "database_id": "048ba0ce-4f47-4e33-9005-40d249b01949",
-  "type": "database_id"
-  },
-  "cover": null,
-  "archived": false,
-  "created_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "last_edited_time": "2024-01-26T18:45:00.000Z",
-  "icon": null,
-  "created_time": "2024-01-26T18:45:00.000Z",
-  "last_edited_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "id": "a5742816-1417-4169-bf55-dbae44f46d9c",
-  "object": "page"
-  }
+ },
+ "url": "https://www.notion.so/11282aa7fc4e81a183fad321789b6885",
+ "public_url": null,
+ "request_id": "9abff120-5e5c-42af-b2a9-5dda12196e7a"
+}
 ```
