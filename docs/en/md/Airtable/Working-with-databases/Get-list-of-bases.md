@@ -23,10 +23,9 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  
-  Response = OPI_Airtable.GetListOfBases(Token); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+
+    Result = OPI_Airtable.GetListOfBases(Token);
 ```
 
 
@@ -38,53 +37,5 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
-  "bases": [
-  {
-  "id": "appGarzKZ0lu3gzoa",
-  "name": "Test",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "app9WRfJirwn3yXuG",
-  "name": "Product catalog",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "app6gigUYTzlDEq4X",
-  "name": "TestDatabase",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "app5hJGyK8asYYe1Q",
-  "name": "TestDatabase",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "appRQ6VxxOZb40Uwi",
-  "name": "TestDatabase",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "appM6FaGofV2XSfFA",
-  "name": "TestDatabase",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "apptm8Xqo7TwMaipQ",
-  "name": "TestDatabase",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "appsyQyGrF8aVN2Wm",
-  "name": "TestDatabase",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "applEsyJmBRm12AuN",
-  "name": "TestDatabase",
-  "permissionLevel": "create"
-  }
-  ]
-  }
+
 ```
