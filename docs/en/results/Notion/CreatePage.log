@@ -1,0 +1,50 @@
+﻿ {
+ "object": "page",
+ "id": "11382aa7-fc4e-819a-80d4-feb525be9b58",
+ "created_time": "2024-10-02T14:42:00Z",
+ "last_edited_time": "2024-10-02T14:42:00Z",
+ "created_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "last_edited_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "cover": null,
+ "icon": null,
+ "parent": {
+  "type": "page_id",
+  "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
+ },
+ "archived": false,
+ "in_trash": false,
+ "properties": {
+  "title": {
+   "id": "title",
+   "type": "title",
+   "title": [
+    {
+     "type": "text",
+     "text": {
+      "content": "title",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "title",
+     "href": null
+    }
+   ]
+  }
+ },
+ "url": "https://www.notion.so/title-11382aa7fc4e819a80d4feb525be9b58",
+ "public_url": null,
+ "request_id": "4037636c-e715-43c0-9e7d-765d523fb925"
+}
