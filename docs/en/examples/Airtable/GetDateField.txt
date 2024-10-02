@@ -1,5 +1,1 @@
-﻿  
-  Name = "Date";
-  
-  Response = OPI_Airtable.GetDateField(Name); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+﻿    Result = OPI_Airtable.GetDateField("Date");

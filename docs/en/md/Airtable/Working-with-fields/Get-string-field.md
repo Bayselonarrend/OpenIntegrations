@@ -22,11 +22,7 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Name = "String";
-  
-  Response = OPI_Airtable.GetStringField(Name); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Result = OPI_Airtable.GetStringField("String");
 ```
 
 
@@ -38,8 +34,5 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
-  "name": "String",
-  "type": "richText"
-  }
+
 ```

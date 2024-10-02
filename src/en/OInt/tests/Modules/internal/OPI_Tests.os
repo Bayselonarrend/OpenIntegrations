@@ -1055,7 +1055,6 @@ Procedure NotionAPI_GetUsers() Export
 
 EndProcedure
 
-
 #EndRegion
 
 #Region Slack
@@ -1158,220 +1157,62 @@ EndProcedure
 
 Procedure AT_CreateDatabase() Export
 
-    Token  = OPI_TestDataRetrieval.GetParameter("Airtable_Token");
-    Region = OPI_TestDataRetrieval.GetParameter("Airtable_Workspace");
-    Name   = "TestDatabase";
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Workspace", TestParameters);
 
-    FieldArray = New Array;
-    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
-    FieldArray.Add(OPI_Airtable.GetStringField("String"));
-
-    TableName = "TestTable";
-
-    TableMapping = New Map;
-    TableMapping.Insert(TableName, FieldArray);
-
-    Result = OPI_Airtable.CreateDatabase(Token, Region, Name, TableMapping);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["tables"][0]["name"]).Равно(TableName);
-
-    Base = Result["id"];
-    OPI_TestDataRetrieval.WriteParameter("Airtable_Base", Base);
-
-    Result = OPI_Airtable.GetDatabaseTables(Token, Base);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDatabaseTables");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["tables"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["tables"]).ИмеетТип("Array");
-
-    Result = OPI_Airtable.GetListOfBases(Token);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfBases");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["bases"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["bases"]).ИмеетТип("Array");
+    Airtable_CreateDatabase(TestParameters);
+    Airtable_GetDatabaseTables(TestParameters);
+    Airtable_GetListOfBases(TestParameters);
 
 EndProcedure
 
 Procedure AT_CreateTable() Export
 
-    Token = OPI_TestDataRetrieval.GetParameter("Airtable_Token");
-    Base  = OPI_TestDataRetrieval.GetParameter("Airtable_Base");
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
 
-    FieldArray = New Array;
-    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[0], "GetNumberField");
-
-    FieldArray.Add(OPI_Airtable.GetStringField("String"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[1], "GetStringField");
-
-    FieldArray.Add(OPI_Airtable.GetAttachmentField("Attachment"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[2], "GetAttachmentField");
-
-    FieldArray.Add(OPI_Airtable.GetCheckboxField("Checkbox"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[3], "GetCheckboxField");
-
-    FieldArray.Add(OPI_Airtable.GetDateField("Date"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[4], "GetDateField");
-
-    FieldArray.Add(OPI_Airtable.GetPhoneField("Phone"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[5], "GetPhoneField");
-
-    FieldArray.Add(OPI_Airtable.GetEmailField("Email"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[6], "GetEmailField");
-
-    FieldArray.Add(OPI_Airtable.GetLinkField("Link"));
-    OPI_TestDataRetrieval.WriteLog(FieldArray[7], "GetLinkField");
-
-    TableName   = "TestTable2";
-    Description = "NewTable";
-
-    Result = OPI_Airtable.CreateTable(Token, Base, TableName, FieldArray, Description);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(TableName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно(Description);
-
-    Table       = Result["id"];
-    TableName   = "Test table 2 (change.)";
-    Description = "New table (change.)";
-
-    OPI_TestDataRetrieval.WriteParameter("Airtable_Table", Table);
-
-    Result = OPI_Airtable.ModifyTable(Token, Base, Table, TableName, Description);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ModifyTable");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(TableName);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно(Description);
+    Airtable_GetNumberField(TestParameters);
+    Airtable_GetStringField(TestParameters);
+    Airtable_GetAttachmentField(TestParameters);
+    Airtable_GetCheckboxField(TestParameters);
+    Airtable_GetDateField(TestParameters);
+    Airtable_GetPhoneField(TestParameters);
+    Airtable_GetEmailField(TestParameters);
+    Airtable_GetLinkField(TestParameters);
+    Airtable_CreateTable(TestParameters);
+    Airtable_ModifyTable(TestParameters);
 
 EndProcedure
 
 Procedure AT_CreateField() Export
 
-    Token = OPI_TestDataRetrieval.GetParameter("Airtable_Token");
-    Base  = OPI_TestDataRetrieval.GetParameter("Airtable_Base");
-    Table = OPI_TestDataRetrieval.GetParameter("Airtable_Table");
-    Name  = String(New UUID);
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Table", TestParameters);
 
-    Field = OPI_Airtable.GetNumberField(Name);
-
-    Result = OPI_Airtable.CreateField(Token, Base, Table, Field);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateField");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(Name);
-
-    Field       = Result["id"];
-    Name        = Name + "(change.)";
-    Description = "New description";
-
-    Result = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "ModifyField");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["name"]).Равно(Name);
-    OPI_TestDataRetrieval.ExpectsThat(Result["description"]).Равно(Description);
+    Airtable_CreateField(TestParameters);
+    Airtable_ModifyField(TestParameters);
 
 EndProcedure
 
 Procedure AT_CreateDeleteRecords() Export
 
-    Token = OPI_TestDataRetrieval.GetParameter("Airtable_Token");
-    Base  = OPI_TestDataRetrieval.GetParameter("Airtable_Base");
-    Table = OPI_TestDataRetrieval.GetParameter("Airtable_Table");
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Base" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Airtable_Table", TestParameters);
 
-    Numeric    = 10;
-    StringType = "Hello";
-
-    RowDescription1 = New Structure("Number,String", Numeric, StringType);
-    RowDescription2 = New Structure("Number,String", Numeric, StringType);
-
-    ArrayOfDeletions    = New Array;
-    ArrayOfDescriptions = New Array;
-    ArrayOfDescriptions.Add(RowDescription1);
-    ArrayOfDescriptions.Add(RowDescription2);
-
-    Result = OPI_Airtable.CreatePosts(Token, Base, Table, ArrayOfDescriptions);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePosts");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"].Count()).Равно(2);
-
-    For Each Record In Result["records"] Do
-        ArrayOfDeletions.Add(Record["id"]);
-    EndDo;
-
-    Result = OPI_Airtable.CreatePosts(Token, Base, Table, RowDescription1);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateRecords (one)");
-
-    SingleRecord = Result["id"];
-    OPI_TestDataRetrieval.ExpectsThat(SingleRecord).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["createdTime"]).Заполнено();
-    OPI_TestDataRetrieval.ExpectsThat(Result["fields"]["Number"]).Равно(Numeric);
-    OPI_TestDataRetrieval.ExpectsThat(TrimAll(Result["fields"]["String"])).Равно(StringType);
-
-    Result = OPI_Airtable.GetRecord(Token, Base, Table, SingleRecord);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetRecord");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).Равно(SingleRecord);
-
-    Text   = "TestComment";
-    Result = OPI_Airtable.CreateComment(Token, Base, Table, SingleRecord, Text);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["text"]).Равно(Text);
-
-    Comment = Result["id"];
-    Text    = "Test comment (change.)";
-    Result  = OPI_Airtable.EditComment(Token, Base, Table, SingleRecord, Comment, Text);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "EditComment");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["text"]).Равно(Text);
-
-    Result = OPI_Airtable.GetComments(Token, Base, Table, SingleRecord);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetComments");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["comments"]).ИмеетТип("Array");
-
-    Result = OPI_Airtable.DeleteComment(Token, Base, Table, SingleRecord, Comment);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["deleted"]).Равно(True);
-    OPI_TestDataRetrieval.ExpectsThat(Result["id"]).Равно(Comment);
-
-    Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfRecords");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).Заполнено();
-
-    Result = OPI_Airtable.DeletePosts(Token, Base, Table, ArrayOfDeletions);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeletePosts");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).Заполнено();
-
-    Result = OPI_Airtable.DeletePosts(Token, Base, Table, SingleRecord);
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteRecords (one)");
-
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).ИмеетТип("Array");
-    OPI_TestDataRetrieval.ExpectsThat(Result["records"]).Заполнено();
+    Airtable_CreatePosts(TestParameters);
+    Airtable_GetRecord(TestParameters);
+    Airtable_CreateComment(TestParameters);
+    Airtable_EditComment(TestParameters);
+    Airtable_GetComments(TestParameters);
+    Airtable_DeleteComment(TestParameters);
+    Airtable_GetListOfRecords(TestParameters);
+    Airtable_DeletePosts(TestParameters);
 
 EndProcedure
 
@@ -6084,6 +5925,405 @@ Procedure Slack_DeleteExternalFile(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteExternalFile", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region Airtable
+
+Procedure Airtable_CreateDatabase(FunctionParameters)
+
+    Token  = FunctionParameters["Airtable_Token"];
+    Region = FunctionParameters["Airtable_Workspace"];
+    Name   = "TestDatabase";
+
+    FieldArray = New Array;
+    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
+    FieldArray.Add(OPI_Airtable.GetStringField("String"));
+
+    TableName = "TestTable";
+
+    TableMapping = New Map;
+    TableMapping.Insert(TableName, FieldArray);
+
+    Result = OPI_Airtable.CreateDatabase(Token, Region, Name, TableMapping);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "Airtable");
+    OPI_TestDataRetrieval.Check_ATBaseWithTable(Result, TableName);
+
+    Base = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Airtable_Base", Base);
+    OPI_Tools.AddField("Airtable_Base", Base, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Airtable_GetDatabaseTables(FunctionParameters)
+
+    Token = FunctionParameters["Airtable_Token"];
+    Base  = FunctionParameters["Airtable_Base"];
+
+    Result = OPI_Airtable.GetDatabaseTables(Token, Base);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDatabaseTables", "Airtable");
+    OPI_TestDataRetrieval.Check_ATTablesList(Result);
+
+EndProcedure
+
+Procedure Airtable_GetListOfBases(FunctionParameters)
+
+    Token = FunctionParameters["Airtable_Token"];
+
+    Result = OPI_Airtable.GetListOfBases(Token);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfBases", "Airtable");
+    OPI_TestDataRetrieval.Check_ATBasesList(Result);
+
+EndProcedure
+
+Procedure Airtable_GetNumberField(FunctionParameters)
+
+    Result = OPI_Airtable.GetNumberField("Number");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetNumberField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_GetStringField(FunctionParameters)
+
+    Result = OPI_Airtable.GetStringField("String");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetStringField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_GetAttachmentField(FunctionParameters)
+
+    Result = OPI_Airtable.GetAttachmentField("Attachment");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAttachmentField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_GetCheckboxField(FunctionParameters)
+
+    Result = OPI_Airtable.GetCheckboxField("Checkbox");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCheckboxField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_GetDateField(FunctionParameters)
+
+    Result = OPI_Airtable.GetDateField("Date");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDateField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_GetPhoneField(FunctionParameters)
+
+    Result = OPI_Airtable.GetPhoneField("Phone");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPhoneField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_GetEmailField(FunctionParameters)
+
+    Result = OPI_Airtable.GetEmailField("Email");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEmailField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_GetLinkField(FunctionParameters)
+
+    Result = OPI_Airtable.GetLinkField("Link");
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Structure(Result);
+    OPI_TestDataRetrieval.WriteLog(Result, "GetLinkField", "Airtable");
+
+EndProcedure
+
+Procedure Airtable_CreateTable(FunctionParameters)
+
+    Token = FunctionParameters["Airtable_Token"];
+    Base  = FunctionParameters["Airtable_Base"];
+
+    FieldArray = New Array;
+    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
+    FieldArray.Add(OPI_Airtable.GetStringField("String"));
+    FieldArray.Add(OPI_Airtable.GetAttachmentField("Attachment"));
+    FieldArray.Add(OPI_Airtable.GetCheckboxField("Checkbox"));
+    FieldArray.Add(OPI_Airtable.GetDateField("Date"));
+    FieldArray.Add(OPI_Airtable.GetPhoneField("Phone"));
+    FieldArray.Add(OPI_Airtable.GetEmailField("Email"));
+    FieldArray.Add(OPI_Airtable.GetLinkField("Link"));
+
+    Name        = "TestTable2";
+    Description = "NewTable";
+
+    Result = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "Airtable");
+    OPI_TestDataRetrieval.Check_ATTable(Result, Name, Description);
+
+    Table = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Airtable_Table", Table);
+    OPI_Tools.AddField("Airtable_Table", Table, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Airtable_ModifyTable(FunctionParameters)
+
+    Token       = FunctionParameters["Airtable_Token"];
+    Base        = FunctionParameters["Airtable_Base"];
+    Table       = FunctionParameters["Airtable_Table"];
+    Name        = "Test table 2 (change.)";
+    Description = "New table (change.)";
+
+    Result = OPI_Airtable.ModifyTable(Token, Base, Table, Name, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ModifyTable", "Airtable");
+    OPI_TestDataRetrieval.Check_ATTable(Result, Name, Description);
+
+EndProcedure
+
+Procedure Airtable_CreateField(FunctionParameters)
+
+    Token = FunctionParameters["Airtable_Token"];
+    Base  = FunctionParameters["Airtable_Base"];
+    Table = FunctionParameters["Airtable_Table"];
+    Name  = String(New UUID);
+
+    Field  = OPI_Airtable.GetNumberField(Name);
+    Result = OPI_Airtable.CreateField(Token, Base, Table, Field);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateField", "Airtable");
+    OPI_TestDataRetrieval.Check_ATField(Result, Name);
+
+    Field = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Airtable_Field", Field);
+    OPI_Tools.AddField("Airtable_Field", Field, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Airtable_ModifyField(FunctionParameters)
+
+    Token = FunctionParameters["Airtable_Token"];
+    Base  = FunctionParameters["Airtable_Base"];
+    Table = FunctionParameters["Airtable_Table"];
+    Field = FunctionParameters["Airtable_Field"];
+
+    Name        = String(New UUID) + "(change.)";
+    Description = "New description";
+
+    Result = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ModifyField", "Airtable");
+    OPI_TestDataRetrieval.Check_ATTable(Result, Name, Description);
+
+EndProcedure
+
+Procedure Airtable_CreatePosts(FunctionParameters)
+
+    Token = FunctionParameters["Airtable_Token"];
+    Base  = FunctionParameters["Airtable_Base"];
+    Table = FunctionParameters["Airtable_Table"];
+
+    Number = 10;
+    String = "Hello";
+
+    RowDescription1 = New Structure("Number,String", Number, String);
+    RowDescription2 = New Structure("Number,String", Number, String);
+
+    ArrayOfDescriptions = New Array;
+    ArrayOfDescriptions.Add(RowDescription1);
+    ArrayOfDescriptions.Add(RowDescription2);
+
+    Result = OPI_Airtable.CreatePosts(Token, Base, Table, ArrayOfDescriptions);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePosts", "Airtable");
+    OPI_TestDataRetrieval.Check_ATRecords(Result);
+
+    ArrayOfDeletions = New Array;
+
+    For Each Record In Result["records"] Do
+
+        CurrentRecord = Record["id"];
+        ArrayOfDeletions.Add(CurrentRecord);
+
+    EndDo;
+
+    OPI_Airtable.DeletePosts(Token, Base, Table, ArrayOfDeletions);
+
+    // Single
+
+    Result = OPI_Airtable.CreatePosts(Token, Base, Table, RowDescription1);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateRecords (one)");
+    OPI_TestDataRetrieval.Check_ATRecordNumberAndString(Result, Number, String);
+
+    Record = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Airtable_Record", Record);
+    OPI_Tools.AddField("Airtable_Record", Record, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Airtable_GetRecord(FunctionParameters)
+
+    Token  = FunctionParameters["Airtable_Token"];
+    Base   = FunctionParameters["Airtable_Base"];
+    Table  = FunctionParameters["Airtable_Table"];
+    Record = FunctionParameters["Airtable_Record"];
+
+    Result = OPI_Airtable.GetRecord(Token, Base, Table, Record);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRecord", "Airtable");
+    OPI_TestDataRetrieval.Check_ATRecord(Result, Record);
+
+EndProcedure
+
+Procedure Airtable_CreateComment(FunctionParameters)
+
+    Token  = FunctionParameters["Airtable_Token"];
+    Base   = FunctionParameters["Airtable_Base"];
+    Table  = FunctionParameters["Airtable_Table"];
+    Record = FunctionParameters["Airtable_Record"];
+    Text   = "TestComment";
+
+    Result = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "Airtable");
+    OPI_TestDataRetrieval.Check_ATText(Result, Text);
+
+    Comment = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Airtable_Comment", Comment);
+    OPI_Tools.AddField("Airtable_Comment", Comment, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure Airtable_EditComment(FunctionParameters)
+
+    Token   = FunctionParameters["Airtable_Token"];
+    Base    = FunctionParameters["Airtable_Base"];
+    Table   = FunctionParameters["Airtable_Table"];
+    Record  = FunctionParameters["Airtable_Record"];
+    Comment = FunctionParameters["Airtable_Comment"];
+
+    Text   = "Test comment (change.)";
+    Result = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditComment", "Airtable");
+    OPI_TestDataRetrieval.Check_ATText(Result, Text);
+
+EndProcedure
+
+Procedure Airtable_GetComments(FunctionParameters)
+
+    Token  = FunctionParameters["Airtable_Token"];
+    Base   = FunctionParameters["Airtable_Base"];
+    Table  = FunctionParameters["Airtable_Table"];
+    Record = FunctionParameters["Airtable_Record"];
+
+    Result = OPI_Airtable.GetComments(Token, Base, Table, Record);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetComments", "Airtable");
+    OPI_TestDataRetrieval.Check_ATComments(Result);
+
+EndProcedure
+
+Procedure Airtable_DeleteComment(FunctionParameters)
+
+    Token   = FunctionParameters["Airtable_Token"];
+    Base    = FunctionParameters["Airtable_Base"];
+    Table   = FunctionParameters["Airtable_Table"];
+    Record  = FunctionParameters["Airtable_Record"];
+    Comment = FunctionParameters["Airtable_Comment"];
+
+    Result = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment", "Airtable");
+    OPI_TestDataRetrieval.Check_ATCommentDeleting(Result, Comment);
+
+EndProcedure
+
+Procedure Airtable_GetListOfRecords(FunctionParameters)
+
+    Token = FunctionParameters["Airtable_Token"];
+    Base  = FunctionParameters["Airtable_Base"];
+    Table = FunctionParameters["Airtable_Table"];
+
+    Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfRecords", "Airtable");
+    OPI_TestDataRetrieval.Check_ATRecords(Result);
+
+EndProcedure
+
+Procedure Airtable_DeletePosts(FunctionParameters)
+
+    Token  = FunctionParameters["Airtable_Token"];
+    Base   = FunctionParameters["Airtable_Base"];
+    Table  = FunctionParameters["Airtable_Table"];
+    Record = FunctionParameters["Airtable_Record"];
+
+    Result = OPI_Airtable.DeletePosts(Token, Base, Table, Record);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeletePosts", "Airtable");
+    OPI_TestDataRetrieval.Check_ATRecords(Result);
 
 EndProcedure
 

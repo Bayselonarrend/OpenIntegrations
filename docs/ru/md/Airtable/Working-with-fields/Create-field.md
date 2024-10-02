@@ -25,14 +25,13 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  База         = "apptm8Xqo7TwMaipQ";
-  Таблица      = "tbl9G4jVoTJpxYwSY";
-  Имя          = Строка(Новый УникальныйИдентификатор);
-  Поле         = OPI_Airtable.ПолучитьПолеНомера(Имя);
-  
-  Ответ = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, СтруктураПоля); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                            //JSON строка
+    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База    = "app9bSgL4YtTVGTlE";
+    Таблица = "tblDUGAZFZaeOwE6x";
+    Имя     = Строка(Новый УникальныйИдентификатор);
+
+    Поле      = OPI_Airtable.ПолучитьПолеНомера(Имя);
+    Результат = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, Поле);
 ```
 
 
@@ -44,12 +43,5 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
-  "type": "number",
-  "options": {
-  "precision": 0
-  },
-  "id": "fld3IbFtHZtBHQwsk",
-  "name": "9c0d2a82-7bf9-40b7-8052-ae3ebadc72d5"
-  }
+
 ```

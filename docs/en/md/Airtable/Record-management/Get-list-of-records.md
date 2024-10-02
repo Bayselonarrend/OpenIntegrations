@@ -25,12 +25,11 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  Table = "tbl9G4jVoTJpxYwSY";
-  
-  Response = OPI_Airtable.GetListOfRecords(Token, Base, Table, Indent); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base  = "app9bSgL4YtTVGTlE";
+    Table = "tblDUGAZFZaeOwE6x";
+
+    Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);
 ```
 
 
@@ -42,32 +41,5 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
-  "records": [
-  {
-  "id": "recGyJ0MlN1H3GMuN",
-  "createdTime": "2024-05-10T19:39:51Z",
-  "fields": {
-  "Number": 10,
-  "String": "Hello\n"
-  }
-  },
-  {
-  "id": "recV6DxeLQMBNJrUk",
-  "createdTime": "2024-05-10T19:39:51Z",
-  "fields": {
-  "Number": 10,
-  "String": "Hello\n"
-  }
-  },
-  {
-  "id": "recjHNKNZBWLZkZ7A",
-  "createdTime": "2024-05-10T19:39:51Z",
-  "fields": {
-  "Number": 10,
-  "String": "Hello\n"
-  }
-  }
-  ]
-  }
+
 ```

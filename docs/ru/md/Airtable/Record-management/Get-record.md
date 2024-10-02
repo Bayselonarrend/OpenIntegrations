@@ -25,13 +25,12 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  Запись  = "recV6DxeLQMBNJrUk";
-  
-  Ответ = OPI_Airtable.ПолучитьЗапись(Токен, База, Таблица, Запись); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                        //JSON строка
+    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База    = "app9bSgL4YtTVGTlE";
+    Таблица = "tblDUGAZFZaeOwE6x";
+    Запись  = "recydoiybO8id17n5";
+
+    Результат = OPI_Airtable.ПолучитьЗапись(Токен, База, Таблица, Запись);
 ```
 
 
@@ -43,12 +42,5 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
-  "id": "recV6DxeLQMBNJrUk",
-  "createdTime": "2024-05-10T19:39:51Z",
-  "fields": {
-  "Номер": 10,
-  "Строковое": "Привет\n"
-  }
-  }
+
 ```
