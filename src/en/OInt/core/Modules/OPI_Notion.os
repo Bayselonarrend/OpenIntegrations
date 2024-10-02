@@ -809,10 +809,10 @@ Function ConvertDate(Val Date)
 
     DateStructure = New Structure;
 
-    If Date        = BegOfDay(Date) Then
+    If Date = BegOfDay(Date) Then
         DateFormat = "DF=yyyy-MM-dd";
     Else
-        DateFormat = "ISO8601Datetime";
+        DateFormat = "DF=yyyy-MM-ddThh:mm:ssZ";
     EndIf;
 
     Date = Format(Date, DateFormat);
