@@ -27,15 +27,16 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  Запись  = "recV6DxeLQMBNJrUk";
-  Коммент = "comL1oGEDJvIQlMs1";
-  Текст   = "Тестовый комментарий (изм.)";
-  
-  Ответ = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Коммент, Текст); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                             //JSON строка
+    Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База        = "app9bSgL4YtTVGTlE";
+    Таблица     = "tblDUGAZFZaeOwE6x";
+    Запись      = "recydoiybO8id17n5";
+    Комментарий = "com8s9ZPVoWQ9JN9o";
+
+    Текст     = "Тестовый комментарий (изм.)";
+    Результат = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Комментарий, Текст);
+
+    OPI_ПолучениеДанныхТестов.Проверка_АТТекст(Результат, Текст);
 ```
 
 
@@ -47,15 +48,5 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-{
-  "id": "comL1oGEDJvIQlMs1",
-  "author": {
-  "id": "usrFlaAHlTfYWAbVW",
-  "email": "bayselonarrend@gmail.com",
-  "name": "Антон Титовец"
-  },
-  "text": "Тестовый комментарий (изм.)",
-  "createdTime": "2024-05-10T19:39:52Z",
-  "lastUpdatedTime": "2024-05-10T19:39:51.967Z"
-  }
+
 ```

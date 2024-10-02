@@ -1,4 +1,3 @@
-﻿  
-  
-  Response = OPI_Airtable.GetListOfBases(Token); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+﻿    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+
+    Result = OPI_Airtable.GetListOfBases(Token);

@@ -26,23 +26,23 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  TableName = "TestTable2";
-  Description = "NewTable";
-  
-  FieldArray = New Array;
-  FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
-  FieldArray.Add(OPI_Airtable.GetStringField("String"));
-  FieldArray.Add(OPI_Airtable.GetAttachmentField("Attachment"));
-  FieldArray.Add(OPI_Airtable.GetCheckboxField("Checkbox"));
-  FieldArray.Add(OPI_Airtable.GetDateField("Date"));
-  FieldArray.Add(OPI_Airtable.GetPhoneField("Phone"));
-  FieldArray.Add(OPI_Airtable.GetEmailField("Email"));
-  FieldArray.Add(OPI_Airtable.GetLinkField("Link"));
-  
-  Response = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base  = "app9bSgL4YtTVGTlE";
+
+    FieldArray = New Array;
+    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
+    FieldArray.Add(OPI_Airtable.GetStringField("String"));
+    FieldArray.Add(OPI_Airtable.GetAttachmentField("Attachment"));
+    FieldArray.Add(OPI_Airtable.GetCheckboxField("Checkbox"));
+    FieldArray.Add(OPI_Airtable.GetDateField("Date"));
+    FieldArray.Add(OPI_Airtable.GetPhoneField("Phone"));
+    FieldArray.Add(OPI_Airtable.GetEmailField("Email"));
+    FieldArray.Add(OPI_Airtable.GetLinkField("Link"));
+
+    Name        = "TestTable2";
+    Description = "NewTable";
+
+    Result = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description);
 ```
 
 
@@ -54,75 +54,5 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
-  "id": "tblT64aWyrMUAbUmF",
-  "name": "TestTable2",
-  "description": "NewTable",
-  "primaryFieldId": "fldoHs3kv6RLc8pjo",
-  "fields": [
-  {
-  "type": "number",
-  "options": {
-  "precision": 0
-  },
-  "id": "fldoHs3kv6RLc8pjo",
-  "name": "Number"
-  },
-  {
-  "type": "richText",
-  "id": "fldzY5xRHDY7ClKxa",
-  "name": "String"
-  },
-  {
-  "type": "multipleAttachments",
-  "options": {
-  "isReversed": false
-  },
-  "id": "fldYHxxXPALKl3yHp",
-  "name": "Attachment"
-  },
-  {
-  "type": "checkbox",
-  "options": {
-  "icon": "check",
-  "color": "yellowBright"
-  },
-  "id": "fldRUoggUObfqckXh",
-  "name": "Checkbox"
-  },
-  {
-  "type": "date",
-  "options": {
-  "dateFormat": {
-  "name": "iso",
-  "format": "YYYY-MM-DD"
-  }
-  },
-  "id": "fldvtwjapJM7s99nN",
-  "name": "Date"
-  },
-  {
-  "type": "phoneNumber",
-  "id": "flda4VY8dVd2mbqz9",
-  "name": "Phone"
-  },
-  {
-  "type": "email",
-  "id": "fld8ZLKndqBIkT72s",
-  "name": "Email"
-  },
-  {
-  "type": "url",
-  "id": "fldqjsCp1c2KaAS53",
-  "name": "Link"
-  }
-  ],
-  "views": [
-  {
-  "id": "viwX3vEGO5vB2Km4k",
-  "name": "Grid view",
-  "type": "grid"
-  }
-  ]
-  }
+
 ```

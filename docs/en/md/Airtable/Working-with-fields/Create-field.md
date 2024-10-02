@@ -25,14 +25,13 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  Table = "tbl9G4jVoTJpxYwSY";
-  Name = String(New UUID);
-  Field = OPI_Airtable.GetNumberField(Name);
-  
-  Response = OPI_Airtable.CreateField(Token, Base, Table, FieldStructure); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base  = "app9bSgL4YtTVGTlE";
+    Table = "tblDUGAZFZaeOwE6x";
+    Name  = String(New UUID);
+
+    Field  = OPI_Airtable.GetNumberField(Name);
+    Result = OPI_Airtable.CreateField(Token, Base, Table, Field);
 ```
 
 
@@ -44,12 +43,5 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-{
-  "type": "number",
-  "options": {
-  "precision": 0
-  },
-  "id": "fld3IbFtHZtBHQwsk",
-  "name": "9c0d2a82-7bf9-40b7-8052-ae3ebadc72d5"
-  }
+
 ```

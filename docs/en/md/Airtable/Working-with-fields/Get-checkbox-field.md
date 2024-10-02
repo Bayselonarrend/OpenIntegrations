@@ -22,11 +22,7 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
-  
-  Name = "Checkbox";
-  
-  Response = OPI_Airtable.GetCheckboxField(Name); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Result = OPI_Airtable.GetCheckboxField("Checkbox");
 ```
 
 
@@ -38,12 +34,5 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
-{
-  "name": "Checkbox",
-  "type": "checkbox",
-  "options": {
-  "icon": "check",
-  "color": "yellowBright"
-  }
-  }
+
 ```

@@ -23,12 +23,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Name = "Number";
-  Precision = "0";
-  
-  Response = OPI_Airtable.GetNumberField(Name, Precision); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Result = OPI_Airtable.GetNumberField("Number");
 ```
 
 
@@ -40,11 +35,5 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-{
-  "name": "Number",
-  "type": "number",
-  "options": {
-  "precision": 0
-  }
-  }
+
 ```

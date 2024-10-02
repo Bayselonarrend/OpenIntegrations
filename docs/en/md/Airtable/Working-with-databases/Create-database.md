@@ -25,21 +25,20 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Workspace = "wspdf8yl1yZz3PmWZ";
-  Name = "TestDatabase";
-  
-  FieldArray = New Array;
-  FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
-  FieldArray.Add(OPI_Airtable.GetStringField("String"));
-  
-  TableName = "TestTable";
-  
-  TableCollection = New Map;
-  TableCollection.Insert(TableName, FieldArray);
-  
-  Response = OPI_Airtable.CreateDatabase(Token, Workspace, Name, TableCollection); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Region = "wspdf8yl1yZz3PmWZ";
+    Name   = "TestDatabase";
+
+    FieldArray = New Array;
+    FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
+    FieldArray.Add(OPI_Airtable.GetStringField("String"));
+
+    TableName = "TestTable";
+
+    TableMapping = New Map;
+    TableMapping.Insert(TableName, FieldArray);
+
+    Result = OPI_Airtable.CreateDatabase(Token, Region, Name, TableMapping);
 ```
 
 
@@ -51,36 +50,5 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
-  "id": "applEsyJmBRm12AuN",
-  "tables": [
-  {
-  "id": "tblqZzW78Rvsdt9gt",
-  "name": "TestTable",
-  "primaryFieldId": "fldj9Z3fEpLzv40d0",
-  "fields": [
-  {
-  "type": "number",
-  "options": {
-  "precision": 0
-  },
-  "id": "fldj9Z3fEpLzv40d0",
-  "name": "Number"
-  },
-  {
-  "type": "richText",
-  "id": "fldX1kR7lienmcdEj",
-  "name": "String"
-  }
-  ],
-  "views": [
-  {
-  "id": "viwbKE3PS9jl6bqJl",
-  "name": "Grid view",
-  "type": "grid"
-  }
-  ]
-  }
-  ]
-  }
+
 ```

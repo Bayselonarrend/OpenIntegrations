@@ -22,11 +22,7 @@ sidebar_position: 7
 
 
 ```bsl title="Пример кода"
-  
-  Наименование = "Дата";
-  
-  Ответ = OPI_Airtable.ПолучитьПолеДаты(Наименование); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);          //JSON строка
+    Результат = OPI_Airtable.ПолучитьПолеДаты("Дата");
 ```
 
 
@@ -38,14 +34,5 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-{
-  "name": "Дата",
-  "type": "date",
-  "options": {
-  "dateFormat": {
-  "format": "YYYY-MM-DD",
-  "name": "iso"
-  }
-  }
-  }
+
 ```

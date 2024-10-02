@@ -26,13 +26,12 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  Запись  = "recV6DxeLQMBNJrUk";
-  
-  Ответ = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, Запись); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                             //JSON строка
+    Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База        = "app9bSgL4YtTVGTlE";
+    Таблица     = "tblDUGAZFZaeOwE6x";
+    Запись      = "recydoiybO8id17n5";
+
+    Результат = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, Запись);
 ```
 
 
@@ -44,20 +43,5 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
-  "comments": [
-  {
-  "id": "comL1oGEDJvIQlMs1",
-  "author": {
-  "id": "usrFlaAHlTfYWAbVW",
-  "email": "bayselonarrend@gmail.com",
-  "name": "Антон Титовец"
-  },
-  "text": "Тестовый комментарий (изм.)",
-  "createdTime": "2024-05-10T19:39:52Z",
-  "lastUpdatedTime": "2024-05-10T19:39:52Z"
-  }
-  ],
-  "offset": null
-  }
+
 ```
