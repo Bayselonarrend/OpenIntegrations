@@ -1,8 +1,0 @@
-﻿  {
-  "name": "Checkbox",
-  "type": "checkbox",
-  "options": {
-  "icon": "check",
-  "color": "yellowBright"
-  }
-  }
