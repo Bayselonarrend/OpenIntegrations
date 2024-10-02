@@ -41,52 +41,53 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
-  "request_id": "f145f634-ea3a-4f74-b079-f365ecbcf583",
-  "public_url": null,
-  "url": "https://www.notion.so/1-4392f919813c4c8d84017d973bddaabf",
-  "properties": {
+ "object": "page",
+ "id": "11282aa7-fc4e-8130-aeea-ff3703303064",
+ "created_time": "2024-10-01T18:37:00Z",
+ "last_edited_time": "2024-10-01T18:37:00Z",
+ "created_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "last_edited_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "cover": null,
+ "icon": null,
+ "parent": {
+  "type": "page_id",
+  "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
+ },
+ "archived": false,
+ "in_trash": false,
+ "properties": {
   "title": {
-  "title": [
-  {
-  "plain_text": "Создано из 1С",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
-  },
-  "text": {
-  "link": null,
-  "content": "Создано из 1С"
-  },
-  "href": null,
-  "type": "text"
+   "id": "title",
+   "type": "title",
+   "title": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Тестовый заголовок",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Тестовый заголовок",
+     "href": null
+    }
+   ]
   }
-  ],
-  "type": "title",
-  "id": "title"
-  }
-  },
-  "parent": {
-  "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77",
-  "type": "page_id"
-  },
-  "cover": null,
-  "archived": false,
-  "created_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "last_edited_time": "2024-01-26T17:20:00.000Z",
-  "icon": null,
-  "created_time": "2024-01-26T17:20:00.000Z",
-  "last_edited_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "id": "4392f919-813c-4c8d-8401-7d973bddaabf",
-  "object": "page"
-  }
+ },
+ "url": "https://www.notion.so/11282aa7fc4e8130aeeaff3703303064",
+ "public_url": null,
+ "request_id": "1f348c02-5a3d-4bb5-8b62-81c4a909bf4b"
+}
 ```

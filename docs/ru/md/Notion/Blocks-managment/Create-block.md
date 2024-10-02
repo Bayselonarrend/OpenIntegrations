@@ -43,56 +43,58 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
-  "request_id": "4de46f5b-d38b-4df5-b26e-32127db1096b",
-  "block": {},
-  "type": "block",
-  "has_more": false,
-  "next_cursor": null,
-  "results": [
+ "object": "list",
+ "results": [
   {
-  "type": "numbered_list_item",
-  "archived": false,
-  "created_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "last_edited_time": "2024-01-26T17:11:00.000Z",
-  "created_time": "2024-01-26T17:11:00.000Z",
-  "has_children": false,
-  "parent": {
-  "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77",
-  "type": "page_id"
-  },
-  "last_edited_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "id": "b147fabd-53ea-42d5-bd23-85968f627f88",
-  "numbered_list_item": {
-  "color": "default",
-  "rich_text": [
-  {
-  "plain_text": "Во-вторых, стильно",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
-  },
-  "text": {
-  "link": null,
-  "content": "Во-вторых, стильно"
-  },
-  "href": null,
-  "type": "text"
+   "object": "block",
+   "id": "11282aa7-fc4e-8131-a317-cc9db5aab1bc",
+   "parent": {
+    "type": "page_id",
+    "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
+   },
+   "created_time": "2024-10-01T18:37:00Z",
+   "last_edited_time": "2024-10-01T18:37:00Z",
+   "created_by": {
+    "object": "user",
+    "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+   },
+   "last_edited_by": {
+    "object": "user",
+    "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+   },
+   "has_children": false,
+   "archived": false,
+   "in_trash": false,
+   "type": "to_do",
+   "to_do": {
+    "rich_text": [
+     {
+      "type": "text",
+      "text": {
+       "content": "YoYO",
+       "link": null
+      },
+      "annotations": {
+       "bold": false,
+       "italic": false,
+       "strikethrough": false,
+       "underline": false,
+       "code": false,
+       "color": "default"
+      },
+      "plain_text": "YoYO",
+      "href": null
+     }
+    ],
+    "checked": false,
+    "color": "default"
+   }
   }
-  ]
-  },
-  "object": "block"
-  }
-  ],
-  "object": "list"
-  }
+ ],
+ "next_cursor": null,
+ "has_more": false,
+ "type": "block",
+ "block": {},
+ "request_id": "16a87ca4-a701-4475-88ae-42b8bedb01aa"
+}
 ```

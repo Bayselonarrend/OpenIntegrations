@@ -39,154 +39,53 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
-  "request_id": "61eaaa91-41fc-4523-a445-602805afb281",
-  "public_url": null,
-  "url": "https://www.notion.so/a574281614174169bf55dbae44f46d9c",
-  "properties": {
-  "Картинка": {
-  "files": [
-  {
-  "external": {
-  "url": "https://pricep-farkop.ru/wp-content/uploads/2017/02/17.jpg"
-  },
-  "type": "external",
-  "name": "Лого"
+ "object": "page",
+ "id": "11282aa7-fc4e-8130-aeea-ff3703303064",
+ "created_time": "2024-10-01T18:37:00Z",
+ "last_edited_time": "2024-10-01T18:37:00Z",
+ "created_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "last_edited_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "cover": null,
+ "icon": null,
+ "parent": {
+  "type": "page_id",
+  "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
+ },
+ "archived": false,
+ "in_trash": false,
+ "properties": {
+  "title": {
+   "id": "title",
+   "type": "title",
+   "title": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Тестовый заголовок",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Тестовый заголовок",
+     "href": null
+    }
+   ]
   }
-  ],
-  "type": "files",
-  "id": "r%3Dfa"
-  },
-  "Активен": {
-  "checkbox": false,
-  "type": "checkbox",
-  "id": "q%3FQF"
-  },
-  "Телефон": {
-  "phone_number": "88005553535",
-  "type": "phone_number",
-  "id": "hDII"
-  },
-  "Пользователь": {
-  "people": [],
-  "type": "people",
-  "id": "%5D%40Md"
-  },
-  "Описание": {
-  "rich_text": [
-  {
-  "plain_text": "Наш первый клиент",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
-  },
-  "text": {
-  "link": null,
-  "content": "Наш первый клиент"
-  },
-  "href": null,
-  "type": "text"
-  }
-  ],
-  "type": "rich_text",
-  "id": "KnG%3F"
-  },
-  "Статус": {
-  "select": {
-  "color": "green",
-  "name": "Новый",
-  "id": "202b1d30-2095-40f1-8b91-f627d475d560"
-  },
-  "type": "select",
-  "id": "IDW%3C"
-  },
-  "Номер": {
-  "type": "number",
-  "number": 1,
-  "id": "CH__"
-  },
-  "Дата создания": {
-  "date": {
-  "time_zone": null,
-  "end": null,
-  "start": "2024-01-26T09:45:00.000+00:00"
-  },
-  "type": "date",
-  "id": "BQN%5B"
-  },
-  "Имя": {
-  "title": [
-  {
-  "plain_text": "ООО Вектор",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
-  },
-  "text": {
-  "link": null,
-  "content": "ООО Вектор"
-  },
-  "href": null,
-  "type": "text"
-  }
-  ],
-  "type": "title",
-  "id": "title"
-  },
-  "Почта": {
-  "rich_text": [
-  {
-  "plain_text": "vector@mail.ru",
-  "annotations": {
-  "color": "default",
-  "code": false,
-  "underline": false,
-  "strikethrough": false,
-  "italic": false,
-  "bold": false
-  },
-  "text": {
-  "link": null,
-  "content": "vector@mail.ru"
-  },
-  "href": null,
-  "type": "text"
-  }
-  ],
-  "type": "rich_text",
-  "id": "%3CO%3AD"
-  }
-  },
-  "parent": {
-  "database_id": "048ba0ce-4f47-4e33-9005-40d249b01949",
-  "type": "database_id"
-  },
-  "cover": {
-  "external": {
-  "url": "https://opi.neocities.org/assets/images/logo_long-e69f28017feff1759ffcfe3f4e7bbf2a.png"
-  },
-  "type": "external"
-  },
-  "archived": false,
-  "created_by": {
-  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
-  "object": "user"
-  },
-  "last_edited_time": "2024-01-26T19:30:00.000Z",
-  "icon": {
-  "external": {
-  "url": "https://opi.neocities.org/img/logo.png"
-  },
-  "type": "external"
-  },
-  "created_time": "2024-01-26T18:45:00.000Z",
-  "last_edited_by": {
-...
+ },
+ "url": "https://www.notion.so/11282aa7fc4e8130aeeaff3703303064",
+ "public_url": null,
+ "request_id": "b987130a-9889-4d28-8f72-226cb0eda1e6"
+}
 ```
