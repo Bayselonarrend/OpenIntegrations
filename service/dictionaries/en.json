@@ -3475,7 +3475,7 @@
 "ИмяМедиа, ТекущиеДанные": "MediaName, CurrentData",
 "ID файла для скачивания": "File ID for downloading",
 "Новое имя стадии стадии": "New stage name",
-"ДФ=yyyy-MM-ddThh:mm:ssZ": "ISO8601Datetime",
+"ДФ=yyyy-MM-ddThh:mm:ssZ": "DF=yyyy-MM-ddThh:mm:ssZ",
 "МассивURLФайловВложений": "ArrayOfAttachmentURLs",
 "СоздатьКомментарий (хук": "CreateComment (wh",
 "СоздатьЗаголовкиЗапроса": "CreateRequestHeaders",
