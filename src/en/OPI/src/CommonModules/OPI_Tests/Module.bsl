@@ -1002,7 +1002,7 @@ EndProcedure
 
 #Region Notion
 
-Procedure Notion_CreatePage() Export
+Procedure NotionAPI_CreatePage() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
@@ -1016,7 +1016,7 @@ Procedure Notion_CreatePage() Export
 
 EndProcedure
 
-Procedure Notion_CreateEditDatabase() Export
+Procedure NotionAPI_CreateUpdateBase() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
@@ -1030,7 +1030,7 @@ Procedure Notion_CreateEditDatabase() Export
 
 EndProcedure
 
-Procedure Notion_CreateDeleteBlock() Export
+Procedure NotionAPI_CreateDeleteBlock() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
@@ -1044,7 +1044,7 @@ Procedure Notion_CreateDeleteBlock() Export
 
 EndProcedure
 
-Procedure Notion_GetUsers() Export
+Procedure NotionAPI_GetUsers() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Notion_Token", TestParameters);
