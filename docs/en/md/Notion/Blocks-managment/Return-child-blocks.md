@@ -38,5 +38,13 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-
+{
+ "object": "list",
+ "results": [],
+ "next_cursor": null,
+ "has_more": false,
+ "type": "block",
+ "block": {},
+ "request_id": "d3927120-dc77-4fd3-927c-78506d70d9ba"
+}
 ```

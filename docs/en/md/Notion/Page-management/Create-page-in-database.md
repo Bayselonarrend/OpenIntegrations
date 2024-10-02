@@ -56,5 +56,11 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-
+{
+ "object": "error",
+ "status": 400,
+ "code": "validation_error",
+ "message": "body failed validation: body.properties.=Zo`.date.start should be a valid ISO 8601 date string, instead was `\"02.10.2024 9:40:23\"`.",
+ "request_id": "d9192efe-3b81-427d-99d6-007cb13762e4"
+}
 ```
