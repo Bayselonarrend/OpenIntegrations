@@ -25,21 +25,21 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  Table = "tbl9G4jVoTJpxYwSY";
-  Numeric = 10;
-  StringType = "Hello";
-  
-  RowDescription1 = New Structure("Number,String", Numeric, StringType);
-  RowDescription2 = New Structure("Number,String", Numeric, StringType);
-  
-  Data = New Array;
-  Data.Add(RowDescription1);
-  Data.Add(RowDescription2);
-  
-  Response = OPI_Airtable.CreatePosts(Token, Base, Table, Data); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base  = "app9bSgL4YtTVGTlE";
+    Table = "tblDUGAZFZaeOwE6x";
+
+    Number = 10;
+    String = "Hello";
+
+    RowDescription1 = New Structure("Number,String", Number, String);
+    RowDescription2 = New Structure("Number,String", Number, String);
+
+    ArrayOfDescriptions = New Array;
+    ArrayOfDescriptions.Add(RowDescription1);
+    ArrayOfDescriptions.Add(RowDescription2);
+
+    Result = OPI_Airtable.CreatePosts(Token, Base, Table, ArrayOfDescriptions);
 ```
 
 
@@ -51,24 +51,5 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-{
-  "records": [
-  {
-  "id": "recjHNKNZBWLZkZ7A",
-  "createdTime": "2024-05-10T19:39:51Z",
-  "fields": {
-  "Number": 10,
-  "String": "Hello\n"
-  }
-  },
-  {
-  "id": "recGyJ0MlN1H3GMuN",
-  "createdTime": "2024-05-10T19:39:51Z",
-  "fields": {
-  "Number": 10,
-  "String": "Hello\n"
-  }
-  }
-  ]
-  }
+
 ```

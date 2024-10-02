@@ -27,15 +27,15 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  Table = "tbl9G4jVoTJpxYwSY";
-  Field = "fld3IbFtHZtBHQwsk";
-  Name = String(New UUID) + "(change.)";
-  Description = "New description";
-  
-  Response = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base  = "app9bSgL4YtTVGTlE";
+    Table = "tblDUGAZFZaeOwE6x";
+    Field = "fldqjgkFjERWf5svH";
+
+    Name        = String(New UUID) + "(change.)";
+    Description = "New description";
+
+    Result = OPI_Airtable.ModifyField(Token, Base, Table, Field, Name, Description);
 ```
 
 
@@ -47,13 +47,5 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
-  "type": "number",
-  "options": {
-  "precision": 0
-  },
-  "id": "fld3IbFtHZtBHQwsk",
-  "name": "9c0d2a82-7bf9-40b7-8052-ae3ebadc72d5(change.)",
-  "description": "New description"
-  }
+
 ```

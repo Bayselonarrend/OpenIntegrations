@@ -26,14 +26,13 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  База         = "apptm8Xqo7TwMaipQ";
-  Таблица      = "tbl9G4jVoTJpxYwSY";
-  Наименование = "Тестовая таблица 2 (изм.)";
-  Описание     = "Новая таблица (изм.)";
-  
-  Ответ = OPI_Airtable.ИзменитьТаблицу(Токен, База, Таблица, Наименование, Описание); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                                         //JSON строка
+    Токен        = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База         = "app9bSgL4YtTVGTlE";
+    Таблица      = "tblDUGAZFZaeOwE6x";
+    Наименование = "Тестовая таблица 2 (изм.)";
+    Описание     = "Новая таблица (изм.)";
+
+    Результат = OPI_Airtable.ИзменитьТаблицу(Токен, База, Таблица, Наименование, Описание);
 ```
 
 
@@ -45,75 +44,5 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
-  "id": "tblT64aWyrMUAbUmF",
-  "name": "Тестовая таблица 2 (изм.)",
-  "description": "Новая таблица (изм.)",
-  "primaryFieldId": "fldoHs3kv6RLc8pjo",
-  "fields": [
-  {
-  "id": "fldoHs3kv6RLc8pjo",
-  "name": "Номер",
-  "type": "number",
-  "options": {
-  "precision": 0
-  }
-  },
-  {
-  "id": "fldzY5xRHDY7ClKxa",
-  "name": "Строковое",
-  "type": "richText"
-  },
-  {
-  "id": "fldYHxxXPALKl3yHp",
-  "name": "Вложение",
-  "type": "multipleAttachments",
-  "options": {
-  "isReversed": false
-  }
-  },
-  {
-  "id": "fldRUoggUObfqckXh",
-  "name": "Флажок",
-  "type": "checkbox",
-  "options": {
-  "icon": "check",
-  "color": "yellowBright"
-  }
-  },
-  {
-  "id": "fldvtwjapJM7s99nN",
-  "name": "Дата",
-  "type": "date",
-  "options": {
-  "dateFormat": {
-  "name": "iso",
-  "format": "YYYY-MM-DD"
-  }
-  }
-  },
-  {
-  "id": "flda4VY8dVd2mbqz9",
-  "name": "Телефон",
-  "type": "phoneNumber"
-  },
-  {
-  "id": "fld8ZLKndqBIkT72s",
-  "name": "Почта",
-  "type": "email"
-  },
-  {
-  "id": "fldqjsCp1c2KaAS53",
-  "name": "Ссылка",
-  "type": "url"
-  }
-  ],
-  "views": [
-  {
-  "id": "viwX3vEGO5vB2Km4k",
-  "name": "Grid view",
-  "type": "grid"
-  }
-  ]
-  }
+
 ```

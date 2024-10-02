@@ -26,14 +26,13 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  Table = "tbl9G4jVoTJpxYwSY";
-  Record = "recV6DxeLQMBNJrUk";
-  Text = "TestComment";
-  
-  Response = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base   = "app9bSgL4YtTVGTlE";
+    Table  = "tblDUGAZFZaeOwE6x";
+    Record = "recydoiybO8id17n5";
+    Text   = "TestComment";
+
+    Result = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text);
 ```
 
 
@@ -45,15 +44,5 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
-  "id": "comL1oGEDJvIQlMs1",
-  "author": {
-  "id": "usrFlaAHlTfYWAbVW",
-  "email": "bayselonarrend@gmail.com",
-  "name": "Anton Titovets"
-  },
-  "text": "TestComment",
-  "createdTime": "2024-05-10T19:39:51.561Z",
-  "lastUpdatedTime": null
-  }
+
 ```

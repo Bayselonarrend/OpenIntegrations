@@ -25,16 +25,12 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-  
-  База    = "apptm8Xqo7TwMaipQ";
-  Таблица = "tbl9G4jVoTJpxYwSY";
-  
-  Записи = Новый Массив;
-  Записи.Добавить("recjHNKNZBWLZkZ7A");
-  Записи.Добавить("recGyJ0MlN1H3GMuN");
-  
-  Ответ = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, Запись); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);                       //JSON строка
+    Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База        = "app9bSgL4YtTVGTlE";
+    Таблица     = "tblDUGAZFZaeOwE6x";
+    Запись      = "recydoiybO8id17n5";
+
+    Результат = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, Запись);
 ```
 
 
@@ -46,16 +42,5 @@ sidebar_position: 4
 ```
 
 ```json title="Результат"
-{
-  "records": [
-  {
-  "deleted": true,
-  "id": "recjHNKNZBWLZkZ7A"
-  },
-  {
-  "deleted": true,
-  "id": "recGyJ0MlN1H3GMuN"
-  }
-  ]
-  }
+
 ```

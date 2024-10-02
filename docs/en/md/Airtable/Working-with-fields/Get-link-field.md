@@ -22,11 +22,7 @@ sidebar_position: 10
 
 
 ```bsl title="Code example"
-  
-  Name = "Link";
-  
-  Response = OPI_Airtable.GetLinkField(Name); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Result = OPI_Airtable.GetLinkField("Link");
 ```
 
 
@@ -38,8 +34,5 @@ sidebar_position: 10
 ```
 
 ```json title="Result"
-{
-  "name": "Link",
-  "type": "url"
-  }
+
 ```

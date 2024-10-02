@@ -23,11 +23,10 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-  
-  База = "apptm8Xqo7TwMaipQ";
-  
-  Ответ = OPI_Airtable.ПолучитьТаблицыБазы(Токен, База); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);            //JSON строка
+    Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База  = "app9bSgL4YtTVGTlE";
+
+    Результат = OPI_Airtable.ПолучитьТаблицыБазы(Токен, База);
 ```
 
 
@@ -39,35 +38,5 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-{
-  "tables": [
-  {
-  "id": "tblqZzW78Rvsdt9gt",
-  "name": "Тестовая таблица",
-  "primaryFieldId": "fldj9Z3fEpLzv40d0",
-  "fields": [
-  {
-  "type": "number",
-  "options": {
-  "precision": 0
-  },
-  "id": "fldj9Z3fEpLzv40d0",
-  "name": "Номер"
-  },
-  {
-  "type": "richText",
-  "id": "fldX1kR7lienmcdEj",
-  "name": "Строковое"
-  }
-  ],
-  "views": [
-  {
-  "id": "viwbKE3PS9jl6bqJl",
-  "name": "Grid view",
-  "type": "grid"
-  }
-  ]
-  }
-  ]
-  }
+
 ```

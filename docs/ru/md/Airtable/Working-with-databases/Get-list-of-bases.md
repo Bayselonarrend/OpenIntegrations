@@ -23,10 +23,9 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  
-  Ответ = OPI_Airtable.ПолучитьСписокБаз(Токен); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);    //JSON строка
+    Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+
+    Результат = OPI_Airtable.ПолучитьСписокБаз(Токен);
 ```
 
 
@@ -38,53 +37,5 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-{
-  "bases": [
-  {
-  "id": "appGarzKZ0lu3gzoa",
-  "name": "Test",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "app9WRfJirwn3yXuG",
-  "name": "Product catalog",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "app6gigUYTzlDEq4X",
-  "name": "Тестовая база",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "app5hJGyK8asYYe1Q",
-  "name": "Тестовая база",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "appRQ6VxxOZb40Uwi",
-  "name": "Тестовая база",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "appM6FaGofV2XSfFA",
-  "name": "Тестовая база",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "apptm8Xqo7TwMaipQ",
-  "name": "Тестовая база",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "appsyQyGrF8aVN2Wm",
-  "name": "Тестовая база",
-  "permissionLevel": "create"
-  },
-  {
-  "id": "applEsyJmBRm12AuN",
-  "name": "Тестовая база",
-  "permissionLevel": "create"
-  }
-  ]
-  }
+
 ```

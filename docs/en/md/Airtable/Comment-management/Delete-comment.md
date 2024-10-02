@@ -26,14 +26,13 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  Table = "tbl9G4jVoTJpxYwSY";
-  Record = "recV6DxeLQMBNJrUk";
-  Comment = "comL1oGEDJvIQlMs1";
-  
-  Response = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base    = "app9bSgL4YtTVGTlE";
+    Table   = "tblDUGAZFZaeOwE6x";
+    Record  = "recydoiybO8id17n5";
+    Comment = "com8s9ZPVoWQ9JN9o";
+
+    Result = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment);
 ```
 
 
@@ -45,8 +44,5 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-{
-  "id": "comL1oGEDJvIQlMs1",
-  "deleted": true
-  }
+
 ```

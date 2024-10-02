@@ -1208,6 +1208,82 @@ Procedure Check_SlackExternalFile(Val Result, Val Title) Export
 
 EndProcedure
 
+Procedure Check_ATBaseWithTable(Val Result, Val TableName) Export
+
+    ExpectsThat(Result["id"]).Заполнено();
+    ExpectsThat(Result["tables"][0]["name"]).Равно(TableName);
+
+EndProcedure
+
+Procedure Check_ATTablesList(Val Result) Export
+
+    ExpectsThat(Result["tables"]).Заполнено();
+    ExpectsThat(Result["tables"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_ATBasesList(Val Result) Export
+
+    ExpectsThat(Result["bases"]).Заполнено();
+    ExpectsThat(Result["bases"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_ATTable(Val Result, Val Name, Val Description) Export
+
+    ExpectsThat(Result["name"]).Равно(Name);
+    ExpectsThat(Result["description"]).Равно(Description);
+
+EndProcedure
+
+Procedure Check_ATField(Val Result, Val Name) Export
+
+    ExpectsThat(Result["name"]).Равно(Name);
+
+EndProcedure
+
+Procedure Check_ATRecords(Val Result) Export
+
+    ExpectsThat(Result["records"]).ИмеетТип("Array");
+    ExpectsThat(Result["records"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_ATRecordNumberAndString(Val Result, Val Numeric, Val StringType) Export
+
+    SingleRecord = Result["id"];
+    ExpectsThat(SingleRecord).Заполнено();
+    ExpectsThat(Result["createdTime"]).Заполнено();
+    ExpectsThat(Result["fields"]["Number"]).Равно(Numeric);
+    ExpectsThat(TrimAll(Result["fields"]["String"])).Равно(StringType);
+
+EndProcedure
+
+Procedure Check_ATRecord(Val Result, Val Record) Export
+
+    ExpectsThat(Result["id"]).Равно(Record);
+
+EndProcedure
+
+Procedure Check_ATText(Val Result, Val Text) Export
+
+    ExpectsThat(Result["text"]).Равно(Text);
+
+EndProcedure
+
+Procedure Check_ATComments(Val Result) Export
+
+    ExpectsThat(Result["comments"]).ИмеетТип("Array");
+
+EndProcedure
+
+Procedure Check_ATCommentDeleting(Val Result, Val Comment) Export
+
+    ExpectsThat(Result["deleted"]).Равно(True);
+    ExpectsThat(Result["id"]).Равно(Comment);
+
+EndProcedure
+
 Procedure Check_DropboxFile(Val Result, Val Path) Export
 
     ExpectsThat(Result["path_display"]).Равно(Path);

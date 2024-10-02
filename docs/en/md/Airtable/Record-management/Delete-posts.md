@@ -25,16 +25,12 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  Table = "tbl9G4jVoTJpxYwSY";
-  
-  Records = New Array;
-  Records.Add("recjHNKNZBWLZkZ7A");
-  Records.Add("recGyJ0MlN1H3GMuN");
-  
-  Response = OPI_Airtable.DeletePosts(Token, Base, Table, Record); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base   = "app9bSgL4YtTVGTlE";
+    Table  = "tblDUGAZFZaeOwE6x";
+    Record = "recydoiybO8id17n5";
+
+    Result = OPI_Airtable.DeletePosts(Token, Base, Table, Record);
 ```
 
 
@@ -46,16 +42,5 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-{
-  "records": [
-  {
-  "deleted": true,
-  "id": "recjHNKNZBWLZkZ7A"
-  },
-  {
-  "deleted": true,
-  "id": "recGyJ0MlN1H3GMuN"
-  }
-  ]
-  }
+
 ```

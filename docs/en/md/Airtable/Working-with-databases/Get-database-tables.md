@@ -23,11 +23,10 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-  
-  Base = "apptm8Xqo7TwMaipQ";
-  
-  Response = OPI_Airtable.GetDatabaseTables(Token, Base); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base  = "app9bSgL4YtTVGTlE";
+
+    Result = OPI_Airtable.GetDatabaseTables(Token, Base);
 ```
 
 
@@ -39,35 +38,5 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-{
-  "tables": [
-  {
-  "id": "tblqZzW78Rvsdt9gt",
-  "name": "TestTable",
-  "primaryFieldId": "fldj9Z3fEpLzv40d0",
-  "fields": [
-  {
-  "type": "number",
-  "options": {
-  "precision": 0
-  },
-  "id": "fldj9Z3fEpLzv40d0",
-  "name": "Number"
-  },
-  {
-  "type": "richText",
-  "id": "fldX1kR7lienmcdEj",
-  "name": "String"
-  }
-  ],
-  "views": [
-  {
-  "id": "viwbKE3PS9jl6bqJl",
-  "name": "Grid view",
-  "type": "grid"
-  }
-  ]
-  }
-  ]
-  }
+
 ```

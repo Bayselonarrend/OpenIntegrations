@@ -22,11 +22,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-  
-  Наименование = "Флажок";
-  
-  Ответ = OPI_Airtable.ПолучитьПолеФлажка(Наименование); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);            //JSON строка
+    Результат = OPI_Airtable.ПолучитьПолеФлажка("Флажок");
 ```
 
 
@@ -38,12 +34,5 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-{
-  "name": "Флажок",
-  "type": "checkbox",
-  "options": {
-  "icon": "check",
-  "color": "yellowBright"
-  }
-  }
+
 ```
