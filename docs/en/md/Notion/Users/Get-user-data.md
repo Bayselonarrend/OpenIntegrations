@@ -38,5 +38,15 @@ sidebar_position: 2
 ```
 
 ```json title="Result"
-
+{
+ "object": "user",
+ "id": "ed71865a-9891-46bc-86cd-a92aa499cfdb",
+ "name": "Techno Pizza",
+ "avatar_url": null,
+ "type": "person",
+ "person": {
+  "email": "iscript13@gmail.com"
+ },
+ "request_id": "ca383839-acc0-4ef3-97a7-e51c763fce85"
+}
 ```
