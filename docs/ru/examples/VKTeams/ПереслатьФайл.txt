@@ -1,6 +1,6 @@
 ﻿    Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла  = "Z7w4zb94bLtkJDICBfzVuG66f69e921bd";
+    IDФайла  = "ovw6q8D4JnGuOjFf5FgtGC66ef260f1bd";
     Текст    = "Подпись к файлу";
 
     Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст, "ТотЖеДокумент.docx");
