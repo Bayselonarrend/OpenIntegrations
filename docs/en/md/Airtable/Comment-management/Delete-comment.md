@@ -44,5 +44,8 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-
+{
+ "id": "compy8BPTJpSm9smO",
+ "deleted": true
+}
 ```

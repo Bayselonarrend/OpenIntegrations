@@ -41,5 +41,16 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-
+{
+ "records": [
+  {
+   "id": "recV9gaqz5aNtAP0n",
+   "createdTime": "2024-10-03T06:12:45Z",
+   "fields": {
+    "Number": 10,
+    "String": "Hello\n"
+   }
+  }
+ ]
+}
 ```

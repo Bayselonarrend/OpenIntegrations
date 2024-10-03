@@ -38,5 +38,35 @@ sidebar_position: 2
 ```
 
 ```json title="Результат"
-
+{
+ "tables": [
+  {
+   "id": "tbl2fNf2ozKTXV3r3",
+   "name": "Тестовая таблица",
+   "primaryFieldId": "fldQSx6MzlpLHsxfj",
+   "fields": [
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fldQSx6MzlpLHsxfj",
+     "name": "Номер"
+    },
+    {
+     "type": "richText",
+     "id": "fldE9RFvs5tYrWJaQ",
+     "name": "Строковое"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwo7fEgQeu9OM6PY",
+     "name": "Grid view",
+     "type": "grid"
+    }
+   ]
+  }
+ ]
+}
 ```

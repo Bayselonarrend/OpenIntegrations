@@ -34,5 +34,8 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-
+{
+ "name": "Строковое",
+ "type": "richText"
+}
 ```
