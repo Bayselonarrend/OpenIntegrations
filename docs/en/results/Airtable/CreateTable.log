@@ -1,0 +1,71 @@
+﻿ {
+ "id": "tbl2VK5JpkSUgt4Cr",
+ "name": "TestTable2",
+ "description": "NewTable",
+ "primaryFieldId": "fldXLq2zGWTt09WWE",
+ "fields": [
+  {
+   "type": "number",
+   "options": {
+    "precision": 0
+   },
+   "id": "fldXLq2zGWTt09WWE",
+   "name": "Number"
+  },
+  {
+   "type": "richText",
+   "id": "flds8fbZCLxPooV4h",
+   "name": "String"
+  },
+  {
+   "type": "multipleAttachments",
+   "options": {
+    "isReversed": false
+   },
+   "id": "fldwRFMCnstW7m8Xl",
+   "name": "Attachment"
+  },
+  {
+   "type": "checkbox",
+   "options": {
+    "icon": "check",
+    "color": "yellowBright"
+   },
+   "id": "fldTHuJG0Hrb34iwd",
+   "name": "Checkbox"
+  },
+  {
+   "type": "date",
+   "options": {
+    "dateFormat": {
+     "name": "iso",
+     "format": "YYYY-MM-DD"
+    }
+   },
+   "id": "fldNnvpZZTgQ36pY6",
+   "name": "Date"
+  },
+  {
+   "type": "phoneNumber",
+   "id": "fldpG1Ehybh86uEeb",
+   "name": "Phone"
+  },
+  {
+   "type": "email",
+   "id": "fldGs9mDyK08mCboW",
+   "name": "Email"
+  },
+  {
+   "type": "url",
+   "id": "fldFVcpDfju1hIdfi",
+   "name": "Link"
+  }
+ ],
+ "views": [
+  {
+   "id": "viwX4F7XsbCma7EBh",
+   "name": "Grid view",
+   "type": "grid"
+  }
+ ]
+}
