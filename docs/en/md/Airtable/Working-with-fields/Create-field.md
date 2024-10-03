@@ -43,5 +43,12 @@ sidebar_position: 1
 ```
 
 ```json title="Result"
-
+{
+ "type": "number",
+ "options": {
+  "precision": 0
+ },
+ "id": "fldaTG2LVgCKFI9rl",
+ "name": "71dad4ae-4aee-40f7-871c-5701f5aa5fee"
+}
 ```

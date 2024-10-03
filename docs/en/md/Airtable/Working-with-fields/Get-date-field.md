@@ -34,5 +34,14 @@ sidebar_position: 7
 ```
 
 ```json title="Result"
-
+{
+ "name": "Date",
+ "type": "date",
+ "options": {
+  "dateFormat": {
+   "format": "YYYY-MM-DD",
+   "name": "iso"
+  }
+ }
+}
 ```

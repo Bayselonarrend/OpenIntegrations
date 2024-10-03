@@ -34,5 +34,14 @@ sidebar_position: 7
 ```
 
 ```json title="Результат"
-
+{
+ "name": "Дата",
+ "type": "date",
+ "options": {
+  "dateFormat": {
+   "format": "YYYY-MM-DD",
+   "name": "iso"
+  }
+ }
+}
 ```

@@ -37,5 +37,155 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-
+{
+ "bases": [
+  {
+   "id": "appGarzKZ0lu3gzoa",
+   "name": "Test",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "app9WRfJirwn3yXuG",
+   "name": "Product catalog",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "app6gigUYTzlDEq4X",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "app5hJGyK8asYYe1Q",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appRQ6VxxOZb40Uwi",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appM6FaGofV2XSfFA",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "apptm8Xqo7TwMaipQ",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appsyQyGrF8aVN2Wm",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "applEsyJmBRm12AuN",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appbh1wYGbZlmn3pN",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "apppkKYsw7O1Gqhxl",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appIHzEhKAimg9S2p",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "app5Zyj15QZisbqvA",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "app05ybJZ2aiF7jiV",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appKbK1rnu08kOueO",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appBTTgSQtzCkrp4V",
+   "name": "База из Оинт",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appDtM9dK5yzXduUB",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appqyGu9Cdx9xWvEs",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appczCGkB55A13rQ2",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appxClK6G6i2DREOB",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appsYySkvo8kafUdd",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appw2EFeyyNgwmhP6",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appqEloLDyI7p6uzS",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appdTFa0GMiOdaxVp",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appuREJLUMSxU9Tww",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appQwerTglYZLYkLl",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "apptPCnUGDn0M76to",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appgg50vNZwX1aZmu",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appHB3hm34ZkAjflT",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appuHDfwXADAD5QDj",
+   "name": "TestDatabase",
+...
 ```
