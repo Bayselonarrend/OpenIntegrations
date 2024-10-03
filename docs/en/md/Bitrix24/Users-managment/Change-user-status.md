@@ -31,7 +31,7 @@ sidebar_position: 5
     Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c3abf666006e9f06006b12e400000001000...";
+    Token  = "37d1fe66006e9f06006b12e400000001000...";
     UserID = "492";
 
     Result = OPI_Bitrix24.ChangeUserStatus(URL, UserID, True, Token);

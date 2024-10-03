@@ -24,13 +24,12 @@ sidebar_position: 12
 
 
 ```bsl title="Code example"
-  
-  ButtonArray = New Array;
-  ButtonArray.Add("Great");
-  ButtonArray.Add("Ok");
-  ButtonArray.Add("Bad");
-  
-  Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray, True, True);
+    ButtonArray = New Array;
+    ButtonArray.Add("Button1");
+    ButtonArray.Add("Button2");
+    ButtonArray.Add("Button3");
+
+    Result = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray);
 ```
 
 

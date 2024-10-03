@@ -33,7 +33,7 @@ Method at API documentation: [im.message.delete](https://dev.1c-bitrix.ru/learni
     Result = OPI_Bitrix24.DeleteMessage(URL, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "c3abf666006e9f06006b12e400000001000...";
+    Token     = "37d1fe66006e9f06006b12e400000001000...";
     MessageID = "15662";
 
     Result = OPI_Bitrix24.DeleteMessage(URL, MessageID, Token);
