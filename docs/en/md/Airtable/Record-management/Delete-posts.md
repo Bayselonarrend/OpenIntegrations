@@ -42,5 +42,12 @@ sidebar_position: 4
 ```
 
 ```json title="Result"
-
+{
+ "records": [
+  {
+   "deleted": true,
+   "id": "recV9gaqz5aNtAP0n"
+  }
+ ]
+}
 ```

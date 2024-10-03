@@ -50,5 +50,36 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-
+{
+ "id": "appxctJAkFSguVWtz",
+ "tables": [
+  {
+   "id": "tblFtDKkWKGvZ1F9f",
+   "name": "TestTable",
+   "primaryFieldId": "fld21wus8WHDucWpy",
+   "fields": [
+    {
+     "type": "number",
+     "options": {
+      "precision": 0
+     },
+     "id": "fld21wus8WHDucWpy",
+     "name": "Number"
+    },
+    {
+     "type": "richText",
+     "id": "fldrD3Ibd3tNZCDpY",
+     "name": "String"
+    }
+   ],
+   "views": [
+    {
+     "id": "viwPqKaOywFzczxw8",
+     "name": "Grid view",
+     "type": "grid"
+    }
+   ]
+  }
+ ]
+}
 ```

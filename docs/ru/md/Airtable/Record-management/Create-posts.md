@@ -51,5 +51,24 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-
+{
+ "records": [
+  {
+   "id": "recRbgRhwxJlNxSvX",
+   "createdTime": "2024-10-02T18:15:40Z",
+   "fields": {
+    "Номер": 10,
+    "Строковое": "Привет\n"
+   }
+  },
+  {
+   "id": "recxTWukwdzb8Zi9S",
+   "createdTime": "2024-10-02T18:15:40Z",
+   "fields": {
+    "Номер": 10,
+    "Строковое": "Привет\n"
+   }
+  }
+ ]
+}
 ```
