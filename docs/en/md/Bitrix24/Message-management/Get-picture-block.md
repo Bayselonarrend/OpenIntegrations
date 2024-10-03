@@ -26,7 +26,10 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 
 
 ```bsl title="Code example"
+    Name = "Image";
+    URL  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
+    Result = OPI_Bitrix24.GetPictureBlock(Name, URL);
 ```
 
 
