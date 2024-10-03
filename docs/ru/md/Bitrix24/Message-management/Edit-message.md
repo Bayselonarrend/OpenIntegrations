@@ -37,7 +37,7 @@ sidebar_position: 2
     Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "c3abf666006e9f06006b12e400000001000...";
+    Токен          = "37d1fe66006e9f06006b12e400000001000...";
     IDСообщения    = "15662";
 
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";

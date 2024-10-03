@@ -106,6 +106,7 @@ Procedure TelegramAPI_SendTextMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
 
     Telegram_SendTextMessage(TestParameters);
+    Telegram_FormKeyboardFromButtonArray(TestParameters);
 
 EndProcedure
 
@@ -292,7 +293,7 @@ Procedure TelegramAPI_GetForumAvatarsList() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("Telegram_Token", TestParameters);
 
-    Telegram_GetForumAvatarList(TestParameters);
+    Telegram_GetAvatarIconList(TestParameters);
 
 EndProcedure
 
@@ -1050,7 +1051,7 @@ Procedure NotionAPI_GetUsers() Export
     OPI_TestDataRetrieval.ParameterToCollection("Notion_Token", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Notion_User" , TestParameters);
 
-    Notion_GetUsers(TestParameters);
+    Notion_UserList(TestParameters);
     Notion_GetUserData(TestParameters);
 
 EndProcedure
@@ -1318,6 +1319,7 @@ Procedure DropboxAPI_AccessManagement() Export
     Dropbox_PublishFolder(TestParameters);
     Dropbox_AddUsersToFolder(TestParameters);
     Dropbox_CancelFolderPublication(TestParameters);
+    Dropbox_GetAsynchronousChangeStatus(TestParameters);
     Dropbox_CancelFilePublication(TestParameters);
 
 EndProcedure
@@ -1387,6 +1389,7 @@ Procedure B24_TaskManagment() Export
     Bitrix24_GetTaskFieldsStructure(TestParameters);
     Bitrix24_CreateTask(TestParameters);
     Bitrix24_CreateTasksDependencies(TestParameters);
+    Bitrix24_DeleteTasksDependencies(TestParameters);
     Bitrix24_UpdateTask(TestParameters);
     Bitrix24_GetTask(TestParameters);
     Bitrix24_MuteTask(TestParameters);
@@ -1414,6 +1417,8 @@ Procedure B24_TaskManagment() Export
     Bitrix24_RenewTasksChecklistElement(TestParameters);
     Bitrix24_DeleteTasksChecklistElement(TestParameters);
     Bitrix24_GetDailyPlan(TestParameters);
+    Bitrix24_GetTasksFilterStructure(TestParameters);
+
 
     Name          = "Topic picture.jpg";
     Image         = TestParameters["Picture"];
@@ -1509,6 +1514,7 @@ Procedure B24_CommentsManagment() Export
     Bitrix24_GetTaskCommentsList(TestParameters);
     Bitrix24_GetTaskComment(TestParameters);
     Bitrix24_DeleteTaskComment(TestParameters);
+    Bitrix24_GetCommentStructure(TestParameters);
 
     OPI_Bitrix24.DeleteTask(URL, TaskID);
 
@@ -1636,6 +1642,8 @@ Procedure B24_ChatManagment() Export
     Bitrix24_SendWritingNotification(TestParameters);
     Bitrix24_SendMessage(TestParameters);
     Bitrix24_EditMessage(TestParameters);
+    Bitrix24_GetPictureBlock(TestParameters);
+    Bitrix24_GetFileBlock(TestParameters);
 
     OPI_Tools.Pause(5);
 
@@ -1649,6 +1657,8 @@ Procedure B24_ChatManagment() Export
     Bitrix24_ReadAll(TestParameters);
     Bitrix24_ChangeChatOwner(TestParameters);
     Bitrix24_LeaveChat(TestParameters);
+
+    Bitrix24_GetChatStructure(TestParameters);
 
 EndProcedure
 
@@ -1713,6 +1723,7 @@ Procedure B2_UsersManagment() Export
     Bitrix24_UpdateUser(TestParameters);
     Bitrix24_GetUser(TestParameters);
     Bitrix24_ChangeUserStatus(TestParameters);
+    Bitrix24_GetUserFilterStructure(TestParameters);
 
 EndProcedure
 
@@ -2115,6 +2126,22 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
     OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Telegram_FormKeyboardFromButtonArray(FunctionParameters)
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button1");
+    ButtonArray.Add("Button2");
+    ButtonArray.Add("Button3");
+
+    Result = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "FormKeyboardFromButtonArray", "Telegram");
+    OPI_TestDataRetrieval.Check_String(Result);
 
 EndProcedure
 
@@ -2623,7 +2650,7 @@ Procedure Telegram_GetParticipantCount(FunctionParameters)
 
 EndProcedure
 
-Procedure Telegram_GetForumAvatarList(FunctionParameters)
+Procedure Telegram_GetAvatarIconList(FunctionParameters)
 
     Token  = FunctionParameters["Telegram_Token"];
     Result = OPI_Telegram.GetAvatarIconList(Token);
@@ -6776,7 +6803,7 @@ Procedure Notion_DeleteBlock(FunctionParameters)
 
 EndProcedure
 
-Procedure Notion_GetUsers(FunctionParameters)
+Procedure Notion_UserList(FunctionParameters)
 
     Token = FunctionParameters["Notion_Token"];
 
@@ -7303,7 +7330,12 @@ Procedure Dropbox_CancelFolderPublication(FunctionParameters)
     Token  = FunctionParameters["Dropbox_Token"];
     Folder = FunctionParameters["Dropbox_SharedFolder"];
 
-    Result        = OPI_Dropbox.CancelFolderPublication(Token, Folder);
+    Result = OPI_Dropbox.CancelFolderPublication(Token, Folder);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CancelFolderPublication", "Dropbox");
+
     CurrentStatus = "in_progress";
     JobID         = Result["async_job_id"];
 
@@ -7315,11 +7347,22 @@ Procedure Dropbox_CancelFolderPublication(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CancelFolderPublication", "Dropbox");
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAsynchronousChangeStatus", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxStatus(Result);
 
-   OPI_TestDataRetrieval.Check_DropboxStatus(Result);
+    FunctionParameters.Insert("Dropbox_NewJobID", JobID);
+    OPI_TestDataRetrieval.WriteParameter("Dropbox_NewJobID", JobID);
 
-   OPI_Tools.Pause(5);
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure Dropbox_GetAsynchronousChangeStatus(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    JobID = FunctionParameters["Dropbox_NewJobID"];
+
+    Result = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
 
 EndProcedure
 
@@ -9186,13 +9229,10 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateTasksDependencies (wh)", "Bitrix24");
-
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTasksDependencies (wh)", "Bitrix24"); // SKIP
     OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType); // SKIP
-
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTasksDependencies (wh)", "Bitrix24");
 
     FromID        = FunctionParameters["Bitrix24_TaskID"];
     DestinationID = FunctionParameters["Bitrix24_HookTaskID"];
@@ -9206,12 +9246,40 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreateTasksDependencies", "Bitrix24");
-
     OPI_TestDataRetrieval.Check_BitrixArray(Result);
 
     Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 
+EndProcedure
+
+Procedure Bitrix24_DeleteTasksDependencies(FunctionParameters)
+
+    FromID        = FunctionParameters["Bitrix24_HookTaskID"];
+    DestinationID = FunctionParameters["Bitrix24_TaskID"];
+    LinkType      = 0;
+
+    URL = FunctionParameters["Bitrix24_URL"];
+
+    Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType); // SKIP
+    Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTasksDependencies (wh)", "Bitrix24"); // SKIP
+    OPI_TestDataRetrieval.Check_BitrixArray(Result); // SKIP
+
+    FromID        = FunctionParameters["Bitrix24_TaskID"];
+    DestinationID = FunctionParameters["Bitrix24_HookTaskID"];
+    LinkType      = 2;
+
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
+
+    Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token); // SKIP
+    Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
+
+    // END
+
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteTasksDependencies", "Bitrix24");
+    OPI_TestDataRetrieval.Check_BitrixArray(Result);
 
 EndProcedure
 
@@ -11541,6 +11609,78 @@ Procedure Bitrix24_GetDealsList(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "GetDealsList", "Bitrix24");
 
     OPI_TestDataRetrieval.Check_BitrixArray(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetTasksFilterStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetTasksFilterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTasksFilterStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetCommentStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetCommentStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCommentStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetChatStructure(FunctionParameters)
+
+    Result = OPI_Bitrix24.GetChatStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetPictureBlock(FunctionParameters)
+
+    Name = "Image";
+    URL  = FunctionParameters["Picture"];
+
+    Result = OPI_Bitrix24.GetPictureBlock(Name, URL);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPictureBlock", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetFileBlock(FunctionParameters)
+
+    Name = "Image";
+    URL  = FunctionParameters["Document"];
+
+    Result = OPI_Bitrix24.GetFileBlock(Name, URL);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileBlock", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure Bitrix24_GetUserFilterStructure(TestParameters)
+
+    Result = OPI_Bitrix24.GetUserFilterStructure();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserFilterStructure", "Bitrix24");
+    OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
 

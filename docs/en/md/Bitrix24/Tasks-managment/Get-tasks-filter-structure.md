@@ -22,7 +22,7 @@ sidebar_position: 27
 
 
 ```bsl title="Code example"
-
+    Result = OPI_Bitrix24.GetTasksFilterStructure();
 ```
 
 

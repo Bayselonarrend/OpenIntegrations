@@ -23,7 +23,10 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
+    Token = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
+    JobID = "";
 
+    Result = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
 ```
 
 

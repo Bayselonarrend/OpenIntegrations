@@ -29,7 +29,22 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
 
 
 ```bsl title="Code example"
+    FromID        = "2262";
+    DestinationID = "2264";
+    LinkType      = 0;
 
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+
+    Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType);
+
+    FromID        = "2264";
+    DestinationID = "2262";
+    LinkType      = 2;
+
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "37d1fe66006e9f06006b12e400000001000...";
+
+    Result = OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```
 
 
