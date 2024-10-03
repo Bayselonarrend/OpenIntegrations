@@ -34,5 +34,8 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-
+{
+ "name": "Почта",
+ "type": "email"
+}
 ```

@@ -34,5 +34,12 @@ sidebar_position: 6
 ```
 
 ```json title="Result"
-
+{
+ "name": "Checkbox",
+ "type": "checkbox",
+ "options": {
+  "icon": "check",
+  "color": "yellowBright"
+ }
+}
 ```

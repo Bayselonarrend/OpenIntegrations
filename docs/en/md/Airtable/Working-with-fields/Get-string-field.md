@@ -34,5 +34,8 @@ sidebar_position: 3
 ```
 
 ```json title="Result"
-
+{
+ "name": "String",
+ "type": "richText"
+}
 ```
