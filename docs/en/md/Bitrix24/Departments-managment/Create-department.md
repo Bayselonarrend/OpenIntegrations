@@ -37,7 +37,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
     Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c3abf666006e9f06006b12e400000001000...";
+    Token = "37d1fe66006e9f06006b12e400000001000...";
 
     Name     = "Subordinate department";
     ParentID = "478";

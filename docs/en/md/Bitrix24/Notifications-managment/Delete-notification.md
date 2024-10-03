@@ -33,7 +33,7 @@ Method at API documentation: [im.notify.delete](https://dev.1c-bitrix.ru/learnin
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Token          = "c3abf666006e9f06006b12e400000001000...";
+    Token          = "37d1fe66006e9f06006b12e400000001000...";
     NotificationID = "15670";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID, Token);

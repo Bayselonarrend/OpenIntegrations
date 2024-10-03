@@ -51,7 +51,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c3abf666006e9f06006b12e400000001000...";
+    Token = "37d1fe66006e9f06006b12e400000001000...";
 
     ChatStructure = New Structure;
     ChatStructure.Insert("TYPE"  , "CHAT");

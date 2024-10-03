@@ -33,7 +33,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
     Result = OPI_Bitrix24.GetLead(URL, LeadID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c3abf666006e9f06006b12e400000001000...";
+    Token  = "37d1fe66006e9f06006b12e400000001000...";
     LeadID = "280";
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID, Token);
