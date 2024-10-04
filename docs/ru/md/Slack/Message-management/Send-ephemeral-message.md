@@ -29,7 +29,7 @@ sidebar_position: 2
     Токен        = "xoxb-6965308400114-696804637...";
     Канал        = "C06UFNUTKUL";
     Пользователь = "U06UABH3APP";
-    Картинка     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка     = "https://openyellow.neocities.org/test_data/picture.jpg";
     Текст        = "Эфимерное сообщение";
 
     Блок      = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");

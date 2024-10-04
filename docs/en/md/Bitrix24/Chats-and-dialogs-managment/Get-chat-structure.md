@@ -34,5 +34,14 @@ sidebar_position: 21
 ```
 
 ```json title="Result"
-
+{
+ "TYPE": "<Chat type OPEN (Public) | CHAT (Private)>",
+ "TITLE": "<Chat title>",
+ "DESCRIPTION": "<Chat description>",
+ "COLOR": "<Chat color: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, ...>",
+ "MESSAGE": "<First chat message>",
+ "USERS": "<Chat members array>",
+ "AVATAR": "<Base64 chat picture>",
+ "OWNER_ID": "<ID of chat owner. Current user by default>"
+}
 ```

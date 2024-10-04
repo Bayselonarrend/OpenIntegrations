@@ -29,8 +29,8 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
     Страница     = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
-    Иконка       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Обложка      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Иконка       = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Обложка      = "https://openyellow.neocities.org/test_data/picture2.jpg";
     Архивировать = Ложь;
 
     Свойства = Новый Соответствие;

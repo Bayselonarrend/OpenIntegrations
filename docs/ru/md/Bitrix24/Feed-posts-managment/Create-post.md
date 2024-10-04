@@ -33,8 +33,8 @@ sidebar_position: 1
 ```bsl title="Пример кода"
     Текст     = "Текст новости";
     Заголовок = "Заголовок новости";
-    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Путь или Двоичные данные
-    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
+    Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg";  // URL, Путь или Двоичные данные
+    Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
 
     Файлы     = Новый Соответствие;
     Файлы.Вставить("1.png", Картинка1);

@@ -25,7 +25,7 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Token     = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
-    Image     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image     = "https://openyellow.neocities.org/test_data/picture.jpg";
     Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Description = OPI_GoogleDrive.GetFileDescription();

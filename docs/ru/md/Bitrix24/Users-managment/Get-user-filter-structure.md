@@ -34,5 +34,11 @@ sidebar_position: 8
 ```
 
 ```json title="Результат"
-
+{
+ "NAME": "<имя>",
+ "LAST_NAME": "<фамилия>",
+ "WORK_POSITION": "<должность>",
+ "UF_DEPARTMENT_NAME": "<название подразделения>",
+ "USER_TYPE": "<тип: employee, extranet, email>"
+}
 ```
