@@ -26,7 +26,7 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
     База      = "11282aa7-fc4e-810b-ab77-cef5a2a3443e";
-    Картинка_ = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
+    Картинка_ = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Картинка = Новый Соответствие;
     Картинка.Вставить("Лого", Картинка_);

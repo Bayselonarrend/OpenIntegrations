@@ -29,7 +29,7 @@ Sends a message that arrives in the channel but is visible only to a specific us
     Token   = "xoxb-6965308400114-696804637...";
     Channel = "C06UFNUTKUL";
     User    = "U06UABH3APP";
-    Image   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image   = "https://openyellow.neocities.org/test_data/picture.jpg";
     Text    = "Ephemeral message";
 
     Block  = OPI_Slack.GenerateImageBlock(Image, "Image");

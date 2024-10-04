@@ -1,7 +1,7 @@
 ﻿    Text   = "Text of post";
     Title  = "Post title";
-    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
-    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Path or Binary Data
+    Image1 = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Path or Binary Data
 
     Files = New Map;
     Files.Insert("1.png", Image1);

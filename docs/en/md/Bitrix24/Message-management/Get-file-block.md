@@ -27,7 +27,7 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 
 ```bsl title="Code example"
     Name = "Image";
-    URL  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    URL  = "https://openyellow.neocities.org/test_data/document.docx";
 
     Result = OPI_Bitrix24.GetFileBlock(Name, URL);
 ```
@@ -41,5 +41,10 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 ```
 
 ```json title="Result"
-
+{
+ "FILE": {
+  "NAME": "Image",
+  "LINK": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"
+ }
+}
 ```

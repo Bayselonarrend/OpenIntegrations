@@ -33,7 +33,7 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     Текст     = "Новый текст новости";
     Заголовок = "Новый заголовок новости";
-    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Путь или Двоичные данные
     IDНовости = "836";
 
     Файлы     = Новый Соответствие;

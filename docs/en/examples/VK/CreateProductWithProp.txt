@@ -1,7 +1,7 @@
 ﻿    Parameters = GetVKParameters();
 
-    Image1       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Image2       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Image1       = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Image2       = "https://openyellow.neocities.org/test_data/picture2.jpg";
     PropVariant1 = "2450";
     PropVariant2 = "2451";
 

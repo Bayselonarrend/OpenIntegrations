@@ -40,8 +40,8 @@ On each method call, send all the images that should be on the product card
     APIKey    = "7cc90d26-33e4-499b...";
     ProductID = "1202180384";
 
-    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Image1 = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Image2 = "https://openyellow.neocities.org/test_data/picture2.jpg";
 
     MarketingColor = "GREEN";
 

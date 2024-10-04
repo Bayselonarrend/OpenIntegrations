@@ -32,8 +32,8 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
     Filename2 = "Picture2.jpg";
     Name      = "Picture1.jpg";
 
-    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // Local path, URL or Binary Data
-    Image  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // Local path, URL or Binary Data
+    Image2 = "https://openyellow.neocities.org/test_data/picture.jpg"; // Local path, URL or Binary Data
+    Image  = "https://openyellow.neocities.org/test_data/picture2.jpg"; // Local path, URL or Binary Data
 
     DestinationID = "10842";
 
