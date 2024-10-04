@@ -34,5 +34,12 @@ sidebar_position: 9
 ```
 
 ```json title="Result"
-
+{
+ "AUTHOR_ID": "<comment author identifier>",
+ "AUTHOR_NAME": "<Users name (optional)>",
+ "AUTHOR_EMAIL": "<Users email (optional)>",
+ "USE_SMILES": "<(Y|N) - parse comments for emoticons or not>",
+ "POST_MESSAGE": "<Message text>",
+ "UF_FORUM_MESSAGE_DOC": "<Array of files from disk to attach>"
+}
 ```

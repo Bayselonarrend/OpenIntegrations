@@ -33,8 +33,8 @@ sidebar_position: 1
     Наименование2  = "Картинка2.jpg";
     Наименование   = "Картинка1.jpg";
 
-    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
-    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
+    Картинка2 = "https://openyellow.neocities.org/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
+    Картинка  = "https://openyellow.neocities.org/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
 
     IDПриемника = 3;
 

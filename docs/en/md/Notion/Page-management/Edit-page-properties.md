@@ -29,8 +29,8 @@ sidebar_position: 4
 ```bsl title="Code example"
     Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
     Page    = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
-    Icon    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Cover   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Icon    = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Cover   = "https://openyellow.neocities.org/test_data/picture2.jpg";
     Archive = False;
 
     Properties = New Map;

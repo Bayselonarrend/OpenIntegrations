@@ -34,5 +34,11 @@ sidebar_position: 8
 ```
 
 ```json title="Result"
-
+{
+ "NAME": "<name>",
+ "LAST_NAME": "<surname>",
+ "WORK_POSITION": "<position>",
+ "UF_DEPARTMENT_NAME": "<department name>",
+ "USER_TYPE": "<type: employee, extranet, email>"
+}
 ```
