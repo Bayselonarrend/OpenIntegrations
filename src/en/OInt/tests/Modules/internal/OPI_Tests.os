@@ -1087,6 +1087,7 @@ Procedure Slack_SendDeleteMessage() Export
     Slack_DeleteMessage(TestParameters);
     Slack_SendEphemeralMessage(TestParameters);
     Slack_GetDelayedMessageList(TestParameters);
+    Slack_GenerateImageBlock(TestParameters);
 
 EndProcedure
 
@@ -1132,6 +1133,8 @@ Procedure Slack_UploadDeleteFile() Export
 
     Slack_GetFilesList(TestParameters);
     Slack_UploadFile(TestParameters);
+    Slack_MakeFilePublic(TestParameters);
+    Slack_MakeFilePrivate(TestParameters);
     Slack_GetFileData(TestParameters);
     Slack_DeleteFile(TestParameters);
 
@@ -5474,6 +5477,19 @@ Procedure Slack_SendMessage(FunctionParameters)
 
 EndProcedure
 
+Procedure Slack_GenerateImageBlock(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+
+    Result = OPI_Slack.GenerateImageBlock(Image, "Image");
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateImageBlock", "Slack");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
 Procedure Slack_EditMessage(FunctionParameters)
 
     Token     = FunctionParameters["Slack_Token"];
@@ -5843,6 +5859,34 @@ Procedure Slack_UploadFile(FunctionParameters)
     OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (to channel)");
     OPI_TestDataRetrieval.Check_SlackFile(Result, FileName);
     OPI_Slack.DeleteFile(Token, Result["files"][0]["id"]);
+
+EndProcedure
+
+Procedure Slack_MakeFilePublic(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Result = OPI_Slack.MakeFilePublic(Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePublic", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure Slack_MakeFilePrivate(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Result = OPI_Slack.MakeFilePrivate(Token, FileID);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePrivate", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
 
