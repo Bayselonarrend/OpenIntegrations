@@ -33,8 +33,8 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     IDКлиента = "2128753";
     КлючAPI   = "7cc90d26-33e4-499b...";
-    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg";
     Видео     = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
 
     МассивКартинок = Новый Массив;

@@ -27,7 +27,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 
 
 ```bsl title="Code example"
-    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image = "https://openyellow.neocities.org/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image);
 
     B64Image = GetBase64StringFromBinaryData(Image);

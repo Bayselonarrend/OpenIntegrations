@@ -37,7 +37,7 @@ sidebar_position: 1
     // With attachments (picture block in the example)
 
     Text       = "Message with picture";
-    Image      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image      = "https://openyellow.neocities.org/test_data/picture.jpg";
     BlockArray = New Array;
 
     Block = OPI_Slack.GenerateImageBlock(Image, "Image");

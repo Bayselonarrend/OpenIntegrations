@@ -33,7 +33,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```bsl title="Code example"
     Text   = "New post text";
     Title  = "New post title";
-    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image1 = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Path or Binary Data
     PostID = "836";
 
     Files = New Map;

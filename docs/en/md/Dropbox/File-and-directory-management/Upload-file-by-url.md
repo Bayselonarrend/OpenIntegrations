@@ -26,7 +26,7 @@ sidebar_position: 5
 ```bsl title="Code example"
     Path  = "/New/url_doc.docx";
     Token = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
-    URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    URL   = "https://openyellow.neocities.org/test_data/document.docx";
 
     Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
 ```
