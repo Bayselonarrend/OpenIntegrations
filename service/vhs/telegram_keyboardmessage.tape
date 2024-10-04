@@ -12,7 +12,7 @@ Set Width 868
 Set Height 619
 
 Hide
-Type "set token=6129457865:AAFyzNYOAFbuhAL5GXqbVidwOjZYFvLFWMU" Enter
+Type "set token=" Enter
 Type "cls" Enter
 Show
  
