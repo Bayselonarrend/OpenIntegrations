@@ -20,7 +20,7 @@ After the launching of application, you'll see the initial page with a list of a
 
 >**Important:** Library names are case-sensitive and should be written in lowercase. Method names are not case-sensitive
 
-![demo](./img/3.gif) 
+![demo](./img/2.gif) 
 
 ## Using methods
 Like most other programs intended for use in bat/sh scripts, each separate action of Oint CLI is called by a full command line of the following form:
@@ -37,6 +37,6 @@ When it comes to parameters, most often the data passed there are strings. This 
 
 After executing the requested action, the program outputs the result and exits. By default, the output is displayed in the console, but you can redirect it to a file using either the standard method `>` or by using the common parameter `--out`. The difference between these two methods lies in the encoding of the saved file: when using `>`, it will be the encoding of the shell, whereas when using `--out`, it will be UTF-8 (used internally by OInt). Additionally, using `--out` is mandatory for methods returning binary data in the response (such as downloading a file from Google Drive, for example)
 
-![demo](./img/2.gif) 
+![demo](./img/3.gif) 
 
 You can find all further information you might need for work in other sections of this documentation, as well as in the built-in help of OInt CLI
