@@ -6,10 +6,10 @@
     "id": 3850,
     "chat_id": 4,
     "author_id": 10,
-    "date": "2024-07-13T14:54:05+00:00",
+    "date": "2024-07-13T17:54:05+03:00",
     "text": "Тестовое сообщение",
     "unread": false,
-    "uuid": "d1d92897-eee1-4109-8de5-1c6d4db41664",
+    "uuid": null,
     "replaces": [],
     "params": [],
     "disappearing_date": null
@@ -18,7 +18,7 @@
     "id": 3848,
     "chat_id": 4,
     "author_id": 0,
-    "date": "2024-07-13T14:52:17+00:00",
+    "date": "2024-07-13T17:52:17+03:00",
     "text": "Антон Титовец пригласил в чат [USER=10 REPLACE]Techno Pizza[/USER]",
     "unread": false,
     "uuid": null,
@@ -35,7 +35,7 @@
     "id": 6,
     "chat_id": 4,
     "author_id": 0,
-    "date": "2024-02-15T19:26:23+00:00",
+    "date": "2024-02-15T22:26:23+03:00",
     "text": "[b]Групповой чат[/b]\nОбщайтесь, делитесь файлами, комментируйте сообщения коллег и ставьте лайки.",
     "unread": false,
     "uuid": null,
@@ -49,7 +49,7 @@
     "id": 4,
     "chat_id": 4,
     "author_id": 0,
-    "date": "2024-02-15T19:26:23+00:00",
+    "date": "2024-02-15T22:26:23+03:00",
     "text": "Антон Титовец создал чат",
     "unread": false,
     "uuid": null,
@@ -77,12 +77,12 @@
     "external_auth_id": "socservices",
     "status": "online",
     "idle": false,
-    "last_activity_date": "2024-07-13T18:36:23+00:00",
+    "last_activity_date": "2024-07-13T21:36:23+03:00",
     "mobile_last_date": false,
     "absent": false,
     "departments": [
      1,
-     130
+     264
     ],
     "phones": false,
     "desktop_last_date": false
@@ -91,13 +91,13 @@
   "files": []
  },
  "time": {
-  "start": 1723570036.70641,
-  "finish": 1723570036.74874,
-  "duration": 0.0423240661621094,
-  "processing": 0.0178289413452148,
-  "date_start": "2024-08-13T17:27:16+00:00",
-  "date_finish": "2024-08-13T17:27:16+00:00",
-  "operating_reset_at": 1723570636,
+  "start": 1728140834.34048,
+  "finish": 1728140834.38102,
+  "duration": 0.0405428409576416,
+  "processing": 0.0157558917999268,
+  "date_start": "2024-10-05T18:07:14+03:00",
+  "date_finish": "2024-10-05T18:07:14+03:00",
+  "operating_reset_at": 1728141434,
   "operating": 0
  }
 }

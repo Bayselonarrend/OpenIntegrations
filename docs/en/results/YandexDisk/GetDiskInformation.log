@@ -6,7 +6,7 @@
  "trash_size": 0,
  "is_paid": false,
  "is_idm_managed_folder_address_access": false,
- "used_space": 781553821,
+ "used_space": 809036120,
  "system_folders": {
   "odnoklassniki": "disk:/Социальные сети/Одноклассники",
   "google": "disk:/Социальные сети/Google+",
@@ -33,7 +33,7 @@
   "login": "bayselonarrend"
  },
  "is_idm_managed_public_access": false,
- "payment_flow": false,
+ "payment_flow": true,
  "unlimited_autoupload_enabled": false,
- "revision": 1727617695009587
+ "revision": 1728127255533373
 }
