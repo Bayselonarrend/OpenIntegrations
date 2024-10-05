@@ -11,15 +11,5 @@
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    MediaPictureArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
-    MediaGifArray     = OPI_Twitter.UploadAttachmentsArray(GIF , "animated_gif", Parameters);
-
-    For Each MediaPicture In MediaPictureArray Do
-        MediaArray.Add(MediaPicture);
-    EndDo;
-
-    For Each MediaGif In MediaGifArray Do
-        MediaArray.Add(MediaGif);
-    EndDo;
-
-    Result = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);
+    MediaArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    Result     = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);
