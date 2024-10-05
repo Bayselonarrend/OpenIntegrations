@@ -1,6 +1,6 @@
 ﻿ {
  "result": {
-  "ID": "32",
+  "ID": "360",
   "TITLE": "MegaClient",
   "HONORIFIC": null,
   "NAME": "John",
@@ -8,7 +8,7 @@
   "LAST_NAME": "Doe",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "32",
+  "CONTACT_ID": "360",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": null,
@@ -26,15 +26,15 @@
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2024-08-24T09:03:14+00:00",
-  "DATE_MODIFY": "2024-08-24T09:03:14+00:00",
-  "DATE_CLOSED": "2024-08-24T09:03:14+00:00",
+  "DATE_CREATE": "2024-10-05T18:07:52+03:00",
+  "DATE_MODIFY": "2024-10-05T18:07:53+03:00",
+  "DATE_CLOSED": "2024-10-05T18:07:53+03:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "N",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2024-08-24T09:03:14+00:00",
+  "MOVED_TIME": "2024-10-05T18:07:53+03:00",
   "ADDRESS": "Pushkin st., b. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -43,23 +43,23 @@
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Russia",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "62",
+  "ADDRESS_LOC_ADDR_ID": "722",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
   "UTM_CONTENT": null,
   "UTM_TERM": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2024-08-24T09:03:14+00:00",
+  "LAST_ACTIVITY_TIME": "2024-10-05T18:07:52+03:00",
   "EMAIL": [
    {
-    "ID": "146",
+    "ID": "2134",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "148",
+    "ID": "2136",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -67,7 +67,7 @@
   ],
   "PHONE": [
    {
-    "ID": "150",
+    "ID": "2138",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -75,13 +75,13 @@
   ]
  },
  "time": {
-  "start": 1724490196.26846,
-  "finish": 1724490196.31403,
-  "duration": 0.0455701351165772,
-  "processing": 0.0218369960784912,
-  "date_start": "2024-08-24T09:03:16+00:00",
-  "date_finish": "2024-08-24T09:03:16+00:00",
-  "operating_reset_at": 1724490796,
-  "operating": 0
+  "start": 1728140873.77993,
+  "finish": 1728140873.9089,
+  "duration": 0.128967046737671,
+  "processing": 0.101461887359619,
+  "date_start": "2024-10-05T18:07:53+03:00",
+  "date_finish": "2024-10-05T18:07:53+03:00",
+  "operating_reset_at": 1728141473,
+  "operating": 0.101438999176025
  }
 }

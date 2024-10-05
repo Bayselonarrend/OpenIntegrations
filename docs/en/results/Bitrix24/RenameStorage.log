@@ -1,5 +1,5 @@
-﻿  {
-  "result": {
+﻿ {
+ "result": {
   "ID": "18",
   "NAME": "New storage name",
   "CODE": null,
@@ -7,15 +7,15 @@
   "ENTITY_TYPE": "restapp",
   "ENTITY_ID": "2",
   "ROOT_OBJECT_ID": "464"
-  },
-  "time": {
-  "start": 1719047246.29499,
-  "finish": 1719047246.35783,
-  "duration": 0.062842845916748,
-  "processing": 0.0317339897155762,
-  "date_start": "2024-06-22T09:07:26+00:00",
-  "date_finish": "2024-06-22T09:07:26+00:00",
-  "operating_reset_at": 1719047846,
+ },
+ "time": {
+  "start": 1728140740.07766,
+  "finish": 1728140740.1182,
+  "duration": 0.0405440330505371,
+  "processing": 0.0131649971008301,
+  "date_start": "2024-10-05T18:05:40+03:00",
+  "date_finish": "2024-10-05T18:05:40+03:00",
+  "operating_reset_at": 1728141340,
   "operating": 0
-  }
-  }
+ }
+}

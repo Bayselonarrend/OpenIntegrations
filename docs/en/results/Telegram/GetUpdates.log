@@ -1,327 +1,971 @@
-﻿  {
-  "ok": true,
-  "result": [
+﻿ {
+ "ok": true,
+ "result": [
   {
-  "update_id": 291366000,
-  "channel_post": {
-  "message_id": 4685,
-  "sender_chat": {
-  "id": -1001893407333,
-  "title": "Test channel",
-  "username": "testsichee",
-  "type": "channel"
-  },
-  "chat": {
-  "id": -1001893407333,
-  "title": "Test channel",
-  "username": "testsichee",
-  "type": "channel"
-  },
-  "date": 1717054881,
-  "pinned_message": {
-  "message_id": 4670,
-  "sender_chat": {
-  "id": -1001893407333,
-  "title": "Test channel",
-  "username": "testsichee",
-  "type": "channel"
-  },
-  "chat": {
-  "id": -1001893407333,
-  "title": "Test channel",
-  "username": "testsichee",
-  "type": "channel"
-  },
-  "date": 1717054721,
-  "text": "String value"
-  }
-  }
-  },
-  {
-  "update_id": 291366001,
-  "message": {
-  "message_id": 2446,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054906,
-  "message_thread_id": 2446,
-  "forum_topic_created": {
-  "name": "TestTopic fb0492fb-3a2d-4496-8309-b119226ef9f9",
-  "icon_color": 7322096,
-  "icon_custom_emoji_id": "5357419403325481346"
-  },
-  "is_topic_message": true
-  }
+   "update_id": 291368911,
+   "channel_post": {
+    "message_id": 9239,
+    "sender_chat": {
+     "id": -1001893407333,
+     "title": "Тестовый канал",
+     "username": "testsichee",
+     "type": "channel"
+    },
+    "chat": {
+     "id": -1001893407333,
+     "title": "Тестовый канал",
+     "username": "testsichee",
+     "type": "channel"
+    },
+    "date": 1728117446,
+    "pinned_message": {
+     "message_id": 9220,
+     "sender_chat": {
+      "id": -1001893407333,
+      "title": "Тестовый канал",
+      "username": "testsichee",
+      "type": "channel"
+     },
+     "chat": {
+      "id": -1001893407333,
+      "title": "Тестовый канал",
+      "username": "testsichee",
+      "type": "channel"
+     },
+     "date": 1728117234,
+     "text": "Строковое значение"
+    }
+   }
   },
   {
-  "update_id": 291366002,
-  "message": {
-  "message_id": 2448,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054907,
-  "message_thread_id": 2446,
-  "reply_to_message": {
-  "message_id": 2446,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054906,
-  "message_thread_id": 2446,
-  "forum_topic_created": {
-  "name": "TestTopic fb0492fb-3a2d-4496-8309-b119226ef9f9",
-  "icon_color": 7322096,
-  "icon_custom_emoji_id": "5357419403325481346"
-  },
-  "is_topic_message": true
-  },
-  "forum_topic_edited": {
-  "name": "NewTestTitle",
-  "icon_custom_emoji_id": "5310132165583840589"
-  },
-  "is_topic_message": true
-  }
+   "update_id": 291368912,
+   "message": {
+    "message_id": 5286,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117479,
+    "message_thread_id": 5286,
+    "forum_topic_created": {
+     "name": "Тестовая тема 1cefa555-acbb-4e9a-95ab-ecb220943de1",
+     "icon_color": 7322096,
+     "icon_custom_emoji_id": "5357419403325481346"
+    },
+    "is_topic_message": true
+   }
   },
   {
-  "update_id": 291366003,
-  "message": {
-  "message_id": 2449,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054912,
-  "forum_topic_reopened": {}
-  }
-  },
-  {
-  "update_id": 291366004,
-  "message": {
-  "message_id": 2450,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054912,
-  "forum_topic_closed": {}
-  }
-  },
-  {
-  "update_id": 291366005,
-  "message": {
-  "message_id": 2451,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054912,
-  "message_thread_id": 2446,
-  "reply_to_message": {
-  "message_id": 2446,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054906,
-  "message_thread_id": 2446,
-  "forum_topic_created": {
-  "name": "TestTopic fb0492fb-3a2d-4496-8309-b119226ef9f9",
-  "icon_color": 7322096,
-  "icon_custom_emoji_id": "5357419403325481346"
-  },
-  "is_topic_message": true
-  },
-  "forum_topic_closed": {},
-  "is_topic_message": true
-  }
+   "update_id": 291368913,
+   "message": {
+    "message_id": 5288,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117479,
+    "message_thread_id": 5286,
+    "reply_to_message": {
+     "message_id": 5286,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728117479,
+     "message_thread_id": 5286,
+     "forum_topic_created": {
+      "name": "Тестовая тема 1cefa555-acbb-4e9a-95ab-ecb220943de1",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_edited": {
+     "name": "Новый тестовый заголовок",
+     "icon_custom_emoji_id": "5310132165583840589"
+    },
+    "is_topic_message": true
+   }
   },
   {
-  "update_id": 291366006,
-  "message": {
-  "message_id": 2452,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054937,
-  "forum_topic_reopened": {}
-  }
-  },
-  {
-  "update_id": 291366007,
-  "message": {
-  "message_id": 2453,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054937,
-  "message_thread_id": 2446,
-  "reply_to_message": {
-  "message_id": 2446,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054906,
-  "message_thread_id": 2446,
-  "forum_topic_created": {
-  "name": "TestTopic fb0492fb-3a2d-4496-8309-b119226ef9f9",
-  "icon_color": 7322096,
-  "icon_custom_emoji_id": "5357419403325481346"
-  },
-  "is_topic_message": true
-  },
-  "forum_topic_reopened": {},
-  "is_topic_message": true
-  }
+   "update_id": 291368914,
+   "message": {
+    "message_id": 5289,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117484,
+    "forum_topic_reopened": {}
+   }
   },
   {
-  "update_id": 291366008,
-  "message": {
-  "message_id": 2454,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717054995,
-  "forum_topic_edited": {
-  "name": "New main thread name b7ff8b12-563b-417f-8218-a460d59d7f7f"
-  }
-  }
+   "update_id": 291368915,
+   "message": {
+    "message_id": 5290,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117484,
+    "forum_topic_closed": {}
+   }
   },
   {
-  "update_id": 291366009,
-  "message": {
-  "message_id": 2455,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
-  },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
-  },
-  "date": 1717055002,
-  "general_forum_topic_hidden": {}
-  }
+   "update_id": 291368916,
+   "message": {
+    "message_id": 5291,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117484,
+    "message_thread_id": 5286,
+    "reply_to_message": {
+     "message_id": 5286,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728117479,
+     "message_thread_id": 5286,
+     "forum_topic_created": {
+      "name": "Тестовая тема 1cefa555-acbb-4e9a-95ab-ecb220943de1",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_closed": {},
+    "is_topic_message": true
+   }
   },
   {
-  "update_id": 291366010,
-  "message": {
-  "message_id": 2456,
-  "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
+   "update_id": 291368917,
+   "message": {
+    "message_id": 5292,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117505,
+    "forum_topic_reopened": {}
+   }
   },
-  "chat": {
-  "id": -1001971186208,
-  "title": "Test",
-  "is_forum": true,
-  "type": "supergroup"
+  {
+   "update_id": 291368918,
+   "message": {
+    "message_id": 5293,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117506,
+    "message_thread_id": 5286,
+    "reply_to_message": {
+     "message_id": 5286,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728117479,
+     "message_thread_id": 5286,
+     "forum_topic_created": {
+      "name": "Тестовая тема 1cefa555-acbb-4e9a-95ab-ecb220943de1",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_reopened": {},
+    "is_topic_message": true
+   }
   },
-  "date": 1717055007,
-  "general_forum_topic_unhidden": {}
+  {
+   "update_id": 291368919,
+   "message": {
+    "message_id": 5294,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117557,
+    "forum_topic_edited": {
+     "name": "Новое имя главной темы ab754dfd-0d61-4218-b53a-a50ed06d4821"
+    }
+   }
+  },
+  {
+   "update_id": 291368920,
+   "message": {
+    "message_id": 5295,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117564,
+    "general_forum_topic_hidden": {}
+   }
+  },
+  {
+   "update_id": 291368921,
+   "message": {
+    "message_id": 5296,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728117569,
+    "general_forum_topic_unhidden": {}
+   }
+  },
+  {
+   "update_id": 291368922,
+   "channel_post": {
+    "message_id": 9259,
+    "sender_chat": {
+     "id": -1001893407333,
+     "title": "Тестовый канал",
+     "username": "testsichee",
+     "type": "channel"
+    },
+    "chat": {
+     "id": -1001893407333,
+     "title": "Тестовый канал",
+     "username": "testsichee",
+     "type": "channel"
+    },
+    "date": 1728120750,
+    "pinned_message": {
+     "message_id": 9240,
+     "sender_chat": {
+      "id": -1001893407333,
+      "title": "Тестовый канал",
+      "username": "testsichee",
+      "type": "channel"
+     },
+     "chat": {
+      "id": -1001893407333,
+      "title": "Тестовый канал",
+      "username": "testsichee",
+      "type": "channel"
+     },
+     "date": 1728120533,
+     "text": "Строковое значение"
+    }
+   }
+  },
+  {
+   "update_id": 291368923,
+   "message": {
+    "message_id": 5297,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120783,
+    "message_thread_id": 5297,
+    "forum_topic_created": {
+     "name": "Тестовая тема c7ee9374-70f0-4eeb-9ffb-b9e254b41962",
+     "icon_color": 7322096,
+     "icon_custom_emoji_id": "5357419403325481346"
+    },
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368924,
+   "message": {
+    "message_id": 5299,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120783,
+    "message_thread_id": 5297,
+    "reply_to_message": {
+     "message_id": 5297,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728120783,
+     "message_thread_id": 5297,
+     "forum_topic_created": {
+      "name": "Тестовая тема c7ee9374-70f0-4eeb-9ffb-b9e254b41962",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_edited": {
+     "name": "Новый тестовый заголовок",
+     "icon_custom_emoji_id": "5310132165583840589"
+    },
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368925,
+   "message": {
+    "message_id": 5300,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120788,
+    "forum_topic_reopened": {}
+   }
+  },
+  {
+   "update_id": 291368926,
+   "message": {
+    "message_id": 5301,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120788,
+    "forum_topic_closed": {}
+   }
+  },
+  {
+   "update_id": 291368927,
+   "message": {
+    "message_id": 5302,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120788,
+    "message_thread_id": 5297,
+    "reply_to_message": {
+     "message_id": 5297,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728120783,
+     "message_thread_id": 5297,
+     "forum_topic_created": {
+      "name": "Тестовая тема c7ee9374-70f0-4eeb-9ffb-b9e254b41962",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_closed": {},
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368928,
+   "message": {
+    "message_id": 5303,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120809,
+    "forum_topic_reopened": {}
+   }
+  },
+  {
+   "update_id": 291368929,
+   "message": {
+    "message_id": 5304,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120809,
+    "message_thread_id": 5297,
+    "reply_to_message": {
+     "message_id": 5297,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728120783,
+     "message_thread_id": 5297,
+     "forum_topic_created": {
+      "name": "Тестовая тема c7ee9374-70f0-4eeb-9ffb-b9e254b41962",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_reopened": {},
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368930,
+   "message": {
+    "message_id": 5305,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120860,
+    "forum_topic_edited": {
+     "name": "Новое имя главной темы 3d378e25-d91f-4c75-bb56-87e1e93c950d"
+    }
+   }
+  },
+  {
+   "update_id": 291368931,
+   "message": {
+    "message_id": 5306,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120867,
+    "general_forum_topic_hidden": {}
+   }
+  },
+  {
+   "update_id": 291368932,
+   "message": {
+    "message_id": 5307,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728120873,
+    "general_forum_topic_unhidden": {}
+   }
+  },
+  {
+   "update_id": 291368933,
+   "channel_post": {
+    "message_id": 9279,
+    "sender_chat": {
+     "id": -1001893407333,
+     "title": "Тестовый канал",
+     "username": "testsichee",
+     "type": "channel"
+    },
+    "chat": {
+     "id": -1001893407333,
+     "title": "Тестовый канал",
+     "username": "testsichee",
+     "type": "channel"
+    },
+    "date": 1728126454,
+    "pinned_message": {
+     "message_id": 9260,
+     "sender_chat": {
+      "id": -1001893407333,
+      "title": "Тестовый канал",
+      "username": "testsichee",
+      "type": "channel"
+     },
+     "chat": {
+      "id": -1001893407333,
+      "title": "Тестовый канал",
+      "username": "testsichee",
+      "type": "channel"
+     },
+     "date": 1728126246,
+     "text": "Строковое значение"
+    }
+   }
+  },
+  {
+   "update_id": 291368934,
+   "message": {
+    "message_id": 5308,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126487,
+    "message_thread_id": 5308,
+    "forum_topic_created": {
+     "name": "Тестовая тема b330e58c-7078-4478-a8b7-046810ebb6cb",
+     "icon_color": 7322096,
+     "icon_custom_emoji_id": "5357419403325481346"
+    },
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368935,
+   "message": {
+    "message_id": 5310,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126487,
+    "message_thread_id": 5308,
+    "reply_to_message": {
+     "message_id": 5308,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728126487,
+     "message_thread_id": 5308,
+     "forum_topic_created": {
+      "name": "Тестовая тема b330e58c-7078-4478-a8b7-046810ebb6cb",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_edited": {
+     "name": "Новый тестовый заголовок",
+     "icon_custom_emoji_id": "5310132165583840589"
+    },
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368936,
+   "message": {
+    "message_id": 5311,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126492,
+    "forum_topic_reopened": {}
+   }
+  },
+  {
+   "update_id": 291368937,
+   "message": {
+    "message_id": 5312,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126492,
+    "forum_topic_closed": {}
+   }
+  },
+  {
+   "update_id": 291368938,
+   "message": {
+    "message_id": 5313,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126492,
+    "message_thread_id": 5308,
+    "reply_to_message": {
+     "message_id": 5308,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728126487,
+     "message_thread_id": 5308,
+     "forum_topic_created": {
+      "name": "Тестовая тема b330e58c-7078-4478-a8b7-046810ebb6cb",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_closed": {},
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368939,
+   "message": {
+    "message_id": 5314,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126513,
+    "forum_topic_reopened": {}
+   }
+  },
+  {
+   "update_id": 291368940,
+   "message": {
+    "message_id": 5315,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126513,
+    "message_thread_id": 5308,
+    "reply_to_message": {
+     "message_id": 5308,
+     "from": {
+      "id": 6129457865,
+      "is_bot": true,
+      "first_name": "Бот Виталий",
+      "username": "sicheebot"
+     },
+     "chat": {
+      "id": -1001971186208,
+      "title": "Тест",
+      "is_forum": true,
+      "type": "supergroup"
+     },
+     "date": 1728126487,
+     "message_thread_id": 5308,
+     "forum_topic_created": {
+      "name": "Тестовая тема b330e58c-7078-4478-a8b7-046810ebb6cb",
+      "icon_color": 7322096,
+      "icon_custom_emoji_id": "5357419403325481346"
+     },
+     "is_topic_message": true
+    },
+    "forum_topic_reopened": {},
+    "is_topic_message": true
+   }
+  },
+  {
+   "update_id": 291368941,
+   "message": {
+    "message_id": 5316,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126564,
+    "forum_topic_edited": {
+     "name": "Новое имя главной темы fb954ec0-aa3d-402c-9cb2-6d1f29ea38c5"
+    }
+   }
+  },
+  {
+   "update_id": 291368942,
+   "message": {
+    "message_id": 5317,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126571,
+    "general_forum_topic_hidden": {}
+   }
+  },
+  {
+   "update_id": 291368943,
+   "message": {
+    "message_id": 5318,
+    "from": {
+     "id": 6129457865,
+     "is_bot": true,
+     "first_name": "Бот Виталий",
+     "username": "sicheebot"
+    },
+    "chat": {
+     "id": -1001971186208,
+     "title": "Тест",
+     "is_forum": true,
+     "type": "supergroup"
+    },
+    "date": 1728126577,
+    "general_forum_topic_unhidden": {}
+   }
   }
-  }
-  ]
-  }
+ ]
+}
