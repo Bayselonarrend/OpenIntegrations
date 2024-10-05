@@ -166,7 +166,7 @@ Function DownloadFile(Val Token, Val FileID) Export
 EndFunction
 
 // Process Telegram Mini App data
-// Processes TMA data and determines its validity
+// Processes Telegram Mini App data and determines its validity
 //
 // Parameters:
 // DataString - String - Query from Telegram.WebApp.initData
