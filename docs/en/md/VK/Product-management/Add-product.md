@@ -28,7 +28,7 @@ sidebar_position: 4
 
     Image1    = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Binary or Path to file
     Image2    = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Binary or Path to file
-    Selection = "121";
+    Selection = "125";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

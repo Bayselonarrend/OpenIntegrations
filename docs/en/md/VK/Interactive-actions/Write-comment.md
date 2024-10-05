@@ -27,7 +27,7 @@ sidebar_position: 4
 ```bsl title="Code example"
     Parameters = GetVKParameters();
     Text       = "NewComment";
-    PostID     = "4272";
+    PostID     = "4479";
     WallID     = Parameters["owner_id"];
 
     Result = OPI_VK.WriteComment(PostID, WallID, Text, Parameters);

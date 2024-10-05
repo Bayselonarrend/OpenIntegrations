@@ -1,5 +1,4 @@
 ﻿    Parameters = GetTwitterAuthData();
-    Text       = "TestTweet" + String(New UUID);
 
     Image1 = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Binary Data or Path to file
     Image2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Binary Data or Path to file
@@ -8,5 +7,4 @@
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    MediaArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
-    Result     = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);
+    Result = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);

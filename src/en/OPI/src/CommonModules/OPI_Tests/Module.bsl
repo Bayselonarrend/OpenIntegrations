@@ -384,6 +384,7 @@ Procedure VKAPI_SaveDeleteImage() Export
     VK_SavePictureToAlbum(TestParameters);
     VK_DeleteImage(TestParameters);
     VK_DeleteAlbum(TestParameters);
+    VK_UploadPhotoToServer(TestParameters);
 
 EndProcedure
 
@@ -427,6 +428,7 @@ Procedure VKAPI_LikeRepostComment() Export
     VK_LikePost(TestParameters);
     VK_MakeRepost(TestParameters);
     VK_WriteComment(TestParameters);
+    VK_ShortenLink(TestParameters);
 
     OPI_VK.DeletePost(PostID                  , Parameters);
     OPI_VK.DeletePost(TestParameters["Repost"], Parameters);
@@ -472,6 +474,7 @@ Procedure VKAPI_CreateAdCampaign() Export
     VK_CreateAdCampaign(TestParameters);
     VK_CreateAd(TestParameters);
     VK_PauseAdvertising(TestParameters);
+    VK_GetAdvertisingCategoryList(TestParameters);
 
     OPI_VK.DeletePost(PostID, Parameters);
 
@@ -511,6 +514,7 @@ Procedure VKAPI_CreateProductSelection() Export
 
     VK_CreateProductCollection(TestParameters);
     VK_EditProductCollection(TestParameters);
+    VK_GetSelectionsByID(TestParameters);
     VK_AddProduct(TestParameters);
     VK_EditProduct(TestParameters);
     VK_AddProductToCollection(TestParameters);
@@ -530,6 +534,7 @@ Procedure VKAPI_CreateProductWithProperties() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
 
+    VK_GetProductDescription(TestParameters);
     VK_CreateProductProperty(TestParameters);
     VK_EditProductProperty(TestParameters);
     VK_AddProductPropertyVariant(TestParameters);
@@ -1003,6 +1008,7 @@ Procedure TwitterAPI_Tweets() Export
     Twitter_CreateGifTweet(TestParameters);
     Twitter_CreatePollTweet(TestParameters);
     Twitter_CreateCustomTweet(TestParameters);
+    Twitter_UploadAttachmentsArray(TestParameters);
 
 EndProcedure
 
@@ -3482,10 +3488,23 @@ Procedure VK_EditProductCollection(FunctionParameters)
     Result = OPI_VK.EditProductCollection(Name, Selection, , , , Parameters);
 
     OPI_TestDataRetrieval.WriteLog(Result, "EditProductCollection", "VK");
-
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VK_GetSelectionsByID(FunctionParameters)
+
+    Parameters = GetVKParameters();
+    Selection  = FunctionParameters["VK_MarketAlbumID"];
+
+    Result = OPI_VK.GetSelectionsByID(Selection, Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSelectionsByID", "VK");
+    OPI_TestDataRetrieval.Check_VKElement(Result);
 
 EndProcedure
 
@@ -3921,7 +3940,7 @@ Procedure VK_UploadVideoToServer(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Video       = FunctionParameters["Video"];
+    Video       = FunctionParameters["Video"]; // URL, Binary Data or Path to file
     Name        = "NewVideo";
     Description = "Video description";
 
@@ -3930,10 +3949,64 @@ Procedure VK_UploadVideoToServer(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer", "VK");
-
     OPI_TestDataRetrieval.Check_VKVideo(Result);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure VK_UploadPhotoToServer(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    Image = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+    View  = "Post";
+
+    Result = OPI_VK.UploadPhotoToServer(Image, Parameters, View);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer", "VK");
+    OPI_TestDataRetrieval.Check_VKAlbumPicture(Result, "");
+
+EndProcedure
+
+Procedure VK_ShortenLink(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    Result = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ShortenLink", "VK");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+EndProcedure
+
+Procedure VK_GetAdvertisingCategoryList(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    Result = OPI_VK.GetAdvertisingCategoryList(Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAdvertisingCategoryList", "VK");
+    OPI_TestDataRetrieval.Check_VKCategories(Result);
+
+EndProcedure
+
+Procedure VK_GetProductDescription(FunctionParameters)
+
+    Parameters = GetVKParameters();
+
+    Result = OPI_VK.GetProductDescription();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductDescription", "VK");
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -6630,9 +6703,6 @@ Procedure Twitter_CreateCustomTweet(FunctionParameters)
 
     Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
     Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
-    GIF    = FunctionParameters["GIF"]; // URL, Binary Data or Path to file
-
-    MediaArray = New Array;
 
     ImageArray = New Array();
     ImageArray.Add(Image1);
@@ -6647,6 +6717,26 @@ Procedure Twitter_CreateCustomTweet(FunctionParameters)
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
 
     OPI_Tools.Pause(20);
+
+EndProcedure
+
+Procedure Twitter_UploadAttachmentsArray(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+
+    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+
+    ImageArray = New Array();
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    Result = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadAttachmentsArray", "Twitter");
+    OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
 
