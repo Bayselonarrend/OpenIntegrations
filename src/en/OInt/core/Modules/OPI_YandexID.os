@@ -47,7 +47,7 @@
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
-Function GetConfirmationCode(Val ClientId) Export
+Function GetConfirmationCode(Val ClientId) Export // Service
 
     OPI_TypeConversion.GetLine(ClientId);
 
@@ -68,7 +68,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
-Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
+Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export // Service
 
     OPI_TypeConversion.GetLine(ClientId);
     OPI_TypeConversion.GetLine(ClientSecret);
@@ -96,7 +96,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
-Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
+Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export // Service
 
     OPI_TypeConversion.GetLine(ClientId);
     OPI_TypeConversion.GetLine(ClientSecret);
