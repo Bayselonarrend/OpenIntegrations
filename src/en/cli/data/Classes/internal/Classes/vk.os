@@ -1392,6 +1392,17 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "vk";
     NewLine.Модуль      = "OPI_VK";
+    NewLine.Метод       = "GetProductDescription";
+    NewLine.МетодПоиска = "GETPRODUCTDESCRIPTION";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Product management";
+    NewLine.ОписаниеМетода   = "Gets the description template for creating a product";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "vk";
+    NewLine.Модуль      = "OPI_VK";
     NewLine.Метод       = "GetSelectionList";
     NewLine.МетодПоиска = "GETSELECTIONLIST";
     NewLine.Параметр    = "--auth";

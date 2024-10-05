@@ -28,7 +28,7 @@ sidebar_position: 10
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Video       = "https://openyellow.neocities.org/test_data/video.mp4";
+    Video       = "https://openyellow.neocities.org/test_data/video.mp4"; // URL, Binary Data or Path to file
     Name        = "NewVideo";
     Description = "Video description";
 
