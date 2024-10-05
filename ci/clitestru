@@ -1978,6 +1978,10 @@ def test_vk(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe vk ПолучитьОписаниеТовара --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe vk ПолучитьСписокПодборок --auth "test" --debug --test '
                }
 

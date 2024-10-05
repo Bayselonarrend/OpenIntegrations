@@ -1,6 +1,6 @@
 ﻿    Параметры    = ПолучитьПараметрыВК();
 
-    Видео        = "https://openyellow.neocities.org/test_data/video.mp4";
+    Видео        = "https://openyellow.neocities.org/test_data/video.mp4"; // URL, Двоичные данные или Путь к файлу
     Наименование = "Новое видео";
     Описание     = "Описание видео";
 

@@ -3,9 +3,6 @@
 
     Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
     Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
-    Гифка     = "https://openyellow.neocities.org/test_data/animation.gif";      // URL, Двоичные данные или Путь к файлу
-
-    МассивМедиа = Новый Массив;
 
     МассивКартинок = Новый Массив();
     МассивКартинок.Добавить(Картинка1);

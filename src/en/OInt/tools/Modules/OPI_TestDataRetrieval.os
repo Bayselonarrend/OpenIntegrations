@@ -676,6 +676,13 @@ Procedure Check_VKTrue(Val Result) Export
 
 EndProcedure
 
+Procedure Check_VKElement(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
+
+EndProcedure
+
 Procedure Check_VKAlbum(Val Result, Val Description) Export
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -683,13 +690,18 @@ Procedure Check_VKAlbum(Val Result, Val Description) Export
 
 EndProcedure
 
-Procedure Check_VKAlbumPicture(Val Result, Val ImageDescription, Val AlbumID) Export
+Procedure Check_VKAlbumPicture(Val Result, Val ImageDescription, Val AlbumID = "") Export
 
     Response = "response";
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result[Response][0]["text"]).Равно(ImageDescription);
-    ExpectsThat(Result[Response][0]["album_id"]).Равно(AlbumID);
+
+    If ValueIsFilled(AlbumID) Then
+        ExpectsThat(Result[Response][0]["album_id"]).Равно(AlbumID);
+    Else
+        ExpectsThat(Result[Response][0]["album_id"]).Заполнено();
+    EndIf;
 
 EndProcedure
 
@@ -800,6 +812,13 @@ Procedure Check_VKVideo(Val Result) Export
 
     ExpectsThat(Result["video_id"]).Заполнено();
     ExpectsThat(Result["video_hash"]).Заполнено();
+
+EndProcedure
+
+Procedure Check_VKCategories(Val Result) Export
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["response"]["v2"]).ИмеетТип("Array").Заполнено();
 
 EndProcedure
 
@@ -1872,7 +1891,8 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
         FilePath = LibraryLogPath + "/" + Method + ".log";
         LogFile  = New File(FilePath);
 
-        If Not LogFile.Exist() Then
+        //If Not LogFile.Exist() Then
+        If True Then
             LogDocument = New TextDocument;
             LogDocument.SetText(Data);
             LogDocument.Write(FilePath);

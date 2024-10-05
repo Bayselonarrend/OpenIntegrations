@@ -2,19 +2,19 @@
 sidebar_position: 8
 ---
 
-# Get product description. 
+# Get product description
+ Gets the description template for creating a product
 
 
 
-
-`Function GetProductDescription() Export`
+`Function GetProductDescription(Val Clear = False) Export`
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
+  | Clear | --empty | Boolean | True > structure with empty valuse, False > field descriptions at values |
 
   
-  Returns:  Map Of KeyAndValue - Empty product description:
-
+  Returns:  Map Of KeyAndValue - Fields map
 
 <br/>
 
@@ -22,7 +22,9 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-  Result = OPI_VK.GetProductDescription();
+    Parameters = GetVKParameters();
+
+    Result = OPI_VK.GetProductDescription();
 ```
 
 

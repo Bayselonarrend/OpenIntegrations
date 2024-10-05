@@ -23,8 +23,9 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-  
-  Response = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
+    Parameters = GetVKParameters();
+
+    Result = OPI_VK.ShortenLink("https://github.com/Bayselonarrend/OpenIntegrations", Parameters);
 ```
 
 

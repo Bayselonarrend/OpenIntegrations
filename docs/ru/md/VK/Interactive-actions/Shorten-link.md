@@ -23,8 +23,9 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-  
-  Ответ = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
+    Параметры = ПолучитьПараметрыВК();
+
+    Результат = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
 ```
 
 

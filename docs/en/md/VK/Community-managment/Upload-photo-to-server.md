@@ -24,13 +24,12 @@ sidebar_position: 11
 
 
 ```bsl title="Code example"
-  Image = "https://openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-  
-  TFN = GetTempFileName("png");
-  FileCopy(Image, TFN);
-  
-  ImageUpload = OPI_VK.UploadPhotoToServer(Image, Parameters);
-  ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters);
+    Parameters = GetVKParameters();
+
+    Image = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Binary Data or Path to file
+    View  = "Post";
+
+    Result = OPI_VK.UploadPhotoToServer(Image, Parameters, View);
 ```
 
 

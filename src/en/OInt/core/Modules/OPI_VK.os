@@ -1254,27 +1254,15 @@ Function GroupProducts(Val ProductsArray, Val ExistingGroup = "", Val Parameters
 
 EndFunction
 
-// Get product description. !NOCLI
+// Get product description
+// Gets the description template for creating a product
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
-// Map Of KeyAndValue - Empty product description:
-// *Name - String - Product name
-// *Description - String - Product description
-// *Category - String - See GetProductCategoryList
-// *Price - Number - Product price
-// *OldPrice - Number - For displaying discount/changing price
-// *MainPhoto - String, BinaryData - Binary data or path to photo
-// *URL - String - Link to the store's website page
-// *AdditionalPhotos - Array Of String - Binary Data or Photo Paths
-// *PropertyValues - Array Of String - See AddPropertyVariant
-// *MainInGroup - Boolean - Main in the group, if exists in the group
-// *Width - Number - Product width in mm.
-// *Height - Number - Product height in mm.
-// *Depth - Number - Product depth in mm.
-// *Weight - Number - Weight in g.
-// *SKU - String - SKU
-// *AvailableBalance - Number - Balance. -1 - unlimited
-Function GetProductDescription() Export
+// Map Of KeyAndValue - Fields map
+Function GetProductDescription(Val Clear = False) Export
 
     Product = New Map();
     Product.Insert("Name"             , "New product"); // Product name
@@ -1293,6 +1281,12 @@ Function GetProductDescription() Export
     Product.Insert("Weight"           , Undefined); // In grams
     Product.Insert("SKU"              , Undefined); // Article
     Product.Insert("AvailableBalance" , 1);
+
+    If Clear Then
+        For Each DescField In Product Do
+            Product.Insert(DescField.Key, "");
+        EndDo;
+    EndIf;
 
     Return Product;
 
