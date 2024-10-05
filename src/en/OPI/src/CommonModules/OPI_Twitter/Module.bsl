@@ -139,7 +139,7 @@ EndFunction
 //
 // Returns:
 // HTTPResponse, Arbitrary, BinaryData - Result of reading the JSON response from the server
-Function HandleIncomingRequestAfterAuthorization(Request) Export
+Function HandleIncomingRequestAfterAuthorization(Request) Export // Service
 
     Code          = Request.RequestParameters["code"];
     TokenResponse = GetToken(Code);
