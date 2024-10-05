@@ -23,12 +23,9 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-  
-  Текст = "Картинка альпаки";
-  URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
-  
-  Ответ = OPI_Slack.СформироватьБлокКартинку(URL, Текст); //Соответствие
-  Ответ = OPI_Инструменты.JSONСтрокой(Ответ);             //JSON строка
+    Картинка  = "https://openyellow.neocities.org/test_data/picture.jpg";
+
+    Результат = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
 ```
 
 

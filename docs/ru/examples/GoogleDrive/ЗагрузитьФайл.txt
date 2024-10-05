@@ -1,6 +1,6 @@
-﻿    Токен    = "ya29.a0AcM612wnBx7VbJAgYkpcebX-dM-G_-TZtCiwVmt4adr2IykVRe3FPVyOQxRy1ktwloO2Jy3CswXjOAu0GkipxL7M2CO4jbCkqzmci2d7-...";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Каталог  = "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy";
+﻿    Токен    = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Картинка = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла();
     Описание.Вставить("Родитель", Каталог);

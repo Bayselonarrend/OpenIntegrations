@@ -23,12 +23,9 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-  
-  Text = "Alpaca picture";
-  URL = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1";
-  
-  Response = OPI_Slack.GenerateImageBlock(URL, Text); //Map
-  Response = OPI_Tools.JSONString(Response); //JSON string
+    Image = "https://openyellow.neocities.org/test_data/picture.jpg";
+
+    Result = OPI_Slack.GenerateImageBlock(Image, "Image");
 ```
 
 

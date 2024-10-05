@@ -1,0 +1,25 @@
+﻿    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Image1 = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Binary Data or Path to file
+    Image2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Binary Data or Path to file
+    GIF    = "https://openyellow.neocities.org/test_data/animation.gif"; // URL, Binary Data or Path to file
+
+    MediaArray = New Array;
+
+    ImageArray = New Array();
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    MediaPictureArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    MediaGifArray     = OPI_Twitter.UploadAttachmentsArray(GIF , "animated_gif", Parameters);
+
+    For Each MediaPicture In MediaPictureArray Do
+        MediaArray.Add(MediaPicture);
+    EndDo;
+
+    For Each MediaGif In MediaGifArray Do
+        MediaArray.Add(MediaGif);
+    EndDo;
+
+    Result = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);
