@@ -1,44 +1,48 @@
-﻿  {
-  "ok": true,
-  "channel": "C06UFNUTKUL",
-  "ts": "1714146538.221929",
-  "message": {
+﻿ {
+ "ok": true,
+ "channel": "C06UFNUTKUL",
+ "ts": "1728140448.697169",
+ "text": "TestMessage2",
+ "message": {
   "user": "U06UG1CAYH2",
   "type": "message",
-  "ts": "1714146538.221929",
+  "edited": {
+   "user": "B06TZ0MJV5M",
+   "ts": "1728140450.000000"
+  },
   "bot_id": "B06TZ0MJV5M",
   "app_id": "A06TYNH45RV",
   "text": "TestMessage2",
   "team": "T06UD92BS3C",
   "bot_profile": {
-  "id": "B06TZ0MJV5M",
-  "app_id": "A06TYNH45RV",
-  "name": "OpenIntegrations",
-  "icons": {
-  "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
-  "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
-  "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
-  },
-  "deleted": false,
-  "updated": 1713205238,
-  "team_id": "T06UD92BS3C"
+   "id": "B06TZ0MJV5M",
+   "app_id": "A06TYNH45RV",
+   "name": "OpenIntegrations",
+   "icons": {
+    "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
+    "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
+    "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
+   },
+   "deleted": false,
+   "updated": 1713205238,
+   "team_id": "T06UD92BS3C"
   },
   "blocks": [
-  {
-  "type": "rich_text",
-  "block_id": "MO6",
-  "elements": [
-  {
-  "type": "rich_text_section",
-  "elements": [
-  {
-  "type": "text",
-  "text": "TestMessage2"
-  }
+   {
+    "type": "rich_text",
+    "block_id": "x1M",
+    "elements": [
+     {
+      "type": "rich_text_section",
+      "elements": [
+       {
+        "type": "text",
+        "text": "TestMessage2"
+       }
+      ]
+     }
+    ]
+   }
   ]
-  }
-  ]
-  }
-  ]
-  }
-  }
+ }
+}
