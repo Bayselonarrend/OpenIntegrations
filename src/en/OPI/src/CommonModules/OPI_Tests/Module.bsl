@@ -991,6 +991,12 @@ EndProcedure
 Procedure TwitterAPI_Tweets() Export
 
     TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GIF"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Video"   , TestParameters);
+
+
     Twitter_CreateTextTweet(TestParameters);
     Twitter_CreateImageTweet(TestParameters);
     Twitter_CreateVideoTweet(TestParameters);
@@ -5846,7 +5852,9 @@ Procedure Slack_UploadFile(FunctionParameters)
 
     Result = OPI_Slack.UploadFile(Token, File, FileName, Title);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile"     , "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePublic" , "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePrivate", "Slack"); // SKIP
     OPI_TestDataRetrieval.Check_SlackFile(Result, FileName); // SKIP
 
     UploadedFile = Result["files"][0]["id"]; // SKIP
@@ -5872,8 +5880,7 @@ Procedure Slack_MakeFilePublic(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePublic", "Slack");
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -5886,8 +5893,7 @@ Procedure Slack_MakeFilePrivate(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePrivate", "Slack");
-    OPI_TestDataRetrieval.Check_SlackOk(Result);
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -6482,8 +6488,8 @@ Procedure Twitter_CreateImageTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Image  = OPI_TestDataRetrieval.GetParameter("Picture"); // URL, Binary or Path to file
-    Image2 = OPI_TestDataRetrieval.GetParameter("Picture2"); // URL, Binary or Path to file
+    Image  = FunctionParameters["Picture"]; // URL, Binary or Path to file
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary or Path to file
 
     ImageArray = New Array;
     ImageArray.Add(Image);
@@ -6522,8 +6528,8 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Video  = OPI_TestDataRetrieval.GetParameter("Video"); // URL, Binary or Path to file
-    Video2 = OPI_TestDataRetrieval.GetParameter("Video"); // URL, Binary or Path to file
+    Video  = FunctionParameters["Video"]; // URL, Binary or Path to file
+    Video2 = FunctionParameters["Video"]; // URL, Binary or Path to file
 
     VideosArray = New Array;
     VideosArray.Add(Video);
@@ -6562,8 +6568,8 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    GIF  = OPI_TestDataRetrieval.GetParameter("GIF"); // URL, Binary or Path to file
-    Gif2 = OPI_TestDataRetrieval.GetParameter("GIF"); // URL, Binary or Path to file
+    GIF  = FunctionParameters["GIF"]; // URL, Binary or Path to file
+    Gif2 = FunctionParameters["GIF"]; // URL, Binary or Path to file
 
     GifsArray = New Array;
     GifsArray.Add(GIF);

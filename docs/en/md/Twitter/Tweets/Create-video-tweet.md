@@ -27,8 +27,8 @@ sidebar_position: 4
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Video  = OPI_TestDataRetrieval.GetParameter("Video"); // URL, Binary or Path to file
-    Video2 = OPI_TestDataRetrieval.GetParameter("Video"); // URL, Binary or Path to file
+    Video  = "https://openyellow.neocities.org/test_data/video.mp4"; // URL, Binary or Path to file
+    Video2 = "https://openyellow.neocities.org/test_data/video.mp4"; // URL, Binary or Path to file
 
     VideosArray = New Array;
     VideosArray.Add(Video);
