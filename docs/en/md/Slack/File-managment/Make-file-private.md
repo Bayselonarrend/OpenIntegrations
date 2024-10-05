@@ -23,7 +23,10 @@ sidebar_position: 6
 
 
 ```bsl title="Code example"
+    Token  = "xoxb-6965308400114-696804637...";
+    FileID = "F07PK2C447M";
 
+    Result = OPI_Slack.MakeFilePrivate(Token, FileID);
 ```
 
 

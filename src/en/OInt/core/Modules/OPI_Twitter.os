@@ -158,8 +158,8 @@ EndFunction
 
 #Region Tweets
 
-// !NOCLI
 // Create custom tweet
+// Creates a tweet with custom content
 //
 // Parameters:
 // Text - String - Tweet text

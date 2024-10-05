@@ -996,6 +996,7 @@ Procedure TwitterAPI_Tweets() Export
     Twitter_CreateVideoTweet(TestParameters);
     Twitter_CreateGifTweet(TestParameters);
     Twitter_CreatePollTweet(TestParameters);
+    Twitter_CreateCustomTweet(TestParameters);
 
 EndProcedure
 
@@ -6596,7 +6597,7 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
 
 EndProcedure
 
-Procedure Twitter_CreatePollTweet(TestParameters)
+Procedure Twitter_CreatePollTweet(FunctionParameters)
 
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
@@ -6610,7 +6611,43 @@ Procedure Twitter_CreatePollTweet(TestParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "CreatePollTweet", "Twitter");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
 
+    OPI_Tools.Pause(20);
+
+EndProcedure
+
+Procedure Twitter_CreateCustomTweet(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+    GIF    = FunctionParameters["GIF"]; // URL, Binary Data or Path to file
+
+    MediaArray = New Array;
+
+    ImageArray = New Array();
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    MediaPictureArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    MediaGifArray     = OPI_Twitter.UploadAttachmentsArray(GIF , "animated_gif", Parameters);
+
+    For Each MediaPicture In MediaPictureArray Do
+        MediaArray.Add(MediaPicture);
+    EndDo;
+
+    For Each MediaGif In MediaGifArray Do
+        MediaArray.Add(MediaGif);
+    EndDo;
+
+    Result = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCustomTweet", "Twitter");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
 
     OPI_Tools.Pause(20);
