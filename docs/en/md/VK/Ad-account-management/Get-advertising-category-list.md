@@ -22,9 +22,9 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-  
-  Response = OPI_VK.GetAdvertisingCategoryList(Parameters);
-  Response = OPI_Tools.JSONString(Response);
+    Parameters = GetVKParameters();
+
+    Result = OPI_VK.GetAdvertisingCategoryList(Parameters);
 ```
 
 
