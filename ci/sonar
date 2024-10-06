@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+
+        stage('Scan') {
+            steps {
+                    bat 'call "C:/Program Files/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat" -D"sonar.projectKey=OpenIntegrations" -D"sonar.login=c7bba52fafdd733c533738dca138cdec9a800cf3" -D"sonar.sourceEncoding=UTF-8" -D"sonar.inclusions=**/*.bsl"'
+                    bat 'call "C:/Program Files/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat" -D"sonar.projectKey=OInt" -D"sonar.login=c7bba52fafdd733c533738dca138cdec9a800cf3" -D"sonar.sourceEncoding=UTF-8" -D"sonar.coverageReportPaths=OInt/coverage/genericCoverage.xml" -D"sonar.inclusions=**/*.os"'
+            }
+        }
+    }
+}
