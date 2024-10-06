@@ -1,16 +1,16 @@
-﻿    FromID        = "2262";
-    DestinationID = "2264";
+﻿    FromID        = "2326";
+    DestinationID = "2328";
     LinkType      = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = "2264";
-    DestinationID = "2262";
+    FromID        = "2328";
+    DestinationID = "2326";
     LinkType      = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "37d1fe66006e9f06006b12e400000001000...";
+    Token = "76ad0267006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token);

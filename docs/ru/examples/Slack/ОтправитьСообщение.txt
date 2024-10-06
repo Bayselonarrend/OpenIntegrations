@@ -9,7 +9,7 @@
     // С вложениями (в примере: блок с картинкой)
 
     Текст        = "Сообщение с картинкой";
-    Картинка     = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Картинка     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     МассивБлоков = Новый Массив;
 
     Блок = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
