@@ -2,7 +2,7 @@
  "ok": true,
  "result": [
   {
-   "message_id": 6539,
+   "message_id": 9313,
    "sender_chat": {
     "id": -1001893407333,
     "title": "Тестовый канал",
@@ -15,19 +15,19 @@
     "username": "testsichee",
     "type": "channel"
    },
-   "date": 1721467787,
-   "media_group_id": "13771742299292922",
+   "date": 1728223792,
+   "media_group_id": "13825790340733658",
    "document": {
     "file_name": "document.docx",
     "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "file_id": "BQACAgIAAx0EcNsaZQACGYtmm4OLAUGD8_UJ3Lr5ymkFtpjvAgACq04AAuwb2Ujx3-h6RNa_XDUE",
-    "file_unique_id": "AgADq04AAuwb2Ug",
+    "file_id": "BQACAgIAAxUHZwKaMEuR3ntDSrEv_IMt6nBzC3oAAp5oAAKhtxhI4CpfJ6SSOZ82BA",
+    "file_unique_id": "AgADnmgAAqG3GEg",
     "file_size": 24069
    },
    "caption": "Строковое значение"
   },
   {
-   "message_id": 6540,
+   "message_id": 9314,
    "sender_chat": {
     "id": -1001893407333,
     "title": "Тестовый канал",
@@ -40,13 +40,13 @@
     "username": "testsichee",
     "type": "channel"
    },
-   "date": 1721467787,
-   "media_group_id": "13771742299292922",
+   "date": 1728223792,
+   "media_group_id": "13825790340733658",
    "document": {
-    "file_name": "ustit9mvub3.docx",
+    "file_name": "hg3njfn1vnw.docx",
     "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "file_id": "BQACAgIAAx0EcNsaZQACGYxmm4OL61yi2OtArgUJ727WR1PK3QACrE4AAuwb2UgAARVgYBIW9681BA",
-    "file_unique_id": "AgADrE4AAuwb2Ug",
+    "file_id": "BQACAgIAAxUHZwKaMOYBoti_gdIvB6AhKEtTdPMAAp9oAAKhtxhIKh4m8irRTXQ2BA",
+    "file_unique_id": "AgADn2gAAqG3GEg",
     "file_size": 24069
    }
   }
