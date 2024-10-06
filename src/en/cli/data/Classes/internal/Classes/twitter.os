@@ -95,6 +95,70 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "twitter";
     NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "CreateCustomTweet";
+    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
+    NewLine.Параметр    = "--text";
+    NewLine.Описание    = "Tweet text (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tweets";
+    NewLine.ОписаниеМетода   = "Creates a tweet with custom content
+    |    Data structure for option --auth:
+    |    {
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
+    |    }
+    |";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "CreateCustomTweet";
+    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
+    NewLine.Параметр    = "--media";
+    NewLine.Описание    = "Array of binary data or file paths (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tweets";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "CreateCustomTweet";
+    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
+    NewLine.Параметр    = "--options";
+    NewLine.Описание    = "Array of poll options, if necessary (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tweets";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "CreateCustomTweet";
+    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
+    NewLine.Параметр    = "--dur";
+    NewLine.Описание    = "Poll duration if necessary (poll without duration is not created) (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tweets";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "CreateCustomTweet";
+    NewLine.МетодПоиска = "CREATECUSTOMTWEET";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tweets";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
     NewLine.Метод       = "CreateTextTweet";
     NewLine.МетодПоиска = "CREATETEXTTWEET";
     NewLine.Параметр    = "--text";

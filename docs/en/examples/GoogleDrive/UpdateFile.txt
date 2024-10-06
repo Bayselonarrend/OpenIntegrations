@@ -1,6 +1,6 @@
-﻿    Token      = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+﻿    Token      = "ya29.a0AcM612wEOFdYrBAfaaj3lE1VF2iHlHVb-W3gXbCVWL36GYSqOL8cYeXYOFK_xfKPGDQj5-McI9VK6I-mQnu5N1YpwfvaC725-og24iFeA...";
     NewName    = "UpdatedFile.jpg";
-    Identifier = "1f-YrvMCEZ7r3JWlLGM39zn6dctvFjwCi";
-    File       = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Binary Data or Path to file
+    Identifier = "1Zzs9l2aMP8tCEXbA4GGiMjbMFgUduv_G";
+    File       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Binary Data or Path to file
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);

@@ -6731,7 +6731,7 @@ Procedure Twitter_UploadAttachmentsArray(FunctionParameters)
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    Result = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    Result = OPI_Twitter.UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
 
     // END
 

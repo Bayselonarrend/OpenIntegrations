@@ -1,6 +1,6 @@
-﻿    Token       = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
-    Calendar    = "e8a267e4a6629e0ef3f8a08ca54f52e2b031d3c40bd27d2866c2ed083c6353ec@group.calendar.google.com";
-    Event       = "ro3gv4dokajnh90pcn58lel8e4";
+﻿    Token       = "ya29.a0AcM612wEOFdYrBAfaaj3lE1VF2iHlHVb-W3gXbCVWL36GYSqOL8cYeXYOFK_xfKPGDQj5-McI9VK6I-mQnu5N1YpwfvaC725-og24iFeA...";
+    Calendar    = "8be434c4a8687b5e4c7e3da77a79c04a3c204cae566019325b6236dd78c82a12@group.calendar.google.com";
+    Event       = "i54htl9nrvkh96c3l3c1inq5gc";
     Description = "New event description";
 
     EventDescription = New Map;
