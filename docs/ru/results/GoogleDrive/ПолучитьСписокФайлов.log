@@ -3,7 +3,7 @@
   "kind": "drive#file",
   "fileExtension": "json",
   "copyRequiresWriterPermission": false,
-  "md5Checksum": "dea2818d0dca271ee922375ffd8ec683",
+  "md5Checksum": "5001d8fdee164f5b6cf4bf3b6ae3e135",
   "writersCanShare": true,
   "viewedByMe": true,
   "mimeType": "application/json",
@@ -30,10 +30,10 @@
     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
    }
   ],
-  "headRevisionId": "0B92vrbrhqfJrUkxWam1TdyttV0VRZU1XT3ptazg0VGRodS9RPQ",
+  "headRevisionId": "0B92vrbrhqfJraDNoaENneXVCNmxZdncxV09jaVRpYU55RVV3PQ",
   "webViewLink": "https://drive.google.com/file/d/1NKMmj4SJh3WUw74nhLuMofW7dfpUR520/view?usp=drivesdk",
   "webContentLink": "https://drive.google.com/uc?id=1NKMmj4SJh3WUw74nhLuMofW7dfpUR520&export=download",
-  "size": "10661",
+  "size": "10577",
   "viewersCanCopyContent": true,
   "permissions": [
    {
@@ -58,11 +58,11 @@
   "trashed": false,
   "explicitlyTrashed": false,
   "createdTime": "2024-02-29T19:22:49.616Z",
-  "modifiedTime": "2024-09-29T16:25:16.537Z",
-  "modifiedByMeTime": "2024-09-29T16:25:16.537Z",
-  "viewedByMeTime": "2024-09-29T16:25:16.537Z",
-  "quotaBytesUsed": "10661",
-  "version": "5716",
+  "modifiedTime": "2024-10-05T13:43:41.346Z",
+  "modifiedByMeTime": "2024-10-05T13:43:41.346Z",
+  "viewedByMeTime": "2024-10-05T13:43:41.346Z",
+  "quotaBytesUsed": "10577",
+  "version": "5782",
   "originalFilename": "data.json",
   "ownedByMe": true,
   "fullFileExtension": "json",
@@ -108,7 +108,7 @@
    "securityUpdateEligible": false,
    "securityUpdateEnabled": true
   },
-  "sha1Checksum": "ad082a298fcc8873a00d49a0508c656f9ef00e4f",
-  "sha256Checksum": "bda11bb0892e65004e2b8725464a0e8764576b7c5e5d88ece42cfea6d1ffc742"
+  "sha1Checksum": "f54fcef182fd8c7965b7daa1961455008bf7628a",
+  "sha256Checksum": "50df10e06a49247be6216a06ff2244cd6c8c22ae7ba8307fc8c80ccb63acd20e"
  }
 ]

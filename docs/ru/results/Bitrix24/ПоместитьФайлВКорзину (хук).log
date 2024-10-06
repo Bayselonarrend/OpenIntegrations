@@ -1,6 +1,6 @@
 ﻿    {
  "result": {
-  "ID": "1716",
+  "ID": "12156",
   "NAME": "Новое имя файла.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": 3,
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "1134",
+  "FILE_ID": "8386",
   "SIZE": "805189",
-  "CREATE_TIME": "2024-07-03T14:42:28+00:00",
-  "UPDATE_TIME": "2024-07-03T14:42:28+00:00",
-  "DELETE_TIME": "2024-07-03T14:42:34+00:00",
+  "CREATE_TIME": "2024-10-06T17:32:53+03:00",
+  "UPDATE_TIME": "2024-10-06T17:32:53+03:00",
+  "DELETE_TIME": "2024-10-06T17:33:14+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/f2pph8uucc89is6c/download/?token=disk%7CaWQ9MTcxNiZfPVlLR0lGVWFITUw5MXYzVWFTTzY1S0toYUp5WHFJS2tv%7CImRvd25sb2FkfGRpc2t8YVdROU1UY3hOaVpmUFZsTFIwbEdWV0ZJVFV3NU1YWXpWV0ZUVHpZMVMwdG9ZVXA1V0hGSlMydHZ8MXxmMnBwaDh1dWNjODlpczZjIg%3D%3D.oIhYpHV7yxUxtNLLgo8xUyCwh34ug6rVCy1vgVshmcc%3D",
-  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новое имя файла.jpgi17200177547139i"
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11/download/?token=disk%7CaWQ9MTIxNTYmXz1yZmxnUnlyck5OSnQ0a2g0QngyQ1UzVHJyT2d3d0xSNw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXhOVFltWHoxeVpteG5Vbmx5Y2s1T1NuUTBhMmcwUW5neVExVXpWSEp5VDJkM2QweFNOdz09fDF8MW8yZG9qcnlxdmp5YmMxMSI%3D.VCJqr7al1WfS60f7Cu9zR0Wv7FcGRJ07bHC4vUuxNos%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новое имя файла.jpgi17282251947629i"
  },
  "time": {
-  "start": 1720017754.6754,
-  "finish": 1720017754.74894,
-  "duration": 0.073544979095459,
-  "processing": 0.042219877243042,
-  "date_start": "2024-07-03T14:42:34+00:00",
-  "date_finish": "2024-07-03T14:42:34+00:00",
-  "operating_reset_at": 1720018354,
+  "start": 1728225194.73184,
+  "finish": 1728225194.78714,
+  "duration": 0.0553038120269775,
+  "processing": 0.029655933380127,
+  "date_start": "2024-10-06T17:33:14+03:00",
+  "date_finish": "2024-10-06T17:33:14+03:00",
+  "operating_reset_at": 1728225794,
   "operating": 0
  }
 }

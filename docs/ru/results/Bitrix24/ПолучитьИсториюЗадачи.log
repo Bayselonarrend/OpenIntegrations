@@ -2,8 +2,8 @@
  "result": {
   "list": [
    {
-    "id": "1044",
-    "createdDate": "19.06.2024 10:57:54",
+    "id": "29044",
+    "createdDate": "06.10.2024 17:32:24",
     "field": "NEW",
     "value": {
      "from": null,
@@ -18,8 +18,56 @@
     }
    },
    {
-    "id": "1052",
-    "createdDate": "19.06.2024 10:58:01",
+    "id": "29046",
+    "createdDate": "06.10.2024 17:32:30",
+    "field": "START_DATE_PLAN",
+    "value": {
+     "from": "",
+     "to": "1728225144"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "29048",
+    "createdDate": "06.10.2024 17:32:30",
+    "field": "END_DATE_PLAN",
+    "value": {
+     "from": "",
+     "to": "1728248400"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "29050",
+    "createdDate": "06.10.2024 17:32:30",
+    "field": "DURATION_PLAN_SECONDS",
+    "value": {
+     "from": "",
+     "to": "23256"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "29064",
+    "createdDate": "06.10.2024 17:32:31",
     "field": "TITLE",
     "value": {
      "from": "Новая задача",
@@ -34,8 +82,8 @@
     }
    },
    {
-    "id": "1054",
-    "createdDate": "19.06.2024 10:58:01",
+    "id": "29066",
+    "createdDate": "06.10.2024 17:32:31",
     "field": "DESCRIPTION",
     "value": {
      "from": "",
@@ -50,8 +98,8 @@
     }
    },
    {
-    "id": "1056",
-    "createdDate": "19.06.2024 10:58:01",
+    "id": "29068",
+    "createdDate": "06.10.2024 17:32:31",
     "field": "PRIORITY",
     "value": {
      "from": "2",
@@ -66,12 +114,12 @@
     }
    },
    {
-    "id": "1064",
-    "createdDate": "19.06.2024 10:58:08",
+    "id": "29074",
+    "createdDate": "06.10.2024 17:32:33",
     "field": "RESPONSIBLE_ID",
     "value": {
      "from": "1",
-     "to": "10"
+     "to": "574"
     },
     "user": {
      "id": "1",
@@ -82,28 +130,12 @@
     }
    },
    {
-    "id": "1066",
-    "createdDate": "19.06.2024 10:58:08",
-    "field": "AUDITORS",
-    "value": {
-     "from": "",
-     "to": "1"
-    },
-    "user": {
-     "id": "1",
-     "name": "Антон",
-     "lastName": "Титовец",
-     "secondName": null,
-     "login": "VKuser657846756"
-    }
-   },
-   {
-    "id": "1068",
-    "createdDate": "19.06.2024 10:58:08",
+    "id": "29076",
+    "createdDate": "06.10.2024 17:32:33",
     "field": "COMMENT",
     "value": {
      "from": null,
-     "to": "406"
+     "to": "5778"
     },
     "user": {
      "id": "1",
@@ -114,8 +146,8 @@
     }
    },
    {
-    "id": "1072",
-    "createdDate": "19.06.2024 10:58:10",
+    "id": "29080",
+    "createdDate": "06.10.2024 17:32:34",
     "field": "STATUS",
     "value": {
      "from": "2",
@@ -130,8 +162,8 @@
     }
    },
    {
-    "id": "1078",
-    "createdDate": "19.06.2024 10:58:12",
+    "id": "29086",
+    "createdDate": "06.10.2024 17:32:34",
     "field": "STATUS",
     "value": {
      "from": "6",
@@ -146,12 +178,12 @@
     }
    },
    {
-    "id": "1080",
-    "createdDate": "19.06.2024 10:58:12",
+    "id": "29088",
+    "createdDate": "06.10.2024 17:32:34",
     "field": "COMMENT",
     "value": {
      "from": null,
-     "to": "410"
+     "to": "5782"
     },
     "user": {
      "id": "1",
@@ -162,8 +194,8 @@
     }
    },
    {
-    "id": "1086",
-    "createdDate": "19.06.2024 10:58:16",
+    "id": "29094",
+    "createdDate": "06.10.2024 17:32:35",
     "field": "STATUS",
     "value": {
      "from": "5",
@@ -178,12 +210,12 @@
     }
    },
    {
-    "id": "1088",
-    "createdDate": "19.06.2024 10:58:17",
+    "id": "29096",
+    "createdDate": "06.10.2024 17:32:36",
     "field": "COMMENT",
     "value": {
      "from": null,
-     "to": "414"
+     "to": "5786"
     },
     "user": {
      "id": "1",
@@ -194,8 +226,8 @@
     }
    },
    {
-    "id": "1092",
-    "createdDate": "19.06.2024 10:58:18",
+    "id": "29100",
+    "createdDate": "06.10.2024 17:32:36",
     "field": "STATUS",
     "value": {
      "from": "2",
@@ -210,24 +242,8 @@
     }
    },
    {
-    "id": "1096",
-    "createdDate": "19.06.2024 10:58:22",
-    "field": "AUDITORS",
-    "value": {
-     "from": "1",
-     "to": ""
-    },
-    "user": {
-     "id": "1",
-     "name": "Антон",
-     "lastName": "Титовец",
-     "secondName": null,
-     "login": "VKuser657846756"
-    }
-   },
-   {
-    "id": "1100",
-    "createdDate": "19.06.2024 10:58:23",
+    "id": "29104",
+    "createdDate": "06.10.2024 17:32:37",
     "field": "STATUS",
     "value": {
      "from": "3",
@@ -244,13 +260,13 @@
   ]
  },
  "time": {
-  "start": 1718783905.33427,
-  "finish": 1718783905.37664,
-  "duration": 0.0423648357391357,
-  "processing": 0.00563311576843262,
-  "date_start": "2024-06-19T07:58:25+00:00",
-  "date_finish": "2024-06-19T07:58:25+00:00",
-  "operating_reset_at": 1718784505,
+  "start": 1728225158.09553,
+  "finish": 1728225158.1284,
+  "duration": 0.0328729152679443,
+  "processing": 0.00580787658691406,
+  "date_start": "2024-10-06T17:32:38+03:00",
+  "date_finish": "2024-10-06T17:32:38+03:00",
+  "operating_reset_at": 1728225758,
   "operating": 0
  }
 }

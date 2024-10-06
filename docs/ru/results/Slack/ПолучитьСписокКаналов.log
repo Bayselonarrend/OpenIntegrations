@@ -1,50 +1,4170 @@
-﻿  
+﻿    {
+ "ok": true,
+ "channels": [
   {
-  "ok": true,
-  "channels": [
+   "id": "C06UD92DF1Q",
+   "name": "general",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713202497,
+   "is_archived": false,
+   "is_general": true,
+   "unlinked": 0,
+   "name_normalized": "general",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394518358,
+   "parent_conversation": null,
+   "creator": "U06UABH3APP",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.",
+    "creator": "U06UABH3APP",
+    "last_set": 1713202497
+   },
+   "properties": {
+    "use_case": "welcome"
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
   {
-  "id": "C06UD92DF1Q",
-  "name": "general",
-  "is_channel": true,
-  "is_group": false,
-  "is_im": false,
-  "is_mpim": false,
-  "is_private": false,
-  "created": 1713202497,
-  "is_archived": false,
-  "is_general": true,
-  "unlinked": 0,
-  "name_normalized": "general",
-  "is_shared": false,
-  "is_org_shared": false,
-  "is_pending_ext_shared": false,
-  "pending_shared": [],
-  "context_team_id": "T06UD92BS3C",
-  "updated": 1713202497794,
-  "parent_conversation": null,
-  "creator": "U06UABH3APP",
-  "is_ext_shared": false,
-  "shared_team_ids": [
-  "T06UD92BS3C"
-  ],
-  "pending_connected_team_ids": [],
-  "is_member": false,
-  "topic": {
-  "value": "",
-  "creator": "",
-  "last_set": 0
+   "id": "C06UFNUTKUL",
+   "name": "slack-api-librarry",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713202541,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "slack-api-librarry",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515808,
+   "parent_conversation": null,
+   "creator": "U06UABH3APP",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "This channel is for everything #slack-api-librarry. Hold meetings, share docs, and make decisions together with your team.",
+    "creator": "U06UABH3APP",
+    "last_set": 1713202541
+   },
+   "properties": {
+    "tabs": [
+     {
+      "id": "files",
+      "label": "",
+      "type": "files"
+     }
+    ],
+    "use_case": "project"
+   },
+   "previous_names": [],
+   "num_members": 2
   },
-  "purpose": {
-  "value": "This is the one channel that will always include everyone. It’s a great spot for announcements and team-wide conversations.",
-  "creator": "U06UABH3APP",
-  "last_set": 1713202497
+  {
+   "id": "C06UW6XHU5V",
+   "name": "testconvd9226ab3-0341-4abb-97c4-a185b7ace9e8",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713701752,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd9226ab3-0341-4abb-97c4-a185b7ace9e8",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515915,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 0
   },
-  "properties": {
-  "use_case": "welcome"
+  {
+   "id": "C06UWD6523Z",
+   "name": "testconvdfd146d0-f8c0-4e9f-9df8-56cc13c7e1dc",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713712534,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvdfd146d0-f8c0-4e9f-9df8-56cc13c7e1dc",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515846,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 0
   },
-  "previous_names": [],
-  "num_members": 1
+  {
+   "id": "C06UWE86G6B",
+   "name": "testconvd735149e-54c5-4ffd-9273-52ff271aa017",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713714385,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd735149e-54c5-4ffd-9273-52ff271aa017",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515945,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C06V22V0UP2",
+   "name": "random",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713202498,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "random",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515817,
+   "parent_conversation": null,
+   "creator": "U06UABH3APP",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "This channel is for... well, everything else. It’s a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!",
+    "creator": "U06UABH3APP",
+    "last_set": 1713202498
+   },
+   "properties": {
+    "use_case": "random"
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C06V461Q04W",
+   "name": "testconv7fc83454-2dca-48c6-8782-d20df4404693",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713704198,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv7fc83454-2dca-48c6-8782-d20df4404693",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515869,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C06V4B80VPG",
+   "name": "testconvbd8e0c06-222d-4211-8acf-e42a02bb0786",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713713004,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvbd8e0c06-222d-4211-8acf-e42a02bb0786",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515892,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 2
+  },
+  {
+   "id": "C06V4BEKF0E",
+   "name": "testconvdd858495-e722-4610-85ce-0a1ae2284fdb",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713713351,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvdd858495-e722-4610-85ce-0a1ae2284fdb",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515903,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C06V7J5L8H3",
+   "name": "testconv",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713687347,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515930,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 0
+  },
+  {
+   "id": "C06VAPKSDC2",
+   "name": "testconv7cf243e8-ff71-4e16-9025-1ce474858327",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713702070,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv7cf243e8-ff71-4e16-9025-1ce474858327",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516010,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C06VAQZVC4A",
+   "name": "testconv4f1604f7-396c-4a60-b628-1cd49af8234d",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713704560,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv4f1604f7-396c-4a60-b628-1cd49af8234d",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515966,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 0
+  },
+  {
+   "id": "C06VB1APE3U",
+   "name": "testconv1a9c98c8-feb4-4960-995b-388d768f4011",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713714396,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv1a9c98c8-feb4-4960-995b-388d768f4011",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515957,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C06VB1D3TQA",
+   "name": "testconv0b533cfd-3373-4a4b-ab64-b1ef838e8191",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713714522,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv0b533cfd-3373-4a4b-ab64-b1ef838e8191",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515998,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713714523
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713714524
+   },
+   "previous_names": [],
+   "num_members": 0
+  },
+  {
+   "id": "C06VDG5MCE8",
+   "name": "testconvc71d861f-8156-400b-9a92-3fbd21d47ae1",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713716371,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvc71d861f-8156-400b-9a92-3fbd21d47ae1",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515976,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713716371
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713716372
+   },
+   "previous_names": [
+    "testconvcd5e7639-cb43-4bae-957b-b4997fd63474"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C06VDMYQN1H",
+   "name": "testconv7d9f3a27-7e59-4398-beb0-02222f3d9251",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713781372,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv7d9f3a27-7e59-4398-beb0-02222f3d9251",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394515986,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713781372
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713781372
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C0702NT76MD",
+   "name": "testconvd794a59d-71fc-4b51-8b65-323aa3c513c0",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713986684,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd794a59d-71fc-4b51-8b65-323aa3c513c0",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516069,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713986684
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713986685
+   },
+   "previous_names": [
+    "testconv7952fd2d-5c23-469e-9a28-5b69aad333dd"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0708SE8528",
+   "name": "testconvd50b3bad-cc84-4a77-a009-f39d1efed641",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713863740,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd50b3bad-cc84-4a77-a009-f39d1efed641",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516039,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713863741
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713863741
+   },
+   "previous_names": [
+    "testconv2d4f3262-c0ef-4c98-9266-6514b33b5687"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0709EAFC5D",
+   "name": "testconv8a76e862-dbd7-4734-b90d-0ae6664e03a2",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714069474,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv8a76e862-dbd7-4734-b90d-0ae6664e03a2",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516048,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714069474
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714069474
+   },
+   "previous_names": [
+    "testconv53470433-9a35-4974-98fd-bbc96a8b0067"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0709L4LDJ5",
+   "name": "testconv058f86af-3260-4b72-9843-08b710481177",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713713391,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv058f86af-3260-4b72-9843-08b710481177",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516058,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 0
+  },
+  {
+   "id": "C0709LR7KU1",
+   "name": "testconvda7b5b65-ec3d-4a3c-b304-616a19f8044f",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713714448,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvda7b5b65-ec3d-4a3c-b304-616a19f8044f",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516097,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713714448
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C0709LRDD8R",
+   "name": "testconvd7ae2c36-fdbd-42cb-ac45-d59dad94b674",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713714458,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd7ae2c36-fdbd-42cb-ac45-d59dad94b674",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516080,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713714459
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C0709MJ33F0",
+   "name": "testconv9a044106-904e-4f98-a916-d81a5f0a32e7",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713977565,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv9a044106-904e-4f98-a916-d81a5f0a32e7",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516110,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C070J5QBQ7R",
+   "name": "testconv67f32bd1-1eb2-4984-967b-aee8f309bb5d",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714207704,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv67f32bd1-1eb2-4984-967b-aee8f309bb5d",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516199,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714207704
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714207704
+   },
+   "previous_names": [
+    "testconvcc923d9d-e44f-47ba-9f1a-b0fae1beb8f4"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070JTKJAPR",
+   "name": "testconv46d1863c-a256-4fb5-8fc9-b19226154430",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714240041,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv46d1863c-a256-4fb5-8fc9-b19226154430",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516162,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714240042
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714240042
+   },
+   "previous_names": [
+    "testconvca5df983-9978-41bf-aca9-027fbe121dd1"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070KJCSFME",
+   "name": "testconv38adda05-9437-4e62-a34d-4073310a7816",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713704219,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv38adda05-9437-4e62-a34d-4073310a7816",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516119,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C070KQPUVCG",
+   "name": "testconv3342e4f0-24cc-4e31-9079-9de6ecc8fb8b",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1713715056,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv3342e4f0-24cc-4e31-9079-9de6ecc8fb8b",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516140,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713715056
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1713715057
+   },
+   "previous_names": [
+    "testconv35c5b737-303d-4f8a-bab0-6346e77dca4e"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070PJL9G4S",
+   "name": "testconvd0d10f25-1277-40cf-9a40-78ef91530c66",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714065591,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd0d10f25-1277-40cf-9a40-78ef91530c66",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516129,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714065591
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714065592
+   },
+   "previous_names": [
+    "testconvcdb54859-61d4-4da7-b56b-deafbd58e3e1"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070RR6MLH2",
+   "name": "testconv71089f8a-ef35-4998-8fa6-3b61bd7c368d",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714063416,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv71089f8a-ef35-4998-8fa6-3b61bd7c368d",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516153,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714063416
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714063417
+   },
+   "previous_names": [
+    "testconv51aabbb2-6713-4b72-aedf-639476df6c7d"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070SHC74E8",
+   "name": "testconv53c9438c-a99a-40df-9eb3-d9445f684f72",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714070176,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv53c9438c-a99a-40df-9eb3-d9445f684f72",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516173,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714070176
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714070177
+   },
+   "previous_names": [
+    "testconva11da97d-7163-4800-a577-db62163503ba"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070T2FU65C",
+   "name": "testconv235656ee-e93c-4ef6-934f-a880a64abd27",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714250805,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv235656ee-e93c-4ef6-934f-a880a64abd27",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516180,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714250805
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714250805
+   },
+   "previous_names": [
+    "testconv57576569-0780-43b4-8116-135d4cf983fd"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070VPMKN8J",
+   "name": "testconv42a25b36-8de3-4293-a6a9-6b92e6ea81ec",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714146542,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv42a25b36-8de3-4293-a6a9-6b92e6ea81ec",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516208,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714146542
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714146542
+   },
+   "previous_names": [
+    "testconv9a14fe4d-2fb1-4e47-b1e4-9bc1e4f7a05c"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070XPVH2N9",
+   "name": "testconvf3ede6e7-4e1c-485f-b0ab-8d8622540534",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714306702,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvf3ede6e7-4e1c-485f-b0ab-8d8622540534",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516190,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714306702
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714306703
+   },
+   "previous_names": [
+    "testconv0c2295b4-f58c-48db-8d31-efef799dba08"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C070YTBN5T4",
+   "name": "testconv37c598b5-d596-46d7-aef3-dd45ec2a685c",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714215818,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv37c598b5-d596-46d7-aef3-dd45ec2a685c",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516219,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714215818
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714215818
+   },
+   "previous_names": [
+    "testconv9d663235-a7e5-4e39-b92a-43dadd9f46f0"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C07126LF4TW",
+   "name": "testconv9a14fe4d-2fb1-4e47-b1e4-9bc1e4f7a05c",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714252940,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv9a14fe4d-2fb1-4e47-b1e4-9bc1e4f7a05c",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516242,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714252979
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C0712U07K9A",
+   "name": "testconv22662617-59cd-4d63-8943-c3d9675ba80f",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714294056,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv22662617-59cd-4d63-8943-c3d9675ba80f",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516289,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714294056
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714294057
+   },
+   "previous_names": [
+    "testconv63cab95a-3adc-4001-b0e2-44843e0caaa9"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C071U5W2V2S",
+   "name": "testconvac4c81c6-b921-4ccc-8aaf-3531dbda497f",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714856185,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvac4c81c6-b921-4ccc-8aaf-3531dbda497f",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516233,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714856185
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714856185
+   },
+   "previous_names": [
+    "testconvc1a2b97d-cae2-4184-a6f4-ec7e80f9b661"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C071U6N253Q",
+   "name": "testconv2eb90b19-cd9f-4882-a137-031a5e49e46a",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714857525,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv2eb90b19-cd9f-4882-a137-031a5e49e46a",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516255,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714857525
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714857525
+   },
+   "previous_names": [
+    "testconva99c63cd-0c61-4eb5-9e59-3f29ca75a16f"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C071XLQ7PQD",
+   "name": "testconv72fd8a05-c451-4119-af2a-11d51705b9b8",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714845681,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv72fd8a05-c451-4119-af2a-11d51705b9b8",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516271,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714845681
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714845681
+   },
+   "previous_names": [
+    "testconv573d097b-5a87-420d-9464-304c713be8cb"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0721GLMJTU",
+   "name": "testconv317cecec-827a-4f32-b189-0e6fc041fcd9",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714897733,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv317cecec-827a-4f32-b189-0e6fc041fcd9",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516309,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714897733
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714897734
+   },
+   "previous_names": [
+    "testconvd7f7de39-4e4c-4005-b373-8d996ad8c94d"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0724NUTLNB",
+   "name": "testconv6e80c811-fa13-426f-880f-f966926ee34c",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715183466,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv6e80c811-fa13-426f-880f-f966926ee34c",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516263,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715183466
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715183466
+   },
+   "previous_names": [
+    "testconv27e0cf26-5509-4f6b-bf30-94d51b714284"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C072KRSPV2A",
+   "name": "testconvca347893-9e51-4d87-bbf4-96c19acc4ca1",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715280098,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvca347893-9e51-4d87-bbf4-96c19acc4ca1",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516377,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715280098
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715280098
+   },
+   "previous_names": [
+    "testconv420c98b2-760b-4199-9d38-3f9a4f3428b8"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C072N0VGGKX",
+   "name": "testconva9d83edf-0ff1-4465-bc12-352d38ad03ab",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715264695,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconva9d83edf-0ff1-4465-bc12-352d38ad03ab",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516327,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715264696
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715264696
+   },
+   "previous_names": [
+    "testconvc76e78ae-64b4-410b-b1f7-c48da8950a89"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C072PKDN6AU",
+   "name": "testconv86d847f9-515c-48b6-963b-1eb5eb95b1cd",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1714858376,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv86d847f9-515c-48b6-963b-1eb5eb95b1cd",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516280,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714858376
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1714858376
+   },
+   "previous_names": [
+    "testconvfa4a18f5-0605-4c45-a26d-31fbe5409f74"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C072RNVRX3Q",
+   "name": "testconv920720e8-6ca3-48d4-a1d7-7e57037e82d2",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715365082,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv920720e8-6ca3-48d4-a1d7-7e57037e82d2",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516299,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715365082
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715365082
+   },
+   "previous_names": [
+    "testconv458a0eee-aad2-4965-bc0f-768da5f32c4a"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C072SG85068",
+   "name": "testconv2f424c3d-4406-421f-8a86-c13a4bae28d2",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715254432,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv2f424c3d-4406-421f-8a86-c13a4bae28d2",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516337,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715254432
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715254432
+   },
+   "previous_names": [
+    "testconv500f33fc-e676-46d2-8599-107e22cd076d"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C073058PW3D",
+   "name": "testconv95a78bcf-7ef8-484e-b4e7-f36448b60617",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715416325,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv95a78bcf-7ef8-484e-b4e7-f36448b60617",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516317,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715416326
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715416326
+   },
+   "previous_names": [
+    "testconvccd30608-4066-472c-af5e-7a6ad5ef85ca"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0732C2MA9H",
+   "name": "testconv5d1687a2-e4b0-4da8-80e5-13acf70207d3",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715533791,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv5d1687a2-e4b0-4da8-80e5-13acf70207d3",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516354,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715533791
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715533791
+   },
+   "previous_names": [
+    "testconve71d69bb-df52-4c05-8c5b-9e97ad06bb46"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C07350Q78KW",
+   "name": "testconv4644a63d-1b7f-4613-ab55-3d02040318f7",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715535207,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv4644a63d-1b7f-4613-ab55-3d02040318f7",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516345,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715535208
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715535208
+   },
+   "previous_names": [
+    "testconvad40c2a4-3131-4841-97ea-51d739ce0e02"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C073CT5TWQH",
+   "name": "testconv07520087-96b6-43a3-bdcc-7b1d89b31d0c",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715414533,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv07520087-96b6-43a3-bdcc-7b1d89b31d0c",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516367,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715414533
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715414534
+   },
+   "previous_names": [
+    "testconv99ccbee3-750e-47f5-baa4-268d2c81cd4f"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C073DTS7X41",
+   "name": "testconv1b050fb7-cd09-426a-9ee6-dc6bf119d8b7",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1715465341,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv1b050fb7-cd09-426a-9ee6-dc6bf119d8b7",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516434,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715465341
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1715465341
+   },
+   "previous_names": [
+    "testconv24fbff79-89ca-42e3-a67a-14925a3a0d44"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C074GQSPHAM",
+   "name": "testconvaec723f7-7de4-4079-b233-93b31a31401d",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1716114219,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvaec723f7-7de4-4079-b233-93b31a31401d",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516424,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716114220
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716114220
+   },
+   "previous_names": [
+    "testconv50271dea-e400-4b6f-a754-201a2b416b13"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C074K4154SE",
+   "name": "testconv2bdbfb37-f761-47ee-90d3-ab3cef19eb04",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1716360927,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv2bdbfb37-f761-47ee-90d3-ab3cef19eb04",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516404,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716360928
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716360928
+   },
+   "previous_names": [
+    "testconvd38eea21-87ac-4164-a99d-0302d883fffe"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C074QSWRSA3",
+   "name": "testconvdfeaa707-2421-4355-ae5b-d451fa2a3da2",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1716712401,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvdfeaa707-2421-4355-ae5b-d451fa2a3da2",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516387,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716712401
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716712401
+   },
+   "previous_names": [
+    "testconvb6551c73-97ab-4b93-8f71-f9a6842a973c"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0753TWP6GJ",
+   "name": "testconv270630cb-45f7-4943-b32a-6aa3112b1139",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1716632215,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv270630cb-45f7-4943-b32a-6aa3112b1139",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516454,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716632215
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716632216
+   },
+   "previous_names": [
+    "testconv297a7d61-a7f7-48ad-a921-bdb388eb0f17"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0757FQL0DC",
+   "name": "testconva374355b-4713-4af3-888f-10ed2f310437",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1716901682,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconva374355b-4713-4af3-888f-10ed2f310437",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516395,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716901683
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716901683
+   },
+   "previous_names": [
+    "testconv8150dbe1-c4b2-402d-9858-898b55b0b452"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C075BC1309M",
+   "name": "testconva53ac4d8-918c-4849-8954-61e00c53d649",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717054689,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconva53ac4d8-918c-4849-8954-61e00c53d649",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516413,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717054689
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717054689
+   },
+   "previous_names": [
+    "testconv017e7c37-b956-4bb5-93e7-6485a9dc7d78"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C075CPX3XHV",
+   "name": "testconv0047fb9b-979d-4066-b6db-5a57f3fd0bc9",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717072320,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv0047fb9b-979d-4066-b6db-5a57f3fd0bc9",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516444,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717072320
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717072320
+   },
+   "previous_names": [
+    "testconv493a3e18-ddbe-4ec6-9f31-570c0cf91707"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C075G1DQU69",
+   "name": "testconvc67ece39-cece-4bc3-b429-901de9ed0697",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1716965443,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvc67ece39-cece-4bc3-b429-901de9ed0697",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516475,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716965443
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716965443
+   },
+   "previous_names": [
+    "testconva1936306-632f-4784-91ec-c715f0cae9bd"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C075GPVFZ52",
+   "name": "testconv021248c9-2aa0-400d-b18c-e555c8c68acd",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1716903243,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv021248c9-2aa0-400d-b18c-e555c8c68acd",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516627,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716903244
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1716903244
+   },
+   "previous_names": [
+    "testconvbcd199ec-ed19-46e7-8fad-2701e6cf7243"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C075QMR63A8",
+   "name": "testconv392ce12a-2a70-4567-826c-3849114ca095",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717000102,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv392ce12a-2a70-4567-826c-3849114ca095",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516572,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717000102
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717000103
+   },
+   "previous_names": [
+    "testconvca5a961e-a30f-472a-8c55-8e2de8437eb8"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C075UDQ9MN3",
+   "name": "testconv148aa6ba-9527-4c7c-a157-99b03e151b5a",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717408700,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv148aa6ba-9527-4c7c-a157-99b03e151b5a",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516464,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717408700
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717408700
+   },
+   "previous_names": [
+    "testconve14b3b26-6780-4dcb-903b-0b05efcb7432"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0764FWP1GB",
+   "name": "testconva4013098-9507-4065-a1bc-c6168d029163",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717260325,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconva4013098-9507-4065-a1bc-c6168d029163",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516490,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C0764KRUFCJ",
+   "name": "testconv8dac87f5-0aae-4e97-8bed-b7c28fe3a058",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717261169,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv8dac87f5-0aae-4e97-8bed-b7c28fe3a058",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516541,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717261169
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717261169
+   },
+   "previous_names": [
+    "testconva633117a-a6a5-4015-a8d5-0de5d3047dee"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C07661PCJ3C",
+   "name": "testconvfaf5249c-24ed-4e4f-b077-ae51f3e3d302",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717331299,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvfaf5249c-24ed-4e4f-b077-ae51f3e3d302",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516517,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717331299
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717331299
+   },
+   "previous_names": [
+    "testconvb34e1786-abff-4aa1-8882-12d10b2d9acd"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C07669DQL82",
+   "name": "testconv32ff5b7b-41ce-447e-8abc-b6788b27e346",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717343115,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv32ff5b7b-41ce-447e-8abc-b6788b27e346",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516528,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717343116
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717343116
+   },
+   "previous_names": [
+    "testconvbf8b3358-2a87-4f12-8603-37cb931d60c5"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C07677B0BSQ",
+   "name": "testconvdeb54ad9-c7b5-4d97-8f74-c8abe75e25ac",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717265593,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvdeb54ad9-c7b5-4d97-8f74-c8abe75e25ac",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516638,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C07677KRERJ",
+   "name": "testconvd50dd4b6-11e2-4724-aec1-b527f4426be1",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717266001,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd50dd4b6-11e2-4724-aec1-b527f4426be1",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516554,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717266002
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717266002
+   },
+   "previous_names": [
+    "testconv0ac17a76-8ce1-4e2b-89de-d6a1b34e0def"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0767ERATNY",
+   "name": "testconv00ed8ea5-5fd6-49db-a812-5395d584352a",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717277722,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv00ed8ea5-5fd6-49db-a812-5395d584352a",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516582,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717277722
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717277722
+   },
+   "previous_names": [
+    "testconve642e97e-2fe8-4bc7-9447-db5aa478bee7"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076AABBFBM",
+   "name": "testconv70758c54-8f5a-464d-827b-d67e5f3b9ebc",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717424512,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv70758c54-8f5a-464d-827b-d67e5f3b9ebc",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516594,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717424512
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717424512
+   },
+   "previous_names": [
+    "testconvdbd543ce-8919-4908-b56e-c8c0ec5e7c1b"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076ACJCLMA",
+   "name": "testconvb3dc5fcf-6093-43b4-a287-b60b16aa465a",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717395801,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvb3dc5fcf-6093-43b4-a287-b60b16aa465a",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516615,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717395802
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717395802
+   },
+   "previous_names": [
+    "testconv2a29ac12-f791-4d2e-9257-97fdc6941454"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076E1CG0GL",
+   "name": "testconvf688d314-606f-40f8-bf8b-c1cd83b0ce18",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717434166,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvf688d314-606f-40f8-bf8b-c1cd83b0ce18",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516602,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717434166
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717434166
+   },
+   "previous_names": [
+    "testconv56aa44a5-31f7-4903-bb31-38fd7f1ca9b6"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076EGPPP6C",
+   "name": "testconv34226fef-e438-4937-b11a-95342a84e6c5",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717052298,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv34226fef-e438-4937-b11a-95342a84e6c5",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516651,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717052298
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717052298
+   },
+   "previous_names": [
+    "testconvc88979b1-bef7-40bc-b7df-8d6417a0767c"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076FDQ64TT",
+   "name": "testconvc09b7ed8-7d6a-41be-807d-90cb090c775b",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717189960,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvc09b7ed8-7d6a-41be-807d-90cb090c775b",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516691,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717189960
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717189960
+   },
+   "previous_names": [
+    "testconv13aa9c64-29c2-4d35-a5dd-c4354fbc4894"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076H9SSA9X",
+   "name": "testconv17c5d2e3-0a55-49c3-b9e1-090ecd77626d",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717260829,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv17c5d2e3-0a55-49c3-b9e1-090ecd77626d",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516660,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C076HBY0Y2G",
+   "name": "testconv063566d9-3545-4ead-afa7-162e79730c5a",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717485603,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv063566d9-3545-4ead-afa7-162e79730c5a",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516703,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717485604
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717485604
+   },
+   "previous_names": [
+    "testconv8226f022-a6df-4340-b4f1-d69afc0ed32c"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076HC905CZ",
+   "name": "testconvbdb10996-056f-4ed0-836e-5f3eefada263",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717264548,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvbdb10996-056f-4ed0-836e-5f3eefada263",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516671,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C076HCM06U9",
+   "name": "testconv634dc971-d7a3-415e-a8d7-3d02da43c4c7",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717265045,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv634dc971-d7a3-415e-a8d7-3d02da43c4c7",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516680,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C076HLZ3657",
+   "name": "testconv428d496d-d4a5-4ced-87e5-7420e0122e9d",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717278772,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv428d496d-d4a5-4ced-87e5-7420e0122e9d",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516712,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717278772
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717278773
+   },
+   "previous_names": [
+    "testconv514735a4-1970-49e0-a49d-bcf2ba9f14e5"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076N3TND89",
+   "name": "testconvd9a5de60-0140-4e07-bba1-5354b77fdc4b",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717414341,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvd9a5de60-0140-4e07-bba1-5354b77fdc4b",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516783,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717414342
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717414342
+   },
+   "previous_names": [
+    "testconv3c215c93-d435-4ea9-b9a4-5d16189126af"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076NND7MAP",
+   "name": "testconv8a076a20-03fb-4407-80fe-30d760f2dc9b",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717583529,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv8a076a20-03fb-4407-80fe-30d760f2dc9b",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516721,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717583529
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717583529
+   },
+   "previous_names": [
+    "testconv9ffc0b21-8ff1-4bf6-afee-e8a81d7d08f4"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076PLUUV2P",
+   "name": "testconv4c85045b-0d31-4df4-acba-4b65d2be3bf7",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717594221,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv4c85045b-0d31-4df4-acba-4b65d2be3bf7",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516749,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717594221
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717594221
+   },
+   "previous_names": [
+    "testconv219ee378-3221-4c32-a79a-5a2dbc518abd"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076QNB8SEB",
+   "name": "testconv0147ec1f-d21a-483a-a669-bc71bedabb3c",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717787912,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv0147ec1f-d21a-483a-a669-bc71bedabb3c",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516737,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717787912
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717787912
+   },
+   "previous_names": [
+    "testconv347717d1-76a3-42fe-99ed-4ebc302c478d"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076SN28KPH",
+   "name": "testconve8051602-5d68-4952-9b7a-1f7e3e9fbabc",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717851384,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconve8051602-5d68-4952-9b7a-1f7e3e9fbabc",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516761,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717851384
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717851384
+   },
+   "previous_names": [
+    "testconv051b7ef2-449e-43b2-868e-cf39c17ff03a"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076UDKTQ07",
+   "name": "testconv6d41863c-b527-42ba-abd9-7c1bab678adc",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717937085,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv6d41863c-b527-42ba-abd9-7c1bab678adc",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516729,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717937085
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717937085
+   },
+   "previous_names": [
+    "testconv0c1a8b7f-48e4-4be4-b914-5c668d43c5c0"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076UELFX63",
+   "name": "testconv5bd1def6-4809-441e-a95b-84e7d6d2f459",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717938636,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv5bd1def6-4809-441e-a95b-84e7d6d2f459",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516795,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717938636
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717938636
+   },
+   "previous_names": [
+    "testconveaed476f-0b95-4f13-bda1-01ac14c38699"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076UU59V96",
+   "name": "testconv3c0314f8-a5db-411b-9592-b853bc365604",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717336172,
+   "is_archived": false,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv3c0314f8-a5db-411b-9592-b853bc365604",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516771,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": true,
+   "topic": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "purpose": {
+    "value": "",
+    "creator": "",
+    "last_set": 0
+   },
+   "previous_names": [],
+   "num_members": 1
+  },
+  {
+   "id": "C076V2026AC",
+   "name": "testconvfbd43e11-513f-46b5-b11c-71d2980065f2",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717341092,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvfbd43e11-513f-46b5-b11c-71d2980065f2",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516947,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717341092
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717341092
+   },
+   "previous_names": [
+    "testconv125a89b7-d61f-423c-8dfb-b32b2b70d687"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076W3TKSKH",
+   "name": "testconv7510c8d6-abc7-466c-ad68-1150ce3c8eb3",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717998486,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv7510c8d6-abc7-466c-ad68-1150ce3c8eb3",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516807,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717998487
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717998487
+   },
+   "previous_names": [
+    "testconv36a7fa70-a7be-4c6b-a3a4-00265bb18322"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076X023256",
+   "name": "testconvc10ee3a3-7157-467f-8655-305147669bdb",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717399389,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvc10ee3a3-7157-467f-8655-305147669bdb",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516823,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717399389
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717399389
+   },
+   "previous_names": [
+    "testconv84b8737e-67be-4e30-9dcd-2040613dbec9"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C076YT9JTFF",
+   "name": "testconv354936d9-7a6b-410b-9732-07a9d4a7a571",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717749556,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv354936d9-7a6b-410b-9732-07a9d4a7a571",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516831,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717749556
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717749557
+   },
+   "previous_names": [
+    "testconv4119e314-9872-4a60-bb42-de997177a54e"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0773JMAR7A",
+   "name": "testconva4a59b17-0867-47e9-b5e2-86aaffc3191d",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717484479,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconva4a59b17-0867-47e9-b5e2-86aaffc3191d",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516866,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717484479
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717484480
+   },
+   "previous_names": [
+    "testconv537053eb-9cbe-4c96-8de1-3c216694f13b"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0774G7HK53",
+   "name": "testconvad61fecd-e3a7-42db-82fc-f84405a1d1a1",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717857596,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvad61fecd-e3a7-42db-82fc-f84405a1d1a1",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516875,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717857596
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717857596
+   },
+   "previous_names": [
+    "testconv4296f14f-8d72-4db5-9f80-9800ded63848"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0775CS6V8X",
+   "name": "testconv1e11e7ca-3cd0-4a1e-b2ef-7d49b0bcb31f",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1718115774,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv1e11e7ca-3cd0-4a1e-b2ef-7d49b0bcb31f",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516927,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1718115774
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1718115774
+   },
+   "previous_names": [
+    "testconv81e14424-c0e4-465b-8209-a07481e3758f"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C07762EGEMT",
+   "name": "testconvb9f74548-3e79-430e-a1b8-724f0afe19ca",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717935254,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvb9f74548-3e79-430e-a1b8-724f0afe19ca",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516855,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717935255
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717935255
+   },
+   "previous_names": [
+    "testconv349abef1-d332-4176-a398-37905bd17d34"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0777H79TQU",
+   "name": "testconve3deada7-5f1d-4742-ad27-a426d9bda8b1",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717785430,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconve3deada7-5f1d-4742-ad27-a426d9bda8b1",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516842,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717785430
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717785430
+   },
+   "previous_names": [
+    "testconv75211554-837e-4d2f-bf36-8c0db0bd419b"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0778UGM8QJ",
+   "name": "testconvf42fd115-7a7b-4d88-95af-114cc35c03f6",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717934549,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvf42fd115-7a7b-4d88-95af-114cc35c03f6",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516885,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717934549
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717934549
+   },
+   "previous_names": [
+    "testconv3387b0f9-aede-4e87-906c-a876352960ba"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C0779LRP2JG",
+   "name": "testconvaffdd519-eb84-4cb2-8d17-da11b93ec612",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717847637,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvaffdd519-eb84-4cb2-8d17-da11b93ec612",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516963,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "Тестовая тема",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717847638
+   },
+   "purpose": {
+    "value": "Тестовая цель",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717847638
+   },
+   "previous_names": [
+    "testconva14f0afd-078c-4674-9899-39fef3522fa0"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C077AL34VDX",
+   "name": "testconv051d4283-0c87-4620-b47c-fafb8c2a4767",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717692794,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconv051d4283-0c87-4620-b47c-fafb8c2a4767",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516906,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717692794
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717692794
+   },
+   "previous_names": [
+    "testconv5e4e103b-cf9c-43b4-9220-01a962b0a79b"
+   ],
+   "num_members": 0
+  },
+  {
+   "id": "C077B5F1U8Z",
+   "name": "testconvf696199f-90b2-402e-91fc-e691d92152d4",
+   "is_channel": true,
+   "is_group": false,
+   "is_im": false,
+   "is_mpim": false,
+   "is_private": false,
+   "created": 1717697673,
+   "is_archived": true,
+   "is_general": false,
+   "unlinked": 0,
+   "name_normalized": "testconvf696199f-90b2-402e-91fc-e691d92152d4",
+   "is_shared": false,
+   "is_org_shared": false,
+   "is_pending_ext_shared": false,
+   "pending_shared": [],
+   "context_team_id": "T06UD92BS3C",
+   "updated": 1724394516916,
+   "parent_conversation": null,
+   "creator": "U06UG1CAYH2",
+   "is_ext_shared": false,
+   "shared_team_ids": [
+    "T06UD92BS3C"
+   ],
+   "pending_connected_team_ids": [],
+   "is_member": false,
+   "topic": {
+    "value": "TestTopic",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717697673
+   },
+   "purpose": {
+    "value": "TestGoal",
+    "creator": "U06UG1CAYH2",
+    "last_set": 1717697673
+   },
+   "previous_names": [
+    "testconv2db539e1-67d3-4a32-8e09-4743e15f3d3a"
+   ],
+   "num_members": 0
   }
-  ]
-  }
-  
+ ],
+ "response_metadata": {
+  "next_cursor": "dGVhbTpDMDc3RkRFSkVVVw=="
+ }
+}

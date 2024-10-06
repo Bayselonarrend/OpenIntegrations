@@ -1,17 +1,17 @@
 ﻿    {
  "result": [
   {
-   "ID": "40",
+   "ID": "922",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
-   "TITLE": "Заголовок новости",
+   "TITLE": "Новый заголовок новости",
    "AUTHOR_ID": "1",
    "ENABLE_COMMENTS": "Y",
    "NUM_COMMENTS": "0",
    "CODE": null,
    "MICRO": "N",
-   "DETAIL_TEXT": "Текст новости",
-   "DATE_PUBLISH": "2024-06-13T18:41:47+00:00",
+   "DETAIL_TEXT": "Новый текст новости",
+   "DATE_PUBLISH": "2024-10-06T17:32:16+03:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -61,7 +61,9 @@
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_BLOG_POST_URL_PRV": {
@@ -90,7 +92,9 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_GRATITUDE": {
@@ -133,7 +137,9 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_BLOG_POST_FILE": {
@@ -170,10 +176,13 @@
      ]
     },
     "VALUE": [
-     74,
-     76
+     3484,
+     3486,
+     3488
     ],
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": "a:3:{i:0;i:3484;i:1;i:3486;i:2;i:3488;}",
     "CUSTOM_DATA": {
      "PHOTO_TEMPLATE": ""
     }
@@ -220,7 +229,9 @@
      ]
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_BLOG_POST_IMPRTNT": {
@@ -263,7 +274,9 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_IMPRTANT_DATE_END": {
@@ -308,7 +321,9 @@
      "BASE_TYPE": "datetime"
     },
     "VALUE": "",
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_BLOG_POST_VOTE": {
@@ -345,24 +360,27 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "FILES": [
-    74,
-    76
+    3484,
+    3486,
+    3488
    ]
   }
  ],
  "total": 1,
  "time": {
-  "start": 1718304110.82197,
-  "finish": 1718304110.86041,
-  "duration": 0.0384387969970703,
-  "processing": 0.0108139514923096,
-  "date_start": "2024-06-13T18:41:50+00:00",
-  "date_finish": "2024-06-13T18:41:50+00:00",
-  "operating_reset_at": 1718304710,
+  "start": 1728225141.23227,
+  "finish": 1728225141.27358,
+  "duration": 0.0413148403167725,
+  "processing": 0.0131301879882812,
+  "date_start": "2024-10-06T17:32:21+03:00",
+  "date_finish": "2024-10-06T17:32:21+03:00",
+  "operating_reset_at": 1728225741,
   "operating": 0
  }
 }
