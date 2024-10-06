@@ -57,7 +57,7 @@ sidebar_position: 7
 ```json title="Результат"
 {
  "result": {
-  "task_id": 1285618666,
+  "task_id": 1343188268,
   "unmatched_sku_list": []
  }
 }

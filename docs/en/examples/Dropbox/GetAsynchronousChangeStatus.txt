@@ -1,4 +1,4 @@
-﻿    Token = "sl.B-RaUL1PgKWfVCdSMOuqUC1fQYipwG77bSFa_gUQ6lkgOW9LvEzpKwLmzIl6UWxHtc74l5XE2U...";
-    JobID = "dbjid:AADcVJA_Tgws0GIHGpCHU-zTqFG4CZwVrKudUjhdN5nWJ82xZp28epOTECIfwGjy3KN6dq1M0ID1UzgOkqeUPg4b";
+﻿    Token = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
+    JobID = "";
 
     Result = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);

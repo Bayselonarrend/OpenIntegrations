@@ -45,6 +45,7 @@ sidebar_position: 3
  "inviteLink": "https://icq.com/chat/AoLI0egLWBSLR1Ngn2w",
  "joinModeration": false,
  "public": false,
+ "rules": "Это новые правила из CLI",
  "title": "Тест2",
  "type": "group",
  "ok": true

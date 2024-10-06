@@ -47,15 +47,6 @@ sidebar_position: 1
 {
  "result": [
   {
-   "ID": "3",
-   "NAME": "Общий диск",
-   "CODE": null,
-   "MODULE_ID": "disk",
-   "ENTITY_TYPE": "common",
-   "ENTITY_ID": "shared_files_s1",
-   "ROOT_OBJECT_ID": "3"
-  },
-  {
    "ID": "1",
    "NAME": "Антон Титовец",
    "CODE": null,
@@ -65,13 +56,13 @@ sidebar_position: 1
    "ROOT_OBJECT_ID": "1"
   },
   {
-   "ID": "16",
-   "NAME": "iscript13@gmail.com",
+   "ID": "3",
+   "NAME": "Общий диск",
    "CODE": null,
    "MODULE_ID": "disk",
-   "ENTITY_TYPE": "user",
-   "ENTITY_ID": "10",
-   "ROOT_OBJECT_ID": "270"
+   "ENTITY_TYPE": "common",
+   "ENTITY_ID": "shared_files_s1",
+   "ROOT_OBJECT_ID": "3"
   },
   {
    "ID": "4",
@@ -108,18 +99,100 @@ sidebar_position: 1
    "ENTITY_TYPE": "user",
    "ENTITY_ID": "8",
    "ROOT_OBJECT_ID": "72"
-  }
- ],
- "total": 7,
- "time": {
-  "start": 1718783911.64028,
-  "finish": 1718783911.69026,
-  "duration": 0.0499801635742188,
-  "processing": 0.00660109519958496,
-  "date_start": "2024-06-19T07:58:31+00:00",
-  "date_finish": "2024-06-19T07:58:31+00:00",
-  "operating_reset_at": 1718784511,
-  "operating": 0
- }
-}
+  },
+  {
+   "ID": "16",
+   "NAME": "iscript13@gmail.com",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "10",
+   "ROOT_OBJECT_ID": "270"
+  },
+  {
+   "ID": "20",
+   "NAME": "oarismos@gmail.com",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "12",
+   "ROOT_OBJECT_ID": "2810"
+  },
+  {
+   "ID": "26",
+   "NAME": "yo@exepmple.com",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "18",
+   "ROOT_OBJECT_ID": "4602"
+  },
+  {
+   "ID": "42",
+   "NAME": "f9535def-46c6-44af-950c-6f3f7767f5d2@exepmple.org",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "34",
+   "ROOT_OBJECT_ID": "4618"
+  },
+  {
+   "ID": "44",
+   "NAME": "Олег Лама",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "36",
+   "ROOT_OBJECT_ID": "4620"
+  },
+  {
+   "ID": "46",
+   "NAME": "d95a9fe7-48e3-406c-ae52-62c4f4a55a10@exepmple.org",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "38",
+   "ROOT_OBJECT_ID": "4622"
+  },
+  {
+   "ID": "48",
+   "NAME": "Олег Лама",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "40",
+   "ROOT_OBJECT_ID": "4624"
+  },
+  {
+   "ID": "50",
+   "NAME": "5565fd7a-6cbc-4e3b-ad9a-07ed12dc1c60@exepmple.org",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "42",
+   "ROOT_OBJECT_ID": "4626"
+  },
+  {
+   "ID": "52",
+   "NAME": "Олег Лама",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "44",
+   "ROOT_OBJECT_ID": "4628"
+  },
+  {
+   "ID": "54",
+   "NAME": "6f72690f-e2b8-4437-87e5-38c1411dd757@exepmple.org",
+   "CODE": null,
+   "MODULE_ID": "disk",
+   "ENTITY_TYPE": "user",
+   "ENTITY_ID": "46",
+   "ROOT_OBJECT_ID": "4630"
+  },
+  {
+   "ID": "56",
+   "NAME": "Олег Лама",
+   "CODE": null,
+...
 ```

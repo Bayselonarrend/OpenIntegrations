@@ -51,17 +51,17 @@ sidebar_position: 5
 {
  "result": [
   {
-   "ID": "40",
+   "ID": "922",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
-   "TITLE": "Заголовок новости",
+   "TITLE": "Новый заголовок новости",
    "AUTHOR_ID": "1",
    "ENABLE_COMMENTS": "Y",
    "NUM_COMMENTS": "0",
    "CODE": null,
    "MICRO": "N",
-   "DETAIL_TEXT": "Текст новости",
-   "DATE_PUBLISH": "2024-06-13T18:41:47+00:00",
+   "DETAIL_TEXT": "Новый текст новости",
+   "DATE_PUBLISH": "2024-10-06T17:32:16+03:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -111,7 +111,9 @@ sidebar_position: 5
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_BLOG_POST_URL_PRV": {
@@ -140,7 +142,9 @@ sidebar_position: 5
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_GRATITUDE": {
@@ -183,7 +187,9 @@ sidebar_position: 5
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 40,
+    "ENTITY_VALUE_ID": 922,
+    "VALUE_EXISTS": true,
+    "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "UF_BLOG_POST_FILE": {
@@ -192,11 +198,5 @@ sidebar_position: 5
     "FIELD_NAME": "UF_BLOG_POST_FILE",
     "USER_TYPE_ID": "disk_file",
     "XML_ID": "UF_BLOG_POST_FILE",
-    "SORT": "100",
-    "MULTIPLE": "Y",
-    "MANDATORY": "N",
-    "SHOW_FILTER": "N",
-    "SHOW_IN_LIST": "N",
-    "EDIT_IN_LIST": "Y",
 ...
 ```

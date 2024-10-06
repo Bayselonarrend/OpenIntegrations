@@ -37,12 +37,12 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
-  "ok": true,
-  "teams": [
+ "ok": true,
+ "teams": [
   {
-  "id": "T06UD92BS3C",
-  "name": "OpenIntegrations"
+   "id": "T06UD92BS3C",
+   "name": "OpenIntegrations"
   }
-  ]
-  }
+ ]
+}
 ```

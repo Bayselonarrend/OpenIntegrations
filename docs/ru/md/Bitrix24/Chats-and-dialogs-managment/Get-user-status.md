@@ -46,7 +46,16 @@ sidebar_position: 17
 
 ```json title="Результат"
 {
- "error": "expired_token",
- "error_description": "The access token provided has expired."
+ "result": "away",
+ "time": {
+  "start": 1728225213.59872,
+  "finish": 1728225213.62109,
+  "duration": 0.0223720073699951,
+  "processing": 0.000166893005371094,
+  "date_start": "2024-10-06T17:33:33+03:00",
+  "date_finish": "2024-10-06T17:33:33+03:00",
+  "operating_reset_at": 1728225813,
+  "operating": 0
+ }
 }
 ```
