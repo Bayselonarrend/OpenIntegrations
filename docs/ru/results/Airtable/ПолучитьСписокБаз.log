@@ -1379,6 +1379,46 @@
    "id": "appYas7r7r976ZSLt",
    "name": "Тестовая база",
    "permissionLevel": "create"
+  },
+  {
+   "id": "appxctJAkFSguVWtz",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appCeqR8u76RDA43U",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appNKvCZ27ip9xljF",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appuoWJmYj08TEYcT",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appS5xHafRWDWQFv5",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appg9MBcXSFQqzomb",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appCOuzfpma3IfjDV",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "app5mS5DsvcGIVun6",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
   }
  ]
 }
