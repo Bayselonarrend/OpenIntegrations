@@ -65,79 +65,79 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "FILES": {
-  "upload3254": {
-  "id": 3254,
-  "chatId": 254,
-  "date": {},
-  "type": "file",
-  "name": "Imortant doc.docx",
-  "extension": "docx",
-  "size": 24071,
-  "image": false,
-  "status": "done",
-  "progress": 100,
-  "authorId": 1,
-  "authorName": "Anton Titovets",
-  "urlPreview": "",
-  "urlShow": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=3254&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
-  "urlDownload": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=3254&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
-  "viewerAttrs": {
-  "viewer": null,
-  "viewerType": "cloud-document",
-  "src": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=3254&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
-  "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
-  "viewerSeparateItem": true,
-  "viewerExtension": "im.integration.viewer",
-  "objectId": "3254",
-  "imChatId": 254,
-  "title": "Imortant doc.docx",
-  "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Save to Bitrix24 Drive\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"3254\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
-  }
-  }
+   "upload12134": {
+    "id": 12134,
+    "chatId": 956,
+    "date": {},
+    "type": "file",
+    "name": "Imortant doc.docx",
+    "extension": "docx",
+    "size": 24071,
+    "image": false,
+    "status": "done",
+    "progress": 100,
+    "authorId": 1,
+    "authorName": "Антон Титовец",
+    "urlPreview": "",
+    "urlShow": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12134&fileName=Imortant%20doc.docx",
+    "urlDownload": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12134&fileName=Imortant%20doc.docx",
+    "viewerAttrs": {
+     "viewer": null,
+     "viewerType": "cloud-document",
+     "src": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12134&fileName=Imortant%20doc.docx",
+     "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
+     "viewerSeparateItem": true,
+     "viewerExtension": "im.integration.viewer",
+     "objectId": "12134",
+     "imChatId": 956,
+     "title": "Imortant doc.docx",
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Битрикс24 Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"12134\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+    }
+   }
   },
   "DISK_ID": [
-  "3254"
+   "12134"
   ],
   "FILE_MODELS": {
-  "upload3254": {
-  "id": 3254,
-  "name": "Imortant doc.docx",
-  "createTime": {},
-  "updateTime": {},
-  "deleteTime": null,
-  "code": null,
-  "xmlId": null,
-  "storageId": 6,
-  "realObjectId": 3254,
-  "parentId": 3250,
-  "deletedType": 0,
-  "createdBy": "1",
-  "updatedBy": "1",
-  "deletedBy": "0",
-  "typeFile": 4,
-  "globalContentVersion": 2,
-  "fileId": 2330,
-  "size": 24071,
-  "etag": "1179305ea90d0b0fef106e1163deaeb8",
-  "links": {
-  "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=3254",
-  "showInGrid": "/bitrix/tools/disk/focus.php?objectId=3254&action=showObjectInGrid&ncc=1"
-  }
-  }
+   "upload12134": {
+    "id": 12134,
+    "name": "Imortant doc.docx",
+    "createTime": {},
+    "updateTime": {},
+    "deleteTime": null,
+    "code": null,
+    "xmlId": null,
+    "storageId": 6,
+    "realObjectId": 12134,
+    "parentId": 12130,
+    "deletedType": 0,
+    "createdBy": "1",
+    "updatedBy": "1",
+    "deletedBy": "0",
+    "typeFile": 4,
+    "globalContentVersion": 2,
+    "fileId": 8368,
+    "size": 24071,
+    "etag": "962ba137220c0f96c8534f6bf28c018c",
+    "links": {
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=12134",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=12134&action=showObjectInGrid&ncc=1"
+    }
+   }
   },
-  "MESSAGE_ID": 5346
-  },
-  "time": {
-  "start": 1720969175.0006,
-  "finish": 1720969175.09084,
-  "duration": 0.0902431011199951,
-  "processing": 0.0652461051940918,
-  "date_start": "2024-07-14T14:59:35+00:00",
-  "date_finish": "2024-07-14T14:59:35+00:00",
-  "operating_reset_at": 1720969775,
+  "MESSAGE_ID": 17182
+ },
+ "time": {
+  "start": 1728140848.47268,
+  "finish": 1728140848.57604,
+  "duration": 0.103360176086426,
+  "processing": 0.0774850845336914,
+  "date_start": "2024-10-05T18:07:28+03:00",
+  "date_finish": "2024-10-05T18:07:28+03:00",
+  "operating_reset_at": 1728141448,
   "operating": 0
-  }
-  }
+ }
+}
 ```

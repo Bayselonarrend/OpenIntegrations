@@ -56,32 +56,32 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
 
 ```json title="Result"
 {
-  "result": {
-  "ID": 1732,
+ "result": {
+  "ID": 12112,
   "NAME": "New subfolder 2",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 1732,
-  "PARENT_ID": "1726",
+  "REAL_OBJECT_ID": 12112,
+  "PARENT_ID": "12106",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2024-07-03T14:42:46+00:00",
-  "UPDATE_TIME": "2024-07-03T14:42:46+00:00",
+  "CREATE_TIME": "2024-10-05T18:06:05+03:00",
+  "UPDATE_TIME": "2024-10-05T18:06:05+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": null,
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder/New subfolder 2"
-  },
-  "time": {
-  "start": 1720017765.97028,
-  "finish": 1720017766.08005,
-  "duration": 0.109767913818359,
-  "processing": 0.0799601078033447,
-  "date_start": "2024-07-03T14:42:45+00:00",
-  "date_finish": "2024-07-03T14:42:46+00:00",
-  "operating_reset_at": 1720018366,
+ },
+ "time": {
+  "start": 1728140765.83198,
+  "finish": 1728140765.95015,
+  "duration": 0.118170022964478,
+  "processing": 0.088386058807373,
+  "date_start": "2024-10-05T18:06:05+03:00",
+  "date_finish": "2024-10-05T18:06:05+03:00",
+  "operating_reset_at": 1728141365,
   "operating": 0
-  }
-  }
+ }
+}
 ```

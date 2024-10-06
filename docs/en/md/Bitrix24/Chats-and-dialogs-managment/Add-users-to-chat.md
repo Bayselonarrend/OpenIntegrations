@@ -56,16 +56,16 @@ Method at API documentation: [im.chat.user.add](https://dev.1c-bitrix.ru/learnin
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720865686.43672,
-  "finish": 1720865686.52541,
-  "duration": 0.0886859893798828,
-  "processing": 0.0491659641265869,
-  "date_start": "2024-07-13T10:14:46+00:00",
-  "date_finish": "2024-07-13T10:14:46+00:00",
-  "operating_reset_at": 1720866286,
+ "result": true,
+ "time": {
+  "start": 1728140809.94593,
+  "finish": 1728140810.04146,
+  "duration": 0.0955288410186768,
+  "processing": 0.0658299922943115,
+  "date_start": "2024-10-05T18:06:49+03:00",
+  "date_finish": "2024-10-05T18:06:50+03:00",
+  "operating_reset_at": 1728141409,
   "operating": 0
-  }
-  }
+ }
+}
 ```

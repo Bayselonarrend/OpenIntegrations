@@ -57,16 +57,16 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 
 ```json title="Result"
 {
-  "result": [],
-  "time": {
-  "start": 1720186655.56394,
-  "finish": 1720186656.29235,
-  "duration": 0.728404998779297,
-  "processing": 0.692660093307495,
-  "date_start": "2024-07-05T13:37:35+00:00",
-  "date_finish": "2024-07-05T13:37:36+00:00",
-  "operating_reset_at": 1720187255,
-  "operating": 0.692637920379639
-  }
-  }
+ "result": [],
+ "time": {
+  "start": 1728140719.10112,
+  "finish": 1728140719.17706,
+  "duration": 0.0759379863739014,
+  "processing": 0.0493860244750977,
+  "date_start": "2024-10-05T18:05:19+03:00",
+  "date_finish": "2024-10-05T18:05:19+03:00",
+  "operating_reset_at": 1728141319,
+  "operating": 0
+ }
+}
 ```

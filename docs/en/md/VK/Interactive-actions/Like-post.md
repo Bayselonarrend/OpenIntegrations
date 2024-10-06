@@ -40,8 +40,8 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "response": {
+ "response": {
   "likes": 1
-  }
-  }
+ }
+}
 ```

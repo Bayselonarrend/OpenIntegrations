@@ -89,6 +89,12 @@ You can find out if there is a nested catalog by the GetCharacteristicsCategorie
    "picture": "https://cdn1.ozonusercontent.com/s3/product-service-meta-media/e6dcf5aa-eb30-442d-afa0-5812652d2816.png"
   },
   {
+   "id": 972202223,
+   "value": "SUNSHINE",
+   "info": "",
+   "picture": "https://cdn1.ozonusercontent.com/s3/product-service-meta-media/68384d8e-4b49-4f99-a045-3403c1f10f0f.jpg"
+  },
+  {
    "id": 971227292,
    "value": "Sunshine Baby",
    "info": "",
@@ -199,12 +205,6 @@ You can find out if there is a nested catalog by the GetCharacteristicsCategorie
   {
    "id": 972077059,
    "value": "Sunshine shop",
-   "info": "",
-   "picture": "https://cdn1.ozone.ru/s3/multimedia-1-p/6938763421.jpg"
-  },
-  {
-   "id": 971419123,
-   "value": "Sunshine Supboard",
    "info": "",
 ...
 ```

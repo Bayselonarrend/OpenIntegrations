@@ -52,16 +52,16 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720865692.90718,
-  "finish": 1720865693.81896,
-  "duration": 0.91178297996521,
-  "processing": 0.884725093841553,
-  "date_start": "2024-07-13T10:14:52+00:00",
-  "date_finish": "2024-07-13T10:14:53+00:00",
-  "operating_reset_at": 1720866292,
-  "operating": 0.884703874588013
-  }
-  }
+ "result": true,
+ "time": {
+  "start": 1728140828.05486,
+  "finish": 1728140828.9055,
+  "duration": 0.85063099861145,
+  "processing": 0.82358717918396,
+  "date_start": "2024-10-05T18:07:08+03:00",
+  "date_finish": "2024-10-05T18:07:08+03:00",
+  "operating_reset_at": 1728141428,
+  "operating": 0.823567152023316
+ }
+}
 ```

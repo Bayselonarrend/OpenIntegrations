@@ -49,16 +49,16 @@ Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1718569733.98858,
-  "finish": 1718569734.02857,
-  "duration": 0.0399899482727051,
-  "processing": 0.00951814651489258,
-  "date_start": "2024-06-16T20:28:53+00:00",
-  "date_finish": "2024-06-16T20:28:54+00:00",
-  "operating_reset_at": 1718570334,
+ "result": true,
+ "time": {
+  "start": 1728140720.99896,
+  "finish": 1728140721.04303,
+  "duration": 0.044064998626709,
+  "processing": 0.0111420154571533,
+  "date_start": "2024-10-05T18:05:20+03:00",
+  "date_finish": "2024-10-05T18:05:21+03:00",
+  "operating_reset_at": 1728141321,
   "operating": 0
-  }
-  }
+ }
+}
 ```

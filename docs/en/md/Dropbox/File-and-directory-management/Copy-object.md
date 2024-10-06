@@ -41,18 +41,18 @@ sidebar_position: 8
 
 ```json title="Result"
 {
-  "metadata": {
+ "metadata": {
   ".tag": "file",
   "name": "pic_copy.png",
   "path_lower": "/new/pic_copy.png",
   "path_display": "/New/pic_copy.png",
-  "id": "id:kJU6-a-pT48AAAAAAAABYg",
-  "client_modified": "2024-05-30T12:32:09Z",
-  "server_modified": "2024-05-30T12:32:54Z",
-  "rev": "619ab10ed491ebd841553",
+  "id": "id:kJU6-a-pT48AAAAAAAAbrQ",
+  "client_modified": "2024-10-05T15:01:37Z",
+  "server_modified": "2024-10-05T15:02:23Z",
+  "rev": "623bc13312823bd841553",
   "size": 2114023,
   "is_downloadable": true,
   "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
-  }
-  }
+ }
+}
 ```

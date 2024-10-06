@@ -48,32 +48,32 @@ Method at API documentation: [disk.folder.markdeleted](https://dev.1c-bitrix.ru/
 
 ```json title="Result"
 {
-  "result": {
-  "ID": "936",
+ "result": {
+  "ID": "12102",
   "NAME": "New catalog",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "936",
+  "REAL_OBJECT_ID": "12102",
   "PARENT_ID": "3",
   "DELETED_TYPE": "3",
-  "CREATE_TIME": "2024-07-01T13:44:01+00:00",
-  "UPDATE_TIME": "2024-07-01T13:44:06+00:00",
-  "DELETE_TIME": "2024-07-01T13:44:12+00:00",
+  "CREATE_TIME": "2024-10-05T18:06:04+03:00",
+  "UPDATE_TIME": "2024-10-05T18:06:08+03:00",
+  "DELETE_TIME": "2024-10-05T18:06:09+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog"
-  },
-  "time": {
-  "start": 1719841453.13782,
-  "finish": 1719841453.17717,
-  "duration": 0.0393478870391846,
-  "processing": 0.00959300994873047,
-  "date_start": "2024-07-01T13:44:13+00:00",
-  "date_finish": "2024-07-01T13:44:13+00:00",
-  "operating_reset_at": 1719842053,
+ },
+ "time": {
+  "start": 1728140769.86383,
+  "finish": 1728140769.89539,
+  "duration": 0.0315639972686768,
+  "processing": 0.00528907775878906,
+  "date_start": "2024-10-05T18:06:09+03:00",
+  "date_finish": "2024-10-05T18:06:09+03:00",
+  "operating_reset_at": 1728141369,
   "operating": 0
-  }
-  }
+ }
+}
 ```
