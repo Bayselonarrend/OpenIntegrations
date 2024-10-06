@@ -47,7 +47,7 @@ Method at API documentation: [post /v1/product/info/subscription](https://docs.o
  "result": [
   {
    "sku": 1626044001,
-   "count": 0
+   "count": 1
   }
  ]
 }

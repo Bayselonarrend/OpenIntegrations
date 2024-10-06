@@ -49,16 +49,16 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1718569735.08926,
-  "finish": 1718569735.1282,
-  "duration": 0.0389459133148193,
-  "processing": 0.00808191299438476,
-  "date_start": "2024-06-16T20:28:55+00:00",
-  "date_finish": "2024-06-16T20:28:55+00:00",
-  "operating_reset_at": 1718570335,
+ "result": true,
+ "time": {
+  "start": 1728140721.18694,
+  "finish": 1728140721.22566,
+  "duration": 0.038722038269043,
+  "processing": 0.00935912132263184,
+  "date_start": "2024-10-05T18:05:21+03:00",
+  "date_finish": "2024-10-05T18:05:21+03:00",
+  "operating_reset_at": 1728141321,
   "operating": 0
-  }
-  }
+ }
+}
 ```

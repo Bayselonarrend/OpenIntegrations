@@ -42,10 +42,47 @@ sidebar_position: 3
 
 ```json title="Result"
 {
-  "response": [
-  {
-  "id": 1029701085
-  }
+ "error": {
+  "error_code": 100,
+  "error_msg": "One of the parameters specified was missing or invalid: data[0][ad_id] is invalid",
+  "request_params": [
+   {
+    "key": "from_group",
+    "value": "1"
+   },
+   {
+    "key": "owner_id",
+    "value": "-218861756"
+   },
+   {
+    "key": "v",
+    "value": "5.131"
+   },
+   {
+    "key": "app_id",
+    "value": "51694790"
+   },
+   {
+    "key": "group_id",
+    "value": "218861756"
+   },
+   {
+    "key": "account_id",
+    "value": "1607951446"
+   },
+   {
+    "key": "data",
+    "value": "[\r\n {\r\n  \"ad_id\": \"0\",\r\n  \"status\": 0\r\n }\r\n]"
+   },
+   {
+    "key": "method",
+    "value": "ads.updateAds"
+   },
+   {
+    "key": "oauth",
+    "value": "1"
+   }
   ]
-  }
+ }
+}
 ```

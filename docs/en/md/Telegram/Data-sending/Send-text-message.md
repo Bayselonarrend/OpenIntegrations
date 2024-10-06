@@ -47,24 +47,24 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
-  "message_id": 4638,
+ "ok": true,
+ "result": {
+  "message_id": 8190,
   "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
   },
   "chat": {
-  "id": 461699897,
-  "first_name": "Anton",
-  "last_name": "Titowets",
-  "username": "JKIee",
-  "type": "private"
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
   },
-  "date": 1717072354,
-  "text": "String value"
-  }
-  }
+  "date": 1728139209,
+  "text": "Строковое значение"
+ }
+}
 ```

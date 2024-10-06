@@ -61,16 +61,16 @@ Method at API documentation: [im.notify.personal.add](https://dev.1c-bitrix.ru/l
 
 ```json title="Result"
 {
-  "result": 7450,
-  "time": {
-  "start": 1722087269.44996,
-  "finish": 1722087269.50075,
-  "duration": 0.0507829189300537,
-  "processing": 0.0262038707733154,
-  "date_start": "2024-07-27T13:34:29+00:00",
-  "date_finish": "2024-07-27T13:34:29+00:00",
-  "operating_reset_at": 1722087869,
+ "result": 17186,
+ "time": {
+  "start": 1728140856.52526,
+  "finish": 1728140856.58194,
+  "duration": 0.0566771030426025,
+  "processing": 0.0297951698303223,
+  "date_start": "2024-10-05T18:07:36+03:00",
+  "date_finish": "2024-10-05T18:07:36+03:00",
+  "operating_reset_at": 1728141456,
   "operating": 0
-  }
-  }
+ }
+}
 ```

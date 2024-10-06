@@ -55,48 +55,48 @@ sidebar_position: 3
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
-  "message_id": 4640,
+ "ok": true,
+ "result": {
+  "message_id": 8193,
   "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
   },
   "chat": {
-  "id": 461699897,
-  "first_name": "Anton",
-  "last_name": "Titowets",
-  "username": "JKIee",
-  "type": "private"
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
   },
-  "date": 1717072376,
+  "date": 1728139241,
   "video": {
-  "duration": 5,
-  "width": 640,
-  "height": 480,
-  "file_name": "video",
-  "mime_type": "video/mp4",
-  "thumbnail": {
-  "file_id": "AAMCAgADGQMAAhIgZlhx93ZvZz-UGKGqjCgPLXlYPSgAAqtQAAJgKMhKHu6gl3VqCfoBAAdtAAM1BA",
-  "file_unique_id": "AQADq1AAAmAoyEpy",
-  "file_size": 20106,
-  "width": 320,
-  "height": 240
+   "duration": 5,
+   "width": 640,
+   "height": 480,
+   "file_name": "video",
+   "mime_type": "video/mp4",
+   "thumbnail": {
+    "file_id": "AAMCAgADGQMAAiABZwFP6NNQ75k2NlYOhxfm1cqxRFsAAktbAAJHgRBIM_CHW8i09MEBAAdtAAM2BA",
+    "file_unique_id": "AQADS1sAAkeBEEhy",
+    "file_size": 20106,
+    "width": 320,
+    "height": 240
+   },
+   "thumb": {
+    "file_id": "AAMCAgADGQMAAiABZwFP6NNQ75k2NlYOhxfm1cqxRFsAAktbAAJHgRBIM_CHW8i09MEBAAdtAAM2BA",
+    "file_unique_id": "AQADS1sAAkeBEEhy",
+    "file_size": 20106,
+    "width": 320,
+    "height": 240
+   },
+   "file_id": "BAACAgIAAxkDAAIgAWcBT-jTUO-ZNjZWDocX5tXKsURbAAJLWwACR4EQSDPwh1vItPTBNgQ",
+   "file_unique_id": "AgADS1sAAkeBEEg",
+   "file_size": 1137878
   },
-  "thumb": {
-  "file_id": "AAMCAgADGQMAAhIgZlhx93ZvZz-UGKGqjCgPLXlYPSgAAqtQAAJgKMhKHu6gl3VqCfoBAAdtAAM1BA",
-  "file_unique_id": "AQADq1AAAmAoyEpy",
-  "file_size": 20106,
-  "width": 320,
-  "height": 240
-  },
-  "file_id": "BAACAgIAAxkDAAISIGZYcfd2b2c_lBihqowoDy15WD0oAAKrUAACYCjISh7uoJd1agn6NQQ",
-  "file_unique_id": "AgADq1AAAmAoyEo",
-  "file_size": 1137878
-  },
-  "caption": "String value"
-  }
-  }
+  "caption": "Строковое значение"
+ }
+}
 ```

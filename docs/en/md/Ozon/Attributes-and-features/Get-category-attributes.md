@@ -66,36 +66,6 @@ If dictionary_id has a value of 0, the attribute has no nested directories. If t
    "category_dependent": true
   },
   {
-   "id": 8229,
-   "attribute_complex_id": 0,
-   "name": "Тип",
-   "description": "Выберите наиболее подходящий тип товара. По типам товары распределяются по категориям на сайте Ozon. Если тип указан неправильно, товар попадет в неверную категорию. Чтобы правильно указать тип, найдите на сайте Ozon товары, похожие на ваш, и посмотрите, какой тип у них указан.",
-   "type": "String",
-   "is_collection": false,
-   "is_required": true,
-   "is_aspect": false,
-   "max_value_count": 0,
-   "group_name": "",
-   "group_id": 0,
-   "dictionary_id": 1960,
-   "category_dependent": true
-  },
-  {
-   "id": 9048,
-   "attribute_complex_id": 0,
-   "name": "Название модели (для объединения в одну карточку)",
-   "description": "Укажите название модели товара. Не указывайте в этом поле тип и бренд.",
-   "type": "String",
-   "is_collection": false,
-   "is_required": true,
-   "is_aspect": false,
-   "max_value_count": 0,
-   "group_name": "",
-   "group_id": 0,
-   "dictionary_id": 0,
-   "category_dependent": false
-  },
-  {
    "id": 4080,
    "attribute_complex_id": 0,
    "name": "3D-изображение",
@@ -186,6 +156,21 @@ If dictionary_id has a value of 0, the attribute has no nested directories. If t
    "category_dependent": true
   },
   {
+   "id": 8229,
+   "attribute_complex_id": 0,
+   "name": "Тип",
+   "description": "Выберите наиболее подходящий тип товара. По типам товары распределяются по категориям на сайте Ozon. Если тип указан неправильно, товар попадет в неверную категорию. Чтобы правильно указать тип, найдите на сайте Ozon товары, похожие на ваш, и посмотрите, какой тип у них указан.",
+   "type": "String",
+   "is_collection": false,
+   "is_required": true,
+   "is_aspect": false,
+   "max_value_count": 0,
+   "group_name": "",
+   "group_id": 0,
+   "dictionary_id": 1960,
+   "category_dependent": true
+  },
+  {
    "id": 8245,
    "attribute_complex_id": 0,
    "name": "Число строк",
@@ -198,5 +183,20 @@ If dictionary_id has a value of 0, the attribute has no nested directories. If t
    "group_name": "",
    "group_id": 0,
    "dictionary_id": 1324,
+   "category_dependent": true
+  },
+  {
+   "id": 8249,
+   "attribute_complex_id": 0,
+   "name": "Число знаков шрифта для выделения",
+   "description": "",
+   "type": "Integer",
+   "is_collection": false,
+   "is_required": false,
+   "is_aspect": false,
+   "max_value_count": 0,
+   "group_name": "",
+   "group_id": 0,
+   "dictionary_id": 0,
 ...
 ```

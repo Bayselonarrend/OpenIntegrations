@@ -36,7 +36,7 @@ sidebar_position: 7
 ```json title="Result"
 {
  "ID": "<lead identifier>",
- "ASSIGNED_BY_ID": "<responsible person identifier",
+ "ASSIGNED_BY_ID": "<responsible person identifier>",
  "COMPANY_ID": "<company identifier>",
  "COMPANY_TITLE": "<company name>",
  "CONTACT_ID": "<contact identifier>",
@@ -46,15 +46,15 @@ sidebar_position: 7
  "DATE_CREATE": "<date of creation>",
  "DATE_MODIFY": "<date of change>",
  "EMAIL": "<email address>",
- "HAS_EMAIL": "<email address is filled in (Y|N)>",
- "HAS_PHONE": "<phone number is filled in (Y|N)>",
- "IS_RETURN_CUSTOMER": "<repeat lead (Y|N)>",
+ "HAS_EMAIL": "<Email is filled (Y|N)>",
+ "HAS_PHONE": "<phone field is filled (Y|N)>",
+ "IS_RETURN_CUSTOMER": "<reused lead flag (Y|N)>",
  "MODIFY_BY_ID": "<author ID of the last change>",
  "MOVED_BY_ID": "<identifier of the author of moving the lead to the current stage>",
  "MOVED_TIME": "<date of moving the lead to the current stage>",
  "OPENED": "<feature is available for all (Y|N)>",
  "OPPORTUNITY": "<expected amount>",
  "STATUS_ID": "<status identifier>",
- "TITLE": "<lead name (can be searched by template [%_])>"
+ "TITLE": "<lead name (can be searched using the template [%_])>"
 }
 ```

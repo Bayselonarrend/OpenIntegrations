@@ -61,16 +61,16 @@ Method at API documentation: [im.notify.system.add](https://dev.1c-bitrix.ru/lea
 
 ```json title="Result"
 {
-  "result": 7454,
-  "time": {
-  "start": 1722087270.72466,
-  "finish": 1722087270.78145,
-  "duration": 0.0567879676818848,
-  "processing": 0.0293958187103272,
-  "date_start": "2024-07-27T13:34:30+00:00",
-  "date_finish": "2024-07-27T13:34:30+00:00",
-  "operating_reset_at": 1722087870,
+ "result": 17190,
+ "time": {
+  "start": 1728140856.733,
+  "finish": 1728140856.7906,
+  "duration": 0.0576021671295166,
+  "processing": 0.0305120944976807,
+  "date_start": "2024-10-05T18:07:36+03:00",
+  "date_finish": "2024-10-05T18:07:36+03:00",
+  "operating_reset_at": 1728141456,
   "operating": 0
-  }
-  }
+ }
+}
 ```

@@ -53,7 +53,7 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
 
 ```json title="Result"
 {
- "msgId": "7402676060812214488",
+ "msgId": "7422308747164256432",
  "ok": true
 }
 ```

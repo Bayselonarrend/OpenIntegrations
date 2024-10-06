@@ -49,27 +49,27 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
 
 ```json title="Result"
 {
-  "result": {
-  "id": 130,
-  "taskId": 432,
-  "commentId": 1376,
+ "result": {
+  "id": 838,
+  "taskId": 2320,
+  "commentId": 5770,
   "createdBy": 1,
-  "createdAt": "2024-07-05T13:38:22+00:00",
-  "updatedAt": "2024-07-05T13:38:22+00:00",
+  "createdAt": "2024-10-05T18:05:35+03:00",
+  "updatedAt": "2024-10-05T18:05:35+03:00",
   "status": 0,
   "text": "The task has been changed, let's split up",
   "formattedText": "The task has been changed, let's split up",
   "files": null
-  },
-  "time": {
-  "start": 1720186706.85195,
-  "finish": 1720186706.92671,
-  "duration": 0.0747611522674561,
-  "processing": 0.0460391044616699,
-  "date_start": "2024-07-05T13:38:26+00:00",
-  "date_finish": "2024-07-05T13:38:26+00:00",
-  "operating_reset_at": 1720187306,
+ },
+ "time": {
+  "start": 1728140736.32036,
+  "finish": 1728140736.38446,
+  "duration": 0.0640969276428223,
+  "processing": 0.03631591796875,
+  "date_start": "2024-10-05T18:05:36+03:00",
+  "date_finish": "2024-10-05T18:05:36+03:00",
+  "operating_reset_at": 1728141336,
   "operating": 0
-  }
-  }
+ }
+}
 ```

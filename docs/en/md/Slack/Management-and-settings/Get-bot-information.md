@@ -36,13 +36,13 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "ok": true,
-  "url": "https://openintegrationsgroup.slack.com/",
-  "team": "OpenIntegrations",
-  "user": "openintegrations",
-  "team_id": "T06UD92BS3C",
-  "user_id": "U06UG1CAYH2",
-  "bot_id": "B06TZ0MJV5M",
-  "is_enterprise_install": false
-  }
+ "ok": true,
+ "url": "https://openintegrationsgroup.slack.com/",
+ "team": "OpenIntegrations",
+ "user": "openintegrations",
+ "team_id": "T06UD92BS3C",
+ "user_id": "U06UG1CAYH2",
+ "bot_id": "B06TZ0MJV5M",
+ "is_enterprise_install": false
+}
 ```

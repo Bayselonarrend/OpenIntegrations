@@ -56,7 +56,7 @@ The product must be pre-archived (see ArchiveProducts)
 {
  "status": [
   {
-   "offer_id": "143210608",
+   "offer_id": "143210609",
    "is_deleted": true,
    "error": ""
   }

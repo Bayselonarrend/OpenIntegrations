@@ -92,7 +92,7 @@ Methods of product structure formation: GetProductStructure(), AddProductVideo()
 ```json title="Result"
 {
  "result": {
-  "task_id": 1285530068
+  "task_id": 1342165062
  }
 }
 ```

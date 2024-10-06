@@ -60,16 +60,16 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720969165.17314,
-  "finish": 1720969165.21621,
-  "duration": 0.0430619716644287,
-  "processing": 0.018265962600708,
-  "date_start": "2024-07-14T14:59:25+00:00",
-  "date_finish": "2024-07-14T14:59:25+00:00",
-  "operating_reset_at": 1720969765,
+ "result": true,
+ "time": {
+  "start": 1728140840.81515,
+  "finish": 1728140840.86711,
+  "duration": 0.0519599914550781,
+  "processing": 0.0240271091461182,
+  "date_start": "2024-10-05T18:07:20+03:00",
+  "date_finish": "2024-10-05T18:07:20+03:00",
+  "operating_reset_at": 1728141440,
   "operating": 0
-  }
-  }
+ }
+}
 ```

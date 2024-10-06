@@ -40,9 +40,9 @@ This structure should be supplemented with fields that depend on the product cat
 
 ```json title="Result"
 {
- "description_category_id": "<ID category product>",
- "name": "<name product>",
- "offer_id": "<offer>",
+ "description_category_id": "<Product category ID>",
+ "name": "<product name>",
+ "offer_id": "<article>",
  "barcode": "<barcode>",
  "price": "<price>",
  "old_price": "<old price>",

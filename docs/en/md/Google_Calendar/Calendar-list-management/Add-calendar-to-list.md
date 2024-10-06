@@ -40,13 +40,13 @@ sidebar_position: 2
 ```json title="Result"
 {
  "kind": "calendar#calendarListEntry",
- "etag": "\"1727630335096000\"",
- "id": "739cf8d11d0517973f88bc93554f2f43e832f38e012b391be0ad17d266a850bc@group.calendar.google.com",
+ "etag": "\"1728140261251000\"",
+ "id": "595e045ef60a36f287b2dc1af89e0685697bab5f36281d7177f4d2d10267a539@group.calendar.google.com",
  "summary": "New name",
  "description": "New description",
  "timeZone": "Europe/Moscow",
- "colorId": "12",
- "backgroundColor": "#fad165",
+ "colorId": "4",
+ "backgroundColor": "#fa573c",
  "foregroundColor": "#000000",
  "selected": true,
  "accessRole": "owner",

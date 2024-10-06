@@ -53,10 +53,10 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
 
 ```json title="Result"
 {
-  "result": {
-  "ID": "96",
-  "TASK_ID": "632",
-  "PARENT_ID": "94",
+ "result": {
+  "ID": "1396",
+  "TASK_ID": "2318",
+  "PARENT_ID": "1394",
   "CREATED_BY": "1",
   "TITLE": "New elements text",
   "SORT_INDEX": "1",
@@ -66,16 +66,16 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
   "TOGGLED_DATE": "",
   "MEMBERS": [],
   "ATTACHMENTS": []
-  },
-  "time": {
-  "start": 1720816508.81324,
-  "finish": 1720816508.85536,
-  "duration": 0.0421209335327148,
-  "processing": 0.0174088478088379,
-  "date_start": "2024-07-12T20:35:08+00:00",
-  "date_finish": "2024-07-12T20:35:08+00:00",
-  "operating_reset_at": 1720817108,
+ },
+ "time": {
+  "start": 1728140729.40666,
+  "finish": 1728140729.46347,
+  "duration": 0.0568118095397949,
+  "processing": 0.0246310234069824,
+  "date_start": "2024-10-05T18:05:29+03:00",
+  "date_finish": "2024-10-05T18:05:29+03:00",
+  "operating_reset_at": 1728141329,
   "operating": 0
-  }
-  }
+ }
+}
 ```

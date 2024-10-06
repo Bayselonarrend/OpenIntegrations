@@ -46,7 +46,16 @@ Method at API documentation: [im.user.status.get](https://dev.1c-bitrix.ru/learn
 
 ```json title="Result"
 {
-  "error": "expired_token",
-  "error_description": "The access token provided has expired."
-  }
+ "result": "away",
+ "time": {
+  "start": 1728140780.46645,
+  "finish": 1728140780.49094,
+  "duration": 0.0244910717010498,
+  "processing": 0.000164031982421875,
+  "date_start": "2024-10-05T18:06:20+03:00",
+  "date_finish": "2024-10-05T18:06:20+03:00",
+  "operating_reset_at": 1728141380,
+  "operating": 0
+ }
+}
 ```

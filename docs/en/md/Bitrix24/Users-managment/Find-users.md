@@ -57,154 +57,16 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 ```json title="Result"
 {
-  "result": [
-  {
-  "ID": "12",
-  "XML_ID": "56479740",
-  "ACTIVE": true,
-  "NAME": "Bay",
-  "LAST_NAME": "Selonarrend",
-  "EMAIL": "oarismos@gmail.com",
-  "LAST_LOGIN": "2024-07-13T07:17:17+00:00",
-  "DATE_REGISTER": "2024-07-13T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "LAST_ACTIVITY_DATE": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "18",
-  "XML_ID": "56701916",
-  "ACTIVE": true,
-  "EMAIL": "hey@exepmple.com",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-28T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "34",
-  "XML_ID": "56702240",
-  "ACTIVE": false,
-  "EMAIL": "537fafa9-e5ea-4221-bd46-4f6db2609634@exepmple.org",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-28T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "38",
-  "XML_ID": "56702244",
-  "ACTIVE": false,
-  "EMAIL": "442145e1-75e4-4c85-ac6d-e4da44c859a8@exepmple.org",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-28T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "42",
-  "XML_ID": "56702314",
-  "ACTIVE": true,
-  "EMAIL": "3f70caee-2203-46ec-b53c-24f1c7092056@exepmple.org",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-28T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "46",
-  "XML_ID": "56702336",
-  "ACTIVE": false,
-  "EMAIL": "f23e7d22-016d-4711-aa0f-439951951f35@exepmple.org",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-28T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "50",
-  "XML_ID": "56702654",
-  "ACTIVE": false,
-  "EMAIL": "360bd8ae-146c-497b-ae87-0699855f21b7@exepmple.org",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-28T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "54",
-  "XML_ID": "56721830",
-  "ACTIVE": false,
-  "EMAIL": "15ea8982-762a-44a0-9c53-c97530015c46@exepmple.org",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-29T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  1
-  ],
-  "USER_TYPE": "employee"
-  },
-  {
-  "ID": "1",
-  "XML_ID": "53818298",
-  "ACTIVE": true,
-  "NAME": "Anton",
-  "LAST_NAME": "Titovets",
-  "EMAIL": "no-reply@bitrix24.com",
-  "LAST_LOGIN": "2024-07-30T06:49:41+00:00",
-  "DATE_REGISTER": "2024-02-10T00:00:00+00:00",
-...
+ "result": [],
+ "time": {
+  "start": 1728140868.04758,
+  "finish": 1728140868.09157,
+  "duration": 0.0439901351928711,
+  "processing": 0.0122928619384766,
+  "date_start": "2024-10-05T18:07:48+03:00",
+  "date_finish": "2024-10-05T18:07:48+03:00",
+  "operating_reset_at": 1728141468,
+  "operating": 0
+ }
+}
 ```

@@ -58,31 +58,31 @@ sidebar_position: 5
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
-  "message_id": 4642,
+ "ok": true,
+ "result": {
+  "message_id": 8195,
   "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
   },
   "chat": {
-  "id": 461699897,
-  "first_name": "Anton",
-  "last_name": "Titowets",
-  "username": "JKIee",
-  "type": "private"
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
   },
-  "date": 1717072414,
+  "date": 1728139319,
   "document": {
-  "file_name": "document.docx",
-  "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  "file_id": "BQACAgIAAxkDAAISImZYch5MDU2ibeJ0S46yZfw6Dmb2AAKtUAACYCjISp3o6gzXeDCVNQQ",
-  "file_unique_id": "AgADrVAAAmAoyEo",
-  "file_size": 24069
+   "file_name": "document.docx",
+   "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+   "file_id": "BQACAgIAAxkDAAIgA2cBUDcfpco2Skzbs70eMIhCWD-LAAJNWwACR4EQSPuIfbshBAT4NgQ",
+   "file_unique_id": "AgADTVsAAkeBEEg",
+   "file_size": 24069
   },
-  "caption": "String value"
-  }
-  }
+  "caption": "Строковое значение"
+ }
+}
 ```

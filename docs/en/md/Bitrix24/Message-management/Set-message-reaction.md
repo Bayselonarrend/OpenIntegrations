@@ -49,16 +49,16 @@ Method at API documentation: [im.message.like](https://dev.1c-bitrix.ru/learning
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720969166.51361,
-  "finish": 1720969166.55322,
-  "duration": 0.0396139621734619,
-  "processing": 0.0151541233062744,
-  "date_start": "2024-07-14T14:59:26+00:00",
-  "date_finish": "2024-07-14T14:59:26+00:00",
-  "operating_reset_at": 1720969766,
+ "result": true,
+ "time": {
+  "start": 1728140846.01902,
+  "finish": 1728140846.06455,
+  "duration": 0.0455281734466553,
+  "processing": 0.0167689323425293,
+  "date_start": "2024-10-05T18:07:26+03:00",
+  "date_finish": "2024-10-05T18:07:26+03:00",
+  "operating_reset_at": 1728141446,
   "operating": 0
-  }
-  }
+ }
+}
 ```

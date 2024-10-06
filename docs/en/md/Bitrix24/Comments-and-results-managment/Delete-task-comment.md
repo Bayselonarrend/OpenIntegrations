@@ -51,16 +51,16 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720295541.27592,
-  "finish": 1720295541.38076,
-  "duration": 0.104840040206909,
-  "processing": 0.0781040191650391,
-  "date_start": "2024-07-06T19:52:21+00:00",
-  "date_finish": "2024-07-06T19:52:21+00:00",
-  "operating_reset_at": 1720296141,
+ "result": true,
+ "time": {
+  "start": 1728140737.43324,
+  "finish": 1728140737.54557,
+  "duration": 0.112327814102173,
+  "processing": 0.0853540897369385,
+  "date_start": "2024-10-05T18:05:37+03:00",
+  "date_finish": "2024-10-05T18:05:37+03:00",
+  "operating_reset_at": 1728141337,
   "operating": 0
-  }
-  }
+ }
+}
 ```

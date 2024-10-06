@@ -37,10 +37,10 @@ sidebar_position: 5
 
 ```json title="Result"
 {
-  "used": 1477493597,
-  "allocation": {
+ "used": 1477704605,
+ "allocation": {
   ".tag": "individual",
   "allocated": 2147483648
-  }
-  }
+ }
+}
 ```

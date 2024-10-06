@@ -46,154 +46,154 @@ Method at API documentation: [tasks.task.getFields](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "fields": {
-  "ID": {
-  "title": "ID",
-  "type": "integer",
-  "primary": true
-  },
-  "PARENT_ID": {
-  "title": "ID of base task",
-  "type": "integer",
-  "default": 0
-  },
-  "TITLE": {
-  "title": "Name",
-  "type": "string",
-  "required": true
-  },
-  "DESCRIPTION": {
-  "title": "Description",
-  "type": "string"
-  },
-  "MARK": {
-  "title": "Mark",
-  "type": "enum",
-  "values": {
-  "N": "Negative",
-  "P": "Positive"
-  },
-  "default": null
-  },
-  "PRIORITY": {
-  "title": "Priority",
-  "type": "enum",
-  "values": {
-  "2": "High",
-  "1": "Normal",
-  "0": "Low"
-  },
-  "default": 1
-  },
-  "STATUS": {
-  "title": "Status",
-  "type": "enum",
-  "values": {
-  "2": "Waiting of completing",
-  "3": "In work",
-  "4": "On controll",
-  "5": "Complete",
-  "6": "Deferred"
-  },
-  "default": 2
-  },
-  "MULTITASK": {
-  "title": "Multiple task",
-  "type": "enum",
-  "values": {
-  "Y": "Yes",
-  "N": "No"
-  },
-  "default": "N"
-  },
-  "NOT_VIEWED": {
-  "title": null,
-  "type": "enum",
-  "values": {
-  "Y": "Yes",
-  "N": "No"
-  },
-  "default": "N"
-  },
-  "REPLICATE": {
-  "title": "Repeatable task",
-  "type": "enum",
-  "values": {
-  "Y": "Yes",
-  "N": "No"
-  },
-  "default": "N"
-  },
-  "GROUP_ID": {
-  "title": "Project",
-  "type": "integer",
-  "default": 0
-  },
-  "STAGE_ID": {
-  "title": "Stage",
-  "type": "integer",
-  "default": 0
-  },
-  "CREATED_BY": {
-  "title": "Producer",
-  "type": "integer",
-  "required": true
-  },
-  "CREATED_DATE": {
-  "title": null,
-  "type": "datetime"
-  },
-  "RESPONSIBLE_ID": {
-  "title": "Responsible",
-  "type": "integer",
-  "required": true
-  },
-  "ACCOMPLICES": {
-  "title": null,
-  "type": "array"
-  },
-  "AUDITORS": {
-  "title": null,
-  "type": "array"
-  },
-  "CHANGED_BY": {
-  "title": "Changer",
-  "type": "integer"
-  },
-  "CHANGED_DATE": {
-  "title": "Date change",
-  "type": "datetime"
-  },
-  "STATUS_CHANGED_BY": {
-  "title": "Changer status",
-  "type": "integer"
-  },
-  "STATUS_CHANGED_DATE": {
-  "title": "Date change of status",
-  "type": "datetime"
-  },
-  "CLOSED_BY": {
-  "title": "Close task",
-  "type": "integer",
-  "default": null
-  },
-  "CLOSED_DATE": {
-  "title": "Date of closing",
-  "type": "datetime",
-  "default": null
-  },
-  "ACTIVITY_DATE": {
-  "title": null,
-  "type": "datetime",
-  "default": null
-  },
-  "DATE_START": {
-  "title": "Date of start",
-  "type": "datetime",
-  "default": null
-  },
-  "DEADLINE": {
-  "title": "Last deadline",
+   "ID": {
+    "title": "ID",
+    "type": "integer",
+    "primary": true
+   },
+   "PARENT_ID": {
+    "title": "ID базовой задачи",
+    "type": "integer",
+    "default": 0
+   },
+   "TITLE": {
+    "title": "Название",
+    "type": "string",
+    "required": true
+   },
+   "DESCRIPTION": {
+    "title": "Описание",
+    "type": "string"
+   },
+   "MARK": {
+    "title": "Оценка",
+    "type": "enum",
+    "values": {
+     "N": "Отрицательная",
+     "P": "Положительная"
+    },
+    "default": null
+   },
+   "PRIORITY": {
+    "title": "Приоритет",
+    "type": "enum",
+    "values": {
+     "2": "Высокий",
+     "1": "Средний",
+     "0": "Низкий"
+    },
+    "default": 1
+   },
+   "STATUS": {
+    "title": "Статус",
+    "type": "enum",
+    "values": {
+     "2": "Ждёт выполнения",
+     "3": "Выполняется",
+     "4": "Ожидает контроля",
+     "5": "Завершена",
+     "6": "Отложена"
+    },
+    "default": 2
+   },
+   "MULTITASK": {
+    "title": "Множественная задача",
+    "type": "enum",
+    "values": {
+     "Y": "Да",
+     "N": "Нет"
+    },
+    "default": "N"
+   },
+   "NOT_VIEWED": {
+    "title": null,
+    "type": "enum",
+    "values": {
+     "Y": "Да",
+     "N": "Нет"
+    },
+    "default": "N"
+   },
+   "REPLICATE": {
+    "title": "Повторяемая задача",
+    "type": "enum",
+    "values": {
+     "Y": "Да",
+     "N": "Нет"
+    },
+    "default": "N"
+   },
+   "GROUP_ID": {
+    "title": "Проект",
+    "type": "integer",
+    "default": 0
+   },
+   "STAGE_ID": {
+    "title": "Стадия",
+    "type": "integer",
+    "default": 0
+   },
+   "CREATED_BY": {
+    "title": "Постановщик",
+    "type": "integer",
+    "required": true
+   },
+   "CREATED_DATE": {
+    "title": null,
+    "type": "datetime"
+   },
+   "RESPONSIBLE_ID": {
+    "title": "Исполнитель",
+    "type": "integer",
+    "required": true
+   },
+   "ACCOMPLICES": {
+    "title": null,
+    "type": "array"
+   },
+   "AUDITORS": {
+    "title": null,
+    "type": "array"
+   },
+   "CHANGED_BY": {
+    "title": "Изменил",
+    "type": "integer"
+   },
+   "CHANGED_DATE": {
+    "title": "Дата изменения",
+    "type": "datetime"
+   },
+   "STATUS_CHANGED_BY": {
+    "title": "Изменил статус",
+    "type": "integer"
+   },
+   "STATUS_CHANGED_DATE": {
+    "title": "Дата изменения статуса",
+    "type": "datetime"
+   },
+   "CLOSED_BY": {
+    "title": "Закрыл задачу",
+    "type": "integer",
+    "default": null
+   },
+   "CLOSED_DATE": {
+    "title": "Дата закрытия",
+    "type": "datetime",
+    "default": null
+   },
+   "ACTIVITY_DATE": {
+    "title": null,
+    "type": "datetime",
+    "default": null
+   },
+   "DATE_START": {
+    "title": "Дата начала",
+    "type": "datetime",
+    "default": null
+   },
+   "DEADLINE": {
+    "title": "Крайний срок",
 ...
 ```

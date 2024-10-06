@@ -55,16 +55,16 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720600364.06058,
-  "finish": 1720600364.11507,
-  "duration": 0.0544910430908203,
-  "processing": 0.0175719261169434,
-  "date_start": "2024-07-10T08:32:44+00:00",
-  "date_finish": "2024-07-10T08:32:44+00:00",
-  "operating_reset_at": 1720600964,
+ "result": true,
+ "time": {
+  "start": 1728140773.34082,
+  "finish": 1728140773.38467,
+  "duration": 0.0438520908355713,
+  "processing": 0.0138728618621826,
+  "date_start": "2024-10-05T18:06:13+03:00",
+  "date_finish": "2024-10-05T18:06:13+03:00",
+  "operating_reset_at": 1728141373,
   "operating": 0
-  }
-  }
+ }
+}
 ```

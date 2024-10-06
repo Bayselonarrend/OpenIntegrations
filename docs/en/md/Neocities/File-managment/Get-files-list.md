@@ -47,20 +47,21 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
  "result": "success",
  "files": [
   {
-   "path": ".nojekyll",
+   "path": "test/gif.gif",
    "is_directory": false,
-   "size": 0,
-   "created_at": "Mon, 23 Sep 2024 19:58:04 -0000",
-   "updated_at": "Mon, 23 Sep 2024 19:58:04 -0000",
-   "sha1_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+   "size": 805189,
+   "created_at": "Sat, 05 Oct 2024 15:18:16 -0000",
+   "updated_at": "Sat, 05 Oct 2024 15:18:16 -0000",
+   "sha1_hash": null
   },
   {
-   "path": "404.html",
+   "path": "test/pic1.png",
    "is_directory": false,
-   "size": 7053,
-   "created_at": "Mon, 23 Sep 2024 19:57:59 -0000",
-   "updated_at": "Tue, 24 Sep 2024 13:47:32 -0000",
-   "sha1_hash": "663ec102ebbf671c2b81eba688ee2ad09cf5e6c2"
-  },
- ...
+   "size": 2114023,
+   "created_at": "Sat, 05 Oct 2024 15:18:16 -0000",
+   "updated_at": "Sat, 05 Oct 2024 15:18:16 -0000",
+   "sha1_hash": null
+  }
+ ]
+}
 ```

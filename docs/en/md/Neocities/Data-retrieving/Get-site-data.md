@@ -47,10 +47,10 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
  "result": "success",
  "info": {
   "sitename": "opi-test",
-  "views": 7230,
-  "hits": 13957,
+  "views": 8408,
+  "hits": 16193,
   "created_at": "Thu, 20 Jun 2024 07:28:29 -0000",
-  "last_updated": "Tue, 24 Sep 2024 12:13:04 -0000",
+  "last_updated": "Sat, 05 Oct 2024 15:18:16 -0000",
   "domain": null,
   "tags": []
  }

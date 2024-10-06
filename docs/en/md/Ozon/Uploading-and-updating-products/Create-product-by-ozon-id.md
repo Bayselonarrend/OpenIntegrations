@@ -57,7 +57,7 @@ You can get an empty structure using the GetSimplifiedProductStructure method()
 ```json title="Result"
 {
  "result": {
-  "task_id": 1285532034,
+  "task_id": 1342165229,
   "unmatched_sku_list": []
  }
 }

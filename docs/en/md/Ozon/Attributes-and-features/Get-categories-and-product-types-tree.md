@@ -51,105 +51,152 @@ Product creation is only available in the last level categories, compare exactly
 {
  "result": [
   {
-   "description_category_id": 17027485,
-   "category_name": "Хобби и творчество",
+   "description_category_id": 99999999,
+   "category_name": "Кино, музыка, видеоигры, софт",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 88621580,
-     "category_name": "Оборудование для творчества",
+     "description_category_id": 17027903,
+     "category_name": "Подарочный сертификат Ozon",
+     "disabled": true,
+     "children": [
+      {
+       "type_name": "Банковская карта",
+       "type_id": 971229967,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Электронный подарочный сертификат",
+       "type_id": 94957,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Подарочный сертификат",
+       "type_id": 94955,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Ozon.Card",
+       "type_id": 277418272,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Ozon Premium",
+       "type_id": 241039050,
+       "disabled": true,
+       "children": []
+      }
+     ]
+    },
+    {
+     "description_category_id": 46590429,
+     "category_name": "Кино, музыка, видеоигры, софт",
      "disabled": false,
      "children": [
       {
-       "type_name": "Пленка для аэрографии",
-       "type_id": 970849152,
+       "type_name": "Видеоигра",
+       "type_id": 409596018,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Сопло для аэрографа",
-       "type_id": 970849029,
+       "type_name": "Программа",
+       "type_id": 392638731,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Набор для чистки аэрографа",
-       "type_id": 970849022,
+       "type_name": "Фильм",
+       "type_id": 392638730,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Компрессор для аэрографа",
-       "type_id": 970849026,
+       "type_name": "Музыкальный диск",
+       "type_id": 392547272,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Аэрограф для творчества",
-       "type_id": 970843532,
+       "type_name": "Пластинка виниловая винтажная",
+       "type_id": 971888494,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Игла для аэрографа",
-       "type_id": 970849028,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Шланг для аэрографа",
-       "type_id": 970849042,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Расходные материалы для аэрографа",
-       "type_id": 971880987,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Трафарет для аэрографии",
-       "type_id": 970849027,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Средство для чистки аэрографа",
-       "type_id": 970849043,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Диффузор для аэрографа",
-       "type_id": 970849040,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Емкость для аэрографа",
-       "type_id": 971748069,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Краска для аэрографа",
-       "type_id": 970849024,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Подставка для аэрографа",
-       "type_id": 970849041,
+       "type_name": "Пластинка виниловая современная",
+       "type_id": 971888493,
        "disabled": false,
        "children": []
       }
      ]
     },
- 	...
-    }
-   ]
-  }
- ]
-}
+    {
+     "description_category_id": 200001489,
+     "category_name": "Цифровые товары",
+     "disabled": true,
+     "children": [
+      {
+       "type_name": "Подписка на видеоигры",
+       "type_id": 970591519,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Цифровая версия игр для Xbox",
+       "type_id": 970730371,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Сезонный пропуск",
+       "type_id": 970855496,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Ветеринарные услуги онлайн",
+       "type_id": 970995726,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Подписка на облачные хранилища",
+       "type_id": 970841193,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Пополнение баланса соцсетей",
+       "type_id": 970997471,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Цифровая версия игр для ПК",
+       "type_id": 970591520,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Подписка на музыку",
+       "type_id": 970727001,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Цифровое дополнение к видеоигре",
+       "type_id": 970855497,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Сертификат на гарантию",
+       "type_id": 971033670,
+       "disabled": true,
+...
 ```

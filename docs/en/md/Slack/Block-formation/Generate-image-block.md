@@ -38,8 +38,8 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "alt_text": "Yo",
-  "image_url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1",
-  "type": "image"
-  }
+ "type": "image",
+ "image_url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
+ "alt_text": "Image"
+}
 ```

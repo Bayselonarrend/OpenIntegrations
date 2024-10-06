@@ -50,7 +50,7 @@ Method at API documentation: [crm.deal.get](https://dev.1c-bitrix.ru/rest_help/c
 ```json title="Result"
 {
  "result": {
-  "ID": "72",
+  "ID": "708",
   "TITLE": "Planned sale",
   "TYPE_ID": "GOODS",
   "STAGE_ID": "NEW",
@@ -63,13 +63,13 @@ Method at API documentation: [crm.deal.get](https://dev.1c-bitrix.ru/rest_help/c
   "COMPANY_ID": "1",
   "CONTACT_ID": "3",
   "QUOTE_ID": null,
-  "BEGINDATE": "2024-01-01T00:00:00+00:00",
-  "CLOSEDATE": "2030-01-01T00:00:00+00:00",
+  "BEGINDATE": "2024-01-01T03:00:00+03:00",
+  "CLOSEDATE": "2030-01-01T03:00:00+03:00",
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2024-08-25T11:07:23+00:00",
-  "DATE_MODIFY": "2024-08-25T11:07:23+00:00",
+  "DATE_CREATE": "2024-10-05T18:07:57+03:00",
+  "DATE_MODIFY": "2024-10-05T18:07:57+03:00",
   "OPENED": "Y",
   "CLOSED": "N",
   "COMMENTS": null,
@@ -86,8 +86,8 @@ Method at API documentation: [crm.deal.get](https://dev.1c-bitrix.ru/rest_help/c
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2024-08-25T11:07:23+00:00",
-  "LAST_ACTIVITY_TIME": "2024-08-25T11:07:23+00:00",
+  "MOVED_TIME": "2024-10-05T18:07:57+03:00",
+  "LAST_ACTIVITY_TIME": "2024-10-05T18:07:57+03:00",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -96,13 +96,13 @@ Method at API documentation: [crm.deal.get](https://dev.1c-bitrix.ru/rest_help/c
   "LAST_ACTIVITY_BY": "1"
  },
  "time": {
-  "start": 1724584045.17096,
-  "finish": 1724584045.21572,
-  "duration": 0.04475998878479,
-  "processing": 0.0171570777893066,
-  "date_start": "2024-08-25T11:07:25+00:00",
-  "date_finish": "2024-08-25T11:07:25+00:00",
-  "operating_reset_at": 1724584645,
+  "start": 1728140877.8769,
+  "finish": 1728140877.92507,
+  "duration": 0.0481641292572022,
+  "processing": 0.0206019878387451,
+  "date_start": "2024-10-05T18:07:57+03:00",
+  "date_finish": "2024-10-05T18:07:57+03:00",
+  "operating_reset_at": 1728141477,
   "operating": 0
  }
 }

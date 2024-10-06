@@ -47,16 +47,16 @@ sidebar_position: 5
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1722328399.68494,
-  "finish": 1722328399.94913,
-  "duration": 0.264194965362549,
-  "processing": 0.229634046554565,
-  "date_start": "2024-07-30T08:33:19+00:00",
-  "date_finish": "2024-07-30T08:33:19+00:00",
-  "operating_reset_at": 1722328999,
-  "operating": 0.5396409034729
-  }
-  }
+ "result": true,
+ "time": {
+  "start": 1728140869.43329,
+  "finish": 1728140869.67548,
+  "duration": 0.242185115814209,
+  "processing": 0.214061975479126,
+  "date_start": "2024-10-05T18:07:49+03:00",
+  "date_finish": "2024-10-05T18:07:49+03:00",
+  "operating_reset_at": 1728141469,
+  "operating": 0.605801105499268
+ }
+}
 ```
