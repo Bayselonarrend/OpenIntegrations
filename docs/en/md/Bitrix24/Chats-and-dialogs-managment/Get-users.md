@@ -52,43 +52,44 @@ Method at API documentation: [im.user.list.get ](https://dev.1c-bitrix.ru/learni
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "10": {
-  "id": 10,
-  "active": true,
-  "name": "Techno Pizza",
-  "first_name": "Techno",
-  "last_name": "Pizza",
-  "work_position": null,
-  "color": "#ab7761",
-  "avatar": "",
-  "gender": "M",
-  "birthday": "",
-  "extranet": false,
-  "network": false,
-  "bot": false,
-  "connector": false,
-  "external_auth_id": "socservices",
-  "status": "online",
-  "idle": false,
-  "last_activity_date": "2024-07-13T18:36:23+00:00",
-  "mobile_last_date": false,
-  "absent": false,
-  "departments": [
-  1
-  ],
-  "phones": false
+   "id": 10,
+   "active": true,
+   "name": "Techno Pizza",
+   "first_name": "Techno",
+   "last_name": "Pizza",
+   "work_position": null,
+   "color": "#ab7761",
+   "avatar": "",
+   "gender": "M",
+   "birthday": "",
+   "extranet": false,
+   "network": false,
+   "bot": false,
+   "connector": false,
+   "external_auth_id": "socservices",
+   "status": "online",
+   "idle": false,
+   "last_activity_date": "2024-07-13T21:36:23+03:00",
+   "mobile_last_date": false,
+   "absent": false,
+   "departments": [
+    1,
+    264
+   ],
+   "phones": false
   }
-  },
-  "time": {
-  "start": 1722083796.56495,
-  "finish": 1722083796.59641,
-  "duration": 0.031451940536499,
-  "processing": 0.00229191780090332,
-  "date_start": "2024-07-27T12:36:36+00:00",
-  "date_finish": "2024-07-27T12:36:36+00:00",
-  "operating_reset_at": 1722084396,
+ },
+ "time": {
+  "start": 1728140780.79892,
+  "finish": 1728140780.88875,
+  "duration": 0.0898377895355225,
+  "processing": 0.0639269351959228,
+  "date_start": "2024-10-05T18:06:20+03:00",
+  "date_finish": "2024-10-05T18:06:20+03:00",
+  "operating_reset_at": 1728141380,
   "operating": 0
-  }
-  }
+ }
+}
 ```

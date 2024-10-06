@@ -48,18 +48,18 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 
 ```json title="Result"
 {
-  "result": [
+ "result": [
   "1"
-  ],
-  "time": {
-  "start": 1718304109.47482,
-  "finish": 1718304109.50417,
-  "duration": 0.0293447971343994,
-  "processing": 0.000212907791137695,
-  "date_start": "2024-06-13T18:41:49+00:00",
-  "date_finish": "2024-06-13T18:41:49+00:00",
-  "operating_reset_at": 1718304709,
+ ],
+ "time": {
+  "start": 1728140709.47882,
+  "finish": 1728140709.50689,
+  "duration": 0.0280728340148926,
+  "processing": 0.000250816345214844,
+  "date_start": "2024-10-05T18:05:09+03:00",
+  "date_finish": "2024-10-05T18:05:09+03:00",
+  "operating_reset_at": 1728141309,
   "operating": 0
-  }
-  }
+ }
+}
 ```

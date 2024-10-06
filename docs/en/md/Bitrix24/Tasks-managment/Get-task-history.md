@@ -49,154 +49,154 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "list": [
-  {
-  "id": "1044",
-  "createdDate": "19.06.2024 10:57:54",
-  "field": "NEW",
-  "value": {
-  "from": null,
-  "to": null
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1052",
-  "createdDate": "19.06.2024 10:58:01",
-  "field": "TITLE",
-  "value": {
-  "from": "New task",
-  "to": "Another task title"
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1054",
-  "createdDate": "19.06.2024 10:58:01",
-  "field": "DESCRIPTION",
-  "value": {
-  "from": "",
-  "to": ""
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1056",
-  "createdDate": "19.06.2024 10:58:01",
-  "field": "PRIORITY",
-  "value": {
-  "from": "2",
-  "to": "1"
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1064",
-  "createdDate": "19.06.2024 10:58:08",
-  "field": "RESPONSIBLE_ID",
-  "value": {
-  "from": "1",
-  "to": "10"
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1066",
-  "createdDate": "19.06.2024 10:58:08",
-  "field": "AUDITORS",
-  "value": {
-  "from": "",
-  "to": "1"
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1068",
-  "createdDate": "19.06.2024 10:58:08",
-  "field": "COMMENT",
-  "value": {
-  "from": null,
-  "to": "406"
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1072",
-  "createdDate": "19.06.2024 10:58:10",
-  "field": "STATUS",
-  "value": {
-  "from": "2",
-  "to": "6"
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1078",
-  "createdDate": "19.06.2024 10:58:12",
-  "field": "STATUS",
-  "value": {
-  "from": "6",
-  "to": "5"
-  },
-  "user": {
-  "id": "1",
-  "name": "Anton",
-  "lastName": "Titovets",
-  "secondName": null,
-  "login": "VKuser657846756"
-  }
-  },
-  {
-  "id": "1080",
-  "createdDate": "19.06.2024 10:58:12",
+   {
+    "id": "28918",
+    "createdDate": "05.10.2024 18:05:13",
+    "field": "NEW",
+    "value": {
+     "from": null,
+     "to": null
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28920",
+    "createdDate": "05.10.2024 18:05:18",
+    "field": "START_DATE_PLAN",
+    "value": {
+     "from": "",
+     "to": "1728140713"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28922",
+    "createdDate": "05.10.2024 18:05:18",
+    "field": "END_DATE_PLAN",
+    "value": {
+     "from": "",
+     "to": "1728162000"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28924",
+    "createdDate": "05.10.2024 18:05:18",
+    "field": "DURATION_PLAN_SECONDS",
+    "value": {
+     "from": "",
+     "to": "21287"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28938",
+    "createdDate": "05.10.2024 18:05:20",
+    "field": "TITLE",
+    "value": {
+     "from": "New task",
+     "to": "Another task title"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28940",
+    "createdDate": "05.10.2024 18:05:20",
+    "field": "DESCRIPTION",
+    "value": {
+     "from": "",
+     "to": ""
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28942",
+    "createdDate": "05.10.2024 18:05:20",
+    "field": "PRIORITY",
+    "value": {
+     "from": "2",
+     "to": "1"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28948",
+    "createdDate": "05.10.2024 18:05:21",
+    "field": "RESPONSIBLE_ID",
+    "value": {
+     "from": "1",
+     "to": "570"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28950",
+    "createdDate": "05.10.2024 18:05:21",
+    "field": "COMMENT",
+    "value": {
+     "from": null,
+     "to": "5756"
+    },
+    "user": {
+     "id": "1",
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": null,
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": "28954",
+    "createdDate": "05.10.2024 18:05:22",
 ...
 ```

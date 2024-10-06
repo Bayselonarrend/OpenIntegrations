@@ -43,12 +43,12 @@ sidebar_position: 2
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
-  "message_thread_id": 2457,
-  "name": "TestTopic bb6937b8-0372-4118-81f5-cb75b85c4627",
+ "ok": true,
+ "result": {
+  "message_thread_id": 5319,
+  "name": "TestTopic 39669198-b0f5-4b65-8126-3c48cc9d5f6a",
   "icon_color": 7322096,
   "icon_custom_emoji_id": "5357419403325481346"
-  }
-  }
+ }
+}
 ```

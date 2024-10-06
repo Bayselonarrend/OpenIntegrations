@@ -41,27 +41,5 @@ sidebar_position: 12
 ```
 
 ```json title="Result"
-{
-  "inline_keyboard":[
-  [
-  {
-  "text":"\u041E\u0442\u043B\u0438\u0447\u043D\u043E",
-  "callback_data":"\u041E\u0442\u043B\u0438\u0447\u043D\u043E"
-  }
-  ],
-  [
-  {
-  "text":"\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E",
-  "callback_data":"\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"
-  }
-  ],
-  [
-  {
-  "text":"\u041F\u043B\u043E\u0445\u043E",
-  "callback_data":"\u041F\u043B\u043E\u0445\u043E"
-  }
-  ]
-  ],
-  "rows":1
-  }
+"{\r\n \"keyboard\": [\r\n  [\r\n   {\r\n    \"text\": \"Button1\",\r\n    \"callback_data\": \"Button1\"\r\n   }\r\n  ],\r\n  [\r\n   {\r\n    \"text\": \"Button2\",\r\n    \"callback_data\": \"Button2\"\r\n   }\r\n  ],\r\n  [\r\n   {\r\n    \"text\": \"Button3\",\r\n    \"callback_data\": \"Button3\"\r\n   }\r\n  ]\r\n ],\r\n \"resize_keyboard\": true\r\n}"
 ```

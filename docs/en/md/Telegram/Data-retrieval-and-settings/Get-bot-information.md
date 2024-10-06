@@ -36,16 +36,17 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
+ "ok": true,
+ "result": {
   "id": 6129457865,
   "is_bot": true,
-  "first_name": "Vitaly The Bot",
+  "first_name": "Бот Виталий",
   "username": "sicheebot",
   "can_join_groups": true,
   "can_read_all_group_messages": false,
   "supports_inline_queries": false,
-  "can_connect_to_business": false
-  }
-  }
+  "can_connect_to_business": false,
+  "has_main_web_app": false
+ }
+}
 ```

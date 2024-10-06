@@ -43,154 +43,154 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "response": [
+ "response": [
   {
-  "visitors": {
-  "views": 8,
-  "sex_age": [
-  {
-  "count": 0,
-  "value": "f;12-18"
+   "activity": {
+    "comments": 5,
+    "likes": 5
+   },
+   "period_from": 1728086400,
+   "period_to": 1728172799,
+   "reach": {
+    "age": [
+     {
+      "value": "12-18",
+      "count": 0
+     },
+     {
+      "value": "18-21",
+      "count": 0
+     },
+     {
+      "value": "21-24",
+      "count": 1
+     },
+     {
+      "value": "24-27",
+      "count": 0
+     },
+     {
+      "value": "27-30",
+      "count": 0
+     },
+     {
+      "value": "30-35",
+      "count": 0
+     },
+     {
+      "value": "35-45",
+      "count": 0
+     },
+     {
+      "value": "45-100",
+      "count": 0
+     }
+    ],
+    "cities": [],
+    "countries": [
+     {
+      "code": "BY",
+      "count": 1,
+      "name": "Беларусь",
+      "value": 3
+     }
+    ],
+    "mobile_reach": 1,
+    "reach": 1,
+    "reach_subscribers": 1,
+    "sex": [
+     {
+      "value": "f",
+      "count": 0
+     },
+     {
+      "value": "m",
+      "count": 1
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 0
+     },
+     {
+      "value": "f;24-27",
+      "count": 0
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 0
+     },
+     {
+      "value": "f;35-45",
+      "count": 0
+     },
+     {
+      "value": "f;45-100",
+      "count": 0
+     },
+     {
+      "value": "m;12-18",
+      "count": 0
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 1
+     },
+     {
+      "value": "m;24-27",
+      "count": 0
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
+     },
+     {
+      "value": "m;30-35",
+      "count": 0
+     },
+     {
+      "value": "m;35-45",
+      "count": 0
+     },
+     {
+      "value": "m;45-100",
+      "count": 0
+     }
+    ]
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 2,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
+    "mobile_views": 0,
+    "views": 2,
+    "visitors": 2
+   }
   },
   {
-  "count": 0,
-  "value": "f;18-21"
-  },
-  {
-  "count": 0,
-  "value": "f;21-24"
-  },
-  {
-  "count": 0,
-  "value": "f;24-27"
-  },
-  {
-  "count": 0,
-  "value": "f;27-30"
-  },
-  {
-  "count": 0,
-  "value": "f;30-35"
-  },
-  {
-  "count": 0,
-  "value": "f;35-45"
-  },
-  {
-  "count": 0,
-  "value": "f;45-100"
-  },
-  {
-  "count": 0,
-  "value": "m;12-18"
-  },
-  {
-  "count": 0,
-  "value": "m;18-21"
-  },
-  {
-  "count": 1,
-  "value": "m;21-24"
-  },
-  {
-  "count": 0,
-  "value": "m;24-27"
-  },
-  {
-  "count": 0,
-  "value": "m;27-30"
-  },
-  {
-  "count": 0,
-  "value": "m;30-35"
-  },
-  {
-  "count": 0,
-  "value": "m;35-45"
-  },
-  {
-  "count": 0,
-  "value": "m;45-100"
-  }
-  ],
-  "sex": [
-  {
-  "count": 0,
-  "value": "f"
-  },
-  {
-  "count": 1,
-  "value": "m"
-  }
-  ],
-  "mobile_views": 0,
-  "countries": [
-  {
-  "value": 3,
-  "name": "Belarus",
-  "count": 1,
-  "code": "BY"
-  }
-  ],
-  "visitors": 1,
-  "cities": [],
-  "age": [
-  {
-  "count": 0,
-  "value": "12-18"
-  },
-  {
-  "count": 0,
-  "value": "18-21"
-  },
-  {
-  "count": 1,
-  "value": "21-24"
-  },
-  {
-  "count": 0,
-  "value": "24-27"
-  },
-  {
-  "count": 0,
-  "value": "27-30"
-  },
-  {
-  "count": 0,
-  "value": "30-35"
-  },
-  {
-  "count": 0,
-  "value": "35-45"
-  },
-  {
-  "count": 0,
-  "value": "45-100"
-  }
-  ]
-  },
-  "reach": {
-  "sex_age": [
-  {
-  "count": 0,
-  "value": "f;12-18"
-  },
-  {
-  "count": 0,
-  "value": "f;18-21"
-  },
-  {
-  "count": 0,
-  "value": "f;21-24"
-  },
-  {
-  "count": 0,
-  "value": "f;24-27"
-  },
-  {
-  "count": 0,
-  "value": "f;27-30"
-  },
-  {
+   "activity": {
 ...
 ```

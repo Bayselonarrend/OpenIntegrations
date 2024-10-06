@@ -57,25 +57,25 @@ Method at API documentation: [disk.folder.uploadfile](https://dev.1c-bitrix.ru/r
 
 ```json title="Result"
 {
-  "result": {
-  "ID": 1740,
+ "result": {
+  "ID": 12120,
   "NAME": "Picture1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": "1722",
+  "PARENT_ID": "12102",
   "DELETED_TYPE": 0,
   "GLOBAL_CONTENT_VERSION": 1,
-  "FILE_ID": 1142,
-  "SIZE": "805189",
-  "CREATE_TIME": "2024-07-03T14:42:52+00:00",
-  "UPDATE_TIME": "2024-07-03T14:42:52+00:00",
+  "FILE_ID": 8354,
+  "SIZE": "805191",
+  "CREATE_TIME": "2024-10-05T18:06:08+03:00",
+  "UPDATE_TIME": "2024-10-05T18:06:08+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": null,
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=fe708566006e9f06006b12e4000000010000076fcba303ea853529aed2cefade1444b3&token=disk%7CaWQ9MTc0MCZfPTFqN3RzcGx4UndmRkk0cmlvVGVFQUEzQ05lOHZ0U1RR%7CImRvd25sb2FkfGRpc2t8YVdROU1UYzBNQ1pmUFRGcU4zUnpjR3g0VW5kbVJrazBjbWx2VkdWRlFVRXpRMDVsT0haMFUxUlJ8ZmU3MDg1NjYwMDZlOWYwNjAwNmIxMmU0MDAwMDAwMDEwMDAwMDc2ZmNiYTMwM2VhODUzNTI5YWVkMmNlZmFkZTE0NDRiMyI%3D.yWcwutXSoxydbwTQ7d1Aapgpo69Iyc2LhhtmuH442Uo%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a7630167006e9f06006b12e400000001000007e2e201aeb9fedba2013080af5a95c05e&token=disk%7CaWQ9MTIxMjAmXz10Zjd3c2g5WVd4WVRvTTJPdTRXOGhFUXdVYzFIUEo3bg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXhNakFtWHoxMFpqZDNjMmc1V1ZkNFdWUnZUVEpQZFRSWE9HaEZVWGRWWXpGSVVFbzNiZz09fGE3NjMwMTY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ZTJlMjAxYWViOWZlZGJhMjAxMzA4MGFmNWE5NWMwNWUi.hxeaijazbDUQRDIfK21EDY8AyOGrxiQb53%2F%2F%2BvIwYOY%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/Picture1.jpg"
-  }
-  }
+ }
+}
 ```

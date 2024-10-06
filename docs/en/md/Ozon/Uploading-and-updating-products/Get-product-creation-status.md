@@ -47,10 +47,22 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
  "result": {
   "items": [
    {
-    "offer_id": "143210608",
-    "product_id": 0,
-    "status": "pending",
-    "errors": []
+    "offer_id": "143210609",
+    "product_id": 1211283190,
+    "status": "imported",
+    "errors": [
+     {
+      "code": "SELLER_NO_CONTRACT_FAILED",
+      "field": "",
+      "attribute_id": 0,
+      "state": "unmatched",
+      "level": "error",
+      "description": "Истек срок договора. Чтобы загрузить товар, возобновите договор в личном кабинете.",
+      "optional_description_elements": {},
+      "attribute_name": "",
+      "message": "Истек срок договора. Чтобы загрузить товар, возобновите договор в личном кабинете."
+     }
+    ]
    }
   ],
   "total": 1

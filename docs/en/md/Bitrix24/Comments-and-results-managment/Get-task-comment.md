@@ -51,24 +51,24 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "POST_MESSAGE_HTML": null,
-  "ID": "1496",
+  "ID": "5770",
   "AUTHOR_ID": "1",
-  "AUTHOR_NAME": "Anton Titovets",
+  "AUTHOR_NAME": "Антон Титовец",
   "AUTHOR_EMAIL": "",
-  "POST_DATE": "2024-07-06T19:52:08+00:00",
+  "POST_DATE": "2024-10-05T18:05:35+03:00",
   "POST_MESSAGE": "The task has been changed, let's split up"
-  },
-  "time": {
-  "start": 1720295539.50621,
-  "finish": 1720295539.55446,
-  "duration": 0.0482499599456787,
-  "processing": 0.019589900970459,
-  "date_start": "2024-07-06T19:52:19+00:00",
-  "date_finish": "2024-07-06T19:52:19+00:00",
-  "operating_reset_at": 1720296139,
+ },
+ "time": {
+  "start": 1728140737.17207,
+  "finish": 1728140737.22017,
+  "duration": 0.0480999946594238,
+  "processing": 0.0201938152313232,
+  "date_start": "2024-10-05T18:05:37+03:00",
+  "date_finish": "2024-10-05T18:05:37+03:00",
+  "operating_reset_at": 1728141337,
   "operating": 0
-  }
-  }
+ }
+}
 ```

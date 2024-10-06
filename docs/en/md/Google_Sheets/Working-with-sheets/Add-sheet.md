@@ -41,12 +41,12 @@ sidebar_position: 1
 
 ```json title="Result"
 {
- "spreadsheetId": "1CppTmECbHp9HaxzXF5NpNCiNvsZFruTdmBoyhPdtQe4",
+ "spreadsheetId": "13Z9DGg85xohy28PAKNvyeRR6Zx0mk7Ofm0HtRbLo4xA",
  "replies": [
   {
    "addSheet": {
     "properties": {
-     "sheetId": 20832585,
+     "sheetId": 796933703,
      "title": "TestSheet",
      "index": 2,
      "sheetType": "GRID",

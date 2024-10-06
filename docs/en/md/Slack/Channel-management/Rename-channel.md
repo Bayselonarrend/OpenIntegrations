@@ -41,48 +41,48 @@ sidebar_position: 13
 
 ```json title="Result"
 {
-  "ok": true,
-  "channel": {
-  "id": "C070VPMKN8J",
-  "name": "testconv42a25b36-8de3-4293-a6a9-6b92e6ea81ec",
+ "ok": true,
+ "channel": {
+  "id": "C07QMBL2E8L",
+  "name": "testconvce48855d-b96b-4f6a-a482-8f4743221bcd",
   "is_channel": true,
   "is_group": false,
   "is_im": false,
   "is_mpim": false,
   "is_private": false,
-  "created": 1714146542,
+  "created": 1728140453,
   "is_archived": false,
   "is_general": false,
   "unlinked": 0,
-  "name_normalized": "testconv42a25b36-8de3-4293-a6a9-6b92e6ea81ec",
+  "name_normalized": "testconvce48855d-b96b-4f6a-a482-8f4743221bcd",
   "is_shared": false,
   "is_org_shared": false,
   "is_pending_ext_shared": false,
   "pending_shared": [],
   "context_team_id": "T06UD92BS3C",
-  "updated": 1714146544414,
+  "updated": 1728140456527,
   "parent_conversation": null,
   "creator": "U06UG1CAYH2",
   "is_ext_shared": false,
   "shared_team_ids": [
-  "T06UD92BS3C"
+   "T06UD92BS3C"
   ],
   "pending_connected_team_ids": [],
   "is_member": true,
-  "last_read": "1714146543.286219",
+  "last_read": "1728140454.996119",
   "topic": {
-  "value": "TestTopic",
-  "creator": "U06UG1CAYH2",
-  "last_set": 1714146542
+   "value": "TestTopic",
+   "creator": "U06UG1CAYH2",
+   "last_set": 1728140454
   },
   "purpose": {
-  "value": "TestGoal",
-  "creator": "U06UG1CAYH2",
-  "last_set": 1714146542
+   "value": "TestGoal",
+   "creator": "U06UG1CAYH2",
+   "last_set": 1728140454
   },
   "previous_names": [
-  "testconv9a14fe4d-2fb1-4e47-b1e4-9bc1e4f7a05c"
+   "testconv52e49985-f55c-4f12-8bd2-0d8d571ccd3a"
   ]
-  }
-  }
+ }
+}
 ```

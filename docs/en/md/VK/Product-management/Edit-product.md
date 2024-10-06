@@ -45,6 +45,6 @@ sidebar_position: 5
 
 ```json title="Result"
 {
-  "response": 1
-  }
+ "response": 1
+}
 ```

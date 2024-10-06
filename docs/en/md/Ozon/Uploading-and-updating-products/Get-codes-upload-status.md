@@ -44,8 +44,8 @@ Method at API documentation: [post /v1/product/upload_digital_codes/info](https:
 
 ```json title="Result"
 {
- "code": 5,
- "message": "Upload task not found",
+ "code": 7,
+ "message": "s2s: method \"/endpoints.v1.Service/GetDigitalCodesTaskByID\" is not allowed for the provided access tokens: permission denied",
  "details": []
 }
 ```

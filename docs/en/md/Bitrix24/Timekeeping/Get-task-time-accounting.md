@@ -51,27 +51,27 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
-  "result": {
-  "ID": "42",
-  "TASK_ID": "638",
+ "result": {
+  "ID": "798",
+  "TASK_ID": "2324",
   "USER_ID": "10",
   "COMMENT_TEXT": "Time spent on work",
   "SECONDS": "7200",
   "MINUTES": "120",
   "SOURCE": "2",
-  "CREATED_DATE": "2024-06-12T17:36:21+00:00",
-  "DATE_START": "2024-07-12T20:36:22+00:00",
-  "DATE_STOP": "2024-07-12T20:36:22+00:00"
-  },
-  "time": {
-  "start": 1720816583.31997,
-  "finish": 1720816583.36716,
-  "duration": 0.0471861362457275,
-  "processing": 0.0187540054321289,
-  "date_start": "2024-07-12T20:36:23+00:00",
-  "date_finish": "2024-07-12T20:36:23+00:00",
-  "operating_reset_at": 1720817183,
+  "CREATED_DATE": "2024-09-05T18:06:16+03:00",
+  "DATE_START": "2024-10-05T18:06:16+03:00",
+  "DATE_STOP": "2024-10-05T18:06:16+03:00"
+ },
+ "time": {
+  "start": 1728140776.80096,
+  "finish": 1728140776.84574,
+  "duration": 0.0447738170623779,
+  "processing": 0.019212007522583,
+  "date_start": "2024-10-05T18:06:16+03:00",
+  "date_finish": "2024-10-05T18:06:16+03:00",
+  "operating_reset_at": 1728141376,
   "operating": 0
-  }
-  }
+ }
+}
 ```

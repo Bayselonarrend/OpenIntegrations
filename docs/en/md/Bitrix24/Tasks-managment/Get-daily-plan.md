@@ -46,16 +46,16 @@ Method at API documentation: [task.planner.getlist](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
-  "result": [],
-  "time": {
-  "start": 1720816513.42336,
-  "finish": 1720816513.45192,
-  "duration": 0.0285580158233643,
-  "processing": 0.000265121459960938,
-  "date_start": "2024-07-12T20:35:13+00:00",
-  "date_finish": "2024-07-12T20:35:13+00:00",
-  "operating_reset_at": 1720817113,
+ "result": [],
+ "time": {
+  "start": 1728140730.27553,
+  "finish": 1728140730.30505,
+  "duration": 0.0295159816741943,
+  "processing": 0.000339984893798828,
+  "date_start": "2024-10-05T18:05:30+03:00",
+  "date_finish": "2024-10-05T18:05:30+03:00",
+  "operating_reset_at": 1728141330,
   "operating": 0
-  }
-  }
+ }
+}
 ```

@@ -49,52 +49,72 @@ Method at API documentation: [disk.folder.getchildren](https://dev.1c-bitrix.ru/
 
 ```json title="Result"
 {
-  "result": [
+ "result": [
   {
-  "ID": "848",
-  "NAME": "New subfolder 2",
-  "CODE": null,
-  "STORAGE_ID": "3",
-  "TYPE": "folder",
-  "REAL_OBJECT_ID": "848",
-  "PARENT_ID": "846",
-  "DELETED_TYPE": "0",
-  "CREATE_TIME": "2024-06-27T07:19:56+00:00",
-  "UPDATE_TIME": "2024-06-27T07:19:58+00:00",
-  "DELETE_TIME": null,
-  "CREATED_BY": "1",
-  "UPDATED_BY": "1",
-  "DELETED_BY": "0",
-  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder 2"
+   "ID": "12104",
+   "NAME": "New subfolder 2",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "folder",
+   "REAL_OBJECT_ID": "12104",
+   "PARENT_ID": "12102",
+   "DELETED_TYPE": "0",
+   "CREATE_TIME": "2024-10-05T18:06:05+03:00",
+   "UPDATE_TIME": "2024-10-05T18:06:05+03:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder 2"
   },
   {
-  "ID": "850",
-  "NAME": "New subfolder",
-  "CODE": null,
-  "STORAGE_ID": "3",
-  "TYPE": "folder",
-  "REAL_OBJECT_ID": "850",
-  "PARENT_ID": "846",
-  "DELETED_TYPE": "0",
-  "CREATE_TIME": "2024-06-27T07:19:57+00:00",
-  "UPDATE_TIME": "2024-06-27T07:19:58+00:00",
-  "DELETE_TIME": null,
-  "CREATED_BY": "1",
-  "UPDATED_BY": "1",
-  "DELETED_BY": "0",
-  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder"
+   "ID": "12106",
+   "NAME": "New subfolder",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "folder",
+   "REAL_OBJECT_ID": "12106",
+   "PARENT_ID": "12102",
+   "DELETED_TYPE": "0",
+   "CREATE_TIME": "2024-10-05T18:06:05+03:00",
+   "UPDATE_TIME": "2024-10-05T18:06:05+03:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder"
+  },
+  {
+   "ID": "12124",
+   "NAME": "New file name.jpg",
+   "CODE": null,
+   "STORAGE_ID": "3",
+   "TYPE": "file",
+   "PARENT_ID": "12102",
+   "DELETED_TYPE": "0",
+   "GLOBAL_CONTENT_VERSION": "1",
+   "FILE_ID": "8358",
+   "SIZE": "805189",
+   "CREATE_TIME": "2024-10-05T18:06:08+03:00",
+   "UPDATE_TIME": "2024-10-05T18:06:08+03:00",
+   "DELETE_TIME": null,
+   "CREATED_BY": "1",
+   "UPDATED_BY": "1",
+   "DELETED_BY": "0",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a7630167006e9f06006b12e400000001000007e2e201aeb9fedba2013080af5a95c05e&token=disk%7CaWQ9MTIxMjQmXz13RDdzQzlteE5sbmdRcUlaWDl3Skp3aDVQRkwyN0FHYg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXhNalFtWHoxM1JEZHpRemx0ZUU1c2JtZFJjVWxhV0RsM1NrcDNhRFZRUmt3eU4wRkhZZz09fGE3NjMwMTY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ZTJlMjAxYWViOWZlZGJhMjAxMzA4MGFmNWE5NWMwNWUi.1BsXKmvudwZjhLAbhHSVl8aa0%2FHOD7t%2B%2Fp21EaII1OY%3D",
+   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/New file name.jpg"
   }
-  ],
-  "total": 2,
-  "time": {
-  "start": 1719472801.3139,
-  "finish": 1719472801.36215,
-  "duration": 0.0482509136199951,
-  "processing": 0.0148689746856689,
-  "date_start": "2024-06-27T07:20:01+00:00",
-  "date_finish": "2024-06-27T07:20:01+00:00",
-  "operating_reset_at": 1719473401,
+ ],
+ "total": 3,
+ "time": {
+  "start": 1728140769.41574,
+  "finish": 1728140769.44999,
+  "duration": 0.0342559814453125,
+  "processing": 0.00887799263000488,
+  "date_start": "2024-10-05T18:06:09+03:00",
+  "date_finish": "2024-10-05T18:06:09+03:00",
+  "operating_reset_at": 1728141369,
   "operating": 0
-  }
-  }
+ }
+}
 ```

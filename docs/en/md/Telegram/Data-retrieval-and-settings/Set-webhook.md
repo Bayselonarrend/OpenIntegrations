@@ -39,8 +39,8 @@ sidebar_position: 3
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": true,
-  "description": "Webhook was set"
-  }
+ "ok": true,
+ "result": true,
+ "description": "Webhook was set"
+}
 ```

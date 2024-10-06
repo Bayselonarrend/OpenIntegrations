@@ -49,7 +49,7 @@ Method at API documentation: [tasks.task.disapprove](https://dev.1c-bitrix.ru/re
 
 ```json title="Result"
 {
-  "error": 1048582,
-  "error_description": "Action on the task is not allowed"
-  }
+ "error": 1048582,
+ "error_description": "Действие над задачей не разрешено"
+}
 ```

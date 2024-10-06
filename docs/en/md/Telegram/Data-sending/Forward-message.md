@@ -43,43 +43,43 @@ sidebar_position: 11
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
-  "message_id": 4649,
+ "ok": true,
+ "result": {
+  "message_id": 8203,
   "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
   },
   "chat": {
-  "id": 461699897,
-  "first_name": "Anton",
-  "last_name": "Titowets",
-  "username": "JKIee",
-  "type": "private"
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
   },
-  "date": 1717072482,
+  "date": 1728139400,
   "forward_origin": {
-  "type": "channel",
-  "chat": {
-  "id": -1001893407333,
-  "title": "Test channel",
-  "username": "testsichee",
-  "type": "channel"
-  },
-  "message_id": 4686,
-  "date": 1717072354
+   "type": "channel",
+   "chat": {
+    "id": -1001893407333,
+    "title": "Тестовый канал",
+    "username": "testsichee",
+    "type": "channel"
+   },
+   "message_id": 9280,
+   "date": 1728139209
   },
   "forward_from_chat": {
-  "id": -1001893407333,
-  "title": "Test channel",
-  "username": "testsichee",
-  "type": "channel"
+   "id": -1001893407333,
+   "title": "Тестовый канал",
+   "username": "testsichee",
+   "type": "channel"
   },
-  "forward_from_message_id": 4686,
-  "forward_date": 1717072354,
-  "text": "String value"
-  }
-  }
+  "forward_from_message_id": 9280,
+  "forward_date": 1728139209,
+  "text": "Строковое значение"
+ }
+}
 ```

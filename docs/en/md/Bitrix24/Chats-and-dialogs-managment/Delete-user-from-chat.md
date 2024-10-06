@@ -52,16 +52,16 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720865685.25089,
-  "finish": 1720865685.32425,
-  "duration": 0.0733590126037598,
-  "processing": 0.0480890274047852,
-  "date_start": "2024-07-13T10:14:45+00:00",
-  "date_finish": "2024-07-13T10:14:45+00:00",
-  "operating_reset_at": 1720866285,
+ "result": true,
+ "time": {
+  "start": 1728140809.66766,
+  "finish": 1728140809.74531,
+  "duration": 0.0776488780975342,
+  "processing": 0.0497410297393799,
+  "date_start": "2024-10-05T18:06:49+03:00",
+  "date_finish": "2024-10-05T18:06:49+03:00",
+  "operating_reset_at": 1728141409,
   "operating": 0
-  }
-  }
+ }
+}
 ```

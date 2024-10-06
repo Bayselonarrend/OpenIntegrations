@@ -52,16 +52,16 @@ Method at API documentation: [im.dialog.unread](https://dev.1c-bitrix.ru/learnin
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720969158.8803,
-  "finish": 1720969158.91584,
-  "duration": 0.035538911819458,
-  "processing": 0.0112378597259521,
-  "date_start": "2024-07-14T14:59:18+00:00",
-  "date_finish": "2024-07-14T14:59:18+00:00",
-  "operating_reset_at": 1720969758,
+ "result": true,
+ "time": {
+  "start": 1728140834.80637,
+  "finish": 1728140834.87572,
+  "duration": 0.0693511962890625,
+  "processing": 0.0447530746459961,
+  "date_start": "2024-10-05T18:07:14+03:00",
+  "date_finish": "2024-10-05T18:07:14+03:00",
+  "operating_reset_at": 1728141434,
   "operating": 0
-  }
-  }
+ }
+}
 ```
