@@ -52,8 +52,8 @@ sidebar_position: 2
  "options": {
   "precision": 0
  },
- "id": "fldvX6c56atcvvyrm",
- "name": "cdf734d5-0283-43aa-a788-bf3d1162fed6(изм.)",
+ "id": "fldAfab1DjDc5aKQF",
+ "name": "5df6b653-c232-4b63-b78d-4eaa613c94f8(изм.)",
  "description": "Новое описание"
 }
 ```

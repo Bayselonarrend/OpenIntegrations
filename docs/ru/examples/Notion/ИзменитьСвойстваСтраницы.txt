@@ -1,7 +1,7 @@
 ﻿    Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница     = "11782aa7-fc4e-8157-9709-e1b8794297ad";
-    Иконка       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Обложка      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Страница     = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
+    Иконка       = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Обложка      = "https://openyellow.neocities.org/test_data/picture2.jpg";
     Архивировать = Ложь;
 
     Свойства = Новый Соответствие;

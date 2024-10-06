@@ -53,11 +53,11 @@ sidebar_position: 2
 {
  "result": [
   {
-   "id": 1167679693,
+   "id": 1212175834,
    "barcode": "",
    "category_id": 0,
    "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
-   "offer_id": "143210608",
+   "offer_id": "143210609",
    "height": 250,
    "depth": 10,
    "width": 150,
@@ -136,7 +136,7 @@ sidebar_position: 2
      "values": [
       {
        "dictionary_value_id": 0,
-       "value": "143210608"
+       "value": "143210609"
       }
      ]
     },
@@ -155,16 +155,6 @@ sidebar_position: 2
     {
      "attributes": [
       {
-       "attribute_id": 21837,
-       "complex_id": 100001,
-       "values": [
-        {
-         "dictionary_value_id": 0,
-         "value": "viedo1"
-        }
-       ]
-      },
-      {
        "attribute_id": 21841,
        "complex_id": 100001,
        "values": [
@@ -173,13 +163,24 @@ sidebar_position: 2
          "value": "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/"
         }
        ]
+      },
+      {
+       "attribute_id": 21837,
+       "complex_id": 100001,
+       "values": [
+        {
+         "dictionary_value_id": 0,
+         "value": "viedo1"
+        }
+       ]
       }
      ]
     }
    ],
    "color_image": "",
    "last_id": "",
-   "description_category_id": 17028922
+   "description_category_id": 17028922,
+   "type_id": 95911
   }
  ],
  "total": 1,

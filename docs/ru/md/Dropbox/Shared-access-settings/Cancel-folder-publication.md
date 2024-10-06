@@ -39,6 +39,7 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
- ".tag": "complete"
+ ".tag": "async_job_id",
+ "async_job_id": "dbjid:AADcVJA_Tgws0GIHGpCHU-zTqFG4CZwVrKudUjhdN5nWJ82xZp28epOTECIfwGjy3KN6dq1M0ID1UzgOkqeUPg4b"
 }
 ```

@@ -1,5 +1,5 @@
-﻿    Токен  = "ya29.a0AcM612wEOFdYrBAfaaj3lE1VF2iHlHVb-W3gXbCVWL36GYSqOL8cYeXYOFK_xfKPGDQj5-McI9VK6I-mQnu5N1YpwfvaC725-og24iFeA...";
-    Книга  = "1pTg0GVTbliI26mfQZYzz2Afh-3fnSCmI2CBE0Uq8OW0";
-    Лист   = "1431256504";
+﻿    Токен  = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Книга  = "1IIUxPvgvrPCB92SXFISbKBFLAbmbHUIu_OysyC9w3Ow";
+    Лист   = "1572277025";
 
     Результат = OPI_GoogleSheets.УдалитьЛист(Токен, Книга, Лист);

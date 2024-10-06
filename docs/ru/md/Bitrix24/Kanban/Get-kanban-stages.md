@@ -49,12 +49,24 @@ sidebar_position: 4
 ```json title="Результат"
 {
  "result": {
+  "142": {
+   "ID": "142",
+   "TITLE": "Новое имя стадии стадии",
+   "SORT": "100",
+   "COLOR": "000000",
+   "SYSTEM_TYPE": "NEW",
+   "ENTITY_ID": "1",
+   "ENTITY_TYPE": "U",
+   "ADDITIONAL_FILTER": [],
+   "TO_UPDATE": [],
+   "TO_UPDATE_ACCESS": null
+  },
   "20": {
    "ID": "20",
    "TITLE": "Новая стадия",
-   "SORT": "100",
+   "SORT": "200",
    "COLOR": "0026FF",
-   "SYSTEM_TYPE": "NEW",
+   "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
    "ENTITY_TYPE": "U",
    "ADDITIONAL_FILTER": [],
@@ -64,7 +76,7 @@ sidebar_position: 4
   "24": {
    "ID": "24",
    "TITLE": "Название",
-   "SORT": "200",
+   "SORT": "300",
    "COLOR": "75d900",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -76,7 +88,7 @@ sidebar_position: 4
   "16": {
    "ID": "16",
    "TITLE": "Новая стадия",
-   "SORT": "300",
+   "SORT": "400",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -88,7 +100,7 @@ sidebar_position: 4
   "18": {
    "ID": "18",
    "TITLE": "Новая стадия 2",
-   "SORT": "400",
+   "SORT": "500",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -100,7 +112,7 @@ sidebar_position: 4
   "12": {
    "ID": "12",
    "TITLE": "Новая стадия",
-   "SORT": "500",
+   "SORT": "600",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -112,7 +124,7 @@ sidebar_position: 4
   "14": {
    "ID": "14",
    "TITLE": "Новая стадия 2",
-   "SORT": "600",
+   "SORT": "700",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -124,7 +136,7 @@ sidebar_position: 4
   "8": {
    "ID": "8",
    "TITLE": "Новая стадия",
-   "SORT": "700",
+   "SORT": "800",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -136,7 +148,7 @@ sidebar_position: 4
   "10": {
    "ID": "10",
    "TITLE": "Новая стадия 2",
-   "SORT": "800",
+   "SORT": "900",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
    "ENTITY_ID": "1",
@@ -148,18 +160,6 @@ sidebar_position: 4
   "6": {
    "ID": "6",
    "TITLE": "Новая стадия",
-   "SORT": "900",
-   "COLOR": "0026FF",
-   "SYSTEM_TYPE": "",
-   "ENTITY_ID": "1",
-   "ENTITY_TYPE": "U",
-   "ADDITIONAL_FILTER": [],
-   "TO_UPDATE": [],
-   "TO_UPDATE_ACCESS": null
-  },
-  "130": {
-   "ID": "130",
-   "TITLE": "Новая стадия",
    "SORT": "1000",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
@@ -169,9 +169,9 @@ sidebar_position: 4
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "132": {
-   "ID": "132",
-   "TITLE": "Новая стадия 2",
+  "816": {
+   "ID": "816",
+   "TITLE": "Новая стадия",
    "SORT": "1100",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
@@ -181,9 +181,9 @@ sidebar_position: 4
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "122": {
-   "ID": "122",
-   "TITLE": "Новая стадия",
+  "818": {
+   "ID": "818",
+   "TITLE": "Новая стадия 2",
    "SORT": "1200",
    "COLOR": "0026FF",
    "SYSTEM_TYPE": "",
@@ -193,9 +193,9 @@ sidebar_position: 4
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "124": {
-   "ID": "124",
-   "TITLE": "Новая стадия 2",
+  "720": {
+   "ID": "720",
+   "TITLE": "Новая стадия",
    "SORT": "1300",
 ...
 ```

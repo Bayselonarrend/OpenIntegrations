@@ -1,0 +1,1 @@
+﻿oint twitter СоздатьПроизвольныйТвит --text %text% --media %media% --options %options% --dur %dur% --auth %auth%

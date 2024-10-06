@@ -41,6 +41,6 @@ sidebar_position: 3
 {
  "status": 6,
  "status_message": "notSubscribed",
- "chat_hostname": "SN-CHAT-05_"
+ "chat_hostname": "SN-CHAT-02_"
 }
 ```

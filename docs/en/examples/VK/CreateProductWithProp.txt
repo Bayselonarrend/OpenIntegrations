@@ -1,9 +1,9 @@
 ﻿    Parameters = GetVKParameters();
 
-    Image1       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Image2       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
-    PropVariant1 = "2528";
-    PropVariant2 = "2529";
+    Image1       = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Image2       = "https://openyellow.neocities.org/test_data/picture2.jpg";
+    PropVariant1 = "2522";
+    PropVariant2 = "2523";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);
