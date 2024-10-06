@@ -162,10 +162,10 @@ EndFunction
 // Creates a tweet with custom content
 //
 // Parameters:
-// Text - String - Tweet text
-// MediaArray - Array of String, BinaryData - Array of binary data or file paths
-// PollOptionsArray - Array of String - Array of poll options, if necessary
-// PollDuration - String, Number - Poll duration if necessary (poll without duration is not created)
+// Text - String - Tweet text - text
+// MediaArray - Array of String, BinaryData - Array of binary data or file paths - media
+// PollOptionsArray - Array of String - Array of poll options, if necessary - options
+// PollDuration - String, Number - Poll duration if necessary (poll without duration is not created) - dur
 // Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
 //
 // Returns:
@@ -247,7 +247,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    MediaArray = UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -264,7 +264,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(GifsArray, "animated_gif", Parameters);
+    MediaArray = UploadAttachmentsArray(GifsArray, "tweet_gif", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -281,7 +281,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(VideosArray, "video", Parameters);
+    MediaArray = UploadAttachmentsArray(VideosArray, "tweet_video", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -359,20 +359,7 @@ Function UploadMediaFile(Val File, Val Type, Val Parameters)
     Parameters_ = GetStandardParameters(Parameters);
     URL         = "https://upload.twitter.com/1.1/media/upload.json";
 
-    If Type = "photo" Then
-
-        Fields = New Structure;
-        Fields.Insert("media_data"    , Base64String(File));
-        Fields.Insert("media_category", Type);
-
-        Authorization = CreateAuthorizationHeaderV1(Parameters_, Fields, RequestType, URL);
-        Response      = OPI_Tools.Post(URL, Fields, Authorization, False);
-
-    Else
-
-        Response = UploadMediaInParts(File, Type, RequestType, URL, Parameters_);
-
-    EndIf;
+    Response = UploadMediaInParts(File, Type, RequestType, URL, Parameters_);
 
     Return Response;
 
@@ -387,18 +374,12 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
     Command  = "command";
     Size     = File.Size();
 
-    MIMETypeMapping = New Map;
-    MIMETypeMapping.Insert("photo"       , "image/jpeg");
-    MIMETypeMapping.Insert("video"       , "video/mp4");
-    MIMETypeMapping.Insert("animated_gif", "image/gif");
-
     ChunkSize    = Count * Unit * Unit;
     ArrayReading = SplitBinaryData(File, ChunkSize);
 
     Fields = New Structure;
     Fields.Insert(Command          , "INIT");
     Fields.Insert("total_bytes"    , OPI_Tools.NumberToString(Size));
-    Fields.Insert("media_type"     , MIMETypeMapping.Get(Type));
     Fields.Insert("media_category" , Type);
 
     Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, RequestType, URL);
@@ -611,7 +592,8 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
 
         SignatureString = SignatureString
             + TableRow.Key
-            + " ="
+
+            + "="
             + TableRow.Value
             + "&";
 
@@ -635,16 +617,23 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
 
     Signature = EncodeString(Base64String(Signature), StringEncodingMethod.URLencoding);
 
-    Delimiter           = """,";
+    Delimiter = """,";
+
     AuthorizationHeader = AuthorizationHeader
         + "OAuth "
-        + "oauth_consumer_key =""" + Parameters[OCK] + Delimiter
-        + "oauth_token =""" + Parameters[OTK] + Delimiter
+        + "oauth_consumer_key=""" + Parameters[OCK] + Delimiter
+
+        + "oauth_token=""" + Parameters[OTK] + Delimiter
+
         + "oauth_signature_method=""" + HashingMethod + Delimiter
-        + "oauth_timestamp =""" + CurrentUNIXDate + Delimiter
-        + "oauth_nonce =""" + CurrentUNIXDate + Delimiter
-        + "oauth_version =""" + APIVersion + Delimiter
-        + "oauth_signature =""" + Signature;
+
+        + "oauth_timestamp=""" + CurrentUNIXDate + Delimiter
+
+        + "oauth_nonce=""" + CurrentUNIXDate + Delimiter
+
+        + "oauth_version=""" + APIVersion + Delimiter
+
+        + "oauth_signature=" + Signature;
 
         HeaderMapping = New Map;
         HeaderMapping.Insert("authorization", AuthorizationHeader);

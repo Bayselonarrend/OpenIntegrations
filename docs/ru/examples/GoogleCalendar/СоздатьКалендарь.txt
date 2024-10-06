@@ -1,4 +1,4 @@
-﻿    Токен        = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+﻿    Токен        = "ya29.a0AcM612wEOFdYrBAfaaj3lE1VF2iHlHVb-W3gXbCVWL36GYSqOL8cYeXYOFK_xfKPGDQj5-McI9VK6I-mQnu5N1YpwfvaC725-og24iFeA...";
     Наименование = "Тестовый календарь";
 
     Результат = OPI_GoogleCalendar.СоздатьКалендарь(Токен, Наименование);

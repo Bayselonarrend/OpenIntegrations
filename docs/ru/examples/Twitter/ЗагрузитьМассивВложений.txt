@@ -1,10 +1,10 @@
 ﻿    Параметры = ПолучитьПараметрыАвторизацииТвиттер();
 
-    Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
-    Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     МассивКартинок = Новый Массив();
     МассивКартинок.Добавить(Картинка1);
     МассивКартинок.Добавить(Картинка2);
 
-    Результат = OPI_Twitter.ЗагрузитьМассивВложений(МассивКартинок, "photo", Параметры);
+    Результат = OPI_Twitter.ЗагрузитьМассивВложений(МассивКартинок, "tweet_image", Параметры);

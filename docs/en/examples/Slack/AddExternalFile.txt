@@ -1,5 +1,5 @@
 ﻿    Token = "xoxb-6965308400114-696804637...";
     Title = "NewFile";
-    File  = "https://openyellow.neocities.org/test_data/document.docx"; // URL, Binary Data or Path to file
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL, Binary Data or Path to file
 
     Result = OPI_Slack.AddExternalFile(Token, File, Title);

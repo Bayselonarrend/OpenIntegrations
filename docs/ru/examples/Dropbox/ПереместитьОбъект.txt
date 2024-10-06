@@ -1,5 +1,5 @@
 ﻿    ОригиналныйПуть  = "/New/pic.png";
     ЦелевойПуть      = "/pic.png";
-    Токен            = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
+    Токен            = "sl.B-RaUL1PgKWfVCdSMOuqUC1fQYipwG77bSFa_gUQ6lkgOW9LvEzpKwLmzIl6UWxHtc74l5XE2U...";
 
     Результат = OPI_Dropbox.ПереместитьОбъект(Токен, ОригиналныйПуть, ЦелевойПуть);

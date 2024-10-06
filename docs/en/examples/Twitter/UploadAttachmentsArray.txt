@@ -1,10 +1,10 @@
 ﻿    Parameters = GetTwitterAuthData();
 
-    Image1 = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Binary Data or Path to file
-    Image2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Binary Data or Path to file
+    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Binary Data or Path to file
+    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Binary Data or Path to file
 
     ImageArray = New Array();
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    Result = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    Result = OPI_Twitter.UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);

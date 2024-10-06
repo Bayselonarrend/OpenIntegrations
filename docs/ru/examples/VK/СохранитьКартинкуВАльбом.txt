@@ -1,8 +1,8 @@
 ﻿    Параметры        = ПолучитьПараметрыВК();
     ОписаниеКартинки = "Картинка автотест";
-    ИДАльбома        = "305998972";
+    ИДАльбома        = "306007468";
 
-    Картинка  = "https://openyellow.neocities.org/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
 
