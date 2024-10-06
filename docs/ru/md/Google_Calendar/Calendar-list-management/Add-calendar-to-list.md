@@ -40,13 +40,13 @@ sidebar_position: 2
 ```json title="Результат"
 {
  "kind": "calendar#calendarListEntry",
- "etag": "\"1727612291978000\"",
- "id": "8b82e5e84747cf3a497bfbfa46baa7196614dd8f1211cd2ea79f02d2f9134b03@group.calendar.google.com",
+ "etag": "\"1728224709728000\"",
+ "id": "131ea619014eaa11a1b297307da6c5e069825d5bb0a264f687d109f68f8264ef@group.calendar.google.com",
  "summary": "Новое наименование",
  "description": "Новое описание",
  "timeZone": "Europe/Moscow",
- "colorId": "5",
- "backgroundColor": "#ff7537",
+ "colorId": "16",
+ "backgroundColor": "#4986e7",
  "foregroundColor": "#000000",
  "selected": true,
  "accessRole": "owner",

@@ -59,7 +59,7 @@ sidebar_position: 4
 {
  "result": {
   "task": {
-   "id": "110",
+   "id": "2328",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -70,19 +70,19 @@ sidebar_position: 4
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-06-15T17:42:04+00:00",
+   "createdDate": "2024-10-06T17:32:24+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-06-15T17:42:11+00:00",
+   "changedDate": "2024-10-06T17:32:31+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-06-15T17:42:04+00:00",
+   "activityDate": "2024-10-06T17:32:24+03:00",
    "dateStart": null,
-   "deadline": "2024-06-16T17:42:00+00:00",
-   "startDatePlan": null,
-   "endDatePlan": null,
-   "guid": "{8d5b2535-b856-4da0-8e67-df7eb35c1add}",
+   "deadline": "2024-10-07T20:32:00+03:00",
+   "startDatePlan": "2024-10-06T17:32:24+03:00",
+   "endDatePlan": "2024-10-07T00:00:00+03:00",
+   "guid": "{d04b1de9-17bb-4e65-bba4-6c19ad2063f3}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -100,7 +100,7 @@ sidebar_position: 4
    "subordinate": "N",
    "exchangeModified": null,
    "exchangeId": null,
-   "outlookVersion": "2",
+   "outlookVersion": "3",
    "viewedDate": null,
    "sorting": null,
    "durationFact": null,
@@ -110,7 +110,7 @@ sidebar_position: 4
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-06-15T17:42:11+00:00",
+   "statusChangedDate": "2024-10-06T17:32:31+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -189,14 +189,14 @@ sidebar_position: 4
   }
  },
  "time": {
-  "start": 1718473331.25688,
-  "finish": 1718473331.49812,
-  "duration": 0.2412428855896,
-  "processing": 0.20207691192627,
-  "date_start": "2024-06-15T17:42:11+00:00",
-  "date_finish": "2024-06-15T17:42:11+00:00",
-  "operating_reset_at": 1718473931,
-  "operating": 0.202054023742676
+  "start": 1728225151.44712,
+  "finish": 1728225151.6276,
+  "duration": 0.18048095703125,
+  "processing": 0.155375957489014,
+  "date_start": "2024-10-06T17:32:31+03:00",
+  "date_finish": "2024-10-06T17:32:31+03:00",
+  "operating_reset_at": 1728225751,
+  "operating": 0.155356884002686
  }
 }
 ```

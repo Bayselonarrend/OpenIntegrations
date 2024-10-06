@@ -1,6 +1,6 @@
-﻿    Токен         = "ya29.a0AcM612wEOFdYrBAfaaj3lE1VF2iHlHVb-W3gXbCVWL36GYSqOL8cYeXYOFK_xfKPGDQj5-McI9VK6I-mQnu5N1YpwfvaC725-og24iFeA...";
+﻿    Токен         = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "1Zzs9l2aMP8tCEXbA4GGiMjbMFgUduv_G";
-    Файл          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Идентификатор = "1f-YrvMCEZ7r3JWlLGM39zn6dctvFjwCi";
+    Файл          = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);

@@ -47,7 +47,7 @@ sidebar_position: 16
  "result": [
   {
    "sku": 1626044001,
-   "count": 0
+   "count": 1
   }
  ]
 }

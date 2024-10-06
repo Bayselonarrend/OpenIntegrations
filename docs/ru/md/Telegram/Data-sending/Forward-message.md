@@ -28,7 +28,7 @@ sidebar_position: 11
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDЧата      = "461699897";
     IDКанала    = "@testsichee";
-    IDСообщения = "9170";
+    IDСообщения = "9280";
 
     Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
 ```
@@ -45,7 +45,7 @@ sidebar_position: 11
 {
  "ok": true,
  "result": {
-  "message_id": 4649,
+  "message_id": 8217,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -59,7 +59,7 @@ sidebar_position: 11
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1717072482,
+  "date": 1728223843,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -68,8 +68,8 @@ sidebar_position: 11
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 4686,
-   "date": 1717072354
+   "message_id": 9300,
+   "date": 1728223640
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -77,8 +77,8 @@ sidebar_position: 11
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 4686,
-  "forward_date": 1717072354,
+  "forward_from_message_id": 9300,
+  "forward_date": 1728223640,
   "text": "Строковое значение"
  }
 }

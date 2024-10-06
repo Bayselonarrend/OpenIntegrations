@@ -1,5 +1,5 @@
 ﻿    Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "app5mS5DsvcGIVun6";
-    Таблица     = "tblGu8xhI9qXgeNVG";
+    База        = "app9bSgL4YtTVGTlE";
+    Таблица     = "tblDUGAZFZaeOwE6x";
 
     Результат = OPI_Airtable.ПолучитьСписокЗаписей(Токен, База, Таблица);

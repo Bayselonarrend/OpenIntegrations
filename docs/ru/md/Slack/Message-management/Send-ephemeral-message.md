@@ -46,7 +46,7 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
-  "ok": true,
-  "message_ts": "1714146540.000300"
-  }
+ "ok": true,
+ "message_ts": "1728224896.000300"
+}
 ```

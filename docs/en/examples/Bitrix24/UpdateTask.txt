@@ -6,12 +6,12 @@
     TaskData.Insert("PRIORITY"   , "1");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2326";
+    TaskID = "2262";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "76ad0267006e9f06006b12e400000001000...";
-    TaskID = "2328";
+    Token  = "37d1fe66006e9f06006b12e400000001000...";
+    TaskID = "2264";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);

@@ -26,7 +26,7 @@ sidebar_position: 4
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
-    MessageID = "9170";
+    MessageID = "9280";
 
     Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
 ```

@@ -60,7 +60,7 @@ sidebar_position: 5
 {
  "ok": true,
  "result": {
-  "message_id": 4642,
+  "message_id": 8209,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -74,12 +74,12 @@ sidebar_position: 5
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1717072414,
+  "date": 1728223759,
   "document": {
    "file_name": "document.docx",
    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-   "file_id": "BQACAgIAAxkDAAISImZYch5MDU2ibeJ0S46yZfw6Dmb2AAKtUAACYCjISp3o6gzXeDCVNQQ",
-   "file_unique_id": "AgADrVAAAmAoyEo",
+   "file_id": "BQACAgIAAxkDAAIgEWcCmg8rNfnaK3yLcSIQjw354_FVAALzWAAC2lUYSLGYni6yAhvzNgQ",
+   "file_unique_id": "AgAD81gAAtpVGEg",
    "file_size": 24069
   },
   "caption": "Строковое значение"

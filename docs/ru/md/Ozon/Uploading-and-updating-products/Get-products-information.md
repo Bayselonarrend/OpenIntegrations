@@ -57,21 +57,21 @@ sidebar_position: 3
  "result": {
   "items": [
    {
-    "id": 1111588191,
+    "id": 1212175834,
     "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
-    "offer_id": "143210608",
+    "offer_id": "143210609",
     "barcode": "",
     "buybox_price": "",
     "category_id": 0,
-    "created_at": "2024-07-15T06:19:47.810185Z",
+    "created_at": "2024-10-06T14:37:55.89308Z",
     "images": [
      "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"
     ],
     "marketing_price": "",
     "min_ozon_price": "",
-    "old_price": "1100.0000",
+    "old_price": "1300.0000",
     "premium_price": "",
-    "price": "1000.0000",
+    "price": "1300.0000",
     "recommended_price": "",
     "min_price": "",
     "sources": [],
@@ -94,18 +94,29 @@ sidebar_position: 3
     "color_image": "",
     "primary_image": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
     "status": {
-     "state": "unmatched",
-     "state_failed": "",
+     "state": "imported",
+     "state_failed": "unmatched",
      "moderate_status": "",
      "decline_reasons": [],
      "validation_state": "pending",
      "state_name": "Не продается",
-     "state_description": "Создается",
-     "is_failed": false,
+     "state_description": "Не создан",
+     "is_failed": true,
      "is_created": false,
-     "state_tooltip": "",
-     "item_errors": [],
-     "state_updated_at": "2024-08-27T18:37:29.341354Z"
+     "state_tooltip": "Не прошел валидацию",
+     "item_errors": [
+      {
+       "code": "SELLER_NO_CONTRACT_FAILED",
+       "field": "",
+       "attribute_id": 0,
+       "state": "unmatched",
+       "level": "error",
+       "description": "Истек срок договора. Чтобы загрузить товар, возобновите договор в личном кабинете.",
+       "optional_description_elements": {},
+       "attribute_name": ""
+      }
+     ],
+     "state_updated_at": "2024-10-06T14:38:39.845262Z"
     },
     "state": "",
     "service_type": "IS_CODE_SERVICE",
@@ -122,7 +133,7 @@ sidebar_position: 3
     "is_discounted": false,
     "has_discounted_item": false,
     "barcodes": [],
-    "updated_at": "2024-08-27T18:37:19.432674Z",
+    "updated_at": "2024-10-06T14:38:38.384515Z",
     "price_indexes": {
      "price_index": "WITHOUT_INDEX",
      "external_index_data": null,

@@ -40,13 +40,13 @@ sidebar_position: 4
 ```json title="Результат"
 {
  "object": "block",
- "id": "11282aa7-fc4e-8131-a317-cc9db5aab1bc",
+ "id": "11782aa7-fc4e-8190-8ad2-f18cce6f4c74",
  "parent": {
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "created_time": "2024-10-01T18:37:00Z",
- "last_edited_time": "2024-10-01T18:37:00Z",
+ "created_time": "2024-10-06T14:28:00Z",
+ "last_edited_time": "2024-10-06T14:28:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -82,6 +82,6 @@ sidebar_position: 4
   "checked": false,
   "color": "default"
  },
- "request_id": "ca37158c-9843-462c-b75d-f7b722da6c3f"
+ "request_id": "04ae70e3-86fa-4767-9cb1-f3402cc25afd"
 }
 ```

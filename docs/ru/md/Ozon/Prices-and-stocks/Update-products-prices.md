@@ -56,8 +56,8 @@ sidebar_position: 5
 {
  "result": [
   {
-   "product_id": 1179230269,
-   "offer_id": "143210608",
+   "product_id": 1179304145,
+   "offer_id": "143210610",
    "updated": true,
    "errors": []
   }

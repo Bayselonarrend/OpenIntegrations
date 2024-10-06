@@ -51,105 +51,152 @@ sidebar_position: 1
 {
  "result": [
   {
-   "description_category_id": 17027485,
-   "category_name": "Хобби и творчество",
+   "description_category_id": 17027495,
+   "category_name": "Автотовары",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 88621580,
-     "category_name": "Оборудование для творчества",
+     "description_category_id": 17028755,
+     "category_name": "Тюнинг и внешний декор",
      "disabled": false,
      "children": [
       {
-       "type_name": "Пленка для аэрографии",
-       "type_id": 970849152,
+       "type_name": "Замок лобового стекла",
+       "type_id": 971006632,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Сопло для аэрографа",
-       "type_id": 970849029,
+       "type_name": "Пленка антигравийная",
+       "type_id": 970943796,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Набор для чистки аэрографа",
-       "type_id": 970849022,
+       "type_name": "Дефлектор капота",
+       "type_id": 94656,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Компрессор для аэрографа",
-       "type_id": 970849026,
+       "type_name": "Накладка на кузов",
+       "type_id": 971006634,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Аэрограф для творчества",
-       "type_id": 970843532,
+       "type_name": "Колпаки на колеса",
+       "type_id": 94659,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Игла для аэрографа",
-       "type_id": 970849028,
+       "type_name": "Защита внешних частей автомобиля",
+       "type_id": 94658,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Шланг для аэрографа",
-       "type_id": 970849042,
+       "type_name": "Накладка на пороги",
+       "type_id": 98334,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Расходные материалы для аэрографа",
-       "type_id": 971880987,
+       "type_name": "Порог-площадка",
+       "type_id": 97601,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Трафарет для аэрографии",
-       "type_id": 970849027,
+       "type_name": "Крышка на пикап",
+       "type_id": 971045988,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Средство для чистки аэрографа",
-       "type_id": 970849043,
+       "type_name": "Спойлер автомобиля",
+       "type_id": 970895069,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Диффузор для аэрографа",
-       "type_id": 970849040,
+       "type_name": "Пленка защитная для автомобиля",
+       "type_id": 971053255,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Емкость для аэрографа",
-       "type_id": 971748069,
+       "type_name": "Подкрылки",
+       "type_id": 94663,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Краска для аэрографа",
-       "type_id": 970849024,
+       "type_name": "Защита бампера",
+       "type_id": 97599,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Подставка для аэрографа",
-       "type_id": 970849041,
+       "type_name": "Заглушка бампера автомобиля",
+       "type_id": 970954154,
        "disabled": false,
        "children": []
-      }
-     ]
-    },
- 	...
-    }
-   ]
-  }
- ]
-}
+      },
+      {
+       "type_name": "Пленка виниловая",
+       "type_id": 970943799,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Дефлектор для окон",
+       "type_id": 97593,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Накладка на фары",
+       "type_id": 970682241,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Накладка на бампер",
+       "type_id": 92180,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Накладка крышки багажника",
+       "type_id": 970879042,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Веткоотбойники для автомобиля",
+       "type_id": 970891873,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Уплотнитель автомобильный",
+       "type_id": 970891910,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Фейринг",
+       "type_id": 971110642,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Набор для ламинации автомобиля",
+       "type_id": 970977425,
+       "disabled": false,
+       "children": []
+      },
+...
 ```

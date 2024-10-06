@@ -57,7 +57,7 @@ sidebar_position: 3
 {
  "ok": true,
  "result": {
-  "message_id": 4640,
+  "message_id": 8207,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -71,7 +71,7 @@ sidebar_position: 3
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1717072376,
+  "date": 1728223677,
   "video": {
    "duration": 5,
    "width": 640,
@@ -79,21 +79,21 @@ sidebar_position: 3
    "file_name": "video",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAhIgZlhx93ZvZz-UGKGqjCgPLXlYPSgAAqtQAAJgKMhKHu6gl3VqCfoBAAdtAAM1BA",
-    "file_unique_id": "AQADq1AAAmAoyEpy",
+    "file_id": "AAMCAgADGQMAAiAPZwKZvLHl_qeHyNHRqAy7oDXF77UAAupYAALaVRhIOUnSDgMYMCABAAdtAAM2BA",
+    "file_unique_id": "AQAD6lgAAtpVGEhy",
     "file_size": 20106,
     "width": 320,
     "height": 240
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAhIgZlhx93ZvZz-UGKGqjCgPLXlYPSgAAqtQAAJgKMhKHu6gl3VqCfoBAAdtAAM1BA",
-    "file_unique_id": "AQADq1AAAmAoyEpy",
+    "file_id": "AAMCAgADGQMAAiAPZwKZvLHl_qeHyNHRqAy7oDXF77UAAupYAALaVRhIOUnSDgMYMCABAAdtAAM2BA",
+    "file_unique_id": "AQAD6lgAAtpVGEhy",
     "file_size": 20106,
     "width": 320,
     "height": 240
    },
-   "file_id": "BAACAgIAAxkDAAISIGZYcfd2b2c_lBihqowoDy15WD0oAAKrUAACYCjISh7uoJd1agn6NQQ",
-   "file_unique_id": "AgADq1AAAmAoyEo",
+   "file_id": "BAACAgIAAxkDAAIgD2cCmbyx5f6nh8jR0agMu6A1xe-1AALqWAAC2lUYSDlJ0g4DGDAgNgQ",
+   "file_unique_id": "AgAD6lgAAtpVGEg",
    "file_size": 1137878
   },
   "caption": "Строковое значение"

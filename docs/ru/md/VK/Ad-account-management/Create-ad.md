@@ -53,10 +53,12 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
-  "response": [
+ "response": [
   {
-  "id": 171372386
+   "id": 0,
+   "error_code": 603,
+   "error_desc": "Some ads error occurs: ORD details must be presented."
   }
-  ]
-  }
+ ]
+}
 ```
