@@ -1,6 +1,6 @@
 ﻿    Параметры    = ПолучитьПараметрыВК();
 
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
+    Картинка = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
     Вид      = "Пост";
 
     Результат = OPI_VK.ЗагрузитьФотоНаСервер(Картинка, Параметры, Вид);

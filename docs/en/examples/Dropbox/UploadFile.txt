@@ -1,6 +1,6 @@
 ﻿    Path  = "/New/pic.png";
-    Token = "sl.B-RaUL1PgKWfVCdSMOuqUC1fQYipwG77bSFa_gUQ6lkgOW9LvEzpKwLmzIl6UWxHtc74l5XE2U...";
-    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Token = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
+    Image = "https://openyellow.neocities.org/test_data/picture.jpg";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);

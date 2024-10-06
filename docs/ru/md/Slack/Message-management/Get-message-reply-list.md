@@ -42,52 +42,52 @@ sidebar_position: 7
 
 ```json title="Результат"
 {
-  "ok": true,
-  "messages": [
+ "ok": true,
+ "messages": [
   {
-  "user": "U06UG1CAYH2",
-  "type": "message",
-  "ts": "1714215813.399779",
-  "edited": {
-  "user": "B06TZ0MJV5M",
-  "ts": "1714215813.000000"
-  },
-  "bot_id": "B06TZ0MJV5M",
-  "app_id": "A06TYNH45RV",
-  "text": "Тестовое сообщение 2",
-  "team": "T06UD92BS3C",
-  "bot_profile": {
-  "id": "B06TZ0MJV5M",
-  "deleted": false,
-  "name": "OpenIntegrations",
-  "updated": 1713205238,
-  "app_id": "A06TYNH45RV",
-  "icons": {
-  "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
-  "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
-  "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
-  },
-  "team_id": "T06UD92BS3C"
-  },
-  "blocks": [
-  {
-  "type": "rich_text",
-  "block_id": "04z",
-  "elements": [
-  {
-  "type": "rich_text_section",
-  "elements": [
-  {
-  "type": "text",
-  "text": "Тестовое сообщение 2"
+   "user": "U06UG1CAYH2",
+   "type": "message",
+   "ts": "1728224894.177499",
+   "edited": {
+    "user": "B06TZ0MJV5M",
+    "ts": "1728224895.000000"
+   },
+   "bot_id": "B06TZ0MJV5M",
+   "app_id": "A06TYNH45RV",
+   "text": "Тестовое сообщение 2",
+   "team": "T06UD92BS3C",
+   "bot_profile": {
+    "id": "B06TZ0MJV5M",
+    "deleted": false,
+    "name": "OpenIntegrations",
+    "updated": 1713205238,
+    "app_id": "A06TYNH45RV",
+    "icons": {
+     "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
+     "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
+     "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
+    },
+    "team_id": "T06UD92BS3C"
+   },
+   "blocks": [
+    {
+     "type": "rich_text",
+     "block_id": "g26EJ",
+     "elements": [
+      {
+       "type": "rich_text_section",
+       "elements": [
+        {
+         "type": "text",
+         "text": "Тестовое сообщение 2"
+        }
+       ]
+      }
+     ]
+    }
+   ]
   }
-  ]
-  }
-  ]
-  }
-  ]
-  }
-  ],
-  "has_more": false
-  }
+ ],
+ "has_more": false
+}
 ```

@@ -43,7 +43,7 @@ sidebar_position: 1
  "trash_size": 0,
  "is_paid": false,
  "is_idm_managed_folder_address_access": false,
- "used_space": 773097729,
+ "used_space": 811150143,
  "system_folders": {
   "odnoklassniki": "disk:/Социальные сети/Одноклассники",
   "google": "disk:/Социальные сети/Google+",
@@ -70,8 +70,8 @@ sidebar_position: 1
   "login": "bayselonarrend"
  },
  "is_idm_managed_public_access": false,
- "payment_flow": false,
+ "payment_flow": true,
  "unlimited_autoupload_enabled": false,
- "revision": 1727542907480516
+ "revision": 1728140209406193
 }
 ```

@@ -44,8 +44,8 @@ sidebar_position: 19
 
 ```json title="Результат"
 {
- "code": 5,
- "message": "Upload task not found",
+ "code": 7,
+ "message": "s2s: method \"/endpoints.v1.Service/GetDigitalCodesTaskByID\" is not allowed for the provided access tokens: permission denied",
  "details": []
 }
 ```

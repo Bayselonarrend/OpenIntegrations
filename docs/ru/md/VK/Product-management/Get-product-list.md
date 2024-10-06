@@ -37,154 +37,154 @@ sidebar_position: 2
 
 ```json title="Результат"
 [
-  {
-  "sku": "12 345",
-  "is_main_variant": true,
-  "is_owner": true,
-  "date": 1708079311,
-  "can_show_convert_to_service": true,
-  "can_delete": true,
-  "views_count": 1,
-  "thumb_photo": "https://sun56-2.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?crop=0,0,1,1&size=0x400&quality=95&sign=a4094440c3769389eefbbb6f63fb3b06&c_uniq_tag=wg_JEvsvTTjzR-t_GyVXH_8VjxbraezNWRHCn7b6mBQ",
-  "likes": {
-  "user_likes": 0,
-  "count": 0
+ {
+  "availability": 0,
+  "category": {
+   "inner_type": "market_market_category_old",
+   "id": 20173,
+   "name": "Батарейки",
+   "section": {
+    "id": 10016,
+    "name": "Канцелярские товары"
+   }
   },
-  "can_recover": false,
-  "can_repost": 1,
-  "reject_info": {
-  "buttons": [
-  {
-  "url": "https://vk.com/app7702617#owner_id=-218861756&item_id=8653408&type=market",
-  "type": "market_edit"
-  },
-  {
-  "type": "market_delete"
-  }
-  ],
-  "in_progress": false,
-  "description": "Описание тестового товара",
-  "moderation_status": 2,
-  "title": ""
-  },
-  "photos": [
-  {
-  "has_tags": false,
-  "web_view_token": "8aafd75b91f2cf1425",
-  "text": "",
-  "sizes": [
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=75x75&quality=95&sign=8799f9f279ce65bf9ac62a5724971675&c_uniq_tag=RBTqNLzMstWYqH3UP-8FEDlMyg31ogY38n3XLQ-lOCE&type=album",
-  "width": 75,
-  "type": "s",
-  "height": 75
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=130x130&quality=95&sign=68127c81f17e0792a39275ac56a00349&c_uniq_tag=AYaHXxR8M9NOwGxm3W7OCKV8m8r1_TbAjXNWxH6WPyw&type=album",
-  "width": 130,
-  "type": "m",
-  "height": 130
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=604x604&quality=95&sign=5dc945bfe9e7f79888d73004eae343eb&c_uniq_tag=V4KYZPU3iIF3RVCqYXXq8g8p0Trd2jQRKnY7AFlKDe8&type=album",
-  "width": 604,
-  "type": "x",
-  "height": 604
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=807x807&quality=95&sign=d278b813303eb31bdb730e51ef8f6b6d&c_uniq_tag=aFbbqQ4bPqGp5BMBy917bpLCshpOoZjf5YA89T9UCec&type=album",
-  "width": 807,
-  "type": "y",
-  "height": 807
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=1024x1024&quality=95&sign=f8881fbbded9f8840ee4b02c4c6cb879&c_uniq_tag=tHRje1Xf1jctFzjuO4X4aJBAAYxJ1_rK5JKFNIx17N8&type=album",
-  "width": 1024,
-  "type": "z",
-  "height": 1024
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=130x130&quality=95&sign=68127c81f17e0792a39275ac56a00349&c_uniq_tag=AYaHXxR8M9NOwGxm3W7OCKV8m8r1_TbAjXNWxH6WPyw&type=album",
-  "width": 130,
-  "type": "o",
-  "height": 130
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=200x200&quality=95&sign=cd430561bb7b2746fb6eb6fe75360ec6&c_uniq_tag=vApE_jC2x9G_pE2o_Sa0VbdXZbhyYpJ6stb7bWAnP-4&type=album",
-  "width": 200,
-  "type": "p",
-  "height": 200
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=320x320&quality=95&sign=8e1438dda0f54fb11756668e2fee6c1a&c_uniq_tag=Vn2w0zG8YDCc0KftpKmikpLL3YyydcLrGgcqB3wKi2s&type=album",
-  "width": 320,
-  "type": "q",
-  "height": 320
-  },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/Gfx6FaCjN0Q.jpg?size=510x510&quality=95&sign=e91c847e2415d0ee15512c123421c276&c_uniq_tag=ZWDwoheiysNResAKNuM2WxUUsip8_r6MfNbvtGkh73Y&type=album",
-  "width": 510,
-  "type": "r",
-  "height": 510
-  }
-  ],
-  "access_key": "c9794503a593bd9cec",
-  "user_id": 100,
+  "description": "Описание товара",
+  "id": 9642576,
   "owner_id": -218861756,
-  "id": 457239678,
-  "date": 1708079308,
-  "album_id": -53
+  "price": {
+   "amount": "100",
+   "currency": {
+    "id": 643,
+    "name": "RUB",
+    "title": "₽"
+   },
+   "text": "1 ₽",
+   "discount_rate": -93,
+   "old_amount": "1500",
+   "old_amount_text": "15 ₽"
   },
-  {
-  "has_tags": false,
-  "web_view_token": "624c0066d8978afcac",
-  "text": "",
-  "sizes": [
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=75x75&quality=95&sign=2d38b31b4c3e10582b0679289e30e9b7&c_uniq_tag=NHINy4_e18wRuW7wSk8qdZAyddbb6UvEYe3tCKVzy1c&type=album",
-  "width": 75,
-  "type": "s",
-  "height": 75
+  "title": "Тестовый товар (со свойством)",
+  "other_items": [
+   {
+    "title": "Другие товары сообщества",
+    "view_type": 1,
+    "item_ids": [
+     "-218861756_9640025",
+     "-218861756_9578921",
+     "-218861756_9499082",
+     "-218861756_9423489",
+     "-218861756_9387853",
+     "-218861756_9320009",
+     "-218861756_9320008",
+     "-218861756_9259547",
+     "-218861756_9259390",
+     "-218861756_9192466"
+    ],
+    "referrer_item_type": "other_goods"
+   }
+  ],
+  "dimensions": {
+   "width": 20,
+   "height": 30,
+   "length": 40
   },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=130x130&quality=95&sign=dcab9e1f769ca79c1e68297cd4044c0a&c_uniq_tag=fBtDGHdUJpSPkEySW8vLlWPPExva3dsBFyQPrLk0ydI&type=album",
-  "width": 130,
-  "type": "m",
-  "height": 130
+  "weight": 100,
+  "albums_ids": [],
+  "photos": [],
+  "can_comment": 1,
+  "can_repost": 1,
+  "likes": {
+   "count": 0,
+   "user_likes": 0
   },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=604x604&quality=95&sign=ff313c468d0b77929619430847063235&c_uniq_tag=babY_J2d40AbSOscXypcBkEgicxrrDxlYD74ZDTjIJA&type=album",
-  "width": 604,
-  "type": "x",
-  "height": 604
+  "reposts": {
+   "count": 0
   },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=807x807&quality=95&sign=5ed25ec65ddf75807a40592fa3a57b85&c_uniq_tag=QXMQTItlMkDqUZvYOS36ygz-eqDElNch6kznQpHNtUs&type=album",
-  "width": 807,
-  "type": "y",
-  "height": 807
+  "views_count": 0,
+  "variants_grid": [],
+  "owner_info": {
+   "avatar": [],
+   "name": "Test",
+   "category": "Батарейки",
+   "category_url": "/market-218861756",
+   "is_corporated_market": false,
+   "market_type": "pro"
   },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=1024x1024&quality=95&sign=43a67fdc1397e5eb5c5c87c9dcc64a16&c_uniq_tag=b7XxwzUXLkL9jIg7PjcUdEGQJUMcnn_D6ZwTWaBwXkQ&type=album",
-  "width": 1024,
-  "type": "z",
-  "height": 1024
+  "can_edit": true,
+  "can_delete": true,
+  "can_recover": false,
+  "can_show_convert_to_service": true,
+  "promotion": {
+   "is_available": true
   },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=130x130&quality=95&sign=dcab9e1f769ca79c1e68297cd4044c0a&c_uniq_tag=fBtDGHdUJpSPkEySW8vLlWPPExva3dsBFyQPrLk0ydI&type=album",
-  "width": 130,
-  "type": "o",
-  "height": 130
+  "labels": [],
+  "date": 1727611884,
+  "item_type": 0,
+  "is_owner": true,
+  "is_adult": false,
+  "thumb_photo": "",
+  "variants_grouping_id": 10666,
+  "cart_quantity": 0,
+  "sku": "12345",
+  "has_group_access": true,
+  "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-9642576"
+ },
+ {
+  "availability": 0,
+  "category": {
+   "inner_type": "market_market_category_old",
+   "id": 20173,
+   "name": "Батарейки",
+   "section": {
+    "id": 10016,
+    "name": "Канцелярские товары"
+   }
   },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=200x200&quality=95&sign=87d8cd030f6312d3e914895882a0fd1f&c_uniq_tag=5s7vPvuFFNHVaieG0xd_Izcw3WnuOR2mRRlDZtw8zJU&type=album",
-  "width": 200,
-  "type": "p",
-  "height": 200
+  "description": "Описание товара",
+  "id": 9640025,
+  "owner_id": -218861756,
+  "price": {
+   "amount": "100",
+   "currency": {
+    "id": 643,
+    "name": "RUB",
+    "title": "₽"
+   },
+   "text": "1 ₽",
+   "discount_rate": -93,
+   "old_amount": "1500",
+   "old_amount_text": "15 ₽"
   },
-  {
-  "url": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/WiZKcZ4m7Lg.jpg?size=320x320&quality=95&sign=37a2a53a35d6a2c1451e5ccd524b878c&c_uniq_tag=BX5IGPc0xpKDoYtTPlHGSbIoucM1H2-cpOg_7VQGgAs&type=album",
-  "width": 320,
-  "type": "q",
+  "title": "Тестовый товар (другой)",
+  "other_items": [
+   {
+    "title": "Другие товары сообщества",
+    "view_type": 1,
+    "item_ids": [
+     "-218861756_9642576",
+     "-218861756_9578921",
+     "-218861756_9499082",
+     "-218861756_9423489",
+     "-218861756_9387853",
+     "-218861756_9320009",
+     "-218861756_9320008",
+     "-218861756_9259547",
+     "-218861756_9259390",
+     "-218861756_9192466"
+    ],
+    "referrer_item_type": "other_goods"
+   }
+  ],
+  "dimensions": {
+   "width": 20,
+   "height": 30,
+   "length": 40
+  },
+  "weight": 100,
+  "albums_ids": [],
+  "photos": [],
+  "can_comment": 1,
+  "can_repost": 1,
+  "likes": {
 ...
 ```

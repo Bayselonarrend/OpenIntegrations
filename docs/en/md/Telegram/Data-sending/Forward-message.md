@@ -28,7 +28,7 @@ sidebar_position: 11
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
     ChannelID = "@testsichee";
-    MessageID = "9170";
+    MessageID = "9280";
 
     Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);
 ```

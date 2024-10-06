@@ -113,13 +113,13 @@ sidebar_position: 7
   "USER_TYPE": "USER_TYPE"
  },
  "time": {
-  "start": 1722328384.61197,
-  "finish": 1722328384.64683,
-  "duration": 0.0348641872406006,
-  "processing": 0.000688076019287109,
-  "date_start": "2024-07-30T08:33:04+00:00",
-  "date_finish": "2024-07-30T08:33:04+00:00",
-  "operating_reset_at": 1722328984,
+  "start": 1728225297.4119,
+  "finish": 1728225297.43628,
+  "duration": 0.0243840217590332,
+  "processing": 0.000805854797363281,
+  "date_start": "2024-10-06T17:34:57+03:00",
+  "date_finish": "2024-10-06T17:34:57+03:00",
+  "operating_reset_at": 1728225897,
   "operating": 0
  }
 }

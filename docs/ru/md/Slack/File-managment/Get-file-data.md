@@ -39,11 +39,11 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
-  "ok": true,
-  "file": {
-  "id": "F070VL6FQFM",
-  "created": 1714146550,
-  "timestamp": 1714146550,
+ "ok": true,
+ "file": {
+  "id": "F07QZ7A0EKB",
+  "created": 1728224910,
+  "timestamp": 1728224910,
   "name": "megadoc.docx",
   "title": "Новый файл",
   "mimetype": "",
@@ -60,11 +60,12 @@ sidebar_position: 3
   "public_url_shared": false,
   "display_as_bot": false,
   "username": "",
-  "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F070VL6FQFM/megadoc.docx",
-  "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F070VL6FQFM/download/megadoc.docx",
+  "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F07QZ7A0EKB/megadoc.docx",
+  "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F07QZ7A0EKB/download/megadoc.docx",
   "media_display_type": "unknown",
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F070VL6FQFM/megadoc.docx",
-  "permalink_public": "https://slack-files.com/T06UD92BS3C-F070VL6FQFM-9fb2618d36",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QZ7A0EKB/megadoc.docx",
+  "permalink_public": "https://slack-files.com/T06UD92BS3C-F07QZ7A0EKB-3060b39549",
+  "favorites": [],
   "is_starred": false,
   "shares": {},
   "channels": [],
@@ -74,10 +75,10 @@ sidebar_position: 3
   "has_rich_preview": false,
   "file_access": "visible",
   "comments_count": 0
-  },
-  "comments": [],
-  "response_metadata": {
+ },
+ "comments": [],
+ "response_metadata": {
   "next_cursor": ""
-  }
-  }
+ }
+}
 ```

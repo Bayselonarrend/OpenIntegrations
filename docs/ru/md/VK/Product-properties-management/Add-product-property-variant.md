@@ -50,8 +50,8 @@ sidebar_position: 5
 
 ```json title="Результат"
 {
-  "response": {
-  "variant_id": 980
-  }
-  }
+ "response": {
+  "variant_id": 2530
+ }
+}
 ```

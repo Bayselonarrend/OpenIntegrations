@@ -40,7 +40,7 @@ sidebar_position: 23
 
 ```json title="Результат"
 {
- "offer_id": "<массив артинкулов>",
+ "offer_id": "<массив артикулов>",
  "product_id": "<массив ID товаров>",
  "visibility": "<видимость>"
 }

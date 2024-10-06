@@ -53,8 +53,8 @@ sidebar_position: 15
 
 ```json title="Результат"
 {
-    "result": {
-    "task_id": 123479811
-    }
+ "code": 7,
+ "message": "s2s: method \"/endpoints.v1.Service/UploadDigitalCodes\" is not allowed for the provided access tokens: permission denied",
+ "details": []
 }
 ```

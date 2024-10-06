@@ -1,7 +1,7 @@
 ﻿    Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page    = "11782aa7-fc4e-8157-9709-e1b8794297ad";
-    Icon    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Cover   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Page    = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
+    Icon    = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Cover   = "https://openyellow.neocities.org/test_data/picture2.jpg";
     Archive = False;
 
     Properties = New Map;

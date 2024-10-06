@@ -53,7 +53,7 @@ sidebar_position: 16
 {
  "result": {
   "task": {
-   "id": "154",
+   "id": "2328",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -64,19 +64,19 @@ sidebar_position: 16
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-06-19T07:57:54+00:00",
-   "responsibleId": "10",
+   "createdDate": "2024-10-06T17:32:24+03:00",
+   "responsibleId": "574",
    "changedBy": "1",
-   "changedDate": "2024-06-19T07:58:08+00:00",
-   "statusChangedBy": "1",
-   "closedBy": "0",
+   "changedDate": "2024-10-06T17:32:33+03:00",
+   "statusChangedBy": null,
+   "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-06-19T07:58:08+00:00",
+   "activityDate": "2024-10-06T17:32:33+03:00",
    "dateStart": null,
-   "deadline": "2024-06-20T07:57:00+00:00",
-   "startDatePlan": null,
-   "endDatePlan": null,
-   "guid": "{ad8a4659-17d0-45d1-9b6d-215cf345ae56}",
+   "deadline": "2024-10-07T20:32:00+03:00",
+   "startDatePlan": "2024-10-06T17:32:24+03:00",
+   "endDatePlan": "2024-10-07T00:00:00+03:00",
+   "guid": "{d04b1de9-17bb-4e65-bba4-6c19ad2063f3}",
    "xmlId": null,
    "commentsCount": "1",
    "serviceCommentsCount": "1",
@@ -88,14 +88,14 @@ sidebar_position: 16
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "142",
+   "forumTopicId": "1622",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "N",
    "exchangeModified": null,
    "exchangeId": null,
-   "outlookVersion": "3",
-   "viewedDate": "2024-06-19T07:58:09+00:00",
+   "outlookVersion": "4",
+   "viewedDate": "2024-10-06T17:32:33+03:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -104,14 +104,12 @@ sidebar_position: 16
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-06-19T07:58:08+00:00",
+   "statusChangedDate": "2024-10-06T17:32:33+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
    "groupId": "0",
-   "auditors": [
-    "1"
-   ],
+   "auditors": [],
    "accomplices": [],
    "checklist": [],
    "group": [],
@@ -123,22 +121,14 @@ sidebar_position: 16
     "workPosition": null
    },
    "responsible": {
-    "id": "10",
-    "name": "Techno Pizza",
-    "link": "/company/personal/user/10/",
+    "id": "574",
+    "name": "Oleg Lama",
+    "link": "/company/personal/user/574/",
     "icon": "/bitrix/images/tasks/default_avatar.png",
     "workPosition": null
    },
    "accomplicesData": [],
-   "auditorsData": {
-    "1": {
-     "id": "1",
-     "name": "Антон Титовец",
-     "link": "/company/personal/user/1/",
-     "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
-     "workPosition": null
-    }
-   },
+   "auditorsData": [],
    "newCommentsCount": 0,
    "action": {
     "accept": false,
@@ -193,12 +183,14 @@ sidebar_position: 16
   }
  },
  "time": {
-  "start": 1718783888.64547,
-  "finish": 1718783889.13128,
-  "duration": 0.485809803009033,
-  "processing": 0.450714111328125,
-  "date_start": "2024-06-19T07:58:08+00:00",
-  "date_finish": "2024-06-19T07:58:09+00:00",
-  "operating_reset_at": 1718784488,
-...
+  "start": 1728225153.30999,
+  "finish": 1728225153.65841,
+  "duration": 0.348420143127441,
+  "processing": 0.320348024368286,
+  "date_start": "2024-10-06T17:32:33+03:00",
+  "date_finish": "2024-10-06T17:32:33+03:00",
+  "operating_reset_at": 1728225753,
+  "operating": 0.320322036743164
+ }
+}
 ```

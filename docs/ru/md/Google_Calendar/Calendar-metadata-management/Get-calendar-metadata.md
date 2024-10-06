@@ -40,8 +40,8 @@ sidebar_position: 2
 ```json title="Результат"
 {
  "kind": "calendar#calendar",
- "etag": "\"30buO-D-Pc_G7UUV5nHihm9JgF8\"",
- "id": "8b82e5e84747cf3a497bfbfa46baa7196614dd8f1211cd2ea79f02d2f9134b03@group.calendar.google.com",
+ "etag": "\"pRmTObvx1UZ_TCksYQmmSqHEdkA\"",
+ "id": "131ea619014eaa11a1b297307da6c5e069825d5bb0a264f687d109f68f8264ef@group.calendar.google.com",
  "summary": "Новое наименование",
  "description": "Новое описание",
  "timeZone": "Europe/Moscow",

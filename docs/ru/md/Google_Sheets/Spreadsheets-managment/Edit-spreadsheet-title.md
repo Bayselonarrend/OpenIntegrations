@@ -41,7 +41,7 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
- "spreadsheetId": "10X8iuovjxQu8ZmOZ-r1d9dO5bxLqh25FVttLvk2-Uzg",
+ "spreadsheetId": "1mxYmxhIHE3DwJc3hRCgRlu_P0mVVNzgkQZHYZswmVuU",
  "replies": [
   {}
  ]
