@@ -52,25 +52,25 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
 
 ```json title="Result"
 {
-  "result": [
+ "result": [
   {
-  "ID": "42",
-  "NAME": "Subordinate department",
-  "SORT": 500,
-  "PARENT": "40",
-  "UF_HEAD": "1"
+   "ID": "562",
+   "NAME": "Subordinate department",
+   "SORT": 500,
+   "PARENT": "560",
+   "UF_HEAD": "1"
   }
-  ],
-  "total": 1,
-  "time": {
-  "start": 1722171478.80371,
-  "finish": 1722171478.83794,
-  "duration": 0.034229040145874,
-  "processing": 0.00419092178344727,
-  "date_start": "2024-07-28T12:57:58+00:00",
-  "date_finish": "2024-07-28T12:57:58+00:00",
-  "operating_reset_at": 1722172078,
+ ],
+ "total": 1,
+ "time": {
+  "start": 1728140861.8871,
+  "finish": 1728140861.92504,
+  "duration": 0.0379340648651123,
+  "processing": 0.00594210624694824,
+  "date_start": "2024-10-05T18:07:41+03:00",
+  "date_finish": "2024-10-05T18:07:41+03:00",
+  "operating_reset_at": 1728141461,
   "operating": 0
-  }
-  }
+ }
+}
 ```

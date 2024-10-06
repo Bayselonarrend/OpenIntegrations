@@ -155,7 +155,7 @@ sidebar_position: 2
     "parents": [
      "1Q3vl7hcmdeJvd86jC84pdGKW5772apUy"
     ],
-    "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNAt8j6rvhsyCL9Et8cuRhQi9q0mNvptsJxkqOuI6hQRdeeaD3qFAf-OUABsEP8Mct_NfUxpkK4pPSrnM7jt0EtR_poFu3fZuvpwfrhrmJSfv0=s220",
+    "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMVTB_TTHc7Yx-genE5SQv_5G9ivfKf4iyjiRWltXBEAyv76kRfe20hc4q3yFfIuU9vTJTvEFwPIgrINJO6ccETUlwmuw85wWf-Lv3f0yatNgc=s220",
     "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
     "shared": false,
     "lastModifyingUser": {

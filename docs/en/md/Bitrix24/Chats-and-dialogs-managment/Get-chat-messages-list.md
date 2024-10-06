@@ -51,154 +51,154 @@ Method at API documentation: [im.dialog.messages.get](https://dev.1c-bitrix.ru/l
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "chat_id": 10,
   "messages": [
-  {
-  "id": 3854,
-  "chat_id": 10,
-  "author_id": 10,
-  "date": "2024-07-13T14:54:43+00:00",
-  "text": "Write it!",
-  "unread": false,
-  "uuid": "700d361d-8324-47fb-b989-647949c1c899",
-  "replaces": [],
-  "params": [],
-  "disappearing_date": null
-  },
-  {
-  "id": 4286,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-13T16:06:51+00:00",
-  "text": "Message text",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": [],
-  "disappearing_date": null
-  },
-  {
-  "id": 4366,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-13T16:40:58+00:00",
-  "text": "Message text",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": [],
-  "disappearing_date": null
-  },
-  {
-  "id": 4406,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-13T19:57:33+00:00",
-  "text": "This message was deleted",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": {
-  "IS_DELETED": "Y"
-  },
-  "disappearing_date": null
-  },
-  {
-  "id": 4446,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-13T20:21:27+00:00",
-  "text": "Message text",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": [],
-  "disappearing_date": null
-  },
-  {
-  "id": 4486,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-13T20:22:30+00:00",
-  "text": "This message was deleted",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": {
-  "IS_DELETED": "Y"
-  },
-  "disappearing_date": null
-  },
-  {
-  "id": 4526,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-13T20:41:21+00:00",
-  "text": "This message was deleted",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": {
-  "IS_DELETED": "Y"
-  },
-  "disappearing_date": null
-  },
-  {
-  "id": 4668,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-14T08:10:33+00:00",
-  "text": "This message was deleted",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": {
-  "IS_DELETED": "Y"
-  },
-  "disappearing_date": null
-  },
-  {
-  "id": 4708,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-14T08:22:56+00:00",
-  "text": "This message was deleted",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": {
-  "IS_DELETED": "Y"
-  },
-  "disappearing_date": null
-  },
-  {
-  "id": 4748,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-14T08:26:01+00:00",
-  "text": "This message was deleted",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": {
-  "IS_DELETED": "Y"
-  },
-  "disappearing_date": null
-  },
-  {
-  "id": 4788,
-  "chat_id": 10,
-  "author_id": 1,
-  "date": "2024-07-14T08:28:01+00:00",
-  "text": "This message was deleted",
-  "unread": false,
-  "uuid": null,
-  "replaces": [],
-  "params": {
-  "IS_DELETED": "Y"
-  },
-  "disappearing_date": null
-  },
+   {
+    "id": 16,
+    "chat_id": 10,
+    "author_id": 0,
+    "date": "2024-06-15T19:48:49+03:00",
+    "text": "Я с вами в команде!",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": {
+     "CODE": [
+      "USER_JOIN"
+     ]
+    },
+    "disappearing_date": null
+   },
+   {
+    "id": 3808,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T17:45:29+03:00",
+    "text": "Сообщение для теста",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 3810,
+    "chat_id": 10,
+    "author_id": 10,
+    "date": "2024-07-13T17:46:31+03:00",
+    "text": "Понял",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 3852,
+    "chat_id": 10,
+    "author_id": 10,
+    "date": "2024-07-13T17:54:42+03:00",
+    "text": "Принял",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 3854,
+    "chat_id": 10,
+    "author_id": 10,
+    "date": "2024-07-13T17:54:43+03:00",
+    "text": "Записал",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 4286,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T19:06:51+03:00",
+    "text": "Текст сообщения",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 4366,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T19:40:58+03:00",
+    "text": "Message text",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 4406,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T22:57:33+03:00",
+    "text": "Это сообщение было удалено",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": {
+     "IS_DELETED": "Y"
+    },
+    "disappearing_date": null
+   },
+   {
+    "id": 4446,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T23:21:27+03:00",
+    "text": "Текст сообщения",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 4486,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T23:22:30+03:00",
+    "text": "Это сообщение было удалено",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": {
+     "IS_DELETED": "Y"
+    },
+    "disappearing_date": null
+   },
+   {
+    "id": 4526,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T23:41:21+03:00",
+    "text": "Это сообщение было удалено",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": {
+     "IS_DELETED": "Y"
+    },
+    "disappearing_date": null
+   },
+   {
+    "id": 4668,
+    "chat_id": 10,
+    "author_id": 1,
 ...
 ```

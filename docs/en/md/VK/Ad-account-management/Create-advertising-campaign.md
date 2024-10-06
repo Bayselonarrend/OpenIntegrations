@@ -42,10 +42,12 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "response": [
+ "response": [
   {
-  "id": 1029701085
+   "id": 1030692014,
+   "error_code": 602,
+   "error_desc": "Some part of the request has not been completed"
   }
-  ]
-  }
+ ]
+}
 ```

@@ -53,8 +53,8 @@ The activation code is linked to the digital product card
 
 ```json title="Result"
 {
-    "result": {
-    "task_id": 123479811
-    }
+ "code": 7,
+ "message": "s2s: method \"/endpoints.v1.Service/UploadDigitalCodes\" is not allowed for the provided access tokens: permission denied",
+ "details": []
 }
 ```

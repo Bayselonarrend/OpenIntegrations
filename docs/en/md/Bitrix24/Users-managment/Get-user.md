@@ -49,38 +49,38 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 
 ```json title="Result"
 {
-  "result": [
+ "result": [
   {
-  "ID": "60",
-  "XML_ID": "56731232",
-  "ACTIVE": true,
-  "NAME": "Oleg",
-  "LAST_NAME": "Lama",
-  "EMAIL": "804d1dbb-7df4-4245-8266-938fc2541978@exepmple.org",
-  "LAST_LOGIN": "",
-  "DATE_REGISTER": "2024-07-30T00:00:00+00:00",
-  "IS_ONLINE": "N",
-  "TIMESTAMP_X": {},
-  "PERSONAL_GENDER": "",
-  "PERSONAL_BIRTHDAY": "",
-  "PERSONAL_MOBILE": "88003553535",
-  "UF_EMPLOYMENT_DATE": "",
-  "UF_DEPARTMENT": [
-  7
-  ],
-  "USER_TYPE": "employee"
+   "ID": "574",
+   "XML_ID": "57919700",
+   "ACTIVE": true,
+   "NAME": "Oleg",
+   "LAST_NAME": "Lama",
+   "EMAIL": "e04294d3-8aa4-4716-bef3-0641593b60e8@exepmple.org",
+   "LAST_LOGIN": "",
+   "DATE_REGISTER": "2024-10-05T03:00:00+03:00",
+   "IS_ONLINE": "N",
+   "TIMESTAMP_X": {},
+   "PERSONAL_GENDER": "",
+   "PERSONAL_BIRTHDAY": "",
+   "PERSONAL_MOBILE": "88003553535",
+   "UF_EMPLOYMENT_DATE": "",
+   "UF_DEPARTMENT": [
+    7
+   ],
+   "USER_TYPE": "employee"
   }
-  ],
-  "total": 1,
-  "time": {
-  "start": 1722328397.72079,
-  "finish": 1722328397.76914,
-  "duration": 0.0483510494232178,
-  "processing": 0.0120601654052734,
-  "date_start": "2024-07-30T08:33:17+00:00",
-  "date_finish": "2024-07-30T08:33:17+00:00",
-  "operating_reset_at": 1722328997,
+ ],
+ "total": 1,
+ "time": {
+  "start": 1728140869.01278,
+  "finish": 1728140869.04941,
+  "duration": 0.0366261005401611,
+  "processing": 0.00871896743774414,
+  "date_start": "2024-10-05T18:07:49+03:00",
+  "date_finish": "2024-10-05T18:07:49+03:00",
+  "operating_reset_at": 1728141469,
   "operating": 0
-  }
-  }
+ }
+}
 ```

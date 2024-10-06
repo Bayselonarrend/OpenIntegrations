@@ -41,35 +41,48 @@ sidebar_position: 2
 
 ```json title="Result"
 {
-  "entries": [
+ "entries": [
   {
-  ".tag": "file",
-  "name": "Dogs.mp3",
-  "path_lower": "/new/dogs.mp3",
-  "path_display": "/New/Dogs.mp3",
-  "id": "id:kJU6-a-pT48AAAAAAAAACA",
-  "client_modified": "2024-05-15T16:58:30Z",
-  "server_modified": "2024-06-09T13:12:45Z",
-  "rev": "61a74c9e3b3f3bd841553",
-  "size": 9229352,
-  "is_downloadable": true,
-  "content_hash": "376f728ef041d9cef08406f16debc12de89d83130e69c66a817fd834d2d82dc2"
+   ".tag": "file",
+   "name": "Dogs.mp3",
+   "path_lower": "/new/dogs.mp3",
+   "path_display": "/New/Dogs.mp3",
+   "id": "id:kJU6-a-pT48AAAAAAAAACA",
+   "client_modified": "2024-05-15T16:58:30Z",
+   "server_modified": "2024-10-05T15:04:01Z",
+   "rev": "623bc190c7105bd841553",
+   "size": 9229352,
+   "is_downloadable": true,
+   "content_hash": "376f728ef041d9cef08406f16debc12de89d83130e69c66a817fd834d2d82dc2"
   },
   {
-  ".tag": "file",
-  "name": "mydoc.docx",
-  "path_lower": "/new/mydoc.docx",
-  "path_display": "/New/mydoc.docx",
-  "id": "id:kJU6-a-pT48AAAAAAAAABw",
-  "client_modified": "2024-05-14T16:49:41Z",
-  "server_modified": "2024-06-09T13:12:45Z",
-  "rev": "61a74c9e3b3f4bd841553",
-  "size": 24069,
-  "is_downloadable": true,
-  "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
+   ".tag": "file",
+   "name": "url_doc (1).docx",
+   "path_lower": "/new/url_doc (1).docx",
+   "path_display": "/New/url_doc (1).docx",
+   "id": "id:kJU6-a-pT48AAAAAAAALvg",
+   "client_modified": "2024-07-15T17:40:28Z",
+   "server_modified": "2024-10-05T15:04:01Z",
+   "rev": "623bc190c7106bd841553",
+   "size": 24069,
+   "is_downloadable": true,
+   "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
+  },
+  {
+   ".tag": "file",
+   "name": "mydoc.docx",
+   "path_lower": "/new/mydoc.docx",
+   "path_display": "/New/mydoc.docx",
+   "id": "id:kJU6-a-pT48AAAAAAAAABw",
+   "client_modified": "2024-05-14T16:49:41Z",
+   "server_modified": "2024-10-05T15:04:01Z",
+   "rev": "623bc190c7107bd841553",
+   "size": 24069,
+   "is_downloadable": true,
+   "content_hash": "8d63c5989ceec1a90f3fde2ffaa76efcd2c050191e6b55a1761e4e352590bd8c"
   }
-  ],
-  "cursor": "AAEXfuMhG6Xl2ENYH4uAoLS_nOUV4SC7ChaMxK4ZIphj9x5INumYZrHv6jqph4fgkOy6PpFTTaaJ4BTjzVGZnTk7tB5wCCp1Eogn8gCW-Agz-ej4X6ir5p-KX63vBgDV0OZ-boy78oUXMJeOtU9sjEij34BoqBCtWYOFje4PXhEV3KwVySRWzPlXSEq9arMo1AaP8PFuDxx6JTxSGRdcQwnc",
-  "has_more": false
-  }
+ ],
+ "cursor": "AAGRDQUkM6QeETzLTnJTQOy0K2Kfjtbr9z2lWDO4g9Q09r7UJWRJmAs6lR2PuZeI674yeyowKt8Z4jDDg2bJN7VV4owzhP0DnajCmqPJt7ooOtVq9m9L52vZ1TtDng9WNnwllqsitCpbXHXyF2rP2Vp_8eLxl8Bqz0Dy8u6O7qI2ngsBsZ5pBari5YMe8taR79CrMapzrYp6DZXAgp4_jGkh",
+ "has_more": false
+}
 ```

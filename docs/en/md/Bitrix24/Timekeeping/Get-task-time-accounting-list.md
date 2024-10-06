@@ -48,42 +48,42 @@ Method at API documentation: [task.elapseditem.getlist](https://dev.1c-bitrix.ru
 
 ```json title="Result"
 {
-  "result": [
+ "result": [
   {
-  "ID": "40",
-  "TASK_ID": "638",
-  "USER_ID": "1",
-  "COMMENT_TEXT": "",
-  "SECONDS": "3600",
-  "MINUTES": "60",
-  "SOURCE": "2",
-  "CREATED_DATE": "2024-07-12T20:36:21+00:00",
-  "DATE_START": "2024-07-12T20:36:21+00:00",
-  "DATE_STOP": "2024-07-12T20:36:21+00:00"
+   "ID": "796",
+   "TASK_ID": "2324",
+   "USER_ID": "1",
+   "COMMENT_TEXT": "",
+   "SECONDS": "3600",
+   "MINUTES": "60",
+   "SOURCE": "2",
+   "CREATED_DATE": "2024-10-05T18:06:16+03:00",
+   "DATE_START": "2024-10-05T18:06:16+03:00",
+   "DATE_STOP": "2024-10-05T18:06:16+03:00"
   },
   {
-  "ID": "42",
-  "TASK_ID": "638",
-  "USER_ID": "10",
-  "COMMENT_TEXT": "Time spent on work",
-  "SECONDS": "7200",
-  "MINUTES": "120",
-  "SOURCE": "2",
-  "CREATED_DATE": "2024-06-12T17:36:21+00:00",
-  "DATE_START": "2024-07-12T20:36:22+00:00",
-  "DATE_STOP": "2024-07-12T20:36:22+00:00"
+   "ID": "798",
+   "TASK_ID": "2324",
+   "USER_ID": "10",
+   "COMMENT_TEXT": "Time spent on work",
+   "SECONDS": "7200",
+   "MINUTES": "120",
+   "SOURCE": "2",
+   "CREATED_DATE": "2024-09-05T18:06:16+03:00",
+   "DATE_START": "2024-10-05T18:06:16+03:00",
+   "DATE_STOP": "2024-10-05T18:06:16+03:00"
   }
-  ],
-  "total": 2,
-  "time": {
-  "start": 1720816584.48831,
-  "finish": 1720816584.5364,
-  "duration": 0.0480880737304688,
-  "processing": 0.0219790935516357,
-  "date_start": "2024-07-12T20:36:24+00:00",
-  "date_finish": "2024-07-12T20:36:24+00:00",
-  "operating_reset_at": 1720817184,
+ ],
+ "total": 2,
+ "time": {
+  "start": 1728140776.99043,
+  "finish": 1728140777.03976,
+  "duration": 0.0493230819702148,
+  "processing": 0.0210220813751221,
+  "date_start": "2024-10-05T18:06:16+03:00",
+  "date_finish": "2024-10-05T18:06:17+03:00",
+  "operating_reset_at": 1728141377,
   "operating": 0
-  }
-  }
+ }
+}
 ```

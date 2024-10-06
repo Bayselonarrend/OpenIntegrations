@@ -50,16 +50,16 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1718473318.17435,
-  "finish": 1718473318.21352,
-  "duration": 0.0391781330108643,
-  "processing": 0.00464105606079102,
-  "date_start": "2024-06-15T17:41:58+00:00",
-  "date_finish": "2024-06-15T17:41:58+00:00",
-  "operating_reset_at": 1718473918,
+ "result": true,
+ "time": {
+  "start": 1728140710.21907,
+  "finish": 1728140710.25552,
+  "duration": 0.0364420413970947,
+  "processing": 0.00532317161560059,
+  "date_start": "2024-10-05T18:05:10+03:00",
+  "date_finish": "2024-10-05T18:05:10+03:00",
+  "operating_reset_at": 1728141310,
   "operating": 0
-  }
-  }
+ }
+}
 ```

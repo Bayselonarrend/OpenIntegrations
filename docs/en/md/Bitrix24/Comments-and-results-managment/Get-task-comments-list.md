@@ -48,35 +48,35 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
 
 ```json title="Result"
 {
-  "result": [
+ "result": [
   {
-  "POST_MESSAGE_HTML": null,
-  "ID": "1494",
-  "AUTHOR_ID": "1",
-  "AUTHOR_NAME": "Anton Titovets",
-  "AUTHOR_EMAIL": "",
-  "POST_DATE": "2024-07-06T19:52:07+00:00",
-  "POST_MESSAGE": "The task has been changed, do not split up"
+   "POST_MESSAGE_HTML": null,
+   "ID": "5768",
+   "AUTHOR_ID": "1",
+   "AUTHOR_NAME": "Антон Титовец",
+   "AUTHOR_EMAIL": "",
+   "POST_DATE": "2024-10-05T18:05:35+03:00",
+   "POST_MESSAGE": "The task has been changed, do not split up"
   },
   {
-  "POST_MESSAGE_HTML": null,
-  "ID": "1496",
-  "AUTHOR_ID": "1",
-  "AUTHOR_NAME": "Anton Titovets",
-  "AUTHOR_EMAIL": "",
-  "POST_DATE": "2024-07-06T19:52:08+00:00",
-  "POST_MESSAGE": "The task has been changed, let's split up"
+   "POST_MESSAGE_HTML": null,
+   "ID": "5770",
+   "AUTHOR_ID": "1",
+   "AUTHOR_NAME": "Антон Титовец",
+   "AUTHOR_EMAIL": "",
+   "POST_DATE": "2024-10-05T18:05:35+03:00",
+   "POST_MESSAGE": "The task has been changed, let's split up"
   }
-  ],
-  "time": {
-  "start": 1720295537.77876,
-  "finish": 1720295537.83513,
-  "duration": 0.0563700199127197,
-  "processing": 0.0240809917449951,
-  "date_start": "2024-07-06T19:52:17+00:00",
-  "date_finish": "2024-07-06T19:52:17+00:00",
-  "operating_reset_at": 1720296137,
+ ],
+ "time": {
+  "start": 1728140736.95489,
+  "finish": 1728140737.01096,
+  "duration": 0.0560650825500488,
+  "processing": 0.0290310382843018,
+  "date_start": "2024-10-05T18:05:36+03:00",
+  "date_finish": "2024-10-05T18:05:37+03:00",
+  "operating_reset_at": 1728141336,
   "operating": 0
-  }
-  }
+ }
+}
 ```

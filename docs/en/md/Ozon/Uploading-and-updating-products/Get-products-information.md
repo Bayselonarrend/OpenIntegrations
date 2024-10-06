@@ -57,21 +57,21 @@ Specify the minimum price of the product after all promotions have been applied 
  "result": {
   "items": [
    {
-    "id": 1111588191,
+    "id": 1211283190,
     "name": "Protective film set for X3 NFC. Dark cotton",
-    "offer_id": "143210608",
+    "offer_id": "143210609",
     "barcode": "",
     "buybox_price": "",
     "category_id": 0,
-    "created_at": "2024-07-15T06:19:47.810185Z",
+    "created_at": "2024-10-05T15:10:43.896671Z",
     "images": [
      "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"
     ],
     "marketing_price": "",
     "min_ozon_price": "",
-    "old_price": "1100.0000",
+    "old_price": "1300.0000",
     "premium_price": "",
-    "price": "1000.0000",
+    "price": "1300.0000",
     "recommended_price": "",
     "min_price": "",
     "sources": [],
@@ -95,17 +95,28 @@ Specify the minimum price of the product after all promotions have been applied 
     "primary_image": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
     "status": {
      "state": "imported",
-     "state_failed": "",
+     "state_failed": "unmatched",
      "moderate_status": "",
      "decline_reasons": [],
      "validation_state": "pending",
      "state_name": "Не продается",
-     "state_description": "Создается",
-     "is_failed": false,
+     "state_description": "Не создан",
+     "is_failed": true,
      "is_created": false,
-     "state_tooltip": "",
-     "item_errors": [],
-     "state_updated_at": "2024-08-27T19:20:08.365033Z"
+     "state_tooltip": "Не прошел валидацию",
+     "item_errors": [
+      {
+       "code": "SELLER_NO_CONTRACT_FAILED",
+       "field": "",
+       "attribute_id": 0,
+       "state": "unmatched",
+       "level": "error",
+       "description": "Истек срок договора. Чтобы загрузить товар, возобновите договор в личном кабинете.",
+       "optional_description_elements": {},
+       "attribute_name": ""
+      }
+     ],
+     "state_updated_at": "2024-10-05T15:11:28.427411Z"
     },
     "state": "",
     "service_type": "IS_CODE_SERVICE",
@@ -122,7 +133,7 @@ Specify the minimum price of the product after all promotions have been applied 
     "is_discounted": false,
     "has_discounted_item": false,
     "barcodes": [],
-    "updated_at": "2024-08-27T19:20:08.365033Z",
+    "updated_at": "2024-10-05T15:11:26.749943Z",
     "price_indexes": {
      "price_index": "WITHOUT_INDEX",
      "external_index_data": null,

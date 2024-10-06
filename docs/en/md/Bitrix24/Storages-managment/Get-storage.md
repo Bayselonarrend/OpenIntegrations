@@ -48,24 +48,24 @@ Method at API documentation: [disk.storage.get](https://dev.1c-bitrix.ru/rest_he
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "ID": "3",
-  "NAME": "Main drive",
+  "NAME": "Общий диск",
   "CODE": null,
   "MODULE_ID": "disk",
   "ENTITY_TYPE": "common",
   "ENTITY_ID": "shared_files_s1",
   "ROOT_OBJECT_ID": "3"
-  },
-  "time": {
-  "start": 1719047247.65416,
-  "finish": 1719047247.68963,
-  "duration": 0.0354659557342529,
-  "processing": 0.00417995452880859,
-  "date_start": "2024-06-22T09:07:27+00:00",
-  "date_finish": "2024-06-22T09:07:27+00:00",
-  "operating_reset_at": 1719047847,
+ },
+ "time": {
+  "start": 1728140740.26011,
+  "finish": 1728140740.29375,
+  "duration": 0.0336389541625977,
+  "processing": 0.00451302528381348,
+  "date_start": "2024-10-05T18:05:40+03:00",
+  "date_finish": "2024-10-05T18:05:40+03:00",
+  "operating_reset_at": 1728141340,
   "operating": 0
-  }
-  }
+ }
+}
 ```

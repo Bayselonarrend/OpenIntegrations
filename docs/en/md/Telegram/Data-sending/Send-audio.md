@@ -55,34 +55,34 @@ sidebar_position: 4
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
-  "message_id": 4641,
+ "ok": true,
+ "result": {
+  "message_id": 8194,
   "from": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
   },
   "chat": {
-  "id": 461699897,
-  "first_name": "Anton",
-  "last_name": "Titowets",
-  "username": "JKIee",
-  "type": "private"
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
   },
-  "date": 1717072399,
+  "date": 1728139274,
   "audio": {
-  "duration": 228,
-  "file_name": "audio",
-  "mime_type": "audio/mpeg",
-  "title": "Dogs",
-  "performer": "Motorhead",
-  "file_id": "CQACAgIAAxkDAAISIWZYcg_Kxij0GylJNbAlQXeFsOL_AAKsUAACYCjISuJ28LqFPDf3NQQ",
-  "file_unique_id": "AgADrFAAAmAoyEo",
-  "file_size": 9229352
+   "duration": 228,
+   "file_name": "audio",
+   "mime_type": "audio/mpeg",
+   "title": "Dogs",
+   "performer": "Motorhead",
+   "file_id": "CQACAgIAAxkDAAIgAmcBUArSSZEfHGX_H4Fk0BWMVUXDAAJMWwACR4EQSLrbJ9tSPa1KNgQ",
+   "file_unique_id": "AgADTFsAAkeBEEg",
+   "file_size": 9229352
   },
-  "caption": "String value"
-  }
-  }
+  "caption": "Строковое значение"
+ }
+}
 ```

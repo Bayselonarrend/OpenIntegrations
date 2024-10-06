@@ -49,16 +49,16 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
 
 ```json title="Result"
 {
-  "result": null,
-  "time": {
-  "start": 1720295536.04613,
-  "finish": 1720295536.09868,
-  "duration": 0.0525519847869873,
-  "processing": 0.0231878757476807,
-  "date_start": "2024-07-06T19:52:16+00:00",
-  "date_finish": "2024-07-06T19:52:16+00:00",
-  "operating_reset_at": 1720296136,
+ "result": null,
+ "time": {
+  "start": 1728140736.74554,
+  "finish": 1728140736.80239,
+  "duration": 0.0568499565124512,
+  "processing": 0.0268070697784424,
+  "date_start": "2024-10-05T18:05:36+03:00",
+  "date_finish": "2024-10-05T18:05:36+03:00",
+  "operating_reset_at": 1728141336,
   "operating": 0
-  }
-  }
+ }
+}
 ```

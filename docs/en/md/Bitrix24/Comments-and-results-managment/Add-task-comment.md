@@ -53,16 +53,16 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
-  "result": 1376,
-  "time": {
-  "start": 1720186702.77405,
-  "finish": 1720186703.52768,
-  "duration": 0.753632068634033,
-  "processing": 0.724568128585816,
-  "date_start": "2024-07-05T13:38:22+00:00",
-  "date_finish": "2024-07-05T13:38:23+00:00",
-  "operating_reset_at": 1720187302,
-  "operating": 0.724542856216431
-  }
-  }
+ "result": 5770,
+ "time": {
+  "start": 1728140735.62964,
+  "finish": 1728140735.79398,
+  "duration": 0.164332866668701,
+  "processing": 0.13733696937561,
+  "date_start": "2024-10-05T18:05:35+03:00",
+  "date_finish": "2024-10-05T18:05:35+03:00",
+  "operating_reset_at": 1728141335,
+  "operating": 0.137306213378906
+ }
+}
 ```

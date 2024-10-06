@@ -52,21 +52,21 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
 
 ```json title="Result"
 {
-  "result": {
+ "result": {
   "dialogId": 10,
   "chatId": 10,
-  "lastId": 5262,
+  "lastId": 17110,
   "counter": 0
-  },
-  "time": {
-  "start": 1720969157.61149,
-  "finish": 1720969157.65659,
-  "duration": 0.0451040267944336,
-  "processing": 0.0171201229095459,
-  "date_start": "2024-07-14T14:59:17+00:00",
-  "date_finish": "2024-07-14T14:59:17+00:00",
-  "operating_reset_at": 1720969757,
+ },
+ "time": {
+  "start": 1728140834.61915,
+  "finish": 1728140834.66295,
+  "duration": 0.0437979698181152,
+  "processing": 0.0176701545715332,
+  "date_start": "2024-10-05T18:07:14+03:00",
+  "date_finish": "2024-10-05T18:07:14+03:00",
+  "operating_reset_at": 1728141434,
   "operating": 0
-  }
-  }
+ }
+}
 ```

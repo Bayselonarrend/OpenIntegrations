@@ -47,15 +47,15 @@ Method at API documentation: [disk.folder.getfields](https://dev.1c-bitrix.ru/re
 
 ```json title="Result"
 {
-  "ID": "",
-  "NAME": "",
-  "TYPE": "",
-  "CODE": "",
-  "STORAGE_ID": "",
-  "PARENT_ID": "",
-  "CREATE_TIME": "",
-  "UPDATE_TIME": "",
-  "DELETE_TIME": "",
-  "DELETED_TYPE": ""
-  }
+ "ID": "",
+ "NAME": "",
+ "TYPE": "",
+ "CODE": "",
+ "STORAGE_ID": "",
+ "PARENT_ID": "",
+ "CREATE_TIME": "",
+ "UPDATE_TIME": "",
+ "DELETE_TIME": "",
+ "DELETED_TYPE": ""
+}
 ```

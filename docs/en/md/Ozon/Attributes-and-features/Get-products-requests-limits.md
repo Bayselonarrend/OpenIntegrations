@@ -43,17 +43,17 @@ Method at API documentation: [post /v4/product/info/limit](https://docs.ozon.ru/
 ```json title="Result"
 {
  "daily_create": {
-  "usage": 0,
+  "usage": 3,
   "limit": 1500,
-  "reset_at": "2024-08-26T00:00:00Z"
+  "reset_at": "2024-10-06T00:00:00Z"
  },
  "daily_update": {
-  "usage": 4,
+  "usage": 7,
   "limit": 5000,
-  "reset_at": "2024-08-26T00:00:00Z"
+  "reset_at": "2024-10-06T00:00:00Z"
  },
  "total": {
-  "usage": 2,
+  "usage": 4,
   "limit": 20000
  }
 }

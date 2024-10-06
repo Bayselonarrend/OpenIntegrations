@@ -60,16 +60,16 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
 
 ```json title="Result"
 {
-  "result": 18,
-  "time": {
-  "start": 1718130364.82176,
-  "finish": 1718130365.61903,
-  "duration": 0.797268867492676,
-  "processing": 0.63801383972168,
-  "date_start": "2024-06-11T18:26:04+00:00",
-  "date_finish": "2024-06-11T18:26:05+00:00",
-  "operating_reset_at": 1718130964,
-  "operating": 0.637988090515137
-  }
-  }
+ "result": 918,
+ "time": {
+  "start": 1728140705.43402,
+  "finish": 1728140706.27672,
+  "duration": 0.842702150344849,
+  "processing": 0.814321041107178,
+  "date_start": "2024-10-05T18:05:05+03:00",
+  "date_finish": "2024-10-05T18:05:06+03:00",
+  "operating_reset_at": 1728141305,
+  "operating": 0.81430196762085
+ }
+}
 ```

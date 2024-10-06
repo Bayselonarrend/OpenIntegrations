@@ -65,16 +65,16 @@ Method at API documentation: [crm.deal.add](https://dev.1c-bitrix.ru/rest_help/c
 
 ```json title="Result"
 {
- "result": 74,
+ "result": 710,
  "time": {
-  "start": 1724584043.72863,
-  "finish": 1724584043.94602,
-  "duration": 0.21738600730896,
-  "processing": 0.192203044891357,
-  "date_start": "2024-08-25T11:07:23+00:00",
-  "date_finish": "2024-08-25T11:07:23+00:00",
-  "operating_reset_at": 1724584643,
-  "operating": 0.192182064056396
+  "start": 1728140877.5122,
+  "finish": 1728140877.72019,
+  "duration": 0.207990884780884,
+  "processing": 0.177935838699341,
+  "date_start": "2024-10-05T18:07:57+03:00",
+  "date_finish": "2024-10-05T18:07:57+03:00",
+  "operating_reset_at": 1728141477,
+  "operating": 0.177912950515747
  }
 }
 ```

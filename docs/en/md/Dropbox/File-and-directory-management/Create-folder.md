@@ -39,11 +39,11 @@ sidebar_position: 10
 
 ```json title="Result"
 {
-  "metadata": {
+ "metadata": {
   "name": "New catalog",
   "path_lower": "/new catalog",
   "path_display": "/New catalog",
-  "id": "id:kJU6-a-pT48AAAAAAAABZA"
-  }
-  }
+  "id": "id:kJU6-a-pT48AAAAAAAAbrw"
+ }
+}
 ```

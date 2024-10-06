@@ -39,11 +39,11 @@ sidebar_position: 1
 
 ```json title="Result"
 {
-  "ok": true,
-  "no_op": false,
-  "already_open": false,
-  "channel": {
+ "ok": true,
+ "no_op": false,
+ "already_open": false,
+ "channel": {
   "id": "D06UAKK1C6R"
-  }
-  }
+ }
+}
 ```

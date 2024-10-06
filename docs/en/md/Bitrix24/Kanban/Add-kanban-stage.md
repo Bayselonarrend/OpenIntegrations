@@ -59,16 +59,16 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
 
 ```json title="Result"
 {
-  "result": 132,
-  "time": {
-  "start": 1720600360.58899,
-  "finish": 1720600360.679,
-  "duration": 0.0900149345397949,
-  "processing": 0.0587739944458008,
-  "date_start": "2024-07-10T08:32:40+00:00",
-  "date_finish": "2024-07-10T08:32:40+00:00",
-  "operating_reset_at": 1720600960,
+ "result": 814,
+ "time": {
+  "start": 1728140772.80817,
+  "finish": 1728140772.87862,
+  "duration": 0.0704460144042969,
+  "processing": 0.0412018299102783,
+  "date_start": "2024-10-05T18:06:12+03:00",
+  "date_finish": "2024-10-05T18:06:12+03:00",
+  "operating_reset_at": 1728141372,
   "operating": 0
-  }
-  }
+ }
+}
 ```

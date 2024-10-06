@@ -64,16 +64,16 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1722328395.63697,
-  "finish": 1722328395.97568,
-  "duration": 0.338706016540527,
-  "processing": 0.310076951980591,
-  "date_start": "2024-07-30T08:33:15+00:00",
-  "date_finish": "2024-07-30T08:33:15+00:00",
-  "operating_reset_at": 1722328995,
-  "operating": 0.310055017471314
-  }
-  }
+ "result": true,
+ "time": {
+  "start": 1728140868.45048,
+  "finish": 1728140868.86954,
+  "duration": 0.419059991836548,
+  "processing": 0.391787052154541,
+  "date_start": "2024-10-05T18:07:48+03:00",
+  "date_finish": "2024-10-05T18:07:48+03:00",
+  "operating_reset_at": 1728141468,
+  "operating": 0.391762971878052
+ }
+}
 ```

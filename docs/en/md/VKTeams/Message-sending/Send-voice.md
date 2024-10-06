@@ -61,8 +61,8 @@ If you want the client to display this file as a playable voice message, it must
 
 ```json title="Result"
 {
- "fileId": "I000brjuglT3K5cB4dWEht66c111071bd",
- "msgId": "7404217984136249577",
+ "fileId": "I000bBaqpTCGaZU6pldthE6701568f1bd",
+ "msgId": "7422308833063603078",
  "ok": true
 }
 ```

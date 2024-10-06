@@ -46,16 +46,16 @@ Method at API documentation: [server_time](https://dev.1c-bitrix.ru/rest_help/ge
 
 ```json title="Result"
 {
-  "result": "2024-06-13T18:40:54+00:00",
-  "time": {
-  "start": 1718304054.57877,
-  "finish": 1718304054.71748,
-  "duration": 0.138707876205444,
-  "processing": 0.0000510215759277344,
-  "date_start": "2024-06-13T18:40:54+00:00",
-  "date_finish": "2024-06-13T18:40:54+00:00",
-  "operating_reset_at": 1718304654,
+ "result": "2024-10-05T18:04:57+03:00",
+ "time": {
+  "start": 1728140697.56405,
+  "finish": 1728140697.72226,
+  "duration": 0.158207893371582,
+  "processing": 0.0000350475311279297,
+  "date_start": "2024-10-05T18:04:57+03:00",
+  "date_finish": "2024-10-05T18:04:57+03:00",
+  "operating_reset_at": 1728141297,
   "operating": 0
-  }
-  }
+ }
+}
 ```

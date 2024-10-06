@@ -55,16 +55,16 @@ Method at API documentation: [task.checklistitem.update](https://dev.1c-bitrix.r
 
 ```json title="Result"
 {
-  "result": null,
-  "time": {
-  "start": 1720816506.52861,
-  "finish": 1720816506.58416,
-  "duration": 0.0555450916290283,
-  "processing": 0.027979850769043,
-  "date_start": "2024-07-12T20:35:06+00:00",
-  "date_finish": "2024-07-12T20:35:06+00:00",
-  "operating_reset_at": 1720817106,
+ "result": null,
+ "time": {
+  "start": 1728140728.96019,
+  "finish": 1728140729.02081,
+  "duration": 0.0606200695037842,
+  "processing": 0.0308821201324463,
+  "date_start": "2024-10-05T18:05:28+03:00",
+  "date_finish": "2024-10-05T18:05:29+03:00",
+  "operating_reset_at": 1728141328,
   "operating": 0
-  }
-  }
+ }
+}
 ```

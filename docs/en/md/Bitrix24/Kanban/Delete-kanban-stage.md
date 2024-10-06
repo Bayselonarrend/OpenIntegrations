@@ -52,16 +52,16 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720600367.83205,
-  "finish": 1720600367.8709,
-  "duration": 0.0388522148132324,
-  "processing": 0.0057981014251709,
-  "date_start": "2024-07-10T08:32:47+00:00",
-  "date_finish": "2024-07-10T08:32:47+00:00",
-  "operating_reset_at": 1720600967,
+ "result": true,
+ "time": {
+  "start": 1728140774.17108,
+  "finish": 1728140774.20482,
+  "duration": 0.0337321758270264,
+  "processing": 0.00654506683349609,
+  "date_start": "2024-10-05T18:06:14+03:00",
+  "date_finish": "2024-10-05T18:06:14+03:00",
+  "operating_reset_at": 1728141374,
   "operating": 0
-  }
-  }
+ }
+}
 ```

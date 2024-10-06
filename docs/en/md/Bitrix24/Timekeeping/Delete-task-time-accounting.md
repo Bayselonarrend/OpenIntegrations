@@ -51,16 +51,16 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
 
 ```json title="Result"
 {
-  "result": null,
-  "time": {
-  "start": 1720816586.91135,
-  "finish": 1720816586.96255,
-  "duration": 0.0512039661407471,
-  "processing": 0.0238111019134522,
-  "date_start": "2024-07-12T20:36:26+00:00",
-  "date_finish": "2024-07-12T20:36:26+00:00",
-  "operating_reset_at": 1720817186,
+ "result": null,
+ "time": {
+  "start": 1728140777.41516,
+  "finish": 1728140777.46997,
+  "duration": 0.054811954498291,
+  "processing": 0.0279810428619385,
+  "date_start": "2024-10-05T18:06:17+03:00",
+  "date_finish": "2024-10-05T18:06:17+03:00",
+  "operating_reset_at": 1728141377,
   "operating": 0
-  }
-  }
+ }
+}
 ```

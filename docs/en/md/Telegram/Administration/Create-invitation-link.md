@@ -48,21 +48,21 @@ sidebar_position: 3
 
 ```json title="Result"
 {
-  "ok": true,
-  "result": {
-  "invite_link": "https://t.me/+W-9MzjOejStiYzYy",
-  "name": "Link 05/30/2024 12:34:59",
+ "ok": true,
+ "result": {
+  "invite_link": "https://t.me/+mUFbeOp9ED83YzIy",
+  "name": "Link 05.10.2024 17:43:40",
   "creator": {
-  "id": 6129457865,
-  "is_bot": true,
-  "first_name": "Vitaly The Bot",
-  "username": "sicheebot"
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
   },
-  "expire_date": 1717155300,
+  "expire_date": 1728233020,
   "member_limit": 200,
   "creates_join_request": false,
   "is_primary": false,
   "is_revoked": false
-  }
-  }
+ }
+}
 ```

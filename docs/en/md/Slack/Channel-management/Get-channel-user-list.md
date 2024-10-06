@@ -40,12 +40,12 @@ sidebar_position: 2
 
 ```json title="Result"
 {
-  "ok": true,
-  "members": [
+ "ok": true,
+ "members": [
   "U06UG1CAYH2"
-  ],
-  "response_metadata": {
+ ],
+ "response_metadata": {
   "next_cursor": ""
-  }
-  }
+ }
+}
 ```

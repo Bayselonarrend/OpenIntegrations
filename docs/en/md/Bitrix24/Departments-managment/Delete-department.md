@@ -49,16 +49,16 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1722171482.56495,
-  "finish": 1722171482.65313,
-  "duration": 0.0881810188293457,
-  "processing": 0.0624208450317383,
-  "date_start": "2024-07-28T12:58:02+00:00",
-  "date_finish": "2024-07-28T12:58:02+00:00",
-  "operating_reset_at": 1722172082,
+ "result": true,
+ "time": {
+  "start": 1728140862.5298,
+  "finish": 1728140862.62206,
+  "duration": 0.0922679901123047,
+  "processing": 0.0644609928131104,
+  "date_start": "2024-10-05T18:07:42+03:00",
+  "date_finish": "2024-10-05T18:07:42+03:00",
+  "operating_reset_at": 1728141462,
   "operating": 0
-  }
-  }
+ }
+}
 ```

@@ -41,8 +41,8 @@ sidebar_position: 5
 
 ```json title="Result"
 {
-  "response": {
-  "id": 304498513,
+ "response": {
+  "id": 305999511,
   "owner_id": -218861756,
   "size": 0,
   "title": "AlbumFromAutoTest",
@@ -50,11 +50,11 @@ sidebar_position: 5
   "feed_has_pinned": 0,
   "can_upload": 1,
   "comments_disabled": 0,
-  "created": 1717072416,
+  "created": 1728139633,
   "description": "NewAlbumFromAutoTest",
   "thumb_id": 0,
-  "updated": 1717072416,
+  "updated": 1728139633,
   "upload_by_admins_only": 1
-  }
-  }
+ }
+}
 ```

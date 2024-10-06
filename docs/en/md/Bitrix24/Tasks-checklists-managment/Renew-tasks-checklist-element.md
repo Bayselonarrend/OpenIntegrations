@@ -53,16 +53,16 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
 
 ```json title="Result"
 {
-  "result": true,
-  "time": {
-  "start": 1720816511.09347,
-  "finish": 1720816511.14508,
-  "duration": 0.051609992980957,
-  "processing": 0.0250108242034912,
-  "date_start": "2024-07-12T20:35:11+00:00",
-  "date_finish": "2024-07-12T20:35:11+00:00",
-  "operating_reset_at": 1720817111,
+ "result": true,
+ "time": {
+  "start": 1728140729.84156,
+  "finish": 1728140729.90158,
+  "duration": 0.0600218772888184,
+  "processing": 0.030019998550415,
+  "date_start": "2024-10-05T18:05:29+03:00",
+  "date_finish": "2024-10-05T18:05:29+03:00",
+  "operating_reset_at": 1728141329,
   "operating": 0
-  }
-  }
+ }
+}
 ```
