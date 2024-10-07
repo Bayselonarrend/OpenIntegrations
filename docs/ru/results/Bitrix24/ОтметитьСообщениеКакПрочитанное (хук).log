@@ -1,18 +1,18 @@
 ﻿    {
  "result": {
-  "dialogId": "chat958",
-  "chatId": 958,
-  "lastId": 17252,
+  "dialogId": "chat962",
+  "chatId": 962,
+  "lastId": 17324,
   "counter": 0
  },
  "time": {
-  "start": 1728225267.39598,
-  "finish": 1728225267.43758,
-  "duration": 0.041597843170166,
-  "processing": 0.0186269283294678,
-  "date_start": "2024-10-06T17:34:27+03:00",
-  "date_finish": "2024-10-06T17:34:27+03:00",
-  "operating_reset_at": 1728225867,
+  "start": 1728282491.05954,
+  "finish": 1728282491.12314,
+  "duration": 0.063601016998291,
+  "processing": 0.0316290855407715,
+  "date_start": "2024-10-07T09:28:11+03:00",
+  "date_finish": "2024-10-07T09:28:11+03:00",
+  "operating_reset_at": 1728283091,
   "operating": 0
  }
 }
