@@ -1,9 +1,9 @@
 ﻿    {
  "result": {
   "FILES": {
-   "upload12192": {
-    "id": 12192,
-    "chatId": 958,
+   "upload12252": {
+    "id": 12252,
+    "chatId": 962,
     "date": {},
     "type": "file",
     "name": "Важный документ.docx",
@@ -15,28 +15,28 @@
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12192&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
-    "urlDownload": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12192&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlShow": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12252&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlDownload": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12252&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
     "viewerAttrs": {
      "viewer": null,
      "viewerType": "cloud-document",
-     "src": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12192&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+     "src": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12252&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
      "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
      "viewerSeparateItem": true,
      "viewerExtension": "im.integration.viewer",
-     "objectId": "12192",
-     "imChatId": 958,
+     "objectId": "12252",
+     "imChatId": 962,
      "title": "Важный документ.docx",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Битрикс24 Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"12192\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Битрикс24 Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"12252\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     }
    }
   },
   "DISK_ID": [
-   "12192"
+   "12252"
   ],
   "FILE_MODELS": {
-   "upload12192": {
-    "id": 12192,
+   "upload12252": {
+    "id": 12252,
     "name": "Важный документ.docx",
     "createTime": {},
     "updateTime": {},
@@ -44,33 +44,33 @@
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 12192,
-    "parentId": 12188,
+    "realObjectId": 12252,
+    "parentId": 12248,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 8406,
+    "fileId": 8446,
     "size": 24071,
-    "etag": "b2b318efd3921e87867ab08389e27d7a",
+    "etag": "991f8eda200d12563b98560931d85fdd",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=12192",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=12192&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=12252",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=12252&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 17260
+  "MESSAGE_ID": 17332
  },
  "time": {
-  "start": 1728225280.23603,
-  "finish": 1728225280.32412,
-  "duration": 0.0880858898162842,
-  "processing": 0.0647761821746826,
-  "date_start": "2024-10-06T17:34:40+03:00",
-  "date_finish": "2024-10-06T17:34:40+03:00",
-  "operating_reset_at": 1728225880,
-  "operating": 0
+  "start": 1728282504.63106,
+  "finish": 1728282504.76317,
+  "duration": 0.132114887237549,
+  "processing": 0.105862855911255,
+  "date_start": "2024-10-07T09:28:24+03:00",
+  "date_finish": "2024-10-07T09:28:24+03:00",
+  "operating_reset_at": 1728283104,
+  "operating": 0.10584282875061
  }
 }

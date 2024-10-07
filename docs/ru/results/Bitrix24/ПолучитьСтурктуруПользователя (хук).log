@@ -66,13 +66,13 @@
   "USER_TYPE": "USER_TYPE"
  },
  "time": {
-  "start": 1728225297.33213,
-  "finish": 1728225297.36,
-  "duration": 0.0278680324554443,
-  "processing": 0.00420379638671875,
-  "date_start": "2024-10-06T17:34:57+03:00",
-  "date_finish": "2024-10-06T17:34:57+03:00",
-  "operating_reset_at": 1728225897,
+  "start": 1728282523.84256,
+  "finish": 1728282523.88422,
+  "duration": 0.0416619777679443,
+  "processing": 0.00468587875366211,
+  "date_start": "2024-10-07T09:28:43+03:00",
+  "date_finish": "2024-10-07T09:28:43+03:00",
+  "operating_reset_at": 1728283123,
   "operating": 0
  }
 }
