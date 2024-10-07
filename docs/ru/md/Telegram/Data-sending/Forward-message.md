@@ -45,7 +45,7 @@ sidebar_position: 11
 {
  "ok": true,
  "result": {
-  "message_id": 8231,
+  "message_id": 8245,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -59,7 +59,7 @@ sidebar_position: 11
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728281057,
+  "date": 1728305037,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -68,8 +68,8 @@ sidebar_position: 11
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 9320,
-   "date": 1728280847
+   "message_id": 9340,
+   "date": 1728304844
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -77,8 +77,8 @@ sidebar_position: 11
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 9320,
-  "forward_date": 1728280847,
+  "forward_from_message_id": 9340,
+  "forward_date": 1728304844,
   "text": "Строковое значение"
  }
 }

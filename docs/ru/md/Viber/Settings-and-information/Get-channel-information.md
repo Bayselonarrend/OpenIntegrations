@@ -39,7 +39,7 @@ sidebar_position: 2
  "status": 0,
  "status_message": "ok",
  "id": "pa:5925427292815753130",
- "chat_hostname": "SN-CHAT-01_",
+ "chat_hostname": "SN-CHAT-06_",
  "name": "1C Test",
  "members": [
   {

@@ -39,7 +39,7 @@ Method at API documentation: [timeman.close](https://dev.1c-bitrix.ru/rest_help/
     Time   = OPI_Tools.GetCurrentDate();
     Report = "Time off";
 
-    Result = OPI_Bitrix24.StopTimekeeping(URL, UserID, Time, Report, );
+    Result = OPI_Bitrix24.StopTimekeeping(URL, UserID, Time, Report, Token);
 ```
 
 

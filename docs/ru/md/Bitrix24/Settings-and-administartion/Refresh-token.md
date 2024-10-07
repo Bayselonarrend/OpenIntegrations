@@ -41,8 +41,8 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
- "access_token": "f08c0367006e9f06006b12e4000000010000072858e80ae95fa77cadd8ee34e8bbb7c9",
- "expires": 1728285936,
+ "access_token": "a9ea0367006e9f06006b12e4000000010000077cf7361dce36b4295333ecec6bf0f55c",
+ "expires": 1728309929,
  "expires_in": 3600,
  "scope": "app",
  "domain": "oauth.bitrix.info",
@@ -51,6 +51,6 @@ sidebar_position: 3
  "client_endpoint": "https://b24-ar17wx.bitrix24.by/rest/",
  "member_id": "00168f0dd11ff00b4aeb8ce5befaa139",
  "user_id": 1,
- "refresh_token": "e00b2b67006e9f06006b12e400000001000007e35ad499ebd5b5cc1cd61ccd65ec7f32"
+ "refresh_token": "99692b67006e9f06006b12e4000000010000070fb0c1aadd648e2aa557567fc9abb134"
 }
 ```

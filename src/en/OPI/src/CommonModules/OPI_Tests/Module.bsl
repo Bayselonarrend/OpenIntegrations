@@ -728,9 +728,6 @@ EndProcedure
 
 Procedure YDisk_PublicObjectActions() Export
 
-    PUrl = "public_url";
-    Map  = "Map";
-
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
@@ -4000,8 +3997,6 @@ EndProcedure
 
 Procedure VK_GetProductDescription(FunctionParameters)
 
-    Parameters = GetVKParameters();
-
     Result = OPI_VK.GetProductDescription();
 
     // END
@@ -4765,7 +4760,11 @@ Procedure GoogleCalendar_EditListCalendar(FunctionParameters)
     SecondaryColor = "#ffd800";
     Hidden         = False;
 
-    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, False);
+    Result = OPI_GoogleCalendar.EditListCalendar(Token
+        , Calendar
+        , PrimaryColor
+        , SecondaryColor
+        , Hidden);
 
     // END
 
@@ -7531,6 +7530,10 @@ Procedure Dropbox_GetAsynchronousChangeStatus(FunctionParameters)
     JobID = FunctionParameters["Dropbox_NewJobID"];
 
     Result = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
+
+    // END
+
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
@@ -10960,7 +10963,7 @@ Procedure Bitrix24_DeleteCustomTaskField(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
 
-    Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID, );
+    Result = OPI_Bitrix24.DeleteCustomTaskField(URL, FieldID, Token);
 
     // END
 
@@ -11335,7 +11338,7 @@ Procedure Bitrix24_StopTimekeeping(FunctionParameters)
     Time   = OPI_Tools.GetCurrentDate();
     Report = "Time off";
 
-    Result = OPI_Bitrix24.StopTimekeeping(URL, UserID, Time, Report, );
+    Result = OPI_Bitrix24.StopTimekeeping(URL, UserID, Time, Report, Token);
 
 EndProcedure
 
