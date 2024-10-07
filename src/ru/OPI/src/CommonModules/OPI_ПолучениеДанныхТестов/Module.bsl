@@ -1832,10 +1832,14 @@
 
     ИначеЕсли ТекущийТип = Тип("ДвоичныеДанные") Тогда
 
+        // BSLLS:InvalidCharacterInFile-off
+		
         //@skip-check missing-temporary-file-deletion
         ИВФ = ПолучитьИмяВременногоФайла();
         Значение.Записать(ИВФ);
         Значение = ИВФ;
+        
+        // BSLLS:InvalidCharacterInFile-on
 
     Иначе
 
