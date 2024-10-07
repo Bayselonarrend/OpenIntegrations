@@ -42,7 +42,7 @@ sidebar_position: 6
 ```json title="Результат"
 {
  "ok": true,
- "permalink": "https://openintegrationsgroup.slack.com/archives/C06UFNUTKUL/p1728306062198279",
+ "permalink": "https://openintegrationsgroup.slack.com/archives/C06UFNUTKUL/p1728326491190419",
  "channel": "C06UFNUTKUL"
 }
 ```

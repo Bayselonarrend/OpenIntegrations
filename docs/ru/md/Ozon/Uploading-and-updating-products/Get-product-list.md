@@ -54,7 +54,7 @@ sidebar_position: 1
  "result": {
   "items": [
    {
-    "product_id": 1213407863,
+    "product_id": 1213778659,
     "offer_id": "143210609",
     "is_fbo_visible": false,
     "is_fbs_visible": false,
@@ -63,7 +63,7 @@ sidebar_position: 1
    }
   ],
   "total": 1,
-  "last_id": "WzEyMTM0MDc4NjMsMTIxMzQwNzg2M10="
+  "last_id": "WzEyMTM3Nzg2NTksMTIxMzc3ODY1OV0="
  }
 }
 ```

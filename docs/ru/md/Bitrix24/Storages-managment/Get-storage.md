@@ -58,13 +58,13 @@ sidebar_position: 3
   "ROOT_OBJECT_ID": "3"
  },
  "time": {
-  "start": 1728306382.12136,
-  "finish": 1728306382.15559,
-  "duration": 0.0342299938201904,
-  "processing": 0.00528502464294434,
-  "date_start": "2024-10-07T16:06:22+03:00",
-  "date_finish": "2024-10-07T16:06:22+03:00",
-  "operating_reset_at": 1728306982,
+  "start": 1728326782.05689,
+  "finish": 1728326782.08835,
+  "duration": 0.0314590930938721,
+  "processing": 0.00422000885009766,
+  "date_start": "2024-10-07T21:46:22+03:00",
+  "date_finish": "2024-10-07T21:46:22+03:00",
+  "operating_reset_at": 1728327382,
   "operating": 0
  }
 }

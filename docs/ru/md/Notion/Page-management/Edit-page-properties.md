@@ -56,9 +56,9 @@ sidebar_position: 4
 ```json title="Результат"
 {
  "object": "page",
- "id": "11882aa7-fc4e-81f9-85d2-f831a3f6a53b",
- "created_time": "2024-10-07T13:00:00Z",
- "last_edited_time": "2024-10-07T13:00:00Z",
+ "id": "11882aa7-fc4e-81a4-b41d-dd6260f8f929",
+ "created_time": "2024-10-07T18:41:00Z",
+ "last_edited_time": "2024-10-07T18:41:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -110,8 +110,8 @@ sidebar_position: 4
    ]
   }
  },
- "url": "https://www.notion.so/11882aa7fc4e81f985d2f831a3f6a53b",
+ "url": "https://www.notion.so/11882aa7fc4e81a4b41ddd6260f8f929",
  "public_url": null,
- "request_id": "0ea0b312-9eb5-4f36-a9bc-670d6da91dcc"
+ "request_id": "e4307ef3-c2cb-48de-88f3-6f6bb3caa1a9"
 }
 ```

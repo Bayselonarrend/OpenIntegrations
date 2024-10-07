@@ -46,8 +46,8 @@ sidebar_position: 1
  "response": [
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 3,
+    "likes": 3
    },
    "period_from": 1728259200,
    "period_to": 1728345599,
@@ -183,14 +183,14 @@ sidebar_position: 1
       "count": 2,
       "name": "Сейшелы",
       "value": 175
+     },
+     {
+      "code": "RU",
+      "count": 1,
+      "name": "Россия",
+      "value": 1
      }
     ],
     "mobile_views": 0,
-    "views": 2,
-    "visitors": 2
-   }
-  },
-  {
-   "activity": {
 ...
 ```

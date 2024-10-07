@@ -39,9 +39,12 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "text": "Тестовый твитт4be862d8-6dd4-41c8-aee7-126b348c4f2e",
+  "id": "1843355649792450715",
+  "edit_history_tweet_ids": [
+   "1843355649792450715"
+  ]
+ }
 }
 ```

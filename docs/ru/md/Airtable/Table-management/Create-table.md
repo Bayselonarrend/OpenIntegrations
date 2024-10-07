@@ -55,22 +55,22 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
- "id": "tbloOBELtY2PnGlFk",
+ "id": "tblEnITVUkSlgHI65",
  "name": "Тестовая таблица 2",
  "description": "Новая таблица",
- "primaryFieldId": "fldURQ8ztwQ1E24Ca",
+ "primaryFieldId": "flds0gJ8oK76wO3Wh",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fldURQ8ztwQ1E24Ca",
+   "id": "flds0gJ8oK76wO3Wh",
    "name": "Номер"
   },
   {
    "type": "richText",
-   "id": "fldRPSMMnTiarZIho",
+   "id": "fld6Jwim3eYiyvb1T",
    "name": "Строковое"
   },
   {
@@ -78,7 +78,7 @@ sidebar_position: 1
    "options": {
     "isReversed": false
    },
-   "id": "fldFWfqVeSF5D1Z49",
+   "id": "fld82xkFFOdO82YXz",
    "name": "Вложение"
   },
   {
@@ -87,7 +87,7 @@ sidebar_position: 1
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fldaT6KbQuNJltfYZ",
+   "id": "fldIG87iTcDZMpSUg",
    "name": "Флажок"
   },
   {
@@ -98,28 +98,28 @@ sidebar_position: 1
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fldas7tnSlxD8FmYF",
+   "id": "fld85KB0qAiUcrtm7",
    "name": "Дата"
   },
   {
    "type": "phoneNumber",
-   "id": "fldUTqGO5oU4614Er",
+   "id": "fld0etGulIBZETKo3",
    "name": "Телефон"
   },
   {
    "type": "email",
-   "id": "fldDLWaf9vvNE5nVK",
+   "id": "fldEuMHEaCz1PUoav",
    "name": "Почта"
   },
   {
    "type": "url",
-   "id": "fldMicP6wE7B7gAfD",
+   "id": "fldgRI3hInqlYM7zA",
    "name": "Ссылка"
   }
  ],
  "views": [
   {
-   "id": "viwbfV7CZP8UmJszP",
+   "id": "viwpQS657guaqiL6O",
    "name": "Grid view",
    "type": "grid"
   }

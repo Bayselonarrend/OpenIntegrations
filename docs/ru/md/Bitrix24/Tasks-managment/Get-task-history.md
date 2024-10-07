@@ -52,8 +52,8 @@ sidebar_position: 19
  "result": {
   "list": [
    {
-    "id": "29296",
-    "createdDate": "07.10.2024 16:05:49",
+    "id": "29422",
+    "createdDate": "07.10.2024 21:45:55",
     "field": "NEW",
     "value": {
      "from": null,
@@ -68,12 +68,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29298",
-    "createdDate": "07.10.2024 16:05:54",
+    "id": "29424",
+    "createdDate": "07.10.2024 21:46:01",
     "field": "START_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1728306349"
+     "to": "1728326755"
     },
     "user": {
      "id": "1",
@@ -84,8 +84,8 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29300",
-    "createdDate": "07.10.2024 16:05:54",
+    "id": "29426",
+    "createdDate": "07.10.2024 21:46:01",
     "field": "END_DATE_PLAN",
     "value": {
      "from": "",
@@ -100,12 +100,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29302",
-    "createdDate": "07.10.2024 16:05:54",
+    "id": "29428",
+    "createdDate": "07.10.2024 21:46:01",
     "field": "DURATION_PLAN_SECONDS",
     "value": {
      "from": "",
-     "to": "28451"
+     "to": "8045"
     },
     "user": {
      "id": "1",
@@ -116,8 +116,8 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29316",
-    "createdDate": "07.10.2024 16:05:56",
+    "id": "29442",
+    "createdDate": "07.10.2024 21:46:02",
     "field": "TITLE",
     "value": {
      "from": "Новая задача",
@@ -132,8 +132,8 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29318",
-    "createdDate": "07.10.2024 16:05:56",
+    "id": "29444",
+    "createdDate": "07.10.2024 21:46:02",
     "field": "DESCRIPTION",
     "value": {
      "from": "",
@@ -148,8 +148,8 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29320",
-    "createdDate": "07.10.2024 16:05:56",
+    "id": "29446",
+    "createdDate": "07.10.2024 21:46:02",
     "field": "PRIORITY",
     "value": {
      "from": "2",
@@ -164,12 +164,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29326",
-    "createdDate": "07.10.2024 16:05:58",
+    "id": "29452",
+    "createdDate": "07.10.2024 21:46:04",
     "field": "RESPONSIBLE_ID",
     "value": {
      "from": "1",
-     "to": "582"
+     "to": "586"
     },
     "user": {
      "id": "1",
@@ -180,12 +180,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29328",
-    "createdDate": "07.10.2024 16:05:58",
+    "id": "29454",
+    "createdDate": "07.10.2024 21:46:04",
     "field": "COMMENT",
     "value": {
      "from": null,
-     "to": "5822"
+     "to": "5844"
     },
     "user": {
      "id": "1",
@@ -196,7 +196,7 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29332",
-    "createdDate": "07.10.2024 16:05:59",
+    "id": "29458",
+    "createdDate": "07.10.2024 21:46:04",
 ...
 ```

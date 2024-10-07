@@ -51,7 +51,7 @@ sidebar_position: 5
 {
  "result": [
   {
-   "ID": "930",
+   "ID": "934",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
    "TITLE": "Новый заголовок новости",
@@ -61,7 +61,7 @@ sidebar_position: 5
    "CODE": null,
    "MICRO": "N",
    "DETAIL_TEXT": "Новый текст новости",
-   "DATE_PUBLISH": "2024-10-07T16:05:40+03:00",
+   "DATE_PUBLISH": "2024-10-07T21:45:48+03:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -111,7 +111,7 @@ sidebar_position: 5
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 930,
+    "ENTITY_VALUE_ID": 934,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -142,7 +142,7 @@ sidebar_position: 5
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 930,
+    "ENTITY_VALUE_ID": 934,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -187,7 +187,7 @@ sidebar_position: 5
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 930,
+    "ENTITY_VALUE_ID": 934,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []

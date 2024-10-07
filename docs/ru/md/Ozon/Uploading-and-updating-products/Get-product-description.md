@@ -46,7 +46,7 @@ sidebar_position: 4
 ```json title="Результат"
 {
  "result": {
-  "id": 1213407863,
+  "id": 1213778659,
   "offer_id": "143210609",
   "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
   "description": ""

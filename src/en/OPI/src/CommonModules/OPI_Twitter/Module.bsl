@@ -247,7 +247,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
+    MediaArray = UploadAttachmentsArray(ImageArray, "TWEET_IMAGE", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -264,7 +264,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(GifsArray, "tweet_gif", Parameters);
+    MediaArray = UploadAttachmentsArray(GifsArray, "TWEET_GIF", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -281,7 +281,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(VideosArray, "tweet_video", Parameters);
+    MediaArray = UploadAttachmentsArray(VideosArray, "TWEET_VIDEO", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
