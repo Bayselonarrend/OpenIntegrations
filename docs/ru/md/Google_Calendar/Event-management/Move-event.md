@@ -45,12 +45,12 @@ sidebar_position: 5
 ```json title="Результат"
 {
  "kind": "calendar#event",
- "etag": "\"3456449456840000\"",
- "id": "i54htl9nrvkh96c3l3c1inq5gc",
+ "etag": "\"3456563823368000\"",
+ "id": "4updfl5oespcksbg2sh53i5u9o",
  "status": "cancelled",
- "htmlLink": "https://www.google.com/calendar/event?eid=aTU0aHRsOW5ydmtoOTZjM2wzYzFpbnE1Z2MgOGJlNDM0YzRhODY4N2I1ZTRjN2UzZGE3N2E3OWMwNGEzYzIwNGNhZTU2NjAxOTMyNWI2MjM2ZGQ3OGM4MmExMkBn",
- "created": "2024-10-06T14:25:27Z",
- "updated": "2024-10-06T14:25:28.42Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=NHVwZGZsNW9lc3Bja3NiZzJzaDUzaTV1OW8gM2UxNGUyZTliMTMwMmM3NGZkZTRiZjg5N2RiNGY0YTU1NmEyYzlhOWY5YzlhMmJmOTg4OGEzNGFhNDFiYjFlOUBn",
+ "created": "2024-10-07T06:18:31Z",
+ "updated": "2024-10-07T06:18:31.684Z",
  "summary": "Новое событие",
  "description": "Новое описание события",
  "location": "В офисе",
@@ -61,14 +61,14 @@ sidebar_position: 5
   "email": "bayselonarrend@gmail.com"
  },
  "start": {
-  "dateTime": "2024-10-06T20:25:27+03:00",
+  "dateTime": "2024-10-07T12:18:31+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2024-10-06T21:25:27+03:00",
+  "dateTime": "2024-10-07T13:18:31+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "i54htl9nrvkh96c3l3c1inq5gc@google.com",
+ "iCalUID": "4updfl5oespcksbg2sh53i5u9o@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

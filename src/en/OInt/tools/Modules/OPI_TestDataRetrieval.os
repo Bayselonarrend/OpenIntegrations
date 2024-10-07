@@ -1832,10 +1832,14 @@ Function GetCLIFormedValue(Val Value)
 
     ElsIf CurrentType = Type("BinaryData") Then
 
+        // BSLLS:InvalidCharacterInFile-off
+
         //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
         Value.Write(TFN);
         Value = TFN;
+
+        // BSLLS:InvalidCharacterInFile-on
 
     Else
 

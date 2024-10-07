@@ -47,10 +47,10 @@ sidebar_position: 7
   {
    "user": "U06UG1CAYH2",
    "type": "message",
-   "ts": "1728224894.177499",
+   "ts": "1728282083.968029",
    "edited": {
     "user": "B06TZ0MJV5M",
-    "ts": "1728224895.000000"
+    "ts": "1728282085.000000"
    },
    "bot_id": "B06TZ0MJV5M",
    "app_id": "A06TYNH45RV",
@@ -72,7 +72,7 @@ sidebar_position: 7
    "blocks": [
     {
      "type": "rich_text",
-     "block_id": "g26EJ",
+     "block_id": "0xPp",
      "elements": [
       {
        "type": "rich_text_section",

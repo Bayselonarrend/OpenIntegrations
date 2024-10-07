@@ -51,152 +51,152 @@ sidebar_position: 1
 {
  "result": [
   {
-   "description_category_id": 17027495,
-   "category_name": "Автотовары",
+   "description_category_id": 17027915,
+   "category_name": "Мебель",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 17028755,
-     "category_name": "Тюнинг и внешний декор",
+     "description_category_id": 79164512,
+     "category_name": "Компьютерные и офисные кресла",
      "disabled": false,
      "children": [
       {
-       "type_name": "Замок лобового стекла",
-       "type_id": 971006632,
+       "type_name": "Кресло руководителя",
+       "type_id": 970679619,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Пленка антигравийная",
-       "type_id": 970943796,
+       "type_name": "Офисное кресло",
+       "type_id": 95041,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Дефлектор капота",
-       "type_id": 94656,
+       "type_name": "Игровое компьютерное кресло",
+       "type_id": 95026,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Накладка на кузов",
-       "type_id": 971006634,
+       "type_name": "Игровая вибронакидка",
+       "type_id": 91796,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Колпаки на колеса",
-       "type_id": 94659,
+       "type_name": "Стул промышленный",
+       "type_id": 970884997,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Защита внешних частей автомобиля",
-       "type_id": 94658,
+       "type_name": "Кресло-седло",
+       "type_id": 970685081,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Накладка на пороги",
-       "type_id": 98334,
+       "type_name": "Детское компьютерное кресло",
+       "type_id": 970685072,
+       "disabled": false,
+       "children": []
+      }
+     ]
+    },
+    {
+     "description_category_id": 85282223,
+     "category_name": "Мебель для бизнеса",
+     "disabled": false,
+     "children": [
+      {
+       "type_name": "Подтоварник",
+       "type_id": 970988637,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Порог-площадка",
-       "type_id": 97601,
+       "type_name": "Подставка производственная",
+       "type_id": 971816790,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Крышка на пикап",
-       "type_id": 971045988,
+       "type_name": "Ларь для овощей",
+       "type_id": 970988646,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Спойлер автомобиля",
-       "type_id": 970895069,
+       "type_name": "Подставка под пароконвектомат",
+       "type_id": 970988638,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Пленка защитная для автомобиля",
-       "type_id": 971053255,
+       "type_name": "Защитный экран для кассы",
+       "type_id": 970744413,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Подкрылки",
-       "type_id": 94663,
+       "type_name": "Стойка ресепшн для ПВЗ",
+       "type_id": 971108795,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Защита бампера",
-       "type_id": 97599,
+       "type_name": "Тележка-шпилька",
+       "type_id": 970988645,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Заглушка бампера автомобиля",
-       "type_id": 970954154,
+       "type_name": "Швейный уголок",
+       "type_id": 971363893,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Пленка виниловая",
-       "type_id": 970943799,
+       "type_name": "Защитный экран для офиса",
+       "type_id": 970744412,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Дефлектор для окон",
-       "type_id": 97593,
+       "type_name": "Шкаф производственный",
+       "type_id": 970988648,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Накладка на фары",
-       "type_id": 970682241,
+       "type_name": "Полка производственная",
+       "type_id": 970993837,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Накладка на бампер",
-       "type_id": 92180,
+       "type_name": "Досмотровая тумба, стол",
+       "type_id": 971371488,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Накладка крышки багажника",
-       "type_id": 970879042,
+       "type_name": "Шкаф для сумок",
+       "type_id": 971276898,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Веткоотбойники для автомобиля",
-       "type_id": 970891873,
+       "type_name": "Стол-тележка для торта",
+       "type_id": 971361009,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Уплотнитель автомобильный",
-       "type_id": 970891910,
+       "type_name": "Складской стеллаж",
+       "type_id": 970988642,
        "disabled": false,
        "children": []
-      },
-      {
-       "type_name": "Фейринг",
-       "type_id": 971110642,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Набор для ламинации автомобиля",
-       "type_id": 970977425,
-       "disabled": false,
-       "children": []
-      },
 ...
 ```

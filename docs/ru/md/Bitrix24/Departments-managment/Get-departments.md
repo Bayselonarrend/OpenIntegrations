@@ -54,22 +54,22 @@ sidebar_position: 3
 {
  "result": [
   {
-   "ID": "566",
+   "ID": "570",
    "NAME": "Подчиненное подразделение",
    "SORT": 500,
-   "PARENT": "564",
+   "PARENT": "568",
    "UF_HEAD": "1"
   }
  ],
  "total": 1,
  "time": {
-  "start": 1728225294.37842,
-  "finish": 1728225294.40926,
-  "duration": 0.030832052230835,
-  "processing": 0.00457382202148438,
-  "date_start": "2024-10-06T17:34:54+03:00",
-  "date_finish": "2024-10-06T17:34:54+03:00",
-  "operating_reset_at": 1728225894,
+  "start": 1728282520.48565,
+  "finish": 1728282520.51959,
+  "duration": 0.0339360237121582,
+  "processing": 0.00549006462097168,
+  "date_start": "2024-10-07T09:28:40+03:00",
+  "date_finish": "2024-10-07T09:28:40+03:00",
+  "operating_reset_at": 1728283120,
   "operating": 0
  }
 }

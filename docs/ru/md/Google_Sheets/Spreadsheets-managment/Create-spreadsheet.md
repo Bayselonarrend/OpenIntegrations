@@ -44,7 +44,7 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
- "spreadsheetId": "1pTg0GVTbliI26mfQZYzz2Afh-3fnSCmI2CBE0Uq8OW0",
+ "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
  "properties": {
   "title": "Тестовая таблица",
   "locale": "ru_RU",
@@ -179,7 +179,7 @@ sidebar_position: 1
  "sheets": [
   {
    "properties": {
-    "sheetId": 1431256504,
+    "sheetId": 1123944902,
     "title": "Лист1",
     "index": 0,
     "sheetType": "GRID",
@@ -191,7 +191,7 @@ sidebar_position: 1
   },
   {
    "properties": {
-    "sheetId": 332849486,
+    "sheetId": 1434754723,
     "title": "Лист2",
 ...
 ```

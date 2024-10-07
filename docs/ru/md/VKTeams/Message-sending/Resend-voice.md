@@ -44,8 +44,8 @@ sidebar_position: 7
 
 ```json title="Результат"
 {
- "fileId": "I000bASHKGJX3psxNA8Ush6702a05f1bd",
- "msgId": "7422671491512142022",
+ "fileId": "I000bzLVfOWBdozyKpKYyu67037fed1bd",
+ "msgId": "7422917292490492119",
  "ok": true
 }
 ```

@@ -54,16 +54,16 @@ sidebar_position: 3
 {
  "records": [
   {
-   "id": "rec7i6n0mJ8wt0Jws",
-   "createdTime": "2024-10-06T14:28:51Z",
+   "id": "rec0SGaEzzvjs8kvx",
+   "createdTime": "2024-10-07T06:22:03Z",
    "fields": {
     "Номер": 10,
     "Строковое": "Привет\n"
    }
   },
   {
-   "id": "recxRX5owCOdE6Ihl",
-   "createdTime": "2024-10-06T14:28:51Z",
+   "id": "recEa16dH2DP51hC6",
+   "createdTime": "2024-10-07T06:22:03Z",
    "fields": {
     "Номер": 10,
     "Строковое": "Привет\n"
