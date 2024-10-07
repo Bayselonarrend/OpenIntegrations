@@ -32,7 +32,11 @@ sidebar_position: 5
     SecondaryColor = "#ffd800";
     Hidden         = False;
 
-    Result = OPI_GoogleCalendar.EditListCalendar(Token, Calendar, PrimaryColor, SecondaryColor, False);
+    Result = OPI_GoogleCalendar.EditListCalendar(Token
+        , Calendar
+        , PrimaryColor
+        , SecondaryColor
+        , Hidden);
 ```
 
 

@@ -48,15 +48,15 @@ sidebar_position: 6
 
 ```json title="Результат"
 {
- "result": "https://b24-ar17wx.bitrix24.by/~gvpUi",
+ "result": "https://b24-ar17wx.bitrix24.by/~qdYW0",
  "time": {
-  "start": 1728282414.7425,
-  "finish": 1728282414.78399,
-  "duration": 0.0414869785308838,
-  "processing": 0.00960707664489746,
-  "date_start": "2024-10-07T09:26:54+03:00",
-  "date_finish": "2024-10-07T09:26:54+03:00",
-  "operating_reset_at": 1728283014,
+  "start": 1728306407.86355,
+  "finish": 1728306407.89448,
+  "duration": 0.0309371948242188,
+  "processing": 0.00597715377807617,
+  "date_start": "2024-10-07T16:06:47+03:00",
+  "date_finish": "2024-10-07T16:06:47+03:00",
+  "operating_reset_at": 1728307007,
   "operating": 0
  }
 }

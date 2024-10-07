@@ -52,16 +52,16 @@ sidebar_position: 6
 ```json title="Результат"
 {
  "result": {
-  "attachmentId": 3510
+  "attachmentId": 3526
  },
  "time": {
-  "start": 1728282380.9532,
-  "finish": 1728282381.0249,
-  "duration": 0.0717020034790039,
-  "processing": 0.0453689098358154,
-  "date_start": "2024-10-07T09:26:20+03:00",
-  "date_finish": "2024-10-07T09:26:21+03:00",
-  "operating_reset_at": 1728282980,
+  "start": 1728306372.82322,
+  "finish": 1728306372.91032,
+  "duration": 0.0871009826660156,
+  "processing": 0.048832893371582,
+  "date_start": "2024-10-07T16:06:12+03:00",
+  "date_finish": "2024-10-07T16:06:12+03:00",
+  "operating_reset_at": 1728306972,
   "operating": 0
  }
 }

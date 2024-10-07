@@ -363,6 +363,7 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
         If Not Response["result"] = "success" Then
             ErrorsArray.Add(Response);
+
         Else
 
             DeletingMessage = StrTemplate("Removed %1 unnecessary files", String(ArrayOfDeletions.Count()));

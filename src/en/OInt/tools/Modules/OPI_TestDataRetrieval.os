@@ -1832,14 +1832,14 @@ Function GetCLIFormedValue(Val Value)
 
     ElsIf CurrentType = Type("BinaryData") Then
 
-        // BSLLS:InvalidCharacterInFile-off
+        // BSLLS:MissingTemporaryFileDeletion-off
 
         //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
         Value.Write(TFN);
         Value = TFN;
 
-        // BSLLS:InvalidCharacterInFile-on
+        // BSLLS:MissingTemporaryFileDeletion-on
 
     Else
 
@@ -1892,10 +1892,10 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
             CreateDirectory(LibraryLogPath);
         EndIf;
 
-        FilePath = LibraryLogPath + "/" + Method + ".log";
-        LogFile  = New File(FilePath);
+        FilePath   = LibraryLogPath + "/" + Method + ".log";
+        // LogFile = New File(FilePath);
 
-        //If Not LogFile.Exist() Then
+        // If Not LogFile.Exist() Then
         If True Then
             LogDocument = New TextDocument;
             LogDocument.SetText(Data);

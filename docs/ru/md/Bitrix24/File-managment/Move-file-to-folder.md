@@ -56,33 +56,33 @@ sidebar_position: 9
 ```json title="Результат"
 {
  "result": {
-  "ID": "12216",
+  "ID": "12276",
   "NAME": "Новое имя файла.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": 12226,
+  "PARENT_ID": 12286,
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "8426",
+  "FILE_ID": "8466",
   "SIZE": "805189",
-  "CREATE_TIME": "2024-10-07T09:26:32+03:00",
-  "UPDATE_TIME": "2024-10-07T09:26:53+03:00",
-  "DELETE_TIME": "2024-10-07T09:26:53+03:00",
+  "CREATE_TIME": "2024-10-07T16:06:25+03:00",
+  "UPDATE_TIME": "2024-10-07T16:06:46+03:00",
+  "DELETE_TIME": "2024-10-07T16:06:46+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=f08c0367006e9f06006b12e4000000010000072858e80ae95fa77cadd8ee34e8bbb7c9&token=disk%7CaWQ9MTIyMTYmXz1XNVoxSUJDYzVaajc2RWVRc0VwcEJLbVdYa3hCc2FKVQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXlNVFltWHoxWE5Wb3hTVUpEWXpWYWFqYzJSV1ZSYzBWd2NFSkxiVmRZYTNoQ2MyRktWUT09fGYwOGMwMzY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3Mjg1OGU4MGFlOTVmYTc3Y2FkZDhlZTM0ZThiYmI3Yzki.NkPfeNBO6MDhkADFuXQp9uxJDQKNimcED7pbVgK3qCc%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a9ea0367006e9f06006b12e4000000010000077cf7361dce36b4295333ecec6bf0f55c&token=disk%7CaWQ9MTIyNzYmXz1kOG9TTzdwRUE0UjI4b2hQMjd2Q1ZlYk8wWnF6VGFBWQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXlOelltWHoxa09HOVRUemR3UlVFMFVqSTRiMmhRTWpkMlExWmxZazh3V25GNlZHRkJXUT09fGE5ZWEwMzY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3N2NmNzM2MWRjZTM2YjQyOTUzMzNlY2VjNmJmMGY1NWMi.seq%2Fj42LV2DA%2Fbol25V0tXK%2BZNIkjBweJUIeS7ngvyw%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Новый подкаталог/Новое имя файла.jpg"
  },
  "time": {
-  "start": 1728282415.21689,
-  "finish": 1728282415.27409,
-  "duration": 0.0572009086608887,
-  "processing": 0.0315020084381104,
-  "date_start": "2024-10-07T09:26:55+03:00",
-  "date_finish": "2024-10-07T09:26:55+03:00",
-  "operating_reset_at": 1728283015,
+  "start": 1728306408.29144,
+  "finish": 1728306408.34775,
+  "duration": 0.0563020706176758,
+  "processing": 0.0252890586853027,
+  "date_start": "2024-10-07T16:06:48+03:00",
+  "date_finish": "2024-10-07T16:06:48+03:00",
+  "operating_reset_at": 1728307008,
   "operating": 0
  }
 }

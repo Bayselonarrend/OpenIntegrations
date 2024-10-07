@@ -53,7 +53,7 @@ sidebar_position: 16
 {
  "result": {
   "task": {
-   "id": "2338",
+   "id": "2348",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -64,19 +64,19 @@ sidebar_position: 16
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-10-07T09:25:58+03:00",
-   "responsibleId": "578",
+   "createdDate": "2024-10-07T16:05:49+03:00",
+   "responsibleId": "582",
    "changedBy": "1",
-   "changedDate": "2024-10-07T09:26:08+03:00",
+   "changedDate": "2024-10-07T16:05:58+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-07T09:26:08+03:00",
+   "activityDate": "2024-10-07T16:05:58+03:00",
    "dateStart": null,
-   "deadline": "2024-10-08T12:25:00+03:00",
-   "startDatePlan": "2024-10-07T09:25:58+03:00",
+   "deadline": "2024-10-08T19:05:00+03:00",
+   "startDatePlan": "2024-10-07T16:05:49+03:00",
    "endDatePlan": "2024-10-08T00:00:00+03:00",
-   "guid": "{9c264b5c-99e6-42b0-8599-9588aac807fd}",
+   "guid": "{d38b3583-04a9-4e8c-8ec6-b848af9378f3}",
    "xmlId": null,
    "commentsCount": "1",
    "serviceCommentsCount": "1",
@@ -88,14 +88,14 @@ sidebar_position: 16
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "1628",
+   "forumTopicId": "1634",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "N",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "4",
-   "viewedDate": "2024-10-07T09:26:08+03:00",
+   "viewedDate": "2024-10-07T16:05:59+03:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -104,7 +104,7 @@ sidebar_position: 16
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-07T09:26:08+03:00",
+   "statusChangedDate": "2024-10-07T16:05:58+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -121,9 +121,9 @@ sidebar_position: 16
     "workPosition": null
    },
    "responsible": {
-    "id": "578",
+    "id": "582",
     "name": "Олег Лама",
-    "link": "/company/personal/user/578/",
+    "link": "/company/personal/user/582/",
     "icon": "/bitrix/images/tasks/default_avatar.png",
     "workPosition": null
    },
@@ -183,14 +183,14 @@ sidebar_position: 16
   }
  },
  "time": {
-  "start": 1728282368.11118,
-  "finish": 1728282368.59342,
-  "duration": 0.482241868972778,
-  "processing": 0.455030918121338,
-  "date_start": "2024-10-07T09:26:08+03:00",
-  "date_finish": "2024-10-07T09:26:08+03:00",
-  "operating_reset_at": 1728282968,
-  "operating": 0.455000877380371
+  "start": 1728306358.46399,
+  "finish": 1728306359.15134,
+  "duration": 0.687350034713745,
+  "processing": 0.652077913284302,
+  "date_start": "2024-10-07T16:05:58+03:00",
+  "date_finish": "2024-10-07T16:05:59+03:00",
+  "operating_reset_at": 1728306958,
+  "operating": 0.652050018310547
  }
 }
 ```

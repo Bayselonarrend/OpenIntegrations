@@ -533,8 +533,11 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
     ElsIf Type = "Number" Then
         OPI_TypeConversion.GetNumber(Value);
 
-    ElsIf Not Type = "Current" Then
-        OPI_TypeConversion.GetLine(Value);
+    Else
+
+        If Not Type = "Current" Then
+            OPI_TypeConversion.GetLine(Value);
+        EndIf;
 
     EndIf;
 

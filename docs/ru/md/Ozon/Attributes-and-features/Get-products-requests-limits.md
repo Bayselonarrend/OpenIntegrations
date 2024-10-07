@@ -43,12 +43,12 @@ sidebar_position: 5
 ```json title="Результат"
 {
  "daily_create": {
-  "usage": 0,
+  "usage": 1,
   "limit": 1500,
   "reset_at": "2024-10-08T00:00:00Z"
  },
  "daily_update": {
-  "usage": 0,
+  "usage": 3,
   "limit": 5000,
   "reset_at": "2024-10-08T00:00:00Z"
  },
