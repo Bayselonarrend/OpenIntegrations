@@ -65,7 +65,7 @@ sidebar_position: 4
 ```json title="Результат"
 {
  "response": {
-  "market_item_id": 9674468
+  "market_item_id": 9675746
  }
 }
 ```

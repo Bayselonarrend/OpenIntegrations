@@ -63,7 +63,7 @@ sidebar_position: 3
 {
  "result": {
   "task": {
-   "id": "2328",
+   "id": "2338",
    "parentId": null,
    "title": "Новая задача",
    "description": "Новое описание задачи",
@@ -74,19 +74,19 @@ sidebar_position: 3
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-10-06T17:32:24+03:00",
+   "createdDate": "2024-10-07T09:25:58+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-10-06T17:32:24+03:00",
+   "changedDate": "2024-10-07T09:25:58+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-06T17:32:24+03:00",
+   "activityDate": "2024-10-07T09:25:58+03:00",
    "dateStart": null,
-   "deadline": "2024-10-07T20:32:00+03:00",
+   "deadline": "2024-10-08T12:25:00+03:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{d04b1de9-17bb-4e65-bba4-6c19ad2063f3}",
+   "guid": "{9c264b5c-99e6-42b0-8599-9588aac807fd}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -114,7 +114,7 @@ sidebar_position: 3
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-06T17:32:24+03:00",
+   "statusChangedDate": "2024-10-07T09:25:58+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -193,14 +193,14 @@ sidebar_position: 3
   }
  },
  "time": {
-  "start": 1728225144.87761,
-  "finish": 1728225145.02384,
-  "duration": 0.146227836608887,
-  "processing": 0.117847919464111,
-  "date_start": "2024-10-06T17:32:24+03:00",
-  "date_finish": "2024-10-06T17:32:25+03:00",
-  "operating_reset_at": 1728225744,
-  "operating": 0.117824077606201
+  "start": 1728282358.95036,
+  "finish": 1728282359.14989,
+  "duration": 0.199521780014038,
+  "processing": 0.163790941238403,
+  "date_start": "2024-10-07T09:25:58+03:00",
+  "date_finish": "2024-10-07T09:25:59+03:00",
+  "operating_reset_at": 1728282958,
+  "operating": 0.163756132125854
  }
 }
 ```

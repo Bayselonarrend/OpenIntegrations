@@ -26,7 +26,7 @@ sidebar_position: 9
 :::tip
 On each method call, send all the images that should be on the product card
 
- To upload, pass the URL of the image to public cloud storage. The format of the image is JPG or PNG
+ To upload, pass the link address of the image to public cloud storage. Image format of the linked image: JPG or PNG
 
  If you want to change the composition or order of the images, get the information using the GetProductInformation() method, copy the data of the images, images360, color_image fields, change and complete the composition or order as needed
 
