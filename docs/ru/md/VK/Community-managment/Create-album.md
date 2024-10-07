@@ -42,7 +42,7 @@ sidebar_position: 5
 ```json title="Результат"
 {
  "response": {
-  "id": 306013149,
+  "id": 306018913,
   "owner_id": -218861756,
   "size": 0,
   "title": "Альбом из автотеста",
@@ -50,10 +50,10 @@ sidebar_position: 5
   "feed_has_pinned": 0,
   "can_upload": 1,
   "comments_disabled": 0,
-  "created": 1728281280,
+  "created": 1728305259,
   "description": "Новый альбом из автотеста",
   "thumb_id": 0,
-  "updated": 1728281280,
+  "updated": 1728305259,
   "upload_by_admins_only": 1
  }
 }

@@ -169,8 +169,8 @@ sidebar_position: 4
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "820": {
-   "ID": "820",
+  "824": {
+   "ID": "824",
    "TITLE": "Новая стадия",
    "SORT": "1100",
    "COLOR": "0026FF",
@@ -181,8 +181,8 @@ sidebar_position: 4
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "822": {
-   "ID": "822",
+  "826": {
+   "ID": "826",
    "TITLE": "Новая стадия 2",
    "SORT": "1200",
    "COLOR": "0026FF",

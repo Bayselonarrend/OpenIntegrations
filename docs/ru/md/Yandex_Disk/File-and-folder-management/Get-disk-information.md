@@ -43,7 +43,7 @@ sidebar_position: 1
  "trash_size": 0,
  "is_paid": false,
  "is_idm_managed_folder_address_access": false,
- "used_space": 813264166,
+ "used_space": 815378189,
  "system_folders": {
   "odnoklassniki": "disk:/Социальные сети/Одноклассники",
   "google": "disk:/Социальные сети/Google+",
@@ -72,6 +72,6 @@ sidebar_position: 1
  "is_idm_managed_public_access": false,
  "payment_flow": true,
  "unlimited_autoupload_enabled": false,
- "revision": 1728224659933944
+ "revision": 1728281844723825
 }
 ```

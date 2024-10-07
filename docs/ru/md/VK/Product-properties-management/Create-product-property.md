@@ -41,7 +41,7 @@ sidebar_position: 2
 ```json title="Результат"
 {
  "response": {
-  "property_id": 844
+  "property_id": 846
  }
 }
 ```
