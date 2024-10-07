@@ -44,7 +44,7 @@ sidebar_position: 4
 ```json title="Результат"
 {
  "response": {
-  "comment_id": 4496,
+  "comment_id": 4505,
   "parents_stack": []
  }
 }

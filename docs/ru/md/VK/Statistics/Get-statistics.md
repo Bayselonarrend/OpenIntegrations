@@ -49,8 +49,8 @@ sidebar_position: 1
     "comments": 1,
     "likes": 1
    },
-   "period_from": 1728172800,
-   "period_to": 1728259199,
+   "period_from": 1728259200,
+   "period_to": 1728345599,
    "reach": {
     "age": [
      {
@@ -183,14 +183,14 @@ sidebar_position: 1
       "count": 1,
       "name": "Сейшелы",
       "value": 175
-     },
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
      }
     ],
     "mobile_views": 0,
+    "views": 1,
+    "visitors": 1
+   }
+  },
+  {
+   "activity": {
 ...
 ```

@@ -32,6 +32,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:UnusedParameters-off
 // BSLLS:DuplicateStringLiteral-off
+// BSLLS:UsingHardcodePath-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content

@@ -41,12 +41,12 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
- "spreadsheetId": "1mxYmxhIHE3DwJc3hRCgRlu_P0mVVNzgkQZHYZswmVuU",
+ "spreadsheetId": "1XDmt3_CiJtd413S7-VQFTKberzSGf6GHmdTg3bvxDAM",
  "replies": [
   {
    "addSheet": {
     "properties": {
-     "sheetId": 95264201,
+     "sheetId": 1152319226,
      "title": "Тестовый лист",
      "index": 2,
      "sheetType": "GRID",

@@ -39,12 +39,9 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
- "data": {
-  "edit_history_tweet_ids": [
-   "1842928333832491508"
-  ],
-  "id": "1842928333832491508",
-  "text": "Тестовый твитт08ddbb0d-ba29-460e-b0ba-eeb2ca73e4f1"
- }
+ "title": "Too Many Requests",
+ "detail": "Too Many Requests",
+ "type": "about:blank",
+ "status": 429
 }
 ```

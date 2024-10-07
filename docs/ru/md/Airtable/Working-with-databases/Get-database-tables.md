@@ -41,27 +41,27 @@ sidebar_position: 2
 {
  "tables": [
   {
-   "id": "tbljzPSJsE4GimVfW",
+   "id": "tblAPbRWqcLlRkoXb",
    "name": "Тестовая таблица",
-   "primaryFieldId": "fldzWgGL6Tn5tUBxV",
+   "primaryFieldId": "fldhiEC916WwRbtSL",
    "fields": [
     {
      "type": "number",
      "options": {
       "precision": 0
      },
-     "id": "fldzWgGL6Tn5tUBxV",
+     "id": "fldhiEC916WwRbtSL",
      "name": "Номер"
     },
     {
      "type": "richText",
-     "id": "fldvkQV8BWgO1ajVb",
+     "id": "fldQPBnepRaWP8D9G",
      "name": "Строковое"
     }
    ],
    "views": [
     {
-     "id": "viwOQNmvYnMlVwYbo",
+     "id": "viwD3uIQq14hKXKdQ",
      "name": "Grid view",
      "type": "grid"
     }
