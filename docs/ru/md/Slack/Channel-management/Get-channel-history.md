@@ -47,7 +47,7 @@ sidebar_position: 6
    "text": "<@U06UABH3APP> has joined the channel",
    "inviter": "U06UG1CAYH2",
    "type": "message",
-   "ts": "1728306069.719369"
+   "ts": "1728326497.476649"
   },
   {
    "subtype": "channel_purpose",
@@ -55,7 +55,7 @@ sidebar_position: 6
    "purpose": "Тестовая цель",
    "text": "set the channel description: Тестовая цель",
    "type": "message",
-   "ts": "1728306069.290949"
+   "ts": "1728326497.062919"
   },
   {
    "subtype": "channel_topic",
@@ -63,14 +63,14 @@ sidebar_position: 6
    "topic": "Тестовая тема",
    "text": "set the channel topic: Тестовая тема",
    "type": "message",
-   "ts": "1728306068.971929"
+   "ts": "1728326496.834749"
   },
   {
    "subtype": "channel_join",
    "user": "U06UG1CAYH2",
    "text": "<@U06UG1CAYH2> has joined the channel",
    "type": "message",
-   "ts": "1728306068.511979"
+   "ts": "1728326496.456939"
   }
  ],
  "has_more": false,

@@ -47,7 +47,7 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
- "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
+ "spreadsheetId": "1ZJuJI9tcuwMWaKof1tBbWnMeJiuF3XQ_y9Ky926n4ao",
  "valueRanges": [
   {
    "range": "'Лист2'!B2",
