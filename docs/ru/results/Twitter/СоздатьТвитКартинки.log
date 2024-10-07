@@ -1,9 +1,16 @@
 ﻿    {
- "data": {
-  "text": "Тестовый твитт6ebd8e7b-ea3c-4edd-93db-4d50e6a281ef",
-  "id": "1842928378828955987",
-  "edit_history_tweet_ids": [
-   "1842928378828955987"
-  ]
- }
+ "errors": [
+  {
+   "parameters": {
+    "media.media_ids": [
+     "1843355678791827456",
+     "1843355698681270272"
+    ]
+   },
+   "message": "Your media IDs are invalid."
+  }
+ ],
+ "title": "Invalid Request",
+ "detail": "One or more parameters to your request was invalid.",
+ "type": "https://api.twitter.com/2/problems/invalid-request"
 }

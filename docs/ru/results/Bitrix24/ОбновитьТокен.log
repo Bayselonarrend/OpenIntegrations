@@ -1,6 +1,6 @@
 ﻿    {
- "access_token": "a9ea0367006e9f06006b12e4000000010000077cf7361dce36b4295333ecec6bf0f55c",
- "expires": 1728309929,
+ "access_token": "623a0467006e9f06006b12e400000001000007bd6d86696f59ebb8fa58416ef6f1859c",
+ "expires": 1728330338,
  "expires_in": 3600,
  "scope": "app",
  "domain": "oauth.bitrix.info",
@@ -9,5 +9,5 @@
  "client_endpoint": "https://b24-ar17wx.bitrix24.by/rest/",
  "member_id": "00168f0dd11ff00b4aeb8ce5befaa139",
  "user_id": 1,
- "refresh_token": "99692b67006e9f06006b12e4000000010000070fb0c1aadd648e2aa557567fc9abb134"
+ "refresh_token": "52b92b67006e9f06006b12e400000001000007a95d29f7be2d1239e71988cbdf8a954c"
 }
