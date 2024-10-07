@@ -89,17 +89,18 @@ Function GetToken(Val Login, Val Password) Export
     OPI_TypeConversion.GetLine(Login);
     OPI_TypeConversion.GetLine(Password);
 
-    URL = "neocities.org";
+    URL     = "neocities.org";
+    Timeout = 120;
 
     Try
 
         SecureConnection = New OpenSSLSecureConnection();
-        SafeConnection   = New HTTPConnection(URL, 443, Login, Password, , , SecureConnection);
+        SafeConnection   = New HTTPConnection(URL, 443, Login, Password, , Timeout, SecureConnection);
 
     Except
 
         URL            = "https://" + URL;
-        SafeConnection = New HTTPConnection(URL, 443, Login, Password);
+        SafeConnection = New HTTPConnection(URL, 443, Login, Password, , Timeout);
 
     EndTry;
 

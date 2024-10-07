@@ -45,10 +45,10 @@ sidebar_position: 10
 
 ```json title="Результат"
 {
- "video_hash": "654fe7d6de00d23779",
+ "video_hash": "d99ae231b244cfffa9",
  "size": 1137878,
- "direct_link": "https://vkvd552.okcdn.ru/?expires=1728483589129&srcIp=93.125.42.204&pr=40&srcAg=UNKNOWN&ms=185.226.55.190&type=4&sig=Aw3HRVcupHQ&ct=27&urls=45.136.21.149&clientType=14&appId=512000384397&zs=72&id=6925102352898",
+ "direct_link": "https://vkvd250.mycdn.me/?expires=1728540770425&srcIp=93.125.42.204&pr=40&srcAg=UNKNOWN&ms=45.136.20.167&type=4&sig=dNYf6OXMLcw&ct=27&urls=185.226.55.181&clientType=14&appId=512000384397&zs=72&id=7372760746703",
  "owner_id": -218861756,
- "video_id": 456239591
+ "video_id": 456239593
 }
 ```

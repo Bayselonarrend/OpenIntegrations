@@ -26,7 +26,7 @@ sidebar_position: 9
 :::tip
 При каждом вызове метода передавайте все изображения, которые должны быть на карточке товара
 
- Для загрузки передайте адрес ссылки на изображение в общедоступном облачном хранилище. Формат изображения по ссылке — JPG или PNG
+ Для загрузки передайте адрес ссылки на изображение в общедоступном облачном хранилище. Формат изображения по ссылке: JPG или PNG
 
  Если вы хотите изменить состав или порядок изображений, получите информацию с помощью метода ПолучитьИнформациюОТоваре(), скопируйте данные полей images, images360, color_image, измените и дополните состав или порядок в соответствии с необходимостью
 
@@ -70,15 +70,7 @@ sidebar_position: 9
  "result": {
   "pictures": [
    {
-    "product_id": 1212175834,
-    "url": "GREEN",
-    "state": "imported",
-    "is_primary": false,
-    "is_360": false,
-    "is_color": true
-   },
-   {
-    "product_id": 1212175834,
+    "product_id": 1212712312,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
     "state": "imported",
     "is_primary": true,
@@ -86,12 +78,20 @@ sidebar_position: 9
     "is_color": false
    },
    {
-    "product_id": 1212175834,
+    "product_id": 1212712312,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
     "state": "imported",
     "is_primary": false,
     "is_360": false,
     "is_color": false
+   },
+   {
+    "product_id": 1212712312,
+    "url": "GREEN",
+    "state": "imported",
+    "is_primary": false,
+    "is_360": false,
+    "is_color": true
    }
   ]
  }

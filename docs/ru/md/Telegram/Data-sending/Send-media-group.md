@@ -64,7 +64,7 @@ sidebar_position: 7
  "ok": true,
  "result": [
   {
-   "message_id": 8212,
+   "message_id": 8226,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -78,8 +78,8 @@ sidebar_position: 7
     "username": "JKIee",
     "type": "private"
    },
-   "date": 1728223791,
-   "media_group_id": "13825790333191522",
+   "date": 1728281006,
+   "media_group_id": "13826248050513970",
    "photo": [
     {
      "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADcwADNgQ",
@@ -120,7 +120,7 @@ sidebar_position: 7
    "caption": "Строковое значение"
   },
   {
-   "message_id": 8213,
+   "message_id": 8227,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -134,8 +134,8 @@ sidebar_position: 7
     "username": "JKIee",
     "type": "private"
    },
-   "date": 1728223791,
-   "media_group_id": "13825790333191522",
+   "date": 1728281006,
+   "media_group_id": "13826248050513970",
    "video": {
     "duration": 5,
     "width": 640,
@@ -143,21 +143,21 @@ sidebar_position: 7
     "file_name": "video1",
     "mime_type": "video/mp4",
     "thumbnail": {
-     "file_id": "AAMCAgADFQdnApov4fCTiyPp9WZ2znx4ZGUKdQAC-FgAAtpVGEh2rqJzfrF5CQEAB20AAzYE",
-     "file_unique_id": "AQAD-FgAAtpVGEhy",
+     "file_id": "AAMCAgADFQdnA3mtgBiFjTKWVwbmK_6oKmUWywACG10AAgNlGUhL5me65ZRyhQEAB20AAzYE",
+     "file_unique_id": "AQADG10AAgNlGUhy",
      "file_size": 20106,
      "width": 320,
      "height": 240
     },
     "thumb": {
-     "file_id": "AAMCAgADFQdnApov4fCTiyPp9WZ2znx4ZGUKdQAC-FgAAtpVGEh2rqJzfrF5CQEAB20AAzYE",
-     "file_unique_id": "AQAD-FgAAtpVGEhy",
+     "file_id": "AAMCAgADFQdnA3mtgBiFjTKWVwbmK_6oKmUWywACG10AAgNlGUhL5me65ZRyhQEAB20AAzYE",
+     "file_unique_id": "AQADG10AAgNlGUhy",
      "file_size": 20106,
      "width": 320,
      "height": 240
     },
-    "file_id": "BAACAgIAAxUHZwKaL-Hwk4sj6fVmds58eGRlCnUAAvhYAALaVRhIdq6ic36xeQk2BA",
-    "file_unique_id": "AgAD-FgAAtpVGEg",
+    "file_id": "BAACAgIAAxUHZwN5rYAYhY0yllcG5iv-qCplFssAAhtdAAIDZRlIS-ZnuuWUcoU2BA",
+    "file_unique_id": "AgADG10AAgNlGUg",
     "file_size": 1137878
    }
   }

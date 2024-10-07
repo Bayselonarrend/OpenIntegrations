@@ -45,8 +45,8 @@ sidebar_position: 2
 {
  "ok": true,
  "result": {
-  "message_thread_id": 5330,
-  "name": "Тестовая тема d04cf5f7-7845-4ec5-a485-3b327e16dd0d",
+  "message_thread_id": 5341,
+  "name": "Тестовая тема 8898a5f6-baa5-44f3-88c6-869fa23fd971",
   "icon_color": 7322096,
   "icon_custom_emoji_id": "5357419403325481346"
  }

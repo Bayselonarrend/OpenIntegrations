@@ -52,8 +52,8 @@ sidebar_position: 19
  "result": {
   "list": [
    {
-    "id": "29044",
-    "createdDate": "06.10.2024 17:32:24",
+    "id": "29170",
+    "createdDate": "07.10.2024 09:25:59",
     "field": "NEW",
     "value": {
      "from": null,
@@ -68,12 +68,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29046",
-    "createdDate": "06.10.2024 17:32:30",
+    "id": "29172",
+    "createdDate": "07.10.2024 09:26:04",
     "field": "START_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1728225144"
+     "to": "1728282358"
     },
     "user": {
      "id": "1",
@@ -84,12 +84,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29048",
-    "createdDate": "06.10.2024 17:32:30",
+    "id": "29174",
+    "createdDate": "07.10.2024 09:26:04",
     "field": "END_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1728248400"
+     "to": "1728334800"
     },
     "user": {
      "id": "1",
@@ -100,12 +100,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29050",
-    "createdDate": "06.10.2024 17:32:30",
+    "id": "29176",
+    "createdDate": "07.10.2024 09:26:04",
     "field": "DURATION_PLAN_SECONDS",
     "value": {
      "from": "",
-     "to": "23256"
+     "to": "52442"
     },
     "user": {
      "id": "1",
@@ -116,8 +116,8 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29064",
-    "createdDate": "06.10.2024 17:32:31",
+    "id": "29190",
+    "createdDate": "07.10.2024 09:26:05",
     "field": "TITLE",
     "value": {
      "from": "Новая задача",
@@ -132,8 +132,8 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29066",
-    "createdDate": "06.10.2024 17:32:31",
+    "id": "29192",
+    "createdDate": "07.10.2024 09:26:05",
     "field": "DESCRIPTION",
     "value": {
      "from": "",
@@ -148,8 +148,8 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29068",
-    "createdDate": "06.10.2024 17:32:31",
+    "id": "29194",
+    "createdDate": "07.10.2024 09:26:05",
     "field": "PRIORITY",
     "value": {
      "from": "2",
@@ -164,12 +164,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29074",
-    "createdDate": "06.10.2024 17:32:33",
+    "id": "29200",
+    "createdDate": "07.10.2024 09:26:08",
     "field": "RESPONSIBLE_ID",
     "value": {
      "from": "1",
-     "to": "574"
+     "to": "578"
     },
     "user": {
      "id": "1",
@@ -180,12 +180,12 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29076",
-    "createdDate": "06.10.2024 17:32:33",
+    "id": "29202",
+    "createdDate": "07.10.2024 09:26:08",
     "field": "COMMENT",
     "value": {
      "from": null,
-     "to": "5778"
+     "to": "5800"
     },
     "user": {
      "id": "1",
@@ -196,7 +196,7 @@ sidebar_position: 19
     }
    },
    {
-    "id": "29080",
-    "createdDate": "06.10.2024 17:32:34",
+    "id": "29206",
+    "createdDate": "07.10.2024 09:26:09",
 ...
 ```
