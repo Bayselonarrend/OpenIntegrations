@@ -1,7 +1,7 @@
 ﻿ {
  "result": {
   "task": {
-   "id": "2316",
+   "id": "2366",
    "parentId": null,
    "title": "New task",
    "description": "New task description",
@@ -12,19 +12,19 @@
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-10-05T18:05:13+03:00",
+   "createdDate": "2024-10-07T22:24:46+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-10-05T18:05:13+03:00",
+   "changedDate": "2024-10-07T22:24:46+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-05T18:05:13+03:00",
+   "activityDate": "2024-10-07T22:24:46+03:00",
    "dateStart": null,
-   "deadline": "2024-10-06T21:05:00+03:00",
+   "deadline": "2024-10-09T01:24:00+03:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{92f78e88-edae-4bb9-a404-9b21bde836fe}",
+   "guid": "{7dd81312-3637-4d80-a7c3-f1be175b717c}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -52,7 +52,7 @@
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-05T18:05:13+03:00",
+   "statusChangedDate": "2024-10-07T22:24:46+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -131,13 +131,13 @@
   }
  },
  "time": {
-  "start": 1728140713.101,
-  "finish": 1728140713.35654,
-  "duration": 0.255536079406738,
-  "processing": 0.227475166320801,
-  "date_start": "2024-10-05T18:05:13+03:00",
-  "date_finish": "2024-10-05T18:05:13+03:00",
-  "operating_reset_at": 1728141313,
-  "operating": 0.227442979812622
+  "start": 1728329086.33253,
+  "finish": 1728329086.51134,
+  "duration": 0.178808927536011,
+  "processing": 0.151221036911011,
+  "date_start": "2024-10-07T22:24:46+03:00",
+  "date_finish": "2024-10-07T22:24:46+03:00",
+  "operating_reset_at": 1728329686,
+  "operating": 0.15120005607605
  }
 }
