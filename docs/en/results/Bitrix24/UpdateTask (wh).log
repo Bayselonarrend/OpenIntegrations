@@ -1,7 +1,7 @@
 ﻿ {
  "result": {
   "task": {
-   "id": "2316",
+   "id": "2366",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -12,19 +12,19 @@
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-10-05T18:05:13+03:00",
+   "createdDate": "2024-10-07T22:24:46+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-10-05T18:05:19+03:00",
+   "changedDate": "2024-10-07T22:24:52+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-05T18:05:13+03:00",
+   "activityDate": "2024-10-07T22:24:46+03:00",
    "dateStart": null,
-   "deadline": "2024-10-06T21:05:00+03:00",
-   "startDatePlan": "2024-10-05T18:05:13+03:00",
-   "endDatePlan": "2024-10-06T00:00:00+03:00",
-   "guid": "{92f78e88-edae-4bb9-a404-9b21bde836fe}",
+   "deadline": "2024-10-09T01:24:00+03:00",
+   "startDatePlan": "2024-10-07T22:24:46+03:00",
+   "endDatePlan": "2024-10-08T00:00:00+03:00",
+   "guid": "{7dd81312-3637-4d80-a7c3-f1be175b717c}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -52,7 +52,7 @@
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-05T18:05:19+03:00",
+   "statusChangedDate": "2024-10-07T22:24:52+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -131,13 +131,13 @@
   }
  },
  "time": {
-  "start": 1728140719.74715,
-  "finish": 1728140719.9514,
-  "duration": 0.204246044158936,
-  "processing": 0.174268960952759,
-  "date_start": "2024-10-05T18:05:19+03:00",
-  "date_finish": "2024-10-05T18:05:19+03:00",
-  "operating_reset_at": 1728141319,
-  "operating": 0.174245834350586
+  "start": 1728329092.93354,
+  "finish": 1728329093.11966,
+  "duration": 0.186123847961426,
+  "processing": 0.16104006767273,
+  "date_start": "2024-10-07T22:24:52+03:00",
+  "date_finish": "2024-10-07T22:24:53+03:00",
+  "operating_reset_at": 1728329692,
+  "operating": 0.161022186279297
  }
 }

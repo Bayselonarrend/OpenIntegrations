@@ -12,7 +12,7 @@
   "type": "private",
   "counter": 4,
   "user_counter": 0,
-  "message_count": 179,
+  "message_count": 184,
   "unread_id": 16,
   "restrictions": {
    "avatar": true,
@@ -25,7 +25,7 @@
    "send": true,
    "user_list": true
   },
-  "last_message_id": 17110,
+  "last_message_id": 17470,
   "last_id": 0,
   "marked_id": 0,
   "disk_folder_id": 0,
@@ -63,20 +63,20 @@
   ],
   "manager_list": [],
   "last_message_views": {
-   "message_id": 17110,
+   "message_id": 17470,
    "first_viewers": [],
    "count_of_viewers": 0
   },
   "dialog_id": "10"
  },
  "time": {
-  "start": 1728140835.0228,
-  "finish": 1728140835.06593,
-  "duration": 0.0431318283081055,
-  "processing": 0.0160908699035645,
-  "date_start": "2024-10-05T18:07:15+03:00",
-  "date_finish": "2024-10-05T18:07:15+03:00",
-  "operating_reset_at": 1728141435,
+  "start": 1728329210.56216,
+  "finish": 1728329210.60688,
+  "duration": 0.0447189807891846,
+  "processing": 0.0154149532318115,
+  "date_start": "2024-10-07T22:26:50+03:00",
+  "date_finish": "2024-10-07T22:26:50+03:00",
+  "operating_reset_at": 1728329810,
   "operating": 0
  }
 }
