@@ -3,10 +3,10 @@ pipeline {
     stages {
 
         stage('Scan') {
-            steps {
+            steps {                  
                 withCredentials([string(credentialsId: 'Sonar', variable: 'LOGIN')]) {
-                    bat 'call "C:/Program Files/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat" -D"sonar.projectKey=OpenIntegrations" -D"sonar.login=%LOGIN%" -D"sonar.sourceEncoding=UTF-8" -D"sonar.inclusions=**/*.bsl"'
-                    bat 'call "C:/Program Files/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat" -D"sonar.projectKey=OInt" -D"sonar.login=%LOGIN%" -D"sonar.sourceEncoding=UTF-8" -D"sonar.inclusions=**/*.os"'
+                    bat 'call cd ./src/ru & "C:/Program Files/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat" -D"sonar.projectKey=OInt" -D"sonar.login=%LOGIN%" -D"sonar.sourceEncoding=UTF-8" -D"sonar.inclusions=**/*.os"'
+                    bat 'call cd ./src/ru & "C:/Program Files/sonar-scanner-5.0.1.3006-windows/bin/sonar-scanner.bat" -D"sonar.projectKey=OpenIntegrations" -D"sonar.login=%LOGIN%" -D"sonar.sourceEncoding=UTF-8" -D"sonar.inclusions=**/*.bsl"'
                 }
             }
         }
