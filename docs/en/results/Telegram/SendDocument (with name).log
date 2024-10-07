@@ -1,7 +1,7 @@
 ﻿ {
  "ok": true,
  "result": {
-  "message_id": 8196,
+  "message_id": 8266,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,12 +15,12 @@
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728139320,
+  "date": 1728327720,
   "document": {
    "file_name": "customname.docx",
    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-   "file_id": "BQACAgIAAxkDAAIgBGcBUDgHyo4XhI6URtHLCw3wsc2eAAJOWwACR4EQSEunj6-22wABWjYE",
-   "file_unique_id": "AgADTlsAAkeBEEg",
+   "file_id": "BQACAgIAAxkDAAIgSmcEMCh3vGx7Nz-dEx7L8fqOoyrpAAKRYgACA2UhSMy2B-t-GCI0NgQ",
+   "file_unique_id": "AgADkWIAAgNlIUg",
    "file_size": 24069
   },
   "caption": "Строковое значение"
