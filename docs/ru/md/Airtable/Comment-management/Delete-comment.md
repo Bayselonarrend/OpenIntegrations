@@ -45,7 +45,7 @@ sidebar_position: 4
 
 ```json title="Результат"
 {
- "id": "com8w5qcuZPjfrOO3",
+ "id": "comPSsXU5LDg5NWqQ",
  "deleted": true
 }
 ```

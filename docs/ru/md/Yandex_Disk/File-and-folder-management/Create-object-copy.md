@@ -42,8 +42,24 @@ sidebar_position: 5
 
 ```json title="Результат"
 {
- "message": "Не удалось найти запрошенный ресурс.",
- "description": "Resource not found.",
- "error": "DiskNotFoundError"
+ "antivirus_status": "clean",
+ "size": 2114023,
+ "comment_ids": {
+  "private_resource": "1573541518:19ad9cfd4c64457c7fa4b5e0c588e235d80c4075788946a5ccd7b78115a5c486",
+  "public_resource": "1573541518:19ad9cfd4c64457c7fa4b5e0c588e235d80c4075788946a5ccd7b78115a5c486"
+ },
+ "name": "18bbee85-988b-4e11-adb2-f503a9d62abe.png",
+ "exif": {},
+ "created": "2024-10-07T21:35:30+03:00",
+ "resource_id": "1573541518:19ad9cfd4c64457c7fa4b5e0c588e235d80c4075788946a5ccd7b78115a5c486",
+ "modified": "2024-10-07T21:35:30+03:00",
+ "mime_type": "multipart",
+ "file": "https://downloader.disk.yandex.ru/disk/a7f35c1bbe3ba15d4b45e3c4c32358e434c8ab9d5c6c205041c5e2b277f8e9e6/67046233/gwThwhLBKYvLhQCNnqAHitjtYP_sMEGdXpAYnCH3CeOI2TmJ3n1LCawN581CYeuif0mayq9-vnAgzEVZSHXCMA%3D%3D?uid=1573541518&filename=18bbee85-988b-4e11-adb2-f503a9d62abe.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "path": "disk:/18bbee85-988b-4e11-adb2-f503a9d62abe.png",
+ "media_type": "image",
+ "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
+ "type": "file",
+ "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
+ "revision": 1728326130862434
 }
 ```

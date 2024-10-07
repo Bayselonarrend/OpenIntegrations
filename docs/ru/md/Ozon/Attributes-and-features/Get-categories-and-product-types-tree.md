@@ -51,152 +51,152 @@ sidebar_position: 1
 {
  "result": [
   {
-   "description_category_id": 52265716,
-   "category_name": "Аптека",
+   "description_category_id": 17027491,
+   "category_name": "Спорт и отдых",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 52620255,
-     "category_name": "Медицинские приборы",
+     "description_category_id": 17028997,
+     "category_name": "Боксерские груши и мешки",
      "disabled": false,
      "children": [
       {
-       "type_name": "Дигитайзер",
-       "type_id": 971405578,
+       "type_name": "Ракетка для тхэквондо",
+       "type_id": 970601428,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Линза высокодиоптрийная",
-       "type_id": 971134130,
+       "type_name": "Боксерский мешок",
+       "type_id": 94338,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Лупа бинокулярная",
-       "type_id": 504866193,
+       "type_name": "Макивара",
+       "type_id": 970666976,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Рефлектор лобный",
-       "type_id": 412778335,
+       "type_name": "Водоналивной мешок",
+       "type_id": 94334,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Пульсоксиметр",
-       "type_id": 370309949,
+       "type_name": "Настенная боксерская подушка",
+       "type_id": 970736821,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Браслет для диабетика",
-       "type_id": 970824818,
+       "type_name": "Набор для бокса",
+       "type_id": 970695846,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Устройство антихрап",
-       "type_id": 91864,
+       "type_name": "Манекен для борьбы",
+       "type_id": 94337,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Инструмент от паразитов",
-       "type_id": 970994141,
+       "type_name": "Боксерская груша",
+       "type_id": 94335,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Лазер стоматологический",
-       "type_id": 971405488,
+       "type_name": "Комплект боксерская груша и перчатки",
+       "type_id": 971102088,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Артикулятор",
-       "type_id": 971123896,
+       "type_name": "Боксерский тренажер",
+       "type_id": 970736820,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Отоскоп",
-       "type_id": 630450956,
+       "type_name": "Лапы боксерские",
+       "type_id": 94336,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Измельчитель таблеток",
-       "type_id": 970827264,
+       "type_name": "Рукав для отработки захватов",
+       "type_id": 970795782,
+       "disabled": false,
+       "children": []
+      }
+     ]
+    },
+    {
+     "description_category_id": 85945852,
+     "category_name": "Водный спорт и отдых на воде",
+     "disabled": false,
+     "children": [
+      {
+       "type_name": "Доска для серфинга",
+       "type_id": 970739431,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Дыхательная смесь",
-       "type_id": 97496,
+       "type_name": "Крепления для водных лыж",
+       "type_id": 970739388,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Монитор здоровья",
-       "type_id": 970904865,
+       "type_name": "Набор для снорклинга",
+       "type_id": 971079265,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Весы медицинские",
-       "type_id": 971890888,
+       "type_name": "Мачта для виндсерфинга",
+       "type_id": 970739443,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Аппарат для отбеливания зубов",
-       "type_id": 970940062,
+       "type_name": "Стакан для виндсерфинга",
+       "type_id": 970739438,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Голосообразующий аппарат",
-       "type_id": 971043353,
+       "type_name": "Насос для кайта",
+       "type_id": 970780208,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Капсулятор ручной",
-       "type_id": 971749982,
+       "type_name": "Шнурки креплений для вейкборда",
+       "type_id": 970780417,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Подоскоп",
-       "type_id": 971452805,
+       "type_name": "Ниборд",
+       "type_id": 970739432,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Анализатор лактата",
-       "type_id": 971291169,
+       "type_name": "Защита доски для виндсерфинга",
+       "type_id": 970780195,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Ланцеты для глюкометра",
-       "type_id": 94570,
+       "type_name": "Защита шарнира для виндсерфинга",
+       "type_id": 970780194,
        "disabled": false,
        "children": []
-      },
-      {
-       "type_name": "Пульсотахометр",
-       "type_id": 91851,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Очки для светотерапии",
-       "type_id": 970984872,
-       "disabled": false,
-       "children": []
-      },
 ...
 ```

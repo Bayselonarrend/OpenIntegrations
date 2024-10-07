@@ -1001,12 +1001,12 @@ Procedure TwitterAPI_Tweets() Export
 
 
     Twitter_CreateTextTweet(TestParameters);
-    Twitter_CreateImageTweet(TestParameters);
+    Twitter_UploadAttachmentsArray(TestParameters);
     Twitter_CreateVideoTweet(TestParameters);
+    Twitter_CreateImageTweet(TestParameters);
     Twitter_CreateGifTweet(TestParameters);
     Twitter_CreatePollTweet(TestParameters);
     Twitter_CreateCustomTweet(TestParameters);
-    Twitter_UploadAttachmentsArray(TestParameters);
 
 EndProcedure
 

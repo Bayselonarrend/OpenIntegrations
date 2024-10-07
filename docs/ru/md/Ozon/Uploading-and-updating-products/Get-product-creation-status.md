@@ -48,9 +48,21 @@ sidebar_position: 18
   "items": [
    {
     "offer_id": "143210609",
-    "product_id": 1213407863,
+    "product_id": 1213778659,
     "status": "imported",
-    "errors": []
+    "errors": [
+     {
+      "code": "SELLER_NO_CONTRACT_FAILED",
+      "field": "",
+      "attribute_id": 0,
+      "state": "unmatched",
+      "level": "error",
+      "description": "Истек срок договора. Чтобы загрузить товар, возобновите договор в личном кабинете.",
+      "optional_description_elements": {},
+      "attribute_name": "",
+      "message": "Истек срок договора. Чтобы загрузить товар, возобновите договор в личном кабинете."
+     }
+    ]
    }
   ],
   "total": 1

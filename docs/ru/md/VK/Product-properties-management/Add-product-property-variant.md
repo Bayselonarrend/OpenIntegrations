@@ -51,7 +51,7 @@ sidebar_position: 5
 ```json title="Результат"
 {
  "response": {
-  "variant_id": 2536
+  "variant_id": 2551
  }
 }
 ```

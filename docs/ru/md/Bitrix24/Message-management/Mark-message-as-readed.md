@@ -55,17 +55,17 @@ sidebar_position: 6
  "result": {
   "dialogId": 10,
   "chatId": 10,
-  "lastId": 17330,
+  "lastId": 17398,
   "counter": 0
  },
  "time": {
-  "start": 1728306486.62418,
-  "finish": 1728306486.67508,
-  "duration": 0.0509021282196045,
-  "processing": 0.0204222202301025,
-  "date_start": "2024-10-07T16:08:06+03:00",
-  "date_finish": "2024-10-07T16:08:06+03:00",
-  "operating_reset_at": 1728307086,
+  "start": 1728326877.7386,
+  "finish": 1728326877.78194,
+  "duration": 0.0433409214019775,
+  "processing": 0.0188078880310059,
+  "date_start": "2024-10-07T21:47:57+03:00",
+  "date_finish": "2024-10-07T21:47:57+03:00",
+  "operating_reset_at": 1728327477,
   "operating": 0
  }
 }

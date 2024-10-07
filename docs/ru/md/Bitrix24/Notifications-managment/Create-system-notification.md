@@ -61,15 +61,15 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
- "result": 17410,
+ "result": 17482,
  "time": {
-  "start": 1728306511.12023,
-  "finish": 1728306511.18391,
-  "duration": 0.0636780261993408,
-  "processing": 0.0367369651794434,
-  "date_start": "2024-10-07T16:08:31+03:00",
-  "date_finish": "2024-10-07T16:08:31+03:00",
-  "operating_reset_at": 1728307111,
+  "start": 1728326899.89026,
+  "finish": 1728326899.94869,
+  "duration": 0.0584299564361572,
+  "processing": 0.0304398536682129,
+  "date_start": "2024-10-07T21:48:19+03:00",
+  "date_finish": "2024-10-07T21:48:19+03:00",
+  "operating_reset_at": 1728327499,
   "operating": 0
  }
 }

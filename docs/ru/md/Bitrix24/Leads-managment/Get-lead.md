@@ -50,7 +50,7 @@ sidebar_position: 3
 ```json title="Результат"
 {
  "result": {
-  "ID": "374",
+  "ID": "378",
   "TITLE": "Мегаклиент",
   "HONORIFIC": null,
   "NAME": "Иван",
@@ -58,7 +58,7 @@ sidebar_position: 3
   "LAST_NAME": "Иванов",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "374",
+  "CONTACT_ID": "378",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": null,
@@ -76,15 +76,15 @@ sidebar_position: 3
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2024-10-07T16:08:50+03:00",
-  "DATE_MODIFY": "2024-10-07T16:08:51+03:00",
-  "DATE_CLOSED": "2024-10-07T16:08:51+03:00",
+  "DATE_CREATE": "2024-10-07T21:48:38+03:00",
+  "DATE_MODIFY": "2024-10-07T21:48:39+03:00",
+  "DATE_CLOSED": "2024-10-07T21:48:39+03:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "N",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2024-10-07T16:08:51+03:00",
+  "MOVED_TIME": "2024-10-07T21:48:39+03:00",
   "ADDRESS": "ул. Пушкина, д. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -93,23 +93,23 @@ sidebar_position: 3
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Россия",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "750",
+  "ADDRESS_LOC_ADDR_ID": "758",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
   "UTM_CONTENT": null,
   "UTM_TERM": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2024-10-07T16:08:50+03:00",
+  "LAST_ACTIVITY_TIME": "2024-10-07T21:48:38+03:00",
   "EMAIL": [
    {
-    "ID": "2218",
+    "ID": "2242",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "2220",
+    "ID": "2244",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -117,7 +117,7 @@ sidebar_position: 3
   ],
   "PHONE": [
    {
-    "ID": "2222",
+    "ID": "2246",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -125,13 +125,13 @@ sidebar_position: 3
   ]
  },
  "time": {
-  "start": 1728306531.62911,
-  "finish": 1728306531.67514,
-  "duration": 0.0460309982299805,
-  "processing": 0.0178618431091309,
-  "date_start": "2024-10-07T16:08:51+03:00",
-  "date_finish": "2024-10-07T16:08:51+03:00",
-  "operating_reset_at": 1728307131,
+  "start": 1728326919.33242,
+  "finish": 1728326919.37673,
+  "duration": 0.0443110466003418,
+  "processing": 0.0165159702301025,
+  "date_start": "2024-10-07T21:48:39+03:00",
+  "date_finish": "2024-10-07T21:48:39+03:00",
+  "operating_reset_at": 1728327519,
   "operating": 0
  }
 }
