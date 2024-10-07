@@ -44,7 +44,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint twitter СоздатьПроизвольныйТвит --text %text% --media %media% --options %options% --dur %dur% --auth %auth%
+  oint twitter СоздатьПроизвольныйТвит --text %text% --media %media% --options %options% --dur %dur% --auth %auth%
 
 ```
 

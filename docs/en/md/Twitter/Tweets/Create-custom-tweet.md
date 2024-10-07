@@ -44,7 +44,7 @@ sidebar_position: 1
 
 ```sh title="CLI command example"
     
-oint twitter CreateCustomTweet --text %text% --media %media% --options %options% --dur %dur% --auth %auth%
+  oint twitter CreateCustomTweet --text %text% --media %media% --options %options% --dur %dur% --auth %auth%
 
 ```
 
