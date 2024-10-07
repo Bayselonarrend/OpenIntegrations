@@ -46,15 +46,15 @@ sidebar_position: 1
 {
  "comments": [
   {
-   "id": "com8w5qcuZPjfrOO3",
+   "id": "comPSsXU5LDg5NWqQ",
    "author": {
     "id": "usrFlaAHlTfYWAbVW",
     "email": "bayselonarrend@gmail.com",
     "name": "Антон Титовец"
    },
    "text": "Тестовый комментарий (изм.)",
-   "createdTime": "2024-10-07T13:01:49Z",
-   "lastUpdatedTime": "2024-10-07T13:01:49Z"
+   "createdTime": "2024-10-07T18:42:11Z",
+   "lastUpdatedTime": "2024-10-07T18:42:12Z"
   }
  ],
  "offset": null

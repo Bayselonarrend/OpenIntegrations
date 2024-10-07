@@ -54,13 +54,13 @@ sidebar_position: 6
 {
  "result": true,
  "time": {
-  "start": 1728306460.03887,
-  "finish": 1728306460.13184,
-  "duration": 0.0929758548736572,
-  "processing": 0.0642621517181396,
-  "date_start": "2024-10-07T16:07:40+03:00",
-  "date_finish": "2024-10-07T16:07:40+03:00",
-  "operating_reset_at": 1728307060,
+  "start": 1728326852.96807,
+  "finish": 1728326853.03789,
+  "duration": 0.0698261260986328,
+  "processing": 0.0437600612640381,
+  "date_start": "2024-10-07T21:47:32+03:00",
+  "date_finish": "2024-10-07T21:47:33+03:00",
+  "operating_reset_at": 1728327452,
   "operating": 0
  }
 }
