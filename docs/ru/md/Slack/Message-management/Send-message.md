@@ -67,11 +67,11 @@ sidebar_position: 1
 {
  "ok": true,
  "channel": "C06UFNUTKUL",
- "ts": "1728282083.968029",
+ "ts": "1728306062.198279",
  "message": {
   "user": "U06UG1CAYH2",
   "type": "message",
-  "ts": "1728282083.968029",
+  "ts": "1728306062.198279",
   "bot_id": "B06TZ0MJV5M",
   "app_id": "A06TYNH45RV",
   "text": "Тестовое сообщение 1",
@@ -92,7 +92,7 @@ sidebar_position: 1
   "blocks": [
    {
     "type": "rich_text",
-    "block_id": "LOE",
+    "block_id": "7U9c",
     "elements": [
      {
       "type": "rich_text_section",

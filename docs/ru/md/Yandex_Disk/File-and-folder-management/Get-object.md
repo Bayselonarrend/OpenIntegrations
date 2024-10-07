@@ -42,21 +42,21 @@ sidebar_position: 3
  "antivirus_status": "clean",
  "size": 2114023,
  "comment_ids": {
-  "private_resource": "1573541518:606bbe067f8c64bbe3ab673d04c2f8ee1fda5dcb142122489d33e84d81a1a1d3",
-  "public_resource": "1573541518:606bbe067f8c64bbe3ab673d04c2f8ee1fda5dcb142122489d33e84d81a1a1d3"
+  "private_resource": "1573541518:116f9bfc15b1ea3e572b5ddcd512f19271e0c0a561c2e490220ddd196bda537a",
+  "public_resource": "1573541518:116f9bfc15b1ea3e572b5ddcd512f19271e0c0a561c2e490220ddd196bda537a"
  },
- "name": "d097874d-93fd-4458-8222-e5dbb68c5291.png",
+ "name": "f943b11d-13f5-417a-aa4f-38604cdf7f58.png",
  "exif": {},
- "created": "2024-10-07T09:14:15+03:00",
- "resource_id": "1573541518:606bbe067f8c64bbe3ab673d04c2f8ee1fda5dcb142122489d33e84d81a1a1d3",
- "modified": "2024-10-07T09:14:15+03:00",
+ "created": "2024-10-07T15:53:54+03:00",
+ "resource_id": "1573541518:116f9bfc15b1ea3e572b5ddcd512f19271e0c0a561c2e490220ddd196bda537a",
+ "modified": "2024-10-07T15:53:54+03:00",
  "mime_type": "multipart",
- "file": "https://downloader.disk.yandex.ru/disk/178a5299559d63768b938410484862c3e2cbb6d5e8c0bff6804c445b9a766d3a/6703b47a/gwThwhLBKYvLhQCNnqAHihVVz7ErQebVldoswZNJ8EZu6ft-neADkw8Jwv-02j2HwzPltvEmOSYv32VMUJrffg%3D%3D?uid=1573541518&filename=d097874d-93fd-4458-8222-e5dbb68c5291.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
- "path": "disk:/d097874d-93fd-4458-8222-e5dbb68c5291.png",
+ "file": "https://downloader.disk.yandex.ru/disk/c614f8d0b542b6fc71e01e4bdf1f8c6d28e2db510ea2501f75b01d489be4248a/67041226/gwThwhLBKYvLhQCNnqAHim3BuGQ8RObPrs3AaDo7vReBAh7IXV2qdMeuU1Ft0Xe29kKVdyJGyiwpYTXJSyMSBw%3D%3D?uid=1573541518&filename=f943b11d-13f5-417a-aa4f-38604cdf7f58.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "path": "disk:/f943b11d-13f5-417a-aa4f-38604cdf7f58.png",
  "media_type": "image",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "type": "file",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
- "revision": 1728281656390703
+ "revision": 1728305635480810
 }
 ```

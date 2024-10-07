@@ -53,63 +53,63 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
- "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+ "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
  "totalUpdatedRows": 4,
  "totalUpdatedColumns": 2,
  "totalUpdatedCells": 8,
  "totalUpdatedSheets": 1,
  "responses": [
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!A1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!A2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!B2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!B3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!A3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!A4",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!B1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "18sEDvvmvo4uC6fA5bcu66CflX1t2tPkEYgqbek_4h-s",
+   "spreadsheetId": "1UYrRVUWm2kwJPSBTV69_3GKUENYwv8C0l2ybNH4xS3c",
    "updatedRange": "'Лист2'!B4",
    "updatedRows": 1,
    "updatedColumns": 1,

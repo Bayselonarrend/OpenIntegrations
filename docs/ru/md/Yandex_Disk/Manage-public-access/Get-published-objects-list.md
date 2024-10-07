@@ -59,7 +59,7 @@ sidebar_position: 3
    },
    "sizes": [
     {
-     "url": "https://downloader.disk.yandex.ru/disk/e31c07f4e4c9be2beb729f1a03d277072de884692278e39a7a937fcbec50bd97/6703b53c/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0b5585af-2bca-43cf-9d3a-decc63db8821.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
+     "url": "https://downloader.disk.yandex.ru/disk/ff0042bdde4b29bb699a6053f08f22b2e014cb39b72a694cf3ddbf47f3fc9608/670412dd/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0b5585af-2bca-43cf-9d3a-decc63db8821.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
      "name": "ORIGINAL"
     },
     {
@@ -107,7 +107,7 @@ sidebar_position: 3
      "name": "C"
     }
    ],
-   "file": "https://downloader.disk.yandex.ru/disk/15c0db04c9cb9b25969db62c24b985c046f9c5ba6db419283cb2f0c72c327b3c/6703b53c/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0b5585af-2bca-43cf-9d3a-decc63db8821.png&disposition=attachment&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
+   "file": "https://downloader.disk.yandex.ru/disk/ec446183d9197cc06dd30e1ec21f6084d6c57894a0f7f957c4bf419ea81d47df/670412dd/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0b5585af-2bca-43cf-9d3a-decc63db8821.png&disposition=attachment&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
    "media_type": "image",
    "preview": "https://downloader.disk.yandex.ru/preview/a24eaaac73d08a894eba2cc6ddee821b76f6d5878e011583921f5f629baa59d6/inf/agGl7FsmrZi_rLwSr_YZE-iLFMsE0Kg4uy9w7SmAoFzz2voeU1keULK7rWnCo1I_pYaH_RrgTTgD4CfIchHW3Q%3D%3D?uid=1573541518&filename=0b5585af-2bca-43cf-9d3a-decc63db8821.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&tknv=v2&size=S&crop=0",
    "path": "disk:/0b5585af-2bca-43cf-9d3a-decc63db8821.png",
@@ -133,7 +133,7 @@ sidebar_position: 3
    },
    "sizes": [
     {
-     "url": "https://downloader.disk.yandex.ru/disk/80b798b92bbb59e0a56e5eaf16144482c3d47382cb45838d1af88b3cfeeafc78/6703b53c/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0cd21557-08ba-496c-ba35-503833fa5bd6.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
+     "url": "https://downloader.disk.yandex.ru/disk/782a4c0917bc5859048dcc4b9a79a51a015a1977ede533023b14ec0c3b23d3ae/670412dd/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0cd21557-08ba-496c-ba35-503833fa5bd6.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
      "name": "ORIGINAL"
     },
     {
@@ -181,7 +181,7 @@ sidebar_position: 3
      "name": "C"
     }
    ],
-   "file": "https://downloader.disk.yandex.ru/disk/b237401f9783bec22e73eee9322b1a5385caf99cad000c82a4681c957d0b08cc/6703b53c/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0cd21557-08ba-496c-ba35-503833fa5bd6.png&disposition=attachment&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
+   "file": "https://downloader.disk.yandex.ru/disk/6b56a373dcde27490adaec56609dd41234c4cdf01ecea11beb76d690a0d16c06/670412dd/gwThwhLBKYvLhQCNnqAHituHMr72DpUpd6C6-9w911vW8ivir0rElI21oNjVEQFTesbLx_asncX9gQFzcTfYww%3D%3D?uid=1573541518&filename=0cd21557-08ba-496c-ba35-503833fa5bd6.png&disposition=attachment&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&fsize=225883&hid=7c41e6147b7dd41ea3cc2d615f42bcb7&media_type=image&tknv=v2&etag=403262e03464796e99ff362e913e9a4d",
    "media_type": "image",
    "preview": "https://downloader.disk.yandex.ru/preview/a1752acf54f1a3cdcc545523e57f3b56de1e78d4ab8bbb608152445a2202b043/inf/agGl7FsmrZi_rLwSr_YZE-iLFMsE0Kg4uy9w7SmAoFzz2voeU1keULK7rWnCo1I_pYaH_RrgTTgD4CfIchHW3Q%3D%3D?uid=1573541518&filename=0cd21557-08ba-496c-ba35-503833fa5bd6.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=1573541518&tknv=v2&size=S&crop=0",
    "path": "disk:/0cd21557-08ba-496c-ba35-503833fa5bd6.png",

@@ -43,9 +43,9 @@ sidebar_position: 4
 {
  "ok": true,
  "file": {
-  "id": "F07QFK99L4W",
-  "created": 1728282106,
-  "timestamp": 1728282106,
+  "id": "F07Q9KLMH2T",
+  "created": 1728306086,
+  "timestamp": 1728306086,
   "name": "Novyj_fajl",
   "title": "Новый файл",
   "mimetype": "application/vnd.slack-remote",
@@ -64,7 +64,7 @@ sidebar_position: 4
   "username": "",
   "url_private": "https://slack.com/api/files.remote.add",
   "media_display_type": "unknown",
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QFK99L4W/novyj_fajl",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07Q9KLMH2T/novyj_fajl",
   "comments_count": 0,
   "is_starred": false,
   "shares": {
@@ -74,7 +74,7 @@ sidebar_position: 4
       "reply_users": [],
       "reply_users_count": 0,
       "reply_count": 0,
-      "ts": "1728282107.366079",
+      "ts": "1728306087.633129",
       "channel_name": "slack-api-librarry",
       "team_id": "T06UD92BS3C",
       "share_user_id": "U06UG1CAYH2",
@@ -89,7 +89,7 @@ sidebar_position: 4
   "groups": [],
   "ims": [],
   "has_more_shares": false,
-  "external_id": "277926c2-72f3-44f1-a734-12d8b8bc514c",
+  "external_id": "84e4f0a1-4084-4a0e-b95c-413045934ef4",
   "external_url": "https://slack.com/api/files.remote.add",
   "has_rich_preview": false,
   "file_access": "visible"

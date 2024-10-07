@@ -51,152 +51,152 @@ sidebar_position: 1
 {
  "result": [
   {
-   "description_category_id": 17027915,
-   "category_name": "Мебель",
+   "description_category_id": 52265716,
+   "category_name": "Аптека",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 79164512,
-     "category_name": "Компьютерные и офисные кресла",
+     "description_category_id": 52620255,
+     "category_name": "Медицинские приборы",
      "disabled": false,
      "children": [
       {
-       "type_name": "Кресло руководителя",
-       "type_id": 970679619,
+       "type_name": "Дигитайзер",
+       "type_id": 971405578,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Офисное кресло",
-       "type_id": 95041,
+       "type_name": "Линза высокодиоптрийная",
+       "type_id": 971134130,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Игровое компьютерное кресло",
-       "type_id": 95026,
+       "type_name": "Лупа бинокулярная",
+       "type_id": 504866193,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Игровая вибронакидка",
-       "type_id": 91796,
+       "type_name": "Рефлектор лобный",
+       "type_id": 412778335,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Стул промышленный",
-       "type_id": 970884997,
+       "type_name": "Пульсоксиметр",
+       "type_id": 370309949,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Кресло-седло",
-       "type_id": 970685081,
+       "type_name": "Браслет для диабетика",
+       "type_id": 970824818,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Детское компьютерное кресло",
-       "type_id": 970685072,
-       "disabled": false,
-       "children": []
-      }
-     ]
-    },
-    {
-     "description_category_id": 85282223,
-     "category_name": "Мебель для бизнеса",
-     "disabled": false,
-     "children": [
-      {
-       "type_name": "Подтоварник",
-       "type_id": 970988637,
+       "type_name": "Устройство антихрап",
+       "type_id": 91864,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Подставка производственная",
-       "type_id": 971816790,
+       "type_name": "Инструмент от паразитов",
+       "type_id": 970994141,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Ларь для овощей",
-       "type_id": 970988646,
+       "type_name": "Лазер стоматологический",
+       "type_id": 971405488,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Подставка под пароконвектомат",
-       "type_id": 970988638,
+       "type_name": "Артикулятор",
+       "type_id": 971123896,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Защитный экран для кассы",
-       "type_id": 970744413,
+       "type_name": "Отоскоп",
+       "type_id": 630450956,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Стойка ресепшн для ПВЗ",
-       "type_id": 971108795,
+       "type_name": "Измельчитель таблеток",
+       "type_id": 970827264,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Тележка-шпилька",
-       "type_id": 970988645,
+       "type_name": "Дыхательная смесь",
+       "type_id": 97496,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Швейный уголок",
-       "type_id": 971363893,
+       "type_name": "Монитор здоровья",
+       "type_id": 970904865,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Защитный экран для офиса",
-       "type_id": 970744412,
+       "type_name": "Весы медицинские",
+       "type_id": 971890888,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Шкаф производственный",
-       "type_id": 970988648,
+       "type_name": "Аппарат для отбеливания зубов",
+       "type_id": 970940062,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Полка производственная",
-       "type_id": 970993837,
+       "type_name": "Голосообразующий аппарат",
+       "type_id": 971043353,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Досмотровая тумба, стол",
-       "type_id": 971371488,
+       "type_name": "Капсулятор ручной",
+       "type_id": 971749982,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Шкаф для сумок",
-       "type_id": 971276898,
+       "type_name": "Подоскоп",
+       "type_id": 971452805,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Стол-тележка для торта",
-       "type_id": 971361009,
+       "type_name": "Анализатор лактата",
+       "type_id": 971291169,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Складской стеллаж",
-       "type_id": 970988642,
+       "type_name": "Ланцеты для глюкометра",
+       "type_id": 94570,
        "disabled": false,
        "children": []
+      },
+      {
+       "type_name": "Пульсотахометр",
+       "type_id": 91851,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Очки для светотерапии",
+       "type_id": 970984872,
+       "disabled": false,
+       "children": []
+      },
 ...
 ```

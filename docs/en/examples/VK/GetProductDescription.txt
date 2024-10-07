@@ -1,3 +1,1 @@
-﻿    Parameters = GetVKParameters();
-
-    Result = OPI_VK.GetProductDescription();
+﻿    Result = OPI_VK.GetProductDescription();

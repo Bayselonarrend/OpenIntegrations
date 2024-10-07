@@ -46,8 +46,8 @@ sidebar_position: 1
  "response": [
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 2,
+    "likes": 2
    },
    "period_from": 1728259200,
    "period_to": 1728345599,
@@ -180,14 +180,14 @@ sidebar_position: 1
     "countries": [
      {
       "code": "SC",
-      "count": 1,
+      "count": 2,
       "name": "Сейшелы",
       "value": 175
      }
     ],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 2,
+    "visitors": 2
    }
   },
   {

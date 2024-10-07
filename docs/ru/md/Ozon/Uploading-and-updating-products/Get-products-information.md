@@ -57,13 +57,13 @@ sidebar_position: 3
  "result": {
   "items": [
    {
-    "id": 1212712312,
+    "id": 1213407863,
     "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
     "offer_id": "143210609",
     "barcode": "",
     "buybox_price": "",
     "category_id": 0,
-    "created_at": "2024-10-07T06:31:50.01721Z",
+    "created_at": "2024-10-07T13:11:45.057899Z",
     "images": [
      "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"
     ],
@@ -116,7 +116,7 @@ sidebar_position: 3
        "attribute_name": ""
       }
      ],
-     "state_updated_at": "2024-10-07T06:32:33.652452Z"
+     "state_updated_at": "2024-10-07T13:12:36.097936Z"
     },
     "state": "",
     "service_type": "IS_CODE_SERVICE",
@@ -133,7 +133,7 @@ sidebar_position: 3
     "is_discounted": false,
     "has_discounted_item": false,
     "barcodes": [],
-    "updated_at": "2024-10-07T06:32:32.555047Z",
+    "updated_at": "2024-10-07T13:12:27.587272Z",
     "price_indexes": {
      "price_index": "WITHOUT_INDEX",
      "external_index_data": null,
