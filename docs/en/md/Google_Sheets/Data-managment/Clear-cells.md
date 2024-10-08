@@ -47,7 +47,7 @@ sidebar_position: 2
 
 ```json title="Result"
 {
- "spreadsheetId": "1CMNKzoSiXLaC-Gtu-09K4j69R0-NLvfMfdkqlvbTvsk",
+ "spreadsheetId": "1RxiPYOBj1c0N1noQdDvunrgJqIdWf6jp-CyrxnU1jFY",
  "clearedRanges": [
   "Sheet2!B2",
   "Sheet2!A3",

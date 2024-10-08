@@ -40,8 +40,8 @@ sidebar_position: 3
 ```json title="Result"
 {
  "kind": "calendar#calendarListEntry",
- "etag": "\"1728140261497000\"",
- "id": "595e045ef60a36f287b2dc1af89e0685697bab5f36281d7177f4d2d10267a539@group.calendar.google.com",
+ "etag": "\"1728328636550000\"",
+ "id": "0407d5e8cec991521b015ca45e5eecddf1b2b0c56357efd07f4ee341cf489372@group.calendar.google.com",
  "summary": "New name",
  "description": "New description",
  "timeZone": "Europe/Moscow",

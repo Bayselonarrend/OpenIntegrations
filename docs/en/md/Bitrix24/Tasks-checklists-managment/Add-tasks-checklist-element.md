@@ -53,15 +53,15 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```json title="Result"
 {
- "result": 1396,
+ "result": 1436,
  "time": {
-  "start": 1728140728.7262,
-  "finish": 1728140728.79716,
-  "duration": 0.0709609985351562,
-  "processing": 0.0449769496917725,
-  "date_start": "2024-10-05T18:05:28+03:00",
-  "date_finish": "2024-10-05T18:05:28+03:00",
-  "operating_reset_at": 1728141328,
+  "start": 1728329101.66106,
+  "finish": 1728329101.72405,
+  "duration": 0.0629949569702148,
+  "processing": 0.0383260250091553,
+  "date_start": "2024-10-07T22:25:01+03:00",
+  "date_finish": "2024-10-07T22:25:01+03:00",
+  "operating_reset_at": 1728329701,
   "operating": 0
  }
 }

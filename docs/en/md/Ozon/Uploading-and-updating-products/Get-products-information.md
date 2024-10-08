@@ -57,13 +57,13 @@ Specify the minimum price of the product after all promotions have been applied 
  "result": {
   "items": [
    {
-    "id": 1211283190,
+    "id": 1213785862,
     "name": "Protective film set for X3 NFC. Dark cotton",
     "offer_id": "143210609",
     "barcode": "",
     "buybox_price": "",
     "category_id": 0,
-    "created_at": "2024-10-05T15:10:43.896671Z",
+    "created_at": "2024-10-07T19:30:25.238835Z",
     "images": [
      "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"
     ],
@@ -116,7 +116,7 @@ Specify the minimum price of the product after all promotions have been applied 
        "attribute_name": ""
       }
      ],
-     "state_updated_at": "2024-10-05T15:11:28.427411Z"
+     "state_updated_at": "2024-10-07T19:31:08.501801Z"
     },
     "state": "",
     "service_type": "IS_CODE_SERVICE",
@@ -133,7 +133,7 @@ Specify the minimum price of the product after all promotions have been applied 
     "is_discounted": false,
     "has_discounted_item": false,
     "barcodes": [],
-    "updated_at": "2024-10-05T15:11:26.749943Z",
+    "updated_at": "2024-10-07T19:31:07.794852Z",
     "price_indexes": {
      "price_index": "WITHOUT_INDEX",
      "external_index_data": null,

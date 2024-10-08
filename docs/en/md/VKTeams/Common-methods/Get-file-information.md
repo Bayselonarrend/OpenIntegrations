@@ -45,7 +45,7 @@ Method at API documentation: [GET /files/getInfo](https://teams.vk.com/botapi/#/
  "filename": "ImportantDocument.docx",
  "size": 24071,
  "type": "application",
- "url": "https://ub.icq.net/files/get/PkvQAo2YldyvXisvMZDGTAHZDGcn3LU1FGOgySWEC7rGScXbaSIspwH19ryR3GzD7BC1pnAkgSHDye9S5Y9LKISAyYCIhMjyeGvBFJtGig2QlGaIIzxSR7VUYIyxRdzIhgBAMShnuKPsHVZKtSGxP9KIBpMZDG/ImportantDocument.docx",
+ "url": "https://ub.icq.net/files/get/RRrhAVctuXa8SKdVfkVgdo3kVgxxrZQsxJm6ygZmFKNhSczdsxr2R8FghEgxcxMd7jAxPs81phMIP94sscRmospWvrjK4IprQKdYFWIggBxVZsuBs0gxsH8QrxPifIExAu0lqKAShkZhgY763gwsCtvsudfkVg/ImportantDocument.docx",
  "ok": true
 }
 ```

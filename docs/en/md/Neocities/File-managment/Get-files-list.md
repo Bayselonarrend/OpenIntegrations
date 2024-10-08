@@ -50,16 +50,16 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
    "path": "test/gif.gif",
    "is_directory": false,
    "size": 805189,
-   "created_at": "Sat, 05 Oct 2024 15:18:16 -0000",
-   "updated_at": "Sat, 05 Oct 2024 15:18:16 -0000",
+   "created_at": "Mon, 07 Oct 2024 19:32:51 -0000",
+   "updated_at": "Mon, 07 Oct 2024 19:32:51 -0000",
    "sha1_hash": null
   },
   {
    "path": "test/pic1.png",
    "is_directory": false,
    "size": 2114023,
-   "created_at": "Sat, 05 Oct 2024 15:18:16 -0000",
-   "updated_at": "Sat, 05 Oct 2024 15:18:16 -0000",
+   "created_at": "Mon, 07 Oct 2024 19:32:51 -0000",
+   "updated_at": "Mon, 07 Oct 2024 19:32:51 -0000",
    "sha1_hash": null
   }
  ]
