@@ -51,7 +51,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
 {
  "result": {
   "task": {
-   "id": "2318",
+   "id": "2368",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -62,19 +62,19 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-10-05T18:05:13+03:00",
-   "responsibleId": "570",
+   "createdDate": "2024-10-07T22:24:46+03:00",
+   "responsibleId": "590",
    "changedBy": "1",
-   "changedDate": "2024-10-05T18:05:22+03:00",
+   "changedDate": "2024-10-07T22:24:55+03:00",
    "statusChangedBy": "1",
    "closedBy": "0",
    "closedDate": null,
-   "activityDate": "2024-10-05T18:05:21+03:00",
+   "activityDate": "2024-10-07T22:24:55+03:00",
    "dateStart": null,
-   "deadline": "2024-10-06T21:05:00+03:00",
-   "startDatePlan": "2024-10-05T18:05:13+03:00",
-   "endDatePlan": "2024-10-06T00:00:00+03:00",
-   "guid": "{d951b0ff-fd4d-40a2-814f-85810a029bad}",
+   "deadline": "2024-10-09T01:24:00+03:00",
+   "startDatePlan": "2024-10-07T22:24:46+03:00",
+   "endDatePlan": "2024-10-08T00:00:00+03:00",
+   "guid": "{26a945e8-1736-401b-858b-77917b7f7de5}",
    "xmlId": null,
    "commentsCount": "1",
    "serviceCommentsCount": "1",
@@ -86,14 +86,14 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "1616",
+   "forumTopicId": "1646",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "N",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "5",
-   "viewedDate": "2024-10-05T18:05:22+03:00",
+   "viewedDate": "2024-10-07T22:24:55+03:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -102,7 +102,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "6",
-   "statusChangedDate": "2024-10-05T18:05:22+03:00",
+   "statusChangedDate": "2024-10-07T22:24:55+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -119,9 +119,9 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
     "workPosition": null
    },
    "responsible": {
-    "id": "570",
+    "id": "590",
     "name": "Олег Лама",
-    "link": "/company/personal/user/570/",
+    "link": "/company/personal/user/590/",
     "icon": "/bitrix/images/tasks/default_avatar.png",
     "workPosition": null
    },
@@ -181,14 +181,14 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
   }
  },
  "time": {
-  "start": 1728140722.47074,
-  "finish": 1728140722.67553,
-  "duration": 0.204795122146606,
-  "processing": 0.17974591255188,
-  "date_start": "2024-10-05T18:05:22+03:00",
-  "date_finish": "2024-10-05T18:05:22+03:00",
-  "operating_reset_at": 1728141322,
-  "operating": 0.179724931716919
+  "start": 1728329095.51124,
+  "finish": 1728329095.71267,
+  "duration": 0.201433897018433,
+  "processing": 0.175513982772827,
+  "date_start": "2024-10-07T22:24:55+03:00",
+  "date_finish": "2024-10-07T22:24:55+03:00",
+  "operating_reset_at": 1728329695,
+  "operating": 0.175493001937866
  }
 }
 ```

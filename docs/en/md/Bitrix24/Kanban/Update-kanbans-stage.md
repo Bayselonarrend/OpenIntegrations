@@ -61,13 +61,13 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 {
  "result": true,
  "time": {
-  "start": 1728140773.7046,
-  "finish": 1728140773.77948,
-  "duration": 0.0748798847198486,
-  "processing": 0.0449459552764893,
-  "date_start": "2024-10-05T18:06:13+03:00",
-  "date_finish": "2024-10-05T18:06:13+03:00",
-  "operating_reset_at": 1728141373,
+  "start": 1728329146.62145,
+  "finish": 1728329146.6867,
+  "duration": 0.0652549266815186,
+  "processing": 0.0364329814910889,
+  "date_start": "2024-10-07T22:25:46+03:00",
+  "date_finish": "2024-10-07T22:25:46+03:00",
+  "operating_reset_at": 1728329746,
   "operating": 0
  }
 }

@@ -47,7 +47,7 @@ Method at API documentation: [post /v1/product/pictures/info](https://docs.ozon.
  "result": {
   "pictures": [
    {
-    "product_id": 1211283190,
+    "product_id": 1213785862,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
     "state": "imported",
     "is_primary": true,
@@ -55,7 +55,7 @@ Method at API documentation: [post /v1/product/pictures/info](https://docs.ozon.
     "is_color": false
    },
    {
-    "product_id": 1211283190,
+    "product_id": 1213785862,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
     "state": "imported",
     "is_primary": false,
@@ -63,7 +63,7 @@ Method at API documentation: [post /v1/product/pictures/info](https://docs.ozon.
     "is_color": false
    },
    {
-    "product_id": 1211283190,
+    "product_id": 1213785862,
     "url": "GREEN",
     "state": "imported",
     "is_primary": false,

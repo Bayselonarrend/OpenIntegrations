@@ -52,9 +52,9 @@ sidebar_position: 8
 {
  "response": [
   {
-   "album_id": 305999511,
-   "date": 1728139637,
-   "id": 457248925,
+   "album_id": 306024989,
+   "date": 1728328020,
+   "id": 457249017,
    "owner_id": -218861756,
    "sizes": [
     {
@@ -120,7 +120,7 @@ sidebar_position: 8
    ],
    "text": "AutoTestImage",
    "user_id": 100,
-   "web_view_token": "bf7f336bebf10f7db7",
+   "web_view_token": "190341c50c778ee52a",
    "has_tags": false,
    "orig_photo": {
     "height": 1920,

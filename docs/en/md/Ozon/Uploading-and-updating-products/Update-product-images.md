@@ -70,15 +70,7 @@ On each method call, send all the images that should be on the product card
  "result": {
   "pictures": [
    {
-    "product_id": 1211283190,
-    "url": "GREEN",
-    "state": "imported",
-    "is_primary": false,
-    "is_360": false,
-    "is_color": true
-   },
-   {
-    "product_id": 1211283190,
+    "product_id": 1213785862,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
     "state": "imported",
     "is_primary": true,
@@ -86,12 +78,20 @@ On each method call, send all the images that should be on the product card
     "is_color": false
    },
    {
-    "product_id": 1211283190,
+    "product_id": 1213785862,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
     "state": "imported",
     "is_primary": false,
     "is_360": false,
     "is_color": false
+   },
+   {
+    "product_id": 1213785862,
+    "url": "GREEN",
+    "state": "imported",
+    "is_primary": false,
+    "is_360": false,
+    "is_color": true
    }
   ]
  }

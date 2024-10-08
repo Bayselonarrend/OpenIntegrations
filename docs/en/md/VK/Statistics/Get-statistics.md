@@ -46,11 +46,11 @@ sidebar_position: 1
  "response": [
   {
    "activity": {
-    "comments": 5,
-    "likes": 5
+    "comments": 4,
+    "likes": 4
    },
-   "period_from": 1728086400,
-   "period_to": 1728172799,
+   "period_from": 1728259200,
+   "period_to": 1728345599,
    "reach": {
     "age": [
      {
@@ -179,18 +179,18 @@ sidebar_position: 1
     "cities": [],
     "countries": [
      {
-      "code": "RU",
+      "code": "SC",
       "count": 2,
+      "name": "Сейшелы",
+      "value": 175
+     },
+     {
+      "code": "RU",
+      "count": 1,
       "name": "Россия",
       "value": 1
      }
     ],
     "mobile_views": 0,
-    "views": 2,
-    "visitors": 2
-   }
-  },
-  {
-   "activity": {
 ...
 ```

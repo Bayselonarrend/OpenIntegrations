@@ -53,13 +53,13 @@ Method at API documentation: [task.commentitem.delete](https://dev.1c-bitrix.ru/
 {
  "result": true,
  "time": {
-  "start": 1728140737.43324,
-  "finish": 1728140737.54557,
-  "duration": 0.112327814102173,
-  "processing": 0.0853540897369385,
-  "date_start": "2024-10-05T18:05:37+03:00",
-  "date_finish": "2024-10-05T18:05:37+03:00",
-  "operating_reset_at": 1728141337,
+  "start": 1728329110.5094,
+  "finish": 1728329110.61508,
+  "duration": 0.105680227279663,
+  "processing": 0.0755119323730469,
+  "date_start": "2024-10-07T22:25:10+03:00",
+  "date_finish": "2024-10-07T22:25:10+03:00",
+  "operating_reset_at": 1728329710,
   "operating": 0
  }
 }
