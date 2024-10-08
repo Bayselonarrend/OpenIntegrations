@@ -1,6 +1,6 @@
 ﻿ {
  "result": {
-  "ID": "12396",
+  "ID": "12516",
   "NAME": "New file name.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": 3,
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "8546",
+  "FILE_ID": "8626",
   "SIZE": "805189",
-  "CREATE_TIME": "2024-10-07T22:25:16+03:00",
-  "UPDATE_TIME": "2024-10-07T22:25:16+03:00",
-  "DELETE_TIME": "2024-10-07T22:25:36+03:00",
+  "CREATE_TIME": "2024-10-08T21:37:41+03:00",
+  "UPDATE_TIME": "2024-10-08T21:37:41+03:00",
+  "DELETE_TIME": "2024-10-08T21:38:01+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11/download/?token=disk%7CaWQ9MTIzOTYmXz1Qc3djc2dyZW5kSG5jMVBPTmRLRlE0dGhMNHljbXhDSg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXpPVFltWHoxUWMzZGpjMmR5Wlc1a1NHNWpNVkJQVG1STFJsRTBkR2hNTkhsamJYaERTZz09fDF8MW8yZG9qcnlxdmp5YmMxMSI%3D.pNLvz5EdNQI%2BNfKH664fdvpqlzOpun2RAt0YWNY2no4%3D",
-  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New file name.jpgi17283291369861i"
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/1/1o2dojryqvjybc11/download/?token=disk%7CaWQ9MTI1MTYmXz1UWUhJNWIwblZMMUhocDhJeTQ0OXh1U0I0YmNFOWFUMg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USTFNVFltWHoxVVdVaEpOV0l3YmxaTU1VaG9jRGhKZVRRME9YaDFVMEkwWW1ORk9XRlVNZz09fDF8MW8yZG9qcnlxdmp5YmMxMSI%3D.TlnyNU61rO96EW%2F5XgwfyEFGsreIteYeyOl5FUkfNn8%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New file name.jpgi17284126819431i"
  },
  "time": {
-  "start": 1728329136.95383,
-  "finish": 1728329137.00694,
-  "duration": 0.0531110763549805,
-  "processing": 0.0267689228057861,
-  "date_start": "2024-10-07T22:25:36+03:00",
-  "date_finish": "2024-10-07T22:25:37+03:00",
-  "operating_reset_at": 1728329736,
+  "start": 1728412681.91377,
+  "finish": 1728412681.96512,
+  "duration": 0.0513529777526856,
+  "processing": 0.0278019905090332,
+  "date_start": "2024-10-08T21:38:01+03:00",
+  "date_finish": "2024-10-08T21:38:01+03:00",
+  "operating_reset_at": 1728413281,
   "operating": 0
  }
 }
