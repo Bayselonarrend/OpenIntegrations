@@ -71,16 +71,16 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 
 ```json title="Result"
 {
- "result": 956,
+ "result": 976,
  "time": {
-  "start": 1728140804.16049,
-  "finish": 1728140804.29449,
-  "duration": 0.133995056152344,
-  "processing": 0.101433992385864,
-  "date_start": "2024-10-05T18:06:44+03:00",
-  "date_finish": "2024-10-05T18:06:44+03:00",
-  "operating_reset_at": 1728141404,
-  "operating": 0.101407051086426
+  "start": 1728329179.58042,
+  "finish": 1728329179.70485,
+  "duration": 0.124430894851685,
+  "processing": 0.0935420989990234,
+  "date_start": "2024-10-07T22:26:19+03:00",
+  "date_finish": "2024-10-07T22:26:19+03:00",
+  "operating_reset_at": 1728329779,
+  "operating": 0
  }
 }
 ```

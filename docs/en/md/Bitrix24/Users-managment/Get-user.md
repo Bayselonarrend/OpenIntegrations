@@ -51,14 +51,14 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 {
  "result": [
   {
-   "ID": "574",
-   "XML_ID": "57919700",
+   "ID": "594",
+   "XML_ID": "57951448",
    "ACTIVE": true,
    "NAME": "Oleg",
    "LAST_NAME": "Lama",
-   "EMAIL": "e04294d3-8aa4-4716-bef3-0641593b60e8@exepmple.org",
+   "EMAIL": "584b160c-03dc-4548-a898-282d95334643@exepmple.org",
    "LAST_LOGIN": "",
-   "DATE_REGISTER": "2024-10-05T03:00:00+03:00",
+   "DATE_REGISTER": "2024-10-07T03:00:00+03:00",
    "IS_ONLINE": "N",
    "TIMESTAMP_X": {},
    "PERSONAL_GENDER": "",
@@ -73,13 +73,13 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
  ],
  "total": 1,
  "time": {
-  "start": 1728140869.01278,
-  "finish": 1728140869.04941,
-  "duration": 0.0366261005401611,
-  "processing": 0.00871896743774414,
-  "date_start": "2024-10-05T18:07:49+03:00",
-  "date_finish": "2024-10-05T18:07:49+03:00",
-  "operating_reset_at": 1728141469,
+  "start": 1728329246.66912,
+  "finish": 1728329246.70401,
+  "duration": 0.0348868370056152,
+  "processing": 0.00925803184509277,
+  "date_start": "2024-10-07T22:27:26+03:00",
+  "date_finish": "2024-10-07T22:27:26+03:00",
+  "operating_reset_at": 1728329846,
   "operating": 0
  }
 }

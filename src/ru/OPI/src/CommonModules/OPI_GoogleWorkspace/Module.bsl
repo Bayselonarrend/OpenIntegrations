@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
+﻿// OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
 // Lib: Google Workspace
 // CLI: google
 

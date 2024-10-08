@@ -52,13 +52,13 @@ Method at API documentation: [disk.storage.getforapp](https://dev.1c-bitrix.ru/r
   "ROOT_OBJECT_ID": "464"
  },
  "time": {
-  "start": 1728140739.9858,
-  "finish": 1728140740.01774,
-  "duration": 0.0319440364837646,
-  "processing": 0.00438690185546875,
-  "date_start": "2024-10-05T18:05:39+03:00",
-  "date_finish": "2024-10-05T18:05:40+03:00",
-  "operating_reset_at": 1728141340,
+  "start": 1728329113.25434,
+  "finish": 1728329113.28621,
+  "duration": 0.0318701267242432,
+  "processing": 0.00368189811706543,
+  "date_start": "2024-10-07T22:25:13+03:00",
+  "date_finish": "2024-10-07T22:25:13+03:00",
+  "operating_reset_at": 1728329713,
   "operating": 0
  }
 }

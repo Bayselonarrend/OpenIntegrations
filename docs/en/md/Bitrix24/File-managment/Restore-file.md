@@ -49,7 +49,7 @@ Method at API documentation: [disk.file.restore](https://dev.1c-bitrix.ru/rest_h
 ```json title="Result"
 {
  "result": {
-  "ID": "12096",
+  "ID": "12396",
   "NAME": "New file name.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -57,25 +57,25 @@ Method at API documentation: [disk.file.restore](https://dev.1c-bitrix.ru/rest_h
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "8346",
+  "FILE_ID": "8546",
   "SIZE": "805189",
-  "CREATE_TIME": "2024-10-05T18:05:43+03:00",
-  "UPDATE_TIME": "2024-10-05T18:06:04+03:00",
-  "DELETE_TIME": "2024-10-05T18:06:03+03:00",
+  "CREATE_TIME": "2024-10-07T22:25:16+03:00",
+  "UPDATE_TIME": "2024-10-07T22:25:37+03:00",
+  "DELETE_TIME": "2024-10-07T22:25:36+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a7630167006e9f06006b12e400000001000007e2e201aeb9fedba2013080af5a95c05e&token=disk%7CaWQ9MTIwOTYmXz1iaDhOQmhPT2JRcUhhOFNPSFluN2p0a0pORFlUYVVUVg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXdPVFltWHoxaWFEaE9RbWhQVDJKUmNVaGhPRk5QU0ZsdU4ycDBhMHBPUkZsVVlWVlVWZz09fGE3NjMwMTY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ZTJlMjAxYWViOWZlZGJhMjAxMzA4MGFmNWE5NWMwNWUi.FMFq3hDOC1RPc7ztbS0HZ9HLquXEYUHEluXazVRPmPQ%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=7c430467006e9f06006b12e4000000010000071103f1c469e314f967ff9f4fd9ddbb4d&token=disk%7CaWQ9MTIzOTYmXz01bkdvWEdQTHRFTzJvdU1WZWs4bXJBVEtMZHlNTlA3aQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU1USXpPVFltWHowMWJrZHZXRWRRVEhSRlR6SnZkVTFXWldzNGJYSkJWRXRNWkhsTlRsQTNhUT09fDdjNDMwNDY3MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MTEwM2YxYzQ2OWUzMTRmOTY3ZmY5ZjRmZDlkZGJiNGQi.PJOQOxr4%2B2Eh4gbGEhtqw1U%2BRH05wImn2BJ2i6WbKls%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New file name.jpg"
  },
  "time": {
-  "start": 1728140764.33056,
-  "finish": 1728140764.37021,
-  "duration": 0.0396509170532227,
-  "processing": 0.00859999656677246,
-  "date_start": "2024-10-05T18:06:04+03:00",
-  "date_finish": "2024-10-05T18:06:04+03:00",
-  "operating_reset_at": 1728141364,
+  "start": 1728329137.26242,
+  "finish": 1728329137.2954,
+  "duration": 0.0329709053039551,
+  "processing": 0.00649094581604004,
+  "date_start": "2024-10-07T22:25:37+03:00",
+  "date_finish": "2024-10-07T22:25:37+03:00",
+  "operating_reset_at": 1728329737,
   "operating": 0
  }
 }

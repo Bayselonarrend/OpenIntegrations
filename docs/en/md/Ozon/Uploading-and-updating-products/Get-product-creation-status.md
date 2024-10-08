@@ -48,7 +48,7 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
   "items": [
    {
     "offer_id": "143210609",
-    "product_id": 1211283190,
+    "product_id": 1213785862,
     "status": "imported",
     "errors": [
      {

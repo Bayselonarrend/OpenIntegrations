@@ -55,22 +55,22 @@ sidebar_position: 1
 
 ```json title="Result"
 {
- "id": "tblYKMQmVoieB8QFV",
+ "id": "tbllVnXav20vVQc8d",
  "name": "TestTable2",
  "description": "NewTable",
- "primaryFieldId": "fldW4daJeC97GZhfk",
+ "primaryFieldId": "fldOaawD636HX4tUt",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fldW4daJeC97GZhfk",
+   "id": "fldOaawD636HX4tUt",
    "name": "Number"
   },
   {
    "type": "richText",
-   "id": "fldKUdnUuWI4ehR2E",
+   "id": "fldqUtFcYnxgVNplr",
    "name": "String"
   },
   {
@@ -78,7 +78,7 @@ sidebar_position: 1
    "options": {
     "isReversed": false
    },
-   "id": "flde5PMxWWqsMwNX4",
+   "id": "fldIZq6buPM6ob7Ji",
    "name": "Attachment"
   },
   {
@@ -87,7 +87,7 @@ sidebar_position: 1
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fldzhZnCc28k8lmR8",
+   "id": "fldo9oaUGll2IQ3pO",
    "name": "Checkbox"
   },
   {
@@ -98,28 +98,28 @@ sidebar_position: 1
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fldkY8ftxvNget9JK",
+   "id": "fld9ziVlbgpn8mbRq",
    "name": "Date"
   },
   {
    "type": "phoneNumber",
-   "id": "fldOcYQgMv3nbGbRX",
+   "id": "flduftF0xjttbxiQL",
    "name": "Phone"
   },
   {
    "type": "email",
-   "id": "fldEC9PxNeXS1dEvF",
+   "id": "fldUuZjWacFU90YZe",
    "name": "Email"
   },
   {
    "type": "url",
-   "id": "fldIVUimltwa0Z0Sr",
+   "id": "fldWwkaaX7ByzzyB6",
    "name": "Link"
   }
  ],
  "views": [
   {
-   "id": "viwNaLjMKEHdWv9S3",
+   "id": "viwaxgV25YxHWcFO4",
    "name": "Grid view",
    "type": "grid"
   }

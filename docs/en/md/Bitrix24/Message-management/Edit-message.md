@@ -62,13 +62,13 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 {
  "result": true,
  "time": {
-  "start": 1728140840.81515,
-  "finish": 1728140840.86711,
-  "duration": 0.0519599914550781,
-  "processing": 0.0240271091461182,
-  "date_start": "2024-10-05T18:07:20+03:00",
-  "date_finish": "2024-10-05T18:07:20+03:00",
-  "operating_reset_at": 1728141440,
+  "start": 1728329216.33775,
+  "finish": 1728329216.39091,
+  "duration": 0.053164005279541,
+  "processing": 0.0235168933868408,
+  "date_start": "2024-10-07T22:26:56+03:00",
+  "date_finish": "2024-10-07T22:26:56+03:00",
+  "operating_reset_at": 1728329816,
   "operating": 0
  }
 }

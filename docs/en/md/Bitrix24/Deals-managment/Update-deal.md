@@ -61,14 +61,14 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 {
  "result": true,
  "time": {
-  "start": 1728140878.18392,
-  "finish": 1728140878.33228,
-  "duration": 0.148360967636108,
-  "processing": 0.121360063552856,
-  "date_start": "2024-10-05T18:07:58+03:00",
-  "date_finish": "2024-10-05T18:07:58+03:00",
-  "operating_reset_at": 1728141478,
-  "operating": 0.121336936950684
+  "start": 1728329256.00024,
+  "finish": 1728329256.13559,
+  "duration": 0.135348796844482,
+  "processing": 0.110563039779663,
+  "date_start": "2024-10-07T22:27:36+03:00",
+  "date_finish": "2024-10-07T22:27:36+03:00",
+  "operating_reset_at": 1728329856,
+  "operating": 0.110543966293335
  }
 }
 ```

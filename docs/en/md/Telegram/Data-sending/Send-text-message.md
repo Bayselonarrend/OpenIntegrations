@@ -49,7 +49,7 @@ sidebar_position: 1
 {
  "ok": true,
  "result": {
-  "message_id": 8190,
+  "message_id": 8260,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -63,7 +63,7 @@ sidebar_position: 1
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728139209,
+  "date": 1728327605,
   "text": "Строковое значение"
  }
 }

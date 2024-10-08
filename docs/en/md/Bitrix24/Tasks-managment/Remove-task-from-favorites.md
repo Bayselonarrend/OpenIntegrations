@@ -51,13 +51,13 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 {
  "result": true,
  "time": {
-  "start": 1728140721.18694,
-  "finish": 1728140721.22566,
-  "duration": 0.038722038269043,
-  "processing": 0.00935912132263184,
-  "date_start": "2024-10-05T18:05:21+03:00",
-  "date_finish": "2024-10-05T18:05:21+03:00",
-  "operating_reset_at": 1728141321,
+  "start": 1728329094.37235,
+  "finish": 1728329094.40549,
+  "duration": 0.0331418514251709,
+  "processing": 0.00864505767822266,
+  "date_start": "2024-10-07T22:24:54+03:00",
+  "date_finish": "2024-10-07T22:24:54+03:00",
+  "operating_reset_at": 1728329694,
   "operating": 0
  }
 }

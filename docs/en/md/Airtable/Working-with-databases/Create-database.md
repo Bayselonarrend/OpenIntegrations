@@ -51,30 +51,30 @@ sidebar_position: 3
 
 ```json title="Result"
 {
- "id": "appCOuzfpma3IfjDV",
+ "id": "appQ9y6uHcviFktKS",
  "tables": [
   {
-   "id": "tblM0y8j7idWHDaK1",
+   "id": "tbl6wlzce0XpweN9s",
    "name": "TestTable",
-   "primaryFieldId": "flds0apJqH4j0fYag",
+   "primaryFieldId": "fldgRQtommBB7A2RV",
    "fields": [
     {
      "type": "number",
      "options": {
       "precision": 0
      },
-     "id": "flds0apJqH4j0fYag",
+     "id": "fldgRQtommBB7A2RV",
      "name": "Number"
     },
     {
      "type": "richText",
-     "id": "fldbC0kZ2o9FGOtsX",
+     "id": "fldUTbHtknQQAQqjN",
      "name": "String"
     }
    ],
    "views": [
     {
-     "id": "viwT5hHbSyRIrzRlR",
+     "id": "viwlaL8T86CAZrox2",
      "name": "Grid view",
      "type": "grid"
     }
