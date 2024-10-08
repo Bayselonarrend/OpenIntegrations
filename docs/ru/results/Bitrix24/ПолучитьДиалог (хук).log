@@ -1,19 +1,19 @@
 ﻿    {
  "result": {
-  "id": 970,
+  "id": 978,
   "parent_chat_id": 0,
   "parent_message_id": 0,
   "name": "Новый заголовок чата",
   "description": "Это новый чат",
   "owner": 1,
   "extranet": false,
-  "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/8522/ff58db95aecdfa09ae61b51b5fd8f63f/disk/06b/06b49cc0c4490aea3e281692f335be6c/c97ddd75dc26054a692826e25ca4ed12",
+  "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/8602/ff58db95aecdfa09ae61b51b5fd8f63f/disk/06b/06b49cc0c4490aea3e281692f335be6c/c97ddd75dc26054a692826e25ca4ed12",
   "color": "#8474c8",
   "type": "open",
   "counter": 8,
   "user_counter": 3,
   "message_count": 10,
-  "unread_id": 17432,
+  "unread_id": 17576,
   "restrictions": {
    "avatar": true,
    "rename": true,
@@ -25,7 +25,7 @@
    "send": true,
    "user_list": true
   },
-  "last_message_id": 17464,
+  "last_message_id": 17608,
   "last_id": 0,
   "marked_id": 0,
   "disk_folder_id": 0,
@@ -35,7 +35,7 @@
   "entity_data_2": "",
   "entity_data_3": "",
   "mute_list": [],
-  "date_create": "2024-10-07T21:47:24+03:00",
+  "date_create": "2024-10-08T20:50:08+03:00",
   "message_type": "O",
   "disappearing_time": 0,
   "public": "",
@@ -57,13 +57,13 @@
    {
     "user_id": 10,
     "user_name": "Techno Pizza",
-    "message_id": 17440,
+    "message_id": 17584,
     "date": null
    },
    {
     "user_id": 12,
     "user_name": "Bay Selonarrend",
-    "message_id": 17440,
+    "message_id": 17584,
     "date": null
    }
   ],
@@ -71,20 +71,20 @@
    1
   ],
   "last_message_views": {
-   "message_id": 17464,
+   "message_id": 17608,
    "first_viewers": [],
    "count_of_viewers": 0
   },
-  "dialog_id": "chat970"
+  "dialog_id": "chat978"
  },
  "time": {
-  "start": 1728326878.04287,
-  "finish": 1728326878.08205,
-  "duration": 0.0391747951507568,
-  "processing": 0.016200065612793,
-  "date_start": "2024-10-07T21:47:58+03:00",
-  "date_finish": "2024-10-07T21:47:58+03:00",
-  "operating_reset_at": 1728327478,
+  "start": 1728409841.33338,
+  "finish": 1728409841.37728,
+  "duration": 0.0439071655273438,
+  "processing": 0.0170199871063232,
+  "date_start": "2024-10-08T20:50:41+03:00",
+  "date_finish": "2024-10-08T20:50:41+03:00",
+  "operating_reset_at": 1728410441,
   "operating": 0
  }
 }

@@ -1,6 +1,6 @@
 ﻿    {
  "result": {
-  "ID": "376",
+  "ID": "384",
   "TITLE": "Мегаклиент",
   "HONORIFIC": null,
   "NAME": "Петр",
@@ -8,7 +8,7 @@
   "LAST_NAME": "Петров",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "376",
+  "CONTACT_ID": "384",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": null,
@@ -26,15 +26,15 @@
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2024-10-07T21:48:37+03:00",
-  "DATE_MODIFY": "2024-10-07T21:48:38+03:00",
-  "DATE_CLOSED": "2024-10-07T21:48:38+03:00",
+  "DATE_CREATE": "2024-10-08T20:51:21+03:00",
+  "DATE_MODIFY": "2024-10-08T20:51:22+03:00",
+  "DATE_CLOSED": "2024-10-08T20:51:22+03:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "N",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2024-10-07T21:48:38+03:00",
+  "MOVED_TIME": "2024-10-08T20:51:22+03:00",
   "ADDRESS": "ул. Пушкина, д. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -43,23 +43,23 @@
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Россия",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "754",
+  "ADDRESS_LOC_ADDR_ID": "770",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
   "UTM_CONTENT": null,
   "UTM_TERM": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2024-10-07T21:48:37+03:00",
+  "LAST_ACTIVITY_TIME": "2024-10-08T20:51:21+03:00",
   "EMAIL": [
    {
-    "ID": "2230",
+    "ID": "2278",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "2232",
+    "ID": "2280",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -67,7 +67,7 @@
   ],
   "PHONE": [
    {
-    "ID": "2234",
+    "ID": "2282",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -75,13 +75,13 @@
   ]
  },
  "time": {
-  "start": 1728326919.23974,
-  "finish": 1728326919.28179,
-  "duration": 0.0420501232147217,
-  "processing": 0.0157909393310547,
-  "date_start": "2024-10-07T21:48:39+03:00",
-  "date_finish": "2024-10-07T21:48:39+03:00",
-  "operating_reset_at": 1728327519,
+  "start": 1728409882.99969,
+  "finish": 1728409883.04793,
+  "duration": 0.0482370853424072,
+  "processing": 0.0212609767913818,
+  "date_start": "2024-10-08T20:51:22+03:00",
+  "date_finish": "2024-10-08T20:51:23+03:00",
+  "operating_reset_at": 1728410483,
   "operating": 0
  }
 }
