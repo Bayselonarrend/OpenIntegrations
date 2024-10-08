@@ -1,16 +1,9 @@
 ﻿ {
- "errors": [
-  {
-   "parameters": {
-    "media.media_ids": [
-     "1843365521481187328",
-     "1843365537839017984"
-    ]
-   },
-   "message": "Your media IDs are invalid."
-  }
- ],
- "title": "Invalid Request",
- "detail": "One or more parameters to your request was invalid.",
- "type": "https://api.twitter.com/2/problems/invalid-request"
+ "data": {
+  "edit_history_tweet_ids": [
+   "1843714833725730871"
+  ],
+  "text": "TestTweetfc1802dd-c760-49fd-b9b1-693c8ebfafb7 https://t.co/i157yHUq07",
+  "id": "1843714833725730871"
+ }
 }
