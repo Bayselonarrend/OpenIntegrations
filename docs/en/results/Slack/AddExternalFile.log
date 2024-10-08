@@ -1,9 +1,9 @@
 ﻿ {
  "ok": true,
  "file": {
-  "id": "F07QSJ5GU58",
-  "created": 1728328851,
-  "timestamp": 1728328851,
+  "id": "F07QJHC4H2T",
+  "created": 1728412386,
+  "timestamp": 1728412386,
   "name": "NewFile",
   "title": "NewFile",
   "mimetype": "application/vnd.slack-remote",
@@ -22,7 +22,7 @@
   "username": "",
   "url_private": "https://slack.com/api/files.remote.add",
   "media_display_type": "unknown",
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QSJ5GU58/newfile",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QJHC4H2T/newfile",
   "comments_count": 0,
   "is_starred": false,
   "shares": {},
@@ -30,7 +30,7 @@
   "groups": [],
   "ims": [],
   "has_more_shares": false,
-  "external_id": "6b7addee-ce4e-4f58-9a1a-7816afde94fc",
+  "external_id": "756c4bca-4937-4c9b-abd7-61c2f0c3698b",
   "external_url": "https://slack.com/api/files.remote.add",
   "has_rich_preview": false,
   "file_access": "visible"

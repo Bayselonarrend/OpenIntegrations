@@ -1,10 +1,7 @@
 ﻿ {
- "sheetId": 1956697934,
- "title": "Sheet1 (копия)",
- "index": 2,
- "sheetType": "GRID",
- "gridProperties": {
-  "rowCount": 1000,
-  "columnCount": 26
+ "error": {
+  "code": 500,
+  "message": "Internal error encountered.",
+  "status": "INTERNAL"
  }
 }
