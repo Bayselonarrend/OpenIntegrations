@@ -47,14 +47,14 @@ sidebar_position: 3
 {
  "ok": true,
  "channel": "C06UFNUTKUL",
- "ts": "1728140448.697169",
+ "ts": "1728328829.261829",
  "text": "TestMessage2",
  "message": {
   "user": "U06UG1CAYH2",
   "type": "message",
   "edited": {
    "user": "B06TZ0MJV5M",
-   "ts": "1728140450.000000"
+   "ts": "1728328830.000000"
   },
   "bot_id": "B06TZ0MJV5M",
   "app_id": "A06TYNH45RV",
@@ -76,7 +76,7 @@ sidebar_position: 3
   "blocks": [
    {
     "type": "rich_text",
-    "block_id": "x1M",
+    "block_id": "9yYd",
     "elements": [
      {
       "type": "rich_text_section",

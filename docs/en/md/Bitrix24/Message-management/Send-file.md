@@ -67,9 +67,9 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 {
  "result": {
   "FILES": {
-   "upload12134": {
-    "id": 12134,
-    "chatId": 956,
+   "upload12434": {
+    "id": 12434,
+    "chatId": 976,
     "date": {},
     "type": "file",
     "name": "Imortant doc.docx",
@@ -81,28 +81,28 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12134&fileName=Imortant%20doc.docx",
-    "urlDownload": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12134&fileName=Imortant%20doc.docx",
+    "urlShow": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12434&fileName=Imortant%20doc.docx",
+    "urlDownload": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12434&fileName=Imortant%20doc.docx",
     "viewerAttrs": {
      "viewer": null,
      "viewerType": "cloud-document",
-     "src": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12134&fileName=Imortant%20doc.docx",
+     "src": "/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=12434&fileName=Imortant%20doc.docx",
      "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
      "viewerSeparateItem": true,
      "viewerExtension": "im.integration.viewer",
-     "objectId": "12134",
-     "imChatId": 956,
+     "objectId": "12434",
+     "imChatId": 976,
      "title": "Imortant doc.docx",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Битрикс24 Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"12134\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Битрикс24 Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"12434\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     }
    }
   },
   "DISK_ID": [
-   "12134"
+   "12434"
   ],
   "FILE_MODELS": {
-   "upload12134": {
-    "id": 12134,
+   "upload12434": {
+    "id": 12434,
     "name": "Imortant doc.docx",
     "createTime": {},
     "updateTime": {},
@@ -110,33 +110,33 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 12134,
-    "parentId": 12130,
+    "realObjectId": 12434,
+    "parentId": 12430,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 8368,
+    "fileId": 8568,
     "size": 24071,
-    "etag": "962ba137220c0f96c8534f6bf28c018c",
+    "etag": "c7f097d1c64f770a85549f1f1069831a",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=12134",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=12134&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=12434",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=12434&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 17182
+  "MESSAGE_ID": 17542
  },
  "time": {
-  "start": 1728140848.47268,
-  "finish": 1728140848.57604,
-  "duration": 0.103360176086426,
-  "processing": 0.0774850845336914,
-  "date_start": "2024-10-05T18:07:28+03:00",
-  "date_finish": "2024-10-05T18:07:28+03:00",
-  "operating_reset_at": 1728141448,
+  "start": 1728329224.66298,
+  "finish": 1728329224.75002,
+  "duration": 0.0870449542999268,
+  "processing": 0.0619649887084961,
+  "date_start": "2024-10-07T22:27:04+03:00",
+  "date_finish": "2024-10-07T22:27:04+03:00",
+  "operating_reset_at": 1728329824,
   "operating": 0
  }
 }

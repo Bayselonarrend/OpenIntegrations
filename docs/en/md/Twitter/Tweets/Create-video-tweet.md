@@ -50,12 +50,19 @@ sidebar_position: 5
 
 ```json title="Result"
 {
- "data": {
-  "edit_history_tweet_ids": [
-   "1842574564661891428"
-  ],
-  "text": "TestTweetfc831f3f-79b1-441d-8e3e-aecd053466ef",
-  "id": "1842574564661891428"
- }
+ "errors": [
+  {
+   "parameters": {
+    "media.media_ids": [
+     "1843365521481187328",
+     "1843365537839017984"
+    ]
+   },
+   "message": "Your media IDs are invalid."
+  }
+ ],
+ "title": "Invalid Request",
+ "detail": "One or more parameters to your request was invalid.",
+ "type": "https://api.twitter.com/2/problems/invalid-request"
 }
 ```

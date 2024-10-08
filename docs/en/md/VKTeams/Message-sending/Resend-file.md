@@ -48,8 +48,8 @@ Method at API documentation: [GET /messages/sendFile](https://teams.vk.com/botap
 
 ```json title="Result"
 {
- "fileId": "PkvQAxUmgdaSVnAFIGgGbX6701567d1bd",
- "msgId": "7422308777229027508",
+ "fileId": "RRrhAZNL9rLrKpq8TyCkfK670436571bd",
+ "msgId": "7423117854578313481",
  "ok": true
 }
 ```

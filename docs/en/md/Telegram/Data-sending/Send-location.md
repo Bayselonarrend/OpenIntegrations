@@ -49,7 +49,7 @@ sidebar_position: 8
 {
  "ok": true,
  "result": {
-  "message_id": 8200,
+  "message_id": 8270,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -63,7 +63,7 @@ sidebar_position: 8
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728139358,
+  "date": 1728327757,
   "location": {
    "latitude": 48.873739,
    "longitude": 48.873733

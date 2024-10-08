@@ -54,7 +54,7 @@ Method at API documentation: [post /v2/product/list](https://docs.ozon.ru/api/se
  "result": {
   "items": [
    {
-    "product_id": 1211283190,
+    "product_id": 1213785862,
     "offer_id": "143210609",
     "is_fbo_visible": false,
     "is_fbs_visible": false,
@@ -63,7 +63,7 @@ Method at API documentation: [post /v2/product/list](https://docs.ozon.ru/api/se
    }
   ],
   "total": 1,
-  "last_id": "WzEyMTEyODMxOTAsMTIxMTI4MzE5MF0="
+  "last_id": "WzEyMTM3ODU4NjIsMTIxMzc4NTg2Ml0="
  }
 }
 ```

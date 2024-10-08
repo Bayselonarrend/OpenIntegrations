@@ -54,14 +54,14 @@ Method at API documentation: [im.chat.updateAvatar](https://dev.1c-bitrix.ru/lea
 {
  "result": true,
  "time": {
-  "start": 1728140828.05486,
-  "finish": 1728140828.9055,
-  "duration": 0.85063099861145,
-  "processing": 0.82358717918396,
-  "date_start": "2024-10-05T18:07:08+03:00",
-  "date_finish": "2024-10-05T18:07:08+03:00",
-  "operating_reset_at": 1728141428,
-  "operating": 0.823567152023316
+  "start": 1728329203.47982,
+  "finish": 1728329204.44478,
+  "duration": 0.964956998825073,
+  "processing": 0.935385942459106,
+  "date_start": "2024-10-07T22:26:43+03:00",
+  "date_finish": "2024-10-07T22:26:44+03:00",
+  "operating_reset_at": 1728329803,
+  "operating": 0.935366868972778
  }
 }
 ```

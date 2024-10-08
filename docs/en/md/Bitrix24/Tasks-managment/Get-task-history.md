@@ -52,8 +52,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
  "result": {
   "list": [
    {
-    "id": "28918",
-    "createdDate": "05.10.2024 18:05:13",
+    "id": "29548",
+    "createdDate": "07.10.2024 22:24:46",
     "field": "NEW",
     "value": {
      "from": null,
@@ -68,12 +68,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28920",
-    "createdDate": "05.10.2024 18:05:18",
+    "id": "29550",
+    "createdDate": "07.10.2024 22:24:51",
     "field": "START_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1728140713"
+     "to": "1728329086"
     },
     "user": {
      "id": "1",
@@ -84,12 +84,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28922",
-    "createdDate": "05.10.2024 18:05:18",
+    "id": "29552",
+    "createdDate": "07.10.2024 22:24:51",
     "field": "END_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1728162000"
+     "to": "1728334800"
     },
     "user": {
      "id": "1",
@@ -100,12 +100,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28924",
-    "createdDate": "05.10.2024 18:05:18",
+    "id": "29554",
+    "createdDate": "07.10.2024 22:24:51",
     "field": "DURATION_PLAN_SECONDS",
     "value": {
      "from": "",
-     "to": "21287"
+     "to": "5714"
     },
     "user": {
      "id": "1",
@@ -116,8 +116,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28938",
-    "createdDate": "05.10.2024 18:05:20",
+    "id": "29568",
+    "createdDate": "07.10.2024 22:24:53",
     "field": "TITLE",
     "value": {
      "from": "New task",
@@ -132,8 +132,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28940",
-    "createdDate": "05.10.2024 18:05:20",
+    "id": "29570",
+    "createdDate": "07.10.2024 22:24:53",
     "field": "DESCRIPTION",
     "value": {
      "from": "",
@@ -148,8 +148,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28942",
-    "createdDate": "05.10.2024 18:05:20",
+    "id": "29572",
+    "createdDate": "07.10.2024 22:24:53",
     "field": "PRIORITY",
     "value": {
      "from": "2",
@@ -164,12 +164,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28948",
-    "createdDate": "05.10.2024 18:05:21",
+    "id": "29578",
+    "createdDate": "07.10.2024 22:24:54",
     "field": "RESPONSIBLE_ID",
     "value": {
      "from": "1",
-     "to": "570"
+     "to": "590"
     },
     "user": {
      "id": "1",
@@ -180,12 +180,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28950",
-    "createdDate": "05.10.2024 18:05:21",
+    "id": "29580",
+    "createdDate": "07.10.2024 22:24:55",
     "field": "COMMENT",
     "value": {
      "from": null,
-     "to": "5756"
+     "to": "5866"
     },
     "user": {
      "id": "1",
@@ -196,7 +196,7 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": "28954",
-    "createdDate": "05.10.2024 18:05:22",
+    "id": "29584",
+    "createdDate": "07.10.2024 22:24:55",
 ...
 ```

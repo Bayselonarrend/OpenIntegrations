@@ -58,13 +58,13 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
 {
  "result": true,
  "time": {
-  "start": 1728140736.02084,
-  "finish": 1728140736.12541,
-  "duration": 0.104573965072632,
-  "processing": 0.0788271427154541,
-  "date_start": "2024-10-05T18:05:36+03:00",
-  "date_finish": "2024-10-05T18:05:36+03:00",
-  "operating_reset_at": 1728141336,
+  "start": 1728329109.15949,
+  "finish": 1728329109.26359,
+  "duration": 0.104099988937378,
+  "processing": 0.0731880664825439,
+  "date_start": "2024-10-07T22:25:09+03:00",
+  "date_finish": "2024-10-07T22:25:09+03:00",
+  "operating_reset_at": 1728329709,
   "operating": 0
  }
 }

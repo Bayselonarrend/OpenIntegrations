@@ -51,152 +51,152 @@ Product creation is only available in the last level categories, compare exactly
 {
  "result": [
   {
-   "description_category_id": 99999999,
-   "category_name": "Кино, музыка, видеоигры, софт",
+   "description_category_id": 92120918,
+   "category_name": "Автомототехника",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 17027903,
-     "category_name": "Подарочный сертификат Ozon",
+     "description_category_id": 200000672,
+     "category_name": "Спецтехника и грузовики",
      "disabled": true,
      "children": [
       {
-       "type_name": "Банковская карта",
-       "type_id": 971229967,
+       "type_name": "Техника коммунальная",
+       "type_id": 971322202,
        "disabled": true,
        "children": []
       },
       {
-       "type_name": "Электронный подарочный сертификат",
-       "type_id": 94957,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Подарочный сертификат",
-       "type_id": 94955,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Ozon.Card",
-       "type_id": 277418272,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Ozon Premium",
-       "type_id": 241039050,
+       "type_name": "Спецтехника",
+       "type_id": 971322229,
        "disabled": true,
        "children": []
       }
      ]
     },
     {
-     "description_category_id": 46590429,
-     "category_name": "Кино, музыка, видеоигры, софт",
+     "description_category_id": 17027951,
+     "category_name": "Мототехника",
      "disabled": false,
      "children": [
       {
-       "type_name": "Видеоигра",
-       "type_id": 409596018,
+       "type_name": "Снегоход детский",
+       "type_id": 971742428,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Программа",
-       "type_id": 392638731,
+       "type_name": "Мотоцикл",
+       "type_id": 115948095,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Мопед",
+       "type_id": 971309510,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Мотоцикл детский",
+       "type_id": 970967803,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Фильм",
-       "type_id": 392638730,
+       "type_name": "Сноубайк",
+       "type_id": 971038323,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Гидроцикл",
+       "type_id": 971322241,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Багги",
+       "type_id": 971322654,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Квадроцикл",
+       "type_id": 96591,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Квадроцикл детский",
+       "type_id": 970828017,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Музыкальный диск",
-       "type_id": 392547272,
+       "type_name": "Модуль для мотобуксировщика",
+       "type_id": 972068815,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Автомобиль детский",
+       "type_id": 971447132,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Пластинка виниловая винтажная",
-       "type_id": 971888494,
-       "disabled": false,
+       "type_name": "Мотобуксировщик",
+       "type_id": 971049470,
+       "disabled": true,
        "children": []
       },
       {
-       "type_name": "Пластинка виниловая современная",
-       "type_id": 971888493,
-       "disabled": false,
+       "type_name": "Снегоход",
+       "type_id": 96594,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Скутер",
+       "type_id": 96593,
+       "disabled": true,
        "children": []
       }
      ]
     },
     {
-     "description_category_id": 200001489,
-     "category_name": "Цифровые товары",
+     "description_category_id": 74179490,
+     "category_name": "Автомобили",
      "disabled": true,
      "children": [
       {
-       "type_name": "Подписка на видеоигры",
-       "type_id": 970591519,
+       "type_name": "Электромобиль",
+       "type_id": 972085867,
        "disabled": true,
        "children": []
       },
       {
-       "type_name": "Цифровая версия игр для Xbox",
-       "type_id": 970730371,
+       "type_name": "Автомобиль",
+       "type_id": 970636239,
+       "disabled": true,
+       "children": []
+      }
+     ]
+    },
+    {
+     "description_category_id": 43443516,
+     "category_name": "Взрослый электротранспорт",
+     "disabled": true,
+     "children": [
+      {
+       "type_name": "Электроквадроцикл",
+       "type_id": 970957816,
        "disabled": true,
        "children": []
       },
       {
-       "type_name": "Сезонный пропуск",
-       "type_id": 970855496,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Ветеринарные услуги онлайн",
-       "type_id": 970995726,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Подписка на облачные хранилища",
-       "type_id": 970841193,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Пополнение баланса соцсетей",
-       "type_id": 970997471,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Цифровая версия игр для ПК",
-       "type_id": 970591520,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Подписка на музыку",
-       "type_id": 970727001,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Цифровое дополнение к видеоигре",
-       "type_id": 970855497,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Сертификат на гарантию",
-       "type_id": 971033670,
-       "disabled": true,
+       "type_name": "Электрокар платформенный",
+       "type_id": 971392555,
 ...
 ```

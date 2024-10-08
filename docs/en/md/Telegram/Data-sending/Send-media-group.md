@@ -64,7 +64,7 @@ Map: Key - File, Value - media type
  "ok": true,
  "result": [
   {
-   "message_id": 8198,
+   "message_id": 8268,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -78,8 +78,8 @@ Map: Key - File, Value - media type
     "username": "JKIee",
     "type": "private"
    },
-   "date": 1728139349,
-   "media_group_id": "13825114797142634",
+   "date": 1728327749,
+   "media_group_id": "13826621998914562",
    "photo": [
     {
      "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADcwADNgQ",
@@ -120,7 +120,7 @@ Map: Key - File, Value - media type
    "caption": "Строковое значение"
   },
   {
-   "message_id": 8199,
+   "message_id": 8269,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -134,8 +134,8 @@ Map: Key - File, Value - media type
     "username": "JKIee",
     "type": "private"
    },
-   "date": 1728139349,
-   "media_group_id": "13825114797142634",
+   "date": 1728327749,
+   "media_group_id": "13826621998914562",
    "video": {
     "duration": 5,
     "width": 640,
@@ -143,21 +143,21 @@ Map: Key - File, Value - media type
     "file_name": "video1",
     "mime_type": "video/mp4",
     "thumbnail": {
-     "file_id": "AAMCAgADFQdnAVBVuuxnB7UpjBuqe3UE0zWk7AACUFsAAkeBEEjDYqOvhjA-5QEAB20AAzYE",
-     "file_unique_id": "AQADUFsAAkeBEEhy",
+     "file_id": "AAMCAgADFQdnBDBFKRF3_EE482s_5_F11oT-5wAClWIAAgNlIUh2R_MMgi8kLgEAB20AAzYE",
+     "file_unique_id": "AQADlWIAAgNlIUhy",
      "file_size": 20106,
      "width": 320,
      "height": 240
     },
     "thumb": {
-     "file_id": "AAMCAgADFQdnAVBVuuxnB7UpjBuqe3UE0zWk7AACUFsAAkeBEEjDYqOvhjA-5QEAB20AAzYE",
-     "file_unique_id": "AQADUFsAAkeBEEhy",
+     "file_id": "AAMCAgADFQdnBDBFKRF3_EE482s_5_F11oT-5wAClWIAAgNlIUh2R_MMgi8kLgEAB20AAzYE",
+     "file_unique_id": "AQADlWIAAgNlIUhy",
      "file_size": 20106,
      "width": 320,
      "height": 240
     },
-    "file_id": "BAACAgIAAxUHZwFQVbrsZwe1KYwbqnt1BNM1pOwAAlBbAAJHgRBIw2Kjr4YwPuU2BA",
-    "file_unique_id": "AgADUFsAAkeBEEg",
+    "file_id": "BAACAgIAAxUHZwQwRSkRd_xBOPNrP-fxddaE_ucAApViAAIDZSFIdkfzDIIvJC42BA",
+    "file_unique_id": "AgADlWIAAgNlIUg",
     "file_size": 1137878
    }
   }

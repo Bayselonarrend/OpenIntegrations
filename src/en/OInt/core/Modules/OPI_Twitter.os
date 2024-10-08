@@ -215,7 +215,7 @@ Function CreateCustomTweet(Val Text = ""
         EndIf;
     EndIf;
 
-    Authorization = CreateAuthorizationHeaderV2(Parameters_);
+    Authorization = CreateAuthorizationHeaderV1(Parameters_, New Structure, "POST", URL);
     Response      = OPI_Tools.Post(URL, Fields, Authorization);
 
     Return Response;
@@ -247,7 +247,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateImageTweet(Val Text, Val ImageArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(ImageArray, "TWEET_IMAGE", Parameters);
+    MediaArray = UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -264,7 +264,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(GifsArray, "TWEET_GIF", Parameters);
+    MediaArray = UploadAttachmentsArray(GifsArray, "tweet_gif", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -281,7 +281,7 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Twitter
 Function CreateVideoTweet(Val Text, Val VideosArray, Val Parameters = "") Export
 
-    MediaArray = UploadAttachmentsArray(VideosArray, "TWEET_VIDEO", Parameters);
+    MediaArray = UploadAttachmentsArray(VideosArray, "tweet_video", Parameters);
     Return CreateCustomTweet(Text, MediaArray, , , Parameters);
 
 EndFunction
@@ -367,28 +367,29 @@ EndFunction
 
 Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parameters)
 
-    Unit     = 1024;
-    Count    = 4;
-    MediaKey = "media_key";
-    MIS      = "media_id_string";
-    Command  = "command";
-    Size     = File.Size();
+    Unit    = 1024;
+    Count   = 4;
+    MID     = "media_id";
+    MIS     = "media_id_string";
+    Command = "command";
+    Size    = File.Size();
 
     ChunkSize    = Count * Unit * Unit;
     ArrayReading = SplitBinaryData(File, ChunkSize);
 
+
     Fields = New Structure;
-    Fields.Insert(Command          , "INIT");
-    Fields.Insert("total_bytes"    , OPI_Tools.NumberToString(Size));
-    Fields.Insert("media_category" , Type);
+    Fields.Insert(Command         , "INIT");
+    Fields.Insert("total_bytes"   , OPI_Tools.NumberToString(Size));
+    Fields.Insert("media_category", Type);
 
     Authorization = CreateAuthorizationHeaderV1(Parameters, Fields, RequestType, URL);
 
     InitializationResponse = OPI_Tools.Post(URL, Fields, Authorization, False);
-    InitializationKey      = InitializationResponse[MediaKey];
-    InitializationID       = InitializationResponse[MIS];
+    InitializationID       = InitializationResponse[MID];
+    InitializationIDS      = InitializationResponse[MIS];
 
-    If Not ValueIsFilled(InitializationKey) Or Not ValueIsFilled(InitializationID) Then
+    If Not ValueIsFilled(InitializationIDS) Or Not ValueIsFilled(InitializationID) Then
         Return InitializationResponse;
     EndIf;
 
@@ -398,7 +399,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
 
         Fields = New Structure;
         Fields.Insert(Command         , "APPEND");
-        Fields.Insert("media_key"     , InitializationKey);
+        Fields.Insert("media_id"      , InitializationIDS);
         Fields.Insert("segment_index" , OPI_Tools.NumberToString(Counter));
         Fields.Insert("media"         , Part);
 
@@ -412,7 +413,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
 
     Fields = New Structure;
     Fields.Insert(Command   , "FINALIZE");
-    Fields.Insert("media_id", InitializationID);
+    Fields.Insert("media_id", InitializationIDS);
 
     ProcessingStatus = GetProcessingStatus(Parameters, Fields, URL);
 
@@ -420,7 +421,7 @@ Function UploadMediaInParts(Val File, Val Type, Val RequestType, Val URL, Parame
         Return ProcessingStatus;
     EndIf;
 
-    Response = WaitForProcessingCompletion(ProcessingStatus, InitializationID, URL, Parameters);
+    Response = WaitForProcessingCompletion(ProcessingStatus, InitializationIDS, URL, Parameters);
 
     Return Response;
 
@@ -636,7 +637,7 @@ Function CreateAuthorizationHeaderV1(Val Parameters, Val Fields, Val RequestType
         + "oauth_signature=" + Signature;
 
         HeaderMapping = New Map;
-        HeaderMapping.Insert("authorization", AuthorizationHeader);
+        HeaderMapping.Insert("Authorization", AuthorizationHeader);
 
     Return HeaderMapping;
 

@@ -54,13 +54,13 @@ Method at API documentation: [im.dialog.unread](https://dev.1c-bitrix.ru/learnin
 {
  "result": true,
  "time": {
-  "start": 1728140834.80637,
-  "finish": 1728140834.87572,
-  "duration": 0.0693511962890625,
-  "processing": 0.0447530746459961,
-  "date_start": "2024-10-05T18:07:14+03:00",
-  "date_finish": "2024-10-05T18:07:14+03:00",
-  "operating_reset_at": 1728141434,
+  "start": 1728329210.37056,
+  "finish": 1728329210.4162,
+  "duration": 0.045644998550415,
+  "processing": 0.0199019908905029,
+  "date_start": "2024-10-07T22:26:50+03:00",
+  "date_finish": "2024-10-07T22:26:50+03:00",
+  "operating_reset_at": 1728329810,
   "operating": 0
  }
 }

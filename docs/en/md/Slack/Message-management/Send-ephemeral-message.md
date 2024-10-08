@@ -47,6 +47,6 @@ Sends a message that arrives in the channel but is visible only to a specific us
 ```json title="Result"
 {
  "ok": true,
- "message_ts": "1728140451.000300"
+ "message_ts": "1728328831.000300"
 }
 ```

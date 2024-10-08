@@ -54,7 +54,7 @@ sidebar_position: 10
 {
  "ok": true,
  "result": {
-  "message_id": 8202,
+  "message_id": 8272,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -68,9 +68,9 @@ sidebar_position: 10
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728139393,
+  "date": 1728327793,
   "poll": {
-   "id": "5192792512300845437",
+   "id": "5197546508521573514",
    "question": "What's your favorite color?",
    "options": [
     {

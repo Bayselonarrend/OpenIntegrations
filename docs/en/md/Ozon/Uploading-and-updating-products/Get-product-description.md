@@ -46,7 +46,7 @@ Method at API documentation: [post /v1/product/info/description](https://docs.oz
 ```json title="Result"
 {
  "result": {
-  "id": 1211283190,
+  "id": 1213785862,
   "offer_id": "143210609",
   "name": "Protective film set for X3 NFC. Dark cotton",
   "description": ""

@@ -41,6 +41,6 @@ IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to
 {
  "status": 1,
  "status_message": "URL not valid or not HTTPS",
- "chat_hostname": "SN-CHAT-03_"
+ "chat_hostname": "SN-CHAT-02_"
 }
 ```
