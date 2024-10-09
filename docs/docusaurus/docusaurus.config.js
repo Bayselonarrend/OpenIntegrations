@@ -34,17 +34,6 @@ const config = {
     locales: ['ru'],
   },
 
-  scripts: [
-    {
-      src: 'https://openintegrations.dev/js/yads.js',
-      defer: true
-    },
-    {
-      src: 'https://yandex.ru/ads/system/context.js',
-      async: true
-    }
-  ],
-
   presets: [
     [
       'classic',
@@ -84,6 +73,21 @@ const config = {
           autoCollapseCategories: true
         }
       },
+
+      customFields: {
+      yandexAdsBlock: `
+<div id="yandex_rtb_R-A-12294791-1"></div>
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-12294791-1",
+        "renderTo": "yandex_rtb_R-A-12294791-1",
+        "type": "feed"
+    })
+})
+</script>
+      `,
+    },
 
       colorMode: {
         defaultMode: 'light',
