@@ -17,7 +17,7 @@ sidebar_position: 2
   | LastID | --last | String, Number | ID of the last value (last_id) from the previous response |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -53,7 +53,7 @@ Method at API documentation: [post /v3/products/info/attributes](https://docs.oz
 {
  "result": [
   {
-   "id": 1213785862,
+   "id": 1215763512,
    "barcode": "",
    "category_id": 0,
    "name": "Protective film set for X3 NFC. Dark cotton",
@@ -155,22 +155,22 @@ Method at API documentation: [post /v3/products/info/attributes](https://docs.oz
     {
      "attributes": [
       {
-       "attribute_id": 21837,
-       "complex_id": 100001,
-       "values": [
-        {
-         "dictionary_value_id": 0,
-         "value": "viedo1"
-        }
-       ]
-      },
-      {
        "attribute_id": 21841,
        "complex_id": 100001,
        "values": [
         {
          "dictionary_value_id": 0,
          "value": "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/"
+        }
+       ]
+      },
+      {
+       "attribute_id": 21837,
+       "complex_id": 100001,
+       "values": [
+        {
+         "dictionary_value_id": 0,
+         "value": "viedo1"
         }
        ]
       }

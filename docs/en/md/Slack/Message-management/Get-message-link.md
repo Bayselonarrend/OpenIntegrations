@@ -16,7 +16,7 @@ sidebar_position: 6
   | Timestamp | --stamp | String | Timestamp or message ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -42,7 +42,7 @@ sidebar_position: 6
 ```json title="Result"
 {
  "ok": true,
- "permalink": "https://openintegrationsgroup.slack.com/archives/C06UFNUTKUL/p1728328829261829",
+ "permalink": "https://openintegrationsgroup.slack.com/archives/C06UFNUTKUL/p1728454508757479",
  "channel": "C06UFNUTKUL"
 }
 ```

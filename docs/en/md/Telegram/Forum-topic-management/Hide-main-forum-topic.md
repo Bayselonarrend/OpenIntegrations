@@ -15,7 +15,7 @@ sidebar_position: 7
   | ChatID | --forum | String, Number | Thread chat ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 

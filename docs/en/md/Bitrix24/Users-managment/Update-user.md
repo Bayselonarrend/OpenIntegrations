@@ -66,14 +66,14 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 {
  "result": true,
  "time": {
-  "start": 1728329246.23775,
-  "finish": 1728329246.52825,
-  "duration": 0.290501117706299,
-  "processing": 0.259449005126953,
-  "date_start": "2024-10-07T22:27:26+03:00",
-  "date_finish": "2024-10-07T22:27:26+03:00",
-  "operating_reset_at": 1728329846,
-  "operating": 0.259423017501831
+  "start": 1728454936.24134,
+  "finish": 1728454936.55634,
+  "duration": 0.315001964569092,
+  "processing": 0.287670135498047,
+  "date_start": "2024-10-09T09:22:16+03:00",
+  "date_finish": "2024-10-09T09:22:16+03:00",
+  "operating_reset_at": 1728455536,
+  "operating": 0.287650108337402
  }
 }
 ```

@@ -16,7 +16,7 @@ sidebar_position: 3
   | Title | --title | String | File title for Slack |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -43,9 +43,9 @@ sidebar_position: 3
 {
  "ok": true,
  "file": {
-  "id": "F07QSJ5GU58",
-  "created": 1728328851,
-  "timestamp": 1728328851,
+  "id": "F07QYP172FP",
+  "created": 1728454531,
+  "timestamp": 1728454531,
   "name": "NewFile",
   "title": "NewFile",
   "mimetype": "application/vnd.slack-remote",
@@ -64,7 +64,7 @@ sidebar_position: 3
   "username": "",
   "url_private": "https://slack.com/api/files.remote.add",
   "media_display_type": "unknown",
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QSJ5GU58/newfile",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QYP172FP/newfile",
   "comments_count": 0,
   "is_starred": false,
   "shares": {},
@@ -72,7 +72,7 @@ sidebar_position: 3
   "groups": [],
   "ims": [],
   "has_more_shares": false,
-  "external_id": "6b7addee-ce4e-4f58-9a1a-7816afde94fc",
+  "external_id": "3a61913c-c2ce-412b-a4b4-6875373db31a",
   "external_url": "https://slack.com/api/files.remote.add",
   "has_rich_preview": false,
   "file_access": "visible"

@@ -16,7 +16,7 @@ sidebar_position: 1
   | Users | --members | String, Number, Array of String, Number | The member or members of the chat room to remove |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

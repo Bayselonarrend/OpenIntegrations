@@ -51,13 +51,13 @@ Method at API documentation: [im.notify.delete](https://dev.1c-bitrix.ru/learnin
 {
  "result": true,
  "time": {
-  "start": 1728329233.06216,
-  "finish": 1728329233.10536,
-  "duration": 0.0432009696960449,
-  "processing": 0.0147941112518311,
-  "date_start": "2024-10-07T22:27:13+03:00",
-  "date_finish": "2024-10-07T22:27:13+03:00",
-  "operating_reset_at": 1728329833,
+  "start": 1728454921.75437,
+  "finish": 1728454921.80021,
+  "duration": 0.0458471775054932,
+  "processing": 0.0189189910888672,
+  "date_start": "2024-10-09T09:22:01+03:00",
+  "date_finish": "2024-10-09T09:22:01+03:00",
+  "operating_reset_at": 1728455521,
   "operating": 0
  }
 }

@@ -70,7 +70,7 @@ sidebar_position: 9
  "result": {
   "pictures": [
    {
-    "product_id": 1213778659,
+    "product_id": 1215208579,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
     "state": "imported",
     "is_primary": true,
@@ -78,7 +78,7 @@ sidebar_position: 9
     "is_color": false
    },
    {
-    "product_id": 1213778659,
+    "product_id": 1215208579,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
     "state": "imported",
     "is_primary": false,
@@ -86,7 +86,7 @@ sidebar_position: 9
     "is_color": false
    },
    {
-    "product_id": 1213778659,
+    "product_id": 1215208579,
     "url": "GREEN",
     "state": "imported",
     "is_primary": false,

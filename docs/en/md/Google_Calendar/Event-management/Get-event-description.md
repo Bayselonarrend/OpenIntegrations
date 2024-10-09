@@ -37,8 +37,8 @@ sidebar_position: 1
  "Description": "",
  "Title": "New event",
  "Venue": "",
- "StartDate": "2024-10-07T22:17:38.7763838Z",
- "EndDate": "2024-10-07T23:17:38.7763838Z",
+ "StartDate": "2024-10-09T09:12:24.0203603Z",
+ "EndDate": "2024-10-09T10:12:24.0203603Z",
  "ArrayOfAttachmentURLs": {},
  "SendNotifications": true
 }

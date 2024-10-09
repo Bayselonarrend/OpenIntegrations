@@ -48,13 +48,13 @@ Method at API documentation: [task.planner.getlist](https://dev.1c-bitrix.ru/res
 {
  "result": [],
  "time": {
-  "start": 1728329103.12907,
-  "finish": 1728329103.15567,
-  "duration": 0.0266008377075195,
-  "processing": 0.000257015228271484,
-  "date_start": "2024-10-07T22:25:03+03:00",
-  "date_finish": "2024-10-07T22:25:03+03:00",
-  "operating_reset_at": 1728329703,
+  "start": 1728454787.66892,
+  "finish": 1728454787.69815,
+  "duration": 0.0292289257049561,
+  "processing": 0.000327110290527344,
+  "date_start": "2024-10-09T09:19:47+03:00",
+  "date_finish": "2024-10-09T09:19:47+03:00",
+  "operating_reset_at": 1728455387,
   "operating": 0
  }
 }

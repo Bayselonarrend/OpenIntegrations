@@ -48,13 +48,13 @@ Method at API documentation: [im.dialog.read.all](https://dev.1c-bitrix.ru/learn
 {
  "result": true,
  "time": {
-  "start": 1728329229.9261,
-  "finish": 1728329229.96503,
-  "duration": 0.0389351844787598,
-  "processing": 0.0126149654388428,
-  "date_start": "2024-10-07T22:27:09+03:00",
-  "date_finish": "2024-10-07T22:27:09+03:00",
-  "operating_reset_at": 1728329829,
+  "start": 1728454918.70314,
+  "finish": 1728454918.75025,
+  "duration": 0.0471072196960449,
+  "processing": 0.0178661346435547,
+  "date_start": "2024-10-09T09:21:58+03:00",
+  "date_finish": "2024-10-09T09:21:58+03:00",
+  "operating_reset_at": 1728455518,
   "operating": 0
  }
 }

@@ -51,7 +51,7 @@ sidebar_position: 3
 ```json title="Результат"
 {
  "response": {
-  "market_album_id": 127,
+  "market_album_id": 125,
   "albums_count": 66
  }
 }

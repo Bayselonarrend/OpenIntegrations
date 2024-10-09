@@ -44,21 +44,21 @@ sidebar_position: 6
  "antivirus_status": "clean",
  "size": 2114023,
  "comment_ids": {
-  "private_resource": "1573541518:932e5aa55283d6159158a187e4f968c3e2f9810dbb1709ae38c3698a36472a65",
-  "public_resource": "1573541518:932e5aa55283d6159158a187e4f968c3e2f9810dbb1709ae38c3698a36472a65"
+  "private_resource": "1573541518:56b58a9dc4882571f5ddb4c4df9023e364fed6f8258ad07d3e927a325383c831",
+  "public_resource": "1573541518:56b58a9dc4882571f5ddb4c4df9023e364fed6f8258ad07d3e927a325383c831"
  },
- "name": "222a2fc4-39f9-457a-94a4-c69278c48e25.png",
+ "name": "95934d00-67ef-43eb-a306-73a490a0aac0.png",
  "exif": {},
- "created": "2024-10-07T21:37:15+03:00",
- "resource_id": "1573541518:932e5aa55283d6159158a187e4f968c3e2f9810dbb1709ae38c3698a36472a65",
- "modified": "2024-10-07T21:37:15+03:00",
+ "created": "2024-10-08T20:39:46+03:00",
+ "resource_id": "1573541518:56b58a9dc4882571f5ddb4c4df9023e364fed6f8258ad07d3e927a325383c831",
+ "modified": "2024-10-08T20:39:46+03:00",
  "mime_type": "multipart",
- "file": "https://downloader.disk.yandex.ru/disk/03a416abbd49570d8b35a9187f07c1675ddacdecca84575cfd9d5ec56a58a989/6704629f/gwThwhLBKYvLhQCNnqAHitjtYP_sMEGdXpAYnCH3CeOI2TmJ3n1LCawN581CYeuif0mayq9-vnAgzEVZSHXCMA%3D%3D?uid=1573541518&filename=222a2fc4-39f9-457a-94a4-c69278c48e25.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
- "path": "disk:/Загрузки/222a2fc4-39f9-457a-94a4-c69278c48e25.png",
+ "file": "https://downloader.disk.yandex.ru/disk/aa279cf70c494c153f0cb76408769b15183f78821a7871acef6d48b9cfd213bf/6705a6a3/gwThwhLBKYvLhQCNnqAHirWAoEC4dKsPFFzSTeWuFK5ceIUkIDC7fKzI6e0Ic1rFWZAX7ZAMHvmKl9PvgqcSEQ%3D%3D?uid=1573541518&filename=95934d00-67ef-43eb-a306-73a490a0aac0.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "path": "disk:/Загрузки/95934d00-67ef-43eb-a306-73a490a0aac0.png",
  "media_type": "image",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "type": "file",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
- "revision": 1728326235972820
+ "revision": 1728409186840406
 }
 ```

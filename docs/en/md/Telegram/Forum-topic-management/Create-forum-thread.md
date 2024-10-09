@@ -17,7 +17,7 @@ sidebar_position: 2
   | IconID | --icon | String | See GetAvatarIconList |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -45,8 +45,8 @@ sidebar_position: 2
 {
  "ok": true,
  "result": {
-  "message_thread_id": 5374,
-  "name": "TestTopic ca8fc3bb-2223-4f00-849e-5006893111a6",
+  "message_thread_id": 5407,
+  "name": "TestTopic 6e8a9d01-e4f4-4c9e-80fc-004f9bd0d697",
   "icon_color": 7322096,
   "icon_custom_emoji_id": "5357419403325481346"
  }

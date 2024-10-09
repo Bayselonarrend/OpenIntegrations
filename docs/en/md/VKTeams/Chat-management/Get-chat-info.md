@@ -15,7 +15,7 @@ sidebar_position: 3
   | ChatID | --chatid | String, Number | Chat ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

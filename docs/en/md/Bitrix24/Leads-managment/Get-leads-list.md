@@ -55,13 +55,13 @@ Method at API documentation: [crm.lead.list](https://dev.1c-bitrix.ru/rest_help/
  "result": [],
  "total": 0,
  "time": {
-  "start": 1728329249.75264,
-  "finish": 1728329249.79069,
-  "duration": 0.0380539894104004,
-  "processing": 0.0138068199157715,
-  "date_start": "2024-10-07T22:27:29+03:00",
-  "date_finish": "2024-10-07T22:27:29+03:00",
-  "operating_reset_at": 1728329849,
+  "start": 1728454939.89873,
+  "finish": 1728454939.94382,
+  "duration": 0.0450830459594727,
+  "processing": 0.0179238319396973,
+  "date_start": "2024-10-09T09:22:19+03:00",
+  "date_finish": "2024-10-09T09:22:19+03:00",
+  "operating_reset_at": 1728455539,
   "operating": 0
  }
 }

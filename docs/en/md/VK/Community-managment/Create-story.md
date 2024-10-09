@@ -16,7 +16,7 @@ sidebar_position: 7
   | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
 <br/>
 
@@ -51,7 +51,7 @@ sidebar_position: 7
   "count": 1,
   "items": [
    {
-    "id": 456239996,
+    "id": 456240002,
     "owner_id": -218861756,
     "access_key": "story",
     "can_comment": 1,
@@ -60,71 +60,71 @@ sidebar_position: 7
     "can_like": true,
     "can_share": 1,
     "can_hide": 1,
-    "date": 1728328056,
-    "expires_at": 1728414456,
+    "date": 1728453724,
+    "expires_at": 1728540124,
     "link": {
      "text": "Ещё",
      "url": "https://github.com/Bayselonarrend/OpenIntegrations"
     },
     "photo": {
      "album_id": -81,
-     "date": 1728328056,
-     "id": 457249019,
+     "date": 1728453724,
+     "id": 457249076,
      "owner_id": -218861756,
      "sizes": [
       {
        "height": 56,
        "type": "s",
        "width": 75,
-       "url": "https://sun56-1.userapi.com/s/v1/ig2/7CtA8GbZYInmSNdV-XZXRW-QmmBP3ypDcW7MUuhfjEihPFS24bPKmfIfvuYduQnmU8OXdXRififvRgU5hcYpZZWy.jpg?size=75x56&quality=95&type=story"
+       "url": "https://sun56-1.userapi.com/s/v1/ig2/ThGIg1sYfgXAZUYVzUjJqluCzKhtUuvDLcJtPsHGrioIwe8KrLy5AyHySWYkCP15VtugfWaIFYv4zKyHHkFzOvJP.jpg?size=75x56&quality=95&type=story"
       },
       {
        "height": 97,
        "type": "m",
        "width": 130,
-       "url": "https://sun56-1.userapi.com/s/v1/ig2/08yx6wnXNR_7227MosPSyf5OXoYSR9yYUMNOBYTg04g1ZL6_mHejN6U0fNr0Q9YEP4xRqpn6Bh5mfajaRSTtedjM.jpg?size=130x97&quality=95&type=story"
+       "url": "https://sun56-1.userapi.com/s/v1/ig2/ORIQl3y2_g7mMeup9alevCqrO3fE7bSbLJ2JkXpQdshBBCfI8AOhOQPiXVxXWFEfjjhHeahup5i4GP_F431DdWVA.jpg?size=130x97&quality=95&type=story"
       },
       {
        "height": 192,
        "type": "j",
        "width": 256,
-       "url": "https://sun56-1.userapi.com/s/v1/ig2/gzlSJgWmN74YCl_oRdbRSiq7OZSocbaF6hbdbL1wGloqUo3174JdLyexdHdcZn9kgEnNQ66iu5PBv1XA1gdm0BWf.jpg?size=256x192&quality=95&type=story"
+       "url": "https://sun56-1.userapi.com/s/v1/ig2/xoto12wh7mi1WEO1y9hDlvijf9J0FS4X9Og8hRscocnwcg_VldRIzwUKwf-mddh_OtPzZIJDxy9KBTW8uTdGlsgU.jpg?size=256x192&quality=95&type=story"
       },
       {
        "height": 453,
        "type": "x",
        "width": 604,
-       "url": "https://sun56-1.userapi.com/s/v1/ig2/IbGnz3mlb0DqCsJGtszH6TweEaMTKuzarFWtEh2zah0Vg3vrIKmsOOfUrt5PwcVOpGiYj0OCYoc5JAazRPZhvAKb.jpg?size=604x453&quality=95&type=story"
+       "url": "https://sun56-1.userapi.com/s/v1/ig2/0C2jpD_cTXilTHPedjRJxqRmo9CoCrcFK58dWrmctdyAVoOmdS5q-X7RX0lw482Zwc-pl426jUvsjf_li5WPDIq4.jpg?size=604x453&quality=95&type=story"
       },
       {
        "height": 605,
        "type": "y",
        "width": 807,
-       "url": "https://sun56-1.userapi.com/s/v1/ig2/cTJZqj3N7bwNSApjwJ0Rv8fLhymHfbSaggOcnDyBV7Y8YvBTexDmVn4kYv1vp2cIytsC1dE5lTIvi9I6rbA1cBGn.jpg?size=807x605&quality=95&type=story"
+       "url": "https://sun56-1.userapi.com/s/v1/ig2/Sb_g2E27IHayxpRXUUYt8o87y4aXcO_YsG1Bv5zKjTfgaa3gXGYUteMhFqAlnad1-yklST95wEidi_wLVvb-6w2N.jpg?size=807x605&quality=95&type=story"
       },
       {
        "height": 960,
        "type": "z",
        "width": 1280,
-       "url": "https://sun56-1.userapi.com/s/v1/ig2/UMexXS872Z0H8NXGSs6wNYTVttdVdGVEUDb75mMIRqXaAtCR6THOJOHEJalHqOiBgUuSbJuiFL9BEJ7z1-tuJp16.jpg?size=1280x960&quality=95&type=story"
+       "url": "https://sun56-1.userapi.com/s/v1/ig2/jK_pcU1ucaExAG4jpzdjIUpuyp4YoHpoexaam4jk911tLWd_BWEW5Yb-VFKWYvB7x9ONtOj4KbR8lqeCM_I5Ccrw.jpg?size=1280x960&quality=95&type=story"
       },
       {
        "height": 1920,
        "type": "w",
        "width": 2560,
-       "url": "https://sun56-1.userapi.com/s/v1/ig2/jtBV3sGoU2vimDEP8LEzdsV5lZHg80IvbUR_fTmdb1KRbi8ZMh2T7wZBFbJW6THHGw0Tqz_G1F6n6BwhSnK0CvDA.jpg?size=2560x1920&quality=95&type=story"
+       "url": "https://sun56-1.userapi.com/s/v1/ig2/y6YSc3M4nLKIyt48O5DW3XvuxIg8UC-par28D54_vJLn0dyS-0VAUMYRCY1g9T926sG4XHLXw6loMFbHNvzFF35G.jpg?size=2560x1920&quality=95&type=story"
       }
      ],
      "text": "",
      "user_id": 100,
-     "web_view_token": "af9953bf1f8bcdb916",
+     "web_view_token": "cec38f3d661278427c",
      "has_tags": false
     },
     "replies": {
      "count": 0,
      "new": 0
     },
-    "track_code": "story/3AAQAdLy9G9EAs4bMat8A84nNfHkBAAFoAagB6AIAA==",
+    "track_code": "story/3AAQAdLy9G9EAs4bMauCA84nNfHkBAAFoAagB6AIAA==",
     "type": "photo",
     "views": 0,
     "likes_count": 0,

@@ -15,7 +15,7 @@ sidebar_position: 1
   | APIKey | --apikey | String | API key |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

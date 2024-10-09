@@ -52,25 +52,25 @@ Method at API documentation: [task.elapseditem.get](https://dev.1c-bitrix.ru/res
 ```json title="Result"
 {
  "result": {
-  "ID": "818",
-  "TASK_ID": "2374",
+  "ID": "830",
+  "TASK_ID": "2404",
   "USER_ID": "10",
   "COMMENT_TEXT": "Time spent on work",
   "SECONDS": "7200",
   "MINUTES": "120",
   "SOURCE": "2",
-  "CREATED_DATE": "2024-09-07T22:25:50+03:00",
-  "DATE_START": "2024-10-07T22:25:50+03:00",
-  "DATE_STOP": "2024-10-07T22:25:50+03:00"
+  "CREATED_DATE": "2024-09-09T09:20:37+03:00",
+  "DATE_START": "2024-10-09T09:20:37+03:00",
+  "DATE_STOP": "2024-10-09T09:20:37+03:00"
  },
  "time": {
-  "start": 1728329150.35006,
-  "finish": 1728329150.39965,
-  "duration": 0.0495870113372803,
-  "processing": 0.0214581489562988,
-  "date_start": "2024-10-07T22:25:50+03:00",
-  "date_finish": "2024-10-07T22:25:50+03:00",
-  "operating_reset_at": 1728329750,
+  "start": 1728454837.65834,
+  "finish": 1728454837.70708,
+  "duration": 0.0487430095672607,
+  "processing": 0.0207769870758057,
+  "date_start": "2024-10-09T09:20:37+03:00",
+  "date_finish": "2024-10-09T09:20:37+03:00",
+  "operating_reset_at": 1728455437,
   "operating": 0
  }
 }

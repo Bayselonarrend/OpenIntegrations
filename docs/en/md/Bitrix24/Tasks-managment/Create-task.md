@@ -63,7 +63,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
 {
  "result": {
   "task": {
-   "id": "2368",
+   "id": "2398",
    "parentId": null,
    "title": "New task",
    "description": "New task description",
@@ -74,19 +74,19 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-10-07T22:24:46+03:00",
+   "createdDate": "2024-10-09T09:19:28+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-10-07T22:24:46+03:00",
+   "changedDate": "2024-10-09T09:19:28+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-07T22:24:46+03:00",
+   "activityDate": "2024-10-09T09:19:28+03:00",
    "dateStart": null,
-   "deadline": "2024-10-09T01:24:00+03:00",
+   "deadline": "2024-10-10T12:19:00+03:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{26a945e8-1736-401b-858b-77917b7f7de5}",
+   "guid": "{51464df0-4e32-4fbe-9e9c-5d7081eb0ffb}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -114,7 +114,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-07T22:24:46+03:00",
+   "statusChangedDate": "2024-10-09T09:19:28+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -193,14 +193,14 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
   }
  },
  "time": {
-  "start": 1728329086.56925,
-  "finish": 1728329086.6917,
-  "duration": 0.122452974319458,
-  "processing": 0.0950028896331787,
-  "date_start": "2024-10-07T22:24:46+03:00",
-  "date_finish": "2024-10-07T22:24:46+03:00",
-  "operating_reset_at": 1728329686,
-  "operating": 0
+  "start": 1728454768.77934,
+  "finish": 1728454768.94599,
+  "duration": 0.166647911071777,
+  "processing": 0.140867948532104,
+  "date_start": "2024-10-09T09:19:28+03:00",
+  "date_finish": "2024-10-09T09:19:28+03:00",
+  "operating_reset_at": 1728455368,
+  "operating": 0.140851020812988
  }
 }
 ```

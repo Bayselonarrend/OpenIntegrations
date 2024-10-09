@@ -82,13 +82,13 @@ Method at API documentation: [im.user.list.get ](https://dev.1c-bitrix.ru/learni
   }
  },
  "time": {
-  "start": 1728329154.39001,
-  "finish": 1728329154.42163,
-  "duration": 0.0316228866577148,
-  "processing": 0.00253582000732422,
-  "date_start": "2024-10-07T22:25:54+03:00",
-  "date_finish": "2024-10-07T22:25:54+03:00",
-  "operating_reset_at": 1728329754,
+  "start": 1728454841.79577,
+  "finish": 1728454841.82182,
+  "duration": 0.0260539054870605,
+  "processing": 0.00196313858032227,
+  "date_start": "2024-10-09T09:20:41+03:00",
+  "date_finish": "2024-10-09T09:20:41+03:00",
+  "operating_reset_at": 1728455441,
   "operating": 0
  }
 }

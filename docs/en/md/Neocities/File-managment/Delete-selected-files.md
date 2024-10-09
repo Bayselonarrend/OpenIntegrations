@@ -15,7 +15,7 @@ sidebar_position: 3
   | Paths | --paths | String, Array of String | Path or multiple paths of the files to be deleted |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Neocities
+  Returns:  Map Of KeyAndValue - serialized JSON response from Neocities
 
 <br/>
 

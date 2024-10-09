@@ -16,7 +16,7 @@ sidebar_position: 1
   | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
 <br/>
 
@@ -41,6 +41,6 @@ sidebar_position: 1
 
 ```json title="Result"
 {
- "response": 52565548
+ "response": 52573385
 }
 ```

@@ -59,7 +59,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
 {
  "result": {
   "task": {
-   "id": "2368",
+   "id": "2398",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -70,19 +70,19 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
    "replicate": "N",
    "stageId": "0",
    "createdBy": "1",
-   "createdDate": "2024-10-07T22:24:46+03:00",
+   "createdDate": "2024-10-09T09:19:28+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-10-07T22:24:53+03:00",
+   "changedDate": "2024-10-09T09:19:35+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-07T22:24:46+03:00",
+   "activityDate": "2024-10-09T09:19:28+03:00",
    "dateStart": null,
-   "deadline": "2024-10-09T01:24:00+03:00",
-   "startDatePlan": "2024-10-07T22:24:46+03:00",
-   "endDatePlan": "2024-10-08T00:00:00+03:00",
-   "guid": "{26a945e8-1736-401b-858b-77917b7f7de5}",
+   "deadline": "2024-10-10T12:19:00+03:00",
+   "startDatePlan": "2024-10-09T09:19:28+03:00",
+   "endDatePlan": "2024-10-10T00:00:00+03:00",
+   "guid": "{51464df0-4e32-4fbe-9e9c-5d7081eb0ffb}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -110,7 +110,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-07T22:24:53+03:00",
+   "statusChangedDate": "2024-10-09T09:19:35+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -189,14 +189,14 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
   }
  },
  "time": {
-  "start": 1728329093.16927,
-  "finish": 1728329093.35068,
-  "duration": 0.181410074234009,
-  "processing": 0.154278039932251,
-  "date_start": "2024-10-07T22:24:53+03:00",
-  "date_finish": "2024-10-07T22:24:53+03:00",
-  "operating_reset_at": 1728329693,
-  "operating": 0.154258012771606
+  "start": 1728454775.71852,
+  "finish": 1728454775.9367,
+  "duration": 0.218183040618896,
+  "processing": 0.191415071487427,
+  "date_start": "2024-10-09T09:19:35+03:00",
+  "date_finish": "2024-10-09T09:19:35+03:00",
+  "operating_reset_at": 1728455375,
+  "operating": 0.19139289855957
  }
 }
 ```

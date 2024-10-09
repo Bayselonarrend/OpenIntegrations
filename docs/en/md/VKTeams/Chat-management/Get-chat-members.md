@@ -16,7 +16,7 @@ sidebar_position: 5
   | Cursor | --cursor | String | Next page marker from the previous request |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

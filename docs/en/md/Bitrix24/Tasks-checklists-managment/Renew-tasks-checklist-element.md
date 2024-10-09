@@ -55,13 +55,13 @@ Method at API documentation: [task.checklistitem.renew](https://dev.1c-bitrix.ru
 {
  "result": true,
  "time": {
-  "start": 1728329102.71817,
-  "finish": 1728329102.7828,
-  "duration": 0.0646378993988037,
-  "processing": 0.0354340076446533,
-  "date_start": "2024-10-07T22:25:02+03:00",
-  "date_finish": "2024-10-07T22:25:02+03:00",
-  "operating_reset_at": 1728329702,
+  "start": 1728454787.24722,
+  "finish": 1728454787.30494,
+  "duration": 0.0577118396759033,
+  "processing": 0.0310859680175781,
+  "date_start": "2024-10-09T09:19:47+03:00",
+  "date_finish": "2024-10-09T09:19:47+03:00",
+  "operating_reset_at": 1728455387,
   "operating": 0
  }
 }

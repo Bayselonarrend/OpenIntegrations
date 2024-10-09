@@ -16,7 +16,7 @@ sidebar_position: 7
   | ProductsArray | --items | Array Of String | Array or one simplified structure of product fields |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -57,7 +57,7 @@ You can get an empty structure using the GetSimplifiedProductStructure method()
 ```json title="Result"
 {
  "result": {
-  "task_id": 1344962077,
+  "task_id": 1347188275,
   "unmatched_sku_list": []
  }
 }

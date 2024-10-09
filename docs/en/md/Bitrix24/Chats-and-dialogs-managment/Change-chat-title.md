@@ -56,13 +56,13 @@ Method at API documentation: [im.chat.updateTitle](https://dev.1c-bitrix.ru/lear
 {
  "result": true,
  "time": {
-  "start": 1728329185.60082,
-  "finish": 1728329185.67669,
-  "duration": 0.075869083404541,
-  "processing": 0.0482590198516846,
-  "date_start": "2024-10-07T22:26:25+03:00",
-  "date_finish": "2024-10-07T22:26:25+03:00",
-  "operating_reset_at": 1728329785,
+  "start": 1728454873.54688,
+  "finish": 1728454873.62997,
+  "duration": 0.0830919742584228,
+  "processing": 0.0585200786590576,
+  "date_start": "2024-10-09T09:21:13+03:00",
+  "date_finish": "2024-10-09T09:21:13+03:00",
+  "operating_reset_at": 1728455473,
   "operating": 0
  }
 }

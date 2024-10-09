@@ -19,7 +19,7 @@ sidebar_position: 2
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -57,7 +57,7 @@ sidebar_position: 2
 {
  "ok": true,
  "result": {
-  "message_id": 8262,
+  "message_id": 8304,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -71,7 +71,7 @@ sidebar_position: 2
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327619,
+  "date": 1728453303,
   "photo": [
    {
     "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADcwADNgQ",
