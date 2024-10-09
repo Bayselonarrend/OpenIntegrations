@@ -13,3 +13,5 @@ test.os
 full.gif
 fakedata.json
 /build
+/docs/docusaurus/.docusaurus
+/docs/docusaurus/build
