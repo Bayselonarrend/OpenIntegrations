@@ -5,6 +5,10 @@ import Head from '@docusaurus/Head';
 export default function CustomLayout(props) {
   useEffect(() => {
 
+    if (!location.pathname.startsWith('/docs/')) {
+      return; // Если нет, не добавляем блок
+    }
+
     const script = document.createElement('script');
     script.innerHTML = `
 window.yaContextCb.push(() => {
@@ -12,7 +16,13 @@ window.yaContextCb.push(() => {
         "blockId": "R-A-12294791-3",
         "type": "floorAd",
         "platform": "touch"
+    });
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-12294791-4",
+        "type": "floorAd",
+        "platform": "desktop"
     })
+
 })
     `;
     document.body.appendChild(script);
