@@ -36,7 +36,7 @@ const config = {
 
   scripts: [
     {
-      src: './js/yads.js',
+      src: 'https://openintegrations.dev/js/yads.js',
       defer: true
     },
     {
