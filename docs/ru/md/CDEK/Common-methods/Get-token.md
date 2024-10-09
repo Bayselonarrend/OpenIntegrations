@@ -37,7 +37,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint cdek ПолучитьТокен --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" --pass "RmAmgvSgSl..." --testapi %testapi%
+  oint cdek ПолучитьТокен --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" --pass "RmAmgvSgSl..." --testapi %testapi%
 
 ```
 
