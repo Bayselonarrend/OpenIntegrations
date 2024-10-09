@@ -34,6 +34,17 @@ const config = {
     locales: ['ru'],
   },
 
+  scripts: [
+    {
+      src: './js/yads.js',
+      defer: true
+    },
+    {
+      src: 'https://yandex.ru/ads/system/context.js',
+      async: true
+    }
+  ],
+
   presets: [
     [
       'classic',
