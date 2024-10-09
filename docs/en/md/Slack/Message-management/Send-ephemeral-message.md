@@ -18,7 +18,7 @@ Sends a message that arrives in the channel but is visible only to a specific us
   | Blocks | --blocks | Array of Structure | JSON array of block descriptions |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -47,6 +47,6 @@ Sends a message that arrives in the channel but is visible only to a specific us
 ```json title="Result"
 {
  "ok": true,
- "message_ts": "1728328831.000300"
+ "message_ts": "1728454511.000300"
 }
 ```

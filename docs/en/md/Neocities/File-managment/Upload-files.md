@@ -16,7 +16,7 @@ sidebar_position: 2
   | Singly | --singly | Boolean | True > sends files in separate requests |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Neocities
+  Returns:  Map Of KeyAndValue - serialized JSON response from Neocities
 
 <br/>
 

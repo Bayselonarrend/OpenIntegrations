@@ -16,7 +16,7 @@ sidebar_position: 5
   | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
 <br/>
 
@@ -42,7 +42,7 @@ sidebar_position: 5
 ```json title="Result"
 {
  "response": {
-  "id": 306024989,
+  "id": 306043366,
   "owner_id": -218861756,
   "size": 0,
   "title": "AlbumFromAutoTest",
@@ -50,10 +50,10 @@ sidebar_position: 5
   "feed_has_pinned": 0,
   "can_upload": 1,
   "comments_disabled": 0,
-  "created": 1728328017,
+  "created": 1728453690,
   "description": "NewAlbumFromAutoTest",
   "thumb_id": 0,
-  "updated": 1728328017,
+  "updated": 1728453690,
   "upload_by_admins_only": 1
  }
 }

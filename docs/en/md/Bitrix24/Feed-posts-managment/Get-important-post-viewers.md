@@ -52,13 +52,13 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
   "1"
  ],
  "time": {
-  "start": 1728329082.6303,
-  "finish": 1728329082.66121,
-  "duration": 0.0309128761291504,
-  "processing": 0.000174999237060547,
-  "date_start": "2024-10-07T22:24:42+03:00",
-  "date_finish": "2024-10-07T22:24:42+03:00",
-  "operating_reset_at": 1728329682,
+  "start": 1728454764.35244,
+  "finish": 1728454764.38658,
+  "duration": 0.0341410636901856,
+  "processing": 0.000212907791137695,
+  "date_start": "2024-10-09T09:19:24+03:00",
+  "date_finish": "2024-10-09T09:19:24+03:00",
+  "operating_reset_at": 1728455364,
   "operating": 0
  }
 }

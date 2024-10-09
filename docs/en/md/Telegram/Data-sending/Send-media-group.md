@@ -19,7 +19,7 @@ sidebar_position: 7
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -64,7 +64,7 @@ Map: Key - File, Value - media type
  "ok": true,
  "result": [
   {
-   "message_id": 8268,
+   "message_id": 8310,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -78,8 +78,8 @@ Map: Key - File, Value - media type
     "username": "JKIee",
     "type": "private"
    },
-   "date": 1728327749,
-   "media_group_id": "13826621998914562",
+   "date": 1728453419,
+   "media_group_id": "13827627353456290",
    "photo": [
     {
      "file_id": "AgACAgIAAxkDAAIfmWb-MR8PQhrvZHiqLmG6UdiAAznzAALj5DEb1I7wSxB3bmqDIveAAQADAgADcwADNgQ",
@@ -120,7 +120,7 @@ Map: Key - File, Value - media type
    "caption": "Строковое значение"
   },
   {
-   "message_id": 8269,
+   "message_id": 8311,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -134,8 +134,8 @@ Map: Key - File, Value - media type
     "username": "JKIee",
     "type": "private"
    },
-   "date": 1728327749,
-   "media_group_id": "13826621998914562",
+   "date": 1728453419,
+   "media_group_id": "13827627353456290",
    "video": {
     "duration": 5,
     "width": 640,
@@ -143,21 +143,21 @@ Map: Key - File, Value - media type
     "file_name": "video1",
     "mime_type": "video/mp4",
     "thumbnail": {
-     "file_id": "AAMCAgADFQdnBDBFKRF3_EE482s_5_F11oT-5wAClWIAAgNlIUh2R_MMgi8kLgEAB20AAzYE",
-     "file_unique_id": "AQADlWIAAgNlIUhy",
+     "file_id": "AAMCAgADFQdnBhsq6-bI-FK3CYb2iTi0EMaRSQACU1oAAv3IOEhuDaGGTZyj9AEAB20AAzYE",
+     "file_unique_id": "AQADU1oAAv3IOEhy",
      "file_size": 20106,
      "width": 320,
      "height": 240
     },
     "thumb": {
-     "file_id": "AAMCAgADFQdnBDBFKRF3_EE482s_5_F11oT-5wAClWIAAgNlIUh2R_MMgi8kLgEAB20AAzYE",
-     "file_unique_id": "AQADlWIAAgNlIUhy",
+     "file_id": "AAMCAgADFQdnBhsq6-bI-FK3CYb2iTi0EMaRSQACU1oAAv3IOEhuDaGGTZyj9AEAB20AAzYE",
+     "file_unique_id": "AQADU1oAAv3IOEhy",
      "file_size": 20106,
      "width": 320,
      "height": 240
     },
-    "file_id": "BAACAgIAAxUHZwQwRSkRd_xBOPNrP-fxddaE_ucAApViAAIDZSFIdkfzDIIvJC42BA",
-    "file_unique_id": "AgADlWIAAgNlIUg",
+    "file_id": "BAACAgIAAxUHZwYbKuvmyPhStwmG9ok4tBDGkUkAAlNaAAL9yDhIbg2hhk2co_Q2BA",
+    "file_unique_id": "AgADU1oAAv3IOEg",
     "file_size": 1137878
    }
   }

@@ -47,12 +47,12 @@ sidebar_position: 6
 ```json title="Result"
 {
  "kind": "calendar#event",
- "etag": "\"3456657309578000\"",
- "id": "2m8dvff37scrs418csuqd9c0l0",
+ "etag": "\"3456908680754000\"",
+ "id": "7rfbn0fb8nai4i7v4l435tgl1c",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=Mm04ZHZmZjM3c2NyczQxOGNzdXFkOWMwbDAgYjA5MTYxMDAyM2EyOWM0NzY5ZGI3NjUyZmNiN2E1YTMyNTRmNGQ2NjdiZWJkNTBmOTZmMGY0NWY2NTE3NzIzYkBn",
- "created": "2024-10-07T19:17:34Z",
- "updated": "2024-10-07T19:17:34.789Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=N3JmYm4wZmI4bmFpNGk3djRsNDM1dGdsMWMgNjA2MTNkNTNjNDY3MGFiZGNlZWMzZTc2OTNjYTQ3NWIwZTg4ZGMxNjc4ZGI3MjEwNTIxMzU2YjQ5NDBhNjE0OEBn",
+ "created": "2024-10-09T06:12:19Z",
+ "updated": "2024-10-09T06:12:20.377Z",
  "summary": "New event",
  "description": "New event description",
  "location": "InOffice",
@@ -60,19 +60,19 @@ sidebar_position: 6
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "b091610023a29c4769db7652fcb7a5a3254f4d667bebd50f96f0f45f6517723b@group.calendar.google.com",
+  "email": "60613d53c4670abdceec3e7693ca475b0e88dc1678db7210521356b4940a6148@group.calendar.google.com",
   "displayName": "TestCalendar",
   "self": true
  },
  "start": {
-  "dateTime": "2024-10-08T01:17:34+03:00",
+  "dateTime": "2024-10-09T12:12:19+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2024-10-08T02:17:34+03:00",
+  "dateTime": "2024-10-09T13:12:19+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "2m8dvff37scrs418csuqd9c0l0@google.com",
+ "iCalUID": "7rfbn0fb8nai4i7v4l435tgl1c@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

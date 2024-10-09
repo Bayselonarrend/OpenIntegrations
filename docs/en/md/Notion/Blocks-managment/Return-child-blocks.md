@@ -15,7 +15,7 @@ sidebar_position: 3
   | BlockID | --block | String | Parent block ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Notion
+  Returns:  Map Of KeyAndValue - serialized JSON response from Notion
 
 <br/>
 
@@ -45,6 +45,6 @@ sidebar_position: 3
  "has_more": false,
  "type": "block",
  "block": {},
- "request_id": "4b9cfaf8-0a0c-4dee-a88b-e6f73136df17"
+ "request_id": "8e767421-eb28-4a76-ab19-60cea883414e"
 }
 ```

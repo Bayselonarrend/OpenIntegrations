@@ -51,14 +51,14 @@ Method at API documentation: [crm.deal.delete](https://dev.1c-bitrix.ru/rest_hel
 {
  "result": true,
  "time": {
-  "start": 1728329256.47369,
-  "finish": 1728329256.58372,
-  "duration": 0.110022068023682,
-  "processing": 0.0787839889526367,
-  "date_start": "2024-10-07T22:27:36+03:00",
-  "date_finish": "2024-10-07T22:27:36+03:00",
-  "operating_reset_at": 1728329856,
-  "operating": 0
+  "start": 1728454947.97132,
+  "finish": 1728454948.11192,
+  "duration": 0.14059591293335,
+  "processing": 0.103829860687256,
+  "date_start": "2024-10-09T09:22:27+03:00",
+  "date_finish": "2024-10-09T09:22:28+03:00",
+  "operating_reset_at": 1728455548,
+  "operating": 0.103808164596558
  }
 }
 ```

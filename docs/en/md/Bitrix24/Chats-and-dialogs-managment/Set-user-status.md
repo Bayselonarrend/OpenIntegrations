@@ -51,13 +51,13 @@ Method at API documentation: [im.user.status.set](https://dev.1c-bitrix.ru/learn
 {
  "result": true,
  "time": {
-  "start": 1728329154.21302,
-  "finish": 1728329154.24874,
-  "duration": 0.0357239246368408,
-  "processing": 0.00669217109680176,
-  "date_start": "2024-10-07T22:25:54+03:00",
-  "date_finish": "2024-10-07T22:25:54+03:00",
-  "operating_reset_at": 1728329754,
+  "start": 1728454841.60883,
+  "finish": 1728454841.64357,
+  "duration": 0.0347371101379394,
+  "processing": 0.00739097595214844,
+  "date_start": "2024-10-09T09:20:41+03:00",
+  "date_finish": "2024-10-09T09:20:41+03:00",
+  "operating_reset_at": 1728455441,
   "operating": 0
  }
 }

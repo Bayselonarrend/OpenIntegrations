@@ -56,16 +56,16 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 
 ```json title="Result"
 {
- "result": 582,
+ "result": 594,
  "time": {
-  "start": 1728329238.51336,
-  "finish": 1728329238.63965,
-  "duration": 0.126287937164307,
-  "processing": 0.0988650321960449,
-  "date_start": "2024-10-07T22:27:18+03:00",
-  "date_finish": "2024-10-07T22:27:18+03:00",
-  "operating_reset_at": 1728329838,
-  "operating": 0
+  "start": 1728454927.08955,
+  "finish": 1728454927.30747,
+  "duration": 0.217915773391724,
+  "processing": 0.186015844345093,
+  "date_start": "2024-10-09T09:22:07+03:00",
+  "date_finish": "2024-10-09T09:22:07+03:00",
+  "operating_reset_at": 1728455527,
+  "operating": 0.18598484992981
  }
 }
 ```

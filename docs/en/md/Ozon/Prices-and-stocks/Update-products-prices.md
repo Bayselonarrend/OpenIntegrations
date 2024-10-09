@@ -16,7 +16,7 @@ sidebar_position: 5
   | Prices | --prices | Array of Structure | Products prices. See GetProductPriceStructure |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

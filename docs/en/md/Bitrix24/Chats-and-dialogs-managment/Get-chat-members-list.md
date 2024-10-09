@@ -109,13 +109,13 @@ Method at API documentation: [im.dialog.users.list](https://dev.1c-bitrix.ru/lea
  ],
  "total": 2,
  "time": {
-  "start": 1728329215.75436,
-  "finish": 1728329215.79015,
-  "duration": 0.0357930660247803,
-  "processing": 0.00841403007507324,
-  "date_start": "2024-10-07T22:26:55+03:00",
-  "date_finish": "2024-10-07T22:26:55+03:00",
-  "operating_reset_at": 1728329815,
+  "start": 1728454904.75088,
+  "finish": 1728454904.78679,
+  "duration": 0.0359148979187012,
+  "processing": 0.00780296325683594,
+  "date_start": "2024-10-09T09:21:44+03:00",
+  "date_finish": "2024-10-09T09:21:44+03:00",
+  "operating_reset_at": 1728455504,
   "operating": 0
  }
 }

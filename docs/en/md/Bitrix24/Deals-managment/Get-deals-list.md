@@ -55,13 +55,13 @@ Method at API documentation: [crm.deal.list](https://dev.1c-bitrix.ru/rest_help/
  "result": [],
  "total": 0,
  "time": {
-  "start": 1728329257.31898,
-  "finish": 1728329257.36875,
-  "duration": 0.0497708320617676,
-  "processing": 0.0192160606384277,
-  "date_start": "2024-10-07T22:27:37+03:00",
-  "date_finish": "2024-10-07T22:27:37+03:00",
-  "operating_reset_at": 1728329857,
+  "start": 1728454948.8758,
+  "finish": 1728454948.92784,
+  "duration": 0.0520431995391846,
+  "processing": 0.0178999900817871,
+  "date_start": "2024-10-09T09:22:28+03:00",
+  "date_finish": "2024-10-09T09:22:28+03:00",
+  "operating_reset_at": 1728455548,
   "operating": 0
  }
 }

@@ -51,7 +51,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
 {
  "result": [
   {
-   "ID": "938",
+   "ID": "950",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
    "TITLE": "New post title",
@@ -61,7 +61,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
    "CODE": null,
    "MICRO": "N",
    "DETAIL_TEXT": "New post text",
-   "DATE_PUBLISH": "2024-10-07T22:24:38+03:00",
+   "DATE_PUBLISH": "2024-10-09T09:19:18+03:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -111,7 +111,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 938,
+    "ENTITY_VALUE_ID": 950,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -142,7 +142,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 938,
+    "ENTITY_VALUE_ID": 950,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -187,7 +187,7 @@ Method at API documentation: [log.blogpost.get](https://dev.1c-bitrix.ru/rest_he
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 938,
+    "ENTITY_VALUE_ID": 950,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []

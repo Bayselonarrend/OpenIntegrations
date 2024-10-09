@@ -40,8 +40,8 @@ sidebar_position: 1
 ```json title="Result"
 {
  "kind": "calendar#calendar",
- "etag": "\"1_TghspzwDY1Mr-ZwSjhCIC1UHk\"",
- "id": "b091610023a29c4769db7652fcb7a5a3254f4d667bebd50f96f0f45f6517723b@group.calendar.google.com",
+ "etag": "\"f-Xduc312TYuzWZZ-yIpBJJfeyo\"",
+ "id": "60613d53c4670abdceec3e7693ca475b0e88dc1678db7210521356b4940a6148@group.calendar.google.com",
  "summary": "TestCalendar",
  "timeZone": "Europe/Moscow",
  "conferenceProperties": {

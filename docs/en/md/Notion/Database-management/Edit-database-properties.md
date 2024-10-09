@@ -18,7 +18,7 @@ sidebar_position: 3
   | Description | --description | String | New database description |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Notion
+  Returns:  Map Of KeyAndValue - serialized JSON response from Notion
 
 <br/>
 
@@ -50,10 +50,10 @@ sidebar_position: 3
 ```json title="Result"
 {
  "object": "database",
- "id": "11882aa7-fc4e-8171-8ab2-e7ec4b6fbd0f",
+ "id": "11a82aa7-fc4e-8138-a724-ee8786147d82",
  "cover": null,
  "icon": null,
- "created_time": "2024-10-07T19:20:00Z",
+ "created_time": "2024-10-09T06:14:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -62,7 +62,7 @@ sidebar_position: 3
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2024-10-07T19:20:00Z",
+ "last_edited_time": "2024-10-09T06:14:00Z",
  "title": [
   {
    "type": "text",
@@ -103,44 +103,64 @@ sidebar_position: 3
  ],
  "is_inline": false,
  "properties": {
+  "Description": {
+   "id": "%3COFd",
+   "name": "Description",
+   "type": "rich_text",
+   "rich_text": {}
+  },
   "Phone": {
-   "id": "%3C%5Ehm",
+   "id": "Ne%7DI",
    "name": "Phone",
    "type": "phone_number",
    "phone_number": {}
   },
   "CreationDate": {
-   "id": "Oykw",
+   "id": "P%3Doo",
    "name": "CreationDate",
    "type": "date",
    "date": {}
   },
-  "Description": {
-   "id": "Q~%3DG",
-   "name": "Description",
+  "Active": {
+   "id": "Ub%7C%5D",
+   "name": "Active",
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Number": {
+   "id": "%5Dotl",
+   "name": "Number",
+   "type": "number",
+   "number": {
+    "format": "number"
+   }
+  },
+  "Email": {
+   "id": "%60%7DN%3F",
+   "name": "Email",
    "type": "rich_text",
    "rich_text": {}
   },
   "Status": {
-   "id": "%5DPli",
+   "id": "bAZ%7D",
    "name": "Status",
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "b037c74f-15fa-4d57-ac22-2c0baec6c33e",
+      "id": "0e626378-0386-4985-88de-b747968504e7",
       "name": "New",
       "color": "green",
       "description": null
      },
      {
-      "id": "0627e1c9-a1e2-47fb-bc45-81f62561194b",
+      "id": "e9a7ad5c-196f-4b2a-b2de-e84e849f2183",
       "name": "InProgress",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "0dbe331e-6233-4f41-a290-fb5383d09d02",
+      "id": "1b214a08-6768-4381-b3cb-d8dd88250f8c",
       "name": "Remote",
       "color": "red",
       "description": null
@@ -148,34 +168,14 @@ sidebar_position: 3
     ]
    }
   },
-  "Email": {
-   "id": "%5DoSt",
-   "name": "Email",
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Number": {
-   "id": "aPBW",
-   "name": "Number",
-   "type": "number",
-   "number": {
-    "format": "number"
-   }
-  },
   "User": {
-   "id": "dNc%7B",
+   "id": "%7B%3Bsu",
    "name": "User",
    "type": "people",
    "people": {}
   },
-  "Active": {
-   "id": "l%5EwE",
-   "name": "Active",
-   "type": "checkbox",
-   "checkbox": {}
-  },
   "Image": {
-   "id": "tK_b",
+   "id": "%7B%3F%5B%3F",
    "name": "Image",
    "type": "files",
    "files": {}
@@ -191,10 +191,10 @@ sidebar_position: 3
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/11882aa7fc4e81718ab2e7ec4b6fbd0f",
+ "url": "https://www.notion.so/11a82aa7fc4e8138a724ee8786147d82",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "856a706c-2094-4c49-a0c6-58872c6f3311"
+ "request_id": "2db0d0b9-71b2-45a9-87bc-e25489f09cf3"
 }
 ```

@@ -16,7 +16,7 @@ sidebar_position: 7
   | FileID | --fileid | String, Number | File ID of voice message |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 
@@ -44,8 +44,8 @@ Method at API documentation: [GET /messages/sendVoice](https://teams.vk.com/bota
 
 ```json title="Result"
 {
- "fileId": "I000bBktBHG1YpsdO9I6Zo6704366a1bd",
- "msgId": "7423117936182692106",
+ "fileId": "I000bPC37Th9syNcxyaG4r670621651bd",
+ "msgId": "7423657774917093693",
  "ok": true
 }
 ```

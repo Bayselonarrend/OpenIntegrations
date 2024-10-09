@@ -16,7 +16,7 @@ sidebar_position: 11
   | ArticlesMap | --offers | Map Of KeyAndValue | Articles: Key > current, Value > new |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

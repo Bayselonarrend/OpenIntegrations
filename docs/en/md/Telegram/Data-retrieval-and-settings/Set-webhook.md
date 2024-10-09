@@ -15,7 +15,7 @@ sidebar_position: 3
   | URL | --url | String | Request handling address from Telegram (with https:) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 

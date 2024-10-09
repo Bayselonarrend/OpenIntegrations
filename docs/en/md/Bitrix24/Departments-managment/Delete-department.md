@@ -51,13 +51,13 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 {
  "result": true,
  "time": {
-  "start": 1728329239.45456,
-  "finish": 1728329239.53879,
-  "duration": 0.0842268466949463,
-  "processing": 0.0560128688812256,
-  "date_start": "2024-10-07T22:27:19+03:00",
-  "date_finish": "2024-10-07T22:27:19+03:00",
-  "operating_reset_at": 1728329839,
+  "start": 1728454928.30262,
+  "finish": 1728454928.41098,
+  "duration": 0.108357906341553,
+  "processing": 0.0806529521942139,
+  "date_start": "2024-10-09T09:22:08+03:00",
+  "date_finish": "2024-10-09T09:22:08+03:00",
+  "operating_reset_at": 1728455528,
   "operating": 0
  }
 }

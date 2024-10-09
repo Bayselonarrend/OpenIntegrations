@@ -51,15 +51,15 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 
 ```json title="Result"
 {
- "result": 864,
+ "result": 876,
  "time": {
-  "start": 1728329083.12492,
-  "finish": 1728329083.22857,
-  "duration": 0.103652000427246,
-  "processing": 0.0732860565185547,
-  "date_start": "2024-10-07T22:24:43+03:00",
-  "date_finish": "2024-10-07T22:24:43+03:00",
-  "operating_reset_at": 1728329683,
+  "start": 1728454764.93192,
+  "finish": 1728454765.05443,
+  "duration": 0.122506141662598,
+  "processing": 0.0952260494232178,
+  "date_start": "2024-10-09T09:19:24+03:00",
+  "date_finish": "2024-10-09T09:19:25+03:00",
+  "operating_reset_at": 1728455364,
   "operating": 0
  }
 }

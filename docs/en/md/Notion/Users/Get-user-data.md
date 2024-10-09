@@ -15,7 +15,7 @@ sidebar_position: 2
   | UserID | --user | String | Target user ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Notion
+  Returns:  Map Of KeyAndValue - serialized JSON response from Notion
 
 <br/>
 
@@ -47,6 +47,6 @@ sidebar_position: 2
  "person": {
   "email": "iscript13@gmail.com"
  },
- "request_id": "3940d6fb-7cd9-4a24-9dbb-b0a3f4dfb289"
+ "request_id": "a6fc9071-fac0-4069-84ba-e724b783d9ce"
 }
 ```

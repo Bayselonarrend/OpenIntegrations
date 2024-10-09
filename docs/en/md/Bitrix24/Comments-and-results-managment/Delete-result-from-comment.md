@@ -51,13 +51,13 @@ Method at API documentation: [tasks.task.result.deleteFromComment](https://dev.1
 {
  "result": null,
  "time": {
-  "start": 1728329109.8361,
-  "finish": 1728329109.8858,
-  "duration": 0.0497019290924072,
-  "processing": 0.0225510597229004,
-  "date_start": "2024-10-07T22:25:09+03:00",
-  "date_finish": "2024-10-07T22:25:09+03:00",
-  "operating_reset_at": 1728329709,
+  "start": 1728454795.33004,
+  "finish": 1728454795.38756,
+  "duration": 0.0575249195098877,
+  "processing": 0.0249888896942139,
+  "date_start": "2024-10-09T09:19:55+03:00",
+  "date_finish": "2024-10-09T09:19:55+03:00",
+  "operating_reset_at": 1728455395,
   "operating": 0
  }
 }

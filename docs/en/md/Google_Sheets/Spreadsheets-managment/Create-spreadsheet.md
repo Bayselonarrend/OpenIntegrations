@@ -44,7 +44,7 @@ sidebar_position: 1
 
 ```json title="Result"
 {
- "spreadsheetId": "1RxiPYOBj1c0N1noQdDvunrgJqIdWf6jp-CyrxnU1jFY",
+ "spreadsheetId": "1p_i-5lmOKdBEbi88O0SkXq2Q_gG0c4EY7N_wtWGKSCs",
  "properties": {
   "title": "TestTable",
   "locale": "ru_RU",
@@ -179,7 +179,7 @@ sidebar_position: 1
  "sheets": [
   {
    "properties": {
-    "sheetId": 741689252,
+    "sheetId": 1448844153,
     "title": "Sheet1",
     "index": 0,
     "sheetType": "GRID",
@@ -191,7 +191,7 @@ sidebar_position: 1
   },
   {
    "properties": {
-    "sheetId": 713211156,
+    "sheetId": 1415561922,
     "title": "Sheet2",
 ...
 ```

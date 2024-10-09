@@ -44,7 +44,7 @@ Method at API documentation: [disk.storage.getforapp](https://dev.1c-bitrix.ru/r
 {
  "result": {
   "ID": "18",
-  "NAME": "Новое имя хранилища",
+  "NAME": "New storage name",
   "CODE": null,
   "MODULE_ID": "disk",
   "ENTITY_TYPE": "restapp",
@@ -52,13 +52,13 @@ Method at API documentation: [disk.storage.getforapp](https://dev.1c-bitrix.ru/r
   "ROOT_OBJECT_ID": "464"
  },
  "time": {
-  "start": 1728329113.25434,
-  "finish": 1728329113.28621,
-  "duration": 0.0318701267242432,
-  "processing": 0.00368189811706543,
-  "date_start": "2024-10-07T22:25:13+03:00",
-  "date_finish": "2024-10-07T22:25:13+03:00",
-  "operating_reset_at": 1728329713,
+  "start": 1728454799.05907,
+  "finish": 1728454799.09081,
+  "duration": 0.0317399501800537,
+  "processing": 0.00446605682373047,
+  "date_start": "2024-10-09T09:19:59+03:00",
+  "date_finish": "2024-10-09T09:19:59+03:00",
+  "operating_reset_at": 1728455399,
   "operating": 0
  }
 }

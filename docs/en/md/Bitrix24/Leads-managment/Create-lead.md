@@ -66,16 +66,16 @@ Method at API documentation: [crm.lead.add](https://dev.1c-bitrix.ru/rest_help/c
 
 ```json title="Result"
 {
- "result": 382,
+ "result": 394,
  "time": {
-  "start": 1728329251.03262,
-  "finish": 1728329251.53521,
-  "duration": 0.50258994102478,
-  "processing": 0.47788405418396,
-  "date_start": "2024-10-07T22:27:31+03:00",
-  "date_finish": "2024-10-07T22:27:31+03:00",
-  "operating_reset_at": 1728329851,
-  "operating": 0.477864027023315
+  "start": 1728454941.45396,
+  "finish": 1728454942.16614,
+  "duration": 0.712172985076904,
+  "processing": 0.685149908065796,
+  "date_start": "2024-10-09T09:22:21+03:00",
+  "date_finish": "2024-10-09T09:22:22+03:00",
+  "operating_reset_at": 1728455541,
+  "operating": 0.685086011886597
  }
 }
 ```

@@ -16,7 +16,7 @@ sidebar_position: 8
   | User | --user | String | User ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 

@@ -16,7 +16,7 @@ sidebar_position: 10
   | MessageID | --messageid | String, Number | ID of the message to be unpinned |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

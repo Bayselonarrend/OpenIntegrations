@@ -16,7 +16,7 @@ sidebar_position: 7
   | MessageID | --message | String, Number | ID of message to delete |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 

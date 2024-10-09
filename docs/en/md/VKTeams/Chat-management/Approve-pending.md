@@ -16,7 +16,7 @@ sidebar_position: 10
   | UserID | --userid | String, Number | User ID. For all active requests if not filled in |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

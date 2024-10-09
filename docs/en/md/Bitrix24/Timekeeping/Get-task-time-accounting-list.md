@@ -50,39 +50,39 @@ Method at API documentation: [task.elapseditem.getlist](https://dev.1c-bitrix.ru
 {
  "result": [
   {
-   "ID": "816",
-   "TASK_ID": "2374",
+   "ID": "828",
+   "TASK_ID": "2404",
    "USER_ID": "1",
    "COMMENT_TEXT": "",
    "SECONDS": "3600",
    "MINUTES": "60",
    "SOURCE": "2",
-   "CREATED_DATE": "2024-10-07T22:25:50+03:00",
-   "DATE_START": "2024-10-07T22:25:50+03:00",
-   "DATE_STOP": "2024-10-07T22:25:50+03:00"
+   "CREATED_DATE": "2024-10-09T09:20:37+03:00",
+   "DATE_START": "2024-10-09T09:20:37+03:00",
+   "DATE_STOP": "2024-10-09T09:20:37+03:00"
   },
   {
-   "ID": "818",
-   "TASK_ID": "2374",
+   "ID": "830",
+   "TASK_ID": "2404",
    "USER_ID": "10",
    "COMMENT_TEXT": "Time spent on work",
    "SECONDS": "7200",
    "MINUTES": "120",
    "SOURCE": "2",
-   "CREATED_DATE": "2024-09-07T22:25:50+03:00",
-   "DATE_START": "2024-10-07T22:25:50+03:00",
-   "DATE_STOP": "2024-10-07T22:25:50+03:00"
+   "CREATED_DATE": "2024-09-09T09:20:37+03:00",
+   "DATE_START": "2024-10-09T09:20:37+03:00",
+   "DATE_STOP": "2024-10-09T09:20:37+03:00"
   }
  ],
  "total": 2,
  "time": {
-  "start": 1728329150.54649,
-  "finish": 1728329150.59853,
-  "duration": 0.052044153213501,
-  "processing": 0.0217700004577637,
-  "date_start": "2024-10-07T22:25:50+03:00",
-  "date_finish": "2024-10-07T22:25:50+03:00",
-  "operating_reset_at": 1728329750,
+  "start": 1728454837.88515,
+  "finish": 1728454837.93688,
+  "duration": 0.0517289638519287,
+  "processing": 0.0237300395965576,
+  "date_start": "2024-10-09T09:20:37+03:00",
+  "date_finish": "2024-10-09T09:20:37+03:00",
+  "operating_reset_at": 1728455437,
   "operating": 0
  }
 }

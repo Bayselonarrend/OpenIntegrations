@@ -51,13 +51,13 @@ Method at API documentation: [tasks.task.favorite.add](https://dev.1c-bitrix.ru/
 {
  "result": true,
  "time": {
-  "start": 1728329094.20325,
-  "finish": 1728329094.23837,
-  "duration": 0.0351200103759766,
-  "processing": 0.0089409351348877,
-  "date_start": "2024-10-07T22:24:54+03:00",
-  "date_finish": "2024-10-07T22:24:54+03:00",
-  "operating_reset_at": 1728329694,
+  "start": 1728454777.13737,
+  "finish": 1728454777.17877,
+  "duration": 0.0414021015167236,
+  "processing": 0.0116980075836182,
+  "date_start": "2024-10-09T09:19:37+03:00",
+  "date_finish": "2024-10-09T09:19:37+03:00",
+  "operating_reset_at": 1728455377,
   "operating": 0
  }
 }

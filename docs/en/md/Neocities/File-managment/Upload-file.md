@@ -16,7 +16,7 @@ sidebar_position: 1
   | Data | --file | String, BinaryData | URL, path or file data |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Neocities
+  Returns:  Map Of KeyAndValue - serialized JSON response from Neocities
 
 <br/>
 

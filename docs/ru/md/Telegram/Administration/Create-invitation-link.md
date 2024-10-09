@@ -50,15 +50,15 @@ sidebar_position: 3
 {
  "ok": true,
  "result": {
-  "invite_link": "https://t.me/+GYV4QUn-STE1MmZi",
-  "name": "Ссылка 07.10.2024 21:24:39",
+  "invite_link": "https://t.me/+W4mnd9ZTHJRlZmVi",
+  "name": "Ссылка 08.10.2024 20:26:58",
   "creator": {
    "id": 6129457865,
    "is_bot": true,
    "first_name": "Бот Виталий",
    "username": "sicheebot"
   },
-  "expire_date": 1728419080,
+  "expire_date": 1728502018,
   "member_limit": 200,
   "creates_join_request": false,
   "is_primary": false,

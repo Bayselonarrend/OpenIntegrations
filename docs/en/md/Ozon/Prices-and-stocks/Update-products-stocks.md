@@ -16,7 +16,7 @@ sidebar_position: 4
   | Stocks | --stocks | Array of Structure | Array of stocks data. See GetProductStocksStructure |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

@@ -39,7 +39,7 @@ Here you can get the channel's user IDs. Bot IDs need to be obtained from the We
  "status": 0,
  "status_message": "ok",
  "id": "pa:5925427292815753130",
- "chat_hostname": "SN-CHAT-02_",
+ "chat_hostname": "SN-CHAT-08_",
  "name": "1C Test",
  "members": [
   {

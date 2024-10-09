@@ -60,7 +60,7 @@ sidebar_position: 1
 {
  "status": 0,
  "status_message": "ok",
- "message_token": 6024155405006291763,
+ "message_token": 6024682517702263447,
  "chat_hostname": "SN-CHAT-01_",
  "billing_status": 3
 }

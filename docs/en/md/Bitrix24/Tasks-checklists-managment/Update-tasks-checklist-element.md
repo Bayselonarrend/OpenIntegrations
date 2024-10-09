@@ -57,13 +57,13 @@ Method at API documentation: [task.checklistitem.update](https://dev.1c-bitrix.r
 {
  "result": null,
  "time": {
-  "start": 1728329101.87469,
-  "finish": 1728329101.92918,
-  "duration": 0.0544939041137695,
-  "processing": 0.0280270576477051,
-  "date_start": "2024-10-07T22:25:01+03:00",
-  "date_finish": "2024-10-07T22:25:01+03:00",
-  "operating_reset_at": 1728329701,
+  "start": 1728454786.34816,
+  "finish": 1728454786.41181,
+  "duration": 0.0636470317840576,
+  "processing": 0.0358831882476807,
+  "date_start": "2024-10-09T09:19:46+03:00",
+  "date_finish": "2024-10-09T09:19:46+03:00",
+  "operating_reset_at": 1728455386,
   "operating": 0
  }
 }

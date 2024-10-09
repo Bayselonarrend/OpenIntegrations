@@ -40,8 +40,8 @@ sidebar_position: 1
 ```json title="Результат"
 {
  "kind": "calendar#calendar",
- "etag": "\"cBtzSn63yCm3FvRWH0mw8Eg6JTU\"",
- "id": "cb65e432250ce6f3243288c13b1b02dbaca9a8600acf9c5aaf339ae20e9eaa9d@group.calendar.google.com",
+ "etag": "\"3HshD0LA889W8w5lSPGvE18X3Co\"",
+ "id": "f8cb253516cc990d1f36a7d15cdb825ffdc15c6ceeaa25ef78924de9beea3a56@group.calendar.google.com",
  "summary": "Тестовый календарь",
  "timeZone": "Europe/Moscow",
  "conferenceProperties": {

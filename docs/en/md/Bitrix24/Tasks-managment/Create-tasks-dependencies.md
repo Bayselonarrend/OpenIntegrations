@@ -59,14 +59,14 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 {
  "result": [],
  "time": {
-  "start": 1728329092.20682,
-  "finish": 1728329092.36801,
-  "duration": 0.16118597984314,
-  "processing": 0.134482145309448,
-  "date_start": "2024-10-07T22:24:52+03:00",
-  "date_finish": "2024-10-07T22:24:52+03:00",
-  "operating_reset_at": 1728329692,
-  "operating": 0.134455919265747
+  "start": 1728454774.59977,
+  "finish": 1728454774.6891,
+  "duration": 0.0893309116363525,
+  "processing": 0.0593829154968262,
+  "date_start": "2024-10-09T09:19:34+03:00",
+  "date_finish": "2024-10-09T09:19:34+03:00",
+  "operating_reset_at": 1728455374,
+  "operating": 0
  }
 }
 ```

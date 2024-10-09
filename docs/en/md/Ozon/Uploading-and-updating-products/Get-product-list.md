@@ -17,7 +17,7 @@ sidebar_position: 1
   | LastID | --last | String, Number | ID of the last value (last_id) from the previous response |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -54,7 +54,7 @@ Method at API documentation: [post /v2/product/list](https://docs.ozon.ru/api/se
  "result": {
   "items": [
    {
-    "product_id": 1213785862,
+    "product_id": 1215763512,
     "offer_id": "143210609",
     "is_fbo_visible": false,
     "is_fbs_visible": false,
@@ -63,7 +63,7 @@ Method at API documentation: [post /v2/product/list](https://docs.ozon.ru/api/se
    }
   ],
   "total": 1,
-  "last_id": "WzEyMTM3ODU4NjIsMTIxMzc4NTg2Ml0="
+  "last_id": "WzEyMTU3NjM1MTIsMTIxNTc2MzUxMl0="
  }
 }
 ```

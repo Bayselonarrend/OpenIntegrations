@@ -17,7 +17,7 @@ sidebar_position: 8
   | DeleteLastMessages | --dellast | Boolean | Delete last messages before blocking |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

@@ -44,8 +44,8 @@ sidebar_position: 1
 {
  "records": [
   {
-   "id": "recuj5Y7b4I16TsN3",
-   "createdTime": "2024-10-07T18:42:11Z",
+   "id": "rec9dR46CmDQMkUJ0",
+   "createdTime": "2024-10-08T17:44:49Z",
    "fields": {
     "Номер": 10,
     "Строковое": "Привет\n"

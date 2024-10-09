@@ -41,6 +41,6 @@ sidebar_position: 1
 {
  "status": 1,
  "status_message": "URL not valid or not HTTPS",
- "chat_hostname": "SN-CHAT-02_"
+ "chat_hostname": "SN-CHAT-01_"
 }
 ```

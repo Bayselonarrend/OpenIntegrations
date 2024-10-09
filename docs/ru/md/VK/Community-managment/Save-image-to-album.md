@@ -52,9 +52,9 @@ sidebar_position: 8
 {
  "response": [
   {
-   "album_id": 306024422,
-   "date": 1728325684,
-   "id": 457248998,
+   "album_id": 306037648,
+   "date": 1728408622,
+   "id": 457249036,
    "owner_id": -218861756,
    "sizes": [
     {
@@ -120,7 +120,7 @@ sidebar_position: 8
    ],
    "text": "Картинка автотест",
    "user_id": 100,
-   "web_view_token": "9c28c995db1edccfe0",
+   "web_view_token": "247a58d67fba483dc5",
    "has_tags": false,
    "orig_photo": {
     "height": 1920,

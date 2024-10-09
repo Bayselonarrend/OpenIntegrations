@@ -16,7 +16,7 @@ sidebar_position: 1
   | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
 <br/>
 
@@ -46,11 +46,11 @@ sidebar_position: 1
  "response": [
   {
    "activity": {
-    "comments": 4,
-    "likes": 4
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1728259200,
-   "period_to": 1728345599,
+   "period_from": 1728432000,
+   "period_to": 1728518399,
    "reach": {
     "age": [
      {
@@ -179,12 +179,6 @@ sidebar_position: 1
     "cities": [],
     "countries": [
      {
-      "code": "SC",
-      "count": 2,
-      "name": "Сейшелы",
-      "value": 175
-     },
-     {
       "code": "RU",
       "count": 1,
       "name": "Россия",
@@ -192,5 +186,11 @@ sidebar_position: 1
      }
     ],
     "mobile_views": 0,
+    "views": 1,
+    "visitors": 1
+   }
+  },
+  {
+   "activity": {
 ...
 ```

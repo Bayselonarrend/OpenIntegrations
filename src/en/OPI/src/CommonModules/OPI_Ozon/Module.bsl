@@ -58,7 +58,7 @@
 // Lang - String - Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) - lang
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetCategoriesAndProductTypesTree(Val ClientID, Val APIKey, Val Lang = "DEFAULT") Export
 
     URL = "https://api-seller.ozon.ru/v1/description-category/tree";
@@ -89,7 +89,7 @@ EndFunction
 // Lang - String - Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) - lang
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetCategoryAttributes(Val ClientID
     , Val APIKey
     , Val CategoryID
@@ -128,7 +128,7 @@ EndFunction
 // Lang - String - Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) - lang
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetAttributeValues(Val ClientID
     , Val APIKey
     , Val CategoryID
@@ -172,7 +172,7 @@ EndFunction
 // Value - String - Search value - value
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function SearchAttributeValue(Val ClientID
     , Val APIKey
     , Val CategoryID
@@ -209,7 +209,7 @@ EndFunction
 // APIKey - String - API key - apikey
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsRequestsLimits(Val ClientID, Val APIKey) Export
 
     URL = "https://api-seller.ozon.ru/v4/product/info/limit";
@@ -239,7 +239,7 @@ EndFunction
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
 
     URL = "https://api-seller.ozon.ru/v2/product/list";
@@ -275,7 +275,7 @@ EndFunction
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsAttributesData(Val ClientID
     , Val APIKey
     , Val Filter = ""
@@ -319,7 +319,7 @@ EndFunction
 // Articles - String, Array of String - Item identifiers in the vendor's system (Article) - offerid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsInformation(Val ClientID
     , Val APIKey
     , Val ProductsID = 0
@@ -354,7 +354,7 @@ EndFunction
 // Article - String, Number - Item identifier in the vendor's system (Article) - offerid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val Article = "") Export
 
     URL = "https://api-seller.ozon.ru/v1/product/info/description";
@@ -383,7 +383,7 @@ EndFunction
 // SKU - Number, Array Of Number - Products identifiers in the Ozon system (SKU) - sku
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsContentRating(Val ClientID, Val APIKey, Val SKU) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/rating-by-sku";
@@ -413,7 +413,7 @@ EndFunction
 // ProductsArray - Array Of String - Array or one structure of product description fields - items
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function CreateUpdateProducts(Val ClientID, Val APIKey, Val ProductsArray) Export
 
     URL = "https://api-seller.ozon.ru/v3/product/import";
@@ -438,7 +438,7 @@ EndFunction
 // ProductsArray - Array Of String - Array or one simplified structure of product fields - items
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function CreateProductByOzonID(Val ClientID, Val APIKey, Val ProductsArray) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/import-by-sku";
@@ -462,7 +462,7 @@ EndFunction
 // AttributesArray - Array Of String - Array or one structure of product attribute fields - items
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function UpdateProductsAttributes(Val ClientID, Val APIKey, Val AttributesArray) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/attributes/update";
@@ -491,7 +491,7 @@ EndFunction
 // MarketingColor - String - Marketing color - color
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function UpdateProductImages(Val ClientID
     , Val APIKey
     , Val ProductID
@@ -527,7 +527,7 @@ EndFunction
 // ProductsID - String, Number, Array of String, Number - Product IDs to be inspected - products
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function CheckProductsImagesUpload(Val ClientID, Val APIKey, Val ProductsID) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/pictures/info";
@@ -555,7 +555,7 @@ EndFunction
 // ArticlesMap - Map Of KeyAndValue - Articles: Key > current, Value > new - offers
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function UpdateProductsArticles(Val ClientID, Val APIKey, Val ArticlesMap) Export
 
     OPI_TypeConversion.GetCollection(ArticlesMap);
@@ -596,7 +596,7 @@ EndFunction
 // ProductsID - String, Number, Array of String, Number - Product IDs for archiving - products
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function ArchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/archive";
@@ -625,7 +625,7 @@ EndFunction
 // ProductsID - String, Number, Array of String, Number - Product IDs for recovery - products
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function UnarchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/unarchive";
@@ -655,7 +655,7 @@ EndFunction
 // Articles - String, Number, Array of String, Number - Products articles - articles
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function DeleteProductsWithoutSKU(Val ClientID, Val APIKey, Val Articles) Export
 
     OPI_TypeConversion.GetArray(Articles);
@@ -696,7 +696,7 @@ EndFunction
 // Codes - String, Array of String - Digital product activation codes - codes
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function UploadProductActivationCodes(Val ClientID, Val APIKey, Val ProductID, Val Codes) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/upload_digital_codes";
@@ -725,7 +725,7 @@ EndFunction
 // SKU - Number, Array Of Number - Products identifiers in the Ozon system (SKU) - sku
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductSubscribersCount(Val ClientID, Val APIKey, Val SKU) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/info/subscription";
@@ -755,7 +755,7 @@ EndFunction
 // SKU - Number, Array Of Number - Products identifiers in the Ozon system (SKU) - sku
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetRelatedSKUs(Val ClientID, Val APIKey, Val SKU) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/related-sku/get";
@@ -783,7 +783,7 @@ EndFunction
 // TaskID - String, Number - Add product task ID - taskid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductCreationStatus(Val ClientID, Val APIKey, Val TaskID) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/import/info";
@@ -811,7 +811,7 @@ EndFunction
 // TaskID - String, Number - Add product task ID - taskid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetCodesUploadStatus(Val ClientID, Val APIKey, Val TaskID) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/upload_digital_codes/info";
@@ -1086,7 +1086,7 @@ EndFunction
 // BarcodesMap - Map Of KeyAndValue - Key > product SKU, Value > barcode - barcodes
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function BindBarcodes(Val ClientID, Val APIKey, Val BarcodesMap) Export
 
     OPI_TypeConversion.GetCollection(BarcodesMap);
@@ -1130,7 +1130,7 @@ EndFunction
 // ProductsID - String, Array of String - Products IDs for barcodes creating - productids
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function CreateBarcodes(Val ClientID, Val APIKey, Val ProductsID) Export
 
     URL = "https://api-seller.ozon.ru/v1/barcode/generate";
@@ -1163,7 +1163,7 @@ EndFunction
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsStocks(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
 
     URL = "https://api-seller.ozon.ru/v3/product/info/stocks";
@@ -1199,7 +1199,7 @@ EndFunction
 // LastID - String, Number - ID of the last value (last_id) from the previous response - last
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetProductsPrices(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export
 
     URL = "https://api-seller.ozon.ru/v4/product/info/prices";
@@ -1234,7 +1234,7 @@ EndFunction
 // SKU - Number, Array Of Number - SKU of discounted products - sku
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetDiscountInformation(Val ClientID, Val APIKey, Val SKU) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/info/discounted";
@@ -1265,7 +1265,7 @@ EndFunction
 // Stocks - Array of Structure - Array of stocks data. See GetProductStocksStructure - stocks
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function UpdateProductsStocks(Val ClientID, Val APIKey, Val Stocks) Export
 
     URL = "https://api-seller.ozon.ru/v2/products/stocks";
@@ -1293,7 +1293,7 @@ EndFunction
 // Prices - Array of Structure - Products prices. See GetProductPriceStructure - prices
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function UpdateProductsPrices(Val ClientID, Val APIKey, Val Prices) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/import/prices";
@@ -1322,7 +1322,7 @@ EndFunction
 // Discount - String, Number - Discount amount - discount
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function SetProductDiscount(Val ClientID, Val APIKey, Val ProductID, Val Discount) Export
 
     URL = "https://api-seller.ozon.ru/v1/product/update/discount";
@@ -1425,7 +1425,7 @@ EndFunction
 // APIKey - String - API key - apikey
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetPromotionsList(Val ClientID, Val APIKey) Export
 
     URL = "https://api-seller.ozon.ru/v1/actions";
@@ -1451,7 +1451,7 @@ EndFunction
 // Indent - Number - Offst of items list - offset
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetAvailablePromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
 
     URL = "https://api-seller.ozon.ru/v1/actions/candidates";
@@ -1483,7 +1483,7 @@ EndFunction
 // Indent - Number - Offst of items list - offset
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetCurrentPromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export
 
     URL = "https://api-seller.ozon.ru/v1/actions/products";
@@ -1517,7 +1517,7 @@ EndFunction
 // APIKey - String - API key - apikey
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+// Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 Function GetWarehousesList(Val ClientID, Val APIKey) Export
 
     URL = "https://api-seller.ozon.ru/v1/warehouse/list";

@@ -16,7 +16,7 @@ sidebar_position: 2
   | UserID | --user | String, Number | Target user ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 

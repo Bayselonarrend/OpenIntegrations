@@ -19,7 +19,7 @@ sidebar_position: 3
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -57,7 +57,7 @@ sidebar_position: 3
 {
  "ok": true,
  "result": {
-  "message_id": 8263,
+  "message_id": 8305,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -71,7 +71,7 @@ sidebar_position: 3
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327638,
+  "date": 1728453323,
   "video": {
    "duration": 5,
    "width": 640,
@@ -79,21 +79,21 @@ sidebar_position: 3
    "file_name": "video",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAiBHZwQv1X10uZ8LynS58_q5JHeBsVsAAotiAAIDZSFI5QYAASaMye5dAQAHbQADNgQ",
-    "file_unique_id": "AQADi2IAAgNlIUhy",
+    "file_id": "AAMCAgADGQMAAiBxZwYayqajllz9GMFHYBYZ7YpNjTEAAktaAAL9yDhIF3QIvLsyAUIBAAdtAAM2BA",
+    "file_unique_id": "AQADS1oAAv3IOEhy",
     "file_size": 20106,
     "width": 320,
     "height": 240
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAiBHZwQv1X10uZ8LynS58_q5JHeBsVsAAotiAAIDZSFI5QYAASaMye5dAQAHbQADNgQ",
-    "file_unique_id": "AQADi2IAAgNlIUhy",
+    "file_id": "AAMCAgADGQMAAiBxZwYayqajllz9GMFHYBYZ7YpNjTEAAktaAAL9yDhIF3QIvLsyAUIBAAdtAAM2BA",
+    "file_unique_id": "AQADS1oAAv3IOEhy",
     "file_size": 20106,
     "width": 320,
     "height": 240
    },
-   "file_id": "BAACAgIAAxkDAAIgR2cEL9V9dLmfC8p0ufP6uSR3gbFbAAKLYgACA2UhSOUGAAEmjMnuXTYE",
-   "file_unique_id": "AgADi2IAAgNlIUg",
+   "file_id": "BAACAgIAAxkDAAIgcWcGGsqmo5Zc_RjBR2AWGe2KTY0xAAJLWgAC_cg4SBd0CLy7MgFCNgQ",
+   "file_unique_id": "AgADS1oAAv3IOEg",
    "file_size": 1137878
   },
   "caption": "Строковое значение"

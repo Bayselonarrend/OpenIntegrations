@@ -20,7 +20,7 @@ sidebar_position: 5
   | FileName | --filename | String | Custom displayed file name with extension, if necessary |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -60,7 +60,7 @@ sidebar_position: 5
 {
  "ok": true,
  "result": {
-  "message_id": 8265,
+  "message_id": 8307,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -74,12 +74,12 @@ sidebar_position: 5
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327719,
+  "date": 1728453390,
   "document": {
    "file_name": "document.docx",
    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-   "file_id": "BQACAgIAAxkDAAIgSWcEMCd5czMcmzETnXJOS0iLPVa_AAKQYgACA2UhSLyXczmUFwknNgQ",
-   "file_unique_id": "AgADkGIAAgNlIUg",
+   "file_id": "BQACAgIAAxkDAAIgc2cGGw4a6yPdiNLubNQsFLQQPLHoAAJPWgAC_cg4SJF9HYfiILIbNgQ",
+   "file_unique_id": "AgADT1oAAv3IOEg",
    "file_size": 24069
   },
   "caption": "Строковое значение"

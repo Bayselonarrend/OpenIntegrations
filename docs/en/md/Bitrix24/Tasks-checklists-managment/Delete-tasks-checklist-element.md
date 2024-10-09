@@ -55,13 +55,13 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
 {
  "result": true,
  "time": {
-  "start": 1728329102.94369,
-  "finish": 1728329103.00288,
-  "duration": 0.0591859817504883,
-  "processing": 0.0305118560791016,
-  "date_start": "2024-10-07T22:25:02+03:00",
-  "date_finish": "2024-10-07T22:25:03+03:00",
-  "operating_reset_at": 1728329702,
+  "start": 1728454787.47564,
+  "finish": 1728454787.54389,
+  "duration": 0.0682549476623535,
+  "processing": 0.0366320610046387,
+  "date_start": "2024-10-09T09:19:47+03:00",
+  "date_finish": "2024-10-09T09:19:47+03:00",
+  "operating_reset_at": 1728455387,
   "operating": 0
  }
 }

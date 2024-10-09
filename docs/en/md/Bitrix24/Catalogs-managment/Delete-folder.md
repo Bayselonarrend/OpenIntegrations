@@ -51,13 +51,13 @@ Method at API documentation: [disk.folder.deletetree](https://dev.1c-bitrix.ru/r
 {
  "result": true,
  "time": {
-  "start": 1728329143.19748,
-  "finish": 1728329143.26636,
-  "duration": 0.0688858032226562,
-  "processing": 0.0399110317230225,
-  "date_start": "2024-10-07T22:25:43+03:00",
-  "date_finish": "2024-10-07T22:25:43+03:00",
-  "operating_reset_at": 1728329743,
+  "start": 1728454830.52802,
+  "finish": 1728454830.60905,
+  "duration": 0.0810229778289795,
+  "processing": 0.0520169734954834,
+  "date_start": "2024-10-09T09:20:30+03:00",
+  "date_finish": "2024-10-09T09:20:30+03:00",
+  "operating_reset_at": 1728455430,
   "operating": 0
  }
 }

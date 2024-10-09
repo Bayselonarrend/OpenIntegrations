@@ -50,24 +50,24 @@ sidebar_position: 6
 {
  "result": [
   {
-   "id": 854,
-   "taskId": 2360,
-   "commentId": 5858,
+   "id": 862,
+   "taskId": 2380,
+   "commentId": 5902,
    "createdBy": 1,
-   "createdAt": "2024-10-07T21:46:17+03:00",
-   "updatedAt": "2024-10-07T21:46:17+03:00",
+   "createdAt": "2024-10-08T20:48:58+03:00",
+   "updatedAt": "2024-10-08T20:48:58+03:00",
    "status": 0,
    "text": "Задача изменена, расходимся",
    "formattedText": "Задача изменена, расходимся",
    "files": []
   },
   {
-   "id": 852,
-   "taskId": 2360,
-   "commentId": 5856,
+   "id": 860,
+   "taskId": 2380,
+   "commentId": 5900,
    "createdBy": 1,
-   "createdAt": "2024-10-07T21:46:17+03:00",
-   "updatedAt": "2024-10-07T21:46:17+03:00",
+   "createdAt": "2024-10-08T20:48:58+03:00",
+   "updatedAt": "2024-10-08T20:48:58+03:00",
    "status": 0,
    "text": "Задача изменена, не расходимся",
    "formattedText": "Задача изменена, не расходимся",
@@ -75,13 +75,13 @@ sidebar_position: 6
   }
  ],
  "time": {
-  "start": 1728326778.22811,
-  "finish": 1728326778.2654,
-  "duration": 0.0372929573059082,
-  "processing": 0.0112390518188477,
-  "date_start": "2024-10-07T21:46:18+03:00",
-  "date_finish": "2024-10-07T21:46:18+03:00",
-  "operating_reset_at": 1728327378,
+  "start": 1728409739.81815,
+  "finish": 1728409739.85202,
+  "duration": 0.0338699817657471,
+  "processing": 0.00750207901000976,
+  "date_start": "2024-10-08T20:48:59+03:00",
+  "date_finish": "2024-10-08T20:48:59+03:00",
+  "operating_reset_at": 1728410339,
   "operating": 0
  }
 }

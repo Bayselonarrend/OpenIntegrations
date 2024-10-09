@@ -54,13 +54,13 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
 {
  "result": true,
  "time": {
-  "start": 1728329147.52757,
-  "finish": 1728329147.55984,
-  "duration": 0.0322678089141846,
-  "processing": 0.00718021392822266,
-  "date_start": "2024-10-07T22:25:47+03:00",
-  "date_finish": "2024-10-07T22:25:47+03:00",
-  "operating_reset_at": 1728329747,
+  "start": 1728454834.86052,
+  "finish": 1728454834.90096,
+  "duration": 0.0404388904571533,
+  "processing": 0.00777482986450195,
+  "date_start": "2024-10-09T09:20:34+03:00",
+  "date_finish": "2024-10-09T09:20:34+03:00",
+  "operating_reset_at": 1728455434,
   "operating": 0
  }
 }

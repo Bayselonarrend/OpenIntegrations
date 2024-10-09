@@ -56,7 +56,7 @@
 // Website - String - Site name (login) for information. Current, if not filled in - sitename
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Neocities
+// Map Of KeyAndValue - serialized JSON response from Neocities
 Function GetSiteData(Val Token, Val Website = "") Export
 
     URL = "https://neocities.org/api/info";
@@ -83,7 +83,7 @@ EndFunction
 // Password - String - Users password - password
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Neocities
+// Map Of KeyAndValue - serialized JSON response from Neocities
 Function GetToken(Val Login, Val Password) Export
 
     OPI_TypeConversion.GetLine(Login);
@@ -131,7 +131,7 @@ EndFunction
 // Data - String, BinaryData - URL, path or file data - file
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Neocities
+// Map Of KeyAndValue - serialized JSON response from Neocities
 Function UploadFile(Val Token, Val Path, Val Data) Export
 
     OPI_TypeConversion.GetLine(Path);
@@ -161,7 +161,7 @@ EndFunction
 // Singly - Boolean - True > sends files in separate requests - singly
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Neocities
+// Map Of KeyAndValue - serialized JSON response from Neocities
 Function UploadFiles(Val Token, Val FileMapping, Val Singly = False) Export
 
     FinalResponse = New Array;
@@ -216,7 +216,7 @@ EndFunction
 // Paths - String, Array of String - Path or multiple paths of the files to be deleted - paths
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Neocities
+// Map Of KeyAndValue - serialized JSON response from Neocities
 Function DeleteSelectedFiles(Val Token, Val Paths) Export
 
     OPI_TypeConversion.GetArray(Paths);
@@ -252,7 +252,7 @@ EndFunction
 // Path - String - Selection of files by catalog. All if not filled in - path
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Neocities
+// Map Of KeyAndValue - serialized JSON response from Neocities
 Function GetFilesList(Val Token, Val Path = "") Export
 
     URL     = "https://neocities.org/api/list";

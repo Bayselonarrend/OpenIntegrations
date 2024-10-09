@@ -19,7 +19,7 @@ sidebar_position: 6
   | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 
@@ -48,8 +48,8 @@ Method at API documentation: [GET /messages/sendFile](https://teams.vk.com/botap
 
 ```json title="Result"
 {
- "fileId": "RRrhAZNL9rLrKpq8TyCkfK670436571bd",
- "msgId": "7423117854578313481",
+ "fileId": "UevBE3dRlqHftBiESLglDn670621531bd",
+ "msgId": "7423657697607682364",
  "ok": true
 }
 ```

@@ -48,13 +48,13 @@ Method at API documentation: [im.user.status.get](https://dev.1c-bitrix.ru/learn
 {
  "result": "away",
  "time": {
-  "start": 1728329154.02658,
-  "finish": 1728329154.05919,
-  "duration": 0.0326030254364014,
-  "processing": 0.000179767608642578,
-  "date_start": "2024-10-07T22:25:54+03:00",
-  "date_finish": "2024-10-07T22:25:54+03:00",
-  "operating_reset_at": 1728329754,
+  "start": 1728454841.43872,
+  "finish": 1728454841.46354,
+  "duration": 0.0248241424560547,
+  "processing": 0.000161886215209961,
+  "date_start": "2024-10-09T09:20:41+03:00",
+  "date_finish": "2024-10-09T09:20:41+03:00",
+  "operating_reset_at": 1728455441,
   "operating": 0
  }
 }

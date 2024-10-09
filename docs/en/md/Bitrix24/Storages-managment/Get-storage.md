@@ -58,13 +58,13 @@ Method at API documentation: [disk.storage.get](https://dev.1c-bitrix.ru/rest_he
   "ROOT_OBJECT_ID": "3"
  },
  "time": {
-  "start": 1728329113.52163,
-  "finish": 1728329113.55449,
-  "duration": 0.0328631401062012,
-  "processing": 0.00412297248840332,
-  "date_start": "2024-10-07T22:25:13+03:00",
-  "date_finish": "2024-10-07T22:25:13+03:00",
-  "operating_reset_at": 1728329713,
+  "start": 1728454799.33094,
+  "finish": 1728454799.36621,
+  "duration": 0.0352659225463867,
+  "processing": 0.00424385070800781,
+  "date_start": "2024-10-09T09:19:59+03:00",
+  "date_finish": "2024-10-09T09:19:59+03:00",
+  "operating_reset_at": 1728455399,
   "operating": 0
  }
 }

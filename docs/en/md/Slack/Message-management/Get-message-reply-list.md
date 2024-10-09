@@ -17,7 +17,7 @@ sidebar_position: 7
   | Cursor | --cursor | String | Pointer from the previous request, if the result rows > 100 |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -47,10 +47,10 @@ sidebar_position: 7
   {
    "user": "U06UG1CAYH2",
    "type": "message",
-   "ts": "1728328829.261829",
+   "ts": "1728454508.757479",
    "edited": {
     "user": "B06TZ0MJV5M",
-    "ts": "1728328830.000000"
+    "ts": "1728454510.000000"
    },
    "bot_id": "B06TZ0MJV5M",
    "app_id": "A06TYNH45RV",
@@ -72,7 +72,7 @@ sidebar_position: 7
    "blocks": [
     {
      "type": "rich_text",
-     "block_id": "OdjYV",
+     "block_id": "kWY",
      "elements": [
       {
        "type": "rich_text_section",

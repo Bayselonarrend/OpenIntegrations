@@ -54,13 +54,13 @@ Method at API documentation: [im.chat.setOwner](https://dev.1c-bitrix.ru/learnin
 {
  "result": true,
  "time": {
-  "start": 1728329230.14153,
-  "finish": 1728329230.17914,
-  "duration": 0.0376131534576416,
-  "processing": 0.0102829933166504,
-  "date_start": "2024-10-07T22:27:10+03:00",
-  "date_finish": "2024-10-07T22:27:10+03:00",
-  "operating_reset_at": 1728329830,
+  "start": 1728454918.87876,
+  "finish": 1728454918.91642,
+  "duration": 0.0376641750335693,
+  "processing": 0.0113739967346191,
+  "date_start": "2024-10-09T09:21:58+03:00",
+  "date_finish": "2024-10-09T09:21:58+03:00",
+  "operating_reset_at": 1728455518,
   "operating": 0
  }
 }

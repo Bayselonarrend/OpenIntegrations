@@ -51,14 +51,14 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
 {
  "result": true,
  "time": {
-  "start": 1728329083.68524,
-  "finish": 1728329083.8606,
-  "duration": 0.175362110137939,
-  "processing": 0.148658037185669,
-  "date_start": "2024-10-07T22:24:43+03:00",
-  "date_finish": "2024-10-07T22:24:43+03:00",
-  "operating_reset_at": 1728329683,
-  "operating": 0.148638963699341
+  "start": 1728454765.65176,
+  "finish": 1728454765.95776,
+  "duration": 0.305999994277954,
+  "processing": 0.267876863479614,
+  "date_start": "2024-10-09T09:19:25+03:00",
+  "date_finish": "2024-10-09T09:19:25+03:00",
+  "operating_reset_at": 1728455365,
+  "operating": 0.267848968505859
  }
 }
 ```

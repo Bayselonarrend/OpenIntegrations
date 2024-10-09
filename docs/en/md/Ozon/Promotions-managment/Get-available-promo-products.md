@@ -17,7 +17,7 @@ sidebar_position: 2
   | Indent | --offset | Number | Offst of items list |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

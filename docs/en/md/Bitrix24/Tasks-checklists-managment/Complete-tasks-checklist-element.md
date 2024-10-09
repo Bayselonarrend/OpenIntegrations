@@ -55,13 +55,13 @@ Method at API documentation: [task.checklistitem.complete](https://dev.1c-bitrix
 {
  "result": true,
  "time": {
-  "start": 1728329102.50599,
-  "finish": 1728329102.56192,
-  "duration": 0.0559329986572266,
-  "processing": 0.0303158760070801,
-  "date_start": "2024-10-07T22:25:02+03:00",
-  "date_finish": "2024-10-07T22:25:02+03:00",
-  "operating_reset_at": 1728329702,
+  "start": 1728454787.01817,
+  "finish": 1728454787.07164,
+  "duration": 0.0534749031066894,
+  "processing": 0.0282580852508545,
+  "date_start": "2024-10-09T09:19:47+03:00",
+  "date_finish": "2024-10-09T09:19:47+03:00",
+  "operating_reset_at": 1728455387,
   "operating": 0
  }
 }

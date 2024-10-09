@@ -54,13 +54,13 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 {
  "result": true,
  "time": {
-  "start": 1728329185.07437,
-  "finish": 1728329185.1696,
-  "duration": 0.0952229499816894,
-  "processing": 0.0657980442047119,
-  "date_start": "2024-10-07T22:26:25+03:00",
-  "date_finish": "2024-10-07T22:26:25+03:00",
-  "operating_reset_at": 1728329785,
+  "start": 1728454872.91198,
+  "finish": 1728454873.00982,
+  "duration": 0.0978438854217529,
+  "processing": 0.0658779144287109,
+  "date_start": "2024-10-09T09:21:12+03:00",
+  "date_finish": "2024-10-09T09:21:13+03:00",
+  "operating_reset_at": 1728455472,
   "operating": 0
  }
 }

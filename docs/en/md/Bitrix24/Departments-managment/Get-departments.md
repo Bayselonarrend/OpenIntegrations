@@ -54,22 +54,22 @@ Method at API documentation: [department.get](https://dev.1c-bitrix.ru/rest_help
 {
  "result": [
   {
-   "ID": "582",
+   "ID": "594",
    "NAME": "Subordinate department",
    "SORT": 500,
-   "PARENT": "580",
+   "PARENT": "592",
    "UF_HEAD": "1"
   }
  ],
  "total": 1,
  "time": {
-  "start": 1728329238.79112,
-  "finish": 1728329238.82476,
-  "duration": 0.0336399078369141,
-  "processing": 0.00480103492736816,
-  "date_start": "2024-10-07T22:27:18+03:00",
-  "date_finish": "2024-10-07T22:27:18+03:00",
-  "operating_reset_at": 1728329838,
+  "start": 1728454927.4735,
+  "finish": 1728454927.50699,
+  "duration": 0.0334928035736084,
+  "processing": 0.00784516334533691,
+  "date_start": "2024-10-09T09:22:07+03:00",
+  "date_finish": "2024-10-09T09:22:07+03:00",
+  "operating_reset_at": 1728455527,
   "operating": 0
  }
 }

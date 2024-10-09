@@ -51,13 +51,13 @@ Method at API documentation: [im.chat.leave](https://dev.1c-bitrix.ru/learning/c
 {
  "result": true,
  "time": {
-  "start": 1728329230.39166,
-  "finish": 1728329230.45471,
-  "duration": 0.0630478858947754,
-  "processing": 0.0371830463409424,
-  "date_start": "2024-10-07T22:27:10+03:00",
-  "date_finish": "2024-10-07T22:27:10+03:00",
-  "operating_reset_at": 1728329830,
+  "start": 1728454919.09087,
+  "finish": 1728454919.16456,
+  "duration": 0.0736868381500244,
+  "processing": 0.0471811294555664,
+  "date_start": "2024-10-09T09:21:59+03:00",
+  "date_finish": "2024-10-09T09:21:59+03:00",
+  "operating_reset_at": 1728455519,
   "operating": 0
  }
 }

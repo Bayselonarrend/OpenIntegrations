@@ -17,7 +17,7 @@ sidebar_position: 6
   | Discount | --discount | String, Number | Discount amount |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

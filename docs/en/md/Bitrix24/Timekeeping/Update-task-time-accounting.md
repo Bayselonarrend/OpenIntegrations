@@ -69,13 +69,13 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
 {
  "result": null,
  "time": {
-  "start": 1728329150.76992,
-  "finish": 1728329150.82342,
-  "duration": 0.0535049438476562,
-  "processing": 0.0260448455810547,
-  "date_start": "2024-10-07T22:25:50+03:00",
-  "date_finish": "2024-10-07T22:25:50+03:00",
-  "operating_reset_at": 1728329750,
+  "start": 1728454838.1335,
+  "finish": 1728454838.20827,
+  "duration": 0.0747687816619873,
+  "processing": 0.0432851314544678,
+  "date_start": "2024-10-09T09:20:38+03:00",
+  "date_finish": "2024-10-09T09:20:38+03:00",
+  "operating_reset_at": 1728455438,
   "operating": 0
  }
 }

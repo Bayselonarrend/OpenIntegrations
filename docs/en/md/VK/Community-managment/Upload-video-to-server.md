@@ -18,7 +18,7 @@ sidebar_position: 10
   | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
 <br/>
 
@@ -45,10 +45,10 @@ sidebar_position: 10
 
 ```json title="Result"
 {
- "video_hash": "a9561140da8c49bfe3",
+ "video_hash": "948ffc06db1b09fb7f",
  "size": 1137878,
- "direct_link": "https://vkvd263.mycdn.me/?expires=1728587520918&srcIp=93.125.42.204&pr=40&srcAg=UNKNOWN&ms=45.136.20.184&type=4&sig=3VPMidseyBw&ct=27&urls=185.226.53.166&clientType=14&appId=512000384397&zs=72&id=7039644600933",
+ "direct_link": "https://vkvd382.okcdn.ru/?expires=1728713194552&srcIp=93.125.42.204&pr=40&srcAg=UNKNOWN&ms=45.136.20.139&type=4&sig=VAfnTuuSNjs&ct=27&urls=45.136.22.139&clientType=14&appId=512000384397&zs=72&id=7195954121353",
  "owner_id": -218861756,
- "video_id": 456239599
+ "video_id": 456239605
 }
 ```

@@ -47,10 +47,10 @@ sidebar_position: 1
  "result": "success",
  "info": {
   "sitename": "opi-test",
-  "views": 9064,
-  "hits": 17050,
+  "views": 9066,
+  "hits": 17052,
   "created_at": "Thu, 20 Jun 2024 07:28:29 -0000",
-  "last_updated": "Mon, 07 Oct 2024 18:54:01 -0000",
+  "last_updated": "Tue, 08 Oct 2024 17:56:42 -0000",
   "domain": null,
   "tags": []
  }

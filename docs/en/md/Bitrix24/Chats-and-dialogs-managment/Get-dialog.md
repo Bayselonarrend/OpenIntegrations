@@ -62,7 +62,7 @@ Method at API documentation: [im.dialog.get](https://dev.1c-bitrix.ru/learning/c
   "type": "private",
   "counter": 4,
   "user_counter": 0,
-  "message_count": 184,
+  "message_count": 187,
   "unread_id": 16,
   "restrictions": {
    "avatar": true,
@@ -75,7 +75,7 @@ Method at API documentation: [im.dialog.get](https://dev.1c-bitrix.ru/learning/c
    "send": true,
    "user_list": true
   },
-  "last_message_id": 17470,
+  "last_message_id": 17682,
   "last_id": 0,
   "marked_id": 0,
   "disk_folder_id": 0,
@@ -113,20 +113,20 @@ Method at API documentation: [im.dialog.get](https://dev.1c-bitrix.ru/learning/c
   ],
   "manager_list": [],
   "last_message_views": {
-   "message_id": 17470,
+   "message_id": 17682,
    "first_viewers": [],
    "count_of_viewers": 0
   },
   "dialog_id": "10"
  },
  "time": {
-  "start": 1728329210.56216,
-  "finish": 1728329210.60688,
-  "duration": 0.0447189807891846,
-  "processing": 0.0154149532318115,
-  "date_start": "2024-10-07T22:26:50+03:00",
-  "date_finish": "2024-10-07T22:26:50+03:00",
-  "operating_reset_at": 1728329810,
+  "start": 1728454899.5196,
+  "finish": 1728454899.56299,
+  "duration": 0.0433859825134277,
+  "processing": 0.0178430080413818,
+  "date_start": "2024-10-09T09:21:39+03:00",
+  "date_finish": "2024-10-09T09:21:39+03:00",
+  "operating_reset_at": 1728455499,
   "operating": 0
  }
 }

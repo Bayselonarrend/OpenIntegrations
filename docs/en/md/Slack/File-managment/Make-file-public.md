@@ -15,7 +15,7 @@ sidebar_position: 5
   | FileID | --fileid | String | File identifier |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -42,9 +42,9 @@ sidebar_position: 5
  "ok": true,
  "files": [
   {
-   "id": "F07QV3GUUSG",
-   "created": 1728328845,
-   "timestamp": 1728328845,
+   "id": "F07QV0PCS1L",
+   "created": 1728454525,
+   "timestamp": 1728454525,
    "name": "megadoc.docx",
    "title": "NewFile",
    "mimetype": "",
@@ -61,11 +61,11 @@ sidebar_position: 5
    "public_url_shared": false,
    "display_as_bot": false,
    "username": "",
-   "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F07QV3GUUSG/megadoc.docx",
-   "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F07QV3GUUSG/download/megadoc.docx",
+   "url_private": "https://files.slack.com/files-pri/T06UD92BS3C-F07QV0PCS1L/megadoc.docx",
+   "url_private_download": "https://files.slack.com/files-pri/T06UD92BS3C-F07QV0PCS1L/download/megadoc.docx",
    "media_display_type": "unknown",
-   "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QV3GUUSG/megadoc.docx",
-   "permalink_public": "https://slack-files.com/T06UD92BS3C-F07QV3GUUSG-04cdf73478",
+   "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QV0PCS1L/megadoc.docx",
+   "permalink_public": "https://slack-files.com/T06UD92BS3C-F07QV0PCS1L-dec85076a5",
    "comments_count": 0,
    "is_starred": false,
    "shares": {},

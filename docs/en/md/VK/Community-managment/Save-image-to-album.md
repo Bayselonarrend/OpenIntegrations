@@ -17,7 +17,7 @@ sidebar_position: 8
   | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
 <br/>
 
@@ -52,9 +52,9 @@ sidebar_position: 8
 {
  "response": [
   {
-   "album_id": 306024989,
-   "date": 1728328020,
-   "id": 457249017,
+   "album_id": 306043366,
+   "date": 1728453694,
+   "id": 457249074,
    "owner_id": -218861756,
    "sizes": [
     {
@@ -120,7 +120,7 @@ sidebar_position: 8
    ],
    "text": "AutoTestImage",
    "user_id": 100,
-   "web_view_token": "190341c50c778ee52a",
+   "web_view_token": "13475c6ff6a2421d42",
    "has_tags": false,
    "orig_photo": {
     "height": 1920,

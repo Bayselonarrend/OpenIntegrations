@@ -169,8 +169,8 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "832": {
-   "ID": "832",
+  "844": {
+   "ID": "844",
    "TITLE": "New stage",
    "SORT": "1100",
    "COLOR": "0026FF",
@@ -181,8 +181,8 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "834": {
-   "ID": "834",
+  "846": {
+   "ID": "846",
    "TITLE": "New stage 2",
    "SORT": "1200",
    "COLOR": "0026FF",
