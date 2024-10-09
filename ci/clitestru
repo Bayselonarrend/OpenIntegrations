@@ -882,6 +882,14 @@ def test_cdek(){
 					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьТокен --account "test" --pass "test" --testapi "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek СоздатьЗаказ --token "test" --order "test" --ostore "test" --testapi "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek ПолучитьОписаниеЗаказа --empty "test" --required "test" --ostore "test" --debug --test '
+               }
+
 }
 
 
