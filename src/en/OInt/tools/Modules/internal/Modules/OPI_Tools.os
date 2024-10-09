@@ -425,6 +425,43 @@ Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
 EndFunction
 
+Function ClearCollectionRecursively(Val Collection) Export
+
+    ValeType = TypeOf(Collection);
+
+    If ValeType = Type("Structure") Or ValeType = Type("Map") Then
+
+        For Each CollectionItem In Collection Do
+
+            ClearField = ClearCollectionRecursively(CollectionItem.Value);
+
+            Collection[CollectionItem.Key] = ClearField;
+
+        EndDo;
+
+    ElsIf ValeType = Type("Array") Then
+
+        Collection_ = New Array;
+
+        For Each CollectionItem In Collection Do
+
+            ClearField = ClearCollectionRecursively(CollectionItem);
+            Collection_.Add(ClearField);
+
+        EndDo;
+
+        Collection = Collection_;
+
+    Else
+
+        Collection = "";
+
+    EndIf;
+
+    Return Collection;
+
+EndFunction
+
 Procedure ValueToArray(Value) Export
 
     Value_ = New Array;

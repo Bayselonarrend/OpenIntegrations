@@ -1996,6 +1996,15 @@ Procedure CdekAPI_CommonMethods() Export
 
 EndProcedure
 
+Procedure CDEKAPI_OrdersManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token" , TestParameters);
+
+    CDEK_GetOrderDescription(TestParameters);
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -13623,6 +13632,22 @@ Procedure CDEK_GetToken(FunctionParameters)
     Token = Result["access_token"];
     OPI_TestDataRetrieval.WriteParameter("CDEK_Token", Result);
     OPI_Tools.AddField("CDEK_Token", Token, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CDEK_GetOrderDescription(FunctionParameters)
+
+    Result = OPI_CDEK.GetOrderDescription();
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderDescription", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
+
+    Result = OPI_CDEK.GetOrderDescription(True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderDescription (Empty)", "CDEK");
+    OPI_TestDataRetrieval.Check_Structure(Result);
 
 EndProcedure
 

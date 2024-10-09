@@ -37,7 +37,7 @@ Method at API documentation: [Client authorization](https://api-docs.cdek.ru/299
 
 ```sh title="CLI command example"
     
-oint cdek GetToken --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" --pass "RmAmgvSgSl..." --testapi %testapi%
+  oint cdek GetToken --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" --pass "RmAmgvSgSl..." --testapi %testapi%
 
 ```
 
