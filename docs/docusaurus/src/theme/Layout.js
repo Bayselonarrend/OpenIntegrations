@@ -7,6 +7,7 @@ export default function CustomLayout(props) {
     // Создаем <div> для блока Яндекса в конце body
     const adDiv = document.createElement('div');
     adDiv.id = 'yandex_rtb_R-A-12294791-1';
+    adDiv.style.height = '200px';
     document.body.appendChild(adDiv);
 
     // Добавляем скрипт для отображения рекламы
