@@ -61,6 +61,7 @@
   <commonModules>CommonModule.OPI_VKTeams</commonModules>
   <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>
+  <commonModules>CommonModule.OPI_CDEK</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
   <commonModules>CommonModule.OPI_ПолучениеДанныхТестов</commonModules>
