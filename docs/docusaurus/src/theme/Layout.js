@@ -21,7 +21,7 @@ window.yaContextCb.push(() => {
         "blockId": "R-A-12294791-4",
         "type": "floorAd",
         "platform": "desktop"
-    })
+    });
 
 })
     `;
