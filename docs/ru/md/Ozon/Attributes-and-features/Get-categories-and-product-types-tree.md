@@ -51,152 +51,152 @@ sidebar_position: 1
 {
  "result": [
   {
-   "description_category_id": 17027491,
-   "category_name": "Спорт и отдых",
+   "description_category_id": 200001506,
+   "category_name": "Товары для курения и аксессуары",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 17028997,
-     "category_name": "Боксерские груши и мешки",
+     "description_category_id": 200001034,
+     "category_name": "Товары для курения",
      "disabled": false,
      "children": [
       {
-       "type_name": "Ракетка для тхэквондо",
-       "type_id": 970601428,
+       "type_name": "Аксессуар для трубки",
+       "type_id": 971425815,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Боксерский мешок",
-       "type_id": 94338,
+       "type_name": "Аксессуар для сигар",
+       "type_id": 971425003,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Макивара",
-       "type_id": 970666976,
+       "type_name": "Аксессуар для самокрутки",
+       "type_id": 971423253,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Водоналивной мешок",
-       "type_id": 94334,
+       "type_name": "Аксессуар для хранения табака",
+       "type_id": 971405141,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Настенная боксерская подушка",
-       "type_id": 970736821,
+       "type_name": "Увлажнитель для хьюмидора",
+       "type_id": 971000539,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Набор для бокса",
-       "type_id": 970695846,
-       "disabled": false,
+       "type_name": "Подарочный набор для курения",
+       "type_id": 970801168,
+       "disabled": true,
        "children": []
       },
       {
-       "type_name": "Манекен для борьбы",
-       "type_id": 94337,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Боксерская груша",
-       "type_id": 94335,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Комплект боксерская груша и перчатки",
-       "type_id": 971102088,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Боксерский тренажер",
-       "type_id": 970736820,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Лапы боксерские",
-       "type_id": 94336,
-       "disabled": false,
-       "children": []
-      },
-      {
-       "type_name": "Рукав для отработки захватов",
-       "type_id": 970795782,
+       "type_name": "Пепельница",
+       "type_id": 91975,
        "disabled": false,
        "children": []
       }
      ]
     },
     {
-     "description_category_id": 85945852,
-     "category_name": "Водный спорт и отдых на воде",
+     "description_category_id": 200001032,
+     "category_name": "Аксессуары и комплектующие для кальянов",
      "disabled": false,
      "children": [
       {
-       "type_name": "Доска для серфинга",
-       "type_id": 970739431,
+       "type_name": "Подсветка для кальяна",
+       "type_id": 970684772,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Крепления для водных лыж",
-       "type_id": 970739388,
+       "type_name": "Столик для кальяна",
+       "type_id": 971079775,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Набор для снорклинга",
-       "type_id": 971079265,
+       "type_name": "Комплектующие для кальяна",
+       "type_id": 971412757,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Мачта для виндсерфинга",
-       "type_id": 970739443,
+       "type_name": "Аксессуары для кальяна",
+       "type_id": 971412759,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Стакан для виндсерфинга",
-       "type_id": 970739438,
+       "type_name": "Уголь для кальяна",
+       "type_id": 970637384,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Насос для кайта",
-       "type_id": 970780208,
+       "type_name": "Подставка для кальяна",
+       "type_id": 970807581,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Шнурки креплений для вейкборда",
-       "type_id": 970780417,
+       "type_name": "Корзина для переноски и розжига",
+       "type_id": 970637390,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Ниборд",
-       "type_id": 970739432,
+       "type_name": "Розжиг для кальяна",
+       "type_id": 971437043,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Защита доски для виндсерфинга",
-       "type_id": 970780195,
+       "type_name": "Плитка электрическая",
+       "type_id": 970637389,
        "disabled": false,
+       "children": []
+      }
+     ]
+    },
+    {
+     "description_category_id": 200000977,
+     "category_name": "Курительные принадлежности",
+     "disabled": true,
+     "children": [
+      {
+       "type_name": "Проволока для вейпа",
+       "type_id": 971412762,
+       "disabled": true,
        "children": []
       },
       {
-       "type_name": "Защита шарнира для виндсерфинга",
-       "type_id": 970780194,
-       "disabled": false,
+       "type_name": "Паста для кальяна",
+       "type_id": 970737147,
+       "disabled": true,
        "children": []
+      },
+      {
+       "type_name": "Комплектующее для бонга",
+       "type_id": 970801167,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Дрипка-бак (RDTA)",
+       "type_id": 96743,
+       "disabled": true,
+       "children": []
+      },
+      {
+       "type_name": "Дрипка (RDA)",
+       "type_id": 96742,
+       "disabled": true,
 ...
 ```

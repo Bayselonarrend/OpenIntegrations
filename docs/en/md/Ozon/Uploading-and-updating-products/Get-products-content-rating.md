@@ -16,7 +16,7 @@ sidebar_position: 5
   | SKU | --sku | Number, Array Of Number | Products identifiers in the Ozon system (SKU) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

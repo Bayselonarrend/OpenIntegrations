@@ -65,16 +65,16 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
 
 ```json title="Result"
 {
- "result": 594,
+ "result": 606,
  "time": {
-  "start": 1728329243.90949,
-  "finish": 1728329245.70232,
-  "duration": 1.79282116889954,
-  "processing": 1.75977993011475,
-  "date_start": "2024-10-07T22:27:23+03:00",
-  "date_finish": "2024-10-07T22:27:25+03:00",
-  "operating_reset_at": 1728329843,
-  "operating": 1.7597451210022
+  "start": 1728454933.44558,
+  "finish": 1728454935.61149,
+  "duration": 2.16591095924377,
+  "processing": 2.13802599906921,
+  "date_start": "2024-10-09T09:22:13+03:00",
+  "date_finish": "2024-10-09T09:22:15+03:00",
+  "operating_reset_at": 1728455533,
+  "operating": 2.13800406455994
  }
 }
 ```

@@ -19,7 +19,7 @@ sidebar_position: 9
   | MarketingColor | --color | String | Marketing color |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -70,7 +70,7 @@ On each method call, send all the images that should be on the product card
  "result": {
   "pictures": [
    {
-    "product_id": 1213785862,
+    "product_id": 1215763512,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
     "state": "imported",
     "is_primary": true,
@@ -78,7 +78,7 @@ On each method call, send all the images that should be on the product card
     "is_color": false
    },
    {
-    "product_id": 1213785862,
+    "product_id": 1215763512,
     "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
     "state": "imported",
     "is_primary": false,
@@ -86,7 +86,7 @@ On each method call, send all the images that should be on the product card
     "is_color": false
    },
    {
-    "product_id": 1213785862,
+    "product_id": 1215763512,
     "url": "GREEN",
     "state": "imported",
     "is_primary": false,

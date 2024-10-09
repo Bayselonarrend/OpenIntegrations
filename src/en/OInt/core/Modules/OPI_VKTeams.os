@@ -54,7 +54,7 @@
 // Token - String - Bot token - token
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function CheckToken(Val Token) Export
 
     URL        = "/self/get";
@@ -78,7 +78,7 @@ EndFunction
 // Timeout - String, Number - Connection hold time for Long Polling - timeout
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export
 
     URL        = "/events/get";
@@ -105,7 +105,7 @@ EndFunction
 // FileID - String, Number - File ID - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function GetFileInformation(Val Token, Val FileID) Export
 
     URL        = "/files/getInfo";
@@ -139,7 +139,7 @@ EndFunction
 // Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function SendTextMessage(Val Token
     , Val ChatID
     , Val Text
@@ -177,7 +177,7 @@ EndFunction
 // Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function SendFile(Val Token
     , Val ChatID
     , Val File
@@ -227,7 +227,7 @@ EndFunction
 // Keyboard - Array Of String - Buttons to the message if necessary - keyboard
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function SendVoice(Val Token
     , Val ChatID
     , Val File
@@ -275,7 +275,7 @@ EndFunction
 // Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function EditMessageText(Val Token
     , Val ChatID
     , Val MessageID
@@ -308,7 +308,7 @@ EndFunction
 // MessageID - String, Number - Message ID for editing - messageid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function DeleteMessage(Val Token, Val ChatID, Val MessageID) Export
 
     URL        = "/messages/deleteMessages";
@@ -338,7 +338,7 @@ EndFunction
 // Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function ResendFile(Val Token
     , Val ChatID
     , Val FileID
@@ -372,7 +372,7 @@ EndFunction
 // FileID - String, Number - File ID of voice message - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function ResendVoice(Val Token, Val ChatID, Val FileID) Export
 
     URL        = "/messages/sendVoice";
@@ -402,7 +402,7 @@ EndFunction
 // Text - String - Additional message text - text
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function ForwardMessage(Val Token, Val MessageID, Val FromChatID, Val ChatID, Val Text = "") Export
 
     URL        = "/messages/sendText";
@@ -432,7 +432,7 @@ EndFunction
 // MessageID - String, Number - ID of the message to be pinned - messageid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function PinMessage(Val Token, Val ChatID, Val MessageID) Export
 
     URL        = "/chats/pinMessage";
@@ -460,7 +460,7 @@ EndFunction
 // MessageID - String, Number - ID of the message to be unpinned - messageid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function UnpinMessage(Val Token, Val ChatID, Val MessageID) Export
 
     URL        = "/chats/unpinMessage";
@@ -490,7 +490,7 @@ EndFunction
 // AsAlert - Boolean - Display the answer as an alert) - showalert
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function AnswerButtonEvent(Val Token
     , Val EventID
     , Val Text = ""
@@ -550,7 +550,7 @@ EndFunction
 // Users - String, Number, Array of String, Number - The member or members of the chat room to remove - members
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function RemoveChatMembers(Val Token, Val ChatID, Val Users) Export
 
     OPI_TypeConversion.GetArray(Users);
@@ -595,7 +595,7 @@ EndFunction
 // File - BinaryData, String - Image file - file
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function ChangeChatPicture(Val Token, Val ChatID, Val File) Export
 
     URL        = "/chats/avatar/set";
@@ -625,7 +625,7 @@ EndFunction
 // ChatID - String, Number - Chat ID - chatid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function GetChatInfo(Val Token, Val ChatID) Export
 
     Method   = "/chats/getInfo";
@@ -646,7 +646,7 @@ EndFunction
 // ChatID - String, Number - Chat ID - chatid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function GetChatAdmins(Val Token, Val ChatID) Export
 
     Method   = "/chats/getAdmins";
@@ -668,7 +668,7 @@ EndFunction
 // Cursor - String - Next page marker from the previous request - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function GetChatMembers(Val Token, Val ChatID, Val Cursor = "") Export
 
     Method   = "/chats/getMembers";
@@ -690,7 +690,7 @@ EndFunction
 // ChatID - String, Number - Chat ID - chatid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function GetChatBlockedUsers(Val Token, Val ChatID) Export
 
     Method   = "/chats/getBlockedUsers";
@@ -712,7 +712,7 @@ EndFunction
 // ChatID - String, Number - Chat ID - chatid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function GetChatJoinRequests(Val Token, Val ChatID) Export
 
     Method   = "/chats/getPendingUsers";
@@ -736,7 +736,7 @@ EndFunction
 // DeleteLastMessages - Boolean - Delete last messages before blocking - dellast
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function BlockChatUser(Val Token
     , Val ChatID
     , Val UserID
@@ -768,7 +768,7 @@ EndFunction
 // UserID - String, Number - User ID - userid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function UnblockChatUser(Val Token, Val ChatID, Val UserID) Export
 
     URL        = "/chats/unblockUser";
@@ -796,7 +796,7 @@ EndFunction
 // UserID - String, Number - User ID. For all active requests if not filled in - userid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function ApprovePending(Val Token, Val ChatID, Val UserID = "") Export
 
     Response = ResolvePending(Token, ChatID, True, UserID);
@@ -818,7 +818,7 @@ EndFunction
 // UserID - String, Number - User ID. For all active requests if not filled in - userid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function DisapprovePending(Val Token, Val ChatID, Val UserID = "") Export
 
     Response = ResolvePending(Token, ChatID, False, UserID);
@@ -840,7 +840,7 @@ EndFunction
 // Text - String - Title text - text
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function SetChatTitle(Val Token, Val ChatID, Val Text) Export
 
     Response = UpdateChatParameters(Token, ChatID, "title", Text);
@@ -862,7 +862,7 @@ EndFunction
 // Text - String - Description text - text
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function SetChatDescription(Val Token, Val ChatID, Val Text) Export
 
     Response = UpdateChatParameters(Token, ChatID, "about", Text);
@@ -884,7 +884,7 @@ EndFunction
 // Text - String - Rules Text - text
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from VK Teams
+// Map Of KeyAndValue - serialized JSON response from VK Teams
 Function SetChatRules(Val Token, Val ChatID, Val Text) Export
 
     Response = UpdateChatParameters(Token, ChatID, "rules", Text);

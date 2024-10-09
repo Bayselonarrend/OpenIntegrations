@@ -15,7 +15,7 @@ sidebar_position: 6
   | ChatID | --chat | String, Number | Target chat ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 

@@ -53,13 +53,13 @@ Method at API documentation: [task.elapseditem.delete](https://dev.1c-bitrix.ru/
 {
  "result": null,
  "time": {
-  "start": 1728329150.98322,
-  "finish": 1728329151.03407,
-  "duration": 0.0508460998535156,
-  "processing": 0.0251569747924805,
-  "date_start": "2024-10-07T22:25:50+03:00",
-  "date_finish": "2024-10-07T22:25:51+03:00",
-  "operating_reset_at": 1728329751,
+  "start": 1728454838.38759,
+  "finish": 1728454838.44759,
+  "duration": 0.0600039958953857,
+  "processing": 0.0322821140289307,
+  "date_start": "2024-10-09T09:20:38+03:00",
+  "date_finish": "2024-10-09T09:20:38+03:00",
+  "operating_reset_at": 1728455438,
   "operating": 0
  }
 }

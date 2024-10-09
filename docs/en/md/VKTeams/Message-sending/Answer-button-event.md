@@ -18,7 +18,7 @@ sidebar_position: 11
   | AsAlert | --showalert | Boolean | Display the answer as an alert) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

@@ -19,7 +19,7 @@ sidebar_position: 3
   | Keyboard | --keyboard | Array Of String | Buttons to the message if necessary |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 
@@ -61,8 +61,8 @@ If you want the client to display this file as a playable voice message, it must
 
 ```json title="Result"
 {
- "fileId": "I000bBktBHG1YpsdO9I6Zo6704366a1bd",
- "msgId": "7423117914707856384",
+ "fileId": "I000bPC37Th9syNcxyaG4r670621651bd",
+ "msgId": "7423657753442257991",
  "ok": true
 }
 ```

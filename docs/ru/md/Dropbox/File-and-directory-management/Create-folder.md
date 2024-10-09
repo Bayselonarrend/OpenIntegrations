@@ -43,7 +43,7 @@ sidebar_position: 10
   "name": "Новый каталог",
   "path_lower": "/новый каталог",
   "path_display": "/Новый каталог",
-  "id": "id:kJU6-a-pT48AAAAAAAAcIw"
+  "id": "id:kJU6-a-pT48AAAAAAAAcXQ"
  }
 }
 ```

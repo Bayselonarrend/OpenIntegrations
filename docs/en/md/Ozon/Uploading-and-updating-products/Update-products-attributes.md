@@ -16,7 +16,7 @@ sidebar_position: 8
   | AttributesArray | --items | Array Of String | Array or one structure of product attribute fields |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -55,6 +55,6 @@ You can get an empty structure using the GetAttributesUpdateStructure method()
 
 ```json title="Result"
 {
- "task_id": 1344962554
+ "task_id": 1347189194
 }
 ```

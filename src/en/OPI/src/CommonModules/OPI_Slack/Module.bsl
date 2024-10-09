@@ -48,7 +48,7 @@
 // Token - String - Bot token - token
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetBotInformation(Val Token) Export
 
     URL     = "https://slack.com/api/auth.test";
@@ -68,7 +68,7 @@ EndFunction
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetWorkspaceList(Val Token, Val Cursor = "") Export
 
     URL      = "https://slack.com/api/auth.teams.list";
@@ -86,7 +86,7 @@ EndFunction
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetUserList(Val Token, Val Cursor = "") Export
 
     URL      = "https://slack.com/api/users.list";
@@ -111,7 +111,7 @@ EndFunction
 // Blocks - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = "", Val Blocks = "") Export
 
     String_ = "String";
@@ -165,7 +165,7 @@ EndFunction
 // Blocks - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function SendEphemeralMessage(Val Token
     , Val Channel
     , Val Text = ""
@@ -205,7 +205,7 @@ EndFunction
 // BlockArray - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function EditMessage(Val Token, Val Channel, Val Timestamp, Val Text = "", Val BlockArray = "") Export
 
     String_ = "String";
@@ -234,7 +234,7 @@ EndFunction
 // IsDelayed - Boolean - Indicator of deleting a delayed message - issheduled
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export
 
     OPI_TypeConversion.GetBoolean(IsDelayed);
@@ -268,7 +268,7 @@ EndFunction
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetDelayedMessageList(Val Token, Val Channel, Val Cursor = "") Export
 
     URL     = "https://slack.com/api/chat.scheduledMessages.list";
@@ -293,7 +293,7 @@ EndFunction
 // Timestamp - String - Timestamp or message ID - stamp
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetMessageLink(Val Token, Val Channel, Val Timestamp) Export
 
     URL     = "https://slack.com/api/chat.getPermalink";
@@ -319,7 +319,7 @@ EndFunction
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export
 
     String_ = "String";
@@ -350,7 +350,7 @@ EndFunction
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetChannelList(Val Token, Val ExcludeArchived = False, Val Cursor = "") Export
 
     URL     = "https://slack.com/api/conversations.list";
@@ -375,7 +375,7 @@ EndFunction
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetChannelUserList(Val Token, Val Channel, Val Cursor = "") Export
 
     URL     = "https://slack.com/api/conversations.members";
@@ -400,7 +400,7 @@ EndFunction
 // Private - Boolean - Create channel as private - private
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function CreateChannel(Val Token, Val Name, Val Private = False) Export
 
     URL     = "https://slack.com/api/conversations.create";
@@ -424,7 +424,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function ArchiveChannel(Val Token, Val Channel) Export
 
     URL      = "https://slack.com/api/conversations.archive";
@@ -441,7 +441,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetChannel(Val Token, Val Channel) Export
 
     URL      = "https://slack.com/api/conversations.info";
@@ -458,7 +458,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetChannelHistory(Val Token, Val Channel) Export
 
     URL      = "https://slack.com/api/conversations.history";
@@ -476,7 +476,7 @@ EndFunction
 // ArrayOfUsers - Array Of String - User ID Array - users
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function InviteUsersToChannel(Val Token, Val Channel, Val ArrayOfUsers) Export
 
     URL     = "https://slack.com/api/conversations.invite";
@@ -504,7 +504,7 @@ EndFunction
 // User - String - User ID - user
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function KickUserFromChannel(Val Token, Val Channel, Val User) Export
 
     URL     = "https://slack.com/api/conversations.kick";
@@ -528,7 +528,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function JoinChannel(Val Token, Val Channel) Export
 
     URL      = "https://slack.com/api/conversations.join";
@@ -545,7 +545,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function LeaveChannel(Val Token, Val Channel) Export
 
     URL      = "https://slack.com/api/conversations.leave";
@@ -563,7 +563,7 @@ EndFunction
 // Topic - String - Channel topic - theme
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function SetChannelTopic(Val Token, Val Channel, Val Topic) Export
 
     URL     = "https://slack.com/api/conversations.setTopic";
@@ -588,7 +588,7 @@ EndFunction
 // Purpose - String - Channel purpose - purpose
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function SetChannelGoal(Val Token, Val Channel, Val Purpose) Export
 
     URL     = "https://slack.com/api/conversations.setPurpose";
@@ -613,7 +613,7 @@ EndFunction
 // Name - String - New channel name - title
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function RenameChannel(Val Token, Val Channel, Val Name) Export
 
     URL     = "https://slack.com/api/conversations.rename";
@@ -641,7 +641,7 @@ EndFunction
 // ArrayOfUsers - Array of String - User ID Array - users
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function OpenDialog(Val Token, Val ArrayOfUsers) Export
 
     URL     = "https://slack.com/api/conversations.open";
@@ -667,7 +667,7 @@ EndFunction
 // Dialog - String - Dialog ID - conv
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function CloseDialog(Val Token, Val Dialog) Export
 
     URL      = "https://slack.com/api/conversations.close";
@@ -689,7 +689,7 @@ EndFunction
 // PageNumber - Number, String - Page number - page
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetFilesList(Val Token, Val Channel = "", Val PageNumber = 1) Export
 
     URL     = "https://slack.com/api/files.list";
@@ -716,7 +716,7 @@ EndFunction
 // Channel - String - Channel ID - channel
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function UploadFile(Val Token, Val File, Val FileName, Val Title, Val Channel = "") Export
 
     OPI_TypeConversion.GetBinaryData(File);
@@ -768,7 +768,7 @@ EndFunction
 // FileID - String - File identifier - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetFileData(Val Token, Val FileID) Export
 
     URL      = "https://slack.com/api/files.info";
@@ -786,7 +786,7 @@ EndFunction
 // FileID - String - File identifier - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function DeleteFile(Val Token, Val FileID) Export
 
     URL      = "https://slack.com/api/files.delete";
@@ -804,7 +804,7 @@ EndFunction
 // FileID - String - File identifier - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function MakeFilePublic(Val Token, Val FileID) Export
 
     URL      = "https://slack.com/api/files.sharedPublicURL";
@@ -822,7 +822,7 @@ EndFunction
 // FileID - String - File identifier - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function MakeFilePrivate(Val Token, Val FileID) Export
 
     URL      = "https://slack.com/api/files.revokePublicURL";
@@ -845,7 +845,7 @@ EndFunction
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetExternalFileList(Val Token, Val Channel = "", Val Cursor = "") Export
 
     URL     = "https://slack.com/api/files.remote.list";
@@ -869,7 +869,7 @@ EndFunction
 // FileID - String - File identifier - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function GetExternalFile(Val Token, Val FileID) Export
 
     URL      = "https://slack.com/api/files.remote.info";
@@ -888,7 +888,7 @@ EndFunction
 // Title - String - File title for Slack - title
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function AddExternalFile(Val Token, Val URL, Val Title) Export
 
     String_ = "String";
@@ -916,7 +916,7 @@ EndFunction
 // ChannelArray - Array Of String - Array of channels for sending - channels
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export
 
     URL     = "https://slack.com/api/files.remote.share";
@@ -943,7 +943,7 @@ EndFunction
 // FileID - String - File identifier - fileid
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Slack
+// Map Of KeyAndValue - serialized JSON response from Slack
 Function DeleteExternalFile(Val Token, Val FileID) Export
 
     URL      = "https://slack.com/api/files.remote.remove";

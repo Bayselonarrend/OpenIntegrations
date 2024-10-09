@@ -65,14 +65,14 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 {
  "result": true,
  "time": {
-  "start": 1728329239.0757,
-  "finish": 1728329239.21975,
-  "duration": 0.144048929214478,
-  "processing": 0.114078044891357,
-  "date_start": "2024-10-07T22:27:19+03:00",
-  "date_finish": "2024-10-07T22:27:19+03:00",
-  "operating_reset_at": 1728329839,
-  "operating": 0.114055871963501
+  "start": 1728454927.77891,
+  "finish": 1728454928.01456,
+  "duration": 0.235645055770874,
+  "processing": 0.204494953155518,
+  "date_start": "2024-10-09T09:22:07+03:00",
+  "date_finish": "2024-10-09T09:22:08+03:00",
+  "operating_reset_at": 1728455527,
+  "operating": 0.20447301864624
  }
 }
 ```

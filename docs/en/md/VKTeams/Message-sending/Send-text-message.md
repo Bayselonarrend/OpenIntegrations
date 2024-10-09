@@ -19,7 +19,7 @@ sidebar_position: 1
   | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 
@@ -66,7 +66,7 @@ You can mention a user by appending their userId to the text in the following fo
 
 ```json title="Result"
 {
- "msgId": "7423117648419884018",
+ "msgId": "7423657487154285625",
  "ok": true
 }
 ```

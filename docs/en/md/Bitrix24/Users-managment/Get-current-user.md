@@ -69,13 +69,13 @@ Method at API documentation: [user.current](https://dev.1c-bitrix.ru/rest_help/u
   ]
  },
  "time": {
-  "start": 1728329241.75566,
-  "finish": 1728329241.78809,
-  "duration": 0.0324351787567139,
-  "processing": 0.00338101387023926,
-  "date_start": "2024-10-07T22:27:21+03:00",
-  "date_finish": "2024-10-07T22:27:21+03:00",
-  "operating_reset_at": 1728329841,
+  "start": 1728454930.6427,
+  "finish": 1728454930.67441,
+  "duration": 0.0317108631134033,
+  "processing": 0.00330090522766113,
+  "date_start": "2024-10-09T09:22:10+03:00",
+  "date_finish": "2024-10-09T09:22:10+03:00",
+  "operating_reset_at": 1728455530,
   "operating": 0
  }
 }

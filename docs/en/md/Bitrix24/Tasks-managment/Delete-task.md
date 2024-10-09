@@ -53,14 +53,14 @@ Method at API documentation: [tasks.task.delete](https://dev.1c-bitrix.ru/rest_h
   "task": true
  },
  "time": {
-  "start": 1728329106.13417,
-  "finish": 1728329106.3039,
-  "duration": 0.169734001159668,
-  "processing": 0.144339084625244,
-  "date_start": "2024-10-07T22:25:06+03:00",
-  "date_finish": "2024-10-07T22:25:06+03:00",
-  "operating_reset_at": 1728329706,
-  "operating": 0.144323825836182
+  "start": 1728454790.93474,
+  "finish": 1728454791.12862,
+  "duration": 0.193886995315552,
+  "processing": 0.171198129653931,
+  "date_start": "2024-10-09T09:19:50+03:00",
+  "date_finish": "2024-10-09T09:19:51+03:00",
+  "operating_reset_at": 1728455390,
+  "operating": 0.171180963516235
  }
 }
 ```

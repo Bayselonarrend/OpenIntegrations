@@ -16,7 +16,7 @@ sidebar_position: 18
   | TaskID | --taskid | String, Number | Add product task ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -48,7 +48,7 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
   "items": [
    {
     "offer_id": "143210609",
-    "product_id": 1213785862,
+    "product_id": 1215763512,
     "status": "imported",
     "errors": [
      {

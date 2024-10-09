@@ -16,7 +16,7 @@ sidebar_position: 1
   | Lang | --lang | String | Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -51,152 +51,152 @@ Product creation is only available in the last level categories, compare exactly
 {
  "result": [
   {
-   "description_category_id": 92120918,
-   "category_name": "Автомототехника",
+   "description_category_id": 17027492,
+   "category_name": "Канцелярские товары",
    "disabled": false,
    "children": [
     {
-     "description_category_id": 200000672,
-     "category_name": "Спецтехника и грузовики",
-     "disabled": true,
-     "children": [
-      {
-       "type_name": "Техника коммунальная",
-       "type_id": 971322202,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Спецтехника",
-       "type_id": 971322229,
-       "disabled": true,
-       "children": []
-      }
-     ]
-    },
-    {
-     "description_category_id": 17027951,
-     "category_name": "Мототехника",
+     "description_category_id": 71328593,
+     "category_name": "Оборудование для торговли",
      "disabled": false,
      "children": [
       {
-       "type_name": "Снегоход детский",
-       "type_id": 971742428,
+       "type_name": "Ценник",
+       "type_id": 970615927,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Мотоцикл",
-       "type_id": 115948095,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Мопед",
-       "type_id": 971309510,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Мотоцикл детский",
-       "type_id": 970967803,
+       "type_name": "Коробка для товара",
+       "type_id": 971448894,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Сноубайк",
-       "type_id": 971038323,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Гидроцикл",
-       "type_id": 971322241,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Багги",
-       "type_id": 971322654,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Квадроцикл",
-       "type_id": 96591,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Квадроцикл детский",
-       "type_id": 970828017,
+       "type_name": "Демонстрационная система",
+       "type_id": 94485,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Модуль для мотобуксировщика",
-       "type_id": 972068815,
-       "disabled": true,
-       "children": []
-      },
-      {
-       "type_name": "Автомобиль детский",
-       "type_id": 971447132,
+       "type_name": "Счетчик посетителей электронный",
+       "type_id": 661551652,
        "disabled": false,
        "children": []
       },
       {
-       "type_name": "Мотобуксировщик",
-       "type_id": 971049470,
-       "disabled": true,
+       "type_name": "Дисплей торговый",
+       "type_id": 970616770,
+       "disabled": false,
        "children": []
       },
       {
-       "type_name": "Снегоход",
-       "type_id": 96594,
-       "disabled": true,
+       "type_name": "Светодиодная вывеска для магазина",
+       "type_id": 970694426,
+       "disabled": false,
        "children": []
       },
       {
-       "type_name": "Скутер",
-       "type_id": 96593,
-       "disabled": true,
-       "children": []
-      }
-     ]
-    },
-    {
-     "description_category_id": 74179490,
-     "category_name": "Автомобили",
-     "disabled": true,
-     "children": [
-      {
-       "type_name": "Электромобиль",
-       "type_id": 972085867,
-       "disabled": true,
+       "type_name": "Разменный аппарат",
+       "type_id": 971132995,
+       "disabled": false,
        "children": []
       },
       {
-       "type_name": "Автомобиль",
-       "type_id": 970636239,
-       "disabled": true,
-       "children": []
-      }
-     ]
-    },
-    {
-     "description_category_id": 43443516,
-     "category_name": "Взрослый электротранспорт",
-     "disabled": true,
-     "children": [
-      {
-       "type_name": "Электроквадроцикл",
-       "type_id": 970957816,
-       "disabled": true,
+       "type_name": "Полочный разделитель",
+       "type_id": 970616683,
+       "disabled": false,
        "children": []
       },
       {
-       "type_name": "Электрокар платформенный",
-       "type_id": 971392555,
+       "type_name": "Карман информационный",
+       "type_id": 970615403,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Антикражный замок для витрины",
+       "type_id": 971001293,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Крючок на перфорацию",
+       "type_id": 971844358,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Тележка покупательская",
+       "type_id": 970855215,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Рекламный воблер",
+       "type_id": 971036158,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Биркодержатель для игольчатого пистолета",
+       "type_id": 971323480,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Комплектующее для торгового оборудования",
+       "type_id": 972101856,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Пресс-волл",
+       "type_id": 971043038,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Урна для пожертвований",
+       "type_id": 970842802,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Торговый автомат механический",
+       "type_id": 971065057,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Рамка информационная",
+       "type_id": 970615353,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Кассета для купюроприемника",
+       "type_id": 971287223,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Поручень рекламный",
+       "type_id": 971432456,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Гардеробные номерки",
+       "type_id": 970986820,
+       "disabled": false,
+       "children": []
+      },
+      {
+       "type_name": "Информационный стенд",
+       "type_id": 790183771,
+       "disabled": false,
+       "children": []
+      },
 ...
 ```

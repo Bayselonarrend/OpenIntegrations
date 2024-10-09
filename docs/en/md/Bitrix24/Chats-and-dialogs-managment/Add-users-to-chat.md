@@ -58,13 +58,13 @@ Method at API documentation: [im.chat.user.add](https://dev.1c-bitrix.ru/learnin
 {
  "result": true,
  "time": {
-  "start": 1728329185.35455,
-  "finish": 1728329185.43176,
-  "duration": 0.0772099494934082,
-  "processing": 0.0478639602661133,
-  "date_start": "2024-10-07T22:26:25+03:00",
-  "date_finish": "2024-10-07T22:26:25+03:00",
-  "operating_reset_at": 1728329785,
+  "start": 1728454873.26338,
+  "finish": 1728454873.34975,
+  "duration": 0.0863678455352783,
+  "processing": 0.0585901737213135,
+  "date_start": "2024-10-09T09:21:13+03:00",
+  "date_finish": "2024-10-09T09:21:13+03:00",
+  "operating_reset_at": 1728455473,
   "operating": 0
  }
 }

@@ -50,24 +50,24 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
 {
  "result": [
   {
-   "id": 858,
-   "taskId": 2370,
-   "commentId": 5880,
+   "id": 870,
+   "taskId": 2400,
+   "commentId": 5946,
    "createdBy": 1,
-   "createdAt": "2024-10-07T22:25:08+03:00",
-   "updatedAt": "2024-10-07T22:25:08+03:00",
+   "createdAt": "2024-10-09T09:19:54+03:00",
+   "updatedAt": "2024-10-09T09:19:54+03:00",
    "status": 0,
    "text": "The task has been changed, let's split up",
    "formattedText": "The task has been changed, let's split up",
    "files": []
   },
   {
-   "id": 856,
-   "taskId": 2370,
-   "commentId": 5878,
+   "id": 868,
+   "taskId": 2400,
+   "commentId": 5944,
    "createdBy": 1,
-   "createdAt": "2024-10-07T22:25:08+03:00",
-   "updatedAt": "2024-10-07T22:25:08+03:00",
+   "createdAt": "2024-10-09T09:19:53+03:00",
+   "updatedAt": "2024-10-09T09:19:53+03:00",
    "status": 0,
    "text": "The task has been changed, do not split up",
    "formattedText": "The task has been changed, do not split up",
@@ -75,13 +75,13 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
   }
  ],
  "time": {
-  "start": 1728329109.63564,
-  "finish": 1728329109.66988,
-  "duration": 0.0342400074005127,
-  "processing": 0.00878000259399414,
-  "date_start": "2024-10-07T22:25:09+03:00",
-  "date_finish": "2024-10-07T22:25:09+03:00",
-  "operating_reset_at": 1728329709,
+  "start": 1728454795.04247,
+  "finish": 1728454795.07889,
+  "duration": 0.0364160537719727,
+  "processing": 0.00944018363952637,
+  "date_start": "2024-10-09T09:19:55+03:00",
+  "date_finish": "2024-10-09T09:19:55+03:00",
+  "operating_reset_at": 1728455395,
   "operating": 0
  }
 }

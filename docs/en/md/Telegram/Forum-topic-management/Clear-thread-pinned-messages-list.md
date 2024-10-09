@@ -16,7 +16,7 @@ sidebar_position: 10
   | ThreadID | --topic | String, Number | Thread ID. Main if not filled |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 

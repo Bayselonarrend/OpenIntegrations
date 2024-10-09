@@ -18,7 +18,7 @@ sidebar_position: 10
   | Anonymous | --anonymous | Boolean | Poll anonymity |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -54,7 +54,7 @@ sidebar_position: 10
 {
  "ok": true,
  "result": {
-  "message_id": 8272,
+  "message_id": 8314,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -68,9 +68,9 @@ sidebar_position: 10
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327793,
+  "date": 1728453463,
   "poll": {
-   "id": "5197546508521573514",
+   "id": "5204130358378891890",
    "question": "What's your favorite color?",
    "options": [
     {

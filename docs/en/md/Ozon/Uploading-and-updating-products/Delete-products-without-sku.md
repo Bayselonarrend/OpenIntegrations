@@ -16,7 +16,7 @@ sidebar_position: 14
   | Articles | --articles | String, Number, Array of String, Number | Products articles |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

@@ -15,7 +15,7 @@ sidebar_position: 6
   | Channel | --channel | String | Channel ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -47,7 +47,7 @@ sidebar_position: 6
    "text": "<@U06UABH3APP> has joined the channel",
    "inviter": "U06UG1CAYH2",
    "type": "message",
-   "ts": "1728328835.567789"
+   "ts": "1728454514.991459"
   },
   {
    "subtype": "channel_purpose",
@@ -55,7 +55,7 @@ sidebar_position: 6
    "purpose": "TestGoal",
    "text": "set the channel description: TestGoal",
    "type": "message",
-   "ts": "1728328835.155769"
+   "ts": "1728454514.555299"
   },
   {
    "subtype": "channel_topic",
@@ -63,14 +63,14 @@ sidebar_position: 6
    "topic": "TestTopic",
    "text": "set the channel topic: TestTopic",
    "type": "message",
-   "ts": "1728328834.912649"
+   "ts": "1728454514.302599"
   },
   {
    "subtype": "channel_join",
    "user": "U06UG1CAYH2",
    "text": "<@U06UG1CAYH2> has joined the channel",
    "type": "message",
-   "ts": "1728328834.544449"
+   "ts": "1728454513.920549"
   }
  ],
  "has_more": false,

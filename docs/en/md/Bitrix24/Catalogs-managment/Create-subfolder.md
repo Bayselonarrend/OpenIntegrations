@@ -53,16 +53,16 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
 ```json title="Result"
 {
  "result": {
-  "ID": 12406,
+  "ID": 12586,
   "NAME": "New subfolder",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 12406,
-  "PARENT_ID": "12402",
+  "REAL_OBJECT_ID": 12586,
+  "PARENT_ID": "12582",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2024-10-07T22:25:38+03:00",
-  "UPDATE_TIME": "2024-10-07T22:25:38+03:00",
+  "CREATE_TIME": "2024-10-09T09:20:24+03:00",
+  "UPDATE_TIME": "2024-10-09T09:20:24+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -70,13 +70,13 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder"
  },
  "time": {
-  "start": 1728329138.28833,
-  "finish": 1728329138.34315,
-  "duration": 0.0548200607299805,
-  "processing": 0.0252759456634522,
-  "date_start": "2024-10-07T22:25:38+03:00",
-  "date_finish": "2024-10-07T22:25:38+03:00",
-  "operating_reset_at": 1728329738,
+  "start": 1728454824.78198,
+  "finish": 1728454824.8632,
+  "duration": 0.0812170505523682,
+  "processing": 0.0518698692321777,
+  "date_start": "2024-10-09T09:20:24+03:00",
+  "date_finish": "2024-10-09T09:20:24+03:00",
+  "operating_reset_at": 1728455424,
   "operating": 0
  }
 }

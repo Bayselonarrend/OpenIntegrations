@@ -17,7 +17,7 @@ sidebar_position: 4
   | Article | --offerid | String, Number | Item identifier in the vendor's system (Article) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -46,7 +46,7 @@ Method at API documentation: [post /v1/product/info/description](https://docs.oz
 ```json title="Result"
 {
  "result": {
-  "id": 1213785862,
+  "id": 1215763512,
   "offer_id": "143210609",
   "name": "Protective film set for X3 NFC. Dark cotton",
   "description": ""

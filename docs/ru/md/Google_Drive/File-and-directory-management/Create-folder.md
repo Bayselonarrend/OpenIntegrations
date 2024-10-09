@@ -42,7 +42,7 @@ sidebar_position: 5
 ```json title="Результат"
 {
  "kind": "drive#file",
- "id": "13Fq-D4g7Yq302W40SDfam-5X55Gx_CA0",
+ "id": "1aLLPD2uD3xht-PmNHlZt-OIBzFd5qHgg",
  "name": "Тестовая папка",
  "mimeType": "application/vnd.google-apps.folder"
 }

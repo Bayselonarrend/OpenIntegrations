@@ -50,19 +50,12 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
- "errors": [
-  {
-   "parameters": {
-    "media.media_ids": [
-     "1843355678791827456",
-     "1843355698681270272"
-    ]
-   },
-   "message": "Your media IDs are invalid."
-  }
- ],
- "title": "Invalid Request",
- "detail": "One or more parameters to your request was invalid.",
- "type": "https://api.twitter.com/2/problems/invalid-request"
+ "data": {
+  "edit_history_tweet_ids": [
+   "1843702764976603573"
+  ],
+  "text": "Тестовый твитт434c5e75-7284-4ee5-b4ce-ffbc33febd80 https://t.co/4j5KPuRULH",
+  "id": "1843702764976603573"
+ }
 }
 ```

@@ -48,15 +48,15 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
 
 ```json title="Result"
 {
- "result": "https://b24-ar17wx.bitrix24.by/~9HIEu",
+ "result": "https://b24-ar17wx.bitrix24.by/~arC9o",
  "time": {
-  "start": 1728329138.053,
-  "finish": 1728329138.09484,
-  "duration": 0.0418429374694824,
-  "processing": 0.00709795951843262,
-  "date_start": "2024-10-07T22:25:38+03:00",
-  "date_finish": "2024-10-07T22:25:38+03:00",
-  "operating_reset_at": 1728329738,
+  "start": 1728454824.46489,
+  "finish": 1728454824.50162,
+  "duration": 0.0367348194122314,
+  "processing": 0.00669717788696289,
+  "date_start": "2024-10-09T09:20:24+03:00",
+  "date_finish": "2024-10-09T09:20:24+03:00",
+  "operating_reset_at": 1728455424,
   "operating": 0
  }
 }

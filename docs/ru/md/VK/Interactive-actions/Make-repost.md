@@ -45,7 +45,7 @@ sidebar_position: 2
 {
  "response": {
   "success": 1,
-  "post_id": 4522,
+  "post_id": 4540,
   "reposts_count": 3,
   "likes_count": 10,
   "wall_repost_count": 1,

@@ -50,7 +50,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
 ```json title="Result"
 {
  "result": {
-  "ID": "382",
+  "ID": "394",
   "TITLE": "MegaClient",
   "HONORIFIC": null,
   "NAME": "Ivan",
@@ -58,7 +58,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   "LAST_NAME": "Ivanov",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "382",
+  "CONTACT_ID": "394",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": null,
@@ -76,15 +76,15 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2024-10-07T22:27:31+03:00",
-  "DATE_MODIFY": "2024-10-07T22:27:31+03:00",
-  "DATE_CLOSED": "2024-10-07T22:27:31+03:00",
+  "DATE_CREATE": "2024-10-09T09:22:21+03:00",
+  "DATE_MODIFY": "2024-10-09T09:22:22+03:00",
+  "DATE_CLOSED": "2024-10-09T09:22:22+03:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "N",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2024-10-07T22:27:31+03:00",
+  "MOVED_TIME": "2024-10-09T09:22:22+03:00",
   "ADDRESS": "Pushkin st., b. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -93,23 +93,23 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Russia",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "766",
+  "ADDRESS_LOC_ADDR_ID": "790",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
   "UTM_CONTENT": null,
   "UTM_TERM": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2024-10-07T22:27:31+03:00",
+  "LAST_ACTIVITY_TIME": "2024-10-09T09:22:21+03:00",
   "EMAIL": [
    {
-    "ID": "2266",
+    "ID": "2338",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "2268",
+    "ID": "2340",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -117,7 +117,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   ],
   "PHONE": [
    {
-    "ID": "2270",
+    "ID": "2342",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -125,13 +125,13 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   ]
  },
  "time": {
-  "start": 1728329251.69635,
-  "finish": 1728329251.74581,
-  "duration": 0.049461841583252,
-  "processing": 0.01869797706604,
-  "date_start": "2024-10-07T22:27:31+03:00",
-  "date_finish": "2024-10-07T22:27:31+03:00",
-  "operating_reset_at": 1728329851,
+  "start": 1728454942.34032,
+  "finish": 1728454942.39366,
+  "duration": 0.0533421039581299,
+  "processing": 0.0224511623382568,
+  "date_start": "2024-10-09T09:22:22+03:00",
+  "date_finish": "2024-10-09T09:22:22+03:00",
+  "operating_reset_at": 1728455542,
   "operating": 0
  }
 }

@@ -15,7 +15,7 @@ sidebar_position: 4
   | FileID | --fileid | String | File identifier |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 

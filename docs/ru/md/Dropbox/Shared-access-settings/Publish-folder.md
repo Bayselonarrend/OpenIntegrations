@@ -59,12 +59,12 @@ sidebar_position: 1
    ".tag": "enabled"
   }
  },
- "preview_url": "https://www.dropbox.com/scl/fo/9sag0k18jskrqek8wn2ec/h?dl=0",
- "shared_folder_id": "11666345937",
- "time_invited": "2024-10-07T18:44:34Z",
+ "preview_url": "https://www.dropbox.com/scl/fo/5smnsl41asw9myx8vr3c3/h?dl=0",
+ "shared_folder_id": "11680513169",
+ "time_invited": "2024-10-08T17:47:13Z",
  "access_inheritance": {
   ".tag": "inherit"
  },
- "folder_id": "id:kJU6-a-pT48AAAAAAAAcHg"
+ "folder_id": "id:kJU6-a-pT48AAAAAAAAcVw"
 }
 ```

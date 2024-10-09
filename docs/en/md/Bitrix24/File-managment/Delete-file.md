@@ -51,14 +51,14 @@ Method at API documentation: [disk.file.delete](https://dev.1c-bitrix.ru/rest_he
 {
  "result": true,
  "time": {
-  "start": 1728329141.89671,
-  "finish": 1728329141.95773,
-  "duration": 0.0610249042510986,
-  "processing": 0.0354859828948975,
-  "date_start": "2024-10-07T22:25:41+03:00",
-  "date_finish": "2024-10-07T22:25:41+03:00",
-  "operating_reset_at": 1728329741,
-  "operating": 0.127856969833374
+  "start": 1728454828.81245,
+  "finish": 1728454828.89366,
+  "duration": 0.0812110900878906,
+  "processing": 0.0537998676300049,
+  "date_start": "2024-10-09T09:20:28+03:00",
+  "date_finish": "2024-10-09T09:20:28+03:00",
+  "operating_reset_at": 1728455428,
+  "operating": 0.125946998596191
  }
 }
 ```

@@ -19,7 +19,7 @@ sidebar_position: 6
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -57,7 +57,7 @@ sidebar_position: 6
 {
  "ok": true,
  "result": {
-  "message_id": 8267,
+  "message_id": 8309,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -71,7 +71,7 @@ sidebar_position: 6
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327732,
+  "date": 1728453403,
   "animation": {
    "file_name": "animation.gif.mp4",
    "mime_type": "video/mp4",
@@ -79,42 +79,42 @@ sidebar_position: 6
    "width": 220,
    "height": 220,
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAiBLZwQwNFTpP4gNa5mo-M0R3kR7c-wAApRiAAIDZSFI5F-IoPELW-8BAAdtAAM2BA",
-    "file_unique_id": "AQADlGIAAgNlIUhy",
+    "file_id": "AAMCAgADGQMAAiB1ZwYbG5XFI99d3EFZLIRqZTuOqk8AAlFaAAL9yDhI7o6IErbGQG0BAAdtAAM2BA",
+    "file_unique_id": "AQADUVoAAv3IOEhy",
     "file_size": 11352,
     "width": 220,
     "height": 220
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAiBLZwQwNFTpP4gNa5mo-M0R3kR7c-wAApRiAAIDZSFI5F-IoPELW-8BAAdtAAM2BA",
-    "file_unique_id": "AQADlGIAAgNlIUhy",
+    "file_id": "AAMCAgADGQMAAiB1ZwYbG5XFI99d3EFZLIRqZTuOqk8AAlFaAAL9yDhI7o6IErbGQG0BAAdtAAM2BA",
+    "file_unique_id": "AQADUVoAAv3IOEhy",
     "file_size": 11352,
     "width": 220,
     "height": 220
    },
-   "file_id": "CgACAgIAAxkDAAIgS2cEMDRU6T-IDWuZqPjNEd5Ee3PsAAKUYgACA2UhSORfiKDxC1vvNgQ",
-   "file_unique_id": "AgADlGIAAgNlIUg",
+   "file_id": "CgACAgIAAxkDAAIgdWcGGxuVxSPfXdxBWSyEamU7jqpPAAJRWgAC_cg4SO6OiBK2xkBtNgQ",
+   "file_unique_id": "AgADUVoAAv3IOEg",
    "file_size": 84941
   },
   "document": {
    "file_name": "animation.gif.mp4",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAiBLZwQwNFTpP4gNa5mo-M0R3kR7c-wAApRiAAIDZSFI5F-IoPELW-8BAAdtAAM2BA",
-    "file_unique_id": "AQADlGIAAgNlIUhy",
+    "file_id": "AAMCAgADGQMAAiB1ZwYbG5XFI99d3EFZLIRqZTuOqk8AAlFaAAL9yDhI7o6IErbGQG0BAAdtAAM2BA",
+    "file_unique_id": "AQADUVoAAv3IOEhy",
     "file_size": 11352,
     "width": 220,
     "height": 220
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAiBLZwQwNFTpP4gNa5mo-M0R3kR7c-wAApRiAAIDZSFI5F-IoPELW-8BAAdtAAM2BA",
-    "file_unique_id": "AQADlGIAAgNlIUhy",
+    "file_id": "AAMCAgADGQMAAiB1ZwYbG5XFI99d3EFZLIRqZTuOqk8AAlFaAAL9yDhI7o6IErbGQG0BAAdtAAM2BA",
+    "file_unique_id": "AQADUVoAAv3IOEhy",
     "file_size": 11352,
     "width": 220,
     "height": 220
    },
-   "file_id": "CgACAgIAAxkDAAIgS2cEMDRU6T-IDWuZqPjNEd5Ee3PsAAKUYgACA2UhSORfiKDxC1vvNgQ",
-   "file_unique_id": "AgADlGIAAgNlIUg",
+   "file_id": "CgACAgIAAxkDAAIgdWcGGxuVxSPfXdxBWSyEamU7jqpPAAJRWgAC_cg4SO6OiBK2xkBtNgQ",
+   "file_unique_id": "AgADUVoAAv3IOEg",
    "file_size": 84941
   },
   "caption": "Строковое значение"

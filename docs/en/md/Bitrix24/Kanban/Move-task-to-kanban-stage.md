@@ -57,13 +57,13 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 {
  "result": true,
  "time": {
-  "start": 1728329146.30989,
-  "finish": 1728329146.34825,
-  "duration": 0.0383541584014893,
-  "processing": 0.012239933013916,
-  "date_start": "2024-10-07T22:25:46+03:00",
-  "date_finish": "2024-10-07T22:25:46+03:00",
-  "operating_reset_at": 1728329746,
+  "start": 1728454833.97698,
+  "finish": 1728454834.02471,
+  "duration": 0.047731876373291,
+  "processing": 0.0173599720001221,
+  "date_start": "2024-10-09T09:20:33+03:00",
+  "date_finish": "2024-10-09T09:20:34+03:00",
+  "operating_reset_at": 1728455434,
   "operating": 0
  }
 }

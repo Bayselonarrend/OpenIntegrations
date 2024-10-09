@@ -45,13 +45,13 @@ sidebar_position: 2
 
 ```json title="Результат"
 {
- "id": "tblEnITVUkSlgHI65",
+ "id": "tblhBYsKZ3w9qZzlj",
  "name": "Тестовая таблица 2 (изм.)",
  "description": "Новая таблица (изм.)",
- "primaryFieldId": "flds0gJ8oK76wO3Wh",
+ "primaryFieldId": "fld9iS1ofdALjC2yT",
  "fields": [
   {
-   "id": "flds0gJ8oK76wO3Wh",
+   "id": "fld9iS1ofdALjC2yT",
    "name": "Номер",
    "type": "number",
    "options": {
@@ -59,12 +59,12 @@ sidebar_position: 2
    }
   },
   {
-   "id": "fld6Jwim3eYiyvb1T",
+   "id": "fldcMrmBANDdi3wjL",
    "name": "Строковое",
    "type": "richText"
   },
   {
-   "id": "fld82xkFFOdO82YXz",
+   "id": "fldQlnMrCcjrKoGvN",
    "name": "Вложение",
    "type": "multipleAttachments",
    "options": {
@@ -72,7 +72,7 @@ sidebar_position: 2
    }
   },
   {
-   "id": "fldIG87iTcDZMpSUg",
+   "id": "fldPKXJmkzAFRo41T",
    "name": "Флажок",
    "type": "checkbox",
    "options": {
@@ -81,7 +81,7 @@ sidebar_position: 2
    }
   },
   {
-   "id": "fld85KB0qAiUcrtm7",
+   "id": "fldvgGvcjT2zaVAoa",
    "name": "Дата",
    "type": "date",
    "options": {
@@ -92,24 +92,24 @@ sidebar_position: 2
    }
   },
   {
-   "id": "fld0etGulIBZETKo3",
+   "id": "fldxpWaIK8kfA0bdI",
    "name": "Телефон",
    "type": "phoneNumber"
   },
   {
-   "id": "fldEuMHEaCz1PUoav",
+   "id": "fldSIeymPzrNvPv5E",
    "name": "Почта",
    "type": "email"
   },
   {
-   "id": "fldgRI3hInqlYM7zA",
+   "id": "fldFczkpBLZWvsRld",
    "name": "Ссылка",
    "type": "url"
   }
  ],
  "views": [
   {
-   "id": "viwpQS657guaqiL6O",
+   "id": "viw1FaP6XyTzHPsAD",
    "name": "Grid view",
    "type": "grid"
   }

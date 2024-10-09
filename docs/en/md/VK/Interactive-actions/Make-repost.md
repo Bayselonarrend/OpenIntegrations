@@ -18,7 +18,7 @@ sidebar_position: 2
   | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
 <br/>
 
@@ -45,7 +45,7 @@ sidebar_position: 2
 {
  "response": {
   "success": 1,
-  "post_id": 4531,
+  "post_id": 4558,
   "reposts_count": 3,
   "likes_count": 10,
   "wall_repost_count": 1,

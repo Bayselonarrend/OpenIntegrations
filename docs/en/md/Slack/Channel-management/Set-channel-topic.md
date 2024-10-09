@@ -16,7 +16,7 @@ sidebar_position: 11
   | Topic | --theme | String | Channel topic |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -43,24 +43,24 @@ sidebar_position: 11
 {
  "ok": true,
  "channel": {
-  "id": "C07QSFDNSUB",
-  "name": "testconvefd91cd9-7a21-4925-ac86-377c72e5f634",
+  "id": "C07R448PZJ8",
+  "name": "testconv2383f9a9-fc9f-4928-ba19-511c3b7e9c66",
   "is_channel": true,
   "is_group": false,
   "is_im": false,
   "is_mpim": false,
   "is_private": false,
-  "created": 1728328834,
+  "created": 1728454513,
   "is_archived": false,
   "is_general": false,
   "unlinked": 0,
-  "name_normalized": "testconvefd91cd9-7a21-4925-ac86-377c72e5f634",
+  "name_normalized": "testconv2383f9a9-fc9f-4928-ba19-511c3b7e9c66",
   "is_shared": false,
   "is_org_shared": false,
   "is_pending_ext_shared": false,
   "pending_shared": [],
   "context_team_id": "T06UD92BS3C",
-  "updated": 1728328834889,
+  "updated": 1728454514283,
   "parent_conversation": null,
   "creator": "U06UG1CAYH2",
   "is_ext_shared": false,
@@ -72,7 +72,7 @@ sidebar_position: 11
   "topic": {
    "value": "TestTopic",
    "creator": "U06UG1CAYH2",
-   "last_set": 1728328834
+   "last_set": 1728454514
   },
   "purpose": {
    "value": "",

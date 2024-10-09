@@ -56,13 +56,13 @@ Method at API documentation: [disk.storage.rename](https://dev.1c-bitrix.ru/rest
   "ROOT_OBJECT_ID": "464"
  },
  "time": {
-  "start": 1728329113.34776,
-  "finish": 1728329113.38487,
-  "duration": 0.0371088981628418,
-  "processing": 0.00922203063964844,
-  "date_start": "2024-10-07T22:25:13+03:00",
-  "date_finish": "2024-10-07T22:25:13+03:00",
-  "operating_reset_at": 1728329713,
+  "start": 1728454799.15146,
+  "finish": 1728454799.18227,
+  "duration": 0.0308098793029785,
+  "processing": 0.00592279434204102,
+  "date_start": "2024-10-09T09:19:59+03:00",
+  "date_finish": "2024-10-09T09:19:59+03:00",
+  "operating_reset_at": 1728455399,
   "operating": 0
  }
 }

@@ -17,7 +17,7 @@ sidebar_position: 1
   | LastID | --last | String, Number | ID of the last value (last_id) from the previous response |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

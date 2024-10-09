@@ -16,7 +16,7 @@ sidebar_position: 13
   | Name | --title | String | New channel name |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -43,24 +43,24 @@ sidebar_position: 13
 {
  "ok": true,
  "channel": {
-  "id": "C07QSFDNSUB",
-  "name": "testconve5ed5fc5-7b9b-4c84-885d-ef65af40af44",
+  "id": "C07R448PZJ8",
+  "name": "testconvb42c1906-4136-4c7e-ae81-ba7ea2d8c02b",
   "is_channel": true,
   "is_group": false,
   "is_im": false,
   "is_mpim": false,
   "is_private": false,
-  "created": 1728328834,
+  "created": 1728454513,
   "is_archived": false,
   "is_general": false,
   "unlinked": 0,
-  "name_normalized": "testconve5ed5fc5-7b9b-4c84-885d-ef65af40af44",
+  "name_normalized": "testconvb42c1906-4136-4c7e-ae81-ba7ea2d8c02b",
   "is_shared": false,
   "is_org_shared": false,
   "is_pending_ext_shared": false,
   "pending_shared": [],
   "context_team_id": "T06UD92BS3C",
-  "updated": 1728328837003,
+  "updated": 1728454516450,
   "parent_conversation": null,
   "creator": "U06UG1CAYH2",
   "is_ext_shared": false,
@@ -69,19 +69,19 @@ sidebar_position: 13
   ],
   "pending_connected_team_ids": [],
   "is_member": true,
-  "last_read": "1728328835.567789",
+  "last_read": "1728454514.991459",
   "topic": {
    "value": "TestTopic",
    "creator": "U06UG1CAYH2",
-   "last_set": 1728328834
+   "last_set": 1728454514
   },
   "purpose": {
    "value": "TestGoal",
    "creator": "U06UG1CAYH2",
-   "last_set": 1728328835
+   "last_set": 1728454514
   },
   "previous_names": [
-   "testconvefd91cd9-7a21-4925-ac86-377c72e5f634"
+   "testconv2383f9a9-fc9f-4928-ba19-511c3b7e9c66"
   ]
  }
 }

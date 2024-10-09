@@ -19,7 +19,7 @@ sidebar_position: 9
   | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -51,7 +51,7 @@ sidebar_position: 9
 {
  "ok": true,
  "result": {
-  "message_id": 8271,
+  "message_id": 8313,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -65,7 +65,7 @@ sidebar_position: 9
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327765,
+  "date": 1728453435,
   "contact": {
    "phone_number": "88005553535",
    "first_name": "Петр",

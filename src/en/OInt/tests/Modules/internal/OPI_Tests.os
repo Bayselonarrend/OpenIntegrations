@@ -1984,6 +1984,20 @@ EndProcedure
 
 #EndRegion
 
+#Region CDEK
+
+Procedure CdekAPI_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Account"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("CDEK_Password" , TestParameters);
+
+    CDEK_GetToken(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -13464,7 +13478,6 @@ Procedure Neocities_UploadFile(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "Neocities");
-
     OPI_TestDataRetrieval.Check_NCSuccess(Result);
 
 EndProcedure
@@ -13487,7 +13500,6 @@ Procedure Neocities_UploadFiles(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "UploadFiles", "Neocities");
-
     OPI_TestDataRetrieval.Check_NCSuccess(Result);
 
 EndProcedure
@@ -13506,19 +13518,16 @@ Procedure Neocities_DeleteSelectedFiles(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelectedFiles", "Neocities");
-
     OPI_TestDataRetrieval.Check_NCSuccess(Result);
 
     Result = OPI_Neocities.DeleteSelectedFiles(Token, "/testfolder");
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelectedFiles (folder 1)");
-
     OPI_TestDataRetrieval.Check_NCSuccess(Result);
 
     Result = OPI_Neocities.DeleteSelectedFiles(Token, "/test");
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelectedFiles (folder 2)");
-
     OPI_TestDataRetrieval.Check_NCSuccess(Result);
 
 EndProcedure
@@ -13552,7 +13561,6 @@ Procedure Neocities_GetSiteData(FunctionParameters)
     Result = OPI_Neocities.GetSiteData(Token);
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetSiteData", "Neocities"); // SKIP
-
     OPI_TestDataRetrieval.Check_NCSuccess(Result); // SKIP
 
     Result = OPI_Neocities.GetSiteData(Token, Website);
@@ -13560,7 +13568,6 @@ Procedure Neocities_GetSiteData(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetSiteData (Site)");
-
     OPI_TestDataRetrieval.Check_NCSuccess(Result);
 
 EndProcedure
@@ -13575,8 +13582,8 @@ Procedure Neocities_GetToken(FunctionParameters)
     // END
 
     Result["api_key"] = "***";
-    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Neocities");
 
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Neocities");
     OPI_TestDataRetrieval.Check_NCSuccess(Result);
 
 EndProcedure
@@ -13593,8 +13600,29 @@ Procedure Neocities_SynchronizeFolders(FunctionParameters)
     // END
 
     OPI_TestDataRetrieval.WriteLog(Result, "SynchronizeFolders", "Neocities");
-
     OPI_TestDataRetrieval.Check_NCSync(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region CDEK
+
+Procedure CDEK_GetToken(FunctionParameters)
+
+    Account  = FunctionParameters["CDEK_Account"];
+    Password = FunctionParameters["CDEK_Password"];
+
+    Result = OPI_CDEK.GetToken(Account, Password, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekToken(Result);
+
+    Token = Result["access_token"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_Token", Result);
+    OPI_Tools.AddField("CDEK_Token", Token, "String", FunctionParameters);
 
 EndProcedure
 

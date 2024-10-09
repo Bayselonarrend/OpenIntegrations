@@ -15,7 +15,7 @@ sidebar_position: 1
   | Website | --sitename | String | Site name (login) for information. Current, if not filled in |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Neocities
+  Returns:  Map Of KeyAndValue - serialized JSON response from Neocities
 
 <br/>
 
@@ -47,10 +47,10 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
  "result": "success",
  "info": {
   "sitename": "opi-test",
-  "views": 9064,
-  "hits": 17050,
+  "views": 9086,
+  "hits": 17120,
   "created_at": "Thu, 20 Jun 2024 07:28:29 -0000",
-  "last_updated": "Mon, 07 Oct 2024 19:32:51 -0000",
+  "last_updated": "Wed, 09 Oct 2024 06:27:52 -0000",
   "domain": null,
   "tags": []
  }

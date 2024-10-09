@@ -41,10 +41,10 @@ sidebar_position: 1
 
 ```json title="Результат"
 {
- "id": "AAABRVCITwg",
+ "id": "AAABW19Pq0I",
  "kind": "drive#comment",
- "createdTime": "2024-10-07T18:40:09.193Z",
- "modifiedTime": "2024-10-07T18:40:09.193Z",
+ "createdTime": "2024-10-08T17:42:33.807Z",
+ "modifiedTime": "2024-10-08T17:42:33.807Z",
  "replies": [],
  "author": {
   "displayName": "Антон Титовец",

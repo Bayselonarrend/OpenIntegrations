@@ -26,6 +26,11 @@ pipeline {
                 test_bitrix24()
              }
           }
+          stage('cdek'){
+             steps{
+                test_cdek()
+             }
+          }
           stage('dropbox'){
              steps{
                 test_dropbox()
@@ -865,6 +870,16 @@ def test_bitrix24(){
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe bitrix24 GetDealsFilterStructure --empty "test" --debug --test '
+               }
+
+}
+
+
+def test_cdek(){
+					
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe cdek GetToken --account "test" --pass "test" --testapi "test" --debug --test '
                }
 
 }
@@ -2278,6 +2293,7 @@ pipeline {
 test_tools()
 test_airtable()
 test_bitrix24()
+test_cdek()
 test_dropbox()
 test_gcalendar()
 test_gdrive()

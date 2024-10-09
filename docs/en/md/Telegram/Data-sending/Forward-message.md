@@ -17,7 +17,7 @@ sidebar_position: 11
   | ToID | --to | String, Number | Target chat ID or ChatID*TopicID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -45,7 +45,7 @@ sidebar_position: 11
 {
  "ok": true,
  "result": {
-  "message_id": 8273,
+  "message_id": 8315,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -59,7 +59,7 @@ sidebar_position: 11
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327801,
+  "date": 1728453470,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -68,8 +68,8 @@ sidebar_position: 11
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 9380,
-   "date": 1728327605
+   "message_id": 9440,
+   "date": 1728453289
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -77,8 +77,8 @@ sidebar_position: 11
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 9380,
-  "forward_date": 1728327605,
+  "forward_from_message_id": 9440,
+  "forward_date": 1728453289,
   "text": "Строковое значение"
  }
 }

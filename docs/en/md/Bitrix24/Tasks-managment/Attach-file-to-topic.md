@@ -52,16 +52,16 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
 ```json title="Result"
 {
  "result": {
-  "attachmentId": 3558
+  "attachmentId": 3606
  },
  "time": {
-  "start": 1728329105.65456,
-  "finish": 1728329105.72063,
-  "duration": 0.0660750865936279,
-  "processing": 0.0390539169311523,
-  "date_start": "2024-10-07T22:25:05+03:00",
-  "date_finish": "2024-10-07T22:25:05+03:00",
-  "operating_reset_at": 1728329705,
+  "start": 1728454790.16012,
+  "finish": 1728454790.22105,
+  "duration": 0.0609369277954102,
+  "processing": 0.0364110469818115,
+  "date_start": "2024-10-09T09:19:50+03:00",
+  "date_finish": "2024-10-09T09:19:50+03:00",
+  "operating_reset_at": 1728455390,
   "operating": 0
  }
 }

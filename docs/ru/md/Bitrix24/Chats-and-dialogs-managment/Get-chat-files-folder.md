@@ -50,16 +50,16 @@ sidebar_position: 20
 ```json title="Результат"
 {
  "result": {
-  "ID": 12370
+  "ID": 12490
  },
  "time": {
-  "start": 1728326889.79654,
-  "finish": 1728326889.86441,
-  "duration": 0.067878007888794,
-  "processing": 0.0401489734649658,
-  "date_start": "2024-10-07T21:48:09+03:00",
-  "date_finish": "2024-10-07T21:48:09+03:00",
-  "operating_reset_at": 1728327489,
+  "start": 1728409852.88543,
+  "finish": 1728409852.94853,
+  "duration": 0.0630941390991211,
+  "processing": 0.0362548828125,
+  "date_start": "2024-10-08T20:50:52+03:00",
+  "date_finish": "2024-10-08T20:50:52+03:00",
+  "operating_reset_at": 1728410452,
   "operating": 0
  }
 }

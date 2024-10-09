@@ -60,14 +60,14 @@ Method at API documentation: [crm.lead.update](https://dev.1c-bitrix.ru/rest_hel
 {
  "result": true,
  "time": {
-  "start": 1728329252.01049,
-  "finish": 1728329252.14522,
-  "duration": 0.134732007980347,
-  "processing": 0.108317136764526,
-  "date_start": "2024-10-07T22:27:32+03:00",
-  "date_finish": "2024-10-07T22:27:32+03:00",
-  "operating_reset_at": 1728329852,
-  "operating": 0.108298063278198
+  "start": 1728454942.70493,
+  "finish": 1728454942.90789,
+  "duration": 0.202960014343262,
+  "processing": 0.174932956695557,
+  "date_start": "2024-10-09T09:22:22+03:00",
+  "date_finish": "2024-10-09T09:22:22+03:00",
+  "operating_reset_at": 1728455542,
+  "operating": 0.17490816116333
  }
 }
 ```

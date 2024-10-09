@@ -42,21 +42,21 @@ sidebar_position: 4
 ```json title="Результат"
 {
  "antivirus_status": "clean",
- "public_key": "05KGTvef64w7ISzzce5gt8dJfpZ2eAE5x2qw+nd39+X1AvLhYGD9i9B7SG67iqsXq/J6bpmRyOJonT3VoXnDag==",
- "public_url": "https://yadi.sk/d/C6knnNm8j77t-A",
+ "public_key": "fLfKnKmtqPt6TSTumjWC+GMkuduPJAnpx5lwlWVVqp8zeDXp5X74XLJ2GbNOAgYIq/J6bpmRyOJonT3VoXnDag==",
+ "public_url": "https://yadi.sk/d/yOLqz8yUAZeE0g",
  "views_count": 0,
  "exif": {},
- "created": "2024-10-07T21:36:51+03:00",
+ "created": "2024-10-08T20:39:25+03:00",
  "type": "file",
- "resource_id": "1573541518:4cc8d261cd582759a6adc615c7e6e583d4a618de4b08b732a4c855d720d58571",
- "modified": "2024-10-07T21:36:51+03:00",
+ "resource_id": "1573541518:37b19cb1e46f814bb80288ca074d36440e9a4aace2331d9d71390839d4ad7c4e",
+ "modified": "2024-10-08T20:39:25+03:00",
  "size": 2114023,
  "comment_ids": {
-  "private_resource": "1573541518:4cc8d261cd582759a6adc615c7e6e583d4a618de4b08b732a4c855d720d58571",
-  "public_resource": "1573541518:4cc8d261cd582759a6adc615c7e6e583d4a618de4b08b732a4c855d720d58571"
+  "private_resource": "1573541518:37b19cb1e46f814bb80288ca074d36440e9a4aace2331d9d71390839d4ad7c4e",
+  "public_resource": "1573541518:37b19cb1e46f814bb80288ca074d36440e9a4aace2331d9d71390839d4ad7c4e"
  },
  "mime_type": "multipart",
- "file": "https://downloader.disk.yandex.ru/disk/ecb052ccca4bdac2b8070eeb95a582beb8a113aefd59e6b46576e2a4c1d575c6/67046299/gwThwhLBKYvLhQCNnqAHitjtYP_sMEGdXpAYnCH3CeOI2TmJ3n1LCawN581CYeuif0mayq9-vnAgzEVZSHXCMA%3D%3D?uid=0&filename=222a2fc4-39f9-457a-94a4-c69278c48e25.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=0&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
+ "file": "https://downloader.disk.yandex.ru/disk/c4253bc7630c64e30f5623d8e60b4b819746fcba2015fb6af9d08c88edcf5ccd/6705a6a2/gwThwhLBKYvLhQCNnqAHirWAoEC4dKsPFFzSTeWuFK5ceIUkIDC7fKzI6e0Ic1rFWZAX7ZAMHvmKl9PvgqcSEQ%3D%3D?uid=0&filename=95934d00-67ef-43eb-a306-73a490a0aac0.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=0&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v2&etag=9e0176f87f6565a22f78e0f9b39a4d78",
  "path": "/",
  "owner": {
   "login": "bayselonarrend",
@@ -65,8 +65,8 @@ sidebar_position: 4
  },
  "media_type": "image",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
- "revision": 1728326232207978,
+ "revision": 1728409184987250,
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
- "name": "222a2fc4-39f9-457a-94a4-c69278c48e25.png"
+ "name": "95934d00-67ef-43eb-a306-73a490a0aac0.png"
 }
 ```

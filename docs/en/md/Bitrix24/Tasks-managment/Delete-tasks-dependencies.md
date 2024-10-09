@@ -59,13 +59,13 @@ Method at API documentation: [task.dependence.delete](https://dev.1c-bitrix.ru/r
 {
  "result": [],
  "time": {
-  "start": 1728329092.83673,
-  "finish": 1728329092.8836,
-  "duration": 0.0468740463256836,
-  "processing": 0.00907206535339356,
-  "date_start": "2024-10-07T22:24:52+03:00",
-  "date_finish": "2024-10-07T22:24:52+03:00",
-  "operating_reset_at": 1728329692,
+  "start": 1728454775.18853,
+  "finish": 1728454775.22678,
+  "duration": 0.0382490158081055,
+  "processing": 0.0094759464263916,
+  "date_start": "2024-10-09T09:19:35+03:00",
+  "date_finish": "2024-10-09T09:19:35+03:00",
+  "operating_reset_at": 1728455375,
   "operating": 0
  }
 }

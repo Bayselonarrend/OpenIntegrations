@@ -16,7 +16,7 @@ sidebar_position: 1
   | PageNumber | --page | Number, String | Page number |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 

@@ -45,7 +45,7 @@ sidebar_position: 3
  "filename": "ВажныйДокумент.docx",
  "size": 24071,
  "type": "application",
- "url": "https://ub.icq.net/files/get/tYISDyv7JqR12m1jKhNt7exhNtcDK7gWJVQbgWX9Xk1CRGp7TXfOwGyXLU93DXuhH2pCjfIswtZ5LPAXuTKfDCAYGuQCOWQmECF7CpjmtvlcwtOCdw3XD8xvcCNAsPLCXOJHkXWoqKPilzaORXAKCGYmWpKhNt/%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+ "url": "https://ub.icq.net/files/get/kqNCDPqMHd3CwGE3xUdGqRxUdGAr7neSGTqd7Gz03QfixOKjJSz9E4A1rHmhl1GdDMg1RXw8oI4Vn3hGWWwbmIbw7gWiSlulz1Z7j2Ai3ZMBIScnRvTGrBuAH1izuc5IoKL5FSZdeu6SL29x7Sxae0oGgfxUdG/%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
  "ok": true
 }
 ```

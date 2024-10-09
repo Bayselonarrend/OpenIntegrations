@@ -54,9 +54,9 @@ sidebar_position: 5
 ```json title="Результат"
 {
  "result": {
-  "ID": "1428",
-  "TASK_ID": "2358",
-  "PARENT_ID": "1426",
+  "ID": "1444",
+  "TASK_ID": "2378",
+  "PARENT_ID": "1442",
   "CREATED_BY": "1",
   "TITLE": "Новый текст пункта чек-листа",
   "SORT_INDEX": "1",
@@ -68,13 +68,13 @@ sidebar_position: 5
   "ATTACHMENTS": []
  },
  "time": {
-  "start": 1728326771.21918,
-  "finish": 1728326771.27084,
-  "duration": 0.0516531467437744,
-  "processing": 0.0224440097808838,
-  "date_start": "2024-10-07T21:46:11+03:00",
-  "date_finish": "2024-10-07T21:46:11+03:00",
-  "operating_reset_at": 1728327371,
+  "start": 1728409731.99901,
+  "finish": 1728409732.05083,
+  "duration": 0.051814079284668,
+  "processing": 0.0249829292297363,
+  "date_start": "2024-10-08T20:48:51+03:00",
+  "date_finish": "2024-10-08T20:48:52+03:00",
+  "operating_reset_at": 1728410332,
   "operating": 0
  }
 }

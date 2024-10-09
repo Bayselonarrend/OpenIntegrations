@@ -56,16 +56,16 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
 ```json title="Result"
 {
  "result": {
-  "ID": "12404",
+  "ID": "12584",
   "NAME": "New subfolder 2",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "12404",
-  "PARENT_ID": 12400,
+  "REAL_OBJECT_ID": "12584",
+  "PARENT_ID": 12580,
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2024-10-07T22:25:38+03:00",
-  "UPDATE_TIME": "2024-10-07T22:25:38+03:00",
+  "CREATE_TIME": "2024-10-09T09:20:24+03:00",
+  "UPDATE_TIME": "2024-10-09T09:20:25+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -73,13 +73,13 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New folder 2/New subfolder 2"
  },
  "time": {
-  "start": 1728329142.44487,
-  "finish": 1728329142.49687,
-  "duration": 0.052001953125,
-  "processing": 0.0260648727416992,
-  "date_start": "2024-10-07T22:25:42+03:00",
-  "date_finish": "2024-10-07T22:25:42+03:00",
-  "operating_reset_at": 1728329742,
+  "start": 1728454829.50812,
+  "finish": 1728454829.56734,
+  "duration": 0.0592169761657715,
+  "processing": 0.0330197811126709,
+  "date_start": "2024-10-09T09:20:29+03:00",
+  "date_finish": "2024-10-09T09:20:29+03:00",
+  "operating_reset_at": 1728455429,
   "operating": 0
  }
 }

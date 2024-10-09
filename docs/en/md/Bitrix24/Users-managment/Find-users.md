@@ -59,13 +59,13 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 {
  "result": [],
  "time": {
-  "start": 1728329245.84855,
-  "finish": 1728329245.88771,
-  "duration": 0.0391631126403809,
-  "processing": 0.0109529495239258,
-  "date_start": "2024-10-07T22:27:25+03:00",
-  "date_finish": "2024-10-07T22:27:25+03:00",
-  "operating_reset_at": 1728329845,
+  "start": 1728454935.77575,
+  "finish": 1728454935.81785,
+  "duration": 0.0420989990234375,
+  "processing": 0.0130829811096191,
+  "date_start": "2024-10-09T09:22:15+03:00",
+  "date_finish": "2024-10-09T09:22:15+03:00",
+  "operating_reset_at": 1728455535,
   "operating": 0
  }
 }

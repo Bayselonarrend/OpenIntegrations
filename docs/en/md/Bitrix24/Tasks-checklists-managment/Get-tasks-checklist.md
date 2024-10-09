@@ -51,8 +51,8 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
 {
  "result": [
   {
-   "ID": "1434",
-   "TASK_ID": "2368",
+   "ID": "1458",
+   "TASK_ID": "2398",
    "PARENT_ID": 0,
    "CREATED_BY": "1",
    "TITLE": "BX_CHECKLIST_1",
@@ -65,9 +65,9 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
    "ATTACHMENTS": []
   },
   {
-   "ID": "1436",
-   "TASK_ID": "2368",
-   "PARENT_ID": "1434",
+   "ID": "1460",
+   "TASK_ID": "2398",
+   "PARENT_ID": "1458",
    "CREATED_BY": "1",
    "TITLE": "New elements text",
    "SORT_INDEX": "1",
@@ -80,13 +80,13 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
   }
  ],
  "time": {
-  "start": 1728329102.11754,
-  "finish": 1728329102.17281,
-  "duration": 0.0552651882171631,
-  "processing": 0.0228219032287598,
-  "date_start": "2024-10-07T22:25:02+03:00",
-  "date_finish": "2024-10-07T22:25:02+03:00",
-  "operating_reset_at": 1728329702,
+  "start": 1728454786.58925,
+  "finish": 1728454786.64143,
+  "duration": 0.0521810054779053,
+  "processing": 0.0244979858398438,
+  "date_start": "2024-10-09T09:19:46+03:00",
+  "date_finish": "2024-10-09T09:19:46+03:00",
+  "operating_reset_at": 1728455386,
   "operating": 0
  }
 }

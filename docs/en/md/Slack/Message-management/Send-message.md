@@ -18,7 +18,7 @@ sidebar_position: 1
   | Blocks | --blocks | Array of Structure | JSON array of block descriptions |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -67,11 +67,11 @@ sidebar_position: 1
 {
  "ok": true,
  "channel": "C06UFNUTKUL",
- "ts": "1728328829.261829",
+ "ts": "1728454508.757479",
  "message": {
   "user": "U06UG1CAYH2",
   "type": "message",
-  "ts": "1728328829.261829",
+  "ts": "1728454508.757479",
   "bot_id": "B06TZ0MJV5M",
   "app_id": "A06TYNH45RV",
   "text": "TestMessage1",
@@ -92,7 +92,7 @@ sidebar_position: 1
   "blocks": [
    {
     "type": "rich_text",
-    "block_id": "CbN",
+    "block_id": "g/EJA",
     "elements": [
      {
       "type": "rich_text_section",

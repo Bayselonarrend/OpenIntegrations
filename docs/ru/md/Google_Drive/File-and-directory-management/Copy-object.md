@@ -44,7 +44,7 @@ sidebar_position: 7
 ```json title="Результат"
 {
  "kind": "drive#file",
- "id": "1n8xCJ1Wzu27NvPu6qqNaYm1TD3HhT86t",
+ "id": "1P8WK9Wn2710HiQYkKzYMFso2FmFenV6d",
  "name": "Скопированный файл.jpeg",
  "mimeType": "image/jpeg"
 }

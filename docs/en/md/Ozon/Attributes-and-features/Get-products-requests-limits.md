@@ -15,7 +15,7 @@ sidebar_position: 5
   | APIKey | --apikey | String | API key |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -43,14 +43,14 @@ Method at API documentation: [post /v4/product/info/limit](https://docs.ozon.ru/
 ```json title="Result"
 {
  "daily_create": {
-  "usage": 3,
+  "usage": 0,
   "limit": 1500,
-  "reset_at": "2024-10-08T00:00:00Z"
+  "reset_at": "2024-10-10T00:00:00Z"
  },
  "daily_update": {
-  "usage": 9,
+  "usage": 0,
   "limit": 5000,
-  "reset_at": "2024-10-08T00:00:00Z"
+  "reset_at": "2024-10-10T00:00:00Z"
  },
  "total": {
   "usage": 4,

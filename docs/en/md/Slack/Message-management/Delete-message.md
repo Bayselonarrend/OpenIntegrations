@@ -17,7 +17,7 @@ sidebar_position: 4
   | IsDelayed | --issheduled | Boolean | Indicator of deleting a delayed message |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 
@@ -44,6 +44,6 @@ sidebar_position: 4
 {
  "ok": true,
  "channel": "C06UFNUTKUL",
- "ts": "1728328829.261829"
+ "ts": "1728454508.757479"
 }
 ```

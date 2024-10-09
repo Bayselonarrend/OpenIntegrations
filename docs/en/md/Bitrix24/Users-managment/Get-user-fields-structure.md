@@ -113,13 +113,13 @@ Method at API documentation: [user.fields](https://dev.1c-bitrix.ru/rest_help/us
   "USER_TYPE": "USER_TYPE"
  },
  "time": {
-  "start": 1728329241.93263,
-  "finish": 1728329241.95982,
-  "duration": 0.0271899700164795,
-  "processing": 0.000694990158081055,
-  "date_start": "2024-10-07T22:27:21+03:00",
-  "date_finish": "2024-10-07T22:27:21+03:00",
-  "operating_reset_at": 1728329841,
+  "start": 1728454930.84083,
+  "finish": 1728454930.86898,
+  "duration": 0.0281410217285156,
+  "processing": 0.000678062438964844,
+  "date_start": "2024-10-09T09:22:10+03:00",
+  "date_finish": "2024-10-09T09:22:10+03:00",
+  "operating_reset_at": 1728455530,
   "operating": 0
  }
 }
