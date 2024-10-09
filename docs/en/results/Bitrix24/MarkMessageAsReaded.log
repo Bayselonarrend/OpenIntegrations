@@ -2,17 +2,17 @@
  "result": {
   "dialogId": 10,
   "chatId": 10,
-  "lastId": 17614,
+  "lastId": 17682,
   "counter": 0
  },
  "time": {
-  "start": 1728412755.39272,
-  "finish": 1728412755.43876,
-  "duration": 0.0460410118103027,
-  "processing": 0.0186500549316406,
-  "date_start": "2024-10-08T21:39:15+03:00",
-  "date_finish": "2024-10-08T21:39:15+03:00",
-  "operating_reset_at": 1728413355,
+  "start": 1728454899.00309,
+  "finish": 1728454899.04547,
+  "duration": 0.0423820018768311,
+  "processing": 0.0175080299377441,
+  "date_start": "2024-10-09T09:21:39+03:00",
+  "date_finish": "2024-10-09T09:21:39+03:00",
+  "operating_reset_at": 1728455499,
   "operating": 0
  }
 }

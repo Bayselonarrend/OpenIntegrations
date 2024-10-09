@@ -1,9 +1,9 @@
 ﻿ {
  "ok": true,
  "file": {
-  "id": "F07QJHC4H2T",
-  "created": 1728412386,
-  "timestamp": 1728412386,
+  "id": "F07QYP172FP",
+  "created": 1728454531,
+  "timestamp": 1728454531,
   "name": "NewFile",
   "title": "NewFile",
   "mimetype": "application/vnd.slack-remote",
@@ -22,7 +22,7 @@
   "username": "",
   "url_private": "https://slack.com/api/files.remote.add",
   "media_display_type": "unknown",
-  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QJHC4H2T/newfile",
+  "permalink": "https://openintegrationsgroup.slack.com/files/U06UG1CAYH2/F07QYP172FP/newfile",
   "comments_count": 0,
   "is_starred": false,
   "shares": {
@@ -32,7 +32,7 @@
       "reply_users": [],
       "reply_users_count": 0,
       "reply_count": 0,
-      "ts": "1728412386.950469",
+      "ts": "1728454531.918939",
       "channel_name": "slack-api-librarry",
       "team_id": "T06UD92BS3C",
       "share_user_id": "U06UG1CAYH2",
@@ -47,7 +47,7 @@
   "groups": [],
   "ims": [],
   "has_more_shares": false,
-  "external_id": "756c4bca-4937-4c9b-abd7-61c2f0c3698b",
+  "external_id": "3a61913c-c2ce-412b-a4b4-6875373db31a",
   "external_url": "https://slack.com/api/files.remote.add",
   "has_rich_preview": false,
   "file_access": "visible"

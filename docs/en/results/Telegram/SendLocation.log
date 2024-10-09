@@ -1,7 +1,7 @@
 ﻿ {
  "ok": true,
  "result": {
-  "message_id": 8298,
+  "message_id": 8312,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728411312,
+  "date": 1728453427,
   "location": {
    "latitude": 48.873739,
    "longitude": 48.873733

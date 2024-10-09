@@ -2,13 +2,13 @@
  "result": {
   "items": [
    {
-    "id": 1215222918,
+    "id": 1215763512,
     "name": "Protective film set for X3 NFC. Dark cotton",
     "offer_id": "143210609",
     "barcode": "",
     "buybox_price": "",
     "category_id": 0,
-    "created_at": "2024-10-08T18:42:48.582499Z",
+    "created_at": "2024-10-09T06:25:24.931356Z",
     "images": [
      "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"
     ],
@@ -61,7 +61,7 @@
        "attribute_name": ""
       }
      ],
-     "state_updated_at": "2024-10-08T18:43:31.857659Z"
+     "state_updated_at": "2024-10-09T06:26:09.61423Z"
     },
     "state": "",
     "service_type": "IS_CODE_SERVICE",
@@ -78,7 +78,7 @@
     "is_discounted": false,
     "has_discounted_item": false,
     "barcodes": [],
-    "updated_at": "2024-10-08T18:43:31.137918Z",
+    "updated_at": "2024-10-09T06:26:07.502714Z",
     "price_indexes": {
      "price_index": "WITHOUT_INDEX",
      "external_index_data": null,
