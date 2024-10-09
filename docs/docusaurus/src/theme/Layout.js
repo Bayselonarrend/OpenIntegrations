@@ -6,12 +6,13 @@ export default function CustomLayout(props) {
   useEffect(() => {
     // Создаем обертку для блока Яндекса под правым меню
     const wrapperRightMenu = document.createElement('div');
-    wrapperRightMenu.style.height = '200px'; // Устанавливаем высоту обертки
+    wrapperRightMenu.style.height = '350px'; // Устанавливаем высоту обертки
     wrapperRightMenu.style.marginTop = '20px'; // Добавляем отступ сверху
 
     // Создаем <div> для блока Яндекса под правым меню
     const adDivRightMenu = document.createElement('div');
     adDivRightMenu.id = 'yandex_rtb_R-A-12294791-2';
+    adDivRightMenu.style.width = '350px';
 
     // Добавляем рекламный блок в обертку
     wrapperRightMenu.appendChild(adDivRightMenu);
