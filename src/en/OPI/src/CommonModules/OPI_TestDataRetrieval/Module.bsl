@@ -213,7 +213,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "OzonAPI_WarehousesManagment"          , "Warehouses managment"            , Ozon);
     NewTest(TestTable, "NC_FilesManagment"                    , "Files managment"                 , Neocities);
     NewTest(TestTable, "NC_DataRetrieving"                    , "Data retrieving"                 , Neocities);
-    NewTest(TestTable, "CdekAPI_CommonMethods"                , "CommonMethods"                   , Cdek);
+    NewTest(TestTable, "CdekAPI_CommonMethods"                , "Common methods"                  , Cdek);
+    NewTest(TestTable, "CDEKAPI_OrdersManagment"              , "Orders managment"                , Cdek);
 
     Return TestTable;
 
