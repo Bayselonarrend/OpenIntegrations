@@ -43,7 +43,7 @@ sidebar_position: 10
   "name": "New catalog",
   "path_lower": "/new catalog",
   "path_display": "/New catalog",
-  "id": "id:kJU6-a-pT48AAAAAAAAcQA"
+  "id": "id:kJU6-a-pT48AAAAAAAAclw"
  }
 }
 ```

@@ -52,13 +52,13 @@ Method at API documentation: [log.blogpost.share](https://dev.1c-bitrix.ru/rest_
 {
  "result": true,
  "time": {
-  "start": 1728329083.36352,
-  "finish": 1728329083.39613,
-  "duration": 0.0326130390167236,
-  "processing": 0.00477385520935059,
-  "date_start": "2024-10-07T22:24:43+03:00",
-  "date_finish": "2024-10-07T22:24:43+03:00",
-  "operating_reset_at": 1728329683,
+  "start": 1728454765.18756,
+  "finish": 1728454765.2209,
+  "duration": 0.033344030380249,
+  "processing": 0.00590705871582031,
+  "date_start": "2024-10-09T09:19:25+03:00",
+  "date_finish": "2024-10-09T09:19:25+03:00",
+  "operating_reset_at": 1728455365,
   "operating": 0
  }
 }

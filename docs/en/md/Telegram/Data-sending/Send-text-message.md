@@ -19,7 +19,7 @@ sidebar_position: 1
   | RepliedID | --reply | String, Number | Reply to message ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -49,7 +49,7 @@ sidebar_position: 1
 {
  "ok": true,
  "result": {
-  "message_id": 8260,
+  "message_id": 8302,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -63,7 +63,7 @@ sidebar_position: 1
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327605,
+  "date": 1728453289,
   "text": "Строковое значение"
  }
 }

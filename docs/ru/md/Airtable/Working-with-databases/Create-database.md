@@ -51,30 +51,30 @@ sidebar_position: 3
 
 ```json title="Результат"
 {
- "id": "appLXKuUw7RZ2b3is",
+ "id": "appye5JxQD6CEAVQ7",
  "tables": [
   {
-   "id": "tblYJcKrfRtyPmLmm",
+   "id": "tblPK7iM6QVCGbral",
    "name": "Тестовая таблица",
-   "primaryFieldId": "fld4zSp8qJbVOxMbr",
+   "primaryFieldId": "fldiLeIBGEKLvCGHn",
    "fields": [
     {
      "type": "number",
      "options": {
       "precision": 0
      },
-     "id": "fld4zSp8qJbVOxMbr",
+     "id": "fldiLeIBGEKLvCGHn",
      "name": "Номер"
     },
     {
      "type": "richText",
-     "id": "fldYyle22nKxvQ8G8",
+     "id": "flduxcmTlD7hCz9ZS",
      "name": "Строковое"
     }
    ],
    "views": [
     {
-     "id": "viwNK6AxAxhicUmtS",
+     "id": "viw5lk0HjJwqDX1vM",
      "name": "Grid view",
      "type": "grid"
     }

@@ -15,7 +15,7 @@ sidebar_position: 4
   | Path | --path | String | Selection of files by catalog. All if not filled in |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Neocities
+  Returns:  Map Of KeyAndValue - serialized JSON response from Neocities
 
 <br/>
 
@@ -50,16 +50,16 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
    "path": "test/gif.gif",
    "is_directory": false,
    "size": 805189,
-   "created_at": "Mon, 07 Oct 2024 19:32:51 -0000",
-   "updated_at": "Mon, 07 Oct 2024 19:32:51 -0000",
+   "created_at": "Wed, 09 Oct 2024 06:27:52 -0000",
+   "updated_at": "Wed, 09 Oct 2024 06:27:52 -0000",
    "sha1_hash": null
   },
   {
    "path": "test/pic1.png",
    "is_directory": false,
    "size": 2114023,
-   "created_at": "Mon, 07 Oct 2024 19:32:51 -0000",
-   "updated_at": "Mon, 07 Oct 2024 19:32:51 -0000",
+   "created_at": "Wed, 09 Oct 2024 06:27:52 -0000",
+   "updated_at": "Wed, 09 Oct 2024 06:27:52 -0000",
    "sha1_hash": null
   }
  ]

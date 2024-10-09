@@ -50,16 +50,16 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
 ```json title="Result"
 {
  "result": {
-  "ID": 12430
+  "ID": 12610
  },
  "time": {
-  "start": 1728329222.01317,
-  "finish": 1728329222.0708,
-  "duration": 0.0576279163360596,
-  "processing": 0.0314409732818604,
-  "date_start": "2024-10-07T22:27:02+03:00",
-  "date_finish": "2024-10-07T22:27:02+03:00",
-  "operating_reset_at": 1728329822,
+  "start": 1728454911.13738,
+  "finish": 1728454911.19324,
+  "duration": 0.0558590888977051,
+  "processing": 0.0317718982696533,
+  "date_start": "2024-10-09T09:21:51+03:00",
+  "date_finish": "2024-10-09T09:21:51+03:00",
+  "operating_reset_at": 1728455511,
   "operating": 0
  }
 }

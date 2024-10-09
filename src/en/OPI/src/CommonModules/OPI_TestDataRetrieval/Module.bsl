@@ -64,6 +64,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("VkTeams"        , 5);
     Sections.Insert("Ozon"           , 5);
     Sections.Insert("Neocities"      , 5);
+    Sections.Insert("CDEK"           , 5);
 
     Return Sections;
 
@@ -88,6 +89,7 @@ Function GetTestTable() Export
     VKT       = "VkTeams";
     Ozon      = "Ozon";
     Neocities = "Neocities";
+    Cdek      = "CDEK";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -211,6 +213,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "OzonAPI_WarehousesManagment"          , "Warehouses managment"            , Ozon);
     NewTest(TestTable, "NC_FilesManagment"                    , "Files managment"                 , Neocities);
     NewTest(TestTable, "NC_DataRetrieving"                    , "Data retrieving"                 , Neocities);
+    NewTest(TestTable, "CdekAPI_CommonMethods"                , "CommonMethods"                   , Cdek);
 
     Return TestTable;
 
@@ -1753,6 +1756,14 @@ Procedure Check_NCSync(Val Result) Export
 
 EndProcedure
 
+Procedure Check_CdekToken(Val Result) Export
+
+    ExpectsThat(Result["access_token"]).Заполнено();
+    ExpectsThat(Result["expires_in"]).Заполнено();
+    ExpectsThat(Result["token_type"]).Заполнено();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -1892,11 +1903,10 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
             CreateDirectory(LibraryLogPath);
         EndIf;
 
-        FilePath   = LibraryLogPath + "/" + Method + ".log";
-        // LogFile = New File(FilePath);
+        FilePath = LibraryLogPath + "/" + Method + ".log";
+        LogFile  = New File(FilePath);
 
-        // If Not LogFile.Exists() Then
-        If True Then
+        If Not LogFile.Exists() Then
             LogDocument = New TextDocument;
             LogDocument.SetText(Data);
             LogDocument.Write(FilePath);

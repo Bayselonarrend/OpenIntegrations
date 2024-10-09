@@ -16,7 +16,7 @@ sidebar_position: 2
   | ProductsID | --productids | String, Array of String | Products IDs for barcodes creating |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

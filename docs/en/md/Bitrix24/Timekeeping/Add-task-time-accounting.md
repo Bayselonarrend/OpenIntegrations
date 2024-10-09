@@ -65,15 +65,15 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
- "result": 818,
+ "result": 830,
  "time": {
-  "start": 1728329150.14518,
-  "finish": 1728329150.20805,
-  "duration": 0.0628650188446045,
-  "processing": 0.0324678421020508,
-  "date_start": "2024-10-07T22:25:50+03:00",
-  "date_finish": "2024-10-07T22:25:50+03:00",
-  "operating_reset_at": 1728329750,
+  "start": 1728454837.39657,
+  "finish": 1728454837.48745,
+  "duration": 0.0908730030059814,
+  "processing": 0.0576651096343994,
+  "date_start": "2024-10-09T09:20:37+03:00",
+  "date_finish": "2024-10-09T09:20:37+03:00",
+  "operating_reset_at": 1728455437,
   "operating": 0
  }
 }

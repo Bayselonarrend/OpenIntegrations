@@ -15,7 +15,7 @@ sidebar_position: 4
   | Channel | --channel | String | Channel ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 

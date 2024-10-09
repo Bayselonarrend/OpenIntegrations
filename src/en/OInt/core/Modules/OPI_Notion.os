@@ -52,7 +52,7 @@
 // Title - String - Page title - title
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function CreatePage(Val Token, Val Parent, Val Title) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -83,7 +83,7 @@ EndFunction
 // Data - Map Of KeyAndValue - Properties map - data
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -112,7 +112,7 @@ EndFunction
 // Page - String - Page ID - page
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function GetPage(Val Token, Val Page) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -139,7 +139,7 @@ EndFunction
 // Archived - Boolean - Archive page or not (boolean) - archive
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function EditPageProperties(Val Token
     , Val Page
     , Val Data = ""
@@ -212,7 +212,7 @@ EndFunction
 // Properties - Structure Of String - Database properties - props
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -259,7 +259,7 @@ EndFunction
 // Base - String - Database ID - base
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function GetDatabase(Val Token, Val Base) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -285,7 +285,7 @@ EndFunction
 // Description - String - New database description - description
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -330,7 +330,7 @@ EndFunction
 // InsertAfter - String - Block ID after which to insert the new one - prev
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -376,7 +376,7 @@ EndFunction
 // OnlyBase - Boolean - True > service fields are deleted, only the block itself remains - core
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -404,7 +404,7 @@ EndFunction
 // BlockID - String - Parent block ID - block
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function ReturnChildBlocks(Val Token, Val BlockID) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -427,7 +427,7 @@ EndFunction
 // BlockID - String - Block ID - block
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function DeleteBlock(Val Token, Val BlockID) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -453,7 +453,7 @@ EndFunction
 // Token - String - Token - token
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function UserList(Val Token) Export
 
     OPI_TypeConversion.GetLine(Token);
@@ -473,7 +473,7 @@ EndFunction
 // UserID - String - Target user ID - user
 //
 // Returns:
-// Map Of KeyAndValue - Serialized JSON response from Notion
+// Map Of KeyAndValue - serialized JSON response from Notion
 Function GetUserData(Val Token, Val UserID) Export
 
     OPI_TypeConversion.GetLine(Token);

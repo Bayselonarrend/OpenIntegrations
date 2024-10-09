@@ -16,7 +16,7 @@ sidebar_position: 6
   | ProductsArray | --items | Array Of String | Array or one structure of product description fields |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 
@@ -92,7 +92,7 @@ Methods of product structure formation: GetProductStructure(), AddProductVideo()
 ```json title="Result"
 {
  "result": {
-  "task_id": 1344961681
+  "task_id": 1347187465
  }
 }
 ```

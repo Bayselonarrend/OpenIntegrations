@@ -115,13 +115,13 @@ Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/res
   }
  },
  "time": {
-  "start": 1728329101.44837,
-  "finish": 1728329101.49817,
-  "duration": 0.0498039722442627,
-  "processing": 0.023533821105957,
-  "date_start": "2024-10-07T22:25:01+03:00",
-  "date_finish": "2024-10-07T22:25:01+03:00",
-  "operating_reset_at": 1728329701,
+  "start": 1728454785.80063,
+  "finish": 1728454785.85694,
+  "duration": 0.0563130378723144,
+  "processing": 0.0311760902404785,
+  "date_start": "2024-10-09T09:19:45+03:00",
+  "date_finish": "2024-10-09T09:19:45+03:00",
+  "operating_reset_at": 1728455385,
   "operating": 0
  }
 }

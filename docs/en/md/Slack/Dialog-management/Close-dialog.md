@@ -15,7 +15,7 @@ sidebar_position: 2
   | Dialog | --conv | String | Dialog ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Slack
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
 
 <br/>
 

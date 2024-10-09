@@ -14,7 +14,7 @@ sidebar_position: 1
   | Token | --token | String | Token |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Notion
+  Returns:  Map Of KeyAndValue - serialized JSON response from Notion
 
 <br/>
 
@@ -68,6 +68,6 @@ sidebar_position: 1
  "has_more": false,
  "type": "user",
  "user": {},
- "request_id": "2f771720-92f3-4824-b0ae-f8aa0b938d8d"
+ "request_id": "ad031a0a-82a1-4d62-b104-184ef7dbb29b"
 }
 ```

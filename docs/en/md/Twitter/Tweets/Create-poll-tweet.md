@@ -46,11 +46,11 @@ sidebar_position: 6
 ```json title="Result"
 {
  "data": {
+  "text": "TestTweetc6891802-9272-4c6d-bbd7-71cbb02f0702",
   "edit_history_tweet_ids": [
-   "1842575137553477975"
+   "1843892524672258331"
   ],
-  "text": "TestTweetcc7beeda-be3d-48bc-beb9-367085367836",
-  "id": "1842575137553477975"
+  "id": "1843892524672258331"
  }
 }
 ```

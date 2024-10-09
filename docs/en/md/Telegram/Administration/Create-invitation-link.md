@@ -18,7 +18,7 @@ sidebar_position: 3
   | UserLimit | --limit | Number | User limit (infinite if not specified) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -50,15 +50,15 @@ sidebar_position: 3
 {
  "ok": true,
  "result": {
-  "invite_link": "https://t.me/+QFj8rIKdx3w1ZTQy",
-  "name": "Link 07.10.2024 22:03:40",
+  "invite_link": "https://t.me/+hUgH4yjb_7wyZDBi",
+  "name": "Link 09.10.2024 8:58:10",
   "creator": {
    "id": 6129457865,
    "is_bot": true,
    "first_name": "Бот Виталий",
    "username": "sicheebot"
   },
-  "expire_date": 1728421420,
+  "expire_date": 1728547090,
   "member_limit": 200,
   "creates_join_request": false,
   "is_primary": false,

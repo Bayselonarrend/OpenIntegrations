@@ -19,7 +19,7 @@ sidebar_position: 4
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -57,7 +57,7 @@ sidebar_position: 4
 {
  "ok": true,
  "result": {
-  "message_id": 8264,
+  "message_id": 8306,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -71,15 +71,15 @@ sidebar_position: 4
    "username": "JKIee",
    "type": "private"
   },
-  "date": 1728327674,
+  "date": 1728453355,
   "audio": {
    "duration": 228,
    "file_name": "audio",
    "mime_type": "audio/mpeg",
    "title": "Dogs",
    "performer": "Motorhead",
-   "file_id": "CQACAgIAAxkDAAIgSGcEL_ozFq_nK4wR2EdYHWuqKzudAAKPYgACA2UhSOveRQVW7aCWNgQ",
-   "file_unique_id": "AgADj2IAAgNlIUg",
+   "file_id": "CQACAgIAAxkDAAIgcmcGGuszMgUnk-JaG65Sngu8yYGMAAJNWgAC_cg4SEo4WdCQr5DQNgQ",
+   "file_unique_id": "AgADTVoAAv3IOEg",
    "file_size": 9229352
   },
   "caption": "Строковое значение"

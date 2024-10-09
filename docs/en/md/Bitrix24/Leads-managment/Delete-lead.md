@@ -51,14 +51,14 @@ Method at API documentation: [crm.lead.delete](https://dev.1c-bitrix.ru/rest_hel
 {
  "result": true,
  "time": {
-  "start": 1728329252.43087,
-  "finish": 1728329252.55816,
-  "duration": 0.12729001045227,
-  "processing": 0.0957300662994385,
-  "date_start": "2024-10-07T22:27:32+03:00",
-  "date_finish": "2024-10-07T22:27:32+03:00",
-  "operating_reset_at": 1728329852,
-  "operating": 0
+  "start": 1728454943.26955,
+  "finish": 1728454943.58409,
+  "duration": 0.314532041549683,
+  "processing": 0.281855821609497,
+  "date_start": "2024-10-09T09:22:23+03:00",
+  "date_finish": "2024-10-09T09:22:23+03:00",
+  "operating_reset_at": 1728455543,
+  "operating": 0.281836032867432
  }
 }
 ```

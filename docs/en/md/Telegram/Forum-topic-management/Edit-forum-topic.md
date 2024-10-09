@@ -18,7 +18,7 @@ sidebar_position: 3
   | IconID | --icon | String | See GetAvatarIconList |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 

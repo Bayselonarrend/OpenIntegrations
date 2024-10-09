@@ -48,7 +48,7 @@ sidebar_position: 18
   "items": [
    {
     "offer_id": "143210609",
-    "product_id": 1213778659,
+    "product_id": 1215208579,
     "status": "imported",
     "errors": [
      {

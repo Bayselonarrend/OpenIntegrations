@@ -51,31 +51,31 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
  "result": [
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "5878",
+   "ID": "5944",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2024-10-07T22:25:08+03:00",
+   "POST_DATE": "2024-10-09T09:19:53+03:00",
    "POST_MESSAGE": "The task has been changed, do not split up"
   },
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "5880",
+   "ID": "5946",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2024-10-07T22:25:08+03:00",
+   "POST_DATE": "2024-10-09T09:19:54+03:00",
    "POST_MESSAGE": "The task has been changed, let's split up"
   }
  ],
  "time": {
-  "start": 1728329110.03152,
-  "finish": 1728329110.07377,
-  "duration": 0.0422458648681641,
-  "processing": 0.0195379257202148,
-  "date_start": "2024-10-07T22:25:10+03:00",
-  "date_finish": "2024-10-07T22:25:10+03:00",
-  "operating_reset_at": 1728329710,
+  "start": 1728454795.54926,
+  "finish": 1728454795.59482,
+  "duration": 0.0455570220947266,
+  "processing": 0.0219829082489014,
+  "date_start": "2024-10-09T09:19:55+03:00",
+  "date_finish": "2024-10-09T09:19:55+03:00",
+  "operating_reset_at": 1728455395,
   "operating": 0
  }
 }

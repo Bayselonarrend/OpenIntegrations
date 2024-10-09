@@ -16,7 +16,7 @@ sidebar_position: 9
   | MessageID | --messageid | String, Number | ID of the message to be pinned |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 

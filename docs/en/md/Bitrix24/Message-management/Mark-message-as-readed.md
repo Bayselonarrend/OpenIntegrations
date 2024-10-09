@@ -55,17 +55,17 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
  "result": {
   "dialogId": 10,
   "chatId": 10,
-  "lastId": 17470,
+  "lastId": 17682,
   "counter": 0
  },
  "time": {
-  "start": 1728329210.1913,
-  "finish": 1728329210.23154,
-  "duration": 0.0402319431304932,
-  "processing": 0.0140171051025391,
-  "date_start": "2024-10-07T22:26:50+03:00",
-  "date_finish": "2024-10-07T22:26:50+03:00",
-  "operating_reset_at": 1728329810,
+  "start": 1728454899.00309,
+  "finish": 1728454899.04547,
+  "duration": 0.0423820018768311,
+  "processing": 0.0175080299377441,
+  "date_start": "2024-10-09T09:21:39+03:00",
+  "date_finish": "2024-10-09T09:21:39+03:00",
+  "operating_reset_at": 1728455499,
   "operating": 0
  }
 }

@@ -51,13 +51,13 @@ Method at API documentation: [im.message.like](https://dev.1c-bitrix.ru/learning
 {
  "result": true,
  "time": {
-  "start": 1728329221.58565,
-  "finish": 1728329221.62723,
-  "duration": 0.0415809154510498,
-  "processing": 0.0147368907928467,
-  "date_start": "2024-10-07T22:27:01+03:00",
-  "date_finish": "2024-10-07T22:27:01+03:00",
-  "operating_reset_at": 1728329821,
+  "start": 1728454910.6457,
+  "finish": 1728454910.70529,
+  "duration": 0.0595870018005371,
+  "processing": 0.0330779552459717,
+  "date_start": "2024-10-09T09:21:50+03:00",
+  "date_finish": "2024-10-09T09:21:50+03:00",
+  "operating_reset_at": 1728455510,
   "operating": 0
  }
 }

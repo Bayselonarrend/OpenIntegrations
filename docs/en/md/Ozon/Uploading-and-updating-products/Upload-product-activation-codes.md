@@ -17,7 +17,7 @@ sidebar_position: 15
   | Codes | --codes | String, Array of String | Digital product activation codes |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

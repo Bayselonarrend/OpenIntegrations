@@ -51,13 +51,13 @@ Method at API documentation: [im.chat.mute](https://dev.1c-bitrix.ru/learning/co
 {
  "result": true,
  "time": {
-  "start": 1728329204.5888,
-  "finish": 1728329204.62738,
-  "duration": 0.0385739803314209,
-  "processing": 0.0160019397735596,
-  "date_start": "2024-10-07T22:26:44+03:00",
-  "date_finish": "2024-10-07T22:26:44+03:00",
-  "operating_reset_at": 1728329804,
+  "start": 1728454893.38864,
+  "finish": 1728454893.44139,
+  "duration": 0.0527479648590088,
+  "processing": 0.0204250812530518,
+  "date_start": "2024-10-09T09:21:33+03:00",
+  "date_finish": "2024-10-09T09:21:33+03:00",
+  "operating_reset_at": 1728455493,
   "operating": 0
  }
 }

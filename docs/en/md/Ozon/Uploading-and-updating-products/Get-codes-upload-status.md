@@ -16,7 +16,7 @@ sidebar_position: 19
   | TaskID | --taskid | String, Number | Add product task ID |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Ozon Seller API
+  Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
 
 <br/>
 

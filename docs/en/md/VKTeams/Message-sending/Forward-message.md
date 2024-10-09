@@ -18,7 +18,7 @@ sidebar_position: 8
   | Text | --text | String | Additional message text |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from VK Teams
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
 <br/>
 
@@ -53,7 +53,7 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
 
 ```json title="Result"
 {
- "msgId": "7423117824513542405",
+ "msgId": "7423657667542911288",
  "ok": true
 }
 ```

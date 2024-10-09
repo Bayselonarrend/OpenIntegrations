@@ -51,13 +51,13 @@ Method at API documentation: [im.dialog.writing](https://dev.1c-bitrix.ru/learni
 {
  "result": true,
  "time": {
-  "start": 1728329215.9156,
-  "finish": 1728329215.94298,
-  "duration": 0.0273830890655518,
-  "processing": 0.00097203254699707,
-  "date_start": "2024-10-07T22:26:55+03:00",
-  "date_finish": "2024-10-07T22:26:55+03:00",
-  "operating_reset_at": 1728329815,
+  "start": 1728454904.9218,
+  "finish": 1728454904.95162,
+  "duration": 0.0298209190368652,
+  "processing": 0.00108098983764648,
+  "date_start": "2024-10-09T09:21:44+03:00",
+  "date_finish": "2024-10-09T09:21:44+03:00",
+  "operating_reset_at": 1728455504,
   "operating": 0
  }
 }

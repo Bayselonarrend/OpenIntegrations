@@ -16,7 +16,7 @@ sidebar_position: 2
   | Offset | --offset | String, Number | Offset in the list of received messages |
 
   
-  Returns:  Map Of KeyAndValue - Serialized JSON response from Telegram
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
@@ -41,9 +41,9 @@ sidebar_position: 2
  "ok": true,
  "result": [
   {
-   "update_id": 291368966,
+   "update_id": 291369021,
    "channel_post": {
-    "message_id": 9339,
+    "message_id": 9439,
     "sender_chat": {
      "id": -1001893407333,
      "title": "Тестовый канал",
@@ -56,9 +56,9 @@ sidebar_position: 2
      "username": "testsichee",
      "type": "channel"
     },
-    "date": 1728281085,
+    "date": 1728411383,
     "pinned_message": {
-     "message_id": 9320,
+     "message_id": 9420,
      "sender_chat": {
       "id": -1001893407333,
       "title": "Тестовый канал",
@@ -71,15 +71,15 @@ sidebar_position: 2
       "username": "testsichee",
       "type": "channel"
      },
-     "date": 1728280847,
+     "date": 1728411163,
      "text": "Строковое значение"
     }
    }
   },
   {
-   "update_id": 291368967,
+   "update_id": 291369022,
    "message": {
-    "message_id": 5341,
+    "message_id": 5396,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -92,10 +92,10 @@ sidebar_position: 2
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728281118,
-    "message_thread_id": 5341,
+    "date": 1728411415,
+    "message_thread_id": 5396,
     "forum_topic_created": {
-     "name": "Тестовая тема 8898a5f6-baa5-44f3-88c6-869fa23fd971",
+     "name": "TestTopic 8efb59a8-19c1-46f6-afb9-ceadd411e795",
      "icon_color": 7322096,
      "icon_custom_emoji_id": "5357419403325481346"
     },
@@ -103,9 +103,9 @@ sidebar_position: 2
    }
   },
   {
-   "update_id": 291368968,
+   "update_id": 291369023,
    "message": {
-    "message_id": 5343,
+    "message_id": 5398,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -118,10 +118,10 @@ sidebar_position: 2
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728281119,
-    "message_thread_id": 5341,
+    "date": 1728411416,
+    "message_thread_id": 5396,
     "reply_to_message": {
-     "message_id": 5341,
+     "message_id": 5396,
      "from": {
       "id": 6129457865,
       "is_bot": true,
@@ -134,26 +134,26 @@ sidebar_position: 2
       "is_forum": true,
       "type": "supergroup"
      },
-     "date": 1728281118,
-     "message_thread_id": 5341,
+     "date": 1728411415,
+     "message_thread_id": 5396,
      "forum_topic_created": {
-      "name": "Тестовая тема 8898a5f6-baa5-44f3-88c6-869fa23fd971",
+      "name": "TestTopic 8efb59a8-19c1-46f6-afb9-ceadd411e795",
       "icon_color": 7322096,
       "icon_custom_emoji_id": "5357419403325481346"
      },
      "is_topic_message": true
     },
     "forum_topic_edited": {
-     "name": "Новый тестовый заголовок",
+     "name": "NewTestTitle",
      "icon_custom_emoji_id": "5310132165583840589"
     },
     "is_topic_message": true
    }
   },
   {
-   "update_id": 291368969,
+   "update_id": 291369024,
    "message": {
-    "message_id": 5344,
+    "message_id": 5399,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -166,14 +166,14 @@ sidebar_position: 2
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728281124,
+    "date": 1728411421,
     "forum_topic_reopened": {}
    }
   },
   {
-   "update_id": 291368970,
+   "update_id": 291369025,
    "message": {
-    "message_id": 5345,
+    "message_id": 5400,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -186,6 +186,6 @@ sidebar_position: 2
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728281124,
+    "date": 1728411421,
 ...
 ```

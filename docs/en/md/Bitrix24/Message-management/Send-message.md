@@ -58,15 +58,15 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
 
 ```json title="Result"
 {
- "result": 17538,
+ "result": 17758,
  "time": {
-  "start": 1728329216.11276,
-  "finish": 1728329216.18726,
-  "duration": 0.0745038986206055,
-  "processing": 0.0472211837768555,
-  "date_start": "2024-10-07T22:26:56+03:00",
-  "date_finish": "2024-10-07T22:26:56+03:00",
-  "operating_reset_at": 1728329816,
+  "start": 1728454905.16276,
+  "finish": 1728454905.25097,
+  "duration": 0.0882101058959961,
+  "processing": 0.0612020492553711,
+  "date_start": "2024-10-09T09:21:45+03:00",
+  "date_finish": "2024-10-09T09:21:45+03:00",
+  "operating_reset_at": 1728455505,
   "operating": 0
  }
 }

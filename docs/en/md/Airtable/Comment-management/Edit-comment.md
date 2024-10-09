@@ -49,14 +49,14 @@ sidebar_position: 3
 
 ```json title="Result"
 {
- "id": "com7yhCWVYjsIOgfB",
+ "id": "comwNg41PXtfEa4kj",
  "author": {
   "id": "usrFlaAHlTfYWAbVW",
   "email": "bayselonarrend@gmail.com",
   "name": "Антон Титовец"
  },
  "text": "Test comment (change.)",
- "createdTime": "2024-10-07T19:21:09Z",
- "lastUpdatedTime": "2024-10-07T19:21:09.512Z"
+ "createdTime": "2024-10-09T06:15:49Z",
+ "lastUpdatedTime": "2024-10-09T06:15:49.55Z"
 }
 ```

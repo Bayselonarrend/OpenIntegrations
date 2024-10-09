@@ -54,13 +54,13 @@ Method at API documentation: [im.chat.user.list](https://dev.1c-bitrix.ru/learni
   10
  ],
  "time": {
-  "start": 1728329184.86001,
-  "finish": 1728329184.88859,
-  "duration": 0.0285770893096924,
-  "processing": 0.00284600257873535,
-  "date_start": "2024-10-07T22:26:24+03:00",
-  "date_finish": "2024-10-07T22:26:24+03:00",
-  "operating_reset_at": 1728329784,
+  "start": 1728454872.6475,
+  "finish": 1728454872.68151,
+  "duration": 0.0340070724487305,
+  "processing": 0.00371289253234863,
+  "date_start": "2024-10-09T09:21:12+03:00",
+  "date_finish": "2024-10-09T09:21:12+03:00",
+  "operating_reset_at": 1728455472,
   "operating": 0
  }
 }
