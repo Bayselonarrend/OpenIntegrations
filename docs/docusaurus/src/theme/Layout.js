@@ -19,6 +19,7 @@ export default function CustomLayout(props) {
     // Находим правое меню и вставляем обертку под ним
     const rightMenu = document.querySelector('.theme-doc-toc-desktop');
     if (rightMenu) {
+      rightMenu.style.width = '350px'; // Задайте желаемую ширину
       rightMenu.parentNode.appendChild(wrapperRightMenu);
     }
 
