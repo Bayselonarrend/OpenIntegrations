@@ -6,13 +6,14 @@ export default function CustomLayout(props) {
   useEffect(() => {
     // Создаем обертку для блока Яндекса под правым меню
     const wrapperRightMenu = document.createElement('div');
-    wrapperRightMenu.style.width = '350px'; // Устанавливаем высоту обертки
+    wrapperRightMenu.style.width = '100%'; // Устанавливаем высоту обертки
     wrapperRightMenu.style.marginTop = '20px'; // Добавляем отступ сверху
 
     // Создаем <div> для блока Яндекса под правым меню
     const adDivRightMenu = document.createElement('div');
     adDivRightMenu.id = 'yandex_rtb_R-A-12294791-2';
     adDivRightMenu.style.width = '100%';
+    adDivRightMenu.style.height = '400px';
 
     // Добавляем рекламный блок в обертку
     wrapperRightMenu.appendChild(adDivRightMenu);
@@ -20,7 +21,7 @@ export default function CustomLayout(props) {
     // Находим правое меню и вставляем обертку под ним
     const rightMenu = document.querySelector('.theme-doc-toc-desktop');
     if (rightMenu) {
-      rightMenu.style.width = '350px'; // Задайте желаемую ширину
+      rightMenu.style.width = '100%'; // Задайте желаемую ширину
       rightMenu.parentNode.appendChild(wrapperRightMenu);
     }
 
@@ -31,6 +32,7 @@ export default function CustomLayout(props) {
     // Создаем <div> для блока Яндекса над подвалом
     const adDivAboveFooter = document.createElement('div');
     adDivAboveFooter.id = 'yandex_rtb_R-A-12294791-1';
+    adDivRightMenu.style.height = '400px';
 
     // Добавляем рекламный блок в обертку
     wrapperAboveFooter.appendChild(adDivAboveFooter);
@@ -50,8 +52,7 @@ export default function CustomLayout(props) {
       window.yaContextCb.push(() => {
         Ya.Context.AdvManager.render({
           blockId: "R-A-12294791-2",
-          renderTo: "yandex_rtb_R-A-12294791-2",
-          type: "feed"
+          renderTo: "yandex_rtb_R-A-12294791-2"
         });
         Ya.Context.AdvManager.render({
           blockId: "R-A-12294791-1",
