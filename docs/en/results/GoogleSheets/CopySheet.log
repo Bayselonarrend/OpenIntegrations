@@ -1,7 +1,10 @@
 ﻿ {
- "error": {
-  "code": 500,
-  "message": "Internal error encountered.",
-  "status": "INTERNAL"
+ "sheetId": 1272386935,
+ "title": "Sheet1 (копия)",
+ "index": 2,
+ "sheetType": "GRID",
+ "gridProperties": {
+  "rowCount": 1000,
+  "columnCount": 26
  }
 }

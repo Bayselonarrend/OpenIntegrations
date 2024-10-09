@@ -2,9 +2,9 @@
  "ok": true,
  "result": [
   {
-   "update_id": 291369010,
+   "update_id": 291369021,
    "channel_post": {
-    "message_id": 9419,
+    "message_id": 9439,
     "sender_chat": {
      "id": -1001893407333,
      "title": "Тестовый канал",
@@ -17,9 +17,9 @@
      "username": "testsichee",
      "type": "channel"
     },
-    "date": 1728408425,
+    "date": 1728411383,
     "pinned_message": {
-     "message_id": 9400,
+     "message_id": 9420,
      "sender_chat": {
       "id": -1001893407333,
       "title": "Тестовый канал",
@@ -32,15 +32,15 @@
       "username": "testsichee",
       "type": "channel"
      },
-     "date": 1728408204,
+     "date": 1728411163,
      "text": "Строковое значение"
     }
    }
   },
   {
-   "update_id": 291369011,
+   "update_id": 291369022,
    "message": {
-    "message_id": 5385,
+    "message_id": 5396,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -53,10 +53,10 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408458,
-    "message_thread_id": 5385,
+    "date": 1728411415,
+    "message_thread_id": 5396,
     "forum_topic_created": {
-     "name": "Тестовая тема 6ff88eef-fb83-4761-9cdd-315c7420af44",
+     "name": "TestTopic 8efb59a8-19c1-46f6-afb9-ceadd411e795",
      "icon_color": 7322096,
      "icon_custom_emoji_id": "5357419403325481346"
     },
@@ -64,9 +64,9 @@
    }
   },
   {
-   "update_id": 291369012,
+   "update_id": 291369023,
    "message": {
-    "message_id": 5387,
+    "message_id": 5398,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -79,10 +79,10 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408459,
-    "message_thread_id": 5385,
+    "date": 1728411416,
+    "message_thread_id": 5396,
     "reply_to_message": {
-     "message_id": 5385,
+     "message_id": 5396,
      "from": {
       "id": 6129457865,
       "is_bot": true,
@@ -95,26 +95,26 @@
       "is_forum": true,
       "type": "supergroup"
      },
-     "date": 1728408458,
-     "message_thread_id": 5385,
+     "date": 1728411415,
+     "message_thread_id": 5396,
      "forum_topic_created": {
-      "name": "Тестовая тема 6ff88eef-fb83-4761-9cdd-315c7420af44",
+      "name": "TestTopic 8efb59a8-19c1-46f6-afb9-ceadd411e795",
       "icon_color": 7322096,
       "icon_custom_emoji_id": "5357419403325481346"
      },
      "is_topic_message": true
     },
     "forum_topic_edited": {
-     "name": "Новый тестовый заголовок",
+     "name": "NewTestTitle",
      "icon_custom_emoji_id": "5310132165583840589"
     },
     "is_topic_message": true
    }
   },
   {
-   "update_id": 291369013,
+   "update_id": 291369024,
    "message": {
-    "message_id": 5388,
+    "message_id": 5399,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -127,14 +127,14 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408464,
+    "date": 1728411421,
     "forum_topic_reopened": {}
    }
   },
   {
-   "update_id": 291369014,
+   "update_id": 291369025,
    "message": {
-    "message_id": 5389,
+    "message_id": 5400,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -147,14 +147,14 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408464,
+    "date": 1728411421,
     "forum_topic_closed": {}
    }
   },
   {
-   "update_id": 291369015,
+   "update_id": 291369026,
    "message": {
-    "message_id": 5390,
+    "message_id": 5401,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -167,10 +167,10 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408464,
-    "message_thread_id": 5385,
+    "date": 1728411421,
+    "message_thread_id": 5396,
     "reply_to_message": {
-     "message_id": 5385,
+     "message_id": 5396,
      "from": {
       "id": 6129457865,
       "is_bot": true,
@@ -183,10 +183,10 @@
       "is_forum": true,
       "type": "supergroup"
      },
-     "date": 1728408458,
-     "message_thread_id": 5385,
+     "date": 1728411415,
+     "message_thread_id": 5396,
      "forum_topic_created": {
-      "name": "Тестовая тема 6ff88eef-fb83-4761-9cdd-315c7420af44",
+      "name": "TestTopic 8efb59a8-19c1-46f6-afb9-ceadd411e795",
       "icon_color": 7322096,
       "icon_custom_emoji_id": "5357419403325481346"
      },
@@ -197,9 +197,9 @@
    }
   },
   {
-   "update_id": 291369016,
+   "update_id": 291369027,
    "message": {
-    "message_id": 5391,
+    "message_id": 5402,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -212,14 +212,14 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408485,
+    "date": 1728411442,
     "forum_topic_reopened": {}
    }
   },
   {
-   "update_id": 291369017,
+   "update_id": 291369028,
    "message": {
-    "message_id": 5392,
+    "message_id": 5403,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -232,10 +232,10 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408486,
-    "message_thread_id": 5385,
+    "date": 1728411442,
+    "message_thread_id": 5396,
     "reply_to_message": {
-     "message_id": 5385,
+     "message_id": 5396,
      "from": {
       "id": 6129457865,
       "is_bot": true,
@@ -248,10 +248,10 @@
       "is_forum": true,
       "type": "supergroup"
      },
-     "date": 1728408458,
-     "message_thread_id": 5385,
+     "date": 1728411415,
+     "message_thread_id": 5396,
      "forum_topic_created": {
-      "name": "Тестовая тема 6ff88eef-fb83-4761-9cdd-315c7420af44",
+      "name": "TestTopic 8efb59a8-19c1-46f6-afb9-ceadd411e795",
       "icon_color": 7322096,
       "icon_custom_emoji_id": "5357419403325481346"
      },
@@ -262,9 +262,9 @@
    }
   },
   {
-   "update_id": 291369018,
+   "update_id": 291369029,
    "message": {
-    "message_id": 5393,
+    "message_id": 5404,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -277,16 +277,16 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408537,
+    "date": 1728411493,
     "forum_topic_edited": {
-     "name": "Новое имя главной темы bc0fec19-f6b5-498b-a8cb-215ea9eab0fc"
+     "name": "New main thread name a82fa49b-edcb-4b5f-9a53-01a1947c8498"
     }
    }
   },
   {
-   "update_id": 291369019,
+   "update_id": 291369030,
    "message": {
-    "message_id": 5394,
+    "message_id": 5405,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -299,14 +299,14 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408545,
+    "date": 1728411500,
     "general_forum_topic_hidden": {}
    }
   },
   {
-   "update_id": 291369020,
+   "update_id": 291369031,
    "message": {
-    "message_id": 5395,
+    "message_id": 5406,
     "from": {
      "id": 6129457865,
      "is_bot": true,
@@ -319,7 +319,7 @@
      "is_forum": true,
      "type": "supergroup"
     },
-    "date": 1728408550,
+    "date": 1728411505,
     "general_forum_topic_unhidden": {}
    }
   }
