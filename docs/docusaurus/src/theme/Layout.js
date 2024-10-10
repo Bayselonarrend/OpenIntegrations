@@ -15,37 +15,35 @@ export default function CustomLayout(props) {
     // Удаляем предыдущий блок и скрипт, если они существуют
     const existingAdContainer = document.getElementById('yandex_rtb_R-A-12294791-5');
     if (existingAdContainer) {
-      existingAdContainer.remove();
+      existingAdContainer.innerHTML = ''; // Очищаем контейнер перед перерендерингом
     }
 
-    // Создаем контейнер для второго рекламного блока
-    const adContainer = document.createElement('div');
-    adContainer.id = 'yandex_rtb_R-A-12294791-5';
-    adContainer.style.marginTop = '20px'; // Добавим отступ для красоты
+    // Создаем контейнер для второго рекламного блока, если он не существует
+    let adContainer = existingAdContainer;
+    if (!adContainer) {
+      adContainer = document.createElement('div');
+      adContainer.id = 'yandex_rtb_R-A-12294791-5';
+      adContainer.style.marginTop = '20px'; // Добавим отступ для красоты
 
-    // Находим элемент кнопок "Previous" и "Next" и вставляем перед ним
-    const paginationElement = document.querySelector('.pagination-nav');
-    if (paginationElement) {
-      paginationElement.parentNode.insertBefore(adContainer, paginationElement);
-    } else {
-      // Если кнопок нет, добавляем контейнер в конец body
-      document.body.appendChild(adContainer);
+      // Находим элемент кнопок "Previous" и "Next" и вставляем перед ним
+      const paginationElement = document.querySelector('.pagination-nav');
+      if (paginationElement) {
+        paginationElement.parentNode.insertBefore(adContainer, paginationElement);
+      } else {
+        // Если кнопок нет, добавляем контейнер в конец body
+        document.body.appendChild(adContainer);
+      }
     }
 
     // Создаем скрипт для рендеринга рекламы
     const script = document.createElement('script');
     script.innerHTML = `
       window.yaContextCb.push(() => {
+        Ya.Context.AdvManager.destroy('yandex_rtb_R-A-12294791-5'); // Удаляем предыдущий экземпляр блока
         Ya.Context.AdvManager.render({
           "blockId": "R-A-12294791-3",
           "type": "floorAd",
           "platform": "touch"
-        });
-
-        Ya.Context.AdvManager.render({
-          "blockId": "R-A-12294791-4",
-          "type": "floorAd",
-          "platform": "desktop"
         });
 
         Ya.Context.AdvManager.render({
@@ -59,7 +57,7 @@ export default function CustomLayout(props) {
     // Удаляем элементы при размонтировании компонента
     return () => {
       script.remove();
-      adContainer.remove();
+      adContainer.innerHTML = ''; // Очищаем контейнер при размонтировании
     };
   }, [location.pathname]); // Перезапуск эффекта при изменении пути
 
