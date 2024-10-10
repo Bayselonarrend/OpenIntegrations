@@ -1,11 +1,21 @@
 import React, { useEffect } from 'react';
 import Layout from '@theme-original/Layout';
 import Head from '@docusaurus/Head';
+import { useLocation } from '@docusaurus/router';
 
 export default function CustomLayout(props) {
+  const location = useLocation();
+
   useEffect(() => {
+    // Проверяем, находимся ли мы на странице документации
     if (!location.pathname.startsWith('/docs/')) {
-      return; // Если не на странице документации, не добавляем блок
+      return; // Если нет, не добавляем блок
+    }
+
+    // Удаляем предыдущий блок и скрипт, если они существуют
+    const existingAdContainer = document.getElementById('yandex_rtb_R-A-12294791-5');
+    if (existingAdContainer) {
+      existingAdContainer.remove();
     }
 
     // Создаем контейнер для второго рекламного блока
@@ -51,7 +61,7 @@ export default function CustomLayout(props) {
       script.remove();
       adContainer.remove();
     };
-  }, []);
+  }, [location.pathname]); // Перезапуск эффекта при изменении пути
 
   return (
     <>
