@@ -20,34 +20,46 @@ export default function CustomLayout(props) {
         existingScript.remove();
       }
 
-      // Создаем новый скрипт для рендеринга рекламы
-      const script = document.createElement('script');
-      script.id = 'yandex-ad-script';
-      script.innerHTML = `
-      window.yaContextCb.push(() => {
-          Ya.Context.AdvManager.render({
-              "blockId": "R-A-12294791-3",
-              "type": "floorAd",
-              "platform": "touch"
-          });
-          Ya.Context.AdvManager.render({
-              "blockId": "R-A-12294791-4",
-              "type": "floorAd",
-              "platform": "desktop"
-          });
+      // Удаляем основной скрипт Yandex, если он есть
+      const existingYandexScript = document.getElementById('yandex-ads-context-script');
+      if (existingYandexScript) {
+        existingYandexScript.remove();
+      }
 
-      })
-          `;
-      document.body.appendChild(script);
+      // Создаем новый скрипт для основного Yandex Ads
+      const yandexScript = document.createElement('script');
+      yandexScript.id = 'yandex-ads-context-script';
+      yandexScript.src = `https://yandex.ru/ads/system/context.js?timestamp=${Date.now()}`;
+      yandexScript.async = true;
+      document.head.appendChild(yandexScript);
+
+      // Ждем, пока основной скрипт загрузится, чтобы выполнить рендеринг рекламы
+      yandexScript.onload = () => {
+        // Создаем новый скрипт для рендеринга рекламы
+        const script = document.createElement('script');
+        script.id = 'yandex-ad-script';
+        script.innerHTML = `
+          window.yaContextCb.push(() => {
+            Ya.Context.AdvManager.render({
+              blockId: "R-A-12294791-1",
+              renderTo: "yandex_rtb_R-A-12294791-1",
+              type: "feed"
+            });
+          });
+        `;
+        document.body.appendChild(script);
+      };
     };
 
     // Рендерим рекламные блоки при загрузке страницы или изменении маршрута
     renderAds();
 
-    // Удаляем блоки при размонтировании или смене страницы
+    // Удаляем скрипт при размонтировании или смене страницы
     return () => {
       const existingScript = document.getElementById('yandex-ad-script');
+      const existingYandexScript = document.getElementById('yandex-ads-context-script');
       if (existingScript) existingScript.remove();
+      if (existingYandexScript) existingYandexScript.remove();
     };
   }, [location.pathname]); // Следим за изменением пути
 
@@ -57,7 +69,6 @@ export default function CustomLayout(props) {
         <script>
           window.yaContextCb = window.yaContextCb || [];
         </script>
-        <script src="https://yandex.ru/ads/system/context.js" async></script>
       </Head>
       <Layout {...props} />
     </>
