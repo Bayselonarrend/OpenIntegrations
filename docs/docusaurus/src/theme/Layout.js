@@ -9,48 +9,54 @@ export default function CustomLayout(props) {
   useEffect(() => {
     // Проверяем, находимся ли мы на странице документации
     if (!location.pathname.startsWith('/docs/')) {
-      return; // Если нет, не добавляем блок
+      return; // Если нет, не добавляем блоки
     }
 
-    // Удаляем предыдущий блок и скрипт, если они существуют
-    const existingAdContainer = document.getElementById('yandex_rtb_R-A-12294791-5');
-    if (existingAdContainer) {
-      existingAdContainer.innerHTML = ''; // Очищаем контейнер перед перерендерингом
+    // Удаляем скрипт Яндекс.Директа, если он уже был добавлен
+    const existingScript = document.querySelector('script[src="https://yandex.ru/ads/system/context.js"]');
+    if (existingScript) {
+      existingScript.remove();
     }
 
-    // Создаем контейнер для второго рекламного блока, если он не существует
-    let adContainer = existingAdContainer;
-    if (!adContainer) {
-      adContainer = document.createElement('div');
-      adContainer.id = 'yandex_rtb_R-A-12294791-5';
-      adContainer.style.marginTop = '20px'; // Добавим отступ для красоты
+    // Удаляем все контейнеры рекламы
+    const existingAdContainers = document.querySelectorAll('[id^="yandex_rtb_R-A-12294791"]');
+    existingAdContainers.forEach((container) => container.remove());
 
-      // Находим элемент кнопок "Previous" и "Next" и вставляем перед ним
-      const paginationElement = document.querySelector('.pagination-nav');
-      if (paginationElement) {
-        paginationElement.parentNode.insertBefore(adContainer, paginationElement);
-      } else {
-        // Если кнопок нет, добавляем контейнер в конец body
-        document.body.appendChild(adContainer);
-      }
+    // Создаем контейнер для второго рекламного блока
+    const adContainer = document.createElement('div');
+    adContainer.id = 'yandex_rtb_R-A-12294791-5';
+    adContainer.style.marginTop = '20px'; // Добавим отступ для красоты
+
+    // Находим элемент кнопок "Previous" и "Next" и вставляем перед ним
+    const paginationElement = document.querySelector('.pagination-nav');
+    if (paginationElement) {
+      paginationElement.parentNode.insertBefore(adContainer, paginationElement);
+    } else {
+      // Если кнопок нет, добавляем контейнер в конец body
+      document.body.appendChild(adContainer);
     }
 
-    // Создаем скрипт для рендеринга рекламы
-    const script = document.createElement('script');
-    script.innerHTML = `
+    // Создаем и добавляем скрипт Яндекс.Директа
+    const yandexScript = document.createElement('script');
+    yandexScript.src = 'https://yandex.ru/ads/system/context.js';
+    yandexScript.async = true;
+    document.head.appendChild(yandexScript);
+
+    // Запускаем рендеринг рекламных блоков, как только скрипт загрузится
+    yandexScript.onload = () => {
       window.yaContextCb.push(() => {
+
         Ya.Context.AdvManager.render({
-          "blockId": "R-A-12294791-5",
-          "renderTo": "yandex_rtb_R-A-12294791-5"
+          blockId: 'R-A-12294791-5',
+          renderTo: 'yandex_rtb_R-A-12294791-5'
         });
       });
-    `;
-    document.body.appendChild(script);
+    };
 
     // Удаляем элементы при размонтировании компонента
     return () => {
-      script.remove();
-      adContainer.innerHTML = ''; // Очищаем контейнер при размонтировании
+      yandexScript.remove();
+      adContainer.remove();
     };
   }, [location.pathname]); // Перезапуск эффекта при изменении пути
 
@@ -60,7 +66,6 @@ export default function CustomLayout(props) {
         <script>
           window.yaContextCb = window.yaContextCb || [];
         </script>
-        <script src="https://yandex.ru/ads/system/context.js" async></script>
       </Head>
       <Layout {...props} />
     </>
