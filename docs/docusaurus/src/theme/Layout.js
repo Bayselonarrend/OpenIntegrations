@@ -39,13 +39,6 @@ export default function CustomLayout(props) {
     const script = document.createElement('script');
     script.innerHTML = `
       window.yaContextCb.push(() => {
-        Ya.Context.AdvManager.destroy('yandex_rtb_R-A-12294791-5'); // Удаляем предыдущий экземпляр блока
-        Ya.Context.AdvManager.render({
-          "blockId": "R-A-12294791-3",
-          "type": "floorAd",
-          "platform": "touch"
-        });
-
         Ya.Context.AdvManager.render({
           "blockId": "R-A-12294791-5",
           "renderTo": "yandex_rtb_R-A-12294791-5"
