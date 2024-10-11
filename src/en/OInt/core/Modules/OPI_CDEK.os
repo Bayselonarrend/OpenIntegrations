@@ -91,22 +91,188 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
-Function CreateOrder(Val Token, Val OrderDescription, Val OnlineStore = False, TestAPI = False) Export
+Function CreateOrder(Val Token, Val OrderDescription, Val OnlineStore = False, Val TestAPI = False) Export
 
     OPI_TypeConversion.GetCollection(OrderDescription);
     OPI_TypeConversion.GetBoolean(OnlineStore);
 
-    URL = FormURL("/orders", TestAPI);
+    URL     = FormURL("/orders", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    OPI_Tools.AddField("type", ?(OnlineStore, 1, 2), "Number", OrderDescription);
+
+    Response = OPI_Tools.Post(URL, OrderDescription, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Update order
+// Changes the field values of the selected order
+//
+// Note
+// Method at API documentation: [Change of order](@api-docs.cdek.ru/36981178.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID for updating - uuid
+// OrderDescription - Structure of KeyAndValue - Set of changing order fields - order
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function UpdateOrder(Val Token, Val UUID, Val OrderDescription, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetCollection(OrderDescription);
+
+    URL     = FormURL("/orders", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    OPI_Tools.AddField("uuid", UUID, "String", OrderDescription);
+
+    Response = OPI_Tools.Patch(URL, OrderDescription, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Delete order
+// Deletes order by UUID
+//
+// Note
+// Method at API documentation: [Deleting an order](@api-docs.cdek.ru/29924487.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID for deletion - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function DeleteOrder(Val Token, Val UUID, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/orders/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Delete(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get order
+// Gets the order by UUID
+//
+// Note
+// Method at API documentation: [Order information](@api-docs.cdek.ru/29923975.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetOrder(Val Token, Val UUID, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/orders/" + UUID, TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Get(URL, , Headers);
+
+    Return Response;
+
+EndFunction
+
+// Get order by number
+// Receives the order by CDEK number or number from customer IB
+//
+// Note
+// Method at API documentation: [Order information](@api-docs.cdek.ru/29923975.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// OrderNumber - String - Order number - number
+// Internal - Boolean - Type of order number. True > number in the customer base, False > CDEK number - internal
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function GetOrderByNumber(Val Token, Val OrderNumber, Val Internal = False, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetBoolean(Internal);
+
+    URL     = FormURL("/orders", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    ParameterName = ?(Internal, "im_number", "cdek_number");
 
     Parameters = New Structure;
+    OPI_Tools.AddField(ParameterName, OrderNumber, "String", Parameters);
 
-    For Each OrderField In OrderDescription Do
-        OPI_Tools.AddField(OrderField.Key, OrderField.Value, "Current", Parameters);
-    EndDo;
+    Response = OPI_Tools.Get(URL, Parameters, Headers);
 
-    OPI_Tools.AddField("type", ?(OnlineStore, 1, 2), "Number", Parameters);
+    Return Response;
 
-    Response = OPI_Tools.Post(URL, OrderDescription, , False);
+EndFunction
+
+// Create customer refund
+// Processes customer returns for online store orders
+//
+// Note
+// This method is used if the direct order was delivered by CDEK and the recipient wants to return it in full
+// If the order was delivered by another service, or you need to return not all items, you must use the CreateOrder method with is_client_return = true
+// Method at API documentation: [Customer returns](@api-docs.cdek.ru/122762174.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID - uuid
+// Tariff - Number - Tariff code (from those available under the contract) - tariff
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function CreateCustomerRefund(Val Token, Val UUID, Val Tariff, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/orders/" + UUID + "/clientReturn", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("tariff_code", Tariff, "Number", Parameters);
+
+    Response = OPI_Tools.Post(URL, Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
+// Create refusal
+// Creates an order refusal to return to the online store
+//
+// Note
+// Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327658.html)
+//
+// Parameters:
+// Token - String - Auth token - token
+// UUID - String - Order UUID - uuid
+// TestAPI - Boolean - Flag to use test API for requests - testapi
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from CDEK
+Function CreateRefusal(Val Token, Val UUID, Val TestAPI = False) Export
+
+    OPI_TypeConversion.GetLine(UUID);
+
+    URL     = FormURL("/orders/" + UUID + "/refusal", TestAPI);
+    Headers = CreateRequestHeaders(Token);
+
+    Response = OPI_Tools.Post(URL, , Headers);
 
     Return Response;
 
@@ -327,6 +493,16 @@ Function FormURL(Val Method, Val TestAPI)
     URL = URL + Method;
 
     Return URL;
+
+EndFunction
+
+Function CreateRequestHeaders(Val Token)
+
+    OPI_TypeConversion.GetLine(Token);
+
+    Headers = New Map;
+    Headers.Insert("Authorization", "Bearer " + Token);
+    Return Headers;
 
 EndFunction
 
