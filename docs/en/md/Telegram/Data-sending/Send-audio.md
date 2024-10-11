@@ -14,8 +14,8 @@ sidebar_position: 4
   | Token | --token | String | Bot token |
   | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
   | Text | --text | String | Message text |
-  | Audio | --audio | BinaryData,String | Audio file |
-  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | Audio | --audio | BinaryData, String | Audio file |
+  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
@@ -23,7 +23,10 @@ sidebar_position: 4
 
 <br/>
 
-
+:::tip
+Method at API documentation: [sendAudio](https://core.telegram.org/bots/api#sendaudio)
+:::
+<br/>
 
 
 ```bsl title="Code example"

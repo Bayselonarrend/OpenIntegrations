@@ -12,7 +12,7 @@ sidebar_position: 2
   | Параметр | CLI опция | Тип | Назначение |
   |-|-|-|-|
   | Токен | --token | Строка | Токен |
-  | IDЧата | --forum | Строка,Число | ID чата создания темы |
+  | IDЧата | --forum | Строка, Число | ID чата создания темы |
   | Заголовок | --title | Строка | Заголовок темы |
   | IDИконки | --icon | Строка | См. ПолучитьСписокИконокАватаров |
 
@@ -21,7 +21,10 @@ sidebar_position: 2
 
 <br/>
 
-
+:::tip
+Метод в документации API: [createForumTopic](https://core.telegram.org/bots/api#createforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

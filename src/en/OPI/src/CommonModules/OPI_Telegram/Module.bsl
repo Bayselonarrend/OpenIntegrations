@@ -46,7 +46,10 @@
 #Region DataRetrievalAndSettings
 
 // Get bot information
-// Executes the /getMe request, returning basic bot information: name, id, ability to add the bot to groups, etc..
+// Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..
+//
+// Note
+// Method at API documentation: [getMe](@core.telegram.org/bots/api#getme)
 //
 // Parameters:
 // Token - String - Bot token - token
@@ -65,7 +68,10 @@ Function GetBotInformation(Val Token) Export
 EndFunction
 
 // Get updates
-// Executes a request /getUpdates, returning information about bot events. Used in polling mode
+// Executes a request, returning information about bot events. Used in polling mode
+//
+// Note
+// Method at API documentation: [getUpdates](@core.telegram.org/bots/api#getupdates)
 //
 // Parameters:
 // Token - String - Bot token - token
@@ -92,6 +98,9 @@ EndFunction
 // Set Webhook
 // Set webhook URL for bot event handling in webhook mode
 //
+// Note
+// Method at API documentation: [setWebhook](@core.telegram.org/bots/api#setwebhook)
+//
 // Parameters:
 // Token - String - Bot token - token
 // URL - String - Request handling address from Telegram (with https:) - url
@@ -115,6 +124,9 @@ EndFunction
 // Delete webhook
 // Deletes the bot event handler URL for webhook operation
 //
+// Note
+// Method at API documentation: [deleteWebhook](@core.telegram.org/bots/api#deletewebhook)
+//
 // Parameters:
 // Token - String - Bot token - token
 //
@@ -133,6 +145,9 @@ EndFunction
 
 // Download file
 // Download file from Telegram servers
+//
+// Note
+// Method at API documentation: [getFile](@core.telegram.org/bots/api#getfile)
 //
 // Parameters:
 // Token - String - Token - token
@@ -253,11 +268,14 @@ EndFunction
 // Send text message
 // Sends a text message to a chat or channel
 //
+// Note
+// Method at API documentation: [sendMessage](@core.telegram.org/bots/api#sendmessage)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Text - String - Message text - text
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // RepliedID - String, Number - Reply to message ID - reply
 //
@@ -296,12 +314,15 @@ EndFunction
 // Send image
 // Sends an image to a chat or channel
 //
+// Note
+// Method at API documentation: [sendPhoto](@core.telegram.org/bots/api#sendphoto)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Text - String - Message text - text
-// Image - BinaryData,String - Image file - picture
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// Image - BinaryData, String - Image file - picture
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
@@ -320,12 +341,15 @@ EndFunction
 // Send video
 // Sends a video to a chat or channel
 //
+// Note
+// Method at API documentation: [sendVideo](@core.telegram.org/bots/api#sendvideo)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Text - String - Message text - text
-// Video - BinaryData,String - Video file - video
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// Video - BinaryData, String - Video file - video
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
@@ -344,12 +368,15 @@ EndFunction
 // Send audio
 // Sends an audio file to a chat or channel
 //
+// Note
+// Method at API documentation: [sendAudio](@core.telegram.org/bots/api#sendaudio)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Text - String - Message text - text
-// Audio - BinaryData,String - Audio file - audio
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// Audio - BinaryData, String - Audio file - audio
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
@@ -368,12 +395,15 @@ EndFunction
 // Send document
 // Sends a document to a chat or channel
 //
+// Note
+// Method at API documentation: [sendDocument](@core.telegram.org/bots/api#senddocument)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Text - String - Message text - text
-// Document - BinaryData,String - Document file - doc
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// Document - BinaryData, String - Document file - doc
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 // FileName - String - Custom displayed file name with extension, if necessary - filename
 //
@@ -394,12 +424,15 @@ EndFunction
 // Send GIF
 // Sends a GIF to a chat or channel
 //
+// Note
+// Method at API documentation: [sendAnimation](@core.telegram.org/bots/api#sendanimation)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Text - String - Message text - text
-// GIF - BinaryData,String - GIF file - gif
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// GIF - BinaryData, String - GIF file - gif
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
@@ -419,14 +452,14 @@ EndFunction
 // Sends a set of files to a chat or channel. Media types: audio, document, photo, video
 //
 // Note
-// Map: Key - File, Value - media type
+// Method at API documentation: [sendMediaGroup](@core.telegram.org/bots/api#sendmediagroup)
 //
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Text - String - Message text - text
-// FileMapping - Map of String - File collection - media - File JSON or path to .json
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// FileMapping - Map of KeyAndValue - File collection: Key > File, Value > Media Type - media
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 // Markup - String - Text processing type (HTML, Markdown, MarkdownV2) - parsemode
 //
 // Returns:
@@ -472,12 +505,15 @@ EndFunction
 // Send location
 // Sends location by geographic latitude and longitude to a chat or channel
 //
+// Note
+// Method at API documentation: [sendLocation](@core.telegram.org/bots/api#sendlocation)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Latitude - String, Number - Geographic latitude - lat
 // Longitude - String, Number - Geographic longitude - long
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -506,13 +542,16 @@ EndFunction
 // Send contact
 // Sends a contact with name and phone number
 //
+// Note
+// Method at API documentation: [sendContact](@core.telegram.org/bots/api#sendcontact)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Name - String - Contact name - name
 // LastName - String - Contact last name - surname
 // Phone - String - Contact phone number - phone
-// Keyboard - String - See GenerateKeyboardFromArray - keyboard - Keyboard JSON or path to .json
+// Keyboard - String - Keyboard. See FormKeyboardFromButtonArray - keyboard
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -542,12 +581,15 @@ EndFunction
 // Send poll
 // Sends a poll with answer options
 //
+// Note
+// Method at API documentation: [sendPoll](@core.telegram.org/bots/api#sendpoll)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
 // Question - String - Poll question - question
 // AnswersArray - Array of String - Array of answer options - options
-// Anonymous - Boolean - Poll anonymity - anonymous
+// Anonymous - Boolean - Survey anonymity flag - anonymous
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram
@@ -577,6 +619,9 @@ EndFunction
 
 // Forward message
 // Forwards a message between chats or within a chat
+//
+// Note
+// Method at API documentation: [forwardMessage](@core.telegram.org/bots/api#forwardmessage)
 //
 // Parameters:
 // Token - String - Bot token - token
@@ -609,6 +654,9 @@ EndFunction
 
 // Generate keyboard from array of buttons
 // Generates a simple JSON keyboard from an array of buttons for a message or bottom panel
+//
+// Note
+// About keyboards in the API documentation: [InlineKeyboardMarkup](@core.telegram.org/bots/api#inlinekeyboardmarkup)
 //
 // Parameters:
 // ButtonArray - Array of String - Array of buttons - buttons
@@ -650,6 +698,9 @@ EndFunction
 // Ban
 // Bans a user in the selected chat
 //
+// Note
+// Method at API documentation: [banChatMember](@core.telegram.org/bots/api#banchatmember)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID or ChatID*TopicID - chat
@@ -677,6 +728,9 @@ EndFunction
 
 // Unban
 // Unbans a previously banned user
+//
+// Note
+// Method at API documentation: [unbanChatMember](@core.telegram.org/bots/api#unbanchatmember)
 //
 // Parameters:
 // Token - String - Bot token - token
@@ -706,6 +760,9 @@ EndFunction
 
 // Create invitation link
 // Creates a link for joining a closed chat
+//
+// Note
+// Method at API documentation: [createChatInviteLink](@core.telegram.org/bots/api#createchatinvitelink)
 //
 // Parameters:
 // Token - String - Bot token - token
@@ -743,6 +800,9 @@ EndFunction
 // Pin message
 // Pins a message in the chat header
 //
+// Note
+// Method at API documentation: [pinChatMessage](@core.telegram.org/bots/api#pinchatmessage)
+//
 // Parameters:
 // Token - String - Token - token
 // ChatID - String, Number - Target chat ID - chat
@@ -772,6 +832,9 @@ EndFunction
 // Unpin message
 // Unpins a message in the chat header
 //
+// Note
+// Method at API documentation: [unpinChatMessage](@core.telegram.org/bots/api#unpinchatmessage)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID - chat
@@ -800,6 +863,9 @@ EndFunction
 // Get participant count
 // Gets the total number of chat participants
 //
+// Note
+// Method at API documentation: [getChatMemberCount](@core.telegram.org/bots/api#getchatmembercount)
+//
 // Parameters:
 // Token - String - Bot token - token
 // ChatID - String, Number - Target chat ID - chat
@@ -824,6 +890,9 @@ EndFunction
 
 // Delete message
 // Delete message from chat or channel
+//
+// Note
+// Method at API documentation: [deleteMessage](@core.telegram.org/bots/api#deletemessage)
 //
 // Parameters:
 // Token - String - Token - token
@@ -853,6 +922,9 @@ EndFunction
 
 // Get avatar icon list
 // Gets the mapping of Emoji IDs for setting as forum theme icons
+//
+// Note
+// Method at API documentation: [getForumTopicIconStickers](@core.telegram.org/bots/api#getforumtopiciconstickers)
 //
 // Parameters:
 // Token - String - Token - token
@@ -885,6 +957,9 @@ EndFunction
 // Create forum thread
 // Creates a new thread in the group with theme functionality enabled
 //
+// Note
+// Method at API documentation: [createForumTopic](@core.telegram.org/bots/api#createforumtopic)
+//
 // Parameters:
 // Token - String - Token - token
 // ChatID - String, Number - Thread creation chat ID - forum
@@ -901,6 +976,9 @@ EndFunction
 
 // Edit forum thread
 // Creates a new thread in the group with theme functionality enabled
+//
+// Note
+// Method at API documentation: [editForumTopic](@core.telegram.org/bots/api#editforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
@@ -923,6 +1001,9 @@ EndFunction
 // Close forum thread
 // Closes the thread for new messages
 //
+// Note
+// Method at API documentation: [closeForumTopic](@core.telegram.org/bots/api#closeforumtopic)
+//
 // Parameters:
 // Token - String - Token - token
 // ChatID - String, Number - Thread chat ID - forum
@@ -938,6 +1019,9 @@ EndFunction
 
 // Open forum thread
 // Reopens a previously closed forum thread
+//
+// Note
+// Method at API documentation: [reopenForumTopic](@core.telegram.org/bots/api#reopenforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
@@ -955,6 +1039,9 @@ EndFunction
 // Delete forum thread
 // Deletes a forum thread
 //
+// Note
+// Method at API documentation: [deleteForumTopic](@core.telegram.org/bots/api#deleteforumtopic)
+//
 // Parameters:
 // Token - String - Token - token
 // ChatID - String, Number - Thread chat ID - forum
@@ -971,6 +1058,9 @@ EndFunction
 // Hide main forum thread
 // Hides the main forum thread
 //
+// Note
+// Method at API documentation: [hideGeneralForumTopic](@core.telegram.org/bots/api#hidegeneralforumtopic)
+//
 // Parameters:
 // Token - String - Token - token
 // ChatID - String, Number - Thread chat ID - forum
@@ -986,6 +1076,9 @@ EndFunction
 // Show main forum thread
 // Shows a previously hidden main forum thread
 //
+// Note
+// Method at API documentation: [unhideGeneralForumTopic](@core.telegram.org/bots/api#unhidegeneralforumtopic)
+//
 // Parameters:
 // Token - String - Token - token
 // ChatID - String, Number - Thread chat ID - forum
@@ -1000,6 +1093,9 @@ EndFunction
 
 // Edit main forum thread name
 // Edits the name of the main forum thread
+//
+// Note
+// Method at API documentation: [editGeneralForumTopic](@core.telegram.org/bots/api#editgeneralforumtopic)
 //
 // Parameters:
 // Token - String - Token - token
@@ -1026,6 +1122,9 @@ EndFunction
 
 // Clear thread's pinned messages list
 // Clears the list of pinned messages in the forum thread
+//
+// Note
+// Method at API documentation: [unpinAllForumTopicMessages](@core.telegram.org/bots/api#unpinallforumtopicmessages)
 //
 // Parameters:
 // Token - String - Token - token

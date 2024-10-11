@@ -12,14 +12,17 @@ sidebar_position: 6
   | Параметр | CLI опция | Тип | Назначение |
   |-|-|-|-|
   | Токен | --token | Строка | Токен бота |
-  | IDЧата | --chat | Строка,Число | ID целевого чата |
+  | IDЧата | --chat | Строка, Число | ID целевого чата |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
 <br/>
 
-
+:::tip
+Метод в документации API: [getChatMemberCount](https://core.telegram.org/bots/api#getchatmembercount)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

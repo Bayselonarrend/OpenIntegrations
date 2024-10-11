@@ -18,7 +18,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Bot token";
     NewLine.Область     = "Data retrieval and settings";
-    NewLine.ОписаниеМетода   = "Executes the     |   getMe request, returning basic bot information: name, id, ability to add the bot to groups, etc..";
+    NewLine.ОписаниеМетода   = "Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..";
 
 
     NewLine = CompositionTable.Add();
@@ -29,7 +29,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Bot token";
     NewLine.Область     = "Data retrieval and settings";
-    NewLine.ОписаниеМетода   = "Executes a request     |   getUpdates, returning information about bot events. Used in polling mode";
+    NewLine.ОписаниеМетода   = "Executes a request, returning information about bot events. Used in polling mode";
 
 
     NewLine = CompositionTable.Add();
@@ -142,7 +142,7 @@
     NewLine.Метод       = "SendTextMessage";
     NewLine.МетодПоиска = "SENDTEXTMESSAGE";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -213,7 +213,7 @@
     NewLine.Метод       = "SendImage";
     NewLine.МетодПоиска = "SENDIMAGE";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -274,7 +274,7 @@
     NewLine.Метод       = "SendVideo";
     NewLine.МетодПоиска = "SENDVIDEO";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -335,7 +335,7 @@
     NewLine.Метод       = "SendAudio";
     NewLine.МетодПоиска = "SENDAUDIO";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -396,7 +396,7 @@
     NewLine.Метод       = "SendDocument";
     NewLine.МетодПоиска = "SENDDOCUMENT";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -467,7 +467,7 @@
     NewLine.Метод       = "SendGif";
     NewLine.МетодПоиска = "SENDGIF";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -525,7 +525,7 @@
     NewLine.Метод       = "SendMediaGroup";
     NewLine.МетодПоиска = "SENDMEDIAGROUP";
     NewLine.Параметр    = "--media";
-    NewLine.Описание    = "File JSON or path to .json";
+    NewLine.Описание    = "File collection: Key > File, Value > Media Type";
     NewLine.Область     = "Data sending";
 
 
@@ -535,7 +535,7 @@
     NewLine.Метод       = "SendMediaGroup";
     NewLine.МетодПоиска = "SENDMEDIAGROUP";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -596,7 +596,7 @@
     NewLine.Метод       = "SendLocation";
     NewLine.МетодПоиска = "SENDLOCATION";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -657,7 +657,7 @@
     NewLine.Метод       = "SendContact";
     NewLine.МетодПоиска = "SENDCONTACT";
     NewLine.Параметр    = "--keyboard";
-    NewLine.Описание    = "Keyboard JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
     NewLine.Область     = "Data sending";
 
 
@@ -708,7 +708,7 @@
     NewLine.Метод       = "SendPoll";
     NewLine.МетодПоиска = "SENDPOLL";
     NewLine.Параметр    = "--anonymous";
-    NewLine.Описание    = "Poll anonymity (optional, def. val. - Yes)";
+    NewLine.Описание    = "Survey anonymity flag (optional, def. val. - Yes)";
     NewLine.Область     = "Data sending";
 
 

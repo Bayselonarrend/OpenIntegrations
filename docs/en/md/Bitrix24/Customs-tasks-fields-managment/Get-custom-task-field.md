@@ -36,7 +36,7 @@ Method at API documentation: [task.item.userfield.get](https://dev.1c-bitrix.ru/
     Token   = "37d1fe66006e9f06006b12e400000001000...";
     FieldID = "257";
 
-    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID, );
+    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID);
 ```
 
 

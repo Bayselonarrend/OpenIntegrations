@@ -14,7 +14,7 @@ sidebar_position: 1
   | Token | --token | String | Bot token |
   | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
   | Text | --text | String | Message text |
-  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
   | RepliedID | --reply | String, Number | Reply to message ID |
 
@@ -23,7 +23,10 @@ sidebar_position: 1
 
 <br/>
 
-
+:::tip
+Method at API documentation: [sendMessage](https://core.telegram.org/bots/api#sendmessage)
+:::
+<br/>
 
 
 ```bsl title="Code example"
