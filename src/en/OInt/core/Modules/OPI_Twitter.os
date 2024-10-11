@@ -218,7 +218,7 @@ Function CreateCustomTweet(Val Text = ""
     If ValueIsFilled(Fields["media"]) Then
         Authorization = CreateAuthorizationHeaderV1(Parameters_, New Structure, "POST", URL);
     Else
-        Authorization    = CreateAuthorizationHeaderV2(Parameters_);
+        Authorization = CreateAuthorizationHeaderV2(Parameters_);
     EndIf;
 
     Response = OPI_Tools.Post(URL, Fields, Authorization);
