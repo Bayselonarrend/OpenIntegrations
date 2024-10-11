@@ -35,7 +35,7 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/29923
 
 ```sh title="CLI command example"
     
-oint cdek CreateOrder --token %token% --order %order% --ostore %ostore% --testapi %testapi%
+  oint cdek CreateOrder --token %token% --order %order% --ostore %ostore% --testapi %testapi%
 
 ```
 

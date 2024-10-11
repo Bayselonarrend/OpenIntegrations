@@ -36,7 +36,7 @@ Required fields may depend on the type of order or nesting. Be sure to read the 
 
 ```sh title="CLI command example"
     
-oint cdek GetOrderDescription --empty %empty% --required %required% --ostore %ostore%
+  oint cdek GetOrderDescription --empty %empty% --required %required% --ostore %ostore%
 
 ```
 
