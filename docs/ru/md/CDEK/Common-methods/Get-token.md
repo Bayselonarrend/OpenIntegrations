@@ -42,5 +42,8 @@ sidebar_position: 1
 ```
 
 ```json title="Результат"
-
+{
+ "error": "unauthorized",
+ "error_description": "Full authentication is required to access this resource"
+}
 ```
