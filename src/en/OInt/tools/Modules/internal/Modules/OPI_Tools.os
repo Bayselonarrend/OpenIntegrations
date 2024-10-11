@@ -570,6 +570,11 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
     ElsIf Type = "Number" Then
         OPI_TypeConversion.GetNumber(Value);
 
+    ElsIf Type = "UUID" Then
+
+        OPI_TypeConversion.GetLine(Value);
+        Value = New UUID(Value);
+
     Else
 
         If Not Type = "Current" Then

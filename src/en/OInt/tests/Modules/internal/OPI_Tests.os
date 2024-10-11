@@ -2003,6 +2003,13 @@ Procedure CDEKAPI_OrdersManagment() Export
     OPI_TestDataRetrieval.ParameterToCollection("CDEK_Token" , TestParameters);
 
     CDEK_GetOrderDescription(TestParameters);
+    CDEK_CreateOrder(TestParameters);
+    CDEK_GetOrder(TestParameters);
+    CDEK_GetOrderByNumber(TestParameters);
+    CDEK_UpdateOrder(TestParameters);
+    CDEK_CreateCustomerRefund(TestParameters);
+    CDEK_CreateRefusal(TestParameters);
+    CDEK_DeleteOrder(TestParameters);
 
 EndProcedure
 
@@ -13641,6 +13648,189 @@ Procedure CDEK_GetOrderDescription(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetOrderDescription (Empty)", "CDEK");
     OPI_TestDataRetrieval.Check_Structure(Result);
+
+EndProcedure
+
+Procedure CDEK_CreateOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+
+    OrderDescription = New Structure;
+
+        SendLocation = New Structure;
+        SendLocation.Insert("code"   , "44");
+        SendLocation.Insert("city"   , "Moscow");
+        SendLocation.Insert("address", "Ave. Leningradsky, 4");
+
+        DestLocation = New Structure;
+        DestLocation.Insert("code"   , "270");
+        DestLocation.Insert("city"   , "Novosibirsk");
+        DestLocation.Insert("address", "st. Bluchera, 32");
+
+        Recipient = New Structure;
+
+            Phones = New Array;
+            Phones.Add(New Structure("number", "+79134637228"));
+
+        Recipient.Insert("phones", Phones);
+        Recipient.Insert("name"  , "Ivaniv Ivan");
+
+        Sender = New Structure("name", "Petrov Petr");
+
+        Services = New Array;
+
+            Service = New Structure;
+            Service.Insert("code"     , "SECURE_PACKAGE_A2");
+            Service.Insert("parameter", 10);
+
+        Services.Add(Service);
+
+        Packages = New Array;
+
+            Package = New Structure;
+
+                Items = New Array;
+
+                    Item = New Structure;
+
+                        Payment = New Structure;
+                        Payment.Insert("value", 3000);
+
+                    Item.Insert("payment" , Payment);
+                    Item.Insert("ware_key", "00055");
+                    Item.Insert("name"    , "Product");
+                    Item.Insert("cost"    , 300);
+                    Item.Insert("amount"  , 2);
+                    Item.Insert("weight"  , 700);
+                    Item.Insert("url"     , "www.item.ru");
+
+                Items.Add(Item);
+
+            Package.Insert("items"  , Items);
+            Package.Insert("number" , "bar-001");
+            Package.Insert("comment", "Packaging");
+            Package.Insert("height" , 10);
+            Package.Insert("length" , 10);
+            Package.Insert("weight" , "4000");
+            Package.Insert("width"  , 10);
+
+        Packages.Add(Package);
+
+    OrderDescription.Insert("from_location", SendLocation);
+    OrderDescription.Insert("to_location"  , DestLocation);
+    OrderDescription.Insert("packages"     , Packages);
+    OrderDescription.Insert("recipient"    , Recipient);
+    OrderDescription.Insert("sender"       , Sender);
+    OrderDescription.Insert("services"     , Services);
+
+    OrderDescription.Insert("number"     , "ddOererre7450813980068");
+    OrderDescription.Insert("comment"    , "New order");
+    OrderDescription.Insert("tariff_code", 139);
+
+    OrderDescription.Insert("delivery_recipient_cost"    , New Structure("value"        , 50));
+    OrderDescription.Insert("delivery_recipient_cost_adv", New Structure("sum,threshold", 3000, 200));
+
+    Result = OPI_CDEK.CreateOrder(Token, OrderDescription, True, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+    UUID = Result["entity"]["uuid"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderUUID", UUID);
+    OPI_Tools.AddField("CDEK_OrderUUID", UUID, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CDEK_GetOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Result = OPI_CDEK.GetOrder(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrderNumber(Result);
+
+    IMNumber = Result["entity"]["number"];
+    OPI_TestDataRetrieval.WriteParameter("CDEK_OrderIMN", IMNumber);
+    OPI_Tools.AddField("CDEK_OrderIMN", IMNumber, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CDEK_GetOrderByNumber(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+
+    OrderNumber = FunctionParameters["CDEK_OrderIMN"];
+    Result      = OPI_CDEK.GetOrderByNumber(Token, OrderNumber, True, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderByNumber", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrderNumber(Result);
+
+EndProcedure
+
+Procedure CDEK_UpdateOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    OrderDescription = New Structure("comment", "NewComment");
+
+    Result = OPI_CDEK.UpdateOrder(Token, UUID, OrderDescription, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_DeleteOrder(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Result = OPI_CDEK.DeleteOrder(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteOrder", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_CreateCustomerRefund(FunctionParameters)
+
+    Token  = FunctionParameters["CDEK_Token"];
+    UUID   = FunctionParameters["CDEK_OrderUUID"];
+    Tariff = 139;
+
+    Result = OPI_CDEK.CreateCustomerRefund(Token, UUID, Tariff, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCustomerRefund", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
+
+EndProcedure
+
+Procedure CDEK_CreateRefusal(FunctionParameters)
+
+    Token = FunctionParameters["CDEK_Token"];
+    UUID  = FunctionParameters["CDEK_OrderUUID"];
+
+    Result = OPI_CDEK.CreateRefusal(Token, UUID, True);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateRefusal", "CDEK");
+    OPI_TestDataRetrieval.Check_CdekOrder(Result);
 
 EndProcedure
 
