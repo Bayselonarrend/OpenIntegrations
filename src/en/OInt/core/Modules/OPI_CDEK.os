@@ -178,7 +178,7 @@ Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val On
             ItemStructure.Insert("marking" , "<Product marking>");
 
                 PaymentStructure = New Structure;
-                PaymentStructure.Insert("value" , "<Amount of cash on delivery, including VAT>");
+                PaymentStructure.Insert("value"   , "<Amount of cash on delivery, including VAT>");
                 PaymentStructure.Insert("vat_sum" , "<VAT amount>");
                 PaymentStructure.Insert("vat_rate", "<VAT rate (value - 0, 10, 12, 20, null - no VAT)>");
 
