@@ -35,7 +35,7 @@ sidebar_position: 1
 
 ```sh title="Пример команды CLI"
     
-oint cdek СоздатьЗаказ --token %token% --order %order% --ostore %ostore% --testapi %testapi%
+  oint cdek СоздатьЗаказ --token %token% --order %order% --ostore %ostore% --testapi %testapi%
 
 ```
 
