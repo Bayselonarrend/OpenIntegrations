@@ -12040,7 +12040,7 @@ Procedure VKTeams_ResendFile(FunctionParameters)
     FileID = FunctionParameters["VkTeams_FileID"];
     Text   = "File caption";
 
-    Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text, "SameDoc.docx");
+    Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text);
 
     // END
 
@@ -13623,7 +13623,7 @@ Procedure CDEK_GetToken(FunctionParameters)
     OPI_TestDataRetrieval.Check_CdekToken(Result);
 
     Token = Result["access_token"];
-    OPI_TestDataRetrieval.WriteParameter("CDEK_Token", Result);
+    OPI_TestDataRetrieval.WriteParameter("CDEK_Token", Token);
     OPI_Tools.AddField("CDEK_Token", Token, "String", FunctionParameters);
 
 EndProcedure
