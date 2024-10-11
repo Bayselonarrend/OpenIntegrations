@@ -34,7 +34,7 @@ Method at API documentation: [GET /messages/sendFile](https://teams.vk.com/botap
     FileID = "Z7w4zb94bLtkJDICBfzVuG66f69e921bd";
     Text   = "File caption";
 
-    Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text, "SameDoc.docx");
+    Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text);
 ```
 
 
