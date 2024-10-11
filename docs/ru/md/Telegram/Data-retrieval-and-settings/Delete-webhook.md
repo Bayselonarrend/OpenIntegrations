@@ -18,7 +18,10 @@ sidebar_position: 4
 
 <br/>
 
-
+:::tip
+Метод в документации API: [deleteWebhook](https://core.telegram.org/bots/api#deletewebhook)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

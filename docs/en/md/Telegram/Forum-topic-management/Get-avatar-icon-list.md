@@ -18,7 +18,10 @@ sidebar_position: 1
 
 <br/>
 
-
+:::tip
+Method at API documentation: [getForumTopicIconStickers](https://core.telegram.org/bots/api#getforumtopiciconstickers)
+:::
+<br/>
 
 
 ```bsl title="Code example"

@@ -21,7 +21,10 @@ sidebar_position: 11
 
 <br/>
 
-
+:::tip
+Method at API documentation: [forwardMessage](https://core.telegram.org/bots/api#forwardmessage)
+:::
+<br/>
 
 
 ```bsl title="Code example"

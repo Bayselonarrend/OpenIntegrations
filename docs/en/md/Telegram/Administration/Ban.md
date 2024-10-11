@@ -20,7 +20,10 @@ sidebar_position: 1
 
 <br/>
 
-
+:::tip
+Method at API documentation: [banChatMember](https://core.telegram.org/bots/api#banchatmember)
+:::
+<br/>
 
 
 ```bsl title="Code example"

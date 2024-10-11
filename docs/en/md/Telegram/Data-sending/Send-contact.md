@@ -16,14 +16,17 @@ sidebar_position: 9
   | Name | --name | String | Contact name |
   | LastName | --surname | String | Contact last name |
   | Phone | --phone | String | Contact phone number |
-  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
-
+:::tip
+Method at API documentation: [sendContact](https://core.telegram.org/bots/api#sendcontact)
+:::
+<br/>
 
 
 ```bsl title="Code example"

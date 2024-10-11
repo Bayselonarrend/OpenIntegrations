@@ -14,8 +14,8 @@ sidebar_position: 5
   | Token | --token | String | Bot token |
   | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
   | Text | --text | String | Message text |
-  | Document | --doc | BinaryData,String | Document file |
-  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | Document | --doc | BinaryData, String | Document file |
+  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
   | FileName | --filename | String | Custom displayed file name with extension, if necessary |
 
@@ -24,7 +24,10 @@ sidebar_position: 5
 
 <br/>
 
-
+:::tip
+Method at API documentation: [sendDocument](https://core.telegram.org/bots/api#senddocument)
+:::
+<br/>
 
 
 ```bsl title="Code example"

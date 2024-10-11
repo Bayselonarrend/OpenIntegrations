@@ -15,14 +15,17 @@ sidebar_position: 10
   | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
   | Question | --question | String | Poll question |
   | AnswersArray | --options | Array of String | Array of answer options |
-  | Anonymous | --anonymous | Boolean | Poll anonymity |
+  | Anonymous | --anonymous | Boolean | Survey anonymity flag |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
-
+:::tip
+Method at API documentation: [sendPoll](https://core.telegram.org/bots/api#sendpoll)
+:::
+<br/>
 
 
 ```bsl title="Code example"

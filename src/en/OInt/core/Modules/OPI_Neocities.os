@@ -352,7 +352,6 @@ Function GetDeletedFiles(RemoteFiles, LocalPaths, LocalSubfolders)
 
 EndFunction
 
-//@skip-check module-unused-local-variable
 Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
     ErrorsArray = New Array;
@@ -366,6 +365,7 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
         Else
 
+            //@skip-check module-unused-local-variable
             DeletingMessage = StrTemplate("Removed %1 unnecessary files", String(ArrayOfDeletions.Count()));
             Message(DeletingMessage);
 
@@ -386,6 +386,7 @@ Function MakeSynchronization(Token, ArrayOfDeletions, LocalPaths)
 
         Else
 
+            //@skip-check module-unused-local-variable
             Progress = "[" + OPI_Tools.NumberToString(Counter) + "/" + Total + "] ";
             Message(Progress + LocalPath.Key + Chars.LF + Response["message"] + Chars.LF);
 

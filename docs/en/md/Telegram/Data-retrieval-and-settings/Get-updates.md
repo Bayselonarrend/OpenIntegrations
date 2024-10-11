@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 
 # Get updates
- Executes a request /getUpdates, returning information about bot events. Used in polling mode
+ Executes a request, returning information about bot events. Used in polling mode
 
 
 
@@ -20,7 +20,10 @@ sidebar_position: 2
 
 <br/>
 
-
+:::tip
+Method at API documentation: [getUpdates](https://core.telegram.org/bots/api#getupdates)
+:::
+<br/>
 
 
 ```bsl title="Code example"

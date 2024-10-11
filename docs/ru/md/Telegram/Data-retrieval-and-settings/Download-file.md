@@ -19,7 +19,10 @@ sidebar_position: 5
 
 <br/>
 
-
+:::tip
+Метод в документации API: [getFile](https://core.telegram.org/bots/api#getfile)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

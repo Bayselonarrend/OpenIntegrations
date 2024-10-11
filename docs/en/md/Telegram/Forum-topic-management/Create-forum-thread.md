@@ -21,7 +21,10 @@ sidebar_position: 2
 
 <br/>
 
-
+:::tip
+Method at API documentation: [createForumTopic](https://core.telegram.org/bots/api#createforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Code example"

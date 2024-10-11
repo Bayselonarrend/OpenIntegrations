@@ -33,6 +33,7 @@
 // BSLLS:UnusedParameters-off
 // BSLLS:DuplicateStringLiteral-off
 // BSLLS:UsingHardcodePath-off
+// BSLLS:UnusedLocalVariable-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -10954,7 +10955,7 @@ Procedure Bitrix24_GetCustomTaskField(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
 
-    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID, );
+    Result = OPI_Bitrix24.GetCustomTaskField(URL, FieldID);
 
     // END
 
@@ -11343,7 +11344,7 @@ Procedure Bitrix24_StartTimekeeping(FunctionParameters)
     Time   = OPI_Tools.GetCurrentDate() - Hour;
     Report = "Late";
 
-    Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, );
+    Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, Token);
 
     // END
 
@@ -11371,13 +11372,11 @@ Procedure Bitrix24_PauseTimekeeping(FunctionParameters)
 
     Result = OPI_Bitrix24.PauseTimekeeping(URL);
 
-    Hour = 3600;
-
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
-    Result = OPI_Bitrix24.PauseTimekeeping(URL, UserID);
+    Result = OPI_Bitrix24.PauseTimekeeping(URL, UserID, Token);
 
     // END
 
@@ -11389,13 +11388,11 @@ Procedure Bitrix24_GetTimekeepingStatus(FunctionParameters)
 
     Result = OPI_Bitrix24.GetTimekeepingStatus(URL);
 
-    Hour = 3600;
-
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
-    Result = OPI_Bitrix24.GetTimekeepingStatus(URL, UserID);
+    Result = OPI_Bitrix24.GetTimekeepingStatus(URL, UserID, Token);
 
 EndProcedure
 
@@ -11405,13 +11402,11 @@ Procedure Bitrix24_GetTimekeepingSettings(FunctionParameters)
 
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL);
 
-    Hour = 3600;
-
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
-    Result = OPI_Bitrix24.GetTimekeepingSettings(URL, UserID);
+    Result = OPI_Bitrix24.GetTimekeepingSettings(URL, UserID, Token);
 
     // END
 
@@ -11907,7 +11902,6 @@ Procedure VKTeams_GetEvents(FunctionParameters)
         Result = OPI_VKTeams.GetEvents(Token, LastID, 3);
 
         OPI_TestDataRetrieval.WriteLog(Result, "GetEvents", "VkTeams");
-
         OPI_TestDataRetrieval.Check_VKTEvents(Result); // SKIP
 
         Events = Result["events"];
@@ -12122,7 +12116,6 @@ Procedure VKTeams_SendVoice(FunctionParameters)
     Token   = FunctionParameters["VkTeams_Token"];
     ChatID  = FunctionParameters["VkTeams_ChatID2"];
     ReplyID = FunctionParameters["VkTeams_MessageID"];
-    Text    = "File caption";
 
     File     = FunctionParameters["Audio2"] ; // URL
     FilePath = GetTempFileName("m4a"); // Path

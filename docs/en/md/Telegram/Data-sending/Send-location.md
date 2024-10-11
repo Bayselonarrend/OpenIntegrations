@@ -15,14 +15,17 @@ sidebar_position: 8
   | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
   | Latitude | --lat | String, Number | Geographic latitude |
   | Longitude | --long | String, Number | Geographic longitude |
-  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
 <br/>
 
-
+:::tip
+Method at API documentation: [sendLocation](https://core.telegram.org/bots/api#sendlocation)
+:::
+<br/>
 
 
 ```bsl title="Code example"

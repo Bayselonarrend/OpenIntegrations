@@ -35,7 +35,6 @@ If you want the client to display this file as a playable voice message, it must
     Token   = "001.3501506236.091...";
     ChatID  = "689203963@chat.agent";
     ReplyID = "7419291601358293295";
-    Text    = "File caption";
 
     File     = "https://openyellow.neocities.org/test_data/song.m4a" ; // URL
     FilePath = GetTempFileName("m4a"); // Path

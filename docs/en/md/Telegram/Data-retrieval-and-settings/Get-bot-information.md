@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 # Get bot information
- Executes the /getMe request, returning basic bot information: name, id, ability to add the bot to groups, etc..
+ Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..
 
 
 
@@ -18,7 +18,10 @@ sidebar_position: 1
 
 <br/>
 
-
+:::tip
+Method at API documentation: [getMe](https://core.telegram.org/bots/api#getme)
+:::
+<br/>
 
 
 ```bsl title="Code example"

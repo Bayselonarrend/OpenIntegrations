@@ -12,7 +12,7 @@ sidebar_position: 9
   | Параметр | CLI опция | Тип | Назначение |
   |-|-|-|-|
   | Токен | --token | Строка | Токен |
-  | IDЧата | --forum | Строка,Число | ID чата темы |
+  | IDЧата | --forum | Строка, Число | ID чата темы |
   | Заголовок | --title | Строка | Новое имя главной темы |
 
   
@@ -20,7 +20,10 @@ sidebar_position: 9
 
 <br/>
 
-
+:::tip
+Метод в документации API: [editGeneralForumTopic](https://core.telegram.org/bots/api#editgeneralforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

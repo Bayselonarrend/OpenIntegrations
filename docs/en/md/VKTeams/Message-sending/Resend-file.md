@@ -7,7 +7,7 @@ sidebar_position: 6
 
 
 
-`Function ResendFile(Val Token, Val ChatID, Val FileID, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2") Export`
+`Function ResendFile(Val Token, Val ChatID, Val FileID, Val Text = "", Val Markup = "MarkdownV2") Export`
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
@@ -15,7 +15,6 @@ sidebar_position: 6
   | ChatID | --chatid | String, Number | Chat ID for sending |
   | FileID | --fileid | String, Number | File ID to send |
   | Text | --text | String | File caption |
-  | FileName | --filename | String | Displayed file name |
   | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
 
   

@@ -20,7 +20,10 @@ sidebar_position: 5
 
 <br/>
 
-
+:::tip
+Method at API documentation: [reopenForumTopic](https://core.telegram.org/bots/api#reopenforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Code example"

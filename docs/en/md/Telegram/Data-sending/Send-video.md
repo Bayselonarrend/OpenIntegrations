@@ -14,8 +14,8 @@ sidebar_position: 3
   | Token | --token | String | Bot token |
   | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
   | Text | --text | String | Message text |
-  | Video | --video | BinaryData,String | Video file |
-  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | Video | --video | BinaryData, String | Video file |
+  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
@@ -23,7 +23,10 @@ sidebar_position: 3
 
 <br/>
 
-
+:::tip
+Method at API documentation: [sendVideo](https://core.telegram.org/bots/api#sendvideo)
+:::
+<br/>
 
 
 ```bsl title="Code example"

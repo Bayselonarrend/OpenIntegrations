@@ -19,7 +19,10 @@ sidebar_position: 3
 
 <br/>
 
-
+:::tip
+Method at API documentation: [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+:::
+<br/>
 
 
 ```bsl title="Code example"

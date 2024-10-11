@@ -14,8 +14,8 @@ sidebar_position: 7
   | Token | --token | String | Bot token |
   | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
   | Text | --text | String | Message text |
-  | FileMapping | --media | Map of String | File JSON or path to .json |
-  | Keyboard | --keyboard | String | Keyboard JSON or path to .json |
+  | FileMapping | --media | Map of KeyAndValue | File collection: Key > File, Value > Media Type |
+  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
   | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
@@ -24,7 +24,7 @@ sidebar_position: 7
 <br/>
 
 :::tip
-Map: Key - File, Value - media type
+Method at API documentation: [sendMediaGroup](https://core.telegram.org/bots/api#sendmediagroup)
 :::
 <br/>
 

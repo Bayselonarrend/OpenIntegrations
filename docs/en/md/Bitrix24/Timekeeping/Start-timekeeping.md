@@ -41,7 +41,7 @@ Method at API documentation: [timeman.open](https://dev.1c-bitrix.ru/rest_help/t
     Time   = OPI_Tools.GetCurrentDate() - Hour;
     Report = "Late";
 
-    Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, );
+    Result = OPI_Bitrix24.StartTimekeeping(URL, UserID, Time, Report, Token);
 ```
 
 
