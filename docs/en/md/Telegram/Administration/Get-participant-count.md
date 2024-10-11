@@ -19,7 +19,10 @@ sidebar_position: 6
 
 <br/>
 
-
+:::tip
+Method at API documentation: [getChatMemberCount](https://core.telegram.org/bots/api#getchatmembercount)
+:::
+<br/>
 
 
 ```bsl title="Code example"

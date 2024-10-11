@@ -19,7 +19,10 @@ sidebar_position: 8
 
 <br/>
 
-
+:::tip
+Method at API documentation: [unhideGeneralForumTopic](https://core.telegram.org/bots/api#unhidegeneralforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Code example"

@@ -31,13 +31,11 @@ Method at API documentation: [timeman.settings](https://dev.1c-bitrix.ru/rest_he
 
     Result = OPI_Bitrix24.GetTimekeepingSettings(URL);
 
-    Hour = 3600;
-
     URL    = "b24-ar17wx.bitrix24.by";
     Token  = "37d1fe66006e9f06006b12e400000001000...";
     UserID = 1;
 
-    Result = OPI_Bitrix24.GetTimekeepingSettings(URL, UserID);
+    Result = OPI_Bitrix24.GetTimekeepingSettings(URL, UserID, Token);
 ```
 
 

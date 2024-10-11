@@ -20,7 +20,10 @@ sidebar_position: 7
 
 <br/>
 
-
+:::tip
+Method at API documentation: [deleteMessage](https://core.telegram.org/bots/api#deletemessage)
+:::
+<br/>
 
 
 ```bsl title="Code example"

@@ -384,16 +384,6 @@
     NewLine.Модуль      = "OPI_VKTeams";
     NewLine.Метод       = "ResendFile";
     NewLine.МетодПоиска = "RESENDFILE";
-    NewLine.Параметр    = "--filename";
-    NewLine.Описание    = "Displayed file name (optional, def. val. - Empty value)";
-    NewLine.Область     = "Message sending";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Библиотека  = "vkteams";
-    NewLine.Модуль      = "OPI_VKTeams";
-    NewLine.Метод       = "ResendFile";
-    NewLine.МетодПоиска = "RESENDFILE";
     NewLine.Параметр    = "--parsemod";
     NewLine.Описание    = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
     NewLine.Область     = "Message sending";

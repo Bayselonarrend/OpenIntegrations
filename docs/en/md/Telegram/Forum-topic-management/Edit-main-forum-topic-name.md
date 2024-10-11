@@ -20,7 +20,10 @@ sidebar_position: 9
 
 <br/>
 
-
+:::tip
+Method at API documentation: [editGeneralForumTopic](https://core.telegram.org/bots/api#editgeneralforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Code example"

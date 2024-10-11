@@ -20,7 +20,10 @@ sidebar_position: 4
 
 <br/>
 
-
+:::tip
+Method at API documentation: [closeForumTopic](https://core.telegram.org/bots/api#closeforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Code example"

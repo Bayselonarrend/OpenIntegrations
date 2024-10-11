@@ -20,7 +20,10 @@ sidebar_position: 5
 
 <br/>
 
-
+:::tip
+Method at API documentation: [unpinChatMessage](https://core.telegram.org/bots/api#unpinchatmessage)
+:::
+<br/>
 
 
 ```bsl title="Code example"

@@ -20,7 +20,10 @@ sidebar_position: 4
 
 <br/>
 
-
+:::tip
+Method at API documentation: [pinChatMessage](https://core.telegram.org/bots/api#pinchatmessage)
+:::
+<br/>
 
 
 ```bsl title="Code example"

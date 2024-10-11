@@ -22,7 +22,10 @@ sidebar_position: 3
 
 <br/>
 
-
+:::tip
+Method at API documentation: [createChatInviteLink](https://core.telegram.org/bots/api#createchatinvitelink)
+:::
+<br/>
 
 
 ```bsl title="Code example"

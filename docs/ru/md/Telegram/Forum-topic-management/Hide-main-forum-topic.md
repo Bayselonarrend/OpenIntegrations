@@ -12,14 +12,17 @@ sidebar_position: 7
   | Параметр | CLI опция | Тип | Назначение |
   |-|-|-|-|
   | Токен | --token | Строка | Токен |
-  | IDЧата | --forum | Строка,Число | ID чата темы |
+  | IDЧата | --forum | Строка, Число | ID чата темы |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
 <br/>
 
-
+:::tip
+Метод в документации API: [hideGeneralForumTopic](https://core.telegram.org/bots/api#hidegeneralforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"
