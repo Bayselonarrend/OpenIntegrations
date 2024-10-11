@@ -20,7 +20,10 @@ sidebar_position: 10
 
 <br/>
 
-
+:::tip
+Method at API documentation: [unpinAllForumTopicMessages](https://core.telegram.org/bots/api#unpinallforumtopicmessages)
+:::
+<br/>
 
 
 ```bsl title="Code example"

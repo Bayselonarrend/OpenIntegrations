@@ -12,15 +12,18 @@ sidebar_position: 5
   | Параметр | CLI опция | Тип | Назначение |
   |-|-|-|-|
   | Токен | --token | Строка | Токен |
-  | IDЧата | --forum | Строка,Число | ID чата темы |
-  | IDТемы | --topic | Строка,Число | ID темы |
+  | IDЧата | --forum | Строка, Число | ID чата темы |
+  | IDТемы | --topic | Строка, Число | ID темы |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
 <br/>
 
-
+:::tip
+Метод в документации API: [reopenForumTopic](https://core.telegram.org/bots/api#reopenforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

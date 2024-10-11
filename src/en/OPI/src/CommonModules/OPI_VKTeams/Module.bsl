@@ -334,7 +334,6 @@ EndFunction
 // ChatID - String, Number - Chat ID for sending - chatid
 // FileID - String, Number - File ID to send - fileid
 // Text - String - File caption - text
-// FileName - String - Displayed file name - filename
 // Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
@@ -343,7 +342,6 @@ Function ResendFile(Val Token
     , Val ChatID
     , Val FileID
     , Val Text = ""
-    , Val FileName = ""
     , Val Markup = "MarkdownV2") Export
 
     URL        = "/messages/sendFile";

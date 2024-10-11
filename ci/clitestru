@@ -2111,7 +2111,7 @@ def test_vkteams(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe vkteams ПереслатьФайл --token "test" --chatid "test" --fileid "test" --text "test" --filename "test" --parsemod "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe vkteams ПереслатьФайл --token "test" --chatid "test" --fileid "test" --text "test" --parsemod "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

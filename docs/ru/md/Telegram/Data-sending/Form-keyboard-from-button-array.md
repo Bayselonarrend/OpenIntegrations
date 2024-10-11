@@ -20,7 +20,10 @@ sidebar_position: 12
 
 <br/>
 
-
+:::tip
+О клавиатурах в документации API: [InlineKeyboardMarkup](https://core.telegram.org/bots/api#inlinekeyboardmarkup)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"

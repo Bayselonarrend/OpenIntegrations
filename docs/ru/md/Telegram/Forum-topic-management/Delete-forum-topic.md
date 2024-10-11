@@ -12,15 +12,18 @@ sidebar_position: 6
   | Параметр | CLI опция | Тип | Назначение |
   |-|-|-|-|
   | Токен | --token | Строка | Токен |
-  | IDЧата | --forum | Строка,Число | ID чата темы |
-  | IDТемы | --topic | Строка,Число | ID темы |
+  | IDЧата | --forum | Строка, Число | ID чата темы |
+  | IDТемы | --topic | Строка, Число | ID темы |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
 
 <br/>
 
-
+:::tip
+Метод в документации API: [deleteForumTopic](https://core.telegram.org/bots/api#deleteforumtopic)
+:::
+<br/>
 
 
 ```bsl title="Пример кода"
