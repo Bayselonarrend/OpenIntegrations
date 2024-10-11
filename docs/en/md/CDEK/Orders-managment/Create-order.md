@@ -7,7 +7,7 @@ sidebar_position: 1
 
 
 
-`Function CreateOrder(Val Token, Val OrderDescription, Val OnlineStore = False, TestAPI = False) Export`
+`Function CreateOrder(Val Token, Val OrderDescription, Val OnlineStore = False, Val TestAPI = False) Export`
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
@@ -28,7 +28,84 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/29923
 
 
 ```bsl title="Code example"
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Mjg2ODEyNjEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
 
+    OrderDescription = New Structure;
+
+        SendLocation = New Structure;
+        SendLocation.Insert("code"   , "44");
+        SendLocation.Insert("city"   , "Moscow");
+        SendLocation.Insert("address", "Ave. Leningradsky, 4");
+
+        DestLocation = New Structure;
+        DestLocation.Insert("code"   , "270");
+        DestLocation.Insert("city"   , "Novosibirsk");
+        DestLocation.Insert("address", "st. Bluchera, 32");
+
+        Recipient = New Structure;
+
+            Phones = New Array;
+            Phones.Add(New Structure("number", "+79134637228"));
+
+        Recipient.Insert("phones", Phones);
+        Recipient.Insert("name"  , "Ivaniv Ivan");
+
+        Sender = New Structure("name", "Petrov Petr");
+
+        Services = New Array;
+
+            Service = New Structure;
+            Service.Insert("code"     , "SECURE_PACKAGE_A2");
+            Service.Insert("parameter", 10);
+
+        Services.Add(Service);
+
+        Packages = New Array;
+
+            Package = New Structure;
+
+                Items = New Array;
+
+                    Item = New Structure;
+
+                        Payment = New Structure;
+                        Payment.Insert("value", 3000);
+
+                    Item.Insert("payment" , Payment);
+                    Item.Insert("ware_key", "00055");
+                    Item.Insert("name"    , "Product");
+                    Item.Insert("cost"    , 300);
+                    Item.Insert("amount"  , 2);
+                    Item.Insert("weight"  , 700);
+                    Item.Insert("url"     , "www.item.ru");
+
+                Items.Add(Item);
+
+            Package.Insert("items"  , Items);
+            Package.Insert("number" , "bar-001");
+            Package.Insert("comment", "Packaging");
+            Package.Insert("height" , 10);
+            Package.Insert("length" , 10);
+            Package.Insert("weight" , "4000");
+            Package.Insert("width"  , 10);
+
+        Packages.Add(Package);
+
+    OrderDescription.Insert("from_location", SendLocation);
+    OrderDescription.Insert("to_location"  , DestLocation);
+    OrderDescription.Insert("packages"     , Packages);
+    OrderDescription.Insert("recipient"    , Recipient);
+    OrderDescription.Insert("sender"       , Sender);
+    OrderDescription.Insert("services"     , Services);
+
+    OrderDescription.Insert("number"     , "ddOererre7450813980068");
+    OrderDescription.Insert("comment"    , "New order");
+    OrderDescription.Insert("tariff_code", 139);
+
+    OrderDescription.Insert("delivery_recipient_cost"    , New Structure("value"        , 50));
+    OrderDescription.Insert("delivery_recipient_cost_adv", New Structure("sum,threshold", 3000, 200));
+
+    Result = OPI_CDEK.CreateOrder(Token, OrderDescription, True, True);
 ```
 
 

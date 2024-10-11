@@ -1765,6 +1765,21 @@ Procedure Check_CdekToken(Val Result) Export
 
 EndProcedure
 
+Procedure Check_CdekOrder(Val Result) Export
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["requests"]).ИмеетТип("Array").Заполнено();
+    ExpectsThat(Result["requests"][0]["state"]).Равно("ACCEPTED");
+
+EndProcedure
+
+Procedure Check_CdekOrderNumber(Val Result) Export
+
+    ExpectsThat(Result["entity"]["uuid"]).Заполнено();
+    ExpectsThat(Result["entity"]["number"]).Заполнено();
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
