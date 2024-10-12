@@ -40,7 +40,7 @@ sidebar_position: 7
 
 ```sh title="Пример команды CLI"
     
-oint twitter ЗагрузитьМассивВложений --files %files% --type %type% --auth %auth%
+  oint twitter ЗагрузитьМассивВложений --files %files% --type %type% --auth %auth%
 
 ```
 
