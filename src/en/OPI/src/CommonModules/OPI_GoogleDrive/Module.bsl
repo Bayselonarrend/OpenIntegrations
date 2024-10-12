@@ -317,9 +317,15 @@ Function GetFileDescription(Val Clear = False) Export
     Description.Insert("Parent"      , "root"); // ID directory upload or "root" for upload in root
 
     If Clear Then
+
+        Description_ = New Map;
+
         For Each Field In Description Do
-            Description.Insert(Field.Key, "");
+            Description_.Insert(Field.Key, "");
         EndDo;
+
+        Description = Description_;
+
     EndIf;
 
     Return Description;
