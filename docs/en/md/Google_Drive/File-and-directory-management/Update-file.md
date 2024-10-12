@@ -25,9 +25,9 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612yqBU-Js-ZwvMX9kOgTqr1bzVlotSXxpjuDiy-VQFNrbVcJqWC-p_l2W_Ng_se_7j6PbCOWHu1waCLQEAilKYg3xb2Q18DG_cMfA...";
+    Token      = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
     NewName    = "UpdatedFile.jpg";
-    Identifier = "1U8hhtaSXcxZuojGLumLYODMBspUV501s";
+    Identifier = "1rjQ1PytDjJVgTIkNK600sQEPGqHDIeWW";
     File       = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary Data or Path to file
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);

@@ -25,10 +25,10 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен     = "ya29.a0AcM612yqBU-Js-ZwvMX9kOgTqr1bzVlotSXxpjuDiy-VQFNrbVcJqWC-p_l2W_Ng_se_7j6PbCOWHu1waCLQEAilKYg3xb2Q18DG_cMfA...";
-    Событие   = "8k946a5apd6kblura1vnpjp5ts";
+    Токен     = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
+    Событие   = "g631dg23bi0fep1qd3qudu0ia4";
 
-    КалендарьИсточник = "9776ffc9103041e891559c22442cd210f397ca598957939d3a9fa15edfccfd62@group.calendar.google.com";
+    КалендарьИсточник = "cf73bcfa8a16eff552d6aa79a9610fdb38ec4db055ab1a0e3b93e32f8414f77c@group.calendar.google.com";
     КалендарьПриемник = "bayselonarrend@gmail.com";
 
     Результат = OPI_GoogleCalendar.ПереместитьСобытие(Токен, КалендарьИсточник, КалендарьПриемник, Событие);
