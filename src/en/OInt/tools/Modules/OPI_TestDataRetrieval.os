@@ -430,7 +430,11 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
 
     Except
 
-        Result = New BinaryData(ResultFile);
+        Try
+            Result = New BinaryData(ResultFile);
+        Except
+            Result = null;
+        EndTry;
 
     EndTry;
 
