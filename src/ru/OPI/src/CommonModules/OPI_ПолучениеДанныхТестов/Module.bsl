@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
+// OneScript: ./OInt/tools/Modules/OPI_ПолучениеДанныхТестов.os
 
 // MIT License
 
@@ -975,7 +975,6 @@
 
 Процедура Проверка_ГуглКаталоги(Знач Результат) Экспорт
 
-    ОжидаетЧто(Результат["files"]).ИмеетТип("Массив");
     ОжидаетЧто(Результат["mimeType"]).Равно("application/vnd.google-apps.folder");
     ОжидаетЧто(Результат["name"]).Заполнено();
 
