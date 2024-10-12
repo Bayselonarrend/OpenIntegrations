@@ -27,8 +27,8 @@ sidebar_position: 6
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Property = "869";
-    Option   = "2584";
+    Property = "877";
+    Option   = "2598";
     Value    = "New variant name";
 
     Result = OPI_VK.EditProductPropertyVariant(Value

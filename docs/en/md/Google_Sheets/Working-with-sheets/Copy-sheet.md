@@ -25,10 +25,10 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token  = "ya29.a0AcM612w6SWzMf3Ti1dSiFdgdLdXxLBjzKdXoLGuGDHoSXzb0uAKe5hJ-HPz1Njyp7HuHE6NnMnevQwbo0AR-yPAwfrA1OsMFZ_Fac2ASn...";
-    From   = "1byey4pYpbD_Bmh0c49QYSEfwkqTUwcTIqhMtrDyq7vQ";
-    Target = "1l4BjR6YbcY3AhunB2bcohpJZNv7SH239KCe9SSa4-mU";
-    Sheet  = "799706357";
+    Token  = "ya29.a0AcM612zmTq3HijDy5D8xu-llkoj4aTlkgkrZ4LGSZcpCOnX1Z6xu9IsTLXFZSJu8uVsYxHj0ih5glQrF0yWTomhAPTGm1M9Kk7ZvYIwpm...";
+    From   = "1TTfKyO7fTBJkDluNvVYONXAadeC_Kv39A4sHKqOH_GM";
+    Target = "15XCsyFHpc0flD9UmQb4Q-q7srcGzOPRAnNHCBUGR3tY";
+    Sheet  = "832626602";
 
     Result = OPI_GoogleSheets.CopySheet(Token, From, Target, Sheet);
 ```

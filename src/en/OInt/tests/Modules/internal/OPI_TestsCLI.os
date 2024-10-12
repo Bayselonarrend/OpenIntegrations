@@ -4296,7 +4296,7 @@ Procedure CLI_GoogleDrive_UploadFile(FunctionParameters)
     Directory = FunctionParameters["GD_Catalog"];
 
     Options = New Structure;
-    Options.Insert("empty", True);
+    Options.Insert("empty", False);
 
     Description = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
     Description.Insert("Parent", Directory);
@@ -4304,7 +4304,7 @@ Procedure CLI_GoogleDrive_UploadFile(FunctionParameters)
     Options = New Structure;
     Options.Insert("token", Token);
     Options.Insert("file" , Image);
-    Options.Insert("props", Directory);
+    Options.Insert("props", Description);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);
 

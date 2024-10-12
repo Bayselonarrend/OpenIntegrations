@@ -25,9 +25,9 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612w6SWzMf3Ti1dSiFdgdLdXxLBjzKdXoLGuGDHoSXzb0uAKe5hJ-HPz1Njyp7HuHE6NnMnevQwbo0AR-yPAwfrA1OsMFZ_Fac2ASn...";
+    Токен         = "ya29.a0AcM612zmTq3HijDy5D8xu-llkoj4aTlkgkrZ4LGSZcpCOnX1Z6xu9IsTLXFZSJu8uVsYxHj0ih5glQrF0yWTomhAPTGm1M9Kk7ZvYIwpm...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "1rjQ1PytDjJVgTIkNK600sQEPGqHDIeWW";
+    Идентификатор = "1jUonZ73Ck_Wyv5FDpsBr7UVSwx1mt0dp";
     Файл          = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);

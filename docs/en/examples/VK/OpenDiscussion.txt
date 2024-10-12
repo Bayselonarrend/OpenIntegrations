@@ -1,3 +1,3 @@
 ﻿    Parameters   = GetVKParameters();
-    DiscussionID = "52591592";
+    DiscussionID = "52592925";
     Result       = OPI_VK.OpenDiscussion(DiscussionID, Parameters);
