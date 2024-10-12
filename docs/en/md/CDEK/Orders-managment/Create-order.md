@@ -117,5 +117,18 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/29923
 ```
 
 ```json title="Result"
-
+{
+ "entity": {
+  "uuid": "9aedf214-562a-45a2-982c-897b753a0ebd"
+ },
+ "requests": [
+  {
+   "request_uuid": "825e8d4d-e04d-404e-939b-e119ba58707a",
+   "type": "CREATE",
+   "date_time": "2024-10-12T19:31:14+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```

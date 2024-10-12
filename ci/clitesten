@@ -1149,6 +1149,10 @@ def test_gdrive(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe gdrive GetFileDescription --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe gdrive CreateComment --token "test" --object "test" --text "test" --debug --test '
                }
 

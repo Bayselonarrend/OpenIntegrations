@@ -48,5 +48,18 @@ This method is used if the direct order was delivered by CDEK and the recipient 
 ```
 
 ```json title="Result"
-
+{
+ "entity": {
+  "uuid": "9aedf214-562a-45a2-982c-897b753a0ebd"
+ },
+ "requests": [
+  {
+   "request_uuid": "12ae6a3a-b014-41df-a496-ae58ff5eccfe",
+   "type": "CREATE_CLIENT_RETURN",
+   "date_time": "2024-10-12T19:31:15+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```

@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612yqBU-Js-ZwvMX9kOgTqr1bzVlotSXxpjuDiy-VQFNrbVcJqWC-p_l2W_Ng_se_7j6PbCOWHu1waCLQEAilKYg3xb2Q18DG_cMfA...";
-    Identifier = "1U8hhtaSXcxZuojGLumLYODMBspUV501s";
-    CommentID  = "AAABRXT3-W4";
+    Token      = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
+    Identifier = "1rjQ1PytDjJVgTIkNK600sQEPGqHDIeWW";
+    CommentID  = "AAABRYFG8BM";
 
     Result = OPI_GoogleDrive.GetComment(Token, Identifier, CommentID);
 ```
