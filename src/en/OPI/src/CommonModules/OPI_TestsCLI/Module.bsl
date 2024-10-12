@@ -967,6 +967,39 @@ EndProcedure
 
 #EndRegion
 
+#Region Twitter
+
+Procedure CLI_TwitterAPI_AccountData() Export
+
+    TestParameters = New Structure;
+
+    CLI_Twitter_GetToken(TestParameters);
+    CLI_Twitter_GetAuthorizationLink(TestParameters);
+    CLI_Twitter_RefreshToken(TestParameters);
+
+EndProcedure
+
+Procedure CLI_TwitterAPI_Tweets() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GIF"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Video"   , TestParameters);
+
+
+    CLI_Twitter_CreateTextTweet(TestParameters);
+    CLI_Twitter_UploadAttachmentsArray(TestParameters);
+    CLI_Twitter_CreateVideoTweet(TestParameters);
+    CLI_Twitter_CreateImageTweet(TestParameters);
+    CLI_Twitter_CreateGifTweet(TestParameters);
+    CLI_Twitter_CreatePollTweet(TestParameters);
+    CLI_Twitter_CreateCustomTweet(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -4781,6 +4814,339 @@ Procedure CLI_GoogleSheets_ClearCells(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "ClearCells", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleCellCleanning(Result, CellsArray.Count());
+
+EndProcedure
+
+#EndRegion
+
+#Region Twitter
+
+Procedure CLI_Twitter_GetToken(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Code       = "123456";
+
+    Options = New Structure;
+    Options.Insert("code" , Code);
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Twitter");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Twitter_GetAuthorizationLink(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+
+    Options = New Structure;
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetAuthorizationLink", Options);
+
+    Result = GetStringFromBinaryData(Result);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAuthorizationLink", "Twitter");
+    OPI_TestDataRetrieval.Check_String(Result);
+
+    OPI_TestDataRetrieval.WriteParameter("Twitter_URL", Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Twitter_RefreshToken(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+
+    Options = New Structure;
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "RefreshToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RefreshToken", "Twitter");
+    OPI_TestDataRetrieval.Check_TwitterToken(Result);
+
+    Refresh = Result["refresh_token"];
+    Token   = Result["access_token"];
+
+    If ValueIsFilled(Refresh) And Not Refresh = "null" Then
+        OPI_TestDataRetrieval.WriteParameter("Twitter_Refresh", Refresh);
+    EndIf;
+
+    If ValueIsFilled(Token) And Not Token = "null" Then
+        OPI_TestDataRetrieval.WriteParameter("Twitter_Token" , Token);
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Twitter_CreateTextTweet(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("text" , Text);
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateTextTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateTextTweet", "Twitter");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Twitter_CreateImageTweet(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Image  = FunctionParameters["Picture"]; // URL, Binary or Path to file
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary or Path to file
+
+    ImageArray = New Array;
+    ImageArray.Add(Image);
+    ImageArray.Add(Image2);
+
+    Options = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("pictures", ImageArray);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
+
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet", "Twitter"); // SKIP
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15); // SKIP
+
+    Text = "TestTweet" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("pictures", Image);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet (single)");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15);
+
+    Image = OPI_Tools.Get(Image);
+
+    Text = "TestTweet" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("pictures", Image);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet (TFN)");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15);
+
+    OPI_Tools.Pause(20);
+
+EndProcedure
+
+Procedure CLI_Twitter_CreateVideoTweet(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Video  = FunctionParameters["Video"]; // URL, Binary or Path to file
+    Video2 = FunctionParameters["Video"]; // URL, Binary or Path to file
+
+    VideosArray = New Array;
+    VideosArray.Add(Video);
+    VideosArray.Add(Video2);
+
+    Options = New Structure;
+    Options.Insert("text"  , Text);
+    Options.Insert("videos", VideosArray);
+    Options.Insert("auth"  , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet", "Twitter"); // SKIP
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15); // SKIP
+
+    Text = "TestTweet" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("text"  , Text);
+    Options.Insert("videos", Video);
+    Options.Insert("auth"  , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet (single)");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15);
+
+    Video = OPI_Tools.Get(Video);
+
+    Text = "TestTweet" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("text"  , Text);
+    Options.Insert("videos", Video);
+    Options.Insert("auth"  , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet (TFN)");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15);
+
+    OPI_Tools.Pause(20);
+
+EndProcedure
+
+Procedure CLI_Twitter_CreateGifTweet(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    GIF  = FunctionParameters["GIF"]; // URL, Binary or Path to file
+    Gif2 = FunctionParameters["GIF"]; // URL, Binary or Path to file
+
+    GifsArray = New Array;
+    GifsArray.Add(GIF);
+    GifsArray.Add(Gif2);
+
+    Options = New Structure;
+    Options.Insert("text", Text);
+    Options.Insert("gifs", GifsArray);
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet", "Twitter"); // SKIP
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text); // SKIP
+    OPI_Tools.Pause(15); // SKIP
+
+    Text = "TestTweet" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("text", Text);
+    Options.Insert("gifs", GIF);
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet (single)");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15);
+
+    GIF = OPI_Tools.Get(GIF);
+
+    Text = "TestTweet" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("text", Text);
+    Options.Insert("gifs", GIF);
+    Options.Insert("auth", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet (TFN)");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+    OPI_Tools.Pause(15);
+
+    OPI_Tools.Pause(20);
+
+EndProcedure
+
+Procedure CLI_Twitter_CreatePollTweet(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    AnswersArray = New Array;
+    AnswersArray.Add("Option 1");
+    AnswersArray.Add("Option 2");
+
+    Options = New Structure;
+    Options.Insert("text"    , Text);
+    Options.Insert("options" , AnswersArray);
+    Options.Insert("duration", 60);
+    Options.Insert("auth"    , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreatePollTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePollTweet", "Twitter");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+
+    OPI_Tools.Pause(20);
+
+EndProcedure
+
+Procedure CLI_Twitter_CreateCustomTweet(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+    Text       = "TestTweet" + String(New UUID);
+
+    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+
+    ImageArray = New Array();
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    Options = New Structure;
+    Options.Insert("files", ImageArray);
+    Options.Insert("type" , "tweet_image");
+    Options.Insert("auth" , Parameters);
+
+    MediaArray = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);
+
+    Options = New Structure;
+    Options.Insert("text"  , Text);
+    Options.Insert("media" , MediaArray);
+    Options.Insert("auth"  , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateCustomTweet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCustomTweet", "Twitter");
+    OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
+
+    OPI_Tools.Pause(20);
+
+EndProcedure
+
+Procedure CLI_Twitter_UploadAttachmentsArray(FunctionParameters)
+
+    Parameters = GetTwitterAuthData();
+
+    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+
+    ImageArray = New Array();
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    Options = New Structure;
+    Options.Insert("files", ImageArray);
+    Options.Insert("type" , "tweet_image");
+    Options.Insert("auth" , Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadAttachmentsArray", "Twitter");
+    OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
 

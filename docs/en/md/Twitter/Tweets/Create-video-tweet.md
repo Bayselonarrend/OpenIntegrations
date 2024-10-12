@@ -13,7 +13,7 @@ sidebar_position: 5
   |-|-|-|-|
   | Text | --text | String | Tweet text |
   | VideosArray | --videos | Array of String, BinaryData | Video files array |
-  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
+  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter

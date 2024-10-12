@@ -15,7 +15,7 @@ sidebar_position: 1
   | MediaArray | --media | Array of String, BinaryData | Array of binary data or file paths |
   | PollOptionsArray | --options | Array of String | Array of poll options, if necessary |
   | PollDuration | --dur | String, Number | Poll duration if necessary (poll without duration is not created) |
-  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
+  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter
@@ -36,7 +36,7 @@ sidebar_position: 1
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    MediaArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    MediaArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
     Result     = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);
 ```
 
