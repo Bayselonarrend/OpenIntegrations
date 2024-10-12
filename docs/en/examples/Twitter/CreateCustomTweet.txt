@@ -8,5 +8,5 @@
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    MediaArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "photo", Parameters);
+    MediaArray = OPI_Twitter.UploadAttachmentsArray(ImageArray, "tweet_image", Parameters);
     Result     = OPI_Twitter.CreateCustomTweet(Text, MediaArray, , , Parameters);

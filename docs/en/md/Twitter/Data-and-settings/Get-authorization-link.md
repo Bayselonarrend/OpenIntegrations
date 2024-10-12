@@ -11,7 +11,7 @@ sidebar_position: 1
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
-  | Parameters | --auth | Structure Of String | Auth data or path to .json file |
+  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
 
   
   Returns:  String - URL for browser transition
