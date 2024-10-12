@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Токен         = "ya29.a0AcM612y5AI1OiRmaNZZdcZkEXR0hzPPvvmrHwVvQ_wKT0Lo35AFd6j6lHZWalv-zxiYHKQUWkU1GRjCf4Lo9uQwygnC9xAOZKaOORjGI3...";
     Идентификатор = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Результат   = OPI_GoogleDrive.ПолучитьИнформациюОбОбъекте(Токен, Идентификатор);

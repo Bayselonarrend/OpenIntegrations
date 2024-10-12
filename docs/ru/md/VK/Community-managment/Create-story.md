@@ -27,7 +27,7 @@ sidebar_position: 7
     Параметры = ПолучитьПараметрыВК();
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка  = "https://openyellow.neocities.org/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
     Картинка  = Новый ДвоичныеДанные(ИВФ);

@@ -1,7 +1,7 @@
 ﻿    Параметры = ПолучитьПараметрыВК();
 
     Название = "Тестовая подборка";
-    Картинка = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
     Основная = Истина;
     Скрытая  = Ложь;
 

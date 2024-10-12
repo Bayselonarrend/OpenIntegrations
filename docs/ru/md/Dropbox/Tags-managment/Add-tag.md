@@ -25,7 +25,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Тег       = "Важное";
-    Токен     = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
+    Токен     = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
     Путь      = "/New/mydoc.docx";
 
     Результат = OPI_Dropbox.ДобавитьТег(Токен, Путь, Тег);

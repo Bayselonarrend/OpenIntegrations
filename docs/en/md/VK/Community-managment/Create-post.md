@@ -30,8 +30,8 @@ sidebar_position: 1
     Text       = "Post from autotest";
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image  = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Path or Binary Data
-    Image2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Path or Binary Data
+    Image  = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Path or Binary Data
 
     TFN = GetTempFileName("png");
     CopyFile(Image2, TFN);

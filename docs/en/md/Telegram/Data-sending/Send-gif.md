@@ -34,7 +34,7 @@ Method at API documentation: [sendAnimation](https://core.telegram.org/bots/api#
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    GIF       = "https://openyellow.neocities.org/test_data/animation.gif";
+    GIF       = "https://api.athenaeum.digital/test_data/animation.gif";
 
     GifPath = GetTempFileName("gif");
     CopyFile(GIF, GifPath);

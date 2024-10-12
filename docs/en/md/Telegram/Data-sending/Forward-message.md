@@ -31,7 +31,7 @@ Method at API documentation: [forwardMessage](https://core.telegram.org/bots/api
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
     ChannelID = "@testsichee";
-    MessageID = "9280";
+    MessageID = "9629";
 
     Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);
 ```

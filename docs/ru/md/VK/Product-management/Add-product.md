@@ -26,9 +26,9 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
-    Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
-    Подборка  = "125";
+    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
+    Подборка  = "130";
 
     МассивКартинок = Новый Массив;
     МассивКартинок.Добавить(Картинка1);

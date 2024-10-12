@@ -30,7 +30,7 @@ sidebar_position: 4
     Parameters = GetVKParameters();
 
     Name      = "EditedCollection";
-    Selection = "125";
+    Selection = "130";
 
     Result = OPI_VK.EditProductCollection(Name, Selection, , , , Parameters);
 

@@ -1,9 +1,9 @@
 ﻿    Parameters = GetVKParameters();
 
-    Image1       = "https://openyellow.neocities.org/test_data/picture.jpg";
-    Image2       = "https://openyellow.neocities.org/test_data/picture2.jpg";
-    PropVariant1 = "2522";
-    PropVariant2 = "2523";
+    Image1       = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image2       = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    PropVariant1 = "2584";
+    PropVariant2 = "2585";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

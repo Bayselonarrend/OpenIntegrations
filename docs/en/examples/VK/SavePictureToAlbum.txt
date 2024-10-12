@@ -1,8 +1,8 @@
 ﻿    Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
-    AlbumID          = "305998972";
+    AlbumID          = "306086363";
 
-    Image = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Path to file or Binary Data
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path to file or Binary Data
     TFN   = GetTempFileName("png");
     CopyFile(Image, TFN);
 

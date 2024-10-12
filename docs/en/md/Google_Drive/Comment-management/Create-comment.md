@@ -24,8 +24,8 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
-    Identifier = "1f-YrvMCEZ7r3JWlLGM39zn6dctvFjwCi";
+    Token      = "ya29.a0AcM612y5AI1OiRmaNZZdcZkEXR0hzPPvvmrHwVvQ_wKT0Lo35AFd6j6lHZWalv-zxiYHKQUWkU1GRjCf4Lo9uQwygnC9xAOZKaOORjGI3...";
+    Identifier = "1U8hhtaSXcxZuojGLumLYODMBspUV501s";
     Comment    = "Comment text";
 
     Result = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);

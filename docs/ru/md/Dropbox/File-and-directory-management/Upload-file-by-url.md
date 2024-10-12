@@ -25,8 +25,8 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     Путь  = "/New/url_doc.docx";
-    Токен = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
-    URL   = "https://openyellow.neocities.org/test_data/document.docx";
+    Токен = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
+    URL   = "https://api.athenaeum.digital/test_data/document.docx";
 
     Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
 ```

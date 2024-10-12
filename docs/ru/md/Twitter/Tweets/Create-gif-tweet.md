@@ -27,8 +27,8 @@ sidebar_position: 4
     Параметры = ПолучитьПараметрыАвторизацииТвиттер();
     Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
 
-    Гифка   = "https://openyellow.neocities.org/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
-    Гифка2  = "https://openyellow.neocities.org/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
+    Гифка   = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
+    Гифка2  = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
 
     МассивГифок = Новый Массив;
     МассивГифок.Добавить(Гифка);

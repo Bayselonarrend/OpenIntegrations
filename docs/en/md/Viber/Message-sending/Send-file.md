@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Extension = "docx";
-    URL       = "https://openyellow.neocities.org/test_data/document.docx";
+    URL       = "https://api.athenaeum.digital/test_data/document.docx";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
     Token            = "523b5b25ed27e6ec-fdf013e4...";

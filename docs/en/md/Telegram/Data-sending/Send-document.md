@@ -35,7 +35,7 @@ Method at API documentation: [sendDocument](https://core.telegram.org/bots/api#s
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Document  = "https://openyellow.neocities.org/test_data/document.docx";
+    Document  = "https://api.athenaeum.digital/test_data/document.docx";
 
     DocumentPath = GetTempFileName("docx");
     CopyFile(Document, DocumentPath);

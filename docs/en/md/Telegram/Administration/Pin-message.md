@@ -29,7 +29,7 @@ Method at API documentation: [pinChatMessage](https://core.telegram.org/bots/api
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
-    MessageID = "9280";
+    MessageID = "9629";
 
     Result = OPI_Telegram.PinMessage(Token, ChannelID, MessageID);
 ```

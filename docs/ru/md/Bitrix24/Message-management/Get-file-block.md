@@ -27,7 +27,7 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     Наименование = "Картинка";
-    URL          = "https://openyellow.neocities.org/test_data/document.docx";
+    URL          = "https://api.athenaeum.digital/test_data/document.docx";
 
     Результат = OPI_Bitrix24.ПолучитьБлокФайла(Наименование, URL);
 ```
