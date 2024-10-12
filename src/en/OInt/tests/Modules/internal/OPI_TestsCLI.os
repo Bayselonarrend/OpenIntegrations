@@ -864,6 +864,109 @@ EndProcedure
 
 #EndRegion
 
+#Region GoogleDrive
+
+Procedure CLI_GD_GetCatalogList() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+
+    CLI_GoogleDrive_GetDirectoriesList(TestParameters);
+    CLI_GoogleDrive_GetObjectInformation(TestParameters);
+
+EndProcedure
+
+Procedure CLI_GD_UploadDeleteFile() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"    , TestParameters);
+
+    TestParameters.Insert("ArrayOfDeletions", New Array);
+
+    CLI_GoogleDrive_UploadFile(TestParameters);
+    CLI_GoogleDrive_CopyObject(TestParameters);
+    CLI_GoogleDrive_DownloadFile(TestParameters);
+    CLI_GoogleDrive_UpdateFile(TestParameters);
+    CLI_GoogleDrive_GetFilesList(TestParameters);
+    CLI_GoogleDrive_DeleteObject(TestParameters);
+    CLI_GoogleDrive_GetFileDescription(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GD_CreateDeleteComment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"     , TestParameters);
+
+    TestParameters.Insert("ArrayOfDeletions", New Array);
+
+    CLI_GoogleDrive_UploadFile(TestParameters);
+
+    CLI_GoogleDrive_CreateComment(TestParameters);
+    CLI_GoogleDrive_GetComment(TestParameters);
+    CLI_GoogleDrive_GetCommentList(TestParameters);
+    CLI_GoogleDrive_DeleteComment(TestParameters);
+
+    CLI_GoogleDrive_DeleteObject(TestParameters);
+
+EndProcedure
+
+Procedure CLI_GD_CreateCatalog() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GD_Catalog"  , TestParameters);
+
+    CLI_GoogleDrive_CreateFolder(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleSheets
+
+Procedure CLI_GT_CreateTable() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+
+    CLI_GoogleSheets_CreateSpreadsheet(TestParameters);
+    CLI_GoogleSheets_GetSpreadsheet(TestParameters);
+    CLI_GoogleSheets_CopySheet(TestParameters);
+    CLI_GoogleSheets_AddSheet(TestParameters);
+    CLI_GoogleSheets_DeleteSheet(TestParameters);
+    CLI_GoogleSheets_EditSpreadsheetTitle(TestParameters);
+    CLI_GoogleSheets_GetTable(TestParameters);
+
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet"]);
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet2"]);
+
+EndProcedure
+
+Procedure CLI_GT_FillClearCells() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token" , TestParameters);
+
+    CLI_GoogleSheets_CreateSpreadsheet(TestParameters);
+    CLI_GoogleSheets_SetCellValues(TestParameters);
+    CLI_GoogleSheets_GetCellValues(TestParameters);
+    CLI_GoogleSheets_ClearCells(TestParameters);
+
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet"]);
+    OPI_GoogleDrive.DeleteObject(TestParameters["Google_Token"], TestParameters["GS_Spreadsheet2"]);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -4103,6 +4206,581 @@ Procedure CLI_GoogleCalendar_GetEventDescription(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "GetEventDescription", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleDrive
+
+Procedure CLI_GoogleDrive_GetDirectoriesList(FunctionParameters)
+
+    Name  = "TestFolder";
+    Token = FunctionParameters["Google_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("querry", Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetDirectoriesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDirectoriesList", "GoogleDrive");
+
+    Result = Result[0];
+
+    OPI_TestDataRetrieval.Check_GoogleCatalogs(Result);
+
+    Identifier = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("GD_Catalog", Identifier);
+    OPI_Tools.AddField("GD_Catalog", Identifier, "String", FunctionParameters);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_GetObjectInformation(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_Catalog"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("object", Identifier);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetObjectInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInformation", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_UploadFile(FunctionParameters)
+
+    Token     = FunctionParameters["Google_Token"];
+    Image     = FunctionParameters["Picture"];
+    Directory = FunctionParameters["GD_Catalog"];
+
+    Options = New Structure;
+    Options.Insert("empty", True);
+
+    Description = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
+    Description.Insert("Parent", Directory);
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("file" , Image);
+    Options.Insert("props", Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
+
+    Identifier = Result["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("GD_File", Identifier);
+    OPI_Tools.AddField("GD_File", Identifier, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_CopyObject(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    NewName    = "CopiedFile.jpeg";
+    NewParent  = "root";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+    Options.Insert("title"  , NewName);
+    Options.Insert("catalog", NewParent);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CopyObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "GoogleDrive");
+
+    Description = New Structure("Name,MIME", NewName, "image/jpeg");
+    OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
+
+    Identifier = Result["id"];
+
+    ArrayOfDeletions = FunctionParameters["ArrayOfDeletions"];
+    ArrayOfDeletions.Add(Identifier);
+    FunctionParameters.Insert("ArrayOfDeletions", ArrayOfDeletions);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_DownloadFile(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DownloadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "GoogleDrive");
+
+    Size       = OPI_Tools.Get(FunctionParameters["Picture"]).Size();
+    ExtraBytes = 2;
+
+    OPI_TestDataRetrieval.Check_BinaryData(Result, Size + ExtraBytes);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_UpdateFile(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    NewName    = "UpdatedFile.jpg";
+    Identifier = FunctionParameters["GD_File"];
+    File       = FunctionParameters["Picture2"]; // URL, Binary Data or Path to file
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+    Options.Insert("file"   , File);
+    Options.Insert("title"  , NewName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UpdateFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateFile", "GoogleDrive");
+
+    Description = New Structure("Name,MIME", NewName, "image/jpeg");
+    OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_GetFilesList(FunctionParameters)
+
+    Token        = FunctionParameters["Google_Token"];
+    Directory    = "root";
+    NameContains = "data";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("querry" , NameContains);
+    Options.Insert("catalog", Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFilesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_DeleteObject(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DeleteObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    For Each Deletable In FunctionParameters["ArrayOfDeletions"] Do
+
+        Result = OPI_GoogleDrive.DeleteObject(Token, Deletable);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject");
+
+        OPI_TestDataRetrieval.Check_Empty(Result);
+        OPI_Tools.Pause(2);
+
+    EndDo;
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_GetFileDescription(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileDescription", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_CreateComment(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    Comment    = "Comment text";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+    Options.Insert("text"   , Comment);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleComment(Result, Comment);
+
+    Identifier = Result["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("GD_Comment", Identifier);
+    OPI_Tools.AddField("GD_Comment", Identifier, "String", FunctionParameters);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_GetComment(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    CommentID  = FunctionParameters["GD_Comment"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetComment", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleComment(Result, "Comment text");
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_GetCommentList(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetCommentList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCommentList", "GoogleDrive");
+
+    Comments      = Result["comments"];
+    CommentObject = Comments[Comments.UBound()];
+
+    OPI_TestDataRetrieval.Check_GoogleComment(CommentObject, "Comment text");
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_DeleteComment(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    CommentID  = FunctionParameters["GD_Comment"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("object" , Identifier);
+    Options.Insert("comment", CommentID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DeleteComment", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleDrive_CreateFolder(FunctionParameters)
+
+    Token     = FunctionParameters["Google_Token"];
+    Directory = FunctionParameters["GD_Catalog"];
+    Name      = "TestFolder";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("title"  , Name);
+    Options.Insert("catalog", Directory);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "GoogleDrive");
+    OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
+
+    CatalogID = Result["id"];
+    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("title" , Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder (root)");
+    OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
+
+    CatalogID = Result["id"];
+    OPI_GoogleDrive.DeleteObject(Token, CatalogID);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleSheets
+
+Procedure CLI_GoogleSheets_CreateSpreadsheet(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+    Name  = "TestTable";
+
+    SheetArray = New Array;
+    SheetArray.Add("Sheet1");
+    SheetArray.Add("Sheet2");
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("title" , Name);
+    Options.Insert("sheets", SheetArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CreateSpreadsheet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSpreadsheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheet(Result, Name, SheetArray);
+
+    Spreadsheet = Result["spreadsheetId"];
+    Sheet       = Result["sheets"][0]["properties"]["sheetId"];
+    Sheet       = OPI_Tools.NumberToString(Sheet);
+
+    OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet", Spreadsheet);
+    OPI_TestDataRetrieval.WriteParameter("GS_Sheet"      , Sheet);
+
+    OPI_Tools.AddField("GS_Spreadsheet", Spreadsheet, "String", FunctionParameters);
+    OPI_Tools.AddField("GS_Sheet"      , Sheet      , "String", FunctionParameters);
+
+    Name = "Test table (new.)";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("title" , Name);
+    Options.Insert("sheets", SheetArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CreateSpreadsheet", Options);
+
+    Spreadsheet = Result["spreadsheetId"];
+
+    OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet2", Spreadsheet);
+    OPI_Tools.AddField("GS_Spreadsheet2", Spreadsheet, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_GetSpreadsheet(FunctionParameters)
+
+    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GS_Spreadsheet"];
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Identifier);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetSpreadsheet", Options);
+
+    Name = "TestTable";
+
+    SheetArray = New Array;
+    SheetArray.Add("Sheet1");
+    SheetArray.Add("Sheet2");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateSpreadsheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheet(Result, Name, SheetArray);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_CopySheet(FunctionParameters)
+
+    Token  = FunctionParameters["Google_Token"];
+    From   = FunctionParameters["GS_Spreadsheet"];
+    Target = FunctionParameters["GS_Spreadsheet2"];
+    Sheet  = FunctionParameters["GS_Sheet"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("from" , From);
+    Options.Insert("to"   , Target);
+    Options.Insert("sheet", Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CopySheet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopySheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSheet(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_AddSheet(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Name        = "TestSheet";
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("title"      , Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "AddSheet", Options);
+
+    NewSheet = Result["replies"][0]["addSheet"]["properties"];
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddSheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSheet(NewSheet);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_DeleteSheet(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = FunctionParameters["GS_Sheet"];
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("sheet"      , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "DeleteSheet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSheet", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_EditSpreadsheetTitle(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Name        = "Test table (changed.)";
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("title"      , Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "EditSpreadsheetTitle", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditSpreadsheetTitle", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_GetTable(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetSpreadsheet", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTable", "GoogleSheets");
+
+    Name = "Test table (changed.)";
+    OPI_TestDataRetrieval.Check_GoogleSheetTitle(Result, Name);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_SetCellValues(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = "Sheet2";
+
+    ValueMapping = New Map;
+    ValueMapping.Insert("A1", "ThisIsA1");
+    ValueMapping.Insert("A2", "ThisIsA2");
+    ValueMapping.Insert("B2", "ThisIsB2");
+    ValueMapping.Insert("B3", "ThisIsB3");
+    ValueMapping.Insert("A3", "ThisIsA3");
+    ValueMapping.Insert("A4", "ThisIsA4");
+    ValueMapping.Insert("B1", "ThisIsB1");
+    ValueMapping.Insert("B4", "ThisIsB4");
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("data"       , ValueMapping);
+    Options.Insert("sheetname"  , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "SetCellValues", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetCellValues", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleCellUpdating(Result, ValueMapping.Count());
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_GetCellValues(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = "Sheet2";
+
+    CellsArray = New Array;
+    CellsArray.Add("B2");
+    CellsArray.Add("A3");
+    CellsArray.Add("B4");
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("cells"      , CellsArray);
+    Options.Insert("sheetname"  , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleCellValues(Result, CellsArray.Count());
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("sheetname"  , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues (all)");
+    OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
+
+EndProcedure
+
+Procedure CLI_GoogleSheets_ClearCells(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Spreadsheet = FunctionParameters["GS_Spreadsheet"];
+    Sheet       = "Sheet2";
+
+    CellsArray = New Array;
+    CellsArray.Add("B2");
+    CellsArray.Add("A3");
+    CellsArray.Add("B4");
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("spreadsheet", Spreadsheet);
+    Options.Insert("cells"      , CellsArray);
+    Options.Insert("sheetname"  , Sheet);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "ClearCells", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearCells", "GoogleSheets");
+    OPI_TestDataRetrieval.Check_GoogleCellCleanning(Result, CellsArray.Count());
 
 EndProcedure
 
