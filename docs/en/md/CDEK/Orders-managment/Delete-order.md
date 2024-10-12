@@ -42,5 +42,18 @@ Method at API documentation: [Deleting an order](https://api-docs.cdek.ru/299244
 ```
 
 ```json title="Result"
-
+{
+ "entity": {
+  "uuid": "9aedf214-562a-45a2-982c-897b753a0ebd"
+ },
+ "requests": [
+  {
+   "request_uuid": "0112f5e9-36db-4146-ac65-ae0f6e67b488",
+   "type": "DELETE",
+   "date_time": "2024-10-12T19:31:15+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```
