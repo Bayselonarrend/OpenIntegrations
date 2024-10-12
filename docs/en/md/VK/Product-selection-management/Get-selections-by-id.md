@@ -24,7 +24,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    Selection  = "130";
+    Selection  = "133";
 
     Result = OPI_VK.GetSelectionsByID(Selection, Parameters);
 ```

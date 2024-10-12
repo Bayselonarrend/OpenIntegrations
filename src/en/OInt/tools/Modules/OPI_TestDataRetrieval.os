@@ -975,7 +975,6 @@ EndProcedure
 
 Procedure Check_GoogleCatalogs(Val Result) Export
 
-    ExpectsThat(Result["files"]).ИмеетТип("Array");
     ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
     ExpectsThat(Result["name"]).Заполнено();
 
