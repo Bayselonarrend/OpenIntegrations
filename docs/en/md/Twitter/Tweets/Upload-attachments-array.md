@@ -40,7 +40,7 @@ sidebar_position: 7
 
 ```sh title="CLI command example"
     
-oint twitter UploadAttachmentsArray --files %files% --type %type% --auth %auth%
+  oint twitter UploadAttachmentsArray --files %files% --type %type% --auth %auth%
 
 ```
 
