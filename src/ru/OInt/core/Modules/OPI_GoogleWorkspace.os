@@ -1,7 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GoogleWorkspace.os
 // Lib: Google Workspace
 // CLI: google
-
+ 
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
