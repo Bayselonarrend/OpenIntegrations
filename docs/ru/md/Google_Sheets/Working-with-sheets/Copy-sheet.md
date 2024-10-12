@@ -25,10 +25,10 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612yqBU-Js-ZwvMX9kOgTqr1bzVlotSXxpjuDiy-VQFNrbVcJqWC-p_l2W_Ng_se_7j6PbCOWHu1waCLQEAilKYg3xb2Q18DG_cMfA...";
-    Откуда = "1MxBM0eQ7Vr74F5KqaeAQspPH3oViXUHbl3kDa451cdA";
-    Куда   = "1KrDW917ri-VT9BAnejvb0ysLjEEWyMSQ04bvNJjKM0o";
-    Лист   = "326904167";
+    Токен  = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
+    Откуда = "187aOtcDnHwx1wmHhU-QuGHMWyqZptBif9IVa_tBanNk";
+    Куда   = "1B7pKSbGt8_dD-LOkI1VAJEiKdv3LNYJ7yYLXADK4Rb0";
+    Лист   = "1651217167";
 
     Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист);
 ```

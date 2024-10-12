@@ -300,17 +300,27 @@ Function DeleteObject(Val Token, Val Identifier) Export
 
 EndFunction
 
-// Get file description !NOCLI
+// Get file description
+// Gets a blank description template for uploading a file
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
 // Map Of KeyAndValue - File description
-Function GetFileDescription() Export
+Function GetFileDescription(Val Clear = False) Export
 
     Description = New Map;
     Description.Insert("MIME"        , "image/jpeg"); // MIME-type uploading file
     Description.Insert("Name"        , "New file.jpg"); // File name with extension
     Description.Insert("Description" , "This is a new file"); // File description
     Description.Insert("Parent"      , "root"); // ID directory upload or "root" for upload in root
+
+    If Clear Then
+        For Each Field In Description Do
+            Description.Insert(Field.Key, "");
+        EndDo;
+    EndIf;
 
     Return Description;
 
