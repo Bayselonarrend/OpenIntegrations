@@ -48,5 +48,18 @@ sidebar_position: 6
 ```
 
 ```json title="Результат"
-
+{
+ "entity": {
+  "uuid": "0c6b403d-000a-4d64-a282-798607b5e01f"
+ },
+ "requests": [
+  {
+   "request_uuid": "208237e4-76ef-4d3e-84b5-f6009d0af12d",
+   "type": "CREATE_CLIENT_RETURN",
+   "date_time": "2024-10-12T17:43:55+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```

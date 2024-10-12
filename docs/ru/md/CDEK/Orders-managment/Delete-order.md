@@ -42,5 +42,18 @@ sidebar_position: 3
 ```
 
 ```json title="Результат"
-
+{
+ "entity": {
+  "uuid": "0c6b403d-000a-4d64-a282-798607b5e01f"
+ },
+ "requests": [
+  {
+   "request_uuid": "b3fbf492-88b0-4cfe-8537-5958cfe0589d",
+   "type": "DELETE",
+   "date_time": "2024-10-12T17:43:55+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```

@@ -1079,6 +1079,10 @@ def test_gcalendar(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe gcalendar GetEventDescription --empty "test" --debug --test '
+               }
+
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 					powershell encoding: 'UTF-8', script:'./oint.exe gcalendar GetEventList --token "test" --calendar "test" --debug --test '
                }
 
