@@ -296,9 +296,9 @@ EndFunction
 
 Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
 
-    Break = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
+    LineBreak = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
 
-    JSONParameters = New JSONWriterSettings(Break
+    JSONParameters = New JSONWriterSettings(LineBreak
         , " "
         , DoubleQuotes
         , JSONCharactersEscapeMode[Escaping]
