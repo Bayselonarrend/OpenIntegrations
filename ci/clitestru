@@ -1844,6 +1844,10 @@ def test_twitter(){
 					powershell encoding: 'UTF-8', script:'./oint.exe twitter СоздатьТвитОпрос --text "test" --options "test" --duration "test" --auth "test" --debug --test '
                }
 
+               catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+					powershell encoding: 'UTF-8', script:'./oint.exe twitter ЗагрузитьМассивВложений --files "test" --type "test" --auth "test" --debug --test '
+               }
+
 }
 
 

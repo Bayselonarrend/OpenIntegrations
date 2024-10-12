@@ -16,7 +16,7 @@
     NewLine.Метод       = "GetAuthorizationLink";
     NewLine.МетодПоиска = "GETAUTHORIZATIONLINK";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Data and settings";
     NewLine.ОписаниеМетода   = "Forms a link for authorization via the browser
     |    Data structure for option --auth:
@@ -64,7 +64,7 @@
     NewLine.Метод       = "GetToken";
     NewLine.МетодПоиска = "GETTOKEN";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Data and settings";
 
 
@@ -74,7 +74,7 @@
     NewLine.Метод       = "RefreshToken";
     NewLine.МетодПоиска = "REFRESHTOKEN";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Data and settings";
     NewLine.ОписаниеМетода   = "Updates the v2 token using the refresh_token
     |    Data structure for option --auth:
@@ -152,7 +152,7 @@
     NewLine.Метод       = "CreateCustomTweet";
     NewLine.МетодПоиска = "CREATECUSTOMTWEET";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Tweets";
 
 
@@ -186,7 +186,7 @@
     NewLine.Метод       = "CreateTextTweet";
     NewLine.МетодПоиска = "CREATETEXTTWEET";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Tweets";
 
 
@@ -230,7 +230,7 @@
     NewLine.Метод       = "CreateImageTweet";
     NewLine.МетодПоиска = "CREATEIMAGETWEET";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Tweets";
 
 
@@ -274,7 +274,7 @@
     NewLine.Метод       = "CreateGifTweet";
     NewLine.МетодПоиска = "CREATEGIFTWEET";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Tweets";
 
 
@@ -318,7 +318,7 @@
     NewLine.Метод       = "CreateVideoTweet";
     NewLine.МетодПоиска = "CREATEVIDEOTWEET";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Tweets";
 
 
@@ -372,7 +372,51 @@
     NewLine.Метод       = "CreatePollTweet";
     NewLine.МетодПоиска = "CREATEPOLLTWEET";
     NewLine.Параметр    = "--auth";
-    NewLine.Описание    = "Auth data or path to .json file (optional, def. val. - Empty value)";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Область     = "Tweets";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "UploadAttachmentsArray";
+    NewLine.МетодПоиска = "UPLOADATTACHMENTSARRAY";
+    NewLine.Параметр    = "--files";
+    NewLine.Описание    = "Array of files to be uploaded";
+    NewLine.Область     = "Tweets";
+    NewLine.ОписаниеМетода   = "Uploads files to the server and returns their IDs
+    |    Data structure for option --auth:
+    |    {
+    |     ""redirect_uri"": """",  
+    |     ""client_id"": """",  
+    |     ""client_secret"": """",  
+    |     ""access_token"": """",  
+    |     ""refresh_token"": """",  
+    |     ""oauth_token"": """",  
+    |     ""oauth_token_secret"": """",  
+    |     ""oauth_consumer_key"": """", 
+    |     ""oauth_consumer_secret"": """"  
+    |    }
+    |";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "UploadAttachmentsArray";
+    NewLine.МетодПоиска = "UPLOADATTACHMENTSARRAY";
+    NewLine.Параметр    = "--type";
+    NewLine.Описание    = "Attachment type: tweet_video, tweet_image, tweet_gif";
+    NewLine.Область     = "Tweets";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "twitter";
+    NewLine.Модуль      = "OPI_Twitter";
+    NewLine.Метод       = "UploadAttachmentsArray";
+    NewLine.МетодПоиска = "UPLOADATTACHMENTSARRAY";
+    NewLine.Параметр    = "--auth";
+    NewLine.Описание    = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
     NewLine.Область     = "Tweets";
 
     Return CompositionTable;

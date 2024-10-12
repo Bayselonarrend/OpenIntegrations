@@ -50,7 +50,7 @@
 // Forms a link for authorization via the browser
 //
 // Parameters:
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // String - URL for browser transition
@@ -80,7 +80,7 @@ EndFunction
 //
 // Parameters:
 // Code - String - Code obtained from authorization See GetAuthorizationLink - code
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -108,7 +108,7 @@ EndFunction
 // Updates the v2 token using the refresh_token
 //
 // Parameters:
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -166,7 +166,7 @@ EndFunction
 // MediaArray - Array of String, BinaryData - Array of binary data or file paths - media
 // PollOptionsArray - Array of String - Array of poll options, if necessary - options
 // PollDuration - String, Number - Poll duration if necessary (poll without duration is not created) - dur
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -232,7 +232,7 @@ EndFunction
 //
 // Parameters:
 // Text - String - Tweet text - text
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -246,7 +246,7 @@ EndFunction
 // Parameters:
 // Text - String - Tweet text - text
 // ImageArray - Array of String, BinaryData - Image files array - pictures
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -263,7 +263,7 @@ EndFunction
 // Parameters:
 // Text - String - Tweet text - text
 // GifsArray - Array of String, BinaryData - Gif files array - gifs
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -280,7 +280,7 @@ EndFunction
 // Parameters:
 // Text - String - Tweet text - text
 // VideosArray - Array of String, BinaryData - Video files array - videos
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -298,7 +298,7 @@ EndFunction
 // Text - String - Tweet text - text
 // OptionArray - Array of String - Poll options array - options
 // Duration - String, Number - Poll duration - duration
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Twitter
@@ -308,13 +308,13 @@ Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters
 
 EndFunction
 
-// Upload attachments array !NOCLI
+// Upload attachments array
 // Uploads files to the server and returns their IDs
 //
 // Parameters:
-// ArrayOfFiles - Array of String, BinaryData - Files array
-// AttachmentsType - String - Attachments type
-// Parameters - Structure Of String - See GetStandardParameters - auth - Auth data or path to .json file
+// ArrayOfFiles - Array of String, BinaryData - Array of files to be uploaded - files
+// AttachmentsType - String - Attachment type: tweet_video, tweet_image, tweet_gif - type
+// Parameters - Structure Of String - Authorization data. See GetStandardParameters - auth
 //
 // Returns:
 // Array Of String - Media ID array
