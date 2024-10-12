@@ -26,7 +26,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен  = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL    = "https://yadi.sk/d/G1N7b_F-m8lH_g";
+    URL    = "https://yadi.sk/d/XKTChBth2LcJDw";
 
     Результат   = OPI_YandexDisk.ПолучитьПубличныйОбъект(Токен, URL);
 ```
