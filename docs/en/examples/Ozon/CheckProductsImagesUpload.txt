@@ -1,5 +1,5 @@
 ﻿    ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1202180384";
+    ProductID = "1220696576";
 
     Result = OPI_Ozon.CheckProductsImagesUpload(ClientID, APIKey, ProductID);

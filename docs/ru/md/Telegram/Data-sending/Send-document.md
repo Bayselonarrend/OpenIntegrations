@@ -35,7 +35,7 @@ sidebar_position: 5
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Документ = "https://openyellow.neocities.org/test_data/document.docx";
+    Документ = "https://api.athenaeum.digital/test_data/document.docx";
 
     ДокументПуть = ПолучитьИмяВременногоФайла("docx");
     КопироватьФайл(Документ, ДокументПуть);

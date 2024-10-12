@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Картинка  = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     Результат = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
 ```

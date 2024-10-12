@@ -27,7 +27,7 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base  = "11282aa7-fc4e-810b-ab77-cef5a2a3443e";
+    Base  = "11d82aa7-fc4e-8164-a78a-d4f750eb6066";
 
     Title       = "TestTitle";
     Description = "TestDescription";

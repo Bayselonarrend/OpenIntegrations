@@ -294,11 +294,13 @@ Function JsonToStructure(Val Text) Export
 
 EndFunction
 
-Function JSONString(Val Data, Val Escaping = "None") Export
+Function JSONString(Val Data, Val Escaping = "None", Val LineBreaks = True, Val DoubleQuotes = True) Export
 
-    JSONParameters = New JSONWriterSettings(JSONLineBreak.Windows
+    Break = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
+
+    JSONParameters = New JSONWriterSettings(Break
         , " "
-        , True
+        , DoubleQuotes
         , JSONCharactersEscapeMode[Escaping]
         , False
         , False

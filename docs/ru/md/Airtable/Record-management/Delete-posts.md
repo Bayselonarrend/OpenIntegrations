@@ -26,9 +26,9 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "app9bSgL4YtTVGTlE";
-    Таблица     = "tblDUGAZFZaeOwE6x";
-    Запись      = "recydoiybO8id17n5";
+    База        = "app7wcH961p8fBBRH";
+    Таблица     = "tblSwEBXQOQHSEl7u";
+    Запись      = "recwsjcLW3prWbE9e";
 
     Результат = OPI_Airtable.УдалитьЗаписи(Токен, База, Таблица, Запись);
 ```

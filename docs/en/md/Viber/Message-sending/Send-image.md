@@ -27,7 +27,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Description = "TestMessage";
-    URL         = "https://openyellow.neocities.org/test_data/picture.jpg";
+    URL         = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
     Token            = "523b5b25ed27e6ec-fdf013e4...";

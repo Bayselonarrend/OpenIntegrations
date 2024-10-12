@@ -29,7 +29,7 @@ Method at API documentation: [deleteMessage](https://core.telegram.org/bots/api#
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "@testsichee";
-    MessageID = "9280";
+    MessageID = "9629";
 
     Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
 ```

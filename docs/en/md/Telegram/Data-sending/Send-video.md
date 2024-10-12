@@ -34,7 +34,7 @@ Method at API documentation: [sendVideo](https://core.telegram.org/bots/api#send
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Video     = "https://openyellow.neocities.org/test_data/video.mp4";
+    Video     = "https://api.athenaeum.digital/test_data/video.mp4";
 
     VideoPath = GetTempFileName("mp4");
     CopyFile(Video, VideoPath);
