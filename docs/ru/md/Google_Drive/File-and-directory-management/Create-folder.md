@@ -24,7 +24,7 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен    = "ya29.a0AcM612yqBU-Js-ZwvMX9kOgTqr1bzVlotSXxpjuDiy-VQFNrbVcJqWC-p_l2W_Ng_se_7j6PbCOWHu1waCLQEAilKYg3xb2Q18DG_cMfA...";
+    Токен    = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
     Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
     Имя      = "Тестовая папка";
 

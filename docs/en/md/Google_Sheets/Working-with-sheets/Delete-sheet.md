@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-    Token       = "ya29.a0AcM612yqBU-Js-ZwvMX9kOgTqr1bzVlotSXxpjuDiy-VQFNrbVcJqWC-p_l2W_Ng_se_7j6PbCOWHu1waCLQEAilKYg3xb2Q18DG_cMfA...";
-    Spreadsheet = "1MxBM0eQ7Vr74F5KqaeAQspPH3oViXUHbl3kDa451cdA";
-    Sheet       = "326904167";
+    Token       = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
+    Spreadsheet = "187aOtcDnHwx1wmHhU-QuGHMWyqZptBif9IVa_tBanNk";
+    Sheet       = "1651217167";
 
     Result = OPI_GoogleSheets.DeleteSheet(Token, Spreadsheet, Sheet);
 ```
