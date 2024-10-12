@@ -309,11 +309,15 @@ EndFunction
 
 #Region EventManagement
 
-// Get event description !NOCLI
+// Get event description
+// Gets an empty layout to create the event
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
 //
 // Returns:
 // Map Of KeyAndValue - Empty event template
-Function GetEventDescription() Export
+Function GetEventDescription(Val Clear = False) Export
 
     CurrentDate = OPI_Tools.GetCurrentDate();
     Hour        = 3600;
@@ -326,6 +330,12 @@ Function GetEventDescription() Export
     Event.Insert("EndDate"              , CurrentDate + Hour); // Date of end events
     Event.Insert("ArrayOfAttachmentURLs", New Map); // Key - name, Value - URL to file
     Event.Insert("SendNotifications"    , True); // Indication of sending notifications to participants
+
+    If Clear Then
+        For Each Field In Event Do
+            Event.Insert(Field.Key, "");
+        EndDo;
+    EndIf;
 
     Return Event;
 
