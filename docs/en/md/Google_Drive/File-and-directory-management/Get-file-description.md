@@ -2,15 +2,16 @@
 sidebar_position: 10
 ---
 
-# Get file description 
+# Get file description
+ Gets a blank description template for uploading a file
 
 
 
-
-`Function GetFileDescription() Export`
+`Function GetFileDescription(Val Clear = False) Export`
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
+  | Clear | --empty | Boolean | True > structure with empty valuse, False > field descriptions at values |
 
   
   Returns:  Map Of KeyAndValue - File description
