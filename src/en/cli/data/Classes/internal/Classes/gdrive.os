@@ -300,6 +300,17 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gdrive";
     NewLine.Модуль      = "OPI_GoogleDrive";
+    NewLine.Метод       = "GetFileDescription";
+    NewLine.МетодПоиска = "GETFILEDESCRIPTION";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "File and directory management";
+    NewLine.ОписаниеМетода   = "Gets a blank description template for uploading a file";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gdrive";
+    NewLine.Модуль      = "OPI_GoogleDrive";
     NewLine.Метод       = "CreateComment";
     NewLine.МетодПоиска = "CREATECOMMENT";
     NewLine.Параметр    = "--token";
