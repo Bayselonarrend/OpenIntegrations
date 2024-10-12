@@ -42,6 +42,7 @@
 // Uncomment if OneScript is executed
 #Use "./internal"
 #Use asserts
+
 #Region Internal
 
 Function GetTestingSectionMapping() Export
@@ -398,8 +399,11 @@ EndProcedure
 
 Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
 
+    //Oint = "oint";
+    Oint = "C:\Program Files\OneScript\bin\oint.bat";
+
     ResultFile   = GetTempFileName();
-    LaunchString = "oint " + Library + " " + Method;
+    LaunchString = Oint + " " + Library + " " + Method;
 
     For Each Option In Options Do
 
@@ -1822,7 +1826,7 @@ Function GetCommonModule(Val Name)
     Return Module;
 EndFunction
 
-Function GetCLIFormedValue(Val Value)
+Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
     CurrentType = TypeOf(Value);
 
@@ -1832,7 +1836,11 @@ Function GetCLIFormedValue(Val Value)
 
     ElsIf CurrentType = Type("String") Then
 
-        Value = """" + Value + """";
+        Value = OPI_Tools.NumberToString(Value);
+
+        If Not Embedded Then
+            Value = """" + Value + """";
+        EndIf;
 
     ElsIf CurrentType = Type("Date") Then
 
@@ -1841,11 +1849,11 @@ Function GetCLIFormedValue(Val Value)
     ElsIf CurrentType = Type("Array") Then
 
         For N = 0 To Value.UBound() Do
-            Value.Set(N, GetCLIFormedValue(Value[N]));
+            Value.Set(N, GetCLIFormedValue(Value[N], True));
         EndDo;
 
         Value = StrConcat(Value, "','");
-        Value = "['" + Value + "']";
+        Value = """['" + Value + "']""";
 
     ElsIf CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
 
@@ -1856,6 +1864,10 @@ Function GetCLIFormedValue(Val Value)
         WriteJSON(JSONWriter, Value);
 
         Value = """" + JSONWriter.Close() + """";
+
+    ElsIf CurrentType = Type("Boolean") Then
+
+        Value = ?(Value, "true", "false");
 
     ElsIf CurrentType = Type("BinaryData") Then
 

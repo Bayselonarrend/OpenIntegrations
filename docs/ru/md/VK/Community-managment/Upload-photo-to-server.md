@@ -26,7 +26,7 @@ sidebar_position: 11
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
 
-    Картинка = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
     Вид      = "Пост";
 
     Результат = OPI_VK.ЗагрузитьФотоНаСервер(Картинка, Параметры, Вид);

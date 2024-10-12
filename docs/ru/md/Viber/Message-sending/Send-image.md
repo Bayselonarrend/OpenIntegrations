@@ -27,7 +27,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Описание = "Тестовое сообщение";
-    URL      = "https://openyellow.neocities.org/test_data/picture.jpg";
+    URL      = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";

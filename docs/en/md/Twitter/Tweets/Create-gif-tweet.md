@@ -27,8 +27,8 @@ sidebar_position: 4
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    GIF  = "https://openyellow.neocities.org/test_data/animation.gif"; // URL, Binary or Path to file
-    Gif2 = "https://openyellow.neocities.org/test_data/animation.gif"; // URL, Binary or Path to file
+    GIF  = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Binary or Path to file
+    Gif2 = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Binary or Path to file
 
     GifsArray = New Array;
     GifsArray.Add(GIF);

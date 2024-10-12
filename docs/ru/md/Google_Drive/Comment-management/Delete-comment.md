@@ -24,9 +24,9 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
-    Идентификатор = "1f-YrvMCEZ7r3JWlLGM39zn6dctvFjwCi";
-    ИДКомментария = "AAABVqw_79g";
+    Токен         = "ya29.a0AcM612y5AI1OiRmaNZZdcZkEXR0hzPPvvmrHwVvQ_wKT0Lo35AFd6j6lHZWalv-zxiYHKQUWkU1GRjCf4Lo9uQwygnC9xAOZKaOORjGI3...";
+    Идентификатор = "1U8hhtaSXcxZuojGLumLYODMBspUV501s";
+    ИДКомментария = "AAABRXT3-W4";
 
     Результат = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, ИДКомментария);
 ```

@@ -25,7 +25,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Name  = "TestFolder";
-    Token = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Token = "ya29.a0AcM612y5AI1OiRmaNZZdcZkEXR0hzPPvvmrHwVvQ_wKT0Lo35AFd6j6lHZWalv-zxiYHKQUWkU1GRjCf4Lo9uQwygnC9xAOZKaOORjGI3...";
 
     Result = OPI_GoogleDrive.GetDirectoriesList(Token, Name, True);
 ```

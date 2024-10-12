@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База  = "app9bSgL4YtTVGTlE";
+    База  = "app7wcH961p8fBBRH";
 
     МассивПолей = Новый Массив;
     МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));

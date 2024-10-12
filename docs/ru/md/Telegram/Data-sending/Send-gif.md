@@ -34,7 +34,7 @@ sidebar_position: 6
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Гифка    = "https://openyellow.neocities.org/test_data/animation.gif";
+    Гифка    = "https://api.athenaeum.digital/test_data/animation.gif";
 
     ГифкаПуть = ПолучитьИмяВременногоФайла("gif");
     КопироватьФайл(Гифка, ГифкаПуть);

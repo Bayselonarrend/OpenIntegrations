@@ -27,7 +27,7 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 
 ```bsl title="Code example"
     Name = "Image";
-    URL  = "https://openyellow.neocities.org/test_data/picture.jpg";
+    URL  = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     Result = OPI_Bitrix24.GetPictureBlock(Name, URL);
 ```

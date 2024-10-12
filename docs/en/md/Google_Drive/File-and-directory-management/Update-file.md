@@ -25,10 +25,10 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Token      = "ya29.a0AcM612y5AI1OiRmaNZZdcZkEXR0hzPPvvmrHwVvQ_wKT0Lo35AFd6j6lHZWalv-zxiYHKQUWkU1GRjCf4Lo9uQwygnC9xAOZKaOORjGI3...";
     NewName    = "UpdatedFile.jpg";
-    Identifier = "1f-YrvMCEZ7r3JWlLGM39zn6dctvFjwCi";
-    File       = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Binary Data or Path to file
+    Identifier = "1U8hhtaSXcxZuojGLumLYODMBspUV501s";
+    File       = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary Data or Path to file
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);
 ```

@@ -39,7 +39,7 @@ You can mention a user by appending their userId to the text in the following fo
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
 
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7419291601358293295";
+    ReplyID = "7424860889745984697";
     Text    = "<b>Bold text</b>";
     Markup  = "HTML";
 

@@ -25,8 +25,8 @@ sidebar_position: 3
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Item1 = "9670998";
-    Item2 = "9671000";
+    Item1 = "9740317";
+    Item2 = "9740318";
 
     ProductsArray = New Array;
     ProductsArray.Add(Item1);

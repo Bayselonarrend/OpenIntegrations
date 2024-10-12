@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Расширение = "docx";
-    URL        = "https://openyellow.neocities.org/test_data/document.docx";
+    URL        = "https://api.athenaeum.digital/test_data/document.docx";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";

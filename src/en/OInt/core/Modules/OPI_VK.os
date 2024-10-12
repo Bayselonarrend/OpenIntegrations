@@ -143,6 +143,7 @@ Function CreateCompositePost(Val Text
     OPI_TypeConversion.GetLine(Text);
     OPI_TypeConversion.GetLine(LinkUnderPost);
     OPI_TypeConversion.GetBoolean(Advertisement);
+    OPI_TypeConversion.GetArray(Objects);
 
     Parameters        = GetStandardParameters(Parameters);
     AttachmentsString = StrConcat(Objects, ",");
@@ -693,7 +694,7 @@ Function WriteMessage(Val Text
     OPI_TypeConversion.GetLine(Text);
     OPI_TypeConversion.GetLine(UserID);
     OPI_TypeConversion.GetLine(Communitytoken);
-    OPI_TypeConversion.GetLine(Keyboard);
+    OPI_TypeConversion.GetCollection(Keyboard);
 
     Parameters_ = GetStandardParameters(Parameters);
     Parameters_.Insert("access_token", Communitytoken);
@@ -916,9 +917,7 @@ Function CreateAdvertisingCampaign(Val AccountID, Val Name, Val Parameters = "")
 
     StructuresArray.Add(CampaignStructure);
 
-    JSONDate = OPI_Tools.JSONString(StructuresArray);
-
-    Parameters_.Insert("data", JSONDate);
+    Parameters_.Insert("data", StructuresArray);
 
     Response = OPI_Tools.Get("api.vk.com/method/ads.createCampaigns", Parameters_);
 
@@ -978,8 +977,6 @@ Function CreateAd(Val CampaignNumber
     CampaignStructure.Insert("link_url"                 , Link);
 
     StructuresArray.Add(CampaignStructure);
-
-    OPI_TypeConversion.GetLine(StructuresArray, True);
 
     Parameters_.Insert("data"       , StructuresArray);
     Parameters_.Insert("account_id" , AccountID);
@@ -1705,7 +1702,7 @@ Function FormKeyboard(Val ButtonArray) Export
     Keyboard.Insert("buttons" , KeyboardArray);
     Keyboard.Insert("one_time", False);
 
-    Return OPI_Tools.JSONString(Keyboard);
+    Return OPI_Tools.JSONString(Keyboard, , False);
 
 EndFunction
 
@@ -2030,8 +2027,7 @@ Procedure FillPhotoUploadParameters(Val Method, Val Response, Parameters)
 
     ElsIf Way = NewMethod Then
 
-        ResponseString = OPI_Tools.JSONString(Response);
-        Parameters.Insert("upload_response", ResponseString);
+        Parameters.Insert("upload_response", Response);
 
     Else
 

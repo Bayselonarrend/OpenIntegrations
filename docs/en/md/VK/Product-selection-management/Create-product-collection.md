@@ -29,7 +29,7 @@ sidebar_position: 3
     Parameters = GetVKParameters();
 
     Name   = "TestCollection";
-    Image  = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Image  = "https://api.athenaeum.digital/test_data/picture.jpg";
     Main   = True;
     Hidden = False;
 
