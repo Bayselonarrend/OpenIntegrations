@@ -25,7 +25,7 @@ sidebar_position: 11
 
 ```bsl title="Пример кода"
     Токен   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Адрес   = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Адрес   = "https://api.athenaeum.digital/test_data/picture.jpg";
     Путь    = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, Адрес);

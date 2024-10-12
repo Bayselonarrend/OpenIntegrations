@@ -33,8 +33,8 @@ sidebar_position: 7
     Токен    = "6129457865:AAFyzNYOAFbu...";
     IDЧата   = "461699897";
     Текст    = "Строковое значение";
-    Картинка = "https://openyellow.neocities.org/test_data/picture.jpg";
-    Видео    = "https://openyellow.neocities.org/test_data/video.mp4";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Видео    = "https://api.athenaeum.digital/test_data/video.mp4";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);

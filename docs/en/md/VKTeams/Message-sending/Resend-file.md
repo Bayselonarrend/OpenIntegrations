@@ -31,7 +31,7 @@ Method at API documentation: [GET /messages/sendFile](https://teams.vk.com/botap
 ```bsl title="Code example"
     Token  = "001.3501506236.091...";
     ChatID = "AoLI0egLWBSLR1Ngn2w";
-    FileID = "Z7w4zb94bLtkJDICBfzVuG66f69e921bd";
+    FileID = "b4iRLUwWag0zlnIGRbmziy670a67cf1bd";
     Text   = "File caption";
 
     Result = OPI_VKTeams.ResendFile(Token, ChatID, FileID, Text);

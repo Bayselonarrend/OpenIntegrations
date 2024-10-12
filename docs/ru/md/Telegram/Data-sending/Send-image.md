@@ -34,7 +34,7 @@ sidebar_position: 2
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Картинка = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);

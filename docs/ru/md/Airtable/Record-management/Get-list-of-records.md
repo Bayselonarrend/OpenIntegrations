@@ -26,8 +26,8 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "app9bSgL4YtTVGTlE";
-    Таблица     = "tblDUGAZFZaeOwE6x";
+    База        = "app7wcH961p8fBBRH";
+    Таблица     = "tblSwEBXQOQHSEl7u";
 
     Результат = OPI_Airtable.ПолучитьСписокЗаписей(Токен, База, Таблица);
 ```

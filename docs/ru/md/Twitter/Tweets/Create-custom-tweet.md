@@ -29,8 +29,8 @@ sidebar_position: 1
     Параметры = ПолучитьПараметрыАвторизацииТвиттер();
     Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
 
-    Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
-    Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Двоичные данные или Путь к файлу
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     МассивКартинок = Новый Массив();
     МассивКартинок.Добавить(Картинка1);

@@ -29,15 +29,15 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЧата  = "872";
+    IDЧата  = "1006";
 
-    Картинка = "https://openyellow.neocities.org/test_data/picture2.jpg";
+    Картинка = "https://api.athenaeum.digital/test_data/picture2.jpg";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "37d1fe66006e9f06006b12e400000001000...";
-    IDЧата         = "874";
+    Токен          = "21750a67006e9f06006b12e400000001000...";
+    IDЧата         = "1008";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка, Токен);
 ```

@@ -30,8 +30,8 @@ sidebar_position: 1
     Текст     = "Пост из автотеста";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка  = "https://openyellow.neocities.org/test_data/picture.jpg";  // URL, Путь или Двоичные данные
-    Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Путь или Двоичные данные
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
 
     ИВФ = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка2, ИВФ);

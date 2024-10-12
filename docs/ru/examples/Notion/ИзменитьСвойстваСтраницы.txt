@@ -1,7 +1,7 @@
 ﻿    Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница     = "11282aa7-fc4e-814c-990c-dd3c9c3c2c22";
-    Иконка       = "https://openyellow.neocities.org/test_data/picture.jpg";
-    Обложка      = "https://openyellow.neocities.org/test_data/picture2.jpg";
+    Страница     = "11d82aa7-fc4e-81b7-af12-e5533406159f";
+    Иконка       = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Обложка      = "https://api.athenaeum.digital/test_data/picture2.jpg";
     Архивировать = Ложь;
 
     Свойства = Новый Соответствие;

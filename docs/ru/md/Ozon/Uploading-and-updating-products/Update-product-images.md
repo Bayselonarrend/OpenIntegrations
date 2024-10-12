@@ -38,10 +38,10 @@ sidebar_position: 9
 ```bsl title="Пример кода"
     IDКлиента = "2128753";
     КлючAPI   = "7cc90d26-33e4-499b...";
-    IDТовара  = "1202180384";
+    IDТовара  = "1220696576";
 
-    Картинка1 = "https://openyellow.neocities.org/test_data/picture.jpg";
-    Картинка2 = "https://openyellow.neocities.org/test_data/picture2.jpg";
+    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
 
     МаркетинговыйЦвет = "GREEN";
 

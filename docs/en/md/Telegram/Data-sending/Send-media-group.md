@@ -33,8 +33,8 @@ Method at API documentation: [sendMediaGroup](https://core.telegram.org/bots/api
     Token  = "6129457865:AAFyzNYOAFbu...";
     ChatID = "461699897";
     Text   = "Строковое значение";
-    Image  = "https://openyellow.neocities.org/test_data/picture.jpg";
-    Video  = "https://openyellow.neocities.org/test_data/video.mp4";
+    Image  = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Video  = "https://api.athenaeum.digital/test_data/video.mp4";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);

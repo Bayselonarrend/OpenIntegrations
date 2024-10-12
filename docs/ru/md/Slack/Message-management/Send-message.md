@@ -37,7 +37,7 @@ sidebar_position: 1
     // С вложениями (в примере: блок с картинкой)
 
     Текст        = "Сообщение с картинкой";
-    Картинка     = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Картинка     = "https://api.athenaeum.digital/test_data/picture.jpg";
     МассивБлоков = Новый Массив;
 
     Блок = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");

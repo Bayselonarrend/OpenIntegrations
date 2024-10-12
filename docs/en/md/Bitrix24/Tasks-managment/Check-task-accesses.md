@@ -33,13 +33,13 @@ Method at API documentation: [tasks.task.getaccess](https://dev.1c-bitrix.ru/res
     ArrayOfUsers.Add("10");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2262";
+    TaskID = "2446";
 
     Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "37d1fe66006e9f06006b12e400000001000...";
-    TaskID = "2264";
+    Token  = "21750a67006e9f06006b12e400000001000...";
+    TaskID = "2448";
 
     Result = OPI_Bitrix24.CheckTaskAccesses(URL, TaskID, ArrayOfUsers, Token);
 ```

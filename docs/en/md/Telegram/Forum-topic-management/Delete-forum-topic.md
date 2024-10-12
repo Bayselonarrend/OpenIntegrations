@@ -29,7 +29,7 @@ Method at API documentation: [deleteForumTopic](https://core.telegram.org/bots/a
 ```bsl title="Code example"
     Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
-    Topic = "5253";
+    Topic = "5510";
 
     Result = OPI_Telegram.DeleteForumTopic(Token, Chat, Topic);
 ```

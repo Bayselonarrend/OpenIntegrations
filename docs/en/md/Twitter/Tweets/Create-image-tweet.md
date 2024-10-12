@@ -27,8 +27,8 @@ sidebar_position: 3
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Image  = "https://openyellow.neocities.org/test_data/picture.jpg"; // URL, Binary or Path to file
-    Image2 = "https://openyellow.neocities.org/test_data/picture2.jpg"; // URL, Binary or Path to file
+    Image  = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary or Path to file
+    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary or Path to file
 
     ImageArray = New Array;
     ImageArray.Add(Image);

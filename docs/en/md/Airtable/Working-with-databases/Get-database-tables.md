@@ -24,7 +24,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "app9bSgL4YtTVGTlE";
+    Base  = "app7wcH961p8fBBRH";
 
     Result = OPI_Airtable.GetDatabaseTables(Token, Base);
 ```

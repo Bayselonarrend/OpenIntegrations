@@ -1,5 +1,5 @@
-﻿    Токен    = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
-    Картинка = "https://openyellow.neocities.org/test_data/picture.jpg";
+﻿    Токен    = "ya29.a0AcM612y5AI1OiRmaNZZdcZkEXR0hzPPvvmrHwVvQ_wKT0Lo35AFd6j6lHZWalv-zxiYHKQUWkU1GRjCf4Lo9uQwygnC9xAOZKaOORjGI3...";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
     Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла();

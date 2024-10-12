@@ -34,7 +34,7 @@ sidebar_position: 4
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Аудио    = "https://openyellow.neocities.org/test_data/song.mp3";
+    Аудио    = "https://api.athenaeum.digital/test_data/song.mp3";
 
     АудиоПуть = ПолучитьИмяВременногоФайла("mp3");
     КопироватьФайл(Аудио, АудиоПуть);

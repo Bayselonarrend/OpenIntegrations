@@ -25,7 +25,7 @@ sidebar_position: 13
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07PK52ES3U";
+    Channel = "C07R61HC15M";
     Name    = "testconv" + String(New UUID);
 
     Result = OPI_Slack.RenameChannel(Token, Channel, Name);

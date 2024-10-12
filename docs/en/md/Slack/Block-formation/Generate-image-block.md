@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Image = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     Result = OPI_Slack.GenerateImageBlock(Image, "Image");
 ```

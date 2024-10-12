@@ -32,15 +32,15 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 ```bsl title="Code example"
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
-    DepartmentID = "478";
+    DepartmentID = "612";
     ParentID     = 7;
 
     Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID, , ParentID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "37d1fe66006e9f06006b12e400000001000...";
+    Token = "21750a67006e9f06006b12e400000001000...";
 
-    DepartmentID = "480";
+    DepartmentID = "614";
     Name         = "New department";
     ParentID     = 1;
     HeadID       = 10;

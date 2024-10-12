@@ -26,8 +26,8 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Path  = "/New/pic.png";
-    Token = "sl.B9sYGdZdLILSnqlGZCwLFCstq1B1GsgevbBkwi4UK_UlNyhGAoJ1fKoXMy3dQhkEb3e80HTL6g...";
-    Image = "https://openyellow.neocities.org/test_data/picture.jpg";
+    Token = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);

@@ -22,7 +22,7 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен = "ya29.a0AcM612xw6IRwwkQIOEhizd2pJ6LLI4UAhdhxmXDGEzYkcfUPrLYgDDwbsSi5iQdc78WPs_1_Qor5KipuV6mAIvr6z-AKzrBaMT4erIR5T...";
+    Токен = "ya29.a0AcM612y5AI1OiRmaNZZdcZkEXR0hzPPvvmrHwVvQ_wKT0Lo35AFd6j6lHZWalv-zxiYHKQUWkU1GRjCf4Lo9uQwygnC9xAOZKaOORjGI3...";
 
     Результат = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);
 ```

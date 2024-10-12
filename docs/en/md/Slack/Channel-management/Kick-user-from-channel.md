@@ -25,7 +25,7 @@ sidebar_position: 8
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07PK52ES3U";
+    Channel = "C07R61HC15M";
     User    = "U06UABH3APP";
 
     Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);
