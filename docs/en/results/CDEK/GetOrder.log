@@ -1,0 +1,85 @@
+﻿ {
+ "entity": {
+  "uuid": "9aedf214-562a-45a2-982c-897b753a0ebd",
+  "type": 1,
+  "number": "ddOererre7450813980068",
+  "tariff_code": 139,
+  "comment": "New order",
+  "delivery_recipient_cost": {
+   "value": 50
+  },
+  "delivery_recipient_cost_adv": [
+   {
+    "threshold": 200,
+    "sum": 3000
+   }
+  ],
+  "sender": {
+   "name": "Petrov Petr"
+  },
+  "recipient": {
+   "name": "Ivaniv Ivan",
+   "phones": [
+    {
+     "number": "+79134637228"
+    }
+   ]
+  },
+  "from_location": {
+   "code": 44,
+   "city": "Moscow",
+   "address": "Ave. Leningradsky, 4"
+  },
+  "to_location": {
+   "code": 270,
+   "city": "Novosibirsk",
+   "address": "st. Bluchera, 32"
+  },
+  "services": [
+   {
+    "code": "SECURE_PACKAGE_A2",
+    "parameter": "10"
+   }
+  ],
+  "packages": [
+   {
+    "number": "bar-001",
+    "weight": 4000,
+    "length": 10,
+    "width": 10,
+    "height": 10,
+    "comment": "Packaging",
+    "items": [
+     {
+      "name": "Product",
+      "ware_key": "00055",
+      "payment": {
+       "value": 3000
+      },
+      "weight": 700,
+      "amount": 2,
+      "url": "www.item.ru",
+      "cost": 300
+     }
+    ]
+   }
+  ],
+  "statuses": [
+   {
+    "code": "ACCEPTED",
+    "name": "Принят",
+    "date_time": "2024-10-12T19:31:14+03:00",
+    "city": "Офис СДЭК"
+   }
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "825e8d4d-e04d-404e-939b-e119ba58707a",
+   "type": "CREATE",
+   "date_time": "2024-10-12T19:31:14+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
