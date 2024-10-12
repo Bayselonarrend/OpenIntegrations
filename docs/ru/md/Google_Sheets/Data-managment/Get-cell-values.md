@@ -25,8 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
-    Книга  = "187aOtcDnHwx1wmHhU-QuGHMWyqZptBif9IVa_tBanNk";
+    Токен  = "ya29.a0AcM612w6SWzMf3Ti1dSiFdgdLdXxLBjzKdXoLGuGDHoSXzb0uAKe5hJ-HPz1Njyp7HuHE6NnMnevQwbo0AR-yPAwfrA1OsMFZ_Fac2ASn...";
+    Книга  = "1byey4pYpbD_Bmh0c49QYSEfwkqTUwcTIqhMtrDyq7vQ";
     Лист   = "Лист2";
 
     МассивЯчеек = Новый Массив;

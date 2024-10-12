@@ -332,9 +332,15 @@ Function GetEventDescription(Val Clear = False) Export
     Event.Insert("SendNotifications"    , True); // Indication of sending notifications to participants
 
     If Clear Then
+
+        Event_ = New Map;
+
         For Each Field In Event Do
-            Event.Insert(Field.Key, "");
+            Event_.Insert(Field.Key, "");
         EndDo;
+
+        Event_ = Event_;
+
     EndIf;
 
     Return Event;

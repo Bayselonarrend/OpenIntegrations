@@ -24,7 +24,7 @@ sidebar_position: 4
 
 
 ```bsl title="Code example"
-    Token     = "ya29.a0AcM612yQIsgMPiOdOLBSBoiVfcCBuJ5T9HRP5lB04ipL2jQDnyuXGmn-IkxMKqss53fPz99sXRoX3_ZJt6s_N7YSfVzI88y_uUa2euM32...";
+    Token     = "ya29.a0AcM612w6SWzMf3Ti1dSiFdgdLdXxLBjzKdXoLGuGDHoSXzb0uAKe5hJ-HPz1Njyp7HuHE6NnMnevQwbo0AR-yPAwfrA1OsMFZ_Fac2ASn...";
     Image     = "https://api.athenaeum.digital/test_data/picture.jpg";
     Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
