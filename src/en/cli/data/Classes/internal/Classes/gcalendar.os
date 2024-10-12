@@ -253,6 +253,17 @@
     NewLine = CompositionTable.Add();
     NewLine.Библиотека  = "gcalendar";
     NewLine.Модуль      = "OPI_GoogleCalendar";
+    NewLine.Метод       = "GetEventDescription";
+    NewLine.МетодПоиска = "GETEVENTDESCRIPTION";
+    NewLine.Параметр    = "--empty";
+    NewLine.Описание    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - No)";
+    NewLine.Область     = "Event management";
+    NewLine.ОписаниеМетода   = "Gets an empty layout to create the event";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Библиотека  = "gcalendar";
+    NewLine.Модуль      = "OPI_GoogleCalendar";
     NewLine.Метод       = "GetEventList";
     NewLine.МетодПоиска = "GETEVENTLIST";
     NewLine.Параметр    = "--token";

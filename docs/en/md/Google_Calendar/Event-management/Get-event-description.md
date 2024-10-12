@@ -2,15 +2,16 @@
 sidebar_position: 1
 ---
 
-# Get event description 
+# Get event description
+ Gets an empty layout to create the event
 
 
 
-
-`Function GetEventDescription() Export`
+`Function GetEventDescription(Val Clear = False) Export`
 
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
+  | Clear | --empty | Boolean | True > structure with empty valuse, False > field descriptions at values |
 
   
   Returns:  Map Of KeyAndValue - Empty event template

@@ -583,6 +583,287 @@ EndProcedure
 
 #EndRegion
 
+#Region YandexDisk
+
+Procedure CLI_YDisk_GetDiskInfo() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+
+    CLI_YandexDisk_GetDiskInfo(TestParameters);
+
+EndProcedure
+
+Procedure CLI_YDisk_CreateFolder() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+
+    CLI_YandexDisk_CreateFolder(TestParameters);
+
+EndProcedure
+
+Procedure CLI_YDisk_UploadByUrlAndGetObject() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    CLI_YandexDisk_UploadFileByURL(TestParameters);
+    CLI_YandexDisk_GetObject(TestParameters);
+    CLI_YandexDisk_DeleteObject(TestParameters);
+
+EndProcedure
+
+Procedure CLI_YDisk_UploadDeleteFile() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    CLI_YandexDisk_UploadFile(TestParameters);
+
+EndProcedure
+
+Procedure CLI_YDisk_CreateObjectCopy() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
+    OriginalPath = "/" + String(New UUID) + ".png";
+
+    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    OPI_Tools.Pause(35);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_OriginalFilePath", OriginalPath);
+    TestParameters.Insert("YandexDisk_OriginalFilePath", OriginalPath);
+
+    CLI_YandexDisk_CreateObjectCopy(TestParameters);
+
+    CopyPath = TestParameters["YandexDisk_CopyFilePath"];
+
+    OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
+    OPI_YandexDisk.DeleteObject(Token, CopyPath    , False);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YDisk_GetDownloadLink() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
+    Path = "/" + String(New UUID) + ".png";
+
+    OPI_YandexDisk.UploadFileByURL(Token, Path, URL);
+    OPI_Tools.Pause(35);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_PathForLink", Path);
+    TestParameters.Insert("YandexDisk_PathForLink", Path);
+
+    CLI_YandexDisk_GetDownloadLink(TestParameters);
+    CLI_YandexDisk_DownloadFile(TestParameters);
+
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+EndProcedure
+
+Procedure CLI_YDisk_GetFileList() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+
+    CLI_YandexDisk_GetFilesList(TestParameters);
+
+EndProcedure
+
+Procedure CLI_YDisk_MoveObject() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
+    OriginalPath = "/" + String(New UUID) + ".png";
+
+    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    OPI_Tools.Pause(35);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_OriginalFilePath", OriginalPath);
+    TestParameters.Insert("YandexDisk_OriginalFilePath", OriginalPath);
+
+    CLI_YandexDisk_MoveObject(TestParameters);
+
+    NewPath = TestParameters["YandexDisk_NewFilePath"];
+
+    OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
+    OPI_YandexDisk.DeleteObject(Token, NewPath     , False);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YDisk_PublicObjectActions() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    Token = TestParameters["YandexDisk_Token"];
+    URL   = TestParameters["Picture"];
+
+    OriginalPath = "/" + String(New UUID) + ".png";
+
+    OPI_YandexDisk.UploadFileByURL(Token, OriginalPath, URL);
+    OPI_Tools.Pause(35);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_OriginalFilePath", OriginalPath);
+    TestParameters.Insert("YandexDisk_OriginalFilePath", OriginalPath);
+
+    CLI_YandexDisk_PublishObject(TestParameters);
+    CLI_YandexDisk_GetDownloadLinkForPublicObject(TestParameters);
+    CLI_YandexDisk_GetPublicObject(TestParameters);
+    CLI_YandexDisk_SavePublicObjectToDisk(TestParameters);
+    CLI_YandexDisk_CancelObjectPublication(TestParameters);
+
+    OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YDisk_GetPublishedList() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
+
+    CLI_YandexDisk_GetPublishedObjectsList(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region Viber
+
+Procedure CLI_Viber_DataRetrieval() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelToken"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelAdminID", TestParameters);
+
+    CLI_Viber_GetChannelInformation(TestParameters);
+    CLI_Viber_GetUserData(TestParameters);
+    CLI_Viber_GetOnlineUsers(TestParameters);
+    CLI_Viber_SetWebhook(TestParameters);
+
+EndProcedure
+
+Procedure CLI_Viber_MessagesSending() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelToken"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_ChannelAdminID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_Token"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Viber_UserID"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"            , TestParameters);
+
+    CLI_Viber_CreateKeyboardFromArrayButton(TestParameters);
+    CLI_Viber_SendTextMessage(TestParameters);
+    CLI_Viber_SendImage(TestParameters);
+    CLI_Viber_SendFile(TestParameters);
+    CLI_Viber_SendContact(TestParameters);
+    CLI_Viber_SendLocation(TestParameters);
+    CLI_Viber_SendLink(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleWorkspace
+
+Procedure CLI_GW_Auth() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
+
+    CLI_GoogleWorkspace_FormCodeRetrievalLink(TestParameters);
+    CLI_GoogleWorkspace_GetTokenByCode(TestParameters);
+    CLI_GoogleWorkspace_RefreshToken(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleCalendar
+
+Procedure CLI_GC_GetCalendarList() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+
+    CLI_GoogleCalendar_GetCalendarList(TestParameters);
+
+EndProcedure
+
+Procedure CLI_GC_CreateDeleteCalendar() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token", TestParameters);
+
+    CLI_GoogleCalendar_CreateCalendar(TestParameters);
+    CLI_GoogleCalendar_EditCalendarMetadata(TestParameters);
+    CLI_GoogleCalendar_GetCalendarMetadata(TestParameters);
+    CLI_GoogleCalendar_AddCalendarToList(TestParameters);
+    CLI_GoogleCalendar_EditListCalendar(TestParameters);
+    CLI_GoogleCalendar_GetListCalendar(TestParameters);
+    CLI_GoogleCalendar_ClearMainCalendar(TestParameters);
+    CLI_GoogleCalendar_DeleteCalendarFromList(TestParameters);
+    CLI_GoogleCalendar_DeleteCalendar(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GC_CreateDeleteEvent() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Token"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_NewCalendarID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_CalendarID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"            , TestParameters);
+
+    CLI_GoogleCalendar_CreateCalendar(TestParameters);
+    CLI_GoogleCalendar_CreateEvent(TestParameters);
+    CLI_GoogleCalendar_EditEvent(TestParameters);
+    CLI_GoogleCalendar_GetEvent(TestParameters);
+    CLI_GoogleCalendar_MoveEvent(TestParameters);
+    CLI_GoogleCalendar_GetEventList(TestParameters);
+    CLI_GoogleCalendar_DeleteEvent(TestParameters);
+    CLI_GoogleCalendar_DeleteCalendar(TestParameters);
+    CLI_GoogleCalendar_GetEventDescription(TestParameters);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -2690,6 +2971,1140 @@ Procedure CLI_VK_UploadVideoToServer(FunctionParameters)
 
 EndProcedure
 
+
+#EndRegion
+
+#Region YandexDisk
+
+Procedure CLI_YandexDisk_GetDiskInfo(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDiskInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInformation", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskDrive(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_CreateFolder(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = "/" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CreateFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskFolder(Result, Path);
+
+    OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_UploadFileByURL(FunctionParameters)
+
+    Token   = FunctionParameters["YandexDisk_Token"];
+    Address = FunctionParameters["Picture"];
+    Path    = "/" + String(New UUID) + ".png";
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+    Options.Insert("url"  , Address);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFileByURL", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskProc(Result);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_FileByURLPath", Path);
+    FunctionParameters.Insert("YandexDisk_FileByURLPath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_GetObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_DeleteObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+    Options.Insert("can"  , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "YandexDisk");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_UploadFile(FunctionParameters)
+
+    Path1 = "/" + String(New UUID) + ".png";
+    Path2 = "/" + String(New UUID) + ".png";
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Image = FunctionParameters["Picture"]; // URL
+
+    TFN = GetTempFileName("png"); // Path
+    FileCopy(Image, TFN);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("path"   , Path1);
+    Options.Insert("file"   , Image);
+    Options.Insert("rewrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (URL)", "YandexDisk");
+    OPI_TestDataRetrieval.Check_Empty(Result); // SKIP
+
+    OPI_Tools.Pause(5); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("path"   , Path2);
+    Options.Insert("file"   , TFN);
+    Options.Insert("rewrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "YandexDisk");
+
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    OPI_Tools.Pause(5);
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path1);
+    Options.Insert("can " , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (URL)", "YandexDisk");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path2);
+    Options.Insert("can " , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (Path)", "YandexDisk");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    DeleteFiles(TFN);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_CreateObjectCopy(FunctionParameters)
+
+    Token    = FunctionParameters["YandexDisk_Token"];
+    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+    Path     = "/" + String(New UUID) + ".png";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("from"   , Original);
+    Options.Insert("to"     , Path);
+    Options.Insert("rewrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CreateObjectCopy", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateObjectCopy", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_CopyFilePath", Path);
+    FunctionParameters.Insert("YandexDisk_CopyFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_GetDownloadLink(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_PathForLink"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDownloadLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLink", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskLink(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_DownloadFile(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_PathForLink"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DownloadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "YandexDisk");
+    OPI_TestDataRetrieval.Check_BinaryData(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_GetFilesList(FunctionParameters)
+
+    Token           = FunctionParameters["YandexDisk_Token"];
+    Count           = 2;
+    OffsetFromStart = 1;
+    FilterByType    = "image";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("amount", Count);
+    Options.Insert("offset", OffsetFromStart);
+    Options.Insert("type"  , FilterByType);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetFilesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskFilesList(Result, Count, OffsetFromStart);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_MoveObject(FunctionParameters)
+
+    Token    = FunctionParameters["YandexDisk_Token"];
+    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+    Path     = "/" + String(New UUID) + ".png";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("from"   , Original);
+    Options.Insert("to"     , Path);
+    Options.Insert("rewrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "MoveObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path);
+
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_NewFilePath", Path);
+    FunctionParameters.Insert("YandexDisk_NewFilePath", Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_PublishObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "PublishObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PublishObject", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path, True);
+
+    URL = Result["public_url"];
+    OPI_TestDataRetrieval.WriteParameter("YandexDisk_PublicURL", URL);
+    FunctionParameters.Insert("YandexDisk_PublicURL", URL);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("url"  , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDownloadLinkForPublicObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLinkForPublicObject", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskLink(Result);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_GetPublicObject(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("url"  , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublicObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskPath(Result, "", True);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_SavePublicObjectToDisk(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    URL   = FunctionParameters["YandexDisk_PublicURL"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("url"  , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "SavePublicObjectToDisk", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskPath(Result, "", False);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_CancelObjectPublication(FunctionParameters)
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CancelObjectPublication", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CancelObjectPublication", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path, False);
+
+EndProcedure
+
+Procedure CLI_YandexDisk_GetPublishedObjectsList(FunctionParameters)
+
+    Token           = FunctionParameters["YandexDisk_Token"];
+    Count           = 2;
+    OffsetFromStart = 1;
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("amount", Count);
+    Options.Insert("offset", OffsetFromStart);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublishedObjectsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectsList", "YandexDisk");
+    OPI_TestDataRetrieval.Check_YaDiskFilesList(Result, Count, OffsetFromStart);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
+#Region Viber
+
+Procedure CLI_Viber_SetWebhook(FunctionParameters)
+
+    Token = FunctionParameters["Viber_ChannelToken"];
+    URL   = "http://api.athenaeum.digital/hs/viber";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("url"   , URL);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SetWebhook", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetWebhook", "Viber");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Viber_GetChannelInformation(FunctionParameters)
+
+    Token = FunctionParameters["Viber_ChannelToken"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetChannelInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelInformation", "Viber");
+    OPI_TestDataRetrieval.Check_ViberOk(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_GetUserData(FunctionParameters)
+
+    Token  = FunctionParameters["Viber_ChannelToken"];
+    UserID = FunctionParameters["Viber_ChannelAdminID"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("user" , UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetUserData", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData", "Viber");
+    OPI_TestDataRetrieval.Check_ViberUser(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_GetOnlineUsers(FunctionParameters)
+
+    Token  = FunctionParameters["Viber_ChannelToken"];
+    UserID = FunctionParameters["Viber_ChannelAdminID"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("users", UserID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetOnlineUsers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetOnlineUsers", "Viber");
+    OPI_TestDataRetrieval.Check_ViberOnline(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_CreateKeyboardFromArrayButton(FunctionParameters)
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+    ButtonArray.Add("Button 3");
+
+    Options = New Structure;
+    Options.Insert("buttons", ButtonArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "CreateKeyboardFromArrayButton", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateKeyboardFromArrayButton", "Viber");
+
+EndProcedure
+
+Procedure CLI_Viber_SendTextMessage(FunctionParameters)
+
+    Text = "TestMessage";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button 1");
+    ButtonArray.Add("Button 2");
+    ButtonArray.Add("Button 3");
+
+    Options = New Structure;
+    Options.Insert("buttons", ButtonArray);
+
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "CreateKeyboardFromArrayButton", Options);
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("text"     , Text);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+    Options.Insert("keyboard" , Keyboard);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Viber"); // SKIP
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("text"     , Text);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+    Options.Insert("keyboard" , Keyboard);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (channel)", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_SendImage(FunctionParameters)
+
+    Description = "TestMessage";
+    URL         = FunctionParameters["Picture"];
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("picture"    , URL);
+    Options.Insert("user"       , UserID);
+    Options.Insert("ischannel"  , SendingToChannel);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendImage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendImage", "Viber"); // SKIP
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("picture"    , URL);
+    Options.Insert("user"       , UserID);
+    Options.Insert("ischannel"  , SendingToChannel);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendImage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendPicture (channel)", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_SendFile(FunctionParameters)
+
+    Extension = "docx";
+    URL       = FunctionParameters["Document"];
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("file"     , URL);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+    Options.Insert("ext"      , Extension);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("file"     , URL);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+    Options.Insert("ext"      , Extension);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (channel)", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_SendContact(FunctionParameters)
+
+    Name  = "Petr Petrov";
+    Phone = "+123456789";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("name"     , Name);
+    Options.Insert("phone"    , Phone);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendContact", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendContact", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("name"     , Name);
+    Options.Insert("phone"    , Phone);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendContact", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendContact (channel)", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_SendLocation(FunctionParameters)
+
+    Latitude  = "48.87373649724122";
+    Longitude = "2.2954639195323967";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("lat"      , Latitude);
+    Options.Insert("long"     , Longitude);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("lat"      , Latitude);
+    Options.Insert("long"     , Longitude);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation (channel)", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Viber_SendLink(FunctionParameters)
+
+    URL = "https://github.com/Bayselonarrend/OpenIntegrations";
+
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
+    SendingToChannel = False;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("url"      , URL);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLink", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
+    SendingToChannel = True;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("url"      , URL);
+    Options.Insert("user"     , UserID);
+    Options.Insert("ischannel", SendingToChannel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendLink (channel)", "Viber");
+    OPI_TestDataRetrieval.Check_ViberMessage(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleWorkspace
+
+Procedure CLI_GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
+
+    ClientID = FunctionParameters["Google_ClientID"];
+
+    Options = New Structure;
+    Options.Insert("id" , ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "FormCodeRetrievalLink", Options);
+    Result = GetStringFromBinaryData(Result);
+
+    OPI_TestDataRetrieval.Check_String(Result);
+    OPI_TestDataRetrieval.WriteParameter("Google_Link", Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleWorkspace_GetTokenByCode(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    Code         = FunctionParameters["Google_Code"];
+
+    Options = New Structure;
+    Options.Insert("id"    , ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("code"  , Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "GetTokenByCode", Options);
+
+
+    If ValueIsFilled(Result["access_token"])
+        And ValueIsFilled(Result["refresh_token"]) Then
+
+        OPI_TestDataRetrieval.WriteParameter("Google_Token"  , Result["access_token"]);
+        OPI_TestDataRetrieval.WriteParameter("Google_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleWorkspace_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    RefreshToken = FunctionParameters["Google_Refresh"];
+
+    Options = New Structure;
+    Options.Insert("id"     , ClientID);
+    Options.Insert("secret" , ClientSecret);
+    Options.Insert("refresh", RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "RefreshToken", Options);
+
+    OPI_TestDataRetrieval.Check_GoogleToken(Result);
+    OPI_TestDataRetrieval.WriteParameter("Google_Token", Result["access_token"]);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+#EndRegion
+
+#Region GoogleCalendar
+
+Procedure CLI_GoogleCalendar_GetCalendarList(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetCalendarList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_CreateCalendar(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+    Name  = "TestCalendar";
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("title", Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_GoogleCalendar(Result, Name);
+
+    Calendar = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Google_NewCalendarID", Calendar);
+    OPI_Tools.AddField("Google_NewCalendarID", Calendar, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_EditCalendarMetadata(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Calendar    = FunctionParameters["Google_NewCalendarID"];
+    Name        = "New name";
+    Description = "New description";
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("calendar"   , Calendar);
+    Options.Insert("title"      , Name);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditCalendarMetadata", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditCalendarMetadata", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_GetCalendarMetadata(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("calendar" , Calendar);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetCalendarMetadata", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarMetadata", "GoogleCalendar");
+
+    Name        = "New name";
+    Description = "New description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_AddCalendarToList(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("calendar" , Calendar);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "AddCalendarToList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddCalendarToList", "GoogleCalendar");
+
+    Name        = "New name";
+    Description = "New description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_EditListCalendar(FunctionParameters)
+
+    Token          = FunctionParameters["Google_Token"];
+    Calendar       = FunctionParameters["Google_NewCalendarID"];
+    PrimaryColor   = "#000000";
+    SecondaryColor = "#ffd800";
+    Hidden         = False;
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("calendar" , Calendar);
+    Options.Insert("primary"  , PrimaryColor);
+    Options.Insert("secondary", SecondaryColor);
+    Options.Insert("hidden"   , Hidden);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditListCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditListCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_GoogleCalendarColors(Result, PrimaryColor, SecondaryColor);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_GetListCalendar(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("calendar" , Calendar);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetListCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetListCalendar", "GoogleCalendar");
+
+    PrimaryColor   = "#000000";
+    SecondaryColor = "#ffd800";
+
+    OPI_TestDataRetrieval.Check_GoogleCalendarColors(Result, PrimaryColor, SecondaryColor);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_ClearMainCalendar(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "ClearMainCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ClearMainCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_DeleteCalendarFromList(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("calendar" , Calendar);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteCalendarFromList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendarFromList", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_DeleteCalendar(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("calendar" , Calendar);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteCalendar", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_CreateEvent(FunctionParameters)
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+    Token       = FunctionParameters["Google_Token"];
+    Calendar    = FunctionParameters["Google_NewCalendarID"];
+    Name        = "New event";
+    Description = "TestEventDescription";
+    Hour        = 3600;
+
+    Image1      = FunctionParameters["Picture"]; // URL, Binary or Path to file
+    Image2      = FunctionParameters["Picture2"]; // URL, Binary or Path to file
+    Attachments = New Map;
+
+    Attachments.Insert("Image1", Image1);
+    Attachments.Insert("Image2", Image2);
+
+    EventDescription = New Map;
+    EventDescription.Insert("Description"           , Description);
+    EventDescription.Insert("Title"                 , Name);
+    EventDescription.Insert("Venue"                 , "InOffice");
+    EventDescription.Insert("StartDate"             , CurrentDate);
+    EventDescription.Insert("EndDate"               , EventDescription["StartDate"] + Hour);
+    EventDescription.Insert("ArrayOfAttachmentURLs" , Attachments);
+    EventDescription.Insert("SendNotifications"     , True);
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("calendar", Calendar);
+    Options.Insert("props"   , EventDescription);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateEvent", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateEvent", "GoogleCalendar");
+
+    Event = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Google_EventID", Event);
+    OPI_Tools.AddField("Google_EventID", Event, "String", FunctionParameters);
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_EditEvent(FunctionParameters)
+
+    Token       = FunctionParameters["Google_Token"];
+    Calendar    = FunctionParameters["Google_NewCalendarID"];
+    Event       = FunctionParameters["Google_EventID"];
+    Description = "New event description";
+
+    EventDescription = New Map;
+    EventDescription.Insert("Description", Description);
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("calendar", Calendar);
+    Options.Insert("props"   , EventDescription);
+    Options.Insert("event"   , Event);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditEvent", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditEvent", "GoogleCalendar");
+
+    Name = "New event";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_GetEvent(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+    Event    = FunctionParameters["Google_EventID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("calendar", Calendar);
+    Options.Insert("event"   , Event);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEvent", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEvent", "GoogleCalendar");
+
+    Name        = "New event";
+    Description = "New event description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_MoveEvent(FunctionParameters)
+
+    Token = FunctionParameters["Google_Token"];
+    Event = FunctionParameters["Google_EventID"];
+
+    SourceCalendar = FunctionParameters["Google_NewCalendarID"];
+    TargetCalendar = FunctionParameters["Google_CalendarID"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("from" , SourceCalendar);
+    Options.Insert("to"   , TargetCalendar);
+    Options.Insert("event", Event);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "MoveEvent", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveEvent", "GoogleCalendar");
+
+    Name        = "New event";
+    Description = "New event description";
+
+    OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
+
+    OPI_GoogleCalendar.MoveEvent(Token, TargetCalendar, SourceCalendar, Event);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_DeleteEvent(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+    Event    = FunctionParameters["Google_EventID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("calendar", Calendar);
+    Options.Insert("event"   , Event);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteEvent", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteEvent", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_GetEventList(FunctionParameters)
+
+    Token    = FunctionParameters["Google_Token"];
+    Calendar = FunctionParameters["Google_NewCalendarID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("calendar", Calendar);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEventList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEventList", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+Procedure CLI_GoogleCalendar_GetEventDescription(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEventDescription", Options);
+
+    // END
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetEventDescription", "GoogleCalendar");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
 
 #EndRegion
 

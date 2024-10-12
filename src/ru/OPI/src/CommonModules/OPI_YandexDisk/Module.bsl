@@ -1,7 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
 // Lib: Yandex Disk
 // CLI: yadisk
- 
+
 // MIT License
 
 // Copyright (c) 2023 Anton Tsitavets
