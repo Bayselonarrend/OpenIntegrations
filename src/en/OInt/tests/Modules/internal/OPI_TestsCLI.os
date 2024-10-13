@@ -1000,6 +1000,162 @@ EndProcedure
 
 #EndRegion
 
+#Region Notion
+
+Procedure CLI_NotionAPI_CreatePage() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"     , TestParameters);
+
+    CLI_Notion_CreatePage(TestParameters);
+    CLI_Notion_GetPage(TestParameters);
+    CLI_Notion_EditPageProperties(TestParameters);
+
+EndProcedure
+
+Procedure CLI_NotionAPI_CreateUpdateBase() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+
+    CLI_Notion_CreateDatabase(TestParameters);
+    CLI_Notion_EditDatabaseProperties(TestParameters);
+    CLI_Notion_GetDatabase(TestParameters);
+    CLI_Notion_CreatePageInDatabase(TestParameters);
+
+EndProcedure
+
+Procedure CLI_NotionAPI_CreateDeleteBlock() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Parent", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Block" , TestParameters);
+
+    CLI_Notion_ReturnBlock(TestParameters);
+    CLI_Notion_CreateBlock(TestParameters);
+    CLI_Notion_ReturnChildBlocks(TestParameters);
+    CLI_Notion_DeleteBlock(TestParameters);
+
+EndProcedure
+
+Procedure CLI_NotionAPI_GetUsers() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Notion_User" , TestParameters);
+
+    CLI_Notion_UserList(TestParameters);
+    CLI_Notion_GetUserData(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
+#Region Slack
+
+Procedure CLI_SlackGetData() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token", TestParameters);
+
+    CLI_Slack_GetBotInformation(TestParameters);
+    CLI_Slack_GetUserList(TestParameters);
+    CLI_Slack_GetWorkspaceList(TestParameters);
+
+EndProcedure
+
+Procedure CLI_Slack_SendDeleteMessage() Export
+
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"   , TestParameters);
+
+    CLI_Slack_SendMessage(TestParameters);
+    CLI_Slack_EditMessage(TestParameters);
+    CLI_Slack_GetMessageReplyList(TestParameters);
+    CLI_Slack_GetMessageLink(TestParameters);
+    CLI_Slack_DeleteMessage(TestParameters);
+    CLI_Slack_SendEphemeralMessage(TestParameters);
+    CLI_Slack_GetDelayedMessageList(TestParameters);
+    CLI_Slack_GenerateImageBlock(TestParameters);
+
+EndProcedure
+
+Procedure CLI_Slack_CreateArchiveChannel() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"  , TestParameters);
+
+    CLI_Slack_CreateChannel(TestParameters);
+    CLI_Slack_SetChannelTopic(TestParameters);
+    CLI_Slack_SetChannelGoal(TestParameters);
+    CLI_Slack_GetChannel(TestParameters);
+    CLI_Slack_InviteUsersToChannel(TestParameters);
+    CLI_Slack_KickUserFromChannel(TestParameters);
+    CLI_Slack_GetChannelHistory(TestParameters);
+    CLI_Slack_GetChannelUserList(TestParameters);
+    CLI_Slack_LeaveChannel(TestParameters);
+    CLI_Slack_JoinChannel(TestParameters);
+    CLI_Slack_RenameChannel(TestParameters);
+    CLI_Slack_ArchiveChannel(TestParameters);
+    CLI_Slack_GetChannelList(TestParameters);
+
+EndProcedure
+
+Procedure CLI_Slack_OpenCloseDialog() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_User"  , TestParameters);
+
+    CLI_Slack_OpenDialog(TestParameters);
+    CLI_Slack_CloseDialog(TestParameters);
+
+EndProcedure
+
+Procedure CLI_Slack_UploadDeleteFile() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
+
+    CLI_Slack_GetFilesList(TestParameters);
+    CLI_Slack_UploadFile(TestParameters);
+    CLI_Slack_MakeFilePublic(TestParameters);
+    CLI_Slack_MakeFilePrivate(TestParameters);
+    CLI_Slack_GetFileData(TestParameters);
+    CLI_Slack_DeleteFile(TestParameters);
+
+EndProcedure
+
+Procedure CLI_Slack_UploadDeleteExternalFile() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Token"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Slack_Channel", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
+
+    CLI_Slack_GetExternalFileList(TestParameters);
+    CLI_Slack_AddExternalFile(TestParameters);
+    CLI_Slack_GetExternalFile(TestParameters);
+    CLI_Slack_SendExternalFile(TestParameters);
+    CLI_Slack_DeleteExternalFile(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -5147,6 +5303,1045 @@ Procedure CLI_Twitter_UploadAttachmentsArray(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "UploadAttachmentsArray", "Twitter");
     OPI_TestDataRetrieval.Check_Array(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region Notion
+
+Procedure CLI_Notion_CreatePage(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Parent = FunctionParameters["Notion_Parent"];
+    Title  = "TestTitle";
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("page" , Parent);
+    Options.Insert("title", Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePage", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result);
+
+    Page = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Notion_Page", Page);
+    OPI_Tools.AddField("Notion_Page", Page, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_Notion_CreateDatabase(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Parent = FunctionParameters["Notion_Parent"];
+    Title  = "TestTitle";
+
+    Properties = New Map;
+    Properties.Insert("Name"         , "title");
+    Properties.Insert("Description"  , "rich_text");
+    Properties.Insert("Number"       , "number");
+    Properties.Insert("Status"       , "status");
+    Properties.Insert("CreationDate" , "date");
+    Properties.Insert("Image"        , "files");
+    Properties.Insert("Active"       , "checkbox");
+    Properties.Insert("Website"      , "url");
+    Properties.Insert("Email"        , "email");
+    Properties.Insert("Phone"        , "phone_number");
+    Properties.Insert("User"         , "people");
+
+    ValueSelection = New Map;
+    ValueSelection.Insert("New"        , "green");
+    ValueSelection.Insert("InProgress" , "yellow");
+    ValueSelection.Insert("Remote"     , "red");
+
+    Properties.Insert("Status", ValueSelection);
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("page" , Parent);
+    Options.Insert("title", Title);
+    Options.Insert("props", Properties);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateDatabase", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
+
+    Base = Result["id"];
+    OPI_TestDataRetrieval.WriteParameter("Notion_Base", Base);
+    OPI_Tools.AddField("Notion_Base", Base, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_Notion_EditDatabaseProperties(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Base  = FunctionParameters["Notion_Base"];
+
+    Title       = "TestTitle";
+    Description = "TestDescription";
+
+    Properties = New Map;
+    Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
+    Properties.Insert("Website"); // Field "Website" will deleted
+
+    Options = New Structure;
+    Options.Insert("token"      , Token);
+    Options.Insert("base"       , Base);
+    Options.Insert("props"      , Properties);
+    Options.Insert("title"      , Title);
+    Options.Insert("description", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditDatabaseProperties", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditDatabaseProperties", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
+
+EndProcedure
+
+Procedure CLI_Notion_GetPage(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Page  = FunctionParameters["Notion_Page"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("page"  , Page);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetPage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPage", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result);
+
+EndProcedure
+
+Procedure CLI_Notion_GetDatabase(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Base  = FunctionParameters["Notion_Base"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("base" , Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetDatabase", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDatabase", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
+
+EndProcedure
+
+Procedure CLI_Notion_CreatePageInDatabase(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Base   = FunctionParameters["Notion_Base"];
+    Image_ = FunctionParameters["Picture"]; // URL, Binary Data or Path to file
+
+    Image = New Map;
+    Image.Insert("Logo", Image_);
+
+    Properties = New Map;
+    Properties.Insert("Name"         , "LLC Vector");
+    Properties.Insert("Description"  , "OurFirstClient");
+    Properties.Insert("Number"       , 1);
+    Properties.Insert("Status"       , "Regular");
+    Properties.Insert("CreationDate" , OPI_Tools.GetCurrentDate());
+    Properties.Insert("Image"        , Image);
+    Properties.Insert("Active"       , True);
+    Properties.Insert("Website"      , "https://vector.ru");
+    Properties.Insert("Email"        , "mail@vector.ru");
+    Properties.Insert("Phone"        , "88005553535");
+    Properties.Insert("Status"       , "New");
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("base" , Base);
+    Options.Insert("data" , Properties);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePageInDatabase", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreatePageInDatabase", "Notion");
+    OPI_TestDataRetrieval.Check_NotionBasePage(Result, Base);
+
+EndProcedure
+
+Procedure CLI_Notion_EditPageProperties(FunctionParameters)
+
+    Token   = FunctionParameters["Notion_Token"];
+    Page    = FunctionParameters["Notion_Page"];
+    Icon    = FunctionParameters["Picture"];
+    Cover   = FunctionParameters["Picture2"];
+    Archive = False;
+
+    Properties = New Map;
+    Properties.Insert("Active" , False);
+    Properties.Insert("Email"  , "vector@mail.ru");
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("page"   , Page);
+    Options.Insert("data"   , Properties);
+    Options.Insert("icon"   , Icon);
+    Options.Insert("cover"  , Cover);
+    Options.Insert("archive", Archive);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditPageProperties", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditPageProperties", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result);
+
+EndProcedure
+
+Procedure CLI_Notion_ReturnBlock(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Block = FunctionParameters["Notion_Block"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("block" , Block);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnBlock", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnBlock", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
+
+EndProcedure
+
+Procedure CLI_Notion_CreateBlock(FunctionParameters)
+
+    Token  = FunctionParameters["Notion_Token"];
+    Parent = FunctionParameters["Notion_Parent"];
+    Block  = FunctionParameters["Notion_Block"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("block" , Block);
+
+    BlockData = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnBlock", Options);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("page"  , Parent);
+    Options.Insert("block" , BlockData);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateBlock", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBlock", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
+
+    Block = Result["results"][0]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Notion_NewBlock", Block);
+    OPI_Tools.AddField("Notion_NewBlock", Block, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_Notion_ReturnChildBlocks(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Block = FunctionParameters["Notion_NewBlock"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("block" , Block);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnChildBlocks", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ReturnChildBlocks", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
+
+EndProcedure
+
+Procedure CLI_Notion_DeleteBlock(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    Block = FunctionParameters["Notion_NewBlock"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("block" , Block);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "DeleteBlock", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBlock", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
+
+EndProcedure
+
+Procedure CLI_Notion_UserList(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "UserList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UserList", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
+
+EndProcedure
+
+Procedure CLI_Notion_GetUserData(FunctionParameters)
+
+    Token = FunctionParameters["Notion_Token"];
+    User  = FunctionParameters["Notion_User"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("user"  , User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetUserData", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData", "Notion");
+    OPI_TestDataRetrieval.Check_NotionObject(Result, "user");
+
+EndProcedure
+
+#EndRegion
+
+#Region Slack
+
+Procedure CLI_Slack_GetBotInformation(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetBotInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetBotInformation", "Slack");
+    OPI_TestDataRetrieval.Check_SlackBot(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetUserList(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetUserList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetUserList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackUsers(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetWorkspaceList(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetWorkspaceList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetWorkspaceList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackWorkspaces(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_SendMessage(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    // Text
+
+    Text = "TestMessage1";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage", "Slack"); // SKIP
+    OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel); // SKIP
+
+    Timestamp = Result["ts"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Slack_MessageTS", Timestamp); // SKIP
+    OPI_Tools.AddField("Slack_MessageTS", Timestamp, "String", FunctionParameters); // SKIP
+
+
+    // With attachments (picture block in the example)
+
+    Text       = "Message with picture";
+    Image      = FunctionParameters["Picture"];
+    BlockArray = New Array;
+
+    Options = New Structure;
+    Options.Insert("picture", Image);
+    Options.Insert("alt"    , "Image");
+
+    Block = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
+
+    BlockArray.Add(Block);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("text"   , Text);
+    Options.Insert("blocks" , BlockArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (picture)"); // SKIP
+    OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel); // SKIP
+
+    // Sheduled
+
+    Text = "Sheduled message";
+    Hour = 3600;
+    Day  = 24;
+
+    SendingDate = OPI_Tools.GetCurrentDate() + (Day * Hour);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("text"   , Text);
+    Options.Insert("date"   , SendingDate);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (scheduled)");
+    OPI_TestDataRetrieval.Check_SlackSheduledMessage(Result, Channel);
+
+    Timestamp = Result["scheduled_message_id"];
+    Result    = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage (scheduled)");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GenerateImageBlock(FunctionParameters)
+
+    Image = FunctionParameters["Picture"];
+
+    Options = New Structure;
+    Options.Insert("picture", Image);
+    Options.Insert("alt"    , "Image");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GenerateImageBlock", "Slack");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_EditMessage(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Text = "TestMessage2";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("stamp"  , Timestamp);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "EditMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage", "Slack");
+    OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel);
+
+EndProcedure
+
+Procedure CLI_Slack_GetMessageReplyList(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("stamp"  , Timestamp);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetMessageReplyList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageReplyList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackMessages(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetMessageLink(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("stamp"  , Timestamp);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetMessageLink", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageLink", "Slack");
+    OPI_TestDataRetrieval.Check_SlackMessageLink(Result, Channel);
+
+EndProcedure
+
+Procedure CLI_Slack_DeleteMessage(FunctionParameters)
+
+    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("stamp"  , Timestamp);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_SendEphemeralMessage(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+    User    = FunctionParameters["Slack_User"];
+    Image   = FunctionParameters["Picture"];
+    Text    = "Ephemeral message";
+
+    Options = New Structure;
+    Options.Insert("picture", Image);
+    Options.Insert("alt"    , "Image");
+
+    Block = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("text"   , Text);
+    Options.Insert("user"   , User);
+    Options.Insert("blocks" , Block);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendEphemeralMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendEphemeralMessage", "Slack");
+    OPI_TestDataRetrieval.Check_SlackEphemeral(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetDelayedMessageList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetDelayedMessageList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDelayedMessageList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackSheduled(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_CreateChannel(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+    Name  = "testconv" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("title"  , Name);
+    Options.Insert("private", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "CreateChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, Name);
+
+    Channel = Result["channel"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Slack_NewChannel", Channel);
+    OPI_Tools.AddField("Slack_NewChannel", Channel, "String", FunctionParameters);
+
+    OPI_TestDataRetrieval.WriteParameter("Slack_NewChannelName", Name);
+    OPI_Tools.AddField("Slack_NewChannelName", Name, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_Slack_SetChannelTopic(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    Topic   = "TestTopic";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("theme"  , Topic);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelTopic", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelTopic", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelTopic(Result, Topic);
+
+EndProcedure
+
+Procedure CLI_Slack_SetChannelGoal(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    Purpose = "TestGoal";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("purpose", Purpose);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelGoal", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelGoal", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
+
+EndProcedure
+
+Procedure CLI_Slack_InviteUsersToChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    User    = FunctionParameters["Slack_User"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("users"  , User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "InviteUsersToChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "InviteUsersToChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
+
+EndProcedure
+
+Procedure CLI_Slack_KickUserFromChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    User    = FunctionParameters["Slack_User"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("user"   , User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "KickUserFromChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "KickUserFromChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetChannelHistory(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelHistory", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelHistory", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelHistory(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetChannelUserList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelUserList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelUserList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelUsers(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_LeaveChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "LeaveChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "LeaveChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_JoinChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "JoinChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "JoinChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
+
+EndProcedure
+
+Procedure CLI_Slack_RenameChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    Name    = "testconv" + String(New UUID);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+    Options.Insert("title"  , Name);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "RenameChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RenameChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannel(Result, Name);
+
+EndProcedure
+
+Procedure CLI_Slack_ArchiveChannel(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "ArchiveChannel", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveChannel", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetChannelList(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackChannelsList(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_OpenDialog(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+    User  = FunctionParameters["Slack_User"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("users", User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "OpenDialog", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "OpenDialog", "Slack");
+    OPI_TestDataRetrieval.Check_SlackDialog(Result);
+
+    Dialog = Result["channel"]["id"];
+
+    OPI_TestDataRetrieval.WriteParameter("Slack_Dialog", Dialog);
+    OPI_Tools.AddField("Slack_Dialog", Dialog, "String", FunctionParameters);
+
+    Result = OPI_Slack.SendMessage(Token, Dialog, "Test dialog");
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (dialog)");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_CloseDialog(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    Dialog = FunctionParameters["Slack_Dialog"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("conv" , Dialog);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "CloseDialog", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CloseDialog", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetFilesList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("channel", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFilesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFilesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList (full)");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_UploadFile(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+    File    = FunctionParameters["Document"]; // URL, Binary Data or Path to file
+
+    FileName = "megadoc.docx";
+    Title    = "NewFile";
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("file"    , File);
+    Options.Insert("filename", FileName);
+    Options.Insert("title"   , Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile"     , "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePublic" , "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePrivate", "Slack"); // SKIP
+    OPI_TestDataRetrieval.Check_SlackFile(Result, FileName); // SKIP
+
+    UploadedFile = Result["files"][0]["id"]; // SKIP
+    OPI_TestDataRetrieval.WriteParameter("Slack_FileID", UploadedFile); // SKIP
+    OPI_Tools.AddField("Slack_FileID", UploadedFile, "String", FunctionParameters); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("file"    , File);
+    Options.Insert("filename", FileName);
+    Options.Insert("title"   , Title);
+    Options.Insert("channel" , Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (to channel)");
+    OPI_TestDataRetrieval.Check_SlackFile(Result, FileName);
+    OPI_Slack.DeleteFile(Token, Result["files"][0]["id"]);
+
+EndProcedure
+
+Procedure CLI_Slack_MakeFilePublic(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "MakeFilePublic", Options);
+
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_MakeFilePrivate(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "MakeFilePrivate", Options);
+
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetFileData(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFileData", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileData", "Slack");
+    OPI_TestDataRetrieval.Check_SlackFile(Result, "megadoc.docx");
+
+EndProcedure
+
+Procedure CLI_Slack_DeleteFile(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_FileID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_GetExternalFileList(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("channel" , Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFileList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList", "Slack");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFileList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList (full)");
+    OPI_TestDataRetrieval.Check_SlackFilesList(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_AddExternalFile(FunctionParameters)
+
+    Token = FunctionParameters["Slack_Token"];
+    Title = "NewFile";
+    File  = FunctionParameters["Document"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("url"   , File);
+    Options.Insert("title" , Title);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "AddExternalFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackExternalFile(Result, Title);
+
+    UploadedFile = Result["file"]["id"];
+    OPI_TestDataRetrieval.WriteParameter("Slack_ExtFileID", UploadedFile);
+    OPI_Tools.AddField("Slack_ExtFileID", UploadedFile, "String", FunctionParameters);
+
+EndProcedure
+
+Procedure CLI_Slack_GetExternalFile(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_ExtFileID"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("fileid", FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackExternalFile(Result, "NewFile");
+
+EndProcedure
+
+Procedure CLI_Slack_SendExternalFile(FunctionParameters)
+
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+    FileID  = FunctionParameters["Slack_ExtFileID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("fileid"  , FileID);
+    Options.Insert("channels", Channel);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendExternalFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
+
+EndProcedure
+
+Procedure CLI_Slack_DeleteExternalFile(FunctionParameters)
+
+    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_ExtFileID"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("fileid", FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteExternalFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteExternalFile", "Slack");
+    OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
 

@@ -26,7 +26,7 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен     = "xoxb-6965308400114-696804637...";
     Заголовок = "Новый файл";
-    Файл      = "https://api.athenaeum.digital/test_data/document.docx"; // URL, Двоичные данные или Путь к файлу
+    Файл      = "https://api.athenaeum.digital/test_data/document.docx";
 
     Результат = OPI_Slack.ДобавитьВнешнийФайл(Токен, Файл, Заголовок);
 ```

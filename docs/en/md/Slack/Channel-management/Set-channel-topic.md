@@ -25,7 +25,7 @@ sidebar_position: 11
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R61HC15M";
+    Channel = "C07RKAL4EF7";
     Topic   = "TestTopic";
 
     Result = OPI_Slack.SetChannelTopic(Token, Channel, Topic);

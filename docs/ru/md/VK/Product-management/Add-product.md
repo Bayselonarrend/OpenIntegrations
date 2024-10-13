@@ -28,7 +28,7 @@ sidebar_position: 4
 
     Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
     Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
-    Подборка  = "133";
+    Подборка  = "128";
 
     МассивКартинок = Новый Массив;
     МассивКартинок.Добавить(Картинка1);

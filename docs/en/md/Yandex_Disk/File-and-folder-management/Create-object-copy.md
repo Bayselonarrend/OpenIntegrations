@@ -26,7 +26,7 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Original = "/d51f82d0-0399-49b9-a45e-a00330797a14.png";
+    Original = "/55ea8d67-9f19-45d3-a65e-2f8ae070c7e2.png";
     Path     = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);

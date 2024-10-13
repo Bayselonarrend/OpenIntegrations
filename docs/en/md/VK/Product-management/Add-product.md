@@ -28,7 +28,7 @@ sidebar_position: 4
 
     Image1    = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary or Path to file
     Image2    = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary or Path to file
-    Selection = "133";
+    Selection = "128";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);
