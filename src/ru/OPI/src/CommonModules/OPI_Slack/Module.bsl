@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Slack.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Slack.os
 // Lib: Slack
 // CLI: slack
 
@@ -160,7 +160,7 @@
     , Знач Блоки = "") Экспорт
 
     Строка_ = "Строка";
-    
+
     Заголовки = ПолучитьЗаголовокАвторизации(Токен);
 
     Параметры = Новый Структура;
