@@ -6052,7 +6052,7 @@ Procedure Slack_AddExternalFile(FunctionParameters)
 
     Token = FunctionParameters["Slack_Token"];
     Title = "NewFile";
-    File  = FunctionParameters["Document"]; // URL, Binary Data or Path to file
+    File  = FunctionParameters["Document"];
 
     Result = OPI_Slack.AddExternalFile(Token, File, Title);
 

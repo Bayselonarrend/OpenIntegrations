@@ -159,21 +159,32 @@ Procedure GetArray(Value) Export
 
     If TypeOf(Value) = Type("String") And StrStartsWith(Value, "[") And StrEndsWith(Value, "]") Then
 
-        CommaInQuotes = "','";
+        Try
 
-        Value = StrReplace(Value, "['"   , "");
-        Value = StrReplace(Value, "']"   , "");
-        Value = StrReplace(Value, "', '" , CommaInQuotes);
-        Value = StrReplace(Value, "' , '", CommaInQuotes);
-        Value = StrReplace(Value, "' ,'" , CommaInQuotes);
+            JSONReader = New JSONReader;
+            JSONReader.SetString(Value);
+            Value      = ReadJSON(JSONReader);
+            JSONReader.Close();
 
-        Value = StrSplit(Value, CommaInQuotes, False);
+        Except
 
-        For N = 0 To Value.UBound() Do
+            CommaInQuotes = "','";
 
-            Value[N] = TrimAll(Value[N]);
+            Value = StrReplace(Value, "['"   , "");
+            Value = StrReplace(Value, "']"   , "");
+            Value = StrReplace(Value, "', '" , CommaInQuotes);
+            Value = StrReplace(Value, "' , '", CommaInQuotes);
+            Value = StrReplace(Value, "' ,'" , CommaInQuotes);
 
-        EndDo;
+            Value = StrSplit(Value, CommaInQuotes, False);
+
+            For N = 0 To Value.UBound() Do
+
+                Value[N] = TrimAll(Value[N]);
+
+            EndDo;
+
+        EndTry;
 
     Else
 
@@ -181,8 +192,10 @@ Procedure GetArray(Value) Export
             Value        = OPI_Tools.NumberToString(Value);
         EndIf;
 
-        OPI_Tools.ValueToArray(Value);
+    EndIf;
 
+    If Not TypeOf(Value) = Type("Array") Then
+        OPI_Tools.ValueToArray(Value);
     EndIf;
 
 EndProcedure

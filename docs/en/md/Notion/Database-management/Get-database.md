@@ -24,7 +24,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base  = "11d82aa7-fc4e-8164-a78a-d4f750eb6066";
+    Base  = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
 
     Result = OPI_Notion.GetDatabase(Token, Base);
 ```
