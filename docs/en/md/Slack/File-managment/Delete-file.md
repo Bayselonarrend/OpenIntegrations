@@ -24,7 +24,7 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Token  = "xoxb-6965308400114-696804637...";
-    FileID = "F07RFHJL5T8";
+    FileID = "F07RFKJR7GW";
 
     Result = OPI_Slack.DeleteFile(Token, FileID);
 ```

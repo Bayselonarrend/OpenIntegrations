@@ -25,7 +25,7 @@ sidebar_position: 6
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Product = "9755487";
+    Product = "9756133";
 
     Result = OPI_VK.DeleteProduct(Product, Parameters);
 ```
