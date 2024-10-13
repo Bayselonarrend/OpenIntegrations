@@ -24,7 +24,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token  = "xoxb-6965308400114-696804637...";
-    FileID = "F07S0SGAKJM";
+    FileID = "F07RN8F33GS";
 
     Result = OPI_Slack.GetExternalFile(Token, FileID);
 ```
