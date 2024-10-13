@@ -25,7 +25,7 @@ sidebar_position: 1
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    PostID     = "4703";
+    PostID     = "4712";
 
     Result = OPI_VK.LikePost(PostID, , Parameters);
 ```

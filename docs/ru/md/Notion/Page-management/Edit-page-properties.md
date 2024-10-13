@@ -28,7 +28,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница     = "11d82aa7-fc4e-81b7-af12-e5533406159f";
+    Страница     = "11e82aa7-fc4e-81be-a17f-c8f8ec9b863d";
     Иконка       = "https://api.athenaeum.digital/test_data/picture.jpg";
     Обложка      = "https://api.athenaeum.digital/test_data/picture2.jpg";
     Архивировать = Ложь;

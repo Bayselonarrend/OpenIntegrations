@@ -24,7 +24,7 @@ sidebar_position: 6
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R61HC15M";
+    Channel = "C07RKAL4EF7";
 
     Result = OPI_Slack.GetChannelHistory(Token, Channel);
 ```
