@@ -28,10 +28,10 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base    = "app7wcH961p8fBBRH";
-    Table   = "tblSwEBXQOQHSEl7u";
-    Record  = "recwsjcLW3prWbE9e";
-    Comment = "comfaFDciP11JXx3w";
+    Base    = "appESy99HYCLbuWlV";
+    Table   = "tbl5gZLQ8i5xKuVTy";
+    Record  = "recHqUT4ruWn8KnYi";
+    Comment = "comc3oQtvx4mn0pdu";
 
     Text   = "Test comment (change.)";
     Result = OPI_Airtable.EditComment(Token, Base, Table, Record, Comment, Text);
