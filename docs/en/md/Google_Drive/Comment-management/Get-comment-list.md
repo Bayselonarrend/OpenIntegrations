@@ -23,8 +23,8 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612zmTq3HijDy5D8xu-llkoj4aTlkgkrZ4LGSZcpCOnX1Z6xu9IsTLXFZSJu8uVsYxHj0ih5glQrF0yWTomhAPTGm1M9Kk7ZvYIwpm...";
-    Identifier = "1jUonZ73Ck_Wyv5FDpsBr7UVSwx1mt0dp";
+    Token      = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Identifier = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
 
     Result = OPI_GoogleDrive.GetCommentList(Token, Identifier);
 ```

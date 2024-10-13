@@ -1849,16 +1849,9 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
         Value = XMLString(Value);
 
-    ElsIf CurrentType = Type("Array") Then
-
-        For N = 0 To Value.UBound() Do
-            Value.Set(N, GetCLIFormedValue(Value[N], True));
-        EndDo;
-
-        Value = StrConcat(Value, "','");
-        Value = """['" + Value + "']""";
-
-    ElsIf CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
+    ElsIf CurrentType  = Type("Structure")
+        Or CurrentType = Type("Map")
+        Or CurrentType = Type("Array") Then
 
         JSONWriter     = New JSONWriter();
         WriterSettings = New JSONWriterSettings(JSONLineBreak.None, , False);

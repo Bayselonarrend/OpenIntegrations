@@ -24,7 +24,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Блок   = "11d82aa7-fc4e-8102-b2e6-f4e7c98f8b4c";
+    Блок   = "11e82aa7-fc4e-81a6-964e-e3689f51bcbf";
 
     Результат = OPI_Notion.УдалитьБлок(Токен, Блок);
 ```
