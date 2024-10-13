@@ -157,7 +157,7 @@ Procedure GetArray(Value) Export
         Return;
     EndIf;
 
-    If TypeOf(Value) = Type("String") And StrStartsWith(Value, "[") And StrEndsWith(Value, "]") Then
+    If TypeOf(Value) = Type("String") Then
 
         Try
 
@@ -167,29 +167,14 @@ Procedure GetArray(Value) Export
             JSONReader.Close();
 
         Except
-
-            CommaInQuotes = "','";
-
-            Value = StrReplace(Value, "['"   , "");
-            Value = StrReplace(Value, "']"   , "");
-            Value = StrReplace(Value, "', '" , CommaInQuotes);
-            Value = StrReplace(Value, "' , '", CommaInQuotes);
-            Value = StrReplace(Value, "' ,'" , CommaInQuotes);
-
-            Value = StrSplit(Value, CommaInQuotes, False);
-
-            For N = 0 To Value.UBound() Do
-
-                Value[N] = TrimAll(Value[N]);
-
-            EndDo;
-
         EndTry;
 
     Else
 
         If TypeOf(Value) = Type("Number") Then
-            Value        = OPI_Tools.NumberToString(Value);
+
+            Value = OPI_Tools.NumberToString(Value);
+
         EndIf;
 
     EndIf;
