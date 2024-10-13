@@ -118,19 +118,6 @@ Function SendMessage(Val Token, Val Channel, Val Text = "", Val SendingDate = ""
     HasDate = ValueIsFilled(SendingDate);
     Headers = GetAuthorizationHeader(Token);
 
-    If ValueIsFilled(Blocks) And TypeOf(Blocks) = Type(String_) Then
-        OPI_TypeConversion.GetCollection(Blocks);
-
-        If TypeOf(Blocks) = Type("Array") Then
-
-            For N = 0 To Blocks.UBound() Do
-                OPI_TypeConversion.GetCollection(Blocks[N]);
-            EndDo;
-
-        EndIf;
-
-    EndIf;
-
     Parameters = New Structure;
     OPI_Tools.AddField("channel", Channel, String_ , Parameters);
     OPI_Tools.AddField("text"   , Text   , String_ , Parameters);
@@ -174,17 +161,13 @@ Function SendEphemeralMessage(Val Token
 
     String_ = "String";
 
-    If ValueIsFilled(Blocks) And Not TypeOf(Blocks) = Type(String_) Then
-        OPI_TypeConversion.GetArray(Blocks);
-    EndIf;
-
     Headers = GetAuthorizationHeader(Token);
 
     Parameters = New Structure;
-    OPI_Tools.AddField("channel", Channel , String_     , Parameters);
-    OPI_Tools.AddField("text"   , Text    , String_     , Parameters);
-    OPI_Tools.AddField("user"   , User    , String_     , Parameters);
-    OPI_Tools.AddField("blocks" , Blocks  , "Collection", Parameters);
+    OPI_Tools.AddField("channel", Channel , String_ , Parameters);
+    OPI_Tools.AddField("text"   , Text    , String_ , Parameters);
+    OPI_Tools.AddField("user"   , User    , String_ , Parameters);
+    OPI_Tools.AddField("blocks" , Blocks  , "Array" , Parameters);
 
     URL = "https://slack.com/api/chat.postEphemeral";
 
