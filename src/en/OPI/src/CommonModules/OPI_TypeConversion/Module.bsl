@@ -159,15 +159,15 @@ Procedure GetArray(Value) Export
 
     If TypeOf(Value) = Type("String") Then
 
-        Try
+        Value_ = TrimAll(Value);
+
+        If StrStartsWith(Value_, "{") Or StrStartsWith(Value_, "[") Then
 
             JSONReader = New JSONReader;
             JSONReader.SetString(Value);
             Value      = ReadJSON(JSONReader);
             JSONReader.Close();
-
-        Except
-        EndTry;
+        EndIf;
 
     Else
 
