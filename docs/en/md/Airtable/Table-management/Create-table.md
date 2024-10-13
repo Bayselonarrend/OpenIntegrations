@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ```bsl title="Code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "app7wcH961p8fBBRH";
+    Base  = "appESy99HYCLbuWlV";
 
     FieldArray = New Array;
     FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
