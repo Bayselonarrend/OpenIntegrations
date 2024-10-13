@@ -26,8 +26,8 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "app7wcH961p8fBBRH";
-    Таблица = "tblSwEBXQOQHSEl7u";
+    База    = "appESy99HYCLbuWlV";
+    Таблица = "tbl5gZLQ8i5xKuVTy";
 
     Номер     = 10;
     Строковое = "Привет";

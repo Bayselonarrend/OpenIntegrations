@@ -28,9 +28,9 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "app7wcH961p8fBBRH";
-    Table = "tblSwEBXQOQHSEl7u";
-    Field = "fld7tce7eAHSdYzAC";
+    Base  = "appESy99HYCLbuWlV";
+    Table = "tbl5gZLQ8i5xKuVTy";
+    Field = "fldzPMAQ2obgGcvxG";
 
     Name        = String(New UUID) + "(change.)";
     Description = "New description";
