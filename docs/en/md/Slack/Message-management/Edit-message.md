@@ -28,7 +28,7 @@ sidebar_position: 3
 ```bsl title="Code example"
     Token     = "xoxb-6965308400114-696804637...";
     Channel   = "C06UFNUTKUL";
-    Timestamp = "1728821300.256739";
+    Timestamp = "1728821869.840169";
 
     Text = "TestMessage2";
 
