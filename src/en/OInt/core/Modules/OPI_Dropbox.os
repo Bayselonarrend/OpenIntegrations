@@ -361,7 +361,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Token - token
-// From - String - Path to the original object - form
+// From - String - Path to the original object - from
 // Target - String - Target path for the new object - to
 //
 // Returns:
@@ -387,7 +387,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Token - token
-// From - String - Path to the original object - form
+// From - String - Path to the original object - from
 // Target - String - Target path for the new object - to
 //
 // Returns:
@@ -617,8 +617,8 @@ Function CancelFolderPublication(Val Token, Val FolderID) Export
 
 EndFunction
 
-// Add user to file
-// Defines access to the file for an external user
+// Add users to file
+// Defines access to the file for third-party users
 //
 // Parameters:
 // Token - String - Token - token
