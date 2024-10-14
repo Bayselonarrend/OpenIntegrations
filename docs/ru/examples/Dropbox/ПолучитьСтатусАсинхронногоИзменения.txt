@@ -1,4 +1,4 @@
-﻿    Токен     = "sl.B-u6EfyYuXzsEJud9asIzJsbw4J9TkpH4larM2xfRqRbMWSAfPQy0ZjwM3t0iyBzpWyf5KvFaK...";
-    IDРаботы  = "dbjid:AAAH9yg4plbs9p6Aec5ZRTD_UggHVT6pb7y5f8g7IQPqd-ycRAK7_EVMtBW4mb71V2l21bNK5y9UJ2K-J6XdKqyF";
+﻿    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    IDРаботы  = "dbjid:AACP-Bd0jYrnvlGEezhk65FDN-1sAlXg1FmEfjWibO2qt3sc3Yca2HQhzQuHu7aSqBCdN2pmgpS2ZUd8RkM2Yu8J";
 
     Результат = OPI_Dropbox.ПолучитьСтатусАсинхронногоИзменения(Токен, IDРаботы);
