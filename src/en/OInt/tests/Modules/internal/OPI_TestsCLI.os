@@ -1221,6 +1221,113 @@ EndProcedure
 
 #EndRegion
 
+#Region Dropbox
+
+Procedure CLI_DropboxAPI_GetUpdateToken() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Appkey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Appsecret", TestParameters);
+
+    CLI_Dropbox_GetAuthorizationLink(TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Code", TestParameters);
+
+    CLI_Dropbox_GetToken(TestParameters);
+
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Refresh", TestParameters);
+
+    CLI_Dropbox_UpdateToken(TestParameters);
+
+EndProcedure
+
+Procedure CLI_DropboxAPI_UploadFile() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"      , TestParameters);
+
+    CLI_Dropbox_UploadFile(TestParameters);
+    CLI_Dropbox_GetObjectInformation(TestParameters);
+    CLI_Dropbox_GetObjectVersionList(TestParameters);
+    CLI_Dropbox_RestoreObjectToVersion(TestParameters);
+    CLI_Dropbox_GetPreview(TestParameters);
+    CLI_Dropbox_DownloadFile(TestParameters);
+    CLI_Dropbox_MoveObject(TestParameters);
+    CLI_Dropbox_CopyObject(TestParameters);
+    CLI_Dropbox_DeleteObject(TestParameters);
+
+EndProcedure
+
+Procedure CLI_DropboxAPI_CreateFolder() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
+
+    CLI_Dropbox_CreateFolder(TestParameters);
+    CLI_Dropbox_DownloadFolder(TestParameters);
+
+EndProcedure
+
+Procedure CLI_DropboxAPI_GetFolderFileList() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
+
+    CLI_Dropbox_GetFolderFileList(TestParameters);
+
+EndProcedure
+
+Procedure CLI_DropboxAPI_UploadFileByURL() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"     , TestParameters);
+
+    CLI_Dropbox_UploadFileByURL(TestParameters);
+    CLI_Dropbox_GetUploadStatusByURL(TestParameters);
+
+EndProcedure
+
+Procedure CLI_DropboxAPI_CreateDeleteTag() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
+
+    CLI_Dropbox_AddTag(TestParameters);
+    CLI_Dropbox_GetTagList(TestParameters);
+    CLI_Dropbox_DeleteTag(TestParameters);
+
+EndProcedure
+
+Procedure CLI_DropboxAPI_GetAccount() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token", TestParameters);
+
+    CLI_Dropbox_GetAccountInformation(TestParameters);
+    CLI_Dropbox_GetSpaceUsageData(TestParameters);
+
+EndProcedure
+
+Procedure CLI_DropboxAPI_AccessManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_OtherUser", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Dropbox_FileID"   , TestParameters);
+
+    CLI_Dropbox_AddUsersToFile(TestParameters);
+    CLI_Dropbox_PublishFolder(TestParameters);
+    CLI_Dropbox_AddUsersToFolder(TestParameters);
+    CLI_Dropbox_CancelFolderPublication(TestParameters);
+    CLI_Dropbox_GetAsynchronousChangeStatus(TestParameters);
+    CLI_Dropbox_CancelFilePublication(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -6890,6 +6997,677 @@ Procedure CLI_Airtable_DeletePosts(FunctionParameters)
 
     OPI_TestDataRetrieval.WriteLog(Result, "DeletePosts", "Airtable");
     OPI_TestDataRetrieval.Check_ATRecords(Result);
+
+EndProcedure
+
+#EndRegion
+
+#Region Dropbox
+
+Procedure CLI_Dropbox_GetAuthorizationLink(FunctionParameters)
+
+    AppKey = FunctionParameters["Dropbox_Appkey"];
+
+    Options = New Structure;
+    Options.Insert("appkey", AppKey);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAuthorizationLink", Options);
+    Result = GetStringFromBinaryData(Result);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAuthorizationLink", "Dropbox");
+    OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String");
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetToken(FunctionParameters)
+
+    AppKey    = FunctionParameters["Dropbox_Appkey"];
+    AppSecret = FunctionParameters["Dropbox_Appsecret"];
+    Code      = FunctionParameters["Dropbox_Code"];
+
+    Options = New Structure;
+    Options.Insert("appkey"   , AppKey);
+    Options.Insert("appsecret", AppSecret);
+    Options.Insert("code"     , Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetToken");
+
+    Token   = Result["access_token"];
+    Refresh = Result["refresh_token"];
+
+    If ValueIsFilled(Token) Then
+        OPI_TestDataRetrieval.WriteParameter("Dropbox_Token", Token);
+    EndIf;
+
+    If ValueIsFilled(Refresh) Then
+        OPI_TestDataRetrieval.WriteParameter("Dropbox_Refresh", Refresh);
+    EndIf;
+
+EndProcedure
+
+Procedure CLI_Dropbox_UpdateToken(FunctionParameters)
+
+    AppKey       = FunctionParameters["Dropbox_Appkey"];
+    AppSecret    = FunctionParameters["Dropbox_Appsecret"];
+    RefreshToken = FunctionParameters["Dropbox_Refresh"];
+
+    Options = New Structure;
+    Options.Insert("appkey"   , AppKey);
+    Options.Insert("appsecret", AppSecret);
+    Options.Insert("refresh"  , RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RefreshToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RefreshToken");
+
+    Token = Result["access_token"];
+
+    OPI_TestDataRetrieval.ExpectsThat(Token).Заполнено();
+
+    OPI_TestDataRetrieval.WriteParameter("Dropbox_Token", Token);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetObjectInformation(FunctionParameters)
+
+    Path  = "/New/pic.png";
+    Token = FunctionParameters["Dropbox_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+    Options.Insert("detail", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetObjectInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInformation", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetPreview(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/mydoc.docx";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetPreview", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPreview", "Dropbox");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 120000);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_UploadFile(FunctionParameters)
+
+    Path  = "/New/pic.png";
+    Token = FunctionParameters["Dropbox_Token"];
+    Image = FunctionParameters["Picture"];
+
+    ImagePath = GetTempFileName("png");
+    CopyFile(Image, ImagePath);
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("file"     , ImagePath);
+    Options.Insert("path"     , Path);
+    Options.Insert("overwrite", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
+    DeleteFiles(ImagePath);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_UploadFileByURL(FunctionParameters)
+
+    Path  = "/New/url_doc.docx";
+    Token = FunctionParameters["Dropbox_Token"];
+    URL   = FunctionParameters["Document"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("url"   , URL);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFileByURL", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL", "Dropbox");
+
+    OPI_TestDataRetrieval.Check_DropboxWork(Result);
+
+    Work = Result["async_job_id"];
+
+    FunctionParameters.Insert("Dropbox_Job", Work);
+    OPI_TestDataRetrieval.WriteParameter("Dropbox_Job", Work);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetUploadStatusByURL(FunctionParameters)
+
+    Token  = FunctionParameters["Dropbox_Token"];
+    WorkID = FunctionParameters["Dropbox_Job"];
+    Status = "in_progress";
+
+    WHile Status = "in_progress" Do
+
+        Options = New Structure;
+        Options.Insert("token" , Token);
+        Options.Insert("job"   , WorkID);
+
+        Result    = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetUploadStatusByURL", Options);
+        Status = Result[".tag"];
+
+        OPI_Tools.Pause(5);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "GetUploadStatusByURL", "Dropbox");
+
+    EndDo;
+
+    // END
+
+    OPI_TestDataRetrieval.Check_DropboxStatus(Result);
+
+    Path = "/New/url_doc.docx";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
+
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Path);
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_DeleteObject(FunctionParameters)
+
+    Path  = "/New/pic.png";
+    Token = FunctionParameters["Dropbox_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_CopyObject(FunctionParameters)
+
+    Original = "/New/pic.png";
+    Copy     = "/New/pic_copy.png";
+    Token    = FunctionParameters["Dropbox_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("from"  , Original);
+    Options.Insert("to"    , Copy);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CopyObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Copy);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Copy);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
+
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Copy);
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_MoveObject(FunctionParameters)
+
+    OriginalPath = "/New/pic.png";
+    TargetPath   = "/pic.png";
+    Token        = FunctionParameters["Dropbox_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("from"  , OriginalPath);
+    Options.Insert("to"    , TargetPath);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "MoveObject", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, TargetPath);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("from"  , TargetPath);
+    Options.Insert("to"    , OriginalPath);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "MoveObject", Options);
+
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, OriginalPath);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_CreateFolder(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New catalog";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CreateFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Path);
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
+    OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_DownloadFile(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/pic.png";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DownloadFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "Dropbox");
+    OPI_TestDataRetrieval.Check_BinaryData(Result, 2000000);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_DownloadFolder(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DownloadFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFolder", "Dropbox");
+    OPI_TestDataRetrieval.Check_BinaryData(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetFolderFileList(FunctionParameters)
+
+    Path  = "/New";
+    Token = FunctionParameters["Dropbox_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetListOfFolderFiles", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfFolderFiles", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxArray(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetObjectVersionList(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/pic.png";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+    Options.Insert("amount", 1);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetObjectVersionList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectVersionList", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxArray(Result, 1);
+
+    Revision = Result["entries"][0]["rev"];
+
+    FunctionParameters.Insert("Dropbox_FileRevision", Revision);
+    OPI_TestDataRetrieval.WriteParameter("Dropbox_FileRevision", Revision);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_RestoreObjectToVersion(FunctionParameters)
+
+    Version = FunctionParameters["Dropbox_FileRevision"];
+    Token   = FunctionParameters["Dropbox_Token"];
+    Path    = "/New/pic.png";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+    Options.Insert("rev"   , Version);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RestoreObjectToVersion", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RestoreObjectToVersion", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetTagList(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+
+    PathsArray = New Array;
+    PathsArray.Add("/New/Dogs.mp3");
+    PathsArray.Add("/New/mydoc.docx");
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("paths" , PathsArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetTagList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTagList", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxTags(Result, PathsArray.Count());
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("paths" , "/New/mydoc.docx");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetTagList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetTagList (single)");
+    OPI_TestDataRetrieval.Check_DropboxTags(Result, 1);
+
+    HasTag = False;
+
+    For Each Tag In Result["paths_to_tags"][0]["tags"] Do
+        If Tag["tag_text"] = "important" Then
+            HasTag         = True;
+        EndIf;
+    EndDo;
+
+    OPI_TestDataRetrieval.ExpectsThat(HasTag).Равно(True);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_AddTag(FunctionParameters)
+
+    Tag   = "Important";
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/mydoc.docx";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+    Options.Insert("tag"   , Tag);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddTag", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddTag", "Dropbox");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_DeleteTag(FunctionParameters)
+
+    Tag   = "Important";
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New/mydoc.docx";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("path"  , Path);
+    Options.Insert("tag"   , Tag);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddTag", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTag", "Dropbox");
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetAccountInformation(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAccountInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAccountInformation", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxAccount(Result);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("account", Result["account_id"]);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAccountInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAccountInformation (third-party)");
+    OPI_TestDataRetrieval.Check_DropboxAccount(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetSpaceUsageData(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetSpaceUsageData", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSpaceUsageData", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxSpace(Result);
+
+EndProcedure
+
+Procedure CLI_Dropbox_AddUsersToFile(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    Email = FunctionParameters["Dropbox_OtherUser"];
+    File  = FunctionParameters["Dropbox_FileID"];
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("fileid"  , File);
+    Options.Insert("emails"  , Email);
+    Options.Insert("readonly", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxMember(Result, Email, False);
+
+    Mails = New Array;
+    Mails.Add(Email);
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("fileid"  , File);
+    Options.Insert("emails"  , Mails);
+    Options.Insert("readonly", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile (new.) ");
+    OPI_TestDataRetrieval.Check_DropboxMember(Result, Email, True);
+
+EndProcedure
+
+Procedure CLI_Dropbox_PublishFolder(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    Path  = "/New";
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path" , Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "PublishFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PublishFolder", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxPublicFolder(Result);
+
+    FolderID = Result["shared_folder_id"];
+
+    FunctionParameters.Insert("Dropbox_SharedFolder", FolderID);
+    OPI_TestDataRetrieval.WriteParameter("Dropbox_SharedFolder", FolderID);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_CancelFolderPublication(FunctionParameters)
+
+    Token  = FunctionParameters["Dropbox_Token"];
+    Folder = FunctionParameters["Dropbox_SharedFolder"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("folder", Folder);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CancelFolderPublication", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CancelFolderPublication", "Dropbox");
+
+    CurrentStatus = "in_progress";
+    JobID         = Result["async_job_id"];
+
+    WHile CurrentStatus = "in_progress" Do
+
+        Options = New Structure;
+        Options.Insert("token" , Token);
+        Options.Insert("job"   , JobID);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAsynchronousChangeStatus", Options);
+
+        CurrentStatus = Result[".tag"];
+        OPI_Tools.Pause(3);
+
+    EndDo;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAsynchronousChangeStatus", "Dropbox");
+    OPI_TestDataRetrieval.Check_DropboxStatus(Result);
+
+    FunctionParameters.Insert("Dropbox_NewJobID", JobID);
+    OPI_TestDataRetrieval.WriteParameter("Dropbox_NewJobID", JobID);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Dropbox_GetAsynchronousChangeStatus(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    JobID = FunctionParameters["Dropbox_NewJobID"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("job"  , JobID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAsynchronousChangeStatus", Options);
+
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Dropbox_AddUsersToFolder(FunctionParameters)
+
+    Token  = FunctionParameters["Dropbox_Token"];
+    Email  = FunctionParameters["Dropbox_OtherUser"];
+    Folder = FunctionParameters["Dropbox_SharedFolder"]; // shared_folder_id
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("folder"  , Folder);
+    Options.Insert("emails"  , Email);
+    Options.Insert("readonly", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFolder", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFolder", "Dropbox");
+
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+    Mails = New Array;
+    Mails.Add(Email);
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("folder"  , Folder);
+    Options.Insert("emails"  , Mails);
+    Options.Insert("readonly", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFolder", Options);
+
+    OPI_TestDataRetrieval.Check_Empty(Result);
+
+EndProcedure
+
+Procedure CLI_Dropbox_CancelFilePublication(FunctionParameters)
+
+    Token = FunctionParameters["Dropbox_Token"];
+    File  = FunctionParameters["Dropbox_FileID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("fileid" , File);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CancelFilePublication", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CancelFilePublication", "Dropbox");
+    OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
 

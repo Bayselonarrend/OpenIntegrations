@@ -348,7 +348,7 @@
     NewLine.Модуль      = "OPI_Dropbox";
     NewLine.Метод       = "CopyObject";
     NewLine.МетодПоиска = "COPYOBJECT";
-    NewLine.Параметр    = "--form";
+    NewLine.Параметр    = "--from";
     NewLine.Описание    = "Path to the original object";
     NewLine.Область     = "File and directory management";
 
@@ -379,7 +379,7 @@
     NewLine.Модуль      = "OPI_Dropbox";
     NewLine.Метод       = "MoveObject";
     NewLine.МетодПоиска = "MOVEOBJECT";
-    NewLine.Параметр    = "--form";
+    NewLine.Параметр    = "--from";
     NewLine.Описание    = "Path to the original object";
     NewLine.Область     = "File and directory management";
 
@@ -652,7 +652,7 @@
     NewLine.Параметр    = "--token";
     NewLine.Описание    = "Token";
     NewLine.Область     = "Shared access settings";
-    NewLine.ОписаниеМетода   = "Defines access to the file for an external user";
+    NewLine.ОписаниеМетода   = "Defines access to the file for third-party users";
 
 
     NewLine = CompositionTable.Add();

@@ -1,4 +1,4 @@
-﻿    Токен  = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
-    Папка  = "11721182785";
+﻿    Токен  = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Папка  = "11705714929";
 
     Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
