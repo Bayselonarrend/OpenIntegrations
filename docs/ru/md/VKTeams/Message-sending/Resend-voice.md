@@ -29,7 +29,7 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла  = "I000b3qLXbT1dFg04yowf6670a67e21bd";
+    IDФайла  = "I000bzdU0pRaLPRFQ42mv6670d55531bd";
 
     Результат = OPI_VKTeams.ПереслатьГолосовоеСообщение(Токен, IDЧата, IDФайла);
 ```
