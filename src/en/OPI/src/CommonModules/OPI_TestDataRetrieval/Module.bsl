@@ -339,6 +339,25 @@ Function GetFilePath(Val Path) Export
 
 EndFunction
 
+Function IsOneScript() Export
+
+    Try
+
+        Response = False;
+
+        //@skip-check module-unused-local-variable
+        Check = New OpenSSLSecureConnection();
+
+    Except
+
+        Response = True
+
+    EndTry;
+
+    Return Response;
+
+EndFunction
+
 Procedure ParameterToCollection(Parameter, Collection) Export
 
     Value = GetParameter(Parameter);
@@ -437,6 +456,8 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options) Export
         EndTry;
 
     EndTry;
+
+    WriteCLICall(Library, Method, Options);
 
     Return Result;
 
@@ -1886,6 +1907,60 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False)
 
 EndFunction
 
+Function FormOption(Val Value, Val Name, Val Embedded = False)
+
+    SecretsArray = New ValueList();
+    SecretsArray.Add("token");
+    SecretsArray.Add("key");
+    SecretsArray.Add("secret");
+    SecretsArray.Add("pass");
+    SecretsArray.Add("client");
+    SecretsArray.Add("api");
+    SecretsArray.Add("refresh");
+
+    If TypeOf(Value) = Type("Structure") Or TypeOf(Value) = Type("Map") Then
+
+        Value_ = ?(TypeOf(Value) = Type("Structure"), New Structure, New Map);
+
+        For Each Element In Value Do
+
+            Value_.Insert(Element.Key
+                , FormOption(Element.Value, Element.Key, True));
+
+        EndDo;
+
+        Value = Value_;
+
+    ElsIf TypeOf(Value) = Type("Array") Then
+
+        Value_ = New Array;
+
+        For Each Element In Value Do
+            Value_.Add(FormOption(Element, Name, True));
+        EndDo;
+
+        Value = Value_;
+
+    Else
+
+        For Each SecretKey In SecretsArray Do
+
+            If StrFind(Name, SecretKey) <> 0 Then
+                Value = "***";
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    If Not Embedded Then
+        Value = "--" + Name + " " + GetCLIFormedValue(Value);
+    EndIf;
+
+    Return Value;
+
+EndFunction
+
 Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
 
     NewTest         = ValueTable.Add();
@@ -1939,6 +2014,44 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library)
     Except
         Message("Failed to write log file!: " + ErrorDescription());
     EndTry;
+
+EndProcedure
+
+Procedure WriteCLICall(Val Library, Val Method, Val Options)
+
+    If Not IsOneScript() Then
+        Return;
+    EndIf;
+
+    CatalogExample = "./docs/ru/cli/NEW_CLI/" + Library;
+    FileExample    = New File(CatalogExample);
+
+    If Not FileExample.Exists() Then
+        CreateDirectory(CatalogExample);
+    EndIf;
+
+    MethodCatalog = CatalogExample + "/" + Method;
+    MethodFile    = New File(MethodCatalog);
+
+    If Not MethodFile.Exists() Then
+        CreateDirectory(MethodCatalog);
+    EndIf;
+
+    OptionsArray = New Array;
+
+    For Each Option In Options Do
+        CurrentOption = FormOption(Option.Value, Option.Key);
+        OptionsArray.Add(CurrentOption);
+    EndDo;
+
+    BatSeparator  = " ^" + Chars.LF + " ";
+    BashSeparator = " \" + Chars.LF + " ";
+
+    BatString  = "oint " + Library + " " + Method + BatSeparator + StrConcat(OptionsArray, BatSeparator);
+    BashString = "oint " + Library + " " + Method + " " + StrConcat(OptionsArray, BashSeparator);
+
+    GetBinaryDataFromString(BatString).Write(MethodCatalog + "/bat.txt");
+    GetBinaryDataFromString(BashString).Write(MethodCatalog + "/bash.txt");
 
 EndProcedure
 

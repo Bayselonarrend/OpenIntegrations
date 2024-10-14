@@ -1,6 +1,6 @@
 ﻿    ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1220696576";
+    ProductID = "1221718321";
 
     Prices = New Structure;
     Prices.Insert("auto_action_enabled"   , "DISABLED");

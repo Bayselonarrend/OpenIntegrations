@@ -1,4 +1,4 @@
 ﻿    Parameters = GetVKParameters();
-    Selection  = "130";
+    Selection  = "129";
 
     Result = OPI_VK.GetSelectionsByID(Selection, Parameters);

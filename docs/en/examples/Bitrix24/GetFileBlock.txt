@@ -1,4 +1,4 @@
 ﻿    Name = "Image";
-    URL  = "https://api.athenaeum.digital/test_data/document.docx";
+    URL  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Result = OPI_Bitrix24.GetFileBlock(Name, URL);
