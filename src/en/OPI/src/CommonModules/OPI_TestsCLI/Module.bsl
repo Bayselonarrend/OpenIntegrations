@@ -7170,7 +7170,7 @@ Procedure CLI_Dropbox_GetUploadStatusByURL(FunctionParameters)
         Options.Insert("token" , Token);
         Options.Insert("job"   , WorkID);
 
-        Result    = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetUploadStatusByURL", Options);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetUploadStatusByURL", Options);
         Status = Result[".tag"];
 
         OPI_Tools.Pause(5);

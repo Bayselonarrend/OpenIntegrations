@@ -2,8 +2,8 @@
 sidebar_position: 3
 ---
 
-# Добавить пользователя к файлу
- Определяет доступ к файлу для стороннего пользователя
+# Добавить пользователей к файлу
+ Определяет доступ к файлу для сторонних пользователей
 
 
 
@@ -25,7 +25,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
+    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Почта = "h5bk6ft62s@privaterelay.appleid.com";
     Файл  = "kJU6-a-pT48AAAAAAAAABw";
 

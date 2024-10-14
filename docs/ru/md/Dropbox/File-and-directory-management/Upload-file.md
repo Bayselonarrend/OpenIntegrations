@@ -26,7 +26,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Путь      = "/New/pic.png";
-    Токен     = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
