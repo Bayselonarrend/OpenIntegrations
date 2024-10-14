@@ -53,6 +53,14 @@ Procedure ИсполняемыеСценарии() Export
 
 EndProcedure
 
+// For Asserts
+
+Function ПолучитьСписокТестов(UnitTesting) Export
+
+   Return OPI_TestDataRetrieval.FormAssertsTestsCLI();
+
+EndFunction
+
 #Region RunnableTests
 
 #Region Telegram
