@@ -23,8 +23,8 @@ sidebar_position: 5
 
 
 ```bsl title="Code example"
-    Token = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
-    JobID = "dbjid:AABFXDgwbQggiyOnRhhmSt5mv1e1wUaZTgSWf0QEmkH_ID0iNGoqboF2xvZdmGEUzFEPbztCB3chaMBS3k9NnsVc";
+    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    JobID = "dbjid:AACP-Bd0jYrnvlGEezhk65FDN-1sAlXg1FmEfjWibO2qt3sc3Yca2HQhzQuHu7aSqBCdN2pmgpS2ZUd8RkM2Yu8J";
 
     Result = OPI_Dropbox.GetAsynchronousChangeStatus(Token, JobID);
 ```
