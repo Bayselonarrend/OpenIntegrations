@@ -12,7 +12,7 @@ sidebar_position: 8
   | Параметр | CLI опция | Тип | Назначение |
   |-|-|-|-|
   | Токен | --token | Строка | Токен |
-  | Откуда | --form | Строка | Путь к объекту оригинала |
+  | Откуда | --from | Строка | Путь к объекту оригинала |
   | Куда | --to | Строка | Целевой путь для нового объекта |
 
   
@@ -26,7 +26,7 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Оригинал  = "/New/pic.png";
     Копия     = "/New/pic_copy.png";
-    Токен     = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
 
     Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);
 ```

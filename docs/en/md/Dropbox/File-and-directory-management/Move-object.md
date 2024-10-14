@@ -12,7 +12,7 @@ sidebar_position: 9
   | Parameter | CLI option | Type | Description |
   |-|-|-|-|
   | Token | --token | String | Token |
-  | From | --form | String | Path to the original object |
+  | From | --from | String | Path to the original object |
   | Target | --to | String | Target path for the new object |
 
   
@@ -26,7 +26,7 @@ sidebar_position: 9
 ```bsl title="Code example"
     OriginalPath = "/New/pic.png";
     TargetPath   = "/pic.png";
-    Token        = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
+    Token        = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
 
     Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);
 ```
