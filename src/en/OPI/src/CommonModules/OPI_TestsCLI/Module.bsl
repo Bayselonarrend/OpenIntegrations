@@ -1328,6 +1328,72 @@ EndProcedure
 
 #EndRegion
 
+#Region VkTeams
+
+Procedure CLI_VKT_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_FileID", TestParameters);
+
+    CLI_VkTeams_CheckToken(TestParameters);
+    CLI_VkTeams_GetEvents(TestParameters);
+    CLI_VKTeams_GetFileInformation(TestParameters);
+
+EndProcedure
+
+Procedure CLI_VKT_MessagesSending() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_MessageID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Audio2"           , TestParameters);
+
+    CLI_VkTeams_SendTextMessage(TestParameters);
+    OPI_Tools.Pause(60);
+
+    CLI_VKTeams_ForwardMessage(TestParameters);
+    CLI_VKTeams_SendFile(TestParameters);
+    CLI_VKTeams_ResendFile(TestParameters);
+    CLI_VKTeams_EditMessageText(TestParameters);
+    CLI_VKTeams_PinMessage(TestParameters);
+    CLI_VKTeams_UnpinMessage(TestParameters);
+    CLI_VKTeams_DeleteMessage(TestParameters);
+    CLI_VKTeams_SendVoice(TestParameters);
+    CLI_VKTeams_ResendVoice(TestParameters);
+
+EndProcedure
+
+Procedure CLI_VKT_ChatManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_Token"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VkTeams_ChatID2" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture3"        , TestParameters);
+
+    CLI_VKTeams_RemoveChatMembers(TestParameters);
+    CLI_VKTeams_ChangeChatPicture(TestParameters);
+    CLI_VKTeams_GetChatInfo(TestParameters);
+    CLI_VKTeams_GetChatAdmins(TestParameters);
+    CLI_VKTeams_GetChatMembers(TestParameters);
+    CLI_VKTeams_GetChatBlockedUsers(TestParameters);
+    CLI_VKTeams_GetChatJoinRequests(TestParameters);
+    CLI_VKTeams_BlockChatUser(TestParameters);
+    CLI_VKTeams_UnblockChatUser(TestParameters);
+    CLI_VKTeams_ApprovePending(TestParameters);
+    CLI_VKTeams_DisapprovePending(TestParameters);
+    CLI_VKTeams_SetChatTitle(TestParameters);
+    CLI_VKTeams_SetChatDescription(TestParameters);
+    CLI_VKTeams_SetChatRules(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -7670,6 +7736,683 @@ Procedure CLI_Dropbox_CancelFilePublication(FunctionParameters)
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
+
+#EndRegion
+
+#Region VKTeams
+
+Procedure CLI_VKTeams_CheckToken(FunctionParameters)
+
+    Token = FunctionParameters["VkTeams_Token"];
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "CheckToken", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CheckToken", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTUser(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_VKTeams_GetEvents(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    LastID = 0;
+
+    For N = 1 To 5 Do // In real work - endless loop
+
+        Options = New Structure;
+        Options.Insert("token"  , Token);
+        Options.Insert("last"   , LastID);
+        Options.Insert("timeout", 3);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetEvents", Options);
+
+        OPI_TestDataRetrieval.WriteLog(Result, "GetEvents", "VkTeams");
+        OPI_TestDataRetrieval.Check_VKTEvents(Result); // SKIP
+
+        Events = Result["events"];
+
+        // Event handling...
+
+        If Not Events.Count() = 0 Then
+
+            LastID = Events[Events.UBound()]["eventId"];
+
+        EndIf;
+
+    EndDo;
+
+    // END
+
+    OPI_Tools.Pause(3);
+
+EndProcedure
+
+Procedure CLI_VKTeams_SendTextMessage(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Text   = "Message text";
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("text"  , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (simple)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
+
+    ChatID  = FunctionParameters["VkTeams_ChatID2"];
+    ReplyID = FunctionParameters["VkTeams_MessageID"];
+    Text    = "<b>Bold text</b>";
+    Markup  = "HTML";
+
+    Keyboard         = New Array;
+    ButtonsLineArray = New Array;
+
+    Options = New Structure;
+    Options.Insert("text" , "Button1");
+    Options.Insert("data" , "ButtonEvent1");
+    Options.Insert("style", "attention");
+
+    Button = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "MakeActionButton", Options);
+    ButtonsLineArray.Add(Button);
+
+    Options = New Structure;
+    Options.Insert("text" , "Button2");
+    Options.Insert("url"  , "https://openintegrations.dev");
+
+    Button = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "MakeActionButton", Options);
+    ButtonsLineArray.Add(Button);
+
+    Keyboard.Add(ButtonsLineArray);
+    Keyboard.Add(ButtonsLineArray);
+
+    Options = New Structure;
+    Options.Insert("token"   , Token);
+    Options.Insert("chatid"  , ChatID);
+    Options.Insert("text"    , Text);
+    Options.Insert("reply"   , ReplyID);
+    Options.Insert("keyboard", Keyboard);
+    Options.Insert("parsemod", Markup);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result);
+
+    MessageID = Result["msgId"];
+    OPI_TestDataRetrieval.WriteParameter("VkTeams_MessageID", MessageID);
+    FunctionParameters.Insert("VkTeams_MessageID", MessageID);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_VKTeams_ForwardMessage(FunctionParameters)
+
+    Token      = FunctionParameters["VkTeams_Token"];
+    ChatID     = FunctionParameters["VkTeams_ChatID"];
+    FromChatID = FunctionParameters["VkTeams_ChatID2"];
+    MessageID  = FunctionParameters["VkTeams_MessageID"];
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("fromid"   , FromChatID);
+    Options.Insert("chatid"   , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage (simple)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
+
+    Text = "Additional text";
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("fromid"   , FromChatID);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("text"     , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_SendFile(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    Text   = "File caption";
+
+    File     = FunctionParameters["Document"]; // URL
+    FilePath = GetTempFileName("docx"); // Path
+
+    FileCopy(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("file"   , File);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (URL)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("file"   , FilePath);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (Path)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("file"     , FileBD);
+    Options.Insert("text"     , Text);
+    Options.Insert("filename" , "ImportantDocument.docx");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result);
+
+    DeleteFiles(FilePath);
+
+    FileID = Result["fileId"];
+    OPI_TestDataRetrieval.WriteParameter("VkTeams_FileID", FileID);
+    FunctionParameters.Insert("VkTeams_FileID", FileID);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_VKTeams_ResendFile(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_FileID"];
+    Text   = "File caption";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("fileid" , FileID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendFile", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ResendFile", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_GetFileInformation(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    FileID = FunctionParameters["VkTeams_FileID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("fileid" , FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetFileInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTFile(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_EditMessageText(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+    Text      = "New message text";
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("text"     , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText (simple)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result); // SKIP
+
+    Text   = "<b>New bold message text</b>";
+    Markup = "HTML";
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("messageid", MessageID);
+    Options.Insert("text"     , Text);
+    Options.Insert("parsemod" , Markup);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_VKTeams_DeleteMessage(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+
+    Options = New Structure;
+    Options.Insert("token"    , Token);
+    Options.Insert("chatid"   , ChatID);
+    Options.Insert("messageid", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DeleteMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_VKTeams_SendVoice(FunctionParameters)
+
+    Token   = FunctionParameters["VkTeams_Token"];
+    ChatID  = FunctionParameters["VkTeams_ChatID2"];
+    ReplyID = FunctionParameters["VkTeams_MessageID"];
+
+    File     = FunctionParameters["Audio2"] ; // URL
+    FilePath = GetTempFileName("m4a"); // Path
+
+    FileCopy(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , File);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (URL)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("file"  , FilePath);
+    Options.Insert("reply" , ReplyID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (Path)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
+
+    DeleteFiles(FilePath);
+
+    FileID = Result["fileId"];
+    OPI_TestDataRetrieval.WriteParameter("VkTeams_VoiceID", FileID);
+    FunctionParameters.Insert("VkTeams_VoiceID", FileID);
+
+    OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_VKTeams_ResendVoice(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+    FileID = FunctionParameters["VkTeams_VoiceID"];
+
+    Options = New Structure;
+    Options.Insert("token" , Token);
+    Options.Insert("chatid", ChatID);
+    Options.Insert("fileid", FileID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendVoice", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ResendVoice", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTMessage(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_RemoveChatMembers(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("members", User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "RemoveChatMembers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "RemoveChatMembers", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_ChangeChatPicture(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    File     = FunctionParameters["Picture3"]; // URL
+    FilePath = GetTempFileName("png"); // Path
+
+    FileCopy(File, FilePath);
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("file"   , File);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (URL)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("file"   , FilePath);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (Path)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result); // SKIP
+
+    DeleteFiles(FilePath);
+
+EndProcedure
+
+Procedure CLI_VKTeams_GetChatInfo(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatInfo", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatInfo", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTChat(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_GetChatAdmins(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatAdmins", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatAdmins", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTList(Result, "admins");
+
+EndProcedure
+
+Procedure CLI_VKTeams_GetChatMembers(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatMembers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatMembers", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTList(Result, "members");
+
+EndProcedure
+
+Procedure CLI_VKTeams_GetChatBlockedUsers(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatBlockedUsers", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatBlockedUsers", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTList(Result, "users");
+
+EndProcedure
+
+Procedure CLI_VKTeams_GetChatJoinRequests(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID"];
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatJoinRequests", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetChatJoinRequests", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTList(Result, "users");
+
+EndProcedure
+
+Procedure CLI_VKTeams_BlockChatUser(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("userid" , User);
+    Options.Insert("dellast", True);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "BlockChatUser", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "BlockChatUser", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_UnblockChatUser(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("userid" , User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnblockChatUser", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UnblockChatUser", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_PinMessage(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+
+    Options = New Structure;
+    Options.Insert("token"     , Token);
+    Options.Insert("chatid"    , ChatID);
+    Options.Insert("messageid" , MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "PinMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "PinMessage", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_UnpinMessage(FunctionParameters)
+
+    Token     = FunctionParameters["VkTeams_Token"];
+    ChatID    = FunctionParameters["VkTeams_ChatID2"];
+    MessageID = FunctionParameters["VkTeams_MessageID"];
+
+    Options = New Structure;
+    Options.Insert("token"     , Token);
+    Options.Insert("chatid"    , ChatID);
+    Options.Insert("messageid" , MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnpinMessage", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UnpinMessage", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_ApprovePending(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("userid" , User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ApprovePending (single)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTPending(Result); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ApprovePending", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTPending(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_DisapprovePending(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    User   = 1011987091;
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("userid" , User);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisapprovePending (single)", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTPending(Result); // SKIP
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DisapprovePending", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTPending(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_SetChatTitle(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Text   = "New title";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatTitle", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChatTitle", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_SetChatDescription(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Text   = "New description";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatDescription", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChatDescription", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
+Procedure CLI_VKTeams_SetChatRules(FunctionParameters)
+
+    Token  = FunctionParameters["VkTeams_Token"];
+    ChatID = FunctionParameters["VkTeams_ChatID2"];
+    Text   = "Text of the new rules";
+
+    Options = New Structure;
+    Options.Insert("token"  , Token);
+    Options.Insert("chatid" , ChatID);
+    Options.Insert("text"   , Text);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatRules", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetChatRules", "VkTeams");
+    OPI_TestDataRetrieval.Check_VKTTrue(Result);
+
+EndProcedure
+
 
 #EndRegion
 
