@@ -296,6 +296,19 @@ Function FormAssertsTests() Export
 
 EndFunction
 
+Function FormAssertsTestsCLI() Export
+
+    TestTable    = GetTestTable();
+    ArrayOfTests = New Array;
+
+    For Each Test In TestTable Do
+        ArrayOfTests.Add("CLI_" + Test.Method);
+    EndDo;
+
+    Return ArrayOfTests;
+
+EndFunction
+
 Function GetParameter(Parameter) Export
 
     Path = DataFilePath();
