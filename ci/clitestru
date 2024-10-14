@@ -969,11 +969,11 @@ def test_dropbox(){
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe dropbox КопироватьОбъект --token "test" --form "test" --to "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe dropbox КопироватьОбъект --token "test" --from "test" --to "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-					powershell encoding: 'UTF-8', script:'./oint.exe dropbox ПереместитьОбъект --token "test" --form "test" --to "test" --debug --test '
+					powershell encoding: 'UTF-8', script:'./oint.exe dropbox ПереместитьОбъект --token "test" --from "test" --to "test" --debug --test '
                }
 
                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
