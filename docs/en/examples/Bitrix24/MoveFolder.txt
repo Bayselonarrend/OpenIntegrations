@@ -1,14 +1,14 @@
-﻿    DestinationID = "13060";
-    FolderID      = "13066";
+﻿    DestinationID = "12880";
+    FolderID      = "12886";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID);
 
-    FolderID = "13064";
+    FolderID = "12884";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c6d40b67006e9f06006b12e400000001000...";
+    Token = "21750a67006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID, Token);
 

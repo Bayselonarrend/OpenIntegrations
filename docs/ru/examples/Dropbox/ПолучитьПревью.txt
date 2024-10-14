@@ -1,4 +1,4 @@
-﻿    Токен     = "sl.B-u6EfyYuXzsEJud9asIzJsbw4J9TkpH4larM2xfRqRbMWSAfPQy0ZjwM3t0iyBzpWyf5KvFaK...";
+﻿    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Путь      = "/New/mydoc.docx";
 
     Результат = OPI_Dropbox.ПолучитьПревью(Токен, Путь);
