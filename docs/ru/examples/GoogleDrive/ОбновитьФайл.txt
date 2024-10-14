@@ -1,6 +1,6 @@
-﻿    Токен         = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+﻿    Токен         = "ya29.a0AcM612wz9aICBaWkidDK9RjYOKNA-5daTuSlIg1ySVWeZ1tv8sadrCnslGDvFg-oJ-1T2Z-5KZJxlRN0jZLnsiQCsUG4gQRyhx_8nY2Pk...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
-    Файл          = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Идентификатор = "1OmFo5Kj8ZtOQkZGmae6ewCk6JBoTb-qc";
+    Файл          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);

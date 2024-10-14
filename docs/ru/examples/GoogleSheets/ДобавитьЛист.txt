@@ -1,5 +1,5 @@
-﻿    Токен        = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Книга        = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
+﻿    Токен        = "ya29.a0AcM612wz9aICBaWkidDK9RjYOKNA-5daTuSlIg1ySVWeZ1tv8sadrCnslGDvFg-oJ-1T2Z-5KZJxlRN0jZLnsiQCsUG4gQRyhx_8nY2Pk...";
+    Книга        = "1dQiYo1RN_JNIPWerYSucWATQqpvbLbDntFdCO6NFYjc";
     Наименование = "Тестовый лист";
 
     Результат = OPI_GoogleSheets.ДобавитьЛист(Токен, Книга, Наименование);

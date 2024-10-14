@@ -2,7 +2,7 @@
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Документ = "https://api.athenaeum.digital/test_data/document.docx";
+    Документ = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     ДокументПуть = ПолучитьИмяВременногоФайла("docx");
     КопироватьФайл(Документ, ДокументПуть);

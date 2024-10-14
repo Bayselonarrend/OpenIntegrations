@@ -1,5 +1,5 @@
 ﻿    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appESy99HYCLbuWlV";
-    Table = "tbl5gZLQ8i5xKuVTy";
+    Base  = "appx6bTBXk10a6EIJ";
+    Table = "tblYI607MIPMS3LtP";
 
     Result = OPI_Airtable.GetListOfRecords(Token, Base, Table);

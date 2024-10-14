@@ -2281,7 +2281,7 @@ Procedure CLI_VK_CreateTokenRetrievalLink(FunctionParameters)
 
     Result = GetStringFromBinaryData(Result);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateTokenRetrievalLink", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTokenRetrievalLink", "VK");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String").Заполнено();
 
     OPI_Tools.Pause(5);
@@ -2313,7 +2313,7 @@ Procedure CLI_VK_CreatePost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePost", "VK");
     OPI_TestDataRetrieval.Check_VKPost(Result);
     PostID = Result["response"]["post_id"];
     Result = OPI_VK.DeletePost(PostID, Parameters);
@@ -2328,7 +2328,7 @@ Procedure CLI_VK_CreatePost(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (one picture)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePost (one picture)");
     OPI_TestDataRetrieval.Check_VKPost(Result);
 
     PostID = Result["response"]["post_id"];
@@ -2345,7 +2345,7 @@ Procedure CLI_VK_CreatePost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePost (one path)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePost (one path)");
     OPI_TestDataRetrieval.Check_VKPost(Result);
 
     PostID = Result["response"]["post_id"];
@@ -2368,7 +2368,7 @@ Procedure CLI_VK_DeletePost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeletePost", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeletePost", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeletePost", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
 EndProcedure
@@ -2407,7 +2407,7 @@ Procedure CLI_VK_CreateCompositePost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateCompositePost", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateCompositePost", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateCompositePost", "VK");
     OPI_TestDataRetrieval.Check_VKPost(Result);
     DeleteFiles(TFN);
 
@@ -2432,7 +2432,7 @@ Procedure CLI_VK_CreatePoll()
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePoll", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePoll", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePoll", "VK");
     OPI_TestDataRetrieval.Check_VKPost(Result);
 
     PostID = Result["response"]["post_id"];
@@ -2455,7 +2455,7 @@ Procedure CLI_VK_CreateAlbum(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAlbum", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateAlbum", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateAlbum", "VK");
     OPI_TestDataRetrieval.Check_VKAlbum(Result, Description);
 
     AlbumID = Result["response"]["id"];
@@ -2480,7 +2480,7 @@ Procedure CLI_VK_SavePictureToAlbum(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "SaveImageToAlbum", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SaveImageToAlbum", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SaveImageToAlbum", "VK");
     OPI_TestDataRetrieval.Check_VKAlbumPicture(Result, ImageDescription, AlbumID);
 
     ImageID = Result["response"][0]["id"];
@@ -2502,7 +2502,7 @@ Procedure CLI_VK_DeleteImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteImage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteImage", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteImage", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -2520,7 +2520,7 @@ Procedure CLI_VK_DeleteAlbum(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteAlbum", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteAlbum", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteAlbum", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -2543,7 +2543,7 @@ Procedure CLI_VK_UploadPhotoToServer(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadVideoToServer", "VK");
     OPI_TestDataRetrieval.Check_VKAlbumPicture(Result, "");
 
 EndProcedure
@@ -2565,7 +2565,7 @@ Procedure CLI_VK_CreateStory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateStory", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateStory", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateStory", "VK");
     OPI_TestDataRetrieval.Check_VKStory(Result);
 
     Options = New Structure;
@@ -2574,7 +2574,7 @@ Procedure CLI_VK_CreateStory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateStory", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateStory (path)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateStory (path)");
     OPI_TestDataRetrieval.Check_VKStory(Result);
 
     DeleteFiles(TFN);
@@ -2596,7 +2596,7 @@ Procedure CLI_VK_CreateDiscussion(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateDiscussion", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateDiscussion", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDiscussion", "VK");
     OPI_TestDataRetrieval.Check_VKDiscussion(Result);
 
     DiscussionID = Result["response"];
@@ -2619,7 +2619,7 @@ Procedure CLI_VK_CloseDiscussion(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CloseDiscussion", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CloseDiscussion", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CloseDiscussion", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -2639,7 +2639,7 @@ Procedure CLI_VK_OpenDiscussion(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "OpenDiscussion", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "OpenDiscussion", "VK");
 
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
@@ -2662,7 +2662,7 @@ Procedure CLI_VK_PostToDiscussion(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "WriteInDiscussion", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "WriteInDiscussion", "VK");
 
     OPI_TestDataRetrieval.Check_VKDiscussion(Result);
 
@@ -2679,7 +2679,7 @@ Procedure CLI_VK_LikePost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "LikePost", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "LikePost", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "LikePost", "VK");
     OPI_TestDataRetrieval.Check_VKLike(Result);
 
     OPI_Tools.Pause(5);
@@ -2699,7 +2699,7 @@ Procedure CLI_VK_MakeRepost(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "MakeRepost", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "MakeRepost", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "MakeRepost", "VK");
     OPI_TestDataRetrieval.Check_VKRepost(Result);
 
     FunctionParameters.Insert("Repost", Result["response"]["post_id"]);
@@ -2723,7 +2723,7 @@ Procedure CLI_VK_WriteComment(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteComment", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "WriteComment", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "WriteComment", "VK");
     OPI_TestDataRetrieval.Check_VKComment(Result);
 
     OPI_Tools.Pause(5);
@@ -2742,7 +2742,7 @@ Procedure CLI_VK_ShortenLink(FunctionParameters)
 
     Result = GetStringFromBinaryData(Result);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ShortenLink", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ShortenLink", "VK");
     OPI_TestDataRetrieval.Check_String(Result);
 
 EndProcedure
@@ -2762,7 +2762,7 @@ Procedure CLI_VK_GetStatistics(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetStatistics", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetStatistics", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetStatistics", "VK");
     OPI_TestDataRetrieval.Check_VKStatistic(Result);
 
     OPI_Tools.Pause(5);
@@ -2783,7 +2783,7 @@ Procedure CLI_VK_GetPostStatistics(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetPostStatistics", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPostStatistics", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPostStatistics", "VK");
     OPI_TestDataRetrieval.Check_VKPostsStatistic(Result);
 
     OPI_Tools.Pause(5);
@@ -2804,7 +2804,7 @@ Procedure CLI_VK_CreateAdCampaign(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAdvertisingCampaign", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateAdvertisingCampaign", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateAdvertisingCampaign", "VK");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     CampaignID = Result["response"][0]["id"];
@@ -2834,7 +2834,7 @@ Procedure CLI_VK_CreateAd(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAd", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateAd", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateAd", "VK");
     OPI_TestDataRetrieval.Check_Map(Result);
 
     AnnouncementID = Result["response"][0]["id"];
@@ -2857,7 +2857,7 @@ Procedure CLI_VK_PauseAdvertising(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "PauseAdvertising", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PauseAdvertising", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PauseAdvertising", "VK");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -2871,7 +2871,7 @@ Procedure CLI_VK_GetAdvertisingCategoryList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetAdvertisingCategoryList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAdvertisingCategoryList", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAdvertisingCategoryList", "VK");
     OPI_TestDataRetrieval.Check_VKCategories(Result);
 
 EndProcedure
@@ -2918,7 +2918,7 @@ Procedure CLI_VK_WriteMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "WriteMessage", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "WriteMessage", "VK");
     OPI_TestDataRetrieval.Check_VKNumber(Result);
 
 EndProcedure
@@ -2932,7 +2932,7 @@ Procedure CLI_VK_GetProductCategoryList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductCategoryList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCategoryList", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductCategoryList", "VK");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -2955,7 +2955,7 @@ Procedure CLI_VK_CreateProductCollection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateProductCollection", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductCollection", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateProductCollection", "VK");
     OPI_TestDataRetrieval.Check_VKCollection(Result);
 
     OPI_Tools.Pause(5);
@@ -2980,7 +2980,7 @@ Procedure CLI_VK_EditProductCollection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductCollection", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditProductCollection", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditProductCollection", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -2998,7 +2998,7 @@ Procedure CLI_VK_GetSelectionsByID(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetSelectionsByID", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetSelectionsByID", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetSelectionsByID", "VK");
     OPI_TestDataRetrieval.Check_VKElement(Result);
 
 EndProcedure
@@ -3039,7 +3039,7 @@ Procedure CLI_VK_AddProduct(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddProduct", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddProduct", "VK");
     OPI_TestDataRetrieval.Check_VKProduct(Result);
 
     ProductID = Result["response"]["market_item_id"];
@@ -3064,7 +3064,7 @@ Procedure CLI_VK_EditProduct(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProduct", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditProduct", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditProduct", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
 EndProcedure
@@ -3083,7 +3083,7 @@ Procedure CLI_VK_AddProductToCollection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProductToCollection", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddProductToCollection", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddProductToCollection", "VK");
     OPI_TestDataRetrieval.Check_VKNumber(Result);
 
     OPI_Tools.Pause(5);
@@ -3104,7 +3104,7 @@ Procedure CLI_VK_RemoveProductFromCollection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "RemoveProductFromSelection", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RemoveProductFromSelection", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RemoveProductFromSelection", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -3123,7 +3123,7 @@ Procedure CLI_VK_DeleteProduct(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProduct", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProduct", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteProduct", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -3142,7 +3142,7 @@ Procedure CLI_VK_DeleteCollection(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteSelection", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSelection", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteSelection", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -3161,7 +3161,7 @@ Procedure CLI_VK_CreateProductProperty(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateProductProperty", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductProperty", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateProductProperty", "VK");
     OPI_TestDataRetrieval.Check_VKProp(Result);
 
     OPI_Tools.Pause(5);
@@ -3188,7 +3188,7 @@ Procedure CLI_VK_EditProductProperty(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductProperty", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditProductProperty", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditProductProperty", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -3215,7 +3215,7 @@ Procedure CLI_VK_AddProductPropertyVariant(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProductPropertyVariant", Options);
 
-        OPI_TestDataRetrieval.WriteLog(Result, "AddProductPropertyVariant", "VK");
+        OPI_TestDataRetrieval.WriteLogCLI(Result, "AddProductPropertyVariant", "VK");
         OPI_TestDataRetrieval.Check_VKPropVariant(Result);
         OPI_Tools.Pause(5);
 
@@ -3246,7 +3246,7 @@ Procedure CLI_VK_EditProductPropertyVariant(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductPropertyVariant", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditProductPropertyVariant", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditProductPropertyVariant", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
 EndProcedure
@@ -3289,7 +3289,7 @@ Procedure CLI_VK_CreateProductWithProp(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ProductWithProp1");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ProductWithProp1");
     OPI_TestDataRetrieval.Check_VKProduct(Result);
 
     ProductID = Result["response"]["market_item_id"];
@@ -3305,7 +3305,7 @@ Procedure CLI_VK_CreateProductWithProp(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ProductWithProp2");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ProductWithProp2");
     OPI_TestDataRetrieval.Check_VKProduct(Result);
 
     ProductID = Result["response"]["market_item_id"];
@@ -3333,7 +3333,7 @@ Procedure CLI_VK_GetProductsByID(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductsByID", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsByID", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductsByID", "VK");
     OPI_TestDataRetrieval.Check_VKProductData(Result);
 
     OPI_Tools.Pause(5);
@@ -3357,7 +3357,7 @@ Procedure CLI_VK_GroupProducts(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GroupProducts", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GroupProducts", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GroupProducts", "VK");
     OPI_TestDataRetrieval.Check_VKProductsGroup(Result);
 
     OPI_Tools.Pause(5);
@@ -3376,7 +3376,7 @@ Procedure CLI_VK_DeleteProductPropertyVariant(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProductPropertyVariant", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductPropertyVariant", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteProductPropertyVariant", "VK");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -3395,7 +3395,7 @@ Procedure CLI_VK_DeleteProductProperty(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProductProperty", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductProperty");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteProductProperty");
     OPI_TestDataRetrieval.Check_VKTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -3409,7 +3409,7 @@ Procedure CLI_VK_GetProductDescription(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductDescription", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductDescription", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductDescription", "VK");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -3423,7 +3423,7 @@ Procedure CLI_VK_GetProductList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetProductList", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetProductList", "VK");
     OPI_TestDataRetrieval.Check_Array(Result);
 
     OPI_Tools.Pause(5);
@@ -3439,7 +3439,7 @@ Procedure CLI_VK_GetSelectionList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetSelectionList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetSelectionList", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetSelectionList", "VK");
     OPI_TestDataRetrieval.Check_Array(Result);
 
     OPI_Tools.Pause(5);
@@ -3455,7 +3455,7 @@ Procedure CLI_VK_GetPropertyList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetPropertyList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPropertyList", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPropertyList", "VK");
     OPI_TestDataRetrieval.Check_Array(Result);
 
     OPI_Tools.Pause(5);
@@ -3471,7 +3471,7 @@ Procedure CLI_VK_GetOrderList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetOrderList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetOrderList", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetOrderList", "VK");
     OPI_TestDataRetrieval.Check_Array(Result);
 
     OPI_Tools.Pause(5);
@@ -3494,7 +3494,7 @@ Procedure CLI_VK_UploadVideoToServer(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadVideoToServer", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadVideoToServer", "VK");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadVideoToServer", "VK");
     OPI_TestDataRetrieval.Check_VKVideo(Result);
 
     OPI_Tools.Pause(5);
@@ -3515,7 +3515,7 @@ Procedure CLI_YandexDisk_GetDiskInfo(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDiskInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDiskInformation", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDiskInformation", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskDrive(Result);
 
     OPI_Tools.Pause(5);
@@ -3533,7 +3533,7 @@ Procedure CLI_YandexDisk_CreateFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CreateFolder", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateFolder", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskFolder(Result, Path);
 
     OPI_YandexDisk.DeleteObject(Token, Path, False);
@@ -3555,7 +3555,7 @@ Procedure CLI_YandexDisk_UploadFileByURL(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFileByURL", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFileByURL", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskProc(Result);
 
     OPI_TestDataRetrieval.WriteParameter("YandexDisk_FileByURLPath", Path);
@@ -3576,7 +3576,7 @@ Procedure CLI_YandexDisk_GetObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObject", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObject", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path);
 
 EndProcedure
@@ -3593,7 +3593,7 @@ Procedure CLI_YandexDisk_DeleteObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteObject", "YandexDisk");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
     OPI_Tools.Pause(5);
@@ -3619,7 +3619,7 @@ Procedure CLI_YandexDisk_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (URL)", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile (URL)", "YandexDisk");
     OPI_TestDataRetrieval.Check_Empty(Result); // SKIP
 
     OPI_Tools.Pause(5); // SKIP
@@ -3634,7 +3634,7 @@ Procedure CLI_YandexDisk_UploadFile(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile", "YandexDisk");
 
     OPI_TestDataRetrieval.Check_Empty(Result);
 
@@ -3647,7 +3647,7 @@ Procedure CLI_YandexDisk_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (URL)", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteObject (URL)", "YandexDisk");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
     Options = New Structure;
@@ -3657,7 +3657,7 @@ Procedure CLI_YandexDisk_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject (Path)", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteObject (Path)", "YandexDisk");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
     DeleteFiles(TFN);
@@ -3680,7 +3680,7 @@ Procedure CLI_YandexDisk_CreateObjectCopy(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CreateObjectCopy", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateObjectCopy", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateObjectCopy", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path);
 
     OPI_TestDataRetrieval.WriteParameter("YandexDisk_CopyFilePath", Path);
@@ -3701,7 +3701,7 @@ Procedure CLI_YandexDisk_GetDownloadLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDownloadLink", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLink", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDownloadLink", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskLink(Result);
 
     OPI_Tools.Pause(5);
@@ -3719,7 +3719,7 @@ Procedure CLI_YandexDisk_DownloadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DownloadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DownloadFile", "YandexDisk");
     OPI_TestDataRetrieval.Check_BinaryData(Result);
 
     OPI_Tools.Pause(5);
@@ -3741,7 +3741,7 @@ Procedure CLI_YandexDisk_GetFilesList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetFilesList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFilesList", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskFilesList(Result, Count, OffsetFromStart);
 
     OPI_Tools.Pause(5);
@@ -3762,7 +3762,7 @@ Procedure CLI_YandexDisk_MoveObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "MoveObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "MoveObject", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path);
 
     OPI_TestDataRetrieval.WriteParameter("YandexDisk_NewFilePath", Path);
@@ -3783,7 +3783,7 @@ Procedure CLI_YandexDisk_PublishObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "PublishObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PublishObject", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PublishObject", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path, True);
 
     URL = Result["public_url"];
@@ -3803,7 +3803,7 @@ Procedure CLI_YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDownloadLinkForPublicObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDownloadLinkForPublicObject", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDownloadLinkForPublicObject", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskLink(Result);
 
 EndProcedure
@@ -3819,7 +3819,7 @@ Procedure CLI_YandexDisk_GetPublicObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublicObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPublicObject", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPublicObject", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, "", True);
 
 EndProcedure
@@ -3835,7 +3835,7 @@ Procedure CLI_YandexDisk_SavePublicObjectToDisk(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "SavePublicObjectToDisk", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SavePublicObjectToDisk", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SavePublicObjectToDisk", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, "", False);
 
 EndProcedure
@@ -3851,7 +3851,7 @@ Procedure CLI_YandexDisk_CancelObjectPublication(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CancelObjectPublication", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CancelObjectPublication", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CancelObjectPublication", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskPath(Result, Path, False);
 
 EndProcedure
@@ -3869,7 +3869,7 @@ Procedure CLI_YandexDisk_GetPublishedObjectsList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublishedObjectsList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPublishedObjectsList", "YandexDisk");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPublishedObjectsList", "YandexDisk");
     OPI_TestDataRetrieval.Check_YaDiskFilesList(Result, Count, OffsetFromStart);
 
     OPI_Tools.Pause(5);
@@ -3891,7 +3891,7 @@ Procedure CLI_Viber_SetWebhook(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SetWebhook", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetWebhook", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetWebhook", "Viber");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -3905,7 +3905,7 @@ Procedure CLI_Viber_GetChannelInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetChannelInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelInformation", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChannelInformation", "Viber");
     OPI_TestDataRetrieval.Check_ViberOk(Result);
 
     OPI_Tools.Pause(5);
@@ -3923,7 +3923,7 @@ Procedure CLI_Viber_GetUserData(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetUserData", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserData", "Viber");
     OPI_TestDataRetrieval.Check_ViberUser(Result);
 
     OPI_Tools.Pause(5);
@@ -3941,7 +3941,7 @@ Procedure CLI_Viber_GetOnlineUsers(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetOnlineUsers", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetOnlineUsers", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetOnlineUsers", "Viber");
     OPI_TestDataRetrieval.Check_ViberOnline(Result);
 
     OPI_Tools.Pause(5);
@@ -3960,7 +3960,7 @@ Procedure CLI_Viber_CreateKeyboardFromArrayButton(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "CreateKeyboardFromArrayButton", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateKeyboardFromArrayButton", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateKeyboardFromArrayButton", "Viber");
 
 EndProcedure
 
@@ -3991,7 +3991,7 @@ Procedure CLI_Viber_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "Viber"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage", "Viber"); // SKIP
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
@@ -4007,7 +4007,7 @@ Procedure CLI_Viber_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (channel)", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage (channel)", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
@@ -4032,7 +4032,7 @@ Procedure CLI_Viber_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendImage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendImage", "Viber"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendImage", "Viber"); // SKIP
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
@@ -4048,7 +4048,7 @@ Procedure CLI_Viber_SendImage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendImage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendPicture (channel)", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendPicture (channel)", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
@@ -4073,7 +4073,7 @@ Procedure CLI_Viber_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
@@ -4089,7 +4089,7 @@ Procedure CLI_Viber_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (channel)", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile (channel)", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
@@ -4114,7 +4114,7 @@ Procedure CLI_Viber_SendContact(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendContact", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendContact", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendContact", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
@@ -4130,7 +4130,7 @@ Procedure CLI_Viber_SendContact(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendContact", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendContact (channel)", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendContact (channel)", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
@@ -4155,7 +4155,7 @@ Procedure CLI_Viber_SendLocation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendLocation", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
@@ -4171,7 +4171,7 @@ Procedure CLI_Viber_SendLocation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLocation (channel)", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendLocation (channel)", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
@@ -4194,7 +4194,7 @@ Procedure CLI_Viber_SendLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLink", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendLink", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     UserID           = FunctionParameters["Viber_ChannelAdminID"];
@@ -4209,7 +4209,7 @@ Procedure CLI_Viber_SendLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendLink (channel)", "Viber");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendLink (channel)", "Viber");
     OPI_TestDataRetrieval.Check_ViberMessage(Result);
 
     OPI_Tools.Pause(5);
@@ -4296,7 +4296,7 @@ Procedure CLI_GoogleCalendar_GetCalendarList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetCalendarList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarList", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarList", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Array(Result);
 
     OPI_Tools.Pause(5);
@@ -4314,7 +4314,7 @@ Procedure CLI_GoogleCalendar_CreateCalendar(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateCalendar", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateCalendar", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_GoogleCalendar(Result, Name);
 
     Calendar = Result["id"];
@@ -4338,7 +4338,7 @@ Procedure CLI_GoogleCalendar_EditCalendarMetadata(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditCalendarMetadata", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditCalendarMetadata", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditCalendarMetadata", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_GKObject(Result, Name, Description);
 
 EndProcedure
@@ -4354,7 +4354,7 @@ Procedure CLI_GoogleCalendar_GetCalendarMetadata(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetCalendarMetadata", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCalendarMetadata", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCalendarMetadata", "GoogleCalendar");
 
     Name        = "New name";
     Description = "New description";
@@ -4374,7 +4374,7 @@ Procedure CLI_GoogleCalendar_AddCalendarToList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "AddCalendarToList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddCalendarToList", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddCalendarToList", "GoogleCalendar");
 
     Name        = "New name";
     Description = "New description";
@@ -4400,7 +4400,7 @@ Procedure CLI_GoogleCalendar_EditListCalendar(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditListCalendar", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditListCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditListCalendar", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_GoogleCalendarColors(Result, PrimaryColor, SecondaryColor);
 
 EndProcedure
@@ -4416,7 +4416,7 @@ Procedure CLI_GoogleCalendar_GetListCalendar(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetListCalendar", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetListCalendar", "GoogleCalendar");
 
     PrimaryColor   = "#000000";
     SecondaryColor = "#ffd800";
@@ -4434,7 +4434,7 @@ Procedure CLI_GoogleCalendar_ClearMainCalendar(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "ClearMainCalendar", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ClearMainCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearMainCalendar", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
@@ -4450,7 +4450,7 @@ Procedure CLI_GoogleCalendar_DeleteCalendarFromList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteCalendarFromList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendarFromList", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteCalendarFromList", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
@@ -4466,7 +4466,7 @@ Procedure CLI_GoogleCalendar_DeleteCalendar(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteCalendar", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteCalendar", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteCalendar", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
@@ -4503,7 +4503,7 @@ Procedure CLI_GoogleCalendar_CreateEvent(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateEvent", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateEvent", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateEvent", "GoogleCalendar");
 
     Event = Result["id"];
     OPI_TestDataRetrieval.WriteParameter("Google_EventID", Event);
@@ -4531,7 +4531,7 @@ Procedure CLI_GoogleCalendar_EditEvent(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditEvent", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditEvent", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditEvent", "GoogleCalendar");
 
     Name = "New event";
 
@@ -4552,7 +4552,7 @@ Procedure CLI_GoogleCalendar_GetEvent(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEvent", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEvent", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEvent", "GoogleCalendar");
 
     Name        = "New event";
     Description = "New event description";
@@ -4577,7 +4577,7 @@ Procedure CLI_GoogleCalendar_MoveEvent(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "MoveEvent", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "MoveEvent", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "MoveEvent", "GoogleCalendar");
 
     Name        = "New event";
     Description = "New event description";
@@ -4601,7 +4601,7 @@ Procedure CLI_GoogleCalendar_DeleteEvent(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteEvent", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteEvent", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteEvent", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
@@ -4617,7 +4617,7 @@ Procedure CLI_GoogleCalendar_GetEventList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEventList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEventList", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEventList", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
@@ -4631,7 +4631,7 @@ Procedure CLI_GoogleCalendar_GetEventDescription(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEventDescription", "GoogleCalendar");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEventDescription", "GoogleCalendar");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -4651,7 +4651,7 @@ Procedure CLI_GoogleDrive_GetDirectoriesList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetDirectoriesList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDirectoriesList", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDirectoriesList", "GoogleDrive");
 
     Result = Result[0];
 
@@ -4676,7 +4676,7 @@ Procedure CLI_GoogleDrive_GetObjectInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetObjectInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInformation", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectInformation", "GoogleDrive");
     OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
 
     OPI_Tools.Pause(5);
@@ -4702,7 +4702,7 @@ Procedure CLI_GoogleDrive_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile", "GoogleDrive");
     OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
 
     Identifier = Result["id"];
@@ -4727,7 +4727,7 @@ Procedure CLI_GoogleDrive_CopyObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CopyObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CopyObject", "GoogleDrive");
 
     Description = New Structure("Name,MIME", NewName, "image/jpeg");
     OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
@@ -4753,7 +4753,7 @@ Procedure CLI_GoogleDrive_DownloadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DownloadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DownloadFile", "GoogleDrive");
 
     Size       = OPI_Tools.Get(FunctionParameters["Picture"]).Size();
     ExtraBytes = 2;
@@ -4779,7 +4779,7 @@ Procedure CLI_GoogleDrive_UpdateFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UpdateFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UpdateFile", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UpdateFile", "GoogleDrive");
 
     Description = New Structure("Name,MIME", NewName, "image/jpeg");
     OPI_TestDataRetrieval.Check_GoogleObject(Result, Description);
@@ -4801,7 +4801,7 @@ Procedure CLI_GoogleDrive_GetFilesList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFilesList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFilesList", "GoogleDrive");
     OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
@@ -4817,14 +4817,14 @@ Procedure CLI_GoogleDrive_DeleteObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteObject", "GoogleDrive");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
     For Each Deletable In FunctionParameters["ArrayOfDeletions"] Do
 
         Result = OPI_GoogleDrive.DeleteObject(Token, Deletable);
 
-        OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject");
+        OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteObject");
 
         OPI_TestDataRetrieval.Check_Empty(Result);
         OPI_Tools.Pause(2);
@@ -4840,7 +4840,7 @@ Procedure CLI_GoogleDrive_GetFileDescription(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFileDescription", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFileDescription", "GoogleDrive");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -4858,7 +4858,7 @@ Procedure CLI_GoogleDrive_CreateComment(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateComment", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateComment", "GoogleDrive");
     OPI_TestDataRetrieval.Check_GoogleComment(Result, Comment);
 
     Identifier = Result["id"];
@@ -4883,7 +4883,7 @@ Procedure CLI_GoogleDrive_GetComment(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetComment", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetComment", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetComment", "GoogleDrive");
     OPI_TestDataRetrieval.Check_GoogleComment(Result, "Comment text");
 
 EndProcedure
@@ -4899,7 +4899,7 @@ Procedure CLI_GoogleDrive_GetCommentList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetCommentList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCommentList", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCommentList", "GoogleDrive");
 
     Comments      = Result["comments"];
     CommentObject = Comments[Comments.UBound()];
@@ -4921,7 +4921,7 @@ Procedure CLI_GoogleDrive_DeleteComment(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DeleteComment", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteComment", "GoogleDrive");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
@@ -4939,7 +4939,7 @@ Procedure CLI_GoogleDrive_CreateFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "GoogleDrive");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateFolder", "GoogleDrive");
     OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
 
     CatalogID = Result["id"];
@@ -4951,7 +4951,7 @@ Procedure CLI_GoogleDrive_CreateFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder (root)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateFolder (root)");
     OPI_TestDataRetrieval.Check_GoogleCatalog(Result);
 
     CatalogID = Result["id"];
@@ -4979,7 +4979,7 @@ Procedure CLI_GoogleSheets_CreateSpreadsheet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CreateSpreadsheet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateSpreadsheet", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateSpreadsheet", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleSpreadsheet(Result, Name, SheetArray);
 
     Spreadsheet = Result["spreadsheetId"];
@@ -5025,7 +5025,7 @@ Procedure CLI_GoogleSheets_GetSpreadsheet(FunctionParameters)
     SheetArray.Add("Sheet1");
     SheetArray.Add("Sheet2");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateSpreadsheet", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateSpreadsheet", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleSpreadsheet(Result, Name, SheetArray);
 
 EndProcedure
@@ -5045,7 +5045,7 @@ Procedure CLI_GoogleSheets_CopySheet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CopySheet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CopySheet", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CopySheet", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleSheet(Result);
 
 EndProcedure
@@ -5065,7 +5065,7 @@ Procedure CLI_GoogleSheets_AddSheet(FunctionParameters)
 
     NewSheet = Result["replies"][0]["addSheet"]["properties"];
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddSheet", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddSheet", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleSheet(NewSheet);
 
 EndProcedure
@@ -5083,7 +5083,7 @@ Procedure CLI_GoogleSheets_DeleteSheet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "DeleteSheet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteSheet", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteSheet", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
 
 EndProcedure
@@ -5101,7 +5101,7 @@ Procedure CLI_GoogleSheets_EditSpreadsheetTitle(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "EditSpreadsheetTitle", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditSpreadsheetTitle", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditSpreadsheetTitle", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
 
 EndProcedure
@@ -5117,7 +5117,7 @@ Procedure CLI_GoogleSheets_GetTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetSpreadsheet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTable", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTable", "GoogleSheets");
 
     Name = "Test table (changed.)";
     OPI_TestDataRetrieval.Check_GoogleSheetTitle(Result, Name);
@@ -5148,7 +5148,7 @@ Procedure CLI_GoogleSheets_SetCellValues(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "SetCellValues", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetCellValues", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetCellValues", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleCellUpdating(Result, ValueMapping.Count());
 
 EndProcedure
@@ -5172,7 +5172,7 @@ Procedure CLI_GoogleSheets_GetCellValues(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCellValues", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleCellValues(Result, CellsArray.Count());
 
     Options = New Structure;
@@ -5182,7 +5182,7 @@ Procedure CLI_GoogleSheets_GetCellValues(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCellValues (all)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCellValues (all)");
     OPI_TestDataRetrieval.Check_GoogleSpreadsheetElement(Result, Spreadsheet);
 
 EndProcedure
@@ -5206,7 +5206,7 @@ Procedure CLI_GoogleSheets_ClearCells(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "ClearCells", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ClearCells", "GoogleSheets");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ClearCells", "GoogleSheets");
     OPI_TestDataRetrieval.Check_GoogleCellCleanning(Result, CellsArray.Count());
 
 EndProcedure
@@ -5226,7 +5226,7 @@ Procedure CLI_Twitter_GetToken(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetToken", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetToken", "Twitter");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetToken", "Twitter");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -5242,7 +5242,7 @@ Procedure CLI_Twitter_GetAuthorizationLink(FunctionParameters)
 
     Result = GetStringFromBinaryData(Result);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAuthorizationLink", "Twitter");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Twitter");
     OPI_TestDataRetrieval.Check_String(Result);
 
     OPI_TestDataRetrieval.WriteParameter("Twitter_URL", Result);
@@ -5260,7 +5260,7 @@ Procedure CLI_Twitter_RefreshToken(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "RefreshToken", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RefreshToken", "Twitter");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RefreshToken", "Twitter");
     OPI_TestDataRetrieval.Check_TwitterToken(Result);
 
     Refresh = Result["refresh_token"];
@@ -5289,7 +5289,7 @@ Procedure CLI_Twitter_CreateTextTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateTextTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateTextTweet", "Twitter");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTextTweet", "Twitter");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
 
     OPI_Tools.Pause(5);
@@ -5316,7 +5316,7 @@ Procedure CLI_Twitter_CreateImageTweet(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet", "Twitter"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateImageTweet", "Twitter"); // SKIP
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15); // SKIP
 
@@ -5329,7 +5329,7 @@ Procedure CLI_Twitter_CreateImageTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet (single)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateImageTweet (single)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
@@ -5344,7 +5344,7 @@ Procedure CLI_Twitter_CreateImageTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateImageTweet (TFN)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateImageTweet (TFN)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
@@ -5371,7 +5371,7 @@ Procedure CLI_Twitter_CreateVideoTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet", "Twitter"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateVideoTweet", "Twitter"); // SKIP
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15); // SKIP
 
@@ -5384,7 +5384,7 @@ Procedure CLI_Twitter_CreateVideoTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet (single)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateVideoTweet (single)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
@@ -5399,7 +5399,7 @@ Procedure CLI_Twitter_CreateVideoTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateVideoTweet (TFN)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateVideoTweet (TFN)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
@@ -5426,7 +5426,7 @@ Procedure CLI_Twitter_CreateGifTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet", "Twitter"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateGifTweet", "Twitter"); // SKIP
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text); // SKIP
     OPI_Tools.Pause(15); // SKIP
 
@@ -5441,7 +5441,7 @@ Procedure CLI_Twitter_CreateGifTweet(FunctionParameters)
 
     // END
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet (single)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateGifTweet (single)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
@@ -5456,7 +5456,7 @@ Procedure CLI_Twitter_CreateGifTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateGifTweet (TFN)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateGifTweet (TFN)");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
     OPI_Tools.Pause(15);
 
@@ -5481,7 +5481,7 @@ Procedure CLI_Twitter_CreatePollTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreatePollTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePollTweet", "Twitter");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePollTweet", "Twitter");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
 
     OPI_Tools.Pause(20);
@@ -5514,7 +5514,7 @@ Procedure CLI_Twitter_CreateCustomTweet(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateCustomTweet", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateCustomTweet", "Twitter");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateCustomTweet", "Twitter");
     OPI_TestDataRetrieval.Check_TwitterText(Result, Text);
 
     OPI_Tools.Pause(20);
@@ -5539,7 +5539,7 @@ Procedure CLI_Twitter_UploadAttachmentsArray(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadAttachmentsArray", "Twitter");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadAttachmentsArray", "Twitter");
     OPI_TestDataRetrieval.Check_Array(Result);
 
 EndProcedure
@@ -5561,7 +5561,7 @@ Procedure CLI_Notion_CreatePage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePage", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePage", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result);
 
     Page = Result["id"];
@@ -5604,7 +5604,7 @@ Procedure CLI_Notion_CreateDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateDatabase", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDatabase", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
 
     Base = Result["id"];
@@ -5634,7 +5634,7 @@ Procedure CLI_Notion_EditDatabaseProperties(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditDatabaseProperties", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditDatabaseProperties", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditDatabaseProperties", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
 
 EndProcedure
@@ -5650,7 +5650,7 @@ Procedure CLI_Notion_GetPage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetPage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPage", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPage", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result);
 
 EndProcedure
@@ -5666,7 +5666,7 @@ Procedure CLI_Notion_GetDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetDatabase", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDatabase", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDatabase", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "database");
 
 EndProcedure
@@ -5700,7 +5700,7 @@ Procedure CLI_Notion_CreatePageInDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePageInDatabase", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePageInDatabase", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePageInDatabase", "Notion");
     OPI_TestDataRetrieval.Check_NotionBasePage(Result, Base);
 
 EndProcedure
@@ -5727,7 +5727,7 @@ Procedure CLI_Notion_EditPageProperties(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditPageProperties", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditPageProperties", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditPageProperties", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result);
 
 EndProcedure
@@ -5743,7 +5743,7 @@ Procedure CLI_Notion_ReturnBlock(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnBlock", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ReturnBlock", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ReturnBlock", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
 
 EndProcedure
@@ -5767,7 +5767,7 @@ Procedure CLI_Notion_CreateBlock(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateBlock", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateBlock", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateBlock", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
 
     Block = Result["results"][0]["id"];
@@ -5787,7 +5787,7 @@ Procedure CLI_Notion_ReturnChildBlocks(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnChildBlocks", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ReturnChildBlocks", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ReturnChildBlocks", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
 
 EndProcedure
@@ -5803,7 +5803,7 @@ Procedure CLI_Notion_DeleteBlock(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "DeleteBlock", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteBlock", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteBlock", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "block");
 
 EndProcedure
@@ -5817,7 +5817,7 @@ Procedure CLI_Notion_UserList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "UserList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UserList", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UserList", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "list");
 
 EndProcedure
@@ -5833,7 +5833,7 @@ Procedure CLI_Notion_GetUserData(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetUserData", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserData", "Notion");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserData", "Notion");
     OPI_TestDataRetrieval.Check_NotionObject(Result, "user");
 
 EndProcedure
@@ -5851,7 +5851,7 @@ Procedure CLI_Slack_GetBotInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetBotInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetBotInformation", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetBotInformation", "Slack");
     OPI_TestDataRetrieval.Check_SlackBot(Result);
 
 EndProcedure
@@ -5865,7 +5865,7 @@ Procedure CLI_Slack_GetUserList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetUserList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetUserList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUserList", "Slack");
     OPI_TestDataRetrieval.Check_SlackUsers(Result);
 
 EndProcedure
@@ -5879,7 +5879,7 @@ Procedure CLI_Slack_GetWorkspaceList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetWorkspaceList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetWorkspaceList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetWorkspaceList", "Slack");
     OPI_TestDataRetrieval.Check_SlackWorkspaces(Result);
 
 EndProcedure
@@ -5900,7 +5900,7 @@ Procedure CLI_Slack_SendMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage", "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendMessage", "Slack"); // SKIP
     OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel); // SKIP
 
     Timestamp = Result["ts"]; // SKIP
@@ -5930,7 +5930,7 @@ Procedure CLI_Slack_SendMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (picture)"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendMessage (picture)"); // SKIP
     OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel); // SKIP
 
     // Sheduled
@@ -5949,13 +5949,13 @@ Procedure CLI_Slack_SendMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (scheduled)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendMessage (scheduled)");
     OPI_TestDataRetrieval.Check_SlackSheduledMessage(Result, Channel);
 
     Timestamp = Result["scheduled_message_id"];
     Result    = OPI_Slack.DeleteMessage(Token, Channel, Timestamp, True);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage (scheduled)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteMessage (scheduled)");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -5970,7 +5970,7 @@ Procedure CLI_Slack_GenerateImageBlock(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GenerateImageBlock", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GenerateImageBlock", "Slack");
     OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
@@ -5991,7 +5991,7 @@ Procedure CLI_Slack_EditMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "EditMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditMessage", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditMessage", "Slack");
     OPI_TestDataRetrieval.Check_SlackMessage(Result, Text, Channel);
 
 EndProcedure
@@ -6009,7 +6009,7 @@ Procedure CLI_Slack_GetMessageReplyList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetMessageReplyList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageReplyList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetMessageReplyList", "Slack");
     OPI_TestDataRetrieval.Check_SlackMessages(Result);
 
 EndProcedure
@@ -6027,7 +6027,7 @@ Procedure CLI_Slack_GetMessageLink(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetMessageLink", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetMessageLink", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetMessageLink", "Slack");
     OPI_TestDataRetrieval.Check_SlackMessageLink(Result, Channel);
 
 EndProcedure
@@ -6045,7 +6045,7 @@ Procedure CLI_Slack_DeleteMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteMessage", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6073,7 +6073,7 @@ Procedure CLI_Slack_SendEphemeralMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendEphemeralMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendEphemeralMessage", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendEphemeralMessage", "Slack");
     OPI_TestDataRetrieval.Check_SlackEphemeral(Result);
 
 EndProcedure
@@ -6089,7 +6089,7 @@ Procedure CLI_Slack_GetDelayedMessageList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetDelayedMessageList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDelayedMessageList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDelayedMessageList", "Slack");
     OPI_TestDataRetrieval.Check_SlackSheduled(Result);
 
 EndProcedure
@@ -6106,7 +6106,7 @@ Procedure CLI_Slack_CreateChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "CreateChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannel(Result, Name);
 
     Channel = Result["channel"]["id"];
@@ -6131,7 +6131,7 @@ Procedure CLI_Slack_SetChannelTopic(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelTopic", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelTopic", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetChannelTopic", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannelTopic(Result, Topic);
 
 EndProcedure
@@ -6149,7 +6149,7 @@ Procedure CLI_Slack_SetChannelGoal(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelGoal", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetChannelGoal", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetChannelGoal", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6165,7 +6165,7 @@ Procedure CLI_Slack_GetChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
 
 EndProcedure
@@ -6183,7 +6183,7 @@ Procedure CLI_Slack_InviteUsersToChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "InviteUsersToChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "InviteUsersToChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "InviteUsersToChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
 
 EndProcedure
@@ -6201,7 +6201,7 @@ Procedure CLI_Slack_KickUserFromChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "KickUserFromChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "KickUserFromChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "KickUserFromChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6217,7 +6217,7 @@ Procedure CLI_Slack_GetChannelHistory(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelHistory", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelHistory", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChannelHistory", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannelHistory(Result);
 
 EndProcedure
@@ -6233,7 +6233,7 @@ Procedure CLI_Slack_GetChannelUserList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelUserList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelUserList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChannelUserList", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannelUsers(Result);
 
 EndProcedure
@@ -6249,7 +6249,7 @@ Procedure CLI_Slack_LeaveChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "LeaveChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "LeaveChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "LeaveChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6265,7 +6265,7 @@ Procedure CLI_Slack_JoinChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "JoinChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "JoinChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "JoinChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannel(Result, FunctionParameters["Slack_NewChannelName"]);
 
 EndProcedure
@@ -6283,7 +6283,7 @@ Procedure CLI_Slack_RenameChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "RenameChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RenameChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RenameChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannel(Result, Name);
 
 EndProcedure
@@ -6299,7 +6299,7 @@ Procedure CLI_Slack_ArchiveChannel(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "ArchiveChannel", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveChannel", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ArchiveChannel", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6313,7 +6313,7 @@ Procedure CLI_Slack_GetChannelList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChannelList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChannelList", "Slack");
     OPI_TestDataRetrieval.Check_SlackChannelsList(Result);
 
 EndProcedure
@@ -6329,7 +6329,7 @@ Procedure CLI_Slack_OpenDialog(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "OpenDialog", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "OpenDialog", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "OpenDialog", "Slack");
     OPI_TestDataRetrieval.Check_SlackDialog(Result);
 
     Dialog = Result["channel"]["id"];
@@ -6339,7 +6339,7 @@ Procedure CLI_Slack_OpenDialog(FunctionParameters)
 
     Result = OPI_Slack.SendMessage(Token, Dialog, "Test dialog");
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendMessage (dialog)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendMessage (dialog)");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6355,7 +6355,7 @@ Procedure CLI_Slack_CloseDialog(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "CloseDialog", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CloseDialog", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CloseDialog", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6371,7 +6371,7 @@ Procedure CLI_Slack_GetFilesList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFilesList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFilesList", "Slack");
     OPI_TestDataRetrieval.Check_SlackFilesList(Result);
 
     Options = New Structure;
@@ -6379,7 +6379,7 @@ Procedure CLI_Slack_GetFilesList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFilesList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFilesList (full)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFilesList (full)");
     OPI_TestDataRetrieval.Check_SlackFilesList(Result);
 
 EndProcedure
@@ -6401,9 +6401,9 @@ Procedure CLI_Slack_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile"     , "Slack"); // SKIP
-    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePublic" , "Slack"); // SKIP
-    OPI_TestDataRetrieval.WriteLog(Result, "MakeFilePrivate", "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile"     , "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "MakeFilePublic" , "Slack"); // SKIP
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "MakeFilePrivate", "Slack"); // SKIP
     OPI_TestDataRetrieval.Check_SlackFile(Result, FileName); // SKIP
 
     UploadedFile = Result["files"][0]["id"]; // SKIP
@@ -6419,7 +6419,7 @@ Procedure CLI_Slack_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile (to channel)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile (to channel)");
     OPI_TestDataRetrieval.Check_SlackFile(Result, FileName);
     OPI_Slack.DeleteFile(Token, Result["files"][0]["id"]);
 
@@ -6466,7 +6466,7 @@ Procedure CLI_Slack_GetFileData(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFileData", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFileData", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFileData", "Slack");
     OPI_TestDataRetrieval.Check_SlackFile(Result, "megadoc.docx");
 
 EndProcedure
@@ -6482,7 +6482,7 @@ Procedure CLI_Slack_DeleteFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteFile", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteFile", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6498,7 +6498,7 @@ Procedure CLI_Slack_GetExternalFileList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFileList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetExternalFileList", "Slack");
     OPI_TestDataRetrieval.Check_SlackFilesList(Result);
 
     Options = New Structure;
@@ -6506,7 +6506,7 @@ Procedure CLI_Slack_GetExternalFileList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFileList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFileList (full)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetExternalFileList (full)");
     OPI_TestDataRetrieval.Check_SlackFilesList(Result);
 
 EndProcedure
@@ -6524,7 +6524,7 @@ Procedure CLI_Slack_AddExternalFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "AddExternalFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddExternalFile", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddExternalFile", "Slack");
     OPI_TestDataRetrieval.Check_SlackExternalFile(Result, Title);
 
     UploadedFile = Result["file"]["id"];
@@ -6544,7 +6544,7 @@ Procedure CLI_Slack_GetExternalFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetExternalFile", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetExternalFile", "Slack");
     OPI_TestDataRetrieval.Check_SlackExternalFile(Result, "NewFile");
 
 EndProcedure
@@ -6562,7 +6562,7 @@ Procedure CLI_Slack_SendExternalFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendExternalFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendExternalFile", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendExternalFile", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6578,7 +6578,7 @@ Procedure CLI_Slack_DeleteExternalFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteExternalFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteExternalFile", "Slack");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteExternalFile", "Slack");
     OPI_TestDataRetrieval.Check_SlackOk(Result);
 
 EndProcedure
@@ -6610,7 +6610,7 @@ Procedure CLI_Airtable_CreateDatabase(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateDatabase", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateDatabase", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateDatabase", "Airtable");
     OPI_TestDataRetrieval.Check_ATBaseWithTable(Result, TableName);
 
     Base = Result["id"];
@@ -6630,7 +6630,7 @@ Procedure CLI_Airtable_GetDatabaseTables(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetDatabaseTables", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDatabaseTables", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDatabaseTables", "Airtable");
     OPI_TestDataRetrieval.Check_ATTablesList(Result);
 
 EndProcedure
@@ -6644,7 +6644,7 @@ Procedure CLI_Airtable_GetListOfBases(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetListOfBases", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfBases", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetListOfBases", "Airtable");
     OPI_TestDataRetrieval.Check_ATBasesList(Result);
 
 EndProcedure
@@ -6657,7 +6657,7 @@ Procedure CLI_Airtable_GetNumberField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetNumberField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetNumberField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetNumberField", "Airtable");
 
 EndProcedure
 
@@ -6669,7 +6669,7 @@ Procedure CLI_Airtable_GetStringField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetStringField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetStringField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetStringField", "Airtable");
 
 EndProcedure
 
@@ -6681,7 +6681,7 @@ Procedure CLI_Airtable_GetAttachmentField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetAttachmentField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAttachmentField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAttachmentField", "Airtable");
 
 EndProcedure
 
@@ -6693,7 +6693,7 @@ Procedure CLI_Airtable_GetCheckboxField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetCheckboxField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetCheckboxField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetCheckboxField", "Airtable");
 
 EndProcedure
 
@@ -6705,7 +6705,7 @@ Procedure CLI_Airtable_GetDateField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetDateField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetDateField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetDateField", "Airtable");
 
 EndProcedure
 
@@ -6717,7 +6717,7 @@ Procedure CLI_Airtable_GetPhoneField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetPhoneField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPhoneField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPhoneField", "Airtable");
 
 EndProcedure
 
@@ -6729,7 +6729,7 @@ Procedure CLI_Airtable_GetEmailField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetEmailField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetEmailField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEmailField", "Airtable");
 
 EndProcedure
 
@@ -6741,7 +6741,7 @@ Procedure CLI_Airtable_GetLinkField(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetLinkField", Options);
 
     OPI_TestDataRetrieval.Check_Map(Result);
-    OPI_TestDataRetrieval.WriteLog(Result, "GetLinkField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetLinkField", "Airtable");
 
 EndProcedure
 
@@ -6772,7 +6772,7 @@ Procedure CLI_Airtable_CreateTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateTable", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateTable", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateTable", "Airtable");
     OPI_TestDataRetrieval.Check_ATTable(Result, Name, Description);
 
     Table = Result["id"];
@@ -6798,7 +6798,7 @@ Procedure CLI_Airtable_ModifyTable(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "ModifyTable", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ModifyTable", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ModifyTable", "Airtable");
     OPI_TestDataRetrieval.Check_ATTable(Result, Name, Description);
 
 EndProcedure
@@ -6824,7 +6824,7 @@ Procedure CLI_Airtable_CreateField(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateField", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateField", "Airtable");
     OPI_TestDataRetrieval.Check_ATField(Result, Name);
 
     Field = Result["id"];
@@ -6853,7 +6853,7 @@ Procedure CLI_Airtable_ModifyField(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "ModifyField", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ModifyField", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ModifyField", "Airtable");
     OPI_TestDataRetrieval.Check_ATTable(Result, Name, Description);
 
 EndProcedure
@@ -6882,7 +6882,7 @@ Procedure CLI_Airtable_CreatePosts(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreatePosts", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreatePosts", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreatePosts", "Airtable");
     OPI_TestDataRetrieval.Check_ATRecords(Result);
 
     ArrayOfDeletions = New Array;
@@ -6906,7 +6906,7 @@ Procedure CLI_Airtable_CreatePosts(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreatePosts", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateRecords (one)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateRecords (one)");
     OPI_TestDataRetrieval.Check_ATRecordNumberAndString(Result, Number, String);
 
     Record = Result["id"];
@@ -6930,7 +6930,7 @@ Procedure CLI_Airtable_GetRecord(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetRecord", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetRecord", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetRecord", "Airtable");
     OPI_TestDataRetrieval.Check_ATRecord(Result, Record);
 
 EndProcedure
@@ -6952,7 +6952,7 @@ Procedure CLI_Airtable_CreateComment(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateComment", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateComment", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateComment", "Airtable");
     OPI_TestDataRetrieval.Check_ATText(Result, Text);
 
     Comment = Result["id"];
@@ -6981,7 +6981,7 @@ Procedure CLI_Airtable_EditComment(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "EditComment", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditComment", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditComment", "Airtable");
     OPI_TestDataRetrieval.Check_ATText(Result, Text);
 
 EndProcedure
@@ -7001,7 +7001,7 @@ Procedure CLI_Airtable_GetComments(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetComments", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetComments", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetComments", "Airtable");
     OPI_TestDataRetrieval.Check_ATComments(Result);
 
 EndProcedure
@@ -7023,7 +7023,7 @@ Procedure CLI_Airtable_DeleteComment(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeleteComment", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteComment", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteComment", "Airtable");
     OPI_TestDataRetrieval.Check_ATCommentDeleting(Result, Comment);
 
 EndProcedure
@@ -7041,7 +7041,7 @@ Procedure CLI_Airtable_GetListOfRecords(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetListOfRecords", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfRecords", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetListOfRecords", "Airtable");
     OPI_TestDataRetrieval.Check_ATRecords(Result);
 
 EndProcedure
@@ -7061,7 +7061,7 @@ Procedure CLI_Airtable_DeletePosts(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeletePosts", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeletePosts", "Airtable");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeletePosts", "Airtable");
     OPI_TestDataRetrieval.Check_ATRecords(Result);
 
 EndProcedure
@@ -7080,7 +7080,7 @@ Procedure CLI_Dropbox_GetAuthorizationLink(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAuthorizationLink", Options);
     Result = GetStringFromBinaryData(Result);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAuthorizationLink", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAuthorizationLink", "Dropbox");
     OPI_TestDataRetrieval.ExpectsThat(Result).ИмеетТип("String");
 
 EndProcedure
@@ -7098,7 +7098,7 @@ Procedure CLI_Dropbox_GetToken(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetToken", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetToken");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetToken");
 
     Token   = Result["access_token"];
     Refresh = Result["refresh_token"];
@@ -7126,7 +7126,7 @@ Procedure CLI_Dropbox_UpdateToken(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RefreshToken", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RefreshToken");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RefreshToken");
 
     Token = Result["access_token"];
 
@@ -7148,7 +7148,7 @@ Procedure CLI_Dropbox_GetObjectInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetObjectInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectInformation", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectInformation", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
 
     OPI_Tools.Pause(5);
@@ -7166,7 +7166,7 @@ Procedure CLI_Dropbox_GetPreview(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetPreview", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetPreview", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetPreview", "Dropbox");
     OPI_TestDataRetrieval.Check_BinaryData(Result, 120000);
 
     OPI_Tools.Pause(5);
@@ -7190,7 +7190,7 @@ Procedure CLI_Dropbox_UploadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFile", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFile", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
     DeleteFiles(ImagePath);
 
@@ -7211,7 +7211,7 @@ Procedure CLI_Dropbox_UploadFileByURL(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFileByURL", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UploadFileByURL", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UploadFileByURL", "Dropbox");
 
     OPI_TestDataRetrieval.Check_DropboxWork(Result);
 
@@ -7241,7 +7241,7 @@ Procedure CLI_Dropbox_GetUploadStatusByURL(FunctionParameters)
 
         OPI_Tools.Pause(5);
 
-        OPI_TestDataRetrieval.WriteLog(Result, "GetUploadStatusByURL", "Dropbox");
+        OPI_TestDataRetrieval.WriteLogCLI(Result, "GetUploadStatusByURL", "Dropbox");
 
     EndDo;
 
@@ -7273,7 +7273,7 @@ Procedure CLI_Dropbox_DeleteObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteObject", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteObject", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Path);
 
     OPI_Tools.Pause(5);
@@ -7293,7 +7293,7 @@ Procedure CLI_Dropbox_CopyObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CopyObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CopyObject", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CopyObject", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Copy);
 
     Options = New Structure;
@@ -7320,7 +7320,7 @@ Procedure CLI_Dropbox_MoveObject(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "MoveObject", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "MoveObject", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "MoveObject", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxMetadata(Result, TargetPath);
 
     Options = New Structure;
@@ -7347,7 +7347,7 @@ Procedure CLI_Dropbox_CreateFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CreateFolder", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CreateFolder", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CreateFolder", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxMetadata(Result, Path);
 
     Options = New Structure;
@@ -7372,7 +7372,7 @@ Procedure CLI_Dropbox_DownloadFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DownloadFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFile", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DownloadFile", "Dropbox");
     OPI_TestDataRetrieval.Check_BinaryData(Result, 2000000);
 
     OPI_Tools.Pause(5);
@@ -7390,7 +7390,7 @@ Procedure CLI_Dropbox_DownloadFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DownloadFolder", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DownloadFolder", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DownloadFolder", "Dropbox");
     OPI_TestDataRetrieval.Check_BinaryData(Result);
 
     OPI_Tools.Pause(5);
@@ -7408,7 +7408,7 @@ Procedure CLI_Dropbox_GetFolderFileList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetListOfFolderFiles", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetListOfFolderFiles", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetListOfFolderFiles", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxArray(Result);
 
     OPI_Tools.Pause(5);
@@ -7427,7 +7427,7 @@ Procedure CLI_Dropbox_GetObjectVersionList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetObjectVersionList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetObjectVersionList", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetObjectVersionList", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxArray(Result, 1);
 
     Revision = Result["entries"][0]["rev"];
@@ -7452,7 +7452,7 @@ Procedure CLI_Dropbox_RestoreObjectToVersion(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RestoreObjectToVersion", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RestoreObjectToVersion", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RestoreObjectToVersion", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
 
     OPI_Tools.Pause(5);
@@ -7473,7 +7473,7 @@ Procedure CLI_Dropbox_GetTagList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetTagList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTagList", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTagList", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxTags(Result, PathsArray.Count());
 
     Options = New Structure;
@@ -7482,7 +7482,7 @@ Procedure CLI_Dropbox_GetTagList(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetTagList", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetTagList (single)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetTagList (single)");
     OPI_TestDataRetrieval.Check_DropboxTags(Result, 1);
 
     HasTag = False;
@@ -7512,7 +7512,7 @@ Procedure CLI_Dropbox_AddTag(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddTag", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddTag", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddTag", "Dropbox");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
     OPI_Tools.Pause(5);
@@ -7532,7 +7532,7 @@ Procedure CLI_Dropbox_DeleteTag(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddTag", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteTag", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteTag", "Dropbox");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
     OPI_Tools.Pause(5);
@@ -7548,7 +7548,7 @@ Procedure CLI_Dropbox_GetAccountInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAccountInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAccountInformation", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAccountInformation", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxAccount(Result);
 
     Options = New Structure;
@@ -7557,7 +7557,7 @@ Procedure CLI_Dropbox_GetAccountInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAccountInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAccountInformation (third-party)");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAccountInformation (third-party)");
     OPI_TestDataRetrieval.Check_DropboxAccount(Result);
 
     OPI_Tools.Pause(5);
@@ -7573,7 +7573,7 @@ Procedure CLI_Dropbox_GetSpaceUsageData(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetSpaceUsageData", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetSpaceUsageData", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetSpaceUsageData", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxSpace(Result);
 
 EndProcedure
@@ -7592,7 +7592,7 @@ Procedure CLI_Dropbox_AddUsersToFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddUsersToFile", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxMember(Result, Email, False);
 
     Mails = New Array;
@@ -7606,7 +7606,7 @@ Procedure CLI_Dropbox_AddUsersToFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFile (new.) ");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddUsersToFile (new.) ");
     OPI_TestDataRetrieval.Check_DropboxMember(Result, Email, True);
 
 EndProcedure
@@ -7622,7 +7622,7 @@ Procedure CLI_Dropbox_PublishFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "PublishFolder", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PublishFolder", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PublishFolder", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxPublicFolder(Result);
 
     FolderID = Result["shared_folder_id"];
@@ -7645,7 +7645,7 @@ Procedure CLI_Dropbox_CancelFolderPublication(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CancelFolderPublication", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CancelFolderPublication", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CancelFolderPublication", "Dropbox");
 
     CurrentStatus = "in_progress";
     JobID         = Result["async_job_id"];
@@ -7663,7 +7663,7 @@ Procedure CLI_Dropbox_CancelFolderPublication(FunctionParameters)
 
     EndDo;
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetAsynchronousChangeStatus", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetAsynchronousChangeStatus", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxStatus(Result);
 
     FunctionParameters.Insert("Dropbox_NewJobID", JobID);
@@ -7702,7 +7702,7 @@ Procedure CLI_Dropbox_AddUsersToFolder(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFolder", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "AddUsersToFolder", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "AddUsersToFolder", "Dropbox");
 
     OPI_TestDataRetrieval.Check_Empty(Result);
 
@@ -7732,7 +7732,7 @@ Procedure CLI_Dropbox_CancelFilePublication(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CancelFilePublication", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CancelFilePublication", "Dropbox");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CancelFilePublication", "Dropbox");
     OPI_TestDataRetrieval.Check_Empty(Result);
 
 EndProcedure
@@ -7750,7 +7750,7 @@ Procedure CLI_VKTeams_CheckToken(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "CheckToken", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "CheckToken", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "CheckToken", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTUser(Result);
 
     OPI_Tools.Pause(5);
@@ -7771,7 +7771,7 @@ Procedure CLI_VKTeams_GetEvents(FunctionParameters)
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetEvents", Options);
 
-        OPI_TestDataRetrieval.WriteLog(Result, "GetEvents", "VkTeams");
+        OPI_TestDataRetrieval.WriteLogCLI(Result, "GetEvents", "VkTeams");
         OPI_TestDataRetrieval.Check_VKTEvents(Result); // SKIP
 
         Events = Result["events"];
@@ -7805,7 +7805,7 @@ Procedure CLI_VKTeams_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage (simple)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage (simple)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
 
     ChatID  = FunctionParameters["VkTeams_ChatID2"];
@@ -7844,7 +7844,7 @@ Procedure CLI_VKTeams_SendTextMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendTextMessage", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendTextMessage", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result);
 
     MessageID = Result["msgId"];
@@ -7870,7 +7870,7 @@ Procedure CLI_VKTeams_ForwardMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage (simple)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ForwardMessage (simple)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
 
     Text = "Additional text";
@@ -7884,7 +7884,7 @@ Procedure CLI_VKTeams_ForwardMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ForwardMessage", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ForwardMessage", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result);
 
 EndProcedure
@@ -7909,7 +7909,7 @@ Procedure CLI_VKTeams_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (URL)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile (URL)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
 
     Options = New Structure;
@@ -7920,7 +7920,7 @@ Procedure CLI_VKTeams_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile (Path)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile (Path)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
 
     Options = New Structure;
@@ -7932,7 +7932,7 @@ Procedure CLI_VKTeams_SendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendFile", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendFile", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result);
 
     DeleteFiles(FilePath);
@@ -7960,7 +7960,7 @@ Procedure CLI_VKTeams_ResendFile(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendFile", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ResendFile", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ResendFile", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result);
 
 EndProcedure
@@ -7976,7 +7976,7 @@ Procedure CLI_VKTeams_GetFileInformation(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetFileInformation", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetFileInformation", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetFileInformation", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTFile(Result);
 
 EndProcedure
@@ -7996,7 +7996,7 @@ Procedure CLI_VKTeams_EditMessageText(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText (simple)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditMessageText (simple)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result); // SKIP
 
     Text   = "<b>New bold message text</b>";
@@ -8011,7 +8011,7 @@ Procedure CLI_VKTeams_EditMessageText(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "EditMessageText", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "EditMessageText", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -8031,7 +8031,7 @@ Procedure CLI_VKTeams_DeleteMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DeleteMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DeleteMessage", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DeleteMessage", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
     OPI_Tools.Pause(5);
@@ -8058,7 +8058,7 @@ Procedure CLI_VKTeams_SendVoice(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (URL)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendVoice (URL)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
 
     Options = New Structure;
@@ -8069,7 +8069,7 @@ Procedure CLI_VKTeams_SendVoice(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SendVoice (Path)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SendVoice (Path)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result); // SKIP
 
     DeleteFiles(FilePath);
@@ -8095,7 +8095,7 @@ Procedure CLI_VKTeams_ResendVoice(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendVoice", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ResendVoice", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ResendVoice", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTMessage(Result);
 
 EndProcedure
@@ -8113,7 +8113,7 @@ Procedure CLI_VKTeams_RemoveChatMembers(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "RemoveChatMembers", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "RemoveChatMembers", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "RemoveChatMembers", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
@@ -8135,7 +8135,7 @@ Procedure CLI_VKTeams_ChangeChatPicture(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (URL)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ChangeChatPicture (URL)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result); // SKIP
 
     Options = New Structure;
@@ -8145,7 +8145,7 @@ Procedure CLI_VKTeams_ChangeChatPicture(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ChangeChatPicture (Path)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ChangeChatPicture (Path)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result); // SKIP
 
     DeleteFiles(FilePath);
@@ -8163,7 +8163,7 @@ Procedure CLI_VKTeams_GetChatInfo(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatInfo", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChatInfo", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChatInfo", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTChat(Result);
 
 EndProcedure
@@ -8179,7 +8179,7 @@ Procedure CLI_VKTeams_GetChatAdmins(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatAdmins", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChatAdmins", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChatAdmins", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTList(Result, "admins");
 
 EndProcedure
@@ -8195,7 +8195,7 @@ Procedure CLI_VKTeams_GetChatMembers(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatMembers", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChatMembers", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChatMembers", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTList(Result, "members");
 
 EndProcedure
@@ -8211,7 +8211,7 @@ Procedure CLI_VKTeams_GetChatBlockedUsers(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatBlockedUsers", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChatBlockedUsers", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChatBlockedUsers", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTList(Result, "users");
 
 EndProcedure
@@ -8227,7 +8227,7 @@ Procedure CLI_VKTeams_GetChatJoinRequests(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatJoinRequests", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "GetChatJoinRequests", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "GetChatJoinRequests", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTList(Result, "users");
 
 EndProcedure
@@ -8246,7 +8246,7 @@ Procedure CLI_VKTeams_BlockChatUser(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "BlockChatUser", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "BlockChatUser", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "BlockChatUser", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
@@ -8264,7 +8264,7 @@ Procedure CLI_VKTeams_UnblockChatUser(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnblockChatUser", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UnblockChatUser", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UnblockChatUser", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
@@ -8282,7 +8282,7 @@ Procedure CLI_VKTeams_PinMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "PinMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "PinMessage", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "PinMessage", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
@@ -8300,7 +8300,7 @@ Procedure CLI_VKTeams_UnpinMessage(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnpinMessage", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "UnpinMessage", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "UnpinMessage", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
@@ -8318,7 +8318,7 @@ Procedure CLI_VKTeams_ApprovePending(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ApprovePending (single)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ApprovePending (single)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTPending(Result); // SKIP
 
     Options = New Structure;
@@ -8327,7 +8327,7 @@ Procedure CLI_VKTeams_ApprovePending(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "ApprovePending", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "ApprovePending", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTPending(Result);
 
 EndProcedure
@@ -8345,7 +8345,7 @@ Procedure CLI_VKTeams_DisapprovePending(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DisapprovePending (single)", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DisapprovePending (single)", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTPending(Result); // SKIP
 
     Options = New Structure;
@@ -8354,7 +8354,7 @@ Procedure CLI_VKTeams_DisapprovePending(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "DisapprovePending", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "DisapprovePending", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTPending(Result);
 
 EndProcedure
@@ -8372,7 +8372,7 @@ Procedure CLI_VKTeams_SetChatTitle(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatTitle", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetChatTitle", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetChatTitle", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
@@ -8390,7 +8390,7 @@ Procedure CLI_VKTeams_SetChatDescription(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatDescription", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetChatDescription", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetChatDescription", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
@@ -8408,7 +8408,7 @@ Procedure CLI_VKTeams_SetChatRules(FunctionParameters)
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatRules", Options);
 
-    OPI_TestDataRetrieval.WriteLog(Result, "SetChatRules", "VkTeams");
+    OPI_TestDataRetrieval.WriteLogCLI(Result, "SetChatRules", "VkTeams");
     OPI_TestDataRetrieval.Check_VKTTrue(Result);
 
 EndProcedure
