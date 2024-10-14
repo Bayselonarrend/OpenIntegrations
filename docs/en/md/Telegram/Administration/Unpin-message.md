@@ -29,7 +29,7 @@ Method at API documentation: [unpinChatMessage](https://core.telegram.org/bots/a
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChannelID = "@testsichee";
-    MessageID = "9685";
+    MessageID = "9761";
 
     Result = OPI_Telegram.UnpinMessage(Token, ChannelID, MessageID);
 ```

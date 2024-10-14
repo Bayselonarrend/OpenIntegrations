@@ -1,8 +1,8 @@
 ﻿    Токен         = "001.3501506236.091...";
     IDЧата        = "689203963@chat.agent";
-    IDЦитируемого = "7425247694500662550";
+    IDЦитируемого = "7425684917876428136";
 
-    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a"  ;        // URL
+    Файл     = "https://api.athenaeum.digital/test_data/song.m4a"  ;        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
