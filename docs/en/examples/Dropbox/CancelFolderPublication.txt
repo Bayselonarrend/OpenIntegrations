@@ -1,4 +1,4 @@
-﻿    Token  = "sl.B-q5XQaxJtwx0uMZIwtpBtvwgWmplxOVWNQyY1gbKG31NYy3fDHqe4IuADj33al8uD1l3FYARn...";
-    Folder = "11721182785";
+﻿    Token  = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Folder = "11705714929";
 
     Result = OPI_Dropbox.CancelFolderPublication(Token, Folder);
