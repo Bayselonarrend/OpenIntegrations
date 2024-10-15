@@ -1,0 +1,4 @@
+oint telegram Ban ^
+ --token "***" ^
+ --chat "@testsichee" ^
+ --user "461699897"
