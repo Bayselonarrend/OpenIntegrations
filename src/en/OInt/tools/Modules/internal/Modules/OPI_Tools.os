@@ -427,6 +427,26 @@ Function ConvertDataWithSizeRetrieval(Data, Val MinimumStreamSize = 0) Export
 
 EndFunction
 
+Function CollectionFieldExist(Val Collection, Val Field) Export
+
+    CollectionType = TypeOf(Collection);
+
+    If CollectionType = Type("Structure") Then
+
+        Return Collection.Property(Field);
+
+    ElsIf CollectionType = Type("Map") Then
+
+        Return Collection["Field"] <> Undefined;
+
+    Else
+
+        Raise "The specified value is not a valid collection!";
+
+    EndIf;
+
+EndFunction
+
 Function ClearCollectionRecursively(Val Collection) Export
 
     ValeType = TypeOf(Collection);
