@@ -25,19 +25,33 @@ sidebar_position: 12
 
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
-    Канал = "C07R7MSSPDM";
+    Канал = "C07RTRYK673";
     Цель  = "Тестовая цель";
 
     Результат = OPI_Slack.УстановитьЦельКанала(Токен, Канал, Цель);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack УстановитьЦельКанала --token %token% --channel "C070VPMKN8J" --purpose "Тестовая цель"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack УстановитьЦельКанала --token "***" \
+              --channel "C07SJFNT9SL" \
+              --purpose "Тестовая цель"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack УстановитьЦельКанала ^
+              --token "***" ^
+              --channel "C07SJFNT9SL" ^
+              --purpose "Тестовая цель"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

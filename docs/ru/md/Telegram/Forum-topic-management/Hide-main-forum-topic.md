@@ -31,14 +31,26 @@ sidebar_position: 7
 
     Результат = OPI_Telegram.СкрытьГлавнуюТемуФорума(Токен, Чат);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram СкрытьГлавнуюТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram СкрытьГлавнуюТемуФорума --token "***" \
+              --forum "-1001971186208"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram СкрытьГлавнуюТемуФорума ^
+              --token "***" ^
+              --forum "-1001971186208"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

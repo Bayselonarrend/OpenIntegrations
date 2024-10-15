@@ -46,14 +46,28 @@ sidebar_position: 2
 
     КонецЦикла;
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ПолучитьСобытия --token %token% --last %last% --timeout %timeout%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ПолучитьСобытия --token "***" \
+              --last 152 \
+              --timeout 3
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПолучитьСобытия ^
+              --token "***" ^
+              --last 152 ^
+              --timeout 3
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

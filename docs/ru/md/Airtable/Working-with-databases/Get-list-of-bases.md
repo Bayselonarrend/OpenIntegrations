@@ -27,14 +27,24 @@ sidebar_position: 1
 
     Результат = OPI_Airtable.ПолучитьСписокБаз(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьСписокБаз --token %token% --offset %offset%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьСписокБаз --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьСписокБаз ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

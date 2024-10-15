@@ -25,21 +25,16 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token  = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    From   = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
-    Target = "1WBgDTXbFwMmu1pOOxkej3eD-fx3KQ9kiQ0Np5B2oeMY";
-    Sheet  = "1710472523";
+    Token  = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    From   = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
+    Target = "1CMjanhXxVBuxSLj6tAIya9LldwB5crkM-7DJuiutM1k";
+    Sheet  = "501655435";
 
     Result = OPI_GoogleSheets.CopySheet(Token, From, Target, Sheet);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gsheets CopySheet --token %token% --from "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --to "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s" --sheet "25093199"
-
-```
 
 ```json title="Result"
 {

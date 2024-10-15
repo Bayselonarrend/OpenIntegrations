@@ -31,14 +31,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
     Result = OPI_Neocities.GetToken(Login, Password);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint neocities GetToken --login "2athenaeum" --password "Rit..."
-
-```
 
 ```json title="Result"
 {

@@ -35,14 +35,9 @@ Method at API documentation: [post /v1/product/update/offer-id](https://docs.ozo
 
     Result = OPI_Ozon.UpdateProductsArticles(ClientID, APIKey, ArticlesMap);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon UpdateProductsArticles --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --offers %offers%
-
-```
 
 ```json title="Result"
 {

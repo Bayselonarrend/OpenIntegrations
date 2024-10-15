@@ -28,14 +28,9 @@ sidebar_position: 4
 
     Result = OPI_Viber.GetOnlineUsers(Token, UserID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber GetOnlineUsers --token %token% --users %users%
-
-```
 
 ```json title="Result"
 {

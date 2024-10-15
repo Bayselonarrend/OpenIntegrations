@@ -34,7 +34,7 @@ sidebar_position: 2
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
     Текст    = "Подпись к файлу";
 
-    Файл     = "https://api.athenaeum.digital/test_data/document.docx";        // URL
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("docx");  // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -47,14 +47,32 @@ sidebar_position: 2
 
     Результат = OPI_VKTeams.ОтправитьФайл(Токен, IDЧата, ФайлДД, Текст, "ВажныйДокумент.docx");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ОтправитьФайл --token %token% --chatid %chatid% --file %file% --text %text% --filename %filename% --parsemod %parsemod%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ОтправитьФайл --token "***" \
+              --chatid "AoLI0egLWBSLR1Ngn2w" \
+              --file C:\Users\Administrator\AppData\Local\Temp\2ezls2afywa.tmp \
+              --text "Подпись к файлу" \
+              --filename "ВажныйДокумент.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ОтправитьФайл ^
+              --token "***" ^
+              --chatid "AoLI0egLWBSLR1Ngn2w" ^
+              --file C:\Users\Administrator\AppData\Local\Temp\2ezls2afywa.tmp ^
+              --text "Подпись к файлу" ^
+              --filename "ВажныйДокумент.docx"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

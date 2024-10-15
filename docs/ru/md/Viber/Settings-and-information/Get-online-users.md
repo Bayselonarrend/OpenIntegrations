@@ -28,14 +28,26 @@ sidebar_position: 4
 
     Результат    = OPI_Viber.ПолучитьОнлайнПользователей(Токен, IDПользователя);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ПолучитьОнлайнПользователей --token %token% --users %users%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ПолучитьОнлайнПользователей --token "***" \
+              --users "tMNGhftyUPrB3r1lD+bT4g=="
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ПолучитьОнлайнПользователей ^
+              --token "***" ^
+              --users "tMNGhftyUPrB3r1lD+bT4g=="
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

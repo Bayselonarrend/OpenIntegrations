@@ -26,14 +26,24 @@ sidebar_position: 2
     Параметры = ПолучитьПараметрыВК();
     Результат = OPI_VK.ПолучитьСписокТоваров(, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ПолучитьСписокТоваров --sel %sel% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ПолучитьСписокТоваров --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ПолучитьСписокТоваров ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 [

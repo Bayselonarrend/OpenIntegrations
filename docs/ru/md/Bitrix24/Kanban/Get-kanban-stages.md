@@ -33,18 +33,13 @@ sidebar_position: 4
     Результат = OPI_Bitrix24.ПолучитьСтадииКанбана(URL, , Истина);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "21750a67006e9f06006b12e400000001000...";
+    Токен     = "49e20867006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьСтадииКанбана(URL, , , Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПолучитьСтадииКанбана --url "b24-ar17wx.bitrix24.by" --entityid %entityid% --admin %admin% --token "56898d66006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

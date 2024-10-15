@@ -27,14 +27,9 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Результат = OPI_Ozon.ПолучитьСтруктуруЦеныТовара();
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьСтруктуруЦеныТовара --empty %empty%
 
-```
+
 
 ```json title="Результат"
 {

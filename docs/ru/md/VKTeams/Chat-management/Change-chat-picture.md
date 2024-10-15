@@ -30,7 +30,7 @@ sidebar_position: 2
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
 
-    Файл     = "https://api.athenaeum.digital/test_data/spy2.png";        // URL
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/spy2.png";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("png");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -43,14 +43,28 @@ sidebar_position: 2
 
     Результат = OPI_VKTeams.ИзменитьАватарЧата(Токен, IDЧата, ФайлДД);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ИзменитьАватарЧата --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --file "https://openintegrations.dev/test_data/spy2.png"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ИзменитьАватарЧата --token "***" \
+              --chatid "AoLI0egLWBSLR1Ngn2w" \
+              --file "C:\Users\Administrator\AppData\Local\Temp\bhvf2o3csdt.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ИзменитьАватарЧата ^
+              --token "***" ^
+              --chatid "AoLI0egLWBSLR1Ngn2w" ^
+              --file "C:\Users\Administrator\AppData\Local\Temp\bhvf2o3csdt.png"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

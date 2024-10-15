@@ -28,14 +28,9 @@ sidebar_position: 2
 
     Result = OPI_Twitter.CreateTextTweet(Text, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint twitter CreateTextTweet --text %text% --auth %auth%
-
-```
 
 ```json title="Result"
 {

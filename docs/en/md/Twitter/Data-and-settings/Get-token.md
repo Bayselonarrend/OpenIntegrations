@@ -28,14 +28,9 @@ sidebar_position: 2
 
     Result = OPI_Twitter.GetToken(Code, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint twitter GetToken --code %code% --auth %auth%
-
-```
 
 ```json title="Result"
 {

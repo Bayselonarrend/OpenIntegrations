@@ -27,8 +27,8 @@ sidebar_position: 5
     Параметры = ПолучитьПараметрыАвторизацииТвиттер();
     Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
 
-    Видео   = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Двоичные или Путь к файлу
-    Видео2  = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Двоичные или Путь к файлу
+    Видео   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Двоичные или Путь к файлу
+    Видео2  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Двоичные или Путь к файлу
 
     МассивВидео = Новый Массив;
     МассивВидео.Добавить(Видео);
@@ -39,14 +39,28 @@ sidebar_position: 5
     Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
     Результат = OPI_Twitter.СоздатьТвитВидео(Текст, Видео, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint twitter СоздатьТвитВидео --text %text% --videos %videos% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint twitter СоздатьТвитВидео --text "Тестовый твитт14a548af-c125-420a-8b58-bdf6790580cc" \
+              --videos C:\Users\Administrator\AppData\Local\Temp\aoyarkkvwz3.tmp \
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint twitter СоздатьТвитВидео ^
+              --text "Тестовый твитт14a548af-c125-420a-8b58-bdf6790580cc" ^
+              --videos C:\Users\Administrator\AppData\Local\Temp\aoyarkkvwz3.tmp ^
+              --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

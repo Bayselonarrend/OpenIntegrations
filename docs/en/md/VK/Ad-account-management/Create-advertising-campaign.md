@@ -31,14 +31,9 @@ sidebar_position: 1
   
   Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreateAdvertisingCampaign --cabinet "1607951446" --title %title% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

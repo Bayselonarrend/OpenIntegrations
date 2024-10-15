@@ -27,7 +27,7 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base  = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
+    Base  = "11c82aa7-fc4e-8103-a6dc-db01190daae1";
 
     Title       = "TestTitle";
     Description = "TestDescription";
@@ -38,14 +38,9 @@ sidebar_position: 3
 
     Result = OPI_Notion.EditDatabaseProperties(Token, Base, Properties, Title, Description);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion EditDatabaseProperties --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --props %props% --title "Updated title" --description "Updated base description"
-
-```
 
 ```json title="Result"
 {

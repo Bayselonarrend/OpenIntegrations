@@ -32,14 +32,9 @@ sidebar_position: 1
 
     Результат = OPI_CDEK.ПолучитьТокен(Аккаунт, Пароль, Истина);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint cdek ПолучитьТокен --account "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP" --pass "RmAmgvSgSl..." --testapi %testapi%
 
-```
+
 
 ```json title="Результат"
 {

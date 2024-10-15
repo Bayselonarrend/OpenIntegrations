@@ -26,8 +26,8 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appESy99HYCLbuWlV";
-    Таблица = "tbl5gZLQ8i5xKuVTy";
+    База    = "appmy5B6qi09E4wrF";
+    Таблица = "tblYwj7Cnw6w3FGWh";
 
     Номер     = 10;
     Строковое = "Привет";
@@ -41,14 +41,30 @@ sidebar_position: 3
 
     Результат = OPI_Airtable.СоздатьЗаписи(Токен, База, Таблица, МассивОписаний);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable СоздатьЗаписи --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --data %data%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable СоздатьЗаписи --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --table "tbl99eHW7uVpn8cdR" \
+              --data "{'Номер':10,'Строковое':'Привет'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable СоздатьЗаписи ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --table "tbl99eHW7uVpn8cdR" ^
+              --data "{'Номер':10,'Строковое':'Привет'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

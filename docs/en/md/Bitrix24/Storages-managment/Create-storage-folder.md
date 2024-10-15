@@ -37,18 +37,13 @@ Method at API documentation: [disk.storage.addfolder](https://dev.1c-bitrix.ru/r
     Result = OPI_Bitrix24.CreateStorageFolder(URL, StorageID, Filename2);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateStorageFolder(URL, StorageID, Name, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 CreateStorageFolder --url "b24-ar17wx.bitrix24.by" --storageid "3" --title %title% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

@@ -28,24 +28,44 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "appESy99HYCLbuWlV";
-    Таблица     = "tbl5gZLQ8i5xKuVTy";
-    Запись      = "recHqUT4ruWn8KnYi";
-    Комментарий = "comc3oQtvx4mn0pdu";
+    База        = "appmy5B6qi09E4wrF";
+    Таблица     = "tblYwj7Cnw6w3FGWh";
+    Запись      = "recnOWHAPOyCl0kUj";
+    Комментарий = "comNQ9mG1pWpJqgif";
 
     Текст     = "Тестовый комментарий (изм.)";
     Результат = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Комментарий, Текст);
 
     OPI_ПолучениеДанныхТестов.Проверка_АТТекст(Результат, Текст);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ИзменитьКомментарий --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --comment %comment% --text "Тестовый комментарий (изм.)"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ИзменитьКомментарий --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --table "tbl99eHW7uVpn8cdR" \
+              --record "rec6pv1dpsrdVxaD4" \
+              --comment "comeCfbRggeCTqOZT" \
+              --text "Тестовый комментарий (изм.)"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ИзменитьКомментарий ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --table "tbl99eHW7uVpn8cdR" ^
+              --record "rec6pv1dpsrdVxaD4" ^
+              --comment "comeCfbRggeCTqOZT" ^
+              --text "Тестовый комментарий (изм.)"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

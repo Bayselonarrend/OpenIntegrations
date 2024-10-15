@@ -29,18 +29,32 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Токен       = "001.3501506236.091...";
     IDЧата      = "689203963@chat.agent";
-    IDСообщения = "7425684917876428136";
+    IDСообщения = "7424418276186262625";
 
     Результат = OPI_VKTeams.УдалитьСообщение(Токен, IDЧата, IDСообщения);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams УдалитьСообщение --token %token% --chatid %chatid% --messageid %messageid%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams УдалитьСообщение --token "***" \
+              --chatid "689203963@chat.agent" \
+              --messageid "7425884578021117348"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams УдалитьСообщение ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --messageid "7425884578021117348"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

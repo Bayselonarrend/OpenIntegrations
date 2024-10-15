@@ -32,8 +32,8 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
 
 ```bsl title="Code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID   = "2454";
-    RecordID = "848";
+    TaskID   = "2424";
+    RecordID = "836";
 
     Text = "The text I forgot last time";
     Time = 4800;
@@ -41,8 +41,8 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
     Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "21750a67006e9f06006b12e400000001000...";
-    RecordID = "850";
+    Token    = "49e20867006e9f06006b12e400000001000...";
+    RecordID = "838";
 
     Text      = "New time record";
     Time      = 4800;
@@ -56,14 +56,9 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
         , SetupDate
         , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdateTaskTimeAccounting --url "b24-ar17wx.bitrix24.by" --task "1088" --record "308" --amount "4800" --text "The text I forgot last time" --date %date% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

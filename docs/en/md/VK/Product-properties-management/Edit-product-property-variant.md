@@ -27,8 +27,8 @@ sidebar_position: 6
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Property = "878";
-    Option   = "2601";
+    Property = "863";
+    Option   = "2571";
     Value    = "New variant name";
 
     Result = OPI_VK.EditProductPropertyVariant(Value
@@ -36,14 +36,9 @@ sidebar_position: 6
             , Option
             , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk EditProductPropertyVariant --value %value% --prop "648" --option "2054" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

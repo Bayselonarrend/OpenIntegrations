@@ -28,27 +28,22 @@ Method at API documentation: [task.stages.delete](https://dev.1c-bitrix.ru/rest_
 
 
 ```bsl title="Code example"
-    StageID = "864";
+    StageID = "852";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, True);
 
-    StageID = "866";
+    StageID = "854";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 DeleteKanbanStage --url "b24-ar17wx.bitrix24.by" --stage "320" --admin %admin% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

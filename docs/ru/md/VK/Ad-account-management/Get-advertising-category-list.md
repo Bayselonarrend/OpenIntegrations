@@ -26,14 +26,24 @@ sidebar_position: 4
 
     Результат = OPI_VK.ПолучитьСписокРекламныхКатегорий(Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ПолучитьСписокРекламныхКатегорий --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ПолучитьСписокРекламныхКатегорий --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ПолучитьСписокРекламныхКатегорий ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -30,14 +30,28 @@ sidebar_position: 2
 
     Результат = OPI_Dropbox.ПолучитьТокен(КлючПриложения, СекретПриложения, Код);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ПолучитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ПолучитьТокен --appkey "***" \
+              --appsecret "***" \
+              --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПолучитьТокен ^
+              --appkey "***" ^
+              --appsecret "***" ^
+              --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

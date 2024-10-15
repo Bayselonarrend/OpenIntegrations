@@ -31,14 +31,9 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Результат = OPI_CDEK.ПолучитьОписаниеЗаказа();
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint cdek ПолучитьОписаниеЗаказа --empty %empty% --required %required% --ostore %ostore%
 
-```
+
 
 ```json title="Результат"
 {

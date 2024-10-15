@@ -29,26 +29,21 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID    = "chat" + "1006";
-    MessageID = "18126";
+    ChatID    = "chat" + "994";
+    MessageID = "17908";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatID, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "21750a67006e9f06006b12e400000001000...";
+    Token     = "49e20867006e9f06006b12e400000001000...";
     UserID    = 10;
-    MessageID = "18128";
+    MessageID = "17910";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 MarkMessageAsReaded --url "b24-ar17wx.bitrix24.by" --chat "chat + 450" --message "8684" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

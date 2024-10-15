@@ -30,8 +30,8 @@ sidebar_position: 2
     Text       = "Post from autotest";
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    Video = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Path or Binary Data
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
+    Video = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Path or Binary Data
 
     TFN = GetTempFileName("png");
     CopyFile(Image, TFN);
@@ -51,14 +51,9 @@ sidebar_position: 2
 
     Result = OPI_VK.CreateCompositePost(Text, AttachmentsArray, False, URL, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreateCompositePost --text "Post from autotest" --objects %objects% --ad %ad% --url %url% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

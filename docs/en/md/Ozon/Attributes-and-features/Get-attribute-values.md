@@ -41,14 +41,9 @@ You can find out if there is a nested catalog by the GetCharacteristicsCategorie
 
     Result = OPI_Ozon.GetAttributeValues(ClientID, APIKey, CategoryID, TypeID, AttributeID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetAttributeValues --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --attributeid %attributeid% --start %start% --lang %lang%
-
-```
 
 ```json title="Result"
 {

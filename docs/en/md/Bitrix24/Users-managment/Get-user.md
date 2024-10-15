@@ -28,24 +28,19 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    UserID = "624";
+    UserID = "612";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    UserID = "626";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    UserID = "614";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetUser --url "b24-ar17wx.bitrix24.by" --userid "80" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

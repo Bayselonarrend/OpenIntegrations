@@ -27,20 +27,36 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "appESy99HYCLbuWlV";
-    Таблица     = "tbl5gZLQ8i5xKuVTy";
-    Запись      = "recHqUT4ruWn8KnYi";
+    База        = "appmy5B6qi09E4wrF";
+    Таблица     = "tblYwj7Cnw6w3FGWh";
+    Запись      = "recnOWHAPOyCl0kUj";
 
     Результат = OPI_Airtable.ПолучитьКомментарии(Токен, База, Таблица, Запись);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьКомментарии --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --offset %offset%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьКомментарии --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --table "tbl99eHW7uVpn8cdR" \
+              --record "rec6pv1dpsrdVxaD4"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьКомментарии ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --table "tbl99eHW7uVpn8cdR" ^
+              --record "rec6pv1dpsrdVxaD4"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

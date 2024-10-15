@@ -24,14 +24,9 @@ sidebar_position: 7
 ```bsl title="Code example"
     Result = OPI_Bitrix24.GetDealsFilterStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetDealsFilterStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

@@ -33,18 +33,13 @@ sidebar_position: 3
     Результат = OPI_Bitrix24.ПолучитьХранилище(URL, IDХранилища);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "21750a67006e9f06006b12e400000001000...";
+    Токен       = "49e20867006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьХранилище(URL, IDХранилища, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПолучитьХранилище --url "b24-ar17wx.bitrix24.by" --storageid %storageid% --token "b9df7366006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

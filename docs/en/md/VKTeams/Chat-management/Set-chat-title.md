@@ -35,14 +35,9 @@ To call this method, the bot must be an administrator in the chat room.
 
     Result = OPI_VKTeams.SetChatTitle(Token, ChatID, Text);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams SetChatTitle --token "001.3501506236.091..." --chatid "689203963@chat.agent" --text %text%
-
-```
 
 ```json title="Result"
 {

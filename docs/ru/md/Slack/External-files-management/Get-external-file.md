@@ -24,18 +24,30 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен              = "xoxb-6965308400114-696804637...";
-    ИдентификаторФайла = "F07RN8F33GS";
+    ИдентификаторФайла = "F07RF36SEAX";
 
     Результат = OPI_Slack.ПолучитьВнешнийФайл(Токен, ИдентификаторФайла);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПолучитьВнешнийФайл --token %token% --fileid "F070P52CU94"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПолучитьВнешнийФайл --token "***" \
+              --fileid "F07SJFS1UG0"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьВнешнийФайл ^
+              --token "***" ^
+              --fileid "F07SJFS1UG0"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

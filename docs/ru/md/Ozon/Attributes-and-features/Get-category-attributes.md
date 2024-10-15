@@ -38,14 +38,9 @@ sidebar_position: 2
 
     Результат = OPI_Ozon.ПолучитьХарактеристикиКатегории(IDКлиента, КлючAPI, IDКатегории, IDТипа);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьХарактеристикиКатегории --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --lang %lang%
 
-```
+
 
 ```json title="Результат"
 {

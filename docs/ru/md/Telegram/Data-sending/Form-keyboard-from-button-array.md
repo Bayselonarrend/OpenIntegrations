@@ -34,14 +34,9 @@ sidebar_position: 12
 
     Результат = OPI_Telegram.СформироватьКлавиатуруПоМассивуКнопок(МассивКнопок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram СформироватьКлавиатуруПоМассивуКнопок --buttons %buttons% --under %under% --column %column%
 
-```
+
 
 ```json title="Результат"
 "{\r\n \"keyboard\": [\r\n  [\r\n   {\r\n    \"text\": \"Кнопка1\",\r\n    \"callback_data\": \"Кнопка1\"\r\n   }\r\n  ],\r\n  [\r\n   {\r\n    \"text\": \"Кнопка2\",\r\n    \"callback_data\": \"Кнопка2\"\r\n   }\r\n  ],\r\n  [\r\n   {\r\n    \"text\": \"Кнопка3\",\r\n    \"callback_data\": \"Кнопка3\"\r\n   }\r\n  ]\r\n ],\r\n \"resize_keyboard\": true\r\n}"

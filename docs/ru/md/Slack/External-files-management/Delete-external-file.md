@@ -24,18 +24,30 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     Токен              = "xoxb-6965308400114-696804637...";
-    ИдентификаторФайла = "F07RN8F33GS";
+    ИдентификаторФайла = "F07RF36SEAX";
 
     Результат = OPI_Slack.УдалитьВнешнийФайл(Токен, ИдентификаторФайла);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack УдалитьВнешнийФайл --token %token% --fileid "F070P52CU94"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack УдалитьВнешнийФайл --token "***" \
+              --fileid "F07SJFS1UG0"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack УдалитьВнешнийФайл ^
+              --token "***" ^
+              --fileid "F07SJFS1UG0"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

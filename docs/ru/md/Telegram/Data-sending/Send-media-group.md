@@ -33,8 +33,8 @@ sidebar_position: 7
     Токен    = "6129457865:AAFyzNYOAFbu...";
     IDЧата   = "461699897";
     Текст    = "Строковое значение";
-    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Видео    = "https://api.athenaeum.digital/test_data/video.mp4";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Видео    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);
@@ -50,14 +50,30 @@ sidebar_position: 7
 
     Результат = OPI_Telegram.ОтправитьМедиагруппу(Токен, IDЧата, Текст, Медиагруппа);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьМедиагруппу --token "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ" --chat %chat% --text %text% --media %media% --keyboard %keyboard% --parsemode %parsemode%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьМедиагруппу --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\pmyc3oplpuq.docx':'document'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьМедиагруппу ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\pmyc3oplpuq.docx':'document'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

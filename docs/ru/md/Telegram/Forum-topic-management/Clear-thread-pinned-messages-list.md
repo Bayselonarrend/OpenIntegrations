@@ -29,20 +29,34 @@ sidebar_position: 10
 ```bsl title="Пример кода"
     Токен          = "6129457865:AAFyzNYOAFbu...";
     Чат            = "-1001971186208";
-    Тема           = "5543";
+    Тема           = "5429";
 
     Результат = OPI_Telegram.ОчиститьСписокЗакрепленныхСообщенийТемы(Токен, Чат);
 
     Результат = OPI_Telegram.ОчиститьСписокЗакрепленныхСообщенийТемы(Токен, Чат, Тема);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "***" \
+              --forum "-1001971186208" \
+              --topic "5598"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОчиститьСписокЗакрепленныхСообщенийТемы ^
+              --token "***" ^
+              --forum "-1001971186208" ^
+              --topic "5598"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

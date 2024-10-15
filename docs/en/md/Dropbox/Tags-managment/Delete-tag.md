@@ -25,19 +25,14 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Tag   = "Important";
-    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Token = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Path  = "/New/mydoc.docx";
 
     Result = OPI_Dropbox.DeleteTag(Token, Path, Tag);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox DeleteTag --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --path %path% --tag "Important"
-
-```
 
 ```json title="Result"
 {}

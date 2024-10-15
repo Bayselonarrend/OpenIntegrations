@@ -24,18 +24,13 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/55ea8d67-9f19-45d3-a65e-2f8ae070c7e2.png";
+    Path  = "/1b790f57-3b63-4ec1-a7c0-307145bba171.png";
 
     Result = OPI_YandexDisk.CancelObjectPublication(Token, Path);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk CancelObjectPublication --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png"
-
-```
 
 ```json title="Result"
 {

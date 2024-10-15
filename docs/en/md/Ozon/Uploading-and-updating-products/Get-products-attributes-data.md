@@ -40,14 +40,9 @@ Method at API documentation: [post /v3/products/info/attributes](https://docs.oz
 
     Result = OPI_Ozon.GetProductsAttributesData(ClientID, APIKey, Filter);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductsAttributesData --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
-
-```
 
 ```json title="Result"
 {

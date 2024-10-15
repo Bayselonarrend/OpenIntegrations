@@ -34,14 +34,9 @@ About keyboards in the API documentation: [InlineKeyboardMarkup](https://core.te
 
     Result = OPI_Telegram.FormKeyboardFromButtonArray(ButtonArray);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram FormKeyboardFromButtonArray --buttons %buttons% --under %under% --column %column%
-
-```
 
 ```json title="Result"
 "{\r\n \"keyboard\": [\r\n  [\r\n   {\r\n    \"text\": \"Button1\",\r\n    \"callback_data\": \"Button1\"\r\n   }\r\n  ],\r\n  [\r\n   {\r\n    \"text\": \"Button2\",\r\n    \"callback_data\": \"Button2\"\r\n   }\r\n  ],\r\n  [\r\n   {\r\n    \"text\": \"Button3\",\r\n    \"callback_data\": \"Button3\"\r\n   }\r\n  ]\r\n ],\r\n \"resize_keyboard\": true\r\n}"

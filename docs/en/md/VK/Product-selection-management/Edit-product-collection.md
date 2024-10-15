@@ -30,7 +30,7 @@ sidebar_position: 4
     Parameters = GetVKParameters();
 
     Name      = "EditedCollection";
-    Selection = "130";
+    Selection = "125";
 
     Result = OPI_VK.EditProductCollection(Name, Selection, , , , Parameters);
 
@@ -38,14 +38,9 @@ sidebar_position: 4
 
     OPI_Tools.Pause(5);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk EditProductCollection --title "EditedCollection" --sel "125" --picture %picture% --main %main% --hidden %hidden% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

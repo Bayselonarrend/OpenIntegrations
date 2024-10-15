@@ -26,21 +26,39 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appESy99HYCLbuWlV";
-    Таблица = "tbl5gZLQ8i5xKuVTy";
+    База    = "appmy5B6qi09E4wrF";
+    Таблица = "tblYwj7Cnw6w3FGWh";
     Имя     = Строка(Новый УникальныйИдентификатор);
 
     Поле      = OPI_Airtable.ПолучитьПолеНомера(Имя);
     Результат = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, Поле);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable СоздатьПоле --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --fielddata %fielddata%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable СоздатьПоле --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --table "tbl99eHW7uVpn8cdR" \
+              --title "bf234b4a-f391-4950-8fd0-90e8817e19e4" \
+              --fielddata "{'name':'bf234b4a-f391-4950-8fd0-90e8817e19e4','type':'number','options':{'precision':0}}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable СоздатьПоле ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --table "tbl99eHW7uVpn8cdR" ^
+              --title "bf234b4a-f391-4950-8fd0-90e8817e19e4" ^
+              --fielddata "{'name':'bf234b4a-f391-4950-8fd0-90e8817e19e4','type':'number','options':{'precision':0}}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

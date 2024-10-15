@@ -29,14 +29,9 @@ sidebar_position: 5
 
     Result = OPI_Slack.GetDelayedMessageList(Token, Channel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetDelayedMessageList --token %token% --channel "C070VPMKN8J" --cursor %cursor%
-
-```
 
 ```json title="Result"
 {

@@ -33,14 +33,9 @@ Gets a list of files with or without filtering by type List of available types: 
 
     Result = OPI_YandexDisk.GetFilesList(Token, Count, OffsetFromStart, FilterByType);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk GetFilesList --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset% --type %type% --datesort %datesort%
-
-```
 
 ```json title="Result"
 {

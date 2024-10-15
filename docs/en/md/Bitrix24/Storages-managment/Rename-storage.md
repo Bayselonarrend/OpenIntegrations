@@ -30,19 +30,14 @@ Method at API documentation: [disk.storage.rename](https://dev.1c-bitrix.ru/rest
 ```bsl title="Code example"
     Name      = "New storage name";
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "21750a67006e9f06006b12e400000001000...";
+    Token     = "49e20867006e9f06006b12e400000001000...";
     StorageID = "18";
 
     Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 RenameStorage --url "b24-ar17wx.bitrix24.by" --storageid "18" --title %title% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

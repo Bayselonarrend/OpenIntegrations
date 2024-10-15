@@ -39,14 +39,9 @@ Method at API documentation: [sendMessage](https://core.telegram.org/bots/api#se
 
     Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendTextMessage --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --keyboard %keyboard% --parsemode %parsemode% --reply %reply%
-
-```
 
 ```json title="Result"
 {

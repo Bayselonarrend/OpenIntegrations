@@ -31,14 +31,9 @@ Method at API documentation: [disk.storage.getforapp](https://dev.1c-bitrix.ru/r
   
   Result = OPI_Bitrix24.GetAppSotrage(URL, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetAppSotrage --url "b24-ar17wx.bitrix24.by" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

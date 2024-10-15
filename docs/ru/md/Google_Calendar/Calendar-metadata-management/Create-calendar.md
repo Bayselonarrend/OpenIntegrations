@@ -23,19 +23,31 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен        = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Токен        = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
     Наименование = "Тестовый календарь";
 
     Результат = OPI_GoogleCalendar.СоздатьКалендарь(Токен, Наименование);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gcalendar СоздатьКалендарь --token %token% --title %title%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gcalendar СоздатьКалендарь --token "***" \
+              --title "Тестовый календарь"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gcalendar СоздатьКалендарь ^
+              --token "***" ^
+              --title "Тестовый календарь"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

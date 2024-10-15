@@ -27,7 +27,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 
 
 ```bsl title="Code example"
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image);
 
     B64Image = GetBase64StringFromBinaryData(Image);
@@ -51,7 +51,7 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     ChatStructure = New Structure;
     ChatStructure.Insert("TYPE"  , "CHAT");
@@ -60,14 +60,9 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 
     Result = OPI_Bitrix24.CreateChat(URL, ChatStructure, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 CreateChat --url "b24-ar17wx.bitrix24.by" --fields %fields% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

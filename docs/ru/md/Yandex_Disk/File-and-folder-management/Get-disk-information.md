@@ -25,14 +25,24 @@ sidebar_position: 1
     Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
     Результат = OPI_YandexDisk.ПолучитьИнформациюОДиске(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk ПолучитьИнформациюОДиске --token "y0_AgAAAABdylaOAA..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk ПолучитьИнформациюОДиске --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk ПолучитьИнформациюОДиске ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

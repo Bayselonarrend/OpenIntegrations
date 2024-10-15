@@ -33,14 +33,9 @@ Method at API documentation: [post /v1/product/rating-by-sku](https://docs.ozon.
 
     Result = OPI_Ozon.GetProductsContentRating(ClientID, APIKey, SKU);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductsContentRating --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
-
-```
 
 ```json title="Result"
 {

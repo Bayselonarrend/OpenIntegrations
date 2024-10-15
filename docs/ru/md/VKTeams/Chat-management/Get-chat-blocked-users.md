@@ -33,14 +33,26 @@ sidebar_position: 6
 
     Результат = OPI_VKTeams.ПолучитьЗаблокированныхПользователейЧата(Токен, IDЧата);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ПолучитьЗаблокированныхПользователейЧата --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ПолучитьЗаблокированныхПользователейЧата --token "***" \
+              --chatid "AoLI0egLWBSLR1Ngn2w"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПолучитьЗаблокированныхПользователейЧата ^
+              --token "***" ^
+              --chatid "AoLI0egLWBSLR1Ngn2w"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

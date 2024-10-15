@@ -29,14 +29,9 @@ sidebar_position: 1
 
     Result = OPI_Slack.GetFilesList(Token, Channel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetFilesList --token %token% --channel "C123456" --page "1"
-
-```
 
 ```json title="Result"
 {

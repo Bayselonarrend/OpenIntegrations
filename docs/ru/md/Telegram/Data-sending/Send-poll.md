@@ -44,14 +44,30 @@ sidebar_position: 10
 
     Результат = OPI_Telegram.ОтправитьОпрос(Токен, IDКанала, Вопрос, МассивОтветов, Истина);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьОпрос --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --question %question% --options %options% --anonymous %anonymous%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьОпрос --token "***" \
+              --chat "@testsichee" \
+              --question "Какой ваш любимый цвет?" \
+              --options "['Красный','Желтый','Зеленый','Синий']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьОпрос ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --question "Какой ваш любимый цвет?" ^
+              --options "['Красный','Желтый','Зеленый','Синий']"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

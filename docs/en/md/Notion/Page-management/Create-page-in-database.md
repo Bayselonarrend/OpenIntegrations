@@ -25,8 +25,8 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base   = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
-    Image_ = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary Data or Path to file
+    Base   = "11c82aa7-fc4e-8103-a6dc-db01190daae1";
+    Image_ = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Binary Data or Path to file
 
     Image = New Map;
     Image.Insert("Logo", Image_);
@@ -46,14 +46,9 @@ sidebar_position: 2
 
     Result = OPI_Notion.CreatePageInDatabase(Token, Base, Properties);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion CreatePageInDatabase --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --data %data%
-
-```
 
 ```json title="Result"
 {

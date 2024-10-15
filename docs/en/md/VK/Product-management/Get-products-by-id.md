@@ -25,8 +25,8 @@ sidebar_position: 3
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Item1 = "9755489";
-    Item2 = "9755490";
+    Item1 = "9733392";
+    Item2 = "9733393";
 
     ProductsArray = New Array;
     ProductsArray.Add(Item1);
@@ -34,14 +34,9 @@ sidebar_position: 3
 
     Result = OPI_VK.GetProductsByID(ProductsArray, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetProductsByID --items %items% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

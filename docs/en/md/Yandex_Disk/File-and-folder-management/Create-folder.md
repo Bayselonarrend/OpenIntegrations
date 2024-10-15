@@ -28,14 +28,9 @@ sidebar_position: 2
 
     Result = OPI_YandexDisk.CreateFolder(Token, Path);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk CreateFolder --token "y0_AgAAAABdylaOAAs0QgAAAAD5i-a..." --path %path%
-
-```
 
 ```json title="Result"
 {

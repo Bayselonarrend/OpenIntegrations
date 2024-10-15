@@ -25,18 +25,30 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Имя       = "Тестовая папка";
-    Токен     = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Токен     = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
 
     Результат = OPI_GoogleDrive.ПолучитьСписокКаталогов(Токен, Имя, Истина);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gdrive ПолучитьСписокКаталогов --token %token% --querry %querry% --depth %depth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gdrive ПолучитьСписокКаталогов --token "***" \
+              --querry "Тестовая папка"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive ПолучитьСписокКаталогов ^
+              --token "***" ^
+              --querry "Тестовая папка"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 [

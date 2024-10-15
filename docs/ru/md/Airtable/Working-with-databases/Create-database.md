@@ -40,14 +40,30 @@ sidebar_position: 3
 
     Результат = OPI_Airtable.СоздатьБазу(Токен, Область, Наименование, СоответствиеТаблиц);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable СоздатьБазу --token %token% --ws "wspdf8yl1yZz3PmWZ" --title "Тестовая база" --tablesdata %tablesdata%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable СоздатьБазу --token "***" \
+              --ws "wspdf8yl1yZz3PmWZ" \
+              --title "Тестовая база" \
+              --tablesdata "{'Тестовая таблица':[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'}]}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable СоздатьБазу ^
+              --token "***" ^
+              --ws "wspdf8yl1yZz3PmWZ" ^
+              --title "Тестовая база" ^
+              --tablesdata "{'Тестовая таблица':[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'}]}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -25,14 +25,9 @@ sidebar_position: 1
     Parameters = GetVKParameters();
     Result     = OPI_VK.GetSelectionList(Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetSelectionList --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 [

@@ -27,14 +27,9 @@ sidebar_position: 1
 
     Result = OPI_Airtable.GetListOfBases(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable GetListOfBases --token %token% --offset %offset%
-
-```
 
 ```json title="Result"
 {

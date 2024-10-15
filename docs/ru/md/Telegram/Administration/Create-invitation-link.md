@@ -40,14 +40,32 @@ sidebar_position: 3
 
     Результат = OPI_Telegram.СоздатьСсылкуПриглашение(Токен, IDКанала, Заголовок, Истечение, 200);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram СоздатьСсылкуПриглашение --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --title %title% --expire %expire% --limit %limit%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram СоздатьСсылкуПриглашение --token "***" \
+              --chat "@testsichee" \
+              --expire 2024-10-16T08:56:57.5864404 \
+              --title "Ссылка 15.10.2024 8:56:57" \
+              --limit 200
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram СоздатьСсылкуПриглашение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --expire 2024-10-16T08:56:57.5864404 ^
+              --title "Ссылка 15.10.2024 8:56:57" ^
+              --limit 200
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

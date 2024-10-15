@@ -31,18 +31,32 @@ sidebar_position: 9
 ```bsl title="Пример кода"
     Токен        = "001.3501506236.091...";
     IDЧата       = "689203963@chat.agent";
-    IDСообщения  = "7425684917876428136";
+    IDСообщения  = "7424418276186262625";
 
     Результат = OPI_VKTeams.ЗакрепитьСообщение(Токен, IDЧата, IDСообщения);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ЗакрепитьСообщение --token "001.3501506236.091..." --chatid "689203963@chat.agent" --messageid "7401463509940174907"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ЗакрепитьСообщение --token "***" \
+              --chatid "689203963@chat.agent" \
+              --messageid "7425884578021117348"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ЗакрепитьСообщение ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --messageid "7425884578021117348"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

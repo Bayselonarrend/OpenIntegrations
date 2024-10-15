@@ -25,19 +25,33 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     Путь  = "/New/url_doc.docx";
-    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
-    URL   = "https://api.athenaeum.digital/test_data/document.docx";
+    Токен = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ЗагрузитьФайлПоURL --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --url %url% --path %path%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ЗагрузитьФайлПоURL --token "***" \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+              --path "/New/url_doc.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ЗагрузитьФайлПоURL ^
+              --token "***" ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+              --path "/New/url_doc.docx"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

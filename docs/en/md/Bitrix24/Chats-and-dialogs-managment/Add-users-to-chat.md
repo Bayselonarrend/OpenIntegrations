@@ -30,7 +30,7 @@ Method at API documentation: [im.chat.user.add](https://dev.1c-bitrix.ru/learnin
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "1006";
+    ChatID = "994";
 
     UserIDs = New Array;
     UserIDs.Add(10);
@@ -39,20 +39,15 @@ Method at API documentation: [im.chat.user.add](https://dev.1c-bitrix.ru/learnin
     Result = OPI_Bitrix24.AddUsersToChat(URL, ChatID, UserIDs);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    ChatID = "1008";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    ChatID = "996";
     UserID = 10;
 
     Result = OPI_Bitrix24.AddUsersToChat(URL, ChatID, UserID, True, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 AddUsersToChat --url "b24-ar17wx.bitrix24.by" --chat "452" --users %users% --hide %hide% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

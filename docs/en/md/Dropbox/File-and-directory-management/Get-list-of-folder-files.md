@@ -30,14 +30,9 @@ sidebar_position: 2
   
   Result = OPI_Dropbox.GetListOfFolderFiles(Token, Path, True);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox GetListOfFolderFiles --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --path %path% --detail %detail% --cursor %cursor%
-
-```
 
 ```json title="Result"
 {

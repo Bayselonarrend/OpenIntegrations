@@ -46,14 +46,9 @@ sidebar_position: 4
         , IDХарактеристики
         , Значение);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon НайтиЗначенияХарактеристики --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --categoryid %categoryid% --typeid %typeid% --attributeid %attributeid% --value %value%
 
-```
+
 
 ```json title="Результат"
 {

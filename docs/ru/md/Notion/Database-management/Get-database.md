@@ -24,18 +24,30 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен = "secret_9RsfMrRMqZwqp0Zl0B...";
-    База  = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
+    База  = "11c82aa7-fc4e-8103-a6dc-db01190daae1";
 
     Результат = OPI_Notion.ПолучитьБазуДанных(Токен, База);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion ПолучитьБазуДанных --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "048ba0ce4f474e33900540d24..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion ПолучитьБазуДанных --token "***" \
+              --base "12082aa7-fc4e-81e4-a694-ecc74712d756"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ПолучитьБазуДанных ^
+              --token "***" ^
+              --base "12082aa7-fc4e-81e4-a694-ecc74712d756"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

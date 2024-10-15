@@ -34,7 +34,7 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
     Token      = "001.3501506236.091...";
     ChatID     = "AoLI0egLWBSLR1Ngn2w";
     FromChatID = "689203963@chat.agent";
-    MessageID  = "7425684917876428136";
+    MessageID  = "7424418276186262625";
 
     Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID);
 
@@ -42,14 +42,9 @@ Only the chatId from events can be passed to the FromChatID (the code from the c
 
     Result = OPI_VKTeams.ForwardMessage(Token, MessageID, FromChatID, ChatID, Text);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams ForwardMessage --token "001.3501506236.091..." --message "7402287649739767956" --fromid "689203963@chat.agent" --chatid "AoLI0egLWBSLR1Ngn2w" --text "Additional text"
-
-```
 
 ```json title="Result"
 {

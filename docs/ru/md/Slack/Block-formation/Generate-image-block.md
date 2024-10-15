@@ -23,18 +23,30 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     Результат = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/Media/logo.png?v1" --alt %alt%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --alt "Картинка"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack СформироватьБлокКартинку ^
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --alt "Картинка"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

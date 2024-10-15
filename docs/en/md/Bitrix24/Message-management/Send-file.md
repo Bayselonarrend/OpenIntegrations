@@ -30,8 +30,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 ```bsl title="Code example"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID      = "1006";
-    File        = "https://api.athenaeum.digital/test_data/document.docx"; // Binary Data, URL or path to file
+    ChatID      = "994";
+    File        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
@@ -43,8 +43,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    ChatID = "1008";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    ChatID = "996";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
     FolderID  = Directory["result"]["ID"];
@@ -54,14 +54,9 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
     Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 SendFile --url "b24-ar17wx.bitrix24.by" --chat "452" --fileid "UploadedFile[result][ID]" --description "Very important file" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

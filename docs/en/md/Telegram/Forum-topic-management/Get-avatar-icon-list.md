@@ -28,14 +28,9 @@ Method at API documentation: [getForumTopicIconStickers](https://core.telegram.o
     Token  = "6129457865:AAFyzNYOAFbu...";
     Result = OPI_Telegram.GetAvatarIconList(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram GetAvatarIconList --token %token%
-
-```
 
 ```json title="Result"
 {

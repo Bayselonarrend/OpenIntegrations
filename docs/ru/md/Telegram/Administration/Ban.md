@@ -33,14 +33,28 @@ sidebar_position: 1
 
     Результат = OPI_Telegram.Бан(Токен, IDКанала, IDПользователя);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram Бан --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram Бан --token "***" \
+              --chat "@testsichee" \
+              --user "461699897"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram Бан ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --user "461699897"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

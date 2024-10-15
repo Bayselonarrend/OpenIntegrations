@@ -25,14 +25,9 @@ sidebar_position: 1
   Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
   Result = OPI_YandexDisk.GetDiskInformation(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk GetDiskInformation --token "y0_AgAAAABdylaOAAs0QgAAAAD5i-a..."
-
-```
 
 ```json title="Result"
 {

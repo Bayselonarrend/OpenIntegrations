@@ -39,14 +39,9 @@ sidebar_position: 8
   
   Result = OPI_VK.SaveImageToAlbum(AlbumID, TFN, ImageDescription, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk SaveImageToAlbum --album "305187504" --picture "https://openintegrations.dev/test_data/picture.jpg // URL, Path to file or Binary Data" --description %description% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

@@ -30,7 +30,7 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID = "chat" + "1006";
+    ChatID = "chat" + "994";
     Text   = "Message text";
     Image  = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -42,19 +42,14 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
     Result = OPI_Bitrix24.SendMessage(URL, ChatID, Text, Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
+    Token  = "49e20867006e9f06006b12e400000001000...";
     UserID = 10;
 
     Result = OPI_Bitrix24.SendMessage(URL, UserID, Text, , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 SendMessage --url "b24-ar17wx.bitrix24.by" --chat "chat + 450" --text "Message text" --blocks %blocks% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

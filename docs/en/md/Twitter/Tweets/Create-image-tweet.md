@@ -27,8 +27,8 @@ sidebar_position: 3
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Image  = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary or Path to file
-    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary or Path to file
+    Image  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Binary or Path to file
+    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Binary or Path to file
 
     ImageArray = New Array;
     ImageArray.Add(Image);
@@ -39,14 +39,9 @@ sidebar_position: 3
     Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateImageTweet(Text, Image, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint twitter CreateImageTweet --text %text% --pictures %pictures% --auth %auth%
-
-```
 
 ```json title="Result"
 {

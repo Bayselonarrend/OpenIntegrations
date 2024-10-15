@@ -24,20 +24,32 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен    = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Токен    = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
     Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
     Имя      = "Тестовая папка";
 
     Результат = OPI_GoogleDrive.СоздатьПапку(Токен, Имя, Каталог);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gdrive СоздатьПапку --token %token% --title "Тестовая папка" --catalog %catalog%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gdrive СоздатьПапку --token "***" \
+              --title "Тестовая папка"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive СоздатьПапку ^
+              --token "***" ^
+              --title "Тестовая папка"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

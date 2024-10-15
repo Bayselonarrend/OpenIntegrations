@@ -23,19 +23,31 @@ sidebar_position: 12
 
 
 ```bsl title="Пример кода"
-    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Путь      = "/New";
 
     Результат = OPI_Dropbox.СкачатьПапку(Токен, Путь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox СкачатьПапку --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox СкачатьПапку --token "***" \
+              --path "/New"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox СкачатьПапку ^
+              --token "***" ^
+              --path "/New"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 НЕ JSON: 50 4B 03 04 14 00 00 08 00 00 F2 9A 47 59 00 00 00 00 00 00 00 00 00 00 00 00 04 00 09 00 4E 65 77 2F 55 54 05 00 01 38 35 04 67 50 4B 03 04 14 00 08 08 00 00 4F 87 AF 58 00 00 00 00 00 00 00…

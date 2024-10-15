@@ -36,14 +36,9 @@ sidebar_position: 5
 
     Результат = OPI_Neocities.СинхронизироватьКаталоги(Токен, ЛокальныйКаталог, УдаленныйКаталог);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint neocities СинхронизироватьКаталоги --token "7419cd51de4037f7..." --local %local% --remote %remote%
 
-```
+
 
 ```json title="Результат"
 {

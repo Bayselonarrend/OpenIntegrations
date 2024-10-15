@@ -28,14 +28,24 @@ sidebar_position: 1
     Токен       = "6129457865:AAFyzNYOAFbu...";
     Результат   = OPI_Telegram.ПолучитьСписокИконокАватаров(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ПолучитьСписокИконокАватаров --token %token%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ПолучитьСписокИконокАватаров --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ПолучитьСписокИконокАватаров ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {
