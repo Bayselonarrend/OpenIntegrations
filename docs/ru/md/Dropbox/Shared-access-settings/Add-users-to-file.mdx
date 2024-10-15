@@ -1,0 +1,81 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 3
+---
+
+# Добавить пользователей к файлу
+ Определяет доступ к файлу для сторонних пользователей
+
+
+
+`Функция ДобавитьПользователейКФайлу(Знач Токен, Знач IDФайла, Знач АдресаПочты, Знач ТолькоПросмотр = Истина) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | IDФайла | --fileid | Строка | ID файла, к которому предоставляется доступ |
+  | АдресаПочты | --emails | Строка, Массив Из Строка | Список адресов почты добавляемых пользователей |
+  | ТолькоПросмотр | --readonly | Булево | Запрещает редактирование файла для стороннего пользователя |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Почта = "h5bk6ft62s@privaterelay.appleid.com";
+    Файл  = "kJU6-a-pT48AAAAAAAAABw";
+
+    Результат = OPI_Dropbox.ДобавитьПользователейКФайлу(Токен, Файл, Почта, Ложь);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox ДобавитьПользователейКФайлу --token "***" \
+              --fileid "kJU6-a-pT48AAAAAAAAABw" \
+              --emails "['h5bk6ft62s@privaterelay.appleid.com']" \
+              --readonly true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ДобавитьПользователейКФайлу ^
+              --token "***" ^
+              --fileid "kJU6-a-pT48AAAAAAAAABw" ^
+              --emails "['h5bk6ft62s@privaterelay.appleid.com']" ^
+              --readonly true
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+[
+ {
+  "member": {
+   ".tag": "email",
+   "email": "h5bk6ft62s@privaterelay.appleid.com"
+  },
+  "result": {
+   ".tag": "success",
+   "success": {
+    ".tag": "editor"
+   }
+  },
+  "sckey_sha1": "ee2d8fd2cee052e103a52aa74be85bbebb8e6bb4",
+  "invitation_signature": [
+   "ee2d8fd2cee052e103a52aa74be85bbebb8e6bb4:ed7721b375882c806612d4056dad9f317cc98a22"
+  ]
+ }
+]
+```
