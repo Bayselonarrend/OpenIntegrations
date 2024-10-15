@@ -437,7 +437,7 @@ Function CollectionFieldExist(Val Collection, Val Field) Export
 
     ElsIf CollectionType = Type("Map") Then
 
-        Return Collection["Field"] <> Undefined;
+        Return Collection[Field] <> Undefined;
 
     Else
 
