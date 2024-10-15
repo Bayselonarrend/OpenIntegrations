@@ -44,7 +44,10 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint slack ОтправитьЭфемерноеСообщение --token "***" \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint slack ОтправитьЭфемерноеСообщение \
+              --token "***" \
               --channel "C06UFNUTKUL" \
               --text "Эфимерное сообщение" \
               --user "U06UABH3APP" \
@@ -54,7 +57,9 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint slack ОтправитьЭфемерноеСообщение ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint slack ОтправитьЭфемерноеСообщение ^
               --token "***" ^
               --channel "C06UFNUTKUL" ^
               --text "Эфимерное сообщение" ^

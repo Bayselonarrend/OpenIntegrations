@@ -48,7 +48,10 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint vk СохранитьКартинкуВАльбом --album 306116890 \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk СохранитьКартинкуВАльбом \
+              --album 306119284 \
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
               --description "Картинка автотест" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
@@ -57,8 +60,10 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint vk СохранитьКартинкуВАльбом ^
-              --album 306116890 ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk СохранитьКартинкуВАльбом ^
+              --album 306119284 ^
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
               --description "Картинка автотест" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

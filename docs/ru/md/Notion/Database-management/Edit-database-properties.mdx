@@ -47,8 +47,11 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint notion ИзменитьСвойстваБазы --token "***" \
-              --base "12082aa7-fc4e-81e4-a694-ecc74712d756" \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint notion ИзменитьСвойстваБазы \
+              --token "***" \
+              --base "12082aa7-fc4e-81f9-88d1-d22baa9612e5" \
               --props "{'Почта':'rich_text','Сайт':null}" \
               --title "Тестовый заголовок" \
               --description "Тестовое описание"
@@ -57,9 +60,11 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint notion ИзменитьСвойстваБазы ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint notion ИзменитьСвойстваБазы ^
               --token "***" ^
-              --base "12082aa7-fc4e-81e4-a694-ecc74712d756" ^
+              --base "12082aa7-fc4e-81f9-88d1-d22baa9612e5" ^
               --props "{'Почта':'rich_text','Сайт':null}" ^
               --title "Тестовый заголовок" ^
               --description "Тестовое описание"

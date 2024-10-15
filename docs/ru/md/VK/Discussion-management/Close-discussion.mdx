@@ -37,7 +37,10 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint vk ЗакрытьОбсуждение --topic 52605638 \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk ЗакрытьОбсуждение \
+              --topic 52606421 \
               --remove false \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
@@ -45,8 +48,10 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint vk ЗакрытьОбсуждение ^
-              --topic 52605638 ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk ЗакрытьОбсуждение ^
+              --topic 52606421 ^
               --remove false ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
