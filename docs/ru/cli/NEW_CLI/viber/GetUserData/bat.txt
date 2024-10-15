@@ -1,0 +1,3 @@
+oint viber GetUserData ^
+ --token "***" ^
+ --user "tMNGhftyUPrB3r1lD+bT4g=="

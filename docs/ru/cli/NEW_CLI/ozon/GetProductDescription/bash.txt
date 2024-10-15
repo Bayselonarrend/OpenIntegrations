@@ -1,0 +1,4 @@
+oint ozon GetProductDescription \
+ --clientid "***" \
+ --apikey "***" \
+ --offerid "143210609"

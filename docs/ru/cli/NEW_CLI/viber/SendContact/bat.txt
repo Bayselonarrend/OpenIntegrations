@@ -1,0 +1,6 @@
+oint viber SendContact ^
+ --token "***" ^
+ --name "Petr Petrov" ^
+ --phone "+123456789" ^
+ --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+ --ischannel true

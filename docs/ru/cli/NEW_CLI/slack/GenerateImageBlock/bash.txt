@@ -1,0 +1,3 @@
+oint slack GenerateImageBlock \
+ --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+ --alt "Image"
