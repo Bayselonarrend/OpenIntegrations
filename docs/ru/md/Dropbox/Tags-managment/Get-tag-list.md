@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     МассивПутей = Новый Массив;
     МассивПутей.Добавить("/New/Dogs.mp3");
@@ -31,14 +31,26 @@ sidebar_position: 1
 
     Результат = OPI_Dropbox.ПолучитьСписокТегов(Токен, МассивПутей);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ПолучитьСписокТегов --token %token% --paths %paths%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ПолучитьСписокТегов --token "***" \
+              --paths "/New/mydoc.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПолучитьСписокТегов ^
+              --token "***" ^
+              --paths "/New/mydoc.docx"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

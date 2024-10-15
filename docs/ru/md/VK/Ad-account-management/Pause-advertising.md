@@ -31,14 +31,28 @@ sidebar_position: 3
 
     Результат    = OPI_VK.ПриостановитьРекламноеОбъявление(IDКабинета, IDОбъявления, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ПриостановитьРекламноеОбъявление --cabinet %cabinet% --adv %adv% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ПриостановитьРекламноеОбъявление --adv 0 \
+              --cabinet "1607951446" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ПриостановитьРекламноеОбъявление ^
+              --adv 0 ^
+              --cabinet "1607951446" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

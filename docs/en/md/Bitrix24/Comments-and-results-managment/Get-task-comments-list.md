@@ -28,23 +28,18 @@ Method at API documentation: [task.commentitem.getlist](https://dev.1c-bitrix.ru
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2450";
+    TaskID = "2420";
 
     Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetTaskCommentsList(URL, TaskID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetTaskCommentsList --url "b24-ar17wx.bitrix24.by" --task "1082" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

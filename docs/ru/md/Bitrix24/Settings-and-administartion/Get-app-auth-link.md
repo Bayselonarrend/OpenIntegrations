@@ -28,14 +28,9 @@ sidebar_position: 1
 
     Результат = OPI_Bitrix24.ПолучитьСсылкуАвторизацииПриложения(Домен, ClientID);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПолучитьСсылкуАвторизацииПриложения --domain %domain% --clientid %clientid%
 
-```
+
 
 ```json title="Результат"
 "https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"

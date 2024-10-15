@@ -23,19 +23,31 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен     = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Календарь = "2cd4d2b5dc7a898d4f1d65956b5ccca32841aff4a1603b373ff14db442ac9fab@group.calendar.google.com";
+    Токен     = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Календарь = "a3d6595737662df84b35deadee083703bcebd61e5abe13974bda474f6d19a7cd@group.calendar.google.com";
 
     Результат = OPI_GoogleCalendar.ПолучитьСписокСобытий(Токен, Календарь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gcalendar ПолучитьСписокСобытий --token %token% --calendar %calendar%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gcalendar ПолучитьСписокСобытий --token "***" \
+              --calendar "95bed4847e3734e9f1e6513c9eb637e885c5996c77711c19a10348453ecb11fe@group.calendar.google.com"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gcalendar ПолучитьСписокСобытий ^
+              --token "***" ^
+              --calendar "95bed4847e3734e9f1e6513c9eb637e885c5996c77711c19a10348453ecb11fe@group.calendar.google.com"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 [

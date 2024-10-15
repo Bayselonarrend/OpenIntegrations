@@ -33,14 +33,9 @@ To call this method, the bot must be an administrator in the chat room.
 
     Result = OPI_VKTeams.GetChatBlockedUsers(Token, ChatID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams GetChatBlockedUsers --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w"
-
-```
 
 ```json title="Result"
 {

@@ -31,14 +31,9 @@ sidebar_position: 6
   
   Result = OPI_VK.RemoveProductFromSelection(Product, Selection, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk RemoveProductFromSelection --item "9372711" --sel "125" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

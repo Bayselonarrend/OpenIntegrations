@@ -24,14 +24,9 @@ sidebar_position: 9
 ```bsl title="Code example"
     Result = OPI_Bitrix24.GetCommentStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetCommentStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

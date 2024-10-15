@@ -28,14 +28,24 @@ sidebar_position: 1
     Токен        = "001.3501506236.091...";
     Результат    = OPI_VKTeams.ПроверитьТокен(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ПроверитьТокен --token %token%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ПроверитьТокен --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПроверитьТокен ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

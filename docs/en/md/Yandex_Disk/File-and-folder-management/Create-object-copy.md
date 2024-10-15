@@ -26,19 +26,14 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Original = "/55ea8d67-9f19-45d3-a65e-2f8ae070c7e2.png";
+    Original = "/1b790f57-3b63-4ec1-a7c0-307145bba171.png";
     Path     = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk CreateObjectCopy --token "y0_AgAAAABdylaOAA..." --from "/Alpaca.png" --to "/Alpaca (copy).png" --rewrite %rewrite%
-
-```
 
 ```json title="Result"
 {

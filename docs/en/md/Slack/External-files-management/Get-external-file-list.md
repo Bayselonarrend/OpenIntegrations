@@ -29,14 +29,9 @@ sidebar_position: 1
 
     Result = OPI_Slack.GetExternalFileList(Token, Channel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetExternalFileList --token %token% --channel "C070VPMKN8J" --cursor %cursor%
-
-```
 
 ```json title="Result"
 {

@@ -33,14 +33,9 @@ sidebar_position: 3
 
     Результат = OPI_Ozon.ПолучитьИнформациюОбУценке(IDКлиента, КлючAPI, SKU);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьИнформациюОбУценке --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
 
-```
+
 
 ```json title="Результат"
 {

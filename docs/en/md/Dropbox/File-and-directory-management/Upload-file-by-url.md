@@ -25,19 +25,14 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Path  = "/New/url_doc.docx";
-    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
-    URL   = "https://api.athenaeum.digital/test_data/document.docx";
+    Token = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Result = OPI_Dropbox.UploadFileByURL(Token, URL, Path);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox UploadFileByURL --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --url %url% --path %path%
-
-```
 
 ```json title="Result"
 {

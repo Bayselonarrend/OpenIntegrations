@@ -51,14 +51,30 @@ sidebar_position: 1
 
     Результат = OPI_Notion.СоздатьБазуДанных(Токен, Родитель, Заголовок, Свойства);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion СоздатьБазуДанных --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Эта база была создана из 1С" --props %props%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion СоздатьБазуДанных --token "***" \
+              --page "5dd94c34fab04bff986b7511c0779f77" \
+              --title "Тестовый заголовок" \
+              --props "{'Имя':'title','Описание':'rich_text','Номер':'number','Статус':{'Новый':'green','В работе':'yellow','Удаленный':'red'},'Дата создания':'date','Картинка':'files','Активен':'checkbox','Сайт':'url','Почта':'email','Телефон':'phone_number','Пользователь':'people'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion СоздатьБазуДанных ^
+              --token "***" ^
+              --page "5dd94c34fab04bff986b7511c0779f77" ^
+              --title "Тестовый заголовок" ^
+              --props "{'Имя':'title','Описание':'rich_text','Номер':'number','Статус':{'Новый':'green','В работе':'yellow','Удаленный':'red'},'Дата создания':'date','Картинка':'files','Активен':'checkbox','Сайт':'url','Почта':'email','Телефон':'phone_number','Пользователь':'people'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

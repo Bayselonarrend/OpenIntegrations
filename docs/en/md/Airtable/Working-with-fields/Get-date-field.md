@@ -24,14 +24,9 @@ sidebar_position: 7
 ```bsl title="Code example"
     Result = OPI_Airtable.GetDateField("Date");
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable GetDateField --title "Date"
-
-```
 
 ```json title="Result"
 {

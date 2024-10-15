@@ -31,18 +31,13 @@ Method at API documentation: [forwardMessage](https://core.telegram.org/bots/api
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
     ChannelID = "@testsichee";
-    MessageID = "9761";
+    MessageID = "9480";
 
     Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram ForwardMessage --token "6129457865:AAFyzNYOAFbu..." --message %message% --from %from% --to %to%
-
-```
 
 ```json title="Result"
 {

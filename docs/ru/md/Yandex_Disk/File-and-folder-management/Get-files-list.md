@@ -33,14 +33,30 @@ sidebar_position: 8
 
     Результат = OPI_YandexDisk.ПолучитьСписокФайлов(Токен, Количество, СмещениеОтНачала, ОтборПоТипу);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk ПолучитьСписокФайлов --token "y0_AgAAAABdylaOAA..." --amount %amount% --offset %offset% --type %type% --datesort %datesort%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk ПолучитьСписокФайлов --token "***" \
+              --amount 2 \
+              --offset 1 \
+              --type "image"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk ПолучитьСписокФайлов ^
+              --token "***" ^
+              --amount 2 ^
+              --offset 1 ^
+              --type "image"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

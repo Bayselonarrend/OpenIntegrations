@@ -35,14 +35,9 @@ sidebar_position: 12
     Keyboard.Add(ButtonsLineArray);
     Keyboard.Add(ButtonsLineArray);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams MakeActionButton --text %text% --data %data% --url %url% --style %style%
-
-```
 
 ```json title="Result"
 [

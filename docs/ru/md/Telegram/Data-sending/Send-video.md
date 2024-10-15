@@ -34,7 +34,7 @@ sidebar_position: 3
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Видео    = "https://api.athenaeum.digital/test_data/video.mp4";
+    Видео    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
 
     ВидеоПуть = ПолучитьИмяВременногоФайла("mp4");
     КопироватьФайл(Видео, ВидеоПуть);
@@ -47,14 +47,30 @@ sidebar_position: 3
 
     Результат = OPI_Telegram.ОтправитьВидео(Токен, IDКанала, Текст, ВидеоДД);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьВидео --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --video "https://openintegrations.dev/test_data/video.mp4" --keyboard %keyboard% --parsemode %parsemode%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьВидео --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --video "C:\Users\Administrator\AppData\Local\Temp\e2xdljrntxn.mp4"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьВидео ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --video "C:\Users\Administrator\AppData\Local\Temp\e2xdljrntxn.mp4"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

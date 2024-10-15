@@ -24,14 +24,9 @@ sidebar_position: 10
 ```bsl title="Code example"
     Result = OPI_GoogleDrive.GetFileDescription();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gdrive GetFileDescription
-
-```
 
 ```json title="Result"
 {

@@ -39,14 +39,9 @@ sidebar_position: 3
     Keyboard = OPI_VK.FormKeyboard(ButtonArray);
     Result   = OPI_VK.WriteMessage(Text, UserID, Communitytoken, Keyboard, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk WriteMessage --text "Message from autotest" --user "657846756" --ct "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8I..." --keyboard %keyboard% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

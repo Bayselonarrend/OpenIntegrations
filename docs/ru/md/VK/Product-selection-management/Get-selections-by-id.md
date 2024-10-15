@@ -24,18 +24,30 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
-    Подборка  = "130";
+    Подборка  = "125";
 
     Результат = OPI_VK.ПолучитьПодборкиПоИД(Подборка, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ПолучитьПодборкиПоИД --sels %sels% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ПолучитьПодборкиПоИД --sels 130 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ПолучитьПодборкиПоИД ^
+              --sels 130 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

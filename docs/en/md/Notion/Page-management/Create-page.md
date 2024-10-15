@@ -30,14 +30,9 @@ sidebar_position: 1
 
     Result = OPI_Notion.CreatePage(Token, Parent, Title);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion CreatePage --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Created by 1C"
-
-```
 
 ```json title="Result"
 {

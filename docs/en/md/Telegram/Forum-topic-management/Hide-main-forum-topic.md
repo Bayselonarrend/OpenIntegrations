@@ -31,14 +31,9 @@ Method at API documentation: [hideGeneralForumTopic](https://core.telegram.org/b
 
     Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram HideMainForumTopic --token "6129457865:AAFyzNYOAFbu..." --forum %forum%
-
-```
 
 ```json title="Result"
 {

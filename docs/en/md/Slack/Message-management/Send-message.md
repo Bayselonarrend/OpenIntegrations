@@ -37,7 +37,7 @@ sidebar_position: 1
     // With attachments (picture block in the example)
 
     Text       = "Message with picture";
-    Image      = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     BlockArray = New Array;
 
     Block = OPI_Slack.GenerateImageBlock(Image, "Image");
@@ -54,14 +54,9 @@ sidebar_position: 1
     SendingDate = OPI_Tools.GetCurrentDate() + (Day * Hour);
     Result      = OPI_Slack.SendMessage(Token, Channel, Text, SendingDate);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack SendMessage --token %token% --channel "C070VPMKN8J" --text "TestMessage" --date %date% --blocks %blocks%
-
-```
 
 ```json title="Result"
 {

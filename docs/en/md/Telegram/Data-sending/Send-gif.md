@@ -34,7 +34,7 @@ Method at API documentation: [sendAnimation](https://core.telegram.org/bots/api#
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    GIF       = "https://api.athenaeum.digital/test_data/animation.gif";
+    GIF       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif";
 
     GifPath = GetTempFileName("gif");
     CopyFile(GIF, GifPath);
@@ -47,14 +47,9 @@ Method at API documentation: [sendAnimation](https://core.telegram.org/bots/api#
 
     Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendGif --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --gif "https://openintegrations.dev/test_data/animation.gif" --keyboard %keyboard% --parsemode %parsemode%
-
-```
 
 ```json title="Result"
 {

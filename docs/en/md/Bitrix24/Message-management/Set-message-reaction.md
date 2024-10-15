@@ -28,24 +28,19 @@ Method at API documentation: [im.message.like](https://dev.1c-bitrix.ru/learning
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    MessageID = "18126";
+    MessageID = "17908";
 
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "21750a67006e9f06006b12e400000001000...";
-    MessageID = "18128";
+    Token     = "49e20867006e9f06006b12e400000001000...";
+    MessageID = "17910";
 
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 SetMessageReaction --url "b24-ar17wx.bitrix24.by" --message "8684" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

@@ -30,14 +30,9 @@ sidebar_position: 5
 
     Result = OPI_VK.CreateAlbum(Name, Description, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreateAlbum --title "AlbumFromAutoTest" --description %description% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

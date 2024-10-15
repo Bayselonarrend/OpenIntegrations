@@ -27,18 +27,13 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     Наименование = "Картинка";
-    URL          = "https://api.athenaeum.digital/test_data/document.docx";
+    URL          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Результат = OPI_Bitrix24.ПолучитьБлокФайла(Наименование, URL);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПолучитьБлокФайла --title %title% --url %url%
 
-```
+
 
 ```json title="Результат"
 {

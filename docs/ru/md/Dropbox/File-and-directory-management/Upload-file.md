@@ -26,22 +26,38 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Путь      = "/New/pic.png";
-    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
-    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);
 
     Результат = OPI_Dropbox.ЗагрузитьФайл(Токен, КартинкаПуть, Путь, Истина);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ЗагрузитьФайл --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --file %file% --path %path% --overwrite %overwrite%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ЗагрузитьФайл --token "***" \
+              --file "C:\Users\Administrator\AppData\Local\Temp\junte55oyqj.png" \
+              --path "/New/pic.png" \
+              --overwrite true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ЗагрузитьФайл ^
+              --token "***" ^
+              --file "C:\Users\Administrator\AppData\Local\Temp\junte55oyqj.png" ^
+              --path "/New/pic.png" ^
+              --overwrite true
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -35,14 +35,9 @@ Method at API documentation: [createForumTopic](https://core.telegram.org/bots/a
   
   Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram CreateForumThread --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title% --icon %icon%
-
-```
 
 ```json title="Result"
 {

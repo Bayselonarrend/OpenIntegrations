@@ -33,14 +33,28 @@ sidebar_position: 9
 
     Результат = OPI_Telegram.ИзменитьИмяГлавнойТемыФорума(Токен, Чат, Заголовок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ИзменитьИмяГлавнойТемыФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ИзменитьИмяГлавнойТемыФорума --token "***" \
+              --forum "-1001971186208" \
+              --title "Новое имя главной темы b5bf297e-1e9a-4739-9a49-4e30504d2bbb"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ИзменитьИмяГлавнойТемыФорума ^
+              --token "***" ^
+              --forum "-1001971186208" ^
+              --title "Новое имя главной темы b5bf297e-1e9a-4739-9a49-4e30504d2bbb"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

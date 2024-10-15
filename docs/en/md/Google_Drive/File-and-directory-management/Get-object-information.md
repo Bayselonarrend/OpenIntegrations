@@ -23,19 +23,14 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Token      = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
     Identifier = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Result = OPI_GoogleDrive.GetObjectInformation(Token, Identifier);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gdrive GetObjectInformation --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa"
-
-```
 
 ```json title="Result"
 {

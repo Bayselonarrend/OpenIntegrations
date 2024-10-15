@@ -26,18 +26,13 @@ sidebar_position: 4
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
     Channel = "C06UFNUTKUL";
-    FileID  = "F07RN8F33GS";
+    FileID  = "F07RF36SEAX";
 
     Result = OPI_Slack.SendExternalFile(Token, FileID, Channel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack SendExternalFile --token %token% --fileid "F070P52CU94" --channels %channels%
-
-```
 
 ```json title="Result"
 {

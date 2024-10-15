@@ -25,14 +25,24 @@ sidebar_position: 1
     Токен     = "xoxb-6965308400114-696804637...";
     Результат = OPI_Slack.ПолучитьИнформациюОБоте(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПолучитьИнформациюОБоте --token %token%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПолучитьИнформациюОБоте --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьИнформациюОБоте ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

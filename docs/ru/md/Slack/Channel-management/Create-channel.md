@@ -29,14 +29,28 @@ sidebar_position: 3
 
     Результат = OPI_Slack.СоздатьКанал(Токен, Имя);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack СоздатьКанал --token %token% --title %title% --private %private%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack СоздатьКанал --token "***" \
+              --title "testconv9d2a1472-7419-436a-a418-a8a70d5b9ec3" \
+              --private false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack СоздатьКанал ^
+              --token "***" ^
+              --title "testconv9d2a1472-7419-436a-a418-a8a70d5b9ec3" ^
+              --private false
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

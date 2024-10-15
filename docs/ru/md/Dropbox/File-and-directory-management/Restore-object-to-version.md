@@ -24,20 +24,34 @@ sidebar_position: 14
 
 
 ```bsl title="Пример кода"
-    Версия    = "6246a08b887a8bd841553";
-    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Версия    = "6242e6c9daae7bd841553";
+    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Путь      = "/New/pic.png";
 
     Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ВосстановитьОбъектКВерсии --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --rev "61a0b76320a6fbd841553"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ВосстановитьОбъектКВерсии --token "***" \
+              --path "/New/pic.png" \
+              --rev "62475a95a622dbd841553"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ВосстановитьОбъектКВерсии ^
+              --token "***" ^
+              --path "/New/pic.png" ^
+              --rev "62475a95a622dbd841553"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -27,18 +27,30 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен    = "001.3501506236.091...";
-    IDФайла  = "XG1vEIB5FTX4tJi9IUA6Gg670d55381bd";
+    IDФайла  = "vaFI6GPPHMw21IwjOd8bQ76708d5441bd";
 
     Результат = OPI_VKTeams.ПолучитьИнформациюОФайле(Токен, IDФайла);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ПолучитьИнформациюОФайле --token %token% --fileid %fileid%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ПолучитьИнформациюОФайле --token "***" \
+              --fileid "xNjCbcI70PvUmFRTcD3t0c670e0acf1bd"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ПолучитьИнформациюОФайле ^
+              --token "***" ^
+              --fileid "xNjCbcI70PvUmFRTcD3t0c670e0acf1bd"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

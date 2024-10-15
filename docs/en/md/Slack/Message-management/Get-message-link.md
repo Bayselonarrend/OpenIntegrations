@@ -26,18 +26,13 @@ sidebar_position: 6
 ```bsl title="Code example"
     Token     = "xoxb-6965308400114-696804637...";
     Channel   = "C06UFNUTKUL";
-    Timestamp = "1728823163.597989";
+    Timestamp = "1728631618.679149";
 
     Result = OPI_Slack.GetMessageLink(Token, Channel, Timestamp);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetMessageLink --token %token% --channel "C070VPMKN8J" --stamp "1714146538.221929"
-
-```
 
 ```json title="Result"
 {

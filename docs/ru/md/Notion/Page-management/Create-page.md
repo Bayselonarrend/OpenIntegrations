@@ -30,14 +30,28 @@ sidebar_position: 1
 
     Результат = OPI_Notion.СоздатьСтраницу(Токен, Родитель, Заголовок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion СоздатьСтраницу --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "Создано из 1С"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion СоздатьСтраницу --token "***" \
+              --page "5dd94c34fab04bff986b7511c0779f77" \
+              --title "Тестовый заголовок"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion СоздатьСтраницу ^
+              --token "***" ^
+              --page "5dd94c34fab04bff986b7511c0779f77" ^
+              --title "Тестовый заголовок"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

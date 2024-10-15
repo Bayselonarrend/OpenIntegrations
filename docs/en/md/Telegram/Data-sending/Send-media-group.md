@@ -33,8 +33,8 @@ Method at API documentation: [sendMediaGroup](https://core.telegram.org/bots/api
     Token  = "6129457865:AAFyzNYOAFbu...";
     ChatID = "461699897";
     Text   = "Строковое значение";
-    Image  = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Video  = "https://api.athenaeum.digital/test_data/video.mp4";
+    Image  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Video  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);
@@ -50,14 +50,9 @@ Method at API documentation: [sendMediaGroup](https://core.telegram.org/bots/api
 
     Result = OPI_Telegram.SendMediaGroup(Token, ChatID, Text, MediaGroup);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendMediaGroup --token "111111111:AACccNYOAFbuhAL5GAaaBbbbOjZYFvLZZZZ" --chat %chat% --text %text% --media %media% --keyboard %keyboard% --parsemode %parsemode%
-
-```
 
 ```json title="Result"
 {

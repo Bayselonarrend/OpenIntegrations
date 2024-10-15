@@ -44,14 +44,9 @@ You can get an empty structure using the GetAttributesUpdateStructure method()
 
     Result = OPI_Ozon.UpdateProductsAttributes(ClientID, APIKey, AttributesStructure);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon UpdateProductsAttributes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
-
-```
 
 ```json title="Result"
 {

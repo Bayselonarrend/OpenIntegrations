@@ -35,7 +35,7 @@ Method at API documentation: [sendDocument](https://core.telegram.org/bots/api#s
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Document  = "https://api.athenaeum.digital/test_data/document.docx";
+    Document  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     DocumentPath = GetTempFileName("docx");
     CopyFile(Document, DocumentPath);
@@ -50,14 +50,9 @@ Method at API documentation: [sendDocument](https://core.telegram.org/bots/api#s
 
     Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendDocument --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode% --filename %filename%
-
-```
 
 ```json title="Result"
 {

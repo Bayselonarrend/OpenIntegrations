@@ -24,14 +24,24 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Результат = OPI_Airtable.ПолучитьПолеПочты("Почта");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьПолеПочты --title "Почта"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьПолеПочты --title "Почта"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеПочты ^
+              --title "Почта"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

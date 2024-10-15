@@ -27,18 +27,13 @@ sidebar_position: 3
     Parameters = GetVKParameters();
 
     Name     = "Color (change.)";
-    Property = "878";
+    Property = "863";
 
     Result = OPI_VK.EditProductProperty(Name, Property, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk EditProductProperty --title "Color (change.)" --prop "648" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

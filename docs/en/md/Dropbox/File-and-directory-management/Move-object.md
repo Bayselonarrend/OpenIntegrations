@@ -26,18 +26,13 @@ sidebar_position: 9
 ```bsl title="Code example"
     OriginalPath = "/New/pic.png";
     TargetPath   = "/pic.png";
-    Token        = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Token        = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     Result = OPI_Dropbox.MoveObject(Token, OriginalPath, TargetPath);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox MoveObject --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --form %form% --to %to%
-
-```
 
 ```json title="Result"
 {

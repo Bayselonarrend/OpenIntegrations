@@ -27,24 +27,19 @@ Method at API documentation: [log.blogpost.getusers.important](https://dev.1c-bi
 
 
 ```bsl title="Code example"
-    PostID = "968";
+    PostID = "956";
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetImportantPostViewers(URL, PostID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetImportantPostViewers --url "b24-ar17wx.bitrix24.by" --postid "438" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

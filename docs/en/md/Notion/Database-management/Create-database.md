@@ -51,14 +51,9 @@ sidebar_position: 1
 
     Result = OPI_Notion.CreateDatabase(Token, Parent, Title, Properties);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion CreateDatabase --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --title "This base is from 1C" --props %props%
-
-```
 
 ```json title="Result"
 {

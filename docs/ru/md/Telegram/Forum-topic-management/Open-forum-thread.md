@@ -29,20 +29,34 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Токен          = "6129457865:AAFyzNYOAFbu...";
     Чат            = "-1001971186208";
-    Тема           = "5543";
+    Тема           = "5429";
 
     Результат = OPI_Telegram.ОткрытьТемуФорума(Токен, Чат);       // Открывает главную тему
 
     Результат = OPI_Telegram.ОткрытьТемуФорума(Токен, Чат, Тема);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОткрытьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОткрытьТемуФорума --token "***" \
+              --forum "-1001971186208" \
+              --topic "5598"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОткрытьТемуФорума ^
+              --token "***" ^
+              --forum "-1001971186208" ^
+              --topic "5598"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

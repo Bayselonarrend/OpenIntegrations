@@ -26,7 +26,7 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Свойство        = "878";
+    Свойство        = "863";
     МассивВариантов = Новый Массив;
     МассивВариантов.Добавить("Желтый");
     МассивВариантов.Добавить("Синий");
@@ -39,14 +39,28 @@ sidebar_position: 5
         ПараметрыФункции.Вставить(ИмяПараметра, ИДВарианта);
     КонецЦикла;
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ДобавитьВариантСвойстваТовара --value %value% --prop %prop% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ДобавитьВариантСвойстваТовара --value "Красный" \
+              --prop "883" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ДобавитьВариантСвойстваТовара ^
+              --value "Красный" ^
+              --prop "883" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

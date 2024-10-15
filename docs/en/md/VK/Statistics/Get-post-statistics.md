@@ -31,14 +31,9 @@ sidebar_position: 2
 
     Result = OPI_VK.GetPostStatistics(ArrayOfPosts, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetPostStatistics --posts %posts% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 [

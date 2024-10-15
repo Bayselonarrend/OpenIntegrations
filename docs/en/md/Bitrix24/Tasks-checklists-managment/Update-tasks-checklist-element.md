@@ -30,28 +30,23 @@ Method at API documentation: [task.checklistitem.update](https://dev.1c-bitrix.r
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID    = "2446";
-    ElementID = "1496";
+    TaskID    = "2416";
+    ElementID = "1472";
 
     Text = "New elements text";
 
     Result = OPI_Bitrix24.UpdateTasksChecklistElement(URL, TaskID, ElementID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "21750a67006e9f06006b12e400000001000...";
-    TaskID    = "2448";
-    ElementID = "1500";
+    Token     = "49e20867006e9f06006b12e400000001000...";
+    TaskID    = "2418";
+    ElementID = "1476";
 
     Result = OPI_Bitrix24.UpdateTasksChecklistElement(URL, TaskID, ElementID, Text, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdateTasksChecklistElement --url "b24-ar17wx.bitrix24.by" --task "1080" --element "400" --text %text% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

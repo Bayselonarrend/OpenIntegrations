@@ -29,10 +29,10 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
 
-    НомерКампании   = "1030715875";
+    НомерКампании   = "1030710176";
     ДневнойЛимит    = 150;
     НомерКатегории  = 126;
-    IDПоста         = "4712";
+    IDПоста         = "4578";
     IDКабинета      = "1607951446";
 
     Результат   = OPI_VK.СоздатьРекламноеОбъявление(НомерКампании
@@ -42,14 +42,34 @@ sidebar_position: 2
         , IDКабинета
         , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СоздатьРекламноеОбъявление --campaign %campaign% --limit %limit% --category %category% --post %post% --cabinet %cabinet% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СоздатьРекламноеОбъявление --campaign 1030721014 \
+              --limit 150 \
+              --category 126 \
+              --post 4759 \
+              --cabinet "1607951446" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СоздатьРекламноеОбъявление ^
+              --campaign 1030721014 ^
+              --limit 150 ^
+              --category 126 ^
+              --post 4759 ^
+              --cabinet "1607951446" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

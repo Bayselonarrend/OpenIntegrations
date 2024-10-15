@@ -26,19 +26,14 @@ sidebar_position: 5
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Product   = "9756133";
-    Selection = "130";
+    Product   = "9733388";
+    Selection = "125";
 
     Result = OPI_VK.AddProductToCollection(Product, Selection, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk AddProductToCollection --items %items% --sel "125" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

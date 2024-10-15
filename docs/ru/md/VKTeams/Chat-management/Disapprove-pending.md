@@ -37,14 +37,26 @@ sidebar_position: 11
 
     Результат = OPI_VKTeams.ОтклонитьЗаявкуНаВступление(Токен, IDЧата);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ОтклонитьЗаявкуНаВступление --token "001.3501506236.091..." --chatid "689203963@chat.agent" --userid %userid%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ОтклонитьЗаявкуНаВступление --token "***" \
+              --chatid "689203963@chat.agent"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ОтклонитьЗаявкуНаВступление ^
+              --token "***" ^
+              --chatid "689203963@chat.agent"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

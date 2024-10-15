@@ -27,8 +27,8 @@ sidebar_position: 4
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    GIF  = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Binary or Path to file
-    Gif2 = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Binary or Path to file
+    GIF  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif"; // URL, Binary or Path to file
+    Gif2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif"; // URL, Binary or Path to file
 
     GifsArray = New Array;
     GifsArray.Add(GIF);
@@ -39,14 +39,9 @@ sidebar_position: 4
     Text   = "TestTweet" + String(New UUID);
     Result = OPI_Twitter.CreateGifTweet(Text, GIF, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint twitter CreateGifTweet --text %text% --gifs %gifs% --auth %auth%
-
-```
 
 ```json title="Result"
 {

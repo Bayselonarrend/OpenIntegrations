@@ -39,7 +39,7 @@ sidebar_position: 1
     Результат = OPI_VKTeams.ОтправитьТекстовоеСообщение(Токен, IDЧата, Текст);
 
     IDЧата        = "689203963@chat.agent";
-    IDЦитируемого = "7425684917876428136";
+    IDЦитируемого = "7424418276186262625";
     Текст         = "<b>Полужирный текст сообщения</b>";
     Разметка      = "HTML";
 
@@ -55,14 +55,34 @@ sidebar_position: 1
 
     Результат = OPI_VKTeams.ОтправитьТекстовоеСообщение(Токен, IDЧата, Текст, IDЦитируемого, Клавиатура, Разметка);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ОтправитьТекстовоеСообщение --token %token% --chatid %chatid% --text %text% --reply %reply% --keyboard %keyboard% --parsemod %parsemod%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ОтправитьТекстовоеСообщение --token "***" \
+              --chatid "689203963@chat.agent" \
+              --text "<b>Полужирный текст сообщения</b>" \
+              --reply "7425730916976168326" \
+              --keyboard "[[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}]]" \
+              --parsemod "HTML"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ОтправитьТекстовоеСообщение ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --text "<b>Полужирный текст сообщения</b>" ^
+              --reply "7425730916976168326" ^
+              --keyboard "[[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}]]" ^
+              --parsemod "HTML"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

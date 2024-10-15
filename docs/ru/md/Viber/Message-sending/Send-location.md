@@ -41,14 +41,32 @@ sidebar_position: 5
 
     Результат  = OPI_Viber.ОтправитьЛокацию(Токен, Широта, Долгота, IDПользователя, ОтправкаВКанал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ОтправитьЛокацию --token %token% --lat %lat% --long %long% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ОтправитьЛокацию --token "***" \
+              --lat "48.87373649724122" \
+              --long "2.2954639195323967" \
+              --user "tMNGhftyUPrB3r1lD+bT4g==" \
+              --ischannel true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ОтправитьЛокацию ^
+              --token "***" ^
+              --lat "48.87373649724122" ^
+              --long "2.2954639195323967" ^
+              --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+              --ischannel true
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

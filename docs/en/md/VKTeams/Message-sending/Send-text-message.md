@@ -39,7 +39,7 @@ You can mention a user by appending their userId to the text in the following fo
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
 
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7425684917876428136";
+    ReplyID = "7424418276186262625";
     Text    = "<b>Bold text</b>";
     Markup  = "HTML";
 
@@ -55,14 +55,9 @@ You can mention a user by appending their userId to the text in the following fo
 
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams SendTextMessage --token "001.3501506236.091..." --chatid "689203963@chat.agent" --text "<b>Bold text</b>" --reply "7402287649739767956" --keyboard %keyboard% --parsemod "HTML"
-
-```
 
 ```json title="Result"
 {

@@ -27,21 +27,39 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appESy99HYCLbuWlV";
-    Таблица = "tbl5gZLQ8i5xKuVTy";
-    Запись  = "recHqUT4ruWn8KnYi";
+    База    = "appmy5B6qi09E4wrF";
+    Таблица = "tblYwj7Cnw6w3FGWh";
+    Запись  = "recnOWHAPOyCl0kUj";
     Текст   = "Тестовый комментарий";
 
     Результат = OPI_Airtable.СоздатьКомментарий(Токен, База, Таблица, Запись, Текст);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable СоздатьКомментарий --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --record "recV6DxeLQMBNJrUk" --text "Тестовый комментарий"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable СоздатьКомментарий --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --table "tbl99eHW7uVpn8cdR" \
+              --record "rec6pv1dpsrdVxaD4" \
+              --text "Тестовый комментарий"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable СоздатьКомментарий ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --table "tbl99eHW7uVpn8cdR" ^
+              --record "rec6pv1dpsrdVxaD4" ^
+              --text "Тестовый комментарий"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

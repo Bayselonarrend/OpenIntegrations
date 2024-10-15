@@ -28,14 +28,26 @@ sidebar_position: 1
 
     Результат = OPI_Viber.УстановитьWebhook(Токен, URL);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber УстановитьWebhook --token %token% --url %url%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber УстановитьWebhook --token "***" \
+              --url "http://api.athenaeum.digital/hs/viber"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber УстановитьWebhook ^
+              --token "***" ^
+              --url "http://api.athenaeum.digital/hs/viber"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

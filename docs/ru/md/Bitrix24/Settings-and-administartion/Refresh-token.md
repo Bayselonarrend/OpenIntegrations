@@ -26,18 +26,13 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     ClientID     = "local.6667fc928a50a9.70414732";
     ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
-    Refresh      = "11f43167006e9f06006b12e400000001000...";
+    Refresh      = "39613067006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ОбновитьТокен(ClientID, ClientSecret, Refresh);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ОбновитьТокен --clientid "local.6667fc928a50a9.70414732" --clientsecret "ZeKyeYIgy2NsHZqsIHY6GfG1V..." --refresh "a95e9b66006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

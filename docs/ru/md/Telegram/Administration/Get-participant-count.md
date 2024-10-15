@@ -31,14 +31,26 @@ sidebar_position: 6
 
     Результат  = OPI_Telegram.ПолучитьЧислоУчастников(Токен, IDКанала);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ПолучитьЧислоУчастников --token "6129457865:AAFyzNYOAFbu..." --chat %chat%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ПолучитьЧислоУчастников --token "***" \
+              --chat "@testsichee"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ПолучитьЧислоУчастников ^
+              --token "***" ^
+              --chat "@testsichee"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

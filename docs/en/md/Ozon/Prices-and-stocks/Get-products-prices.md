@@ -33,14 +33,9 @@ Method at API documentation: [post /v4/product/info/prices](https://docs.ozon.ru
 
     Result = OPI_Ozon.GetProductsPrices(ClientID, APIKey, New Structure);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductsPrices --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
-
-```
 
 ```json title="Result"
 {

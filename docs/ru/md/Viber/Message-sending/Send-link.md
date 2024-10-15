@@ -39,14 +39,30 @@ sidebar_position: 6
 
     Результат  = OPI_Viber.ОтправитьСсылку(Токен, URL, IDПользователя, ОтправкаВКанал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ОтправитьСсылку --token %token% --url %url% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ОтправитьСсылку --token "***" \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+              --user "tMNGhftyUPrB3r1lD+bT4g==" \
+              --ischannel true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ОтправитьСсылку ^
+              --token "***" ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+              --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+              --ischannel true
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

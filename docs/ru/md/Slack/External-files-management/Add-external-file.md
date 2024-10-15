@@ -26,18 +26,32 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен     = "xoxb-6965308400114-696804637...";
     Заголовок = "Новый файл";
-    Файл      = "https://api.athenaeum.digital/test_data/document.docx";
+    Файл      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Результат = OPI_Slack.ДобавитьВнешнийФайл(Токен, Файл, Заголовок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ДобавитьВнешнийФайл --token %token% --url "https://opi.neocities.org/test_data/document.docx" --title %title%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ДобавитьВнешнийФайл --token "***" \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
+              --title "Новый файл"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ДобавитьВнешнийФайл ^
+              --token "***" ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
+              --title "Новый файл"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

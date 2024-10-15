@@ -24,18 +24,13 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07R7MSSPDM";
+    Channel = "C07RTRYK673";
 
     Result = OPI_Slack.ArchiveChannel(Token, Channel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack ArchiveChannel --token %token% --channel "C070VPMKN8J"
-
-```
 
 ```json title="Result"
 {

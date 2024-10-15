@@ -31,14 +31,9 @@ sidebar_position: 7
 
     Result = OPI_Viber.CreateKeyboardFromArrayButton(ButtonArray);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber CreateKeyboardFromArrayButton --buttons %buttons% --color %color%
-
-```
 
 ```json title="Result"
 {

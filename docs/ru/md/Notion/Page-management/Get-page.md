@@ -24,18 +24,30 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница  = "11e82aa7-fc4e-81be-a17f-c8f8ec9b863d";
+    Страница  = "11c82aa7-fc4e-8168-b662-fc3b84f7b2a6";
 
     Результат = OPI_Notion.ПолучитьСтраницу(Токен, Страница);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion ПолучитьСтраницу --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "a574281614174169bf55dbae4..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion ПолучитьСтраницу --token "***" \
+              --page "12082aa7-fc4e-811e-a159-da2bd70e7c7d"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ПолучитьСтраницу ^
+              --token "***" ^
+              --page "12082aa7-fc4e-811e-a159-da2bd70e7c7d"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -24,18 +24,30 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     Параметры  = ПолучитьПараметрыВК();
-    ИДКартинки = "457249318";
+    ИДКартинки = "457249113";
 
     Результат  = OPI_VK.УдалитьКартинку(ИДКартинки, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk УдалитьКартинку --pictureid %pictureid% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk УдалитьКартинку --pictureid 457249412 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk УдалитьКартинку ^
+              --pictureid 457249412 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

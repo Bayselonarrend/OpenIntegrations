@@ -25,19 +25,33 @@ sidebar_position: 8
 
 ```bsl title="Пример кода"
     Токен        = "xoxb-6965308400114-696804637...";
-    Канал        = "C07R7MSSPDM";
+    Канал        = "C07RTRYK673";
     Пользователь = "U06UABH3APP";
 
     Результат = OPI_Slack.ВыгнатьПользователяИзКанала(Токен, Канал, Пользователь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ВыгнатьПользователяИзКанала --token %token% --channel "C070VPMKN8J" --user "U06UG1CAYH2"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ВыгнатьПользователяИзКанала --token "***" \
+              --channel "C07SJFNT9SL" \
+              --user "U06UABH3APP"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ВыгнатьПользователяИзКанала ^
+              --token "***" ^
+              --channel "C07SJFNT9SL" ^
+              --user "U06UABH3APP"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

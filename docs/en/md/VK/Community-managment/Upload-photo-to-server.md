@@ -26,19 +26,14 @@ sidebar_position: 11
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Binary Data or Path to file
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Binary Data or Path to file
     View  = "Post";
 
     Result = OPI_VK.UploadPhotoToServer(Image, Parameters, View);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk UploadPhotoToServer --file "https://openintegrations.dev/test_data/picture.jpg // URL, Path or Binary Data" --auth %auth% --type %type%
-
-```
 
 ```json title="Result"
 {

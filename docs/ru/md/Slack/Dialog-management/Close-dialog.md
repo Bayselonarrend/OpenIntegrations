@@ -28,14 +28,26 @@ sidebar_position: 2
 
     Результат = OPI_Slack.ЗакрытьДиалог(Токен, Диалог);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ЗакрытьДиалог --token %token% --conv "D06UAKK1C6R"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ЗакрытьДиалог --token "***" \
+              --conv "D06UAKK1C6R"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ЗакрытьДиалог ^
+              --token "***" ^
+              --conv "D06UAKK1C6R"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

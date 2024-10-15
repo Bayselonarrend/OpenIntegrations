@@ -40,14 +40,9 @@ sidebar_position: 1
 
     Результат = OPI_Ozon.ПолучитьКоличествоТоваров(IDКлиента, КлючAPI, Фильтр);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьКоличествоТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
 
-```
+
 
 ```json title="Результат"
 {

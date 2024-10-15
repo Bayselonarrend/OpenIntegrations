@@ -24,18 +24,13 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page  = "11e82aa7-fc4e-81be-a17f-c8f8ec9b863d";
+    Page  = "11c82aa7-fc4e-8168-b662-fc3b84f7b2a6";
 
     Result = OPI_Notion.GetPage(Token, Page);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion GetPage --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "a574281614174169bf55dbae4..."
-
-```
 
 ```json title="Result"
 {

@@ -41,14 +41,9 @@ sidebar_position: 5
 
     Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber SendLocation --token %token% --lat %lat% --long %long% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
-
-```
 
 ```json title="Result"
 {

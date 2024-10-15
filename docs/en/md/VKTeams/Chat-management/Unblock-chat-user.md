@@ -35,14 +35,9 @@ To call this method, the bot must be an administrator in the chat room.
 
     Result = OPI_VKTeams.UnblockChatUser(Token, ChatID, User);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams UnblockChatUser --token "001.3501506236.091..." --chatid "689203963@chat.agent" --userid %userid%
-
-```
 
 ```json title="Result"
 {

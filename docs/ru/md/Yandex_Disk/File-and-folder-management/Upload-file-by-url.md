@@ -25,19 +25,33 @@ sidebar_position: 11
 
 ```bsl title="Пример кода"
     Токен   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Адрес   = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Адрес   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Путь    = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, Адрес);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk ЗагрузитьФайлПоURL --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png" --url "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk ЗагрузитьФайлПоURL --token "***" \
+              --path "/c46d08de-5793-45c2-88c8-4cef86e5f487.png" \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk ЗагрузитьФайлПоURL ^
+              --token "***" ^
+              --path "/c46d08de-5793-45c2-88c8-4cef86e5f487.png" ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

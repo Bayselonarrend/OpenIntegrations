@@ -38,10 +38,10 @@ On each method call, send all the images that should be on the product card
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1220696576";
+    ProductID = "1218931806";
 
-    Image1 = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
 
     MarketingColor = "GREEN";
 
@@ -56,14 +56,9 @@ On each method call, send all the images that should be on the product card
         ,
         , MarketingColor);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon UpdateProductImages --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --images %images% --images360 %images360% --color %color%
-
-```
 
 ```json title="Result"
 {

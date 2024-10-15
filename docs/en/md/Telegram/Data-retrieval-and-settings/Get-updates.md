@@ -30,14 +30,9 @@ Method at API documentation: [getUpdates](https://core.telegram.org/bots/api#get
     Token  = "6129457865:AAFyzNYOAFbu...";
     Result = OPI_Telegram.GetUpdates(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram GetUpdates --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
-
-```
 
 ```json title="Result"
 {

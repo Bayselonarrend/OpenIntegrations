@@ -33,8 +33,8 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     Текст     = "Новый текст новости";
     Заголовок = "Новый заголовок новости";
-    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Путь или Двоичные данные
-    IDНовости = "970";
+    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    IDНовости = "958";
 
     Файлы     = Новый Соответствие;
     Файлы.Вставить("1.png", Картинка1);
@@ -44,19 +44,14 @@ sidebar_position: 2
     Результат = OPI_Bitrix24.ИзменитьНовость(URL, IDНовости, Текст, , Файлы, Заголовок);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "21750a67006e9f06006b12e400000001000...";
-    IDНовости = "968";
+    Токен     = "49e20867006e9f06006b12e400000001000...";
+    IDНовости = "956";
 
     Результат = OPI_Bitrix24.ИзменитьНовость(URL, IDНовости, Текст, , Файлы, Заголовок, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ИзменитьНовость --url "b24-ar17wx.bitrix24.by" --postid "122" --text %text% --vision %vision% --files %files% --title %title% --token "b9df7366006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

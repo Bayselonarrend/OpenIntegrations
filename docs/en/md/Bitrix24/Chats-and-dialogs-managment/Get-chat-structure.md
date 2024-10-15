@@ -24,14 +24,9 @@ sidebar_position: 21
 ```bsl title="Code example"
     Result = OPI_Bitrix24.GetChatStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetChatStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

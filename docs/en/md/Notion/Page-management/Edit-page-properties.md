@@ -28,9 +28,9 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page    = "11e82aa7-fc4e-81be-a17f-c8f8ec9b863d";
-    Icon    = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Cover   = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Page    = "11c82aa7-fc4e-8168-b662-fc3b84f7b2a6";
+    Icon    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Cover   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
     Archive = False;
 
     Properties = New Map;
@@ -44,14 +44,9 @@ sidebar_position: 4
         , Cover
         , Archive);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion EditPageProperties --token "secret_9RsfMrRMqZwqp0Zl0B..." --page "5dd94c34fab04bff9..." --data %data% --icon "https://opi.neocities.org/img/logo.png" --cover "https://opi.neocities.org/assets/images/logo_long-e69f28017feff1759ffcfe3f4e7bbf2a.png" --archive %archive%
-
-```
 
 ```json title="Result"
 {

@@ -25,18 +25,30 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Параметры   = ПолучитьПараметрыВК();
-    IDПоста     = "4712";
+    IDПоста     = "4578";
 
     Результат = OPI_VK.ПоставитьЛайк(IDПоста, , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ПоставитьЛайк --post %post% --wall %wall% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ПоставитьЛайк --post 4756 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ПоставитьЛайк ^
+              --post 4756 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {
