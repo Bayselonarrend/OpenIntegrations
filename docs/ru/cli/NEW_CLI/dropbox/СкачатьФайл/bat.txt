@@ -1,0 +1,3 @@
+oint dropbox СкачатьФайл ^
+  --token "***" ^
+  --path "/New/pic.png"

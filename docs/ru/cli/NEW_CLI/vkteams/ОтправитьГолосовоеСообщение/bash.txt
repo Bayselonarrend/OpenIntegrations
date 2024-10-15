@@ -1,0 +1,4 @@
+oint vkteams ОтправитьГолосовоеСообщение --token "***" \
+  --chatid "689203963@chat.agent" \
+  --file "C:\Users\Administrator\AppData\Local\Temp\sthvkyzxuce.m4a" \
+  --reply "7425884578021117348"

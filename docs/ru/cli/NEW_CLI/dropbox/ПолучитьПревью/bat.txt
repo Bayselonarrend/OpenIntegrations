@@ -1,0 +1,3 @@
+oint dropbox ПолучитьПревью ^
+  --token "***" ^
+  --path "/New/mydoc.docx"

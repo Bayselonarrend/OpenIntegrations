@@ -1,0 +1,3 @@
+oint viber ПолучитьОнлайнПользователей ^
+  --token "***" ^
+  --users "tMNGhftyUPrB3r1lD+bT4g=="
