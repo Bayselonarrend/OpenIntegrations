@@ -36,14 +36,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint vk СократитьСсылку --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk СократитьСсылку \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint vk СократитьСсылку ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk СократитьСсылку ^
               --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

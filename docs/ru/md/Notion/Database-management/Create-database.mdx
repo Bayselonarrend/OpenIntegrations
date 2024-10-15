@@ -60,7 +60,10 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint notion СоздатьБазуДанных --token "***" \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint notion СоздатьБазуДанных \
+              --token "***" \
               --page "5dd94c34fab04bff986b7511c0779f77" \
               --title "Тестовый заголовок" \
               --props "{'Имя':'title','Описание':'rich_text','Номер':'number','Статус':{'Новый':'green','В работе':'yellow','Удаленный':'red'},'Дата создания':'date','Картинка':'files','Активен':'checkbox','Сайт':'url','Почта':'email','Телефон':'phone_number','Пользователь':'people'}"
@@ -69,7 +72,9 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint notion СоздатьБазуДанных ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint notion СоздатьБазуДанных ^
               --token "***" ^
               --page "5dd94c34fab04bff986b7511c0779f77" ^
               --title "Тестовый заголовок" ^
