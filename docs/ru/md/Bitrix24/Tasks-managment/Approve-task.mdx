@@ -1,0 +1,200 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 7
+---
+
+# Принять задачу
+ Принимает задачу по ID
+
+
+
+`Функция ПринятьЗадачу(Знач URL, Знач IDЗадачи, Знач Токен = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | URL | --url | Строка | URL внешнего вебхука или адрес Bitrix24 при использовании токена |
+  | IDЗадачи | --task | Число,Строка | ID задачи |
+  | Токен | --token | Строка | Токен авторизации, если используется не вебхук |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrxi24
+
+<br/>
+
+:::tip
+Метод в документации API: [tasks.task.approve](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_approve.php)
+:::
+<br/>
+
+
+```bsl title="Пример кода"
+    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
+    IDЗадачи = "2446";
+
+    Результат = OPI_Bitrix24.ПринятьЗадачу(URL, IDЗадачи);
+
+    URL       = "b24-ar17wx.bitrix24.by";
+    Токен     = "21750a67006e9f06006b12e400000001000...";
+    IDЗадачи  = "2448";
+
+    Результат = OPI_Bitrix24.ПринятьЗадачу(URL, IDЗадачи, Токен);
+```
+    
+
+
+
+```json title="Результат"
+{
+ "result": {
+  "task": {
+   "id": "2378",
+   "title": "Другой заголовок задачи",
+   "description": "Другое описание задачи",
+   "descriptionInBbcode": "Y",
+   "declineReason": "",
+   "priority": "1",
+   "notViewed": "N",
+   "statusComplete": "2",
+   "multitask": "N",
+   "stageId": "0",
+   "responsibleId": "594",
+   "responsibleName": "Oleg",
+   "responsibleLastName": "Lama",
+   "responsibleSecondName": null,
+   "responsibleLogin": "584b160c-03dc-4548-a898-282d95334643@exepmple.org",
+   "responsibleWorkPosition": null,
+   "responsiblePhoto": null,
+   "dateStart": null,
+   "durationFact": null,
+   "timeEstimate": "0",
+   "timeSpentInLogs": null,
+   "replicate": "N",
+   "deadline": "2024-10-09T23:48:00+03:00",
+   "deadlineOrig": "09.10.2024 23:48:00",
+   "startDatePlan": "2024-10-08T20:48:35+03:00",
+   "endDatePlan": "2024-10-09T00:00:00+03:00",
+   "createdBy": "1",
+   "createdByName": "Антон",
+   "createdByLastName": "Титовец",
+   "createdBySecondName": null,
+   "createdByLogin": "VKuser657846756",
+   "createdByWorkPosition": null,
+   "createdByPhoto": "30",
+   "createdDate": "2024-10-08T20:48:35+03:00",
+   "changedBy": "1",
+   "changedDate": "2024-10-08T20:48:45+03:00",
+   "statusChangedBy": "1",
+   "closedBy": "1",
+   "closedDate": "2024-10-08T20:48:45+03:00",
+   "activityDate": "2024-10-08T20:48:45+03:00",
+   "guid": "{037d66b0-f11d-4d50-bf02-0491fe52bea7}",
+   "xmlId": null,
+   "mark": null,
+   "allowChangeDeadline": "N",
+   "allowTimeTracking": "N",
+   "matchWorkTime": "N",
+   "taskControl": "N",
+   "addInReport": "N",
+   "forumTopicId": "1652",
+   "parentId": null,
+   "commentsCount": "2",
+   "serviceCommentsCount": "2",
+   "forumId": "11",
+   "siteId": "s1",
+   "subordinate": "N",
+   "exchangeModified": null,
+   "exchangeId": null,
+   "outlookVersion": "6",
+   "viewedDate": "2024-10-08T20:48:45+03:00",
+   "deadlineCounted": "0",
+   "forkedByTemplateId": null,
+   "sorting": null,
+   "durationPlanSeconds": null,
+   "durationTypeAll": "days",
+   "scenarioName": [
+    "default"
+   ],
+   "isRegular": "N",
+   "flowId": null,
+   "isMuted": "N",
+   "isPinned": "N",
+   "isPinnedInGroup": "N",
+   "ufCrmTask": false,
+   "ufTaskWebdavFiles": false,
+   "ufMailMessage": null,
+   "status": "5",
+   "statusChangedDate": "2024-10-08T20:48:45+03:00",
+   "durationPlan": null,
+   "durationType": "days",
+   "favorite": "N",
+   "groupId": "0",
+   "auditors": [],
+   "accomplices": [],
+   "tags": [],
+   "checklist": [],
+   "files": [],
+   "dependsOn": [],
+   "group": [],
+   "creator": {
+    "id": "1",
+    "name": "Антон Титовец",
+    "link": "/company/personal/user/1/",
+    "icon": "https://b24-ar17wx.bitrix24.by/b28528874/resize_cache/30/c0120a8d7c10d63c83e32398d1ec4d9e/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
+    "workPosition": null
+   },
+   "responsible": {
+    "id": "594",
+    "name": "Oleg Lama",
+    "link": "/company/personal/user/594/",
+    "icon": "/bitrix/images/tasks/default_avatar.png",
+    "workPosition": null
+   },
+   "accomplicesData": [],
+   "auditorsData": [],
+   "newCommentsCount": 0,
+   "action": {
+    "accept": false,
+    "decline": false,
+    "complete": false,
+    "approve": false,
+    "disapprove": false,
+    "start": false,
+    "pause": false,
+    "delegate": false,
+    "remove": true,
+    "edit": true,
+    "defer": false,
+    "renew": true,
+    "create": true,
+    "changeDeadline": true,
+    "checklistAddItems": true,
+    "addFavorite": true,
+    "deleteFavorite": false,
+    "rate": true,
+    "edit.originator": false,
+    "checklist.reorder": true,
+    "elapsedtime.add": true,
+    "dayplan.timer.toggle": false,
+    "edit.plan": true,
+    "checklist.add": true,
+    "favorite.add": true,
+    "favorite.delete": false
+   },
+   "checkListTree": {
+    "nodeId": 0,
+    "fields": {
+     "id": null,
+     "copiedId": null,
+     "entityId": null,
+     "userId": 1,
+     "createdBy": null,
+     "parentId": null,
+     "title": "",
+     "sortIndex": null,
+     "displaySortIndex": "",
+     "isComplete": false,
+     "isImportant": false,
+...
+```

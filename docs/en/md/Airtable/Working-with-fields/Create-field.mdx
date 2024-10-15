@@ -1,0 +1,52 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Create field
+ Creates a new field in the table
+
+
+
+`Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | Base | --base | String | Base identifier |
+  | Table | --table | String | Table identifier |
+  | FieldStructure | --fielddata | Structure of KeyAndValue | Description of the new field |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Airtable
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base  = "appESy99HYCLbuWlV";
+    Table = "tbl5gZLQ8i5xKuVTy";
+    Name  = String(New UUID);
+
+    Field  = OPI_Airtable.GetNumberField(Name);
+    Result = OPI_Airtable.CreateField(Token, Base, Table, Field);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "type": "number",
+ "options": {
+  "precision": 0
+ },
+ "id": "fldDqI1OXajeQw5Gg",
+ "name": "b3fd1280-83b2-4145-838d-3437b14adee3"
+}
+```

@@ -1,0 +1,39 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 3
+---
+
+# Get field (string)
+ Gets the description of a string field
+
+
+
+`Function GetStringField(Val Name) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | New field name |
+
+  
+  Returns:  Structure - Field description
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Result = OPI_Airtable.GetStringField("String");
+```
+ 
+
+
+
+```json title="Result"
+{
+ "name": "String",
+ "type": "richText"
+}
+```

@@ -1,0 +1,105 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 3
+---
+
+# Приостановить рекламное объявление
+ Приостанавливает показ рекламного объявления
+
+
+
+`Функция ПриостановитьРекламноеОбъявление(Знач IDКабинета, Знач IDОбъявления, Знач Параметры = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | IDКабинета | --cabinet | Строка,Число | ID рекламного кабинета |
+  | IDОбъявления | --adv | Строка,Число | ID объявления |
+  | Параметры | --auth | Структура из Строка | JSON авторизации или путь к .json |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от VK
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Параметры     = ПолучитьПараметрыВК();
+
+    IDКабинета    = "1607951446";
+    IDОбъявления  = "0";
+
+    Результат    = OPI_VK.ПриостановитьРекламноеОбъявление(IDКабинета, IDОбъявления, Параметры);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vk ПриостановитьРекламноеОбъявление --adv 0 \
+              --cabinet "1607951446" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ПриостановитьРекламноеОбъявление ^
+              --adv 0 ^
+              --cabinet "1607951446" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "error": {
+  "error_code": 100,
+  "error_msg": "One of the parameters specified was missing or invalid: data[0][ad_id] is invalid",
+  "request_params": [
+   {
+    "key": "from_group",
+    "value": "1"
+   },
+   {
+    "key": "owner_id",
+    "value": "-218861756"
+   },
+   {
+    "key": "v",
+    "value": "5.131"
+   },
+   {
+    "key": "app_id",
+    "value": "51694790"
+   },
+   {
+    "key": "group_id",
+    "value": "218861756"
+   },
+   {
+    "key": "account_id",
+    "value": "1607951446"
+   },
+   {
+    "key": "data",
+    "value": "[\r\n {\r\n  \"ad_id\": \"0\",\r\n  \"status\": 0\r\n }\r\n]"
+   },
+   {
+    "key": "method",
+    "value": "ads.updateAds"
+   },
+   {
+    "key": "oauth",
+    "value": "1"
+   }
+  ]
+ }
+}
+```

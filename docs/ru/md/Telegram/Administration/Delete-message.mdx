@@ -1,0 +1,67 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 7
+---
+
+# Удалить сообщение
+ Удаляет указанное сообщение из чата или канала
+
+
+
+`Функция УдалитьСообщение(Знач Токен, Знач IDЧата, Знач IDСообщения) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | IDЧата | --chat | Строка, Число | ID целевого чата |
+  | IDСообщения | --message | Строка, Число | ID удаляемого сообщения |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [deleteMessage](https://core.telegram.org/bots/api#deletemessage)
+:::
+<br/>
+
+
+```bsl title="Пример кода"
+    Токен        = "6129457865:AAFyzNYOAFbu...";
+    IDЧата       = "@testsichee";
+    IDСообщения  = "9761";
+
+    Результат = OPI_Telegram.УдалитьСообщение(Токен, IDЧата, IDСообщения);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram УдалитьСообщение --token "***" \
+              --chat "@testsichee" \
+              --message "9781"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram УдалитьСообщение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --message "9781"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": true
+}
+```
