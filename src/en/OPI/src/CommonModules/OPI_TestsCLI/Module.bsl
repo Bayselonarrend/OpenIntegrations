@@ -104,6 +104,7 @@ Procedure CLI_TelegramAPI_SendTextMessage() Export
     OPI_TestDataRetrieval.ParameterToCollection("String"            , TestParameters);
 
     CLI_Telegram_SendTextMessage(TestParameters);
+    CLI_Telegram_FormKeyboardFromButtonArray(TestParameters);
 
 EndProcedure
 
@@ -1566,6 +1567,23 @@ Procedure CLI_Telegram_SendTextMessage(FunctionParameters)
     OPI_TestDataRetrieval.Check_TelegramOk(Result);
 
     OPI_Tools.Pause(5);
+
+EndProcedure
+
+Procedure CLI_Telegram_FormKeyboardFromButtonArray(FunctionParameters)
+
+    ButtonArray = New Array;
+    ButtonArray.Add("Button1");
+    ButtonArray.Add("Button2");
+    ButtonArray.Add("Button3");
+
+    Options = New Structure;
+    Options.Insert("buttons", ButtonArray);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "FormKeyboardFromButtonArray", "Telegram");
+    OPI_TestDataRetrieval.Check_Map(Result);
 
 EndProcedure
 
