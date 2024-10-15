@@ -1403,6 +1403,113 @@ EndProcedure
 
 #EndRegion
 
+#Region OzonSeller
+
+Procedure CLI_OzonAPI_AttributesAndFeatures() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+
+    CLI_Ozon_GetCategoriesAndProductTypesTree(TestParameters);
+    CLI_Ozon_GetCategoryAttributes(TestParameters);
+    CLI_Ozon_GetAttributeValues(TestParameters);
+    CLI_Ozon_SearchAttributeValue(TestParameters);
+    CLI_Ozon_GetProductsRequestsLimits(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OzonAPI_UploadingAndUpdatingProducts() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture2"      , TestParameters);
+
+    CLI_Ozon_GetProductStructure(TestParameters);
+    CLI_Ozon_CreateUpdateProducts(TestParameters);
+    CLI_Ozon_GetProductCreationStatus(TestParameters);
+    CLI_Ozon_AddProductVideo(TestParameters);
+    CLI_Ozon_AddProductVideoCover(TestParameters);
+    CLI_Ozon_CompleteComplexAttribute(TestParameters);
+    CLI_Ozon_CreateProductByOzonID(TestParameters);
+    CLI_Ozon_GetSimplifiedProductStructure(TestParameters);
+    CLI_Ozon_GetAttributesUpdateStructure(TestParameters);
+    CLI_Ozon_UpdateProductsAttributes(TestParameters);
+    CLI_Ozon_GetProductsFilterStructure(TestParameters);
+    CLI_Ozon_GetProductList(TestParameters);
+    CLI_Ozon_GetProductsAttributesData(TestParameters);
+    CLI_Ozon_GetProductsInformation(TestParameters);
+    CLI_Ozon_GetProductsContentRating(TestParameters);
+    CLI_Ozon_GetProductDescription(TestParameters);
+    CLI_Ozon_UpdateProductImages(TestParameters);
+    CLI_Ozon_CheckProductsImagesUpload(TestParameters);
+    CLI_Ozon_UpdateProductsArticles(TestParameters);
+    CLI_Ozon_ArchiveProducts(TestParameters);
+    CLI_Ozon_UnarchiveProducts(TestParameters);
+    CLI_Ozon_UploadProductActivationCodes(TestParameters);
+    CLI_Ozon_GetCodesUploadStatus(TestParameters);
+    CLI_Ozon_GetProductSubscribersCount(TestParameters);
+    CLI_Ozon_GetRelatedSKUs(TestParameters);
+    CLI_Ozon_DeleteProductsWithoutSKU(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OzonAPI_Barcodes() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
+
+    CLI_Ozon_BindBarcodes(TestParameters);
+    CLI_Ozon_CreateBarcodes(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OzonAPI_PricesAndStocks() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
+
+    CLI_Ozon_GetProductsStocks(TestParameters);
+    CLI_Ozon_UpdateProductsPrices(TestParameters);
+    CLI_Ozon_UpdateProductsStocks(TestParameters);
+    CLI_Ozon_GetProductsPrices(TestParameters);
+    CLI_Ozon_GetDiscountInformation(TestParameters);
+    CLI_Ozon_SetProductDiscount(TestParameters);
+    CLI_Ozon_GetProductStocksStructure(TestParameters);
+    CLI_Ozon_GetProductPriceStructure(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OzonAPI_WarehousesManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+
+    CLI_Ozon_GetWarehousesList(TestParameters);
+
+EndProcedure
+
+Procedure CLI_OzonAPI_PromotionsManagment() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ClientID" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
+
+    CLI_Ozon_GetPromotionsList(TestParameters);
+    CLI_Ozon_GetCurrentPromoProducts(TestParameters);
+    CLI_Ozon_GetAvailablePromoProducts(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -8441,6 +8548,1054 @@ Procedure CLI_VKTeams_SetChatRules(FunctionParameters)
 
 EndProcedure
 
+
+#EndRegion
+
+#Region Ozon
+
+Procedure CLI_Ozon_GetCategoriesAndProductTypesTree(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Options = New Structure;
+    Options.Insert("clientid", ClientID);
+    Options.Insert("apikey"  , APIKey);
+    Options.Insert("lang"    , "EN");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCategoriesAndProductTypesTree", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCategoriesAndProductTypesTree (EN)", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonCategoryList(Result); // SKIP
+
+    Options = New Structure;
+    Options.Insert("clientid", ClientID);
+    Options.Insert("apikey"  , APIKey);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCategoriesAndProductTypesTree", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCategoriesAndProductTypesTree", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonCategoryList(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetCategoryAttributes(FunctionParameters)
+
+    ClientID   = FunctionParameters["Ozon_ClientID"];
+    APIKey     = FunctionParameters["Ozon_ApiKey"];
+    CategoryID = 17029016;
+    TypeID     = 970778135;
+
+    Options = New Structure;
+    Options.Insert("clientid"  , ClientID);
+    Options.Insert("apikey"    , APIKey);
+    Options.Insert("categoryid", CategoryID);
+    Options.Insert("typeid"    , TypeID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCategoryAttributes", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCategoryAttributes", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonAttributesList(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetAttributeValues(FunctionParameters)
+
+    ClientID    = FunctionParameters["Ozon_ClientID"];
+    APIKey      = FunctionParameters["Ozon_ApiKey"];
+    CategoryID  = 17054869;
+    TypeID      = 97311;
+    AttributeID = 85;
+
+    Options = New Structure;
+    Options.Insert("clientid"   , ClientID);
+    Options.Insert("apikey"     , APIKey);
+    Options.Insert("categoryid" , CategoryID);
+    Options.Insert("typeid"     , TypeID);
+    Options.Insert("attributeid", AttributeID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetAttributeValues", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAttributeValues", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonListOfAttributesValues(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_SearchAttributeValue(FunctionParameters)
+
+    ClientID    = FunctionParameters["Ozon_ClientID"];
+    APIKey      = FunctionParameters["Ozon_ApiKey"];
+    CategoryID  = 17054869;
+    TypeID      = 97311;
+    AttributeID = 85;
+    Value       = "Sunshine";
+
+    Options = New Structure;
+    Options.Insert("clientid"   , ClientID);
+    Options.Insert("apikey"     , APIKey);
+    Options.Insert("categoryid" , CategoryID);
+    Options.Insert("typeid"     , TypeID);
+    Options.Insert("attributeid", AttributeID);
+    Options.Insert("value"      , Value);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "SearchAttributeValue", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SearchAttributeValue", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonListOfAttributesValues(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductStructure", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_CreateUpdateProducts(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Image1   = FunctionParameters["Picture"];
+    Image2   = FunctionParameters["Picture2"];
+    Video    = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
+
+    ImageArray = New Array;
+    ImageArray.Add(Image1);
+    ImageArray.Add(Image2);
+
+    // Common fields
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210609");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1300");
+    ItemStructure.Insert("old_price"              , "1300");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+    ItemStructure.Insert("images"                 , ImageArray);
+
+    // Video
+
+    Options = New Structure;
+    Options.Insert("item"  , ItemStructure);
+    Options.Insert("url"   , Video);
+    Options.Insert("title" , "video1");
+
+    ItemStructure = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "AddProductVideo", Options);
+
+    // Attributes individualized for different categories
+
+    CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
+    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
+    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576 , "gray");
+    CategoryAttribute4 = New Structure("dictionary_value_id,value", 95911 , "Protective film set for X3 NFC. Dark cotton");
+
+    CategoryAttribute5 = New Structure("value", "Protective film set for X3 NFC. Dark cotton");
+
+
+    Options = New Structure;
+    Options.Insert("object"     , ItemStructure);
+    Options.Insert("attributeid", 5076);
+    Options.Insert("complexid"  , 0);
+    Options.Insert("values"     , CategoryAttribute1);
+
+    ItemStructure = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CompleteComplexAttribute", Options);
+
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 85   , 0, CategoryAttribute2);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 10096, 0, CategoryAttribute3);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 8229 , 0, CategoryAttribute4);
+    OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048 , 0, CategoryAttribute5);
+
+    Options = New Structure;
+    Options.Insert("clientid", ClientID);
+    Options.Insert("apikey"  , APIKey);
+    Options.Insert("items"   , ItemStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateUpdateProducts", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateUpdateProducts", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonUploadTask(Result);
+
+    TaskID = Result["result"]["task_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_TaskID", TaskID);
+    FunctionParameters.Insert("Ozon_TaskID", TaskID);
+
+    OPI_Tools.Pause(120);
+
+EndProcedure
+
+Procedure CLI_Ozon_AddProductVideo(FunctionParameters)
+
+    Video = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1000");
+    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+
+    // Video
+
+    Options = New Structure;
+    Options.Insert("item"  , ItemStructure);
+    Options.Insert("url"   , Video);
+    Options.Insert("title" , "video1");
+
+    ItemStructure = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "AddProductVideo", Options);
+
+    OPI_TestDataRetrieval.WriteLog(ItemStructure, "AddProductVideo", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(ItemStructure);
+
+EndProcedure
+
+Procedure CLI_Ozon_AddProductVideoCover(FunctionParameters)
+
+    Video = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1000");
+    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+
+    // Videocover
+
+    Options = New Structure;
+    Options.Insert("item" , ItemStructure);
+    Options.Insert("url"  , Video);
+
+    ItemStructure = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "AddProductVideoCover", Options);
+
+    OPI_TestDataRetrieval.WriteLog(ItemStructure, "AddProductVideoCover", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(ItemStructure);
+
+EndProcedure
+
+Procedure CLI_Ozon_CompleteComplexAttribute(FunctionParameters)
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("description_category_id", 17028922);
+    ItemStructure.Insert("name"                   , "Protective film set for X3 NFC. Dark cotton");
+    ItemStructure.Insert("offer_id"               , "143210608");
+    ItemStructure.Insert("barcode"                , "112772873170");
+    ItemStructure.Insert("price"                  , "1000");
+    ItemStructure.Insert("old_price"              , "1100");
+    ItemStructure.Insert("vat"                    , "0.1");
+    ItemStructure.Insert("height"                 , 250);
+    ItemStructure.Insert("width"                  , 150);
+    ItemStructure.Insert("depth"                  , 10);
+    ItemStructure.Insert("dimension_unit"         , "mm");
+    ItemStructure.Insert("weight"                 , 100);
+    ItemStructure.Insert("weight_unit"            , "g");
+
+    CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
+
+    Options = New Structure;
+    Options.Insert("object"     , ItemStructure);
+    Options.Insert("attributeid", 5076);
+    Options.Insert("complexid"  , 0);
+    Options.Insert("values"     , CategoryAttribute1);
+
+    ItemStructure = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CompleteComplexAttribute", Options);
+
+    OPI_TestDataRetrieval.WriteLog(ItemStructure, "CompleteComplexAttribute", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(ItemStructure);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductCreationStatus(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    TaskID   = FunctionParameters["Ozon_TaskID"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("taskid"   , TaskID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus", "Ozon");
+
+    WHile Result["result"]["items"][0]["status"] = "pending" Do
+
+        OPI_Tools.Pause(30);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
+
+    EndDo;
+
+    OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_CreateProductByOzonID(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    ItemStructure = New Structure;
+    ItemStructure.Insert("name"         , "New imported product");
+    ItemStructure.Insert("sku"          , 1626044001);
+    ItemStructure.Insert("offer_id"     , "91132");
+    ItemStructure.Insert("price"        , "1100");
+    ItemStructure.Insert("old_price"    , "1100");
+    ItemStructure.Insert("vat"          , "0.1");
+    ItemStructure.Insert("currency_code", "RUB");
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("items"    , ItemStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateProductByOzonID", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateProductByOzonID", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonUploadTask(Result);
+
+    TaskID = Result["result"]["task_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_SkuTaskID", TaskID);
+    FunctionParameters.Insert("Ozon_SkuTaskID", TaskID);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("taskid"   , TaskID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
+
+    WHile Result["result"]["items"][0]["status"] = "pending" Do
+
+        OPI_Tools.Pause(30);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
+
+    EndDo;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus (SKU)", "Ozon");
+
+    OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetSimplifiedProductStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetSimplifiedProductStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetSimplifiedProductStructure", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetAttributesUpdateStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetAttributesUpdateStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAttributesUpdateStructure", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_UpdateProductsAttributes(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    AttributesStructure = New Structure("offer_id", "143210609");
+
+    CategoryAttribute1 = New Structure("dictionary_value_id,value", 971082156, "Speaker stand");
+    CategoryAttribute2 = New Structure("dictionary_value_id,value", 5060050 , "Samsung");
+    CategoryAttribute3 = New Structure("dictionary_value_id,value", 61576 , "red");
+
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 5076 , 0, CategoryAttribute1);
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 85   , 0, CategoryAttribute2);
+    OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 10096, 0, CategoryAttribute3);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("items"    , AttributesStructure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsAttributes", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsAttributes", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonUploadTask(Result, False);
+
+    TaskID = Result["task_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_AttUpdateTaskID", TaskID);
+    FunctionParameters.Insert("Ozon_AttUpdateTaskID", TaskID);
+
+    Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    WHile Result["result"]["items"][0]["status"] = "pending" Do
+
+        OPI_Tools.Pause(30);
+        Result = OPI_Ozon.GetProductCreationStatus(ClientID, APIKey, TaskID);
+
+    EndDo;
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductCreationStatus (att.)", "Ozon");
+
+    OPI_TestDataRetrieval.Check_OzonNewProducts(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductsFilterStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty", False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsFilterStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsFilterStructure", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    IDArray = New Array;
+    IDArray.Add("143210609");
+
+    Filter = New Structure;
+    Filter.Insert("visibility" , "ALL");
+    Filter.Insert("offer_id"   , IDArray);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("filter"   , Filter);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductList", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonObjectsArray(Result);
+
+    ProductID = Result["result"]["items"][0]["product_id"];
+    OPI_TestDataRetrieval.WriteParameter("Ozon_ProductID", ProductID);
+    FunctionParameters.Insert("Ozon_ProductID", ProductID);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductsAttributesData(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    IDArray = New Array;
+    IDArray.Add("143210609");
+
+    Filter = New Structure;
+    Filter.Insert("visibility", "ALL");
+    Filter.Insert("offer_id"  , IDArray);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("filter"   , Filter);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsAttributesData", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsAttributesData", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonArray(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductsContentRating(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("sku"      , SKU);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsContentRating", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsContentRating", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonRatingArray(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductsInformation(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Article  = "143210609";
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("offerid"  , Article);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsInformation", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonProducts(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductDescription(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    Article  = "143210609";
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("offerid"  , Article);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductDescription", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductDescription", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonProduct(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductsRequestsLimits(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsRequestsLimits", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsRequestsLimits", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonLimits(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_UpdateProductImages(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Image1 = FunctionParameters["Picture"];
+    Image2 = FunctionParameters["Picture2"];
+
+    MarketingColor = "GREEN";
+
+    ImagesArray = New Array;
+    ImagesArray.Add(Image1);
+    ImagesArray.Add(Image2);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("productid", ProductID);
+    Options.Insert("images"   , ImagesArray);
+    Options.Insert("color"    , MarketingColor);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductImages", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductImages", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonPictures(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_CheckProductsImagesUpload(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("products" , ProductID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CheckProductsImagesUpload", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CheckProductsImagesUpload", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonPictures(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_UpdateProductsArticles(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    ArticlesMap = New Map;
+    ArticlesMap.Insert("143210609", "143210612");
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("offers"   , ArticlesMap);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsArticles", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsArticles", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
+
+    ArticlesMap = New Map;
+    ArticlesMap.Insert("143210612", "143210609");
+
+    Result = OPI_Ozon.UpdateProductsArticles(ClientID, APIKey, ArticlesMap);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsArticles (reverse)", "Ozon");
+
+    OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_ArchiveProducts(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("products" , ProductID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "ArchiveProducts", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_UnarchiveProducts(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("products" , ProductID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UnarchiveProducts", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UnarchiveProducts", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonTrue(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_DeleteProductsWithoutSKU(FunctionParameters)
+
+    OPI_Tools.Pause(30);
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Result = OPI_Ozon.ArchiveProducts(ClientID, APIKey, ProductID);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "ArchiveProducts (for deleting)", "Ozon"); // SKIP
+    OPI_Tools.Pause(15); // SKIP
+
+    Article = "143210609";
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("articles" , Article);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "DeleteProductsWithoutSKU", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "DeleteProductsWithoutSKU", "Ozon");
+
+EndProcedure
+
+Procedure CLI_Ozon_UploadProductActivationCodes(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Codes = New Array;
+    Codes.Add("11111111");
+    Codes.Add("22222222");
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("productid", ProductID);
+    Options.Insert("codes"    , Codes);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UploadProductActivationCodes", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UploadProductActivationCodes", "Ozon");
+
+    TaskID = 1;
+    OPI_TestDataRetrieval.WriteParameter("Ozon_CodesTaskID", TaskID);
+    FunctionParameters.Insert("Ozon_CodesTaskID", TaskID);
+
+    OPI_Tools.Pause(120);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetCodesUploadStatus(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    TaskID   = FunctionParameters["Ozon_CodesTaskID"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("taskid"   , TaskID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCodesUploadStatus", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCodesUploadStatus", "Ozon");
+
+    If ValueIsFilled(Result["result"]) Then
+        WHile Result["result"]["status"] = "pending" Do
+
+            OPI_Tools.Pause(30);
+            Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCodesUploadStatus", Options);
+
+        EndDo;
+    EndIf;
+
+    //OPI_TestDataRetrieval.Check_OzonCodesUpload(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductSubscribersCount(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("sku"      , 1626044001);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductSubscribersCount", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductSubscribersCount", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonSubscribers(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetRelatedSKUs(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("sku"      , 1626044001);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetRelatedSKUs", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetRelatedSKUs", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonSKU(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_BindBarcodes(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    BarcodesMap = New Map;
+    BarcodesMap.Insert(1626044001, "112233");
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("barcodes" , BarcodesMap);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "BindBarcodes", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "BindBarcodes", "Ozon");
+
+EndProcedure
+
+Procedure CLI_Ozon_CreateBarcodes(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Options = New Structure;
+    Options.Insert("clientid"  , ClientID);
+    Options.Insert("apikey"    , APIKey);
+    Options.Insert("productids", ProductID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateBarcodes", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "CreateBarcodes", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonNoErrors(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetWarehousesList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetWarehousesList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetWarehousesList", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonArray(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductsStocks(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    IDArray = New Array;
+    IDArray.Add("143210608");
+
+    Filter = New Structure;
+    Filter.Insert("visibility" , "ALL");
+    Filter.Insert("offer_id"   , IDArray);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("filter"   , Filter);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsStocks", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsStocks", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonObjectsArray(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_UpdateProductsPrices(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Prices = New Structure;
+    Prices.Insert("auto_action_enabled"   , "DISABLED");
+    Prices.Insert("currency_code"         , "RUB");
+    Prices.Insert("min_price"             , "1300");
+    Prices.Insert("offer_id"              , "143210610");
+    Prices.Insert("old_price"             , "1400");
+    Prices.Insert("price"                 , "1300");
+    Prices.Insert("price_strategy_enabled", "DISABLED");
+    Prices.Insert("product_id"            , ProductID);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("prices"   , Prices);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsPrices", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsPrices", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonUpdatedArray(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_UpdateProductsStocks(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = FunctionParameters["Ozon_ProductID"];
+
+    Stocks = New Structure;
+    Stocks.Insert("offer_id"    , "143210610");
+    Stocks.Insert("product_id"  , ProductID);
+    Stocks.Insert("stock"       , 20);
+    Stocks.Insert("warehouse_id", 1);
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("stocks"   , Stocks);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsStocks", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "UpdateProductsStocks", "Ozon");
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductsPrices(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("filter"   , New Structure);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsPrices", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductsPrices", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonObjectsArray(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetDiscountInformation(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    SKU      = 1626044001;
+
+    Options = New Structure;
+    Options.Insert("clientid", ClientID);
+    Options.Insert("apikey"  , APIKey);
+    Options.Insert("sku"     , SKU);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetDiscountInformation", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetDiscountInformation", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonArray(Result, "items");
+
+EndProcedure
+
+Procedure CLI_Ozon_SetProductDiscount(FunctionParameters)
+
+    ClientID  = FunctionParameters["Ozon_ClientID"];
+    APIKey    = FunctionParameters["Ozon_ApiKey"];
+    ProductID = 1156646653;
+
+    Discount = 10;
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("productid", ProductID);
+    Options.Insert("discount" , Discount);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "SetProductDiscount", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "SetProductDiscount", "Ozon");
+
+EndProcedure
+
+Procedure CLI_Ozon_GetPromotionsList(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetPromotionsList", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetPromotionsList", "Ozon");
+    OPI_TestDataRetrieval.Check_OzonArray(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetAvailablePromoProducts(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    PromoID  = 111111111;
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("actionid" , PromoID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetAvailablePromoProducts", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetAvailablePromoProducts", "Ozon");
+
+EndProcedure
+
+Procedure CLI_Ozon_GetCurrentPromoProducts(FunctionParameters)
+
+    ClientID = FunctionParameters["Ozon_ClientID"];
+    APIKey   = FunctionParameters["Ozon_ApiKey"];
+    PromoID  = 111111111;
+
+    Options = New Structure;
+    Options.Insert("clientid" , ClientID);
+    Options.Insert("apikey"   , APIKey);
+    Options.Insert("actionid" , PromoID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCurrentPromoProducts", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetCurrentPromoProducts", "Ozon");
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductStocksStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductStocksStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductStocksStructure", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
+
+Procedure CLI_Ozon_GetProductPriceStructure(FunctionParameters)
+
+    Options = New Structure;
+    Options.Insert("empty" , False);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductPriceStructure", Options);
+
+    OPI_TestDataRetrieval.WriteLog(Result, "GetProductPriceStructure", "Ozon");
+    OPI_TestDataRetrieval.Check_Map(Result);
+
+EndProcedure
 
 #EndRegion
 
