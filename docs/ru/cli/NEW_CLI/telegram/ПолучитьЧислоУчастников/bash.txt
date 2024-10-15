@@ -1,0 +1,2 @@
+oint telegram ПолучитьЧислоУчастников --token "***" \
+  --chat "@testsichee"

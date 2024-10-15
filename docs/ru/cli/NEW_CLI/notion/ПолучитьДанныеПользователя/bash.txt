@@ -1,0 +1,2 @@
+oint notion ПолучитьДанныеПользователя --token "***" \
+  --user "ed71865a-9891-46bc-86cd-a92aa499cfdb"

@@ -1,0 +1,2 @@
+oint slack ЗакрытьДиалог --token "***" \
+  --conv "D06UAKK1C6R"

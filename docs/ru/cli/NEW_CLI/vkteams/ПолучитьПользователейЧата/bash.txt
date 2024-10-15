@@ -1,0 +1,2 @@
+oint vkteams ПолучитьПользователейЧата --token "***" \
+  --chatid "AoLI0egLWBSLR1Ngn2w"

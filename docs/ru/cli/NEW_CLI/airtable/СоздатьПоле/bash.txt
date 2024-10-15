@@ -1,0 +1,5 @@
+oint airtable СоздатьПоле --token "***" \
+  --base "app0r5m50QN7nWAAv" \
+  --table "tbl99eHW7uVpn8cdR" \
+  --title "bf234b4a-f391-4950-8fd0-90e8817e19e4" \
+  --fielddata "{'name':'bf234b4a-f391-4950-8fd0-90e8817e19e4','type':'number','options':{'precision':0}}"

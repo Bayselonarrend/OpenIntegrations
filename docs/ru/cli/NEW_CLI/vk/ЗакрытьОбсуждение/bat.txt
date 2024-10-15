@@ -1,0 +1,4 @@
+oint vk ЗакрытьОбсуждение ^
+  --topic 52605638 ^
+  --remove false ^
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

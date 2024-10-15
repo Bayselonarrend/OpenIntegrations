@@ -1,0 +1,6 @@
+oint viber ОтправитьКонтакт ^
+  --token "***" ^
+  --name "Петр Петров" ^
+  --phone "+123456789" ^
+  --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+  --ischannel true

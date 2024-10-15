@@ -1,0 +1,4 @@
+oint viber ОтправитьСсылку --token "***" \
+  --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+  --user "tMNGhftyUPrB3r1lD+bT4g==" \
+  --ischannel true

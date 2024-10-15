@@ -1,0 +1,2 @@
+oint vkteams СформироватьКнопкуДействия --text "Кнопка2" \
+  --url "https://openintegrations.dev"

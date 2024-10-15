@@ -1,0 +1,2 @@
+oint slack ПолучитьСписокПользователейКанала --token "***" \
+  --channel "C07SJFNT9SL"
