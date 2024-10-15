@@ -156,7 +156,7 @@ window.yaContextCb.push(() => {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.github,
-		additionalLanguages: ['powershell','json','bsl','batch','sh']
+		additionalLanguages: ['powershell','json','bsl','batch','bash']
       },
     }),
 };
