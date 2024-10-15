@@ -24,7 +24,10 @@ import TabItem from '@theme/TabItem';
 
 <br/>
 
-
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
 
 
 ```bsl title="Пример кода"
@@ -47,7 +50,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint yadisk ЗагрузитьФайл \
+                    oint yadisk ЗагрузитьФайл \
               --token "***" \
               --path "/3c1ffba7-1ec4-4283-953f-9ce11507970d.png" \
               --file "C:\Users\Administrator\AppData\Local\Temp\zye42ffmvuj.png" \
@@ -57,7 +60,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint yadisk ЗагрузитьФайл ^
+                    oint yadisk ЗагрузитьФайл ^
               --token "***" ^
               --path "/3c1ffba7-1ec4-4283-953f-9ce11507970d.png" ^
               --file "C:\Users\Administrator\AppData\Local\Temp\zye42ffmvuj.png" ^

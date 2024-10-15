@@ -25,7 +25,10 @@ import TabItem from '@theme/TabItem';
 
 <br/>
 
-
+:::tip
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
+:::
+<br/>
 
 
 ```bsl title="Пример кода"
@@ -46,7 +49,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint slack ЗагрузитьФайл \
+                    oint slack ЗагрузитьФайл \
               --token "***" \
               --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
               --filename "megadoc.docx" \
@@ -57,7 +60,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint slack ЗагрузитьФайл ^
+                    oint slack ЗагрузитьФайл ^
               --token "***" ^
               --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" ^
               --filename "megadoc.docx" ^
