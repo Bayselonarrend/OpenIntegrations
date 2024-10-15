@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function GetUpdates(Val Token, Val Timeout = 0, Val Offset = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | Timeout | --timeout | String, Number | Waiting time for new events |
-  | Offset | --offset | String, Number | Offset in the list of received messages |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | Timeout | --timeout | String, Number | &#x2716; | Waiting time for new events |
+  | Offset | --offset | String, Number | &#x2716; | Offset in the list of received messages |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram

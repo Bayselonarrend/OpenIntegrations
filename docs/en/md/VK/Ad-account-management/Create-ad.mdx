@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateAd(Val CampaignNumber, Val DailyLimit, Val CategoryNumber, Val PostID, Val AccountID, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | CampaignNumber | --campaign | String, Number | Advertising campaign ID |
-  | DailyLimit | --limit | String, Number | Daily limit in rubles |
-  | CategoryNumber | --category | String, Number | Advertising category number |
-  | PostID | --post | String, Number | ID of the post used for advertising |
-  | AccountID | --cabinet | String, Number | Advertising account ID |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | CampaignNumber | --campaign | String, Number | &#x2714; | Advertising campaign ID |
+  | DailyLimit | --limit | String, Number | &#x2714; | Daily limit in rubles |
+  | CategoryNumber | --category | String, Number | &#x2714; | Advertising category number |
+  | PostID | --post | String, Number | &#x2714; | ID of the post used for advertising |
+  | AccountID | --cabinet | String, Number | &#x2714; | Advertising account ID |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function UpdateOrder(Val Token, Val UUID, Val OrderDescription, Val TestAPI = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Auth token |
-  | UUID | --uuid | String | Order UUID for updating |
-  | OrderDescription | --order | Structure of KeyAndValue | Set of changing order fields |
-  | TestAPI | --testapi | Boolean | Flag to use test API for requests |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | UUID | --uuid | String | &#x2714; | Order UUID for updating |
+  | OrderDescription | --order | Structure of KeyAndValue | &#x2714; | Set of changing order fields |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from CDEK

@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateStory(Val Image, Val URL = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Image | --picture | String, BinaryData | Story background |
-  | URL | --url | String | URL for button under the story |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Image | --picture | String, BinaryData | &#x2714; | Story background |
+  | URL | --url | String | &#x2716; | URL for button under the story |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

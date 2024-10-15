@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function AddUsersToFile(Val Token, Val FileID, Val EmailAddresses, Val ViewOnly = True) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | FileID | --fileid | String | ID of the file to be accessed |
-  | EmailAddresses | --emails | String, Array of String | List of email addresses of users being added |
-  | ViewOnly | --readonly | Boolean | Prohibits file editing for the external user |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | FileID | --fileid | String | &#x2714; | ID of the file to be accessed |
+  | EmailAddresses | --emails | String, Array of String | &#x2714; | List of email addresses of users being added |
+  | ViewOnly | --readonly | Boolean | &#x2716; | Prohibits file editing for the external user |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox

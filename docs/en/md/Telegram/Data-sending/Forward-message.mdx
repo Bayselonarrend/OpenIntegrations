@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function ForwardMessage(Val Token, Val OriginalID, Val FromID, Val ToID) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | OriginalID | --message | String, Number | Original message ID |
-  | FromID | --from | String, Number | Chat ID of the original message |
-  | ToID | --to | String, Number | Target chat ID or ChatID*TopicID |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | OriginalID | --message | String, Number | &#x2714; | Original message ID |
+  | FromID | --from | String, Number | &#x2714; | Chat ID of the original message |
+  | ToID | --to | String, Number | &#x2714; | Target chat ID or ChatID*TopicID |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram

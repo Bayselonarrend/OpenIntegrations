@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function SendExternalFile(Val Token, Val FileID, Val ChannelArray) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | FileID | --fileid | String | File identifier |
-  | ChannelArray | --channels | Array Of String | Array of channels for sending |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | FileID | --fileid | String | &#x2714; | File identifier |
+  | ChannelArray | --channels | Array Of String | &#x2714; | Array of channels for sending |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Slack

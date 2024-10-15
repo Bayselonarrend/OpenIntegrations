@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function WriteMessage(Val Text, Val UserID, Val Communitytoken, Val Keyboard = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Text | --text | String | Message text |
-  | UserID | --user | String | Recipient user ID |
-  | Communitytoken | --ct | String | Community chat bot token, which can be obtained in the settings |
-  | Keyboard | --keyboard | String | JSON keyboard. See FormKeyboard |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2714; | Message text |
+  | UserID | --user | String | &#x2714; | Recipient user ID |
+  | Communitytoken | --ct | String | &#x2714; | Community chat bot token, which can be obtained in the settings |
+  | Keyboard | --keyboard | String | &#x2716; | JSON keyboard. See FormKeyboard |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

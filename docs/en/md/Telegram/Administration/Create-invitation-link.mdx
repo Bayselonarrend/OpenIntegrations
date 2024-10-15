@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateInvitationLink(Val Token, Val ChatID, Val Title = "", Val ExpirationDate = "", Val UserLimit = 0) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
-  | Title | --title | String | Invitation title |
-  | ExpirationDate | --expire | Date | Link expiration date (permanent if not specified) |
-  | UserLimit | --limit | Number | User limit (infinite if not specified) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chat | String, Number | &#x2714; | Target chat ID or ChatID*TopicID |
+  | Title | --title | String | &#x2716; | Invitation title |
+  | ExpirationDate | --expire | Date | &#x2716; | Link expiration date (permanent if not specified) |
+  | UserLimit | --limit | Number | &#x2716; | User limit (infinite if not specified) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram

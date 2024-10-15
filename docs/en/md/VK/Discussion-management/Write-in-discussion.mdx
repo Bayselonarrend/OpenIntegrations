@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function WriteInDiscussion(Val DiscussionID, Val Text, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | DiscussionID | --topic | String, Number | Discussion ID |
-  | Text | --text | String | Message text |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | DiscussionID | --topic | String, Number | &#x2714; | Discussion ID |
+  | Text | --text | String | &#x2714; | Message text |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

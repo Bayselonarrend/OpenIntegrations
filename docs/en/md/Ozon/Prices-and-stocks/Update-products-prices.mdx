@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function UpdateProductsPrices(Val ClientID, Val APIKey, Val Prices) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | Prices | --prices | Array of Structure | Products prices. See GetProductPriceStructure |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | Prices | --prices | Array of Structure | &#x2714; | Products prices. See GetProductPriceStructure |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API

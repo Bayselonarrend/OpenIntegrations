@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function SendLocation(Val Token, Val ChatID, Val Latitude, Val Longitude, Val Keyboard = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
-  | Latitude | --lat | String, Number | Geographic latitude |
-  | Longitude | --long | String, Number | Geographic longitude |
-  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chat | String, Number | &#x2714; | Target chat ID or ChatID*TopicID |
+  | Latitude | --lat | String, Number | &#x2714; | Geographic latitude |
+  | Longitude | --long | String, Number | &#x2714; | Geographic longitude |
+  | Keyboard | --keyboard | String | &#x2716; | Keyboard. See FormKeyboardFromButtonArray |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram

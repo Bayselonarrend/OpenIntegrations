@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function RenameFolder(Val URL, Val FolderID, Val Name, Val Token = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
-  | FolderID | --folderid | String, Number | Folder identifier |
-  | Name | --title | String | New folders name |
-  | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | FolderID | --folderid | String, Number | &#x2714; | Folder identifier |
+  | Name | --title | String | &#x2714; | New folders name |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

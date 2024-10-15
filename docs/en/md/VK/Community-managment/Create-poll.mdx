@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function CreatePoll(Val Question, Val AnswersArray, Val Image = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Question | --question | String | Poll question |
-  | AnswersArray | --options | Array of String | Array of answer options |
-  | Image | --picture | String, BinaryData | Poll image |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Question | --question | String | &#x2714; | Poll question |
+  | AnswersArray | --options | Array of String | &#x2714; | Array of answer options |
+  | Image | --picture | String, BinaryData | &#x2716; | Poll image |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK
