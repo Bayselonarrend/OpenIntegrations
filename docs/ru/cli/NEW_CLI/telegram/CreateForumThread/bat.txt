@@ -1,0 +1,5 @@
+oint telegram CreateForumThread ^
+ --token "***" ^
+ --forum "-1001971186208" ^
+ --icon "5357419403325481346" ^
+ --title "TestTopic 9f800914-828e-4257-a474-2c950aa491b7"

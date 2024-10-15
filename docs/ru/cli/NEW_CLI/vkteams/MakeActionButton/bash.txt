@@ -1,0 +1,3 @@
+oint vkteams MakeActionButton \
+ --text "Button2" \
+ --url "https://openintegrations.dev"

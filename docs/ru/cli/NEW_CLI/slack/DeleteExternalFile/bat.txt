@@ -1,0 +1,3 @@
+oint slack DeleteExternalFile ^
+ --token "***" ^
+ --fileid "F07SNPM2N9W"

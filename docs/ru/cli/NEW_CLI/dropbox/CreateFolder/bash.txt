@@ -1,0 +1,3 @@
+oint dropbox CreateFolder \
+ --token "***" \
+ --path "/New catalog"

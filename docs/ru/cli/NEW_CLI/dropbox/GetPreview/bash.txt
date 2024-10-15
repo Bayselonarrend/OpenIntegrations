@@ -1,0 +1,3 @@
+oint dropbox GetPreview \
+ --token "***" \
+ --path "/New/mydoc.docx"
