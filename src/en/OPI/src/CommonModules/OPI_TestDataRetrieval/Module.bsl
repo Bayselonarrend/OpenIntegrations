@@ -1922,7 +1922,7 @@ EndFunction
 
 Function FormOption(Val Value, Val Name, Val Embedded = False)
 
-    SecretsArray = New ValueList();
+    SecretsArray = New Array();
     SecretsArray.Add("token");
     SecretsArray.Add("key");
     SecretsArray.Add("secret");
