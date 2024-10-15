@@ -23,14 +23,9 @@ sidebar_position: @Счетчик
 ```bsl title="Code example"
 @Вызов1С
 ```
-
-
-
-```sh title="CLI command example"
-    
+ 
 @ВызовCLI
 
-```
 
 ```json title="Result"
 @Результат
