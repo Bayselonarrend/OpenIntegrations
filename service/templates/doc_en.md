@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 @Примечание
 
 
-```bsl title="Code example"
+```bsl title="1C:Enterprise/OneScript code example"
 @Вызов1С
 ```
  
