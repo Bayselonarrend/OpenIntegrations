@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Base | --base | String | Base identifier |
-  | Table | --table | String | Table identifier |
-  | Name | --title | String | New name |
-  | Description | --description | String | New description |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Base | --base | String | &#x2714; | Base identifier |
+  | Table | --table | String | &#x2714; | Table identifier |
+  | Name | --title | String | &#x2716; | New name |
+  | Description | --description | String | &#x2716; | New description |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Airtable

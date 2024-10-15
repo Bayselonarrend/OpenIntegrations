@@ -12,15 +12,15 @@ import TabItem from '@theme/TabItem';
 
 `Function UpdatePost(Val URL, Val PostID, Val Text, Val Visibility = "UA", Val Files = "", Val Title = "", Val Token = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
-  | PostID | --postid | String, Number | Post ID |
-  | Text | --text | String | Text of post |
-  | Visibility | --vision | String | Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group |
-  | Files | --files | Map Of KeyAndValue | Key > file name, value > path or binary data |
-  | Title | --title | String | Post title |
-  | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | PostID | --postid | String, Number | &#x2714; | Post ID |
+  | Text | --text | String | &#x2714; | Text of post |
+  | Visibility | --vision | String | &#x2716; | Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group |
+  | Files | --files | Map Of KeyAndValue | &#x2716; | Key > file name, value > path or binary data |
+  | Title | --title | String | &#x2716; | Post title |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

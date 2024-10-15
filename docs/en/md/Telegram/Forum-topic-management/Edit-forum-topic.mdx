@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function EditForumTopic(Val Token, Val ChatID, Val ThreadID, Val Title = Undefined, Val IconID = Undefined) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | ChatID | --forum | String, Number | Thread creation chat ID |
-  | ThreadID | --topic | String, Number | Thread ID |
-  | Title | --title | String | New title |
-  | IconID | --icon | String | See GetAvatarIconList |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | ChatID | --forum | String, Number | &#x2714; | Thread creation chat ID |
+  | ThreadID | --topic | String, Number | &#x2714; | Thread ID |
+  | Title | --title | String | &#x2716; | New title |
+  | IconID | --icon | String | &#x2716; | See GetAvatarIconList |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram

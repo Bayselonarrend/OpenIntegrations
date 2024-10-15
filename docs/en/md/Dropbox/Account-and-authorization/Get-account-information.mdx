@@ -12,10 +12,10 @@ import TabItem from '@theme/TabItem';
 
 `Function GetAccountInformation(Val Token, Val Account = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Account | --account | String | Account ID. Current token account if not filled |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Account | --account | String | &#x2716; | Account ID. Current token account if not filled |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox

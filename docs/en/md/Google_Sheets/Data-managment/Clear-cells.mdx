@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Spreadsheet | --spreadsheet | String | SpreadsheetID |
-  | CellsArray | --cells | Array of String | Array of cells like A1 to be cleared |
-  | Sheet | --sheetname | String | Sheet name (first sheet by default) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Spreadsheet | --spreadsheet | String | &#x2714; | SpreadsheetID |
+  | CellsArray | --cells | Array of String | &#x2714; | Array of cells like A1 to be cleared |
+  | Sheet | --sheetname | String | &#x2716; | Sheet name (first sheet by default) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google

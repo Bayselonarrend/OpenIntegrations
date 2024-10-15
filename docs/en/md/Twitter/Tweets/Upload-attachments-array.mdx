@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function UploadAttachmentsArray(Val ArrayOfFiles, Val AttachmentsType, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ArrayOfFiles | --files | Array of String, BinaryData | Array of files to be uploaded |
-  | AttachmentsType | --type | String | Attachment type: tweet_video, tweet_image, tweet_gif |
-  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ArrayOfFiles | --files | Array of String, BinaryData | &#x2714; | Array of files to be uploaded |
+  | AttachmentsType | --type | String | &#x2714; | Attachment type: tweet_video, tweet_image, tweet_gif |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization data. See GetStandardParameters |
 
   
   Returns:  Array Of String - Media ID array
