@@ -31,14 +31,14 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
     Name      = "New file name.jpg";
     Filename2 = "New file name 2.jpg";
 
-    FileID2 = "12694";
+    FileID2 = "12874";
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
 
-    FileID = "12696";
+    FileID = "12876";
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "49e20867006e9f06006b12e400000001000...";
+    Token  = "21750a67006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);
 ```

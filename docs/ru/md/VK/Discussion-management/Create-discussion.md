@@ -35,7 +35,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СоздатьОбсуждение --title "Обсуждаем: какой цвет лучше?" \
               --text "Красный, желтый, синий или какой-то другой?" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -26,9 +26,9 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Картинка1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
-    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
-    Подборка  = "125";
+    Картинка1 = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
+    Подборка  = "130";
 
     МассивКартинок = Новый Массив;
     МассивКартинок.Добавить(Картинка1);
@@ -58,7 +58,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk ДобавитьТовар --product "{'Имя':'Тестовый товар (другой)','Описание':'Описание товара','Категория':'20173','Цена':1,'СтараяЦена':15,'ОсновноеФото':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','URL':'https://github.com/Bayselonarrend/OpenIntegrations','ДополнительныеФото':['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'],'ГлавныйВГруппе':true,'НомерГруппы':null,'Ширина':20,'Высота':30,'Глубина':40,'Вес':100,'SKU':12345,'ДоступныйОстаток':'10','ЗначенияСвойств':2617}" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

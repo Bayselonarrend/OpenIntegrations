@@ -42,7 +42,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ОдобритьЗаявкуНаВступление --token "***" \
               --chatid "689203963@chat.agent"
         ```

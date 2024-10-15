@@ -34,7 +34,7 @@ sidebar_position: 2
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
     Текст    = "Подпись к файлу";
 
-    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";        // URL
+    Файл     = "https://api.athenaeum.digital/test_data/document.docx";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("docx");  // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -52,7 +52,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ОтправитьФайл --token "***" \
               --chatid "AoLI0egLWBSLR1Ngn2w" \
               --file C:\Users\Administrator\AppData\Local\Temp\2ezls2afywa.tmp \

@@ -25,7 +25,7 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Подборка  = "125";
+    Подборка  = "130";
 
     Результат = OPI_VK.УдалитьПодборку(Подборка, Параметры);
 ```
@@ -34,7 +34,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk УдалитьПодборку --sel 130 \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

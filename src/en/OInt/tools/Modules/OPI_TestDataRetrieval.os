@@ -2061,7 +2061,7 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     BashSeparator = " \" + Chars.LF + " ";
 
     BatString  = "oint " + Library + " " + Method + BatSeparator + StrConcat(OptionsArray, BatSeparator);
-    BashString = "oint " + Library + " " + Method + " " + StrConcat(OptionsArray, BashSeparator);
+    BashString = "oint " + Library + " " + Method + BashSeparator + StrConcat(OptionsArray, BashSeparator);
 
     GetBinaryDataFromString(BatString).Write(MethodCatalog + "/bat.txt");
     GetBinaryDataFromString(BashString).Write(MethodCatalog + "/bash.txt");

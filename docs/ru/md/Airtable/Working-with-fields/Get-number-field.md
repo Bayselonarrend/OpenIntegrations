@@ -30,7 +30,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint airtable ПолучитьПолеНомера --title "bf234b4a-f391-4950-8fd0-90e8817e19e4"
         ```
     </TabItem>

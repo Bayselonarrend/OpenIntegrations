@@ -30,12 +30,12 @@ The method has suddenly disappeared from the API on the cloud Bitrix24 where it 
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FileID = "12696";
+    FileID = "12876";
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "49e20867006e9f06006b12e400000001000...";
+    Token = "21750a67006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID, Token);
 ```

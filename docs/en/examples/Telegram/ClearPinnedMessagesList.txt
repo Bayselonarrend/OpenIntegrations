@@ -1,6 +1,6 @@
 ﻿    Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
-    Topic = "5429";
+    Topic = "5543";
 
     Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat);
 

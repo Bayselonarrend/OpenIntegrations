@@ -28,7 +28,7 @@ sidebar_position: 2
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
     Channel = "C06UFNUTKUL";
-    File    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL, Binary Data or Path to file
+    File    = "https://api.athenaeum.digital/test_data/document.docx"; // URL, Binary Data or Path to file
 
     FileName = "megadoc.docx";
     Title    = "NewFile";

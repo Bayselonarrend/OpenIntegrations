@@ -33,7 +33,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram УдалитьWebhook --token "***"
         ```
     </TabItem>

@@ -25,7 +25,7 @@ sidebar_position: 12
 
 ```bsl title="Code example"
     Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C07RTRYK673";
+    Channel = "C07R7MSSPDM";
     Purpose = "TestGoal";
 
     Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);

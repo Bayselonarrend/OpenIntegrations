@@ -24,7 +24,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
-    Подборка  = "125";
+    Подборка  = "130";
 
     Результат = OPI_VK.ПолучитьПодборкиПоИД(Подборка, Параметры);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk ПолучитьПодборкиПоИД --sels 130 \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

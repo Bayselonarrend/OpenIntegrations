@@ -29,7 +29,7 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Токен       = "001.3501506236.091...";
     IDЧата      = "689203963@chat.agent";
-    IDСообщения = "7424418276186262625";
+    IDСообщения = "7425684917876428136";
 
     Результат = OPI_VKTeams.УдалитьСообщение(Токен, IDЧата, IDСообщения);
 ```
@@ -38,7 +38,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams УдалитьСообщение --token "***" \
               --chatid "689203963@chat.agent" \
               --messageid "7425884578021117348"

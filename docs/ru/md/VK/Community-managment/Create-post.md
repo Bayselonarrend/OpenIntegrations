@@ -30,8 +30,8 @@ sidebar_position: 1
     Текст     = "Пост из автотеста";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Путь или Двоичные данные
-    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Путь или Двоичные данные
+    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
 
     ИВФ = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка2, ИВФ);
@@ -49,7 +49,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СоздатьПост --text "Пост из автотеста" \
               --pictures "C:\Users\Administrator\AppData\Local\Temp\htntb5b3mly.png" \
               --ad true \

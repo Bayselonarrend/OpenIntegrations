@@ -23,7 +23,7 @@ sidebar_position: 10
 
 
 ```bsl title="Пример кода"
-    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Путь      = "/Новый каталог";
 
     Результат = OPI_Dropbox.СоздатьПапку(Токен, Путь);
@@ -33,7 +33,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox СоздатьПапку --token "***" \
               --path "/Новый каталог"
         ```

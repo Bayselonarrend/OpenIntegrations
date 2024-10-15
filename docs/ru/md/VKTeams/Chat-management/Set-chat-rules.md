@@ -40,7 +40,7 @@ sidebar_position: 14
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams УстановитьПравилаЧата --token "***" \
               --chatid "689203963@chat.agent" \
               --text "Текст новых правил"

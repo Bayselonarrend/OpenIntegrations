@@ -29,7 +29,7 @@ sidebar_position: 3
     Параметры = ПолучитьПараметрыВК();
 
     Название = "Тестовая подборка";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
     Основная = Истина;
     Скрытая  = Ложь;
 
@@ -44,7 +44,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СоздатьПодборкуТоваров --title "Тестовая подборка" \
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
               --main true \

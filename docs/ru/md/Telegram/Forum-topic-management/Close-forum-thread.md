@@ -29,7 +29,7 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Токен          = "6129457865:AAFyzNYOAFbu...";
     Чат            = "-1001971186208";
-    Тема           = "5429";
+    Тема           = "5543";
 
     Результат = OPI_Telegram.ЗакрытьТемуФорума(Токен, Чат);       // Закрывает главную тему
 
@@ -40,7 +40,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ЗакрытьТемуФорума --token "***" \
               --forum "-1001971186208" \
               --topic "5598"

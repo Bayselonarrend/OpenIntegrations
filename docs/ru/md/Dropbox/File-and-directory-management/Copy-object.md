@@ -26,7 +26,7 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Оригинал  = "/New/pic.png";
     Копия     = "/New/pic_copy.png";
-    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
 
     Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);
 ```
@@ -35,7 +35,7 @@ sidebar_position: 8
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox КопироватьОбъект --token "***" \
               --from "/New/pic.png" \
               --to "/New/pic_copy.png"

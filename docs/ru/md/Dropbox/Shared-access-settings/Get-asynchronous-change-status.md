@@ -23,8 +23,8 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
-    IDРаботы  = "dbjid:AADns14EdwZ4C7QvhwyHagmhHDv0r9IZCiglKB53j4cCgdIdcTY_UmDI1kiW4szDJU-p3QWJLwmCsWPeLh_pxglp";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    IDРаботы  = "dbjid:AACP-Bd0jYrnvlGEezhk65FDN-1sAlXg1FmEfjWibO2qt3sc3Yca2HQhzQuHu7aSqBCdN2pmgpS2ZUd8RkM2Yu8J";
 
     Результат = OPI_Dropbox.ПолучитьСтатусАсинхронногоИзменения(Токен, IDРаботы);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ПолучитьСтатусАсинхронногоИзменения --token "***" \
               --job "dbjid:AAAIJ7t1xyhVC8tWH4ww87h6Tvea-NtCVPY9eTDkdmcnLwYZJrUuC7YhYymd6W4jQTwW-V--hjFbraM1tMNhzIw0"
         ```

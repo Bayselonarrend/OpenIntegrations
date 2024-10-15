@@ -34,7 +34,7 @@ sidebar_position: 8
     Токен           = "001.3501506236.091...";
     IDЧата          = "AoLI0egLWBSLR1Ngn2w";
     IDЧатаИсточника = "689203963@chat.agent";
-    IDСообщения     = "7424418276186262625";
+    IDСообщения     = "7425684917876428136";
 
     Результат = OPI_VKTeams.ПереслатьСообщение(Токен, IDСообщения, IDЧатаИсточника, IDЧата);
 
@@ -47,7 +47,7 @@ sidebar_position: 8
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ПереслатьСообщение --token "***" \
               --messageid "7425884578021117348" \
               --fromid "689203963@chat.agent" \

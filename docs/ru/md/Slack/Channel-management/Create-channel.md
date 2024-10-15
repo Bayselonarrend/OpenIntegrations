@@ -34,7 +34,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack СоздатьКанал --token "***" \
               --title "testconv9d2a1472-7419-436a-a418-a8a70d5b9ec3" \
               --private false

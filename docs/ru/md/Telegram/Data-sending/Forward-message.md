@@ -31,7 +31,7 @@ sidebar_position: 11
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDЧата      = "461699897";
     IDКанала    = "@testsichee";
-    IDСообщения = "9480";
+    IDСообщения = "9761";
 
     Результат = OPI_Telegram.ПереслатьСообщение(Токен, IDСообщения, IDКанала, IDЧата);
 ```
@@ -40,7 +40,7 @@ sidebar_position: 11
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ПереслатьСообщение --token "***" \
               --from "@testsichee" \
               --to "461699897" \

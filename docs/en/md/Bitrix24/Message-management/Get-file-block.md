@@ -27,7 +27,7 @@ Blocks at API documentation: [Link](https://dev.1c-bitrix.ru/learning/course/?CO
 
 ```bsl title="Code example"
     Name = "Image";
-    URL  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    URL  = "https://api.athenaeum.digital/test_data/document.docx";
 
     Result = OPI_Bitrix24.GetFileBlock(Name, URL);
 ```

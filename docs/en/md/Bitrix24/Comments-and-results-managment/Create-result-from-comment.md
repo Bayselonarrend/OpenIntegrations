@@ -28,13 +28,13 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    CommentID = "5988";
+    CommentID = "6054";
 
     Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "49e20867006e9f06006b12e400000001000...";
-    CommentID = "5990";
+    Token     = "21750a67006e9f06006b12e400000001000...";
+    CommentID = "6056";
 
     Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID, Token);
 ```
