@@ -59,20 +59,25 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint telegram ОтправитьМедиагруппу --token "***" \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint telegram ОтправитьМедиагруппу \
+              --token "***" \
               --chat "@testsichee" \
               --text "Строковое значение" \
-              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\pmyc3oplpuq.docx':'document'}"
+              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\h5imli3pyim.docx':'document'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint telegram ОтправитьМедиагруппу ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint telegram ОтправитьМедиагруппу ^
               --token "***" ^
               --chat "@testsichee" ^
               --text "Строковое значение" ^
-              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\pmyc3oplpuq.docx':'document'}"
+              --media "{'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx':'document','C:\\Users\\Administrator\\AppData\\Local\\Temp\\h5imli3pyim.docx':'document'}"
         ```
     </TabItem>
 </Tabs>
