@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function SearchAttributeValue(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val AttributeID, Val Value) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | CategoryID | --categoryid | String, Number | Category identifier |
-  | TypeID | --typeid | String, Number | Item type identifier |
-  | AttributeID | --attributeid | String, Number | Attribute IDs for obtaining values |
-  | Value | --value | String | Search value |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | CategoryID | --categoryid | String, Number | &#x2714; | Category identifier |
+  | TypeID | --typeid | String, Number | &#x2714; | Item type identifier |
+  | AttributeID | --attributeid | String, Number | &#x2714; | Attribute IDs for obtaining values |
+  | Value | --value | String | &#x2714; | Search value |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API

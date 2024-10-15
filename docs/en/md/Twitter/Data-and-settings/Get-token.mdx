@@ -12,10 +12,10 @@ import TabItem from '@theme/TabItem';
 
 `Function GetToken(Val Code, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Code | --code | String | Code obtained from authorization See GetAuthorizationLink |
-  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Code | --code | String | &#x2714; | Code obtained from authorization See GetAuthorizationLink |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization data. See GetStandardParameters |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter

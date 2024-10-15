@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function UnarchiveProducts(Val ClientID, Val APIKey, Val ProductsID) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | ProductsID | --products | String, Number, Array of String, Number | Product IDs for recovery |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | ProductsID | --products | String, Number, Array of String, Number | &#x2714; | Product IDs for recovery |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API

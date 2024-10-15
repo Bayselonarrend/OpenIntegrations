@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateChannel(Val Token, Val Name, Val Private = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | Name | --title | String | Channel name |
-  | Private | --private | Boolean | Create channel as private |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | Name | --title | String | &#x2714; | Channel name |
+  | Private | --private | Boolean | &#x2716; | Create channel as private |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Slack

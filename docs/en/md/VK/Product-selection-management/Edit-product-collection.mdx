@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function EditProductCollection(Val Name, Val Selection, Val Image = "", Val Main = False, Val Hidden = False, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Name | --title | String | New selection name |
-  | Selection | --sel | String | Selection ID |
-  | Image | --picture | String, BinaryData | New selection image |
-  | Main | --main | Boolean | Main |
-  | Hidden | --hidden | Boolean | Hidden |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --title | String | &#x2714; | New selection name |
+  | Selection | --sel | String | &#x2714; | Selection ID |
+  | Image | --picture | String, BinaryData | &#x2716; | New selection image |
+  | Main | --main | Boolean | &#x2716; | Main |
+  | Hidden | --hidden | Boolean | &#x2716; | Hidden |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK
