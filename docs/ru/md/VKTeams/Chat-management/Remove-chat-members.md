@@ -38,7 +38,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ИсключитьПользователейЧата --token "***" \
               --chatid "689203963@chat.agent" \
               --members 1011987091

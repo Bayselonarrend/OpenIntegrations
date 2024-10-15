@@ -46,7 +46,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ОтправитьЛокацию --token "***" \
               --lat "48.87373649724122" \
               --long "2.2954639195323967" \

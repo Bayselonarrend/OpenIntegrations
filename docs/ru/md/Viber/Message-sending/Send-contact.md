@@ -46,7 +46,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ОтправитьКонтакт --token "***" \
               --name "Петр Петров" \
               --phone "+123456789" \

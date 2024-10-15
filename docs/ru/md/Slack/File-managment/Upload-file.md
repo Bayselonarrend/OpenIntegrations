@@ -28,7 +28,7 @@ sidebar_position: 2
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
     Канал = "C06UFNUTKUL";
-    Файл  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx"; // URL, Двоичные данные или Путь к файлу
+    Файл  = "https://api.athenaeum.digital/test_data/document.docx"; // URL, Двоичные данные или Путь к файлу
 
     ИмяФайла     = "megadoc.docx";
     Заголовок    = "Новый файл";
@@ -42,7 +42,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ЗагрузитьФайл --token "***" \
               --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
               --filename "megadoc.docx" \

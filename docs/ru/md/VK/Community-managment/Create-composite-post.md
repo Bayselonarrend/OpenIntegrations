@@ -30,8 +30,8 @@ sidebar_position: 2
     Текст     = "Пост из автотеста";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Путь или Двоичные данные
-    Видео    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";   // URL, Путь или Двоичные данные
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    Видео    = "https://api.athenaeum.digital/test_data/video.mp4";   // URL, Путь или Двоичные данные
 
     ИВФ = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
@@ -56,7 +56,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СоздатьСоставнойПост --text "Пост из автотеста" \
               --objects "['photo657846756_457244660','video-218861756_456239654']" \
               --ad false \

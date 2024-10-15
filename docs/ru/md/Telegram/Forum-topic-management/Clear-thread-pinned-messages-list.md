@@ -29,7 +29,7 @@ sidebar_position: 10
 ```bsl title="Пример кода"
     Токен          = "6129457865:AAFyzNYOAFbu...";
     Чат            = "-1001971186208";
-    Тема           = "5429";
+    Тема           = "5543";
 
     Результат = OPI_Telegram.ОчиститьСписокЗакрепленныхСообщенийТемы(Токен, Чат);
 
@@ -40,7 +40,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "***" \
               --forum "-1001971186208" \
               --topic "5598"

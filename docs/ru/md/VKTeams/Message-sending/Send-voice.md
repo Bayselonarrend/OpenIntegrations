@@ -34,9 +34,9 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен         = "001.3501506236.091...";
     IDЧата        = "689203963@chat.agent";
-    IDЦитируемого = "7424418276186262625";
+    IDЦитируемого = "7425684917876428136";
 
-    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a"  ;        // URL
+    Файл     = "https://api.athenaeum.digital/test_data/song.m4a"  ;        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -54,7 +54,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ОтправитьГолосовоеСообщение --token "***" \
               --chatid "689203963@chat.agent" \
               --file "C:\Users\Administrator\AppData\Local\Temp\sthvkyzxuce.m4a" \

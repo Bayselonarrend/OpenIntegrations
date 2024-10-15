@@ -26,7 +26,7 @@ sidebar_position: 3
 ```bsl title="Code example"
     Token = "xoxb-6965308400114-696804637...";
     Title = "NewFile";
-    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    File  = "https://api.athenaeum.digital/test_data/document.docx";
 
     Result = OPI_Slack.AddExternalFile(Token, File, Title);
 ```

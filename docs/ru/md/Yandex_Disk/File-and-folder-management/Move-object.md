@@ -26,7 +26,7 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Оригинал  = "/1b790f57-3b63-4ec1-a7c0-307145bba171.png";
+    Оригинал  = "/55ea8d67-9f19-45d3-a65e-2f8ae070c7e2.png";
     Путь      = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.ПереместитьОбъект(Токен, Оригинал, Путь, Истина);
@@ -36,7 +36,7 @@ sidebar_position: 9
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ПереместитьОбъект --token "***" \
               --from "/00f77d2e-c416-4bb1-9bef-d04c9e6c7c9f.png" \
               --to "/f3267ec4-db71-4316-88a4-ee7d1dfa5bb3.png" \

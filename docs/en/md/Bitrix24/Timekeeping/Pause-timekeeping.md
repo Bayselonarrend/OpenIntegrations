@@ -32,7 +32,7 @@ Method at API documentation: [timeman.pause](https://dev.1c-bitrix.ru/rest_help/
     Result = OPI_Bitrix24.PauseTimekeeping(URL);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "49e20867006e9f06006b12e400000001000...";
+    Token  = "21750a67006e9f06006b12e400000001000...";
     UserID = 1;
 
     Result = OPI_Bitrix24.PauseTimekeeping(URL, UserID, Token);

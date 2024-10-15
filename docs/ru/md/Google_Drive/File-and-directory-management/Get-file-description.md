@@ -29,7 +29,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint gdrive ПолучитьОписаниеФайла --empty false
         ```
     </TabItem>

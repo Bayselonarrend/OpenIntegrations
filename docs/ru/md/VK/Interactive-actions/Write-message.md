@@ -44,7 +44,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk НаписатьСообщение --text "Сообщение из автотеста" \
               --user "657846756" \
               --ct "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8IFYAtSiw1s0xmjMMNN_mAKhsWQinOkAs5pw08YtWITbuKBgIboTFqvyTQyPtkpCbckftGHR6xabK0tA-Y98vsPZDUUZ2RVd9wO-P-8WzDyE86vg" \

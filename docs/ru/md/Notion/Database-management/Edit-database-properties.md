@@ -27,7 +27,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    База      = "11c82aa7-fc4e-8103-a6dc-db01190daae1";
+    База      = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
 
     Заголовок    = "Тестовый заголовок";
     Описание     = "Тестовое описание";
@@ -43,7 +43,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint notion ИзменитьСвойстваБазы --token "***" \
               --base "12082aa7-fc4e-81e4-a694-ecc74712d756" \
               --props "{'Почта':'rich_text','Сайт':null}" \

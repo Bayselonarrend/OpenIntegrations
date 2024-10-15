@@ -28,10 +28,10 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "appmy5B6qi09E4wrF";
-    Таблица     = "tblYwj7Cnw6w3FGWh";
-    Запись      = "recnOWHAPOyCl0kUj";
-    Комментарий = "comNQ9mG1pWpJqgif";
+    База        = "appESy99HYCLbuWlV";
+    Таблица     = "tbl5gZLQ8i5xKuVTy";
+    Запись      = "recHqUT4ruWn8KnYi";
+    Комментарий = "comc3oQtvx4mn0pdu";
 
     Текст     = "Тестовый комментарий (изм.)";
     Результат = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Комментарий, Текст);
@@ -43,7 +43,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint airtable ИзменитьКомментарий --token "***" \
               --base "app0r5m50QN7nWAAv" \
               --table "tbl99eHW7uVpn8cdR" \

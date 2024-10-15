@@ -49,7 +49,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ОтправитьОпрос --token "***" \
               --chat "@testsichee" \
               --question "Какой ваш любимый цвет?" \

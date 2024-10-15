@@ -27,7 +27,7 @@ sidebar_position: 7
     Параметры = ПолучитьПараметрыВК();
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
     Картинка  = Новый ДвоичныеДанные(ИВФ);
@@ -41,7 +41,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СоздатьИсторию --picture "C:\Users\Administrator\AppData\Local\Temp\q5rtb2rnv2w.png" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

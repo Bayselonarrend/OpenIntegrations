@@ -51,7 +51,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ПолучитьСобытия --token "***" \
               --last 152 \
               --timeout 3

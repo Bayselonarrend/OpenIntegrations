@@ -24,7 +24,7 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
     Токен              = "xoxb-6965308400114-696804637...";
-    ИдентификаторФайла = "F07R0K712T1";
+    ИдентификаторФайла = "F07RFKJR7GW";
 
     Результат = OPI_Slack.СделатьФайлПриватным(Токен, ИдентификаторФайла);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 6
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack СделатьФайлПриватным --token "***" \
               --fileid "F07RP3G79F0"
         ```

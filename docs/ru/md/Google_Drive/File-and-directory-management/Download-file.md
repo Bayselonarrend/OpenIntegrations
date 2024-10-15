@@ -24,8 +24,8 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
-    Идентификатор = "17pGWmj6IhPQB-wRJS3QOzqfqGghLRUGH";
+    Токен         = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Идентификатор = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
 
     Результат = OPI_GoogleDrive.СкачатьФайл(Токен, Идентификатор);
 ```
@@ -34,7 +34,7 @@ sidebar_position: 6
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint gdrive СкачатьФайл --token "***" \
               --object "10MDksSJHfiN5TdiC9iG66f-BjZRTn_s6"
         ```

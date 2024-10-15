@@ -24,7 +24,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
-    ИДПоста   = "4578";
+    ИДПоста   = "4712";
 
     Результат = OPI_VK.УдалитьПост(ИДПоста, Параметры);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk УдалитьПост --post "4753" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

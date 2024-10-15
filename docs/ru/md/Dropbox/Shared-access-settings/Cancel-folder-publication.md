@@ -23,8 +23,8 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен  = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
-    Папка  = "11705714929";
+    Токен  = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Папка  = "11727195745";
 
     Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ОтменитьПубликациюПапки --token "***" \
               --folder "11741910385"
         ```

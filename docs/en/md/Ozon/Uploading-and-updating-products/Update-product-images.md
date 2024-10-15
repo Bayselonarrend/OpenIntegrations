@@ -38,10 +38,10 @@ On each method call, send all the images that should be on the product card
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1218931806";
+    ProductID = "1220696576";
 
-    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Image1 = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg";
 
     MarketingColor = "GREEN";
 

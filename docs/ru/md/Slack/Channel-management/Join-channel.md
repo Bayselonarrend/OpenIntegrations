@@ -24,7 +24,7 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
-    Канал = "C07RTRYK673";
+    Канал = "C07R7MSSPDM";
 
     Результат = OPI_Slack.ВступитьВКанал(Токен, Канал);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 9
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ВступитьВКанал --token "***" \
               --channel "C07SJFNT9SL"
         ```

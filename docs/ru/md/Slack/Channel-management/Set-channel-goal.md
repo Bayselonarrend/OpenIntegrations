@@ -25,7 +25,7 @@ sidebar_position: 12
 
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
-    Канал = "C07RTRYK673";
+    Канал = "C07R7MSSPDM";
     Цель  = "Тестовая цель";
 
     Результат = OPI_Slack.УстановитьЦельКанала(Токен, Канал, Цель);
@@ -35,7 +35,7 @@ sidebar_position: 12
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack УстановитьЦельКанала --token "***" \
               --channel "C07SJFNT9SL" \
               --purpose "Тестовая цель"

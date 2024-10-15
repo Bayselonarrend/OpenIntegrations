@@ -40,7 +40,7 @@ sidebar_position: 12
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams СформироватьКнопкуДействия --text "Кнопка2" \
               --url "https://openintegrations.dev"
         ```

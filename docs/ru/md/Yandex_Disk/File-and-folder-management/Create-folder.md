@@ -33,7 +33,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk СоздатьПапку --token "***" \
               --path "/86370596-5581-42c8-8f28-b656625dd450"
         ```

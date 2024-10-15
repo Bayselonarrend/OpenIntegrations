@@ -34,7 +34,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ПолучитьСписокОтложенныхСообщений --token "***" \
               --channel "C06UFNUTKUL"
         ```

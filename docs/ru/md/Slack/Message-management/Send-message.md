@@ -37,7 +37,7 @@ sidebar_position: 1
     // С вложениями (в примере: блок с картинкой)
 
     Текст        = "Сообщение с картинкой";
-    Картинка     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка     = "https://api.athenaeum.digital/test_data/picture.jpg";
     МассивБлоков = Новый Массив;
 
     Блок = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
@@ -59,7 +59,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ОтправитьСообщение --token "***" \
               --channel "C06UFNUTKUL" \
               --text "Отложенное сообщение" \

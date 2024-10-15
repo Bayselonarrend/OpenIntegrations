@@ -25,7 +25,7 @@ sidebar_position: 13
 
 ```bsl title="Пример кода"
     Токен    = "xoxb-6965308400114-696804637...";
-    Канал    = "C07RTRYK673";
+    Канал    = "C07R7MSSPDM";
     Название = "testconv" + Строка(Новый УникальныйИдентификатор);
 
     Результат = OPI_Slack.ПереименоватьКанал(Токен, Канал, Название);
@@ -35,7 +35,7 @@ sidebar_position: 13
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ПереименоватьКанал --token "***" \
               --channel "C07SJFNT9SL" \
               --title "testconv9e5bb126-2a68-4e43-8ff1-049303a0549e"

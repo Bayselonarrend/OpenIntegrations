@@ -26,7 +26,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Путь      = "/New";
-    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
 
     Результат = OPI_Dropbox.ПолучитьСписокФайловПапки(Токен, Путь, Истина);
 ```
@@ -35,7 +35,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ПолучитьСписокФайловПапки --token "***" \
               --path "/New"
         ```

@@ -34,7 +34,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint notion ВернутьБлок --token "***" \
               --block "d7021bdd15b944ababcb02bd2b1a5f6a"
         ```

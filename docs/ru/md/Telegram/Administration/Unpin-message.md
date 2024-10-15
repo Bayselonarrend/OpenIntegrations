@@ -29,7 +29,7 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Токен       = "6129457865:AAFyzNYOAFbu...";
     IDКанала    = "@testsichee";
-    IDСообщения = "9480";
+    IDСообщения = "9761";
 
     Результат = OPI_Telegram.ОткрепитьСообщение(Токен, IDКанала, IDСообщения);
 ```
@@ -38,7 +38,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ОткрепитьСообщение --token "***" \
               --chat "@testsichee" \
               --message "9781"

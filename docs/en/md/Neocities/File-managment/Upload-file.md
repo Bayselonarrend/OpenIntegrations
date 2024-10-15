@@ -28,7 +28,7 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
 ```bsl title="Code example"
     Token = "7419cd51de4037f7...";
-    Data  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
+    Data  = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
     Path  = "testfolder/test_pic.png";
 
     Result = OPI_Neocities.UploadFile(Token, Path, Data);

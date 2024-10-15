@@ -40,7 +40,7 @@ sidebar_position: 9
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams РазблокироватьПользователяЧата --token "***" \
               --chatid "689203963@chat.agent" \
               --userid 1011987091

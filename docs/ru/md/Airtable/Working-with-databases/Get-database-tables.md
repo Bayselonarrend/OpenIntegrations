@@ -24,7 +24,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База  = "appmy5B6qi09E4wrF";
+    База  = "appESy99HYCLbuWlV";
 
     Результат = OPI_Airtable.ПолучитьТаблицыБазы(Токен, База);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint airtable ПолучитьТаблицыБазы --token "***" \
               --base "app0r5m50QN7nWAAv"
         ```

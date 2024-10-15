@@ -27,7 +27,7 @@ sidebar_position: 8
 
 ```bsl title="Пример кода"
     Наименование = "Картинка";
-    URL          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    URL          = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     Результат = OPI_Bitrix24.ПолучитьБлокКартинки(Наименование, URL);
 ```

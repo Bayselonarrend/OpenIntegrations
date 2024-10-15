@@ -24,7 +24,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен              = "xoxb-6965308400114-696804637...";
-    ИдентификаторФайла = "F07R0K712T1";
+    ИдентификаторФайла = "F07RFKJR7GW";
 
     Результат = OPI_Slack.ПолучитьДанныеФайла(Токен, ИдентификаторФайла);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ПолучитьДанныеФайла --token "***" \
               --fileid "F07RP3G79F0"
         ```

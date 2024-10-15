@@ -33,7 +33,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber УстановитьWebhook --token "***" \
               --url "http://api.athenaeum.digital/hs/viber"
         ```

@@ -35,7 +35,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ПолучитьТокен --appkey "***" \
               --appsecret "***" \
               --code "bTCiUTzxe6kAAAAAAAAAGN1NMZIxyqETKr4o7OS2dU8"

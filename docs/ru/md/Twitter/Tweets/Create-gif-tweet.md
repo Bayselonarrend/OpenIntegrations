@@ -27,8 +27,8 @@ sidebar_position: 4
     Параметры = ПолучитьПараметрыАвторизацииТвиттер();
     Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
 
-    Гифка   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
-    Гифка2  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
+    Гифка   = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
+    Гифка2  = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Двоичные или Путь к файлу
 
     МассивГифок = Новый Массив;
     МассивГифок.Добавить(Гифка);
@@ -44,7 +44,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint twitter СоздатьТвитГифки --text "Тестовый твитт87e832c1-266b-4b63-80cf-d1c58048aa20" \
               --gifs C:\Users\Administrator\AppData\Local\Temp\2yqchovj31l.tmp \
               --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

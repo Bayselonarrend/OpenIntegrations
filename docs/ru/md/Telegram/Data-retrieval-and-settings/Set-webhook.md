@@ -36,7 +36,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram УстановитьWebhook --token "***" \
               --url "https://api.athenaeum.digital/opi/hs/twitter"
         ```

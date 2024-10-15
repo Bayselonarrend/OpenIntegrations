@@ -33,7 +33,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ОткрытьДиалог --token "***" \
               --users "U06UABH3APP"
         ```

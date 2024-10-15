@@ -38,7 +38,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram Разбан --token "***" \
               --chat "@testsichee" \
               --user "461699897"

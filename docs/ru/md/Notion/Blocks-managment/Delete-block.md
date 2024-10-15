@@ -24,7 +24,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Блок   = "11c82aa7-fc4e-817a-8b3c-fb5bd406e07c";
+    Блок   = "11e82aa7-fc4e-81a6-964e-e3689f51bcbf";
 
     Результат = OPI_Notion.УдалитьБлок(Токен, Блок);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint notion УдалитьБлок --token "***" \
               --block "12082aa7-fc4e-8136-917c-e838f972af74"
         ```

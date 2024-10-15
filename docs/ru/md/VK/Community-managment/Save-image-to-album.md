@@ -27,9 +27,9 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Параметры        = ПолучитьПараметрыВК();
     ОписаниеКартинки = "Картинка автотест";
-    ИДАльбома        = "306073188";
+    ИДАльбома        = "306093980";
 
-    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
 
@@ -44,7 +44,7 @@ sidebar_position: 8
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СохранитьКартинкуВАльбом --album 306116890 \
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
               --description "Картинка автотест" \

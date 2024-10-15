@@ -29,15 +29,15 @@ Method at API documentation: [im.dialog.unread](https://dev.1c-bitrix.ru/learnin
 
 ```bsl title="Code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    ChatID    = "chat" + "994";
-    MessageID = "17908";
+    ChatID    = "chat" + "1006";
+    MessageID = "18126";
 
     Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, ChatID, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "49e20867006e9f06006b12e400000001000...";
+    Token     = "21750a67006e9f06006b12e400000001000...";
     UserID    = 10;
-    MessageID = "17910";
+    MessageID = "18128";
 
     Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, UserID, MessageID, Token);
 ```

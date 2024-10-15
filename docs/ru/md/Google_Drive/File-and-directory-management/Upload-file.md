@@ -24,8 +24,8 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен    = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Токен    = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
     Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла();
@@ -38,7 +38,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint gdrive ЗагрузитьФайл --token "***" \
               --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
               --props "{'MIME':'image/jpeg','Имя':'Новый файл.jpg','Описание':'Это новый файл','Родитель':'191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM'}"

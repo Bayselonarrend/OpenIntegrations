@@ -40,7 +40,7 @@ sidebar_position: 12
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams УстановитьЗаголовокЧата --token "***" \
               --chatid "689203963@chat.agent" \
               --text "Новый заголовок"

@@ -25,8 +25,8 @@ sidebar_position: 5
 
 ```bsl title="Пример кода"
     Путь  = "/New/url_doc.docx";
-    Токен = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
-    URL   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    URL   = "https://api.athenaeum.digital/test_data/document.docx";
 
     Результат = OPI_Dropbox.ЗагрузитьФайлПоURL(Токен, URL, Путь);
 ```
@@ -35,7 +35,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ЗагрузитьФайлПоURL --token "***" \
               --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
               --path "/New/url_doc.docx"

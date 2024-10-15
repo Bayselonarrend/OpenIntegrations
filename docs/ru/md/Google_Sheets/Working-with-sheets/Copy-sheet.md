@@ -25,10 +25,10 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
-    Откуда = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
-    Куда   = "1CMjanhXxVBuxSLj6tAIya9LldwB5crkM-7DJuiutM1k";
-    Лист   = "501655435";
+    Токен  = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Откуда = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
+    Куда   = "1WBgDTXbFwMmu1pOOxkej3eD-fx3KQ9kiQ0Np5B2oeMY";
+    Лист   = "1710472523";
 
     Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист);
 ```
@@ -37,7 +37,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint gsheets КопироватьЛист --token "***" \
               --from "1ZUsPnNQMNtLS0RGKFegPvF2jwU4xJp8AhmpgFNTq-98" \
               --to "1-KNA3DAeS60iWjWATJCZSpuBLGuOOjFRj65wHWXtzrU" \

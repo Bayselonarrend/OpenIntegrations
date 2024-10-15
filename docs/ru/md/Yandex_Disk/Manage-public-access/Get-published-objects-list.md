@@ -35,7 +35,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ПолучитьСписокОпубликованныхОбъектов --token "***" \
               --amount 2 \
               --offset 1

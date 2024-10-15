@@ -28,7 +28,7 @@ sidebar_position: 10
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
 
-    Видео        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Двоичные данные или Путь к файлу
+    Видео        = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Двоичные данные или Путь к файлу
     Наименование = "Новое видео";
     Описание     = "Описание видео";
 
@@ -39,7 +39,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk ЗагрузитьВидеоНаСервер --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" \
               --title "Новое видео" \
               --description "Описание видео" \

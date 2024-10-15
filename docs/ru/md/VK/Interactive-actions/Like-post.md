@@ -25,7 +25,7 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Параметры   = ПолучитьПараметрыВК();
-    IDПоста     = "4578";
+    IDПоста     = "4712";
 
     Результат = OPI_VK.ПоставитьЛайк(IDПоста, , Параметры);
 ```
@@ -34,7 +34,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk ПоставитьЛайк --post 4756 \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

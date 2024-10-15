@@ -27,8 +27,8 @@ sidebar_position: 5
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Video  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Binary or Path to file
-    Video2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Binary or Path to file
+    Video  = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary or Path to file
+    Video2 = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary or Path to file
 
     VideosArray = New Array;
     VideosArray.Add(Video);

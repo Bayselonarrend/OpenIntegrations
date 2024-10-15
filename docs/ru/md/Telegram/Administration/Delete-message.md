@@ -29,7 +29,7 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Токен        = "6129457865:AAFyzNYOAFbu...";
     IDЧата       = "@testsichee";
-    IDСообщения  = "9480";
+    IDСообщения  = "9761";
 
     Результат = OPI_Telegram.УдалитьСообщение(Токен, IDЧата, IDСообщения);
 ```
@@ -38,7 +38,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram УдалитьСообщение --token "***" \
               --chat "@testsichee" \
               --message "9781"

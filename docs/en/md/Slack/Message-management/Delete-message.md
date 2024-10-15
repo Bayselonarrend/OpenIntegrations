@@ -27,7 +27,7 @@ sidebar_position: 4
 ```bsl title="Code example"
     Token     = "xoxb-6965308400114-696804637...";
     Channel   = "C06UFNUTKUL";
-    Timestamp = "1728631618.679149";
+    Timestamp = "1728823163.597989";
 
     Result = OPI_Slack.DeleteMessage(Token, Channel, Timestamp);
 ```

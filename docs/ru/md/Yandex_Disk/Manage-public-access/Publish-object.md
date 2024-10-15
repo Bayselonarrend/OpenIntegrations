@@ -24,7 +24,7 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Токен  = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь   = "/1b790f57-3b63-4ec1-a7c0-307145bba171.png";
+    Путь   = "/55ea8d67-9f19-45d3-a65e-2f8ae070c7e2.png";
 
     Результат = OPI_YandexDisk.ОпубликоватьОбъект(Токен, Путь);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ОпубликоватьОбъект --token "***" \
               --path "/499d9d99-abef-44a1-930f-5b464034f75c.png"
         ```
