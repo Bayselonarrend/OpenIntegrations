@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Base | --base | String | Database identifier |
-  | Table | --table | String | Table identifier |
-  | Indent | --offset | String | Next page identifier of data from the previous request |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Base | --base | String | &#x2714; | Database identifier |
+  | Table | --table | String | &#x2714; | Table identifier |
+  | Indent | --offset | String | &#x2716; | Next page identifier of data from the previous request |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Airtable

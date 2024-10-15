@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Identifier | --object | String | Identifier of the object to update |
-  | File | --file | BinaryData,String | File source for update |
-  | NewName | --title | String | New file name (if necessary) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Identifier | --object | String | &#x2714; | Identifier of the object to update |
+  | File | --file | BinaryData,String | &#x2714; | File source for update |
+  | NewName | --title | String | &#x2716; | New file name (if necessary) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google

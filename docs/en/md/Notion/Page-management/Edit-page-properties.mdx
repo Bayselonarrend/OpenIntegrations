@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function EditPageProperties(Val Token, Val Page, Val Data = "", Val Icon = "", Val Cover = "", Val Archived = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Page | --page | String | ID of the page being modified |
-  | Data | --data | Map Of KeyAndValue | Map of editable parameters |
-  | Icon | --icon | String | URL of the page icon image |
-  | Cover | --cover | String | URL of the page cover image |
-  | Archived | --archive | Boolean | Archive page or not (boolean) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Page | --page | String | &#x2714; | ID of the page being modified |
+  | Data | --data | Map Of KeyAndValue | &#x2716; | Map of editable parameters |
+  | Icon | --icon | String | &#x2716; | URL of the page icon image |
+  | Cover | --cover | String | &#x2716; | URL of the page cover image |
+  | Archived | --archive | Boolean | &#x2716; | Archive page or not (boolean) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Notion

@@ -12,10 +12,10 @@ import TabItem from '@theme/TabItem';
 
 `Function GetProductsByID(Val Products, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Products | --items | String, Array of String | Array of product IDs |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Products | --items | String, Array of String | &#x2714; | Array of product IDs |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

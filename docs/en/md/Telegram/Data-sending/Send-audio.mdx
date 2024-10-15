@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function SendAudio(Val Token, Val ChatID, Val Text, Val Audio, Val Keyboard = "", Val Markup = "Markdown") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
-  | Text | --text | String | Message text |
-  | Audio | --audio | BinaryData, String | Audio file |
-  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
-  | Markup | --parsemode | String | Text processing type (HTML, Markdown, MarkdownV2) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chat | String, Number | &#x2714; | Target chat ID or ChatID*TopicID |
+  | Text | --text | String | &#x2714; | Message text |
+  | Audio | --audio | BinaryData, String | &#x2714; | Audio file |
+  | Keyboard | --keyboard | String | &#x2716; | Keyboard. See FormKeyboardFromButtonArray |
+  | Markup | --parsemode | String | &#x2716; | Text processing type (HTML, Markdown, MarkdownV2) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram

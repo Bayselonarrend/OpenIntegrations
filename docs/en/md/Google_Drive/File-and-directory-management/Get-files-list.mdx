@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | NameContains | --querry | String | Filter by name |
-  | Directory | --catalog | String | Filter by parent directory ID |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | NameContains | --querry | String | &#x2716; | Filter by name |
+  | Directory | --catalog | String | &#x2716; | Filter by parent directory ID |
 
   
   Returns:  Map Of KeyAndValue - Array of file mappings

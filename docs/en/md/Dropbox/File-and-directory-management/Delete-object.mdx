@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function DeleteObject(Val Token, Val Path, Val Irrecoverable = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Path | --path | String | Path to the object to delete |
-  | Irrecoverable | --permanently | String | Delete object without the possibility of recovery |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Path | --path | String | &#x2714; | Path to the object to delete |
+  | Irrecoverable | --permanently | String | &#x2716; | Delete object without the possibility of recovery |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox

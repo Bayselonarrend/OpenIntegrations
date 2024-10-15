@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateCustomTweet(Val Text = "", Val MediaArray = "", Val PollOptionsArray = "", Val PollDuration = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Text | --text | String | Tweet text |
-  | MediaArray | --media | Array of String, BinaryData | Array of binary data or file paths |
-  | PollOptionsArray | --options | Array of String | Array of poll options, if necessary |
-  | PollDuration | --dur | String, Number | Poll duration if necessary (poll without duration is not created) |
-  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2716; | Tweet text |
+  | MediaArray | --media | Array of String, BinaryData | &#x2716; | Array of binary data or file paths |
+  | PollOptionsArray | --options | Array of String | &#x2716; | Array of poll options, if necessary |
+  | PollDuration | --dur | String, Number | &#x2716; | Poll duration if necessary (poll without duration is not created) |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization data. See GetStandardParameters |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter

@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function CreatePost(Val Text, Val ImageArray, Val Advertisement = False, Val LinkUnderPost = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Text | --text | String | Post text |
-  | ImageArray | --pictures | Array of String, BinaryData | Array of images |
-  | Advertisement | --ad | Boolean | Sign ""This is an ad"" |
-  | LinkUnderPost | --url | String | Link (URL) under the post |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2714; | Post text |
+  | ImageArray | --pictures | Array of String, BinaryData | &#x2714; | Array of images |
+  | Advertisement | --ad | Boolean | &#x2716; | Sign ""This is an ad"" |
+  | LinkUnderPost | --url | String | &#x2716; | Link (URL) under the post |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

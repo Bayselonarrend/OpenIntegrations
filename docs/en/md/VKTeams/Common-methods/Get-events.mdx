@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function GetEvents(Val Token, Val LastID, Val Timeout = 0) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | LastID | --last | String, Number | ID of the last event processed before this event |
-  | Timeout | --timeout | String, Number | Connection hold time for Long Polling |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | LastID | --last | String, Number | &#x2714; | ID of the last event processed before this event |
+  | Timeout | --timeout | String, Number | &#x2716; | Connection hold time for Long Polling |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams

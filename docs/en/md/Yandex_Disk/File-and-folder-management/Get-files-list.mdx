@@ -12,13 +12,13 @@ Gets a list of files with or without filtering by type List of available types: 
 
 `Function GetFilesList(Val Token, Val Count = 0, Val OffsetFromStart = 0, Val FilterByType = "", Val SortByDate = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Count | --amount | Number, String | Number of returned objects |
-  | OffsetFromStart | --offset | Number | Offset for getting objects not from the beginning of the list |
-  | FilterByType | --type | String | Filter by file type |
-  | SortByDate | --datesort | Boolean | True > sort by date, False > alphabetically |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Count | --amount | Number, String | &#x2716; | Number of returned objects |
+  | OffsetFromStart | --offset | Number | &#x2716; | Offset for getting objects not from the beginning of the list |
+  | FilterByType | --type | String | &#x2716; | Filter by file type |
+  | SortByDate | --datesort | Boolean | &#x2716; | True > sort by date, False > alphabetically |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Yandex

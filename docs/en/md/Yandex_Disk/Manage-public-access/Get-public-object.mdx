@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function GetPublicObject(Val Token, Val URL, Val Count = 0, Val OffsetFromStart = 0) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | URL | --url | String | Object address |
-  | Count | --amount | Number | Number of returned nested objects (for catalog) |
-  | OffsetFromStart | --offset | Number | Offset for getting nested objects not from the beginning of the list |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | URL | --url | String | &#x2714; | Object address |
+  | Count | --amount | Number | &#x2716; | Number of returned nested objects (for catalog) |
+  | OffsetFromStart | --offset | Number | &#x2716; | Offset for getting nested objects not from the beginning of the list |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Yandex

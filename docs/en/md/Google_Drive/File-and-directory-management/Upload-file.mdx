@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function UploadFile(Val Token, Val File, Val Description) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | File | --file | BinaryData,String | File to be uploaded |
-  | Description | --props | Map Of KeyAndValue | JSON description or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | File | --file | BinaryData,String | &#x2714; | File to be uploaded |
+  | Description | --props | Map Of KeyAndValue | &#x2714; | JSON description or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google

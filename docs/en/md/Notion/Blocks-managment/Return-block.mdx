@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | BlockID | --block | String | Block ID |
-  | OnlyBase | --core | Boolean | True > service fields are deleted, only the block itself remains |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | BlockID | --block | String | &#x2714; | Block ID |
+  | OnlyBase | --core | Boolean | &#x2716; | True > service fields are deleted, only the block itself remains |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Notion
