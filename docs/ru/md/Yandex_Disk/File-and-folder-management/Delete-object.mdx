@@ -1,0 +1,60 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 4
+---
+
+# Удалить объект
+ Удаляет объект по заданному пути
+
+
+
+`Функция УдалитьОбъект(Знач Токен, Знач Путь, Знач ВКорзину = Истина) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | Путь | --path | Строка | Путь к удаляемой папке или файлу |
+  | ВКорзину | --can | Булево | В корзину |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Путь  = "/b3327332-137b-454c-be37-06cff128756c.png";
+
+    Результат = OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint yadisk УдалитьОбъект --token "***" \
+              --path "/4f1954c8-c1db-4fd5-810d-bc0042ea7c3b.png" \
+              --can false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk УдалитьОбъект ^
+              --token "***" ^
+              --path "/4f1954c8-c1db-4fd5-810d-bc0042ea7c3b.png" ^
+              --can false
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+null
+```

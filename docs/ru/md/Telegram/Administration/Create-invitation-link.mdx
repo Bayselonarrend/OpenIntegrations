@@ -1,0 +1,92 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 3
+---
+
+# Создать ссылку-приглашение
+ Создает ссылку для вступления в закрытый чат
+
+
+
+`Функция СоздатьСсылкуПриглашение(Знач Токен, Знач IDЧата, Знач Заголовок = "", Знач ДатаИстечения = "", Знач ЛимитПользователей = 0) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен бота |
+  | IDЧата | --chat | Строка, Число | ID целевого чата или IDЧата*IDТемы |
+  | Заголовок | --title | Строка | Заголовок приглашения |
+  | ДатаИстечения | --expire | Дата | Дата окончания жизни ссылки (безсрочно, если не указано) |
+  | ЛимитПользователей | --limit | Число | Лимит пользователей (бесконечно, если не указано) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [createChatInviteLink](https://core.telegram.org/bots/api#createchatinvitelink)
+:::
+<br/>
+
+
+```bsl title="Пример кода"
+    Токен         = "6129457865:AAFyzNYOAFbu...";
+    IDКанала      = "@testsichee";
+    Сутки         = 86400;
+    ТекущаяДата   = OPI_Инструменты.ПолучитьТекущуюДату();
+
+    Заголовок     = "Ссылка " + Строка(ТекущаяДата);
+    Истечение     = ТекущаяДата + Сутки;
+    UnixИстечение = OPI_Инструменты.UNIXTime(Истечение);
+
+    Результат = OPI_Telegram.СоздатьСсылкуПриглашение(Токен, IDКанала, Заголовок, Истечение, 200);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram СоздатьСсылкуПриглашение --token "***" \
+              --chat "@testsichee" \
+              --expire 2024-10-16T08:56:57.5864404 \
+              --title "Ссылка 15.10.2024 8:56:57" \
+              --limit 200
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram СоздатьСсылкуПриглашение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --expire 2024-10-16T08:56:57.5864404 ^
+              --title "Ссылка 15.10.2024 8:56:57" ^
+              --limit 200
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": {
+  "invite_link": "https://t.me/+W4mnd9ZTHJRlZmVi",
+  "name": "Ссылка 08.10.2024 20:26:58",
+  "creator": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "expire_date": 1728502018,
+  "member_limit": 200,
+  "creates_join_request": false,
+  "is_primary": false,
+  "is_revoked": false
+ }
+}
+```

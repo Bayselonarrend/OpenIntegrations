@@ -1,0 +1,43 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Generate image block
+ Generates a block with an image to add to the message block array
+
+
+
+`Function GenerateImageBlock(Val URL, Val AlternateText = "") Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | URL | --picture | String | Image URL |
+  | AlternateText | --alt | String | Alternate text of the image |
+
+  
+  Returns:  Map Of KeyAndValue - Image block
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
+
+    Result = OPI_Slack.GenerateImageBlock(Image, "Image");
+```
+ 
+
+
+
+```json title="Result"
+{
+ "type": "image",
+ "image_url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
+ "alt_text": "Image"
+}
+```

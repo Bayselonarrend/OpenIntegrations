@@ -1,0 +1,112 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 5
+---
+
+# Отправить документ
+ Отправляет документ в чат или канал
+
+
+
+`Функция ОтправитьДокумент(Знач Токен, Знач IDЧата, Знач Текст, Знач Документ, Знач Клавиатура = "", Знач Разметка = "Markdown", Знач ИмяФайла = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен бота |
+  | IDЧата | --chat | Строка,Число | ID целевого чата или IDЧата*IDТемы |
+  | Текст | --text | Строка | Текст сообщения |
+  | Документ | --doc | ДвоичныеДанные, Строка | Файл документа |
+  | Клавиатура | --keyboard | Строка | Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок |
+  | Разметка | --parsemode | Строка | Вид обработки текста (HTML, Markdown, MarkdownV2) |
+  | ИмяФайла | --filename | Строка | Отображаемое имя файла c расширением, если необходимо |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [sendDocument](https://core.telegram.org/bots/api#senddocument)
+:::
+<br/>
+
+
+```bsl title="Пример кода"
+    Токен    = "6129457865:AAFyzNYOAFbu...";
+    IDЧата   = "461699897";
+    IDКанала = "@testsichee";
+    Текст    = "Строковое значение";
+    Документ = "https://api.athenaeum.digital/test_data/document.docx";
+
+    ДокументПуть = ПолучитьИмяВременногоФайла("docx");
+    КопироватьФайл(Документ, ДокументПуть);
+
+    ДокументДД   = Новый ДвоичныеДанные(ДокументПуть);
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDЧата, Текст, Документ);
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDЧата, Текст, Документ, , , "customname.docx");
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументПуть);
+
+    Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументДД, , , "customname.docx");
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ОтправитьДокумент --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --doc "C:\Users\Administrator\AppData\Local\Temp\m2edygoo0ft.docx" \
+              --filename "custom.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьДокумент ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --doc "C:\Users\Administrator\AppData\Local\Temp\m2edygoo0ft.docx" ^
+              --filename "custom.docx"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": {
+  "message_id": 8279,
+  "from": {
+   "id": 6129457865,
+   "is_bot": true,
+   "first_name": "Бот Виталий",
+   "username": "sicheebot"
+  },
+  "chat": {
+   "id": 461699897,
+   "first_name": "Anton",
+   "last_name": "Titowets",
+   "username": "JKIee",
+   "type": "private"
+  },
+  "date": 1728408314,
+  "document": {
+   "file_name": "document.docx",
+   "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+   "file_id": "BQACAgIAAxkDAAIgV2cFavr7Sbt50mNnaTLorEcjT60bAAKLXQAC_cgwSJNNK5mZj9GxNgQ",
+   "file_unique_id": "AgADi10AAv3IMEg",
+   "file_size": 24069
+  },
+  "caption": "Строковое значение"
+ }
+}
+```

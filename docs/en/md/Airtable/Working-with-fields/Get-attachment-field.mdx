@@ -1,0 +1,39 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 5
+---
+
+# Get field (file)
+ Gets the description of a file field
+
+
+
+`Function GetAttachmentField(Val Name) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Field name |
+
+  
+  Returns:  Structure - Field description
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Result = OPI_Airtable.GetAttachmentField("Attachment");
+```
+ 
+
+
+
+```json title="Result"
+{
+ "name": "Attachment",
+ "type": "multipleAttachments"
+}
+```
