@@ -1,0 +1,40 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Получить ссылку авторизации приложения
+ Формирует ссылку для авторизации через браузер
+
+
+
+`Функция ПолучитьСсылкуАвторизацииПриложения(Знач Домен, Знач ClientID) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Домен | --domain | Строка | Адрес битрикс вида portal.bitrix24.com |
+  | ClientID | --clientid | Строка | Client ID из настроек приложения |
+
+  
+  Возвращаемое значение:   Строка - URL для перехода в браузере
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Домен    = "b24-ar17wx.bitrix24.by";
+    ClientID = "local.6667fc928a50a9.70414732";
+
+    Результат = OPI_Bitrix24.ПолучитьСсылкуАвторизацииПриложения(Домен, ClientID);
+```
+    
+
+
+
+```json title="Результат"
+"https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"
+```

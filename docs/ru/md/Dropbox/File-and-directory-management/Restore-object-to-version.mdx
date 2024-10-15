@@ -1,0 +1,72 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 14
+---
+
+# Восстановить объект к версии
+ Восстанавливает состояние объекта к необходимой версии (ревизии)
+
+
+
+`Функция ВосстановитьОбъектКВерсии(Знач Токен, Знач Путь, Знач Версия) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | Путь | --path | Строка | Путь к объекту |
+  | Версия | --rev | Строка | ID версии (ревизии) для востановления |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Версия    = "6246a08b887a8bd841553";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Путь      = "/New/pic.png";
+
+    Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox ВосстановитьОбъектКВерсии --token "***" \
+              --path "/New/pic.png" \
+              --rev "62475a95a622dbd841553"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ВосстановитьОбъектКВерсии ^
+              --token "***" ^
+              --path "/New/pic.png" ^
+              --rev "62475a95a622dbd841553"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "name": "pic.png",
+ "path_lower": "/new/pic.png",
+ "path_display": "/New/pic.png",
+ "id": "id:kJU6-a-pT48AAAAAAAAcWQ",
+ "client_modified": "2024-10-08T17:44:58Z",
+ "server_modified": "2024-10-08T17:44:59Z",
+ "rev": "623fab23a7559bd841553",
+ "size": 2114023,
+ "is_downloadable": true,
+ "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
+}
+```

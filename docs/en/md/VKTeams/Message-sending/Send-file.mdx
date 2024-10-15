@@ -1,0 +1,63 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 2
+---
+
+# Send file
+ Sends the file to the chat
+
+
+
+`Function SendFile(Val Token, Val ChatID, Val File, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2") Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | ChatID | --chatid | String, Number | Chat ID for sending |
+  | File | --file | BinaryData, String | File for sending |
+  | Text | --text | String | File caption |
+  | FileName | --filename | String | Displayed file name |
+  | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
+
+<br/>
+
+:::tip
+Method at API documentation: [POST /messages/sendFile](https://teams.vk.com/botapi/#/messages/post_messages_sendFile)
+:::
+<br/>
+
+
+```bsl title="Code example"
+    Token  = "001.3501506236.091...";
+    ChatID = "AoLI0egLWBSLR1Ngn2w";
+    Text   = "File caption";
+
+    File     = "https://api.athenaeum.digital/test_data/document.docx"; // URL
+    FilePath = GetTempFileName("docx"); // Path
+
+    CopyFile(File, FilePath);
+
+    FileBD = New BinaryData(FilePath); // Binary
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, File);
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FilePath, Text);
+
+    Result = OPI_VKTeams.SendFile(Token, ChatID, FileBD, Text, "ImportantDocument.docx");
+```
+ 
+
+
+
+```json title="Result"
+{
+ "fileId": "UevBE3dRlqHftBiESLglDn670621531bd",
+ "msgId": "7423657676132845883",
+ "ok": true
+}
+```

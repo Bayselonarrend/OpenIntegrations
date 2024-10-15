@@ -1,0 +1,67 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 2
+---
+
+# Получить данные пользователя
+ Получает данные пользователя по ID
+
+
+
+`Функция ПолучитьДанныеПользователя(Знач Токен, Знач ИДПользователя) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | ИДПользователя | --user | Строка | ID целевого пользователя |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Пользователь = "ed71865a-9891-46bc-86cd-a92aa499cfdb";
+
+    Результат    = OPI_Notion.ПолучитьДанныеПользователя(Токен, Пользователь);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint notion ПолучитьДанныеПользователя --token "***" \
+              --user "ed71865a-9891-46bc-86cd-a92aa499cfdb"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ПолучитьДанныеПользователя ^
+              --token "***" ^
+              --user "ed71865a-9891-46bc-86cd-a92aa499cfdb"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "object": "user",
+ "id": "ed71865a-9891-46bc-86cd-a92aa499cfdb",
+ "name": "Techno Pizza",
+ "avatar_url": null,
+ "type": "person",
+ "person": {
+  "email": "iscript13@gmail.com"
+ },
+ "request_id": "a5fcc2a8-295e-4b00-bcc2-00a38a2bd63e"
+}
+```

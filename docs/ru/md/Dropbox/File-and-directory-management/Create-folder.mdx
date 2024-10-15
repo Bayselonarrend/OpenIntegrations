@@ -1,0 +1,64 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 10
+---
+
+# Создать папку
+ Создает пустой каталог по выбранному пути
+
+
+
+`Функция СоздатьПапку(Знач Токен, Знач Путь) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | Путь | --path | Строка | Целевой путь создания каталога |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Dropbox
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Путь      = "/Новый каталог";
+
+    Результат = OPI_Dropbox.СоздатьПапку(Токен, Путь);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox СоздатьПапку --token "***" \
+              --path "/Новый каталог"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox СоздатьПапку ^
+              --token "***" ^
+              --path "/Новый каталог"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "metadata": {
+  "name": "Новый каталог",
+  "path_lower": "/новый каталог",
+  "path_display": "/Новый каталог",
+  "id": "id:kJU6-a-pT48AAAAAAAAcXQ"
+ }
+}
+```

@@ -1,0 +1,58 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 4
+---
+
+# Получить поле (числовое)
+ Получает описание поля числового типа
+
+
+
+`Функция ПолучитьПолеНомера(Знач Наименование, Знач Точность = 0) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Наименование | --title | Строка | Наименование нового поля |
+  | Точность | --precision | Число,Строка | Число знаков после запятой |
+
+  
+  Возвращаемое значение:   Структура -  Описание поля
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Результат = OPI_Airtable.ПолучитьПолеНомера("Номер");
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable ПолучитьПолеНомера --title "bf234b4a-f391-4950-8fd0-90e8817e19e4"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеНомера ^
+              --title "bf234b4a-f391-4950-8fd0-90e8817e19e4"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "name": "Номер",
+ "type": "number",
+ "options": {
+  "precision": 0
+ }
+}
+```

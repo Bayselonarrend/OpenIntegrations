@@ -1,0 +1,44 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 8
+---
+
+# Kick user from channel
+ Removes specified user from channel
+
+
+
+`Function KickUserFromChannel(Val Token, Val Channel, Val User) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | Channel | --channel | String | Channel ID |
+  | User | --user | String | User ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Slack
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C07R7MSSPDM";
+    User    = "U06UABH3APP";
+
+    Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "ok": true
+}
+```

@@ -1,0 +1,52 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Получить ссылку авторизации
+ Генерирует ссылку авторизации для перехода в браузере
+
+
+
+`Функция ПолучитьСсылкуАвторизации(Знач КлючПриложения) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | КлючПриложения | --appkey | Строка | Ключ приложения |
+
+  
+  Возвращаемое значение:   Строка - URL для перехода в браузере
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    КлючПриложения = "oynqxds...";
+    Результат      = OPI_Dropbox.ПолучитьСсылкуАвторизации(КлючПриложения);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint dropbox ПолучитьСсылкуАвторизации --appkey "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПолучитьСсылкуАвторизации ^
+              --appkey "***"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+"https://www.dropbox.com/oauth2/authorize?client_id=oynqxdsqft8oyky&response_type=code&token_access_type=offline"
+```
