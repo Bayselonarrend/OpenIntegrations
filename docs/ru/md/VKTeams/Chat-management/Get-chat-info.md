@@ -36,7 +36,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ПолучитьИнформациюОЧате --token "***" \
               --chatid "AoLI0egLWBSLR1Ngn2w"
         ```

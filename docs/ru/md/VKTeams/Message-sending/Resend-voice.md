@@ -29,7 +29,7 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла  = "I000bSf79DXZ6WLpkXR5ux67068fa41bd";
+    IDФайла  = "I000bzdU0pRaLPRFQ42mv6670d55531bd";
 
     Результат = OPI_VKTeams.ПереслатьГолосовоеСообщение(Токен, IDЧата, IDФайла);
 ```
@@ -38,7 +38,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ПереслатьГолосовоеСообщение --token "***" \
               --chatid "AoLI0egLWBSLR1Ngn2w" \
               --fileid "I000bde2Hh0irg0qrY9Cyd670e0aec1bd"

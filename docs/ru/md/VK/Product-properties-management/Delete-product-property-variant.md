@@ -25,7 +25,7 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Вариант   = "2571";
+    Вариант   = "2601";
 
     Результат = OPI_VK.УдалитьВариантСвойстваТовара(Вариант, Параметры);
 
@@ -38,7 +38,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk УдалитьВариантСвойстваТовара --option 2616 \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

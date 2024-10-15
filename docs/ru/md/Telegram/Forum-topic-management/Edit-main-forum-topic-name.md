@@ -38,7 +38,7 @@ sidebar_position: 9
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ИзменитьИмяГлавнойТемыФорума --token "***" \
               --forum "-1001971186208" \
               --title "Новое имя главной темы b5bf297e-1e9a-4739-9a49-4e30504d2bbb"

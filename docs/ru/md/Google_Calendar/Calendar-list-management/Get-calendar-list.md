@@ -22,7 +22,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен     = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Токен     = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
     Результат = OPI_GoogleCalendar.ПолучитьСписокКалендарей(Токен);
 ```
     
@@ -30,7 +30,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint gcalendar ПолучитьСписокКалендарей --token "***"
         ```
     </TabItem>

@@ -33,7 +33,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ПолучитьДанныеПользователя --token "***" \
               --user "tMNGhftyUPrB3r1lD+bT4g=="
         ```

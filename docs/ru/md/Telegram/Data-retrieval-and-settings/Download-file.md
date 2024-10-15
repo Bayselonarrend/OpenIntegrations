@@ -26,7 +26,7 @@ sidebar_position: 5
 
 
 ```bsl title="Пример кода"
-    IDФайла = "CQACAgIAAx0EcNsaZQACJRBnCM7ekYIoYXuwHC_cxZOGE-d1QwAC0FUAAnfgSEh6pf34KdCYrTYE";
+    IDФайла = "CQACAgIAAx0EcNsaZQACJdtnC600ChemDs9AfeCwKyUUQnYwzgACp1sAAj1KYEhCC24y7dGmOjYE";
     Токен   = "6129457865:AAFyzNYOAFbu...";
 
     Результат = OPI_Telegram.СкачатьФайл(Токен, IDФайла);
@@ -36,7 +36,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram СкачатьФайл --token "***" \
               --fileid "CQACAgIAAx0EcNsaZQACJjtnDgO2ZimFeISq7ttxPDiI1yyo9QACcGMAApEmcEiFxLzdH2cMWTYE"
         ```

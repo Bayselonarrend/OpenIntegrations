@@ -26,7 +26,7 @@ Method at API documentation: [getFile](https://core.telegram.org/bots/api#getfil
 
 
 ```bsl title="Code example"
-    FileID = "CQACAgIAAx0EcNsaZQACJRBnCM7ekYIoYXuwHC_cxZOGE-d1QwAC0FUAAnfgSEh6pf34KdCYrTYE";
+    FileID = "CQACAgIAAx0EcNsaZQACJdtnC600ChemDs9AfeCwKyUUQnYwzgACp1sAAj1KYEhCC24y7dGmOjYE";
     Token  = "6129457865:AAFyzNYOAFbu...";
 
     Result = OPI_Telegram.DownloadFile(Token, FileID);

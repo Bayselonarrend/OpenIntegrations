@@ -34,9 +34,9 @@ If you want the client to display this file as a playable voice message, it must
 ```bsl title="Code example"
     Token   = "001.3501506236.091...";
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7424418276186262625";
+    ReplyID = "7425684917876428136";
 
-    File     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a" ; // URL
+    File     = "https://api.athenaeum.digital/test_data/song.m4a" ; // URL
     FilePath = GetTempFileName("m4a"); // Path
 
     CopyFile(File, FilePath);

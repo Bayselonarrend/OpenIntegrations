@@ -24,8 +24,8 @@ sidebar_position: 14
 
 
 ```bsl title="Пример кода"
-    Версия    = "6242e6c9daae7bd841553";
-    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Версия    = "6246a08b887a8bd841553";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Путь      = "/New/pic.png";
 
     Результат = OPI_Dropbox.ВосстановитьОбъектКВерсии(Токен, Путь, Версия);
@@ -35,7 +35,7 @@ sidebar_position: 14
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ВосстановитьОбъектКВерсии --token "***" \
               --path "/New/pic.png" \
               --rev "62475a95a622dbd841553"

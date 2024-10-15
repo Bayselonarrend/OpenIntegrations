@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Расширение = "docx";
-    URL        = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    URL        = "https://api.athenaeum.digital/test_data/document.docx";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";
@@ -47,7 +47,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ОтправитьФайл --token "***" \
               --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
               --user "tMNGhftyUPrB3r1lD+bT4g==" \

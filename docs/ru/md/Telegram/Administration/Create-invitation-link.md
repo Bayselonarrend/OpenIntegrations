@@ -45,7 +45,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram СоздатьСсылкуПриглашение --token "***" \
               --chat "@testsichee" \
               --expire 2024-10-16T08:56:57.5864404 \

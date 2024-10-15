@@ -52,7 +52,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ОтправитьТекстовоеСообщение --token "***" \
               --text "Тестовое сообщение" \
               --user "tMNGhftyUPrB3r1lD+bT4g==" \

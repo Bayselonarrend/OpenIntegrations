@@ -1,5 +1,5 @@
 ﻿    Токен     = "xoxb-6965308400114-696804637...";
     Заголовок = "Новый файл";
-    Файл      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
+    Файл      = "https://api.athenaeum.digital/test_data/document.docx";
 
     Результат = OPI_Slack.ДобавитьВнешнийФайл(Токен, Файл, Заголовок);

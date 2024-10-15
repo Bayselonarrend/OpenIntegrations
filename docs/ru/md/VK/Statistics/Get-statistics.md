@@ -37,7 +37,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk ПолучитьСтатистику --datefrom 2024-10-15T00:00:00 \
               --dateto 2024-10-15T23:59:59 \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

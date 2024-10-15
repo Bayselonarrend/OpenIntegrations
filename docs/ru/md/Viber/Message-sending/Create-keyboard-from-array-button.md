@@ -36,7 +36,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber СформироватьКлавиатуруИзМассиваКнопок --buttons "['Кнопка 1','Кнопка 2','Кнопка 3']"
         ```
     </TabItem>

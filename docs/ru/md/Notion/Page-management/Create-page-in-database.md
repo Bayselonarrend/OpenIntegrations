@@ -25,8 +25,8 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    База      = "11c82aa7-fc4e-8103-a6dc-db01190daae1";
-    Картинка_ = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
+    База      = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
+    Картинка_ = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Картинка = Новый Соответствие;
     Картинка.Вставить("Лого", Картинка_);
@@ -51,7 +51,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint notion СоздатьСтраницуВБазу --token "***" \
               --base "12082aa7-fc4e-81e4-a694-ecc74712d756" \
               --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':1,'Статус':'Новый','Дата создания':'2024-10-15T09:17:08.4353796Z','Картинка':{'Лого':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535'}"

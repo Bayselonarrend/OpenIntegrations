@@ -31,7 +31,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ПолучитьСписокРабочихОбластей --token "***"
         ```
     </TabItem>

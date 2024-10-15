@@ -44,7 +44,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ОтправитьТекстовоеСообщение --token "***" \
               --chat "@testsichee" \
               --text "Текст %%F0%%9F%%A%5%9D и emoji \(10%%\)" \

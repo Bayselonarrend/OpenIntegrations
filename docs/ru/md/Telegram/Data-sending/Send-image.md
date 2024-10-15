@@ -34,7 +34,7 @@ sidebar_position: 2
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);
@@ -52,7 +52,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ОтправитьКартинку --token "***" \
               --chat "@testsichee" \
               --text "Строковое значение" \

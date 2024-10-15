@@ -34,7 +34,7 @@ sidebar_position: 3
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Видео    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
+    Видео    = "https://api.athenaeum.digital/test_data/video.mp4";
 
     ВидеоПуть = ПолучитьИмяВременногоФайла("mp4");
     КопироватьФайл(Видео, ВидеоПуть);
@@ -52,7 +52,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ОтправитьВидео --token "***" \
               --chat "@testsichee" \
               --text "Строковое значение" \

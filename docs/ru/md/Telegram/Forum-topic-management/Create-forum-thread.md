@@ -40,7 +40,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram СоздатьТемуФорума --token "***" \
               --forum "-1001971186208" \
               --icon "5357419403325481346" \

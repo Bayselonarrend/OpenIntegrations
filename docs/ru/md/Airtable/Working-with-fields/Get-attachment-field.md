@@ -29,7 +29,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint airtable ПолучитьПолеВложения --title "Вложение"
         ```
     </TabItem>

@@ -35,7 +35,7 @@ sidebar_position: 5
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СоздатьАльбом --title "Альбом из автотеста" \
               --description "Новый альбом из автотеста" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

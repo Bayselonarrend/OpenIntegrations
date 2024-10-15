@@ -28,13 +28,13 @@ Method at API documentation: [tasks.task.get](https://dev.1c-bitrix.ru/rest_help
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2416";
+    TaskID = "2446";
 
     Result = OPI_Bitrix24.GetTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "49e20867006e9f06006b12e400000001000...";
-    TaskID = "2418";
+    Token  = "21750a67006e9f06006b12e400000001000...";
+    TaskID = "2448";
 
     Result = OPI_Bitrix24.GetTask(URL, TaskID, Token);
 ```

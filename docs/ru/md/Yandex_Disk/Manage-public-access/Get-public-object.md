@@ -26,7 +26,7 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен  = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL    = "https://yadi.sk/d/te2VIXkfQtKeww";
+    URL    = "https://yadi.sk/d/pbI5RwM66dK-nA";
 
     Результат   = OPI_YandexDisk.ПолучитьПубличныйОбъект(Токен, URL);
 ```
@@ -35,7 +35,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ПолучитьПубличныйОбъект --token "***" \
               --url "https://yadi.sk/d/_GkFflxiflKIKg"
         ```

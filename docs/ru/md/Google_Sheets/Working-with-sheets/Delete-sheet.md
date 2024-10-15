@@ -24,9 +24,9 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
-    Книга  = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
-    Лист   = "501655435";
+    Токен  = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Книга  = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
+    Лист   = "1710472523";
 
     Результат = OPI_GoogleSheets.УдалитьЛист(Токен, Книга, Лист);
 ```
@@ -35,7 +35,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint gsheets УдалитьЛист --token "***" \
               --spreadsheet "1ZUsPnNQMNtLS0RGKFegPvF2jwU4xJp8AhmpgFNTq-98" \
               --sheet "616761557"

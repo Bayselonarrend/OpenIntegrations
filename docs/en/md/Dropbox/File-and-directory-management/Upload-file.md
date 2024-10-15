@@ -26,8 +26,8 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Path  = "/New/pic.png";
-    Token = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
-    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Image = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);

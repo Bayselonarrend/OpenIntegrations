@@ -30,7 +30,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СоздатьСсылкуПолученияТокена --app "51694790"
         ```
     </TabItem>

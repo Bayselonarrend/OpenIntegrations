@@ -24,7 +24,7 @@ sidebar_position: 10
 
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
-    Канал = "C07RTRYK673";
+    Канал = "C07R7MSSPDM";
 
     Результат = OPI_Slack.ПокинутьКанал(Токен, Канал);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ПокинутьКанал --token "***" \
               --channel "C07SJFNT9SL"
         ```

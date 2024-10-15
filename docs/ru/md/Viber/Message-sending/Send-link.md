@@ -44,7 +44,7 @@ sidebar_position: 6
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ОтправитьСсылку --token "***" \
               --url "https://github.com/Bayselonarrend/OpenIntegrations" \
               --user "tMNGhftyUPrB3r1lD+bT4g==" \

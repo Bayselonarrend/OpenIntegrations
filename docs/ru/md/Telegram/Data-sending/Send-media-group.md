@@ -33,8 +33,8 @@ sidebar_position: 7
     Токен    = "6129457865:AAFyzNYOAFbu...";
     IDЧата   = "461699897";
     Текст    = "Строковое значение";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Видео    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4";
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Видео    = "https://api.athenaeum.digital/test_data/video.mp4";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);
@@ -55,7 +55,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram ОтправитьМедиагруппу --token "***" \
               --chat "@testsichee" \
               --text "Строковое значение" \

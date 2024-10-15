@@ -25,7 +25,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Почта = "h5bk6ft62s@privaterelay.appleid.com";
     Файл  = "kJU6-a-pT48AAAAAAAAABw";
 
@@ -36,7 +36,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ДобавитьПользователейКФайлу --token "***" \
               --fileid "kJU6-a-pT48AAAAAAAAABw" \
               --emails "['h5bk6ft62s@privaterelay.appleid.com']" \

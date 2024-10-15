@@ -40,7 +40,7 @@ sidebar_position: 13
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams УстановитьОписаниеЧата --token "***" \
               --chatid "689203963@chat.agent" \
               --text "Новое описание"

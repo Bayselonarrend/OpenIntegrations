@@ -23,7 +23,7 @@ sidebar_position: 6
 
 
 ```bsl title="Пример кода"
-    Токен    = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Токен    = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Файл     = "kJU6-a-pT48AAAAAAAAABw";
 
     Результат = OPI_Dropbox.ОтменитьПубликациюФайла(Токен, Файл);
@@ -33,7 +33,7 @@ sidebar_position: 6
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ОтменитьПубликациюФайла --token "***" \
               --fileid "kJU6-a-pT48AAAAAAAAABw"
         ```

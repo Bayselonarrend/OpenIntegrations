@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     Результат = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
 ```
@@ -32,7 +32,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack СформироватьБлокКартинку --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
               --alt "Картинка"
         ```

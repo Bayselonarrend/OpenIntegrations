@@ -38,7 +38,7 @@ sidebar_position: 8
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ПолучитьСписокФайлов --token "***" \
               --amount 2 \
               --offset 1 \

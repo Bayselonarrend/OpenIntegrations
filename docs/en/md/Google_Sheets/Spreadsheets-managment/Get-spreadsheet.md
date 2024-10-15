@@ -23,8 +23,8 @@ sidebar_position: 2
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
-    Identifier = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
+    Token      = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Identifier = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
 
     Result = OPI_GoogleSheets.GetSpreadsheet(Token, Identifier);
 ```

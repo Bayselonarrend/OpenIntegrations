@@ -28,7 +28,7 @@ sidebar_position: 10
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Video       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4"; // URL, Binary Data or Path to file
+    Video       = "https://api.athenaeum.digital/test_data/video.mp4"; // URL, Binary Data or Path to file
     Name        = "NewVideo";
     Description = "Video description";
 

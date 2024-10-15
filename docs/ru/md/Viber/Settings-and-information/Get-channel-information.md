@@ -30,7 +30,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ПолучитьИнформациюОКанале --token "***"
         ```
     </TabItem>

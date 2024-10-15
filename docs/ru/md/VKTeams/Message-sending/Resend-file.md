@@ -31,7 +31,7 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла  = "vaFI6GPPHMw21IwjOd8bQ76708d5441bd";
+    IDФайла  = "XG1vEIB5FTX4tJi9IUA6Gg670d55381bd";
     Текст    = "Подпись к файлу";
 
     Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст);
@@ -41,7 +41,7 @@ sidebar_position: 6
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ПереслатьФайл --token "***" \
               --chatid "AoLI0egLWBSLR1Ngn2w" \
               --fileid "xNjCbcI70PvUmFRTcD3t0c670e0acf1bd" \

@@ -35,7 +35,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ОбновитьТокен --appkey "***" \
               --appsecret "***" \
               --refresh "***"

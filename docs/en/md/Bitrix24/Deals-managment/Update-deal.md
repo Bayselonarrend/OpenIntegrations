@@ -35,7 +35,7 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
     FieldsStructure.Insert("OPPORTUNITY" , 50000);
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DealID = "788";
+    DealID = "812";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
 
@@ -43,8 +43,8 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
     FieldsStructure.Insert("BEGINDATE", "2025-01-01");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "49e20867006e9f06006b12e400000001000...";
-    DealID = "790";
+    Token  = "21750a67006e9f06006b12e400000001000...";
+    DealID = "814";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);
 ```

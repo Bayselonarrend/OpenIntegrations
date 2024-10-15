@@ -26,8 +26,8 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Путь      = "/New/pic.png";
-    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
-    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);
@@ -39,7 +39,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ЗагрузитьФайл --token "***" \
               --file "C:\Users\Administrator\AppData\Local\Temp\junte55oyqj.png" \
               --path "/New/pic.png" \

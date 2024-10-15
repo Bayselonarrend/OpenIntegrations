@@ -27,10 +27,10 @@ sidebar_position: 4
 
 ```bsl title="Code example"
     Token   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base    = "appmy5B6qi09E4wrF";
-    Table   = "tblYwj7Cnw6w3FGWh";
-    Record  = "recnOWHAPOyCl0kUj";
-    Comment = "comNQ9mG1pWpJqgif";
+    Base    = "appESy99HYCLbuWlV";
+    Table   = "tbl5gZLQ8i5xKuVTy";
+    Record  = "recHqUT4ruWn8KnYi";
+    Comment = "comc3oQtvx4mn0pdu";
 
     Result = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment);
 ```

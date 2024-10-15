@@ -25,7 +25,7 @@ sidebar_position: 7
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Option = "2571";
+    Option = "2601";
 
     Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
 

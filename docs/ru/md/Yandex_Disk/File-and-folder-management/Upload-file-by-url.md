@@ -25,7 +25,7 @@ sidebar_position: 11
 
 ```bsl title="Пример кода"
     Токен   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Адрес   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Адрес   = "https://api.athenaeum.digital/test_data/picture.jpg";
     Путь    = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Результат = OPI_YandexDisk.ЗагрузитьФайлПоURL(Токен, Путь, Адрес);
@@ -35,7 +35,7 @@ sidebar_position: 11
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ЗагрузитьФайлПоURL --token "***" \
               --path "/c46d08de-5793-45c2-88c8-4cef86e5f487.png" \
               --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
