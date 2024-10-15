@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateGifTweet(Val Text, Val GifsArray, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Text | --text | String | Tweet text |
-  | GifsArray | --gifs | Array of String, BinaryData | Gif files array |
-  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2714; | Tweet text |
+  | GifsArray | --gifs | Array of String, BinaryData | &#x2714; | Gif files array |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization data. See GetStandardParameters |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter

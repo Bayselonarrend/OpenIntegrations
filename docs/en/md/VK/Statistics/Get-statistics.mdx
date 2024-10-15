@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function GetStatistics(Val StartDate, Val EndDate, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | StartDate | --datefrom | Date | Start date of the period |
-  | EndDate | --dateto | Date | End date of the period |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | StartDate | --datefrom | Date | &#x2714; | Start date of the period |
+  | EndDate | --dateto | Date | &#x2714; | End date of the period |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

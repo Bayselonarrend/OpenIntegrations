@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function LikePost(Val PostID, Val WallID = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | PostID | --post | String, Number | Post ID |
-  | WallID | --wall | String, Number | ID of the wall where the post is located |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | PostID | --post | String, Number | &#x2714; | Post ID |
+  | WallID | --wall | String, Number | &#x2716; | ID of the wall where the post is located |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

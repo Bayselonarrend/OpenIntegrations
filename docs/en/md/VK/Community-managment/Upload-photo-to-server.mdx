@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Image | --file | String, BinaryData | Image file |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
-  | View | --type | String | Upload type (Post, Product, Story, Poll, Other) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Image | --file | String, BinaryData | &#x2714; | Image file |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
+  | View | --type | String | &#x2716; | Upload type (Post, Product, Story, Poll, Other) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

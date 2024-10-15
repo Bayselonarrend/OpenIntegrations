@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function MakeActionButton(Val Text, Val Value = "", Val URL = "", Val Style = "base") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Text | --text | String | Button text |
-  | Value | --data | String | The value returned in the event. Only if the URL is not filled |
-  | URL | --url | String | URL to create the page open button. Only if the Value is not filled in |
-  | Style | --style | String | Button style: primary, attention or base |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2714; | Button text |
+  | Value | --data | String | &#x2716; | The value returned in the event. Only if the URL is not filled |
+  | URL | --url | String | &#x2716; | URL to create the page open button. Only if the Value is not filled in |
+  | Style | --style | String | &#x2716; | Button style: primary, attention or base |
 
   
   Returns:  Structure - Button for keyboard

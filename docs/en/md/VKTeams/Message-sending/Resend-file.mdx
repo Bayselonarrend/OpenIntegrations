@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function ResendFile(Val Token, Val ChatID, Val FileID, Val Text = "", Val Markup = "MarkdownV2") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chatid | String, Number | Chat ID for sending |
-  | FileID | --fileid | String, Number | File ID to send |
-  | Text | --text | String | File caption |
-  | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chatid | String, Number | &#x2714; | Chat ID for sending |
+  | FileID | --fileid | String, Number | &#x2714; | File ID to send |
+  | Text | --text | String | &#x2716; | File caption |
+  | Markup | --parsemod | String | &#x2716; | Markup type for message text: MarkdownV2 or HTML |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams

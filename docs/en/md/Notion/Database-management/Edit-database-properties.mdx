@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Base | --base | String | Target database ID |
-  | Properties | --props | Map of KeyAndValue | New or modified database properties |
-  | Title | --title | String | New database title |
-  | Description | --description | String | New database description |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Base | --base | String | &#x2714; | Target database ID |
+  | Properties | --props | Map of KeyAndValue | &#x2716; | New or modified database properties |
+  | Title | --title | String | &#x2716; | New database title |
+  | Description | --description | String | &#x2716; | New database description |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Notion

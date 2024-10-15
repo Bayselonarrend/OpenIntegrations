@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function GetProductDescription(Val ClientID, Val APIKey, Val ProductID = 0, Val Article = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | ProductID | --productid | String, Number | Product identifier |
-  | Article | --offerid | String, Number | Item identifier in the vendor's system (Article) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | ProductID | --productid | String, Number | &#x2716; | Product identifier |
+  | Article | --offerid | String, Number | &#x2716; | Item identifier in the vendor's system (Article) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
