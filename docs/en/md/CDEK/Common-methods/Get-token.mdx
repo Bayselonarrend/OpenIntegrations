@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function GetToken(Val Account, Val Password, TestAPI = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Account | --account | String | Client identifier (Account) |
-  | Password | --pass | String | Secret key (Password) |
-  | TestAPI | --testapi | Boolean | Flag to use test API for requests |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Account | --account | String | &#x2714; | Client identifier (Account) |
+  | Password | --pass | String | &#x2714; | Secret key (Password) |
+  | TestAPI | --testapi | Boolean | &#x2716; | Flag to use test API for requests |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from CDEK

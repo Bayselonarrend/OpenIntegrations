@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function MoveObject(Val Token, Val Original, Val Path, Val Overwrite = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Original | --from | String | Path to the original file or folder |
-  | Path | --to | String | Destination path for moving |
-  | Overwrite | --rewrite | Boolean | Overwrite if a file with the same name already exists |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Original | --from | String | &#x2714; | Path to the original file or folder |
+  | Path | --to | String | &#x2714; | Destination path for moving |
+  | Overwrite | --rewrite | Boolean | &#x2716; | Overwrite if a file with the same name already exists |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Yandex

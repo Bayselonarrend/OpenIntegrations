@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function SendFile(Val Token, Val ChatID, Val File, Val Text = "", Val FileName = "", Val Markup = "MarkdownV2") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chatid | String, Number | Chat ID for sending |
-  | File | --file | BinaryData, String | File for sending |
-  | Text | --text | String | File caption |
-  | FileName | --filename | String | Displayed file name |
-  | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chatid | String, Number | &#x2714; | Chat ID for sending |
+  | File | --file | BinaryData, String | &#x2714; | File for sending |
+  | Text | --text | String | &#x2716; | File caption |
+  | FileName | --filename | String | &#x2716; | Displayed file name |
+  | Markup | --parsemod | String | &#x2716; | Markup type for message text: MarkdownV2 or HTML |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams

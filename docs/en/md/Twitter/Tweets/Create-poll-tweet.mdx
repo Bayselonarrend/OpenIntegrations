@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function CreatePollTweet(Val Text, Val OptionArray, Val Duration, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Text | --text | String | Tweet text |
-  | OptionArray | --options | Array of String | Poll options array |
-  | Duration | --duration | String, Number | Poll duration |
-  | Parameters | --auth | Structure Of String | Authorization data. See GetStandardParameters |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --text | String | &#x2714; | Tweet text |
+  | OptionArray | --options | Array of String | &#x2714; | Poll options array |
+  | Duration | --duration | String, Number | &#x2714; | Poll duration |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization data. See GetStandardParameters |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Twitter

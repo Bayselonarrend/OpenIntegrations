@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function UploadVideoToServer(Val Video, Val Name, Val Description = "", Val Album = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Video | --file | String, BinaryData | Video file |
-  | Name | --title | String | Video name |
-  | Description | --description | String | Video description |
-  | Album | --album | String | Album ID, if necessary |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Video | --file | String, BinaryData | &#x2714; | Video file |
+  | Name | --title | String | &#x2714; | Video name |
+  | Description | --description | String | &#x2716; | Video description |
+  | Album | --album | String | &#x2716; | Album ID, if necessary |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

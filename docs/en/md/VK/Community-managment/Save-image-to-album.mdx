@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function SaveImageToAlbum(Val AlbumID, Val Image, Val Description = "", Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | AlbumID | --album | String, Number | Album ID |
-  | Image | --picture | BinaryData,String | Image file |
-  | Description | --description | String | Image description |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AlbumID | --album | String, Number | &#x2714; | Album ID |
+  | Image | --picture | BinaryData,String | &#x2714; | Image file |
+  | Description | --description | String | &#x2716; | Image description |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

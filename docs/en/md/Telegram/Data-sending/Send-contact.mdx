@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function SendContact(Val Token, Val ChatID, Val Name, Val LastName, Val Phone, Val Keyboard = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chat | String, Number | Target chat ID or ChatID*TopicID |
-  | Name | --name | String | Contact name |
-  | LastName | --surname | String | Contact last name |
-  | Phone | --phone | String | Contact phone number |
-  | Keyboard | --keyboard | String | Keyboard. See FormKeyboardFromButtonArray |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chat | String, Number | &#x2714; | Target chat ID or ChatID*TopicID |
+  | Name | --name | String | &#x2714; | Contact name |
+  | LastName | --surname | String | &#x2714; | Contact last name |
+  | Phone | --phone | String | &#x2714; | Contact phone number |
+  | Keyboard | --keyboard | String | &#x2716; | Keyboard. See FormKeyboardFromButtonArray |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram

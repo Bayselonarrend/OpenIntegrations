@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function GetMessageReplyList(Val Token, Val Channel, Val Timestamp, Val Cursor = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | Channel | --channel | String | Channel ID |
-  | Timestamp | --stamp | String | Timestamp or message ID |
-  | Cursor | --cursor | String | Pointer from the previous request, if the result rows > 100 |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | Channel | --channel | String | &#x2714; | Channel ID |
+  | Timestamp | --stamp | String | &#x2714; | Timestamp or message ID |
+  | Cursor | --cursor | String | &#x2716; | Pointer from the previous request, if the result rows > 100 |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Slack

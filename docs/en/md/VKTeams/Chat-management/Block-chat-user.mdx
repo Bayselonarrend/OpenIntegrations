@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function BlockChatUser(Val Token, Val ChatID, Val UserID, Val DeleteLastMessages = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chatid | String, Number | Chat ID |
-  | UserID | --userid | String, Number | User ID to be blocked |
-  | DeleteLastMessages | --dellast | Boolean | Delete last messages before blocking |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chatid | String, Number | &#x2714; | Chat ID |
+  | UserID | --userid | String, Number | &#x2714; | User ID to be blocked |
+  | DeleteLastMessages | --dellast | Boolean | &#x2716; | Delete last messages before blocking |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams

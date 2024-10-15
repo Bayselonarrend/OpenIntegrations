@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function PauseAdvertising(Val AccountID, Val AdID, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | AccountID | --cabinet | String, Number | Advertising account ID |
-  | AdID | --adv | String, Number | Ad ID |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccountID | --cabinet | String, Number | &#x2714; | Advertising account ID |
+  | AdID | --adv | String, Number | &#x2714; | Ad ID |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

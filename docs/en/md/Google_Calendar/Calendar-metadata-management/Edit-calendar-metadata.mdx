@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function EditCalendarMetadata(Val Token, Val Calendar, Val Name = "", Val Description = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Calendar | --calendar | String | Calendar ID |
-  | Name | --title | String | New name |
-  | Description | --description | String | New calendar description |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Calendar | --calendar | String | &#x2714; | Calendar ID |
+  | Name | --title | String | &#x2716; | New name |
+  | Description | --description | String | &#x2716; | New calendar description |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google

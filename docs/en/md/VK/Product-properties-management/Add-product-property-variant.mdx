@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function AddProductPropertyVariant(Val Value, Val Property, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Value | --value | String | Property value |
-  | Property | --prop | String, Number | Property ID where the variant is added |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Value | --value | String | &#x2714; | Property value |
+  | Property | --prop | String, Number | &#x2714; | Property ID where the variant is added |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

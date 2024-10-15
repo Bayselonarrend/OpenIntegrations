@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function GetCategoryAttributes(Val ClientID, Val APIKey, Val CategoryID, Val TypeID, Val Lang = "DEFAULT") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | CategoryID | --categoryid | String, Number | Category identifier |
-  | TypeID | --typeid | String, Number | Item type identifier |
-  | Lang | --lang | String | Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | CategoryID | --categoryid | String, Number | &#x2714; | Category identifier |
+  | TypeID | --typeid | String, Number | &#x2714; | Item type identifier |
+  | Lang | --lang | String | &#x2716; | Response language: DEFAULT (Russian), RU, EN, TR (Turkish), ZH_HANS (Chinese)) |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API
