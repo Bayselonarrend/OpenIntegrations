@@ -12,8 +12,8 @@ import TabItem from '@theme/TabItem';
 
 `@Объявление`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
 @ТаблицаПараметров
   
   Returns: @ВозвращаемоеЗначение
