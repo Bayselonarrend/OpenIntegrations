@@ -1,0 +1,5 @@
+oint gsheets CopySheet ^
+ --token "***" ^
+ --from "1RLw3mpZ1IdytmTXTIcHdpByJRz0LeYmlIWByYSrjcqs" ^
+ --to "1KX3kDEIABwHELHQL3280OODRwLN6GyGQArYctkjQNrY" ^
+ --sheet "7803857"

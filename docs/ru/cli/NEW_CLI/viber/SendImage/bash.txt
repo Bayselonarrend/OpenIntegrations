@@ -1,0 +1,6 @@
+oint viber SendImage \
+ --token "***" \
+ --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+ --user "tMNGhftyUPrB3r1lD+bT4g==" \
+ --ischannel true \
+ --description "TestMessage"
