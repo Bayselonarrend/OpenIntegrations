@@ -1,0 +1,3 @@
+oint airtable ПолучитьСписокЗаписей --token "***" \
+  --base "app0r5m50QN7nWAAv" \
+  --table "tbl99eHW7uVpn8cdR"

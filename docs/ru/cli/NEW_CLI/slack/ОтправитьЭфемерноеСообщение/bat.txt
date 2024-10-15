@@ -1,0 +1,6 @@
+oint slack ОтправитьЭфемерноеСообщение ^
+  --token "***" ^
+  --channel "C06UFNUTKUL" ^
+  --text "Эфимерное сообщение" ^
+  --user "U06UABH3APP" ^
+  --blocks "{'type':'image','image_url':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','alt_text':'Картинка'}"

@@ -1,0 +1,2 @@
+oint dropbox ОтменитьПубликациюФайла --token "***" \
+  --fileid "kJU6-a-pT48AAAAAAAAABw"

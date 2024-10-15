@@ -1,0 +1,3 @@
+oint gcalendar СоздатьСобытие --token "***" \
+  --calendar "95bed4847e3734e9f1e6513c9eb637e885c5996c77711c19a10348453ecb11fe@group.calendar.google.com" \
+  --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'2024-10-15T09:13:26.4387614Z','ДатаОкончания':'2024-10-15T10:13:26.4387614Z','МассивURLФайловВложений':{'Картинка1':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','Картинка2':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"

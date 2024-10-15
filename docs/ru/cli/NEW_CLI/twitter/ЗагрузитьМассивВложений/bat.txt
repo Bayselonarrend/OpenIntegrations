@@ -1,0 +1,4 @@
+oint twitter ЗагрузитьМассивВложений ^
+  --files "['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg']" ^
+  --type "tweet_image" ^
+  --auth "{'redirect_uri':'https://api.athenaeum.digital/opi/hs/twitter','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

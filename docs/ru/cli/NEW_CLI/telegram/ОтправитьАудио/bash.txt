@@ -1,0 +1,4 @@
+oint telegram ОтправитьАудио --token "***" \
+  --chat "@testsichee" \
+  --text "Строковое значение" \
+  --audio "C:\Users\Administrator\AppData\Local\Temp\0xvlclunabj.mp3"
