@@ -164,6 +164,9 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Neocities
 Function UploadFiles(Val Token, Val FileMapping, Val Singly = False) Export
 
+    OPI_TypeConversion.GetBoolean(Singly);
+    OPI_TypeConversion.GetCollection(FileMapping);
+
     FinalResponse = New Array;
     ProcessedMap  = New Map;
 
