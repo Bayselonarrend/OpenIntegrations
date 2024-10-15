@@ -2051,11 +2051,11 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
     EndIf;
 
     OptionsArray = New Array;
-    FindJSON        = False;
+    FindJSON     = False;
 
     For Each Option In Options Do
 
-        If TypeOf(Option.Value)  = Type("Structure")
+        If TypeOf(Option.Value)     = Type("Structure")
             Or TypeOf(Option.Value) = Type("Map") Then
 
                 FindJSON = True;
