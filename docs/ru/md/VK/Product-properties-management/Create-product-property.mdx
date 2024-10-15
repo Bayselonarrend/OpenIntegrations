@@ -38,14 +38,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint vk СоздатьСвойствоТовара --title "Цвет" \
+            # JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk СоздатьСвойствоТовара \
+              --title "Цвет" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint vk СоздатьСвойствоТовара ^
+            :: JSON данные также могут быть переданны как путь к файлу .json
+
+oint vk СоздатьСвойствоТовара ^
               --title "Цвет" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
