@@ -7588,7 +7588,6 @@ Procedure CLI_Dropbox_RestoreObjectToVersion(FunctionParameters)
     OPI_Tools.Pause(30);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "RestoreObjectToVersion", "Dropbox");
-    OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
 
     OPI_Tools.Pause(5);
 
@@ -9346,7 +9345,7 @@ Procedure CLI_Ozon_BindBarcodes(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
     BarcodesMap = New Map;
-    BarcodesMap.Insert(1626044001, "112233");
+    BarcodesMap.Insert("1626044001", "112233");
 
     Options = New Structure;
     Options.Insert("clientid" , ClientID);
@@ -9476,7 +9475,6 @@ Procedure CLI_Ozon_GetProductsPrices(FunctionParameters)
     Options = New Structure;
     Options.Insert("clientid" , ClientID);
     Options.Insert("apikey"   , APIKey);
-    Options.Insert("filter"   , New Structure);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsPrices", Options);
 

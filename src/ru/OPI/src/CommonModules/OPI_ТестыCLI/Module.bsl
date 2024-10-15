@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_ТестыCLI.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_ТестыCLI.os
 
 // MIT License
 
@@ -7588,7 +7588,7 @@
     OPI_Инструменты.Пауза(30);
 
     OPI_ПолучениеДанныхТестов.ЗаписатьЛогCLI(Результат, "ВосстановитьОбъектКВерсии", "Dropbox");
-   
+
     OPI_Инструменты.Пауза(5);
 
 КонецПроцедуры
