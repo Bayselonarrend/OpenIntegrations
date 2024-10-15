@@ -31,7 +31,7 @@ Method at API documentation: [editForumTopic](https://core.telegram.org/bots/api
 ```bsl title="Code example"
     Token   = "6129457865:AAFyzNYOAFbu...";
     Chat    = "-1001971186208";
-    Topic   = "5429";
+    Topic   = "5543";
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 

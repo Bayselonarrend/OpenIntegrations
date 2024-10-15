@@ -28,9 +28,9 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница     = "11c82aa7-fc4e-8168-b662-fc3b84f7b2a6";
-    Иконка       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
-    Обложка      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
+    Страница     = "11e82aa7-fc4e-81be-a17f-c8f8ec9b863d";
+    Иконка       = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Обложка      = "https://api.athenaeum.digital/test_data/picture2.jpg";
     Архивировать = Ложь;
 
     Свойства = Новый Соответствие;
@@ -49,7 +49,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint notion ИзменитьСвойстваСтраницы --token "***" \
               --page "12082aa7-fc4e-811e-a159-da2bd70e7c7d" \
               --data "{'Активен':false,'Почта':'vector@mail.ru'}" \

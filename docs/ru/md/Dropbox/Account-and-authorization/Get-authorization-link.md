@@ -30,7 +30,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ПолучитьСсылкуАвторизации --appkey "***"
         ```
     </TabItem>

@@ -45,7 +45,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint airtable СоздатьБазу --token "***" \
               --ws "wspdf8yl1yZz3PmWZ" \
               --title "Тестовая база" \

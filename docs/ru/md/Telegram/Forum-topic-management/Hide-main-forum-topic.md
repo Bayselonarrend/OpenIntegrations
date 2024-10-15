@@ -36,7 +36,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint telegram СкрытьГлавнуюТемуФорума --token "***" \
               --forum "-1001971186208"
         ```

@@ -33,7 +33,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk СформироватьКлавиатуру --buttons "['Button 1','Button 2']"
         ```
     </TabItem>

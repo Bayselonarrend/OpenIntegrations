@@ -23,7 +23,7 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
     Путь      = "/New/mydoc.docx";
 
     Результат = OPI_Dropbox.ПолучитьПревью(Токен, Путь);
@@ -33,7 +33,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint dropbox ПолучитьПревью --token "***" \
               --path "/New/mydoc.docx"
         ```

@@ -28,7 +28,7 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен   = "xoxb-6965308400114-696804637...";
     Канал   = "C06UFNUTKUL";
-    Отметка = "1728631618.679149";
+    Отметка = "1728823163.597989";
 
     Текст = "Тестовое сообщение 2";
 
@@ -39,7 +39,7 @@ sidebar_position: 3
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ИзменитьСообщение --token "***" \
               --channel "C06UFNUTKUL" \
               --stamp "1728973059.579729" \

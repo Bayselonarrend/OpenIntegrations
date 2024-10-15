@@ -27,9 +27,9 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appmy5B6qi09E4wrF";
-    Таблица = "tblYwj7Cnw6w3FGWh";
-    Запись  = "recnOWHAPOyCl0kUj";
+    База    = "appESy99HYCLbuWlV";
+    Таблица = "tbl5gZLQ8i5xKuVTy";
+    Запись  = "recHqUT4ruWn8KnYi";
     Текст   = "Тестовый комментарий";
 
     Результат = OPI_Airtable.СоздатьКомментарий(Токен, База, Таблица, Запись, Текст);
@@ -39,7 +39,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint airtable СоздатьКомментарий --token "***" \
               --base "app0r5m50QN7nWAAv" \
               --table "tbl99eHW7uVpn8cdR" \

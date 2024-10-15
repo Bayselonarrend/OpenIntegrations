@@ -30,7 +30,7 @@ sidebar_position: 2
     Токен    = "001.3501506236.091...";
     IDЧата   = "AoLI0egLWBSLR1Ngn2w";
 
-    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/spy2.png";        // URL
+    Файл     = "https://api.athenaeum.digital/test_data/spy2.png";        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("png");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -48,7 +48,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ИзменитьАватарЧата --token "***" \
               --chatid "AoLI0egLWBSLR1Ngn2w" \
               --file "C:\Users\Administrator\AppData\Local\Temp\bhvf2o3csdt.png"

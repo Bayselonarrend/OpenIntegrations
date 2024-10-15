@@ -27,7 +27,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Описание = "Тестовое сообщение";
-    URL      = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    URL      = "https://api.athenaeum.digital/test_data/picture.jpg";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
     Токен          = "523b5b25ed27e6ec-fdf013e4...";
@@ -46,7 +46,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint viber ОтправитьКартинку --token "***" \
               --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
               --user "tMNGhftyUPrB3r1lD+bT4g==" \

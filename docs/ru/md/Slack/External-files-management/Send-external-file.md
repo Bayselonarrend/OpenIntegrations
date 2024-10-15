@@ -26,7 +26,7 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Токен              = "xoxb-6965308400114-696804637...";
     Канал              = "C06UFNUTKUL";
-    ИдентификаторФайла = "F07RF36SEAX";
+    ИдентификаторФайла = "F07RN8F33GS";
 
     Результат = OPI_Slack.ОтправитьВнешнийФайл(Токен, ИдентификаторФайла, Канал);
 ```
@@ -35,7 +35,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ОтправитьВнешнийФайл --token "***" \
               --fileid "F07SJFS1UG0" \
               --channels "C06UFNUTKUL"

@@ -24,7 +24,7 @@ sidebar_position: 9
 
 ```bsl title="Пример кода"
     Параметры  = ПолучитьПараметрыВК();
-    ИДКартинки = "457249113";
+    ИДКартинки = "457249318";
 
     Результат  = OPI_VK.УдалитьКартинку(ИДКартинки, Параметры);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 9
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk УдалитьКартинку --pictureid 457249412 \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```

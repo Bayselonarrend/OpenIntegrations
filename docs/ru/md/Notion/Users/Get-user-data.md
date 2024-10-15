@@ -33,7 +33,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint notion ПолучитьДанныеПользователя --token "***" \
               --user "ed71865a-9891-46bc-86cd-a92aa499cfdb"
         ```

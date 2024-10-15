@@ -33,7 +33,7 @@ sidebar_position: 4
 ```bsl title="Пример кода"
     Токен       = "001.3501506236.091...";
     IDЧата      = "689203963@chat.agent";
-    IDСообщения = "7424418276186262625";
+    IDСообщения = "7425684917876428136";
     Текст       = "Новый текст сообщения";
 
     Результат = OPI_VKTeams.ИзменитьТекстСообщения(Токен, IDЧата, IDСообщения, Текст);
@@ -48,7 +48,7 @@ sidebar_position: 4
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vkteams ИзменитьТекстСообщения --token "***" \
               --chatid "689203963@chat.agent" \
               --messageid "7425884578021117348" \

@@ -25,7 +25,7 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
     Токен        = "xoxb-6965308400114-696804637...";
-    Канал        = "C07RTRYK673";
+    Канал        = "C07R7MSSPDM";
     Пользователь = "U06UABH3APP";
 
     Результат = OPI_Slack.ПригласитьПользователейВКанал(Токен, Канал, Пользователь);
@@ -35,7 +35,7 @@ sidebar_position: 7
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint slack ПригласитьПользователейВКанал --token "***" \
               --channel "C07SJFNT9SL" \
               --users "U06UABH3APP"

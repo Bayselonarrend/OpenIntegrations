@@ -25,7 +25,7 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
-    ИДОбсуждения = "52583592";
+    ИДОбсуждения = "52595199";
     Результат    = OPI_VK.ЗакрытьОбсуждение(ИДОбсуждения, Ложь, Параметры);
 ```
     
@@ -33,7 +33,7 @@ sidebar_position: 2
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint vk ЗакрытьОбсуждение --topic 52605638 \
               --remove false \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

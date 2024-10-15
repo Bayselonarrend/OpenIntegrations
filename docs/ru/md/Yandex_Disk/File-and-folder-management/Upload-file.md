@@ -29,7 +29,7 @@ sidebar_position: 10
     Путь2     = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
     Токен    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL
+    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL
 
     ИВФ      = ПолучитьИмяВременногоФайла("png"); // Путь
     КопироватьФайл(Картинка, ИВФ);
@@ -43,7 +43,7 @@ sidebar_position: 10
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ЗагрузитьФайл --token "***" \
               --path "/4f1954c8-c1db-4fd5-810d-bc0042ea7c3b.png" \
               --file "C:\Users\Administrator\AppData\Local\Temp\w5swc4j5i1g.png" \

@@ -35,7 +35,7 @@ sidebar_position: 1
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint notion СоздатьСтраницу --token "***" \
               --page "5dd94c34fab04bff986b7511c0779f77" \
               --title "Тестовый заголовок"

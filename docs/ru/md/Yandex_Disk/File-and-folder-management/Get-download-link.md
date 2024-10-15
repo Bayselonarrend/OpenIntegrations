@@ -24,7 +24,7 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
     Токен    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь     = "/7741cbaf-fee5-4841-b046-ace454f3a373.png";
+    Путь     = "/3971b158-4a89-4050-8150-1497befa9c9b.png";
 
     Результат = OPI_YandexDisk.ПолучитьСсылкуДляСкачивания(Токен, Путь);
 ```
@@ -33,7 +33,7 @@ sidebar_position: 6
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint yadisk ПолучитьСсылкуДляСкачивания --token "***" \
               --path "/19f0da08-92c2-44b6-97c0-35732788e82d.png"
         ```

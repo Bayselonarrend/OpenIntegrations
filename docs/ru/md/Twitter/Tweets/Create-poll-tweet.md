@@ -39,7 +39,7 @@ sidebar_position: 6
  <Tabs>
   
     <TabItem value="bash" label="Bash" default>
-        ```sh
+        ```bash
             oint twitter СоздатьТвитОпрос --text "Тестовый твитт239b5631-21ce-4267-a2fd-d1ffb4b5aca8" \
               --options "['Вариант 1','Вариант 2']" \
               --duration 60 \
