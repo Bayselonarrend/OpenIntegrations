@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Path | --path | String | Path for saving the file to disk |
-  | File | --file | String, BinaryData | File for upload |
-  | Overwrite | --rewrite | Boolean | Overwrite if a file with the same name already exists |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Path | --path | String | &#x2714; | Path for saving the file to disk |
+  | File | --file | String, BinaryData | &#x2714; | File for upload |
+  | Overwrite | --rewrite | Boolean | &#x2716; | Overwrite if a file with the same name already exists |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Yandex

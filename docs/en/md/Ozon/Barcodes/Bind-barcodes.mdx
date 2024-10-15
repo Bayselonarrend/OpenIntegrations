@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function BindBarcodes(Val ClientID, Val APIKey, Val BarcodesMap) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | BarcodesMap | --barcodes | Map Of KeyAndValue | Key > product SKU, Value > barcode |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | BarcodesMap | --barcodes | Map Of KeyAndValue | &#x2714; | Key > product SKU, Value > barcode |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API

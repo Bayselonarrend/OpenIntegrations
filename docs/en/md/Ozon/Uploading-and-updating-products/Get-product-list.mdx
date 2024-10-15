@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function GetProductList(Val ClientID, Val APIKey, Val Filter = "", Val LastID = 0) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | Filter | --filter | Structure of KeyAndValue | Product selection filter. See GetProductsFilterStructure |
-  | LastID | --last | String, Number | ID of the last value (last_id) from the previous response |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | Filter | --filter | Structure of KeyAndValue | &#x2716; | Product selection filter. See GetProductsFilterStructure |
+  | LastID | --last | String, Number | &#x2716; | ID of the last value (last_id) from the previous response |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API

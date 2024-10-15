@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Identifier | --object | String | File identifier |
-  | SavePath | --out | String | File save path |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Identifier | --object | String | &#x2714; | File identifier |
+  | SavePath | --out | String | &#x2716; | File save path |
 
   
   Returns:  BinaryData,String - Binary data or file path when SavePath parameter is specified

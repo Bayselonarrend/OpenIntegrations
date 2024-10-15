@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function GetListOfFolderFiles(Val Token, Val Path = "", Val Detailed = False, Val Cursor = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Path | --path | String | Path to the directory. Optional if the cursor is specified |
-  | Detailed | --detail | Boolean | Add information fields for mediafiles |
-  | Cursor | --cursor | String | Cursor from the previous request to get the next set of files |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Path | --path | String | &#x2716; | Path to the directory. Optional if the cursor is specified |
+  | Detailed | --detail | Boolean | &#x2716; | Add information fields for mediafiles |
+  | Cursor | --cursor | String | &#x2716; | Cursor from the previous request to get the next set of files |
 
   
   Returns:  HTTPResponse - Get list of folder files
