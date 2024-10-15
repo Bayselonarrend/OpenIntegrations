@@ -1,2 +1,3 @@
-oint viber УстановитьWebhook --token "***" \
+oint viber УстановитьWebhook \
+  --token "***" \
   --url "http://api.athenaeum.digital/hs/viber"

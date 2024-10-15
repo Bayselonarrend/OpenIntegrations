@@ -1,2 +1,3 @@
-oint dropbox СкачатьПапку --token "***" \
+oint dropbox СкачатьПапку \
+  --token "***" \
   --path "/New"

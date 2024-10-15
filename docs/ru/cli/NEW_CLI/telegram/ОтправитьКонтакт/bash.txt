@@ -1,4 +1,5 @@
-oint telegram ОтправитьКонтакт --token "***" \
+oint telegram ОтправитьКонтакт \
+  --token "***" \
   --chat "@testsichee" \
   --surname "Петров" \
   --phone "88005553535" \

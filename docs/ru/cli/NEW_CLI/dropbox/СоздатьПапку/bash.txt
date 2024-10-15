@@ -1,2 +1,3 @@
-oint dropbox СоздатьПапку --token "***" \
+oint dropbox СоздатьПапку \
+  --token "***" \
   --path "/Новый каталог"

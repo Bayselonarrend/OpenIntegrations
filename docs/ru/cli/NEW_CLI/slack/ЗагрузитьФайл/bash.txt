@@ -1,4 +1,5 @@
-oint slack ЗагрузитьФайл --token "***" \
+oint slack ЗагрузитьФайл \
+  --token "***" \
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
   --filename "megadoc.docx" \
   --title "Новый файл" \

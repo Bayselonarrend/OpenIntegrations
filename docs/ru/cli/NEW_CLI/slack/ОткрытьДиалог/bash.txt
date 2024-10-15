@@ -1,2 +1,3 @@
-oint slack ОткрытьДиалог --token "***" \
+oint slack ОткрытьДиалог \
+  --token "***" \
   --users "U06UABH3APP"

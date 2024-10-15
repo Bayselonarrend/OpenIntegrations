@@ -1,4 +1,5 @@
-oint telegram ОтправитьМестоположение --token "***" \
+oint telegram ОтправитьМестоположение \
+  --token "***" \
   --chat "@testsichee" \
   --lat "48.87373649724122" \
   --long "48.87373649724122"

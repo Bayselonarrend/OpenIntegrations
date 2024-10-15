@@ -1,1 +1,2 @@
-oint telegram УдалитьWebhook --token "***"
+oint telegram УдалитьWebhook \
+  --token "***"

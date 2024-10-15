@@ -1,2 +1,3 @@
-oint viber ПолучитьДанныеПользователя --token "***" \
+oint viber ПолучитьДанныеПользователя \
+  --token "***" \
   --user "tMNGhftyUPrB3r1lD+bT4g=="
