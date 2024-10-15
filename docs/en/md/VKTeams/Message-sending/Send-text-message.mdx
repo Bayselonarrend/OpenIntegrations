@@ -1,0 +1,70 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Send text message
+ Sends a text message to a chat
+
+
+
+`Function SendTextMessage(Val Token, Val ChatID, Val Text, Val ReplyID = 0, Val Keyboard = "", Val Markup = "MarkdownV2") Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Bot token |
+  | ChatID | --chatid | String, Number | Chat ID for message sending |
+  | Text | --text | String | Message text |
+  | ReplyID | --reply | String, Number | Replying message id if necessary |
+  | Keyboard | --keyboard | Array Of String | Buttons to the message if necessary |
+  | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
+
+<br/>
+
+:::tip
+You can mention a user by appending their userId to the text in the following format @[userId]
+
+ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botapi/#/messages/get_messages_sendText)
+:::
+<br/>
+
+
+```bsl title="Code example"
+    Token  = "001.3501506236.091...";
+    ChatID = "AoLI0egLWBSLR1Ngn2w";
+    Text   = "Message text";
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
+
+    ChatID  = "689203963@chat.agent";
+    ReplyID = "7425684917876428136";
+    Text    = "<b>Bold text</b>";
+    Markup  = "HTML";
+
+    Keyboard         = New Array;
+    ButtonsLineArray = New Array;
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));
+
+    ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button2", , "https://openintegrations.dev"));
+
+    Keyboard.Add(ButtonsLineArray);
+    Keyboard.Add(ButtonsLineArray);
+
+    Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text, ReplyID, Keyboard, Markup);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "msgId": "7423657487154285625",
+ "ok": true
+}
+```

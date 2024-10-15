@@ -1,0 +1,63 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 27
+---
+
+# Get structure of tasks filter
+ Return filter structure for GetTasksList
+
+
+
+`Function GetTasksFilterStructure(Val Clear = False) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Clear | --empty | Boolean | True > structure with empty valuse, False > field descriptions at values |
+
+  
+  Returns:  Structure of KeyAndValue - Fields structure
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Result = OPI_Bitrix24.GetTasksFilterStructure();
+```
+ 
+
+
+
+```json title="Result"
+{
+ "ID": "<task identifier>",
+ "PARENT_ID": "<parent task identifier>",
+ "GROUP_ID": "<workgroup identifier>",
+ "CREATED_BY": "<producer>",
+ "STATUS_CHANGED_BY": "<the user who last changed the task status>",
+ "PRIORITY": "<priority>",
+ "FORUM_TOPIC_ID": "<forum topic identifier>",
+ "RESPONSIBLE_ID": "<performer>",
+ "TITLE": "<task name (can be searched using the template [%_])>",
+ "TAG": "<tag>",
+ "REAL_STATUS": "<task status>",
+ "MARK": "<mark>",
+ "SITE_ID": "<site identifier>",
+ "ADD_IN_REPORT": "<task in the report (Y|N)>",
+ "DATE_START": "<start date>",
+ "DEADLINE": "<deadline>",
+ "CREATED_DATE": "<date of creation>",
+ "CLOSED_DATE": "<completion date>",
+ "CHANGED_DATE": "<date of last modification>",
+ "ACCOMPLICE": "<co-executor identifier>",
+ "AUDITOR": "<auditor identifier>",
+ "DEPENDS_ON": "<previous task identifier>",
+ "ONLY_ROOT_TASKS": "<only tasks that are not subtasks (Y|N)>",
+ "STAGE_ID": "<stage>",
+ "UF_CRM_TASK": "<CRM elements>",
+ "STATUS": "<status for sorting. Similar to REAL_STATUS, but has three additional meta-statuses>"
+}
+```

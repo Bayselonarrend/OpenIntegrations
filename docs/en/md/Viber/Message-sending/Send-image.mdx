@@ -1,0 +1,59 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 2
+---
+
+# Send image
+ Sends an image to a chat or channel
+
+
+
+`Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | URL | --picture | String | Image URL |
+  | UserID | --user | String, Number | User ID. For channel > administrator, for bot > recipient |
+  | SendingToChannel | --ischannel | boolean | Sending to channel or bot chat |
+  | Description | --description | String | Image annotation |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Viber
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Description = "TestMessage";
+    URL         = "https://api.athenaeum.digital/test_data/picture.jpg";
+
+    UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
+    Token            = "523b5b25ed27e6ec-fdf013e4...";
+    SendingToChannel = False;
+
+    Result = OPI_Viber.SendImage(Token, URL, UserID, SendingToChannel, Description);
+
+    UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
+    Token            = "523b58ba82afffaa-7ef3b426...";
+    SendingToChannel = True;
+
+    Result = OPI_Viber.SendImage(Token, URL, UserID, SendingToChannel, Description);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "status": 0,
+ "status_message": "ok",
+ "message_token": 6024682541026790805,
+ "chat_hostname": "SN-CHAT-04_",
+ "billing_status": 3
+}
+```

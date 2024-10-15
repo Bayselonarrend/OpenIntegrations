@@ -1,0 +1,71 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# User list
+ Returns a list of workspace users
+
+
+
+`Function UserList(Val Token) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Notion
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+
+    Result = OPI_Notion.UserList(Token);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "object": "list",
+ "results": [
+  {
+   "object": "user",
+   "id": "ed71865a-9891-46bc-86cd-a92aa499cfdb",
+   "name": "Techno Pizza",
+   "avatar_url": null,
+   "type": "person",
+   "person": {
+    "email": "iscript13@gmail.com"
+   }
+  },
+  {
+   "object": "user",
+   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0",
+   "name": "1C Integration",
+   "avatar_url": null,
+   "type": "bot",
+   "bot": {
+    "owner": {
+     "type": "workspace",
+     "workspace": true
+    },
+    "workspace_name": "Bayselonarrends Notion"
+   }
+  }
+ ],
+ "next_cursor": null,
+ "has_more": false,
+ "type": "user",
+ "user": {},
+ "request_id": "ad031a0a-82a1-4d62-b104-184ef7dbb29b"
+}
+```

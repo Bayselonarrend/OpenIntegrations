@@ -1,0 +1,47 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 3
+---
+
+# Получить информацию об уценке
+ Получает информацию об уценке и основном товаре по SKU уценённых товаров
+
+
+
+`Функция ПолучитьИнформациюОбУценке(Знач IDКлиента, Знач КлючAPI, Знач SKU) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | IDКлиента | --clientid | Строка | Идентификатор клиента |
+  | КлючAPI | --apikey | Строка | API ключ |
+  | SKU | --sku | Число, Массив Из Число | SKU уцененных товаров |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Ozon Seller API
+
+<br/>
+
+:::tip
+Метод в документации API: [post /v1/product/info/discounted](https://docs.ozon.ru/api/seller/#operation/ProductAPI_GetProductInfoDiscounted)
+:::
+<br/>
+
+
+```bsl title="Пример кода"
+    IDКлиента  = "2128753";
+    КлючAPI    = "7cc90d26-33e4-499b...";
+    SKU        = 1626044001;
+
+    Результат = OPI_Ozon.ПолучитьИнформациюОбУценке(IDКлиента, КлючAPI, SKU);
+```
+    
+
+
+
+```json title="Результат"
+{
+ "items": []
+}
+```
