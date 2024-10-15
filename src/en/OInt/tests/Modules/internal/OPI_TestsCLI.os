@@ -3651,7 +3651,7 @@ Procedure CLI_YandexDisk_UploadFile(FunctionParameters)
     Options = New Structure;
     Options.Insert("token", Token);
     Options.Insert("path" , Path1);
-    Options.Insert("can " , False);
+    Options.Insert("can"  , False);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
 
@@ -3661,7 +3661,7 @@ Procedure CLI_YandexDisk_UploadFile(FunctionParameters)
     Options = New Structure;
     Options.Insert("token", Token);
     Options.Insert("path" , Path2);
-    Options.Insert("can " , False);
+    Options.Insert("can"  , False);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
 
@@ -7459,6 +7459,8 @@ Procedure CLI_Dropbox_RestoreObjectToVersion(FunctionParameters)
     Options.Insert("rev"   , Version);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RestoreObjectToVersion", Options);
+
+    OPI_Tools.Pause(30);
 
     OPI_TestDataRetrieval.WriteLogCLI(Result, "RestoreObjectToVersion", "Dropbox");
     OPI_TestDataRetrieval.Check_DropboxFile(Result, Path);
