@@ -1,0 +1,39 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 10
+---
+
+# Get field (url)
+ Gets the description of a URL field
+
+
+
+`Function GetLinkField(Val Name) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Name | --title | String | Field name |
+
+  
+  Returns:  Structure - Field description
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Result = OPI_Airtable.GetLinkField("Link");
+```
+ 
+
+
+
+```json title="Result"
+{
+ "name": "Link",
+ "type": "url"
+}
+```

@@ -1,0 +1,59 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Get list of tags
+ Gets the list of tags of the selected files
+
+
+
+`Function GetTagList(Val Token, Val Paths) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | Paths | --paths | String, Array of String | Path or set of paths to the files |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox
+
+<br/>
+
+
+
+
+```bsl title="Code example"
+    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+
+    PathsArray = New Array;
+    PathsArray.Add("/New/Dogs.mp3");
+    PathsArray.Add("/New/mydoc.docx");
+
+    Result = OPI_Dropbox.GetTagList(Token, PathsArray);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "paths_to_tags": [
+  {
+   "path": "/New/Dogs.mp3",
+   "tags": []
+  },
+  {
+   "path": "/New/mydoc.docx",
+   "tags": [
+    {
+     ".tag": "user_generated_tag",
+     "tag_text": "important"
+    }
+   ]
+  }
+ ]
+}
+```

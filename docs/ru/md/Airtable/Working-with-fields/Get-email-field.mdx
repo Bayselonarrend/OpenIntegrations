@@ -1,0 +1,54 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 8
+---
+
+# Получить поле (email)
+ Получает описание поля с электронной почтой
+
+
+
+`Функция ПолучитьПолеПочты(Знач Наименование) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Наименование | --title | Строка | Наименование поля |
+
+  
+  Возвращаемое значение:   Структура -  Описание поля
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Результат = OPI_Airtable.ПолучитьПолеПочты("Почта");
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable ПолучитьПолеПочты --title "Почта"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеПочты ^
+              --title "Почта"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "name": "Почта",
+ "type": "email"
+}
+```

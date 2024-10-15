@@ -1,0 +1,69 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 10
+---
+
+# Очистить список закрепленных сообщений темы
+ Очищает список закрепленных сообщений в теме форума
+
+
+
+`Функция ОчиститьСписокЗакрепленныхСообщенийТемы(Знач Токен, Знач IDЧата, Знач IDТемы = "") Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | IDЧата | --forum | Строка, Число | ID чата темы |
+  | IDТемы | --topic | Строка, Число | ID темы. Главная, если не заполнено |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Telegram
+
+<br/>
+
+:::tip
+Метод в документации API: [unpinAllForumTopicMessages](https://core.telegram.org/bots/api#unpinallforumtopicmessages)
+:::
+<br/>
+
+
+```bsl title="Пример кода"
+    Токен          = "6129457865:AAFyzNYOAFbu...";
+    Чат            = "-1001971186208";
+    Тема           = "5543";
+
+    Результат = OPI_Telegram.ОчиститьСписокЗакрепленныхСообщенийТемы(Токен, Чат);
+
+    Результат = OPI_Telegram.ОчиститьСписокЗакрепленныхСообщенийТемы(Токен, Чат, Тема);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram ОчиститьСписокЗакрепленныхСообщенийТемы --token "***" \
+              --forum "-1001971186208" \
+              --topic "5598"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОчиститьСписокЗакрепленныхСообщенийТемы ^
+              --token "***" ^
+              --forum "-1001971186208" ^
+              --topic "5598"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "ok": true,
+ "result": true
+}
+```

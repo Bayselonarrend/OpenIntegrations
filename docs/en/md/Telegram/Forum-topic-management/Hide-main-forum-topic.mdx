@@ -1,0 +1,46 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 7
+---
+
+# Hide main forum thread
+ Hides the main forum thread
+
+
+
+`Function HideMainForumTopic(Val Token, Val ChatID) Export`
+
+  | Parameter | CLI option | Type | Description |
+  |-|-|-|-|
+  | Token | --token | String | Token |
+  | ChatID | --forum | String, Number | Thread chat ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
+
+<br/>
+
+:::tip
+Method at API documentation: [hideGeneralForumTopic](https://core.telegram.org/bots/api#hidegeneralforumtopic)
+:::
+<br/>
+
+
+```bsl title="Code example"
+    Token = "6129457865:AAFyzNYOAFbu...";
+    Chat  = "-1001971186208";
+
+    Result = OPI_Telegram.HideMainForumTopic(Token, Chat);
+```
+ 
+
+
+
+```json title="Result"
+{
+ "ok": true,
+ "result": true
+}
+```

@@ -1,0 +1,75 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 1
+---
+
+# Создать поле
+ Создет новое поле в таблице
+
+
+
+`Функция СоздатьПоле(Знач Токен, Знач База, Знач Таблица, Знач СтруктураПоля) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | База | --base | Строка | Идентификатор базы |
+  | Таблица | --table | Строка | Идентификатор таблицы |
+  | СтруктураПоля | --fielddata | Структура Из КлючИЗначение | Описание нового поля |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    База    = "appESy99HYCLbuWlV";
+    Таблица = "tbl5gZLQ8i5xKuVTy";
+    Имя     = Строка(Новый УникальныйИдентификатор);
+
+    Поле      = OPI_Airtable.ПолучитьПолеНомера(Имя);
+    Результат = OPI_Airtable.СоздатьПоле(Токен, База, Таблица, Поле);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint airtable СоздатьПоле --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --table "tbl99eHW7uVpn8cdR" \
+              --title "bf234b4a-f391-4950-8fd0-90e8817e19e4" \
+              --fielddata "{'name':'bf234b4a-f391-4950-8fd0-90e8817e19e4','type':'number','options':{'precision':0}}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable СоздатьПоле ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --table "tbl99eHW7uVpn8cdR" ^
+              --title "bf234b4a-f391-4950-8fd0-90e8817e19e4" ^
+              --fielddata "{'name':'bf234b4a-f391-4950-8fd0-90e8817e19e4','type':'number','options':{'precision':0}}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "type": "number",
+ "options": {
+  "precision": 0
+ },
+ "id": "fldVcZeSTEx69J6u2",
+ "name": "55cedfa3-76e5-4d08-923e-99da5f14c9aa"
+}
+```

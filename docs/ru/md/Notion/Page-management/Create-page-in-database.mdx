@@ -1,0 +1,223 @@
+﻿import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+---
+sidebar_position: 2
+---
+
+# Создать страницу в базу
+ Создает страницу в базе-родителе
+
+
+
+`Функция СоздатьСтраницуВБазу(Знач Токен, Знач Родитель, Знач Данные) Экспорт`
+
+  | Параметр | CLI опция | Тип | Назначение |
+  |-|-|-|-|
+  | Токен | --token | Строка | Токен |
+  | Родитель | --base | Строка | ID родительской базы |
+  | Данные | --data | Соответствие Из КлючИЗначение | Соответствие свойств |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
+
+<br/>
+
+
+
+
+```bsl title="Пример кода"
+    Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
+    База      = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
+    Картинка_ = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
+
+    Картинка = Новый Соответствие;
+    Картинка.Вставить("Лого", Картинка_);
+
+    Свойства = Новый Соответствие;
+    Свойства.Вставить("Имя"               , "ООО Вектор");
+    Свойства.Вставить("Описание"          , "Наш первый клиент");
+    Свойства.Вставить("Номер"             , 1);
+    Свойства.Вставить("Статус"            , "Обычный");
+    Свойства.Вставить("Дата создания"     , OPI_Инструменты.ПолучитьТекущуюДату());
+    Свойства.Вставить("Картинка"          , Картинка);
+    Свойства.Вставить("Активен"           , Истина);
+    Свойства.Вставить("Сайт"              , "https://vector.ru");
+    Свойства.Вставить("Почта"             , "mail@vector.ru");
+    Свойства.Вставить("Телефон"           , "88005553535");
+    Свойства.Вставить("Статус"            , "Новый");
+
+    Результат = OPI_Notion.СоздатьСтраницуВБазу(Токен, База, Свойства);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint notion СоздатьСтраницуВБазу --token "***" \
+              --base "12082aa7-fc4e-81e4-a694-ecc74712d756" \
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':1,'Статус':'Новый','Дата создания':'2024-10-15T09:17:08.4353796Z','Картинка':{'Лого':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion СоздатьСтраницуВБазу ^
+              --token "***" ^
+              --base "12082aa7-fc4e-81e4-a694-ecc74712d756" ^
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':1,'Статус':'Новый','Дата создания':'2024-10-15T09:17:08.4353796Z','Картинка':{'Лого':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "object": "page",
+ "id": "11982aa7-fc4e-817a-a22e-c303e89630e4",
+ "created_time": "2024-10-08T17:43:00Z",
+ "last_edited_time": "2024-10-08T17:43:00Z",
+ "created_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "last_edited_by": {
+  "object": "user",
+  "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
+ },
+ "cover": null,
+ "icon": null,
+ "parent": {
+  "type": "database_id",
+  "database_id": "11982aa7-fc4e-817b-8882-f2ec929e9249"
+ },
+ "archived": false,
+ "in_trash": false,
+ "properties": {
+  "Картинка": {
+   "id": "GwHP",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Активен": {
+   "id": "I%5Cit",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Номер": {
+   "id": "LYhy",
+   "type": "number",
+   "number": 1
+  },
+  "Телефон": {
+   "id": "N%3A%60j",
+   "type": "phone_number",
+   "phone_number": "88005553535"
+  },
+  "Почта": {
+   "id": "_GzL",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
+  },
+  "Пользователь": {
+   "id": "fqnB",
+   "type": "people",
+   "people": []
+  },
+  "Статус": {
+   "id": "k_dl",
+   "type": "select",
+   "select": {
+    "id": "6d76ff5e-d6d1-4266-b808-5372ec81a8da",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Дата создания": {
+   "id": "lFrr",
+   "type": "date",
+   "date": {
+    "start": "2024-10-08T11:43:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Описание": {
+   "id": "zAM%7D",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Наш первый клиент",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Наш первый клиент",
+     "href": null
+    }
+   ]
+  },
+  "Имя": {
+   "id": "title",
+   "type": "title",
+   "title": [
+    {
+     "type": "text",
+     "text": {
+      "content": "ООО Вектор",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "ООО Вектор",
+     "href": null
+    }
+   ]
+  }
+ },
+ "url": "https://www.notion.so/11982aa7fc4e817aa22ec303e89630e4",
+ "public_url": null,
+ "request_id": "a0eef4c4-d384-4f73-89d9-5fbb2a90d644"
+}
+```
