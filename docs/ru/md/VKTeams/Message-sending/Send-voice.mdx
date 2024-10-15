@@ -30,6 +30,7 @@ import TabItem from '@theme/TabItem';
 Если вы хотите, чтобы клиент отображал этот файл как воспроизводимое голосовое сообщение, он должен быть в формате aac, ogg или m4a
 
  Метод в документации API: [POST /messages/sendVoice](https://teams.vk.com/botapi/#/messages/post_messages_sendVoice)
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
 :::
 <br/>
 
@@ -58,7 +59,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint vkteams ОтправитьГолосовоеСообщение \
+                    oint vkteams ОтправитьГолосовоеСообщение \
               --token "***" \
               --chatid "689203963@chat.agent" \
               --file "C:\Users\Administrator\AppData\Local\Temp\gvbcg2rqwif.m4a" \
@@ -68,7 +69,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint vkteams ОтправитьГолосовоеСообщение ^
+                    oint vkteams ОтправитьГолосовоеСообщение ^
               --token "***" ^
               --chatid "689203963@chat.agent" ^
               --file "C:\Users\Administrator\AppData\Local\Temp\gvbcg2rqwif.m4a" ^

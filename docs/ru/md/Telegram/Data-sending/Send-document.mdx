@@ -29,6 +29,7 @@ import TabItem from '@theme/TabItem';
 
 :::tip
 Метод в документации API: [sendDocument](https://core.telegram.org/bots/api#senddocument)
+Параметры с типом данных Двоичные данные могут принимать также пути к файлам на диске и URL
 :::
 <br/>
 
@@ -59,7 +60,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint telegram ОтправитьДокумент \
+                    oint telegram ОтправитьДокумент \
               --token "***" \
               --chat "@testsichee" \
               --text "Строковое значение" \
@@ -70,7 +71,7 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint telegram ОтправитьДокумент ^
+                    oint telegram ОтправитьДокумент ^
               --token "***" ^
               --chat "@testsichee" ^
               --text "Строковое значение" ^
