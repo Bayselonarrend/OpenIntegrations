@@ -1,3 +1,4 @@
-oint dropbox ЗагрузитьФайлПоURL --token "***" \
+oint dropbox ЗагрузитьФайлПоURL \
+  --token "***" \
   --url "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx" \
   --path "/New/url_doc.docx"

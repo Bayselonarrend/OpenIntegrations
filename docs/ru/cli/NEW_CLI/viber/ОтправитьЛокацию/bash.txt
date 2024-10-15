@@ -1,4 +1,5 @@
-oint viber ОтправитьЛокацию --token "***" \
+oint viber ОтправитьЛокацию \
+  --token "***" \
   --lat "48.87373649724122" \
   --long "2.2954639195323967" \
   --user "tMNGhftyUPrB3r1lD+bT4g==" \

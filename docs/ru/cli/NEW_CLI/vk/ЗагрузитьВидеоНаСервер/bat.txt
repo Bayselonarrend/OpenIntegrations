@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданны как путь к файлу .json
+
 oint vk ЗагрузитьВидеоНаСервер ^
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/video.mp4" ^
   --title "Новое видео" ^

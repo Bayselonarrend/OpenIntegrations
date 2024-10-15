@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданны как путь к файлу .json
+
 oint vk ЗагрузитьФотоНаСервер ^
   --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
   --type "Пост" ^

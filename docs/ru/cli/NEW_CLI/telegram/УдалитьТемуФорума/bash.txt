@@ -1,3 +1,4 @@
-oint telegram УдалитьТемуФорума --token "***" \
+oint telegram УдалитьТемуФорума \
+  --token "***" \
   --forum "-1001971186208" \
-  --topic "5598"
+  --topic "5609"

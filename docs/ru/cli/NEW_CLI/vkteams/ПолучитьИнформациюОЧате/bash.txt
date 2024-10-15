@@ -1,2 +1,3 @@
-oint vkteams ПолучитьИнформациюОЧате --token "***" \
+oint vkteams ПолучитьИнформациюОЧате \
+  --token "***" \
   --chatid "AoLI0egLWBSLR1Ngn2w"

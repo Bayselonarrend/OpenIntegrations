@@ -1,3 +1,4 @@
-oint dropbox ДобавитьТег --token "***" \
+oint dropbox ДобавитьТег \
+  --token "***" \
   --path "/New/mydoc.docx" \
   --tag "Важное"

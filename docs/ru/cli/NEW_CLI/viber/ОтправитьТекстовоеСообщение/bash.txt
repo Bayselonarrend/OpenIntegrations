@@ -1,4 +1,7 @@
-oint viber ОтправитьТекстовоеСообщение --token "***" \
+# JSON данные также могут быть переданны как путь к файлу .json
+
+oint viber ОтправитьТекстовоеСообщение \
+  --token "***" \
   --text "Тестовое сообщение" \
   --user "tMNGhftyUPrB3r1lD+bT4g==" \
   --ischannel true \
