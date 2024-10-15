@@ -23,18 +23,30 @@ sidebar_position: 4
 
 
 ```bsl title="Пример кода"
-    Токен = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     Результат = OPI_Dropbox.ПолучитьИнформациюОбАккаунте(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ПолучитьИнформациюОбАккаунте --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --account %account%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ПолучитьИнформациюОбАккаунте --token "***" \
+              --account "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПолучитьИнформациюОбАккаунте ^
+              --token "***" ^
+              --account "dbid:AAA4WKMCfgoW5LwuNQFeLOyp-X4omQiNDhE"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

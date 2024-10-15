@@ -26,14 +26,9 @@ sidebar_position: 1
 
     Result = OPI_Notion.UserList(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion UserList --token "secret_9RsfMrRMqZwqp0Zl0B..."
-
-```
 
 ```json title="Result"
 {

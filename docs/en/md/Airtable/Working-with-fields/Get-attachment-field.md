@@ -24,14 +24,9 @@ sidebar_position: 5
 ```bsl title="Code example"
     Result = OPI_Airtable.GetAttachmentField("Attachment");
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable GetAttachmentField --title "Attachment"
-
-```
 
 ```json title="Result"
 {

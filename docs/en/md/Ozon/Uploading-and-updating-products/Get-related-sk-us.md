@@ -37,14 +37,9 @@ The response will contain all SKUs associated with the passed SKUs. The method c
 
     Result = OPI_Ozon.GetRelatedSKUs(ClientID, APIKey, SKU);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetRelatedSKUs --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
-
-```
 
 ```json title="Result"
 {

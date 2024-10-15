@@ -28,14 +28,26 @@ sidebar_position: 2
 
     Результат    = OPI_Notion.ПолучитьДанныеПользователя(Токен, Пользователь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion ПолучитьДанныеПользователя --token "secret_9RsfMrRMqZwqp0Zl0B..." --user "ed71865a989146bc86cdwdf24..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion ПолучитьДанныеПользователя --token "***" \
+              --user "ed71865a-9891-46bc-86cd-a92aa499cfdb"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ПолучитьДанныеПользователя ^
+              --token "***" ^
+              --user "ed71865a-9891-46bc-86cd-a92aa499cfdb"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -29,14 +29,24 @@ sidebar_position: 1
 
     Результат = OPI_Slack.ПолучитьСписокВнешнихФайлов(Токен, Канал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПолучитьСписокВнешнихФайлов --token %token% --channel "C070VPMKN8J" --cursor %cursor%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПолучитьСписокВнешнихФайлов --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПолучитьСписокВнешнихФайлов ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

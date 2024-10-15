@@ -46,14 +46,9 @@ Method at API documentation: [GET /events/get](https://teams.vk.com/botapi/#/eve
 
     EndDo;
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams GetEvents --token "001.3501506236.091..." --last "Events[Events.UBound()][eventId]" --timeout %timeout%
-
-```
 
 ```json title="Result"
 {

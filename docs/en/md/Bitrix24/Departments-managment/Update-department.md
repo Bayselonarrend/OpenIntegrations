@@ -32,15 +32,15 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 ```bsl title="Code example"
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
 
-    DepartmentID = "612";
+    DepartmentID = "600";
     ParentID     = 7;
 
     Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID, , ParentID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
-    DepartmentID = "614";
+    DepartmentID = "602";
     Name         = "New department";
     ParentID     = 1;
     HeadID       = 10;
@@ -52,14 +52,9 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
         , HeadID
         , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdateDepartment --url "b24-ar17wx.bitrix24.by" --depid "70" --title %title% --parentid "1" --headid "10" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

@@ -39,14 +39,30 @@ sidebar_position: 8
 
     Результат = OPI_Telegram.ОтправитьМестоположение(Токен, IDКанала, Ширина, Долгота);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьМестоположение --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --lat %lat% --long "48.87373649724122" --keyboard %keyboard%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьМестоположение --token "***" \
+              --chat "@testsichee" \
+              --lat "48.87373649724122" \
+              --long "48.87373649724122"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьМестоположение ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --lat "48.87373649724122" ^
+              --long "48.87373649724122"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -29,14 +29,9 @@ This structure should be supplemented with fields that depend on the product cat
 ```bsl title="Code example"
     Result = OPI_Ozon.GetProductStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

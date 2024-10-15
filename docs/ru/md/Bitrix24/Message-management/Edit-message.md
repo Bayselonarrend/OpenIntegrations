@@ -30,15 +30,15 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDСообщения = "18126";
+    IDСообщения = "17908";
 
     Текст    = "Новый текст сообщения";
 
     Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "21750a67006e9f06006b12e400000001000...";
-    IDСообщения    = "18128";
+    Токен          = "49e20867006e9f06006b12e400000001000...";
+    IDСообщения    = "17910";
 
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -49,14 +49,9 @@ sidebar_position: 2
 
     Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст, Вложения, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ИзменитьСообщение --url %url% --message %message% --text %text% --blocks %blocks% --token %token%
 
-```
+
 
 ```json title="Результат"
 {

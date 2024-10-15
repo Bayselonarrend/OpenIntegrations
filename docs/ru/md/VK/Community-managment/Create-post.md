@@ -30,8 +30,8 @@ sidebar_position: 1
     Текст     = "Пост из автотеста";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";  // URL, Путь или Двоичные данные
-    Картинка2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";  // URL, Путь или Двоичные данные
+    Картинка2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
 
     ИВФ = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка2, ИВФ);
@@ -44,14 +44,32 @@ sidebar_position: 1
 
     Результат = OPI_VK.СоздатьПост(Текст, Картинка, Ложь  ,    , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СоздатьПост --text %text% --pictures %pictures% --ad %ad% --url %url% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СоздатьПост --text "Пост из автотеста" \
+              --pictures "C:\Users\Administrator\AppData\Local\Temp\htntb5b3mly.png" \
+              --ad true \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СоздатьПост ^
+              --text "Пост из автотеста" ^
+              --pictures "C:\Users\Administrator\AppData\Local\Temp\htntb5b3mly.png" ^
+              --ad true ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

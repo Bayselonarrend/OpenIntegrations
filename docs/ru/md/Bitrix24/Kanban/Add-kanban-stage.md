@@ -44,18 +44,13 @@ sidebar_position: 1
     Цвет         = "0026FF";
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "21750a67006e9f06006b12e400000001000...";
+    Токен     = "49e20867006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ДобавитьСтадиюКанбана(URL, Наименование, Цвет, IDПредыдущей, , Истина, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ДобавитьСтадиюКанбана --url "b24-ar17wx.bitrix24.by" --title %title% --color %color% --prevstage %prevstage% --entityid %entityid% --admin %admin% --token "56898d66006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

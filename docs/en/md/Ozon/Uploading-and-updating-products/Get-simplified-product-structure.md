@@ -24,14 +24,9 @@ sidebar_position: 21
 ```bsl title="Code example"
     Result = OPI_Ozon.GetSimplifiedProductStructure();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetSimplifiedProductStructure --empty %empty%
-
-```
 
 ```json title="Result"
 {

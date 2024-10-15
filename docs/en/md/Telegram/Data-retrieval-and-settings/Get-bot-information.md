@@ -28,14 +28,9 @@ Method at API documentation: [getMe](https://core.telegram.org/bots/api#getme)
     Token  = "6129457865:AAFyzNYOAFbu...";
     Result = OPI_Telegram.GetBotInformation(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram GetBotInformation --token "6129457865:AAFyzNYOAFbu..."
-
-```
 
 ```json title="Result"
 {

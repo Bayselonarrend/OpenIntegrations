@@ -24,18 +24,30 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Блок      = "11e82aa7-fc4e-81a6-964e-e3689f51bcbf";
+    Блок      = "11c82aa7-fc4e-817a-8b3c-fb5bd406e07c";
 
     Результат    = OPI_Notion.ВернутьДочерниеБлоки(Токен, Блок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion ВернутьДочерниеБлоки --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion ВернутьДочерниеБлоки --token "***" \
+              --block "12082aa7-fc4e-8136-917c-e838f972af74"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ВернутьДочерниеБлоки ^
+              --token "***" ^
+              --block "12082aa7-fc4e-8136-917c-e838f972af74"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

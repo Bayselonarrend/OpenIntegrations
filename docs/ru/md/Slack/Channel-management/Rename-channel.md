@@ -25,19 +25,33 @@ sidebar_position: 13
 
 ```bsl title="Пример кода"
     Токен    = "xoxb-6965308400114-696804637...";
-    Канал    = "C07R7MSSPDM";
+    Канал    = "C07RTRYK673";
     Название = "testconv" + Строка(Новый УникальныйИдентификатор);
 
     Результат = OPI_Slack.ПереименоватьКанал(Токен, Канал, Название);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПереименоватьКанал --token %token% --channel "C070VPMKN8J" --title %title%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПереименоватьКанал --token "***" \
+              --channel "C07SJFNT9SL" \
+              --title "testconv9e5bb126-2a68-4e43-8ff1-049303a0549e"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПереименоватьКанал ^
+              --token "***" ^
+              --channel "C07SJFNT9SL" ^
+              --title "testconv9e5bb126-2a68-4e43-8ff1-049303a0549e"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

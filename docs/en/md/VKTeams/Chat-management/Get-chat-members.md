@@ -32,14 +32,9 @@ Method at API documentation: [GET /chats/getMembers](https://teams.vk.com/botapi
 
     Result = OPI_VKTeams.GetChatMembers(Token, ChatID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams GetChatMembers --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w" --cursor %cursor%
-
-```
 
 ```json title="Result"
 {

@@ -24,18 +24,13 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    PostID     = "4712";
+    PostID     = "4578";
 
     Result = OPI_VK.DeletePost(PostID, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk DeletePost --post "3356" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

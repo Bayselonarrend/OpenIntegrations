@@ -25,7 +25,7 @@ sidebar_position: 7
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Option = "2601";
+    Option = "2571";
 
     Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);
 
@@ -33,14 +33,9 @@ sidebar_position: 7
 
     OPI_Tools.Pause(5);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk DeleteProductPropertyVariant --option "2054" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

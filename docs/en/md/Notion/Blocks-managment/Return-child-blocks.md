@@ -24,18 +24,13 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Block = "11e82aa7-fc4e-81a6-964e-e3689f51bcbf";
+    Block = "11c82aa7-fc4e-817a-8b3c-fb5bd406e07c";
 
     Result = OPI_Notion.ReturnChildBlocks(Token, Block);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint notion ReturnChildBlocks --token "secret_9RsfMrRMqZwqp0Zl0B..." --block %block%
-
-```
 
 ```json title="Result"
 {

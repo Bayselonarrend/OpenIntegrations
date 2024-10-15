@@ -50,14 +50,9 @@ In 1C the method can be used as a procedure, without getting a return value. Ret
     OPI_Ozon.CompleteComplexAttribute(ItemStructure, 5076 , 0, CategoryAttribute1);
     OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048 , 0, CategoryAttribute2);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon CompleteComplexAttribute --object %object% --attributeid %attributeid% --complexid %complexid% --values %values%
-
-```
 
 ```json title="Result"
 {

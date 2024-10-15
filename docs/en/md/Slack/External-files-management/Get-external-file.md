@@ -24,18 +24,13 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Token  = "xoxb-6965308400114-696804637...";
-    FileID = "F07RN8F33GS";
+    FileID = "F07RF36SEAX";
 
     Result = OPI_Slack.GetExternalFile(Token, FileID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetExternalFile --token %token% --fileid "F070P52CU94"
-
-```
 
 ```json title="Result"
 {

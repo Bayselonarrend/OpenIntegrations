@@ -25,18 +25,30 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
     Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь  = "/3971b158-4a89-4050-8150-1497befa9c9b.png";
+    Путь  = "/7741cbaf-fee5-4841-b046-ace454f3a373.png";
 
     Результат = OPI_YandexDisk.СкачатьФайл(Токен, Путь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk СкачатьФайл --token %token% --path %path% --out %out%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk СкачатьФайл --token "***" \
+              --path "/19f0da08-92c2-44b6-97c0-35732788e82d.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk СкачатьФайл ^
+              --token "***" ^
+              --path "/19f0da08-92c2-44b6-97c0-35732788e82d.png"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 НЕ JSON: FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…

@@ -31,14 +31,9 @@ Method at API documentation: [post /v1/warehouse/list](https://docs.ozon.ru/api/
 
     Result = OPI_Ozon.GetWarehousesList(ClientID, APIKey);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetWarehousesList --clientid "2128753" --apikey "7cc90d26-33e4-499b..."
-
-```
 
 ```json title="Result"
 {

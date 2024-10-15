@@ -28,24 +28,19 @@ sidebar_position: 2
 
 ```bsl title="Пример кода"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЛида = "412";
+    IDЛида = "400";
 
     Результат = OPI_Bitrix24.УдалитьЛид(URL, IDЛида);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "21750a67006e9f06006b12e400000001000...";
-    IDЛида = "414";
+    Токен  = "49e20867006e9f06006b12e400000001000...";
+    IDЛида = "402";
 
     Результат = OPI_Bitrix24.УдалитьЛид(URL, IDЛида, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 УдалитьЛид --url "b24-ar17wx.bitrix24.by" --lead %lead% --token "ec4dc366006e9f06006b12e400000001000..."
 
-```
+
 
 ```json title="Результат"
 {

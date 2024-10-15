@@ -29,20 +29,15 @@ Sends a message that arrives in the channel but is visible only to a specific us
     Token   = "xoxb-6965308400114-696804637...";
     Channel = "C06UFNUTKUL";
     User    = "U06UABH3APP";
-    Image   = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Image   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Text    = "Ephemeral message";
 
     Block  = OPI_Slack.GenerateImageBlock(Image, "Image");
     Result = OPI_Slack.SendEphemeralMessage(Token, Channel, Text, User, Block);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack SendEphemeralMessage --token %token% --channel "C070VPMKN8J" --text %text% --user %user% --blocks %blocks%
-
-```
 
 ```json title="Result"
 {

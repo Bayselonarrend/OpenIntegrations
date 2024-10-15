@@ -34,9 +34,9 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен         = "001.3501506236.091...";
     IDЧата        = "689203963@chat.agent";
-    IDЦитируемого = "7425684917876428136";
+    IDЦитируемого = "7424418276186262625";
 
-    Файл     = "https://api.athenaeum.digital/test_data/song.m4a"  ;        // URL
+    Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.m4a"  ;        // URL
     ФайлПуть = ПолучитьИмяВременногоФайла("m4a");   // Путь
 
     КопироватьФайл(Файл, ФайлПуть);
@@ -49,14 +49,30 @@ sidebar_position: 3
 
     Результат = OPI_VKTeams.ОтправитьГолосовоеСообщение(Токен, IDЧата, ФайлДД);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ОтправитьГолосовоеСообщение --token "001.3501506236.091..." --chatid "689203963@chat.agent" --file "https://openintegrations.dev/test_data/song.m4a" --type %type% --reply "7401868177463836806" --keyboard %keyboard%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ОтправитьГолосовоеСообщение --token "***" \
+              --chatid "689203963@chat.agent" \
+              --file "C:\Users\Administrator\AppData\Local\Temp\sthvkyzxuce.m4a" \
+              --reply "7425884578021117348"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ОтправитьГолосовоеСообщение ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --file "C:\Users\Administrator\AppData\Local\Temp\sthvkyzxuce.m4a" ^
+              --reply "7425884578021117348"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

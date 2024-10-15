@@ -40,14 +40,9 @@ Method at API documentation: [post /v2/product/list](https://docs.ozon.ru/api/se
 
     Result = OPI_Ozon.GetProductList(ClientID, APIKey, Filter);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductList --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --filter %filter% --last %last%
-
-```
 
 ```json title="Result"
 {

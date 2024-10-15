@@ -26,18 +26,13 @@ sidebar_position: 3
 ```bsl title="Code example"
     Token = "xoxb-6965308400114-696804637...";
     Title = "NewFile";
-    File  = "https://api.athenaeum.digital/test_data/document.docx";
+    File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     Result = OPI_Slack.AddExternalFile(Token, File, Title);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack AddExternalFile --token %token% --url "https://opi.neocities.org/test_data/document.docx" --title %title%
-
-```
 
 ```json title="Result"
 {

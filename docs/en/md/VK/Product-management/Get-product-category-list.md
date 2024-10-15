@@ -26,14 +26,9 @@ sidebar_position: 1
 
     Result = OPI_VK.GetProductCategoryList(Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetProductCategoryList --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

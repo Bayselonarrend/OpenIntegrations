@@ -29,7 +29,7 @@ sidebar_position: 3
     Параметры = ПолучитьПараметрыВК();
 
     Название = "Тестовая подборка";
-    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Основная = Истина;
     Скрытая  = Ложь;
 
@@ -39,14 +39,32 @@ sidebar_position: 3
         , Скрытая
         , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СоздатьПодборкуТоваров --title %title% --picture %picture% --main %main% --hidden %hidden% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СоздатьПодборкуТоваров --title "Тестовая подборка" \
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --main true \
+              --hidden false \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СоздатьПодборкуТоваров ^
+              --title "Тестовая подборка" ^
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --main true ^
+              --hidden false ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

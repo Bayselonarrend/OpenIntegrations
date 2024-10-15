@@ -31,14 +31,9 @@ Method at API documentation: [getChatMemberCount](https://core.telegram.org/bots
 
     Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram GetParticipantCount --token "6129457865:AAFyzNYOAFbu..." --chat %chat%
-
-```
 
 ```json title="Result"
 {

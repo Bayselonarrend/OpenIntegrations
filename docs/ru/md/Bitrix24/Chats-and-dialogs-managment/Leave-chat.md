@@ -28,24 +28,19 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЧата  = "1006";
+    IDЧата  = "994";
 
     Результат = OPI_Bitrix24.ПокинутьЧат(URL, IDЧата);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "21750a67006e9f06006b12e400000001000...";
-    IDЧата    = "1008";
+    Токен     = "49e20867006e9f06006b12e400000001000...";
+    IDЧата    = "996";
 
     Результат = OPI_Bitrix24.ПокинутьЧат(URL, IDЧата, Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ПокинутьЧат --url %url% --chat %chat% --token %token%
 
-```
+
 
 ```json title="Результат"
 {

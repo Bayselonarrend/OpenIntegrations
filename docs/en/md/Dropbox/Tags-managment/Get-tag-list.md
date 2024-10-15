@@ -23,7 +23,7 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Token = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     PathsArray = New Array;
     PathsArray.Add("/New/Dogs.mp3");
@@ -31,14 +31,9 @@ sidebar_position: 1
 
     Result = OPI_Dropbox.GetTagList(Token, PathsArray);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox GetTagList --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --paths %paths%
-
-```
 
 ```json title="Result"
 {

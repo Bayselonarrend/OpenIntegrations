@@ -47,14 +47,32 @@ sidebar_position: 1
 
     Результат  = OPI_Viber.ОтправитьТекстовоеСообщение(Токен, Текст, IDПользователя, ОтправкаВКанал, Клавиатура);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ОтправитьТекстовоеСообщение --token %token% --text %text% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel% --keyboard %keyboard%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ОтправитьТекстовоеСообщение --token "***" \
+              --text "Тестовое сообщение" \
+              --user "tMNGhftyUPrB3r1lD+bT4g==" \
+              --ischannel true \
+              --keyboard "{'Buttons':[{'ActionType':'reply','ActionBody':'Кнопка 1','Text':'Кнопка 1','BgColor':'#2db9b9','Coloumns':3},{'ActionType':'reply','ActionBody':'Кнопка 2','Text':'Кнопка 2','BgColor':'#2db9b9','Coloumns':3},{'ActionType':'reply','ActionBody':'Кнопка 3','Text':'Кнопка 3','BgColor':'#2db9b9','Coloumns':3}],'Type':'keyboard'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ОтправитьТекстовоеСообщение ^
+              --token "***" ^
+              --text "Тестовое сообщение" ^
+              --user "tMNGhftyUPrB3r1lD+bT4g==" ^
+              --ischannel true ^
+              --keyboard "{'Buttons':[{'ActionType':'reply','ActionBody':'Кнопка 1','Text':'Кнопка 1','BgColor':'#2db9b9','Coloumns':3},{'ActionType':'reply','ActionBody':'Кнопка 2','Text':'Кнопка 2','BgColor':'#2db9b9','Coloumns':3},{'ActionType':'reply','ActionBody':'Кнопка 3','Text':'Кнопка 3','BgColor':'#2db9b9','Coloumns':3}],'Type':'keyboard'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

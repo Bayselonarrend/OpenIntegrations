@@ -60,14 +60,9 @@ sidebar_position: 11
 
     КонецЦикла;
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ОтветитьНаСобытиеКлавиатуры --token "001.3501506236.091..." --queryid %queryid% --text %text% --url %url% --showalert %showalert%
 
-```
+
 
 ```json title="Результат"
 {

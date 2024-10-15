@@ -24,17 +24,12 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Parameters   = GetVKParameters();
-    DiscussionID = "52595199";
+    DiscussionID = "52583592";
     Result       = OPI_VK.OpenDiscussion(DiscussionID, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk OpenDiscussion --topic "51798392" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

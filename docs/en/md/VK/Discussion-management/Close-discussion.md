@@ -25,17 +25,12 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Parameters   = GetVKParameters();
-    DiscussionID = "52595199";
+    DiscussionID = "52583592";
     Result       = OPI_VK.CloseDiscussion(DiscussionID, False, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CloseDiscussion --topic "51798392" --remove %remove% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

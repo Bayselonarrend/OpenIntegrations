@@ -25,21 +25,37 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Откуда = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
-    Куда   = "1WBgDTXbFwMmu1pOOxkej3eD-fx3KQ9kiQ0Np5B2oeMY";
-    Лист   = "1710472523";
+    Токен  = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Откуда = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
+    Куда   = "1CMjanhXxVBuxSLj6tAIya9LldwB5crkM-7DJuiutM1k";
+    Лист   = "501655435";
 
     Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gsheets КопироватьЛист --token %token% --from "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --to "1tPDQHmduH9NASRhy0I-a6--ebNNJ5A6wXhhTRcNhD7s" --sheet "25093199"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gsheets КопироватьЛист --token "***" \
+              --from "1ZUsPnNQMNtLS0RGKFegPvF2jwU4xJp8AhmpgFNTq-98" \
+              --to "1-KNA3DAeS60iWjWATJCZSpuBLGuOOjFRj65wHWXtzrU" \
+              --sheet "616761557"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gsheets КопироватьЛист ^
+              --token "***" ^
+              --from "1ZUsPnNQMNtLS0RGKFegPvF2jwU4xJp8AhmpgFNTq-98" ^
+              --to "1-KNA3DAeS60iWjWATJCZSpuBLGuOOjFRj65wHWXtzrU" ^
+              --sheet "616761557"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

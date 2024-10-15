@@ -28,23 +28,18 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
 
 ```bsl title="Code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    FolderID = "12882";
+    FolderID = "12702";
 
     Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetFolderExternalLink --url "b24-ar17wx.bitrix24.by" --folderid "5016" --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

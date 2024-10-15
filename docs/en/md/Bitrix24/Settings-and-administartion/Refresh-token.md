@@ -26,18 +26,13 @@ sidebar_position: 3
 ```bsl title="Code example"
     ClientID     = "local.6667fc928a50a9.70414732";
     ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
-    Refresh      = "11f43167006e9f06006b12e400000001000...";
+    Refresh      = "39613067006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RefreshToken(ClientID, ClientSecret, Refresh);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 RefreshToken --clientid "local.6667fc928a50a9.70414732" --clientsecret "ZeKyeYIgy2NsHZqsIHY6GfG1V..." --refresh "eebed066006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

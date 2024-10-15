@@ -25,19 +25,33 @@ sidebar_position: 11
 
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
-    Канал = "C07R7MSSPDM";
+    Канал = "C07RTRYK673";
     Тема  = "Тестовая тема";
 
     Результат = OPI_Slack.УстановитьТемуКанала(Токен, Канал, Тема);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack УстановитьТемуКанала --token %token% --channel "C070VPMKN8J" --theme "Тестовая тема"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack УстановитьТемуКанала --token "***" \
+              --channel "C07SJFNT9SL" \
+              --theme "Тестовая тема"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack УстановитьТемуКанала ^
+              --token "***" ^
+              --channel "C07SJFNT9SL" ^
+              --theme "Тестовая тема"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -28,14 +28,26 @@ sidebar_position: 3
 
     Результат    = OPI_Viber.ПолучитьДанныеПользователя(Токен, IDПользователя);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber ПолучитьДанныеПользователя --token %token% --user %user%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber ПолучитьДанныеПользователя --token "***" \
+              --user "tMNGhftyUPrB3r1lD+bT4g=="
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber ПолучитьДанныеПользователя ^
+              --token "***" ^
+              --user "tMNGhftyUPrB3r1lD+bT4g=="
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

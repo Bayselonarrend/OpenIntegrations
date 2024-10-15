@@ -25,14 +25,9 @@ sidebar_position: 1
     AppKey = "oynqxds...";
     Result = OPI_Dropbox.GetAuthorizationLink(AppKey);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox GetAuthorizationLink --appkey "oynqxds..."
-
-```
 
 ```json title="Result"
 "https://www.dropbox.com/oauth2/authorize?client_id=oynqxdsqft8oyky&response_type=code&token_access_type=offline"

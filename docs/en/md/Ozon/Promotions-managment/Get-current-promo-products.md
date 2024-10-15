@@ -34,14 +34,9 @@ Method at API documentation: [post /v1/actions/products](https://docs.ozon.ru/ap
 
     Result = OPI_Ozon.GetCurrentPromoProducts(ClientID, APIKey, PromoID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetCurrentPromoProducts --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --actionid %actionid% --offset %offset%
-
-```
 
 ```json title="Result"
 {

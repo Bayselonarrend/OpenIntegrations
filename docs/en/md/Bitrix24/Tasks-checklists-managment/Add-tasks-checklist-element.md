@@ -30,26 +30,21 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```bsl title="Code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    TaskID = "2446";
+    TaskID = "2416";
 
     Text = "Checklist element";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    TaskID = "2448";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    TaskID = "2418";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 AddTasksChecklistElement --url "b24-ar17wx.bitrix24.by" --task "1080" --text "Checklist element" --complete %complete% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

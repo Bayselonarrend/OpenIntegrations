@@ -26,18 +26,13 @@ sidebar_position: 6
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL   = "https://yadi.sk/d/pbI5RwM66dK-nA";
+    URL   = "https://yadi.sk/d/te2VIXkfQtKeww";
 
     Result = OPI_YandexDisk.SavePublicObjectToDisk(Token, URL);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk SavePublicObjectToDisk --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --from %from% --to %to%
-
-```
 
 ```json title="Result"
 {

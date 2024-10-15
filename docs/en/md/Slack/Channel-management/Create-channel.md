@@ -29,14 +29,9 @@ sidebar_position: 3
 
     Result = OPI_Slack.CreateChannel(Token, Name);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack CreateChannel --token %token% --title %title% --private %private%
-
-```
 
 ```json title="Result"
 {

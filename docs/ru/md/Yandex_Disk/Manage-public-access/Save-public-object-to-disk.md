@@ -26,18 +26,30 @@ sidebar_position: 6
 
 ```bsl title="Пример кода"
     Токен  = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL    = "https://yadi.sk/d/pbI5RwM66dK-nA";
+    URL    = "https://yadi.sk/d/te2VIXkfQtKeww";
 
     Результат   = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk СохранитьПубличныйОбъектНаДиск --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --from %from% --to %to%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk СохранитьПубличныйОбъектНаДиск --token "***" \
+              --url "https://yadi.sk/d/_GkFflxiflKIKg"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk СохранитьПубличныйОбъектНаДиск ^
+              --token "***" ^
+              --url "https://yadi.sk/d/_GkFflxiflKIKg"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

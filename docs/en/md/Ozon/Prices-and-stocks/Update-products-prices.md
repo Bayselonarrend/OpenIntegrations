@@ -29,7 +29,7 @@ Method at API documentation: [post /v1/product/import/prices](https://docs.ozon.
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1220696576";
+    ProductID = "1218931806";
 
     Prices = New Structure;
     Prices.Insert("auto_action_enabled"   , "DISABLED");
@@ -43,14 +43,9 @@ Method at API documentation: [post /v1/product/import/prices](https://docs.ozon.
 
     Result = OPI_Ozon.UpdateProductsPrices(ClientID, APIKey, Prices);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon UpdateProductsPrices --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --prices %prices%
-
-```
 
 ```json title="Result"
 {

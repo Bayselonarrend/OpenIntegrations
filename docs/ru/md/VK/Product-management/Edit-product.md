@@ -27,21 +27,35 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Товар = "9756133";
+    Товар = "9733388";
 
     ОписаниеТовара = Новый Соответствие;
     ОписаниеТовара.Вставить("Имя", "Тестовый товар измененный");
 
     Результат = OPI_VK.ИзменитьТовар(Товар, ОписаниеТовара, , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ИзменитьТовар --item %item% --product %product% --sel %sel% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ИзменитьТовар --product "{'Имя':'Тестовый товар измененный'}" \
+              --item 9774863 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ИзменитьТовар ^
+              --product "{'Имя':'Тестовый товар измененный'}" ^
+              --item 9774863 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

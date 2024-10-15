@@ -29,18 +29,13 @@ Method at API documentation: [GET /messages/deleteMessages](https://teams.vk.com
 ```bsl title="Code example"
     Token     = "001.3501506236.091...";
     ChatID    = "689203963@chat.agent";
-    MessageID = "7425684917876428136";
+    MessageID = "7424418276186262625";
 
     Result = OPI_VKTeams.DeleteMessage(Token, ChatID, MessageID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams DeleteMessage --token "001.3501506236.091..." --chatid "689203963@chat.agent" --messageid "7402287649739767956"
-
-```
 
 ```json title="Result"
 {

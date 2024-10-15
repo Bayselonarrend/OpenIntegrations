@@ -24,18 +24,13 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    Selection  = "130";
+    Selection  = "125";
 
     Result = OPI_VK.GetSelectionsByID(Selection, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetSelectionsByID --sels %sels% --auth %auth%
-
-```
 
 ```json title="Result"
 {

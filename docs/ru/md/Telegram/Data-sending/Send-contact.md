@@ -41,14 +41,32 @@ sidebar_position: 9
 
     Результат = OPI_Telegram.ОтправитьКонтакт(Токен, IDКанала, Имя, Фамилия, Телефон);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьКонтакт --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --name "Петр" --surname "Петров" --phone "88005553535" --keyboard %keyboard%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьКонтакт --token "***" \
+              --chat "@testsichee" \
+              --surname "Петров" \
+              --phone "88005553535" \
+              --name "Петр"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьКонтакт ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --surname "Петров" ^
+              --phone "88005553535" ^
+              --name "Петр"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -35,7 +35,7 @@ You can change availability for 100 products per request. You can send up to 80 
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1220696576";
+    ProductID = "1218931806";
 
     Stocks = New Structure;
     Stocks.Insert("offer_id"    , "143210610");
@@ -45,14 +45,9 @@ You can change availability for 100 products per request. You can send up to 80 
 
     Result = OPI_Ozon.UpdateProductsStocks(ClientID, APIKey, Stocks);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon UpdateProductsStocks --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --stocks %stocks%
-
-```
 
 ```json title="Result"
 {

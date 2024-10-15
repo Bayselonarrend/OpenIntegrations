@@ -35,14 +35,9 @@ sidebar_position: 4
 
     Result = OPI_VK.CreatePoll(Question, OptionArray, , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreatePoll --question "What's your favorite color?" --options %options% --picture %picture% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

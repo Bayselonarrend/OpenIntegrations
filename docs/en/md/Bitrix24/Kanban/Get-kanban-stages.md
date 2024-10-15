@@ -33,18 +33,13 @@ Method at API documentation: [task.stages.get](https://dev.1c-bitrix.ru/rest_hel
     Result = OPI_Bitrix24.GetKanbanStages(URL, , True);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetKanbanStages(URL, , , Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetKanbanStages --url "b24-ar17wx.bitrix24.by" --entityid %entityid% --admin %admin% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

@@ -29,18 +29,13 @@ Method at API documentation: [deleteMessage](https://core.telegram.org/bots/api#
 ```bsl title="Code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "@testsichee";
-    MessageID = "9761";
+    MessageID = "9480";
 
     Result = OPI_Telegram.DeleteMessage(Token, ChatID, MessageID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram DeleteMessage --token "6129457865:AAFyzNYOAFbu..." --chat "@testsichee" --message "6846"
-
-```
 
 ```json title="Result"
 {

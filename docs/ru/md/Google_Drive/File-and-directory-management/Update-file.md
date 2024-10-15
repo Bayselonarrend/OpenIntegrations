@@ -25,21 +25,37 @@ sidebar_position: 8
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Токен         = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
     НовоеИмя      = "Обновленный файл.jpg";
-    Идентификатор = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
-    Файл          = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
+    Идентификатор = "17pGWmj6IhPQB-wRJS3QOzqfqGghLRUGH";
+    Файл          = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Результат = OPI_GoogleDrive.ОбновитьФайл(Токен, Идентификатор, Файл, НовоеИмя);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gdrive ОбновитьФайл --token %token% --object "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ" --file %file% --title "Обновленный файл.jpeg"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gdrive ОбновитьФайл --token "***" \
+              --object "10MDksSJHfiN5TdiC9iG66f-BjZRTn_s6" \
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" \
+              --title "Обновленный файл.jpg"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive ОбновитьФайл ^
+              --token "***" ^
+              --object "10MDksSJHfiN5TdiC9iG66f-BjZRTn_s6" ^
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg" ^
+              --title "Обновленный файл.jpg"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -38,14 +38,9 @@ Product creation is only available in the last level categories, compare exactly
 
     Result = OPI_Ozon.GetCategoriesAndProductTypesTree(ClientID, APIKey);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetCategoriesAndProductTypesTree --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --lang %lang%
-
-```
 
 ```json title="Result"
 {

@@ -32,14 +32,9 @@ sidebar_position: 1
 
     Result = OPI_VK.GetStatistics(StartDate, EndDate, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk GetStatistics --datefrom "BegOfDay(CurrentDate)" --dateto "EndOfDay(StartDate)" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

@@ -30,14 +30,28 @@ sidebar_position: 5
 
     Результат = OPI_VK.СоздатьАльбом(Имя, Описание, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СоздатьАльбом --title %title% --description %description% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СоздатьАльбом --title "Альбом из автотеста" \
+              --description "Новый альбом из автотеста" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СоздатьАльбом ^
+              --title "Альбом из автотеста" ^
+              --description "Новый альбом из автотеста" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

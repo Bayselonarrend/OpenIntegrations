@@ -31,14 +31,9 @@ Required fields may depend on the type of order or nesting. Be sure to read the 
 ```bsl title="Code example"
     Result = OPI_CDEK.GetOrderDescription();
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint cdek GetOrderDescription --empty %empty% --required %required% --ostore %ostore%
-
-```
 
 ```json title="Result"
 {

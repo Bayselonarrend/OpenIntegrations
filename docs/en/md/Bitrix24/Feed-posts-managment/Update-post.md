@@ -33,8 +33,8 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```bsl title="Code example"
     Text   = "New post text";
     Title  = "New post title";
-    Image1 = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "970";
+    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
+    PostID = "958";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -44,19 +44,14 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    PostID = "968";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    PostID = "956";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdatePost --url "b24-ar17wx.bitrix24.by" --postid "438" --text %text% --vision %vision% --files %files% --title %title% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

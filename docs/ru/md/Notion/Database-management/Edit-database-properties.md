@@ -27,7 +27,7 @@ sidebar_position: 3
 
 ```bsl title="Пример кода"
     Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    База      = "11e82aa7-fc4e-816a-9812-fcc332821c4a";
+    База      = "11c82aa7-fc4e-8103-a6dc-db01190daae1";
 
     Заголовок    = "Тестовый заголовок";
     Описание     = "Тестовое описание";
@@ -38,14 +38,32 @@ sidebar_position: 3
 
     Результат = OPI_Notion.ИзменитьСвойстваБазы(Токен, База, Свойства, Заголовок, Описание);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion ИзменитьСвойстваБазы --token "secret_9RsfMrRMqZwqp0Zl0B..." --base "5dd94c34fab04bff9..." --props %props% --title "Обновленный заголовок" --description "Обновленное описание базы"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion ИзменитьСвойстваБазы --token "***" \
+              --base "12082aa7-fc4e-81e4-a694-ecc74712d756" \
+              --props "{'Почта':'rich_text','Сайт':null}" \
+              --title "Тестовый заголовок" \
+              --description "Тестовое описание"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion ИзменитьСвойстваБазы ^
+              --token "***" ^
+              --base "12082aa7-fc4e-81e4-a694-ecc74712d756" ^
+              --props "{'Почта':'rich_text','Сайт':null}" ^
+              --title "Тестовый заголовок" ^
+              --description "Тестовое описание"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -27,8 +27,8 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Свойство  = "878";
-    Вариант   = "2601";
+    Свойство  = "863";
+    Вариант   = "2571";
     Значение  = "Новое имя варианта";
 
     Результат = OPI_VK.ИзменитьВариантСвойстваТовара(Значение
@@ -36,14 +36,30 @@ sidebar_position: 6
             , Вариант
             , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ИзменитьВариантСвойстваТовара --value %value% --prop %prop% --option %option% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ИзменитьВариантСвойстваТовара --value "Новое имя варианта" \
+              --prop "883" \
+              --option 2616 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ИзменитьВариантСвойстваТовара ^
+              --value "Новое имя варианта" ^
+              --prop "883" ^
+              --option 2616 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -29,10 +29,10 @@ sidebar_position: 2
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    CampaignNumber = "1030715875";
+    CampaignNumber = "1030710176";
     DailyLimit     = 150;
     CategoryNumber = 126;
-    PostID         = "4712";
+    PostID         = "4578";
     AccountID      = "1607951446";
 
     Result = OPI_VK.CreateAd(CampaignNumber
@@ -42,14 +42,9 @@ sidebar_position: 2
         , AccountID
         , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreateAd --campaign "1030425511" --limit "150" --category "126" --post "3356" --cabinet "1607951446" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

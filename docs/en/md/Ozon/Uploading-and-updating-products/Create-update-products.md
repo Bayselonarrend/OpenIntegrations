@@ -33,8 +33,8 @@ Methods of product structure formation: GetProductStructure(), AddProductVideo()
 ```bsl title="Code example"
     ClientID = "2128753";
     APIKey   = "7cc90d26-33e4-499b...";
-    Image1   = "https://api.athenaeum.digital/test_data/picture.jpg";
-    Image2   = "https://api.athenaeum.digital/test_data/picture2.jpg";
+    Image1   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
+    Image2   = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg";
     Video    = "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/";
 
     ImageArray = New Array;
@@ -80,14 +80,9 @@ Methods of product structure formation: GetProductStructure(), AddProductVideo()
 
     Result = OPI_Ozon.CreateUpdateProducts(ClientID, APIKey, ItemStructure);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon CreateUpdateProducts --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --items %items%
-
-```
 
 ```json title="Result"
 {

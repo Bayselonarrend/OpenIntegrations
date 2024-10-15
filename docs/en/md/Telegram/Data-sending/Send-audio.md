@@ -34,7 +34,7 @@ Method at API documentation: [sendAudio](https://core.telegram.org/bots/api#send
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";
-    Audio     = "https://api.athenaeum.digital/test_data/song.mp3";
+    Audio     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.mp3";
 
     AudioPath = GetTempFileName("mp3");
     CopyFile(Audio, AudioPath);
@@ -47,14 +47,9 @@ Method at API documentation: [sendAudio](https://core.telegram.org/bots/api#send
 
     Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram SendAudio --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "String value" --audio "https://openintegrations.dev/test_data/song.mp3" --keyboard %keyboard% --parsemode %parsemode%
-
-```
 
 ```json title="Result"
 {

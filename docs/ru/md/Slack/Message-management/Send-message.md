@@ -37,7 +37,7 @@ sidebar_position: 1
     // С вложениями (в примере: блок с картинкой)
 
     Текст        = "Сообщение с картинкой";
-    Картинка     = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Картинка     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     МассивБлоков = Новый Массив;
 
     Блок = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");
@@ -54,14 +54,30 @@ sidebar_position: 1
     ДатаОтправки  = OPI_Инструменты.ПолучитьТекущуюДату() + (Сутки * Час);
     Результат     = OPI_Slack.ОтправитьСообщение(Токен, Канал, Текст, ДатаОтправки);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ОтправитьСообщение --token %token% --channel "C070VPMKN8J" --text "Тестовое сообщение" --date %date% --blocks %blocks%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ОтправитьСообщение --token "***" \
+              --channel "C06UFNUTKUL" \
+              --text "Отложенное сообщение" \
+              --date 2024-10-16T09:17:43.1474062
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ОтправитьСообщение ^
+              --token "***" ^
+              --channel "C06UFNUTKUL" ^
+              --text "Отложенное сообщение" ^
+              --date 2024-10-16T09:17:43.1474062
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -28,14 +28,9 @@ Method at API documentation: [GET /self/get](https://teams.vk.com/botapi/#/self/
     Token  = "001.3501506236.091...";
     Result = OPI_VKTeams.CheckToken(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams CheckToken --token "001.3501506236.091..."
-
-```
 
 ```json title="Result"
 {

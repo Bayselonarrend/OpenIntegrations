@@ -27,7 +27,7 @@ sidebar_position: 7
     Параметры = ПолучитьПараметрыВК();
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
     Картинка  = Новый ДвоичныеДанные(ИВФ);
@@ -36,14 +36,26 @@ sidebar_position: 7
 
     Результат = OPI_VK.СоздатьИсторию(ИВФ, , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СоздатьИсторию --picture "https://openintegrations.dev/test_data/picture.jpg" --url %url% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СоздатьИсторию --picture "C:\Users\Administrator\AppData\Local\Temp\q5rtb2rnv2w.png" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СоздатьИсторию ^
+              --picture "C:\Users\Administrator\AppData\Local\Temp\q5rtb2rnv2w.png" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

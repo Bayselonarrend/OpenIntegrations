@@ -34,14 +34,9 @@ sidebar_position: 3
 
     Результат = OPI_Ozon.ПолучитьУчаствующиеТоварыАкции(IDКлиента, КлючAPI, IDАкции);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьУчаствующиеТоварыАкции --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --actionid %actionid% --offset %offset%
 
-```
+
 
 ```json title="Результат"
 {

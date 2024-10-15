@@ -28,14 +28,9 @@ sidebar_position: 3
 
     Result = OPI_Viber.GetUserData(Token, UserID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber GetUserData --token %token% --user %user%
-
-```
 
 ```json title="Result"
 {

@@ -25,18 +25,13 @@ sidebar_position: 6
 ```bsl title="Code example"
     Parameters = GetVKParameters();
 
-    Product = "9756133";
+    Product = "9733388";
 
     Result = OPI_VK.DeleteProduct(Product, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk DeleteProduct --item "9372711" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

@@ -35,7 +35,7 @@ sidebar_position: 5
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Документ = "https://api.athenaeum.digital/test_data/document.docx";
+    Документ = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     ДокументПуть = ПолучитьИмяВременногоФайла("docx");
     КопироватьФайл(Документ, ДокументПуть);
@@ -50,14 +50,32 @@ sidebar_position: 5
 
     Результат = OPI_Telegram.ОтправитьДокумент(Токен, IDКанала, Текст, ДокументДД, , , "customname.docx");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьДокумент --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --doc "https://openintegrations.dev/test_data/document.docx" --keyboard %keyboard% --parsemode %parsemode%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьДокумент --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --doc "C:\Users\Administrator\AppData\Local\Temp\m2edygoo0ft.docx" \
+              --filename "custom.docx"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьДокумент ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --doc "C:\Users\Administrator\AppData\Local\Temp\m2edygoo0ft.docx" ^
+              --filename "custom.docx"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -24,18 +24,13 @@ sidebar_position: 9
 
 ```bsl title="Code example"
     Parameters = GetVKParameters();
-    ImageID    = "457249318";
+    ImageID    = "457249113";
 
     Result = OPI_VK.DeleteImage(ImageID, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk DeleteImage --pictureid "457246566" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

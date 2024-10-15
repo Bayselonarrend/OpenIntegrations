@@ -29,14 +29,9 @@ sidebar_position: 2
 
     Result = OPI_VK.CreateProductProperty(Name, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreateProductProperty --title "Color" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

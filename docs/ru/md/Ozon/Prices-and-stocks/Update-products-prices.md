@@ -29,7 +29,7 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     IDКлиента     = "2128753";
     КлючAPI       = "7cc90d26-33e4-499b...";
-    IDТовара      = "1220696576";
+    IDТовара      = "1218931806";
 
     Цены = Новый Структура;
     Цены.Вставить("auto_action_enabled"   , "DISABLED");
@@ -43,14 +43,9 @@ sidebar_position: 5
 
     Результат = OPI_Ozon.ОбновитьЦеныТоваров(IDКлиента, КлючAPI, Цены);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ОбновитьЦеныТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --prices %prices%
 
-```
+
 
 ```json title="Результат"
 {

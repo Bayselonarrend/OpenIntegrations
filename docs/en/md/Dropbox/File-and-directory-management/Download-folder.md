@@ -23,19 +23,14 @@ sidebar_position: 12
 
 
 ```bsl title="Code example"
-    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Token = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
     Path  = "/New";
 
     Result = OPI_Dropbox.DownloadFolder(Token, Path);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox DownloadFolder --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --path %path%
-
-```
 
 ```json title="Result"
 NOT JSON: 50 4B 03 04 14 00 00 08 00 00 78 94 48 59 00 00 00 00 00 00 00 00 00 00 00 00 04 00 09 00 4E 65 77 2F 55 54 05 00 01 84 7B 05 67 50 4B 03 04 14 00 08 08 00 00 4F 87 AF 58 00 00 00 00 00 00 00…

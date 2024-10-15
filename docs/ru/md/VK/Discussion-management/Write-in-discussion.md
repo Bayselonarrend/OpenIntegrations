@@ -25,19 +25,33 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
-    ИДОбсуждения = "52595199";
+    ИДОбсуждения = "52583592";
     Сообщение    = "Мне больше нравится желтый";
 
     Результат = OPI_VK.НаписатьВОбсуждение(ИДОбсуждения, Сообщение, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk НаписатьВОбсуждение --topic %topic% --text %text% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk НаписатьВОбсуждение --topic 52605638 \
+              --text "Мне больше нравится желтый" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk НаписатьВОбсуждение ^
+              --topic 52605638 ^
+              --text "Мне больше нравится желтый" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

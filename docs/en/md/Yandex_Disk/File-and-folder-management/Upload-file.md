@@ -29,7 +29,7 @@ sidebar_position: 10
     Path2 = "/" + String(New UUID) + ".png";
 
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Image = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL
+    Image = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL
 
     TFN = GetTempFileName("png"); // Path
     CopyFile(Image, TFN);
@@ -38,14 +38,9 @@ sidebar_position: 10
 
     Result = OPI_YandexDisk.UploadFile(Token, Path2, TFN, True);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk UploadFile --token "y0_AgAAAABdylaOAA..." --path "/AlpacaInFile.png" --file "C:\logo.png" --rewrite %rewrite%
-
-```
 
 ```json title="Result"
 {}

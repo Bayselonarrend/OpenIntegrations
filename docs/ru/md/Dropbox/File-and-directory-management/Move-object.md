@@ -26,18 +26,32 @@ sidebar_position: 9
 ```bsl title="Пример кода"
     ОригиналныйПуть  = "/New/pic.png";
     ЦелевойПуть      = "/pic.png";
-    Токен            = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен            = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     Результат = OPI_Dropbox.ПереместитьОбъект(Токен, ОригиналныйПуть, ЦелевойПуть);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ПереместитьОбъект --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --form %form% --to %to%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ПереместитьОбъект --token "***" \
+              --from "/pic.png" \
+              --to "/New/pic.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ПереместитьОбъект ^
+              --token "***" ^
+              --from "/pic.png" ^
+              --to "/New/pic.png"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

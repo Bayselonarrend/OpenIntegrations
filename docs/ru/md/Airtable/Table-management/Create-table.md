@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База  = "appESy99HYCLbuWlV";
+    База  = "appmy5B6qi09E4wrF";
 
     МассивПолей = Новый Массив;
     МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));
@@ -44,14 +44,32 @@ sidebar_position: 1
 
     Результат = OPI_Airtable.СоздатьТаблицу(Токен, База, Наименование, МассивПолей, Описание);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable СоздатьТаблицу --token %token% --base "apptm8Xqo7TwMaipQ" --title %title% --fieldsdata %fieldsdata% --description "Новая таблица"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable СоздатьТаблицу --token "***" \
+              --base "app0r5m50QN7nWAAv" \
+              --title "Тестовая таблица 2" \
+              --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" \
+              --description "Новая таблица"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable СоздатьТаблицу ^
+              --token "***" ^
+              --base "app0r5m50QN7nWAAv" ^
+              --title "Тестовая таблица 2" ^
+              --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':0}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" ^
+              --description "Новая таблица"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

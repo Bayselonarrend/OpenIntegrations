@@ -32,14 +32,14 @@ sidebar_position: 1
 
 ```bsl title="Пример кода"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    IDЗадачи  = "2454";
+    IDЗадачи  = "2424";
 
     Время     = 3600;
 
     Результат = OPI_Bitrix24.ДобавитьТрудозатратыЗадачи(URL, IDЗадачи, Время);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "21750a67006e9f06006b12e400000001000...";
+    Токен     = "49e20867006e9f06006b12e400000001000...";
 
     Текст          = "Трудозатраты по обработке";
     IDПользователя = 10;
@@ -54,14 +54,9 @@ sidebar_position: 1
         , ДатаУстановки
         , Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint bitrix24 ДобавитьТрудозатратыЗадачи --url %url% --task %task% --amount %amount% --user %user% --text %text% --date %date% --token %token%
 
-```
+
 
 ```json title="Результат"
 {

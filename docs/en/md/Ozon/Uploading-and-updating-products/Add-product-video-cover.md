@@ -47,14 +47,9 @@ In 1C the method can be used as a procedure, without getting a return value. Ret
 
     OPI_Ozon.AddProductVideoCover(ItemStructure, Video);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon AddProductVideoCover --item %item% --url %url%
-
-```
 
 ```json title="Result"
 {

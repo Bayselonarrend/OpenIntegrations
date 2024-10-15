@@ -25,21 +25,16 @@ sidebar_position: 8
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Token      = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
     NewName    = "UpdatedFile.jpg";
-    Identifier = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
-    File       = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Binary Data or Path to file
+    Identifier = "17pGWmj6IhPQB-wRJS3QOzqfqGghLRUGH";
+    File       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Binary Data or Path to file
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gdrive UpdateFile --token %token% --object "1V0oaZh3qQZ7-wbARC8-vrErAFllsBGSJ" --file %file% --title %title%
-
-```
 
 ```json title="Result"
 {

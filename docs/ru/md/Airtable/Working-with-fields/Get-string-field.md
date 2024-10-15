@@ -24,14 +24,24 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Результат = OPI_Airtable.ПолучитьПолеСтроковое("Строковое");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьПолеСтроковое --title "Строковое"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьПолеСтроковое --title "Строковое"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеСтроковое ^
+              --title "Строковое"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

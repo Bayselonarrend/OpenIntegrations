@@ -25,14 +25,9 @@ sidebar_position: 3
     Parameters = GetTwitterAuthData();
     Result     = OPI_Twitter.RefreshToken(Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint twitter RefreshToken --auth %auth%
-
-```
 
 ```json title="Result"
 {

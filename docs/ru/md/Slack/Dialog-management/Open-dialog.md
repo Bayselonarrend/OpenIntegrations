@@ -28,14 +28,26 @@ sidebar_position: 1
 
     Результат = OPI_Slack.ОткрытьДиалог(Токен, Пользователь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ОткрытьДиалог --token %token% --users %users%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ОткрытьДиалог --token "***" \
+              --users "U06UABH3APP"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ОткрытьДиалог ^
+              --token "***" ^
+              --users "U06UABH3APP"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

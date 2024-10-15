@@ -26,14 +26,9 @@ sidebar_position: 2
     Token  = "xoxb-6965308400114-696804637...";
     Result = OPI_Slack.GetWorkspaceList(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetWorkspaceList --token %token% --cursor %cursor%
-
-```
 
 ```json title="Result"
 {

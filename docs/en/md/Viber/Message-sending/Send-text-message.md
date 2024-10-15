@@ -47,14 +47,9 @@ sidebar_position: 1
 
     Result = OPI_Viber.SendTextMessage(Token, Text, UserID, SendingToChannel, Keyboard);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber SendTextMessage --token %token% --text %text% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel% --keyboard %keyboard%
-
-```
 
 ```json title="Result"
 {

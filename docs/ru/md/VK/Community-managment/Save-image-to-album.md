@@ -27,9 +27,9 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Параметры        = ПолучитьПараметрыВК();
     ОписаниеКартинки = "Картинка автотест";
-    ИДАльбома        = "306093980";
+    ИДАльбома        = "306073188";
 
-    Картинка  = "https://api.athenaeum.digital/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
+    Картинка  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные
     ИВФ       = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);
 
@@ -39,14 +39,30 @@ sidebar_position: 8
 
     Результат = OPI_VK.СохранитьКартинкуВАльбом(ИДАльбома, ИВФ, ОписаниеКартинки, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СохранитьКартинкуВАльбом --album %album% --picture "https://openintegrations.dev/test_data/picture.jpg" --description %description% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СохранитьКартинкуВАльбом --album 306116890 \
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --description "Картинка автотест" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СохранитьКартинкуВАльбом ^
+              --album 306116890 ^
+              --picture "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --description "Картинка автотест" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

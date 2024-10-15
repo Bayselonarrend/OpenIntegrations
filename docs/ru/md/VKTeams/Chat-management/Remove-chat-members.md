@@ -33,14 +33,28 @@ sidebar_position: 1
 
     Результат = OPI_VKTeams.ИсключитьПользователейЧата(Токен, IDЧата, Пользователь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams ИсключитьПользователейЧата --token %token% --chatid %chatid% --members %members%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams ИсключитьПользователейЧата --token "***" \
+              --chatid "689203963@chat.agent" \
+              --members 1011987091
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams ИсключитьПользователейЧата ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --members 1011987091
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

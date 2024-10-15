@@ -24,18 +24,13 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Token  = "xoxb-6965308400114-696804637...";
-    FileID = "F07RFKJR7GW";
+    FileID = "F07R0K712T1";
 
     Result = OPI_Slack.MakeFilePublic(Token, FileID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack MakeFilePublic --token %token% --fileid %fileid%
-
-```
 
 ```json title="Result"
 {

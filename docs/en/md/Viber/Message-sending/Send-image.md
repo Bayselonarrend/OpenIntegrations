@@ -27,7 +27,7 @@ sidebar_position: 2
 
 ```bsl title="Code example"
     Description = "TestMessage";
-    URL         = "https://api.athenaeum.digital/test_data/picture.jpg";
+    URL         = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
     Token            = "523b5b25ed27e6ec-fdf013e4...";
@@ -41,14 +41,9 @@ sidebar_position: 2
 
     Result = OPI_Viber.SendImage(Token, URL, UserID, SendingToChannel, Description);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber SendImage --token %token% --picture %picture% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --description %description%
-
-```
 
 ```json title="Result"
 {

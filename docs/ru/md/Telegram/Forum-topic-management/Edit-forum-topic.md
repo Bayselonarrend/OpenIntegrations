@@ -31,20 +31,38 @@ sidebar_position: 3
 ```bsl title="Пример кода"
     Токен          = "6129457865:AAFyzNYOAFbu...";
     Чат            = "-1001971186208";
-    Тема           = "5543";
+    Тема           = "5429";
     НовоеИмя       = "Новый тестовый заголовок";
     НовяИконка     = "5310132165583840589";
 
     Результат = OPI_Telegram.ИзменитьТемуФорума(Токен, Чат, Тема, НовоеИмя, НовяИконка);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ИзменитьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic% --title %title% --icon %icon%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ИзменитьТемуФорума --token "***" \
+              --forum "-1001971186208" \
+              --icon "5310132165583840589" \
+              --title "Новый тестовый заголовок" \
+              --topic "5598"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ИзменитьТемуФорума ^
+              --token "***" ^
+              --forum "-1001971186208" ^
+              --icon "5310132165583840589" ^
+              --title "Новый тестовый заголовок" ^
+              --topic "5598"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

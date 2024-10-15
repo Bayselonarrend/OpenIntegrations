@@ -41,14 +41,9 @@ sidebar_position: 4
 
     Result = OPI_Viber.SendContact(Token, Name, Phone, UserID, SendingToChannel);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber SendContact --token %token% --name %name% --phone %phone% --user "d3jxe1111111111jYGgZg" --ischannel %ischannel%
-
-```
 
 ```json title="Result"
 {

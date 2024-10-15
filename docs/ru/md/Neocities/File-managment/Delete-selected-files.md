@@ -35,14 +35,9 @@ sidebar_position: 3
 
     Результат = OPI_Neocities.УдалитьВыбранныеФайлы(Токен, Пути);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint neocities УдалитьВыбранныеФайлы --token "7419cd51de4037f7..." --paths %paths%
 
-```
+
 
 ```json title="Результат"
 {

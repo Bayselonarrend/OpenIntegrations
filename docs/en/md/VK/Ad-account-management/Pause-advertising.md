@@ -31,14 +31,9 @@ sidebar_position: 3
 
     Result = OPI_VK.PauseAdvertising(AccountID, AdID, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk PauseAdvertising --cabinet "1607951446" --adv "0" --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

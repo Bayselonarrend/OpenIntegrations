@@ -25,18 +25,13 @@ sidebar_position: 7
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/3971b158-4a89-4050-8150-1497befa9c9b.png";
+    Path  = "/7741cbaf-fee5-4841-b046-ace454f3a373.png";
 
     Result = OPI_YandexDisk.DownloadFile(Token, Path);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk DownloadFile --token %token% --path "/alpaca.png" --out %out%
-
-```
 
 ```json title="Result"
 NOT JSON: FF D8 FF E1 54 C1 45 78 69 66 00 00 49 49 2A 00 08 00 00 00 0B 00 0E 01 02 00 20 00 00 00 92 00 00 00 0F 01 02 00 05 00 00 00 B2 00 00 00 10 01 02 00 07 00 00 00 B8 00 00 00 12 01 03 00 01 00…

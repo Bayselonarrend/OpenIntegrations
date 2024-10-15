@@ -30,14 +30,28 @@ sidebar_position: 3
 
     Результат = OPI_Dropbox.ОбновитьТокен(КлючПриложения, СекретПриложения, РефрешТокен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ОбновитьТокен --appkey "oynqxds..." --appsecret "tk2oewn..." --refresh "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ОбновитьТокен --appkey "***" \
+              --appsecret "***" \
+              --refresh "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ОбновитьТокен ^
+              --appkey "***" ^
+              --appsecret "***" ^
+              --refresh "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

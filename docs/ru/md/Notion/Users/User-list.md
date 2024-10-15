@@ -26,14 +26,24 @@ sidebar_position: 1
 
     Результат = OPI_Notion.СписокПользователей(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint notion СписокПользователей --token "secret_9RsfMrRMqZwqp0Zl0B..."
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint notion СписокПользователей --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint notion СписокПользователей ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -28,14 +28,9 @@ sidebar_position: 1
 
     Result = OPI_Slack.GetChannelList(Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack GetChannelList --token %token% --notarchived "True" --cursor %cursor%
-
-```
 
 ```json title="Result"
 {

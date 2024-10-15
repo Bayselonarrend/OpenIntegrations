@@ -25,19 +25,33 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
     Токен        = "xoxb-6965308400114-696804637...";
-    Канал        = "C07R7MSSPDM";
+    Канал        = "C07RTRYK673";
     Пользователь = "U06UABH3APP";
 
     Результат = OPI_Slack.ПригласитьПользователейВКанал(Токен, Канал, Пользователь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПригласитьПользователейВКанал --token %token% --channel "C070VPMKN8J" --users %users%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПригласитьПользователейВКанал --token "***" \
+              --channel "C07SJFNT9SL" \
+              --users "U06UABH3APP"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПригласитьПользователейВКанал ^
+              --token "***" ^
+              --channel "C07SJFNT9SL" ^
+              --users "U06UABH3APP"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

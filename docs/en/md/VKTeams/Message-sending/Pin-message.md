@@ -31,18 +31,13 @@ To call this method, the bot must be an administrator in the chat room
 ```bsl title="Code example"
     Token     = "001.3501506236.091...";
     ChatID    = "689203963@chat.agent";
-    MessageID = "7425684917876428136";
+    MessageID = "7424418276186262625";
 
     Result = OPI_VKTeams.PinMessage(Token, ChatID, MessageID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams PinMessage --token "001.3501506236.091..." --chatid "689203963@chat.agent" --messageid "7401463509940174907"
-
-```
 
 ```json title="Result"
 {

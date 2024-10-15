@@ -25,18 +25,30 @@ sidebar_position: 7
 
 ```bsl title="Пример кода"
     Путь      = "/New/pic.png";
-    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     Результат = OPI_Dropbox.УдалитьОбъект(Токен, Путь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox УдалитьОбъект --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --path %path% --permanently %permanently%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox УдалитьОбъект --token "***" \
+              --path "/Новый каталог"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox УдалитьОбъект ^
+              --token "***" ^
+              --path "/Новый каталог"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

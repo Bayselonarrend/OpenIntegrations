@@ -35,14 +35,9 @@ Method at API documentation: [reopenForumTopic](https://core.telegram.org/bots/a
   
   Result = OPI_Telegram.OpenForumThread(Token, Chat, Topic);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram OpenForumThread --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
-
-```
 
 ```json title="Result"
 {

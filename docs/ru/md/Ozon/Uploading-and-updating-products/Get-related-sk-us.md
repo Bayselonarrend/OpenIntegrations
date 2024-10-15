@@ -37,14 +37,9 @@ sidebar_position: 17
 
     Результат = OPI_Ozon.ПолучитьСвязанныеSKU(IDКлиента, КлючAPI, SKU);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьСвязанныеSKU --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --sku %sku%
 
-```
+
 
 ```json title="Результат"
 {

@@ -25,8 +25,8 @@ sidebar_position: 3
 
 
 ```bsl title="Пример кода"
-    Токен  = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Книга  = "1ybexzLz6S_cthsQNdMkNbOlAD3yjFzdArRm_589T_FQ";
+    Токен  = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Книга  = "1O3ZKBO8P6IhCsFCYl-QRW_7Kjp2DQWef2234pjZmsBg";
     Лист   = "Лист2";
 
     МассивЯчеек = Новый Массив;
@@ -36,14 +36,28 @@ sidebar_position: 3
 
     Результат = OPI_GoogleSheets.ПолучитьЗначенияЯчеек(Токен, Книга, МассивЯчеек, Лист);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gsheets ПолучитьЗначенияЯчеек --token %token% --spreadsheet "1Pu07Y5UiGVfW4fqfP7tcSQtdSX_2wdm2Ih23zlxJJwc" --cells %cells% --sheetname "Лист2"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gsheets ПолучитьЗначенияЯчеек --token "***" \
+              --spreadsheet "1uEI_ZOtSAh0GjXirtipg57MUMetFmf1OUElyN8o-UPg" \
+              --sheetname "Лист2"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gsheets ПолучитьЗначенияЯчеек ^
+              --token "***" ^
+              --spreadsheet "1uEI_ZOtSAh0GjXirtipg57MUMetFmf1OUElyN8o-UPg" ^
+              --sheetname "Лист2"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

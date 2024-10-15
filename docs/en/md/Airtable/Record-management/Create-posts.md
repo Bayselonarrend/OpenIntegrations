@@ -26,8 +26,8 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appESy99HYCLbuWlV";
-    Table = "tbl5gZLQ8i5xKuVTy";
+    Base  = "appmy5B6qi09E4wrF";
+    Table = "tblYwj7Cnw6w3FGWh";
 
     Number = 10;
     String = "Hello";
@@ -41,14 +41,9 @@ sidebar_position: 3
 
     Result = OPI_Airtable.CreatePosts(Token, Base, Table, ArrayOfDescriptions);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable CreatePosts --token %token% --base "apptm8Xqo7TwMaipQ" --table "tbl9G4jVoTJpxYwSY" --data %data%
-
-```
 
 ```json title="Result"
 {

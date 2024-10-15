@@ -33,18 +33,13 @@ You can create barcodes for a maximum of 100 products per request
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1220696576";
+    ProductID = "1218931806";
 
     Result = OPI_Ozon.CreateBarcodes(ClientID, APIKey, ProductID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon CreateBarcodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productids %productids%
-
-```
 
 ```json title="Result"
 {

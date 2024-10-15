@@ -32,14 +32,28 @@ sidebar_position: 2
 
     Результат = OPI_VK.СделатьРепост(IDПоста, IDСтены, , , Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СделатьРепост --post %post% --from %from% --to %to% --ad %ad% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СделатьРепост --post 2571 \
+              --from -218704372 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СделатьРепост ^
+              --post 2571 ^
+              --from -218704372 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

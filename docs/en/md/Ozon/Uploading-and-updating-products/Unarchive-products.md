@@ -31,18 +31,13 @@ You can restore from the archive no more than 10 products that were automaticall
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1220696576";
+    ProductID = "1218931806";
 
     Result = OPI_Ozon.UnarchiveProducts(ClientID, APIKey, ProductID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon UnarchiveProducts --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --products %products%
-
-```
 
 ```json title="Result"
 {

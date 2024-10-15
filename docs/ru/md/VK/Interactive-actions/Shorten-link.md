@@ -27,14 +27,26 @@ sidebar_position: 5
 
     Результат = OPI_VK.СократитьСсылку("https://github.com/Bayselonarrend/OpenIntegrations", Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk СократитьСсылку --url %url% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk СократитьСсылку --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk СократитьСсылку ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 "https://vk.cc/ctL1sM"

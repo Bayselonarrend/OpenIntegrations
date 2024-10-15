@@ -30,14 +30,24 @@ sidebar_position: 2
     Токен          = "6129457865:AAFyzNYOAFbu...";
     Результат      = OPI_Telegram.ПолучитьОбновления(Токен);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ПолучитьОбновления --token "6129457865:AAFyzNYOAFbu..." --timeout %timeout% --offset %offset%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ПолучитьОбновления --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ПолучитьОбновления ^
+              --token "***"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

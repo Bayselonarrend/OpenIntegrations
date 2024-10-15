@@ -24,14 +24,24 @@ sidebar_position: 10
 ```bsl title="Пример кода"
     Результат = OPI_GoogleDrive.ПолучитьОписаниеФайла();
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gdrive ПолучитьОписаниеФайла
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gdrive ПолучитьОписаниеФайла --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive ПолучитьОписаниеФайла ^
+              --empty false
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

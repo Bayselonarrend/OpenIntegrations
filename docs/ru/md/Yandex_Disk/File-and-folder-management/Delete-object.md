@@ -25,18 +25,32 @@ sidebar_position: 4
 
 ```bsl title="Пример кода"
     Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Путь  = "/b3327332-137b-454c-be37-06cff128756c.png";
+    Путь  = "/13a2ddbe-89a7-4106-a973-f105aa5412fd.png";
 
     Результат = OPI_YandexDisk.УдалитьОбъект(Токен, Путь, Ложь);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint yadisk УдалитьОбъект --token "y0_AgAAAABdylaOAA..." --path "/Альпака.png" --can %can%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint yadisk УдалитьОбъект --token "***" \
+              --path "/4f1954c8-c1db-4fd5-810d-bc0042ea7c3b.png" \
+              --can false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk УдалитьОбъект ^
+              --token "***" ^
+              --path "/4f1954c8-c1db-4fd5-810d-bc0042ea7c3b.png" ^
+              --can false
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 null

@@ -33,14 +33,9 @@ Method at API documentation: [banChatMember](https://core.telegram.org/bots/api#
 
     Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram Ban --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --user "461699897"
-
-```
 
 ```json title="Result"
 {

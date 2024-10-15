@@ -24,20 +24,15 @@ sidebar_position: 1
 
 
 ```bsl title="Code example"
-    Token      = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
-    Identifier = "14hysfOxsStktI4JZEXRiSZ9Rl69wNJwX";
+    Token      = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
+    Identifier = "17pGWmj6IhPQB-wRJS3QOzqfqGghLRUGH";
     Comment    = "Comment text";
 
     Result = OPI_GoogleDrive.CreateComment(Token, Identifier, Comment);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gdrive CreateComment --token %token% --object "1rCyOc4A8VYw7DM3HV55P9BuKWayJOSvW" --text %text%
-
-```
 
 ```json title="Result"
 {

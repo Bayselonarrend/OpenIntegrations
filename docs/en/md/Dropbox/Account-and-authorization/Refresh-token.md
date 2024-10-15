@@ -30,14 +30,9 @@ sidebar_position: 3
   
   Result = OPI_Dropbox.RefreshToken(AppKey, AppSecret, RefreshToken);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox RefreshToken --appkey "oynqxds..." --appsecret "tk2oewn..." --refresh "oZFWg3DmZ_IAAAAAAAAAAWilOA0M1SjV..."
-
-```
 
 ```json title="Result"
 {

@@ -24,20 +24,15 @@ sidebar_position: 3
 
 
 ```bsl title="Code example"
-    Token        = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Token        = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
     Directory    = "root";
     NameContains = "data";
 
     Result = OPI_GoogleDrive.GetFilesList(Token, NameContains, Directory);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint gdrive GetFilesList --token %token% --querry %querry% --catalog "1VWoLK5w0uPVSjK3oyIXeiMtINN4jDOz4"
-
-```
 
 ```json title="Result"
 [

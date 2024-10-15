@@ -35,7 +35,7 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
     FieldsStructure.Insert("OPPORTUNITY" , 50000);
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    DealID = "812";
+    DealID = "788";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
 
@@ -43,19 +43,14 @@ dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
     FieldsStructure.Insert("BEGINDATE", "2025-01-01");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    DealID = "814";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    DealID = "790";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdateDeal --url "b24-ar17wx.bitrix24.by" --deal %deal% --fields %fields% --token "6476c766006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

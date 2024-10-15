@@ -35,14 +35,30 @@ sidebar_position: 2
 
     Результат = OPI_Telegram.СоздатьТемуФорума(Токен, Чат, Имя, Иконка);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram СоздатьТемуФорума --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --title %title% --icon %icon%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram СоздатьТемуФорума --token "***" \
+              --forum "-1001971186208" \
+              --icon "5357419403325481346" \
+              --title "Тестовая тема c4f190c7-3e37-4ffa-88c3-64170ac6fc92"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram СоздатьТемуФорума ^
+              --token "***" ^
+              --forum "-1001971186208" ^
+              --icon "5357419403325481346" ^
+              --title "Тестовая тема c4f190c7-3e37-4ffa-88c3-64170ac6fc92"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

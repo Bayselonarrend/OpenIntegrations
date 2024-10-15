@@ -34,7 +34,7 @@ sidebar_position: 2
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
 
     КартинкаПуть = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, КартинкаПуть);
@@ -47,14 +47,30 @@ sidebar_position: 2
 
     Результат = OPI_Telegram.ОтправитьКартинку(Токен, IDКанала, Текст, КартинкаДД);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьКартинку --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --picture "https://openintegrations.dev/test_data/picture.jpg" --keyboard %keyboard% --parsemode %parsemode%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьКартинку --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --picture "C:\Users\Administrator\AppData\Local\Temp\soaqlv2nznt.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьКартинку ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --picture "C:\Users\Administrator\AppData\Local\Temp\soaqlv2nznt.png"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

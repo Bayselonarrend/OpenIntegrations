@@ -40,14 +40,9 @@ sidebar_position: 3
 
     Result = OPI_Airtable.CreateDatabase(Token, Region, Name, TableMapping);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable CreateDatabase --token %token% --ws "wspdf8yl1yZz3PmWZ" --title "TestDatabase" --tablesdata %tablesdata%
-
-```
 
 ```json title="Result"
 {

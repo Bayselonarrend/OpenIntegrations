@@ -35,14 +35,9 @@ Method at API documentation: [unpinAllForumTopicMessages](https://core.telegram.
   
   Result = OPI_Telegram.ClearThreadPinnedMessagesList(Token, Chat, Topic);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram ClearThreadPinnedMessagesList --token "6129457865:AAFyzNYOAFbu..." --forum %forum% --topic %topic%
-
-```
 
 ```json title="Result"
 {

@@ -28,7 +28,7 @@ sidebar_position: 3
 
 ```bsl title="Code example"
     Extension = "docx";
-    URL       = "https://api.athenaeum.digital/test_data/document.docx";
+    URL       = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
     Token            = "523b5b25ed27e6ec-fdf013e4...";
@@ -42,14 +42,9 @@ sidebar_position: 3
 
     Result = OPI_Viber.SendFile(Token, URL, UserID, SendingToChannel, Extension);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint viber SendFile --token %token% --file %file% --user "tMNGh111111111D+bT4g" --ischannel %ischannel% --ext %ext% --size %size%
-
-```
 
 ```json title="Result"
 {

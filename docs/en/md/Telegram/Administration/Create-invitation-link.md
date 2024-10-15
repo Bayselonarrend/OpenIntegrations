@@ -40,14 +40,9 @@ Method at API documentation: [createChatInviteLink](https://core.telegram.org/bo
   
   Result = OPI_Telegram.CreateInvitationLink(Token, ChannelID, Title, Expiration, 200);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram CreateInvitationLink --token "6129457865:AAFyzNYOAFbu..." --chat %chat% --title "Link  + String(CurrentDate)" --expire %expire% --limit %limit%
-
-```
 
 ```json title="Result"
 {

@@ -24,14 +24,9 @@ sidebar_position: 10
 ```bsl title="Code example"
     Result = OPI_Airtable.GetLinkField("Link");
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable GetLinkField --title "Link"
-
-```
 
 ```json title="Result"
 {

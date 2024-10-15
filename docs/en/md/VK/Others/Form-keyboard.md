@@ -28,14 +28,9 @@ sidebar_position: 1
 
     Keyboard = OPI_VK.FormKeyboard(ButtonArray);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk FormKeyboard --buttons %buttons%
-
-```
 
 ```json title="Result"
 {

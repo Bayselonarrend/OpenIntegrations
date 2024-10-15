@@ -23,19 +23,31 @@ sidebar_position: 1
 
 
 ```bsl title="Пример кода"
-    Токен         = "ya29.a0AcM612zdAe2M8Ywdxt7xmK1VAAj2m3yjTdP1Ap8cFmqbE8lVngjIAujPtjc_c94MCuKNLfn7MSssBd6NfMXDQDrHMUv7Fgjp7cjuXk68n...";
+    Токен         = "ya29.a0AcM612wD1Uh1izWoUeXoBTM33TS6PlaGZFI6xXeGHeWT2_ZZZ0UbpJzbIurRFIjYKBnh4ZJ0HEgC9HNppTpTV6hgI7ZOwZO6J5KZlEbzH...";
     Идентификатор = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Результат   = OPI_GoogleDrive.ПолучитьИнформациюОбОбъекте(Токен, Идентификатор);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint gdrive ПолучитьИнформациюОбОбъекте --token %token% --object "1dg_MwwwPSPYT0p3y-8dvGWoapbwaaaaa"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint gdrive ПолучитьИнформациюОбОбъекте --token "***" \
+              --object "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint gdrive ПолучитьИнформациюОбОбъекте ^
+              --token "***" ^
+              --object "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -33,14 +33,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
     Result = OPI_Neocities.GetSiteData(Token, Website);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint neocities GetSiteData --token "7419cd51de4037f7..." --sitename %sitename%
-
-```
 
 ```json title="Result"
 {

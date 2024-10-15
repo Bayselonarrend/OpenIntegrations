@@ -26,19 +26,33 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Товар     = "9756133";
-    Подборка  = "130";
+    Товар     = "9733388";
+    Подборка  = "125";
 
     Результат = OPI_VK.УдалитьТоварИзПодборки(Товар, Подборка, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk УдалитьТоварИзПодборки --item %item% --sel %sel% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk УдалитьТоварИзПодборки --sel 130 \
+              --item 9774863 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk УдалитьТоварИзПодборки ^
+              --sel 130 ^
+              --item 9774863 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

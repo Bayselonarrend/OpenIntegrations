@@ -35,14 +35,9 @@ Method at API documentation: [post /v1/barcode/add](https://docs.ozon.ru/api/sel
 
     Result = OPI_Ozon.BindBarcodes(ClientID, APIKey, BarcodesMap);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon BindBarcodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --barcodes %barcodes%
-
-```
 
 ```json title="Result"
 {

@@ -35,14 +35,9 @@ sidebar_position: 11
 
     Результат = OPI_Ozon.ИзменитьАртикулыТоваров(IDКлиента, КлючAPI, СоответствиеАртикулов);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ИзменитьАртикулыТоваров --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --offers %offers%
 
-```
+
 
 ```json title="Результат"
 {

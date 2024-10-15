@@ -24,18 +24,30 @@ sidebar_position: 10
 
 ```bsl title="Пример кода"
     Токен = "xoxb-6965308400114-696804637...";
-    Канал = "C07R7MSSPDM";
+    Канал = "C07RTRYK673";
 
     Результат = OPI_Slack.ПокинутьКанал(Токен, Канал);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint slack ПокинутьКанал --token %token% --channel "C070VPMKN8J"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint slack ПокинутьКанал --token "***" \
+              --channel "C07SJFNT9SL"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint slack ПокинутьКанал ^
+              --token "***" ^
+              --channel "C07SJFNT9SL"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

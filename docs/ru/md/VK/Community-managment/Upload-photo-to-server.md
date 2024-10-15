@@ -26,19 +26,33 @@ sidebar_position: 11
 ```bsl title="Пример кода"
     Параметры    = ПолучитьПараметрыВК();
 
-    Картинка = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
+    Картинка = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
     Вид      = "Пост";
 
     Результат = OPI_VK.ЗагрузитьФотоНаСервер(Картинка, Параметры, Вид);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ЗагрузитьФотоНаСервер --file %file% --auth %auth% --type %type%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ЗагрузитьФотоНаСервер --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" \
+              --type "Пост" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ЗагрузитьФотоНаСервер ^
+              --file "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg" ^
+              --type "Пост" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

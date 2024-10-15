@@ -31,14 +31,24 @@ sidebar_position: 7
 
     Результат = OPI_Viber.СформироватьКлавиатуруИзМассиваКнопок(МассивКнопок);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint viber СформироватьКлавиатуруИзМассиваКнопок --buttons %buttons% --color %color%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint viber СформироватьКлавиатуруИзМассиваКнопок --buttons "['Кнопка 1','Кнопка 2','Кнопка 3']"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint viber СформироватьКлавиатуруИзМассиваКнопок ^
+              --buttons "['Кнопка 1','Кнопка 2','Кнопка 3']"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

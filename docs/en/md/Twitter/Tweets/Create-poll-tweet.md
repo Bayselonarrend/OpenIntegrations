@@ -34,14 +34,9 @@ sidebar_position: 6
 
     Result = OPI_Twitter.CreatePollTweet(Text, AnswersArray, 60, Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint twitter CreatePollTweet --text %text% --options %options% --duration %duration% --auth %auth%
-
-```
 
 ```json title="Result"
 {

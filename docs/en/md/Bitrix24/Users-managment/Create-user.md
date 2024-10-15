@@ -42,7 +42,7 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
     Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "21750a67006e9f06006b12e400000001000...";
+    Token = "49e20867006e9f06006b12e400000001000...";
     Email = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
@@ -54,14 +54,9 @@ Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users
 
     Result = OPI_Bitrix24.CreateUser(URL, UserStructure, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 CreateUser --url "b24-ar17wx.bitrix24.by" --fields %fields% --token "fe3fa966006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

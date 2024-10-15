@@ -31,14 +31,9 @@ Method at API documentation: [unhideGeneralForumTopic](https://core.telegram.org
 
     Result = OPI_Telegram.ShowMainForumTopic(Token, Chat);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint telegram ShowMainForumTopic --token "6129457865:AAFyzNYOAFbu..." --forum %forum%
-
-```
 
 ```json title="Result"
 {

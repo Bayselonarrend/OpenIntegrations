@@ -34,14 +34,9 @@ Method at API documentation: [post /v1/product/info/description](https://docs.oz
 
     Result = OPI_Ozon.GetProductDescription(ClientID, APIKey, , Article);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon GetProductDescription --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid %productid% --offerid %offerid%
-
-```
 
 ```json title="Result"
 {

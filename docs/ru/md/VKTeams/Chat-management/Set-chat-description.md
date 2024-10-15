@@ -35,14 +35,28 @@ sidebar_position: 13
 
     Результат = OPI_VKTeams.УстановитьОписаниеЧата(Токен, IDЧата, Текст);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vkteams УстановитьОписаниеЧата --token "001.3501506236.091..." --chatid "689203963@chat.agent" --text %text%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vkteams УстановитьОписаниеЧата --token "***" \
+              --chatid "689203963@chat.agent" \
+              --text "Новое описание"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vkteams УстановитьОписаниеЧата ^
+              --token "***" ^
+              --chatid "689203963@chat.agent" ^
+              --text "Новое описание"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

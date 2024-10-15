@@ -24,14 +24,24 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Результат = OPI_VK.ПолучитьОписаниеТовара();
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ПолучитьОписаниеТовара
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ПолучитьОписаниеТовара --empty false
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ПолучитьОписаниеТовара ^
+              --empty false
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

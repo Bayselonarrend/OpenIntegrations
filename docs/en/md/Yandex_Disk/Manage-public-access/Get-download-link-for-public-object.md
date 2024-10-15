@@ -25,18 +25,13 @@ sidebar_position: 5
 
 ```bsl title="Code example"
     Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    URL   = "https://yadi.sk/d/pbI5RwM66dK-nA";
+    URL   = "https://yadi.sk/d/te2VIXkfQtKeww";
 
     Result = OPI_YandexDisk.GetDownloadLinkForPublicObject(Token, URL);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk GetDownloadLinkForPublicObject --token "y0_AgAAAABdylaOAA..." --url "https://disk.yandex.by/i/txwzakUVtxgjoQ" --path %path%
-
-```
 
 ```json title="Result"
 {

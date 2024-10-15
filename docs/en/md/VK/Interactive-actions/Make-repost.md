@@ -32,14 +32,9 @@ sidebar_position: 2
 
     Result = OPI_VK.MakeRepost(PostID, WallID, , , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk MakeRepost --post "2571" --from "-218704372" --to %to% --ad %ad% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

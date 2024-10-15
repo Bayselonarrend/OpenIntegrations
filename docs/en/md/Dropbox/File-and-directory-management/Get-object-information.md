@@ -25,18 +25,13 @@ sidebar_position: 1
 
 ```bsl title="Code example"
     Path  = "/New/pic.png";
-    Token = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Token = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     Result = OPI_Dropbox.GetObjectInformation(Token, Path, True);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint dropbox GetObjectInformation --token "sl.B6AQWp9MlZlz4iaf41whVKxX9-MXeCiQhPRe4YIRxFmZ3zHsdjmOAatzgaWVhqmlIOvDD6WIUQ..." --path %path% --detail %detail%
-
-```
 
 ```json title="Result"
 {

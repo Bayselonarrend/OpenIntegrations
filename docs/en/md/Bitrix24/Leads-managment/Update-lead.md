@@ -34,7 +34,7 @@ Method at API documentation: [crm.lead.update](https://dev.1c-bitrix.ru/rest_hel
     FieldsStructure.Insert("TITLE"          , "SuperClient");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/1o2...";
-    LeadID = "412";
+    LeadID = "400";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure);
 
@@ -42,19 +42,14 @@ Method at API documentation: [crm.lead.update](https://dev.1c-bitrix.ru/rest_hel
     FieldsStructure.Insert("LAST_NAME" , "Evgeniev");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "21750a67006e9f06006b12e400000001000...";
-    LeadID = "414";
+    Token  = "49e20867006e9f06006b12e400000001000...";
+    LeadID = "402";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure, Token);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 UpdateLead --url "b24-ar17wx.bitrix24.by" --lead %lead% --fields %fields% --token "ec4dc366006e9f06006b12e400000001000..."
-
-```
 
 ```json title="Result"
 {

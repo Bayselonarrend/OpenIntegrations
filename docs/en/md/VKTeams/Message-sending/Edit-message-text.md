@@ -33,7 +33,7 @@ You can mention a user by appending their userId to the text in the following fo
 ```bsl title="Code example"
     Token     = "001.3501506236.091...";
     ChatID    = "689203963@chat.agent";
-    MessageID = "7425684917876428136";
+    MessageID = "7424418276186262625";
     Text      = "New message text";
 
     Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text);
@@ -43,14 +43,9 @@ You can mention a user by appending their userId to the text in the following fo
 
     Result = OPI_VKTeams.EditMessageText(Token, ChatID, MessageID, Text, Markup);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams EditMessageText --token "001.3501506236.091..." --chatid "689203963@chat.agent" --messageid "7402287649739767956" --text %text% --parsemod "HTML"
-
-```
 
 ```json title="Result"
 {

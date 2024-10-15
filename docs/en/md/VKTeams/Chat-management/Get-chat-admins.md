@@ -31,14 +31,9 @@ Method at API documentation: [GET /chats/getAdmins](https://teams.vk.com/botapi/
 
     Result = OPI_VKTeams.GetChatAdmins(Token, ChatID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams GetChatAdmins --token "001.3501506236.091..." --chatid "AoLI0egLWBSLR1Ngn2w"
-
-```
 
 ```json title="Result"
 {

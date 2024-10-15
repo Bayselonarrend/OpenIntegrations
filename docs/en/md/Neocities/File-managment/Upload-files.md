@@ -29,9 +29,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 ```bsl title="Code example"
     Token = "7419cd51de4037f7...";
 
-    Image1 = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Path or Binary Data
-    GIF    = "https://api.athenaeum.digital/test_data/animation.gif"; // URL, Path or Binary Data
+    Image1 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Path or Binary Data
+    GIF    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/animation.gif"; // URL, Path or Binary Data
 
     FileMapping = New Map;
     FileMapping.Insert("test/pic1.png", Image1);
@@ -40,14 +40,9 @@ Neocities API docs: [neocities.org/api](https://neocities.org/api)
 
     Result = OPI_Neocities.UploadFiles(Token, FileMapping);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint neocities UploadFiles --token "7419cd51de4037f7..." --files %files% --singly %singly%
-
-```
 
 ```json title="Result"
 {

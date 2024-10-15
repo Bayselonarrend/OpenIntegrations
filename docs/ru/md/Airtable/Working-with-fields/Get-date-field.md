@@ -24,14 +24,24 @@ sidebar_position: 7
 ```bsl title="Пример кода"
     Результат = OPI_Airtable.ПолучитьПолеДаты("Дата");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьПолеДаты --title "Дата"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьПолеДаты --title "Дата"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеДаты ^
+              --title "Дата"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

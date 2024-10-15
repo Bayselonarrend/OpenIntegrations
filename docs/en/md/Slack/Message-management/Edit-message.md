@@ -28,20 +28,15 @@ sidebar_position: 3
 ```bsl title="Code example"
     Token     = "xoxb-6965308400114-696804637...";
     Channel   = "C06UFNUTKUL";
-    Timestamp = "1728823163.597989";
+    Timestamp = "1728631618.679149";
 
     Text = "TestMessage2";
 
     Result = OPI_Slack.EditMessage(Token, Channel, Timestamp, Text);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint slack EditMessage --token %token% --channel "C070VPMKN8J" --stamp "1714146538.221929" --text "TestMessage2" --blocks %blocks%
-
-```
 
 ```json title="Result"
 {

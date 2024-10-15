@@ -23,19 +23,31 @@ sidebar_position: 2
 
 
 ```bsl title="Пример кода"
-    Токен  = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
-    Папка  = "11727195745";
+    Токен  = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
+    Папка  = "11705714929";
 
     Результат     = OPI_Dropbox.ОтменитьПубликациюПапки(Токен, Папка);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox ОтменитьПубликациюПапки --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --folder %folder%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox ОтменитьПубликациюПапки --token "***" \
+              --folder "11741910385"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox ОтменитьПубликациюПапки ^
+              --token "***" ^
+              --folder "11741910385"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

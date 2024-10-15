@@ -28,14 +28,9 @@ sidebar_position: 1
 
     Result = OPI_Bitrix24.GetAppAuthLink(Domain, ClientID);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint bitrix24 GetAppAuthLink --domain "b24-ar17wx.bitrix24.by" --clientid "local.6667fc928a50a9.70414732"
-
-```
 
 ```json title="Result"
 "https://b24-ar17wx.bitrix24.by/oauth/authorize/?client_id=local.6667fc928a50a9.70414732"

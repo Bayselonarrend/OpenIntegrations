@@ -24,14 +24,24 @@ sidebar_position: 6
 ```bsl title="Пример кода"
     Результат = OPI_Airtable.ПолучитьПолеФлажка("Флажок");
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint airtable ПолучитьПолеФлажка --title "Флажок"
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint airtable ПолучитьПолеФлажка --title "Флажок"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint airtable ПолучитьПолеФлажка ^
+              --title "Флажок"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -34,7 +34,7 @@ The activation code is linked to the digital product card
 ```bsl title="Code example"
     ClientID  = "2128753";
     APIKey    = "7cc90d26-33e4-499b...";
-    ProductID = "1220696576";
+    ProductID = "1218931806";
 
     Codes = New Array;
     Codes.Add("11111111");
@@ -42,14 +42,9 @@ The activation code is linked to the digital product card
 
     Result = OPI_Ozon.UploadProductActivationCodes(ClientID, APIKey, ProductID, Codes);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint ozon UploadProductActivationCodes --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --productid "1111588191" --codes %codes%
-
-```
 
 ```json title="Result"
 {

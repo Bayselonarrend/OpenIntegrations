@@ -26,19 +26,33 @@ sidebar_position: 5
 ```bsl title="Пример кода"
     Параметры = ПолучитьПараметрыВК();
 
-    Товар     = "9756133";
-    Подборка  = "130";
+    Товар     = "9733388";
+    Подборка  = "125";
 
     Результат = OPI_VK.ДобавитьТоварВПодборку(Товар, Подборка, Параметры);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint vk ДобавитьТоварВПодборку --items %items% --sel %sel% --auth %auth%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint vk ДобавитьТоварВПодборку --sel 130 \
+              --items 9774863 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk ДобавитьТоварВПодборку ^
+              --sel 130 ^
+              --items 9774863 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

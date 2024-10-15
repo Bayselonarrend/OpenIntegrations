@@ -60,14 +60,9 @@ This method call should be used in response to receiving a callbackQuery event
 
     EndDo;
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vkteams AnswerButtonEvent --token "001.3501506236.091..." --queryid %queryid% --text %text% --url %url% --showalert %showalert%
-
-```
 
 ```json title="Result"
 

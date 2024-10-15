@@ -30,8 +30,8 @@ sidebar_position: 1
     Text       = "Post from autotest";
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image  = "https://api.athenaeum.digital/test_data/picture.jpg"; // URL, Path or Binary Data
-    Image2 = "https://api.athenaeum.digital/test_data/picture2.jpg"; // URL, Path or Binary Data
+    Image  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image2 = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg"; // URL, Path or Binary Data
 
     TFN = GetTempFileName("png");
     CopyFile(Image2, TFN);
@@ -44,14 +44,9 @@ sidebar_position: 1
 
     Result = OPI_VK.CreatePost(Text, Image, False , , Parameters);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint vk CreatePost --text "Post from autotest" --pictures %pictures% --ad %ad% --url %url% --auth "GetVKParameters()"
-
-```
 
 ```json title="Result"
 {

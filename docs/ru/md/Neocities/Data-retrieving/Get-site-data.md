@@ -33,14 +33,9 @@ sidebar_position: 1
 
     Результат = OPI_Neocities.ПолучитьДанныеОСайте(Токен, Сайт);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint neocities ПолучитьДанныеОСайте --token "7419cd51de4037f7..." --sitename %sitename%
 
-```
+
 
 ```json title="Результат"
 {

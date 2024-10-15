@@ -25,19 +25,14 @@ sidebar_position: 11
 
 ```bsl title="Code example"
     Token   = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Address = "https://api.athenaeum.digital/test_data/picture.jpg";
+    Address = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg";
     Path    = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.UploadFileByURL(Token, Path, Address);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint yadisk UploadFileByURL --token "y0_AgAAAABdylaOAA..." --path "/Alpaca.png" --url "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/Media/logo.png"
-
-```
 
 ```json title="Result"
 {

@@ -33,14 +33,9 @@ sidebar_position: 19
 
     Результат  = OPI_Ozon.ПолучитьСтатусДобавленияКодов(IDКлиента, КлючAPI, IDЗадачи);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint ozon ПолучитьСтатусДобавленияКодов --clientid "2128753" --apikey "7cc90d26-33e4-499b..." --taskid %taskid%
 
-```
+
 
 ```json title="Результат"
 {

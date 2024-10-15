@@ -34,7 +34,7 @@ sidebar_position: 4
     IDЧата   = "461699897";
     IDКанала = "@testsichee";
     Текст    = "Строковое значение";
-    Аудио    = "https://api.athenaeum.digital/test_data/song.mp3";
+    Аудио    = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/song.mp3";
 
     АудиоПуть = ПолучитьИмяВременногоФайла("mp3");
     КопироватьФайл(Аудио, АудиоПуть);
@@ -47,14 +47,30 @@ sidebar_position: 4
 
     Результат = OPI_Telegram.ОтправитьАудио(Токен, IDКанала, Текст, АудиоДД);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint telegram ОтправитьАудио --token "6129457865:AAFyzNYOAFbu..." --chat "461699897" --text "Строковое значение" --audio "https://openintegrations.dev/test_data/song.mp3" --keyboard %keyboard% --parsemode %parsemode%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint telegram ОтправитьАудио --token "***" \
+              --chat "@testsichee" \
+              --text "Строковое значение" \
+              --audio "C:\Users\Administrator\AppData\Local\Temp\0xvlclunabj.mp3"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram ОтправитьАудио ^
+              --token "***" ^
+              --chat "@testsichee" ^
+              --text "Строковое значение" ^
+              --audio "C:\Users\Administrator\AppData\Local\Temp\0xvlclunabj.mp3"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {

@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ```bsl title="Code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appESy99HYCLbuWlV";
+    Base  = "appmy5B6qi09E4wrF";
 
     FieldArray = New Array;
     FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
@@ -44,14 +44,9 @@ sidebar_position: 1
 
     Result = OPI_Airtable.CreateTable(Token, Base, Name, FieldArray, Description);
 ```
+ 
 
 
-
-```sh title="CLI command example"
-    
-  oint airtable CreateTable --token %token% --base "apptm8Xqo7TwMaipQ" --title %title% --fieldsdata %fieldsdata% --description %description%
-
-```
 
 ```json title="Result"
 {

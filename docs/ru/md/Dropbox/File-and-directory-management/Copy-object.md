@@ -26,18 +26,32 @@ sidebar_position: 8
 ```bsl title="Пример кода"
     Оригинал  = "/New/pic.png";
     Копия     = "/New/pic_copy.png";
-    Токен     = "sl.B-uquz3utwEHepKzyqLBfnFvmY1EWTYDus5LDjT5ux5srp9PJRtr7CvMv20nVl2rRGC3K4J_X5...";
+    Токен     = "sl.B-iqyqXWh8YCVSZnVG0BwXxLlHNbfCDJrGlOyhjKnx1cAwPeSV71gjqQ1iR0QLna032Hn-HZjE...";
 
     Результат = OPI_Dropbox.КопироватьОбъект(Токен, Оригинал, Копия);
 ```
-
-
-
-```sh title="Пример команды CLI"
     
-  oint dropbox КопироватьОбъект --token "sl.B2ieEHcB9I9BTwJFjbf_MQtoZMKjGYgkpBqzQkvBfuSz41Qpy5r3d7a4ax22I5ILWhd9KLbN5L..." --form %form% --to %to%
 
-```
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```sh
+            oint dropbox КопироватьОбъект --token "***" \
+              --from "/New/pic.png" \
+              --to "/New/pic_copy.png"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint dropbox КопироватьОбъект ^
+              --token "***" ^
+              --from "/New/pic.png" ^
+              --to "/New/pic_copy.png"
+        ```
+    </TabItem>
+</Tabs>
+
 
 ```json title="Результат"
 {
