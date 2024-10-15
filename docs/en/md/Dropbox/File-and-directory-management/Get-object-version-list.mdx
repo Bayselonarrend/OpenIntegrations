@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function GetObjectVersionList(Val Token, Val Path, Val Count = 10) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Path | --path | String | Path to the object |
-  | Count | --amount | String, Number | Number of the latest versions of the object to display |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Path | --path | String | &#x2714; | Path to the object |
+  | Count | --amount | String, Number | &#x2716; | Number of the latest versions of the object to display |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Dropbox

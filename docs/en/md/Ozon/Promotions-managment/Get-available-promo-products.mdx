@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function GetAvailablePromoProducts(Val ClientID, Val APIKey, Val PromoID, Val Indent = 0) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | PromoID | --actionid | Number | Promo ID |
-  | Indent | --offset | Number | Offst of items list |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | PromoID | --actionid | Number | &#x2714; | Promo ID |
+  | Indent | --offset | Number | &#x2716; | Offst of items list |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API

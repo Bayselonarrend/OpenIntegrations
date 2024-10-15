@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function UploadFiles(Val Token, Val FileMapping, Val Singly = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Auth token |
-  | FileMapping | --files | Map Of KeyAndValue | Files: Key > destination path on NC, Value > file |
-  | Singly | --singly | Boolean | True > sends files in separate requests |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Auth token |
+  | FileMapping | --files | Map Of KeyAndValue | &#x2714; | Files: Key > destination path on NC, Value > file |
+  | Singly | --singly | Boolean | &#x2716; | True > sends files in separate requests |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Neocities

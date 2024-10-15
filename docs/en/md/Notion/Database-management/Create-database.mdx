@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Parent | --page | String | Parent page ID |
-  | Title | --title | String | Database title |
-  | Properties | --props | Structure Of String | Database properties |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Parent | --page | String | &#x2714; | Parent page ID |
+  | Title | --title | String | &#x2714; | Database title |
+  | Properties | --props | Structure Of String | &#x2716; | Database properties |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Notion

@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function AddProductToCollection(Val ProductsArray, Val Selection, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ProductsArray | --items | Array of string, number | Array of products or product |
-  | Selection | --sel | String | Selection ID |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ProductsArray | --items | Array of string, number | &#x2714; | Array of products or product |
+  | Selection | --sel | String | &#x2714; | Selection ID |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

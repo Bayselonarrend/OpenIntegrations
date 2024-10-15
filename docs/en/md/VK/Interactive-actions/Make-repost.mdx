@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function MakeRepost(Val PostID, Val WallID = "", Val TargetWall = "", Val Advertising = False, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | PostID | --post | String, Number | Post ID |
-  | WallID | --from | String, Number | ID of the wall where the post is located |
-  | TargetWall | --to | String, Number | ID of the target wall or group |
-  | Advertising | --ad | Boolean | Sign of an advertising post |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | PostID | --post | String, Number | &#x2714; | Post ID |
+  | WallID | --from | String, Number | &#x2716; | ID of the wall where the post is located |
+  | TargetWall | --to | String, Number | &#x2716; | ID of the target wall or group |
+  | Advertising | --ad | Boolean | &#x2716; | Sign of an advertising post |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK

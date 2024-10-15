@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateSystemNotification(Val URL, Val UserID, Val Text, Val Tag = "", Val Attachments = "", Val Token = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | URL | --url | String | URL of webhook or a Bitrix24 domain, when token used |
-  | UserID | --user | String, Number | User ID for sending the notification |
-  | Text | --text | String | Notification text |
-  | Tag | --tag | String | Uniqueness Tag. If already exist, other notif. will be deleted |
-  | Attachments | --blocks | Array of Structure | Array of attachments |
-  | Token | --token | String | Access token, when app auth method used |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
+  | UserID | --user | String, Number | &#x2714; | User ID for sending the notification |
+  | Text | --text | String | &#x2714; | Notification text |
+  | Tag | --tag | String | &#x2716; | Uniqueness Tag. If already exist, other notif. will be deleted |
+  | Attachments | --blocks | Array of Structure | &#x2716; | Array of attachments |
+  | Token | --token | String | &#x2716; | Access token, when app auth method used |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API

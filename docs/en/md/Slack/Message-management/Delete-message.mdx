@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function DeleteMessage(Val Token, Val Channel, Val Timestamp, Val IsDelayed = False) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | Channel | --channel | String | Channel ID |
-  | Timestamp | --stamp | String | Timestamp or message ID |
-  | IsDelayed | --issheduled | Boolean | Indicator of deleting a delayed message |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | Channel | --channel | String | &#x2714; | Channel ID |
+  | Timestamp | --stamp | String | &#x2714; | Timestamp or message ID |
+  | IsDelayed | --issheduled | Boolean | &#x2716; | Indicator of deleting a delayed message |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Slack

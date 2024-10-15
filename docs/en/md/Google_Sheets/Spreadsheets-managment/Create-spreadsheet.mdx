@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Name | --title | String | Name |
-  | ArrayOfSheetNames | --sheets | Array of String | Array of names to add new sheets to the spreadsheet |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Name | --title | String | &#x2714; | Name |
+  | ArrayOfSheetNames | --sheets | Array of String | &#x2714; | Array of names to add new sheets to the spreadsheet |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google

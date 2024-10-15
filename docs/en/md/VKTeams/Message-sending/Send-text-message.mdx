@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function SendTextMessage(Val Token, Val ChatID, Val Text, Val ReplyID = 0, Val Keyboard = "", Val Markup = "MarkdownV2") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Bot token |
-  | ChatID | --chatid | String, Number | Chat ID for message sending |
-  | Text | --text | String | Message text |
-  | ReplyID | --reply | String, Number | Replying message id if necessary |
-  | Keyboard | --keyboard | Array Of String | Buttons to the message if necessary |
-  | Markup | --parsemod | String | Markup type for message text: MarkdownV2 or HTML |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Bot token |
+  | ChatID | --chatid | String, Number | &#x2714; | Chat ID for message sending |
+  | Text | --text | String | &#x2714; | Message text |
+  | ReplyID | --reply | String, Number | &#x2716; | Replying message id if necessary |
+  | Keyboard | --keyboard | Array Of String | &#x2716; | Buttons to the message if necessary |
+  | Markup | --parsemod | String | &#x2716; | Markup type for message text: MarkdownV2 or HTML |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams

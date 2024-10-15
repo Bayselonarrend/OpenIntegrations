@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function FormKeyboardFromButtonArray(Val ButtonArray, Val UnderMessage = False, Val OneByOne = True) Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ButtonArray | --buttons | Array of String | Array of buttons |
-  | UnderMessage | --under | Boolean | Keyboard under the message or on the bottom panel |
-  | OneByOne | --column | Boolean | True > buttons are displayed in a column, False > in a row |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ButtonArray | --buttons | Array of String | &#x2714; | Array of buttons |
+  | UnderMessage | --under | Boolean | &#x2716; | Keyboard under the message or on the bottom panel |
+  | OneByOne | --column | Boolean | &#x2716; | True > buttons are displayed in a column, False > in a row |
 
   
   Returns:  String - Keyboard JSON

@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 `Function UpdateProductImages(Val ClientID, Val APIKey, Val ProductID, Val ImagesArray = "", Val Array360 = "", Val MarketingColor = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | ClientID | --clientid | String | Client identifier |
-  | APIKey | --apikey | String | API key |
-  | ProductID | --productid | String, Number | Product identifier |
-  | ImagesArray | --images | Array Of String | Array of images URLs |
-  | Array360 | --images360 | Array Of String | Array of 360 images |
-  | MarketingColor | --color | String | Marketing color |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientID | --clientid | String | &#x2714; | Client identifier |
+  | APIKey | --apikey | String | &#x2714; | API key |
+  | ProductID | --productid | String, Number | &#x2714; | Product identifier |
+  | ImagesArray | --images | Array Of String | &#x2716; | Array of images URLs |
+  | Array360 | --images360 | Array Of String | &#x2716; | Array of 360 images |
+  | MarketingColor | --color | String | &#x2716; | Marketing color |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Ozon Seller API

@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Base | --base | String | Base identifier |
-  | Name | --title | String | New table name |
-  | FieldArray | --fieldsdata | Array of Structure | Array of field descriptions |
-  | Description | --description | String | Table description |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Base | --base | String | &#x2714; | Base identifier |
+  | Name | --title | String | &#x2714; | New table name |
+  | FieldArray | --fieldsdata | Array of Structure | &#x2714; | Array of field descriptions |
+  | Description | --description | String | &#x2716; | Table description |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Airtable

@@ -12,12 +12,12 @@ import TabItem from '@theme/TabItem';
 
 `Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Token | --token | String | Token |
-  | Identifier | --object | String | Object identifier |
-  | NewName | --title | String | New object name |
-  | NewParent | --catalog | String | New parent directory |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | Identifier | --object | String | &#x2714; | Object identifier |
+  | NewName | --title | String | &#x2716; | New object name |
+  | NewParent | --catalog | String | &#x2716; | New parent directory |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google

@@ -12,11 +12,11 @@ import TabItem from '@theme/TabItem';
 
 `Function CreateDiscussion(Val Name, Val FirstMessageText, Val Parameters = "") Export`
 
-  | Parameter | CLI option | Type | Description |
-  |-|-|-|-|
-  | Name | --title | String | Discussion name |
-  | FirstMessageText | --text | String | Text of the first message |
-  | Parameters | --auth | Structure Of String | Authorization JSON or path to .json |
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Name | --title | String | &#x2714; | Discussion name |
+  | FirstMessageText | --text | String | &#x2714; | Text of the first message |
+  | Parameters | --auth | Structure Of String | &#x2716; | Authorization JSON or path to .json |
 
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK
